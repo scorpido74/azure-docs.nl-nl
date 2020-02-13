@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931405"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166574"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
 
 In deze zelf studie wordt u begeleid bij het inrichten van Cloud inrichting voor een test Active Directory forest dat al is gesynchroniseerd met behulp van Azure Active Directory (Azure AD) Connect Sync.
 
-![Create](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Maken](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Overwegingen
 Voordat u deze zelf studie probeert, moet u rekening houden met de volgende items:
@@ -67,8 +67,7 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
  3. Voer het volgende in op de pagina **Beschrijving** en klik op **volgende**:
 
     **Naam:** Geef een beschrijvende naam op voor de regel<br>
-    **Beschrijving:** Een zinvolle beschrijving toevoegen<br> 
-    
+    **Beschrijving:** Een zinvolle beschrijving toevoegen<br>
     **Verbonden systeem:** Kies de AD-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
     **Type verbonden systeem object:** Gebruiker<br>
     **Omgekeerd object type:** Gelaedeerde<br>
@@ -87,7 +86,7 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
     ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Klik op **volgende**op de pagina regels voor **samen voegen** .
- 6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Add**.
+ 6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Toevoegen**.
  Aangepaste regel](media/how-to-cloud-custom-user-rule/user4.png) ![</br>
 
 Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep en contact). Herhaal de stappen per geconfigureerde AD-connector/per AD-forest. 
@@ -144,7 +143,7 @@ Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azu
 
 1. Meld u aan bij Azure Portal.
 2. Selecteer aan de linkerkant **Azure Active Directory**, klik op **Azure AD Connect** en selecteer in het midden de optie **inrichting beheren (preview)** .</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
+![Azure-portal](media/how-to-install/install6.png)</br>
 
 3.  Klik in het scherm **Azure AD inrichten (preview)** op **Alle agents controleren**.
 ![Azure AD-inrichtings](media/how-to-install/install7.png)</br>

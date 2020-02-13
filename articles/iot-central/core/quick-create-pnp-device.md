@@ -3,17 +3,17 @@ title: 'Quick Start: een gesimuleerd apparaat toevoegen aan Azure IoT Central'
 description: In deze Quick start ziet u hoe u een apparaatprofiel maakt en een gesimuleerd apparaat toevoegt aan uw IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027760"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169647"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Snelstartgids: een gesimuleerd apparaat toevoegen aan uw IoT Central-toepassing
 
@@ -70,8 +70,8 @@ Een sjabloon voor een apparaat kan Cloud eigenschappen bevatten. Cloud eigenscha
 
     | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
-    | Laatste servicedatum | Geen          | Datum   |
-    | Klant naam     | Geen          | Tekenreeks |
+    | Laatste servicedatum | None          | Date   |
+    | Klant naam     | None          | Tekenreeks |
 
 1. Selecteer **Opslaan** om uw wijzigingen op te slaan:
 

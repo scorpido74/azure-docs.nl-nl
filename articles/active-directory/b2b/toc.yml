@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Zelfstudies
       items:
-        - name: B2B-gastgebruikers in bulk uitnodigen
+        - name: Bulksgewijs uitnodigen via PowerShell
+          href: bulk-invite-powershell.md
+        - name: Bulksgewijs uitnodigen via de portal (preview)
           href: tutorial-bulk-invite.md
         - name: Meervoudige verificatie forceren
           href: b2b-tutorial-require-mfa.md

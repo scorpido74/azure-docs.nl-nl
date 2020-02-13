@@ -3,18 +3,18 @@ title: 'Quick Start: regels en acties in azure IoT Central configureren'
 description: In deze Quick start ziet u als een opbouw functie voor het configureren van regels en acties op basis van telemetrie in uw Azure IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027802"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169475"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Snelstartgids: regels en acties voor uw apparaat configureren in azure IoT Central
 
@@ -34,7 +34,7 @@ Voordat u begint, moet u de twee vorige Quick starts volt ooien om [een Azure IO
 
 1. Voer **omgevings temperatuur** in als naam van de regel.
 
-1. Selecteer in de sectie **doel apparaten** **MXChip IOT DevKit** als de sjabloon voor het apparaat. Met deze optie worden de apparaten gefilterd waarop de regel van toepassing is op basis van het type apparaat. U kunt meer filter criteria toevoegen om **+ filter**te selecteren.
+1. Selecteer in de sectie **doel apparaten** **MXChip IOT DevKit** als de sjabloon voor het apparaat. Met deze optie worden de apparaten gefilterd waarop de regel van toepassing is op basis van het type apparaat. U kunt meer filter criteria toevoegen door **+ filter**te selecteren.
 
 1. In de sectie **voor waarden** definieert u wat uw regel activeert. Gebruik de volgende informatie om een voor waarde op te geven op basis van de Tempe ratuur van de telemetrie:
 
@@ -55,7 +55,7 @@ Voordat u begint, moet u de twee vorige Quick starts volt ooien om [een Azure IO
     | Instelling   | Waarde                                             |
     | --------- | ------------------------------------------------- |
     | Weergavenaam | E-mail actie voor operator                          |
-    | Tot        | Uw e-mailadres                                |
+    | Handeling        | Uw e-mailadres                                |
     | Opmerkingen     | Omgevings temperatuur heeft de drempel waarde overschreden. |
 
     > [!NOTE]
@@ -74,7 +74,7 @@ Kort nadat u de regel hebt opgeslagen, wordt deze actief. Wanneer aan de voorwaa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u de volgende zaken geleerd:
+In deze snelstart hebt u de volgende zaken geleerd:
 
 * Een regel op basis van telemetrie maken
 * Een actie toevoegen

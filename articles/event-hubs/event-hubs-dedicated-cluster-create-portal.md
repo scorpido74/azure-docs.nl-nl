@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
-ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029925"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157479"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Snelstartgids: een toegewezen Event Hubs-cluster maken met behulp van Azure Portal 
 Event Hubs-clusters bieden implementaties met één Tenant voor klanten met de meest veeleisende streaming behoeften. Deze aanbieding heeft een gegarandeerde 99,99%-SLA en is alleen beschikbaar in onze speciale prijs categorie. Een [Event hubs cluster](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde met gegarandeerde capaciteit en een subseconde van de seconden binnenkomen. Naam ruimten en Event hubs die zijn gemaakt in een cluster, bevatten alle functies van de Standard-aanbieding en meer, maar zonder ingangs limieten. De speciale aanbieding bevat ook de populaire [Event hubs Capture](event-hubs-capture-overview.md) -functie zonder extra kosten, zodat u automatisch gegevens stromen naar [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of [Azure data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)kunt vastleggen in batches.
@@ -106,6 +106,10 @@ Als u de grootte van het cluster na het maken wilt wijzigen of als uw voorkeurs 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u een Event Hubs-cluster gemaakt. Zie de volgende zelf studies voor stapsgewijze instructies voor het verzenden en ontvangen van gebeurtenissen van een Event Hub en het vastleggen van gebeurtenissen in een Azure-opslag of Azure Data Lake Store.
 
-- [Gebeurtenissen verzenden en ontvangen op .NET core](event-hubs-dotnet-standard-getstarted-send.md)
+- Gebeurtenissen verzenden en ontvangen 
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 - [Azure Portal gebruiken om Event Hubs vastleggen in te scha kelen](event-hubs-capture-enable-through-portal.md)
 - [Azure Event Hubs gebruiken voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)

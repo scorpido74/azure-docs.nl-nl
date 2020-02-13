@@ -64,7 +64,7 @@
   items:
     - name: Self-service voor wachtwoord opnieuw instellen
       items:
-        - name: Selfservice voor wachtwoordherstel herstellen
+        - name: Implementatiehandleiding
           href: howto-sspr-deployment.md
         - name: Uw authenticatiegegevens vooraf registreren
           href: howto-sspr-authenticationdata.md
@@ -74,7 +74,7 @@
           href: howto-sspr-windows.md
     - name: MFA in de cloud
       items:
-        - name: MFA in de cloud implementeren
+        - name: Implementatiehandleiding
           href: howto-mfa-getstarted.md
         - name: MFA per gebruiker
           href: howto-mfa-userstates.md

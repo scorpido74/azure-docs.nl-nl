@@ -60,21 +60,14 @@
           href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Azure-privé-eindpunten gebruiken
           href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: De gegevensredundantie
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      items:
-        - name: Lokaal redundante opslag
-          href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Zone-redundante opslag
-          href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Geografisch redundante opslag
-          href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Geografisch zone-redundante opslag
-          href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Herstel na noodgevallen en failover
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: HA-apps ontwerpen met RA-GRS
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: De gegevensredundantie
+          items:
+            - name: De gegevensredundantie
+              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Herstel na noodgevallen en failover
+              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Maximaal beschikbare toepassingen ontwerpen
+              href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Controlelijst voor prestaties en schaalbaarheid
       href: storage-performance-checklist.md
     - name: Gelijktijdigheid
@@ -172,8 +165,12 @@
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Transport Layer Security inschakelen
               href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Wijzigen hoe gegevens worden gerepliceerd
+      href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Herstel na noodgeval
       items:
+        - name: De eigenschap Laatst gesynchroniseerd controleren
+          href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Failover van account initiëren
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Een opslagemulator gebruiken

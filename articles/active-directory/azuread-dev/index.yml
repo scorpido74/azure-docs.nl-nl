@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Azure Active Directory voor ontwikkelaars
+summary: Azure Active Directory (Azure AD) is een identiteitsservice in de cloud waarmee ontwikkelaars apps kunnen maken die ervoor zorgen dat elke gebruiker met een Microsoft-werkaccount of -schoolaccount zich veilig kan aanmelden. Azure AD biedt ondersteuning voor ontwikkelaars die Line-Of-Business-apps met één tenant maken en voor ontwikkelaars die apps met meerdere tenants willen ontwikkelen. Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Voor nieuwe toepassingen raden we aan dat u het Microsoft Identity Platform (v2.0) en MSAL gebruikt voor tokens en toegang tot beveiligde web-API's.
+metadata:
+  ms.topic: landing-page
+  ms.date: 01/27/2020
+  author: CelesteDG
+  ms.author: celested
+  ms.service: active-directory
+  ms.subservice: azuread-dev
+  ms.workload: identity
+  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77163208"
+landingContent:
+- title: Azure Active Directory voor ontwikkelaars
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory voor ontwikkelaars (v1.0)
+      url: v1-overview.md
+    - text: Evolutie van het Microsoft Identity Platform
+      url: ../develop/about-microsoft-identity-platform.md
+    - text: Microsoft Identity Platform (v2.0)
+      url: ../develop/v2-overview.md
+  - linkListType: concept
+    links:
+    - text: Waarom bijwerken naar Microsoft Identity Platform (v2.0)?
+      url: azure-ad-endpoint-comparison.md
+    - text: Typen apps en scenario's
+      url: app-types.md
+- title: Verificatieprotocollen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Basisbeginselen van verificatie
+      url: v1-authentication-scenarios.md
+  - linkListType: concept
+    links:
+    - text: OAuth 2.0-autorisatiecodestroom
+      url: v1-protocols-oauth-code.md
+    - text: OpenID Connect-codestroom
+      url: v1-protocols-openid-connect-code.md
+    - text: Stroom om referenties voor OAuth 2.0-client te verlenen
+      url: v1-oauth2-client-creds-grant-flow.md
+- title: Voorbeelden
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Voorbeeld-apps
+      url: sample-v1-code.md

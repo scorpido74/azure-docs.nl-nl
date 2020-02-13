@@ -1,38 +1,39 @@
 ---
 title: Index van beleidsvoorbeelden
-description: Index van voorbeelden voor Azure Policy. Categorieën zijn onder andere naam geven, tags, Key Vault, netwerken, opslag en meer.
-ms.date: 03/19/2019
+description: Index van inbouwingen in Azure Policy. Categorietags, naleving van regelgeving, Key Vault, Kubernetes, gastconfiguratie en meer.
+ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 54e77a83a03d9a8f5cedd59f010569d7ecef7d90
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070104"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168031"
 ---
 # <a name="azure-policy-samples"></a>Voorbeelden van Azure Policy
 
-De volgende tabel bevat links naar voorbeelden voor Azure Policy. Deze voorbeelden staan ook in [de opslagplaats met voorbeelden voor Azure Policy](https://github.com/Azure/azure-policy).
+Deze pagina is een index van ingebouwde Azure Policy-beleidsdefinities en taalgebruikpatronen.
 
-[!INCLUDE [azure-policy-samples-general](../../../../includes/azure-policy-samples-general.md)]
+## <a name="built-ins"></a>Inbouwingen
 
-[!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
+- [Beleidsregels](./built-in-policies.md)
+- [Initiatieven](./built-in-initiatives.md)
 
-[!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+## <a name="patterns"></a>Patronen
 
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
+Hier volgen voorbeelden van verschillende patronen die de taal en operators in Azure Policy gebruiken:
 
-[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
-
-[!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
-
-[!INCLUDE [azure-policy-samples-network](../../../../includes/azure-policy-samples-network.md)]
-
-[!INCLUDE [azure-policy-samples-sql](../../../../includes/azure-policy-samples-sql.md)]
-
-[!INCLUDE [azure-policy-samples-storage](../../../../includes/azure-policy-samples-storage.md)]
+- [Logische operators](./pattern-logical-operators.md)
+- [Fields](./pattern-fields.md)
+- [Parameters](./pattern-parameters.md)
+- [Details van effect](./pattern-effect-details.md)
+- [Waarde-operator](./pattern-value-operator.md)
+- [Tel-operator](./pattern-count-operator.md)
+- [Beleidsdefinities in een initiatief groeperen](./pattern-group-with-initiative.md)
+- [Resources implementeren met deployIfNotExists](./pattern-deploy-resources.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Bekijk de inbouwingen op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).

@@ -37,218 +37,30 @@
 - name: Voorbeelden
   items:
     - name: Index
-      displayName: 'list, examples'
+      displayName: 'list, builtins'
       href: ./samples/index.md
-    - name: Algemeen
+    - name: Ingebouwd beleid
+      href: ./samples/built-in-policies.md
+    - name: Ingebouwde initiatieven
+      href: ./samples/built-in-initiatives.md
+    - name: Gebruikspatronen
       items:
-        - name: Naamgeving
-          items:
-            - name: Meerdere naampatronen toestaan
-              displayName: 'deny, indexed'
-              href: samples/allow-multiple-name-patterns.md
-            - name: Like-patroon vereisen
-              displayName: 'deny, indexed'
-              href: samples/enforce-like-pattern.md
-            - name: Match-patroon vereisen
-              displayName: 'deny, indexed'
-              href: samples/enforce-match-pattern.md
-            - name: Tag-match-patroon vereisen
-              displayName: 'deny, all'
-              href: samples/enforce-tag-match-pattern.md
-        - name: Tags
-          items:
-            - name: Tag met standaardwaarde toepassen
-              displayName: 'append, builtin, concat'
-              href: samples/apply-tag-default-value.md
-            - name: Factureringstagbeleidinitiatief
-              href: samples/billing-tags-policy-initiative.md
-            - name: Tag en waarde afdwingen
-              displayName: 'deny, concat, builtin'
-              href: samples/enforce-tag-value.md
-            - name: Tag en de waarde ervan afdwingen in brongroepen
-              displayName: 'deny, concat'
-              href: samples/enforce-tag-on-resource-groups.md
-        - name: Locaties
-          items:
-            - name: Toegestane locaties
-              displayName: 'deny, builtin, location'
-              href: samples/allowed-locations.md
-        - name: Resourcetypen
-          items:
-            - name: Toegestane brontypen
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/allowed-resource-types.md
-            - name: Niet toegestane brontypen
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/not-allowed-resource-types.md
-    - name: Compute
-      items:
-        - name: Virtuele machines
-          items:
-            - name: Aangepaste VM-installatiekopie van een resourcegroep toestaan
-              displayName: 'deny, concat, ExistingResourceGroups'
-              href: samples/allow-custom-vm-image.md
-            - name: Toegestane SKU's voor opslagaccounts en virtuele machines
-              displayName: 'initiative, vmSKUs, storageSKUs'
-              href: samples/allowed-skus-storage.md
-            - name: Goedgekeurde VM-installatiekopieën
-              displayName: deny
-              href: samples/allowed-custom-images.md
-            - name: Controleert of uitbreiding bestaat
-              displayName: auditIfNotExists
-              href: samples/audit-extension-not-exist.md
-            - name: Niet-toegestane VM-extensies
-              displayName: deny
-              href: samples/not-allowed-vm-extension.md
-        - name: Virtuele-machineschaalsets
-          items:
-            - name: Controle of VM geen beheerde schijf gebruikt
-              displayName: audit
-              href: samples/create-vm-managed-disk.md
-            - name: Virtuele machine met beheerde schijf maken
-              displayName: deny
-              href: samples/use-managed-disk-vm.md
-            - name: Azure hybrid use benefit weigeren
-              displayName: deny
-              href: samples/deny-hybrid-use.md
-            - name: Alleen een bepaalde VM-platforminstallatiekopie toestaan
-              displayName: deny
-              href: samples/allow-certain-vm-image.md
-    - name: Data Lake
-      items:
-        - name: Data Lake Store-versleuteling vereisen
-          displayName: deny
-          href: samples/enforce-data-lake-store-encryption.md
-    - name: Gastconfiguratie
-      items:
-        - name: Toepassingen controleren die niet in Linux zijn geïnstalleerd
-          displayName: 'audit, vm'
-          href: samples/guest-configuration-applications-installed-linux.md
-    - name: Sleutelkluizen
-      items:
-        - name: Kluizen controleren op het ontbreken van eindpunten voor een virtueel netwerk
-          displayName: 'audit, KeyVault, indexed'
-          href: samples/keyvault-no-vnet-rules.md
-    - name: Bewaking
-      items:
-        - name: Diagnostische instelling voor controleren
-          displayName: 'auditIfNotExists, resourceTypes'
-          href: samples/audit-diagnostic-setting.md
-    - name: Netwerk
-      items:
-        - name: Netwerkinterfaces
-          items:
-            - name: NSG X op elke NIC
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: Goedgekeurd subnet gebruiken voor VM-netwerkinterfaces
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Goedgekeurd vNet gebruiken voor VM-netwerkinterfaces
-              displayName: 'deny, concat'
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Virtuele netwerken
-          items:
-            - name: Toegestane application gateway-SKU’s
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-            - name: Toegestane vNet-gateway-SKU's
-              displayName: deny
-              href: samples/allowed-vnet-gateway-sku.md
-            - name: Toegestane load balancer-SKU 's
-              displayName: deny
-              href: samples/allowed-load-balancer-skus.md
-            - name: Geen netwerkpeering naar ER-netwerk
-              displayName: 'deny, all, concat, ExistingResourceGroups'
-              href: samples/no-peering-express-route-network.md
-            - name: Geen door de gebruiker gedefinieerde routetabellen
-              displayName: 'deny, all'
-              href: samples/no-user-defined-route-table.md
-            - name: NSG X in elk subnet
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-            - name: Goedgekeurd subnet gebruiken voor VM-netwerkinterfaces
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Goedgekeurd vNet gebruiken voor VM-netwerkinterfaces
-              displayName: deny
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Netwerkbeveiligingsgroepen
-          items:
-            - name: NSG X op elke NIC
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: NSG X in elk subnet
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-        - name: ExpressRoute
-          items:
-            - name: Toegestane ExpressRoute-bandbreedte
-              displayName: deny
-              href: samples/allowed-express-route-bandwidth.md
-            - name: Toegestane ExpressRoute-SKU's
-              displayName: deny
-              href: samples/allowed-express-route-skus.md
-            - name: Toegestane ExpressRoute-peeringlocaties
-              displayName: 'deny, Location'
-              href: samples/allowed-express-route-peering.md
-        - name: Network Watchers
-          items:
-            - name: Controleren of Network Watcher is ingeschakeld voor de regio
-              displayName: 'auditIfNotExists, Location'
-              href: samples/network-watcher-not-enabled.md
-        - name: Toepassingsgateways
-          items:
-            - name: Toegestane application gateway-SKU’s
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-    - name: SQL
-      items:
-        - name: SQL-servers
-          items:
-            - name: Op een Azure Active Directory-beheerder controleren
-              displayName: auditIfNotExists
-              href: samples/audit-no-aad-admin.md
-            - name: Instelling dreigingsdetectieniveau server controleren
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-threat-detection-setting.md
-            - name: Auditinstellingen SQL Server controleren
-              displayName: 'auditIfNotExists, builtin'
-              href: samples/sql-server-audit.md
-            - name: Auditinstellingsniveau SQL Server controleren
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-audit-setting.md
-        - name: SQL Databases
-          items:
-            - name: Toegestane SQL DB-SKU's
-              displayName: deny
-              href: samples/allowed-sql-db-skus.md
-            - name: Instelling dreigingsdetectieniveau SQL DB controleren
-              displayName: auditIfNotExists
-              href: samples/audit-db-threat-detection-setting.md
-            - name: Versleuteling van SQL DB controleren
-              displayName: 'auditIfNotExists, disabled, indexed, builtin'
-              href: samples/sql-database-encryption-audit.md
-            - name: Auditinstellingsniveau SQL DB controleren
-              displayName: auditIfNotExists
-              href: samples/audit-sql-db-audit-setting.md
-    - name: Storage
-      items:
-        - name: Toegestane SKU's voor opslagaccount en virtuele machines
-          displayName: 'initiative, vmSKUs, storageSKUs'
-          href: samples/allowed-skus-storage.md
-        - name: Toegestane opslagaccount-SKU's
-          displayName: 'deny, builtin, storageSKUs'
-          href: samples/allowed-storage-account-skus.md
-        - name: Statische toegangslaag voor opslagaccounts weigeren
-          displayName: 'deny, all'
-          href: samples/deny-cool-access-tiering.md
-        - name: HTTPs-verkeer voor opslagaccounts vereisen
-          displayName: 'deny, all'
-          href: samples/ensure-https-storage-account.md
-        - name: Opslagbestandsversleuteling vereisen
-          displayName: 'deny, all'
-          href: samples/ensure-storage-file-encryption.md
+        - name: Logische operators
+          href: ./samples/pattern-logical-operators.md
+        - name: Velden
+          href: ./samples/pattern-fields.md
+        - name: Parameters
+          href: ./samples/pattern-parameters.md
+        - name: Details van effect
+          href: ./samples/pattern-effect-details.md
+        - name: Waarde-operator
+          href: ./samples/pattern-value-operator.md
+        - name: Tel-operator
+          href: ./samples/pattern-count-operator.md
+        - name: Groeperen in initiatief
+          href: ./samples/pattern-group-with-initiative.md
+        - name: Resources implementeren
+          href: ./samples/pattern-deploy-resources.md
 - name: Concepten
   items:
     - name: Structuur van Azure-beleidsdefinities

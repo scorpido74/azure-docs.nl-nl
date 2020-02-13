@@ -372,6 +372,8 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Problemen oplossen
           items:
+            - name: Kan geen Jupyter-notebook maken
+              href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError-uitzondering
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
             - name: Apache Spark-taak mislukt - NoClassDefFoundError
@@ -396,6 +398,8 @@
               href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
             - name: Fouten in Apache Spark-taken opsporen
               href: ./spark/apache-spark-job-debugging.md
+            - name: Fouten opsporen in WASB-bestand
+              href: ./spark/troubleshoot-debug-wasb.md
             - name: IntelliJ gebruiken om fouten in Apache Spark-taken op te sporen
               href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Problemen met Apache Spark oplossen
@@ -523,6 +527,8 @@
               href: ./hadoop/troubleshoot-port-conflict.md
             - name: Key Vault-toegang verloren
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
+            - name: WASBS-opslaguitzondering
+              href: ./hadoop/troubleshoot-wasbs-storage-exception.md
 - name: Apache Kafka
   items:
     - name: Overzicht

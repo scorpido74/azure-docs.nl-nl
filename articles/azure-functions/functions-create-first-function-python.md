@@ -1,17 +1,17 @@
 ---
-title: Een HTTP-geactiveerde python-functie maken in azure
+title: Een python-functie zonder server maken voor HTTP-aanvragen in Azure Functions
 description: Maak en implementeer serverloze python-code in de Cloud met behulp van Azure Functions.
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116211"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157887"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Quick Start: een HTTP-geactiveerde python-functie maken in azure
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een python-functie maken in azure die reageert op HTTP-aanvragen
 
 In dit artikel gebruikt u opdracht regel Programma's voor het maken van een python-functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
 

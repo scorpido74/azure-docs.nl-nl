@@ -77,7 +77,7 @@
           href: notifications.md
         - name: Een beheerd domein verwijderen
           href: delete-aadds.md
-        - name: Migreren vanuit een klassieke implementatie (preview)
+        - name: Migreren vanuit een klassieke implementatie
           href: migrate-from-classic-vnet.md
         - name: SKU wijzigen
           href: change-sku.md

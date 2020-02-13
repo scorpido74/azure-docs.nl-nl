@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9bf33aae5de600d6e5b0ab836c99da1d56935db3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905866"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169383"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault integreren met Azure Policy
 
@@ -152,5 +152,4 @@ Het toewijzen van een beleid met een ' deny '-effect kan Maxi maal 30 minuten du
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [Azure Policy-service](../governance/policy/overview.md)
-- Een voor beeld bekijken: [Key Vault kluizen zonder eind punten van een virtueel netwerk](../governance/policy/samples/keyvault-no-vnet-rules.md)
-
+- Zie Key Vault [-voor beelden: Key Vault ingebouwde beleids definities](../governance/policy/samples/built-in-policies.md#key-vault)

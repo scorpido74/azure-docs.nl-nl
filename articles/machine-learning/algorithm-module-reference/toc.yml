@@ -26,6 +26,8 @@
       href: convert-to-csv.md
     - name: Converteren naar gegevensset
       href: convert-to-dataset.md
+    - name: Converteren naar indicatorwaarden
+      href: convert-to-indicator-values.md
     - name: Ontbrekende gegevens opschonen
       href: clean-missing-data.md
     - name: Metagegevens bewerken

@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847148"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166423"
 landingContent:
 - title: Info over verificatie
   linkLists:
@@ -39,16 +39,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: Wachtwoord terugschrijven
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: 'Quickstart: self-service voor wachtwoordherstel'
-      url: quickstart-sspr.md
+    - text: Selfservice voor wachtwoordherstel inschakelen
+      url: tutorial-enable-sspr.md
+    - text: Write-back van wachtwoord naar on-premises inschakelen
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: Self-service voor wachtwoordherstel van Azure AD implementeren
+    - text: Implementatiehandleiding voor self-service voor wachtwoordherstel
       url: howto-sspr-deployment.md
-    - text: Wachtwoord terugschrijven inschakelen
-      url: howto-sspr-writeback.md
     - text: Wachtwoordherstel inschakelen vanuit het Windows-aanmeldingsscherm
       url: howto-sspr-windows.md
 - title: Azure Multi-Factor Authentication inschakelen
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Azure MFA testen voor specifieke toepassingen
-      url: tutorial-mfa-applications.md
-    - text: Risicodetectie gebruiken als trigger voor Multi-Factor Authentication en het wijzigen van wachtwoorden
+    - text: Azure Multi-Factor Authentication inschakelen
+      url: tutorial-enable-azure-mfa.md
+    - text: Op risicogebeurtenissen gebaseerde Azure Multi-Factor Authentication inschakelen
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Azure Multi-Factor Authentication implementeren
+    - text: Implementatiehandleiding voor Azure Multi-Factor Authentication
       url: howto-mfa-getstarted.md
     - text: NPS-extensie gebruiken voor de integratie van on-premises toepassingen
       url: howto-mfa-nps-extension.md

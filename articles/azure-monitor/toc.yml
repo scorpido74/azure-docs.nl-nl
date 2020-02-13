@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: Gegevens visualiseren
       items:
-        - name: Weergaven
-          items:
-            - name: Designer weergeven
-              href: platform/view-designer.md
-            - name: Naslaginformatie voor tegels
-              href: platform/view-designer-tiles.md
-            - name: Naslaginformatie voor visualisatieonderdelen
-              href: platform/view-designer-parts.md
-            - name: Filters
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: Logboekgegevens exporteren
-              href: platform/powerbi.md
-            - name: Toepassingsgegevens exporteren
-              href: app/export-power-bi.md
         - name: Werkmappen
           items:
             - name: Overzicht
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: Tekstparameters
                       href: platform/workbooks-text.md
+        - name: Weergaven
+          items:
+            - name: Weergaven converteren naar workbooks
+              items:
+                - name: Conversieoverzicht
+                  href: platform/view-designer-conversion-overview.md
+                - name: Conversieopties
+                  href: platform/view-designer-conversion-options.md
+                - name: Overzicht en toegang
+                  href: platform/view-designer-conversion-access.md
+                - name: Algemene taken
+                  href: platform/view-designer-conversion-tasks.md
+                - name: Tegelconversies
+                  href: platform/view-designer-conversion-tiles.md
+                - name: Voorbeelden
+                  href: platform/view-designer-conversion-examples.md
+            - name: Designer weergeven
+              href: platform/view-designer.md
+            - name: Naslaginformatie voor tegels
+              href: platform/view-designer-tiles.md
+            - name: Naslaginformatie voor visualisatieonderdelen
+              href: platform/view-designer-parts.md
+            - name: Filters
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: Logboekgegevens exporteren
+              href: platform/powerbi.md
+            - name: Toepassingsgegevens exporteren
+              href: app/export-power-bi.md
         - name: Dashboards
           items:
             - name: Dashboard gebruiken met logboekgegevens

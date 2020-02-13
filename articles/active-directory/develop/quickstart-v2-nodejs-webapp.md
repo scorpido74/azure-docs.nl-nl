@@ -11,16 +11,14 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703334"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160445"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snelstartgids: aanmelden toevoegen met OpenID connect verbinding maken met een node. js-web-app
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 In deze Quick Start leert u hoe u OpenID Connect Connect-verificatie kunt instellen in een webtoepassing die is gebouwd met behulp van node. js met Express. Het voor beeld is ontworpen om te worden uitgevoerd op elk platform.
 
@@ -100,7 +98,7 @@ De standaard sessie opslag in dit voor beeld is `express-session`. De standaard 
 
 * Werk `exports.databaseUri`bij als u mongoDB-sessie archief en een andere data base-URI wilt gebruiken.
 
-* Update `exports.mongoDBSessionMaxAge`. Hier kunt u opgeven hoe lang u een sessie in mongoDB wilt blijven gebruiken. De eenheid is seconde (n).
+* `exports.mongoDBSessionMaxAge`bijwerken. Hier kunt u opgeven hoe lang u een sessie in mongoDB wilt blijven gebruiken. De eenheid is seconde (n).
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 

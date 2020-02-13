@@ -271,6 +271,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Verbinden met Power BI
               href: knowledge-store-connect-power-bi.md
+            - name: Projectievoorbeelden
+              href: knowledge-store-projections-examples.md
     - name: Query's uitvoeren voor documenten
       items:
         - name: Querytypen en querysamenstelling

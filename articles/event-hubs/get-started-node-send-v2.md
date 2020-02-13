@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van node. js (laatste)
-description: Dit artikel bevat een overzicht van het maken van een node. js-toepassing waarmee gebeurtenissen naar/van Azure Event Hubs worden verzonden/ontvangen met behulp van het nieuwste Azure/Event-hubs versie 5-pakket.
+title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van Java script (nieuwste)
+description: Dit artikel bevat een overzicht van het maken van een Java script-toepassing waarmee gebeurtenissen naar/van Azure Event Hubs worden verzonden/ontvangen met behulp van het nieuwste Azure/Event-hubs versie 5-pakket.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,27 +8,25 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: b523e4a7b463564cbfeb407c91b7bb05317f8166
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906371"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163004"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-nodejs--azureevent-hubs-version-5"></a>Gebeurtenissen verzenden naar of ontvangen gebeurtenissen van Event hubs met behulp van node. js (Azure/Event-hubs versie 5)
-
-Azure Event Hubs is een big data streaming platform en een service voor gebeurtenis opname waarmee miljoenen gebeurtenissen per seconde kunnen worden ontvangen en verwerkt. Event hubs kan gebeurtenissen, gegevens of telemetrie verwerken en opslaan die worden geproduceerd door gedistribueerde software en apparaten. Gegevens die naar een Event Hub worden verzonden, kunnen worden getransformeerd en opgeslagen met behulp van een real-time analyse provider of batch-en opslag adapters. Zie [Event hubs-overzicht](event-hubs-about.md) en [Event hubs-functies](event-hubs-features.md)voor meer informatie.
-
-In deze Quick Start wordt beschreven hoe u node. js-toepassingen maakt die gebeurtenissen kunnen verzenden naar of ontvangen van een Event Hub.
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Gebeurtenissen verzenden naar of ontvangen gebeurtenissen van Event hubs met behulp van Java script (Azure/Event-hubs versie 5)
+Deze Quick Start laat zien hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het **Azure/Event-hubs versie 5** java script-pakket. 
 
 > [!IMPORTANT]
-> In deze Quick Start wordt versie 5 van de Azure Event Hubs java script SDK gebruikt. Zie [dit artikel](event-hubs-node-get-started-send.md)voor een snelle start die gebruikmaakt van versie 2 van de Java script SDK. 
+> Deze Snelstartgids maakt gebruik van het nieuwste Azure/Event-hubs versie 5-pakket. Zie [gebeurtenissen verzenden en ontvangen met Azure/Event-hubs versie 2](event-hubs-node-get-started-send.md)voor een snelle start die gebruikmaakt van het oude Azure/Event-hubs versie 2-pakket. 
 
 ## <a name="prerequisites"></a>Vereisten
+Als u niet bekend bent met Azure Event Hubs, raadpleegt u [Event hubs Overview](event-hubs-about.md) voordat u deze Snelstartgids. 
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.  
+- **Microsoft Azure abonnement**. Als u Azure-Services, met inbegrip van Azure Event Hubs, wilt gebruiken, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/free/) of de voor delen van uw MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
 - Node. js versie 8. x of hoger. Down load de meest recente [LTS-versie (lange termijn ondersteuning)](https://nodejs.org).  
 - Visual Studio code (aanbevolen) of andere Integrated Development Environment (IDE).  
 - Een actieve Event Hubs naam ruimte en Event Hub. Voer de volgende stappen uit om ze te maken: 
@@ -37,6 +35,7 @@ Voor het voltooien van deze snelstart moet aan de volgende vereisten worden vold
    1. Volg de instructies op Quick Start om de naam ruimte en het Event Hub te maken [: Maak een event hub met behulp van de Azure Portal](event-hubs-create.md).
    1. Volg de instructies in deze Snelstartgids om door te gaan. 
    1. Volg de instructies in [get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)om de Connection String voor uw event hub-naam ruimte op te halen. Neem de connection string op die later in deze Snelstartgids moeten worden gebruikt.
+- **Een event hubs naam ruimte en een event hub maken**. In de eerste stap gebruikt u [Azure Portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Vervolgens haalt u de **Connection String voor de Event hubs naam ruimte** door de volgende instructies uit het artikel: [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de connection string verderop in deze Quick Start.
 
 ### <a name="install-the-npm-package"></a>Het NPM-pakket installeren
 Als u het [NPM-pakket (node Package Manager) voor Event hubs](https://www.npmjs.com/package/@azure/event-hubs)wilt installeren, opent u een opdracht prompt met *NPM* in het pad naar de map waarin u de voor beelden wilt opslaan en voert u de volgende opdracht uit:
@@ -59,7 +58,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
 
-In deze sectie maakt u een node. js-toepassing die gebeurtenissen naar een Event Hub verzendt.
+In deze sectie maakt u een Java script-toepassing die gebeurtenissen naar een Event Hub verzendt.
 
 1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com).
 1. Maak een bestand met de naam *Send. js*en plak de volgende code hierin:
@@ -109,7 +108,7 @@ Gefeliciteerd. U hebt nu gebeurtenissen verzonden naar een Event Hub.
 
 
 ## <a name="receive-events"></a>Gebeurtenissen ontvangen
-In deze sectie ontvangt u gebeurtenissen van een Event Hub met behulp van een Azure Blob Storage-controlepunt archief in een node. js-toepassing. Het voert de controle punten voor meta gegevens uit op ontvangen berichten met regel matige intervallen in een Azure Storage blob. Met deze aanpak kunt u later eenvoudig berichten blijven ontvangen vanaf de plek waar u was gebleven.
+In deze sectie ontvangt u gebeurtenissen van een Event Hub met behulp van een Azure Blob Storage-controlepunt archief in een Java script-toepassing. Het voert de controle punten voor meta gegevens uit op ontvangen berichten met regel matige intervallen in een Azure Storage blob. Met deze aanpak kunt u later eenvoudig berichten blijven ontvangen vanaf de plek waar u was gebleven.
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Een Azure-opslag account en een BLOB-container maken
 Voer de volgende acties uit om een Azure-opslag account en een BLOB-container daarin te maken:
