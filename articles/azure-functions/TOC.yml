@@ -327,7 +327,15 @@
     - name: Triggers en bindingen
       items:
         - name: Blob Storage
-          href: functions-bindings-storage-blob.md
+          items:
+            - name: Overzicht
+              href: functions-bindings-storage-blob.md
+            - name: Trigger
+              href: functions-bindings-storage-blob-trigger.md
+            - name: Invoer
+              href: functions-bindings-storage-blob-input.md
+            - name: Uitvoer
+              href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
             - name: Functions 1.x

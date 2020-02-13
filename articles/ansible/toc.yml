@@ -10,7 +10,7 @@
     - name: Ansible-oplossingssjabloon implementeren in CentOS
       href: ./ansible-deploy-solution-template.md
     - name: Ansible installeren in virtuele Linux-machines
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: Playbooks uitvoeren in Cloud Shell
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,10 +18,10 @@
       expanded: true
       items:
         - name: Virtuele Linux-machines configureren
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: Virtuele Linux-machines beheren
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
 - name: Zelfstudies
   items:
