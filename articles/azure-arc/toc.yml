@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: Machines verbinden met Azure Arc vanuit de Azure-portal
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: Machines op schaal verbinden met een service-principal
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: Naslaginformatie
   items:
     - name: CLI-interface van met Azure verbonden machineagent
