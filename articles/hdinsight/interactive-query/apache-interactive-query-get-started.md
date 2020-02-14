@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 09/17/2019
-ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076364"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198919"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Wat is interactieve query in azure HDInsight?
 
-Interactieve Query's (ook wel Apache Hive LLAP of [analyse verwerking met lage latentie](https://cwiki.apache.org/confluence/display/Hive/LLAP)) is een Azure HDInsight- [cluster type](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactieve Query's ondersteunen caching in het geheugen, waardoor Apache Hive query's sneller en veel meer interactief worden uitgevoerd. Klanten gebruiken interactieve Query's om gegevens op te vragen die zijn opgeslagen in azure Storage & Azure Data Lake Storage op super snelle manier. Met interactieve query's kunt u eenvoudig ontwikkel aars en gegevens wetenschapper samen werken met de big data met behulp van BI-tools die ze het meest leuk vinden. HDInsight Interactive query ondersteunt diverse hulpprogram ma's waarmee u op eenvoudige wijze toegang kunt krijgen tot big data.
+Interactieve Query's (ook wel Apache Hive LLAP of [analyse verwerking met lage latentie](https://cwiki.apache.org/confluence/display/Hive/LLAP)) is een Azure HDInsight- [cluster type](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type). Interactieve Query's ondersteunen caching in het geheugen, waardoor Apache Hive query's sneller en veel meer interactief worden uitgevoerd. Klanten gebruiken interactieve Query's om gegevens op te vragen die zijn opgeslagen in azure Storage & Azure Data Lake Storage op super snelle manier. Met interactieve query's kunt u eenvoudig ontwikkel aars en gegevens wetenschapper samen werken met de big data met behulp van BI-tools die ze het meest leuk vinden. HDInsight Interactive query ondersteunt diverse hulpprogram ma's waarmee u op eenvoudige wijze toegang kunt krijgen tot big data.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
@@ -44,7 +44,7 @@ Als u Hive-query's wilt uitvoeren, hebt u de volgende opties:
 
     Zie [verbinding maken met Azure HDInsight en Apache Hive query's uitvoeren met behulp van data Lake-Hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 
-* Visual Studio code gebruiken
+* Visual Studio Code gebruiken
 
     Zie [Visual Studio code gebruiken voor Apache Hive, LLAP of pySpark](../hdinsight-for-vscode.md).
 * Voer Apache Hive uit met de Hive-weer gave Apache Ambari.
@@ -62,7 +62,7 @@ Als u Hive-query's wilt uitvoeren, hebt u de volgende opties:
 
 De connection string van de Java Data Base Connectivity (JDBC) zoeken:
 
-1. Meld u aan bij Apache Ambari met behulp van de `https://<cluster name>.AzureHDInsight.net`volgende URL:.
+1. Meld u aan bij Apache Ambari met behulp van de volgende URL: `https://<cluster name>.AzureHDInsight.net`.
 2. Selecteer **Hive**in het linkermenu.
 3. Als u de URL wilt kopiëren, selecteert u het pictogram van het klem bord:
 
