@@ -1,6 +1,6 @@
 ---
 title: Uitgebreide geojson-geometrie | Microsoft Azure kaarten
-description: In dit artikel leert u hoe Microsoft Azure Maps de geojson spec uitbreidt om bepaalde geometries weer te geven.
+description: In dit artikel leert u hoe Microsoft Azure Maps de geojson spec uitbreidt om bepaalde geometrieën weer te geven.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911641"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198272"
 ---
 # <a name="extended-geojson-geometries"></a>Uitgebreide geojson-geometrie
 
-Azure Maps biedt een lijst met krachtige Api's om in/naast geografische functies te zoeken.
-Deze Api's worden gestandaardiseerd op de [geojson spec][1] voor de geografische functies (bijvoorbeeld: status grenzen, routes).  
+Azure Maps biedt een lijst met krachtige Api's voor het zoeken in en langs geografische functies. Deze Api's voldoen aan de standaard [GEOjson-specificatie][1] van de geografische functies.  
 
 De [geojson spec][1] ondersteunt alleen de volgende geometrieën:
 
@@ -30,21 +29,21 @@ De [geojson spec][1] ondersteunt alleen de volgende geometrieën:
 * Spreek
 * Polygoon
 
-Sommige Azure Maps-Api's (bijvoorbeeld [Zoek binnen geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) accepteren geometrieën als ' cirkel ' die geen deel uitmaken van de [geojson-specificatie][1].
+Sommige Azure Maps-Api's accepteren geoelementen die geen deel uitmaken van de [GEOjson-specificatie][1]. De [Zoek opdracht in Geometry](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) API accepteert bijvoorbeeld cirkel en veelhoeken.
 
 Dit artikel bevat een gedetailleerde uitleg over hoe Azure Maps de [GEOjson-specificatie][1] uitbreidt om bepaalde geometrieën weer te geven.
 
-## <a name="circle"></a>Cirkel
+## <a name="circle"></a>Middencirkel
 
 De geometrie van de `Circle` wordt niet ondersteund door de [GEOjson-specificatie][1]. We gebruiken een `GeoJSON Point Feature`-object om een cirkel aan te duiden.
 
-Een `Circle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Feature`-object __moet__ het volgende bevatten:
+Een `Circle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Feature`-object __moet__ de volgende coördinaten en eigenschappen bevatten:
 
 - Center
 
     Het midden van de cirkel wordt weer gegeven met behulp van een `GeoJSON Point`-object.
 
-- Radius
+- RADIUS
 
     De `radius` van de cirkel wordt weer gegeven met behulp van de eigenschappen van `GeoJSON Feature`. De RADIUS-waarde is in _meters_ en moet van het type `double`zijn.
 
@@ -54,7 +53,7 @@ Een `Circle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Featur
 
 #### <a name="example"></a>Voorbeeld
 
-Hier ziet u hoe u een cirkel centreert op (Latitude: 47,639754, lengte:-122,126986) met een straal gelijk aan 100 meters, met behulp van een `GeoJSON Feature`-object:
+Hier ziet u hoe een cirkel wordt weer gegeven met behulp van een `GeoJSON Feature`-object. Laten we de cirkel in de breedte graad: 47,639754 en de lengte graad:-122,126986 en deze toewijzen aan een straal gelijk aan 100 meters:
 
 ```json            
 {
@@ -74,15 +73,15 @@ Hier ziet u hoe u een cirkel centreert op (Latitude: 47,639754, lengte:-122,1269
 
 De geometrie van de `Rectangle` wordt niet ondersteund door de [GEOjson-specificatie][1]. We gebruiken een `GeoJSON Polygon Feature`-object om een rechthoek aan te duiden. De uitbrei ding van de rechthoek wordt voornamelijk gebruikt door de module teken hulpprogramma's van de Web-SDK.
 
-Een `Rectangle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Polygon Feature`-object __moet__ het volgende bevatten:
+Een `Rectangle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Polygon Feature`-object __moet__ de volgende coördinaten en eigenschappen bevatten:
 
 - Hoeken
 
-    De hoeken van de rechthoek worden weer gegeven met behulp van de coördinaten van een `GeoJSON Polygon`-object. Er moeten vijf coördinaten zijn: één voor elke hoek en een vijfde coördinaat die hetzelfde is als de 1e om de polygoon ring te sluiten. Deze coördinaten worden geacht te zijn uitgelijnd en gedraaid, zoals gewenst door de ontwikkelaar.
+    De hoeken van de rechthoek worden weer gegeven met behulp van de coördinaten van een `GeoJSON Polygon`-object. Er moeten vijf coördinaten zijn: één voor elke hoek. En, een vijfde coördinaat die gelijk is aan de eerste coördinaat, om de polygoon ring te sluiten. Er wordt van uitgegaan dat deze coördinaten worden uitgelijnd en de ontwikkelaar kan deze naar wens draaien.
 
 - SubType
 
-    De geometrie van de rechthoek moet ook de eigenschap `subType` bevatten. Deze eigenschap moet een deel zijn van de eigenschappen van het `GeoJSON Feature`en de waarde moet een _rechthoek_ zijn
+    De geometrie van de rechthoek moet ook de eigenschap `subType` bevatten. Deze eigenschap moet deel uitmaken van de eigenschappen van de `GeoJSON Feature`, en de bijbehorende waarde moet _rechthoekig_ zijn
 
 ### <a name="example"></a>Voorbeeld
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498301"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188722"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) in Azure Cosmos DB 
 
@@ -44,44 +44,42 @@ De waarde voor TTL (time to Live) wordt ingesteld in seconden en wordt geïnterp
 
 * Als TTL niet is ingesteld voor een container, heeft de time-to-Live voor een item in deze container geen effect. 
 
-* Als TTL voor een container is ingesteld op-1, verloopt een item in deze container met de time to Live ingesteld op n, vervalt na n seconden en blijven de resterende items verlopen. 
-
-Het verwijderen van items op basis van TTL is gratis. Er zijn geen extra kosten (dat wil zeggen, er is geen extra RUs verbruikt) wanneer het item wordt verwijderd als gevolg van een TTL-verloop.
+* Als TTL voor een container is ingesteld op-1, verloopt een item in deze container met de time to Live ingesteld op n, vervalt na n seconden en blijven de resterende items verlopen.
 
 ## <a name="examples"></a>Voorbeelden
 
 In deze sectie worden enkele voor beelden weer gegeven met verschillende time to Live-waarden die zijn toegewezen aan containers en items:
 
-### <a name="example-1"></a>Voor beeld 1
+### <a name="example-1"></a>Voorbeeld 1
 
 De TTL voor de container is ingesteld op Null (DefaultTimeToLive = null)
 
 |TTL voor item| Resultaat|
 |---|---|
 |TTL = Null|    TTL is uitgeschakeld. Het item verloopt nooit (standaard).|
-|TTL =-1   |TTL is uitgeschakeld. Het item verloopt nooit.|
+|ttl = -1   |TTL is uitgeschakeld. Het item verloopt nooit.|
 |TTL = 2000 |TTL is uitgeschakeld. Het item verloopt nooit.|
 
 
-### <a name="example-2"></a>Voor beeld 2
+### <a name="example-2"></a>Voorbeeld 2
 
 TTL in container is ingesteld op-1 (DefaultTimeToLive =-1)
 
 |TTL voor item| Resultaat|
 |---|---|
 |TTL = Null |TTL is ingeschakeld. Het item verloopt nooit (standaard).|
-|TTL =-1   |TTL is ingeschakeld. Het item verloopt nooit.|
+|ttl = -1   |TTL is ingeschakeld. Het item verloopt nooit.|
 |TTL = 2000 |TTL is ingeschakeld. Het item verloopt na 2000 seconden.|
 
 
-### <a name="example-3"></a>Voor beeld 3
+### <a name="example-3"></a>Voorbeeld 3
 
 TTL in container is ingesteld op 1000 (DefaultTimeToLive = 1000)
 
 |TTL voor item| Resultaat|
 |---|---|
 |TTL = Null|    TTL is ingeschakeld. Het item verloopt na 1000 seconden (standaard).|
-|TTL =-1   |TTL is ingeschakeld. Het item verloopt nooit.|
+|ttl = -1   |TTL is ingeschakeld. Het item verloopt nooit.|
 |TTL = 2000 |TTL is ingeschakeld. Het item verloopt na 2000 seconden.|
 
 ## <a name="next-steps"></a>Volgende stappen

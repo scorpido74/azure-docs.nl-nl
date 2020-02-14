@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/10/2020
+ms.openlocfilehash: 1f743384f467e4559412fa1a46d48011b568d249
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860743"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191580"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
@@ -45,7 +45,7 @@ Wanneer u een geïntegreerde service omgeving (ISE) in azure maakt, kunt u het v
 
 Logic apps in een ISE bieden dezelfde gebruikers ervaringen en vergelijk bare mogelijkheden als de open bare Global Logic Apps service. U kunt alle dezelfde ingebouwde triggers, acties en beheerde connectors gebruiken die beschikbaar zijn in de Global Logic Apps-service. Sommige beheerde connectors bieden extra ISE-versies. Het verschil bestaat in waar ze worden uitgevoerd en de labels die ze weer geven in de ontwerp functie voor logische apps wanneer u in een ISE werkt.
 
-![Connectors met en zonder labels in een ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
+![Connectors met en zonder labels in een ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
 * Ingebouwde triggers en acties geven het **kern** label weer en ze worden altijd uitgevoerd in dezelfde ISE als uw logische app. Beheerde connectors die het label **ISE** weer geven, worden ook uitgevoerd in dezelfde ISE als uw logische app.
 
@@ -111,10 +111,10 @@ Voor on-premises systemen die zijn verbonden met een virtueel Azure-netwerk, wor
 * Aangepaste connector
 
   * Als u aangepaste connectors hebt die de on-premises gegevens gateway nodig hebben en u deze connectors buiten een ISE hebt gemaakt, kunnen logische apps in een ISE ook deze connectors gebruiken.
-  
+
   * Aangepaste connectors die zijn gemaakt in een ISE werken niet met de on-premises gegevens gateway. Deze connectors hebben echter rechtstreeks toegang tot on-premises gegevens bronnen die zijn verbonden met het virtuele netwerk dat als host fungeert voor de ISE. Logic apps in een ISE hebben daarom waarschijnlijk niet de gegevens gateway nodig bij het communiceren met deze resources.
 
-Voor on-premises systemen die niet zijn verbonden met een virtueel netwerk of geen ISE-labled-connectors hebben, moet u eerst [de on-premises gegevens gateway instellen](../logic-apps/logic-apps-gateway-install.md) voordat uw Logic apps verbinding met deze systemen kunnen maken.
+Voor on-premises systemen die niet zijn verbonden met een virtueel netwerk of geen ISE-connectors hebben, moet u eerst [de on-premises gegevens gateway instellen](../logic-apps/logic-apps-gateway-install.md) voordat uw Logic apps verbinding met deze systemen kunnen maken.
 
 <a name="create-integration-account-environment"></a>
 

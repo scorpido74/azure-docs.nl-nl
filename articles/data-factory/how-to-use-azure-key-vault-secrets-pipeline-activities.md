@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031489"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200109"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-geheimen gebruiken in pijplijnactiviteiten
 
@@ -52,7 +52,7 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
     |Beveiligde uitvoer     |True         |
     |URL     |[Uw geheime URI-waarde]? API-Version = 7.0         |
     |Methode     |GET         |
-    |Authentication     |MSI         |
+    |Verificatie     |MSI         |
     |Resource        |https://vault.azure.net       |
 
     ![Webactiviteit](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -63,7 +63,7 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
     > [!CAUTION]
     > Stel de optie voor beveiligde uitvoer in op True om te voor komen dat de geheime waarde wordt geregistreerd als tekst zonder opmaak.  Voor verdere activiteiten waarvoor deze waarde wordt gebruikt, moet de optie voor beveiligde invoer zijn ingesteld op waar.
 
-5. Als u de waarde in een andere activiteit wilt gebruiken, gebruikt u de volgende code-expressie **@activity(' Web '). output. Value**.
+5. Als u de waarde in een andere activiteit wilt gebruiken, gebruikt u de volgende code-expressie **@activity(' web1 '). output. Value**.
 
     ![Code-expressie](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

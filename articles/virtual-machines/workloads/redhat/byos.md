@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133838"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190501"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 
@@ -175,7 +175,7 @@ Hier volgt een voor beeld van een script. U moet de resource groep, de locatie, 
 
 Red Hat Enterprise Linux uw installatie kopieën van uw eigen abonnementen kunnen worden beveiligd met behulp van [Azure Disk Encryption](../../linux/disk-encryption-overview.md). Het abonnement **moet** echter worden geregistreerd voordat versleuteling kan worden ingeschakeld.  Meer informatie over het registreren van een RHEL BYOS Gold-installatie kopie is beschikbaar op de Red Hat-site. Zie [een systeem registreren en abonneren op de Red Hat-klanten Portal met behulp van Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273); Als u een actief Red Hat-abonnement hebt, kunt u ook de [activerings sleutels voor Red Hat-klanten portal maken](https://access.redhat.com/articles/1378093)lezen.
 
-Azure Disk Encryption wordt niet ondersteund op [aangepaste Red Hat-installatie kopieën](/linux/redhat-create-upload-vhd). Aanvullende ADE-vereisten en-vereisten worden beschreven in [Azure Disk Encryption voor Linux-vm's](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+Azure Disk Encryption wordt niet ondersteund op [aangepaste Red Hat-installatie kopieën](../../linux/redhat-create-upload-vhd.md). Aanvullende ADE-vereisten en-vereisten worden beschreven in [Azure Disk Encryption voor Linux-vm's](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
 De stappen voor het Toep assen van Azure Disk Encryption zijn beschikbaar in [Azure Disk Encryption scenario's voor Linux-vm's](../../linux/disk-encryption-linux.md) en gerelateerde artikelen.
 

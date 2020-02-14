@@ -1,20 +1,20 @@
 ---
-title: Virtuele WAN-partners van Azure | Microsoft Docs
+title: Automatiserings richtlijnen voor Azure Virtual WAN partners | Microsoft Docs
 description: Dit artikel helpt partners bij het instellen van Azure Virtual WAN Automation.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775306"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190422"
 ---
-# <a name="virtual-wan-partners"></a>Virtuele WAN-partners
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Richt lijnen voor automatisering voor virtuele WAN-partners
 
 In dit artikel wordt uitgelegd hoe u de automatiserings omgeving kunt instellen om verbinding te maken en een vertakkings apparaat (een klant on-premises VPN-apparaat of SDWAN CPE) te configureren voor Azure Virtual WAN. Als u een provider bent die vertakkings apparaten biedt die VPN-verbindingen via IPsec/IKEv2 of IPsec/IKEv1 kunnen bevatten, is dit artikel voor u.
 
@@ -27,7 +27,7 @@ Een vertakkings apparaat (een on-premises VPN-apparaat of SDWAN CPE) van een kla
 * De portal-ervaring van Azure Virtual WAN testen.
 * Bepaal vervolgens welk deel van de verbindings stappen u wilt automatiseren. We raden u aan ten minste het automatiseren van:
 
-  * Access Control
+  * Toegangsbeheer
   * Gegevens van Branch-apparaten uploaden naar virtuele WAN van Azure
   * Azure-configuratie downloaden en connectiviteit van het vertakkings apparaat instellen in azure Virtual WAN
 

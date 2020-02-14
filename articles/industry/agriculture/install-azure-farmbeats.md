@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131882"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198851"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
 
@@ -57,11 +57,11 @@ De kosten van Azure FarmBeats zijn een samen vatting van de kosten van de onderl
 Momenteel wordt Azure FarmBeats ondersteund in open bare Cloud omgevingen in de volgende regio's:
 
 - Australië - oost
-- VS - centraal
-- VS - oost
-- VS - oost 2
-- VS - west
-- VS - west 2
+- US - centraal
+- US - oost
+- US - oost 2
+- US - west
+- US - west 2
 - Europa - noord
 - Europa -west
 - Azië - oost
@@ -83,7 +83,9 @@ U hebt de volgende machtigingen nodig in de Azure-Tenant om Azure FarmBeats te i
 - Abonnement-eigenaar
 - De resource groep waarin FarmBeats wordt geïnstalleerd-eigenaar
 
-De eerste twee machtigingen zijn nodig voor [het maken van de procedure voor de Aad-toepassing](#create-an-aad-application) . Als dat nodig is, kunt u iemand met de juiste machtigingen krijgen voor het maken van de AAD-toepassing. De persoon die FarmBeats installeert, moet een eigenaar zijn van de resource groep waarin FarmBeats wordt geïnstalleerd.
+De eerste twee machtigingen zijn nodig voor [het maken van de procedure voor de Aad-toepassing](#create-an-aad-application) . Als dat nodig is, kunt u iemand met de juiste machtigingen krijgen voor het maken van de AAD-toepassing.
+
+De persoon die de FarmBeats-installatie uitvoert vanuit Marketplace moet een eigenaar zijn van de resource groep waarin FarmBeats wordt geïnstalleerd. Voor abonnements eigenaren gebeurt dit automatisch wanneer de resource groep wordt gemaakt. Voor anderen maakt u eerst de resource groep en vraagt u de eigenaar van het abonnement om u een eigenaar van de resource groep te maken.
 
 U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen op [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
@@ -120,7 +122,15 @@ Voer de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Powe
         ./create_aad_script.ps1
     ```
 
-4. Het AAD-script duurt ongeveer twee minuten om waarden op het scherm uit te voeren en af te ronden op een JSON-bestand in dezelfde map. Als u iemand anders het script hebt uitgevoerd, vraagt u hen deze uitvoer met u te delen.
+4. Het script vraagt om de volgende drie invoer:
+
+    - FarmBeats-website naam: dit is het unieke URL-voor voegsel voor uw FarmBeats-webtoepassing. Als het voor voegsel al wordt gemaakt, wordt er een fout opgetreden in het script. Na de installatie is uw FarmBeats-implementatie toegankelijk vanuit https://\<FarmBeats-website-name >. azurewebsites. net en de Swagger-Api's hebben https://\<FarmBeats-website-name >-api.azurewebsites.net
+
+    - Azure-aanmeldings-ID: Geef de Azure-aanmeldings-ID op voor de gebruiker die u wilt toevoegen als beheerder van FarmBeats. Deze gebruiker kan vervolgens toegang tot FarmBeats-webtoepassing verlenen aan andere gebruikers. De aanmeldings-ID is in het algemeen van het formulier john.doe@domain.com. Azure UPN wordt ook ondersteund.
+
+    - Abonnements-ID: dit is de ID van het abonnement waarin u Azure FarmBeats wilt installeren
+
+5. Het AAD-script duurt ongeveer twee minuten om waarden op het scherm uit te voeren en af te ronden op een JSON-bestand in dezelfde map. Als u iemand anders het script hebt uitgevoerd, vraagt u hen deze uitvoer met u te delen.
 
 ### <a name="create-sentinel-account"></a>Verklikker account maken
 

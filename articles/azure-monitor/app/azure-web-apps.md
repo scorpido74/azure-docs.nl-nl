@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407238"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189592"
 ---
-# <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
+# <a name="monitor-azure-app-service-performance"></a>Azure App Service prestaties bewaken
 
 Het inschakelen van controle op uw ASP.NET-en ASP.NET Core op webtoepassingen die worden uitgevoerd op [Azure-app Services](https://docs.microsoft.com/azure/app-service/) is nu nog eenvoudiger dan ooit. Voordat u een site-uitbrei ding hand matig moest installeren, is de meest recente extensie/agent nu standaard in de app service-installatie kopie ingebouwd. Dit artikel begeleidt u bij het inschakelen van Application Insights bewaking en voorziet in voorlopige richt lijnen voor het automatiseren van het proces voor grootschalige implementaties.
 
@@ -116,7 +116,7 @@ Python App Service gebaseerde webtoepassingen bieden momenteel geen ondersteunin
 
 Bewaking aan client zijde is opt-in voor ASP.NET. Bewaking aan client zijde inschakelen:
 
-* Selecteer **instellingen** >** **toepassing instellingen** **
+* **Instellingen** selecteren > * * * * toepassings instellingen * * * *
    * Voeg onder toepassings instellingen een nieuwe naam en **waarde**voor de **app-instelling** toe:
 
      Naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -138,7 +138,7 @@ Als u de bewaking aan client zijde om een of andere reden wilt uitschakelen:
 * **Instellingen** selecteren > **Toepassings instellingen**
    * Voeg onder toepassings instellingen een nieuwe naam en **waarde**voor de **app-instelling** toe:
 
-     naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Waarde:`false`
 
@@ -173,7 +173,7 @@ Als u telemetrie-verzameling met Application Insights wilt inschakelen, moeten a
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hoofd extensie, waarmee runtime bewaking wordt beheerd. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  In de standaard modus worden alleen essentiële functies ingeschakeld om optimale prestaties te garanderen. | `default` of `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Hiermee wordt bepaald of de engine `InstrumentationEngine` voor het herschrijven van binaire bestanden wordt ingeschakeld. Deze instelling heeft invloed op de prestaties en is koude start/Startup-tijd. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | Hiermee wordt bepaald of SQL & Azure-tabel tekst wordt vastgelegd samen met de afhankelijkheids aanroepen. Prestatie waarschuwing: voor deze instelling is het `InstrumentationEngine`vereist. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | Hiermee wordt bepaald of SQL & Azure-tabel tekst wordt vastgelegd samen met de afhankelijkheids aanroepen. Prestatie waarschuwing: de start tijd van de toepassing wordt beïnvloed. Voor deze instelling is het `InstrumentationEngine`vereist. | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Toepassings instellingen App Service met Azure Resource Manager
 
@@ -229,6 +229,10 @@ Hieronder ziet u een voor beeld van het vervangen van alle exemplaren van `AppMo
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -308,9 +312,6 @@ Hieronder ziet u een voor beeld van het vervangen van alle exemplaren van `AppMo
 }
 ```
 
-> [!NOTE]
-> Met de sjabloon worden toepassings instellingen in de standaard modus gegenereerd. Deze modus is geoptimaliseerd voor prestaties, maar u kunt de sjabloon wijzigen om te activeren welke functies u wilt gebruiken.
-
 ### <a name="enabling-through-powershell"></a>Inschakelen via Power shell
 
 Als u de toepassings bewaking via Power shell wilt inschakelen, moeten alleen de onderliggende toepassings instellingen worden gewijzigd. Hieronder ziet u een voor beeld waarin toepassings bewaking wordt ingeschakeld voor een website met de naam ' AppMonitoredSite ' in de resource groep ' AppMonitoredRG ' en waarmee gegevens worden geconfigureerd om te worden verzonden naar de instrumentatie sleutel ' 012345678-ABCD-ef01-2345-6789abcd '.
@@ -320,8 +321,9 @@ Als u de toepassings bewaking via Power shell wilt inschakelen, moeten alleen de
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
-$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
-$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} # preserve non Application Insights application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights instrumentation key
+$newAppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights connection string
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
 $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
@@ -370,14 +372,14 @@ Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met 
         * Als er geen vergelijk bare waarde aanwezig is, betekent dit dat de toepassing momenteel niet wordt uitgevoerd of niet wordt ondersteund. Om ervoor te zorgen dat de toepassing wordt uitgevoerd, probeert u de toepassings-URL/toepassings eindpunten hand matig te bezoeken, waardoor de runtime gegevens beschikbaar worden.
 
     * Bevestigen dat `IKeyExists` is `true`
-        * Als de waarde False is, voegt u ' APPINSIGHTS_INSTRUMENTATIONKEY met uw iKey-GUID toe aan uw toepassings instellingen.
+        * Als `false`, voegt u `APPINSIGHTS_INSTRUMENTATIONKEY` en `APPLICATIONINSIGHTS_CONNECTION_STRING` met uw iKey-GUID toe aan uw toepassings instellingen.
 
     * Controleer of er geen vermeldingen zijn voor `AppAlreadyInstrumented`, `AppContainsDiagnosticSourceAssembly`en `AppContainsAspNetTelemetryCorrelationAssembly`.
         * Als een van deze vermeldingen bestaat, verwijdert u de volgende pakketten uit uw toepassing: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`en `Microsoft.AspNet.TelemetryCorrelation`.
 
 De onderstaande tabel bevat een gedetailleerdere uitleg van de betekenis van deze waarden, de onderliggende oorzaken en aanbevolen oplossingen:
 
-|Probleem waarde|Uitleg|Oplossen
+|Probleem waarde|Uitleg|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Deze waarde geeft aan dat de uitbrei ding heeft gedetecteerd dat er al een aspect van de SDK aanwezig is in de toepassing en dat deze wordt teruggedraaid. Dit kan worden veroorzaakt door een verwijzing naar `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`of `Microsoft.ApplicationInsights`  | Verwijder de verwijzingen. Sommige van deze verwijzingen worden standaard toegevoegd vanuit bepaalde Visual Studio-sjablonen en oudere versies van Visual Studio kunnen verwijzingen naar `Microsoft.ApplicationInsights`toevoegen.
 |`AppAlreadyInstrumented:true` | Als de toepassing is gericht op .NET Core 2,1 of 2,2, en verwijst naar [micro soft. AspNetCore. all](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta package, wordt het Application Insights en wordt er een uitbrei ding van de extensie. | Klanten op .NET Core 2.1 2.2 worden [Aanbevolen](https://github.com/aspnet/Announcements/issues/287) het meta-pakket micro soft. AspNetCore. app te gebruiken.|

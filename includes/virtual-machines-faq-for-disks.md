@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961456"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205726"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Beheerde schijven
 
 **Wat is Azure Managed Disks?**
 
@@ -29,11 +29,11 @@ Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wor
 
 **Zijn er transactie kosten voor Standard Managed disks?**
 
-Ja. Elke transactie wordt in rekening gebracht. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Voor een Standard Managed disk worden er kosten in rekening gebracht voor de werkelijke grootte van de gegevens op de schijf of voor de ingerichte capaciteit van de schijf?**
 
-De kosten zijn gebaseerd op de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Hoe worden de prijzen van Premium-beheerde schijven afwijkend van niet-beheerde schijven?**
 
@@ -148,7 +148,7 @@ Moment opnamen van Premium-SSD, Standard SSD en Standard HDD-ondersteuning. Voor
 **Wat zijn Azure Disk reservation?**
 Schijf reservering is de mogelijkheid om één jaar aan schijf ruimte te kopen, zodat u de totale kosten kunt verlagen. Zie ons artikel over het onderwerp: [begrijpen hoe uw reserverings korting wordt toegepast op de Azure-schijf](../articles/cost-management-billing/reservations/understand-disk-reservations.md)voor meer informatie over Azure Disk Reservations.
 
-**Welke opties biedt Azure Disk reservation-aanbieding?** Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. Daarnaast kunt u ervoor kiezen om in één keer alles vooruit te betalen of om maandelijkse betalingen te doen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks. 
+**Welke opties biedt Azure Disk reservation-aanbieding?** Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. U kunt er ook voor kiezen om te betalen met één enkele, vooraf betaalde betaling of maandelijkse betalingen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks. 
 
 Reserve ringen worden gemaakt in de vorm van schijven, niet op capaciteit. Met andere woorden, wanneer u een P80-schijf (32 TiB) reserveert, krijgt u één P80-schijf, kunt u die specifieke reserve ring niet delen in twee kleinere P70 (16 TiB)-schijven. U kunt natuurlijk zo veel of zo weinig schijven reserveren als u wilt, met inbegrip van twee afzonderlijke P70 (16 TiB)-schijven.
 
@@ -160,6 +160,44 @@ Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (z
 
 **Wat gebeurt er wanneer mijn Azure disks-reserve ring verloopt?**    
 U ontvangt een e-mail melding van 30 dagen vóór de verval datum en opnieuw op het verloop van de gegevens. Zodra de reserve ring verloopt, blijven geïmplementeerde schijven actief en wordt de laatste betalen naar gebruik- [tarieven](https://azure.microsoft.com/pricing/details/managed-disks/)in rekening gebracht.
+
+### <a name="azure-shared-disks"></a>Gedeelde Azure-schijven
+
+**Wordt de functie gedeelde schijven ondersteund voor onbeheerde schijven of pagina-blobs?**
+
+Nee, dit wordt alleen ondersteund voor Premium SSD Managed disks.
+
+**Welke regio's ondersteunen gedeelde schijven?**
+
+Momenteel alleen West-Centraal vs.
+
+**Kunnen gedeelde schijven worden gebruikt als een besturingssysteem schijf?**
+
+Nee, gedeelde schijven worden alleen ondersteund voor gegevens schijven.
+
+**Welke schijf grootten ondersteunen gedeelde schijven?**
+
+Alleen Premium-Ssd's die P15 of hoger ondersteunen, bieden ondersteuning voor gedeelde schijven.
+
+**Als ik een bestaande Premium SSD heb, kan ik dan gedeelde schijven inschakelen?**
+
+Alle beheerde schijven die zijn gemaakt met API-versie 2019-07-01 of hoger kunnen gedeelde schijven inschakelen. Als u dit wilt doen, moet u de schijf ontkoppelen van alle virtuele machines waaraan deze is gekoppeld. Bewerk vervolgens de eigenschap `maxShares` op de schijf.
+
+**Hoe kan ik deze uitschakelen als ik een schijf niet meer wil gebruiken in de gedeelde modus?**
+
+Ontkoppel de schijf van alle virtuele machines waaraan deze is gekoppeld. Bewerk vervolgens de eigenschap maxShare op de schijf met 1.
+
+**Kunt u het formaat van een gedeelde schijf wijzigen?**
+
+Ja.
+
+**Kan ik schrijf versnelling inschakelen op een schijf waarop ook gedeelde schijven zijn ingeschakeld?**
+
+Nee.
+
+**Kan ik host caching inschakelen voor een schijf waarvoor gedeelde schijf is ingeschakeld?**
+
+De enige ondersteunde optie voor het opslaan in de host is geen.
 
 ## <a name="ultra-disks"></a>Ultra schijven
 

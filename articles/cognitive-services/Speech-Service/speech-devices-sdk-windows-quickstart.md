@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 78d9dc8c2302de6a9bdbfef62d47d10d252cf0c5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815555"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189031"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Snelstartgids: de voor beeld-app voor de speech-apparaten SDK uitvoeren in Windows
 
@@ -25,7 +25,7 @@ De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op
 
 Deze hand leiding vereist een [Azure Cognitive Services](get-started.md) -account met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
-De bron code voor de [voorbeeld toepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+De bron code voor de [voorbeeld toepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op github](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +39,7 @@ Voor deze snelstart zijn de volgende zaken vereist:
 * Een Azure-abonnementssleutel voor de Spraakservice. [Gratis downloaden](get-started.md).
 * Down load de nieuwste versie van de [Speech apparaten SDK](https://aka.ms/sdsdk-download-JRE) voor Java en pak het. zip-bestand uit in uw werkmap.
    > [!NOTE]
-   > Het bestand JRE-Sample-Release. zip bevat de JRE-voor beeld-app. in deze Snelstartgids wordt ervan uitgegaan dat de app is geëxtraheerd naar C:\SDSDK\JRE-Sample-Release
+   > In deze Snelstartgids wordt ervan uitgegaan dat de app is geëxtraheerd naar C:\SDSDK\JRE-Sample-Release
 
 De conversatie transcriptie is momenteel alleen beschikbaar voor ' nl-US ' en ' zh-CN ' in de regio's ' midden ' en ' EastAsia '. U moet een spraak sleutel hebben in een van deze regio's om conversatie transcriptie te kunnen gebruiken.
 
@@ -57,11 +57,11 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 1. Maak in de menu balk voor eclips een nieuw project door **bestand** > **Nieuw** > **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
 
-1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Finish**.
+1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Voltooien**.
 
    ![Schermopname van de wizard Nieuw Java-project](media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**. Selecteer **Finish**.
+1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies in het contextmenu **Configureren** > **Naar Maven-project converteren**. Selecteer **Voltooien**.
 
    ![Schermopname van Package explorer](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -81,7 +81,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -92,7 +92,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 ## <a name="configure-the-sample-application"></a>De voorbeeld toepassing configureren
 
-1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u proberen intentieherkenning wilt, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonnementssleutel en de toepassing-id.
+1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
 
    Voor spraak-en LUIS-informatie gaat u naar `FunctionsList.java`:
 
@@ -163,4 +163,4 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Opmerkingen bij de release bekijken](devices-sdk-release-notes.md)
+> [De release opmerkingen bekijken](devices-sdk-release-notes.md)

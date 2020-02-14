@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863720"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201557"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Een site-naar-site-verbinding maken met behulp van Azure Portal (klassiek)
 
@@ -20,7 +20,7 @@ ms.locfileid: "75863720"
 In dit artikel leest u hoe u Azure Portal gebruikt om een site-naar-site-VPN-gatewayverbinding te maken vanaf uw on-premises netwerk naar het VNet. De stappen in dit artikel zijn van toepassing op het klassieke implementatie model en zijn niet van toepassing op het huidige implementatie model Resource Manager. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -39,7 +39,7 @@ Controleer voordat u met de configuratie begint, of aan de volgende criteria is 
 * U hebt een compatibel VPN-apparaat nodig en iemand die dit kan configureren. Zie [Over VPN-apparaten](vpn-gateway-about-vpn-devices.md) voor meer informatie over compatibele VPN-apparaten en -apparaatconfiguratie.
 * Controleer of u een extern gericht openbaar IPv4-adres voor het VPN-apparaat hebt.
 * Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die u hierbij kan helpen en de benodigde gegevens kan verstrekken. Wanneer u deze configuratie maakt, moet u de IP-adresbereikvoorvoegsels opgeven die Azure naar uw on-premises locatie doorstuurt. Geen van de subnetten van uw on-premises netwerk kan overlappen met de virtuele subnetten waarmee u verbinding wilt maken.
-* Momenteel is het in PowerShell vereist dat de gedeelde sleutel wordt opgegeven en de VPN-gatewayverbinding wordt gemaakt. Installeer de nieuwste versie van de Azure SM (Service Management) PowerShell-cmdlets. Zie [Service Management](/powershell/azure/servicemanagement/install-azure-ps)om de cmdlets te installeren. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over Power shell-installaties in het algemeen. Als u werkt met PowerShell voor deze configuratie, zorg er dan voor dat u de bewerkingen uitvoert als beheerder.
+* Power shell is vereist om de gedeelde sleutel op te geven en de VPN-gateway verbinding te maken. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>Voorbeeld van configuratiewaarden voor deze oefening
 
@@ -72,11 +72,11 @@ Als u een virtueel netwerk maakt om te gebruiken met een S2S-verbinding, moet u 
 1. Navigeer via een browser naar de [Azure Portal](https://portal.azure.com) en log, indien nodig, in met uw Azure-account.
 2. Klik op * *+ een resource maken*. In het veld **Marketplace doorzoeken** typt u 'virtueel netwerk'. Zoek **Virtual Network** in de lijst met resultaten en klik erop om de pagina **Virtual Network** te openen.
 3. Klik op **(overschakelen naar klassiek)** en klik vervolgens op **maken**.
-4. Configureer de VNet-instellingen op de pagina **Virtueel netwerk maken (klassiek)** . Voeg op deze pagina de eerste adresruimte en één adresbereik voor het subnet toe. Nadat u het VNet hebt aangemaakt, kunt u terugkeren en aanvullende subnets en adresruimten toevoegen.
+4. Configureer de VNet-instellingen op de pagina **Virtueel netwerk maken (klassiek)** . Voeg op deze pagina de eerste adresruimte en één adresbereik voor het subnet toe. Nadat u het VNet hebt gemaakt, kunt u teruggaan en extra subnetten en adres ruimten toevoegen.
 
    ![Pagina virtueel netwerk maken](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "De pagina Virtueel netwerk maken")
 5. Controleer of het **Abonnement** het juiste is. U kunt abonnementen wijzigen met behulp van de vervolgkeuzelijst.
-6. Klik op **Resourcegroep** en selecteer een bestaande resourcegroep of maak een nieuwe resourcegroep door een naam in te voeren. Zie [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md#resource-groups) (Overzicht van Azure Resource Manager) voor meer informatie over resourcegroepen.
+6. Klik op **Resourcegroep** en selecteer een bestaande resourcegroep of maak een nieuwe resourcegroep door een naam in te voeren. Zie voor meer informatie over resourcegroepen [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups).
 7. Selecteer vervolgens de **Locatie**-instellingen voor uw VNet. De locatie bepaalt waar de resources die u naar dit VNet implementeert, worden opgeslagen.
 8. Klik op **Maken** om het VNet te maken.
 9. Wanneer u op Maken klikt, wordt er op het dashboard een tegel weergegeven die de voortgang van uw VNet weergeeft. De tegel wordt gewijzigd wanneer het VNet wordt gemaakt.
@@ -157,25 +157,26 @@ In deze stap stelt u de gedeelde sleutel in en maakt u de verbinding. De sleutel
 > Deze stap is momenteel niet beschikbaar in Azure Portal. Gebruik de SM-versie (Service Management) van de Azure PowerShell-cmdlets. Zie [voordat u begint](#before) voor informatie over het installeren van deze cmdlets.
 >
 
-### <a name="step-1-connect-to-your-azure-account"></a>Step 1. Verbinding maken met uw Azure-account
+### <a name="step-1-connect-to-your-azure-account"></a>Stap 1. Verbinding maken met uw Azure-account
 
-U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
+U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. 
 
-```powershell
-azure config mode asm
-```
+1. Open de Power shell-console met verhoogde bevoegdheden. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
 
-1. Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
+   ```powershell
+   azure config mode asm
+   ```
+2. Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
    ```powershell
    Add-AzureAccount
    ```
-2. Controleer de abonnementen voor het account.
+3. Controleer de abonnementen voor het account.
 
    ```powershell
    Get-AzureSubscription
    ```
-3. Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken.
+4. Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken.
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"

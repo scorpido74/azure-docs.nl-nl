@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 00753d885985e2734f0d87fdad9f219f44277d5a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 300acaf4a9d2a11ef107e19df99452c909257d54
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828353"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190579"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Beveiligings controles voor Linux Virtual Machines
 
@@ -43,18 +43,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Authentication| Ja |  |
-| Authorization| Ja |  |
+| Verificatie| Ja |  |
+| Autorisatie| Ja |  |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | Zie [Azure Disk Encryption voor Linux-vm's](disk-encryption-overview.md). |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Zie [Azure Disk Encryption voor Linux-vm's](disk-encryption-overview.md). |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute](/azure/expressroute) -en VNet-versleuteling. Zie [in-transit versleuteling in vm's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Encryption Overview](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)(Engelstalig).|
-| Versleuteling op kolom niveau (Azure Data Services)| N/A | |
-| Versleutelde API-aanroepen| Ja | Via HTTPS en SSL. |
+| Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |
+| Versleutelde API-aanroepen| Ja | Via HTTPS en TLS. |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 

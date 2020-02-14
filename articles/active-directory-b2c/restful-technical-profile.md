@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840278"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197982"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een onderliggend technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -121,7 +121,7 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ServiceUrl | Ja | De URL van het REST API-eind punt. |
 | AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de claim provider voor de REST. Mogelijke waarden: `None`, `Basic`, `Bearer`of `ClientCertificate`. De waarde `None` geeft aan dat de REST API niet anoniem is. De waarde `Basic` geeft aan dat de REST API is beveiligd met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De waarde `ClientCertificate` (Recommended) geeft aan dat de REST API de toegang beperkt met behulp van verificatie op basis van client certificaten. Alleen services die de juiste certificaten hebben, bijvoorbeeld Azure AD B2C, hebben toegang tot uw API. De waarde `Bearer` geeft aan dat de REST API de toegang beperkt met behulp van de client OAuth2 Bearer-token. |
@@ -129,6 +129,7 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 | ClaimsFormat | Nee | Hiermee geeft u de indeling voor de uitvoer claims op. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de uitvoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de uitvoer claim die wordt verzonden in de query teken reeks van de aanvraag. |
 | ClaimUsedForRequestPayload| Nee | Naam van een teken reeks claim die de payload bevat die naar de REST API moet worden verzonden. |
 | DebugMode | Nee | Voert het technische profiel in de foutopsporingsmodus. Mogelijke waarden: `true`of `false` (standaard). In de foutopsporingsmodus kan de REST API meer informatie retour neren. Zie de sectie [fout bericht over het retour neren](#returning-error-message) . |
+| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -148,7 +149,7 @@ Als het type verificatie is ingesteld op `None`, wordt het element **Cryptograph
 
 Als het type verificatie is ingesteld op `Basic`, bevat het element **CryptographicKeys** de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Ja | De gebruikers naam die wordt gebruikt voor verificatie. |
 | BasicAuthenticationPassword | Ja | Het wacht woord dat wordt gebruikt voor verificatie. |
@@ -173,7 +174,7 @@ In het volgende voor beeld ziet u een technisch profiel met basis verificatie:
 
 Als het type verificatie is ingesteld op `ClientCertificate`, bevat het **CryptographicKeys** -element het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor verificatie. |
 
@@ -194,7 +195,7 @@ Als het type verificatie is ingesteld op `ClientCertificate`, bevat het **Crypto
 
 Als het type verificatie is ingesteld op `Bearer`, bevat het **CryptographicKeys** -element het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | Nee | Het OAuth 2,0 Bearer-token. |
 
@@ -217,9 +218,9 @@ Als het type verificatie is ingesteld op `Bearer`, bevat het **CryptographicKeys
 
 Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie) met de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| versie | Ja | 1.0.0 |
+| version | Ja | 1.0.0 |
 | status | Ja | 409 |
 | code | Nee | Een fout code van de REST-eindpunt provider, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |
 | requestId | Nee | Een aanvraag-id van de REST-eindpunt provider, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |

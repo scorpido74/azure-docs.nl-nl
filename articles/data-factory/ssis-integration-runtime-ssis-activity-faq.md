@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928737"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187484"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Problemen met de uitvoering van pakketten oplossen in SSIS Integration runtime
 
@@ -30,7 +30,7 @@ Gebruik de SSIS-catalogus (SSISDB) om de detail logboeken voor de uitvoering te 
 
 ## <a name="common-errors-causes-and-solutions"></a>Veelvoorkomende fouten, oorzaken en oplossingen
 
-### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Fout bericht: de time-out voor de verbinding is verlopen of de service heeft een fout aangetroffen bij het verwerken van uw aanvraag. Probeer het opnieuw. "
+### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Fout bericht: de time-out voor de verbinding is verlopen of de service heeft een fout aangetroffen bij het verwerken van uw aanvraag. Probeer het opnieuw."
 
 Dit zijn mogelijke oorzaken en aanbevolen acties:
 * De gegevens bron of het doel is overbelast. Controleer de belasting van de gegevens bron of het doel en kijk of het voldoende capaciteit heeft. Als u bijvoorbeeld Azure SQL Database hebt gebruikt, kunt u overwegen omhoog te schalen als de data base waarschijnlijk een time-out heeft.
@@ -142,7 +142,7 @@ Zorg ervoor dat uw zelf-Hostende Integration runtime is geïnstalleerd en wordt 
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Fout bericht: "tijdelijke taak fout: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {" OperationErrorMessages ":" fout: de gevraagde OLE DB provider... is niet geregistreerd. Als het 64-bits stuur programma niet is geïnstalleerd, voert u het pakket uit in 32-bits modus...
 
-Zorg ervoor dat de overeenkomende provider die wordt gebruikt door uw OLE DB-connectors in uw pakket, correct wordt geïnstalleerd op de zelf-Hostende Integration runtime-machine. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+Zorg ervoor dat de overeenkomende provider die wordt gebruikt door uw OLE DB-connectors in uw pakket, correct wordt geïnstalleerd op de zelf-Hostende Integration runtime-machine. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Fout bericht: "tijdelijke taak fout: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {" OperationErrorMessages ":" fout: System. IO. FileLoadException: kan bestand of assembly micro soft. WindowsAzure. Storage, versie =... niet laden. Cultuur = neutraal, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden. De manifest definitie van de gevonden assembly komt niet overeen met de assembly-verwijzing. ..."
 
@@ -157,7 +157,7 @@ Een mogelijke oorzaak is dat uw zelf-Hostende Integration runtime niet op de jui
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fout bericht: ' status Faserings taak: mislukt. Fout in de staging-taak: error code: 2906, ErrorMessage: de uitvoering van het pakket is mislukt. uitvoer: {"OperationErrorMessages": "SSIS-uitvoerder" code:-1. \ n "," LogLocation ":"...\\SSISTelemetry\\ExecutionLog\\... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":.
 
-Zorg ervoor dat C++ Visual runtime is geïnstalleerd op een zelf-hostende Integration runtime-computer. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+Zorg ervoor dat C++ Visual runtime is geïnstalleerd op een zelf-hostende Integration runtime-computer. Meer informatie vindt [u op zelf-hostende IR configureren als proxy voor Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Meerdere pakket uitvoeringen worden onverwacht geactiveerd
 

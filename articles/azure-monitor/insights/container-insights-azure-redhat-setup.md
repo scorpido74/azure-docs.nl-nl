@@ -2,13 +2,13 @@
 title: Azure Red Hat open Shift-clusters configureren met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open SHIFT.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979777"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190077"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift-clusters met Azure Monitor voor containers configureren
 
@@ -20,8 +20,8 @@ Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure
 
 Azure Monitor voor containers kunnen worden ingeschakeld voor nieuwe of een of meer bestaande implementaties van Azure Red Hat open SHIFT met behulp van de volgende ondersteunde methoden:
 
-- Voor een bestaand cluster van de Azure Portal of met Azure Resource Manager sjabloon
-- Voor een nieuw cluster met Azure Resource Manager sjabloon
+- Voor een bestaand cluster van de Azure Portal of met Azure Resource Manager sjabloon.
+- Voor een nieuw cluster met Azure Resource Manager sjabloon, of tijdens het maken van een nieuw cluster met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Ondersteunde en niet-ondersteunde functies
 
@@ -68,9 +68,9 @@ Als u niet bekend met het concept bent van het implementeren van resources met b
 
 - [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Voor het maken van de werkruimte, u kunt dit instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), tot en met [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), of in de [Azure-portal](../../azure-monitor/learn/quick-create-workspace.md).
+De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Als u de werk ruimte wilt maken, kunt u deze instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 
 1. Down load en sla de bestanden op in een lokale map, het Azure Resource Manager sjabloon en het parameter bestand, om een cluster met de invoeg toepassing voor bewaking te maken met behulp van de volgende opdrachten:
 
@@ -123,21 +123,21 @@ Voer de volgende stappen uit om de bewaking in te scha kelen van een Azure Red H
 
 ### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer in het menu Azure Portal of op de start pagina **Azure monitor**. Onder de **Insights** sectie, selecteer **Containers**.
+2. Selecteer in het menu Azure Portal of op de start pagina **Azure monitor**. Selecteer in de sectie **insightss** de optie **containers**.
 
-3. Op de **Monitor - containers** weergeeft, schakelt **clusters niet bewaakt**.
+3. Selecteer de **niet-bewaakte clusters**op de pagina **monitor-containers** .
 
 4. Zoek in de lijst met niet-bewaakte clusters het cluster in de lijst en klik op **inschakelen**. U kunt de resultaten in de lijst identificeren door te zoeken naar de waarde **Aro** onder het kolom **cluster type**.
 
-5. Op de **Onboarding naar Azure Monitor voor containers** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement bevinden als het cluster, selecteert u deze in de vervolgkeuzelijst.  
+5. Als u een bestaande Log Analytics-werk ruimte hebt in hetzelfde abonnement als het cluster, selecteert u in de vervolg keuzelijst de pagina **onboarding to Azure monitor voor containers** .  
     De lijst preselecteert de standaardwerk ruimte en de standaard locatie waarin het cluster is geïmplementeerd in het abonnement.
 
     ![Bewaking voor niet-bewaakte clusters inschakelen](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Als u maken van een nieuwe werkruimte voor logboekanalyse wilt voor het opslaan van de gegevens uit het cluster, volg de instructies in [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement dat het RedHat open Shift-cluster is geïmplementeerd.
+    >Als u een nieuwe Log Analytics-werk ruimte wilt maken voor het opslaan van de bewakings gegevens uit het cluster, volgt u de instructies in [een log Analytics-werk ruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat u de werk ruimte maakt in hetzelfde abonnement dat het RedHat open Shift-cluster is geïmplementeerd.
 
 Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven.
 
@@ -157,9 +157,9 @@ Als u niet bekend met het concept bent van het implementeren van resources met b
 
 - [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Voor het maken van de werkruimte, u kunt dit instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), tot en met [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), of in de [Azure-portal](../../azure-monitor/learn/quick-create-workspace.md).
+De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Als u de werk ruimte wilt maken, kunt u deze instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 
 1. Down load de sjabloon en het parameter bestand om uw cluster bij te werken met de invoeg toepassing bewaking met behulp van de volgende opdrachten:
 
@@ -187,7 +187,7 @@ De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp v
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. Bewerk het JSON-parameter bestand **existingClusterParam. json** en werk de waarden *araResourceId* en *araResoruceLocation*bij. De waarde voor **workspaceResourceId** is de volledige resource-ID van uw Log Analytics-werkruimte, waaronder de naam van de werkruimte.
+5. Bewerk het JSON-parameter bestand **existingClusterParam. json** en werk de waarden *araResourceId* en *araResoruceLocation*bij. De waarde voor **workspaceResourceId** is de volledige resource-id van uw log Analytics-werk ruimte, met inbegrip van de naam van de werk ruimte.
 
 6. Als u wilt implementeren met Azure CLI, voert u de volgende opdrachten uit:
 

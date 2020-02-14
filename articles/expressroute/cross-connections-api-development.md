@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: 143f2f36cc93a9d67a3ab800782c9a6bb8a52af0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067355"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187011"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-ontwikkeling en-integratie
 
@@ -51,7 +51,7 @@ De test peering locaties: Dummy apparaten en poorten worden standaard niet aan p
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Registreer het Dev_Provider-abonnement om toegang te krijgen tot de expressRouteCrossConnections-API
 
-Voor toegang tot de expressRouteCrossConnections-API moet het partner abonnement worden inge schreven bij de **resource provider micro soft. Network**. Volg de stappen in het artikel [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#portal) om het registratie proces te volt ooien.
+Voor toegang tot de expressRouteCrossConnections-API moet het partner abonnement worden inge schreven bij de **resource provider micro soft. Network**. Volg de stappen in het artikel [Azure-resource providers en-typen](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) om het registratie proces te volt ooien.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. authenticatie voor Azure Resource Manager-REST API-aanroepen instellen
 

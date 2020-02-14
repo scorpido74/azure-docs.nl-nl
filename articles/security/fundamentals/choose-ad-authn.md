@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: f32980b736232449d24de8721f354d9ca5dd03ab
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7a13e50e6b5357264e7096fa58e34a4bcaf6ad8b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064424"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190918"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
@@ -185,7 +185,7 @@ In de volgende diagrammen vindt u een overzicht van de architectuur onderdelen o
 |Wat zijn de opties voor multi-factor Authentication?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA van derden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Aangepaste besturings elementen met voorwaardelijke toegang *](../../active-directory/conditional-access/controls.md)|
 |Welke status van gebruikers accounts worden ondersteund?|Uitgeschakelde accounts<br>(Maxi maal 30 minuten)|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wacht woord is verlopen<br><br>Aanmeldings tijden|Uitgeschakelde accounts<br><br>Account vergrendeld<br><br>Het account is verlopen<br><br>Wacht woord is verlopen<br><br>Aanmeldings tijden|
 |Wat zijn de opties voor voorwaardelijke toegang?|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Voorwaardelijke toegang tot Azure AD, met Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS claim regels](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Worden verouderde protocollen geblokkeerd?|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Worden verouderde protocollen geblokkeerd?|[Ja](../../active-directory/conditional-access/overview.md)|[Ja](../../active-directory/conditional-access/overview.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Kunt u het logo, de afbeelding en de beschrijving aanpassen op de aanmeldings pagina's?|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Welke geavanceerde scenario's worden ondersteund?|[Slim wacht woord vergren delen](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Rapporten met gelekte referenties, met Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Slim wacht woord vergren delen](../../active-directory/authentication/howto-password-smart-lockout.md)|Verificatie systeem met lage latentie voor meerdere locaties<br><br>[Vergren deling AD FS extranet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integratie met identiteits systemen van derden](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 

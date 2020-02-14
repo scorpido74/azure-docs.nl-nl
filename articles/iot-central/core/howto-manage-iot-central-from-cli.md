@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: cf0414531d363ab5401e8c9574943a40ecf2d449
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: c44b7cd045547d01d1a31f949a42087e78e88b21
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137821"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198834"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central beheren vanuit Azure CLI
 
@@ -28,6 +28,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Als u liever Azure CLI op uw lokale computer wilt uitvoeren, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli). Wanneer u Azure CLI lokaal uitvoert, gebruikt u de opdracht **AZ login** om u aan te melden bij Azure voordat u de opdrachten in dit artikel probeert uit te voeren.
+
+> [!TIP]
+> Als u uw CLI-opdrachten moet uitvoeren in een ander Azure-abonnement, raadpleegt u [het actieve abonnement wijzigen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription).
 
 ## <a name="create-an-application"></a>Een app maken
 

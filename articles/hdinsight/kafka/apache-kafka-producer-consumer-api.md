@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161712"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186817"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka
 
@@ -33,21 +33,20 @@ Meer informatie over de [Producer-API](https://kafka.apache.org/documentation/#p
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Apache Kafka op HDInsight 3,6. Zie [beginnen met Apache Kafka op hdinsight](apache-kafka-get-started.md)voor meer informatie over het maken van een Kafka in hdinsight-cluster.
-
+* Apache Kafka in HDInsight-cluster. Zie [beginnen met Apache Kafka op HDInsight](apache-kafka-get-started.md)voor meer informatie over het maken van het cluster.
 * [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks) of een equivalent, zoals openjdk.
-
 * [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
-
-* Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Een SSH-client, zoals putty. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-De voorbeeldtoepassing bevindt zich op [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started), in de submap `Producer-Consumer`. De toepassing bestaat hoofdzakelijk uit vier bestanden:
+De voorbeeldtoepassing bevindt zich op [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started), in de submap `Producer-Consumer`. Als u **Enterprise Security Package (ESP)** ingeschakelde Kafka-cluster gebruikt, moet u de toepassings versie gebruiken die zich in de `DomainJoined-Producer-Consumer`-submap bevindt.
 
+De toepassing bestaat hoofdzakelijk uit vier bestanden:
 * `pom.xml`: dit bestand definieert de projectafhankelijkheden, de Java-versie en de pakketmethoden.
 * `Producer.java`: dit bestand verstuurt willekeurige zinnen naar Kafka met behulp van de Producer-API.
 * `Consumer.java`: dit bestand gebruikt de Consumer-API om gegevens te lezen uit Kafka en deze te verzenden naar STDOUT.
+* `AdminClientWrapper.java`: in dit bestand wordt gebruikgemaakt van de beheer-API voor het maken, beschrijven en verwijderen van Kafka-onderwerpen.
 * `Run.java`: de opdrachtregelinterface ie wordt gebruikt voor het uitvoeren van de Producer- en Consumer-code.
 
 ### <a name="pomxml"></a>Pom.xml
@@ -116,9 +115,11 @@ Het [Run. java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-starte
 
 ## <a name="build-and-deploy-the-example"></a>Het voorbeeld compileren en implementeren
 
+Als u deze stap wilt overs Laan, kunnen vooraf ontwikkelde potten worden gedownload uit de `Prebuilt-Jars`-submap. Down load het Kafka-producer-Consumer. jar. Als uw cluster **Enterprise Security Package (ESP)** is ingeschakeld, gebruikt u Kafka-producer-Consumer-ESP. jar. Voer stap 3 uit om het jar naar uw HDInsight-cluster te kopiëren.
+
 1. Down load en pak de voor beelden uit [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
-2. Stel de huidige map in op de locatie van de `hdinsight-kafka-java-get-started\Producer-Consumer` map en gebruik de volgende opdracht:
+2. Stel de huidige map in op de locatie van de `hdinsight-kafka-java-get-started\Producer-Consumer` Directory. Als u **Enterprise Security Package (ESP)** ingeschakelde Kafka-cluster gebruikt, moet u de locatie instellen op `DomainJoined-Producer-Consumer`submap. Gebruik de volgende opdracht om de toepassing te bouwen:
 
     ```cmd
     mvn clean package
@@ -140,29 +141,12 @@ Het [Run. java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-starte
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Installeer [JQ](https://stedolan.github.io/jq/), een JSON-processor op de opdracht regel. Voer in de open SSH-verbinding de volgende opdracht in om `jq`te installeren:
+1. Als u de Kafka Broker-hosts wilt ophalen, vervangt u de waarden voor `<clustername>` en `<password>` in de volgende opdracht en voert u deze uit. Gebruik dezelfde behuizing voor `<clustername>`, zoals wordt weer gegeven in de Azure Portal. Vervang `<password>` door het wacht woord voor de cluster aanmelding en voer de volgende handelingen uit:
 
     ```bash
     sudo apt -y install jq
-    ```
-
-1. Wachtwoord variabele instellen. Vervang `PASSWORD` door het wacht woord voor cluster aanmelding en voer vervolgens de opdracht in:
-
-    ```bash
-    export password='PASSWORD'
-    ```
-
-1. Haal de juiste cluster naam op. De daad werkelijke behuizing van de cluster naam kan anders zijn dan verwacht, afhankelijk van hoe het cluster is gemaakt. Met deze opdracht wordt de daad werkelijke behuizing opgehaald en opgeslagen in een variabele. Voer de volgende opdracht in:
-
-    ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    ```
-    > [!Note]  
-    > Als u dit proces van buiten het cluster uitvoert, is er een andere procedure voor het opslaan van de cluster naam. Haal de cluster naam op in kleine letters van de Azure Portal. Vervang vervolgens de cluster naam voor `<clustername>` in de volgende opdracht en voer deze uit: `export clusterName='<clustername>'`.  
-
-1. Gebruik de volgende opdracht om de Kafka Broker-hosts op te halen:
-
-    ```bash
+    export clusterName='<clustername>'
+    export password='<password>'
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 

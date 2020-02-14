@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779109"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185507"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Aanmelding van gebruikers met Azure Active Directory Pass Through-verificatie
 
@@ -49,7 +49,7 @@ U kunt Pass-Through-verificatie combi neren met de functie [naadloze eenmalige a
   - Geen beheer overhead. De agent ontvangt automatisch verbeteringen en oplossingen voor problemen.
 - *Beveiligen*
   - On-premises wacht woorden worden nooit in een wille keurige vorm opgeslagen in de Cloud.
-  - Beveiligt uw gebruikers accounts door naadloos samen te werken met [beleid voor voorwaardelijke toegang van Azure AD](../active-directory-conditional-access-azure-portal.md), waaronder multi-factor Authentication (MFA), het [blok keren](../conditional-access/conditions.md) van verouderde verificatie en het filteren van aanvallen op basis van [wacht woorden van brute kracht](../authentication/howto-password-smart-lockout.md).
+  - Beveiligt uw gebruikers accounts door naadloos samen te werken met [beleid voor voorwaardelijke toegang van Azure AD](../active-directory-conditional-access-azure-portal.md), inclusief multi-factor Authentication (MFA), het [blok keren van verouderde verificatie](../conditional-access/concept-conditional-access-conditions.md) en het filteren van aanvallen op basis van [Brute Force-wacht woorden](../authentication/howto-password-smart-lockout.md).
   - De agent maakt alleen uitgaande verbindingen vanuit uw netwerk. Daarom is er geen vereiste voor het installeren van de agent in een perimeter netwerk, ook wel bekend als een DMZ.
   - De communicatie tussen een agent en Azure AD is beveiligd met verificatie op basis van certificaten. Deze certificaten worden elke paar maanden automatisch door Azure AD verlengd.
 - *Maxi maal beschikbaar*
@@ -58,8 +58,8 @@ U kunt Pass-Through-verificatie combi neren met de functie [naadloze eenmalige a
 ## <a name="feature-highlights"></a>Functie hoogtepunten
 
 - Biedt ondersteuning voor aanmelding door gebruikers in alle webtoepassingen en Microsoft Office client toepassingen die [moderne verificatie](https://aka.ms/modernauthga)gebruiken.
-- Gebruikers namen voor aanmelden kunnen de on-premises standaard gebruikersnaam (`userPrincipalName`) of een ander kenmerk zijn dat is geconfigureerd in azure AD Connect (ook wel bekend als `Alternate ID`).
-- De functie werkt probleemloos met functies voor [voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) zoals multi-factor Authentication (MFA) om uw gebruikers te helpen beveiligen.
+- Gebruikers namen voor aanmelden kunnen bestaan uit de on-premises standaard gebruikersnaam (`userPrincipalName`) of een ander kenmerk dat is geconfigureerd in Azure AD Connect (bekend als `Alternate ID`).
+- De functie werkt probleemloos met functies voor [voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) , zoals multi-factor Authentication (MFA), waarmee u uw gebruikers kunt beveiligen.
 - Geïntegreerd met [wacht woord beheer](../authentication/active-directory-passwords-overview.md)op basis van de Cloud, inclusief het terugschrijven van wacht woorden naar on-premises Active Directory en wachtwoord beveiliging door gang bare verbieden.
 - Omgevingen met meerdere forests worden ondersteund als er forest-vertrouwens relaties tussen uw AD-forests bestaan en als de route ring van het naam achtervoegsel correct is geconfigureerd.
 - Het is een gratis functie en u hebt geen betaalde versies van Azure AD nodig om deze te gebruiken.
@@ -70,7 +70,7 @@ U kunt Pass-Through-verificatie combi neren met de functie [naadloze eenmalige a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Quick Start](how-to-connect-pta-quick-start.md) : Ontvang Azure AD Pass-Through-verificatie en voer deze uit.
+- [Snelstartgids](how-to-connect-pta-quick-start.md) : Ontvang Azure AD Pass-Through-verificatie en voer deze uit.
 - [Migratie van AD FS naar Pass-](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) through-verificatie: een gedetailleerde hand leiding voor het migreren van AD FS (of andere Federatie technologieën) naar Pass-Through-verificatie.
 - [Slimme vergren deling](../authentication/howto-password-smart-lockout.md) : Configureer slimme vergrendelings mogelijkheden voor uw Tenant om gebruikers accounts te beveiligen.
 - [Huidige beperkingen](how-to-connect-pta-current-limitations.md) : informatie over welke scenario's worden ondersteund en wat niet.

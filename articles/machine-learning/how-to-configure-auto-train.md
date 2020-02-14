@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048569"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198766"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -174,6 +174,8 @@ Voorbeelden zijn:
 
 De drie verschillende `task` parameter waarden (het derde taak type is `forecasting`en gebruikt een vergelijk bare algoritme groep als `regression` taken) om de lijst te bepalen van de modellen die moeten worden toegepast. Gebruik de para meters `whitelist` of `blacklist` om iteraties verder te wijzigen met de beschik bare modellen die moeten worden opgenomen of uitgesloten. De lijst met ondersteunde modellen vindt u in de [SupportedModels-klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) voor ([classificatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [prognose](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)en [regressie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
+De validatie service van een automatische ML vereist dat `experiment_timeout_minutes` worden ingesteld op een minimale time-out van 15 minuten om te voor komen dat er time-outfouten optreden.
+
 ### <a name="primary-metric"></a>Primaire metrische gegevens
 De primaire meet waarde bepaalt de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De beschik bare metrische gegevens die u kunt selecteren, worden bepaald door het taak type dat u kiest, en in de volgende tabel worden geldige primaire metrische gegevens weer gegeven voor elk taak type.
 
@@ -307,7 +309,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Het experiment uitvoeren en het genereren van een model verzenden. Geef het `AutoMLConfig` door aan de methode `submit` om het model te genereren.
+Dien het experiment in om een model uit te voeren en te genereren. Geef het `AutoMLConfig` door aan de methode `submit` om het model te genereren.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)

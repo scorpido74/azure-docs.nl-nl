@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983041"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185590"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,7 +42,7 @@ Het **ClaimsSchema** -element definieert de claim typen waarnaar kan worden verw
 
 Het element **claim** type bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
 
@@ -51,7 +51,7 @@ Het element **claim** type bevat de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
-| Gegevenstype | 1:1 | Het type claim. De gegevens typen Boolean, date, dateTime, int, Long, String, stringCollection kunnen worden gebruikt. Primitieve gegevens type vertegenwoordigt het equivalent van C# het variabele gegevens type. stringCollection vertegenwoordigt een verzameling teken reeksen. Zie [ C# typen en variabelen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)voor meer informatie. Datum volgt de ISO 8601-Conventie. |
+| Gegevenstype | 1:1 | Het type claim. De gegevens typen Boolean, date, dateTime, int, Long, String, stringCollection en phoneNumber kunnen worden gebruikt. Primitieve gegevens type vertegenwoordigt het equivalent van C# het variabele gegevens type. stringCollection vertegenwoordigt een verzameling teken reeksen. Zie [ C# typen en variabelen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)voor meer informatie. Datum volgt de ISO 8601-Conventie. |
 | DefaultPartnerClaimTypes | 0:1 | De standaard claim typen voor de partner die moeten worden gebruikt voor een opgegeven protocol. De waarde kan worden overschreven in het **PartnerClaimType** dat is opgegeven in de **input claim** -of **output claim** -elementen. Gebruik dit element om de standaard naam voor een protocol op te geven.  |
 | Subnetmasker | 0:1 | Een optionele teken reeks maskerings tekens die kunnen worden toegepast wanneer de claim wordt weer gegeven. Het telefoon nummer 324-232-4343 kan bijvoorbeeld worden gemaskeerd als XXX-XXX-4343. |
 | UserHelpText | 0:1 | Een beschrijving van het claim type waarmee gebruikers het doel kunnen begrijpen. De waarde kan worden [gelokaliseerd](localization.md). |
@@ -69,9 +69,9 @@ De **DefaultPartnerClaimTypes** kan het volgende element bevatten:
 
 Het **protocol** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| Naam | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
 
 In het volgende voor beeld, wanneer het Framework voor identiteits ervaring communiceert met een SAML2-ID-provider of Relying Party toepassing, wordt de claim **Achternaam** toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, met OpenIdConnect en OAuth2, de claim wordt toegewezen aan `family_name`.
@@ -104,7 +104,7 @@ Als gevolg hiervan verzendt het JWT-token dat is uitgegeven door Azure AD B2C, h
 
 Het **masker** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex`. De waarde `Simple` geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De waarde `Regex` geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
 | `Regex` | Nee | Als **`Type`** is ingesteld op `Regex`, geeft u de reguliere expressie op die moet worden gebruikt.
@@ -144,7 +144,7 @@ In het Framework voor identiteits ervaring worden alleen de eerste letter van he
 
 Het **beperkings** element kan het volgende kenmerk bevatten:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nee | De methode die wordt gebruikt voor het samen voegen van opsommings waarden met een claim type in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basis beleid. Mogelijke waarden: `Append`, `Prepend`of `ReplaceAll`. De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde is een verzameling gegevens die is opgegeven in het bovenliggende beleid en die moet worden genegeerd. |
 
@@ -152,14 +152,14 @@ Het **beperkings** element bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| Inventarisatie | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
+| Opsomming | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
 | Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
 
-### <a name="enumeration"></a>Inventarisatie
+### <a name="enumeration"></a>Opsomming
 
 Het **opsommings** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Tekst | Ja | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
 |Waarde | Ja | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
@@ -188,7 +188,7 @@ Lijst met vervolg steden met een standaard waarde ingesteld op New York:
 
 Het element **pattern** kan de volgende kenmerken bevatten:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
 | HelpText | Nee | Het patroon of de reguliere expressie voor deze claim. |

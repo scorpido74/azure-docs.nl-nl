@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637339"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191211"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video-.NET streamen
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-.NET streamen
 
 In deze zelf studie leert u hoe eenvoudig het is om Video's te coderen en te streamen op een groot aantal verschillende browsers en apparaten met behulp van Azure Media Services. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
 Met het voorbeeld in dit onderwerp wordt inhoud gecodeerd die u toegankelijk maakt via een HTTPS-URL. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
@@ -47,7 +47,7 @@ Gebruik de volgende opdracht om een GitHub-opslagplaats te klonen op uw computer
 
 Het voorbeeld bevindt zich in de map [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
 
-Open [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) in het project dat u hebt gedownload. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
+Open [appSettings. json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) in het gedownloade project. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
 
 In het voorbeeld worden de volgende acties uitgevoerd:
 
@@ -65,10 +65,10 @@ Als u meer wilt weten over de werking van de functies in het voorbeeld, bekijkt 
 
 Wanneer u de app uitvoert, worden URL's weergegeven die kunnen worden gebruikt om de video met verschillende protocollen af te spelen. 
 
-1. Druk op Ctrl + F5 om de toepassing *EncodeAndStreamFiles* uit te voeren.
+1. Druk op Ctrl+F5 om de toepassing *EncodeAndStreamFiles* uit te voeren.
 2. Kies het **HLS**-protocol van Apple (eindigt op *manifest(format=m3u8-aapl)* ) en kopieer de streaming-URL uit de console.
 
-![Output](./media/stream-files-tutorial-with-api/output.png)
+![Uitvoer](./media/stream-files-tutorial-with-api/output.png)
 
 In de [broncode](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) van het voorbeeld kunt u zien hoe de URL is samengesteld. Als u de URL wilt samenstellen, moet u de hostnaam van het streaming-eindpunt en het pad van de streaming-locator samenvoegen.  
 
@@ -107,7 +107,7 @@ De zelfstudie [Bestanden uploaden, coderen en streamen](stream-files-tutorial-wi
 
 Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="multithreading"></a>Multithreading
+## <a name="multithreading"></a>Multi-threading
 
 De SDK's van Azure Media Services v3 zijn niet thread-safe. Als u werkt met een multi-threaded toepassing, moet u per thread een nieuw AzureMediaServicesClient-object genereren.
 

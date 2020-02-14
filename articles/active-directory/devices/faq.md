@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207392"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185848"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Veelgestelde vragen over het beheer van apparaten Azure Active Directory
 
@@ -55,9 +55,9 @@ Onder **gebruikers apparaten**worden alleen de volgende apparaten weer gegeven:
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>V: Waarom zien mijn gebruikers een fout bericht met de melding dat het apparaat is verwijderd door uw organisatie of omdat uw organisatie het apparaat heeft uitgeschakeld op hun Windows 10-apparaten?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>V: Waarom zien mijn gebruikers een fout bericht met de melding dat het apparaat is verwijderd door uw organisatie of omdat uw organisatie het apparaat heeft uitgeschakeld op hun Windows 10-apparaten?
 
-**A:** Op Windows 10-apparaten die zijn gekoppeld aan of zijn geregistreerd bij Azure AD, worden gebruikers een [primair vernieuwings token (PRT)](concept-primary-refresh-token.md) uitgegeven waarmee eenmalige aanmelding mogelijk is. De geldigheid van de PRT is gebaseerd op de validaity van het apparaat zelf. Gebruikers zien dit bericht als het apparaat wordt verwijderd of uitgeschakeld in azure AD zonder dat de actie wordt gestart vanaf het apparaat zelf. Een apparaat kan in azure AD een van de volgende scenario's worden verwijderd of uitgeschakeld: 
+**A:** Op Windows 10-apparaten die zijn gekoppeld aan of zijn geregistreerd bij Azure AD, worden gebruikers een [primair vernieuwings token (PRT)](concept-primary-refresh-token.md) uitgegeven waarmee eenmalige aanmelding mogelijk is. De geldigheid van de PRT is gebaseerd op de geldigheid van het apparaat zelf. Gebruikers zien dit bericht als het apparaat wordt verwijderd of uitgeschakeld in azure AD zonder dat de actie wordt gestart vanaf het apparaat zelf. Een apparaat kan in azure AD een van de volgende scenario's worden verwijderd of uitgeschakeld: 
 
 - Gebruiker het apparaat uitschakelt vanuit de portal mijn apps. 
 - Een beheerder (of gebruiker) verwijdert het apparaat uit het Azure Portal of schakelt het in met behulp van Power shell
@@ -288,12 +288,12 @@ Hybride Azure AD-deelname heeft voor rang op de geregistreerde status van Azure 
 **A:** 
 - Voor Windows 10 geregistreerde Azure AD-apparaten gaat u naar **instellingen** > **accounts** > **toegang tot werk of school**. Selecteer uw account en selecteer **verbinding verbreken**. Apparaatregistratie is per gebruikers profiel in Windows 10.
 - Voor iOS en Android kunt u de Microsoft Authenticator toepassings **instellingen** > **apparaatregistratie** gebruiken en de **registratie van apparaat**opheffen selecteren.
-- Voor macOS kunt u de Microsoft Intune Bedrijfsportal toepassing gebruiken om de registratie van het apparaat ongedaan te maken bij het beheer en om eventuele gegevens te verwijderen. 
+- Voor macOS kunt u de Microsoft Intune Bedrijfsportal toepassing gebruiken om de inschrijving van het apparaat bij beheer ongedaan te maken en alle registraties te verwijderen. 
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>V: hoe kan ik voor komen dat gebruikers extra werk accounts toevoegen (geregistreerd voor Azure AD) op mijn bedrijfs Windows 10-apparaten?
 
-**A:** Schakel het volgende REGI ster in om ervoor te zorgen dat uw gebruikers geen extra werk accounts meer kunnen toevoegen aan uw bedrijfs domein, lid zijn van Azure AD of hybride Azure AD toegevoegd aan Windows 10-apparaten. Dit beleid kan ook worden gebruikt om computers die lid zijn van een domein te blok keren om per ongeluk Azure AD te ontvangen die is geregistreerd met hetzelfde gebruikers account. 
+**A:** Schakel het volgende REGI ster in om ervoor te zorgen dat uw gebruikers geen extra werk accounts meer kunnen toevoegen aan uw bedrijfs domein, lid worden van Azure AD of aan hybride Azure AD gekoppelde Windows 10-apparaten. Dit beleid kan ook worden gebruikt om computers die lid zijn van een domein te blok keren om per ongeluk Azure AD te ontvangen die is geregistreerd met hetzelfde gebruikers account. 
 
 `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
@@ -312,7 +312,7 @@ Hybride Azure AD-deelname heeft voor rang op de geregistreerde status van Azure 
 
 **Opmerkingen**
 
-- De gebruikers die deel uitmaken van het beleid voor voorwaardelijke toegang, hebben een [ondersteunde versie van Office nodig voor macOS](../conditional-access/technical-reference.md#client-apps-condition) om toegang te krijgen tot bronnen. 
+- De gebruikers die deel uitmaken van het beleid voor voorwaardelijke toegang, hebben een [ondersteunde versie van Office nodig voor macOS](../conditional-access/concept-conditional-access-conditions.md) om toegang te krijgen tot bronnen. 
 - Tijdens de eerste keer dat u toegang probeert te krijgen, wordt uw gebruikers gevraagd het apparaat te registreren via de bedrijfs portal.
 
 ---

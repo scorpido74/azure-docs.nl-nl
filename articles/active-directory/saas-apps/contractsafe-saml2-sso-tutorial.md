@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291529"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185617"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Zelf studie: Azure Active Directory eenmalige aanmelding (SSO) integreren met ContractSafe Saml2 SSO
 
@@ -85,7 +85,7 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
     b. Voer in het tekstvak **antwoord-URL** een URL in met de volgende indeling: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteunings team van de ContractSafe SAML2 SSO-client](mailto:donne@contractsafe.com) om deze waarden op te halen. U kunt ook verwijzen naar de indelingen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteunings team van de ContractSafe SAML2 SSO-client](mailto:support@contractsafe.com) om deze waarden op te halen. U kunt ook verwijzen naar de indelingen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
 
 1. ContractSafe Saml2 SSO verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -93,7 +93,7 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
 
 1. Naast de standaard kenmerken verwacht de SSO-toepassing ContractSafe Saml2 nog enkele kenmerken die in het SAML-antwoord worden door gegeven. Deze kenmerken zijn vooraf ingevuld, maar u kunt ze controleren aan de hand van uw vereisten. De volgende lijst bevat de extra kenmerken.
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------------| --------------- |
     | e-mail adres | user.userprincipalname |
     | e-mail | User. onpremisesuserprincipalname |
@@ -138,17 +138,17 @@ In deze sectie schakelt u **B. Simon** in om Azure SSO te gebruiken door toegang
 
 ## <a name="configure-contractsafe-saml2-sso"></a>ContractSafe Saml2 SSO configureren
 
-Als u SSO wilt configureren op de **ContractSafe SAML2 SSO** -zijde, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van de Azure Portal naar het [ondersteunings team ContractSafe Saml2 SSO](mailto:donne@contractsafe.com). Het team is verantwoordelijk voor het instellen van de SAML SSO-verbinding aan beide zijden.
+Als u SSO wilt configureren op de **ContractSafe SAML2 SSO** -zijde, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van de Azure Portal naar het [ondersteunings team ContractSafe Saml2 SSO](mailto:support@contractsafe.com). Het team is verantwoordelijk voor het instellen van de SAML SSO-verbinding aan beide zijden.
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Een ContractSafe Saml2 SSO-test gebruiker maken
 
-Maak een gebruiker met de naam B. Simon in ContractSafe Saml2 SSO. Werk met het [ContractSafe SAML2 SSO-ondersteunings team](mailto:donne@contractsafe.com) om de gebruikers toe te voegen in het SSO-platform ContractSafe Saml2. Gebruikers moeten worden gemaakt en geactiveerd voordat u SSO kunt gebruiken.
+Maak een gebruiker met de naam B. Simon in ContractSafe Saml2 SSO. Werk met het [ContractSafe SAML2 SSO-ondersteunings team](mailto:support@contractsafe.com) om de gebruikers toe te voegen in het SSO-platform ContractSafe Saml2. Gebruikers moeten worden gemaakt en geactiveerd voordat u SSO kunt gebruiken.
 
 ## <a name="test-sso"></a>SSO testen
 
 Test uw Azure AD SSO-configuratie met behulp van het toegangs venster. Wanneer u de SSO-tegel ContractSafe Saml2 in het toegangs venster selecteert, moet u automatisch worden aangemeld bij de ContractSafe Saml2 SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

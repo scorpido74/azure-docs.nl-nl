@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275665"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189116"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>KEUR Micro services van de Canarische release met een versie van een Azure Container Service DC/OS-cluster
 
@@ -127,13 +127,13 @@ Zodra de Elasticsearch-rapporten zijn **uitgevoerd**, kunt u het pakket voor de 
 
 Nu u hebt gemaakt, kunt u een service van een blauw druk implementeren. 
 
-In de meest eenvoudige vorm van een standaard [blauw druk](https://vamp.io/documentation/using-vamp/blueprints/) worden de eind punten (gateways), clusters en services beschreven die moeten worden geïmplementeerd. Er worden clusters gebruikt om verschillende varianten van dezelfde service te groeperen in logische groepen voor het vrijgeven van een groot aantal of A/B-tests.  
+In de meest eenvoudige vorm van een standaard [blauw druk](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) worden de eind punten (gateways), clusters en services beschreven die moeten worden geïmplementeerd. Er worden clusters gebruikt om verschillende varianten van dezelfde service te groeperen in logische groepen voor het vrijgeven van een groot aantal of A/B-tests.  
 
 In dit scenario wordt gebruikgemaakt van een voor beeld van een monolithische-toepassing met de naam [**Sava**](https://github.com/magneticio/sava), die op versie 1,0 is. De op is verpakt in een docker-container, die zich in docker hub onder magneticio/Sava: 1.0.0 bevindt. De app wordt normaal gesp roken uitgevoerd op poort 8080, maar u wilt deze beschikbaar maken onder poort 9050 in dit geval. Implementeer de app met behulp van een eenvoudige blauw druk.
 
 1. Ga naar **implementaties**.
 
-2. Klik op **Add**.
+2. Klik op **Toevoegen**.
 
 3. Plak de volgende blauw druk YAML. Deze blauw druk bevat één cluster met slechts één service variant, die in een latere stap wordt gewijzigd:
 
@@ -287,9 +287,9 @@ We hebben ook een aantal krachtige functies van het bestand vernieuwd: het samen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het beheren van de handelingen van de/ [vernieuwd rest API](https://vamp.io/documentation/api/api-reference/).
+* Meer informatie over het beheren van de handelingen van de/ [vernieuwd rest API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events).
 
-* Ontwikkel documenten voor het maken van een geautomatiseerd Automation-script in [node. js](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)en voer deze uit als de.
+* Ontwikkel documenten voor het maken van een geautomatiseerd Automation-script in [node. js](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)en voer deze uit als de.
 
-* Zie extra nieuwe en [zelf studies](https://vamp.io/documentation/tutorials/).
+* Zie extra nieuwe en [zelf studies](https://docs.vamp.io/tutorials/).
 

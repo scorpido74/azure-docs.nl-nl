@@ -1,6 +1,6 @@
 ---
 title: Azure DevOps-taak voor Azure Data Explorer
-description: In dit onderwerp leert u een release-pijplijn maken en implementeren
+description: In dit onderwerp leert u hoe u een release pijplijn maakt en implementeert
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,113 +8,113 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388994"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188178"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure DevOps-taak voor Azure Data Explorer
 
-[Azure DevOps-Services](https://azure.microsoft.com/services/devops/) ontwikkeling biedt hulpprogramma's voor samenwerking, zoals high-performance pijplijnen, gratis persoonlijke Git-opslagplaatsen, configureerbare kanbanborden en uitgebreide mogelijkheden voor continue en geautomatiseerde tests. [Azure pijplijnen](https://azure.microsoft.com/services/devops/pipelines/) is een Azure DevOps-functie waarmee u voor het beheren van CI/CD voor het implementeren van uw code met hoge prestaties pijplijnen die werken met elke taal, het platform en de cloud.
-[Azure Data Explorer - Admin-opdrachten](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is wijzigingen in de Azure-pijplijnen-taken waarmee u release-pijplijnen maken en implementeren van uw database met uw Azure Data Explorer-databases. Het is beschikbaar voor gratis uit in de [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+[Azure DevOps Services](https://azure.microsoft.com/services/devops/) biedt ontwikkel samenwerkings hulpmiddelen, zoals pijp lijnen met hoge prestaties, gratis persoonlijke Git-opslag plaatsen, Configureer bare Kanban boards en uitgebreide geautomatiseerde en continue test mogelijkheden. [Azure-pijp lijnen](https://azure.microsoft.com/services/devops/pipelines/) is een Azure DevOps-mogelijkheid waarmee u CI/cd kunt beheren om uw code te implementeren met hoogwaardige pijp lijnen die geschikt zijn voor elke taal, elk platform en elke Cloud.
+[Azure Data Explorer-beheer opdrachten](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is de Azure pipelines-taak waarmee u release pijplijnen kunt maken en de wijzigingen in uw data base kunt implementeren in uw Azure Data Explorer-data bases. Het is gratis beschikbaar in [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-Dit document beschrijft een eenvoudig voorbeeld over het gebruik van de **Azure Data Explorer – Admin opdrachten** taak voor het implementeren van uw schema wijzigingen in uw database. Raadpleeg voor volledige CI/CD-pijplijnen, [documentatie voor Azure DevOps](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts).
+In dit document wordt een eenvoudig voor beeld van het gebruik van de taak **Azure Data Explorer-beheer opdrachten** beschreven om uw schema wijzigingen te implementeren in uw data base. Raadpleeg de [documentatie van Azure DevOps](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)voor de volledige CI/cd-pijp lijnen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* Installatie van de Azure Data Explorer Cluster:
-    * Een [cluster van Azure Data Explorer en -database](/azure/data-explorer/create-cluster-database-portal)
-    * Maken van Azure Active Directory (Azure AD)-app door [inrichten van een Azure AD-toepassing](/azure/kusto/management/access-control/how-to-provision-aad-app).
-    * Toegang verlenen tot uw Azure AD-App op uw Azure Data Explorer-database door [beheren van machtigingen in Azure Data Explorer database](/azure/data-explorer/manage-database-permissions).
-* Installatie van de Azure DevOps:
-    * [Aanmelden voor een gratis organisatie](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
+* Setup van Azure Data Explorer-cluster:
+    * Een [Azure Data Explorer-cluster en-data base](/azure/data-explorer/create-cluster-database-portal)
+    * Maak Azure Active Directory-app (Azure AD) door [een Azure AD-toepassing](/azure/kusto/management/access-control/how-to-provision-aad-app)in te richten.
+    * Verleen toegang tot uw Azure AD-app in uw Azure Data Explorer-data base door [azure Data Explorer-database machtigingen te beheren](/azure/data-explorer/manage-database-permissions).
+* Setup van Azure DevOps:
+    * [Meld u aan voor een gratis organisatie](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
     * [Een organisatie maken](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-    * [Een project maken in Azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
-    * [Code met Git](/azure/devops/user-guide/code-with-git?view=azure-devops)
+    * [Een project maken in azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
+    * [Code met git](/azure/devops/user-guide/code-with-git?view=azure-devops)
 
 ## <a name="create-folders"></a>Mappen maken
 
-Het volgende voorbeeld-mappen maken (*functies*, *beleid*, *tabellen*) in de Git-opslagplaats. Kopieer de bestanden van [hier](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) in de respectieve mappen zoals weergegeven onder en sla de wijzigingen. De voorbeeldbestanden zijn opgegeven voor het uitvoeren van de volgende werkstroom.
+Maak de volgende voorbeeld mappen (*functies*, *beleids regels*, *tabellen*) in uw Git-opslag plaats. Kopieer de bestanden van [hier](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) naar de respectieve mappen zoals hieronder wordt weer gegeven en voer de wijzigingen door. De voorbeeld bestanden worden gegeven om de volgende werk stroom uit te voeren.
 
 ![Mappen maken](media/devops/create-folders.png)
 
 > [!TIP]
-> Wanneer u uw eigen werkstroom maakt, is het raadzaam om uw code idempotent zijn. Gebruik bijvoorbeeld [.create-samenvoegen-tabel](/azure/kusto/management/tables#create-merge-tables) in plaats van [.create tabel](/azure/kusto/management/tables#create-table), en gebruik [.create of alter](/azure/kusto/management/functions#create-or-alter-function) werken in plaats van [.create](/azure/kusto/management/functions#create-function) de functie.
+> Wanneer u uw eigen werk stroom maakt, wordt u aangeraden om uw code idempotent te maken. Gebruik bijvoorbeeld [. Create-merge-tabel](/azure/kusto/management/create-table-command#create-merge-table) in plaats van [. Create](/azure/kusto/management/create-table-command)- [of-ALTER](/azure/kusto/management/functions#create-or-alter-function) -functie in plaats van [. Create](/azure/kusto/management/functions#create-function) -functie.
 
 ## <a name="create-a-release-pipeline"></a>Een release-pijplijn maken
 
-1. Aanmelden bij uw [Azure DevOps-organisatie](https://dev.azure.com/).
-1. Selecteer **pijplijnen** > **Releases** vanuit het menu links en selecteer **nieuwe pijplijn**.
+1. Meld u aan bij uw [Azure DevOps-organisatie](https://dev.azure.com/).
+1. Selecteer **pijp lijnen** > **releases** uit het menu links en selecteer **nieuwe pijp lijn**.
 
     ![Nieuwe pijplijn](media/devops/new-pipeline.png)
 
-1. De **nieuwe release-pijplijn** venster wordt geopend. In de **pijplijnen** tabblad, in de **selecteert u een sjabloon** deelvenster Selecteer **leeg taak**.
+1. Het venster **nieuwe release pijplijn** wordt geopend. Selecteer op het tabblad **pijp lijnen** in het deel venster **sjabloon selecteren** de optie **lege taak**.
 
-     ![Selecteer een sjabloon](media/devops/select-template.png)
+     ![Een sjabloon selecteren](media/devops/select-template.png)
 
-1. Selecteer **fase** knop. In **fase** deelvenster toevoegen de **fasenaam**. Selecteer **opslaan** om op te slaan, uw pijplijn.
+1. Knop **fase** selecteren. Voeg in het deel venster **fase** de naam van het **stadium**toe. Selecteer **Opslaan** om uw pijp lijn op te slaan.
 
-    ![De naam van de fase](media/devops/stage-name.png)
+    ![Het stadium een naam](media/devops/stage-name.png)
 
-1. Selecteer **toevoegen van een artefact** knop. In de **toevoegen van een artefact** deelvenster, selecteert u de opslagplaats waar uw code bestaat, relevante informatie invullen en op **toevoegen**. Selecteer **opslaan** om op te slaan, uw pijplijn.
+1. Selecteer knop **een artefact toevoegen** . In het deel venster **een artefact toevoegen** selecteert u de opslag plaats waar uw code bestaat, vult u de relevante gegevens in en klikt u op **toevoegen**. Selecteer **Opslaan** om uw pijp lijn op te slaan.
 
     ![Een artefact toevoegen](media/devops/add-artifact.png)
 
-1. In de **variabelen** tabblad **+ toevoegen** te maken van een variabele voor **eindpunt-URL** dat wordt gebruikt in de taak. Schrijf de **naam** en de **waarde** van het eindpunt. Selecteer **opslaan** om op te slaan, uw pijplijn. 
+1. Op het tabblad **variabelen** selecteert u **+ toevoegen** om een variabele voor **eind punt-URL** te maken die wordt gebruikt in de taak. Schrijf de **naam** en de **waarde** van het eind punt. Selecteer **Opslaan** om uw pijp lijn op te slaan. 
 
     ![Variabele maken](media/devops/create-variable.png)
 
-    Om te zoeken, uw Endpoint_URL, de overzichtspagina van uw **Azure Data Explorer Cluster** in Azure portal de URI van de Azure Data Explorer-cluster bevat. Maken van de URI in de volgende indeling `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Bijvoorbeeld: https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
+    De overzichts pagina van uw **azure Data Explorer-cluster** in de Azure Portal bevat de cluster-URI van Azure Data Explorer om uw Endpoint_URL te vinden. Maak de URI in de volgende indeling `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Bijvoorbeeld https:\//kustodocs.westus.kusto.Windows.net? DATABASENAME = SampleDB
 
-    ![Azure-Data Explorer cluster-URI](media/devops/adx-cluster-uri.png)
+    ![URI van Azure Data Explorer cluster](media/devops/adx-cluster-uri.png)
 
-## <a name="create-tasks-to-deploy"></a>Maak taken om te implementeren
+## <a name="create-tasks-to-deploy"></a>Te implementeren taken maken
 
-1. In de **pijplijn** tabblad, klikt u op **1 taak, taak 0** toevoegen taken. 
+1. Klik op het tabblad **pijp lijn** op **1 taak, 0 taak** om taken toe te voegen. 
 
     ![Taken toevoegen](media/devops/add-task.png)
 
-1. Maak drie taken implementeren **tabellen**, **functies**, en **beleid**, in de aangegeven volgorde. 
+1. Maak in deze volg orde drie taken om **tabellen**, **functies**en **beleid**te implementeren. 
 
-1. In de **taken** tabblad **+** door **Agent-taak**. Zoek naar **Azure Data Explorer**. In **Marketplace**, installeert de **Azure Data Explorer – Admin opdrachten** extensie. Selecteer **toevoegen** in **Azure Data Explorer-opdracht uitvoeren**.
+1. Selecteer **+** op **Agent taak**op het tabblad **taken** . Zoek naar **Azure Data Explorer**. Installeer de extensie **Azure Data Explorer-beheer opdrachten** in **Marketplace**. Selecteer vervolgens **toevoegen** in **uitvoeren van Azure-Data Explorer opdracht**.
 
-     ![Beheerder opdrachten toe te voegen](media/devops/add-admin-commands.png)
+     ![Beheer opdrachten toevoegen](media/devops/add-admin-commands.png)
 
-1. Klik op **Kusto-opdracht** aan de linkerkant en update de taak met de volgende informatie:
-    * **Weergavenaam**: Naam van de taak
-    * **Bestandspad**: In de **tabellen** taak, geef */Tables/* .csl omdat de tabel maken van bestanden de *tabel* map.
-    * **Eindpunt-URL**: Voer de `EndPoint URL`variabele in de vorige stap hebt gemaakt.
-    * Selecteer **Service-eindpunt gebruik** en selecteer **+ nieuw**.
+1. Klik aan de linkerkant op de **opdracht Kusto** en werk de taak bij met de volgende gegevens:
+    * **Weergave naam**: naam van de taak
+    * **Bestandspad: Geef**in de **taak tabellen** */Tables/* . CSL op, omdat de tabel voor het maken van bestanden zich in de map *Table* bevindt.
+    * **Eind punt-URL**: voer de `EndPoint URL`variabele in die u in de vorige stap hebt gemaakt.
+    * Selecteer **service-eind punt gebruiken** en selecteer **+ Nieuw**.
 
-    ![Bijwerktaak Kusto-opdracht](media/devops/kusto-command-task.png)
+    ![Opdracht taak Kusto bijwerken](media/devops/kusto-command-task.png)
 
-1. Vul de volgende gegevens in de **verbinding met Azure Data Explorer toevoegen** venster:
+1. Voer de volgende informatie uit in het venster **Azure Data Explorer service-verbinding toevoegen** :
 
     |Instelling  |Voorgestelde waarde  |
     |---------|---------|
-    |**Verbindingsnaam**     |    Voer een unieke naam voor deze service-eindpunt     |
-    |**Cluster-Url**    |    Waarde kan worden gevonden in de sectie overzicht van uw Azure Data Explorer-Cluster in Azure portal | 
-    |**Service-Principal-Id**    |    Voer de AAD-App-ID (gemaakt als vereiste)     |
-    |**App-sleutel voor Service-Principal**     |    Voer de AAD-App-sleutel (gemaakt als vereiste)    |
-    |**AAD-tenant Id**    |      Voer uw AAD-tenant (bijvoorbeeld microsoft.com, contoso.com...)    |
+    |**Verbindingsnaam**     |    Voer een naam in om dit service-eind punt aan te duiden     |
+    |**Cluster-URL**    |    U vindt de waarde in het gedeelte Overzicht van uw Azure Data Explorer-cluster in de Azure Portal | 
+    |**Service-Principal-id**    |    Voer de ID van de AAD-app in (gemaakt als vereiste)     |
+    |**App-sleutel van Service-Principal**     |    Voer de sleutel voor de AAD-app in (gemaakt als vereiste)    |
+    |**AAD-Tenant-id**    |      Voer uw AAD-Tenant in (zoals microsoft.com, contoso.com...)    |
 
-    Selecteer **alle die leiden tot deze verbinding gebruiken toestaan** selectievakje. Selecteer **OK**.
+    Schakel **het selectie vakje alle pijp lijnen toestaan om deze verbinding te gebruiken in** . Selecteer **OK**.
 
-    ![Serviceverbinding toevoegen](media/devops/add-service-connection.png)
+    ![Service verbinding toevoegen](media/devops/add-service-connection.png)
 
-1. Herhaal stap 1-5 andere twee keer implementeren bestanden uit de *functies* en *beleid* mappen. Selecteer **Opslaan**. In de **taken** tabblad, raadpleegt u de drie taken die zijn gemaakt: **Implementeren van tabellen**, **Functions implementeren**, en **implementeren van beleid**.
+1. Herhaal stap 1-5 nog twee keer om bestanden te implementeren vanuit de mappen *functies* en *beleid* . Selecteer **Opslaan**. Ga naar het tabblad **taken** en Bekijk de drie taken die zijn gemaakt: **tabellen implementeren**, **functies implementeren**en **beleid implementeren**.
 
     ![Alle mappen implementeren](media/devops/deploy-all-folders.png)
 
-1. Selecteer **+ Release** > **maken release** te maken van een release.
+1. Selecteer **+ release** > **Create release** om een release te maken.
 
-    ![Een releaserecord maken](media/devops/create-release.png)
+    ![Een release maken](media/devops/create-release.png)
 
-1. In de **logboeken** tabblad, controleert u de status van de implementatie is voltooid.
+1. Controleer op het tabblad **Logboeken** of de implementatie status is geslaagd.
 
-    ![Implementatie is gelukt](media/devops/deployment-successful.png)
+    ![De implementatie is voltooid](media/devops/deployment-successful.png)
 
-U hebt nu het maken van een release-pijplijn voor de implementatie van drie taken vóór productie.
+U bent nu klaar met het maken van een release pijplijn voor de implementatie van drie taken naar de voorafgaande productie.

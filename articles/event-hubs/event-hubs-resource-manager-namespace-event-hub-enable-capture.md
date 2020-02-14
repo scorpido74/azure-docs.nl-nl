@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/06/2019
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: a71751ba8dde2152a00a1455a51d13a3dedb792a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437164"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187347"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
 
@@ -235,7 +235,7 @@ De blob-container waarin uw gebeurtenisgegevens worden vastgelegd.
 }
 ```
 
-Gebruik de volgende parameters als u Azure Data Lake Store als de bestemming kiest. U moet machtigingen instellen voor het Data Lake Store-pad waarin u de gebeurtenis wilt vastleggen. Zie [dit artikel](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account) voor het instellen van machtigingen.
+Gebruik de volgende para meters als u Azure Data Lake Store gen 1 als uw bestemming kiest. U moet machtigingen instellen voor het Data Lake Store-pad waarin u de gebeurtenis wilt vastleggen. Zie [gegevens vastleggen voor Azure data Lake Storage gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)om machtigingen in te stellen.
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -409,7 +409,7 @@ Een sjabloon implementeren om Event Hubs Capture in te schakelen in Azure Data L
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Azure Blob Storage als doel:
 

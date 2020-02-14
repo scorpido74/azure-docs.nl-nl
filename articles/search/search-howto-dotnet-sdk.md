@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112591"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190972"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Azure Cognitive Search gebruiken vanuit een .NET-toepassing
 
@@ -462,7 +462,7 @@ Het eerste dat u ziet, is dat de naam van elke open bare eigenschap in de `Hotel
 > 
 > 
 
-De tweede ding is dat elke eigenschap wordt gedecoreerd met kenmerken als `IsFilterable`, `IsSearchable`, `Key`en `Analyzer`. Deze kenmerken worden rechtstreeks aan de [corresponderende veld kenmerken in een Azure Cognitive search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request)toegewezen. De klasse `FieldBuilder` gebruikt deze eigenschappen om veld definities voor de index te maken.
+De tweede ding is dat elke eigenschap wordt gedecoreerd met kenmerken als `IsFilterable`, `IsSearchable`, `Key`en `Analyzer`. Deze kenmerken worden rechtstreeks aan de [corresponderende veld kenmerken in een Azure Cognitive search-index](/rest/api/searchservice/create-index)toegewezen. De klasse `FieldBuilder` gebruikt deze eigenschappen om veld definities voor de index te maken.
 
 Het derde belang rijk voor de `Hotel` klasse is de gegevens typen van de open bare eigenschappen. De .NET-typen van deze eigenschappen worden toegewezen aan de gelijkwaardige veldtypen in de definitie van de index. De tekenreekseigenschap `Category` is bijvoorbeeld toegewezen aan het veld `category` van type `Edm.String`. Er zijn soort gelijke toewijzingen tussen `bool?`, `Edm.Boolean`, `DateTimeOffset?`en `Edm.DateTimeOffset`, enzovoort. De specifieke regels voor de toewijzing van het type worden gedocumenteerd met de methode `Documents.Get` in de [Naslag informatie voor Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). De `FieldBuilder` klasse zorgt ervoor dat deze toewijzing voor u wordt uitgevoerd, maar het kan wel handig zijn om te begrijpen in het geval dat u eventuele problemen met de serialisatie moet oplossen.
 

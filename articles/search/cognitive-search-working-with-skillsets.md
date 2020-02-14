@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760790"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191030"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Concepten en samen stelling van vaardig heden in azure Cognitive Search
 
@@ -43,11 +43,11 @@ Zodra een document zich in de verrijkings pijplijn bevindt, wordt het weer gegev
 
 |Modus data Source\Parsing|Standaard|JSON, JSON-lijnen & CSV|
 |---|---|---|
-|Blobopslag|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
+|Blob Storage|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|N.v.t. |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N.v.t.|
 
- Wanneer vaardig heden worden uitgevoerd, voegen ze nieuwe knoop punten toe aan de verrijkings structuur. Deze nieuwe knoop punten kunnen vervolgens worden gebruikt als invoer voor downstream-vaardig heden, projecteren naar het kennis archief of toewijzing aan index velden. Verrijkingen zijn niet onveranderbaar: als u deze eenmaal hebt gemaakt, kunnen knoop punten niet worden bewerkt. Naarmate uw vaardig heden ingewik kelder wordt, is uw verrijkings structuur, maar niet alle knoop punten in de verrijkings structuur nodig om deze naar de index of het kennis archief te brengen. U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
+ Wanneer vaardig heden worden uitgevoerd, voegen ze nieuwe knoop punten toe aan de verrijkings structuur. Deze nieuwe knoop punten kunnen vervolgens worden gebruikt als invoer voor downstream-vaardig heden, projecteren naar het kennis archief of toewijzing aan index velden. Verrijkingen zijn niet onveranderbaar: als u deze eenmaal hebt gemaakt, kunnen knoop punten niet worden bewerkt. Naarmate uw vaardig heden ingewik kelder wordt, is uw verrijkings structuur, maar niet alle knoop punten in de verrijkings structuur nodig om deze naar de index of het kennis archief te brengen. 
 
 U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
 Voor de rest van dit document gaan we ervan uit dat we een [voor beeld van een hotel beoordeling](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)gebruiken, maar dezelfde concepten zijn van toepassing op het verrijken van documenten uit alle andere gegevens bronnen.

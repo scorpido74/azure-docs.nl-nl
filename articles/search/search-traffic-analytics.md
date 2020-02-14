@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426991"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190943"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Zoek Traffic Analytics in azure Cognitive Search implementeren
 
@@ -106,7 +106,7 @@ Telkens wanneer een zoek opdracht wordt uitgegeven door een gebruiker, moet u zi
 **SearchServiceName**: (teken reeks) zoek service naam **SearchId**: (GUID) unieke id van de zoek query (komt in het zoek antwoord) **index**naam: (teken reeks) zoek service-index die moet worden opgevraagd **QueryTerms**: (teken reeks) zoek termen die zijn ingevoerd door de gebruiker **ResultCount**: (int) aantal documenten dat is geretourneerd (in de zoek respons) **ScoringProfile**: (teken reeks) naam van het gebruikte Score profiel
 
 > [!NOTE]
-> Aantal aanvragen voor door de gebruiker gegenereerde query's door $count = True toe te voegen aan uw zoek query. Meer informatie vindt u [hier](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)
+> Aantal aanvragen voor door de gebruiker gegenereerde query's door $count = True toe te voegen aan uw zoek query. Meer informatie vindt u [hier](/rest/api/searchservice/search-documents#counttrue--false).
 >
 
 > [!NOTE]
@@ -181,7 +181,7 @@ Nadat u uw app hebt geinstrumenteerd en hebt gecontroleerd of uw toepassing corr
 
    ![Verbinding maken met Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Verbinding maken met Application Insights")
 
-4. Klik op **Load**.
+4. Klik op **laden**.
 
 Het rapport bevat grafieken en tabellen waarmee u meer onderbouwde beslissingen kunt nemen om uw zoek prestaties en relevantie te verbeteren.
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/03/2019
-ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/12/2020
+ms.openlocfilehash: 8e91bb9223f3e6ccd4c76614d75db8591dbed045
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990977"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201510"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
 
@@ -65,6 +65,7 @@ Wanneer dit nodig is, verzendt de server beveiligde DEK naar de sleutel kluis vo
 
 Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboeken te bekijken als logboek registratie is ingeschakeld.
 
+[!INCLUDE [sql-database-akv-permission-delay](includes/sql-database-akv-permission-delay.md)]
 
 ## <a name="requirements-for-configuring-customer-managed-tde"></a>Vereisten voor het configureren van door de klant beheerde TDE
 

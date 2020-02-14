@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: aa03560160795e33a5d26a88d421894c6e20c61f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77088976"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193020"
 ---
 In dit artikel wordt beschreven hoe u IaaS-resources (Infrastructure as a Service) migreert van het klassieke naar het Resource Manager-implementatie model en hoe u resources verbindt met de twee implementatie modellen die naast elkaar zijn opgenomen in uw abonnement met behulp van virtueel netwerk site-naar-site gateways. U kunt meer lezen over [Azure Resource Manager functies en voor delen](../articles/azure-resource-manager/management/overview.md). 
 
@@ -122,7 +122,7 @@ De volgende configuraties worden momenteel niet ondersteund.
 | Compute | Cloud Services die web-of werk rollen bevatten | Dit wordt momenteel niet ondersteund. |
 | Compute | Cloud Services die meer dan één beschikbaarheidsset of meerdere beschikbaarheids sets bevatten. |Dit wordt momenteel niet ondersteund. Verplaats de Virtual Machines naar dezelfde beschikbaarheidsset voordat u de migratie uitvoert. |
 | Compute | VM met Azure Security Center extensie | Azure Security Center installeert automatisch extensies op uw Virtual Machines om de beveiliging te controleren en waarschuwingen te genereren. Deze uitbrei dingen worden meestal automatisch geïnstalleerd als het Azure Security Center beleid is ingeschakeld voor het abonnement. Als u de Virtual Machines wilt migreren, schakelt u het Security Center-beleid uit op het abonnement, waardoor de Security Center bewakings extensie uit de Virtual Machines wordt verwijderd. |
-| Compute | VM met back-up-of momentopname uitbreiding | Deze uitbrei dingen worden geïnstalleerd op een virtuele machine die is geconfigureerd met de Azure Backup-service. Hoewel de migratie van deze Vm's niet wordt ondersteund, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) om back-ups te houden die zijn uitgevoerd vóór de migratie.  |
+| Compute | VM met back-up-of momentopname uitbreiding | Deze uitbrei dingen worden geïnstalleerd op een virtuele machine die is geconfigureerd met de Azure Backup-service. Hoewel de migratie van deze Vm's niet wordt ondersteund, volgt u de instructies [hier](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) om back-ups te houden die zijn uitgevoerd vóór de migratie.  |
 | Compute | VM met Azure Site Recovery extensie | Deze uitbrei dingen worden geïnstalleerd op een virtuele machine die is geconfigureerd met de Azure Site Recovery-service. Hoewel de migratie van de opslag die wordt gebruikt met Site Recovery werkt, wordt de huidige replicatie beïnvloed. U moet VM-replicatie na de opslag migratie uitschakelen en inschakelen. |
 | Netwerk |Virtuele netwerken die virtuele machines en web-en werk rollen bevatten |Dit wordt momenteel niet ondersteund. Verplaats de web-en werk rollen naar hun eigen Virtual Network voordat u de migratie uitvoert. Zodra de klassieke Virtual Network is gemigreerd, kan de gemigreerde Azure Resource Manager Virtual Network worden gekoppeld met de klassieke Virtual Network om Vergelijk bare configuratie te krijgen als voorheen.|
 | Netwerk | Klassieke Express route-circuits |Dit wordt momenteel niet ondersteund. Deze circuits moeten naar Azure Resource Manager worden gemigreerd voordat de migratie van IaaS wordt gestart. Zie [ExpressRoute-circuits verplaatsen van het klassieke naar het Resource Manager-implementatie model](../articles/expressroute/expressroute-move.md)voor meer informatie.|

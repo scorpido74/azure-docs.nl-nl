@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608717"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185577"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
@@ -91,7 +91,7 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 ### <a name="review-your-conditional-access-policies"></a>Uw beleid voor voorwaardelijke toegang controleren
 
-- Zorg ervoor dat gasten worden uitgesloten van beleids regels voor voorwaardelijke toegang die nieuwe gast gebruikers niet kunnen bereiken omdat hiermee wordt voor komen dat ze zich kunnen aanmelden bij uw Directory. Gasten hebben bijvoorbeeld waarschijnlijk geen geregistreerd apparaat, bevinden zich niet op een bekende locatie en willen ze niet opnieuw registreren voor multi-factor Authentication (MFA). Als u deze vereisten toevoegt in een beleid voor voorwaardelijke toegang, worden gasten geblokkeerd voor het gebruik van rechten CRM. Zie [Wat zijn voor waarden in azure Active Directory voorwaardelijke toegang?](../conditional-access/conditions.md)voor meer informatie.
+- Zorg ervoor dat gasten worden uitgesloten van beleids regels voor voorwaardelijke toegang die nieuwe gast gebruikers niet kunnen bereiken omdat hiermee wordt voor komen dat ze zich kunnen aanmelden bij uw Directory. Gasten hebben bijvoorbeeld waarschijnlijk geen geregistreerd apparaat, bevinden zich niet op een bekende locatie en willen ze niet opnieuw registreren voor multi-factor Authentication (MFA). Als u deze vereisten toevoegt in een beleid voor voorwaardelijke toegang, worden gasten geblokkeerd voor het gebruik van rechten CRM. Zie [Wat zijn voor waarden in azure Active Directory voorwaardelijke toegang?](../conditional-access/concept-conditional-access-conditions.md)voor meer informatie.
 
     ![Instellingen voor het beleid voor voorwaardelijke toegang van Azure AD](./media/entitlement-management-external-users/conditional-access-exclude.png)
 

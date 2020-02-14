@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2cc562f155fe3b84e5d28b2e0e22d50238d480c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816219"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186050"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Welke toepassingen werken met beleid voor voorwaardelijke toegang?
 
-Zie [toepassingen en browsers die gebruikmaken van regels voor voorwaardelijke toegang in azure Active Directory](technical-reference.md)voor meer informatie over toepassingen die werken met beleid voor voorwaardelijke toegang.
+Zie [toepassingen en browsers die gebruikmaken van regels voor voorwaardelijke toegang in azure Active Directory](concept-conditional-access-cloud-apps.md)voor meer informatie over toepassingen die werken met beleid voor voorwaardelijke toegang.
 
 ## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Zijn beleids regels voor voorwaardelijke toegang afgedwongen voor B2B-samen werking en gast gebruikers?
 

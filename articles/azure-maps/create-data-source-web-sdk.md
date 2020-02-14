@@ -9,35 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 74b45d3f7fa7d0e13b8767d4a887d8a22cad3a30
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911717"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190231"
 ---
 # <a name="create-a-data-source"></a>Een gegevensbron maken
 
-De Azure Maps Web-SDK slaat gegevens op in gegevens bronnen waarmee de gegevens voor het uitvoeren van query's en rendering worden geoptimaliseerd. Er zijn momenteel twee soorten gegevens bronnen:
+De Azure Maps Web-SDK slaat gegevens op in gegevens bronnen. Het gebruik van gegevens bronnen optimaliseert de gegevens bewerkingen voor het uitvoeren van query's en rendering. Er zijn momenteel twee soorten gegevens bronnen:
 
 **Geojson-gegevens bron**
 
-Met een geojson-gegevens bron kunnen gegevens lokaal worden geladen en opgeslagen met behulp van de `DataSource` klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De klasse `DataSource` bevat functies voor het importeren van lokale of externe geojson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De klasse `DataSource` biedt functionaliteit voor cluster-punt gegevens. Gegevens kunnen eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de klasse `DataSource`.
+Met een geojson gebaseerde gegevens bron worden gegevens lokaal geladen en opgeslagen met behulp van de `DataSource` klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De klasse `DataSource` bevat functies voor het importeren van lokale of externe geojson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De klasse `DataSource` biedt functionaliteit voor cluster-punt gegevens. En kunnen gegevens eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de klasse `DataSource`.
 
 
 > [!TIP]
-> Als u alle gegevens in een `DataSource`wilt overschrijven, kunt u, als u aanroepen naar de `clear` vervolgens `add` functions, proberen de kaart twee keer opnieuw te renderen, wat een enigszins vertraging kan veroorzaken. Gebruik in plaats daarvan de functie `setShapes`, waarmee alle gegevens in de gegevens bron worden verwijderd en vervangen en slechts één weer gave van de kaart wordt geactiveerd.
+> Stel dat u wilt dat alle gegevens in een `DataSource`worden overschreven. Als u aanroepen naar de `clear` vervolgens `add` functies, kan de kaart twee keer opnieuw worden weer gegeven. Dit kan een beetje vertraging veroorzaken. Gebruik in plaats daarvan de functie `setShapes`, waarmee alle gegevens in de gegevens bron worden verwijderd en vervangen en slechts één weer gave van de kaart wordt geactiveerd.
 
 **Bron van vector tegel**
 
-Een vector tegel bron beschrijft hoe een vector tegel laag kan worden geopend en kan worden gemaakt met behulp van de [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) -klasse. Azure Maps wordt uitgelijnd met de [Mapbox-specificatie van de vector tegel](https://github.com/mapbox/vector-tile-spec). Dit is een open-standaard. Vector tegel lagen zijn vergelijkbaar met tegel lagen, maar in plaats van elke tegel een raster afbeelding te zijn, zijn ze een gecomprimeerd bestand (PBF-indeling) met gegevens over vector kaarten en een of meer lagen die op de client kunnen worden gerenderd en opgemaakt op basis van de stijl van elke laag. De gegevens in een vector tegel bevatten geografische functies in de vorm van punten, lijnen en veelhoeken. Er zijn verschillende voor delen van vector tegel lagen over raster tegel lagen.
+Een vector tegel bron beschrijft hoe een vector tegel laag kan worden geopend. Gebruik de [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) -klasse om een vector tegel bron te instantiëren. Vector tegel lagen zijn vergelijkbaar met de tegel lagen, maar ze zijn niet hetzelfde. Een tegel laag is een raster afbeelding. Vector tegel lagen zijn een gecomprimeerd bestand in de PBF-indeling. Dit gecomprimeerde bestand bevat gegevens van een vector kaart en een of meer lagen. Het bestand kan worden gerenderd en opgemaakt op de client, op basis van de stijl van elke laag. De gegevens in een vector tegel bevatten geografische functies in de vorm van punten, lijnen en veelhoeken. Er zijn verschillende voor delen van het gebruik van vector tegel lagen in plaats van raster tegel lagen:
 
- - Een bestands grootte van een vector tegel is doorgaans veel kleiner dan een gelijkwaardige raster tegel. Als zodanig wordt er minder band breedte gebruikt, wat betekent dat lagere latentie en een snellere kaart. Hiermee maakt u een betere gebruikers ervaring.
- - Omdat vector tegels worden weer gegeven op de client, kunnen ze worden aangepast aan de resolutie van het apparaat waarop ze worden weer gegeven. Dit maakt het mogelijk dat de gerenderde kaarten veel meer duidelijker worden gedefinieerd en met kristalheldere labels. 
- - Het wijzigen van de stijl van de gegevens in de vector kaarten vereist niet dat de gegevens opnieuw worden gedownload omdat de nieuwe stijl op de client kan worden toegepast. Als u daarentegen de stijl van een raster tegel laag wilt wijzigen, moet meestal het laden van tegels van de server waarop de nieuwe stijl wordt toegepast, worden geladen.
- - Omdat de gegevens in een vector vorm worden geleverd, is er minder server-side verwerking vereist om de gegevens voor te bereiden, wat betekent dat nieuwere gegevens sneller beschikbaar kunnen worden gemaakt.
+ - Een bestands grootte van een vector tegel is doorgaans veel kleiner dan een gelijkwaardige raster tegel. Als zodanig wordt er minder band breedte gebruikt. Dit betekent een lagere latentie, een snellere kaart en een betere gebruikers ervaring.
+ - Omdat vector tegels worden weer gegeven op de client, worden ze aangepast aan de resolutie van het apparaat waarop ze worden weer gegeven. Als gevolg hiervan worden de gerenderde kaarten meer duidelijk gedefinieerd, met kristalheldere labels.
+ - Voor het wijzigen van de stijl van de gegevens in de vector kaarten hoeven de gegevens niet opnieuw te worden gedownload omdat de nieuwe stijl op de client kan worden toegepast. Als u daarentegen de stijl van een raster tegel laag wijzigt, moet meestal het laden van tegels van de server worden geladen en vervolgens de nieuwe stijl wordt toegepast.
+ - Omdat de gegevens in een vector vorm worden geleverd, is er minder server-side verwerking vereist om de gegevens voor te bereiden. Als gevolg hiervan kunnen de nieuwere gegevens sneller beschikbaar worden gemaakt.
 
-Alle lagen die gebruikmaken van een vector bron moeten een `sourceLayer` waarde opgeven. 
+Alle lagen die gebruikmaken van een vector bron moeten een `sourceLayer` waarde opgeven.
 
 Zodra u deze hebt gemaakt, kunt u gegevens bronnen toevoegen aan de kaart via de eigenschap `map.sources`. Dit is een [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). De volgende code laat zien hoe u een `DataSource` maakt en toevoegt aan de kaart.
 
@@ -47,17 +47,19 @@ var dataSource = new atlas.source.DataSource();
 map.sources.add(dataSource);
 ```
 
+Azure Maps voldoet aan de [tegel specificatie Mapbox vector](https://github.com/mapbox/vector-tile-spec), een open standaard.
+
 ## <a name="connecting-a-data-source-to-a-layer"></a>Een gegevens bron verbinden met een laag
 
-De gegevens worden weer gegeven op de kaart met behulp van lagen renderen. Naar één gegevens bron kan worden verwezen door een of meer rendering-lagen. Voor de volgende weergave lagen moet een gegevens bron worden uitgeschakeld:
+De gegevens worden weer gegeven op de kaart met behulp van lagen renderen. Naar één gegevens bron kan worden verwezen door een of meer rendering-lagen. Voor de volgende weergave lagen is een gegevens bron vereist:
 
 - [Bubble Layer](map-add-bubble-layer.md) : geeft punt gegevens weer als geschaalde cirkels op de kaart.
-- [Symbol-laag](map-add-pin.md) : geeft punt gegevens weer als pictogrammen en/of tekst.
+- [Symbol-laag](map-add-pin.md) : geeft punt gegevens weer als pictogrammen of tekst.
 - [Heatmap voor hitte](map-add-heat-map-layer.md) : geeft punt gegevens weer als een hitte heatmap.
-- [Lijn-laag](map-add-shape.md) : kan worden gebruikt om de lijn en of het overzicht van veelhoeken weer te geven. 
+- [Line Layer](map-add-shape.md) : een lijn weer geven en het overzicht van veelhoeken weer geven. 
 - [Veelhoek-laag](map-add-shape.md) : Hiermee wordt het gebied van een veelhoek gevuld met een effen kleur of een patroon voor een afbeelding.
 
-De volgende code laat zien hoe u een gegevens bron maakt, deze toevoegt aan de kaart en deze verbindt met een tekenlaag en vervolgens geojson Point-gegevens vanaf een externe locatie naar de laag kunt importeren. 
+De volgende code laat zien hoe u een gegevens bron maakt, hoe u deze toevoegt aan de kaart en hoe u deze verbindt met een Bubble Layer. En importeer vervolgens geojson Point-gegevens vanaf een externe locatie naar de gegevens bron. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -71,18 +73,18 @@ map.layers.add(new atlas.layer.BubbleLayer(datasource));
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
-Er zijn extra rendering lagen die geen verbinding maken met deze gegevens bronnen, maar de gegevens die ze rechtstreeks renderen, worden geladen. 
+Er zijn extra rendering lagen die geen verbinding maken met deze gegevens bronnen, maar ze kunnen de gegevens rechtstreeks laden voor rendering. 
 
 - [Afbeelding slaag](map-add-image-layer.md) : bedekking één afbeelding boven op de kaart en koppelt de hoeken aan een set opgegeven coördinaten.
 - [Tegel laag](map-add-tile-layer.md) : er wordt een raster tegel laag boven op de kaart opgelegd.
 
 ## <a name="one-data-source-with-multiple-layers"></a>Eén gegevens bron met meerdere lagen
 
-Meerdere lagen kunnen worden verbonden met één gegevens bron. Dit kan oneven klinken, maar er zijn veel verschillende scenario's waarin dit nuttig wordt. Neem bijvoorbeeld het scenario voor het maken van een veelhoek tekening. Wanneer een gebruiker een veelhoek tekent, moeten we het opvul gebied voor de opvulling renderen, omdat de gebruiker punten aan de kaart toevoegt. Als u een lijn met stijl hebt toegevoegd die de veelhoek omlijnt, ziet u de randen van de veelhoek terwijl deze worden getekend. Als u een bepaalde Sorteer bewerking, zoals een pincode of markering, toevoegt, wordt het gemakkelijker om elke afzonderlijke positie te bewerken. Hier volgt een afbeelding waarin dit scenario wordt gedemonstreerd.
+Meerdere lagen kunnen worden verbonden met één gegevens bron. Er zijn veel verschillende scenario's waarin deze optie handig is. Denk bijvoorbeeld na over het scenario waarin een gebruiker een veelhoek tekent. Het veelhoek gebied moet worden weer gegeven en gevuld wanneer de gebruiker punten toevoegt aan de kaart. Als u een lijn met stijl hebt toegevoegd om het overzicht van de veelhoek te maken, kunt u de randen van de veelhoek gemakkelijker zien, omdat de gebruiker tekent. Voor een gemakkelijke bewerking van een afzonderlijke positie in de veelhoek, kunnen we boven elke positie een koppeling toevoegen, zoals een pincode of een markering.
 
 ![Toewijzing met meerdere lagen die gegevens uit een enkele gegevens bron weer geven](media/create-data-source-web-sdk/multiple-layers-one-datasource.png)
 
-Als u dit scenario in de meeste toewijzings platforms wilt uitvoeren, moet u een veelhoek object, een lijn object en een pincode voor elke positie in de veelhoek maken. Als de veelhoek is gewijzigd, moet u de regel en pincodes hand matig bijwerken. deze kunnen snel complexer worden.
+In de meeste toewijzings platforms hebt u een veelhoek object, een lijn object en een pincode voor elke positie in de veelhoek nodig. Als de veelhoek is gewijzigd, moet u de regel en pincodes hand matig bijwerken. Dit kan snel complexer worden.
 
 Met Azure Maps hoeft u alleen maar één veelhoek in een gegevens bron te hebben, zoals in de onderstaande code wordt weer gegeven.
 

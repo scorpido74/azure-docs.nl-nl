@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077605"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186237"
 ---
 # <a name="building-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang bouwen
 
@@ -32,21 +32,21 @@ In het gedeelte toewijzingen bepaalt u de wie, wat en waar van het beleid voor v
 
 ### <a name="users-and-groups"></a>Gebruikers en groepen
 
-Gebruikers en groepen geven aan wie het beleid moet worden opgenomen of uitgesloten. Deze toewijzing kan alle gebruikers, specifieke groepen gebruikers, Directory rollen of externe gast gebruikers bevatten. 
+[Gebruikers en groepen](concept-conditional-access-users-groups.md) geven aan wie het beleid moet worden opgenomen of uitgesloten. Deze toewijzing kan alle gebruikers, specifieke groepen gebruikers, Directory rollen of externe gast gebruikers bevatten. 
 
-### <a name="cloud-apps-or-actions"></a>Cloud-apps of acties
+### <a name="cloud-apps-or-actions"></a>Cloud-apps of-acties
 
-Cloud-apps of-acties kunnen Cloud toepassingen of gebruikers acties die voor het beleid gelden, opnemen of uitsluiten.
+[Cloud-apps of-acties](concept-conditional-access-cloud-apps.md) kunnen Cloud toepassingen of gebruikers acties die voor het beleid gelden, opnemen of uitsluiten.
 
 ### <a name="conditions"></a>Voorwaarden
 
-Een beleid kan meerdere voor waarden bevatten.
+Een beleid kan meerdere [voor waarden](concept-conditional-access-conditions.md)bevatten.
 
 #### <a name="sign-in-risk"></a>Aanmeldings risico
 
 Voor organisaties met [Azure AD Identity Protection](../identity-protection/overview.md)kunnen de gegenereerde risico detecties van invloed zijn op uw beleid voor voorwaardelijke toegang.
 
-#### <a name="device-platforms"></a>Apparaatplatformen
+#### <a name="device-platforms"></a>Apparaat platforms
 
 Organisaties met meerdere besturingssysteem platforms kunnen specifieke beleids regels afdwingen op verschillende platformen. 
 
@@ -66,13 +66,15 @@ Deze toewijzings voorwaarde staat beleids regels voor voorwaardelijke toegang to
 
 Dit besturings element wordt gebruikt om apparaten uit te sluiten die zijn toegevoegd aan hybride Azure AD of die compatibel zijn met intune. Deze uitsluiting kan worden uitgevoerd om onbeheerde apparaten te blok keren. 
 
-## <a name="access-controls"></a>Besturingselementen voor toegang
+## <a name="access-controls"></a>Toegangs beheer
 
 In het gedeelte toegangs beheer van het beleid voor voorwaardelijke toegang wordt bepaald hoe een beleid wordt afgedwongen.
 
-### <a name="grant"></a>Verlenen
+### <a name="grant"></a>Geef
 
-#### <a name="block-access"></a>Toegang blokkeren
+[Grant](concept-conditional-access-grant.md) biedt beheerders een methode voor het afdwingen van beleid waarbij ze toegang kunnen blok keren of verlenen.
+
+#### <a name="block-access"></a>Toegang blok keren
 
 Toegang blok keren alleen dat houdt in dat de toegang onder de opgegeven toewijzingen wordt geblokkeerd. De blok kering van het besturings element is krachtig en moet worden beheerd met de juiste kennis.
 
@@ -93,9 +95,9 @@ Beheerders kunnen ervoor kiezen om een van de vorige besturings elementen of all
 
 ### <a name="session"></a>Sessie
 
-Sessie besturings elementen kunnen de ervaring beperken 
+[Sessie besturings elementen](concept-conditional-access-session.md) kunnen de ervaring beperken 
 
-- Door apps gehandhaafde beperkingen gebruiken
+- Door apps afgedwongen beperkingen gebruiken
    - Werkt momenteel alleen met Exchange Online en share point online.
       - Hiermee worden apparaatgegevens door gegeven om het beheer van de ervaring met volledige of beperkte toegang toe te staan.
 - App-beheer voor voorwaardelijke toegang gebruiken
@@ -121,11 +123,11 @@ Een beleid voor voorwaardelijke toegang moet mini maal het volgende bevatten om 
 
 ![Leeg beleid voor voorwaardelijke toegang](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+Het artikel [common Conditional Access policies](concept-conditional-access-policy-common.md) bevat enkele beleids regels die van belang zijn voor de meeste organisaties.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
-
-[Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 
 [Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen](../authentication/howto-mfa-getstarted.md)
 

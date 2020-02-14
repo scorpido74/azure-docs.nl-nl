@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 46d566dc7527097d36b72886ada1f8c94f727535
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056679"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198748"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
-Wanneer u taakverdelings regels met Azure Load Balancer gebruikt, moet u een status test opgeven zodat Load Balancer de status van het back-end-eind punt kan detecteren.  De configuratie van de status test en test reacties bepalen welke back-endadresgroep instanties nieuwe stromen ontvangen. U kunt Health tests gebruiken om het mislukken van een toepassing op een back-end-eind punt te detecteren. U kunt ook een aangepast antwoord op een status test genereren en de status test voor datatransport besturing gebruiken om de belasting of geplande downtime te beheren. Wanneer een status test is mislukt, verzendt Load Balancer geen nieuwe stromen meer naar het respectieve beschadigde exemplaar. De uitgaande connectiviteit heeft geen invloed op de toegang tot binnenkomende verbindingen.
+Wanneer u regels voor taak verdeling met Azure Load Balancer gebruikt, moet u status controles opgeven zodat Load Balancer de status van het back-end-eind punt kunt detecteren.  De configuratie van de status test en test reacties bepalen welke back-endadresgroep instanties nieuwe stromen ontvangen. U kunt Health tests gebruiken om het mislukken van een toepassing op een back-end-eind punt te detecteren. U kunt ook een aangepast antwoord op een status test genereren en de status test voor datatransport besturing gebruiken om de belasting of geplande downtime te beheren. Wanneer een status test is mislukt, verzendt Load Balancer geen nieuwe stromen meer naar het respectieve beschadigde exemplaar. De uitgaande connectiviteit heeft geen invloed op de toegang tot binnenkomende verbindingen.
 
 Status controles bieden ondersteuning voor meerdere protocollen. De beschik baarheid van een specifiek Health probe protocol verschilt per Load Balancer SKU.  Daarnaast is het gedrag van de service afhankelijk van de SKU van Load Balancer, zoals wordt weer gegeven in deze tabel:
 

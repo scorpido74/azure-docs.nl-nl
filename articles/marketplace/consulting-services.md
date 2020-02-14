@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825977"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191129"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in azure Marketplace en AppSource biedt micro soft partners het doel om klanten met services te verbinden om hun gebruik van Azure-en bedrijfs doelstellingen te ondersteunen en uit te breiden. 
@@ -94,7 +94,7 @@ Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden v
 
 |Instellen voor nieuwe uitgevers  |
 |---------|
-|MPN-id     |
+|MPN-ID     |
 |Bedrijfs logo's (48 &#215; 48, 216 &#215; 216)     |
 |Doel van de lead     |
 
@@ -151,7 +151,7 @@ Voorbeelden:
 
 Wanneer u de beschrijving van de aanbieding bekijkt en samen vattingen van aanbiedingen, worden de volgende criteria toegepast op het team:
 
-|Type aanbieding  |Vereist |Aanbevolen  |
+|Aanbiedings type  |Vereist |Aanbevolen  |
 |---------|---------|---------|
 |**Evaluatie**    |   Neem een gedetailleerde agenda voor evaluaties van meerdere dagen of meerdere weken op en geef aan welk product de klant kan verwachten      |    Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines     |
 |**Briefing**    |   Stel in welk product de klant kan verwachten. Onthoud dat er persoonlijke informatie moet worden aangeboden. Als u een virtuele service levert, kiest u een ander type aanbieding    |  Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines       |
@@ -159,7 +159,7 @@ Wanneer u de beschrijving van de aanbieding bekijkt en samen vattingen van aanbi
 |**Testen van concept**    |    Stel in welke technische wijzigingen, technische artefacten of andere artefacten een klant kan worden verwacht als gevolg van de betrokkenheid     | Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines        |
 |**Workshop**    |   U kunt dagelijks, wekelijks of maandelijks een gedetailleerde agenda toevoegen, afhankelijk van de gekozen duur van uw aanbieding. Stel vast wat de leer doelen of andere producten van uw workshop zijn     |   Optimaliseer uw aanbod overzicht met de tref woorden van uw belangrijkste zoek machines      |
 
-In Cloud Partner-portal kunt u opmaak aan uw vermelding toevoegen met behulp van [prijs verlaging](https://docs.microsoft.com/contribute/how-to-write-use-markdown). Dit is een licht gewicht ontwerp taal waarmee u uw vermelding eenvoudig kunt toevoegen. 
+In Cloud Partner-portal kunt u opmaak aan uw vermelding toevoegen met behulp van [prijs verlaging](/contribute/markdown-reference). Dit is een licht gewicht ontwerp taal waarmee u uw vermelding eenvoudig kunt toevoegen. 
 
 **Voor beeld van kortings notities**
 * Voeg * aan het begin en het einde van het Kopieer blok-zonder ruimte om cursief te maken (bijvoorbeeld: *inhoud*)

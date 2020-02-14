@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836045"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193376"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -48,8 +48,8 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Culture:LanguageName} | De ISO-code van twee letters voor de taal. | en |
-| {Culture: LCID}   | De LCID van de taal code. | 1033 |
+| {Culture:LanguageName} | De ISO-code van twee letters voor de taal. | nl |
+| {Culture: LCID}   | De LCID van de taal code. | 1043 |
 | {Culture: regionaam} | De ISO-code van twee tekens voor de regio. | VS |
 | {Culture: RFC5646} | De RFC5646-taal code. | nl-NL |
 
@@ -66,14 +66,14 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |De query reeks parameter `acr_values`. | N/A |
+| {OIDC: AuthenticationContextReferences} |De query reeks parameter `acr_values`. | N.v.t. |
 | {OIDC: ClientId} |De query reeks parameter `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |De query reeks parameter `domain_hint`. | facebook.com |
 | {OIDC: LoginHint} |  De query reeks parameter `login_hint`. | someone@contoso.com |
-| {OIDC: MaxAge} | Het `max_age`. | N/A |
+| {OIDC: MaxAge} | Het `max_age`. | N.v.t. |
 | {OIDC: nonce} |De query reeks parameter `Nonce`. | defaultNonce |
 | {OIDC: prompt} | De query reeks parameter `prompt`. | aanmelding |
-| {OIDC: resource} |De query reeks parameter `resource`. | N/A |
+| {OIDC: resource} |De query reeks parameter `resource`. | N.v.t. |
 | {OIDC: bereik} |De query reeks parameter `scope`. | OpenID Connect |
 
 ### <a name="context"></a>Context
@@ -96,13 +96,35 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | {OAUTH-KV:campaignId} | Een query reeks parameter. | Hawaï |
 | {OAUTH-KV: app_session} | Een query reeks parameter. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Een query reeks parameter. | 1234 |
-| {OAUTH-KV: elke aangepaste query reeks} | Een query reeks parameter. | N/A |
+| {OAUTH-KV: elke aangepaste query reeks} | Een query reeks parameter. | N.v.t. |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Het toegangs token. | N/A |
+| {oauth2:access_token} | Het toegangs token. | N.v.t. |
+
+## <a name="using-claim-resolvers"></a>Claim resolvers gebruiken 
+
+U kunt met behulp van claim resolvers gebruikmaken van de volgende elementen: 
+
+| Item | Element | Instellingen |
+| ----- | ----------------------- | --------|
+|Technisch profiel Application Insights |`InputClaim` | |
+|Technisch profiel [Azure Active Directory](active-directory-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Technisch profiel voor [OAuth2](oauth2-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect Connect](openid-connect-technical-profile.md) technische profiel| `InputClaim`, `OutputClaim`| 1, 2|
+|Technisch profiel voor [trans formatie van claims](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Technisch profiel van de [Rest-provider](restful-technical-profile.md)| `InputClaim`| 1, 2|
+|Technisch profiel voor [SAML2](saml-technical-profile.md)| `OutputClaim`| 1, 2|
+|Een [zelf-bevestigd](self-asserted-technical-profile.md) technisch profiel| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|Technisch profiel voor [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
+
+Instellingen: 
+1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld op `true`
+1. Het kenmerk voor de invoer-of uitvoer claims `AlwaysUseDefaultValue` moet worden ingesteld op `true`
 
 ## <a name="how-to-use-claim-resolvers"></a>Claim resolvers gebruiken
 
