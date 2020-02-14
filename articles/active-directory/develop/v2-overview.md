@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700291"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194497"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Overzicht van micro soft Identity platform (v 2.0)
 
@@ -42,7 +42,11 @@ Met micro soft Identity platform kunt u eenmaal code schrijven en elke gebruiker
 
 ## <a name="getting-started"></a>Aan de slag
 
-Werken met identiteiten hoeft niet moeilijk te zijn. Kies een [scenario](authentication-flows-app-scenarios.md) dat voor u van toepassing is: elk scenario pad heeft een Snelstartgids en een overzichts pagina waarmee u binnen enkele minuten aan de slag kunt.
+Werken met identiteiten hoeft niet moeilijk te zijn. 
+
+Bekijk een [video over micro soft Identity platform](identity-videos.md) voor meer informatie over de basis principes. 
+
+Kies een [scenario](authentication-flows-app-scenarios.md) dat voor u van toepassing is: elk scenario pad heeft een Snelstartgids en een overzichts pagina waarmee u binnen enkele minuten aan de slag kunt.
 
 - [Een app met één pagina bouwen](scenario-spa-overview.md)
 - [Een web-app bouwen die gebruikers aanmeldt](scenario-web-app-sign-user-overview.md)

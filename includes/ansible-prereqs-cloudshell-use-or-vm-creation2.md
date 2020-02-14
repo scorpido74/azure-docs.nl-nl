@@ -4,14 +4,14 @@ ms.service: ansible
 ms.topic: include
 ms.date: 04/30/2019
 ms.author: tarcher
-ms.openlocfilehash: 5c3f47cefb9f583047908a2d7442afb7b3b7b8b3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fc04bcbe811db189c040b32f6924b3a51d3d9b10
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176055"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193579"
 ---
-- **Ansible installeren**: Voer een van de volgende opties:
+- **Ansible installeren**: Voer een van de volgende opties uit:
 
-    - [Installeer](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) en [configureren](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials) Ansible op een Linux-machine 
-    - [Configureren van Azure Cloud Shell](/azure/cloud-shell/quickstart) en, als u geen toegang tot een virtuele Linux-machine hebt - [een virtuele machine maken met Ansible](/azure/virtual-machines/linux/ansible-create-vm).
+    - Ansible [installeren](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) en [configureren](/azure/ansible/ansible-install-configure#create-azure-credentials) op een virtuele Linux-machine 
+    - [Azure Cloud shell configureren](/azure/cloud-shell/quickstart) en: als u geen toegang hebt tot een virtuele Linux-machine, [maakt u een virtuele machine met Ansible](/azure/ansible/ansible-create-vm).

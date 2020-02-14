@@ -5,16 +5,16 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 6d09453db0fdf8c09ad6d90c63b27f48508302be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b343adeed5abeecdf55f71f8bc4298659a106e09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230717"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198391"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Uw eerste functie maken met Visual Studio
 
-Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren.
+Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren.
 
 In dit artikel leert u hoe u Visual Studio 2019 kunt gebruiken om lokaal een ' Hallo wereld ' te maken en te testen en vervolgens naar Azure te publiceren. Deze Quick start is ontworpen voor Visual Studio 2019. Wanneer u een functions-project maakt met behulp van Visual Studio 2017, moet u eerst de [nieuwste Azure functions-hulpprogram ma's](functions-develop-vs.md#check-your-tools-version)installeren.
 
@@ -32,7 +32,7 @@ Als u deze zelf studie wilt volt ooien, moet u eerst [Visual Studio 2019](https:
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio maakt een project en een klasse die standaard code voor het functie type HTTP-trigger bevatten. Met het kenmerk `FunctionName` van de methode wordt de naam van de functie ingesteld. deze is standaard `HttpTrigger`. Het kenmerk `HttpTrigger` geeft aan dat de functie wordt geactiveerd door een HTTP-aanvraag. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
+Visual Studio maakt een project en een klasse die standaard code voor het functie type HTTP-trigger bevatten. Met het kenmerk `FunctionName` van de methode wordt de naam van de functie ingesteld. deze is standaard `Function1`. Het kenmerk `HttpTrigger` geeft aan dat de functie wordt geactiveerd door een HTTP-aanvraag. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
 
 U kunt de mogelijkheden van uw functie uitbreiden met behulp van invoer-en uitvoer bindingen door de juiste kenmerken toe te passen op de-methode. Zie de sectie [Triggers en bindingen](functions-dotnet-class-library.md#triggers-and-bindings) van de [Azure Functions C#-referentie voor ontwikkelaars](functions-dotnet-class-library.md) voor meer informatie.
 

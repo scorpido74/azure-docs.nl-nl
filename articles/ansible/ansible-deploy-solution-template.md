@@ -4,12 +4,12 @@ description: In deze Quick Start leert u hoe u de oplossings sjabloon Ansible im
 keywords: ansible, azure, devops, solution template, virtual machine, managed identities for azure resources, centos, red hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156324"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193783"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Snelstartgids: de Ansible-oplossings sjabloon voor Azure implementeren op CentOS
 
@@ -85,4 +85,4 @@ De Ansible-oplossingssjabloon voor Azure is ontworpen voor het configureren van 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Snelstartgids: een virtuele Linux-machine configureren in azure met behulp van Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Snelstartgids: een virtuele Linux-machine configureren in azure met behulp van Ansible](./ansible-create-vm.md)

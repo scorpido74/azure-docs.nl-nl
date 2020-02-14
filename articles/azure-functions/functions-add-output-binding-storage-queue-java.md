@@ -3,12 +3,12 @@ title: Uw Java-functie verbinden met Azure Storage
 description: Meer informatie over het verbinden van een door HTTP geactiveerde Java-functie naar Azure Storage met behulp van een uitvoer binding voor de wachtrij opslag.
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926902"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198544"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Uw Java-functie verbinden met Azure Storage
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
+> Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#add-to-your-functions-app) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
 
 Activeer, net als voorheen, de functie vanaf de opdracht regel met behulp van krul in een nieuw terminal venster:
 

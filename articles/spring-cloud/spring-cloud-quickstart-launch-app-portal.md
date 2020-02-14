@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137742"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201540"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -76,9 +76,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Ga naar de **overzichts** pagina van de service en selecteer **Configuratie server**.
 
-1. Stel in het gedeelte **standaard opslagplaats** de **URI** in op https\://github.com/azure-samples/piggymetrics.
-
-1. Stel het **Label** in op config.
+1. Stel in de sectie **standaard opslagplaats** de **URI** in op "https://github.com/Azure-Samples/piggymetrics-config".
 
 1. Selecteer **Toep assen** om uw wijzigingen op te slaan.
 

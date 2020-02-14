@@ -3,12 +3,12 @@ title: Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 description: Een Azure Storage wachtrij integreren met een python-functie met behulp van een uitvoer binding.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715368"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198476"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
@@ -156,7 +156,7 @@ Houd er rekening mee dat u *geen* code hoeft te schrijven voor verificatie, het 
 1. Wanneer u klaar bent, stopt u de host met **Ctrl**+**C**.
 
 > [!TIP]
-> Tijdens het opstarten downloadt en installeert de host de [uitbrei ding voor opslag bindingen](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) en andere micro soft-bindings extensies. Deze installatie treedt op omdat bindings uitbreidingen standaard zijn ingeschakeld in het bestand *host. json* met de volgende eigenschappen:
+> Tijdens het opstarten downloadt en installeert de host de [uitbrei ding voor opslag bindingen](functions-bindings-storage-blob.md#add-to-your-functions-app) en andere micro soft-bindings extensies. Deze installatie treedt op omdat bindings uitbreidingen standaard zijn ingeschakeld in het bestand *host. json* met de volgende eigenschappen:
 >
 > ```json
 > {

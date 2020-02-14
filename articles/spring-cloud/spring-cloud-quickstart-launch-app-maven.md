@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278928"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201425"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
 
@@ -33,7 +33,7 @@ In deze Quick Start leert u het volgende:
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdrachten in dit artikel uit te voeren. Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud shell](https://shell.azure.com). Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md)voor meer informatie.
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 1. [Installeer Git](https://git-scm.com/).
 2. [Installeer jdk 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -63,7 +63,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat
 ## <a name="set-up-your-configuration-server"></a>De configuratie server instellen
 
 1. Selecteer op de pagina service **overzicht** de optie **Configuratie server**.
-1. Stel in de sectie **standaard opslagplaats** de optie **URI** in op **https://github.com/Azure-Samples/piggymetrics** , stel **Label** in op **configuratie**en selecteer vervolgens **Toep assen** om uw wijzigingen op te slaan.
+1. Stel in de sectie **standaard opslagplaats** de optie **URI** in op **https://github.com/Azure-Samples/piggymetrics-config** en selecteer vervolgens **Toep assen** om uw wijzigingen op te slaan.
 
     > [!div class="mx-imgBorder"]
     > configuratie-instellingen ![definiëren en Toep assen](media/maven-qs-apply-config.jpg)
