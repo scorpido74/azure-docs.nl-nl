@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 78c20c72d0e344d993878f6e06ccc94f42048606
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162324"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187465"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met behulp van .NET core (micro soft. Azure. Event hubs)
 In deze Quick start ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van de **micro soft. Azure. Event hubs** .net core-bibliotheek.
@@ -371,6 +371,9 @@ Voeg de NuGet-pakketten voor [**Microsoft.Azure.EventHubs**](https://www.nuget.o
 ## <a name="next-steps"></a>Volgende stappen
 Lees de volgende artikelen:
 
+- Voor [beelden van op rollen gebaseerd toegangs beheer (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+    
+    In deze voor beelden wordt de oude bibliotheek van **micro soft. Azure. Event hubs** gebruikt, maar u kunt deze eenvoudig bijwerken met de meest recente **Azure. Messa ging. Event hubs** -bibliotheek. Zie de [hand leiding voor het migreren van micro soft. Azure. Event hubs naar Azure. Messa ging. Event hubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)om het voor beeld te verplaatsen van het gebruik van de oude bibliotheek naar een nieuwe.
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Functies en terminologie in Azure Event Hubs](event-hubs-features.md)
 - [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

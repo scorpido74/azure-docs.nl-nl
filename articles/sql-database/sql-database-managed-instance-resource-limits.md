@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443833"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201727"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -29,7 +29,7 @@ Dit artikel bevat een overzicht van de technische kenmerken en resource limieten
 
 Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn van de onderliggende infra structuur en architectuur. Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware gegenereerd: Gen4 en GEN5. Hardware-generaties hebben verschillende kenmerken, zoals wordt beschreven in de volgende tabel:
 
-|   | **Gen4** | **Gen5** |
+|   | **Gen4** | **GEN5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake)-processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
 | Aantal vCores | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
@@ -38,14 +38,14 @@ Het beheerde exemplaar heeft kenmerken en resource limieten die afhankelijk zijn
 | Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: 1 TB | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
-> - Gen4-hardware wordt gefaseerd uitgevoerd. Het is raadzaam om nieuwe beheerde exemplaren te implementeren op GEN5-hardware.
-> - Gen4-hardware is op dit moment nog steeds beschikbaar in de volgende regio's: Europa-noord, Europa-west, VS-Oost, Zuid-Centraal VS, Noord-Centraal VS, VS-West 2, centraal VS, Canada-centraal, India-zuid, Zuidoost-Azië en Korea-centraal.
+> - Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor de nieuwe implementaties. Alle nieuwe beheerde exemplaren moeten worden geïmplementeerd op GEN5-hardware.
+> - Overweeg om [uw beheerde instanties te verplaatsen naar Gen 5](sql-database-service-tiers-vcore.md) -hardware, zodat u een breder scala aan vCore-en opslag schaal baarheid, versneld netwerken, beste IO-prestaties en minimale latentie kunt ervaren.
 
 ### <a name="in-memory-oltp-available-space"></a>Beschik bare ruimte in geheugen voor OLTP 
 
 De hoeveelheid OLTP-ruimte in het geheugen in [bedrijfskritiek](sql-database-service-tier-business-critical.md) servicelaag is afhankelijk van het aantal vCores en de generatie van hardware. In de volgende tabel worden de limieten van het geheugen weer gegeven dat kan worden gebruikt voor OLTP-objecten in het geheugen.
 
-| OLTP-ruimte in het geheugen  | **Gen5** | **Gen4** |
+| OLTP-ruimte in het geheugen  | **GEN5** | **Gen4** |
 | --- | --- | --- |
 | 4 vCores  | 3,14 GB | |   
 | 8 vCores  | 6,28 GB | 8 GB |
@@ -114,7 +114,7 @@ Beheerde exemplaren kunnen alleen worden gemaakt in [ondersteunde regio's](https
 Managed instance biedt momenteel alleen ondersteuning voor de implementatie van de volgende typen abonnementen:
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Pay-as-you-go](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Cloud serviceprovider (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
@@ -178,7 +178,7 @@ Het proces voor het verkrijgen van een groter quotum initiëren:
 
 5. Klik op **Volgende**.
 6. Voer op het tabblad contact gegevens voor de nieuwe ondersteunings aanvraag de voor Keurs methode voor contact personen (e-mail adres of telefoon nummer) en de contact gegevens in.
-7. Klik op **Maken**.
+7. Klik op **Create**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

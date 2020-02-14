@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: uw eerste ML model met R'
+title: 'Zelf studie: logistiek regressie model in R'
 titleSuffix: Azure Machine Learning
-description: In deze zelf studie leert u de funderings ontwerp patronen in Azure Machine Learning en traint u een logistiek regressie model model met R-pakketten azuremlsdk en caret om kans op een onherstelbare fout in een auto Mobile-ongeval te voors pellen.
+description: In deze zelf studie maakt u een logistiek regressie model met R-pakketten azuremlsdk en caret om de kans op een onherstelbare fout in een auto Mobile-ongeval te voors pellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,27 +9,28 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533445"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191256"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Zelf studie: uw eerste model trainen en implementeren in R met Azure Machine Learning
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Zelf studie: een logistiek regressie model maken in R met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning.  U traint en implementeert een **caret** -model om de kans op een onherstelbare fout in een auto Mobile-ongeval te voors pellen. Na het volt ooien van deze zelf studie beschikt u over de praktische kennis van de R-SDK voor het uitbreiden van meer complexe experimenten en werk stromen.
+In deze zelf studie gebruikt u R en Azure Machine Learning voor het maken van een logistiek-regressie model dat de kans op een onherstelbare fout voor komt in een auto Mobile-ongeval. Na het volt ooien van deze zelf studie hebt u de praktische kennis van de Azure Machine Learning R SDK om te schalen tot het ontwikkelen van complexere experimenten en werk stromen.
 
-In deze zelfstudie leert u het volgende:
-
+In deze zelfstudie voert u de volgende taken uit:
 > [!div class="checklist"]
-> * Uw werk ruimte verbinden
+> * Een Azure Machine Learning-werkruimte maken
+> * Een notitieblokmap-map klonen met de bestanden die nodig zijn om deze zelf studie uit te voeren in uw werk ruimte
+> * RStudio openen vanuit uw werk ruimte
 > * Gegevens laden en trainingen voorbereiden
-> * Gegevens uploaden naar de Data Store zodat deze beschikbaar is voor externe training
-> * Een compute-resource maken
-> * Een caret-model trainen om de kans op onherstelbaarheid te voors pellen
+> * Gegevens uploaden naar een gegevens opslag, zodat deze beschikbaar is voor externe training
+> * Een reken resource maken om het model op afstand te trainen
+> * Een `caret` model trainen om de kans op onherstelbaarheid te voors pellen
 > * Een Voorspellings eindpunt implementeren
 > * Het model testen vanuit R
 
@@ -66,13 +67,11 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 1. Open de map met een versie nummer.  Dit nummer vertegenwoordigt de huidige release voor de R SDK.
 
-1. Open de map **vignettes** .
-
-1. Selecteer **'... '** aan de rechter kant van de map **Train-and-Deploy-to-ACI** en selecteer vervolgens **klonen**.
+1. Selecteer de **'... '** aan de rechter kant van de map **vignettes** en selecteer vervolgens **klonen**.
 
     ![Map klonen](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. Er wordt een lijst met mappen weer gegeven met alle gebruikers die toegang hebben tot de werk ruimte.  Selecteer de map waarin u de map **Train-and-Deploy-to-ACI** wilt klonen.
+1. Er wordt een lijst met mappen weer gegeven met alle gebruikers die toegang hebben tot de werk ruimte.  Selecteer de map waarin u de map **vignettes** wilt klonen.
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">RStudio openen
 
@@ -84,12 +83,13 @@ Gebruik RStudio op een reken instantie of laptop-VM om deze zelf studie uit te v
 
 1. Zodra de compute wordt uitgevoerd, gebruikt u de **RStudio** -koppeling om RStudio te openen.
 
-1. In RStudio zijn uw **Train-en--Deploy-to-ACI** -map enkele niveaus lager dan **gebruikers** in de sectie **bestanden** op de rechter benedenhoek.  Selecteer de map **Train-and-Deploy-to-ACI** om de bestanden te vinden die nodig zijn in deze zelf studie.
+1. In RStudio is uw *vignettes* -map een aantal niveaus lager dan *gebruikers* in de sectie **files** op de rechter benedenhoek.  Selecteer onder *vignettes*de map *Train-and-Deploy-to-ACI* om de bestanden te vinden die nodig zijn in deze zelf studie.
 
 > [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als u ziet in de **training-en-Deploy-to-ACI. RMD** -bestand. Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.  
+> De rest van dit artikel bevat dezelfde inhoud als u ziet in de *training-en-Deploy-to-ACI. RMD* -bestand. Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.  
 
-## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
+
+## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 De configuratie voor uw ontwikkel werkzaamheden in deze zelf studie bevat de volgende acties:
 
 * De vereiste pakketten installeren
@@ -102,12 +102,6 @@ In deze zelf studie wordt ervan uitgegaan dat u de Azure ML SDK al hebt geïnsta
 
 ```R
 library(azuremlsdk)
-```
-
-In de zelf studie worden gegevens uit het [ **daag** -pakket](https://cran.r-project.org/package=DAAG)gebruikt. Installeer het pakket als u het niet hebt.
-
-```R
-install.packages("DAAG")
 ```
 
 De trainings-en Score scripts (`accidents.R` en `accident_predict.R`) hebben een aantal aanvullende afhankelijkheden. Als u van plan bent om deze scripts lokaal uit te voeren, zorg er dan voor dat u die vereiste pakketten ook hebt.
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>Gegevens voorbereiden voor training
-In deze zelf studie worden gegevens uit het **daag** -pakket gebruikt. Deze gegevensset bevat gegevens van meer dan 25.000 car-crashes in de VS, met variabelen die u kunt gebruiken om de kans op een onherstelbaarheid te voors pellen. Importeer eerst de gegevens in R en transformeer deze in een nieuwe data frame `accidents` voor analyse en exporteer deze naar een `Rdata` bestand.
+In deze zelf studie wordt gebruikgemaakt van gegevens van het Amerikaanse [National snelweg-verkeer voor beveiliging](https://cdan.nhtsa.gov/tsftables/tsfar.htm) (met dank aan [Mary C. Meyer en Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)).
+Deze gegevensset bevat gegevens van meer dan 25.000 car-crashes in de VS, met variabelen die u kunt gebruiken om de kans op een onherstelbaarheid te voors pellen. Importeer eerst de gegevens in R en transformeer deze in een nieuwe data frame `accidents` voor analyse en exporteer deze naar een `Rdata` bestand.
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -394,5 +394,6 @@ U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Bek
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u uw eerste Azure Machine Learning experiment in R hebt voltooid, kunt u meer informatie vinden over de [Azure machine learning SDK voor r](https://azure.github.io/azureml-sdk-for-r/index.html).
+* Nu u uw eerste Azure Machine Learning experiment in R hebt voltooid, kunt u meer informatie vinden over de [Azure machine learning SDK voor r](https://azure.github.io/azureml-sdk-for-r/index.html).
 
+* Meer informatie over Azure Machine Learning met R in de voor beelden in de andere *vignettes* -mappen.

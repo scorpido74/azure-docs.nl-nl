@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d8461cb2d98ec8fe914c2cc878e9002d132c9995
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b9c458b42f7436377d41cf5095d404dedbe0ffd1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845815"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191613"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 
@@ -21,7 +21,7 @@ Met de service-eind punten voor virtuele netwerken voor Azure Key Vault kunt u d
 
 Er is een belang rijke uitzonde ring op deze beperking. Als een gebruiker is aangemeld om vertrouwde micro soft-Services toe te staan, kunnen verbindingen van deze services via de firewall worden toegestaan. Deze services omvatten bijvoorbeeld Office 365 Exchange Online, Office 365 share point online, Azure compute, Azure Resource Manager en Azure Backup. Dergelijke gebruikers moeten nog steeds een geldig Azure Active Directory token presen teren en moeten machtigingen hebben (geconfigureerd als toegangs beleid) om de aangevraagde bewerking uit te voeren. Zie [service-eind punten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
 
-## <a name="usage-scenarios"></a>Gebruiksscenario's
+## <a name="usage-scenarios"></a>Gebruiks scenario's
 
 U kunt [Key Vault firewalls en virtuele netwerken](key-vault-network-security.md) configureren om de toegang tot verkeer van alle netwerken (met inbegrip van Internet verkeer) standaard te weigeren. U kunt toegang verlenen aan verkeer van specifieke virtuele Azure-netwerken en open bare IP-adresbereiken voor het Internet, zodat u een beveiligde netwerk grens voor uw toepassingen maakt.
 
@@ -66,7 +66,7 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 |Implementatie service voor Azure Resource Manager-sjabloon|[Beveiligde waarden door geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md).|
 |Volume Encryption-service Azure Disk Encryption|Toegang tot de BitLocker-sleutel (Windows-VM) of DM-wachtwoordzin (Linux-VM) en sleutel versleutelings sleutel toestaan tijdens de implementatie van de virtuele machine. Hiermee maakt u [Azure Disk Encryption](../security/fundamentals/encryption-overview.md)mogelijk.|
 |Azure Backup|Het maken van back-ups en het herstellen van relevante sleutels en geheimen tijdens Azure Virtual Machines backup toestaan met behulp van [Azure backup](../backup/backup-introduction-to-azure-backup.md).|
-|Exchange Online & Share Point online|Toegang tot de klant sleutel toestaan voor de code ring van Azure Storage-service met de code van de [klant](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
+|Exchange Online & Share Point online|Toegang tot de klant sleutel toestaan voor de code ring van Azure Storage-service met de code van de [klant](/microsoft-365/compliance/customer-key-overview).|
 |Azure Information Protection|Toegang tot de Tenant sleutel voor [Azure Information Protection toestaan.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Implementeer het Azure web app-certificaat via Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Database|[Transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en het Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
@@ -76,7 +76,7 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 |Azure API Management|[Certificaten voor een aangepast domein van Key Vault implementeren met behulp van MSI](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 |Azure Data Factory|[Referenties voor gegevens opslag ophalen in Key Vault van Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Service Bus van Azure|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
+|Azure Service Bus|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 
 
 > [!NOTE]

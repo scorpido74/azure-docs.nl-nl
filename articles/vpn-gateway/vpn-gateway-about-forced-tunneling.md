@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834588"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201574"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Geforceerde tunneling met het klassieke implementatiemodel configureren
 
@@ -33,13 +33,13 @@ Geforceerde tunneling in Azure wordt geconfigureerd via het virtuele netwerk zel
 
 * Elk virtueel netwerksubnet heeft een ingebouwde, systeem-routeringstabel. De routeringstabel van het systeem heeft de volgende drie groepen van routes:
 
-  * **Lokale VNet routes:** rechtstreeks naar de bestemming VM's in hetzelfde virtuele netwerk.
-  * **On-premises routes:** naar de Azure VPN-gateway.
-  * **Standaard-route:** rechtstreeks met Internet. Pakketten dat is bestemd voor het particuliere IP-adressen niet wordt gedekt door de vorige twee routes verwijderd.
+  * **Lokale VNet-routes:** Rechtstreeks naar de doel-Vm's in hetzelfde virtuele netwerk.
+  * **On-premises routes:** Naar de Azure VPN-gateway.
+  * **Standaard route:** Rechtstreeks op internet. Pakketten dat is bestemd voor het particuliere IP-adressen niet wordt gedekt door de vorige twee routes verwijderd.
 * U kunt met de release van de gebruiker gedefinieerde routes maken een routeringstabel om toe te voegen een standaardroute en koppel vervolgens de routeringstabel naar de subnetten van uw VNet om in te schakelen geforceerde tunneling op deze subnetten.
 * U moet een 'standaard-site"tussen de cross-premises lokale sites die zijn verbonden met het virtuele netwerk instellen.
 * Geforceerde tunneling moet worden gekoppeld aan een VNet met een VPN-gateway voor dynamische routering (niet een statische gateway genoemd).
-* ExpressRoute geforceerde tunneling is niet geconfigureerd via dit mechanisme, maar in plaats daarvan wordt ingeschakeld door kondigt een standaardroute via de ExpressRoute-BGP-peeringsessies. Raadpleeg de [documentatie voor ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) voor meer informatie.
+* ExpressRoute geforceerde tunneling is niet geconfigureerd via dit mechanisme, maar in plaats daarvan wordt ingeschakeld door kondigt een standaardroute via de ExpressRoute-BGP-peeringsessies. Raadpleeg de [ExpressRoute-documentatie](https://azure.microsoft.com/documentation/services/expressroute/) voor meer informatie.
 
 ## <a name="configuration-overview"></a>Configuratieoverzicht
 In het volgende voorbeeld wordt tunnel de front-end subnet niet gedwongen. De werkbelastingen in het subnet Frontend kunnen blijven om te accepteren en rechtstreeks reageren op aanvragen van klanten via Internet. De middelste laag en back-end-subnetten zijn geforceerde tunnels. Uitgaande verbindingen vanuit deze twee subnetten met het Internet wordt afgedwongen of keert u terug naar een on-premises site via een van de S2S VPN-tunnels.
@@ -49,11 +49,24 @@ Hiermee kunt u om te beperken en controleren van toegang tot het Internet van uw
 ![Geforceerde tunneling](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Controleer of u beschikt over de volgende items voordat u begint met de configuratie.
+Controleer of u beschikt over de volgende items voordat u begint met de configuratie:
 
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial/).
 * Een geconfigureerde virtueel netwerk. 
-* De meest recente versie van de Azure PowerShell-cmdlets. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets.
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+
+### <a name="to-sign-in"></a>Aanmelden
+
+1. Open de Power shell-console met verhoogde bevoegdheden. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
+
+   ```powershell
+   azure config mode asm
+   ```
+2. Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="configure-forced-tunneling"></a>Geforceerde tunneling configureren
 De volgende procedure ziet u een geforceerde tunnels voor een virtueel netwerk opgeven. De configuratiestappen komen overeen met het configuratiebestand van de VNet-netwerk.

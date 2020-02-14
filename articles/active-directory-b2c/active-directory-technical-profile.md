@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f00bebfbab7b3726930e212893ae9dd2f5c17c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835790"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193439"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -253,7 +253,7 @@ Met het volgende technische profiel wordt een sociaal gebruikers account verwijd
 ```
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `Read`, `Write`, `DeleteClaims`of `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nee | Een fout veroorzaken als het gebruikers object niet in de map bestaat. Mogelijke waarden: `true` of `false`. |
@@ -262,6 +262,7 @@ Met het volgende technische profiel wordt een sociaal gebruikers account verwijd
 | UserMessageIfClaimsPrincipalAlreadyExists | Nee | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. De waarde kan worden [gelokaliseerd](localization.md).|
 | ApplicationObjectId | Nee | De object-id van de toepassing voor extensie kenmerken. Waarde: ObjectId van een toepassing. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md). |
 | ClientId | Nee | De client-id voor toegang tot de Tenant als derde partij. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
 
 
 

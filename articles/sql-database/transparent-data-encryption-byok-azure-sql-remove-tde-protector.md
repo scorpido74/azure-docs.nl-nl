@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: ba591872f4f8af93e5f7e13e0fb69d0679fd1a0c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: be187e34e3232c0755e2613ffffe0647da70079c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965753"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201659"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Een Transparent Data Encryption-Protector (TDE) verwijderen met behulp van Power shell
 
@@ -33,7 +33,7 @@ ms.locfileid: "75965753"
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Zie [Azure cli installeren](/cli/azure/install-azure-cli)voor installatie.
 
@@ -70,7 +70,7 @@ SELECT * FROM sys.dm_db_log_info (database_id)
 
 De Power shell **-opdracht Get-AzureRmSqlServerKeyVaultKey** biedt de vinger afdruk van de TDe-Protector die in de query wordt gebruikt, zodat u kunt zien welke sleutels moeten worden bewaard en welke sleutels moeten worden verwijderd in Azure. Alleen sleutels die niet meer door de Data Base worden gebruikt, kunnen veilig worden verwijderd uit Azure Key Vault.
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 De Power shell-opdracht **AZ SQL Server key show** biedt de vinger afdruk van de TDe-Protector die in de query wordt gebruikt, zodat u kunt zien welke sleutels moeten worden bewaard en welke sleutels moeten worden verwijderd in Azure. Alleen sleutels die niet meer door de Data Base worden gebruikt, kunnen veilig worden verwijderd uit Azure Key Vault.
 
@@ -126,7 +126,7 @@ Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resu
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Zie de [Azure cli](/cli/azure/keyvault/key)-sleutel kluis voor naslag informatie over de opdracht.
 
@@ -180,6 +180,8 @@ Zie de [Azure cli](/cli/azure/keyvault/key)-sleutel kluis voor naslag informatie
 
 2. Maak een back-up van het sleutel materiaal van de TDE-Protector in Key Vault.
 3. De mogelijk gemanipuleerde sleutel uit Key Vault verwijderen
+
+[!INCLUDE [sql-database-akv-permission-delay](includes/sql-database-akv-permission-delay.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

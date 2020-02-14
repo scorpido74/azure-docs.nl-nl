@@ -1,0 +1,78 @@
+---
+title: bestand opnemen
+description: bestand opnemen
+services: virtual-machines
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 02/13/2020
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202201"
+---
+Gedeelde Azure-schijven (preview) is een nieuwe functie voor Azure Managed disks waarmee een Azure Managed Disk gelijktijdig kan worden gekoppeld aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure.
+
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
+
+Vm's in het cluster kunnen lezen van of schrijven naar uw gekoppelde schijf op basis van de reserve ring die door de geclusterde toepassing is gekozen met behulp van [SCSI-permanente reserve ringen](https://www.t10.org/members/w_spc3.htm) (SCSI-PR). SCSI-PR is een bekende industrie standaard die wordt gebruikt door toepassingen die op het SAN (Storage Area Network) on-premises worden uitgevoerd. Door SCSI-PR op een beheerde schijf in te scha kelen, kunt u deze toepassingen naar Azure migreren.
+
+Beheerde schijven waarvoor gedeelde schijven zijn ingeschakeld, bieden gedeelde blok opslag die toegankelijk is voor meerdere Vm's. dit wordt weer gegeven als Lun's (Logical Unit Numbers). Lun's worden vervolgens weer gegeven aan een initiator (VM) vanaf een doel (schijf). Deze Lun's zien eruit als direct gekoppelde opslag (DAS) of een lokale schijf naar de virtuele machine.
+
+Beheerde schijven met gedeelde schijven hebben geen systeem eigen, volledig beheerd bestands systeem dat kan worden geopend met SMB/NFS. U moet een cluster beheer gebruiken, zoals Windows Server failover cluster (WSFC) of pacemaker, die de communicatie tussen cluster knooppunten en schrijf vergrendeling afhandelt.
+
+## <a name="limitations"></a>Beperkingen
+
+[!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
+
+## <a name="disk-sizes"></a>Schijf grootten
+
+[!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
+
+## <a name="sample-workloads"></a>Voorbeeld werkbelastingen
+
+### <a name="windows"></a>Windows
+
+De meeste op Windows gebaseerde clusters op WSFC, die alle basis infrastructuur voor de communicatie van het cluster knooppunt afhandelt, zodat uw toepassingen kunnen profiteren van parallelle toegangs patronen. Met WSFC kunt u zowel CSV-als niet-CSV-opties maken, afhankelijk van uw versie van Windows Server. Zie [een failovercluster maken](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)voor meer informatie.
+
+Enkele populaire toepassingen die worden uitgevoerd op WSFC zijn:
+
+- SQL Server failover-cluster instanties (FCI)
+- Scale-out Bestands server (SoFS)
+- Bestands server voor algemeen gebruik (IW-workload)
+- Gebruikers profiel schijf van Extern bureaublad server (RDS UPD)
+- SAP ASCS/SCS
+
+### <a name="linux"></a>Linux
+
+Linux-clusters kunnen gebruikmaken van cluster managers zoals [pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker bouwt voort op [corosync](http://corosync.github.io/corosync/), waardoor cluster communicatie mogelijk wordt voor toepassingen die in Maxi maal beschik bare omgevingen worden geïmplementeerd. Enkele algemene geclusterde bestands systemen zijn [ocfs2](https://oss.oracle.com/projects/ocfs2/) en [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). U kunt reserve ringen en registraties bewerken met behulp van hulpprogram ma's zoals [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) en [sg_persist](https://linux.die.net/man/8/sg_persist).
+
+## <a name="persistent-reservation-flow"></a>Stroom permanente reserve ring
+
+In het volgende diagram ziet u een voor beeld van een geclusterde database toepassing met twee knoop punten die gebruikmaakt van SCSI-PR om failover van het ene naar het andere knoop punt in te scha kelen.
+
+![Shared-Disk-Updated-Two-node-cluster-diagram. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+
+De stroom is als volgt:
+
+1. De geclusterde toepassing die op zowel Azure VM1 als VM2 wordt uitgevoerd, registreert de intentie om deze te lezen of te schrijven naar de schijf.
+1. Het toepassings exemplaar op VM1 maakt vervolgens exclusieve reserve ring om naar de schijf te schrijven.
+1. Deze reserve ring wordt afgedwongen op uw Azure-schijf en de data base kan nu uitsluitend naar de schijf schrijven. Schrijf bewerkingen van het toepassings exemplaar op VM2 zullen niet slagen.
+1. Als het toepassings exemplaar op VM1 uitvalt, kan het exemplaar op VM2 nu een Data Base-failover initiëren en de schijf overnemen.
+1. Deze reserve ring wordt nu afgedwongen op de Azure-schijf en de schijf accepteert geen schrijf bewerkingen meer van VM1. Er worden alleen schrijf bewerkingen geaccepteerd van VM2.
+1. De geclusterde toepassing kan de data base-failover volt ooien en aanvragen van VM2 verwerken.
+
+Het volgende diagram illustreert een andere algemene geclusterde werk belasting die bestaat uit meerdere knoop punten die gegevens van de schijf lezen voor het uitvoeren van parallelle processen, zoals de training van machine learning modellen.
+
+![Shared-Disk-Updated-machine-learning-trainer-model. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+
+De stroom is als volgt:
+
+1. De geclusterde toepassing die op alle Vm's wordt uitgevoerd, registreert het doel om te lezen van of te schrijven naar de schijf.
+1. Het toepassings exemplaar op VM1 neemt een exclusieve reserve ring om naar de schijf te schrijven terwijl er Lees bewerkingen op de schijf van andere Vm's worden geopend.
+1. Deze reserve ring wordt afgedwongen op uw Azure-schijf.
+1. Alle knoop punten in het cluster kunnen nu van de schijf worden gelezen. Slechts één knoop punt schrijft resultaten terug naar de schijf, namens alle knoop punten in het cluster.

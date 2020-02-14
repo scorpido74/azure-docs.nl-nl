@@ -1,5 +1,5 @@
 ---
-title: Zones voor reverse lookup configureren voor een SMTP-banner controle in azure
+title: Zones voor reverse lookup configureren voor een SMTP-banner controle
 titlesuffix: Azure Virtual Network
 description: Hierin wordt beschreven hoe u zones voor reverse lookup configureert voor een SMTP-banner controle in azure
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059025"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201693"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Zones voor reverse lookup configureren voor een SMTP-banner controle
 
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u een zone voor reverse lookup gebruikt in A
 
 Als u een SMTP-server in Microsoft Azure host, wordt mogelijk het volgende fout bericht weer gegeven wanneer u een bericht verzendt of ontvangt van externe e-mail servers:
 
-**554: Geen PTR-record**
+**554: geen PTR-record**
 
 ## <a name="solution"></a>Oplossing
 

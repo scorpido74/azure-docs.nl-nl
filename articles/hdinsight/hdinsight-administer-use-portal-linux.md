@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264285"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186843"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
 
@@ -35,7 +35,7 @@ Op de pagina **HDInsight-clusters** worden uw bestaande clusters weer geven.  Va
 1. Selecteer **alle services** in het menu links.
 2. Selecteer **HDInsight-clusters** onder **Analytics**.
 
-## <a name="homePage"></a>Start pagina van cluster 
+## <a name="homePage"></a>Start pagina van cluster
 
 Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClusters) .  Hiermee opent u de **overzichts** weergave, die er ongeveer als volgt uitziet:
 
@@ -60,8 +60,8 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
     |Toegangs beheer (IAM)|Roltoewijzingen gebruiken.  Zie [roltoewijzingen gebruiken voor het beheren van toegang tot de resources van uw Azure-abonnement](../role-based-access-control/role-assignments-portal.md).|
     |Tags|Hiermee stelt u sleutel/waarde-paren in om een aangepaste taxonomie van uw Cloud Services te definiëren. U kunt bijvoorbeeld een sleutel met de naam **project**maken en vervolgens een algemene waarde gebruiken voor alle services die aan een specifiek project zijn gekoppeld.|
     |Problemen vaststellen en oplossen|Informatie over probleem oplossing weer geven.|
-    |Snelstart|Geeft informatie weer waarmee u aan de slag kunt gaan met HDInsight.|
-    |Tools|Help-informatie voor aan HDInsight gerelateerde hulpprogram ma's.|
+    |Snelstartgids|Geeft informatie weer waarmee u aan de slag kunt gaan met HDInsight.|
+    |Hulpprogramma's|Help-informatie voor aan HDInsight gerelateerde hulpprogram ma's.|
 
   - **Menu instellingen**  
 
@@ -72,7 +72,7 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
     |Aanmelden bij SSH en cluster|Toont de instructies voor het maken van verbinding met het cluster met behulp van SSH-verbinding (Secure Shell). Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.|
     |Data Lake Storage Gen1|Configureer de toegangs Data Lake Storage Gen1.  Zie [Quick Start: clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Opslagaccounts|Bekijk de opslag accounts en de sleutels. De opslag accounts worden geconfigureerd tijdens het proces voor het maken van het cluster.|
-    |Applicaties|HDInsight-toepassingen toevoegen/verwijderen.  Zie [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md).|
+    |Toepassingen|HDInsight-toepassingen toevoegen/verwijderen.  Zie [aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md).|
     |Script acties|Voer bash-scripts uit op het cluster. Zie [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md).|
     |Externe meta Stores|Bekijk de [Apache Hive](https://hive.apache.org/) -en [Apache Oozie](https://oozie.apache.org/) -meta Stores. De meta Stores kunnen alleen worden geconfigureerd tijdens het proces voor het maken van het cluster.|
     |HDInsight-partner|De huidige HDInsight-partner toevoegen/verwijderen.|
@@ -93,7 +93,7 @@ Selecteer de naam van uw cluster op de pagina [**HDInsight-clusters**](#showClus
 
     | Item| Beschrijving |
     |---|---|
-    |Bronnenstatus|Zie [overzicht van Azure resource Health](../service-health/resource-health-overview.md).|
+    |Status van resources|Zie [overzicht van Azure resource Health](../service-health/resource-health-overview.md).|
     |Nieuw ondersteuningsverzoek|Hiermee kunt u een ondersteunings ticket maken met micro soft ondersteuning.|
 
 ## <a name="properties"></a>Cluster eigenschappen
@@ -107,12 +107,13 @@ Ga naar de [Start pagina](#homePage)van het cluster en selecteer Eigenschappen i
 |Privé-eindpunt|Het persoonlijke eind punt voor het cluster.|
 |Secure Shell (SSH)|De gebruikers naam en de hostnaam die moeten worden gebruikt om toegang te krijgen tot het cluster via SSH.|
 |STATUS|Een van de volgende: afgebroken, geaccepteerde, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, operationeel, actief, fout, verwijderen, verwijderd, out, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued of ClusterCustomization.|
-|REGIO|Azure-locatie. Zie de vervolg keuzelijst **regio** in [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/)voor een lijst met ondersteunde Azure-locaties.|
+|DEEL|Azure-locatie. Zie de vervolg keuzelijst **regio** in [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/)voor een lijst met ondersteunde Azure-locaties.|
 |GEMAAKT OP|De datum waarop het cluster is geïmplementeerd.|
-|Besturingssysteem|**Windows** of **Linux**.|
+|BESTURINGSSYSTEEM|**Windows** of **Linux**.|
 |TYPE|Hadoop, HBase, Storm, Spark.|
 |Version|Zie [HDInsight-versies](hdinsight-component-versioning.md).|
-|ABONNEES|Abonnements naam.|
+|Minimale TLS-versie|De TLS-versie.|
+|ABONNEMENT|Abonnements naam.|
 |STANDAARD GEGEVENS BRON|Het standaard bestandssysteem van het cluster.|
 |Grootte van worker-knoop punten|De geselecteerde VM-grootte van de worker-knoop punten.|
 |Grootte van hoofd knooppunt|De geselecteerde VM-grootte van de hoofd knooppunten.|
@@ -223,7 +224,7 @@ Het wacht woord wordt gewijzigd op alle knoop punten in het cluster.
    | Script type | Selecteer **-aangepast** in de vervolg keuzelijst.|
    | Naam |"SSH-wacht woord wijzigen" |
    | Bash-script-URI |De URI naar het changepassword.sh-bestand |
-   | Knooppunt type (n): (Head, worker, Nimbus, supervisor, Zookeeper, enz.) |✓ voor alle weer gegeven knooppunt typen |
+   | Knooppunt type (n): (Head, worker, Nimbus, supervisor of Zookeeper.) |✓ voor alle weer gegeven knooppunt typen |
    | Parameters |Voer de SSH-gebruikers naam en vervolgens het nieuwe wacht woord in. Er moet één spatie tussen de gebruikers naam en het wacht woord zijn. |
    | Deze script actie persistent maken... |Vul dit veld uit. |
 

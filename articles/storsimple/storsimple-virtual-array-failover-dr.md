@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array disaster recovery en apparaat failover | Microsoft Docs
-description: Meer informatie over het failover de StorSimple Virtual Array.
+title: Herstel na nood geval voor StorSimple virtuele matrix en failover van apparaat | Microsoft Docs
+description: Meer informatie over het failover van de virtuele StorSimple-matrix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,170 +15,170 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409541"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190640"
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Disaster recovery en apparaat failover voor de StorSimple Virtual Array via Azure portal
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Herstel na nood gevallen en failover van het apparaat voor uw virtuele StorSimple-matrix via Azure Portal
 
 ## <a name="overview"></a>Overzicht
-Dit artikel beschrijft het herstel na noodgevallen voor uw Microsoft Azure StorSimple Virtual Array met inbegrip van de gedetailleerde stappen failover naar een andere virtuele matrix. Een failover kunt u verplaatsen van uw gegevens uit een *bron* apparaat in het datacenter naar een *doel* apparaat. Het doelapparaat kan zich bevinden in hetzelfde of een andere geografische locatie. De failover van het apparaat is voor het hele apparaat. Tijdens de failover verandert de cloudgegevens voor het bronapparaat eigendom met die van het doelapparaat.
+In dit artikel wordt het herstel na nood gevallen voor uw Microsoft Azure StorSimple virtuele matrix beschreven, inclusief de gedetailleerde stappen voor het uitvoeren van een failover naar een andere virtuele matrix. Met een failover kunt u uw gegevens van een *bron* apparaat in het Data Center naar een *doel* apparaat verplaatsen. Het doel apparaat bevindt zich mogelijk op dezelfde of een andere geografische locatie. De failover van het apparaat is voor het hele apparaat. Tijdens de failover wijzigt de Cloud gegevens voor het bron apparaat het eigendom van het doel apparaat.
 
-In dit artikel is alleen van toepassing op virtuele StorSimple-matrices. Als u wilt een 8000-serie-apparaat een failover, gaat u naar [apparaat failover en herstel na noodgevallen van uw StorSimple-apparaat](storsimple-device-failover-disaster-recovery.md).
+Dit artikel is alleen van toepassing op virtuele StorSimple-matrices. Als u een failover wilt uitvoeren voor een apparaat met een 8000-serie, gaat u naar [failover van apparaat en nood herstel van uw StorSimple-apparaat](storsimple-device-failover-disaster-recovery.md).
 
-## <a name="what-is-disaster-recovery-and-device-failover"></a>Wat is disaster recovery en apparaat-failover?
+## <a name="what-is-disaster-recovery-and-device-failover"></a>Wat is nood herstel en failover van het apparaat?
 
-In een scenario voor disaster recovery (DR), het primaire apparaat niet meer werkt. In dit scenario kunt u de cloudgegevens die is gekoppeld aan het mislukte apparaat naar een ander apparaat verplaatsen. U kunt het primaire apparaat als de *bron* en geef een ander apparaat als de *doel*. Dit proces wordt aangeduid als de *failover*. Tijdens de failover, worden alle volumes of shares van het bronapparaat eigendom wijzigen en naar het doelapparaat worden overgebracht. Er wordt geen filtering van de gegevens is toegestaan.
+In een scenario voor nood herstel (DR) functioneert het primaire apparaat niet meer. In dit scenario kunt u de Cloud gegevens die zijn gekoppeld aan het apparaat, verplaatsen naar een ander apparaat. U kunt het primaire apparaat als *bron* gebruiken en een ander apparaat als *doel*opgeven. Dit proces wordt de *failover*genoemd. Tijdens de failover worden alle volumes of de shares van het bron apparaat gewijzigd in eigendom en worden ze overgedragen naar het doel apparaat. Het is niet toegestaan om de gegevens te filteren.
 
-Herstel na Noodgeval is gemodelleerd als een volledige apparaat herstellen met behulp van de heatmap toewijzing op basis van meerdere lagen en bij te houden. Een heatmap wordt gedefinieerd door een heatmap-waarde toewijzen aan de gegevens die zijn gebaseerd op lezen en schrijven van patronen. Deze heatmap toewijzen vervolgens lagen de laagste segmenten van de heatmap-gegevens naar de cloud eerst terwijl de segmenten van hoge heatmap (meest gebruikte) gegevens in de lokale laag. StorSimple maakt tijdens een herstel na Noodgevallen gebruik van de heatmap terug te zetten en rehydrate van de gegevens vanuit de cloud. Het apparaat worden opgehaald van alle volumes/shares in de laatste recente back-up (zoals intern bepaald) en voert een terugzetbewerking van deze back-up. De virtuele matrix coördineert het hele proces van herstel na Noodgevallen.
+DR wordt gemodelleerd als een volledig herstel van het apparaat met behulp van de op warmte toewijzing gebaseerde lagen en tracering. Een heatmap wordt gedefinieerd door een hitte waarde toe te wijzen aan de gegevens op basis van de lees-en schrijf patronen. Met deze heatmap worden vervolgens de laagste gegevens segmenten in de Cloud gelaagd en worden de hoge hitte (meest gebruikte) gegevens segmenten in de lokale laag bewaard. Tijdens een DR gebruikt StorSimple de heatmap om de gegevens uit de Cloud terug te zetten en te herstellen. Het apparaat haalt alle volumes/shares op in de laatste recente back-up (zoals intern bepaald) en voert een herstel uit van de back-up. De virtuele matrix is het hele DR-proces.
 
 > [!IMPORTANT]
-> Het bronapparaat aan het einde van de failover van het apparaat wordt verwijderd en kan daarom een failback wordt niet ondersteund.
+> Het bron apparaat wordt aan het einde van de failover van het apparaat verwijderd en daarom wordt failback niet ondersteund.
 > 
 > 
 
-Herstel na noodgevallen via de failoverfunctie van het apparaat is georganiseerd en wordt gestart vanuit de **apparaten** blade. Deze blade registreert alle StorSimple-apparaten die worden verbonden met uw StorSimple Device Manager-service. Voor elk apparaat ziet u de beschrijvende naam, status, ingericht en maximale capaciteit, type en model.
+Herstel na nood gevallen wordt georganiseerd via het failover-onderdeel van het apparaat en wordt gestart vanaf de Blade **apparaten** . In deze Blade worden alle StorSimple-apparaten die zijn verbonden met uw StorSimple Apparaatbeheer-service in een tabel. Voor elk apparaat ziet u de beschrijvende naam, status, ingericht en maximum capaciteit, het type en het model.
 
-## <a name="prerequisites-for-device-failover"></a>Vereisten voor failover van het apparaat
+## <a name="prerequisites-for-device-failover"></a>Vereisten voor failover van apparaat
 
 ### <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat de volgende vereisten wordt voldaan voor een failover van het apparaat:
+Controleer voor een failover van een apparaat of aan de volgende vereisten wordt voldaan:
 
-* Het bronapparaat moet zich in een **gedeactiveerd** staat.
-* Het doelapparaat moet worden weergegeven als **klaar om in te stellen** in Azure portal. Een virtuele doelmatrix van de dezelfde of een hogere capaciteit inrichten. Gebruik de lokale webgebruikersinterface voor het configureren en de doel-virtuele matrix wordt geregistreerd.
+* Het bron apparaat moet een **gedeactiveerde** status hebben.
+* Het doel apparaat moet zo worden weer gegeven dat het **kan worden ingesteld** in de Azure Portal. Richt een virtuele doel matrix van dezelfde of een hogere capaciteit in. Gebruik de lokale web-UI om de doel-virtuele matrix te configureren en te registreren.
   
   > [!IMPORTANT]
-  > Probeer niet om de geregistreerde virtuele apparaat via de service te configureren. Er is geen apparaatconfiguratie moet worden uitgevoerd via de service.
+  > Probeer het geregistreerde virtuele apparaat niet via de service te configureren. Er moet geen apparaatconfiguratie worden uitgevoerd via de service.
   > 
   > 
-* Het doelapparaat geen dezelfde naam als het bronapparaat.
-* De bron en doel-apparaat moet hetzelfde type zijn. U kunt alleen een failover via een virtuele matrix die is geconfigureerd als een bestandsserver met een andere bestandsserver. Hetzelfde geldt voor een iSCSI-server.
-* U wordt aangeraden dat u het doelapparaat aan hetzelfde domein als de bron toevoegen voor een bestandsserver herstel na Noodgevallen. Deze configuratie zorgt ervoor dat de sharemachtigingen automatisch worden opgelost. Alleen de failover naar een doelapparaat in hetzelfde domein.
-* De beschikbare doelapparaten voor herstel na Noodgevallen zijn apparaten waarvoor de dezelfde of een grotere capaciteit ten opzichte van het bronapparaat. De apparaten die zijn verbonden met uw service, maar niet voldoen aan de criteria van voldoende ruimte zijn niet beschikbaar als doelapparaten.
+* Het doel apparaat kan niet dezelfde naam hebben als het bron apparaat.
+* Het bron-en doel apparaat moeten van hetzelfde type zijn. U kunt alleen een failover uitvoeren van een virtuele matrix die is geconfigureerd als een bestands server op een andere bestands server. Hetzelfde geldt voor een iSCSI-server.
+* Voor een bestands server DR wordt u aangeraden het doel apparaat toe te voegen aan hetzelfde domein als de bron. Deze configuratie zorgt ervoor dat de share machtigingen automatisch worden omgezet. Alleen de failover naar een doel apparaat in hetzelfde domein wordt ondersteund.
+* De beschik bare doel apparaten voor DR zijn apparaten die dezelfde of grotere capaciteit hebben ten opzichte van het bron apparaat. De apparaten die zijn verbonden met uw service maar niet voldoen aan de criteria van voldoende ruimte zijn niet beschikbaar als doel apparaten.
 
 ### <a name="other-considerations"></a>Andere overwegingen
 
-* Voor een geplande failover 
+* Voor een geplande failover:
   
-  * Het is raadzaam dat u alle volumes of shares op het bronapparaat offline nemen.
-  * U wordt aangeraden dat u een back-up van het apparaat maken en ga daarna verder met de failover om gegevensverlies te minimaliseren. 
-* Voor een niet-geplande failover, het apparaat de meest recente back-up gebruikt om de gegevens te herstellen.
+  * U wordt aangeraden alle volumes of shares op het bron apparaat offline te halen.
+  * U wordt aangeraden een back-up van het apparaat te maken en vervolgens door te gaan met de failover om gegevens verlies te minimaliseren.
+* Voor een ongeplande failover gebruikt het apparaat de meest recente back-up om de gegevens te herstellen.
 
-### <a name="device-failover-prechecks"></a>Apparaat failover apparaatupdates
+### <a name="device-failover-prechecks"></a>Voor controle van failover van apparaat
 
-Voordat u begint met het herstel na Noodgevallen, voert het apparaat apparaatupdates. Deze controles helpen ervoor te zorgen dat er geen fouten optreden wanneer herstel na Noodgeval wordt gemaakt. De apparaatupdates zijn onder andere:
+Voordat DR wordt gestart, voert het apparaat voor controle uit. Deze controles helpen ervoor te zorgen dat er geen fouten optreden bij het begin van DR. De voor controles zijn onder andere:
 
-* Valideren van het storage-account.
-* De de cloudconnectiviteit met Azure controleren.
-* Controleren op beschikbare ruimte op het doelapparaat.
-* Als een iSCSI-server bronvolume apparaat heeft controleren
+* Het opslag account wordt gevalideerd.
+* De Cloud connectiviteit met Azure controleren.
+* Beschik bare ruimte op het doel apparaat controleren.
+* Controleren of het volume van een iSCSI-Server bron apparaat is
   
-  * de namen van de ACR is ongeldig.
-  * geldige IQN (niet van meer dan 220 tekens).
-  * geldige CHAP wachtwoorden (12-16 tekens lang).
+  * geldige ACR-namen.
+  * geldige IQN (niet langer is dan 220 tekens).
+  * geldige CHAP-wacht woorden (12-16 tekens lang).
 
-Als een van de voorgaande prechecks mislukt, kunt u kan niet doorgaan met het herstel na Noodgevallen. Deze problemen oplossen en probeer vervolgens herstel na Noodgevallen.
+Als een van de voor gaande controles mislukt, kunt u niet door gaan met de DR. Los deze problemen op en voer DR opnieuw uit.
 
-Nadat het herstel na Noodgeval is voltooid, wordt het eigendom van de cloudgegevens op het apparaat van de gegevensbron overgebracht naar het doelapparaat. Het bronapparaat is vervolgens niet meer beschikbaar in de portal. Toegang tot alle volumes/shares op de Bronapparaat is geblokkeerd en het doelapparaat actief wordt.
+Nadat de DR is voltooid, wordt het eigendom van de Cloud gegevens op het bron apparaat overgebracht naar het doel apparaat. Het bron apparaat is vervolgens niet meer beschikbaar in de portal. De toegang tot alle volumes/shares op het bron apparaat wordt geblokkeerd en het doel apparaat wordt actief.
 
 > [!IMPORTANT]
-> Hoewel het apparaat niet meer beschikbaar is, wordt de virtuele machine die u hebt ingericht op het hostsysteem nog steeds resources verbruikt. Nadat het herstel na Noodgevallen met succes voltooid is, kunt u deze virtuele machine verwijderen uit uw hostsysteem.
+> Hoewel het apparaat niet meer beschikbaar is, neemt de virtuele machine die u op het hostsysteem hebt ingericht nog steeds resources in beslag. Zodra de DR is voltooid, kunt u deze virtuele machine verwijderen van uw hostsysteem.
 > 
 > 
 
 ## <a name="fail-over-to-a-virtual-array"></a>Failover naar een virtuele matrix
 
-U wordt aangeraden inrichten, configureren en registreren van een andere StorSimple Virtual Array bij uw StorSimple Device Manager-service voordat u deze procedure uitvoert.
+U wordt aangeraden een andere virtuele StorSimple-matrix in te richten, configureren en registreren met uw StorSimple Apparaatbeheer-service voordat u deze procedure uitvoert.
 
 > [!IMPORTANT]
 > 
-> * U kan geen failover van een StorSimple 8000-apparaat naar een virtueel apparaat 1200.
-> * U kunt een failover van een virtueel apparaat Federal Information Processing Standard (FIPS) ingeschakeld op een ander apparaat voor FIPS is ingeschakeld of op een niet-FIPS-apparaat dat is geïmplementeerd in de Government-portal.
+> * U kunt geen failover uitvoeren van een StorSimple 8000-serie apparaat naar een 1200 virtueel apparaat.
+> * U kunt een failover van een virtueel Federal Information Processing Standard-apparaat (FIPS) inschakelen op een ander FIPS-apparaat of naar een niet-FIPS-apparaat dat is geïmplementeerd in de overheids Portal.
 
 
-De volgende stappen uitvoeren om de apparaat herstellen naar een doel virtuele StorSimple-apparaat.
+Voer de volgende stappen uit om het apparaat te herstellen naar een virtueel StorSimple-apparaat.
 
-1. Inrichten en het configureren van een doelapparaat die voldoet aan de [vereisten voor failover van het apparaat](#prerequisites). De apparaatconfiguratie van het via de lokale webgebruikersinterface voltooien en Registreer het bij uw StorSimple Device Manager-service. Als het maken van een bestandsserver, gaat u naar stap 1 van [instellen als bestandsserver](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Als het maken van een iSCSI-server, gaat u naar stap 1 van [ingesteld als iSCSI-server](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
+1. Een doel apparaat inrichten en configureren dat voldoet aan de [vereisten voor failover van het apparaat](#prerequisites). De apparaatconfiguratie volt ooien via de lokale webgebruikersinterface en deze registreren bij uw StorSimple Apparaatbeheer service. Als u een bestands server maakt, gaat u naar stap 1 van [instellen als bestands server](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Als u een iSCSI-server maakt, gaat u naar stap 1 van [instellen als iSCSI-server](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
 
-2. Volumes/shares offline nemen op de host. Als u wilt de volumes/shares offline, verwijzen naar de besturingssysteem-specifieke instructies voor de host. Als deze niet al offline is, moet u alle volumes/shares offline nemen op het apparaat door het volgende te doen.
+2. Volumes/shares offline halen op de host. Raadpleeg het besturings systeem – specifieke instructies voor de host om de volumes/shares offline te halen. Als u dit nog niet hebt gedaan, moet u alle volumes/shares op het apparaat als volgt offline zetten.
    
-    1. Ga naar **apparaten** blade en selecteer uw apparaat.
+    1. Ga naar de Blade **apparaten** en selecteer uw apparaat.
    
-    2. Ga naar **instellingen > beheren > Shares** (of **instellingen > beheren > Volumes**). 
+    2. Ga naar **instellingen > > shares te beheren** (of **instellingen > > volumes beheren**). 
    
-    3. Selecteer een share of het volume, klik met de rechtermuisknop en selecteer **offline zetten**. 
+    3. Selecteer een share/volume, klik met de rechter muisknop en selecteer **offline halen**. 
    
-    4. Wanneer u hierom wordt gevraagd om bevestiging, controleert u **ik begrijp de gevolgen van het offline halen van deze share.** 
+    4. Als u om bevestiging wordt gevraagd, moet u **weten wat de gevolgen zijn van het offline halen van deze share.** 
    
     5. Klik op **offline zetten**.
 
-3. In uw StorSimple Device Manager-service, gaat u naar **Management > apparaten**. In de **apparaten** blade, selecteer en klik op uw Bronapparaat.
+3. Ga in de StorSimple-Apparaatbeheer service naar **Management >-apparaten**. Selecteer op de Blade **apparaten** de optie en klik op uw bron apparaat.
 
-4. In uw **apparaatdashboard** blade, klikt u op **deactiveren**.
+4. Klik op de Blade van uw **apparaat-dash board** op **deactiveren**.
 
-5. In de **deactiveren** blade u om bevestiging wordt gevraagd. Apparaat deactivering is een *permanente* proces dat kan niet ongedaan worden gemaakt. U ook een herinnering aan uw shares /-volumes offline nemen op de host. Typ de naam van het apparaat om te bevestigen en klik op **deactiveren**.
+5. Op de Blade **deactiveren** wordt u gevraagd om bevestiging. Het deactiveren van het apparaat is een *permanent* proces dat niet ongedaan kan worden gemaakt. U wordt ook gevraagd om uw shares/volumes offline te halen op de host. Typ de naam van het apparaat dat u wilt bevestigen en klik op **deactiveren**.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
-6. De deactivering wordt gestart. U ontvangt een melding nadat de deactivering is voltooid.
+6. Het deactiveren wordt gestart. U ontvangt een melding nadat de activering is voltooid.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
-7. Op de pagina apparaten nu de apparaatstatus wordt gewijzigd in **gedeactiveerd**.
+7. Op de pagina apparaten wordt de status van het apparaat nu gewijzigd in **gedeactiveerd**.
     ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
-8. In de **apparaten** blade, selecteer en klik op het bronapparaat gedeactiveerd voor failover. 
-9. In de **apparaatdashboard** blade, klikt u op **failover**. 
-10. In de **failover van apparaat** blade, doet u het volgende:
+8. Selecteer op de Blade **apparaten** het gedeactiveerde bron apparaat voor failover. 
+9. Klik op de Blade van het **dash board apparaat** op **failover**. 
+10. Ga als volgt te werk op de Blade **failover van apparaat** :
     
-    1. Het veld van het apparaat bron wordt automatisch ingevuld. Houd er rekening mee de totale grootte van het bronapparaat. Grootte van de gegevens moet kleiner is dan de beschikbare capaciteit op het doelapparaat. Lees de informatie die is gekoppeld aan het bronapparaat zoals de naam van apparaat, totale capaciteit en de namen van shares waarvoor een failover is.
+    1. Het veld Bron apparaat wordt automatisch ingevuld. Noteer de totale gegevens grootte voor het bron apparaat. De gegevens grootte moet kleiner zijn dan de beschik bare capaciteit op het doel apparaat. Bekijk de details die zijn gekoppeld aan het bron apparaat, zoals de apparaatnaam, de totale capaciteit en de namen van de shares waarvoor een failover is uitgevoerd.
 
-    2. Kies in de vervolgkeuzelijst met beschikbare apparaten een **doelapparaat**. Alleen de apparaten die onvoldoende capaciteit worden weergegeven in de vervolgkeuzelijst.
+    2. Kies een **doel apparaat**in de vervolg keuzelijst met beschik bare apparaten. Alleen apparaten met voldoende capaciteit worden weer gegeven in de vervolg keuzelijst.
 
-    3. Controleer of **ik begrijp dat deze bewerking van gegevens naar het doelapparaat mislukt**. 
+    3. Controleer of **er een failover van de gegevens naar het doel apparaat in deze bewerking wordt uitgevoerd**. 
 
     4. Klik op **failover**.
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
-11. Een failovertaak wordt gestart en u een melding ontvangen. Ga naar **apparaten > taken** voor het bewaken van de failover.
+11. Een failover-taak wordt gestart en er wordt een melding weer gegeven. Ga naar **apparaten > taken** om de failover te controleren.
     
      ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
-12. In de **taken** blade ziet u een failovertaak gemaakt voor het bronapparaat. Deze taak voert de apparaatupdates herstel na Noodgevallen.
+12. Op de Blade **taken** ziet u een failover-taak die is gemaakt voor het bron apparaat. Met deze taak worden de voor spellingen van DR uitgevoerd.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
-     Nadat de DR-apparaatupdates geslaagd zijn, wordt de failovertaak hersteltaken voor elke share of het volume dat zich op uw Bronapparaat produceren.
+     Nadat de DR-controle is geslaagd, worden met de failover-taak herstel taken voor elk share/volume dat op uw bron apparaat bestaat.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
-13. Nadat de failover voltooid is, gaat u naar de **apparaten** blade.
+13. Nadat de failover is voltooid, gaat u naar de Blade **apparaten** .
     
-    1. Selecteer en klik op het StorSimple-apparaat dat is gebruikt als het doelapparaat voor de failoverproces.
-    2. Ga naar **instellingen > Beheer > Shares** (of **Volumes** als iSCSI-server). In de **Shares** blade vindt u alle shares (volumes) van het oude apparaat.
+    1. Selecteer en klik op het StorSimple-apparaat dat is gebruikt als doel apparaat voor het failoverproces.
+    2. Ga naar **instellingen > beheer > shares** (of **volumes** als iSCSI-server). Op de Blade **shares** kunt u alle shares (volumes) van het oude apparaat weer geven.
         ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. U moet [maken van een DNS-alias](https://support.microsoft.com/kb/168322) zodat alle toepassingen die probeert verbinding te kunnen ophalen omgeleid naar het nieuwe apparaat.
+14. U moet [een DNS-alias maken](https://support.microsoft.com/kb/168322) zodat alle toepassingen die verbinding proberen te maken, kunnen worden omgeleid naar het nieuwe apparaat.
 
-## <a name="errors-during-dr"></a>Fouten tijdens het herstel na Noodgevallen
+## <a name="errors-during-dr"></a>Fouten tijdens DR
 
-**Cloud-connectiviteit onderbreking tijdens herstel na Noodgevallen**
+**Storing in de Cloud verbinding tijdens DR**
 
-Als de cloudconnectiviteit is onderbroken nadat DR is gestart en voordat het apparaat terugzetten voltooid is, mislukt het herstel na Noodgevallen. U ontvangt een melding van de fout. Het doelapparaat voor herstel na Noodgevallen is gemarkeerd als *onbruikbaar.* U kunt hetzelfde apparaat niet gebruiken voor toekomstige DRs.
+Als de verbinding met de Cloud wordt verstoord nadat DR is gestart en voordat het apparaat is teruggezet, mislukt de DR. U ontvangt een melding over een fout. Het doel apparaat voor DR is gemarkeerd als *onbruikbaar.* U kunt niet hetzelfde doel apparaat gebruiken voor toekomstige DRs.
 
-**Er is geen compatibele apparaten**
+**Geen compatibele doel apparaten**
 
-Als de beschikbare doelservers-apparaten niet voldoende ruimte hebben, ziet u een fout die naar het effect dat er geen doelapparaten compatibel zijn.
+Als er onvoldoende ruimte beschikbaar is op de beschik bare doel apparaten, ziet u een fout bericht dat er geen compatibele doel apparaten zijn.
 
-**Controle vooraf fouten**
+**Mislukte controles**
 
-Als een van de apparaatupdates niet is voldaan, klikt ziet u controle vooraf mislukte tests.
+Als niet aan een van de voor spellingen wordt voldaan, worden er controle fouten weer geven.
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>Zakelijke continuïteit noodherstel (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>Bedrijfs continuïteit nood herstel (BCDR)
 
-Een zakelijke continuïteit (BCDR) noodherstelscenario treedt op wanneer het hele Azure-datacenter niet meer werkt. Dit kan van invloed op uw StorSimple Device Manager-service en de bijbehorende StorSimple-apparaten.
+Een scenario voor een herstel na nood geval in bedrijfs continuïteit (BCDR) treedt op wanneer het hele Azure-Data Center niet meer werkt. Dit kan van invloed zijn op uw StorSimple Apparaatbeheer-service en de bijbehorende StorSimple-apparaten.
 
-Als er StorSimple-apparaten die zijn geregistreerd, net voordat een noodgeval is opgetreden, kunnen deze StorSimple-apparaten moet worden verwijderd. U kunt na de ramp, opnieuw maken en configureren van deze apparaten.
+Als er StorSimple-apparaten zijn die zijn geregistreerd net voordat een nood geval is opgetreden, moeten deze StorSimple-apparaten mogelijk worden verwijderd. Na de nood geval kunt u deze apparaten opnieuw maken en configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [beheren van uw StorSimple Virtual Array met behulp van de lokale webgebruikersinterface](storsimple-ova-web-ui-admin.md).
+Meer informatie over hoe u [uw virtuele StorSimple-matrix beheert met behulp van de lokale webgebruikersinterface](storsimple-ova-web-ui-admin.md).
 

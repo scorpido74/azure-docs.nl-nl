@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906851"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201778"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -46,6 +46,8 @@ Als goedgekeurde provider worden de voor delen van Windows virtueel bureau blad 
 10ZiG-technologie, met geavanceerde dunne en Zero hardware en software van de client, is een spant-partner met micro soft en een speciaal Microsoft Azure en een virtueel bureau blad-partner voor Windows. 10ZiG Windows 10 IoT-gebaseerde thin-clients zijn krachtige, betrouw bare en betaal bare eind punten voor alle Windows-gebruikers met een virtueel bureau blad. 10ZiG Manager-software biedt buitengewone beheer en implementatie zonder extra kosten. Het 10ZiG tech-team, het Advance Warranty-programma en niet-gedoede demo's zijn een Windows-stop-oplossing voor multi-sessie ondersteuning in de Cloud.
 
 10ZiG's wereld-Market leiderschap in dun en nul-client eindpunt apparaten en beheer software voor virtuele Bureau bladen wordt geïllustreerd door de wijze waarop ze voor hun klanten werken. De thin client-hardware wordt geleverd met goed opgebouwde voor delen van functies en opties om ervoor te zorgen dat klanten de juiste client apparaten ontvangen op basis van hun behoeften. 10ZiG past de apparaten aan aan de klant omgevingen met Windows-en Linux-clients die de best mogelijke prestaties bieden in virtuele Bureau bladen, zowel binnen als buiten de Cloud.
+
+- [Ga naar de website van de partner](https://www.10zig.com/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -148,6 +150,8 @@ Liquidware Essentials breidt de waarde van Windows virtueel bureau blad uit door
 Met Liquit voor het samen voegen van toepassingen en leverings software kunnen ondernemingen en service providers verbinding maken met en combi neren met alle back-ends van de werk ruimte (Citrix, VMWare, Windows Virtual Desktop, RDP en verouderd) en een aangepaste en consistente klant leveren ervaring, ongeacht waar de toepassingen van de klant zich bevinden. Wanneer een klant het slimme pictogram publiceert, bepaalt Liquit of de toepassing moet worden gestart op basis van de locatie, het apparaat en de profiel rechten van de klant.
 
 Als gecertificeerde integratie partner helpt Liquit de overgang naar de cloud te versnellen zonder een RIP-en-vervang vertraging. Met Windows Virtual Desktop kunt u eenvoudig verbinding maken met een bestaande omgeving, een werk ruimte maken en het bureau blad leveren. U kunt vervolgens de migratie van oude platforms afronden en wijzigingen aanbrengen in de back-end zonder uw gebruikers merkt. Profiteer van een consistente ervaring voor eind gebruikers, een flexibele infra structuur en behoud de controle over uw toepassingen, ongeacht waar ze zich bevinden.
+
+- [Ga naar de website van de partner](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Aanmeldings VSI
 

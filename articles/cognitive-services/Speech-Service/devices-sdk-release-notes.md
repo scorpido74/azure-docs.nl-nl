@@ -8,23 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446948"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189061"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
 
 De volgende secties bevatten een lijst met wijzigingen in de meest recente releases.
 
+## <a name="speech-devices-sdk-190"></a>Speech-apparaten SDK 1.9.0:
+
+- De initiële binaire bestanden voor [URBETTER DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64) worden gegeven.
+- Roobo v1 maakt nu gebruik van Maven voor de Speech SDK
+- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.9.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
+
 ## <a name="speech-devices-sdk-170"></a>Speech-apparaten SDK 1.7.0:
 
 - Linux ARM wordt nu ondersteund.
-- Er worden initiële binaire bestanden voor roobo v2 (Linux ARM64) gegeven.
+- Er worden initiële binaire bestanden voor [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) gegeven (Linux ARM64).
 - Windows-gebruikers kunnen `AudioConfig.fromDefaultMicrophoneInput()` of `AudioConfig.fromMicrophoneInput(deviceName)` gebruiken om de microfoon op te geven die moet worden gebruikt.
 - De grootte van de tape wisselaar is geoptimaliseerd.
 - Ondersteuning voor multi-turn-herkenning met hetzelfde spraak/intentie Recognizer-object.
@@ -49,7 +55,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 - Nieuwe trefwoord technologie brengt belang rijke verbeteringen met zich mee.
 - Nieuwe pijp lijn voor de verwerking van audio voor verbeterde herkenning van het ver-veld.
 
-**Belangrijke wijzigingen**
+**Wijzigingen afbreken**
 
 - Vanwege de nieuwe trefwoord technologie moeten alle tref woorden opnieuw worden gemaakt in onze verbeterde trefwoord Portal. Oude tref woorden volledig verwijderen van het apparaat verwijderen van de oude app.
   - ADB uninstall com. micro soft. coginitiveservices. speech. samples. sdsdkstarterapp
@@ -64,7 +70,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 - De verwerking van tref woorden is bijgewerkt, zie wijzigingen afbreken.
 - Voorbeeld toepassing voegt taal keuze voor zowel spraak herkenning als omzetting toe.
 
-**Belangrijke wijzigingen**
+**Wijzigingen afbreken**
 
 - Het [installeren van een tref woord](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) is vereenvoudigd, het maakt nu deel uit van de app en vereist geen afzonderlijke installatie op het apparaat.
 - De herkenning van het tref woord is gewijzigd en twee gebeurtenissen worden ondersteund.
@@ -83,7 +89,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 - Nauw keurigheid van spraak herkenning is verbeterd met onze verbeterde algoritme voor geluids verwerking
 - Er is een probleem met een continue opname van audio sessie opgelost.
 
-**Belangrijke wijzigingen**
+**Wijzigingen afbreken**
 
 - Met deze release zijn een aantal belangrijke wijzigingen worden geïntroduceerd. Raadpleeg [Deze pagina](https://aka.ms/csspeech/breakingchanges_1_0_0) voor meer informatie over de api's.
 - De KWS-model bestanden zijn niet compatibel met Speech-apparaten SDK 1.0.1. De bestaande trefwoord bestanden worden verwijderd nadat de nieuwe trefwoord bestanden naar het apparaat zijn geschreven.

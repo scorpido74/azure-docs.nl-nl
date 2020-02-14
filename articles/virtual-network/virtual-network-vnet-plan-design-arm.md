@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845582"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190467"
 ---
 # <a name="plan-virtual-networks"></a>Virtuele netwerken plannen
 
@@ -27,7 +27,7 @@ Het maken van een virtueel netwerk om te experimenteren met is eenvoudig genoeg,
 
 ## <a name="naming"></a>Naamgeving
 
-Alle Azure-resources hebben een naam. De naam moet uniek zijn binnen een bereik en kan variëren voor elk resource type. De naam van een virtueel netwerk moet bijvoorbeeld uniek zijn binnen een [resource groep](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), maar kan worden gedupliceerd binnen een [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) of Azure- [regio](https://azure.microsoft.com/regions/#services). Het definiëren van een naamgevings Conventie die u consistent kunt gebruiken bij het benoemen van resources is handig bij het beheren van verschillende netwerk bronnen gedurende een bepaalde periode. Zie [naamgevings conventies](/azure/architecture/best-practices/resource-naming#networking)voor suggesties.
+Alle Azure-resources hebben een naam. De naam moet uniek zijn binnen een bereik en kan variëren voor elk resource type. De naam van een virtueel netwerk moet bijvoorbeeld uniek zijn binnen een [resource groep](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), maar kan worden gedupliceerd binnen een [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) of Azure- [regio](https://azure.microsoft.com/regions/#services). Het definiëren van een naamgevings Conventie die u consistent kunt gebruiken bij het benoemen van resources is handig bij het beheren van verschillende netwerk bronnen gedurende een bepaalde periode. Zie [naamgevings conventies](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork)voor suggesties.
 
 ## <a name="regions"></a>Regio's
 

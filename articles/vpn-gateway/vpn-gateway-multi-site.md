@@ -6,21 +6,21 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902443"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198089"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding (klassiek)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klassiek)](vpn-gateway-multi-site.md)
 >
 >
@@ -55,10 +55,13 @@ Controleer voordat u met de configuratie begint of u over het volgende beschikt:
 
 * Compatibele VPN-hardware voor elke on-premises locatie. Controleer [over VPN-apparaten op Virtual Network connectiviteit](vpn-gateway-about-vpn-devices.md) om te controleren of het apparaat dat u wilt gebruiken, iets is dat bekend is om compatibel te zijn.
 * Een extern gericht openbaar IPv4-IP-adres voor elk VPN-apparaat. Het IP-adres kan zich niet achter een NAT bevinden. Dit is vereist.
-* U moet de meest recente versie van de Azure PowerShell-cmdlets installeren. Zorg ervoor dat u de Service Management (SM)-versie installeert naast de versie van Resource Manager. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
 * Iemand die zich kan bezig zijn met het configureren van uw VPN-hardware. U moet een duidelijk beeld hebben van de manier waarop u uw VPN-apparaat kunt configureren of met iemand die wel of niet werkt.
 * De IP-adresbereiken die u wilt gebruiken voor het virtuele netwerk (als u er nog geen hebt gemaakt).
 * De IP-adresbereiken voor elk van de lokale netwerk sites waarmee u verbinding maakt. U moet ervoor zorgen dat de IP-adresbereiken voor elk van de lokale netwerk sites waarmee u verbinding wilt maken, elkaar niet overlappen. Anders wordt de configuratie die wordt geüpload geweigerd door de portal of het REST API.<br>Als u bijvoorbeeld twee lokale netwerk sites hebt die het IP-adres bereik 10.2.3.0/24 bevatten en u een pakket hebt met een doel adres 10.2.3.3, weet Azure niet welke site u het pakket wilt sturen, omdat de adresbereiken elkaar overlappen. Om routerings problemen te voor komen, is het niet toegestaan om een configuratie bestand met overlappende bereiken te uploaden met Azure.
+
+### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. Maak een site-naar-site-VPN
 Als u al een site-naar-site-VPN hebt met een dynamische routerings gateway, fantastisch! U kunt door gaan met [het exporteren van de configuratie-instellingen van het virtuele netwerk](#export). Als dat niet het geval is, gaat u als volgt te werk:
@@ -72,6 +75,19 @@ Als u al een site-naar-site-VPN hebt met een dynamische routerings gateway, fant
 2. Een dynamische routerings gateway configureren met behulp van deze instructies: [Configure a VPN gateway](vpn-gateway-configure-vpn-gateway-mp.md). Zorg ervoor dat u **dynamische route ring** selecteert voor uw gateway type.
 
 ## <a name="export"></a>2. het netwerk configuratie bestand exporteren
+
+Open de Power shell-console met verhoogde bevoegdheden. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
+
+```powershell
+azure config mode asm
+```
+
+Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
+
+```powershell
+Add-AzureAccount
+```
+
 Exporteer uw Azure-netwerk configuratie bestand door de volgende opdracht uit te voeren. Als dat nodig is, kunt u de locatie van het bestand wijzigen zodat het naar een andere locatie kan worden geëxporteerd.
 
 ```powershell

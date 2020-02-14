@@ -1,25 +1,25 @@
 ---
 title: Verificatie toevoegen voor het beveiligen van aanroepen naar aangepaste Api's
-description: Verificatie instellen voor het beveiligen van aanroepen naar aangepaste Api's van Azure Logic Apps
+description: Verificatie instellen voor betere beveiliging van aanroepen naar aangepaste Api's van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666887"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191407"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Beveiligde aanroepen van aangepaste Api's van Azure Logic Apps
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Verbeter de beveiliging van aanroepen naar aangepaste Api's van Azure Logic Apps
 
-Als u aanroepen naar uw Api's wilt beveiligen, kunt u Azure Active Directory (Azure AD)-verificatie instellen via de Azure Portal zodat u de code niet hoeft bij te werken. Of u kunt verificatie vereisen en afdwingen via de code van uw API.
+Als u de beveiliging voor het aanroepen van uw Api's wilt verbeteren, kunt u Azure Active Directory (Azure AD)-verificatie instellen via de Azure Portal zodat u de code niet hoeft bij te werken. Of u kunt verificatie vereisen en afdwingen via de code van uw API.
 
 ## <a name="authentication-options-for-your-api"></a>Verificatie opties voor uw API
 
-U kunt op de volgende manieren oproepen naar uw aangepaste API beveiligen:
+U kunt de beveiliging voor het aanroepen van uw aangepaste API op de volgende manieren verbeteren:
 
 * [Er zijn geen code wijzigingen](#no-code): Bescherm uw api met [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) via de Azure Portal, zodat u uw code niet hoeft bij te werken of uw API opnieuw moet implementeren.
 
@@ -197,7 +197,7 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 }
 ```
 
-| Eigenschap | Verplicht | Beschrijving | 
+| Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
 | tenant | Ja | De GUID voor de Azure AD-Tenant | 
 | audience | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
@@ -248,7 +248,7 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 } 
 ```
 
-| Eigenschap | Verplicht | Beschrijving |
+| Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
 | `type` | Ja | Het verificatie type. Voor SSL-client certificaten moet de waarde `ClientCertificate`zijn. |
 | `password` | Nee | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
@@ -271,7 +271,7 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 }
 ```
 
-| Eigenschap | Verplicht | Beschrijving | 
+| Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
 | type | Ja | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde `Basic`zijn. | 
 | gebruikersnaam | Ja | De gebruikers naam die u wilt gebruiken voor verificatie | 

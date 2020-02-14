@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048975"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191192"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -217,9 +217,9 @@ Automatische ML is ook beschikbaar in andere micro soft-oplossingen, zoals:
 
 |Integraties|Beschrijving|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische model selectie en-training in .NET-Apps met Visual Studio en Visual Studio code met ML.NET Automated ML (preview).|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische model selectie en-training in .NET-Apps met behulp van Visual Studio en Visual Studio code met ML.NET Automate.|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Schaal uw geautomatiseerde ML-trainings taken op Spark in HDInsight-clusters parallel.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Machine learning modellen rechtstreeks aanroepen in Power BI (preview).|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Machine learning modellen rechtstreeks aanroepen in Power BI.|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Maak nieuwe machine learning modellen over uw gegevens in SQL Server 2019 big data-clusters.|
 
 ## <a name="next-steps"></a>Volgende stappen

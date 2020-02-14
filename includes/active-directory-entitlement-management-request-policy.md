@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980612"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192873"
 ---
 ## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
@@ -81,7 +81,7 @@ Volg deze stappen als u wilt toestaan dat gebruikers die geen toegang hebben tot
 1. Wanneer u alle verbonden organisaties hebt geselecteerd, klikt u op **selecteren**.
 
     > [!NOTE]
-    > Alle gebruikers van de geselecteerde verbonden organisaties kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de organisatie, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie voor meer informatie, [uitnodigingen toestaan of blokkeren voor B2B-gebruikers van bepaalde organisaties](../articles/active-directory/b2b/allow-deny-list.md).
+    > Alle gebruikers van de geselecteerde verbonden organisaties kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de organisatie, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](../articles/active-directory/b2b/allow-deny-list.md)voor meer informatie.
 
 1. De sectie [goed keuring](#approval) overs Laan.
 
@@ -198,7 +198,7 @@ Als u bijvoorbeeld Anne en Bob als eerste fiatteur (s) hebt genoteerd, vermeldt 
 
 ## <a name="enable-requests"></a>Aanvragen inschakelen
 
-1. Als u wilt dat het toegangs pakket onmiddellijk beschikbaar wordt gesteld voor gebruikers in het aanvraag beleid om aan te vragen, klikt u op **Ja** om in te scha kelen.
+1. Als u wilt dat het toegangs pakket onmiddellijk beschikbaar wordt gesteld voor gebruikers in het aanvraag beleid om aan te vragen, verplaatst u de schakel optie inschakelen naar **Ja**.
 
     U kunt deze altijd in de toekomst inschakelen nadat u klaar bent met het maken van het toegangs pakket.
 

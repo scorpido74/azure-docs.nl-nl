@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180301"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186087"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport (preview)
 
@@ -41,9 +41,12 @@ Het resultaat van een alleen-rapport beleid voor een bepaalde aanmelding weer ge
 1. Selecteer een aanmelding of Voeg filters toe om de resultaten te beperken.
 1. Selecteer in de **detail** lade het tabblad **alleen rapport (preview)** om het beleid weer te geven dat tijdens het aanmelden is geëvalueerd.
 
+> [!NOTE]
+> Wanneer u de logboeken wilt downloaden, kiest u JSON-indeling om alleen rapport gegevens van het type voorwaardelijke toegang toe te voegen.
+
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Azure Monitor integratie met Azure AD instellen
 
-Als u de cumulatieve impact van beleids regels voor voorwaardelijke toegang met behulp van de nieuwe voorwaardelijke Access Insights-werkmap wilt weer geven, moet u Azure Monitor integreren met Azure AD en de aanmeld logboeken exporteren. Er zijn twee stappen om deze integratie in te stellen: 
+Als u de cumulatieve impact van beleids regels voor voorwaardelijke toegang met behulp van de nieuwe voorwaardelijke Access Insights-werkmap wilt weer geven, moet u Azure Monitor integreren met Azure AD en de aanmeld logboeken exporteren. Er zijn twee stappen voor het instellen van deze integratie: 
 
 1. [Meld u aan voor een Azure monitor-abonnement en maak een werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 1. [Exporteer de aanmeldings logboeken van Azure AD naar Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
@@ -61,7 +64,7 @@ Wanneer u uw Azure AD-Logboeken hebt geïntegreerd met Azure Monitor, kunt u de 
 1. Selecteer een tijds bereik (als het tijds bereik de beschik bare gegevensset overschrijdt, worden alle beschik bare gegevens in het rapport weer gegeven). Wanneer u het beleid voor **voorwaardelijke toegang** en het **tijds bereik** hebt ingesteld, wordt het rapport geladen.
    1. U kunt ook zoeken naar afzonderlijke **gebruikers** of **apps** om het bereik van het rapport te beperken.
 1. Selecteren tussen het weer geven van de gegevens in het tijds bereik met het aantal gebruikers of het aantal aanmeldingen.
-1. Afhankelijk van de **gegevens weergave**bevat de overzicht van de **impact** het aantal gebruikers of aanmeldingen in het bereik van de gekozen para meters, gegroepeerd op totaal aantal, **geslaagd**, **mislukt**, **gebruikers actie vereist**en **niet toegepast** . Selecteer een tegel om de aanmeldingen van een bepaald resultaat type te onderzoeken. 
+1. Afhankelijk van de **gegevens weergave**bevat de overzicht van de **impact** het aantal gebruikers of aanmeldingen in het bereik van de gekozen para meters, gegroepeerd op totaal aantal **, geslaagd**, **mislukt**, **gebruikers actie vereist**en **niet toegepast**. Selecteer een tegel om de aanmeldingen van een bepaald resultaat type te onderzoeken. 
    1. Als u de werkmap parameters hebt gewijzigd, kunt u ervoor kiezen om een kopie op te slaan voor toekomstig gebruik. Selecteer het pictogram opslaan boven aan het rapport en geef een naam en locatie op om op te slaan.
 1. Schuif omlaag om de uitsplitsing van aanmeldingen voor elke voor waarde weer te geven.
 1. Bekijk de **aanmeldings gegevens** aan de onderkant van het rapport om afzonderlijke aanmeldings gebeurtenissen te onderzoeken, gefilterd op bovenstaande selecties.

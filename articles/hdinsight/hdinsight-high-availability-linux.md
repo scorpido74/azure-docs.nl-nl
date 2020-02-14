@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030864"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198936"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight
 
@@ -27,7 +27,7 @@ Hadoop behaalt hoge Beschik baarheid en betrouw baarheid door services en gegeve
 Knoop punten in een HDInsight-cluster worden geïmplementeerd met Azure Virtual Machines. In de volgende secties worden de afzonderlijke knooppunt typen besproken die worden gebruikt met HDInsight.
 
 > [!NOTE]  
-> Niet alle knooppunt typen worden gebruikt voor een cluster type. Een Hadoop-cluster type heeft bijvoorbeeld geen Nimbus-knoop punten. Zie de sectie cluster typen in het document op [Linux gebaseerde Hadoop-clusters maken in hdinsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) voor meer informatie over knoop punten die worden gebruikt door HDInsight-cluster typen.
+> Niet alle knooppunt typen worden gebruikt voor een cluster type. Een Hadoop-cluster type heeft bijvoorbeeld geen Nimbus-knoop punten. Zie de sectie cluster typen in het document op [Linux gebaseerde Hadoop-clusters maken in hdinsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type) voor meer informatie over knoop punten die worden gebruikt door HDInsight-cluster typen.
 
 ### <a name="head-nodes"></a>Hoofdknooppunten
 

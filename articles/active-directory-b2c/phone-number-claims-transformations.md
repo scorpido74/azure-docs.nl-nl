@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c43e3386886456eed0c58fefd0fb1212795db66c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480162"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185478"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Geef claim transformaties voor het telefoon nummer op in Azure AD B2C
 
@@ -32,8 +32,8 @@ Met deze claim wordt de indeling van het telefoon nummer gevalideerd. Als het ee
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | string | De claim van het teken reeks type dat wordt geconverteerd van. |
-| OutputClaim | outputClaim | string | Het resultaat van deze claim transformatie. |
+| InputClaim | inputClaim | tekenreeks | De claim van het teken reeks type dat wordt geconverteerd van. |
+| OutputClaim | outputClaim | phoneNumber | Het resultaat van deze claim transformatie. |
 
 De **ConvertStringToPhoneNumberClaim** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md) of een [Weergave besturings element](display-controls.md). De meta gegevens van het zelfondertekende technische profiel **UserMessageIfClaimsTransformationInvalidPhoneNumber** bepalen het fout bericht dat aan de gebruiker wordt gepresenteerd.
 
@@ -76,11 +76,11 @@ Hiermee worden de land code en het nationale nummer uit de invoer claim geëxtra
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | string | De teken reeks claim van het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land nummer. |
+| InputClaim | phoneNumber | tekenreeks | De teken reeks claim van het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land nummer. |
 | InputParameter | throwExceptionOnFailure | booleaans | Beschrijving Een para meter die aangeeft of er een uitzonde ring wordt gegenereerd wanneer het telefoon nummer ongeldig is. De standaard waarde is False. |
-| InputParameter | countryCodeType | string | Beschrijving Een para meter die het type land code in de uitvoer claim aangeeft. Beschik bare waarden zijn **CallingCode** (de internationale aanroepende code voor een land, bijvoorbeeld + 1) of **iso3166** (de ISO-3166-land code van twee letters). |
-| OutputClaim | nationalNumber | string | De teken reeks claim voor het nationale nummer van het telefoon nummer. |
-| OutputClaim | countryCode | string | De teken reeks claim voor de land code van het telefoon nummer. |
+| InputParameter | countryCodeType | tekenreeks | Beschrijving Een para meter die het type land code in de uitvoer claim aangeeft. Beschik bare waarden zijn **CallingCode** (de internationale aanroepende code voor een land, bijvoorbeeld + 1) of **iso3166** (de ISO-3166-land code van twee letters). |
+| OutputClaim | nationalNumber | tekenreeks | De teken reeks claim voor het nationale nummer van het telefoon nummer. |
+| OutputClaim | countryCode | tekenreeks | De teken reeks claim voor de land code van het telefoon nummer. |
 
 
 Als de **GetNationalNumberAndCountryCodeFromPhoneNumberString** -claim transformatie wordt uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelfondertekend technisch profiel](self-asserted-technical-profile.md) of een [Weergave besturings actie](display-controls.md#display-control-actions), bepaalt de meta gegevens van het door de **UserMessageIfPhoneNumberParseFailure** zelf gedefinieerde technische profiel de fout melding die wordt weer gegeven aan de gebruiker.
@@ -133,7 +133,7 @@ Het zelfondertekende technische profiel dat het validatie technische profiel aan
 
 - Invoer claims:
   - **phonenumber**: + 49 (123) 456-7890
-- Invoerparameters
+- Invoer parameters
   - **throwExceptionOnFailure**: False
   - **countryCodeType**: CallingCode
 - Uitvoer claims:

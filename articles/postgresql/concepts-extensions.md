@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372700"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201268"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-extensies in Azure Database for PostgreSQL-één server
 PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Extensies bundelen meerdere gerelateerde SQL-objecten in één pakket dat kan worden geladen of verwijderd uit uw data base met één opdracht. Nadat de gegevens zijn geladen in de data base, functioneren de extensies als ingebouwde functies.
@@ -33,7 +33,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
-> |[cube](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | gegevens type voor multidimensionale kubussen|
+> |[kubus](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
@@ -41,7 +41,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.2           | Hypothetische indexen voor PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | ondersteuning voor functies, Opera tors en index voor 1d-matrices met gehele getallen|
-> |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | gegevens typen voor International product Numbering Standards|
+> |[hebben](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | gegevens typen voor International product Numbering Standards|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | gegevens type voor hiërarchische structuren in structuur|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Functies en Opera tors die een subset van functies en pakketten van commerciële RDBMS emuleren|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | biedt controle functionaliteit|
@@ -63,7 +63,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
-> |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
+> |[accenten opzeggen](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 
 ## <a name="postgres-10-extensions"></a>Post gres 10-extensies 
@@ -79,7 +79,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | gegevens type voor automatisch versleutelde wacht woorden|
 > |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
-> |[cube](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | gegevens type voor multidimensionale kubussen|
+> |[kubus](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
@@ -87,7 +87,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypothetische indexen voor PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | ondersteuning voor functies, Opera tors en index voor 1d-matrices met gehele getallen|
-> |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | gegevens typen voor International product Numbering Standards|
+> |[hebben](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | gegevens typen voor International product Numbering Standards|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | gegevens type voor hiërarchische structuren in structuur|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Functies en Opera tors die een subset van functies en pakketten van commerciële RDBMS emuleren|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.2             | biedt controle functionaliteit|
@@ -109,7 +109,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
-> |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
+> |[accenten opzeggen](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 
 ## <a name="postgres-96-extensions"></a>Post gres 9,6-extensies 
@@ -125,7 +125,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
 > |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | gegevens type voor automatisch versleutelde wacht woorden|
 > |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
-> |[cube](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | gegevens type voor multidimensionale kubussen|
+> |[kubus](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
@@ -133,7 +133,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypothetische indexen voor PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | ondersteuning voor functies, Opera tors en index voor 1d-matrices met gehele getallen|
-> |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | gegevens typen voor International product Numbering Standards|
+> |[hebben](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | gegevens typen voor International product Numbering Standards|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | gegevens type voor hiërarchische structuren in structuur|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Functies en Opera tors die een subset van functies en pakketten van commerciële RDBMS emuleren|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.1.2             | biedt controle functionaliteit|
@@ -155,7 +155,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
-> |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
+> |[accenten opzeggen](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 
 ## <a name="postgres-95-extensions"></a>Post gres 9,5-extensies 
@@ -171,7 +171,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
 > |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | gegevens type voor automatisch versleutelde wacht woorden|
 > |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
-> |[cube](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | gegevens type voor multidimensionale kubussen|
+> |[kubus](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
 > |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
@@ -179,7 +179,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypothetische indexen voor PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | ondersteuning voor functies, Opera tors en index voor 1d-matrices met gehele getallen|
-> |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | gegevens typen voor International product Numbering Standards|
+> |[hebben](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | gegevens typen voor International product Numbering Standards|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | gegevens type voor hiërarchische structuren in structuur|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Functies en Opera tors die een subset van functies en pakketten van commerciële RDBMS emuleren|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | biedt controle functionaliteit|
@@ -199,27 +199,31 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.0           | Ruimtelijke typen en functies van de PostGIS-topologie|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
-> |[unaccent](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | Zoek woordenlijst voor tekst die accenten verwijdert|
+> |[accenten opzeggen](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | Universele unieke id's (UUID) genereren|
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-De uitbrei ding pg_stat_statements is vooraf geladen op elke Azure Database for PostgreSQL-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
+De [uitbrei ding pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) is vooraf geladen op elke Azure database for postgresql-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
 De instelling `pg_stat_statements.track`, die bepaalt welke instructies worden geteld door de uitbrei ding, wordt standaard ingesteld op `top`, wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all`. Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) of de [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
 Er is een verhouding tussen de informatie over het uitvoeren van query's pg_stat_statements biedt en de invloed op de prestaties van de server bij het vastleggen van elke SQL-instructie. Als u de extensie pg_stat_statements niet actief gebruikt, raden we u aan om `pg_stat_statements.track` in te stellen op `none`. Houd er rekening mee dat sommige bewakings services van derden afhankelijk zijn van pg_stat_statements voor het leveren van query's met betrekking tot query prestaties, zodat u kunt controleren of dit het geval is voor u of niet.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink en postgres_fdw
-met dblink en postgres_fdw kunt u verbinding maken met een PostgreSQL-server of een andere Data Base op dezelfde server. De ontvangende server moet verbindingen vanaf de verzendende server via de Firewall toestaan. Als u deze uitbrei dingen gebruikt om verbinding te maken tussen Azure Database for PostgreSQL-servers, kunt u dit doen door de optie toegang tot Azure-Services toestaan in te stellen op aan. Dit is ook nodig als u de uitbrei dingen wilt gebruiken om naar dezelfde server te gaan. De instelling toegang tot Azure-Services toestaan vindt u op de pagina Azure Portal voor de post gres-server, onder verbindings beveiliging. Als u toegang tot Azure-Services toestaan inschakelt, worden alle Azure Ip's in de acceptatie lijst geplaatst.
+met [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) en [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) kunt u verbinding maken met een postgresql-server of een andere Data Base op dezelfde server. De ontvangende server moet verbindingen vanaf de verzendende server via de Firewall toestaan. Als u deze uitbrei dingen gebruikt om verbinding te maken tussen Azure Database for PostgreSQL-servers, kunt u dit doen door de optie toegang tot Azure-Services toestaan in te stellen op aan. Dit is ook nodig als u de uitbrei dingen wilt gebruiken om naar dezelfde server te gaan. De instelling toegang tot Azure-Services toestaan vindt u op de pagina Azure Portal voor de post gres-server, onder verbindings beveiliging. Als u toegang tot Azure-Services toestaan inschakelt, worden alle Azure Ip's in de acceptatie lijst geplaatst.
 
 Momenteel worden uitgaande verbindingen van Azure Database for PostgreSQL niet ondersteund, met uitzonde ring van verbindingen met andere Azure Database for PostgreSQL-servers.
 
 ## <a name="uuid"></a>uuid
-Als u van plan bent `uuid_generate_v4()` te gebruiken uit de extensie uuid-ossp, kunt u overwegen om te vergelijken met `gen_random_uuid()` van de pgcrypto-extensie voor prestatie voordelen.
-
+Als u van plan bent `uuid_generate_v4()` te gebruiken uit de [extensie uuid-ossp](https://www.postgresql.org/docs/current/uuid-ossp.html), kunt u overwegen om te vergelijken met `gen_random_uuid()` van de [pgcrypto-extensie](https://www.postgresql.org/docs/current/pgcrypto.html) voor prestatie voordelen.
 
 ## <a name="pgaudit"></a>pgAudit
-De pgAudit-extensie biedt controle logboek registratie voor sessies en objecten. Ga naar het artikel over de [controle concepten](concepts-audit.md)voor meer informatie over het gebruik van deze uitbrei ding in azure database for PostgreSQL. 
+De [pgAudit-extensie](https://github.com/pgaudit/pgaudit/blob/master/README.md) biedt controle logboek registratie voor sessies en objecten. Ga naar het artikel over de [controle concepten](concepts-audit.md)voor meer informatie over het gebruik van deze uitbrei ding in azure database for PostgreSQL. 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+Met de extensie pg_prewarm worden relationele gegevens in de cache geladen. Bij de voor bereiding van uw caches hebt u na het opnieuw opstarten betere reactie tijden bij de eerste uitvoering van uw query's. In post gres 10 en lager wordt de voor bereiding hand matig uitgevoerd met de [functie prewarm](https://www.postgresql.org/docs/10/pgprewarm.html).
+
+In post gres 11 en hoger kunt u voor bereiding configureren om [automatisch](https://www.postgresql.org/docs/current/pgprewarm.html)te worden uitgevoerd. U moet pg_prewarm opnemen in de lijst van de `shared_preload_libraries`-para meter en de server opnieuw opstarten om de wijziging toe te passen. Para meters kunnen worden ingesteld vanuit de sjabloon [Azure Portal](howto-configure-server-parameters-using-portal.md), [cli](howto-configure-server-parameters-using-cli.md), rest API of arm. 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB is een Data Base met een tijd reeks die is verpakt als een uitbrei ding voor PostgreSQL. TimescaleDB biedt tijdgebonden analytische functies, optimalisaties en schaal baarheid van post gres voor werk belastingen in de tijd reeks.

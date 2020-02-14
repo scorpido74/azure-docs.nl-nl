@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379766"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194463"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problemen met Enterprise State Roaming instellingen in Azure Active Directory oplossen
 
 In dit onderwerp vindt u informatie over het oplossen en diagnosticeren van problemen met Enterprise State Roaming en vindt u een lijst met bekende problemen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Voorbereidende stappen voor het oplossen van problemen 
 
@@ -31,7 +34,7 @@ Voordat u begint met het oplossen van problemen, controleert u of de gebruiker e
 1. Windows 10, met de meest recente updates en een minimum versie 1511 (OS Build 10586 of hoger) is geïnstalleerd op het apparaat. 
 1. Het apparaat is toegevoegd aan Azure AD of hybride Azure AD. Zie [een apparaat verkrijgen onder het beheer van Azure AD](overview.md)voor meer informatie.
 1. Zorg ervoor dat **Enterprise State roaming** is ingeschakeld voor de Tenant in azure AD, zoals wordt beschreven in [om Enterprise State roaming in te scha kelen](enterprise-state-roaming-enable.md). U kunt roaming inschakelen voor alle gebruikers of voor alleen een geselecteerde groep gebruikers.
-1. De gebruiker moet al een Azure Active Directory Premium licentie hebben gekregen.  
+1. Aan de gebruiker is een Azure Active Directory Premium-licentie toegewezen.  
 1. Het apparaat moet opnieuw worden opgestart en de gebruiker moet zich opnieuw aanmelden om toegang te krijgen tot Enterprise State Roaming functies.
 
 ## <a name="information-to-include-when-you-need-help"></a>Informatie die moet worden meegenomen wanneer u hulp nodig hebt
@@ -46,6 +49,7 @@ Als u het probleem niet kunt oplossen met de onderstaande instructies, neemt u c
 Met inbegrip van deze informatie kan ons uw probleem zo snel mogelijk oplossen.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Het oplossen en diagnosticeren van problemen
+
 In deze sectie vindt u meer informatie over het oplossen van problemen met Enterprise State Roaming.
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Controleer de synchronisatie en de instellingen pagina uw instellingen synchroniseren 
@@ -66,9 +70,9 @@ Enterprise State Roaming vereist dat het apparaat wordt geregistreerd bij Azure 
 1. Zodra de opdracht prompt is geopend, typt u "*dsregcmd. exe/status*".
 1. Voor de verwachte uitvoer moet de waarde van het veld **AzureAdJoined** ' Yes ' zijn, **WamDefaultSet** veld waarde moet ' Yes ' zijn en de waarde van het **WAMDEFAULTGUID** -veld moet een GUID zijn met ' (AzureAd) ' aan het einde.
 
-**Mogelijk probleem**: **WamDefaultSet** en **AzureAdJoined** hebben beide ' no ' in de veld waarde, het apparaat is toegevoegd aan een domein en is geregistreerd bij Azure AD, en het apparaat wordt niet gesynchroniseerd. Als dit wordt weer gegeven, moet het apparaat mogelijk wachten totdat het beleid is toegepast of de verificatie van het apparaat is mislukt bij het maken van verbinding met Azure AD. Het kan zijn dat de gebruiker enkele uren moet wachten voordat het beleid wordt toegepast. Andere stappen voor het oplossen van problemen zijn onder andere het opnieuw proberen van automatische registratie door zich af te melden en weer in te schrijven, of door de taak te starten in taak planner. In sommige gevallen voert u '*dsregcmd. exe/Leave*' uit in een opdracht prompt venster met verhoogde bevoegdheid, waarna u de registratie opnieuw kunt uitvoeren. Dit kan helpen bij het oplossen van het probleem.
+**Mogelijk probleem**: **WamDefaultSet** en **AzureAdJoined** hebben beide ' no ' in de veld waarde, het apparaat is toegevoegd aan een domein en is geregistreerd bij Azure AD, en het apparaat wordt niet gesynchroniseerd. Als dit wordt weer gegeven, moet het apparaat mogelijk wachten totdat het beleid is toegepast of de verificatie van het apparaat is mislukt bij het maken van verbinding met Azure AD. Het kan zijn dat de gebruiker enkele uren moet wachten voordat het beleid wordt toegepast. Andere stappen voor het oplossen van problemen zijn onder andere het opnieuw proberen van de herregistratie door u af te melden en weer in te schrijven, of door de taak te starten in taak planner. In sommige gevallen voert u '*dsregcmd. exe/Leave*' uit in een opdracht prompt venster met verhoogde bevoegdheid, waarna u de registratie opnieuw kunt uitvoeren. Dit kan helpen bij het oplossen van het probleem.
 
-**Mogelijk probleem**: het veld voor **SettingsUrl** is leeg en het apparaat wordt niet gesynchroniseerd. De gebruiker is mogelijk voor het laatst aangemeld bij het apparaat voordat Enterprise State Roaming was ingeschakeld in de Azure Active Directory Portal. Start het apparaat opnieuw op en laat de gebruiker zich aanmelden. Probeer eventueel in de Portal de IT-beheerder naar **Azure Active Directory** > **apparaten** te navigeren > **Enterprise State roaming** gebruikers uitschakelen en opnieuw inschakelen **kunnen instellingen en app-gegevens op verschillende apparaten synchroniseren**. Zodra het opnieuw is ingeschakeld, start u het apparaat opnieuw op en laat u de gebruiker zich aanmelden. Als het probleem hiermee niet is opgelost, kan **SettingsUrl** leeg zijn in het geval van een beschadigd certificaat van het apparaat. In dit geval kunt u '*dsregcmd. exe/Leave*' uitvoeren in een opdracht prompt venster met verhoogde bevoegdheden, en het opnieuw proberen van de registratie mogelijk helpen bij het oplossen van het probleem.
+**Mogelijk probleem**: het veld voor **SettingsUrl** is leeg en het apparaat wordt niet gesynchroniseerd. De gebruiker is mogelijk voor het laatst aangemeld bij het apparaat voordat Enterprise State Roaming was ingeschakeld in de Azure Active Directory Portal. Start het apparaat opnieuw op en laat de gebruiker zich aanmelden. Probeer eventueel in de Portal de IT-beheerder naar **Azure Active Directory** > **apparaten** te navigeren > **Enterprise State roaming** gebruikers uitschakelen en opnieuw inschakelen **kunnen instellingen en app-gegevens op verschillende apparaten synchroniseren**. Zodra het opnieuw is ingeschakeld, start u het apparaat opnieuw op en laat u de gebruiker zich aanmelden. Als het probleem hiermee niet is opgelost, kan **SettingsUrl** leeg zijn als er een beschadigd apparaat is. In dit geval kunt u '*dsregcmd. exe/Leave*' uitvoeren in een opdracht prompt venster met verhoogde bevoegdheden, en het opnieuw proberen van de registratie mogelijk helpen bij het oplossen van het probleem.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming en Multi-Factor Authentication 
 

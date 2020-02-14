@@ -4,12 +4,12 @@ description: Biedt richt lijnen voor probleem oplossing waarmee u de oorzaak van
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172587"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198610"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problemen met langzame back-ups van bestanden en mappen in Azure Backup
 
@@ -25,6 +25,18 @@ Voordat u problemen gaat oplossen, wordt u aangeraden de [nieuwste Azure backup-
 We raden u ook ten zeerste aan de [Veelgestelde vragen over de Azure backup-service](backup-azure-backup-faq.md) te controleren om ervoor te zorgen dat u geen veelvoorkomende configuratie problemen ondervindt.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Oorzaak: de back-uptaak wordt uitgevoerd in niet-geoptimaliseerde modus
+
+* De MARS-agent kan de back-uptaak uitvoeren in de **geoptimaliseerde modus** met USN (Update Sequence Number) wijzigings logboek of niet- **geoptimaliseerde modus** door te controleren op wijzigingen in mappen of bestanden door het hele volume te scannen.
+* Niet-geoptimaliseerde modus is traag omdat de agent elk bestand op het volume moet scannen en vergelijken met de meta gegevens om de gewijzigde bestanden te bepalen.
+* Als u dit wilt controleren, opent u de **taak Details** van de Mars-agent console en controleert u de status om te zien of er **gegevens worden overgedragen (niet-geoptimaliseerd, kan meer tijd duren)** , zoals hieronder wordt weer gegeven:
+
+    ![Wordt uitgevoerd in niet-geoptimaliseerde modus](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* De volgende voor waarden kunnen ervoor zorgen dat de back-uptaak wordt uitgevoerd in niet-geoptimaliseerde modus:
+  * De eerste back-up (ook wel de eerste replicatie genoemd) wordt altijd uitgevoerd in niet-geoptimaliseerde modus
+  * Als de vorige back-uptaak mislukt, wordt de volgende geplande back-uptaak uitgevoerd als niet-geoptimaliseerd.
 
 <a id="cause1"></a>
 

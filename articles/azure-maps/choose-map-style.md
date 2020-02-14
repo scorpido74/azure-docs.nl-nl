@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cabf39f017afe440c883a63db57643c5c5367128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911798"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189742"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Kies een kaart stijl in Azure Maps
 
-Veel van de [ondersteunde kaart stijlen in azure Maps](./supported-map-styles.md) zijn beschikbaar in de Web-SDK. In dit artikel wordt beschreven hoe u de stijl gerelateerde functies gebruikt om een stijl in te stellen voor het laden van kaarten, een nieuwe stijl instellen en het besturings element stijl kiezer te gebruiken.
+Veel van de [ondersteunde kaart stijlen in azure Maps](./supported-map-styles.md) zijn beschikbaar in de Web-SDK. In dit artikel wordt beschreven hoe u de functionaliteit voor stijl kunt gebruiken. Meer informatie over het instellen van een stijl bij het laden van een kaart en informatie over het instellen van een nieuwe kaart stijl met het besturings element stijl kiezer.
 
 ## <a name="set-style-on-map-load"></a>Stijl instellen voor toewijzings belasting
 
@@ -30,7 +30,7 @@ In de volgende code wordt de optie `style` van de kaart ingesteld op `grayscale_
 
 ## <a name="update-the-style"></a>De stijl bijwerken
 
-Na het laden van een kaart exemplaar in de volgende code wordt de kaart stijl bijgewerkt van `road` naar `satellite` met behulp van de functie [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) van de kaart.
+Na het laden van een kaart exemplaar in de volgende code wordt de kaart stijl bijgewerkt van `road` naar `satellite` met behulp van de functie [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) .
 
 <br/>
 
@@ -39,7 +39,7 @@ Na het laden van een kaart exemplaar in de volgende code wordt de kaart stijl bi
 
 ## <a name="add-the-style-picker"></a>De stijl kiezer toevoegen
 
-Met de volgende code wordt een [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) toegevoegd aan de kaart, zodat de gebruiker eenvoudig tussen de verschillende kaart stijlen kan scha kelen. 
+Met de volgende code wordt een [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) toegevoegd aan de kaart, zodat de gebruiker eenvoudig tussen de verschillende kaart stijlen kan scha kelen. De kaart stijl in-of uitschakelen met het besturings element kaart stijl in de rechter bovenhoek.
 
 <br/>
 
@@ -47,14 +47,14 @@ Met de volgende code wordt een [StyleControl](/javascript/api/azure-maps-control
 </iframe>
 
 > [!TIP]
-> Standaard wordt in het besturings element stijl kiezer een lijst weer gegeven met alle beschik bare stijlen voor het gebruik van de prijs categorie S0 van Azure Maps standaard. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de optie `mapStyle` van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u de optie `mapStyles` van de stijl kiezer in op `"all"`.
+> Wanneer u de prijs categorie S0 van Azure Maps gebruikt, wordt in het besturings element stijl kiezer standaard alle beschik bare stijlen vermeld. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de optie `mapStyle` van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u de optie `mapStyles` van de stijl kiezer in op `"all"`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Voor meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Besturings elementen toevoegen aan uw kaarten:
 

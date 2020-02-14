@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380317"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189127"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Snelstartgids: de voor beeld-app voor de speech-apparaten SDK uitvoeren op Android
 
@@ -23,7 +23,7 @@ In deze Quick Start leert u hoe u de speech apparaten SDK voor Android kunt gebr
 
 Deze hand leiding vereist een [Azure Cognitive Services](get-started.md) -account met een speech service-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
-De broncode voor de voorbeeldtoepassing is opgenomen in de SDK van de apparaten spraak. Het is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+De broncode voor de voorbeeldtoepassing is opgenomen in de SDK van de apparaten spraak. Het is ook [beschikbaar op github](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgend
 - Down load de nieuwste versie van de [Speech apparaten SDK](https://aka.ms/sdsdk-download)en pak het. zip-bestand uit in uw werkmap.
 
   > [!NOTE]
-  > Het bestand Android-Sample-Release. zip bevat de voor beeld-app Android en er wordt ervan uitgegaan dat de app is geëxtraheerd naar C:\SDSDK\Android-Sample-Release
+  > In deze Snelstartgids wordt ervan uitgegaan dat de app is geëxtraheerd naar C:\SDSDK\Android-Sample-Release
 
 - Een Azure- [abonnements sleutel voor spraak service](get-started.md) ophalen
 
@@ -42,9 +42,9 @@ Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgend
 
 - Als u van plan bent de speech-service te gebruiken om de intenties (of acties) te identificeren van de gebruiker uitingen, hebt u een [Luis-abonnement (Language Understanding service)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) nodig. Zie voor meer informatie over LUIS en intentie herkenning [spraak intentie herkennen met Luis, C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  U kunt [maken een eenvoudige LUIS-model](https://docs.microsoft.com/azure/cognitive-services/luis/) of gebruik het voorbeeld LUIS-model, LUIS-example.json. Het voorbeeld LUIS-model beschikbaar via is de [site voor het downloaden van spraak Devices SDK](https://aka.ms/sdsdk-luis). Voor het uploaden van uw model JSON-bestand naar de [LUIS portal](https://www.luis.ai/home), selecteer **importeren nieuwe app**, en selecteer vervolgens het JSON-bestand.
+  U kunt [een eenvoudig Luis-model maken](https://docs.microsoft.com/azure/cognitive-services/luis/) of het voor beeld-Luis model gebruiken, Luis-voorbeeld. json. Het voor beeld-LUIS-model is beschikbaar op de [download site van de speech-apparaten SDK](https://aka.ms/sdsdk-luis). Als u het JSON-bestand van uw model wilt uploaden naar de [Luis-Portal](https://www.luis.ai/home), selecteert u **nieuwe app importeren**en selecteert u vervolgens het JSON-bestand.
 
-- Installeer [Android Studio](https://developer.android.com/studio/) en [Vysor](https://vysor.io/download/) op uw PC.
+- Installeer [Android Studio](https://developer.android.com/studio/) en [VYSOR](https://vysor.io/download/) op uw PC.
 
 ## <a name="set-up-the-device"></a>Het apparaat instellen
 
@@ -52,9 +52,9 @@ Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgend
 
    ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1. Uw apparaat moet worden weergegeven onder **Kies een apparaat**. Selecteer de **weergave** knop naast het apparaat.
+1. Uw apparaat moet worden vermeld onder **Kies een apparaat**. Selecteer de knop **weer geven** naast het apparaat.
 
-1. Verbinding maken met het draadloze netwerk door het mappictogram te selecteren en selecteer vervolgens **instellingen** > **WLAN**.
+1. Maak verbinding met het draadloze netwerk door het mappictogram te selecteren en vervolgens **instellingen** > **WLAN**te selecteren.
 
    ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
@@ -65,7 +65,7 @@ Voordat u begint met het gebruik van de speech apparaten SDK, moet u het volgend
    >
    > ![Bestandsmap Vysor](media/speech-devices-sdk/qsg-10.png)
    >
-   > Selecteer **instellingen**. Zoek naar 'mac-adres' en selecteer vervolgens **Mac-adres** > **WLAN geavanceerde**. Noteer het MAC-adres dat wordt weergegeven aan de onderkant van het dialoogvenster.
+   > **Instellingen**selecteren. Zoek naar Mac-adres en selecteer vervolgens Mac- **adres** > **Geavanceerde WLAN**. Noteer het MAC-adres dat wordt weergegeven aan de onderkant van het dialoogvenster.
    >
    > ![Vysor MAC-adres](media/speech-devices-sdk/qsg-11.png)
    >
@@ -81,9 +81,32 @@ Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de 
 
    ![Android Studio - een bestaand project openen](media/speech-devices-sdk/qsg-5.png)
 
-1. Ga naar C:\SDSDK\Android-Sample-Release\example. Selecteer **OK** om de voorbeeldproject te openen.
+1. Ga naar C:\SDSDK\Android-Sample-Release\example. Selecteer **OK** om het voorbeeld project te openen.
 
-1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u proberen intentieherkenning wilt, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonnementssleutel en de toepassing-id.
+1. Configureer gradle om te verwijzen naar de Speech SDK. De volgende bestanden zijn te vinden onder **Gradle-scripts** in Android Studio.
+
+    Werk het **Build. gradle (project: voor beeld)** bij, het blok AllProjects moet hieronder overeenkomen door de Maven-regels toe te voegen.
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    Werk de **Build. gradle (module: app)** bij door deze regel toe te voegen aan het gedeelte afhankelijkheden. 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
+1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
 
    Voor spraak-en LUIS gaat uw informatie over op MainActivity. java:
 
@@ -129,16 +152,16 @@ Als u de Setup van de Development Kit wilt valideren, bouwt en installeert u de 
 
    | Variabele | Betekenis | Beschikbare waarden |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Fysieke mic-configuratie | Voor een circulaire dev kit: `Circular6+1` |
+   | `DeviceGeometry` | Fysieke mic-configuratie | Voor een ronde dev kit: `Circular6+1` |
    |          |         | Voor een lineaire dev kit: `Linear4` |
-   | `SelectedGeometry` | De softwareconfiguratie voor de mic | Voor een circulaire dev kit die gebruikmaakt van alle microfoon: `Circular6+1` |
-   |          |         | Voor een circulaire dev kit die gebruikmaakt van vier microfoon: `Circular3+1` |
-   |          |         | Voor een lineaire dev kit die gebruikmaakt van alle microfoon: `Linear4` |
-   |          |         | Voor een lineaire dev kit die gebruikmaakt van twee microfoon: `Linear2` |
+   | `SelectedGeometry` | De softwareconfiguratie voor de mic | Voor een ronde dev kit die gebruikmaakt van alle mics: `Circular6+1` |
+   |          |         | Voor een ronde dev kit die gebruikmaakt van vier mics: `Circular3+1` |
+   |          |         | Voor een lineaire dev kit die gebruikmaakt van alle mics: `Linear4` |
+   |          |         | Voor een lineaire dev kit die gebruikmaakt van twee mics: `Linear2` |
 
-1. De toepassing te bouwen, op de **uitvoeren** in het menu **uitvoeren 'app'** . De **implementatiedoel Selecteer** in het dialoogvenster wordt weergegeven.
+1. Als u de toepassing wilt bouwen, selecteert u in het menu **uitvoeren** de optie **app uitvoeren**. Het dialoog venster **implementatie doel selecteren** wordt weer gegeven.
 
-1. Selecteer uw apparaat en selecteer vervolgens **OK** om de toepassing op het apparaat te implementeren.
+1. Selecteer uw apparaat en selecteer vervolgens **OK** om de toepassing te implementeren op het apparaat.
 
    ![Het dialoogvenster implementatiedoel selecteren](media/speech-devices-sdk/qsg-7.png)
 
@@ -161,11 +184,11 @@ Als u geen verbinding kunt maken met het spraak apparaat. Typ de volgende opdrac
 ```
 
 > [!NOTE]
-> Deze opdracht maakt gebruik van de Android debug Bridge, `adb.exe`, die deel uitmaakt van de Android Studio-installatie. Dit hulpprogramma bevindt zich in C:\Users\[gebruikersnaam] \AppData\Local\Android\Sdk\platform-hulpprogramma's. U kunt deze map toevoegen aan het pad naar het eenvoudig om aan te roepen kunnen `adb`. Anders moet u het volledige pad naar uw installatie van adb.exe in elke opdracht die wordt aangeroepen `adb`.
+> Deze opdracht maakt gebruik van de Android debug Bridge, `adb.exe`, die deel uitmaakt van de Android Studio-installatie. Dit hulp programma bevindt zich in C:\Users\[gebruikers naam] \AppData\Local\Android\Sdk\platform-tools. U kunt deze map toevoegen aan uw pad om het gemakkelijker te maken om `adb`aan te roepen. Anders moet u het volledige pad naar uw installatie van ADB. exe opgeven in elke opdracht die `adb`aanroept.
 >
 > Als er een fout `no devices/emulators found`, controleer dan of de USB-kabel is aangesloten en of er een kabel met een hoge kwaliteit wordt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Opmerkingen bij de release bekijken](devices-sdk-release-notes.md)
+> [De release opmerkingen bekijken](devices-sdk-release-notes.md)

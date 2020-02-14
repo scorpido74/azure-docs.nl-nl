@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483457"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195059"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Verificatie sessie beheer met voorwaardelijke toegang configureren
 
@@ -50,6 +50,23 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 - Web-client voor teams
 - Dynamics CRM Online
 - Azure-portal
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>Aanmeldings frequentie van gebruikers en apparaat-id's
+
+Als u Azure AD hebt toegevoegd, hybride Azure AD is toegevoegd of geregistreerde Azure AD-apparaten, wanneer een gebruiker het apparaat ontgrendelt of zich interactief aanmeldt, zal deze gebeurtenis ook voldoen aan het beleid voor aanmeldings frequentie. In de volgende twee voor beelden is de aanmeldings frequentie voor gebruikers ingesteld op 1 uur:
+
+Voorbeeld 1:
+
+- Bij 00:00 meldt een gebruiker zich aan bij hun Windows 10 Azure AD-apparaat dat is toegevoegd aan een document dat is opgeslagen in share point online.
+- De gebruiker blijft gedurende een uur aan hetzelfde document op het apparaat werken.
+- Bij 01:00 wordt de gebruiker gevraagd zich opnieuw aan te melden op basis van de vereiste aanmeldings frequentie in het beleid voor voorwaardelijke toegang dat door de beheerder is geconfigureerd.
+
+Voorbeeld 2:
+
+- Bij 00:00 meldt een gebruiker zich aan bij hun Windows 10 Azure AD-apparaat dat is toegevoegd aan een document dat is opgeslagen in share point online.
+- Bij 00:30 wordt de gebruiker opgehaald en wordt een verbreekt de vergren deling van het apparaat.
+- Bij 00:45 wordt de gebruiker teruggegeven van het verbreken en wordt het apparaat ontgrendeld.
+- Bij 01:45 wordt de gebruiker gevraagd zich opnieuw aan te melden op basis van de vereiste aanmeldings frequentie in het beleid voor voorwaardelijke toegang dat door de beheerder is geconfigureerd sinds de laatste aanmelding is opgetreden op 00:45.
 
 ## <a name="persistence-of-browsing-sessions"></a>Persistentie van Browse sessies
 
@@ -107,7 +124,7 @@ Gebruik het hulp programma What-if voor het simuleren van een aanmelding van de 
 
 ![Resultaten van What If tool voor voorwaardelijke toegang](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
-## <a name="policy-deployment"></a>Implementatie van beleid
+## <a name="policy-deployment"></a>Beleidsimplementatie
 
 Om ervoor te zorgen dat uw beleid werkt zoals verwacht, is het aanbevolen best practice het te testen voordat u het in productie neemt. In het ideale geval gebruikt u een test Tenant om te controleren of uw nieuwe beleid werkt zoals bedoeld. Zie voor meer informatie het artikel [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).
 

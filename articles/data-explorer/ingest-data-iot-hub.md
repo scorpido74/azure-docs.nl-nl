@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064985"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188365"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Gegevens opnemen van IoT Hub in azure Data Explorer 
 
@@ -83,7 +83,7 @@ U kunt nu verbinding maken met de IoT Hub vanuit Azure Data Explorer. Wanneer de
     | IoT Hub | IoT Hub naam |
     | Beleid voor gedeelde toegang | De naam van het beleid voor gedeelde toegang. Moet Lees machtigingen hebben |
     | Consumentengroep |  De consumenten groep die is gedefinieerd in het IoT Hub ingebouwde eind punt |
-    | Eigenschappen van gebeurtenis systeem | De [Eigenschappen van het IOT hub-gebeurtenis systeem](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/tables#create-table) of [bijwerken](/azure/kusto/management/tables#alter-table-and-alter-merge-table) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. | | | 
+    | Eigenschappen van gebeurtenis systeem | De [Eigenschappen van het IOT hub-gebeurtenis systeem](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/create-table-command) of [bijwerken](/azure/kusto/management/alter-table-command) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. | | | 
 
     > [!NOTE]
     > In het geval van een [hand matige failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover)moet u de gegevens verbinding opnieuw maken.

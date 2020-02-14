@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157904"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201846"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Een VNet-naar-VNet-verbinding configureren (klassiek)
 
@@ -61,9 +61,9 @@ U wilt virtuele netwerken wellicht koppelen om de volgende redenen:
 
 Zie voor meer informatie over verbindingen tussen VNets de [Aandachtspunten bij VNet-naar-VNet](#faq) aan het einde van dit artikel.
 
-### <a name="before-you-begin"></a>Voordat u begint
+### <a name="powershell"></a>Werken met Azure PowerShell
 
-Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM) voordat u begint met deze oefening. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. We gebruiken de portal voor de meeste stappen, maar u moet Power shell gebruiken om de verbindingen tussen de VNets te maken. U kunt de verbindingen niet maken met behulp van de Azure Portal.
+We gebruiken de portal voor de meeste stappen, maar u moet Power shell gebruiken om de verbindingen tussen de VNets te maken. U kunt de verbindingen niet maken met behulp van de Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>Stap 1: De IP-adresbereiken plannen
 
@@ -209,37 +209,34 @@ Wanneer u een klassiek VNets maakt in de Azure Portal, is de naam die u wilt wee
 
 In de volgende stappen maakt u verbinding met uw Azure-account en downloadt en bekijkt u het netwerk configuratie bestand om de vereiste waarden voor uw verbindingen te verkrijgen.
 
-1. Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM). Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+1. Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM). Zie [werken met Azure PowerShell](#powershell)voor meer informatie.
 
-2. Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   Controleer de abonnementen voor het account.
+2. Open de Power shell-console met verhoogde bevoegdheden. Gebruik de volgende voor beelden om u te helpen verbinding te maken. U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   Gebruik vervolgens de volgende cmdlet uit uw Azure-abonnement toevoegen aan PowerShell voor het klassieke implementatiemodel.
+3. Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
    ```powershell
    Add-AzureAccount
    ```
-3. Het netwerk configuratie bestand exporteren en weer geven. Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. In dit voor beeld wordt het netwerk configuratie bestand geëxporteerd naar **C:\AzureNet**.
+4. Controleer de abonnementen voor het account.
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken.
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. Het netwerk configuratie bestand exporteren en weer geven. Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. In dit voor beeld wordt het netwerk configuratie bestand geëxporteerd naar **C:\AzureNet**.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Open het bestand met een tekst editor en Bekijk de namen voor uw VNets en sites. Dit is de naam die u gebruikt wanneer u uw verbindingen maakt.<br>VNet-namen worden vermeld als **VirtualNetworkSite name =**<br>Site namen worden vermeld als **LocalNetworkSiteRef name =**
+7. Open het bestand met een tekst editor en Bekijk de namen voor uw VNets en sites. Deze namen zijn de namen die u gebruikt wanneer u uw verbindingen maakt.<br>VNet-namen worden vermeld als **VirtualNetworkSite name =**<br>Site namen worden vermeld als **LocalNetworkSiteRef name =**
 
 ## <a name="createconnections"></a>Stap 8: de VPN-gateway verbindingen maken
 
@@ -273,7 +270,7 @@ In de voor beelden ziet u dat de gedeelde sleutel precies hetzelfde is. De gedee
 ## <a name="faq"></a>Overwegingen voor VNet-naar-VNet voor klassieke VNets
 * De virtuele netwerken kunnen zich in dezelfde of verschillende abonnementen bevindt.
 * De virtuele netwerken kunnen zich in dezelfde of verschillende Azure-regio's (locaties) bevinden.
-* Een cloudservice of een taakverdelingseindpunt kan geen virtuele netwerken overbruggen, zelfs niet als ze met elkaar zijn verbonden.
+* Een Cloud service of een taakverdelings eindpunt kan geen virtuele netwerken omvatten, zelfs niet als ze met elkaar zijn verbonden.
 * Voor het verbinden van meerdere virtuele netwerken hoeven geen VPN-apparaten te worden gebruikt.
 * VNet-naar-VNet biedt ondersteuning voor het verbinden van virtuele netwerken van Azure. Het biedt geen ondersteuning voor het verbinden van virtuele machines of Cloud Services die niet zijn geïmplementeerd in een virtueel netwerk.
 * VNet-naar-VNet vereist dynamische routerings gateways. Azure static-routerings gateways worden niet ondersteund.

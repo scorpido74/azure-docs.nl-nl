@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967124"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190427"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -141,7 +141,7 @@ Als u Hybride verbindingen gebruikt voor toegang tot SQL Server, kan een Microso
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 De uitzonde ring is veroorzaakt door een probleem met de Hybrid Connection Manager dat sindsdien is opgelost. Zorg ervoor dat u [uw Hybrid Connection Manager bijwerkt](https://go.microsoft.com/fwlink/?LinkID=841308) om dit probleem op te lossen.
 
@@ -314,4 +314,4 @@ U kunt ook de specifieke dynamische en statische MIME-typen opgeven die u wilt c
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Hoe kan ik migreren van een on-premises omgeving naar App Service?
 
-Als u sites van Windows-en Linux-webservers wilt migreren naar App Service, kunt u Azure App Service Migration Assistant gebruiken. Het hulp programma voor migratie maakt indien nodig web-apps en data bases en publiceert vervolgens de inhoud. Zie [Azure App Service Migration Assistant](https://www.migratetoazure.net/)voor meer informatie.
+Als u sites van Windows-en Linux-webservers wilt migreren naar App Service, kunt u Azure App Service Migration Assistant gebruiken. Het hulp programma voor migratie maakt indien nodig web-apps en data bases en publiceert vervolgens de inhoud. Zie [Azure App Service Migration Assistant](https://appmigration.microsoft.com/)voor meer informatie.

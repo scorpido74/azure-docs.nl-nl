@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369844"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201489"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
@@ -59,6 +59,8 @@ Tijdelijke (tijd georiënteerde) query-elementen zijn de belangrijkste set state
 Houd er rekening mee dat een taak met complexe query logica mogelijk een hoog SU%-gebruik kan hebben, zelfs wanneer er niet continu invoer gebeurtenissen worden ontvangen. Dit kan gebeuren na een onverwachte piek in de invoer-en uitvoer gebeurtenissen. De taak kan de status in het geheugen blijven behouden als de query complex is.
 
 Het gebruik van% voor een korte periode kan plotseling tot 0 worden terugvallen voordat u terugkeert naar de verwachte niveaus. Dit gebeurt als gevolg van tijdelijke fouten of door het systeem geïnitieerde upgrades. Het verhogen van het aantal streaming-eenheden voor een taak vermindert mogelijk het gebruik van SU% als uw query niet [volledig parallel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)is.
+
+Gebruik bij het vergelijken van het gebruik voor een bepaalde tijd [metrische gegevens over de gebeurtenis frequentie](stream-analytics-monitoring.md). Met metrische gegevens voor InputEvents en OutputEvents wordt weer gegeven hoeveel gebeurtenissen zijn gelezen en verwerkt. Er zijn metrische gegevens die ook het aantal fout gebeurtenissen aangeven, zoals fouten bij het deserialiseren. Wanneer het aantal gebeurtenissen per tijds eenheid toeneemt, neemt SU% in de meeste gevallen toe.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Stateful querylogica in de tijdelijke elementen
 Een van de unieke mogelijkheid van Azure Stream Analytics-taak is stateful verwerking, zoals statische functies in vensters, tijdelijke joins en tijdelijke analytische functies uit te voeren. Elk van deze opera tors houdt status informatie. De maximale venster grootte voor deze query-elementen is zeven dagen. 

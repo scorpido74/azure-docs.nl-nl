@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 557e34e8a6bddd36a92b0e212bda3609baa14407
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642160"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202110"
 ---
 U kunt de volgende parameter typen voor de activerings-BLOB gebruiken:
 
@@ -28,8 +28,8 @@ U kunt de volgende parameter typen voor de activerings-BLOB gebruiken:
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> vereist de binding `direction` ' InOut ' in *Function. json* of `FileAccess.ReadWrite` in een C# klassen bibliotheek.
+<sup>1</sup> vereist de binding van ' inout ' `direction` in *Function. json* of `FileAccess.ReadWrite` C# in een klassen bibliotheek.
 
-Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)hebt.
 
-Binding met `string`, `Byte[]`, of poco wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` -type te gebruiken. Zie gelijktijdigheid [en geheugen gebruik](#trigger---concurrency-and-memory-usage) verderop in dit artikel voor meer informatie.
+Binding met `string`, `Byte[]`of POCO wordt alleen aanbevolen als de grootte van de BLOB klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` type te gebruiken. Zie gelijktijdigheid [en geheugen gebruik](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) verderop in dit artikel voor meer informatie.

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a16fb1184de5b545b3ef527b1a66ffb7b68d1ef4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982735"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197915"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -187,7 +187,7 @@ U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invo
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | setting. operatingMode | Nee | Voor een aanmeldings pagina bepaalt deze eigenschap het gedrag van het veld gebruikers naam, zoals invoer validatie en fout berichten. Verwachte waarden: `Username` of `Email`. |
 | AllowGenerationOfClaimsWithNullValues| Nee| Er kan een claim met een null-waarde worden gegenereerd. Zo wordt in een case-gebruiker geen selectie vakje geselecteerd.|
@@ -199,6 +199,8 @@ U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invo
 | setting. showContinueButton | Nee | Hiermee wordt de knop door gaan weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
 | setting.showSignupLink | Nee | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
 | setting. forgotPasswordLinkLocation| Nee| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina, of `None` verwijdert de koppeling verg eten wacht woord.| 
+| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
+
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
 Het element **CryptographicKeys** wordt niet gebruikt.

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732141"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190678"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Grote bestands shares inschakelen en maken
 
-Oorspronkelijk kunnen standaard bestands shares Maxi maal 5 TiB omlaag worden geschaald. Nu kunnen ze met grote bestands shares worden geschaald naar 100 TiB. U kunt deze schaal inschakelen voor uw bestaande opslag accounts voor uw bestaande bestands shares. Premium-bestands shares worden standaard tot 100 TiB geschaald.
+Wanneer u grote bestands shares inschakelt voor uw opslag account, kunnen uw bestands shares worden geschaald naar 100 TiB. U kunt deze schaal inschakelen voor uw bestaande opslag accounts voor uw bestaande bestands shares.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,14 +26,14 @@ Oorspronkelijk kunnen standaard bestands shares Maxi maal 5 TiB omlaag worden ge
 
 ## <a name="restrictions"></a>Beperkingen
 
-Voor Taan kunt u alleen LRS of ZRS gebruiken voor accounts met een grote bestands share. U kunt GZRS, GRS of RA-GRS niet gebruiken.
+U kunt nu alleen lokaal redundante opslag (LRS) of zone-redundante opslag (ZRS) gebruiken op accounts met grote bestands shares. U kunt geen geo-zone-redundante opslag (GZRS), geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) gebruiken.
 Het inschakelen van grote bestands shares voor een account is een onomkeerbaar proces. Nadat u dit hebt ingeschakeld, kunt u uw account niet converteren naar GZRS, GRS of RA-GRS.
 
 ## <a name="create-a-new-storage-account"></a>Een nieuw opslagaccount maken
 
 ### <a name="portal"></a>Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer in de Azure-portal de optie **Alle services**. 
 1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, worden de lijst filters op basis van uw invoer. Selecteer **Opslagaccounts**.
 1. Selecteer **toevoegen**in het venster **opslag accounts** dat wordt weer gegeven.

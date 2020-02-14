@@ -1,22 +1,22 @@
 ---
-title: Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang? -Azure Active Directory
+title: Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang? - Azure Active Directory
 description: Hoe kan ik de modus alleen rapport-Help gebruiken met de implementatie van beleid voor voorwaardelijke toegang
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180327"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186124"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang?
 
@@ -25,7 +25,8 @@ Voorwaardelijke toegang wordt veel door onze klanten gebruikt om veilig te blijv
 De modus alleen rapport is een nieuwe beleids status voor voorwaardelijk toegangs beleid waarmee beheerders de impact van beleids regels voor voorwaardelijke toegang kunnen evalueren voordat ze in hun omgeving worden ingeschakeld.  Met de versie van de modus alleen rapport:
 
 - Beleid voor voorwaardelijke toegang kan worden ingeschakeld in de modus alleen rapport.
-- Tijdens het aanmelden worden beleids regels in de modus alleen rapport geëvalueerd, maar niet afgedwongen. De resultaten worden vastgelegd in de tabbladen **voorwaardelijke toegang** en **rapport-enkel (preview)** van de logboek gegevens van de aanmelding.
+- Tijdens het aanmelden worden beleids regels in de modus alleen rapport geëvalueerd, maar niet afgedwongen.
+- De resultaten worden vastgelegd in de tabbladen **voorwaardelijke toegang** en **rapport-enkel (preview)** van de logboek gegevens van de aanmelding.
 - Klanten met een Azure Monitor-abonnement kunnen de impact van hun beleids regels voor voorwaardelijke toegang bewaken met behulp van de Insights-werkmap voor voorwaardelijke toegang.
 
 > [!WARNING]

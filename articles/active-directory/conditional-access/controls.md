@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424974"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186216"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Wat zijn toegangs beheer in Azure Active Directory voorwaardelijke toegang?
 
@@ -55,7 +55,7 @@ Met besturings elementen voor Grant kunt u de toegang geheel blok keren of toega
 
 U kunt dit besturings element gebruiken om multi-factor Authentication te vereisen voor toegang tot de opgegeven Cloud-app. Dit besturings element ondersteunt de volgende multi-factor-providers:
 
-- Verificatie op basis van meerdere factoren van Azure
+- Azure Multi-Factor Authentication
 - Een on-premises multi-factor Authentication-provider, gecombineerd met Active Directory Federation Services (AD FS).
 
 Het gebruik van multi-factor Authentication helpt resources te beschermen tegen toegang door een niet-geautoriseerde gebruiker die mogelijk toegang heeft verkregen tot de primaire referenties van een geldige gebruiker.
@@ -85,18 +85,18 @@ Zie [Azure Active Directory op apparaat gebaseerd beleid voor voorwaardelijke to
 Omdat uw werk nemers mobiele apparaten gebruiken voor zowel privé-als werk taken, kunt u de Bedrijfs gegevens die toegankelijk zijn met apparaten beveiligen, zelfs als ze niet door u worden beheerd.
 U kunt [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy) gebruiken om de gegevens van uw bedrijf onafhankelijk van elke MDM-oplossing (Mobile-Device Management) te beveiligen.
 
-Met goedgekeurde client-apps kunt u een client-app vereisen die toegang probeert te krijgen tot uw Cloud-apps voor het ondersteunen van [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy). U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app. Een beleid voor voorwaardelijke toegang dat goedgekeurde client-apps vereist, wordt ook wel [op apps gebaseerd beleid voor voorwaardelijke toegang](app-based-conditional-access.md)genoemd. Zie voor een lijst met ondersteunde goedgekeurde client-apps de [vereiste goedgekeurde client-app](technical-reference.md#approved-client-app-requirement).
+Met goedgekeurde client-apps kunt u een client-app vereisen die toegang probeert te krijgen tot uw Cloud-apps voor het ondersteunen van [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy). U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app. Een beleid voor voorwaardelijke toegang dat goedgekeurde client-apps vereist, wordt ook wel [op apps gebaseerd beleid voor voorwaardelijke toegang](app-based-conditional-access.md)genoemd. Zie voor een lijst met ondersteunde goedgekeurde client-apps de [vereiste goedgekeurde client-app](concept-conditional-access-grant.md#require-approved-client-app).
 
 ### <a name="app-protection-policy-preview"></a>Beveiligings beleid voor apps (preview-versie)
 
 Omdat uw werk nemers mobiele apparaten gebruiken voor zowel privé-als werk taken, kunt u de Bedrijfs gegevens die toegankelijk zijn met apparaten beveiligen, zelfs als ze niet door u worden beheerd.
 U kunt [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy) gebruiken om de gegevens van uw bedrijf onafhankelijk van elke MDM-oplossing (Mobile-Device Management) te beveiligen.
 
-Met het app-beveiligings beleid kunt u de toegang beperken tot client toepassingen die zijn gerapporteerd aan Azure AD heeft het [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy)ontvangen. U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app die een intune-beleid voor app-beveiliging heeft. Een beleid voor voorwaardelijke toegang dat het beveiligings beleid voor apps vereist, wordt ook wel het [beleid voor voorwaardelijke toegang op basis van apps beveiliging](app-protection-based-conditional-access.md)genoemd. 
+Met het app-beveiligings beleid kunt u de toegang beperken tot client toepassingen die zijn gerapporteerd aan Azure AD heeft het [intune-beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy)ontvangen. U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app die een intune-beleid voor app-beveiliging heeft. Een beleid voor voorwaardelijke toegang dat het beveiligings beleid voor apps vereist, wordt ook wel het [beleid voor voorwaardelijke toegang op basis van apps beveiliging](concept-conditional-access-session.md#application-enforced-restrictions)genoemd. 
 
 Het apparaat moet worden geregistreerd bij Azure AD voordat een toepassing kan worden gemarkeerd als beveiligd beleid.
 
-Zie [vereisten voor app-beveiligings beleid](technical-reference.md#app-protection-policy-requirement)voor een lijst met ondersteunde, door beleid beveiligde client-apps.
+Zie [vereisten voor app-beveiligings beleid](concept-conditional-access-session.md#application-enforced-restrictions)voor een lijst met ondersteunde, door beleid beveiligde client-apps.
 
 ### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
@@ -161,7 +161,7 @@ Sessie besturings elementen maken beperkte ervaring in een Cloud-app mogelijk. D
 
 U kunt dit besturings element gebruiken om te vereisen dat Azure AD apparaatgegevens doorgeeft aan de geselecteerde Cloud-apps. De apparaatgegevens maken het mogelijk om te bepalen of een verbinding tot stand wordt gebracht vanaf een apparaat dat compatibel is met of een domein. Dit besturings element ondersteunt alleen share point online en Exchange Online als geselecteerde Cloud-apps. Als deze functie is ingeschakeld, gebruikt de Cloud-app de apparaatgegevens om gebruikers, afhankelijk van de status van het apparaat, te voorzien van een beperkte of volledige ervaring.
 
-Voor meer informatie zie:
+Raadpleeg voor meer informatie:
 
 - [Beperkte toegang inschakelen met share point online](https://aka.ms/spolimitedaccessdocs)
 - [Beperkte toegang inschakelen met Exchange Online](https://aka.ms/owalimitedaccess)

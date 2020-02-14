@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835021"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201676"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -82,21 +82,11 @@ U kunt [de data base ook exporteren naar een BACPAC](sql-database-export.md) en 
 
 Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB. Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 vs gen 5 
-
-**Hoe kan ik kiezen tussen generatie van gen 4 en generatie 5 hardware voor een beheerd exemplaar?**
-
-Het is afhankelijk van uw werk belasting, omdat bepaalde typen werk belastingen beter zijn dan de andere. Hoewel het onderwerp van de prestaties in plaats van complex is om te vereenvoudigen, worden de volgende verschillen tussen de hardware gegenereerd die van invloed zijn op de prestaties van de werk belasting:
-- Gen 4 biedt een betere reken ondersteuning, omdat deze is gebaseerd op fysieke processors, en op basis van de vCore-processors. Het kan handiger zijn voor computerintensieve werk belastingen.
-- Gen 5 biedt ondersteuning voor versneld netwerken, wat leidt tot een betere IO-band breedte naar externe opslag. Dit kan handig zijn voor intensieve i/o-werk belastingen op Algemeen Service lagen. In Gen 5 worden lokale schijven met een hogere SSD vergeleken met gen 4. Dit kan handig zijn voor werk belasting intensieve workloads op kritieke service lagen.
-
-Het wordt ten zeerste aangeraden de prestaties van werkelijke workloads te testen die bestemd zijn voor productie voordat ze live gaan gebruiken om te bepalen welke hardware-generatie beter in een specifiek geval zal werken.
-
 ## <a name="switch-hardware-generation"></a>Hardware-generatie scha kelen 
 
 **Kan ik de hardware-generatie van beheerde exemplaren tussen gen 4 en Gen 5 online veranderen?**
 
-Geautomatiseerde online switches tussen de hardware is mogelijk als beide generaties beschikbaar zijn in de regio waar uw beheerde exemplaar is ingericht. In dit geval kunt u [script uit een blog bericht](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) gebruiken om uit te leggen hoe u tussen de hardware gegenereerd gaat.
+Geautomatiseerde online switches tussen de hardware is mogelijk als beide generaties beschikbaar zijn in de regio waar uw beheerde exemplaar is ingericht. In dit geval kunt u de [overzichts pagina](sql-database-service-tiers-vcore.md) van het vCore-model controleren, waarin wordt uitgelegd hoe u tussen de hardware gegenereerd.
 
 Dit is een langlopende bewerking als een nieuw beheerd exemplaar wordt ingericht op de achtergrond en data bases worden automatisch overgebracht tussen het oude en het nieuwe exemplaar met een snelle failover aan het einde van het proces. 
 
@@ -108,8 +98,6 @@ Als beide generaties niet in dezelfde regio worden ondersteund, is het wijzigen 
 **De prestaties van mijn beheerde exemplaar Hoe kan ik afstemmen?**
 
 Algemeen beheerde instantie gebruikt externe opslag, omdat de grootte van de gegevens en logboek bestanden op de prestaties van belang is. Zie [impact van de grootte van het logboek bestand op algemeen prestaties van het beheerde exemplaar](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)voor meer informatie.
-
-Voor intensieve IO-workloads kunt u gebruikmaken van generatie 5-Hardware en met behulp van gen 4 voor computerintensieve werk belastingen. Zie [Hoe kan ik kiezen tussen gen 4 en Gen 5](#gen-4-vs-gen-5)voor meer informatie.
 
 Als uw werk belasting uit veel kleine trans acties bestaat, kunt u overwegen om het verbindings type van de proxy naar de omleidings modus te scha kelen.
 
@@ -206,7 +194,7 @@ Daarom raden wij u ten zeerste aan om te vertrouwen op Onveranderbaarheid van he
 
 Nee, dit is de beperking van het huidige platform. Nadat een beheerd exemplaar is gemaakt, wordt het beheerde exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.
 
-## <a name="change-time-zone"></a>Tijdzone wijzigen
+## <a name="change-time-zone"></a>Tijd zone wijzigen
 
 **Kan ik de tijd zone wijzigen voor een bestaande beheerde instantie?**
 

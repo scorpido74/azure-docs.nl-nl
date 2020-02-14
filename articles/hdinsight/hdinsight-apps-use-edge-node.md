@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
-ms.openlocfilehash: b8bb68f7da74e547b020ae00a4672e10d70cbfd1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844459"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199004"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Lege Edge-knoop punten op Apache Hadoop clusters in HDInsight gebruiken
 
@@ -52,7 +52,7 @@ Wanneer u het cluster maakt, kunt u een leeg Edge-knoop punt toevoegen aan een b
 
 Zoals in het voor beeld wordt weer gegeven, kunt u eventueel een [script actie](hdinsight-hadoop-customize-cluster-linux.md) aanroepen om aanvullende configuratie uit te voeren, zoals het installeren van [Apache-tinten](hdinsight-hadoop-hue-linux.md) in het Edge-knoop punt. De script actie script moet openbaar toegankelijk zijn op het web.  Als het script bijvoorbeeld wordt opgeslagen in Azure Storage, gebruikt u open bare containers of open bare blobs.
 
-De grootte van de virtuele machine van het Edge-knoop punt moet voldoen aan de vereisten voor de VM-grootte van het HDInsight-cluster. Zie [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)voor de aanbevolen VM-grootten voor werk knooppunten.
+De grootte van de virtuele machine van het Edge-knoop punt moet voldoen aan de vereisten voor de VM-grootte van het HDInsight-cluster. Zie [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)voor de aanbevolen VM-grootten voor werk knooppunten.
 
 Nadat u een Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met het Edge-knoop punt en client hulpprogramma's uitvoeren om toegang te krijgen tot het Hadoop-cluster in HDInsight.
 
@@ -69,7 +69,7 @@ Nadat u een Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met he
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Een Edge-knoop punt toevoegen aan een bestaand cluster
 
-In deze sectie gebruikt u een resource manager-sjabloon om een Edge-knoop punt toe te voegen aan een bestaand HDInsight-cluster.  De Resource Manager-sjabloon vindt u in [github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). De Resource Manager-sjabloon roept een script actie op die zich op https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh bevindt. Het script voert geen acties uit.  Het is om het aanroepen van een script actie te demonstreren vanuit een resource manager-sjabloon.
+In deze sectie gebruikt u een resource manager-sjabloon om een Edge-knoop punt toe te voegen aan een bestaand HDInsight-cluster.  De Resource Manager-sjabloon vindt u in [github](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). De Resource Manager-sjabloon roept een script actie op die zich op https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shbevindt. Het script voert geen acties uit.  Het is om het aanroepen van een script actie te demonstreren vanuit een resource manager-sjabloon.
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en open de Azure Resource Manager sjabloon in de Azure Portal.
 
@@ -91,7 +91,7 @@ In deze sectie gebruikt u een resource manager-sjabloon om een Edge-knoop punt t
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Een Edge-knoop punt toevoegen bij het maken van een cluster
 
-In deze sectie gebruikt u een resource manager-sjabloon om een HDInsight-cluster te maken met een Edge-knoop punt.  De Resource Manager-sjabloon vindt u in de [Galerie met sjablonen van Azure Quick](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)start. De Resource Manager-sjabloon roept een script actie op die zich op https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh bevindt. Het script voert geen acties uit.  Het is om het aanroepen van een script actie te demonstreren vanuit een resource manager-sjabloon.
+In deze sectie gebruikt u een resource manager-sjabloon om een HDInsight-cluster te maken met een Edge-knoop punt.  De Resource Manager-sjabloon vindt u in de [Galerie met sjablonen van Azure Quick](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)start. De Resource Manager-sjabloon roept een script actie op die zich op https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shbevindt. Het script voert geen acties uit.  Het is om het aanroepen van een script actie te demonstreren vanuit een resource manager-sjabloon.
 
 1. Maak een HDInsight-cluster als u er nog geen hebt.  Zie [aan de slag met Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -161,8 +161,8 @@ U kunt een Edge-knoop punt verwijderen uit het Azure Portal.
 In dit artikel hebt u geleerd hoe u een Edge-knoop punt kunt toevoegen en hoe u toegang krijgt tot het Edge-knoop punt. Raadpleeg de volgende artikelen voor meer informatie:
 
 * [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): informatie over het installeren van een HDInsight-toepassing op uw clusters.
-* [Aangepaste HDInsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md): informatie over het implementeren van een niet-gepubliceerde HDInsight-toepassing op HDInsight.
+* [Aangepaste hdinsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md): meer informatie over het implementeren van een niet-gepubliceerde hdinsight-toepassing op hdinsight.
 * [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): informatie over het publiceren van aangepaste HDInsight-toepassingen in Azure Marketplace.
 * [MSDN: een HDInsight-toepassing installeren](https://msdn.microsoft.com/library/mt706515.aspx): informatie over het definiëren van HDInsight-toepassingen.
 * [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van een scriptactie](hdinsight-hadoop-customize-cluster-linux.md): informatie over het gebruik van een scriptactie om extra toepassingen te installeren.
-* [Apache Hadoop op basis van Linux-clusters in HDInsight met behulp van Resource Manager-sjablonen maken](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informatie over het aanroepen van Resource Manager-sjablonen om HDInsight-clusters te maken.
+* [Op Linux gebaseerde Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informatie over het aanroepen van Resource Manager-sjablonen voor het maken van HDInsight-clusters.

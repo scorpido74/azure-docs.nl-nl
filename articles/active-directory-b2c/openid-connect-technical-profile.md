@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/24/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fde27c468b6b5285e9e98f10a5fd04ee53c3c775
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840346"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198000"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OpenID Connect Connect Technical-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -74,7 +74,7 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | client_id | Ja | De toepassings-id van de ID-provider. |
 | IdTokenAudience | Nee | De doel groep van de id_token. Indien opgegeven, Azure AD B2C controleert of het token zich in een claim bevindt die wordt geretourneerd door de ID-provider en is deze gelijk aan de waarde die is opgegeven. |
@@ -88,12 +88,13 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 | UsePolicyInRedirectUri | Nee | Hiermee wordt aangegeven of een beleid moet worden gebruikt bij het samen stellen van de omleidings-URI. Wanneer u uw toepassing in de ID-provider configureert, moet u de omleidings-URI opgeven. De omleidings-URI verwijst naar Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Als u `false`opgeeft, moet u een omleidings-URI toevoegen voor elk beleid dat u gebruikt. Bijvoorbeeld: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nee | Hiermee wordt aangegeven of een aanvraag naar een externe service als een fout moet worden gemarkeerd als de HTTP-status code zich in het 5xx bereik bevindt. De standaardwaarde is `false`. |
 | DiscoverMetadataByTokenIssuer | Nee | Geeft aan of de OIDC-meta gegevens moeten worden gedetecteerd met behulp van de verlener in het JWT-token. |
+| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
 Het element **CryptographicKeys** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Het client geheim van de identiteits provider toepassing. De cryptografische sleutel is alleen vereist als de **response_types** meta gegevens zijn ingesteld op `code`. In dit geval maakt Azure AD B2C een andere aanroep voor het uitwisselen van de autorisatie code voor een toegangs token. Als de meta gegevens zijn ingesteld op `id_token` kunt u de cryptografische sleutel weglaten.  |
 

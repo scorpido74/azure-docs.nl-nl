@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064645"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190480"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -42,7 +42,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 
 | Label | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Beheer verkeer voor Azure API Management-specifieke implementaties. | Beide | Nee | Ja |
+| **ApiManagement** | Beheer verkeer voor Azure API Management-specifieke implementaties. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt het Azure API Management service-eind punt voor besturings vlak per regio. Hierdoor kunnen klanten beheer bewerkingen uitvoeren op de Api's, bewerkingen, beleids regels, NamedValues die zijn geconfigureerd voor de API Management service.  | Inkomend | Ja | Ja |
 | **ApplicationInsightsAvailability** | Beschik baarheid van Application Insights. | Inkomend | Nee | Nee |
 | **AppService**    | Azure App Service. Deze tag wordt aanbevolen voor uitgaande beveiligings regels voor front-ends van webtoepassingen. | Uitgaand | Ja | Ja |
 | **AppServiceManagement** | Beheer verkeer voor implementaties die zijn toegewezen aan App Service Environment. | Beide | Nee | Ja |

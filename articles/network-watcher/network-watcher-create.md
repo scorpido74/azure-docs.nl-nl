@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845120"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191183"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Een Azure Network Watcher-exemplaar maken
 
@@ -51,7 +51,7 @@ az provider register -n Microsoft.Network
 
 Ga naar **alle Services** > **netwerk** > **Network Watcher**. U kunt alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie maakt u een Network Watcher in elke regio die beschikbaar is.
 
-![Een netwerk-Watcher maken](./media/network-watcher-create/figure1.png)
+![een netwerk-Watcher maken](./media/network-watcher-create/figure1.png)
 
 Als u Network Watcher inschakelt met behulp van de portal, wordt de naam van de Network Watcher instantie automatisch ingesteld op *NetworkWatcher_region_name* waarbij *region_name* overeenkomt met de Azure-regio waar het exemplaar is ingeschakeld. Een Network Watcher die is ingeschakeld in de regio West-Centraal VS heeft bijvoorbeeld de naam *NetworkWatcher_westcentralus*.
 
@@ -132,5 +132,3 @@ Nu u een exemplaar van Network Watcher hebt, hebt u meer informatie over de besc
 * [Beveiligingsgroepweergave](network-watcher-security-group-view-overview.md)
 * [Logboek registratie voor NSG-stroom](network-watcher-nsg-flow-logging-overview.md)
 * [Problemen met Virtual Network gateway oplossen](network-watcher-troubleshoot-overview.md)
-
-Zodra een Network Watcher-exemplaar is, kunt u pakket opname inschakelen binnen virtuele machines. Zie [een waarschuwing maken](network-watcher-alert-triggered-packet-capture.md) voor het genereren van pakketten voor meer informatie.

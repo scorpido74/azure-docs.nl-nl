@@ -8,19 +8,19 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 495fa3837681fb2a78d86e6c34d4b4888b1e37f4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863679"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198646"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Een virtuele netwerk gateway verwijderen met behulp van Power shell (klassiek)
 
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [Klassiek - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [Klassiek-Power shell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 
 Dit artikel helpt u bij het verwijderen van een VPN-gateway in het klassieke implementatie model met behulp van Power shell. Nadat de virtuele netwerk gateway is verwijderd, wijzigt u het netwerk configuratie bestand om elementen te verwijderen die u niet meer gebruikt.
@@ -29,15 +29,22 @@ Dit artikel helpt u bij het verwijderen van een VPN-gateway in het klassieke imp
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Installeer de meest recente Power shell-cmdlets.
 
-Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM). Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="2-connect-to-your-azure-account"></a>2. Maak verbinding met uw Azure-account. 
+### <a name="2-connect-to-your-azure-account"></a>2. Maak verbinding met uw Azure-account.
 
 Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
-```powershell
-Add-AzureAccount
-```
+1. Open de Power shell-console met verhoogde bevoegdheden. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
+
+   ```powershell
+   azure config mode asm
+   ```
+2. Maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="export"></a>Stap 2: het netwerk configuratie bestand exporteren en weer geven
 

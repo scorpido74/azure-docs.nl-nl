@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085377"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194992"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
 ## <a name="what-is-authentication"></a>Wat is verificatie?
 
-In dit artikel worden veel van de verificatie concepten beschreven die u moet begrijpen om beveiligde web-apps, Web-Api's of apps te maken die beveiligde web-Api's aanroepen. Als u een term ziet die u niet kent, probeert u onze [woorden lijst](developer-glossary.md).
+In dit artikel worden veel van de verificatie concepten beschreven die u moet begrijpen om beveiligde web-apps, Web-Api's of apps te maken die beveiligde web-Api's aanroepen. Als u een term ziet die u niet kent, probeert u onze [woorden lijst](developer-glossary.md) of onze [Video's over micro soft Identity platform](identity-videos.md) die basis concepten omvatten.
 
 **Verificatie** is het proces van waaruit u wordt gedicteerd. Verificatie wordt soms afgekort tot 'AuthN'.
 

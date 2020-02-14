@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: c49c37ced4a5d5cc7cdde0737b889aad3b538f7f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898978"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198595"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassings gateway met een ILB-eind punt (interne load balancer) configureren
 
@@ -27,9 +27,9 @@ Dit artikel begeleidt u bij de stappen voor het configureren van een toepassings
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op <https://portal.azure.com>KV
+Meld u aan bij de Azure Portal op <https://portal.azure.com>
 
-## <a name="create-an-application-gateway"></a>Een Application Gateway maken
+## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
 Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaande gebruiken. In dit voor beeld maakt u een nieuw virtueel netwerk. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt. Application Gateway exemplaren worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
 
@@ -141,13 +141,13 @@ Hiervoor gaat u als volgt te werk:
 ### <a name="add-backend-servers-to-backend-pool"></a>Back-endservers toevoegen aan back-end-groep
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
-2. Selecteer **back-endpools**. Selecteer **appGatewayBackendPool**.
+2. Selecteer **back-endservers**. Selecteer **appGatewayBackendPool**.
 3. Onder **doel type** **virtuele machine** selecteren en onder **doel**selecteert u de vNIC die is gekoppeld aan myVM.
 4. Herhaal deze stap om MyVM2 toe te voegen.
    ![privé-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. Selecteer **opslaan.**
 
-## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
+## <a name="test-the-application-gateway"></a>Toepassingsgateway testen
 
 1. Controleer het frontend-IP-adres dat is toegewezen door te klikken op de pagina **frontend IP-configuraties** in de portal.
     ![privé-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)

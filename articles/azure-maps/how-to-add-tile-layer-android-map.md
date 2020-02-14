@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4113f632e70bf1008c688066b51a27f1bc3c6345
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911515"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198255"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
 
 In dit artikel wordt beschreven hoe u een tegel laag op een kaart kunt weer geven met behulp van de Azure Maps Android SDK. Met tegel lagen kunt u afbeeldingen boven op Azure Maps basis kaart tegels plaatsen. Meer informatie over Azure Maps tegel systeem vindt u in de documentatie over het [Zoom niveau en het tegel raster](zoom-levels-and-tile-grid.md) .
 
-Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën kunnen vooraf worden weer gegeven en opgeslagen, zoals elke andere installatie kopie op een server met behulp van een naamgevings Conventie die de tegel laag begrijpt, of een dynamische service die de afbeeldingen op de vlucht genereert. Er worden drie verschillende naamgevings conventies voor tegel Services ondersteund door Azure Maps klasse TileLayer; 
+Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën kunnen vooraf worden weer gegeven en opgeslagen, zoals elke andere installatie kopie op een server, met behulp van een naamgevings Conventie die de laag van de tegel begrijpt. Het is ook mogelijk dat deze installatie kopieën worden weer gegeven met een dynamische service die de afbeeldingen bijna in real time genereert. Er worden drie verschillende naamgevings conventies voor tegel Services ondersteund door Azure Maps klasse TileLayer:
 
 * X, Y, zoom notatie: gebaseerd op het zoom niveau, x is de kolom en Y de rijpositie van de tegel in het tegel raster.
 * Quadkey notatie: combi natie x, y en zoom informatie in een enkele teken reeks waarde die een unieke id voor een tegel is.
@@ -35,7 +35,7 @@ De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL z
 * `{z}`-zoom niveau van de tegel. Ook moet `{x}` en `{y}`.
 * `{quadkey}`-tegel quadkey-id op basis van de naam Conventie voor Bing Maps-tegel systemen.
 * `{bbox-epsg-3857}`-een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het spatiale referentie systeem van EPSG 3857.
-* `{subdomain}`: een tijdelijke aanduiding waarbij de opgegeven subdomein waarden worden toegevoegd.
+* `{subdomain}`: een tijdelijke aanduiding voor de waarden van het subdomein als de subdomeinwaarde is opgegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ Om het proces in dit artikel te volt ooien, moet u [Azure Maps ANDROID SDK](http
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Een tegel laag aan de kaart toevoegen
 
- Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels die gebruikmaken van het systeem x, y en zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). 
+ Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels. Deze tegels gebruiken het tegel systeem x, y, zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). 
 
 U kunt een tegel laag toevoegen aan de kaart door de volgende stappen uit te voeren.
 

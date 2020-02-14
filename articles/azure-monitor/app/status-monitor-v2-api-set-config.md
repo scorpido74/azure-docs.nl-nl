@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: d90739fbdc862d67dc2ce0f1dfdf5af5f4089a44
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899675"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189424"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights agent-API: set-ApplicationInsightsMonitoringConfig
 
@@ -37,23 +37,21 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voor beeld:
-- `MachineFilter` komt overeen met de huidige computer door gebruik te maken van het Joker teken `'.*'`.
+In dit voorbeeld:
+- `MachineFilter` komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
 - `AppFilter='WebAppExclude'` biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
 - `AppFilter='WebAppOne'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
 - `AppFilter='WebAppTwo'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
-- Ten slotte maakt `AppFilter` ook gebruik van het Joker teken `'.*'` om te voldoen aan alle web-apps die niet overeenkomen met de eerdere regels en wijst u een standaard instrumentatie sleutel toe.
+- Ten slotte gebruikt `AppFilter` ook het Joker teken `'.*'` om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
 - Spaties worden toegevoegd voor de Lees baarheid.
 
 ```powershell
-PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
-    @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
-
+Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
+       @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
+          @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+          @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+          @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
-
 
 ## <a name="parameters"></a>Parameters
 
@@ -62,7 +60,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
-U kunt één installatie script maken voor verschillende computers door `MachineFilter` in te stellen.
+U kunt één installatie script maken voor verschillende computers door `MachineFilter`in te stellen.
 
 > [!IMPORTANT]
 > Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.

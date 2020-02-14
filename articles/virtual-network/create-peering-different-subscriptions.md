@@ -1,5 +1,5 @@
 ---
-title: Een Azure Virtual Network-peering maken-Resource Manager-verschillende abonnementen
+title: Een VNet-peering maken-verschillende abonnementen
 titlesuffix: Azure Virtual Network
 description: Meer informatie over het maken van een virtuele netwerk peering tussen virtuele netwerken die zijn gemaakt via Resource Manager en die voor komen in verschillende Azure-abonnementen.
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020009"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201744"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen
 
@@ -27,8 +27,8 @@ De stappen voor het maken van peering op een virtueel netwerk zijn verschillend,
 
 |Azure-implementatiemodel  | Azure-abonnement  |
 |--------- |---------|
-|[Resource Manager](tutorial-connect-virtual-networks-portal.md) |Dezelfde|
-|[Eén Resource Manager, één klassiek](create-peering-different-deployment-models.md) |Dezelfde|
+|[Resource Manager](tutorial-connect-virtual-networks-portal.md) |dezelfde|
+|[Eén Resource Manager, één klassiek](create-peering-different-deployment-models.md) |dezelfde|
 |[Eén Resource Manager, één klassiek](create-peering-different-deployment-models-subscriptions.md) |Uiteenlopende|
 
 U kunt geen virtuele netwerk peering maken tussen twee virtuele netwerken die zijn geïmplementeerd via het klassieke implementatie model. Als u virtuele netwerken wilt verbinden die beide zijn gemaakt via het klassieke implementatie model, kunt u een Azure- [VPN gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) gebruiken om verbinding te maken met de virtuele netwerken.
@@ -48,7 +48,7 @@ In de volgende stappen worden verschillende accounts voor elk abonnement gebruik
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als *GebruikerA*. Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#permissions)voor een lijst met machtigingen.
 2. Selecteer **+ een resource maken**, selecteer **netwerken**en selecteer vervolgens **virtueel netwerk**.
 3. Selecteer of typ de volgende voorbeeld waarden voor de volgende instellingen en selecteer vervolgens **maken**:
-    - **Name**: *myVnetA*
+    - **Naam**: *myVnetA*
     - **Adres ruimte**: *10.0.0.0/16*
     - **Subnetnaam**: *standaard*
     - **Adres bereik van subnet**: *10.0.0.0/24*
@@ -65,7 +65,7 @@ In de volgende stappen worden verschillende accounts voor elk abonnement gebruik
 11. Meld u bij de portal aan als GebruikerA en meld u aan als UserB.
 12. Voer de stappen 2-3 uit, voer de volgende waarden in in stap 3:
 
-    - **Name**: *myVnetB*
+    - **Naam**: *myVnetB*
     - **Adres ruimte**: *10.1.0.0/16*
     - **Subnetnaam**: *standaard*
     - **Adres bereik van subnet**: *10.1.0.0/24*
@@ -82,7 +82,7 @@ In de volgende stappen worden verschillende accounts voor elk abonnement gebruik
 19. Selecteer onder **instellingen**de optie **peerings**.
 20. Selecteer onder **myVnetA-peerings** **+ toevoegen**
 21. Voer onder **peering toevoegen**, of selecteren, de volgende opties in en selecteer vervolgens **OK**:
-     - **Name**: *myVnetAToMyVnetB*
+     - **Naam**: *myVnetAToMyVnetB*
      - **Implementatie model van het virtuele netwerk**: Selecteer **Resource Manager**.
      - **Ik weet wat mijn resource-id**is: Schakel dit selectie vakje in.
      - **Resource-id**: Voer de resource-id in van stap 14.
@@ -311,7 +311,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="delete-powershell"></a>Zo
 
 1. Meld u aan bij Azure als GebruikerA en voer de volgende opdracht uit:
 

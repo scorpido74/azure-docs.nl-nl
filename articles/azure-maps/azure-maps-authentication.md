@@ -3,46 +3,45 @@ title: Verificatie methoden | Microsoft Azure kaarten
 description: In dit artikel vindt u meer informatie over Azure Active Directory (Azure AD) en gedeelde sleutel verificatie. Beide worden gebruikt voor Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 73c0d9f76ad92d0ef7ed0f518de5ab1f8b174c9d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025619"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189794"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
-Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutels en Azure Active Directory-verificatie. In dit artikel wordt uitgelegd hoe u deze verificatie methoden kunt gebruiken om uw implementatie te begeleiden.
+Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutels en Azure Active Directory-verificatie. In dit artikel wordt uitgelegd hoe u deze verificatie methoden kunt gebruiken om uw implementatie van Azure Maps services te begeleiden.
 
 ## <a name="shared-key-authentication"></a>Gedeelde sleutel verificatie
 
-Met gedeelde sleutel verificatie worden sleutels door een Azure Maps-account gegenereerd waarbij elke aanvraag wordt Azure Maps. Voor elke aanvraag voor het Azure Maps van services moet de *abonnements sleutel* worden toegevoegd als een para meter voor de URL. Primaire en secundaire sleutels worden gegenereerd nadat het Azure Maps-account is gemaakt. U wordt aangeraden om de primaire sleutel als abonnements sleutel te gebruiken wanneer u Azure Maps aanroept met behulp van gedeelde sleutel verificatie. De secundaire sleutel kan worden gebruikt in scenario's zoals wijzigingen in de Rolling sleutel.  
+ Primaire en secundaire sleutels worden gegenereerd nadat het Azure Maps-account is gemaakt. U wordt aangeraden de primaire sleutel als abonnements sleutel te gebruiken bij het aanroepen van Azure Maps met behulp van gedeelde sleutel verificatie. Met gedeelde sleutel verificatie wordt een sleutel door een Azure Maps-account door gegeven aan een Azure Maps-service. Voor elke aanvraag voor het Azure Maps van services, voegt u de *abonnements sleutel* als een para meter toe aan de URL. De secundaire sleutel kan worden gebruikt in scenario's zoals wijzigingen in de Rolling sleutel.  
 
 Zie [verificatie beheren](https://aka.ms/amauthdetails)voor meer informatie over het weer geven van uw sleutels in de Azure Portal.
 
 > [!Tip]
 > U wordt aangeraden de sleutels regelmatig opnieuw te genereren. U hebt twee sleutels, zodat u verbindingen met één sleutel kunt onderhouden tijdens het opnieuw genereren van de andere. Wanneer u de sleutels opnieuw genereert, moet u alle toepassingen die toegang hebben tot uw account, bijwerken met de nieuwe sleutels.
 
-
-
 ## <a name="authentication-with-azure-active-directory-preview"></a>Verificatie met Azure Active Directory (preview-versie)
 
-Azure Maps biedt nu verificatie aanvragen voor Azure Maps-Services met behulp van [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Azure AD biedt verificatie op basis van een identiteit, inclusief [op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). RBAC wordt gebruikt om toegang tot Azure Maps resources op gebruikers niveau, op groeps niveau of op toepassings niveau toe te staan. In de volgende secties vindt u meer informatie over de concepten en onderdelen van Azure Maps integratie met Azure AD.
+Azure Maps biedt nu verificatie aanvragen voor Azure Maps-Services met behulp van [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Azure AD biedt verificatie op basis van een identiteit, inclusief [op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). RBAC wordt gebruikt om toegang tot Azure Maps resources op gebruikers niveau, op groeps niveau of op toepassings niveau toe te staan. In de volgende secties worden de concepten en onderdelen van Azure Maps integratie met Azure AD besproken.
+
 ## <a name="authentication-with-oauth-access-tokens"></a>Verificatie met OAuth-toegangstokens
 
-Azure Maps accepteert **OAuth 2,0** -toegangs tokens voor Azure AD-tenants die zijn gekoppeld aan een Azure-abonnement dat een Azure Maps account bevat. Azure Maps accepteert tokens voor:
+Azure Maps accepteert **OAuth 2,0** -toegangs tokens voor Azure AD-tenants die zijn gekoppeld aan een Azure-abonnement dat een Azure Maps account bevat. Azure Maps accepteert ook tokens voor:
 
 * Azure AD-gebruikers
 * Partner toepassingen die gebruikmaken van machtigingen die worden gedelegeerd door gebruikers
 * Beheerde identiteiten voor Azure-resources
 
-Azure Maps genereert een *unieke id (client-id)* voor elk Azure Maps-account. U kunt tokens aanvragen bij Azure AD wanneer u deze client-ID combineert met aanvullende para meters. Als u een token wilt aanvragen, moet u de waarden in de volgende tabel opgeven op basis van uw Azure-omgeving.
+Azure Maps genereert een *unieke id (client-id)* voor elk Azure Maps-account. U kunt tokens aanvragen bij Azure AD wanneer u deze client-ID combineert met aanvullende para meters. Als u een token wilt aanvragen, geeft u de waarden in de volgende tabel op op basis van uw Azure-omgeving.
 
 | Azure-omgeving   | Azure AD-token eindpunt |
 | --------------------|-------------------------|
@@ -56,7 +55,7 @@ Zie [Wat is verificatie?](https://docs.microsoft.com/azure/active-directory/deve
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>Azure-toewijzings resources aanvragen met OAuth-tokens
 
-Nadat een token van Azure AD is ontvangen, wordt er een aanvraag verzonden naar Azure Maps met de volgende set vereiste aanvraag headers:
+Nadat Azure AD een token heeft ontvangen, verzendt Azure Maps een aanvraag met de volgende set vereiste aanvraag headers:
 
 | Aanvraagheader    |    Waarde    |
 |:------------------|:------------|
@@ -79,7 +78,7 @@ Zie [verificatie details weer geven](https://aka.ms/amauthdetails)voor meer info
 
 ## <a name="control-access-with-rbac"></a>Toegang beheren met RBAC
 
-Gebruik in azure AD RBAC om de toegang tot beveiligde bronnen te beheren. Stel uw Azure Maps-account in en registreer uw Azure Maps Azure AD-TENANT. Azure Maps ondersteunt het lezen van toegangs beheer voor afzonderlijke Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en Azure-Services via beheerde identiteiten voor Azure-resources. Op de pagina Azure Maps Portal kunt u RBAC instellen voor de gewenste rollen.
+Gebruik in azure AD RBAC om de toegang tot beveiligde bronnen te beheren. Stel uw Azure Maps-account in en registreer uw Azure Maps Azure AD-Tenant. Azure Maps ondersteunt het lezen van toegangs beheer voor afzonderlijke Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en Azure-Services via beheerde identiteiten voor Azure-resources. Op de pagina Azure Maps Portal kunt u RBAC instellen voor uw gekozen rollen.
 
 ![Azure Maps gegevens lezer (preview-versie)](./media/azure-maps-authentication/concept.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846165"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185914"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migratie van klassiek beleid voor voorwaardelijke toegang
 
@@ -31,7 +31,7 @@ U kunt de beleids regels die u niet hebt gemaakt, migreren in de Azure Portal om
 
 In dit artikel wordt uitgelegd wat u moet weten om uw bestaande beleids regels voor voorwaardelijke toegang naar het nieuwe Framework te migreren.
 
-## <a name="classic-policies"></a>Klassieke beleidsregels
+## <a name="classic-policies"></a>Klassiek beleid
 
 In de [Azure Portal](https://portal.azure.com)kunt u beleid voor voorwaardelijke toegang vinden onder **Azure Active Directory** > **beveiliging** > **voorwaardelijke toegang**. Uw organisatie heeft mogelijk ook oudere beleids regels voor voorwaardelijke toegang die niet op deze pagina zijn gemaakt. Deze beleids regels worden *klassieke beleids regels*genoemd. Klassieke beleids regels zijn beleids regels voor voorwaardelijke toegang, die u hebt gemaakt in:
 
@@ -89,7 +89,7 @@ Als u een nieuw beleid hebt met **Exchange Active Sync** als voor waarde voor cl
 
 ![Voor waarden voor voorwaardelijke toegang](./media/policy-migration/16.png)
  
-[Op apps gebaseerd](technical-reference.md#approved-client-app-requirement) klassiek beleid voor Office 365 Exchange Online met **Exchange Active Sync** als voor waarde client-apps **ondersteunde** en niet- **ondersteunde** [platformen](technical-reference.md#device-platform-condition)toestaan. Hoewel u geen individuele platformen kunt configureren in een gerelateerd nieuw beleid, kunt u de ondersteuning beperken tot alleen [ondersteunde apparaat platforms](technical-reference.md#device-platform-condition) . 
+Op apps gebaseerd klassiek beleid voor Office 365 Exchange Online met **Exchange Active Sync** als voor waarde client-apps **ondersteunde** en niet- **ondersteunde** platformen toestaan. Hoewel u geen individuele platformen kunt configureren in een gerelateerd nieuw beleid, kunt u de ondersteuning beperken tot alleen [ondersteunde apparaat platforms](concept-conditional-access-conditions.md#device-platforms) . 
 
 ![Voorwaardelijke toegang Exchange ActiveSync selecteren](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ In dit geval kunt u uw klassieke beleids regels samen voegen in één nieuw bele
 
 ### <a name="device-platforms"></a>Apparaat platforms
 
-Klassieke beleids regels met [besturings elementen op basis](technical-reference.md#approved-client-app-requirement) van de app zijn vooraf geconfigureerd met IOS en Android als [platform voorwaarde voor het apparaat](technical-reference.md#device-platform-condition). 
+Klassieke beleids regels met besturings elementen op basis van de app zijn vooraf geconfigureerd met iOS en Android als platform voorwaarde voor het apparaat. 
 
-In een nieuw beleid moet u de [platformen](technical-reference.md#device-platform-condition) selecteren die u afzonderlijk wilt ondersteunen.
+In een nieuw beleid moet u de [platformen](concept-conditional-access-conditions.md#device-platforms) selecteren die u afzonderlijk wilt ondersteunen.
 
 ![Platform selectie voor apparaten voor voorwaardelijke toegang](./media/policy-migration/41.png)
 

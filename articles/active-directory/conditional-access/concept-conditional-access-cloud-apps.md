@@ -1,31 +1,31 @@
 ---
-title: Client-apps in beleid voor voorwaardelijke toegang-Azure Active Directory
-description: ''
+title: Cloud-apps of-acties in het beleid voor voorwaardelijke toegang-Azure Active Directory
+description: Wat zijn Cloud-apps of acties in een beleid voor voorwaardelijke toegang van Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544052"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186387"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>Voorwaardelijke toegang: Cloud-apps en-acties
+# <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
-Cloud-apps of-acties is een belang rijk onderdeel van een beleid voor voorwaardelijke toegang. Met beleid voor voorwaardelijke toegang kunnen beheerders besturings elementen aan specifieke toepassingen of acties toewijzen. 
+Cloud-apps of-acties zijn een belang rijk signaal in een beleid voor voorwaardelijke toegang. Met beleid voor voorwaardelijke toegang kunnen beheerders besturings elementen aan specifieke toepassingen of acties toewijzen.
 
 - Beheerders kunnen kiezen uit de lijst met toepassingen met ingebouwde micro soft-toepassingen en [Azure AD Integrated-toepassingen](../manage-apps/what-is-application-management.md) , waaronder galerie, niet-galerie en toepassingen die zijn gepubliceerd via [toepassings proxy](../manage-apps/what-is-application-proxy.md).
 - Beheerders kunnen ervoor kiezen om beleid te definiëren dat niet is gebaseerd op een Cloud toepassing maar bij een gebruikers actie. De enige ondersteunde actie is het registreren van beveiligings gegevens (preview), waardoor voorwaardelijke toegang kan leiden tot het afdwingen van besturings elementen voor de [registratie van gecombineerde beveiligings gegevens](../authentication/howto-registration-mfa-sspr-combined.md).
 
-![Beleid voor voorwaardelijke toegang definiëren en Cloud-apps opgeven](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![Beleid voor voorwaardelijke toegang definiëren en Cloud-apps opgeven](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Micro soft-Cloud toepassingen
 
@@ -60,7 +60,7 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - Office 365 Yammer
 - Office Delve
 - Office Sway
-- Outlook Groups
+- Outlook-groepen
 - Power BI-service
 - Project Online
 - Skype voor Bedrijven Online
@@ -98,7 +98,7 @@ Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (
 
 De Microsoft Azure-beheer toepassing bevat meerdere onderliggende services. 
 
-   - Azure Portal
+   - Azure-portal
    - Azure Resource Manager provider
    - Klassieke implementatie model-Api's
    - Azure PowerShell
@@ -118,12 +118,13 @@ Naast de micro soft-apps kunnen beheerders een door Azure AD geregistreerde toep
 - [Aangepaste toepassingen die niet voor komt in de galerie](../manage-apps/add-non-gallery-app.md)
 - [Verouderde toepassingen die zijn gepubliceerd via app Delivery controllers en Networks](../manage-apps/secure-hybrid-access.md)
 
-## <a name="user-actions"></a>Gebruikersacties
+## <a name="user-actions"></a>Gebruikers acties
 
 Gebruikers acties zijn taken die door een gebruiker kunnen worden uitgevoerd. De enige bewerking die momenteel wordt ondersteund, is het **registreren van beveiligings gegevens (preview)** , waardoor het beleid voor voorwaardelijke toegang kan worden afgedwongen wanneer gebruikers die zijn ingeschakeld voor de gecombineerde registratie poging hun beveiligings gegevens te registreren. Meer informatie vindt u in het artikel, [registratie van gecombineerde beveiligings gegevens (preview)](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Onderdelen van beleid voor voorwaardelijke toegang](concept-conditional-access-policies.md)
+- [Voorwaardelijke toegang: voor waarden](concept-conditional-access-conditions.md)
+
+- [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 - [Client toepassings afhankelijkheden](service-dependencies.md)
-- [Microsoft Intune: MFA vereisen voor apparaatregistratie](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

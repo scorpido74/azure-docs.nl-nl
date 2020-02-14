@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aee049f91aaa071595ab42e9bb4d6b2f5e8616d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021843"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195518"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -98,6 +98,11 @@ Als de identiteits Tenant een just-in-time (JIT) of virale Tenant is (wat beteke
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Een gast gebruiker kan de AzureAD Power shell v1-module niet gebruiken
 
 Met ingang van 18 november 2019 kunnen gast gebruikers in uw directory (gedefinieerd als gebruikers accounts waarvan de eigenschap **User type** gelijk is aan **gast**) worden geblokkeerd voor het gebruik van de AzureAD Power shell v1-module. Als een gebruiker verdergaat, moet deze lid zijn van een gebruiker (waarbij **User type** gelijk is aan **lid**) of gebruikmaken van de AzureAD Power shell V2-module.
+
+## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In een Azure US Government-Tenant kan ik geen gast gebruiker voor B2B-samen werking uitnodigen
+
+Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, krijgt u een fout melding. Zie [Azure Active Directory Premium P1 en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie en beperkingen.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

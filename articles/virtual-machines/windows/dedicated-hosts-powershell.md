@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833842"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190522"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
 
@@ -28,7 +28,7 @@ Zorg ervoor dat u Azure PowerShell versie 2.8.0 of hoger hebt geïnstalleerd en 
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De volgende VM-serie worden ondersteund: DSv3 en ESv3. 
+- De volgende VM-reeksen worden ondersteund: DSv3, ESv3 en Fsv2. 
 
 ## <a name="create-a-host-group"></a>Een hostgroep aanmaken
 
@@ -56,7 +56,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Een host maken
 
-We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.  Tijdens de preview worden de volgende SKU-waarden voor de host ondersteund: DSv3_Type1 en ESv3_Type1.
+We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.
 
 
 Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicated host prijzen](https://aka.ms/ADHPricing).
@@ -74,7 +74,7 @@ $dHost = New-AzHost `
    -PlatformFaultDomain 1
 ```
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 Maak een virtuele machine op de toegewezen host. 
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 667fa1c85c63ffb87e49c4bf99112f57d0c85a72
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031918"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191044"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Verbindings problemen met de persoonlijke koppelings service oplossen
+# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Verbindingsproblemen met Private Link-service oplossen
 
 Deze hand leiding bevat stapsgewijze instructies voor het valideren en diagnosticeren van de connectiviteit voor de installatie van uw persoonlijke koppelings service. 
 
@@ -112,4 +112,4 @@ Als u verbindings problemen ondervindt met het instellen van uw persoonlijke kop
 
  * [Een service voor persoonlijke koppelingen maken](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
 
- * [Gids voor probleem oplossing voor privé-eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-connectivity-troubleshooting)
+ * [Gids voor probleem oplossing voor privé-eind punten](troubleshoot-private-endpoint-connectivity.md)

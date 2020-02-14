@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936389"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200075"
 ---
 # <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
@@ -38,7 +38,7 @@ Naast de gebruiks vriendelijke API hoeft u geen aangepaste eind punten te implem
 
 ### <a name="subscription-key"></a>Abonnements sleutel
 
-Als met alle functies van de spraak-service die u een abonnementssleutel van maakt de [Azure-portal](https://portal.azure.com) door onze [introductiehandleiding](get-started.md).
+Net als bij alle functies van de speech-service maakt u een abonnements sleutel van de [Azure Portal](https://portal.azure.com) door de [aan de slag-hand leiding](get-started.md)te volgen.
 
 >[!NOTE]
 > Voor de speech-service is een Standard-abonnement (S0) vereist om batch-transcriptie te gebruiken. Gratis abonnementssleutels (F0) werkt niet. Zie [prijzen en limieten](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)voor meer informatie.
@@ -89,14 +89,14 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| `ProfanityFilterMode` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` die wordt uitgeschakeld grof taalgebruik filteren, `Masked` die grof taalgebruik vervangen door sterretjes, `Removed` waarbij alle scheldwoorden worden verwijderd uit het resultaat, of `Tags` zodat 'grof taalgebruik' tags aan wordt toegevoegd. De standaardinstelling is `Masked`. |
-| `PunctuationMode` | Geeft aan hoe interpunctie in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` die wordt uitgeschakeld interpunctie, `Dictated` dit expliciete interpunctie houdt `Automatic` waarmee de decoder interpunctie, behandelt of `DictatedAndAutomatic` dit houdt bepaald leestekens of automatisch. |
+| `ProfanityFilterMode` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` waarmee de filter functie voor scheld woorden wordt uitgeschakeld, `Masked` waardoor de woorden met sterretjes worden vervangen, `Removed` waardoor alle scheld woorden uit het resultaat worden verwijderd, of `Tags` waarmee de tags voor groveheid worden toegevoegd. De standaard instelling is `Masked`. |
+| `PunctuationMode` | Geeft aan hoe interpunctie in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` die interpunctie uitschakelt, `Dictated` die expliciete interpunctie impliceert, `Automatic` waarmee de decoder met interpunctie kan omgaan, of `DictatedAndAutomatic` die interpunctie tekens of automatisch aanduidt. |
 | `AddWordLevelTimestamps` | Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden zijn `true` die tijds tempels op woord niveau en `false` (de standaard waarde) in staat stelt om deze uit te scha kelen. |
 | `AddSentiment` | Hiermee geeft u sentiment moet worden toegevoegd aan de utterance. Geaccepteerde waarden zijn `true` die sentiment per utterance en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. |
 | `AddDiarization` | Hiermee geeft u op dat diarization-analyse moet worden uitgevoerd op de invoer waarvan wordt verwacht dat deze een mono-kanaal met twee stemmen bevat. Geaccepteerde waarden zijn `true` die diarization en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. Ook moet `AddWordLevelTimestamps` worden ingesteld op True.|
 |`TranscriptionResultsContainerUrl`|Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 
 Batch transcriptie ondersteunt [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) voor het lezen van audio en schrijven van transcripties naar opslag.
 
@@ -129,8 +129,8 @@ Voor mono-invoer audio wordt één transcriptie-resultaat bestand gemaakt. Voor 
                                                              speakerId as a string if
                                                              diarization requested for
                                                              mono audio file'
-          "Offset": number                                  'time in milliseconds'
-          "Duration": number                                'time in milliseconds'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
           "OffsetInSeconds" : number                        'Real number. Two decimal places'
           "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
@@ -150,8 +150,8 @@ Voor mono-invoer audio wordt één transcriptie-resultaat bestand gemaakt. Voor 
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                          'time in milliseconds'
-                  "Duration": number                        'time in milliseconds'
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
                   "OffsetInSeconds": number                 'Real number. Two decimal places'
                   "DurationInSeconds": number               'Real number. Two decimal places'
                   "Confidence": number                      'between 0 and 1'
@@ -265,7 +265,7 @@ Met de voorbeeld code wordt de client ingesteld en wordt de transcriptie-aanvraa
 
 Zie het [Swagger-document](https://westus.cris.ai/swagger/ui/index)voor volledige informatie over de voor gaande aanroepen. Voor het volledige voor beeld dat hier wordt weer gegeven, gaat u naar [github](https://aka.ms/csspeech/samples) in de submap `samples/batch`.
 
-Noteer de asynchrone instellingen voor het plaatsen van audio en transcriptie status ontvangen. De client die u maakt, is een .NET-HTTP-client. Er is een `PostTranscriptions` methode voor het verzenden van de details van de audio-bestand en een `GetTranscriptions` methode voor het ontvangen van de resultaten. `PostTranscriptions` retourneert een ingang en `GetTranscriptions` gebruikt voor het maken van een greep om de status van de transcriptie.
+Noteer de asynchrone instellingen voor het plaatsen van audio en transcriptie status ontvangen. De client die u maakt, is een .NET-HTTP-client. Er is een `PostTranscriptions` methode voor het verzenden van de audio bestands Details en een `GetTranscriptions` methode voor het ontvangen van de resultaten. `PostTranscriptions` retourneert een handle en `GetTranscriptions` wordt gebruikt om een ingang te maken om de status van transcriptie op te halen.
 
 De huidige voorbeeldcode opgeven niet een aangepast model. De service maakt gebruik van de basislijn-modellen voor te transcriberen van het bestand of de bestanden. U kunt doorgeven om op te geven de modellen, op dezelfde manier als de model-id voor de akoestische en het taalmodel.
 

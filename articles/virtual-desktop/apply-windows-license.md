@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: af8542ccc8fad8d833d8329999ded2f5a52b3d03
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564197"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201472"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows-licentie Toep assen op virtuele machines van de sessiehost
 
@@ -38,7 +38,7 @@ Update-AzVM -ResourceGroupName <resourceGroupName> -VM $vm
 ## <a name="verify-your-session-host-vm-is-utilizing-the-licensing-benefit"></a>Controleer of de host-VM van uw sessie gebruikmaakt van het voor deel van de licentie
 Nadat u uw virtuele machine hebt geïmplementeerd, voert u deze cmdlet uit en controleert u het licentie type:
 ```powershell
-Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>
+Get-AzVM -ResourceGroupName <resourceGroupName> -Name <vmName>
 ```
 
 Een host-VM met de toegepaste Windows-licentie ziet er ongeveer als volgt uit:
@@ -61,5 +61,5 @@ Voer de volgende cmdlet uit om een lijst met alle host-Vm's te bekijken waarop d
 
 ```powershell
 $vms = Get-AzVM
-$vms | ?{$_.LicenseType -like "Windows_Client"} | select ResourceGroupName, Name, LicenseType
+$vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object ResourceGroupName, Name, LicenseType
 ```

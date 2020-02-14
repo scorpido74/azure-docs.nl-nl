@@ -3,21 +3,22 @@ title: Overzicht van Azure Monitor voor containers | Microsoft Docs
 description: Dit artikel wordt beschreven van Azure Monitor voor containers die bewaakt AKS Container Insights-oplossing en de waarde die het biedt een door de bewaking van de status van uw AKS-clusters en exemplaren van de Container in Azure.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 341dd28f6c1523e4b4c06da30a0a8ffc61b1c6f4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75730733"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198034"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor voor containers: overzicht
 
 Azure Monitor voor containers is een functie die is ontworpen voor het bewaken van de prestaties van container werkbelastingen die zijn geïmplementeerd op:
 
-- Managed Kubernetes-clusters die worden gehost op de Azure Kubernetes-service (AKS)
-- Azure Container Instances
-- Zelf beheerde Kubernetes-clusters die worden gehost op Azure Stack of on-premises
-- Azure Red Hat OpenShift
+- Managed Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service (AKS)](../../aks/intro-kubernetes.md)
+- Zelf beheerde Kubernetes-clusters die worden gehost op Azure met behulp van de [AKS-engine](https://github.com/Azure/aks-engine)
+- [Azure Container Instances](../../container-instances/container-instances-overview.md)
+- Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
+- [Azure Red Hat open Shift](../../openshift/intro-openshift.md)
 
 Azure Monitor voor containers ondersteunt clusters met het besturings systeem Linux en Windows Server 2019. 
 
@@ -38,7 +39,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
 * Begrijp het gedrag van het cluster bij gemiddelde en zwaarste belasting. Deze kennis kunt u identificeren behoeften aan capaciteit en bepaal de maximale belasting van het cluster kan tolereren. 
 * Configureer waarschuwingen om u proactief te informeren of op te nemen wanneer het CPU-en geheugen gebruik op knoop punten of containers de drempel waarden overschrijdt, of wanneer er een status wijziging in het cluster optreedt bij het samen vouwen van de infra structuur of de knooppunt status.
 * Integreer met [Prometheus](https://prometheus.io/docs/introduction/overview/) om de metrische gegevens van de toepassing en werk belasting weer te geven die worden verzameld van knoop punten en Kubernetes met behulp van [query's](container-insights-log-search.md) om aangepaste waarschuwingen, Dash boards en gedetailleerde gedetailleerde analyses te maken.
-* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/microsoft/OMS-docker/tree/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/Azure/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
 * Bewaak de werk belasting van containers [die zijn geïmplementeerd in azure Red Hat open Shift](../../openshift/intro-openshift.md).
 
     >[!NOTE]

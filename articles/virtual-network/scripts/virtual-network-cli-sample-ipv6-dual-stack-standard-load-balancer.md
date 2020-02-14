@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van Azure CLI-script-virtuele netwerk eindpunten voor IPv6 configureren-Standard Load Balancer (preview-versie)
+title: Voor beeld van Azure CLI-script-IPv6-front-end configureren-Standard Load Balancer
 titlesuffix: Azure Virtual Network
 description: IPv6-eind punten inschakelen met behulp van Azure CLI in azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: afeb0c83c6e9afca16d0f0b21adafac4b7f3f2c2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269713"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201336"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-eind punten configureren in het voorbeeld script van een virtueel netwerk met behulp van Standard Load Balancer (preview-versie)
 
@@ -282,14 +282,14 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtueel IPv6-netwerk met dubbele stack in Azure Portal weer geven
 U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure Portal:
 1. Voer in de zoek balk van de portal *dsVnet*in.
-2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u  de overzichts pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*. 
+2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de **overzichts** pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*. 
 
 > [!NOTE]
 > Het virtuele netwerk van IPv6 voor Azure is beschikbaar in het Azure Portal alleen-lezen voor deze preview-versie.
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Voer de volgende opdracht uit om de resourcegroep, VM en alle gerelateerde resources te verwijderen:
+Gebruik de volgende opdracht om de resourcegroep, VM, en alle gerelateerde resources te verwijderen:
 
 ```azurecli
 az group delete --name <resourcegroupname> --yes
@@ -313,7 +313,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | Hiermee maakt u een netwerkkaart die gekoppeld wordt aan het virtuele netwerk, het subnet en de NSG. |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | Hiermee maakt u een beschikbaarheidsset. Beschikbaarheidssets waarborgen de uptime van toepassingen door de virtuele machines te verdelen over fysieke resources, zodat als er een fout optreedt, niet de hele set wordt getroffen. |
 | [az vm create](/cli/azure/vm#az-vm-create) | Hiermee maakt u de virtuele machine en verbindt u deze met de netwerkkaart, het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties.  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

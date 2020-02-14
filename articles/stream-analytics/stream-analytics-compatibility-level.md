@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989855"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201795"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteitsniveau voor Azure Stream Analytics-taken
 
@@ -49,9 +49,13 @@ Het compatibiliteits niveau van de taak in het Azure Portal bijwerken:
 
 Wanneer u het compatibiliteits niveau bijwerkt, valideert de T-compiler de taak met de syntaxis die overeenkomt met het geselecteerde compatibiliteits niveau.
 
-## <a name="compatibility-level-12"></a>Compatibiliteitsniveau 1.2
+## <a name="compatibility-level-12"></a>Compatibiliteits niveau 1,2
 
 De volgende belang rijke wijzigingen worden geïntroduceerd in compatibiliteits niveau 1,2:
+
+###  <a name="amqp-messaging-protocol"></a>AMQP Messa ging Protocol
+
+**1,2-niveau**: Azure stream Analytics gebruikt [AMQP-berichten Protocol (Advanced Message queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) om te schrijven naar service bus-wacht rijen en-onderwerpen. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol.
 
 ### <a name="geospatial-functions"></a>Georuimtelijke functies
 
@@ -148,5 +152,5 @@ De volgende belangrijke wijzigingen zijn geïntroduceerd in compatibiliteitsnive
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Stream Analytics-invoer oplossen](stream-analytics-troubleshoot-input.md)
+* [Problemen met Azure Stream Analytics invoer oplossen](stream-analytics-troubleshoot-input.md)
 * [Resource status Stream Analytics](stream-analytics-resource-health.md)

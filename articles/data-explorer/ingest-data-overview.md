@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157241"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187984"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Gegevens opname van Azure Data Explorer
 
@@ -133,8 +133,8 @@ Voor alle opname methoden behalve opnemen vanuit query moet u de gegevens opmake
 
 Schema toewijzing helpt bij het binden van bron gegevens velden aan doel tabel kolommen.
 
-* [CSV-toewijzing](/azure/kusto/management/mappings?branch=master#csv-mapping) (optioneel) werkt met alle notaties op basis van een rang telwoord. Dit kan worden uitgevoerd met behulp van de opname opdracht parameter of [vooraf gemaakte in de tabel](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) en waarnaar wordt verwezen vanuit de opdracht parameter opnemen.
-* [JSON-toewijzing](/azure/kusto/management/mappings?branch=master#json-mapping) (verplicht) en [Avro-toewijzing](/azure/kusto/management/mappings?branch=master#avro-mapping) (verplicht) kunnen worden uitgevoerd met behulp van de opdracht parameter opnemen. Ze kunnen ook [vooraf worden gemaakt in de tabel](/azure/kusto/management/tables#create-ingestion-mapping) en worden verwezen vanuit de opdracht parameter opnemen.
+* [CSV-toewijzing](/azure/kusto/management/mappings?branch=master#csv-mapping) (optioneel) werkt met alle notaties op basis van een rang telwoord. Dit kan worden uitgevoerd met behulp van de opname opdracht parameter of [vooraf gemaakte in de tabel](/azure/kusto/management/create-ingestion-mapping-command) en waarnaar wordt verwezen vanuit de opdracht parameter opnemen.
+* [JSON-toewijzing](/azure/kusto/management/mappings?branch=master#json-mapping) (verplicht) en [Avro-toewijzing](/azure/kusto/management/mappings?branch=master#avro-mapping) (verplicht) kunnen worden uitgevoerd met behulp van de opdracht parameter opnemen. Ze kunnen ook [vooraf worden gemaakt in de tabel](/azure/kusto/management/create-ingestion-mapping-command) en worden verwezen vanuit de opdracht parameter opnemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460361"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190651"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Ontwikkelen voor Azure Files met .NET
 
@@ -39,7 +39,7 @@ Azure Files biedt twee veelzijdige methoden voor het maken van clienttoepassinge
 API | Wanneer gebruikt u dit? | Opmerkingen
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Uw toepassing: <ul><li>Moet bestanden lezen/schrijven met behulp van SMB</li><li>Wordt uitgevoerd op een apparaat met toegang tot uw Azure Files-account via poort 445</li><li>Hoeft geen beheerinstellingen van de bestandsshare te beheren</li></ul> | Bestands-I/O dat is geïmplementeerd met Azure Files over SMB, is over het algemeen hetzelfde als I/O met een netwerk bestands share of een lokaal opslag apparaat. Raadpleeg de zelf studie over de [console toepassing](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) voor een inleiding tot een aantal functies in .net, waaronder bestands-I/O.
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Uw toepassing: <ul><li>Geen toegang tot Azure Files met behulp van SMB op poort 445 vanwege firewall-of ISP-beperkingen</li><li>Vereist beheerfunctionaliteit, zoals de mogelijkheid tot het instellen van een quotum voor een bestandsshare of het maken van een Shared Access Signature (gedeelde-toegangshandtekening)</li></ul> | In dit artikel wordt het gebruik van `Microsoft.Azure.Storage.File` voor bestands-I/O met behulp van REST in plaats van SMB en het beheer van de bestands share gedemonstreerd.
+[Micro soft. Azure. storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Uw toepassing: <ul><li>Geen toegang tot Azure Files met behulp van SMB op poort 445 vanwege firewall-of ISP-beperkingen</li><li>Vereist beheerfunctionaliteit, zoals de mogelijkheid tot het instellen van een quotum voor een bestandsshare of het maken van een Shared Access Signature (gedeelde-toegangshandtekening)</li></ul> | In dit artikel wordt het gebruik van `Microsoft.Azure.Storage.File` voor bestands-I/O met behulp van REST in plaats van SMB en het beheer van de bestands share gedemonstreerd.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>De consoletoepassing maken en de assembly verkrijgen
 
@@ -79,7 +79,7 @@ Met NuGet kunt u beide pakketten verkrijgen. Volg deze stappen:
 1. Deze pakketten zoeken en installeren:
 
    * **Micro soft. Azure. storage. common**
-   * **Microsoft.Azure.Storage.File**
+   * **Micro soft. Azure. storage. File**
    * **Micro soft. Azure. ConfigurationManager**
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Sla de referenties van uw opslag account op in het bestand app. config
@@ -495,10 +495,10 @@ Raadpleeg de volgende bronnen voor meer informatie over Azure Files:
 * [De Azure CLI gebruiken met Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Problemen met Azure Files in Windows oplossen](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Referentie
+### <a name="reference"></a>Naslaginformatie
 
-* [Azure Storage-API's voor .NET](/dotnet/api/overview/azure/storage)
-* [Bestandsservice REST API](/rest/api/storageservices/File-Service-REST-API)
+* [Azure Storage-Api's voor .NET](/dotnet/api/overview/azure/storage)
+* [Bestands service REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>Blogberichten
 

@@ -1,19 +1,19 @@
 ---
-title: Locaties van virtuele WAN-partners van Azure | Microsoft Docs
+title: Virtuele WAN-partners en-locaties van Azure | Microsoft Docs
 description: Dit artikel bevat een lijst met virtuele WAN-partners en hub-locaties van Azure.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: afa808c95c88184fb531e858fbfe6d102a6f1f08
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
+ms.openlocfilehash: 68379fd2334e517df4011c05bb32543f7ce4a173
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157156"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190404"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuele WAN-partners en virtuele-hub-locaties
 
@@ -34,7 +34,7 @@ De volgende automatisering op hoog niveau is ingesteld in de console van het app
 * Automatisch downloaden van Azure-verbindings gegevens
 * Configuratie van een on-premises vertakkings apparaat 
 
-Sommige connectiviteits partners kunnen de automatisering uitbreiden om de virtuele Azure-hub VNet en VPN Gateway op te nemen. Als u meer wilt weten over Automation, raadpleegt u [Automation configureren: WAN-partners](virtual-wan-configure-automation-providers.md).
+Sommige connectiviteits partners kunnen de automatisering uitbreiden om de virtuele Azure-hub VNet en VPN Gateway op te nemen. Als u meer wilt weten over Automation, raadpleegt u de [richt lijnen voor automatisering voor virtuele WAN-partners](virtual-wan-configure-automation-providers.md).
 
 ## <a name="partners"></a>Connectiviteit via partners
 
@@ -50,4 +50,4 @@ De volgende partners zijn zou op ons schema voor de nabije toekomst: Arista, Aru
 
 * Zie de [Veelgestelde vragen over virtuele WAN](virtual-wan-faq.md)voor meer informatie over Virtual WAN.
 
-* Zie voor meer informatie over het automatiseren van de connectiviteit met Azure Virtual WAN [: virtuele WAN-partners-How to Automatiseer](virtual-wan-configure-automation-providers.md).
+* Zie [Automation-richt lijnen voor virtuele WAN-partners](virtual-wan-configure-automation-providers.md)voor meer informatie over het automatiseren van de connectiviteit met Azure Virtual WAN.

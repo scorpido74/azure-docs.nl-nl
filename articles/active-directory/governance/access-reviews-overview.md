@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932648"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185765"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Wat zijn toegangsbeoordelingen in Azure AD?
 
@@ -58,13 +58,13 @@ Afhankelijk van wat u wilt controleren, maakt u uw toegangs beoordeling in azure
 | --- | --- | --- | --- |
 | Leden van beveiligings groep</br>Office-groeps leden | Opgegeven revisoren</br>Groeps eigenaren</br>Zelf beoordeling | Azure AD-toegangsbeoordelingen</br>Azure AD-groepen | Toegangsvenster |
 | Toegewezen aan een verbonden app | Opgegeven revisoren</br>Zelf beoordeling | Azure AD-toegangsbeoordelingen</br>Azure AD Enter prise-apps (in preview-versie) | Toegangsvenster |
-| Azure AD-rol | Opgegeven revisoren</br>Zelf beoordeling | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
-| Azure-resource functie | Opgegeven revisoren</br>Zelf beoordeling | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Azure AD-rol | Opgegeven revisoren</br>Zelf beoordeling | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-portal |
+| Azure-resource functie | Opgegeven revisoren</br>Zelf beoordeling | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-portal |
 
 
-## <a name="onboard-access-reviews"></a>Toegangs Beoordelingen voor onboarding
+## <a name="create-access-reviews"></a>Toegangs beoordelingen maken
 
-Volg deze stappen om toegangs beoordelingen uit te voeren.
+Voer de volgende stappen uit om een toegangs beoordeling te maken:
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) om toegangs beoordelingen te beheren en u aan te melden als een globale beheerder of gebruikers beheerder.
 
@@ -74,13 +74,9 @@ Volg deze stappen om toegangs beoordelingen uit te voeren.
 
 1. Selecteer **Identity governance**.
 
-1. Klik op **toegangs beoordelingen**.
- 
-    ![Start pagina toegangs beoordelingen](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. Klik op de pagina aan de slag op de knop **een toegangs beoordeling maken** .
 
-1. Klik op de pagina op de knop **nu Onboarden** .
-    
-      ![Toegangs Beoordelingen voor onboarding](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![Start pagina toegangs beoordelingen](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>Meer informatie over toegangs beoordelingen

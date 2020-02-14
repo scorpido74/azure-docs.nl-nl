@@ -1,5 +1,5 @@
 ---
-title: Aangepaste domeinen in azure AD-toepassingsproxy | Microsoft Docs
+title: Aangepaste domeinen in Azure AD-toepassingsproxy | Microsoft Docs
 description: Aangepaste domeinen configureren en beheren in azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062535"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185541"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
-Wanneer u een toepassing publiceert via Azure Active Directory-toepassingsproxy, maakt u een externe URL voor uw gebruikers. Met deze URL wordt het standaard domein *yourtenant.msappproxy.net*opgehaald. Als u bijvoorbeeld een app met de naam *uitgaven* in uw Tenant met de naam *Contoso*publiceert, is de externe URL *https: \//expenses-contoso.msappproxy.net*. Als u uw eigen domein naam wilt gebruiken in plaats van *msappproxy.net*, kunt u een aangepast domein voor uw toepassing configureren. 
+Wanneer u een toepassing publiceert via Azure Active Directory-toepassingsproxy, maakt u een externe URL voor uw gebruikers. Met deze URL wordt het standaard domein *yourtenant.msappproxy.net*opgehaald. Als u bijvoorbeeld een app met de naam *uitgaven* in uw Tenant met de naam *Contoso*publiceert, is de externe URL *https:\//expenses-contoso.msappproxy.net*. Als u uw eigen domein naam wilt gebruiken in plaats van *msappproxy.net*, kunt u een aangepast domein voor uw toepassing configureren. 
 
 ## <a name="benefits-of-custom-domains"></a>Voor delen van aangepaste domeinen
 
@@ -49,7 +49,7 @@ Er zijn verschillende opties voor het instellen van uw DNS-configuratie, afhanke
 
 Als u niet wilt dat uw interne gebruikers worden omgeleid via de toepassings proxy, kunt u een *Split-DNS-server*instellen. Een gesplitste DNS-infra structuur stuurt interne hosts naar een interne domein naam server en externe hosts naar een externe domein naam server, voor naam omzetting. 
 
-![Gesplitste DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![Split-brain DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>Verschillende interne en externe Url's 
 
@@ -93,7 +93,7 @@ Uw app publiceren via een toepassings proxy met een aangepast domein:
    
 6. Als het domein al een certificaat heeft, wordt in het veld **certificaat** de gegevens van het certificaat weer gegeven. Als dat niet het geval is, selecteert u het veld **certificaat** . 
    
-   ![Klik om een certificaat te uploaden](./media/application-proxy-configure-custom-domain/certificate.png)
+   ![Klik hier om een certificaat te uploaden](./media/application-proxy-configure-custom-domain/certificate.png)
    
 7. Blader op de pagina **SSL-certificaat** naar het pfx-certificaat bestand en selecteer dit. Voer het wacht woord voor het certificaat in en selecteer **certificaat uploaden**. Zie de sectie [certificaten voor aangepaste domeinen](#certificates-for-custom-domains) voor meer informatie over certificaten.
    
@@ -144,5 +144,5 @@ Wanneer een certificaat verloopt, wordt een waarschuwing weer gegeven waarin u w
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Schakel eenmalige aanmelding](application-proxy-configure-single-sign-on-with-kcd.md) in voor uw gepubliceerde apps met Azure AD-verificatie.
-* [Schakel voorwaardelijke toegang](../conditional-access/technical-reference.md#cloud-apps-assignments) tot uw gepubliceerde apps in.
+* [Schakel voorwaardelijke toegang](../conditional-access/overview.md) tot uw gepubliceerde apps in.
 

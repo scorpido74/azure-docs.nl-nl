@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: d7fbb4c6f30754569b0aeea60f10d4a10e792ba7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933922"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201863"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Een subnet delegering toevoegen of verwijderen
 
@@ -38,12 +38,12 @@ In deze sectie maakt u een virtueel netwerk en het subnet dat u later delegeert 
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.0.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
     | Locatie | Selecteer **oostus**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
+    | Subnet - naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.0.0.0/24* in. |
     |||
 1. Laat de rest als standaard staan en selecteer vervolgens **maken**.
@@ -70,7 +70,7 @@ In deze sectie delegeert u het subnet dat u in de voor gaande sectie hebt gemaak
 3. Selecteer **subnetten**onder **instellingen**en selecteer vervolgens **mySubnet**.
 4. Selecteer op de pagina *mySubnet* voor de lijst **subnet delegering** de optie **geen** van de services die worden vermeld onder **subnet overdragen aan een service**. 
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -89,8 +89,8 @@ In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroup*
 
 ```
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
-Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in **myResourceGroup** een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet**.
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+Maak met **az network vnet create** een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet** in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -162,7 +162,7 @@ Gebruik [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/net
 Gebruik [AZ Network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)om te controleren of de overdracht is verwijderd. Controleer of de service is verwijderd uit het subnet onder de eigenschap **service**naam:
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet \

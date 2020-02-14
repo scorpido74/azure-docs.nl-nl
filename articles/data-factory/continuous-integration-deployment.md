@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110182"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187815"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -139,6 +139,9 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pipeline-rel
 
    ![Selecteer release maken](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> In de CI/CD-scenario's moet het type Integration runtime (IR) in verschillende omgevingen hetzelfde zijn. Als u bijvoorbeeld een zelf-hostende IR in de ontwikkel omgeving hebt, moet dezelfde IR ook van het type zelf-hostend zijn in andere omgevingen, zoals testen en productie. En als u integratie-runtime in meerdere fasen deelt, moet u de Integration Runtimes als gekoppelde zelf-hostende in alle omgevingen configureren, zoals ontwikkeling, testen en productie.
+
 ### <a name="get-secrets-from-azure-key-vault"></a>Geheimen van Azure Key Vault ophalen
 
 Als u geheimen in een Azure Resource Manager sjabloon wilt door geven, raden we u aan Azure Key Vault te gebruiken met de versie van Azure pipeline.
@@ -184,11 +187,11 @@ Er zijn twee manieren om geheimen af te handelen:
 
 De implementatie kan mislukken als u probeert actieve triggers bij te werken. Als u actieve triggers wilt bijwerken, moet u deze hand matig stoppen en opnieuw opstarten na de implementatie. U kunt dit doen met behulp van een Azure PowerShell taak:
 
-1.  Voeg op het tabblad **taken** van de release een **Azure PowerShell** taak toe.
+1.  Voeg op het tabblad **taken** van de release een **Azure PowerShell** taak toe. Kies taak versie 4. *. 
 
-1.  Selecteer **Azure Resource Manager** als het verbindings type en selecteer vervolgens uw abonnement.
+1.  Selecteer het abonnement waarin uw fabriek zich bevindt.
 
-1.  Selecteer **in-line script** als het script type en geef vervolgens uw code op. Met de volgende code worden de triggers gestopt:
+1.  Selecteer het **pad naar het script bestand** als het script type. Hiervoor moet u het Power shell-script opslaan in uw opslag plaats. Het volgende Power shell-script kan worden gebruikt om triggers te stoppen:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ De implementatie kan mislukken als u probeert actieve triggers bij te werken. Al
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell taak](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 U kunt vergelijk bare stappen uitvoeren (met de functie `Start-AzDataFactoryV2Trigger`) om de triggers na de implementatie opnieuw te starten.
 
-> [!IMPORTANT]
-> In de CI/CD-scenario's moet het type Integration runtime (IR) in verschillende omgevingen hetzelfde zijn. Als u bijvoorbeeld een zelf-hostende IR in de ontwikkel omgeving hebt, moet dezelfde IR ook van het type zelf-hostend zijn in andere omgevingen, zoals testen en productie. En als u integratie-runtime in meerdere fasen deelt, moet u de Integration Runtimes als gekoppelde zelf-hostende in alle omgevingen configureren, zoals ontwikkeling, testen en productie.
+### <a name="sample-pre--and-post-deployment-script"></a>Voor beeld van een script vóór en na implementatie
 
-#### <a name="sample-pre--and-post-deployment-script"></a>Voor beeld van een script vóór en na implementatie
+Het volgende voorbeeld script kan worden gebruikt om triggers voor implementatie te stoppen en opnieuw op te starten. Het script bevat ook code voor het verwijderen van resources die zijn verwijderd. Sla het script op in een Azure DevOps Git-opslag plaats en verwijs naar een Azure PowerShell-taak met behulp van versie 4. *.
 
-In het volgende voorbeeld script ziet u hoe u triggers stopt voordat de implementatie wordt gestart en deze later opnieuw opstarten. Het script bevat ook code voor het verwijderen van resources die zijn verwijderd. Zie [install Azure PowerShell in Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps)(Engelstalig) om de nieuwste versie van Azure PowerShell te installeren.
+Wanneer u een script voorafgaand aan de implementatie uitvoert, moet u een variant van de volgende para meters opgeven in het veld **script argumenten** .
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+Bij het uitvoeren van een script na de implementatie moet u in het veld **script argumenten** een variant van de volgende para meters opgeven.
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+Dit is het script dat kan worden gebruikt voor de voorafgaande en na de implementatie. IT-accounts voor verwijderde resources en resource verwijzingen.
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

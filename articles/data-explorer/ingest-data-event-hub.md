@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773942"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188192"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>gegevens uit Event Hub opnemen in Azure Data Explorer
 
@@ -22,7 +22,7 @@ ms.locfileid: "76773942"
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sjabloon](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (laden van gegevens) vanuit Event Hubs, een big data-streamingplatform en service voor gebeurtenisopname. [Event Hubs](/azure/event-hubs/event-hubs-about) kunnen miljoenen gebeurtenissen per seconde in bijna realtime verwerken. In dit artikel maakt u een Event Hub, maakt u er verbinding mee vanuit Azure Data Explorer en ziet u de gegevens stroom via het systeem.
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Data Explorer biedt opname (laden van gegevens) vanuit Event Hubs, een big data-streamingplatform en service voor gebeurtenisopname. [Event Hubs](/azure/event-hubs/event-hubs-about) kunnen miljoenen gebeurtenissen per seconde in bijna realtime verwerken. In dit artikel maakt u een Event Hub, maakt u er verbinding mee vanuit Azure Data Explorer en ziet u de gegevens stroom via het systeem.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverken
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
@@ -45,13 +45,13 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     Als u op de knop **Implementeren in Azure** klikt, wordt u naar de Azure-portal geleid om een implementatieformulier in te vullen.
 
-    ![Implementatie in Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Implementeren in Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Selecteer het abonnement waarvoor u de Event Hub wilt maken, en maak een resourcegroep met de naam *test-hub-rg*.
 
     ![Een resourcegroep maken](media/ingest-data-event-hub/create-resource-group.png)
 
-1. Vul in het formulier de volgende gegevens in.
+1. Vul het formulier in met de volgende gegevens.
 
     ![Implementatieformulier](media/ingest-data-event-hub/deployment-form.png)
 
@@ -117,7 +117,7 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
     | Event hub-naamruimte | Een unieke naam voor de naamruimte | De naam die u eerder hebt gekozen om de naamruimte te identificeren. |
     | Event Hub | *test-hub* | De Event Hub die u hebt gemaakt. |
     | Consumentengroep | *test-group* | De consumentengroep die u hebt gedefinieerd in de gemaakte Event Hub. |
-    | Eigenschappen van gebeurtenis systeem | Relevante eigenschappen selecteren | De [Event hub-systeem eigenschappen](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Als er meerdere records per gebeurtenis bericht zijn, worden de systeem eigenschappen aan de eerste toegevoegd. Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/tables#create-table) of [bijwerken](/azure/kusto/management/tables#alter-table-and-alter-merge-table) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. |
+    | Eigenschappen van gebeurtenis systeem | Relevante eigenschappen selecteren | De [Event hub-systeem eigenschappen](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Als er meerdere records per gebeurtenis bericht zijn, worden de systeem eigenschappen aan de eerste toegevoegd. Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/create-table-command) of [bijwerken](/azure/kusto/management/alter-table-command) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. |
     | Compressie | *Geen* | Het compressie type van de nettolading van de Event hub-berichten. Ondersteunde compressie typen: *geen, gzip*.|
     | | |
 

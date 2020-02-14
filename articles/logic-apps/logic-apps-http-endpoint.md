@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792032"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191335"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTP-eind punten in Azure Logic Apps
 
@@ -302,17 +302,17 @@ Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van
 }
 ```
 
-## <a name="q--a"></a>Vragen en antwoorden
+## <a name="q--a"></a>Q & A
 
 #### <a name="q-what-about-url-security"></a>V: wat gebeurt er met URL-beveiliging?
 
 **A**: Azure maakt veilig-call back-url's voor logische apps met behulp van [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze hand tekening wordt door gegeven als een query parameter en moet worden gevalideerd voordat de logische app kan worden uitgevoerd. Azure genereert de hand tekening met een unieke combi natie van een geheime sleutel per logische app, de naam van de trigger en de bewerking die wordt uitgevoerd. Tenzij iemand toegang heeft tot de sleutel van de geheime logische app, kan er dus geen geldige hand tekening worden gegenereerd.
 
 > [!IMPORTANT]
-> Voor productie en beveiligde systemen raden wij u ten zeerste aan om uw logische app rechtstreeks vanuit de browser aan te roepen om de volgende redenen:
+> Voor productie-en hogere beveiligings systemen raden wij u ten zeerste aan om uw logische app rechtstreeks vanuit de browser aan te roepen om de volgende redenen:
 >
 > * De gedeelde toegangs sleutel wordt weer gegeven in de URL.
-> * U kunt geen beleids regels voor beveiligde inhoud beheren vanwege gedeelde domeinen van Azure Logic Apps klanten.
+> * U kunt geen beleids regels voor beveiligings inhoud beheren vanwege gedeelde domeinen van Azure Logic Apps klanten.
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>V: kan ik HTTP-eind punten verder configureren?
 

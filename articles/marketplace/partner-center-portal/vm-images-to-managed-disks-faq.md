@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774999"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198731"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Er worden installatie kopieën van virtuele machines (VM) op Azure Marketplace verplaatst naar Managed Disk Storage
 
@@ -61,6 +61,6 @@ Updates van de VM-installatie kopieën kunnen niet worden gemaakt tijdens de ver
 
 Nee, het publicatie proces blijft hetzelfde. 
 
-## <a name="next-steps"></a>Volgende stappen
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Kan de uitgever hun aanbiedingen verplaatsen naar een beheerde schijf?
 
-Ga naar de pagina met de Publisher-gids voor de [virtuele machine](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
+Nee, de uitgevers kunnen hun aanbiedingen niet naar Managed Disk verplaatsen. Ze moeten wachten en hun afbeeldingen worden automatisch verplaatst. Er worden meldingen verzonden naar de uitgever voordat we wijzigingen aanbrengen.

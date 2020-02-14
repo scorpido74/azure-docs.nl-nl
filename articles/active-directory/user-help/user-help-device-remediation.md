@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062180"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190031"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mogelijke oplossingen voor het fout bericht ' u kunt geen van deze hier ophalen '
 
@@ -29,7 +29,7 @@ Als u het **volgende** bericht krijgt dat u de sites van uw organisatie probeert
 
 ![Fout bericht met betrekking tot browser ondersteuning](media/user-help-device-remediation/browser-version.png)
 
-Om dit probleem op te lossen, moet u een ondersteunde browser installeren en uitvoeren, op basis van uw besturings systeem. Als u met Windows 10 werkt, bevatten de ondersteunde browsers micro soft Edge, Internet Explorer en Google Chrome. Als u een ander besturings systeem gebruikt, kunt u de volledige lijst met [ondersteunde browsers](../conditional-access/technical-reference.md#supported-browsers)controleren.
+Om dit probleem op te lossen, moet u een ondersteunde browser installeren en uitvoeren, op basis van uw besturings systeem. Als u met Windows 10 werkt, bevatten de ondersteunde browsers micro soft Edge, Internet Explorer en Google Chrome. Als u een ander besturings systeem gebruikt, kunt u de volledige lijst met [ondersteunde browsers](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)controleren.
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Zorg ervoor dat u een ondersteund besturings systeem gebruikt
 Zorg ervoor dat u een ondersteunde versie van het besturings systeem gebruikt, met inbegrip van:

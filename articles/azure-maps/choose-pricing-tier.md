@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 8764e9161f952118ca7ae28343dcd16477cf1eee
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2950c0e0fdd6839b905386c90665d95563a0a3f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155754"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190290"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Kies de juiste prijs categorie in Azure Maps
 
 Azure Maps biedt twee prijs Categorieën: S0 en S1. Het doel van dit artikel is om u te helpen bij het kiezen van de juiste prijs categorie voor uw behoeften. Als u de juiste prijs categorie wilt kiezen, kunt u de volgende twee vragen stellen.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Welke georuimtelijke mogelijkheden moet ik gebruiken?
-De prijs categorie S0 is geschikt voor u als de belangrijkste georuimtelijke Api's voldoen aan uw service vereisten. Als u meer geavanceerde mogelijkheden voor uw toepassing wilt, kunt u kiezen voor de prijs categorie S1. Voor beeld van geavanceerde mogelijkheden: lucht foto plus hybride afbeelding, route bereik ophalen en batch geocodering. De tabel met **mogelijkheden voor prijs categorieën** kan u helpen een prijs categorie te kiezen die het meest geschikt is voor uw toepassing.
-
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Hoeveel gelijktijdige gebruikers wilt u ondersteunen? 
-De prijs categorieën S0 en S1 verwerken verschillende hoeveel heden gegevens doorvoer. De prijs categorie S0 verwerkt Maxi maal **50 query's per seconde**, terwijl de S1-laag **meer dan 50 query's per seconde**verwerkt.
+De prijs categorieën S0 en S1 verwerken verschillende hoeveel heden gegevens doorvoer. De prijs categorie S0 verwerkt Maxi maal **50 query's per seconde**. Terwijl de S1-laag **meer dan 50 query's per seconde**verwerkt.
+
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Welke georuimtelijke mogelijkheden moet ik gebruiken?
+De prijs categorie S0 is geschikt voor u als de belangrijkste georuimtelijke Api's voldoen aan uw service vereisten. Als u meer geavanceerde mogelijkheden voor uw toepassing wilt, kunt u kiezen voor de prijs categorie S1. Geavanceerde mogelijkheden zijn: lucht foto plus hybride afbeelding, route bereik ophalen en batch geocodering. Raadpleeg de tabel met mogelijkheden voor de **prijs categorie** om de prijs categorie te selecteren die het meest geschikt is voor uw toepassing.
 
 ### <a name="pricing-tier-capabilities"></a>Mogelijkheden voor prijs Categorieën
 
@@ -31,12 +31,12 @@ De prijs categorieën S0 en S1 verwerken verschillende hoeveel heden gegevens do
 |-----------------------------------------|:-------------------:|:--------:|
 | Kaart weergave                              | ✓                   | ✓       |
 | Satelliet afbeelding                       |                     | ✓        |
-| Search                                  | ✓                    | ✓        |
-| Batchmatig zoeken                            |                     | ✓        |
+| Zoeken                                  | ✓                    | ✓        |
+| Zoeken in batch                            |                     | ✓        |
 | Route                                   | ✓                    |✓        |
-| Batchroutering                            |                    | ✓        |
-| Matrixroutering                          |                     | ✓        |
-| Routebereik (isochronen)                |                     | ✓        |
+| Batch routering                            |                    | ✓        |
+| Matrix routering                          |                     | ✓        |
+| Route bereik (van isochronen)                |                     | ✓        |
 | Verkeer                                |✓                    |✓        |
 | Tijdzone                               |✓                    |✓        |
 | Geolocatie (preview-versie)                    |✓                   |✓        |
@@ -46,7 +46,7 @@ De prijs categorieën S0 en S1 verwerken verschillende hoeveel heden gegevens do
 | Mobiliteit (preview-versie)                       |                     | ✓        |
 | Weer (preview-versie)                        |✓                    |✓        |
 
-Deze aanvullende gegevens punten zijn waard:
+Houd rekening met de volgende extra punten:
 * Welk type onderneming hebt u?
 * Hoe kritiek is uw toepassing?
 
@@ -57,7 +57,7 @@ Zie de tabel met de **doel klanten van de prijs categorie** voor een beter beeld
 | Prijscategorie  |     Doel klanten                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>De prijs categorie S0 werkt voor toepassingen in alle stadia van productie: van ontwikkeling van concepten en vroege fase tests op toepassings productie en-implementatie. Deze laag is echter ontworpen voor kleinschalige ontwikkeling, of klanten met weinig gelijktijdige gebruikers, of beide. <p>|
-| S1            |    <p>De prijs categorie S1 is voor klanten die ondersteuning moeten bieden voor grootschalige ondernemingen, essentiële toepassingen of hoge volumes van gelijktijdige gebruikers. Het is ook bedoeld voor klanten die geavanceerde georuimtelijke services nodig hebben.</p>|
+| S1            |    <p>De prijs categorie S1 is voor klanten met grootschalige bedrijfs toepassingen, essentiële toepassingen of hoge volumes van gelijktijdige gebruikers. Het is ook bedoeld voor klanten die geavanceerde georuimtelijke services nodig hebben.</p>|
 
 ## <a name="next-steps"></a>Volgende stappen
 

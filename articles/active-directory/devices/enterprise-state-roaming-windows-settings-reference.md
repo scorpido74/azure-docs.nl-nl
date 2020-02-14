@@ -1,180 +1,189 @@
 ---
-title: Windows 10 roaming naslaginformatie | Microsoft Docs
-description: Een volledige lijst van alle instellingen die worden verplaatste of een back-up in Windows 10.
+title: Referentie voor Windows 10-instellingen voor roaming-Azure Active Directory
+description: Instellingen die worden geroamd of waarvan een back-up wordt gemaakt in Windows 10 met behulp van ESR
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481813"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194327"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Naslaginformatie over roaminginstellingen voor Windows 10
-Hier volgt een volledige lijst van alle instellingen die worden verplaatste of een back-up in Windows 10. 
 
-## <a name="devices-and-endpoints"></a>Apparaten en -eindpunten
-Zie de volgende tabel voor een overzicht van de apparaten en accounttypen die worden ondersteund door de synchronisatie, back-up en herstel framework in Windows 10.
+Hier volgt een lijst met de instellingen die worden geroamd of waarvan een back-up wordt gemaakt in Windows 10. 
 
-| Accounttype en bewerking | Bureaublad | mobiele |
+## <a name="devices-and-endpoints"></a>Apparaten en eind punten
+
+Raadpleeg de volgende tabel voor een overzicht van de apparaten en account typen die worden ondersteund door het Framework Sync, backup en Restore in Windows 10.
+
+| Account type en-bewerking | Bureaublad | Mobiele telefoon |
 | --- | --- | --- |
-| Azure Active Directory: synchronisatie |Ja |Nee |
+| Azure Active Directory: synchroniseren |Ja |Nee |
 | Azure Active Directory: back-up/herstellen |Nee |Nee |
-| Microsoft-account: synchronisatie |Ja |Ja |
+| Microsoft-account: synchroniseren |Ja |Ja |
 | Microsoft-account: back-up/herstellen |Nee |Ja |
 
-## <a name="what-is-backup"></a>Wat is er back-up?
-Windows-instellingen in het algemeen standaard synchroniseren, maar sommige instellingen zijn alleen back-up gemaakt, zoals de lijst met geïnstalleerde toepassingen op een apparaat. Back-up is voor mobiele apparaten alleen en momenteel niet beschikbaar voor gebruikers van Enterprise State Roaming. Back-up maakt gebruik van een Microsoft-account en de instellingen en toepassingsgegevens worden opgeslagen in OneDrive. Als een gebruiker wordt synchronisatie op het apparaat met behulp van de app instellingen uitgeschakeld, wordt toepassingsgegevens die normaal gesproken wordt gesynchroniseerd het back-up alleen. Back-upgegevens kunnen alleen worden geopend via de herstelbewerking tijdens de eerste ervaring van de uitvoering van een nieuw apparaat. Back-ups kunnen worden uitgeschakeld via de instellingen voor apparaten, en kunnen worden beheerd en verwijderd via een van de gebruiker OneDrive-account.
+## <a name="what-is-backup"></a>Wat is een back-up?
+
+Windows-instellingen worden doorgaans standaard gesynchroniseerd, maar sommige instellingen worden alleen van een back-up gemaakt, zoals de lijst met geïnstalleerde toepassingen op een apparaat. Backup is alleen voor mobiele apparaten en is momenteel niet beschikbaar voor gebruikers van Enterprise State Roaming. Backup maakt gebruik van een Microsoft-account en slaat de instellingen en toepassings gegevens op in OneDrive. Als een gebruiker synchronisatie op het apparaat uitschakelt via de app instellingen, worden toepassings gegevens die normaal gesp roken alleen back-ups. Back-upgegevens kunnen alleen worden geopend via de herstel bewerking tijdens de eerste uitvoering van een nieuw apparaat. U kunt back-ups uitschakelen via de apparaatinstellingen en kunnen worden beheerd en verwijderd via het OneDrive-account van de gebruiker.
 
 ## <a name="windows-settings-overview"></a>Overzicht van Windows-instellingen
-De volgende voor Instellingengroepen zijn beschikbaar voor eindgebruikers in-of uitschakelen synchronisatie van instellingen op Windows 10-apparaten.
 
-* Thema: bureaubladachtergrond, gebruikerstegel, positie van de taakbalk, enzovoort. 
-* Instellingen voor Internet Explorer: browsegeschiedenis, hebt getypt, URL's, Favorieten, enzovoort. 
-* Wachtwoorden: Windows Referentiebeheer, met inbegrip van Wi-Fi-profielen 
-* Taalvoorkeuren: woordenlijst, systeem-taalinstellingen 
-* Toegankelijkheid: narrator, Schermtoetsenbord Vergrootglas 
-* Andere instellingen voor Windows: Zie de details van Windows-instellingen
-* Instellingen voor Microsoft Edge-browser: Microsoft Edge-Favorieten, leeslijst en andere instellingen
+De volgende instellingen groepen zijn beschikbaar voor eind gebruikers om synchronisatie-instellingen op Windows 10-apparaten in of uit te scha kelen.
+
+* Thema: bureaublad achtergrond, gebruikers tegel, taak balk positie, enzovoort 
+* Instellingen voor Internet Explorer: browse geschiedenis, getypte Url's, favorieten enzovoort 
+* Wacht woorden: Windows referentie beheer, inclusief Wi-Fi-profielen 
+* Taal voorkeuren: spelling woordenlijst, systeem taal instellingen 
+* Toegankelijkheid: verteller, scherm toetsenbord, vergroot glas 
+* Andere Windows-instellingen: Zie Windows-instellingen Details
+* Micro soft Edge-browser instelling: micro soft Edge-favorieten, lees lijst en andere instellingen
 
 ![Uw instellingen synchroniseren](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
-Synchroniseren van de instelling van de browser Microsoft Edge-groep (Favorieten, leeslijst) kan worden ingeschakeld of uitgeschakeld door eindgebruikers via Microsoft Edge-browser optie instellingen.
+> [!NOTE]
+> Dit artikel is van toepassing op de op HTML gebaseerde browser van micro soft Edge die is geïntroduceerd in Windows 10 in juli 2015. Het artikel is niet van toepassing op de nieuwe micro soft Edge-browser op basis van chroom, uitgebracht op 15 januari 2020. Zie het artikel [micro soft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)(Engelstalig) voor meer informatie over het synchronisatie gedrag voor de nieuwe micro soft Edge.
+
+De instellings groep van micro soft Edge-browser (favorieten, lees lijst) kan worden ingeschakeld of uitgeschakeld door eind gebruikers via de menu optie micro soft Edge-browser instellingen.
 
 ![Account](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
-Voor Windows 10 versie 1803 of hoger, Internet Explorer instellingsgroep (Favorieten, opgegeven URL's) synchroniseren kan worden ingeschakeld of uitgeschakeld door eindgebruikers tot en met de menuoptie instellingen voor Internet Explorer. 
+Voor Windows 10 versie 1803 of hoger kan de instellings groep voor Internet Explorer (favorieten, getypte Url's) worden ingeschakeld of uitgeschakeld door eind gebruikers via de menu optie instellingen van Internet Explorer. 
 
 ![Instellingen](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Details van Windows-instellingen
-In de volgende tabel, andere vermeldingen in de kolom instellingengroep verwijst in de instellingen die kunnen worden uitgeschakeld via instellingen > Accounts > uw instellingen synchroniseren > andere Windows-instellingen. 
 
-Interne vermeldingen in de instellingengroep kolom verwijzen naar instellingen en apps die alleen kunnen worden gesynchroniseerd binnen de app zelf of door het uitschakelen van synchronisatie uit voor het hele apparaat met behulp van mobile device management (MDM) of instellingen voor Groepsbeleid kunnen worden uitgeschakeld.
-Instellingen die niet kunnen worden gebruikt of sync behoren niet tot een groep.
+In de volgende tabel verwijzen andere vermeldingen in de kolom instellingen groep naar instellingen die kunnen worden uitgeschakeld door te gaan naar instellingen > Accounts > uw instellingen te synchroniseren > andere Windows-instellingen. 
 
-| Instellingen | Bureaublad | mobiele | Groep |
+Interne vermeldingen in de kolom instellingen groep verwijzen naar instellingen en apps die alleen kunnen worden uitgeschakeld voor synchronisatie binnen de app zelf of door synchronisatie uit te scha kelen voor het hele apparaat met behulp van Mobile Device Management (MDM) of groepsbeleid instellingen.
+Instellingen die niet worden geroamd of gesynchroniseerd, behoren niet tot een groep.
+
+| Instellingen | Bureaublad | Mobiele telefoon | Groep |
 | --- | --- | --- | --- |
-| **Accounts**: accountafbeelding |Synchronisatie |X |Thema |
-| **Accounts**: andere Accountinstellingen |X |X | |
-| **Geavanceerde mobiele breedband**: Internetverbinding delen netwerknaam (automatische detectie van mobiele Wi-Fi-hotspots via Bluetooth kunnen) |X |X |Wachtwoorden |
-| **App-gegevens**: afzonderlijke apps kunnen synchroniseren van gegevens |back-up van synchronisatie |back-up van synchronisatie |Interne |
-| **Lijst met Apps**: lijst met geïnstalleerde apps |X |Back-up |Overige |
+| **Accounts**: account afbeelding |synchroniseren |X |ThemeName |
+| **Accounts**: andere account instellingen |X |X | |
+| **Geavanceerde mobiele breedband**: netwerk naam voor delen van Internet verbinding (automatische detectie van mobiele Wi-Fi-HOTS pots via Bluetooth inschakelen) |X |X |Wachtwoorden |
+| **App-gegevens**: individuele apps kunnen gegevens synchroniseren |back-up synchroniseren |back-up synchroniseren |binnen |
+| **App-lijst**: lijst met geïnstalleerde apps |X |Back-up |Overige |
 | **Bluetooth**: alle Bluetooth-instellingen |X |X | |
-| **Opdrachtprompt**: Command prompt 'Standaard'-instellingen |Synchronisatie |X |Interne |
-| **referenties**: Referentiekluis |Synchronisatie |Synchronisatie |password |
-| **Datum, tijd en de regio**: automatische tijd (tijdsynchronisatie Internet) |Synchronisatie |Synchronisatie |language |
-| **Datum, tijd en de regio**: 24-uurs notatie |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: datum en tijd |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: tijdzone | |X |language |
-| **Datum, tijd en de regio**: zomer-en wintertijd |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: land/regio |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: eerste dag van week |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: regio-indeling (landinstellingen) |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: korte datumnotatie |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: lange datum |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: korte tijd |Synchronisatie |X |language |
-| **Datum, tijd en de regio**: lange tijd |Synchronisatie |X |language |
-| **Bureaublad en persoonlijke instellingen**: bureaublad thema (achtergrond, systeemkleur, geluiden standaard, schermbeveiliging) |Synchronisatie |X |Thema |
-| **Bureaublad en persoonlijke instellingen**: diavoorstelling achtergrond |Synchronisatie |X |Thema |
-| **Bureaublad en persoonlijke instellingen**: Taakbalkinstellingen (positie, automatisch verbergen, enz.) |Synchronisatie |X |Thema |
-| **Bureaublad en persoonlijke instellingen**: schermindeling van het start |X |Back-up | |
-| **Apparaten**: gedeelde printers u met verbonden bent |X |X |andere |
-| **Microsoft Edge-browser**: leeslijst |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: Favorieten |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: top sites <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: URL's opgegeven <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: instellingen voor favorieten <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: de startknop weergeven <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: pop-ups blokkeren <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: mij vragen wat te doen met elke download <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: bieden wachtwoorden op te slaan <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: verzenden aanvragen niet volgen <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: opslaan van formulier vermeldingen <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: zoek- en site suggesties weergeven als ik typ <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: cookies voorkeur <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: beveiligde medialicenties opslaan op mijn apparaat sites kunt <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Microsoft Edge-browser**: schermlezer instellen <sup> [[1]](#footnote-1)</sup> |Synchronisatie |Synchronisatie |Interne |
-| **Hoog Contrast**: In- of uitschakelen |Synchronisatie |X |Betere toegankelijkheid |
-| **Hoog contrast**: Instellingen voor thema 's |Synchronisatie |X |Betere toegankelijkheid |
-| **Internet Explorer**: tabbladen (URL en de titel) openen |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: leeslijst |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: opgegeven URL's |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: browsegeschiedenis |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: Favorieten |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: uitgesloten van URL's |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: startpagina |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Internet Explorer**: domein suggesties |Synchronisatie |Synchronisatie |Internet Explorer |
-| **Toetsenbord**: gebruikers kunnen inschakelen/uitschakelen op het scherm op het toetsenbord |Synchronisatie |X |Betere toegankelijkheid |
-| **Toetsenbord**: inschakelen sticky Ja (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Toetsenbord**: filter sleutels inschakelen (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Toetsenbord**: in-/ uitschakelen sleutels inschakelen (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Internet Explorer**: domein taal: Chinees (CHS) QWERTY - inschakelen zelf leren |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - inschakelen van de dynamische candidate rangorde |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - char-set vereenvoudigd Chinees |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - char-set Traditional Chinese |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - fuzzy pinyin |Synchronisatie |Back-up |Taal |
-| **Taal**: CHS QWERTY - fuzzy pairs |Synchronisatie |Back-up |Taal |
-| **Taal**: CHS QWERTY - full pinyin |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - double pinyin |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - automatische correctie lezen |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - sleutel voor C/E-switch, shift |Synchronisatie |X |Taal |
-| **Taal**: CHS QWERTY - C/E schakelen Ctrl-toets |Synchronisatie |X |Taal |
-| **Taal**: CHS WUBI - modus voor één teken invoer |Synchronisatie |X |Taal |
-| **Taal**: CHS WUBI - tonen de resterende codering van de kandidaat |Synchronisatie |X |Taal |
-| **Taal**: CHS WUBI - geluid wanneer 4-coding ongeldig is |Synchronisatie |X |Taal |
-| **Taal**: CHT Bopomofo - CJK Ext-A opnemen |Synchronisatie |X |Taal |
-| **Taal**: Japanse IME - voorspellende typen en aangepaste woorden |Synchronisatie |Synchronisatie |Taal |
-| **Taal**: Koreaans (KOR) IME |X |X |Taal |
-| **Taal**: handschriftherkenning |X |X |Taal |
-| **Taal**: taal profiel |Synchronisatie |Back-up |Taal |
-| **Taal**: spellingcontrole - spelfouten automatisch corrigeren en markeren |Synchronisatie |Back-up |Taal |
-| **Taal**: lijst met toetsenborden |Synchronisatie |Back-up |Taal |
-| **Scherm vergrendelen**: alle scherminstellingen van het vergrendelen |X |X | |
-| **Vergrootglas**: in- of uitschakelen (master in-/ uitschakelen) |X |X |Betere toegankelijkheid |
-| **Vergrootglas**: tekenomkering kleur inschakelen of uitschakelen (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Vergrootglas**: bijhouden - Volg de toetsenbordfocus |Synchronisatie |X |Betere toegankelijkheid |
-| **Vergrootglas**: bijhouden - volgt u de muisaanwijzer |Synchronisatie |X |Betere toegankelijkheid |
-| **Vergrootglas**: start wanneer gebruikers zich aanmelden (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Muis**: de grootte van de muisaanwijzer wijzigen |Synchronisatie |X |andere |
-| **Muis**: de kleur van de muisaanwijzer wijzigen |Synchronisatie |X |andere |
+| **Opdracht prompt**: instellingen voor opdracht prompt "defaults" |synchroniseren |X |binnen |
+| **Referenties**: referentie kluis |synchroniseren |synchroniseren |wachtwoord |
+| **Datum, tijd en regio**: automatische tijd (synchronisatie op internet tijd) |synchroniseren |synchroniseren |language |
+| **Datum, tijd en regio**: 24-uurs klok |synchroniseren |X |language |
+| **Datum, tijd en regio**: datum en tijd |synchroniseren |X |language |
+| **Datum, tijd en regio**: tijd zone | |X |language |
+| **Datum, tijd en regio**: zomer tijd |synchroniseren |X |language |
+| **Datum, tijd en regio**: land/regio |synchroniseren |X |language |
+| **Datum, tijd en regio**: eerste dag van de week |synchroniseren |X |language |
+| **Datum, tijd en regio**: regio-indeling (land instelling) |synchroniseren |X |language |
+| **Datum, tijd en regio**: korte datum |synchroniseren |X |language |
+| **Datum, tijd en regio**: lange datum notatie |synchroniseren |X |language |
+| **Datum, tijd en regio**: korte tijd |synchroniseren |X |language |
+| **Datum, tijd en regio**: lange tijd |synchroniseren |X |language |
+| **Bureaublad personalisatie**: bureaublad thema (achtergrond, systeem kleur, standaard systeem geluiden, scherm beveiliging) |synchroniseren |X |ThemeName |
+| **Bureaublad personalisatie**: achtergrond van diavoorstelling |synchroniseren |X |ThemeName |
+| **Bureaublad personalisatie**: taak balk instellingen (positie, automatisch verbergen, enzovoort) |synchroniseren |X |ThemeName |
+| **Persoonlijke instellingen voor het bureau blad**: de indeling van het Start scherm |X |Back-up | |
+| **Apparaten**: gedeelde printers waarmee u verbinding hebt |X |X |andere |
+| **Micro soft Edge-browser**: Lees lijst |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: Favorieten |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: sites op het hoogste niveau <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: getypte url's <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: instellingen voor de werk balk Favorieten <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: de knop Start weer geven <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: pop-ups blok keren <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: vraag mij wat te doen met elke down load <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: aanbieding voor het opslaan van wacht woorden <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: aanvragen voor verzenden niet bijhouden <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: formulier vermeldingen opslaan <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: Zoek-en site suggesties weer geven als ik typ <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: cookies-voor keur <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: laat websites beveiligde media licenties opslaan op mijn apparaat <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Micro soft Edge-browser**: scherm lezer-instelling <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
+| **Hoog contrast**: in-of uitschakelen |synchroniseren |X |Toegankelijkheid |
+| **Hoog contrast**: thema-instellingen |synchroniseren |X |Toegankelijkheid |
+| **Internet Explorer**: open TABBLADEN (URL en titel) |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: Lees lijst |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: getypte url's |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: browse geschiedenis |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: Favorieten |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: uitgesloten url's |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: start pagina's |synchroniseren |synchroniseren |Internet Explorer |
+| **Internet Explorer**: domein suggesties |synchroniseren |synchroniseren |Internet Explorer |
+| **Toetsen bord**: gebruikers kunnen het scherm toetsenbord in-of uitschakelen |synchroniseren |X |Toegankelijkheid |
+| **Toetsen bord**: Plak Ja inschakelen (standaard instelling) |synchroniseren |X |Toegankelijkheid |
+| **Toetsen bord**: filter toetsen inschakelen (standaard uitgeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Toetsen bord**: wissel knop toetsen inschakelen (standaard uitgeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Internet Explorer**: domein taal: Chinees (CHS) QWERTY-zelf studie inschakelen |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-classificatie van dynamische kandidaten inschakelen |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-char-set vereenvoudigd Chinees |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-char-set traditioneel Chinees |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-fuzzy pinyin |synchroniseren |Back-up |Taal |
+| **Taal**: CHS-QWERTY-fuzzy-paren |synchroniseren |Back-up |Taal |
+| **Taal**: CHS QWERTY-volledige pinyin |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-dubbele pinyin |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-Lees Automatische correctie |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-C/E switch Key, Shift |synchroniseren |X |Taal |
+| **Taal**: CHS QWERTY-C/E-switch sleutel, CTRL |synchroniseren |X |Taal |
+| **Taal**: CHS WUBI-invoer modus met één teken |synchroniseren |X |Taal |
+| **Taal**: CHS WUBI: de resterende code ring van de kandidaat weer geven |synchroniseren |X |Taal |
+| **Taal**: CHS WUBI-beep wanneer 4-code ring is ongeldig |synchroniseren |X |Taal |
+| **Taal**: CHT Bopomofo-incl. cjk ext-A |synchroniseren |X |Taal |
+| **Taal**: Japanse IME-voorspellende typen en aangepaste woorden |synchroniseren |synchroniseren |Taal |
+| **Language**: KOREAANS (KOR) IME |X |X |Taal |
+| **Taal**: Handschrift herkenning |X |X |Taal |
+| **Taal**: taal profiel |synchroniseren |Back-up |Taal |
+| **Taal**: spelling controle-auto correctie en spel fouten markeren |synchroniseren |Back-up |Taal |
+| **Taal**: lijst met toetsen borden |synchroniseren |Back-up |Taal |
+| **Vergrendelings scherm**: alle instellingen voor het vergrendelings scherm |X |X | |
+| **Vergroot glas**: in-of uitschakelen (in-of uitgeschakeld) |X |X |Toegankelijkheid |
+| **Vergroot glas**: inversie kleur in-of uitschakelen (standaard uitgeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Vergroot glas**: bijhouden-de focus van het toetsen bord volgen |synchroniseren |X |Toegankelijkheid |
+| **Vergroot glas**: bijhouden-de muis aanwijzer volgen |synchroniseren |X |Toegankelijkheid |
+| **Vergroot glas**: starten wanneer gebruikers zich aanmelden (standaard uitgeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Muis**: de grootte van de muis aanwijzer wijzigen |synchroniseren |X |andere |
+| **Muis**: de kleur van de muis aanwijzer wijzigen |synchroniseren |X |andere |
 | **Muis**: alle andere instellingen |X |X | |
-| **Verteller**: snel starten |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: gebruikers kunnen Narrator spreken inspiratie wijzigen |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: gebruikers kunnen inschakelen of uitschakelen Narrator hints voor algemene artikelen lezen (op standaard) |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: gebruikers kunnen inschakelen of uitschakelen of getypte tekst kunnen horen (op standaard) |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: gebruikers kunnen inschakelen of uitschakelen of getypte woorden kunnen horen (op standaard) |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: insert-cursor Narrator te volgen hebben (op standaard) |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: visual markeren van Verteller cursor inschakelen (op standaard) |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: afspelen van geluid hints (op standaard) |Synchronisatie |X |Betere toegankelijkheid |
-| **Verteller**: sleutels in het schermtoetsenbord activeren wanneer u uw vinger (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Betere toegankelijkheid**: de dikte van de knipperende cursor instellen |Synchronisatie |X |Betere toegankelijkheid |
-| **Betere toegankelijkheid**: achtergrondafbeeldingen te verwijderen (standaard uitgeschakeld) |Synchronisatie |X |Betere toegankelijkheid |
-| **Uitschakelen en slaapstand**: alle instellingen |X |X | |
-| **Persoonlijke instellingen scherm Start**: accent kleur (alleen phone) |X |Synchronisatie |Thema |
-| **Typen**: woordenlijst |Synchronisatie |Back-up |Taal |
-| **Typen**: AutoCorrectie verkeerd gespeld woord |Synchronisatie |Back-up |Taal |
-| **Typen**: verkeerd gespelde woorden markeren |Synchronisatie |Back-up |Taal |
-| **Typen**: suggesties weergeven tijdens het typen |Synchronisatie |Back-up |Taal |
-| **Typen**: Voeg een spatie nadat ik een tekstsuggestie kiezen |Synchronisatie |Back-up |Taal |
-| **Typen**: een periode nadat ik Dubbeltik op de SPATIEBALK toevoegen |Synchronisatie |Back-up |Taal |
-| **Typen**: de eerste letter van elk zin een hoofdletter |Synchronisatie |Back-up |Taal |
-| **Typen**: alle hoofdletters gebruiken wanneer ik Dubbeltik shift-toets |Synchronisatie |Back-up |Taal |
-| **Typen**: sleutel geluid afspelen tijdens het typen |Synchronisatie |Back-up |Taal |
-| **Typen**: persoonlijke gegevens van Schermtoetsenbord |Synchronisatie |Back-up |Taal |
-| **Wi-Fi**: Wi-Fi-profielen (alleen WPA) |Synchronisatie |Synchronisatie |Wachtwoorden |
+| **Verteller**: snel starten |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: gebruikers kunnen de spreek hoogte van Verteller wijzigen |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: gebruikers kunnen Verteller-Lees hints voor algemene items in-of uitschakelen (standaard) |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: gebruikers kunnen in-of uitschakelen of ze getypte tekens kunnen horen (standaard ingeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: gebruikers kunnen in-of uitschakelen of ze getypte woorden (standaard) kunnen horen. |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: invoeg cursor invoegen na Verteller (standaard ingeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: visuele markering van Verteller-cursor inschakelen (standaard ingeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: Audio hints afspelen (standaard ingeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Verteller**: Activeer toetsen op het scherm toetsenbord wanneer u uw vinger optilt (standaard uitgeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Toegankelijkheid**: de dikte van de knipperende cursor instellen |synchroniseren |X |Toegankelijkheid |
+| **Toegankelijkheid**: achtergrond afbeeldingen verwijderen (standaard uitgeschakeld) |synchroniseren |X |Toegankelijkheid |
+| **Kracht en slaap stand**: alle instellingen |X |X | |
+| **Persoonlijke instellingen van het Start scherm**: accent kleur (alleen telefoon) |X |synchroniseren |ThemeName |
+| **Typen**: spelling woordenlijst |synchroniseren |Back-up |Taal |
+| **Typen**: onjuist gespelde woorden in auto correctie |synchroniseren |Back-up |Taal |
+| **Typen**: onjuist gespelde woorden markeren |synchroniseren |Back-up |Taal |
+| **Typen**: tekst suggesties weer geven tijdens type |synchroniseren |Back-up |Taal |
+| **Typen**: een spatie toevoegen nadat ik een tekst suggestie heb gekozen |synchroniseren |Back-up |Taal |
+| **Typen**: een punt toevoegen nadat ik op de spatie balk dubbel Tik |synchroniseren |Back-up |Taal |
+| **Typen**: de eerste letter van elke zin in hoofd letters zetten |synchroniseren |Back-up |Taal |
+| **Typen**: alle hoofd letters gebruiken wanneer ik op SHIFT-toets Dubbeltik |synchroniseren |Back-up |Taal |
+| **Typen**: geluiden afspelen tijdens het typen |synchroniseren |Back-up |Taal |
+| **Typen**: personalisatie gegevens voor het scherm toetsenbord |synchroniseren |Back-up |Taal |
+| **Wi-Fi**: Wi-Fi-profielen (alleen WPA) |synchroniseren |synchroniseren |Wachtwoorden |
 
-###### <a name="footnote-1"></a>Voetnoot 1
-Minimaal ondersteunde versie van het besturingssysteem van Windows Creators Update (15063 bouwen). 
+###### <a name="footnote-1"></a>Voet noot 1
+
+Mini maal ondersteunde OS-versie van de Windows Creators-update (build 15063). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een overzicht [enterprise state roaming overzicht](enterprise-state-roaming-overview.md).
+Zie [overzicht van ENTER prise State roaming](enterprise-state-roaming-overview.md)voor een overzicht.

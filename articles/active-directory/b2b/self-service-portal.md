@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272110"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195790"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Self-service aanmeldportal voor Azure AD B2B-samenwerking | Microsoft Docs
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Self-service voor Azure AD B2B-samenwerkings aanmelding
 
-Klanten kunnen veel doen met de ingebouwde functies die via de [Azure-portal](https://portal.azure.com) en het [Toepassingstoegangsvenster](https://myapps.microsoft.com) beschikbaar worden gesteld voor eindgebruikers. Het kan echter nodig zijn om de onboarding-workflow voor B2B-gebruikers aan te passen aan de behoeften van uw organisatie. Dit kunt u doen met [de uitnodigings-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+Klanten kunnen veel doen met de ingebouwde functies die via de [Azure-portal](https://portal.azure.com) en het [Toepassingstoegangsvenster](https://myapps.microsoft.com) beschikbaar worden gesteld voor eindgebruikers. Het kan echter nodig zijn om de onboarding-workflow voor B2B-gebruikers aan te passen aan de behoeften van uw organisatie.
 
-Als uitnodigende organisatie weet u misschien niet van tevoren wie de individuele externe medewerkers zijn die toegang tot uw resources nodig hebben. Gebruikers van partnerbedrijven moeten de mogelijkheid krijgen om zich aan te melden met een set van beleidsregels die u als uitnodigende organisatie beheert. Dit scenario is mogelijk via de API's. Er staat een [Voorbeeldproject op GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) dat precies deze mogelijkheid laat zien.
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>Azure AD-rechts beheer voor B2B gast gebruikers registratie
 
-Dit GitHub-project laat zien hoe organisaties de API's kunnen gebruiken om een op beleid gebaseerde, self-service aanmeldmogelijkheid voor uw vertrouwde partners aan te bieden, met regels die bepalen tot welke apps zij toegang hebben. Partnergebruikers kunnen toegang krijgen tot resources wanneer ze die nodig hebben. Deze toegang kan veilig verlopen, zonder dat de uitnodigende organisatie een handmatige onboarding voor hen hoeft uit te voeren. U kunt het project eenvoudig implementeren binnen een Azure-abonnement naar uw keuze.
+Als uitnodigende organisatie weet u mogelijk niet vooraf dat de afzonderlijke externe deel nemers toegang tot uw resources nodig hebben. U hebt een manier nodig waarmee gebruikers van partner bedrijven zich kunnen aanmelden met beleids regels die u beheert. Als u gebruikers van andere organisaties in staat wilt stellen om toegang aan te vragen, en op basis van de goed keuring is ingericht met gast accounts en toegewezen aan groepen, apps en share point online-sites, kunt u het [beheer van rechten van Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) gebruiken voor het configureren van beleids regels waarmee de [toegang voor externe gebruikers wordt beheerd](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
 
-## <a name="as-is-code"></a>As-is-code
+## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory-API voor B2B-uitnodiging
 
-Deze code is beschikbaar gemaakt als voorbeeld om het gebruik van de B2B-uitnodigings-API voor Azure Active Directory te laten zien. De code moet worden aangepast door uw ontwikkelingsteam of een partner, en moet worden beoordeeld voordat u het in een productiescenario inzet.
+Organisaties kunnen de [API voor Microsoft Graph uitnodigingen](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) gebruiken om hun eigen voorbereidings ervaring te bouwen voor B2B-gast gebruikers. Wanneer u de aanmelding van selfservice voor B2B-gast gebruikers wilt aanbieden, kunt u het beste [Azure AD-beheer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)gebruiken. Maar als u uw eigen ervaring wilt maken, kunt u de API voor het maken van een [uitnodiging](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) gebruiken om uw aangepaste uitnodigings-e-mail automatisch rechtstreeks naar de B2B-gebruiker te verzenden. Of uw app kan gebruikmaken van de inviteRedeemUrl die is geretourneerd in de reactie van het maken van uw eigen uitnodiging (via uw communicatie mechanisme) voor de uitgenodigde gebruiker.
 
 ## <a name="next-steps"></a>Volgende stappen
 

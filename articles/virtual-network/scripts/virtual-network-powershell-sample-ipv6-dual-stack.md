@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van Azure PowerShell script-IPv6-eind punten voor het virtuele netwerk configureren (preview-versie)
+title: Voor beeld van Azure PowerShell script-IPv6-eind punten configureren
 titlesuffix: Azure Virtual Network
 description: IPv6-eind punten inschakelen met behulp van Power shell in azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248816"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201358"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-eind punten configureren in het voor beeld van een virtueel netwerk script (preview-versie)
 
@@ -35,7 +35,7 @@ Meld u als volgt aan:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure PowerShell opdracht uit te voeren: Controleer op de volgende manier de registratie:
+Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure PowerShell opdracht uit te voeren: Controleer de registratie als volgt:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
@@ -241,7 +241,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Voer de volgende opdracht uit om de resourcegroep, VM en alle gerelateerde resources te verwijderen:
+Gebruik de volgende opdracht om de resourcegroep, VM, en alle gerelateerde resources te verwijderen:
 
 ```powershell
 Remove-AzResourceGroup -Name <resourcegroupname> -Force
@@ -265,7 +265,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | Hiermee maakt u een beschikbaarheidsset. Beschikbaarheids sets garanderen de uptime van toepassingen door de virtuele machines te verspreiden over fysieke resources, zodat de volledige set niet wordt beïnvloed als er een fout optreedt. |
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | Hiermee maakt u een VM-configuratie. Deze configuratie bevat informatie zoals de naam, het besturingssysteem en de beheerdersreferenties van de virtuele machine. De configuratie wordt gebruikt tijdens het maken van de virtuele machine. |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Hiermee maakt u de virtuele machine en verbindt u deze met de netwerkkaart, het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties.  |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

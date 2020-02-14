@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911579"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198221"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
 
@@ -24,7 +24,7 @@ Afbeeldingen kunnen worden gebruikt met HTML-markeringen en verschillende lagen 
  - Veelhoek lagen kunnen worden weer gegeven met een opvul patroon afbeelding. 
  - HTML-markeringen kunnen punten weer geven met behulp van afbeeldingen en andere HTML-elementen.
 
-Om te zorgen voor goede prestaties met lagen, moeten deze installatie kopieën worden geladen in de sprite-resource van de kaart installatie kopie voordat ze worden weer gegeven. De [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) van de SymbolLayer laadt standaard een paar afbeeldings afbeeldingen in een aantal kleuren in de kaart installatie kopie sprite. Deze afbeeldingen met markeringen en meer zijn beschikbaar als SVG-sjablonen en kunnen worden gebruikt voor het maken van installatie kopieën met aangepaste schalen, evenals een klant-en secundaire kleur. In totaal zijn er 42 installatie kopie sjablonen beschikbaar. 27 symbool pictogrammen en 15 veelhoek opvullings patronen.
+Om te zorgen voor goede prestaties met lagen, laadt u de afbeeldingen in de kaart afbeelding sprite resource vóór rendering. De [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions), van de SymbolLayer, laadt standaard een aantal markerings afbeeldingen in een aantal kleuren in de kaart afbeelding sprite. Deze markerings afbeeldingen en meer zijn beschikbaar als SVG-sjablonen. Ze kunnen worden gebruikt voor het maken van installatie kopieën met aangepaste schalen of voor het gebruik van de primaire en secundaire kleur van klanten. In totaal zijn er 42 afbeeldings sjablonen beschikbaar: 27 symbool pictogrammen en 15 veelhoek patronen.
 
 Afbeeldings sjablonen kunnen worden toegevoegd aan de kaart installatie kopie sprite-resources met behulp van de functie `map.imageSprite.createFromTemplate`. Met deze functie kunnen Maxi maal vijf para meters worden door gegeven in;
 
@@ -32,11 +32,11 @@ Afbeeldings sjablonen kunnen worden toegevoegd aan de kaart installatie kopie sp
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-waarbij de `id` een unieke id is die u hebt gemaakt en die aan de installatie kopie wordt toegewezen wanneer deze wordt toegevoegd aan de toewijzings afbeelding sprite. Gebruik deze id in de lagen om op te geven welke afbeeldings bron moet worden weer gegeven. De `templateName` geeft aan welke afbeeldings sjabloon moet worden gebruikt. Met de optie `color` stelt u de primaire kleur van de afbeelding in en de `secondaryColor` opties stelt de secundaire kleur van de afbeelding in. Met de optie `scale` wordt de afbeeldings sjabloon geschaald voordat deze op de afbeelding Sprite wordt toegepast. Wanneer de installatie kopie wordt toegepast op de afbeelding sprite, wordt deze omgezet in een PNG-bestand. Voor een scherpe rendering is het beter om de afbeeldings sjabloon omhoog te schalen voordat u deze toevoegt aan de sprite dan om deze te schalen in een laag.
+De `id` is een unieke id die u maakt. De `id` wordt toegewezen aan de installatie kopie wanneer deze wordt toegevoegd aan de toewijzings afbeelding sprite. Gebruik deze id in de lagen om op te geven welke afbeeldings bron moet worden weer gegeven. De `templateName` geeft aan welke afbeeldings sjabloon moet worden gebruikt. Met de optie `color` stelt u de primaire kleur van de afbeelding in en de `secondaryColor` opties stelt de secundaire kleur van de afbeelding in. Met de optie `scale` wordt de afbeeldings sjabloon geschaald voordat deze op de afbeelding Sprite wordt toegepast. Wanneer de installatie kopie wordt toegepast op de afbeelding sprite, wordt deze omgezet in een PNG-bestand. Voor een scherpe rendering is het beter om de afbeeldings sjabloon omhoog te schalen voordat u deze toevoegt aan de sprite, dan om deze te schalen in een laag.
 
-Met deze functie wordt de afbeelding asynchroon in de afbeelding sprite geladen en wordt een belofte geretourneerd die u kunt wachten tot deze functie is voltooid.
+Met deze functie wordt de afbeelding asynchroon geladen in de afbeelding sprite. Daarom wordt er een Promise geretourneerd die u kunt wachten tot deze functie is voltooid.
 
-De volgende code laat zien hoe u een installatie kopie maakt van een van de ingebouwde sjablonen en deze gebruikt met een symbool laag.
+De volgende code laat zien hoe u een installatie kopie maakt van een van de ingebouwde sjablonen en deze kunt gebruiken met een symbool laag.
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -106,12 +106,12 @@ Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de 
 
 ## <a name="create-custom-reusable-templates"></a>Aangepaste herbruikbare sjablonen maken
 
-Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogrammen of als u een module maakt waarmee extra afbeeldings sjablonen worden toegevoegd, kunt u deze pictogrammen eenvoudig toevoegen en ophalen uit de Azure Maps Web-SDK met behulp van de volgende statische functies op de `atlas` naam ruimte.
+Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogrammen of als u een module maakt waarmee extra afbeeldings sjablonen worden toegevoegd, kunt u deze pictogrammen eenvoudig toevoegen en ophalen uit de Azure Maps Web-SDK. Gebruik de volgende statische functies voor de `atlas` naam ruimte.
 
-| Name | Retour type | Beschrijving | 
+| Naam | Retour type | Beschrijving | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hiermee voegt u een aangepaste SVG-afbeeldings sjabloon toe aan de Atlas-naam ruimte. |
-|  `getImageTemplate(templateName: string, scale?: number)`| string | Hiermee wordt een SVG-sjabloon met de naam opgehaald. |
+|  `getImageTemplate(templateName: string, scale?: number)`| tekenreeks | Hiermee wordt een SVG-sjabloon met de naam opgehaald. |
 | `getAllImageTemplateNames()` | string[] |  Hiermee wordt een SVG-sjabloon met de naam opgehaald. |
 
 SVG-afbeeldings sjablonen ondersteunen de volgende waarden voor de tijdelijke aanduiding:
@@ -123,7 +123,7 @@ SVG-afbeeldings sjablonen ondersteunen de volgende waarden voor de tijdelijke aa
 | `{scale}` | De SVG-afbeelding wordt geconverteerd naar een PNG-afbeelding wanneer deze wordt toegevoegd aan de kaart afbeelding sprite. Deze tijdelijke aanduiding kan worden gebruikt om een sjabloon te schalen voordat deze wordt geconverteerd om ervoor te zorgen dat deze duidelijk wordt weer gegeven. | 
 | `{text}` | De locatie voor het weer geven van tekst wanneer deze wordt gebruikt in combi natie met een HTML-markering. |
 
-In het volgende voor beeld ziet u hoe u een SVG-sjabloon maakt en deze toevoegt aan de Azure Maps Web-SDK als een herbruikbare pictogram sjabloon. 
+In het volgende voor beeld ziet u hoe u een SVG-sjabloon maakt en hoe u deze toevoegt aan de Azure Maps Web-SDK als een pictogram sjabloon die opnieuw kan worden gebruikt. 
 
 <br/>
 
@@ -133,7 +133,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>aangepaste pictogram s
 
 ## <a name="list-of-image-templates"></a>Lijst met afbeeldings sjablonen
 
-De volgende tabel geeft een lijst van alle installatie kopieën die momenteel beschikbaar zijn in het Azure Maps Web-SDK met de sjabloon naam boven elke afbeelding. Standaard is de primaire kleur blauw en de secundaire kleur wit. Om ervoor te zorgen dat de secundaire kleur gemakkelijker te zien is op een witte achtergrond, hebben de volgende afbeeldingen de secundaire kleur ingesteld op zwart.
+Deze tabel bevat alle afbeeldings sjablonen die momenteel beschikbaar zijn in de websdk van Azure Maps. De naam van de sjabloon bevindt zich boven elke afbeelding. Standaard is de primaire kleur blauw en de secundaire kleur wit. Om ervoor te zorgen dat de secundaire kleur gemakkelijker te zien is op een witte achtergrond, hebben de volgende afbeeldingen de secundaire kleur ingesteld op zwart.
 
 **Symbool pictogram sjablonen**
 
@@ -145,19 +145,19 @@ De volgende tabel geeft een lijst van alle installatie kopieën die momenteel be
 | markering-vier kant | markering-vier kant-cluster | markering-pijl | markering-bal-PIN | 
 |![pictogram markering-vier kant](./media/image-templates/marker-square.png)|![markering-vier kant-cluster pictogram](./media/image-templates/marker-square-cluster.png)|![pictogram voor markering-pijl](./media/image-templates/marker-arrow.png)|![markering-bal-PIN-pictogram](./media/image-templates/marker-ball-pin.png)|
 ||||
-| markering-vier kant rond | markering-vier kant-afgerond-cluster | flag | vlag: drie hoek |
+| markering-vier kant rond | markering-vier kant-afgerond-cluster | Markeringen | vlag: drie hoek |
 | ![markering: vier kant pictogram](./media/image-templates/marker-square-rounded.png) | ![markering-vier kant-afgerond-cluster pictogram](./media/image-templates/marker-square-rounded-cluster.png) | ![vlag pictogram](./media/image-templates/flag.png) | ![pictogram voor de vlag-drie hoek](./media/image-templates/flag-triangle.png) |
 ||||
-| driehoek | drie hoek: dik | drie hoek omlaag | drie hoekje-pijl-links |
+| drie | drie hoek: dik | drie hoek omlaag | drie hoekje-pijl-links |
 | ![pictogram drie hoek](./media/image-templates/triangle.png) | ![drie hoek-dik pictogram](./media/image-templates/triangle-thick.png) | ![pictogram met drie hoek omlaag](./media/image-templates/triangle-arrow-up.png) | ![pictogram met drie hoekje-pijl-links](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | zeshoek | zeshoek-dik | zeshoek-afgerond | zeshoek-afgerond-dik |
 | ![pictogram van zeshoek](./media/image-templates/hexagon.png) | ![pictogram van zeshoek-dik](./media/image-templates/hexagon-thick.png) | ![pictogram met zeshoek afgerond](./media/image-templates/hexagon-rounded.png) | ![pictogram van zeshoek-afgerond-dik](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
 | pin | vastmaken en afronden | afgerond vier kant | afgerond-vier kant-dik |
-| ![Speldpictogram](./media/image-templates/pin.png) | ![pictogram voor een afronding](./media/image-templates/pin-round.png) | ![pictogram afgerond op vier kant](./media/image-templates/rounded-square.png) | ![pictogram rond afgerond-vier kant](./media/image-templates/rounded-square-thick.png) |
+| ![speld pictogram](./media/image-templates/pin.png) | ![pictogram voor een afronding](./media/image-templates/pin-round.png) | ![pictogram afgerond op vier kant](./media/image-templates/rounded-square.png) | ![pictogram rond afgerond-vier kant](./media/image-templates/rounded-square-thick.png) |
 ||||
-| pijl-omhoog | pijl-omhoog-dun | car ||
+| pijl-omhoog | pijl-omhoog-dun | zou ||
 | ![pictogram pijl omhoog](./media/image-templates/arrow-up.png) | ![pijl-omhoog-dun pictogram](./media/image-templates/arrow-up-thin.png) | ![pictogram auto](./media/image-templates/car.png) | |
 
 **Opvul patroon Sjablonen voor veelhoek**

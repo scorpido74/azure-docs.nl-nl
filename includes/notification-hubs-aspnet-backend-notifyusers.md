@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "70934112"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192714"
 ---
 ## <a name="create-the-webapi-project"></a>Het WebAPI-project maken
 
 In de volgende secties wordt het maken van een nieuwe ASP.NET WebAPI-back-end besproken. Dit proces heeft drie hoofddoelen:
 
-- **Clients verifiëren**: U voegt een bericht-handler toe voor het verifiëren van client aanvragen en het koppelen van de gebruiker aan de aanvraag.
-- **Registreer u voor meldingen met behulp van de WebAPI-back-end**: U voegt een controller toe voor het afhandelen van nieuwe registraties voor een client apparaat om meldingen te ontvangen. De naam van de geverifieerde gebruiker wordt automatisch aan de registratie toegevoegd als een [tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
-- **Meldingen verzenden naar clients**: U voegt een controller toe om gebruikers in staat te stellen een beveiligde push naar apparaten en clients te activeren die zijn gekoppeld aan het label.
+- **Clients verifiëren**: er wordt een berichtenhandler toegevoegd voor het verifiëren van aanvragen van clients en het koppelen van de gebruiker aan de aanvraag.
+- **Registreren voor meldingen met behulp van de WebAPI-back-end**: u voegt een controller toe voor het afhandelen van nieuwe registraties voor een clientapparaat voor het ontvangen van meldingen. De naam van de geverifieerde gebruiker wordt automatisch aan de registratie toegevoegd als een [tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
+- **Meldingen verzenden naar clients**: u voegt een controller toe om gebruikers een manier te bieden voor het activeren van een beveiligde push naar apparaten en clients die zijn gekoppeld aan de tag.
 
 Maak de nieuwe ASP.NET WebAPI-back-end door de volgende acties uit te voeren:
 
@@ -108,7 +108,7 @@ In deze sectie maakt u een nieuwe berichtenhandlerklasse met de naam **Authentic
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ In deze sectie maakt u een nieuwe berichtenhandlerklasse met de naam **Authentic
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;
@@ -140,7 +140,7 @@ In deze sectie maakt u een nieuwe berichtenhandlerklasse met de naam **Authentic
     ```
 
     > [!NOTE]
-    > Opmerking over beveiliging: De `AuthenticationTestHandler` klasse biedt geen echte authenticatie. Het wordt alleen gebruikt om basisverificatie na te bootsen en is niet beveiligd. U moet een veilig verificatiemechanisme implementeren in uw productietoepassingen en -services.
+    > Opmerking over beveiliging: de `AuthenticationTestHandler`-klasse biedt geen echte verificatie. Het wordt alleen gebruikt om basisverificatie na te bootsen en is niet beveiligd. U moet een veilig verificatiemechanisme implementeren in uw productietoepassingen en -services.
 5. Voeg de volgende code toe aan het einde van de `Register`-methode in de klasse **App_Start/WebApiConfig.cs** om de berichtenhandler te registreren:
 
     ```csharp

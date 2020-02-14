@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 414381d42c52e7489fbd6aaacf0f079cdd978ebe
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 0c0ab0e62a5d951f0bc0e237f44cf55c5b8e16cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642095"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202097"
 ---
 U kunt binden aan de volgende typen om blobs te schrijven:
 
@@ -30,12 +30,12 @@ U kunt binden aan de volgende typen om blobs te schrijven:
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> vereist binding `direction` in *functie. json* of `FileAccess.Read` in een C# klassen bibliotheek. U kunt echter het container object gebruiken dat de runtime biedt om schrijf bewerkingen uit te voeren, zoals blobs uploaden naar de container.
+<sup>1</sup> vereist bindings `direction` in *Function. json* of `FileAccess.Read` in een C# klassen bibliotheek. U kunt echter het container object gebruiken dat de runtime biedt om schrijf bewerkingen uit te voeren, zoals blobs uploaden naar de container.
 
-<sup>2</sup> vereist een ' InOut ' `direction` binding in *Function. json* of `FileAccess.ReadWrite` in C# een klassen bibliotheek.
+<sup>2</sup> vereist een ' InOut ' binding `direction` in *Function. json* of `FileAccess.ReadWrite` in C# een klassen bibliotheek.
 
-Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+Als u probeert verbinding te maken met een van de typen opslag-SDK en er een fout bericht wordt weer gegeven, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)hebt.
 
-In het async-functies, gebruikt u de geretourneerde waarde of `IAsyncCollector` in plaats van een `out` parameter.
+Gebruik in async-functies de retour waarde of de `IAsyncCollector` in plaats van een `out`-para meter.
 
-Binding met `string` of `Byte[]` wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` -type te gebruiken. Zie voor meer informatie gelijktijdigheid [en geheugen gebruik](#trigger---concurrency-and-memory-usage) eerder in dit artikel.
+Binding met `string` of `Byte[]` wordt alleen aanbevolen als de Blob-grootte klein is, omdat de gehele blob-inhoud in het geheugen wordt geladen. Over het algemeen is het raadzaam om een `Stream` of `CloudBlockBlob` type te gebruiken. Zie voor meer informatie gelijktijdigheid [en geheugen gebruik](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) eerder in dit artikel.

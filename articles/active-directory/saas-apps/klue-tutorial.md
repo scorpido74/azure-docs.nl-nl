@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2019
+ms.date: 02/13/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 082c167c883b655276c213a48d4d56283074531d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: da6ce8c25bdb8a051bb346868b900053ef231816
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430920"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185637"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-klue"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Klue
 
@@ -31,7 +30,7 @@ In deze zelf studie leert u hoe u Klue integreert met Azure Active Directory (Az
 * Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Klue met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,6 +45,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Klue ondersteunt SSO die door **SP en IDP** is geïnitieerd
 * Klue ondersteunt **just-in-time** -gebruikers inrichting
+* Zodra u de Klue hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-klue-from-the-gallery"></a>Klue toevoegen uit de galerie
 
@@ -85,22 +85,22 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `urn:klue:<Customer ID>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.klue.com/account/auth/saml/<Customer UUID>/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://app.klue.com/account/auth/saml/<Customer UUID>/`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team van Klue-clients](mailto:support@klue.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. In de PureCloud by Genesys-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. De Klue-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
-1. Daarnaast verwacht PureCloud door Genesys toepassing nog maar weinig kenmerken die kunnen worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Daarnaast verwacht Klue toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------- | ----------- |
     | first_name | user.givenname |
     | last_name  | user.surname |
@@ -124,7 +124,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -158,12 +158,14 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Klue in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Klue waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Klue met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

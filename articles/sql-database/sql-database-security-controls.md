@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802831"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190698"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Beveiligings controles voor Azure SQL Database
 
@@ -44,8 +44,8 @@ SQL Database bevatten zowel [één data base](sql-database-single-index.yml) als
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Authentication| Ja | Azure Active Directory (Azure AD) |
-| Autorisatie| Ja | Geen |
+| Verificatie| Ja | Azure Active Directory (Azure AD) |
+| Autorisatie| Ja | None |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
@@ -55,13 +55,13 @@ SQL Database bevatten zowel [één data base](sql-database-single-index.yml) als
 | Versleuteling in transit:<ul><li>Azure ExpressRoute-versleuteling</li><li>Versleuteling in een virtueel netwerk</li><li>Versleuteling tussen virtuele netwerken</ul>| Ja | HTTPS gebruiken. |
 | Versleutelings verwerking, zoals CMK of BYOK| Ja | Door service beheerde en door de klant beheerde sleutel verwerking worden aangeboden. Deze laatste wordt aangeboden via [Azure Key Vault](../key-vault/index.yml). |
 | Versleuteling op kolom niveau van Azure Data Services| Ja | Via [Always encrypted](sql-database-always-encrypted.md). |
-| Versleutelde API-aanroepen| Ja | HTTPS/SSL gebruiken. |
+| Versleutelde API-aanroepen| Ja | HTTPS/TLS gebruiken. |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor configuratie beheer, zoals versie beheer van de configuratie| Nee  | Geen |
+| Ondersteuning voor configuratie beheer, zoals versie beheer van de configuratie| Nee  | None |
 
 ## <a name="additional-security-controls-for-sql-database"></a>Aanvullende beveiligings controles voor SQL Database
 

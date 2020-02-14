@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177377"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198868"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark-taken in HDInsight optimaliseren
 
-Meer informatie over het optimaliseren van [Apache Spark](https://spark.apache.org/) cluster configuratie voor uw specifieke werk belasting.  De meest voorkomende uitdaging is geheugen druk, vanwege onjuiste configuraties (met name verkeerde uitvoeringen), langlopende bewerkingen en taken die resulteren in Cartesische bewerkingen. U kunt taken versnellen met de juiste caching en door [gegevens scheefheid](#optimize-joins-and-shuffles)toe te staan. Voor de beste prestaties controleert en bekijkt u langlopende en resource-Consumer-uitvoeringen met Spark-taken.
+Meer informatie over het optimaliseren van [Apache Spark](https://spark.apache.org/) cluster configuratie voor uw specifieke werk belasting.  De meest voorkomende uitdaging is geheugen druk, vanwege onjuiste configuraties (met name verkeerde uitvoeringen), langlopende bewerkingen en taken die resulteren in Cartesische bewerkingen. U kunt taken versnellen met de juiste caching en door [gegevens scheefheid](#optimize-joins-and-shuffles)toe te staan. Voor de beste prestaties controleert en bekijkt u langlopende en resource-Consumer-uitvoeringen met Spark-taken. Zie [Apache Spark cluster maken met behulp van Azure Portal](apache-spark-jupyter-spark-sql-use-portal.md)voor meer informatie over het aan de slag gaan met Apache Spark op HDInsight.
 
 In de volgende secties worden veelvoorkomende Spark-taak optimalisaties en-aanbevelingen beschreven.
 
@@ -57,13 +57,15 @@ De beste prestatie-indeling is Parquet met *Snappy-compressie*. Dit is de standa
 
 Wanneer u een nieuw Spark-cluster maakt, kunt u Azure Blob Storage of Azure Data Lake Storage als de standaard opslag van uw cluster selecteren. Beide opties bieden u het voor deel van lange termijn opslag voor tijdelijke clusters, zodat uw gegevens niet automatisch worden verwijderd wanneer u uw cluster verwijdert. U kunt een tijdelijk cluster opnieuw maken en toch toegang krijgen tot uw gegevens.
 
-| Opslag type | Bestandssysteem | Snelheid | Wijk | Gebruiksvoorbeelden |
+| Opslag type | Bestandssysteem | Snelheid | Wijk | Use cases |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //URL/ | **Standard** | Ja | Tijdelijk cluster |
 | Azure Blob Storage (beveiligd) | **wasbs:** //URL/ | **Standard** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage gen 2| **abfs:** //URL/ | **Gereed** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage Gen 2| **abfs:** //URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage gen 1| **ADL:** //URL/ | **Gereed** | Ja | Tijdelijk cluster |
 | Lokale HDFS | **hdfs:** //URL/ | **Snelste** | Nee | Interactive 24/7-cluster |
+
+Zie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](../hdinsight-hadoop-compare-storage-options.md)voor een volledige beschrijving van de beschik bare opslag opties voor HDInsight-clusters.
 
 ## <a name="use-the-cache"></a>De cache gebruiken
 
@@ -74,7 +76,7 @@ Spark biedt eigen systeem eigen caching-mechanismen die kunnen worden gebruikt v
     * Werkt niet voor partitionering, wat in toekomstige Spark-releases kan veranderen.
 
 * Caching op opslag niveau (aanbevolen)
-    * Kan worden geïmplementeerd met behulp van [Alluxio](https://www.alluxio.io/).
+    * Kan worden geïmplementeerd op HDInsight met behulp van de [i/o-cache](apache-spark-improve-performance-iocache.md) functie.
     * Maakt gebruik van in-Memory en SSD-caching.
 
 * Lokale HDFS (aanbevolen)
@@ -106,6 +108,8 @@ Probeer het volgende om berichten over onvoldoende geheugen te adresseren:
 * De voor keur `TreeReduce`, wat meer werk uitmaakt van de uitvoerders of partities, tot `Reduce`, dat alles op het stuur programma werkt.
 * Gebruik DataFrames in plaats van RDD-objecten op lagere niveaus.
 * Maak toe die acties inkapselen, zoals ' top N ', verschillende aggregaties of venster bewerkingen.
+
+Zie [OutOfMemoryError-uitzonde ringen voor Apache Spark in azure HDInsight](apache-spark-troubleshoot-outofmemory.md)voor meer probleemoplossings stappen.
 
 ## <a name="optimize-data-serialization"></a>Gegevens serialisatie optimaliseren
 
@@ -193,7 +197,11 @@ Bij het uitvoeren van gelijktijdige query's moet u rekening houden met het volge
 3. Verdeel query's over parallelle toepassingen.
 4. Wijzig grootte op basis van de test uitvoeringen en op de voor gaande factoren zoals GC-overhead.
 
-Bewaak de query prestaties voor uitbijters of andere prestatie problemen door te kijken naar de tijdlijn weergave, SQL-grafiek, taak statistieken, enzovoort. Soms zijn een of enkele van de uitvoerende partijen trager dan de andere, en duren taken veel langer om uit te voeren. Dit gebeurt vaak op grotere clusters (> 30 knoop punten). In dit geval moet u het werk delen in een groter aantal taken zodat de planner de taak kan compenseren voor trage taken. Stel bijvoorbeeld ten minste twee taken uit als het aantal uitvoer kernen in de toepassing. U kunt ook speculatieve uitvoering van taken inschakelen met `conf: spark.speculation = true`.
+Zie [Apache Spark Settings-Spark-uitvoerende modules](apache-spark-settings.md#configuring-spark-executors)voor meer informatie over het gebruik van Ambari voor het configureren van uitvoerender.
+
+Bewaak de query prestaties voor uitbijters of andere prestatie problemen door te kijken naar de tijdlijn weergave, SQL-grafiek, taak statistieken, enzovoort. Zie [Debug Apache Spark jobs die worden uitgevoerd op Azure HDInsight](apache-spark-job-debugging.md)voor informatie over het opsporen van fouten in Spark-taken met garens en de Spark-geschiedenis server. Voor tips over het gebruik van een garen tijdlijn Server raadpleegt u [toegang Apache Hadoop toepassings logboeken van garens](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+
+Soms zijn een of enkele van de uitvoerende partijen trager dan de andere, en duren taken veel langer om uit te voeren. Dit gebeurt vaak op grotere clusters (> 30 knoop punten). In dit geval moet u het werk delen in een groter aantal taken zodat de planner de taak kan compenseren voor trage taken. Stel bijvoorbeeld ten minste twee taken uit als het aantal uitvoer kernen in de toepassing. U kunt ook speculatieve uitvoering van taken inschakelen met `conf: spark.speculation = true`.
 
 ## <a name="optimize-job-execution"></a>Taak uitvoering optimaliseren
 

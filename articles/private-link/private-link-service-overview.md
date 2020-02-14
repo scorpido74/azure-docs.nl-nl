@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647370"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191088"
 ---
 # <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
 
@@ -55,6 +55,7 @@ Een persoonlijke koppelings service specificeert de volgende eigenschappen:
 |Load Balancer frontend-IP-configuratie (loadBalancerFrontendIpConfigurations)    |    De service voor persoonlijke koppelingen is gekoppeld aan het frontend-IP-adres van een Standard Load Balancer. Al het verkeer dat is bestemd voor de service, zal de frontend van de SLB bereiken. U kunt SLB-regels zo configureren dat dit verkeer wordt doorgestuurd naar de juiste back-endservers waar uw toepassingen worden uitgevoerd. IP-configuraties van Load Balancer-frontend zijn anders dan NAT IP-configuraties.      |
 |NAT IP-configuratie (ipConfigurations)    |    Deze eigenschap verwijst naar de NAT-IP-configuratie (Network Address Translation) voor de persoonlijke koppelings service. Het NAT IP-adres kan worden gekozen vanuit elk subnet in het virtuele netwerk van een service provider. De service voor persoonlijke koppelingen voert NAT-bestemming uit op het verkeer van de persoonlijke verbinding. Dit zorgt ervoor dat er geen IP-conflict is tussen de bron-en doel ruimte (service provider). Aan de doel zijde (service provider zijde) wordt het NAT IP-adres weer gegeven als bron-IP voor alle pakketten die door uw service worden ontvangen en de doel-IP voor alle pakketten die door uw service worden verzonden.       |
 |Verbindingen met privé-eind punten (privateEndpointConnections)     |  Met deze eigenschap worden de privé-eind punten weer gegeven die verbinding maken met de service private link. Meerdere persoonlijke eind punten kunnen verbinding maken met dezelfde persoonlijke koppelings service en de service provider kan de status voor afzonderlijke privé-eind punten beheren.        |
+|TCP-proxy v2 (EnableProxyProtocol)     |  Met deze eigenschap kan de service provider TCP proxy v2 gebruiken om verbindings informatie over de service gebruiker op te halen. Service provider is verantwoordelijk voor het instellen van de configuratie van de ontvanger, zodat de header Protocol versie v2 kan worden geparseerd.        |
 |||
 
 
@@ -95,14 +96,28 @@ Consumenten die een bloot stelling hebben (beheerd door de zichtbaarheids instel
 
 De actie voor het goed keuren van de verbindingen kan worden geautomatiseerd met behulp van de eigenschap voor automatisch goed keuren van de privé koppelings service. Automatische goed keuring is een mogelijkheid voor service providers om een set abonnementen vooraf goed te keuren voor automatische toegang tot hun service. Klanten moeten hun abonnementen offline delen voor service providers om toe te voegen aan de lijst met automatische goed keuringen. Automatische goed keuring is een subset van de zichtbaarheids matrix. Visibility bepaalt de belichtings instellingen, terwijl automatische goed keuring de goedkeurings instellingen voor uw service controleert. Als een klant een verbinding aanvraagt vanuit een abonnement in de lijst met automatische goed keuring, wordt de verbinding automatisch goedgekeurd en wordt de verbinding tot stand gebracht. Service Providers hoeven de aanvraag niet meer hand matig goed te keuren. Als een klant daarentegen een verbinding aanvraagt vanaf een abonnement in de zichtbaarheids matrix en niet in de matrix voor automatische goed keuring, wordt de service provider door de aanvraag gehaald, maar moet de service provider de verbindingen hand matig goed keuren.
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Verbindings gegevens ophalen met TCP-proxy v2
+
+Bij het gebruik van een persoonlijke koppelings service is het IP-bron adres van de pakketten die afkomstig zijn van een particulier eind punt, Network Address Translation (NAT) op de service provider kant met behulp van de NAT-IP die is toegewezen van het virtuele netwerk van de provider. De toepassingen ontvangen daarom het toegewezen NAT IP-adres in plaats van het werkelijke IP-adres van de service-consumers. Als uw toepassing een eigen IP-adres voor de bron van de consument nodig heeft, kunt u proxy protocol inschakelen voor uw service en de informatie ophalen uit de header van het proxy protocol. Naast het bron-IP-adres bevat de header van het proxy protocol ook de LinkID van het persoonlijke eind punt. Combi natie van bron-IP-adres en LinkID kunnen service providers helpen hun consumenten op unieke wijze te identificeren. Meer informatie over proxy protocol vindt u hier. 
+
+Deze informatie wordt als volgt gecodeerd met een aangepaste TLV-vector (type-length-waarde):
+
+Aangepaste TLV-gegevens:
+
+|Veld |Lengte (octetten)  |Beschrijving  |
+|---------|---------|----------|
+|Type  |1        |PP2_TYPE_AZURE (0xEE)|
+|Lengte  |2      |Lengte van waarde|
+|Waarde  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|  |4        |UINT32 (4 bytes) die de LINKID van het persoonlijke eind punt vertegenwoordigen. Gecodeerd in little endian-indeling.|
+
+
 ## <a name="limitations"></a>Beperkingen
 
 Hier volgen de bekende beperkingen bij het gebruik van de service private link:
 - Alleen ondersteund op Standard Load Balancer 
 - Ondersteunt alleen IPv4-verkeer
 - Biedt alleen ondersteuning voor TCP-verkeer
-- Het maken en beheren van de ervaring van Azure Portal wordt niet ondersteund
-- Client verbindings gegevens via proxy protocol zijn niet beschikbaar voor service provider
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)

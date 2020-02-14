@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406748"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191005"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filters in azure Cognitive Search 
 
@@ -51,7 +51,7 @@ Als u een beperkend effect wilt hebben in de zoek resultaten, zijn de filters ni
 
 + `$select` para meter wordt gebruikt om op te geven welke velden in een resultatenset moeten worden meegenomen, waardoor het antwoord effectief wordt afgekapt voordat het naar de aanroepende toepassing wordt verzonden. Met deze para meter wordt de query niet verfijnd of wordt de document verzameling niet verminderd, maar als een kleiner antwoord uw doel is, is deze para meter een optie om rekening mee te houden. 
 
-Zie [zoeken naar documenten > aanvragen > query parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)voor meer informatie over para meters.
+Zie [zoeken naar documenten > aanvragen > query parameters](/rest/api/searchservice/search-documents#query-parameters)voor meer informatie over para meters.
 
 
 ## <a name="how-filters-are-executed"></a>Hoe filters worden uitgevoerd
@@ -197,8 +197,8 @@ Als u meer voor beelden wilt gebruiken, raadpleegt u de syntaxis van de [OData-f
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Hoe zoeken in volledige tekst werkt in azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Zoeken naar documenten REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Hoe zoeken in de volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)
++ [REST API voor documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene-querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

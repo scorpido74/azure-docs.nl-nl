@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262737"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190866"
 ---
 # <a name="connect-your-domain-name-server"></a>De domein naam server verbinden
 
@@ -45,12 +45,12 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 | --- | --- | --- |
 | [Windows-agents](../azure-monitor/platform/agent-windows.md) | Ja | De oplossing verzamelt DNS-gegevens van Windows-agents. |
 | [Linux-agents](../azure-monitor/learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen DNS-gegevens van directe Linux-agents. |
-| [System Center Operations Manager-beheergroep](../azure-monitor/platform/om-agents.md) | Ja | De oplossing verzamelt DNS-gegevens van agents in een verbonden beheergroep van Operations Manager. Een directe verbinding van de Operations Manager agent naar Azure Monitor is niet vereist. Gegevens uit de beheergroep doorgestuurd naar de Log Analytics-werkruimte. |
+| [System Center Operations Manager beheer groep](../azure-monitor/platform/om-agents.md) | Ja | De oplossing verzamelt DNS-gegevens van agents in een verbonden beheergroep van Operations Manager. Een directe verbinding van de Operations Manager agent naar Azure Monitor is niet vereist. Gegevens uit de beheergroep doorgestuurd naar de Log Analytics-werkruimte. |
 | [Azure Storage-account](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nee | Azure storage wordt niet gebruikt door de oplossing. |
 
 ### <a name="data-collection-details"></a>Details van de verzameling gegevens
 
-De oplossing verzamelt DNS-inventarisatie- en DNS-gebeurtenis met betrekking tot gegevens van de DNS-servers waarop een Log Analytics-agent is geïnstalleerd. Inventarisatie-gerelateerde gegevens, zoals het aantal DNS-servers, -zones en -bronrecords worden verzameld door het uitvoeren van de DNS PowerShell-cmdlets. De gegevens worden eenmaal per twee dagen bijgewerkt. De gebeurtenis-gerelateerde gegevens worden verzameld in de buurt van real-time uit de [analytische en auditlogboeken](https://technet.microsoft.com/library/dn800669.aspx#enhanc) geleverd door de verbeterde DNS-logboekregistratie en diagnostische gegevens in Windows Server 2012 R2.
+De oplossing verzamelt DNS-inventarisatie- en DNS-gebeurtenis met betrekking tot gegevens van de DNS-servers waarop een Log Analytics-agent is geïnstalleerd. Inventarisatie-gerelateerde gegevens, zoals het aantal DNS-servers, -zones en -bronrecords worden verzameld door het uitvoeren van de DNS PowerShell-cmdlets. De gegevens worden eenmaal per twee dagen bijgewerkt. De gebeurtenis gegevens worden in realtime verzameld van de [analyse-en audit logboeken](https://technet.microsoft.com/library/dn800669.aspx#enhanc) die zijn opgenomen in de verbeterde DNS-logboek registratie en diagnoses in Windows Server 2012 R2.
 
 
 ## <a name="connect-your-dns-appliance"></a>Uw DNS-apparaat koppelen
@@ -73,7 +73,17 @@ De oplossing verzamelt DNS-inventarisatie- en DNS-gebeurtenis met betrekking tot
 
 Zoek in Log Analytics naar het schema **DnsEvents** en controleer of er gebeurtenissen zijn.
 
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Als opzoek Query's niet worden weer gegeven in azure Sentinel, volgt u deze stappen zodat de query's correct worden weer gegeven:
+1. Schakel de [DNS-analyse-Logboeken in op uw servers](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
+2. Zorg ervoor dat DNSEvents worden weer gegeven in de lijst Log Analytics verzameling.
+3. Schakel [Azure DNS Analytics](../azure-monitor/insights/dns-analytics.md)in.
+4. Wijzig in Azure DNS Analytics, onder **configuratie**, een van de instellingen, sla het bestand op en wijzig het vervolgens opnieuw als dat nodig is en sla het vervolgens opnieuw op.
+5. Controleer Azure DNS Analytics om er zeker van te zijn dat de query's nu worden weer gegeven.
+
 ## <a name="next-steps"></a>Volgende stappen
+
 In dit document hebt u geleerd hoe u DNS on-premises apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

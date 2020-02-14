@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911670"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198306"
 ---
 # <a name="drawing-tool-events"></a>Gebeurtenissen voor het tekenen van gereedschappen
 
-Wanneer u teken hulpprogramma's op een kaart gebruikt, is het vaak handig om te reageren op bepaalde gebeurtenissen wanneer de gebruiker op de kaart tekent. De volgende tabel geeft een lijst van alle gebeurtenissen die door de `DrawingManager` klasse worden ondersteund.
+Wanneer u teken hulpprogramma's op een kaart gebruikt, is het handig om te reageren op bepaalde gebeurtenissen wanneer de gebruiker op de kaart tekent. Deze tabel geeft een lijst van alle gebeurtenissen die door de `DrawingManager` klasse worden ondersteund.
 
 | Gebeurtenis | Beschrijving |
 |-------|-------------|
 | `drawingchanged` | Deze gebeurtenis wordt gestart wanneer een coördinaat in een vorm is toegevoegd of gewijzigd. | 
-| `drawingchanging` | Deze gebeurtenis wordt gestart wanneer een voor beeld-coördinaat voor een vorm wordt weer gegeven. Er worden bijvoorbeeld meerdere keren geactiveerd wanneer een coördinaat wordt gesleept. | 
+| `drawingchanging` | Deze gebeurtenis wordt gestart wanneer een voor beeld-coördinaat voor een vorm wordt weer gegeven. Deze gebeurtenis wordt bijvoorbeeld meerdere keren geactiveerd wanneer een coördinaat wordt gesleept. | 
 | `drawingcomplete` | Deze gebeurtenis wordt gestart wanneer een vorm is getekend of uit de bewerkings modus is gehaald. |
 | `drawingmodechanged` | Deze gebeurtenis wordt gestart wanneer de teken modus is gewijzigd. De nieuwe teken modus wordt door gegeven aan de gebeurtenis-handler. |
 | `drawingstarted` | Deze gebeurtenis wordt gestart wanneer de gebruiker een vorm tekent of een vorm in de bewerkings modus plaatst.  |
@@ -39,11 +39,11 @@ Zie de gebeurtenissen van de pen <a href='https://codepen.io/azuremaps/pen/dyPMR
 
 ## <a name="examples"></a>Voorbeelden
 
-Hier volgen enkele voor beelden van veelvoorkomende scenario's die gebruikmaken van de teken hulpprogramma's gebeurtenissen.
+Laten we eens kijken naar enkele veelvoorkomende scenario's die gebruikmaken van de teken hulpprogramma's gebeurtenissen.
 
 ### <a name="select-points-in-polygon-area"></a>Punten in het gebied veelhoek selecteren
 
-De volgende code laat zien hoe u de tekening van shapes bewaakt die veelhoek gebieden (veelhoeken, rechthoeken en cirkels) vertegenwoordigen en bepalen welke gegevens punten op de kaart zich in het teken gebied bevinden. De gebeurtenis `drawingcomplete` wordt gebruikt om de Select Logic te activeren. In de logica selecteren worden alle gegevens punten op de kaart door lopen en getest op de snij punt met het polygoon gebied van de getekende vorm. In dit voor beeld wordt het gebruik van de open-source [turf. js](https://turfjs.org/) -bibliotheek gebruikt voor het uitvoeren van een ruimtelijke intersectie berekening.
+Deze code laat zien hoe u een gebeurtenis van een teken vorm van een gebruiker kunt bewaken. Voor dit voor beeld worden met de code shapes van veelhoeken, rechthoeken en cirkels gecontroleerd. Vervolgens wordt bepaald welke gegevens punten op de kaart zich in het teken gebied bevinden. De gebeurtenis `drawingcomplete` wordt gebruikt om de Select Logic te activeren. In de Select Logic worden door de code alle gegevens punten op de kaart door lopen. Er wordt gecontroleerd of er een snij punt is van het punt en het gebied van de getekende vorm. In dit voor beeld wordt het gebruik van de open-source [turf. js](https://turfjs.org/) -bibliotheek gebruikt voor het uitvoeren van een ruimtelijke intersectie berekening.
 
 <br/>
 
@@ -55,7 +55,7 @@ Zie de pen <a href='https://codepen.io/azuremaps/pen/XWJdeja'>gegevens selectere
 
 ### <a name="draw-and-search-in-polygon-area"></a>Tekenen en zoeken in veelhoek gebied
 
-De volgende code laat zien hoe u een zoek opdracht naar punten van belangen binnen een vorm gebied kunt uitvoeren nadat de gebruiker de vorm heeft getekend. De gebeurtenis `drawingcomplete` wordt gebruikt om de zoek logica te activeren. Als de gebruiker een rechthoek of veelhoek tekent, wordt er een zoek opdracht in geometrie uitgevoerd. Als een cirkel wordt getekend, wordt de straal en de positie van het middel punt gebruikt om een zoek opdracht op de interesse uit te voeren. De gebeurtenis `drawingmodechanged` wordt gebruikt om te bepalen wanneer de gebruiker overschakelt naar een teken modus en het teken papier wist.
+Met deze code zoekt u naar belang stellingen binnen het gebied van een vorm nadat de gebruiker klaar is met het tekenen van de vorm. U kunt de code wijzigen en uitvoeren door te klikken op bewerken op de code pen in de rechter bovenhoek van het kader. De gebeurtenis `drawingcomplete` wordt gebruikt om de zoek logica te activeren. Als de gebruiker een rechthoek of veelhoek tekent, wordt er een zoek opdracht in geometrie uitgevoerd. Als een cirkel wordt getekend, wordt de straal en de positie van het middel punt gebruikt om een zoek opdracht op de interesse uit te voeren. De gebeurtenis `drawingmodechanged` wordt gebruikt om te bepalen wanneer de gebruiker overschakelt naar de teken modus en met deze gebeurtenis wordt het teken papier gewist.
 
 <br/>
 
@@ -67,7 +67,7 @@ Bekijk de pen <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>tekenen en zoek
 
 ### <a name="create-a-measuring-tool"></a>Een meet programma maken
 
-De volgende code toont hoe de teken gebeurtenissen kunnen worden gebruikt voor het maken van een meet programma. De `drawingchanging` wordt gebruikt om de shape te bewaken terwijl deze wordt getekend. Wanneer de gebruiker de muis verplaatst, worden de afmetingen van de vorm berekend. De gebeurtenis `drawingcomplete` wordt gebruikt om een uiteindelijke berekening uit te voeren op de vorm nadat deze is getekend. De gebeurtenis `drawingmodechanged` wordt gebruikt om te bepalen wanneer de gebruiker overschakelt naar een teken modus en het teken papier en de oude meet gegevens wist.
+De volgende code laat zien hoe de teken gebeurtenissen kunnen worden gebruikt voor het maken van een meet programma. De `drawingchanging` wordt gebruikt voor het bewaken van de shape, terwijl deze wordt getekend. Wanneer de gebruiker de muis verplaatst, worden de afmetingen van de vorm berekend. De gebeurtenis `drawingcomplete` wordt gebruikt om een uiteindelijke berekening uit te voeren op de vorm nadat deze is getekend. De gebeurtenis `drawingmodechanged` wordt gebruikt om te bepalen wanneer de gebruiker overschakelt naar een teken modus. Met de gebeurtenis `drawingmodechanged` wordt ook het teken papier gewist en de oude meet gegevens gewist.
 
 <br/>
 

@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931110"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190935"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Veelvoorkomende problemen met Indexeer functies in azure Cognitive Search oplossen
 
@@ -112,6 +112,6 @@ Indexeer functies vinden documenten van een [gegevens bron](https://docs.microso
 
 * Het document is niet geïndexeerd. Controleer de portal op de uitvoering van een geslaagde indexer.
 * Het document is bijgewerkt nadat de Indexeer functie is uitgevoerd. Als uw Indexeer functie volgens een [schema is gepland](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), wordt het document uiteindelijk opnieuw uitgevoerd en opgehaald.
-* De [query](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) die is opgegeven in de gegevens bron, sluit het document uit. Indexeer functies kunnen geen documenten indexeren die geen deel uitmaken van de gegevens bron.
+* De [query](/rest/api/searchservice/create-data-source) die is opgegeven in de gegevens bron, sluit het document uit. Indexeer functies kunnen geen documenten indexeren die geen deel uitmaken van de gegevens bron.
 * [Veld Toewijzingen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) of [AI-verrijking](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) hebben het document gewijzigd en het ziet er anders uit dan verwacht.
 * Gebruik de [opzoek document-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om uw document te vinden.

@@ -3,16 +3,16 @@ title: Hybride Kubernetes-clusters met Azure Monitor voor containers configurere
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759889"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198051"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
 
-Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure Kubernetes-service (AKS) en AKS-engine clusters die worden gehost in Azure. In dit artikel wordt beschreven hoe u de bewaking van Kubernetes-clusters die buiten Azure worden gehost, inschakelt en een vergelijk bare bewakings ervaring krijgt.
+Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure Kubernetes-service (AKS) en [AKS-engine op Azure](https://github.com/Azure/aks-engine), een zelf beheerd Kubernetes-cluster dat wordt gehost op Azure. In dit artikel wordt beschreven hoe u de bewaking van Kubernetes-clusters die buiten Azure worden gehost, inschakelt en een vergelijk bare bewakings ervaring krijgt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -74,7 +74,7 @@ Als u niet bekend met het concept bent van het implementeren van resources met b
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Deze methode omvat twee JSON-sjablonen. Een sjabloon Hiermee geeft u de configuratie voor bewaking en de andere bevat parameterwaarden die u configureert voor het volgende opgeven:
 
@@ -285,10 +285,10 @@ Als er een fout optreedt bij het inschakelen van bewaking voor uw hybride Kubern
 
 * De opgegeven Log Analytics werk ruimte is geldig
 * De Log Analytics-werk ruimte is geconfigureerd met de Azure Monitor voor containers. Als dat niet het geval is, configureert u de werk ruimte.
-* OmsAgent replicaset pod wordt uitgevoerd
-* OmsAgent daemonset pod wordt uitgevoerd
+* De OmsAgent-replicaset wordt uitgevoerd
+* OmsAgent-daemonset-peulen worden uitgevoerd
 * De OmsAgent Health-Service wordt uitgevoerd
-* De Log Analytics werk ruimte-id en-sleutel die zijn geconfigureerd op de container agent komen overeen met de werk ruimte waarin het inzicht is geconfigureerd.
+* De Log Analytics werk ruimte-ID en-sleutel die zijn geconfigureerd op de container agent komen overeen met de werk ruimte waarin het inzicht is geconfigureerd.
 * Valideer alle Linux worker-knoop punten hebben `kubernetes.io/role=agent` label voor het plannen van RS pod. Als deze niet bestaat, voegt u deze toe.
 * Valideer `cAdvisor secure port:10250` of `unsecure port: 10255` wordt geopend op alle knoop punten in het cluster.
 

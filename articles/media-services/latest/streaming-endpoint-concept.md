@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.author: juliako
-ms.openlocfilehash: c8901dccb67e91c608e999f823cf7d2e757da08b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186017"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198714"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
@@ -155,8 +155,10 @@ Wanneer het standaard streaming-eind punt wordt gemaakt, wordt het standaard gec
 
 CDN-integratie is ingeschakeld in alle Azure-data centers, met uitzonde ring van China en federale overheids regio's.
 
+Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers**. 
+
 > [!IMPORTANT]
-> Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers**. Zie [overzicht van CDN](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN-functies.
+> Zie het [CDN-overzicht](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.
 
 ### <a name="determine-if-dns-change-was-made"></a>Bepalen of de DNS-wijziging is doorgevoerd
 
@@ -165,6 +167,10 @@ U kunt bepalen of de DNS-wijziging is doorgevoerd in een streaming-eind punt (he
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
 Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+
+## <a name="see-also"></a>Zie ook
+
+[Overzicht van CDN](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

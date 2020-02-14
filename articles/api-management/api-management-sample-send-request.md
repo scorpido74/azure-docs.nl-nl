@@ -1,6 +1,6 @@
 ---
-title: Met behulp van API Management-service voor het genereren van HTTP-aanvragen
-description: Informatie over het gebruik van de aanvraag- en -beleid in API Management naar externe services aanroepen vanuit uw API
+title: API Management-service gebruiken om HTTP-aanvragen te genereren
+description: Meer informatie over het gebruik van de beleids regels voor aanvragen en antwoorden in API Management om externe services vanuit uw API aan te roepen
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557938"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190015"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Externe services van de Azure API Management-service gebruiken
-Het beleid dat beschikbaar is in Azure API Management-service kan een breed scala aan nuttig werk op basis van alleen de inkomende aanvraag, de uitgaande antwoord, en informatie over de standaardconfiguratie. Echter, de mogelijkheid om te communiceren met externe services van API Management beleid opent u veel meer mogelijkheden.
+De beschik bare beleids regels in azure API Management service kunnen een breed scala aan nuttige werk wijze hebben op basis van de inkomende aanvraag, het uitgaande antwoord en de basis configuratie-informatie. Als u echter met externe services van API Management beleid wilt werken, worden er veel meer mogelijkheden geopend.
 
-U hebt eerder hebt gezien hoe om te communiceren met de [Azure Event Hub-service voor logboekregistratie, bewaking en analyse](api-management-log-to-eventhub-sample.md). In dit artikel ziet u beleidsregels waarmee u kunt om te communiceren met een externe service op basis van HTTP. Dit beleid kunnen worden gebruikt voor het activeren van externe evenementen of voor het ophalen van informatie die wordt gebruikt voor het bewerken van de oorspronkelijke aanvraag en respons op een bepaalde manier.
+U hebt eerder gezien hoe u kunt communiceren met de [Azure Event hub-service voor logboek registratie, bewaking en analyses](api-management-log-to-eventhub-sample.md). In dit artikel wordt uitgelegd hoe u kunt communiceren met een externe HTTP-gebaseerde service. Deze beleids regels kunnen worden gebruikt voor het activeren van externe gebeurtenissen of voor het ophalen van informatie die wordt gebruikt om de oorspronkelijke aanvraag en het antwoord op een of andere manier te manipuleren.
 
-## <a name="send-one-way-request"></a>Een-manier-verzoek om te verzenden
-Mogelijk de eenvoudigste externe interactie is de stijl fire-and-forgetstromen van aanvraag waarmee een externe service om te worden geïnformeerd over een of andere belangrijke gebeurtenis. Beleid voor de stroom `choose` kan worden gebruikt voor het detecteren van welke aard dan ook van de voorwaarde die u geïnteresseerd bent in.  Als de voorwaarde is voldaan, kunt u een externe HTTP-aanvraag met de [-één-manier-Verzendaanvraag](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) beleid. Dit kan een aanvraag voor een berichtensysteem zoals Hipchat of Slack, of een e-mailbericht API, zoals SendGrid of MailChimp, of voor kritieke support-incidenten, iets zoals PagerDuty. Al deze berichtsystemen hebben eenvoudige HTTP-APIs die kunnen worden aangeroepen.
+## <a name="send-one-way-request"></a>Send-eenrichtings aanvraag
+Mogelijk is de eenvoudigste externe interactie de brand-en-vergeet-stijl van een aanvraag waarmee een externe service op de hoogte wordt gebracht van een soort belang rijke gebeurtenis. De `choose` voor controle beleid kan worden gebruikt om een wille keurig soort voor waarde die u interesseert, te detecteren.  Als aan de voor waarde is voldaan, kunt u een externe HTTP-aanvraag indienen via het beleid voor het [aanvragen van een aanvraag voor eenmalige verzen ding](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) . Dit kan een aanvraag zijn voor een berichten systeem zoals Hipchat of toegestane vertraging, of een e-mail-API zoals SendGrid of MailChimp, of voor essentiële ondersteunings incidenten zoals PagerDuty. Al deze berichten systemen hebben eenvoudige HTTP-Api's die kunnen worden aangeroepen.
 
-### <a name="alerting-with-slack"></a>Waarschuwingen met Slack
-Het volgende voorbeeld ziet u hoe u een bericht verzenden naar een Slack chatruimte als de HTTP-antwoordstatuscode groter dan of gelijk aan 500 is. Een 500-bereikfout duidt op een probleem met de back-end API die de client van de API kan niet worden opgelost. Hiervoor wordt meestal een soort interventie op API Management-onderdeel.  
+### <a name="alerting-with-slack"></a>Waarschuwingen met toegestane vertraging
+In het volgende voor beeld ziet u hoe u een bericht verzendt naar een ruimte voor de chat room als de status code van het HTTP-antwoord groter is dan of gelijk is aan 500. Een 500-bereik fout wijst op een probleem met de back-end-API dat de client van de API zichzelf niet kan oplossen. Normaal gesp roken is enige soort interventie op API Management onderdeel vereist.  
 
 ```xml
 <choose>
@@ -57,31 +57,31 @@ Het volgende voorbeeld ziet u hoe u een bericht verzenden naar een Slack chatrui
 </choose>
 ```
 
-Slack is het begrip van inkomende webhooks. Bij het configureren van een binnenkomende webhook, wordt een speciale URL, waarmee u een eenvoudige POST-aanvraag doen en om door te geven van een bericht naar het Slack-kanaal in Slack gegenereerd. De JSON-hoofdtekst die u maakt, is gebaseerd op een indeling die is gedefinieerd door Slack.
+De toegestane vertraging is het principe van inkomende webhooks. Bij het configureren van een inkomende webhook genereert de toegestane vertraging een speciale URL, waarmee u een eenvoudige POST-aanvraag kunt uitvoeren en een bericht in het toegestane kanaal kunt door geven. De JSON-hoofd tekst die u maakt, is gebaseerd op een indeling die is gedefinieerd door een toegestane vertraging.
 
-![Slack-Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
+![Toegestane webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
-### <a name="is-fire-and-forget-good-enough"></a>Fire is en goed genoeg vergeten?
-Er zijn bepaalde afwegingen bij het gebruik van een fire-and-forget-stijl van de aanvraag. Als voor een of andere reden, de aanvraag mislukt, en vervolgens de fout wordt niet gerapporteerd. In dit geval, is de complexiteit van een secundaire fout melden van systeem en de kosten voor extra prestaties wachten op het antwoord dat u hoeft niet gerechtvaardigd. Voor scenario's waarin het essentieel om te controleren of het antwoord, dan zal de [Verzendaanvraag](/azure/api-management/api-management-advanced-policies#SendRequest) beleid is een betere optie.
+### <a name="is-fire-and-forget-good-enough"></a>Is de brand-en vergeet goed genoeg?
+Er zijn bepaalde afwegingen bij het gebruik van een brand-en-vergeet-stijl voor de aanvraag. Als de aanvraag om een of andere reden mislukt, wordt de fout niet gerapporteerd. In deze specifieke situatie is de complexiteit van het gebruik van een secundair systeem voor fout rapportage en de extra prestatie kosten voor het reageren op het antwoord niet gerechtvaardigd. Voor scenario's waarbij het van essentieel belang is om het antwoord te controleren, is het beleid voor het [verzenden van aanvragen](/azure/api-management/api-management-advanced-policies#SendRequest) een betere optie.
 
-## <a name="send-request"></a>Verzonden aanvragen
-De `send-request` beleid maakt met een externe service voor de complexe verwerkingsfuncties uitvoeren en retourneren gegevens naar de API management-service die kunnen worden gebruikt voor verdere beleidsverwerking.
+## <a name="send-request"></a>Verzenden/aanvragen
+Met het `send-request`-beleid kunt u een externe service gebruiken om complexe verwerkings functies uit te voeren en gegevens te retour neren naar de API Management-service die kan worden gebruikt voor verdere verwerking van beleid.
 
-### <a name="authorizing-reference-tokens"></a>Naslaginformatie over tokens autoriseren
-Een belangrijke functie van API Management beveiligt back-endresources. Als de autorisatieserver die wordt gebruikt door uw API maakt [JWT-tokens](https://jwt.io/) als onderdeel van de stroom OAuth2 als [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) heeft, kunt u de `validate-jwt` beleid om te controleren of de geldigheid van het token. Sommige autorisatieservers maken ook [verwijzen naar tokens](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) die zonder een retouraanroep de autorisatie-server kan niet worden geverifieerd.
+### <a name="authorizing-reference-tokens"></a>Referentie tokens autoriseren
+Een belang rijke functie van API Management is het beveiligen van back-endservers. Als de autorisatie server die door uw API wordt gebruikt, JWT [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) - [tokens](https://jwt.io/) maakt als onderdeel van de OAuth2-stroom, kunt u het `validate-jwt`-beleid gebruiken om de geldigheid van het token te controleren. Sommige autorisatie servers maken wat [referentie tokens](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , die niet kunnen worden geverifieerd zonder dat ze een call back naar de autorisatie server maken.
 
-### <a name="standardized-introspection"></a>Gestandaardiseerde introspection
-In het verleden ligt en is er geen gestandaardiseerde manier controleren of u een referentie-token met een autorisatie-server. Maar een onlangs voorgestelde standaard [RFC 7662](https://tools.ietf.org/html/rfc7662) is gepubliceerd door de IETF waarmee wordt gedefinieerd hoe een resource-server kunt controleren of de geldigheid van een token.
+### <a name="standardized-introspection"></a>Gestandaardiseerde introspectie
+In het verleden is er geen gestandaardiseerde manier voor het controleren van een referentie token met een autorisatie server. Een recent voorgesteld standaard [RFC 7662](https://tools.ietf.org/html/rfc7662) is echter gepubliceerd door de IETF, waarmee wordt gedefinieerd hoe een bron server de geldigheid van een token kan controleren.
 
-### <a name="extracting-the-token"></a>Uitpakken van het token
-De eerste stap is het token ophalen uit de autorisatie-header. De waarde voor header moet zijn geformatteerd met het `Bearer` autorisatieschema, een spatie en het Autorisatietoken volgens [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Er zijn helaas gevallen waar de autorisatieschema wordt weggelaten. Voor het account voor dit bij het parseren van API Management splitst de waarde van de header op een spatie en selecteert de laatste tekenreeks van de geretourneerde matrix met tekenreeksen. Dit biedt een oplossing voor de onjuist opgemaakte autorisatie-header.
+### <a name="extracting-the-token"></a>Het token extra heren
+De eerste stap bestaat uit het extra heren van het token uit de autorisatie-header. De waarde van de header moet worden opgemaakt met het `Bearer` autorisatie schema, één spatie en vervolgens het autorisatie token conform [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Er zijn helaas gevallen waarin het autorisatie schema wordt wegge laten. Als u deze account tijdens het parseren wilt verwerken, splitst API Management de header waarde op een spatie en selecteert de laatste teken reeks uit de geretourneerde matrix met teken reeksen. Dit biedt een tijdelijke oplossing voor autorisatie headers met ongeldige indeling.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 ```
 
-### <a name="making-the-validation-request"></a>De validatie-aanvraag
-Als een API Management heeft het Autorisatietoken, kunnen API Management maken van de aanvraag voor het valideren van het token. RFC 7662 roept deze introspection proces en vereist dat u `POST` een HTML-formulier aan de resource introspection. De HTML-formulier moet ten minste een sleutel/waarde-paar bevatten met de sleutel `token`. Deze aanvraag naar de autorisatie-server moet ook worden geverifieerd, om ervoor te zorgen dat schadelijke clients kunnen geen voor geldige-tokens sleepnetten gaat.
+### <a name="making-the-validation-request"></a>De validatie aanvraag maken
+Als API Management het autorisatie token heeft, kan API Management de aanvraag indienen om het token te valideren. RFC 7662 roept dit proces introspectie aan en vereist dat u een HTML-formulier `POST` aan de introspectie-resource. Het HTML-formulier moet ten minste een sleutel/waarde-paar bevatten met de sleutel `token`. Deze aanvraag voor de autorisatie server moet ook worden geverifieerd, om ervoor te zorgen dat kwaad aardige clients geen trawling kunnen doen voor geldige tokens.
 
 ```xml
 <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
@@ -98,12 +98,16 @@ Als een API Management heeft het Autorisatietoken, kunnen API Management maken v
 ```
 
 ### <a name="checking-the-response"></a>Het antwoord controleren
-De `response-variable-name` kenmerk wordt gebruikt om toegang te geven het geretourneerde antwoord. De naam die is gedefinieerd in deze eigenschap kan worden gebruikt als een sleutel in de `context.Variables` woordenlijst voor toegang tot de `IResponse` object.
+Het kenmerk `response-variable-name` wordt gebruikt om toegang te geven tot het geretourneerde antwoord. De naam die is gedefinieerd in deze eigenschap kan worden gebruikt als sleutel in de `context.Variables`-woorden lijst om toegang te krijgen tot het `IResponse`-object.
 
-In het antwoordobject, kunt u de instantie ophalen en RFC 7622 API Management geeft aan dat het antwoord een JSON-object moet en moet ten minste een eigenschap met de naam bevatten `active` dat wil zeggen een Booleaanse waarde. Wanneer `active` is ingesteld op true en vervolgens het token als geldig wordt aangemerkt.
+Vanuit het antwoord object kunt u de hoofd tekst ophalen en RFC 7622 vertelt API Management dat het antwoord een JSON-object moet zijn en moet ten minste een eigenschap hebben met de naam `active` die een Booleaanse waarde is. Als `active` is ingesteld op True, wordt het token als geldig beschouwd.
 
-### <a name="reporting-failure"></a>Fout melden
-U kunt een `<choose>` beleid om te detecteren of het token ongeldig is en als dit het geval is, retourneert een 401-respons.
+Als de autorisatie server niet het veld actief bevat om aan te geven of het token geldig is, gebruikt u een hulp programma zoals postman om te bepalen welke eigenschappen in een geldig token zijn ingesteld. Als een geldig token antwoord bijvoorbeeld een eigenschap bevat met de naam ' expires_in ', controleert u of deze eigenschaps naam op de volgende manier in het antwoord op de autorisatie server aanwezig is:
+
+< als voor waarde = "@ ((IResponse)-context. Variabelen ["tokenstate"]). Body.As<JObject>(). Eigenschap ("expires_in") = = null) ">
+
+### <a name="reporting-failure"></a>Fout rapportage
+U kunt een `<choose>`-beleid gebruiken om te detecteren of het token ongeldig is en als dit het geval is, retour neren we een 401-antwoord.
 
 ```xml
 <choose>
@@ -118,9 +122,9 @@ U kunt een `<choose>` beleid om te detecteren of het token ongeldig is en als di
 </choose>
 ```
 
-Als per [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) waarin wordt beschreven hoe `bearer` tokens moeten worden gebruikt, API Management geeft ook een `WWW-Authenticate` -header met de 401-respons. De WWW-verificatie is bedoeld om te geven van een client op het maken van een goed gemachtigde aanvraag. Vanwege de grote verscheidenheid aan benaderingen mogelijk is met het OAuth2-framework is het moeilijk zijn om te communiceren, de benodigde gegevens. Gelukkig zijn er inspanningen uitgevoerd om te helpen [clients ontdekken hoe goed om aanvragen te autoriseren met een resource-server](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Net als bij [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , waarin wordt beschreven hoe `bearer`-tokens moeten worden gebruikt, retourneert API Management ook een `WWW-Authenticate`-header met het 401-antwoord. De WWW-verificatie is bedoeld om een client te instrueren om een goed geautoriseerde aanvraag te maken. Vanwege de grote verscheidenheid aan benaderingen van het OAuth2-Framework is het moeilijk om alle benodigde informatie te communiceren. Gelukkig zijn er inspanningen om clients te helpen [detecteren hoe ze op de juiste wijze aanvragen aan een bron server kunnen autoriseren](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
-### <a name="final-solution"></a>Definitieve oplossing
+### <a name="final-solution"></a>Laatste oplossing
 Aan het einde krijgt u het volgende beleid:
 
 ```xml
@@ -157,32 +161,32 @@ Aan het einde krijgt u het volgende beleid:
 </inbound>
 ```
 
-Dit is slechts een aantal voorbeelden van hoe de `send-request` beleid kan worden gebruikt om nuttige externe services integreren in het proces voor aanvragen en antwoorden die worden gebruikt met de API Management-service.
+Dit is slechts een van de vele voor beelden van de manier waarop het `send-request`-beleid kan worden gebruikt om nuttige externe services te integreren in het proces van aanvragen en reacties die via de API Management-service worden uitgevoerd.
 
-## <a name="response-composition"></a>Samenstelling van de reactie
-De `send-request` beleid kan worden gebruikt voor het verbeteren van een primaire aanvraag met een back endsysteem, zoals u in het vorige voorbeeld hebt gezien, of deze kan worden gebruikt als een volledige vervangen voor van de back-end-aanroep. Met deze techniek kunt u eenvoudig maken samengestelde resources die worden samengevoegd uit meerdere verschillende systemen.
+## <a name="response-composition"></a>Reactie compositie
+Het `send-request`-beleid kan worden gebruikt voor het verbeteren van een primaire aanvraag naar een back-end-systeem, zoals u hebt gezien in het vorige voor beeld, of het kan worden gebruikt als een volledige vervangende functie voor de back-end. Met deze techniek kunt u eenvoudig samengestelde resources maken die worden geaggregeerd van meerdere verschillende systemen.
 
-### <a name="building-a-dashboard"></a>Het bouwen van een dashboard
-Soms wilt u mogelijk om beschikbaar te stellen van de informatie die deel uitmaakt van meerdere back-endsystemen, bijvoorbeeld, om een dashboard te stimuleren. De KPI's zijn afkomstig uit alle verschillende back-ends, maar u liever niet wilt voorzien in directe toegang tot en het zou niet geweldig zijn als alle gegevens in een enkele aanvraag kan worden opgehaald. Sommige van de gegevens van de back-end moet mogelijk bepaalde segmenteren en op te delen en wat bij het opschonen van eerst! Geen samengestelde resource in de cache is een handig om de back-end-belasting te verminderen, zoals u weet dat gebruikers hebben een gewoonte van voorkomen de F5-toets om te kunnen bekijken als hun onder de maat presterende metrische gegevens kunnen worden gewijzigd.    
+### <a name="building-a-dashboard"></a>Een dash board bouwen
+Soms wilt u in staat zijn om informatie in meerdere back-end-systemen beschikbaar te stellen, bijvoorbeeld om een dash board te maken. De Kpi's zijn afkomstig van alle verschillende back-ends, maar u kunt liever geen directe toegang geven en het zou handig zijn als alle informatie in één aanvraag kan worden opgehaald. Het is mogelijk dat een deel van de back-end-informatie enkele segmentering en delen en nog een beetje opschonen heeft. Het kan een goed idee zijn om de samen stelling van de back-up in de cache op te lossen, omdat u weet dat gebruikers een gewoonte hebben om de F5-toets te hameren om te zien of de metrische gegevens die worden uitgevoerd, kunnen worden gewijzigd.    
 
-### <a name="faking-the-resource"></a>De resource faking
-De eerste stap bij het bouwen van de dashboard-resource is het configureren van een nieuwe bewerking in Azure portal. Dit is een tijdelijke aanduiding voor bewerking gebruikt voor het configureren van een samenstelling beleid voor het bouwen van de dynamische-resource.
+### <a name="faking-the-resource"></a>De resource Faking
+De eerste stap bij het bouwen van de resource in het dash board is het configureren van een nieuwe bewerking in de Azure Portal. Dit is een tijdelijke bewerking die wordt gebruikt voor het configureren van een compositie beleid voor het bouwen van de dynamische resource.
 
-![Dashboard-bewerking](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
+![Dashboard bewerking](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
 
-### <a name="making-the-requests"></a>De aanvragen
-Zodra de bewerking is gemaakt, kunt u een beleid specifiek voor deze bewerking kunt configureren. 
+### <a name="making-the-requests"></a>De aanvragen indienen
+Zodra de bewerking is gemaakt, kunt u een beleid voor die bewerking specifiek configureren. 
 
-![Dashboard-bewerking](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Dashboard bewerking](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
-De eerste stap is om op te halen van alle queryparameters van de inkomende aanvraag, zodat u ze naar de back-end doorsturen kunt. In dit voorbeeld wordt het dashboard wordt weergegeven gegevens op basis van een bepaalde periode en daarom heeft een `fromDate` en `toDate` parameter. U kunt de `set-variable` beleid voor het extraheren van de informatie van de aanvraag-URL.
+De eerste stap bestaat uit het extra heren van alle query parameters uit de inkomende aanvraag, zodat u deze kunt door sturen naar de back-end. In dit voor beeld wordt in het dash board informatie weer gegeven op basis van een bepaalde tijd en daarom heeft de para meter `fromDate` en `toDate`. U kunt het `set-variable`-beleid gebruiken om de gegevens van de aanvraag-URL uit te pakken.
 
 ```xml
 <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
 <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
 ```
 
-Zodra u deze informatie hebt, kunt u aanvragen naar de back-endsystemen. Elke aanvraag wordt een nieuwe URL met de parametergegevens en roept de desbetreffende server en slaat het antwoord in een contextvariabele.
+Zodra u deze informatie hebt, kunt u aanvragen indienen voor alle back-end-systemen. Elke aanvraag bouwt een nieuwe URL met de parameter informatie en roept de betreffende server op en slaat de reactie op in een context variabele.
 
 ```xml
 <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
@@ -206,10 +210,10 @@ Zodra u deze informatie hebt, kunt u aanvragen naar de back-endsystemen. Elke aa
 </send-request>
 ```
 
-Deze aanvragen worden uitgevoerd in de reeks, dit niet ideaal is. 
+Deze aanvragen worden in de juiste volg orde uitgevoerd. Dit is niet ideaal. 
 
 ### <a name="responding"></a>Reageert
-Kan het samengestelde antwoord, kunt u de [retour-response](/azure/api-management/api-management-advanced-policies#ReturnResponse) beleid. De `set-body` element een expressie kunt gebruiken om samen te stellen een nieuwe `JObject` met alle van de component-representaties ingesloten als eigenschappen.
+Als u het samengestelde antwoord wilt maken, kunt u het beleid voor [retour reacties](/azure/api-management/api-management-advanced-policies#ReturnResponse) gebruiken. Het `set-body`-element kan een expressie gebruiken om een nieuwe `JObject` te maken met alle onderdelen die als eigenschappen zijn Inge sloten.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -279,8 +283,8 @@ Het volledige beleid ziet er als volgt uit:
 </policies>
 ```
 
-In de configuratie van de tijdelijke aanduiding-bewerking, kunt u de dashboard-resource in de cache opgeslagen ten minste een uur configureren. 
+In de configuratie van de tijdelijke aanduiding kunt u de resource van het dash board zodanig configureren dat deze ten minste een uur in de cache wordt opgeslagen. 
 
 ## <a name="summary"></a>Samenvatting
-Azure API Management-service biedt flexibele beleidsregels die selectief kunnen worden toegepast op HTTP-verkeer en samenstelling van de back-endservices kunt. Of u wilt uw API-gateway met waarschuwingen van functies, controle, validatie-mogelijkheden verbeteren of nieuwe samengestelde bronnen op basis van meerdere back-endservices, maken de `send-request` en bijbehorende beleid openen in een wereld aan mogelijkheden.
+Azure API Management-service biedt een flexibel beleid dat selectief kan worden toegepast op HTTP-verkeer en waarmee back-end-services kunnen worden samengesteld. Of u uw API-gateway wilt verbeteren met waarschuwings functies, verificatie, validatie mogelijkheden of het maken van nieuwe samengestelde resources op basis van meerdere back-endservers, het `send-request` en het gerelateerde beleid openen een wereld van mogelijkheden.
 

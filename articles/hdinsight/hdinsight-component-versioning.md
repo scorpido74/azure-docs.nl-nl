@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop onderdelen en versies-Azure HDInsight
 description: Meer informatie over de Apache Hadoop onderdelen en versies in azure HDInsight.
-keywords: Hadoop-versies, Hadoop ecosysteem-onderdelen, Hadoop-onderdelen, Hadoop-versie controleren
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/21/2019
-ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/02/2020
+ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764473"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198953"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?
 
@@ -29,14 +28,14 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies wo
 > [!NOTE]  
 > De standaard versie voor de HDInsight-service kan zonder kennisgeving worden gewijzigd. Als u een versie afhankelijkheid hebt, geeft u de HDInsight-versie op wanneer u uw clusters maakt met behulp van de .NET SDK met Azure PowerShell en klassieke CLI van Azure.
 
-| Component              | HDInsight 4.0 | HDInsight 3,6 (standaard)     |
+| Onderdeel              | HDInsight 4.0 | HDInsight 3,6 (standaard)     |
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop en garen | 3.1.1         | 2.7.3                       |
 | Apache TEZ             | 0.9.1         | 0.7.0                       |
-| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache-Pig             | 0.16.0        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
 | Apache TEZ Hive2       | -             | 0.8.4                       |
-| Apache Ranger          | 1.1.0         | 0.7.0                       |
+| Apache zwerver          | 1.1.0         | 0.7.0                       |
 | Apache HBase           | 2.0.2         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
@@ -45,7 +44,7 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies wo
 | Apache mahout          | -             | 0.9.0+                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2.4    | 2.3.0, 2.2.0, 2.1.0         |
-| Apache livy            | 0,5           | 0,4, 0,4, 0,3               |
+| Apache livy            | 0.5           | 0,4, 0,4, 0,3               |
 | Apache Kafka           | 1.1.1, 2.1    | 1,1, 1,0 * (zie opmerking hieronder) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
@@ -107,7 +106,7 @@ Enter prise Security is een optioneel pakket dat u kunt toevoegen aan uw HDInsig
 
     In het verleden kunt u alleen HDInsight-clusters maken met een lokale beheerders gebruiker en een lokale SSH-gebruiker. De lokale beheerder gebruiker heeft toegang tot alle bestanden, mappen, tabellen en kolommen.  Met de Enterprise Security Package kunt u toegangs beheer op basis van rollen inschakelen door HDInsight-clusters te integreren met uw eigen Active Directory, waaronder on-premises Active Directory, Azure Active Directory Domain Services of Active Directory op IaaS virtuele machine. Domein beheerder op het cluster kan gebruikers toestaan hun eigen bedrijfs naam en wacht woord (domein) te gebruiken voor toegang tot het cluster.
 
-    Zie voor meer informatie:
+    Ga voor meer informatie naar:
 
     - [Een inleiding tot Apache Hadoop beveiliging met HDInsight-clusters die zijn toegevoegd aan een domein](./domain-joined/hdinsight-security-overview.md)
     - [Apache Hadoop clusters die zijn toegevoegd aan het Azure-domein plannen in HDInsight](./domain-joined/apache-domain-joined-architecture.md)
@@ -119,7 +118,7 @@ Enter prise Security is een optioneel pakket dat u kunt toevoegen aan uw HDInsig
   - Integratie met Apache zwerver voor autorisatie voor Hive-, Spark SQL-en garen-wacht rijen.
   - U kunt toegangs beheer instellen voor bestanden en mappen.
 
-    Zie voor meer informatie:
+    Ga voor meer informatie naar:
 
   - [Apache Hive-beleid configureren in HDInsight die lid is van een domein](./domain-joined/apache-domain-joined-run-hive.md)
 
@@ -131,7 +130,9 @@ Momenteel ondersteunen alleen de volgende cluster typen de Enterprise Security P
 
 - Hadoop (alleen HDInsight 3,6)
 - Spark
-- Interactieve query
+- Kafka
+- HBase
+- Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Ondersteuning voor Azure Data Lake Storage
 
@@ -148,10 +149,7 @@ De service level agreement (SLA) wordt gedefinieerd in termen van een _ondersteu
 - Formule 1: Voeg 180 dagen toe aan de datum waarop het HDInsight-cluster versie X is uitgebracht.
 - Formule 2: Voeg 90 dagen toe aan de datum waarop de versie van het HDInsight-cluster, X + 1, beschikbaar wordt gemaakt in Azure Portal.
 
-De _datum van beëindiging_ is de datum waarna de Cluster versie niet kan worden gemaakt op HDInsight. Vanaf 31 juli 2017 kunt u de grootte van een HDInsight-cluster niet aanpassen na de aftredings datum.
-
-> [!NOTE]  
-> HDInsight Windows-clusters (inclusief versies 2,1, 3,0, 3,1, 3,2 en 3,3) worden uitgevoerd op de Azure-gast besturingssysteem versie 4, die gebruikmaakt van de 64-bits versie van Windows Server 2012 R2. Azure Guest OS-familie versie 4 ondersteunt de .NET Framework versies 4,0, 4,5, 4.5.1 en 4.5.2.
+De _datum van pensionering_ is de datum waarna de Cluster versie niet kan worden gemaakt op HDInsight. Vanaf 31 juli 2017 kunt u de grootte van een HDInsight-cluster niet aanpassen na de aftredings datum.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Release opmerkingen voor Hortonworks die zijn gekoppeld aan HDInsight-versies
 

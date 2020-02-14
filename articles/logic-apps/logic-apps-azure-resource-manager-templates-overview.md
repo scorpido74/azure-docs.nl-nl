@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972684"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191425"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
@@ -145,11 +145,11 @@ In dit voor beeld worden alleen de sjabloon parameters weer gegeven voor de waar
 
 Met uitzonde ring van para meters die gevoelige waarden verwerken of moeten worden beveiligd, zoals gebruikers namen, wacht woorden en geheimen, bevatten alle deze para meters `defaultValue` kenmerken, hoewel in sommige gevallen de standaard waarden leeg zijn. De implementatie waarden die moeten worden gebruikt voor deze sjabloon parameters worden opgegeven door het voorbeeld [parameter bestand](#template-parameter-files) dat verderop in dit onderwerp wordt beschreven.
 
-Zie de volgende onderwerpen voor het beveiligen van sjabloon parameters:
+Zie de volgende onderwerpen voor meer informatie over het beveiligen van sjabloon parameters:
 
 * [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Sjabloon parameters beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+* [Beveiliging verbeteren voor sjabloon parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Beveiligde parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Andere sjabloon objecten verwijzen vaak naar sjabloon parameters, zodat ze de waarden kunnen gebruiken die de sjabloon parameters door geven, bijvoorbeeld:
 
@@ -171,9 +171,9 @@ Hier volgen enkele aanbevolen procedures voor het definiëren van para meters:
 
   * [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Sjabloon parameters beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [Beveiliging verbeteren voor sjabloon parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Beveiligde parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Als u de namen van sjabloon parameters wilt onderscheiden van para meters van werk stroom definities, kunt u beschrijvende sjabloon parameter namen gebruiken, bijvoorbeeld: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Als u de waarden voor sjabloon parameters wilt opgeven, slaat u deze waarden op 
 * Bestands naam van sjabloon van logische app: **<*Logic-app-name*>. json**
 * Bestands naam van de para meters: **<*Logic-app-name*>. para meters. json**
 
-Hier volgt de structuur in het parameter bestand, met daarin een sleutel kluis referentie voor [het door geven van een veilige parameter waarde met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
+Hier volgt de structuur in het parameter bestand, met daarin een sleutel kluis referentie voor [het door geven van een beveiligde parameter waarde met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -319,7 +319,7 @@ De resource definitie van de logische app begint met het `properties`-object, da
 
 Dit zijn de kenmerken die specifiek zijn voor de resource definitie van de logische app:
 
-| Kenmerk | Verplicht | Type | Beschrijving |
+| Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
 | `state` | Ja | Tekenreeks | De status van uw logische app bij implementatie waarbij `Enabled` betekent dat uw logische app Live is en `Disabled` betekent dat uw logische app niet actief is. Als u bijvoorbeeld niet klaar bent voor uw logische app om live te gaan, maar een concept versie wilt implementeren, kunt u de optie `Disabled` gebruiken. |
 | `integrationAccount` | Nee | Object | Als uw logische app gebruikmaakt van een integratie account dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de ID van het integratie account wordt opgegeven. |
@@ -413,7 +413,7 @@ Als u de waarde voor de para meter voor de werk stroom definitie wilt instellen,
 
 In deze voorbeeld sjabloon ziet u hoe u deze taken kunt volt ooien door zo nodig beveiligde para meters te definiëren, zodat u hun waarden in Azure Key Vault kunt opslaan:
 
-* Veilige para meters declareren voor de waarden die worden gebruikt voor het verifiëren van de toegang.
+* De beveiligde para meters declareren voor de waarden die worden gebruikt voor het verifiëren van de toegang.
 * Gebruik deze waarden zowel in de sjabloon als op de definitie niveaus van de werk stroom.
 * Geef deze waarden op met behulp van een parameter bestand.
 

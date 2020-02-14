@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.author: aahi
-ms.openlocfilehash: d67075fad719b1780682c705f0e17f15c5801559
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f4b6bad38992a9e0146d6324bc3a3fc7632ded2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136153"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201251"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Snelstartgids: uw Bing Aangepaste zoekopdrachten-eind punt aanroepen met behulp van de python-SDK 
 
@@ -47,17 +47,17 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="create-a-search-client-and-send-a-request"></a>Een zoek-client maken en een aanvraag verzenden
 
-1. Maak een variabele voor uw abonnementssleutel.
+1. Maak een variabele voor de abonnements sleutel en het eind punt.
 
     ```python
     subscription_key = 'your-subscription-key'
-    endpoint = 'your-custom-endpoint'
+    endpoint = 'your-endpoint'
     ```
 
 2. Maak een instantie van `CustomSearchClient`met behulp van een `CognitiveServicesCredentials`-object met de abonnements sleutel. 
 
     ```python
-    client = CustomSearchClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 3. Een zoek opdracht met `client.custom_instance.search()`verzenden. Voeg uw zoek term toe aan de para meter `query` en stel `custom_config` in op uw aangepaste configuratie-ID om uw zoek exemplaar te gebruiken. U kunt uw ID ophalen via de [Bing aangepaste zoekopdrachten Portal](https://www.customsearch.ai/)door te klikken op het tabblad **productie** .

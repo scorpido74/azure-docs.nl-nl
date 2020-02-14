@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260708"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205679"
 ---
 Als u wilt maken en beheren van virtuele Azure-machines (VM's) op een consistente manier op schaal, een vorm van automatisering doorgaans gewenst. Er zijn veel hulpprogramma's en oplossingen waarmee u kunt de volledige Azure-infrastructuur-implementatie en beheer van levenscyclus automatiseren. In dit artikel worden enkele van de infrastructuur voor automation-hulpprogramma's die u in Azure gebruiken kunt. Deze hulpprogramma's wordt vaak aanpassen aan een van de volgende methoden:
 
@@ -27,17 +27,17 @@ Als u wilt maken en beheren van virtuele Azure-machines (VM's) op een consistent
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) is een automatiserings engine voor configuratie beheer, het maken van vm's of het implementeren van toepassingen. Ansible maakt gebruik van een model zonder agent, meestal met SSH-sleutels, om te verifiëren en beheren van doelmachines. Configuratietaken zijn gedefinieerd in playbooks, met een aantal Ansible-modules die beschikbaar zijn voor het uitvoeren van specifieke taken. Zie [How Ansible Works](https://www.ansible.com/how-ansible-works)(Engelstalig) voor meer informatie.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
-- [Ansible op Linux installeren en configureren voor gebruik met Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Maak een virtuele Linux-machine](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Een virtuele Linux-machine beheren](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- [Ansible op Linux installeren en configureren voor gebruik met Azure](../articles/ansible/ansible-install-configure.md).
+- [Maak een virtuele Linux-machine](../articles/ansible/ansible-create-vm.md).
+- [Een virtuele Linux-machine beheren](../articles/ansible/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
 [Chef](https://www.chef.io/) is een automatiserings platform waarmee u kunt bepalen hoe uw infra structuur is geconfigureerd, geïmplementeerd en beheerd. Extra onderdelen opgenomen Chef, Habitat voor automatisering van de levenscyclus van toepassingen in plaats van de infrastructuur en Chef inspecties waarmee het automatiseren van naleving van beveiliging en beleid te voldoen. Chef-Clients worden geïnstalleerd op de doelmachines, met een of meer centrale Chef-Servers die opslaan en beheren van de configuraties. Zie [een overzicht van chef](https://docs.chef.io/chef_overview.html)voor meer informatie.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Implementeer chef automatiseren vanuit Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
 - [Installeer chef in Windows en maak Azure-vm's](../articles/virtual-machines/windows/chef-automation.md).
@@ -46,7 +46,7 @@ Procedures voor:
 ## <a name="puppet"></a>Puppet
 [Puppet](https://www.puppet.com) is een platform voor automatisering op bedrijfs niveau waarmee het leverings-en implementatie proces van de toepassing wordt afgehandeld. Agents zijn geïnstalleerd op de doelmachines om toe te staan Puppet Master om uit te voeren van de manifesten die de gewenste configuratie van de Azure-infrastructuur definieert en virtuele machines. Puppet kunt integreren met andere oplossingen, zoals Jenkins en GitHub voor een verbeterde devops-werkstroom. Zie [How Puppet Works](https://puppet.com/products/how-puppet-works)(Engelstalig) voor meer informatie.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Implementeer Puppet vanuit Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
@@ -67,7 +67,7 @@ We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-
 
 DSC-configuraties definiëren wat u wilt installeren op een computer en het configureren van de host. Een engine voor de lokale Configuration Manager (LCM) wordt uitgevoerd op elk doelknooppunt waarmee aangevraagde acties op basis van gepushte configuraties worden verwerkt. Een pull-server is een webservice die wordt uitgevoerd op een centrale host voor het opslaan van de DSC-configuraties en de bijbehorende resources. De pull-server communiceert met de LCM-engine op de doelhost voor opgeven van de vereiste configuraties en rapporteren van naleving.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Maak een basis DSC-configuratie](/powershell/scripting/dsc/quickstarts/website-quickstart).
 - [Een DSC-pull-server configureren](/powershell/scripting/dsc/pull-server/pullserver).
@@ -79,7 +79,7 @@ De aangepaste script extensie van Azure voor [Linux](../articles/virtual-machine
 
 Scripts kunnen worden gedownload vanuit Azure storage of op een openbare locatie, zoals een GitHub-opslagplaats. Met de extensie voor aangepaste scripts, kunt u scripts schrijven in elke taal die wordt uitgevoerd op de bron-VM. Deze scripts kunnen worden gebruikt om toepassingen installeren of de virtuele machine naar wens configureren. Als u wilt beveiligen referenties, kan gevoelige gegevens zoals wachtwoorden worden opgeslagen in een beveiligde configuratie. Deze referenties worden alleen ontsleuteld binnen de virtuele machine.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Maak een virtuele Linux-machine met de Azure CLI en gebruik de aangepaste script extensie](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
 - [Maak een Windows-VM met Azure PowerShell en gebruik de aangepaste script extensie](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
@@ -88,7 +88,7 @@ Procedures voor:
 ## <a name="packer"></a>Packer
 De [verpakker](https://www.packer.io) automatiseert het bouw proces wanneer u een aangepaste VM-installatie kopie maakt in Azure. U Packer gebruiken voor het definiëren van het besturingssysteem en na configuratie scripts uitvoeren die de virtuele machine voor uw specifieke behoeften aanpassen. Wanneer geconfigureerd, wordt de virtuele machine vervolgens vastgelegd als een installatiekopie van een beheerde schijf. Packer automatiseert het proces voor het maken van de bron VM-, netwerk-en opslagbronnen, configuratiescripts uitvoeren en vervolgens de VM-installatiekopie te maken.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Gebruik Packer voor het maken van een installatie kopie van een virtuele Linux-machine in azure](../articles/virtual-machines/linux/build-image-with-packer.md).
 - [Gebruik Packer om een Windows VM-installatie kopie te maken in azure](../articles/virtual-machines/windows/build-image-with-packer.md).
@@ -97,7 +97,7 @@ Procedures voor:
 ## <a name="terraform"></a>Terraform
 [Terraform](https://www.terraform.io) is een Automation-hulp programma waarmee u een volledige Azure-infra structuur kunt definiëren en maken met een taal voor de indeling van één sjabloon-de HashiCorp-configuratie taal (HCL). Met Terraform definieert u de sjablonen die het proces voor het maken van netwerk-, opslag- en VM-resources voor een bepaalde toepassingsoplossing automatiseren. U kunt uw bestaande Terraform-sjablonen voor andere platforms met Azure gebruiken om te zorgen voor consistentie en vereenvoudigen van de Infrastructuurimplementatie hoeft te converteren naar een Azure Resource Manager-sjabloon.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Installeer en configureer terraform met Azure](../articles/virtual-machines/linux/terraform-install-configure.md).
 - [Een Azure-infra structuur maken met terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
@@ -108,7 +108,7 @@ Procedures voor:
 
 Azure Automation biedt ook een Desired State Configuration (DSC)-service waarmee u kunt het maken van definities voor de wijze waarop een bepaalde set van virtuele machines moet zijn geconfigureerd. Vervolgens zorgt de DSC dat de vereiste configuratie is toegepast en de virtuele machine consistent blijft. Azure Automation DSC wordt uitgevoerd op Windows en Linux-computers.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Een Power shell-Runbook maken](../articles/automation/automation-first-runbook-textual-powershell.md).
 - [Gebruik Hybrid Runbook worker om on-premises resources te beheren](../articles/automation/automation-hybrid-runbook-worker.md).
@@ -126,7 +126,7 @@ Meer informatie over:
 ## <a name="jenkins"></a>Jenkins
 [Jenkins](https://www.jenkins.io) is een continue integratie server die helpt toepassingen te implementeren en testen en om automatische pijp lijnen te maken voor het leveren van code. Er zijn honderden van invoegtoepassingen uit te breiden het Jenkins-kernplatform en u kunt ook worden geïntegreerd met veel andere producten en oplossingen op basis van webhooks. U kunt handmatig Jenkins installeren op een Azure-VM, Jenkins uit binnen een Docker-container uitvoeren of een vooraf gemaakte Azure Marketplace-installatiekopie gebruiken.
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 - [Maak een ontwikkel infrastructuur op een virtuele Linux-machine in azure met Jenkins, github en docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 

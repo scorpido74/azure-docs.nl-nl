@@ -1,11 +1,9 @@
 ---
-title: Virtuele netwerken verbinden met de peering van het virtuele netwerk-Azure CLI | Microsoft Docs
+title: Verbinding maken met virtuele netwerken met VNet-peering-Azure CLI
 description: In dit artikel leert u hoe u virtuele netwerken kunt verbinden met virtuele netwerk peering, met behulp van Azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
@@ -17,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b3a2c47aa1bcb624294a95db4218b311db747760
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ba37ea99ddc0903e1febd53f8d8fbd84b417b87
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016065"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201404"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuele netwerken verbinden met virtuele netwerk peering met behulp van Azure CLI
 
@@ -31,7 +29,7 @@ U kunt virtuele netwerken met elkaar verbinden met virtueel-netwerk peering. Wan
 * Twee virtuele netwerken maken
 * Twee virtuele netwerken koppelen met virtueel-netwerkpeering
 * Een virtuele machine (VM) implementeren op elk van de virtuele netwerken
-* Communicatie tussen virtuele machines
+* Communiceren tussen VM's
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -41,7 +39,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ## <a name="create-virtual-networks"></a>Virtuele netwerken maken
 
-Voordat u een virtueel netwerk maakt, moet u een resource groep maken voor het virtuele netwerk en alle andere resources die in dit artikel zijn gemaakt. Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+Voordat u een virtueel netwerk maakt, moet u een resource groep maken voor het virtuele netwerk en alle andere resources die in dit artikel zijn gemaakt. Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -172,7 +170,7 @@ Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt
 
 Let op het **openbare IP-adres**. Dit adres wordt gebruikt voor toegang tot de virtuele machine via internet in een latere stap.
 
-## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
+## <a name="communicate-between-vms"></a>Communiceren tussen VM's
 
 Gebruik de volgende opdracht om een SSH-sessie te maken met de *myVm2* -VM. Vervang `<publicIpAddress>` door het open bare IP-adres van uw VM. In het vorige voor beeld is het open bare IP-adres *13.90.242.231*.
 

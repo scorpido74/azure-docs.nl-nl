@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793223"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191431"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Aangepaste Api's maken die u kunt aanroepen vanuit Azure Logic Apps
 
@@ -206,9 +206,9 @@ Webhook-triggers functioneren op dezelfde manier als de [webhook-acties](#webhoo
 > [!TIP]
 > Voor een voor beeld van een webhook-patroon controleert u deze [webhook trigger-voor beeld in github](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Aanroepen van uw Api's beveiligen vanuit Logic apps
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Verbeter de beveiliging van aanroepen naar uw Api's vanuit Logic apps
 
-Nadat u uw aangepaste Api's hebt gemaakt, moet u verificatie voor uw Api's instellen, zodat u deze veilig kunt aanroepen vanuit Logic apps. Meer informatie [over het beveiligen van aanroepen naar aangepaste api's vanuit Logic apps](../logic-apps/logic-apps-custom-api-authentication.md).
+Nadat u uw aangepaste Api's hebt gemaakt, moet u verificatie voor uw Api's instellen, zodat u deze veilig kunt aanroepen vanuit Logic apps. Meer informatie [over het verbeteren van de beveiliging voor het aanroepen van aangepaste api's vanuit Logic apps](../logic-apps/logic-apps-custom-api-authentication.md).
 
 ## <a name="deploy-and-call-your-apis"></a>Api's implementeren en aanroepen
 
@@ -220,7 +220,7 @@ Als u uw aangepaste Api's beschikbaar wilt maken voor andere Logic Apps gebruike
 
 Als u uw aangepaste Api's beschikbaar wilt maken voor alle gebruikers in Logic Apps, energie automatisering en micro soft power apps, moet u beveiliging toevoegen, uw Api's registreren als logische app-connectors en uw connectors benoemen voor het [Microsoft Azure gecertificeerde programma](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Krijg ondersteuning
+## <a name="get-support"></a>Ondersteuning krijgen
 
 * Neem voor specifieke hulp met aangepaste Api's contact op met [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com).
 

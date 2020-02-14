@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381124"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186459"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Procedure: goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang 
 
-Uw werk nemers gebruiken mobiele apparaten voor zowel privé-als werk taken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot goedgekeurde client-apps waarmee uw bedrijfs gegevens kunnen worden beveiligd.  
+Uw werknemers gebruiken mobiele apparaten voor zowel privé- als werktaken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot goedgekeurde client-apps waarmee uw bedrijfs gegevens kunnen worden beveiligd.  
 
 In dit onderwerp wordt uitgelegd hoe u toegangs beleid voor voor waarden configureert waarvoor goedgekeurde client-apps zijn vereist.
 
@@ -36,7 +36,7 @@ In de terminologie van voorwaardelijke toegang worden deze client-apps aangeduid
 
 ![Voorwaardelijke toegang](./media/app-based-conditional-access/05.png)
 
-Zie voor een lijst met goedgekeurde client-apps [goedgekeurde client-app-vereiste](technical-reference.md#approved-client-app-requirement).
+Zie voor een lijst met goedgekeurde client-apps [goedgekeurde client-app-vereiste](concept-conditional-access-grant.md).
 
 U kunt op apps gebaseerd beleid voor voorwaardelijke toegang combi neren met andere beleids regels, zoals op [apparaten gebaseerd beleid voor voorwaardelijke toegang](require-managed-devices.md) om flexibiliteit te bieden bij het beveiligen van gegevens voor zowel persoonlijke als zakelijke apparaten.
 
@@ -44,7 +44,7 @@ U kunt op apps gebaseerd beleid voor voorwaardelijke toegang combi neren met and
 
 In dit onderwerp wordt ervan uitgegaan dat u bekend bent met:
 
-- De [goedgekeurde](technical-reference.md#approved-client-app-requirement) technische Naslag informatie voor app-vereisten voor clients.
+- De [vereiste](concept-conditional-access-grant.md)voor de client-app.
 - De basis concepten van [voorwaardelijke toegang in azure Active Directory](overview.md).
 - [Een beleid voor voorwaardelijke toegang configureren](app-based-mfa.md).
 - De [migratie van beleids regels voor voorwaardelijke toegang](best-practices.md#policy-migration).
@@ -139,7 +139,7 @@ Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende ond
 
 1. De **naam** van het beleid voor voorwaardelijke toegang.
 1. **Gebruikers en groepen**: voor elk voorwaardelijk toegangs beleid moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren. Online 
+1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren. Aanschaffen 
 1. **Voor waarden:** Als **voor waarden**, moet u **client-apps**configureren:
    1. Als **client-apps (preview)** , selecteert u **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
    1. Als **toegangs beheer**moet u **goedgekeurde client-app (preview) vereisen** .

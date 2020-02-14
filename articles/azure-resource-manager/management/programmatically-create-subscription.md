@@ -1,16 +1,16 @@
 ---
 title: Programmatisch Azure-abonnementen maken
 description: Meer informatie over het programmatisch maken van extra Azure-abonnementen.
-author: amberb
+author: amberbhargava
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: 2fad9d727e78b470635c91a1bf9aaac11e57f4c7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981227"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198680"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmatisch Azure-abonnementen maken (preview)
 
@@ -91,7 +91,7 @@ ObjectId                               | PrincipalName
 ```
 Gebruik de eigenschap `principalName` om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het SignUpEngineering@contoso.com inschrijvings account, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Plak deze object-ID ergens anders zodat u deze kunt gebruiken in de volgende stap als de `enrollmentAccountObjectId`.
 
-### <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik de opdracht [AZ facturering Enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) voor een lijst met alle inschrijvings accounts waartoe u toegang hebt.
 
@@ -147,7 +147,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Naam van element  | Verplicht | Type   | Beschrijving                                                                                               |
+| Element naam  | Vereist | Type   | Beschrijving                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Nee      | Tekenreeks | De weergave naam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, zoals "Microsoft Azure Enterprise".                                 |
 | `offerType`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -165,7 +165,7 @@ Voer de opdracht [New-AzSubscription](/powershell/module/az.subscription) hieron
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Naam van element  | Verplicht | Type   | Beschrijving                                                                                               |
+| Element naam  | Vereist | Type   | Beschrijving                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Nee      | Tekenreeks | De weergave naam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, zoals "Microsoft Azure Enterprise".                                 |
 | `OfferType`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -176,7 +176,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Zie [New-AzSubscription](/powershell/module/az.subscription)voor een volledige lijst met alle para meters.
 
-### <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Installeer eerst deze preview-extensie door `az extension add --name subscription`uit te voeren.
 
@@ -186,7 +186,7 @@ Voer de opdracht [AZ account create](/cli/azure/ext/subscription/account?view=az
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Naam van element  | Verplicht | Type   | Beschrijving                                                                                               |
+| Element naam  | Vereist | Type   | Beschrijving                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Nee      | Tekenreeks | De weergave naam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, zoals "Microsoft Azure Enterprise".                                 |
 | `offer-type`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
@@ -337,7 +337,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Naam van element  | Verplicht | Type   | Beschrijving                                                                                               |
+| Element naam  | Vereist | Type   | Beschrijving                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Ja      | Tekenreeks | De weergave naam van het abonnement.|
 | `billingProfileId`   | Ja      | Tekenreeks | De ID van het facturerings profiel dat wordt gefactureerd voor de kosten van het abonnement.  |
@@ -502,7 +502,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Naam van element  | Verplicht | Type   | Beschrijving                                                                                               |
+| Element naam  | Vereist | Type   | Beschrijving                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Ja      | Tekenreeks | De weergave naam van het abonnement.|
 | `skuId` | Ja      | Tekenreeks | De SKU-ID van het Azure-abonnement. *0001* gebruiken voor abonnementen van het type Microsoft Azure plan |

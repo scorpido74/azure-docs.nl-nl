@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563663"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190883"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Verbinding maken met gegevens van Azure Security Center
 
@@ -26,11 +26,10 @@ Met Azure Sentinel kunt u waarschuwingen van [Azure Security Center](../security
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u waarschuwingen van Azure Security Center wilt exporteren, moet u een bijdrager aan het abonnement zijn met de logboeken die u hebt gestreamd.
+- Als u waarschuwingen van Azure Security Center wilt exporteren, moet u de rol van beveiligings lezer hebben in het abonnement van de logboeken die u streamen.
 
 - U moet beschikken over de [Azure Security Center Standard-laag](../security-center/security-center-pricing.md) die op het abonnement wordt uitgevoerd. Als dat niet het geval is, [werkt u uw abonnement bij naar standaard](https://azure.microsoft.com/pricing/details/security-center/).
 
-- U moet zich aanmelden met een gebruiker met de machtigingen globale beheerder of beveiligings beheerder voor elk abonnement dat u wilt verbinden.
 
 
 ## <a name="connect-to-azure-security-center"></a>Verbinding maken met Azure Security Center
@@ -41,7 +40,7 @@ Met Azure Sentinel kunt u waarschuwingen van [Azure Security Center](../security
 
 1. U kunt selecteren of u wilt dat de waarschuwingen van Azure Security Center automatisch incidenten in azure-Sentinel automatisch genereren. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
 
-3. Klik op **Connect** (Verbinden).
+3. Klik op **Verbinding maken**.
 
 4. Als u het relevante schema in Log Analytics voor de Azure Security Center waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
 

@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818083"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191171"
 ---
 # <a name="storefront-details-tab"></a>Tabblad Details van webwinkel
 
 In dit artikel wordt uitgelegd hoe u de details van uw winkel opgeeft. Het tabblad Details van de **winkel** bestaat uit de volgende secties:
 
--   **Informatie over de aanbieding**
+-   **Details van aanbieding**
 -   **Informatie over Uitgever**
 -   **Details van vermelding**
 -   **Marketing artefacten**
@@ -27,7 +27,7 @@ In dit artikel wordt uitgelegd hoe u de details van uw winkel opgeeft. Het tabbl
 ![Een nieuwe consulting service-aanbieding maken-tabblad Details van de winkel](media/consultingoffer-storefront-details.png)
 
 
-## <a name="offer-details"></a>Informatie over de aanbieding
+## <a name="offer-details"></a>Details van aanbieding
 
 De sectie Details van de **aanbieding** bevat de volgende vakken:
 
@@ -71,7 +71,7 @@ Voer in het vak **Beschrijving van aanbieding** de beschrijving in van het advie
 
 Neem uw e-mail adres of telefoon nummer niet op in de beschrijving van uw aanbieding. Er is een knop **contact** opnemen met uw aanbieding om leads te uploaden naar het doel voor het beheer van doelen dat u voor uw aanbieding identificeert.
 
-Voer de beschrijving van de aanbieding in met de indeling prijs verlaging. Zie [prijs verlaging gebruiken voor het schrijven van documenten](https://docs.microsoft.com/contribute/how-to-write-use-markdown)als u niet bekend bent met de prijs verlaging of het opmaken van een HTML-bestand.
+Voer de beschrijving van de aanbieding in met de indeling prijs verlaging. Zie [prijs verlaging gebruiken voor het schrijven van documenten](/contribute/markdown-reference)als u niet bekend bent met de prijs verlaging of het opmaken van een HTML-bestand.
 
 Gebruik deze indelingen om ervoor te zorgen dat uw klanten gemakkelijk te lezen zijn.
 
@@ -85,7 +85,7 @@ In het volgende voor beeld ziet u een goed opgebouwde beschrijving van het aanbo
 
 **Beschrijving**van de aanbieding: deze 3-daags workshop is voor technische en zakelijke leiders en wordt op locatie op de site van de client bewaard.
 
-Agenda
+Vergaderingen
 
 Dag 1
 

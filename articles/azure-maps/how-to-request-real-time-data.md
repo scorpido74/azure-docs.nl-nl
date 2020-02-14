@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 169764f015f332d07c21ef815e6044c653489774
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 053e6c84f69e8b3d3fed0a90a8b632aa4eb311cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911434"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198153"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Real-time gegevens aanvragen met behulp van de Azure Maps Mobility-service
 
@@ -23,13 +23,13 @@ In dit artikel wordt beschreven hoe u Azure Maps [Mobility-service](https://aka.
 In dit artikel leert u het volgende:
 
 
- * De volgende realtime aankomsten aanvragen voor alle regels die bij de opgegeven stop arriveren
+ * De volgende realtime aankomsten aanvragen voor alle regels die bij een bepaalde beëindiging arriveren
  * Real-time informatie aanvragen voor een gegeven fiets docking station.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het aanroepen van de Azure Maps open bare doorvoer-Api's hebt u een Maps-account en-sleutel nodig. Voor informatie over het maken van een account en het ophalen van een sleutel, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+U moet eerst een Azure Maps account en een abonnements sleutel hebben om de Azure Maps open bare doorvoer-Api's te kunnen aanroepen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een Azure Maps-account te maken voor meer informatie. Volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account te verkrijgen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 
 In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
@@ -37,23 +37,23 @@ In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Dagelijkse aankomsten aanvragen voor een stop
 
-Als u gegevens in realtime wilt aanvragen voor een bepaalde open bare doorvoer stop, moet u een aanvraag indienen bij de [API voor real-time-ontvangsten](https://aka.ms/AzureMapsMobilityRealTimeArrivals) van de Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService). U hebt de **metroID** en **stopID** nodig om de aanvraag te volt ooien. Zie voor meer informatie over het aanvragen van deze para meters onze hand leiding voor het [aanvragen van open bare Transit routes](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
+Als u gegevens in realtime wilt ontvangen van een bepaalde open bare doorvoer stop, moet u een aanvraag indienen bij de API voor de [real-time-ontvangst](https://aka.ms/AzureMapsMobilityRealTimeArrivals) van de Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService). U hebt de **metroID** en **stopID** nodig om de aanvraag te volt ooien. Zie voor meer informatie over het aanvragen van deze para meters onze hand leiding voor het [aanvragen van open bare Transit routes](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
 
-We gebruiken ' 522 ' als onze metro-ID, de metro-ID voor ' Seattle – Tacoma – Bellevue, WA ' en gebruiken de stop ID ' 522---2060603 '. Dit is een bus stop op ' ne 24 St & 162nd Ave ne, Bellevue WA '. Voer de volgende stappen uit om volgende vijf realtime gegevens te vragen voor alle volgende Live-aankomsten bij deze stop:
+We gebruiken ' 522 ' als onze metro-ID. Dit is de metro-ID voor het gebied ' Seattle – Tacoma – Bellevue, WA '. Gebruik "522---2060603" als de stop-ID, deze bus stopt op "ne 24 St & 162nd Ave ne, Bellevue WA". Voer de volgende stappen uit om de volgende vijf gegevens over de dagelijkse duur te aanvragen voor alle volgende Live-aankomsten:
 
-1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw**. Selecteer **verzameling**in het venster **Nieuw maken** . Geef de verzameling een naam en selecteer de knop **maken** .
+1. Open de Postman-app, zodat u een verzameling kunt maken om de aanvragen op te slaan. Selecteer in de buurt van de Postman-app de optie **Nieuw**. Selecteer **verzameling**in het venster **Nieuw maken** .  Geef de verzameling een naam en selecteer de knop **maken** .
 
-2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de aanvraag, selecteer de verzameling die u in de vorige stap hebt gemaakt als de locatie waar u de aanvraag wilt opslaan en selecteer vervolgens **Opslaan**.
+2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie waar u de aanvraag wilt opslaan. Selecteer vervolgens **Opslaan**.
 
     ![Een aanvraag maken in postman](./media/how-to-request-transit-data/postman-new.png)
 
-3. Selecteer de methode HTTP ophalen op het tabblad opbouw functie en voer de volgende URL in om een GET-aanvraag te maken.
+3. Selecteer de methode http **ophalen** op het tabblad opbouw functie en voer de volgende URL in om een GET-aanvraag te maken. Vervang `{subscription-key}`door uw Azure Maps primaire sleutel.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. Nadat een aanvraag is voltooid, ontvangt u het volgende antwoord.  U ziet dat de para meter ' Schedule Type ' definieert of de geschatte aankomst tijd is gebaseerd op realtime of statische gegevens.
+4. Na een geslaagde aanvraag ontvangt u het volgende antwoord.  U ziet dat de para meter ' Schedule Type ' definieert of de geschatte aankomst tijd is gebaseerd op realtime of statische gegevens.
 
     ```JSON
     {
@@ -121,9 +121,9 @@ We gebruiken ' 522 ' als onze metro-ID, de metro-ID voor ' Seattle – Tacoma �
 
 ## <a name="real-time-data-for-bike-docking-station"></a>Real-time gegevens voor het fietsen docking-station
 
-Met de informatie over het ophalen van de gegevens voor de [overdrachts koppeling](https://aka.ms/AzureMapsMobilityTransitDock) van de Azure Maps Mobility-service, kunt u statische en real-time gegevens opvragen, zoals Beschik baarheid en vacature informatie voor een gegeven fiets of scooter docking station. We zullen een aanvraag indienen om realtime gegevens voor een docking-station voor fietsen te krijgen.
+Met de informatie over het ophalen van de [gegevens voor transit docken](https://aka.ms/AzureMapsMobilityTransitDock) kunnen gebruikers statische en real-time informatie opvragen. Gebruikers kunnen bijvoorbeeld Beschik baarheid en vacature gegevens aanvragen voor een fiets of een scooter docking station. De informatie over het ophalen van de [gegevens voor transit Dock](https://aka.ms/AzureMapsMobilityTransitDock) maken maakt ook deel uit van de Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService).
 
-Als u een aanvraag wilt indienen voor de gegevens-API Get Transit Dock, hebt u de **dockId** voor dat station nodig. U kunt de Dock-ID ophalen door een zoek aanvraag te maken naar de API voor in gebruik zijnde [Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) en de **object type** -para meter in te stellen op ' bikeDock '. Volg de onderstaande stappen om real-time gegevens van een docking-station voor fietsen te verkrijgen.
+Als u een aanvraag wilt indienen voor de [gegevens-API Get Transit Dock](https://aka.ms/AzureMapsMobilityTransitDock), hebt u de **dockId** voor dat station nodig. U kunt de Dock-ID ophalen door een zoek aanvraag te maken naar de API voor in gebruik zijnde [tussenliggende Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) met de para meter **object type** toegewezen aan bikeDock. Volg de onderstaande stappen om real-time gegevens van een docking-station voor fietsen te verkrijgen.
 
 
 ### <a name="get-dock-id"></a>Dock-ID ophalen
@@ -138,7 +138,7 @@ Als u **dockID**wilt ophalen, volgt u de onderstaande stappen om een aanvraag in
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
     ```
 
-3. Nadat een aanvraag is voltooid, ontvangt u het volgende antwoord. U ziet nu dat we de **id** in het antwoord hebben, die later kunnen worden gebruikt als een query parameter in de aanvraag voor de gegevens-API Get Transit Dock ophalen.
+3. Na een geslaagde aanvraag ontvangt u het volgende antwoord. U ziet nu dat we de **id** in het antwoord hebben, die later kunnen worden gebruikt als een query parameter in de aanvraag voor de gegevens-API Get Transit Dock ophalen.
 
     ```JSON
     {
@@ -187,7 +187,7 @@ Volg de onderstaande stappen om een aanvraag in te stellen voor de API Get Trans
     https://atlas.microsoft.com/mobility/transit/dock/json?subscription-key={subscription-key}&api-version=1.0&query=121---4640799
     ```
 
-3. Nadat een aanvraag is voltooid, ontvangt u een reactie van de volgende structuur:
+3. Na een geslaagde aanvraag ontvangt u een reactie van de volgende structuur:
 
     ```JSON
     {

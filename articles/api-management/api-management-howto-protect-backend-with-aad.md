@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161797"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190370"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management
 
@@ -71,7 +71,7 @@ De eerste stap is het registreren van een toepassing in azure AD die de API vert
 
 Elke client toepassing die de API aanroept, moet ook worden geregistreerd als een toepassing in azure AD. In dit voor beeld is de client toepassing de ontwikkelaars console in het API Management ontwikkelaars Portal. U kunt als volgt een andere toepassing in azure AD registreren om de ontwikkelaars console aan te duiden.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **API-registraties**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **app-registraties**.
 
 1. Selecteer **nieuwe registratie**.
 
@@ -97,7 +97,7 @@ Wanneer het geheim is gemaakt, noteert u de sleutel waarde voor gebruik in een v
 
 Nu u twee toepassingen hebt geregistreerd die de API en de ontwikkelaars console vertegenwoordigen, moet u machtigingen verlenen om de client-app toe te staan de back-end-app aan te roepen.  
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om machtigingen toe te kennen aan uw client toepassing. Zoek en selecteer **API-registraties**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om machtigingen toe te kennen aan uw client toepassing. Zoek en selecteer **app-registraties**.
 
 1. Kies uw client-app. Selecteer vervolgens in de lijst met pagina's voor de app **API-machtigingen**.
 
@@ -202,7 +202,7 @@ U kunt de [validatie JWT](api-management-access-restriction-policies.md#Validate
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

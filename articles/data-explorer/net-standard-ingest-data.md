@@ -1,22 +1,22 @@
 ---
-title: Opname van gegevens met behulp van de Azure Data Explorer .NET Standard SDK (Preview)
-description: In dit artikel leert u hoe u voor het opnemen van gegevens (laden) in Azure Data Explorer met behulp van .NET Standard-SDK.
+title: Gegevens opnemen met behulp van de Azure Data Explorer .NET Standard SDK (preview)
+description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer met behulp van .NET Standard SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496879"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187918"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Opname van gegevens met behulp van de Azure Data Explorer .NET Standard SDK (Preview)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gegevens opnemen met behulp van de Azure Data Explorer .NET Standard SDK (preview)
 
-Azure Data Explorer (ADX) is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. ADX biedt twee clientbibliotheken voor .NET Standard: een [opnamebibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) en een [gegevensbibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Met deze bibliotheken kunt u gegevens opnemen (laden) in een cluster en gegevens bevragen vanuit uw code. In dit artikel maakt u eerst een tabel en de gegevenstoewijzing van de in een testcluster. Vervolgens plaatst u een gegevensopname in het cluster in de wachtrij en valideert u de resultaten.
+Azure Data Explorer (ADX) is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. ADX biedt twee clientbibliotheken voor .NET Standard: een [opnamebibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) en een [gegevensbibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Met deze bibliotheken kunt u gegevens opnemen (laden) in een cluster en gegevens bevragen vanuit uw code. In dit artikel maakt u eerst een tabel en gegevens toewijzing in een test cluster. Vervolgens plaatst u een gegevensopname in het cluster in de wachtrij en valideert u de resultaten.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -123,7 +123,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>Toewijzing van opname definiëren
 
 Wijs de binnenkomende CSV-gegevens toe aan de kolomnamen die zijn gebruikt bij het maken van de tabel.
-Richt een [CSV-kolomtoewijzingsobject](/azure/kusto/management/tables#create-ingestion-mapping) in voor deze tabel
+Richt een [CSV-kolomtoewijzingsobject](/azure/kusto/management/create-ingestion-mapping-command) in voor deze tabel
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
@@ -226,7 +226,7 @@ Voer de volgende opdracht uit om de status op te vragen van alle bewerkingen voo
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om te volgen van onze andere artikelen, moet u de resources die u hebt gemaakt. Voer anders de volgende opdracht uit in uw database om de tabel `StormEvents` op te schonen.
+Als u van plan bent om onze andere artikelen te volgen, moet u de resources die u hebt gemaakt, blijven gebruiken. Voer anders de volgende opdracht uit in uw database om de tabel `StormEvents` op te schonen.
 
 ```Kusto
 .drop table StormEvents

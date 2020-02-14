@@ -3,12 +3,12 @@ title: Aandachtspunten voor de opslag van Azure Functions
 description: Meer informatie over de opslag vereisten van Azure Functions en over het versleutelen van opgeslagen gegevens.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 353fdd3bf7775e3bc7a9d017a9e8dd8238b09830
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964980"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190304"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
 
@@ -17,7 +17,7 @@ Azure Functions moet een Azure Storage-account zijn wanneer u een exemplaar van 
 
 |Opslag service  | Functie gebruik  |
 |---------|---------|
-| [Azure Blob Storage](/storage/blobs/storage-blobs-overview.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
 | [Azure Files](../storage/files/storage-files-introduction.md)  | Bestands share gebruikt om de code van uw functie-app op te slaan en uit te voeren in een [verbruiks abonnement](functions-scale.md#consumption-plan). |
 | [Azure-wachtrij opslag](../storage/queues/storage-queues-introduction.md)     | Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).       |

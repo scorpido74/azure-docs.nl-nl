@@ -3,12 +3,12 @@ title: Naslag C# informatie voor Azure functions ontwikkel aars
 description: Meer informatie over het ontwikkelen van C#Azure functions met behulp van.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921052"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198374"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslag C# informatie voor Azure functions ontwikkel aars
 
@@ -204,7 +204,7 @@ Als u de basis Hulpprogramma's installeert met behulp van NPM, is dit niet van i
 
 ## <a name="supported-types-for-bindings"></a>Ondersteunde typen voor bindingen
 
-Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan bijvoorbeeld worden toegepast op een teken reeks parameter, een POCO-para meter, een `CloudBlockBlob` para meter of een van de andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB-bindingen](functions-bindings-storage-blob.md#trigger---usage) bevat een lijst met alle ondersteunde parameter typen. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
+Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan bijvoorbeeld worden toegepast op een teken reeks parameter, een POCO-para meter, een `CloudBlockBlob` para meter of een van de andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB-bindingen](functions-bindings-storage-blob-trigger.md#usage) bevat een lijst met alle ondersteunde parameter typen. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -353,7 +353,7 @@ Definieer als volgt een dwingende binding:
 
 ### <a name="single-attribute-example"></a>Voor beeld van één kenmerk
 
-Met de volgende voorbeeld code wordt een [opslag-BLOB-uitvoer binding](functions-bindings-storage-blob.md#output) gemaakt met een BLOB-pad dat tijdens runtime is gedefinieerd, waarna een teken reeks naar de BLOB wordt geschreven.
+Met de volgende voorbeeld code wordt een [opslag-BLOB-uitvoer binding](functions-bindings-storage-blob-output.md) gemaakt met een BLOB-pad dat tijdens runtime is gedefinieerd, waarna een teken reeks naar de BLOB wordt geschreven.
 
 ```cs
 public static class IBinderExample

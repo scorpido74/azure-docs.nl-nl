@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 463a389116cd58e50839d717b700b604f545e5f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969417"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190107"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -107,8 +107,8 @@ Sla de JSON hieronder op als simplestaticmetricalert. json voor het doel van dez
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -1657,8 +1657,8 @@ Sla de JSON hieronder op als alle-vm's-in-Resource-Group-static. json voor het d
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2304,8 +2304,8 @@ Sla de JSON hieronder op als alle vm's-in-abonnement-static. json voor het doel 
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2946,8 +2946,8 @@ Sla de onderstaande JSON op als lijst-van vm's: static. json voor het doel van d
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

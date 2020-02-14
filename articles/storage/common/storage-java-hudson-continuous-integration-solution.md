@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a89439f49dd53f09d5cd40be0bf2e4981e9235d4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970198"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201382"
 ---
-# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Azure Storage gebruiken met een Hudson CI-oplossing
+# <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Azure Storage gebruiken met een Hudson-oplossing voor continue integratie
 ## <a name="overview"></a>Overzicht
 In de volgende informatie ziet u hoe u Blob Storage kunt gebruiken als opslag plaats voor constructie artefacten die zijn gemaakt met een CI-oplossing (Hudson Continuous Integration) of als bron van Download bare bestanden die moeten worden gebruikt in een bouw proces. Een van de scenario's waarin dit nuttig is, is wanneer u codeert in een flexibele ontwikkel omgeving (met Java of andere talen), builds worden uitgevoerd op basis van doorlopende integratie en u hebt een opslag plaats voor uw bouw artefacten nodig, zodat u u kunt ze bijvoorbeeld delen met andere organisatie leden, uw klanten of een archief onderhouden.  Een ander scenario is wanneer uw bouw taak zelf andere bestanden vereist, zoals afhankelijkheden die moeten worden gedownload als onderdeel van de build-invoer.
 
@@ -42,7 +42,7 @@ U hebt het volgende nodig om de Blob service te gebruiken met uw Hudson CI-oplos
   
     Als u momenteel geen Hudson CI-oplossing hebt, kunt u een Hudson CI-oplossing uitvoeren met behulp van de volgende techniek:
   
-  1. Down load de Hudson-WAR van <http://hudson-ci.org/>op een Java-computer.
+  1. [Down load het Hudson war-bestand](https://www.eclipse.org/hudson/download.php)op een Java-computer.
   2. Voer de Hudson WAR uit vanaf een opdracht prompt die is geopend in de map met de Hudson WAR. Als u bijvoorbeeld versie 3.1.2 hebt gedownload:
      
       `java -jar hudson-3.1.2.war`
@@ -65,7 +65,7 @@ Als u de Blob service wilt gebruiken met Hudson, moet u de Azure Storage-invoeg 
 3. Klik op het tabblad **beschikbaar** .
 4. Klik op **anderen**.
 5. Selecteer **Microsoft Azure Storage-invoeg toepassing**in de sectie **artefacten uploaden** .
-6. Klik op **Install**.
+6. Klik op **Installeren**.
 7. Nadat de installatie is voltooid, start u Hudson opnieuw.
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>De Azure Storage-invoeg toepassing configureren voor het gebruik van uw opslag account
@@ -116,7 +116,7 @@ Voor instructie doeleinden moet eerst een taak worden gemaakt waarmee meerdere b
 13. Klik in het Hudson-dash board op **nu bouwen** om **MyJob**uit te voeren. Bekijk de console-uitvoer voor status. Status berichten voor Azure Storage worden opgenomen in de console-uitvoer wanneer de actie na het maken van het bouwen van build-artefacten wordt gestart.
 14. Wanneer de taak is voltooid, kunt u de constructie artefacten bekijken door de open bare BLOB te openen.
     
-    a. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+    a. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     
     b. Klik op **opslag**.
     

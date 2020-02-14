@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893665"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191345"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
@@ -96,7 +96,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
    De gateway-installatie kan slechts aan één Azure-account worden gekoppeld.
 
-1. Selecteer **Een nieuwe gateway registreren op deze computer** > **Volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
+1. Selecteer **een nieuwe gateway registreren op deze computer** > **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
 
    ![Gateway op lokale computer registreren](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -139,10 +139,10 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 ## <a name="check-or-adjust-communication-settings"></a>Communicatie-instellingen controleren of aanpassen
 
-De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Zie deze onderwerpen voor meer informatie:
+De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Zie de volgende onderwerpen voor meer informatie:
 
 * [Communicatie-instellingen voor de on-premises gegevens gateway aanpassen](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Proxyinstellingen configureren voor de on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Proxy-instellingen voor de on-premises gegevens gateway configureren](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -188,7 +188,7 @@ Om inzicht te krijgen in alle on-premises gegevens gateways in een Azure AD-Tena
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Gateway opnieuw opstarten
+## <a name="restart-gateway"></a>Gateway opnieuw starten
 
 Standaard wordt de installatie van de gateway op uw lokale computer uitgevoerd als een Windows-Service account met de naam ' on-premises gegevens Gateway-Service '. De gateway-installatie maakt echter gebruik van de `NT SERVICE\PBIEgwService` naam voor de account referenties aanmelden als en heeft de machtigingen aanmelden als service.
 
@@ -199,11 +199,11 @@ Net als elke andere Windows-service kunt u de gateway op verschillende manieren 
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>De werking van de gateway
+## <a name="how-the-gateway-works"></a>Hoe de gateway werkt
 
 Gebruikers in uw organisatie hebben toegang tot on-premises gegevens waarvoor ze al geautoriseerde toegang hebben. Voordat deze gebruikers verbinding kunnen maken met uw on-premises gegevens bron, moet u echter een on-premises gegevens gateway installeren en instellen. Normaal gesp roken is een beheerder de persoon die een gateway installeert en instelt. Voor deze acties zijn mogelijk beheerders machtigingen voor de server of speciale kennis van uw on-premises servers vereist.
 
-De gateway vereenvoudigt snelle en veilige communicatie achter de schermen-communicatie. Deze communicatie loopt tussen een gebruiker in de Cloud, de gateway-Cloud service en uw on-premises gegevens bron. De gateway-Cloud service versleutelt en slaat uw referenties voor de gegevens bron en de gateway gegevens op. De service routeert ook query's en de bijbehorende resultaten tussen de gebruiker, de gateway en uw on-premises gegevens bron.
+De gateway helpt sneller en veiliger achter de schermen communicatie. Deze communicatie loopt tussen een gebruiker in de Cloud, de gateway-Cloud service en uw on-premises gegevens bron. De gateway-Cloud service versleutelt en slaat uw referenties voor de gegevens bron en de gateway gegevens op. De service routeert ook query's en de bijbehorende resultaten tussen de gebruiker, de gateway en uw on-premises gegevens bron.
 
 De gateway werkt met firewalls en maakt gebruik van alleen uitgaande verbindingen. Al het verkeer is afkomstig van het beveiligde uitgaande verkeer van de gateway-agent. De gateway doorstuurt gegevens van on-premises bronnen op versleutelde kanalen via [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md). Met deze service bus wordt een kanaal gemaakt tussen de gateway en de aanroepende service, maar worden er geen gegevens opgeslagen. Alle gegevens die via de gateway worden uitgewisseld, worden versleuteld.
 
@@ -226,7 +226,7 @@ In deze stappen wordt beschreven wat er gebeurt wanneer u communiceert met een-e
 
 1. De resultaten worden vanuit de gegevens bron teruggezonden naar de gateway en vervolgens naar de gateway-Cloud service. De gateway-Cloud service gebruikt vervolgens de resultaten.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Verificatie voor on-premises gegevensbronnen
+### <a name="authentication-to-on-premises-data-sources"></a>Verificatie voor on-premises gegevens bronnen
 
 Een opgeslagen referentie wordt gebruikt om verbinding te maken tussen de gateway en de on-premises gegevens bronnen. Ongeacht de gebruiker, gebruikt de gateway de opgeslagen referentie om verbinding te maken. Er zijn mogelijk verificatie-uitzonde ringen voor specifieke services, zoals DirectQuery en LiveConnect voor Analysis Services in Power BI.
 
@@ -238,7 +238,7 @@ Micro soft Cloud Services gebruiken [Azure AD](../active-directory/fundamentals/
 
 Als u geen domein beheerder bent, bent u mogelijk niet op de hoogte van uw UPN. Als u de UPN voor uw account wilt zoeken, voert u de `whoami /upn` opdracht uit vanaf uw werk station. Hoewel het resultaat eruitziet als een e-mail adres, is het resultaat de UPN voor uw lokale domein account.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Een on-premises Active Directory Domain Services synchroniseren met Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Een on-premises Active Directory synchroniseren met Azure AD
 
 De UPN voor uw on-premises Active Directory accounts en Azure AD-accounts moet hetzelfde zijn. Zorg er dus voor dat elke on-premises Active Directory-account overeenkomt met uw Azure AD-account. De Cloud Services weten alleen over accounts in azure AD. U hoeft dus geen account aan uw on-premises Active Directory toe te voegen. Als het account niet bestaat in azure AD, kunt u dat account niet gebruiken.
 
@@ -259,10 +259,10 @@ Hier vindt u een aantal manieren waarop u uw on-premises Active Directory accoun
 
 ## <a name="faq-and-troubleshooting"></a>Veelgestelde vragen en probleem oplossing
 
-Zie deze onderwerpen voor meer informatie:
+Zie de volgende onderwerpen voor meer informatie:
 
 * [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Problemen met de on-premises gegevensgateway oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Problemen met de on-premises gegevens gateway oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Gateway prestaties bewaken en optimaliseren](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Volgende stappen

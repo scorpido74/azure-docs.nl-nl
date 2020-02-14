@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460738"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190967"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
@@ -55,7 +55,7 @@ De planning van de Indexeer functie is een belang rijk mechanisme voor het verwe
 
 Geplande indexering begint op specifieke intervallen, met een taak die doorgaans wordt voltooid voordat het volgende geplande interval wordt hervat. Als de verwerking echter niet binnen het interval wordt voltooid, stopt de indexer (omdat deze verouderd is). Bij het volgende interval wordt de verwerking hervat, waar deze zich de laatste keer bevindt, waarbij het systeem bijhoudt waar dit gebeurt. 
 
-In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over deze aanpak [grote gegevens sets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
+In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over deze aanpak [grote gegevens sets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

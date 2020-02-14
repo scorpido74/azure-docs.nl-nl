@@ -1,6 +1,6 @@
 ---
 title: Woorden lijst Azure Maps | Microsoft Docs
-description: Een verklarende woorden lijst met veelgebruikte termen die zijn gekoppeld aan Azure Maps, locatie op basis van services en GIS.
+description: Een verklarende woorden lijst met veelgebruikte termen die zijn gekoppeld aan Azure Maps, op locatie gebaseerde services en GIS.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408863"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198238"
 ---
 # <a name="glossary"></a>Woordenlijst
 
-Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Maps.
+In de volgende lijst worden veelvoorkomende woorden beschreven die worden gebruikt met de Azure Maps Services.
 
 ## <a name="a"></a>A
 
 <a name="address-validation"></a>**Adres validatie**: het proces voor het controleren van het bestaan van een adres.
 
-<a name="advanced-routing"></a>**Geavanceerde route ring**: een verzameling van services die voorbereidings bewerkingen uitvoeren met behulp van verkeers routerings gegevens, zoals het berekenen van bereik bare bereiken (van isochronen), afstands matrices en batch route aanvragen.
+<a name="advanced-routing"></a>**Geavanceerde route ring**: een verzameling services die voorbereidings bewerkingen uitvoeren met behulp van verkeers routering gegevens; zoals, het berekenen van bereik bare bereiken (van isochronen), de afstands matrices en batch route aanvragen.
 
 <a name="aerial-imagery"></a>**Foto afbeelding**: Zie [satelliet afbeelding](#satellite-imagery). 
 
@@ -31,19 +31,19 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="altitude"></a>**Hoogte**: de hoogte of verticale verhoging van een punt boven een referentie-Opper vlak. De hoogte metingen zijn gebaseerd op een gegeven referentie datum, zoals gemiddeld Sea-niveau. Zie ook uitbrei ding van bevoegdheden.
 
-<a name="ambiguous"></a>**Ambigu**: een status van onzekerheid in de gegevens classificatie die bestaat wanneer een object twee of meer waarden voor een bepaald kenmerk kan toewijzen. Bijvoorbeeld, wanneer geocodering "CA" twee dubbel zinnige resultaten worden geretourneerd; "Canada" en "Californië" als "CA" zijn de land-en provincie code voor elk van beide. 
+<a name="ambiguous"></a>**Ambigu**: een status van onzekerheid in de gegevens classificatie die bestaat wanneer een object twee of meer waarden voor een bepaald kenmerk kan toewijzen. Bij geocodering "CA" worden bijvoorbeeld twee dubbel zinnige resultaten geretourneerd: "Canada" en "Californië". "CA" is een land en een staat code, respectievelijk "Canada" en "Californië". 
 
 <a name="annotation"></a>**Aantekening**: tekst of afbeeldingen die worden weer gegeven op de kaart om informatie aan de gebruiker toe te voegen. Aantekening kan een specifieke kaart entiteit identificeren of beschrijven, algemene informatie geven over een gebied op de kaart of informatie over de kaart zelf opgeven.
 
-<a name="antimeridian"></a>**Antimeridian**: ook wel bekend als de 180<sup>th</sup> meridiaan is het punt waar-180 en 180 graden van de lengte graad overeenkomen. Die zich tegenover de Prime meridiaan op de hele wereld bevindt.
+<a name="antimeridian"></a>**Antimeridian**: ook bekend als de 180<sup>th</sup> meridiaan. Dit is het punt waar-180 graden en 180 graden van de lengte graad overeenkomen. Dit is het tegenovergestelde van de Prime meridiaan op de hele wereld.
 
 <a name="application-programming-interface-api"></a>**API (Application Programming Interface)** : een specificatie waarmee ontwikkel aars toepassingen kunnen maken.
 
 <a name="api-key"></a>**API-sleutel**: Zie [verificatie van gedeelde sleutel](#shared-key-authentication).
 
-<a name="area-of-interest-aoi"></a>**Interesse gebied (AOI)** : de mate waarin wordt gebruikt om een focus gebied te definiëren voor een kaart of database productie.
+<a name="area-of-interest-aoi"></a>**Interesse gebied (AOI)** : de mate waarin een focus gebied wordt gedefinieerd voor een kaart of een database productie.
 
-<a name="asset-tracking"></a>**Tracering van activa**: het proces van het volgen van de locatie van een activum, zoals een persoon, een voer tuig of een ander object.
+<a name="asset-tracking"></a>**Tracering van activa**: het proces van het bijhouden van de locatie van een activum, zoals een persoon, een voer tuig of een ander object.
 
 <a name="asynchronous-request"></a>**Asynchrone aanvraag**: een HTTP-aanvraag waarmee een verbinding wordt geopend en een aanvraag wordt gemaakt naar de server die een id voor de asynchrone aanvraag retourneert, waarna de verbinding wordt gesloten. De server blijft de aanvraag verwerken en de gebruiker kan de status controleren met behulp van de id. Wanneer de verwerking van de aanvraag is voltooid, kan de gebruiker de reactie downloaden. Dit type aanvraag wordt gebruikt voor langlopende processen.
 
@@ -75,11 +75,11 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="cadastre"></a>**Cadastre**: een record met geregistreerde land en eigenschappen. Zie ook [pakket](#parcel).
 
-<a name="camera"></a>**Camera**: in de context van een interactief kaart besturings element, definieert een camera het veld kaarten van weer gave. De View Port van de camera wordt bepaald op basis van verschillende kaart parameters. gecentreerd, zoom niveau, Toon hoogte. 
+<a name="camera"></a>**Camera**: in de context van een interactief kaart besturings element, definieert een camera het veld kaarten van weer gave. De View Port van de camera wordt bepaald op basis van de volgende kaart parameters: Center, zoom niveau, Toon hoogte. 
 
 <a name="centroid"></a>**Massa middelpunt**: het geometrische midden van een functie. De massa middelpunt van een lijn zou het middel punt zijn terwijl de massa middelpunt van een veelhoek het midden van het gebied zou zijn.
 
-<a name="choropleth-map"></a>**Choropleth kaart**: een thematische kaart waarin gebieden worden gearceerd in verhouding tot een meting van een statistische variabele die wordt weer gegeven op de kaart. U kunt bijvoorbeeld de grens van elke Amerikaanse staat op basis van de relatieve populatie naar alle andere statussen kleuren.
+<a name="choropleth-map"></a>**Choropleth kaart**: een thematische kaart waarin gebieden worden gearceerd in verhouding tot een meting van een statistische variabele. Deze statistische variabele wordt weer gegeven op de kaart. U kunt bijvoorbeeld de grens van elke Amerikaanse staat op basis van de relatieve populatie naar alle andere statussen kleuren.
 
 <a name="concave-hull"></a>**Holle romp**: een vorm die een mogelijke holle geometrie vertegenwoordigt die alle vormen in de opgegeven gegevensset omsluit. De gegenereerde vorm is vergelijkbaar met het inpakken van de gegevens met een plastic terugloop en deze vervolgens te verhitten, waardoor grote hoeveel heden van punten naar grot in andere gegevens punten worden verkleind.
 
@@ -127,11 +127,11 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a>**Uitbrei ding**: de verticale afstand van een punt of object boven of onder een referentie-Opper vlak of datum (meestal Sea-niveau). Uitbrei ding van bevoegdheden heeft doorgaans betrekking op de verticale hoogte van het land.
+<a name="elevation"></a>**Uitbrei ding**: de verticale afstand van een punt of een object boven of onder een referentie-Opper vlak of datum. Over het algemeen is het referentie oppervlak het niveau Sea. Uitbrei ding van bevoegdheden heeft doorgaans betrekking op de verticale hoogte van het land.
 
 <a name="envelope"></a>**Envelop**: Zie [selectie kader](#bounding-box).
 
-<a name="extended-postal-code"></a>**Uitgebreide post code**: een post code die mogelijk aanvullende informatie bevat. In de Verenigde Staten hebben Post codes bijvoorbeeld vijf cijfers, maar een uitgebreide post code, ook wel zip + 4 genoemd, bevat vier extra cijfers. Deze extra cijfers worden gebruikt voor het identificeren van een geografisch segment binnen het leverings gebied van vijf cijfers, zoals een stads blok, een groep appartementen of een postbus van het bedrijf, die u helpt bij het sorteren en leveren van efficiënte e-mail berichten.
+<a name="extended-postal-code"></a>**Uitgebreide post code**: een post code die mogelijk aanvullende informatie bevat. In Nederland hebben Post codes bijvoorbeeld vijf cijfers. Maar een uitgebreide post code, ook wel zip + 4 genoemd, bevat vier extra cijfers. Deze extra cijfers worden gebruikt voor het identificeren van een geografisch segment binnen het leverings gebied van vijf cijfers, zoals een stads blok, een groep appartementen of een postbus van het bedrijf. Het geografische segment helpt u bij het sorteren en leveren van efficiënte e-mail berichten.
 
 <a name="extent"></a>**Gebied**: Zie [selectie kader](#bounding-box).
 
@@ -147,7 +147,7 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="find-nearby"></a>**Nabijgelegen zoeken**: een ruimtelijke query die een vaste lineaire afstand (als de hanen, vliegt) doorzoekt vanaf een punt.
 
-<a name="fleet-management"></a>**Vloot beheer**: het beheer van commerciële Voer tuigen, zoals auto's, vracht wagens, schepen en plannen. Vloot beheer kan bestaan uit een reeks functies, zoals het financieren van het Voer tuig, onderhoud, telematica (tracering en diagnose), alsook stuur programma, snelheid, brand stof en gezondheids-en veiligheids beheer. Vloot beheer is een proces dat wordt gebruikt door bedrijven die afhankelijk zijn van het Trans Port in hun bedrijf om de Risico's tot een minimum te beperken en hun totale kosten voor vervoer en personeel te verminderen, en tegelijkertijd te voldoen aan overheids wetgeving.
+<a name="fleet-management"></a>**Vloot beheer**: het beheer van commerciële Voer tuigen, zoals auto's, vracht wagens, schepen en plannen. Vloot beheer kan bestaan uit een reeks functies, zoals het financieren van het Voer tuig, onderhoud, telematica (tracering en diagnose), alsook stuur programma, snelheid, brand stof en gezondheids-en veiligheids beheer. Vloot beheer is een proces dat wordt gebruikt door bedrijven die afhankelijk zijn van het Trans Port in hun bedrijf. De bedrijven willen de Risico's tot een minimum beperken en hun totale kosten voor het Trans Port en personeel verminderen, terwijl zij voldoen aan de overheids wetgeving.
 
 <a name="free-flow-speed"></a>**Vrije stroom snelheid**: de vrije stroom snelheid die wordt verwacht onder ideale omstandigheden. Doorgaans de snelheids limiet.
 
@@ -155,7 +155,7 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="fuzzy-search"></a>**Zoek actie op fuzzy**: een zoek opdracht die in een vrije teken reeks wordt gebruikt voor tekst die een adres of interesse kan zijn. 
 
-## <a name="g"></a>G
+## <a name="g"></a>Kg
 
 <a name="geocode"></a>**Geocode**: een adres of locatie die is geconverteerd naar een coördinaat die kan worden gebruikt om die locatie weer te geven op een kaart. 
 
@@ -211,13 +211,13 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="isodistance"></a>**Isodistance**: op basis van een locatie definieert een isochrone het gebied waarin iemand binnen een bepaalde afstand voor een transport methode in een wille keurige richting kan reizen. Zie ook [bereikbaar bereik](#reachable-range).
 
-## <a name="k"></a>K
+## <a name="k"></a>Middel
 
 <a name="kml"></a>**KML**: ook wel bekend als de taal voor het opmaken van een vector, is een algemene XML-bestands indeling voor het opslaan van geografische gegevens zoals punten, lijnen en veelhoeken. 
 
-## <a name="l"></a>L
+## <a name="l"></a>Winst
 
-<a name="landsat"></a>**Landsat**: MultiSpectral, satellieten die zijn ontwikkeld door NASA die installatie kopieën van gronden verzamelen die in veel branches, zoals land bouw, bosbouw en Cartography, worden gebruikt.
+<a name="landsat"></a>**Landsat**: MultiSpectral, door NASA ontwikkelde satellieten die installatie kopieën van gronden verzamelen. Deze installatie kopie wordt gebruikt in veel branches, zoals land bouw, bosbouw en Cartography.
 
 <a name="latitude"></a>**Latitude**: de hoek afstand gemeten in graden van de gelijkheid in een Noord-of Zuid-richting.
 
@@ -235,7 +235,7 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="longitude"></a>**Lengte graad**: de afstand van de hoek gemeten in graden van de Prime meridiaan in een Oost-of-West-richting.
 
-## <a name="m"></a>mln.
+## <a name="m"></a>M
 
 <a name="map-tile"></a>**Kaart tegel**: een rechthoekige afbeelding die een partitie van een kaart doek vertegenwoordigt. Zie de [documentatie voor zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie.
 
@@ -247,7 +247,7 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="multipoint"></a>**Multi point**: een geometrie die een verzameling punt objecten vertegenwoordigt.
 
-<a name="multipolygon"></a>**Multiveelhoek**: een geometrie die een verzameling veelhoek objecten vertegenwoordigt. Als u bijvoorbeeld de grens van Hawaï wilt weer geven, wordt elk eiland met een veelhoek omlijnd en is de grens van Hawaï een multiveelhoek.
+<a name="multipolygon"></a>**Multiveelhoek**: een geometrie die een verzameling veelhoek objecten vertegenwoordigt. Als u bijvoorbeeld de grens van Hawaï wilt weer geven, wordt elk eiland beschreven met een veelhoek. De grens van Hawaï zou dus een multiveelhoek zijn.
 
 <a name="municipality"></a>**Gemeente**: een stad of stad. 
 
@@ -285,17 +285,17 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="post-code"></a>**Post code**: Zie [Post code](#postal-code).
 
-<a name="postal-code"></a>**Post code**: een reeks letters of cijfers, of beide, in een specifieke indeling, die door de post dienst van een land/regio wordt gebruikt om geografische gebieden in zones te verdelen, zodat de levering van e-mail wordt vereenvoudigd.
+<a name="postal-code"></a>**Post code**: een reeks letters of cijfers, of beide, in een specifieke indeling. De post code wordt gebruikt door de post dienst van een land/regio om geografische gebieden in zones te verdelen, zodat de levering van e-mail wordt vereenvoudigd.
 
 <a name="primary-key"></a>**Primaire sleutel**: de eerste van twee abonnements sleutels die zijn verschaft voor Azure Maps gedeelde sleutel verificatie. Zie [verificatie van de gedeelde sleutel](#shared-key-authentication).
 
-<a name="prime-meridian"></a>**Prime meridiaan**: een lijn met een lengte graad die een lengte van 0 graden aangeeft. Over het algemeen zijn de lengte waarden kleiner wanneer ze in een Westerly-richting tot 180 graden worden gereisd en verg Roten wanneer ze in een Paasdag-richtingen naar-180-graden reizen. 
+<a name="prime-meridian"></a>**Prime meridiaan**: een lijn met een lengte graad die een lengte van 0 graden aangeeft. Over het algemeen zijn de lengte waarden kleiner wanneer ze in een Westerly-richting tot 180 graden worden gereisd en verg Roten wanneer ze in een Paas richting naar-180-graden reizen. 
 
 <a name="prj"></a>**PRJ**: een tekst bestand dat vaak vergezeld gaat van een vorm bestand-bestand dat informatie bevat over het geprojecteerde coördinaten systeem waarin de gegevensset zich bevindt.
 
 <a name="projection"></a>**Projectie**: een geprojecteerd coördinaten systeem op basis van een kaart projectie, zoals transversale Mercator, Albers equally Area en Robinson. Dit biedt de mogelijkheid om kaarten van het bolvormige vlak van de aarde te projecteren op een tweedimensionale Cartesisch coördinaten vlak. Geprojecteerde coördinaten systemen worden soms een kaart projectie genoemd.
 
-## <a name="q"></a>Q
+## <a name="q"></a>Nils
 
 <a name="quadkey"></a>**Quadkey**: een base-4-adres index voor een tegel binnen een quadtree-systeem. Zie [zoom niveaus en tegel grid](zoom-levels-and-tile-grid.md) -documentatie voor meer informatie.
 
@@ -321,7 +321,7 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="reproject"></a>Opnieuw **projecteren**: Zie [trans formatie](#transformation).
 
-<a name="rest-service"></a>**Rest-service**: een acroniem voor representatieve status overdracht. Een architectuur voor het uitwisselen van gegevens tussen peers in een gecentraliseerde, gedistribueerde omgeving. REST Hiermee kunnen Program ma's op verschillende computers onafhankelijk van een besturings systeem of platform communiceren door een Hypertext Transfer Protocol (HTTP)-aanvraag naar een URL (Uniform Resource Locator) te verzenden en gegevens terug te halen.
+<a name="rest-service"></a>**Rest-service**: een acroniem voor representatieve status overdracht. Een architectuur voor het uitwisselen van gegevens tussen peers in een gecentraliseerde, gedistribueerde omgeving. REST Hiermee kunnen Program ma's op verschillende computers onafhankelijk van een besturings systeem of platform communiceren. Een service kan een Hypertext Transfer Protocol (HTTP)-aanvraag verzenden naar een URL (Uniform Resource Locator) en gegevens terughalen.
 
 <a name="route"></a>**Route**: een pad tussen twee of meer locaties, dat ook aanvullende informatie kan bevatten, zoals instructies voor waypoints over de route.
 
@@ -345,13 +345,13 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="spatial-query"></a>**Ruimtelijke query**: een aanvraag voor een service die een ruimtelijke bewerking uitvoert. Zoals een radiaal zoekactie of via een zoek opdracht in de route.
 
-<a name="spatial-reference"></a>**Ruimtelijke verwijzing**: een lokaal, regionaal of globaal systeem op basis van coördinaten dat wordt gebruikt om geografische entiteiten nauw keurig te vinden. Hiermee wordt het coördinaten systeem gedefinieerd dat wordt gebruikt om kaart coördinaten te koppelen aan locaties in de praktijk. Ruimtelijke verwijzingen zorgen ervoor dat ruimtelijke gegevens uit verschillende lagen of bronnen kunnen worden geïntegreerd voor nauw keurige weer gave of analyse. Azure Maps maakt gebruik van het referentie systeem [EPSG: 3857](https://epsg.io/3857) coördinaten en WGS 84 voor het invoeren van geometrie gegevens. 
+<a name="spatial-reference"></a>**Ruimtelijke verwijzing**: een lokaal, regionaal of globaal systeem op basis van coördinaten dat wordt gebruikt om geografische entiteiten nauw keurig te vinden. Hiermee wordt het coördinaten systeem gedefinieerd dat wordt gebruikt om kaart coördinaten te koppelen aan locaties in de praktijk. Ruimtelijke verwijzingen zorgen ervoor dat ruimtelijke gegevens uit verschillende lagen of bronnen kunnen worden geïntegreerd voor nauw keurige weer gave of analyse. Azure Maps maakt gebruik van het referentie systeem [EPSG: 3857](https://epsg.io/3857) coördinaten en WGS 84 voor het invoeren van geometrie gegevens.
 
 <a name="sql-spatial"></a>**Ruimtelijke**bewaarde SQL: verwijst naar de ruimtelijke functionaliteit die is ingebouwd in SQL Azure en SQL Server 2008 en hoger. Deze ruimtelijke functionaliteit is ook beschikbaar als een .NET-bibliotheek die onafhankelijk van SQL Server kan worden gebruikt. Zie de [documentatie over ruimtelijke gegevens (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) voor meer informatie.
 
 <a name="subscription-key"></a>**Abonnements sleutel**: Zie [gedeelde sleutel verificatie](#shared-key-authentication).
 
-<a name="synchronous-request"></a>**Synchrone aanvraag**: een HTTP-aanvraag opent een verbinding en wacht op een reactie. Browsers beperken het aantal gelijktijdige HTTP-aanvragen dat vanaf een pagina kan worden gemaakt. Als er tegelijkertijd meerdere langdurige synchrone aanvragen worden gedaan, kan deze limiet worden bereikt en aanvragen worden uitgesteld totdat een van de andere aanvragen is voltooid.
+<a name="synchronous-request"></a>**Synchrone aanvraag**: een HTTP-aanvraag opent een verbinding en wacht op een reactie. Browsers beperken het aantal gelijktijdige HTTP-aanvragen dat vanaf een pagina kan worden gemaakt. Als er tegelijkertijd meerdere langdurige synchrone aanvragen worden gedaan, kan deze limiet worden bereikt. Aanvragen worden uitgesteld totdat een van de andere aanvragen is voltooid.
 
 ## <a name="t"></a>T
 
@@ -363,20 +363,20 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="thematic-maps"></a>**Thematische kaarten**: een thematische kaart is een eenvoudige kaart die is gemaakt op basis van een thema over een geografisch gebied. Een veelvoorkomend scenario voor dit type kaart is het kleuren van de administratieve regio's, zoals landen/regio's, op basis van een aantal gegevens waarden.
 
-<a name="tile-layer"></a>**Laag van Tegel**: een laag die wordt weer gegeven door kaart tegels (rechthoekige secties) samen te stellen in een doorlopende laag. De tegels zijn raster afbeeldings tegels of vector tegels. Raster tegel lagen worden doorgaans vooraf weer gegeven en opgeslagen als installatie kopieën op een server. Dit kan veel opslag ruimte in beslag nemen. Vector tegel lagen worden weer gegeven aan de linkerkant binnen de client toepassing, waardoor de opslag vereisten aan de server zijde kleiner zijn.
+<a name="tile-layer"></a>**Laag van Tegel**: een laag die wordt weer gegeven door kaart tegels (rechthoekige secties) samen te stellen in een doorlopende laag. De tegels zijn raster afbeeldings tegels of vector tegels. Raster tegel lagen worden doorgaans vooraf weer gegeven en worden als installatie kopieën op een server opgeslagen. Raster tegel lagen kunnen gebruikmaken van een grote opslag ruimte. Vector tegel lagen worden bijna in realtime weer gegeven binnen de client toepassing. De opslag vereisten aan de server zijde zijn dus kleiner voor vector tegel lagen.
 
 <a name="time-zone"></a>**Tijd zone**: een gebied van de wereld met een uniforme standaard tijd voor juridische, commerciële en sociale doel einden. Tijd zones volgen doorgaans de grenzen van landen/regio's en hun onderverdelingen.
 
 <a name="transaction"></a>**Trans actie**: Azure Maps gebruikt een transactionele licentie model waarbij;
 
 - Er wordt één trans actie gemaakt voor elke 15 kaart of de gevraagde verkeers tegels.
-- Er wordt één trans actie gemaakt voor elke API-aanroep naar een van de services in Azure Maps, zoals zoeken of route ring.
+- Er wordt één trans actie gemaakt voor elke API-aanroep naar een van de services in Azure Maps. Zoeken en route ring zijn voor beelden van Azure Maps service.
 
 <a name="transformation"></a>**Trans formatie**: het proces van het converteren van gegevens tussen verschillende geografische coördinaten systemen. U kunt bijvoorbeeld een aantal gegevens hebben die zijn vastgelegd in het Verenigd Konink rijk en op basis van het OSGB 1936 geografische coördinaten systeem. Azure Maps maakt gebruik van de [EPSG: 3857](https://epsg.io/3857) -coördinaten referentie systeem variant van WGS84. Om de gegevens op de juiste manier weer te geven, moet de coördinaten van het ene naar het andere systeem worden getransformeerd.
 
 <a name="traveling-salesmen-problem-tsp"></a>**Traveling salesmen-probleem (TSP)** : een Hamiltonian-circuit probleem waarbij een verkoper de meest efficiënte manier moet vinden om een reeks stops te bezoeken en vervolgens terug te keren naar de start locatie.  
 
-<a name="trilateration"></a>**Trilateration**: het proces van het bepalen van de positie van een punt op het Opper vlak van de aarde ten opzichte van twee andere punten, door de afstand tussen de drie punten te meten.
+<a name="trilateration"></a>**Trilateration**: het proces van het bepalen van de positie van een punt op het Opper vlak van de aarde, met betrekking tot twee andere punten, door de afstand tussen de drie punten te meten.
 
 <a name="turn-by-turn-navigation"></a>**Scha kelen tussen navigatie**: een toepassing die route-instructies biedt voor elke stap van een route wanneer de gebruikers de volgende bewegings nadert.
 
@@ -386,19 +386,19 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="vector-tile"></a>**Vector tegel**: een open gegevens specificatie voor het opslaan van georuimtelijke vector gegevens met hetzelfde tegel systeem als het kaart besturings element. Zie ook [laag voor tegels](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a>**Probleem met route ring van het Voer tuig (VRP)** : een klasse van problemen waarbij een reeks bestelde routes voor een vloot van Voer tuigen wordt berekend terwijl rekening wordt gehouden met de beperkingen. Deze beperkingen kunnen bestaan uit zaken zoals de lever tijd Windows, meerdere route capaciteiten en beperkingen voor de reis duur.
+<a name="vehicle-routing-problem-vrp"></a>**Route ring van het Voer tuig (VRP)** : een klasse van problemen, waarbij een reeks bestelde routes voor een vloot van Voer tuigen wordt berekend, waarbij rekening wordt gehouden met de beperkingen. Deze beperkingen kunnen betrekking hebben op de bezorgings tijd Windows, meerdere route capaciteiten en beperkingen voor de reis duur.
 
-<a name="voronoi-diagram"></a>**Voronoi-diagram**: een schijf ruimte in gebieden, of cellen, die een reeks geometrische objecten (doorgaans punt functies) rond zijn. Deze cellen, of veelhoeken, moeten voldoen aan de criteria voor Delaunay-drie hoeken. Alle locaties binnen een gebied bevinden zich dichter bij het object dat wordt omgeven door een ander object in de set. Voronoi-diagrammen worden vaak gebruikt om gebieden van invloed op geografische functies af te bakenen. 
+<a name="voronoi-diagram"></a>**Voronoi diagram**: een schijf ruimte in gebieden, of cellen, die een reeks geometrische objecten, doorgaans punt functies, omring. Deze cellen, of veelhoeken, moeten voldoen aan de criteria voor Delaunay-drie hoeken. Alle locaties binnen een gebied bevinden zich dichter bij het object dat wordt omgeven door een ander object in de set. Voronoi-diagrammen worden vaak gebruikt om gebieden van invloed op geografische functies af te bakenen. 
 
-## <a name="w"></a>W
+## <a name="w"></a>G
 
 <a name="waypoint"></a>**Waypoint**: een waypoint is een opgegeven geografische locatie die wordt gedefinieerd door lengte graad en breedte graad die wordt gebruikt voor navigatie doeleinden. Wordt vaak gebruikt om een punt weer te geven waarin iemand naar een route navigeert.
 
-<a name="waypoint-optimization"></a>**Waypoint optimalisatie**: het proces waarbij een set van waypoints wordt gewijzigd om de reis tijd of de afstand die nodig is voor het door geven van alle opgegeven waypoints, te minimaliseren. Dit wordt vaak het [Traveling salesmen-probleem](#traveling-salesmen-problem-tsp) of het [routerings probleem van het Voer tuig](#vehicle-routing-problem-vrp) genoemd, afhankelijk van de complexiteit van de optimalisatie.
+<a name="waypoint-optimization"></a>**Waypoint optimalisatie**: het proces waarbij een set van waypoints wordt gewijzigd om de reis tijd of de afstand die nodig is voor het door geven van alle opgegeven waypoints, te minimaliseren. Afhankelijk van de complexiteit van de optimalisatie wordt deze optimalisatie vaak aangeduid als het [Traveling salesmen-probleem](#traveling-salesmen-problem-tsp) of het [routerings probleem van het Voer tuig](#vehicle-routing-problem-vrp).
 
 <a name="web-map-service-wms"></a>**Web map service (WMS)** : WMS is een open geografische Consortium (OGC) die op afbeeldingen gebaseerde kaart Services definieert. WMS-services bieden installatie kopieën voor specifieke gebieden binnen een kaart op aanvraag. Afbeeldingen bevatten vooraf gerenderde symbology en kunnen worden weer gegeven in een van de verschillende benoemde stijlen, indien gedefinieerd door de service.
 
-<a name="web-mercator"></a>**Web-Mercator**: ook wel bolvormig Mercator-projectie genoemd, is een lichte variant van de Mercator-projectie, een die hoofd zakelijk wordt gebruikt in webgebaseerde toewijzings Programma's. Het maakt gebruik van dezelfde formules als de standaard Mercator-projectie die wordt gebruikt voor kleinschalige kaarten. De Mercator maakt echter gebruik van de bolvormige formules op alle schalen, terwijl grootschalige Mercator-kaarten normaal gesp roken gebruikmaken van de Ellipsoidal vorm van de projectie. Het verschil is onmerkbaar op de wereld wijde schaal, maar zorgt ervoor dat kaarten van lokale gebieden iets afwijkt van waar Ellipsoidal Mercator kaarten op dezelfde schaal.
+<a name="web-mercator"></a>**Web-Mercator**: ook wel bolvormig Mercator-projectie genoemd. Het is een lichte variant van de Mercator-projectie, een die hoofd zakelijk wordt gebruikt in webtoewijzings Programma's. Het maakt gebruik van dezelfde formules als de standaard Mercator-projectie die wordt gebruikt voor kleinschalige kaarten. De Mercator maakt echter gebruik van de bolvormige formules op alle schalen, maar grootschalige Mercator-kaarten gebruiken normaal gesp roken de Ellipsoidal vorm van de projectie. Het verschil is onmerkbaar op de wereld wijde schaal, maar het zorgt ervoor dat kaarten van lokale gebieden iets afwijkt van echte Ellipsoidal Mercator Maps, op dezelfde schaal.
 
 <a name="wgs84"></a>**WGS84**: een set constanten die wordt gebruikt om ruimtelijke coördinaten te koppelen aan locaties op het Opper vlak van de kaart. De datum WGS84 is de standaard die wordt gebruikt door de meeste online toewijzings providers en GPS-apparaten. Azure Maps maakt gebruik van de [EPSG: 3857](https://epsg.io/3857) -coördinaten referentie systeem variant van WGS84.
 
@@ -408,5 +408,5 @@ Hier volgt een lijst met veelgebruikte woorden die worden gebruikt met Azure Map
 
 <a name="zip-code"></a>**Post code**: Zie [Post code](#postal-code).
 
-<a name="Zoom level"></a>**Zoom niveau**: Hiermee geeft u het detail niveau en het gedeelte van de kaart weer gegeven. Wanneer u helemaal ingezoomd op een niveau 0, wordt de volledige wereld kaart vaak weer gegeven, maar worden de beperkte gegevens weer gegeven, zoals land/regio namen en randen, evenals de namen en Oceaan. Wanneer u inzoomt op niveau 17, wordt in de kaart een gebied van een aantal plaatsings blokken weer gegeven met gedetailleerde informatie over de weg. Zie de documentatie voor [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md) voor meer informatie.
+<a name="Zoom level"></a>**Zoom niveau**: Hiermee geeft u het detail niveau en het gedeelte van de kaart weer gegeven. Wanneer u helemaal ingezoomd op het niveau van 0, is de volledige wereld kaart vaak zichtbaar. Maar in de kaart worden de beperkte gegevens weer gegeven, zoals namen van land/regio, randen en Oceaan. Wanneer u inzoomt op niveau 17, wordt in de kaart een gebied van een aantal plaatsings blokken weer gegeven met gedetailleerde informatie over de weg. In azure Maps is het hoogste zoom niveau 22. Zie de documentatie voor [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md) voor meer informatie.
 

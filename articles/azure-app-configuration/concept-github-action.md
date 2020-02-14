@@ -6,14 +6,14 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899623"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190384"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Uw app-configuratie-exemplaar synchroniseren met GitHub-acties
+# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Uw App Configuration-exemplaar synchroniseren met GitHub-acties
 Azure-app-configuratie maakt gebruik van GitHub-acties voor het bijwerken van een app-configuratie-exemplaar wanneer dit wordt geactiveerd door een actie die wordt uitgevoerd op een GitHub-opslag plaats. U kunt GitHub-werk stromen gebruiken om de app-configuratie bij te werken, waardoor de integratie van app-configuratie-updates in dezelfde werk stroom wordt gebruikt om de app-code bij te werken.
 
 Een GitHub acties- [werk stroom](https://help.github.com/articles/about-github-actions#workflow) is een geautomatiseerd proces dat is gedefinieerd in uw github-opslag plaats. Dit proces vertelt u GitHub hoe u uw GitHub-project bouwt en implementeert. Azure-app configuratie biedt de *Azure-app configuratie synchronisatie* actie om updates van een app-configuratie-exemplaar in te scha kelen wanneer er wijzigingen in de bron opslagplaats worden aangebracht. 
@@ -25,8 +25,7 @@ GitHub-gebeurtenissen, zoals een push naar een opslag plaats, kunnen een GitHub 
 De GitHub- [documentatie](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) biedt uitgebreide weer gave van github-werk stromen en-acties. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-acties inschakelen in uw opslag plaats
-Als u deze GitHub actie wilt gebruiken, gaat u naar uw opslag plaats en selecteert u het tabblad **acties** . Zoek en selecteer de actie github in Marketplace door te zoeken naar ' Azure-app-configuratie synchronisatie '. 
-
+Als u deze GitHub actie wilt gebruiken, gaat u naar uw opslag plaats en selecteert u het tabblad **acties** . Klik op nieuwe werk stroom en vervolgens op ' een werk stroom instellen '. Zoek op de Marketplace naar ' Azure-app-configuratie synchronisatie '.
 > [!div class="mx-imgBorder"]
 > ![selecteert u het tabblad actie](media/find-github-action.png)
 

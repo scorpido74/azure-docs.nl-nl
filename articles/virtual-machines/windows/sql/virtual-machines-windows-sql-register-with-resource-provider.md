@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122490"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201625"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>Licht gewicht beheer modus
 
-Als de [SQL Server-Agent extensie](virtual-machines-windows-sql-server-agent-extension.md) niet is geïnstalleerd op de virtuele machine, moet u zich registreren bij de resource provider van de SQL-vm in de Lightweight-modus. Hiermee wordt de SQL IaaS-uitbrei ding in de [Lightweight-modus](#management-modes) geïnstalleerd en wordt voor komen dat de SQL Server-service opnieuw wordt gestart. U kunt op elk gewenst moment een upgrade uitvoeren naar de volledige modus, maar dan wordt de SQL Server-service opnieuw gestart, zodat u wordt geadviseerd te wachten tot een gepland onderhouds venster. U moet het type SQL Server licentie opgeven als betalen naar gebruik (`PAYG`) om per gebruik of Azure Hybrid Benefit (`AHUB`) te betalen voor gebruik van uw eigen licentie.
+Als de [SQL Server-Agent extensie](virtual-machines-windows-sql-server-agent-extension.md) niet is geïnstalleerd op de virtuele machine, moet u zich registreren bij de resource provider van de SQL-vm in de Lightweight-modus. Hiermee wordt de SQL IaaS-uitbrei ding in de [Lightweight-modus](#management-modes) geïnstalleerd en wordt voor komen dat de SQL Server-service opnieuw wordt gestart. U kunt op elk gewenst moment een upgrade uitvoeren naar de volledige modus, maar dan wordt de SQL Server-service opnieuw gestart, zodat u wordt geadviseerd te wachten tot een gepland onderhouds venster. 
+
+Geef SQL Server licentie type op als betalen per gebruik (`PAYG`) om een gebruiks-, Azure Hybrid Benefit (`AHUB`) te betalen voor gebruik van uw eigen licentie, of herstel na nood gevallen (`DR`) om de [gratis licentie](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)voor de Dr-replica te activeren.
 
 Failover-cluster exemplaren en implementaties met meerdere exemplaren kunnen alleen worden geregistreerd bij de resource provider van de SQL-VM in de Lightweight-modus. 
 
@@ -176,7 +178,7 @@ Gebruik de volgende Power shell-opdracht om uw SQL Server-VM rechtstreeks te reg
 
 SQL Server 2008 en 2008 R2 geïnstalleerd op Windows Server 2008 (_niet R2_) kunnen worden geregistreerd bij de resource provider van de SQL-vm in de modus niet- [agent](#management-modes). Met deze optie wordt de naleving gegarandeerd en kan de SQL Server virtuele machine worden bewaakt in de Azure Portal met beperkte functionaliteit.
 
-Geef `AHUB` of `PAYG` op als de **sqlLicenseType**, en `SQL2008-WS2008` of `SQL2008R2-WS2008` als **sqlImageOffer**. 
+Geef `AHUB`, `PAYG`of `DR` op als de **sqlLicenseType**, en hetzij `SQL2008-WS2008` of `SQL2008R2-WS2008` als **sqlImageOffer**. 
 
 Als u uw SQL Server 2008-of 2008 R2-exemplaar op Windows Server 2008-exemplaar wilt registreren, gebruikt u het volgende AZ CLI-of Power shell-code fragment: 
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911400"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198187"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -106,12 +106,12 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
 4. In het bestand **MainActivity. java** moet u het volgende doen:
     
     * import bewerkingen toevoegen voor de Azure Maps SDK
-    * uw Azure Maps-verificatie-informatie instellen
-    * het kaart besturings exemplaar ophalen in de methode **onCreate**
+    * Uw Azure Maps-verificatie-informatie instellen
+    * Het kaart besturings exemplaar ophalen in de methode **onCreate**
 
     Als u de verificatie gegevens voor de klasse `AzureMaps` globaal instelt met behulp van de `setSubscriptionKey`-of `setAadProperties`-methoden, is het niet nodig om uw verificatie gegevens toe te voegen aan elke weer gave. 
 
-    Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android, die rechtstreeks vanuit de insluitende activiteit moet worden aangeroepen. Als uw app correct is, roept u de levenscyclus methoden van het kaart besturings element aan. u moet de volgende levenscyclus methoden in de activiteit die het kaart besturings element bevat, overschrijven en de desbetreffende kaart beheer methode aanroepen. 
+    Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android. Deze levenscyclus methoden moeten rechtstreeks vanuit de insluitende activiteit worden aangeroepen. Als u wilt dat uw app de levenscyclus methoden van het kaart besturings element correct aanroept, moet u de volgende levenscyclus methoden overschrijven in de activiteit die het kaart besturings element bevat. En u moet de bijbehorende kaart beheer methode aanroepen. 
 
     * onCreate (bundel) 
     * onstart () 

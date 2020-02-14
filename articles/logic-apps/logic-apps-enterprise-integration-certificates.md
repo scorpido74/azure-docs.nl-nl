@@ -1,6 +1,6 @@
 ---
 title: B2B-berichten beveiligen met certificaten
-description: Voeg certificaten toe voor het beveiligen van B2B-berichten in Azure Logic Apps met de Enterprise Integration Pack
+description: Voeg certificaten toe om B2B-berichten in Azure Logic Apps te beveiligen met de Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,19 +8,19 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790684"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191390"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>B2B-berichten beveiligen met certificaten
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Verbeter de beveiliging van B2B-berichten met behulp van certificaten
 
-Wanneer u B2B-communicatie vertrouwelijk wilt blijven gebruiken, kunt u B2B-communicatie voor uw Enter prise Integration-apps, met name Logic apps, beveiligen door certificaten aan uw integratie account toe te voegen. Certificaten zijn digitale documenten die de identiteiten van de deel nemers in elektronische communicatie controleren en u helpen communicatie op de volgende manieren te beveiligen:
+Wanneer u B2B-communicatie vertrouwelijk wilt blijven gebruiken, kunt u de beveiliging van B2B-communicatie in uw bedrijfs integratie-apps, met name Logic apps, verhogen door certificaten aan uw integratie account toe te voegen. Certificaten zijn digitale documenten die de identiteiten van de deel nemers in elektronische communicatie controleren en u helpen communicatie op de volgende manieren te beveiligen:
 
 * Bericht inhoud versleutelen.
-* Berichten digitaal ondertekenen. 
+* Berichten digitaal ondertekenen.
 
 U kunt deze certificaten gebruiken in uw Enter prise Integration-apps:
 
@@ -47,7 +47,7 @@ Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkhe
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
    | **Naam** | <*certificaat naam*> | De naam van uw certificaat, dat is "publicCert" in dit voor beeld | 
-   | **Certificaat type** | Public | Het type van het certificaat |
+   | **Certificaat type** | Openbaar | Het type van het certificaat |
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. |
    ||||
 

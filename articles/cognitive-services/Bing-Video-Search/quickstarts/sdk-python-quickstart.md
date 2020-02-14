@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/11/2020
 ms.author: aahi
-ms.openlocfilehash: c1afea4e6cacc1f6e9ac84ca20e638836540396e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9d7b2a8950134e530e042e862a1c19abe89fd78d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448394"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201217"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>Snelstartgids: een video zoekopdracht uitvoeren met de Bing Video Search SDK voor python
 
-Gebruik deze quickstart om nieuws te gaan zoeken met de Bing Video Search-SDK voor Python. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) met aanvullende aantekeningen en functies.
+Gebruik deze quickstart om nieuws te gaan zoeken met de Bing Video Search-SDK voor Python. Hoewel Bing Video Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) met aanvullende aantekeningen en functies.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -46,7 +46,7 @@ python -m pip install azure-cognitiveservices-search-videosearch
 1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. 
 
     ```python
-    from azure.cognitiveservices.search.videosearch import VideoSearchAPI
+    from azure.cognitiveservices.search.videosearch import VideoSearchClient
     from azure.cognitiveservices.search.videosearch.models import VideoPricing, VideoLength, VideoResolution, VideoInsightModule
     from msrest.authentication import CognitiveServicesCredentials
     ```
@@ -55,6 +55,7 @@ python -m pip install azure-cognitiveservices-search-videosearch
 
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
+    endpoint = "YOUR-ENDPOINT"
     ```
 
 ## <a name="create-the-search-client"></a>De zoekclient maken
@@ -62,7 +63,7 @@ python -m pip install azure-cognitiveservices-search-videosearch
 Maak een instantie van de `CognitiveServicesCredentials` en instantieer de client:
 
 ```python
-client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
+client = VideoSearchAPI(endpoint, CognitiveServicesCredentials(subscription_key))
 ```
 
 ## <a name="send-a-search-request-and-get-a-response"></a>Een zoekaanvraag verzenden en een antwoord ontvangen

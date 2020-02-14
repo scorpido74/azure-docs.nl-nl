@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 125f92b64ee745a595d15ccacafb6a62414955a9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157530"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198697"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
 > [!NOTE]
 > Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server biedt u de mogelijkheid om uw QWN-sleutel (BYOK) voor gegevens beveiliging in rust te brengen. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
+Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server biedt u de mogelijkheid om uw eigen sleutel (BYOK) te nemen voor gegevens bescherming. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
 
 Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server, wordt ingesteld op server niveau. Voor een bepaalde server wordt een door de klant beheerde sleutel, de sleutel versleutelings sleutel (KEK), gebruikt om de gegevens versleutelings sleutel (DEK) te versleutelen die door de service wordt gebruikt. De KEK is een asymmetrische sleutel die is opgeslagen in een [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar van een klant en door de klant wordt beheerd. De sleutel versleutelings sleutel (KEK) en de gegevens versleutelings sleutel (DEK) wordt verderop in dit artikel uitvoeriger beschreven.
 

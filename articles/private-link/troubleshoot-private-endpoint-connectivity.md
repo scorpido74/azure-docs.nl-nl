@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031853"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191070"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Problemen met connectiviteit van particuliere endpoint oplossen
+# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Verbindingsproblemen met privé-eindpunt oplossen
 
 Deze hand leiding bevat stapsgewijze instructies voor het valideren en diagnosticeren van uw connectiviteits instellingen voor het particuliere eind punt. 
 
@@ -100,7 +100,7 @@ Ga naar de onderstaande stappen om ervoor te zorgen dat alle gebruikelijke confi
        ![NSG uitgaande regels](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. Als de verbinding resultaten heeft gevalideerd, kan het connectiviteits probleem te maken hebben met andere aspecten zoals geheimen, tokens en wacht woorden op de toepassingslaag.
-   - In dit geval controleert u de configuratie van de persoonlijke koppelings resource die aan het persoonlijke eind punt is gekoppeld. Raadpleeg de [hand leiding voor het oplossen van problemen met persoonlijke koppelingen](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting). 
+   - In dit geval controleert u de configuratie van de persoonlijke koppelings resource die aan het persoonlijke eind punt is gekoppeld. Raadpleeg de [hand leiding voor het oplossen van problemen met persoonlijke koppelingen](troubleshoot-private-link-connectivity.md). 
 
 6. Neem contact op met het [ondersteunings](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) team van Azure als uw probleem nog steeds niet is opgelost en er nog steeds een verbindings probleem is 
 
@@ -108,4 +108,4 @@ Ga naar de onderstaande stappen om ervoor te zorgen dat alle gebruikelijke confi
 
  * [Een persoonlijk eind punt maken op het bijgewerkte subnet (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [Gids voor probleem oplossing voor persoonlijke koppelingen](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [Gids voor probleem oplossing voor persoonlijke koppelingen](troubleshoot-private-link-connectivity.md)

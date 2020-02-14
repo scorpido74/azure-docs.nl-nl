@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969544"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191152"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Beperkingen in Azure Database for MariaDB
 De volgende secties beschrijven capaciteit, ondersteuning voor de opslag-engine, bevoegdheden ondersteuning, gegevens manipuleren instructie ondersteuning en functionele limieten in de database-service.
@@ -19,16 +19,16 @@ De volgende secties beschrijven capaciteit, ondersteuning voor de opslag-engine,
 ## <a name="maximum-connections"></a>Maximum aantal verbindingen
 Het maximum aantal verbindingen per prijscategorie en vCores zijn als volgt:
 
-|**Prijscategorie**|**vCore(s)**| **Maximum aantal verbindingen**|
+|**Prijscategorie**|**vCore (s)**| **Maximum aantal verbindingen**|
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
-|Algemeen doel| 2| 600|
-|Algemeen doel| 4| 1250|
-|Algemeen doel| 8| 2500|
-|Algemeen doel| 16| 5000|
-|Algemeen doel| 32| 10.000|
-|Algemeen doel| 64| 20000|
+|Algemeen gebruik| 2| 600|
+|Algemeen gebruik| 4| 1250|
+|Algemeen gebruik| 8| 2500|
+|Algemeen gebruik| 16| 5000|
+|Algemeen gebruik| 32| 10.000|
+|Algemeen gebruik| 64| 20000|
 |Geoptimaliseerd geheugen| 2| 800|
 |Geoptimaliseerd geheugen| 4| 2500|
 |Geoptimaliseerd geheugen| 8| 5000|
@@ -38,28 +38,33 @@ Het maximum aantal verbindingen per prijscategorie en vCores zijn als volgt:
 Wanneer verbindingen de limiet overschrijdt, wordt de volgende fout:
 > Fout 1040 (08004): Te veel verbindingen
 
+> [!IMPORTANT]
+> Voor de beste ervaring raden we u aan een Pooler voor verbindingen te gebruiken zoals ProxySQL om verbindingen efficiënt te beheren.
+
+Het maken van nieuwe client verbindingen met MariaDB kost tijd en wanneer de verbinding tot stand is gebracht, nemen deze verbindingen database bronnen in beslag, zelfs wanneer ze niet actief zijn De meeste toepassingen aanvragen een groot aantal korte, langdurige verbindingen, waardoor deze situatie wordt beperkt. Het resultaat is minder beschik bare resources voor uw werkelijke workload, waardoor de prestaties afnemen. Een verbindings groep waarmee niet-actieve verbindingen worden verminderd en bestaande verbindingen opnieuw worden gebruikt, kunt u dit voor komen. Ga naar onze [blog post](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)voor meer informatie over het instellen van ProxySQL.
+
 ## <a name="storage-engine-support"></a>Ondersteuning voor de opslag-engine
 
 ### <a name="supported"></a>Ondersteund
 - [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
-- [GEHEUGEN](https://mariadb.com/kb/en/library/memory-storage-engine/)
+- [GEHEUGENMETABASE](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
 ### <a name="unsupported"></a>Niet ondersteund
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [ZWARTE GAT](https://mariadb.com/kb/en/library/blackhole/)
-- [ARCHIVEREN](https://mariadb.com/kb/en/library/archive/)
+- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
+- [FAXBERICHTEN](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Ondersteuning van bevoegdheden
 
 ### <a name="unsupported"></a>Niet ondersteund
 - DBA rol: veel parameters van de server en instellingen kunnen per ongeluk serverprestaties slechter of ACID-eigenschappen van de DBMS negatief moet worden gemaakt. Als zodanig wilt behouden de integriteit van de service en SLA op het productniveau van een, wordt deze service niet weergegeven de DBA-rol. De standaard-gebruikersaccount, die is gemaakt wanneer een nieuwe database-exemplaar wordt gemaakt, kan die gebruiker voor het uitvoeren van de meeste DDL en DML-instructies in de beheerde database-instantie.
-- SUPER bevoegdheden: op dezelfde manier [SUPER bevoegdheden](https://mariadb.com/kb/en/library/grant/#global-privileges) is ook beperkt.
+- SUPER bevoegdheid: een soort gelijke [Super bevoegdheid](https://mariadb.com/kb/en/library/grant/#global-privileges) is ook beperkt.
 - DEFINE: vereist Super privileges om te maken en beperkt. Als u gegevens importeert met behulp van een back-up, verwijdert u de `CREATE DEFINER` opdrachten hand matig of met behulp van de `--skip-definer` opdracht bij het uitvoeren van een mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Beheerondersteuning-instructie bewerken
 
 ### <a name="supported"></a>Ondersteund
-- `LOAD DATA INFILE` wordt ondersteund, maar de `[LOCAL]` parameter moet worden opgegeven en doorgestuurd naar een UNC-pad (Azure storage wordt gekoppeld via SMB).
+- `LOAD DATA INFILE` wordt ondersteund, maar de para meter `[LOCAL]` moet worden opgegeven en worden omgeleid naar een UNC-pad (Azure-opslag gekoppeld aan SMB).
 
 ### <a name="unsupported"></a>Niet ondersteund
 - `SELECT ... INTO OUTFILE`
@@ -87,8 +92,8 @@ Wanneer verbindingen de limiet overschrijdt, wordt de volgende fout:
 - Raadpleeg de [prijs categorie](concepts-pricing-tiers.md) voor de limieten voor opslag grootte per prijs categorie.
 
 ## <a name="current-known-issues"></a>Huidige bekende problemen
-- MariaDB-Server exemplaar geeft de onjuiste server versie weer nadat de verbinding tot stand is gebracht. Als u de juiste server-exemplaar-engine-versie, gebruikt de `select version();` opdracht.
+- MariaDB-Server exemplaar geeft de onjuiste server versie weer nadat de verbinding tot stand is gebracht. Gebruik de opdracht `select version();` om de juiste engine versie van het Server exemplaar op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Wat is beschikbaar in elke servicelaag](concepts-pricing-tiers.md)
+- [Wat is er beschikbaar in elke servicelaag](concepts-pricing-tiers.md)
 - [Ondersteunde versies van MariaDB-data base](concepts-supported-versions.md)

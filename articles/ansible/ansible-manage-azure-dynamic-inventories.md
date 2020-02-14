@@ -4,12 +4,12 @@ description: Informatie over het beheren van dynamische voorraden in Azure met A
 keywords: ansible, azure, devops, bash, cloudshell, dynamische voorraad
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442790"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193596"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Zelf studie: dynamische voor raden van uw Azure-resources configureren met behulp van Ansible
 
@@ -32,7 +32,7 @@ Ansible kan worden gebruikt om voorraadinformatie uit verschillende bronnen ((wa
 
 ## <a name="create-the-test-vms"></a>De test-Vm's maken
 
-1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Open [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -47,7 +47,7 @@ Ansible kan worden gebruikt om voorraadinformatie uit verschillende bronnen ((wa
 
 1. Maak twee virtuele Linux-machines in Azure met een van de volgende technieken:
 
-    - **Ansible-playbook**: in het artikel [Een eenvoudige virtuele machine maken in Azure met Ansible](/azure/virtual-machines/linux/ansible-create-vm) wordt geïllustreerd hoe u een virtuele machine maakt op basis van een Ansible-playbook. Als u een playbook gebruikt voor het definiëren van een van de of beide virtuele machines, moet u ervoor zorgen dat de SSH-verbinding wordt gebruikt in plaats van een wachtwoord.
+    - **Ansible-playbook**: in het artikel [Een eenvoudige virtuele machine maken in Azure met Ansible](./ansible-create-vm.md) wordt geïllustreerd hoe u een virtuele machine maakt op basis van een Ansible-playbook. Als u een playbook gebruikt voor het definiëren van een van de of beide virtuele machines, moet u ervoor zorgen dat de SSH-verbinding wordt gebruikt in plaats van een wachtwoord.
 
     - **Azure CLI**: voer elk van de volgende opdrachten in de Cloud Shell uit om de twee virtuele machines te maken:
 
@@ -63,7 +63,7 @@ Ansible kan worden gebruikt om voorraadinformatie uit verschillende bronnen ((wa
                      --image UbuntuLTS --generate-ssh-keys
         ```
 
-## <a name="tag-a-vm"></a>Tags toevoegen aan een VM
+## <a name="tag-a-vm"></a>Een VM taggen
 
 U kunt [tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) met behulp van door de gebruiker gedefinieerde categorieën. 
 
@@ -211,7 +211,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Nginx instellen op de getagde virtuele machine
 
-Het doel van tags is om de mogelijkheid in te schakelen snel en eenvoudig met subgroepen van uw virtuele machines te werken. Stel dat u Nginx bijvoorbeeld wilt installeren op virtuele machines waarop u een tag van `nginx` hebt toegewezen. In de volgende stappen ziet u hoe u dit gemakkelijk kunt doen:
+Het doel van tags is om de mogelijkheid in te schakelen snel en eenvoudig met subgroepen van uw virtuele machines te werken. Stel dat u Nginx bijvoorbeeld wilt installeren op virtuele machines waarop u een tag van `nginx` hebt toegewezen. De volgende stappen laten zien hoe gemakkelijk u dit kunt doen:
 
 1. Maak een bestand met de naam `nginx.yml`:
 
@@ -316,4 +316,4 @@ In deze sectie wordt één techniek geïllustreerd om te testen of Nginx op uw v
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Snelstartgids: virtuele Linux-machines configureren in azure met behulp van Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Snelstartgids: virtuele Linux-machines configureren in azure met behulp van Ansible](./ansible-create-vm.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379981"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185884"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen oplossen met behulp van het hulp programma What If in voorwaardelijke toegang
 
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe u dit hulp programma kunt gebruiken om uw bel
 
 ## <a name="what-it-is"></a>Wat is het?
 
-Met het **What if beleid voor voorwaardelijke toegang** kunt u inzicht krijgen in de impact van uw beleid voor voorwaardelijke toegang in uw omgeving. In plaats van uw beleid te testen door handmatig meerdere aanmeldingen uit te voeren, kunt u met dit hulpprogramma een gesimuleerde gebruikersaanmelding evalueren. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport. In het rapport worden niet alleen de toegepaste beleids regels voor voorwaardelijke toegang, maar ook het [klassieke beleid](policy-migration.md#classic-policies) weer geven als ze bestaan.    
+Met het **What if beleid voor voorwaardelijke toegang** kunt u inzicht krijgen in de impact van uw beleid voor voorwaardelijke toegang in uw omgeving. In plaats van uw beleid te testen door meerdere aanmeldingen hand matig uit te voeren, kunt u met dit hulp programma een gesimuleerde aanmelding van een gebruiker evalueren. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport. In het rapport worden niet alleen de toegepaste beleids regels voor voorwaardelijke toegang, maar ook het [klassieke beleid](policy-migration.md#classic-policies) weer geven als ze bestaan.    
 
 Het hulp programma **What if** biedt een manier om snel te bepalen welke beleids regels van toepassing zijn op een specifieke gebruiker. U kunt de informatie gebruiken, bijvoorbeeld als u een probleem moet oplossen.    
 
@@ -48,7 +48,7 @@ U kunt het hulp programma **What if** vinden op de pagina **[voorwaardelijke toe
 
 Als u het hulp programma wilt starten, klikt u in de werk balk boven aan de lijst met beleids regels op **What if**.
 
-![What If](./media/what-if-tool/01.png)
+![Wat als](./media/what-if-tool/01.png)
 
 Voordat u een evaluatie kunt uitvoeren, moet u de instellingen configureren.
 
@@ -56,7 +56,7 @@ Voordat u een evaluatie kunt uitvoeren, moet u de instellingen configureren.
 
 In deze sectie vindt u informatie over de instellingen van simulatie uitvoering.
 
-![What If](./media/what-if-tool/02.png)
+![Wat als](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Gebruiker
 
@@ -72,11 +72,11 @@ Het IP-adres is een enkel IPv4-adres voor het nabootsen van de [locatie voorwaar
 
 ### <a name="device-platforms"></a>Apparaat platforms
 
-Deze instelling imiteert de [voor waarde apparaat platforms](conditions.md#device-platforms) en vertegenwoordigt het equivalent van **alle platformen (met inbegrip van niet-ondersteunde)** . 
+Deze instelling imiteert de [voor waarde apparaat platforms](concept-conditional-access-conditions.md#device-platforms) en vertegenwoordigt het equivalent van **alle platformen (met inbegrip van niet-ondersteunde)** . 
 
 ### <a name="client-apps"></a>Client-apps
 
-Deze instelling imiteert de [voor waarde voor client-apps](conditions.md#client-apps).
+Deze instelling imiteert de [voor waarde voor client-apps](concept-conditional-access-conditions.md#client-apps-preview).
 Deze instelling zorgt er standaard voor dat een evaluatie van alle beleids regels met **browser** -of **mobiele apps en desktop-clients** afzonderlijk of beide is geselecteerd. Er wordt ook een beleid gedetecteerd waarmee **Exchange ActiveSync (EAS)** wordt afgedwongen. U kunt deze instelling beperken door het volgende te selecteren:
 
 - **Browser** voor het evalueren van alle beleids regels waarvoor ten minste een **browser** is geselecteerd. 
@@ -84,13 +84,13 @@ Deze instelling zorgt er standaard voor dat een evaluatie van alle beleids regel
 
 ### <a name="sign-in-risk"></a>Aanmeldings risico
 
-Deze instelling imiteert de [aanmeldings risico voorwaarde](conditions.md#sign-in-risk).   
+Deze instelling imiteert de [aanmeldings risico voorwaarde](concept-conditional-access-conditions.md#sign-in-risk).   
 
 ## <a name="evaluation"></a>Raming 
 
 U start een evaluatie door te klikken op **What if**. Het evaluatie resultaat geeft u een rapport dat bestaat uit: 
 
-![What If](./media/what-if-tool/03.png)
+![Wat als](./media/what-if-tool/03.png)
 
 - Een indicator die in uw omgeving een klassiek beleid bevat
 - Beleids regels die van toepassing zijn op uw gebruiker

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766041"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198204"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
-In dit artikel wordt uitgelegd hoe u de [statische installatie kopie service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) kunt gebruiken met de functionaliteit voor afbeeldings compositie om overlays boven op een raster kaart toe te staan. De samen stelling van de afbeelding bevat de mogelijkheid om een raster tegel terug te halen, met aanvullende gegevens, zoals aangepaste markerings punten, labels en geometrie-overlays.
+In dit artikel wordt uitgelegd hoe u de [statische installatie kopie service](https://docs.microsoft.com/rest/api/maps/render/getmapimage)gebruikt, met de functie voor het samen stellen van afbeeldingen, om overlays boven op een raster kaart toe te staan. De samen stelling van de afbeelding bevat de mogelijkheid om een raster tegel terug te halen, met aanvullende gegevens, zoals aangepaste markerings punten, labels en geometrie-overlays.
 
 Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven, kunt u de toepassing postman gebruiken. U kunt Azure Maps [Data Service-api's](https://docs.microsoft.com/rest/api/maps/data) gebruiken om overlays op te slaan en weer te geven.
 
@@ -43,7 +43,7 @@ Voer de volgende stappen uit om de markerings punten met labels en een aangepast
 
 1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw**. Selecteer **verzameling**in het venster **Nieuw maken** . Geef de verzameling een naam en selecteer de knop **maken** . 
 
-2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt als de locatie waar u de aanvraag wilt opslaan en selecteer vervolgens **Opslaan**.
+2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie voor het opslaan van de aanvraag. Selecteer vervolgens **Opslaan**.
     
     ![Een aanvraag maken in postman](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Als u de udId wilt ophalen, opent u een nieuw tabblad in de app postman en selecteert u HTTP-methode ophalen op het tabblad opbouw functie en maakt u een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer het udId.
+6. Open een nieuw tabblad in de Postman-app om de udId op te halen. Selecteer HTTP-methode ophalen op het tabblad opbouw functie. Maak een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer het udId.
 
    ```JSON
    {

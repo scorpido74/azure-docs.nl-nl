@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880263"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185892"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Procedure: de implementatie van voorwaardelijke toegang plannen in Azure Active Directory
 
@@ -53,7 +53,7 @@ Gebruik de volgende voorbeeld sjabloon voor het maken van beleid voor voorwaarde
 |Er wordt een toegangs poging gedaan:<br>-Naar een Cloud-app *<br>-door gebruikers en groepen*<br>Basis<br>-Voor waarde 1 (bijvoorbeeld buiten Corp-netwerk)<br>-Voor waarde 2 (bijvoorbeeld platformen)|Toegang verlenen met (en):<br>-Vereiste 1 (bijvoorbeeld MFA)<br>-Vereiste 2 (bijvoorbeeld apparaatcompatibiliteit)|
 |Er wordt een toegangs poging gedaan:<br>-Naar een Cloud-app *<br>-door gebruikers en groepen*<br>Basis<br>-Voor waarde 1 (bijvoorbeeld buiten Corp-netwerk)<br>-Voor waarde 2 (bijvoorbeeld platformen)|Toegang verlenen met (of):<br>-Vereiste 1 (bijvoorbeeld MFA)<br>-Vereiste 2 (bijvoorbeeld apparaatcompatibiliteit)|
 
-**Als dit het geval** is, definieert u ten minste de principal (**wie**) die probeert toegang te krijgen tot een Cloud-app (**wat**). Als dat nodig is, kunt u ook **zien hoe** een toegangs poging wordt uitgevoerd. In voorwaardelijke toegang, de elementen die de wie, wat en hoe bekend zijn als voor waarden definiëren. Zie [Wat zijn voor waarden in azure Active Directory voorwaardelijke toegang?](conditions.md) voor meer informatie. 
+**Als dit het geval** is, definieert u ten minste de principal (**wie**) die probeert toegang te krijgen tot een Cloud-app (**wat**). Als dat nodig is, kunt u ook **zien hoe** een toegangs poging wordt uitgevoerd. In voorwaardelijke toegang, de elementen die de wie, wat en hoe bekend zijn als voor waarden definiëren. Zie [Wat zijn voor waarden in azure Active Directory voorwaardelijke toegang?](concept-conditional-access-conditions.md) voor meer informatie. 
 
 **Vervolgens**definieert u de reactie van uw beleid op een toegangs voorwaarde. In uw antwoord blokkeert of verleent u toegang met aanvullende vereisten, bijvoorbeeld multi-factor Authentication (MFA). Zie [Wat is Access controls in azure Active Directory voorwaardelijke toegang?](controls.md) voor een volledig overzicht.  
 
@@ -116,7 +116,7 @@ Algemene use cases om MFA te vereisen is toegang:
 
 Met beleid voor voorwaardelijke toegang kunt u automatische antwoorden op aanmeldingen implementeren van mogelijk aangetast identiteiten. De kans dat een account is aangetast, wordt uitgedrukt in de vorm van risico niveaus. Er zijn twee risico niveaus berekend door identiteits beveiliging: aanmeldings risico en gebruikers risico. Als u een reactie op een aanmeldings risico wilt implementeren, hebt u twee opties:
 
-- [De voor waarde voor aanmeldings risico in het beleid voor](conditions.md#sign-in-risk) voorwaardelijke toegang
+- [De voor waarde voor aanmeldings risico in het beleid voor](concept-conditional-access-conditions.md#sign-in-risk) voorwaardelijke toegang
 - [Het aanmeldings risico beleid](../identity-protection/howto-sign-in-risk-policy.md) voor identiteits beveiliging 
 
 Het adresseren van het aanmeldings risico als voor waarde is de voorkeurs methode omdat u meer aanpassings opties hebt.
@@ -131,7 +131,7 @@ De verspreiding van ondersteunde apparaten om toegang te krijgen tot uw Cloud br
 
 ### <a name="require-approved-client-apps"></a>Goedgekeurde client-apps vereisen
 
-Een van de eerste beslissingen die u moet nemen voor het nemen van uw eigen apparaten (BYOD), is of u nu het hele apparaat moet beheren of alleen de gegevens erop. Uw werk nemers gebruiken mobiele apparaten voor zowel privé-als werk taken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot goedgekeurde client-apps waarmee uw bedrijfs gegevens kunnen worden beveiligd. Zie voor meer informatie [goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang](app-based-conditional-access.md).
+Een van de eerste beslissingen die u moet nemen voor het nemen van uw eigen apparaten (BYOD), is of u nu het hele apparaat moet beheren of alleen de gegevens erop. Uw werknemers gebruiken mobiele apparaten voor zowel privé- als werktaken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot goedgekeurde client-apps waarmee uw bedrijfs gegevens kunnen worden beveiligd. Zie voor meer informatie [goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Verouderde verificatie blokkeren
 
@@ -181,7 +181,7 @@ Als u meer wilt weten over het maken van beleid voor voorwaardelijke toegang, ra
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerde aanmelding evalueren
 
-Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de functie voor voorwaardelijke toegang [Wat als-beleid](what-if-tool.md) voor het simuleren van een aanmelding van uw test gebruiker. Met de simulatie wordt de impact van deze aanmelding op uw beleid geschat en wordt een simulatierapport gegenereerd.
+Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de functie voor voorwaardelijke toegang [Wat als-beleid](what-if-tool.md) voor het simuleren van een aanmelding van uw test gebruiker. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.
 
 >[!NOTE]
 > Hoewel een gesimuleerde uitvoering u indruk geeft van de impact van het beleid voor voorwaardelijke toegang, wordt een daad werkelijk uitgevoerde test niet vervangen.
@@ -220,7 +220,7 @@ Als u de zojuist geïmplementeerde beleids regels wilt terugdraaien, gebruikt u 
 
 1. Als u **het beleid** uitschakelt, wordt het beleid niet toegepast wanneer een gebruiker zich probeert aan te melden. U kunt altijd terugkomen en het beleid inschakelen wanneer u het wilt gebruiken.
 
-   ![beleid uitschakelen](media/plan-conditional-access/07.png)
+   ![Beleid uitschakelen](media/plan-conditional-access/07.png)
 
 1. **Een gebruiker of groep uitsluiten van een beleid** : als een gebruiker geen toegang kan krijgen tot de app, kunt u ervoor kiezen om de gebruiker uit te sluiten van het beleid
 

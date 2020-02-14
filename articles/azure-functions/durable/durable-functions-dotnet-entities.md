@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120638"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198493"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET
 
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 In tegens telling tot reguliere functies hebben entity class-methoden geen directe toegang tot invoer-en uitvoer bindingen. In plaats daarvan moeten bindings gegevens worden vastgelegd in de declaratie van de invoer punt functie en vervolgens worden door gegeven aan de `DispatchAsync<T>` methode. Objecten die aan `DispatchAsync<T>` worden door gegeven, worden automatisch door gegeven aan de constructor van de entiteits klasse als een argument.
 
-In het volgende voor beeld ziet u hoe een `CloudBlobContainer` referentie van de [BLOB-invoer binding](../functions-bindings-storage-blob.md#input) beschikbaar kan worden gemaakt voor een entiteit op basis van een klasse.
+In het volgende voor beeld ziet u hoe een `CloudBlobContainer` referentie van de [BLOB-invoer binding](../functions-bindings-storage-blob-input.md) beschikbaar kan worden gemaakt voor een entiteit op basis van een klasse.
 
 ```csharp
 public class BlobBackedEntity

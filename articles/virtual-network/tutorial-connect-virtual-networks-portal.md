@@ -1,5 +1,5 @@
 ---
-title: Virtuele netwerken verbinden met virtueel-netwerkpeering - zelfstudie - Azure Portal | Microsoft Docs
+title: Verbinding maken met virtuele netwerken met VNet-peering-zelf studie-Azure Portal
 description: In deze zelfstudie leert u hoe u virtuele netwerken kunt verbinden met virtueel-netwerkpeering met behulp van Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016048"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201295"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Zelfstudie: virtuele netwerken verbinden met virtueel-netwerkpeering met behulp van Azure Portal
 
@@ -28,15 +28,15 @@ U kunt virtuele netwerken met elkaar verbinden met virtueel-netwerk peering. Dez
 > * Twee virtuele netwerken maken
 > * Twee virtuele netwerken koppelen met virtueel-netwerkpeering
 > * Een virtuele machine (VM) implementeren op elk van de virtuele netwerken
-> * Communicatie tussen virtuele machines
+> * Communiceren tussen VM's
 
 U kunt deze zelfstudie desgewenst volgen met behulp van de [Azure CLI](tutorial-connect-virtual-networks-cli.md) of [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="log-in-to-azure"></a>Meld u aan bij Azure. 
+## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij Azure Portal op https://portal.azure.com.
+Meld u aan bij de Azure-portal op https://portal.azure.com.
 
 ## <a name="create-virtual-networks"></a>Virtuele netwerken maken
 
@@ -49,7 +49,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Nieuwe maken** en voer *myResourceGroup* in.|
     |Regio| Selecteer **US - oost**.|
-    |Name|myVirtualNetwork1|
+    |Naam|myVirtualNetwork1|
 
 4. Voer op het tabblad **IP-adressen** 10.0.0.0/16 in voor het veld **adres ruimte** . Klik hieronder op de knop **subnet toevoegen** en voer *Subnet1* in voor het **subnet naam** en 10.0.0.0/24 voor het **adres bereik**van het subnet.
 5. Selecteer **controleren + maken** en selecteer vervolgens **maken**.
@@ -58,7 +58,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
     |Instelling|Waarde|
     |---|---|
-    |Name|myVirtualNetwork2|
+    |Naam|myVirtualNetwork2|
     |Adresruimte|10.1.0.0/16|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
     |Subnetnaam | Subnet2|
@@ -101,7 +101,7 @@ Maak een VM in elk virtueel netwerk, zodat u er in een latere stap tussen kunt c
     |Instelling|Waarde|
     |---|---|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Name|myVm1|
+    |Naam|myVm1|
     |Locatie| Selecteer **US - oost**.|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -124,12 +124,12 @@ Volg de stappen 1-6 nogmaals, met de volgende wijzigingen:
 
 |Instelling|Waarde|
 |---|---|
-|Name | myVm2|
+|Naam | myVm2|
 |Virtueel netwerk | myVirtualNetwork2|
 
 Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappen voordat beide VM's zijn gemaakt.
 
-## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
+## <a name="communicate-between-vms"></a>Communiceren tussen VM's
 
 1. Begin in het vak *Zoeken* bovenaan de portal *myVm1* te typen. Wanneer **myVm1** wordt weergegeven in de zoekresultaten, selecteert u deze.
 2. Maak een externe bureaubladverbinding met *myVm1*  door **Verbinding maken** te kiezen, zoals in de volgende afbeelding:

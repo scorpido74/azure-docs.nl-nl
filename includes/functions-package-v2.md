@@ -2,26 +2,25 @@
 title: bestand opnemen
 description: bestand opnemen
 services: functions
-author: ggailey777
+author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
-ms.author: glenga
+ms.date: 01/28/2020
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 81971a1c56a51e0c110337fb645f0b84bb5d20b8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2eb82eb8b4a64cbbfef91539f46ba084aa73f207
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914928"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205716"
 ---
-De volgende tabel bevat informatie over het toevoegen van ondersteuning voor deze binding in elke ontwikkel omgeving.
+Voeg ondersteuning toe in uw voorkeurs ontwikkel omgeving met behulp van de volgende methoden.
 
-| Ontwikkelomgeving               | Ondersteuning toevoegen  |
-|----------------------|----------------|
-|Lokale ontwikkeling- C# klassebibliotheek       | [Het pakket installeren](../articles/azure-functions/functions-bindings-register.md#vs) |
-|Local development - C# script, JavaScript, F#, Java and Python |[De extensie registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |
-|Portal-ontwikkeling| Installeren bij het toevoegen van een uitvoer binding    |
-
-Zie [uw extensies bijwerken](../articles/azure-functions/install-update-binding-extensions-manual.md)voor meer informatie over het bijwerken van bestaande bindings extensies in de Portal zonder dat u uw functie-app-project opnieuw hoeft te publiceren.
+| Ontwikkelomgeving  | Toepassings type      | Ondersteuning toevoegen |
+|--------------------------|-----------------------|----------------|
+| Visual Studio            | C#klassen bibliotheek      | [Het NuGet-pakket installeren](../articles/azure-functions/functions-bindings-register.md#vs) |
+| Visual Studio Code       | Gebaseerd op [kern hulpprogramma's](../articles/azure-functions/functions-run-local.md) | [De uitbreidings bundel registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)<br><br>U wordt aangeraden de [extensie voor Azure-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) te installeren. |
+| Elke andere editor/IDE     | Gebaseerd op [kern hulpprogramma's](../articles/azure-functions/functions-run-local.md) | [De uitbreidings bundel registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles) |
+| Azure Portal             | Alleen online in Portal | Wordt geïnstalleerd bij het toevoegen van een binding<br /><br /> Zie [uw extensies bijwerken](../articles/azure-functions/install-update-binding-extensions-manual.md) om bestaande bindings uitbreidingen bij te werken zonder uw functie-app opnieuw te publiceren. |

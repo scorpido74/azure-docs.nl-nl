@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van Azure CLI-script-IPv6-eind punten voor virtuele netwerken configureren (preview-versie)
+title: Voor beeld van Azure CLI-script-IPv6-front-end configureren
 titlesuffix: Azure Virtual Network
 description: IPv6-eind punten inschakelen met behulp van Azure CLI in azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248888"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201357"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-eind punten configureren in het voor beeld van een virtueel netwerk script (preview-versie)
 
@@ -263,7 +263,7 @@ az vm create \
 ```
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Voer de volgende opdracht uit om de resourcegroep, VM en alle gerelateerde resources te verwijderen:
+Gebruik de volgende opdracht om de resourcegroep, VM, en alle gerelateerde resources te verwijderen:
 
 ```azurecli
 az group delete --name <resourcegroupname> --yes
@@ -287,7 +287,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | Hiermee maakt u een netwerkkaart die gekoppeld wordt aan het virtuele netwerk, het subnet en de NSG. |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | Hiermee maakt u een beschikbaarheidsset. Beschikbaarheidssets waarborgen de uptime van toepassingen door de virtuele machines te verdelen over fysieke resources, zodat als er een fout optreedt, niet de hele set wordt getroffen. |
 | [az vm create](/cli/azure/vm#az-vm-create) | Hiermee maakt u de virtuele machine en verbindt u deze met de netwerkkaart, het virtuele netwerk, het subnet en de netwerkbeveiligingsgroep. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties.  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

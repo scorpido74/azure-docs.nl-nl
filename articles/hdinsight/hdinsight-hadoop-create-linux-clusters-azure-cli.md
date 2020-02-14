@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990688"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199038"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-clusters maken met behulp van Azure CLI
 
@@ -48,7 +48,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
     |---|---|
     |`--workernode-count`| Het aantal worker-knoop punten in het cluster. In dit artikel wordt gebruikgemaakt van de variabele `clusterSizeInNodes` als de waarde die is door gegeven aan `--workernode-count`. |
     |`--version`| De versie van het HDInsight-cluster. In dit artikel wordt gebruikgemaakt van de variabele `clusterVersion` als de waarde die is door gegeven aan `--version`. Zie ook: [ondersteunde HDInsight-versies](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Type HDInsight-cluster, zoals Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  In dit artikel wordt gebruikgemaakt van de variabele `clusterType` als de waarde die is door gegeven aan `--type`. Zie ook: [cluster typen en configuratie](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--type`| Type HDInsight-cluster, zoals Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  In dit artikel wordt gebruikgemaakt van de variabele `clusterType` als de waarde die is door gegeven aan `--type`. Zie ook: [cluster typen en configuratie](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
     |`--component-version`|De versies van verschillende Hadoop-onderdelen, in versies die zijn gescheiden in de indeling ' onderdeel = versie '. In dit artikel wordt gebruikgemaakt van de variabele `componentVersion` als de waarde die is door gegeven aan `--component-version`. Zie ook: [Hadoop-onderdelen](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
     Vervang `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`en `PASSWORD` met de gewenste waarden. Wijzig de waarden voor de andere variabelen naar wens. Voer vervolgens de CLI-opdrachten in.

@@ -3,8 +3,7 @@ title: Streaming-gebeurtenissen Event Hubs vastleggen met behulp van Azure Porta
 description: In dit artikel wordt beschreven hoe u het vastleggen van streaming-gebeurtenissen via Azure Event Hubs kunt inschakelen met behulp van Azure Portal.
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.author: shvija
-ms.openlocfilehash: 267f7c47d101406463378ad12c295ace80aecb7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/12/2020
+ms.author: spelluru
+ms.openlocfilehash: 8a6d9456b00e5520e6f4fbb9ccb77b0260731ddd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437242"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187410"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Vastleggen van streaming-gebeurtenissen via Azure Event Hubs inschakelen
 
-Met Azure [Event hubs Capture][capture-overview] kunt u automatisch de streaminggegevens in Event hubs leveren aan een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of een [Azure data Lake Store](https://azure.microsoft.com/services/data-lake-store/) account van uw keuze.
+Met Azure [Event hubs Capture][capture-overview] kunt u automatisch de streaminggegevens in Event hubs leveren aan een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of een [Azure data Lake Storage gen1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account van uw keuze.
 
-Wanneer u de gebeurtenishub maakt, kunt u Capture configureren met behulp van de [Azure-portal](https://portal.azure.com). U kunt de gegevens vastleggen in een [Blob Storage](https://azure.microsoft.com/services/storage/blobs/)-container van Azure of in een [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)-account.
+Wanneer u de gebeurtenishub maakt, kunt u Capture configureren met behulp van de [Azure-portal](https://portal.azure.com). U kunt de gegevens vastleggen in een Azure [Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) container of op een [Azure data Lake Storage gen 1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account.
 
 Zie [Event hubs Capture-overzicht][capture-overview]voor meer informatie.
 
-## <a name="capture-data-to-an-azure-storage-account"></a>Gegevens vastleggen in een Azure Storage-account  
+## <a name="capture-data-to-azure-storage"></a>Gegevens vastleggen in Azure Storage
 
 Wanneer u een Event Hub maakt, kunt u Capture inschakelen door op het scherm **Event Hub maken** in de portal te klikken op de knop **Aan**. Vervolgens geeft u een opslagaccount en een container op door in de lijst **Capture-provider** te klikken op **Azure Storage**. Omdat Event Hubs Capture gebruikmaakt van service-naar-serviceverificatie met opslag, hoeft u geen verbindingsreeks voor opslag op te geven. De objectkiezer selecteert automatisch de resource-URI voor uw opslagaccount. Als u Azure Resource Manager gebruikt, moet u deze URI expliciet als een tekenreeks opgeven.
 
@@ -41,24 +40,48 @@ Het standaardtijdvenster is 5 minuten. De minimale waarde is 1, de maximale 15. 
 > [!NOTE]
 > U kunt het verzenden van lege bestanden in- of uitschakelen wanneer er geen gebeurtenissen optreden tijdens de periode voor vastleggen. 
 
-## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Gegevens vastleggen in een Azure Data Lake Store-account
+## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>Gegevens vastleggen voor Azure Data Lake Storage gen 2 
 
-Als u gegevens wilt vastleggen in Azure Data Lake Store, maakt u een Data Lake Store-account en een Event Hub:
+1. Volg een artikel voor het maken van [een opslag account](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) om een Azure Storage account te maken. Stel **hiërarchische naam ruimte** in op **ingeschakeld** op het tabblad **geavanceerd** om het account van Azure data Lake Storage gen 2 te maken.
+2. Voer de volgende stappen uit bij het maken van een Event Hub: 
 
-### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Een Azure Data Lake Store-account en -mappen maken
+    1. Selecteer **aan** voor **vastleggen**. 
+    2. Selecteer **Azure Storage** als de Capture-provider. De **Azure data Lake Store** optie die u voor de **Capture-provider** ziet, is voor de gen 1 van Azure data Lake Storage. Als u een generatie 2 van Azure Data Lake Storage wilt gebruiken, selecteert u **Azure Storage**.
+    2. Selecteer de knop **container selecteren** . 
+
+        ![Vastleggen naar Data Lake Storage gen 2 inschakelen](./media/event-hubs-capture-enable-through-portal/data-lake-storage-gen2.png)
+3. Selecteer het **Azure data Lake Storage gen 2** -account in de lijst. 
+
+    ![Data Lake Storage gen 2 selecteren](./media/event-hubs-capture-enable-through-portal/select-data-lake-storage-gen2.png)
+4. Selecteer de **container** (bestands systeem in data Lake Storage gen 2).
+
+    ![Bestands systeem in de opslag selecteren](./media/event-hubs-capture-enable-through-portal/select-file-system-data-lake-storage.png)
+5. Selecteer op de pagina **Event hub maken** de optie **maken**. 
+
+    ![Knop maken selecteren](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
+
+    > [!NOTE]
+    > De container die u in een Azure Data Lake Storage gen 2 maakt met behulp van deze gebruikers interface (UI) wordt weer gegeven onder **bestands systemen** in **Storage Explorer**. Op dezelfde manier wordt het bestands systeem dat u in een Data Lake Storage gen 2-account maakt, weer gegeven als een container in deze gebruikers interface. 
 
 
-1. Maak een Data Lake Store-account volgens de instructies in [Aan de slag met Azure Data Lake Store met Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md).
-2. Volg de instructies in de sectie [Machtigingen toewijzen aan Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) om een map te maken binnen het Data Lake Store-account waarin u de gegevens uit Event Hubs wilt vastleggen en machtigingen toe te wijzen aan de Event Hubs, zodat deze gegevens naar uw Data Lake Store-account kan schrijven.  
+## <a name="capture-data-to-azure-data-lake-storage-gen-1"></a>Gegevens vastleggen voor Azure Data Lake Storage gen 1 
+
+Als u gegevens wilt vastleggen voor Azure Data Lake Storage gen 1, maakt u een Data Lake Storage gen 1-account en een Event Hub:
+
+### <a name="create-an-azure-data-lake-storage-gen-1-account-and-folders"></a>Een Azure Data Lake Storage gen 1-account en-mappen maken
+
+1. Maak een Data Lake Storage-account en volg de instructies in aan [de slag met Azure data Lake Storage gen 1 met behulp van de Azure Portal](../data-lake-store/data-lake-store-get-started-portal.md).
+2. Volg de instructies in de sectie [machtigingen toewijzen aan Event hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) om een map te maken binnen het data Lake Storage gen 1-account waarin u de gegevens van Event hubs wilt vastleggen en wijs machtigingen toe aan Event hubs, zodat deze gegevens kunnen schrijven naar uw data Lake Storage gen 1-account.  
 
 
 ### <a name="create-an-event-hub"></a>Een Event Hub maken
 
-1. De Event Hub moet deel uitmaken van het Azure-abonnement waarin de Azure Data Lake Store-account is opgenomen dat u zojuist hebt gemaakt. Maak de Event Hub door te klikken op de knop **Aan**, onder **Vastleggen** op de pagina **Event Hub maken** van de portal. 
+1. De Event Hub moeten zich in hetzelfde Azure-abonnement benemen als het Azure Data Lake Storage gen 1-account dat u hebt gemaakt. Maak de Event Hub door te klikken op de knop **Aan**, onder **Vastleggen** op de pagina **Event Hub maken** van de portal. 
 2. Selecteer **Azure Data Lake Store** in de lijst **Capture-provider** op de pagina **Event Hub maken** van de portal.
-3. Geef bij **Data Lake Store selecteren** het Data Lake Store-account op dat u eerder hebt gemaakt en voer vervolgens in het veld **Data Lake-pad** het pad in naar de gegevensmap die u hebt gemaakt.
+3. Geef in **Archief selecteren** naast de vervolg keuzelijst **Data Lake Store** het data Lake Storage gen 1-account op dat u eerder hebt gemaakt en voer in het veld **Data Lake pad** het pad in naar de gegevensmap die u hebt gemaakt.
 
     ![Data Lake Storage-account selecteren][3]
+
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>Capture toevoegen of configureren op een bestaande Event Hub
 
@@ -68,7 +91,11 @@ U kunt Capture configureren op bestaande Event Hubs in Event Hubs-naamruimten. O
 
 ![Azure Blob Storage configureren][2]
 
-### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+![Azure Data Lake Storage gen 2 configureren](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage gen 1 
 
 ![Azure Data Lake Storage configureren][4]
 

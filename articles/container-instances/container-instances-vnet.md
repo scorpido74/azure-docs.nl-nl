@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van container groepen in een
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 318576e9b5c5b32bbc993ea16494c938b74bd2f4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901863"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200058"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 
@@ -77,7 +77,7 @@ In het volgende diagram zijn verschillende container groepen geïmplementeerd na
 
 ![Container groepen binnen een virtueel netwerk][aci-vnet-01]
 
-## <a name="deployment-scenarios"></a>Implementatiescenario’s
+## <a name="deployment-scenarios"></a>Implementatiescenario's
 
 U kunt [AZ container Create][az-container-create] gebruiken om container groepen te implementeren in een nieuw virtueel netwerk en Azure toe te staan de vereiste netwerk resources te maken, of te implementeren in een bestaand virtueel netwerk. 
 
@@ -260,7 +260,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>Netwerk bronnen verwijderen
 
-Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het verwijderen van de netwerk resources die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
+Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het verwijderen van de netwerk resources die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen. In het script wordt ervan uitgegaan dat uw resource groep één virtueel netwerk met één netwerk profiel bevat.
 
 Voordat u het script uitvoert, stelt u de `RES_GROUP`-variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam van de `aci-vnet` eerder hebt voorgesteld. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
 
@@ -269,9 +269,11 @@ Voordat u het script uitvoert, stelt u de `RES_GROUP`-variabele in op de naam va
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
+# Assumes one virtual network in resource group
 RES_GROUP=<my-resource-group>
 
 # Get network profile ID
+# Assumes one profile in virtual network
 NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query [0].id --output tsv)
 
 # Delete the network profile

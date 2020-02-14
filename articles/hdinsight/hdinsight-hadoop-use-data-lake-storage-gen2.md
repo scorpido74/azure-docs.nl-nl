@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767667"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186887"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -36,12 +36,12 @@ Als u een HDInsight-cluster wilt maken dat gebruikmaakt van Data Lake Storage Ge
 
 Maak een door de gebruiker toegewezen beheerde identiteit als u deze nog niet hebt.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ door de **gebruiker toegewezen** in het zoekvak en klik op door de **gebruiker toegewezen beheerde identiteit**.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. Voer een naam in voor uw beheerde identiteit, selecteer het juiste abonnement, de resource groep en de locatie.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)voor meer informatie over de werking van beheerde identiteiten in azure hdinsight.
 
@@ -51,13 +51,13 @@ Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)v
 
 Een Azure Data Lake Storage Gen2-opslagaccount maken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ **opslag** in het zoekvak en klik op **opslag account**.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. In het scherm **opslag account maken** :
     1. Selecteer de juiste abonnement en resource groep.
-    1. Voer een naam in voor uw Data Lake Storage Gen2-account. Zie [naamgevings conventies voor Azure-resources](/azure/architecture/best-practices/resource-naming#storage)voor meer informatie over naamgevings regels voor opslag accounts.
+    1. Voer een naam in voor uw Data Lake Storage Gen2-account. Zie [naamgevings conventies voor Azure-resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage)voor meer informatie over naamgevings regels voor opslag accounts.
     1. Klik op het tabblad **Geavanceerd** .
     1. Klik op **ingeschakeld** naast **hiërarchische naam ruimte** onder **Data Lake Storage Gen2**.
     1. Klik op **Controleren + maken**.

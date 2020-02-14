@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833938"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192650"
 ---
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De eerste versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
+- De eerste versie ondersteunt de volgende VM-reeksen: DSv3, ESv3 en Fsv2. 
 
 ## <a name="create-a-host-group"></a>Een hostgroep aanmaken
 
@@ -54,7 +54,7 @@ Het kan even duren voordat de hostgroep is gemaakt.
 
 ## <a name="create-a-dedicated-host"></a>Een toegewezen host maken
 
-Maak nu een toegewezen host in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast. De volgende SKU-waarden voor de host worden ondersteund: DSv3_Type1 en ESv3_Type1.
+Maak nu een toegewezen host in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.
 
 Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicated host prijzen](https://aka.ms/ADHPricing).
 
