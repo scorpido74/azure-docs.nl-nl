@@ -21,7 +21,11 @@
 - name: Concepten
   items:
     - name: Locaties en partners
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: Hublocaties en partners
+          href: virtual-wan-locations-partners.md
+        - name: Automatiseringsrichtlijnen voor partners
+          href: virtual-wan-configure-automation-providers.md
     - name: IPSec-beleid
       href: virtual-wan-ipsec.md
 - name: Instructiegidsen
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Azure Active Directory-verificatie met meerde toepassingen instellen voor gebruikers-VPN
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Automatisering configureren (Virtual WAN-partners)
-      href: virtual-wan-configure-automation-providers.md
     - name: Wereldwijde en op de hub gebaseerde VPN-profielen downloaden
       href: global-hub-profile.md
     - name: Routering configureren

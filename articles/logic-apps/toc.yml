@@ -87,7 +87,7 @@
           href: logic-apps-handle-large-messages.md
         - name: Beveiligen
           items:
-            - name: Uw logische apps beveiligen
+            - name: Beveiliging verbeteren voor logische apps
               href: logic-apps-securing-a-logic-app.md
             - name: Verifiëren met beheerde identiteiten
               href: create-managed-service-identity.md
@@ -97,7 +97,7 @@
           items:
             - name: Aangepaste API's maken voor logische apps
               href: logic-apps-create-api-app.md
-            - name: Beveiligde aanroepen naar aangepaste API's
+            - name: Beveiliging verbeteren voor aanroepen naar aangepaste API's
               href: logic-apps-custom-api-authentication.md
             - name: Aangepaste API's implementeren en aanroepen
               href: logic-apps-custom-api-host-deploy-call.md

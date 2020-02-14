@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: Labaccounts configureren
           href: how-to-configure-lab-accounts.md
+        - name: Toestaan dat de labmaker de lablocatie kiest
+          href: allow-lab-creator-pick-lab-location.md
         - name: Uw labs verbinden met een gepeerd virtueel netwerk
           href: how-to-connect-peer-virtual-network.md
         - name: Een gedeelde installatiekopiegalerie toevoegen of loskoppelen

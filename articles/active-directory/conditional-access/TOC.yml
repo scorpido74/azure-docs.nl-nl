@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: Onderdelen van beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policies.md
-    - name: Cloud-apps en -acties
-      href: concept-conditional-access-cloud-apps.md
-    - name: Voorwaarden
-      href: conditions.md
-    - name: Locatievoorwaarden
-      href: location-condition.md
-    - name: Besturingselementen
-      href: controls.md
+    - name: Toewijzingen
+      items:
+        - name: Gebruikers en groepen
+          href: concept-conditional-access-users-groups.md
+        - name: Cloud-apps of acties
+          href: concept-conditional-access-cloud-apps.md
+        - name: Voorwaarden
+          href: concept-conditional-access-conditions.md
+    - name: Besturingselementen voor toegang
+      items:
+        - name: Verlenen
+          href: concept-conditional-access-grant.md
+        - name: Sessie
+          href: concept-conditional-access-session.md
     - name: Modus Alleen rapporteren
       href: concept-conditional-access-report-only.md
     - name: Service-afhankelijkheden
       href: service-dependencies.md
+    - name: Locatievoorwaarden
+      href: location-condition.md
     - name: Hulpprogramma What If
       href: what-if-tool.md
+    - name: Besturingselementen
+      href: controls.md
     - name: Klassieke beleidsmigraties
       href: policy-migration.md
     - name: Basisbeschermingsbeleid
@@ -84,10 +94,6 @@
       items:
         - name: Problemen met het hulpprogramma What If oplossen
           href: troubleshoot-conditional-access-what-if.md
-- name: Naslaginformatie
-  items:
-    - name: Technische naslaginformatie
-      href: technical-reference.md
 - name: Resources
   items:
     - name: Azure-feedbackforum

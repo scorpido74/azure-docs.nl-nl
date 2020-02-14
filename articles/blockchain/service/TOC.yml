@@ -23,14 +23,18 @@
           href: connect-truffle.md
 - name: Zelfstudies
   items:
-    - name: Slimme contracten gebruiken
+    - name: Slimme contracten maken
       href: send-transaction.md
+    - name: Gegevens publiceren met Data Manager
+      href: data-manager-cosmosdb.md
 - name: Concepten
   items:
     - name: Consortium
       href: consortium.md
     - name: Gegevenstoegang en -beveiliging
       href: data-security.md
+    - name: Overzicht van Data Manager
+      href: data-manager.md
     - name: Ontwikkelen
       href: develop.md
     - name: Limieten
@@ -41,6 +45,10 @@
   items:
     - name: Azure AD-toegang configureren
       href: configure-aad.md
+    - name: Data Manager configureren - Portal
+      href: data-manager-portal.md
+    - name: Data Manager configureren - CLI
+      href: data-manager-cli.md
     - name: Transactieknooppunten configureren
       href: configure-transaction-nodes.md
     - name: Beheren met behulp van Azure CLI
@@ -51,16 +59,6 @@
       href: ethereum-logic-app.md
     - name: Azure Blockchain Service bewaken
       href: monitor-azure-blockchain-service.md
-- name: Blockchain Data Manager
-  items:
-    - name: Overzicht van Data Manager
-      href: data-manager.md
-    - name: Data Manager configureren - Portal
-      href: data-manager-portal.md
-    - name: Data Manager configureren - CLI
-      href: data-manager-cli.md
-    - name: Gegevens publiceren naar Cosmos DB
-      href: data-manager-cosmosdb.md
 - name: Resources
   items:
     - name: Azure Blockchain Dev Kit

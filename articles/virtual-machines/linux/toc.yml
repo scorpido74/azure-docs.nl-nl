@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: Back-up en herstel na noodgeval voor schijven
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Gedeelde schijven
+          href: disks-shared.md
         - name: Kortstondige besturingssysteemschijven
           href: ephemeral-os-disks.md
     - name: Netwerken
@@ -553,6 +555,8 @@
         - name: Schijven implementeren met sjabloon
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Gedeelde schijven inschakelen
+          href: disks-shared-enable.md
         - name: Een VHD uploaden naar een schijf - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: De grootte van een schijf wijzigen

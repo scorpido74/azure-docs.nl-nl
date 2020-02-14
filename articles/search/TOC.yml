@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: Relevantie afstemmen (scoreprofielen)
           href: index-add-scoring-profiles.md
-    - name: Beheren en bewaken
+    - name: Een service beheren
       items:
-        - name: Portaalbeheer
+        - name: Portal
           href: search-manage.md
-        - name: PowerShell-beheer
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Activiteit en logboekregistratie bewaken
+    - name: Controle en logboekregistratie
+      items:
+        - name: Basisprincipes
           href: search-monitor-usage.md
+        - name: Queryactiviteit bewaken
+          href: search-monitor-queries.md
+        - name: Diagnostische logboeken
+          href: search-monitor-logs.md
         - name: Analyse zoekverkeer
           href: search-traffic-analytics.md
     - name: Problemen oplossen

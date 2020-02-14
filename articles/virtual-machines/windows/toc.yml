@@ -242,6 +242,8 @@
           href: disk-scalability-targets.md
         - name: Back-up en herstel na noodgeval voor schijven
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Gedeelde schijven
+          href: disks-shared.md
         - name: Kortstondige besturingssysteemschijven
           href: ephemeral-os-disks.md
     - name: Netwerken
@@ -547,6 +549,8 @@
           href: detach-disk.md
         - name: Schijven implementeren met sjabloon
           href: using-managed-disks-template-deployments.md
+        - name: Gedeelde schijven inschakelen
+          href: disks-shared-enable.md
         - name: Een VHD uploaden naar een schijf - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: De grootte van een schijf wijzigen
