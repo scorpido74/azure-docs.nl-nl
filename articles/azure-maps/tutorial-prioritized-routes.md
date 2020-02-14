@@ -1,20 +1,20 @@
 ---
 title: 'Zelf studie: meerdere routes zoeken op reis wijze | Microsoft Azure kaarten'
 description: In deze zelf studie leert u hoe u routes kunt vinden voor verschillende reis methoden met behulp van Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989651"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209491"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelf studie: routes voor verschillende manieren van reizen zoeken met behulp van Azure Maps
 
@@ -158,7 +158,7 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén 
     });
     ```
     
-    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route lijnen en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. Er wordt gebruikgemaakt van expressies om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin-en eind punten worden weer gegeven. In dit geval zijn er expressies toegevoegd voor het ophalen van de pictogram afbeelding en tekst label informatie uit eigenschappen van elk object Point. 
+    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route lijnen en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. Er wordt gebruikgemaakt van expressies om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Als u de laag toevoegt aan de kaart, wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Op deze manier zorgt u ervoor dat de route lijn niet de labels van de weg beslaat. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin-en eind punten worden weer gegeven. In dit geval zijn er expressies toegevoegd voor het ophalen van de pictogram afbeelding en tekst label informatie uit eigenschappen van elk object Point. 
     
 2. Voor deze zelfstudie, moet u een fictief bedrijf in Seattle, genaamd Fabrikam, instellen als beginpunt, en een kantoor van Microsoft als eindpunt (bestemming). Voeg de volgende code toe in de gebeurtenis-handler Maps `ready`.
 
@@ -200,7 +200,11 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén 
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Routes weergeven gerangschikt naar de manier van reizen
 
-In deze sectie wordt beschreven hoe u de Maps route Service-API gebruikt om meerdere routes van een bepaald begin punt naar het eind punt te zoeken op basis van uw transport methode. De routeservice biedt API's om de *snelste*, *kortste*, *zuinigste* of *leukste* route tussen twee locaties te plannen, waarbij rekening wordt gehouden met de huidige verkeersomstandigheden. Ook kunnen gebruikers in de toekomst routes plannen met behulp van de uitgebreide historische verkeersdatabase van Azure en de duur van de route voor elke dag en tijd voorspellen. Zie [GetRoute Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Routebeschrijvingen ophalen) voor meer informatie. Alle volgende codeblokken moeten worden toegevoegd **binnen de map.loadEventListener** om ervoor te zorgen dat de blokken worden geladen nadat de kaart volledig is geladen.
+In deze sectie wordt beschreven hoe u de Maps route Service-API gebruikt. De route-API wordt gebruikt om meerdere routes van een bepaald begin punt naar het eind punt te zoeken, op basis van uw transport wijze. De route service biedt Api's voor het plannen van *snelste*, *kortste*, *milieu*-of *Thrilling* routes. Niet alleen kunnen de Api's routes tussen twee locaties plannen, maar ook rekening houden met de huidige verkeers omstandigheden. 
+
+Met de route-API kunnen gebruikers in de toekomst routes plannen met behulp van de uitgebreide data base van het historische verkeer van Azure. De API kan de route duur voor een bepaalde dag en tijd voors pellen. Zie [GetRoute Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Routebeschrijvingen ophalen) voor meer informatie. 
+
+Alle volgende code blokken moeten worden toegevoegd **binnen de kaart load eventListener** om ervoor te zorgen dat ze worden geladen nadat de kaart volledig is geladen.
 
 1. Voeg in de functie GetMap het volgende toe aan java script-code.
 
@@ -244,7 +248,7 @@ In deze sectie wordt beschreven hoe u de Maps route Service-API gebruikt om meer
     });
     ```
 
-    Dit code fragment hierboven voert een query uit op de Azure Maps Routing-service via de methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . De route lijn wordt vervolgens geëxtraheerd uit de verzameling geojson-functies uit het antwoord dat is geëxtraheerd met behulp van de `geojson.getFeatures()` methode. De route lijn wordt vervolgens toegevoegd aan de gegevens bron. Een index van 0 zorgt ervoor dat deze wordt weer gegeven vóór andere regels in de gegevens bron. Dit gebeurt omdat de berekende vrachtwagenroute vaak langzamer uitvalt dan een autoroute, en als de vrachtwagenroute na de autoroute aan de gegevensbron wordt toegevoegd, wordt de vrachtwagenroute bovenop de autoroute weergegeven. Er worden twee eigenschappen toegevoegd aan de route lijn van de vracht wagen, een streek kleur die een fraaie tint van blauw is en een streek breedte van negen pixels.
+    Dit code fragment hierboven voert een query uit op de Azure Maps Routing-service via de methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . De route lijn wordt vervolgens geëxtraheerd uit de verzameling geojson-functies uit het antwoord dat is geëxtraheerd met behulp van de `geojson.getFeatures()` methode. De route lijn wordt vervolgens toegevoegd aan de gegevens bron. Een index van 0 zorgt ervoor dat deze wordt weer gegeven vóór andere regels in de gegevens bron. Dit wordt gedaan omdat de berekening van de truck route vaak langzamer is dan een auto route berekening. Als de route regel voor de vracht wagen wordt toegevoegd aan de gegevens bron na de auto route, wordt deze hierboven weer gegeven. Er worden twee eigenschappen toegevoegd aan de route lijn van de vracht wagen, een streek kleur die een fraaie tint van blauw is en een streek breedte van negen pixels.
 
 3. Voeg de volgende Java script-code toe om een route voor een auto te maken en de resultaten weer te geven.
 
@@ -270,11 +274,11 @@ In deze sectie wordt beschreven hoe u de Maps route Service-API gebruikt om meer
 
     ![Routes rangschikken met Azure Route Service](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    De route voor vrachtwagens is blauw en dik. De route voor auto's is paars en dun. De route voor auto's gaat over Lake Washington via de I-90 door tunnels onder woongebieden en is verboden voor het vervoer van gevaarlijke afvalstoffen. De route voor vrachtwagens, met een lading met de Amerikaanse gevarenklasse USHazmatClass2, loopt dan ook via een andere snelweg.
+    De truck route is dikke blauw en de route van de auto is dun paars. De Car-route gaat over meer dan meer dan 1 tot en met I-90, die door tunnels onder woon gebieden loopt. Omdat de tunnels zich dicht bij de buurt bevinden, is de lading gevaarlijk afval beperkt. De truck route, waarmee een USHazmatClass2-vracht type wordt opgegeven, wordt omgeleid om een andere weg te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een nieuwe webpagina maken met de kaartbesturingselement-API

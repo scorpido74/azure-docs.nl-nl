@@ -1,20 +1,20 @@
 ---
 title: 'Zelf studie: een Store Locator-toepassing maken met behulp van Azure Maps | Microsoft Azure kaarten'
 description: In deze zelf studie leert u hoe u een web-app voor Store Locator maakt met behulp van Microsoft Azure Maps Web SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987002"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209559"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelf studie: een Store-Locator maken met behulp van Azure Maps
 
@@ -37,7 +37,7 @@ Spring vooruit naar het [live-winkelzoekervoorbeeld](https://azuremapscodesample
 
 Als u de stappen in deze zelf studie wilt volt ooien, moet u eerst een Azure Maps account maken en uw primaire sleutel (abonnements sleutel) ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
-## <a name="design"></a>Ontwerpen
+## <a name="design"></a>Ontwerp
 
 Voordat u in de code duikt, is het een goed idee om met een ontwerp te beginnen. Uw winkelzoeker kan zo eenvoudig of zo ingewikkeld zijn als u wilt. In deze zelfstudie maken we een eenvoudige winkelzoeker. We nemen onderweg enkele tips op om u te helpen sommige functies uit te breiden als u dat wilt. We maken een winkelzoeker voor het fictieve bedrijf Contoso Coffee. De volgende afbeelding toont een draadmodel van de algemene indeling van de winkelzoeker die we in deze zelfstudie bouwen:
 
@@ -381,7 +381,7 @@ De toepassing nu uitvoeren, ziet u de knop koptekst, zoekvak en zoeken. Maar de 
 
 Alles is nu ingesteld in de gebruikers interface. We moeten nog steeds de Java script toevoegen om de gegevens te laden en te parseren, en vervolgens de gegevens op de kaart weer geven. Open *index.js* en voeg code toe zoals beschreven in de volgende stappen.
 
-1. Voeg algemene opties toe om het gemakkelijker te maken instellingen bij te werken. Definieer de variabelen voor de kaart, het pop-upvenster, de gegevens bron, een laag met een pictogram, een HTML-markering waarmee het middel punt van een zoek gebied en een exemplaar van de Azure Maps Search-serviceclient wordt weer gegeven.
+1. Voeg algemene opties toe om het gemakkelijker te maken instellingen bij te werken. Definieer de variabelen voor de kaart, het pop-upvenster, de gegevens bron, de laag van het pictogram en de HTML-markering. Stel de HTML-markering in om het midden van een zoek gebied aan te geven. En definieer een exemplaar van de Azure Maps Search service-client.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ Alles is nu ingesteld in de gebruikers interface. We moeten nog steeds de Java s
 
 1. Voeg code toe aan *index.js*. De volgende code initialiseert de kaart. Er is een [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) toegevoegd om te wachten tot de pagina is geladen. Vervolgens worden er gebeurtenissen vastgelegd voor het bewaken van het laden van de kaart en bieden ze functionaliteit aan de zoek knop en de knop mijn locatie.
 
-   Wanneer de gebruiker de zoekknop selecteert, of wanneer de gebruiker op Enter drukt nadat een locatie in het zoekvak is ingevoerd, wordt een fuzzy zoekopdracht gestart met de zoekopdracht van de gebruiker. Geef een matrix van ISO 2-waarden van het land door en de optie `countrySet` om de zoek resultaten te beperken tot die landen/regio's. Het beperken van de landen/regio's voor zoeken helpt de nauw keurigheid van de geretourneerde resultaten te verg Roten. 
+   Wanneer de gebruiker de zoek knop selecteert of een locatie in het zoekvak typt, drukt u op ENTER. er wordt een fuzzy zoekopdracht gestart op basis van de query van de gebruiker. Geef een matrix van ISO 2-waarden van het land door en de optie `countrySet` om de zoek resultaten te beperken tot die landen/regio's. Het beperken van de landen/regio's voor zoeken helpt de nauw keurigheid van de geretourneerde resultaten te verg Roten. 
   
-   Wanneer de zoekopdracht is voltooid, wordt het eerste resultaat genomen en wordt de kaartcamera op dat gebied gezet. Wanneer de gebruiker de knop Mijn locatie selecteert, gebruikt u de HTML5 Geolocation-API die in de browser is ingebouwd om de locatie van de gebruiker op te halen en de kaart te centreren op die locatie.  
+   Zodra de zoek opdracht is voltooid, neemt u het eerste resultaat en stelt u de kaart camera over dat gebied in. Wanneer de gebruiker de knop mijn locatie selecteert, haalt u de locatie van de gebruiker op met behulp van de HTML5 geolocatie API. Deze API is ingebouwd in de browser. Centreer vervolgens de kaart over hun locatie.  
 
    > [!Tip]
    > Wanneer u een pop-upvensters gebruikt, is het raadzaam één `Popup`-instantie te maken en deze te hergebruiken door de inhoud en positie ervan bij te werken. Voor elke `Popup`-instantie die u toevoegt aan uw code, worden meerdere DOM-elementen toegevoegd aan de pagina. Hoe meer DOM-elementen er op een pagina zijn, hoe meer dingen de browser moet bijhouden. Als er te veel items zijn, kan de browser traag worden.
@@ -527,7 +527,7 @@ Alles is nu ingesteld in de gebruikers interface. We moeten nog steeds de Java s
     map.markers.add(centerMarker);
     ```
 
-1. Voeg in de `ready`-gebeurtenislistener van de kaart een gegevensbron toe. Maak vervolgens een aanroep om de gegevensset te laden en te parseren. Schakel clustering voor de gegevensbron in. Door clustering van de gegevensbrongroepen worden overlappende punten samengevoegd tot een cluster. De clusters worden gescheiden in afzonderlijke wanneer de gebruiker inzoomt. Dit zorgt voor een vloeiendere gebruikerservaring en verbetert de prestaties.
+1. Voeg in de `ready`-gebeurtenislistener van de kaart een gegevensbron toe. Maak vervolgens een aanroep om de gegevensset te laden en te parseren. Schakel clustering voor de gegevensbron in. Door clustering van de gegevensbrongroepen worden overlappende punten samengevoegd tot een cluster. De clusters worden gescheiden in afzonderlijke wanneer de gebruiker inzoomt. Dit gedrag zorgt voor een betere gebruikers ervaring en verbetert de prestaties.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ De eerste keer dat een gebruiker de knop Mijn locatie selecteert, geeft de brows
 
 ![scherm afbeelding van de aanvraag van de browser voor toegang tot de locatie van de gebruiker](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Wanneer u sterk genoeg inzoomt op een gebied met koffiebarlocaties, worden de clusters gescheiden in afzonderlijke locaties. Selecteer een van de pictogrammen op de kaart of selecteer een item in het zijpaneel om een ​​pop-upvenster te bekijken met informatie over die locatie.
+Wanneer u sterk genoeg inzoomt op een gebied met koffiebarlocaties, worden de clusters gescheiden in afzonderlijke locaties. Selecteer een van de pictogrammen op de kaart of selecteer een item in het deel venster aan de zijkant om een pop-upvenster weer te geven. In het pop-upvenster wordt informatie weer gegeven voor de geselecteerde locatie.
 
 <center>
 

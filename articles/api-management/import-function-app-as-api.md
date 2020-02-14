@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442588"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209185"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Een Azure-functie-app als API importeren in Azure API Management
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit om een nieuwe API te maken vanuit een Azure-functie
 
     ![Toevoegen vanuit functie-app](./media/import-function-app-as-api/add-06.png)
 
-8. Klik op **Maken**.
+8. Klik op **Create**.
 
 ## <a name="append-azure-function-app-to-api"></a> Een Azure-functie-app toevoegen aan een bestaande API
 
@@ -118,7 +118,7 @@ Bij het importeren van een Azure-functie-app wordt automatisch het volgende gege
 * Host-sleutel in de functie-app met de naam APIM-{*your Azure API Management service instance name*},
 * Een benoemde waarde in het Azure API Management instantie met de naam {*uw Azure functie-app instance name*}-sleutel, die de gemaakte host-sleutel bevat.
 
-Voor Api's die na 4 april 2019 zijn gemaakt, wordt de host-sleutel in HTTP-aanvragen van API Management aan de functie-app in een header door gegeven. Oudere Api's geven de host-sleutel als [een query parameter](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Dit gedrag kan worden gewijzigd via de `PATCH Backend` [rest API aanroep](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) van de *back-end* -entiteit die is gekoppeld aan de functie-app.
+Voor Api's die na 4 april 2019 zijn gemaakt, wordt de host-sleutel in HTTP-aanvragen van API Management aan de functie-app in een header door gegeven. Oudere Api's geven de host-sleutel als [een query parameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Dit gedrag kan worden gewijzigd via de `PATCH Backend` [rest API aanroep](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) van de *back-end* -entiteit die is gekoppeld aan de functie-app.
 
 > [!WARNING]
 > Als de waarde van de hostsleutel van de Azure-functie-app of de benoemde waarde van Azure API Management wordt verwijderd of gewijzigd, wordt de communicatie tussen de services verbroken. De waarden worden niet automatisch gesynchroniseerd.

@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562010"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210205"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Een OpenAPI-definitie maken voor een serverloze API met behulp van Azure API Management
 
@@ -45,7 +45,7 @@ De functie berekend vervolgens hoeveel een reparatie kost en hoeveel omzet de tu
 
 1. Selecteer **meer sjablonen...** en selecteer vervolgens **volt ooien en sjablonen weer geven**
 
-1. Selecteer HTTP-trigger, typ `TurbineRepair` voor de functie **naam**, kies `Function` voor **[verificatie niveau](functions-bindings-http-webhook.md#http-auth)** en selecteer vervolgens **maken**.  
+1. Selecteer HTTP-trigger, typ `TurbineRepair` voor de functie **naam**, kies `Function` voor **[verificatie niveau](functions-bindings-http-webhook-trigger.md#http-auth)** en selecteer vervolgens **maken**.  
 
     ![De HTTP-functie voor OpenAPI maken](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
@@ -140,16 +140,16 @@ U nu kunt de OpenAPI-definitie genereren.
     | **Naam** | Wereldwijd unieke naam | Er wordt een naam gegenereerd op basis van de naam van uw functie-app. |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe resource wordt gemaakt. |  
     | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Dezelfde resource als uw functie-app, die voor u moet worden ingesteld. |
-    | **Locatie** | VS - west | Kies de locatie vs-West. |
+    | **Locatie** | US - west | Kies de locatie vs-West. |
     | **Naam van de organisatie** | Contoso | De naam van de organisatie die wordt gebruikt in de ontwikkelaars Portal en voor e-mail meldingen. |
     | **E-mailadres van de beheerder** | uw e-mail adres | E-mail die systeem meldingen van API Management heeft ontvangen. |
     | **Prijscategorie** | Verbruik (preview-versie) | Verbruiks laag is in Preview en is niet beschikbaar in alle regio's. Zie de [pagina met prijzen voor API Management](https://azure.microsoft.com/pricing/details/api-management/) voor de volledige prijs informatie |
 
-1. Kies **Maken** om het API Management-exemplaar te maken. Dit kan enkele minuten duren.
+1. Kies **maken** om het API Management-exemplaar te maken. Dit kan enkele minuten duren.
 
 1. Selecteer **Application Insights inschakelen** om logboeken naar dezelfde locatie te verzenden als de functie toepassing, accepteer de resterende standaard waarden en selecteer **koppelings-API**.
 
-1. De **Import Azure functions** wordt geopend met de functie **TurbineRepair** gemarkeerd. Kies **Selecteren** om door te gaan.
+1. De **Import Azure functions** wordt geopend met de functie **TurbineRepair** gemarkeerd. Kies **selecteren** om door te gaan.
 
     ![Azure Functions importeren in API Management](media/functions-openapi-definition/import-function-openapi.png)
 

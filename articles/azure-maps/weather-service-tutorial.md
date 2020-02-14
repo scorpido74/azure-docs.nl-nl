@@ -1,20 +1,20 @@
 ---
 title: 'Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python) | Microsoft Azure kaarten'
 description: In deze zelf studie wordt uitgelegd hoe u met behulp van Azure Notebooks (python) sensor gegevens samenvoegt met weers verwachtingen van Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989617"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208026"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python)
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Dagelijkse prognose gegevens aanvragen
 
-In ons scenario willen we dagelijks een prognose aanvragen voor elke sensor locatie. Met het volgende script wordt de [dagelijkse prognose-API](https://aka.ms/AzureMapsWeatherDailyForecast) van de Azure Maps-weer service aangeroepen om dagelijks weers verwachtingen voor elke wind turbine te krijgen, voor de komende vijf tien dagen vanaf de huidige datum.
+In ons scenario willen we dagelijks een prognose aanvragen voor elke sensor locatie. Met het volgende script wordt de [dagelijkse prognose-API](https://aka.ms/AzureMapsWeatherDailyForecast) van de Azure Maps weer service aangeroepen. Deze API retourneert weers verwachtingen voor elke wind turbine, voor de komende vijf tien dagen vanaf de huidige datum.
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![Turbine-locaties](./media/weather-service-tutorial/location-map.png)
 
 
-De prognose gegevens worden gegroepeerd met de demo gegevens op basis van de Station-ID van het weer Data Center. Deze groepering breidt de demo gegevens uit met de prognose gegevens. 
+De prognose gegevens worden gegroepeerd met de demo gegevens op basis van de Station-ID. De Station-ID is voor het weer Data Center. Deze groepering breidt de demo gegevens uit met de prognose gegevens.
 
 ```python
 # Group forecasted data for all locations

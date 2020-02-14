@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846481"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210188"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met behulp van een aangepaste container
 
@@ -54,7 +54,7 @@ U kunt deze zelf studie volgen op elke computer waarop Windows, Mac OS of Linux 
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
     - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
+    - [Type script](http://www.typescriptlang.org/#download-links)
     ::: zone-end
 - [Docker](https://docs.docker.com/install/)
 - Een [docker-id](https://hub.docker.com/signup)
@@ -256,7 +256,7 @@ U kunt deze zelf studie volgen op elke computer waarop Windows, Mac OS of Linux 
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Zodra de installatie kopie in een lokale container wordt uitgevoerd, opent u een browser om te `http://localhost:8080`, waarin de tijdelijke aanduiding voor de afbeelding moet worden weer gegeven. De afbeelding wordt op dit moment weer gegeven omdat uw functie wordt uitgevoerd in de lokale container, zoals in azure, wat betekent dat deze wordt beveiligd door een toegangs sleutel zoals gedefinieerd in *Function. json* met de eigenschap `"authLevel": "function"`. De container is nog niet gepubliceerd naar een functie-app in azure, maar de sleutel is nog niet beschikbaar. Als u lokaal wilt testen, sluit u docker, wijzigt u de autorisatie-eigenschap op `"authLevel": "anonymous"`, bouwt u de installatie kopie opnieuw en start u docker opnieuw op. Stel `"authLevel": "function"` in *Function. json*opnieuw in. Zie [autorisatie sleutels](functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.
+1. Zodra de installatie kopie in een lokale container wordt uitgevoerd, opent u een browser om te `http://localhost:8080`, waarin de tijdelijke aanduiding voor de afbeelding moet worden weer gegeven. De afbeelding wordt op dit moment weer gegeven omdat uw functie wordt uitgevoerd in de lokale container, zoals in azure, wat betekent dat deze wordt beveiligd door een toegangs sleutel zoals gedefinieerd in *Function. json* met de eigenschap `"authLevel": "function"`. De container is nog niet gepubliceerd naar een functie-app in azure, maar de sleutel is nog niet beschikbaar. Als u lokaal wilt testen, sluit u docker, wijzigt u de autorisatie-eigenschap op `"authLevel": "anonymous"`, bouwt u de installatie kopie opnieuw en start u docker opnieuw op. Stel `"authLevel": "function"` in *Function. json*opnieuw in. Zie [autorisatie sleutels](functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie.
 
     ![Tijdelijke afbeelding die aangeeft dat de container lokaal wordt uitgevoerd](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -387,7 +387,7 @@ Als de installatie kopie is geïmplementeerd in de functie-app in azure, kunt u 
     > [!NOTE]  
     > Omdat uw functie-app als een container is geïmplementeerd, kunt u geen wijzigingen aanbrengen in uw functie code in de portal. U moet in plaats daarvan het project bijwerken in de lokale installatie kopie, de installatie kopie naar het REGI ster pushen en vervolgens opnieuw implementeren naar Azure. U kunt in een later stadium doorlopende implementatie instellen.
     
-    # <a name="azure-clitabazurecli"></a>[Azure-CLI](#tab/azurecli)
+    # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
 
     1. Maak een URL-teken reeks in de volgende indeling, vervang `<subscription_id>`, `<resource_group>`en `<app_name>` met de ID van uw Azure-abonnement, de resource groep van de functie-app en de naam van uw functie-app, respectievelijk:
 

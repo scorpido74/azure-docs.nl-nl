@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086410"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208740"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Een web-app migreren vanuit Google Maps
 
 De meeste web-apps, die gebruikmaken van Google Maps, maken gebruik van de Google Maps v3 java script-SDK. De Azure Maps Web-SDK is de geschikte op Azure gebaseerde SDK voor het migreren naar. Met de Azure Maps Web-SDK kunt u interactieve kaarten aanpassen met uw eigen inhoud en beelden. U kunt uw app uitvoeren op internet-of mobiele toepassingen. Dit besturingselement maakt gebruik van WebGL, zodat u grote gegevenssets kunt weergeven met hoge prestaties. Ontwikkel met deze SDK met behulp van Java script of type script.
 
-Als u een bestaande webtoepassing wilt migreren, controleert u of er een open-source kaart beheer bibliotheek wordt gebruikt. Voor beelden van een open-source kaart beheer bibliotheek zijn: cesium, bijsluiter en openlaag. Als uw toepassing gebruikmaakt van een open-source kaart beheer bibliotheek en u de Azure Maps Web-SDK niet wilt gebruiken, kunt u nog steeds migreren. In dit geval verbindt u uw toepassing met de Azure Maps-tegel Services ([wegtegels](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [satelliet tegels](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Hieronder vindt u meer informatie over het gebruik van Azure Maps in een veelgebruikte open-source kaart beheer bibliotheken.
+Als u een bestaande webtoepassing wilt migreren, controleert u of er een open-source kaart beheer bibliotheek wordt gebruikt. Voor beelden van een open-source kaart beheer bibliotheek zijn: cesium, bijsluiter en openlaag. U kunt uw toepassing nog steeds migreren, zelfs als deze gebruikmaakt van een open-source kaart beheer bibliotheek en u de Azure Maps Web-SDK niet wilt gebruiken. In dat geval verbindt u uw toepassing met de Azure Maps-tegel Services ([wegtegels](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [satelliet tegels](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Hieronder vindt u meer informatie over het gebruik van Azure Maps in een veelgebruikte open-source kaart beheer bibliotheken.
 
 - Cesium: een 3D-kaart besturings element voor het web. [Documentatie](https://cesiumjs.org/) voor [code voorbeelden](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \|
 - Bijsluiter: Lightweight 2D map Control voor het web. [Documentatie](https://leafletjs.com/) voor [code voorbeelden](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \|
@@ -62,7 +62,7 @@ Hier volgen enkele belang rijke verschillen tussen de Google Maps and Azure Maps
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK-voor beelden naast elkaar
 
-Deze verzameling bevat code voorbeelden voor elk platform, met elk voor beeld wordt gebruikgemaakt van een veelvoorkomende use-case. Het is bedoeld om u te helpen bij het migreren van uw webtoepassing vanuit Google Maps v3 java script SDK naar de Azure Maps Web-SDK. Code voorbeelden die betrekking hebben op webtoepassingen zijn opgenomen in Java script. Azure Maps biedt echter ook type script definities als een extra optie via een [NPM-module](how-to-use-map-control.md).
+Deze verzameling bevat code voorbeelden voor elk platform en elk voor beeld heeft betrekking op een algemene use-case. Het is bedoeld om u te helpen bij het migreren van uw webtoepassing vanuit Google Maps v3 java script SDK naar de Azure Maps Web-SDK. Code voorbeelden die betrekking hebben op webtoepassingen zijn opgenomen in Java script. Azure Maps biedt echter ook type script definities als een extra optie via een [NPM-module](how-to-use-map-control.md).
 
 ### <a name="load-a-map"></a>Een kaart laden
 
@@ -80,7 +80,7 @@ Beide Sdk's hebben dezelfde stappen om een kaart te laden:
 - Bij het verwijzen naar het `div`-element waarin de kaart wordt weer gegeven, is voor de `Map` klasse in Azure Maps alleen de `id` waarde vereist terwijl Google Maps een `HTMLElement`-object vereist.
 - Coördinaten in Azure Maps worden gedefinieerd als Position-objecten, die kunnen worden opgegeven als een eenvoudige nummer matrix in de notatie `[longitude, latitude]`.
 - Het zoom niveau in Azure Maps is één niveau lager dan het zoom niveau in Google Maps. Dit verschil is omdat het verschil in de grootte van het tegel systeem van de twee platforms.
-- Azure Maps voegt geen navigatie besturings elementen aan het kaart doek toe. Daarom heeft een kaart standaard geen knoppen voor inzoomen en kaart stijlen. Er zijn echter besturings elementen voor het toevoegen van een kaart stijl kiezer, Zoom knoppen, kompas of rotatie besturings element en een besturings element voor de hoogte.
+- Azure Maps voegt geen navigatie besturings elementen aan het kaart doek toe. Daarom heeft een kaart standaard geen knoppen voor inzoomen en kaart stijlen. Maar er zijn opties voor het toevoegen van een kaart stijl kiezer, Zoom knoppen, kompas of rotatie besturings element en een besturings element voor de hoogte.
 - Er wordt een gebeurtenis-handler toegevoegd in Azure Maps om de `ready` gebeurtenis van het exemplaar van de kaart te controleren. Deze gebeurtenis wordt gestart wanneer de toewijzing van de WebGL-context en alle benodigde resources is voltooid. Voeg een wille keurige code toe die u wilt uitvoeren nadat het laden van de kaart is voltooid, naar deze gebeurtenis-handler.
 
 In de onderstaande basis voorbeelden wordt gebruikgemaakt van Google Maps voor het laden van een kaart die is gecentreerd via New York op coördinaten. De lengte graad:-73,985, Latitude: 40,747 en de kaart bevindt zich op een zoom niveau van 12.
@@ -212,7 +212,7 @@ lokalisatie van Google Maps ![](media/migrate-google-maps-web-app/google-maps-lo
 
 **Na: Azure Maps**
 
-Azure Maps biedt twee verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de wereld wijde *Atlas* -naam ruimte, wat resulteert in alle instanties van de kaart besturing in uw app die standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
+Azure Maps biedt twee verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De eerste optie is om deze informatie toe te voegen aan de wereld wijde *Atlas* -naam ruimte. Dit leidt ertoe dat alle exemplaren van de kaart besturing in uw app standaard worden ingesteld op deze instellingen. Hiermee stelt u de taal in op Frans ("fr-FR") en de regionale weer gave op ' auto ':
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op "FR" en
 
 ### <a name="setting-the-map-view"></a>De kaart weergave instellen
 
-In zowel Azure Maps als Google Maps kunnen dynamische kaarten programmatisch worden verplaatst naar nieuwe geografische locaties. Hiertoe roept u de juiste functies aan in Java script. In het voor beeld ziet u hoe u de kaart kunt weer geven satelliet lucht afbeelding, de kaart centreren over een locatie en het zoom niveau wijzigt in 15 in Google Maps. De volgende locatie coördinaten worden gebruikt: lengte graad:-111,0225 en Latitude: 35,0272.
+In zowel Azure Maps als Google Maps kunnen dynamische kaarten programmatisch worden verplaatst naar nieuwe geografische locaties. Hiertoe roept u de juiste functies aan in Java script. Het voor beeld laat zien hoe u de kaart kunt weer geven satelliet lucht afbeelding, de kaart centreren over een locatie en het zoom niveau wijzigt. De volgende locatie coördinaten worden gebruikt: lengte graad:-111,0225 en Latitude: 35,0272.
 
 > [!NOTE]
 > Google Maps maakt gebruik van tegels van 256 pixels in dimensies, terwijl Azure Maps een grotere 512-pixels-tegel gebruikt. Azure Maps hebt dus minder netwerk aanvragen nodig om hetzelfde kaart gebied als Google Maps te laden. Als gevolg van de manier waarop tegel piramides werken in kaart besturings elementen, moet u het zoom niveau dat in Google Maps wordt gebruikt, aftrekken met het cijfer één bij gebruik van Azure Maps. Deze reken kundige bewerking zorgt ervoor dat grotere tegels in Azure Maps hetzelfde kaart gebied weer geven als in Google Maps
@@ -856,7 +856,7 @@ geojson-](media/migrate-google-maps-web-app/google-maps-geojson.png)</center> va
 
 **Na: Azure Maps**
 
-Geojson is het basis gegevens type in Azure Maps. Importeer deze in een gegevens bron met behulp van de `datasource.importFromUrl` methode. Gebruik een Bubble Layer en biedt functionaliteit voor het renderen van geschaalde cirkels op basis van de eigenschappen van de functies in een gegevens bron. In plaats van een call back-functie wordt de bedrijfs logica geconverteerd naar een expressie en door gegeven aan de stijl opties. Expressies bepalen hoe de bedrijfs logica werkt. Expressies kunnen worden door gegeven aan een andere thread en worden geëvalueerd op basis van de functie gegevens. Er kunnen meerdere gegevens bronnen en lagen worden toegevoegd aan Azure Maps, elk met verschillende bedrijfs logica. Met deze functie kunnen meerdere gegevens sets op verschillende manieren worden weer gegeven op de kaart.
+Geojson is het basis gegevens type in Azure Maps. Importeer deze in een gegevens bron met behulp van de `datasource.importFromUrl` methode. Een Bubble laag gebruiken. De Bubble laag biedt functionaliteit voor het renderen van geschaalde cirkels op basis van de eigenschappen van de functies in een gegevens bron. In plaats van een call back-functie wordt de bedrijfs logica geconverteerd naar een expressie en door gegeven aan de stijl opties. Expressies bepalen hoe de bedrijfs logica werkt. Expressies kunnen worden door gegeven aan een andere thread en worden geëvalueerd op basis van de functie gegevens. Er kunnen meerdere gegevens bronnen en lagen worden toegevoegd aan Azure Maps, elk met verschillende bedrijfs logica. Met deze functie kunnen meerdere gegevens sets op verschillende manieren worden weer gegeven op de kaart.
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ In de volgende voor beelden laadt de code een geojson-feed van de aardte gegeven
 
 **Voor: Google Maps**
 
-Gebruik de MarkerCluster-bibliotheek voor cluster markeringen. Cluster pictogrammen zijn beperkt tot installatie kopieën, die de getallen één tot en met vijf als naam hebben en ze worden gehost in dezelfde map.
+Gebruik de MarkerCluster-bibliotheek voor cluster markeringen. Cluster pictogrammen zijn beperkt tot installatie kopieën, die de getallen één tot en met vijf als naam hebben. Ze worden gehost in dezelfde map.
 
 ```html
 <!DOCTYPE html>
@@ -1151,7 +1151,7 @@ Importeer geojson-gegevens rechtstreeks met behulp van de functie `importDataFro
 
 Heatmap, ook wel punt-dichtheids kaarten genoemd, is een type gegevens visualisatie. Ze worden gebruikt voor de densiteit van gegevens met behulp van een reeks kleuren. Ze worden vaak gebruikt om de gegevens ' HOTS Pots ' op een kaart weer te geven. Hitte kaarten zijn een uitstekende manier om grote punt gegevens sets weer te geven.
 
-In de volgende voor beelden wordt een geojson-feed van alle aard bevingen in de afgelopen maand van de USGS geladen en weer gegeven als een gewogen heatmap. De eigenschap `"mag"` wordt gebruikt als gewicht.
+In de volgende voor beelden wordt een geojson-feed van alle aard bevingen in de afgelopen maand, van de USGS, weer gegeven en worden deze als een gewogen heatmap gegenereerd. De eigenschap `"mag"` wordt gebruikt als gewicht.
 
 **Voor: Google Maps**
 
@@ -1395,7 +1395,7 @@ Als u op een van de verkeers pictogrammen in Azure Maps klikt, wordt extra infor
 
 ### <a name="add-a-ground-overlay"></a>Een wegdek bedekking toevoegen
 
-Zowel Azure-als Google-kaarten bieden ondersteuning voor het bedekken van geoverwijzings afbeeldingen op de kaart. Afbeeldingen met geoverwijzingen verplaatsen en schalen tijdens het pannen en zoomen van de kaart. In Google Maps worden afbeeldingen met geoverwijzingen aangeduid als ' laag overlays ' in Azure Maps ze worden aangeduid als afbeeldings lagen. Deze zijn ideaal voor het bouwen van vloer plannen, het bedekken van oude kaarten of installatie kopieën van een drone.
+Zowel Azure-als Google-kaarten bieden ondersteuning voor het bedekken van geoverwijzings afbeeldingen op de kaart. Afbeeldingen met geoverwijzingen verplaatsen en schalen tijdens het pannen en zoomen van de kaart. In Google Maps worden afbeeldingen met geoverwijzingen aangeduid als ' laag overlays ' in Azure Maps ze worden aangeduid als afbeeldings lagen. Ze zijn ideaal voor het bouwen van vloer plannen, het bedekken van oude kaarten of installatie kopieën van een drone.
 
 **Voor: Google Maps**
 

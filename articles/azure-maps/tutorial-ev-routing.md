@@ -1,24 +1,24 @@
 ---
 title: 'Zelf studie: elektrische Voer tuigen routeren met behulp van Azure Notebooks (python) | Microsoft Azure kaarten'
 description: Stuur elektrische Voer tuigen met behulp van Microsoft Azure Maps routerings-Api's en Azure Notebooks.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844748"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208162"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelf studie: elektrische Voer tuigen routeren met behulp van Azure Notebooks (python)
 
-Azure Maps is een port Folio met georuimtelijke service-Api's die systeem eigen zijn geïntegreerd in Azure. Met deze Api's kunnen ontwikkel aars, ondernemingen en Isv's locatie-bewuste apps, IoT, mobiliteit, logistiek en oplossingen voor het bijhouden van activa maken. 
+Azure Maps is een port Folio met georuimtelijke service-Api's die systeem eigen zijn geïntegreerd in Azure. Met deze Api's kunnen ontwikkel aars, ondernemingen en Isv's de locatie bewuste apps, IoT, mobiliteit, logistiek en oplossingen voor het bijhouden van activa ontwikkelen. 
 
 De Azure Maps REST-Api's kunnen worden aangeroepen vanuit talen als python en R voor het inschakelen van georuimtelijke gegevens analyse en machine learning scenario's. Azure Maps biedt een robuuste set [routerings-api's](https://docs.microsoft.com/rest/api/maps/route) waarmee gebruikers routes tussen verschillende gegevens punten kunnen berekenen. De berekeningen zijn gebaseerd op verschillende voor waarden, zoals het type van het Voer tuig of het bereik bare gebied. 
 
@@ -49,7 +49,7 @@ Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor m
 
 Als u deze zelf studie wilt volgen, moet u een Azure notebook-project maken en het Jupyter-notebook bestand downloaden en uitvoeren. Het notitieblok bestand bevat de python-code, waarmee het scenario in deze zelf studie wordt geïmplementeerd. Voer de volgende stappen uit om een Azure notebook-project te maken en het Jupyter notebook-document ernaar te uploaden:
 
-1. Ga naar [Azure notitieblokken](https://notebooks.azure.com) en meld u aan. Zie [Quick Start: Meld u aan en stel een gebruikers-id in](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)voor meer informatie.
+1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. Zie [Quick Start: Meld u aan en stel een gebruikers-id in](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)voor meer informatie.
 1. Selecteer aan de bovenkant van de pagina met het open bare profiel **Mijn projecten**.
 
     ![De knop mijn projecten](./media/tutorial-ev-routing/myproject.png)
@@ -74,7 +74,7 @@ Als u deze zelf studie wilt volgen, moet u een Azure notebook-project maken en h
 
 1. Nadat het uploaden is voltooid, wordt het bestand weer gegeven op de pagina van uw project. Dubbel klik op het bestand om dit te openen als een Jupyter-notebook.
 
-Om u te helpen beter inzicht te krijgen in de functionaliteit die in het notitieblok bestand is geïmplementeerd, voert u de code in het notitie blok één cel per keer uit. U kunt de code in elke cel uitvoeren door de knop **uitvoeren** boven aan de app notebook te selecteren.
+Probeer de functionaliteit te begrijpen die in het notitieblok bestand is geïmplementeerd. Voer de code in het notebook-bestand één cel tegelijk uit. U kunt de code in elke cel uitvoeren door de knop **uitvoeren** boven aan de app notebook te selecteren.
 
   ![De knop uitvoeren](./media/tutorial-ev-routing/run.png)
 
@@ -83,7 +83,7 @@ Om u te helpen beter inzicht te krijgen in de functionaliteit die in het notitie
 Als u de code in het notitie blok wilt uitvoeren, installeert u pakketten op project niveau door de volgende stappen uit te voeren:
 
 1. Down load het bestand [*Requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) van de [Azure Maps Jupyter notebook repository](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)en upload het vervolgens naar uw project.
-1. Selecteer in het projectdashboard **projectinstellingen**. 
+1. Selecteer in het project dashboard **project instellingen**. 
 1. Selecteer in het deel venster **project instellingen** het tabblad **omgeving** en selecteer vervolgens **toevoegen**.
 1. Ga als volgt te werk onder **omgevings instellingen**:   
     a. Selecteer in de eerste vervolg keuzelijst **vereisten. txt**.  
@@ -156,7 +156,7 @@ boundsData = {
 
 Nadat u het bereikable (isochrone) voor het elektrische medium hebt vastgesteld, kunt u zoeken naar laad stations binnen dat bereik. 
 
-Met het volgende script wordt de Azure Maps [post Search aangeroepen in de geometrie-API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry). Er wordt gezocht naar elektrische laad zenders binnen de grenzen van het maximum bereik van de auto en vervolgens wordt de reactie geparseerd naar een matrix van bereik bare locaties.
+Met het volgende script wordt de Azure Maps [post Search aangeroepen in de geometrie-API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry). Het zoekt naar de laad stations voor het elektrische medium, binnen de grenzen van het maximum bereik van de auto. Vervolgens wordt het antwoord door het script geparseerd naar een matrix van bereik bare locaties.
 
 Voer het volgende script uit om te zoeken naar elektrische laad stations voor Voer tuigen binnen het bereik dat bereikbaar is:
 

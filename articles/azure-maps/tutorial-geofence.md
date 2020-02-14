@@ -1,20 +1,20 @@
 ---
 title: 'Zelf studie: een geofence maken en apparaten bijhouden op een kaart | Microsoft Azure kaarten'
 description: Meer informatie over het instellen van een geofence en het bijhouden van apparaten ten opzichte van de geofence met behulp van Microsoft Azure Maps Spatial service.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899209"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209593"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelf studie: een geofence instellen met behulp van Azure Maps
 

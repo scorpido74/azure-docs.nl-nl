@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472742"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209474"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Zelfstudie: Meerdere resource-instanties maken met Resource Manager-sjablonen
 
@@ -21,7 +21,7 @@ Leer hoe u een Azure Resource Manager-sjabloon herhaaldelijk gebruikt om meerder
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een snelstartsjabloon openen
+> * Een quickstartsjabloon openen
 > * De sjabloon bewerken
 > * De sjabloon implementeren
 
@@ -108,7 +108,7 @@ De voltooide sjabloon ziet er als volgt uit:
 }
 ```
 
-Voor meer informatie over het maken van meerdere instanties raadpleegt u [Deploy multiple instances of a resource or property in Azure Resource Manager Templates](./create-multiple-instances.md) (Meerdere instanties van een resource of eigenschap implementeren in Azure Resource Manager-sjablonen)
+Voor meer informatie over het maken van meerdere instanties raadpleegt u [Deploy multiple instances of a resource or property in Azure Resource Manager Templates](./copy-resources.md) (Meerdere instanties van een resource of eigenschap implementeren in Azure Resource Manager-sjablonen)
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -118,7 +118,7 @@ Raadpleeg de sectie [De sjabloon implementeren](quickstart-create-templates-use-
 
 Als u alle drie de opslagaccounts wilt weergeven, laat u de parameter --name weg:
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&

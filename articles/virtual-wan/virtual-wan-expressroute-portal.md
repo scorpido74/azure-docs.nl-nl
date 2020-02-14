@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: f9277fae00471bf67682015e017ae6dfa351ad65
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422860"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209423"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Zelf studie: een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN
 
@@ -39,6 +39,8 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 * Het virtuele netwerk heeft geen virtuele netwerk gateways. Als uw virtuele netwerk een gateway heeft (VPN of ExpressRoute), moet u alle gateways verwijderen. Voor deze configuratie moeten virtuele netwerken in plaats daarvan zijn verbonden met de virtuele WAN hub-gateway.
 
 * Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adres bereik dat u voor de hub opgeeft, mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding maakt. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u niet bekend bent met de IP-adresbereiken die zich in uw on-premises netwerk configuratie bevinden, coördineert u met iemand die deze gegevens voor u kan opgeven.
+
+* Het ExpressRoute-circuit moet een Premium-circuit zijn om verbinding te maken met de hub-gateway.
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
@@ -103,7 +105,7 @@ In deze sectie maakt u de peering-verbinding tussen uw hub en een VNet. Herhaal 
 
 ## <a name="connectcircuit"></a>Uw circuit verbinden met de hub gateway
 
-Zodra de gateway is gemaakt, kunt u er een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) aan koppelen. Houd er rekening mee dat ExpressRoute Premium-circuits die zich bevinden in ExpressRoute Global Reach ondersteunde locaties verbinding kunnen maken met een virtuele WAN ExpressRoute-gateway.
+Zodra de gateway is gemaakt, kunt u er een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) aan koppelen. ExpressRoute Premium-circuits die zich bevinden in ExpressRoute Global Reach ondersteunde locaties kunnen verbinding maken met een virtuele WAN ExpressRoute-gateway.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Het circuit verbinden met de hub gateway
 

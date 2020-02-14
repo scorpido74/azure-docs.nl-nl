@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086294"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209729"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Een Android-app migreren vanuit Google Maps
 
@@ -365,7 +365,7 @@ De tweede optie is om de taal door te geven en informatie te bekijken in de XML-
     />
 ```
 
-De derde optie is om de taal-en regionale kaart weergave te Program meren met de methode Maps `setStyle`. Met deze optie worden de taal-en regionale weer gave bijgewerkt telkens wanneer de code wordt uitgevoerd.
+De derde optie is om de taal-en regionale kaart weergave te Program meren met de methode Maps `setStyle`. Met deze optie worden de taal en de regionale weer gave bijgewerkt wanneer de code wordt uitgevoerd.
 
 ```java
 mapControl.onReady(map -> {
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 Een tegel laag kan op een vergelijk bare manier worden toegevoegd aan de kaart als elke andere laag. Een opgemaakte URL met de tijdelijke aanduidingen x, y en zoomen; `{x}`, `{y}``{z}` respectievelijk wordt gebruikt om de laag voor toegang tot de tegels te geven. Daarnaast bieden tegel lagen in Azure Maps `{quadkey}`, `{bbox-epsg-3857}`en `{subdomain}` tijdelijke aanduidingen. Om de tegel laag semi-transparant te maken, wordt een dekkings waarde van 0,8 gebruikt. Dekking en transparantie, hoewel ze vergelijkbaar zijn, gebruikt u omgekeerde waarden. Als u beide opties wilt converteren, trekt u de waarde van het getal één af.
 
 > [!TIP]
-> In Azure Maps is het handig om lagen onder andere lagen weer te geven, waaronder basis kaart lagen. Vaak is het wenselijk om tegel lagen onder de kaart labels weer te geven, zodat ze gemakkelijk te lezen zijn. De `map.layers.add`-methode heeft een tweede para meter die de id is van de laag waarin de nieuwe laag moet worden ingevoegd. Als u een tegel laag wilt invoegen onder de kaart labels, kunt u de volgende code gebruiken: `map.layers.add(myTileLayer, "labels");`
+> In Azure Maps is het handig om lagen onder andere lagen weer te geven, waaronder basis kaart lagen. Daarnaast is het vaak wenselijk om tegel lagen onder de kaart labels weer te geven, zodat ze gemakkelijk te lezen zijn. De `map.layers.add`-methode heeft een tweede para meter die de id is van de laag waarin de nieuwe laag moet worden ingevoegd. Als u een tegel laag wilt invoegen onder de kaart labels, kunt u de volgende code gebruiken: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {
