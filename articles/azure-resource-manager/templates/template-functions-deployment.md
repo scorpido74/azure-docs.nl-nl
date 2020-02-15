@@ -3,12 +3,12 @@ title: Sjabloon functies-implementatie
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om implementatie gegevens op te halen.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484036"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207278"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Implementatie functies voor Azure Resource Manager sjablonen 
 
@@ -133,7 +133,7 @@ In het voor gaande voor beeld wordt het volgende object geretourneerd:
 
 Zie [implementatie functie voor abonnementen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)voor een sjabloon op abonnements niveau die gebruikmaakt van de implementatie functie. Het wordt geïmplementeerd met een `az deployment create`-of `New-AzDeployment`-opdracht.
 
-## <a name="environment"></a>omgeving
+## <a name="environment"></a>environment
 
 `environment()`
 
@@ -239,9 +239,9 @@ Retourneert een parameter waarde. De opgegeven parameter naam moet worden gedefi
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -326,7 +326,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | stringOutput | Tekenreeks | optie 1 |
 | intOutput | Int | 1 |
@@ -344,7 +344,7 @@ Retourneert de waarde van variable. De opgegeven naam van de variabele moet word
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |Tekenreeks |De naam van de variabele die moet worden geretourneerd. |
 
@@ -418,7 +418,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | exampleOutput1 | Tekenreeks | myVariable |
 | exampleOutput2 | Matrix | [1, 2, 3, 4] |
@@ -428,8 +428,8 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor meer informatie over het gebruik van variabelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](template-syntax.md).
+* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
 * Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](create-multiple-instances.md).
-* Zie voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt, [een toepassing implementeren met Azure Resource Manager-sjabloon](deploy-powershell.md).
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
+* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988529"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208519"
 ---
 # <a name="get-information-from-a-coordinate"></a>Informatie ophalen uit een coördinaat
 
 In dit artikel wordt beschreven hoe u een omgekeerde adres zoekactie kunt maken met het adres van een klik op de pop-upbesturingselementnaam.
 
-Er zijn twee manieren om een omgekeerde adres zoekactie te maken. Een manier is om de [Azure Maps reverse lookup-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) van het adres te doorzoeken via een service module. De andere manier is om de [ophaal-API](https://fetch.spec.whatwg.org/) te gebruiken om een aanvraag in te dienen bij de [Azure Maps reverse lookup-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) om een adres te vinden. Beide manieren worden hieronder weer gegeven.
+Er zijn twee manieren om een omgekeerde adres zoekactie te maken. Een manier is om de [Azure Maps reverse lookup-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) van het adres te doorzoeken via een service module. De andere manier is om met behulp van de [ophaal-API](https://fetch.spec.whatwg.org/) een aanvraag in te stellen voor de [Azure Maps reverse lookup-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) om een adres te vinden. Beide manieren worden hieronder weer gegeven.
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Een Reverse Search-aanvraag maken via de service module
 
@@ -37,7 +37,7 @@ Het vierde code blok voegt een gebeurtenislistener toe aan een [muis klik.](http
 
 Met het vijfde code blok wordt de inhoud van het HTML-pop-upvenster ingesteld om het antwoord adres voor de geklikte coördinaat positie weer te geven.
 
-De wijziging van de cursor, een pop-upobject en de Click-gebeurtenis worden allemaal gemaakt in de [Load event-listener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) van de kaart om ervoor te zorgen dat de kaart volledig wordt geladen voordat de coördinaten gegevens worden opgehaald.
+De wijziging van de cursor, het pop-upobject en de Click-gebeurtenis worden allemaal gemaakt in de [Load event-listener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)van de kaart. Deze code structuur zorgt voor volledige belasting van de kaart voordat de coördinaten gegevens worden opgehaald.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Een Reverse Search-aanvraag indienen via de API voor ophalen
 
@@ -52,7 +52,7 @@ Met het tweede code blok wordt de stijl van de muis aanwijzer bijgewerkt naar ee
 
 Het derde code blok voegt een gebeurtenislistener toe voor muis klikken. Wanneer u op een muis klik klikt, wordt de [ophaal-API](https://fetch.spec.whatwg.org/) gebruikt om een query uit te [zoeken naar Azure Maps reverse lookup-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) voor het geklikte coördinaten adres. Voor een geslaagde respons wordt het adres voor de geklikte locatie verzameld. Hiermee worden de pop-upinhoud en-positie gedefinieerd met behulp van de functie [SetOption](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) van de klasse pop-up.
 
-De wijziging van de cursor, een pop-upobject en de Click-gebeurtenis worden allemaal gemaakt in de [Load event-listener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) van de kaart om ervoor te zorgen dat de kaart volledig wordt geladen voordat de coördinaten van de gegevens worden opgehaald.
+De wijziging van de cursor, het pop-upobject en de Click-gebeurtenis worden allemaal gemaakt in de [Load event-listener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)van de kaart. Deze code structuur zorgt ervoor dat de kaart volledig wordt geladen voordat de coördinaten gegevens worden opgehaald.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -62,7 +62,7 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 > [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Achtergrond](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 Raadpleeg de volgende artikelen voor voor beelden van volledige code:
 

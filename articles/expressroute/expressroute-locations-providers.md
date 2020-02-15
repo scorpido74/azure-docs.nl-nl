@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f042e12c0069e68d9008c3e520331766a92e7dd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6eaa2c038c75243c2b2ad4361c173fe527ebf3b4
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186970"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212316"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -94,7 +94,7 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | US - west-centraal | N.v.t. | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | UAE - noord | N.v.t. | Etisalat VAE |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | UAE - noord | N.v.t. | du datamena, Mega Port, oranje, Orixcom |
-| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Europa - noord | 10G, 100G | Colt, eir, Equinix, Interxion, Megaport |
+| **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Europa - noord | 10G, 100G | Colt, EIR, Equinix, euNetworks, Interxion, Mega Port |
 | **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Duitsland - west-centraal | 10G, 100G | Colt, DE-CIX, GEANT, Interxion, Mega Port, oranje, Telia-Carrier |
 | **Voortvloei** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Zwitserland - west | 10G, 100G | Equinix, Megaport |
 | **Hongkong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Azië - oost | N.v.t. | Aryaka Networks, British Telecom, CenturyLink Cloud Connect, Chief Telecom, China Telecom Global, Equinix, intercloud, Mega Port, NTT Communications, oranje, PCCW Global Limited, Tata Communications, Telia Carrier, Verizon |
@@ -103,7 +103,7 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Zuid-Afrika - noord | 10G | British Telecom, Internet oplossingen-Cloud Connect, Liquid Telecom, oranje, Teraco |
 | **Kuala Lumpur** | [TIJD dotCom Menara doel stellingen](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | N.v.t. | N.v.t. | TIME dotCom |
 | **Las Vegas** | [LV wijzigen](https://www.switch.com/las-vegas) | 1 | N.v.t. | N.v.t. | CenturyLink Cloud Connect, Megaport |
-| **Londen** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Verenigd Koninkrijk Zuid | 10G, 100G | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions - Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse - KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
+| **Londen** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Verenigd Koninkrijk Zuid | 10G, 100G | BIJ & T netbond, British Telecom, Colt, Equinix, euNetworks, intercloud, Internet Solutions-Cloud Connect, Interxion, jisc, Level 3 Communications, Mega Port, MTN, NTT Communications, oranje, PCCW Global Limited, Tata Communications, telehouse-KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | [Twee-House-Noord](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Verenigd Koninkrijk Zuid | 10G, 100G | CenturyLink Cloud Connect, Colt, IX REACH, Equinix, Mega Port, telehouse-KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | N.v.t. | N.v.t. | CoreSite, Equinix, Mega Port, Neutrona Networks, NTT, Transtelco, Zayo |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Frankrijk - zuid | N.v.t. | DE CIX-, GEANT-, Interxion-, Jaguar-netwerk |

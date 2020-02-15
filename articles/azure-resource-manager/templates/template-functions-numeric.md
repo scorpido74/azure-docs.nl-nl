@@ -3,19 +3,19 @@ title: Sjabloon functies-numeriek
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om te werken met getallen.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 1a611277bb473d605c76d131a18f9ccb550fab29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483945"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207232"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerieke functies voor Azure Resource Manager sjablonen
 
 Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 
 * [add](#add)
-* [copyIndex](#copyindex)
+* [Functie copyindex](#copyindex)
 * [div](#div)
 * [float](#float)
 * [int](#int)
@@ -36,7 +36,7 @@ Retourneert de som van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- | 
 |operand1 |Ja |int |Het eerste nummer dat moet worden toegevoegd. |
 |operand2 |Ja |int |Het tweede nummer dat moet worden toegevoegd. |
@@ -82,7 +82,7 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -107,9 +107,9 @@ Retourneert de index van een herhalings lus.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| lusinstructie | Nee | string | De naam van de lus voor het ophalen van de iteratie. |
+| lusinstructie | Nee | tekenreeks | De naam van de lus voor het ophalen van de iteratie. |
 | offset |Nee |int |Het getal dat moet worden toegevoegd aan de op nul gebaseerde iteratie waarde. |
 
 ### <a name="remarks"></a>Opmerkingen
@@ -118,7 +118,7 @@ Deze functie wordt altijd gebruikt met een **Kopieer** object. Als er geen waard
 
 Met de eigenschap **lusinstructie** kunt u opgeven of functie copyindex verwijst naar een resource herhaling of eigenschaps herhaling. Als er geen waarde wordt gegeven voor de **lusinstructie**, wordt het huidige bron type herhaling gebruikt. Geef een waarde voor de **lusinstructie** op wanneer u een eigenschap wilt herhalen. 
  
-Zie [meerdere exemplaren van resources maken in azure Resource Manager](create-multiple-instances.md)voor een volledige beschrijving van de manier waarop u **functie copyindex**gebruikt.
+Zie [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md)voor een volledige beschrijving van de manier waarop u **functie copyindex**gebruikt.
 
 Zie [variabelen](template-syntax.md#variables)voor een voor beeld van het gebruik van **functie copyindex** bij het definiëren van een variabele.
 
@@ -153,7 +153,7 @@ Retourneert de deling van het gehele getal van de twee door gegeven gehele getal
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Het getal dat wordt verdeeld. |
 | operand2 |Ja |int |Het getal dat wordt gebruikt om te delen. Mag niet 0 zijn. |
@@ -199,7 +199,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -224,7 +224,7 @@ Zet de waarde om in een getal met drijvende komma. U kunt deze functie alleen ge
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een getal met een drijvende komma. |
 
@@ -258,7 +258,7 @@ Hiermee wordt de opgegeven waarde geconverteerd naar een geheel getal.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een geheel getal. |
 
@@ -293,7 +293,7 @@ Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-j
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -318,7 +318,7 @@ Retourneert de maximum waarde van een matrix met gehele getallen of een door kom
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de maximum waarde op te halen. |
 
@@ -356,7 +356,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -382,7 +382,7 @@ Retourneert de minimum waarde van een matrix met gehele getallen of een door kom
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de minimum waarde op te halen. |
 
@@ -420,7 +420,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -446,7 +446,7 @@ Retourneert de rest van de deling van het gehele getal met behulp van de twee do
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Het getal dat wordt verdeeld. |
 | operand2 |Ja |int |Het getal dat wordt gebruikt om te delen, mag niet 0 zijn. |
@@ -491,7 +491,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
@@ -516,7 +516,7 @@ Retourneert de vermenigvuldiging van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Het eerste getal dat moet worden vermenigvuldigd. |
 | operand2 |Ja |int |Het tweede getal dat moet worden vermenigvuldigd. |
@@ -562,7 +562,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
@@ -587,7 +587,7 @@ Retourneert de aftrekking van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Het getal dat wordt afgetrokken van. |
 | operand2 |Ja |int |Het getal dat wordt afgetrokken. |
@@ -632,7 +632,7 @@ Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-j
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | subresultaat | Int | 4 |
 
@@ -649,8 +649,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](template-syntax.md).
-* U kunt meerdere sjablonen samenvoegen, Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md).
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](create-multiple-instances.md).
+* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
+* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
 * Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

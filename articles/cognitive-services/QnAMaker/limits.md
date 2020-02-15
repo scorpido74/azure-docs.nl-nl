@@ -2,13 +2,13 @@
 title: Limieten en grenzen - QnA Maker
 description: QnA Maker heeft meta-limieten voor het delen van de knowledge base en de service. Het is belangrijk dat u uw knowledge base binnen de grenzen om te testen en publiceren.
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760229"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252005"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker kennisdatabase limieten en grenzen
 
@@ -55,6 +55,8 @@ Het maximum aantal diep gaande koppelingen dat kan worden verkend voor het uitpa
 
 ## <a name="metadata-limits"></a>Limieten voor metagegevens
 
+Meta gegevens worden opgeslagen en vergeleken in kleine letters.
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Door de prijs categorie voor Azure Cognitive Search
 
 Het maximum aantal meta gegevens velden per Knowledge Base is gebaseerd op de **[limieten van uw Azure Cognitive Search-laag](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
@@ -69,7 +71,7 @@ De lengte en de acceptabele tekens voor de naam en waarde van de meta gegevens w
 
 |Item|Toegestane tekens|Overeenkomst met regex-patroon|Maximum aantal tekens|
 |--|--|--|--|
-|Name|Hulp<br>alfanumeriek (letters en cijfers)<br>`_` (onderstrepings teken)|`^[a-zA-Z0-9_]+$`|100|
+|Naam|Hulp<br>alfanumeriek (letters en cijfers)<br>`_` (onderstrepings teken)|`^[a-zA-Z0-9_]+$`|100|
 |Waarde|Maakt alles mogelijk behalve<br>`:` (dubbele punt)<br>`|` (verticale pijp)|`^[^:|]+$`|500|
 |||||
 
@@ -87,13 +89,13 @@ Algemene beperkingen met betrekking tot de inhoud in het knowledge base:
 * URL/HTML-pagina: 1.000.000 tekens
 
 ## <a name="create-knowledge-base-call-limits"></a>Limieten voor Knowledge base-aanroep maken:
-Deze vertegenwoordigen de limieten voor elk maken knowledge base-actie. dat wil zeggen, te klikken op *maken KB* of de CreateKnowledgeBase-API aan te roepen.
+Dit zijn de limieten voor elke actie voor het maken van een Knowledge Base; dat wil zeggen, klikken op *KB maken* of de CREATEKNOWLEDGEBASE-API aanroepen.
 * Maximum aantal alternatieve vragen per antwoord: 300
 * Maximum aantal URL's: 10
 * Maximum aantal bestanden: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Knowledge base-aanroep limieten bijwerken
-Dit zijn de limieten voor elke update-actie. dat wil zeggen, te klikken op *opslaan en trainen* of de UpdateKnowledgeBase-API aan te roepen.
+Dit duidt op de limieten voor elke update-actie. dat wil zeggen, klikken op *opslaan en trainen* of het aanroepen van de UPDATEKNOWLEDGEBASE-API.
 * Lengte van de bronnaam van elke: 300
 * Maximum aantal alternatieve vragen dat is toegevoegd of verwijderd: 300
 * Maximum aantal metagegevensvelden toegevoegd of verwijderd: 10

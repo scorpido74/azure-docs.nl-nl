@@ -3,12 +3,12 @@ title: Implementatie volgorde voor resources instellen
 description: Hierin wordt beschreven hoe u een resource instelt als afhankelijk van een andere resource tijdens de implementatie om ervoor te zorgen dat de resources in de juiste volg orde worden geïmplementeerd.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121961"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207686"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definieer de volg orde voor het implementeren van resources in Azure Resource Manager sjablonen
 
@@ -40,7 +40,7 @@ In het volgende voor beeld ziet u een schaalset voor virtuele machines die afhan
 }
 ```
 
-In het vorige voor beeld is een afhankelijkheid opgenomen in de resources die worden gemaakt via een Kopieer-lus met de naam **storageLoop**. Zie [meerdere exemplaren van resources maken in azure Resource Manager](create-multiple-instances.md)voor een voor beeld.
+In het vorige voor beeld is een afhankelijkheid opgenomen in de resources die worden gemaakt via een Kopieer-lus met de naam **storageLoop**. Zie [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md)voor een voor beeld.
 
 Bij het definiëren van afhankelijkheden kunt u de naam ruimte van de resource provider en het bron type toevoegen om ambiguïteit te voor komen. Als u bijvoorbeeld een load balancer en een virtueel netwerk wilt verduidelijken dat dezelfde namen kan hebben als andere resources, gebruikt u de volgende indeling:
 

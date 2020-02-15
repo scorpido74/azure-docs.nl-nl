@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 08d9245201a8e0899d47847eb10dcdff3c0d8d16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984673"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209644"
 ---
 # <a name="show-search-results-on-the-map"></a>Zoek resultaten weer geven op de kaart
 
@@ -37,7 +37,7 @@ Het vierde code blok maakt gebruik van de methode [SearchFuzzy](/javascript/api/
 
 Het laatste code blok past de camera grenzen voor de kaart aan met behulp van de eigenschap [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van de kaart.
 
-De zoek aanvraag, de gegevens bron, de symbool-laag en de camera grenzen bevinden zich in de kant-en-klare [event-listener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)van de kaart. We willen er zeker van zijn dat de resultaten worden weer gegeven nadat de kaart volledig is geladen.
+De zoek aanvraag, de gegevens bron, de symbool-laag en de camera grenzen bevinden zich in de [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) van de kaart. We willen er zeker van zijn dat de resultaten worden weer gegeven nadat de kaart volledig is geladen.
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Een zoek aanvraag indienen via de API voor ophalen

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025704"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212416"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -57,7 +57,10 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 
 ## <a name="use-the-standard-sku-load-balancer"></a>De *standaard* SKU-Load Balancer gebruiken
 
-Wanneer u een AKS-cluster maakt, wordt standaard de *standaard* -SKU Load Balancer gebruikt wanneer u services in dat cluster uitvoert. De Snelstartgids die gebruikmaakt van [Azure cli][aks-quickstart-cli] , implementeert bijvoorbeeld een voorbeeld toepassing die gebruikmaakt van de *standaard* -SKU Load Balancer. 
+Wanneer u een AKS-cluster maakt, wordt standaard de *standaard* -SKU Load Balancer gebruikt wanneer u services in dat cluster uitvoert. De Snelstartgids die gebruikmaakt van [Azure cli][aks-quickstart-cli] , implementeert bijvoorbeeld een voorbeeld toepassing die gebruikmaakt van de *standaard* -SKU Load Balancer.
+
+> [!IMPORTANT]
+> Open bare IP-adressen kunnen worden vermeden door een door de gebruiker gedefinieerde route (UDR) aan te passen. Als u het uitgaande type van een AKS-cluster opgeeft als UDR, kunt u de IP-inrichting en de installatie van de back-endadresgroep overs laan voor de AKS Azure-load balancer gemaakt. Zie [de `outboundType` van een cluster instellen op ' userDefinedRouting '](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Configureer de load balancer intern
 

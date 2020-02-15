@@ -4,12 +4,12 @@ description: Maak en implementeer serverloze python-code in de Cloud met behulp 
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16d4d5627ea297d825092009511915f5b6e734b6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157887"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212440"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een python-functie maken in azure die reageert op HTTP-aanvragen
 
@@ -97,7 +97,7 @@ In Azure Functions is een functie project een container voor een of meer afzonde
     cd LocalFunctionProj
     ```
     
-1. Voeg een functie toe aan uw project met behulp van de volgende opdracht, waarbij het argument `--name` de unieke naam van de functie is en het argument `--template` de trigger van de functie specificeert. `func new` een submap te maken die overeenkomt met de naam van de functie die geschikt is voor de gekozen taal van het project en een configuratie bestand met de naam *Function. json*.
+1. Voeg een functie toe aan uw project met behulp van de volgende opdracht, waarbij het argument `--name` de unieke naam van uw functie specificeert (HttpExample in dit geval) en het argument `--template` geeft de trigger van de functie aan (HTTP-trigger). Met deze `func new` opdracht maakt u een submap die overeenkomt met de naam van de functie die geschikt is voor de geselecteerde taal van het project en een configuratie bestand met de naam *Function. json*.
 
     ```
     func new --name HttpExample --template "HTTP trigger"
@@ -167,7 +167,7 @@ Voor HTTP-trigger ontvangt de functie aanvraag gegevens in de variabele `req` zo
 }
 ```
 
-Elke binding vereist een richting, een type en een unieke naam. De HTTP-trigger heeft een invoer binding van het type [`httpTrigger`](functions-bindings-http-webhook.md#trigger) en de uitvoer binding van het type [`http`](functions-bindings-http-webhook.md#output).
+Elke binding vereist een richting, een type en een unieke naam. De HTTP-trigger heeft een invoer binding van het type [`httpTrigger`](functions-bindings-http-webhook-trigger.md) en de uitvoer binding van het type [`http`](functions-bindings-http-webhook-output.md).
 
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren

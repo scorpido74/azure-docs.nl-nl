@@ -1,19 +1,19 @@
 ---
 title: Ondersteuning voor lokalisatie | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over ondersteunde talen voor de services in Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+description: In dit artikel vindt u meer informatie over ondersteunde talen voor de services in Microsoft Azure Maps.
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025432"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208145"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -22,10 +22,10 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps ondersteunde talen
 
-Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
+Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Name                   |  Kaarten | Search | Routes | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Naam                   |  Kaarten | Zoeken | Routing | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -64,7 +64,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 | IT-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japans               |       |        |         |     ✓    |                   |                |
 | KN-IN      | Kanarees                |       |       |         |     ✓    |                   |                |
-| kk-KZ      | Kazachstaans                 |       |    ✓   |         |     ✓    |                   |                |
+| kk-KZ      | Kazachs                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreaans                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Latijns-Amerikaans-Spaans |       |    ✓   |         |         |                   |                |
 | lv-LV      | Lets                |       |    ✓   |         |     ✓    |         ✓         |                |
@@ -109,7 +109,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 >
 > Na 1 augustus 2019 wordt met de **weer gave** -para meter de geretourneerde kaart inhoud voor de hierboven genoemde nieuwe regio's/landen gedefinieerd. Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven waarmee wordt aangegeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
 
-Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor de rest Api's en sdk's die door uw services worden gebruikt.
+Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor de rest api's en de sdk's, die door uw services worden gebruikt.
 >  
 >
 >  **Rest-Api's:**
@@ -142,12 +142,12 @@ Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor
 >    * Azure Maps Web SDK
 >    * Azure Maps Android-SDK
 
-De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers en stel de **weer gave** -para meter op de juiste wijze in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
+De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers. Stel vervolgens de **weer gave** -para meter op de juiste manier in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergeven         | Beschrijving                            |  Kaarten | Search | JS-Map Control |
+| Weergave         | Beschrijving                            |  Kaarten | Zoeken | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |
@@ -166,4 +166,4 @@ De volgende tabel bevat ondersteunde weer gaven.
 | SY           | Syrië (Arabische weer gave)                   |   ✓   |        |     ✓          |
 | TEZAM           | Jemen (Arabische weer gave)                   |   ✓   |        |     ✓          |
 | Auto         | De kaart gegevens retour neren op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
-| Gecentraliseerd      | Unified View (overige)                  |   ✓   |   ✓     |     ✓          |
+| Enkele      | Unified View (overige)                  |   ✓   |   ✓     |     ✓          |

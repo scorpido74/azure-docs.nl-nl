@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebruikt voor het ophalen van waarden over resources.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120538"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207005"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -124,7 +124,7 @@ De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkinge
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](create-multiple-instances.md#property-iteration)kunt u de functies list voor `input` gebruiken omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken met `count` omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
+De functies List kunnen alleen worden gebruikt in de eigenschappen van een resource definitie en de sectie outputs van een sjabloon of implementatie. In combi natie met [eigenschaps herhaling](copy-properties.md)kunt u de functies list voor `input` gebruiken omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken met `count` omdat het aantal moet worden bepaald voordat de lijst functie wordt opgelost.
 
 ### <a name="implementations"></a>Implementaties
 
@@ -496,7 +496,7 @@ Gebruik `'Full'` wanneer u resource waarden nodig hebt die geen deel uitmaken va
 
 ### <a name="valid-uses"></a>Geldige toepassingen
 
-De referentie-functie kan alleen worden gebruikt in de eigenschappen van de resourcedefinitie van een en de uitvoersectie van een sjabloon of de implementatie. Bij gebruik in combi natie met [eigenschaps herhaling](create-multiple-instances.md#property-iteration)kunt u de functie Reference gebruiken voor `input`, omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken met `count` omdat het aantal moet worden bepaald voordat de verwijzings functie wordt opgelost.
+De referentie-functie kan alleen worden gebruikt in de eigenschappen van de resourcedefinitie van een en de uitvoersectie van een sjabloon of de implementatie. Bij gebruik in combi natie met [eigenschaps herhaling](copy-properties.md)kunt u de functie Reference gebruiken voor `input`, omdat de expressie wordt toegewezen aan de eigenschap resource. U kunt deze niet gebruiken met `count` omdat het aantal moet worden bepaald voordat de verwijzings functie wordt opgelost.
 
 U kunt de functie Reference niet gebruiken in de uitvoer van een [geneste sjabloon](linked-templates.md#nested-template) om een resource te retour neren die u in de geneste sjabloon hebt geïmplementeerd. Gebruik in plaats daarvan een [gekoppelde sjabloon](linked-templates.md#linked-template).
 
@@ -758,7 +758,7 @@ Retourneert de unieke id van een resource. U kunt deze functie gebruiken als de 
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nee |tekenreeks (In GUID-indeling) |Standaard wordt het huidige abonnement. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een ander abonnement. |
+| subscriptionId |Nee |tekenreeks (In GUID-indeling) |Standaard wordt het huidige abonnement. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een ander abonnement. Geef deze waarde alleen op wanneer u implementeert in het bereik van een resource groep of een abonnement. |
 | resourceGroupName |Nee |tekenreeks |Standaardwaarde is de huidige resourcegroep. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een andere resourcegroep. Geef deze waarde alleen op wanneer u implementeert voor het bereik van een resource groep. |
 | resourceType |Ja |tekenreeks |Het type resource, met inbegrip van de naamruimte van de resource-provider. |
 | resourceName1 |Ja |tekenreeks |De naam van de resource. |
@@ -1064,6 +1064,6 @@ U gebruikt deze functie om de resource-ID op te halen voor een resource die word
 
 * Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
 * Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
-* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](create-multiple-instances.md).
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
 * Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

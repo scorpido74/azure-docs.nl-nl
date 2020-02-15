@@ -1,10 +1,10 @@
 ---
-title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux | Microsoft Docs
+title: Azure-Vm's hoge Beschik baarheid voor SAP NW op RHEL | Microsoft Docs
 description: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 02/13/2020
+ms.author: radeltch
+ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905038"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212785"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux
 
@@ -154,7 +154,7 @@ De Azure Marketplace bevat een installatie kopie voor Red Hat Enterprise Linux d
    1. Beheerders naam, beheerders wachtwoord of SSH-sleutel  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    1. Subnet-ID  
-   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/ **&lt;subnet naam&gt;**
+   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/&lt;naam van het **subnet&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
@@ -262,9 +262,9 @@ Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux in 
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Voorbereiden op SAP NetWeaver-installatie
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
@@ -403,7 +403,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
 1. **[1]** SAP NetWeaver ASCS installeren  
 
-   Installeer SAP NetWeaver ASCS als root op het eerste knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ASCS, bijvoorbeeld <b>NW1-ASCS</b>, <b>10.0.0.7</b> en het instantie nummer dat u hebt gebruikt voor de test van de load balancer, bijvoorbeeld <b>00</b>.
+   Installeer SAP NetWeaver ASCS als root op het eerste knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ASCS, bijvoorbeeld <b>NW1-ASCS</b>, <b>10.0.0.7</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de Load Balancer, bijvoorbeeld <b>00</b>.
 
    U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
 
@@ -459,7 +459,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
 1. **[2]** SAP NetWeaver ers installeren  
 
-   Installeer SAP NetWeaver ERS als root op het tweede knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ERS, bijvoorbeeld <b>NW1-Aers</b>, <b>10.0.0.8</b> en het instantie nummer dat u hebt gebruikt voor de test van de load balancer, bijvoorbeeld <b>02</b>.
+   Installeer SAP NetWeaver ERS als root op het tweede knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ERS, bijvoorbeeld <b>NW1-Aers</b>, <b>10.0.0.8</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de Load Balancer, bijvoorbeeld <b>02</b>.
 
    U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
 
@@ -535,12 +535,15 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -559,12 +562,15 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -575,6 +581,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    </code></pre>
 
    Als u een upgrade uitvoert van een oudere versie en overschakelt naar Server 2 in wachtrij, raadpleegt u SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > De time-outs in de bovenstaande configuratie zijn alleen voor beelden en moeten mogelijk worden aangepast aan de specifieke SAP-installatie. 
 
    Zorg ervoor dat de cluster status OK is en dat alle resources worden gestart. Het is niet belang rijk op welk knoop punt de resources worden uitgevoerd.
 

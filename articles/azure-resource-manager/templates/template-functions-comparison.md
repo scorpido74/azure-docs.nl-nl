@@ -3,33 +3,33 @@ title: Sjabloon functies-vergelijking
 description: Hierin worden de functies beschreven die in een Azure Resource Manager sjabloon kunnen worden gebruikt om waarden te vergelijken.
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 3f21066ae5882f51ef1e01343752eea725fece1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484049"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207306"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Vergelijkings functies voor Azure Resource Manager sjablonen
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
 
-* [equals](#equals)
-* [greater](#greater)
+* [gelijk is aan](#equals)
+* [groter](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [less](#less)
+* [jonge](#less)
 * [lessOrEquals](#lessorequals)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="equals"></a>equals
+## <a name="equals"></a>is gelijk aan
 `equals(arg1, arg2)`
 
 Hiermee wordt gecontroleerd of twee waarden gelijk zijn aan elkaar.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int, string, array of object |De eerste waarde die moet worden gecontroleerd op gelijkheid. |
 | Arg2 |Ja |int, string, array of object |De tweede waarde om te controleren op gelijkheid. |
@@ -124,12 +124,12 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | Waar |
-| checkStrings | Bool | Waar |
-| checkArrays | Bool | Waar |
-| checkObjects | Bool | Waar |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -162,9 +162,9 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | Waar |
+| checkNotEquals | Bool | True |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -185,7 +185,7 @@ Controleert of de eerste waarde groter is dan de tweede waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int of String |De eerste waarde voor de grotere vergelijking. |
 | Arg2 |Ja |int of String |De tweede waarde voor de grotere vergelijking. |
@@ -237,10 +237,10 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | Onwaar |
-| checkStrings | Bool | Waar |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -261,7 +261,7 @@ Hiermee wordt gecontroleerd of de eerste waarde groter is dan of gelijk is aan d
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int of String |De eerste waarde voor de grotere of gelijk zijnde vergelijking. |
 | Arg2 |Ja |int of String |De tweede waarde voor de groter of gelijke vergelijking. |
@@ -313,10 +313,10 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | Onwaar |
-| checkStrings | Bool | Waar |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -330,14 +330,14 @@ In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>less
+## <a name="less"></a>jonge
 `less(arg1, arg2)`
 
 Controleert of de eerste waarde lager is dan de tweede waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int of String |De eerste waarde voor de minder vergelijkingen. |
 | Arg2 |Ja |int of String |De tweede waarde voor de minder vergelijkingen. |
@@ -389,10 +389,10 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | Waar |
-| checkStrings | Bool | Onwaar |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -413,7 +413,7 @@ Hiermee wordt gecontroleerd of de eerste waarde kleiner is dan of gelijk is aan 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int of String |De eerste waarde voor de vergelijking met minder of gelijk aan. |
 | Arg2 |Ja |int of String |De tweede waarde voor de vergelijking met minder of gelijk aan. |
@@ -465,10 +465,10 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkInts | Bool | Waar |
-| checkStrings | Bool | Onwaar |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -483,8 +483,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](template-syntax.md).
-* U kunt meerdere sjablonen samenvoegen, Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md).
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](create-multiple-instances.md).
+* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
+* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
 * Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

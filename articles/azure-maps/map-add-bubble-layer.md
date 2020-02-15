@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933654"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208553"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Een tekenlaag aan een kaart toevoegen
 
@@ -25,7 +25,7 @@ Dit artikel laat u zien hoe u punt gegevens van een gegevens bron kunt weer geve
 
 ## <a name="add-a-bubble-layer"></a>Een bubbellaag toevoegen
 
-Met de volgende code wordt een matrix met punten geladen in een gegevens bron. Vervolgens worden de gegevens punten verbonden met een [tekenlaag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). De laag Bubble geeft de straal van elke bel weer met vijf pixels, een opvul kleur wit, een streek kleur blauw en een streek breedte van zes pixels. 
+Met de volgende code wordt een matrix met punten geladen in een gegevens bron. Vervolgens worden de gegevens punten verbonden met een [Bubble laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). De laag Bubble geeft de straal van elke bel weer met vijf pixels en een opvul kleur wit. En, een streek kleur blauw en een streek breedte van zes pixels. 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Labels weer geven met een Bubble Layer
 
-De volgende code laat zien hoe u een Bubble laag kunt gebruiken om een punt op de kaart en een symbool laag te renderen om een label weer te geven. Als u het pictogram van de laag Symbol wilt verbergen, stelt u de eigenschap `image` van de pictogram opties in op `'none'`.
+Deze code laat zien hoe u een Bubble laag kunt gebruiken om een punt op de kaart weer te geven. En hoe u een symbool laag kunt gebruiken om een label weer te geven. Als u het pictogram van de laag Symbol wilt verbergen, stelt u de eigenschap `image` van de pictogram opties in op `'none'`.
 
 <br/>
 

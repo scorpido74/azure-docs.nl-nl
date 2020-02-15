@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118808"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206120"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Ondersteuning van talen en regio's voor de Translator Text-API
 
@@ -54,9 +54,9 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Kroatisch|  `hr`    |Neural|
 |Tsjechisch| `cs`    |   Neural|
 |Deens|    `da`        |Neural|
-|Dutch| `nl`|   Neural|
+|Nederlands| `nl`|   Neural|
 |Nederlands|   `en`    |   Neural|
-|Estlands|  `et`    |   Neural|
+|Estisch|  `et`    |   Neural|
 |Fiji|    `fj`    |   Statische|
 |Filipijns|  `fil`   |   Statische|
 |Fins|   `fi`    |   Neural|
@@ -69,7 +69,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Hmong Daw| `mww`   |   Statische|
 |Hongaars| `hu`    |   Neural|
 |IJslands| `is`    |   Neural|
-|Bahasa Indonesia|    `id`    |   Statische|
+|Indonesisch|    `id`    |   Statische|
 |Iers | `ga`| Neural
 |Italiaans|   `it`    |   Neural|
 |Japans|  `ja`    |   Neural|
@@ -126,8 +126,8 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 |Bengalees  | `bn` | Bengaals `Beng` | <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
-| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |
-| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Vereenvoudigd Chinees `Hans` |
+| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |
+| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Vereenvoudigd Chinees `Hans` |
 | Gujarati | `gu`  | Gujarati `Gujr` | --> | Latijns `Latn` |
 | Hebreeuws | `he` | Hebreeuws `Hebr` | <--> | Latijns `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latijns `Latn` |
@@ -141,7 +141,7 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Servisch (Latijns) | `sr-Latn` | Latijns `Latn` | --> | Cyrillische `Cyrl`|
 | Tamil | `ta` | Tamil `Taml` | --> | Latijns `Latn` |
 | Telugu | `te` | Telugu `Telu` | --> | Latijns `Latn` |
-| Thais | `th` | Thais `Thai` | <--> | Latijns `Latn` |
+| Thais | `th` | Thais `Thai` | --> | Latijns `Latn` |
 
 ## <a name="dictionary"></a>Woordenlijst
 
@@ -159,8 +159,8 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
-| Dutch      | `nl`          |
-| Estlands      | `et`          |
+| Nederlands      | `nl`          |
+| Estisch      | `et`          |
 | Fins      | `fi`          |
 | Frans      | `fr`          |
 | Duits      | `de`          |
@@ -171,7 +171,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Hmong Daw      | `mww`          |
 | Hongaars      | `hu`          |
 | IJslands    | `is`  |
-| Bahasa Indonesia      | `id`          |
+| Indonesisch      | `id`          |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
 | Swahili      | `sw`          |
@@ -226,9 +226,9 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
-| Dutch      | `nl`          |
+| Nederlands      | `nl`          |
 | Nederlands    | `en`     |
-| Estlands      | `et`          |
+| Estisch      | `et`          |
 | Fins      | `fi`          |
 | Frans      | `fr`          |
 | Duits      | `de`          |
@@ -237,7 +237,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Hindi      | `hi`          |
 | Hongaars      | `hu`          |
 | IJslands | `is` |
-| Bahasa Indonesia|   `id`    |
+| Indonesisch|   `id`    |
 | Iers | `ga`  |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |

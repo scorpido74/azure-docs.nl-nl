@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024531"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206171"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
 
@@ -47,11 +47,11 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 > [!NOTE]
 > Zie [benoemde entiteits typen](named-entity-types.md)voor gedetailleerde taal ondersteuning voor de ner (named entity Recognition) v3 open bare preview.
 
-| Taal              | Taalcode | Sentiment | Sleutelfrasen | Herkenning van benoemde entiteiten | Entiteit koppelen |       Opmerkingen        |
+| Taal              | Taalcode | Stemming | Sleutel zinnen | Herkenning van benoemde entiteiten | Entiteit koppelen |       Opmerkingen        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabisch                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Tsjechisch                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Chinees-vereenvoudigd    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Chinees-vereenvoudigd    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` is ook geaccepteerd                   |
 | Chinees-traditioneel   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Deens                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Nederlands                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
@@ -64,7 +64,7 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 | Italiaans               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japans              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Koreaans                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| Noors (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Noors (Bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` is ook geaccepteerd                   |
 | Pools                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Portugees (Portugal) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` is ook geaccepteerd |
 | Portugees (Brazilië)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |

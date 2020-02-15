@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841026"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206256"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -119,7 +119,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
 | telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
-| userPrincipalName |wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName |wille keurige teken reeks waarde |(User. userPrincipalName-EQ "alias@domain") |
 | userType |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
@@ -144,7 +144,7 @@ De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntax
 | Bevat niet |-notContains |
 | Contains |-bevat |
 | Niet overeen |-notMatch |
-| overeen met |-overeenkomst |
+| Overeen met |-overeenkomst |
 | In | -in |
 | Niet in | -notIn |
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Extensie-eigenschappen en aangepaste extensie-eigenschappen
 
-Extensie kenmerken en aangepaste extensie-eigenschappen worden ondersteund als teken reeks eigenschappen in dynamische lidmaatschaps regels. Extensie kenmerken worden gesynchroniseerd vanaf de on-premises venster server AD en hebben de indeling ' ExtensionAttributeX ', waarbij X gelijk is aan 1-15. Hier volgt een voor beeld van een regel die gebruikmaakt van een uitbreidings kenmerk als een eigenschap:
+Extensie kenmerken en aangepaste extensie-eigenschappen worden ondersteund als teken reeks eigenschappen in dynamische lidmaatschaps regels. [Extensie kenmerken](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) worden gesynchroniseerd vanaf de on-premises venster server AD en hebben de indeling ' ExtensionAttributeX ', waarbij X gelijk is aan 1-15. Hier volgt een voor beeld van een regel die gebruikmaakt van een uitbreidings kenmerk als een eigenschap:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Aangepaste extensie-eigenschappen worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling van `user.extension_[GUID]_[Attribute]`, waarbij:
+[Aangepaste extensie-eigenschappen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling van `user.extension_[GUID]_[Attribute]`, waarbij:
 
 * [GUID] is de unieke id in azure AD voor de toepassing die de eigenschap heeft gemaakt in azure AD
 * [Kenmerk] is de naam van de eigenschap die is gemaakt

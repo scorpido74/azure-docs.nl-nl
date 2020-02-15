@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679962"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207022"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure functions-activiteit in Azure Data Factory
 
@@ -34,14 +34,14 @@ Het retour type van de Azure-functie moet een geldig `JObject`zijn. (Houd er wel
 | --- | --- | --- |
 | type   | De eigenschap type moet worden ingesteld op: **AzureFunction** | ja |
 | URL van de functie-app | De URL voor de Azure-functie-app. De indeling is `https://<accountname>.azurewebsites.net`. Deze URL is de waarde onder **URL** -gedeelte bij het weer geven van uw functie-app in de Azure Portal  | ja |
-| functie toets | Toegangs sleutel voor de Azure-functie. Klik op de sectie **beheren** voor de betreffende functie en kopieer de **functie sleutel** of de host- **sleutel**. Meer informatie vindt u hier: [Azure functions HTTP-triggers en-bindingen](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | ja |
+| functie toets | Toegangs sleutel voor de Azure-functie. Klik op de sectie **beheren** voor de betreffende functie en kopieer de **functie sleutel** of de host- **sleutel**. Meer informatie vindt u hier: [Azure functions HTTP-triggers en-bindingen](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure function-activiteit
 
 | **Eigenschap**  | **Beschrijving** | **Toegestane waarden** | **Vereist** |
 | --- | --- | --- | --- |
-| name  | Naam van de activiteit in de pijp lijn  | Tekenreeks | ja |
+| naam  | Naam van de activiteit in de pijp lijn  | Tekenreeks | ja |
 | type  | Type activiteit is ' AzureFunctionActivity ' | Tekenreeks | ja |
 | gekoppelde service | De gekoppelde Azure-functie service voor de bijbehorende Azure-functie-app  | Verwijzing naar gekoppelde service | ja |
 | Functie naam  | De naam van de functie in de Azure-functie-app die deze activiteit aanroept | Tekenreeks | ja |

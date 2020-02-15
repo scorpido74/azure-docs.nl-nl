@@ -2,14 +2,14 @@
 title: Wat is Block Chain Data Manager voor de Azure Block Chain-Service
 description: Block Chain Data Manager om Block Chain-gegevens vast te leggen, te transformeren en te leveren aan Event Grid onderwerpen.
 ms.date: 11/04/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.reviewer: chroyal
-ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326199"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209440"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Wat is Block Chain Data Manager voor Azure Blockchain Service?
 

@@ -1,22 +1,14 @@
 ---
 title: Gesprekken met meerdere schakelingen-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Gebruik prompts en context om de meerdere beurten, ook wel multi-turn genoemd, te beheren voor uw bot van de ene vraag naar de andere. Multi-turn is de mogelijkheid om een back-en-neer-conversatie te hebben waarbij de context van de vorige vraag de volgende vraag en het antwoord beïnvloedt.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843257"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210411"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
@@ -31,6 +23,9 @@ Bekijk de volgende demonstratie video om te zien hoe u werkt met meerdere zetten
 Sommige vragen kunnen niet in één keer worden beantwoord. Wanneer u uw client toepassing (chat-bot) ontwerpt, kan een gebruiker een vraag stellen die moet worden gefilterd of verfijnd om het juiste antwoord te bepalen. U doet dit door de beschik bare vragen te presen teren door de gebruiker *te laten opvolgen*.
 
 Wanneer een gebruiker een vraag stelt, retourneert QnA Maker het antwoord _en_ eventuele vervolg vragen. Met deze reactie kunt u de opvolgings vragen presen teren als keuzes.
+
+> [!CAUTION]
+> Vragen over meerdere schakelingen worden niet geëxtraheerd uit documenten met veelgestelde vragen. Als u meerdere extra-Schakel extractie nodig hebt, verwijdert u de vraag tekens die de QnA-paren als Veelgestelde vragen aanwijzen.
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Voor beeld van een multi-turn-gesprek met een chat sessie
 

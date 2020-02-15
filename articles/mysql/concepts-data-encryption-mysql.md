@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162358"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210428"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Gegevens versleuteling Azure Database for MySQL met een door de klant beheerde sleutel
 
 > [!NOTE]
 > Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met AskAzureDBforMySQL@service.microsoft.com.
 
-Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for MySQL stelt u in staat om uw QWN-sleutel (BYOK) voor gegevens bescherming in rust te brengen. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
+Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for MySQL stelt u in staat om uw eigen sleutel (BYOK) voor gegevens bescherming te zetten. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
 
 Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for MySQL is ingesteld op server niveau. Voor een bepaalde server wordt een door de klant beheerde sleutel, de sleutel versleutelings sleutel (KEK), gebruikt om de gegevens versleutelings sleutel (DEK) te versleutelen die door de service wordt gebruikt. De KEK is een asymmetrische sleutel die is opgeslagen in een [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar van een klant en door de klant wordt beheerd. De sleutel versleutelings sleutel (KEK) en de gegevens versleutelings sleutel (DEK) wordt verderop in dit artikel uitvoeriger beschreven.
 

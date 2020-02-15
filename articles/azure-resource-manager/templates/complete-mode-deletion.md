@@ -2,13 +2,13 @@
 title: Modus voor volledige verwijdering
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715588"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207805"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -121,6 +121,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. migrate](#microsoftmigrate)
 > - [Micro soft. MixedReality](#microsoftmixedreality)
 > - [Micro soft. NetApp](#microsoftnetapp)
+> - [Micro soft. notebooks](#microsoftnotebooks)
 > - [Micro soft. Network](#microsoftnetwork)
 > - [Micro soft. notification hubs](#microsoftnotificationhubs)
 > - [Micro soft. ObjectStore](#microsoftobjectstore)
@@ -153,6 +154,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. SiteRecovery](#microsoftsiterecovery)
 > - [Micro soft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Micro soft. Solutions](#microsoftsolutions)
+> - [Micro soft. SpoolService](#microsoftspoolservice)
 > - [Micro soft. SQL](#microsoftsql)
 > - [Micro soft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Micro soft. Storage](#microsoftstorage)
@@ -372,6 +374,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/billingProfiles/instructies | Nee |
 > | billingAccounts/billingProfiles/facturen | Nee |
 > | billingAccounts/billingProfiles/facturen/prijzen overzicht | Nee |
+> | billingAccounts/billingProfiles/facturen/trans acties | Nee |
 > | billingAccounts / billingProfiles / invoiceSections | Nee |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | Nee |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | Nee |
@@ -432,7 +435,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingRoleAssignments | Nee |
 > | billingRoleDefinitions | Nee |
 > | createBillingRoleAssignment | Nee |
-> | afdeling | Nee |
+> | Afdeling | Nee |
 > | enrollmentAccounts | Nee |
 > | factureer | Nee |
 > | Making | Nee |
@@ -489,7 +492,6 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | Redis | Ja |
-> | RedisConfigDefinition | Nee |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -712,6 +714,9 @@ Ga naar de naam ruimte van een resource provider:
 > | registers/getBuildSourceUploadUrl | Nee |
 > | registers/GetCredentials | Nee |
 > | registers/importImage | Nee |
+> | registers/privateEndpointConnectionProxies | Nee |
+> | registers/privateEndpointConnectionProxies/valideren | Nee |
+> | registers/privateLinkResources | Nee |
 > | registers/queueBuild | Nee |
 > | registers/regenerateCredential | Nee |
 > | registers/regenerateCredentials | Nee |
@@ -754,7 +759,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Budgetten | Nee |
 > | CloudConnectors | Nee |
 > | Connectors | Ja |
-> | afdeling | Nee |
+> | Afdeling | Nee |
 > | Dimensies | Nee |
 > | EnrollmentAccounts | Nee |
 > | dump | Nee |
@@ -797,7 +802,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | functies | Ja |
+> | Functies | Ja |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
@@ -975,7 +980,7 @@ Ga naar de naam ruimte van een resource provider:
 > | IotHubs | Ja |
 > | IotHubs/eventGridFilters | Nee |
 > | IotHubs/securitySettings | Nee |
-> | ProvisioningServices | Ja |
+> | provisioningServices | Ja |
 > | gebruik | Nee |
 
 ## <a name="microsoftdevops"></a>Micro soft. DevOps
@@ -1175,7 +1180,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | functies | Ja |
+> | Functies | Ja |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
@@ -1397,6 +1402,13 @@ Ga naar de naam ruimte van een resource provider:
 > | netAppAccounts/capacityPools/volumes | Ja |
 > | netAppAccounts/capacityPools/volumes/mountTargets | Ja |
 > | netAppAccounts/capacityPools/volumes/moment opnamen | Ja |
+
+## <a name="microsoftnotebooks"></a>Micro soft. notebooks
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | NotebookProxies | Nee |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1512,7 +1524,6 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | clusters | Ja |
-> | apparaten | Nee |
 > | linkTargets | Nee |
 > | storageInsightConfigs | Nee |
 > | werk ruimten | Ja |
@@ -1523,6 +1534,7 @@ Ga naar de naam ruimte van een resource provider:
 > | werk ruimten/privateEndpointConnections | Nee |
 > | werk ruimten/privateLinkResources | Nee |
 > | werk ruimten/query | Nee |
+> | werk ruimten/scopedPrivateLinkProxies | Nee |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1641,7 +1653,7 @@ Ga naar de naam ruimte van een resource provider:
 > | events | Nee |
 > | impactedResources | Nee |
 > | metagegevens | Nee |
-> | Meldingen | Nee |
+> | meldingen | Nee |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
@@ -1745,8 +1757,10 @@ Ga naar de naam ruimte van een resource provider:
 > | wijzer | Nee |
 > | meldingen | Nee |
 > | dataConnectors | Nee |
+> | dataConnectorsCheckRequirements | Nee |
 > | Rijg | Nee |
 > | entityQueries | Nee |
+> | Gevallen | Nee |
 > | officeConsents | Nee |
 > | instellingen | Nee |
 
@@ -1780,6 +1794,8 @@ Ga naar de naam ruimte van een resource provider:
 > | containerGroupSets | Ja |
 > | edgeclusters | Ja |
 > | edgeclusters/toepassingen | Nee |
+> | managedclusters | Ja |
+> | managedclusters / nodetypes | Nee |
 > | netwerken | Ja |
 > | secretstores | Ja |
 > | secretstores/certificaten | Nee |
@@ -1837,6 +1853,14 @@ Ga naar de naam ruimte van een resource provider:
 > | applicationDefinitions | Ja |
 > | toepassingen | Ja |
 > | jitRequests | Ja |
+
+## <a name="microsoftspoolservice"></a>Micro soft. SpoolService
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | registeredSubscriptions | Nee |
+> | afdruk wachtrij geplaatst | Ja |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1993,6 +2017,7 @@ Ga naar de naam ruimte van een resource provider:
 > | apparaten | Ja |
 > | crediteur | Nee |
 > | leveranciers/sku's | Nee |
+> | leveranciers/vnfs | Nee |
 > | vnfs | Ja |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

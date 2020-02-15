@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933203"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209712"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Een afbeelding slaag toevoegen aan een kaart
 
-Dit artikel laat u zien hoe u een afbeelding kunt bedekken naar een vaste set coördinaten op de kaart. Hier volgen enkele voor beelden van het type installatie kopieën die vaak op kaarten worden overlapt:
+Dit artikel laat u zien hoe u een afbeelding kunt bedekken naar een vaste set coördinaten. Hier volgen enkele voor beelden van verschillende afbeeldings typen die kunnen worden overlapt met kaarten:
 
 * Afbeeldingen die zijn vastgelegd vanuit Drones
 * Floorplans bouwen
@@ -62,9 +62,9 @@ Hier volgt het volledige code voorbeeld van de voor gaande code.
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>Een KML-bestand importeren als een wegdek bedekking
 
-In dit volgende voor beeld ziet u hoe u de KML-bedekkings gegevens als een afbeelding slaag op de kaart kunt bedekken. KML-bedekkingen bieden Noord-, Zuid-, Oost-en West-coördinaten en een rotatie linksom, terwijl de afbeelding slaag coördinaten voor elke hoek van de afbeelding verwacht. De KML-bedekking in dit voor beeld is van de Chartres-Cathedral en is bron van [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+In dit voor beeld wordt gedemonstreerd hoe u KML-oppervlak bedekkings gegevens kunt toevoegen als een afbeelding slaag op de kaart. KML-bedekkingen bieden Noord-, Zuid-, Oost-en West-coördinaten en een rotatie linksom. Maar de afbeelding slaag verwacht coördinaten voor elke hoek van de afbeelding. De KML-bedekking in dit voor beeld is voor de Chartres-Cathedral en is bron van [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
-De volgende code maakt gebruik van de statische `getCoordinatesFromEdges` functie van de klasse [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . De vier hoeken van de afbeelding worden berekend op basis van de gegevens voor Noord, Zuid, Oost en West, en van de draaiing van de KML-vlak bedekking.
+De code maakt gebruik van de functie static `getCoordinatesFromEdges` van de [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) -klasse. De vier hoeken van de afbeelding worden berekend met behulp van de Noord-, Zuid-, Oost-, West-en rotatie gegevens van de KML-vlak bedekking.
 
 <br/>
 

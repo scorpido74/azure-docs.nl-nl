@@ -14,12 +14,12 @@ ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7e19e9067052c516427391adcc615767446c4049
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697146"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212227"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: aanmelden bij een Azure Active Directory gebruiker met het toepassings patroon met meerdere tenants
 
@@ -174,9 +174,9 @@ Toepassingen met meerdere tenants kunnen ook toegangs tokens krijgen om Api's aa
 
 In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Office 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Office 365-services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
 
-## <a name="related-content"></a>Verwante inhoud
+## <a name="related-content"></a>Gerelateerde inhoud
 
-* [Voor beelden van multi tenant-toepassingen](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
+* [Voor beeld van multi tenant-toepassing](https://github.com/mspnp/multitenant-saas-guidance)
 * [Huisstijl richtlijnen voor toepassingen][AAD-App-Branding]
 * [Toepassings objecten en Service-Principal-objecten][AAD-App-SP-Objects]
 * [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps]

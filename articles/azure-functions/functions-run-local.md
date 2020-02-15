@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277966"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208879"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -29,7 +29,7 @@ Het ontwikkelen van functies op uw lokale computer en het publiceren van deze na
 > * [Voer de functie lokaal uit.](#start)
 > * [Publiceer het project naar Azure.](#publish)
 
-## <a name="core-tools-versions"></a>Versies van Core Tools
+## <a name="core-tools-versions"></a>Kern Hulpprogramma's versies
 
 Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is afhankelijk van uw lokale ontwikkel omgeving, de [keuze van de taal](supported-languages.md)en het vereiste ondersteunings niveau:
 
@@ -127,7 +127,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 1. Controleer het `/etc/apt/sources.list.d/dotnetdev.list`-bestand voor een van de juiste Linux-versie teken reeksen die hieronder worden weer gegeven:
 
-    | Linux-distributie | Versie |
+    | Linux-distributie | Version |
     | --------------- | ----------- |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
@@ -218,7 +218,7 @@ Deze instellingen worden standaard niet automatisch gemigreerd wanneer het proje
 De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de sectie omgevings variabelen van deze taalspecifieke naslag onderwerpen voor meer informatie:
 
 * [C#vooraf gecompileerde](functions-dotnet-class-library.md#environment-variables)
-* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#script (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -230,7 +230,7 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
+- Zoek en selecteer **opslag accounts**vanuit het [Azure-portal]. 
   ![opslag accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
@@ -324,7 +324,7 @@ In versie 2. x van de runtime varieert de start opdracht, afhankelijk van de taa
 func start --build
 ```
 
-#### <a name="javascript"></a>JavaScript
+#### <a name="javascript"></a>Javascript
 
 ```command
 func start
@@ -373,7 +373,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Bij lokaal uitvoeren wordt de autorisatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt als `authLevel = "anonymous"`. Zie het artikel over de [http-binding](functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.
+>Bij lokaal uitvoeren wordt de autorisatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt als `authLevel = "anonymous"`. Zie het artikel over de [http-binding](functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie.
 
 ### <a name="passing-test-data-to-a-function"></a>Test gegevens door geven aan een functie
 
@@ -517,7 +517,7 @@ De volgende opties voor de implementatie van de aangepaste container zijn beschi
 
 De aanbevolen manier om de uitvoering van uw functies te controleren is door te integreren met Azure-toepassing Insights. U kunt ook uitvoerings logboeken streamen naar uw lokale computer. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
-### <a name="application-insights-integration"></a>Application Insights-integratie
+### <a name="application-insights-integration"></a>Integratie van Application Insights
 
 Application Insights integratie moet worden ingeschakeld wanneer u de functie-app in azure maakt. Als uw functie-app om een bepaalde reden niet is verbonden met een Application Insights-exemplaar, is het eenvoudig om deze integratie uit te voeren in de Azure Portal. 
 
@@ -542,8 +542,8 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage
 [uitbreidings bundels]: functions-bindings-register.md#extension-bundles

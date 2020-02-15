@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193376"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251767"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -49,7 +49,7 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | De ISO-code van twee letters voor de taal. | nl |
-| {Culture: LCID}   | De LCID van de taal code. | 1043 |
+| {Culture: LCID}   | De LCID van de taal code. | 1033 |
 | {Culture: regionaam} | De ISO-code van twee tekens voor de regio. | VS |
 | {Culture: RFC5646} | De RFC5646-taal code. | nl-NL |
 
@@ -106,7 +106,7 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 
 ## <a name="using-claim-resolvers"></a>Claim resolvers gebruiken 
 
-U kunt met behulp van claim resolvers gebruikmaken van de volgende elementen: 
+U kunt claim resolvers gebruiken met de volgende elementen: 
 
 | Item | Element | Instellingen |
 | ----- | ----------------------- | --------|
@@ -123,16 +123,16 @@ U kunt met behulp van claim resolvers gebruikmaken van de volgende elementen:
 |Technisch profiel voor [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
 
 Instellingen: 
-1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld op `true`
-1. Het kenmerk voor de invoer-of uitvoer claims `AlwaysUseDefaultValue` moet worden ingesteld op `true`
+1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld op `true`.
+1. Het kenmerk voor de invoer-of uitvoer claims `AlwaysUseDefaultValue` moet worden ingesteld op `true`.
 
-## <a name="how-to-use-claim-resolvers"></a>Claim resolvers gebruiken
+## <a name="claim-resolvers-samples"></a>Voor beelden van claim oplossingen
 
 ### <a name="restful-technical-profile"></a>Onderliggend technisch profiel
 
 In een [](restful-technical-profile.md) onderliggend technisch profiel wilt u mogelijk de gebruikers taal, de beleids naam, het bereik en de client-id verzenden. Op basis van deze claims kan de REST API aangepaste bedrijfs logica uitvoeren en zo nodig een gelokaliseerd fout bericht genereren.
 
-In het volgende voor beeld wordt een onderliggend technisch profiel weer gegeven:
+In het volgende voor beeld ziet u een onderliggend technisch profiel met dit scenario:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -142,12 +142,13 @@ In het volgende voor beeld wordt een onderliggend technisch profiel weer gegeven
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -159,9 +160,9 @@ Met behulp van claim resolvers kunt u de aanmeldings naam of de directe aanmeldi
 
 ### <a name="dynamic-ui-customization"></a>Dynamische gebruikers interface aanpassen
 
-Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten zodat u de pagina-inhoud dynamisch kunt weer geven. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een aangepaste para meter die u doorgeeft vanuit uw web-of mobiele toepassing. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
+Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten om de pagina-inhoud dynamisch weer te geven. Hiermee kan bijvoorbeeld de achtergrond afbeelding op de Azure AD B2C registratie-of aanmeldings pagina worden gewijzigd op basis van een aangepaste para meter die u van uw web-of mobiele toepassing doorgeeft. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
 
-In het volgende voor beeld wordt in de query reeks een para meter met de naam **campaignId** weer gegeven met de waarde `hawaii`, een **taal** code van `en-US`en een **app** die de client-id vertegenwoordigt:
+In het volgende voor beeld wordt de query teken reeks parameter **campaignId** met de waarde `hawaii`, een **taal** code van `en-US`en **app** die de client-id vertegenwoordigt:
 
 ```XML
 <UserJourneyBehaviors>
@@ -173,10 +174,21 @@ In het volgende voor beeld wordt in de query reeks een para meter met de naam **
 </UserJourneyBehaviors>
 ```
 
-Als resultaat Azure AD B2C worden de bovenstaande para meters naar de pagina HTML-inhoud verzonden:
+Als gevolg hiervan worden Azure AD B2C de bovenstaande para meters naar de pagina HTML-inhoud verzonden:
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>Inhouds definitie
+
+In een [ContentDefinition](contentdefinitions.md) -`LoadUri`kunt u claim resolvers verzenden om inhoud vanaf verschillende locaties te halen, op basis van de gebruikte para meters. 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Technisch profiel Application Insights
@@ -195,4 +207,29 @@ Met Azure-toepassing inzichten en claim resolvers kunt u inzicht krijgen in het 
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>Beleid voor Relying Party
+
+In het technische profiel van een [Relying Party](relyingparty.md) beleid wilt u mogelijk de Tenant-id of correlatie-id verzenden naar de Relying Party toepassing binnen de JWT. 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

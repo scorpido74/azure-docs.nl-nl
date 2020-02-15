@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083231"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210496"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -584,6 +584,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
 Zie voor meer informatie de documentatie van [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+
+### <a name="understanding-service-state"></a>Informatie over de service status
+
+Tijdens de implementatie van het model ziet u mogelijk de wijziging van de service status terwijl deze volledig wordt geïmplementeerd.
+
+In de volgende tabel worden de verschillende service statussen beschreven:
+
+| Status van webservice | Beschrijving | Eind status?
+| ----- | ----- | ----- |
+| Overstappen | De service is in het implementatie proces. | Nee |
+| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | Nee |
+| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | Nee |
+| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Ja |
+| In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
 
 ### <a id="notebookvm"></a>Compute instance web service (dev/test)
 

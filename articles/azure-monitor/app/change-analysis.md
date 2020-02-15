@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665354"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211819"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -31,7 +31,7 @@ In het volgende diagram ziet u de architectuur van de wijzigings analyse:
 
 ![Architectuur diagram van de manier waarop wijzigingen in de analyse wijzigings gegevens worden opgehaald en biedt client hulpprogramma's](./media/change-analysis/overview.png)
 
-De huidige wijzigings analyse is geïntegreerd in de ervaring voor het **opsporen en oplossen van problemen** in de app service Web-app, en ook beschikbaar als een zelfstandige Blade in azure Portal.
+De huidige wijzigings analyse is geïntegreerd in de ervaring voor het **opsporen en oplossen van problemen** in de app service Web-app, en ook beschikbaar als een zelfstandig tabblad in azure Portal.
 Zie de sectie *wijzigingen weer geven voor alle resources in azure* voor toegang tot de Blade wijzigings analyse en de *wijzigings analyse voor de functie van web apps voor het* gebruik van de web-app-Portal verderop in dit artikel.
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Wijzigingen in bijgehouden eigenschappen Azure Resource Manager
@@ -56,8 +56,9 @@ Momenteel worden de volgende afhankelijkheden ondersteund:
 - Azure SQL
 
 ### <a name="enablement"></a>Modules
-De resource provider micro soft. ChangeAnalysis moet worden geregistreerd met een abonnement voor de Azure Resource Manager bijgehouden eigenschappen en de instellingen voor proxy Change data beschikbaar zijn. Wanneer u de web-app inschakelt om problemen op te lossen of de zelfstandige Blade voor het wijzigen van de analyse uit te voeren, wordt deze resource provider automatisch geregistreerd. Er zijn geen prestatie-en kosten implementaties voor uw abonnement.
-Voor wijzigingen in de gast van een web-app is afzonderlijke activering vereist voor het scannen van code bestanden in een web-app. Zie *Change-analyse inschakelen in de sectie problemen vaststellen en oplossen* ' verderop in dit artikel voor meer informatie.
+De resource provider micro soft. ChangeAnalysis moet worden geregistreerd met een abonnement voor de Azure Resource Manager bijgehouden eigenschappen en de instellingen voor proxy Change data beschikbaar zijn. Wanneer u het hulp programma voor het vaststellen en oplossen van problemen met de web-app invoert of het zelfstandige tabblad wijzigings analyse weer geven, wordt deze resource provider automatisch geregistreerd. Er zijn geen prestatie-en kosten implementaties voor uw abonnement. Wanneer u de functie voor het wijzigen van de analyse voor web-apps inschakelt (of inschakelt in het hulp programma problemen vaststellen en oplossen), heeft dit een negatieve invloed op de prestaties van de web-app en geen facturerings kosten.
+Voor wijzigingen in de gast van een web-app is afzonderlijke activering vereist voor het scannen van code bestanden in een web-app. Zie voor meer informatie [analyse van wijzigingen inschakelen in de sectie problemen vaststellen en oplossen](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) , verderop in dit artikel voor meer informatie.
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Wijzigingen voor alle resources in azure weer geven
 In Azure Monitor is er een zelfstandige Blade voor het wijzigen van de analyse om alle wijzigingen met inzichten en toepassings afhankelijkheden weer te geven.
@@ -73,12 +74,12 @@ Selecteer de resource groep en de resources om de wijzigingen weer te geven.
 U kunt inzichten en gerelateerde afhankelijkheids resources zien die uw toepassing hosten. Deze weer gave is ontworpen om toepassingen gericht te zijn voor ontwikkel aars om problemen op te lossen.
 
 De resources die momenteel worden ondersteund zijn:
-- Virtual Machines
+- Virtuele machines
 - Schaalset voor virtuele machines
 - Azure-netwerk bronnen
 - Een web-app met wijzigingen in de gast bestands tracering en omgevings variabelen
 
-Gebruik voor elke feedback de knop feedback verzenden in de Blade of het e-mail changeanalysisteam@microsoft.com.
+Gebruik de knop feedback verzenden in de Blade of het e-mail changeanalysisteam@microsoft.comvoor elke feedback.
 
 ![Scherm afbeelding van de knop feedback op de Blade wijzigings analyse](./media/change-analysis/change-analysis-feedback.png)
 

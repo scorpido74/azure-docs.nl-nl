@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718083"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210569"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Lab-accounts configureren in Azure Lab Services 
 In Azure Lab Services is een Lab-account een container voor beheerde Lab-typen zoals klassikale Labs. Een beheerder stelt een Lab-account in met Azure Lab Services en biedt toegang tot Lab-eigen aars die in het account Labs kunnen maken. In dit artikel wordt beschreven hoe u een Lab-account maakt, alle Lab-accounts weergeeft of een Lab-account verwijdert.
@@ -37,18 +37,6 @@ Als u een virtueel netwerk als peer netwerk wilt verbinden met het virtuele netw
 Labs die in dit account is gemaakt, is verbonden met het geselecteerde virtuele netwerk. Ze hebben toegang tot de resources in het geselecteerde virtuele netwerk. Zie [verbinding maken met het netwerk van uw Lab met een virtueel netwerk van een peer in Azure Lab Services](how-to-connect-peer-virtual-network.md)voor meer informatie.
 
 Wanneer u een virtueel netwerk voor het veld **virtuele peer netwerk** selecteert, is de optie **Lab maken voor het kiezen van Lab-locatie** is uitgeschakeld. De reden hiervoor is dat Labs in het lab-account zich in dezelfde regio bevinden als het lab-account om verbinding te maken met resources in het virtuele peer netwerk. 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Lab-Maker toestaan de locatie voor het lab te kiezen
-U kunt met behulp van de volgende stappen een Lab-Maker toestaan om Labs te maken op een andere locatie dan de locatie van het lab-account: 
-
-1. Selecteer op de pagina **Lab-account** de optie **Labs-configuratie** in het menu links.
-2. Selecteer **ingeschakeld** als u wilt dat de Lab-Maker een locatie voor het Lab kan selecteren, voor de locatie van Lab- **Maker toestaan**. Als deze is uitgeschakeld, worden de Labs automatisch gemaakt op dezelfde locatie als het lab-account. 
-    
-    Dit veld wordt uitgeschakeld wanneer u een virtueel netwerk selecteert voor het veld **virtuele peer netwerk** . De reden hiervoor is dat Labs in het lab-account zich in dezelfde regio bevinden als het lab-account waarmee ze toegang hebben tot resources in het virtuele netwerk van de peer. 
-1. Selecteer **Opslaan** op de werkbalk. 
-
-    ![Instelling voor Lab-locatie configureren](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Geef een adres bereik voor Vm's op in het lab
 De volgende procedure bevat stappen voor het opgeven van een adres bereik voor Vm's in het lab. Als u het bereik bijwerkt dat u eerder hebt opgegeven, is het gewijzigde adres bereik alleen van toepassing op virtuele machines die zijn gemaakt nadat de wijziging is aangebracht. 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e3bddef75bcf41b8c7a4d9693b622429130217
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4750673eb60529d812e4df71de9203d4d59a0cc9
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930478"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212257"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Zelf studie: Hsm's implementeren in een bestaand virtueel netwerk met behulp van CLI
 
@@ -232,20 +232,13 @@ Op dit moment hebt u alle resources toegewezen voor een implementatie van twee H
 
 ## <a name="delete-or-clean-up-resources"></a>Resources verwijderen of opschonen
 
-Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en worden geretourneerd aan de vrije pool. Uiteraard moet u zorg dragen voor eventuele vertrouwelijke gegevens van klanten die zich op het apparaat bevinden. Om gevoelige klantgegevens van het apparaat te verwijderen, moeten de fabrieksinstellingen op het apparaat worden teruggezet met behulp van de Gemalto-client. Raadpleeg de Gemalto-beheerdershandleiding voor het SafeNet Network Luna 7-apparaat en houd rekening met volgorde van de volgende opdrachten.
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `my file clear -f`
-4. `my public-key clear -f`
-5. `syslog rotate`
-
+Als u klaar bent met het HSM-apparaat, kan het als resource worden verwijderd en worden geretourneerd aan de vrije pool. Uiteraard moet u zorg dragen voor eventuele vertrouwelijke gegevens van klanten die zich op het apparaat bevinden. De beste manier om ' zeroize ' een apparaat te verkrijgen, is het wacht woord voor de HSM-beheerder niet de juiste drie keer op te halen (Opmerking: dit is geen apparaat beheerder, het is de daad werkelijke HSM-beheerder). Als veiligheids maatregel om belang rijk materiaal te beschermen, kan het apparaat niet worden verwijderd als Azure-resource totdat het de status in nul heeft.
 
 > [!NOTE]
 > Als u problemen hebt met de configuratie van een Gemalto-apparaat, neemt u contact op met [Gemalto-klantondersteuning](https://safenet.gemalto.com/technical-support/).
 
 
-Als u klaar bent met resources in deze resourcegroep, kunt u ze allemaal verwijderen door de volgende opdracht uit te voeren:
+Als u alle resources in deze resource groep hebt voltooid, kunt u deze allemaal verwijderen met de volgende opdracht:
 
 ```azurecli
 az group deployment delete \

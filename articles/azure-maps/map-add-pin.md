@@ -1,6 +1,6 @@
 ---
 title: Een symbool laag toevoegen aan een kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u de Symbol-laag kunt gebruiken om symbolen op een kaart aan te passen en toe te voegen met behulp van de Microsoft Azure Maps Web SDK.
+description: In dit artikel leert u hoe u de Symbol-laag kunt gebruiken om een symbool aan te passen en symbolen toe te voegen op een kaart met de Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933125"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209695"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Een symbool laag aan een kaart toevoegen
 
-Een symbool dat is verbonden met een gegevens bron en wordt gebruikt om een pictogram en/of tekst op een bepaald punt weer te geven. Symbool lagen worden gerenderd met behulp van WebGL en worden gebruikt om grote verzamelingen van punten op de kaart weer te geven. Vergeleken met HTML-markering, wordt met de laag Symbol een groot aantal punt gegevens op de kaart weer gegeven, met betere prestaties. De laag Symbol ondersteunt echter geen traditionele CSS-en HTML-elementen voor opmaak.  
+Een symbool verbinden met een gegevens bron en gebruiken om een pictogram of een tekst op een bepaald punt weer te geven. 
+
+Symbool lagen worden gerenderd met behulp van WebGL. Gebruik een symbool laag om grote verzamelingen van punten op de kaart weer te geven. Vergeleken met HTML-markering, wordt met de laag Symbol een groot aantal punt gegevens op de kaart weer gegeven, met betere prestaties. De laag Symbol ondersteunt echter geen traditionele CSS-en HTML-elementen voor opmaak.  
 
 > [!TIP]
 > Met symbool lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van punt geometrie worden weer gegeven, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` als u wilt, kunt u ook multi point-functies toevoegen.
@@ -33,7 +35,9 @@ De Maps-afbeelding sprite Manager laadt aangepaste installatie kopieën die word
 
 ## <a name="add-a-symbol-layer"></a>Een symboollaag toevoegen
 
-Voordat u een Symbol-laag aan de kaart kunt toevoegen, moet u een aantal stappen uitvoeren. Maak eerst een gegevens bron en voeg deze toe aan de kaart. Vervolgens kan een symbool laag worden gemaakt en door gegeven in de gegevens bron om de gegevens op te halen uit de gegevens bron. Ten slotte moeten gegevens worden toegevoegd aan de gegevens bron, zodat er iets kan worden gerenderd. De volgende code toont de code die aan de kaart moet worden toegevoegd nadat deze is geladen. Met de code wordt één punt op de kaart weer gegeven met behulp van een symbool laag. 
+Voordat u een Symbol-laag aan de kaart kunt toevoegen, moet u een aantal stappen uitvoeren. Maak eerst een gegevens bron en voeg deze toe aan de kaart. Maak een symbool laag. Geef vervolgens de gegevens bron door aan de symbool laag om de gegevens op te halen uit de gegevens bron. Voeg ten slotte gegevens toe aan de gegevens bron, zodat er iets wordt weer gegeven. 
+
+De volgende code laat zien wat er aan de kaart moet worden toegevoegd nadat deze is geladen. In dit voor beeld wordt één punt op de kaart weer gegeven met behulp van een symbool laag. 
 
 ```javascript
 //Create a data source and add it to the map.

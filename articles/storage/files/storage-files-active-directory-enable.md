@@ -4,22 +4,21 @@ description: Meer informatie over het inschakelen van verificatie op basis van i
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 01/06/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 489cb9e652d571b5322a1bd92663ca089e28b8cd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06ff14b23057755a643e5a57fbaf711798cca00e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980781"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210479"
 ---
-# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Azure Active Directory Domain Services authenticatie via SMB voor Azure Files inschakelen
+# <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services authenticatie inschakelen op Azure Files
 
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Zie [overzicht van Azure Active Directory-verificatie via SMB voor Azure files](storage-files-active-directory-overview.md)voor een overzicht van Azure AD-verificatie via smb voor Azure files.
-
+Zie [overzicht van Azure Active Directory-verificatie via SMB voor Azure files](storage-files-active-directory-overview.md)voor een overzicht van de verificatie op basis van identiteiten die op Azure files worden ondersteund. Dit artikel is gericht op het inschakelen van verificatie met Azure Active Directory Domain Services (Azure AD DS) op Azure Files. 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>Overzicht van de werk stroom
@@ -71,11 +70,11 @@ Voordat u Azure AD via SMB voor Azure Files inschakelt, moet u ervoor zorgen dat
 
 ## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Azure AD DS-verificatie inschakelen voor uw account
 
-Als u Azure AD DS-verificatie via SMB voor Azure Files wilt inschakelen, kunt u een eigenschap instellen voor opslag accounts die zijn gemaakt na 24 september 2018, met behulp van de Azure Portal, de Azure PowerShell of de Azure CLI. Als u deze eigenschap instelt, wordt het opslag account geregistreerd bij de bijbehorende Azure AD DS-implementatie. Azure AD DS-verificatie via SMB wordt vervolgens ingeschakeld voor alle nieuwe en bestaande bestands shares in het opslag account.
+Als u Azure AD DS-verificatie via SMB voor Azure Files wilt inschakelen, kunt u een eigenschap instellen voor opslag accounts met behulp van de Azure Portal, de Azure PowerShell of de Azure CLI. Als u deze eigenschap impliciet instelt, wordt het opslag account gekoppeld aan de gekoppelde Azure AD DS-implementatie. Azure AD DS-verificatie via SMB wordt vervolgens ingeschakeld voor alle nieuwe en bestaande bestands shares in het opslag account.
 
 Denk eraan dat u Azure AD DS-verificatie via SMB pas kunt inschakelen nadat u Azure AD DS hebt geïmplementeerd in uw Azure AD-Tenant. Zie de [vereisten](#prerequisites)voor meer informatie.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Voer de volgende stappen uit om Azure AD DS-verificatie via SMB met de [Azure Portal](https://portal.azure.com)in te scha kelen:
 
@@ -113,7 +112,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als u Azure AD-verificatie via SMB wilt inschakelen met Azure CLI, installeert u de nieuwste CLI-versie (versie 2.0.70 of nieuwer). Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie over het installeren van Azure cli.
 
@@ -147,11 +146,11 @@ We hebben twee ingebouwde rollen voor Azure geïntroduceerd voor het verlenen va
 
 U kunt de Azure Portal, Power shell of Azure CLI gebruiken om de ingebouwde rollen toe te wijzen aan de Azure AD-identiteit van een gebruiker voor het verlenen van machtigingen op share niveau.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 Voer de volgende stappen uit om een RBAC-rol toe te wijzen aan een Azure AD-identiteit met behulp van de [Azure Portal](https://portal.azure.com):
 
 1. Ga in het Azure Portal naar uw bestands share of [Maak een bestands share in azure files](storage-how-to-create-file-share.md).
-2. Selecteer **toegangsbeheer (IAM)** .
+2. Selecteer **Access Control (IAM)** .
 3. Selecteer **een roltoewijzing toevoegen**
 4. Selecteer in de Blade **roltoewijzing toevoegen** de geschikte ingebouwde rol (opslag BESTANDS gegevens SMB-share, opslag BESTANDS gegevens SMB delen Inzender) uit de lijst met **functies** . Zorg ervoor dat de optie **toegang toewijzen aan** de standaard instelling: **Azure AD-gebruiker,-groep of Service-Principal**. Selecteer de Azure AD-doel-id op naam of e-mail adres.
 5. Selecteer **Opslaan** om de roltoewijzings bewerking te volt ooien.

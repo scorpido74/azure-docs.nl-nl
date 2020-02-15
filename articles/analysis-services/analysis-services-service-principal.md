@@ -4,23 +4,21 @@ description: Meer informatie over het maken van een service-principal voor het a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572610"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251665"
 ---
 # <a name="automation-with-service-principals"></a>Automatisering met service-principals
 
 Service-principals zijn een Azure Active Directory-toepassingsresource die u in uw tenant maakt om onbeheerde bewerkingen op resource- en serviceniveau uit te voeren. Ze zijn een uniek type *gebruikers identiteit* met een toepassings-id en wacht woord of certificaat. Een service-principal heeft alleen de machtigingen die nodig zijn om taken uit te voeren die zijn gedefinieerd door de rollen en machtigingen waarvoor deze is toegewezen. 
 
 In Analysis Services worden service-principals gebruikt met Azure Automation, de Power Shell-modus voor installatie zonder toezicht, aangepaste client toepassingen en web-apps voor het automatiseren van algemene taken. Bijvoorbeeld: servers inrichten, modellen implementeren, gegevens vernieuwen, omhoog/omlaag schalen en onderbreken/hervatten kunnen allemaal worden geautomatiseerd met Service-principals. Machtigingen worden toegewezen aan service-principals via het lidmaatschap van de rol, net als bij gewone UPN-accounts voor Azure AD.
-
-Analysis Services biedt ook ondersteuning voor bewerkingen die worden uitgevoerd door beheerde identiteiten met Service-principals. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) en Azure- [Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)voor meer informatie.
 
 ## <a name="create-service-principals"></a>Service-principals maken
  
@@ -92,7 +90,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO en ADOMD 
 
-Bij het maken van verbinding met client toepassingen en web-apps, [AMO-en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of @no_ _t_2_ .`cert:thumbprint` 
+Bij het maken van verbinding met client toepassingen en web apps, [AMO en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of `cert:thumbprint`. 
 
 In het volgende voor beeld worden `appID` en een `password` gebruikt voor het uitvoeren van een vernieuwings bewerking voor een model database:
 

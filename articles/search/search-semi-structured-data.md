@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112246"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251988"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search
 
@@ -83,7 +83,7 @@ Voer de volgende drie API-aanroepen uit vanuit de REST-client.
 
 ## <a name="create-a-data-source"></a>Een gegevensbron maken
 
-Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)wordt een Azure Cognitive Search-object gemaakt waarmee wordt opgegeven welke gegevens moeten worden geïndexeerd.
+Met de [Create Data Source-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) wordt een Azure Cognitive Search-object gemaakt waarmee wordt opgegeven welke gegevens moeten worden geïndexeerd.
 
 Het eindpunt van deze aanroep is `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice. 
 
@@ -126,7 +126,7 @@ Het antwoord moet er als volgt uitzien:
 
 ## <a name="create-an-index"></a>Een index maken
     
-De tweede aanroep is [Create Index API](https://docs.microsoft.com/rest/api/searchservice/create-indexer), waarmee een Azure Cognitive search-index wordt gemaakt waarmee alle Doorzoek bare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
+De tweede aanroep is [Create Index API](https://docs.microsoft.com/rest/api/searchservice/create-index), waarmee een Azure Cognitive search-index wordt gemaakt waarmee alle Doorzoek bare gegevens worden opgeslagen. Een index geeft alle parameters en hun kenmerken op.
 
 De URL voor deze aanroep is `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Vervang `[service name]` door de naam van uw zoekservice.
 

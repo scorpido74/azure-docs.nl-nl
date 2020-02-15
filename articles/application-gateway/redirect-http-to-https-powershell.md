@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 480ceb4e13843ebeedf155f31aedacc5439a38de
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047424"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251716"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure PowerShell
 
-U kunt de Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor SSL-beëindiging. Een regel voor doorsturen wordt gebruikt om HTTP-verkeer omleiden naar de HTTPS-poort in uw application gateway. In dit voorbeeld maakt u ook een [virtuele-machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-endpool van de toepassingsgateway met twee exemplaren van de virtuele machine. 
+U kunt de Azure PowerShell gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor SSL-beëindiging. Een regel voor doorsturen wordt gebruikt om HTTP-verkeer omleiden naar de HTTPS-poort in uw application gateway. In dit voor beeld maakt u ook een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-end-pool van de toepassings gateway die twee exemplaren van virtuele machines bevat. 
 
 In dit artikel leert u het volgende:
 
@@ -31,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). De opdrachten in deze zelfstudie, hebt u ook nodig om uit te voeren `Login-AzAccount` voor het maken van een verbinding met Azure.
+Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u de opdrachten in deze zelf studie wilt uitvoeren, moet u ook `Login-AzAccount` uitvoeren om een verbinding te maken met Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
@@ -134,9 +134,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>De standaard-listener en regel maken
 
-Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier naar de back-endpool door te sturen. In dit voorbeeld maakt u een basis-listener die luistert naar HTTPS-verkeer op de basis-URL. 
+Een listener is nodig om de toepassingsgateway in stat te stellen het verkeer op de juiste manier naar de back-endpool door te sturen. In dit voorbeeld maakt u een basis-listener die luistert naar HTTPS-verkeer op de basis-URL. 
 
-Maak een certificaat object met behulp van [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) en maak een listener met de naam *appGatewayHttpListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie, de frontend-poort en het certificaat dat u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Maak een certificaat object met behulp van [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) en maak een listener met de naam *appGatewayHttpListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie, de frontend-poort en het certificaat dat u eerder hebt gemaakt. Er is een regel vereist zodat de listener weet welke back-endpool voor inkomend verkeer moet worden gebruikt. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```powershell
 $pwd = ConvertTo-SecureString `
@@ -258,7 +258,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset maken
 
-In dit voorbeeld maakt u een virtuele-machineschaalset om servers op te geven voor de back-endpool in de toepassingsgateway. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
+In dit voorbeeld maakt u een virtuele-machineschaalset om de back-endpool in de toepassingsgateway van servers te voorzien. U wijst de schaalset toe aan de back-endpool wanneer u de IP-instellingen configureert.
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -283,7 +283,7 @@ Set-AzVmssStorageProfile $vmssConfig `
   -ImageReferencePublisher MicrosoftWindowsServer `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `
-  -ImageReferenceVersion latest
+  -ImageReferenceVersion latest `
   -OsDiskCreateOption FromImage
 Set-AzVmssOsProfile $vmssConfig `
   -AdminUsername azureuser `
@@ -318,7 +318,7 @@ Update-AzVmss `
   -VirtualMachineScaleSet $vmss
 ```
 
-## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
+## <a name="test-the-application-gateway"></a>Toepassingsgateway testen
 
 U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Bijvoorbeeld: http://52.170.203.149
 
@@ -330,7 +330,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 Voor het accepteren van de beveiligingswaarschuwing als u een zelfondertekend certificaat hebt gebruikt, selecteert u **Details** en vervolgens **Ga verder naar de webpagina**. Uw beveiligde IIS-website wordt vervolgens weergegeven zoals in het volgende voorbeeld:
 
-![Basis-URL testen in de toepassingsgateway](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
+![Basis-URL testen in toepassingsgateway](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

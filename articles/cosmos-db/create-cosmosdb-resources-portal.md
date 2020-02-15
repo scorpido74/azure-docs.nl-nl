@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 58fa891503342ac0ec9d41e9c458a71d18e58161
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/05/2020
+ms.openlocfilehash: a933caf0b0033cdcd1f27d4f795ba6466f34072a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445609"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210326"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Snelstartgids: een Azure Cosmos-account,-Data Base,-container en-items maken op basis van de Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cosmosdb-resources-portal.md)
+> * [Azure-portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -51,7 +51,7 @@ U kunt de Data Explorer in de Azure Portal gebruiken om een Data Base en contain
     
     Mogelijk moet u naar rechts schuiven om het venster **container toevoegen** weer te geven.
     
-    ![Azure Portal Data Explorer, deelvenster Container toevoegen](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Het deel venster Azure Portal Data Explorer, container toevoegen](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
 1.  Voer in het deel venster **container toevoegen** de instellingen voor de nieuwe container in.
     
@@ -59,8 +59,8 @@ U kunt de Data Explorer in de Azure Portal gebruiken om een Data Base en contain
     |---|---|---|
     |**Database-id**|Takenlijst|Voer *ToDoList* in als de naam voor de nieuwe data base. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Schakel de optie **doorvoer database inrichten** in, zodat u de door Voer die is ingericht voor de data base, kunt delen in alle containers in de data base. Deze optie helpt ook bij het besparen van kosten. |
     |**Doorvoer**|400|De door Voer bij 400 aanvraag eenheden per seconde (RU/s) behouden. U kunt de doorvoer later opschalen als u de latentie wilt beperken.| 
-    |**Container-id**|Items|Voer *items* in als de naam voor de nieuwe container. Voor id's van containers gelden dezelfde tekenvereisten als voor databasenamen.|
-    |**Partitiesleutel**| /category| Het voor beeld dat in dit artikel wordt beschreven, maakt gebruik van *Category* als de partitie sleutel.|
+    |**Container-ID**|Items|Voer *items* in als de naam voor de nieuwe container. Container-Id's hebben dezelfde teken vereisten als database namen.|
+    |**Partitie sleutel**| /category| Het voor beeld dat in dit artikel wordt beschreven, maakt gebruik van *Category* als de partitie sleutel.|
 
     
     Voeg geen **unieke sleutels** toe voor dit voor beeld. Met unieke sleutels kunt u een laag van gegevens integriteit toevoegen aan de data base door de uniekheid van een of meer waarden per partitie sleutel te garanderen. Zie [unieke sleutels in azure Cosmos DB](unique-keys.md)voor meer informatie.
@@ -73,7 +73,7 @@ Gegevens toevoegen aan uw nieuwe Data Base met behulp van Data Explorer.
 
 1. In **Data Explorer**vouwt u de **ToDoList** -data base uit en vouwt u de container **items** uit. Selecteer vervolgens **items**en selecteer vervolgens **Nieuw item**. 
    
-   ![Nieuwe documenten maken in Data Explorer in Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   ![Nieuwe documenten maken in Data Explorer in de Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
 1. Voeg de volgende structuur toe aan het document aan de rechter kant van het deel venster **documenten** :
 

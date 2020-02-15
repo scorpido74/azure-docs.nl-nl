@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845903"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210222"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Uw eerste Power shell-functie maken in azure
 
@@ -25,7 +25,7 @@ De volgende stappen worden ondersteund op macOS-, Windows-en Linux-besturings sy
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 * [Power shell core](/powershell/scripting/install/installing-powershell-core-on-windows) installeren
 
@@ -61,7 +61,7 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
 1. Kies **http trigger** als de sjabloon voor uw eerste functie, gebruik `HTTPTrigger` als functie naam en kies een autorisatie **functie**niveau.
 
     > [!NOTE]
-    > Het **functie** autorisatie niveau vereist een [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) waarde bij het aanroepen van het functie-eind punt in Azure. Dit maakt het moeilijker voor iedereen om uw functie aan te roepen.
+    > Het **functie** autorisatie niveau vereist een [functie sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) waarde bij het aanroepen van het functie-eind punt in Azure. Dit maakt het moeilijker voor iedereen om uw functie aan te roepen.
 
 1. Kies **Add to workspace** (Aan werkruimte toevoegen) als daarom wordt gevraagd.
 

@@ -1,6 +1,6 @@
 ---
 title: Een heatmap aan een kaart toevoegen | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over het toevoegen van een heatmap aan een kaart met behulp van de Microsoft Azure Maps Web SDK.
+description: In dit artikel leert u hoe u een heatmap aan een kaart toevoegt met behulp van de Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986237"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208536"
 ---
 # <a name="add-a-heat-map-layer"></a>Een heatmap-laag toevoegen
 
@@ -76,13 +76,13 @@ In het vorige voor beeld is de heatmap aangepast door de opties voor RADIUS en d
 
   | Expressie voor interpolatie kleur | Expressie met stap kleur | 
   |--------------------------------|--------------------------|
-  | \[<br/>&nbsp;&nbsp;&nbsp;interpoleing &nbsp;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' lineaire '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-dichtheid '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, ' transparant ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' paars ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;stap,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-dichtheid '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;transparent,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' Navy ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, ' groen ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, ' Yellow ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, ' Red '<br/>\] |   
+  | \[<br/>&nbsp;&nbsp;&nbsp;interpoleing &nbsp;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' lineaire '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-dichtheid '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, ' transparant ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' paars ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;stap,<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[' heatmap-dichtheid '\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;transparent,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' Navy ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, ' groen ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, ' Yellow ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, ' Red '<br/>\] |   
 
 - `opacity`: Hiermee geeft u op hoe ondoorzichtige of transparante de laag van de heatmap.
-- `intensity`: past een vermenigvuldiger toe op het gewicht van elk gegevens punt om de algehele intensiteit van de heatmap te verg Roten. Dit maakt een verschil in het gewicht van gegevens punten, waardoor het eenvoudiger wordt om te visualiseren.
+- `intensity`: past een vermenigvuldiger toe op het gewicht van elk gegevens punt om de algehele intensiteit van de heatmap te verg Roten. Dit veroorzaakt een verschil in het gewicht van gegevens punten, waardoor het eenvoudiger wordt om te visualiseren.
 - `weight`: standaard hebben alle gegevens punten een gewicht van 1 en worden ze gelijk gewogen. De optie gewicht fungeert als een vermenigvuldiger en u kunt deze instellen als een getal of een expressie. Als een getal als gewicht is ingesteld, is het de gelijkwaardigheid van het plaatsen van elk gegevens punt op de kaart twee keer. Als het gewicht bijvoorbeeld 2 is, verdubbelt de dichtheid. Als u de optie gewicht instelt op een getal, wordt de heatmap op een vergelijk bare manier weer gegeven als met de optie intensiteit. 
 
-  Als u echter een expressie gebruikt, kan het gewicht van elk gegevens punt worden gebaseerd op de eigenschappen van elk gegevens punt. Stel bijvoorbeeld dat elk gegevens punt een aard beving vertegenwoordigt. Een belang rijke metriek van elk bevings gegevens punt is een waarde van grootte. Aard bevingen gebeuren altijd, maar de meeste hebben een lage grootte en zijn niet opgemerkt. Door gebruik te maken van de waarde in een expressie om het gewicht aan elk gegevens punt toe te wijzen, krijgt u een beter overzicht van de significantie van aard bevingen in de heatmap.
+  Als u echter een expressie gebruikt, kan het gewicht van elk gegevens punt worden gebaseerd op de eigenschappen van elk gegevens punt. Stel bijvoorbeeld dat elk gegevens punt een aard beving vertegenwoordigt. De waarde voor de grootte is belang rijk voor elk gegevens punt in de aard van de kosten. Aard bevingen gebeuren altijd, maar de meeste hebben een lage grootte en zijn niet opgemerkt. Gebruik de waarde magnitude in een expressie om het gewicht aan elk gegevens punt toe te wijzen. Door gebruik te maken van de waarde voor het gewicht, krijgt u een beter overzicht van de significantie van aard bevingen in de heatmap.
 - `source` en `source-layer`: Hiermee kunt u de gegevens bron bijwerken.
 
 Hier vindt u een hulp programma voor het testen van de verschillende opties voor de heatmap.

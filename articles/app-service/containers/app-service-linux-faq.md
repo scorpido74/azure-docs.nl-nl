@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687600"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251801"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Veelgestelde vragen over Azure App Service in Linux
 
@@ -30,9 +30,9 @@ U kunt alle docker-bestanden vinden op [github](https://github.com/azure-app-ser
 
 **Wat zijn de verwachte waarden voor de sectie opstart bestand bij het configureren van de runtime stack?**
 
-| Kolommen           | Verwachte waarde                                                                         |
+| Stack           | Verwachte waarde                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | de opdracht voor het starten van uw JAR-app (bijvoorbeeld `java -jar my-app.jar --server.port=80`) |
+| Java SE         | de opdracht voor het starten van uw JAR-app (bijvoorbeeld `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
 | Tomcat, Wildfly | de locatie van een script om de benodigde configuraties uit te voeren (bijvoorbeeld `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | het PM2-configuratie bestand of het script bestand                                |
 | .Net core       | de gecompileerde DLL-naam als `dotnet <myapp>.dll`                                 |
@@ -78,7 +78,7 @@ Als de Git-implementatie niet kan worden uitgevoerd in uw Linux-web-app, kiest u
 
 - Gebruik de functie continue levering (preview): u kunt de bron code van uw app opslaan in een Azure DevOps Git opslag plaats of GitHub opslag plaats om Azure Continuous Delivery te gebruiken. Zie [continue levering configureren voor Linux-web-apps](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)voor meer informatie.
 
-- De [API voor zip-implementatie](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)gebruiken: als u deze API wilt gebruiken, [ssh in uw web-app](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) en gaat u naar de map waar u de code wilt implementeren. Voer de volgende code uit:
+- De [API voor zip-implementatie](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)gebruiken: als u deze API wilt gebruiken, [ssh in uw web-app](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) en gaat u naar de map waar u de code wilt implementeren. Voer de volgende code:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy

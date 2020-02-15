@@ -1,6 +1,6 @@
 ---
-title: Informatie over Azure IoT Hub-bestand uploaden | Microsoft Docs
-description: Handleiding voor ontwikkelaars - gebruik de functionaliteit voor het uploaden van IoT-Hub voor het beheren van uploaden van vanaf een apparaat naar een Azure storage blob-container bestanden.
+title: Meer informatie over het uploaden van Azure IoT Hub bestand | Microsoft Docs
+description: 'Ontwikkelaars handleiding: gebruik de functie voor het uploaden van bestanden van IoT Hub voor het beheren van het uploaden van bestand van een apparaat naar een Azure Storage-BLOB-container.'
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,40 +8,40 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e10c0f9babca7719ff496e7068ad1564670fee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080423"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209151"
 ---
 # <a name="upload-files-with-iot-hub"></a>Bestanden uploaden met IoT Hub
 
-Zoals beschreven in de [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md) artikel, een apparaat kunt uploaden van een bestand starten door het verzenden van een melding via een apparaat gerichte-eindpunt ( **/devices/ {apparaat-id} / bestanden**). Wanneer een apparaat aan IoT-Hub gecommuniceerd dat het uploaden voltooid is, IoT-Hub verzendt een melding van bestand uploaden via de **/messages/servicebound/filenotifications** gerichte service-eindpunt.
+Zoals beschreven in het artikel over [IOT hub-eind punten](iot-hub-devguide-endpoints.md) kan een bestand worden geüpload door een melding te verzenden via een eind punt op basis van een apparaat ( **/devices/{deviceId}/files**). Wanneer een apparaat IoT Hub dat een upload is voltooid, verzendt IoT Hub een bericht over het uploaden van een bestand via het service Facing-eind punt van de **/Messages/servicebound/filenotifications** .
 
-In plaats van berichten via IoT Hub zelf uitgeven van de fungeert IoT Hub in plaats daarvan als een functie voor berichtverzending naar een gekoppeld Azure Storage-account. Een apparaat vraagt een token van het opslagaccount van IoT-Hub die specifiek is voor het bestand dat het apparaat wenst te uploaden. Het apparaat de SAS-URI gebruikt om het bestand uploaden naar opslag, en wanneer het uploaden voltooid is het apparaat een melding van voltooiing naar IoT Hub verzendt. IoT Hub controleert of het bestand te uploaden is voltooid en een bericht over een upload vervolgens toegevoegd aan het meldingseindpunt service gerichte-bestand.
+In plaats van berichten te brokeren via IoT Hub zichzelf, IoT Hub in plaats daarvan als een verzender naar een gekoppeld Azure Storage-account. Een apparaat vraagt een opslag token op van IoT Hub dat specifiek is voor het bestand dat het apparaat wil uploaden. Het apparaat gebruikt de SAS-URI voor het uploaden van het bestand naar de opslag en wanneer het uploaden is voltooid, stuurt het apparaat een melding van voltooiing naar IoT Hub. IoT Hub controleert of het uploaden van het bestand is voltooid en voegt vervolgens een bericht over het uploaden van een bestand toe aan het eind punt voor bestands meldingen op de service.
 
-Voordat u een bestand naar IoT Hub vanaf een apparaat uploaden, moet u uw hub door configureren [koppelen van een Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) account toe.
+Voordat u een bestand uploadt naar IoT Hub van een apparaat, moet u uw hub configureren door [een Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) -account aan het te koppelen.
 
-Uw apparaat kunt vervolgens [initialiseren uploaden](iot-hub-devguide-file-upload.md#initialize-a-file-upload) en vervolgens [kennis van IoT-hub](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) wanneer het uploaden is voltooid. (Optioneel) wanneer een apparaat aan IoT-Hub gecommuniceerd dat het uploaden voltooid is, de service kan genereren een [Meldingsbericht](iot-hub-devguide-file-upload.md#file-upload-notifications).
+Uw apparaat kan vervolgens [een upload initialiseren](iot-hub-devguide-file-upload.md#initialize-a-file-upload) en vervolgens [IOT hub waarschuwen](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) wanneer het uploaden is voltooid. Wanneer een apparaat aangeeft IoT Hub dat het uploaden is voltooid, kan de service een [meldings bericht](iot-hub-devguide-file-upload.md#file-upload-notifications)genereren.
 
 ### <a name="when-to-use"></a>Wanneer gebruikt u dit?
 
-Uploaden van het bestand gebruiken voor het verzenden van media-bestanden en grote telemetrie batches geüpload door tijdelijk verbonden apparaten of gecomprimeerd om bandbreedte te sparen.
+Gebruik bestand uploaden om media bestanden en grote telemetriegegevens te verzenden die worden geüpload door apparaten die op een regel matig zijn aangesloten of die zijn gecomprimeerd om band breedte te besparen.
 
-Raadpleeg [richtlijnen voor communicatie van apparaat-naar-cloud](iot-hub-devguide-d2c-guidance.md) als bij twijfel tussen het gebruik van de gerapporteerde eigenschappen, apparaat-naar-cloud-berichten of bestand uploaden.
+Raadpleeg de [richt lijnen voor communicatie tussen apparaten](iot-hub-devguide-d2c-guidance.md) in de Cloud als u twijfelt tussen het gebruik van gerapporteerde eigenschappen, apparaat-naar-Cloud-berichten of het uploaden van bestanden.
 
-## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Een Azure Storage-account met IoT Hub koppelen
+## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Een Azure Storage-account koppelen aan IoT Hub
 
-Voor het gebruik van de functionaliteit voor het uploaden van bestand, moet u eerst een Azure Storage-account koppelen aan de IoT-Hub. U kunt uitvoeren met deze taak via de Azure-portal of programmatisch via de [IoT-Hub resourceprovider REST-API's](/rest/api/iothub/iothubresource). Nadat u hebt een Azure Storage-account gekoppeld aan uw IoT-Hub, stuurt de service een SAS-URI naar een apparaat, wanneer het apparaat de aanvraag van een bestand uploaden wordt gestart.
+Als u de functie voor het uploaden van bestanden wilt gebruiken, moet u eerst een Azure Storage-account koppelen aan de IoT Hub. U kunt deze taak volt ooien via de Azure Portal, of programmatisch door de [IOT hub resource provider rest-api's](/rest/api/iothub/iothubresource). Zodra u een Azure Storage account hebt gekoppeld aan uw IoT Hub, retourneert de service een SAS-URI naar een apparaat wanneer het apparaat een aanvraag voor het uploaden van bestanden start.
 
-De [uploaden van bestanden van uw apparaat naar de cloud met IoT Hub](iot-hub-csharp-csharp-file-upload.md) handleidingen bieden een volledig overzicht van het proces voor het uploaden van bestand. Deze handleidingen laten zien hoe u de Azure portal gebruiken voor een opslagaccount koppelen aan een IoT-hub.
+De [Upload bestanden van uw apparaat naar de Cloud met IOT hub](iot-hub-csharp-csharp-file-upload.md) hand leidingen bieden een volledig overzicht van het uploaden van het bestand. In deze hand leidingen wordt uitgelegd hoe u de Azure Portal kunt gebruiken om een opslag account te koppelen aan een IoT-hub.
 
 > [!NOTE]
-> De [Azure IoT SDK's](iot-hub-devguide-sdks.md) verwerkt automatisch bij het ophalen van de SAS-URI, het bestand te uploaden en IoT-Hub van een voltooide upload de hoogte te brengen.
+> De [Azure IOT sdk's](iot-hub-devguide-sdks.md) verwerken automatisch het ophalen van de SAS-URI, het uploaden van het bestand en het melden van IOT hub van een voltooide upload.
 
-## <a name="initialize-a-file-upload"></a>Initialiseren van een bestand is geüpload
-IoT-Hub heeft een eindpunt specifiek voor apparaten om aan te vragen van een SAS-URI voor de opslag om een bestand te uploaden. Voor het starten van het proces voor het uploaden van bestand, het apparaat verzendt een POST-aanvraag voor `{iot hub}.azure-devices.net/devices/{deviceId}/files` met de volgende JSON-hoofdtekst:
+## <a name="initialize-a-file-upload"></a>Het uploaden van een bestand initialiseren
+IoT Hub heeft een eind punt dat specifiek is voor apparaten om een SAS-URI voor opslag aan te vragen voor het uploaden van een bestand. Om het proces voor het uploaden van bestanden te starten, stuurt het apparaat een POST-aanvraag naar `{iot hub}.azure-devices.net/devices/{deviceId}/files` met de volgende JSON-hoofd tekst:
 
 ```json
 {
@@ -49,7 +49,7 @@ IoT-Hub heeft een eindpunt specifiek voor apparaten om aan te vragen van een SAS
 }
 ```
 
-IoT-Hub geeft de volgende gegevens, die het apparaat maakt gebruik van het bestand te uploaden:
+IoT Hub retourneert de volgende gegevens, die door het apparaat worden gebruikt voor het uploaden van het bestand:
 
 ```json
 {
@@ -61,20 +61,20 @@ IoT-Hub geeft de volgende gegevens, die het apparaat maakt gebruik van het besta
 }
 ```
 
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Afgeschafte: het uploaden van een bestand met een GET initialiseren
+### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Afgeschaft: een bestand uploaden met een GET initialiseren
 
 > [!NOTE]
-> Deze sectie beschrijft afgeschafte functionaliteit voor het ontvangen van een SAS-URI van IoT Hub. Gebruik de POST-methode die eerder zijn beschreven.
+> In deze sectie wordt de afgeschafte functionaliteit voor het ontvangen van een SAS-URI van IoT Hub beschreven. Gebruik de POST-methode die eerder is beschreven.
 
-IoT-Hub heeft twee REST-eindpunten voor de ondersteuning van bestand uploaden, een om op te halen van de SAS-URI voor de opslag en de andere aan op de hoogte stellen van een voltooide upload de IoT-hub. Het apparaat wordt het bestand uploadproces gestart door een GET te sturen naar de IoT-hub op `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Geretourneerd door de IoT-hub:
+IoT Hub heeft twee REST-eind punten ter ondersteuning van het uploaden van bestanden, een om de SAS-URI voor opslag te verkrijgen en de andere om de IoT-hub op de hoogte te stellen van een voltooide upload. Het apparaat start het upload proces van het bestand door een GET naar de IoT-hub op `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`te verzenden. De IoT-hub retourneert:
 
-* Een SAS-URI specifiek zijn voor het bestand moet worden geüpload.
+* Een SAS-URI die specifiek is voor het bestand dat moet worden geüpload.
 
-* Een correlatie-ID moet worden gebruikt nadat het uploaden is voltooid.
+* Een correlatie-ID die moet worden gebruikt wanneer het uploaden is voltooid.
 
-## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Kennis van IoT Hub een voltooide bestand is geüpload
+## <a name="notify-iot-hub-of-a-completed-file-upload"></a>IoT Hub informeren over het uploaden van voltooide bestanden
 
-Het apparaat wordt het bestand geüpload naar storage met behulp van de Azure Storage-SDK's. Wanneer het uploaden voltooid is, het apparaat verzendt een POST-aanvraag voor `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` met de volgende JSON-hoofdtekst:
+Het apparaat uploadt het bestand naar opslag met behulp van de Azure Storage Sdk's. Wanneer het uploaden is voltooid, stuurt het apparaat een POST-aanvraag naar `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` met de volgende JSON-hoofd tekst:
 
 ```json
 {
@@ -85,28 +85,28 @@ Het apparaat wordt het bestand geüpload naar storage met behulp van de Azure St
 }
 ```
 
-De waarde van `isSuccess` is de Booleaanse waarde die aangeeft of het bestand is geüpload. De statuscode voor `statusCode` is de status voor het uploaden van het bestand naar de opslag, en de `statusDescription` komt overeen met de `statusCode`.
+De waarde van `isSuccess` is een Boolean die aangeeft of het bestand is geüpload. De status code voor `statusCode` is de status voor het uploaden van het bestand naar de opslag en de `statusDescription` komt overeen met de `statusCode`.
 
-## <a name="reference-topics"></a>Onderwerpen met naslaginformatie:
+## <a name="reference-topics"></a>Naslag onderwerpen:
 
-De volgende onderwerpen met naslaginformatie bieden u meer informatie over het uploaden van bestanden vanaf een apparaat.
+In de volgende onderwerpen vindt u meer informatie over het uploaden van bestanden vanaf een apparaat.
 
-## <a name="file-upload-notifications"></a>Bestand uploaden meldingen
+## <a name="file-upload-notifications"></a>Meldingen over het uploaden van bestanden
 
-Wanneer een apparaat aan IoT-Hub gecommuniceerd dat het uploaden voltooid is, genereert IoT Hub (optioneel) een melding. Dit bericht bevat de locatie van de naam en de opslag van het bestand.
+Wanneer een apparaat aangeeft IoT Hub dat een upload is voltooid, wordt in IoT Hub een meldings bericht gegenereerd. Dit bericht bevat de naam en de opslag locatie van het bestand.
 
-Zoals uitgelegd in [eindpunten](iot-hub-devguide-endpoints.md), IoT-Hub biedt een bestand uploaden meldingen via een gerichte service-eindpunt ( **/messages/servicebound/fileuploadnotifications**) als berichten. De semantiek ontvangen voor het bestand uploaden meldingen zijn dezelfde als die voor cloud-naar-apparaat-berichten en hebben hetzelfde [bericht levenscyclus van](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle). Elk bericht dat wordt opgehaald uit het bestand uploaden-meldingseindpunt is een JSON-record met de volgende eigenschappen:
+Zoals in [eind punten](iot-hub-devguide-endpoints.md)wordt uitgelegd, levert IOT hub meldingen over het uploaden van bestanden via een service Facing endpoint ( **/Messages/servicebound/fileuploadnotifications**) als berichten. De ontvangst semantiek voor meldingen over het uploaden van bestanden zijn hetzelfde als voor Cloud-naar-apparaat-berichten en hebben dezelfde [levens cyclus](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)van het bericht. Elk bericht dat wordt opgehaald uit het eind punt voor het uploaden van berichten, is een JSON-record met de volgende eigenschappen:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
-| EnqueuedTimeUtc |De tijdstempel die aangeeft wanneer de melding is gemaakt. |
-| DeviceId |**Apparaat-id** van het apparaat waarop het bestand wordt geüpload. |
+| EnqueuedTimeUtc |De tijds tempel die aangeeft wanneer de melding is gemaakt. |
+| DeviceId |**DeviceID** van het apparaat dat het bestand heeft geüpload. |
 | BlobUri |De URI van het geüploade bestand. |
 | BlobName |De naam van het geüploade bestand. |
-| LastUpdatedTime |De tijdstempel die aangeeft wanneer het bestand voor het laatst is bijgewerkt. |
+| LastUpdatedTime |Tijds tempel die aangeeft wanneer het bestand voor het laatst is bijgewerkt. |
 | BlobSizeInBytes |Grootte van het geüploade bestand. |
 
-**Voorbeeld**. In dit voorbeeld ziet de hoofdtekst van een bestand uploaden een melding.
+**Voor beeld**. Dit voor beeld toont de hoofd tekst van een bericht over het uploaden van bestanden.
 
 ```json
 {
@@ -119,45 +119,47 @@ Zoals uitgelegd in [eindpunten](iot-hub-devguide-endpoints.md), IoT-Hub biedt ee
 }
 ```
 
-## <a name="file-upload-notification-configuration-options"></a>Bestand uploaden melding configuratie-opties
+## <a name="file-upload-notification-configuration-options"></a>Configuratie opties voor meldingen over het uploaden van bestanden
 
-Elke IoT-hub heeft de volgende configuratieopties voor het bestand uploaden meldingen:
+Elke IoT-hub beschikt over de volgende configuratie opties voor meldingen over het uploaden van bestanden:
 
-| Eigenschap | Description | Bereik en de standaard |
+| Eigenschap | Beschrijving | Bereik en standaard |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Hiermee bepaalt u of bestand uploaden meldingen worden geschreven naar het bestand meldingen-eindpunt. |BOOL. Standaard: De waarde True. |
-| **fileNotifications.ttlAsIso8601** |Standaard-TTL voor bestandsmeldingen uploaden. |ISO_8601 interval tot 48 uur (minimaal 1 minuut). Standaard: 1 uur. |
-| **fileNotifications.lockDuration** |De vergrendelingsduur van de voor de wachtrij met bestand uploaden meldingen. |5 tot en met 300 seconden (minimaal 5 seconden). Standaard: 60 seconden. |
-| **fileNotifications.maxDeliveryCount** |Maximumaantal leveringen voor het bestand uploaden meldingswachtrij. |1 tot en met 100. Standaard: 100. |
+| **enableFileUploadNotifications** |Hiermee wordt bepaald of het uploaden van meldingen naar het eind punt van bestands meldingen wordt geschreven. |BOOL. Standaard: waar. |
+| **fileNotifications.ttlAsIso8601** |Standaard-TTL voor meldingen over het uploaden van bestanden. |ISO_8601 interval tot 48H (mini maal 1 minuut). Standaard: 1 uur. |
+| **fileNotifications.lockDuration** |Vergrendelings duur voor de wachtrij met berichten voor het uploaden van bestanden. |5 tot 300 seconden (mini maal 5 seconden). Standaard: 60 seconden. |
+| **fileNotifications.maxDeliveryCount** |Maximum aantal bezorgingen voor de berichten wachtrij voor het uploaden van bestanden. |1 tot en met 100. Standaard: 100. |
 
-## <a name="additional-reference-material"></a>Meer referentiemateriaal dat beschikbaar is
+U kunt deze eigenschappen instellen voor uw IoT-hub met behulp van de Azure Portal, Azure CLI of Power shell. Zie de onderwerpen onder het [bestand upload configureren](iot-hub-configure-file-upload.md)voor meer informatie.
 
-Er zijn andere onderwerpen met naslaginformatie in de IoT Hub developer guide:
+## <a name="additional-reference-material"></a>Extra referentie materiaal
 
-* [IoT Hub-eindpunten](iot-hub-devguide-endpoints.md) beschrijft de verschillende IoT hub-eindpunten voor runtime- en beheerbewerkingen.
+Andere naslag onderwerpen in de IoT Hub ontwikkelaars handleiding zijn:
 
-* [Bandbreedtebeperking en quota's](iot-hub-devguide-quotas-throttling.md) beschrijving van de quota en beperkingen van problemen die betrekking hebben op de IoT Hub-service.
+* [IOT hub-eind punten](iot-hub-devguide-endpoints.md) beschrijven de verschillende IOT hub-eind punten voor runtime-en beheer bewerkingen.
 
-* [Azure IoT-apparaat en service-SDK's](iot-hub-devguide-sdks.md) geeft een lijst van de verschillende SDK's kunt u bij het ontwikkelen van apparaat- en service-apps die communiceren met IoT Hub-taal.
+* Met [beperking en quota's](iot-hub-devguide-quotas-throttling.md) worden de quota's en beperkings gedrag beschreven die van toepassing zijn op de IOT hub-service.
 
-* [IoT Hub-querytaal](iot-hub-devguide-query-language.md) beschrijving van de querytaal kunt u gegevens ophalen uit IoT Hub over uw apparaatdubbels en taken.
+* Met de [sdk's van Azure IOT-apparaat en-service](iot-hub-devguide-sdks.md) worden de diverse sdk's voor de taal weer gegeven die u kunt gebruiken bij het ontwikkelen van zowel apparaat-als service-apps die communiceren met IOT hub.
 
-* [IoT Hub MQTT-ondersteuning](iot-hub-mqtt-support.md) vindt u meer informatie over IoT Hub-ondersteuning voor het MQTT-protocol.
+* [IOT hub query taal](iot-hub-devguide-query-language.md) beschrijft de query taal die u kunt gebruiken om informatie op te halen van IOT hub over de apparaatdubbels en taken van uw apparaat.
+
+* [IOT hub MQTT-ondersteuning](iot-hub-mqtt-support.md) biedt meer informatie over IOT hub ondersteuning voor het MQTT-protocol.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd over het uploaden van bestanden vanaf apparaten met behulp van IoT Hub, kunt u mogelijk geïnteresseerd in de volgende onderwerpen van IoT Hub developer guide:
+Nu u hebt geleerd hoe u bestanden uploadt van apparaten met behulp van IoT Hub, bent u mogelijk geïnteresseerd in de volgende onderwerpen over IoT Hub ontwikkelaars handleiding:
 
 * [Apparaat-id's in IoT Hub beheren](iot-hub-devguide-identity-registry.md)
 
 * [Toegang tot IoT Hub regelen](iot-hub-devguide-security.md)
 
-* [Apparaatdubbels gebruiken voor het synchroniseren van de status en -configuraties](iot-hub-devguide-device-twins.md)
+* [Apparaatdubbels gebruiken om status en configuraties te synchroniseren](iot-hub-devguide-device-twins.md)
 
 * [Een rechtstreekse methode aanroepen op een apparaat](iot-hub-devguide-direct-methods.md)
 
 * [Taken op meerdere apparaten plannen](iot-hub-devguide-jobs.md)
 
-Als u wilt uitproberen enkele concepten die worden beschreven in dit artikel, raadpleegt u de volgende zelfstudie voor IoT-Hub:
+Raadpleeg de volgende IoT Hub zelf studie als u een aantal van de concepten wilt uitproberen die in dit artikel worden beschreven:
 
-* [Over het uploaden van bestanden vanaf apparaten naar de cloud met IoT Hub](iot-hub-csharp-csharp-file-upload.md)
+* [Bestanden van apparaten uploaden naar de Cloud met IoT Hub](iot-hub-csharp-csharp-file-upload.md)

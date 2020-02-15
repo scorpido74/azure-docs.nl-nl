@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967352"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251190"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
@@ -27,7 +27,7 @@ Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan 
 > API Management accepteert alleen aanvragen met de waarden van de [host-header](https://tools.ietf.org/html/rfc2616#section-14.23) die overeenkomen met de standaard domein naam of een van de geconfigureerde aangepaste domein namen.
 
 > [!WARNING]
-> Klanten die een certificaat willen gebruiken om de beveiliging van hun toepassingen te verbeteren, moeten gebruikmaken van een aangepaste domein naam > en een certificaat dat ze beheren, niet het standaard certificaat. Klanten die het standaard certificaat in plaats daarvan vastmaken, nemen een vaste afhankelijkheid op de eigenschappen van het certificaat die ze niet beheren. Dit is geen aanbevolen procedure.
+> Klanten die een certificaat willen gebruiken om de beveiliging van hun toepassingen te verbeteren, moeten een aangepaste domein naam en een certificaat gebruiken die ze beheren, niet het standaard certificaat. Klanten die het standaard certificaat in plaats daarvan vastmaken, nemen een vaste afhankelijkheid op de eigenschappen van het certificaat die ze niet beheren. Dit is geen aanbevolen procedure.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -55,7 +55,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     - **SCM** (standaard is: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > Alleen het **Gateway** -eind punt in beschikbaar voor configuratie in de laag verbruik.
+    > Alleen het **Gateway** -eind punt is beschikbaar voor configuratie in de laag verbruik.
     > U kunt alle eind punten of een aantal hiervan bijwerken. Klanten updaten **Gateway** (deze URL wordt meestal gebruikt voor het aanroepen van de API die wordt weer gegeven via API Management) en de **Portal** (de URL van de ontwikkelaars Portal).
     > **Beheer** -en **SCM** -eind punten worden intern gebruikt door de eigen aren van het API Management-exemplaar en zijn dus minder vaak toegewezen aan een aangepaste domein naam.
     > De **Premium** -laag biedt ondersteuning voor het instellen van meerdere hostnamen voor het **Gateway** -eind punt.
@@ -73,7 +73,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     > U kunt het beste Azure Key Vault gebruiken voor het beheren van certificaten en het instellen hiervan op automatisch draaien.
     > Als u Azure Key Vault gebruikt voor het beheren van het SSL-certificaat van het aangepaste domein, moet u ervoor zorgen dat het certificaat wordt ingevoegd in Key Vault [als een _certificaat_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), niet als een _geheim_.
     >
-    > Als u een SSL-certificaat wilt ophalen, moet API Management een lijst met de machtigingen voor het ophalen van geheimen hebben voor de Azure Key Vault met het certificaat. Wanneer u Azure Portal gebruikt, worden alle benodigde configuratie stappen automatisch voltooid. Wanneer u opdracht regel Programma's of beheer-API gebruikt, moeten deze machtigingen hand matig worden verleend. Dit gebeurt in twee stappen. Gebruik eerst Managed Identities pagina op uw API Management-exemplaar om er zeker van te zijn dat de beheerde identiteit is ingeschakeld en noteer de principal-id die op die pagina wordt weer gegeven. Ten tweede geeft u de machtigingen lijst op en krijgt u een geheimen aan deze principal-id op het Azure Key Vault met het certificaat.
+    > Als u een SSL-certificaat wilt ophalen, moet API Management de lijst hebben en geheimen machtigingen krijgen voor de Azure Key Vault met het certificaat. Wanneer u Azure Portal gebruikt, worden alle benodigde configuratie stappen automatisch voltooid. Wanneer u opdracht regel Programma's of beheer-API gebruikt, moeten deze machtigingen hand matig worden verleend. Dit gebeurt in twee stappen. Gebruik eerst Managed Identities pagina op uw API Management-exemplaar om er zeker van te zijn dat de beheerde identiteit is ingeschakeld en noteer de principal-id die op die pagina wordt weer gegeven. Ten tweede geeft u de machtigingen lijst op en krijgt u een geheimen aan deze principal-id op het Azure Key Vault met het certificaat.
     >
     > Als het certificaat is ingesteld op autorotate, neemt API Management de nieuwste versie automatisch op zonder uitval tijd voor de service (als uw API Management laag SLA-i. e heeft in alle lagen, behalve de laag voor ontwikkel aars).
 

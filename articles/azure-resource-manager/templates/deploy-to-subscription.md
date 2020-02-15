@@ -3,12 +3,12 @@ title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120610"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207652"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -135,7 +135,7 @@ Met de volgende sjabloon maakt u een lege resource groep.
 }
 ```
 
-Gebruik het [element Copy](create-multiple-instances.md) met resource groepen om meer dan één resource groep te maken.
+Gebruik het [element Copy](copy-resources.md) met resource groepen om meer dan één resource groep te maken.
 
 ```json
 {
@@ -170,7 +170,7 @@ Gebruik het [element Copy](create-multiple-instances.md) met resource groepen om
 }
 ```
 
-Zie [meer dan één exemplaar van een resource of eigenschap in azure Resource Manager sjablonen implementeren](./create-multiple-instances.md)en [zelf studie: meerdere resource-instanties maken met Resource Manager-sjablonen](./template-tutorial-create-multiple-instances.md)voor meer informatie over resource iteratie.
+Zie [meer dan één exemplaar van een resource in azure Resource Manager sjablonen implementeren](./copy-resources.md)en [zelf studie: meerdere resource-instanties maken met Resource Manager-sjablonen](./template-tutorial-create-multiple-instances.md)voor meer informatie over resource iteratie.
 
 ## <a name="resource-group-and-resources"></a>Resource groep en resources
 

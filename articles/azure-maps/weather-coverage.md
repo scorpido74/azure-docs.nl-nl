@@ -1,23 +1,23 @@
 ---
 title: Weers cover Microsoft Azure kaarten
 description: In dit artikel vindt u meer informatie over de weer dekking van Microsoft Azure kaarten.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989600"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207941"
 ---
 # <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
 
-In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services retourneert details zoals radar tegels, actuele weers omstandigheden, weers verwachtingen en weers lijnen langs een route.
+In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services retourneert details zoals radar tegels, huidige weers omstandigheden, weers verwachtingen en het weers bericht langs een route.
 
 Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen en regio's.
 
@@ -44,7 +44,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Bolivia                                  | ✓ |   |  ✓| 
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brazilië                                   | ✓ |   |  ✓| 
-| Britse Maagdeneilanden                   | ✓ |   |  ✓| 
+| Britse Maagden eilanden                   | ✓ |   |  ✓| 
 | Canada                                   | ✓ | ✓ |  ✓| 
 | Kaaimaneilanden                           | ✓ |   |  ✓| 
 | Chili                                    | ✓ |   |  ✓| 
@@ -58,7 +58,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | El Salvador                              | ✓ |   |  ✓| 
 | Falklandeilanden                         | ✓ |   |  ✓| 
 | Frans-Guyana                            | ✓ |   |  ✓| 
-| Groenland                                | ✓ |   |  ✓| 
+| Heilbot                                | ✓ |   |  ✓| 
 | Grenada                                  | ✓ |   |  ✓| 
 | Guadeloupe                               | ✓ |   |  ✓| 
 | Guatemala                                | ✓ |   |  ✓| 
@@ -102,7 +102,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Bahrein                     | ✓               |                              |        ✓| 
 | Benin                       | ✓               |                              |        ✓| 
 | Botswana                    | ✓               |                              |        ✓| 
-| Bouveteiland               | ✓               |                              |        ✓| 
+| Bouvet eiland               | ✓               |                              |        ✓| 
 | Burkina Faso                | ✓               |                              |        ✓| 
 | Burundi                     | ✓               |                              |        ✓| 
 | Kameroen                    | ✓               |                              |        ✓| 
@@ -146,7 +146,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Niger                       | ✓               |                              |        ✓| 
 | Nigeria                     | ✓               |                              |        ✓| 
 | Oman                        | ✓               |                              |        ✓| 
-| Palestijnse Autoriteit       | ✓               |                              |        ✓| 
+| Palestijnse autoriteit       | ✓               |                              |        ✓| 
 | Qatar                       | ✓               |                              |        ✓| 
 | Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
@@ -164,7 +164,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Tanzania                    | ✓               |                              |        ✓| 
 | Togo                        | ✓               |                              |        ✓| 
 | Tunesië                     | ✓               |                              |        ✓| 
-| Uganda                      | ✓               |                              |        ✓| 
+| Oeganda                      | ✓               |                              |        ✓| 
 | Verenigde Arabische Emiraten        | ✓               |                              |        ✓| 
 | Westelijke Sahara              | ✓               |                              |        ✓| 
 | Jemen                       | ✓               |                              |        ✓| 
@@ -172,7 +172,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Zimbabwe                    | ✓               |                              |        ✓| 
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 | Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -181,18 +181,18 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Australië                         | ✓ | ✓ |  ✓| 
 | Bangladesh                        | ✓ |   |  ✓| 
 | Bhutan                            | ✓ |   |  ✓| 
-| Brits Indische Oceaanterritorium    | ✓ |   |  ✓| 
+| Brits territorium in de Indische Oceaan    | ✓ |   |  ✓| 
 | Brunei                            | ✓ |   |  ✓| 
 | Cambodja                          | ✓ |   |  ✓| 
 | China                             | ✓ | ✓ |  ✓| 
 | Christmas eiland                  | ✓ |   |  ✓| 
 | Cocos-Keeling-eilanden           | ✓ |   |  ✓| 
-| Cookeilanden                      | ✓ |   |  ✓| 
+| Cook eilanden                      | ✓ |   |  ✓| 
 | Fiji                              | ✓ |   |  ✓| 
 | Frans-Polynesië                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Heard Island en McDonald eilanden | ✓ |   |  ✓| 
-| Hong Kong SAR                     | ✓ |   |  ✓| 
+| Hongkong SAR                     | ✓ |   |  ✓| 
 | India                             | ✓ |   |  ✓| 
 | Indonesië                         | ✓ |   |  ✓| 
 | Japan                             | ✓ | ✓ |  ✓| 
@@ -219,11 +219,11 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Pakistan                          | ✓ |   |  ✓| 
 | Palau                             | ✓ |   |  ✓| 
 | Papoea-Nieuw-Guinea                  | ✓ |   |  ✓| 
-| Filippijnen                       | ✓ |   |  ✓| 
+| Filipijnen                       | ✓ |   |  ✓| 
 | Pitcairneilanden                  | ✓ |   |  ✓| 
 | Samoa                             | ✓ |   |  ✓| 
 | Singapore                         | ✓ |   |  ✓| 
-| Salomonseilanden                   | ✓ |   |  ✓| 
+| Salomons eilanden                   | ✓ |   |  ✓| 
 | Sri Lanka                         | ✓ |   |  ✓| 
 | Taiwan                            | ✓ |   |  ✓| 
 | Tadzjikistan                        | ✓ |   |  ✓| 
@@ -248,7 +248,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Armenië                | ✓ |   |  ✓| 
 | Oostenrijk                | ✓ | ✓ |  ✓|
 | Azerbeidzjan             | ✓ |   |  ✓| 
-| Wit-Rusland                | ✓ |   |  ✓| 
+| Belarus                | ✓ |   |  ✓| 
 | België                | ✓ | ✓ |  ✓| 
 | Bosnië en Herzegovina | ✓ | ✓ |  ✓| 
 | Bulgarije               | ✓ |   |  ✓| 
@@ -257,7 +257,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Czechia                | ✓ | ✓ |  ✓| 
 | Denemarken                | ✓ | ✓ |  ✓| 
 | Estland                | ✓ | ✓ |  ✓| 
-| Faeröer          | ✓ |   |  ✓| 
+| Faeröereilanden          | ✓ |   |  ✓| 
 | Finland                | ✓ | ✓ |  ✓| 
 | Frankrijk                 | ✓ | ✓ |  ✓| 
 | Georgië                | ✓ |   |  ✓| 
@@ -269,7 +269,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | IJsland                | ✓ |   |  ✓| 
 | Ierland                | ✓ | ✓ |  ✓| 
 | Italië                  | ✓ |   |  ✓|
-| Man            | ✓ |   |  ✓| 
+| Isle of man            | ✓ |   |  ✓| 
 | Jersey                 | ✓ |   |  ✓| 
 | Kosovo                 | ✓ |   |  ✓| 
 | Letland                 | ✓ |   |  ✓| 
@@ -278,7 +278,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Luxemburg             | ✓ | ✓ |  ✓| 
 | Noord-Macedonië        | ✓ |   |  ✓| 
 | Malta                  | ✓ |   |  ✓| 
-| Moldavië                | ✓ | ✓ |  ✓| 
+| Werden                | ✓ | ✓ |  ✓| 
 | Monaco                 | ✓ | ✓ |  ✓| 
 | Montenegro             | ✓ | ✓ |  ✓| 
 | Nederland            | ✓ | ✓ |  ✓| 
@@ -292,7 +292,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Slowakije               | ✓ | ✓ |  ✓| 
 | Slovenië               | ✓ | ✓ |  ✓| 
 | Spanje                  | ✓ | ✓ |  ✓| 
-| Spitsbergen               | ✓ |   |  ✓|
+| Jan               | ✓ |   |  ✓|
 | Jan Mayen              | ✓ |   |  ✓| 
 | Zweden                 | ✓ | ✓ |  ✓| 
 | Zwitserland            | ✓ | ✓ |  ✓| 

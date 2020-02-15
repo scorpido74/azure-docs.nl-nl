@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911901"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212486"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -130,6 +130,9 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Bewerk het voor beeld telemetrie verzenden om gedistribueerde tracering in te scha kelen
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Het voor beeld op github ophalen</a>
+
 1. Gebruik een editor om het `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` bron bestand te openen.
 
 1. Zoek de declaratie van de `connectionString` constante:
@@ -241,7 +244,7 @@ Voor het bijwerken van de configuratie van de gedistribueerde tracerings samplin
 }
 ```
 
-| Elementnaam | Verplicht | Type | Beschrijving |
+| Elementnaam | Vereist | Type | Beschrijving |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Geheel getal | Op dit moment worden twee modus waarden ondersteund om steek proeven in en uit te scha kelen. `1` is ingeschakeld en `2` is uitgeschakeld. |
 | `sampling_rate` | Ja | Geheel getal | Deze waarde is een percentage. Alleen waarden van `0` naar `100` (inclusief) zijn toegestaan.  |
@@ -264,7 +267,7 @@ AzureDiagnostics
 
 Voorbeeld logboeken, zoals weer gegeven door Log Analytics:
 
-| TimeGenerated | OperationName | Categorie | Niveau | CorrelationId | DurationMs | Eigenschappen |
+| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | Eigenschappen |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |

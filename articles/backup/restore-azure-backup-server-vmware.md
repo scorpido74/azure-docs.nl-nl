@@ -3,12 +3,12 @@ title: VMware-Vm's herstellen met Azure Backup Server
 description: Gebruik Azure Backup Server (MABS) om VMware-Vm's te herstellen die worden uitgevoerd op een VMware vCenter/ESXi-server.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: 7c93c3100d8756fd9faf8cf02152a870bd0c106c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171911"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212363"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Virtuele VMware-machines herstellen
 
@@ -44,7 +44,7 @@ In dit artikel wordt uitgelegd hoe u Microsoft Azure Backup Server (MABS) gebrui
 
      * Als u **herstellen als virtuele machine op een wille keurige host**kiest, geeft u op het scherm **doel opgeven** de gegevens op voor de **ESXi-host, de resource groep** , de map en het **pad**.
 
-      ![Herstel type selecteren](./media/restore-azure-backup-server-vmware/recovery-type.png)
+      ![Type herstel selecteren](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
 8. Controleer uw instellingen op het scherm **samen vatting** en klik op **herstellen** om het herstel proces te starten. Het scherm **herstel status** toont de voortgang van de herstel bewerking.
 
@@ -52,24 +52,28 @@ In dit artikel wordt uitgelegd hoe u Microsoft Azure Backup Server (MABS) gebrui
 
 U kunt afzonderlijke bestanden herstellen vanaf een herstel punt van een beveiligde virtuele machine. Deze functie is alleen beschikbaar voor virtuele machines met Windows Server. Het herstellen van afzonderlijke bestanden is vergelijkbaar met het herstellen van de volledige virtuele machine, behalve dat u naar de VMDK bladert en de gewenste bestanden vindt, voordat u het herstel proces start. Een afzonderlijk bestand herstellen of bestanden selecteren van een Windows Server-VM:
 
+>[!NOTE]
+>Het herstellen van een afzonderlijk bestand van een virtuele machine is alleen beschikbaar voor Windows-VM'S en schijf herstel punten.
+
 1. Klik in de MABS Administrator-console op **herstel** weergave.
 
 2. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Wanneer u een virtuele machine of map selecteert, worden in het deel venster herstel punten voor de beschik bare herstel punten weer gegeven.
 
-    ![Beschik bare herstel punten](./media/restore-azure-backup-server-vmware/recovery-points.png)
+    ![Beschik bare herstel punten](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
 3. In het deel venster **herstel punten voor:** gebruikt u de kalender om de datum te selecteren die de gewenste herstel punten bevat. Afhankelijk van hoe het back-upbeleid is geconfigureerd, kunnen de datums meer dan één herstel punt hebben. Wanneer u de dag hebt geselecteerd waarop het herstel punt is gemaakt, controleert u of u de juiste **herstel tijd**hebt gekozen. Als de geselecteerde datum meerdere herstel punten heeft, kiest u het herstel punt door deze te selecteren in de vervolg keuzelijst herstel tijd. Wanneer u het herstel punt hebt gekozen, wordt de lijst met herstel bare items weer gegeven in het **pad:** deel venster.
 
 4. Als u de bestanden wilt vinden die u wilt herstellen, dubbelklikt u in het deel venster **pad** op het item in de kolom **herstel bare items** om het te openen. Selecteer het bestand, de bestanden of de mappen die u wilt herstellen. Als u meerdere items wilt selecteren, houdt u de **CTRL** -toets ingedrukt terwijl u elk item selecteert. In het deel venster **pad** kunt u zoeken naar de lijst met bestanden of mappen die worden weer gegeven in de kolom **herstelbaar item** . In de **onderstaande Zoek lijst** worden niet naar submappen gezocht. Dubbel klik op de map om in submappen te zoeken. Gebruik de knop **omhoog** om van een onderliggende map naar de bovenliggende map te gaan. U kunt meerdere items selecteren (bestanden en mappen), maar ze moeten zich in dezelfde bovenliggende map bevinden. U kunt geen items uit meerdere mappen in dezelfde herstel taak herstellen.
 
+    ![Selectie voor herstel controleren](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
+
 5. Wanneer u de item (s) voor herstel hebt geselecteerd, klikt u in het lint van de Administrator-console op **herstellen** om de **wizard herstellen**te openen. In de herstel wizard ziet u in het scherm **herstel selectie controleren** de geselecteerde items die moeten worden hersteld.
-    ](./media/restore-azure-backup-server-vmware/review-recovery.png) selectie ![controleren
 
 6. Als u de netwerk bandbreedte regeling wilt inschakelen, klikt u op het scherm **herstel opties opgeven** op **wijzigen**. Klik op **volgende**om de netwerk beperking uitgeschakeld te laten. Er zijn geen andere opties op dit scherm van de wizard beschikbaar voor virtuele VMware-machines. Als u ervoor kiest de netwerk bandbreedte beperking te wijzigen, selecteert u in het dialoog venster gashendel de optie **beperking van netwerk bandbreedte gebruik inschakelen** om deze in te scha kelen. Wanneer deze functie is ingeschakeld, configureert u de **instellingen** en het **werk schema**.
 7. Klik in het scherm **herstel type selecteren** op **volgende**. U kunt uw bestanden of mappen alleen herstellen naar een netwerkmap.
 8. Klik op het scherm **doel opgeven** op **Bladeren** om een netwerk locatie te zoeken voor uw bestanden of mappen. MABS maakt een map waarin alle herstelde items worden gekopieerd. De mapnaam heeft het voor voegsel, MABS_day-maand-jaar. Wanneer u een locatie voor de herstelde bestanden of map selecteert, worden de gegevens voor die locatie (bestemming, doelpad en beschik bare ruimte) weer gegeven.
 
-       ![Specify location to recover files](./media/restore-azure-backup-server-vmware/specify-destination.png)
+    ![Geef de locatie op voor het herstellen van bestanden](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
 9. Kies op het scherm **herstel opties opgeven** welke beveiligings instelling u wilt Toep assen. U kunt ervoor kiezen om de beperking van het netwerk bandbreedte gebruik te wijzigen, maar de beperking is standaard uitgeschakeld. Ook **San-herstel** en- **meldingen** zijn niet ingeschakeld.
 10. Controleer uw instellingen op het scherm **samen vatting** en klik op **herstellen** om het herstel proces te starten. Het scherm **herstel status** toont de voortgang van de herstel bewerking.

@@ -3,12 +3,12 @@ title: Sjabloon structuur en syntaxis
 description: Hierin worden de structuur en eigenschappen van Azure Resource Manager sjablonen beschreven met declaratieve JSON-syntaxis.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7f9b964212d7b8056895aa1c6826766315af2ec2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122063"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209457"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen
 
@@ -33,7 +33,7 @@ In de eenvoudigste structuur heeft een sjabloon de volgende elementen:
 }
 ```
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
 | $schema |Ja |Locatie van het JSON-schema bestand waarin de versie van de sjabloon taal wordt beschreven.<br><br> Gebruik voor implementaties van resource groepen: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Gebruik voor implementaties van abonnementen: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Ja |De versie van de sjabloon (bijvoorbeeld 1.0.0.0). U kunt een wille keurige waarde voor dit element opgeven. Gebruik deze waarde als u belang rijke wijzigingen in uw sjabloon wilt documenteren. Wanneer u resources implementeert met behulp van de sjabloon, kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt. |
@@ -69,7 +69,7 @@ De beschik bare eigenschappen voor een para meter zijn:
 }
 ```
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
 | para meter-naam |Ja |De naam van de para meter. Moet een geldige JavaScript-id. |
 | type |Ja |Type parameter waarde. De toegestane typen en waarden zijn **String**, **securestring**, **int**, **BOOL**, **object**, **secureObject**en **array**. Zie [gegevens typen](#data-types). |
@@ -126,11 +126,11 @@ In het volgende voor beeld ziet u de beschik bare opties voor het definiëren va
 }
 ```
 
-Zie voor meer informatie over het gebruik van `copy` om verschillende waarden voor een variabele te maken de [variabele iteratie](create-multiple-instances.md#variable-iteration).
+Zie voor meer informatie over het gebruik van `copy` om verschillende waarden voor een variabele te maken de [variabele iteratie](copy-variables.md).
 
 Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor voor beelden van het gebruik van variabelen.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 U kunt binnen uw sjabloon uw eigen functies maken. Deze functies zijn beschikbaar voor gebruik in uw sjabloon. Normaal gesp roken definieert u gecompliceerde expressies die u niet wilt herhalen in uw sjabloon. U maakt de door de gebruiker gedefinieerde functies op basis van expressies en [functies](template-functions.md) die in sjablonen worden ondersteund.
 
@@ -164,7 +164,7 @@ Bij het definiëren van een gebruikers functie gelden enkele beperkingen:
 ],
 ```
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
 | naamruimte |Ja |Naam ruimte voor de aangepaste functies. Gebruik om naam conflicten te voor komen met sjabloon functies. |
 | functie naam |Ja |De naam van de aangepaste functie. Wanneer u de functie aanroept, moet u de naam van de functie combi neren met de naam ruimte. Als u bijvoorbeeld een functie met de naam UniqueName in de naam ruimte Contoso wilt aanroepen, gebruikt u `"[contoso.uniqueName()]"`. |
@@ -175,7 +175,7 @@ Bij het definiëren van een gebruikers functie gelden enkele beperkingen:
 
 Zie door de [gebruiker gedefinieerde functies in azure Resource Manager sjabloon](template-user-defined-functions.md)voor voor beelden van het gebruik van aangepaste functies.
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
 In de sectie Resources definieert u de resources die worden geïmplementeerd of bijgewerkt.
 
@@ -235,20 +235,20 @@ U definieert resources met de volgende structuur:
 ]
 ```
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
 | condition | Nee | Een Booleaanse waarde die aangeeft of de resource wordt ingericht tijdens deze implementatie. Als `true`, wordt de resource tijdens de implementatie gemaakt. Als `false`, wordt de resource overgeslagen voor deze implementatie. Zie [voor waarde](conditional-resource-deployment.md). |
 | type |Ja |Het type van de resource. Deze waarde is een combi natie van de naam ruimte van de resource provider en het resource type (zoals **micro soft. Storage/Storage accounts**). Zie [Naslag informatie over sjablonen](/azure/templates/)om beschik bare waarden te bepalen. Voor een onderliggende resource is de notatie van het type afhankelijk van of het is genest binnen de bovenliggende resource of buiten de bovenliggende resource is gedefinieerd. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md). |
 | apiVersion |Ja |De versie van de REST API die moet worden gebruikt voor het maken van de resource. Zie [Naslag informatie over sjablonen](/azure/templates/)om beschik bare waarden te bepalen. |
-| name |Ja |De naam van de resource. De naam moet volgen op de URI-onderdeel beperkingen die zijn gedefinieerd in RFC3986. Azure-Services die de resource naam beschikbaar maken voor externe partijen, valideren de naam om ervoor te zorgen dat het geen poging is om een andere identiteit te vervalsen. Voor een onderliggende resource is de notatie van de naam afhankelijk van of deze is genest binnen de bovenliggende resource of buiten de bovenliggende resource is gedefinieerd. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md). |
-| Opmerkingen |Nee |Uw notities voor het documenteren van de resources in uw sjabloon. Zie [opmerkingen in sjablonen](template-syntax.md#comments)voor meer informatie. |
-| location |Varieert |Ondersteunde geo-locaties van de gegeven bron. U kunt een van de beschik bare locaties selecteren, maar normaal gesp roken is het een goed idee om er een te kiezen die zich dicht bij uw gebruikers bevindt. Doorgaans is het zinvol om resources te plaatsen die met elkaar in dezelfde regio communiceren. Voor de meeste resource typen is een locatie vereist, maar sommige typen (zoals een roltoewijzing) vereisen geen locatie. Zie [resource locatie instellen](resource-location.md). |
+| naam |Ja |De naam van de resource. De naam moet volgen op de URI-onderdeel beperkingen die zijn gedefinieerd in RFC3986. Azure-Services die de resource naam beschikbaar maken voor externe partijen, valideren de naam om ervoor te zorgen dat het geen poging is om een andere identiteit te vervalsen. Voor een onderliggende resource is de notatie van de naam afhankelijk van of deze is genest binnen de bovenliggende resource of buiten de bovenliggende resource is gedefinieerd. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md). |
+| aantekeningen |Nee |Uw notities voor het documenteren van de resources in uw sjabloon. Zie [opmerkingen in sjablonen](template-syntax.md#comments)voor meer informatie. |
+| locatie |Varieert |Ondersteunde geo-locaties van de gegeven bron. U kunt een van de beschik bare locaties selecteren, maar normaal gesp roken is het een goed idee om er een te kiezen die zich dicht bij uw gebruikers bevindt. Doorgaans is het zinvol om resources te plaatsen die met elkaar in dezelfde regio communiceren. Voor de meeste resource typen is een locatie vereist, maar sommige typen (zoals een roltoewijzing) vereisen geen locatie. Zie [resource locatie instellen](resource-location.md). |
 | dependsOn |Nee |Resources die moeten worden geïmplementeerd voordat deze resource wordt geïmplementeerd. Resource Manager evalueert de afhankelijkheden tussen resources en implementeert deze in de juiste volg orde. Wanneer resources niet afhankelijk zijn van elkaar, worden ze parallel geïmplementeerd. De waarde kan een door komma's gescheiden lijst zijn van een resource naam of unieke id van een resource. Alleen een lijst met resources die in deze sjabloon zijn geïmplementeerd. Resources die niet in deze sjabloon zijn gedefinieerd, moeten al bestaan. Vermijd overbodige afhankelijkheden omdat deze uw implementatie kunnen vertragen en circulaire afhankelijkheden kan maken. Zie [afhankelijkheden definiëren in azure Resource Manager sjablonen](define-resource-dependency.md)voor hulp bij het instellen van afhankelijkheden. |
 | tags |Nee |Tags die zijn gekoppeld aan de resource. Pas Tags toe om de resources in uw abonnement logisch te organiseren. |
 | sku | Nee | Sommige resources staan waarden toe die de te implementeren SKU definiëren. U kunt bijvoorbeeld het type redundantie voor een opslag account opgeven. |
 | type | Nee | Bij sommige resources is een waarde toegestaan die het type resource definieert dat u implementeert. U kunt bijvoorbeeld het type Cosmos DB opgeven dat u wilt maken. |
-| Kopieer |Nee |Als er meer dan één exemplaar nodig is, wordt het aantal resources dat moet worden gemaakt. De standaard modus is parallel. Geef de seriële modus op als u niet wilt dat alle of de resources op hetzelfde moment worden geïmplementeerd. Zie [meerdere exemplaren van resources maken in azure Resource Manager](create-multiple-instances.md)voor meer informatie. |
-| plannen | Nee | In sommige resources zijn waarden toegestaan waarmee het plan wordt gedefinieerd dat moet worden geïmplementeerd. U kunt bijvoorbeeld de Marketplace-installatie kopie voor een virtuele machine opgeven. |
+| Kopieer |Nee |Als er meer dan één exemplaar nodig is, wordt het aantal resources dat moet worden gemaakt. De standaard modus is parallel. Geef de seriële modus op als u niet wilt dat alle of de resources op hetzelfde moment worden geïmplementeerd. Zie [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md)voor meer informatie. |
+| Fonds | Nee | In sommige resources zijn waarden toegestaan waarmee het plan wordt gedefinieerd dat moet worden geïmplementeerd. U kunt bijvoorbeeld de Marketplace-installatie kopie voor een virtuele machine opgeven. |
 | properties |Nee |Resource-specifieke configuratie-instellingen. De waarden voor de eigenschappen zijn gelijk aan de waarden die u opgeeft in de hoofd tekst van de aanvraag voor de REST API bewerking (PUT-methode) om de resource te maken. U kunt ook een Kopieer matrix opgeven om meerdere exemplaren van een eigenschap te maken. Zie [Naslag informatie over sjablonen](/azure/templates/)om beschik bare waarden te bepalen. |
 | resources |Nee |Onderliggende bronnen die afhankelijk zijn van de resource die wordt gedefinieerd. Alleen resource typen opgeven die zijn toegestaan voor het schema van de bovenliggende resource. De afhankelijkheid van de bovenliggende resource is niet geïmpliceerd. Deze afhankelijkheid moet expliciet worden gedefinieerd. Zie [naam en type voor onderliggende resources instellen](child-resource-name-type.md). |
 
@@ -268,7 +268,7 @@ Het volgende voorbeeld ziet u de structuur van de uitvoerdefinitie van een:
 }
 ```
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
 | uitvoer naam |Ja |De naam van de uitvoerwaarde. Moet een geldige JavaScript-id. |
 | condition |Nee | Booleaanse waarde die aangeeft of deze uitvoer waarde wordt geretourneerd. Als `true`, wordt de waarde opgenomen in de uitvoer voor de implementatie. Als `false`, wordt de uitvoer waarde overgeslagen voor deze implementatie. Wanneer deze niet is opgegeven, wordt de standaard waarde `true`. |
@@ -404,7 +404,7 @@ Als u sjablonen met meerdere regels wilt implementeren met behulp van Azure CLI,
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie de [Azure-snelstartsjablonen](https://azure.microsoft.com/documentation/templates/) voor volledige sjablonen voor verschillende soorten oplossingen.
-* Zie voor meer informatie over de functies die u uit in een sjabloon gebruiken kunt [Azure Resource Manager-sjabloonfuncties](template-functions.md).
+* Zie [Azure Resource Manager-sjabloon functies](template-functions.md)voor meer informatie over de functies die u in een sjabloon kunt gebruiken.
 * Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)voor het combi neren van verschillende sjablonen tijdens de implementatie.
 * Zie voor aanbevelingen voor het maken van sjablonen [Azure Resource Manager best practices](template-best-practices.md)voor sjablonen.
 * Zie [Azure Resource Manager sjablonen voor Cloud consistentie ontwikkelen](templates-cloud-consistency.md)voor aanbevelingen voor het maken van Resource Manager-sjablonen die u kunt gebruiken in alle Azure-omgevingen en Azure stack.

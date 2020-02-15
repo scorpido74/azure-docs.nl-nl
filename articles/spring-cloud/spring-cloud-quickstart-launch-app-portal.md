@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201540"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251818"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -65,6 +65,9 @@ az extension add --name spring-cloud
 1. Klik op **controleren en maken**.
 
 1. Controleer uw specificaties en klik op **maken**.
+
+>[!Note]
+> Als de sjabloon validatie meer dan drie minuten duurt, kunt u proberen om de tracering uit te scha kelen en opnieuw uit te voeren.
 
 Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodra de app is geïmplementeerd, wordt de **overzichts** pagina voor het service-exemplaar weer gegeven.
 

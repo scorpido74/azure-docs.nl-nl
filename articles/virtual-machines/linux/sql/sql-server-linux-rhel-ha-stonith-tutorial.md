@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024344"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252209"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelf studie: beschikbaarheids groepen configureren voor SQL Server op virtuele RHEL-machines in azure 
 
@@ -196,7 +196,7 @@ Als de verbinding is geslaagd, ziet u de volgende uitvoer van de Linux-Terminal:
 
 Typ `exit` om de SSH-sessie te verlaten.
 
-## <a name="enable-high-availability"></a>Hoge beschikbaarheid inschakelen
+## <a name="enable-high-availability"></a>Hoge Beschik baarheid inschakelen
 
 > [!IMPORTANT]
 > Als u dit gedeelte van de zelf studie wilt volt ooien, moet u beschikken over een abonnement voor RHEL en de invoeg toepassing met hoge Beschik baarheid. Als u een installatie kopie gebruikt die wordt aanbevolen in de vorige sectie, hoeft u geen ander abonnement te registreren.
@@ -786,7 +786,7 @@ We volgen de hand leiding voor het [maken van de resources van de beschikbaarhei
 
 ### <a name="create-the-ag-cluster-resource"></a>De AG-cluster resource maken
 
-1. Gebruik de volgende opdracht om de resource `ag_cluster` te maken in de groep beschik bare groepen `ag1`.
+1. Gebruik de volgende opdracht om de resource `ag_cluster` te maken in de beschikbaarheids groep `ag1`.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true

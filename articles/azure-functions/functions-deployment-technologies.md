@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029857"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210154"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -51,7 +51,7 @@ Enkele belang rijke concepten zijn essentieel om te weten hoe implementaties wer
 Wanneer u een van de triggers wijzigt, moeten de functies de infra structuur op de hoogte zijn van de wijzigingen. Synchronisatie gebeurt automatisch voor veel implementatie technologieën. In sommige gevallen moet u de triggers echter hand matig synchroniseren. Wanneer u uw updates implementeert door te verwijzen naar een URL voor een extern pakket, lokale Git, Cloud synchronisatie of FTP, moet u de triggers hand matig synchroniseren. U kunt triggers op een van de volgende drie manieren synchroniseren:
 
 * Start uw functie-app in de Azure Portal
-* Verzend een HTTP POST-aanvraag naar `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` met behulp van de [hoofd sleutel](functions-bindings-http-webhook.md#authorization-keys).
+* Verzend een HTTP POST-aanvraag naar `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` met behulp van de [hoofd sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys).
 * Verzend een HTTP POST-aanvraag naar `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Vervang de tijdelijke aanduidingen door uw abonnements-ID, naam van de resource groep en de naam van uw functie-app.
 
 ### <a name="remote-build"></a>Externe build

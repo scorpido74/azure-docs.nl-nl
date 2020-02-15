@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169838"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252073"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning Compute-instantie?
 
@@ -141,11 +141,11 @@ Reken instanties kunnen worden gebruikt als een [trainings berekenings doel](con
 
 ## <a name="notebookvm"></a>Wat is er gebeurd met de VM van de notebook?
 
-Reken instanties vervangen de VM van de notebook.  In regio's waar reken instanties nog niet beschikbaar zijn, kunt u de VM-Vm's blijven gebruiken met de volledige functionaliteit en nieuwe VM-Vm's maken.
+Reken instanties vervangen de VM van de notebook.  
 
 Alle notitieblok bestanden die zijn opgeslagen in de werkruimte bestands share en gegevens in werkruimte gegevens archieven, zijn toegankelijk vanuit een reken instantie. Alle aangepaste pakketten die eerder op een notebook-VM zijn geïnstalleerd, moeten echter opnieuw worden geïnstalleerd op de reken instantie. Quota beperkingen die van toepassing zijn op het maken van reken clusters, zijn ook van toepassing op het maken van reken instanties. 
 
-In regio's waar reken instanties beschikbaar zijn, kunnen geen nieuwe virtuele machines van de werk plek worden gemaakt. U kunt echter nog steeds toegang krijgen tot en gebruikmaken van de laptop-Vm's die u hebt gemaakt, met volledige functionaliteit. Reken instanties kunnen worden gemaakt in dezelfde werk ruimte als de bestaande virtuele machines van het werk blok. 
+Er kunnen geen nieuwe Vm's voor het notitie blok worden gemaakt. U kunt echter nog steeds toegang krijgen tot en gebruikmaken van de laptop-Vm's die u hebt gemaakt, met volledige functionaliteit. Reken instanties kunnen worden gemaakt in dezelfde werk ruimte als de bestaande virtuele machines van het werk blok. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767438"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251699"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Voor beeld: een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI
 
@@ -91,7 +91,7 @@ Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepas
 
 Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resource groep met de opdracht [AZ Group Create][az-group-create] .
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
 
 > [!NOTE]
 > In dit artikel wordt gebruikgemaakt van de bash-syntaxis voor de opdrachten in deze zelf studie.
@@ -149,6 +149,10 @@ az aks create \
 > Als er een fout is opgetreden bij het valideren van het wacht woord, probeert u de resource groep te maken in een andere regio.
 > Probeer vervolgens het cluster te maken met de nieuwe resource groep.
 
+> [!Note]
+> Als u het AKS-cluster niet kunt maken omdat de versie niet wordt ondersteund in deze regio, gebruikt u de opdracht [AZ AKS get-version--location eastus] om de lijst met ondersteunde versies te vinden voor deze regio.
+
+
 Na enkele minuten is de opdracht voltooid en retourneert deze informatie over het cluster in JSON-indeling. Af en toe kan het cluster langer dan een paar minuten duren. In deze gevallen Maxi maal 10 minuten toestaan. 
 
 ## <a name="add-a-windows-server-node-pool"></a>Een Windows Server-knooppunt groep toevoegen
@@ -175,7 +179,7 @@ Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kub
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -288,6 +292,9 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 Als u de voor beeld-app in actie wilt zien, opent u een webbrowser op het externe IP-adres van uw service.
 
 ![Afbeelding van bladeren naar ASP.NET-voorbeeld toepassing](media/windows-container/asp-net-sample-app.png)
+
+> [!Note]
+> Als u een time-out voor de verbinding krijgt bij het laden van de pagina, moet u controleren of de voor beeld-app klaar is met de volgende opdracht [kubectl Get Peule--Watch]. Soms wordt de Windows-container niet gestart op het moment dat het externe IP-adres beschikbaar is.
 
 ## <a name="delete-cluster"></a>Cluster verwijderen
 

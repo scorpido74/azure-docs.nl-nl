@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422097"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211702"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richt lijnen voor het implementeren van web-apps met behulp van Azure Resource Manager sjablonen
 
@@ -34,20 +34,20 @@ U implementeert resources in de volgende volg orde:
 * App Service plan.
 * Alle andere gerelateerde resources, zoals data bases of opslag accounts.
 
-**Tier 2**
+**Laag 2**
 * Web-app--is afhankelijk van het App Service-abonnement.
 * Azure-toepassing Insights-exemplaar dat de server farm bedoelt, is afhankelijk van het App Service plan.
 
-**Tier 3**
+**Laag 3**
 * Broncode beheer: is afhankelijk van de web-app.
 * Site-uitbrei ding MSDeploy--is afhankelijk van de web-app.
 * Azure-toepassing Insights-exemplaar dat de web-app bedoelt, is afhankelijk van de web-app.
 
-**Tier 4**
+**Laag 4**
 * App Service certificaat: afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
 * Configuratie-instellingen (verbindings reeksen, Web. config-waarden, app-instellingen): afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
 
-**Tier 5**
+**Laag 5**
 * Host-naam bindingen: afhankelijk van het certificaat, indien aanwezig. Anders is dit afhankelijk van een resource van een hoger niveau.
 * Site-extensies: afhankelijk van de huidige configuratie-instellingen. Anders is dit afhankelijk van een resource van een hoger niveau.
 
@@ -90,7 +90,7 @@ Als uw Resource Manager-sjabloon gebruikmaakt van MSDeploy, kan het lastig zijn 
 
 1. Ga naar de kudu- [console](https://github.com/projectkudu/kudu/wiki/Kudu-console)van de site.
 2. Blader naar de map op D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Zoek naar de bestanden appManagerStatus. XML en appManagerLog. XML. Het eerste bestand registreert de status. Het tweede bestand registreert informatie over de fout. Als de fout niet aan u is toegevoegd, kunt u deze toevoegen wanneer u hulp nodig hebt bij het forum.
+3. Zoek naar de bestanden appManagerStatus. XML en appManagerLog. XML. Het eerste bestand registreert de status. Het tweede bestand registreert informatie over de fout. Als de fout niet aan u is toegevoegd, kunt u deze toevoegen wanneer u hulp nodig hebt bij het [forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Kies een unieke naam voor de web-app
 

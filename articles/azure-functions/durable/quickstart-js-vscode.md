@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845721"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210290"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Uw eerste duurzame functie maken in JavaScript
 
@@ -20,11 +20,11 @@ ms.locfileid: "76845721"
 
 In dit artikel leert u hoe u de Azure Functions-extensie van Visual Studio Code kunt gebruiken om lokaal een duurzame ‘Hallo wereld’-functie te maken en te testen.  Deze functie deelt aanroepen naar andere functies in en koppelt ze aan elkaar. Vervolgens publiceert u de functiecode op Azure.
 
-![Durable Function uitvoeren in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
+![Duurzame functie uitvoeren in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * Installeer [Visual Studio Code](https://code.visualstudio.com/download).
 
@@ -53,11 +53,11 @@ In deze sectie gebruikt u Visual Studio code om een lokaal Azure Functions proje
 
     | Vraag | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
-    | Selecteer een taal voor uw functie-app-project | JavaScript | Een lokaal node. js-functie project maken. |
+    | Selecteer een taal voor uw functie-app-project | Javascript | Een lokaal node. js-functie project maken. |
     | Een versie selecteren | Azure Functions v2 | U ziet deze optie alleen wanneer de kern Hulpprogramma's niet al zijn geïnstalleerd. In dit geval worden de kern Hulpprogramma's geïnstalleerd wanneer u de app voor het eerst uitvoert. |
     | Selecteer een sjabloon voor de eerste functie van uw project | HTTP-trigger | Een door HTTP geactiveerde functie maken in de nieuwe functie-app. |
     | Een functie naam opgeven | HttpTrigger | Druk op ENTER om de standaard naam te gebruiken. |
-    | Autorisatieniveau | Functie | Het `function` autorisatie niveau vereist dat u een toegangs sleutel opgeeft bij het aanroepen van het HTTP-eind punt van uw functie. Hierdoor is het moeilijker om toegang te krijgen tot een niet-beveiligd eind punt. Zie [autorisatie sleutels](../functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.  |
+    | Autorisatieniveau | Functie | Het `function` autorisatie niveau vereist dat u een toegangs sleutel opgeeft bij het aanroepen van het HTTP-eind punt van uw functie. Hierdoor is het moeilijker om toegang te krijgen tot een niet-beveiligd eind punt. Zie [autorisatie sleutels](../functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie.  |
     | Selecteer hoe u uw project wilt openen | Toevoegen aan werk ruimte | Hiermee maakt u de functie-app in de huidige werk ruimte. |
 
 Met Visual Studio code worden de Azure Functions Core Tools, indien nodig, geïnstalleerd. Er wordt ook een functie-app-project in een nieuwe werk ruimte gemaakt. Dit project bevat de configuratie bestanden [host. json](../functions-host-json.md) en [Local. settings. json](../functions-run-local.md#local-settings-file) . Er wordt ook een HttpExample-map gemaakt met het [definitie bestand function. json](../functions-reference-node.md#folder-structure) en het [bestand index. js](../functions-reference-node.md#exporting-a-function), een node. js-bestand dat de functie code bevat.
@@ -84,7 +84,7 @@ Maak eerst een HTTP-geactiveerde functie waarmee de indeling voor een duurzame f
 
     ![De HTTP-starter-sjabloon kiezen](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Laat de standaardnaam als `DurableFunctionsHttpStart` en druk op ** **Enter**, selecteer vervolgens **anoniem** verificatie.
+3. Wijzig de standaard naam als `DurableFunctionsHttpStart` en druk op * * * * Voer * * in en selecteer **anonieme** verificatie.
 
     ![Anonieme verificatie kiezen](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

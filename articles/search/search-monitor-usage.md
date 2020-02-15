@@ -1,181 +1,131 @@
 ---
-title: Metrische gegevens over resource gebruik en query bewaken
+title: Bewerkingen en activiteiten bewaken
 titleSuffix: Azure Cognitive Search
 description: Schakel logboek registratie in, Bekijk metrische gegevens over de query activiteit, het resource gebruik en andere systeem data van een Azure Cognitive Search-service.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/15/2020
+ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059642"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210535"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Resource verbruik en query activiteit bewaken in azure Cognitive Search
+# <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Bewerkingen en activiteiten van Azure Cognitive Search bewaken
 
-Op de pagina overzicht van de Azure Cognitive Search-service kunt u systeem gegevens weer geven over resource gebruik, metrische gegevens opvragen en hoeveel quota beschikbaar zijn voor het maken van meer indexen, Indexeer functies en gegevens bronnen. U kunt ook de portal gebruiken om log Analytics te configureren of een andere resource die wordt gebruikt voor permanente gegevens verzameling. 
+In dit artikel vindt u een overzicht van het niveau van de service (resource), op het niveau van de werk belasting (query's en indexering), en wordt een framework voorgesteld voor het bewaken van gebruikers toegang.
 
-Het instellen van Logboeken is handig voor zelf diagnose en het behouden van de operationele geschiedenis. Intern bestaan er voor een korte periode een logboek op de back-end, voldoende voor onderzoek en analyse als u een ondersteunings ticket hebt. Als u de controle over en toegang wilt hebben tot logboek gegevens, moet u een van de oplossingen instellen die in dit artikel worden beschreven.
+In het spectrum gebruikt u een combi natie van ingebouwde infra structuur en Foundational services zoals Azure Monitor, evenals service-Api's die statistieken, aantallen en status retour neren. Als u het bereik van mogelijkheden begrijpt, kunt u een effectief communicatie systeem configureren of maken voor proactieve antwoorden op problemen wanneer deze zich voordoen.
 
-In dit artikel vindt u meer informatie over uw bewakings opties, het inschakelen van logboek registratie en logboek opslag, en het weer geven van de logboek inhoud.
+## <a name="use-azure-monitor"></a>Azure Monitor gebruiken
 
-## <a name="metrics-at-a-glance"></a>Metrische gegevens in één oogopslag
+Veel services, met inbegrip van Azure Cognitive Search, maken gebruik van [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) voor waarschuwingen, metrische gegevens en Diagnostische logboeken. Voor Azure Cognitive Search wordt de ingebouwde bewakings infrastructuur voornamelijk gebruikt voor bewaking op resource niveau (service status) en [query bewaking](search-monitor-queries.md).
 
-De bewerkings-en **bewakings** secties die in het overzichts venster zijn **ingebouwd, worden** opgenomen in het Resource verbruik en de metrische gegevens van de query uitvoering Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist. Deze pagina wordt om de paar minuten vernieuwd. Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt en hoe goed de huidige configuratie de bestaande belasting afhandelt.
+De volgende scherm afbeelding helpt u bij het vinden van Azure Monitor functies in de portal.
 
-Op het tabblad **gebruik** ziet u de beschik baarheid van resources ten opzichte van huidige [limieten](search-limits-quotas-capacity.md). De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
++ Op het tabblad **controle** , dat zich op de overzichts pagina bevindt, worden belang rijke metrische gegevens in één oogopslag weer gegeven.
++ **Activiteiten logboek**, net onder overzicht, rapporten over acties op resource niveau: meldingen over de service status en API-sleutel aanvragen.
++ Door de lijst te **bewaken**kunt u waarschuwingen, metrische gegevens en Diagnostische logboeken configureren. Maak deze wanneer u ze nodig hebt. Zodra de gegevens zijn verzameld en opgeslagen, kunt u de informatie voor inzichten opvragen of visualiseren.
 
-![Status van gebruik ten opzichte van de doel limieten](./media/search-monitor-usage/usage-tab.png
- "Status van gebruik ten opzichte van de doel limieten")
+![Integratie in een zoek service Azure Monitor](./media/search-monitor-usage/azure-monitor-search.png
+ "Integratie in een zoek service Azure Monitor")
 
-## <a name="queries-per-second-qps-and-other-metrics"></a>Query's per seconde (QPS) en andere metrische gegevens
+### <a name="precision-of-reported-numbers"></a>Nauw keurigheid van gerapporteerde getallen
 
-Het tabblad **bewaking** toont zwevende gemiddelden voor metrische gegevens, zoals zoek *query's per seconde* (qps), geaggregeerd per minuut. 
-*Zoek latentie* is de hoeveelheid tijd die de zoek service nodig heeft om Zoek query's, geaggregeerd per minuut, te verwerken. *Percentage van vertraagde Zoek query's* (niet weer gegeven) is het percentage Zoek query's dat is beperkt, ook samengevoegd per minuut.
+Portal pagina's worden elke paar minuten vernieuwd. De getallen die in de portal zijn opgenomen, zijn ongeveer zo ontworpen dat u een algemeen idee hebt van de manier waarop uw systeem bezig is met het verwerken van aanvragen. Werkelijke metrische gegevens, zoals query's per seconde (QPS), kunnen hoger of lager zijn dan het nummer dat op de pagina wordt weer gegeven.
 
-Deze getallen zijn van benadering en zijn bedoeld om u een algemeen idee te geven van de manier waarop uw systeem bezig is met het verwerken van aanvragen. De werkelijke QPS kan hoger of lager zijn dan het getal dat u in de portal hebt gerapporteerd.
+## <a name="activity-logs-and-service-health"></a>Activiteiten logboeken en service status
 
-![Query's per seconde-activiteit](./media/search-monitor-usage/monitoring-tab.png "Query's per seconde-activiteit")
+In het [**activiteiten logboek**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) worden gegevens van Azure Resource Manager verzameld en rapporten over wijzigingen in de service status. U kunt het activiteiten logboek controleren op kritieke, fout-en waarschuwings voorwaarden met betrekking tot de service status.
 
-## <a name="activity-logs"></a>Activiteitenlogboeken
-
-In het **activiteiten logboek** worden gegevens verzameld van Azure Resource Manager. Voor beelden van informatie in het activiteiten logboek zijn het maken of verwijderen van een service, het bijwerken van een resource groep, het controleren op Beschik baarheid van namen of het verkrijgen van een service toegangs sleutel voor het afhandelen van een aanvraag. 
+Voor taken in de service, zoals query's, het indexeren of het maken van objecten, worden algemene informatieve meldingen weer geven, zoals *admin-sleutel ophalen* en *query sleutels ophalen* voor elke aanvraag, maar niet de specifieke actie zelf. Voor informatie over deze korrel moet u diagnostische logboek registratie configureren.
 
 U kunt het **activiteiten logboek** openen vanuit het navigatie deel venster, of vanuit meldingen in de bovenste venster opdracht balk, of via de pagina **problemen vaststellen en oplossen** .
 
-Voor taken in de service, zoals het maken van een index of het verwijderen van een gegevens bron, ziet u algemene meldingen, zoals ' beheer sleutel ophalen ' voor elke aanvraag, maar niet de specifieke actie zelf. Voor dit niveau van informatie moet u een oplossing voor bewaking van invoeg toepassingen inschakelen.
+## <a name="monitor-storage"></a>Opslag bewaken
 
-## <a name="add-on-monitoring-solutions"></a>Bewakings oplossingen voor invoeg toepassingen
+Pagina's met tabbladen die in het overzichts venster zijn ingebouwd, worden weer gegeven in het resource gebruik. Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist en de pagina om de paar minuten wordt vernieuwd. 
 
-Azure Cognitive Search slaat geen gegevens buiten de beheerde objecten op, wat betekent dat logboek gegevens extern moeten worden opgeslagen. U kunt de onderstaande resources configureren als u logboek gegevens persistent wilt maken. 
+Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt en hoe goed de huidige configuratie de bestaande belasting afhandelt.
 
-De volgende tabel vergelijkt de opties voor het opslaan van Logboeken en het toevoegen van uitgebreide bewaking van service bewerkingen en het uitvoeren van query's op werk belastingen via Application Insights.
+Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar. het opslag verbruik is niet geaggregeerd of aangemeld bij **AzureMetrics**. U moet een aangepaste oplossing bouwen om meldingen over de resource te verkrijgen.
 
-| Resource | Gebruikt voor |
-|----------|----------|
-| [Azure Monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een Log Analytics-werk ruimte. U kunt query's uitvoeren op een werk ruimte om gedetailleerde informatie uit het logboek te retour neren. Zie [aan de slag met Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) voor meer informatie. |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een BLOB-container en opgeslagen in JSON-bestanden. Een JSON-editor gebruiken om de inhoud van een bestand weer te geven.|
-| [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Vastgelegde gebeurtenissen en query gegevens, op basis van de schema's die in dit artikel worden beschreven. Kies deze optie als een alternatieve service voor het verzamelen van gegevens voor zeer grote logboeken. |
+In de portal ziet u op het tabblad **gebruik** de beschik baarheid van resources ten opzichte van de huidige [limieten](search-limits-quotas-capacity.md) die door de servicelaag worden opgelegd. 
 
-Zowel de Azure Monitor-Logboeken als de Blob-opslag zijn beschikbaar als gratis service, zodat u ze gratis kunt uitproberen voor de levens duur van uw Azure-abonnement. Application Insights is gratis aan te melden en te gebruiken zolang de grootte van de toepassings gegevens onder bepaalde limieten ligt (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie).
+De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
 
-In de volgende sectie wordt stapsgewijs uitgelegd hoe u Azure Blob Storage inschakelt en gebruikt om logboek gegevens te verzamelen en te openen die zijn gemaakt door Azure Cognitive Search bewerkingen.
+![Gebruiks status relatief ten opzichte van laag limieten](./media/search-monitor-usage/usage-tab.png
+ "Gebruiks status relatief ten opzichte van laag limieten")
 
-## <a name="enable-logging"></a>Logboekregistratie inschakelen
+## <a name="monitor-workloads"></a>Werk belastingen bewaken
 
-Logboek registratie voor indexerings-en query-workloads is standaard uitgeschakeld en is afhankelijk van oplossingen voor het vastleggen van de infra structuur en de lange termijn externe opslag. De enige persistente gegevens in azure Cognitive Search zijn zelf de objecten die worden gemaakt en beheerd, waardoor logboeken ergens anders moeten worden opgeslagen.
+Geregistreerde gebeurtenissen zijn onder andere de items die betrekking hebben op indexering en query's. De **Azure Diagnostics** -tabel in log Analytics verzamelt operationele gegevens met betrekking tot query's en indexering.
 
-In deze sectie leert u hoe u Blob Storage kunt gebruiken voor het opslaan van vastgelegde gebeurtenissen en metrische gegevens.
+De meeste geregistreerde gegevens zijn alleen-lezen-bewerkingen. Voor andere Create-update-delete-bewerkingen die niet in het logboek zijn vastgelegd, kunt u een query uitvoeren op de zoek service voor systeem info.
 
-1. [Maak een opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) als u er nog geen hebt. U kunt deze in dezelfde resource groep als Azure Cognitive Search plaatsen om het later eenvoudig op te schonen als u alle resources die in deze oefening worden gebruikt wilt verwijderen.
+| OperationName | Beschrijving |
+|---------------|-------------|
+| ServiceStats | Met deze bewerking wordt een routine aanroep uitgevoerd om [service statistieken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)op te halen, direct of impliciet te worden aangeroepen om een portal overzichts pagina te vullen wanneer deze wordt geladen of vernieuwd. |
+| Query. Search |  Query's aanvragen voor een index Zie [controle query's](search-monitor-queries.md) voor informatie over vastgelegde query's.|
+| Indexeren. index  | Deze bewerking is een aanroep om [documenten toe te voegen, bij te werken of te verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
+| indexen. Drukvat | Dit is een index die is gemaakt met de wizard gegevens importeren. |
+| Indexeer functies. maken | Maak expliciet of impliciet een Indexeer functie met behulp van de wizard gegevens importeren. |
+| Indexeer functies. ophalen | Retourneert de naam van een Indexeer functie wanneer de Indexeer functie wordt uitgevoerd. |
+| Indexeer functies. status | Retourneert de status van een Indexeer functie wanneer de Indexeer functie wordt uitgevoerd. |
+| Gegevens bronnen. ophalen | Retourneert de naam van de gegevens bron wanneer een Indexeer functie wordt uitgevoerd.|
+| Indexes. Get | Retourneert de naam van een index wanneer een Indexeer functie wordt uitgevoerd. |
 
-   Uw opslag account moet zich in dezelfde regio bevinden als Azure Cognitive Search.
+### <a name="kusto-queries-about-workloads"></a>Kusto query's over workloads
 
-2. Open de overzichts pagina van de zoek service. Schuif in het linkerdeel venster omlaag naar **bewaking** en klik op **Diagnostische instellingen**.
+Als u logboek registratie hebt ingeschakeld, kunt u een query uitvoeren op **AzureDiagnostics** voor een lijst met bewerkingen die zijn uitgevoerd op uw service en wanneer. U kunt activiteiten ook correleren om de prestatie wijzigingen te onderzoeken.
 
-   ![Diagnostische instellingen](./media/search-monitor-usage/diagnostic-settings.png "Diagnostische instellingen")
+#### <a name="example-list-operations"></a>Voor beeld: bewerkingen weer geven 
 
-3. **Diagnostische instelling toevoegen** selecteren
-
-4. Kies de gegevens die u wilt exporteren: Logboeken, metrische gegevens of beide. U kunt het kopiëren naar een opslag account, het naar een Event Hub verzenden of het exporteren naar Azure Monitor-Logboeken.
-
-   Voor archivering naar Blob Storage moet alleen het opslag account bestaan. Containers en blobs worden zo gemaakt als nodig wanneer logboek gegevens worden geëxporteerd.
-
-   ![Blob Storage-archief configureren](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-archief configureren")
-
-5. Het profiel opslaan
-
-6. Test logboek registratie door het maken of verwijderen van objecten (logboek gebeurtenissen maken) en door het verzenden van query's (metrische gegevens worden gegenereerd). 
-
-Logboek registratie is ingeschakeld wanneer u het profiel opslaat. Containers worden alleen gemaakt als er een activiteit is die moet worden geregistreerd of gemeten. Wanneer de gegevens naar een opslag account worden gekopieerd, worden de gegevens ingedeeld als JSON en in twee containers geplaatst:
-
-* Insights-logs-operationlogs: voor zoeken in logboeken over webverkeer
-* Insights-metrics-pt1m: voor metrische gegevens
-
-**Het duurt één uur voordat de containers worden weer gegeven in de Blob-opslag. Er is één blob, per uur, per container.**
-
-U kunt [Visual Studio code](#download-and-open-in-visual-studio-code) of een andere JSON-editor gebruiken om de bestanden weer te geven. 
-
-### <a name="example-path"></a>Voor beeld van pad
+Retourneert een lijst met bewerkingen en een telling van elke bewerking.
 
 ```
-resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+AzureDiagnostics
+| summarize count() by OperationName
 ```
 
-## <a name="log-schema"></a>Logboek-schema
-Blobs met uw verkeers logboeken van de zoek service zijn gestructureerd zoals beschreven in deze sectie. Elke BLOB heeft één hoofd object met de naam **records** die een matrix met logboek objecten bevatten. Elke BLOB bevat records voor alle bewerkingen die plaatsvonden tijdens hetzelfde uur.
+#### <a name="example-correlate-operations"></a>Voor beeld: correlatie bewerkingen
 
-| Name | Type | Voorbeeld | Opmerkingen |
-| --- | --- | --- | --- |
-| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |Tijdstempel van de bewerking |
-| resourceId |tekenreeks |' / SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>STANDAARD-RESOURCEGROUPS-PROVIDERS /<br/> MICROSOFT. ZOEKEN/SEARCHSERVICES/SEARCHSERVICE" |Uw ResourceId |
-| operationName |tekenreeks |"Query.Search" |De naam van de bewerking |
-| operationVersion |tekenreeks |"2019-05-06" |De api-versie die wordt gebruikt |
-| category |tekenreeks |"OperationLogs" |constante |
-| resultType |tekenreeks |"Geslaagd" |Mogelijke waarden: slagen of mislukken |
-| resultSignature |int |200 |HTTP-resultaatcode |
-| durationMS |int |50 |Duur van de bewerking in milliseconden |
-| properties |object |Zie de volgende tabel |Object met de bewerking-specifieke gegevens |
+Correleer een query aanvraag met indexerings bewerkingen en Genereer de gegevens punten in een tijd diagram om de bewerkingen samen te zien.
 
-**Eigenschappen schema**
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
 
-| Name | Type | Voorbeeld | Opmerkingen |
-| --- | --- | --- | --- |
-| Beschrijving |tekenreeks |'/Indexes('content')/docs ophalen' |Eindpunt van de bewerking |
-| Query's uitvoeren |tekenreeks |"?search=AzureSearch&$count=true&api-version=2019-05-06" |De queryparameters |
-| Documenten |int |42 |Aantal verwerkte documenten |
-| Index |tekenreeks |"testindex" |Naam van de index die is gekoppeld aan de bewerking |
+### <a name="use-search-apis"></a>Zoek-Api's gebruiken
 
-## <a name="metrics-schema"></a>Schema van de metrische gegevens
-
-Metrische gegevens worden vastgelegd voor query aanvragen.
-
-| Name | Type | Voorbeeld | Opmerkingen |
-| --- | --- | --- | --- |
-| resourceId |tekenreeks |' / SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>STANDAARD-RESOURCEGROUPS-PROVIDERS /<br/>MICROSOFT. ZOEKEN/SEARCHSERVICES/SEARCHSERVICE" |de resource-ID |
-| MetricName |tekenreeks |"Latentie" |de naam van de metrische gegevens |
-| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |tijdstempel van de bewerking |
-| gemiddeld |int |64 |De gemiddelde waarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
-| minimum |int |37 |De minimumwaarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
-| maximum |int |78 |De maximale waarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
-| totaal |int |258 |De totale waarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
-| count |int |4 |Het aantal onbewerkte voorbeelden die worden gebruikt voor het genereren van de metrische gegevens |
-| timegrain |tekenreeks |"PT1M" |Het tijdsinterval van de metrische gegevens in de ISO 8601 |
-
-Alle metrische gegevens worden gerapporteerd in één minuut intervallen. Elke metriek wordt de minimale, maximale en gemiddelde waarden per minuut.
-
-Voor de metriek SearchQueriesPerSecond is minimaal de laagste waarde voor zoekquery's per seconde dat is geregistreerd gedurende die minuut. Dit geldt ook voor de maximale waarde. Gemiddelde, wordt de statistische functie voor de hele minuut.
-Denk aan dit scenario gedurende één minuut: één seconde van hoog laden dat wil zeggen het maximum voor SearchQueriesPerSecond, gevolgd door 58 seconden gemiddelde belasting, en tot slot een tweede met slechts één query die is de minimale.
-
-ThrottledSearchQueriesPercentage, minimum, maximum, gemiddelde en totale, een hebben dezelfde waarde: het percentage van zoekquery's die zijn beperkt, van het totale aantal zoekquery's gedurende één minuut.
-
-## <a name="download-and-open-in-visual-studio-code"></a>Downloaden en openen in Visual Studio code
-
-U kunt een JSON-editor gebruiken om het logboek bestand weer te geven. Als u er geen hebt, raden we u aan [Visual Studio code](https://code.visualstudio.com/download)aan te bevelen.
-
-1. Open uw opslag account in Azure Portal. 
-
-2. Klik in het navigatie deel venster aan de linkerkant op **blobs**. U ziet **inzichten-logs-operationlogs** en **Insights-metrische gegevens-pt1m**. Deze containers worden gemaakt door Azure Cognitive Search wanneer de logboek gegevens worden geëxporteerd naar de Blob-opslag.
-
-3. Klik op omlaag in de maphiërarchie totdat het JSON-bestand is bereikt.  Gebruik het context menu om het bestand te downloaden.
-
-Zodra het bestand is gedownload, opent u het in een JSON-editor om de inhoud weer te geven.
-
-## <a name="use-system-apis"></a>Systeem-Api's gebruiken
 Zowel de Azure Cognitive Search REST API als de .NET SDK bieden programmatische toegang tot metrische gegevens van services, index-en indexerings informatie en document tellingen.
 
-* [Statistieken van services ophalen](/rest/api/searchservice/get-service-statistics)
-* [Index statistieken ophalen](/rest/api/searchservice/get-index-statistics)
-* [Documenten tellen](/rest/api/searchservice/count-documents)
-* [De Indexeer functie-status ophalen](/rest/api/searchservice/get-indexer-status)
++ [Service statistieken ophalen](/rest/api/searchservice/get-service-statistics)
++ [Index statistieken ophalen](/rest/api/searchservice/get-index-statistics)
++ [Aantal documenten ophalen](/rest/api/searchservice/count-documents)
++ [De Indexeer functie-status ophalen](/rest/api/searchservice/get-indexer-status)
 
-Als u Power shell of de Azure CLI wilt inschakelen, raadpleegt u de documentatie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
+## <a name="monitor-user-access"></a>Gebruikers toegang controleren
+
+Omdat zoek indexen een onderdeel zijn van een grotere client toepassing, is er geen ingebouwde, gebruikersspecifieke methodologie voor het beheren van de toegang tot een index. Er wordt van uitgegaan dat er aanvragen worden opgehaald uit een client toepassing, voor beheerders-of query aanvragen. Lees-en schrijf bewerkingen door de beheerder omvatten het maken, bijwerken en verwijderen van objecten in de gehele service. Alleen-lezen bewerkingen zijn query's voor de verzameling documenten, met een bereik van één index. 
+
+Wat u in de logboeken ziet, is verwijzingen naar aanroepen met behulp van beheer sleutels of query sleutels. De juiste sleutel is opgenomen in aanvragen die afkomstig zijn van client code. De service is niet ingericht voor het afhandelen van identiteits tokens of imitatie.
+
+Wanneer er bedrijfs vereisten bestaan voor autorisatie per gebruiker, wordt de aanbeveling geïntegreerd met Azure Active Directory. U kunt $filter en gebruikers identiteiten gebruiken om de [Zoek resultaten](search-security-trimming-for-azure-search-with-aad.md) van documenten die een gebruiker niet mag zien te knippen. 
+
+Het is niet mogelijk om deze informatie afzonderlijk te registreren vanuit de query reeks die de para meter $filter bevat. Zie [query's bewaken](search-monitor-queries.md) voor meer informatie over het rapporteren van query teken reeksen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Beheer uw zoek service op Microsoft Azure](search-manage.md) voor meer informatie over Service beheer en [prestaties en optimalisatie](search-performance-optimization.md) voor afstemmings richtlijnen.
+Fluency met Azure Monitor is essentieel voor het toezicht op elke Azure-service, inclusief resources zoals Azure Cognitive Search. Als u niet bekend bent met Azure Monitor, neemt u de tijd voor het beoordelen van artikelen die betrekking hebben op resources. Naast zelf studies is het volgende artikel een goede plaats om te beginnen.
+
+> [!div class="nextstepaction"]
+> [Azure-resources bewaken met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)

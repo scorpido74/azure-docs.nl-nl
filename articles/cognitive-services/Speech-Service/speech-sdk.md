@@ -3,25 +3,25 @@ title: Over de Speech SDK-Speech-Service
 titleSuffix: Azure Cognitive Services
 description: De speech Software Development Kit (SDK) biedt uw toepassingen systeem eigen toegang tot de functies van de spraak service, waardoor het eenvoudiger wordt om software te ontwikkelen. In dit artikel biedt aanvullende informatie over de SDK voor Windows, Linux- en Android.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: wolfma
-ms.openlocfilehash: ea879cbfc3b9b1d1a627add52f26a473aca53cdf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/13/2020
+ms.author: dapine
+ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759872"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212526"
 ---
 # <a name="about-the-speech-sdk"></a>Info over de Speech-SDK
 
 Spraak Software Development Kit (SDK) biedt uw toepassingen toegang tot de functies van de spraak-service, waardoor het gemakkelijker wordt om spraak ingeschakelde software te ontwikkelen. Op dit moment bieden de Sdk's toegang tot **spraak-naar-tekst**, **tekst-naar-spraak**, **spraak omzetting**, **intentie herkenning**en **bot Framework direct-lijn spraak kanaal**.
 
-U kunt eenvoudig audio van een microfoon vastleggen, vanuit een stroom lezen of audio bestanden vanuit de opslag openen met de spraak-SDK. De Spraak-SDK ondersteunt WAV/PCM 16-bit, 16 kHz/8 kHz geluid met één kanaal voor spraakherkenning. Aanvullende audio-indelingen worden ondersteund met behulp van het [spraak-naar-tekst rest-eind punt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) of de [batch transcriptie-service](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+U kunt eenvoudig audio van een microfoon vastleggen, vanuit een stroom lezen of audio bestanden vanuit de opslag openen met de spraak-SDK. De Speech SDK ondersteunt WAV/PCM 16-bits, 16 kHz/8 kHz, Single Channel-audio voor spraak herkenning. Aanvullende audio-indelingen worden ondersteund met behulp van het [spraak-naar-tekst rest-eind punt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) of de [batch transcriptie-service](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 Op de pagina documentatie- [invoer](https://aka.ms/csspeech)vindt u een algemeen overzicht van de mogelijkheden en ondersteunde platforms.
 
@@ -31,7 +31,7 @@ Op de pagina documentatie- [invoer](https://aka.ms/csspeech)vindt u een algemeen
 
 ## <a name="get-the-sdk"></a>Download de SDK
 
-### <a name="windows"></a>Windows
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > De Speech SDK ondersteunt Windows 10 of hoger. Eerdere versies van Windows worden **niet ondersteund**.
@@ -40,9 +40,9 @@ Bij Windows, wordt de volgende talen ondersteund:
 
 * C# (UWP- en .NET), C++: U kunt verwijzen naar en de nieuwste versie van onze spraak SDK NuGet-pakket. Het pakket bevat 32-bits en 64-bits-clientbibliotheken en beheerde (.NET)-bibliotheken. De SDK kan worden geïnstalleerd in Visual Studio met behulp van NuGet, [micro soft. CognitiveServices. speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech).
 
-* Java: Kunt u verwijzen naar en de nieuwste versie van onze spraak SDK Maven-pakket, die ondersteuning biedt voor alleen Windows x64 gebruikt. Voeg in uw Maven-project `https://csspeechstorage.blob.core.windows.net/maven/` als een aanvullende opslagplaats en een verwijzing `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` als een afhankelijkheid.
+* Java: Kunt u verwijzen naar en de nieuwste versie van onze spraak SDK Maven-pakket, die ondersteuning biedt voor alleen Windows x64 gebruikt. Voeg `https://csspeechstorage.blob.core.windows.net/maven/` in uw Maven-project als een extra opslag plaats toe en referentie `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` als een afhankelijkheid.
 
-### <a name="linux"></a>Linux
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
 > Op dit moment ondersteunen we alleen Ubuntu 16,04, Ubuntu 18,04 en Debian 9 voor de volgende doel architecturen:
@@ -72,9 +72,9 @@ sudo apt-get install libssl1.0.2 libasound2
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
   ```
 
-* Java: Kunt u verwijzen naar en gebruik de nieuwste versie van onze spraak SDK Maven-pakket. Voeg in uw Maven-project `https://csspeechstorage.blob.core.windows.net/maven/` als een aanvullende opslagplaats en een verwijzing `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als een afhankelijkheid.
+* Java: Kunt u verwijzen naar en gebruik de nieuwste versie van onze spraak SDK Maven-pakket. Voeg `https://csspeechstorage.blob.core.windows.net/maven/` in uw Maven-project als een extra opslag plaats toe en referentie `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als een afhankelijkheid.
 
-* C++: Download de SDK als een [tar-clientinstallatiepakket](https://aka.ms/csspeech/linuxbinary) en pak de bestanden in een map van uw keuze. De volgende tabel bevat de SDK-mapstructuur:
+* C++: Down load de SDK als een [. tar-pakket](https://aka.ms/csspeech/linuxbinary) en pak de bestanden uit in een door u gewenste map. De volgende tabel bevat de SDK-mapstructuur:
 
   |Pad|Beschrijving|
   |-|-|
@@ -86,29 +86,31 @@ sudo apt-get install libssl1.0.2 libasound2
 
   Voor het maken van een toepassing, kopiëren of verplaatsen van de vereiste binaire bestanden (en -bibliotheken) in uw ontwikkelomgeving. Deze waar nodig in uw build-proces opnemen.
 
-### <a name="android"></a>Android
+# <a name="androidtabandroid"></a>[Android](#tab/android)
 
-De Java SDK voor Android is verpakt als een [Aar (Android-bibliotheek)](https://developer.android.com/studio/projects/android-library), waaronder de benodigde bibliotheken en de vereiste Android-machtigingen. Deze wordt gehost in een Maven-opslagplaats op `https://csspeechstorage.blob.core.windows.net/maven/` als pakket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
+De Java SDK voor Android is verpakt als een [Aar (Android-bibliotheek)](https://developer.android.com/studio/projects/android-library), waaronder de benodigde bibliotheken en de vereiste Android-machtigingen. Het wordt gehost in een Maven-opslag plaats op `https://csspeechstorage.blob.core.windows.net/maven/` als pakket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
 
 Het pakket van uw Android Studio-project gebruiken, moet u de volgende wijzigingen aanbrengen:
 
-* In het niveau van het project build.gradle-bestand, het volgende toevoegen aan de `repository` sectie:
+* Voeg in het bestand build. gradle van project niveau het volgende toe aan de sectie `repository`:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* In de module op serverniveau build.gradle-bestand, het volgende toevoegen aan de `dependencies` sectie:
+* Voeg in het bestand build. gradle van module niveau het volgende toe aan de sectie `dependencies`:
 
   ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
   ```
 
-De Java-SDK is ook deel uit van de [spraak Devices SDK](speech-devices-sdk.md).
+De Java SDK maakt ook deel uit van de [SDK voor spraak apparaten](speech-devices-sdk.md).
+
+---
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Zie voor het herkennen van gesproken tekst in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Zie spraak herkennen inC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

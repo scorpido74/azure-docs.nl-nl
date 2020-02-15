@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files | Microsoft Docs
+title: Azure-Vm's hoge Beschik baarheid voor SAP NW op RHEL met Azure NetApp Files | Microsoft Docs
 description: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/13/2020
 ms.author: radeltch
-ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ed18928237d19e9fad2548ee502f9a24266f12c0
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894661"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212879"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen
 
@@ -162,7 +162,7 @@ De SAP NetWeaver-architectuur die in dit artikel wordt gepresenteerd, maakt gebr
   
 In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands systemen gebruikt om te laten zien hoe Azure NetApp Files kunnen worden gebruikt. SAP-bestands systemen die niet via NFS moeten worden gekoppeld, kunnen ook worden geïmplementeerd als [Azure-schijf opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . In dit voor beeld moet <b>a-e</b> zich bevindt op Azure NetApp files en <b>f-g</b> (dat wil zeggen,/usr/sap/<b>QAS</b>/d<b>02</b>,/usr/sap/<b>QAS</b>/d<b>03</b>) kan worden geïmplementeerd als Azure-schijf opslag. 
 
-### <a name="important-considerations"></a>Belangrijke overwegingen
+### <a name="important-considerations"></a>Belang rijke overwegingen
 
 Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver op SUSE-architectuur met hoge Beschik baarheid:
 
@@ -295,7 +295,7 @@ De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azur
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Zie https://access.redhat.com/solutions/1749883 voor meer informatie over het wijzigen van `nfs4_disable_idmapping` para meters.
+   Zie https://access.redhat.com/solutions/1749883voor meer informatie over het wijzigen van `nfs4_disable_idmapping` para meters.
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
@@ -303,9 +303,9 @@ Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux in 
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Voorbereiden op SAP NetWeaver-installatie
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
@@ -462,12 +462,14 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo pcs node standby anftstsapcl2
    # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -523,12 +525,14 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    
    # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
@@ -644,12 +648,15 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -669,12 +676,15 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -685,6 +695,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
     ```
 
    Als u een upgrade uitvoert van een oudere versie en overschakelt naar Server 2 in wachtrij, raadpleegt u SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > De time-outs in de bovenstaande configuratie zijn alleen voor beelden en moeten mogelijk worden aangepast aan de specifieke SAP-installatie. 
 
    Zorg ervoor dat de cluster status OK is en dat alle resources worden gestart. Het is niet belang rijk op welk knoop punt de resources worden uitgevoerd.
 
@@ -881,7 +894,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo service waagent restart
    ```
 
-## <a name="install-database"></a>Database installeren
+## <a name="install-database"></a>Data base installeren
 
 In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op Azure-vm's op Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 

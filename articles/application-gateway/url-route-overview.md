@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910011"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251835"
 ---
 # <a name="url-path-based-routing-overview"></a>Overzicht van op URL-pad gebaseerde routering
 
@@ -20,14 +20,14 @@ Met op URL-pad gebaseerde routering kunt u verkeer routeren naar back-endserverp
 
 Een van de scenario's is het routeren van aanvragen voor verschillende inhoudstypen naar verschillende back-endserverpools.
 
-In het volgende voor beeld is Application Gateway verkeer voor contoso.com van drie back-end-server groepen, bijvoorbeeld: Video server pool, image server pool en DefaultServerPool.
+In het volgende voorbeeld verzorgt de toepassingsgateway het verkeer voor contoso.com van drie back-endserverpools: VideoServerPool, ImageServerPool en DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Aanvragen voor http\://contoso.com/video/* worden doorgestuurd naar video server pool en http\://contoso.com/images/* worden doorgestuurd naar image server pool. Als geen van de padpatronen overeenkomen, wordt DefaultServerPool geselecteerd.
+Aanvragen voor http-\://contoso.com/video/* worden doorgestuurd naar video server pool en http-\://contoso.com/images/* worden doorgestuurd naar image server pool. Als geen van de padpatronen overeenkomen, wordt DefaultServerPool geselecteerd.
 
 > [!IMPORTANT]
-> Regels worden verwerkt in de volgorde die wordt weergegeven in de portal. Het is raadzaam om eerst listeners voor meerdere locaties te configureren voordat u een basislistener configureert.  Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt.
+> Voor de V1-SKU worden regels verwerkt in de volg orde waarin ze worden weer gegeven in de portal. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt. Voor de v2-SKU hebben exacte overeenkomsten een hogere prioriteit. Het wordt echter nadrukkelijk aanbevolen om eerst multi-site listeners te configureren voordat u een eenvoudige listener gaat configureren. Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid.
 
 ## <a name="urlpathmap-configuration-element"></a>Configuratie-element UrlPathMap
 

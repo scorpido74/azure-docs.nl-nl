@@ -1,19 +1,19 @@
 ---
 title: Verkeers dekking | Microsoft Azure kaarten
 description: In dit artikel vindt u informatie over de dekking van verkeer in Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988142"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209525"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Dekking van Azure Maps verkeer
 
@@ -23,7 +23,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-|Land/regio  |Gevallen  |Stroom  |
+|Land/regio  |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Argentinië      |✓         |✓         |
 |Brazilië     |✓         |✓         |
@@ -37,20 +37,20 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 |Uruguay |✓         |✓         |
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-|Land/regio   |Gevallen  |Stroom  |
+|Land/regio   |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Australië     |✓         |✓        |
 |Brunei   |✓         |✓        |
-|Hong Kong SAR     |✓         |✓         |
+|Hongkong SAR     |✓         |✓         |
 |India   |✓         |✓         |
 |Indonesië     |✓         |✓         |
 |Kazachstan    |✓         |✓         |
 |Macau SAR     |✓         |✓         |
 |Maleisië     |✓         |✓         |
 |Nieuw-Zeeland     |✓         |✓         |
-|Filippijnen  |✓         |✓         |
+|Filipijnen  |✓         |✓         |
 |Singapore     |✓         |✓         |
 |Taiwan     |✓         |✓        |
 |Thailand     |✓         |✓        |
@@ -59,11 +59,11 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="europe"></a>Europa
 
-|Land/regio   |Gevallen  |Stroom  |
+|Land/regio   |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Oostenrijk     |✓         |✓         |
-|Wit-Rusland    |✓         |✓         |
+|Belarus    |✓         |✓         |
 |België     |✓         |✓         |
 |Bosnië en Herzegovina    |✓         |✓         |
 |Bulgarije     |✓         |✓         |
@@ -117,7 +117,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
-|Land/regio |Gevallen  |Stroom  |
+|Land/regio |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Bahrein     |✓         |✓         |
 |Egypte     |✓         |✓         |

@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894793"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251903"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
 
@@ -113,7 +113,7 @@ Houd rekening met de volgende Azure-netwerk termen wanneer u Virtual Network Fir
 
 **Subnet:** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
 
-**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt] [VM-virtueel-netwerk-service-eind punten-overzicht-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database.
+**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database.
 
 **Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw SQL Database-Server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw SQL Database-Server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten als u de toegangs beheer lijst voor uw SQL database wilt. Met een regel voor het virtuele netwerk krijgt uw SQL Database-Server de communicatie van elk knoop punt dat zich in het subnet bevindt, te accepteren.
 
@@ -122,7 +122,7 @@ Houd rekening met de volgende Azure-netwerk termen wanneer u Virtual Network Fir
 
 Met de firewall van Azure SQL Server kunt u IP-adresbereiken opgeven waarvan de communicatie in SQL Database wordt geaccepteerd. Deze aanpak is nauw keurig voor stabiele IP-adressen die zich buiten het particuliere Azure-netwerk bevinden. Virtuele machines (Vm's) in het particuliere Azure-netwerk zijn echter geconfigureerd met *dynamische* IP-adressen. Dynamische IP-adressen kunnen veranderen wanneer de virtuele machine opnieuw wordt opgestart en de op IP gebaseerde firewall regel ongeldig maken. Het is Folly om een dynamisch IP-adres op te geven in een firewall regel, in een productie omgeving.
 
-U kunt deze beperking omzeilen door een *statisch* IP-adres voor uw virtuele machine te verkrijgen. Zie [privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal] [VM-configure-Private-IP-Addresss-for-a-virtual-machine-using-the-Azure-Portal-321w] voor meer informatie. De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost goed wanneer deze op schaal wordt uitgevoerd. 
+U kunt deze beperking omzeilen door een *statisch* IP-adres voor uw virtuele machine te verkrijgen. Zie voor meer informatie [privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost goed wanneer deze op schaal wordt uitgevoerd. 
 
 Regels voor virtuele netwerken zijn eenvoudiger om de toegang tot stand te brengen en te beheren vanaf een specifiek subnet dat uw virtuele machines bevat.
 

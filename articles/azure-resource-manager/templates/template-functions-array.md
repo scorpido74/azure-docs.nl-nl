@@ -3,34 +3,34 @@ title: 'Sjabloon functies: matrices en objecten'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon voor het werken met matrices en objecten.
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 16b36d290a99da56dffe82c9e4c7265a89350391
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484088"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207363"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Matrix-en object functies voor Azure Resource Manager sjablonen
 
 Resource Manager biedt verschillende functies voor het werken met matrices en objecten.
 
 * [array](#array)
-* [coalesce](#coalesce)
+* [Voeg](#coalesce)
 * [concat](#concat)
-* [contains](#contains)
+* [daarin](#contains)
 * [createArray](#createarray)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
+* [gelaten](#empty)
+* [instantie](#first)
+* [Snij punt](#intersection)
 * [json](#json)
-* [last](#last)
-* [Lengte](#length)
+* [duren](#last)
+* [lange](#length)
 * [max](#max)
 * [min](#min)
-* [range](#range)
+* [bereik](#range)
 * [skip](#skip)
-* [take](#take)
-* [union](#union)
+* [Houd](#take)
+* [Réunion](#union)
 
 Als u een matrix van teken reeks waarden wilt ophalen die door een waarde worden gescheiden, raadpleegt u [splitsen](template-functions-string.md#split).
 
@@ -42,7 +42,7 @@ Zet de waarde om in een matrix.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | convertToArray |Ja |int, string, array of object |De waarde die moet worden geconverteerd naar een matrix. |
 
@@ -93,7 +93,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | intOutput | Matrix | [1] |
 | stringOutput | Matrix | ["efgh"] |
@@ -119,7 +119,7 @@ Retourneert de eerste waarde die niet null is van de para meters. Lege teken ree
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int, string, array of object |De eerste waarde die moet worden getest op null. |
 | aanvullende argumenten |Nee |int, string, array of object |Aanvullende waarden om te testen op null. |
@@ -178,13 +178,13 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | stringOutput | Tekenreeks | standaardinstelling |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"eerste": "standaard"} |
 | arrayOutput | Matrix | [1] |
-| emptyOutput | Bool | Waar |
+| emptyOutput | Bool | True |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -206,7 +206,7 @@ Combineert meerdere matrices en retourneert de samengevoegde matrix, of combinee
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix of teken reeks |De eerste matrix of teken reeks voor samen voeging. |
 | aanvullende argumenten |Nee |matrix of teken reeks |Extra matrices of teken reeksen in sequentiële volg orde voor samen voeging. |
@@ -256,7 +256,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | enter | Matrix | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -296,7 +296,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | concatOutput | Tekenreeks | prefix-5yj4yjf5mbg72 |
 
@@ -320,7 +320,7 @@ Controleert of een matrix een waarde bevat, een object bevat een sleutel of een 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | container |Ja |matrix, object of teken reeks |De waarde die de te zoeken waarde bevat. |
 | itemToFind |Ja |teken reeks of int |De waarde die moet worden gevonden. |
@@ -384,14 +384,14 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| stringTrue | Bool | Waar |
-| stringFalse | Bool | Onwaar |
-| objectTrue | Bool | Waar |
-| objectFalse | Bool | Onwaar |
-| arrayTrue | Bool | Waar |
-| arrayFalse | Bool | Onwaar |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -413,7 +413,7 @@ Hiermee wordt een matrix gemaakt op basis van de para meters.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Teken reeks, geheel getal, matrix of object |De eerste waarde in de matrix. |
 | aanvullende argumenten |Nee |Teken reeks, geheel getal, matrix of object |Aanvullende waarden in de matrix. |
@@ -465,7 +465,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | stringArray | Matrix | ["a", "b", "c"] |
 | intArray | Matrix | [1, 2, 3] |
@@ -484,7 +484,7 @@ In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
-## <a name="empty"></a>leeg
+## <a name="empty"></a>gelaten
 
 `empty(itemToTest)`
 
@@ -492,7 +492,7 @@ Bepaalt of een matrix, een object of een teken reeks leeg is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |matrix, object of teken reeks |De waarde die moet worden gecontroleerd als deze leeg is. |
 
@@ -543,11 +543,11 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | Waar |
-| objectEmpty | Bool | Waar |
-| stringEmpty | Bool | Waar |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -569,7 +569,7 @@ Retourneert het eerste element van de matrix, of het eerste teken van de teken r
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix of teken reeks |De waarde voor het ophalen van het eerste element of teken. |
 
@@ -608,7 +608,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Tekenreeks | één |
 | stringOutput | Tekenreeks | O |
@@ -633,7 +633,7 @@ Retourneert een enkele matrix of een object met de algemene elementen van de par
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix of object |De eerste waarde die moet worden gebruikt voor het zoeken van algemene elementen. |
 | Arg2 |Ja |matrix of object |De tweede waarde die moet worden gebruikt voor het zoeken van algemene elementen. |
@@ -686,7 +686,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"een": "a", "drie": "c"} |
 | arrayOutput | Matrix | ["twee", "drie"] |
@@ -711,9 +711,9 @@ Retourneert een JSON-object.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |string |De waarde die moet worden geconverteerd naar JSON. |
+| arg1 |Ja |tekenreeks |De waarde die moet worden geconverteerd naar JSON. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -758,10 +758,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
-| nullOutput | Booleaans | Waar |
+| nullOutput | Booleaans | True |
 | paramOutput | Object | {"a": "demo waarde"}
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
@@ -776,7 +776,7 @@ In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
-## <a name="last"></a>laatste
+## <a name="last"></a>duren
 
 `last (arg1)`
 
@@ -784,7 +784,7 @@ Retourneert het laatste element van de matrix, of het laatste teken van de teken
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix of teken reeks |De waarde voor het ophalen van het laatste element of teken. |
 
@@ -823,10 +823,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Tekenreeks | drie |
-| stringOutput | Tekenreeks | e |
+| stringOutput | Tekenreeks | & |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -848,7 +848,7 @@ Retourneert het aantal elementen in een matrix, tekens in een teken reeks of hoo
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix, teken reeks of object |De matrix die moet worden gebruikt voor het ophalen van het aantal elementen, de teken reeks die moet worden gebruikt voor het ophalen van het aantal tekens of het object dat moet worden gebruikt voor het ophalen van het aantal eigenschappen op hoofd niveau. |
 
@@ -910,7 +910,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -937,7 +937,7 @@ U kunt deze functie gebruiken met een matrix om het aantal iteraties op te geven
 }
 ```
 
-Zie [meerdere exemplaren van resources maken in azure Resource Manager](create-multiple-instances.md)voor meer informatie over het gebruik van deze functie met een matrix.
+Zie [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md)voor meer informatie over het gebruik van deze functie met een matrix.
 
 ## <a name="max"></a>max.
 
@@ -947,7 +947,7 @@ Retourneert de maximum waarde van een matrix met gehele getallen of een door kom
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de maximum waarde op te halen. |
 
@@ -985,7 +985,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -1010,7 +1010,7 @@ Retourneert de minimum waarde van een matrix met gehele getallen of een door kom
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de minimum waarde op te halen. |
 
@@ -1048,7 +1048,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -1073,7 +1073,7 @@ Hiermee maakt u een matrix met gehele getallen van een begin-geheel getal dat ee
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | startingInteger |Ja |int |Het eerste geheel getal in de matrix. |
 | numberofElements |Ja |int |Het aantal gehele getallen in de matrix. |
@@ -1112,7 +1112,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | rangeOutput | Matrix | [5, 6, 7] |
 
@@ -1128,7 +1128,7 @@ In dit als voorbeeldsjabloon wilt implementeren met PowerShell, gebruikt u:
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
-## <a name="skip"></a>skip
+## <a name="skip"></a>verdergaan
 
 `skip(originalValue, numberToSkip)`
 
@@ -1136,7 +1136,7 @@ Retourneert een matrix met alle elementen na het opgegeven getal in de matrix, o
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |matrix of teken reeks |De matrix of teken reeks die moet worden gebruikt voor het overs Laan. |
 | numberToSkip |Ja |int |Het aantal elementen of tekens dat moet worden overgeslagen. Als deze waarde 0 of kleiner is, worden alle elementen of tekens in de waarde geretourneerd. Als deze groter is dan de lengte van de matrix of teken reeks, wordt een lege matrix of teken reeks geretourneerd. |
@@ -1191,7 +1191,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Matrix | ["drie"] |
 | stringOutput | Tekenreeks | 2 3 |
@@ -1216,7 +1216,7 @@ Retourneert een matrix met het opgegeven aantal elementen vanaf het begin van de
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |matrix of teken reeks |De matrix of teken reeks waaruit de elementen moeten worden afgeleid. |
 | numberToTake |Ja |int |Het aantal elementen of tekens dat moet worden uitgevoerd. Als deze waarde 0 of kleiner is, wordt een lege matrix of teken reeks geretourneerd. Als deze groter is dan de lengte van de opgegeven matrix of teken reeks, worden alle elementen in de matrix of teken reeks geretourneerd. |
@@ -1271,7 +1271,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | arrayOutput | Matrix | [' één ', ' twee '] |
 | stringOutput | Tekenreeks | op |
@@ -1296,7 +1296,7 @@ Retourneert een enkele matrix of een object met alle elementen van de para meter
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |matrix of object |De eerste waarde die moet worden gebruikt voor het toevoegen van elementen. |
 | Arg2 |Ja |matrix of object |De tweede waarde die moet worden gebruikt voor het toevoegen van elementen. |
@@ -1349,7 +1349,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"One": "a", "twee": "b", "drie": "C2", "vier": "d", "vijf": "e"} |
 | arrayOutput | Matrix | [' één ', ' twee ', ' drie ', ' vier '] |
@@ -1368,8 +1368,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](template-syntax.md).
-* U kunt meerdere sjablonen samenvoegen, Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md).
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](create-multiple-instances.md).
+* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
+* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
 * Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

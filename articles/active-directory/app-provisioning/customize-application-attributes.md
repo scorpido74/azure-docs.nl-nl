@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161610"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207193"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -300,7 +300,7 @@ Bepaalde kenmerken, zoals phoneNumbers en e-mail berichten, zijn kenmerken met m
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>De standaard kenmerken en kenmerk toewijzingen herstellen
 
-Als u moet beginnen met het opnieuw instellen van de standaard status van uw bestaande toewijzingen, kunt u het selectie vakje **standaard toewijzingen herstellen** inschakelen en de configuratie opslaan. Hierdoor worden alle toewijzingen ingesteld alsof de toepassing zojuist is toegevoegd aan uw Azure AD-Tenant vanuit de toepassings galerie.
+Als u moet beginnen met het opnieuw instellen van de standaard status van uw bestaande toewijzingen, kunt u het selectie vakje **standaard toewijzingen herstellen** inschakelen en de configuratie opslaan. Hiermee stelt u alle toewijzingen en bereik filters zo in dat de toepassing zojuist vanuit de toepassings galerie aan uw Azure AD-Tenant is toegevoegd.
 
 Als u deze optie selecteert, wordt een hersynchronisatie van alle gebruikers geforceerd wanneer de inrichtings service wordt uitgevoerd.
 

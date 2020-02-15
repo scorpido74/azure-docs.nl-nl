@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169361"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209270"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -47,7 +47,7 @@ In dit artikel wordt beschreven hoe u Video's uploadt en indexeert met de volgen
 
     Als het een privé-URL is, moet het toegangs token in de aanvraag worden gegeven.
 - De URL moet verwijzen naar een geldig Media bestand en niet naar een webpagina, zoals een koppeling naar de pagina `www.youtube.com`.
-- U kunt Maxi maal 60 films per minuut uploaden.
+- In een betaald account kunt u Maxi maal 50 films per minuut uploaden en in een proef account van Maxi maal 5 films per minuut.
 
 > [!Tip]
 > Het verdient aanbeveling om .NET Framework versie 4.6.2 of hoger te gebruiken omdat oudere versies van .NET Framework niet standaard gebruikmaken van TLS 1.2.
@@ -93,7 +93,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Statuswijziging indexering: 
     - Eigenschappen:    
     
-        |Name|Beschrijving|
+        |Naam|Beschrijving|
         |---|---|
         |id|De video-ID|
         |state|De videostatus|  
@@ -101,7 +101,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Personen geïdentificeerd in de video:
   - Eigenschappen
     
-      |Name|Beschrijving|
+      |Naam|Beschrijving|
       |---|---|
       |id| De video-ID|
       |faceId|De gezichts-id die wordt weergegeven in de video-index|
@@ -348,6 +348,7 @@ De statuscodes in de volgende tabel kunnen worden geretourneerd door de uploadbe
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Dezelfde video wordt al verwerkt in het opgegeven account.|
 |400|VIDEO_ALREADY_FAILED|Dezelfde video kon minder dan twee uur geleden niet worden verwerkt in het opgegeven account. API-clients moeten ten minste twee uur wachten voordat ze een video opnieuw uploaden.|
+|429||Proef accounts zijn vijf uploads per minuut toegestaan. Betaalde accounts zijn toegestaan 50 uploads per minuut.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988843"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252039"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren via de Azure Portal
 
@@ -73,6 +73,8 @@ Client toegang wordt niet onderbroken tijdens een software-upgrade, maar de pres
 Het kan enkele uren duren voordat de software-update is uitgevoerd. Caches die zijn geconfigureerd met een hogere door Voer, nemen meer tijd in beslag dan caches met kleinere waarden voor piek doorvoer.
 
 Wanneer een software-upgrade beschikbaar is, hebt u een week of zodat deze hand matig kan worden toegepast. De eind datum wordt vermeld in het upgrade bericht. Als u tijdens die tijd niet bijwerkt, past Azure automatisch de update toe op uw cache. De timing van de automatische upgrade kan niet worden geconfigureerd. Als u zich zorgen maakt over de invloed op de cache prestaties, moet u de software zelf upgraden voordat de periode verloopt.
+
+Als uw cache wordt gestopt wanneer de eind datum wordt door gegeven, wordt de software bij de volgende keer dat deze wordt gestart automatisch bijgewerkt met de cache. (De update wordt mogelijk niet onmiddellijk gestart, maar wordt in het eerste uur gestart.)
 
 Klik op de knop **bijwerken** om de software-update te starten. De cache status verandert in **een upgrade** totdat de bewerking is voltooid.
 

@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/12/2020
 ms.author: rohogue
-ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645766"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251954"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -70,12 +70,6 @@ De cache ondersteunt Azure Blob-containers of NFS-hardware Storage-export. Voeg 
 
 Elk opslag type heeft specifieke vereisten.
 
-### <a name="nfs-storage-requirements"></a>NFS-opslag vereisten
-
-Als u gebruikmaakt van on-premises hardware-opslag, moet de cache toegang hebben tot het netwerk van hoge band breedte van het subnet. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) of vergelijk bare toegang wordt aanbevolen.
-
-Opslag van NFS-back-end moet een compatibel hardware/software-platform zijn. Neem contact op met het team van HPC-cache voor meer informatie.
-
 ### <a name="blob-storage-requirements"></a>Vereisten voor Blob-opslag
 
 Als u Azure Blob Storage wilt gebruiken met uw cache, hebt u een compatibel opslag account nodig en een lege BLOB-container of een container die is gevuld met gegevens in de Azure HPC-cache, zoals wordt beschreven in [gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md).
@@ -93,6 +87,52 @@ Het is een goed idee om een opslag account te gebruiken dat zich op dezelfde loc
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
 U moet ook de cache toepassing toegang geven tot uw Azure Storage-account, zoals vermeld in de [machtigingen](#permissions)hierboven. Volg de procedure in [opslag doelen toevoegen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) om de vereiste toegangs rollen in de cache op te slaan. Als u niet de eigenaar van het opslag account bent, laat u de eigenaar deze stap uitvoeren.
+
+### <a name="nfs-storage-requirements"></a>NFS-opslag vereisten
+
+Als u een NFS-opslag systeem (bijvoorbeeld een on-premises hardware NAS-systeem) gebruikt, moet u ervoor zorgen dat het voldoet aan deze vereisten. Mogelijk moet u samen werken met de netwerk beheerders of firewall beheerders voor uw opslag systeem (of Data Center) om deze instellingen te controleren.
+
+> [!NOTE]
+> Het maken van een opslag doel mislukt als de cache onvoldoende toegang tot het NFS-opslag systeem heeft.
+
+* **Netwerk verbinding:** De Azure HPC-cache vereist netwerk toegang met hoge band breedte tussen het subnet van de cache en het Data Center van het NFS-systeem. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) of vergelijk bare toegang wordt aanbevolen. Als u een VPN gebruikt, moet u dit mogelijk configureren om TCP MSS op 1350 te zetten om ervoor te zorgen dat grote pakketten niet worden geblokkeerd.
+
+* **Poort toegang:** De cache moet toegang hebben tot specifieke TCP/UDP-poorten op uw opslag systeem. Verschillende typen opslag hebben verschillende poort vereisten.
+
+  Volg deze procedure om de instellingen van uw opslag systeem te controleren.
+
+  * Geef een `rpcinfo` opdracht voor uw opslag systeem op om de benodigde poorten te controleren. De onderstaande opdracht geeft een lijst van de poorten en formatteert de relevante resultaten in een tabel. (Gebruik het IP-adres van uw systeem in plaats van de *< storage_IP >* term.)
+
+    U kunt deze opdracht geven vanuit elke Linux-client waarop de NFS-infra structuur is geïnstalleerd. Als u een-client in het cluster-subnet gebruikt, kunt u hiermee ook de connectiviteit tussen het subnet en het opslag systeem controleren.
+
+    ```bash
+    rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
+    ```
+
+  * Naast de poorten die door de `rpcinfo` opdracht worden geretourneerd, moet u ervoor zorgen dat deze veelgebruikte poorten binnenkomend en uitgaand verkeer toestaan:
+
+    | Protocol | Poort  | Service  |
+    |----------|-------|----------|
+    | TCP/UDP  | 111   | rpcbind  |
+    | TCP/UDP  | 2049  | NFS      |
+    | TCP/UDP  | 4045  | nlockmgr |
+    | TCP/UDP  | 4046  | gekoppeld   |
+    | TCP/UDP  | 4047  | status   |
+
+  * Controleer de firewall instellingen om er zeker van te zijn dat verkeer op al deze vereiste poorten is toegestaan. Controleer of de firewalls in Azure en on-premises firewalls in uw Data Center worden gebruikt.
+
+* **Directory toegang:** Schakel de `showmount`-opdracht in op het opslag systeem. De Azure HPC-cache maakt gebruik van deze opdracht om te controleren of de configuratie van de opslag doel naar een geldige export wijst en om ervoor te zorgen dat meerdere koppels geen toegang hebben tot dezelfde submappen (die een conflict met bestanden in gevaar brengen).
+
+  > [!NOTE]
+  > Als uw NFS-opslag systeem gebruikmaakt van het ONTAP 9,2-besturings systeem van NetApp, **moet u `showmount`niet inschakelen** . [Neem contact op met micro soft-service en ondersteuning](hpc-cache-support-ticket.md) voor hulp.
+
+* **Hoofd toegang:** De cache maakt verbinding met het back-end-systeem als gebruiker-ID 0. Controleer deze instellingen op uw opslag systeem:
+  
+  * Schakel `no_root_squash`in. Deze optie zorgt ervoor dat de externe hoofd gebruiker toegang kan krijgen tot bestanden die eigendom zijn van de hoofdmap.
+
+  * Controleer het export beleid om er zeker van te zijn dat er geen beperkingen zijn voor toegang tot de hoofdmap vanuit het subnet van de cache.
+
+* Opslag van NFS-back-end moet een compatibel hardware/software-platform zijn. Neem contact op met het team van HPC-cache voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

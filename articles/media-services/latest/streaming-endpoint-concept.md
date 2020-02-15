@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198714"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206103"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
@@ -147,17 +147,20 @@ U moet ook nadenken over de werking van adaptieve streaming. Elk afzonderlijk vi
 
 ### <a name="enable-azure-cdn-integration"></a>Integratie van Azure CDN inschakelen
 
+> [!IMPORTANT]
+> U kunt CDN niet inschakelen voor Azure-accounts voor proef abonnementen of studenten.
+>
+> CDN-integratie is ingeschakeld in alle Azure-data centers, met uitzonde ring van regio's van de federale overheid en China.
+
 Nadat een streaming-eind punt is ingericht met CDN ingeschakeld, is er een gedefinieerde wacht tijd op Media Services voordat de DNS-update wordt uitgevoerd om het streaming-eind punt toe te wijzen aan het CDN-eind punt.
 
 Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Het kan tot twee uur duren voordat de Azure CDN integratie is ingeschakeld en de wijzigingen voor alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbreking van het streaming-eind punt en zodra de integratie is voltooid, wordt de stroom vanuit het CDN geleverd. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
 
 Wanneer het standaard streaming-eind punt wordt gemaakt, wordt het standaard geconfigureerd met standaard Verizon. U kunt Premium Verizon-of Standard Akamai-providers configureren met behulp van REST Api's.
 
-CDN-integratie is ingeschakeld in alle Azure-data centers, met uitzonde ring van China en federale overheids regio's.
-
 Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers**. 
 
-> [!IMPORTANT]
+> [!NOTE]
 > Zie het [CDN-overzicht](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.
 
 ### <a name="determine-if-dns-change-was-made"></a>Bepalen of de DNS-wijziging is doorgevoerd

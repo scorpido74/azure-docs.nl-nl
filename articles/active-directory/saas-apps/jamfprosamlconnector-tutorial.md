@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68de948261ec8bad429daafcb27e63ca5f7efb7a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207295"
+ms.locfileid: "77251682"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Zelf studie: SSO-integratie Azure Active Directory met Jamf Pro
 
@@ -151,16 +151,16 @@ In deze sectie verleent u B. Simon toegang tot Jamf Pro.
 
   b. Schakel het selectie vakje **verificatie via eenmalige aanmelding inschakelen** in.
 
-    c. Selecteer **Azure** als een optie in de vervolg keuzelijst **ID-provider** .
+  c. Selecteer **Azure** als een optie in de vervolg keuzelijst **ID-provider** .
 
-    d. Kopieer de waarde van de **entiteit-id** en plak deze in het veld **id (Entiteits-ID)** in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+  d. Kopieer de waarde van de **entiteit-id** en plak deze in het veld **id (Entiteits-ID)** in het gedeelte **basis configuratie van SAML** in de Azure Portal.
 
-    > [!NOTE]
-    > Gebruik de waarde in het veld `<SUBDOMAIN>` om de aanmeldings-URL en de antwoord-URL te volt ooien in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+> [!NOTE]
+> Gebruik de waarde in het veld `<SUBDOMAIN>` om de aanmeldings-URL en de antwoord-URL te volt ooien in het gedeelte **basis configuratie van SAML** in de Azure Portal.
 
-    e. Selecteer **meta gegevens-URL** in de vervolg keuzelijst **ID-provider meta gegevens bron** . In het veld dat wordt weer gegeven, plakt u de URL-waarde van de **app Federation-meta gegevens** die u hebt gekopieerd uit de Azure Portal.
+  e. Selecteer **meta gegevens-URL** in de vervolg keuzelijst **ID-provider meta gegevens bron** . In het veld dat wordt weer gegeven, plakt u de URL-waarde van de **app Federation-meta gegevens** die u hebt gekopieerd uit de Azure Portal.
 
-    f. Beschrijving Bewerk de waarde voor het verval van het token of selecteer verval datum van SAML-token uitschakelen.
+  f. Beschrijving Bewerk de waarde voor het verval van het token of selecteer verval datum van SAML-token uitschakelen.
 
 7. Schuif op dezelfde pagina omlaag naar de sectie **gebruikers toewijzing** . Voer vervolgens de volgende stappen uit.
 

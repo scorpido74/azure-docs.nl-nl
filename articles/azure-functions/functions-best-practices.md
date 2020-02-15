@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963650"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210256"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
@@ -112,7 +112,7 @@ Voor C# -functies kunt u het type wijzigen in een sterk getypeerde matrix.  In p
 
 Het `host.json`-bestand in de functie-app staat het configureren van host runtime-en trigger gedrag toe.  Naast het uitvoeren van batch verwerking, kunt u gelijktijdigheid voor een aantal triggers beheren. Het aanpassen van de waarden in deze opties kan er vaak toe leiden dat elke instantie op de juiste wijze wordt geschaald voor de vereisten van de aangeroepen functies.
 
-Instellingen in het bestand host. json zijn van toepassing op alle functies in de app, binnen *één exemplaar* van de functie. Als u bijvoorbeeld een functie-app met twee HTTP-functies en [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) aanvragen hebt ingesteld op 25, telt een aanvraag voor een http-trigger naar de gedeelde 25 gelijktijdige aanvragen.  Wanneer deze functie-app wordt geschaald naar 10 instanties, staan de twee functies het effectief toestaan van 250 gelijktijdige aanvragen (10 exemplaren * 25 gelijktijdige aanvragen per instantie). 
+Instellingen in het bestand host. json zijn van toepassing op alle functies in de app, binnen *één exemplaar* van de functie. Als u bijvoorbeeld een functie-app met twee HTTP-functies en [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) aanvragen hebt ingesteld op 25, telt een aanvraag voor een http-trigger naar de gedeelde 25 gelijktijdige aanvragen.  Wanneer deze functie-app wordt geschaald naar 10 instanties, staan de twee functies het effectief toestaan van 250 gelijktijdige aanvragen (10 exemplaren * 25 gelijktijdige aanvragen per instantie). 
 
 Andere configuratie opties voor de host vindt u in het [artikel host. json-configuratie](functions-host-json.md).
 

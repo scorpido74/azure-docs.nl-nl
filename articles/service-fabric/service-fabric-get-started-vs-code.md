@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457861"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251631"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric voor Visual Studio code
 
@@ -69,7 +69,7 @@ De uitbrei ding Service Fabric Reliable Services voor VS code biedt een groot aa
 
 Met de **service Fabric: opdracht maken** wordt een nieuwe service Fabric toepassing gemaakt in uw huidige werk ruimte. Afhankelijk van welke Yeoman-generators zijn geïnstalleerd op uw ontwikkel computer, kunt u verschillende soorten Service Fabric toepassing maken, met inbegrip van C#Java-,, container-en gast projecten. 
 
-1.  Selecteer de **service Fabric: service opdracht toevoegen**
+1.  Selecteer de **service Fabric: opdracht toepassing maken**
 2.  Selecteer het type voor uw nieuwe Service Fabric-toepassing. 
 3.  Voer de naam in van de toepassing die u wilt maken
 3.  Selecteer het type service dat u wilt toevoegen aan uw Service Fabric-toepassing. 

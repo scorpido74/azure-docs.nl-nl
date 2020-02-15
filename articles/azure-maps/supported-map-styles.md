@@ -1,19 +1,19 @@
 ---
 title: Ondersteunde kaart stijlen | Microsoft Azure kaarten
 description: In dit artikel vindt u informatie over verschillende stijlen voor het weer geven van kaarten die worden ondersteund door Microsoft Azure kaarten.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910629"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208281"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
 Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
@@ -31,7 +31,7 @@ Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige f
 
 ## <a name="blank-and-blank_accessible"></a>leeg en blank_accessible
 
-De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De **blank_accessible** stijl blijft scherm lezers-updates bieden met locatie Details van waar de kaart zich bevindt, hoewel de basis kaart niet wordt weer gegeven.
+De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop gegevens kunnen worden gevisualiseerd. De **blank_accessible** stijl blijft scherm lezers-updates bieden met de locatie Details van de kaart, ook al wordt de basis toewijzing niet weer gegeven.
 
 > [!Note]
 > In de Web-SDK kunt u de achtergrond kleur van de kaart wijzigen door de stijl CSS `background-color` van het element map DIV in te stellen.
@@ -39,7 +39,7 @@ De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
 
-## <a name="satellite"></a>satellite 
+## <a name="satellite"></a>kantoor 
 De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
 
 ![stijl van kaart voor satelliet tegel](./media/supported-map-styles/satellite.png)
@@ -80,7 +80,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 * Besturings element Android-kaart
 
 
-## <a name="night"></a>nacht
+## <a name="night"></a>'S
 **'s avonds** is een donkere versie van de kaart stijl met gekleurde wegen en symbolen.
 
 ![stijl van nacht kaart](./media/supported-map-styles/night.png)

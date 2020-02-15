@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121701"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209355"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snelstartgids: een Azure Cognitive Search-service maken in de portal
 
-Azure Cognitive Search is een zelfstandige resource die wordt gebruikt om een zoek ervaring in aangepaste apps te koppelen. Hoewel Azure Cognitive Search eenvoudig kan worden geïntegreerd met andere Azure-Services, kunt u het ook gebruiken als zelfstandig onderdeel of het integreren met apps op netwerk servers, of met software die wordt uitgevoerd op andere Cloud platforms.
+Azure Cognitive Search is een zelfstandige resource die wordt gebruikt om een zoek ervaring te koppelen aan aangepaste apps. Azure Cognitive Search kan eenvoudig worden geïntegreerd met andere Azure-Services, met apps op netwerk servers of met software die wordt uitgevoerd op andere Cloud platforms.
 
 In dit artikel leert u hoe u een resource maakt in de [Azure Portal](https://portal.azure.com/).
 
@@ -45,18 +45,18 @@ Als u meer dan één abonnement hebt, kiest u er een voor uw zoek service.
 
 ## <a name="set-a-resource-group"></a>Een resource groep instellen
 
-Een resource groep is vereist en is handig voor het beheren van resources, inclusief de kosten. Een resource groep kan bestaan uit één service of meerdere services die samen worden gebruikt. Als u bijvoorbeeld Azure Cognitive Search gebruikt voor het indexeren van een Azure Cosmos DB-Data Base, kunt u beide services onderdeel maken van dezelfde resource groep voor beheer doeleinden. 
+Een resource groep is een container met gerelateerde resources voor uw Azure-oplossing. Dit is vereist voor de Search-service. Het is ook handig voor het beheren van resources, inclusief de kosten. Een resource groep kan bestaan uit één service of meerdere services die samen worden gebruikt. Als u bijvoorbeeld Azure Cognitive Search gebruikt voor het indexeren van een Azure Cosmos DB-Data Base, kunt u beide services onderdeel maken van dezelfde resource groep voor beheer doeleinden. 
 
 Als u resources niet in één groep combineert of als bestaande resource groepen zijn gevuld met resources die worden gebruikt in niet-gerelateerde oplossingen, maakt u een nieuwe resource groep voor uw Azure Cognitive Search-resource. 
 
 ![Een nieuwe resource groep maken](./media/search-create-service-portal/new-resource-group.png "Een nieuwe resourcegroep maken")
 
-Na verloop van tijd kunt u de huidige en geschatte kosten bijhouden (zoals weer gegeven in de scherm opname) of omlaag schuiven om de kosten voor afzonderlijke resources weer te geven. De volgende scherm afbeelding toont het soort kosten gegevens dat u uiteindelijk kunt verwachten wanneer u meerdere resources in één groep combineert.
+In de loop van de tijd kunt u de huidige en geraamde kosten in de gaten houden of kunt u kosten voor afzonderlijke resources weer geven. De volgende scherm afbeelding toont het soort kosten gegevens dat u kunt verwachten wanneer u meerdere resources in één groep combineert.
 
 ![Kosten beheren op het niveau van de resource groep](./media/search-create-service-portal/resource-group-cost-management.png "Kosten beheren op het niveau van de resource groep")
 
 > [!TIP]
-> Resource groepen vereenvoudigen opschonen omdat het verwijderen van een groep ook de services erin verwijdert. Bij prototypeprojecten die gebruikmaken van meerdere services, wordt het opschonen na afloop van het project gemakkelijker als die services zich allemaal in dezelfde resourcegroep bevinden.
+> Resource groepen vereenvoudigen opschonen omdat het verwijderen van een groep alle services erin verwijdert. Bij prototypeprojecten die gebruikmaken van meerdere services, wordt het opschonen na afloop van het project gemakkelijker als die services zich allemaal in dezelfde resourcegroep bevinden.
 
 ## <a name="name-the-service"></a>Naam van de service
 
@@ -65,10 +65,10 @@ Geef in de details van het exemplaar een service naam op in het veld **URL** . D
 Vereisten voor servicenaam:
 
 * De naam moet uniek zijn binnen de naamruimte search.windows.net
-* tussen de 2 en 60 tekens lang zijn
-* Gebruik kleine letters, cijfers of streepjes (-)
-* Vermijd streepjes (-) bij de eerste 2 tekens of als het allerlaatste teken
-* Zorg ervoor dat er nergens twee opeenvolgende streepjes (--) staan
+* De waarde moet tussen 2 en 60 tekens lang zijn
+* U moet kleine letters, cijfers of streepjes (-) gebruiken
+* Gebruik geen streepjes (-) in de eerste twee tekens of als het laatste teken
+* U mag geen opeenvolgende streepjes gebruiken ('--') overal
 
 > [!TIP]
 > Als u denkt dat u meerdere services gaat gebruiken, is het raadzaam om de regio (of locatie) in de service naam op te nemen als een naamgevings Conventie. Services binnen dezelfde regio kunnen zonder kosten worden uitgewisseld. als Azure Cognitive Search zich in VS West bevindt en u andere services ook in VS West hebt, kunt u met een naam zoals `mysearchservice-westus` u een reis naar de pagina eigenschappen besparen wanneer u bepaalt hoe u resources wilt combi neren of koppelen.
@@ -79,7 +79,7 @@ Als Azure-service kunnen Azure Cognitive Search worden gehost in data centers ov
 
 U kunt de bandbreedte kosten minimaliseren of vermijden door dezelfde locatie voor meerdere services te kiezen. Als u bijvoorbeeld gegevens indexeert die door een andere Azure-service zijn verschaft (Azure Storage, Azure Cosmos DB, Azure SQL Database), voor komt u dat de Azure Cognitive Search-service in dezelfde regio bandbreedte kosten (er worden geen kosten in rekening gebracht voor uitgaande gegevens wanneer Services bevinden zich in dezelfde regio).
 
-Daarnaast kunt u, als u AI-verrijking gebruikt, uw service maken in dezelfde regio als Cognitive Services. *De co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
+Als u AI-verrijking gebruikt, maakt u uw zoek service in dezelfde regio als Cognitive Services. *De co-locatie van Azure Cognitive Search en Cognitive Services in dezelfde regio is een vereiste voor AI-verrijking*.
 
 > [!Note]
 > Centraal-India is momenteel niet beschikbaar voor nieuwe services. Voor services die zich al in Centraal-India bevinden, kunt u opschalen zonder beperkingen en wordt uw service volledig ondersteund in die regio. De beperking voor deze regio is tijdelijk en beperkt tot alleen nieuwe services. Deze notitie wordt verwijderd wanneer de beperking niet meer van toepassing is.
@@ -90,7 +90,7 @@ Daarnaast kunt u, als u AI-verrijking gebruikt, uw service maken in dezelfde reg
 
 Basic en Standard zijn de meest voorkomende opties voor productie werkbelastingen, maar de meeste klanten beginnen met de gratis service. De belangrijkste verschillen tussen lagen zijn de partitie grootte en de snelheid, en limieten voor het aantal objecten dat u kunt maken.
 
-Houd er rekening mee dat een prijs categorie niet kan worden gewijzigd nadat de service is gemaakt. Als u een hogere of lagere categorie nodig hebt, moet u de service opnieuw maken.
+Houd er rekening mee dat een prijs categorie niet kan worden gewijzigd nadat de service is gemaakt. Als u een hogere of lagere laag nodig hebt, moet u de service opnieuw maken.
 
 ## <a name="create-your-service"></a>Uw service maken
 
@@ -98,7 +98,7 @@ Nadat u de benodigde invoer hebt gemaakt, gaat u verder met het maken van de ser
 
 ![De service controleren en maken](./media/search-create-service-portal/new-service3.png "De service controleren en maken")
 
-Uw service wordt binnen enkele minuten geïmplementeerd, die u via meldingen van Azure kunt bewaken. U kunt de service vastmaken aan uw dash board voor een snelle toegang in de toekomst.
+Uw service wordt binnen enkele minuten geïmplementeerd. U kunt de voortgang bewaken via Azure-meldingen. U kunt de service vastmaken aan uw dash board voor een snelle toegang in de toekomst.
 
 ![De service controleren en vastmaken](./media/search-create-service-portal/monitor-notifications.png "De service controleren en vastmaken")
 

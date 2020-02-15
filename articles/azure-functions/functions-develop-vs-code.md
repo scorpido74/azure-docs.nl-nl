@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964007"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210239"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -71,7 +71,7 @@ Met de functie-extensie kunt u een functie-app-project maken, samen met uw eerst
 
     ![De sjabloon voor de HTTP-trigger kiezen](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Typ **HttpExample** voor de functie naam en selecteer ENTER, en selecteer vervolgens **functie** autorisatie. Voor dit autorisatie niveau moet u een [functie toets](functions-bindings-http-webhook.md#authorization-keys) opgeven wanneer u het eind punt van de functie aanroept.
+1. Typ **HttpExample** voor de functie naam en selecteer ENTER, en selecteer vervolgens **functie** autorisatie. Voor dit autorisatie niveau moet u een [functie toets](functions-bindings-http-webhook-trigger.md#authorization-keys) opgeven wanneer u het eind punt van de functie aanroept.
 
     ![Functie autorisatie selecteren](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -277,7 +277,7 @@ Het project wordt opnieuw opgebouwd, opnieuw ingepakt en geüpload naar Azure. H
 
 ## <a name="get-the-url-of-the-deployed-function"></a>De URL van de geïmplementeerde functie ophalen
 
-Als u een door HTTP geactiveerde functie wilt aanroepen, hebt u de URL van de functie nodig wanneer deze wordt geïmplementeerd in uw functie-app. Deze URL bevat alle vereiste [functie sleutels](functions-bindings-http-webhook.md#authorization-keys). U kunt de extensie gebruiken om deze Url's op te halen voor uw geïmplementeerde functies.
+Als u een door HTTP geactiveerde functie wilt aanroepen, hebt u de URL van de functie nodig wanneer deze wordt geïmplementeerd in uw functie-app. Deze URL bevat alle vereiste [functie sleutels](functions-bindings-http-webhook-trigger.md#authorization-keys). U kunt de extensie gebruiken om deze Url's op te halen voor uw geïmplementeerde functies.
 
 1. Selecteer F1 om het opdracht palet te openen, zoek naar en voer de opdracht uit **Azure functions: URL van kopieer functie**.
 
@@ -301,7 +301,7 @@ Als u uw functions-project lokaal wilt uitvoeren, moet u aan deze aanvullende ve
     | -------- | --------- |
     | **C#** | [C#switch](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core SLI-hulpprogram ma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
+    | **JavaScript** | [Node. js](https://nodejs.org/) -<sup>*</sup> |  
     | **Python** | [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) aanbevolen|
 
     <sup>*</sup> Actieve LTS en onderhoud LTS-versies (8.11.1 en 10.14.1 aanbevolen).
@@ -341,7 +341,7 @@ Waarden in **Connections Tring** worden nooit gepubliceerd.
 De waarden van de functie-toepassings instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de secties omgevings variabelen van deze taalspecifieke referentie-artikelen voor meer informatie:
 
 * [C#vooraf gecompileerde](functions-dotnet-class-library.md#environment-variables)
-* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#script (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 

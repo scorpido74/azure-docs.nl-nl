@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185478"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212192"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Geef claim transformaties voor het telefoon nummer op in Azure AD B2C
 
@@ -32,7 +32,8 @@ Met deze claim wordt de indeling van het telefoon nummer gevalideerd. Als het ee
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | tekenreeks | De claim van het teken reeks type dat wordt geconverteerd van. |
+| InputClaim | phoneNumberString | tekenreeks |  De teken reeks claim voor het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land nummer. Als invoer claim `country` is opgegeven, is het telefoon nummer in lokale indeling (zonder de land code). |
+| InputClaim | regio | tekenreeks | Beschrijving De teken reeks claim voor de land code van het telefoon nummer in de ISO3166-indeling (de twee letters ISO-3166-land code). |
 | OutputClaim | outputClaim | phoneNumber | Het resultaat van deze claim transformatie. |
 
 De **ConvertStringToPhoneNumberClaim** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md) of een [Weergave besturings element](display-controls.md). De meta gegevens van het zelfondertekende technische profiel **UserMessageIfClaimsTransformationInvalidPhoneNumber** bepalen het fout bericht dat aan de gebruiker wordt gepresenteerd.
@@ -44,7 +45,8 @@ U kunt deze claim transformatie gebruiken om ervoor te zorgen dat de gegeven tek
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,11 +65,19 @@ Het zelfondertekende technische profiel dat het validatie technische profiel aan
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="example-1"></a>Voorbeeld 1
 
 - Invoer claims:
-  - **input claim**: + 1 (123) 456-7890
+  - **phoneNumberString**: 045 456-7890
+  - **land**: DK
 - Uitvoer claims:
+  - **output claim**: + 450546148120
+
+### <a name="example-2"></a>Voorbeeld 2
+
+- Invoer claims:
+  - **phoneNumberString**: + 1 (123) 456-7890
+- Uitvoer claims: 
   - **output claim**: + 11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString

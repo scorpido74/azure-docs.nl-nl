@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048861"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206295"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan server zijde van Azure Managed disks
 
@@ -38,7 +38,7 @@ U kunt ervoor kiezen om versleuteling te beheren op het niveau van elke beheerde
 
 In het volgende diagram ziet u hoe beheerde schijven gebruikmaken van Azure Active Directory en Azure Key Vault om aanvragen te maken met de door de klant beheerde sleutel:
 
-![Workflow voor door de klant beheerde sleutels voor beheerde schijven](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Werk stroom voor beheerde schijven en door de klant beheerde sleutels. Een beheerder maakt een Azure Key Vault, maakt vervolgens een set schijf versleuteling en stelt de schijf versleuteling in. De set is gekoppeld aan een virtuele machine, waardoor de schijf gebruik kan maken van Azure AD voor verificatie](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 In de volgende lijst wordt het diagram in nog meer details uitgelegd:

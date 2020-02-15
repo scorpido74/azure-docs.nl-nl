@@ -1,18 +1,18 @@
 ---
-title: Premium-abonnement voor Azure Functions
+title: Azure Functions Premium-abonnement
 description: Details en configuratie opties (VNet, geen koude start, onbeperkte uitvoerings duur) voor het Azure Functions Premium-abonnement.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024633"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212462"
 ---
-# <a name="azure-functions-premium-plan"></a>Premium-abonnement voor Azure Functions
+# <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
 Het Premium-abonnement van Azure Functions (ook wel elastisch Premium-abonnement genoemd) is een hosting optie voor functie-apps. Het Premium-abonnement biedt functies als VNet-connectiviteit, geen koud start en Premium-hardware.  Meerdere functie-apps kunnen worden geïmplementeerd in hetzelfde Premium-abonnement en met het plan kunt u de grootte van het reken exemplaar, de grootte van het basis plan en de maximale plan grootte configureren.  Zie [functie schaal en hosting opties](functions-scale.md)voor een vergelijking van het Premium-abonnement en andere typen plannen en hosting.
 
@@ -57,7 +57,7 @@ Azure Functions geïmplementeerd in een Premium-abonnement maakt gebruik van de 
 
 Wanneer u een subnet aan uw functie-app toewijst in een Premium-abonnement, hebt u een subnet met voldoende IP-adressen nodig voor elk mogelijk exemplaar. Er is een IP-blok met ten minste 100 beschik bare adressen vereist.
 
-Zie [uw functie-app integreren met een VNet voor](functions-create-vnet.md)meer informatie.
+Zie [uw functie-app integreren met een VNet](functions-create-vnet.md)voor meer informatie.
 
 ### <a name="rapid-elastic-scale"></a>Snel elastisch schalen
 
@@ -88,11 +88,16 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  Er worden kosten in rekening gebracht voor het totale aantal kernen en het geheugen dat per seconde wordt verbruikt.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
 
-|SKU|Cores|Geheugen|Storage|
+|SKU|Kerngeheugens|Geheugen|Opslag|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14GB|250 GB|
+
+### <a name="memory-utilization-considerations"></a>Overwegingen voor geheugen gebruik
+Als u een computer met meer geheugen gebruikt, betekent dat niet altijd dat de functie-app alle beschik bare geheugen zal gebruiken.
+
+Een Java script-functie-app is bijvoorbeeld beperkt door de standaard limiet voor geheugen in node. js. Als u deze limiet wilt verhogen, voegt u de app-instelling `languageWorkers:node:arguments` met de waarde `--max-old-space-size=<max memory in MB>`toe.
 
 ## <a name="regions"></a>Regio's
 
@@ -102,30 +107,30 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |--| -- | -- |
 |Australië - centraal| ✔<sup>1</sup> | |
 |Australië - centraal 2| ✔<sup>1</sup> | |
-|Australië - Oost| ✔ | |
-|Australië - Zuidoost | ✔ | ✔<sup>1</sup> |
-|Brazilië - Zuid| ✔<sup>2</sup> |  |
-|Canada-Midden| ✔ |  |
-|VS - centraal| ✔ |  |
+|Australië - oost| ✔ | |
+|Australië - zuidoost | ✔ | ✔<sup>1</sup> |
+|Brazilië - zuid| ✔<sup>2</sup> |  |
+|Canada - midden| ✔ |  |
+|US - centraal| ✔ |  |
 |Azië - oost| ✔ |  |
-|VS - oost | ✔ | ✔<sup>1</sup> |
-|VS - oost 2| ✔ |  |
+|US - oost | ✔ | ✔<sup>1</sup> |
+|US - oost 2| ✔ |  |
 |Frankrijk - centraal| ✔ |  |
 |Duitsland - west-centraal| ✔ | |
-|Japan - Oost| ✔ | ✔<sup>1</sup> |
-|Japan - West| ✔ | |
+|Japan - oost| ✔ | ✔<sup>1</sup> |
+|Japan - west| ✔ | |
 |Korea - centraal| ✔ |  |
-|VS - noord-centraal| ✔ |  |
+|US - noord-centraal| ✔ |  |
 |Europa - noord| ✔ | ✔<sup>1</sup> |
-|VS - zuid-centraal| ✔ | ✔<sup>1</sup> |
+|US - zuid-centraal| ✔ | ✔<sup>1</sup> |
 |India - zuid | ✔ | |
 |Azië - zuidoost| ✔ | ✔<sup>1</sup> |
-|UK - zuid| ✔ | |
-|UK - west| ✔ |  |
-|Europa - west| ✔ | ✔<sup>1</sup> |
+|Verenigd Koninkrijk Zuid| ✔ | |
+|Verenigd Koninkrijk West| ✔ |  |
+|Europa -west| ✔ | ✔<sup>1</sup> |
 |India - west| ✔ |  |
-|VS - west| ✔ | ✔<sup>1</sup> |
-|VS - west 2| ✔ |  |
+|US - west| ✔ | ✔<sup>1</sup> |
+|US - west 2| ✔ |  |
 
 <sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  
 <sup>2</sup> Maxi maal aantal uitschalen beperkt tot 60 exemplaren.

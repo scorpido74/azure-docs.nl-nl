@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158159"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251614"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -246,7 +246,7 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 > Deze functies zijn momenteel in ontwikkeling.
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[Groeps beheerder](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[Groeps beheerder](#groups-administrator-permissions)
 
 Gebruikers met deze rol kunnen groepen en de bijbehorende instellingen maken/beheren, zoals het naamgevings-en verloop beleid. Het is belang rijk om te begrijpen dat het toewijzen van een gebruiker aan deze rol de mogelijkheid biedt om alle groepen in de Tenant te beheren in verschillende werk belastingen, zoals teams, share point, Yammer en Outlook. Daarnaast kan de gebruiker de verschillende groeps instellingen beheren voor verschillende beheerders portals, zoals micro soft-beheer centrum, Azure Portal, en werk belasting-specifieke taken als teams en share point-beheer centrums.
 
@@ -1081,7 +1081,7 @@ Kan alles lezen dat een globale beheerder wel kan, maar geen bewerkingen kan ond
 | microsoft.office365.usageReports/allEntities/read | Lees de gebruiks rapporten van Office 365. |
 | micro soft. office365. webportal/de beleen baarheid/standaard/lezen   | Lees de standaard eigenschappen voor alle resources in micro soft. office365. webportal. |
 
-### <a name="group-administrator-permissions"></a>Groeps beheerders machtigingen
+### <a name="groups-administrator-permissions"></a>Groeps beheerders machtigingen
 Kan alle aspecten van groepen en groeps instellingen, zoals naamgeving en verloop beleid, beheren.
 
 | **Acties** | **Beschrijving** |

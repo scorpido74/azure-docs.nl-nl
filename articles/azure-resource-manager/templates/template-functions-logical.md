@@ -3,24 +3,24 @@ title: Sjabloon functies-logisch
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om logische waarden te bepalen.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 48c6a05c5a449626c66f9d75c8578b217906d8e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483958"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207210"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische functies voor Azure Resource Manager sjablonen
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
 
-* [and](#and)
+* [maar](#and)
 * [bool](#bool)
 * [if](#if)
-* [not](#not)
+* [ten](#not)
 * [or](#or)
 
-## <a name="and"></a>en de
+## <a name="and"></a>en
 
 `and(arg1, arg2, ...)`
 
@@ -28,7 +28,7 @@ Controleert of alle parameter waarden waar zijn.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
 | Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
@@ -66,11 +66,11 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Onwaar |
-| orExampleOutput | Bool | Waar |
-| notExampleOutput | Bool | Onwaar |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
 
@@ -80,7 +80,7 @@ Zet de para meter om in een Boole-waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
 
@@ -119,12 +119,12 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| trueString | Bool | Waar |
-| falseString | Bool | Onwaar |
-| trueInt | Bool | Waar |
-| falseInt | Bool | Onwaar |
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -134,7 +134,7 @@ Retourneert een waarde op basis van het feit of een voor waarde waar of onwaar i
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | condition |Ja |booleaans |De waarde om te controleren of deze True of False is. |
 | trueValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
@@ -177,7 +177,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | yesOutput | Tekenreeks | ja |
 | geen uitvoer | Tekenreeks | nee |
@@ -239,7 +239,7 @@ Zet Boole-waarde om in tegenovergestelde waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |booleaans |De waarde die moet worden geconverteerd. |
 
@@ -275,11 +275,11 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Onwaar |
-| orExampleOutput | Bool | Waar |
-| notExampleOutput | Bool | Onwaar |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) gebruikt **niet** met [gelijk aan](template-functions-comparison.md#equals).
 
@@ -299,9 +299,9 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | Waar |
+| checkNotEquals | Bool | True |
 
 ## <a name="or"></a>of
 
@@ -311,7 +311,7 @@ Controleert of een parameter waarde waar is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Verplicht | Type | Beschrijving |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
 | Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
@@ -349,16 +349,16 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Onwaar |
-| orExampleOutput | Bool | Waar |
-| notExampleOutput | Bool | Onwaar |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](template-syntax.md).
-* U kunt meerdere sjablonen samenvoegen, Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md).
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](create-multiple-instances.md).
-* Zie voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt, [een toepassing implementeren met Azure Resource Manager-sjabloon](deploy-powershell.md).
+* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor een beschrijving van de secties in een Azure Resource Manager sjabloon.
+* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](linked-templates.md)om meerdere sjablonen samen te voegen.
+* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md).
+* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

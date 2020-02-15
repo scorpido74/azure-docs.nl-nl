@@ -3,12 +3,12 @@ title: Onderliggende resources in sjablonen
 description: Hierin wordt beschreven hoe u de naam en het type instelt voor onderliggende resources in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122012"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207890"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Naam en type voor onderliggende resources instellen
 
@@ -27,7 +27,7 @@ In een resource manager-sjabloon kunt u de onderliggende resource opgeven binnen
 ]
 ```
 
-In het volgende voor beeld wordt de onderliggende resource buiten de bovenliggende resource weer gegeven. U kunt deze aanpak gebruiken als de bovenliggende resource niet is geïmplementeerd in dezelfde sjabloon of als u een [kopie](create-multiple-instances.md) wilt gebruiken om meer dan één onderliggende resource te maken.
+In het volgende voor beeld wordt de onderliggende resource buiten de bovenliggende resource weer gegeven. U kunt deze aanpak gebruiken als de bovenliggende resource niet is geïmplementeerd in dezelfde sjabloon of als u een [kopie](copy-resources.md) wilt gebruiken om meer dan één onderliggende resource te maken.
 
 ```json
 "resources": [

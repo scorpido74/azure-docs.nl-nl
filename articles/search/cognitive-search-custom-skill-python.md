@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122420"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210462"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
 
@@ -52,7 +52,7 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
 1. Selecteer de python-versie, (versie 3.7.5 wordt ondersteund door Azure Functions)
 1. Selecteer een sjabloon voor de eerste functie van uw project. Selecteer **http-trigger** om een door http geactiveerde functie in de nieuwe functie-app te maken.
 1. Geef een functie naam op. In dit geval gebruiken we **samen voegen** 
-1. Selecteer **functie** als autorisatie niveau. Dit betekent dat we een [functie sleutel](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) zullen opgeven om het http-eind punt van de functie aan te roepen. 
+1. Selecteer **functie** als autorisatie niveau. Dit betekent dat we een [functie sleutel](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) zullen opgeven om het http-eind punt van de functie aan te roepen. 
 1. Selecteer hoe u uw project wilt openen. Voor deze stap selecteert u **toevoegen aan werk ruimte** om de functie-app in de huidige werk ruimte te maken.
 
 Het functie-appproject wordt in een nieuwe werkruimte gemaakt. Het project bevat de configuratiebestanden [host.json](../azure-functions/functions-host-json.md) en [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file), plus eventuele taalspecifieke projectbestanden. 

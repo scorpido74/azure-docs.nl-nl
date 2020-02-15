@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
-ms.openlocfilehash: d4cfba26192eb097d06f82e18acb41c1f9640e66
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437359"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212709"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Quickstart: Een Table-API compileren met Python en Azure Cosmos DB
 
@@ -25,19 +25,13 @@ ms.locfileid: "72437359"
 > * [Python](create-table-python.md)
 > 
 
-Deze quickstart laat zien hoe u Python en de [Table-API](table-introduction.md) van Azure Cosmos DB gebruikt voor het compileren van een app door een voorbeeld uit GitHub te klonen. In deze quickstart ziet u ook hoe u een Azure Cosmos DB-account maakt en hoe u Data Explorer gebruikt om tabellen en entiteiten te maken in Azure Portal op internet.
-
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren, kolom- en grafiekdatabases en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
+In deze Quick Start maakt en beheert u een Azure Cosmos DB Table-API-account vanuit de Azure Portal en vanuit Visual Studio met een python-app die is gekloond van GitHub. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-Daarnaast:
-
-* Als Visual Studio 2019 nog niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg dat u tijdens de installatie van Visual Studio de workloads **Azure-ontwikkeling** en **Python-ontwikkeling** selecteert.
-* Selecteer ook de optie Python 2 in de workload **Python-ontwikkeling** of download Python 2.7 van [python.org](https://www.python.org/downloads/release/python-2712/).
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/), met de werk belasting van **Azure Development** en **python Development** geselecteerd tijdens de installatie. 
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -83,29 +77,31 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. Hierdoor kan de app communiceren met de gehoste database. 
 
-1. Selecteer **Verbindingsreeks** in de [Azure-portal](https://portal.azure.com/). 
+1. Selecteer in uw Azure Cosmos DB-account [](https://portal.azure.com/)in de Azure Portal **verbindings reeks**. 
 
     ![De VERBINDINGS reeks in de instellingen van de verbindings reeks weer geven en kopiëren](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. Kopieer de ACCOUNT NAME met behulp van de knop aan de rechterkant.
 
-3. Open het bestand config.py en plak de ACCOUNT NAME vanuit de portal in de waarde STORAGE_ACCOUNT_NAME op regel 19.
+3. Open het *config.py* -bestand en plak de account naam vanuit de portal in de waarde STORAGE_ACCOUNT_NAME op regel 19.
 
 4. Ga terug naar de portal en kopieer de PRIMARY KEY.
 
 5. Plak de PRIMARY KEY vanuit de portal in de waarde STORAGE_ACCOUNT_KEY op regel 20.
 
-6. Sla het bestand config.py op.
+6. Sla het *config.py* -bestand op.
 
 ## <a name="run-the-app"></a>De app kunt uitvoeren
 
-1. Klik in Visual Studio met de rechtermuisknop op het project in **Solution Explorer**, selecteer de huidige Python-omgeving en klik er met de rechtermuisknop op.
+1. Klik in Visual Studio met de rechter muisknop op het project in **Solution Explorer**.
 
-2. Selecteer python-pakket installeren en voer vervolgens de **Azure-opslag tabel** in
+2. Selecteer de huidige python-omgeving en klik met de rechter muisknop.
+
+2. Selecteer **python-pakket installeren**en voer vervolgens de *Azure-opslag tabel*in.
 
 3. Druk op F5 om de toepassing uit te voeren. Uw app wordt in uw browser weergegeven. 
 
-U kunt nu teruggaan naar Data Explorer en deze nieuwe gegevens bekijken, wijzigen, een query erop uitvoeren of er iets anders mee doen. 
+U kunt nu teruggaan naar Data Explorer en deze nieuwe gegevens bekijken, wijzigen, opvragen en ermee werken. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 
@@ -117,7 +113,7 @@ U kunt nu teruggaan naar Data Explorer en deze nieuwe gegevens bekijken, wijzige
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB-account kunt maken, hebt u een tabel gemaakt met de Data Explorer en hebt u een app uitgevoerd.  Nu kunt u een query uitvoeren op uw gegevens met de Table-API.  
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, een tabel maakt met behulp van de Data Explorer en een python-app uitvoert in Visual Studio om tabel gegevens toe te voegen.  Nu kunt u een query uitvoeren op uw gegevens met de Table-API.  
 
 > [!div class="nextstepaction"]
 > [Tabelgegevens importeren in de Table-API](table-import.md)

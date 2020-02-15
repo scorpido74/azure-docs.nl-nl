@@ -2,13 +2,13 @@
 title: Sjabloon syntaxis en expressies
 description: Beschrijft de declaratieve JSON-syntaxis voor Azure Resource Manager sjablonen.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/13/2020
+ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120596"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207397"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxis en expressies in Azure Resource Manager sjablonen
 
@@ -16,11 +16,9 @@ De basis syntaxis van de sjabloon is JSON. U kunt echter expressies gebruiken om
 
 Een sjabloon expressie mag niet langer zijn dan 24.576 tekens.
 
-Expressies ondersteunen JSON (' null ') en eigenschappen bieden ondersteuning voor een letterlijke waarde van Null. In beide gevallen behandelen Resource Manager-sjablonen dit alsof de eigenschap niet aanwezig is.
-
 ## <a name="use-functions"></a>Functies gebruiken
 
-In het volgende voor beeld ziet u een expressie in de standaard waarde van een para meter:
+Azure Resource Manager biedt [functies](template-functions.md) die u in een sjabloon kunt gebruiken. In het volgende voor beeld ziet u een expressie die gebruikmaakt van een functie in de standaard waarde van een para meter:
 
 ```json
 "parameters": {
@@ -40,6 +38,12 @@ Als u een teken reeks waarde wilt door geven als een para meter voor een functie
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+De meeste functies werken hetzelfde, ongeacht of deze zijn geïmplementeerd in een resource groep, een abonnement, een beheer groep of een Tenant. Voor de volgende functies gelden beperkingen op basis van het bereik:
+
+* [resourceGroup](template-functions-resource.md#resourcegroup) -kan alleen worden gebruikt in implementaties van een resource groep.
+* [resourceId](template-functions-resource.md#resourceid) -kan in elk bereik worden gebruikt, maar de geldige para meters veranderen afhankelijk van het bereik.
+* [abonnement](template-functions-resource.md#subscription) : kan alleen worden gebruikt in implementaties van een resource groep of abonnement.
 
 ## <a name="escape-characters"></a>Escape tekens
 
@@ -65,6 +69,15 @@ Gebruik de back slash om dubbele aanhalings tekens in een expressie te escapen, 
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>Null-waarden
+
+Als u een eigenschap op null wilt instellen, kunt u **Null** of **[JSON (' null ')]** gebruiken. De [json-functie](template-functions-array.md#json) retourneert een leeg object wanneer u `null` als de para meter opgeeft. In beide gevallen behandelen Resource Manager-sjablonen dit alsof de eigenschap niet aanwezig is.
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

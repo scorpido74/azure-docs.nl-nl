@@ -1,24 +1,25 @@
 ---
-title: Event Grid trigger voor Azure Functions
+title: Azure Event Grid bindingen voor Azure Functions
 description: Meer informatie over het afhandelen van Event Grid gebeurtenissen in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 09/04/2018
+ms.date: 02/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df851a79ef3fbb7473e100619f58b7f35bce1d45
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167506"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212014"
 ---
-# <a name="event-grid-trigger-for-azure-functions"></a>Event Grid trigger voor Azure Functions
+# <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid bindingen voor Azure Functions
 
 In dit artikel wordt uitgelegd hoe u [Event grid](../event-grid/overview.md) gebeurtenissen in azure functions kunt verwerken. Lees [gebeurtenissen ontvangen naar een HTTP-eind](../event-grid/receive-events.md)punt voor meer informatie over het afhandelen van Event grid berichten in een http-eind punt.
 
 Event Grid is een Azure-service die HTTP-aanvragen verzendt om u op de hoogte te stellen van gebeurtenissen die zich in *uitgevers*voordoen. Een uitgever is de service of resource die van de gebeurtenis afkomstig is. Een Azure Blob-opslag account is bijvoorbeeld een uitgever en [een BLOB uploaden of verwijderen is een gebeurtenis](../storage/blobs/storage-blob-event-overview.md). Sommige [Azure-Services hebben ingebouwde ondersteuning voor het publiceren van gebeurtenissen naar Event grid](../event-grid/overview.md#event-sources).
 
-Gebeurtenis- *handlers* ontvangen en verwerken gebeurtenissen. Azure Functions is een van [de verschillende Azure-Services met ingebouwde ondersteuning voor het verwerken van Event grid-gebeurtenissen](../event-grid/overview.md#event-handlers). In dit artikel leert u hoe u een Event Grid trigger kunt gebruiken om een functie aan te roepen wanneer een gebeurtenis wordt ontvangen van Event Grid.
+Gebeurtenis- *handlers* ontvangen en verwerken gebeurtenissen. Azure Functions is een van [de verschillende Azure-Services met ingebouwde ondersteuning voor het verwerken van Event grid-gebeurtenissen](../event-grid/overview.md#event-handlers). In dit artikel leert u hoe u een Event Grid trigger kunt gebruiken om een functie aan te roepen wanneer een gebeurtenis wordt ontvangen van Event Grid en om de uitvoer binding te gebruiken voor het verzenden van gebeurtenissen naar een [Event grid aangepast onderwerp](../event-grid/post-to-custom-topic.md).
 
 Als u wilt, kunt u een HTTP-trigger gebruiken om Event Grid gebeurtenissen te verwerken. Zie [gebeurtenissen ontvangen naar een HTTP-eind punt](../event-grid/receive-events.md). Op dit moment kunt u geen Event Grid trigger gebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt bezorgd in het [CloudEvents-schema](../event-grid/cloudevents-schema.md#azure-functions). Gebruik in plaats daarvan een HTTP-trigger.
 
@@ -26,7 +27,7 @@ Als u wilt, kunt u een HTTP-trigger gebruiken om Event Grid gebeurtenissen te ve
 
 ## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
-De trigger Event Grid wordt gegeven in het [micro soft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet-pakket, versie 2. x. De bron code voor het pakket bevindt zich in de [Azure-functions-eventgrid-extension github-](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) opslag plaats.
+De Event Grid-bindingen zijn opgenomen in het pakket [micro soft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet, versie 2. x. De bron code voor het pakket bevindt zich in de [Azure-functions-eventgrid-extension github-](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) opslag plaats.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -36,7 +37,11 @@ De trigger Event Grid is opgenomen in het pakket [micro soft. Azure. webjobs. Ex
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Voorbeeld
+## <a name="trigger"></a>Trigger
+
+Gebruik de functie trigger om te reageren op een gebeurtenis die wordt verzonden naar een Event Grid onderwerp.
+
+## <a name="trigger---example"></a>Trigger - voorbeeld
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -66,7 +71,7 @@ namespace Company.Function
 }
 ```
 
-Zie pakketten, [kenmerken](#attributes), [configuratie](#configuration)en [gebruik](#usage)voor meer informatie.
+Zie pakketten, [kenmerken](#trigger---attributes), [configuratie](#trigger---configuration)en [gebruik](#trigger---usage)voor meer informatie.
 
 ### <a name="version-1x"></a>Versie 1. x
 
@@ -127,7 +132,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-Zie pakketten, [kenmerken](#attributes), [configuratie](#configuration)en [gebruik](#usage)voor meer informatie.
+Zie pakketten, [kenmerken](#trigger---attributes), [configuratie](#trigger---configuration)en [gebruik](#trigger---usage)voor meer informatie.
 
 ### <a name="version-1x"></a>Versie 1. x
 
@@ -284,7 +289,7 @@ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/f
 
 ---
 
-## <a name="attributes"></a>Kenmerken
+## <a name="trigger---attributes"></a>Trigger - kenmerken
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -316,11 +321,11 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Met de aantekening [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) kunt u een event grid binding declaratief configureren door configuratie waarden op te geven. Zie het voor [beeld](#example) en de [configuratie](#configuration) secties voor meer informatie.
+Met de aantekening [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) kunt u een event grid binding declaratief configureren door configuratie waarden op te geven. Zie het voor [beeld](#trigger---example) en de [configuratie](#trigger---configuration) secties voor meer informatie.
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="trigger---configuration"></a>Trigger - configuratie
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u in het bestand *Function. json* hebt ingesteld. Er zijn geen constructor-para meters of-eigenschappen om in te stellen in het kenmerk `EventGridTrigger`.
 
@@ -330,7 +335,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 | **direction** | Vereist: moet worden ingesteld op `in`. |
 | **naam** | Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de para meter waarmee de gebeurtenis gegevens worden ontvangen. |
 
-## <a name="usage"></a>Gebruik
+## <a name="trigger---usage"></a>Trigger - gebruik
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -370,11 +375,11 @@ Het Event Grid-exemplaar is beschikbaar via de para meter die is geconfigureerd 
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-De Event Grid gebeurtenis instantie is beschikbaar via de para meter die is gekoppeld aan het kenmerk `EventGridTrigger`, dat is opgegeven als een `EventSchema`. Zie het voor [beeld](#example) voor meer informatie.
+De Event Grid gebeurtenis instantie is beschikbaar via de para meter die is gekoppeld aan het kenmerk `EventGridTrigger`, dat is opgegeven als een `EventSchema`. Zie het voor [beeld](#trigger---example) voor meer informatie.
 
 ---
 
-## <a name="event-schema"></a>Gebeurtenisschema
+## <a name="trigger---event-schema"></a>Trigger-gebeurtenis schema
 
 Gegevens voor een Event Grid gebeurtenis worden ontvangen als een JSON-object in de hoofd tekst van een HTTP-aanvraag. De JSON ziet er ongeveer uit zoals in het volgende voor beeld:
 
@@ -412,7 +417,7 @@ Zie [gebeurtenis eigenschappen](../event-grid/event-schema.md#event-properties) 
 
 Het `EventGridEvent` type definieert alleen de eigenschappen op het hoogste niveau; de eigenschap `Data` is een `JObject`.
 
-## <a name="create-a-subscription"></a>Een abonnement maken
+## <a name="trigger---create-a-subscription"></a>Trigger-een abonnement maken
 
 Als u Event Grid HTTP-aanvragen wilt ontvangen, moet u een Event Grid-abonnement maken dat de eind punt-URL opgeeft waarmee de functie wordt aangeroepen.
 
@@ -486,7 +491,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_exten
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Dit is een beheer-API, zodat hiervoor de [hoofd sleutel](functions-bindings-http-webhook.md#authorization-keys)van de functie-app is vereist. Verwar de systeem sleutel (voor het aanroepen van een Event Grid geactiveerde functie) niet met de hoofd sleutel (voor het uitvoeren van beheer taken voor de functie-app). Wanneer u zich abonneert op een Event Grid onderwerp, moet u ervoor zorgen dat u de systeem sleutel gebruikt.
+Dit is een beheer-API, zodat hiervoor de [hoofd sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys)van de functie-app is vereist. Verwar de systeem sleutel (voor het aanroepen van een Event Grid geactiveerde functie) niet met de hoofd sleutel (voor het uitvoeren van beheer taken voor de functie-app). Wanneer u zich abonneert op een Event Grid onderwerp, moet u ervoor zorgen dat u de systeem sleutel gebruikt.
 
 Hier volgt een voor beeld van het antwoord dat de systeem sleutel levert:
 
@@ -508,11 +513,11 @@ U kunt de hoofd sleutel voor uw functie-app ophalen via het tabblad **functie-ap
 > [!IMPORTANT]
 > De hoofd sleutel biedt beheerders toegang tot uw functie-app. Deel deze sleutel niet met derden of distribueer deze niet in native client toepassingen.
 
-Zie [autorisatie sleutels](functions-bindings-http-webhook.md#authorization-keys) in het naslag artikel over http-triggers voor meer informatie.
+Zie [autorisatie sleutels](functions-bindings-http-webhook-trigger.md#authorization-keys) in het naslag artikel over http-triggers voor meer informatie.
 
 U kunt ook een HTTP-PUT verzenden om de sleutel waarde zelf op te geven.
 
-## <a name="local-testing-with-viewer-web-app"></a>Lokale tests met de Web-App van viewer
+## <a name="trigger---local-testing-with-viewer-web-app"></a>Trigger-Local testen met Viewer web app
 
 Als u een Event Grid trigger lokaal wilt testen, moet u Event Grid HTTP-aanvragen ontvangen van hun oorsprong in de Cloud naar uw lokale computer. Een manier om dat te doen, is door aanvragen online te vastleggen en ze hand matig opnieuw te verzenden op uw lokale computer:
 
@@ -584,6 +589,239 @@ In de volgende scherm afbeeldingen worden de kopteksten en de hoofd tekst van de
 De functie Trigger Event Grid wordt uitgevoerd en logboeken worden weer gegeven die vergelijkbaar zijn met het volgende voor beeld:
 
 ![Voorbeeld functie Logboeken Event Grid](media/functions-bindings-event-grid/eg-output.png)
+
+## <a name="output"></a>Uitvoer
+
+Gebruik de Event Grid uitvoer binding om gebeurtenissen te schrijven naar een aangepast onderwerp. U moet een geldige [toegangs sleutel voor het aangepaste onderwerp](../event-grid/security-authentication.md#custom-topic-publishing)hebben.
+
+> [!NOTE]
+> De Event Grid uitvoer binding biedt geen ondersteuning voor hand tekeningen voor gedeelde toegang (SAS-tokens). U moet de toegangs sleutel van het onderwerp gebruiken.
+
+Zorg ervoor dat de vereiste pakket verwijzingen aanwezig zijn voordat u een uitvoer binding implementeert.
+
+> [!IMPORTANT]
+> De Event Grid uitvoer binding is alleen beschikbaar voor functions 2. x en hoger.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die een bericht naar een event grid aangepast onderwerp schrijft, met behulp van de retour waarde van de methode als uitvoer:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    return new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+In het volgende voor beeld ziet u hoe u de `IAsyncCollector`-interface gebruikt om een batch berichten te verzenden.
+
+```csharp
+[FunctionName("EventGridAsyncOutput")]
+public static async Task Run(
+    [TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
+    [EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]IAsyncCollector<EventGridEvent> outputEvents,
+    ILogger log)
+{
+    for (var i = 0; i < 3; i++)
+    {
+        var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+        await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in het bestand *Function. json* .
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Dit is C# de script code voor het maken van één gebeurtenis:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogger log)
+{
+    outputEvent = new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+Dit is C# de script code waarmee meerdere gebeurtenissen worden gemaakt:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent, ILogger log)
+{
+    outputEvent.Add(new EventGridEvent("message-id-1", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+    outputEvent.Add(new EventGridEvent("message-id-2", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in het bestand *Function. json* .
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Dit is de Java script-code waarmee één gebeurtenis wordt gemaakt:
+
+```javascript
+module.exports = async function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = {
+        id: 'message-id',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    };
+    context.done();
+};
+```
+
+Dit is de Java script-code waarmee meerdere gebeurtenissen worden gemaakt:
+
+```javascript
+module.exports = function(context) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = [];
+
+    context.bindings.outputEvent.push({
+        id: 'message-id-1',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.bindings.outputEvent.push({
+        id: 'message-id-2',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.done();
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+De Event Grid uitvoer binding is niet beschikbaar voor python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+De Event Grid uitvoer binding is niet beschikbaar voor Java.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Uitvoer-kenmerken en aantekeningen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Gebruik voor [ C# class-bibliotheken](functions-dotnet-class-library.md)het kenmerk [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
+
+De constructor van het kenmerk maakt de naam van een app-instelling die de naam van het aangepaste onderwerp bevat en de naam van een app-instelling die de sleutel van het onderwerp bevat. Zie [output-Configuration (](#output---configuration)Engelstalig) voor meer informatie over deze instellingen. Hier volgt een voor beeld van een `EventGrid`-kenmerk:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    ...
+}
+```
+
+Zie voor een volledig voor beeld [uitvoer- C# voor beeld](#output).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Kenmerken worden niet ondersteund door C# het script.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+De Event Grid uitvoer binding is niet beschikbaar voor python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+De Event Grid uitvoer binding is niet beschikbaar voor Java.
+
+---
+
+## <a name="output---configuration"></a>Uitvoer - configuratie
+
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `EventGrid`.
+
+|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|---------|---------|----------------------|
+|**type** | N.v.t. | Moet worden ingesteld op ' eventGrid '. |
+|**direction** | N.v.t. | Moet worden ingesteld op 'out'. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
+|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
+|**topicEndpointUri** |**TopicEndpointUri** | De naam van een app-instelling die de URI voor het aangepaste onderwerp bevat, zoals `MyTopicEndpointUri`. |
+|**topicKeySetting** |**TopicKeySetting** | De naam van een app-instelling die een toegangs sleutel voor het aangepaste onderwerp bevat. |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> Zorg ervoor dat u de waarde van de eigenschap `TopicEndpointUri` Configuration instelt op de naam van een app-instelling die de URI van het aangepaste onderwerp bevat. Geef de URI van het aangepaste onderwerp niet rechtstreeks op in deze eigenschap.
+
+## <a name="output---usage"></a>Uitvoer - gebruik
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName`. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of `IAsyncCollector<EventGridEvent>` gebruiken in plaats van `out EventGridEvent`.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of `IAsyncCollector<EventGridEvent>` gebruiken in plaats van `out EventGridEvent`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Open de uitvoer gebeurtenis met behulp van `context.bindings.<name>` waarbij `<name>` de waarde is die is opgegeven in de eigenschap `name` van *Function. json*.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+De Event Grid uitvoer binding is niet beschikbaar voor python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+De Event Grid uitvoer binding is niet beschikbaar voor Java.
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

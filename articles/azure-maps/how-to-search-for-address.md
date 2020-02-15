@@ -1,19 +1,19 @@
 ---
 title: Zoeken naar een locatie met behulp van Azure Maps-Zoek Services | Microsoft Azure kaarten
 description: In dit artikel wordt beschreven hoe u een locatie kunt zoeken met behulp van de Microsoft Azure Maps Search Service voor geocodering en omgekeerde geocodering.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899223"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209882"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
 
@@ -75,7 +75,7 @@ In dit geval hebt u een volledige adres query opgegeven en krijgt u één result
 
 | Sleutel | Waarde | 
 |-----|------------| 
-| typeahead | waar | 
+| typeahead | true | 
 
 De vlag **typeahead** geeft aan dat de zoek-API van het adres de query als gedeeltelijke invoer behandelt en een matrix van voorspellende waarden retourneert.
 
@@ -173,7 +173,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | getal | waar |
+    | getal | true |
 
     Als de para meter voor de query [nummer](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) met de aanvraag wordt verzonden, kan het antwoord de zijde van de straat (links of rechts) bevatten en ook een verschuivings positie voor dat nummer.
   
@@ -181,7 +181,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | returnSpeedLimit | waar |
+    | returnSpeedLimit | true |
   
     Wanneer de [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter is ingesteld, retourneert het antwoord de limiet voor de geboekte snelheid.
 
@@ -189,7 +189,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | returnRoadUse | waar |
+    | returnRoadUse | true |
 
     Wanneer de [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter is ingesteld, retourneert het antwoord de gebruiks matrix voor de weg voor reverse geocodes op straat niveau.
 
@@ -197,7 +197,7 @@ Als u een set coördinaten locaties hebt voor reverse Geocode, kunt u [post Sear
 
     | Sleutel | Waarde |
     |-----|------------|
-    | roadUse | waar |
+    | roadUse | true |
 
     U kunt de omgekeerde Geocode query beperken tot een specifiek type weg met behulp van de [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter.
   

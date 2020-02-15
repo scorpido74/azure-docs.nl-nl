@@ -1,20 +1,20 @@
 ---
 title: 'Snelstartgids: interactieve kaarten zoeken met Azure Maps | Microsoft Azure kaarten'
 description: Meer informatie over het maken van een demo-webtoepassing voor het zoeken in interactieve mappen met behulp van Microsoft Azure Maps Web SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 74539a7ed74d0216f1a4bb2d719983895d8b320f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156434"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209627"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Snelstartgids: een interactieve Zoek toewijzing maken met behulp van Azure Maps
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -35,8 +35,8 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com).
 Voer de volgende stappen uit om een nieuw Maps-account te maken:
 
 1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken**.
-2. Typ **Maps** in het vak *Marketplace doorzoeken*.
-3. Selecteer **Toewijzingen** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
+2. Typ *Maps* in het vak **Marketplace doorzoeken**.
+3. Selecteer *Toewijzingen* in de **Resultaten**. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
 4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
     * Het *Abonnement* dat u wilt gebruiken voor dit account.
     * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120958"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209219"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -23,7 +23,7 @@ Wanneer u Azure Kubernetes service (AKS)-clusters maakt of beheert, kunnen er af
 Probeer de [officiële hand leiding voor het oplossen van problemen met Kubernetes-clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Er is ook een [hand leiding](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)voor het oplossen van problemen, gepubliceerd door een micro soft-Engineer voor het oplossen van problemen met peulen, knoop punten, clusters en andere functies.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat zal ik doen? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat moet ik doen? 
 
 U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
@@ -32,7 +32,7 @@ U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-portal/supporta
 De maximale instelling per knoop punt is 30 standaard als u een AKS-cluster implementeert in de Azure Portal.
 De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster implementeert in de Azure CLI. (Zorg ervoor dat u de nieuwste versie van de Azure CLI gebruikt). Deze standaard instelling kan worden gewijzigd met behulp van de vlag `–-max-pods` in de `az aks create` opdracht.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat zal ik doen?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat moet ik doen?
 
 Als Azure CNI (Advanced Networking) wordt gebruikt, wijst AKS IP-adressen toe op basis van het maximum aantal-peulen per knoop punt dat is geconfigureerd. Op basis van het geconfigureerde maximum van Peul per knoop punt moet de grootte van het subnet groter zijn dan het product van het aantal knoop punten en de maximum waarde voor pod per knoop punt. De volgende vergelijking bevat een overzicht:
 
@@ -40,7 +40,7 @@ De grootte van het subnet > aantal knoop punten in het cluster (waarbij rekening
 
 Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)voor meer informatie.
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat zal ik doen?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat moet ik doen?
 
 Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kunt het volgende bekijken:
 
@@ -53,17 +53,17 @@ Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-app
 
 Helaas wordt het inschakelen van op rollen gebaseerd toegangs beheer (RBAC) op bestaande clusters op dit moment niet ondersteund. U moet expliciet nieuwe clusters maken. Als u de CLI gebruikt, is RBAC standaard ingeschakeld. Als u de AKS-Portal gebruikt, is een wissel knop voor het inschakelen van RBAC beschikbaar in de werk stroom maken.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld met behulp van de Azure CLI met de standaard instellingen of de Azure Portal, en nu worden er veel waarschuwingen weer gegeven op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat zal ik doen?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld met behulp van de Azure CLI met de standaard instellingen of de Azure Portal, en nu worden er veel waarschuwingen weer gegeven op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat moet ik doen?
 
 De reden voor de waarschuwingen op het dash board is dat het cluster nu is ingeschakeld met RBAC en dat de toegang tot deze server standaard is uitgeschakeld. Over het algemeen is deze aanpak goed, omdat de standaard belichting van het dash board aan alle gebruikers van het cluster kan leiden tot beveiligings Risico's. Als u het dash board nog steeds wilt inschakelen, volgt u de stappen in [dit blog bericht](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat zal ik doen?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat moet ik doen?
 
 De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster is om `kubectl proxy`uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Als u het Kubernetes-dash board niet ziet, controleert u of de `kube-proxy` pod wordt uitgevoerd in de naam ruimte `kube-system`. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat zal ik doen?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat moet ik doen?
 
 Zorg ervoor dat de standaard netwerk beveiligings groep niet is gewijzigd en dat poort 22 en 9000 zijn geopend voor verbinding met de API-server. Controleer of de `tunnelfront` pod wordt uitgevoerd in de *uitvoeren-systeem* naam ruimte met behulp van de `kubectl get pods --namespace kube-system` opdracht. Als dat niet het geval is, dwingt u het verwijderen van de pod af en wordt de computer opnieuw opgestart.
 
@@ -120,7 +120,7 @@ Naam beperkingen worden geïmplementeerd door zowel het Azure-platform als de AK
 
 * Cluster namen moeten 1-63 tekens lang zijn. De enige toegestane tekens zijn letters, cijfers, streepjes en onderstreping. Het eerste en laatste teken moeten een letter of cijfer zijn.
 * De naam van de resource groep AKS *MC_* een combi natie van de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet groter zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam.
-* De *dnsPrefix* moet beginnen en eindigen met alfanumerieke waarden. Geldige tekens zijn alfanumerieke waarden en afbreek streepjes (-). De *dnsPrefix* mag geen speciale tekens bevatten, zoals een punt (.).
+* De *dnsPrefix* moet beginnen en eindigen met alfanumerieke waarden en moet tussen de 1-54 tekens lang zijn. Geldige tekens zijn alfanumerieke waarden en afbreek streepjes (-). De *dnsPrefix* mag geen speciale tekens bevatten, zoals een punt (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Ik ontvang fouten bij het maken, bijwerken, schalen, verwijderen of upgraden van een cluster. deze bewerking is niet toegestaan omdat er een andere bewerking wordt uitgevoerd.
 
@@ -155,8 +155,8 @@ Controleer of de instellingen niet conflicteren met een van de vereiste of optio
 
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1.12 | 1.12.9 of hoger |
-| 1.13 | 1.13.6 of hoger |
+| 1,12 | 1.12.9 of hoger |
+| 1,13 | 1.13.6 of hoger |
 | 1,14 | 1.14.2 of hoger |
 
 
@@ -164,8 +164,8 @@ Controleer of de instellingen niet conflicteren met een van de vereiste of optio
 
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1.12 | 1.12.0 of hoger |
-| 1.13 | 1.13.0 of hoger |
+| 1,12 | 1.12.0 of hoger |
+| 1,13 | 1.13.0 of hoger |
 | 1,14 | 1.14.0 of hoger |
 
 
@@ -191,9 +191,9 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1.10 | 1.10.2 of hoger |
+| 1,10 | 1.10.2 of hoger |
 | 1,11 | 1.11.0 of hoger |
-| 1,12 en hoger | N/A |
+| 1,12 en hoger | N.v.t. |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Fout bij het instellen van UID en GID in mountOptions voor Azure-schijf
 
@@ -263,11 +263,11 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1.10 | 1.10.10 of hoger |
+| 1,10 | 1.10.10 of hoger |
 | 1,11 | 1.11.5 of hoger |
-| 1.12 | 1.12.3 of hoger |
-| 1.13 | 1.13.0 of hoger |
-| 1,14 en hoger | N/A |
+| 1,12 | 1.12.3 of hoger |
+| 1,13 | 1.13.0 of hoger |
+| 1,14 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verminderen door enkele minuten te wachten en het opnieuw te proberen.
 
@@ -284,11 +284,11 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1.10 | 1.10.12 of hoger |
+| 1,10 | 1.10.12 of hoger |
 | 1,11 | 1.11.6 of hoger |
-| 1.12 | 1.12.4 of hoger |
-| 1.13 | 1.13.0 of hoger |
-| 1,14 en hoger | N/A |
+| 1,12 | 1.12.4 of hoger |
+| 1,13 | 1.13.0 of hoger |
+| 1,14 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verhelpen door het onderstaande te proberen:
 
@@ -307,9 +307,9 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
 | 1,11 | 1.11.9 of hoger |
-| 1.12 | 1.12.7 of hoger |
-| 1.13 | 1.13.4 of hoger |
-| 1,14 en hoger | N/A |
+| 1,12 | 1.12.7 of hoger |
+| 1,13 | 1.13.4 of hoger |
+| 1,14 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verminderen door de schijf hand matig te ontkoppelen.
 
@@ -321,10 +321,10 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1.12 | 1.12.9 of hoger |
-| 1.13 | 1.13.6 of hoger |
+| 1,12 | 1.12.9 of hoger |
+| 1,13 | 1.13.6 of hoger |
 | 1,14 | 1.14.2 of hoger |
-| 1,15 en hoger | N/A |
+| 1,15 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft en uw VM van het knoop punt heeft een verouderde lijst met schijven, kunt u het probleem verminderen door alle niet-bestaande schijven te ontkoppelen van de virtuele machine als een enkele, bulk bewerking. **Het afzonderlijk ontkoppelen van niet-bestaande schijven kan mislukken.**
 
@@ -341,10 +341,10 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1.12 | 1.12.10 of hoger |
-| 1.13 | 1.13.8 of hoger |
+| 1,12 | 1.12.10 of hoger |
+| 1,13 | 1.13.8 of hoger |
 | 1,14 | 1.14.4 of hoger |
-| 1,15 en hoger | N/A |
+| 1,15 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft en de VM van het knoop punt de status Mislukt heeft, kunt u het probleem verminderen door de VM-status hand matig bij te werken met een van de onderstaande opties:
 
@@ -364,16 +364,16 @@ Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem
  
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1.12 | 1.12.6 of hoger |
-| 1.13 | 1.13.4 of hoger |
+| 1,12 | 1.12.6 of hoger |
+| 1,13 | 1.13.4 of hoger |
 | 1,14 | 1.14.0 of hoger |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Welke versies van Kubernetes hebben Azure Files ondersteuning voor de soevereine Cloud?
 
 | Kubernetes-versie | Aanbevolen versie |
 | -- | :--: |
-| 1.12 | 1.12.0 of hoger |
-| 1.13 | 1.13.0 of hoger |
+| 1,12 | 1.12.0 of hoger |
+| 1,13 | 1.13.0 of hoger |
 | 1,14 | 1.14.0 of hoger |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Wat zijn de standaard mountOptions bij het gebruik van Azure Files?
@@ -459,9 +459,9 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 
 | Kubernetes-versie | Vaste versie |
 | -- | :--: |
-| 1.12 | 1.12.6 of hoger |
-| 1.13 | 1.13.4 of hoger |
-| 1,14 en hoger | N/A |
+| 1,12 | 1.12.6 of hoger |
+| 1,13 | 1.13.4 of hoger |
+| 1,14 en hoger | N.v.t. |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure Files koppelen mislukt omdat de sleutel van het opslag account is gewijzigd
 

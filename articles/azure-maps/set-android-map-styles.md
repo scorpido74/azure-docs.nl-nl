@@ -1,19 +1,19 @@
 ---
 title: Een kaart stijl instellen met behulp van Azure Maps Android SDK | Microsoft Azure kaarten
 description: In dit artikel vindt u informatie over Microsoft Azure functies voor het toewijzen van kaarten voor de Android-SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4adb38148acc0c18ac73709efbe7628ca9497897
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988954"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209576"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Kaart stijl instellen met Azure Maps Android SDK
 
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![style-satellite-road-labels](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![stijl-satelliet-Road-labels](./media/set-android-map-styles/satellite-road-labels.png)</center>

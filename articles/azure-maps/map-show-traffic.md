@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910899"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208417"
 ---
 # <a name="show-traffic-on-the-map"></a>Verkeer op de kaart weer geven
 
 Er zijn twee soorten verkeers gegevens beschikbaar in Azure Maps:
 
 - Incident gegevens: bestaat uit gegevens op basis van een punt en lijn voor dingen, zoals bouw, wegsluitingen en ongel ukken.
-- Stroom gegevens: voorziet in metrische informatie over de stroom van verkeer op de wegen. Gegevens over de verkeers stroom worden vaak gebruikt om de wegen te maken op basis van de hoeveelheid verkeer die de stroom vertraagt ten opzichte van de snelheids limiet of een andere metriek. De gegevens van de verkeers stroom in Azure Maps hebben drie verschillende meet waarden:
+- Stroom gegevens: voorziet in metrische informatie over de stroom van verkeer op de wegen. De verkeers stroom gegevens worden vaak gebruikt om de wegen te kleuren. De kleuren zijn gebaseerd op de hoeveelheid verkeer die de stroom vertraagt, ten opzichte van de snelheids limiet of een andere metriek. De gegevens van de verkeers stroom in Azure Maps hebben drie verschillende meet waarden:
     - `relative`-is relatief ten opzichte van de vrije stroom snelheid van de weg.
     - `absolute`: de absolute snelheid van alle Voer tuigen op de weg.
     - `relative-delay`-gebieden weer geven die langzamer zijn dan de gemiddelde verwachte vertraging.
@@ -58,7 +58,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>bedekkings opties</a>
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

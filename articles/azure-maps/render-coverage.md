@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025449"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209542"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps weergave dekking
 
-Azure Maps maakt gebruik van raster tegels en vector tegels om kaarten te maken. Bij de laagste resolutie past de hele wereld aan op één tegel. Bij de hoogste resolutie vertegenwoordigt één tegel een vier Kante meter van 38. Wanneer u inzoomt, worden er meer details weer geven over continenten, regio's, steden en afzonderlijke straten. Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over tegels.
+Azure Maps maakt gebruik van raster tegels en vector tegels om kaarten te maken. Bij de laagste resolutie past de hele wereld aan op één tegel. Bij de hoogste resolutie vertegenwoordigt één tegel een vier Kante meter van 38. U ziet meer details over continenten, regio's, steden en afzonderlijke straten wanneer u inzoomt in de kaart. Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over tegels.
 
-Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabellen beschrijven het informatie niveau dat u voor elke regio kunt weer geven.
+Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabellen beschrijven het informatie niveau dat u voor elke regio kunt weer geven.
 
 ## <a name="legend"></a>Labels
 
@@ -29,7 +29,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Ø | Regio wordt weer gegeven met vereenvoudigde gegevens. |
 
 
-## <a name="africa"></a>Afrika 
+## <a name="africa"></a>Africa 
 
 
 | Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
@@ -46,7 +46,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Tsjaad                             | ✓ | Ø |
 | Comoren                          | ✓ | Ø |
 | Congo (DRC) | ✓ | ✓ |
-| Côte d'Ivoire                    | ✓ | Ø |
+| Ivoor kust                    | ✓ | Ø |
 | Djibouti                         | ✓ | Ø |
 | Egypte                            | ✓ | ✓ |
 | Equatoriaal-Guinea                | ✓ | Ø |
@@ -86,7 +86,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Verenigde Republiek Tanzania      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
 | Tunesië                          | ✓ | ✓ |
-| Uganda                           | ✓ | ✓ |
+| Oeganda                           | ✓ | ✓ |
 | Zambia                           | ✓ | ✓ |
 | Zimbabwe                         | ✓ | ✓ |
 
@@ -117,7 +117,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Ecuador                   | ✓ | ✓ |
 | Falklandeilanden (Malvinas) | ✓ | ✓ |
 | Frans-Guyana             | ✓ | ✓ |
-| Groenland                 | ✓ | Ø |
+| Heilbot                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
 | Guadeloupe                | ✓ | ✓ |
 | Guatemala                 | ✓ | ✓ |
@@ -142,7 +142,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Saint-Pierre en Miquelon | ✓ | ✓ |
 | Saint Vincent en de Grenadines | ✓ | ✓ |
 | Sint-Maarten (Nederlands)      | ✓ | ✓ |
-| Zuid-Georgia en de Zuidelijke Sandwicheilanden | ✓ | ✓ |
+| Zuid-Georgië en de zuidelijke Sandwich eilanden | ✓ | ✓ |
 | Suriname                  | ✓ | ✓ |
 | Trinidad en Tobago       | ✓ | ✓ |
 | Turks- en Caicoseilanden  | ✓ | ✓ |
@@ -160,13 +160,13 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Bahrein                   | ✓ | ✓ |
 | Bangladesh                |   | Ø |
 | Bhutan                    |   | Ø |
-| Brits Indische Oceaanterritorium |   | Ø |
+| Brits territorium in de Indische Oceaan |   | Ø |
 | Brunei                    | ✓ | ✓ |
 | Cambodja                  |   | Ø |
 | China                     |   | Ø |
 | Cocos-Keeling-eilanden   |   | Ø |
-| Noord-Korea |   | Ø |
-| Hong Kong SAR             | ✓ | ✓ |
+| Democratische volks Republiek Korea |   | Ø |
+| Hongkong SAR             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonesië                 | ✓ | ✓ |
 | Iran                      |   | Ø |
@@ -187,21 +187,21 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Nepal                     |   | Ø |
 | Oman                      | ✓ | ✓ |
 | Pakistan                  |   | Ø |
-| Filippijnen               | ✓ | ✓ |
+| Filipijnen               | ✓ | ✓ |
 | Qatar                     | ✓ | ✓ |
 | Republiek Korea         | ✓ | Ø |
 | Saoedi-Arabië              | ✓ | ✓ |
 | Senkakuman eilanden           |   | ✓ |
 | Singapore                 | ✓ | ✓|
 | Sri Lanka                 |   | Ø |
-| Syrië      |   | Ø |
+| Arabische Republiek Syrië      |   | Ø |
 | Taiwan                    | ✓ | ✓ |
 | Tadzjikistan                |   | Ø |
 | Thailand                  | ✓ | ✓ |
 | Timor-Leste               |   | Ø |
 | Turkmenistan              |   | Ø |
 | Verenigde Arabische Emiraten      | ✓ | ✓ |
-| Amerikaanse ondergeschikte afgelegen eilanden |   | Ø |
+| Verenigde Staten ondergeschikte afgelegen eilanden |   | Ø |
 | Oezbekistan                |   | Ø |
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
@@ -212,7 +212,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | ------ | :------------------: | :------------------: |
 | Amerikaans-Samoa            |   | ✓ |
 | Australië                 | ✓ | ✓ |
-| Cookeilanden              |   | Ø |
+| Cook eilanden              |   | Ø |
 | Fiji                      |   | Ø |
 | Frans-Polynesië          |   | Ø |
 | Guam                      | ✓ | ✓ |
@@ -228,7 +228,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Papoea-Nieuw-Guinea          |   | Ø |
 | Pitcairneilanden                  |   | Ø |
 | Samoa                     |   | Ø |
-| Salomonseilanden           |   | Ø|
+| Salomons eilanden           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
 | Tuvalu                    |   | Ø |
@@ -245,7 +245,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Armenië                   | ✓ | Ø |
 | Oostenrijk                   | ✓ | ✓ |
 | Azerbeidzjan                | ✓ | Ø |
-| Wit-Rusland                   | Ø | ✓ |
+| Belarus                   | Ø | ✓ |
 | België                   | ✓ | ✓ |
 | Bosnia-Herzegovina        | ✓ | ✓ |
 | Bulgarije                  | ✓ | ✓ |
@@ -254,7 +254,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Tsjechië            | ✓ | ✓ |
 | Denemarken                   | ✓ | ✓ |
 | Estland                   | ✓ | ✓ |
-| Faeröer             | ✓ | Ø |
+| Faeröereilanden             | ✓ | Ø |
 | Finland                   | ✓ | ✓ |
 | Frankrijk                    | ✓ | ✓ |
 | Georgië                   | ✓ | Ø |
@@ -265,7 +265,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Hongarije                   | ✓ | ✓ |
 | IJsland                   | ✓ | ✓ |
 | Ierland                   | ✓ | ✓ |
-| Man               | ✓ | ✓ |
+| Isle of man               | ✓ | ✓ |
 | Italië                     | ✓ | ✓ |
 | Jan Mayen                 | ✓ | ✓ |
 | Jersey                    | ✓ | ✓ |
@@ -275,7 +275,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Luxemburg                | ✓ | ✓ |
 | Noord-Macedonië           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
-| Moldavië                   | ✓ | ✓ |
+| Werden                   | ✓ | ✓ |
 | Monaco                    | ✓ | ✓ |
 | Montenegro                | ✓ | ✓ |
 | Nederland               | ✓ | ✓ |
@@ -290,7 +290,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Slovenië                  | ✓ | ✓ |
 | Zuidelijk Kurils           | ✓ | ✓ |
 | Spanje                     | ✓ | ✓ |
-| Spitsbergen                  | ✓ | ✓ |
+| Jan                  | ✓ | ✓ |
 | Zweden                    | ✓ | ✓ |
 | Zwitserland               | ✓ | ✓ |
 | Turkije                    | ✓ | ✓ |

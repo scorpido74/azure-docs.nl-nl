@@ -3,12 +3,12 @@ title: Implementatiemodi
 description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of incrementele implementatie modus met Azure Resource Manager wilt gebruiken.
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261021"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207584"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
 
@@ -24,7 +24,7 @@ In de volledige modus **verwijdert** Resource Manager resources die voor komen i
 
 Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat de [voor waarde](conditional-resource-deployment.md) wordt geëvalueerd als onwaar, is het resultaat afhankelijk van de rest API versie die u gebruikt om de sjabloon te implementeren. Als u een eerdere versie dan 2019-05-10 gebruikt, wordt de resource **niet verwijderd**. Met 2019-05-10 of hoger wordt de resource **verwijderd**. Met de nieuwste versies van Azure PowerShell en Azure CLI verwijdert u de resource.
 
-Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](create-multiple-instances.md). Alle resources die niet zijn opgegeven in de sjabloon na het oplossen van de Kopieer-lus, worden verwijderd.
+Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](copy-resources.md). Alle resources die niet zijn opgegeven in de sjabloon na het oplossen van de Kopieer-lus, worden verwijderd.
 
 Als u naar [meer dan één resource groep in een sjabloon](cross-resource-group-deployment.md)implementeert, kunnen resources in de resource groep die zijn opgegeven in de implementatie bewerking worden verwijderd. Resources in de secundaire resource groepen worden niet verwijderd.
 

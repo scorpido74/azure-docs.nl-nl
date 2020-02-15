@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187716"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251971"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -121,8 +121,12 @@ Als u uw Azure-SSIS IR wilt aanpassen, hebt u de volgende items nodig:
 
      * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren. ](https://hedda.io/ssis-component/)Het onderdeel io-gegevens kwaliteit/opschonen van oh22 op uw Azure-SSIS IR na het aanschaffen van de service. De huidige geïntegreerde versie is **1.0.13**.
 
-      * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u de [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) -gegevens kwaliteit/het overeenkomende onderdeel van oh22 op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **1.0.43**.
-   
+     * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u de [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) -gegevens kwaliteit/het overeenkomende onderdeel van oh22 op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **1.0.43**.
+
+     * Als u het **SSIS Integration Toolkit** -onderdeel van de KingswaySoft selecteert, kunt u het pakket met de [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) van connectors voor CRM/ERP/marketing/samenwerkings-apps installeren, zoals micro soft Dynamics/share point/Project Server, Oracle/sales force marketing Cloud, Azure-SSIS IR enzovoort door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **2019,2**.
+
+     * Als u het **SSIS Productivity Pack** -onderdeel van de KingswaySoft selecteert, kunt u de [SSIS-productiviteits pakket](https://www.kingswaysoft.com/products/ssis-productivity-pack) onderdelen van KingswaySoft op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **10,0**.
+
    Uw toegevoegde snelle aangepaste Setup wordt weer gegeven in de sectie **Geavanceerde instellingen** . Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u vervolgens **verwijderen**.
 
    ![Geavanceerde instellingen met aangepaste installatie](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

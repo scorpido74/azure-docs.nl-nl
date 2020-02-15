@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161950"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212885"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL database controle
 
@@ -90,7 +90,7 @@ Als u het schrijven van audit logboeken naar een opslag account wilt configurere
 
    ![opslagaccount](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-Als u een opslag account wilt configureren in een virtueel netwerk of een firewall, hebt u een [Active Directory beheerder](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) op de server nodig. Schakel **vertrouwde micro soft-Services toestaan in voor toegang tot dit opslag account** op het opslag account. Bovendien moet u de machtiging ' micro soft. Authorization/roleAssignments/write ' hebben voor het geselecteerde opslag account.
+Als u een opslag account wilt configureren in een virtueel netwerk of een firewall, hebt u een [Active Directory beheerder](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance) op de server nodig. Schakel **vertrouwde micro soft-Services toestaan in voor toegang tot dit opslag account** op het opslag account. Bovendien moet u de machtiging ' micro soft. Authorization/roleAssignments/write ' hebben voor het geselecteerde opslag account.
 
 U wordt aangeraden de [beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator) van de gebruiker te zijn om de beheerde identiteit de rol ' BLOB data contributor ' te geven. Zie voor meer informatie over machtigingen en op rollen gebaseerd toegangs beheer [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources?](../role-based-access-control/overview.md) en om [roltoewijzingen toe te voegen of te verwijderen met behulp van Azure RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md)
 

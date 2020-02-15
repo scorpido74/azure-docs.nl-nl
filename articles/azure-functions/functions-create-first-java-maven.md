@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845445"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208843"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Snelstartgids: Java en Maven gebruiken om een functie te maken en te publiceren in azure
 
@@ -27,7 +27,7 @@ Als u functies wilt ontwikkelen met behulp van Java, moet het volgende zijn geï
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
 - [Apache Maven](https://maven.apache.org), versie 3,0 of hoger
-- [Azure-CLI]
+- [Azure CLI]
 - [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
 
 U hebt ook een actief Azure-abonnement nodig. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -74,7 +74,7 @@ Maven vraagt u om de waarden die nodig zijn om het project te kunnen genereren t
 | **Versie** | Kies de standaard waarde van `1.0-SNAPSHOT`. |
 | **pakket** | Een waarde die het Java-pakket voor de gegenereerde functie code is. Gebruik de standaard. In de voor beelden in deze Snelstartgids wordt gebruikgemaakt van `com.fabrikam.functions`. |
 | **Toepassings** | Een wereld wijd unieke naam waarmee uw nieuwe functie-app in azure wordt geïdentificeerd. Gebruik de standaard waarde. Dit is de _artifactId_ die wordt toegevoegd met een wille keurig getal. Noteer deze waarde. u hebt deze later nodig. |
-| **appRegion** | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. De standaardwaarde is `westus`. Voer deze [Azure-CLI] -opdracht uit om een lijst met alle regio's op te halen:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **appRegion** | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. De standaardwaarde is `westus`. Voer deze [Azure cli] -opdracht uit om een lijst met alle regio's op te halen:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
 | **resourceGroup** | De naam voor de nieuwe [resource groep](../azure-resource-manager/management/overview.md) waarin u de functie-app wilt maken. Gebruik `myResourceGroup`, dat wordt gebruikt door voor beelden in deze Quick Start. Een resource groep moet uniek zijn voor uw Azure-abonnement.|
 
 Typ `Y` of druk op ENTER om te bevestigen.
@@ -119,7 +119,7 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```Output
 Hello AzureFunctions!
 ```
-De [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) is niet vereist wanneer deze lokaal wordt uitgevoerd. Gebruik `Ctrl+C` in de terminal om de functiecode te stoppen.
+De [functie sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) is niet vereist wanneer deze lokaal wordt uitgevoerd. Gebruik `Ctrl+C` in de terminal om de functiecode te stoppen.
 
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
@@ -150,7 +150,7 @@ Met deze `azure-functions:deploy` maven-doel worden de volgende resources in azu
 
 De implementatie verpakt de project bestanden ook en implementeert deze in de nieuwe functie-app met behulp van [zip-implementatie](functions-deployment-technologies.md#zip-deploy), waarbij de modus uitvoeren vanaf pakket is ingeschakeld.
 
-Nadat de implementatie is voltooid, ziet u de URL die u kunt gebruiken om toegang te krijgen tot de eind punten van uw functie-apps. Omdat de HTTP-trigger die we hebben gepubliceerd, gebruikmaakt van `authLevel = AuthorizationLevel.FUNCTION`, moet u de functie code ophalen om het eind punt van de functie aan te roepen via HTTP. De eenvoudigste manier om de functie code op te halen, is van de [Azure Portal].
+Nadat de implementatie is voltooid, ziet u de URL die u kunt gebruiken om toegang te krijgen tot de eind punten van uw functie-apps. Omdat de HTTP-trigger die we hebben gepubliceerd, gebruikmaakt van `authLevel = AuthorizationLevel.FUNCTION`, moet u de functie code ophalen om het eind punt van de functie aan te roepen via HTTP. De eenvoudigste manier om de functie code op te halen, is van de [Azure-portal].
 
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
@@ -161,7 +161,7 @@ Nadat de implementatie is voltooid, ziet u de URL die u kunt gebruiken om toegan
 
 U kunt de URL ophalen die is vereist om uw functie te activeren, met de functie sleutel van de Azure Portal. 
 
-1. Blader naar de [Azure Portal], Meld u aan, typ de _AppName_ van uw functie-app in **zoeken** boven aan de pagina en druk op ENTER.
+1. Blader naar de [Azure-portal], Meld u aan, typ de _AppName_ van uw functie-app in **zoeken** boven aan de pagina en druk op ENTER.
  
 1. Vouw in uw functie-app **functies (alleen-lezen)** uit, kies uw functie en selecteer vervolgens in de rechter bovenhoek **</> functie-URL ophalen** . 
 
@@ -196,5 +196,5 @@ U hebt een Java-functies project gemaakt met een door HTTP geactiveerde functie,
 > [Een Azure Storage wachtrij-uitvoer binding toevoegen](functions-add-output-binding-storage-queue-java.md)
 
 
-[Azure-CLI]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Azure CLI]: /cli/azure
+[Azure-portal]: https://portal.azure.com

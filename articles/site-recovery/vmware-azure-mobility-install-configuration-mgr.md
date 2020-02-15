@@ -3,14 +3,14 @@ title: De Mobility-service automatiseren voor nood herstel van de installatie in
 description: De Mobility-service voor VMware/Physical server-herstel na nood gevallen automatisch installeren met Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896024"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252224"
 ---
 # <a name="automate-mobility-service-installation"></a>De installatie van de Mobility-service automatiseren
 
@@ -20,7 +20,7 @@ Wanneer u Site Recovery implementeert voor herstel na nood gevallen van on-premi
 
 - **Push-installatie**: laat site Recovery de Mobility Service-agent installeren wanneer u replicatie inschakelt voor een computer in de Azure Portal.
 - **Hand matige installatie**: Installeer de Mobility-service hand matig op elke computer. Meer [informatie](vmware-physical-mobility-service-overview.md) over push en hand matige installatie.
-- **Geautomatiseerde implementatie**: de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals micro soft endpoint Configuration Manager, of hulpprogram ma's van derden, zoals Intigua JetPatch.
+- **Geautomatiseerde implementatie**: de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals micro soft endpoint Configuration Manager, of hulpprogram ma's van derden, zoals JetPatch.
 
 Automatische installatie en update biedt een oplossing als:
 
@@ -352,7 +352,7 @@ cd /tmp
 
 1. Geef bij **Geef informatie op over deze standaard programma** pagina de volgende waarden op:
 
-    **Parameter** | **Windows-waarde** | **Linux-waarde**
+    **Bepaalde** | **Windows-waarde** | **Linux-waarde**
     --- | --- | ---
     **Naam** | Microsoft Azure Mobility-service installeren (Windows) | Installeer Microsoft Azure Mobility service (Linux).
     **Opdrachtregel** | install. bat | ./install_linux.sh
