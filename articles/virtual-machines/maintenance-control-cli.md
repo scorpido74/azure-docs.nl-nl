@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: cf4c8c57121a06a607770470c5aef69c5edc0c5f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 58c0964d170f49066802b955f09dab01eaf998a7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115633"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252192"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Voor beeld: updates beheren met onderhouds beheer en de Azure CLI
 
@@ -233,6 +233,18 @@ az maintenance applyupdate create \
 U kunt de voortgang van de updates controleren met behulp van `az maintenance applyupdate get`. 
 
 U kunt `default` gebruiken als update naam om de resultaten voor de laatste update te bekijken of om `myUpdateName` te vervangen door de naam van de update die werd geretourneerd tijdens het uitvoeren van `az maintenance applyupdate create`.
+
+```text
+Status         : Completed
+ResourceId     : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ute/virtualMachines/DXT-test-04-iso
+LastUpdateTime : 1/1/2020 12:00:00 AM
+Id             : /subscriptions/12ae7457-4a34-465c-94c1-17c058c2bd25/resourcegroups/TestShantS/providers/Microsoft.Comp
+ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates/default
+Name           : default
+Type           : Microsoft.Maintenance/applyUpdates
+```
+LastUpdateTime is de tijd waarop de update is voltooid, ofwel door u of door het platform is gestart in het geval dat het zelf onderhoud niet is gebruikt. Als er nog nooit een update is toegepast via de onderhouds controle, wordt de standaard waarde weer gegeven.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 

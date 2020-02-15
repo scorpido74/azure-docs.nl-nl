@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933303"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209780"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
@@ -61,13 +61,13 @@ Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, ged
 - Met de kaart focus, gebruikt u de Shift-toets plus de toetsen pijl-omhoog of omlaag. 
 - Het besturings element pitch gebruiken met een muis, aanrakend of toetsen bord/Enter-toets.
 
-**De kaart stijl wijzigen** Niet alle ontwikkel aars willen dat alle mogelijke kaart stijlen beschikbaar zijn in hun toepassing. De ontwikkelaar kan de kaart stijl desgewenst instellen en wijzigen. Als de ontwikkelaar het besturings element voor het kiezen van de kaart stijl weergeeft, kan de gebruiker de kaart stijl wijzigen met behulp van de muis, het aanraak of het toetsen bord met de tabtoets/Enter-toets. De ontwikkelaar kan opgeven welke kaart stijlen ze beschikbaar willen maken in het besturings element kaart stijl kiezer. 
+**De kaart stijl wijzigen** Niet alle ontwikkel aars willen dat alle mogelijke kaart stijlen beschikbaar zijn in hun toepassing. De ontwikkelaar kan de kaart stijl programmatisch instellen en wijzigen. Als de ontwikkelaar het besturings element stijl kiezer van de kaart weergeeft, kan de gebruiker de kaart stijl wijzigen met behulp van de muis, een touch of het toetsen bord met het tabblad of Enter-toets. De ontwikkelaar kan opgeven welke kaart stijlen ze beschikbaar willen maken in het besturings element kaart stijl kiezer. 
 
-## <a name="keyboard-shortcuts"></a>Toetsencombinaties
+## <a name="keyboard-shortcuts"></a>Sneltoetsen
 
 De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijker kunt gebruiken. Deze sneltoetsen werken op het moment dat de kaart de focus heeft.
 
-| Sleutel      | Actie                            |
+| Sleutel      | Bewerking                            |
 |----------|-----------------------------------|
 | `Tab` | Navigeer over de besturings elementen en pop-upvensters in de kaart. |
 | `ESC` | De focus verplaatsen van een wille keurig element in de kaart naar het kaart element op het hoogste niveau. |
@@ -94,7 +94,7 @@ Aanvullende informatie die op de basis kaart wordt geplaatst, moet bijbehorende 
 
 ## <a name="make-popups-keyboard-accessible"></a>Pop-upvensters toegankelijk maken voor het toetsen bord
 
-Een markering of symbool wordt vaak gebruikt om een locatie op de kaart weer te geven. Aanvullende informatie over de locatie wordt doorgaans weer gegeven in een pop-upvenster wanneer de gebruiker met de markering communiceert. In de meeste toepassingen popups wordt weer gegeven wanneer een gebruiker op een markering klikt of tikt, maar deze gebeurtenis vereist dat de gebruiker een muis of een aanraak scherm gebruikt. Het is een goed idee om pop-ups toegankelijk te maken wanneer u een toetsen bord gebruikt. Deze functionaliteit kan worden bereikt door een pop-up te maken voor elk gegevens punt en deze toe te voegen aan de kaart. 
+Een markering of symbool wordt vaak gebruikt om een locatie op de kaart weer te geven. Aanvullende informatie over de locatie wordt doorgaans weer gegeven in een pop-upvenster wanneer de gebruiker met de markering communiceert. In de meeste toepassingen worden pop-ups weer gegeven wanneer een gebruiker op een markering klikt of tikt. Als u echter wilt klikken en tikken, moet de gebruiker respectievelijk een muis en een aanraak scherm gebruiken. Het is een goed idee om pop-ups toegankelijk te maken wanneer u een toetsen bord gebruikt. Deze functionaliteit kan worden bereikt door een pop-up te maken voor elk gegevens punt en deze toe te voegen aan de kaart. 
 
 In het volgende voor beeld worden punten van belangen op de kaart geladen met behulp van een symbool laag en wordt een pop-upvenster toegevoegd aan de kaart voor elk gewenst moment. Een verwijzing naar elke pop-up wordt opgeslagen in de eigenschappen van elk gegevens punt. Het kan ook worden opgehaald voor een markering, bijvoorbeeld wanneer er op een markering wordt geklikt. Als er op de kaart wordt gestreefd en u op TAB drukt, kan de gebruiker elke pop-up door lopen op de kaart.
 
@@ -116,12 +116,12 @@ Hier volgen enkele extra tips om uw webtoewijzings toepassing toegankelijker te 
     - De updates tot één keer per seconde beperken. 
     - Combi neer berichten op logische wijze samen. 
 - Vermijd het gebruik van kleur als enige manier om informatie over te brengen. Gebruik tekst, pictogrammen of patronen om de kleur aan te vullen of te vervangen. Enkele overwegingen:
-    - Als u een tekenlaag gebruikt om de relatieve waarde tussen gegevens punten weer te geven, kunt u overwegen om de RADIUS van elke bel naast of als alternatief voor de kleur te schalen. 
+    - Als u een Bubble laag gebruikt om de relatieve waarde tussen gegevens punten weer te geven, kunt u overwegen om de RADIUS van elke bel te schalen, de ballon te kleuren of beide. 
     - Overweeg het gebruik van een symbool laag met verschillende pictogrammen voor verschillende metrische categorieën, zoals drie hoeken, sterren en kwadraten. De Symbol-laag biedt ook ondersteuning voor het schalen van de grootte van het pictogram. Er kan ook een tekst label worden weer gegeven.
     - Als regel gegevens worden weer gegeven, kan de breedte worden gebruikt om het gewicht of de grootte aan te geven. Een patroon met een streepjes matrix kan worden gebruikt om verschillende categorieën met lijnen weer te geven. Een symbool laag kan worden gebruikt in combi natie met een lijn om pictogrammen langs de lijn te bedekken. Het gebruik van een pijl pictogram is handig voor het weer geven van de stroom of richting van de regel.
     - Als er veelhoek gegevens worden weer gegeven, kan een patroon, zoals strepen, worden gebruikt als alternatief voor kleur. 
 - Sommige visualisaties, zoals Heatmaps, tegel lagen en afbeeldings lagen, zijn niet toegankelijk voor gebruikers met een visuele handicap. Enkele overwegingen:
-    - De scherm lezer beschrijven wat de laag wordt weer gegeven wanneer deze wordt toegevoegd aan de kaart. Als er bijvoorbeeld een weer gave-laag met het beeld diagram wordt weer gegeven, laat u de scherm lezer zien dat deze er ongeveer zo uitziet als ' weers radar gegevens op de kaart '.
+    - De scherm lezer beschrijven wat de laag wordt weer gegeven wanneer deze wordt toegevoegd aan de kaart. Als er bijvoorbeeld een weer gave laag met het radar diagram wordt weer gegeven, laat u de scherm lezer zien dat "weer radar gegevens op de kaart worden overlapt".
 - Beperk de hoeveelheid functionaliteit waarvoor een muis aanwijzer nodig is. Deze functionaliteit is niet toegankelijk voor gebruikers die een toetsen bord of aanraak apparaat gebruiken om te communiceren met uw toepassing. Houd er rekening mee dat het een goed idee is om een aanwijs stijl te hebben voor interactieve inhoud, zoals klikbaar pictogrammen, koppelingen en knoppen.
 - Probeer uw toepassing te navigeren met behulp van het toetsen bord. Zorg ervoor dat de volg orde van het tabblad logisch is.
 - Als u sneltoetsen wilt maken, probeert u het te beperken tot twee sleutels of minder. 

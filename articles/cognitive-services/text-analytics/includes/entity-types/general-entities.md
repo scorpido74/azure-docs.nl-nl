@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086891"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211413"
 ---
 ## <a name="general-entity-types"></a>Algemene entiteits typen:
 
@@ -22,7 +22,7 @@ ms.locfileid: "77086891"
 Herken namen van personen in de tekst.
 
 Talen:
-* Open bare Preview: `English`
+* Open bare Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` en `Turkish`
 
 | Naam subtype | Beschrijving                                                      | Beschikbaar vanaf model versie |
 |--------------|------------------------------------------------------------------|---------------------------------------|
@@ -44,12 +44,12 @@ Natuurlijke en door de mens gemaakte bezienswaardigheden, structuren, geografisc
 
 Talen:
 
-* Open bare Preview: `English`
+* Open bare Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` en `Turkish`
 
 | Naam subtype              | Beschrijving                                                                              | Beschikbaar vanaf model versie |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | N.v.t.                       | locaties, bijvoorbeeld `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitieke entiteit (GPE) | Steden, landen, statussen bijvoorbeeld `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
+| Geopolitieke entiteit (GPE)-alleen Engelstalig| Steden, landen, statussen bijvoorbeeld `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organisatie  
 
@@ -57,7 +57,7 @@ Erkende organisaties, ondernemingen, agentschappen en andere groepen personen. B
 
 Talen: 
 
-* Open bare Preview: `English`
+* Open bare Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` en `Turkish`
 
 | Naam subtype | Beschrijving                                                                                             | Beschikbaar vanaf model versie |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -156,7 +156,7 @@ Datum-en tijd entiteiten.
 
 Talen:
 
-* Open bare Preview: `English`
+* Open bare Preview: `Chinese-Simplified`, `English`, `French`, `German` en `Spanish`
 
 | Naam subtype    | Voorbeelden                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Cijfers en numerieke aantallen.
 
 Talen:
 
-* Open bare Preview: `English`
+* Open bare Preview: `Chinese-Simplified`, `English`, `French`, `German` en `Spanish`
 
 | Naam subtype    | Voorbeelden                     |
 |-------------|------------------------------|

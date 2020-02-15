@@ -1,19 +1,19 @@
 ---
 title: Gegevens ophalen van shapes op een kaart | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u shapegegevens kunt ophalen die op een kaart zijn getekend met behulp van de Microsoft Azure Maps Web SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63d947b85e75e3809445c5bc65577aeaed38caa1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988546"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209661"
 ---
 # <a name="get-shape-data"></a>Vormgegevens ophalen
 

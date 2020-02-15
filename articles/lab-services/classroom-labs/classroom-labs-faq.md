@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718027"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252056"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
@@ -46,6 +46,12 @@ De poorten zijn: 49152 – 65535. Klassikale Labs bevindt zich achter een load b
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welk openbaar IP-adres bereik moet ik openen in de firewall instellingen van mijn organisatie om verbinding te maken met virtuele lab-machines via RDP/SSH?
 Zie [Azure IP-adresbereiken en service tags (open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)), die het open bare IP-adres bereik voor data centers in Azure biedt. U kunt de IP-adressen openen voor de regio's waar uw Lab-accounts zich bevinden.
+
+## <a name="virtual-machine-images"></a>Installatie kopieën van virtuele machines
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Waarom kan ik bij het maken van een nieuw Lab geen extra afbeeldings opties in de vervolg keuzelijst voor installatie kopieën van virtuele machines inschakelen?
+
+Wanneer een beheerder u als een Lab-maker aan een Lab-account toevoegt, krijgt u de benodigde machtigingen voor het maken van Labs. Maar u beschikt niet over de machtigingen voor het bewerken van instellingen in het lab-account, met inbegrip van de lijst met ingeschakelde installatie kopieën van virtuele machines. Als u extra installatie kopieën wilt inschakelen, neemt u contact op met de beheerder van uw Lab-account om dit voor u te doen, of vraag de beheerder u als Inzender rol toe te voegen aan het lab-account. De rol Inzender geeft u de machtigingen om de lijst met installatie kopieën van virtuele machines te bewerken in het lab-account.
 
 ## <a name="users"></a>Gebruikers
 

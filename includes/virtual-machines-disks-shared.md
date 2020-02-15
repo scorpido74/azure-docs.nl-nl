@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202201"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211394"
 ---
 Gedeelde Azure-schijven (preview) is een nieuwe functie voor Azure Managed disks waarmee een Azure Managed Disk gelijktijdig kan worden gekoppeld aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure.
 
@@ -55,7 +55,7 @@ Linux-clusters kunnen gebruikmaken van cluster managers zoals [pacemaker](https:
 
 In het volgende diagram ziet u een voor beeld van een geclusterde database toepassing met twee knoop punten die gebruikmaakt van SCSI-PR om failover van het ene naar het andere knoop punt in te scha kelen.
 
-![Shared-Disk-Updated-Two-node-cluster-diagram. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![Cluster met twee knoop punten. Een toepassing die wordt uitgevoerd op het cluster, is bezig met het afhandelen van toegang tot de schijf](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 De stroom is als volgt:
 
@@ -68,7 +68,7 @@ De stroom is als volgt:
 
 Het volgende diagram illustreert een andere algemene geclusterde werk belasting die bestaat uit meerdere knoop punten die gegevens van de schijf lezen voor het uitvoeren van parallelle processen, zoals de training van machine learning modellen.
 
-![Shared-Disk-Updated-machine-learning-trainer-model. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![VM-cluster met vier knoop punten, elk knoop punt registreert intentie om te schrijven, de toepassing neemt exclusieve reserve ring voor het goed verwerken van schrijf resultaten](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 De stroom is als volgt:
 

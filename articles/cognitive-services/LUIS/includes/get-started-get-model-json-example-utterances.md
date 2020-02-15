@@ -5,19 +5,19 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.date: 10/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba400beb13d0bd4b29eee0c60617ec7ad128dd77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e879afdbd4c34e9d74405644de86421fb2cbab46
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503736"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279700"
 ---
-Het voor beeld uitingen volgt een specifieke indeling. 
+Het voor beeld uitingen volgt een specifieke indeling.
 
 Het veld `text` bevat de tekst van de voorbeeldutterance. Het veld `intentName` moet overeenkomen met de naam van een bestaande intentie in de LUIS-app. Het veld `entityLabels` is vereist. Als u niet alle entiteiten een label wilt geven, geeft u een lege matrix op.
 

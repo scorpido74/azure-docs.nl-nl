@@ -1,19 +1,19 @@
 ---
 title: Concepten van weer Services | Microsoft Azure kaarten
 description: In dit artikel vindt u informatie over de concepten die van toepassing zijn op Microsoft Azure kaarten weer Services.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991194"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208723"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
 
@@ -26,7 +26,7 @@ Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegev
 |Unit type|Beschrijving         |
 |--------|--------------------|
 |0       |meter                |
-|1       |Mm              |
+|1       |mm              |
 |2       |km               |
 |3       |millimeter          |
 |4       |x          |
@@ -54,7 +54,7 @@ Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegev
 
 Sommige van de weer service-Api's retour neren de `iconCode` in het antwoord. De `iconCode` is een numerieke waarde die wordt gebruikt om het pictogram te definiëren. U kunt niet rechtstreeks vanuit uw toepassingen een koppeling naar deze installatie kopieën maken, de Url's kunnen worden gewijzigd.
 
-| Pictogram nummer |Pictogram| Dag | 'S | Tekst |
+| Pictogram nummer |Pictogram| Day | 'S | Tekst |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Ja |  Nee    | Zon|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Ja |  Nee    | Grotendeels zonnig|
@@ -71,7 +71,7 @@ Sommige van de weer service-Api's retour neren de `iconCode` in het antwoord. De
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Ja |  Ja   | Thunderstorms|
 | 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Ja |  Nee    | Overwegend bewolkt met thunderstorms|
 | 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Ja |  Nee    | Deels zonnig met thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Ja |  Ja   | Regen|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Ja |  Ja   | Vloeiend|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Ja |  Ja   | Flurries|
 | 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Ja |  Nee    | Overwegend bewolkt met Flurries|
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Ja |  Nee    | Deels zonnig met Flurries|

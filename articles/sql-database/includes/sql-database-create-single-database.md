@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496167"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252110"
 ---
 In deze stap maakt u een Azure SQL Database afzonderlijke data base. 
 
@@ -29,14 +30,14 @@ Maak uw resource groep en één data base met behulp van de Azure Portal.
 
    ![Individuele database maken](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. Typ of selecteer de volgende waarden in het gedeelte **Project Details** van het tabblad **basis beginselen** :
+4. Typ of selecteer de volgende waarden in het gedeelte **Project Details** van het tabblad **basis beginselen** :
 
    - **Abonnement**: vervolg keuzelijst en selecteer het juiste abonnement als dit nog niet wordt weer gegeven.
    - **Resource groep**: Selecteer **nieuwe maken**, typ `myResourceGroup`en selecteer **OK**.
 
      ![Tabblad Nieuw SQL database-basis](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. Typ of selecteer de volgende waarden in de sectie **database Details** :
+5. Typ of selecteer de volgende waarden in de sectie **database Details** :
 
    - **Database naam**: Voer `mySampleDatabase`in.
    - **Server**: Selecteer **nieuwe maken**, voer de volgende waarden in en selecteer **selecteren**.
@@ -63,18 +64,22 @@ Maak uw resource groep en één data base met behulp van de Azure Portal.
      - U kunt desgewenst ook **configuratie wijzigen** selecteren om het genereren van de hardware te wijzigen.
    - Selecteer **Toepassen**.
 
-5. Selecteer het tabblad **extra instellingen** . 
-6. Selecteer in de sectie **gegevens bron** onder **bestaande gegevens gebruiken**de optie `Sample`.
+6. Selecteer het tabblad **netwerken** en beslis of u Azure- [**Services en-resources toegang wilt geven tot deze server**](../sql-database-networkaccess-overview.md)of een [persoonlijk eind punt](../../private-link/private-endpoint-overview.md)wilt toevoegen.
+
+   ![Tabblad netwerken](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. Selecteer het tabblad **extra instellingen** . 
+8. Selecteer in de sectie **gegevens bron** onder **bestaande gegevens gebruiken**de optie `Sample`.
 
    ![Aanvullende SQL data base-instellingen](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > Selecteer de gegevens uit **Voorbeeld (AdventureWorksLT)** zodat u deze en andere quickstarts voor Azure SQL Database gemakkelijk kunt volgen waarbij deze gegevens ook worden gebruikt.
 
-7. Laat de rest van de waarden als standaard staan en selecteer onder aan het formulier de optie **controleren + maken** .
-8. Controleer de laatste instellingen en selecteer **maken**.
+9. Laat de rest van de waarden als standaard staan en selecteer onder aan het formulier de optie **controleren + maken** .
+10. Controleer de laatste instellingen en selecteer **maken**.
 
-9. Selecteer in het **SQL Database**-formulier de optie **Maken** om de resourcegroep, server en database te implementeren en in te richten.
+11. Selecteer in het **SQL Database**-formulier de optie **Maken** om de resourcegroep, server en database te implementeren en in te richten.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -146,7 +151,7 @@ In dit gedeelte van het artikel worden de volgende Power shell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 
@@ -222,7 +227,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [AZ-account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Hiermee stelt u een abonnement in als het huidige actieve abonnement. | 
-| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de firewall regels van een server. | 
 | [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Hiermee maakt u een Data Base. | 
