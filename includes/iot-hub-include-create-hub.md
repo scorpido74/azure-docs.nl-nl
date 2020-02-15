@@ -5,19 +5,19 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 02/13/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93ce54262fe6dd38ef2ebc07d676608dae7cfff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bbdafde85097d0052edd5984b594fd37066dc1e6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968917"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279612"
 ---
 In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure-portal](https://portal.azure.com).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer in de Azure-start pagina de knop **+ een resource maken** en voer *IOT hub* in het veld **Marketplace doorzoeken** in.
 
@@ -35,7 +35,7 @@ In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Een hub maken in de Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics-vs2019.png)
+   ![Een hub maken in de Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
 1. Selecteer **volgende: grootte en schaal** om door te gaan met het maken van de hub.
 
@@ -48,10 +48,18 @@ In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure
     - **IoT Hub-eenheden**: het aantal toegestane berichten per eenheid is afhankelijk van de prijscategorie van uw hub. Als u bijvoorbeeld wilt dat de hub ingangs-en 700.000-berichten ondersteunt, kiest u twee laag eenheden van S1.
     Zie [De juiste laag kiezen voor uw IoT-hub](../articles/iot-hub/iot-hub-scaling.md) voor informatie over andere opties.
 
+    - **Azure Security Center**: Schakel dit in om een extra beveiligingslaag van dreigingen toe te voegen aan IOT en uw apparaten. Deze optie is niet beschikbaar voor hubs in de gratis laag. Zie [Azure Security Center voor IOT voor](https://docs.microsoft.com/azure/asc-for-iot/)meer informatie over deze functie.
+
     - **Geavanceerde instellingen** > **apparaat-naar-Cloud-partities**: met deze eigenschap worden de apparaat-naar-Cloud-berichten gekoppeld aan het aantal gelijktijdige lezers van de berichten. De meeste hubs hebben slechts vier partities nodig.
 
-1. Voor dit artikel accepteert u de standaard keuzes en selecteert u vervolgens **controleren + maken** om uw keuzes te controleren. U krijgt iets te zien wat lijkt op dit scherm.
+1. Voor dit artikel accepteert u de standaard keuzes en selecteert u **volgende: Tags** om naar het volgende scherm te gaan.
 
-   ![Informatie over het maken van de nieuwe hub bekijken](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
+    Labels zijn naam/waarde-paren. U kunt dezelfde tag toewijzen aan meerdere resources en resource groepen om resources te categoriseren en facturering te consolideren.
+
+   ![De grootte en schaal instellen voor een nieuwe hub met behulp van de Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+
+    Selecteer **volgende: controleren + maken** om uw keuzes te controleren. U krijgt iets te zien wat lijkt op dit scherm.
+
+   ![Informatie over het maken van de nieuwe hub bekijken](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
 1. Selecteer **maken** om uw nieuwe hub te maken. De hub wordt binnen enkele minuten gemaakt.

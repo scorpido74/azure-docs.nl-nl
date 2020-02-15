@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 3064211fe44a416a6288b86c977ed7e2337a7ccd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8fd7f23235dbd94ee8d20aa693ec5b659cb6d64d
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451627"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279713"
 ---
 Het beheer van bijdragen van mede werkers is afhankelijk van de huidige status van de app.
 
-**Voor [gemigreerde](../luis-migration-authoring.md) apps voor**het maken van een resource: _inzenders_ worden beheerd in de Azure portal voor de ontwerp bron, met behulp van de **toegangs beheer pagina (IAM)** . Voeg een gebruiker toe met behulp van het e-mail adres van de samen werker en de rol _Inzender_ . 
+**Voor [gemigreerde](../luis-migration-authoring.md) apps voor**het maken van een resource: _inzenders_ worden beheerd in de Azure portal voor de ontwerp bron, met behulp van de **toegangs beheer pagina (IAM)** . Voeg een gebruiker toe met behulp van het e-mail adres van de samen werker en de rol _Inzender_ .
 
-**Voor apps die nog niet zijn gemigreerd**: _alle mede_ werkers worden beheerd in de Luis-Portal op de pagina werk **nemers van de beheer >** van elke app. Voeg op deze pagina [het e-mail adres van een gebruiker toe](../luis-how-to-collaborate.md). Hiermee hebt u alleen toegang tot deze app. 
+**Voor apps die nog niet zijn gemigreerd**: _alle mede_ werkers worden beheerd in de Luis-Portal op de pagina werk **nemers van de beheer >** van elke app. Voeg op deze pagina [het e-mail adres van een gebruiker toe](../luis-how-to-collaborate.md). Hiermee hebt u alleen toegang tot deze app.
 
 
