@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191295"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366225"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -2304,7 +2304,7 @@ Deze lus-actie bevat acties die worden uitgevoerd tot de opgegeven voor waarde w
 | <*actie-type*> | Tekenreeks | Het actie type dat u wilt uitvoeren | 
 | <*actie-invoer*> | Sommige | De invoer voor de actie die moet worden uitgevoerd | 
 | <*voor waarde*> | Tekenreeks | De voor waarde of expressie die moet worden geëvalueerd nadat alle acties in de lus zijn uitgevoerd | 
-| <*loop-aantal*> | Geheel getal | De limiet voor het aantal lussen dat de actie kan worden uitgevoerd. De standaard waarde voor `count` is 60. | 
+| <*loop-aantal*> | Geheel getal | De limiet voor het aantal lussen dat de actie kan worden uitgevoerd. Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)voor meer informatie over de standaard limiet en maximum limiet. | 
 | <*loop time-out*> | Tekenreeks | De limiet voor het langste tijdstip waarop de lus kan worden uitgevoerd. De standaard waarde voor `timeout` is `PT1H`, de vereiste [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 

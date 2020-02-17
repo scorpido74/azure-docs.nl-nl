@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772773"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367278"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ Er zijn enkele dingen die u nodig hebt om virtuele Windows-Bureau bladen in te s
 
 We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg ervoor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor uw gebruikers beschikt op basis van het bureau blad en de apps die u wilt implementeren:
 
-|Besturingssysteem|Vereiste licentie|
+|OS|Vereiste licentie|
 |---|---|
 |Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
@@ -72,7 +72,7 @@ We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg
 
 Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Windows te ondersteunen:
 
-* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* Een [Azure Active Directory](/active-directory/)
 * Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. U kunt dit configureren met een van de volgende opties:
   * Azure AD Connect (voor hybride organisaties)
   * Azure AD Domain Services (voor hybride of Cloud organisaties)
@@ -80,7 +80,7 @@ Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Win
   
 De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Windows, moeten zijn:
 
-* [Standaard lid](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) van een domein of een [hybride AD-join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuele machines kunnen geen deel uitmaken van Azure AD.
+* [Standaard lid](../active-directory-domain-services/active-directory-ds-comparison.md) van een domein of een [hybride AD-join](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuele machines kunnen geen deel uitmaken van Azure AD.
 * Een van de volgende [ondersteunde installatie kopieën van het besturings systeem](#supported-virtual-machine-os-images)uitvoeren.
 
 >[!NOTE]

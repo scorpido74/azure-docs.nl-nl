@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169311"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368900"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure voor on-demand Red Hat Enterprise Linux-machines in Azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -27,6 +27,10 @@ Meer informatie over RHEL-installatie kopieën in azure, met inbegrip van public
 
 Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
 
+> [!IMPORTANT]
+> RHUI is alleen bedoeld voor PAYGO-installatie kopieën (betalen per gebruik). Voor aangepaste en industriële installatie kopieën, ook wel bekend als uw eigen abonnement (BYOS), moet het systeem aan RHSM of Satellite worden gekoppeld om updates te kunnen ontvangen. Zie het [artikel over Red Hat](https://access.redhat.com/solutions/253273) voor meer informatie.
+
+
 ## <a name="important-information-about-azure-rhui"></a>Belangrijke informatie over Azure RHUI
 
 * Azure RHUI is de update-infra structuur die ondersteuning biedt voor alle RHEL PAYG-Vm's die zijn gemaakt in Azure. Dit verhindert u niet dat u uw PAYG RHEL-Vm's kunt registreren met abonnements Manager of satelliet of andere bron van updates, maar wel met een PAYG-VM, resulteert dit in indirect dubbel facturering. Zie het volgende punt voor meer informatie.
@@ -35,6 +39,7 @@ Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u
 * RHEL SAP PAYG-installatie kopieën in azure (RHEL for SAP, RHEL for SAP HANA en RHEL for SAP Business Applications) zijn verbonden met toegewezen RHUI-kanalen die blijven gelden voor de specifieke RHEL-versie zoals vereist voor SAP-certificering.
 
 * Toegang tot door Azure gehoste RHUI is beperkt tot de virtuele machines binnen de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653). Als u via een proxy alle VM-verkeer via een on-premises netwerkinfrastructuur, moet u mogelijk voor het instellen van de gebruiker gedefinieerde routes voor de RHEL-betalen per gebruik virtuele machines voor toegang tot de Azure-RHUI. Als dat het geval is, moeten door de gebruiker gedefinieerde routes worden toegevoegd voor _alle_ RHUI IP-adressen.
+
 
 ## <a name="image-update-behavior"></a>Gedrag van installatie kopie-updates
 

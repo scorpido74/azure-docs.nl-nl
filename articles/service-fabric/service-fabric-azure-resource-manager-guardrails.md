@@ -5,14 +5,14 @@ services: service-fabric
 documentationcenter: .net
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426741"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368579"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric Guardrails 
 Bij het implementeren van een Service Fabric cluster worden Guardrails geplaatst, waardoor een Azure Resource Manager implementatie in het geval van een ongeldige cluster configuratie mislukt. In de volgende secties vindt u een overzicht van algemene problemen met de cluster configuratie en de stappen die nodig zijn om deze problemen te verhelpen. 
@@ -60,11 +60,26 @@ De volgende sectie bevat een voor beeld van een duurzaamheid die niet overeenkom
 * Duurzaamheid van de Schaalset van de virtuele machine komt niet overeen met het doel Service Fabric duurzaamheids niveau van het knooppunt type
 * De duurzaamheid van de virtuele-machine Schaalset komt overeen met het huidige Service Fabric duurzaamheids niveau of het doel type duurzaamheids niveau van het Service Fabric knooppunt 
 
-
 ### <a name="mitigation"></a>Oplossing
 Het oplossen van een niet-overeenkomend duurzaamheid, dat wordt aangegeven door een van de bovenstaande fout berichten:
 1. Werk het duurzaamheids niveau bij in de uitbrei ding voor de virtuele-machine Schaalset of het gedeelte Service Fabric knooppunt type van de Azure Resource Manager sjabloon om ervoor te zorgen dat de waarden overeenkomen.
 2. Implementeer de Azure Resource Manager sjabloon opnieuw met de bijgewerkte waarden.
+
+
+## <a name="seed-node-deletion"></a>Seed-knoop punt verwijderen 
+### <a name="overview"></a>Overzicht
+Een Service Fabric cluster heeft een eigenschap van een [betrouwbaarheids categorie](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) die wordt gebruikt om te bepalen hoeveel replica's van systeem services worden uitgevoerd op het primaire knooppunt type van het cluster. Het aantal vereiste replica's bepaalt het minimum aantal knoop punten dat moet worden onderhouden in het primaire knooppunt type van het cluster. Als het aantal knoop punten in het primaire knooppunt type onder het vereiste minimum voor de betrouwbaarheids categorie komt, wordt het cluster Insta Biel.  
+
+### <a name="error-messages"></a>Foutberichten 
+Er is een bewerking voor het verwijderen van een Seed-knoop punt gedetecteerd en deze wordt geweigerd. 
+* Deze bewerking zou ertoe leiden dat er maar {0} potentiële Seed-knoop punten in het cluster blijven, terwijl {1} mini maal nodig zijn.
+* Het verwijderen van {0} Seed-knoop punten van {1} zou leiden tot het cluster wegens verlies van het Seed-knooppunt quorum. Het maximum aantal Seed-knoop punten dat tegelijk kan worden verwijderd, is {2}.
+ 
+### <a name="mitigation"></a>Oplossing 
+Zorg ervoor dat het type van het primaire knoop punt voldoende Virtual Machines heeft voor de betrouw baarheid die is opgegeven op uw cluster. U kunt een virtuele machine niet verwijderen als hiermee de Schaalset voor virtuele machines onder het minimum aantal knoop punten voor de opgegeven betrouwbaarheids categorie wordt ingesteld.
+* Als de betrouwbaarheids laag correct is opgegeven, moet u ervoor zorgen dat u over voldoende knoop punten in het primaire knooppunt type beschikt als dat nodig is voor de betrouwbaarheids categorie. 
+* Als de betrouwbaarheids laag onjuist is, initieert u een wijziging op de Service Fabric resource om eerst het betrouwbaarheids niveau te verlagen voordat u bewerkingen voor de Schaalset van virtuele machines initieert, en wacht u totdat het is voltooid.
+* Als de betrouwbaarheids categorie brons is, volgt u deze [stappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) om uw cluster op de juiste wijze te schalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Een cluster maken op Vm's of computers met Windows Server: [service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md)

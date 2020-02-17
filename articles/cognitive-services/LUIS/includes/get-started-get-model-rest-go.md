@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: a153416a247ec3a38ec29e95b83fa919e765942b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 8d180eeffdbc41db6fa0e636daf7702faad47fcc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966646"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368410"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,8 +29,6 @@ ms.locfileid: "76966646"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>Model via een programma wijzigen
-
-Gebruik Go om een door de machine geleerde entiteits- [API](https://aka.ms/luis-apim-v3-authoring) aan de toepassing toe te voegen.
 
 1. Maak een nieuw bestand met de naam `predict.go`. Voeg de volgende code toe:
 

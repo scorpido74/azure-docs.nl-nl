@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025694"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367960"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory naadloze eenmalige aanmelding
 
@@ -36,7 +36,7 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 ![Naadloze eenmalige aanmelding](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Voor naadloze SSO moet het apparaat van de gebruiker **lid**zijn van een domein, maar moet het apparaat niet worden [toegevoegd aan Azure AD](../active-directory-azureadjoin-overview.md).
+>Voor naadloze SSO moet het apparaat van de gebruiker worden toegevoegd aan een **domein** , maar dit wordt niet gebruikt in [Azure AD join](../active-directory-azureadjoin-overview.md) of [Hybrid Azure AD joined] (.. /active-directory-azureadjoin-overview.md) apparaten. SSO PN Azure AD join en hybride Azure AD joined werken op basis van het [primaire vernieuwings token] (. /active-directory/devices/concept-primary-refresh-token.md)
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 

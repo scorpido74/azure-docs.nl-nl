@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: Servicelimieten
           href: search-limits-quotas-capacity.md
-        - name: De schaal van partities en replica's wijzigen
+        - name: Capaciteit aanpassen
           href: search-capacity-planning.md
-        - name: Implementatiestrategieën en best practices
+        - name: Schalen voor prestaties
           href: search-performance-optimization.md
         - name: Multitenant-architectuur
           href: search-modeling-multitenant-saas-applications.md

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121362"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367772"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -91,7 +91,7 @@ Houd er rekening mee dat de userPrincipalName voor een gast gebruiker vaak wordt
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtings cycli: begin en incrementeel
 
-Wanneer Azure AD het bron systeem is, gebruikt de inrichtings service de [differentiële query functie van de Azure AD-Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) om gebruikers en groepen te bewaken. De inrichtings service voert een eerste cyclus uit op het bron systeem en het doel systeem, gevolgd door periodieke incrementele cycli.
+Wanneer Azure AD het bron systeem is, gebruikt de inrichtings service de [query voor het bijhouden van wijzigingen in Microsoft Graph gegevens](https://docs.microsoft.com/graph/delta-query-overview) voor het bewaken van gebruikers en groepen. De inrichtings service voert een eerste cyclus uit op het bron systeem en het doel systeem, gevolgd door periodieke incrementele cycli.
 
 ### <a name="initial-cycle"></a>Eerste cyclus
 
@@ -142,8 +142,8 @@ Na de eerste cyclus zullen alle andere cycli:
 
 De inrichtings service blijft een incrementele cyclus van back-to-back uitvoeren, op intervallen die zijn gedefinieerd in de [zelf studie specifiek voor elke toepassing](../saas-apps/tutorial-list.md). Incrementele cycli worden voortgezet totdat een van de volgende gebeurtenissen zich voordoet:
 
-- De service wordt hand matig gestopt met de Azure Portal of met de juiste Graph API opdracht 
-- Er wordt een nieuwe eerste cyclus geactiveerd met de optie **wissen en opnieuw starten** in het Azure Portal, of met behulp van de juiste Graph API opdracht. Met deze actie wordt een opgeslagen water merk gewist en worden alle bron objecten opnieuw geëvalueerd.
+- De service wordt hand matig gestopt met de Azure Portal of met de juiste Microsoft Graph API-opdracht.
+- Er wordt een nieuwe eerste cyclus geactiveerd met de optie **wissen en opnieuw starten** in het Azure Portal, of met behulp van de juiste Microsoft Graph API-opdracht. Met deze actie wordt een opgeslagen water merk gewist en worden alle bron objecten opnieuw geëvalueerd.
 - Er wordt een nieuwe eerste cyclus geactiveerd als gevolg van een wijziging in kenmerk toewijzingen of filter bereik. Met deze actie wordt ook een opgeslagen water merk gewist en worden alle bron objecten opnieuw geëvalueerd.
 - Het inrichtings proces gaat in quarantaine (zie hieronder) als gevolg van een hoge fout frequentie en blijft meer dan vier weken in quarantaine. In dit geval wordt de service automatisch uitgeschakeld.
 

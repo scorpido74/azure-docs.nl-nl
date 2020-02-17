@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97954123b6fc31dce09282c08c702438cd64c476
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159247"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367899"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemen bij het aanmelden bij een galerie toepassing die is geconfigureerd voor federatieve eenmalige aanmelding
 
@@ -39,7 +39,7 @@ Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze s
 
 Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in azure AD.
 
-**Opgelost**
+**Afsluiting**
 
 Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
@@ -69,7 +69,7 @@ Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-w
 
 De `AssertionConsumerServiceURL`-waarde in de SAML-aanvraag komt niet overeen met de antwoord-URL-waarde of het patroon dat is geconfigureerd in azure AD. De `AssertionConsumerServiceURL`-waarde in de SAML-aanvraag is de URL die u in de fout ziet.
 
-**Opgelost**
+**Afsluiting**
 
 Zorg ervoor dat de `AssertionConsumerServiceURL` waarde in de SAML-aanvraag overeenkomt met de antwoord-URL-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
@@ -99,7 +99,7 @@ Nadat u de waarde voor de antwoord-URL in azure AD hebt bijgewerkt en deze overe
 
 De gebruiker heeft in Azure AD geen toegang gekregen tot de toepassing.
 
-**Opgelost**
+**Afsluiting**
 
 Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
@@ -148,7 +148,7 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die met de toepassing is
 -   Ontbrekende vereiste velden in de SAML-aanvraag
 -   Gecodeerde methode voor SAML-aanvraag
 
-**Opgelost**
+**Afsluiting**
 
 1. Leg de SAML-aanvraag vast. Volg de zelf studie voor het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md) voor meer informatie over het vastleggen van de SAML-aanvraag.
 
@@ -162,13 +162,13 @@ De leverancier van de toepassing moet valideren dat de Azure AD SAML-implementat
 
 ## <a name="misconfigured-application"></a>Onjuist geconfigureerde toepassing
 
-*Fout AADSTS650056: onjuist geconfigureerde toepassing. Dit kan een van de volgende oorzaken hebben: de client heeft geen machtigingen voor de ' AAD graph ' vermeld in de aangevraagde machtigingen in de registratie van de client toepassing. Of de beheerder heeft geen toestemming gegeven in de Tenant. Of Controleer de toepassings-id in de aanvraag om er zeker van te zijn dat deze overeenkomt met de geconfigureerde client toepassings-id. Neem contact op met uw beheerder om de configuratie of instemming namens de Tenant op te lossen.*
+*Fout AADSTS650056: onjuist geconfigureerde toepassing. Dit kan een van de volgende oorzaken hebben: de client heeft geen machtigingen vermeld in de aangevraagde machtigingen in de registratie van de client toepassing. Of de beheerder heeft geen toestemming gegeven in de Tenant. Of Controleer de toepassings-id in de aanvraag om er zeker van te zijn dat deze overeenkomt met de geconfigureerde client toepassings-id. Neem contact op met uw beheerder om de configuratie of instemming namens de Tenant op te lossen.*
 
 **Mogelijke oorzaak**
 
 Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in azure AD.
 
-**Opgelost**
+**Afsluiting**
 
 Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
 
@@ -197,7 +197,7 @@ Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-w
 
 Het toepassings object is beschadigd en het certificaat dat is geconfigureerd voor de toepassing wordt niet herkend door Azure AD.
 
-**Opgelost**
+**Afsluiting**
 
 Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken:
 
@@ -233,7 +233,7 @@ Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken
 
 Azure AD kan de SAML-aanvraag niet identificeren binnen de URL-para meters in de HTTP-aanvraag. Dit kan gebeuren als de toepassing geen gebruik maakt van een binding voor HTTP-omleiding bij het verzenden van de SAML-aanvraag naar Azure AD.
 
-**Opgelost**
+**Afsluiting**
 
 De toepassing moet de SAML-aanvraag die is gecodeerd naar de locatie header verzenden met behulp van binding van HTTP-omleiding. Lees de sectie over binding voor HTTP-omleidingen in het [specificatiedocument over het SAML-protocol](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -245,7 +245,7 @@ Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-UR
 
 Toen de toepassing werd toegevoegd als niet-galerie-app, is deze antwoord-URL in Azure Active Directory gemaakt als standaardwaarde. Dit gedrag is gewijzigd en deze URL wordt niet meer standaard toegevoegd in Azure Active Directory. 
 
-**Opgelost**
+**Afsluiting**
 
 Verwijder de ongebruikte antwoord-Url's die voor de toepassing zijn geconfigureerd.
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207193"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367817"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -112,7 +112,7 @@ Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst m
 - SalesForce
 - ServiceNow
 - Workday
-- Azure Active Directory ([standaard kenmerken van Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
+- Azure Active Directory ([Microsoft Graph rest API v 1.0-referentie](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) en aangepaste Directory-extensies worden ondersteund.)
 - Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643), waarbij kenmerken die zijn gedefinieerd in het [kern schema](https://tools.ietf.org/html/rfc7643) , moeten worden toegevoegd
 
 > [!NOTE]
@@ -133,7 +133,7 @@ Bij het bewerken van de lijst met ondersteunde kenmerken, worden de volgende eig
 - **Meerdere waarden?** -Of het kenmerk meerdere waarden ondersteunt.
 - **Wat is er precies?** -Of de kenmerken waarden in een hoofdletter gevoelige manier worden geëvalueerd.
 - **API-expressie** : gebruik deze, tenzij dit wordt gedaan door de documentatie voor een specifieke inrichtings connector (zoals workday).
-- **Object kenmerk waarnaar wordt verwezen** : als het een verwijzings type kenmerk is, kunt u in dit menu de tabel en het kenmerk selecteren in de doel toepassing die de waarde bevat die aan het kenmerk is gekoppeld. Als u bijvoorbeeld een kenmerk met de naam ' Department ' hebt waarvan de opgeslagen waarde verwijst naar een object in een afzonderlijke tabel ' departments ', selecteert u ' Departments.Name '. De referentie tabellen en de primaire ID-velden die worden ondersteund voor een bepaalde toepassing, zijn vooraf geconfigureerd en kunnen momenteel niet worden bewerkt met de Azure Portal, maar u kunt deze bewerken met behulp van de [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+- **Object kenmerk waarnaar wordt verwezen** : als het een verwijzings type kenmerk is, kunt u in dit menu de tabel en het kenmerk selecteren in de doel toepassing die de waarde bevat die aan het kenmerk is gekoppeld. Als u bijvoorbeeld een kenmerk met de naam ' Department ' hebt waarvan de opgeslagen waarde verwijst naar een object in een afzonderlijke tabel ' departments ', selecteert u ' Departments.Name '. De referentie tabellen en de primaire ID-velden die worden ondersteund voor een bepaalde toepassing, zijn vooraf geconfigureerd en kunnen momenteel niet worden bewerkt met de Azure Portal, maar u kunt deze bewerken met behulp van de [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Een aangepast uitbreidings kenmerk inrichten voor een SCIM-compatibele toepassing
 De SCIM-RFC definieert een kern gebruikers-en groeps schema, en biedt ook uitbrei dingen voor het schema om te voldoen aan de behoeften van uw toepassing. Een aangepast kenmerk toevoegen aan een SCIM-toepassing:

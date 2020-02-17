@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159162"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367879"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein
 
@@ -100,9 +100,7 @@ Beleids regels worden alleen van kracht voor een specifieke toepassing wanneer z
 
 Er kan slechts één HRD-beleid tegelijk actief zijn op een service-principal.  
 
-U kunt de Microsoft Azure Active Directory Graph-API rechtstreeks of de Azure Active Directory Power shell-cmdlets gebruiken om HRD-beleid te maken en te beheren.
-
-De Graph API die het beleid manipuleert, wordt beschreven in het artikel [bewerkingen op het beleid](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) op MSDN.
+U kunt de Azure Active Directory Power shell-cmdlets gebruiken om HRD-beleid te maken en te beheren.
 
 Hier volgt een voor beeld van een HRD-beleids definitie:
     
@@ -209,7 +207,7 @@ Als u het HRD-beleid wilt Toep assen nadat u het hebt gemaakt, kunt u dit toewij
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Stap 2: de Service-Principal zoeken waaraan het beleid moet worden toegewezen  
 U hebt de **ObjectID** nodig van de service-principals waaraan u het beleid wilt toewijzen. Er zijn verschillende manieren om de **ObjectID** van service-principals te vinden.    
 
-U kunt de portal gebruiken of u kunt een query uitvoeren op [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). U kunt ook naar het [hulp programma Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gaan en u aanmelden bij uw Azure ad-account om alle service-principals van uw organisatie weer te geven. 
+U kunt de portal gebruiken of u kunt een query uitvoeren op [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta). U kunt ook naar het [hulp programma Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gaan en u aanmelden bij uw Azure ad-account om alle service-principals van uw organisatie weer te geven. 
 
 Omdat u Power shell gebruikt, kunt u de volgende cmdlet gebruiken om de service-principals en hun Id's weer te geven.
 

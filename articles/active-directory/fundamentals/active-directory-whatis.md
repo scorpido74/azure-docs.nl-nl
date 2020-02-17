@@ -1,5 +1,5 @@
 ---
-title: Wat is Azure Active Directory? - Azure Active Directory | Microsoft Azure
+title: What is Azure Active Directory? (Engelstalig) - Azure Active Directory | Microsoft Azure
 description: Overzicht en conceptuele informatie over Azure Active Directory, waaronder terminologie, de beschik bare licenties en een lijst met bijbehorende functies met koppelingen voor meer informatie.
 services: active-directory
 author: msaburnley
@@ -11,14 +11,14 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897469"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368030"
 ---
-# <a name="what-is-azure-active-directory"></a>Wat is Azure Active Directory?
+# <a name="what-is-azure-active-directory"></a>What is Azure Active Directory? (Engelstalig)
 
 Azure Active Directory (Azure AD) is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft, waarmee uw werk nemers zich kunnen aanmelden en toegang hebben tot resources in:
 
@@ -65,7 +65,7 @@ Als u meer inzicht wilt krijgen in azure AD en de bijbehorende documentatie, rad
 
 |Term of concept|Beschrijving|
 |---------------|-----------|
-|Identity| Een ding dat kan worden geauthenticeerd. Een identiteit kan een gebruiker met een gebruikers naam en wacht woord zijn. Identiteiten omvatten ook toepassingen of andere servers waarvoor verificatie mogelijk is vereist via geheime sleutels of certificaten.|
+|Identiteit| Een ding dat kan worden geauthenticeerd. Een identiteit kan een gebruiker met een gebruikers naam en wacht woord zijn. Identiteiten omvatten ook toepassingen of andere servers waarvoor verificatie mogelijk is vereist via geheime sleutels of certificaten.|
 |Account| Een identiteit waaraan gegevens zijn gekoppeld. U kunt geen account zonder een identiteit hebben.|
 |Azure AD-account| Een identiteit die wordt gemaakt via Azure AD of een andere cloudservice van Microsoft, bijvoorbeeld Office 365. Identiteiten worden opgeslagen in Azure AD en zijn toegankelijk voor de cloudservice-abonnementen van de organisatie. Dit account wordt ook wel een werk- of schoolaccount genoemd.|
 |Azure-abonnement| Dit wordt gebruikt voor de betaling van Azure-cloudservices. U kunt zo veel abonnementen hebben als u wilt. Ze zijn gekoppeld aan uw creditcard.|
@@ -77,17 +77,17 @@ Als u meer inzicht wilt krijgen in azure AD en de bijbehorende documentatie, rad
 |Accountbeheerder|Deze rol van klassieke abonnementsbeheerder is conceptueel gezien de eigenaar facturering van een abonnement. Deze rol heeft toegang tot het [Azure-accountcentrum](https://account.azure.com/Subscriptions). Hier kunt u alle abonnementen van een account beheren. Zie voor meer informatie [klassieke abonnements beheerders rollen, functies op basis van op rollen gebaseerde toegangs beheer (RBAC) en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Servicebeheerder|Met deze klassieke abonnementsbeheerdersrol kunt u alle Azure-resources beheren, inclusief de toegang. Deze rol heeft dezelfde toegang als een gebruiker met de rol van eigenaar op abonnementsniveau. Zie [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Eigenaar|Met deze rol kunt u alle Azure-resources beheren, inclusief de toegang. Deze rol bouwt voort op een nieuwer autorisatiesysteem, het zogenaamde toegangsbeheer op basis van rollen (RBAC), waarmee uiterst gedetailleerd toegangsbeheer tot Azure-resources kan worden verkregen. Zie [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Globale Azure AD-beheerder|Deze beheerdersrol wordt automatisch toegewezen aan personen die de Azure AD-tenant hebben gemaakt. Globale beheerders kunnen alle beheer functies voor Azure AD en alle services die met Azure AD communiceren, zoals Exchange Online, share point online en Skype voor bedrijven online. Er kunnen meerdere globale beheerders zijn, maar alleen globale beheerders kunnen beheerdersrollen aan gebruikers toewijzen (inclusief het toewijzen van andere globale beheerders).<br><br>**Opmerking**<br>Deze beheerdersrol wordt in de Azure-portal globale beheerder genoemd, maar in Microsoft Graph API, Azure AD Graph API en Azure AD PowerShell krijgt deze de naam **bedrijfsbeheerder**.<br><br>Zie [Machtigingen van de rol beheerder in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) voor meer informatie over de verschillende beheerdersrollen.|
+|Globale Azure AD-beheerder|Deze beheerdersrol wordt automatisch toegewezen aan personen die de Azure AD-tenant hebben gemaakt. Globale beheerders kunnen alle beheer functies voor Azure AD en alle services die met Azure AD communiceren, zoals Exchange Online, share point online en Skype voor bedrijven online. Er kunnen meerdere globale beheerders zijn, maar alleen globale beheerders kunnen beheerdersrollen aan gebruikers toewijzen (inclusief het toewijzen van andere globale beheerders).<br><br>**Opmerking**<br>Deze beheerdersrol heet globale beheerder in de Azure Portal, maar wordt de **bedrijfs beheerder** genoemd in de Microsoft Graph-API en Azure AD Power shell.<br><br>Zie [Machtigingen van de rol beheerder in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) voor meer informatie over de verschillende beheerdersrollen.|
 |Microsoft-account (ook MSA genoemd)|Persoonlijke accounts die toegang verlenen tot uw consumentgerichte producten en cloudservices van Microsoft, bijvoorbeeld Outlook, OneDrive, Xbox LIVE en Office 365. Uw Microsoft-account wordt gemaakt en opgeslagen in het accountsysteem voor consumentidentiteiten van Microsoft, dat wordt beheerd door Microsoft.|
 
 ## <a name="which-features-work-in-azure-ad"></a>Welke functies werken in Azure AD?
 
 Nadat u uw Azure AD-licentie hebt gekozen, krijgt u toegang tot sommige of alle van de volgende functies voor uw organisatie:
 
-|Category|Beschrijving|
+|Categorie|Beschrijving|
 |-------|-----------|
 |Toepassingsbeheer|Beheer uw apps in de cloud of on-premises met de toepassingsproxy, eenmalige aanmelding, de portal My Apps (ook wel Toegangsvenster genoemd) en SaaS-apps (Software als een dienst). Zie [Beveiligde externe toegang bieden voor on-premises toepassingen](../manage-apps/application-proxy.md) en [Documentatie over toepassingsbeheer](../manage-apps/index.yml) voor meer informatie.|
-|Verificatie|In Azure Active Directory kunt u selfservice voor wachtwoordherstel, Multi-Factor Authentication, een aangepaste lijst met verboden wachtwoorden en slimme vergrendeling beheren. Zie [Documentatie voor Azure AD-verificatie](../authentication/index.yml) voor meer informatie.|
+|Authentication|In Azure Active Directory kunt u selfservice voor wachtwoordherstel, Multi-Factor Authentication, een aangepaste lijst met verboden wachtwoorden en slimme vergrendeling beheren. Zie [Documentatie voor Azure AD-verificatie](../authentication/index.yml) voor meer informatie.|
 |Business-to-business (B2B)|U beheert gastgebruikers en externe partners, terwijl u de controle houdt over uw eigen zakelijke gegevens. Zie [Documentatie over Azure Active Directory B2B](../b2b/index.yml) voor meer informatie.|
 |Business-to-customer (B2C)|U kunt aanpassen en controleren hoe uw gebruikers zich registreren, zich aanmelden en hun profielen beheren als ze uw apps gebruiken. Voor meer informatie raadpleegt u de [documentatie over Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Voorwaardelijke toegang|Beheer de toegang tot uw cloud-apps. Zie [Documentatie over voorwaardelijke toegang voor Azure AD](../conditional-access/index.yml) voor meer informatie.|
@@ -96,7 +96,7 @@ Nadat u uw Azure AD-licentie hebt gekozen, krijgt u toegang tot sommige of alle 
 |Domeinservices|Voeg virtuele Azure-machines toe aan een domein zonder gebruik te maken van domeincontrollers. Zie [Documentatie voor Azure AD Domain Services](../../active-directory-domain-services/index.yml) voor meer informatie.|
 |Zakelijke gebruikers|Beheer het toewijzen van licenties, de toegang tot apps en het instellen van gedelegeerden met behulp van groepen en beheerdersrollen. Zie [Documentatie voor Azure Active Directory-gebruikersbeheer](../users-groups-roles/index.yml) voor meer informatie.|
 |Hybride identiteit|Gebruik Azure Active Directory Connect en Connect Health om één gebruikersidentiteit te bieden voor verificatie en autorisatie van alle resources, ongeacht de locatie (cloud of on-premises). Zie [Documentatie voor hybride identiteit](../hybrid/index.yml) voor meer informatie.|
-|Identity Governance|Beheer de identiteit van uw organisatie via besturingselementen voor werknemers, zakelijke partners, leveranciers, service en app-toegang. U kunt ook toegangsbeoordelingen uitvoeren. Zie [Documentatie over Azure AD Identity Governance](../governance/identity-governance-overview.md) en [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md) voor meer informatie.|
+|Identiteitsbeheer|Beheer de identiteit van uw organisatie via besturingselementen voor werknemers, zakelijke partners, leveranciers, service en app-toegang. U kunt ook toegangsbeoordelingen uitvoeren. Zie [Documentatie over Azure AD Identity Governance](../governance/identity-governance-overview.md) en [Azure AD-toegangsbeoordelingen](../governance/access-reviews-overview.md) voor meer informatie.|
 |Identiteitsbeveiliging|Detecteer potentiële beveiligingsproblemen die de identiteiten van uw organisatie treffen; configureer beleid om te reageren op verdachte activiteiten en neem vervolgens gepaste actie om de problemen op te lossen. Zie [Azure AD-identiteitsbeveiliging](../identity-protection/index.yml) voor meer informatie.|
 |Beheerde identiteiten voor Azure-resources|Voorzie uw Azure-services van een automatisch beheerde identiteit in Azure AD die elke door Azure Ad ondersteunde verificatieservice kan verifiëren, inclusief Key Vault. Zie [Wat zijn beheerde identiteiten voor Azure-resources?](../managed-identities-azure-resources/overview.md) voor meer informatie.|
 |Privileged Identity Management (PIM)|Beheer, controleer en bewaak de toegang binnen uw organisatie. Deze functie omvat toegang tot resources in azure AD en Azure, en andere online services van micro soft, zoals Office 365 of intune. Zie [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml) voor meer informatie.|

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137973"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367635"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -28,7 +28,9 @@ Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit te identi
 
 ### <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
 
-Herkenning van benoemde entiteiten (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en deze te categoriseren in vooraf gedefinieerde klassen of typen. Bijvoorbeeld: personen, plaatsen en organisaties.
+Herkenning van benoemde entiteiten (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en ze te categoriseren in vooraf gedefinieerde klassen of typen zoals: persoon, locatie, gebeurtenis, product en organisatie.  
+
+Vanaf versie 3 kan deze functie van de Text Analytics-API ook persoonlijke en gevoelige gegevens typen identificeren, zoals het telefoon nummer, het sofi-nummer, het e-mail adres en het bankrekening nummer.  Het identificeren van deze entiteiten kan helpen bij het classificeren van gevoelige documenten en het redigeren van persoonlijke gegevens.
 
 ## <a name="named-entity-recognition-versions-and-features"></a>Erkennings versies en-functies voor benoemde eenheden
 
@@ -89,7 +91,7 @@ Entiteit koppelen
 | Aantal      | Rang telwoord       | ' 2e ', ' seconde '     |
 | Aantal      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
 | Aantal      | Valuta      | "$10,99"     |
-| Aantal      | Dimensielideigenschap     | "10 mijl", "40 cm"     |
+| Aantal      | Dimensie     | "10 mijl", "40 cm"     |
 | Aantal      | Temperatuur   | "32 graden"    |
 | DateTime      | N.v.t.\*         | "6:17.30 februari 4, 2012"      |
 | DateTime      | Date          | "Mei 2e, 2017", "05/02/2017"   |

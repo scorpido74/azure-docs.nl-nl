@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b40ea0339b564b97d17601415d1071bdc6a6e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443419"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367912"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -146,6 +146,8 @@ Nee. Azure AD-toepassingsproxy is ontworpen voor gebruik met Azure AD en voldoet
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>Werkt WebSocket ondersteuning voor andere toepassingen dan QlikSense?
 
 WebSocket-protocol ondersteuning is momenteel nog steeds beschikbaar in de open bare preview-versie en werkt mogelijk niet voor andere toepassingen. Sommige klanten hebben het gebruik van WebSocket-protocol met andere toepassingen gemende. Als u dergelijke scenario's test, zullen we uw resultaten graag horen. Stuur ons uw feedback op aadapfeedback@microsoft.com.
+
+Functies (gebeurtenis logboeken, Power shell en Extern bureaublad-services) in Windows-beheer centrum (WAC) of Extern bureaublad-webclient werken niet via Azure AD-toepassingsproxy.
 
 ## <a name="link-translation"></a>Conversie van koppelingen
 

@@ -3,19 +3,19 @@ title: Aan de slag met Custom Speech-Speech-Service
 titleSuffix: Azure Cognitive Services
 description: Custom Speech is een set online-hulpprogram ma's waarmee u de nauw keurigheid van spraak naar tekst voor uw toepassingen, hulpprogram ma's en producten kunt evalueren en verbeteren. Alles wat u nodig hebt om aan de slag te gaan zijn een aantal test audio bestanden. Volg de onderstaande koppelingen om aan de slag te gaan met het maken van een aangepaste spraak-naar-tekst-ervaring.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806008"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368329"
 ---
 # <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
@@ -60,6 +60,9 @@ Zodra u een Azure-account en een spraak service-abonnement hebt gemaakt, moet u 
 Inhoud, zoals gegevens, modellen, testen en eind punten, zijn ingedeeld in **projecten** in de [Custom speech Portal](https://speech.microsoft.com/customspeech). Elk project is specifiek voor een domein en land/taal. U kunt bijvoorbeeld een project maken voor call centers die Engels gebruiken in de Verenigde Staten.
 
 Als u uw eerste project wilt maken, selecteert u spraak **naar tekst/aangepaste spraak**en klikt u vervolgens op **Nieuw project**. Volg de instructies in de wizard om het project te maken. Nadat u een project hebt gemaakt, ziet u vier tabbladen: **gegevens**, **testen**, **training**en **implementatie**. Gebruik de koppelingen in de [volgende stappen](#next-steps) voor meer informatie over het gebruik van elk tabblad.
+
+> [!IMPORTANT]
+> De [Custom speech Portal](https://aka.ms/custom-speech) is onlangs bijgewerkt. Als u eerdere projecten hebt gemaakt met gegevens, modellen, tests en gepubliceerde eind punten in de CRI'S-portal of met Api's, moet u een nieuw project maken in de nieuwe portal om verbinding te laten maken met deze oude entiteiten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

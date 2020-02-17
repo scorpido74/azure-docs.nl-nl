@@ -1,6 +1,6 @@
 ---
-title: Uw inrichtings configuratie exporteren of importeren met behulp van Graph API | Microsoft Docs
-description: Meer informatie over het exporteren en importeren van inrichtings configuratie met behulp van Graph API.
+title: Uw inrichtings configuratie exporteren of importeren met behulp van de API voor Microsoft Graph | Microsoft Docs
+description: Meer informatie over het exporteren en importeren van inrichtings configuratie met behulp van de Microsoft Graph-API.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066614"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367791"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Uw inrichtings configuratie exporteren of importeren met behulp van Graph API
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Uw inrichtings configuratie exporteren of importeren met behulp van de Microsoft Graph-API
 
-U kunt Microsoft Graph-API en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD. U kunt ook de stappen die hier zijn vastgelegd, gebruiken om een back-up van uw inrichtings configuratie te maken. 
+U kunt de Microsoft Graph-API en de Microsoft Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD. U kunt ook de stappen die hier zijn vastgelegd, gebruiken om een back-up van uw inrichtings configuratie te maken. 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: de principal-ID van uw inrichtings App Service ophalen (object-ID)
 
 1. Start de [Azure Portal](https://portal.azure.com)en navigeer naar de sectie eigenschappen van uw inrichtings toepassing. Bijvoorbeeld, als u uw werkdag wilt exporteren *naar AD User Provisioning toepassings* toewijzing, navigeert u naar de sectie eigenschappen van de app. 
-1. In de sectie eigenschappen van uw inrichtings app kopieert u de GUID-waarde die is gekoppeld aan het veld *object-id* . Deze waarde wordt ook wel de **ServicePrincipalId** van uw app genoemd en wordt gebruikt in Graph Explorer-bewerkingen.
+1. In de sectie eigenschappen van uw inrichtings app kopieert u de GUID-waarde die is gekoppeld aan het veld *object-id* . Deze waarde wordt ook wel de **ServicePrincipalId** van uw app genoemd en wordt gebruikt in Microsoft Graph Explorer-bewerkingen.
 
    ![App Service Principal-ID van workday](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ U kunt Microsoft Graph-API en Graph Explorer gebruiken om de kenmerk toewijzinge
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) starten
 1. Klik op de knop Aanmelden met micro soft en meld u aan met Azure AD Global admin of de referenties van de app-beheerder.
 
-    ![Graph-aanmelding](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Microsoft Graph aanmelden](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. Wanneer de aanmelding is geslaagd, worden de gegevens van het gebruikers account in het linkerdeel venster weer gegeven.
 
