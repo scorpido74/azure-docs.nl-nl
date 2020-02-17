@@ -119,12 +119,22 @@
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Voorbeelden
   items:
-    - name: Codevoorbeeld voor de API voor facturen
-      href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-    - name: Codevoorbeeld voor de API voor gebruik
-      href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-    - name: Codevoorbeeld voor de RateCard API
-      href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+    - name: REST-API
+      items:
+        - name: Enterprise-kosten beoordelen
+          href: review-enterprise-billing.md
+        - name: Abonnementsgebruik beoordelen
+          href: review-subscription-billing.md
+        - name: Resourcegebruik bekijken
+          href: review-service-usage-api.md
+    - name: .NET-voorbeelden
+      items:
+        - name: Codevoorbeeld voor de API voor facturen
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Codevoorbeeld voor de API voor gebruik
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: Codevoorbeeld voor de RateCard API
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Naslaginformatie
   items:
     - name: Automatiseringsscenario's voor facturering
