@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0db1ffe46165d91148b6980abbf89d03340e646e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8065be841b18fa0f8706a3bea3739ee2cb013323
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486688"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367598"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren
 
@@ -27,7 +27,7 @@ Automatische toewijzing is het standaard toewijzings type voor nieuwe Personal D
 
 Als u gebruikers automatisch wilt toewijzen, moet u ze eerst toewijzen aan de groep persoonlijke bureau blad-hosts zodat ze het bureau blad in hun feed kunnen zien. Wanneer een toegewezen gebruiker het bureau blad start in hun feed, claimt deze een beschik bare sessiehost als ze nog niet zijn verbonden met de hostgroep, waardoor het toewijzings proces wordt voltooid.
 
-Voordat u begint, moet u [de Power shell-module van Windows virtueel bureau blad downloaden en importeren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) als u dat nog niet hebt gedaan. 
+Voordat u begint, moet u [de Power shell-module van Windows virtueel bureau blad downloaden en importeren](/powershell/windows-virtual-desktop/overview/) als u dat nog niet hebt gedaan. 
 
 > [!NOTE]
 > Zorg ervoor dat u de Windows Virtual Desktop Power shell-module versie 1.0.1534.2001 of hoger hebt geïnstalleerd voordat u deze instructies volgt.

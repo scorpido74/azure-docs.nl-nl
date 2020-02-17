@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608605"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368097"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
 
@@ -65,7 +65,7 @@ Ja. U kunt een beleid voor voorwaardelijke toegang maken waarmee wordt voor kome
 3. Selecteer onder **beheren**de optie **beveiliging**.
 4. Onder **beveiligen**selecteert u **voorwaardelijke toegang**. Selecteer **Nieuw beleid**.
 5. Voer op de pagina **Nieuw** in het tekstvak **naam** een naam in voor het beleid (bijvoorbeeld ' gasten blok keren voor toegang tot de portal ').
-6. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
+6. Onder **toewijzingen**selecteert u **gebruikers en groepen**.
 7. Klik op het tabblad **include** op **gebruikers en groepen selecteren**en selecteer vervolgens **alle gast en externe gebruikers (preview-versie)** .
 9. Selecteer **Done**.
 10. Selecteer op de pagina **Nieuw** in de sectie **toewijzingen** de optie **Cloud-apps of-acties**.
@@ -97,7 +97,7 @@ Azure AD heeft een vaste set tekens, wachtwoord sterkte en account vergrendeling
 Voor federatieve accounts is wachtwoord beleid afhankelijk van het beleid dat wordt toegepast op de on-premises pacht en de Microsoft-account-instellingen van de gebruiker.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Een organisatie wil mogelijk verschillende ervaringen hebben in hun toepassingen voor Tenant gebruikers en gast gebruikers. Zijn er standaard richtlijnen voor dit? Is de aanwezigheid van de ID-provider claim het juiste model om te gebruiken?
-Een gast gebruiker kan een id-provider gebruiken voor verificatie. Zie [Eigenschappen van een B2B-samenwerkings gebruiker](user-properties.md)voor meer informatie. Gebruik de eigenschap **User type** om de gebruikers ervaring te bepalen. De claim **User type** is momenteel niet opgenomen in het token. Toepassingen moeten de Graph API gebruiken om de map op te vragen voor de gebruiker en om de User type op te halen.
+Een gast gebruiker kan een id-provider gebruiken voor verificatie. Zie [Eigenschappen van een B2B-samenwerkings gebruiker](user-properties.md)voor meer informatie. Gebruik de eigenschap **User type** om de gebruikers ervaring te bepalen. De claim **User type** is momenteel niet opgenomen in het token. Toepassingen moeten de Microsoft Graph-API gebruiken om de map op te vragen voor de gebruiker en om de User type op te halen.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Waar kan ik een community voor B2B-samen werking vinden om oplossingen te delen en ideeën te verzenden?
 U luistert voortdurend naar uw feedback om B2B-samen werking te verbeteren. Deel uw gebruikers scenario's, aanbevolen procedures en wat u graag hebt over Azure AD B2B-samen werking. Word lid van de discussie in de [micro soft tech-Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).

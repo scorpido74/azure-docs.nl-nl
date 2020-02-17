@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965732"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367212"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -53,7 +53,7 @@ Voor beeld van onbewerkte fout:
 
 **Oorzaak:** De gebruiker die zich heeft aangemeld, is niet toegewezen aan de TenantCreator-rol in hun Azure Active Directory.
 
-**Oplossen:** Volg de instructies in [De toepassingsrol van de TenantCreator toewijzen aan een gebruiker in uw Azure Active Directory-Tenant](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Nadat u de instructies hebt gevolgd, hebt u een gebruiker toegewezen aan de TenantCreator-rol.
+**Oplossen:** Volg de instructies in [De toepassingsrol van de TenantCreator toewijzen aan een gebruiker in uw Azure Active Directory-Tenant](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role). Nadat u de instructies hebt gevolgd, hebt u een gebruiker toegewezen aan de TenantCreator-rol.
 
 ![Scherm opname van TenantCreator rol toegewezen.](media/TenantCreatorRoleAssigned.png)
 
@@ -113,9 +113,9 @@ Als uw bewerkings sjabloon de quotum limiet overschrijdt, kunt u een van de volg
 
 Volg deze instructies voor het oplossen van problemen met mislukte implementaties van Azure Resource Manager sjablonen en Power shell DSC.
 
-1. Bekijk fouten in de implementatie met behulp [van de weer gave-implementatie bewerkingen met Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
-2. Als er geen fouten in de implementatie zijn, controleert u de fouten in het activiteiten logboek met behulp van [activiteiten logboeken weer geven om acties op resources te controleren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-3. Wanneer de fout is geïdentificeerd, gebruikt u het fout bericht en de resources in [problemen met veelvoorkomende Azure-implementatie fouten oplossen met Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) om het probleem op te lossen.
+1. Bekijk fouten in de implementatie met behulp [van de weer gave-implementatie bewerkingen met Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-operations.md).
+2. Als er geen fouten in de implementatie zijn, controleert u de fouten in het activiteiten logboek met behulp van [activiteiten logboeken weer geven om acties op resources te controleren](../azure-resource-manager/resource-group-audit.md).
+3. Wanneer de fout is geïdentificeerd, gebruikt u het fout bericht en de resources in [problemen met veelvoorkomende Azure-implementatie fouten oplossen met Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) om het probleem op te lossen.
 4. Verwijder alle resources die tijdens de vorige implementatie zijn gemaakt en probeer de sjabloon opnieuw te implementeren.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fout: de implementatie is mislukt....\<hostname >/JoinDomain
@@ -368,7 +368,7 @@ Als u de GitHub-Azure Resource Manager sjabloon uitvoert, geeft u waarden op voo
 
 - Tenant beheerder user principal name (UPN) of toepassings-ID: de toepassings-id van de nieuwe service-principal die u hebt gemaakt
 - Wacht woord voor Tenant beheerder: het wachtwoord geheim dat u hebt gegenereerd voor de Service-Principal
-- IsServicePrincipal: **true**
+- IsServicePrincipal: **True**
 - AadTenantId: de Azure AD-Tenant-ID van de service-principal die u hebt gemaakt
 
 ## <a name="next-steps"></a>Volgende stappen

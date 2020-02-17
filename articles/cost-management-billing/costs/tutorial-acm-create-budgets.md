@@ -1,21 +1,20 @@
 ---
 title: 'Zelfstudie: Azure-budgetten maken en beheren | Microsoft Docs'
 description: Deze zelfstudie helpt u bij het plannen en verantwoorden van de kosten van Azure-Services die u gebruikt.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769831"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132104"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
@@ -34,6 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een budget maken in de Azure-portal
+> * Budgetten maken en bewerken met PowerShell
 > * Een budget bewerken
 
 ## <a name="prerequisites"></a>Vereisten
@@ -62,7 +62,7 @@ Als u een budget wilt maken of bekijken, opent u het gewenste bereik in de Azure
 
 Nadat u budgetten hebt gemaakt, wordt er een eenvoudig overzicht van uw huidige uitgaven versus uw budgetten weergegeven.
 
-Klik op **Add**.
+Selecteer **Toevoegen**.
 
 ![Voorbeeld van een lijst met budgetten die al zijn gemaakt](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,7 +78,11 @@ Op basis van de velden die tot dusver in het budget zijn gekozen, wordt een graf
 
 ![Voorbeeld van het maken van een budget met maandelijkse kostengegevens ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Nadat u het budgetbedrag hebt geconfigureerd, klikt u op **Volgende** om budgetwaarschuwingen te configureren. Voor budgetten is ten minste één kostendrempel (% van budget) en een bijbehorend e-mailadres vereist. U kunt maximaal vijf drempels en vijf e-mailadressen in één budget opnemen. Wanneer een budgetdrempel wordt bereikt, worden de bijbehorende e-mailmeldingen doorgaans binnen 20 uur ontvangen. Zie [Use cost alerts](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) (Kostenwaarschuwingen gebruiken) voor meer informatie over meldingen. In het onderstaande voorbeeld wordt er een e-mailwaarschuwing gegenereerd wanneer 90% van het budget is besteed. Als u een budget maakt met de budget-API, kunt u ook rollen aan personen toewijzen voor het ontvangen van waarschuwingen. Het toewijzen van rollen aan personen wordt niet ondersteund in de Azure-portal. Zie [Budgets API ](/rest/api/consumption/budgets) voor meer informatie over de budget-API van Azure.
+Nadat u het budgetbedrag hebt geconfigureerd, selecteert u **Volgende** om budgetwaarschuwingen te configureren. Voor budgetten is ten minste één kostendrempel (% van budget) en een bijbehorend e-mailadres vereist. U kunt maximaal vijf drempels en vijf e-mailadressen in één budget opnemen. Wanneer een budgetdrempel wordt bereikt, worden de bijbehorende e-mailmeldingen doorgaans binnen 20 uur ontvangen.
+
+Als u e-mailberichten wilt ontvangen, voegt u azure-noreply@microsoft.com toe aan uw lijst met goedgekeurde afzenders zodat e-mails niet naar uw map voor ongewenste e-mail worden verzonden. Zie [Use cost alerts](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md) (Kostenwaarschuwingen gebruiken) voor meer informatie over meldingen.
+
+In het onderstaande voorbeeld wordt er een e-mailwaarschuwing gegenereerd wanneer 90% van het budget is besteed. Als u een budget maakt met de budget-API, kunt u ook rollen aan personen toewijzen voor het ontvangen van waarschuwingen. Het toewijzen van rollen aan personen wordt niet ondersteund in de Azure-portal. Zie [Budgets API ](/rest/api/consumption/budgets) voor meer informatie over de budget-API van Azure.
 
 ![Voorbeeld van waarschuwingsvoorwaarden](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -86,7 +90,7 @@ Nadat u een budget hebt gemaakt, wordt het weergegeven in de kostenanalyse. Het 
 
 ![Voorbeeld van budget en uitgaven in kostenanalyse](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-In het voorgaande voorbeeld hebt u een budget voor een abonnement gemaakt. U kunt echter ook een budget voor een resourcegroep maken. Als u een budget voor een resourcegroep wilt maken, gaat u naar **Cost Management + facturering** &gt; **Abonnementen** &gt; een abonnement selecteren > **Resourcegroepen** > een resourcegroep selecteren > **Budgetten** > en kunt u vervolgens een budget **toevoegen**.
+In het voorgaande voorbeeld hebt u een budget voor een abonnement gemaakt. U kunt ook een budget voor een resourcegroep maken. Als u een budget voor een resourcegroep wilt maken, gaat u naar **Cost Management + facturering** &gt; **Abonnementen** &gt; een abonnement selecteren > **Resourcegroepen** > een resourcegroep selecteren > **Budgetten** > en kunt u vervolgens een budget **toevoegen**.
 
 ## <a name="costs-in-budget-evaluations"></a>Kosten in budgetevaluaties
 
@@ -106,12 +110,12 @@ Wanneer u een budget voor het bereik van een abonnement of resourcegroep maakt o
 
 
 
-Als u actiegroepen wilt maken of bijwerken, klikt u op **Actiegroepen beheren** tijdens het maken of bewerken van een budget.
+Als u actiegroepen wilt maken of bijwerken, selecteert u **Actiegroepen beheren** tijdens het maken of bewerken van een budget.
 
 ![Voorbeeld van het maken van een budget voor het weergeven van Actiegroepen beheren](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-Klik vervolgens op **Actiegroep toevoegen** en maak de actiegroep.
+Selecteer vervolgens **Actiegroep toevoegen** en maak de actiegroep.
 
 
 ![Afbeelding van het vak Actiegroep toevoegen](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ In het volgende voorbeeld zijn budgetdrempels ingesteld op 50%, 75% en 100%. Elk
 
 Budgetintegratie met actiegroepen werkt alleen voor actiegroepen waarvoor het algemene waarschuwingsschema is uitgeschakeld. Zie [Hoe kan ik het algemene waarschuwingsschema inschakelen?](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) voor meer informatie over het uitschakelen van het schema.
 
+## <a name="create-and-edit-budgets-with-powershell"></a>Budgetten maken en bewerken met PowerShell
+
+EA-klanten kunnen met de Azure PowerShell-module budgetten maken en bewerken.  Als u de meest recente versie van Azure PowerShell wilt downloaden, voert u de volgende opdracht uit:
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+Met de volgende voorbeeldopdrachten wordt een budget gemaakt.
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een budget maken in de Azure-portal
+> * Budgetten maken en bewerken met PowerShell
 > * Een budget bewerken
 
 Ga door naar de volgende zelfstudie voor het maken van een terugkerende export voor uw kostenbeheergegevens.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515102"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367127"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
@@ -28,7 +28,7 @@ Hoeveel interactieve sessies tegelijk actief kunnen zijn, is afhankelijk van de 
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Waarom rapporteert mijn toepassing Windows 10 Enter prise multi-session als een server besturingssysteem?
 
-Windows 10 Enter prise multi-session is een virtuele editie van Windows 10 Enter prise. Een van de verschillen is dat dit besturings systeem (OS) de [product type](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) rapporteert als een waarde van 3, dezelfde waarde als Windows Server. Met deze eigenschap blijft het besturings systeem compatibel met bestaande hulpprogram ma's voor het uitvoeren van RDSH-beheer, toepassingen met meerdere sessies op basis van RDSH en voornamelijk systeem prestatie optimalisaties op laag niveau voor RDSH-omgevingen. Sommige installatie Programma's van toepassingen kunnen de installatie van Windows 10 multi-session blok keren, afhankelijk van of ze de product type detecteren, is ingesteld op client. Als uw app niet kan worden geïnstalleerd, neemt u contact op met de leverancier van de toepassing voor een bijgewerkte versie. 
+Windows 10 Enter prise multi-session is een virtuele editie van Windows 10 Enter prise. Een van de verschillen is dat dit besturings systeem (OS) de [product type](/windows/desktop/cimwin32prov/win32-operatingsystem/) rapporteert als een waarde van 3, dezelfde waarde als Windows Server. Met deze eigenschap blijft het besturings systeem compatibel met bestaande hulpprogram ma's voor het uitvoeren van RDSH-beheer, toepassingen met meerdere sessies op basis van RDSH en voornamelijk systeem prestatie optimalisaties op laag niveau voor RDSH-omgevingen. Sommige installatie Programma's van toepassingen kunnen de installatie van Windows 10 multi-session blok keren, afhankelijk van of ze de product type detecteren, is ingesteld op client. Als uw app niet kan worden geïnstalleerd, neemt u contact op met de leverancier van de toepassing voor een bijgewerkte versie. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Kan ik on-premises Windows 10 Enter prise multi-session uitvoeren?
 
@@ -48,7 +48,7 @@ U kunt elk ondersteund configuratie programma gebruiken, maar we raden Configura
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Kan Windows 10 Enter prise Multi-Session worden Azure Active Directory (AD)-gekoppeld?
 
-Windows 10 Enter prise multi-session wordt momenteel ondersteund als hybride Azure AD-join. Nadat Windows 10 Enter prise multi-session is toegevoegd aan een domein, gebruikt u het bestaande groepsbeleid-object om Azure AD-registratie in te scha kelen. Zie voor meer informatie [de implementatie van hybride Azure Active Directory-deelname plannen](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
+Windows 10 Enter prise multi-session wordt momenteel ondersteund als hybride Azure AD-join. Nadat Windows 10 Enter prise multi-session is toegevoegd aan een domein, gebruikt u het bestaande groepsbeleid-object om Azure AD-registratie in te scha kelen. Zie voor meer informatie [de implementatie van hybride Azure Active Directory-deelname plannen](../active-directory/devices/hybrid-azuread-join-plan.md).
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Waar vind ik de Windows 10 Enter prise-installatie kopie voor meerdere sessies?
 

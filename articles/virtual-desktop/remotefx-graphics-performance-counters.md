@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607464"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367233"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Problemen met grafische prestaties in Extern bureaublad diagnosticeren
 
@@ -69,9 +69,9 @@ Een hoge waarde voor een van de overgeslagen frames/seconde tellers impliceert d
 
 Als het item uitvoer frames/seconde overeenkomt met het item invoer frames per seconde, maar u nog steeds ongebruikelijk vertraging of Stallion ondervindt, kan de gemiddelde coderings tijd de culprit zijn. Encoding is een synchroon proces dat op de server plaatsvindt in het scenario met één sessie en op de virtuele machine in het scenario met meerdere sessies. De gemiddelde coderings tijd moet minder dan 33 MS zijn. Als de gemiddelde coderings tijd minder is dan 33 MS, maar u nog steeds prestatie problemen ondervindt, is er mogelijk een probleem met de app of het besturings systeem dat u gebruikt.
 
-Zie voor meer informatie over het vaststellen van problemen met betrekking tot een app de [prestatie meter items voor gebruikers invoer vertraging](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+Zie voor meer informatie over het vaststellen van problemen met betrekking tot een app de [prestatie meter items voor gebruikers invoer vertraging](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-Omdat RDP een gemiddelde coderings tijd van 33 MS ondersteunt, wordt een invoer frame frequentie van Maxi maal 30 frames per seconde ondersteund. Houd er rekening mee dat 33 MS de Maxi maal ondersteunde frame frequentie is. In veel gevallen is de frame frequentie die de gebruiker heeft ervaren lager, afhankelijk van hoe vaak een frame aan RDP door de bron wordt door gegeven. Taken zoals het bekijken van een video vereisen bijvoorbeeld een volledige invoer frame frequentie van 30 frames per seconde, maar minder computerintensieve taken zoals het niet regel matig bewerken van een document resulteren in een veel lagere waarde voor invoer frames per seconde zonder degradatie in de gebruikers kwaliteit van de ervaring.
+Omdat RDP een gemiddelde coderings tijd van 33 MS ondersteunt, wordt een invoer frame frequentie van Maxi maal 30 frames per seconde ondersteund. Houd er rekening mee dat 33 MS de Maxi maal ondersteunde frame frequentie is. In veel gevallen is de frame frequentie die de gebruiker heeft ervaren lager, afhankelijk van hoe vaak een frame aan RDP door de bron wordt door gegeven. Taken zoals het bekijken van een video vereisen bijvoorbeeld een volledige invoer frame frequentie van 30 frames/seconde, maar minder computerintensieve taken zoals het niet regel matig bewerken van een document resulteren in een veel lagere waarde voor invoer frames per seconde zonder degradatie in de ervaring van de gebruiker.
 
 ### <a name="addressing-poor-frame-quality"></a>Slechte frame kwaliteit aanpakken
 
@@ -101,6 +101,6 @@ Als client bronnen het knel punt veroorzaken, kunt u een van de volgende benader
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Configure graphics processing unit (GPU) Acceleration (Engelstalig) voor virtuele Windows-desktop omgevingen](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)om een door GPU geoptimaliseerde virtuele Azure-machine te maken.
-- Zie [probleemoplossings overzicht, feedback en ondersteuning](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)voor een overzicht van het oplossen van problemen en escalatie sporen.
-- Zie [Windows Desktop Environment](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)(Engelstalig) voor meer informatie over de service.
+- Zie [Configure graphics processing unit (GPU) Acceleration (Engelstalig) voor virtuele Windows-desktop omgevingen](configure-vm-gpu.md)om een door GPU geoptimaliseerde virtuele Azure-machine te maken.
+- Zie [probleemoplossings overzicht, feedback en ondersteuning](troubleshoot-set-up-overview.md)voor een overzicht van het oplossen van problemen en escalatie sporen.
+- Zie [Windows Desktop Environment](environment-setup.md)(Engelstalig) voor meer informatie over de service.

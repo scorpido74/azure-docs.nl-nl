@@ -3,17 +3,17 @@ title: Migreren van on-premises HDFS-opslag naar Azure Storage met Azure Data Bo
 description: Gegevens migreren van een on-premises HDFS-opslag naar Azure Storage
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990960"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368672"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migreren van on-premises HDFS-opslag naar Azure Storage met Azure Data Box
 
@@ -25,19 +25,19 @@ Dit artikel helpt u bij het uitvoeren van deze taken:
 > * Bereid u voor op het migreren van uw gegevens.
 > * Kopieer uw gegevens naar een Data Box of een Data Box Heavy apparaat.
 > * Verzend het apparaat terug naar micro soft.
-> * Verplaats de gegevens naar Data Lake Storage Gen2.
+> * Toegangs machtigingen voor bestanden en mappen Toep assen (alleen Data Lake Storage Gen2)
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt deze dingen nodig om de migratie te volt ooien.
 
-* Twee opslag accounts; een met een hiërarchische naam ruimte die niet is ingeschakeld.
+* Een Azure Storage-account.
 
 * Een on-premises Hadoop-cluster dat de bron gegevens bevat.
 
 * Een [Azure data Box-apparaat](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Bestel uw data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) of [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Denk tijdens het best Ellen van uw apparaat aan dat u een opslag account kiest waarvoor **geen** hiërarchische naam ruimten zijn ingeschakeld. Dit komt doordat Data Box-apparaten nog geen rechtstreekse opname in Azure Data Lake Storage Gen2 ondersteunen. U moet een opslag account kopiëren en vervolgens een tweede kopie naar het ADLS Gen2-account. Instructies hiervoor vindt u in de volgende stappen.
+  * [Bestel uw data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) of [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
 
   * Kabel en sluit uw [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) of [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) aan op een on-premises netwerk.
 
@@ -173,36 +173,14 @@ Volg deze stappen om het Data Box-apparaat voor te bereiden en te verzenden naar
 
     * Zie [uw data Box Heavy verzenden](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)voor data Box Heavy apparaten.
 
-5. Nadat micro soft uw apparaat heeft ontvangen, is het verbonden met het Data Center-netwerk en worden de gegevens geüpload naar het opslag account dat u hebt opgegeven (met hiërarchische naam ruimten uitgeschakeld) wanneer u de volg orde van het apparaat hebt geplaatst. Controleer de stuk lijst bestanden op basis waarvan al uw gegevens naar Azure worden geüpload. U kunt deze gegevens nu verplaatsen naar een Data Lake Storage Gen2 Storage-account.
+5. Nadat micro soft uw apparaat heeft ontvangen, is het verbonden met het Data Center-netwerk en worden de gegevens geüpload naar het opslag account dat u hebt opgegeven toen u de volg orde van het apparaat plaatste. Controleer de stuk lijst bestanden op basis waarvan al uw gegevens naar Azure worden geüpload. 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>De gegevens verplaatsen naar Azure Data Lake Storage Gen2
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Toegangs machtigingen voor bestanden en mappen Toep assen (alleen Data Lake Storage Gen2)
 
-U hebt de gegevens al in uw Azure Storage-account. Nu kopieert u de gegevens naar uw Azure Data Lake-opslag account en past u toegangs machtigingen toe voor bestanden en mappen.
+U hebt de gegevens al in uw Azure Storage-account. U kunt nu toegangs machtigingen voor bestanden en mappen Toep assen.
 
 > [!NOTE]
-> Deze stap is nodig als u Azure Data Lake Storage Gen2 gebruikt als uw gegevens archief. Als u alleen een Blob Storage-account zonder hiërarchische naam ruimte gebruikt als uw gegevens opslag, kunt u deze sectie overs Laan.
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Gegevens kopiëren naar het Azure Data Lake Storage gen 2-account
-
-U kunt gegevens kopiëren met behulp van Azure Data Factory of door gebruik te maken van uw Hadoop-cluster op basis van Azure.
-
-* Zie [Azure Data Factory om gegevens te verplaatsen naar ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)om Azure Data Factory te gebruiken. Zorg ervoor dat u **Azure Blob Storage** als bron opgeeft.
-
-* Als u uw Hadoop-cluster op basis van Azure wilt gebruiken, voert u de volgende DistCp-opdracht uit:
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * Vervang de tijdelijke aanduidingen `<source_account>` en `<dest_account>` door de namen van de bron-en doel opslag accounts.
-
-    * Vervang de tijdelijke aanduidingen `<source_container>` en `<dest_container>` door de namen van de bron-en doel containers.
-
-    * Vervang de tijdelijke aanduidingen `<source_path>` en `<dest_path>` door de paden voor de bron-en doel directory.
-
-    * Vervang de tijdelijke aanduiding `<source_account_key>` door de toegangs sleutel van het opslag account dat de gegevens bevat.
-
-    Met deze opdracht kopieert u zowel gegevens als meta gegevens van uw opslag account naar uw Data Lake Storage Gen2-opslag account.
+> Deze stap is alleen nodig als u Azure Data Lake Storage Gen2 gebruikt als uw gegevens archief. Als u alleen een Blob Storage-account zonder hiërarchische naam ruimte gebruikt als uw gegevens opslag, kunt u deze sectie overs Laan.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Een service-principal maken voor uw Azure Data Lake Storage Gen2-account
 

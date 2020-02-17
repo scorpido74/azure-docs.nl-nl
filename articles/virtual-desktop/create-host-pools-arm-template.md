@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5b07416f785ad263b4dbb9a0d249cb6022c01b13
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605753"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367464"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Een hostpool maken met een Azure Resource Manager-sjabloon
 
@@ -28,7 +28,7 @@ Zorg ervoor dat u de volgende zaken kent voordat u de Azure Resource Manager sja
 - Referenties voor domein deelname.
 - Uw Windows-referenties voor virtueel bureau blad.
 
-Wanneer u een virtuele Windows-bureau blad-hostgroep maakt met de Azure Resource Manager sjabloon, kunt u een virtuele machine maken vanuit de Azure-galerie, een beheerde installatie kopie of een niet-beheerde installatie kopie. Voor meer informatie over het maken van VM-installatie kopieën raadpleegt u [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) en [een beheerde installatie kopie te maken van een gegeneraliseerde vm in azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
+Wanneer u een virtuele Windows-bureau blad-hostgroep maakt met de Azure Resource Manager sjabloon, kunt u een virtuele machine maken vanuit de Azure-galerie, een beheerde installatie kopie of een niet-beheerde installatie kopie. Voor meer informatie over het maken van VM-installatie kopieën raadpleegt u [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) en [een beheerde installatie kopie te maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md).
 
 ## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>De Azure Resource Manager-sjabloon uitvoeren voor het inrichten van een nieuwe hostgroep
 
@@ -52,7 +52,7 @@ Zie het [Leesmij-bestand](https://github.com/Azure/RDS-Templates/blob/master/wvd
 
 Nadat de GitHub-Azure Resource Manager sjabloon is voltooid, moet u gebruikers toegang toewijzen voordat u begint met het testen van de volledige sessie Desk tops op uw virtuele machines.
 
-[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
 
 Als u gebruikers wilt toewijzen aan de groep bureau blad-toepassing, opent u een Power shell-venster en voert u deze cmdlet uit om u aan te melden bij de virtuele Windows-bureaublad omgeving:
 
@@ -71,4 +71,4 @@ De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in 
 Nadat u deze stappen hebt voltooid, kunnen gebruikers die zijn toegevoegd aan de groep bureau blad, zich aanmelden bij een virtueel bureau blad van Windows met ondersteunde Extern bureaublad clients en een resource voor een sessie bureau blad bekijken.
 
 >[!IMPORTANT]
->Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)te gebruiken.
+>Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](../security-center/security-center-just-in-time.md)te gebruiken.

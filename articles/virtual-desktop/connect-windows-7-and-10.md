@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 745b33efe46c82e3b9358c9c5a2ed13292242db1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 15bda000f0297f6e8e006416672897cb15792b79
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997340"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367492"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
 
@@ -57,4 +57,4 @@ Zodra u bent geabonneerd op een feed, wordt de inhoud van de feed regel matig au
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie over het gebruik van de Windows-desktop-client naar [aan de slag met de Windows desktop-client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop).
+Ga voor meer informatie over het gebruik van de Windows-desktop-client naar [aan de slag met de Windows desktop-client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).

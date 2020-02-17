@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169187"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368489"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
 Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -54,9 +54,13 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Event Hu
 - **Abonnement**: roltoewijzing is van toepassing op alle Event hubs resources in alle resource groepen in het abonnement.
 
 > [!NOTE]
-> Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
+> - Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
+> - Deze inhoud is van toepassing op zowel Event Hubs als Event Hubs voor Apache Kafka. Zie [Event hubs voor Kafka-beveiliging en-verificatie](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)voor meer informatie over Event hubs voor Kafka-ondersteuning.
+
 
 Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md#management-and-data-operations). Zie voor meer informatie over het maken van aangepaste RBAC-rollen [aangepaste rollen maken voor op rollen gebaseerd Azure-Access Control](../role-based-access-control/custom-roles.md).
+
+
 
 ## <a name="samples"></a>Voorbeelden
 - [Micro soft. Azure. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)-voor beelden. 
@@ -65,6 +69,8 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijp
 - [Voor beelden van Azure. Messa ging. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Dit voor beeld is bijgewerkt om de meest recente **Azure. Messa ging. Event hubs** -bibliotheek te gebruiken.
+- [Event hubs voor Kafka-OAuth-voor beelden](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth). 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het toewijzen van een ingebouwde RBAC-rol aan een beveiligingsprincipal, vindt u in [toegang tot Event hubs resources verifiëren met behulp van Azure Active Directory](authenticate-application.md).

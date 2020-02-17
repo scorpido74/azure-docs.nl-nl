@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511889"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368053"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -51,7 +51,7 @@ Wanneer u uw lijst bekijkt, moet u mogelijk een eigenaar toewijzen voor taken wa
 - [Beheerdersrollen toewijzen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
 - [Governance in Azure](https://docs.microsoft.com/azure/security/governance-in-azure)
 
-## <a name="credentials-management"></a>Referentiebeheer
+## <a name="credentials-management"></a>Referenties beheren
 
 ### <a name="password-policies"></a>Wachtwoordbeleid
 
@@ -105,7 +105,7 @@ Zie [de juiste verificatie methode kiezen voor uw Azure Active Directory hybride
 
 ### <a name="programmatic-usage-of-credentials"></a>Programmatisch gebruik van referenties
 
-Azure AD-scripts die gebruikmaken van Graph API beveiligde verificatie vereisen met Power shell of toepassingen. Slecht referentie beheer dat deze scripts en hulpprogram ma's uitvoert, verhogen het risico op referentie diefstal. Als u scripts of toepassingen gebruikt die afhankelijk zijn van wacht woorden of wachtwoord prompts, moet u eerst wacht woorden in configuratie bestanden of bron code controleren en vervolgens deze afhankelijkheden vervangen en Azure Managed-identiteiten, geïntegreerde Windows-verificatie of [certificaten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) waar mogelijk gebruiken. Voor toepassingen waarbij de vorige oplossingen niet mogelijk zijn, kunt u het beste [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)gebruiken.
+Azure AD-scripts met Power shell of toepassingen die gebruikmaken van de Microsoft Graph-API, vereisen beveiligde verificatie. Slecht referentie beheer dat deze scripts en hulpprogram ma's uitvoert, verhogen het risico op referentie diefstal. Als u scripts of toepassingen gebruikt die afhankelijk zijn van wacht woorden of wachtwoord prompts, moet u eerst wacht woorden in configuratie bestanden of bron code controleren en vervolgens deze afhankelijkheden vervangen en Azure Managed-identiteiten, geïntegreerde Windows-verificatie of [certificaten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) waar mogelijk gebruiken. Voor toepassingen waarbij de vorige oplossingen niet mogelijk zijn, kunt u het beste [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)gebruiken.
 
 Als u vaststelt dat er service-principals zijn met wachtwoord referenties en u niet zeker weet hoe deze wachtwoord referenties worden beveiligd door scripts of toepassingen, neemt u contact op met de eigenaar van de toepassing voor meer informatie over gebruiks patronen.
 
@@ -141,7 +141,7 @@ Als u apparaten beheert met MDM of Microsoft Intune, maar niet met behulp van ap
 #### <a name="device-trust-access-policies-recommended-reading"></a>Toegangs beleid voor vertrouwens relaties van apparaten aanbevolen lezen
 
 - [Procedure: uw hybride Azure Active Directory deelname-implementatie plannen](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Configuraties voor identiteit en Apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Configuraties voor identiteits-en toegangs apparaten](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven
 
@@ -205,7 +205,7 @@ Met [benoemde locaties](https://docs.microsoft.com/azure/active-directory/report
 
 Gebruik de onderstaande tabel op basis van prioriteit voor de aanbevolen oplossing die het beste voldoet aan de behoeften van uw organisatie:
 
-| **Prioriteit** | **Scenario** | **Aanbeveling** |
+| **Prioriteit** | **Scenario** | **Advies** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | Als u PHS of PTA gebruikt en er geen benoemde locaties zijn gedefinieerd | Benoemde locaties definiëren voor het verbeteren van de detectie van risico gebeurtenissen |
 | 2 | Als u federatief bent en geen ' insideCorporateNetwork-claim gebruikt en er geen benoemde locaties zijn gedefinieerd | Benoemde locaties definiëren voor het verbeteren van de detectie van risico gebeurtenissen |
@@ -256,7 +256,7 @@ Voorwaardelijke toegang is een essentieel hulp programma voor het verbeteren van
 #### <a name="conditional-access-recommended-reading"></a>Voorwaardelijke toegang aanbevolen lezen
 
 - [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Configuraties voor identiteit en Apparaattoegang](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Configuraties voor identiteits-en toegangs apparaten](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Algemeen beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -300,34 +300,33 @@ Hieronder vindt u een lijst met apps met machtigingen die u mogelijk wilt scruti
 - Apps met gedelegeerde machtigingen kunnen e-mail namens de gebruiker lezen, verzenden of beheren
 - Apps waaraan het gebruik van de volgende machtigingen is verleend:
 
-| Bron | Machtiging |
+| Resource | Machtiging |
 | :- | :- |
 | Office 365 Exchange Online | Uitgebreide. AccessAsUser. all |
 | | EWS. AccessAsUser. all |
 | | Mail. Read |
-| Microsoft Graph | Mail. Read |
+| Microsoft Graph-API | Mail. Read |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
 - Apps hebben volledige gebruikers imitatie verleend van de aangemelde gebruiker. Bijvoorbeeld:
 
-|Bron | Machtiging |
+|Resource | Machtiging |
 | :- | :- |
-| Azure AD-grafiek | Map. AccessAsUser. alle |
-| Microsoft Graph | Map. AccessAsUser. alle |
+| Microsoft Graph-API| Map. AccessAsUser. alle |
 | Azure REST API | user_impersonation |
 
 Om dit scenario te voor komen, dient u te verwijzen naar [illegale toestemming subsidies in Office 365 te detecteren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) en op te lossen om toepassingen te identificeren en te herstellen met illegale subsidies of toepassingen die meer subsidies hebben dan nodig zijn. Vervolgens [verwijdert u self-service samen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) en stelt u beheer [procedures](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)in. Ten slotte kunt u regel matig beoordelingen van app-machtigingen plannen en deze verwijderen wanneer ze niet nodig zijn.
 
 #### <a name="consent-grants-recommended-reading"></a>Toestemming toekenningen aanbevolen te lezen
 
-- [Machtigingen voor Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API-machtigingen](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Gebruikers-en groeps instellingen
 
 Hieronder ziet u de gebruikers-en groeps instellingen die kunnen worden vergrendeld als er geen expliciete bedrijfs behoeften zijn:
 
-#### <a name="user-settings"></a>Gebruikersinstellingen
+#### <a name="user-settings"></a>Gebruikers instellingen
 
 - **Externe gebruikers** : externe samen werking kan op biologische wijze plaatsvinden in de onderneming met Services als Teams, Power bi, share point Online en Azure Information Protection. Als u expliciete beperkingen hebt voor het beheren van de door de gebruiker gestarte externe samen werking, wordt u aangeraden externe gebruikers in te scha kelen met behulp van het [beheer van rechten van Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) of een gecontroleerde bewerking, zoals via uw Help Desk. Als u geen organische externe samen werking voor services wilt toestaan, kunt u [leden blok keren om externe gebruikers volledig uit te nodigen](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations). U kunt ook specifieke domeinen in uitnodigingen voor externe gebruikers [toestaan of blok keren](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) .
 - **App-registraties** : als app-registraties zijn ingeschakeld, kunnen eind gebruikers toepassingen zelf opheffen en toegang tot hun gegevens verlenen. Een typisch voor beeld van app-registratie is het inschakelen van Outlook-invoeg toepassingen of spraak assistenten, zoals Alexa en SIRI, om hun e-mail en agenda te lezen of e-mail berichten te verzenden. Als de klant besluit om de app-registratie uit te scha kelen, moeten de InfoSec-en IAM-teams betrokken zijn bij het beheer van uitzonde ringen (app-registraties die nodig zijn op basis van de bedrijfs vereisten), omdat de toepassingen moeten worden geregistreerd bij een beheerders account. en het is waarschijnlijk nodig om een proces te ontwerpen om het proces te operationeel maken.

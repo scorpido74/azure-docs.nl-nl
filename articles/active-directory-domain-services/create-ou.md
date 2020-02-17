@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705349"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367157"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Een organisatie-eenheid (OE) maken in een Azure AD Domain Services beheerd domein
 
@@ -54,7 +54,7 @@ Wanneer u aangepaste organisatie-eenheden maakt in een door Azure AD DS beheerd 
 * Er wordt een standaard organisatie-eenheid voor *AADDC-gebruikers* gemaakt die alle gesynchroniseerde gebruikers accounts uit uw Azure AD-Tenant bevat.
     * U kunt geen gebruikers of groepen van de organisatie-eenheid *AADDC gebruikers* verplaatsen naar aangepaste organisatie-eenheden die u maakt. Alleen gebruikers accounts of resources die zijn gemaakt in het door Azure AD DS beheerde domein kunnen worden verplaatst naar aangepaste organisatie-eenheden.
 * Gebruikers accounts, groepen, service accounts en computer objecten die u onder aangepaste organisatie-eenheden maakt, zijn niet beschikbaar in uw Azure AD-Tenant.
-    * Deze objecten worden niet weer gegeven met behulp van de Azure AD-Graph API of in de Azure AD-gebruikers interface. ze zijn alleen beschikbaar in uw door Azure AD DS beheerde domein.
+    * Deze objecten worden niet weer gegeven met behulp van de Microsoft Graph-API of in de Azure AD-gebruikers interface. ze zijn alleen beschikbaar in uw door Azure AD DS beheerde domein.
 
 ## <a name="create-a-custom-ou"></a>Een aangepaste OE maken
 

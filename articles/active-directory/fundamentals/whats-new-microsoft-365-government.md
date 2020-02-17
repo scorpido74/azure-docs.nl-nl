@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805288"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367940"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Wat is er nieuw voor Azure Active Directory in Microsoft 365 overheid
 
 Er zijn enkele wijzigingen aangebracht in Azure Active Directory (Azure AD) in het Cloud exemplaar van Microsoft 365 Government, dat van toepassing is op klanten die de volgende services gebruiken:
 
-- Microsoft Azure en de overheid
+- Microsoft Azure Government
 
 - Microsoft 365 overheid – GCC hoog
 
@@ -51,11 +51,10 @@ Voorheen kunnen klanten zich aanmelden met behulp van de wereld wijde Azure-port
 
 In de volgende tabel worden de eind punten voor alle klanten weer gegeven:
 
-| Naam | Details van eind punt |
+| Name | Details van eind punt |
 |------|------------------|
 | Portals |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365 overheid – GCC hoog: https://portal.office365.us<p>Microsoft 365 overheid – DoD: https://portal.apps.mil |
 | Eind punt van Azure Active Directory instantie | https://login.microsoftonline.us |
-| Azure Active Directory Graph API | https://graph.windows.net |
 | Microsoft Graph-API voor Microsoft 365 Government GCC High | https://graph.microsoft.us |
 | Microsoft Graph-API voor Microsoft 365 Government-DoD | https://dod-graph.microsoft.us |
 | Azure Government services-eind punten | Zie [Azure Government ontwikkelaars handleiding](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) voor meer informatie |

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452428"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368847"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -36,8 +36,8 @@ U moet een Azure Active Directory app-registratie en een Log Analytics-werk ruim
 
 U moet deze twee Power shell-modules ook installeren voordat u aan de slag gaat:
 
-- [Module Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Module Azure PowerShell](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD-module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 Zorg ervoor dat uw abonnement-ID gereed is voor wanneer u zich aanmeldt.
 
@@ -50,7 +50,7 @@ In deze sectie wordt uitgelegd hoe u Power shell kunt gebruiken om de Azure Acti
 >[!NOTE]
 >De API-machtigingen zijn Windows virtueel bureau blad, Log Analytics-en Microsoft Graph API-machtigingen worden toegevoegd aan de Azure Active Directory-toepassing.
 
-1. Open PowerShell als administrator.
+1. Open Power shell als Administrator.
 2. Meld u aan bij Azure met een account met eigenaar-of Inzender machtigingen voor het Azure-abonnement dat u wilt gebruiken voor het diagnostische hulp programma:
    ```powershell
    Login-AzAccount
@@ -253,7 +253,7 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 
     - Drempel waarde: hoger dan 80% is gemarkeerd als beschadigd.
 
-- [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Drempel waarde: hoger dan 2000 MS is gemarkeerd als beschadigd.
 

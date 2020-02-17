@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150694"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366431"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Zelf studie: team viewer configureren voor automatische gebruikers inrichting
 
@@ -101,7 +101,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Geef in het gedeelte **beheerders referenties** de referenties van uw team viewer-beheerder en gebruikers naam op. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer in het gedeelte **beheerders referenties** de `ttps://webapi.teamviewer.com/scim/v2` in het veld **tent URL** in en voer het script token in dat eerder in het **geheim token**is gemaakt. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -144,7 +144,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
 * Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

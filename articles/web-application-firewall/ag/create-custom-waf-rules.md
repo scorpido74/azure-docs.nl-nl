@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 14aa1018aec2a9dc22c3b059b4aa46bff2bb554a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050051"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368300"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 maken en gebruiken op Application Gateway
 
@@ -126,7 +126,7 @@ En de bijbehorende JSON:
   }
 ```
 
-### <a name="example-2"></a>Voorbeeld 2
+## <a name="example-2"></a>Voorbeeld 2
 
 U wilt verkeer van de VS toestaan met de operator geomatch:
 

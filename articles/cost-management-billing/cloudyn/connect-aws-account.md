@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770335"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086838"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Een Amazon Web Services-account verbinden
 
@@ -41,7 +41,7 @@ De eerste stap is het ophalen van de unieke wachtwoordzin voor de verbinding uit
 
 ### <a name="add-aws-read-only-role-based-access"></a>Alleen-lezen toegang op basis van AWS-rol toevoegen
 
-1. Meld u aan bij de AWS-console op https://console.aws.amazon.com/iam/home en selecteer **Roles**.
+1. Meld u aan bij de AWS-console op [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) en selecteer **Roles**.
 2. Klik op **Create role** en selecteer vervolgens **Another AWS account**.
 3. Plak `432263259397` in het vak **Account ID**. Deze account-id is gekoppeld aan het account van Cloudyn voor gegevensverzameling dat door AWS is toegewezen aan de Cloudyn-service. Gebruik de exacte account-id die wordt weergegeven.
 4. Selecteer naast **Options** **Require external ID**. Plak de unieke waarde die u eerder hebt gekopieerd uit het veld **External ID** in Cloudyn. Klik vervolgens op **Volgende: Permissions**.  
@@ -76,7 +76,7 @@ De volgende secties begeleiden u bij het maken van een alleen-lezen gebruiker om
 
 ### <a name="add-aws-read-only-user-based-access"></a>Alleen-lezen toegang op basis van AWS-gebruiker toevoegen
 
-1. Meld u aan bij de AWS-console op https://console.aws.amazon.com/iam/home en selecteer **Users**.
+1. Meld u aan bij de AWS-console op [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) en selecteer **Users**.
 2. Klik op **Add User**.
 3. Typ een gebruikersnaam in het veld **User name**.
 4. Selecteer bij **Access type** de optie **Programmatic access** en klik op **Next: Permissions**.  
@@ -107,7 +107,7 @@ Cloudyn begint met het verzamelen van de gegevens en het invullen van rapporten.
 
 Gebruik de volgende stappen om de ARN van uw AWS-rol te verkrijgen. U gebruikt de Role ARN om leesmachtigingen toe te kennen aan een facturerings-bucket.
 
-1. Meld u aan bij de AWS-console op https://console.aws.amazon.com en selecteer **Services**.
+1. Meld u aan bij de AWS-console op [https://console.aws.amazon.com](https://console.aws.amazon.com) en selecteer **Services**.
 2. Typ *IAM*in het zoekvak bovenaan en selecteer die optie.
 3. Selecteer **Roles** in het menu aan de linkerkant.
 4. Selecteer in de lijst met rollen de rol die u hebt gemaakt voor toegang tot Cloudyn.
@@ -117,7 +117,7 @@ Gebruik de volgende stappen om de ARN van uw AWS-rol te verkrijgen. U gebruikt d
 
 U maakt een S3-bucket om gedetailleerde factureringsgegevens op te slaan.
 
-1. Meld u aan bij de AWS-console op https://console.aws.amazon.com en selecteer **Services**.
+1. Meld u aan bij de AWS-console op [https://console.aws.amazon.com](https://console.aws.amazon.com) en selecteer **Services**.
 2. Typ *S3*in het zoekvak bovenaan en selecteer **S3**.
 3. Klik op de pagina Amazon S3 op **Create bucket**.
 4. Kies in de wizard Create bucket een naam en regio voor de bucket en klik vervolgens op **Next**.  

@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185854"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368019"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -1116,7 +1116,7 @@ De volgende velden worden gewijzigd in het controle schema:
 
 |Veldnaam|Wat is er gewijzigd|Oude waarden|Nieuwe waarden|
 |----------|------------|----------|----------|
-|Category|Dit is het veld **service naam** . Nu is het veld **controle categorieën** . De naam van de **service naam** is gewijzigd in het veld **loggedByService** .|<ul><li>Account inrichten</li><li>Hoofddirectory</li><li>Self-service voor wacht woord opnieuw instellen</li></ul>|<ul><li>Gebruikersbeheer</li><li>Groepsbeheer</li><li>App-beheer</li></ul>|
+|Categorie|Dit is het veld **service naam** . Nu is het veld **controle categorieën** . De naam van de **service naam** is gewijzigd in het veld **loggedByService** .|<ul><li>Account inrichten</li><li>Hoofddirectory</li><li>Self-service voor wacht woord opnieuw instellen</li></ul>|<ul><li>Gebruikersbeheer</li><li>Groepsbeheer</li><li>App-beheer</li></ul>|
 |targetResources|Bevat **TargetResourceType** op het hoogste niveau.|&nbsp;|<ul><li>Beleid</li><li>App</li><li>Gebruiker</li><li>Groep</li></ul>|
 |loggedByService|Geeft de naam van de service die het audit logboek heeft gegenereerd.|Null|<ul><li>Account inrichten</li><li>Hoofddirectory</li><li>Self-service voor wachtwoord opnieuw instellen</li></ul>|
 |Resultaat|Levert het resultaat van de audit Logboeken. Voorheen werd dit opgesomd, maar de werkelijke waarde wordt nu weer gegeven.|<ul><li>0</li><li>1</li></ul>|<ul><li>Geslaagd</li><li>Fout</li></ul>|
@@ -1698,7 +1698,7 @@ Deze update kunt u zien welke beleidsregels worden geëvalueerd wanneer een gebr
 **Service categorie:** Rapporteren  
 **Product mogelijkheden:** & Rapportage controleren
  
-Met de introductie van het veld **client-app** in de logboeken voor aanmeldings activiteiten kunnen klanten nu zien welke gebruikers oudere verificaties gebruiken. Klanten hebben toegang tot deze gegevens via de aanmeldingen MS Graph API of via de aanmeld activiteiten Logboeken in de Azure AD-Portal, waar u het besturings element voor **client-apps** kunt gebruiken om te filteren op verouderde verificaties. Bekijk de documentatie voor meer informatie.
+Met de introductie van het veld **client-app** in de logboeken voor aanmeldings activiteiten kunnen klanten nu zien welke gebruikers oudere verificaties gebruiken. Klanten hebben toegang tot deze informatie met behulp van de aanmeldingen Microsoft Graph API of via de aanmeld activiteiten Logboeken in de Azure AD-Portal, waar u het besturings element **client-app** kunt gebruiken om te filteren op verouderde verificaties. Bekijk de documentatie voor meer informatie.
 
 ---
 
@@ -2092,7 +2092,7 @@ Toegangsbeoordeling voor groepen en apps is nu algemeen beschikbaar als onderdee
 **Service categorie:** Rapporteren  
 **Product mogelijkheden:** & Rapportage controleren
  
-Azure AD activiteitenlogboeken, waaronder, aanmeldingen en auditlogboeken, zijn nu beschikbaar zijn via MS Graph. We hebben twee eindpunten via MS Graph voor toegang tot deze logboeken weergegeven. Bekijk onze [documenten](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) voor programmatische toegang tot Azure AD Reporting api's om aan de slag te gaan. 
+Azure AD-activiteiten logboeken, die, inclusief aanmeldingen en audit logboeken, zijn nu beschikbaar via de Microsoft Graph-API. Er zijn twee eind punten beschikbaar via de Microsoft Graph-API voor toegang tot deze logboeken. Bekijk onze [documenten](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) voor programmatische toegang tot Azure AD Reporting api's om aan de slag te gaan. 
 
 ---
  
@@ -2596,7 +2596,7 @@ Zie [Azure Active Directory Reporting](https://docs.microsoft.com/azure/active-d
 **Service categorie:** Rapporteren  
 **Product mogelijkheden:** & Rapportage controleren
 
-Als onderdeel van feedback van klanten om in te schakelen van niet-beheerdersrollen toegang hebben tot Azure AD-activiteit zich aanmeldt, is voorzien van de mogelijkheid voor gebruikers die zich in de rol "Lezer rapport" voor toegang tot aanmeldingen en Audit-activiteit in de Azure-portal, evenals met onze Graph API's. 
+Als onderdeel van klanten om niet-beheerders rollen in te scha kelen om toegang te krijgen tot Azure AD-activiteiten logboeken, hebben we de mogelijkheid ingeschakeld voor gebruikers die de rol ' Report Reader ' hebben voor toegang tot aanmeldingen en controle activiteiten binnen de Azure Portal, evenals het gebruik van de Microsoft Graph Inschakelen. 
 
 Zie [Azure Active Directory Reporting](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)(Engelstalig) voor meer informatie over het gebruik van deze rapporten. 
 

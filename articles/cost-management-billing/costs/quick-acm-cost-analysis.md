@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76294147"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188653"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -40,7 +40,7 @@ Zie [Toegang tot gegevens toewijzen](../../cost-management/assign-access-acm-dat
 
 - Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="review-costs-in-cost-analysis"></a>Kosten in kostenanalyse controleren
+## <a name="review-costs-in-cost-analysis"></a>Kosten in kostenanalyse beoordelen
 
 Als u de kosten in kostenanalyse wilt controleren, opent u het bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Gebruik **Bereik** om over te schakelen naar een ander bereik in kostenanalyse. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 
@@ -62,6 +62,13 @@ De initiële kostenanalyseweergave omvat de volgende gebieden.
 
 ![Oorspronkelijke weergave van Kostenanalyse in Azure Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
+### <a name="understand-forecast"></a>Prognose begrijpen
+
+In de kostenprognose wordt een schatting van de kosten voor de geselecteerde periode weergegeven. Het model is gebaseerd op een regressiemodel met tijdreeksen. Er zijn ten minste tien dagen van recente kosten- en gebruiksgegevens nodig om kosten nauwkeurig te kunnen schatten. Voor een bepaalde periode vereist het prognosemodel gelijke delen van trainingsgegevens voor de prognoseperiode. Voor een prognose van drie maanden bijvoorbeeld zijn ten minste drie maanden aan recente kosten- en gebruiksgegevens vereist. 
+
+Het model gebruikt een maximum van zes maanden aan trainingsgegevens om kosten voor een heel jaar te schatten. Er zijn minimaal zeven dagen aan trainingsgegevens nodig om de voorspelling te wijzigen. De voorspelling is gebaseerd op opvallende wijzigingen, zoals pieken en dalen, in kosten- en gebruikspatronen. De prognose genereert geen afzonderlijke schattingen voor elk item in **Groeperen op**-eigenschappen. Er wordt alleen een schatting gegeven van het totaal aan samengevoegde kosten. Als u meerdere valuta's gebruikt, geeft het model prognoses voor de kosten alleen in Amerikaanse dollars. 
+
+
 ## <a name="customize-cost-views"></a>Kostenweergaven aanpassen
 
 Kostenanalyse heeft vier ingebouwde weergaven die zijn geoptimaliseerd voor de meest voorkomende doelstellingen:
@@ -81,7 +88,7 @@ Kostenanalyse toont standaard de gegevens voor de huidige maand. Gebruik de datu
 
 ![Datumselector met een voorbeeldselectie voor deze maand](./media/quick-acm-cost-analysis/date-selector.png)
 
-Kostenanalyse toont standaard **samengevoegde** kosten. Samengevoegde kosten zijn inclusief alle kosten voor elke dag plus de afgelopen dagen, voor een continu groeiend zicht op uw dagelijks cumulatieve kosten. Deze weergave is geoptimaliseerd om u te laten zien hoe u het doet in verhouding met het budget voor het geselecteerde tijdsbereik.
+Kostenanalyse toont standaard **opgebouwde** kosten. Samengevoegde kosten zijn inclusief alle kosten voor elke dag plus de afgelopen dagen, voor een continu groeiend zicht op uw dagelijks cumulatieve kosten. Deze weergave is geoptimaliseerd om u te laten zien hoe u het doet in verhouding met het budget voor het geselecteerde tijdsbereik.
 
 Gebruik de prognosediagramweergave om mogelijke budgetoverschrijdingen te identificeren. Wanneer er sprake is van een mogelijke budgetoverschrijding, wordt de geschatte overschrijding in het rood weergegeven. Er wordt ook een indicatiesymbool weergegeven in het diagram. Als u de muisaanwijzer boven het symbool houdt, wordt de geschatte datum van de budgetoverschrijding weergegeven.
 
@@ -113,7 +120,7 @@ Standaard worden in een kostenanalyse alle gebruiks- en aankoopkosten weergegeve
 
 ![Schakel van de werkelijke kosten over naar de afgeschreven kosten als u de reserveringsaankopen die zijn toegewezen aan de resources die van de reservering gebruik hebben gemaakt, verspreid over de hele periode wilt bekijken.](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Afgeschreven kosten worden weergegeven als reserveringsaankopen die zijn uitgesplitst in dagelijkse segmenten en verspreid over de duur van de reserveringsperiode. Zo ziet u in bijvoorbeeld in plaats van een aankoop van € 365 op 1 januari, een aankoop van € 1 voor elke dag van 1 januari tot en met 31 december. Naast de basisafschrijving ervan, worden deze kosten ook opnieuw toegewezen en gekoppeld met behulp van de specifieke resources die van de reservering gebruik hebben gemaakt. Als bijvoorbeeld de dagelijkse kosten van € 1 zijn uitgesplitst over twee virtuele machines, ziet u twee kostenposten van € 0,50 per dag. Als een deel van de reservering voor een bepaalde dag niet wordt gebruikt, ziet u één kostenpost van € 0,50 die is gekoppeld aan de desbetreffende virtuele machine en een extra kostenpost van € 0,50 met een kostentype `UnusedReservation`. Houd er rekening mee dat ongebruikte reserveringskosten alleen kunnen worden weergegeven als afgeschreven kosten worden weergegeven.
+Afgeschreven kosten worden weergegeven als reserveringsaankopen die zijn uitgesplitst in dagelijkse segmenten en verspreid over de duur van de reserveringsperiode. Zo ziet u in bijvoorbeeld in plaats van een aankoop van € 365 op 1 januari, een aankoop van € 1,00 voor elke dag van 1 januari tot en met 31 december. Naast de basisafschrijving ervan, worden deze kosten ook opnieuw toegewezen en gekoppeld met behulp van de specifieke resources die van de reservering gebruik hebben gemaakt. Als bijvoorbeeld de dagelijkse kosten van € 1,00 zijn uitgesplitst over twee virtuele machines, ziet u twee kostenposten van € 0,50 per dag. Als een deel van de reservering voor een bepaalde dag niet wordt gebruikt, ziet u één kostenpost van € 0,50 die is gekoppeld aan de desbetreffende virtuele machine en een extra kostenpost van € 0,50 met een kostentype `UnusedReservation`. Houd er rekening mee dat ongebruikte reserveringskosten alleen kunnen worden weergegeven als afgeschreven kosten worden weergegeven.
 
 Omdat er een andere manier wordt gebruikt om kosten weer te geven, is het belangrijk om er rekening mee te houden dat de weergave van werkelijke kosten en de weergave van afgeschreven kosten andere totaalbedragen laten zien. Over het algemeen nemen de totale kosten voor maanden met een reserveringsaankoop af als deze in de weergave van afgeschreven kosten worden bekeken, en nemen deze in de maanden na een reserveringsaankoop toe. Afschrijving is alleen beschikbaar voor reserveringsaankopen en is op dit moment niet van toepassing op aankopen via Azure Marketplace.
 

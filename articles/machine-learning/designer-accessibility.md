@@ -1,5 +1,5 @@
 ---
-title: Toegankelijkheids functies in de ontwerp functie gebruiken
+title: Toegankelijkheids functies in de ontwerp functie gebruiken (preview-versie)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over de sneltoetsen en scherm lezers toegankelijkheids functies die beschikbaar zijn in de ontwerp functie.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314229"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366193"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer te gebruiken
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer (preview) te gebruiken
 
 Meer informatie over het gebruik van een toetsen bord en scherm lezer om Azure Machine Learning Designer te gebruiken. Zie [sneltoetsen in de Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md) voor een lijst met sneltoetsen die overal in de Azure Portal werken.
 
@@ -24,7 +24,7 @@ Deze werk stroom is getest met [Verteller](https://support.microsoft.com/help/22
 
 ## <a name="navigate-the-pipeline-graph"></a>Navigeren in de pipeline-grafiek
 
-De pipeline-grafiek is ingedeeld als een lijst met lijsten. De module lijst op het hoogste niveau bevat alle modules in de pijp lijn. Elk item in de module lijst bevat een lijst met verbindingen waarin alle verbindingen worden beschreven. 
+De pipeline-grafiek is ingedeeld als een geneste lijst. De buitenste lijst is een module lijst waarin alle modules in de pipeline-grafiek worden beschreven. De interne lijst is een lijst met verbindingen, waarmee alle verbindingen van een specifieke module worden beschreven.  
 
 1. Gebruik in de lijst module de pijl toets om modules te scha kelen.
 1. Tabblad gebruiken om de lijst met verbindingen voor de doel module te openen.
@@ -54,7 +54,7 @@ De eigenschappen van een module aanpassen:
 
 | Toetsaanslag | Beschrijving |
 |-|-|
-| Ctrl + F6 | Scha kelen tussen de focus op het canvas en de module structuur |
+| CTRL + F6 | Scha kelen tussen de focus op het canvas en de module structuur |
 | CTRL + F1   | De informatie kaart openen bij het richten op een knoop punt in de module structuur |
 | CTRL + SHIFT + H | Het hulp programma voor de verbinding openen wanneer de focus zich op een knoop punt bevindt |
 | CTRL + SHIFT + E | Module-eigenschappen openen wanneer de focus zich op een knoop punt bevindt |
@@ -62,13 +62,13 @@ De eigenschappen van een module aanpassen:
 
 ## <a name="action-shortcuts"></a>Actie snelkoppelingen
 
-Gebruik de volgende sneltoetsen met de toegangs sleutel. Zie https://en.wikipedia.org/wiki/Access_key voor meer informatie over toegangs sleutels.
+Gebruik de volgende sneltoetsen met de toegangs sleutel. Zie https://en.wikipedia.org/wiki/Access_keyvoor meer informatie over toegangs sleutels.
 
-| Toetsaanslag | Actie |
+| Toetsaanslag | Bewerking |
 |-|-|
-| Toegangs toets + R | Uitvoeren |
+| Toegangs toets + R | Voer |
 | Toegangs toets + P | Publiceren |
-| Toegangs toets + C | Kloon |
+| Toegangs toets + C | Klonen |
 | Toegangs toets + D | Implementeren |
 | Toegangs toets + I | Pijp lijn voor de inleiding maken/bijwerken |
 | Toegangs toets + B | Pijp lijn voor batch-interferentie maken/bijwerken |

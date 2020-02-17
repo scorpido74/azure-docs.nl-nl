@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990292"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168769"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Zelfstudie: Kosten optimaliseren op basis van aanbevelingen
 
@@ -79,7 +79,7 @@ Controleer in de VM-details het gebruik van de VM om te bevestigen dat het een g
 
 Kijk naar de huidige grootte van de virtuele machine. Nadat u hebt vastgesteld dat de grootte van de virtuele machine moet worden gewijzigd, sluit u de VM-details zodat u de lijst met virtuele machines ziet.
 
-Selecteer **Formaat wijzigen van *&lt;HuidigeSKUVanVirtueleMachine&gt;* in *&lt;NieuweSKUVanVirtueleMachine&gt;*** in de lijst met VM's die in aanmerking komen voor afsluiten of een kleinere grootte.
+Selecteer **Formaat wijzigen _&lt;SKUVanVirtueleMachine&gt;_ naar _&lt;SKUNaarVirtueleMachine&gt;_** in de lijst met VM's die in aanmerking komen voor afsluiten of een kleinere grootte.
 ![Voorbeeld van aanbeveling met de optie om de grootte van de virtuele machine te wijzigen](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 U ziet nu een lijst met beschikbare opties voor het wijzigen van de grootte. Kies de grootte met het gewenste compromis tussen prestaties en kosten voor uw scenario. In het volgende voorbeeld wordt de huidige grootte gewijzigd van **Standard_D8s_v3** in **Standard_D2s_v3**.

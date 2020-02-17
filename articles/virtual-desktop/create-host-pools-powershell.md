@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9baaf6c39f85f82b034bee42f01cf3c0dd2a610
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771305"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367452"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
 
@@ -20,7 +20,7 @@ Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in 
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>De Power shell-client gebruiken voor het maken van een hostgroep
 
-[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
 
 Voer de volgende cmdlet uit om u aan te melden bij de virtuele Windows-bureaublad omgeving
 
@@ -60,9 +60,9 @@ U kunt nu een virtuele Azure-machine maken die kan worden gekoppeld aan uw Windo
 
 U kunt op verschillende manieren een virtuele machine maken:
 
-- [Een virtuele machine maken op basis van een installatie kopie van Azure galerie](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [Een virtuele machine maken op basis van een beheerde installatie kopie](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [Een virtuele machine maken op basis van een onbeheerde installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Een virtuele machine maken op basis van een installatie kopie van Azure galerie](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Een virtuele machine maken op basis van een beheerde installatie kopie](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [Een virtuele machine maken op basis van een onbeheerde installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
 
 >[!NOTE]
 >Als u een virtuele machine implementeert met Windows 7 als besturings systeem van de host, is het proces voor maken en implementeren iets anders. Zie [een virtuele Windows 7-machine implementeren op het virtuele bureau blad van Windows](deploy-windows-7-virtual-machine.md)voor meer informatie.
@@ -78,7 +78,7 @@ U moet de volgende stappen uitvoeren om uw virtuele machines voor te bereiden vo
 
 Ga als volgt te werk op elke virtuele machine voor een geslaagde domein koppeling:
 
-1. [Maak verbinding met de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
+1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
 2. Start **configuratie scherm** op de virtuele machine en selecteer **systeem**.
 3. Selecteer **computer naam**, selecteer **instellingen wijzigen**en selecteer vervolgens **wijzigen...**
 4. Selecteer **domein** en voer vervolgens het Active Directory domein in op het virtuele netwerk.
@@ -93,18 +93,18 @@ Het registreren van de virtuele machines in een Windows-hostgroep voor virtueel 
 
 Ga als volgt te werk op elke virtuele machine om de virtuele bureau blad-agents van Windows te registreren:
 
-1. [Maak verbinding met de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
+1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
 2. Down load en installeer de virtuele bureau blad-agent van Windows.
    - Down load de [Windows Virtual Desktop agent](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
    - Klik met de rechter muisknop op het gedownloade installatie programma, selecteer **Eigenschappen**, **blok kering opheffen**en selecteer **OK**. Hiermee kan het installatie programma worden vertrouwd door uw systeem.
-   - Voer het installatieprogramma uit. Wanneer het installatie programma u vraagt om het registratie token, voert u de waarde in die u hebt ontvangen van de cmdlet **export-RdsRegistrationInfo** .
+   - Voer het installatie programma uit. Wanneer het installatie programma u vraagt om het registratie token, voert u de waarde in die u hebt ontvangen van de cmdlet **export-RdsRegistrationInfo** .
 3. Down load en installeer de bootloader voor het virtuele bureau blad-agent van Windows.
    - Down load de bootloader voor de [virtuele Windows-bureau blad-agent](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Klik met de rechter muisknop op het gedownloade installatie programma, selecteer **Eigenschappen**, **blok kering opheffen**en selecteer **OK**. Hiermee kan het installatie programma worden vertrouwd door uw systeem.
-   - Voer het installatieprogramma uit.
+   - Voer het installatie programma uit.
 
 >[!IMPORTANT]
->Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)te gebruiken.
+>Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](../security-center/security-center-just-in-time.md)te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

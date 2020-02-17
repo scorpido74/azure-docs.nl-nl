@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061488"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367245"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -35,7 +35,7 @@ Het hulp programma voor schalen maakt gebruik van een combi natie van Azure Auto
 Tijdens de piek duur van het gebruik controleert de taak het huidige aantal sessies en de VM-capaciteit van de huidige actieve sessiehost voor elke hostgroep. Deze informatie wordt gebruikt om te berekenen of de actieve host-Vm's bestaande sessies kunnen ondersteunen op basis van de para meter *SessionThresholdPerCPU* die is gedefinieerd voor het bestand **createazurelogicapp. ps1** . Als de virtuele machines van de sessiehost geen bestaande sessies kunnen ondersteunen, start de taak extra host-Vm's in de hostgroep.
 
 >[!NOTE]
->*SessionThresholdPerCPU* beperkt het aantal sessies op de virtuele machine niet. Deze para meter bepaalt alleen wanneer nieuwe Vm's moeten worden gestart om de verbindingen te verdelen. Als u het aantal sessies wilt beperken, moet u de instructies [set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) volgen om de *MaxSessionLimit* -para meter dienovereenkomstig te configureren.
+>*SessionThresholdPerCPU* beperkt het aantal sessies op de virtuele machine niet. Deze para meter bepaalt alleen wanneer nieuwe Vm's moeten worden gestart om de verbindingen te verdelen. Als u het aantal sessies wilt beperken, moet u de instructies [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) volgen om de *MaxSessionLimit* -para meter dienovereenkomstig te configureren.
 
 Tijdens de gebruiks tijd bepaalt de taak welke host-Vm's moeten worden afgesloten op basis van de para meter *MinimumNumberOfRDSH* . Met de taak worden de Vm's van de sessie-host ingesteld op de afvoer modus om te voor komen dat nieuwe sessies verbinding maken met de hosts. Als u de para meter *LimitSecondsToForceLogOffUser* instelt op een positieve waarde die niet gelijk is aan nul, stuurt het script alle momenteel aangemelde gebruikers een melding om hun werk op te slaan, de geconfigureerde tijds duur te wachten en vervolgens af te dwingen dat de gebruikers zich afmelden. Zodra alle gebruikers sessies op de sessiehost van de host-VM zijn afgemeld, wordt de virtuele machine door het script afgesloten.
 
@@ -126,7 +126,7 @@ Een uitvoeren als-account maken in uw Azure-account:
 
 Vervolgens moet u een roltoewijzing maken zodat AzureRunAsConnection kan communiceren met het virtuele bureau blad van Windows. Zorg ervoor dat u Power shell gebruikt om u aan te melden met een account dat is gemachtigd om roltoewijzingen te maken.
 
-Down load en Importeer eerst de [Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw tenants weer te geven.
+Down load en Importeer eerst de [Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw tenants weer te geven.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846151"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368641"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Shapegebeurtenissen met de Azure Time Series Insights Preview
 
@@ -80,7 +80,7 @@ Het exemplaar van de tijd reeks bevat meta gegevens van het apparaat. Deze meta 
 ### <a name="time-series-instance"></a>Time Series-exemplaar 
 
 > [!NOTE]
-> De Time Series-ID is *deviceId*.
+> De time series-ID is *deviceId*.
 
 ```JSON
 [
@@ -115,7 +115,7 @@ Het exemplaar van de tijd reeks bevat meta gegevens van het apparaat. Deze meta 
 ]
 ```
 
-Time Series Insights Preview lid wordt van een tabel (na afvlakken) tijdens het uitvoeren van query's. De tabel bevat aanvullende kolommen, zoals **Type**. In het volgende voor beeld ziet u hoe u uw telemetrie-gegevens kunt [vorm](./time-series-insights-send-events.md#supported-json-shapes) geven.
+Time Series Insights Preview lid wordt van een tabel (na afvlakken) tijdens het uitvoeren van query's. De tabel bevat aanvullende kolommen, zoals **type**. In het volgende voor beeld ziet u hoe u uw telemetrie-gegevens kunt [vorm](./time-series-insights-send-events.md#supported-json-shapes) geven.
 
 | deviceId  | Type | L1 | L2 | tijdstempel | series_Flow frequentie FT3/s | series_Engine olie druk psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -148,7 +148,7 @@ Bekijk de volgende JSON:
   "data_flow" : 1.76435072345733643
 }
 ```
-In het bovenstaande voor beeld zou de eigenschap plated `data_flow` een naam conflict met de eigenschap `data_flow` presen teren. In dit geval zou de *meest recente* eigenschaps waarde het vorige overschrijven. Als dit gedrag een uitdaging voor uw zakelijke scenario's oplegt, neemt u contact op met het TSI-team.
+In het bovenstaande voor beeld zou de eigenschap plated `data_flow` een naam conflict met de eigenschap `data_flow` presen teren. In dit geval zou de *meest recente* eigenschaps waarde het vorige overschrijven. Als dit gedrag een uitdaging voor uw bedrijfs scenario's oplevert, neemt u contact op met het TSI-team.
 
 > [!WARNING] 
 > In gevallen waarin dubbele eigenschappen aanwezig zijn in dezelfde gebeurtenis lading als gevolg van afvlakking of een ander mechanisme, wordt de meest recente eigenschaps waarde opgeslagen overwritting alle vorige waarden.

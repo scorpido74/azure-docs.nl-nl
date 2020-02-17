@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met Alibaba Cloud service (op rollen gebaseerde SSO) | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Alibaba-Cloud service (op rollen gebaseerde SSO) | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Alibaba-Cloud service (op rollen gebaseerde SSO).
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b9173c817cc3ecf4b9a34ec6906af0b4de70e6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120777"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367934"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Zelfstudie: Azure Active Directory SSO-integratie (single sign-on) met Alibaba Cloud service (op rollen gebaseerde SSO)
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Alibaba-Cloud service (op rollen gebaseerde SSO)
 
 In deze zelf studie leert u hoe u Alibaba Cloud service kunt integreren (op rollen gebaseerde SSO) met Azure Active Directory (Azure AD). Wanneer u Alibaba-Cloud service (SSO op basis van rollen) integreert met Azure AD, kunt u het volgende doen:
 
@@ -68,8 +68,8 @@ Configureer en test Azure AD SSO met Alibaba Cloud service (SSO op basis van een
 Als u Azure AD SSO wilt configureren en testen met Alibaba Cloud service (SSO op basis van een functie), voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
-    1. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+    1. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 2. **[Configureer eenmalige aanmelding op basis van een functie in Alibaba Cloud service](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
     1. **[Alibaba-Cloud service (SSO) SSO configureren](#configure-alibaba-cloud-service-role-based-sso-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
     1. **[Maak een Alibaba-Cloud service (op rollen gebaseerde SSO) test gebruiker](#create-alibaba-cloud-service-role-based-sso-test-user)** : een equivalent van Julia Simon in Alibaba Cloud service (SSO op basis van een functie) die is gekoppeld aan de Azure AD-representatie van de gebruiker.
@@ -90,9 +90,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     >[!NOTE]
     >U ontvangt de meta gegevens van de service provider via deze [URL](https://signin.alibabacloud.com/saml-role/sp-metadata.xml)
 
-    a. Klik op **metagegevensbestand uploaden**.
+    a. Klik op **Metagegevensbestand uploaden**.
 
-    b. Klik op **map logo** voor het selecteren van het bestand met metagegevens en klikt u op **uploaden**.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
 
     c. Zodra het meta gegevensbestand is geüpload, worden de **id** -en **antwoord-URL** -waarden automatisch ingevuld in Alibaba Cloud service (op rollen gebaseerd SSO) tekstvak:
 
@@ -103,21 +103,21 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. Op de sectie **Alibaba-Cloud service instellen (SSO op basis van functie)** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
 
@@ -129,7 +129,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **Alibaba Cloud service (SSO op basis van functie)** .
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -154,18 +154,18 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 3. Klik op het tabblad **op rollen gebaseerd SSO** op **IDP maken**.
 
-4. Voer `AAD` op de weer gegeven pagina in het veld IDP naam een beschrijving in het veld **Opmerking** in, klik op **uploaden** om het bestand met federatieve meta gegevens te uploaden dat u eerder hebt gedownload en klik vervolgens op **OK**.
+4. Voer `AAD` in het veld IdP-naam op de weer gegeven pagina in en voer in het veld **Opmerking** een beschrijving in. Klik op **uploaden** om het bestand met federatieve meta gegevens te uploaden dat u eerder hebt gedownload en klik vervolgens op **OK**.
 
 5. Nadat de IdP is gemaakt, klikt u op **RAM-rol maken**.
 
-6. In het veld naam van de RAM `AADrole`- **rol** invoeren, selecteert u in de vervolg keuzelijst **Select IDP** en klikt u `AAD` op OK.
+6. In het veld **naam RAM-rolnaam** voert u `AADrole`in, selecteert u `AAD` in de vervolg keuzelijst **Select IDP** en klikt u op OK.
 
     >[!NOTE]
     >U kunt de rol zo nodig machtigen. Nadat u de IdP en de bijbehorende rol hebt gemaakt, raden we u aan de ARNs van de IdP en de rol voor later gebruik op te slaan. U kunt de ARNs verkrijgen op de pagina IdP Information en de functie gegevens.
 
-7. Koppel de Alibaba Cloud RAM-rol (AADrole) aan de Azure AD-gebruiker (U2): Als u de RAM-functie wilt koppelen aan de Azure AD-gebruiker, moet u een rol in azure AD maken door de volgende stappen uit te voeren:
+7. De Alibaba Cloud RAM-rol (AADrole) koppelen aan de Azure AD-gebruiker (U2): als u de RAM-rol wilt koppelen aan de Azure AD-gebruiker, moet u een rol in azure AD maken door de volgende stappen te volgen:
 
-    a. Meld u aan bij de [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9).
+    a. Meld u aan bij de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
     b. Klik op **machtigingen wijzigen** om de vereiste machtigingen voor het maken van een rol te verkrijgen.
 
@@ -178,19 +178,19 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     >[!NOTE]
     >Nadat de machtigingen zijn verleend, meldt u zich opnieuw aan bij de Graph Explorer.
 
-    d. Selecteer op de pagina Graph Explorer de optie **ophalen** in de eerste vervolg keuzelijst en **beta** in de tweede vervolg keuzelijst. Voer `https://graph.microsoft.com/beta/servicePrincipals` vervolgens in het veld naast de vervolg keuzelijsten in en klik op **query uitvoeren**.
+    d. Selecteer op de pagina Graph Explorer de optie **ophalen** in de eerste vervolg keuzelijst en **beta** in de tweede vervolg keuzelijst. Voer `https://graph.microsoft.com/beta/servicePrincipals` in het veld naast de vervolg keuzelijsten in en klik op **query uitvoeren**.
 
     ![Grafiek configuratie](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
-    >Als u meerdere directory's gebruikt, kunt u in het `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` veld van de query invoeren.
+    >Als u meerdere directory's gebruikt, kunt u `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` invoeren in het veld van de query.
 
     e. Extraheer de eigenschap appRoles van de service-principal voor later gebruik in de sectie **antwoord voorbeeld** .
 
     ![Grafiek configuratie](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
-    >U kunt de eigenschap appRoles vinden door in `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` het veld van de query op te geven. Houd er rekening `objectID` mee dat de object-id die u hebt gekopieerd van de Azure AD- **Eigenschappen** pagina.
+    >U kunt de eigenschap appRoles vinden door `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` in te voeren in het veld van de query. Houd er rekening mee dat de `objectID` de object-ID is die u hebt gekopieerd van de Azure AD- **Eigenschappen** pagina.
 
     f. Ga terug naar de Graph Explorer, wijzig de methode van **down load** to **patch**, plak de volgende inhoud in het gedeelte **hoofd tekst** van de aanvraag en klik op **query uitvoeren**:
     ```
@@ -221,17 +221,17 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     }
     ```
     > [!NOTE]
-    > De `value` is de ARNs van de IDP en de rol die u hebt gemaakt in de RAM-console. Hier kunt u meerdere rollen toevoegen als dat nodig is. Azure AD verzendt de waarde van deze rollen als de claim waarde in het SAML-antwoord. U kunt echter alleen nieuwe rollen toevoegen na het `msiam_access` onderdeel voor de patch-bewerking. Om het aanmaak proces te vereenvoudigen, wordt u aangeraden een ID-generator, zoals GUID-generator, te gebruiken om Id's in realtime te genereren.
+    > De `value` is de ARNs van de IdP en de rol die u hebt gemaakt in de RAM-console. Hier kunt u meerdere rollen toevoegen als dat nodig is. Azure AD verzendt de waarde van deze rollen als de claim waarde in het SAML-antwoord. U kunt echter alleen nieuwe rollen toevoegen na het `msiam_access` onderdeel voor de patch-bewerking. Om het aanmaak proces te vereenvoudigen, wordt u aangeraden een ID-generator, zoals GUID-generator, te gebruiken om Id's in realtime te genereren.
 
     g. Wanneer de Service-Principal is geïnstalleerd met de vereiste rol, koppelt u de rol aan de Azure AD-gebruiker (U2) door de stappen van de **Azure AD-test gebruiker toewijzen** van de zelf studie te volgen.
 
 ### <a name="configure-alibaba-cloud-service-role-based-sso-sso"></a>Alibaba-Cloud service configureren (SSO) SSO
 
-Als u eenmalige aanmelding wilt configureren op **Alibaba Cloud service (SSO)** naast elkaar, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Alibaba Cloud service (op rollen gebaseerd SSO) ondersteunings team](https://www.aliyun.com/service/) . Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren op **Alibaba Cloud service (SSO)** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar het [ondersteunings team van de Alibaba-Cloud service (op rollen gebaseerd SSO)](https://www.aliyun.com/service/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Alibaba Cloud service maken (op rollen gebaseerde SSO) test gebruiker
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in Alibaba Cloud service (op rollen gebaseerde SSO). Werk met het [ondersteunings team van Alibaba Cloud service (op rollen gebaseerd SSO)](https://www.aliyun.com/service/) om de gebruikers toe te voegen aan de Alibaba-Cloud service (op rollen gebaseerd SSO). Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in Alibaba Cloud service (op rollen gebaseerde SSO). Werk met het [ondersteunings team van Alibaba Cloud service (op rollen gebaseerd SSO)](https://www.aliyun.com/service/) om de gebruikers toe te voegen aan de Alibaba-Cloud service (op rollen gebaseerd SSO). Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>SSO testen 
 

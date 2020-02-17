@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191192"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366242"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -211,22 +211,71 @@ De volgende technieken zijn aanvullende opties voor het afhandelen van niet-slui
 
 Met Azure Machine Learning kunt u automatische ML gebruiken om een python-model samen te stellen en dit te converteren naar de ONNX-indeling. De ONNX-runtime C#ondersteunt, zodat u het model dat automatisch in uw C# apps is gebouwd, kunt gebruiken zonder dat u hoeft te coderen of een van de netwerk latenties die rest-eind punten introduceren. Probeer een voor beeld van deze stroom [in dit Jupyter-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
 
-## <a name="automated-ml-across-microsoft"></a>Automatische MILLILITERs in micro soft
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatische ML in Azure Machine Learning
 
-Automatische ML is ook beschikbaar in andere micro soft-oplossingen, zoals:
+Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
 
-|Integraties|Beschrijving|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische model selectie en-training in .NET-Apps met behulp van Visual Studio en Visual Studio code met ML.NET Automate.|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Schaal uw geautomatiseerde ML-trainings taken op Spark in HDInsight-clusters parallel.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Machine learning modellen rechtstreeks aanroepen in Power BI.|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Maak nieuwe machine learning modellen over uw gegevens in SQL Server 2019 big data-clusters.|
+* Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* Voor klanten met een beperkte of geen code ervaring Azure Machine Learning Studio op [https://ml.azure.com](https://ml.azure.com/)  
+
+Hieronder vindt u een overzicht van de mogelijkheden voor automatische ML op hoog niveau die in elke ervaring worden ondersteund.
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>Instellingen voor experimenteren 
+
+Met de volgende instellingen kunt u uw geautomatiseerde ML experiment configureren. 
+
+| | Python-SDK| Studio.net
+----|:----:|:----:
+Gegevens in Train/validatie sets splitsen| ✓|✓
+Ondersteunt ML-taken: classificatie, regressie en prognose| ✓| ✓
+Optimaliseert op basis van primaire metriek| ✓| ✓
+Ondersteunt AML Compute als Compute-doel | ✓|✓
+Prognose horizon, target lags & Rolling venster configureren|✓|✓
+Afsluit criteria instellen |✓|✓ 
+Gelijktijdige herhalingen instellen| ✓|✓
+Kolommen neerzetten| ✓|✓
+Blok algoritmen|✓|✓
+Kruisvalidatie |✓|✓
+Ondersteunt training op Azure Databricks clusters| ✓|
+Functie namen van ontworpen weer geven|✓|
+Parametrisatie-samen vatting| ✓|
+Feest dagen parametrisatie|✓|
+Uitgebreidheids niveau voor logboek bestanden| ✓|
+
+### <a name="model-settings"></a>Model instellingen
+
+Deze instellingen kunnen worden toegepast op het beste model als resultaat van uw geautomatiseerde ML-experiment.
+
+||Python-SDK|Studio.net
+----|:----:|:----:
+Beste model registratie| ✓|✓
+Beste model implementatie| ✓| ✓
+Beste uitleg bij het model| ✓|✓
+Stem ensemble inschakelen & stack-ensembles modellen| ✓|✓
+Beste model weer geven op basis van niet-primaire metriek|✓|Compatibiliteit met ONNX-modellen in-of uitschakelen|✓|
+Het model testen | ✓| |
+
+### <a name="run-control-settings"></a>Instellingen voor beheer uitvoeren
+
+Met deze instellingen kunt u de uitvoeringen van uw experiment en de onderliggende uitvoeringen controleren en beheren. 
+
+||Python-SDK| Studio.net
+----|:----:|:----:
+Samenvattings tabel uitvoeren| ✓|✓
+Uitvoering annuleren| ✓|✓
+Onderliggende uitvoering annuleren| ✓| ✓
+Guardrails ophalen| ✓|✓
+Uitvoering onderbreken| ✓| 
+Uitvoering hervatten| ✓| 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine learning:
 
-+ Volg de [zelf studie: automatisch een regressie model trainen met geautomatiseerde machine learning van Azure](tutorial-auto-train-models.md)
++ Volg de [zelf studie: automatisch een regressie model trainen met Azure machine learning](tutorial-auto-train-models.md)
 
 + De instellingen voor automatische training-experiment configureren:
   + In Azure Machine Learning Studio [gaat u](how-to-create-portal-experiments.md)als volgt te werk.
@@ -235,3 +284,5 @@ Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine le
 + Meer informatie over het automatisch trainen van Time Series-gegevens met behulp van [deze stappen](how-to-auto-train-forecast.md).
 
 + [Jupyter notebook voor beelden uitproberen voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* Automatische ML is ook beschikbaar in andere micro soft-oplossingen, zoals [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) en [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

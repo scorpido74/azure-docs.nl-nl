@@ -3,19 +3,17 @@ title: Azure-reserveringen beheren
 description: Meer informatie over het beheren van Azure-reserveringen.
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994049"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188508"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Reserveringen voor Azure-resources beheren
 
@@ -128,7 +126,7 @@ U kunt de optimalisatie-instelling voor de reservering als volgt bijwerken:
 
 ## <a name="optimize-reservation-use"></a>Gebruik van reservering optimaliseren
 
-Besparingen voor Azure-reserveringen zijn alleen mogelijk bij duurzaam gebruik van resources. Wanneer u een reservering aanschaft, betaalt u vooraf voor wat in feite 100% mogelijk resourcegebruik is voor een termijn van één of drie jaar. Probeer uw reservering te maximaliseren voor zo veel mogelijk gebruik en besparingen. In de volgende secties wordt uitgelegd hoe u een reservering bewaakt en het gebruik hiervan optimaliseert.
+Besparingen voor Azure-reserveringen zijn alleen mogelijk bij duurzaam gebruik van resources. Wanneer u een reservering aanschaft, betaalt u voor wat in feite 100% mogelijk resourcegebruik is voor een termijn van één of drie jaar. Probeer uw reservering te maximaliseren voor zo veel mogelijk gebruik en besparingen. In de volgende secties wordt uitgelegd hoe u een reservering bewaakt en het gebruik hiervan optimaliseert.
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>Gebruik van reserveringen weergeven in Azure Portal
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451317"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367198"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows
 
@@ -24,7 +24,7 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 
 ## <a name="azure-platform-details"></a>Details van het Azure-platform
 
-|Functies|Azure Files|Azure NetApp Files|Storage Spaces Direct|
+|Functies|Azure Files|Azure NetApp Files|Opslagruimten Direct|
 |--------|-----------|------------------|---------------------|
 |Platform service|Ja, Azure-systeem eigen oplossing|Ja, Azure-systeem eigen oplossing|Nee, zelf beheerd|
 |Regionale beschikbaarheid|Alle regio's|[Regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alle regio's|
@@ -36,11 +36,11 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 
 ## <a name="azure-management-details"></a>Details van Azure-beheer
 
-|Functies|Azure Files|Azure NetApp Files|Storage Spaces Direct|
+|Functies|Azure Files|Azure NetApp Files|Opslagruimten Direct|
 |--------|-----------|------------------|---------------------|
-|Toegang|Cloud, on-premises en hybride (Azure-bestands synchronisatie)|Cloud, on-premises (via ExpressRoute)|Cloud, on-premises|
-|Back-up|Integratie van Azure backup snap shot|Moment opnamen Azure NetApp Files|Integratie van Azure backup snap shot|
-|Beveiliging en compliance|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO voltooid|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
+|Access|Cloud, on-premises en hybride (Azure-bestands synchronisatie)|Cloud, on-premises (via ExpressRoute)|Cloud, on-premises|
+|Backup|Integratie van Azure backup snap shot|Moment opnamen Azure NetApp Files|Integratie van Azure backup snap shot|
+|Beveiliging en naleving|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO voltooid|[Alle door Azure ondersteunde certificaten](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Integratie van Azure Active Directory|Azure Active Directory en Azure Active Directory Domain Services|[Azure Active Directory Domain Services en systeem eigen Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Alleen systeem eigen Active Directory-of Azure Active Directory Domain Services-ondersteuning|
 
 Als u uw opslag methode hebt gekozen, raadpleegt u de [prijzen voor Windows virtueel bureau blad](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor informatie over onze prijs plannen.
@@ -53,6 +53,6 @@ Als u klaar bent om uw eigen FSLogix-profiel containers te maken, kunt u aan de 
 
 - [Aan de slag met FSLogix-profiel containers op Azure Files in Windows virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
 - [Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp-bestanden](create-fslogix-profile-container.md)
-- De instructies [voor het implementeren van een met twee knoop punten opslagruimten direct scale-out Bestands server voor UPD-opslag in azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) , zijn ook van toepassing wanneer u een FSLogix-profiel container gebruikt in plaats van een gebruikers profiel schijf
+- De instructies [voor het implementeren van een met twee knoop punten opslagruimten direct scale-out Bestands server voor UPD-opslag in azure](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) , zijn ook van toepassing wanneer u een FSLogix-profiel container gebruikt in plaats van een gebruikers profiel schijf
 
 U kunt ook beginnen met het begin en uw eigen virtueel-bureaublad oplossing van Windows instellen bij het [maken van een Tenant in Windows virtueel bureau blad](tenant-setup-azure-active-directory.md).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459505"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368784"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelf studie: een Tenant maken in Windows Virtual Desktop
 
@@ -121,7 +121,7 @@ Uw Azure-abonnements-ID zoeken:
 
 Nu u de machtigingen voor de Windows Virtual Desktop-service hebt gekregen om Azure Active Directory te zoeken en de rol TenantCreator aan een gebruikers account hebt toegewezen, kunt u een virtuele Windows-bureau blad-Tenant maken.
 
-[Down load en Importeer eerst de module virtueel bureau blad van Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+[Down load en Importeer eerst de module virtueel bureau blad van Windows](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
 
 Meld u aan bij Windows virtueel bureau blad met behulp van het TenantCreator-gebruikers account met deze cmdlet:
 

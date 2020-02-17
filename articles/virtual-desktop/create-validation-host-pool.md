@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: fd8be170f0f4388ee711881dde16923b9547f21f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 98d1a9c3dd86972990ae896d156be6c6aedfff77
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606920"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367403"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelf studie: een hostgroep maken om service-updates te valideren
 
@@ -20,12 +20,12 @@ Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in 
 
 Om ervoor te zorgen dat uw apps samen werken met de nieuwste updates, moet de groep met validatie-hosts net zo vergelijkbaar zijn als de hostgroepen in uw productie omgeving. Gebruikers moeten net zo vaak verbinding maken met de groep met validatie-hosts als voor de hostgroep voor productie. Als u automatische tests voor uw hostgroep hebt, moet u geautomatiseerde tests voor de groep met validatie-hosts toevoegen.
 
-U kunt problemen met de validatie hostgroep oplossen met behulp van [de diagnostische functie](diagnostics-role-service.md) of de Windows-procedure voor het [oplossen van problemen met virtueel bureau blad](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
+U kunt problemen met de validatie hostgroep oplossen met behulp van [de diagnostische functie](diagnostics-role-service.md) of de Windows-procedure voor het [oplossen van problemen met virtueel bureau blad](troubleshoot-set-up-overview.md).
 
 >[!NOTE]
 > U wordt aangeraden de groep validatie-host te verlaten om alle toekomstige updates te testen.
 
-Voordat u begint, moet u [de Power shell-module van Windows virtueel bureau blad downloaden en importeren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
+Voordat u begint, moet u [de Power shell-module van Windows virtueel bureau blad downloaden en importeren](/powershell/windows-virtual-desktop/overview/), als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480110"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368150"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best practices voor Azure Active Directory B2B
 Dit artikel bevat aanbevelingen en aanbevolen procedures voor B2B-samen werking (Business-to-Business) in Azure Active Directory (Azure AD).
@@ -33,7 +33,7 @@ Dit artikel bevat aanbevelingen en aanbevolen procedures voor B2B-samen werking 
 | Beleid voor voorwaardelijke toegang afdwingen voor Multi-Factor Authentication (MFA) | We raden u aan MFA-beleid af te dwingen op de apps die u wilt delen met partner B2B-gebruikers. Op deze manier wordt MFA consistent afgedwongen op de apps in uw Tenant, ongeacht of de partner organisatie MFA gebruikt. Zie [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md). |
 | Als u beleid voor voorwaardelijke toegang op basis van apparaten afdwingt, gebruikt u uitsluitings lijsten om toegang tot B2B-gebruikers toe te staan | Als op apparaten gebaseerd beleid voor voorwaardelijke toegang is ingeschakeld in uw organisatie, worden B2B-gast gebruikers apparaten geblokkeerd omdat ze niet worden beheerd door uw organisatie. U kunt uitsluitings lijsten met specifieke partner gebruikers maken om ze uit te sluiten van het beleid voor voorwaardelijke toegang op basis van apparaten. Zie [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md). |
 | Een Tenant-specifieke URL gebruiken wanneer u directe koppelingen naar uw B2B-gast gebruikers levert | Als alternatief voor de uitnodigings-e-mail kunt u een gast een rechtstreekse koppeling geven naar uw app of portal. Deze directe koppeling moet een Tenant-specifiek zijn, wat inhoudt dat een Tenant-ID of geverifieerd domein moet worden opgenomen, zodat de gast kan worden geverifieerd in uw Tenant, waar de gedeelde app zich bevindt. Bekijk [de aflossings ervaring voor de gast gebruiker](redemption-experience.md). |
-| Wanneer u een App ontwikkelt, gebruikt u User type om de gebruikers ervaring van gast te bepalen  | Als u een toepassing ontwikkelt en u verschillende ervaringen wilt bieden voor Tenant gebruikers en gast gebruikers, gebruikt u de eigenschap User type. De claim User type is momenteel niet opgenomen in het token. Toepassingen moeten de Graph API gebruiken om de map op te vragen voor de gebruiker om de User type op te halen. |
+| Wanneer u een App ontwikkelt, gebruikt u User type om de gebruikers ervaring van gast te bepalen  | Als u een toepassing ontwikkelt en u verschillende ervaringen wilt bieden voor Tenant gebruikers en gast gebruikers, gebruikt u de eigenschap User type. De claim User type is momenteel niet opgenomen in het token. Toepassingen moeten de Microsoft Graph-API gebruiken om de map op te vragen voor de gebruiker om de User type op te halen. |
 | De eigenschap User type *alleen* wijzigen als de relatie van de gebruiker met de organisatie is gewijzigd | Hoewel het mogelijk is om Power shell te gebruiken om de eigenschap User type voor een gebruiker van het ene naar het andere gast te converteren (en omgekeerd), moet u deze eigenschap alleen wijzigen als de relatie van de gebruiker met uw organisatie wordt gewijzigd. Zie [Eigenschappen van een B2B-gast gebruiker](user-properties.md).|
 
 ## <a name="next-steps"></a>Volgende stappen

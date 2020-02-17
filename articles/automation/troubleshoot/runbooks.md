@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031745"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365210"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Fouten met runbooks oplossen
 
@@ -569,53 +569,77 @@ Het nxautomationuser-account voor de Log Analytics-agent voor Linux is niet juis
 
 * Controleer de configuratie van het nxautomationuser-account in het sudo-bestand. Zie [Runbooks uitvoeren op een Hybrid Runbook worker](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Scenario: cmdlet mislukt in PnP Power shell-runbook op Azure Automation
+
+### <a name="issue"></a>Probleem
+
+Wanneer een runbook een door een PnP-Power shell gegenereerd object naar de Azure Automation-uitvoer schrijft, kan de cmdlet-uitvoer niet weer streamen naar Automation.
+
+### <a name="cause"></a>Oorzaak
+
+Dit probleem wordt meestal veroorzaakt wanneer Azure Automation runbooks verwerkt die PnP-Power shell-cmdlets aanroepen, bijvoorbeeld **add-pnplistitem**, zonder dat de retour objecten worden onderschept.
+
+### <a name="resolution"></a>Oplossing
+
+Bewerk uw scripts om retour waarden toe te wijzen aan variabelen, zodat de cmdlets niet proberen om hele objecten te schrijven naar de standaard uitvoer. Een script kan de uitvoer stroom omleiden naar een cmdlet zoals hieronder wordt weer gegeven.
+
+```azurecli
+  $null = add-pnplistitem
+```
+Als uw script cmdlet-uitvoer parseert, moet het script de uitvoer opslaan in een variabele en de variabele bewerken in plaats van de uitvoer simpelweg te streamen.
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>Mijn probleem komt niet hierboven voor in de lijst
 
 In de volgende secties worden andere veelvoorkomende fouten vermeld naast de ondersteunings documentatie om u te helpen bij het oplossen van uw probleem.
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Er worden geen taken uitgevoerd met Hybrid Runbook Worker, of Hybrid Runbook Worker reageert niet
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Er worden geen taken uitgevoerd met Hybrid Runbook Worker, of Hybrid Runbook Worker reageert niet
 
 Als u taken uitvoert met een Hybrid worker in plaats van in Azure Automation, moet u mogelijk [de Hybrid worker zelf oplossen](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook mislukt met een melding over ontbrekende machtiging of een soortgelijke melding
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook mislukt met een melding over ontbrekende machtiging of een soortgelijke melding
 
 Run as-accounts hebben mogelijk niet dezelfde machtigingen voor Azure-resources als uw huidige account. Zorg ervoor dat uw uitvoeren als-account [machtigingen heeft voor toegang tot alle resources](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) die worden gebruikt in uw script.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooks werkten, maar zijn plotseling gestopt
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooks werkten, maar zijn plotseling gestopt
 
 * Als runbooks eerder werden uitgevoerd, maar gestopt, moet u ervoor zorgen dat het [Run as-account](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal) nog niet is verlopen.
 * Als u webhooks gebruikt om runbooks te starten, moet u ervoor zorgen dat een [webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) niet is verlopen.
 
-## <a name="issues-passing-parameters-into-webhooks"></a>Problemen bij het door geven van para meters in webhooks
+### <a name="issues-passing-parameters-into-webhooks"></a>Problemen bij het door geven van para meters in webhooks
 
 Zie [een Runbook starten vanuit een webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)voor hulp bij het door geven van para meters in webhooks.
 
-## <a name="issues-using-az-modules"></a>Problemen met AZ-modules
+### <a name="issues-using-az-modules"></a>Problemen met AZ-modules
 
-Het gebruik van Az-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Zie [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules) voor meer informatie.
+Het gebruik van AZ-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Zie [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules) voor meer informatie.
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Inconsistent gedrag in runbooks
+### <a name="inconsistent-behavior-in-runbooks"></a>Inconsistent gedrag in runbooks
 
 Volg de richt lijnen bij het [uitvoeren van Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) om problemen te voor komen met gelijktijdige taken, resources die meerdere keren worden gemaakt of andere timing gevoelige logica in runbooks.
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook is mislukt met de fout geen machtiging, verboden (403) of enige variatie
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook is mislukt met de fout geen machtiging, verboden (403) of enige variatie
 
 Run as-accounts hebben mogelijk niet dezelfde machtigingen voor Azure-resources als uw huidige account. Zorg ervoor dat uw uitvoeren als-account [machtigingen heeft voor toegang tot alle resources](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) die worden gebruikt in uw script.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooks werkten, maar zijn plotseling gestopt
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooks werkten, maar zijn plotseling gestopt
 
 * Als runbooks eerder werden uitgevoerd, maar gestopt, moet u ervoor zorgen dat het run as-account nog niet is verlopen. Zie [certificering vernieuwen](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
 * Als u webhooks gebruikt om runbooks te starten, moet u ervoor zorgen dat de webhook [niet is verlopen](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
 
-## <a name="passing-parameters-into-webhooks"></a>Parameters doorgeven aan webhooks
+### <a name="passing-parameters-into-webhooks"></a>Parameters doorgeven aan webhooks
 
 Zie [een Runbook starten vanuit een webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)voor hulp bij het door geven van para meters in webhooks.
 
-## <a name="using-az-modules"></a>Az-modules gebruiken
+### <a name="using-az-modules"></a>Az-modules gebruiken
 
-Het gebruik van Az-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Zie [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules).
+Het gebruik van AZ-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Zie [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules).
 
-## <a name="using-self-signed-certificates"></a>Zelfondertekende certificaten gebruiken
+### <a name="using-self-signed-certificates"></a>Zelfondertekende certificaten gebruiken
 
 Zie [een nieuw certificaat maken](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)voor het gebruik van zelfondertekende certificaten.
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608853"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368114"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
@@ -73,7 +73,7 @@ Deze eigenschap geeft aan hoe de gebruiker zich aanmeldt.
 
 - Uitgenodigde gebruiker: deze gebruiker is uitgenodigd, maar heeft nog geen uitnodiging ingewisseld.
 
-- Externe Active Directory: deze gebruiker bevindt zich in een externe organisatie en verifieert met behulp van een Azure AD-account dat deel uitmaakt van de andere organisatie. Dit type aanmelding komt overeen met status 1.
+- Externe Azure Active Directory: deze gebruiker bevindt zich in een externe organisatie en verifieert met behulp van een Azure AD-account dat deel uitmaakt van de andere organisatie. Dit type aanmelding komt overeen met status 1.
 
 - Microsoft-account: deze gebruiker bevindt zich in een Microsoft-account en verifieert met behulp van een Microsoft-account. Dit type aanmelding komt overeen met status 2.
 

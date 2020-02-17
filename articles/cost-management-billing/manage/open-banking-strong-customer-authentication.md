@@ -2,21 +2,21 @@
 title: Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
 description: Dit artikel legt uit waarom meervoudige verificatie is vereist voor sommige Azure-aankopen en hoe u de verificatie kunt uitvoeren.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996038"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133564"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
 
@@ -53,14 +53,13 @@ Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Az
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Openstaande kosten verrekenen voor Marketplace- en reserveringsaankopen
 
-Marketplace- en reserveringsaankopen worden niet samen met de Azure-services gefactureerd. Als uw bank de Marketplace- of reserveringskosten weigert, wordt uw factuurstatus in de Azure-portal als **Achterstallig** weergegeven. U kunt de status van uw Marketplace- en reserveringsfacturen controleren door deze stappen te volgen:
+Marketplace- en reserveringsaankopen worden niet samen met de Azure-services gefactureerd. Als uw bank de Marketplace- of reserveringskosten weigert, krijgt uw factuur de status achterstallig en wordt in de Azure-portal de optie **Nu betalen** weergegeven. U kunt achterstallige Marketplace- en reserveringsfacturen betalen door deze stappen te volgen:
 
 1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek naar **Kostenbeheer en facturering**.
 3. Onder Facturering selecteert u **Facturen**.
-4. Klik aan de rechterkant op het tabblad **Azure Marketplace en reserveringen**.
-5. Selecteer het bijbehorende abonnement.
-6. Bekijk de statuskolom in het raster met facturen. Als de factuur op **Vervalt bijna** of **Achterstallig** staat, klikt u op **Nu betalen**. U wordt gevraagd om tijdens het proces meervoudige verificatie te doorlopen.
+5. Selecteer in de vervolgkeuzelijst van het filter voor abonnementen het abonnement dat is gekoppeld aan uw Marketplace- of reserveringsaankoop.
+6. Bekijk de typekolom in het raster met facturen. Als het type **Azure Marketplace en reserveringen** is, ziet u de koppeling **Nu betalen** als de factuurdatum vervalt of al vervallen is. Als **Nu betalen**niet wordt weergegeven, betekent dit dat uw factuur al betaald is. U wordt gevraagd om voor Nu betalen meervoudige verificatie te doorlopen.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Raadpleeg [Achterstallig saldo voor uw Azure-abonnement vereffenen](resolve-past-due-balance.md) als u een Azure-rekening moet betalen.

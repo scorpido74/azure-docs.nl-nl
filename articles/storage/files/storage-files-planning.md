@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157211"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368610"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -177,8 +177,6 @@ Deze sectie is alleen van toepassing op de standaard bestands shares. Alle Premi
 Standaard bestands shares met een capaciteits limiet van 100 TiB zijn wereld wijd beschikbaar in alle Azure-regio's.
 
 - LRS: alle regio's, met uitzonde ring van Zuid-Afrika-noord en Zuid-Afrika-west.
-   - VS-Oost en Europa-west: alle nieuwe accounts worden ondersteund. Het upgrade proces is niet voltooid voor een klein aantal bestaande accounts. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
-
 - ZRS: alle regio's, met uitzonde ring van Japan-Oost, Europa-noord, Zuid-Afrika-noord.
 - GRS/GZRS: wordt niet ondersteund.
 

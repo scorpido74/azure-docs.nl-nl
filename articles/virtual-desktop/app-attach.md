@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772547"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367624"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -38,7 +38,7 @@ Eerst moet u de installatie kopie van het besturings systeem ophalen die u voor 
 1. Open de [Windows Insider-Portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) en meld u aan.
 
      >[!NOTE]
-     >U moet lid zijn van het Windows Insider-programma om toegang te krijgen tot de Windows Insider-Portal. Raadpleeg onze [Windows Insider-documentatie](https://docs.microsoft.com/windows-insider/at-home/)voor meer informatie over het Windows Insider-programma.
+     >U moet lid zijn van het Windows Insider-programma om toegang te krijgen tot de Windows Insider-Portal. Raadpleeg onze [Windows Insider-documentatie](/windows-insider/at-home/)voor meer informatie over het Windows Insider-programma.
 
 2. Schuif omlaag naar de sectie **Select Edition** en selecteer **Windows 10 Insider preview Enter prise (Fast) – Build 19035** of hoger.
 
@@ -79,7 +79,7 @@ Nadat u de VHD naar Azure hebt geüpload, maakt u een hostgroep die is gebaseerd
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>De toepassing voorbereiden voor de MSIX-app attach 
 
-Als u al een MSIX-pakket hebt, gaat u verder met het configureren van een [virtuele bureau blad-infra structuur voor Windows](#configure-windows-virtual-desktop-infrastructure). Als u oudere toepassingen wilt testen, volgt u de instructies in een [MSIX-pakket maken op basis van een installatie programma van een desktop computer op een virtuele machine](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) om de verouderde toepassing te converteren naar een MSIX-pakket.
+Als u al een MSIX-pakket hebt, gaat u verder met het configureren van een [virtuele bureau blad-infra structuur voor Windows](#configure-windows-virtual-desktop-infrastructure). Als u oudere toepassingen wilt testen, volgt u de instructies in een [MSIX-pakket maken op basis van een installatie programma van een desktop computer op een virtuele machine](/windows/msix/packaging-tool/create-app-package-msi-vm/) om de verouderde toepassing te converteren naar een MSIX-pakket.
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Een VHD-of VHDX-pakket voor MSIX genereren
 
@@ -178,7 +178,7 @@ Als uw app gebruikmaakt van een certificaat dat niet openbaar of zelfondertekend
 5. Als het installatie programma u vraagt of u wilt toestaan dat de app wijzigingen in uw apparaat aanbrengt, selecteert u **Ja**.
 6. Selecteer **alle certificaten in het onderstaande archief opslaan**en selecteer vervolgens **Bladeren**.
 7. Wanneer het venster certificaat archief selecteren wordt weer gegeven, selecteert u **vertrouwde personen**en selecteert u **OK**.
-8. Selecteer **Finish**.
+8. Selecteer **Voltooien**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Power shell-scripts voorbereiden voor MSIX-app attach
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Simulatie scripts instellen voor de MSIX-agent voor het koppelen van apps
 
-Nadat u de scripts hebt gemaakt, kunnen gebruikers deze hand matig uitvoeren of instellen dat ze automatisch worden uitgevoerd als opstart-, aanmeldings-, afmeldings-en afsluit scripts. Zie [opstart-, afsluit-, aanmeldings-en afmeldings scripts gebruiken in Groepsbeleid](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11))voor meer informatie over deze soorten scripts.
+Nadat u de scripts hebt gemaakt, kunnen gebruikers deze hand matig uitvoeren of instellen dat ze automatisch worden uitgevoerd als opstart-, aanmeldings-, afmeldings-en afsluit scripts. Zie [opstart-, afsluit-, aanmeldings-en afmeldings scripts gebruiken in Groepsbeleid](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)voor meer informatie over deze soorten scripts.
 
 Met elk van deze automatische scripts wordt één fase van de app gekoppelde scripts uitgevoerd:
 
@@ -407,7 +407,7 @@ Als u de licentie bestanden wilt installeren, moet u een Power shell-script gebr
 
 U kunt als volgt de licenties instellen voor offline gebruik: 
 
-1. Down load het app-pakket, de licenties en de vereiste Frameworks van de Microsoft Store voor bedrijven. U hebt zowel de versleutelde als niet-versleutelde licentie bestanden nodig. Gedetailleerde Download instructies vindt u [hier](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+1. Down load het app-pakket, de licenties en de vereiste Frameworks van de Microsoft Store voor bedrijven. U hebt zowel de versleutelde als niet-versleutelde licentie bestanden nodig. Gedetailleerde Download instructies vindt u [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/).
 2. Werk de volgende variabelen bij in het script voor stap 3:
       1. `$contentID` is de ContentID-waarde van het niet-versleutelde licentie bestand (. XML). U kunt het licentie bestand openen in een tekst editor naar keuze.
       2. `$licenseBlob` is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze. 

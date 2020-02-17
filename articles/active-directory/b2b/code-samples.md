@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3a43ce4c560e89d88594d173aae7b2ad2db99ee
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273098"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368140"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Voorbeelden van de Azure Active Directory B2B-samenwerkingscode en PowerShell
 
@@ -26,7 +26,7 @@ U kunt externe gebruikers bulksgewijs uitnodigen voor een organisatie aan de han
 
 1. Het .CSV-bestand voorbereiden Maak een nieuw .CSV-bestand en noem dit bestand uitnodigings.csv. In dit voorbeeld wordt het bestand opgeslagen in C:\data. Dit bestand bevat de volgende informatie:
   
-   Naam                  |  InvitedUserEmailAddress
+   Name                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B-genodigde     | b2binvitee@gmail.com
    Outlook B2B-genodigde   | b2binvitee@outlook.com
@@ -56,7 +56,7 @@ Deze cmdlet stuurt een uitnodiging naar de e-mailadressen in invitations.csv. Aa
 - Berichten naar CC’s verzenden of e-mailberichten helemaal onderdrukken
 
 ## <a name="code-sample"></a>Codevoorbeeld
-Hier laten we zien hoe u de uitnodigings-API in de ‘alleen-appmodus’ kunt aanroepen om de aflossings-URL op te halen voor de resource waarvoor u de B2B-gebruiker uitnodigt. Het doel is het verzenden van een aangepaste uitnodigingsmail. Het e-mailbericht kan zijn samengesteld met een HTTP-client; u kunt dus de vormgeving ervan aanpassen en het bericht verzenden via de Graph-API.
+Hier laten we zien hoe u de uitnodigings-API in de ‘alleen-appmodus’ kunt aanroepen om de aflossings-URL op te halen voor de resource waarvoor u de B2B-gebruiker uitnodigt. Het doel is het verzenden van een aangepaste uitnodigingsmail. Het e-mail bericht kan worden samengesteld met een HTTP-client, zodat u kunt aanpassen hoe het eruitziet en het verzendt via de Microsoft Graph-API.
 
 ```csharp
 namespace SampleInviteApp
@@ -70,12 +70,12 @@ namespace SampleInviteApp
     class Program
     {
         /// <summary>
-        /// Microsoft graph resource.
+        /// Microsoft Graph resource.
         /// </summary>
         static readonly string GraphResource = "https://graph.microsoft.com";
  
         /// <summary>
-        /// Microsoft graph invite endpoint.
+        /// Microsoft Graph invite endpoint.
         /// </summary>
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
  
@@ -173,14 +173,14 @@ namespace SampleInviteApp
         }
  
         /// <summary>
-        /// Get the access token for our application to talk to microsoft graph.
+        /// Get the access token for our application to talk to Microsoft Graph.
         /// </summary>
-        /// <returns>Returns the access token for our application to talk to microsoft graph.</returns>
+        /// <returns>Returns the access token for our application to talk to Microsoft Graph.</returns>
         private static string GetAccessToken()
         {
             string accessToken = null;
  
-            // Get the access token for our application to talk to microsoft graph.
+            // Get the access token for our application to talk to Microsoft Graph.
             try
             {
                 AuthenticationContext testAuthContext =

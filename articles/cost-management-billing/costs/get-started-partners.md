@@ -1,25 +1,28 @@
 ---
 title: Aan de slag met Azure Cost Management voor partners
 description: In dit artikel wordt uitgelegd hoe partners Azure Cost Management-functies gebruiken en hoe ze toegang tot Cost Management voor hun klanten mogelijk maken.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842415"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117583"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
-Azure Cost Management is standaard beschikbaar voor partners die hun klanten hebben voorbereid op een Microsoft-klantovereenkomst en [een Azure-plan hebben gekocht](/partner-center/purchase-azure-plan). In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](../index.yml)-functies gebruiken om de kosten voor abonnementen in het Azure-plan weer te geven. Ook wordt beschreven hoe partners toegang tot Cost Management bieden voor hun klanten. Klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
+Azure Cost Management is standaard beschikbaar voor directe partners die hun klanten hebben voorbereid op een Microsoft-klantovereenkomst en [een Azure-plan hebben gekocht](/partner-center/purchase-azure-plan). In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](../index.yml)-functies gebruiken om de kosten voor abonnementen in het Azure-plan weer te geven. Ook wordt beschreven hoe partners toegang tot Cost Management bieden voor hun klanten.
+
+Voor directe partners en indirecte providers hebben de globale beheerder en beheerderagents van de indirecte provider toegang tot Cost Management in de partnertenant. Resellers en klanten hebben toegang tot Cost Management in de tenant van de klant en kunnen abonnementskosten weergeven, waarbij de kosten worden berekend en weergegeven in tarieven voor de detailhandel. Ze moeten wel RBAC-toegang tot het abonnement in de tenant van de klant hebben om de kosten te kunnen zien. Het beleid voor de zichtbaarheid van kosten moet zijn ingeschakeld door de provider van de tenant van de klant.
+
+Klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
 
 CSP-partners gebruiken Cost Management voor het volgende:
 

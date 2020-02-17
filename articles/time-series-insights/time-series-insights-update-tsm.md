@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861384"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368636"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
 
@@ -101,7 +101,7 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 | --- | ---|
 | timeSeriesId | De UUID van de tijd reeks waaraan het exemplaar is gekoppeld. |
 | typeId | De UUID van het model van de tijd reeks waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
-| name | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
+| naam | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | De eigenschappen van een exemplaar en alle statische gegevens waarmee een exemplaar wordt gedefinieerd. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
@@ -148,7 +148,7 @@ Hiërarchieën worden gedefinieerd door de hiërarchie **-id**, **naam**en **bro
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De unieke id voor de hiërarchie die wordt gebruikt, bijvoorbeeld wanneer u een exemplaar definieert. |
-| name | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
+| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
 | source | Hiermee geeft u de organisatie hiërarchie of het pad op. Dit is een bovenliggende en onderliggende volg orde van de hiërarchie die gebruikers willen maken. De bovenliggende/onderliggende eigenschappen van het toewijzings exemplaar velden. |
 
 Hiërarchieën worden weer gegeven in JSON als:
@@ -240,7 +240,7 @@ De typen van de tijd reeks model worden gedefinieerd op basis van **id**, **naam
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De UUID voor het type. |
-| name | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
+| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
 | description | Een beschrijving van de teken reeks voor het type. |
 | variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
 

@@ -3,30 +3,27 @@ title: Eigendom van facturering voor een Azure-abonnement overdragen
 description: Dit artikel bevat informatie over hoe u het eigendom van een Azure-abonnement overdraagt aan een ander account en enkele veelgestelde vragen over het proces
 keywords: transfer azure subscription, azure transfer subscription, move azure subscription to another account,azure change subscription owner, transfer azure subscription to another account, azure transfer billing
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76270859"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188395"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
-Mogelijk wilt u het eigendom van de facturering van uw Azure-abonnement overdragen als u uw organisatie verlaat of wilt u dat het abonnement wordt gefactureerd aan een ander account. Het overdragen van het eigendom van de facturering naar een ander account geeft de beheerders in het nieuwe account de mogelijkheid om factureringstaken uit te voeren, zoals het wijzigen van de betalingswijze, het weergeven van kosten en het annuleren van het abonnement.
+Mogelijk wilt u het eigendom van de facturering van uw Azure-abonnement overdragen als u uw organisatie verlaat of wilt u dat het abonnement wordt gefactureerd aan een ander account. Door het eigendom van de facturering aan een ander account over te dragen, zijn de beheerders in het nieuwe account gemachtigd factureringstaken uit te voeren. Ze kunnen de betalingswijze veranderen, kosten bekijken en het abonnement annuleren.
 
 Zie [Uw Azure-abonnement overzetten naar een andere aanbieding](switch-azure-offer.md) als het abonnement uw eigendom moet blijven maar u het type abonnement wilt wijzigen. Zie [Ingebouwde rollen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) als u wilt bepalen wie resources in het abonnement kan beheren.
 
-Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het eigendom van de facturering overdragen naar andere accounts. Zie [Eigendom van facturering overdragen voor EA-abonnementen (Enterprise Agreement)](#transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions) voor meer informatie.
+Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het eigendom van de facturering overdragen naar andere accounts. Zie [Eigendom van facturering overdragen voor EA-abonnementen (Enterprise Agreement)](#EA) voor meer informatie.
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Eigendom van facturering voor een Azure-abonnement overdragen
 
@@ -44,7 +41,7 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
 1. Voer het e-mailadres in van een gebruiker die een factureringsbeheerder is voor het account dat de nieuwe eigenaar van het abonnement wordt.
 
-1. Als u uw abonnement overdraagt naar een account in een andere Azure AD-tenant, selecteert u of u het abonnement wilt verplaatsen naar de tenant van het nieuwe account. Zie [Abonnementen overdragen naar een account in een andere Azure AD-tenant](#transferring-subscription-to-an-account-in-another-azure-ad-tenant) voor meer informatie
+1. Als u uw abonnement overdraagt naar een account in een andere Azure AD-tenant, selecteert u of u het abonnement wilt verplaatsen naar de tenant van het nieuwe account. Zie [Abonnementen overdragen naar een account in een andere Azure AD-tenant](#transfer-a-subscription-to-another-azure-ad-tenant-account) voor meer informatie
 
     > [!IMPORTANT]
     >
@@ -58,7 +55,7 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
    ![E-mail voor de abonnementsoverdracht verzonden naar de ontvanger](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. De gebruiker kan de overdrachtsaanvraag goedkeuren door de koppeling in de e-mail te selecteren en de instructies te volgen. De gebruiker moet een betalingswijze selecteren die wordt gebruikt om voor het abonnement te betalen. Als de gebruiker niet beschikt over een Azure-account, moet deze zich registreren voor een nieuw account.
+1. De gebruiker kan de overdrachtsaanvraag goedkeuren door de koppeling in de e-mail te selecteren en de instructies te volgen. De gebruiker selecteert vervolgens een betalingswijze die wordt gebruikt om voor het abonnement te betalen. Als de gebruiker niet beschikt over een Azure-account, moet deze zich registreren voor een nieuw account.
 
    ![Eerste webpagina voor abonnementsoverdracht](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -68,23 +65,23 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
 1. Gelukt! Het abonnement wordt nu overgedragen.
 
-## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>Abonnement wordt overgedragen naar een account in een andere Azure AD-tenant
+## <a name="transfer-a-subscription-to-another-azure-ad-tenant-account"></a>Een abonnement overdragen aan een ander account van uw Azure AD-tenant
 
 Er wordt een Azure Active Directory-tenant (AD) voor u gemaakt wanneer u zich aanmeldt voor Azure. De tenant vertegenwoordigt uw account. U gebruikt de tenant om de toegang tot uw abonnementen en resources te beheren.
 
 Wanneer u een nieuw abonnement maakt, wordt dit gehost in de Azure AD-tenant van uw account. Als u anderen toegang wilt geven tot uw abonnement of de bijbehorende resources, moet u ze uitnodigen om lid te worden van uw tenant. Zo kunt u de toegang tot uw abonnementen en resources beheren.
 
-Wanneer u het eigendom van de facturering van uw abonnement overdraagt naar een account in een andere Azure AD-tenant, kunt u het abonnement verplaatsen naar de tenant van het nieuwe account. Als u dit doet, raken alle gebruikers, groepen of service-principals die [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/role-assignments-portal.md) hadden om abonnementen en de bijbehorende resources te beheren, hun toegang kwijt. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources te beheren. Als u de oorspronkelijke gebruikers opnieuw toegang wilt verlenen, moet de nieuwe eigenaar [deze gebruikers handmatig toevoegen aan het abonnement](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Wanneer u het eigendom van de facturering van uw abonnement overdraagt naar een account in een andere Azure AD-tenant, kunt u het abonnement verplaatsen naar de tenant van het nieuwe account. Als u dit doet, raken alle gebruikers, groepen of service-principals die [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/role-assignments-portal.md) hadden om abonnementen en de bijbehorende resources te beheren, hun toegang kwijt. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources te beheren. De nieuwe eigenaar moet [deze gebruikers handmatig toevoegen aan het abonnement](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) om toegang te bieden voor gebruikers die geen toegang meer hadden.
 
 
-## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Abonnementen voor Visual Studio, MPN en Betalen per gebruik Dev/Test overdragen
+## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio- en Microsoft Partner Network-abonnementen overdragen
 
-Voor Visual Studio- en Microsoft Partner Network-abonnementen geldt een maandelijks terugkerend Azure-tegoed. Wanneer u deze abonnementen overdraagt, is uw tegoed niet beschikbaar in het doelfactureringsaccount. Het tegoed in het doelfactureringsaccount wordt gebruikt voor het abonnement. Als Bob bijvoorbeeld op 9 september een Visual Studio Enterprise-abonnement overdraagt naar het account van Jeanette en Jeanette de overdracht accepteert. Zodra de overdracht is voltooid, wordt het tegoed in het account van Jeanette gebruikt voor het abonnement. Het tegoed wordt elke maand op 9de opnieuw ingesteld.
+Voor Visual Studio- en Microsoft Partner Network-abonnementen geldt een maandelijks terugkerend Azure-tegoed. Wanneer u deze abonnementen overdraagt, is uw tegoed niet beschikbaar in het doelfactureringsaccount. Het tegoed in het doelfactureringsaccount wordt gebruikt voor het abonnement. Als Bob bijvoorbeeld op 9 september een Visual Studio Enterprise-abonnement overdraagt naar het account van Jeanette en Jeanette de overdracht accepteert. Zodra de overdracht is voltooid, wordt het tegoed in het account van Jeanette gebruikt voor het abonnement. Het tegoed wordt elke negende dag van de maand opnieuw ingesteld.
 
 
 <a id="EA"></a>
 
-## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Eigendom van facturering overdragen voor EA-abonnementen (Enterprise Agreement)
+## <a name="transfer-ea-subscription-billing-ownership"></a>Eigendom van facturering van EA-abonnementen overdragen
 
 De ondernemingsbeheerder kan het eigendom van abonnementen overdragen tussen accounts in een inschrijving. Zie [Accounteigenaar wijzigen](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) in de EA-portal voor meer informatie.
 
@@ -129,13 +126,13 @@ Deze veelgestelde vragen zijn van toepassing op gebruikers die het eigendom van 
 
 ### <a name="whoisaa"></a> Wie is een factureringsbeheerder van een account?
 
-Een factureringsbeheerder is een persoon die gemachtigd is om de facturering voor een account te beheren. Ze hebben toegang tot de facturering in [Azure Portal](https://portal.azure.com) en kunnen diverse factureringstaken uitvoeren. Ze kunnen bijvoorbeeld abonnementen maken, facturen weergeven en betalen van facturen of betalingswijzen bijwerken.
+Een factureringsbeheerder is een persoon die gemachtigd is om de facturering voor een account te beheren. Ze hebben toegang tot de facturering in de [Azure-portal](https://portal.azure.com) en kunnen diverse factureringstaken uitvoeren. Ze kunnen bijvoorbeeld abonnementen maken, facturen weergeven en betalen van facturen of betalingswijzen bijwerken.
 
 Voer de volgende stappen uit om te achterhalen voor welke accounts u een factureringsbeheerder bent:
 
 1. Ga in Azure Portal naar de pagina [Kostenbeheer en facturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
 1. Selecteer in het linkerdeelvenster **Alle factureringsbereiken**.
-1. De pagina met abonnementen bevat alle abonnementen waarvoor u een factureringsbeheerder bent.
+1. De pagina met abonnementen bevat alle abonnementen waarvoor u factureringsbeheerder bent.
 
 Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u de volgende stappen om erachter te komen.
 
@@ -145,19 +142,19 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Wordt alles overgedragen? Inclusief resourcegroepen, Vm's, schijven en andere actieve services?
 
-Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](add-change-subscription-administrator.md) en het [ RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) voor het abonnement [niet overgedragen](#transferring-subscription-to-an-account-in-another-azure-ad-tenant). Bovendien worden [app-registraties](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
+Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](add-change-subscription-administrator.md) en het [ RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) voor het abonnement [niet overgedragen](#transfer-a-subscription-to-another-azure-ad-tenant-account). Bovendien worden [app-registraties](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Kan ik het eigendom overdragen naar een account in een ander land?
-U kunt geen overdrachten naar andere landen uitvoeren in Azure Portal. Als u uw abonnement wilt overdragen naar een ander land, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+U kunt geen overdrachten naar andere landen uitvoeren in de Azure-portal. Als u uw abonnement wilt overdragen naar een ander land, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Ik ben een beheerder van twee accounts. Kan ik een abonnement overdragen van het ene account naar de andere?
 Ja, u kunt een abonnement overdragen tussen uw accounts. Uw accounts worden conceptueel gezien als accounts van twee verschillende gebruikers, zodat u de bovenstaande stappen kunt gebruiken om abonnementen tussen uw accounts over te dragen.
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Resulteert een abonnementsoverdracht in servicedowntime?
 
-Als u een abonnement overdraagt naar een account in dezelfde Azure AD-tenant, is dit niet van invloed op de actieve resources in het abonnement. Als u het abonnement echter overdraagt naar een account in een andere tenant en besluit het abonnement naar de tenant te verplaatsen, verliezen alle gebruikers, groepen en service-principals met [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/overview.md) voor het beheren van de resources in het abonnement, hun toegang. Dit kan resulteren in servicedowntime.
+Als u een abonnement overdraagt naar een account in dezelfde Azure AD-tenant, is dit niet van invloed op de actieve resources in het abonnement. Contextgegevens die zijn opgeslagen in PowerShell, worden echter niet bijgewerkt, dus moet u deze mogelijk wissen of instellingen wijzigen. Als u het abonnement overdraagt naar een account in een andere tenant en besluit het abonnement naar de tenant te verplaatsen, verliezen alle gebruikers, groepen en service-principals met [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/overview.md) voor het beheren van de resources in het abonnement, hun toegang. Uitvaltijd van de service kan het gevolg zijn.
 
-### <a name="do-users-in-new-account-have-access-to-usage-and-billing-history"></a>Hebben gebruikers in het nieuwe account toegang tot de gebruiks- en factureringsgeschiedenis?
+### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>Hebben gebruikers in het nieuwe account toegang tot de gebruiks- en factureringsgeschiedenis?
 
 De enige informatie die beschikbaar is voor de gebruikers in het nieuwe account, zijn de abonnementskosten voor de afgelopen maand. De rest van de gebruiks- en factureringsgeschiedenis wordt niet overgedragen met het abonnement
 
@@ -167,7 +164,7 @@ Als u het eigendom van het abonnement niet kunt overdragen, kunt u uw resources 
 
 ### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Als ik een Visual Studio- of Microsoft Partner Network-abonnement overdraag, wordt mijn tegoed dan getransporteerd naar het abonnement in het nieuwe account?
 
-Nee, uw tegoed is niet beschikbaar in het nieuwe account. De gebruiker die de overdrachtsaanvraag accepteert, moet een Visual Studio-licentie hebben om de overdrachtsaanvraag te accepteren. Het abonnement maakt gebruik van het Visual Studio-tegoed dat beschikbaar is in het account van de gebruiker. Zie [Abonnementen voor Visual Studio, MPN (Microsoft Partner Network) en Betalen per gebruik Dev/Test overdragen](#transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions) voor meer informatie.
+Nee, uw tegoed is niet beschikbaar in het nieuwe account. De gebruiker die de overdrachtsaanvraag accepteert, moet een Visual Studio-licentie hebben om de overdrachtsaanvraag te accepteren. Het abonnement maakt gebruik van het Visual Studio-tegoed dat beschikbaar is in het account van de gebruiker. Zie [Abonnementen voor Visual Studio en Partner Network overdragen](#transfer-visual-studio-and-partner-network-subscriptions) voor meer informatie.
 
 
 ## <a name="frequently-asked-questions-faq-for-recipients"></a>Veelgestelde vragen (FAQ) voor ontvangers
@@ -176,7 +173,7 @@ Deze veelgestelde vragen zijn van toepassing op gebruikers die het eigendom van 
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Als ik het eigendom van de facturering van een abonnement van een ander account overneem, hebben gebruikers in dat account dan nog steeds toegang tot mijn resources?
 
-Ja. Als uw account zich echter in een Azure AD-tenant bevindt die afwijkt van de tenant van het abonnement en de gebruiker die de overdrachtsaanvraag heeft verzonden, het abonnement verplaatst naar de tenant van uw account, worden de [beheerdersrollen](add-change-subscription-administrator.md) en [RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) verwijderd. Als u de gebruikers wilt weergeven die [toegang op basis van rollen (RBAC)](../../role-based-access-control/overview.md) hebben om de resources in het abonnement te beheren, gebruikt u de volgende stappen:
+Ja. [Beheerdersrollen](add-change-subscription-administrator.md) en [RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) kunnen worden verwijderd. De toegang wordt verbroken als uw account zich in een andere Azure AD-tenant bevindt dan de tenant van het abonnement en de gebruiker die de overdrachtaanvraag heeft verzonden, het abonnement verplaatst naar de tenant van uw account. Als u de gebruikers wilt weergeven die [toegang op basis van rollen (RBAC)](../../role-based-access-control/overview.md) hebben om de resources in het abonnement te beheren, gebruikt u de volgende stappen:
 
 1. Ga naar de [pagina Abonnement in Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Selecteer het abonnement dat u wilt controleren en selecteer in het linkerdeelvenster vervolgens **Toegangsbeheer (IAM)** .
@@ -193,7 +190,7 @@ Als ontvangers de toegang tot hun resources willen beperken, moeten ze overwegen
   1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
   2. Selecteer in het Hub-menu **Alle resources**.
   3. Selecteer de resource.
-  4. Klik op de resourcepagina op **Instellingen**. Hier kunt u bestaande geheimen weergeven en bijwerken.
+  4. Selecteer **Instellingen** op de resourcepagina. Hier kunt u bestaande geheimen weergeven en bijwerken.
 
 ### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>Als ik het eigendom van de facturering tijdens een factureringscyclus overneem, moet ik dan betalen voor de volledige factureringscyclus?
 

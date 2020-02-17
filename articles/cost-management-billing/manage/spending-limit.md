@@ -2,21 +2,21 @@
 title: Bestedingslimiet van Azure | Microsoft Docs
 description: In dit artikel wordt beschreven hoe een bestedingslimiet van Azure werkt en hoe u deze kunt verwijderen.
 author: bandersmsft
-manager: amberb
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76314120"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188307"
 ---
 # <a name="azure-spending-limit"></a>Bestedingslimiet voor Azure
 
@@ -36,30 +36,48 @@ Als u een gratis Azure-account hebt en de bestedingslimiet bereikt, kunt u een u
 
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>De bestedingslimiet verwijderen in de Azure-portal
 
+U kunt de bestedingslimiet op elk gewenst moment verwijderen zolang er een geldige betaalmethode aan uw Azure-abonnement is gekoppeld. Voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden, zoals Visual Studio Enterprise en Visual Studio Professional, kunt u er ook voor kiezen om de bestedingslimiet definitief te verwijderen of alleen voor de huidige factureringsperiode. Als u alleen voor de huidige factureringsperiode kiest, wordt de bestedingslimiet automatisch ingeschakeld aan het begin van de volgende factureringsperiode.
+
+Als u een gratis Azure-account hebt, raadpleegt u [Uw Azure-abonnement upgraden](upgrade-azure-subscription.md) om uw bestedingslimiet te verwijderen. Ga anders als volgt te werk om de bestedingslimiet te verwijderen:
+
 <a id="remove"></a>
 
-U kunt de bestedingslimiet op elk gewenst moment verwijderen zolang er een geldige betaalmethode aan uw Azure-abonnement is gekoppeld. Voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden, zoals Visual Studio Enterprise en Visual Studio Professional, kunt u de bestedingslimiet ook inschakelen aan het begin van uw volgende factureringsperiode.
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar **Kostenbeheer en facturering**.
 
-Ga als volgt te werk om de bestedingslimiet te verwijderen:
+    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/spending-limit/search-bar.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Ga naar **Abonnementen**.
-1. Selecteer uw abonnement. Selecteer bijvoorbeeld *Visual Studio Enterprise*.
-1. Selecteer **Beheren** bovenaan de pagina. U wordt omgeleid naar https://account.azure.com/. Selecteer **Bestedingslimiet verwijderen** aan de rechterkant van de pagina.  
-  ![Voorbeeld met de optie Bestedingslimiet verwijderen](./media/spending-limit/account-azure-com-spending-limit.png)
-1. U wordt teruggeleid naar de Azure-portal. Selecteer een optie die geschikt is voor u en selecteer vervolgens een betalingswijze. Selecteer **Finish**.  
-  ![Een optie selecteren om de bestedingslimiet te verwijderen](./media/spending-limit/remove-spending-limit.png)
+1. Selecteer uw abonnement in de lijst **Mijn abonnementen**. Selecteer bijvoorbeeld *Visual Studio Enterprise*. 
 
-| Optie | Effect |
-| --- | --- |
-| Bestedingslimiet voor onbepaalde tijd verwijderen | Hiermee wordt de bestedingslimiet verwijderd zonder dat deze aan het begin van de volgende factureringsperiode automatisch weer wordt ingeschakeld. |
-| Bestedingslimiet voor de huidige factureringsperiode verwijderen | Hiermee wordt de bestedingslimiet verwijderd waarna deze automatisch weer wordt ingeschakeld aan het begin van de volgende factureringsperiode. |
+   ![Schermopname van het overzicht van Mijn abonnementen](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
+    
+1. Klik in het abonnementsoverzicht op de oranje banner om de bestedingslimiet te verwijderen.
+    
+    ![Schermopname met banner voor het verwijderen van de bestedingslimiet](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
+
+1. Geef aan of u de bestedingslimiet voor onbepaalde tijd wilt verwijderen of alleen voor de huidige factureringsperiode.
+    
+      ![Schermopname met blade voor het verwijderen van de bestedingslimiet](./media/spending-limit/remove-spending-limit-blade-x.png)
+    
+      | Optie | Effect |
+      | --- | --- |
+      | Bestedingslimiet voor onbepaalde tijd verwijderen | De bestedingslimiet wordt niet automatisch weer ingeschakeld aan het begin van de volgende factureringsperiode. U kunt deze echter op elk gewenst moment zelf weer inschakelen. |
+      | Bestedingslimiet voor de huidige factureringsperiode verwijderen | De bestedingslimiet wordt automatisch weer ingeschakeld aan het begin van de volgende factureringsperiode. |
+
+
+1. Klik op **Betalingswijze selecteren** om een betalingswijze te kiezen voor uw abonnement. Dit wordt de actieve betalingswijze voor uw abonnement.
+
+1. Klik op **Voltooien**.
+
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Waarom u de bestedingslimiet zou willen verwijderen
 
 De bestedingslimiet kan ervoor zorgen dat u bepaalde Microsoft-services en services van derden niet meer kunt implementeren of gebruiken. Hieronder ziet u de situaties waarin u het beste de bestedingslimiet van uw abonnement kunt verwijderen.
 
--  U bent van plan eigen installatiekopieën als Oracle of services als Azure DevOps Services te implementeren. In deze situatie bereikt u bijna meteen de bestedingslimiet, waardoor uw abonnement wordt uitgeschakeld.
+-  U bent van plan installatiekopieën van derden zoals Oracle of services als Azure DevOps Services te implementeren. In deze situatie bereikt u bijna meteen de bestedingslimiet, waardoor uw abonnement wordt uitgeschakeld.
 - U hebt services die u niet wilt onderbreken. Wanneer u de bestedingslimiet bereikt, worden Azure-resources die u hebt geïmplementeerd uit de productie genomen. Ook worden uw virtuele machines van Azure stopgezet en wordt de toewijzing ervan ongedaan gemaakt. Als u services hebt die u niet wilt onderbreken, moet u de bestedingslimiet verwijderen.
 - U hebt services en bronnen met instellingen zoals virtuele IP-adressen die u niet wilt kwijtraken. Deze instellingen gaan verloren wanneer u de bestedingslimiet bereikt en de toewijzing van de services en bronnen ongedaan wordt gemaakt.
 
@@ -67,9 +85,20 @@ De bestedingslimiet kan ervoor zorgen dat u bepaalde Microsoft-services en servi
 
 Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde tijd is verwijderd voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden. U kunt deze functie gebruiken om uw bestedingslimiet automatisch aan het begin van de volgende factureringsperiode in te schakelen.
 
-1. Meld u aan bij het [Accountcentrum](https://account.windowsazure.com/Subscriptions).
-1. Selecteer de gele banner om de optie voor de bestedingslimiet te wijzigen.
-1. Kies **Bestedingslimiet inschakelen in de volgende factureringsperiode \<begindatum van de factureringsperiode\>**
+
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar **Kostenbeheer en facturering**.
+
+    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/spending-limit/search-bar.png)
+
+1. Selecteer uw abonnement in de lijst **Mijn abonnementen**. Selecteer bijvoorbeeld *Visual Studio Enterprise*. 
+
+   ![Schermopname van het overzicht van Mijn abonnementen](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
+    
+1. Klik in het overzicht van het abonnement op de banner boven aan de pagina om de bestedingslimiet weer in te schakelen.
 
 ## <a name="custom-spending-limit"></a>Aangepast bestedingslimiet
 

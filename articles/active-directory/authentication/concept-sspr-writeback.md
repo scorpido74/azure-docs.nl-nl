@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161576"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368173"
 ---
 # <a name="what-is-password-writeback"></a>Wat is wacht woord terugschrijven?
 
@@ -158,13 +158,13 @@ Wacht woorden worden weer gegeven in de volgende situaties:
 Wacht woorden worden *niet* weer gegeven in een van de volgende situaties:
 
 * **Niet-ondersteunde bewerkingen voor eind gebruikers**
-   * Eind gebruikers stellen hun eigen wacht woord opnieuw in met behulp van Power shell versie 1, versie 2 of Azure AD Graph API
+   * Eind gebruikers stellen hun eigen wacht woord opnieuw in met behulp van Power shell versie 1, versie 2 of de Microsoft Graph-API
 * **Niet-ondersteunde beheerders bewerkingen**
-   * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers van Power shell versie 1, versie 2 of Azure AD Graph API
+   * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers van Power shell versie 1, versie 2 of de Microsoft Graph-API
    * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers vanuit het [Microsoft 365-beheer centrum](https://admin.microsoft.com)
 
 > [!WARNING]
-> Gebruik van het selectie vakje ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' in on-premises Active Directory beheer Programma's, zoals Active Directory gebruikers en computers, of de Active Directory-beheercentrum wordt ondersteund als een preview-functie van Azure AD Connect. Zie het artikel [wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)voor meer informatie.
+> Gebruik van het selectie vakje ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' in on-premises Active Directory beheer Programma's, zoals Active Directory gebruikers en computers, of de Active Directory-beheercentrum wordt ondersteund als een preview-functie van Azure AD Connect. Zie het artikel [wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

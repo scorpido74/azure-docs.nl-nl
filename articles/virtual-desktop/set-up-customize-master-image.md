@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013153"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368798"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -22,13 +22,13 @@ In dit artikel leest u hoe u een installatie kopie van een virtuele harde schijf
 
 Windows 10 Enter prise multi-session is beschikbaar in de galerie met installatie kopieën van Azure. Er zijn twee opties voor het aanpassen van deze installatie kopie.
 
-De eerste optie is het inrichten van een virtuele machine (VM) in azure door de instructies te volgen in [een VM maken op basis van een beheerde installatie kopie](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)en vervolgens door te gaan naar de voor [bereiding en installatie van software](set-up-customize-master-image.md#software-preparation-and-installation).
+De eerste optie is het inrichten van een virtuele machine (VM) in azure door de instructies te volgen in [een VM maken op basis van een beheerde installatie kopie](../virtual-machines/windows/create-vm-generalized-managed.md)en vervolgens door te gaan naar de voor [bereiding en installatie van software](set-up-customize-master-image.md#software-preparation-and-installation).
 
 De tweede optie is om de installatie kopie lokaal te maken door de installatie kopie te downloaden, een Hyper-V-VM in te richten en deze aan te passen aan uw behoeften, die in de volgende sectie worden behandeld.
 
 ### <a name="local-image-creation"></a>Lokale installatie kopie maken
 
-Zodra u de installatie kopie naar een lokale locatie hebt gedownload, opent u **Hyper-V-beheer** om een virtuele machine te maken met de VHD die u hebt gekopieerd. De volgende instructies zijn een eenvoudige versie, maar u vindt meer gedetailleerde instructies voor het [maken van een virtuele machine in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Zodra u de installatie kopie naar een lokale locatie hebt gedownload, opent u **Hyper-V-beheer** om een virtuele machine te maken met de VHD die u hebt gekopieerd. De volgende instructies zijn een eenvoudige versie, maar u vindt meer gedetailleerde instructies voor het [maken van een virtuele machine in Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
 
 Een virtuele machine maken met de gekopieerde VHD:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Vaste schijf
 
-Als u een virtuele machine maakt op basis van een bestaande VHD, wordt standaard een dynamische schijf gemaakt. U kunt het wijzigen naar een vaste schijf door **schijf bewerken** te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Zie [een Windows VHD of VHDX voorbereiden voor het uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)voor meer gedetailleerde instructies.
+Als u een virtuele machine maakt op basis van een bestaande VHD, wordt standaard een dynamische schijf gemaakt. U kunt het wijzigen naar een vaste schijf door **schijf bewerken** te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Zie [een Windows VHD of VHDX voorbereiden voor het uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)voor meer gedetailleerde instructies.
 
 ![Een scherm afbeelding van de optie voor het bewerken van de schijf.](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen, raden we 
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Gebruikers profiel container instellen (FSLogix)
 
-Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial).
+Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](/fslogix/configure-cloud-cache-tutorial/).
 
 ### <a name="configure-windows-defender"></a>Windows Defender configureren
 
@@ -78,9 +78,9 @@ Als Windows Defender is geconfigureerd in de virtuele machine, moet u ervoor zor
 
 Deze configuratie verwijdert alleen het scannen van VHD-en VHDX-bestanden tijdens een bijlage, maar heeft geen invloed op real-time scans.
 
-Zie [Windows Defender anti virus-uitsluitingen configureren op Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)voor meer gedetailleerde instructies voor het configureren van Windows Defender op Windows Server.
+Zie [Windows Defender anti virus-uitsluitingen configureren op Windows Server](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/)voor meer gedetailleerde instructies voor het configureren van Windows Defender op Windows Server.
 
-Zie [uitsluitingen configureren en valideren op basis van bestands extensie en maplocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
+Zie [uitsluitingen configureren en valideren op basis van bestands extensie en maplocatie](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
 
 ### <a name="disable-automatic-updates"></a>Automatische updates uitschakelen
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 Dit artikel heeft geen betrekking op het configureren van taal-en regionale ondersteuning. Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Talen toevoegen aan Windows-installatie kopieën](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [Onderdelen op aanvraag](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Taal-en regio functies op aanvraag (DOM)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Talen toevoegen aan Windows-installatie kopieën](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [Onderdelen op aanvraag](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Taal-en regio functies op aanvraag (DOM)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>Andere toepassingen en register configuratie
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>De installatie kopie voorbereiden voor uploaden naar Azure
 
-Nadat u de configuratie hebt voltooid en alle toepassingen hebt geïnstalleerd, volgt u de instructies in [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) om de installatie kopie voor te bereiden.
+Nadat u de configuratie hebt voltooid en alle toepassingen hebt geïnstalleerd, volgt u de instructies in [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) om de installatie kopie voor te bereiden.
 
 Nadat de installatie kopie is voor bereid voor het uploaden, moet u ervoor zorgen dat de virtuele machine de status uitgeschakeld of niet-toegewezen heeft.
 

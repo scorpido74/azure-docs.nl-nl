@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290696"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367844"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen
 
@@ -34,7 +34,7 @@ Nadat de toestemming van de eind gebruiker is uitgeschakeld of beperkt, zijn er 
     * Werk de relevante documentatie, bewaking, automatisering, enzovoort bij.
     * Wijzigingen in het proces door geven aan alle betrokken gebruikers, ontwikkel aars, ondersteunings teams en IT-beheerders.
 
-## <a name="auditing-and-monitoring"></a>Controleren en bewaken
+## <a name="auditing-and-monitoring"></a>Controleren en controleren
 
 1. [Apps controleren en machtigingen verlenen](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) in uw organisatie om ervoor te zorgen dat er geen onzekere of verdachte toepassingen toegang hebben gekregen tot gegevens.
 
@@ -100,7 +100,7 @@ Zie [machtigingen voor Tenant-brede beheerder toestaan voor een toepassing](gran
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Toestemming verlenen namens een specifieke gebruiker
 
-In plaats van toestemming te verlenen voor de hele organisatie, kan een beheerder ook de [Azure AD-Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) gebruiken om toestemming te geven aan gedelegeerde machtigingen namens één gebruiker. Als u dit wilt doen, stuurt u een `POST` aanvraag om een [OAuth2PermissionGrant](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) -entiteit te maken waarbij `consentType` is ingesteld op Principal en `principalId` is ingesteld op de object-id voor de gebruiker namens wie toestemming wordt verleend.
+In plaats van toestemming te verlenen voor de hele organisatie, kan een beheerder ook de [micro soft-Graph API](https://docs.microsoft.com/graph/use-the-api) gebruiken om toestemming te verlenen aan gedelegeerde machtigingen namens één gebruiker. Zie [toegang namens een gebruiker verkrijgen](https://docs.microsoft.com/graph/auth-v2-user)voor meer informatie.
 
 ## <a name="limiting-user-access-to-applications"></a>Gebruikers toegang tot toepassingen beperken
 
@@ -110,7 +110,7 @@ Zie [Azure AD gebruiken voor toegang tot toepassingen voor](what-is-access-manag
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Vijf stappen om uw identiteitsinfrastructuur te beveiligen](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+[Vijf stappen voor het beveiligen van uw identiteits infrastructuur](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 
 [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
 

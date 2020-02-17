@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769656"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367265"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Ingebouwde apps publiceren in virtueel bureau blad van Windows
 
@@ -23,7 +23,7 @@ In dit artikel wordt uitgelegd hoe u apps publiceert in uw virtuele Windows-desk
 Een ingebouwde app publiceren:
 
 1. Maak verbinding met een van de virtuele machines in uw hostgroep.
-2. Volg de instructies in [dit artikel](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)om de **PackageFamilyName** op te halen van de app die u wilt publiceren.
+2. Volg de instructies in [dit artikel](/powershell/module/appx/get-appxpackage?view=win10-ps/)om de **PackageFamilyName** op te halen van de app die u wilt publiceren.
 3. Voer ten slotte de volgende cmdlet uit met `<PackageFamilyName>` vervangen door de **PackageFamilyName** die u in de vorige stap hebt gevonden:
    
    ```powershell

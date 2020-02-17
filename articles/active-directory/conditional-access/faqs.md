@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186050"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368085"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory
 
@@ -40,7 +40,7 @@ Een beleid voor voorwaardelijke toegang stelt vereisten in voor het openen van e
 
 Beleid voor voorwaardelijke toegang is van toepassing op alle gebruikers accounts. Dit geldt ook voor gebruikers accounts die worden gebruikt als service accounts. Vaak kan een service account dat zonder toezicht wordt uitgevoerd, niet voldoen aan de vereisten van een beleid voor voorwaardelijke toegang. Multi-factor Authentication kan bijvoorbeeld vereist zijn. Service accounts kunnen worden uitgesloten van een beleid met behulp van instellingen voor beleids beheer voor voorwaardelijke toegang. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Zijn er grafiek-Api's beschikbaar voor het configureren van beleid voor voorwaardelijke toegang?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Zijn er Microsoft Graph Api's beschikbaar voor het configureren van beleid voor voorwaardelijke toegang?
 
 Op dit moment is er geen. 
 

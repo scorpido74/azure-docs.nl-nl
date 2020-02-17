@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676449"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368764"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Zelf studie: Service waarschuwingen instellen
 
@@ -27,9 +27,9 @@ Zie de [Azure Health-documentatie](https://docs.microsoft.com/azure/service-heal
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Zelf studie: een Tenant maken in Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Zelf studie: Service-principals en roltoewijzingen maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Zelf studie: een hostgroep maken met Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [Zelf studie: een Tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+- [Zelf studie: Service-principals en roltoewijzingen maken met Power shell](create-service-principal-role-powershell.md)
+- [Zelf studie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>Service waarschuwingen maken
 
@@ -48,7 +48,7 @@ U wordt aangeraden Service waarschuwingen te maken voor de volgende status gebeu
 
 Service waarschuwingen configureren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **service health.**
 3. Volg de instructies in [waarschuwingen voor het maken van activiteiten logboeken voor service meldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) om uw waarschuwingen en meldingen in te stellen.
 

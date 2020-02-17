@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606941"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367415"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Zelf studie: Service-principals en roltoewijzingen maken met behulp van Power shell
 
@@ -38,7 +38,7 @@ Voordat u service-principals en roltoewijzingen kunt maken, moet u drie dingen d
     Install-Module AzureAD
     ```
 
-2. [Down load en importeer de Windows-module virtueel bureau blad Power shell](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
+2. [Down load en importeer de Windows-module virtueel bureau blad Power shell](/powershell/windows-virtual-desktop/overview/).
 
 3. Volg alle instructies in dit artikel in dezelfde Power shell-sessie. Het proces werkt mogelijk niet als u de Power shell-sessie onderbreekt door het venster te sluiten en later opnieuw te openen.
 
@@ -58,7 +58,7 @@ Voordat u de roltoewijzing voor uw Service-Principal maakt, bekijkt u uw referen
 
 Hier volgen de drie referenties die u moet noteren en de cmdlets die u moet uitvoeren om ze te verkrijgen:
 
-- Wacht woord
+- Wachtwoord:
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -80,7 +80,7 @@ Hier volgen de drie referenties die u moet noteren en de cmdlets die u moet uitv
 
 Vervolgens moet u een roltoewijzing maken zodat de Service-Principal zich kan aanmelden bij Windows virtueel bureau blad. Zorg ervoor dat u zich aanmeldt met een account dat machtigingen heeft om roltoewijzingen te maken.
 
-[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
 
 Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw tenants weer te geven.
 

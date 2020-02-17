@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901761"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188536"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -85,8 +85,6 @@ Als u geen gegevens voor een abonnement ziet en u wilt bepalen of uw abonnement 
 
 In de volgende tabellen ziet u welke gegevens wel en niet worden opgenomen in Cost Management. Alle kosten worden geschat totdat er een factuur wordt gegenereerd. Gratis en vooruitbetaalde tegoeden zijn niet inbegrepen in de kosten.
 
-**Gegevens over kosten en gebruik**
-
 | **Inbegrepen** | **Niet inbegrepen** |
 | --- | --- |
 | Gebruik van Azure-service<sup>5</sup>        | Ondersteuningskosten: zie [De voorwaarden op uw Microsoft Azure-factuur begrijpen](../understand/understand-invoice.md) voor meer informatie. |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> Marketplace-aankopen zijn op dit moment niet beschikbaar voor 
 
 _<sup>**7**</sup> Reserveringsaankopen zijn op dit moment alleen beschikbaar voor EA-accounts (Enterprise Agreement)._
 
-**Metagegevens**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Hoe tags worden gebruikt bij kosten- en gebruiksgegevens
 
-| **Inbegrepen** | **Niet inbegrepen** |
-| --- | --- |
-| Resourcetags<sup>8</sup> | Tags van resourcegroepen |
+Azure Cost Management ontvangt tags als onderdeel van elke gebruiksrecord die door de afzonderlijke services wordt verzonden. De volgende beperkingen zijn van toepassing op deze tags:
 
-_<sup>**8**</sup> Resourcetags worden toegepast wanneer het gebruik van elke service wordt verzonden en zijn niet met terugwerkende kracht beschikbaar in het historische gebruik._
+- Tags moeten rechtstreeks worden toegepast op resources en worden niet impliciet overgenomen van de bovenliggende resourcegroep.
+- Resourcetags worden alleen ondersteund voor resources die zijn geïmplementeerd voor resourcegroepen.
+- Sommige geïmplementeerde resources bieden mogelijk geen ondersteuning voor tags of bevatten geen tags in gebruiksgegevens. Zie [Tags-ondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md).
+- Resourcetags worden alleen opgenomen in gebruiksgegevens terwijl de tag wordt toegepast: tags worden niet toegepast op historische gegevens.
+- Resourcetags zijn alleen beschikbaar in Cost Management nadat de gegevens zijn vernieuwd. Zie [Updatefrequentie van gebruiksgegevens varieert](#usage-data-update-frequency-varies).
+- Resourcetags zijn alleen beschikbaar in Cost Management wanneer de resource actief is of wordt uitgevoerd en gebruiksrecords produceert (dus niet wanneer de toewijzing van een virtuele machine ongedaan wordt gemaakt).
+- Voor het beheren van tags moet de inzender toegang tot elke resource hebben.
+- Voor het beheren van tagbeleid moet de eigenaar of beleidsinzender toegang hebben tot een beheergroep, abonnement of resourcegroep.
+    
+Als een specifieke tag niet wordt weergegeven in Cost Management, ga dan het volgende na:
+
+- Is de tag rechtstreeks toegepast op de resource?
+- Is de tag meer dan 24 uur geleden toegepast? Zie [Frequentie van bijwerken van gebruiksgegevens varieert](#usage-data-update-frequency-varies)
+- Ondersteunt het resourcetype tags? De volgende resourcetypen bieden geen ondersteuning voor tags in gebruiksgegevens vanaf 1 december 2019. Zie [Tagsondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md) voor een volledige lijst van wat er wordt ondersteund.
+    - Azure Active Directory B2C
+    - Azure-firewalls
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - Load balancers
+    - Network Watcher
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - VPN-gateway
+    
+Hier volgen enkele tips voor het werken met tags:
+
+- Plan vooruit en definieer een coderingsstrategie waarmee u de kosten per organisatie, toepassing, omgeving, enzovoort, kunt opsplitsen.
+- Gebruik Azure Policy om de tags van een resourcegroep te kopiëren naar afzonderlijke resources en uw coderingsstrategie af te dwingen.
+- Gebruik de Tags-API in combinatie met Query of UsageDetails om alle kosten op basis van de huidige tags op te halen.
+
 
 **Upgrade van gratis proefversie naar betalen per gebruik**
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988199"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048195"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
 
@@ -120,7 +120,7 @@ U kunt het eigendom van facturering aanvragen van de hieronder vermelde typen ab
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Het Enterprise Dev/Test-abonnement wordt bij overdracht gefactureerd tegen het tarief voor betalen per gebruik. Eventuele korting die via de Enterprise Dev/Test-aanbieding wordt aangeboden via de EA van de klant, is niet beschikbaar voor de CSP-partner.
+\* Een Dev/Test-abonnement moet eerst worden omgezet naar een EA Enterprise-aanbieding via een ondersteuningsticket. Een Enterprise Dev/Test-abonnement wordt gefactureerd met een tarief op basis van betalen per gebruik nadat het is overgezet. Kortingen die via de Enterprise Dev/Test-aanbieding worden aangeboden met de EA van de klant, zijn niet beschikbaar voor de CSP-partner.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 

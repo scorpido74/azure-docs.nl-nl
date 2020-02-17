@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905732"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366212"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
 Met Azure Machine Learning pijp lijnen kunt u werk stromen maken in uw machine learning projecten. Deze werk stromen hebben een aantal voor delen: 
 
-+ Eenvoud
++ Eenvoudig
 + Snelheid
 + Herhaal baarheid
 + Flexibiliteit
@@ -31,7 +31,7 @@ Met Azure Machine Learning pijp lijnen kunt u werk stromen maken in uw machine l
 
 Deze voor delen worden aanzienlijk zodra uw machine learning project wordt verplaatst naar een niet-versneld onderzoek en naar herhalingen. Zelfs eenvoudige pijp lijnen met één stap kunnen waardevol zijn. Machine learning-projecten zijn vaak in een complexe status en kunnen een vrijs telling zijn om een enkele werk stroom een trivial proces te maken.
 
-Meer informatie over het [uw eerste pijplijn](how-to-create-your-first-pipeline.md).
+Meer informatie over het [maken van uw eerste pijp lijn](how-to-create-your-first-pipeline.md).
 
 ![Machine learning-pijp lijnen in Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -40,11 +40,12 @@ Meer informatie over het [uw eerste pijplijn](how-to-create-your-first-pipeline.
 
 De Azure-Cloud biedt verschillende andere pijp lijnen, elk met een ander doel. De volgende tabel geeft een lijst van de verschillende pijp lijnen en waarvoor ze worden gebruikt:
 
-| Pijplijn | Wat het doet | Canonieke pijp |
-| ---- | ---- | ---- |
-| Azure Machine Learning pijp lijnen | Hiermee definieert u herbruikbare machine learning werk stromen die kunnen worden gebruikt als sjabloon voor uw machine learning scenario's. | Model voor gegevens > |
-| [Azure Data Factory-pijplijnen](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Groepeert gegevens verplaatsing, trans formatie en controle activiteiten die nodig zijn om een taak uit te voeren.  | Gegevens > gegevens |
-| [Azure-pijp lijnen](https://azure.microsoft.com/services/devops/pipelines/) | Continue integratie en levering van uw toepassing op elk platform/elke Cloud  | Code-> app/service |
+| Scenario | Primaire persoon | Azure-aanbieding | OSS-aanbieding | Canonieke pijp | Sterke punten | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| Model indeling (machine learning) | Gegevenswetenschapper | Azure Machine Learning pijp lijnen | Kubeflow-pijp lijnen | Model voor gegevens > | Distributie, caching, code, opnieuw gebruiken | 
+| Gegevens indeling (gegevens voorbereiding) | Data Engineer | [Azure Data Factory-pijplijnen](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache-lucht flow | Gegevens > gegevens | Sterk getypeerde verplaatsing. Gegevens gerichte activiteiten. |
+| App-indeling voor code & (CI/CD) | App-ontwikkelaar/OPS | [Azure DevOps-pijp lijnen](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + model-> app/service | Ondersteuning voor de meeste open en flexibile activiteiten, goedkeurings wachtrijen, fasen met beperking | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Wat kunnen Azure ML-pijp lijnen doen?
 
@@ -52,7 +53,7 @@ Een Azure Machine Learning pijp lijn is een onafhankelijk uitvoer bare werk stro
 
 + Gegevensvoorbereiding, waaronder importeren, valideren en opschonen, munging en transformatie, normalisatie en fasering
 + Trainingsconfiguratie met inbegrip van parameteriseren van argumenten, bestandspaden en logboek-/rapportageconfiguratie
-+ Training en validatie efficiënt en herhaaldelijk, wat kan bestaan uit het opgeven van specifieke gegevens subsets, verschillende hardware Compute-bronnen, gedistribueerde verwerking en voortgangs bewaking
++ Training en validatie efficiënt en herhaaldelijk. Efficiëntie kan afkomstig zijn van het opgeven van specifieke gegevens subsets, verschillende hardwarebronnen, gedistribueerde verwerking en voortgangs bewaking
 + Implementatie, inclusief versiebeheer, schalen, inrichten en toegangsbeheer 
 
 Met onafhankelijke stappen kunnen er meerdere gegevens wetenschappers tegelijk op dezelfde pijp lijn werken zonder gegevens over reken bronnen te hoeven te gebruiken. Door afzonderlijke stappen te maken, kunt u voor elke stap ook eenvoudig verschillende reken typen/-groottes gebruiken.
@@ -69,7 +70,7 @@ Kortom, alle complexe taken van de machine learning levenscyclus kunnen worden g
 
 Een Azure ML-pijp lijn voert een volledige logische werk stroom uit met een geordende reeks stappen. Elke stap is een discrete verwerkings actie. Pijp lijnen worden uitgevoerd in de context van een Azure Machine Learning [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py).
 
-In de eerste stadia van een ML-project is het prima om één Jupyter-notebook of python-script te hebben dat alle werkzaamheden van de Azure-werk ruimte en resource configuratie, het voorbereiden van gegevens, het uitvoeren van de configuratie, training en validatie. Maar net zoals functies en klassen snel als voor keur worden beschouwd voor één enkel verplicht code blok, worden werk stromen snel voor keur aan een monolithische-notebook of-script. 
+In de vroege stadia van een ML-project is het prima om één Jupyter-notebook of python-script te hebben dat alle werkzaamheden van de Azure-werk ruimte en resource configuratie, het voorbereiden van gegevens, het uitvoeren van de configuratie, training en validatie. Maar net zoals functies en klassen snel als voor keur worden beschouwd voor één enkel verplicht code blok, worden werk stromen snel voor keur aan een monolithische-notebook of-script. 
 
 Door modularizing ML-taken ondersteunen pijp lijnen de computer wetenschappen die nood zakelijk is voor een onderdeel. Modulariteit is duidelijk van cruciaal belang voor het projecteren van succes bij het Program meren in teams, maar zelfs bij het werken met een klein ML-project zijn er afzonderlijke taken nodig, die elk een goede complexiteit hebben. Taken omvatten: werkruimte configuratie en gegevens toegang, gegevens voorbereiding, model definitie en-configuratie en implementatie. Terwijl de uitvoer van een of meer taken de invoer naar een andere taak vormt, zijn de exacte implementatie details van de ene taken, met de beste afleidingen in de volgende. In het ergste geval kan de reken status van de ene taak leiden tot een fout in een andere. 
 
@@ -197,10 +198,10 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 
 |Groot voordeel|Beschrijving|
 |:-------:|-----------|
-|**Zonder toezicht&nbsp;wordt uitgevoerd**|Stappen plannen om parallel of op een betrouw bare en zonder toezicht te worden uitgevoerd. De voor bereiding en het model leren van gegevens kunnen de afgelopen dagen of weken zijn en met pijp lijnen kunt u zich richten op andere taken terwijl het proces wordt uitgevoerd. |
+|**&nbsp;uitvoeringen zonder toezicht**|Stappen plannen om parallel of op een betrouw bare en zonder toezicht te worden uitgevoerd. De voor bereiding en het model leren van gegevens kunnen de afgelopen dagen of weken zijn en met pijp lijnen kunt u zich richten op andere taken terwijl het proces wordt uitgevoerd. |
 |**Heterogene compute**|Gebruik meerdere pijp lijnen die betrouwbaar zijn afgestemd op heterogene en schaal bare reken resources en opslag locaties. Maak efficiënt gebruik van beschik bare reken resources door afzonderlijke pijplijn stappen uit te voeren op verschillende reken doelen, zoals HDInsight, GPU data Science Vm's en Databricks.|
 |**Herbruikbaarheid**|Maak pijplijn sjablonen voor specifieke scenario's, zoals retraining en batch-scores. Activeer gepubliceerde pijp lijnen van externe systemen via eenvoudige REST-aanroepen.|
-|**Wijzigingen bijhouden en versiebeheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
+|**Bijhouden en versie beheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
 | **Modulariteit** | Het scheiden van aandachtspunten en het isoleren van wijzigingen stelt software in staat om sneller te werken met een hogere kwaliteit. | 
 |**Werking**|Met pijp lijnen kunnen gegevens wetenschappers samen werken aan alle gebieden van het machine learning-ontwerp proces, terwijl ze gelijktijdig kunnen werken aan pijplijn stappen.|
 
@@ -223,7 +224,7 @@ Raadpleeg het [notitie blok](https://github.com/Azure/MachineLearningNotebooks/b
 Azure ML-pijp lijnen vormen een krachtige faciliteit voor het leveren van de waarde in de vroege ontwikkel stadia. De waarde neemt toe naarmate het team en project groeien. In dit artikel wordt uitgelegd hoe u pijp lijnen kunt opgeven met de Azure Machine Learning python SDK en die zijn georganiseerd op Azure. U hebt een aantal Basic-bron code gezien en deze is geïntroduceerd in enkele van de beschik bare `PipelineStep` klassen. U moet een idee hebben van het gebruik van Azure ML-pijp lijnen en hoe Azure deze uitvoert. 
 
 
-+ Meer informatie over het [uw eerste pijplijn](how-to-create-your-first-pipeline.md).
++ Meer informatie over het [maken van uw eerste pijp lijn](how-to-create-your-first-pipeline.md).
 
 + Meer informatie over het [uitvoeren van batch voorspellingen voor grote gegevens](tutorial-pipeline-batch-scoring-classification.md ).
 

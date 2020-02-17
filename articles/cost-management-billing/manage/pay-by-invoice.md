@@ -2,28 +2,28 @@
 title: Per factuur betalen voor Azure-abonnementen
 description: Hier wordt beschreven hoe u via een factuur betaalt voor Azure-abonnementen.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994335"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133631"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Per factuur betalen voor uw Azure-abonnement
 
 Als u wilt overstappen op betalen via factuur, dient u uw factuur per cheque/directe overboeking te betalen binnen dertig dagen na de factuurdatum. Als u in aanmerking wilt komen om uw Azure-abonnement te betalen via factuur, dient u een aanvraag in bij de ondersteuning voor Azure. Zodra uw aanvraag is goedgekeurd, kunt u overstappen op een betaling via factuur (cheque/directe overboeking) in [Azure Portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> * Betaling via factuur (cheque/directe overboeking) is alleen verkrijgbaar voor zakelijke accounts.
+> * Betalen per factuur (cheque/overschrijving) is alleen beschikbaar voor klanten die Azure namens een bedrijf gebruiken.
 > * Betaal alle openstaande kosten voordat u overstapt op betalen via factuur.
 > * Betaling via factuur wordt momenteel niet ondersteund voor Global Azure in China.
 

@@ -15,18 +15,18 @@ ms.date: 05/13/2019
 ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f49fce985484e85bcba2883a66ec0b1e6d032a8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12d8e60d3bfeb2e72d52b30dffcec4ad6e6c3f08
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066042"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368178"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing
 
 Bij het aanpassen van kenmerk toewijzingen voor het inrichten van gebruikers, is het mogelijk dat het kenmerk dat u wilt toewijzen niet wordt weer gegeven in de lijst met **bron kenmerken** . Dit artikel laat u zien hoe u het ontbrekende kenmerk kunt toevoegen door het te synchroniseren van uw on-premises Active Directory (AD) naar Azure Active Directory (Azure AD).
 
-Azure AD moet alle gegevens bevatten die nodig zijn voor het maken van een gebruikers profiel bij het inrichten van gebruikers accounts van Azure AD naar een SaaS-app. In sommige gevallen kan het nodig zijn om de gegevens te synchroniseren van uw on-premises AD naar Azure AD. Azure AD Connect worden automatisch bepaalde kenmerken gesynchroniseerd met Azure AD, maar niet alle kenmerken. Bovendien kunnen sommige kenmerken (zoals SAMAccountName) die standaard worden gesynchroniseerd, niet worden weer gegeven via de Azure AD-Graph API. In dergelijke gevallen kunt u de functie Directory-extensie Azure AD Connect gebruiken om het kenmerk te synchroniseren met Azure AD. Op die manier is het kenmerk zichtbaar voor de Azure AD-Graph API en de Azure AD-inrichtings service.
+Azure AD moet alle gegevens bevatten die nodig zijn voor het maken van een gebruikers profiel bij het inrichten van gebruikers accounts van Azure AD naar een SaaS-app. In sommige gevallen kan het nodig zijn om de gegevens te synchroniseren van uw on-premises AD naar Azure AD. Azure AD Connect worden automatisch bepaalde kenmerken gesynchroniseerd met Azure AD, maar niet alle kenmerken. Bovendien worden sommige kenmerken (zoals SAMAccountName) die standaard worden gesynchroniseerd, mogelijk niet weer gegeven met de Microsoft Graph-API. In dergelijke gevallen kunt u de functie Directory-extensie Azure AD Connect gebruiken om het kenmerk te synchroniseren met Azure AD. Op die manier is het kenmerk zichtbaar voor de Microsoft Graph-API en de Azure AD-inrichtings service.
 
 Als de gegevens die u nodig hebt voor het inrichten, zich in Active Directory bevinden, maar niet beschikbaar is om te worden ingericht vanwege de bovenstaande redenen, volgt u deze stappen.
  

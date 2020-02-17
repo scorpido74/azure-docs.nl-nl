@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980220"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367161"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -26,7 +26,7 @@ Ga naar de [technische community van Windows virtueel bureau blad](https://techc
 
 Volg deze instructies als u problemen ondervindt bij het samen voegen van Vm's aan het domein.
 
-- Voeg de VM hand matig toe met behulp van het proces in [een virtuele Windows Server-machine toevoegen aan een beheerd domein](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) of het gebruik van de [sjabloon voor domein deelname](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Voeg de VM hand matig toe met behulp van het proces in [een virtuele Windows Server-machine toevoegen aan een beheerd domein](../active-directory-domain-services/join-windows-vm.md) of het gebruik van de [sjabloon voor domein deelname](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 - Probeer de domein naam te pingen vanaf de opdracht regel op de virtuele machine.
 - Bekijk de lijst met fout berichten voor domein deelname in het [oplossen van fout berichten voor domein deelname](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
@@ -37,7 +37,7 @@ Volg deze instructies als u problemen ondervindt bij het samen voegen van Vm's a
 **Oplossen:** Voer een van de volgende acties uit om het probleem op te lossen.
 
 - Voeg de Vm's hand matig toe aan een domein.
-- De sjabloon opnieuw implementeren wanneer de referenties zijn bevestigd. Zie [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- De sjabloon opnieuw implementeren wanneer de referenties zijn bevestigd. Zie [een hostgroep maken met Power shell](create-host-pools-powershell.md).
 - Virtuele machines toevoegen aan een domein met behulp van een sjabloon met een [bestaande Windows-VM koppelen aan een AD-domein](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Fout: time-out bij het wachten op invoer van de gebruiker
@@ -62,17 +62,17 @@ Volg deze instructies als u problemen ondervindt bij het samen voegen van Vm's a
 
 **Oorzaak 1:** Vm's bevinden zich in een virtueel netwerk dat niet is gekoppeld aan het virtuele netwerk (VNET) waarin het domein zich bevindt.
 
-**Oplossing 1:** Maak VNET-peering tussen het VNET waar Vm's zijn ingericht en het VNET waar de domein controller (DC) wordt uitgevoerd. Zie [een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**Oplossing 1:** Maak VNET-peering tussen het VNET waar Vm's zijn ingericht en het VNET waar de domein controller (DC) wordt uitgevoerd. Zie [een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen](../virtual-network/create-peering-different-subscriptions.md).
 
 **Oorzaak 2:** Wanneer u Azure Active Directory Domain Services (Azure AD DS) gebruikt, zijn de DNS-server instellingen van het virtuele netwerk niet bijgewerkt zodat ze verwijzen naar de beheerde domein controllers.
 
-**Oplossing 2:** Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)om de DNS-instellingen voor het virtuele netwerk met Azure AD DS bij te werken.
+**Oplossing 2:** Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)om de DNS-instellingen voor het virtuele netwerk met Azure AD DS bij te werken.
 
 **Oorzaak 3:** De DNS-server instellingen van de netwerk interface verwijzen niet naar de juiste DNS-server in het virtuele netwerk.
 
 **Oplossing 3:** Voer een van de volgende acties uit om het probleem op te lossen, volgens de stappen in [Change DNS servers].
-- Wijzig de DNS-server instellingen van de netwerk interface in **aangepast** met de stappen van [DNS-servers wijzigen](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) en geef de privé-IP-adressen op van de DNS-servers in het virtuele netwerk.
-- Wijzig de instellingen van de DNS-server van de netwerk interface in **overnemen van het virtuele netwerk** met de stappen van [DNS-servers wijzigen](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)en wijzig vervolgens de DNS-server instellingen van het virtuele netwerk met de stappen van [DNS-servers wijzigen](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
+- Wijzig de DNS-server instellingen van de netwerk interface in **aangepast** met de stappen van [DNS-servers wijzigen](../virtual-network/virtual-network-network-interface.md#change-dns-servers) en geef de privé-IP-adressen op van de DNS-servers in het virtuele netwerk.
+- Wijzig de instellingen van de DNS-server van de netwerk interface in **overnemen van het virtuele netwerk** met de stappen van [DNS-servers wijzigen](../virtual-network/virtual-network-network-interface.md#change-dns-servers)en wijzig vervolgens de DNS-server instellingen van het virtuele netwerk met de stappen van [DNS-servers wijzigen](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>De Windows Virtual Desktop agent en het Windows-opstart laad programma voor virtueel bureau blad zijn niet geïnstalleerd
 
@@ -84,78 +84,78 @@ Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en 
 2. Open **bestanden Verkenner** en ga naar **C:\Windows\Temp\ScriptLog.log**. Als het bestand ontbreekt, geeft dit aan dat de Power shell DSC waarmee de twee onderdelen zijn geïnstalleerd, niet kan worden uitgevoerd in de beschik bare beveiligings context.
 3. Als het bestand **C:\Windows\Temp\ScriptLog.log** aanwezig is, opent u het en controleert u op fout berichten.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Error: Windows Virtual Desktop Agent and Windows Virtual Desktop Agent Boot Loader are missing. C:\Windows\Temp\ScriptLog.log is also missing
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Fout: Windows Virtual Desktop agent en de opstart lader van de Windows Virtual Desktop agent ontbreken. C:\Windows\Temp\ScriptLog.log ontbreekt ook
 
-**Cause 1:** Credentials provided during input for the Azure Resource Manager template were incorrect or permissions were insufficient.
+**Oorzaak 1:** De referenties die zijn opgegeven tijdens de invoer voor de Azure Resource Manager sjabloon zijn onjuist of de machtigingen zijn ontoereikend.
 
-**Fix 1:** Manually add the missing components to the VMs using [Create a host pool with PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Oplossing 1:** Voeg de ontbrekende onderdelen hand matig toe aan de virtuele machines met behulp [van een hostgroep maken met Power shell](create-host-pools-powershell.md).
 
-**Cause 2:** PowerShell DSC was able to start and execute but failed to complete as it can't sign in to Windows Virtual Desktop and obtain needed information.
+**Oorzaak 2:** Power shell DSC kan worden gestart en uitgevoerd, maar is niet voltooid omdat het niet kan worden aangemeld bij het virtuele Windows-bureau blad en de benodigde informatie kan verkrijgen.
 
-**Fix 2:** Confirm the items in the following list.
+**Oplossing 2:** Bevestig de items in de volgende lijst.
 
-- Make sure the account doesn't have MFA.
-- Confirm that the tenant name is accurate and the tenant exists in Windows Virtual Desktop.
-- Confirm the account has at least RDS Contributor permissions.
+- Zorg ervoor dat het account geen MFA heeft.
+- Controleer of de naam van de Tenant juist is en of de Tenant bestaat in het virtuele bureau blad van Windows.
+- Bevestig dat het account ten minste RDS-Inzender machtigingen heeft.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Error: Authentication failed, error in C:\Windows\Temp\ScriptLog.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Fout: de verificatie is mislukt, fout in C:\Windows\Temp\ScriptLog.log
 
-**Cause:** PowerShell DSC was able to execute but couldn't connect to Windows Virtual Desktop.
+**Oorzaak:** Power shell DSC kan worden uitgevoerd, maar kan geen verbinding maken met het virtuele bureau blad van Windows.
 
-**Fix:** Confirm the items in the following list.
+**Oplossen:** Bevestig de items in de volgende lijst.
 
-- Manually register the VMs with the Windows Virtual Desktop service.
-- Confirm account used for connecting to Windows Virtual Desktop has permissions on the tenant to create host pools.
-- Confirm account doesn't have MFA.
+- Registreer de Vm's hand matig met de virtueel-bureaublad service van Windows.
+- Het account dat wordt gebruikt om verbinding te maken met het virtuele bureau blad van Windows, heeft machtigingen voor de Tenant om hostgroepen op te stellen.
+- Het bevestigen van het account heeft geen MFA.
 
-## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows Virtual Desktop Agent is not registering with the Windows Virtual Desktop service
+## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows Virtual Desktop agent registreert niet bij de virtuele bureau blad-service van Windows
 
-When the Windows Virtual Desktop Agent is first installed on session host VMs (either manually or through the Azure Resource Manager template and PowerShell DSC), it provides a registration token. The following section covers troubleshooting issues applicable to the Windows Virtual Desktop Agent and the token.
+Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd op de host van de sessiehost (hand matig of via de Azure Resource Manager sjabloon en Power shell DSC), biedt deze een registratie token. De volgende sectie bevat informatie over het oplossen van problemen die van toepassing zijn op de Windows Virtual Desktop agent en het token.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Error: The status filed in Get-RdsSessionHost cmdlet shows status as Unavailable
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: de status die is opgeslagen in de cmdlet Get-RdsSessionHost, toont de status als niet beschikbaar
 
-![Get-RdsSessionHost cmdlet shows status as Unavailable.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Met de cmdlet Get-RdsSessionHost wordt de status weer gegeven als niet beschikbaar.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Cause:** The agent isn't able to update itself to a new version.
+**Oorzaak:** De agent kan zichzelf niet bijwerken naar een nieuwe versie.
 
-**Fix:** Follow these instructions to manually update the agent.
+**Oplossen:** Volg deze instructies om de agent hand matig bij te werken.
 
-1. Download a new version of the agent on the session host VM.
-2. Launch Task Manager and, in the Service Tab, stop the RDAgentBootLoader service.
-3. Run the installer for the new version of the Windows Virtual Desktop Agent.
-4. When prompted for the registration token, remove the entry INVALID_TOKEN and press next (a new token isn't required).
-5. Complete the installation Wizard.
-6. Open Task Manager and start the RDAgentBootLoader service.
+1. Down load een nieuwe versie van de agent op de host-VM van de sessie.
+2. Start taak beheer en stop de RDAgentBootLoader-service op het tabblad Service.
+3. Voer het installatie programma uit voor de nieuwe versie van de virtuele bureau blad-agent van Windows.
+4. Als u wordt gevraagd om het registratie token, verwijdert u de vermelding INVALID_TOKEN en klikt u op volgende (er is geen nieuw token vereist).
+5. Voltooi de installatie wizard.
+6. Open taak beheer en start de RDAgentBootLoader-service.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Error:  Windows Virtual Desktop Agent registry entry IsRegistered shows a value of 0
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Fout: de register vermelding IsRegistered van de virtuele-bureaublad agent bevat een waarde van 0
 
-**Cause:** Registration token has expired or has been generated with expiration value of 999999.
+**Oorzaak:** Het registratie token is verlopen of is gegenereerd met de verval waarde van 999999.
 
-**Fix:** Follow these instructions to fix the agent registry error.
+**Oplossen:** Volg deze instructies om de register fout van de agent op te lossen.
 
-1. If there's already a registration token, remove it with Remove-RDSRegistrationInfo.
-2. Generate new token with Rds-NewRegistrationInfo.
-3. Confirm that the -ExpriationHours parameter is set to 72 (max value is 99999).
+1. Als er al een registratie token bestaat, verwijdert u het met Remove-RDSRegistrationInfo.
+2. Nieuw token genereren met RDS-NewRegistrationInfo.
+3. Controleer of de para meter-ExpriationHours is ingesteld op 72 (Max-waarde is 99999).
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Error: Windows Virtual Desktop agent isn't reporting a heartbeat when running Get-RdsSessionHost
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Fout: Windows Virtual Desktop agent rapporteert geen heartbeat bij het uitvoeren van Get-RdsSessionHost
 
-**Cause 1:** RDAgentBootLoader service has been stopped.
+**Oorzaak 1:** De RDAgentBootLoader-service is gestopt.
 
-**Fix 1:** Launch Task Manager and, if the Service Tab reports a stopped status for RDAgentBootLoader service, start the service.
+**Oplossing 1:** Open taak beheer en start de service als het tabblad Service een status gestopt voor de RDAgentBootLoader-service meldt.
 
-**Cause 2:** Port 443 may be closed.
+**Oorzaak 2:** Poort 443 kan worden gesloten.
 
-**Fix 2:** Follow these instructions to open port 443.
+**Oplossing 2:** Volg deze instructies voor het openen van poort 443.
 
-1. Confirm port 443 is open by downloading the PSPing tool from [Sysinternal tools](https://docs.microsoft.com/sysinternals/downloads/psping).
-2. Install PSPing on the session host VM where the agent is running.
-3. Open the command prompt as an administrator and issue the command below:
+1. Bevestig dat poort 443 is geopend door het PSPing-hulp programma te downloaden van [sysinternal-hulpprogram ma's](/sysinternals/downloads/psping/).
+2. Installeer PSPing op de host-VM waarop de agent wordt uitgevoerd.
+3. Open de opdracht prompt als beheerder en geef de volgende opdracht op:
 
     ```cmd
     psping rdbroker.wvdselfhost.microsoft.com:443
     ```
 
-4. Confirm that PSPing received information back from the RDBroker:
+4. Bevestig dat PSPing de gegevens terug heeft ontvangen van de RDBroker:
 
     ```
     PsPing v2.10 - PsPing - ping, latency, bandwidth measurement utility
@@ -173,23 +173,23 @@ When the Windows Virtual Desktop Agent is first installed on session host VMs (e
     Minimum = 2.12ms, Maximum = 3.83ms, Average = 2.58ms
     ```
 
-## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Troubleshooting issues with the Windows Virtual Desktop side-by-side stack
+## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Problemen met de Windows-stack aan de zijkant van het virtuele bureau blad oplossen
 
-The Windows Virtual Desktop side-by-side stack is automatically installed with Windows Server 2019. Use Microsoft Installer (MSI) to install the side-by-side stack on Microsoft Windows Server 2016 or Windows Server 2012 R2. For Microsoft Windows 10, the Windows Virtual Desktop side-by-side stack is enabled with **enablesxstackrs.ps1**.
+De Windows-stack voor virtueel bureau blad wordt automatisch geïnstalleerd met Windows Server 2019. Gebruik micro soft Installer (MSI) om de side-by-stack te installeren op micro soft Windows Server 2016 of Windows Server 2012 R2. Voor micro soft Windows 10 is de Windows-stack voor virtueel bureau blad ingeschakeld met **enablesxstackrs. ps1**.
 
-There are three main ways the side-by-side stack gets installed or enabled on session host pool VMs:
+Er zijn drie belang rijke manieren waarop de side-by-stack wordt geïnstalleerd of ingeschakeld op virtuele machines van de sessiehost:
 
-- With the Azure Resource Manager **Create and provision new Windows Virtual Desktop host pool** template
-- By being included and enabled on the master image
-- Installed or enabled manually on each VM (or with extensions/PowerShell)
+- Met de Azure Resource Manager nieuwe sjabloon voor het **maken en inrichten van een Windows Virtual Desktop-hostgroep**
+- Door in te voegen en in te scha kelen op de master installatie kopie
+- Hand matig geïnstalleerd of ingeschakeld op elke VM (of met uitbrei dingen/Power shell)
 
-If you're having issues with the Windows Virtual Desktop side-by-side stack, type the **qwinsta** command from the command prompt to confirm that the side-by-side stack is installed or enabled.
+Als u problemen ondervindt met de Windows-stack naast elkaar, typt u de opdracht **qwinsta** vanaf de opdracht prompt om te bevestigen dat de side-by-side-stack is geïnstalleerd of ingeschakeld.
 
-The output of **qwinsta** will list **rdp-sxs** in the output if the side-by-side stack is installed and enabled.
+In de uitvoer van **qwinsta** wordt **RDP-SxS** vermeld in de uitvoer als de side-by-side-stack is geïnstalleerd en ingeschakeld.
 
-![Side-by-side stack installed or enabled with qwinsta listed as rdp-sxs in the output.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Side-by-side stack is geïnstalleerd of ingeschakeld met qwinsta die worden vermeld als RDP-SxS in de uitvoer.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Controleer de hieronder vermelde Register vermeldingen en controleer of de waarden overeenkomen. Als er register sleutels ontbreken of als de waarden niet overeenkomen, volgt u de instructies in [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) voor informatie over het opnieuw installeren van de side-by-side-stack.
+Controleer de hieronder vermelde Register vermeldingen en controleer of de waarden overeenkomen. Als er register sleutels ontbreken of als de waarden niet overeenkomen, volgt u de instructies in [een hostgroep maken met Power shell](create-host-pools-powershell.md) voor informatie over het opnieuw installeren van de side-by-side-stack.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Controleer de hieronder vermelde Register vermeldingen en controleer of de waard
 **Oplossen:** Volg deze instructies voor het installeren van de side-by-side-stack op de host-VM van de sessie.
 
 1. Gebruik Remote Desktop Protocol (RDP) om rechtstreeks naar de host-VM te gaan als lokale beheerder.
-2. Down load en importeer [de Windows Virtual Desktop Power shell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie als u dit nog niet hebt gedaan, voert u deze cmdlet uit om u aan te melden bij uw account:
+2. Down load en importeer [de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dit nog niet hebt gedaan, voert u deze cmdlet uit om u aan te melden bij uw account:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. De side-by-side stack installeren met behulp van [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+3. De side-by-side stack installeren met behulp van [een hostgroep maken met Power shell](create-host-pools-powershell.md).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Een Windows-stack met virtuele Bureau bladen die niet goed werkt herstellen
 
@@ -226,7 +226,7 @@ Er zijn bekende omstandigheden waardoor de side-by-side-stack defect kan raken:
 - Meerdere keren uitvoeren van enablesxsstackrc. ps1
 - Enablesxsstackrc. ps1 wordt uitgevoerd in een account zonder lokale beheerders bevoegdheden
 
-De instructies in deze sectie kunnen u helpen bij het verwijderen van de Windows-stack met virtuele Bureau bladen. Nadat u de side-by-stack hebt verwijderd, gaat u naar ' de virtuele machine registreren bij de Windows Virtual Desktop-hostgroep ' in [een hostgroep met Power shell maken](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) om de side-by-side-stack opnieuw te installeren.
+De instructies in deze sectie kunnen u helpen bij het verwijderen van de Windows-stack met virtuele Bureau bladen. Nadat u de side-by-stack hebt verwijderd, gaat u naar ' de virtuele machine registreren bij de Windows Virtual Desktop-hostgroep ' in [een hostgroep met Power shell maken](create-host-pools-powershell.md) om de side-by-side-stack opnieuw te installeren.
 
 De virtuele machine die wordt gebruikt voor het uitvoeren van herstel, moet zich op hetzelfde subnet en domein bevinden als de virtuele machine met de stack-by-side-stapel.
 
@@ -305,7 +305,7 @@ Als de tijds limiet verloopt, wordt een fout bericht weer gegeven met de tekst '
 Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt via groeps beleid. Volg de stappen in de volgende secties om de groeps beleids instelling te controleren, de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.  
 
 >[!NOTE]
->Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)voor meer informatie over het configureren van een RDS CAL.
+>Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](/windows-server/remote/remote-desktop-services/rds-client-access-license/)voor meer informatie over het configureren van een RDS CAL.
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>De groeps beleids instelling Extern bureaublad licentie modus uitschakelen
 

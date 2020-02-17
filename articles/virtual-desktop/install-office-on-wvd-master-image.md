@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539139"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368817"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Office installeren op een master-VHD-installatiekopie
 
@@ -20,20 +20,20 @@ In dit artikel leest u hoe u Office 365 ProPlus, OneDrive en andere algemene toe
 
 In dit artikel wordt ervan uitgegaan dat u al een virtuele machine (VM) hebt gemaakt. Als dat niet het geval is, raadpleegt u [een VHD-master installatie kopie voorbereiden en aanpassen](set-up-customize-master-image.md#create-a-vm)
 
-In dit artikel wordt ervan uitgegaan dat u toegang hebt tot verhoogde bevoegdheden op de virtuele machine, ongeacht of deze is ingericht in azure of Hyper-V-beheer. Als dat niet het geval is, raadpleegt [u toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+In dit artikel wordt ervan uitgegaan dat u toegang hebt tot verhoogde bevoegdheden op de virtuele machine, ongeacht of deze is ingericht in azure of Hyper-V-beheer. Als dat niet het geval is, raadpleegt [u toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](../role-based-access-control/elevate-access-global-admin.md).
 
 >[!NOTE]
 >Deze instructies gelden voor een Windows-specifieke configuratie voor virtueel bureau blad die kan worden gebruikt met de bestaande processen van uw organisatie.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Office installeren in de activerings modus gedeelde computer
 
-Met activering via een gedeelde computer kunt u Office 365 ProPlus implementeren op een computer in uw organisatie die toegankelijk is voor meerdere gebruikers. Zie [overzicht van gedeelde computer activering voor Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus)voor meer informatie over het activeren van gedeelde computers.
+Met activering via een gedeelde computer kunt u Office 365 ProPlus implementeren op een computer in uw organisatie die toegankelijk is voor meerdere gebruikers. Zie [overzicht van gedeelde computer activering voor Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)voor meer informatie over het activeren van gedeelde computers.
 
 Gebruik het [hulp programma voor implementatie van Office](https://www.microsoft.com/download/details.aspx?id=49117) om Office te installeren. Windows 10 Enter prise multi-session ondersteunt alleen de volgende versies van Office:
 - Office 365 ProPlus
 - Office 365-bedrijf dat wordt geleverd met een Microsoft 365 Business-abonnement
 
-Voor het Office Deployment Tool is een XML-configuratie bestand vereist. Als u het volgende voor beeld wilt aanpassen, raadpleegt u de [configuratie opties voor het hulp programma Office-implementatie](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+Voor het Office Deployment Tool is een XML-configuratie bestand vereist. Als u het volgende voor beeld wilt aanpassen, raadpleegt u de [configuratie opties voor het hulp programma Office-implementatie](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Deze XML-voorbeeld configuratie heeft de volgende kenmerken:
 
