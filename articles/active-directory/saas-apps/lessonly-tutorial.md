@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 727d4ec79b142595e59ff63a4afbcbe4a51c2a6d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e7911f52d71501324a1b05c290402cc2ee33a706
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057428"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370426"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Lesson.ly
 
@@ -31,7 +30,7 @@ In deze zelf studie leert u hoe u Lesson.ly integreert met Azure Active Director
 * Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Lesson.ly met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,6 +45,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Lesson.ly ondersteunt door **SP** GEÏNITIEERDe SSO
 * Lesson.ly ondersteunt **just-in-time** -gebruikers inrichting
+* Nadat u Lesson.ly hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-lessonly-from-the-gallery"></a>Lesson.ly toevoegen uit de galerie
 
@@ -83,14 +83,14 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.lessonly.com/signin`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.lessonly.com/auth/saml`
 
     > [!NOTE]
     > In een praktijksituatie moet het gedeelte **companyname** worden vervangen door een daadwerkelijke bedrijfsnaam.
     
-     b. Typ in het tekstvak **antwoord-URL (assertion Customer Service-URL)** een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/callback`
+    b. Typ in het tekstvak **antwoord-URL (assertion Customer Service-URL)** een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/callback`
 
-     c. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/metadata`
+    c. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/metadata`
     
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en id. Neem contact op met het [ondersteuningsteam van Lessonly.com](mailto:support@lessonly.com) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -169,7 +169,7 @@ Wanneer u op de tegel Lesson.ly in het toegangs venster klikt, moet u automatisc
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

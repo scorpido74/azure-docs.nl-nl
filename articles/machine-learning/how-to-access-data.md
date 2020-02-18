@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543492"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370479"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -53,9 +53,9 @@ Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de 
 ---|---|---|---|---|---
 [Azure&nbsp;BLOB&nbsp;opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
 [Bestands&nbsp;share van Azure&nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Service-principal| ✓ | ✓ | ✓ |✓
-[Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-principal| ✓ | ✓ | ✓ |✓
-Azure&nbsp;SQL&nbsp;-data base| SQL-verificatie <br>Service-principal| ✓ | ✓ | ✓ |✓
+[Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Service-Principal| ✓ | ✓ | ✓ |✓
+[Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-Principal| ✓ | ✓ | ✓ |✓
+Azure&nbsp;SQL&nbsp;-data base| SQL-verificatie <br>Service-Principal| ✓ | ✓ | ✓ |✓
 Azure&nbsp;PostgreSQL | SQL-verificatie| ✓ | ✓ | ✓ |✓
 Azure&nbsp;data base-&nbsp;voor&nbsp;MySQL | SQL-verificatie|  | ✓ | ✓ |✓
 Databricks&nbsp;bestand&nbsp;systeem| Geen verificatie | | ✓* | ✓ * |✓* 
@@ -80,7 +80,7 @@ Wanneer u een Azure Storage-oplossing registreert als een gegevens opslag, maakt
 <br>
 Voor Azure Data Lake Storage data stores van 1 en 2 wordt deze validatie echter later uitgevoerd wanneer methoden voor gegevens toegang, zoals [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) of [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) , worden aangeroepen. 
 
-### <a name="python-sdk"></a>Python SDK
+### <a name="python-sdk"></a>Python-SDK
 
 Alle registratie methoden bevinden zich op de klasse [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) en hebben het formulier `register_azure_*`.
 
@@ -134,7 +134,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generatie 2
 
-Gebruik [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met Service-Principal-machtigingen. Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Gebruik [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met [Service-Principal-machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Met de volgende code wordt de `adlsgen2_datastore_name` gegevens opslag voor de `ws`-werk ruimte gemaakt en geregistreerd. Met deze data store krijgt u toegang tot het bestands systeem `test` op het `account_name` Storage-account met behulp van de gegeven referenties voor de Service-Principal.
 
@@ -226,7 +226,7 @@ Met de para meter `target_path` geeft u de locatie in de bestands share (of BLOB
 
 U kunt ook een lijst met afzonderlijke bestanden uploaden naar het gegevens archief via de `upload_files()` methode.
 
-### <a name="download"></a>Download
+### <a name="download"></a>Downloaden
 
 Gegevens uit een gegevens opslag naar uw lokale bestands systeem downloaden:
 
@@ -236,7 +236,7 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens moeten worden gedownload. Geef het pad naar de map in de bestandsshare (of de blob-container) om te downloaden, geeft dat pad op naar `prefix`. Als `prefix` `None`is, wordt de inhoud van de bestands share (of BLOB-container) gedownload.
+De para meter `target_path` is de locatie van de lokale map waarnaar de gegevens moeten worden gedownload. Geef het pad naar `prefix`op om een pad op te geven naar de map in de bestands share (of BLOB-container) die u wilt downloaden. Als `prefix` `None`is, wordt de inhoud van de bestands share (of BLOB-container) gedownload.
 
 <a name="train"></a>
 
@@ -262,7 +262,7 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken 
 | Methode | Toegang tot Data Store | Beschrijving |
 | ----- | :-----: | ----- |
 | [Batch-voor spelling](how-to-use-parallel-run-step.md) | ✔ | Maak voor spellingen voor grote hoeveel heden gegevens asynchroon. |
-| [Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
+| [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
 | [Module Azure IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen om apparaten te IoT Edge. |
 
 In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.
@@ -278,5 +278,5 @@ Azure Data Factory biedt een efficiënte en robuuste gegevens overdracht met mee
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Azure machine learning-gegevensset maken](how-to-create-register-datasets.md)
-* [Een model te trainen](how-to-train-ml-models.md)
+* [Een model trainen](how-to-train-ml-models.md)
 * [Een model implementeren](how-to-deploy-and-where.md)

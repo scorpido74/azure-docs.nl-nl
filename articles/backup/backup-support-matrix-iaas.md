@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 990e97274d9e35201dfb7930167dc4f9da975d83
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1dd060840e589d601d87d8be235eda5c34283a4f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988121"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369904"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -65,7 +65,7 @@ De volgende tabel bevat een overzicht van de ondersteunde besturings systemen bi
 
 **Scenario** | **Ondersteuning voor besturings systeem**
 --- | ---
-Back-up maken met extensie van Azure VM-agent | -Windows 10-client (slechts 64 bits) <br/><br/>-Windows Server 2019 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2016 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2012 R2 (Data Center/Standard) <br/><br/> -Windows Server 2008 R2 (RTM en SP1 Standard)
+Back-up maken met extensie van Azure VM-agent | -Windows 10-client (alleen 64 bits) <br/><br/>-Windows Server 2019 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2016 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2012 R2 (Data Center/Standard) <br/><br/> -Windows Server 2008 R2 (RTM en SP1 Standard)  <br/><br/> -Windows 2008 (alleen 64 bits)
 Back-ups maken met MARS-agent | [Ondersteunde](backup-support-matrix-mars-agent.md#support-for-direct-backups) besturings systemen.
 Back-up maken met DPM-MABS | Ondersteunde besturings systemen voor back-up met [MABS](backup-mabs-protection-matrix.md) en [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 
@@ -153,7 +153,7 @@ Back-ups maken van Vm's die zijn geïmplementeerd vanuit [Azure Marketplace](htt
 Back-ups maken van Vm's die zijn geïmplementeerd vanuit een aangepaste installatie kopie (derden) |Ondersteund.<br/><br/> Op de VM moet een ondersteund besturings systeem worden uitgevoerd.<br/><br/> Bij het herstellen van bestanden op de VM kunt u alleen herstellen naar een compatibel besturings systeem (geen besturings systeem dat ouder of later is).
 Back-ups maken van virtuele machines die zijn gemigreerd naar Azure| Ondersteund.<br/><br/> Als u een back-up wilt maken van de VM, moet de VM-agent op de gemigreerde computer zijn geïnstalleerd.
 Back-up van multi-VM-consistentie | Azure Backup biedt geen consistentie van gegevens en toepassingen op meerdere Vm's.
-Back-up met [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Niet-ondersteunde. <br/><br/> Als het herstellen van de virtuele machine van Azure met Diagnostische instellingen wordt geactiveerd met de optie [nieuwe maken](backup-azure-arm-restore-vms.md#create-a-vm) , mislukt de herstel bewerking.
+Back-up met [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Niet ondersteund. <br/><br/> Als het herstellen van de virtuele machine van Azure met Diagnostische instellingen wordt geactiveerd met de optie [nieuwe maken](backup-azure-arm-restore-vms.md#create-a-vm) , mislukt de herstel bewerking.
 Herstellen van op zones vastgemaakte Vm's | Ondersteund (voor VM waarvan een back-up is gemaakt na 2019 januari en waar de [beschikbaarheids zone](https://azure.microsoft.com/global-infrastructure/availability-zones/) beschikbaar is).<br/><br/>We ondersteunen momenteel het herstellen naar dezelfde zone die is vastgemaakt in Vm's. Als de zone echter niet beschikbaar is, mislukt de herstel bewerking.
 Gen2 Vm's | Ondersteund <br> Azure Backup ondersteunt het maken van back-ups en het herstellen van [Gen2-vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Wanneer deze Vm's worden hersteld vanaf het herstel punt, worden ze teruggezet als [Gen2 vm's](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 
@@ -226,8 +226,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-On-premises Windows-machines zonder DPM/MABS | N.V.T. | ![Ja][green]
-Azure-VM's | N.V.T. | N.V.T.
+On-premises Windows-machines zonder DPM/MABS | N.v.t. | ![Ja][green]
+Azure-VM's | N.v.t. | N.v.t.
 On-premises/Azure VM's met DPM | ![Ja][green] | ![Ja][green]
 On-premises/Azure VM's met MABS | ![Ja][green] | ![Ja][green]
 

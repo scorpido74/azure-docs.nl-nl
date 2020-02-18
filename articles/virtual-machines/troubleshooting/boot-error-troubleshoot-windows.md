@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines opnieuw opstarten is vastgelopen bij het opnieuw starten, afsluiten of stoppen van services | Microsoft Docs
+title: Het afsluiten van Azure Virtual Machines is vastgelopen bij het opnieuw starten, afsluiten of stoppen van services | Microsoft Docs
 description: Dit artikel helpt u bij het oplossen van problemen met service fouten in azure Windows Virtual Machines.
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477406"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371357"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Het opnieuw opstarten van Azure Windows VM is vastgelopen op het opnieuw starten, afsluiten of stoppen van services
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Het afsluiten van Azure Windows VM is vastgelopen op het opnieuw starten, afsluiten of stoppen van services
 
 In dit artikel worden de stappen beschreven voor het oplossen van de problemen met het opnieuw starten, afsluiten of stoppen van services die kunnen optreden wanneer u een virtuele Windows-machine (VM) opnieuw opstart in Microsoft Azure.
 
@@ -81,9 +81,9 @@ Als het probleem niet wordt opgelost nadat u hebt gewacht tot de wijzigingen zij
 
 **De besturingssysteem schijf koppelen aan een herstel-VM**
 
-1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie voor meer informatie, [momentopname maken van een schijf](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)(Engelstalig) voor meer informatie.
 
-2. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
 3. Extern bureau blad naar de herstel-VM.
 
@@ -152,6 +152,6 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
 
 8. Koppel de besturingssysteem schijf weer aan een herstel-VM en probeer het dump bestand te verzamelen.
 
-## <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
+## <a name="contact-microsoft-support"></a>Neem contact op met micro soft ondersteuning
 
 Nadat u het dump bestand hebt verzameld, neemt u contact op met micro soft ondersteuning om de hoofd oorzaak te bepalen.

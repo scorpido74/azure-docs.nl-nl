@@ -117,8 +117,8 @@ In de volgende tabel ziet u een vergelijking van de toegangs lagen voor het blok
 
 |                                           | **Premium-prestaties**   | **Warme laag** | **Cool-laag**       | **Laag van archief**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Beschikbaarheid**                          | 99,9%                     | 99,9%        | 99%                 | Offline           |
-| **Beschikbaarheid** <br> **(RA-GRS-leesbewerkingen)**  | N.v.t.                       | 99,99%       | 99,9%               | Offline           |
+| **Beschikbaarheid**                          | 99,9%                     | 99,9%        | 99%                 | Off line           |
+| **Beschikbaarheid** <br> **(RA-GRS-leesbewerkingen)**  | N.v.t.                       | 99,99%       | 99,9%               | Off line           |
 | **Gebruikskosten**                         | Hogere opslag kosten, lagere toegangs-en transactie kosten | Hogere opslag kosten, lagere toegang en transactie kosten | Lagere opslag kosten, hogere toegang en transactie kosten | Laagste opslag kosten, hoogste toegang en transactie kosten |
 | **Minimale objectgrootte**                   | N.v.t.                       | N.v.t.          | N.v.t.                 | N.v.t.               |
 | **Minimale opslagduur**              | N.v.t.                       | N.v.t.          | 30 dagen<sup>1</sup> | 180 dagen

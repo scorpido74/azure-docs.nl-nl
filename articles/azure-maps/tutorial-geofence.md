@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209593"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370160"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelf studie: een geofence instellen met behulp van Azure Maps
 
@@ -176,7 +176,7 @@ In deze sectie maken we een gebeurtenis-handler die meldingen ontvangt. Deze geb
 
 We maken twee [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) Services voor het afhandelen van ENTER-en Exit-gebeurtenissen. Wanneer de gebeurtenissen in de Logic Apps trigger, worden er meer gebeurtenissen geactiveerd in de reeks. Het is verstandig om in dit geval e-mail berichten te verzenden naar de Operations Manager. De volgende afbeelding illustreert het maken van een Logic App voor Enter-gebeurtenis voor de geofence. Op eenzelfde manier kunt u een Logic App maken voor een Exit-gebeurtenis voor de geofence. U kun alle [ondersteunde gebeurtenis-handlers](https://docs.microsoft.com/azure/event-grid/event-handlers) bekijken voor meer informatie.
 
-1. Een Logic App maken in Azure-portal
+1. Een logische app maken in Azure Portal. Selecteer de logische app in azure Marketplace. Selecteer vervolgens de knop **maken** .
 
    ![Azure Logic Apps maken voor het verwerken van geofence-gebeurtenissen](./media/tutorial-geofence/logic-app.png)
 

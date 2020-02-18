@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 6960a985a5c6a752ced9d176db6eb9368fdf0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d5cf28244fadd6dc0d1d06d5a84a2082a1d1e7e9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192515"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372341"
 ---
-|Naam |Beschrijving |Beleidsregels |Version |
+|Name |Beschrijving |Beleidsregels |Version |
 |---|---|---|---|
 |[\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleid waarmee een subset van Canada Federal PBMM-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/canadafederalPBMM-blueprint |68 |1.0.0-Preview |
 |[\[preview-\]: controle van CIS Microsoft Azure Stichting 1.1.0-aanbevelingen en implementeer specifieke ondersteunende VM-extensies](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Dit initiatief omvat audit en implementatie beleid voor VM-extensies die een subset van CIS-Microsoft Azure basis benchmark aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/cisazure-blueprintvoor meer informatie. |84 |1.0.0-Preview |
@@ -26,4 +26,4 @@ ms.locfileid: "77192515"
 |[Audit FedRAMP High Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Dit initiatief omvat audit-en VM-extensie-implementatie beleid voor een subset van FedRAMP H-besturings elementen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/fedramph-blueprintvoor meer informatie. |81 |1.0.0-Preview |
 |[Audit HITRUST/HIPAA-besturings elementen en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Dit initiatief omvat beleids regels waarmee een subset van HITRUST/HIPAA-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Audit Motion Picture Association of America (MPAA) Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Dit initiatief omvat beleids regels die een subset van MPAA-beveiligings-en richt lijnen voor het beheren van de werking van een Motion Picture Association of America-besturings element oplossen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/mpaa-blueprint |45 |1.0.0-Preview |
-|[DoD-impact niveau 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Hiermee wordt beleid toegewezen om specifieke IL4-besturings elementen voor de DoD-impact niveau 4 te adresseren. Meer informatie- https://aka.ms/DoDIL4-blueprint. |81 |1.0.0-Preview |
+|[DoD Impact Level 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Hiermee wordt beleid toegewezen om specifieke IL4-besturings elementen voor de DoD-impact niveau 4 te adresseren. Meer informatie- https://aka.ms/DoDIL4-blueprint. |81 |1.0.0-Preview |

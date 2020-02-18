@@ -6,25 +6,25 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418735"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370662"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>DSC-configuraties in Azure Automation State Configuration (DSC) samen stellen met samengestelde resources
 
 Wanneer een resource moet worden beheerd met meer dan een configuratie met één desired state Configuration (DSC), is het beste pad om [samengestelde resources](/powershell/scripting/dsc/resources/authoringresourcecomposite)te gebruiken. Een samengestelde resource is een geneste en geparametriseerde configuratie die wordt gebruikt als een DSC-resource in een andere configuratie. Hierdoor kan het maken van complexe configuraties worden toegestaan, terwijl de onderliggende samengestelde bronnen (geparametriseerde configuraties) afzonderlijk kunnen worden beheerd en gebouwd.
 
-Azure Automation maakt het mogelijk om [samengestelde resources te importeren en te compileren](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Azure Automation maakt het mogelijk om [samengestelde resources te importeren en te compileren](automation-dsc-compile.md).
 Zodra er samengestelde resources zijn geïmporteerd in uw Automation-account, kunt u de ervaring voor het opstellen van de **configuratie** gebruiken op de pagina **status configuratie (DSC)** .
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Een configuratie uit samengestelde resources opstellen
 
 Voordat u een configuratie kunt toewijzen van samengestelde resources in de Azure Portal, moet u deze samen stellen. U kunt dit doen met behulp van de **opstel configuratie** op de pagina **status configuratie (DSC)** en op de tabbladen **configuraties** of **gecompileerde configuraties** .
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **alle resources** en vervolgens op de naam van uw Automation-account.
 1. Selecteer op de pagina **Automation-account** **status configuratie (DSC)** onder **configuratie beheer**.
 1. Op de pagina **status configuratie (DSC)** klikt u op het tabblad **configuraties** of **gecompileerde configuraties** en klikt u vervolgens op **configuratie opstellen** in het menu boven aan de pagina.

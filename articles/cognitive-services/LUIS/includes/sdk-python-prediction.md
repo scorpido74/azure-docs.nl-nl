@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 31280b1efa3db22e8008f401a25ca627dda4153f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: ff4c33aea3d3ce604f44c38e6e3856242388b0e9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772387"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371987"
 ---
 Gebruik de voor Spellings-client bibliotheek van Language Understanding (LUIS) voor python voor het volgende:
 
@@ -85,7 +85,7 @@ Open in de projectmap het `prediction_quickstart.py`-bestand in de gewenste edit
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Maak een referenties-object met uw sleutel en gebruik dit met uw eind punt om een [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() -object te maken.
+1. Maak een referenties-object met uw sleutel en gebruik dit met uw eind punt om een [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python()-object te maken.
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Client)]
 

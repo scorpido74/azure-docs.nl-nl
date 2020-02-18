@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: d162581d43f6868829b1288a146ae1f587788f82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d63d58b621cbf16c08a76c6248b82427366710de
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193038"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372315"
 ---
-|Naam |Beschrijving |Beleidsregels |Version |
+|Name |Beschrijving |Beleidsregels |Version |
 |---|---|---|---|
 |[Virtuele Linux-machines controleren waarop de opgegeven toepassingen niet zijn geïnstalleerd](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |In dit initiatief worden de beleids vereisten geïmplementeerd en worden virtuele Linux-machines gecontroleerd waarop de opgegeven toepassingen niet zijn geïnstalleerd. Ga voor meer informatie over gast configuratie beleidsregels naar https://aka.ms/gcpol |2 |1.1.0 |
 |[Virtuele Linux-machines waarop de opgegeven toepassingen zijn geïnstalleerd controleren](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |In dit initiatief worden de beleids vereisten geïmplementeerd en worden virtuele Linux-machines gecontroleerd waarop de opgegeven toepassingen zijn geïnstalleerd. Ga voor meer informatie over gast configuratie beleidsregels naar https://aka.ms/gcpol |2 |1.1.0 |

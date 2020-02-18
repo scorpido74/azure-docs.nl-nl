@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050445"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370534"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Zelf studie: Azure Databricks SCIM-connector configureren voor automatische gebruikers inrichting
 
@@ -96,7 +96,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Geef in de sectie **beheerders referenties** de Azure Databricks scim en de gebruikers naam van de beheerders referenties op. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Azure Databricks scim-connector. Als de verbinding mislukt, controleert u of uw Azure Databricks SCIM-Connector account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer in de sectie **beheerders referenties** de scim-eindpunt waarde in voor de **Tenant-URL**. De URL van de Tenant moet de indeling hebben `https://<region>.azuredatabricks.net/api/2.0/preview/scim` waar de **regio** kan worden gevonden in de URL van uw Azure Databricks-start pagina. Zo wordt bijvoorbeeld een SCIM-eind punt voor de regio **westus** `https://westus.azuredatabricks.net/api/2.0/preview/scim`. Voer de token waarde in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Azure Databricks scim-connector. Als de verbinding mislukt, controleert u of uw Azure Databricks SCIM-Connector account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 

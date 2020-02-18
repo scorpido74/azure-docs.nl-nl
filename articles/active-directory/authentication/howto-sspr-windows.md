@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847283"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370066"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
 
@@ -27,7 +27,9 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
 ## <a name="general-limitations"></a>Algemene beperkingen
 
 - Het opnieuw instellen van het wacht woord wordt momenteel niet ondersteund vanuit een Extern bureaublad of via Hyper-V-uitgebreide sessies.
-- Deze functie werkt niet voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd en de optie Onmiddellijk uitvoeren voor gebruiker zich aanmeldt. Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
+- Sommige externe referentie providers zijn bekend om problemen met deze functie te veroorzaken.
+- Het uitschakelen van UAC via wijziging van de [register sleutel EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) is bekend bij het veroorzaken van problemen.
+- Deze functie werkt niet voor netwerken met 802.1 x-netwerk verificatie geïmplementeerd en de optie ' direct voor gebruikers aanmelding uitvoeren '. Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
 - Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan.
 - Als u een installatie kopie gebruikt voordat u Sysprep uitvoert, moet u ervoor zorgen dat de webcache voor de ingebouwde beheerder is gewist voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in de ondersteunings artikelen [verslechte prestaties bij gebruik van aangepast standaard gebruikers profiel](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - De volgende instellingen zijn bekend om te voor komen dat wacht woorden op Windows 10-apparaten kunnen worden gebruikt en opnieuw worden ingesteld
@@ -113,7 +115,7 @@ Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings sche
 > [!WARNING]
 > TLS 1,2 moet zijn ingeschakeld, niet alleen ingesteld op automatisch onderhandelen
 
-### <a name="install"></a>Installatie
+### <a name="install"></a>Installeren
 
 1. Down load het juiste installatie programma voor de versie van Windows die u wilt inschakelen.
    - Software is beschikbaar in het micro soft Download centrum op [https://aka.ms/sspraddin](https://aka.ms/sspraddin)

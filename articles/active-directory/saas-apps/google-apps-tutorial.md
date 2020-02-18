@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf148ec64ceed28577224741033258bad0e62372
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d5ef5816759074073c57ef0f616ddea4a159956f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047957"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370347"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met G suite
 
@@ -30,7 +30,7 @@ In deze zelf studie leert u hoe u G suite integreert met Azure Active Directory 
 * Stel uw gebruikers in staat om automatisch te worden aangemeld bij G suite met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -136,6 +136,14 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
 
+    c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: 
+
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
+
 1. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u wilt configureren voor **Google Cloud Platform**:
 
     a. Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
@@ -149,6 +157,13 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
     
+    c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: 
+    
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en id. G suite biedt geen entiteit-ID/ID-waarde voor de configuratie van eenmalige aanmelding, dus als u de optie **domein specifieke uitgever** uitschakelt, wordt de id-waarde `google.com`. Als u de optie **domein specifieke uitgever** inschakelt, wordt deze `google.com/a/<yourdomainname.com>`. Als u de optie **specifieke certificaat verlener** wilt in-of uitschakelen, gaat u naar de sectie **G suite SSO configureren** , die verderop in de zelf studie wordt beschreven. Neem contact op met het [ondersteunings team van client Suite](https://www.google.com/contact/)voor meer informatie.
 
@@ -247,14 +262,18 @@ Wanneer u op de tegel G Suite in het toegangsvenster klikt, wordt u automatisch 
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
 - [Inrichten van gebruikers configureren](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+
 - [G suite proberen met Azure AD](https://aad.portal.azure.com/)
+
 - [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [G suite beveiligen met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

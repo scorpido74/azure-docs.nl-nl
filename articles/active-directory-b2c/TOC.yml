@@ -101,7 +101,7 @@
               href: user-flow-self-service-password-reset.md
         - name: UX-aanpassing
           items:
-            - name: Aanpassing van de gebruikersinterface
+            - name: De gebruikersinterface aanpassen
               href: customize-ui-overview.md
             - name: JavaScript en pagina-indelingen
               href: user-flow-javascript-overview.md
@@ -177,8 +177,6 @@
             - name: De gebruikersinterface aanpassen
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: De gebruikersinterface dynamisch aanpassen
-              href: custom-policy-ui-customization-dynamic.md
             - name: Aangepast e-mailadres
               href: custom-email.md
               displayName: verification

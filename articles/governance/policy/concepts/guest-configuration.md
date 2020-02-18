@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 128baa0df1d3e555fe9629005529710202e1bbf6
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 73f986774fc13ac8c69cd800c977c909b591a74c
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169530"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369751"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
@@ -72,7 +72,7 @@ De gast configuratie client controleert elke vijf minuten op nieuwe inhoud. Zodr
 
 De volgende tabel ziet u een lijst met ondersteunde besturingssystemen op Azure-installatiekopieën:
 
-|Uitgever|Naam|Versies|
+|Uitgever|Name|Versies|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |credativ|Debian|8, 9|
@@ -185,8 +185,9 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 De bron voor de ingebouwde initiatieven van de gast configuratie voor beleid is beschikbaar op de volgende locaties:
 
+- [Ingebouwde beleids definities-gast configuratie](../samples/built-in-policies.md#guest-configuration)
 - [Ingebouwde initiatieven-gast configuratie](../samples/built-in-initiatives.md#guest-configuration)
-- [Azure Policy-voor beelden GitHub opslag plaats](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest Configuration)
+- [Azure Policy-voor beelden GitHub opslag plaats](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
 ## <a name="next-steps"></a>Volgende stappen
 

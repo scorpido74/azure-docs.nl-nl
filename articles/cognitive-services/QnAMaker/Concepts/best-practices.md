@@ -1,38 +1,28 @@
 ---
 title: Aanbevolen procedures - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Gebruik deze aanbevolen procedures te verbeteren van uw knowledge base en biedt betere resultaten van uw toepassing/chat bot-eindgebruikers.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 2fd85e43fb2aa53299b4e37eca5163b7da8fc6ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/15/2020
+ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843800"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370095"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best practices van een kennisdatabase QnA Maker
 
-De [kennisdatabase ontwikkelingscyclus](../Concepts/development-lifecycle-knowledge-base.md) helpt u over het beheren van uw KB van begin tot einde. Gebruik deze aanbevolen procedures om uw Knowledge Base te verbeteren en betere resultaten te bieden aan de eind gebruikers van uw client toepassing of chat-bot.
+De [Knowledge Base-ontwikkelings levenscyclus](../Concepts/development-lifecycle-knowledge-base.md) helpt u bij het beheren van uw KB van begin tot eind. Gebruik deze aanbevolen procedures om uw Knowledge Base te verbeteren en betere resultaten te bieden aan de eind gebruikers van uw client toepassing of chat-bot.
 
 ## <a name="extraction"></a>Extractie
 
-De QnA Maker-service wordt voortdurend verbeteren van de algoritmen die vragen en antwoorden supereenvoudig uitpakken van inhoud en de lijst met ondersteunde bestands- en HTML-indelingen uit te vouwen. Ga als volgt de [richtlijnen](../Concepts/content-types.md) voor het ophalen van gegevens op basis van uw documenttype.
+De QnA Maker-service wordt voortdurend verbeteren van de algoritmen die vragen en antwoorden supereenvoudig uitpakken van inhoud en de lijst met ondersteunde bestands- en HTML-indelingen uit te vouwen. Volg de [richt lijnen](../Concepts/content-types.md) voor gegevens extractie op basis van uw document type.
 
 Veelgestelde vragen over pagina's moeten in het algemeen zijn zelfstandige en niet gecombineerd met andere informatie. Producthandleidingen moeten wissen koppen en bij voorkeur een indexpagina hebben.
 
 ### <a name="configuring-multi-turn"></a>Multi-turn configureren
 
 [Maak uw Knowledge Base](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) met meerdere Schakel extractie ingeschakeld. Als uw Knowledge Base wel of geen vraag hiërarchie ondersteunt, kan deze hiërarchie worden geëxtraheerd uit het document of worden gemaakt nadat het document is geëxtraheerd.
-
-<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>Goede vragen en antwoorden maken
 
@@ -57,7 +47,7 @@ De beste antwoorden zijn eenvoudige antwoorden, maar niet te eenvoudig. Gebruik 
 |Klanten service is 24 uur per dag beschikbaar via telefoon-, Skype-en SMS-berichten.|* Neem contact op met de verkoop gegevens.<br> * Kantoor-en opslag locaties en-uren voor een persoonlijk bezoek.<br> * Accessoires voor een Surface-laptop.|
 
 ## <a name="chit-chat"></a>Chit Chat
-Chit chat toevoegen aan uw bot, maak uw bot aantrekkelijke, en meer conversatie met kleine hoeveelheid werk. U kunt eenvoudig Chit toevoegen van vooraf gedefinieerde persoonlijke gegevens wanneer u uw KB maakt en deze op elk gewenst moment wijzigen. Meer informatie over het [chit chat toevoegen aan uw KB](../How-To/chit-chat-knowledge-base.md).
+Chit chat toevoegen aan uw bot, maak uw bot aantrekkelijke, en meer conversatie met kleine hoeveelheid werk. U kunt eenvoudig Chit toevoegen van vooraf gedefinieerde persoonlijke gegevens wanneer u uw KB maakt en deze op elk gewenst moment wijzigen. Meer informatie over het [toevoegen van Chit-Chat aan uw KB](../How-To/chit-chat-knowledge-base.md).
 
 Chit: chatten wordt ondersteund in [veel talen](../how-to/chit-chat-knowledge-base.md#language-support).
 
@@ -66,11 +56,11 @@ Chit-Chat wordt ondersteund voor verschillende vooraf gedefinieerde persoonlijke
 
 |Persoonlijkheid |QnA Maker Gegevenssetbestand |
 |---------|-----|
-|Professioneel |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
-|Weergave |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Witty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|Caring |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
-|Enthousiast |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
+|Professional |[qna_chitchat_professional. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Weergave |[qna_chitchat_friendly. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Witty |[qna_chitchat_witty. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Caring |[qna_chitchat_caring. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Enthousiast |[qna_chitchat_enthusiastic. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
 De antwoorden variëren van formele tot informele en vast. U kunt de persoonlijkheid die dichtst is afgestemd op de toon die u wilt gebruiken voor uw bot moet selecteren. U kunt de [gegevens sets](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)bekijken en er een selecteren die als basis voor uw bot fungeert en vervolgens de antwoorden aanpassen.
 
@@ -83,7 +73,7 @@ U wordt aangeraden de volgende chit chat vragen en antwoorden supereenvoudig spe
 * Wat kunt u doen?
 * Hoe oud bent u?
 * Die u hebt gemaakt?
-* Hallo!
+* Hello
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Aangepaste Chit-Chat toevoegen met een meta gegevens code
 
@@ -104,13 +94,13 @@ Zorg ervoor dat u het beste gebruik van de classificatie-functies die biedt onde
 
 ### <a name="choosing-a-threshold"></a>Het kiezen van een drempelwaarde
 
-De standaard [betrouwbaarheids Score](confidence-score.md) die wordt gebruikt als drempel waarde is 50, maar u kunt [de drempel waarde](confidence-score.md#set-threshold) voor uw KB wijzigen op basis van uw behoeften. Omdat elke KB anders is, moet u testen en kies de drempelwaarde die is het beste geschikt is voor uw KB.
+De standaard [betrouwbaarheids Score](confidence-score.md) die wordt gebruikt als drempel waarde is 0, maar u kunt [de drempel waarde](confidence-score.md#set-threshold) voor uw KB wijzigen op basis van uw behoeften. Omdat elke KB anders is, moet u testen en kies de drempelwaarde die is het beste geschikt is voor uw KB.
 
 ### <a name="choosing-ranker-type"></a>Type rangorde kiezen
 QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt doorzoeken, kunt u een antwoord genereren met behulp van de `RankerType=QuestionOnly` in de hoofd tekst van de GenerateAnswer-aanvraag.
 
 ### <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
-[Andere vragen](../How-To/edit-knowledge-base.md) verbeteren de kans op een overeenkomst met de aanvraag voor een gebruiker. Andere vragen zijn nuttig wanneer er zijn meerdere manieren waarop deze vraag kan worden gevraagd. Deze kunt wijzigingen in de zinsstructuur en word-stijl opnemen.
+[Alternatieve vragen](../How-To/edit-knowledge-base.md) verbeteren de kans op een overeenkomst met een gebruikers query. Andere vragen zijn nuttig wanneer er zijn meerdere manieren waarop deze vraag kan worden gevraagd. Deze kunt wijzigingen in de zinsstructuur en word-stijl opnemen.
 
 |Oorspronkelijke query|Alternatieve query 's|Wijzigen|
 |--|--|--|
@@ -121,7 +111,7 @@ QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt do
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Tags voor meta gegevens gebruiken voor het filteren van vragen en antwoorden
 
-[Meta gegevens](../How-To/edit-knowledge-base.md) voegen de mogelijkheid toe om een client toepassing te laten weten dat deze niet alle antwoorden mag hebben, maar in plaats daarvan de resultaten van een gebruikers query te beperken op basis van meta gegevenslabels. De knowledge base-antwoord kan verschillen op basis van de metadata-tag, zelfs als de query hetzelfde is. Bijvoorbeeld, *"waar is vervangende domeinpagina zich"* een ander antwoord kan hebben als de locatie van de vertakking restaurant - dat wil zeggen, de metagegevens is *locatie: Seattle* versus *locatie: Redmond*.
+[Meta gegevens](../How-To/edit-knowledge-base.md) voegen de mogelijkheid toe om een client toepassing te laten weten dat deze niet alle antwoorden mag hebben, maar in plaats daarvan de resultaten van een gebruikers query te beperken op basis van meta gegevenslabels. De knowledge base-antwoord kan verschillen op basis van de metadata-tag, zelfs als de query hetzelfde is. Bijvoorbeeld *' waar bevindt zich parkeren '* kan een ander antwoord hebben als de locatie van de restaurant vertakking anders is, dat wil zeggen, de meta gegevens zijn *Locatie: Seattle* versus *Locatie: Redmond*.
 
 ### <a name="use-synonyms"></a>Synoniemen gebruiken
 Hoewel er enige ondersteuning is voor synoniemen in de Engelse taal, gebruikt u hoofdletter gevoelige woord wijzigingen via de [aanpassings-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) om synoniemen toe te voegen aan tref woorden die een andere vorm hebben. Synoniemen worden toegevoegd op het QnA Maker service niveau en worden gedeeld door alle kennis grondslagen in de service.
@@ -137,13 +127,13 @@ Bijvoorbeeld, mogelijk hebt u twee afzonderlijke vragen en antwoorden supereenvo
 
 |Vragen en antwoorden supereenvoudig|
 |--|
-|waar is de vervangende domeinpagina *locatie*|
+|waar bevindt zich de parkeer *locatie*|
 |waar is de ATM- *locatie*|
 
-Omdat deze twee vragen en antwoorden supereenvoudig worden geformuleerd met zeer gelijksoortige woorden, deze gelijkenis kan leiden tot vergelijkbaar scores voor veel query's van gebruikers die zijn geformuleerd, zoals *"waar is de `<x>` locatie '* . Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals *' waar is de parkeer partij '* en *' waar is de ATM '* , door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
+Omdat deze twee QnAs worden aangeduid met zeer vergelijk bare woorden, kan deze soort gelijke scores worden veroorzaakt door veel gebruikers query's die zijn aangeduid als *' waar is de `<x>` locatie '* . Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals *' waar is de parkeer partij '* en *' waar is de ATM '* , door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
 
 ## <a name="collaborate"></a>Samenwerken
-QnA Maker kunnen gebruikers [samenwerken](../How-to/collaborate-knowledge-base.md) op een knowledge base. Gebruikers moeten toegang hebben tot de resourcegroep Azure QnA Maker voor toegang tot knowledge bases. Sommige organisaties willen uitbesteden de kennisdatabase bewerken en het onderhoud, en nog steeds mogelijk om toegang tot hun Azure-resources te beveiligen. Dit model editor goedkeurder wordt gedaan door het instellen van twee identieke [QnA Maker services](../How-to/set-up-qnamaker-service-azure.md) in verschillende abonnementen en selecteer een van de cyclus bewerken te testen. Nadat het testen is voltooid, de knowledge base-inhoud worden overgedragen met een [import / export](../Tutorials/migrate-knowledge-base.md) verwerken met de QnA Maker-service van de fiatteur die ten slotte wordt de kennisdatabase publiceren en bijwerken van het eindpunt.
+Met QnA Maker kunnen gebruikers [samen werken](../How-to/collaborate-knowledge-base.md) aan een Knowledge Base. Gebruikers moeten toegang hebben tot de resourcegroep Azure QnA Maker voor toegang tot knowledge bases. Sommige organisaties willen uitbesteden de kennisdatabase bewerken en het onderhoud, en nog steeds mogelijk om toegang tot hun Azure-resources te beveiligen. Dit model voor redacteur-goed keuring wordt uitgevoerd door twee identieke [QnA Maker Services](../How-to/set-up-qnamaker-service-azure.md) in verschillende abonnementen in te stellen en er een te selecteren voor de bewerking voor het bewerken van de test cyclus. Zodra het testen is voltooid, wordt de inhoud van de Knowledge Base met een [import-export](../Tutorials/migrate-knowledge-base.md) proces overgebracht naar de QnA Maker-service van de goed keurder die de Knowledge Base uiteindelijk gaat publiceren en het eind punt bijwerkt.
 
 
 
@@ -154,4 +144,4 @@ Met het [actieve leer proces](../How-to/improve-knowledge-base.md) wordt geadvis
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een kennisdatabase bewerken](../How-to/edit-knowledge-base.md)
+> [Een kennis database bewerken](../How-to/edit-knowledge-base.md)
