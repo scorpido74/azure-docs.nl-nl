@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016490"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426357"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelf studie: een verbonden afval beheer toepassing maken in IoT Central
 
@@ -129,7 +129,7 @@ De **verbonden afval beheer** toepassing wordt geleverd met een voor beeld van e
 
 De sjabloon voor het apparaat weer geven:
 
-1. Klik op **device-sjablonen** in het navigatie deel venster links van uw toepassing in IOT Central. 
+1. Klik op **device-sjablonen** in het linkerdeel venster van uw toepassing in IOT Central. 
 
     ![Apparaatprofiel](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ De **verbonden afval beheer** toepassing beschikt over twee gesimuleerde apparat
 
 ### <a name="to-view-the-devices"></a>De apparaten weer geven:
 
-1. Ga naar **apparaat** vanuit IOT Central navigatie deel venster links. 
+1. Ga naar **apparaat** vanuit IOT Central linkerdeel venster. 
 
    ![Apparaten](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ In azure IoT Central kunt u regels maken om de telemetrie van apparaten automati
 De toepassing voor het **beheer van verbonden afval** heeft vier voorbeeld regels.
 
 ### <a name="to-view-rules"></a>Regels weer geven:
-1. Navigeren naar **regels** vanuit IOT Central navigatie deel venster links
+1. Navigeren naar **regels** uit IOT Central linkerdeel venster
 
    ![Regels](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ U ontvangt een e-mail wanneer aan de geconfigureerde **voor waarde** is voldaan.
 > Telkens wanneer aan een voor waarde wordt voldaan, verzendt de toepassing een e-mail bericht. **Schakel** de regel uit om het ontvangen van e-mail van de automatische regel te stoppen. 
   
 Een nieuwe regel maken: 
-1. Selecteer **+ Nieuw** op de **regels** in het navigatie deel venster links.
+1. Selecteer **+ Nieuw** op de **regels** in het linkerdeel venster.
 
 ## <a name="configure-jobs"></a>Taken configureren
 
 In IoT Central kunt u met taken apparaat-of Cloud eigenschappen updates op meerdere apparaten activeren. Naast eigenschappen kunt u ook taken gebruiken om opdrachten op meerdere apparaten te activeren. De werk stroom wordt door IoT Central automatisch geautomatiseerd. 
 
-1. Ga naar **taken** in het navigatie deel venster aan de linkerkant. 
+1. Ga naar **taken** in het linkerdeel venster. 
 2. Klik op **+ Nieuw** en configureer een of meer taken. 
 
 

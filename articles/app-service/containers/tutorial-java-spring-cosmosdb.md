@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5109c33acf4a92a3227fe79d6d2c997a54adec08
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688833"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425269"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Zelf studie: een Java Spring boot-web-app bouwen met Azure App Service op Linux en Azure Cosmos DB
 
@@ -173,7 +173,7 @@ Als er uitzonde ringen worden weer gegeven in plaats van het bericht ' started T
 
 ## <a name="configure-azure-deployment"></a>Azure-implementatie configureren
 
-Open het `pom.xml`-bestand in de map `initial/spring-boot-todo` en voeg de volgende configuratie [Maven-invoegtoepassing voor Azure App Service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) toe.
+Open het `pom.xml`-bestand in de map `initial/spring-boot-todo` en voeg de volgende [Azure web app-invoeg toepassing voor maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) -configuratie toe.
 
 ```xml    
 <plugins> 

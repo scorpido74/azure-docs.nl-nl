@@ -2,13 +2,13 @@
 title: Evaluaties in Azure Migrate
 description: Meer informatie over evaluaties in Azure Migrate.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833325"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425694"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Over evaluaties in Azure Migrate
 
@@ -149,7 +149,7 @@ Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning voor een [abonnemen
 Windows 10 Pro Desktop | Azure biedt ondersteuning voor [multi tenant-hosting rechten.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Voorwaardelijk gereed voor Azure
 Windows Vista, XP Professional | Deze besturings systemen hebben hun end-of-support-datum door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
 Linux | Azure bevestigt deze [Linux-besturings systemen](../virtual-machines/linux/endorsed-distros.md). Andere Linux-besturings systemen kunnen worden gestart in azure, maar we raden u aan het besturings systeem bij te werken naar een officiële versie voordat u naar Azure migreert. | Gereed voor Azure als de versie wordt goedgekeurd.<br/><br/>Voorwaardelijk gereed als de versie niet wordt goedgekeurd.
-Andere besturings systemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple Mac OS etc., FreeBSD, enzovoort. | Deze besturings systemen worden niet door Azure goedgekeurd. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. U wordt aangeraden een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  
+Andere besturings systemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple macOS etc., FreeBSD, enzovoort. | Deze besturings systemen worden niet door Azure goedgekeurd. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. U wordt aangeraden een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  
 Besturings systeem opgegeven als een **andere** in vCenter Server | Azure Migrate kan het besturings systeem in dit geval niet identificeren. | Onbekende gereedheid. Zorg ervoor dat het besturings systeem dat wordt uitgevoerd in de virtuele machine wordt ondersteund in Azure.
 32-bits besturings systemen | De machine kan worden gestart in azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem van de machine te upgraden van 32-bits besturings systeem naar 64-bits besturings systeem voordat u naar Azure migreert.
 

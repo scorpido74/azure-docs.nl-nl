@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281305"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425524"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server (preview) met behulp van CLI
 
@@ -38,7 +38,7 @@ Voordat u een resource kunt maken, moet u een resource groep maken om de Virtual
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Een Virtual Network maken
 Maak een Virtual Network met [AZ Network vnet Create](/cli/azure/network/vnet). In dit voor beeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
@@ -129,9 +129,9 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open het bestand gedownloade. rdp *.
+1. Open het *gedownloade RDP* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
@@ -159,30 +159,31 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. Test de verbinding van de persoonlijke verbinding voor de PostgreSQL-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) gebruikt om de bewerking uit te voeren.
 
-4. In **New connection**, enter or select this information:
+4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
 
-    | Setting | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | Servertype| Selecteer **postgresql**.|
+    | Servernaam| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* selecteren |
+    | Gebruikersnaam | Voer de gebruikers naam in als username@servername die wordt opgegeven tijdens het maken van de PostgreSQL-server. |
+    |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de PostgreSQL-server. |
+    |SSL|Selecteer **vereist**.|
     ||
 
-5. Select Connect.
+5. Selecteer verbinding maken.
 
-6. Browse databases from left menu.
+6. Bladeren door data bases vanuit het menu links.
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. Eventueel Gegevens van de postgreSQL-server maken of er een query op uitvoeren.
 
-8. Close the remote desktop connection to myVm.
+8. Sluit de verbinding met extern bureau blad met myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Resources opschonen 
+U kunt AZ Group Delete gebruiken om de resource groep en alle resources die het heeft, te verwijderen wanneer u deze niet meer nodig hebt: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

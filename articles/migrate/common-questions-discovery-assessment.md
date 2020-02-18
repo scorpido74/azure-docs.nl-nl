@@ -2,21 +2,22 @@
 title: Veelgestelde vragen-detectie, evaluatie en afhankelijkheids analyse in Azure Migrate
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059484"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426289"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate. Als u na het lezen van dit artikel nog meer query's hebt uitgevoerd, plaatst u deze op het [Azure migrate forum](https://aka.ms/AzureMigrateForum). Als u andere vragen hebt, raadpleegt u de volgende artikelen:
+In dit artikel vindt u antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate. Als u andere vragen hebt, raadpleegt u de volgende artikelen:
 
 - [Algemene vragen](resources-faq.md) over Azure Migrate.
 - [Vragen](common-questions-appliance.md) over het Azure migrate apparaat.
 - [Vragen](common-questions-server-migration.md) over server migratie.
+- Vragen op het [Azure migrate forum](https://aka.ms/AzureMigrateForum) plaatsen
 
 
 

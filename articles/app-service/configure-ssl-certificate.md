@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046421"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425304"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -39,7 +39,7 @@ Als u deze hand leiding wilt volgen:
 ## <a name="private-certificate-requirements"></a>Vereisten voor persoonlijke certificaten
 
 > [!NOTE]
-> Azure Web Apps biedt **geen** ondersteuning voor AES256 en alle pfx-bestanden moeten worden versleuteld met TrippleDES.
+> Azure Web Apps biedt **geen** ondersteuning voor AES256 en alle pfx-bestanden moeten worden versleuteld met TripleDES.
 
 Het [gratis door app service beheerde certificaat](#create-a-free-certificate-preview) of het [app service certificaat](#import-an-app-service-certificate) voldoet al aan de vereisten van app service. Als u ervoor kiest om een persoonlijk certificaat te uploaden of te importeren naar App Service, moet uw certificaat voldoen aan de volgende vereisten:
 

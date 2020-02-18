@@ -1,6 +1,6 @@
 ---
 title: 'Quick Start: een Java-app maken in Windows'
-description: Implementeer in enkele minuten uw eerste Java-Hallo wereld op Azure App Service in Windows. Met de Maven-invoeg toepassing voor App Service is het handig om Java-apps te implementeren.
+description: Implementeer in enkele minuten uw eerste Java-Hallo wereld op Azure App Service in Windows. De Azure web app-invoeg toepassing voor maven maakt het handig om Java-apps te implementeren.
 keywords: Azure, app service, Web-app, Windows, Java, Maven, Quick Start
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3cf759294a31fcf90c5a3f4a6cdc68e3c35882e0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672160"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425344"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Quick Start: een Java-app maken op Azure App Service in Windows
 
@@ -22,7 +22,7 @@ ms.locfileid: "74672160"
 > In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Java Web app maken in Linux](./containers/quickstart-java.md)voor meer informatie over het implementeren van app service in _Linux_.
 >
 
-[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze Quick start ziet u hoe u de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruikt met de [maven-invoeg toepassing voor Azure app service](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) een WAR-bestand (Java Web Archive) implementeert.
+[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze Quick start ziet u hoe u de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruikt met de [Azure web app-invoeg toepassing voor maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) om een WAR-bestand (Java Web Archive) te implementeren.
 
 > [!NOTE]
 > Dit kan ook worden gedaan met populaire Ide's zoals IntelliJ en eclips. Bekijk onze vergelijk bare documenten op [Azure-Toolkit voor IntelliJ Quick](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) start of [Azure-Toolkit voor eclipse Quick](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)start.

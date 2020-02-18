@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806776"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425779"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -29,7 +29,7 @@ De Key Vault VM-extensie ondersteunt de volgende versies van Windows:
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als open bare informatie. De uitbrei ding vereist een lijst met bewaakte certificaten, polling frequentie en het doel certificaat archief. Specifiek:  
+De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als open bare informatie. De uitbrei ding vereist een lijst met bewaakte certificaten, polling frequentie en het doel certificaat archief. Met name:  
 
 ```json
     {
@@ -66,17 +66,17 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde / voorbeeld | Gegevenstype |
+| Name | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForWindows | string |
+| publisher | Microsoft.Azure.KeyVault | tekenreeks |
+| type | KeyVaultForWindows | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| Naam certificaat archief | MY | string |
+| pollingIntervalInS | 3600 | tekenreeks |
+| Naam certificaat archief | MY | tekenreeks |
 | linkOnRenewal | onwaar | booleaans |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | waar | booleaans |
+| certificateStoreLocation  | LocalMachine | tekenreeks |
+| requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 
 
@@ -169,7 +169,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+         --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -215,4 +215,4 @@ Extensie uitvoering uitvoer wordt vastgelegd in het volgende bestand:
 
 ### <a name="support"></a>Ondersteuning
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

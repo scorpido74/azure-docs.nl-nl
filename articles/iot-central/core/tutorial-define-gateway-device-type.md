@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027690"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423697"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Een nieuw type IoT-gateway apparaat in uw Azure IoT Central-toepassing definiëren
 
@@ -40,7 +40,7 @@ In deze zelf studie wordt gebruikgemaakt van Apparaatbeheer voor een apparaat me
 
 Een sjabloon voor een apparaat maken voor een **S1-sensor** apparaat:
 
-1. Selecteer in het linkernavigatievenster de optie **Apparaatbeheer**. Selecteer vervolgens **+** om de sjabloon toe te voegen.
+1. Selecteer **Apparaatbeheer**in het linkerdeel venster. Selecteer vervolgens **+** om de sjabloon toe te voegen.
 
 1. Schuif omlaag totdat u de tegel voor het apparaat **S1-sensor** kunt zien. Selecteer de tegel en selecteer vervolgens **volgende: aanpassen**.
 
@@ -48,7 +48,7 @@ Een sjabloon voor een apparaat maken voor een **S1-sensor** apparaat:
 
 Een sjabloon voor een apparaat maken voor een**RS40-sensor** apparaat:
 
-1. Selecteer in het linkernavigatievenster de optie **Apparaatbeheer**. Selecteer vervolgens **+** om de sjabloon toe te voegen.
+1. Selecteer **Apparaatbeheer**in het linkerdeel venster. Selecteer vervolgens **+** om de sjabloon toe te voegen.
 
 1. Schuif omlaag totdat u de tegel voor het**RS40-sensor** apparaat kunt zien. Selecteer de tegel en selecteer vervolgens **volgende: aanpassen**.
 
@@ -59,13 +59,13 @@ U hebt nu Device-sjablonen voor de twee typen downstream-apparaten:
 ![Device-sjablonen voor downstream-apparaten](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
 
 
-## <a name="create-a-gateway-device-template"></a>Een sjabloon voor een gateway-apparaat maken
+## <a name="create-a-gateway-device-template"></a>Een gateway-apparaatsjabloon maken
 
 In deze zelf studie maakt u een nieuwe sjabloon voor een gateway apparaat. U kunt deze sjabloon later gebruiken om een gesimuleerd gateway apparaat in uw toepassing te maken.
 
 Een nieuwe sjabloon voor gateway apparaten toevoegen aan uw toepassing:
 
-1. Selecteer in het linkernavigatievenster de optie **Apparaatbeheer**. Selecteer vervolgens **+** om de sjabloon toe te voegen.
+1. Selecteer **Apparaatbeheer**in het linkerdeel venster. Selecteer vervolgens **+** om de sjabloon toe te voegen.
 
 1. Selecteer op de pagina **sjabloon type selecteren** de tegel **IOT-apparaten** en selecteer vervolgens **volgende: aanpassen**.
 
@@ -105,12 +105,12 @@ Om Cloud eigenschappen toe te voegen aan de sjabloon **Smart buil ding gateway-a
 
     | Weergavenaam      | Semantisch type | Schema |
     | ----------------- | ------------- | ------ |
-    | Laatste servicedatum | Geen          | Datum   |
-    | Klant naam     | Geen          | Tekenreeks |
+    | Laatste servicedatum | None          | Date   |
+    | Klant naam     | None          | Tekenreeks |
 
 2. Selecteer **Opslaan**.
 
-### <a name="create-views"></a>Weer gaven maken
+### <a name="create-views"></a>Weergaven aanmaken
 
 Als opbouw functie kunt u de toepassing aanpassen om relevante informatie over het omgevings sensor apparaat weer te geven voor een operator. Met uw aanpassingen kan de operator de omgevings sensor apparaten beheren die zijn verbonden met de toepassing. U kunt twee soorten weer gaven maken voor een operator die u kunt gebruiken om te communiceren met apparaten:
 
@@ -195,7 +195,7 @@ Selecteer een sjabloon voor het gateway-apparaat en het exemplaar van het gatewa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 * Maak een nieuwe IoT-gateway als een sjabloon voor een apparaat.
 * Cloud eigenschappen maken.

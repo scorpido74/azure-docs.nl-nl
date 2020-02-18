@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280931"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426204"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MariaDB (preview) maken en beheren met CLI
 
@@ -38,7 +38,7 @@ Voordat u een resource kunt maken, moet u een resource groep maken om de Virtual
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Een Virtual Network maken
 Maak een Virtual Network met [AZ Network vnet Create](/cli/azure/network/vnet). In dit voor beeld wordt een standaard Virtual Network gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
@@ -129,9 +129,9 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open het bestand gedownloade. rdp *.
+1. Open het *gedownloade RDP* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
@@ -159,27 +159,28 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Test de verbinding van de persoonlijke verbinding voor de MariaDB-server met behulp van elke beschik bare client. In het onderstaande voor beeld heb ik [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) gebruikt om de bewerking uit te voeren.
 
-4. In **New connection**, enter or select this information:
+4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
 
-    | Setting | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | Verbindingsnaam| Selecteer de verbindings naam van uw keuze.|
+    | Hostnaam | *Mydemoserver.privatelink.mariadb.database.Azure.com* selecteren |
+    | Gebruikersnaam | Voer de gebruikers naam in als *username@servername* die wordt opgegeven tijdens het maken van de MariaDB-server. |
+    | Wachtwoord | Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de MariaDB-server. |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. Selecteer **verbinding testen** of **OK**.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. Eventueel Bladeren door data bases in het menu links en informatie uit de MariaDB-data base maken of er query's op uitvoeren
 
-8. Close the remote desktop connection to myVm.
+8. Sluit de verbinding met extern bureau blad met myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Resources opschonen 
+U kunt AZ Group Delete gebruiken om de resource groep en alle resources die het heeft, te verwijderen wanneer u deze niet meer nodig hebt: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

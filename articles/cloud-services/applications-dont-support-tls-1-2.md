@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: c4cbe2a99de97b2938d494e80d410a44c4143629
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026833"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425031"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problemen oplossen met toepassingen die TLS 1,2 niet ondersteunen
 In dit artikel wordt beschreven hoe u de oudere TLS-protocollen (TLS 1,0 en 1,1) inschakelt, en het Toep assen van verouderde coderings suites ter ondersteuning van de extra protocollen op de web-en werk rollen van de Windows Server 2019 Cloud service. 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u de oudere TLS-protocollen (TLS 1,0 en 1,1)
 We begrijpen dat we met de stappen voor het afnemen van TLS 1,0 en TLS 1,1 de oudere protocollen en coderings suites mogelijk moeten ondersteunen totdat ze hun afschaffing kunnen plannen.  We raden u aan om deze verouderde waarden niet opnieuw in te scha kelen. we bieden hulp bij het helpen van klanten. We raden klanten aan om het risico van regressie te evalueren voordat ze de wijzigingen implementeren die in dit artikel worden beschreven. 
 
 > [!NOTE]
-> Met releases van versie 6 van gast besturingssystemen wordt TLS 1,2 afgedwongen door 1.0/1.0-versleuteling uit te scha kelen. 
+> Met releases van versie 6 van gast besturingssystemen wordt TLS 1,2 afgedwongen door 1.0/1.1-code ring uit te scha kelen. 
 
   
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Ondersteuning voor TLS 1,0-, TLS 1,1-en oudere coderings suites verwijderen 

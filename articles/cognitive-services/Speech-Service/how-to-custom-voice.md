@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/15/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 6edd8f89ed2db2927cce14ea86b589090bdc35ed
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371272"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424963"
 ---
 # <a name="get-started-with-custom-voice"></a>Aan de slag met Custom Voice
 
@@ -65,7 +65,7 @@ Inhoud, zoals gegevens, modellen, testen en eind punten, zijn ingedeeld in **pro
 Als u uw eerste project wilt maken, selecteert u het tabblad **tekst naar spraak/aangepast stem** en klikt u vervolgens op **Nieuw project**. Volg de instructies in de wizard om het project te maken. Nadat u een project hebt gemaakt, ziet u vier tabbladen: **gegevens**, **training**, **testen**en **implementatie**. Gebruik de koppelingen in de [volgende stappen](#next-steps) voor meer informatie over het gebruik van elk tabblad.
 
 > [!IMPORTANT]
-> De [aangepaste Voice Portal](https://aka.ms/custom-voice) is onlangs bijgewerkt. Als u eerdere projecten hebt gemaakt met gegevens, modellen, tests en gepubliceerde eind punten in de CRI'S-portal of met Api's, moet u een nieuw project maken in de nieuwe portal om verbinding te laten maken met deze oude entiteiten.
+> De [aangepaste Voice Portal](https://aka.ms/custom-voice) is onlangs bijgewerkt. Als u eerdere gegevens, modellen, tests en gepubliceerde eind punten in de CRIS.ai-portal of met Api's hebt gemaakt, moet u een nieuw project maken in de nieuwe portal om verbinding met deze oude entiteiten te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

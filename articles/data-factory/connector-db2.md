@@ -9,21 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 22ecac12e049e58e533cdde0078f4a25f6bb2aa6
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941754"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423824"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Gegevens van DB2 kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-onprem-db2-connector.md)
+> * [Versie 1](v1/data-factory-onprem-db2-connector.md)
 > * [Huidige versie](connector-db2.md)
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een DB2-Data Base te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een DB2-Data Base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -32,7 +32,7 @@ Deze DB2 Data Base-connector wordt ondersteund voor de volgende activiteiten:
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens uit de DB2-Data Base kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U kunt gegevens uit de DB2-Data Base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
 In het bijzonder ondersteunt deze DB2-connector de volgende IBM DB2-platforms en-versies met distributed Relationed data base Architecture (DRDA) SQL Access Manager (SQLAM) versie 9, 10 en 11:
 
@@ -45,6 +45,9 @@ In het bijzonder ondersteunt deze DB2-connector de volgende IBM DB2-platforms en
 * IBM DB2 voor LUW 11
 * IBM DB2 voor LUW 10,5
 * IBM DB2 voor LUW 10,1
+
+>[!TIP]
+>DB2-connector is gebaseerd op Microsoft OLE DB-provider voor DB2. Raadpleeg de [fout codes van de gegevens provider](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)om problemen met de DB2-connector op te lossen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,17 +65,17 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor gekoppelde DB2-service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Db2** | Ja |
 | server |Naam van de DB2-Server. U kunt het poort nummer opgeven na de server naam gescheiden door dubbele punt, bijvoorbeeld `server:port`. |Ja |
-| database |Naam van de DB2-Data Base. |Ja |
+| enddatabase |Naam van de DB2-Data Base. |Ja |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base.<br/>Toegestane waarde is: **Basic**. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op om verbinding te maken met de DB2-Data Base. |Ja |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | packageCollection | Geef op onder waar de benodigde pakketten automatisch worden gemaakt door ADF bij het uitvoeren van query's op de data base. | Nee |
 | certificateCommonName | Wanneer u Secure Sockets Layer (SSL) of Transport Layer Security (TLS)-code ring gebruikt, moet u een waarde opgeven voor de algemene naam van het certificaat. | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
 > [!TIP]
 > Als er een fout bericht wordt weer gegeven met de melding dat `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, is de reden dat het benodigde pakket niet is gemaakt voor de gebruiker. Standaard probeert ADF een pakket te maken onder de verzameling met de naam van de gebruiker die u hebt gebruikt voor verbinding met de DB2. Geef de verzamelings eigenschap van het pakket op om aan te geven onder waar u de benodigde pakketten wilt maken bij het uitvoeren van een query op de data base.
@@ -104,11 +107,11 @@ De volgende eigenschappen worden ondersteund voor gekoppelde DB2-service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door de DB2-gegevensset worden ondersteund.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door de DB2-gegevensset worden ondersteund.
 
 Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **Db2Table** | Ja |
 | schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
@@ -137,13 +140,13 @@ Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds onde
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de DB2-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de DB2-bron.
 
 ### <a name="db2-as-source"></a>DB2 als bron
 
 Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Db2Source** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
@@ -184,32 +187,32 @@ Als u `RelationalSource` getypte bron gebruikt, wordt deze nog steeds ondersteun
 
 ## <a name="data-type-mapping-for-db2"></a>Toewijzing van gegevens type voor DB2
 
-Bij het kopiëren van gegevens uit de DB2 worden de volgende toewijzingen gebruikt vanuit DB2-gegevens typen voor het Azure Data Factory van tussenliggende gegevens typen. Zie [Schema en gegevens typt toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe copy activity in het schema en de gegevens van een brontype aan de sink toegewezen.
+Bij het kopiëren van gegevens uit de DB2 worden de volgende toewijzingen gebruikt vanuit DB2-gegevens typen voor het Azure Data Factory van tussenliggende gegevens typen. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
 | DB2-database type | Data factory tussentijdse gegevenstype |
 |:--- |:--- |
 | BigInt |Int64 |
-| Binary |Byte[] |
+| Binair bestand |Byte[] |
 | Blob |Byte[] |
-| CHAR |Tekenreeks |
+| char |Tekenreeks |
 | Clob |Tekenreeks |
-| Datum |Datetime |
+| Date |Datum en tijd |
 | DB2DynArray |Tekenreeks |
 | DbClob |Tekenreeks |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Double |Double |
-| Float |Double |
+| decimaal |decimaal |
+| DecimalFloat |decimaal |
+| Double-waarde |Double-waarde |
+| Float |Double-waarde |
 | Graphic |Tekenreeks |
 | Geheel getal |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |Tekenreeks |
 | LongVarGraphic |Tekenreeks |
-| Numeriek |Decimal |
-| Real |Enkelvoudig |
+| Numeric |decimaal |
+| Realistische |Enkelvoudig |
 | SmallInt |Int16 |
-| Tijd |TimeSpan |
-| Tijdstempel |Datum/tijd |
+| Time |TimeSpan |
+| Tijdstempel |DateTime |
 | VarBinary |Byte[] |
 | VarChar |Tekenreeks |
 | VarGraphic |Tekenreeks |
@@ -220,4 +223,4 @@ Bij het kopiëren van gegevens uit de DB2 worden de volgende toewijzingen gebrui
 Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

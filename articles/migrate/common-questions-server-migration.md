@@ -1,60 +1,66 @@
 ---
 title: Veelgestelde vragen over Azure Migrate server migratie
-description: Antwoorden vinden op veelgestelde vragen over Azure Migrate server migratie
+description: Antwoorden vinden op veelgestelde vragen over het migreren van computers met Azure Migrate server migratie
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: bae3447f0fada18de5473e1ef1a1c1d431535f63
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 0c967027457b925b45ea19d994cfadfdbd0b8ab3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067381"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425830"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over de Azure Migrate: Server migratie. Als u na het lezen van dit artikel nog meer query's hebt uitgevoerd, plaatst u deze op het [Azure migrate forum](https://aka.ms/AzureMigrateForum). Als u andere vragen hebt, raadpleegt u de volgende artikelen:
+In dit artikel vindt u antwoorden op veelgestelde vragen over de Azure Migrate: hulp programma voor server migratie. Als u meer vragen hebt na het lezen van dit artikel, raadpleegt u de volgende artikelen:
 
 - [Algemene vragen](resources-faq.md) over Azure Migrate.
 - [Vragen](common-questions-appliance.md) over het Azure migrate apparaat.
 - [Vragen](common-questions-discovery-assessment.md) over de visualisatie van detectie, beoordeling en afhankelijkheid.
+- Vraag het Azure Migrate- [forum](https://aka.ms/AzureMigrateForum)om vragen te plaatsen.
 
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Hoe werkt VMware-replicatie zonder agent?
 
-De replicatie methode zonder agent voor VMware maakt gebruik van VMware-moment opnamen en het gewijzigde VMware-blok tracering (CBT). Er wordt een initiële replicatie cyclus gepland wanneer de gebruiker de replicatie start. In de eerste replicatie cyclus wordt een moment opname van de virtuele machine gemaakt en wordt deze moment opname gebruikt voor het repliceren van de virtuele machines Vmdk's (schijven). Nadat de eerste replicatie cyclus is voltooid, worden de Delta replicatie cycli periodiek gepland. In de Delta replicatie cyclus wordt een moment opname gemaakt en gegevens blokken die zijn gewijzigd sinds de vorige replicatie cyclus worden gerepliceerd. VMware gewijzigde blok tracering wordt gebruikt om te bepalen welke blokken zijn gewijzigd sinds de laatste cyclus.
-De frequentie van de periodieke replicatie cycli wordt automatisch beheerd door de service, afhankelijk van het aantal andere virtuele machines/schijven die gelijktijdig worden gerepliceerd van hetzelfde gegevens archief en de ideale omstandigheden zullen uiteindelijk convergeren op 1 cyclus per uur per VM.
+De replicatie methode zonder agent voor VMware maakt gebruik van VMware-moment opnamen en het gewijzigde VMware-blok tracering (CBT).
 
-Wanneer u migreert, wordt een replicatie cyclus op aanvraag gepland voor de virtuele machine om eventuele resterende gegevens vast te leggen. U kunt ervoor kiezen om de virtuele machine af te sluiten als onderdeel van de migratie om ervoor te zorgen dat er geen gegevens verloren gaan en de consistentie van de toepassing.
+1. Wanneer u de replicatie start, wordt een initiële replicatie cyclus gepland. In de eerste cyclus wordt een moment opname van de virtuele machine gemaakt. Deze moment opname wordt gebruikt om de Vm's Vmdk's (schijven) te repliceren. 
+2. Nadat de eerste replicatie cyclus is voltooid, worden de Delta replicatie cycli periodiek gepland.
+    - Tijdens de replicatie van verschillen wordt een moment opname gemaakt en gegevens blokken die zijn gewijzigd sinds de vorige replicatie cyclus worden gerepliceerd.
+    - VMware CBT wordt gebruikt om te bepalen welke blokken zijn gewijzigd sinds de laatste cyclus.
+    - De frequentie van de periodieke replicatie cycli wordt automatisch beheerd door de Azure Migrate, afhankelijk van het aantal andere Vm's/schijven die gelijktijdig worden gerepliceerd vanuit dezelfde Data Store. In de ideale omstandigheden convergeert replicatie uiteindelijk tot één cyclus per uur voor elke virtuele machine.
 
-## <a name="why-is-the-resynchronization-option-not-exposed-in-agentless-stack"></a>Waarom is de optie voor opnieuw synchroniseren niet beschikbaar in stack zonder agents?
+Wanneer u migreert, wordt een replicatie cyclus op aanvraag voor de machine gepland om alle resterende gegevens vast te leggen. U kunt ervoor kiezen om de machine tijdens de migratie uit te scha kelen om ervoor te zorgen dat er geen gegevens verloren gaan en de consistentie van de toepassing.
 
-In stack zonder agents wordt in elke Delta cyclus het verschil overgedragen tussen de huidige moment opname en de vorige moment opname die we hebben ondernomen. Omdat het altijd een verschil is tussen moment opnamen, biedt dit het voor deel van het vouwen van de gegevens (dat wil zeggen, als een bepaalde sector n keer tussen de moment opnamen is geschreven), hoeft alleen de laatste schrijf overdracht te worden overgedragen, omdat alleen de laatste synchronisatie van belang is. Dit wijkt af van de op agent gebaseerde stack, waarmee we elke schrijf bewerking bijhouden en Toep assen. Dit betekent dat elke Delta cyclus een hersynchronisatie is. Daarom wordt er geen hersynchronisaties optie weer gegeven. 
+## <a name="why-isnt-resynchronization-exposed"></a>Waarom wordt de weer gegeven niet opnieuw gesynchroniseerd?
 
-Als de schijven niet synchroon lopen vanwege een storing, wordt deze in de volgende cyclus opgelost. 
+Tijdens migratie zonder agents wordt in elke Delta cyclus het verschil tussen de huidige moment opname en de eerder gebruikte moment opname geschreven. Omdat het altijd het verschil is tussen moment opnamen, vouwt u de gegevens in. Als een bepaalde sector N keer tussen moment opnamen wordt geschreven, moet alleen de laatste schrijf bewerking worden overgedragen, omdat alleen de laatste synchronisatie is betrokken. Dit verschilt van replicatie op basis van een agent, waarbij wij elke schrijf bewerking bijhouden en Toep assen. Dit betekent dat elke Delta cyclus een hersynchronisatie is. Daarom wordt er geen hersynchronisaties optie weer gegeven. Als de schijven niet worden gesynchroniseerd vanwege een fout, wordt deze in de volgende cyclus opgelost. 
 
-## <a name="what-is-the-impact-of-churn-rate-if-i-use-agentless-replication"></a>Wat is de impact van het verloop tempo als ik replicatie zonder agent gebruikt?
+## <a name="how-does-churn-rate-impact-agentless-replication"></a>Wat is de invloed van het verloop van de replicatie zonder agent?
 
-Omdat de stack afhankelijk is van de gegevens die worden gevouwen, is het verloop patroon gelijk aan die in deze stack. Een patroon waarin een bestand opnieuw wordt geschreven en dat opnieuw geen veel invloed heeft. Een patroon waarbij elke andere sector wordt geschreven, zal echter een hoog verloop veroorzaken in de volgende cyclus. Omdat we de hoeveelheid gegevens die we overdragen minimaliseert, kunnen we de gegevens zo veel mogelijk vouwen voordat de volgende cyclus wordt gepland.  
+Sinds replicatie van zonder agents is de datum het verloop patroon belang rijker dan het verloop frequentie. Wanneer een bestand opnieuw wordt geschreven, heeft de frequentie geen veel invloed meer. Een patroon waarbij elke andere sector wordt geschreven, veroorzaakt echter een hoog verloop in de volgende cyclus. Omdat we de hoeveelheid gegevens die we overdragen minimaliseert, kunnen we de gegevens zo veel mogelijk vouwen voordat de volgende cyclus wordt gepland.  
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Hoe vaak is een replicatie cyclus gepland?
 
-De formule voor het plannen van de volgende replicatie cyclus is: (vorige cyclus tijd/2) of 1 uur, afhankelijk van wat er hoger is. Als een VM bijvoorbeeld vier uur heeft geduurd voor een Delta cyclus, plannen we de volgende cyclus in twee uur en niet in het volgende uur. Dit wijkt af van het moment dat de cyclus direct na IR ligt, waarbij de eerste Delta cyclus direct wordt gepland.
+De formule voor het plannen van de volgende replicatie cyclus: (vorige cyclus tijd/2) of 1 uur, afhankelijk van wat hoger is.
 
-## <a name="what-is-the-impact-on-performance-of-vcenter-server-or-esxi-host-while-using-agentless-replication"></a>Wat is de invloed op de prestaties van vCenter Server-of ESXi-host tijdens het gebruik van replicatie zonder agent?
+Als een virtuele machine bijvoorbeeld vier uur duurt voor een Delta cyclus, wordt de volgende cyclus gepland in twee uur en niet in het volgende uur. Dit wordt direct na de initiële replicatie afwijkend, waarbij de eerste Delta cyclus onmiddellijk wordt gepland.
 
-Aangezien replicatie zonder agent gebruik maakt van moment opnamen, worden er IOPs-verbruikt voor opslag en hebben klanten een aantal IOPs-ruimte nodig voor de opslag. Het wordt niet aanbevolen deze stack te gebruiken voor beperkte opslag/IOPs-omgeving.
+## <a name="how-does-agentless-replication-impact-vmware-servers"></a>Hoe heeft replicatie van agents invloed op VMware-servers?
 
-## <a name="does-agentless-migration-stack-support-migration-of-uefi-vms-to-azure-gen-2-vms"></a>Biedt migratie stack zonder agent migratie van UEFI-Vm's naar virtuele machines van Azure generatie 2?
+Er is een invloed op de prestaties van vCenter Server-ESXi-hosts. Omdat replicatie zonder agent gebruikmaakt van moment opnamen, verbruikt de server IOPs op opslag en is er een aantal IOPS-opslag bandbreedte nodig. Het wordt niet aangeraden replicatie zonder agent te gebruiken als er beperkingen gelden voor opslag/IOPs in uw omgeving.
 
-Nee, u moet Azure Site Recovery gebruiken om deze Vm's te migreren naar Gen 2 Azure Vm's. 
+## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Kan ik zonder agent migratie van UEFI-Vm's naar Azure gen 2?
 
-## <a name="can-i-pin-my-vms-to-azure-availability-zones-when-i-migrate"></a>Kan ik mijn Vm's vastmaken aan Azure-beschikbaarheidszones wanneer ik migreer?
+Nee. Gebruik Azure Site Recovery om deze Vm's te migreren naar Gen 2 Azure Vm's. 
 
-Nee, ondersteuning voor Azure-beschikbaarheidszones is niet aanwezig.
+## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Kan ik virtuele machines vastmaken aan Azure-beschikbaarheidszones wanneer ik migreer?
+
+Nee, Azure-beschikbaarheidszones worden niet ondersteund.
 
 ## <a name="which-transport-protocol-is-used-by-azure-migrate-during-replication"></a>Welk transport protocol wordt door Azure Migrate gebruikt tijdens de replicatie?
 
-Azure Migrate gebruikt een protocol voor netwerk blok apparaten (NBD) met SSL-versleuteling.
+Azure Migrate maakt gebruik van het protocol voor netwerk blok apparaten (NBD) met SSL-versleuteling.
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Wat is de minimale vCenter Server versie die vereist is voor de migratie?
 
@@ -64,10 +70,10 @@ U moet ten minste vCenter Server 5,5 en VMware vSphere ESXi host versie 5,5.
 
 Nee. Azure Migrate ondersteunt alleen migratie naar Managed disks (standaard HDD, Premium SSD).
 
-## <a name="how-many-vms-can-replicate-simultaneously-using-agentless-vmware-stack"></a>Hoeveel Vm's kunnen gelijktijdig worden gerepliceerd met VMware-stack zonder agent?
+## <a name="how-many-vms-can-i-replicate-together-with-agentless-migration"></a>Hoeveel Vm's kan ik samen repliceren met migratie zonder agent?
 
-Op dit moment kunnen klanten 100 Vm's per vCenter Server tegelijk migreren. Dit kan worden gedaan in batches van tien Vm's.
-
+Op dit moment kunt u 100 Vm's per vCenter Server tegelijk migreren. Migreer in batches van tien Vm's.
+ 
 
 
 

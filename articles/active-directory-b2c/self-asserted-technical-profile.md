@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37d895e2514d01bdbe73f42e1ba5ea5e4c46bfa1
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372856"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425592"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -55,7 +55,7 @@ In een zelf-bevestigd technisch profiel kunt u de **InputClaims** -en **InputCla
 
 De functie voor het weer geven van claims is momenteel beschikbaar als **Preview-versie**.
 
-Het **DisplayClaims** -element bevat een lijst met claims die op het scherm moeten worden weer gegeven voor het verzamelen van gegevens van de gebruiker. Gebruik de invoer claims die eerder zijn beschreven om de waarden van uitvoer claims vooraf in te vullen. Het element kan ook een standaard waarde bevatten.
+Het **DisplayClaims** -element bevat een lijst met claims die op het scherm moeten worden weer gegeven voor het verzamelen van gegevens van de gebruiker. Als u de waarden van weer gave claims vooraf wilt invullen, gebruikt u de invoer claims die eerder zijn beschreven. Het element kan ook een standaard waarde bevatten.
 
 De volg orde van de claims in **DisplayClaims** geeft aan in welke volg orde Azure AD B2C de claims op het scherm worden weer gegeven. Als u wilt afdwingen dat de gebruiker een waarde voor een specifieke claim opgeeft, stelt u het **vereiste** kenmerk van het **DisplayClaim** -element in op `true`.
 

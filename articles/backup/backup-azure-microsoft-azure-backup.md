@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111597"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425184"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -163,14 +163,15 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
 2. Klik in het welkomst scherm op de knop **volgende** . Hiermee gaat u naar de sectie *vereisten controles* . Klik in dit scherm op **controleren** om te bepalen of aan de hardware-en software vereisten voor Azure backup server is voldaan. Als aan alle vereisten wordt voldaan, wordt er een bericht weer gegeven waarin staat dat de computer aan de vereisten voldoet. Klik op de knop **volgende** .
 
     ![Azure Backup Server-welkom en vereisten controleren](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup-Server vereist SQL Server Enterprise. Daarnaast wordt het Azure Backup Server-installatie pakket geleverd met de juiste SQL Server binaire bestanden die nodig zijn als u uw eigen SQL niet wilt gebruiken. Wanneer u met een nieuwe Azure Backup Server-installatie begint, moet u de optie **nieuw exemplaar van SQL Server installeren met deze installatie** selecteren en op de knop **controleren en installeren** klikken. Zodra de vereiste onderdelen zijn geïnstalleerd, klikt u op **volgende**.
+3. Het Azure Backup Server-installatie pakket wordt geleverd met de juiste SQL Server binaire bestanden die nodig zijn. Wanneer u een nieuwe Azure Backup Server-installatie start, kiest u de optie **nieuw exemplaar van SQL Server installeren met deze installatie** en klikt u op de knop **controleren en installeren** . Zodra de vereiste onderdelen zijn geïnstalleerd, klikt u op **volgende**.
+
+    >[!NOTE]
+    >Als u uw eigen SQL Server wilt gebruiken, zijn de ondersteunde SQL Server versies SQL Server 2014 SP1 of hoger, 2016 en 2017.  Alle SQL Server versies moeten Standard of ENTER prise 64-bit zijn.
+    >Azure Backup Server werkt niet met een extern SQL Server exemplaar. Het exemplaar dat door Azure Backup Server wordt gebruikt, moet lokaal zijn. Als u een bestaande SQL Server gebruikt voor MABS, ondersteunt de installatie van MABS alleen het gebruik van *benoemde exemplaren* van SQL Server.
 
     ![Azure Backup Server-SQL-controle](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
     Als er een fout optreedt met een aanbeveling om de computer opnieuw op te starten, moet u dit doen en op **controleren**klikken. Als er SQL-configuratie problemen zijn, moet u SQL opnieuw configureren volgens de SQL-richt lijnen en opnieuw proberen om MABS te installeren of bij te werken met behulp van het bestaande exemplaar van SQL.
-
-   > [!NOTE]
-   > Azure Backup Server werkt niet met een extern SQL Server exemplaar. Het exemplaar dat door Azure Backup Server wordt gebruikt, moet lokaal zijn. Als u een bestaande SQL Server gebruikt voor MABS, ondersteunt MABS-installatie alleen het gebruik van *benoemde exemplaren* van SQL Server.
 
    **Hand matige configuratie**
 

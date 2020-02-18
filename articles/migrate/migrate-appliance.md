@@ -2,13 +2,13 @@
 title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031660"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425456"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -55,7 +55,7 @@ Fysieke machine |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren
 **Hash-waarde** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V-host** | Met Windows Server 2012 R2 of hoger.
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
-**Detectie** | Een apparaat kan tot 5000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
+**Detectie** | Een apparaat kan tot 5000 Hyper-V-Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
 **Toestel onderdelen** | Beheer-app: Web-app in het apparaat voor gebruikers invoer tijdens de implementatie.<br/> Detectie agent: verzamelt computer configuratie gegevens.<br/> Beoordelings agent: prestatie gegevens verzamelen.<br/>  Service voor automatische updates: onderdelen bijwerken (elke 24 uur wordt uitgevoerd).
 
 

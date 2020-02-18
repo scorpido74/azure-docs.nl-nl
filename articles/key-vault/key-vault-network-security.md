@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 870064406c86e9cef6a45dfbe47c61cdaa9ecab0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976959"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426306"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault firewalls en virtuele netwerken configureren
 
@@ -27,7 +27,7 @@ In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure 
 U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behulp van de Azure Portal:
 
 1. Blader naar de sleutel kluis die u wilt beveiligen.
-2. Selecteer **firewalls en virtuele netwerken**.
+2. Selecteer **netwerken**en selecteer vervolgens het tabblad **firewalls en virtuele netwerken** .
 3. Selecteer onder **toegang toestaan vanuit**de optie **geselecteerde netwerken**.
 4. Als u bestaande virtuele netwerken wilt toevoegen aan firewalls en regels voor virtuele netwerken, selecteert u **+ bestaande virtuele netwerken toevoegen**.
 5. Selecteer op de nieuwe blade die wordt geopend, het abonnement, de virtuele netwerken en de subnetten die u toegang wilt geven tot deze sleutel kluis. Als voor de virtuele netwerken en subnetten die u selecteert, geen service-eind punten zijn ingeschakeld, bevestigt u dat u service-eind punten wilt inschakelen en selecteert u **inschakelen**. Het kan tot vijf tien minuten duren voordat deze is doorgevoerd.
@@ -63,12 +63,12 @@ U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behu
    az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
    ```
 
-6. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde services, stelt `bypass` u in op. `AzureServices`
+6. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde services, stelt u `bypass` in op `AzureServices`.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
    ```
 
-7. Schakel de netwerk regels in door de standaard actie in te `Deny`stellen op.
+7. Schakel de netwerk regels in door de standaard actie in te stellen op `Deny`.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
    ```
@@ -102,12 +102,12 @@ U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behu
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
-6. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde services, stelt `bypass` u in op. `AzureServices`
+6. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde services, stelt u `bypass` in op `AzureServices`.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
-7. Schakel de netwerk regels in door de standaard actie in te `Deny`stellen op.
+7. Schakel de netwerk regels in door de standaard actie in te stellen op `Deny`.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
@@ -115,7 +115,7 @@ U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behu
 ## <a name="references"></a>Verwijzingen
 
 * Azure CLI-opdrachten: [AZ-inkluis netwerk-regel](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Azure PowerShell-cmdlets: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
+* Azure PowerShell-cmdlets: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Volgende stappen
 

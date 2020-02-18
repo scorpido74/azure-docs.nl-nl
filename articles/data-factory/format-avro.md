@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e962a0e76cdc0d51a87df3c33927c34db991fc7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927417"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423776"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>De indeling Avro in Azure Data Factory
 
@@ -24,13 +24,13 @@ De Avro-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](conn
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Avro-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Avro-gegevensset.
 
-| Eigenschap         | Beschrijving                                                  | Verplicht |
+| Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **Avro**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
-| avroCompressionCodec | De compressie-codec die moet worden gebruikt bij het schrijven naar Avro-bestanden. Bij het lezen van Avro-bestanden, Data Factory de compressie-codec automatisch bepalen op basis van de meta gegevens van het bestand.<br>Ondersteunde typen zijn '**none**' (standaard), '**Deflate**', '**Snappy**'. | Nee       |
+| locatie         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
+| avroCompressionCodec | De compressie-codec die moet worden gebruikt bij het schrijven naar Avro-bestanden. Bij het lezen van Avro-bestanden, Data Factory de compressie-codec automatisch bepalen op basis van de meta gegevens van het bestand.<br>Ondersteunde typen zijn '**none**' (standaard), '**Deflate**', '**Snappy**'. Houd er rekening mee dat de activiteit die momenteel wordt gekopieerd, geen ondersteuning biedt voor Snappy wanneer Avro bestanden lezen/schrijven. | Nee       |
 
 > [!NOTE]
 > Spaties in kolom naam wordt niet ondersteund voor Avro-bestanden.
@@ -61,13 +61,13 @@ Hieronder ziet u een voor beeld van een AVRO-gegevensset op Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Avro-bron en Sink.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Avro-bron en Sink.
 
 ### <a name="avro-as-source"></a>AVRO als bron
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
-| Eigenschap      | Beschrijving                                                  | Verplicht |
+| Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AvroSource**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -76,7 +76,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
-| Eigenschap      | Beschrijving                                                  | Verplicht |
+| Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AvroSink**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -87,6 +87,6 @@ Avro [complexe gegevens typen](https://avro.apache.org/docs/current/spec.html#sc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

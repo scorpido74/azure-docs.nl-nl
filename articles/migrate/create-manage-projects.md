@@ -1,18 +1,18 @@
 ---
-title: Azure Migrate projecten maken en beheren
+title: Azure Migrate-projecten maken en beheren
 description: U kunt projecten vinden, maken, beheren en verwijderen in Azure Migrate.
 ms.topic: how-to
-ms.date: 01/01/2020
-ms.openlocfilehash: 548e51cbd215dd9b5e69c68b9bd8fc81625240a2
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.date: 02/17/2020
+ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725882"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425660"
 ---
-# <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate projecten maken en beheren
+# <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projecten maken en beheren
 
-In dit artikel wordt beschreven hoe u [Azure migrate](migrate-services-overview.md) projecten kunt maken, beheren en verwijderen
+In dit artikel wordt beschreven hoe u [Azure migrate](migrate-services-overview.md) projecten maakt, beheert en verwijdert.
 
 
 ## <a name="create-a-project-for-the-first-time"></a>Voor de eerste keer een project maken
@@ -66,7 +66,7 @@ Verwijder als volgt:
     - Als de resource groep uitsluitend wordt gebruikt door het Azure Migrate project, kunt u de hele resource groep verwijderen.
 
 
-Opmerking:
+Houd rekening met het volgende:
 
 - Wanneer u verwijdert, worden zowel het project als de meta gegevens over gedetecteerde machines verwijderd.
 - Als u de oudere versie van Azure Migrate gebruikt, opent u de Azure-resource groep waarin het project is gemaakt. Selecteer het migratie project dat u wilt verwijderen (het resource type is een **migratie project**).

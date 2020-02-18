@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132067"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424929"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
@@ -302,7 +302,7 @@ Als het aantal opgehaalde documenten ongeveer gelijk is aan het aantal uitvoer d
 
 Azure Cosmos DB maakt gebruik van [partitionering](partitioning-overview.md) om afzonderlijke containers te schalen als aanvraag eenheid en gegevens opslag moeten toenemen. Elke fysieke partitie heeft een afzonderlijke en onafhankelijke index. Als uw query een gelijkheids filter heeft dat overeenkomt met de partitie sleutel van uw container, hoeft u alleen de index van de relevante partitie te controleren. Deze optimalisatie vermindert het totale aantal RU-aanvragen dat de query vereist.
 
-Als u een groot aantal ingerichte RU (meer dan 30.000) of een grote hoeveelheid opgeslagen gegevens (meer dan ~ 100 GB) hebt, hebt u waarschijnlijk een grote voldoende container om een aanzienlijke verlaging van de query-RU-kosten te zien.
+Als u een groot aantal ingerichte RU (meer dan 30.000) of een grote hoeveelheid opgeslagen gegevens (meer dan ongeveer 100 GB) hebt, hebt u waarschijnlijk een grote voldoende container om een aanzienlijke verlaging van de query-RU-kosten te zien.
 
 Als we bijvoorbeeld een container met de partitie sleutel foodGroup maken, hoeven de volgende query's slechts één fysieke partitie te controleren:
 
@@ -383,7 +383,7 @@ Query's die worden uitgevoerd vanuit een andere regio dan het Azure Cosmos DB ac
 
 ## <a name="increase-provisioned-throughput"></a>Ingerichte door Voer verhogen
 
-In Azure Cosmos DB wordt uw ingerichte door Voer gemeten in aanvraag eenheden (RU). Stel dat u een query hebt die 5 RU van de door Voer verbruikt. Als u bijvoorbeeld 1.000 RU inricht, kunt u die query 200 keer per seconde uitvoeren. Als u probeert de query uit te voeren terwijl er onvoldoende door Voer beschikbaar is, retourneert Azure Cosmos DB een HTTP 429-fout. Een van de huidige core-api's (SQL) API SDK voert deze query automatisch opnieuw uit nadat een korte periode is gewacht. Vertraagde aanvragen nemen langere tijd in beslag, waardoor het verhogen van de ingerichte door Voer de query latentie kan verbeteren. In de Blade metrische gegevens van de Azure Portal ziet u het [totale aantal](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) aanvragen dat wordt beperkt.
+In Azure Cosmos DB wordt uw ingerichte door Voer gemeten in aanvraag eenheden (RU). Stel dat u een query hebt die 5 RU van de door Voer verbruikt. Als u bijvoorbeeld 1.000 RU inricht, kunt u die query 200 keer per seconde uitvoeren. Als u probeert de query uit te voeren terwijl er onvoldoende door Voer beschikbaar is, retourneert Azure Cosmos DB een HTTP 429-fout. Een van de huidige core-api's (SQL) API SDK voert deze query automatisch opnieuw uit nadat een korte periode is gewacht. Vertraagde aanvragen nemen langere tijd in beslag, waardoor het verhogen van de ingerichte door Voer de query latentie kan verbeteren. U kunt het [totale aantal vertraagde aanvragen](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) bekijken op de Blade metrische gegevens van de Azure Portal.
 
 ## <a name="increase-maxconcurrency"></a>MaxConcurrency verhogen
 

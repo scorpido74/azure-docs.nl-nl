@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026112"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425762"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in azure Kubernetes service (AKS)
 
-Ongeveer elke drie maanden wordt een secundaire versie uitgebracht door de Kubernetes-community. Deze releases bevatten nieuwe functies en verbeteringen. Patchreleases worden vaker uitgebracht (soms wekelijks) en zijn alleen bedoeld voor essentiële bugfixes in een secundaire versie. Deze patches bevatten oplossingen voor beveiligings problemen of grote fouten die van invloed zijn op een groot aantal klanten en producten die worden uitgevoerd op productie op basis van Kubernetes.
+De Kubernetes-Community brengt ongeveer elke drie maanden secundaire versies uit. Deze releases bevatten nieuwe functies en verbeteringen. Patch releases zijn vaker (soms wekelijks) en zijn alleen bedoeld voor essentiële probleem oplossingen in een secundaire versie. Deze patches bevatten oplossingen voor beveiligings problemen of grote fouten die van invloed zijn op een groot aantal klanten en producten die worden uitgevoerd op productie op basis van Kubernetes.
 
 AKS streeft ernaar nieuwe Kubernetes-versies te certificeren en vrij te geven binnen 30 dagen na een upstream-release, afhankelijk van de stabiliteit van de release.
 
@@ -99,7 +99,7 @@ New Supported Version List
   * Klanten hebben **30 dagen** na de datum van de open bare melding voor een upgrade naar een ondersteunde versie van de secundaire release.
 * Voor nieuwe **patch** versies van Kubernetes
   * Alle gebruikers ontvangen een melding dat de nieuwe patch versie wordt vrijgegeven en een upgrade naar de nieuwste patch release.
-  * Gebruikers hebben **30 dagen** een upgrade naar een nieuwere, ondersteunde patch release. Gebruikers hebben **30 dagen** voor een upgrade naar een ondersteunde patch release voordat de oudste wordt verwijderd.
+  * Gebruikers hebben **30 dagen** een upgrade naar een nieuwere, ondersteunde patch release voordat de oudste wordt verwijderd.
 
 AKS definieert een ' vrijgegeven versie ' als de algemeen beschik bare versies, ingeschakeld in alle ondergeschikten voor SLO/Quality of Service en beschikbaar in alle regio's. AKS kan ook ondersteuning bieden voor Preview-versies die expliciet zijn voorzien van een voor beeld van voor waarden en bepalingen.
 
@@ -142,7 +142,7 @@ az aks get-versions --location eastus --output table
 Als u een *n-3-* versie hebt, hebt u geen ondersteuning meer en wordt u gevraagd om te upgraden. Als uw upgrade van versie n-3 naar n-2 slaagt, bent u nu in ons ondersteunings beleid. Bijvoorbeeld:
 
 - Als de oudste ondersteunde AKS-versie *1.13 is. a* en u zich op *1.12. b* of ouder bevindt, hebt u geen ondersteuning meer.
-- Als de upgrade van *1.12. b* naar *1.13. a* of hoger is geslaagd, gaat u terug naar het binnen onze ondersteunings beleid.
+- Als de upgrade van *1.12. b* naar *1.13. a* of hoger is geslaagd, bent u terug in het ondersteunings beleid.
 
 Upgrades naar oudere versies dan het ondersteunde venster van *N-2* worden niet ondersteund. In dergelijke gevallen raden klanten aan om nieuwe AKS-clusters te maken en hun workloads opnieuw te implementeren met versies in het ondersteunde venster.
 

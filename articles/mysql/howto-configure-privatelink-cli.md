@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 59c38423f771685dc79a8be12a383cfdec6a0266
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 798c80ec2290a96b6f76116120292720c05c9198
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031523"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426238"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MySQL (preview) maken en beheren met CLI
 
@@ -127,7 +127,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open het bestand gedownloade. rdp *.
+1. Open het *gedownloade RDP* -bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
@@ -155,30 +155,31 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     Non-authoritative answer:
     Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Test de verbinding van de particuliere verbinding voor de MySQL-server met behulp van een beschik bare client. In het onderstaande voor beeld heb ik [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) gebruikt om de bewerking uit te voeren.
 
 
-4. In **New connection**, enter or select this information:
+4. In **nieuwe verbinding**voert u de volgende gegevens in of selecteert u deze:
 
-    | Setting | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MySQL server creation. |
-    | Password | Enter a password provided during the MySQL server creation. |
+    | Verbindingsnaam| Selecteer de verbindings naam van uw keuze.|
+    | Hostnaam | *Mydemoserver.privatelink.mysql.database.Azure.com* selecteren |
+    | Gebruikersnaam | Voer de gebruikers naam in als *username@servername* die wordt opgegeven tijdens het maken van de mysql-server. |
+    | Wachtwoord | Voer een wacht woord in dat is opgegeven tijdens het maken van de MySQL-server. |
     ||
 
-5. Select Connect.
+5. Selecteer verbinding maken.
 
-6. Browse databases from left menu.
+6. Bladeren door data bases vanuit het menu links.
 
-7. (Optionally) Create or query information from the MySQL database.
+7. Eventueel Gegevens uit de MySQL-data base maken of er query's op uitvoeren.
 
-8. Close the remote desktop connection to myVm.
+8. Sluit de verbinding met extern bureau blad met myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Resources opschonen 
+U kunt AZ Group Delete gebruiken om de resource groep en alle resources die het heeft, te verwijderen wanneer u deze niet meer nodig hebt: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/14/2020
+ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 463a389116cd58e50839d717b700b604f545e5f2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190107"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425133"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -107,8 +107,8 @@ Sla de JSON hieronder op als simplestaticmetricalert. json voor het doel van dez
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -1657,8 +1657,8 @@ Sla de JSON hieronder op als alle-vm's-in-Resource-Group-static. json voor het d
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2304,8 +2304,8 @@ Sla de JSON hieronder op als alle vm's-in-abonnement-static. json voor het doel 
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2946,8 +2946,8 @@ Sla de onderstaande JSON op als lijst-van vm's: static. json voor het doel van d
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

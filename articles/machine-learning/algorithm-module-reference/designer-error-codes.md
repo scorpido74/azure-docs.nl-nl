@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152360"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425796"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
 
@@ -74,7 +74,7 @@ Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp f
 |Uitzonderings berichten|
 |------------------------|
 |Een of meer invoer waarden zijn null of leeg.|
-|De invoer{0}is null of leeg.|
+|De invoer {name} is null of leeg.|
 
 
 ## <a name="error-0004"></a>Fout 0004  
@@ -87,8 +87,8 @@ Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp f
 |Uitzonderings berichten|
 |------------------------|
 |De para meter moet groter zijn dan de grens waarde.|
-|De waarde van de para meter{0}moet groter zijn dan {1}.|
-|De para meter{0}heeft de waarde{1}die groter moet zijn dan {2}.|
+|De waarde voor de para meter {arg_name} moet groter zijn dan {lower_boundary}.|
+|De para meter {arg_name} heeft de waarde {actual_value} die groter moet zijn dan {lower_boundary}.|
 
 
 ## <a name="error-0005"></a>Fout 0005  
@@ -101,8 +101,8 @@ Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp f
 |Uitzonderings berichten|
 |------------------------|
 |De para meter moet groter dan of gelijk aan de grens waarde zijn.|
-|De waarde voor de para meter {arg_name} moet groter dan of gelijk aan {target_val} zijn.|
-|De para meter {arg_name} heeft de waarde {true_val} die groter moet zijn dan of gelijk is aan {target_val}.|
+|De waarde voor de para meter {arg_name} moet groter dan of gelijk aan {lower_boundary} zijn.|
+|De para meter {arg_name} heeft de waarde {Value}, die groter moet zijn dan of gelijk is aan {lower_boundary}.|
 
 
 ## <a name="error-0006"></a>Fout 0006  
@@ -115,8 +115,8 @@ Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp f
 |Uitzonderings berichten|
 |------------------------|
 |De para meters komen niet overeen. Een van de para meters moet kleiner zijn dan de andere.|
-|De waarde van de para meter{0}moet kleiner zijn dan de waarde van de para meter{1}.|
-|De para meter{0}heeft de waarde{1}die kleiner moet zijn dan {2}.|
+|De waarde voor de para meter {arg_name} moet kleiner zijn dan de waarde voor de para meter {upper_boundary_parameter_name}.|
+|De para meter {arg_name} heeft de waarde {Value}. deze moet kleiner zijn dan {upper_boundary_parameter_name}.|
 
 
 ## <a name="error-0007"></a>Fout 0007  
@@ -137,8 +137,9 @@ Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp f
 |Uitzonderings berichten|
 |------------------------|
 |De para meters komen niet overeen. Een van de para meters moet kleiner zijn dan of gelijk zijn aan een andere.|
-|De waarde van de para meter{0}moet kleiner zijn dan of gelijk zijn aan de waarde van de para meter{1}.|
-|De para meter{0}heeft de waarde{1}die kleiner moet zijn dan of gelijk is aan {2}.|
+|De waarde voor de para meter {arg_name} moet kleiner zijn dan of gelijk zijn aan de waarde voor de para meter {upper_boundary_parameter_name}.|
+|De para meter {arg_name} heeft de waarde {actual_value}. deze moet kleiner zijn dan of gelijk zijn aan {upper_boundary}.|
+|De waarde {actual_value} van de para meter {arg_name} moet kleiner zijn dan of gelijk zijn aan de waarde {upper_boundary_parameter_name} van de para meter {upper_boundary}.|
 
 
 ## <a name="error-0008"></a>Fout 0008  
@@ -154,7 +155,7 @@ Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp f
 |------------------------|
 |De parameter waarde bevindt zich niet in het opgegeven bereik.|
 |De waarde voor de para meter {arg_name} valt niet binnen het bereik.|
-|De waarde voor de para meter {arg_name} moet in het bereik [{a}, {b}] liggen.|
+|De waarde voor de para meter {arg_name} moet in het bereik [{lower_boundary}, {upper_boundary}] liggen.|
 |De waarde voor de para meter {arg_name} valt niet binnen het bereik. gemotiveerd|
 
 
@@ -187,7 +188,7 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
 |Uitzonderings berichten|
 |------------------------|
 |De naam van het Azure-opslag account of de container naam is onjuist.|
-|De naam van het Azure-opslag account "{0}" of container naam "{1}" is onjuist; Er wordt een container naam van de indeling container/BLOB verwacht.|
+|De naam {account_name} of container naam {container_name} van het Azure-opslag account is onjuist. Er wordt een container naam van de indeling container/BLOB verwacht.|
 
 
 ## <a name="error-0010"></a>Fout 0010  
@@ -200,7 +201,7 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
 |Uitzonderings berichten|
 |------------------------|
 |Kolommen met een bijbehorende index in invoer gegevens sets hebben verschillende namen.|
-|Kolom namen zijn niet hetzelfde voor kolom {0} (op nul gebaseerd) van invoer gegevens sets ({1} en {2} respectievelijk).|
+|Kolom namen zijn niet hetzelfde voor kolom {col_index} (op nul gebaseerd) van invoer gegevens sets (respectievelijk {dataset1} en {dataset2}).|
 
 
 ## <a name="error-0011"></a>Fout 0011  
@@ -219,7 +220,7 @@ Als het volledige pad naar een blob is opgegeven, controleert u of het pad is op
 |Uitzonderings berichten|
 |------------------------|
 |De opgegeven kolomset is niet van toepassing op een van de gegevensset-kolommen.|
-|Opgegeven column set "{0}" is niet van toepassing op een van de gegevensset-kolommen.|
+|Opgegeven kolomset {column_set} is niet van toepassing op een van de gegevensset-kolommen.|
 
 
 ## <a name="error-0012"></a>Fout 0012  
@@ -301,7 +302,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|
 |------------------------|
 |Fout bij het maken van de database verbinding.|
-|Fout bij het maken van een database verbinding: {0}.|
+|Fout bij het maken van de database verbinding: {connection_str}.|
 
 
 ## <a name="error-0016"></a>Fout 0016  
@@ -384,8 +385,8 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|
 |------------------------|
 |De waarden in de kolom worden niet gesorteerd.|
-|De waarden in de kolom{0}zijn niet gesorteerd.|
-|De waarden in de kolom{0}van de gegevensset{1}zijn niet gesorteerd.|
+|De waarden in de kolom {col_index} zijn niet gesorteerd.|
+|De waarden in de kolom {col_index} van de gegevensset {dataset} zijn niet gesorteerd.|
 
 
 ## <a name="error-0020"></a>Fout 0020  
@@ -398,6 +399,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|
 |------------------------|
 |Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane minimum.|
+|Het aantal kolommen in de invoer gegevensset {arg_name} is kleiner dan de toegestane minimum waarde.|
 |Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane minimum van {required_columns_count} kolom (men).|
 |Het aantal kolommen in de invoer gegevensset {arg_name} is kleiner dan het toegestane minimum van {required_columns_count} kolom (men).|
 
@@ -450,9 +452,9 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|
 |------------------------|
 |Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan het verwachte aantal.|
-|Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan {0}.|
-|Het kolom selectie patroon '{0}' bevat het aantal geselecteerde kolommen in de ingevoerde gegevensset die niet gelijk is aan {1}.|
-|Het kolom selectie patroon '{0}' wordt verwacht om {1} kolom (men) op te geven die zijn geselecteerd in de invoer gegevensset, maar {2} kolom (men) is/worden opgegeven.|
+|Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan {expected_col_count}.|
+|Het kolom selectie patroon {selection_pattern_friendly_name} bevat het aantal geselecteerde kolommen in de invoer gegevensset die niet gelijk is aan {expected_col_count}.|
+|Voor het kolom selectie patroon {selection_pattern_friendly_name} wordt verwacht dat er {expected_col_count} kolom (men) zijn geselecteerd in de invoer gegevensset, maar {selected_col_count} kolom (men) is/worden opgegeven.|
 
 
 ## <a name="error-0023"></a>Fout 0023  
@@ -466,8 +468,8 @@ Deze fout in Azure Machine Learning treedt op als de doel kolom (zoals geselecte
 |Uitzonderings berichten|
 |------------------------|
 |De invoer gegevensset bevat een niet-ondersteunde doel kolom.|
-|De invoer gegevensset bevat een niet-ondersteunde doel kolom{0}.|
-|De invoer gegevensset bevat een niet-ondersteunde doel kolom{0}voor meer informatie over type {1}.|
+|De invoer gegevensset heeft een niet-ondersteunde doel kolom {column_index}.|
+|De invoer gegevensset bevat een niet-ondersteunde doel kolom {column_index} voor de kennis van het type {learner_type}.|
 
 
 ## <a name="error-0024"></a>Fout 0024  
@@ -500,8 +502,8 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Gegevensset bevat geen kolom met scores.|
-|Er bevindt zich geen kolom met scores in{0}.|
-|Er bevindt zich geen score kolom in{0}die wordt geproduceerd door een{1}. Geef de gegevensset een score met het juiste type kenniser.|
+|Er bevindt zich geen kolom met scores in {dataset_name}.|
+|Er bevindt zich geen score kolom in {dataset_name} die wordt geproduceerd door een {learner_type}. Geef de gegevensset een score met het juiste type kenniser.|
 
 
 ## <a name="error-0026"></a>Fout 0026  
@@ -514,7 +516,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Er zijn gelijke kolom namen opgegeven in argumenten. Gelijke kolom namen zijn niet toegestaan per module.|
-|Gelijke kolom namen in argumenten{0}en{1}zijn niet toegestaan. Geef een andere naam op.|
+|De argumenten {arg_name_1} en {arg_name_2} van gelijke kolom namen zijn niet toegestaan. Geef een andere naam op.|
 
 
 ## <a name="error-0027"></a>Fout 0027  
@@ -533,7 +535,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |De grootte van de door gegeven objecten is inconsistent.|
-|De grootte van '{0}' is inconsistent met de grootte van '{1}'.|
+|De grootte van {friendly_name1} is inconsistent met de grootte {friendly_name2}.|
 
 
 ## <a name="error-0028"></a>Fout 0028  
@@ -571,7 +573,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Ongeldige URI is door gegeven.|
-|De URI{0}is ongeldig.|
+|De URI {invalid_url} is ongeldig.|
 
 
 ## <a name="error-0030"></a>Fout 0030  
@@ -584,7 +586,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Kan een bestand niet downloaden.|
-|Fout bij het downloaden van het bestand: {0}.|
+|Fout bij het downloaden van het bestand: {file_url}.|
 
 
 ## <a name="error-0031"></a>Fout 0031  
@@ -597,7 +599,8 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Het aantal kolommen in de kolomset is kleiner dan vereist.|
-|U moet mini maal {0} kolom (men) opgeven. Het werkelijke aantal opgegeven kolommen is {1}.|
+|Er moeten ten minste {required_columns_count} kolom (men) worden opgegeven voor het invoer argument {arg_name}.|
+|Er moeten ten minste {required_columns_count} kolom (men) worden opgegeven voor het invoer argument {arg_name}. Het werkelijke aantal opgegeven kolommen is {input_columns_count}.|
 
 
 ## <a name="error-0032"></a>Fout 0032  
@@ -610,7 +613,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Het argument is geen getal.|
-|'{0}' is geen getal.|
+|{arg_name} is geen getal.|
 
 
 ## <a name="error-0033"></a>Fout 0033  
@@ -623,7 +626,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|
 |------------------------|
 |Argument moet eindig zijn.|
-|'{0}' is niet eindig.|
+|{arg_name} is niet eindig.|
 
 
 ## <a name="error-0034"></a>Fout 0034  
@@ -663,7 +666,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Uitzonderings berichten|
 |------------------------|
 |Er zijn geen functies opgegeven voor een vereiste gebruiker of een vereist item.|
-|Functies voor {0} vereist, maar niet opgegeven.|
+|Er zijn geen functies voor {required_feature_name} vereist, maar deze zijn niet opgegeven.|
 
 
 ## <a name="error-0036"></a>Fout 0036  
@@ -676,7 +679,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Uitzonderings berichten|
 |------------------------|
 |Dubbele functie definitie voor een gebruiker of een item.|
-|Dubbele functie definitie voor {0}.|
 
 
 ## <a name="error-0037"></a>Fout 0037  
@@ -742,9 +744,9 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Conversie niet toegestaan.|
-|Kan kolom van het type {0} niet converteren naar een kolom van het type {1}.|
-|Kan kolom{2}van het type {0} niet converteren naar een kolom van het type {1}.|
-|Kan kolom{2}van het type {0} niet converteren naar kolom{3}van het type {1}.|
+|Kolom van het type {Type1} kan niet worden geconverteerd naar een kolom van het type {Type2}.|
+|Kan kolom {col_name1} van het type {Type1} niet converteren naar een kolom van het type {Type2}.|
+|Kan kolom {col_name1} van het type {Type1} niet converteren naar kolom {col_name2} van het type {Type2}.|
 
 
 ## <a name="error-0044"></a>Fout 0044  
@@ -757,8 +759,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Element type van de kolom kan niet worden afgeleid.|
-|Kan element type niet afleiden voor kolom{0}--alle elementen zijn null-verwijzingen.|
-|Kan element type niet afleiden voor kolom{0}van gegevensset{1}--alle elementen zijn null-verwijzingen.|
+|Kan geen element type afleiden voor de kolom {column_name}. alle elementen zijn null-verwijzingen.|
+|Kan element type niet afleiden voor kolom {column_name} van gegevensset {dataset_name}--alle elementen zijn null-verwijzingen.|
 
 
 ## <a name="error-0045"></a>Fout 0045  
@@ -771,8 +773,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Kan geen kolom met gemengde element typen maken.|
-|Kan geen kolom maken met de id {column_id} van gemengde element typen: \ n\tType van gegevens [{row_1}, {column_id}] is {type_1}. Het type gegevens [{row_2}, {column_id}] is {type_2}.|
-|Kan geen kolom maken met de id {column_id} van gemengde element typen: \ n\tType in segment {chunk_id_1} is {type_1}. Het type in segment {chunk_id_2} is {type_2} met chunk grootte: {chunk_size}.|
+|Kan geen kolom maken met de id {column_id} van gemengde element typen:<br />Het type gegevens [{row_1}, {column_id}] is {type_1}. <br />Het type gegevens [{row_2}, {column_id}] is {type_2}.|
+|Kan geen kolom maken met de id {column_id} van gemengde element typen:<br />Het type in het segment {chunk_id_1} is {type_1}. <br />Het type in segment {chunk_id_2} is {type_2} met chunk grootte: {chunk_size}.|
 
 
 ## <a name="error-0046"></a>Fout 0046  
@@ -785,7 +787,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Geef een geldige uitvoermap op.|
-|Map: {0} kan niet worden gemaakt. Geef een geldig pad op.|
+|Map: {path} kan niet worden gemaakt. Geef een geldig pad op.|
 
 
 ## <a name="error-0047"></a>Fout 0047  
@@ -824,8 +826,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Kan geen bestand openen.|
-|Fout bij het openen van het bestand: {0}.|
-|Fout bij het openen van het bestand: {0}. Uitzonderings bericht van de opslag: {1}.|
+|Fout bij het openen van het bestand: {file_name}.|
+|Fout bij het openen van het bestand: {file_name}. Uitzonderings bericht van de opslag: {Exception}.|
 
 
 ## <a name="error-0049"></a>Fout 0049  
@@ -910,7 +912,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Het bestand of de BLOB bestaat al.|
-|Het bestand of de blob "{0}" bestaat al.|
+|Het bestand of de BLOB {file_path} bestaat al.|
 
 
 ## <a name="error-0058"></a>Fout 0058  
@@ -945,7 +947,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Een of meer opgegeven kolom indexen of index bereiken kunnen niet worden geparseerd.|
-|De kolom index of het bereik{0}kan niet worden geparseerd.|
+|De kolom index of het bereik {column_index_or_range} kan niet worden geparseerd.|
 
 
 ## <a name="error-0060"></a>Fout 0060  
@@ -958,7 +960,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |Ongeldig of buiten bereik opgegeven kolom index bereik.|
-|Het kolom bereik{0}is ongeldig of valt buiten het bereik.|
+|Het kolom bereik {column_range} is ongeldig of valt buiten het bereik.|
 
 
 ## <a name="error-0061"></a>Fout 0061  
@@ -1035,7 +1037,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|
 |------------------------|
 |De resource kan niet worden geüpload naar Azure Storage.|
-|Het bestand '{0}' kan niet worden geüpload naar Azure Storage als '{1}'.|
+|Het bestand {source_path} kan niet worden geüpload naar Azure Storage als {dest_path}.|
 
 
 ## <a name="error-0067"></a>Fout 0067  
@@ -1079,7 +1081,6 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|
 |------------------------|
 |Het Hive-script is onjuist.|
-|Het Hive-script {0} is niet juist.|
 
 
 ## <a name="error-0069"></a>Fout 0069  
@@ -1101,8 +1102,8 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|
 |------------------------|
 |SQL-script is onjuist.|
-|De SQL-query{0}is niet juist.|
-|De SQL-query{0}is niet juist:{1}.|
+|De SQL-query {sql_query} is niet juist.|
+|De SQL-query {sql_query} is niet juist. Uitzonderings bericht: {Exception}.|
 
 
 ## <a name="error-0070"></a>Fout 0070  
@@ -1115,7 +1116,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|
 |------------------------|
 |De Azure-tabel bestaat niet.|
-|De Azure-tabel{0}bestaat niet.|
+|De Azure-tabel {table_name} bestaat niet.|
 
 
 ## <a name="error-0072"></a>Fout 0072  
@@ -1140,7 +1141,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|
 |------------------------|
 |Kan kolom niet converteren.|
-|Kan de kolom niet converteren naar {0}.|
+|Kan de kolom niet converteren naar {target_type}.|
 
 
 ## <a name="error-0075"></a>Fout 0075  
@@ -1169,7 +1170,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |Niet-ondersteunde BLOB-schrijf modus.|
-|Niet-ondersteunde BLOB-schrijf modus: {0}.|
+|Niet-ondersteunde BLOB-schrijf modus: {blob_write_mode}.|
 
 
 ## <a name="error-0078"></a>Fout 0078  
@@ -1194,7 +1195,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |De naam van de Azure storage-container is onjuist.|
-|De naam van de Azure storage-container "{0}" is onjuist; Er wordt een container naam van de indeling container/BLOB verwacht.|
+|De naam {container_name} van de Azure-opslag container is onjuist; Er wordt een container naam van de indeling container/BLOB verwacht.|
 
 
 ## <a name="error-0080"></a>Fout 0080  
@@ -1207,7 +1208,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |Kolommen met alle waarden ontbreken, zijn niet toegestaan.|
-|Voor de kolom {0} zijn alle waarden ontbreken.|
+|Voor de kolom {col_index_or_name} ontbreken alle waarden.|
 
 
 ## <a name="error-0081"></a>Fout 0081  
@@ -1244,9 +1245,9 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |De gegevensset die voor de training wordt gebruikt, is ongeldig.|
-|{0} bevat ongeldige gegevens voor training.|
-|{0} bevat ongeldige gegevens voor training. Type informatieer: {1}.|
-|{0} bevat ongeldige gegevens voor training. Type informatieer: {1}. Reden: {2}.|
+|{data_name} bevat ongeldige gegevens voor training.|
+|{data_name} bevat ongeldige gegevens voor training. Type informatieer: {learner_type}.|
+|{data_name} bevat ongeldige gegevens voor training. Type informatieer: {learner_type}. Reden: {reden}.|
 
 
 ## <a name="error-0084"></a>Fout 0084  
@@ -1271,7 +1272,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |Er is een fout opgetreden tijdens de evaluatie van het script.|
-|De volgende fout is opgetreden tijdens het uitvoeren van een script, Raadpleeg het uitvoer logboek voor meer informatie:----------begin van fout bericht van {script_language}-interpreter----------{Message}----------einde van het fout bericht van {script_language}  Interpreter----------|
+|De volgende fout is opgetreden tijdens de script evaluatie, Bekijk het uitvoer logboek voor meer informatie:<br />----------Begin van fout bericht van {script_language}-interpreter----------<br />faxbericht<br />----------Einde van fout bericht van {script_language}-interpreter----------|
 
 
 ## <a name="error-0090"></a>Fout 0090  
@@ -1284,8 +1285,8 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |De Hive-tabel kan niet worden gemaakt. Voor een HDInsight-cluster moet u ervoor zorgen dat de naam van het Azure Storage-account die aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|
-|De Hive-tabel{0}kan niet worden gemaakt. Voor een HDInsight-cluster moet u ervoor zorgen dat de naam van het Azure Storage-account die aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|
-|De Hive-tabel{0}kan niet worden gemaakt. Controleer voor een HDInsight-cluster of de naam van het Azure Storage-account dat is gekoppeld aan het cluster{1}is.|
+|De Hive-tabel {table_name} kan niet worden gemaakt. Voor een HDInsight-cluster moet u ervoor zorgen dat de naam van het Azure Storage-account die aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|
+|De Hive-tabel {table_name} kan niet worden gemaakt. Controleer voor een HDInsight-cluster of de naam van het Azure Storage-account dat is gekoppeld aan het cluster ' {cluster_name} ' is.|
 
 
 ## <a name="error-0102"></a>Fout 0102  
@@ -1317,6 +1318,19 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Niet-ondersteund parameter type '{0}' opgegeven.|  
 
 
+## <a name="error-0107"></a>Fout 0107  
+ Deze wordt gegenereerd wanneer een module definitie bestand een niet-ondersteund uitvoer type definieert  
+  
+ Deze fout in Azure Machine Learning wordt gemaakt wanneer het type van een uitvoer poort in een XML-definitie van een aangepaste module niet overeenkomt met een ondersteund type.  
+  
+**Oplossing:** Zorg ervoor dat de eigenschap type van een uitvoer element in het XML-definitie bestand van de aangepaste module een ondersteund type is.  
+  
+|Uitzonderings berichten|  
+|------------------------|  
+|Niet-ondersteund uitvoer type.|  
+|Niet-ondersteund uitvoer type {output_type} opgegeven.|  
+
+
 ## <a name="error-0125"></a>Fout 0125  
  Wordt gegenereerd wanneer het schema voor meerdere gegevens sets niet overeenkomt.  
 
@@ -1342,7 +1356,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |De pixel grootte van de afbeelding overschrijdt de toegestane limiet.|
-|De pixel grootte van de afbeelding in het bestand{0}overschrijdt de toegestane limiet:{1}.|
+|De pixel grootte van de afbeelding in het bestand {file_path} overschrijdt de toegestane limiet: {size_limit}.|
 
 
 ## <a name="error-0128"></a>Fout 0128  
@@ -1353,7 +1367,7 @@ Fout afhandeling voor deze gebeurtenis is geïntroduceerd in een eerdere versie 
 |Uitzonderings berichten|
 |------------------------|
 |Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet.|
-|Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet. De kolommen{0}en{1}zijn het problematische paar.|
+|Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet. De kolommen {column_name_or_index_1} en {column_name_or_index_2} zijn het problematische paar.|
 
 
 ## <a name="error-0129"></a>Fout 0129  
@@ -1424,7 +1438,7 @@ Oplossing:
 |Uitzonderings berichten|
 |------------------------|
 |Het aantal geselecteerde numerieke kolommen en unieke waarden in de categorische-en reeks kolommen is te klein.|
-|Het totale aantal geselecteerde numerieke kolommen en unieke waarden in de categorische-en teken reeks kolommen (momenteel {0}) moet ten minste {1}zijn.|
+|Het totale aantal geselecteerde numerieke kolommen en unieke waarden in de categorische-en teken reeks kolommen (momenteel {actual_num}) moet ten minste {lower_boundary} zijn.|
 
 
 ## <a name="error-0154"></a>Fout 0154  
@@ -1473,6 +1487,6 @@ Als u meer hulp nodig hebt, raden we u aan het gedetailleerde bericht te plaatse
 |Uitzonderings berichten|
 |------------------------|
 |Bibliotheek uitzondering.|
-|Uitzonde ring van bibliotheek: {0}.|
-|Onbekende bibliotheek uitzondering: {0}. {1}.|
+|Bibliotheek uitzondering: {Exception}.|
+|Onbekende bibliotheek uitzondering: {Exception}. {customer_support_guidance}.|
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212252"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426221"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -60,14 +60,14 @@ Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en wo
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
 
 * Canada - midden
-* US - west-centraal
-* US - oost
-* US - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
-* US - west
-* US - west 2
+* VS - west-centraal
+* VS - oost
+* VS - oost 2
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
+* VS - west
+* VS - west 2
 * Frankrijk - centraal
 * Europa -west
 * Europa - noord
@@ -90,15 +90,15 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * Canada - midden
-* US - west-centraal
-* US - oost
-* US - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
-* US - west
-* US - west 2
-* US - centraal
+* VS - west-centraal
+* VS - oost
+* VS - oost 2
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
+* VS - west
+* VS - west 2
+* VS - centraal
 * Frankrijk - centraal
 * Europa -west
 * Europa - noord
@@ -184,9 +184,6 @@ Selecteer de volgende opties, zoals wordt weer gegeven in de afbeelding:
 2. Selecteer *versie 2* voor **flow logboeken versie**. Versie 2 bevat statistieken over flow sessies (bytes en pakketten)
 3. Selecteer een bestaand opslag account om de stroom logboeken op te slaan in. Als u de gegevens permanent wilt opslaan, stelt u de waarde in op *0*. U hebt Azure Storage kosten voor het opslag account. Zorg ervoor dat op uw opslag ' Data Lake Storage Gen2 hiërarchische naam ruimte is ingeschakeld ' is ingesteld op waar.
 4. Stel de **Bewaar periode** in op het aantal dagen waarvoor u gegevens wilt opslaan.
-> [!IMPORTANT]
-> Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de [opslag-blobs voor NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
-
 5. Selecteer *aan* voor **Traffic Analytics status**.
 6. Selecteer een verwerkings interval. Op basis van uw keuze worden de stroom logboeken verzameld van het opslag account en verwerkt door Traffic Analytics. U kunt het verwerkings interval van elke 1 uur of elke 10 minuten kiezen. 
 7. Selecteer een bestaande Log Analytics (OMS)-werk ruimte of selecteer **nieuwe werk ruimte maken** om een nieuwe te maken. Een Log Analytics-werk ruimte wordt gebruikt door Traffic Analytics om de geaggregeerde en geïndexeerde gegevens op te slaan die vervolgens worden gebruikt voor het genereren van de analyse. Als u een bestaande werk ruimte selecteert, moet deze bestaan in een van de [ondersteunde regio's](#supported-regions-log-analytics-workspaces) en zijn bijgewerkt naar de nieuwe query taal. Als u een bestaande werk ruimte niet wilt upgraden of als u geen werk ruimte in een ondersteunde regio hebt, maakt u een nieuwe. Zie [Azure log Analytics upgrade uitvoeren naar nieuwe zoek opdracht in Logboeken](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)voor meer informatie over query talen.

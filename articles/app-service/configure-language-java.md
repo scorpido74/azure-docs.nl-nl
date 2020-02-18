@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889343"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425286"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
 
@@ -24,7 +24,7 @@ Deze hand leiding bevat belang rijke concepten en instructies voor Java-Ontwikke
 
 ## <a name="deploying-your-app"></a>Uw app implementeren
 
-U kunt de [maven-invoeg toepassing voor Azure app service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) gebruiken voor het implementeren van uw War-bestanden. Implementatie met populaire Ide's wordt ook ondersteund met [Azure-Toolkit voor IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) of [Azure-Toolkit voor eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
+U kunt de [Azure web app-invoeg toepassing voor maven gebruiken voor](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) het implementeren van uw War-bestanden. Implementatie met populaire Ide's wordt ook ondersteund met [Azure-Toolkit voor IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) of [Azure-Toolkit voor eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
 Anders is uw implementatie methode afhankelijk van het type archief:
 
@@ -209,7 +209,7 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 
 Deze instructies zijn van toepassing op alle database verbindingen. U moet tijdelijke aanduidingen vullen met de naam van de stuurprogrammanaam en het JAR-bestand van uw gekozen data base. Gegeven is een tabel met klasse-namen en down loads van Stuur Programma's voor algemene data bases.
 
-| Database   | Naam stuur programma klasse                             | JDBC Driver                                                                      |
+| Database   | Naam stuur programma klasse                             | JDBC-stuur programma                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Downloaden](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Downloaden](https://dev.mysql.com/downloads/connector/j/) (Selecteer ' platform onafhankelijk ') |

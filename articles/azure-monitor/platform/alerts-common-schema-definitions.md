@@ -4,15 +4,15 @@ description: Informatie over de algemene schema definities voor waarschuwingen v
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
+author: ofirmanor
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765679"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425167"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
@@ -77,7 +77,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 |:---|:---|
 | alertId | De GUID die het waarschuwings exemplaar uniek identificeert. |
 | alertRule | De naam van de waarschuwings regel die het waarschuwings exemplaar heeft gegenereerd. |
-| Ernst | De ernst van de waarschuwing. Mogelijke waarden: Sev0, Sev1, Sev2, Sev3 of Sev4. |
+| Severity | De ernst van de waarschuwing. Mogelijke waarden: Sev0, Sev1, Sev2, Sev3 of Sev4. |
 | signalType | Hiermee wordt het signaal geïdentificeerd waarop de waarschuwings regel is gedefinieerd. Mogelijke waarden: metrisch, logboek of activiteiten logboek. |
 | monitorCondition | Wanneer een waarschuwing wordt geactiveerd, wordt de bewakings voorwaarde van de waarschuwing ingesteld op **geactiveerd**. Wanneer de onderliggende voor waarde die de waarschuwing heeft veroorzaakt, is gewist, wordt de status van de monitor ingesteld op **opgelost**.   |
 | monitoringService | De bewakings service of-oplossing die de waarschuwing heeft gegenereerd. De velden voor de waarschuwings context worden bepaald door de bewakings service. |
@@ -151,7 +151,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 ### <a name="log-alerts"></a>Waarschuwingen voor logboeken
 
 > [!NOTE]
-> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag `IncludedSearchResults`te controleren. Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag `IncludeSearchResults`te controleren. Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -214,7 +214,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -277,7 +277,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

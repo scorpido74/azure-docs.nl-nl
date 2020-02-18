@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 1dd060840e589d601d87d8be235eda5c34283a4f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 0bc66939fc6bd150d57242f144cdb032db8188d1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369904"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425048"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -65,7 +65,7 @@ De volgende tabel bevat een overzicht van de ondersteunde besturings systemen bi
 
 **Scenario** | **Ondersteuning voor besturings systeem**
 --- | ---
-Back-up maken met extensie van Azure VM-agent | -Windows 10-client (alleen 64 bits) <br/><br/>-Windows Server 2019 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2016 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2012 R2 (Data Center/Standard) <br/><br/> -Windows Server 2008 R2 (RTM en SP1 Standard)  <br/><br/> -Windows 2008 (alleen 64 bits)
+Back-up maken met extensie van Azure VM-agent | -Windows 10-client (alleen 64 bits) <br/><br/>-Windows Server 2019 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2016 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2012 R2 (Data Center/Standard) <br/><br/> -Windows Server 2008 R2 (RTM en SP1 Standard)  <br/><br/> -Windows Server 2008 (alleen 64 bits)
 Back-ups maken met MARS-agent | [Ondersteunde](backup-support-matrix-mars-agent.md#support-for-direct-backups) besturings systemen.
 Back-up maken met DPM-MABS | Ondersteunde besturings systemen voor back-up met [MABS](backup-mabs-protection-matrix.md) en [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 

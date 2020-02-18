@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372791"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425626"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ Het **ContentDefinition** -element bevat de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Een teken reeks die de URL van de HTML5-pagina voor de inhouds definitie bevat. |
-| RecoveryUri | 0:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. |
+| RecoveryUri | 1:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. |
 | DataUri | 1:1 | Een teken reeks die de relatieve URL bevat van een HTML-bestand dat de gebruikers ervaring biedt voor het aanroepen van de stap. |
 | Metagegevens | 0:1 | Een verzameling sleutel-waardeparen die de meta gegevens bevat die worden gebruikt door de inhouds definitie. |
 | LocalizedResourcesReferences | 0:1 | Een verzameling gelokaliseerde bronnen verwijzingen. Gebruik dit element om de lokalisatie van een gebruikers interface en claims-kenmerk aan te passen. |
@@ -86,7 +86,7 @@ Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C
 | `unifiedssp` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Deze waarde biedt ook de functie ' aanmeld functionaliteit blijven ' en ' uw wacht woord verg eten? ' gekoppeld. |
 | `unifiedssd` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. |
 | `multifactor` | Hiermee worden telefoon nummers gecontroleerd met behulp van tekst of spraak tijdens het registreren of aanmelden. |
-| `selfasserted` | Hiermee wordt een formulier weer gegeven waarmee gebruikers hun profiel kunnen maken of bijwerken. |
+| `selfasserted` | Hiermee wordt een formulier weer gegeven voor het verzamelen van gegevens van een gebruiker. Hiermee kunnen gebruikers bijvoorbeeld hun profiel maken of bijwerken. |
 
 ### <a name="select-a-page-layout"></a>Selecteer een pagina-indeling
 

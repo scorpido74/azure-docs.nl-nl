@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024157"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426007"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennismaking met de gebruikersinterface van Azure IoT Central
 
@@ -59,10 +59,10 @@ U kunt uw IoT Central-toepassing starten door naar de URL te gaan die u of de op
 
 ## <a name="navigate-your-application"></a>Navigeren in uw toepassing
 
-Als u zich in uw IoT-toepassing bevindt, gebruikt u het linkerdeel venster voor toegang tot de verschillende gebieden. U kunt de navigatie balk uitvouwen of samen vouwen door het pictogram met drie lijnen boven op de navigatie balk te selecteren:
+Als u zich in uw IoT-toepassing bevindt, gebruikt u het linkerdeel venster voor toegang tot de verschillende gebieden. U kunt het linkerdeel venster uitvouwen of samen vouwen door het pictogram met drie lijnen boven op het deel venster te selecteren:
 
 > [!NOTE]
-> De items die u op de navigatie balk ziet, zijn afhankelijk van uw gebruikersrol. Meer informatie over het [beheren van gebruikers en rollen](howto-manage-users-roles.md). 
+> De items die u in het linkerdeel venster ziet, zijn afhankelijk van uw gebruikersrol. Meer informatie over het [beheren van gebruikers en rollen](howto-manage-users-roles.md). 
 
 :::row:::
   :::column span="":::
@@ -146,7 +146,7 @@ Apparaatgroep is een verzameling van gerelateerde apparaten. Een *oplossings fun
 
 Op de pagina regels kunt u regels definiëren op basis van de telemetrie, status of gebeurtenissen van apparaten. Wanneer een regel wordt geactiveerd, kan een of meer acties worden geactiveerd, zoals het verzenden van een e-mail bericht, het melden van een extern systeem via webhook-waarschuwingen, enzovoort. Zie de zelf studie [regels configureren](tutorial-create-telemetry-rules.md) voor meer informatie. 
 
-### <a name="analytics"></a>Analytische gegevens
+### <a name="analytics"></a>Analyse
 
 > [!div class="mx-imgBorder"]
 > ![Analytics-pagina](media/overview-iot-central-tour/analytics-pnp.png)

@@ -1,6 +1,6 @@
 ---
-title: Patroon voor Multitenant-Web-toepassingen | Microsoft Docs
-description: Vind architectuur overzichten en ontwerppatronen die wordt beschreven hoe u een multitenant-toepassing implementeren op Azure.
+title: Webtoepassings patroon met meerdere tenants | Microsoft Docs
+description: Zoek de architectuur overzichten en ontwerp patronen die beschrijven hoe u een webtoepassing met meerdere tenants in azure implementeert.
 services: ''
 documentationcenter: .net
 author: wadepickett
@@ -14,80 +14,80 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 92a0caedca34756228dbf57ec9099fd2ece3d84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225977"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425898"
 ---
-# <a name="multitenant-applications-in-azure"></a>Multitenant-toepassingen in Azure
-Een multitenant-toepassing is een gedeelde resource waarmee afzonderlijke gebruikers of 'tenants,' om weer te geven van de toepassing alsof deze is hun eigen. Een typisch scenario die gepaard met een multitenant-toepassing is een waarin alle gebruikers van de toepassing desgewenst kunnen de gebruikerservaring aanpassen maar hebben verder dezelfde elementaire zakelijke vereisten. Voorbeelden van grote multitenant-toepassingen zijn Office 365, Outlook.com en visualstudio.com.
+# <a name="multitenant-applications-in-azure"></a>Multi tenant-toepassingen in azure
+Een multi tenant-toepassing is een gedeelde bron waarmee ' gebruikers in afzonderlijke tenants ' de toepassing kunnen bekijken alsof ze hun eigen. Een typisch voor beeld van een multi tenant-toepassing is een scenario waarin alle gebruikers van de toepassing van verschillende tenants de gebruikers ervaring kunnen aanpassen, maar anders dezelfde basis vereisten voor het bedrijf hebben. Voor beelden van grote multi tenant-toepassingen zijn Office 365, Outlook.com en visualstudio.com.
 
-Vanuit het perspectief van de toepassingsprovider van een, van betrekking de voordelen van multitenancy voornamelijk op operationele en kosten besparen. Een versie van uw toepassing kunt voldoen aan de behoeften van veel tenants/klanten, zodat de consolidatie van systeem beheertaken, zoals controle, afstemmen van prestaties, softwareonderhoud en back-ups van gegevens.
+Vanuit het oogpunt van een toepassings provider hebben de voor delen van multitenancy vooral betrekking op operationele en kosten efficiency. Eén versie van uw toepassing voldoet aan de behoeften van veel tenants/klanten, waardoor het mogelijk is om systeem beheer taken, zoals bewaking, prestaties afstemmen, software onderhoud en gegevens back-ups, toe te voegen.
 
-De volgende geeft een lijst van de belangrijkste doelstellingen en vereisten vanuit het perspectief van een provider van.
+Hieronder vindt u een lijst met de meest significante doelen en vereisten van het perspectief van een provider.
 
-* **Inrichting**: U moet mogelijk zijn voor het inrichten van nieuwe tenants voor de toepassing.  Voor multitenant-toepassingen met een groot aantal tenants is het meestal nodig voor het automatiseren van dit proces door in te schakelen selfservice inrichting.
-* **Onderhoud**: U moet mogelijk zijn om te upgraden van de toepassing en andere onderhoudstaken uitvoeren terwijl's hier gebruik van meerdere tenants.
-* **Bewaking**: U moet mogelijk zijn om de toepassing te allen tijde om eventuele problemen te identificeren en oplossen van deze te bewaken. Dit omvat controleren hoe de toepassing op elke tenant wordt gebruikt.
+* **Inrichting**: u moet nieuwe tenants kunnen inrichten voor de toepassing.  Voor multi tenant-toepassingen met een groot aantal tenants is het doorgaans nodig dit proces te automatiseren door selfservice-inrichting in te scha kelen.
+* **Onderhoud**: u moet de toepassing kunnen bijwerken en andere onderhouds taken uitvoeren terwijl er meerdere tenants worden gebruikt.
+* **Bewaking**: u moet de toepassing te allen tijde kunnen bewaken om problemen te identificeren en ze op te lossen. Dit omvat het bewaken van de manier waarop elke Tenant de toepassing gebruikt.
 
-Een goed geïmplementeerde multitenant-toepassing biedt de volgende voordelen voor gebruikers.
+Een goed geïmplementeerde multi tenant-toepassing biedt de volgende voor delen voor gebruikers.
 
-* **Isolatie**: De activiteiten van afzonderlijke tenants hebben geen invloed op het gebruik van de toepassing door andere tenants. Tenants geen toegang tot elkaars gegevens. Deze wordt weergegeven aan de tenant alsof ze exclusief gebruik van de toepassing hebben.
-* **Beschikbaarheid**: Afzonderlijke tenants wilt dat de toepassing voortdurend beschikbaar zijn, mogelijk met garanties die zijn gedefinieerd in een SLA. Nogmaals, de activiteiten van andere tenants geen invloed op de beschikbaarheid van de toepassing.
-* **Schaalbaarheid**: De toepassing kan worden geschaald om te voldoen aan de vraag van afzonderlijke tenants. De prestaties van de toepassing moeten niet van invloed op de aanwezigheid en acties van andere tenants.
-* **Kosten**: Kosten zijn lager is dan het uitvoeren van een toepassing toegewezen, één tenant, omdat meerdere tenants in staat stelt het delen van resources.
-* **Aanpasbaarheid**. De mogelijkheid om aan te passen van de toepassing voor een afzonderlijke tenant op verschillende manieren, zoals het toevoegen of verwijderen van functies, kleuren en logo's wijzigen of zelfs de toevoeging van hun eigen code of scripts.
+* **Isolatie**: de activiteiten van afzonderlijke tenants hebben geen invloed op het gebruik van de toepassing door andere tenants. Tenants hebben geen toegang tot de gegevens van elkaar. Het wordt weer gegeven aan de Tenant alsof ze het exclusieve gebruik van de toepassing hebben.
+* **Beschik baarheid**: individuele tenants willen dat de toepassing voortdurend beschikbaar is, mogelijk met garanties die zijn gedefinieerd in een sla. Daarnaast moeten de activiteiten van andere tenants geen invloed hebben op de beschik baarheid van de toepassing.
+* **Schaal baarheid**: de toepassing wordt geschaald om te voldoen aan de vraag van afzonderlijke tenants. De aanwezigheid en acties van andere tenants mogen geen invloed hebben op de prestaties van de toepassing.
+* **Kosten**: de kosten zijn lager dan het uitvoeren van een specifieke toepassing met één Tenant, omdat multitenancy het delen van resources mogelijk maakt.
+* **Aanpassings mogelijkheden**. De mogelijkheid om de toepassing aan te passen voor een individuele Tenant op verschillende manieren, zoals het toevoegen of verwijderen van functies, het wijzigen van kleuren en logo's of zelfs het toevoegen van een eigen code of script.
 
-Kort gezegd, terwijl er veel overwegingen waarmee u rekening houden moet om een zeer schaalbare service te bieden zijn, zijn er ook een aantal doelstellingen en vereisten die gemeenschappelijk voor veel toepassingen voor meerdere tenants zijn. Sommige mogelijk niet relevant voor specifieke scenario's en het belang van afzonderlijke doelstellingen en vereisten zullen variëren in elk scenario. Als aanbieder van de multitenant-toepassing, ook hebt u doelstellingen en vereisten zoals, voldoen aan van de tenant doelstellingen en vereisten, winstgevendheid, facturering, meerdere serviceniveaus, inrichten, bewaking van onderhoud en automation.
+Kortom, hoewel er veel overwegingen zijn die u moet uitvoeren om een uiterst schaal bare service te bieden, zijn er ook een aantal doel stellingen en vereisten voor veel multi tenant-toepassingen. Sommige zijn mogelijk niet relevant voor specifieke scenario's en het belang van individuele doel stellingen en vereisten verschillen in elk scenario. Als provider van de multi tenant-toepassing hebt u ook doel stellingen en vereisten, zoals, aan de doel stellingen van de Tenant en vereisten, winstgevendheid, facturering, meerdere service niveaus, inrichting, onderhoud en automatisering.
 
-Zie voor meer informatie over aanvullende ontwerpoverwegingen van een multitenant-toepassing [die als host fungeert voor een toepassing met meerdere Tenants op Azure][Hosting a Multi-Tenant Application on Azure]. Zie voor informatie over algemene gegevensarchitectuurpatronen van multitenant software as a service (SaaS)-databasetoepassingen, [Ontwerppatronen voor multitenant SaaS-toepassingen met Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+Zie [een toepassing met meerdere tenants in azure hosten][Hosting a Multi-Tenant Application on Azure]voor meer informatie over aanvullende overwegingen voor het ontwerpen van een multi tenant-toepassing. Zie voor informatie over algemene gegevensarchitectuurpatronen van multitenant software as a service (SaaS)-databasetoepassingen, [Ontwerppatronen voor multitenant SaaS-toepassingen met Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
 
-Azure biedt veel functies waarmee u kunt de belangrijkste problemen opgetreden bij het ontwerpen van een systeem met meerdere tenants te verhelpen.
+Azure biedt een groot aantal functies waarmee u de belangrijkste problemen kunt oplossen die zich voordoen bij het ontwerpen van een multi tenant systeem.
 
-**Isolatie**
+**Zonder**
 
-* Segment Website Tenants door Host-Headers met of zonder SSL-communicatie
-* Segment Website Tenants door queryparameters
-* Webservices in werkrollen
-  * Werkrollen die doorgaans gegevens op de back-end van een toepassing verwerken.
-  * Webrollen die doorgaans als de front-end voor toepassingen fungeren.
+* Website tenants segmenteren op basis van host headers met of zonder SSL-communicatie
+* Website tenants op basis van query parameters
+* Webservices in werk rollen
+  * Werk rollen die doorgaans gegevens op de back-end van een toepassing verwerken.
+  * Webrollen die normaal gesp roken fungeren als front-end voor toepassingen.
 
 **Storage**
 
-Gegevensbeheer, zoals Azure SQL Database of Azure Storage-services, zoals de Table-service, waarmee u services voor opslag van grote hoeveelheden ongestructureerde gegevens en de Blob-service, waarmee u services voor het opslaan van grote hoeveelheden ongestructureerde tekst of binaire gegevens zoals video, audio en afbeeldingen.
+Gegevens beheer zoals Azure SQL Database-of Azure Storage services zoals de Table service, die services biedt voor de opslag van grote hoeveel heden ongestructureerde gegevens en de Blob service, waarmee services worden opgeslagen in grote hoeveel heden ongestructureerde tekst of binaire gegevens zoals video, audio en afbeeldingen.
 
-* Het beveiligen van Multitenant-gegevens in SQL-Database per tenant SQL Server-aanmeldingen.
-* Met behulp van Azure-tabellen voor Toepassingsresources door een container niveau toegangsbeleid op te geven, kunt u de mogelijkheid machtigingen aanpassen zonder om uit te geven van de nieuwe URL's voor de resources die zijn beveiligd met handtekeningen voor gedeelde toegang hebben.
-* Azure-wachtrijen voor de toepassing Resources Azure-wachtrijen worden veelvuldig gebruikt om de verwerking van station namens tenants, maar kunnen ook worden gebruikt voor het distribueren van werk dat nodig is voor het inrichten of beheren.
-* Service Bus-wachtrijen voor Toepassingsresources die pushes werken aan een gedeelde service, kunt u met één wachtrij waarbij elke tenant afzender alleen machtigingen heeft (zoals hiervan is afgeleid van ACS uitgegeven claims) om te pushen naar die wachtrij terwijl alleen de ontvangers van de service de machtiging om op te halen uit de wachtrij van de gegevens die afkomstig zijn van meerdere tenants.
+* Multi tenant-gegevens beveiligen in SQL Database per Tenant SQL Server aanmeldingen.
+* Azure-tabellen voor toepassings bronnen gebruiken door een toegangs beleid op container niveau op te geven, kunt u machtigingen aanpassen zonder dat u nieuwe URL'S hoeft uit te geven voor de resources die worden beveiligd met hand tekeningen voor gedeelde toegang.
+* Azure-wacht rijen voor toepassings bronnen worden meestal gebruikt voor het verwerken van de verwerking namens tenants, maar kunnen ook worden gebruikt voor het distribueren van werk dat vereist is voor het inrichten of beheren.
+* Service Bus wacht rijen voor toepassings bronnen die naar een gedeelde service worden gepusht, kunt u één wachtrij gebruiken waarbij elke Tenant afzender alleen machtigingen heeft (die zijn afgeleid van claims die zijn uitgegeven van ACS) om naar die wachtrij te pushen, terwijl alleen de ontvangers van de service beschikken over machtiging voor het ophalen uit de wachtrij van de gegevens die afkomstig zijn uit meerdere tenants.
 
-**Verbinding en Security-Services**
+**Verbindings-en beveiligings Services**
 
-* Azure Service Bus, een infrastructuur voor berichten waarmee toepassingen toe te staan voor het uitwisselen van berichten in een licht gekoppelde manier voor betere schaalbaarheid en tolerantie kunnen uitwisselen.
+* Azure Service Bus, een infra structuur voor berichten waarmee toepassingen berichten kunnen uitwisselen op een losjes gekoppelde manier voor betere schaal baarheid en meer flexibiliteit.
 
-**Netwerkservices**
+**Netwerk services**
 
-Azure biedt verschillende netwerkservices die ondersteuning voor verificatie en de beheerbaarheid van uw gehoste toepassingen te verbeteren. Deze services omvatten het volgende:
+Azure biedt verschillende netwerk services die ondersteuning bieden voor verificatie en om de beheer baarheid van uw gehoste toepassingen te verbeteren. Deze services omvatten het volgende:
 
-* Met Azure Virtual Network kunt u inrichten en beheren van virtuele particuliere netwerken (VPN's) in Azure, evenals deze veilig koppelen on-premises IT-infrastructuur.
-* Virtueel netwerk Traffic Manager kunt u inkomend verkeer verdelen over meerdere gehoste Azure-services of deze nu worden uitgevoerd in hetzelfde datacenter of in verschillende datacenters over de hele wereld.
-* Azure Active Directory (Azure AD) is een moderne, op REST gebaseerde service die mogelijkheden voor beheer en toegangsbeheer voor uw cloudtoepassingen biedt. Met behulp van Azure AD voor Toepassingsresources biedt een eenvoudige manier van verifiëren en autoriseren van gebruikers om toegang te krijgen tot uw web-apps en services terwijl u de functies van verificatie en autorisatie voor moet rekening worden gehouden van uw code.
-* Azure Service Bus biedt een beveiligde berichten en gegevens flow-mogelijkheden voor gedistribueerd en hybride toepassingen, zoals communicatie tussen Azure gehoste toepassingen en on-premises toepassingen en services, zonder complexe firewall- en beveiliging infrastructuur. Met Service Bus Relay voor Toepassingsresources voor toegang tot de services die worden weergegeven als eindpunten kan behoren tot de tenant (bijvoorbeeld, die buiten het systeem, bijvoorbeeld on-premises wordt gehost), of ze mogelijk services die zijn ingericht specifiek voor de tenant omdat ( vertrouwelijke, tenant-specifieke gegevens wordt verzonden via deze).
+* Met Azure Virtual Network kunt u virtuele particuliere netwerken (Vpn's) inrichten en beheren in azure, en deze veilig koppelen aan een on-premises IT-infra structuur.
+* Met Virtual Network Traffic Manager kunt u binnenkomend verkeer verdelen over meerdere gehoste Azure-Services, ongeacht of ze worden uitgevoerd in hetzelfde Data Center of in verschillende data centers over de hele wereld.
+* Azure Active Directory (Azure AD) is een moderne, op REST gebaseerde service die mogelijkheden voor identiteits-en toegangs beheer biedt voor uw Cloud toepassingen. Het gebruik van Azure AD voor toepassings bronnen biedt een eenvoudige manier om gebruikers te verifiëren en te autoriseren om toegang te krijgen tot uw webtoepassingen en-services, terwijl de verificatie en autorisatie van uw code worden toegestaan.
+* Azure Service Bus biedt een beveiligde bericht-en gegevens stroom mogelijkheid voor gedistribueerde en hybride toepassingen, zoals communicatie tussen door Azure gehoste toepassingen en on-premises toepassingen en services, zonder ingewikkelde firewall en beveiliging structuren. Het gebruik van Service Bus Relay voor toepassings bronnen om toegang te krijgen tot de services die beschikbaar worden gemaakt als eind punten kunnen deel uitmaken van de Tenant (bijvoorbeeld een host buiten het systeem, zoals on-premises), of de services die specifiek voor de Tenant zijn ingericht (omdat gevoelige, Tenant-specifieke gegevens worden verplaatst.
 
-**De inrichting van Resources**
+**Resources inrichten**
 
-Azure biedt een aantal manieren voor het inrichten van nieuwe tenants voor de toepassing. Voor multitenant-toepassingen met een groot aantal tenants is het meestal nodig voor het automatiseren van dit proces door in te schakelen selfservice inrichting.
+Azure biedt een aantal manieren om nieuwe tenants in te richten voor de toepassing. Voor multi tenant-toepassingen met een groot aantal tenants is het doorgaans nodig dit proces te automatiseren door selfservice-inrichting in te scha kelen.
 
-* Werkrollen kunt u de inrichting en ongedaan maken inrichting per tenant resources (zoals wanneer een nieuwe tenant zich registreert of geannuleerd), verzamelen van metrische gegevens voor softwarelicentiecontrole gebruiken en beheren van schaal na een bepaalde planning of als reactie op de overschrijding van drempels van prestatie indicatoren. Deze dezelfde rol kan ook worden gebruikt om updates en upgrades van de oplossing.
-* Azure-Blobs kunnen worden gebruikt voor het inrichten van compute of vooraf geïnitialiseerd storage-resources voor nieuwe tenants terwijl container toegangsniveau van de beleidsregels voor het beveiligen van de compute-service-pakketten, VHD-installatiekopieën en andere bronnen.
-* Opties voor het inrichten van SQL Database-resources voor een tenant zijn onder andere:
+* Met werk rollen kunt u het inrichten en de inrichting per Tenant-resources (zoals wanneer een nieuwe Tenant zich aanmeldt of annuleert), metrische gegevens verzamelen voor het gebruik van metingen en de schaal beheren volgens een bepaald schema of als reactie op de overschrijding van de drempel waarden van de belangrijkste prestaties toren. Deze zelfde rol kan ook worden gebruikt om updates en upgrades naar de oplossing te pushen.
+* Azure-blobs kunnen worden gebruikt voor het inrichten van Compute-of vooraf geïnitialiseerde opslag resources voor nieuwe tenants, waarbij toegangs beleid op container niveau wordt geboden om de compute-service pakketten, VHD-installatie kopieën en andere bronnen te beveiligen.
+* Opties voor het inrichten van SQL Database resources voor een Tenant zijn onder andere:
   
-  * DDL in scripts of ingesloten als resources in verzamelingen.
-  * SQL Server 2008 R2 DAC-pakketten via een programma wordt geïmplementeerd.
-  * Kopiëren van een master referentiedatabase.
-  * Met behulp van de database importeren en exporteren voor het inrichten van nieuwe databases uit een bestand.
+  * DDL in scripts of Inge sloten als resources binnen assembly's.
+  * SQL Server 2008 R2 DAC-pakketten worden via een programma geïmplementeerd.
+  * Kopiëren uit een hoofd referentie database.
+  * Data bases importeren en exporteren gebruiken om nieuwe data bases in te richten vanuit een bestand.
 
 <!--links-->
 

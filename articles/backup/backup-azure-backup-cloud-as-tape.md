@@ -3,19 +3,19 @@ title: De tape-infra structuur vervangen
 description: Meer informatie over het Azure Backup van tape-achtige semantiek waarmee u back-ups kunt maken en gegevens kunt herstellen in azure
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4659a4d6fcc7213f8323e23d59411680276fcb28
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173316"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425099"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uw lange termijn opslag verplaatsen van tape naar de Azure-Cloud
 
 Azure Backup en System Center Data Protection Manager klanten kunnen:
 
 * Maak een back-up van gegevens in schema's die het beste aansluiten bij de behoeften van de organisatie.
-* De back-upgegevens bewaren voor langere Peri Oden
+* Bewaar de back-upgegevens gedurende langere Peri Oden.
 * Maak Azure een deel van de vereisten voor de Bewaar periode voor de lange termijn (in plaats van tape).
 
 In dit artikel wordt uitgelegd hoe klanten een back-up-en bewaar beleid kunnen inschakelen. Klanten die gebruikmaken van tapes, hebben nu een krachtig en levensvatbaar alternatief voor de beschik baarheid van deze functie. De functie is ingeschakeld in de meest recente versie van de Azure Backup (deze is [hier](https://aka.ms/azurebackup_agent)beschikbaar). System Center DPM-klanten moeten worden bijgewerkt naar ten minste DPM 2012 R2 UR5 voordat DPM met de Azure Backup-service wordt gebruikt.
@@ -43,9 +43,9 @@ Het totale aantal "Bewaar punten" dat is opgegeven in dit beleid is 90 (dagelijk
 ![Voorbeeld scherm](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Dagelijks Bewaar beleid**: back-ups die dagelijks worden gemaakt, worden gedurende zeven dagen bewaard.
-2. **Wekelijks Bewaar beleid**: back-ups die elke dag om MIDDERNACHT en 18:00 uur zaterdag worden gemaakt, worden vier weken bewaard
-3. **Maandelijks Bewaar beleid**: back-ups die zijn gemaakt om middernacht en 18:00 uur op de laatste zaterdag van elke maand blijven 12 maanden bewaard
-4. **Jaarlijks Bewaar beleid**: back-ups die zijn gemaakt om middernacht op de laatste zaterdag van elke maart worden tien jaar bewaard
+2. **Wekelijks Bewaar beleid**: back-ups die zijn gemaakt om middernacht en 6 uur zaterdag worden vier weken bewaard.
+3. **Maandelijks Bewaar beleid**: back-ups die zijn gemaakt om middernacht en 6 uur op de laatste zaterdag van elke maand blijven 12 maanden bewaard.
+4. **Jaarlijks Bewaar beleid**: back-ups die zijn gemaakt om middernacht op de laatste zaterdag van elke maart worden tien jaar bewaard.
 
 Het totale aantal Bewaar punten (punten van waaruit een klant gegevens kan herstellen) in het voor gaande diagram wordt als volgt berekend:
 
@@ -57,7 +57,7 @@ Het totale aantal Bewaar punten (punten van waaruit een klant gegevens kan herst
 Het totale aantal herstel punten is 56.
 
 > [!NOTE]
-> Met Azure Backup kunt u Maxi maal 9999 herstel punten per beveiligd exemplaar maken. Een beveiligd exemplaar is een computer, een server (fysiek of virtueel) of een werk belasting die back-ups maakt van Azure.
+> Met Azure Backup kunt u Maxi maal 9999 herstel punten per beveiligd exemplaar maken. Een beveiligd exemplaar is een computer, een server (fysiek of virtueel) of een workload waarvan een back-up wordt gemaakt in Azure.
 >
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie

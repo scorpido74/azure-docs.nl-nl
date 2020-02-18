@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 72b001ada98ecd768cd39fea012a20f2ada466d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 340f91fc926c155f95449f7cc49c214f46d1ff35
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931275"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423654"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>De indeling Parquet in Azure Data Factory
 
@@ -24,13 +24,13 @@ De Parquet-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](c
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Parquet-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Parquet-gegevensset.
 
-| Eigenschap         | Beschrijving                                                  | Verplicht |
+| Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **Parquet**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
-| compressionCodec | De compressie-codec die moet worden gebruikt bij het schrijven naar Parquet-bestanden. Bij het lezen van Parquet-bestanden, Data Factory de compressie-codec automatisch bepalen op basis van de meta gegevens van het bestand.<br>Ondersteunde typen zijn '**none**', '**gzip**', '**Snappy**' (standaard) en '**lzo**'. Houd er rekening mee dat de Kopieer activiteit niet LZO ondersteunt. | Nee       |
+| locatie         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
+| compressionCodec | De compressie-codec die moet worden gebruikt bij het schrijven naar Parquet-bestanden. Bij het lezen van Parquet-bestanden, Data Factory de compressie-codec automatisch bepalen op basis van de meta gegevens van het bestand.<br>Ondersteunde typen zijn '**none**', '**gzip**', '**Snappy**' (standaard) en '**lzo**'. Houd er rekening mee dat de activiteit die momenteel wordt gekopieerd, geen ondersteuning biedt voor LZO wanneer Parquet bestanden lezen/schrijven. | Nee       |
 
 > [!NOTE]
 > Spaties in kolom naam wordt niet ondersteund voor Parquet-bestanden.
@@ -61,13 +61,13 @@ Hieronder ziet u een voor beeld van een Parquet-gegevensset op Azure Blob Storag
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Parquet-bron en Sink.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Parquet-bron en Sink.
 
 ### <a name="parquet-as-source"></a>Parquet als bron
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
-| Eigenschap      | Beschrijving                                                  | Verplicht |
+| Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **ParquetSource**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -76,7 +76,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
-| Eigenschap      | Beschrijving                                                  | Verplicht |
+| Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **ParquetSink**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -108,7 +108,7 @@ Voor beeld: Stel variabele `_JAVA_OPTIONS` in met de waarde `-Xms256m -Xmx16g`. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046322"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425253"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -95,10 +95,20 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 - **Huidige verbindingen**
 
    Het totale aantal gelijktijdige verbindingen dat actief is van clients naar de Application Gateway
+   
+- **Geschatte gefactureerde capaciteits eenheden**
+
+  Aantal capaciteits eenheden op basis waarvan de facturering wordt geschat. Dit is calcutaed als de hogere waarde tussen *huidige capaciteits eenheden* en *vaste factureer bare capaciteits eenheden*.  
 
 - **Mislukte aanvragen**
 
    Aantal mislukte aanvragen dat Application Gateway heeft geleverd. Het aantal aanvragen kan verder worden gefilterd om het aantal weer te geven per/specifieke back-end-groep-combi natie van http-instellingen.
+   
+- **Vaste factureer bare capaciteits eenheden** Het minimale aantal capaciteits eenheden dat is ingericht volgens de instelling voor de *minimale schaal eenheden* in de Application Gateway configuratie.
+   
+ - **Nieuwe verbindingen per seconde**
+
+   Het gemiddelde aantal nieuwe TCP-verbindingen per seconde dat is gemaakt van clients met de Application Gateway en van de Application Gateway aan de back-end-leden.
 
 
 - **Reactie status**

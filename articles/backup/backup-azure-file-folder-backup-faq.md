@@ -3,16 +3,16 @@ title: Back-ups maken van bestanden en mappen-Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720358"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425065"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
-In dit artikel vindt u antwoorden op veelgestelde vragen Abound back-ups maken van bestanden en mappen met de Microsoft Azure Recovery Services-agent (MARS) in de [Azure backup](backup-overview.md) -service.
+In dit artikel vindt u antwoorden op veelgestelde vragen Abound het maken van back-ups van bestanden en mappen met de Microsoft Azure Recovery Services-agent (MARS) in de [Azure backup](backup-overview.md) -service.
 
 ## <a name="configure-backups"></a>Back-ups configureren
 
@@ -90,7 +90,7 @@ Deze waarschuwing kan worden weer gegeven ondanks dat u een back-upbeleid hebt g
 De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up maakt.
 
 * De volumes in de cache-map moeten vrije ruimte hebben die gelijk is aan ten minste 5-10% van de totale grootte van de back-upgegevens.
-* Als het volume minder dan 5% beschik bare ruimte heeft, verg root u de volume grootte of verplaatst u de cachemap naar een volume met voldoende ruimte.
+* Als het volume minder dan 5% beschik bare ruimte heeft, verg root u de volume grootte of verplaatst u de cachemap naar een volume met voldoende ruimte door de volgende [stappen uit te voeren](#how-do-i-change-the-cache-location-for-the-mars-agent).
 * Als u een back-up maakt van de systeem status van Windows, hebt u een extra beschik bare schijf ruimte van 30-35 GB nodig in het volume met de cachemap.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Controleren of de Scratch-map geldig is en toegankelijk is?
@@ -98,35 +98,35 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 1. Standaard bevindt de map Scratch zich op `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Zorg ervoor dat het pad naar de locatie van de map Scratch overeenkomt met de waarden van de register sleutel vermeldingen die hieronder worden weer gegeven:
 
-  | Registerpad | Registersleutel | Waarde |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nieuwe locatie van de cachemap* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nieuwe locatie van de cachemap* |
+    | Registerpad | Registersleutel | Waarde |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nieuwe locatie van de cachemap* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nieuwe locatie van de cachemap* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Hoe kan ik de cache locatie van de MARS-agent wijzigen?
 
 1. Voer deze opdracht uit in een opdracht prompt met verhoogde bevoegdheid om de back-upengine te stoppen:
 
     ```Net stop obengine```
-
 2. Als u de systeem status back-up hebt geconfigureerd, opent u schijf beheer en ontkoppelt u de schijven met namen in de indeling `"CBSSBVol_<ID>"`.
-3. Verplaats de bestanden niet. Kopieer in plaats daarvan de map met de cache ruimte naar een ander station dat voldoende ruimte heeft.
-4. Werk de volgende Register vermeldingen bij met het pad van de nieuwe cachemap.
+3. De map Scratch bevindt zich standaard op `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. Kopieer de volledige map `\Scratch` naar een ander station dat voldoende ruimte heeft. Zorg ervoor dat de inhoud wordt gekopieerd, niet verplaatst.
+5. Werk de volgende Register vermeldingen bij met het pad van de zojuist verplaatste Scratch-map.
 
     | Registerpad | Registersleutel | Waarde |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nieuwe locatie van de cachemap* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nieuwe locatie van de cachemap* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Locatie van nieuwe Scratch map* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Locatie van nieuwe Scratch map* |
 
-5. Start de backup-engine opnieuw op bij een opdracht prompt met verhoogde bevoegdheid:
+6. Start de backup-engine opnieuw op bij een opdracht prompt met verhoogde bevoegdheid:
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. Een back-up op aanvraag uitvoeren. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
+7. Een back-up op aanvraag uitvoeren. Nadat de back-up is voltooid met behulp van de nieuwe locatie, kunt u de oorspronkelijke cachemap verwijderen.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Waar moet de cachemap zich bevinden?
 
@@ -153,7 +153,7 @@ Ja, u kunt de optie **Eigenschappen wijzigen** in de Mars-agent gebruiken om de 
 
 ## <a name="restore"></a>Herstellen
 
-### <a name="manage"></a>Beheer
+### <a name="manage"></a>Beheren
 
 **Kan ik herstellen als ik mijn wachtwoordzin ben verg eten?**
 De Azure Backup-Agent vereist een wachtwoordzin (die u hebt ingevoerd tijdens de registratie) om de back-upgegevens tijdens het herstellen te ontsleutelen. Bekijk de onderstaande scenario's om inzicht te krijgen in uw opties voor het afhandelen van een verloren wachtwoordzin:
@@ -163,7 +163,7 @@ De Azure Backup-Agent vereist een wachtwoordzin (die u hebt ingevoerd tijdens de
 | Beschikbaar |Verdwenen |Als uw oorspronkelijke computer (waar back-ups zijn gemaakt) beschikbaar is en nog steeds is geregistreerd met dezelfde Recovery Services kluis, kunt u de wachtwoordzin opnieuw genereren door de volgende [stappen uit te voeren](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
 | Verdwenen |Verdwenen |Het is niet mogelijk om de gegevens te herstellen of de gegevens zijn niet beschikbaar |
 
-Houd rekening met de volgende voorwaarden:
+Houd rekening met de volgende voor waarden:
 
 * Als u de agent op dezelfde oorspronkelijke machine verwijdert en opnieuw registreert met
   * *Dezelfde wachtwoordzin*; vervolgens kunt u de back-upgegevens herstellen.

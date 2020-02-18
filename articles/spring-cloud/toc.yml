@@ -76,3 +76,5 @@
       href: spring-cloud-faq.md
     - name: Handleiding voor het oplossen van problemen
       href: spring-cloud-troubleshoot.md
+    - name: Naslaginformatie over REST-API
+      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'

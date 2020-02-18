@@ -3,12 +3,12 @@ title: host. json-verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208821"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425201"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 
@@ -21,9 +21,9 @@ Het meta gegevensbestand van de *host. json* bevat globale configuratie opties d
 > [!NOTE]
 > Dit artikel is voor Azure Functions 2. x en latere versies.  Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
-Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md).
+Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md) (voor geïmplementeerde apps) of het bestand [Local. settings. json](functions-run-local.md#local-settings-file) (voor lokale ontwikkeling).
 
-Sommige host. json-instellingen worden alleen gebruikt wanneer lokaal wordt uitgevoerd in het bestand [Local. settings. json](functions-run-local.md#local-settings-file) .
+Configuraties in host. json die betrekking hebben op bindingen, worden op dezelfde manier toegepast op elke functie in de functie-app. 
 
 ## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
 
@@ -69,11 +69,11 @@ In het volgende voor beeld van een *host. json* -bestand voor versie 2. x + zijn
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 20,
               "evaluationInterval": "01:00:00",
-              "initialSamplingPercentage": 1.0, 
+              "initialSamplingPercentage": 100.0, 
               "samplingPercentageIncreaseTimeout" : "00:00:01",
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
-              "maxSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 100.0,
               "movingAverageRatio": 1.0,
               "excludedTypes" : "Dependency;Event",
               "includedTypes" : "PageView;Trace"

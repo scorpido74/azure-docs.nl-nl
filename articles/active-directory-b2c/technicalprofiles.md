@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982276"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425604"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -75,7 +75,7 @@ Een **TechnicalProfiles** -element bevat een set technische profielen die worden
 
 Het element **TechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 |---------|---------|---------|
 | Id | Ja | Een unieke id van het technische profiel. Naar het technische profiel kan worden verwezen via deze id vanuit andere elementen in het beleids bestand. Bijvoorbeeld **OrchestrationSteps** en **ValidationTechnicalProfile**. |
 
@@ -109,9 +109,9 @@ De **TechnicalProfile** bevat de volgende elementen:
 
 Het **protocol** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`, `session management`, `self-asserted`of `None`. |
+| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`of `None`. |
 | Afhandelingsprocedure | Nee | Wanneer de protocol naam is ingesteld op `Proprietary`, geeft u de volledig gekwalificeerde naam op van de assembly die door Azure AD B2C wordt gebruikt om de protocolhandler te bepalen. |
 
 ## <a name="metadata"></a>Metagegevens
@@ -126,7 +126,7 @@ Een **META** gegevenselement bevat de volgende elementen:
 
 Het element **item** van het **META** gegevenselement bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Sleutel | Ja | De meta gegevens sleutel. Zie elk type technische profiel voor de lijst met meta gegevens items. |
 
@@ -142,7 +142,7 @@ Het element **CryptographicKeys** bevat het volgende element:
 
 Het **sleutel** element bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Nee | Een unieke id van een bepaalde sleutel paar waarnaar wordt verwezen vanuit andere elementen in het beleids bestand. |
 | StorageReferenceId | Ja | Een id van een opslag sleutel container waarnaar wordt verwezen vanuit andere elementen in het beleids bestand. |
@@ -159,7 +159,7 @@ Het element **InputClaimsTransformations** bevat het volgende element:
 
 Het element **InputClaimsTransformation** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een claim transformatie die al is gedefinieerd in het beleids bestand of het bovenliggende beleids bestand. |
 
@@ -175,7 +175,7 @@ Het element **InputClaims** bevat het volgende element:
 
 Het **input claim** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | De id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand. |
 | Standaard | Nee | Een standaard waarde die moet worden gebruikt om een claim te maken als de claim aangegeven door ClaimTypeReferenceId niet bestaat, zodat de resulterende claim kan worden gebruikt als een input claim van het technische profiel. |
@@ -195,11 +195,11 @@ De functie DislayClaims is momenteel beschikbaar als **Preview-versie**.
 
 Het **DisplayClaim** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Nee | De id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand. |
 | DisplayControlReferenceId | Nee | De id van een [Weergave besturings element](display-controls.md) dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand. |
-| Verplicht | Nee | Hiermee wordt aangegeven of de weergave claim vereist is. |
+| Vereist | Nee | Hiermee wordt aangegeven of de weergave claim vereist is. |
 
 De **DisplayClaim** vereist dat u een `ClaimTypeReferenceId` of `DisplayControlReferenceId`opgeeft.
 
@@ -215,7 +215,7 @@ Het **PersistedClaims** -element bevat de volgende elementen:
 
 Het **PersistedClaim** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | De id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand. |
 | Standaard | Nee | Een standaard waarde die moet worden gebruikt om een claim te maken als de claim aangegeven door ClaimTypeReferenceId niet bestaat, zodat de resulterende claim kan worden gebruikt als een input claim van het technische profiel. |
@@ -233,7 +233,7 @@ Het element **OutputClaims** bevat het volgende element:
 
 Het **output claim** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | De id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand. |
 | Standaard | Nee | Een standaard waarde die moet worden gebruikt om een claim te maken als de claim aangegeven door ClaimTypeReferenceId niet bestaat, zodat de resulterende claim kan worden gebruikt als een input claim van het technische profiel. |
@@ -252,7 +252,7 @@ Het element **OutputClaimsTransformations** bevat het volgende element:
 
 Het element **OutputClaimsTransformation** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een claim transformatie die al is gedefinieerd in het beleids bestand of het bovenliggende beleids bestand. |
 
@@ -268,7 +268,7 @@ Het element **ValidationTechnicalProfiles** bevat het volgende element:
 
 Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleids bestand of het bovenliggende beleids bestand. |
 
@@ -276,7 +276,7 @@ Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
 De **SubjectNamingInfo** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Een id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand. |
 
@@ -284,7 +284,7 @@ De **SubjectNamingInfo** bevat het volgende kenmerk:
 
 Het element **IncludeTechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleids bestand of het bovenliggende beleids bestand. |
 
@@ -292,7 +292,7 @@ Het element **IncludeTechnicalProfile** bevat het volgende kenmerk:
 
 Het element **UseTechnicalProfileForSessionManagement** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleids bestand of het bovenliggende beleids bestand. |
 

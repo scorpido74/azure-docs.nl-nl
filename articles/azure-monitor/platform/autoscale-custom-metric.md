@@ -4,17 +4,18 @@ description: Meer informatie over hoe u uw resource kunt schalen op basis van aa
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364540"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425116"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Aan de slag met automatisch schalen op basis van aangepaste metrische gegevens in azure
 In dit artikel wordt beschreven hoe u uw resource kunt schalen op basis van een aangepaste metriek in Azure Portal.
 
-Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Azure Monitor automatisch schalen alleen van toepassing is op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-web apps](https://azure.microsoft.com/services/app-service/web/), [Azure Data Explorer-cluster](https://azure.microsoft.com/services/data-explorer/)   
+Integratieserviceomgeving-en [API Management-Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="lets-get-started"></a>Hiermee kunt u aan de slag
 In dit artikel wordt ervan uitgegaan dat u een web-app met Application Insights hebt geconfigureerd. Als u er nog geen hebt, kunt u [Application Insights instellen voor uw ASP.net-website][1]

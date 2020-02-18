@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849833"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425320"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Zelf studie: een functie maken in Java met een event hub-trigger en een Azure Cosmos DB uitvoer binding
 
@@ -30,12 +30,14 @@ In deze zelf studie doet u het volgende:
 Voor het volt ooien van deze zelf studie moet het volgende zijn geïnstalleerd:
 
 * [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
-* [Apache Maven](https://maven.apache.org), versie 3,0 of hoger
+* [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
 * [Azure cli](/cli/azure/install-azure-cli) als u geen Cloud shell wilt gebruiken
 * [Azure functions core tools](https://www.npmjs.com/package/azure-functions-core-tools) versie 2.6.666 of hoger
 
 > [!IMPORTANT]
 > De omgevings variabele `JAVA_HOME` moet worden ingesteld op de installatie locatie van de JDK om deze zelf studie te volt ooien.
+
+Als u liever rechtstreeks de code voor deze zelf studie gebruikt, raadpleegt u de opslag plaats [Java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -201,7 +203,7 @@ Uw Azure-resources zijn nu gemaakt en geconfigureerd om goed te kunnen samen wer
 
 ## <a name="create-and-test-your-functions"></a>Uw functies maken en testen
 
-Vervolgens maakt u een project op uw lokale machine, voegt u Java-code toe en test u deze. U gebruikt opdrachten die samen werken met de Maven-invoeg toepassing voor Azure Functions en de Azure Functions Core Tools. Uw functies worden lokaal uitgevoerd, maar de cloud resources die u hebt gemaakt, worden gebruikt. Nadat u de functies hebt die lokaal werken, kunt u maven gebruiken om ze te implementeren in de Cloud en uw gegevens en analyses te bekijken.
+Vervolgens maakt u een project op uw lokale machine, voegt u Java-code toe en test u deze. U gebruikt opdrachten die samen werken met de Azure Functions-invoeg toepassing voor maven en de Azure Functions Core Tools. Uw functies worden lokaal uitgevoerd, maar de cloud resources die u hebt gemaakt, worden gebruikt. Nadat u de functies hebt die lokaal werken, kunt u maven gebruiken om ze te implementeren in de Cloud en uw gegevens en analyses te bekijken.
 
 Als u Cloud Shell hebt gebruikt om uw resources te maken, wordt u niet lokaal verbonden met Azure. In dit geval gebruikt u de opdracht `az login` om het aanmeldings proces op de browser te starten. Stel vervolgens, indien nodig, het standaard abonnement in met `az account set --subscription` gevolgd door de abonnements-ID. Ten slotte voert u de volgende opdrachten uit om bepaalde omgevings variabelen op uw lokale computer opnieuw te maken. Vervang de tijdelijke aanduidingen `<value>` door de waarden die u eerder hebt gebruikt.
 
@@ -435,7 +437,7 @@ Uw functies worden nu uitgevoerd in Azure en blijven gegevens in uw Azure Cosmos
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met de Azure-resources die u in deze zelf studie hebt gemaakt, kunt u deze verwijderen met de volgende opdracht:
+Wanneer u klaar bent met de Azure-resources die u in deze zelfstudie hebt gemaakt, kunt u deze verwijderen met de volgende opdracht:
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP

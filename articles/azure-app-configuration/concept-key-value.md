@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: fbb30b0a290011a5edfb05c1de9b5d4717a5f733
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898702"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425218"
 ---
 # <a name="keys-and-values"></a>Sleutels en waarden
 
@@ -25,7 +25,7 @@ Het gebruik van configuratie gegevens in Application Frameworks kan specifieke n
 
 Sleutels die zijn opgeslagen in App Configuration zijn hoofdlettergevoelige tekenreeksen, op basis van Unicode. De sleutels *app1* en *app1* zijn uniek in een app-configuratie opslag. Houd dit in gedachten wanneer u configuratie-instellingen in een toepassing gebruikt omdat sommige Frameworks configuratie sleutels hoofdletter gevoelig verwerken. In het ASP.NET Core-configuratiesysteem worden sleutels bijvoorbeeld als niet-hoofdlettergevoelige tekenreeksen behandeld. Om onvoorspelbaar gedrag te voor komen bij het uitvoeren van een query op de app-configuratie binnen een ASP.NET Core-toepassing, moet u geen sleutels gebruiken die alleen verschillen per behuizing.
 
-U kunt elk Unicode-teken gebruiken in sleutel namen die zijn ingevoerd in de app-configuratie, met uitzonde ring van `*`, `,`en `\`. Deze tekens zijn gereserveerd. Als u een gereserveerd teken moet toevoegen, moet u dit met behulp van `\{Reserved Character}`verescapeen. Er is een gecombineerde grootte limiet van 10.000 tekens voor een sleutel/waarde-paar. Deze limiet omvat alle tekens in de sleutel, de bijbehorende waarde en alle bijbehorende optionele kenmerken. Binnen deze limiet kunt u veel niveaus voor sleutels gebruiken.
+U kunt elk Unicode-teken gebruiken in sleutel namen die zijn ingevoerd in de app-configuratie, met uitzonde ring van `*`, `,`en `\`. Deze tekens zijn gereserveerd. Als u een gereserveerd teken moet toevoegen, moet u dit met behulp van `\{Reserved Character}`verescapeen. Er is een gecombineerde grootte limiet van 10 KB voor een sleutel/waarde-paar. Deze limiet omvat alle tekens in de sleutel, de bijbehorende waarde en alle bijbehorende optionele kenmerken. Binnen deze limiet kunt u veel niveaus voor sleutels gebruiken.
 
 ### <a name="design-key-namespaces"></a>Naam ruimten van ontwerp sleutel
 
@@ -51,7 +51,7 @@ Hier volgen enkele voorbeelden van hoe u sleutelnamen in een hiërarchie kunt in
 
 ### <a name="label-keys"></a>Label sleutels
 
-Sleutel waarden in app-configuratie kunnen optioneel een label kenmerk hebben. Labels worden gebruikt om sleutel waarden te onderscheiden met dezelfde sleutel. Een Key *app1* met labels *A* en *B* vormt twee afzonderlijke sleutels in een app-configuratie opslag. Het label voor een sleutel waarde is standaard leeg of `null`.
+Sleutel waarden in app-configuratie kunnen optioneel een label kenmerk hebben. Labels worden gebruikt om sleutel waarden te onderscheiden met dezelfde sleutel. Een Key *app1* met labels *A* en *B* vormt twee afzonderlijke sleutels in een app-configuratie opslag. Standaard heeft een sleutel waarde geen label. Als u expliciet wilt verwijzen naar een sleutel waarde zonder label, gebruikt u `\0` (URL-code ring als `%00`).
 
 Label biedt een handige manier om varianten van een sleutel te maken. Het gebruik van labels is gebruikelijk om meerdere omgevingen op te geven voor dezelfde sleutel:
 
@@ -74,8 +74,6 @@ Elke sleutel waarde wordt uniek aangeduid door de sleutel plus een label dat kan
 | `key` wordt weggelaten of `key=*` | Komt overeen met alle sleutels |
 | `key=abc` | Komt exact overeen met sleutel naam **ABC** |
 | `key=abc*` | Komt overeen met sleutelnamen die beginnen met **abc** |
-| `key=*abc` | Komt overeen met sleutelnamen die beginnen met **abc** |
-| `key=*abc*` | Komt overeen met sleutelnamen die **abc** bevatten |
 | `key=abc,xyz` | Komt overeen met de sleutel namen **ABC** of **xyz**, beperkt tot vijf csv's |
 
 U kunt ook de volgende label patronen toevoegen:
@@ -86,8 +84,6 @@ U kunt ook de volgende label patronen toevoegen:
 | `label=%00` | Komt overeen met `null` label |
 | `label=1.0.0` | Komt exact overeen met label **1.0.0** |
 | `label=1.0.*` | Komt overeen met labels die beginnen met **1.0.** |
-| `label=*.0.0` | Komt overeen met labels die eindigen met **.0.0** |
-| `label=*.0.*` | Komt overeen met labels die **.0.** bevatten |
 | `label=%00,1.0.0` | Komt overeen met labels `null` of **1.0.0**, beperkt tot vijf csv's |
 
 ## <a name="values"></a>Waarden
