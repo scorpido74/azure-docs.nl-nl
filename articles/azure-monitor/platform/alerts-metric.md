@@ -4,19 +4,19 @@ description: Meer informatie over het gebruik van Azure Portal of CLI om metrisc
 author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 02/16/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ef712c38303de27214ce75c9ca2b8022a5410efc
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705527"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372769"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
-Metrische waarschuwingen in Azure Monitor bieden een manier om een melding te ontvangen wanneer metrische gegevens een drempelwaarde overschrijden. Metrische waarschuwingen werken voor verschillende metrische gegevens op platforms met meerdere dimensies, voor aangepaste metrische gegevens, en voor metrische Application Insights-gegevens (standaard en aangepast). In dit artikel wordt beschreven hoe u waarschuwingsregels voor metrische gegevens kunt maken, weergeven en beheren via de Azure-portal en Azure CLI. U kunt ook metrische waarschuwings regels maken met behulp van Azure Resource Manager sjablonen die in [een afzonderlijk artikel](alerts-metric-create-templates.md)worden beschreven.
+Metrische waarschuwingen in Azure Monitor bieden een manier om een melding te ontvangen wanneer een van uw metrische gegevens een drempel waarde overschrijdt. Metrische waarschuwingen werken voor verschillende metrische gegevens op platforms met meerdere dimensies, voor aangepaste metrische gegevens, en voor metrische Application Insights-gegevens (standaard en aangepast). In dit artikel wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren via Azure Portal en Azure CLI. U kunt ook metrische waarschuwings regels maken met behulp van Azure Resource Manager sjablonen, die in [een afzonderlijk artikel](alerts-metric-create-templates.md)worden beschreven.
 
 Meer informatie over de werking van metrische waarschuwingen vindt u in [overzicht van metrische waarschuwingen](alerts-metric-overview.md).
 
@@ -39,21 +39,30 @@ In de volgende procedure wordt beschreven hoe u een regel voor metrische waarsch
 
 6. U ziet een lijst met signalen die worden ondersteund voor de resource. Selecteer de metriek waarvoor u een waarschuwing wilt maken.
 
-7. U kunt de metriek eventueel verfijnen door de **periode** en **aggregatie**aan te passen. Als de metriek dimensies heeft, ziet u de weer gegeven **dimensie** tabel. Selecteer een of meer waarden per dimensie. De metrische waarschuwing wordt uitgevoerd en evalueren de voor waarde voor alle combi Naties van geselecteerde waarden. Meer [informatie over hoe waarschuwingen voor multidimensionale metrische gegevens werken](alerts-metric-overview.md). U kunt ook **\*selecteren** voor een van de dimensies. **Selecteer \*** wordt de selectie dynamisch geschaald naar alle huidige en toekomstige waarden voor een dimensie.
+7. Er wordt een grafiek weer gegeven met de metrische gegevens voor de afgelopen zes uur. Gebruik de vervolg keuzelijst **grafiek periode** om de meer geschiedenis voor de metrische gegevens weer te geven.
 
-8. Er wordt een grafiek weer gegeven met de metrische gegevens voor de afgelopen zes uur. Definieer de waarschuwings parameters. **Voorwaarde type**, **frequentie**, **operator** en **drempel waarde** of **gevoeligheid**, Hiermee wordt de logica bepaald die door de metrische waarschuwings regel wordt geëvalueerd. Meer [informatie over de drempel waarde voor het type en gevoeligheids opties voor dynamische waarden](alerts-dynamic-thresholds.md).
+8. Als de metriek dimensies heeft, wordt er een tabel weer gegeven. Selecteer een of meer waarden per dimensie.
+    - De weer gegeven dimensie waarden zijn gebaseerd op de metrische gegevens van de afgelopen drie dagen.
+    - Als de dimensie waarde die u zoekt niet wordt weer gegeven, klikt u op + om een aangepaste waarde toe te voegen.
+    - U kunt ook **\*selecteren** voor een van de dimensies. **Selecteer \*** wordt de selectie dynamisch geschaald naar alle huidige en toekomstige waarden voor een dimensie.
 
-9. Als u een statische drempel waarde gebruikt, kan het meet diagram helpen bij het bepalen van de drempel waarde. Als u een dynamische drempel waarde gebruikt, worden de berekende drempel waarden in de grafiek weer gegeven op basis van recente gegevens.
+    De metrische waarschuwings regel evalueert de voor waarde voor alle combi Naties van geselecteerde waarden. Meer [informatie over hoe waarschuwingen voor multidimensionale metrische gegevens werken](alerts-metric-overview.md).
 
-10. Klik op **Gereed**.
+9. Selecteer het type **drempel waarde** , de **operator**en het **samenvoegings type**. Hiermee wordt de logica bepaald die door de metrische waarschuwings regel wordt geëvalueerd.
+    - Als u een **statische** drempel waarde gebruikt, gaat u door met het definiëren van een **drempelwaarde**. De metrische grafiek kan helpen om te bepalen wat een redelijke drempel waarde kan hebben.
+    - Als u een **dynamische** drempel waarde gebruikt, gaat u door met het definiëren van de **drempel gevoeligheid**. De metrische grafiek geeft de berekende drempel waarden weer op basis van recente gegevens. Meer [informatie over de drempel waarde voor het type en gevoeligheids opties voor dynamische waarden](alerts-dynamic-thresholds.md).
 
-11. Voeg eventueel nog andere criteria toe als u een complexe waarschuwings regel wilt bewaken. Momenteel kunnen gebruikers waarschuwings regels met dynamische drempel waarden criteria hebben als één criterium.
+10. U kunt de voor waarde eventueel verfijnen door de **granulariteit van aggregatie** en de **frequentie van de evaluatie aan**te passen. 
 
-12. Details van de **waarschuwing** invullen, zoals de naam van de **waarschuwings regel**, **Beschrijving** en **Ernst**
+11. Klik op **Gereed**.
 
-13. Voeg een actie groep toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+12. Voeg eventueel nog andere criteria toe als u een complexe waarschuwings regel wilt bewaken. Momenteel kunnen gebruikers waarschuwings regels met dynamische drempel waarden criteria hebben als één criterium.
 
-14. Klik op **gereed** om de waarschuwings regel voor metrische gegevens op te slaan.
+13. Vul de **waarschuwings Details** in, zoals de naam, **Beschrijving**en **Ernst**van de **waarschuwings regel**.
+
+14. Voeg een actie groep toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+
+15. Klik op **gereed** om de waarschuwings regel voor metrische gegevens op te slaan.
 
 > [!NOTE]
 > Metrische waarschuwings regels die via de portal zijn gemaakt, worden gemaakt in dezelfde resource groep als de doel resource.
@@ -66,7 +75,7 @@ U kunt metrische waarschuwings regels weer geven en beheren met behulp van de Bl
 
 2. Klik op **waarschuwingen** en **beheer regels**
 
-3. Op de Blade **regels beheren** kunt u al uw waarschuwings regels weer geven in abonnementen. U kunt de regels verder filteren met **resource groep**, **resource type** en **resource**. Als u alleen metrische waarschuwingen wilt weer geven, selecteert u **signaal type** als metrische gegevens.
+3. Op de Blade **regels beheren** kunt u al uw waarschuwings regels weer geven in abonnementen. U kunt de regels verder filteren met **resource groep**, **resource type**en **resource**. Als u alleen metrische waarschuwingen wilt weer geven, selecteert u **signaal type** als metrische gegevens.
 
     > [!TIP]
     > Op de Blade **regels beheren** kunt u meerdere waarschuwings regels selecteren en deze inschakelen/uitschakelen. Dit kan handig zijn wanneer bepaalde doel resources onder onderhoud moeten worden geplaatst.
@@ -82,7 +91,7 @@ U kunt metrische waarschuwings regels weer geven en beheren met behulp van de Bl
 
 ## <a name="with-azure-cli"></a>Met Azure CLI
 
-In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren met behulp van Azure Portal. In deze sectie wordt beschreven hoe u hetzelfde kunt doen met meerdere platformen van [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). De snelste manier om te beginnen met het gebruik van Azure CLI is via [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). Voor dit artikel wordt gebruikgemaakt van Cloud shell.
+In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren met behulp van Azure Portal. In deze sectie wordt beschreven hoe u hetzelfde kunt doen met meerdere platformen van [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). De snelste manier om te beginnen met het gebruik van Azure CLI is via [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). Voor dit artikel gaan we Cloud Shell gebruiken.
 
 1. Ga naar Azure Portal en klik op **Cloud shell**.
 

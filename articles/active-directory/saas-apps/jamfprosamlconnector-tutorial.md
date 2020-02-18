@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251682"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373189"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Zelf studie: SSO-integratie Azure Active Directory met Jamf Pro
 
@@ -31,7 +31,7 @@ In deze zelf studie leert u hoe u Jamf Pro integreert met Azure Active Directory
 * Meld uw gebruikers automatisch aan Jamf Pro met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,7 +42,10 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Jamf Pro ondersteunt door **SP geïnitieerde** en door **IDP geïnitieerde** SSO.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. 
+
+* Jamf Pro ondersteunt door **SP geïnitieerde** en door **IDP geïnitieerde** SSO.
+* Zodra u Jamf Pro hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>Jamf Pro toevoegen vanuit de galerie
 
@@ -147,9 +150,9 @@ In deze sectie verleent u B. Simon toegang tot Jamf Pro.
 
     ![De pagina voor eenmalige aanmelding in Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-  a. Selecteer **Bewerken**.
+    a. Selecteer **Bewerken**.
 
-  b. Schakel het selectie vakje **verificatie via eenmalige aanmelding inschakelen** in.
+    b. Schakel het selectie vakje **verificatie via eenmalige aanmelding inschakelen** in.
 
   c. Selecteer **Azure** als een optie in de vervolg keuzelijst **ID-provider** .
 
@@ -200,7 +203,7 @@ Voer de volgende stappen uit om een gebruikers account in te richten:
 
     ![De optie standaard account maken op de pagina Jamf Pro-gebruikers accounts & groepen](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. In het dialoog venster **Nieuw account** voert u de volgende stappen uit.
+6. Voer de volgende stappen uit in het dialoog venster **Nieuw account** :
 
     ![Nieuwe opties voor het instellen van accounts in Jamf Pro-systeem instellingen](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -228,8 +231,8 @@ Wanneer u de tegel Jamf Pro selecteert in het toegangs venster, moet u automatis
 
 - [Zelf studies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [Probeer Jamf Pro met Azure AD](https://aad.portal.azure.com/)

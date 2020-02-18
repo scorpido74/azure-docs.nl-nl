@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725973"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373368"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Beheerde identiteiten voor uw Azure Data Explorer-cluster configureren
 
-Met een [beheerde identiteit van Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) kan uw cluster eenvoudig toegang krijgen tot andere met Aad beveiligde resources zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. In dit artikel wordt beschreven hoe u een beheerde identiteit voor Azure Data Explorer-clusters maakt. 
+Met een [beheerde identiteit van Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) kan uw cluster eenvoudig toegang krijgen tot andere met Aad beveiligde resources zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. In dit artikel wordt beschreven hoe u een beheerde identiteit voor Azure Data Explorer-clusters maakt. Configuratie van beheerde identiteit wordt momenteel alleen ondersteund voor [het inschakelen van door de klant beheerde sleutels voor uw cluster](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
 
 > [!Note]
 > Beheerde identiteiten voor Azure Data Explorer werken niet zoals verwacht als uw app wordt gemigreerd tussen abonnementen of tenants. De app moet een nieuwe identiteit verkrijgen, die kan worden gedaan door het uitschakelen en opnieuw inschakelen van de functie met [een identiteit verwijderen](#remove-an-identity). Het toegangs beleid van downstream-resources moet ook worden bijgewerkt om de nieuwe identiteit te kunnen gebruiken.

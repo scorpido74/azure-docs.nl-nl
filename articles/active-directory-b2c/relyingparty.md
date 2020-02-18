@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 502b4cef4fc44abcc55c1733b86fb6052e3e43ab
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982837"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372745"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -102,7 +102,7 @@ Het `DefaultUserJourney`-element bevat een verwijzing naar de id van de gebruike
 
 Het element **DefaultUserJourney** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van de gebruikers traject in het beleid. Zie voor meer informatie [gebruikers ritten](userjourneys.md) |
 
@@ -122,9 +122,9 @@ Het **UserJourneyBehaviors** -element bevat de volgende elementen:
 
 Het element **SingleSignOn** bevat in het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Scope | Ja | Het bereik van het gedrag bij eenmalige aanmelding. Mogelijke waarden: `Suppressed`, `Tenant`, `Application`of `Policy`. De waarde `Suppressed` geeft aan dat het gedrag wordt onderdrukt. In het geval van een eenmalige aanmeldings sessie wordt er bijvoorbeeld geen sessie voor de gebruiker onderhouden en wordt de gebruiker altijd gevraagd om een id-provider te selecteren. De waarde `TrustFramework` geeft aan dat het gedrag wordt toegepast voor alle beleids regels in het vertrouwens raamwerk. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Tenant` geeft aan dat het gedrag wordt toegepast op alle beleids regels in de Tenant. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een Tenant navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Application` geeft aan dat het gedrag wordt toegepast op alle beleids regels voor de toepassing die de aanvraag maakt. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een toepassing navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Policy` geeft aan dat het gedrag alleen van toepassing is op een beleid. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt gevraagd een id-provider selectie in te scha kelen bij het overschakelen tussen de beleids regels. |
+| Bereik | Ja | Het bereik van het gedrag bij eenmalige aanmelding. Mogelijke waarden: `Suppressed`, `Tenant`, `Application`of `Policy`. De waarde `Suppressed` geeft aan dat het gedrag wordt onderdrukt. In het geval van een eenmalige aanmeldings sessie wordt er bijvoorbeeld geen sessie voor de gebruiker onderhouden en wordt de gebruiker altijd gevraagd om een id-provider te selecteren. De waarde `TrustFramework` geeft aan dat het gedrag wordt toegepast voor alle beleids regels in het vertrouwens raamwerk. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Tenant` geeft aan dat het gedrag wordt toegepast op alle beleids regels in de Tenant. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een Tenant navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Application` geeft aan dat het gedrag wordt toegepast op alle beleids regels voor de toepassing die de aanvraag maakt. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een toepassing navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Policy` geeft aan dat het gedrag alleen van toepassing is op een beleid. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt gevraagd een id-provider selectie in te scha kelen bij het overschakelen tussen de beleids regels. |
 | KeepAliveInDays | Ja | Hiermee wordt bepaald hoe lang de gebruiker aangemeld blijft. Als u de waarde instelt op 0, wordt de KMSI-functionaliteit uitgeschakeld. Zie [me aangemeld blijven](custom-policy-keep-me-signed-in.md)voor meer informatie. |
 |EnforceIdTokenHintOnLogout| Nee|  Forceren dat een eerder uitgegeven ID-token wordt door gegeven aan het afmeldings eindpunt als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. Mogelijke waarden: `false` (standaard) of `true`. Zie voor meer informatie [Web Sign-in with OpenID Connect Connect](openid-connect.md).  |
 
@@ -133,7 +133,7 @@ Het element **SingleSignOn** bevat in het volgende kenmerk:
 
 Het **JourneyInsights** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ja | De waarde moet `ApplicationInsights`zijn. |
 | InstrumentationKey | Ja | De teken reeks die de instrumentatie sleutel voor het Application Insights-element bevat. |
@@ -160,17 +160,17 @@ Het element **ContentDefinitionParameters** bevat het volgende element:
 
 Het element **ContentDefinitionParameter** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Name | Ja | De naam van het sleutel waarde-paar. |
 
-Zie [de gebruikers interface configureren met dynamische inhoud met behulp van aangepast beleid](custom-policy-ui-customization-dynamic.md) voor meer informatie.
+Zie [de gebruikers interface configureren met dynamische inhoud met behulp van aangepast beleid](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) voor meer informatie.
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 Het element **TechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | De waarde moet `PolicyProfile`zijn. |
 
@@ -187,7 +187,7 @@ De **TechnicalProfile** bevat de volgende elementen:
 
 Het **protocol** element bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OpenIdConnect` of `SAML2`. De waarde van `OpenIdConnect` vertegenwoordigt de OpenID Connect Connect 1,0-protocol norm volgens de OpenID Connect Foundation-specificatie. De `SAML2` vertegenwoordigt de SAML 2,0-protocol norm als per OASIS-specificatie. Gebruik geen SAML-token in productie. |
 
@@ -201,7 +201,7 @@ Het element **OutputClaims** bevat het volgende element:
 
 Het **output claim** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Een verwijzing naar een **claim** type dat al is gedefinieerd in de sectie **ClaimsSchema** in het beleids bestand. |
 | Standaard | Nee | Een standaard waarde die kan worden gebruikt als de claim waarde leeg is. |
@@ -215,7 +215,7 @@ Met het **SubjectNameingInfo** -element bepaalt u de waarde van het onderwerp va
 
 Het element **SubjectNamingInfo** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Een verwijzing naar de **PartnerClaimType**van een uitvoer claim. De uitvoer claims moeten worden gedefinieerd in de **OutputClaims** -verzameling van het Relying Party-beleid. |
 

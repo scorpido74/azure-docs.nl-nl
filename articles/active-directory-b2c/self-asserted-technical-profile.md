@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/16/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a16fb1184de5b545b3ef527b1a66ffb7b68d1ef4
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 37d895e2514d01bdbe73f42e1ba5ea5e4c46bfa1
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197915"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372856"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -189,17 +189,21 @@ U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| setting. operatingMode | Nee | Voor een aanmeldings pagina bepaalt deze eigenschap het gedrag van het veld gebruikers naam, zoals invoer validatie en fout berichten. Verwachte waarden: `Username` of `Email`. |
+| setting. operatingMode <sup>1</sup>| Nee | Voor een aanmeldings pagina bepaalt deze eigenschap het gedrag van het veld gebruikers naam, zoals invoer validatie en fout berichten. Verwachte waarden: `Username` of `Email`.  |
 | AllowGenerationOfClaimsWithNullValues| Nee| Er kan een claim met een null-waarde worden gegenereerd. Zo wordt in een case-gebruiker geen selectie vakje geselecteerd.|
 | ContentDefinitionReferenceId | Ja | De id van de [inhouds definitie](contentdefinitions.md) die aan dit technische profiel is gekoppeld. |
 | EnforceEmailVerification | Nee | Voor de registratie of het profiel bewerken, wordt een e-mail verificatie afgedwongen. Mogelijke waarden: `true` (standaard) of `false`. |
 | setting.retryLimit | Nee | Hiermee bepaalt u het aantal keren dat een gebruiker de gegevens kan opgeven die worden gecontroleerd op basis van het technische profiel voor validatie. Bijvoorbeeld: een gebruiker probeert zich aan te melden met een account dat al bestaat en het probeert tot de limiet is bereikt.
-| SignUpTarget | Nee | De Exchange-doel-id voor de aanmelding. Wanneer de gebruiker op de knop registratie klikt, wordt Azure AD B2C de opgegeven Exchange-id uitgevoerd. |
+| SignUpTarget <sup>1</sup>| Nee | De Exchange-doel-id voor de aanmelding. Wanneer de gebruiker op de knop registratie klikt, wordt Azure AD B2C de opgegeven Exchange-id uitgevoerd. |
 | setting.showCancelButton | Nee | Hiermee wordt de knop Annuleren weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
 | setting. showContinueButton | Nee | Hiermee wordt de knop door gaan weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
-| setting.showSignupLink | Nee | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
-| setting. forgotPasswordLinkLocation| Nee| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina, of `None` verwijdert de koppeling verg eten wacht woord.| 
+| setting. showSignupLink <sup>2</sup>| Nee | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
+| setting. forgotPasswordLinkLocation <sup>2</sup>| Nee| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina, of `None` verwijdert de koppeling verg eten wacht woord.| 
 | IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
+
+Opmerkingen:
+1. Beschikbaar voor inhouds definitie [DataUri](contentdefinitions.md#datauri) type van `unifiedssp`, of `unifiedssd`.
+1. Beschikbaar voor inhouds definitie [DataUri](contentdefinitions.md#datauri) type van `unifiedssp`, of `unifiedssd`. [Versie](page-layout.md) 1.1.0 en hoger van de pagina-indeling.
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 

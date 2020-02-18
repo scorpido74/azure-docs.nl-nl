@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762506"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373405"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrische waarschuwingen met dynamische drempel waarden in Azure Monitor
 
@@ -92,11 +92,11 @@ Waarschijnlijk niet. Dynamische drempel waarden zijn handig voor het detecteren 
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Hoeveel gegevens worden gebruikt om de drempel waarden te bekijken en te berekenen?
 
-Wanneer en waarschuwing voor het eerst worden gemaakt, worden de drempel waarden die worden weer gegeven in de grafiek berekend op basis van voldoende historische gegevens voor het berekenen van het uur of het dagelijks seizoen patroon (10 dagen). Zodra een waarschuwings regel is gemaakt, gebruikt dynamische drempels alle benodigde historische gegevens die beschikbaar zijn en doorlopend en aanpassen op basis van nieuwe gegevens om de drempel waarden nauw keuriger te maken. Dit betekent dat na deze berekening ook wekelijkse patronen worden weer gegeven in de grafiek.
+Wanneer een waarschuwings regel voor het eerst wordt gemaakt, worden de drempel waarden die worden weer gegeven in de grafiek berekend op basis van voldoende historische gegevens voor het berekenen van het uur of het dagelijks seizoen patroon (10 dagen). Zodra een waarschuwings regel is gemaakt, gebruikt dynamische drempels alle benodigde historische gegevens die beschikbaar zijn en doorlopend en aanpassen op basis van nieuwe gegevens om de drempel waarden nauw keuriger te maken. Dit betekent dat na deze berekening ook wekelijkse patronen worden weer gegeven in de grafiek.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Hoeveel gegevens zijn er nodig om een waarschuwing te activeren?
 
-Als u een nieuwe resource hebt of metrische gegevens ontbreken, worden er door dynamische drempel waarden geen waarschuwingen geactiveerd voordat er drie dagen aan gegevens beschikbaar zijn om nauw keurige drempels te garanderen.
+Als u een nieuwe resource hebt of metrische gegevens ontbreken, worden er door dynamische drempel waarden geen waarschuwingen voor drie dagen geactiveerd of worden er dertig monsters met metrische gegevens beschikbaar om nauw keurige drempel waarden te garanderen.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Aanbevolen procedures voor dynamische drempel waarden
 

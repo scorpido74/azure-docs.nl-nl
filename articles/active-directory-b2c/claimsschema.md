@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185590"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372987"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -51,13 +51,31 @@ Het element **claim** type bevat de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
-| Gegevenstype | 1:1 | Het type claim. De gegevens typen Boolean, date, dateTime, int, Long, String, stringCollection en phoneNumber kunnen worden gebruikt. Primitieve gegevens type vertegenwoordigt het equivalent van C# het variabele gegevens type. stringCollection vertegenwoordigt een verzameling teken reeksen. Zie [ C# typen en variabelen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)voor meer informatie. Datum volgt de ISO 8601-Conventie. |
+| Gegevenstype | 1:1 | Het type claim. |
 | DefaultPartnerClaimTypes | 0:1 | De standaard claim typen voor de partner die moeten worden gebruikt voor een opgegeven protocol. De waarde kan worden overschreven in het **PartnerClaimType** dat is opgegeven in de **input claim** -of **output claim** -elementen. Gebruik dit element om de standaard naam voor een protocol op te geven.  |
 | Subnetmasker | 0:1 | Een optionele teken reeks maskerings tekens die kunnen worden toegepast wanneer de claim wordt weer gegeven. Het telefoon nummer 324-232-4343 kan bijvoorbeeld worden gemaskeerd als XXX-XXX-4343. |
 | UserHelpText | 0:1 | Een beschrijving van het claim type waarmee gebruikers het doel kunnen begrijpen. De waarde kan worden [gelokaliseerd](localization.md). |
 | UserInputType | 0:1 | Het type invoer besturings element dat beschikbaar moet zijn voor de gebruiker bij het hand matig invoeren van de claim gegevens voor het claim type. Zie de gebruikers invoer typen die verderop op deze pagina zijn gedefinieerd. |
 | Beperking | 0:1 | De waarde-beperkingen voor deze claim, zoals een reguliere expressie (regex) of een lijst met acceptabele waarden. De waarde kan worden [gelokaliseerd](localization.md). |
 PredicateValidationReference| 0:1 | Een verwijzing naar een **PredicateValidationsInput** -element. Met de **PredicateValidationReference** -elementen kunt u een validatie proces uitvoeren om ervoor te zorgen dat alleen goed gevormde gegevens worden ingevoerd. Zie [predikaten](predicates.md)voor meer informatie. |
+
+### <a name="datatype"></a>Gegevenstype
+
+Het **Data type** -element ondersteunt de volgende waarden:
+
+| Type | Beschrijving |
+| ------- | ----------- | 
+|booleaans|Vertegenwoordigt een Booleaanse waarde (`true` of `false`).|
+|date| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
+|Datum/tijd|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. De waarde van de datum volgt de ISO 8601-Conventie.|
+|duration|Vertegenwoordigt een tijds interval in jaren, maanden, dagen, uren, minuten en seconden. De indeling van is `PnYnMnDTnHnMnS`, waarbij `P` positief of `N` voor negatieve waarde aangeeft. `nY` is het aantal jaren, gevolgd door een letterlijke `Y`. `nMo` is het aantal maanden gevolgd door een letterlijke `Mo`. `nD` is het aantal dagen, gevolgd door een letterlijke `D`. Voor beelden: `P21Y` is 21 jaar. `P1Y2Mo` staat voor één jaar en twee maanden. `P1Y2Mo5D` staat voor één jaar, twee maanden en vijf dagen.  `P1Y2M5DT8H5M620S` staat voor één jaar, twee maanden, vijf dagen, acht uur, vijf minuten en twintig seconden.  |
+|phoneNumber|Vertegenwoordigt een telefoon nummer. |
+|int| Vertegenwoordigt een getal tussen-2.147.483.648 en 2.147.483.647|
+|long| Vertegenwoordigt een getal tussen-9.223.372.036.854.775.808 en 9.223.372.036.854.775.807 |
+|tekenreeks| Geeft tekst als een reeks van UTF-16-code-eenheden.|
+|stringCollection|Vertegenwoordigt een verzameling `string`.|
+|userIdentity| Vertegenwoordigt een gebruikers-id.|
+|userIdentityCollection|Vertegenwoordigt een verzameling `userIdentity`.|
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -71,7 +89,7 @@ Het **protocol** element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Naam | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| Name | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
 
 In het volgende voor beeld, wanneer het Framework voor identiteits ervaring communiceert met een SAML2-ID-provider of Relying Party toepassing, wordt de claim **Achternaam** toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, met OpenIdConnect en OAuth2, de claim wordt toegewezen aan `family_name`.
@@ -155,7 +173,7 @@ Het **beperkings** element bevat de volgende elementen:
 | Opsomming | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
 | Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
 
-### <a name="enumeration"></a>Opsomming
+#### <a name="enumeration"></a>Opsomming
 
 Het **opsommings** element bevat de volgende kenmerken:
 
@@ -214,11 +232,26 @@ In het Framework voor identiteits ervaring wordt de e-mailadres claim met invoer
 
 ![Tekstvak met fout bericht geactiveerd door regex-beperking](./media/claimsschema/pattern.png)
 
-## <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C ondersteunt diverse invoer typen voor gebruikers, zoals een tekstvak, wacht woord en vervolg keuzelijst die kunnen worden gebruikt bij het hand matig invoeren van claim gegevens voor het claim type. U moet de **UserInputType** opgeven wanneer u gegevens van de gebruiker verzamelt met behulp van een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md).
+Azure AD B2C ondersteunt diverse invoer typen voor gebruikers, zoals een tekstvak, wacht woord en vervolg keuzelijst die kunnen worden gebruikt bij het hand matig invoeren van claim gegevens voor het claim type. U moet de **UserInputType** opgeven wanneer u gegevens van de gebruiker verzamelt met behulp van een [zelfondertekend technisch profiel](self-asserted-technical-profile.md) en [weer gave-besturings elementen](display-controls.md).
 
-### <a name="textbox"></a>Tekstvak
+Het **UserInputType** -element beschik bare invoer typen voor gebruikers:
+
+| UserInputType | Ondersteunde claim type | Beschrijving |
+| --------- | -------- | ----------- |
+|CheckboxMultiSelect| `string` |Vervolg keuzelijst meervoudige selectie. De claim waarde wordt weer gegeven in een komma als scheidings teken reeks van de geselecteerde waarden. |
+|DateTimeDropdown | `date`, `dateTime` |Vervolg keuzelijst om een dag, maand en jaar te selecteren. |
+|DropdownSingleSelect |`string` |Eén vervolg keuzelijst selecteren. De claim waarde is de geselecteerde waarde.|
+|EmailBox | `string` |Invoer veld voor e-mail. |
+|Bepaalde | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Een veld waarin alleen tekst in een alinea code wordt weer gegeven. |
+|Wachtwoord | `string` |Tekstvak voor wacht woord.|
+|RadioSingleSelect |`string` | Verzameling keuze rondjes. De claim waarde is de geselecteerde waarde.|
+|Kenmerk | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Alleen-lezen tekstvak. |
+|Tekstvak |`boolean`, `int`, `string` |Tekstvak met één regel. |
+
+
+#### <a name="textbox"></a>Tekstvak
 
 Het invoer type **tekstvak** wordt gebruikt om een tekstvak met één regel te maken.
 
@@ -233,7 +266,7 @@ Het invoer type **tekstvak** wordt gebruikt om een tekstvak met één regel te m
 </ClaimType>
 ```
 
-### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>EmailBox
 
 Het invoer type voor de **EmailBox** -gebruiker wordt gebruikt om een eenvoudig invoer veld voor e-mail op te geven.
 
@@ -251,7 +284,7 @@ Het invoer type voor de **EmailBox** -gebruiker wordt gebruikt om een eenvoudig 
 </ClaimType>
 ```
 
-### <a name="password"></a>Wachtwoord
+#### <a name="password"></a>Wachtwoord
 
 Het invoer type voor de **wachtwoord** gebruiker wordt gebruikt om een wacht woord op te nemen dat door de gebruiker is ingevoerd.
 
@@ -266,7 +299,7 @@ Het invoer type voor de **wachtwoord** gebruiker wordt gebruikt om een wacht woo
 </ClaimType>
 ```
 
-### <a name="datetimedropdown"></a>DateTimeDropdown
+#### <a name="datetimedropdown"></a>DateTimeDropdown
 
 Het invoer type **DateTimeDropdown** -gebruiker wordt gebruikt om een set vervolg keuzelijsten op te geven om een dag, maand en jaar te selecteren. U kunt predikaten en PredicateValidations-elementen gebruiken om de minimum-en maximum datum waarden te bepalen. Zie de sectie **een datum bereik configureren** van [predikaten en PredicateValidations](predicates.md)voor meer informatie.
 
@@ -281,7 +314,7 @@ Het invoer type **DateTimeDropdown** -gebruiker wordt gebruikt om een set vervol
 </ClaimType>
 ```
 
-### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioSingleSelect
 
 Het invoer type van de **RadioSingleSelect** -gebruiker wordt gebruikt om een verzameling keuze rondjes te bieden waarmee de gebruiker één optie kan selecteren.
 
@@ -300,7 +333,7 @@ Het invoer type van de **RadioSingleSelect** -gebruiker wordt gebruikt om een ve
 </ClaimType>
 ```
 
-### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 Het invoer type **DropdownSingleSelect** -gebruiker wordt gebruikt om een vervolg keuzelijst te bieden waarmee de gebruiker één optie kan selecteren.
 
@@ -319,7 +352,7 @@ Het invoer type **DropdownSingleSelect** -gebruiker wordt gebruikt om een vervol
 </ClaimType>
 ```
 
-### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 Het invoer type **CheckboxMultiSelect** -gebruiker wordt gebruikt om een verzameling selectie vakjes op te geven waarmee de gebruiker meerdere opties kan selecteren.
 
@@ -338,7 +371,7 @@ Het invoer type **CheckboxMultiSelect** -gebruiker wordt gebruikt om een verzame
 </ClaimType>
 ```
 
-### <a name="readonly"></a>Kenmerk
+#### <a name="readonly"></a>Kenmerk
 
 Het invoer type **ReadOnly** wordt gebruikt om een veld met het kenmerk alleen-lezen te bieden om de claim en waarde weer te geven.
 
@@ -354,9 +387,9 @@ Het invoer type **ReadOnly** wordt gebruikt om een veld met het kenmerk alleen-l
 ```
 
 
-### <a name="paragraph"></a>Bepaalde
+#### <a name="paragraph"></a>Bepaalde
 
-Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waarin alleen tekst in een alinea code wordt weer gegeven. Bijvoorbeeld &lt;p&gt;tekst&lt;/p&gt;.
+Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waarin alleen tekst in een alinea code wordt weer gegeven.  Bijvoorbeeld &lt;p&gt;tekst&lt;/p&gt;. Het invoer type van een **alinea** gebruiker `OutputClaim` van een zelf-bevestigd technisch profiel moet het kenmerk `Required` `false` instellen (standaard).
 
 ![Claim type gebruiken met alinea](./media/claimsschema/paragraph.png)
 

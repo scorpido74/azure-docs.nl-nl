@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie met Halo-software Azure Active Directory | Microsoft Docs'
-description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Halogen Software.
+title: 'Zelf studie: integratie Azure Active Directory met Saba TalentSpace | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Saba TalentSpace.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,143 +11,137 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 02/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 220fa6bf16bf92f1907002100dc46895a9807251
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6ef7d5ec33786c3c4c38525cd5ab15bee53b3493
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159139"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373317"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Zelf studie: integratie met Halo-software Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Saba TalentSpace
 
-In deze zelfstudie leert u hoe u Halogen Software kunt integreren met Azure Active Directory (Azure AD).
-De integratie van Halogen Software met Azure AD biedt de volgende voordelen:
+In deze zelf studie leert u hoe u Saba TalentSpace integreert met Azure Active Directory (Azure AD). Wanneer u Saba TalentSpace integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt in Azure AD beheren wie toegang tot Halogen Software heeft.
-* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Halogen Software (eenmalige aanmelding).
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot Saba TalentSpace.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Saba TalentSpace met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Halogen Software hebt u de volgende zaken nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Een abonnement op Halogen Software waarvoor eenmalige aanmelding is ingeschakeld
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Saba TalentSpace-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Halogen Software ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* Saba TalentSpace ondersteunt door **SP** GEÏNITIEERDe SSO
+* Nadat u Saba TalentSpace hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waarmee exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-halogen-software-from-the-gallery"></a>Halogeen Software toevoegen vanuit de galerie
+## <a name="adding-saba-talentspace-from-the-gallery"></a>Saba TalentSpace toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Halogen Software met Azure AD moet u Halogen Software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Saba TalentSpace wilt configureren in azure AD, moet u Saba TalentSpace van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Halogen Software vanuit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Saba TalentSpace** in het zoekvak.
+1. Selecteer **Saba TalentSpace** in het resultaten paneel en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-saba-talentspace"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Saba TalentSpace
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+Azure AD SSO configureren en testen met Saba TalentSpace met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Saba TalentSpace.
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+Als u Azure AD SSO wilt configureren en testen met Saba TalentSpace, voltooit u de volgende bouw stenen:
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Saba TALENTSPACE SSO configureren](#configure-saba-talentspace-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak Saba TalentSpace test User](#create-saba-talentspace-test-user)** -als u een tegen hanger van B. Simon in Saba TalentSpace wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-4. Typ **Halogen Software** in het zoekvak, selecteer **Halogen Software** in het deelvenster met resultaten en klik op **Toevoegen** om de toepassing toe te voegen.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Saba TalentSpace** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-     ![Halogen Software in de resultatenlijst](common/search-new-app.png)
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding bij Halogen Software configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
-Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Halogen Software tot stand is gebracht.
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://global.hgncloud.com/[companyname]/saml/login`
 
-Voor het configureren en testen van eenmalige aanmelding via Azure AD bij Halogen Software moet u de volgende bouwstenen uitvoeren:
-
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Halogen Software configureren](#configure-halogen-software-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Halogen Software-testgebruiker maken](#create-halogen-software-test-user)** : als u een equivalent van Britta Simon in Halogen Software wilt hebben dat gekoppeld is aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voor het configureren van Azure AD-eenmalige aanmelding met Halogen Software moet u de volgende stappen uitvoeren:
-
-1. Ga in de [Azure-portal](https://portal.azure.com/) naar de pagina voor integratie van de toepassing **Halogen Software** en selecteer **Eenmalige aanmelding**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
-
-    ![Informatie over eenmalige aanmelding bij het Halogen Software-domein en Halogen Software-URL's](common/sp-identifier.png)
-
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://global.hgncloud.com/<companyname>`
-
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon:
-
-    | |
-    |--|
-    | `https://global.halogensoftware.com/<companyname>`|
-    | `https://global.hgncloud.com/<companyname>`|
-    | |
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://global.hgncloud.com/[companyname]/saml/metadata`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteuningsteam van Halogen Software](https://support.halogensoftware.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Saba TalentSpace](https://support.halogensoftware.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. In de sectie **Halogen Software instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
+1. Op de **Saba TalentSpace instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-    a. Aanmeldings-URL
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-    b. Azure AD-id
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-    c. Afmeldings-URL
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
-### <a name="configure-halogen-software-single-sign-on"></a>Eenmalige aanmelding voor Halogen Software configureren
+### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-1. Meld u in een ander browservenster als beheerder aan bij de **Halogen Software**-toepassing.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Saba TalentSpace.
+
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Saba TalentSpace**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+
+## <a name="configure-saba-talentspace-sso"></a>Saba TalentSpace SSO configureren
+
+1. Meld u in een ander browser venster aan bij uw **Saba TalentSpace** -toepassing als beheerder.
 
 2. Klik op het tabblad **Options**.
   
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_12.png)
+    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. Klik in het linkernavigatiedeelvenster op **SAML Configuration**.
   
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_13.png)
+    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. Voer de volgende stappen uit op de pagina **SAML Configuration**:
 
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_14.png)
+    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. Selecteer bij **Unique Identifier** de waarde **NameID**.
 
@@ -164,93 +158,46 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Halogen Software moe
 
     f. Klik op **Wijzigingen opslaan**.
 
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
+### <a name="create-saba-talentspace-test-user"></a>Saba TalentSpace-test gebruiker maken
 
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
+Het doel van deze sectie is het maken van een gebruiker met de naam Julia Simon in Saba TalentSpace.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+**Als u een gebruiker met de naam Julia Simon in Saba TalentSpace wilt maken, voert u de volgende stappen uit:**
 
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
-    Bijvoorbeeld: BrittaSimon@contoso.com
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Maken**.
-
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
-
-In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Halogen Software.
-
-1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Halogen Software**.
-
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-2. Selecteer **Halogen Software** in de lijst met toepassingen.
-
-    ![De Halogen Software-koppeling in de lijst met toepassingen](common/all-applications.png)
-
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
-
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
-
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
-
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
-
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
-
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
-
-### <a name="create-halogen-software-test-user"></a>Halogen Software-testgebruiker maken
-
-Het doel van dit gedeelte is om een gebruiker met de naam Britta Simon te maken in Halogen Software.
-
-**Voer de volgende stappen uit om een gebruiker met de naam Britta Simon te maken in Halogen Software:**
-
-1. Meld u aan bij uw **Halogen Software**-toepassing als beheerder.
+1. Meld u aan bij uw **Saba TalentSpace** -toepassing als beheerder.
 
 2. Klik op het tabblad **User Center** tabblad en klik vervolgens op **Create User**.
 
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_300.png)  
+    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. Voer de volgende stappen uit in het dialoogvenster **New User**:
 
-    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial_halogen_301.png)
+    ![Wat is Azure AD Connect?](./media/halogen-software-tutorial/tutorial-halogen-301.png)
 
-    a. Typ in het tekstvak **First Name** de voornaam van de gebruiker, bijvoorbeeld **Britta**.
+    a. Typ in het tekstvak **voor naam** de voor naam van de gebruiker zoals **B**.
 
     b. Typ in het tekstvak **Last Name** de achternaam van de gebruiker, bijvoorbeeld **Simon**.
 
-    c. Typ in het tekstvak **Username** de gebruikersnaam **Britta Simon**, zoals in de Azure-portal.
+    c. Typ in het tekstvak **username** **B. Simon**, de gebruikers naam zoals in de Azure Portal.
 
-    d. Typ in het tekstvak **Password** een wachtwoord voor Britta.
+    d. Typ een wacht woord voor B. Simon in het tekstvak **wacht woord** .
 
     e. Klik op **Opslaan**.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel Halogen Software klikt, wordt u als het goed is automatisch aangemeld bij de instantie van Halogen Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Saba TalentSpace in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Saba TalentSpace waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer Saba TalentSpace met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

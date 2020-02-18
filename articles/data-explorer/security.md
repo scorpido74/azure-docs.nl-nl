@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271598"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373353"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure Data Explorer-clusters beveiligen in azure
 
@@ -24,7 +24,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is referenti
 
 Met de functie beheerde identiteiten voor Azure-resources voor Azure Active Directory (Azure AD) kunt u dit probleem oplossen. De functie biedt Azure-services met een automatisch beheerde identiteit in Azure AD. U kunt de identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, inclusief Key Vault, zonder referenties in de code. Zie [Managed Identities voor Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) Overview (pagina) voor meer informatie over deze service.
 
-## <a name="data-encryption"></a>Data-encryptie
+## <a name="data-encryption"></a>Gegevensversleuteling
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -34,10 +34,10 @@ Met de functie beheerde identiteiten voor Azure-resources voor Azure Active Dire
 
 Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren voor het gebruik van gegevens versleuteling. U kunt versleuteling van uw gegevens op het opslag niveau beheren met uw eigen sleutels. Een door de klant beheerde sleutel wordt gebruikt voor het beveiligen en beheren van de toegang tot de hoofd versleutelings sleutel, die wordt gebruikt voor het versleutelen en ontsleutelen van alle gegevens. Door de klant beheerde sleutels bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
-Gebruik Azure Key Vault om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutel kluis, maar u kunt ook een Azure Key Vault-API gebruiken om sleutels te genereren. Het Azure Data Explorer-cluster en de Azure Key Vault moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault. Voor een gedetailleerde uitleg over door de klant beheerde sleutels, Zie [door de klant beheerde sleutels met Azure Key Vault](/azure/storage/common/storage-service-encryption)
+Gebruik Azure Key Vault om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutel kluis, maar u kunt ook een Azure Key Vault-API gebruiken om sleutels te genereren. Het Azure Data Explorer-cluster en de Azure Key Vault moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault. Voor een gedetailleerde uitleg over door de klant beheerde sleutels, Zie [door de klant beheerde sleutels met Azure Key Vault](/azure/storage/common/storage-service-encryption). Door de klant beheerde sleutels in uw Azure Data Explorer-cluster [C#](/azure/data-explorer/customer-managed-keys-csharp) met behulp van of de [Azure Resource Manager sjabloon](/azure/data-explorer/customer-managed-keys-resource-manager) configureren
 
 > [!Note]
-> Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Als u door de klant beheerde sleutels wilt configureren in de Azure Portal, moet u een door **SystemAssigned** beheerde identiteit configureren voor uw cluster.
+> Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Als u door de klant beheerde sleutels wilt configureren in de Azure Portal, moet u een door **SystemAssigned** beheerde identiteit configureren in uw cluster zoals wordt beschreven in [beheerde identiteiten voor uw Azure Data Explorer-cluster configureren](/azure/data-explorer/managed-identities).
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Door de klant beheerde sleutels opslaan in Azure Key Vault
 
@@ -54,14 +54,14 @@ Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u 
 > [!Note]
 > Wanneer Azure Data Explorer identificeert dat toegang tot een door de klant beheerde sleutel wordt ingetrokken, wordt het cluster automatisch opgeschort om alle gegevens in de cache te verwijderen. Wanneer de toegang tot de sleutel wordt geretourneerd, moet het cluster hand matig worden hervat.
 
-## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
+## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
 Met [op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview)kunt u taken in uw team scheiden en alleen de vereiste toegang verlenen aan cluster gebruikers. In plaats van iedereen onbeperkte machtigingen op het cluster te geven, kunt u alleen bepaalde acties toestaan. U kunt [toegangs beheer configureren voor de data bases](/azure/data-explorer/manage-database-permissions) in de [Azure Portal](/azure/role-based-access-control/role-assignments-portal), met behulp van de [Azure cli](/azure/role-based-access-control/role-assignments-cli)of [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Beheerde identiteiten voor uw Azure Data Explorer-cluster configureren](managed-identities.md)
 * [Beveilig uw cluster in Azure Data Explorer-portal](manage-cluster-security.md) door versleuteling op rest in te scha kelen.
+* [Beheerde identiteiten voor uw Azure Data Explorer-cluster configureren](managed-identities.md)
 * [Door de klant beheerde sleutels configureren met behulp van de Azure Resource Manager sjabloon](customer-managed-keys-resource-manager.md)
 * [Door de klant beheerde sleutels configureren metC#](customer-managed-keys-csharp.md)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: aa1e6d8705cf4aed975ed0940087f243a06a9019
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836339"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372690"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Omleidings-Url's instellen op b2clogin.com voor Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Er zijn verschillende wijzigingen die u mogelijk moet maken om uw toepassingen t
 
 * Wijzig de omleidings-URL in de toepassingen van uw identiteits provider om naar *b2clogin.com*te verwijzen.
 * Werk uw Azure AD B2C-toepassingen bij om *b2clogin.com* in hun gebruikers stroom en Token-eindpunt verwijzingen te gebruiken.
-* Werk alle **toegestane oorsprongen** bij die u hebt gedefinieerd in de CORS-instellingen voor het aanpassen van de [gebruikers interface](custom-policy-ui-customization-dynamic.md).
+* Werk alle **toegestane oorsprongen** bij die u hebt gedefinieerd in de CORS-instellingen voor het aanpassen van de [gebruikers interface](custom-policy-ui-customization.md).
 
 ## <a name="change-identity-provider-redirect-urls"></a>Omleidings-Url's voor de ID-provider wijzigen
 
@@ -66,15 +66,15 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Voor beide indelingen:
 
-* Vervang `{your-tenant-name}` met de naam van uw Azure AD B2C-tenant.
+* Vervang `{your-tenant-name}` door de naam van uw Azure AD B2C Tenant.
 * Verwijder `/te` als deze bestaat in de URL.
 
 ## <a name="update-your-applications-and-apis"></a>Uw toepassingen en Api's bijwerken
 
 De code in uw Azure AD B2C toepassingen en Api's kunnen naar `login.microsoftonline.com` op verschillende locaties verwijzen. Uw code kan bijvoorbeeld verwijzingen bevatten naar gebruikers stromen en Token-eind punten. Werk het volgende bij in plaats van naar `your-tenant-name.b2clogin.com`:
 
-* autorisatie-eind punt
-* token eindpunt
+* Autorisatie-eind punt
+* Token eindpunt
 * Token Uitgever
 
 Zo zou het CA-eind punt voor het aanmeldings-en aanmeldings beleid van Contoso nu het volgende zijn:

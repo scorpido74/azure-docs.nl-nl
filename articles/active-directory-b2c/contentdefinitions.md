@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/16/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157870"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372791"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -82,7 +82,7 @@ Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C
 | Pagina-id | Beschrijving |
 | ----- | ----------- |
 | `globalexception` | Hiermee wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
-| `providerselection` | Een lijst met de id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. |
+| `providerselection`, `idpselection` | Een lijst met de id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden.  |
 | `unifiedssp` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Deze waarde biedt ook de functie ' aanmeld functionaliteit blijven ' en ' uw wacht woord verg eten? ' gekoppeld. |
 | `unifiedssd` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. |
 | `multifactor` | Hiermee worden telefoon nummers gecontroleerd met behulp van tekst of spraak tijdens het registreren of aanmelden. |
