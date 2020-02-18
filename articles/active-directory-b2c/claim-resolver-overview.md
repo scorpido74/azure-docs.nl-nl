@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251767"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425643"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -104,6 +104,18 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | Het toegangs token. | N.v.t. |
 
+
+### <a name="saml"></a>SAML
+
+| Claim | Beschrijving | Voorbeeld |
+| ----- | ----------- | --------|
+| {SAML: AuthnContextClassReferences} | De waarde van het `AuthnContextClassRef` element, van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 2.0: AC: klassen: PasswordProtectedTransport |
+| {SAML: NameIdPolicyFormat} | Het kenmerk `Format` van het `NameIDPolicy` element van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 1.1: NameID-indeling: emailAddress |
+| {SAML: verlener} |  De waarde van het SAML-`Issuer` element van de SAML-aanvraag.| https://contoso.com |
+| {SAML: AllowCreate} | De waarde van het `AllowCreate` kenmerk, van het `NameIDPolicy` element van de SAML-aanvraag. | True |
+| {SAML: ForceAuthn} | De waarde van het `ForceAuthN` kenmerk, van het `AuthnRequest` element van de SAML-aanvraag. | True |
+| {SAML: ProviderName} | De waarde van het `ProviderName` kenmerk, van het `AuthnRequest` element van de SAML-aanvraag.| Contoso.com |
+
 ## <a name="using-claim-resolvers"></a>Claim resolvers gebruiken 
 
 U kunt claim resolvers gebruiken met de volgende elementen: 
@@ -160,7 +172,7 @@ Met behulp van claim resolvers kunt u de aanmeldings naam of de directe aanmeldi
 
 ### <a name="dynamic-ui-customization"></a>Dynamische gebruikers interface aanpassen
 
-Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten om de pagina-inhoud dynamisch weer te geven. Hiermee kan bijvoorbeeld de achtergrond afbeelding op de Azure AD B2C registratie-of aanmeldings pagina worden gewijzigd op basis van een aangepaste para meter die u van uw web-of mobiele toepassing doorgeeft. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
+Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten om de pagina-inhoud dynamisch weer te geven. Hiermee kan bijvoorbeeld de achtergrond afbeelding op de Azure AD B2C registratie-of aanmeldings pagina worden gewijzigd op basis van een aangepaste para meter die u van uw web-of mobiele toepassing doorgeeft. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization.md). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
 
 In het volgende voor beeld wordt de query teken reeks parameter **campaignId** met de waarde `hawaii`, een **taal** code van `en-US`en **app** die de client-id vertegenwoordigt:
 

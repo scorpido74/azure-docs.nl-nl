@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: Een toegangscontrolebeleid gebruiken
           href: key-vault-group-permissions-for-apps.md
+        - name: Met HSM beveiligde sleutels importeren
+          items:
+            - name: Overzicht
+              href: key-vault-hsm-protected-keys.md
+            - name: Met HSM beveiligde sleutels importeren in Key Vault (preview)
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: Met HSM beveiligde sleutels importeren in Key Vault (verouderd)
+              href: hsm-protected-keys-legacy.md
     - name: Key Vault-meldingen routeren met Event Grid
       href: event-grid-tutorial.md
     - name: Meldingen ontvangen via Event Grid en Logic Apps
@@ -170,8 +178,6 @@
       items:
         - name: Gids voor ontwikkelaars
           href: key-vault-developers-guide.md
-        - name: HSM-beveiligde sleutels
-          href: key-vault-hsm-protected-keys.md
         - name: Migreren naar .NET 2.0
           href: key-vault-dotnet2api-release-notes.md
         - name: Web-app-geheimen opslaan

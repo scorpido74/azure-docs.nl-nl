@@ -1,18 +1,18 @@
 ---
 title: Azure-blobs opnemen in Azure Data Explorer
 description: In dit artikel leert u hoe u gegevens van een opslag account kunt verzenden naar Azure Data Explorer met behulp van een Event Grid-abonnement.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667486"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424980"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Blobs opnemen in azure Data Explorer door zich te abonneren op Event Grid meldingen
 
@@ -44,7 +44,7 @@ In dit artikel leert u hoe u een [Azure Event grid](/azure/event-grid/overview) 
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Naam | *test-grid-connection* | De naam van het gebeurtenis raster dat u wilt maken.|
+    | Name | *test-grid-connection* | De naam van het gebeurtenis raster dat u wilt maken.|
     | Gebeurtenisschema | *Event Grid schema* | Het schema dat moet worden gebruikt voor het event grid. |
     | Onderwerptype | *Opslagaccount* | Het type Event Grid-onderwerp. |
     | Onderwerpresource | *gridteststorage* | De naam van uw opslagaccount. |
@@ -107,7 +107,7 @@ Maak nu verbinding met de Event Grid vanuit Azure Data Explorer, zodat gegevens 
     |---|---|---|
     | Naam van gegevensverbinding | *test-hub-connection* | De naam van de verbinding die u wilt maken in azure Data Explorer.|
     | Abonnement van opslagaccount | Uw abonnements-id | Het abonnements-id waarin uw opslagaccount zich bevindt.|
-    | Opslagaccount | *gridteststorage* | De naam van het opslag account dat u eerder hebt gemaakt.|
+    | Storage-account | *gridteststorage* | De naam van het opslag account dat u eerder hebt gemaakt.|
     | Event Grid | *test-grid-connection* | De naam van het gebeurtenis raster dat u hebt gemaakt. |
     | Event Hub-naam | *test-hub* | De Event Hub die u hebt gemaakt. Dit veld wordt automatisch ingevuld wanneer u een event grid kiest. |
     | Consumentengroep | *test-group* | De consumenten groep die is gedefinieerd in de Event Hub die u hebt gemaakt. |
@@ -158,6 +158,11 @@ Sla de gegevens op in een bestand en upload het met dit script:
     echo "Done"
 ```
 
+> [!NOTE]
+> In azure Data Explorer worden de blobs na opname niet verwijderd.
+> Behoud de blobs voor thrre tot vijf dagen.
+> Gebruik [Azure Blob Storage-levens cyclus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) om het verwijderen van blobs te beheren. 
+
 ## <a name="review-the-data-flow"></a>De gegevensstroom controleren
 
 > [!NOTE]
@@ -192,7 +197,7 @@ Als u niet van plan bent de Event Grid opnieuw te gebruiken, wist u de **test-hu
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-grid/expand.png) om het menu uit te vouwen.
+    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-grid/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-grid/delete-resources-select.png)
 

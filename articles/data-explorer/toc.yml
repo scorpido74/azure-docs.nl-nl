@@ -32,6 +32,10 @@
         - name: Overzicht van gegevensopname
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Kusto-querytaal
+      items:
+        - name: Snelzoekgids
+          href: kql-quick-reference.md
     - name: Overzicht van gegevensvisualisatie
       href: viz-overview.md
     - name: Beveiligingsoverzicht

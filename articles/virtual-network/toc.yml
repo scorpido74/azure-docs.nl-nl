@@ -39,6 +39,12 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: Connectiviteit
       items:
+        - name: NAT
+          items:
+            - name: Overzicht
+              href: nat-overview.md
+            - name: Resource
+              href: nat-gateway-resource.md
         - name: Interoperabiliteit van back-endconnectiviteit
           items:
             - name: Vooraf instellen en testen
@@ -111,6 +117,20 @@
           href: virtual-network-nsg-manage-log.md
     - name: Connectiviteit
       items:
+        - name: NAT
+          items:
+            - name: NAT-gateway maken - Portal
+              href: quickstart-create-nat-gateway-portal.md
+            - name: NAT-gateway maken - PowerShell
+              href: quickstart-create-nat-gateway-powershell.md
+            - name: NAT-gateway maken - CLI
+              href: quickstart-create-nat-gateway-cli.md
+            - name: NAT-gateway maken en valideren - Portal
+              href: tutorial-create-validate-nat-gateway-portal.md
+            - name: NAT-gateway maken en valideren - PowerShell
+              href: tutorial-create-validate-nat-gateway-powershell.md
+            - name: NAT-gateway maken en valideren - CLI
+              href: tutorial-create-validate-nat-gateway-cli.md
         - name: NIC's beheren
           href: virtual-network-network-interface.md
         - name: Virtueel netwerk beheren
