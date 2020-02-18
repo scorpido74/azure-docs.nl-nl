@@ -43,8 +43,6 @@
           href: tutorial-python-postgresql-app.md
         - name: Java met Spring-gegevens
           href: tutorial-java-spring-cosmosdb.md
-        - name: Java Enterprise met Postgres
-          href: tutorial-java-enterprise-postgresql-app.md
     - name: App met meerdere containers
       href: tutorial-multi-container-app.md
     - name: Container uitvoeren vanuit ACR
