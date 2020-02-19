@@ -52,16 +52,20 @@
           href: how-to-manage-lab-accounts.md
         - name: Labaccounts configureren
           href: how-to-configure-lab-accounts.md
+        - name: Een labmaker toevoegen
+          href: add-lab-creator.md
         - name: Toestaan dat de labmaker de lablocatie kiest
           href: allow-lab-creator-pick-lab-location.md
-        - name: Uw labs verbinden met een gepeerd virtueel netwerk
+        - name: Verbinding maken met een virtueel peernetwerk
           href: how-to-connect-peer-virtual-network.md
         - name: Een gedeelde installatiekopiegalerie toevoegen of loskoppelen
           href: how-to-attach-detach-shared-image-gallery.md
-        - name: Gebruiker als eigenaar toevoegen aan een leslokaallab
+        - name: Extra eigenaren toevoegen aan een leslokaallab
           href: how-to-add-user-lab-owner.md
-        - name: Firewall-instellingen voor Azure Lab Services
+        - name: Firewallinstellingen configureren
           href: how-to-configure-firewall-settings.md
+        - name: Marketplace-installatiekopieën voor labs opgeven
+          href: specify-marketplace-images.md
     - name: Leslokaallabs maken en configureren (docent)
       items:
         - name: Leslokaallabs maken en beheren

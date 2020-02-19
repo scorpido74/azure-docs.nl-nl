@@ -37,7 +37,7 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=batch'
         - name: Opslagplaats voor Batch-voorbeelden
           href: 'https://github.com/Azure/azure-batch-samples'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: cli-samples.md
 - name: Concepten
   items:
@@ -55,7 +55,7 @@
       href: high-availability-disaster-recovery.md
     - name: Omgevingsvariabelen voor de runtime van taken
       href: batch-compute-node-environment-variables.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Batch-accounts beheren
       items:
@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: Azure AD met Batch Management
           href: batch-aad-auth-management.md
+        - name: Key Vault veilig openen met Batch
+          href: credential-access-key-vault.md
     - name: Toepassingspakketten gebruiken
       href: batch-application-packages.md
     - name: Pools maken en beheren
@@ -174,7 +176,7 @@
       href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

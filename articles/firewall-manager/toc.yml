@@ -7,10 +7,14 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Uw cloudnetwerk beveiligen - portal
+    - name: Uw virtuele WAN beveiligen - portal
       href: secure-cloud-network.md
+    - name: Uw virtuele hubnetwerk beveiligen - portal
+      href: secure-hybrid-network.md
 - name: Concepten
   items:
+    - name: Beleidsoverzicht
+      href: policy-overview.md
     - name: Wat is een beveiligde virtuele hub?
       href: secured-virtual-hub.md
     - name: Algemeen implementatieproces
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: Logica voor verwerking van regels
       href: rule-processing.md
+    - name: Architectuuropties
+      href: vhubs-and-vnets.md
 - name: Instructiegidsen
   items:
     - name: Vertrouwde beveiligingspartners implementeren
       href: deploy-trusted-security-partner.md
-    - name: Migreren naar firewallbeleid
+    - name: Migreren naar firewallbeleid - PowerShell
       href: migrate-to-policy.md
 - name: Naslaginformatie
   items:

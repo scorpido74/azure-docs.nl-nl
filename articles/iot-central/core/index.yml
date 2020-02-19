@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 10/25/2019
-  ms.openlocfilehash: cddfdbe709849f81f585ad7537556945ec14c990
-  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+  ms.date: 02/18/2020
+  ms.openlocfilehash: f404ecb676b75258cd44fb819dbafc3b2fb6452e
+  ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77023426"
+  ms.lasthandoff: 02/18/2020
+  ms.locfileid: "77431176"
 landingContent:
 - title: Over Azure IoT Central
   linkLists:
@@ -23,14 +23,14 @@ landingContent:
     links:
     - text: Wat is Azure IoT Central?
       url: overview-iot-central.md
-    - text: Opties voor IoT-oplossing
-      url: overview-iot-central-tour.md
     - text: Rondleiding door de gebruikersinterface
       url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Azure IoT Central-architectuur
       url: concepts-architecture.md
+    - text: Toepassingssjablonen
+      url: concepts-app-templates.md
   - linkListType: quickstart
     links:
     - text: Een nieuwe toepassing maken
@@ -39,12 +39,12 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Een sjabloon van het apparaat instellen
-      url: howto-set-up-template.md
     - text: Een IoT Plug en Play-apparaat (preview) verbinden
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
+    - text: Een sjabloon van het apparaat instellen
+      url: howto-set-up-template.md
     - text: Een MX Chip IoT DevKit voorbereiden en aansluiten
       url: howto-connect-devkit.md
     - text: Verbinding maken met andere IoT-clouds
@@ -53,8 +53,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Apparaatsets gebruiken
-      url: howto-use-device-sets.md
+    - text: Apparaatgroepen gebruiken
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: Uw apparaten beheren
@@ -68,9 +68,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Telemetrieregels maken
-      url: howto-create-telemetry-rules.md
-    - text: Exporteren naar Blob Storage
-      url: howto-export-data-blob-storage.md
+      url: tutorial-create-telemetry-rules.md
+    - text: Gegevens exporteren
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Aangepaste regels maken

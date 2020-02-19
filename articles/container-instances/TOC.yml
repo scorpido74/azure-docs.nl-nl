@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: GPU-resources gebruiken (preview)
           href: container-instances-gpu.md
-        - name: SSL-eindpunt inschakelen
+        - name: SSL-eindpunt in sidecar inschakelen
           href: container-instances-container-group-ssl.md
     - name: Gegevensvolumes koppelen
       items:

@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Concepten
       items:
+        - name: Algemene richtlijnen voor Enterprise-beveiliging
+          href: ./domain-joined/general-guidelines.md
         - name: Plan voor ESP-clusters
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight-architectuur voor virtueel netwerk
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: Schijfversleuteling met behulp van door klant beheerde sleutel
           href: ./disk-encryption.md
+        - name: LDAP-synchronisatie in Ranger en Apache Ambari
+          href: ./domain-joined/ldap-sync.md
     - name: Procedures
       items:
         - name: Id-broker gebruiken voor referentiebeheer

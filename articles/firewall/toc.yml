@@ -35,8 +35,14 @@
       href: rule-processing.md
     - name: Servicetags
       href: service-tags.md
+    - name: IP-groepen
+      href: ip-groups.md
+    - name: Geforceerde tunneling
+      href: forced-tunneling.md
     - name: Nalevingscertificeringen
       href: compliance-certifications.md
+    - name: Centraal beheer
+      href: central-management.md
 - name: Instructiegidsen
   items:
     - name: Implementeren met Azure PowerShell
@@ -55,6 +61,10 @@
       href: integrate-lb.md
     - name: Toepassingsregels met SQL FQDN's
       href: sql-fqdn-filtering.md
+    - name: SNAT-privébereiken
+      href: snat-private-range.md
+    - name: IP-groepen maken
+      href: create-ip-group.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

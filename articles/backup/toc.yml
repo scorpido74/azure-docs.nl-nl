@@ -182,6 +182,14 @@
               href: restore-afs-powershell.md
             - name: Beheren
               href: manage-afs-powershell.md
+        - name: Met REST-API
+          items:
+            - name: Backup
+              href: backup-azure-file-share-rest-api.md
+            - name: Herstellen
+              href: restore-azure-file-share-rest-api.md
+            - name: Beheren
+              href: manage-azure-file-share-rest-api.md
     - name: SAP HANA-databases in back-ups van een Azure-VM
       items:
         - name: Overzicht
