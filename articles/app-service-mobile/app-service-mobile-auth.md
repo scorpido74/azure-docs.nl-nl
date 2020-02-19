@@ -3,19 +3,14 @@ title: Verificatie en autorisatie
 description: Conceptuele Naslag informatie en overzicht van de functie voor verificatie/autorisatie voor Azure App Service, met name voor mobiele apps.
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668517"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459460"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Verificatie en autorisatie in Azure App Service voor mobiele apps
-
-> [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
->
-> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 In dit artikel wordt beschreven hoe verificatie en autorisatie werkt bij het ontwikkelen van systeem eigen mobiele apps met een App Service back-end. App Service biedt geïntegreerde verificatie en autorisatie, zodat uw mobiele apps gebruikers kunnen ondertekenen zonder code in App Service te wijzigen. Het biedt een eenvoudige manier om uw toepassing te beveiligen en te werken met gegevens per gebruiker. 
 
@@ -48,7 +43,7 @@ Als u geen provider-SDK wilt instellen, kunt u de Mobile Apps-functie van Azure 
 De code voor het starten van deze stroom is opgenomen in de verificatie-zelf studie voor elk platform. Aan het einde van de stroom heeft de client-SDK een App Service token en wordt het token automatisch gekoppeld aan alle aanvragen voor de back-end van de toepassing.
 
 Zie [app service-verificatie stroom](../app-service/overview-authentication-authorization.md#authentication-flow)voor meer informatie over de verificatie stroom. 
-## <a name="more-resources"></a>Meer informatiebronnen
+## <a name="more-resources"></a>Meer bronnen
 
 In de volgende zelf studies ziet u hoe u verificatie kunt toevoegen aan uw mobiele clients met behulp van de [Server-gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow):
 

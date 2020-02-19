@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668480"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459171"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Offline synchronisatie met mobiele iOS-apps inschakelen
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
->
-> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 In deze zelf studie wordt de offline synchronisatie van de Mobile Apps-functie van Azure App Service voor iOS beschreven. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app om gegevens weer te geven, toe te voegen of te wijzigen, zelfs wanneer ze geen netwerk verbinding hebben. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden de wijzigingen gesynchroniseerd met de externe back-end.
@@ -158,11 +153,11 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 
 | Kenmerk | Type |
 | --- | --- |
-| id | Geheel getal 64 |
+| id | Integer 64 |
 | itemId | Tekenreeks |
-| properties | Binaire gegevens |
-| tabel | Tekenreeks |
-| tableKind | Geheel getal 16 |
+| properties | Binary Data |
+| table | Tekenreeks |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
@@ -172,9 +167,9 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | Kenmerk | Type |
 | --- | --- |
 | id |Tekenreeks |
-| operationId |Geheel getal 64 |
-| properties |Binaire gegevens |
-| tableKind |Geheel getal 16 |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
@@ -184,8 +179,8 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | --- | --- |
 | id |Tekenreeks |
 | sleutel |Tekenreeks |
-| keyType |Geheel getal 64 |
-| tabel |Tekenreeks |
+| keyType |Integer 64 |
+| table |Tekenreeks |
 | waarde |Tekenreeks |
 
 ### <a name="data-table"></a>Gegevens tabel
@@ -197,9 +192,9 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | id | Teken reeks, gemarkeerd als vereist |Primaire sleutel in externe opslag |
 | aangevuld | Booleaans | Veld taak item |
 | tekst |Tekenreeks |Veld taak item |
-| createdAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
-| updatedAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
-| versie | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
+| createdAt | Date | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
+| updatedAt | Date | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
+| version | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
 
 ## <a name="setup-sync"></a>Het synchronisatie gedrag van de App wijzigen
 In deze sectie wijzigt u de app zodat deze niet wordt gesynchroniseerd bij het starten van de app of wanneer u items invoegt en bijwerkt. Het wordt alleen gesynchroniseerd wanneer de knop beweging vernieuwen wordt uitgevoerd.
@@ -267,7 +262,7 @@ De normale bewerkingen voor maken, lezen, bijwerken en verwijderen (ruw) voor mo
 
 Toen we het lokale archief met de-server hebben gesynchroniseerd, hebben we de methode **MSSyncTable. pullWithQuery** gebruikt.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 * [Offline gegevens synchronisatie in Mobile Apps]
 * [Cloud cover: offline synchronisatie in Azure Mobile Services] \(de video over Mobile Services, maar Mobile apps offline synchronisatie werkt op een vergelijk bare manier.\)
 

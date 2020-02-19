@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045345"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461212"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -523,9 +523,9 @@ De waarde van een bepaalde claim opschonen.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | tekenreeks | De waarde van de claim moet NULL zijn. |
+| OutputClaim | claim_to_null | tekenreeks | De waarde van de claim is ingesteld op NULL. |
 
-Gebruik deze claim transformatie om overbodige gegevens te verwijderen uit de eigenschap Bag van claims. De sessie cookie is dus kleiner. In het volgende voor beeld wordt de waarde van het claim type `TermsOfService` verwijderd.
+Gebruik deze claim transformatie om overbodige gegevens uit de eigenschap Bag van claims te verwijderen, zodat de sessie cookie kleiner wordt. In het volgende voor beeld wordt de waarde van het claim type `TermsOfService` verwijderd.
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">

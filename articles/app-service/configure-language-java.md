@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f6f334ed6b84d4688849b6dfd8cb1f79f8db57bf
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443891"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461263"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
 
@@ -29,6 +29,7 @@ U kunt de [Azure web app-invoeg toepassing voor maven gebruiken voor](/java/api/
 Anders is uw implementatie methode afhankelijk van het type archief:
 
 - Als u een WAR-bestand wilt implementeren in Tomcat, gebruikt u het `/api/wardeploy/`-eind punt om het archief bestand te plaatsen. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)voor meer informatie over deze API.
+- Gebruik het `/api/zipdeploy/`-eind punt van de kudu-site om jar-bestanden te implementeren in Java SE. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)voor meer informatie over deze API.
 
 Implementeer uw War niet met FTP. Het FTP-hulp programma is ontworpen voor het uploaden van opstart scripts, afhankelijkheden of andere runtime bestanden. Het is niet de beste keuze voor het implementeren van web-apps.
 
@@ -287,6 +288,10 @@ Als u de `server.xml` van de Tomcat of andere configuratie bestanden wilt bewerk
 
 Start ten slotte App Service opnieuw. Uw implementaties moeten naar `D:\home\site\wwwroot\webapps` net zoals voorheen.
 
+## <a name="configure-java-se"></a>Java SE configureren
+
+Bij het uitvoeren van een. JAR-toepassing op Java SE op Windows, `server.port` wordt door gegeven als opdracht regel optie wanneer uw toepassing wordt gestart. U kunt de HTTP-poort hand matig oplossen met de omgevings variabele, `HTTP_PLATFORM_PORT`. De waarde van deze omgevings variabele is de HTTP-poort waarover uw toepassing luistert. 
+
 ## <a name="java-runtime-statement-of-support"></a>Java runtime-instructie van ondersteuning
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-versies en onderhoud
@@ -300,6 +305,8 @@ Ondersteunde JDKs worden automatisch op een driemaandelijkse patch uitgevoerd in
 ### <a name="security-updates"></a>Beveiligingsupdates
 
 Patches en oplossingen voor belang rijke beveiligings problemen worden vrijgegeven zodra deze beschikbaar worden gesteld via Azul-systemen. Een ' belang rijk ' beveiligingslek is gedefinieerd met een basis Score van 9,0 of hoger in het [gemeen schappelijke beveiligings risico van het NIST-systeem versie 2](https://nvd.nist.gov/cvss.cfm).
+
+Tomcat 8,0 is [sinds 30 September 2018 geëindigd (EOL)](https://tomcat.apache.org/tomcat-80-eol.html). Terwijl de runtime nog steeds avialable op Azure App Service, zullen Azure geen beveiligings updates Toep assen op Tomcat 8,0. Migreer, indien mogelijk, uw toepassingen naar Tomcat 8,5 of 9,0. Zowel Tomcat 8,5 als 9,0 zijn beschikbaar op Azure App Service. Raadpleeg de [officiële Tomcat-site](https://tomcat.apache.org/whichversion.html) voor meer informatie. 
 
 ### <a name="deprecation-and-retirement"></a>Afschaffing en buiten gebruik stellen
 

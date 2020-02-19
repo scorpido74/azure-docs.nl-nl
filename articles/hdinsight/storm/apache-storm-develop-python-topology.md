@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
-ms.openlocfilehash: ba632a98c21926ec28606def128cc068abf47f53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646622"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460021"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm topologieën ontwikkelen met behulp van python in HDInsight
 
@@ -26,7 +26,7 @@ Meer informatie over het maken van een [Apache Storm](https://storm.apache.org/)
 
 * Een Apache Storm cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor het **cluster type**.
 
-* Een lokale Storm-ontwikkel omgeving (optioneel). Een lokale Storm-omgeving is alleen nodig als u de topologie lokaal wilt uitvoeren. Zie [een ontwikkel omgeving instellen](http://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
+* Een lokale Storm-ontwikkel omgeving (optioneel). Een lokale Storm-omgeving is alleen nodig als u de topologie lokaal wilt uitvoeren. Zie [een ontwikkel omgeving instellen](https://storm.apache.org/releases/current/Setting-up-development-environment.html)voor meer informatie.
 
 * [Python 2,7 of hoger](https://www.python.org/downloads/).
 
@@ -38,7 +38,7 @@ Meer informatie over het maken van een [Apache Storm](https://storm.apache.org/)
 
 Apache Storm is ontworpen om te werken met onderdelen die zijn geschreven met behulp van een programmeer taal. De onderdelen moeten weten hoe u kunt werken met de Thrift-definitie voor Storm. Voor python wordt een module meegeleverd als onderdeel van het Apache Storm project, waarmee u eenvoudig kunt interface met storm. U kunt deze module vinden op [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Storm is een Java-proces dat wordt uitgevoerd op de Java Virtual Machine (JVM). Onderdelen die in andere talen zijn geschreven, worden uitgevoerd als subprocessen. De Storm communiceert met deze subprocessen met behulp van JSON-berichten die via stdin/stdout worden verzonden. Meer informatie over de communicatie tussen onderdelen vindt u in de documentatie over het [multi-lang protocol](https://storm.apache.org/documentation/Multilang-protocol.html) .
+Storm is een Java-proces dat wordt uitgevoerd op de Java Virtual Machine (JVM). Onderdelen die in andere talen zijn geschreven, worden uitgevoerd als subprocessen. De Storm communiceert met deze subprocessen met behulp van JSON-berichten die via stdin/stdout worden verzonden. Meer informatie over de communicatie tussen onderdelen vindt u in de documentatie over het [multi-lang protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) .
 
 ## <a name="python-with-the-flux-framework"></a>Python met het stroom kader
 

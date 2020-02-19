@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 03b0269b1a4500fd8ae26cd5e56f48427c5506aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f47c2c30f71d6510ee66bb19bdd936e0780e242c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429186"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461856"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Snelstartgids: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een C-proxy toepassing (preview)
 
@@ -26,7 +26,7 @@ Azure IoT Hub ondersteunt momenteel het streamen van apparaten als een [Preview-
 
 In deze Quick Start wordt de configuratie beschreven voor het gebruik van trans porting Secure Shell (SSH)-verkeer (via poort 22) via apparaat stromen. Het Setup-verkeer voor Remote Desktop Protocol (RDP) is vergelijkbaar en vereist een eenvoudige configuratie wijziging. Omdat apparaatversleuteling het toepassings-en protocol-neutraal zijn, kunt u deze Snelstartgids aanpassen voor andere soorten toepassings verkeer.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 In de volgende afbeelding ziet u hoe de lokale proxy Programma's van het apparaat en de service end-to-end-connectiviteit mogelijk maken tussen de SSH-client en SSH-daemon-processen. Tijdens de open bare preview ondersteunt de C SDK alleen apparaatnamen op het apparaat. Als gevolg hiervan wordt in deze Snelstartgids beschreven hoe u alleen de apparaat-Local proxy toepassing uitvoert. Volg de instructies in een van de volgende Quick starts om de bijbehorende service-side toepassing te bouwen en uit te voeren:
 
@@ -120,7 +120,7 @@ Voor deze Quick Start gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 

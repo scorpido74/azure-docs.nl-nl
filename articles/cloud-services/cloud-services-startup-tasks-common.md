@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385793"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462238"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Veelvoorkomende opstart taken voor de Cloud service
 Dit artikel bevat enkele voor beelden van veelvoorkomende opstart taken die u in uw Cloud service wilt uitvoeren. U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces. 
@@ -67,7 +67,7 @@ Het error level dat door *Appcmd. exe* wordt geretourneerd, wordt weer gegeven i
 ### <a name="example-of-managing-the-error-level"></a>Voor beeld van het beheren van het fout niveau
 In dit voor beeld wordt een sectie compressie en een compressie vermelding voor JSON toegevoegd aan het bestand *Web. config* , met fout afhandeling en logboek registratie.
 
-De relevante secties van het bestand [ServiceDefinition.csdef] worden hier weer gegeven, zoals het instellen van het kenmerk [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) op `elevated` om *Appcmd. exe* voldoende machtigingen te geven om de instellingen in het bestand *Web. config* te wijzigen:
+De relevante secties van het bestand [ServiceDefinition. csdef] worden hier weer gegeven, zoals het instellen van het kenmerk [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) op `elevated` om *Appcmd. exe* voldoende machtigingen te geven om de instellingen in het bestand *Web. config* te wijzigen:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -90,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Firewall regels toevoegen
-In azure zijn er effectief twee firewalls. De eerste firewall beheert verbindingen tussen de virtuele machine en de buiten wereld. Deze firewall wordt bepaald door het element [Eind punten] in het bestand [ServiceDefinition.csdef] .
+In azure zijn er effectief twee firewalls. De eerste firewall beheert verbindingen tussen de virtuele machine en de buiten wereld. Deze firewall wordt bepaald door het element [Eind punten] in het bestand [ServiceDefinition. csdef] .
 
 De tweede firewall regelt de verbindingen tussen de virtuele machine en de processen in die virtuele machine. Deze firewall kan worden beheerd met behulp van het opdracht regel programma `netsh advfirewall firewall`.
 
 Azure maakt firewall regels voor de processen die zijn gestart binnen uw rollen. Wanneer u bijvoorbeeld een service of programma start, worden automatisch de benodigde firewall regels gemaakt om ervoor te zorgen dat de service kan communiceren met internet. Als u echter een service maakt die is gestart door een proces buiten uw rol (zoals een COM+-service of een geplande taak van Windows), moet u hand matig een firewall regel maken om toegang tot die service toe te staan. Deze firewall regels kunnen worden gemaakt met behulp van een opstart taak.
 
-Een opstart taak waarmee een firewall regel wordt gemaakt, moet een [executionContext]-[taak] van **verhoogde bevoegdheden**hebben. Voeg de volgende opstart taak toe aan het bestand [ServiceDefinition.csdef] .
+Een opstart taak waarmee een firewall regel wordt gemaakt, moet een [executionContext]-[taak] van **verhoogde bevoegdheden**hebben. Voeg de volgende opstart taak toe aan het bestand [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -155,7 +155,7 @@ U kunt de toegang van een Azure-webrole beperken tot een set opgegeven IP-adress
 
 Als u de sectie **ipSecurity** van het bestand **ApplicationHost. config** wilt ontgrendelen, maakt u een opdracht bestand dat wordt uitgevoerd tijdens het starten van de rol. Maak een map op het hoofd niveau van de webfunctie met de naam **Start** en maak in deze map een batch bestand met de naam **Startup. cmd**. Voeg dit bestand toe aan uw Visual Studio-project en stel de eigenschappen in op **kopiëren altijd** om ervoor te zorgen dat deze in uw pakket zijn opgenomen.
 
-Voeg de volgende opstart taak toe aan het bestand [ServiceDefinition.csdef] .
+Voeg de volgende opstart taak toe aan het bestand [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -213,7 +213,7 @@ Met deze voorbeeld configuratie worden alle IP-adressen van toegang tot de serve
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>Een Power shell-opstart taak maken
-Windows Power shell-scripts kunnen niet rechtstreeks vanuit het bestand [ServiceDefinition.csdef] worden aangeroepen, maar ze kunnen wel vanuit een batch bestand voor opstarten worden aangeroepen.
+Windows Power shell-scripts kunnen niet rechtstreeks vanuit het bestand [ServiceDefinition. csdef] worden aangeroepen, maar ze kunnen wel vanuit een batch bestand voor opstarten worden aangeroepen.
 
 Power Shell voert geen niet-ondertekende scripts uit (standaard). Tenzij u uw script ondertekent, moet u Power shell configureren voor het uitvoeren van niet-ondertekende scripts. Voor het uitvoeren van niet-ondertekende scripts moet **ExecutionPolicy** zijn ingesteld op **onbeperkt**. De **ExecutionPolicy** -instelling die u gebruikt, is gebaseerd op de versie van Windows Power shell.
 
@@ -244,7 +244,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>Bestanden in lokale opslag maken van een opstart taak
 U kunt een lokale opslag Resource gebruiken om bestanden op te slaan die zijn gemaakt door de opstart taak en later door uw toepassing worden geopend.
 
-Als u de lokale opslag resource wilt maken, voegt u een sectie [LocalResources] toe aan het bestand [ServiceDefinition.csdef] en voegt u vervolgens het onderliggende element [LocalStorage] toe. Geef de lokale opslag resource een unieke naam en een geschikte grootte voor de opstart taak.
+Als u de lokale opslag resource wilt maken, voegt u een sectie [LocalResources] toe aan het bestand [ServiceDefinition. csdef] en voegt u vervolgens het onderliggende element [LocalStorage] toe. Geef de lokale opslag resource een unieke naam en een geschikte grootte voor de opstart taak.
 
 Als u een lokale opslag resource in uw opstart taak wilt gebruiken, moet u een omgevings variabele maken om te verwijzen naar de locatie van de lokale opslag resource. De opstart taak en de toepassing kunnen vervolgens bestanden lezen en schrijven naar de lokale opslag resource.
 
@@ -298,7 +298,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>Uitvoeren in de emulator of in de Cloud
 U kunt de opstart taak gebruiken om verschillende stappen uit te voeren wanneer deze in de cloud worden uitgevoerd, vergeleken met wanneer deze zich in de compute-emulator bevinden. Het is bijvoorbeeld mogelijk dat u een nieuwe kopie van uw SQL-gegevens wilt gebruiken wanneer deze wordt uitgevoerd in de emulator. Het is ook mogelijk dat u een aantal prestatie optimalisaties wilt uitvoeren voor de cloud die u niet hoeft te doen wanneer u in de emulator wordt uitgevoerd.
 
-Deze mogelijkheid om verschillende acties uit te voeren op de compute-emulator en de cloud kan worden gerealiseerd door een omgevings variabele te maken in het bestand [ServiceDefinition.csdef] . Vervolgens test u de omgevings variabele voor een waarde in de opstart taak.
+Deze mogelijkheid om verschillende acties uit te voeren op de compute-emulator en de cloud kan worden gerealiseerd door een omgevings variabele te maken in het bestand [ServiceDefinition. csdef] . Vervolgens test u de omgevings variabele voor een waarde in de opstart taak.
 
 Als u de omgevings variabele wilt maken, voegt u de [Variabeletype]/[RoleInstanceValue] -element toe en maakt u een XPath-waarde van `/RoleEnvironment/Deployment/@emulated`. De waarde van de omgevings variabele **% ComputeEmulatorRunning%** is `true` wanneer deze wordt uitgevoerd op de compute-emulator en `false` wanneer deze wordt uitgevoerd in de Cloud.
 
@@ -500,7 +500,7 @@ Meer informatie over hoe [taken](cloud-services-startup-tasks.md) werken.
 
 [Maak en implementeer](cloud-services-how-to-create-deploy-portal.md) uw Cloud service pakket.
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Taak]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime

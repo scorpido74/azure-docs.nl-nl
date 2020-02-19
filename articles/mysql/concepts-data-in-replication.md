@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18c53a53a57b3ddca1168fc1075ae09bcd86f000
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765083"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462493"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Gegevens repliceren naar Azure Database for MySQL
 
@@ -28,7 +28,7 @@ Gebruik de [Azure database Migration service](https://azure.microsoft.com/servic
 ## <a name="limitations-and-considerations"></a>Beperkingen en overwegingen
 
 ### <a name="data-not-replicated"></a>Gegevens niet gerepliceerd
-De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) op de hoofd server wordt niet gerepliceerd. Wijzigingen van accounts en machtigingen op de hoofd server worden niet gerepliceerd. Als u een account op de master server maakt en dit account toegang heeft tot de replica server, moet u het account hand matig op de replica server maken. Zie de [MySQL-hand leiding](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
+De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) op de hoofd server wordt niet gerepliceerd. Wijzigingen van accounts en machtigingen op de hoofd server worden niet gerepliceerd. Als u een account op de master server maakt en dit account toegang heeft tot de replica server, moet u het account hand matig op de replica server maken. Zie de [MySQL-hand leiding](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
 
 ### <a name="requirements"></a>Vereisten
 - De versie van de hoofd server moet ten minste MySQL-versie 5,6 zijn. 

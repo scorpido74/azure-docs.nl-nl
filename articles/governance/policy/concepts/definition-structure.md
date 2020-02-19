@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169768"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461999"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -111,6 +111,12 @@ Een para meter heeft de volgende eigenschappen die worden gebruikt in de beleids
 - `metadata`: definieert subeigenschappen die voornamelijk worden gebruikt door de Azure Portal om gebruikers vriendelijke informatie weer te geven:
   - `description`: de uitleg van het gebruik van de para meter voor. Kan worden gebruikt om voor beelden te bieden van acceptabele waarden.
   - `displayName`: de beschrijvende naam die wordt weer gegeven in de portal voor de para meter.
+  - `version`: (optioneel) houdt informatie bij over de versie van de inhoud van een beleids definitie.
+
+    > [!NOTE]
+    > De Azure Policy-service maakt gebruik van `version`-, `preview`-en `deprecated`-eigenschappen om het beveiligings niveau te wijzigen in een ingebouwde beleids definitie of-initiatief en-status. De indeling van `version` is: `{Major}.{Minor}.{Patch}`. Specifieke statussen, zoals _afgeschaft_ of _Preview_, worden toegevoegd aan de `version` eigenschap of in een andere eigenschap als een **Booleaanse waarde**.
+
+  - `category`: (optioneel) bepaalt in welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
   - `strongType`: (optioneel) gebruikt bij het toewijzen van de beleids definitie via de portal. Biedt een context bewuste lijst. Zie [strongType](#strongtype)voor meer informatie.
   - `assignPermissions`: (optioneel) Stel in op _waar_ als u wilt Azure Portal roltoewijzingen wilt maken tijdens de beleids toewijzing. Deze eigenschap is handig voor het geval u machtigingen wilt toewijzen buiten het toewijzings bereik. Er is één roltoewijzing per roldefinitie in het beleid (of per functie definitie in alle beleids regels in het initiatief). De parameter waarde moet een geldige resource of een geldig bereik zijn.
 - `defaultValue`: (optioneel) Hiermee stelt u de waarde van de para meter in een toewijzing in als er geen waarde is opgegeven.

@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162919"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462629"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -66,7 +66,7 @@ In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welk
 |    FileStorage    | Europa - west<br /> US - oost    |    Alleen Azure Files    |
 
 <sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
-<sup>2</sup> Azure-schijven voor virtuele machines, met inbegrip van beheerde en onbeheerde schijven, bieden alleen ondersteuning voor LRS. Ze bieden geen ondersteuning voor ZRS of GZRS. Zie [prijzen voor Azure Managed disks](/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
+<sup>2</sup> Azure-schijven voor virtuele machines, met inbegrip van beheerde en onbeheerde schijven, bieden alleen ondersteuning voor LRS. Ze bieden geen ondersteuning voor ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks)(Engelstalig) voor meer informatie over Managed disks.
 
 Voor informatie over welke regio's ZRS ondersteunen, Zie **Services ondersteuning per regio** in [Wat zijn Azure-beschikbaarheidszones?](../../availability-zones/az-overview.md).
 
@@ -131,7 +131,7 @@ Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire regi
 
 Wanneer lees toegang tot de secundaire is ingeschakeld, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor Blob Storage bijvoorbeeld is `myaccount.blob.core.windows.net`, wordt het secundaire eind punt `myaccount-secondary.blob.core.windows.net`. De toegangs sleutels voor het account voor uw opslag account zijn hetzelfde voor de primaire en secundaire eind punten.
 
-### <a name="check-the-last-sync-time-property"></a>De laatste synchronisatie tijd eigenschap controleren
+### <a name="check-the-last-sync-time-property"></a>De eigenschap Laatst gesynchroniseerd controleren
 
 Omdat gegevens asynchroon naar de secundaire regio worden gerepliceerd, is de secundaire regio vaak achter de primaire regio. Als er een fout optreedt in de primaire regio, is het waarschijnlijk dat alle schrijf bewerkingen naar het primaire bestand nog niet zijn gerepliceerd naar de secundaire.
 

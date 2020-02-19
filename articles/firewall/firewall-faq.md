@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442986"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460464"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -129,7 +129,9 @@ Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wordt geforceerde tunneling/keten van een virtueel netwerk apparaat ondersteund?
 
-Geforceerde tunneling wordt momenteel niet ondersteund. Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
+Geforceerde tunneling wordt ondersteund. Zie [Azure firewall geforceerde tunneling (preview)](forced-tunneling.md)voor meer informatie. 
+
+Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
 
 Als voor uw configuratie geforceerde tunneling naar een on-premises netwerk is vereist en u de doel-IP-voor voegsels voor uw Internet doelen kunt bepalen, kunt u deze bereiken met het on-premises netwerk als de volgende hop configureren via een door de gebruiker gedefinieerde route op de AzureFirewallSubnet. U kunt ook BGP gebruiken om deze routes te definiëren.
 
@@ -166,7 +168,7 @@ Nee. Azure Firewall hebt geen subnet dat groter is dan/26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Hoe kan ik de door Voer van de firewall verhogen?
 
-De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps. Op dit moment is uitschalen alleen gebaseerd op het CPU-gebruik. In sommige gevallen kan een firewall met netwerk regels alleen worden geschaald om de door voer te verhogen omdat de netwerk regels het CPU-gebruik niet aanzienlijk beïnvloeden. Als u een hogere door Voer voor uw firewall nodig hebt, neemt u contact op met de ondersteuning om de oorspronkelijke doorvoer capaciteit van uw firewall te verhogen.
+De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps. Op dit moment is uitschalen gebaseerd op het CPU-gebruik en de door voer. In sommige gevallen kan een firewall met netwerk regels alleen worden geschaald om de door voer te verhogen omdat de netwerk regels het CPU-gebruik niet aanzienlijk beïnvloeden. Als u een hogere door Voer voor uw firewall nodig hebt, neemt u contact op met de ondersteuning om de oorspronkelijke doorvoer capaciteit van uw firewall te verhogen.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Hoe lang duurt het om Azure Firewall uit te schalen?
 

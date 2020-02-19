@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991028"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462663"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naam omzetting voor bronnen in azure Virtual Networks
 
@@ -34,7 +34,7 @@ Welk type naamomzetting u gebruikt, is afhankelijk van hoe uw resources met elka
 > Afhankelijk van uw scenario wilt u mogelijk Azure DNS particuliere zones gebruiken. Zie voor meer informatie [Azure DNS gebruiken voor privédomeinen](../dns/private-dns-overview.md).
 >
 
-| **Scenario** | **Oplossing** | **Suffix** |
+| **Scenario** | **Oplossing** | **Achtervoegsel** |
 | --- | --- | --- |
 | Naam omzetting tussen virtuele machines die zich in hetzelfde virtuele netwerk bevinden, of Azure Cloud Services Role-instanties in dezelfde Cloud service. | [Azure DNS persoonlijke zones](../dns/private-dns-overview.md) of door [Azure aangelegde naam omzetting](#azure-provided-name-resolution) |Hostnaam of FQDN |
 | Naam omzetting tussen Vm's in verschillende virtuele netwerken of rolinstanties in verschillende Cloud Services. |[Azure DNS particuliere zones](../dns/private-dns-overview.md) of, door de klant beheerde DNS-servers, waarmee query's tussen virtuele netwerken worden doorgestuurd voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |
@@ -105,8 +105,7 @@ Er zijn een aantal verschillende DNS-cache pakketten beschikbaar (zoals dnsmasq)
 
 > [!NOTE]
 > Het dnsmasq-pakket is slechts een van de vele DNS-caches die beschikbaar zijn voor Linux. Controleer voordat u het gebruikt de geschiktheid voor uw specifieke behoeften en controleer of er geen andere cache is geïnstalleerd.
->
->
+
     
 ### <a name="client-side-retries"></a>Nieuwe pogingen aan client zijde
 
@@ -169,8 +168,7 @@ Als het door sturen van query's naar Azure niet aan uw behoeften voldoet, moet u
 * Worden beveiligd tegen toegang vanaf internet, om bedreigingen van externe agents te beperken.
 
 > [!NOTE]
-> Voor de beste prestaties moet IPv6 worden uitgeschakeld wanneer u virtuele Azure-machines als DNS-servers gebruikt. Een [openbaar IP-adres](virtual-network-public-ip-address.md) moet worden toegewezen aan elke DNS-Server-VM. Zie [prestaties van naam omzetting van een recursieve Windows DNS-server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)voor meer analyse en optimalisatie van prestaties wanneer u Windows Server als uw DNS-server gebruikt.
-> 
+> Voor de beste prestaties moet IPv6 worden uitgeschakeld wanneer u virtuele Azure-machines als DNS-servers gebruikt. Een [openbaar IP-adres](virtual-network-public-ip-address.md) moet worden toegewezen aan elke DNS-Server-VM. 
 > 
 
 ### <a name="web-apps"></a>Web-apps

@@ -1,21 +1,20 @@
 ---
-title: Een site-naar-site-VPN-verbinding maken via ExpressRoute private peering in azure Virtual WAN | Microsoft Docs
+title: 'ExpressRoute-versleuteling configureren: IPsec via ExpressRoute voor Azure Virtual WAN'
 description: In deze zelf studie leert u hoe u Azure Virtual WAN kunt gebruiken om een site-naar-site-VPN-verbinding te maken via ExpressRoute-persoonlijke peering.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 02/18/2020
 ms.author: cherylmc
-Customer intent: I want to connect my on-premises networks to my virtual networks by using an S2S VPN connection over my ExpressRoute private peering through Azure Virtual WAN.
-ms.openlocfilehash: ae971bad47d84b6928ebea64e416d21af25528ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c74f703927999bf35dd2d8292b8fa0a6d3c55065
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896595"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459783"
 ---
-# <a name="create-a-site-to-site-vpn-connection-over-expressroute-private-peering-by-using-azure-virtual-wan"></a>Een site-naar-site-VPN-verbinding maken via ExpressRoute private peering met behulp van Azure Virtual WAN
+# <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-versleuteling: IPsec over ExpressRoute voor virtuele WAN
 
 Dit artikel laat u zien hoe u met behulp van Azure Virtual WAN een IPsec/IKE-VPN-verbinding vanaf uw on-premises netwerk naar Azure kunt maken via de persoonlijke peering van een Azure ExpressRoute-circuit. Deze techniek kan een versleutelde door Voer bieden tussen de on-premises netwerken en Azure Virtual Networks via ExpressRoute, zonder het open bare Internet te passeren of open bare IP-adressen te gebruiken.
 

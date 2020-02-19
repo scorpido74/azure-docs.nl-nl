@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200041"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460208"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -77,7 +77,8 @@ Cosmos DB maakt met regel matige tussen pozen automatisch back-ups van uw gegeve
 | Resource | Standaardlimiet |
 | --- | --- |
 | Maximum aantal data bases | Onbeperkt |
-| Maximum aantal containers dat kan worden ingericht in een Data Base met gedeelde door Voer |25 |
+| Maximum aantal containers per data base met gedeelde door Voer |25 |
+| Maximum aantal containers per data base of account met toegewezen door Voer  |onbeperkt |
 | Maximum aantal regio's | Geen limiet (alle Azure-regio's) |
 
 ## <a name="per-container-limits"></a>Limieten per container
@@ -103,7 +104,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-item een document in
 | --- | --- |
 | Maximale grootte van een item | 2 MB (UTF-8-lengte van JSON-weer gave) |
 | Maximale lengte van partitie sleutel waarde | 2048 bytes |
-| Maximale lengte van id-waarde | 1024 bytes |
+| Maximale lengte van id-waarde | 1023 bytes |
 | Maximum aantal eigenschappen per item | Geen praktische limiet |
 | Maximale nest diepte | Geen praktische limiet |
 | Maximale lengte van eigenschaps naam | Geen praktische limiet |

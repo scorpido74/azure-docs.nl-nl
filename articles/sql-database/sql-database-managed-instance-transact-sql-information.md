@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 02/10/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 392d7d7efcd5b23a7a4575e2d22d21fb4433bb6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121955"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462578"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -65,6 +65,7 @@ Beperkingen:
 
 - Met een beheerd exemplaar kunt u een back-up maken van een exemplaar database met Maxi maal 32 stroken, die voldoende is voor data bases tot 4 TB als back-upcompressie wordt gebruikt.
 - U kunt `BACKUP DATABASE ... WITH COPY_ONLY` niet uitvoeren op een Data Base die is versleuteld met door service beheerde Transparent Data Encryption (TDE). Door service beheerde TDE zorgt ervoor dat back-ups worden versleuteld met een interne TDE-sleutel. De sleutel kan niet worden geëxporteerd, dus u kunt de back-up niet herstellen. Gebruik automatische back-ups en herstel naar een bepaald tijdstip, of gebruik in plaats daarvan door de [klant beheerde (BYOK) TDe](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . U kunt versleuteling ook uitschakelen voor de data base.
+- Hand matige back-ups naar Azure Blob-opslag worden alleen ondersteund voor [BlockBlobStorage-accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 - De maximale grootte van de back-upstripe met behulp van de `BACKUP`-opdracht in een beheerd exemplaar is 195 GB. Dit is de maximale grootte van de blob. Verhoog het aantal Stripes in de back-upopdracht om de afzonderlijke Stripe-grootte te verminderen en binnen deze limiet te blijven.
 
     > [!TIP]
@@ -95,7 +96,7 @@ De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van 
 - Er wordt een nieuwe syntaxis `TO URL` opgegeven die u kunt gebruiken om de URL op te geven van de Azure Blob Storage-container waarin de `.xel` bestanden worden geplaatst.
 - De syntaxis `TO FILE` wordt niet ondersteund omdat een beheerd exemplaar geen toegang krijgt tot Windows-bestands shares.
 
-Zie voor meer informatie: 
+Ga voor meer informatie naar: 
 
 - [SERVER CONTROLE MAKEN](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -110,7 +111,7 @@ Een beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, 
 
 Zie [certificaat](/sql/t-sql/statements/create-certificate-transact-sql) en [back-upcertificaat](/sql/t-sql/statements/backup-certificate-transact-sql)maken. 
  
-**Tijdelijke oplossing**: In plaats van een back-up van het certificaat te maken en de back-up te herstellen, [de binaire inhoud en de persoonlijke sleutel van het certificaat op te halen, deze op te slaan als. SQL-bestand en te maken van binaire](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)
+**Tijdelijke oplossing**: in plaats van het maken van een back-up van het certificaat en het herstellen van de back-up, [de binaire inhoud en de persoonlijke sleutel van het certificaat op te halen, deze op te slaan als. SQL-bestand en te maken](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)
 
 ```sql
 CREATE CERTIFICATE  
@@ -140,7 +141,7 @@ Een beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptograf
 
 - Windows-aanmeldingen die zijn gemaakt met de `CREATE LOGIN ... FROM WINDOWS` syntaxis worden niet ondersteund. Gebruik Azure Active Directory aanmeldingen en gebruikers.
 - De Azure AD-gebruiker die het exemplaar heeft gemaakt, heeft [onbeperkte beheerders bevoegdheden](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Gebruikers die geen beheerder zijn, kunnen Azure AD-data bases op database niveau maken met behulp van de `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxis. Zie [CREATE USER... VAN DE](sql-database-manage-logins.md#non-administrator-users)VAN DE EXTERNE PROVIDER.
+- Gebruikers die geen beheerder zijn, kunnen Azure AD-data bases op database niveau maken met behulp van de `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxis. Zie [gebruiker maken... VAN externe PROVIDER](sql-database-manage-logins.md#non-administrator-users).
 - Azure AD server-principals (aanmeldingen) bieden alleen ondersteuning voor SQL-functies binnen één Managed instance. Functies waarvoor cross-instance interacties zijn vereist, ongeacht of deze zich binnen dezelfde Azure AD-Tenant of andere tenants bevinden, worden niet ondersteund voor Azure AD-gebruikers. Voor beelden van deze functies zijn:
 
   - SQL transactionele replicatie.
@@ -302,7 +303,7 @@ De volgende functies van de SQL-Agent worden momenteel niet ondersteund:
 - Proxy's
 - Taken plannen voor een niet-actieve CPU
 - Een agent in-of uitschakelen
-- Alerts
+- Waarschuwingen
 
 Zie [SQL Server Agent](/sql/ssms/agent/sql-server-agent) voor meer informatie over SQL Server Agent.
 
@@ -311,7 +312,7 @@ Zie [SQL Server Agent](/sql/ssms/agent/sql-server-agent) voor meer informatie ov
 De volgende tabel typen worden niet ondersteund:
 
 - [-](/sql/relational-databases/blob/filestream-sql-server)
-- [BESTANDS TABEL](/sql/relational-databases/blob/filetables-sql-server)
+- [BESTANDS tabel](/sql/relational-databases/blob/filetables-sql-server)
 - [Externe tabel](/sql/t-sql/statements/create-external-table-transact-sql) (poly base)
 - [MEMORY_OPTIMIZED](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (wordt niet alleen ondersteund in de algemeen-laag)
 
@@ -429,7 +430,7 @@ Zie de volgende zelf studies voor meer informatie over het configureren van tran
   - `FROM DISK`/`TAPE`/backup-apparaat wordt niet ondersteund.
   - Back-upsets worden niet ondersteund.
 - `WITH` opties worden niet ondersteund, zoals geen `DIFFERENTIAL` of `STATS`.
-- `ASYNC RESTORE`: Herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de weer gave `sys.dm_operation_status` controleren op de status van een herstel bewerking en voor een Data Base maken en verwijderen. Zie [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: het herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de weer gave `sys.dm_operation_status` controleren op de status van een herstel bewerking en voor een Data Base maken en verwijderen. Zie [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 De volgende database opties zijn ingesteld of worden overschreven en kunnen later niet meer worden gewijzigd: 
 
@@ -458,9 +459,9 @@ Zie [Restore statements (instructies herstellen](/sql/t-sql/statements/restore-s
 
 Service Broker met meerdere exemplaren wordt niet ondersteund:
 
-- `sys.routes`: Als vereiste moet u het adres selecteren uit sys. routes. Het adres moet lokaal op elke route zijn. Zie [sys. routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: U kunt `CREATE ROUTE` niet gebruiken met andere `ADDRESS` dan `LOCAL`. Zie [route maken](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: U kunt `ALTER ROUTE` niet gebruiken met andere `ADDRESS` dan `LOCAL`. Zie [ALTER route](/sql/t-sql/statements/alter-route-transact-sql). 
+- `sys.routes`: als u een vereiste hebt, moet u het adres van sys. routes selecteren. Het adres moet lokaal op elke route zijn. Zie [sys. routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
+- `CREATE ROUTE`: u kunt `CREATE ROUTE` niet gebruiken met andere `ADDRESS` dan `LOCAL`. Zie [route maken](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: u kunt `ALTER ROUTE` niet gebruiken met andere `ADDRESS` dan `LOCAL`. Zie [ALTER route](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Opgeslagen procedures, functies en triggers
 
@@ -471,7 +472,7 @@ Service Broker met meerdere exemplaren wordt niet ondersteund:
   - `filestream_access_level`
   - `remote data archive`
   - `remote proc trans`
-- `sp_execute_external_scripts` wordt niet ondersteund. See [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
+- `sp_execute_external_scripts` wordt niet ondersteund. Zie [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` wordt niet ondersteund. Zie [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` worden niet ondersteund, waaronder `sp_addextendedproc` en `sp_dropextendedproc`. Zie [uitgebreide opgeslagen procedures](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`en `sp_detach_db` worden niet ondersteund. Zie [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)en [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
@@ -535,19 +536,19 @@ Een beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zij
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Beperking van hand matige failover via de portal voor failover-groepen
 
-**Vallen** Jan 2020
+**Datum:** Jan 2020
 
 Als een failovergroep meerdere exemplaren in verschillende Azure-abonnementen of resource groepen omvat, kan hand matige failover niet worden gestart vanuit het primaire exemplaar in de failovergroep.
 
-**Tijdelijke oplossing**: Failover via de portal initiëren vanuit het geo-secundaire exemplaar.
+**Tijdelijke oplossing**: Start de failover via de portal vanuit het geo-secundaire exemplaar.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL-Agent rollen hebben expliciete uitvoerings machtigingen nodig voor niet-sysadmin-aanmeldingen
 
-**Vallen** Dec 2019
+**Datum:** Dec 2019
 
-Als niet-sysadmin-aanmeldingen worden toegevoegd aan een van de [vaste database rollen van SQL-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), bestaat er een probleem met de expliciete uitvoer machtigingen die moeten worden verleend aan de opgeslagen hoofd procedures voor deze aanmeldingen. Als dit probleem zich voordoet, wordt het volgende fout bericht weer gegeven: de machtiging voor uitvoeren is geweigerd op het object < object_name > (Microsoft SQL Server, fout: 229) "wordt weer gegeven.
+Als niet-sysadmin-aanmeldingen worden toegevoegd aan een van de [vaste database rollen van SQL-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles), bestaat er een probleem met de expliciete uitvoer machtigingen die moeten worden verleend aan de opgeslagen hoofd procedures voor deze aanmeldingen. Als dit probleem wordt aangetroffen, wordt het fout bericht ' de machtiging voor uitvoeren is geweigerd op het object < object_name > (Microsoft SQL Server, fout: 229) ' weer gegeven.
 
-**Tijdelijke oplossing**: Zodra u aanmeldingen aan een van de SQL Agent-functies voor vaste data base hebt toegevoegd: SQLAgentUserRole, SQLAgentReaderRole of SQLAgentOperatorRole, voor elk van de aanmeldingen die zijn toegevoegd aan deze rollen, voert u het onderstaande T-SQL-script uit om uitvoerings machtigingen expliciet toe te kennen aan de vermelde opgeslagen procedures.
+**Tijdelijke oplossing**: wanneer u aanmeldingen toevoegt aan een van de vaste database rollen van SQL-Agent: SQLAgentUserRole, SQLAgentReaderRole of SQLAgentOperatorRole, voert u het onderstaande T-SQL-script uit om uitvoerings machtigingen expliciet toe te kennen aan de vermelde opgeslagen procedures voor elk van de aanmeldingen die zijn toegevoegd aan deze rollen.
 
 ```tsql
 USE [master]
@@ -561,21 +562,21 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL-Agent taken kunnen worden onderbroken door agent proces opnieuw te starten
 
-**Vallen** Dec 2019
+**Datum:** Dec 2019
 
 Elke keer dat de taak wordt gestart, maakt SQL Agent een nieuwe sessie, waardoor het geheugen verbruik geleidelijk toeneemt. Om te voor komen dat de interne geheugen limiet voor het uitvoeren van geplande taken wordt geblokkeerd, wordt het agent proces opnieuw opgestart zodra het geheugen verbruik de drempel waarde bereikt. Dit kan leiden tot een onderbreking van de uitvoering van taken die worden uitgevoerd op het moment dat de computer opnieuw wordt opgestart.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>In-Memory OLTP-geheugen limieten worden niet toegepast
 
-**Vallen** Okt 2019
+**Datum:** Okt 2019
 
 Bedrijfskritiek service-laag past in sommige gevallen [Maxi maal geheugen limieten toe voor objecten die zijn geoptimaliseerd voor geheugen](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) . Met een beheerd exemplaar kan workload meer geheugen gebruiken voor OLTP-bewerkingen in het geheugen, wat de beschik baarheid en stabiliteit van het exemplaar kan beïnvloeden. In-Memory OLTP-query's die de limieten bereiken, mislukken mogelijk niet onmiddellijk. Dit probleem wordt binnenkort opgelost. De query's die gebruikmaken van meer in-Memory OLTP-geheugen, zullen eerder worden uitgevoerd als ze de [limieten](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)bereiken.
 
-**Enkele** [Bewaak het gebruik van in-Memory OLTP-opslag](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) met behulp van [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) om ervoor te zorgen dat de werk belasting niet meer dan het beschik bare geheugen gebruikt. Verhoog de geheugen limieten die afhankelijk zijn van het aantal vCores of Optimaliseer uw werk belasting zodat er minder geheugen wordt gebruikt.
+**Tijdelijke oplossing:** [Bewaak het gebruik van in-Memory OLTP-opslag](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) met behulp van [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) om ervoor te zorgen dat de werk belasting niet meer dan het beschik bare geheugen gebruikt. Verhoog de geheugen limieten die afhankelijk zijn van het aantal vCores of Optimaliseer uw werk belasting zodat er minder geheugen wordt gebruikt.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is
 
-**Vallen** Okt 2019
+**Datum:** Okt 2019
 
 [De gebruiker mag een bestand dat niet leeg is, niet verwijderen](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)SQL Server/beheerd exemplaar. Als u een niet-leeg gegevens bestand probeert te verwijderen met behulp van `ALTER DATABASE REMOVE FILE`-instructie, wordt de fout `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` niet onmiddellijk geretourneerd. Het beheerde exemplaar zal blijven proberen het bestand te verwijderen en de bewerking zal mislukken na 30 min met `Internal server error`.
 
@@ -583,15 +584,15 @@ Bedrijfskritiek service-laag past in sommige gevallen [Maxi maal geheugen limiet
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Het wijzigen van de servicelaag en het maken van exemplaar bewerkingen worden geblokkeerd door de huidige Data Base te herstellen
 
-**Vallen** Sep 2019
+**Datum:** Sep 2019
 
 Voortdurende `RESTORE`-instructie, migratie proces van gegevens migratie service en ingebouwde tijdstippen herstellen blokkeert het bijwerken van de servicelaag of het wijzigen van de grootte van het bestaande exemplaar en het maken van nieuwe instanties totdat het herstel proces is voltooid. Met het herstel proces worden deze bewerkingen geblokkeerd voor de beheerde instanties en exemplaar groepen in hetzelfde subnet waar het herstel proces wordt uitgevoerd. De exemplaren in exemplaar groepen worden niet beïnvloed. Het maken of wijzigen van service tier-bewerkingen mislukken of time-out: ze worden voortgezet zodra het herstel proces is voltooid of geannuleerd.
 
-**Tijdelijke oplossing**: Wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
+**Tijdelijke oplossing**: wacht tot het herstel proces is voltooid of Annuleer het herstel proces als de bewerking voor het maken of bijwerken van de service tier een hogere prioriteit heeft.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover
 
-**Vallen** Sep 2019
+**Datum:** Sep 2019
 
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) functie waarmee u kunt beperken dat de resources die aan de werk belasting van de gebruiker zijn toegewezen, een bepaalde werk belasting onjuist classificeert na een failover of door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of de maximale opslag grootte voor instanties).
 
@@ -599,15 +600,15 @@ Voortdurende `RESTORE`-instructie, migratie proces van gegevens migratie service
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag
 
-**Vallen** Aug 2019
+**Datum:** Aug 2019
 
 Service Broker dialoog vensters voor meerdere data bases worden gestopt met het leveren van berichten aan de services in andere data bases nadat de bewerking van de service tier is gewijzigd. De berichten zijn **niet verloren gegaan** en kunnen worden gevonden in de wachtrij van de afzender. Elke wijziging van de vCores of de opslag grootte van een exemplaar in een beheerd exemplaar leidt ertoe dat `service_broke_guid` waarde in de weer gave [sys. data bases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Een `DIALOG` dat is gemaakt met de instructie [begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , die verwijst naar service-Brokers in een andere data base, stopt met het leveren van berichten aan de doel service.
 
-**Enkele** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert. Als er nog andere berichten zijn die niet worden bezorgd na wijziging van de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
+**Tijdelijke oplossing:** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert. Als er nog andere berichten zijn die niet worden bezorgd na wijziging van de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonification van Azure AD-aanmeldings typen wordt niet ondersteund
 
-**Vallen** Juli 2019
+**Datum:** 2019 juli
 
 Imitatie met behulp van `EXECUTE AS USER` of `EXECUTE AS LOGIN` van de volgende AAD-principals wordt niet ondersteund:
 -   Aliased AAD-gebruikers. De volgende fout wordt weer gegeven in dit geval `15517`.
@@ -615,19 +616,19 @@ Imitatie met behulp van `EXECUTE AS USER` of `EXECUTE AS LOGIN` van de volgende 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query para meter wordt niet ondersteund in sp_send_db_mail
 
-**Vallen** April 2019
+**Datum:** April 2019
 
 De `@query`-para meter in de [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) procedure werkt niet.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Transactionele replicatie moet opnieuw worden geconfigureerd na geo-failover
 
-**Vallen** Mrt 2019
+**Datum:** Mrt 2019
 
 Als transactionele replicatie is ingeschakeld voor een data base in een groep met automatische failover, moet de beheerder van het beheerde exemplaar alle publicaties opschonen op de oude primaire en opnieuw configureren op de nieuwe primaire versie nadat een failover naar een andere regio is uitgevoerd. Zie [replicatie](#replication) voor meer informatie.
 
 ### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>AAD-aanmeldingen en-gebruikers worden niet ondersteund in SSDT
 
-**Vallen** Nov 2019
+**Datum:** Nov 2019
 
 SQL Server Data Tools Azure Active Directory-aanmeldingen en-gebruikers niet volledig ondersteunen.
 
@@ -635,7 +636,7 @@ SQL Server Data Tools Azure Active Directory-aanmeldingen en-gebruikers niet vol
 
 Wanneer een Data Base wordt hersteld op een beheerd exemplaar, wordt door de Restore-service eerst een lege data base met de gewenste naam gemaakt om de naam van het exemplaar toe te wijzen. Na enige tijd wordt deze data base verwijderd en wordt het herstellen van de werkelijke data base gestart. De data base die zich in de *herstel* status bevindt, heeft tijdelijk een wille KEURige GUID-waarde in plaats van een naam. De tijdelijke naam wordt gewijzigd in de gewenste naam die is opgegeven in `RESTORE`-instructie nadat het herstel proces is voltooid. In de eerste fase heeft de gebruiker toegang tot de lege data base en kan zelfs tabellen worden gemaakt of gegevens worden geladen in deze data base. Deze tijdelijke data base wordt verwijderd wanneer de Restore-service de tweede fase start.
 
-**Tijdelijke oplossing**: Geen toegang tot de data base die u wilt herstellen, totdat u ziet dat de herstel bewerking is voltooid.
+**Tijdelijke oplossing**: Maak geen toegang tot de data base die u wilt herstellen, totdat u ziet dat de herstel bewerking is voltooid.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
 
@@ -695,13 +696,13 @@ using (var scope = new TransactionScope())
 
 Hoewel deze code werkt met gegevens binnen hetzelfde exemplaar, is MSDTC vereist.
 
-**Enkele** Gebruik [SqlConnection. ChangeDatabase (teken reeks)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) als u een andere data base in een verbindings context wilt gebruiken in plaats van twee verbindingen te gebruiken.
+**Tijdelijke oplossing:** Gebruik [SqlConnection. ChangeDatabase (teken reeks)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) als u een andere data base in een verbindings context wilt gebruiken in plaats van twee verbindingen te gebruiken.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres
 
 CLR-modules die worden geplaatst in een beheerd exemplaar en gekoppelde servers of gedistribueerde query's die verwijzen naar een huidige instantie, kunnen het IP-adres van een lokaal exemplaar soms niet omzetten. Deze fout is een tijdelijk probleem.
 
-**Enkele** Gebruik, indien mogelijk, context verbindingen in een CLR-module.
+**Tijdelijke oplossing:** Gebruik, indien mogelijk, context verbindingen in een CLR-module.
 
 ## <a name="next-steps"></a>Volgende stappen
 

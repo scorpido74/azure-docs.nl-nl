@@ -7,32 +7,32 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 346a44f02667976d95125b72371b6e33715ee4b1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211150"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462515"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Query aanvragen bewaken in azure Cognitive Search
 
-In dit artikel wordt uitgelegd hoe u de prestaties en het volume van query's meet met behulp van metrische gegevens. Ook wordt uitgelegd hoe u de invoer termen kunt verzamelen die worden gebruikt in query's-benodigde informatie wanneer u het hulp programma en de effectiviteit van uw zoek verzameling moet beoordelen.
+In dit artikel wordt uitgelegd hoe u de prestaties en het volume van query's meet met metrische gegevens en diagnostische logboek registratie. Ook wordt uitgelegd hoe u de invoer termen kunt verzamelen die worden gebruikt in query's-benodigde informatie wanneer u het hulp programma en de effectiviteit van uw zoek verzameling moet beoordelen.
 
-Historische gegevens die feeds in metrieken, worden 30 dagen bewaard. Voor een langere retentie of voor het rapporteren van operationele gegevens en query reeksen moet u een [Diagnostische instelling](search-monitor-logs.md) inschakelen waarmee een opslag optie wordt opgegeven.
+Historische gegevens die feeds in metrieken, worden 30 dagen bewaard. Voor een langere retentie of voor het rapporteren van operationele gegevens en query reeksen moet u een [Diagnostische instelling](search-monitor-logs.md) inschakelen waarmee een opslag optie wordt opgegeven voor het persistent maken van vastgelegde logboeken en metrieken.
 
-Voor waarden die de integriteit van gegevens metingen maximaliseren, zijn:
+Voor waarden die de integriteit van gegevens meting maximaliseren zijn:
 
 + Gebruik een factureer bare service (een service die is gemaakt op basis van de Basic-of Standard-laag). De gratis service wordt gedeeld door meerdere abonnees, waarmee een bepaalde hoeveelheid volatiliteit wordt geïntroduceerd naarmate de werk belasting wordt geschoven.
 
-+ Gebruik één replica, indien mogelijk, zodat berekeningen beperkt zijn tot één machine. Als u meerdere replica's gebruikt, worden de metrische gegevens van de query gemiddeld op meerdere knoop punten, wat sneller kan zijn. Als u de query prestaties afstemt, biedt één knoop punt een stabielere omgeving voor het testen.
++ Gebruik één replica en partitie, indien mogelijk, om een opgenomen en geïsoleerde omgeving te maken. Als u meerdere replica's gebruikt, worden de metrische gegevens van de query gemiddeld verdeeld over meerdere knoop punten, wat de nauw keurigheid van de resultaten kan verlagen. Op dezelfde manier betekenen meerdere partities dat gegevens worden gedeeld, met het potentieel dat sommige partities andere gegevens kunnen hebben als de indexering ook wordt uitgevoerd. Bij het afstemmen van query prestaties biedt één knoop punt en partitie een stabielere omgeving voor het testen.
 
 > [!Tip]
 > Met aanvullende client-side code en Application Insights, kunt u ook doorgestuurde gegevens vastleggen voor een dieper inzicht in wat het belang van uw toepassings gebruikers trekt. Zie voor meer informatie [Search Traffic Analytics](search-traffic-analytics.md)(Engelstalig).
 
 ## <a name="query-volume-qps"></a>Query volume (QPS)
 
-Het volume wordt gemeten als **Zoek Query's per seconde** (qps), een ingebouwde metriek die kan worden gerapporteerd als gemiddeld, aantal, minimum of maximum waarden van query's die binnen een venster van één minuut worden uitgevoerd. Een interval van één minuut (TimeGrain = "PT1M") voor metrische gegevens is in het systeem opgelost.
+Volume wordt gemeten als **Zoek Query's per seconde** (qps), een ingebouwde metriek die kan worden gerapporteerd als gemiddeld, aantal, minimum of maximum waarden van query's die in een venster van één minuut worden uitgevoerd. Een interval van één minuut (TimeGrain = "PT1M") voor metrische gegevens is in het systeem opgelost.
 
 Het is gebruikelijk om query's uit te voeren in milliseconden, zodat alleen query's die als seconden worden gemeten, worden weer gegeven in metrische gegevens.
 
@@ -116,6 +116,45 @@ Open Metrics Explorer in het menu **bewaking** , zodat u de gegevens kunt inzoom
 
 1. Zoom in op een interesse gebied in het lijn diagram. Plaats de muis aanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd de muis knop ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. De grafiek wordt in dat tijds bereik ingezoomd.
 
+## <a name="identify-strings-used-in-queries"></a>Teken reeksen identificeren die worden gebruikt in query's
+
+Wanneer u diagnostische logboek registratie inschakelt, legt het systeem query aanvragen vast in de tabel **AzureDiagnostics** . Als vereiste moet u [Diagnostische logboek registratie](search-monitor-logs.md)al hebben ingeschakeld, een log Analytics-werk ruimte of een andere opslag optie opgeven.
+
+1. Selecteer in de sectie bewaking **Logboeken** om een leeg query venster te openen in log Analytics.
+
+1. Voer de volgende expressie uit om Query's te zoeken. Zoek opdrachten, een tabellaire resultaatset retour neren die bestaat uit de bewerkings naam, de query reeks, de opgevraagde index en het aantal documenten dat is gevonden. De laatste twee instructies bevatten query reeksen die bestaan uit een lege of niet-opgegeven zoek opdracht, via een voor beeld-index, waardoor de ruis in uw resultaten wordt uitgesplitst.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, Query_s, IndexName_s, Documents_d
+   | where OperationName == "Query.Search"
+   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where IndexName_s != "realestate-us-sample-index"
+   ```
+
+1. U kunt eventueel een kolom filter op *Query_s* instellen om te zoeken naar een specifieke syntaxis of teken reeks. U kunt bijvoorbeeld filteren op *is gelijk aan* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
+
+   ![Teken reeksen van vastgelegde query's](./media/search-monitor-usage/log-query-strings.png "Teken reeksen van vastgelegde query's")
+
+Hoewel deze methode werkt voor ad-hoc onderzoek, kunt u met het maken van een rapport de query reeksen samen voegen en presen teren in een lay-out die bevorderlijk is voor analyse.
+
+## <a name="identify-long-running-queries"></a>Langlopende query's identificeren
+
+Voeg de kolom duur toe om de getallen voor alle query's op te halen, niet alleen de waarden die worden opgehaald als metriek. Als u deze gegevens sorteert, ziet u welke query's het langst duren om te volt ooien.
+
+1. Selecteer in de sectie bewaking **Logboeken** om te zoeken naar logboek gegevens.
+
+1. Voer de volgende query uit om query's te retour neren, gesorteerd op duur in milliseconden. De query's die het langst lopen, zijn bovenaan.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search"
+   | sort by DurationMs
+   ```
+
+   ![Query's sorteren op duur](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Query's sorteren op duur")
+
 ## <a name="create-a-metric-alert"></a>Een waarschuwing voor metrische gegevens maken
 
 Een metrische waarschuwing brengt een drempel waarde aan waarbij u een melding ontvangt of een corrigerende actie triggert die u vooraf definieert. 
@@ -144,31 +183,9 @@ Bij het pushen van de limieten van een bepaalde replica partitie, is het instell
 
 Als u een e-mail melding hebt opgegeven, ontvangt u een e-mail bericht van ' Microsoft Azure ' met een onderwerpregel van ' Azure: geactiveerde Ernst: 3 `<your rule name>`'.
 
-## <a name="query-strings-used-in-queries"></a>Query teken reeksen die worden gebruikt in query's
+<!-- ## Report query data
 
-Wanneer u diagnostische logboek registratie inschakelt, legt het systeem query aanvragen vast in de tabel **AzureDiagnostics** . Als vereiste moet u [Diagnostische logboek registratie](search-monitor-logs.md)al hebben ingeschakeld, een log Analytics-werk ruimte of een andere opslag optie opgeven.
-
-1. Selecteer in de sectie bewaking **Logboeken** om een leeg query venster te openen in log Analytics.
-
-1. Voer de volgende expressie uit om de query te zoeken. Zoek opdrachten, waarbij een tabellaire resultaten worden geretourneerd die bestaan uit de bewerkings naam, de query reeks, de opgevraagde index en het aantal gevonden documenten. De laatste twee instructies bevatten query reeksen die bestaan uit een lege of niet-opgegeven zoek opdracht, via een voor beeld-index, waardoor de ruis in uw resultaten wordt uitgesplitst.
-
-   ```
-    AzureDiagnostics 
-     | project OperationName, Query_s, IndexName_s, Documents_d 
-     | where OperationName == "Query.Search"
-     | where Query_s != "?api-version=2019-05-06&search=*"
-     | where IndexName_s != "realestate-us-sample-index"
-   ```
-
-1. U kunt eventueel een kolom filter op *Query_s* instellen om te zoeken naar een specifieke syntaxis of teken reeks. U kunt bijvoorbeeld filteren op *is gelijk aan* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
-
-   ![Teken reeksen van vastgelegde query's](./media/search-monitor-usage/log-query-strings.png "Teken reeksen van vastgelegde query's")
-
-Hoewel deze methode werkt voor ad-hoc onderzoek, kunt u met het maken van een rapport de query reeksen samen voegen en presen teren in een lay-out die bevorderlijk is voor analyse.
-
-## <a name="report-query-data"></a>Rapport query gegevens
-
-Power BI is een hulp programma voor analytische rapportage dat u kunt gebruiken voor logboek gegevens die zijn opgeslagen in Blob Storage of een Log Analytics-werk ruimte.
+Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>Volgende stappen
 

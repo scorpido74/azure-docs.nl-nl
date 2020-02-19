@@ -6,18 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 4d0b301dee363c2338cb13a9fc09ee17549467eb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668845"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461552"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client-en Server versie beheer in Mobile Apps en Mobile Services
-> [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
->
-> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 De nieuwste versie van Azure Mobile Services is de **Mobile apps** -functie van Azure app service.
 
@@ -64,10 +60,10 @@ Versie controle is opgenomen in de volgende server SDK-versies:
 ### <a name="behavior-of-mobile-apps-backends"></a>Gedrag van Mobile Apps back-ends
 | ZUMO-API-VERSIE | Waarde van MS_SkipVersionCheck | Antwoord |
 | --- | --- | --- |
-| x. y. z of Null |Waar |200-OK |
+| x. y. z of Null |True |200 - OK |
 | Null |ONWAAR/niet opgegeven |400 - Foute aanvraag |
 | 1. x. y |ONWAAR/niet opgegeven |400 - Foute aanvraag |
-| 2.0.0-2. x. y |ONWAAR/niet opgegeven |200-OK |
+| 2.0.0-2. x. y |ONWAAR/niet opgegeven |200 - OK |
 | 3.0.0-3. x. y |ONWAAR/niet opgegeven |400 - Foute aanvraag |
 
 [Mobile Services clients]: #MobileServicesClients

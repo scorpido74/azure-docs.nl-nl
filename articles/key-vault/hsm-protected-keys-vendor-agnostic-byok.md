@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429291"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461739"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Met HSM beveiligde sleutels importeren in Key Vault (preview-versie)
 
@@ -52,13 +52,13 @@ Zie de volgende tabel voor een lijst met vereisten voor het nemen van uw eigen s
 | Een abonnement op Azure |Als u een Azure Key Vault wilt maken, hebt u een Azure-abonnement nodig: Meld u aan [voor een gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) |
 | Een sleutel kluis (Premium SKU) voor het importeren van met HSM beveiligde sleutels |Zie de [Azure Key Vault-prijs](https://azure.microsoft.com/pricing/details/key-vault/) website voor meer informatie over de service lagen en mogelijkheden voor Azure Key Vault. |
 | Een HSM van de lijst met ondersteunde Hsm's samen met het BYOK-hulp programma en instructies van de HSM-leverancier | U moet toegang hebben tot een Hardware Security module en basis kennis van uw Hsm's. Zie [ondersteunde hsm's](#supported-hsms). |
-| Azure CLI-versie 2.0.82 of hoger | Zie [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie.|
+| Azure CLI-versie 2.1.0 of hoger | Zie [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie.|
 
 ## <a name="supported-hsms"></a>Ondersteunde Hsm's
 
 |Naam van HSM-leverancier|Ondersteunde HSM-modellen|Aanvullende details|
 |---|---|---|
-|Thales|SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger| [SafeNet Luna BYOK tool en documentatie](https://safenet.gemalto.com/blah-blah)|
+|Thales|SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger| [SafeNet Luna BYOK tool en documentatie](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
 
 > [!NOTE]

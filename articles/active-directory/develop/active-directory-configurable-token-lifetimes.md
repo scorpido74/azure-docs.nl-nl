@@ -5,25 +5,24 @@ description: Meer informatie over het instellen van de levens duur voor tokens d
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.custom: aaddev, annaba, identityplatformtop40
-ms.reviewer: hirsin
-ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40
+ms.reviewer: hirsin, jlu, annaba
+ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699016"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461195"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
-U kunt de levensduur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie.
+U kunt de levens duur opgeven van een token dat is uitgegeven door Azure Active Directory (Azure AD). U kunt de levens duur van tokens instellen voor alle apps in uw organisatie, voor een multi tenant-toepassing (meerdere organisaties) of voor een specifieke Service-Principal in uw organisatie.
 
 > [!IMPORTANT]
 > Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 1 mei 2020 kunt u de Configureer bare token levensduur beleid niet gebruiken voor het configureren van sessie-en vernieuwings tokens. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
@@ -33,9 +32,8 @@ In azure AD vertegenwoordigt een beleids object een set regels die worden afgedw
 U kunt een beleid instellen als het standaard beleid voor uw organisatie. Het beleid wordt toegepast op alle toepassingen in de organisatie, zolang deze niet worden overschreven door een beleid met een hogere prioriteit. U kunt ook een beleid toewijzen aan specifieke toepassingen. De volg orde van prioriteit is afhankelijk van het beleids type.
 
 > [!NOTE]
-> Het beleid voor de levens duur van Configureer bare tokens wordt niet ondersteund voor share point online.  Hoewel u de mogelijkheid hebt om dit beleid via Power shell te maken, wordt dit beleid niet door share point online bevestigd. Raadpleeg de [share point online-blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) voor meer informatie over het configureren van time-outs voor inactieve sessies.
->* De standaard levensduur voor het share point online-toegangs token is 1 uur. 
->* De standaard waarde voor inactieve tijd van het share point online-vernieuwings token is 90 dagen.
+> Configureerbaar token levensduur beleid is alleen van toepassing op mobiele en desktop-clients die toegang hebben tot share point online en OneDrive voor bedrijven-resources, en is niet van toepassing op webbrowser sessies.
+> Als u de levens duur van webbrowser sessies voor share point online en OneDrive voor bedrijven wilt beheren, gebruikt u de functie voor de [levens duur van de voorwaardelijke toegang](../conditional-access/howto-conditional-access-session-lifetime.md) . Raadpleeg de [share point online-blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) voor meer informatie over het configureren van time-outs voor inactieve sessies.
 
 ## <a name="token-types"></a>Token typen
 
@@ -89,10 +87,10 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | --- | --- | --- | --- | --- | --- |
 | Levens duur van toegangs token |AccessTokenLifetime<sup>2</sup> |Toegangs tokens, ID-tokens, SAML2-tokens |1 uur |10 minuten |1 dag |
 | Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime |Tokens vernieuwen |90 dagen |10 minuten |90 dagen |
-| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
-| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
-| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
-| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-revoked<sup>1</sup> |
+| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) |Until-revoked |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) |Until-revoked |10 minuten |Until-ingetrokken<sup>1</sup> |
 
 * <sup>1</sup>365 dagen is de maximale expliciete lengte die voor deze kenmerken kan worden ingesteld.
 * <sup>2</sup> Om ervoor te zorgen dat de webclient van micro soft teams werkt, wordt aanbevolen om AccessTokenLifetime meer dan 15 minuten te houden voor micro soft-teams.
@@ -456,7 +454,7 @@ Hiermee verwijdert u het opgegeven beleid.
 
 </br></br>
 
-### <a name="application-policies"></a>Toepassingsbeleid
+### <a name="application-policies"></a>Toepassings beleid
 U kunt de volgende cmdlets voor toepassings beleid gebruiken.</br></br>
 
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy

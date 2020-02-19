@@ -1,16 +1,16 @@
 ---
-title: SSL inschakelen in een container groep
-description: Een SSL-of TLS-eind punt maken voor een container groep die wordt uitgevoerd in Azure Container Instances
+title: SSL inschakelen met de container zijspan
+description: Een SSL-of TLS-eind punt maken voor een container groep die wordt uitgevoerd in Azure Container Instances door nginx uit te voeren in een zijspan container
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/14/2020
+ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773061"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460549"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Een SSL-eind punt in een container groep inschakelen
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Een SSL-eind punt inschakelen in een zijspan wagen
 
 In dit artikel wordt beschreven hoe u een [container groep](container-instances-container-groups.md) maakt met een toepassings container en een zijspan container met een SSL-provider. Door een container groep met een apart SSL-eind punt in te stellen, schakelt u SSL-verbindingen voor uw toepassing in zonder de toepassings code te wijzigen.
 
@@ -18,7 +18,9 @@ U stelt een voorbeeld container groep in die bestaat uit twee containers:
 * Een toepassings container die een eenvoudige web-app uitvoert met behulp van de open bare installatie kopie van micro soft [ACI-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) . 
 * Een zijspan container waarop de open bare [nginx](https://hub.docker.com/_/nginx) -installatie kopie wordt uitgevoerd en die is geconfigureerd voor het gebruik van SSL. 
 
-In dit voor beeld heeft de container groep alleen poort 443 voor nginx met het open bare IP-adres. Nginx stuurt HTTPS-aanvragen naar de Companion-web-app die intern luistert op poort 80. U kunt het voor beeld aanpassen voor container-apps die Luis teren op andere poorten. Zie de [volgende stappen](#next-steps) voor andere benaderingen om SSL in te scha kelen in een container groep.
+In dit voor beeld heeft de container groep alleen poort 443 voor nginx met het open bare IP-adres. Nginx stuurt HTTPS-aanvragen naar de Companion-web-app die intern luistert op poort 80. U kunt het voor beeld aanpassen voor container-apps die Luis teren op andere poorten. 
+
+Zie de [volgende stappen](#next-steps) voor andere benaderingen om SSL in te scha kelen in een container groep.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,13 +52,13 @@ U ziet nu drie bestanden in de map: de certificaat aanvraag (`ssl.csr`), de pers
 
 ### <a name="create-nginx-configuration-file"></a>Nginx-configuratie bestand maken
 
-In deze sectie maakt u een configuratie bestand voor nginx voor het gebruik van SSL. Begin met het kopiëren van de volgende tekst in een nieuw bestand met de naam`nginx.conf`. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
+In deze sectie maakt u een configuratie bestand voor nginx voor het gebruik van SSL. Begin met het kopiëren van de volgende tekst in een nieuw bestand met de naam `nginx.conf`. In Azure Cloud Shell kunt u Visual Studio code gebruiken om het bestand in uw werkmap te maken:
 
 ```console
 code nginx.conf
 ```
 
-In `location`moet u `proxy_pass` instellen met de juiste poort voor de app. In dit voor beeld stellen we poort 80 in voor de `aci-helloworld`-container.
+In `location`moet u `proxy_pass` instellen met de juiste poort voor uw app. In dit voor beeld stellen we poort 80 in voor de `aci-helloworld`-container.
 
 ```console
 # nginx Configuration File
@@ -85,7 +87,7 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
@@ -125,9 +127,9 @@ http {
 Base64: het nginx-configuratie bestand, het SSL-certificaat en de SSL-sleutel coderen. In de volgende sectie voert u de versleutelde inhoud in een YAML-bestand in die wordt gebruikt voor het implementeren van de container groep.
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>Container groep implementeren
@@ -216,17 +218,18 @@ Voor een geslaagde implementatie lijkt de uitvoer op de volgende manier:
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="verify-ssl-connection"></a>SSL-verbinding controleren
 
-Als u de actieve toepassing wilt bekijken, gaat u naar het IP-adres in uw browser. Het IP-adres dat in dit voor beeld wordt weer gegeven, is bijvoorbeeld `52.157.22.76`. U moet `https://<IP-ADDRESS>` gebruiken om de actieve toepassing weer te geven vanwege de configuratie van de nginx-server. Poging om verbinding te maken met `http://<IP-ADDRESS>` mislukt.
+Ga in uw browser naar het open bare IP-adres van de container groep. Het IP-adres dat in dit voor beeld wordt weer gegeven, is `52.157.22.76`, dus de URL is **https://52.157.22.76** . U moet HTTPS gebruiken om de actieve toepassing weer te geven vanwege de configuratie van de nginx-server. Pogingen om verbinding te maken via HTTP mislukt.
 
 ![Schermafbeelding van browser met toepassing die wordt uitgevoerd in een exemplaar van een Azure-container](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Omdat in dit voor beeld een zelfondertekend certificaat en niet een van een certificerings instantie wordt gebruikt, wordt in de browser een beveiligings waarschuwing weer gegeven wanneer verbinding wordt gemaakt met de site via HTTPS. Dit gedrag is verwacht.
+> Omdat in dit voor beeld een zelfondertekend certificaat en niet een van een certificerings instantie wordt gebruikt, wordt in de browser een beveiligings waarschuwing weer gegeven wanneer verbinding wordt gemaakt met de site via HTTPS. Mogelijk moet u de waarschuwing accepteren of de instellingen voor de browser of het certificaat aanpassen om door te gaan naar de pagina. Dit gedrag is verwacht.
+
 >
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -239,6 +242,4 @@ Als u uw container groep in een [virtueel Azure-netwerk](container-instances-vne
 
 * [Azure Functions-proxy's](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md)
-
-Als u een toepassings gateway wilt gebruiken, raadpleegt u een voorbeeld [implementatie sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).
+* [Azure-toepassing gateway](../application-gateway/overview.md) : zie een voorbeeld [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)voor de implementatie.

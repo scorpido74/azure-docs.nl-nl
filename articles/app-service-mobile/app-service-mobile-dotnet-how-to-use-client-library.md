@@ -6,25 +6,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668472"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459188"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>De beheerde client gebruiken voor Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-> [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
->
-> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
-
 ## <a name="overview"></a>Overzicht
 In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met behulp van de beheerde client bibliotheek voor Azure App Service-Mobile Apps voor Windows-en Xamarin-apps. Als u nog niet bekend bent met Mobile Apps, kunt u eerst de zelf studie voor [Azure Mobile apps Snelstartgids][1] volt ooien. In deze hand leiding richten we ons op de aan de client zijde beheerde SDK. Zie de documentatie voor de [.NET Server SDK][2] of de [node. js-Server-SDK][3]voor meer informatie over de sdk's aan de server zijde voor Mobile apps.
 
-## <a name="reference-documentation"></a>Referentiedocumentatie
+## <a name="reference-documentation"></a>Referentie documentatie
 De referentie documentatie voor de client-SDK bevindt zich hier: [Azure Mobile apps .net-client referentie][4].
 U kunt ook verschillende client voorbeelden vinden in de [github-opslag plaats Azure-samples][5].
 
@@ -34,7 +29,7 @@ Het .NET-platform ondersteunt de volgende platforms:
 * Xamarin Android-releases voor API 19 tot 24 (KitKat via Nougat)
 * Xamarin iOS-releases voor iOS-versies 8,0 en hoger
 * Universeel Windows-platform
-* Windows Phone 8,1
+* Windows Phone 8.1
 * Windows Phone 8,0, met uitzonde ring van Silverlight-toepassingen
 
 De verificatie server stroom gebruikt een webweergave voor de weer gegeven gebruikers interface.  Als het apparaat geen gebruikers interface voor webweergave kan presen teren, zijn er andere verificatie methoden nodig.  Deze SDK is dus niet geschikt voor controle-en soort gelijke apparaten.
@@ -59,7 +54,7 @@ public class TodoItem
 
 De [JsonPropertyAttribute][6] wordt gebruikt voor het definiëren van de toewijzing van de naam van de *eigenschap* tussen het veld client en het tabel veld.
 
-Zie het [onderwerp .NET Server SDK][7] of het [onderwerp node. js Server SDK][8]voor meer informatie over het maken van tabellen in uw Mobile apps back-end. Als u de back-end van uw mobiele app hebt gemaakt in de Azure Portal met behulp van Quick Start, kunt u ook de instelling **eenvoudige tabellen** gebruiken in de [Azure-portal].
+Zie het [onderwerp .NET Server SDK][7] of het [onderwerp node. js Server SDK][8]voor meer informatie over het maken van tabellen in uw Mobile apps back-end. Als u de back-end van uw mobiele app hebt gemaakt in de Azure Portal met behulp van Quick Start, kunt u ook de instelling **eenvoudige tabellen** gebruiken in de [Azure Portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Procedure: het SDK-pakket voor beheerde clients installeren
 Gebruik een van de volgende methoden om het beheerde client SDK-pakket voor Mobile Apps te installeren vanuit [NuGet][9]:
@@ -86,7 +81,7 @@ Met de volgende code wordt het [mobileserviceclient te maken][12] -object gemaak
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Vervang in de voor gaande code `MOBILE_APP_URL` door de URL van de back-end van de mobiele app. deze vindt u in de Blade voor de back-end van uw mobiele app in de [Azure-portal]. Het Mobileserviceclient te maken-object moet een singleton zijn.
+Vervang in de voor gaande code `MOBILE_APP_URL` door de URL van de back-end van de mobiele app. deze vindt u in de Blade voor de back-end van uw mobiele app in de [Azure Portal]. Het Mobileserviceclient te maken-object moet een singleton zijn.
 
 ## <a name="work-with-tables"></a>Werken met tabellen
 De volgende sectie bevat informatie over het zoeken en ophalen van records en het wijzigen van de gegevens in de tabel.  De volgende onderwerpen komen aan bod:
@@ -651,7 +646,7 @@ U kunt de Active Directory Authentication Library (ADAL) gebruiken voor het init
 2. Open in Visual Studio of Xamarin Studio het project en voeg een verwijzing naar het NuGet-pakket van `Microsoft.IdentityModel.Clients.ActiveDirectory` toe. Bij het zoeken van voorlopige versies bevatten.
 3. Voeg de volgende code toe aan uw toepassing, afhankelijk van het platform dat u gebruikt. Voer in elk de volgende vervangingen uit:
 
-   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.com zijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure-portal].
+   * Vervang de **INVOEG instantie** door de naam van de Tenant waarin u uw toepassing hebt ingericht. De notatie moet https://login.microsoftonline.com/contoso.onmicrosoft.comzijn. Deze waarde kan worden gekopieerd van het tabblad domein in uw Azure Active Directory in de [Azure Portal].
    * Vervang de **Insert-resource-id hier** door de client-id voor de back-end van uw mobiele app. U kunt de client-ID verkrijgen via het tabblad **Geavanceerd** onder **Azure Active Directory instellingen** in de portal.
    * Vervang **Insert-client-id-hier** door de client-id die u hebt gekopieerd uit de systeem eigen client toepassing.
    * Vervang **Insert-redirect-Uri-hier** met het */.auth/login/done* -eind punt van uw site met behulp van het HTTPS-schema. Deze waarde moet gelijk zijn aan *https://contoso.azurewebsites.net/.auth/login/done* .
@@ -1065,7 +1060,7 @@ public class MyHandler : DelegatingHandler
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [Naam]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Positie]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [GUID. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

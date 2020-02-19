@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 70d843f5773f66e6e17c40d0441553e3cb096c64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169875"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462153"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -54,24 +54,25 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 > Hoewel in dit artikel voor waarden en concepten worden gedefinieerd die worden gebruikt door Azure Machine Learning, worden er geen termen en concepten voor het Azure-platform gedefinieerd. Zie de [Microsoft Azure verklarende woorden lijst](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)voor meer informatie over de terminologie van het Azure-platform.
 
 ## <a name="glossary"></a>Woordenlijst
-+ <a href="#activities">Activiteit</a>
-+ <a href="#compute-targets">Compute-doelen</a>
-+ <a href="#datasets-and-datastores">Gegevensset & gegevens opslag</a>
-+ <a href="#endpoints">Eind punten</a>
-+ <a href="#environments">Verschillend</a>
-+ [Schattingen](#estimators)
-+ <a href="#experiments">Experimenten</a>
-+ <a href="#github-tracking-and-integration">Git-tracking</a>
-+ <a href="#iot-module-endpoints">IoT-modules</a>
-+ <a href="#logging">Userenv</a>
-+ <a href="#ml-pipelines">ML-pijp lijnen</a>
-+ <a href="#models">Basis</a>
-+ <a href="#runs">Uitvoeringsrun</a>
-+ <a href="#run-configurations">Configuratie uitvoeren</a>
-+ <a href="#snapshots">Snapshot</a>
-+ <a href="#training-scripts">Trainings script</a>
-+ <a href="#web-service-endpoint">Webservices</a>
-+ <a href="#workspaces">Werk ruimte</a>
+
+* [Activiteit](#activities)
+* [Werk ruimte](#workspaces)
+    * [Experimenten](#experiments)
+        * [Uitvoeringsrun](#runs) 
+            * [Configuratie uitvoeren](#run-configurations)
+            * [Snapshot](#snapshots)
+            * [Git-tracking](#github-tracking-and-integration)
+            * [Userenv](#logging)
+    * [ML-pijp lijnen](#ml-pipelines)
+    * [Basis](#models)
+        * [Verschillend](#environments)
+        * [Trainings script](#training-scripts)
+        * [Schattingen](#estimators)
+    * [Eind punten](#endpoints)
+        * [-Webservice](#web-service-endpoint)
+        * [IoT-modules](#iot-module-endpoints)
+    * [Gegevensset & gegevens opslag](#datasets-and-datastores)
+    * [Compute-doelen](#compute-targets)
 
 ### <a name="activities"></a>Activiteiten
 
@@ -82,71 +83,9 @@ Een activiteit vertegenwoordigt een langdurige bewerking. De volgende bewerkinge
 
 Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgang van deze bewerkingen eenvoudig kunt bewaken.
 
-### <a name="compute-instance"></a>Reken instantie (preview-versie)
+### <a name="workspaces"></a>Workspaces
 
-
-Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een volledig beheerd werk station in de Cloud met meerdere hulpprogram ma's en omgevingen die voor machine learning zijn geïnstalleerd. Reken instanties kunnen worden gebruikt als een reken doel voor trainings-en detraining-taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
-
-Meer informatie over [Compute-exemplaren](concept-compute-instance.md).
-
-### <a name="compute-targets"></a>Rekendoelen
-
-Met een [reken doel](concept-compute-target.md) kunt u de reken resource opgeven waarin u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn.
-
-Meer informatie over de [beschik bare reken doelen voor training en implementatie](concept-compute-target.md).
-
-### <a name="datasets-and-datastores"></a>Gegevens sets en gegevens opslag
-
-Met **Azure machine learning gegevens sets** (preview) kunt u eenvoudig toegang krijgen tot uw gegevens en deze gebruiken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, gegevens te verkennen en de levens cyclus van verschillende gegevensset-definities te beheren.
-
-Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het gebruik van `from_delimited_files()` of `to_pandas_dataframe()`.
-
-Zie [Azure machine learning gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.  Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)voor meer voor beelden met behulp van gegevens sets.
-
-Een **gegevens archief** is een opslag abstractie van een Azure-opslag account. De gegevens opslag kan ofwel een Azure Blob-container ofwel een Azure-bestands share als de back-end-opslag gebruiken. Elke werk ruimte heeft een standaard gegevens opslag en u kunt aanvullende gegevens opslag registreren. Gebruik de python SDK API of de Azure Machine Learning CLI om bestanden op te slaan en op te halen uit de gegevens opslag.
-
-### <a name="endpoints"></a>Eindpunten
-
-Een eind punt is een instantie van uw model in een webservice die kan worden gehost in de Cloud of een IoT-module voor geïntegreerde implementaties van apparaten.
-
-#### <a name="web-service-endpoint"></a>Webservice-eind punt
-
-Bij het implementeren van een model als een webservice kan het eind punt worden geïmplementeerd op Azure Container Instances, Azure Kubernetes service of Fpga's. U maakt de service vanuit uw model, script en de bijbehorende bestanden. Deze worden in een basis container installatie kopie geplaatst die de uitvoerings omgeving voor het model bevat. De afbeelding heeft een HTTP-eind punt met gelijke taak verdeling dat Score aanvragen ontvangt die naar de webservice worden verzonden.
-
-Met Azure kunt u uw webservice bewaken door Application Insights telemetrie of model telemetrie te verzamelen, als u ervoor hebt gekozen om deze functie in te scha kelen. De telemetriegegevens zijn alleen toegankelijk voor u en worden opgeslagen in uw Application Insights-en opslag account-exemplaren.
-
-Als u automatisch schalen hebt ingeschakeld, wordt uw implementatie automatisch door Azure geschaald.
-
-Voor een voor beeld van het implementeren van een model als een webservice raadpleegt u [een installatie kopie classificatie model implementeren in azure container instances](tutorial-deploy-models-with-aml.md).
-
-#### <a name="iot-module-endpoints"></a>IoT-module-eind punten
-
-Een geïmplementeerd IoT-module-eind punt is een docker-container die uw model en het bijbehorende script of de gekoppelde toepassing en eventuele extra afhankelijkheden bevat. U implementeert deze modules met behulp van Azure IoT Edge op edge-apparaten.
-
-Als u bewaking hebt ingeschakeld, verzamelt Azure telemetriegegevens van het model in de module Azure IoT Edge. De telemetriegegevens zijn alleen toegankelijk voor u en worden opgeslagen in uw opslag account-exemplaar.
-
-Azure IoT Edge zorgt ervoor dat de module wordt uitgevoerd en controleert het apparaat waarop het wordt gehost.
-
-### <a name="environments"></a>Omgevingen
-
-Azure ML-omgevingen worden gebruikt voor het opgeven van de configuratie (docker/python/Spark/etc.) die wordt gebruikt voor het maken van een reproduceer bare omgeving voor gegevens voorbereiding, model training en model. Ze zijn beheerde en geversiede entiteiten in uw Azure Machine Learning-werk ruimte waarmee reproduceer bare, audit bare en Portable machine learning werk stromen kunnen worden toegepast op verschillende Compute-doelen.
-
-U kunt een omgevings object gebruiken op uw lokale Compute voor het ontwikkelen van uw trainings script, het hergebruiken van dezelfde omgeving op Azure Machine Learning Compute for model-training op schaal en het implementeren van uw model zelfs met diezelfde omgeving. 
-
-Meer informatie [over het maken en beheren van een herbruikbare ml omgeving](how-to-use-environments.md) voor training en demijnen.
-
-### <a name="estimators"></a>Schattingen
-
-Om model training met populaire Frameworks mogelijk te maken, kunt u met de klasse Estimator eenvoudig uitvoer configuraties bouwen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) maken en gebruiken om trainings scripts te verzenden die gebruikmaken van een door u gekozen trainings raamwerk (zoals scikit-leren).
-
-Voor PyTorch-, tensor flow-en Chainer-taken biedt Azure Machine Learning ook de geraamde [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)en [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -schattingen om het gebruik van deze frameworks te vereenvoudigen.
-
-Raadpleeg voor meer informatie de volgende artikelen:
-
-* [Train ml-modellen met schattingen](how-to-train-ml-models.md).
-* [Train Pytorche diepe Learning-modellen op schaal met Azure machine learning](how-to-train-pytorch.md).
-* [Tensor flow-modellen trainen en registreren op schaal met Azure machine learning](how-to-train-tensorflow.md).
-* [Keten modellen trainen en registreren op schaal met Azure machine learning](how-to-train-chainer.md).
+[De werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor Azure machine learning. Het biedt een centrale locatie voor het werken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt. U kunt een werk ruimte delen met anderen. Zie [Wat is een Azure machine learning-werk ruimte?](concept-workspace.md)voor een gedetailleerde beschrijving van werk ruimten.
 
 ### <a name="experiments"></a>Experimenten
 
@@ -154,6 +93,33 @@ Een experiment is een groepering van veel uitvoeringen van een opgegeven script.
 
 Zie [zelf studie: uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)voor een voor beeld van het gebruik van een experiment.
 
+### <a name="runs"></a>Methode
+
+Een uitvoering is één uitvoering van een trainings script. Een experiment bevat normaal gesp roken meerdere uitvoeringen.
+
+Azure Machine Learning registreert alle uitvoeringen en slaat de volgende informatie op in het experiment:
+
+* Meta gegevens over de uitvoering (tijds tempel, duur, enzovoort)
+* Metrische gegevens die door het script worden geregistreerd
+* Uitvoer bestanden die door het experiment worden verzameld of expliciet door u worden geüpload
+* Een momentopname van de map waarin uw scripts, voordat de uitvoering
+
+U produceert een uitvoering wanneer u een script voor het trainen van een model verzendt. Een uitvoering kan nul of meer onderliggende uitvoeringen hebben. De uitvoering op het hoogste niveau kan bijvoorbeeld twee onderliggende uitvoeringen hebben, waarvan elk een eigen onderliggend item kan hebben.
+
+### <a name="run-configurations"></a>Configuraties uitvoeren
+
+Een uitvoerings configuratie is een set instructies die definieert hoe een script moet worden uitgevoerd in een opgegeven Compute-doel. De configuratie bevat een breed scala aan gedrags definities, zoals of u een bestaande python-omgeving wilt gebruiken of een Conda-omgeving wilt gebruiken die is gebaseerd op een specificatie.
+
+Een uitvoerings configuratie kan worden opgeslagen in een bestand in de map met uw trainings script of kan worden geconstrueerd als een in-memory-object en worden gebruikt voor het verzenden van een run.
+
+Zie bijvoorbeeld configuraties [selecteren en een compute-doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md).
+
+### <a name="snapshots"></a>Momentopnamen
+
+Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning worden ook het zip-bestand opgeslagen als een momentopname als onderdeel van de record die uitvoeren. Iedereen met toegang tot de werkruimte kan een uitvoerregistratie bladeren en downloaden van de momentopname.
+
+> [!NOTE]
+> Als u wilt voor komen dat er onnodige bestanden in de moment opname worden opgenomen, maakt u een ignore-bestand (. gitignore of. amlignore). Plaats dit bestand in de map met moment opnamen en voeg de bestands namen toe die u wilt negeren. Het. amlignore-bestand gebruikt dezelfde [syntaxis en patronen als het. gitignore-bestand](https://git-scm.com/docs/gitignore). Als beide bestanden bestaan, heeft het. amlignore-bestand voor rang.
 
 ### <a name="github-tracking-and-integration"></a>GitHub bijhouden en integreren
 
@@ -196,30 +162,13 @@ U kunt een geregistreerd model dat wordt gebruikt door een actieve implementatie
 
 Zie voor een voor beeld van het registreren van een model [een afbeeldings classificatie model trainen met Azure machine learning](tutorial-train-models-with-aml.md).
 
-### <a name="runs"></a>Methode
+### <a name="environments"></a>Omgevingen
 
-Een uitvoering is één uitvoering van een trainings script. Azure Machine Learning registreert alle uitvoeringen en slaat de volgende informatie op:
+Azure ML-omgevingen worden gebruikt voor het opgeven van de configuratie (docker/python/Spark/etc.) die wordt gebruikt voor het maken van een reproduceer bare omgeving voor gegevens voorbereiding, model training en model. Ze zijn beheerde en geversiede entiteiten in uw Azure Machine Learning-werk ruimte waarmee reproduceer bare, audit bare en Portable machine learning werk stromen kunnen worden toegepast op verschillende Compute-doelen.
 
-* Meta gegevens over de uitvoering (tijds tempel, duur, enzovoort)
-* Metrische gegevens die door het script worden geregistreerd
-* Uitvoer bestanden die door het experiment worden verzameld of expliciet door u worden geüpload
-* Een momentopname van de map waarin uw scripts, voordat de uitvoering
+U kunt een omgevings object gebruiken op uw lokale Compute voor het ontwikkelen van uw trainings script, het hergebruiken van dezelfde omgeving op Azure Machine Learning Compute for model-training op schaal en het implementeren van uw model zelfs met diezelfde omgeving. 
 
-U produceert een uitvoering wanneer u een script voor het trainen van een model verzendt. Een uitvoering kan nul of meer onderliggende uitvoeringen hebben. De uitvoering op het hoogste niveau kan bijvoorbeeld twee onderliggende uitvoeringen hebben, waarvan elk een eigen onderliggend item kan hebben.
-
-### <a name="run-configurations"></a>Configuraties uitvoeren
-
-Een uitvoerings configuratie is een set instructies die definieert hoe een script moet worden uitgevoerd in een opgegeven Compute-doel. De configuratie bevat een breed scala aan gedrags definities, zoals of u een bestaande python-omgeving wilt gebruiken of een Conda-omgeving wilt gebruiken die is gebaseerd op een specificatie.
-
-Een uitvoerings configuratie kan worden opgeslagen in een bestand in de map met uw trainings script of kan worden geconstrueerd als een in-memory-object en worden gebruikt voor het verzenden van een run.
-
-Zie bijvoorbeeld configuraties [selecteren en een compute-doel gebruiken om uw model te trainen](how-to-set-up-training-targets.md).
-### <a name="snapshots"></a>Momentopnamen
-
-Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning worden ook het zip-bestand opgeslagen als een momentopname als onderdeel van de record die uitvoeren. Iedereen met toegang tot de werkruimte kan een uitvoerregistratie bladeren en downloaden van de momentopname.
-
-> [!NOTE]
-> Als u wilt voor komen dat er onnodige bestanden in de moment opname worden opgenomen, maakt u een ignore-bestand (. gitignore of. amlignore). Plaats dit bestand in de map met moment opnamen en voeg de bestands namen toe die u wilt negeren. Het. amlignore-bestand gebruikt dezelfde [syntaxis en patronen als het. gitignore-bestand](https://git-scm.com/docs/gitignore). Als beide bestanden bestaan, heeft het. amlignore-bestand voor rang.
+Meer informatie [over het maken en beheren van een herbruikbare ml omgeving](how-to-use-environments.md) voor training en demijnen.
 
 ### <a name="training-scripts"></a>Trainingsscripts
 
@@ -227,9 +176,63 @@ Als u wilt een model te trainen, moet u de map waarin het trainingsscript en de 
 
 Zie [zelf studie: een classificatie model voor een installatie kopie trainen met Azure machine learning](tutorial-train-models-with-aml.md)voor een voor beeld.
 
-### <a name="workspaces"></a>Workspaces
+### <a name="estimators"></a>Schattingen
 
-[De werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor Azure machine learning. Het biedt een centrale locatie voor het werken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt. U kunt een werk ruimte delen met anderen. Zie [Wat is een Azure machine learning-werk ruimte?](concept-workspace.md)voor een gedetailleerde beschrijving van werk ruimten.
+Om model training met populaire Frameworks mogelijk te maken, kunt u met de klasse Estimator eenvoudig uitvoer configuraties bouwen. U kunt een algemene [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) maken en gebruiken om trainings scripts te verzenden die gebruikmaken van een door u gekozen trainings raamwerk (zoals scikit-leren).
+
+Voor PyTorch-, tensor flow-en Chainer-taken biedt Azure Machine Learning ook de geraamde [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)en [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) -schattingen om het gebruik van deze frameworks te vereenvoudigen.
+
+Raadpleeg voor meer informatie de volgende artikelen:
+
+* [Train ml-modellen met schattingen](how-to-train-ml-models.md).
+* [Train Pytorche diepe Learning-modellen op schaal met Azure machine learning](how-to-train-pytorch.md).
+* [Tensor flow-modellen trainen en registreren op schaal met Azure machine learning](how-to-train-tensorflow.md).
+* [Keten modellen trainen en registreren op schaal met Azure machine learning](how-to-train-chainer.md).
+
+### <a name="endpoints"></a>Eindpunten
+
+Een eind punt is een instantie van uw model in een webservice die kan worden gehost in de Cloud of een IoT-module voor geïntegreerde implementaties van apparaten.
+
+#### <a name="web-service-endpoint"></a>Webservice-eind punt
+
+Bij het implementeren van een model als een webservice kan het eind punt worden geïmplementeerd op Azure Container Instances, Azure Kubernetes service of Fpga's. U maakt de service vanuit uw model, script en de bijbehorende bestanden. Deze worden in een basis container installatie kopie geplaatst die de uitvoerings omgeving voor het model bevat. De afbeelding heeft een HTTP-eind punt met gelijke taak verdeling dat Score aanvragen ontvangt die naar de webservice worden verzonden.
+
+Met Azure kunt u uw webservice bewaken door Application Insights telemetrie of model telemetrie te verzamelen, als u ervoor hebt gekozen om deze functie in te scha kelen. De telemetriegegevens zijn alleen toegankelijk voor u en worden opgeslagen in uw Application Insights-en opslag account-exemplaren.
+
+Als u automatisch schalen hebt ingeschakeld, wordt uw implementatie automatisch door Azure geschaald.
+
+Voor een voor beeld van het implementeren van een model als een webservice raadpleegt u [een installatie kopie classificatie model implementeren in azure container instances](tutorial-deploy-models-with-aml.md).
+
+#### <a name="iot-module-endpoints"></a>IoT-module-eind punten
+
+Een geïmplementeerd IoT-module-eind punt is een docker-container die uw model en het bijbehorende script of de gekoppelde toepassing en eventuele extra afhankelijkheden bevat. U implementeert deze modules met behulp van Azure IoT Edge op edge-apparaten.
+
+Als u bewaking hebt ingeschakeld, verzamelt Azure telemetriegegevens van het model in de module Azure IoT Edge. De telemetriegegevens zijn alleen toegankelijk voor u en worden opgeslagen in uw opslag account-exemplaar.
+
+Azure IoT Edge zorgt ervoor dat de module wordt uitgevoerd en controleert het apparaat waarop het wordt gehost.
+
+
+### <a name="compute-instance"></a>Reken instantie (preview-versie)
+
+Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een volledig beheerd werk station in de Cloud met meerdere hulpprogram ma's en omgevingen die voor machine learning zijn geïnstalleerd. Reken instanties kunnen worden gebruikt als een reken doel voor trainings-en detraining-taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
+
+Meer informatie over [Compute-exemplaren](concept-compute-instance.md).
+
+### <a name="datasets-and-datastores"></a>Gegevens sets en gegevens opslag
+
+Met **Azure machine learning gegevens sets** (preview) kunt u eenvoudig toegang krijgen tot uw gegevens en deze gebruiken. Gegevens sets worden in verschillende scenario's beheerd, zoals model training en het maken van pijp lijnen. Met de Azure Machine Learning SDK hebt u toegang tot de onderliggende opslag, gegevens te verkennen en de levens cyclus van verschillende gegevensset-definities te beheren.
+
+Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het gebruik van `from_delimited_files()` of `to_pandas_dataframe()`.
+
+Zie [Azure machine learning gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.  Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)voor meer voor beelden met behulp van gegevens sets.
+
+Een **gegevens archief** is een opslag abstractie van een Azure-opslag account. De gegevens opslag kan ofwel een Azure Blob-container ofwel een Azure-bestands share als de back-end-opslag gebruiken. Elke werk ruimte heeft een standaard gegevens opslag en u kunt aanvullende gegevens opslag registreren. Gebruik de python SDK API of de Azure Machine Learning CLI om bestanden op te slaan en op te halen uit de gegevens opslag.
+
+### <a name="compute-targets"></a>Rekendoelen
+
+Met een [reken doel](concept-compute-target.md) kunt u de reken resource opgeven waarin u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn.
+
+Meer informatie over de [beschik bare reken doelen voor training en implementatie](concept-compute-target.md).
 
 ### <a name="next-steps"></a>Volgende stappen
 

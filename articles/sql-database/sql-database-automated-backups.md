@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157496"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461766"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -81,10 +81,14 @@ Back-ups die ouder zijn dan de Bewaar periode, worden automatisch opgeschoond op
 
 Azure SQL Database berekent uw totale Bewaar back-upopslag als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te berekenen. Nadat de data base is verwijderd, neemt het verbruik af als ouderdom van back-ups. Zodra de back-ups ouder zijn dan de retentie periode, wordt de facturering gestopt. 
 
+   > [!IMPORTANT]
+   > Back-ups van een Data Base worden bewaard voor de opgegeven Bewaar periode, zelfs als de data base is verwijderd. Wanneer een Data Base vaak wordt verwijderd en opnieuw wordt gemaakt, kunnen de kosten voor de back-upopslag worden verhoogd wanneer er een back-up wordt bewaard voor de opgegeven Bewaar periode (dat wil zeggen 7 dagen op minimum) voor elke verwijderde data base. 
 
-### <a name="monitoring-consumption"></a>Bewakings verbruik
 
-Elk type back-up (volledig, differentieel en logboek) wordt op de Blade database bewaking gerapporteerd als afzonderlijke metriek. Het volgende diagram laat zien hoe u het opslag gebruik van back-ups kunt bewaken.  
+
+### <a name="monitor-consumption"></a>Verbruik bewaken
+
+Elk type back-up (volledig, differentieel en logboek) wordt op de Blade database bewaking gerapporteerd als afzonderlijke metriek. In het volgende diagram ziet u hoe het opslag gebruik van back-ups voor één data base kan worden bewaakt. Deze functie is momenteel niet beschikbaar voor beheerde exemplaren.
 
 ![Bewaak het gebruik van database back-ups op de Blade database bewaking van de Azure Portal](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Het surplus van de back-upopslag is afhankelijk van de werk belasting en de groo
 
 ## <a name="storage-costs"></a>Opslagkosten
 
+De prijs voor opslag is afhankelijk van het DTU-model of het vCore-model. 
 
 ### <a name="dtu-model"></a>DTU-model
 
@@ -120,11 +125,14 @@ We gaan ervan uit dat de data base 744 GB aan back-upopslag heeft verzameld en d
 
 Nu is een complexere voor beeld. Stel dat de data base in het midden van de maand de Bewaar periode heeft verhoogd tot 14 dagen en dit (hypothetisch) resulteert in de totale back-upopslag, verdubbeld tot 1488 GB. SQL DB rapporteert 1 GB aan gebruik voor uur 1-372 en meld het gebruik vervolgens als 2 GB voor uur 373-744. Dit wordt geaggregeerd als een definitieve factuur van 1116 GB/mo. 
 
-U kunt kosten analyse van Azure-abonnement gebruiken om uw huidige uitgaven op back-upopslag te bepalen.
+### <a name="monitor-costs"></a>Kosten bewaken
+
+Als u meer wilt weten over de kosten voor back-upopslag, gaat u naar **kosten beheer en facturering** van de Azure Portal, selecteert u **Cost Management**en selecteert u vervolgens **kosten analyse**. Selecteer het gewenste abonnement als **bereik**en filtreer vervolgens voor de periode en service waarop u bent geïnteresseerd. 
+
+Voeg een filter toe voor **service naam**en kies vervolgens **SQL data base** in de vervolg keuzelijst. Gebruik het filter **meter subcategorie** om de facturerings teller voor uw service te kiezen. Kies voor één data base of een elastische pool de optie **enkelvoudige/elastische pool pitr back-upopslag**. Voor een beheerd exemplaar kiest u **mi pitr Backup Storage**. **Opslag** -en **Compute** -subcategorieën kunnen u ook interesseren, hoewel ze niet zijn gekoppeld aan back-upopslagkosten. 
 
 ![Kosten analyse back-upopslag](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-Als u bijvoorbeeld inzicht wilt krijgen in de opslag kosten voor back-ups voor een beheerd exemplaar, gaat u naar uw abonnement in Azure Portal en opent u de Blade kosten analyse. Selecteer de meter subcategorie **mi pitr back-upopslag** om uw huidige back-upkosten en kosten prognose te bekijken. U kunt ook andere subcategorieën van de meter, zoals een **beheerde instantie voor algemeen** gebruik-opslag of **beheerde instantie, compute GEN5** gebruiken om de opslag kosten voor back-ups te vergelijken met andere kosten categorieën.
 
 ## <a name="backup-retention"></a>Retentie van back-ups
 
@@ -169,13 +177,13 @@ U kunt de standaard retentie periode voor PITR-back-ups wijzigen met behulp van 
 
 Als u de retentie periode voor PITR-back-ups wilt wijzigen met behulp van de Azure Portal, gaat u naar het Server object waarvan u de Bewaar periode wilt wijzigen in de portal en selecteert u vervolgens de juiste optie op basis van het Server object dat u wilt wijzigen.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Eén data base & elastische Pools](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[Eén data base & elastische Pools](#tab/single-database)
 
 De wijziging van de PITR-back-upbewaaring voor één Azure SQL-Data Base wordt uitgevoerd op server niveau. Wijzigingen die zijn aangebracht op server niveau, zijn van toepassing op data bases op die server. Als u PITR voor Azure SQL Database Server wilt wijzigen vanuit Azure Portal, gaat u naar de Blade Server overzicht, klikt u op back-ups beheren in het navigatie menu en klikt u vervolgens op retentie configureren op de navigatie balk.
 
 ![PITR wijzigen Azure Portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
 De wijziging van de PITR-back-upbewaaring voor SQL Database beheerde instantie wordt uitgevoerd op het niveau van een afzonderlijke data base. Als u de retentie van een PITR voor een exemplaar database van Azure Portal wilt wijzigen, gaat u naar de Blade overzicht van de afzonderlijke data base en klikt u vervolgens op back-up configureren op de navigatie balk.
 

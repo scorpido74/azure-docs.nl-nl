@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: tutorial
 ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: fa3c83f82e1942ab76ffe039847d642448434d87
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444984"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459950"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Zelf studie: uw hub Virtual Network beveiligen met behulp van Azure Firewall Manager preview 
 
@@ -62,9 +62,7 @@ Zie het gedeelte [Routes maken](#create-the-routes) in deze zelfstudie voor info
 >[!NOTE]
 >Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
 >
->Azure Firewall kunnen worden geconfigureerd voor de ondersteuning van geforceerde tunneling.
-
-<!---For more information, see [Azure Firewall forced tunneling](../firewall/forced-tunneling.md)--->
+>Azure Firewall kunnen worden geconfigureerd voor de ondersteuning van geforceerde tunneling. Zie [Azure firewall geforceerde tunneling](../firewall/forced-tunneling.md)voor meer informatie.
 
 >[!NOTE]
 >Verkeer tussen rechtstreeks gepeerde VNets wordt rechtstreeks gerouteerd, zelfs als de UDR naar Azure Firewall als standaardgateway wijst. Als u in dit scenario subnet-naar-subnet-verkeer wilt verzenden, moet een UDR het voorvoegsel van het doelsubnetwerk expliciet op beide subnetten bevatten.

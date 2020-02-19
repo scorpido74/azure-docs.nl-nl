@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9c7e49fe522859f97f00f760822d5eef60db5f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228864"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460004"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Wat is Apache Storm in Azure HDInsight?
 
@@ -42,7 +42,7 @@ Storm op HDInsight biedt de volgende functies:
 
     Zie [gebeurtenissen van Event hubs verwerken met Apache Storm op HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)voor een voorbeeld oplossing die kan worden geïntegreerd met Azure-Services.
 
-Zie [deze Engelstalige site](https://storm.apache.org/documentation/Powered-By.html) voor een lijst met bedrijven die Apache Storm gebruiken voor hun oplossingen voor realtime analyse.
+Zie [deze Engelstalige site](https://storm.apache.org/Powered-By.html) voor een lijst met bedrijven die Apache Storm gebruiken voor hun oplossingen voor realtime analyse.
 
 Zie [een Apache Storm topologie maken en bewaken in azure HDInsight](apache-storm-quickstart.md)om aan de slag te gaan met storm.
 
@@ -108,12 +108,12 @@ Zie [Ondersteuning van Azure](https://azure.microsoft.com/support/options/) voor
 
 Hier volgen enkele veelvoorkomende scenario's waarvoor u Storm in HDInsight zou kunnen gebruiken:
 
-* Internet of Things (IoT)
+* Internet der dingen (IoT)
 * Fraudedetectie
 * Sociale analyses
 * Extractie, transformatie en laden (ETL)
 * Netwerkbewaking
-* Search
+* Zoeken
 * Mobile Engagement
 
 Zie [hoe bedrijven Apache Storm document gebruiken](https://storm.apache.org/Powered-By.html) voor informatie over praktijk scenario's.

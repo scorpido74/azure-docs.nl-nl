@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823818"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462595"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Elastische pool-resources in Azure SQL Database schalen
 
@@ -57,12 +57,12 @@ De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schale
 > - In het geval van het verplaatsen van een Data Base naar/van een elastische pool, is alleen de ruimte die wordt gebruikt door de data base van invloed op de latentie, niet de ruimte die wordt gebruikt door de elastische pool.
 >
 > [!TIP]
-> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Aanvullende overwegingen bij het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
 
 - Wanneer Overweeg vCores of Edtu's voor een elastische pool wordt gebruikt, moet de gebruikte ruimte van de groep kleiner zijn dan de Maxi maal toegestane grootte van de doel-servicelaag en de groeps-Edtu's.
-- Bij het opnieuw schalen van vCores of Edtu's voor een elastische pool, geldt een extra opslag kosten als (1) de maximale grootte van de opslag ruimte van de groep wordt ondersteund door de doel groep en (2) de maximale grootte van de opslag ruimte groter is dan de hoeveelheid van de doel groep die is inbegrepen. Als bijvoorbeeld een 100 eDTU Standard-pool met een maximale grootte van 100 GB is verkleind aan een standaard groep van 50 eDTU, worden er extra opslag kosten in rekening kunnen worden genomen omdat de doel groep een maximale grootte van 100 GB ondersteunt en de inbegrepen opslag hoeveelheid alleen 50 GB is. De extra opslag ruimte is dus 100 GB – 50 GB = 50 GB. Zie voor prijzen voor extra opslag [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/). Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan het totale aantal opslag, kunnen deze extra kosten worden vermeden door de maximale grootte van de data base te verlagen tot het opgenomen bedrag.
+- Bij het opnieuw schalen van Edtu's voor een elastische pool, geldt een extra opslag kosten als (1) de maximale grootte van de opslag ruimte van de groep wordt ondersteund door de doel groep en (2) de maximale grootte van de opslag ruimte de opgenomen hoeveelheid opslag ruimte van de doel groep overschrijdt. Als bijvoorbeeld een 100 eDTU Standard-pool met een maximale grootte van 100 GB is verkleind aan een standaard groep van 50 eDTU, worden er extra opslag kosten in rekening kunnen worden genomen omdat de doel groep een maximale grootte van 100 GB ondersteunt en de inbegrepen opslag hoeveelheid alleen 50 GB is. De extra opslag ruimte is dus 100 GB – 50 GB = 50 GB. Zie voor prijzen voor extra opslag [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/). Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan het totale aantal opslag, kunnen deze extra kosten worden vermeden door de maximale grootte van de data base te verlagen tot het opgenomen bedrag.
 
 ### <a name="billing-during-rescaling"></a>Facturering tijdens opnieuw schalen
 
@@ -71,7 +71,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 ## <a name="change-elastic-pool-storage-size"></a>Opslag grootte van elastische pool wijzigen
 
 > [!IMPORTANT]
-> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
@@ -83,7 +83,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van opslag voor een elastische pool is de opslag hoeveelheid vermenigvuldigd met de prijs voor de opslag eenheid van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
@@ -92,7 +92,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van extra opslag voor een elastische pool is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

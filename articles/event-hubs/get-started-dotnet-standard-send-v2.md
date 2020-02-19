@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 022af5ce0774ff106a29a2ef0bcf3fe11acfda15
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187201"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462017"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Gebeurtenissen verzenden naar en ontvangen van Azure Event Hubs-.NET core (Azure. Messa ging. Event hubs) 
 In deze Quick start ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van de **Azure. Messa ging. Event hubs** .net core-bibliotheek. 
@@ -132,7 +132,7 @@ In deze Quick Start gebruikt u Azure Storage als controlepunt opslag. Volg deze 
 
 1. Klik in het Solution Explorer venster met de rechter muisknop op de oplossing **EventHubQuickStart** , wijs **toevoegen**aan en selecteer **Nieuw project**. 
 1. Selecteer **console-app (.net core)** en selecteer **volgende**. 
-1. Gebeurtenis **EventHubsReceiver** voor de **project naam**en selecteer **maken**. 
+1. Voer **EventHubsReceiver** in als **project naam**en selecteer **maken**. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Het Event Hubs NuGet-pakket toevoegen
 

@@ -11,18 +11,18 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553066"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461800"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 
 In dit onderwerp leert u hoe u een [groep voor automatische failover](sql-database-auto-failover-group.md) configureert voor een Azure SQL database afzonderlijke Data Base, een elastische pool en een beheerd exemplaar met behulp van de Azure portal of Power shell. 
 
-## <a name="single-database"></a>Afzonderlijke database
+## <a name="single-database"></a>Individuele database
 Maak de failovergroep en voeg er een toe aan een enkele data base met behulp van de Azure Portal of Power shell.
 
 ### <a name="prerequisites"></a>Vereisten
@@ -33,7 +33,7 @@ Houd rekening met de volgende vereisten:
 
 ### <a name="create-failover-group"></a>Failovergroep maken
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van de Azure Portal.
 
 
@@ -53,7 +53,7 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van de A
         
     ![SQL-data base toevoegen aan failovergroep](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van Power shell. 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van Powe
 
 Test de failover van de failovergroep met behulp van de Azure Portal of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Test de failover van de failovergroep met behulp van de Azure Portal. 
 
@@ -129,7 +129,7 @@ Test de failover van de failovergroep met behulp van de Azure Portal.
 1. Controleer welke server nu primair is en welke server secundair is. Als de failover is geslaagd, moeten de twee servers wisselende rollen hebben. 
 1. Selecteer **failover** opnieuw om de oorspronkelijke rollen van de servers te herstellen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Test de failover van de failovergroep met behulp van Power shell.  
 
@@ -200,7 +200,7 @@ Houd rekening met de volgende vereisten:
 
 Maak de failovergroep voor uw elastische pool met behulp van de Azure Portal of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Maak uw failovergroep en voeg uw elastische groep toe met behulp van de Azure Portal.
 
 1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
@@ -221,7 +221,7 @@ Maak uw failovergroep en voeg uw elastische groep toe met behulp van de Azure Po
         
 1. Selecteer **selecteren** om de instellingen voor de elastische groep toe te passen op de failovergroep en selecteer vervolgens **maken** om uw failovergroep te maken. Door de elastische pool toe te voegen aan de groep failover, wordt het proces voor geo-replicatie automatisch gestart. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak uw failovergroep en voeg uw elastische groep toe met behulp van Power shell. 
 
@@ -271,7 +271,7 @@ Maak uw failovergroep en voeg uw elastische groep toe met behulp van Power shell
 
 Test de failover van uw elastische pool met behulp van de Azure Portal of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Voer een failover uit naar de secundaire server en failback uit met behulp van de Azure Portal. 
 
@@ -293,7 +293,7 @@ Voer een failover uit naar de secundaire server en failback uit met behulp van d
 1. Controleer welke server primair is, welke server secundair is. Als de failover is geslaagd, moeten de twee servers wisselende rollen hebben. 
 1. Selecteer **failover** opnieuw om de failback-groep weer in te stellen op de oorspronkelijke instellingen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Test de failover van de failovergroep met behulp van Power shell.
 
@@ -353,7 +353,7 @@ Houd rekening met de volgende vereisten:
 
 Als u [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)niet hebt geconfigureerd, kunt u de primaire virtuele netwerk gateway maken met de Azure Portal, of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal. 
 
@@ -381,7 +381,7 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
     | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk voor uw secundaire beheerde exemplaar. |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-    | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
+    | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
     | &nbsp; | &nbsp; |
 
 1. Wijzig de andere waarden als standaard en selecteer vervolgens **controleren + maken** om de instellingen voor de gateway van uw virtuele netwerk te controleren.
@@ -390,7 +390,7 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
 
 1. Selecteer **maken** om de nieuwe virtuele netwerk gateway te maken. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak de primaire virtuele netwerk gateway met behulp van Power shell. 
 
@@ -426,7 +426,7 @@ Maak de primaire virtuele netwerk gateway met behulp van Power shell.
 
 Maak de secundaire virtuele netwerk gateway met behulp van de Azure Portal of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en de gateway voor het secundaire beheerde exemplaar te maken. Vul de vereiste velden in om de gateway te configureren voor uw secundaire beheerde exemplaar. 
 
    In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het secundaire beheerde exemplaar:
@@ -442,12 +442,12 @@ Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en
    | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary`. |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP`. |
+   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP`. |
    | &nbsp; | &nbsp; |
 
    ![Instellingen van secundaire gateway](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak de secundaire virtuele netwerk gateway met behulp van Power shell. 
 
@@ -488,7 +488,7 @@ Er moeten twee verbindingen worden gemaakt: de verbinding tussen de primaire gat
 
 De gedeelde sleutel die voor beide verbindingen wordt gebruikt, moet hetzelfde zijn voor elke verbinding. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Maak verbindingen tussen de twee gateways met behulp van de Azure Portal. 
 
 1. Selecteer **een resource maken** op basis van de [Azure Portal](https://portal.azure.com).
@@ -510,7 +510,7 @@ Maak verbindingen tussen de twee gateways met behulp van de Azure Portal.
 
 1. Controleer op het tabblad **samen vatting** de instellingen voor uw bidirectionele verbinding en selecteer vervolgens **OK** om de verbinding te maken. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak verbindingen tussen de twee gateways met behulp van Power shell. 
 
@@ -546,7 +546,7 @@ Maak verbindingen tussen de twee gateways met behulp van Power shell.
 ### <a name="create-the-failover-group"></a>De failover-groep maken 
 Maak de failovergroep voor uw beheerde instanties met behulp van de Azure Portal of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Maak de failovergroep voor uw beheerde instanties met behulp van Azure Portal. 
 
@@ -562,7 +562,7 @@ Maak de failovergroep voor uw beheerde instanties met behulp van Azure Portal.
 
 1. Zodra de implementatie van de failovergroep is voltooid, wordt u teruggeleid naar de pagina **failover-groep** . 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak de failovergroep voor uw beheerde instanties met behulp van Power shell. 
 
@@ -588,11 +588,11 @@ Maak de failovergroep voor uw beheerde instanties met behulp van Power shell.
 
 Test de failover van de failovergroep met behulp van de Azure Portal of Power shell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Test de failover van de failovergroep met behulp van de Azure Portal. 
 
-1. Navigeer naar uw beheerde instantie binnen de [Azure Portal](https://portal.azure.com) en selecteer **failover-groepen voor instanties** onder instellingen. 
+1. Navigeer naar uw _secundaire_ beheerde exemplaar binnen de [Azure Portal](https://portal.azure.com) en selecteer **failover-groepen voor instanties** onder instellingen. 
 1. Controleer welk beheerde exemplaar het primaire is en welk Managed instance het secundaire exemplaar is. 
 1. Selecteer **failover** en selecteer vervolgens **Ja** in de waarschuwing over TDS-sessies die worden losgekoppeld. 
 
@@ -602,9 +602,9 @@ Test de failover van de failovergroep met behulp van de Azure Portal.
 
    ![Beheerde instanties hebben geswitcheerde rollen na een failover](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Selecteer **failover** eenmaal opnieuw om de primaire instantie weer naar de primaire rol te laten mislukken. 
+1. Ga naar het nieuwe _secundaire_ beheerde exemplaar en selecteer eenmalig **failover** opnieuw om de primaire instantie terug te laten werken naar de primaire rol. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Test de failover van de failovergroep met behulp van Power shell. 
 

@@ -8,18 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bc90ecb029afe70ed61e94a727c67c53bb968b96
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212546"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462561"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>De capaciteit in azure Cognitive Search aanpassen
 
-Voordat u [een zoek service inricht](search-create-service-portal.md) en vergren delen in een specifieke prijs categorie, duurt het enkele minuten om inzicht te krijgen in de rol van replica's en partities in een service, of u nu proportioneel grotere of snellere partities nodig hebt, en hoe u de service kunt configureren voor een verwachte belasting.
+Voordat u [een zoek service inricht](search-create-service-portal.md) en vergren delen in een specifieke prijs categorie, duurt het enkele minuten om de rol van replica's en partities in een service te begrijpen en hoe u een service kunt aanpassen voor pieken en spannings dips in de vraag van resources.
 
-Capaciteit is een functie van de [laag die u kiest](search-sku-tier.md) (lagen bepalen hardwarekenmerken) en de combi natie van replica en partitie die nodig is voor geraamde werk belastingen. Dit artikel is gericht op replica-en partitie combinaties en interacties.
+Capaciteit is een functie van de [laag die u kiest](search-sku-tier.md) (lagen bepalen hardwarekenmerken) en de combi natie van replica en partitie die nodig is voor geraamde werk belastingen. Afhankelijk van de laag en de grootte van de aanpassing kan het toevoegen of beperken van de capaciteit 15 minuten tot enkele uren duren. 
+
+Wanneer u de toewijzing van replica's en partities wijzigt, raden we u aan de Azure Portal te gebruiken. De portal dwingt limieten af voor toegestane combi naties die onder maximum limieten van een laag blijven. Als u echter een op scripts of code gebaseerde inrichtings benadering nodig hebt, zijn de [Azure PowerShell](search-manage-powershell.md) of het [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatieve oplossingen.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: replica's en partities
 
@@ -28,15 +30,17 @@ Capaciteit is een functie van de [laag die u kiest](search-sku-tier.md) (lagen b
 |*Partities* | Biedt index opslag en I/O voor lees-en schrijf bewerkingen (bijvoorbeeld bij het opnieuw samen stellen of vernieuwen van een index). Elke partitie heeft een deel van de totale index. Als u drie partities toewijst, wordt uw index onderverdeeld in derden. |
 |*Replica's* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica is één exemplaar van een index. Als u drie replica's toewijst, zijn er drie kopieën van een index beschikbaar voor het verwerken van query aanvragen.|
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>Replica's en partities toewijzen
+## <a name="when-to-add-nodes"></a>Wanneer knoop punten moeten worden toegevoegd
 
 In eerste instantie wordt een mini maal niveau aan resources toegewezen dat bestaat uit één partitie en één replica. 
 
-Eén service moet voldoende resources hebben om alle werk belastingen (indexering en query's) af te handelen. Er wordt geen werk belasting uitgevoerd op de achtergrond. U kunt het indexeren plannen voor tijden wanneer query aanvragen niet vaak op een andere manier worden uitgevoerd, maar de service heeft geen andere prioriteit boven een taak.
-
-Wanneer u de toewijzing van replica's en partities wijzigt, raden we u aan de Azure Portal te gebruiken. De portal dwingt limieten af voor toegestane combi naties die onder maximum limieten van een laag blijven. Als u echter een op scripts of code gebaseerde inrichtings benadering nodig hebt, zijn de [Azure PowerShell](search-manage-powershell.md) of het [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternatieve oplossingen.
+Eén service moet voldoende resources hebben om alle werk belastingen (indexering en query's) af te handelen. Er wordt geen werk belasting uitgevoerd op de achtergrond. U kunt het indexeren plannen voor tijden wanneer query aanvragen niet vaak op een andere manier worden uitgevoerd, maar de service heeft geen andere prioriteit boven een taak. Daarnaast kan een bepaalde hoeveelheid redundantie de query prestaties versoepelen wanneer Services of knoop punten intern worden bijgewerkt.
 
 In het algemeen moeten Zoek toepassingen meestal meer replica's dan partities nodig hebben, met name wanneer de service bewerkingen worden uitgevoerd op query werkbelastingen. In het gedeelte over [hoge Beschik baarheid](#HA) wordt uitgelegd waarom.
+
+Door meer replica's of partities toe te voegen, worden de kosten voor het uitvoeren van de service verhoogd. Controleer de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om inzicht te krijgen in de facturerings implicaties van het toevoegen van meer knoop punten. In de [onderstaande grafiek](#chart) kunt u het aantal Zoek eenheden dat is vereist voor een specifieke configuratie, kruis verwijzingen.
+
+## <a name="how-to-allocate-replicas-and-partitions"></a>Replica's en partities toewijzen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en selecteer de zoek service.
 
@@ -114,7 +118,7 @@ Er is momenteel geen ingebouwd mechanisme voor herstel na nood gevallen. Het toe
 
 ## <a name="estimate-replicas"></a>Schatting van replica's
 
-Bij een productie service moet u drie replica's voor SLA-doel einden toewijzen. Als u trage query prestaties ondervindt, is het een oplossing om replica's toe te voegen, zodat aanvullende kopieën van de index online worden gebracht ter ondersteuning van grotere query werkbelastingen en het verdelen van de aanvragen over de verschillende replica's.
+Bij een productie service moet u drie replica's voor SLA-doel einden toewijzen. Als u trage query prestaties ondervindt, kunt u replica's toevoegen zodat extra kopieën van de index online worden gebracht ter ondersteuning van grotere query werkbelastingen en het verdelen van de aanvragen over de verschillende replica's.
 
 We bieden geen richt lijnen voor het aantal replica's dat nodig is voor het laden van query's. De prestaties van query's zijn afhankelijk van de complexiteit van de query en concurrerende werk belastingen. Hoewel het toevoegen van replica's duidelijk resulteert in betere prestaties, is het resultaat niet strikt lineair: het toevoegen van drie replica's biedt geen garantie voor triple-door voer.
 
@@ -122,7 +126,7 @@ Zie voor hulp bij het schatten van QPS voor uw oplossing [schalen voor prestatie
 
 ## <a name="estimate-partitions"></a>Partities schatten
 
-De [laag die u kiest](search-sku-tier.md) , bepaalt de grootte en snelheid van de partitie en elke laag is geoptimaliseerd rond een reeks kenmerken die in verschillende scenario's passen. Als u een hogere laag kiest, hebt u mogelijk minder partities nodig dan wanneer u met S1 gaat.
+De [laag die u kiest](search-sku-tier.md) , bepaalt de grootte en snelheid van de partitie en elke laag is geoptimaliseerd rond een reeks kenmerken die in verschillende scenario's passen. Als u een hogere laag kiest, hebt u mogelijk minder partities nodig dan wanneer u met S1 gaat. Een van de vragen die u moet beantwoorden via zelf gerichte tests is of een grotere en dure partitie betere prestaties levert dan twee goedkopere partities op een service die op een lagere laag is ingericht.
 
 Voor het zoeken naar toepassingen waarvoor bijna realtime gegevens moeten worden vernieuwd, moeten proportioneel meer partities dan replica's nodig zijn. Door partities toe te voegen worden lees-en schrijf bewerkingen verdeeld over een groter aantal reken resources. Daarnaast hebt u meer schijf ruimte voor het opslaan van aanvullende indexen en documenten.
 

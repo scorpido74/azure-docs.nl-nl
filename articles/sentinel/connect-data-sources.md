@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976108"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462544"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -63,7 +63,7 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
 
 - **Externe oplossingen via agent**: Azure Sentinel kan worden verbonden met alle andere gegevens bronnen die in realtime logboek streaming kunnen uitvoeren met behulp van het syslog-protocol, via een agent. <br>De meeste apparaten gebruiken het syslog-protocol om gebeurtenis berichten te verzenden die het logboek zelf en gegevens over het logboek bevatten. De indeling van de logboeken varieert, maar de meeste apparaten ondersteunen de op CEF (common Event Format) gebaseerde opmaak voor logboek gegevens. <br>De Azure Sentinel-agent, die is gebaseerd op de Log Analytics-agent, converteert CEF opgemaakt Logboeken in een indeling die door Log Analytics kan worden opgenomen. Afhankelijk van het type apparaat wordt de agent rechtstreeks op het apparaat geïnstalleerd of op een speciale Linux-server. De agent voor Linux ontvangt gebeurtenissen van de syslog-daemon via UDP, maar als een Linux-machine verwacht een hoog volume aan syslog-gebeurtenissen te verzamelen, worden ze via TCP van de syslog-daemon naar de agent verzonden en van daaruit naar Log Analytics.
     - Firewalls, proxy's en eind punten:
-        - [F5](connect-f5.md)
+        - [Drukt](connect-f5.md)
         - [Controle punt](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
@@ -98,8 +98,8 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 |------|---------|-------------|------|
 | AWSCloudTrail | [Verbinding maken met AWS](connect-aws.md) | V | |
 | AzureActivity | Overzicht van [Azure activiteit](connect-azure-activity.md) en [activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md) verbinden| V | |
-| AuditLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
-| Aanmeldingslogboeken | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
+| Audit logs bevat | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
+| SigninLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
 | InformationProtectionLogs_CL  | [Azure Information Protection rapporten](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection verbinden](connect-azure-information-protection.md)  | V | Dit maakt gewoonlijk gebruik van de functie **InformationProtectionEvents** naast het gegevens type. Zie [de rapporten wijzigen en aangepaste query's maken](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) voor meer informatie|
 | AzureNetworkAnalytics_CL  | Verkeers [analyse](../network-watcher/traffic-analytics.md) van [Traffic analytic-schema](../network-watcher/traffic-analytics.md)  | | |
@@ -123,7 +123,7 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 | Voor-en naactiviteit (gebeurtenis) | [Verbinding maken](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-gebeurtenissen verbinden](../azure-monitor/platform/data-sources-windows-events.md) <br> [De ophaal-parser ophalen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | De garbagecollection-verzameling wordt niet standaard op virtuele machines geïnstalleerd. [Zie voor](https://docs.microsoft.com/sysinternals/downloads/sysmon)meer informatie over het installeren van de opschoon agent. |
 | ConfigurationData  | [VM-inventarisatie automatiseren](../automation/automation-vm-inventory.md)| X | |
 | ConfigurationChange  | [VM-tracking automatiseren](../automation/change-tracking.md) | X | |
-| F5 BIG-IP | [Verbinding maken F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
+| F5 BIG-IP | [Verbinding maken F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | X | |
 | McasShadowItReporting  |  | X | |
 | Barracuda_CL | [Verbinding maken met Barracuda](connect-barracuda.md) | V | |
 

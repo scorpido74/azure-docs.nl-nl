@@ -6,20 +6,15 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668833"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461518"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>De Java script-client bibliotheek voor Azure-Mobile Apps gebruiken
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
->
-> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 Deze hand leiding leert u veelvoorkomende scenario's uit te voeren met behulp van de nieuwste [Java script-SDK voor Azure Mobile Apps]. Als u nog geen ervaring hebt met Azure Mobile Apps, voltooit u eerst [azure Mobile Apps Quick Start] om een back-end te maken en een tabel te maken. In deze hand leiding richten we ons op het gebruik van de mobiele back-end in HTML/Java script-webtoepassingen.
@@ -71,7 +66,7 @@ Verschillende typen java script-toepassingen gebruiken een loop back-mogelijkhei
 
 Lokaal uitvoeren kan problemen veroorzaken omdat App Service verificatie standaard alleen is geconfigureerd om toegang via de back-end van uw mobiele app toe te staan. Gebruik de volgende stappen om de App Service-instellingen te wijzigen om verificatie in te scha kelen wanneer de server lokaal wordt uitgevoerd:
 
-1. Meld u aan bij [Azure-portal].
+1. Meld u aan bij [Azure Portal].
 2. Navigeer naar de back-end van uw mobiele app.
 3. Selecteer **resource Verkenner** in het menu **Hulpprogram Ma's voor ontwikkel aars** .
 4. Klik op **Start** om de resource Explorer te openen voor de back-end van uw mobiele app in een nieuw tabblad of venster.
@@ -89,7 +84,7 @@ Lokaal uitvoeren kan problemen veroorzaken omdat App Service verificatie standaa
 
 U moet ook dezelfde loop back-Url's toevoegen aan de CORS white list-instellingen:
 
-1. Ga terug naar de [Azure-portal].
+1. Ga terug naar de [Azure Portal].
 2. Navigeer naar de back-end van uw mobiele app.
 3. Klik op **CORS** in het **API** -menu.
 4. Voer elke URL in het tekstvak lege **toegestane oorsprong** in.  Er wordt een nieuw tekstvak gemaakt.
@@ -102,6 +97,6 @@ Nadat de back-end is bijgewerkt, kunt u de nieuwe loop back-Url's in uw app gebr
 [Aan de slag met verificatie]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Java script-SDK voor Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

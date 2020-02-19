@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: a1b6adc37d78e3fa73d7ae70237d678af6b9dc99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1232177c8fd856d704c92694edb26ff8e12ad217
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769466"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461921"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quick Start: SSH en RDP via een IoT Hub Device stream inschakelen met behulp van een C# proxy toepassing (preview-versie)
 
@@ -26,7 +26,7 @@ Microsoft Azure IoT Hub biedt momenteel ondersteuning voor het streamen van appa
 
 In dit artikel wordt eerst de installatie van SSH (met behulp van poort 22) beschreven en wordt beschreven hoe u de installatie poort van RDP wijzigt. Omdat apparaatversleuteling een toepassings-en protocol-neutraal zijn, kan hetzelfde voor beeld worden gewijzigd om andere soorten toepassings verkeer te kunnen verwerken. Bij deze wijziging wordt doorgaans alleen de communicatie poort gewijzigd die wordt gebruikt door de beoogde toepassing.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 In de volgende afbeelding ziet u hoe de lokale en service-Local proxy toepassingen in dit voor beeld end-to-end-connectiviteit mogelijk maken tussen de SSH-client en SSH-daemon-processen. We gaan ervan uit dat de daemon wordt uitgevoerd op hetzelfde apparaat als de toepassing voor de lokale proxy van het apparaat.
 
@@ -78,7 +78,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 

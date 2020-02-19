@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444882"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462442"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloze database Computing met Azure Cosmos DB en Azure Functions
 
@@ -41,7 +41,7 @@ De Azure Functions trigger, invoer binding en uitvoer binding voor Azure Cosmos 
 * Invoer bindingen en uitvoer bindingen voor Azure Cosmos DB kunnen worden gebruikt in dezelfde Azure-functie. Dit werkt goed in gevallen waarin u bepaalde gegevens wilt zoeken met de invoer binding, deze wilt wijzigen in de Azure-functie en deze vervolgens opslaat in dezelfde container of een andere container nadat de wijziging is aangebracht.
 * Een invoer binding met een Azure Cosmos-container kan worden gebruikt in dezelfde functie als een Azure Functions trigger voor Cosmos DB en kan ook worden gebruikt met of zonder een uitvoer binding. U kunt deze combi natie gebruiken om actuele informatie over valuta uitwisseling toe te passen (met een invoer binding aan een Exchange-container) aan de wijzigings feed van nieuwe orders in uw winkel wagen-service. Het bijgewerkte winkel wagen totaal, met de huidige valuta conversie, kan naar een derde container worden geschreven met behulp van een uitvoer binding.
 
-## <a name="use-cases"></a>Use cases
+## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 In de volgende use-cases ziet u een aantal manieren waarop u het meren deel van uw Azure Cosmos DB gegevens kunt maken door uw gegevens te koppelen aan gebeurtenis gerichte Azure Functions.
 
@@ -106,7 +106,7 @@ Wanneer een gebruiker in een retail-implementatie een item toevoegt aan hun mand
 
 In al deze use cases, omdat de functie de app zelf heeft losgekoppeld, hoeft u niet altijd nieuwe app-exemplaren in te stellen. In plaats daarvan Azure Functions worden afzonderlijke functies gerug om zo nodig discrete processen te volt ooien.
 
-## <a name="tooling"></a>Hulpprogram ma's
+## <a name="tooling"></a>Hulpprogramma's
 
 Systeem eigen integratie tussen Azure Cosmos DB en Azure Functions is beschikbaar in de Azure Portal en in Visual Studio 2019.
 
@@ -148,10 +148,4 @@ We gaan nu verbinding maken Azure Cosmos DB en Azure Functions voor Real:
 
 * [Een Azure Functions trigger maken voor Cosmos DB in de Azure Portal](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Een Azure Functions HTTP-trigger maken met een Azure Cosmos DB-invoer binding](https://aka.ms/cosmosdbinputbind)
-* [Bindingen en triggers Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Bindingen en triggers Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md)

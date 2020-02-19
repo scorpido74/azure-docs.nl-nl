@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a32affab45ab99a89113644bb08c4f2b57d69018
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721010"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462459"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API voor MongoDB (3,6-versie): ondersteunde functies en syntaxis
 
 Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt met behulp van een van de open-source MongoDB-client [Stuur Programma's](https://docs.mongodb.org/ecosystem/drivers)communiceren met de API van Azure Cosmos DB voor MongoDb. De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande clientstuurprogramma's mogelijk doordat de API functioneert conform het MongoDB-[wireprotocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Door gebruik te maken van de API van Azure Cosmos DB voor MongoDB hebt u de beschikking over de voordelen van de vertrouwde MongoDB, met alle zakelijke mogelijkheden die Cosmos DB biedt: [wereldwijde distributie](distribute-data-globally.md), [automatische sharding](partition-data.md), garanties voor beschikbaarheid en latentie, automatisch indexeren van alle velden, versleuteling van niet-actieve gegevens, het maken van back-ups, en meer.
+Met behulp van de API van de Azure Cosmos DB voor MongoDB kunt u profiteren van de voor delen van de MongoDB die u gebruikt, met alle mogelijkheden van de onderneming die Cosmos DB biedt: [globale distributie](distribute-data-globally.md), [automatische sharding](partition-data.md), Beschik baarheid en latentie garanties, versleuteling op rest, back-ups en nog veel meer.
 
 ## <a name="protocol-support"></a>Ondersteuning voor protocol
 
@@ -372,7 +372,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |Uniek |Ja|
 |Gedeeltelijk|   Nee|
 |Niet hoofdletter gevoelig   |Nee|
-|Sparse |Nee |
+|Verspreide gegevens |Nee |
 |Achtergrond|    Ja |
 
 ## <a name="operators"></a>Operators

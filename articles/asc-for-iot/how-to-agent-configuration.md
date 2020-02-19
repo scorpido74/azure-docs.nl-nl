@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664836"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461246"
 ---
 # <a name="tutorial-configure-security-agents"></a>Zelf studie: beveiligings agenten configureren
 
@@ -120,33 +120,32 @@ De volgende tabel bevat de eigenschappen van Azure Security Center voor IoT-beve
 
 Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka.ms/iot-security-module-default).
 
-| Naam| Status | Geldige waarden| Standaardwaarden| Beschrijving |
+| Name| Status | Geldige waarden| Standaardwaarden| Beschrijving |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Vereist: onwaar |Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT7M |Het maximale tijds interval voor berichten met een hoge prioriteit worden verzonden.|
 |lowPriorityMessageFrequency |Vereist: onwaar|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT5H |Maximale tijd waarna berichten met een lage prioriteit worden verzonden.| 
 |snapshotFrequency |Vereist: False|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde PT13H |Tijds interval voor het maken van moment opnamen van de Apparaatstatus.| 
 |maxLocalCacheSizeInBytes |Vereist: onwaar |Geldige waarden: |Standaard waarde: 2560000, groter dan 8192 | Maximale opslag (in bytes) die is toegestaan voor de berichten cache van een agent. Maximale hoeveelheid ruimte die is toegestaan voor het opslaan van berichten op het apparaat voordat berichten worden verzonden.| 
 |maxMessageSizeInBytes |Vereist: onwaar |Geldige waarden: een positief getal groter dan 8192, kleiner dan 262144 |Standaard waarde: 204800 |Maxi maal toegestane grootte van een agent naar een Cloud bericht. Met deze instelling bepaalt u de hoeveelheid gegevens die in elk bericht wordt verzonden. |
-|eventPriority $ {eventname} |Vereist: onwaar |Geldige waarden: hoog, laag, uit |Standaard waarden: |Prioriteit van elke door een agent gegenereerde gebeurtenis | 
+|eventPriority${EventName} |Vereist: onwaar |Geldige waarden: hoog, laag, uit |Standaard waarden: |Prioriteit van elke door een agent gegenereerde gebeurtenis | 
 
 ### <a name="supported-security-events"></a>Ondersteunde beveiligings gebeurtenissen
 
-|Gebeurtenis naam| PropertyName | Standaard waarde| Momentopname gebeurtenis| Status Details  |
+|Gebeurtenisnaam| propertyName | Standaardwaarde| Momentopname gebeurtenis| Status Details  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnostische gebeurtenis|eventPriorityDiagnostic| Uit| Onwaar| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.| 
-|Configuratie fout |eventPriorityConfigurationError |Laag |Onwaar |Agent kan de configuratie niet parseren. Controleer de configuratie op basis van het schema.| 
-|Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Laag |Waar|Gerelateerde gebeurtenis statistieken voor de agent. |
-|Bericht statistieken|eventPriorityMessageStatistics |Laag |Waar |Gerelateerde bericht statistieken voor de agent. |
-|Verbonden hardware|eventPriorityConnectedHardware |Laag |Waar |Moment opname van alle hardware die is aangesloten op het apparaat.|
-|Luisterende poorten|eventPriorityListeningPorts |Hoog |Waar |Moment opname van alle open luisterende poorten op het apparaat.|
-|Proces maken |eventPriorityProcessCreate |Laag |Onwaar |Het proces voor het maken van controles op het apparaat.|
-|Proces beëindigen|eventPriorityProcessTerminate |Laag |Onwaar |Controleert het proces op het apparaat.| 
-|Systeem gegevens |eventPrioritySystemInformation |Laag |Waar |Een moment opname van systeem informatie (bijvoorbeeld: besturings systeem of CPU).| 
-|Lokale gebruikers| eventPriorityLocalUsers |Hoog |Waar|Een moment opname van de geregistreerde lokale gebruikers in het systeem. |
-|Aanmelden|  eventPriorityLogin |Hoog|Onwaar|Controleer de aanmeldings gebeurtenissen op het apparaat (lokale en externe aanmeldingen).|
-|Verbinding maken |eventPriorityConnectionCreate|Laag|Onwaar|Controleert TCP-verbindingen die zijn gemaakt met en van het apparaat. |
-|Firewall configuratie| eventPriorityFirewallConfiguration|Laag|Waar|Moment opname van de firewall configuratie van het apparaat (firewall regels). |
-|Basis lijn van besturings systeem| eventPriorityOSBaseline| Laag|Waar|Moment opname van de basis controle van het besturings systeem van het apparaat.|
+|Diagnostische gebeurtenis|eventPriorityDiagnostic| Uit| False| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.| 
+|Configuratie fout |eventPriorityConfigurationError |Laag |False |Agent kan de configuratie niet parseren. Controleer de configuratie op basis van het schema.| 
+|Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Laag |True|Gerelateerde gebeurtenis statistieken voor de agent. |
+|Verbonden hardware|eventPriorityConnectedHardware |Laag |True |Moment opname van alle hardware die is aangesloten op het apparaat.|
+|Luisterende poorten|eventPriorityListeningPorts |Hoog |True |Moment opname van alle open luisterende poorten op het apparaat.|
+|Proces maken |eventPriorityProcessCreate |Laag |False |Het proces voor het maken van controles op het apparaat.|
+|Proces beëindigen|eventPriorityProcessTerminate |Laag |False |Controleert het proces op het apparaat.| 
+|Systeem gegevens |eventPrioritySystemInformation |Laag |True |Een moment opname van systeem informatie (bijvoorbeeld: besturings systeem of CPU).| 
+|Lokale gebruikers| eventPriorityLocalUsers |Hoog |True|Een moment opname van de geregistreerde lokale gebruikers in het systeem. |
+|Aanmelden|  eventPriorityLogin |Hoog|False|Controleer de aanmeldings gebeurtenissen op het apparaat (lokale en externe aanmeldingen).|
+|Verbinding maken |eventPriorityConnectionCreate|Laag|False|Controleert TCP-verbindingen die zijn gemaakt met en van het apparaat. |
+|Firewall configuratie| eventPriorityFirewallConfiguration|Laag|True|Moment opname van de firewall configuratie van het apparaat (firewall regels). |
+|Basis lijn van besturings systeem| eventPriorityOSBaseline| Laag|True|Moment opname van de basis controle van het besturings systeem van het apparaat.|
 |
  
 
