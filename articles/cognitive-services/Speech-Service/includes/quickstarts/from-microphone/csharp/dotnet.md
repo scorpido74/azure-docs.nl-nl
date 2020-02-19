@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 4b8f58fbfa9de929139646ad267a433645e2db35
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 9c16e2e1726fcbf1e0b55ee0e9808a607b611ea6
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156614"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446454"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ Laten we een code toevoegen die als een skelet voor het project werkt. Houd er r
 
 ## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
 
-Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de abonnements regio (Kies de para meter Speech SDK in de [regio](https://aka.ms/speech/sdkregion). Voeg deze code in de methode `RecognizeSpeechAsync()` toe.
+Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement (Kies de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion). Voeg deze code in de methode `RecognizeSpeechAsync()` toe.
 
 > [!NOTE]
 > In dit voor beeld wordt de `FromSubscription()` methode gebruikt om de `SpeechConfig`te bouwen. Zie [SpeechConfig-klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)voor een volledige lijst met beschik bare methoden.

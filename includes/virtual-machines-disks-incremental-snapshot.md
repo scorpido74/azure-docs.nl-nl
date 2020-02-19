@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752438"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445817"
 ---
 Incrementele moment opnamen (preview) zijn punt-in-time-back-ups voor beheerde schijven die, wanneer ze worden gemaakt, alleen van alle wijzigingen bestaan sinds de laatste moment opname. Wanneer u probeert een incrementele moment opname te downloaden of anderszins te gebruiken, wordt de volledige VHD gebruikt. Deze nieuwe mogelijkheid voor moment opnamen van beheerde schijven kan ertoe leiden dat ze rendabeler worden, omdat u niet langer de volledige schijf hoeft op te slaan bij elke afzonderlijke moment opname, tenzij u dat doet. Net als bij gewone moment opnamen kunnen incrementele moment opnamen worden gebruikt voor het maken van een volledige beheerde schijf of, om een gewone moment opname te maken.
 
@@ -23,7 +23,7 @@ Incrementele moment opnamen bieden ook een andere mogelijkheid, die uniek is voo
 
 ## <a name="restrictions"></a>Beperkingen
 
-- Incrementele moment opnamen zijn momenteel alleen beschikbaar in VS-Oost, VS-Oost 2, VS-midden, VS-West-Centraal, Canada-oost, Canada-centraal en Europa-noord.
+- Incrementele moment opnamen zijn momenteel alleen beschikbaar in VS-Oost, VS-Oost 2, VS-midden, VS-West-Centraal, Canada-oost, Canada-centraal, Europa-noord, Zuid-Azië-oost.
 - Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd.
 - Incrementele moment opnamen kunnen momenteel niet worden verplaatst tussen abonnementen.
 - U kunt momenteel alleen SAS-Uri's van Maxi maal vijf moment opnamen van een bepaalde momentopname familie genereren op een bepaald moment.

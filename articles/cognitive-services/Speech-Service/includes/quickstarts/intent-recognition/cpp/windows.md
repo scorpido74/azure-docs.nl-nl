@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 292eba09b151d8de50fc379051091a4d2990a105
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1c5411778bf2e8ab25ce3e71dba92227b2653c3d
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156020"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445268"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,7 +47,7 @@ Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configura
 Voeg deze code in de methode `recognizeIntent()` toe. Zorg ervoor dat u deze waarden bijwerkt:
 
 * Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel.
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS.  Gebruik de "Speech SDK para meter" uit de [regio](https://aka.ms/speech/sdkregion).
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS.  Gebruik de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion).
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).

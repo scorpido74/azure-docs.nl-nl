@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/06/2020
-ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
-ms.translationtype: MT
+ms.openlocfilehash: 93b8520c0f65f102c9adf64870b60506d890276d
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069579"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431397"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videozelfstudies om gegevens toe te wijzen
 
@@ -68,6 +68,8 @@ Wanneer updates worden doorgevoerd in het product, hebben sommige functies in de
 [Voorwaardelijke Splits transformatie](http://youtu.be/W1lQHojhKZw?hd=1)
 
 [Bestaat trans formatie](http://youtu.be/GS8JVgNBMfs?hd=1)
+
+[Dynamische samen voegingen en dynamische zoek acties](https://youtu.be/CMOPPie9bXM)
 
 ## <a name="source-and-sink"></a>Bron en Sink
 

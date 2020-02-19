@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 531e9dbec55c5a6a305b321df7a11067c0ade92a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156241"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446393"
 ---
 > [!NOTE]
 > De Speech SDK voor unit ondersteunt Windows Desktop (x86 en x64) of Universeel Windows-platform (x86, x64, ARM/ARM64), Android (x86, ARM32/64) en iOS (x64 Simulator, ARM32 en ARM64)
@@ -90,7 +90,7 @@ Voer de volgende stappen uit om de voorbeeld script code voor het Unity-project 
 
 1. Zoek en vervang de teken reeks `YourSubscriptionKey` met de abonnements sleutel van uw speech-service.
 
-1. Zoek en vervang de teken reeks `YourServiceRegion` door de ' Speech SDK para meter ' uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld gebruikmaakt van de gratis proefversie, dan is `westus` de regio.
+1. Zoek en vervang de teken reeks `YourServiceRegion` door de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. Als u bijvoorbeeld gebruikmaakt van de gratis proefversie, dan is `westus` de regio.
 
 1. Sla het gewijzigde script op.
 

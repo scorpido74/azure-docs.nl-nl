@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156297"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446395"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -58,7 +58,7 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang ook de teken reeks `YourServiceRegion` door de para meter ' Speech SDK ' uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
+1. Vervang ook de teken reeks `YourServiceRegion` door de **regio-id** uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
