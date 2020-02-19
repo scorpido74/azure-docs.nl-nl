@@ -55,10 +55,10 @@ Doe het volgende voor beeld uitingen:
 
 |Voorbeelden van utterances|
 |--|
-|Hoe krijg ik een computer?|
-|Hoe krijg ik een computer?|
-|Ik wil een computer verkrijgen, hoe ga ik daar naartoe?|
-|Wanneer kan ik een computer?| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 De basis term hier, ' computer ', is niet gevarieerd. Gebruik alternatieven als desktop computer, laptop, werk station of zelfs alleen machine. LUIS kan op intelligente wijze synoniemen uit de context afleiden, maar wanneer u uitingen voor training maakt, is het altijd beter om ze te variëren.
 
@@ -144,8 +144,8 @@ De volgende uitingen is het woord `fair` een homograph is. Deze hetzelfde is ges
 
 |Utterance|
 |--|
-|Wat voor soort county beurzen plaatsvinden in het gebied van Seattle zomer van dit jaar?|
-|Is de huidige classificatie voor de beoordeling Seattle geoorloofd?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 Als u wilt dat een gebeurtenis entiteit alle gebeurtenis gegevens vindt, labelt u het woord `fair` in de eerste utterance, maar niet in de tweede.
 
