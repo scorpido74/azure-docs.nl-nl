@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513317"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443836"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -36,7 +36,7 @@ In het volgende diagram ziet u hoe de oplossing beveiligings updates evalueert e
 
 ![Proces stroom Updatebeheer](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Updatebeheer kan worden gebruikt voor de systeemeigen onboarding van computers in meerdere abonnementen in dezelfde tenant.
+Updatebeheer kan worden gebruikt om machines in meerdere abonnementen in dezelfde Tenant op te doen.
 
 Nadat een pakket is vrijgegeven, duurt het 2 tot 3 uur voordat de patch wordt weer gegeven voor Linux-machines voor evaluatie. Voor Windows-computers duurt het 12 tot 15 uur voordat de patch wordt weer gegeven voor evaluatie nadat deze is uitgebracht.
 
@@ -67,12 +67,12 @@ Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer da
 
 ### <a name="supported-client-types"></a>Ondersteunde client-typen
 
-De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie de installatie handleidingen voor het installeren van een [Windows-Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) en een Linux- [Hybrid Runbook worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)voor meer informatie over Hybrid Runbook worker vereisten.
+De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie de installatie handleidingen voor het installeren van een [Windows-Hybrid Runbook worker](automation-windows-hrw-install.md) en een Linux- [Hybrid Runbook worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)voor meer informatie over Hybrid Runbook worker vereisten.
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
 |Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer biedt alleen ondersteuning voor het uitvoeren van evaluaties voor dit besturings systeem. patching wordt niet ondersteund omdat de [Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) niet wordt ondersteund voor Windows Server 2008 R2. |
+|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer biedt alleen ondersteuning voor het uitvoeren van evaluaties voor dit besturings systeem. patching wordt niet ondersteund omdat de [Hybrid Runbook worker](automation-windows-hrw-install.md) niet wordt ondersteund voor Windows Server 2008 R2. |
 |CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches is `yum` vereist om beveiligings gegevens te retour neren die CentOS niet hebben in de RTM-releases. Zie [Update classificaties in Linux](automation-view-update-assessments.md#linux-2)voor meer informatie over op CentOS gebaseerde patches op basis van classificatie.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
@@ -92,7 +92,7 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 |Windows Server 2016 Nano Server     | Wordt niet ondersteund.       |
 |Azure Kubernetes-service knooppunten | Wordt niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
 
-### <a name="client-requirements"></a>Clientvereisten
+### <a name="client-requirements"></a>Client vereisten
 
 In de volgende informatie worden OS-specifieke client vereisten beschreven. Zie [netwerk planning](#ports)voor meer informatie.
 
@@ -135,7 +135,7 @@ U kunt de Windows-computers toevoegen aan een Hybrid Runbook Worker groep in uw 
 
 ### <a name="management-packs"></a>Management packs
 
-Als de beheergroep van uw System Center Operations Manager is verbonden met een Log Analytics-werkruimte, worden de volgende management packs geïnstalleerd in Operations Manager. Zodra u de oplossing hebt toegevoegd, worden deze management packs ook op rechtstreeks verbonden Windows-computers geïnstalleerd. U hoeft deze management packs niet te configureren of te beheren.
+Als uw System Center Operations Manager-beheer groep is verbonden met een Log Analytics-werk ruimte, worden de volgende Management Packs in Operations Manager geïnstalleerd. Deze Management Packs worden ook op rechtstreeks verbonden Windows-computers geïnstalleerd nadat u de oplossing hebt toegevoegd. U hoeft deze Management Packs niet te configureren of te beheren.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -167,7 +167,7 @@ Voor elke beheerde Windows-computer wordt twee keer per dag een scan uitgevoerd.
 
 Er wordt elk uur een scan uitgevoerd voor elke beheerde Linux-computer.
 
-Het kan dertig minuten tot zes uur duren voordat er in het dashboard bijgewerkte gegevens van beheerde computers worden weergegeven.
+Het kan tussen 30 minuten en 6 uur duren voordat het dash board bijgewerkte gegevens van beheerde computers weergeeft.
 
 Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden.
 
@@ -175,7 +175,7 @@ Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine me
 
 De volgende adressen zijn specifiek vereist voor Updatebeheer. Communicatie met deze adressen vindt plaats via poort 443.
 
-|Openbare Azure-peering  |Azure Government  |
+|Open bare Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -208,7 +208,7 @@ Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontb
 
 ![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Updateclassificaties
+## <a name="update-classifications"></a>Update classificaties
 
 De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
@@ -222,10 +222,10 @@ De volgende tabellen geven een lijst van de update classificaties in Updatebehee
 |Functiepakketten     | Nieuwe product functies die worden gedistribueerd buiten een product release.        |
 |Servicepacks     | Een cumulatieve set met hotfixes die op een toepassing worden toegepast.        |
 |Definitie-updates     | Een update van virus-of andere definitie bestanden.        |
-|Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
+|Hulpprogramma's     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
 |Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
 
-### <a name="linux-2"></a>Linux
+### <a name="linux-2"></a>Spreek
 
 |Classificatie  |Beschrijving  |
 |---------|---------|

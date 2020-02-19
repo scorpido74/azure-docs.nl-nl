@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850054"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444159"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -20,7 +20,7 @@ Metrische waarschuwingen in Azure Monitor werken bovenop meerdere dimensies. Dez
 
 ## <a name="how-do-metric-alerts-work"></a>Hoe werken metrische waarschuwingen?
 
-U kunt een metrische waarschuwings regel definiëren door een doel resource op te geven die moet worden bewaakt, metrische naam, voorwaarde type (statisch of dynamisch) en de voor waarde (een operator en een drempel/gevoeligheid) en een actie groep die moet worden geactiveerd wanneer de waarschuwings regel wordt geactiveerd. Voor waarden zijn van invloed op de manier waarop de drempel waarden worden bepaald. Meer [informatie over de drempel waarde voor het type en gevoeligheids opties voor dynamische waarden](alerts-dynamic-thresholds.md).
+U kunt een metrische waarschuwings regel definiëren door een doel resource op te geven die moet worden bewaakt, metrische naam, voorwaarde type (statisch of dynamisch) en de voor waarde (een operator en een drempel/gevoeligheid) en een actie groep die moet worden geactiveerd wanneer de waarschuwings regel wordt geactiveerd. Voorwaardentypen beïnvloeden de manier waarop drempelwaarden worden bepaald. Meer [informatie over de drempel waarde voor het type en gevoeligheids opties voor dynamische waarden](alerts-dynamic-thresholds.md).
 
 ### <a name="alert-rule-with-static-condition-type"></a>Waarschuwings regel met statisch voorwaarde type
 
@@ -125,15 +125,15 @@ Het verhogen van de doorlopende Peri Oden en het aantal schendingen kan er ook t
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bewaking op schaal met behulp van metrische waarschuwingen in Azure Monitor
 
-Tot nu toe hebt u gezien hoe één metrische waarschuwing kan worden gebruikt om een of meer metrische time-series te bewaken die betrekking hebben op één Azure-resource. Vaak wilt u dezelfde waarschuwings regel op veel resources Toep assen. Azure Monitor biedt ook ondersteuning voor het bewaken van meerdere resources met één metrische waarschuwings regel. Deze functie wordt momenteel alleen ondersteund op virtuele machines, SQL server-data bases, elastische Pools van SQL Server en data Box edge-apparaten. Daarnaast kunt u met één metrische waarschuwing resources in één Azure-regio bewaken.
+Tot nu toe hebt u gezien hoe één metrische waarschuwing kan worden gebruikt om een of meer metrische time-series te bewaken die betrekking hebben op één Azure-resource. Vaak wilt u dezelfde waarschuwings regel op veel resources Toep assen. Azure Monitor biedt ook ondersteuning voor het bewaken van meerdere resources (van hetzelfde type) met één metrische waarschuwings regel, voor resources die zich in dezelfde Azure-regio bevinden. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL server-data bases, elastische Pools en data Box edge-apparaten van SQL Server. Deze functie is ook alleen beschikbaar voor platform metrieken en wordt niet ondersteund voor aangepaste metrische gegevens.
 
-U kunt op een van de volgende drie manieren het bewakings bereik opgeven voor één metrische waarschuwing:
+U kunt op een van de volgende drie manieren het bewakings bereik opgeven voor één metrische waarschuwings regel:
 
 - Als een lijst met virtuele machines in één Azure-regio binnen een abonnement
 - alle virtuele machines (in één Azure-regio) in een of meer resource groepen in een abonnement
 - alle virtuele machines (in één Azure-regio) in één abonnement
 
-Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke virtuele machine.
+Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke bewaakte resource.
 
 ## <a name="typical-latency"></a>Normale latentie
 

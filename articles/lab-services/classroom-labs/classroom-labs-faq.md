@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252056"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443496"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
@@ -27,6 +27,9 @@ Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs 
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Is het quotum per gebruiker of per week of per volledige duur van het lab? 
 Het quotum dat u voor een Lab hebt ingesteld, is voor elke student voor een volledige duur van het lab. En de [geplande uitvoerings tijd van vm's](how-to-create-schedules.md) telt niet op het quotum dat aan een gebruiker is toegewezen. Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt.  Zie [quota's voor gebruikers instellen](how-to-configure-student-usage.md#set-quotas-for-users)voor meer informatie over quota's.
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Als docent een student-VM inschakelt, heeft dit invloed op het student quotum? 
+Nee. Dit is niet het geval. Als professor de student-VM inschakelt, heeft dit geen invloed op het quotum dat aan de student is toegewezen. 
 
 ## <a name="schedules"></a>Planningen
 
@@ -42,7 +45,9 @@ Als u bijvoorbeeld een blok van/19-10.0.0.0/19 hebt, is dit adres bereik geschik
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welke poortbereiken moet ik openen in de firewall instelling van mijn organisatie om verbinding te maken met virtuele lab-machines via RDP/SSH?
 
-De poorten zijn: 49152 – 65535. Klassikale Labs bevindt zich achter een load balancer, zodat alle virtuele machines in een Lab één IP-adres hebben en elke virtuele machine in het lab een unieke poort heeft. De poort nummers en het open bare IP-adres kunnen worden gewijzigd telkens wanneer het lab opnieuw wordt gepubliceerd.
+De poorten zijn: 49152 – 65535. Klassikale Labs bevindt zich achter een load balancer. Elk lab heeft één openbaar IP-adres en elke virtuele machine in het lab heeft een unieke poort. 
+
+U kunt ook het privé-IP-adres van elke virtuele machine weer geven op het tabblad **virtuele-machine groep** van de start pagina voor Lab in de Azure Portal. Als u een Lab opnieuw publiceert, wordt het open bare IP-adres van het lab niet gewijzigd, maar worden het privé-IP en het poort nummer van elke virtuele machine in het lab gewijzigd. Meer informatie vindt u in het artikel: [firewall-instellingen voor Azure Lab Services](how-to-configure-firewall-settings.md).
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welk openbaar IP-adres bereik moet ik openen in de firewall instellingen van mijn organisatie om verbinding te maken met virtuele lab-machines via RDP/SSH?
 Zie [Azure IP-adresbereiken en service tags (open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)), die het open bare IP-adres bereik voor data centers in Azure biedt. U kunt de IP-adressen openen voor de regio's waar uw Lab-accounts zich bevinden.

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502028"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443122"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Overzicht van de implementatie van Azure Firewall Manager preview
 
@@ -20,23 +20,32 @@ ms.locfileid: "73502028"
 
 Er is meer dan één manier om Azure Firewall Manager-preview te implementeren, maar het volgende algemene proces wordt aanbevolen.
 
-## <a name="prerequisites"></a>Vereisten
+## <a name="general-deployment-process"></a>Algemeen implementatieproces
 
-> [!IMPORTANT]
-> Azure Firewall Manager-Preview moet expliciet worden ingeschakeld met de `Register-AzProviderFeature` Power shell-opdracht.
->Voer vanuit een Power shell-opdracht prompt de volgende opdrachten uit:
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. Voer de volgende opdracht uit om de status van de > registratie te controleren:
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+### <a name="hub-virtual-networks"></a>Virtuele hub-netwerken
+
+1.  Een firewall beleid maken
+
+    - Een nieuw beleid maken
+<br>*or*<br>
+    - Een basis beleid afleiden en een lokaal beleid aanpassen
+<br>*or*<br>
+    - Regels importeren uit een bestaande Azure Firewall. Zorg ervoor dat u de NAT-regels verwijdert uit beleid dat moet worden toegepast op meerdere firewalls
+1. Uw hub-en spoke-architectuur maken
+   - Een hub maken Virtual Network met behulp van Azure Firewall Manager-en peer Spaak virtuele netwerken met behulp van peering op virtueel netwerk
+<br>*or*<br>
+    - Maak een virtueel netwerk en voeg virtuele netwerk verbindingen en peer-spoke-netwerken toe met behulp van peering op virtueel netwerk
+
+3. Selecteer beveiligings providers en koppel het firewall beleid. Momenteel is alleen Azure Firewall een ondersteunde provider.
+
+   - Dit doet u tijdens het maken van een hub Virtual Network
+<br>*or*<br>
+    - Een bestaand virtueel netwerk converteren naar een hub Virtual Network. Het is ook mogelijk om meerdere virtuele netwerken te converteren.
+
+4. Configureer de gebruiker om routes te definiëren om verkeer naar uw hub Virtual Network Firewall te routeren.
 
 
-
-## <a name="general-deployment-process"></a>Algemeen implementatie proces
+### <a name="secured-virtual-hubs"></a>Beveiligde virtuele hubs
 
 1. Uw hub-en spoke-architectuur maken
 

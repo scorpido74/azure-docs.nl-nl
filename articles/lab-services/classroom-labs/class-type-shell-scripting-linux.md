@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133685"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443547"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
 Dit artikel laat u zien hoe u een lab kunt instellen om shell scripting op Linux te leren. Scripting is een nuttig onderdeel van systeem beheer waarmee beheerders terugkerende taken kunnen voor komen. In dit voorbeeld scenario bestrijkt de klasse traditionele bash-scripts en uitgebreide scripts. Uitgebreide scripts zijn scripts die bash-opdrachten en Ruby combi neren. Met deze benadering kan ruby gegevens rond en bash opdrachten door geven om met de shell te communiceren. 
@@ -32,7 +32,7 @@ Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het
 
 | Account instelling Lab | Instructies |
 | ----------- | ------------ |  
-| Marketplace-installatie kopieën | Schakel de [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie in voor gebruik binnen uw Lab-account. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) voor meer informatie | 
+| Marketplace-installatie kopieën | Schakel de [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie in voor gebruik binnen uw Lab-account. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](specify-marketplace-images.md)voor meer informatie. | 
 
 Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
 

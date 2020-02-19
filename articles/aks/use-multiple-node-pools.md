@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365171"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443921"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -483,7 +483,7 @@ az aks nodepool add \
 > [!NOTE]
 > U kunt ook de para meter `--tags` gebruiken wanneer u de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] gebruikt en tijdens het maken van het cluster. Tijdens het maken van het cluster past de para meter `--tags` de tag toe op de eerste knooppunt groep die met het cluster is gemaakt. Alle label namen moeten voldoen aan de beperkingen in [Tags gebruiken om uw Azure-resources te organiseren][tag-limitation]. Bij het bijwerken van een knooppunt groep met de para meter `--tags` worden alle bestaande label waarden bijgewerkt en worden nieuwe labels toegevoegd. Als uw knooppunt groep bijvoorbeeld *Dept = it* en *CostCenter = 9999* heeft voor Tags en u deze hebt bijgewerkt met *team = dev* en *CostCenter = 111* voor labels, hebt u nodepool *Dept = it*, *CostCenter = 111*en *team = dev* for Tags.
 
-In de volgende voorbeeld uitvoer van de opdracht [AZ AKS nodepool List][az-aks-nodepool-list] ziet u dat *Taggednodepool* knoop punten *maakt* met de opgegeven *tag*:
+In de volgende voorbeeld uitvoer van de opdracht [AZ AKS nodepool List][az-aks-nodepool-list] ziet u dat *Tagnodepool* knoop punten *maakt* met de opgegeven *tag*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster

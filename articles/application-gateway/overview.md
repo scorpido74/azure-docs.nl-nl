@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658267"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443819"
 ---
 # <a name="what-is-azure-application-gateway"></a>Wat is Azure Application Gateway?
 
@@ -50,7 +50,7 @@ Een Application Gateway-of WAF-implementaties onder Standard_v2 of WAF_v2 SKU ka
 
 Het VIP van de toepassings gateway op Standard_v2 of WAF_v2 SKU ondersteunt alleen een statisch VIP-type. Dit zorgt ervoor dat het VIP dat is gekoppeld aan de toepassings gateway niet wordt gewijzigd, zelfs gedurende de levens duur van de Application Gateway.
 
-## <a name="web-application-firewall"></a>Firewall voor webtoepassingen
+## <a name="web-application-firewall"></a>Web Application Firewall
 
 Web Application firewall (WAF) is een service waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen. WAF is gebaseerd op regels van de [OWASP (open Web Application Security project) kern regel sets](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (alleen WAF_v2), 3,0 en 2.2.9. 
 
@@ -61,7 +61,7 @@ Zie [Wat is Azure Web Application firewall?](../web-application-firewall/overvie
 ## <a name="ingress-controller-for-aks"></a>Controller van inkomend verkeer voor AKS
 Met Application Gateway ingangs controller (AGIC) kunt u Application Gateway gebruiken als binnenkomend verkeer voor een [Azure Kubernetes service-cluster (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . 
 
-De ingangs controller wordt uitgevoerd als een pod in het AKS-cluster en maakt gebruik van Kubernetes inkomende [bronnen](https://kubernetes.io/docs/concepts/services-networking/ingress/) en converteert deze naar een Application Gateway configuratie, waarmee de gateway het verkeer kan verdelen over het gehele Kubernetes. De ingangs controller ondersteunt alleen Application Gateway v2 SKU. 
+De ingangs controller wordt uitgevoerd als een pod in het AKS-cluster en maakt gebruik van Kubernetes inkomende [bronnen](https://kubernetes.io/docs/concepts/services-networking/ingress/) en converteert deze naar een Application Gateway configuratie, waarmee de gateway het verkeer kan verdelen over het gehele Kubernetes. De ingangs controller ondersteunt alleen Application Gateway Standard_v2 en WAF_v2 Sku's. 
 
 Zie [Application Gateway ingress controller (AGIC) (Engelstalig)](ingress-controller-overview.md)voor meer informatie.
 
@@ -77,7 +77,7 @@ Zie [URL-based route ring met Application Gateway](https://docs.microsoft.com/az
 
 Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één Application Gateway, of 40 voor WAF (voor optimale prestaties). Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
 
-Aanvragen voor `http://contoso.com` worden gerouteerd naar ContoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
+Aanvragen voor `http://contoso.com` worden gerouteerd naar ContosoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
 
 Op dezelfde manier kunnen twee subdomeinen van hetzelfde bovenliggende domein worden gehost op dezelfde implementatie van een toepassingsgateway. Voorbeelden van subdomeinen die worden gehost op één toepassingsgateway-implementatie, zijn `http://blog.contoso.com` en `http://app.contoso.com`.
 
@@ -115,7 +115,7 @@ Verwerkingsstop voor verbindingen helpt u om back-endgroepsleden zonder probleme
 
 Zie voor meer informatie de sectie verbindings afvoer van [Application Gateway configuratie-overzicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
-## <a name="custom-error-pages"></a>Aangepaste foutenpagina's
+## <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
 Met Application Gateway kunt u aangepaste foutpagina's maken in plaats van standaardfoutpagina's weer te geven. U kunt uw eigen huisstijl en lay-out hanteren door een aangepaste foutpagina te gebruiken.
 

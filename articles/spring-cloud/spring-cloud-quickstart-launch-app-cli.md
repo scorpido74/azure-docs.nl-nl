@@ -4,14 +4,14 @@ description: In deze Quick Start implementeert u een voorbeeld toepassing in azu
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190777"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431249"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Snelstartgids: een Java-lente toepassing starten met Azure CLI
 
@@ -143,28 +143,34 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>Openbaar eind punt toewijzen aan gateway
 
-We hebben een manier nodig om toegang te krijgen tot de toepassing via een webbrowser. Onze gateway toepassing heeft een openbaar gericht eind punt nodig dat kan worden toegewezen met de volgende opdracht:
+We hebben een manier nodig om toegang te krijgen tot de toepassing via een webbrowser. Voor onze gateway toepassing is een openbaar gericht eind punt vereist.
+
+1. Wijs het eind punt toe met de volgende opdracht:
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+2. Voer een query uit op de **Gateway** toepassing voor het open bare IP-adres, zodat u kunt controleren of de toepassing wordt uitgevoerd:
 
-Voer ten slotte een query uit op de **Gateway** toepassing voor het open bare IP-adres, zodat u kunt controleren of de toepassing wordt uitgevoerd:
-
+Linux:
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
-
-Ga naar de URL die door de vorige opdracht is gegeven om de PiggyMetrics-toepassing uit te voeren.
+Windows:
+```azurecli
+az spring-cloud app show --name gateway | findstr url
+```
+3. Ga naar de URL die door de vorige opdracht is gegeven om de PiggyMetrics-toepassing uit te voeren.
     Scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/launch-app.png) ![
 
 U kunt ook door de Azure Portal bladeren om de URL te vinden. 
 1. Ga naar de service
-1. **Apps** selecteren
-1. **Gateway** selecteren
+2. **Apps** selecteren
+3. **Gateway** selecteren
 
     ![Scherm opname van PiggyMetrics die wordt uitgevoerd](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
-1. Zoek de URL op de pagina overzicht van de **gateway** ![scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+    
+4. Zoek de URL op de pagina overzicht van de **gateway** ![scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

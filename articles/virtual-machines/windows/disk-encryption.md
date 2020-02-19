@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206295"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430405"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan server zijde van Azure Managed disks
 
@@ -58,7 +58,7 @@ Zie [Azure Key Vault Power shell](https://docs.microsoft.com/powershell/module/a
 
 Alleen de volgende regio's worden momenteel ondersteund:
 
-- Beschikbaar als GA aanbieding in de regio's VS-Oost, VS-West 2 en Zuid-Centraal vs.
+- Beschikbaar als een GA aanbieding in VS-Oost, VS-West 2, Zuid-Centraal VS, UK-zuid regio's.
 - Beschikbaar als open bare preview in de regio's vs-West-Centraal, VS-Oost 2, Canada-centraal en Europa-noord.
 
 ### <a name="restrictions"></a>Beperkingen

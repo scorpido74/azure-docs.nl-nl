@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 86e966cc3bf98e63edbe90d7649242dcb1ccdf42
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: cfd92546def21972e37781bd8a4b0bfefda9111f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964376"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444210"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Een IoT Hub gegevens verbinding maken voor Azure Data Explorer met behulp van python (preview)
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964376"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager-sjabloon](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (gegevens laden) van Event Hubs, IoT hubs en blobs die zijn geschreven naar BLOB-containers. In dit artikel maakt u een IoT Hub gegevens verbinding voor Azure Data Explorer met behulp van python.
+In dit artikel maakt u een IoT Hub gegevens verbinding voor Azure Data Explorer met behulp van python. Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Data Explorer biedt opname, of het laden van gegevens, van Event Hubs, IoT hubs en blobs die zijn geschreven naar BLOB-containers.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Een cluster en data base](create-cluster-database-python.md) maken
-* [Tabel-en kolom toewijzing](python-ingest-data.md#create-a-table-on-your-cluster) maken
-* [Data Base-en tabel beleid](database-table-policies-python.md) instellen (optioneel)
-* Maak een [IOT hub waarvoor een gedeeld toegangs beleid is geconfigureerd](ingest-data-iot-hub.md#create-an-iot-hub).
+* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Een cluster en data base](/create-cluster-database-python.md).
+
+* [Tabel-en kolom toewijzing](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Data Base-en tabel beleid](database-table-policies-python.md) (optioneel).
+
+* [Er is een IOT hub met een gedeeld toegangs beleid geconfigureerd](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 
@@ -96,6 +102,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | iot_hub_resource_id | *Resource-ID* | De resource-ID van uw IoT-hub die de gegevens voor opname bevat.|
 | shared_access_policy_name | *iothubforread* | De naam van het beleid voor gedeelde toegang dat de machtigingen definieert voor apparaten en services om verbinding te maken met IoT Hub. |
 | consumer_group | *$Default* | De consumenten groep van uw Event Hub.|
-| location | *US - centraal* | De locatie van de bron van de gegevens verbinding.|
+| locatie | *VS - centraal* | De locatie van de bron van de gegevens verbinding.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]

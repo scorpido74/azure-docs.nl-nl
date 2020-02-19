@@ -1,5 +1,5 @@
 ---
-title: Aanbevelingen voor beveiliging in Azure Security Center | Microsoft Docs
+title: Aanbevelingen voor beveiliging in Azure Security Center
 description: In dit document wordt uitgelegd hoe aanbevelingen in Azure Security Center u helpen uw Azure-resources te beveiligen en te blijven voldoen aan het beveiligings beleid.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4f41f4996f230a373245633b9449e93c403a1dfc
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520735"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430292"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
@@ -64,7 +64,7 @@ Security Center analyseert de beveiligings status van uw resources om mogelijke 
 
 1. Klik op de aanbeveling om de details van elke aanbeveling weer te geven.
 
-    ![Details van aanbeveling](./media/security-center-recommendations/recommendation-details.png)
+    ![Details van de aanbeveling](./media/security-center-recommendations/recommendation-details.png)
 
 >[!NOTE] 
 > Zie [klassieke en Resource Manager-implementatie modellen](../azure-classic-rm.md) voor Azure-resources.

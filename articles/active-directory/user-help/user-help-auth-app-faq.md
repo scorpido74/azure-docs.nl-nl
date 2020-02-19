@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063880"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443615"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Veelgestelde vragen over de Microsoft Authenticator-app
 
@@ -52,6 +52,7 @@ De app Microsoft Authenticator vervangt de Azure Authenticator app en de aanbevo
 | Waarom krijg ik meldingen over mijn account activiteit? | Om u meer op de hoogte te houden van wat er gebeurt met uw persoonlijke Microsoft-account, sturen we meldingen over activiteiten naar uw Microsoft Authenticator-app. Deze meldingen worden direct na iets gewijzigd, zodat u beter beveiligd blijft. We hebben deze meldingen eerder via e-mail en SMS verzonden en zijn nu uitgebreid om de app op te nemen. Zie [Wat gebeurt er als er sprake is van een ongebruikelijke aanmelding bij uw account](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)voor meer informatie over deze activiteiten. Meld u aan bij de pagina [waar kunnen we contact met u opnemen met niet-kritieke account waarschuwingen](https://account.live.com/SecurityNotifications/Update) van uw account om te wijzigen waar u uw meldingen ontvangt. |
 | Wanneer u zich aanmeldt bij mijn werk-of school account met behulp van de standaard-e-mail-app die wordt geleverd met iOS, wordt u door de Microsoft Authenticator-app gevraagd om de informatie over de beveiligings verificatie. Ik krijg een fout melding wanneer ik deze informatie heb ingevoerd en terugkeert naar de e-mail-app. Wat kan ik doen? | Dit is waarschijnlijk omdat uw aanmelding en uw e-mail-app zich in twee verschillende apps voordoen, waardoor het eerste aanmeldings proces van de achtergrond niet meer werkt en niet kan worden uitgevoerd. Om dit probleem op te lossen, raden we u aan om het **Safari** -pictogram aan de rechter kant van het scherm te selecteren terwijl u zich aanmeldt bij uw e-mail-app. Als u overstapt op Safari, wordt het hele aanmeldings proces uitgevoerd in één app, zodat u zich kunt aanmelden bij de app. |
 | Mijn OTP-code (eenmalig wacht woord) werkt niet. Wat moet ik doen? | Zorg ervoor dat de datum en tijd op het apparaat juist zijn en automatisch worden gesynchroniseerd. Als de datum en tijd onjuist zijn of niet synchroon zijn, werkt de code niet. |
+| Het besturings systeem Windows 10 Mobile is afgeschaft op 2019 december. Zullen de Microsoft Authenticator op Windows Mobile-besturings systemen ook worden afgeschaft? | De Microsoft Authenticator-app op alle Windows Mobile-besturings systemen wordt niet ondersteund na 28 februari 2020. Gebruikers komen niet in aanmerking voor het ontvangen van nieuwe updates van de app, die de bovengenoemde datum post. Na 28 februari 2020 micro soft-services die momenteel ondersteuning bieden voor verificaties met behulp van de Microsoft Authenticator op alle Windows Mobile-besturings systemen, worden hun ondersteuning buiten gebruik gesteld. Als u zich wilt aanmelden bij micro soft-Services, raden wij u ten zeerste aan om over te scha kelen naar een ander verificatie mechanisme vóór deze datum. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

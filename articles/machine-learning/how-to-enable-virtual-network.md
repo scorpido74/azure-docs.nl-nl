@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169947"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444346"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Als u een Azure Machine Learning Compute-exemplaar of reken cluster in een virtu
 > * Als u meerdere reken instanties of clusters in één virtueel netwerk wilt plaatsen, moet u mogelijk een quotum verhoging aanvragen voor een of meer van uw resources.
 > * Als de Azure Storage account (s) voor de werk ruimte ook worden beveiligd in een virtueel netwerk, moeten ze zich in hetzelfde virtuele netwerk bevinden als de Azure Machine Learning Reken instantie of het cluster. 
 
-Het Machine Learning Reken exemplaar of cluster wijst automatisch extra netwerk bronnen toe aan de resource groep die het virtuele netwerk bevat. Voor elk reken exemplaar of cluster wijst de service de volgende bronnen toe:
-
-* Eén netwerk beveiligings groep
-* Eén openbaar IP-adres
-* Een load balancer
-
-De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) van het abonnement.
+> [!TIP]
+> Het Machine Learning Reken exemplaar of cluster wijst automatisch extra netwerk bronnen toe aan de resource groep die het virtuele netwerk bevat. Voor elk reken exemplaar of cluster wijst de service de volgende bronnen toe:
+> 
+> * Eén netwerk beveiligings groep
+> * Eén openbaar IP-adres
+> * Een load balancer
+> 
+> De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) van het abonnement.
 
 
 ### <a id="mlcports"></a>Vereiste poorten
@@ -500,6 +501,10 @@ Wanneer u Azure Firewall gebruikt, moet u een netwerk regel configureren om verk
 Wanneer u de regel toevoegt, stelt u het __protocol__ in op elke en de poorten die moeten worden `*`.
 
 Zie [Azure firewall implementeren en configureren](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)voor meer informatie over het configureren van een netwerk regel.
+
+## <a name="use-azure-container-registry"></a>Azure Container Registry gebruiken
+
+Wanneer u een virtueel netwerk met Azure Machine Learning gebruikt, __moet u__ de Azure container Registry voor de werk ruimte in het virtuele netwerk niet plaatsen. Deze configuratie wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

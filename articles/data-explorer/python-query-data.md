@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827528"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443972"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>een query uitvoeren op gegevens met behulp van de Python-bibliotheek voor Azure Data Explorer
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Azure Data Explorer biedt een [gegevens-clientbibliotheek voor Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Met behulp van deze bibliotheek kunt u gegevens doorzoeken vanuit uw code. In dit artikel maakt u verbinding met een tabel in het *Help-cluster* die u hebt ingesteld voor hulp bij het leren. U voert vervolgens een query uit op dat cluster, waarna de resultaten worden geretourneerd.
+In dit artikel gaat u een query uitvoeren op gegevens met behulp van de Azure-Data Explorer. Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen.
+
+Azure Data Explorer biedt een [gegevens-clientbibliotheek voor Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Met behulp van deze bibliotheek kunt u gegevens doorzoeken vanuit uw code. Maak verbinding met een tabel in het *Help-cluster* die u hebt ingesteld voor hulp bij het leren. U kunt een query uitvoeren op een tabel op dat cluster en de resultaten retour neren.
 
 Dit artikel is ook beschikbaar als [Azure-notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een organisatie-e-mailaccount dat is gekoppeld aan Azure Active Directory (AAD)
+* [Python 3.4 +](https://www.python.org/downloads/)
 
-* [Python](https://www.python.org/downloads/) is geïnstalleerd op uw ontwikkelcomputer
+* Een organisatie-e-mailaccount dat is gekoppeld aan Azure Active Directory (AAD)
 
 ## <a name="install-the-data-library"></a>De gegevensbibliotheek installeren
 
@@ -45,7 +47,7 @@ from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
-Azure Data Explorer maakt gebruik van uw AAD-tenant-id om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
+Azure Data Explorer maakt gebruik van de id van uw AAD-tenant om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -57,7 +59,7 @@ Dus als uw domein *contoso.com* is, wordt de URL bijvoorbeeld: [https://login.wi
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-De tenant-id is in dit geval `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Stel de waarde voor AAD_TENANT_ID in voordat u deze code uitvoert.
+De tenant-id is `6babcaad-604b-40ac-a9d7-9fd97c0b779f` in dit voorbeeld. Stel de waarde voor AAD_TENANT_ID in voordat u deze code uitvoert.
 
 ```python
 AAD_TENANT_ID = "<TenantId>"
@@ -65,7 +67,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE = "Samples"
 ```
 
-Nu maakt u de verbindingsreeks. In dit voorbeeld wordt apparaatverificatie gebruikt voor toegang tot het cluster. U kunt ook een [AAD-toepassingscertificaat](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), een [AAD-toepassingssleutel](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20) en een [AAD-gebruiker en -wachtwoord](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34) gebruiken.
+Stel nu de verbindingsreeks samen. In dit voorbeeld wordt apparaatverificatie gebruikt voor toegang tot het cluster. U kunt ook een [AAD-toepassingscertificaat](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), een [AAD-toepassingssleutel](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20) en een [AAD-gebruiker en -wachtwoord](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34) gebruiken.
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
@@ -75,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Verbinding maken met Azure Data Explorer en een query uitvoeren
 
-Voer een query uit op het cluster en sla de uitvoer op in een gegevensframe. Wanneer deze code wordt uitgevoerd, wordt een bericht als het volgende geretourneerd: *Als u zich wilt aanmelden, opent u de pagina https://microsoft.com/devicelogin met een webbrowser. Voer de code F3W4VWZDM in om te verifiëren*. Volg de stappen om u aan te melden en ga vervolgens terug om het volgende codeblok uit te voeren.
+Voer een query uit op het cluster en sla de uitvoer op in een gegevensframe. Wanneer deze code wordt uitgevoerd, wordt er een bericht als het volgende geretourneerd: *Als u zich wilt aanmelden, opent u de pagina https://microsoft.com/devicelogin met een webbrowser. Voer de code F3W4VWZDM in om te verifiëren*. Volg de stappen om u aan te melden en ga vervolgens terug om het volgende codeblok uit te voeren.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)

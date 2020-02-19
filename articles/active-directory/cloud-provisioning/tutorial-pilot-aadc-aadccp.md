@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166574"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442119"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
 
@@ -86,7 +86,7 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
     ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Klik op **volgende**op de pagina regels voor **samen voegen** .
- 6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Toevoegen**.
+ 6. Voeg op de pagina **trans formaties** een constante trans formatie toe: flow True to cloudNoFlow-kenmerk. Klik op **Add**.
  Aangepaste regel](media/how-to-cloud-custom-user-rule/user4.png) ![</br>
 
 Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep en contact). Herhaal de stappen per geconfigureerde AD-connector/per AD-forest. 
@@ -99,8 +99,8 @@ Dezelfde stappen moeten worden gevolgd voor alle object typen (gebruiker, groep 
  2. Voer het volgende in op de pagina **Beschrijving** en klik op **volgende**:
 
     **Naam:** Geef een beschrijvende naam op voor de regel<br>
-    **Beschrijving:** Een zinvolle beschrijving toevoegen<br> 
-    **verbonden systeem:** Kies de Aad-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
+    **Beschrijving:** Een zinvolle beschrijving toevoegen<br>
+    **Verbonden systeem:** Kies de AAD-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
     **Type verbonden systeem object:** Gebruiker<br>
     **Omgekeerd object type:** Gelaedeerde<br>
     **Type koppeling:** JoinNoFlow<br>
@@ -143,7 +143,7 @@ Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azu
 
 1. Meld u aan bij Azure Portal.
 2. Selecteer aan de linkerkant **Azure Active Directory**, klik op **Azure AD Connect** en selecteer in het midden de optie **inrichting beheren (preview)** .</br>
-![Azure-portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install6.png)</br>
 
 3.  Klik in het scherm **Azure AD inrichten (preview)** op **Alle agents controleren**.
 ![Azure AD-inrichtings](media/how-to-install/install7.png)</br>

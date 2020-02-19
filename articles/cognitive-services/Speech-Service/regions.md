@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201149"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431159"
 ---
 # <a name="speech-service-supported-regions"></a>Ondersteunde regio's voor spraak Services
 
@@ -44,19 +44,19 @@ Als u de [Speech SDK](speech-sdk.md)gebruikt, worden regio's opgegeven met de **
 
 Beschik bare regio's voor **intentie herkenning** via de Speech SDK zijn de volgende:
 
-| Globale regio | Regio           | Parameter voor spraak-SDK |
+| Globale regio | Regio           | Regio-id |
 | ------------- | ---------------- | -------------------- |
 | Azië          | Azië - oost        | `eastasia`           |
 | Azië          | Azië - zuidoost   | `southeastasia`      |
 | Australië     | Australië - oost   | `australiaeast`      |
 | Europa        | Europa - noord     | `northeurope`        |
 | Europa        | Europa -west      | `westeurope`         |
-| Noord-Amerika | US - oost          | `eastus`             |
-| Noord-Amerika | US - oost 2        | `eastus2`            |
-| Noord-Amerika | US - zuid-centraal | `southcentralus`     |
-| Noord-Amerika | US - west-centraal  | `westcentralus`      |
-| Noord-Amerika | US - west          | `westus`             |
-| Noord-Amerika | US - west 2        | `westus2`            |
+| Noord-Amerika | VS - oost          | `eastus`             |
+| Noord-Amerika | VS - oost 2        | `eastus2`            |
+| Noord-Amerika | VS - zuid-centraal | `southcentralus`     |
+| Noord-Amerika | VS - west-centraal  | `westcentralus`      |
+| Noord-Amerika | VS - west          | `westus`             |
+| Noord-Amerika | VS - west 2        | `westus2`            |
 | Zuid-Amerika | Brazilië - zuid     | `brazilsouth`        |
 
 Dit is een subset van de publicatie regio's die worden ondersteund door de [Language Understanding-service (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
@@ -65,12 +65,12 @@ Dit is een subset van de publicatie regio's die worden ondersteund door de [Lang
 
 De [spraak-SDK](speech-sdk.md) ondersteunt de mogelijkheden van de **Voice Assistant** in deze regio's:
 
-| Regio         | Parameter voor spraak-SDK |
+| Regio         | Regio-id |
 | -------------- | -------------------- |
-| US - west        | `westus`             |
-| US - west 2      | `westus2`            |
-| US - oost        | `eastus`             |
-| US - oost 2      | `eastus2`            |
+| VS - west        | `westus`             |
+| VS - west 2      | `westus2`            |
+| VS - oost        | `eastus`             |
+| VS - oost 2      | `eastus2`            |
 | Europa -west    | `westeurope`         |
 | Europa - noord   | `northeurope`        |
 | Azië - zuidoost | `southeastasia`      |

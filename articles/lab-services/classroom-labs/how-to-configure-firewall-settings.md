@@ -1,19 +1,19 @@
 ---
-title: Firewall instellingen voor Azure Lab Services
+title: Firewall-instellingen voor Azure Lab Services
 description: Informatie over het bepalen van het open bare IP-adres en het poort nummer bereik van virtuele machines in een Lab zodat informatie kan worden toegevoegd aan de firewall regels.
 author: emaher
 ms.author: enewman
-ms.date: 12/12/2019
+ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: da1614e4a3e02ed91ef2d3c59ac4eb3eac0dcc7c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692769"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443449"
 ---
-# <a name="firewall-settings-for-azure-lab-services"></a>Firewall instellingen voor Azure Lab Services
+# <a name="firewall-settings-for-azure-lab-services"></a>Firewall-instellingen voor Azure Lab Services
 
 Elke organisatie of school zal hun eigen netwerk instellen op een manier die het beste past bij hun behoeften.  Soms omvat het instellen van firewall regels die Remote Desktop Protocol (RDP) of ssh-verbindingen (Secure Shell) met computers buiten hun netwerk blok keren.  Omdat Azure Lab Services in de open bare Cloud wordt uitgevoerd, is er mogelijk een extra configuratie nodig om studenten toegang te geven tot hun virtuele machine bij het maken van verbinding via het netwerk van de campus.
 
@@ -24,10 +24,10 @@ Elk Lab maakt gebruik van één openbaar IP-adres en meerdere poorten.  Alle Vm'
 
 ## <a name="find-public-ip-for-a-lab"></a>Een openbaar IP-adres voor een Lab zoeken
 
-De open bare IP-adressen voor elk lab worden weer gegeven op de Blade **alle Labs** van het lab-account voor Lab-Services.  Zie [Labs beheren in een Lab-account](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)voor instructies voor het vinden van de Blade **alle Labs** .  
+De open bare IP-adressen voor elk lab worden weer gegeven op de pagina **alle Labs** van het lab-account voor Lab-Services.  Zie [Labs beheren in een Lab-account](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account)voor instructies voor het vinden van de pagina **alle Labs** .  
 
 > [!div class="mx-imgBorder"]
-> ![de Blade alle Labs](../media/how-to-configure-firewall-settings/all-labs-properties.png)
+> ![alle Labs-pagina](../media/how-to-configure-firewall-settings/all-labs-properties.png)
 
 >[!NOTE]
 >Het open bare IP-adres wordt niet weer geven als de sjabloon machine voor uw Lab nog niet is gepubliceerd.
@@ -35,3 +35,13 @@ De open bare IP-adressen voor elk lab worden weer gegeven op de Blade **alle Lab
 ## <a name="conclusion"></a>Conclusie
 
 Nu weten we het open bare IP-adres voor het lab.  Er kunnen binnenkomende en uitgaande regels worden gemaakt voor de firewall van de organisatie voor het open bare IP-adres en het poort bereik 49152-65535.  Zodra de regels zijn bijgewerkt, hebben studenten toegang tot hun Vm's zonder dat de netwerk firewall de toegang blokkeert.
+
+## <a name="next-steps"></a>Volgende stappen
+Zie de volgende artikelen:
+
+- [Lab-Maker toestaan locatie van test omgeving te kiezen](allow-lab-creator-pick-lab-location.md)
+- [Uw Lab-netwerk verbinden met een virtueel peer netwerk](how-to-connect-peer-virtual-network.md)
+- [Een galerie met gedeelde afbeeldingen koppelen aan een Lab](how-to-attach-detach-shared-image-gallery.md)
+- [Een gebruiker toevoegen als een Lab-eigenaar](how-to-add-user-lab-owner.md)
+- [Firewall instellingen voor een Lab weer geven](how-to-configure-firewall-settings.md)
+- [Andere instellingen voor een lab configureren](how-to-configure-lab-accounts.md)

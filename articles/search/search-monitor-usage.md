@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210535"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443598"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Bewerkingen en activiteiten van Azure Cognitive Search bewaken
 
 In dit artikel vindt u een overzicht van het niveau van de service (resource), op het niveau van de werk belasting (query's en indexering), en wordt een framework voorgesteld voor het bewaken van gebruikers toegang.
 
-In het spectrum gebruikt u een combi natie van ingebouwde infra structuur en Foundational services zoals Azure Monitor, evenals service-Api's die statistieken, aantallen en status retour neren. Als u het bereik van mogelijkheden begrijpt, kunt u een effectief communicatie systeem configureren of maken voor proactieve antwoorden op problemen wanneer deze zich voordoen.
+In het spectrum gebruikt u een combi natie van ingebouwde infra structuur en Foundational services zoals Azure Monitor, evenals service-Api's die statistieken, aantallen en status retour neren. Het bereik van mogelijkheden kan u helpen een feedback-lus te maken, zodat u problemen kunt oplossen wanneer deze zich voordoen.
 
 ## <a name="use-azure-monitor"></a>Azure Monitor gebruiken
 
@@ -52,9 +52,9 @@ Pagina's met tabbladen die in het overzichts venster zijn ingebouwd, worden weer
 
 Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt en hoe goed de huidige configuratie de bestaande belasting afhandelt.
 
-Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar. het opslag verbruik is niet geaggregeerd of aangemeld bij **AzureMetrics**. U moet een aangepaste oplossing bouwen om meldingen over de resource te verkrijgen.
+Waarschuwingen met betrekking tot opslag zijn momenteel niet beschikbaar. het opslag verbruik is niet geaggregeerd of aangemeld bij de **AzureMetrics** -tabel in azure monitor. U moet een aangepaste oplossing bouwen die meldingen over resources verzendt, waarbij uw code controleert op opslag grootte en het antwoord verwerkt. Zie [service statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)voor meer informatie over metrische gegevens over de opslag.
 
-In de portal ziet u op het tabblad **gebruik** de beschik baarheid van resources ten opzichte van de huidige [limieten](search-limits-quotas-capacity.md) die door de servicelaag worden opgelegd. 
+Voor visuele bewaking in de portal toont het tabblad **gebruik** de beschik baarheid van resources ten opzichte van de huidige [limieten](search-limits-quotas-capacity.md) die door de servicelaag worden opgelegd. 
 
 De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
 
@@ -63,7 +63,7 @@ De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 
 
 ## <a name="monitor-workloads"></a>Werk belastingen bewaken
 
-Geregistreerde gebeurtenissen zijn onder andere de items die betrekking hebben op indexering en query's. De **Azure Diagnostics** -tabel in log Analytics verzamelt operationele gegevens met betrekking tot query's en indexering.
+Geregistreerde gebeurtenissen zijn onder andere de items die betrekking hebben op indexering en query's. De **AzureDiagnostics** -tabel in log Analytics verzamelt operationele gegevens met betrekking tot query's en indexering.
 
 De meeste geregistreerde gegevens zijn alleen-lezen-bewerkingen. Voor andere Create-update-delete-bewerkingen die niet in het logboek zijn vastgelegd, kunt u een query uitvoeren op de zoek service voor systeem info.
 
@@ -115,9 +115,9 @@ Zowel de Azure Cognitive Search REST API als de .NET SDK bieden programmatische 
 
 ## <a name="monitor-user-access"></a>Gebruikers toegang controleren
 
-Omdat zoek indexen een onderdeel zijn van een grotere client toepassing, is er geen ingebouwde, gebruikersspecifieke methodologie voor het beheren van de toegang tot een index. Er wordt van uitgegaan dat er aanvragen worden opgehaald uit een client toepassing, voor beheerders-of query aanvragen. Lees-en schrijf bewerkingen door de beheerder omvatten het maken, bijwerken en verwijderen van objecten in de gehele service. Alleen-lezen bewerkingen zijn query's voor de verzameling documenten, met een bereik van één index. 
+Omdat zoek indexen een onderdeel zijn van een grotere client toepassing, is er geen ingebouwde methodologie voor het beheren of bewaken van toegang per gebruiker tot een index. Er wordt van uitgegaan dat er aanvragen worden opgehaald uit een client toepassing, voor beheerders-of query aanvragen. Lees-en schrijf bewerkingen door de beheerder omvatten het maken, bijwerken en verwijderen van objecten in de gehele service. Alleen-lezen bewerkingen zijn query's voor de verzameling documenten, met een bereik van één index. 
 
-Wat u in de logboeken ziet, is verwijzingen naar aanroepen met behulp van beheer sleutels of query sleutels. De juiste sleutel is opgenomen in aanvragen die afkomstig zijn van client code. De service is niet ingericht voor het afhandelen van identiteits tokens of imitatie.
+Wat u in de activiteiten logboeken ziet, zijn verwijzingen naar aanroepen met behulp van beheer sleutels of query sleutels. De juiste sleutel is opgenomen in aanvragen die afkomstig zijn van client code. De service is niet ingericht voor het afhandelen van identiteits tokens of imitatie.
 
 Wanneer er bedrijfs vereisten bestaan voor autorisatie per gebruiker, wordt de aanbeveling geïntegreerd met Azure Active Directory. U kunt $filter en gebruikers identiteiten gebruiken om de [Zoek resultaten](search-security-trimming-for-azure-search-with-aad.md) van documenten die een gebruiker niet mag zien te knippen. 
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845771"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442986"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -22,15 +22,15 @@ Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die u
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Welke mogelijkheden worden er in Azure Firewall ondersteund?
 
-* Stateful firewall als een service
-* Ingebouwde hoge beschikbaarheid met onbeperkte cloudschaalbaarheid
+* Stateful firewall as a Service
+* Ingebouwde hoge Beschik baarheid met onbeperkte Cloud schaal baarheid
 * Filteren op FQDN
 * FQDN-tags
 * Regels voor het filteren van netwerkverkeer
 * Ondersteuning voor uitgaande SNAT
 * Ondersteuning voor inkomende DNAT
 * Toepassingen en beleids regels voor netwerk verbindingen centraal maken, afdwingen en registreren in azure-abonnementen en VNETs
-* Volledig geïntegreerd met Azure Monitor voor registratie en analyses
+* Volledig geïntegreerd met Azure Monitor voor logboek registratie en analyse
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Wat is het typische implementatie model voor Azure Firewall?
 
@@ -125,7 +125,7 @@ Ja. Het configureren van de Udr's voor het omleiden van verkeer tussen subnetten
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall uitgaande SNAT tussen particuliere netwerken?
 
-Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet.
+Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall zodanig configureren dat uw open bare IP-adres bereik **niet** kan worden gesnat. Zie [Azure firewall SNAT-particuliere IP-adresbereiken](snat-private-range.md)voor meer informatie.
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wordt geforceerde tunneling/keten van een virtueel netwerk apparaat ondersteund?
 

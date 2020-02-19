@@ -1,41 +1,38 @@
 ---
-title: 'Zelf studie: Azure Firewall Manager-voor beeld gebruiken om uw Cloud netwerk te beveiligen met behulp van de Azure Portal'
-description: In deze zelf studie leert u hoe u uw Cloud netwerk kunt beveiligen met Azure Firewall Manager met behulp van de Azure Portal.
+title: 'Zelf studie: uw virtuele WAN beveiligen met Azure Firewall Manager-preview'
+description: In deze zelf studie leert u hoe u uw virtuele WAN kunt beveiligen met Azure Firewall Manager met behulp van de Azure Portal.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501909"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443054"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>Zelf studie: uw Cloud netwerk beveiligen met Azure Firewall Manager Preview met behulp van de Azure Portal
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Zelf studie: uw virtuele WAN beveiligen met Azure Firewall Manager-preview 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Met Azure Firewall Manager preview kunt u beveiligde hubs maken om uw Cloud netwerk verkeer te beveiligen dat is bestemd voor privé-IP-adressen, Azure PaaS en Internet. Verkeer routeren naar de firewall is geautomatiseerd, dus u hoeft geen door de gebruiker gedefinieerde routes (Udr's) te maken.
+Met Azure Firewall Manager preview kunt u beveiligde virtuele hubs maken voor het beveiligen van uw Cloud netwerk verkeer dat is bestemd voor privé-IP-adressen, Azure PaaS en het internet. Verkeer routeren naar de firewall is geautomatiseerd, dus u hoeft geen door de gebruiker gedefinieerde routes (Udr's) te maken.
 
 ![het Cloud netwerk beveiligen](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>Vereisten
+Firewall beheer biedt ook ondersteuning voor de architectuur van een virtuele hub-netwerk. Zie [Wat zijn de opties voor de Azure firewall Manager-architectuur?](vhubs-and-vnets.md) voor een vergelijking van de beveiligde virtuele hub-en hub-architectuur typen van het virtuele netwerk.
 
-> [!IMPORTANT]
-> Azure Firewall Manager-Preview moet expliciet worden ingeschakeld met de `Register-AzProviderFeature` Power shell-opdracht.
+In deze zelfstudie leert u het volgende:
 
-Voer vanuit een Power shell-opdracht prompt de volgende opdrachten uit:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. Voer de volgende opdracht uit om de registratie status te controleren:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * Het virtuele spoke-netwerk maken
+> * Een beveiligde virtuele hub maken
+> * De hub en spoke VNets verbinden
+> * Een firewall beleid maken en uw hub beveiligen
+> * Verkeer naar uw hub routeren
+> * De firewall testen
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Een hub-en spoke-architectuur maken
 
@@ -151,7 +148,7 @@ Als u uw firewall regels wilt testen, moet u een paar servers implementeren. U i
    |Naam van de virtuele machine     |**Sprong-SRV**|
    |Regio     |**VS VS-Oost)**|
    |Gebruikers naam van beheerder     |**azureuser**|
-   |Wachtwoord     |**Azure123456!**|
+   |Wachtwoord     |Typ uw wacht woord|
 
 4. Onder **Binnenkomende poort regels**, voor **open bare binnenkomende poorten**, selecteert u **geselecteerde poorten toestaan**.
 5. Selecteer **RDP (3389)** voor **Binnenkomende poorten selecteren**.

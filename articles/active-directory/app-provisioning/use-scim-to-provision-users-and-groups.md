@@ -1,6 +1,6 @@
 ---
-title: Een SCIM-eind punt bouwen voor het inrichten van gebruikers voor apps vanuit Azure AD
-description: Leer hoe u een SCIM-eind punt bouwt, uw SCIM-API integreert met Azure Active Directory en begin met het automatiseren van het inrichten van gebruikers en groepen in uw Cloud toepassingen.
+title: Een SCIM-eind punt ontwikkelen voor het inrichten van gebruikers voor apps vanuit Azure AD
+description: Met het systeem voor Identity Management (SCIM) met meerdere domeinen wordt automatische gebruikers inrichting gestandaardiseerd. Leer hoe u een SCIM-eind punt ontwikkelt, uw SCIM-API integreert met Azure Active Directory en beginnen met het automatiseren van het inrichten van gebruikers en groepen in uw Cloud toepassingen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/18/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d891dfcc2a37489953724ce22e0e0422d512ff
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368215"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442017"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -49,15 +49,53 @@ Voor het automatiseren van de inrichting van een toepassing moet u een SCIM-eind
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>Stap 1: uw gebruikers-en groeps schema ontwerpen
 
-Voor elke toepassing zijn verschillende kenmerken vereist om een gebruiker of groep te maken. Start uw integratie door de objecten (gebruikers, groepen) en kenmerken (naam, Manager, functie, enz.) te identificeren die nodig zijn voor uw toepassing. U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw toepassing nodig heeft, kunnen worden toegewezen aan een kenmerk in azure AD en de SCIM RFC. Houd er rekening mee dat u kunt [aanpassen](customize-application-attributes.md) hoe kenmerken worden toegewezen tussen Azure AD en uw scim-eind punt. 
+Voor elke toepassing zijn verschillende kenmerken vereist om een gebruiker of groep te maken. Start uw integratie door de objecten (gebruikers, groepen) en kenmerken (naam, Manager, functie, enz.) te identificeren die nodig zijn voor uw toepassing. De SCIM-standaard definieert een schema voor het beheren van gebruikers en groepen. Voor het kern gebruikers schema zijn alleen drie kenmerken vereist: **id** (door de service provider gedefinieerde id), **externalId** (door client gedefinieerde id) en **META** (alleen-lezen meta gegevens die worden onderhouden door de service provider). Alle andere kenmerken zijn optioneel. Naast het kern gebruikers schema definieert de SCIM-standaard een gebruikers extensie voor ondernemingen en een model om het gebruikers schema uit te breiden om te voldoen aan de behoeften van uw toepassing. Als uw toepassing bijvoorbeeld een manager van een gebruiker vereist, kunt u het ondernemings gebruikers schema gebruiken om de Manager van de gebruiker en het kern schema te verzamelen voor het verzamelen van het e-mail adres van de gebruiker. Volg de onderstaande stappen om uw schema te ontwerpen:
+  1. Geef een lijst van de kenmerken die uw toepassing nodig heeft. Het kan handig zijn om uw vereisten te onderverdelen in de kenmerken die nodig zijn voor authenticatie (bijvoorbeeld aanmeldings naam en e-mail adres), kenmerken die nodig zijn voor het beheren van de levens cyclus van de gebruiker (bijvoorbeeld status/actief) en andere kenmerken die nodig zijn om uw specifieke toepassing te laten werken (bijvoorbeeld Manager, tag).
+  2. Controleer of deze kenmerken al zijn gedefinieerd in het basis gebruikers schema of het gebruikers schema van de onderneming. Als kenmerken die u nodig hebt en niet worden behandeld in de basis-of ENTER prise-gebruikers schema's, moet u een uitbrei ding definiëren voor het gebruikers schema dat betrekking heeft op de kenmerken die u nodig hebt. In het onderstaande voor beeld hebben we een extensie toegevoegd aan de gebruiker om het inrichten van een ' tag ' op een gebruiker toe te staan. U kunt het beste beginnen met alleen de basis-en ondernemings gebruikers schema's en later uitbreiden naar aanvullende aangepaste schema's.  
+  3. Wijs de SCIM-kenmerken toe aan de gebruikers kenmerken in azure AD. Als een van de kenmerken die u hebt gedefinieerd in uw SCIM-eind punt geen duidelijke vergelijk bare soort heeft in het Azure AD-gebruikers schema, is de kans groot dat de gegevens niet in het gebruikers object op de meeste tenants worden opgeslagen. Bepaal of dit kenmerk optioneel kan zijn voor het maken van een gebruiker. Als het kenmerk essentieel is voor de werking van uw toepassing, kunt u de Tenant beheerder helpen hun schema uit te breiden of een uitbreidings kenmerk te gebruiken zoals hieronder wordt weer gegeven voor de eigenschap "Tags".
 
-Gebruikers resources worden geïdentificeerd aan de hand van de schema-ID, `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, die is opgenomen in deze protocol specificatie: https://tools.ietf.org/html/rfc7643.  De standaard toewijzing van de kenmerken van gebruikers in azure AD aan de kenmerken van gebruikers bronnen is opgenomen in tabel 1.  
+### <a name="table-1-outline-the-attributes-that-you-need"></a>Tabel 1: een overzicht van de kenmerken die u nodig hebt 
+| Stap 1: kenmerken bepalen die uw app nodig heeft| Stap 2: app-vereisten toewijzen aan SCIM Standard| Stap 3: SCIM-kenmerken toewijzen aan de Azure AD-kenmerken|
+|--|--|--|
+|Aanmeldings naam|userName|userPrincipalName|
+|voornaam|name.givenName|givenName|
+|achternaam|naam. lastName|achternaam|
+|workMail|E-mail berichten [type EQ "werk]. waarde|Mail|
+|Manager|Manager|Manager|
+|Tag|urn: IETF: params: scim: schemas: extension: 2.0: CustomExtension: tag|extensionAttribute1|
+|status|actief|isSoftDeleted (berekende waarde niet opgeslagen op gebruiker)|
 
-Groeps resources worden geïdentificeerd aan de hand van de schema-ID, `urn:ietf:params:scim:schemas:core:2.0:Group`. In tabel 2 ziet u de standaard toewijzing van de kenmerken van groepen in azure AD aan de kenmerken van groeps resources.
+Het hierboven gedefinieerde schema wordt weer gegeven met behulp van de JSON-nettolading hieronder. Houd er rekening mee dat naast de vereiste kenmerken voor de toepassing, de JSON-weer gave de vereiste kenmerken ' id ', ' externalId ' en ' meta ' bevat.
 
-Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder weer gegeven kenmerken moet ondersteunen. Ze zijn een verwijzing naar de manier waarop kenmerken in azure AD vaak worden toegewezen aan eigenschappen in het SCIM-protocol.  
+```json
+{
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "Manager": "123456"
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "tag": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ ```
 
-### <a name="table-1-default-user-attribute-mapping"></a>Tabel 1: Standaard gebruiker kenmerktoewijzing
+### <a name="table-2-default-user-attribute-mapping"></a>Tabel 2: standaard toewijzing van gebruikers kenmerken
+U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw toepassing nodig heeft, kunnen worden toegewezen aan een kenmerk in azure AD en de SCIM RFC. U kunt [aanpassen](customize-application-attributes.md) hoe kenmerken worden toegewezen tussen Azure AD en uw scim-eind punt. Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder weer gegeven kenmerken moet ondersteunen. Ze zijn een verwijzing naar de manier waarop kenmerken in azure AD vaak worden toegewezen aan eigenschappen in het SCIM-protocol. 
 
 | Azure Active Directory-gebruiker | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -81,7 +119,7 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | user-PrincipalName |userName |
 
 
-### <a name="table-2-default-group-attribute-mapping"></a>Tabel 2: Standaard groep kenmerktoewijzing
+### <a name="table-3-default-group-attribute-mapping"></a>Tabel 3: standaard toewijzing van groeps kenmerken
 
 | Azure Active Directory-groep | urn: IETF: params: scim: schemas: kern: 2.0: groep |
 | --- | --- |
@@ -91,6 +129,19 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | leden |leden |
 | object-id |externalId |
 | proxyAddresses |e-mailberichten [Typ eq 'ander']. Waarde |
+
+Er zijn verschillende eind punten gedefinieerd in de SCIM RFC. U kunt aan de slag met het/User-eind punt en vervolgens van daaruit uitbreiden. Het/schemas-eind punt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regel matig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het/bulk-eind punt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eind punten die zijn gedefinieerd in de SCIM-standaard. Het/schemas-eind punt is handig wanneer u aangepaste kenmerken gebruikt of als uw schema regel matig wordt gewijzigd. Hiermee kan een client automatisch het meest recente schema ophalen. Het/bulk-eind punt is vooral handig bij het ondersteunen van groepen. De volgende tabel beschrijft de verschillende eind punten die zijn gedefinieerd in de SCIM-standaard. 
+ 
+### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>Tabel 4: Bepaal de eind punten die u wilt ontwikkelen
+|ENDPOINTS|BESCHRIJVING|
+|--|--|
+|/User|RUWE bewerkingen op een gebruikers object uit te voeren.|
+|/Group|RUWE bewerkingen uitvoeren op een groeps object.|
+|/ServiceProviderConfig|Bevat informatie over de functies van de SCIM-standaard die worden ondersteund, bijvoorbeeld de bronnen die worden ondersteund en de verificatie methode.|
+|/ResourceTypes|Hiermee geeft u de meta gegevens van elke resource op|
+|/Schemas|De set met kenmerken die door elke client en service provider wordt ondersteund, kan variëren. Hoewel een service provider ' naam, ' titel ' en ' e-mailen ' kan bevatten, terwijl een andere service provider ' naam ', ' titel ' en ' phoneNumbers ' gebruikt. Het eind punt voor schema's maakt het mogelijk om de kenmerken te detecteren die worden ondersteund.|
+|/Bulk|Met bulk bewerkingen kunt u bewerkingen uitvoeren op een grote verzameling Resource objecten in één bewerking (zoals lidmaatschappen van updates voor een grote groep).|
+
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Stap 2: inzicht in de implementatie van Azure AD SCIM
 > [!IMPORTANT]
@@ -671,6 +722,34 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 *HTTP/1.1 204 geen inhoud*
 
+### <a name="security-requirements"></a>Beveiligings vereisten
+**TLS-protocol versies**
+
+De enige acceptabele TLS-protocol versies zijn TLS 1,2 en TLS 1,3. Er zijn geen andere versies van TLS toegestaan. Er is geen SSL-versie toegestaan. 
+- RSA-sleutels moeten ten minste 2.048 bits zijn.
+- ECC-sleutels moeten ten minste 256 bits zijn en worden gegenereerd met een goedgekeurde elliptische curve
+
+
+**Sleutel lengten**
+
+Alle services moeten X. 509-certificaten gebruiken die zijn gegenereerd met cryptografische sleutels van voldoende lengte, wat betekent het volgende:
+
+**Coderings suites**
+
+Alle services moeten worden geconfigureerd voor het gebruik van de volgende coderings suites in de exacte volg orde die hieronder is opgegeven. Houd er rekening mee dat als u alleen een RSA-certificaat hebt, de installatie van de ECDSA-coderings suites geen effect heeft. </br>
+
+Minimale staaf voor TLS 1,2-coderings suites:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 
 Als u een SCIM-webservice maakt die interfaces met Azure Active Directory, kunt u automatische gebruikers inrichting inschakelen voor vrijwel elke toepassing of identiteits opslag.
@@ -885,7 +964,7 @@ Als u de service in Internet Information Services wilt hosten, bouwt een ontwikk
 
 ### <a name="handling-endpoint-authentication"></a>Verwerking-eindpuntverificatie
 
-Aanvragen van Azure Active Directory bevatten een OAuth 2.0-bearer-token. Alle services die de aanvraag ontvangen, moeten de verlener verifiëren als Azure Active Directory voor de verwachte Azure Active Directory Tenant, voor toegang tot de Microsoft Graph API-service. In het token wordt de verlener geïdentificeerd door een ISS-claim, zoals "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  In dit voor beeld is het basis adres van de claim waarde, https://sts.windows.net, Azure Active Directory als verlener geïdentificeerd, terwijl het relatieve adres segment cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven. De doel groep van het token is de toepassings sjabloon-ID voor de app in de galerie. De toepassings sjabloon-ID voor alle aangepaste apps is 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. De toepassings sjabloon-ID voor elke app in de galerie varieert. Neem contact op met ProvisioningFeedback@microsoft.com voor vragen over de toepassings sjabloon-ID voor een galerie toepassing. Elk van de toepassingen die in één Tenant zijn geregistreerd, kan dezelfde `iss` claim ontvangen met SCIM-aanvragen.
+Aanvragen van Azure Active Directory bevatten een OAuth 2.0-bearer-token.   Alle services die de aanvraag ontvangen, moeten de verlener verifiëren als Azure Active Directory voor de verwachte Azure Active Directory Tenant, voor toegang tot de Microsoft Graph API-service.  In het token wordt de verlener geïdentificeerd door een ISS-claim, zoals "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  In dit voor beeld is het basis adres van de claim waarde, https://sts.windows.net, Azure Active Directory als verlener geïdentificeerd, terwijl het relatieve adres segment cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven. De doel groep van het token is de toepassings sjabloon-ID voor de app in de galerie. De toepassings sjabloon-ID voor alle aangepaste apps is 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. De toepassings sjabloon-ID voor elke app in de galerie varieert. Neem contact op met ProvisioningFeedback@microsoft.com voor vragen over de toepassings sjabloon-ID voor een galerie toepassing. Elk van de toepassingen die in één Tenant zijn geregistreerd, kan dezelfde `iss` claim ontvangen met SCIM-aanvragen.
 
 Ontwikkel aars die gebruikmaken van de CLI-bibliotheken van micro soft voor het bouwen van een SCIM-service kunnen aanvragen van Azure Active Directory met het pakket micro soft. Owin. Security. ActiveDirectory verifiëren door de volgende stappen te volgen: 
 
@@ -1370,11 +1449,20 @@ Als u een toepassing bouwt die wordt gebruikt door meer dan één Tenant, kunt u
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorisatie voor het inrichten van connectors in de toepassings galerie
 De SCIM spec definieert geen SCIM-specifiek schema voor verificatie en autorisatie. Het is afhankelijk van het gebruik van bestaande industrie normen. De Azure AD-inrichtings client ondersteunt twee autorisatie methoden voor toepassingen in de galerie. 
 
+|Autorisatie methode|Professionals|Nadelen|Ondersteuning|
+|--|--|--|--|
+|Gebruikers naam en wacht woord (niet aanbevolen of niet ondersteund door Azure AD)|Eenvoudig te implementeren|Onveilig: [uw PA $ $Word is niet van belang](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Per geval ondersteund voor galerij-apps. Niet ondersteund voor niet-galerij-apps.|
+|Token met lange levens drager (ondersteund door Azure AD op dit moment)|Voor tokens met een lange levens duur hoeft geen gebruiker aanwezig te zijn. Ze kunnen eenvoudig worden gebruikt bij het instellen van de inrichting.|Tokens met een lange levens duur kunnen moeilijk worden gedeeld met een beheerder zonder gebruik te maken van onveilige methoden zoals e-mail. |Ondersteund voor Gallery-en niet-galerij-apps. |
+|Verleende OAuth-autorisatie code (ondersteund door Azure AD op dit moment)|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben.  Er moet een echte gebruiker aanwezig zijn tijdens de eerste autorisatie, waarbij een verantwoordelijkheids niveau wordt toegevoegd. |Hiervoor moet een gebruiker aanwezig zijn. Als de gebruiker de organisatie verlaat, is het token ongeldig en moet de autorisatie opnieuw worden uitgevoerd.|Ondersteund voor galerie-apps. Er wordt ondersteuning geboden voor niet-galerij-apps.|
+|OAuth-client referenties verlenen (niet ondersteund, op ons schema)|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben. Zowel de autorisatie code Grant als de client referenties geven hetzelfde type toegangs token maken, zodat het verplaatsen tussen deze methoden transparant is voor de API.  Het inrichten kan volledig worden geautomatiseerd en nieuwe tokens kunnen zonder tussen komst van de gebruiker worden aangevraagd. ||Niet ondersteund voor apps uit de galerie en niet-galerij. Ondersteuning bevindt zich in onze achterstand.|
+
 **Overdrachts stroom OAuth-autorisatie code:** De inrichtings service ondersteunt de [toekenning van autorisatie code](https://tools.ietf.org/html/rfc6749#page-24). Na het verzenden van uw aanvraag voor het publiceren van uw app in de galerie, zal ons team met u samen werken om de volgende informatie te verzamelen:
 *  Autorisatie-URL: een URL door de client voor het verkrijgen van autorisatie van de resource-eigenaar via omleiding van gebruikers agent. De gebruiker wordt omgeleid naar deze URL om toegang te autoriseren. 
 *  Token Exchange-URL: een URL door de client voor het uitwisselen van een autorisatie machtiging voor een toegangs token, meestal met client verificatie.
 *  Client-ID: de autorisatie server geeft de geregistreerde client een client-id. Dit is een unieke teken reeks die de registratie gegevens vertegenwoordigt die door de client worden verstrekt.  De client-id is geen geheim. het wordt blootgesteld aan de resource-eigenaar en **mag niet** alleen voor client verificatie worden gebruikt.  
 *  Client geheim: het client geheim is een geheim dat is gegenereerd door de autorisatie server. Dit moet een unieke waarde zijn die alleen bekend is bij de autorisatie server. 
+
+OAuth v1 wordt niet ondersteund vanwege de bloot stelling aan het client geheim. OAuth v2 wordt ondersteund.  
 
 Aanbevolen procedures (aanbevolen maar niet vereist):
 * Ondersteuning voor meerdere omleidings-Url's. Beheerders kunnen het inrichten configureren van zowel ' portal.azure.com ' als ' aad.portal.azure.com '. Ondersteuning voor meerdere omleidings-Url's zorgt ervoor dat gebruikers toegang kunnen verlenen vanuit een van de portals.

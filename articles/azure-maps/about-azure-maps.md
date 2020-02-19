@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07a78dc81d121874db5e59ad267ea8eb08a69c91
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210137"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443690"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
@@ -45,13 +45,13 @@ In de volgende video wordt Azure Maps in detail uitgelegd:
 
 Met de Azure Maps Web-SDK kunt u interactieve kaarten aanpassen met uw eigen inhoud en beelden. U kunt deze interactieve kaart gebruiken voor uw web-of mobiele toepassingen. Het kaart besturings element maakt gebruik van WebGL, zodat u grote gegevens sets met hoge prestaties kunt weer geven. Ontwikkel met de SDK met behulp van Java script of type script.
 
-![Voorbeeld toewijzing van een gewijzigde populatie](media/about-azure-maps/Introduction_WebMapControl.png)
+![Voorbeeld toewijzing van een gewijzigde populatie](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 Gebruik de Azure Maps Android-SDK om toepassingen voor mobiele toewijzing te maken. 
 
-![Kaart voorbeelden op een mobiel apparaat](media/about-azure-maps/AndroidSDK.png)
+![Kaart voorbeelden op een mobiel apparaat](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Services in Azure Maps
 
@@ -73,7 +73,7 @@ Zie de [documentatie van Mobility API](https://docs.microsoft.com/rest/api/maps/
 
 De weergave service helpt ontwikkel aars bij het maken van webtoepassingen en mobiele toepassingen met toewijzings functies. De service maakt gebruik van een raster met grafische afbeeldingen van hoge kwaliteit, beschikbaar in 19 zoomniveaus, of volledig aanpasbare kaartafbeeldingen in een vectorindeling.
 
-![Voor beeld van een kaart in de weergave service](media/about-azure-maps/Introduction_Map.png)
+![Voor beeld van een kaart in de weergave service](media/about-azure-maps/intro_map.png)
 
 De Render Service biedt nu preview-API's die ontwikkelaars met satellietbeelden laten werken. Lees de documentatie van de [render-API](https://docs.microsoft.com/rest/api/maps/render)voor meer informatie.
 
@@ -81,7 +81,7 @@ De Render Service biedt nu preview-API's die ontwikkelaars met satellietbeelden 
 
 De Route Service bevat robuuste geometrische berekeningen voor de infrastructuur in de echte wereld en routebeschrijvingen voor meerdere manieren van reizen. Met de service kunnen ontwikkel aars een route beschrijving berekenen over een aantal reis modi, zoals auto, vracht wagen, fiets of wandel. De service beschouwt ook invoer zoals verkeers voorwaarden, gewichts beperkingen of gevaarlijke materiaal transport.
 
-![Voor beeld van een kaart vanuit de route service](media/about-azure-maps/Introduction_Route.png)
+![Voor beeld van een kaart vanuit de route service](media/about-azure-maps/intro_route.png)
 
 De route service biedt een preview van geavanceerde functies, zoals: 
 
@@ -95,7 +95,7 @@ Lees de [route-API-documentatie](https://docs.microsoft.com/rest/api/maps/route)
 
 De zoek service helpt ontwikkel aars bij het zoeken naar adressen, plaatsen, bedrijfs vermeldingen op naam of categorie en andere geografische informatie. De zoek service kan [Geocode](https://en.wikipedia.org/wiki/Reverse_geocoding) -adressen en Cross-Streets omkeren op basis van de breedte graad en lengte graad.
 
-![Voor beeld van een zoek opdracht op een kaart](media/about-azure-maps/Introduction_Search.png)
+![Voor beeld van een zoek opdracht op een kaart](media/about-azure-maps/intro_search.png)
 
 De zoek service biedt ook geavanceerde functies zoals:
 
@@ -149,7 +149,7 @@ De traffic-service is een suite van webservices die ontwikkel aars kunnen gebrui
 * Verkeers stroom: in realtime waargenomen snelheden en reis tijden voor alle belang rijke wegen in het netwerk.
 * Verkeers incidenten: een up-to-date weer gave van storingen van verkeer en incidenten rond het wegnetwerk.
 
-![Voor beeld van een kaart met verkeers gegevens](media/about-azure-maps/Introduction_Traffic.png)
+![Voor beeld van een kaart met verkeers gegevens](media/about-azure-maps/intro_traffic.png)
 
 Zie de [documentatie van Traffic API](https://docs.microsoft.com/rest/api/maps/traffic)voor meer informatie.
 

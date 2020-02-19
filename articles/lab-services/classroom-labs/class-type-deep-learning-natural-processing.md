@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133770"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444091"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Stel een lab in dat is gericht op diep gaande lessen in de verwerking van natuurlijke taal met behulp van Azure Lab Services
 In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een diep gaande cursus in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen.  
@@ -32,7 +32,7 @@ Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het
 
 | Account instelling Lab | Instructies |
 | ----------- | ------------ |  
-| Marketplace-installatie kopieën | De Data Science Virtual Machine-installatie kopie voor Linux (Ubuntu) inschakelen voor gebruik binnen uw Lab-account.  Raadpleeg de volgende artikelen voor instructies: [Geef Marketplace-installatie kopieën op die beschikbaar zijn voor Lab-makers](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
+| Marketplace-installatie kopieën | De Data Science Virtual Machine-installatie kopie voor Linux (Ubuntu) inschakelen voor gebruik binnen uw Lab-account.  Zie het volgende artikel voor instructies: [Geef Marketplace-installatie kopieën op die beschikbaar zijn voor Lab-makers](specify-marketplace-images.md). | 
 
 Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
 

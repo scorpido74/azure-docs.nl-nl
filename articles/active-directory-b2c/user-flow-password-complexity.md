@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 59ac2f74d4753c1f647bedfa2c402e729e25ee62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e629f3c83d847cf20eccbe7a3fb0d3f444dac62
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847808"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430326"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Complexiteits vereisten configureren voor wacht woorden in Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Als u aangepast beleid gebruikt, kunt u[de complexiteit van het wacht woord conf
 
 ## <a name="configure-password-complexity"></a>Wachtwoord complexiteit configureren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 3. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 4. Selecteer **gebruikers stromen (beleid)** .
@@ -50,7 +50,7 @@ Als u aangepast beleid gebruikt, kunt u[de complexiteit van het wacht woord conf
 | --- | --- |
 | Eenvoudig | Een wacht woord van ten minste 8 tot 64 tekens. |
 | Sterk | Een wacht woord van ten minste 8 tot 64 tekens. Hiervoor zijn 3 van de 4 van kleine letters, hoofd letters, cijfers of symbolen vereist. |
-| Aangepast | Deze optie biedt de meeste controle over regels voor wachtwoord complexiteit.  Hiermee kan een aangepaste lengte worden geconfigureerd.  Ook kunt u alleen aantal wacht woorden (pincodes) accepteren. |
+| Aangepast telefoonnummer | Deze optie biedt de meeste controle over regels voor wachtwoord complexiteit.  Hiermee kan een aangepaste lengte worden geconfigureerd.  Ook kunt u alleen aantal wacht woorden (pincodes) accepteren. |
 
 ## <a name="custom-options"></a>Aangepaste opties
 
@@ -73,7 +73,7 @@ Hiermee kunt u de lengte vereisten van het wacht woord bepalen.
 Hiermee kunt u de verschillende teken typen beheren die in het wacht woord worden gebruikt.
 
 - **2 van 4: kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord ten minste twee teken typen bevat. Bijvoorbeeld een numeriek teken en een kleine letter.
-- **3 van 4: kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord ten minste twee teken typen bevat. Bijvoorbeeld een getal, een kleine letter en een hoofd letter.
+- **3 van 4: kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord ten minste drie teken typen bevat. Bijvoorbeeld een getal, een kleine letter en een hoofd letter.
 - **4 van 4: kleine letters, hoofd letters, cijfer (0-9), symbool** zorgt ervoor dat het wacht woord alle tekens voor teken typen bevat.
 
     > [!NOTE]

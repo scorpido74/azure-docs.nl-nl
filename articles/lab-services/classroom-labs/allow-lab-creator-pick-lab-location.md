@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ea9df341fcc76a38364e590f8541e6a85d7ec466
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211007"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444363"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Lab Creator toestaan locatie voor het lab in Azure Lab Services te kiezen
 In Azure Lab Services kan de eigenaar van een Lab-account Lab-makers (docenten) toestaan een locatie te kiezen voor het lab dat ze maken. Deze locatie kan afwijken van de locatie van het lab-account. Een locatie is een groep Azure-regio's. Verenigde Staten locatie is bijvoorbeeld een groep regio's, zoals VS-Oost, VS-West, enzovoort. 
@@ -73,6 +73,8 @@ Eerdere prijzen zijn gebaseerd op de grootte van de virtuele machine die u kiest
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- [Labs maken en beheren als labeigenaar](how-to-manage-classroom-labs.md)
-- [Sjablonen instellen en publiceren als labeigenaar](how-to-create-manage-template.md)
-- [Het gebruik van een lab configureren en beheren als labeigenaar](how-to-configure-student-usage.md)
+- [Uw Lab-netwerk verbinden met een virtueel peer netwerk](how-to-connect-peer-virtual-network.md)
+- [Een galerie met gedeelde afbeeldingen koppelen aan een Lab](how-to-attach-detach-shared-image-gallery.md)
+- [Een gebruiker toevoegen als een Lab-eigenaar](how-to-add-user-lab-owner.md)
+- [Firewall instellingen voor een Lab weer geven](how-to-configure-firewall-settings.md)
+- [Andere instellingen voor een lab configureren](how-to-configure-lab-accounts.md)

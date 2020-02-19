@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583493"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443224"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -96,6 +96,9 @@ De Lab Creator (docent/docent) kan verbinding maken met een student-VM als aan d
  Als u verbinding wilt maken met de student-VM, houdt u de muis aanwijzer op de virtuele machine in de lijst en selecteert u de knop computer.  
 
 ![Knop verbinding maken met de VM van student](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+
+> [!NOTE]
+> Wanneer de docent de virtuele machine start en er verbinding mee maakt, heeft dit geen invloed op het quotum van de student. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het volgende artikel: het [gebruik van studenten configureren](how-to-configure-student-usage.md)voor meer informatie over andere gebruiks opties voor studenten die u (als een Lab-eigenaar) kunt configureren.

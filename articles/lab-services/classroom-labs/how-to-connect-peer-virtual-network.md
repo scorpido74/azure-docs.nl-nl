@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701671"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443181"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Uw Lab-netwerk verbinden met een virtueel peer-netwerk in Azure Lab Services 
 Dit artikel bevat informatie over het peeren van uw Labs-netwerk met een ander netwerk. 
@@ -34,7 +34,7 @@ Mogelijk moet u uw Lab-netwerk verbinden met een virtueel peer netwerk in sommig
 Bepaalde on-premises netwerken zijn verbonden met Azure Virtual Network via [ExpressRoute](../../expressroute/expressroute-introduction.md) of [Virtual Network gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Deze services moeten buiten Azure Lab Services worden ingesteld. Zie [overzicht van ExpressRoute](../../expressroute/expressroute-introduction.md)voor meer informatie over het verbinden van een on-premises netwerk met Azure met behulp van ExpressRoute. Voor on-premises connectiviteit met een Virtual Network gateway, de gateway, het opgegeven virtuele netwerk en het lab-account moeten zich allemaal in dezelfde regio bevinden.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Configureren op het moment dat het lab-account wordt gemaakt
-Tijdens het maken van het nieuwe lab-account kunt u een bestaand virtueel netwerk kiezen dat wordt weer gegeven in de vervolg keuzelijst van het **virtuele peer netwerk** . Het geselecteerde virtuele netwerk is verbonden (gekoppeld aan) met de laboratoria die zijn gemaakt met het lab-account. Alle virtuele machines in Labs die zijn gemaakt na het maken van deze wijziging, hebben toegang tot de resources in het gekoppelde virtuele netwerk. 
+Tijdens het maken van het nieuwe lab-account kunt u een bestaand virtueel netwerk kiezen dat wordt weer gegeven in de vervolg keuzelijst van het **virtuele peer netwerk** op het tabblad **Geavanceerd** . Het geselecteerde virtuele netwerk is verbonden (gekoppeld aan) met de laboratoria die zijn gemaakt met het lab-account. Alle virtuele machines in Labs die zijn gemaakt na het maken van deze wijziging, hebben toegang tot de resources in het gekoppelde virtuele netwerk. 
 
 ![VNet naar peer selecteren](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -56,8 +56,8 @@ Wanneer u een virtueel netwerk voor het veld **virtuele peer netwerk** selecteer
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- [Labaccounts maken en beheren als beheerder](how-to-manage-lab-accounts.md)
-- [Labs maken en beheren als labeigenaar](how-to-manage-classroom-labs.md)
-- [Sjablonen instellen en publiceren als labeigenaar](how-to-create-manage-template.md)
-- [Als test gebruiker toegang krijgen tot klassikale Labs](how-to-use-classroom-lab.md)
-
+- [Lab-Maker toestaan locatie van test omgeving te kiezen](allow-lab-creator-pick-lab-location.md)
+- [Een galerie met gedeelde afbeeldingen koppelen aan een Lab](how-to-attach-detach-shared-image-gallery.md)
+- [Een gebruiker toevoegen als een Lab-eigenaar](how-to-add-user-lab-owner.md)
+- [Firewall instellingen voor een Lab weer geven](how-to-configure-firewall-settings.md)
+- [Andere instellingen voor een lab configureren](how-to-configure-lab-accounts.md)

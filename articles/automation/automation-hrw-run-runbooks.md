@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac31783f0eb270823b71c86cc8d7f0975d3a586a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 29b8a32989b5a1d60792fb5678f7ba8a9f12daba
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452264"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443802"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -35,7 +35,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 > [!NOTE]
 > De para meter **RunOn** is toegevoegd aan de cmdlet **Start-AzureAutomationRunbook** in versie 0.9.1 tot en van Microsoft Azure PowerShell. Als u een eerder geïnstalleerd hebt, moet u [de nieuwste versie downloaden](https://azure.microsoft.com/downloads/) . U hoeft deze versie alleen te installeren op een werk station waar u het runbook start vanuit Power shell. U hoeft deze niet te installeren op de werk computer, tenzij u runbooks vanaf die computer wilt starten. "
 
-## <a name="runbook-permissions"></a>Runbookmachtigingen
+## <a name="runbook-permissions"></a>Runbook-machtigingen
 
 Runbooks die worden uitgevoerd op een Hybrid Runbook Worker, kunnen niet dezelfde methode gebruiken die meestal wordt gebruikt voor runbooks die worden geverifieerd bij Azure-resources, omdat ze toegang hebben tot resources die niet in azure zijn. Het runbook kan een eigen verificatie bieden voor lokale bronnen of verificatie configureren met behulp [van beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). U kunt ook een runas-account opgeven om een gebruikers context te bieden voor alle runbooks.
 
@@ -86,7 +86,7 @@ Als u een beheerde identiteit voor Azure-resources wilt gebruiken op een Hybrid 
 1. Een Azure-VM maken
 2. [Beheerde identiteiten configureren voor Azure-resources op uw VM](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
 3. [Uw VM toegang verlenen tot een resource groep in Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) zelf studie-Windows-VM-toegang-arm. MD # Get-a-Access-token-using-the-vm's-door het systeem toegewezen beheerde identiteit-en-use-to-call-Azure-Resource-Manager)
-4. [Installeer de Windows-Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) op de virtuele machine.
+4. [Installeer de Windows-Hybrid Runbook worker](automation-windows-hrw-install.md) op de virtuele machine.
 
 Zodra de voor gaande stappen zijn voltooid, kunt u `Connect-AzureRmAccount -Identity` in het runbook gebruiken om te verifiëren bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het certificaat voor het uitvoeren als-account te beheren.
 

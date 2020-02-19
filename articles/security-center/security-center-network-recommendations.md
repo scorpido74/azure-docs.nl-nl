@@ -1,5 +1,5 @@
 ---
-title: Uw netwerk bronnen beveiligen in Azure Security Center | Microsoft Docs
+title: Uw netwerk bronnen beveiligen in Azure Security Center
 description: Dit document bevat aanbevelingen in Azure Security Center waarmee u uw Azure-netwerk bronnen kunt beveiligen en blijven voldoen aan het beveiligings beleid.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552913"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431482"
 ---
 # <a name="protect-your-network-resources"></a>Uw netwerk bronnen beveiligen
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
@@ -141,4 +141,4 @@ Op het derde niveau worden virtuele machines weer gegeven. Dit is vergelijkbaar 
 Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekking hebben op andere typen Azure-resources:
 
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
-* [Beveiligen van uw Azure SQL-service in Azure Security Center](security-center-sql-service-recommendations.md)
+* [Uw Azure SQL-service beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)

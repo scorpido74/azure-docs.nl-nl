@@ -4,14 +4,14 @@ description: In deze Quick Start implementeert u een lente-Cloud toepassing in d
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251818"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431308"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -54,20 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten op het Azure Portal
 
-1. Open in een webbrowser [deze koppeling naar Azure lente Cloud in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
+1. Open de [Azure Portal](https://ms.portal.azure.com/)op een nieuw tabblad. 
 
-1. Vul het formulier in op de pagina Azure lente-Cloud **maken** .  Houd rekening met de volgende richt lijnen:
-    - Service naam: Geef de naam van uw service-exemplaar op.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten.  Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
-    - Abonnement: Selecteer het abonnement dat u voor deze resource wilt factureren.  Zorg ervoor dat dit abonnement is toegevoegd aan onze acceptatie lijst voor Azure lente-Cloud.
-    - Resource groep: het maken van nieuwe resource groepen voor nieuwe resources is een best practice.
-    - Locatie: Selecteer de locatie voor uw service-exemplaar. Op dit moment worden de volgende locaties ondersteund: VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
+2. Zoek in het bovenste zoekvak naar **Azure lente Cloud**.
 
-1. Klik op **controleren en maken**.
+3. Selecteer **Azure veer Cloud** in de resultaten.
 
-1. Controleer uw specificaties en klik op **maken**.
+ ![ASC-pictogram](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
->[!Note]
-> Als de sjabloon validatie meer dan drie minuten duurt, kunt u proberen om de tracering uit te scha kelen en opnieuw uit te voeren.
+4. Klik op de pagina Azure lente-Cloud op **+ toevoegen**.
+
+ ![ASC-pictogram](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. Vul het formulier in op de pagina Azure lente-Cloud **maken** .  Houd rekening met de volgende richt lijnen:
+    - **Abonnement**: Selecteer het abonnement dat u voor deze resource wilt factureren.  Zorg ervoor dat dit abonnement is toegevoegd aan onze acceptatie lijst voor Azure lente-Cloud.
+    - **Resource groep**: het maken van nieuwe resource groepen voor nieuwe resources is een Best Practice.
+    - **Service Details/naam**: Geef de naam van uw service-exemplaar op.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten.  Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
+    - **Locatie**: Selecteer de locatie voor uw service-exemplaar. Op dit moment worden de volgende locaties ondersteund: VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
+
+    ![ASC-Portal starten](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. Klik op het tabblad **Diagnostische instelling** om het volgende dialoog venster te openen.
+
+7. U kunt **Logboeken inschakelen** op *Ja* of *Nee* volgens uw vereisten.
+
+    ![Logboeken inschakelen](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. Klik op het tabblad **tracering** .
+
+9. U kunt **Tracering inschakelen** op *Ja* of *Nee* volgens uw vereisten.  Als u **Tracering inschakelen** op Ja hebt ingesteld, selecteert u ook een bestaande toepassing inzicht of maakt u een nieuwe. Zonder de **Application Insights** specificatie wordt er een validatie fout weer.
+
+
+    ![Tracering](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. Klik op **Controleren en maken**.
+
+11. Controleer uw specificaties en klik op **maken**.
 
 Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodra de app is geïmplementeerd, wordt de **overzichts** pagina voor het service-exemplaar weer gegeven.
 
@@ -79,9 +101,9 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Ga naar de **overzichts** pagina van de service en selecteer **Configuratie server**.
 
-1. Stel in de sectie **standaard opslagplaats** de **URI** in op "https://github.com/Azure-Samples/piggymetrics-config".
+2. Stel in de sectie **standaard opslagplaats** de **URI** in op "https://github.com/Azure-Samples/piggymetrics-config".
 
-1. Selecteer **Toep assen** om uw wijzigingen op te slaan.
+3. Selecteer **Toep assen** om uw wijzigingen op te slaan.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -98,27 +120,27 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Bouw het gekloonde pakket.
+2. Bouw het gekloonde pakket.
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. Namen toewijzen aan de resource groep en uw service. Zorg ervoor dat u de onderstaande tijdelijke aanduidingen vervangt door de naam van de resource groep en de service naam die u eerder in deze zelf studie hebt ingericht.
+3. Namen toewijzen aan de resource groep en uw service. Zorg ervoor dat u de onderstaande tijdelijke aanduidingen vervangt door de naam van de resource groep en de service naam die u eerder in deze zelf studie hebt ingericht.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Maak de `gateway`-toepassing en implementeer het JAR-bestand.
+4. Maak de `gateway`-toepassing en implementeer het JAR-bestand.
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Maak na hetzelfde patroon een `account-service`-en `auth-service`-toepassing en implementeer de JAR-bestanden.
+5. Maak na hetzelfde patroon een `account-service`-en `auth-service`-toepassing en implementeer de JAR-bestanden.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -127,7 +149,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Het duurt enkele minuten om de implementatie van de toepassingen te volt ooien. Als u wilt bevestigen dat ze zijn geïmplementeerd, gaat u naar de Blade **apps** in het Azure Portal. U ziet een regel voor elk van de drie toepassingen.
+6. Het duurt enkele minuten om de implementatie van de toepassingen te volt ooien. Als u wilt bevestigen dat ze zijn geïmplementeerd, gaat u naar de Blade **apps** in het Azure Portal. U ziet een regel voor elk van de drie toepassingen.
 
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -136,13 +158,13 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Open het tabblad **apps** in het menu aan de linkerkant.
 
-1. Selecteer de `gateway` toepassing om de **overzichts** pagina weer te geven.
+2. Selecteer de `gateway` toepassing om de **overzichts** pagina weer te geven.
 
-1. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan enkele minuten duren.
+3. Selecteer **eind punt toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan enkele minuten duren.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. Voer het toegewezen open bare eind punt ( **URL**met label) in uw browser in om de actieve toepassing weer te geven.
+4. Voer het toegewezen open bare eind punt ( **URL**met label) in uw browser in om de actieve toepassing weer te geven.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

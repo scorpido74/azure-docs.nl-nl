@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264726"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442578"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal
 
@@ -62,7 +62,7 @@ Zie het gedeelte [Routes maken](#create-the-routes) in deze zelfstudie voor info
 >[!NOTE]
 >Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
 >
->Azure Firewall biedt momenteel geen ondersteuning voor geforceerde tunneling. Als voor uw configuratie geforceerde tunneling naar een on-premises netwerk is vereist en u de doel-IP-voor voegsels voor uw Internet doelen kunt bepalen, kunt u deze bereiken met het on-premises netwerk als de volgende hop configureren via een door de gebruiker gedefinieerde route op de AzureFirewallSubnet. U kunt ook BGP gebruiken om deze routes te definiëren.
+>Azure Firewall kunnen worden geconfigureerd voor de ondersteuning van geforceerde tunneling. Zie [Azure firewall geforceerde tunneling](forced-tunneling.md)voor meer informatie.
 
 >[!NOTE]
 >Verkeer tussen rechtstreeks gepeerde VNets wordt rechtstreeks gerouteerd, zelfs als de UDR naar Azure Firewall als standaardgateway wijst. Als u in dit scenario subnet-naar-subnet-verkeer wilt verzenden, moet een UDR het voorvoegsel van het doelsubnetwerk expliciet op beide subnetten bevatten.
@@ -263,7 +263,7 @@ Maak de verbinding van het on-premises virtuele netwerk naar het virtuele hub-ne
 
 Na ongeveer vijf minuten moet de status van beide verbindingen worden **verbonden**.
 
-![Gatewayverbindingen](media/tutorial-hybrid-portal/gateway-connections.png)
+![Gateway verbindingen](media/tutorial-hybrid-portal/gateway-connections.png)
 
 ## <a name="peer-the-hub-and-spoke-virtual-networks"></a>De hub- en virtuele spoke-netwerken koppelen
 

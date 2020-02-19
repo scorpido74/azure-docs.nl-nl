@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251801"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443853"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Veelgestelde vragen over Azure App Service in Linux
 
@@ -33,7 +33,7 @@ U kunt alle docker-bestanden vinden op [github](https://github.com/azure-app-ser
 | Stack           | Verwachte waarde                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | de opdracht voor het starten van uw JAR-app (bijvoorbeeld `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat, Wildfly | de locatie van een script om de benodigde configuraties uit te voeren (bijvoorbeeld `/home/site/deployments/tools/startup_script.sh`)          |
+| Tomcat          | de locatie van een script om de benodigde configuraties uit te voeren (bijvoorbeeld `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | het PM2-configuratie bestand of het script bestand                                |
 | .Net core       | de gecompileerde DLL-naam als `dotnet <myapp>.dll`                                 |
 | Ruby            | het ruby-script dat u uw app wilt initialiseren met                     |

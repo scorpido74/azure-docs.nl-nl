@@ -1,22 +1,24 @@
 ---
-title: Machtigingen voor opslag plaatsen
-description: Een token maken met machtigingen die zijn gericht op specifieke opslag plaatsen in een REGI ster om installatie kopieën op te halen of te pushen
+title: Machtigingen voor opslag plaatsen in Azure Container Registry
+description: Een token maken met machtigingen die zijn gericht op specifieke opslag plaatsen in een REGI ster om installatie kopieën op te halen of te pushen of om andere acties uit te voeren
 ms.topic: article
-ms.date: 10/31/2019
-ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 02/13/2020
+ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454906"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444280"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Machtigingen voor opslag plaatsen in Azure Container Registry 
+# <a name="create-a-token-with-repository-scoped-permissions"></a>Een token met machtigingen voor een opslag plaats maken
 
-Azure Container Registry ondersteunt verschillende [verificatie opties](container-registry-authentication.md) met behulp van identiteiten die op [rollen gebaseerde toegang](container-registry-roles.md) tot een volledig REGI ster hebben. Voor bepaalde scenario's moet u echter mogelijk alleen toegang bieden tot specifieke *opslag* plaatsen in een REGI ster. 
+In dit artikel wordt beschreven hoe u tokens en Scope toewijzingen maakt om machtigingen voor opslag in het container register te beheren. Door tokens te maken, kan een register eigenaar gebruikers of Services voorzien van scoped, beperkte toegang tot opslag plaatsen om installatie kopieën te halen of te pushen of andere acties uit te voeren. Een token biedt meer verfijnde machtigingen dan andere opties voor het [instellen](container-registry-authentication.md)van het REGI ster, die de bereik machtigingen voor een volledig REGI ster hebben. 
 
-In dit artikel wordt beschreven hoe u een toegangs token maakt en gebruikt dat machtigingen heeft voor het uitvoeren van acties op alleen specifieke opslag plaatsen in een REGI ster. Met een toegangs token kunt u gebruikers of Services voorzien van scoped, tijdgebonden toegang tot opslag plaatsen om installatie kopieën te halen of te pushen of andere acties uit te voeren. 
+Scenario's voor het maken van een token zijn onder andere:
 
-Zie [over machtigingen voor opslagplaatsen](#about-repository-scoped-permissions), verderop in dit artikel, voor achtergrond informatie over de concepten en scenario's van tokens.
+* IoT-apparaten met afzonderlijke tokens toestaan een installatie kopie van een opslag plaats te halen
+* Een externe organisatie voorzien van machtigingen voor een specifieke opslag plaats 
+* Beperk de toegang tot opslag plaatsen tot verschillende gebruikers groepen in uw organisatie. U kunt bijvoorbeeld schrijf-en lees toegang bieden aan ontwikkel aars die installatie kopieën bouwen die gericht zijn op specifieke opslag plaatsen en lees toegang tot teams die vanuit deze opslag plaatsen worden geïmplementeerd.
 
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
@@ -24,50 +26,73 @@ Zie [over machtigingen voor opslagplaatsen](#about-repository-scoped-permissions
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
 * Deze functie is alleen beschikbaar in een **Premium** container Registry. Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
-* U kunt momenteel geen machtigingen voor opslag plaatsen toewijzen aan een Azure Active Directory-object zoals een service-principal of beheerde identiteit.
+* U kunt momenteel geen machtigingen voor opslag plaatsen toewijzen aan een Azure Active Directory identiteit, zoals een service-principal of beheerde identiteit.
+
+## <a name="concepts"></a>Concepten
+
+Als u machtigingen met een opslag plaats met een bereik wilt configureren, maakt u een *token* met een bijbehorende *bereik toewijzing*. 
+
+* Met een **token** in combi natie met een gegenereerd wacht woord kan de gebruiker worden geverifieerd met het REGI ster. U kunt een verval datum instellen voor een token wachtwoord of een token op elk gewenst moment uitschakelen.  
+
+  Na verificatie met een token kan de gebruiker of service een of meer *acties* uitvoeren die zijn gericht op een of meer opslag plaatsen.
+
+  |Bewerking  |Beschrijving  | Voorbeeld |
+  |---------|---------|--------|
+  |`content/delete`    | Gegevens uit de opslag plaats verwijderen  | Een opslag plaats of een manifest verwijderen |
+  |`content/read`     |  Gegevens uit de opslag plaats lezen |  Een artefact ophalen |
+  |`content/write`     |  Gegevens naar de opslag plaats schrijven     | Gebruik met `content/read` om een artefact te pushen |
+  |`metadata/read`    | Meta gegevens uit de opslag plaats lezen   | Tags of manifesten weer geven |
+  |`metadata/write`     |  Meta gegevens naar de opslag plaats schrijven  | Lees-, schrijf-of verwijder bewerkingen in-of uitschakelen |
+
+* Een **Scope toewijzing** groepeert de machtigingen voor de opslag plaats die u toepast op een token en kan opnieuw worden toegepast op andere tokens. Elk token is gekoppeld aan één scope-toewijzing. 
+
+   Met een bereik toewijzing:
+
+    * Meerdere tokens met identieke machtigingen configureren voor een set opslag plaatsen
+    * Token machtigingen bijwerken bij het toevoegen of verwijderen van opslagplaats acties in de scope toewijzing of het Toep assen van een andere scope toewijzing 
+
+  Azure Container Registry biedt ook verschillende door het systeem gedefinieerde bereik toewijzingen die u kunt Toep assen, met vaste machtigingen voor alle opslag plaatsen.
+
+In de volgende afbeelding ziet u de relatie tussen tokens en Scope Maps. 
+
+![Register tokens en Scope Maps](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure cli** : in dit artikel is een lokale installatie van Azure cli (versie 2.0.76 of hoger) vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
-* **Docker** : voor verificatie met het REGI ster hebt u ook een lokale docker-installatie nodig. Docker biedt installatie-instructies voor de systemen [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
-* **Container register met opslag** plaatsen: als u er geen hebt, kunt u een container register maken in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md). 
+* **Azure cli** -Azure cli-opdrachten voor het maken en beheren van tokens zijn beschikbaar in azure CLI versie 2.0.76 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+* **Docker** : u hebt een lokale docker-installatie nodig om te verifiëren met het REGI ster om installatie kopieën op te halen of te pushen. Docker biedt installatie-instructies voor de systemen [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+* **Container register** : als u er nog geen hebt, maakt u een Premium container registry in uw Azure-abonnement of werkt u een bestaand REGI ster bij. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md). 
 
-  [Push](container-registry-get-started-docker-cli.md) of [Importeer](container-registry-import-images.md) een of meer voorbeeld installatie kopieën naar het REGI ster voor test doeleinden. Voor beelden in dit artikel verwijzen naar de volgende installatie kopieën in twee opslag plaatsen: `samples/hello-world:v1` en `samples/nginx:v1`. 
+## <a name="create-token---cli"></a>Token maken-CLI
 
-## <a name="create-an-access-token"></a>Een toegangs token maken
+### <a name="create-token-and-specify-repositories"></a>Token maken en opslag plaatsen opgeven
 
-Maak een token met behulp van de opdracht [AZ ACR token Create][az-acr-token-create] . Wanneer u een token maakt, geeft u een of meer opslag plaatsen en gekoppelde acties op elke opslag plaats op. u kunt ook een bestaande scope toewijzing met deze instellingen opgeven.
+Maak een token met behulp van de opdracht [AZ ACR token Create][az-acr-token-create] . Wanneer u een token maakt, kunt u een of meer opslag plaatsen en gekoppelde acties op elke opslag plaats opgeven. De opslag plaatsen hoeven nog niet in het REGI ster te staan. Zie de volgende sectie voor het maken van een token door een bestaande scope toewijzing op te geven.
 
-### <a name="create-access-token-and-specify-repositories"></a>Toegangs token maken en opslag plaatsen opgeven
-
-In het volgende voor beeld wordt een toegangs token gemaakt met machtigingen voor het uitvoeren van `content/write` en `content/read` acties in de `samples/hello-world`-opslag plaats en de `content/read` actie op de `samples/nginx` opslag plaats. De opdracht genereert standaard twee wacht woorden. 
-
-In dit voor beeld wordt de token status ingesteld op `enabled` (de standaard instelling), maar u kunt het token op elk gewenst moment bijwerken en de status instellen op `disabled`.
+In het volgende voor beeld wordt een token gemaakt in het REGI ster *myregistry* met de volgende machtigingen voor de `samples/hello-world` opslag plaats: `content/write` en `content/read`. Standaard wordt met de opdracht de standaard token status ingesteld op `enabled`, maar u kunt de status op elk gewenst moment bijwerken naar `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
-  --repository samples/hello-world content/write content/read \
-  --repository samples/nginx content/read --status enabled
+  --repository samples/hello-world \
+  content/write content/read
 ```
 
-De uitvoer toont details over het token, met inbegrip van gegenereerde wacht woorden en bereik toewijzing. Het is raadzaam om de wacht woorden op een veilige plek op te slaan, zodat u deze later kunt gebruiken met `docker login`. Het wacht woord kan niet opnieuw worden opgehaald, maar er kunnen nieuwe worden gegenereerd.
-
-In de uitvoer ziet u ook dat er automatisch een scope toewijzing wordt gemaakt met de naam `MyToken-scope-map`. U kunt de bereik toewijzing gebruiken om dezelfde opslagplaats acties toe te passen op andere tokens. Of werk de scope toewijzing later bij om de token machtigingen te wijzigen.
+De uitvoer toont details over het token, met inbegrip van twee gegenereerde wacht woorden. Het is raadzaam om de wacht woorden op een veilige plek op te slaan, zodat u deze later kunt gebruiken voor verificatie. Het wacht woord kan niet opnieuw worden opgehaald, maar er kunnen nieuwe worden gegenereerd.
 
 ```console
 {
-  "creationDate": "2019-10-22T00:15:34.066221+00:00",
+  "creationDate": "2020-01-18T00:15:34.066221+00:00",
   "credentials": {
     "certificates": [],
     "passwords": [
       {
-        "creationTime": "2019-10-22T00:15:52.837651+00:00",
+        "creationTime": "2020-01-18T00:15:52.837651+00:00",
         "expiry": null,
         "name": "password1",
         "value": "uH54BxxxxK7KOxxxxRbr26dAs8JXxxxx"
       },
       {
-        "creationTime": "2019-10-22T00:15:52.837651+00:00",
+        "creationTime": "2020-01-18T00:15:52.837651+00:00",
         "expiry": null,
         "name": "password2",
         "value": "kPX6Or/xxxxLXpqowxxxxkA0idwLtmxxxx"
@@ -85,62 +110,98 @@ In de uitvoer ziet u ook dat er automatisch een scope toewijzing wordt gemaakt m
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>Een scope toewijzing en een bijbehorend token maken
+De uitvoer bevat details over het bereik dat is gemaakt met de opdracht. U kunt de scope toewijzing, hier met de naam `MyToken-scope-map`, gebruiken om dezelfde opslagplaats acties op andere tokens toe te passen. Of werk de scope toewijzing later bij om de machtigingen van de gekoppelde tokens te wijzigen.
 
-U kunt ook een scope toewijzing met opslag plaatsen en gekoppelde acties opgeven bij het maken van een token. Als u een scope toewijzing wilt maken, gebruikt u de opdracht [AZ ACR Scope-map Create][az-acr-scope-map-create] .
+### <a name="create-token-and-specify-scope-map"></a>Token maken en bereik toewijzing opgeven
 
-Met de volgende voorbeeld opdracht maakt u een scope toewijzing met dezelfde machtigingen die in het vorige voor beeld worden gebruikt. Hiermee kunnen `content/write`-en `content/read` acties in de `samples/hello-world` opslag plaats en de `content/read` actie op de `samples/nginx` opslag plaats worden uitgevoerd:
+Een andere manier om een token te maken, is door een bestaande scope toewijzing op te geven. Als u nog geen scope toewijzing hebt, moet u er een maken door opslag plaatsen en gekoppelde acties op te geven. Geef vervolgens de scope toewijzing op bij het maken van een token. 
+
+Als u een scope toewijzing wilt maken, gebruikt u de opdracht [AZ ACR Scope-map Create][az-acr-scope-map-create] . Met de volgende opdracht maakt u een scope toewijzing met dezelfde machtigingen voor de `samples/hello-world`-opslag plaats die u eerder hebt gebruikt. 
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
-  --repository samples/hello-world content/write content/read \
-  --repository samples/nginx content/read \
+  --repository samples/hello-world \
+  content/write content/read \
   --description "Sample scope map"
 ```
 
-De uitvoer lijkt op het volgende:
-
-```console
-{
-  "actions": [
-    "repositories/samples/hello-world/content/write",
-    "repositories/samples/nginx/content/read"
-  ],
-  "creationDate": "2019-10-22T05:07:35.194413+00:00",
-  "description": "Sample scope map.",
-  "id": "/subscriptions/fxxxxxxxx-adbd-4cb4-c864-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry/scopeMaps/MyScopeMap",
-  "name": "MyScopeMap",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myresourcegroup",
-  "scopeMapType": "UserDefined",
-  "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
-```
-
-Voer [AZ ACR token Create][az-acr-token-create] uit om een token te maken dat is gekoppeld aan de *MyScopeMap* -bereik toewijzing. De opdracht genereert standaard twee wacht woorden. In dit voor beeld wordt de token status ingesteld op `enabled` (de standaard instelling), maar u kunt het token op elk gewenst moment bijwerken en de status instellen op `disabled`.
+Voer [AZ ACR token Create][az-acr-token-create] uit om een token te maken, waarbij u de *MyScopeMap* -bereik toewijzing opgeeft. Net als in het vorige voor beeld wordt met de opdracht de standaard token status ingesteld op `enabled`.
 
 ```azurecli
-az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
+az acr token create --name MyToken \
+  --registry myregistry \
+  --scope-map MyScopeMap
 ```
 
-De uitvoer toont details over het token, met inbegrip van gegenereerde wacht woorden en de scope toewijzing die u hebt toegepast. Het is raadzaam om de wacht woorden op een veilige plek op te slaan, zodat u deze later kunt gebruiken met `docker login`. Het wacht woord kan niet opnieuw worden opgehaald, maar er kunnen nieuwe worden gegenereerd.
+De uitvoer toont details over het token, met inbegrip van twee gegenereerde wacht woorden. Het is raadzaam om de wacht woorden op een veilige plek op te slaan, zodat u deze later kunt gebruiken voor verificatie. Het wacht woord kan niet opnieuw worden opgehaald, maar er kunnen nieuwe worden gegenereerd.
 
-## <a name="generate-passwords-for-token"></a>Wacht woorden genereren voor token
+## <a name="create-token---portal"></a>Token maken-Portal
 
-Als er wacht woorden zijn gemaakt tijdens het maken van het token, gaat u verder [met authenticatie met het REGI ster](#authenticate-using-token).
+U kunt de Azure Portal gebruiken om tokens en Scope Maps te maken. Net als bij de `az acr token create` CLI-opdracht kunt u een bestaande bereik toewijzing Toep assen of een scope toewijzing maken wanneer u een token maakt door een of meer opslag plaatsen en gekoppelde acties op te geven. De opslag plaatsen hoeven nog niet in het REGI ster te staan. 
 
-Als u geen token wachtwoord hebt of als u nieuwe wacht woorden wilt genereren, voert u de opdracht [AZ ACR token Credential generate][az-acr-token-credential-generate] uit.
+In het volgende voor beeld wordt een token gemaakt en wordt een scope toewijzing gemaakt met de volgende machtigingen voor de `samples/hello-world` opslagplaats: `content/write` en `content/read`.
 
-In het volgende voor beeld wordt een nieuw wacht woord gegenereerd voor het token dat u hebt gemaakt, met een verval periode van 30 dagen. Het wacht woord wordt opgeslagen in de omgevings variabele TOKEN_PWD. Dit voor beeld is opgemaakt voor de bash-shell.
+1. Navigeer in de portal naar het container register.
+1. Onder **Services**selecteert u **tokens (preview) > + toevoegen**.
+  token ![maken in de portal](media/container-registry-repository-scoped-permissions/portal-token-add.png)
+1. Voer een token naam in.
+1. Selecteer onder **Scope toewijzing**de optie **nieuwe maken**.
+1. De scope toewijzing configureren:
+    1. Voer een naam en beschrijving in voor de bereik toewijzing. 
+    1. Onder **opslag**plaatsen voert u `samples/hello-world`in en selecteert u onder **machtigingen**`content/read` en `content/write`. Selecteer vervolgens **+ toevoegen**.  
+    ![Scope toewijzing maken in de portal](media/container-registry-repository-scoped-permissions/portal-scope-map-add.png)
 
-```azurecli
-TOKEN_PWD=$(az acr token credential generate \
-  --name MyToken --registry myregistry --days 30 \
-  --password1 --query 'passwords[0].value' --output tsv)
+    1. Nadat u opslag plaatsen en machtigingen hebt toegevoegd, selecteert u **toevoegen** om de scope toewijzing toe te voegen.
+1. Accepteer de standaard token **status** **ingeschakeld** en selecteer vervolgens **maken**.
+
+Nadat het token is gevalideerd en gemaakt, worden de token details weer gegeven in het scherm **tokens** .
+
+### <a name="add-token-password"></a>Token wachtwoord toevoegen
+
+Genereer een wacht woord nadat u een token hebt gemaakt. Het token moet zijn ingeschakeld en een geldig wacht woord hebben om te kunnen worden geverifieerd met het REGI ster.
+
+U kunt één of twee wacht woorden genereren en een verval datum instellen voor elke groep. 
+
+1. Navigeer in de portal naar het container register.
+1. Onder **Services**selecteert u **tokens (preview)** en selecteert u een token.
+1. Selecteer in de details van het token **Wachtwoord1** of **password2**en selecteer het pictogram genereren.
+1. In het scherm wacht woord stelt u desgewenst een verval datum voor het wacht woord in en selecteert u **genereren**.
+1. Nadat u een wacht woord hebt gegenereerd, kopieert u het naar een veilige locatie en slaat u deze op. U kunt een gegenereerd wacht woord niet ophalen nadat het scherm is gesloten, maar er kan wel een nieuwe worden gegenereerd.
+
+    ![Token wachtwoord maken in de portal](media/container-registry-repository-scoped-permissions/portal-token-password.png)
+
+## <a name="authenticate-with-token"></a>Verifiëren met token
+
+Wanneer een gebruiker of service een token gebruikt voor verificatie met het doel register, geeft het de token naam als een gebruikers naam en een van de gegenereerde wacht woorden. De verificatie methode is afhankelijk van de geconfigureerde actie of acties die zijn gekoppeld aan het token.
+
+|Bewerking  |Verificatie uitvoeren  |
+  |---------|---------|
+  |`content/delete`    | `az acr repository delete` in azure CLI |
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` in azure CLI  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` in azure CLI     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` in azure CLI   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` in azure CLI |
+
+## <a name="examples-use-token"></a>Voor beelden: token gebruiken
+
+In de volgende voor beelden wordt het token gebruikt dat eerder in dit artikel is gemaakt om algemene bewerkingen uit te voeren op een opslag plaats: push-en pull-installatie kopieën, verwijderen van afbeeldingen en List opslagplaats Tags. Het token is in eerste instantie ingesteld met push-machtigingen (`content/write` en `content/read` acties) in de `samples/hello-world` opslag plaats.
+
+### <a name="pull-and-tag-test-images"></a>Test installatie kopieën voor pull en Tags
+
+Voor de volgende voor beelden haalt u de `hello-world`-en `alpine`-installatie kopieën uit docker hub op en labelt u deze voor uw REGI ster en opslag plaats.
+
+```bash
+docker pull hello-world
+docker pull alpine
+docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
+docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
 ```
 
-## <a name="authenticate-using-token"></a>Verifiëren met token
+### <a name="authenticate-using-token"></a>Verifiëren met token
 
-Voer `docker login` uit om te verifiëren met het REGI ster met de token referenties. Voer de token naam in als de gebruikers naam en geef een wacht woord op. Het volgende voor beeld is opgemaakt voor de bash-shell en biedt de waarden met behulp van omgevings variabelen.
+Voer `docker login` uit om te verifiëren met het REGI ster, geef de token naam op als gebruikers naam en geef een van de wacht woorden op. Het token moet de `Enabled` status hebben.
+
+Het volgende voor beeld is opgemaakt voor de bash-shell en biedt de waarden met behulp van omgevings variabelen.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -155,109 +216,206 @@ Bij uitvoer moet de verificatie slagen worden weer gegeven:
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>Scoped Access controleren
+### <a name="push-images-to-registry"></a>Installatiekopieën naar het register pushen
 
-U kunt controleren of het token machtigingen met een bereik heeft voor de opslag plaatsen in het REGI ster. In dit voor beeld worden de volgende `docker pull` opdrachten voltooid om installatie kopieën te halen die beschikbaar zijn in de `samples/hello-world` en `samples/nginx` opslagplaatsen:
+Na een geslaagde aanmelding, probeert u de gelabelde installatie kopieën naar het REGI ster te pushen. Omdat het token machtigingen heeft om installatie kopieën naar de `samples/hello-world`-opslag plaats te pushen, lukt de volgende push:
 
-```console
-docker pull myregistry.azurecr.io/samples/hello-world:v1
-docker pull myregistry.azurecr.io/samples/nginx:v1
+```bash
+docker push myregistry.azurecr.io/samples/hello-world:v1
 ```
 
-Omdat de voorbeeld token de `content/write` actie alleen op de `samples/hello-world` opslag plaats toestaat, is `docker push` mislukt voor die opslag plaats, maar mislukt de `samples/nginx`:
+Het token heeft geen machtigingen voor de `samples/alpine` opslag plaats, waardoor de volgende push poging mislukt met een fout die vergelijkbaar is met `requested access to the resource is denied`:
 
-```console
-# docker push succeeds
-docker pull myregistry.azurecr.io/samples/hello-world:v1
-
-# docker push fails
-docker pull myregistry.azurecr.io/samples/nginx:v1
+```bash
+docker push myregistry.azurecr.io/samples/alpine:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>Bereik toewijzing en Token bijwerken
+### <a name="change-pushpull-permissions"></a>Push/pull-machtigingen wijzigen
 
-Als u de token machtigingen wilt bijwerken, werkt u de machtigingen in de bijbehorende toewijzing van het bereik bij met [AZ ACR Scope-map Update][az-acr-scope-map-update]. Als u bijvoorbeeld *MyScopeMap* wilt bijwerken, verwijdert u de `content/write` actie in de `samples/hello-world` opslag plaats:
+Als u de machtigingen van een token wilt bijwerken, werkt u de machtigingen bij in de bijbehorende toewijzing van het bereik. De bijgewerkte Scope toewijzing wordt direct toegepast op alle bijbehorende tokens. 
+
+U kunt bijvoorbeeld `MyToken-scope-map` bijwerken met `content/write` en `content/read` acties in de `samples/alpine` opslag plaats en de `content/write` actie verwijderen voor de `samples/hello-world` opslag plaats.  
+
+Als u de Azure CLI wilt gebruiken, voert u [AZ ACR Scope-map Update][az-acr-scope-map-update] uit om de scope toewijzing bij te werken:
 
 ```azurecli
-az acr scope-map update --name MyScopeMap --registry myregistry \
-  --remove samples/hello-world content/write
+az acr scope-map update \
+  --name MyScopeMap \
+  --registry myregistry \
+  --add samples/alpine content/write content/read \
+  --remove samples/hello-world content/write 
 ```
 
-Als de scope toewijzing is gekoppeld aan meer dan één token, wordt met de opdracht de machtiging van alle gekoppelde tokens bijgewerkt.
+In Azure Portal:
 
-Als u een token wilt bijwerken met een andere scope toewijzing, voert u [AZ ACR token update][az-acr-token-update]uit. Bijvoorbeeld:
+1. Navigeer naar het container register.
+1. Onder **Services**selecteert u **Scope toewijzingen (preview)** en selecteert u de scope toewijzing die u wilt bijwerken.
+1. Onder **opslag**plaatsen voert u `samples/alpine`in en selecteert u onder **machtigingen**`content/read` en `content/write`. Selecteer vervolgens **+ toevoegen**.
+1. Onder **opslag**plaatsen selecteert u `samples/hello-world` en selecteert u onder **machtigingen**de optie `content/write`. Selecteer vervolgens **Opslaan**.
+
+Nadat de scope toewijzing is bijgewerkt, is de volgende push geslaagd:
+
+```bash
+docker push myregistry.azurecr.io/samples/alpine:v1
+```
+
+Omdat de scope toewijzing alleen de machtiging `content/read` heeft voor de `samples/hello-world` opslag plaats, mislukt een push poging naar de `samples/hello-world` opslag plaats nu:
+ 
+```bash
+docker push myregistry.azurecr.io/samples/hello-world:v1
+```
+
+Het ophalen van installatie kopieën van beide opslag plaatsen slaagt, omdat de scope toewijzing `content/read` machtigingen biedt voor beide opslag plaatsen:
+
+```bash
+docker pull myregistry.azurecr.io/samples/alpine:v1
+docker pull myregistry.azurecr.io/samples/hello-world:v1
+```
+### <a name="delete-images"></a>Installatiekopieën verwijderen
+
+Werk de scope toewijzing bij door de actie `content/delete` toe te voegen aan de `alpine`-opslag plaats. Met deze actie kunnen installatie kopieën in de opslag plaats worden verwijderd of kan de hele opslag plaats worden verwijderd.
+
+Voor een beknopt overzicht worden alleen de opdracht [AZ ACR Scope-map Update][az-acr-scope-map-update] weer gegeven om de scope toewijzing bij te werken:
+
+```azurecli
+az acr scope-map update \
+  --name MyScopeMap \
+  --registry myregistry \
+  --add samples/alpine content/delete
+``` 
+
+Als u de scope toewijzing wilt bijwerken met behulp van de portal, raadpleegt u de voor gaande sectie.
+
+Gebruik de volgende opdracht [AZ ACR repository delete][az-acr-repository-delete] om de `samples/alpine` opslag plaats te verwijderen. Als u installatie kopieën of opslag plaatsen wilt verwijderen, wordt het token niet geverifieerd via `docker login`. Geef in plaats daarvan de naam en het wacht woord van het token door aan de opdracht. In het volgende voor beeld worden de omgevings variabelen gebruikt die eerder in het artikel zijn gemaakt:
+
+```azurecli
+az acr repository delete \
+  --name myregistry --repository samples/alpine \
+  --username $TOKEN_NAME --password $TOKEN_PWD
+```
+
+### <a name="show-repo-tags"></a>Opslag plaats-Tags weer geven 
+
+Werk de scope toewijzing bij door de actie `metadata/read` toe te voegen aan de `hello-world`-opslag plaats. Met deze actie kunnen manifest-en label gegevens in de opslag plaats worden gelezen.
+
+Voor een beknopt overzicht worden alleen de opdracht [AZ ACR Scope-map Update][az-acr-scope-map-update] weer gegeven om de scope toewijzing bij te werken:
+
+```azurecli
+az acr scope-map update \
+  --name MyScopeMap \
+  --registry myregistry \
+  --add samples/hello-world metadata/read 
+```  
+
+Als u de scope toewijzing wilt bijwerken met behulp van de portal, raadpleegt u de voor gaande sectie.
+
+Als u meta gegevens in de `samples/hello-world`-opslag plaats wilt lezen, voert u de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] of [AZ ACR repository show-Tags][az-acr-repository-show-tags] uit. 
+
+Voor het lezen van meta gegevens kan het token niet worden geverifieerd via `docker login`. Geef in plaats daarvan de naam en het wacht woord van het token door aan een van de opdrachten. In het volgende voor beeld worden de omgevings variabelen gebruikt die eerder in het artikel zijn gemaakt:
+
+```azurecli
+az acr repository show-tags \
+  --name myregistry --repository samples/hello-world \
+  --username $TOKEN_NAME --password $TOKEN_PWD
+```
+
+Voorbeelduitvoer:
+
+```console
+[
+  "v1"
+]
+```
+## <a name="manage-tokens-and-scope-maps"></a>Tokens en Scope toewijzingen beheren
+
+### <a name="list-scope-maps"></a>Lijst met bereik toewijzingen
+
+Gebruik de opdracht [AZ ACR Scope-map list][az-acr-scope-map-list] of het scherm **Scope Maps (preview)** in de portal om een lijst weer te geven met alle scope toewijzingen die in een REGI ster zijn geconfigureerd. Bijvoorbeeld:
+
+```azurecli
+az acr scope-map list \
+  --registry myregistry --output table
+```
+
+In de uitvoer ziet u de bereik toewijzingen die u hebt gedefinieerd en enkele door het systeem gedefinieerde bereik toewijzingen die u kunt gebruiken om tokens te configureren:
+
+```
+NAME                 TYPE           CREATION DATE         DESCRIPTION
+-------------------  -------------  --------------------  ------------------------------------------------------------
+_repositories_admin  SystemDefined  2020-01-20T09:44:24Z  Can perform all read, write and delete operations on the ...
+_repositories_pull   SystemDefined  2020-01-20T09:44:24Z  Can pull any repository of the registry
+_repositories_push   SystemDefined  2020-01-20T09:44:24Z  Can push to any repository of the registry
+MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
+```
+
+### <a name="show-token-details"></a>Details van token weer geven
+
+Als u de details van een token, zoals de status en de verval datum van het wacht woord, wilt weer geven, voert u de opdracht [AZ ACR token show][az-acr-token-show] uit of selecteert u het token in het scherm **tokens (preview)** in de portal. Bijvoorbeeld:
+
+```azurecli
+az acr scope-map show \
+  --name MyScopeMap --registry myregistry
+```
+
+Gebruik de opdracht [AZ ACR token List][az-acr-token-list] of het scherm **tokens (preview)** in de portal om een lijst weer te geven met alle tokens die in een REGI ster zijn geconfigureerd. Bijvoorbeeld:
+
+```azurecli
+az acr token list --registry myregistry --output table
+```
+
+### <a name="generate-passwords-for-token"></a>Wacht woorden genereren voor token
+
+Als u geen token wachtwoord hebt of als u nieuwe wacht woorden wilt genereren, voert u de opdracht [AZ ACR token Credential generate][az-acr-token-credential-generate] uit. 
+
+In het volgende voor beeld wordt een nieuwe waarde voor Wachtwoord1 voor het *MyToken* -token gegenereerd, met een verval periode van 30 dagen. Het wacht woord wordt opgeslagen in de omgevings variabele `TOKEN_PWD`. Dit voor beeld is opgemaakt voor de bash-shell.
+
+```azurecli
+TOKEN_PWD=$(az acr token credential generate \
+  --name MyToken --registry myregistry --days 30 \
+  --password1 --query 'passwords[0].value' --output tsv)
+```
+
+Als u de Azure Portal wilt gebruiken om een token wachtwoord te genereren, raadpleegt u de stappen in [Create token-Portal](#create-token---portal) eerder in dit artikel.
+
+### <a name="update-token-with-new-scope-map"></a>Token bijwerken met een nieuwe scope toewijzing
+
+Als u een token wilt bijwerken met een andere scope toewijzing, voert u [AZ ACR token update][az-acr-token-update] uit en geeft u de nieuwe scope toewijzing op. Bijvoorbeeld:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Na het bijwerken van een token of een bereik toewijzing die is gekoppeld aan een token, worden de gewijzigde machtigingen van kracht bij de volgende `docker login` of andere verificatie met behulp van het token.
+Selecteer in de portal op het scherm **tokens (voor beeld)** het token en selecteer een andere scope toewijzing onder **Scope toewijzing**.
 
-Nadat u een token hebt bijgewerkt, wilt u mogelijk nieuwe wacht woorden genereren voor toegang tot het REGI ster. Voer [AZ ACR token Credential generate][az-acr-token-credential-generate]. Bijvoorbeeld:
+> [!TIP]
+> Nadat u een token met een nieuwe scope toewijzing hebt bijgewerkt, wilt u mogelijk nieuwe token wachtwoorden genereren. Gebruik de opdracht [AZ ACR token Credential generate][az-acr-token-credential-generate] of Genereer een token wachtwoord in de Azure Portal.
+
+## <a name="disable-or-delete-token"></a>Token uitschakelen of verwijderen
+
+Mogelijk moet u het gebruik van de token referenties voor een gebruiker of service tijdelijk uitschakelen. 
+
+Voer de opdracht [AZ ACR token update][az-acr-token-update] uit met behulp van de Azure CLI om de `status` in te stellen op `disabled`:
 
 ```azurecli
-az acr token credential generate \
-  --name MyToken --registry myregistry --days 30
+az acr token update --name MyToken --registry myregistry \
+  --status disabled
 ```
 
-## <a name="about-repository-scoped-permissions"></a>Over machtigingen voor opslag plaatsen met een bereik
+Selecteer in de portal het token in het scherm **tokens (voor beeld)** en selecteer **uitgeschakeld** onder **status**.
 
-### <a name="concepts"></a>Concepten
+Als u een token wilt verwijderen om de toegang door iedereen die de referenties gebruikt permanent ongeldig te maken, voert u de opdracht [AZ ACR token delete][az-acr-token-delete] uit. 
 
-Als u machtigingen voor opslag plaatsen wilt configureren, maakt u een *toegangs token* en een bijbehorend *bereik toewijzing* met behulp van opdrachten in de Azure cli.
+```azurecli
+az acr token delete --name MyToken --registry myregistry
+```
 
-* Een **toegangs token** is een referentie die wordt gebruikt met een wacht woord voor verificatie bij het REGI ster. Gekoppeld aan elk token zijn toegestane *acties* die zijn gericht op een of meer opslag plaatsen. U kunt een verloop tijd instellen voor elk token. 
-
-* **Acties** voor elke opgegeven opslag plaats bevatten een of meer van de volgende.
-
-  |Actie  |Beschrijving  |
-  |---------|---------|
-  |`content/read`     |  Gegevens uit de opslag plaats lezen. U kunt bijvoorbeeld een artefact ophalen.  |
-  |`metadata/read`    | Lees de meta gegevens uit de opslag plaats. Bijvoorbeeld Tags lijst of manifest meta gegevens weer geven.   |
-  |`content/write`     |  Gegevens schrijven naar de opslag plaats. Gebruik met `content/read` om een artefact te pushen.    |
-  |`metadata/write`     |  Meta gegevens schrijven naar de opslag plaats. U kunt bijvoorbeeld manifest kenmerken bijwerken.  |
-  |`content/delete`    | Gegevens uit de opslag plaats verwijderen. U kunt bijvoorbeeld een opslag plaats of een manifest verwijderen. |
-
-* Een **Scope toewijzing** is een register object waarmee opslagplaats machtigingen worden gegroepeerd die u toepast op een token of die opnieuw kan worden toegepast op andere tokens. Als u geen scope toewijzing toepast tijdens het maken van een token, wordt er automatisch een scope toewijzing voor u gemaakt, om de machtigings instellingen op te slaan. 
-
-  Een scope toewijzing helpt u bij het configureren van meerdere gebruikers met identieke toegang tot een set opslag plaatsen. Azure Container Registry biedt ook door het systeem gedefinieerde bereik toewijzingen die u kunt Toep assen bij het maken van toegangs tokens.
-
-De volgende afbeelding bevat een overzicht van de relatie tussen tokens en Scope Maps. 
-
-![Toewijzings-en tokens voor het bereik van het REGI ster](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
-
-### <a name="scenarios"></a>Scenario 's
-
-Scenario's voor het gebruik van een toegangs token zijn onder andere:
-
-* IoT-apparaten voorzien van afzonderlijke tokens om een installatie kopie uit een opslag plaats te halen
-* Een externe organisatie voorzien van machtigingen voor een specifieke opslag plaats 
-* Beperk de toegang tot opslag plaatsen tot specifieke gebruikers groepen in uw organisatie. U kunt bijvoorbeeld schrijf-en lees toegang bieden aan ontwikkel aars die installatie kopieën bouwen die gericht zijn op specifieke opslag plaatsen en lees toegang tot teams die vanuit deze opslag plaatsen worden geïmplementeerd.
-
-### <a name="authentication-using-token"></a>Verificatie met behulp van token
-
-Gebruik een token naam als gebruikers naam en een van de bijbehorende wacht woorden om te verifiëren met het doel register. De verificatie methode is afhankelijk van de geconfigureerde acties.
-
-### <a name="contentread-or-contentwrite"></a>inhoud/lezen of inhoud/schrijven
-
-Als het token alleen `content/read`-of `content/write` acties toestaat, geeft u de token referenties op in een van de volgende verificatie stromen:
-
-* Verifiëren met docker met behulp van `docker login`
-* Verifiëren met het REGI ster met de opdracht [AZ ACR login][az-acr-login] in de Azure cli
-
-Met de volgende verificatie kunnen de geconfigureerde acties op de opslag plaats of opslag plaatsen in het bereik worden toegestaan met het token. Als het token bijvoorbeeld de `content/read` actie op een opslag plaats toestaat, zijn `docker pull` bewerkingen toegestaan voor installatie kopieën in die opslag plaats.
-
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>meta gegevens/lezen, meta gegevens/schrijven of inhoud/verwijderen
-
-Als het token `metadata/read`, `metadata/write`of `content/delete` acties in een opslag plaats toestaat, moeten de token referenties worden opgegeven als para meters met de gerelateerde [AZ ACR repository][az-acr-repository] -opdrachten in de Azure cli.
-
-Als `metadata/read` acties bijvoorbeeld zijn toegestaan in een opslag plaats, geeft u de token referenties door als u de opdracht [AZ ACR repository show-Tags][az-acr-repository-show-tags] uitvoert om tags weer te geven.
+Selecteer in de portal het token in het scherm **tokens (voor beeld)** en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als u Scope toewijzingen en toegangs tokens wilt beheren, gebruikt u aanvullende opdrachten in de opdracht [AZ ACR Scope-map][az-acr-scope-map] en [AZ ACR token][az-acr-token] Command groups.
-* Zie [verificatie-overzicht](container-registry-authentication.md) voor scenario's voor verificatie met een Azure container Registry met behulp van een beheerders account of een Azure Active Directory identiteit.
+* Als u Scope toewijzingen en tokens wilt beheren, gebruikt u aanvullende opdrachten in de opdracht [AZ ACR Scope-map][az-acr-scope-map] en [AZ ACR token][az-acr-token] Command groups.
+* Zie het [verificatie overzicht](container-registry-authentication.md) voor andere opties voor verificatie met een Azure container Registry, inclusief het gebruik van een Azure Active Directory identiteit, een service-principal of een beheerders account.
 
 
 <!-- LINKS - External -->
@@ -267,12 +425,18 @@ Als `metadata/read` acties bijvoorbeeld zijn toegestaan in een opslag plaats, ge
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-repository]: /cli/azure/acr/repository/
 [az-acr-repository-show-tags]: /cli/azure/acr/repository/#az-acr-repository-show-tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az-acr-repository-show-manifests
+[az-acr-repository-delete]: /cli/azure/acr/repository/#az-acr-repository-delete
 [az-acr-scope-map]: /cli/azure/acr/scope-map/
 [az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az-acr-scope-map-create
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-show
+[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
 [az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az-acr-scope-map-update
 [az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
 [az-acr-token]: /cli/azure/acr/token/
 [az-acr-token-show]: /cli/azure/acr/token/#az-acr-token-show
+[az-acr-token-list]: /cli/azure/acr/token/#az-acr-token-list
+[az-acr-token-delete]: /cli/azure/acr/token/#az-acr-token-delete
 [az-acr-token-create]: /cli/azure/acr/token/#az-acr-token-create
 [az-acr-token-update]: /cli/azure/acr/token/#az-acr-token-update
 [az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az-acr-token-credential-generate

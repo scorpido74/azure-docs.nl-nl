@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 97c277eadbd1b425c50b10d15172c13e17e20eb3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/17/2020
+ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926207"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431090"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Gegevens kopiëren van SAP HANA met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-sap-hana-connector.md)
 > * [Huidige versie](connector-sap-hana.md)
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een SAP HANA-data base te kopiëren. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een SAP HANA-data base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 >[!TIP]
 >Zie [SAP Data Integration using Azure Data Factory White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) with introduction, comparsion en guidance (Engelstalig) voor meer informatie over de algemene ondersteuning van de ADF op SAP Data Integration scenario.
@@ -42,6 +42,7 @@ Deze SAP HANA-connector ondersteunt met name:
 - Gegevens kopiëren uit elke versie van SAP HANA data base.
 - Gegevens kopiëren van **Hana-informatie modellen** (zoals analytische en berekenings weergaven) en **rij-en kolom tabellen**.
 - Kopiëren van gegevens met behulp van **basis** -of **Windows** -verificatie.
+- Parallelle kopieën van een SAP HANA bron. Zie de sectie [parallelle kopie van SAP Hana](#parallel-copy-from-sap-hana) voor meer informatie.
 
 > [!TIP]
 > Als u gegevens wilt kopiëren **naar** SAP Hana gegevens archief, gebruikt u de algemene ODBC-Connector. Zie [SAP Hana Sink](connector-odbc.md#sap-hana-sink) met details. Houd er rekening mee dat de gekoppelde services voor SAP HANA connector en ODBC-Connector met een ander type dan niet opnieuw kunnen worden gebruikt.
@@ -50,8 +51,8 @@ Deze SAP HANA-connector ondersteunt met name:
 
 Als u deze SAP HANA-connector wilt gebruiken, moet u het volgende doen:
 
-- Stel een zelf-hostende Integration Runtime in. Zie [zelfgehoste Cloudintegratieruntime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
-- Installeer het SAP HANA ODBC-stuur programma op de Integration Runtime computer. U kunt het SAP HANA ODBC-stuurprogramma downloaden via het [SAP Software Download Center](https://support.sap.com/swdc). Zoek met het tref woord **SAP Hana client voor Windows**.
+- Stel een zelf-hostende Integration Runtime in. Zie [zelf-hostende Integration runtime](create-self-hosted-integration-runtime.md) artikel voor meer informatie.
+- Installeer het SAP HANA ODBC-stuur programma op de Integration Runtime computer. U kunt het ODBC-stuur programma van SAP HANA downloaden via het [SAP-software Download centrum](https://support.sap.com/swdc). Zoek met het tref woord **SAP Hana client voor Windows**.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -63,13 +64,13 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 De volgende eigenschappen worden ondersteund voor SAP HANA gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **SapHana** | Ja |
 | connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met de SAP HANA met behulp van **basis verificatie** of **Windows-verificatie**. Raadpleeg de volgende voor beelden.<br>In connection string is server/poort verplicht (de standaard poort is 30015), en de gebruikers naam en het wacht woord zijn verplicht wanneer basis verificatie wordt gebruikt. Raadpleeg [SAP Hana ODBC-verbindings eigenschappen](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) voor aanvullende geavanceerde instellingen<br/>U kunt ook wacht woord in Azure Key Vault plaatsen en de wachtwoord configuratie uit de connection string halen. Raadpleeg de [referenties voor opslaan in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | userName | Geef een gebruikers naam op bij het gebruik van Windows-verificatie. Voorbeeld: `user@domain.com` | Nee |
-| wachtwoord | Geef het wacht woord voor het gebruikers account op. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
+| wachtwoord | Geef het wacht woord voor het gebruikers account op. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Nee |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
 **Voor beeld: basis verificatie gebruiken**
 
@@ -140,11 +141,11 @@ Als u SAP HANA gekoppelde service met de volgende Payload gebruikt, wordt deze n
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door SAP HANA DataSet worden ondersteund.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door SAP HANA DataSet worden ondersteund.
 
 De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit SAP HANA:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **SapHanaTable** | Ja |
 | schema | De naam van het schema in de SAP HANA-data base. | Nee (als 'query' in de activiteitbron is opgegeven) |
@@ -174,16 +175,22 @@ Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds onde
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die door SAP HANA bron worden ondersteund.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die door SAP HANA bron worden ondersteund.
 
 ### <a name="sap-hana-as-source"></a>SAP HANA als bron
 
+>[!TIP]
+>Als u gegevens van SAP HANA efficiënt wilt opnemen met behulp van gegevens partitioneren, kunt u meer informatie vinden op basis van de [parallelle kopie van SAP Hana](#parallel-copy-from-sap-hana) sectie.
+
 Als u gegevens wilt kopiëren uit SAP HANA, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SapHanaSource** | Ja |
 | query | Hiermee geeft u de SQL-query voor het lezen van gegevens uit het SAP HANA-exemplaar. | Ja |
+| partitionOptions | Hiermee geeft u de opties voor gegevenspartitionering op waarmee gegevens van SAP HANA worden opgenomen. Meer informatie over de [parallelle kopie van de SAP Hana](#parallel-copy-from-sap-hana) sectie.<br>Toegestane waarden zijn: **geen** (standaard), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Meer informatie over de [parallelle kopie van de SAP Hana](#parallel-copy-from-sap-hana) sectie. `PhysicalPartitionsOfTable` kan alleen worden gebruikt bij het kopiëren van gegevens uit een tabel, maar niet voor query's. <br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None`), is de mate van parallelle uitvoering om gegevens van SAP HANA gelijktijdig te laden, bepaald door de instelling [`parallelCopies`](copy-activity-performance.md#parallel-copy) van de Kopieer activiteit. | False |
+| partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op.<br>Toep assen als de partitie optie `SapHanaDynamicRange`is. | False |
+| partitionColumnName | Geef de naam op van de bron kolom die wordt gebruikt voor de partitie voor parallelle kopieën. Als u niets opgeeft, wordt de index of de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de partitie kolom.<br>Toep assen wanneer de partitie optie is `SapHanaDynamicRange`. Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfHanaDynamicRangePartitionCondition` in de component WHERE. Zie voor beeld in [parallelle kopie van SAP Hana](#parallel-copy-from-sap-hana) sectie. | Ja bij het gebruik van `SapHanaDynamicRange` partitie. |
 | packetSize | Hiermee geeft u de grootte van het netwerk pakket (in kilo bytes) op om gegevens te splitsen in meerdere blokken. Als u grote hoeveel heden gegevens moet kopiëren, kan de grootte van het pakket verhogen in de meeste gevallen de Lees snelheid van SAP HANA. Prestatie testen worden aanbevolen bij het aanpassen van de pakket grootte. | Nee.<br>De standaard waarde is 2048 (2 MB). |
 
 **Voorbeeld:**
@@ -220,9 +227,46 @@ Als u gegevens wilt kopiëren uit SAP HANA, worden de volgende eigenschappen ond
 
 Als u `RelationalSource` getypte Kopieer bron gebruikt, wordt deze nog steeds ondersteund als-is. u wordt aangeraden het nieuwe item te gebruiken.
 
+## <a name="parallel-copy-from-sap-hana"></a>Parallelle kopie van SAP HANA
+
+De Data Factory SAP HANA-connector biedt ingebouwde gegevenspartitionering om gegevens van SAP HANA parallel te kopiëren. U kunt opties voor gegevens partities vinden in de **bron** tabel van de Kopieer activiteit.
+
+![Scherm opname van partitie opties](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
+
+Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op uw SAP HANA bron om gegevens op te halen op basis van partities. De parallelle graad wordt bepaald door de instelling [`parallelCopies`](copy-activity-performance.md#parallel-copy) op de Kopieer activiteit. Als u bijvoorbeeld `parallelCopies` instelt op vier, worden met Data Factory gelijktijdig vier query's gegenereerd en uitgevoerd op basis van uw opgegeven partitie optie en instellingen, en elke query haalt een deel van de gegevens op uit de SAP HANA.
+
+U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partities met name wanneer u grote hoeveel heden gegevens uit uw SAP HANA opneemt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand kunt u het beste naar een map schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval is de prestaties beter dan het schrijven naar één bestand.
+
+| Scenario                                           | Voorgestelde instellingen                                           |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| Volledige belasting van een grote tabel.                        | **Partitie optie**: fysieke partities van tabel. <br><br/>Tijdens de uitvoering van Data Factory detecteert het fysieke partitie type van de opgegeven SAP HANA tabel automatisch en kiest de bijbehorende partitie strategie:<br>- **bereik partitioneren**: Haal de kolom Partition en de partitielay-adresbereiken op die zijn gedefinieerd voor de tabel en kopieer de gegevens vervolgens per bereik. <br>- **hash-partitionering**: hash-partitie sleutel gebruiken als partitie kolom, partitioneren en kopiëren van de gegevens op basis van berekende ADF-bereiken. <br>- **Round-Robin partitionering** of **geen partitie**: primaire sleutel als partitie kolom gebruiken, partitioneren en kopiëren van de gegevens op basis van berekende ADF-bereiken. |
+| Laad grote hoeveelheid gegevens met behulp van een aangepaste query. | **Partitie optie**: partitie met dynamisch bereik.<br>**Query**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`.<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt voor het Toep assen van een dynamische bereik partitie. <br><br>Tijdens de uitvoering berekent Data Factory eerst de waardebereiken van de opgegeven partitie kolom, door de rijen in een aantal buckets gelijkmatig te verdelen op basis van het aantal afzonderlijke partitie kolom waarden en de instelling van de parallelle kopie van de ADF, waarna `?AdfHanaDynamicRangePartitionCondition` wordt vervangen door het bereik van kolom waarden voor elke partitie te filteren en naar SAP HANA wordt verzonden.<br><br>Als u meerdere kolommen als partitie kolom wilt gebruiken, kunt u de waarden van elke kolom als één kolom in de query samen voegen en opgeven als partitie kolom in ADF, zoals `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`. |
+
+**Voor beeld: query met fysieke partities van een tabel**
+
+```json
+"source": {
+    "type": "SapHanaSource",
+    "partitionOption": "PhysicalPartitionsOfTable"
+}
+```
+
+**Voor beeld: query met een dynamische bereik partitie**
+
+```json
+"source": {
+    "type": "SapHanaSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>",
+    "partitionOption": "SapHanaDynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<Partition_column_name>"
+    }
+}
+```
+
 ## <a name="data-type-mapping-for-sap-hana"></a>Toewijzing van gegevens type voor SAP HANA
 
-Bij het kopiëren van gegevens uit SAP HANA worden de volgende toewijzingen gebruikt van SAP HANA gegevens typen om tussenliggende gegevens typen te Azure Data Factory. Zie [Schema en gegevens typt toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe copy activity in het schema en de gegevens van een brontype aan de sink toegewezen.
+Bij het kopiëren van gegevens uit SAP HANA worden de volgende toewijzingen gebruikt van SAP HANA gegevens typen om tussenliggende gegevens typen te Azure Data Factory. Zie [schema-en gegevens type toewijzingen](copy-activity-schema-and-type-mapping.md) voor meer informatie over hoe kopieer activiteit het bron schema en het gegevens type aan de Sink koppelt.
 
 | SAP HANA gegevens type | Data factory tussentijdse gegevenstype |
 | ------------------ | ------------------------------ |
@@ -231,27 +275,27 @@ Bij het kopiëren van gegevens uit SAP HANA worden de volgende toewijzingen gebr
 | BINARY             | Byte[]                         |
 | BINTEXT            | Tekenreeks                         |
 | BLOB               | Byte[]                         |
-| BOOL               | byte                           |
+| BOOL               | Byte                           |
 | CLOB               | Tekenreeks                         |
-| DATE               | Datum/tijd                       |
-| DECIMAL            | Decimal                        |
-| DOUBLE             | Double                         |
-| FLOAT              | Double                         |
+| DATE               | DateTime                       |
+| DECIMAL            | decimaal                        |
+| DOUBLE             | Double-waarde                         |
+| FLOAT              | Double-waarde                         |
 | INTEGER            | Int32                          |
 | NCLOB              | Tekenreeks                         |
 | NVARCHAR           | Tekenreeks                         |
 | REAL               | Enkelvoudig                         |
-| SECONDDATE         | Datum/tijd                       |
+| SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Tekenreeks                         |
-| SMALLDECIMAL       | Decimal                        |
+| SMALLDECIMAL       | decimaal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
 | TEXT               | Tekenreeks                         |
 | TIME               | TimeSpan                       |
-| TINYINT            | byte                           |
+| TINYINT            | Byte                           |
 | VARCHAR            | Tekenreeks                         |
-| TIMESTAMP          | Datum/tijd                       |
+| TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
@@ -259,4 +303,4 @@ Bij het kopiëren van gegevens uit SAP HANA worden de volgende toewijzingen gebr
 Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

@@ -10,18 +10,18 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b9db20da58f50c91da88c2f9f890623b741f10a
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750735"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443870"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux java-app voor Azure App Service configureren
 
-Met Azure App Service op Linux kunnen Java-Ontwikkel aars snel hun Tomcat-, WildFly-of Java Standard Edition (SE) verpakte webtoepassingen bouwen, implementeren en schalen op een volledig beheerde, op Linux gebaseerde service. Implementeer toepassingen met maven plugins vanaf de opdracht regel of in editors zoals IntelliJ, eclips of Visual Studio code.
+Met Azure App Service op Linux kunnen Java-Ontwikkel aars snel hun Tomcat of Java Standard Edition (SE) verpakte webtoepassingen bouwen, implementeren en schalen op een volledig beheerde, op Linux gebaseerde service. Implementeer toepassingen met maven plugins vanaf de opdracht regel of in editors zoals IntelliJ, eclips of Visual Studio code.
 
-Deze hand leiding bevat belang rijke concepten en instructies voor Java-Ontwikkel aars die gebruikmaken van een ingebouwde Linux-container in App Service. Als u Azure App Service nog nooit hebt gebruikt, volgt u eerst de [Java-Snelstartgids](quickstart-java.md) en [Java met postgresql zelf studie](tutorial-java-enterprise-postgresql-app.md) .
+Deze hand leiding bevat belang rijke concepten en instructies voor Java-Ontwikkel aars die gebruikmaken van een ingebouwde Linux-container in App Service. Als u Azure App Service nog nooit hebt gebruikt, volgt u de [Java Quick](quickstart-java.md)start.
 
 ## <a name="deploying-your-app"></a>Uw app implementeren
 
@@ -186,9 +186,9 @@ Java-toepassingen die worden uitgevoerd in App Service voor Linux, hebben dezelf
 
 Stel app-verificatie in het Azure Portal in met de optie **verificatie en autorisatie** . Van daaruit kunt u verificatie inschakelen met behulp van Azure Active Directory of sociale aanmeldingen, zoals Facebook, Google of GitHub. Azure Portal configuratie werkt alleen bij het configureren van één verificatie provider. Zie [uw app service-app configureren voor het gebruik van Azure Active Directory login](../configure-authentication-provider-aad.md?toc=/azure/app-service/containers/toc.json) en de verwante artikelen voor andere id-providers voor meer informatie. Als u meerdere aanmeld providers wilt inschakelen, volgt u de instructies in het artikel [customize app service-verificatie](../app-service-authentication-how-to.md?toc=/azure/app-service/containers/toc.json) .
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat en WildFly
+#### <a name="tomcat"></a>Tomcat
 
-Uw tomcat-of WildFly-toepassing kan rechtstreeks vanuit de servlet toegang krijgen tot de claims van de gebruiker door het Principal-object naar een kaart object te casten. Het kaart object wijst elk claim type toe aan een verzameling van de claims voor dat type. In de onderstaande code is `request` een instantie van `HttpServletRequest`.
+Uw Tomcat-toepassing kan rechtstreeks vanuit de servlet toegang krijgen tot de claims van de gebruiker door het Principal-object naar een kaart object te casten. Het kaart object wijst elk claim type toe aan een verzameling van de claims voor dat type. In de onderstaande code is `request` een instantie van `HttpServletRequest`.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -285,7 +285,6 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 7. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
     - Als uw app **Java SE**gebruikt, maakt u een omgevings variabele met de naam `JAVA_OPTS` met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
     - Als u **Tomcat**gebruikt, maakt u een omgevings variabele met de naam `CATALINA_OPTS` met de waarde `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Als u **WildFly**gebruikt, raadpleegt u de nieuwe Relic-documentatie [hier](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) voor meer informatie over het installeren van de Java-Agent en de configuratie van JBoss.
 
 ### <a name="configure-appdynamics"></a>AppDynamics configureren
 
@@ -296,7 +295,6 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 5. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
     - Als u **Java SE**gebruikt, maakt u een omgevings variabele met de naam `JAVA_OPTS` met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waarbij `<app-name>` uw app service naam is.
     - Als u **Tomcat**gebruikt, maakt u een omgevings variabele met de naam `CATALINA_OPTS` met de waarde `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` waarbij `<app-name>` uw app service naam is.
-    - Als u **WildFly**gebruikt, raadpleegt u de AppDynamics-documentatie [hier](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) voor meer informatie over het installeren van de Java-Agent en de configuratie van JBoss.
 
 > [!NOTE]
 > Als u al een omgevings variabele hebt voor `JAVA_OPTS` of `CATALINA_OPTS`, voegt u de optie `-javaagent:/...` toe aan het einde van de huidige waarde.
@@ -313,7 +311,7 @@ Als u een andere naam voor uw JAR wilt gebruiken, moet u ook de [opstart opdrach
 
 App Service Linux stuurt binnenkomende aanvragen naar poort 80, dus uw toepassing moet ook op poort 80 worden geluisterd. U kunt dit doen in de configuratie van uw toepassing (zoals het bestand *toepassing. Properties* ) of in de opstart opdracht (bijvoorbeeld `java -jar spring-app.jar --server.port=80`). Raadpleeg de volgende documentatie voor algemene Java-frameworks:
 
-- [Spring boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
+- [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
 - [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
 - [Micronaut](https://docs.micronaut.io/latest/guide/index.html#runningSpecificPort)
 - [Framework afspelen](https://www.playframework.com/documentation/2.6.x/ConfiguringHttps#Configuring-HTTPS)
@@ -326,7 +324,7 @@ App Service Linux stuurt binnenkomende aanvragen naar poort 80, dus uw toepassin
 
 Deze instructies zijn van toepassing op alle database verbindingen. U moet tijdelijke aanduidingen vullen met de naam van de stuurprogrammanaam en het JAR-bestand van uw gekozen data base. Gegeven is een tabel met klasse-namen en down loads van Stuur Programma's voor algemene data bases.
 
-| Database   | Naam stuur programma klasse                             | JDBC Driver                                                                      |
+| Database   | Naam stuur programma klasse                             | JDBC-stuur programma                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Downloaden](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Downloaden](https://dev.mysql.com/downloads/connector/j/) (Selecteer ' platform onafhankelijk ') |
@@ -491,513 +489,6 @@ Om verbinding te maken met gegevens bronnen in veer boot-toepassingen, wordt u g
 
 Raadpleeg de [Spring boot-documentatie over gegevens toegang](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) en [externe configuraties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) voor meer informatie over dit onderwerp.
 
-## <a name="configure-java-ee-wildfly"></a>Java-EE (WildFly) configureren
-
-> [!NOTE]
-> Java Enter prise Edition op App Service Linux is momenteel beschikbaar als preview-versie. Deze stack wordt **niet** aanbevolen voor productie gerichte werkzaamheden.
-
-Met Azure App Service op Linux kunnen Java-Ontwikkel aars Java-toepassingen (Java-EE) bouwen, implementeren en schalen op een volledig beheerde, op Linux gebaseerde service.  De onderliggende Java-bedrijfs runtime-omgeving is de open-source [WildFly](https://wildfly.org/) -toepassings server.
-
-Deze sectie bevat de volgende subsecties:
-
-- [Schalen met App Service](#scale-with-app-service)
-- [De configuratie van de toepassings server aanpassen](#customize-application-server-configuration)
-- [Modules en afhankelijkheden installeren](#install-modules-and-dependencies)
-- [Gegevens bronnen configureren](#configure-data-sources)
-- [Service Bus als Message Broker gebruiken](#use-service-bus-as-a-message-broker)
-
-### <a name="scale-with-app-service"></a>Schalen met App Service
-
-De WildFly-toepassings server in App Service in Linux wordt uitgevoerd in de zelfstandige modus, niet in een domein configuratie. Wanneer u het App Service plan uitbreidt, wordt elk WildFly-exemplaar geconfigureerd als een zelfstandige server.
-
-Schaal uw toepassing verticaal of horizon taal met [schaal regels](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) en [Verhoog het aantal instanties](../manage-scale-up.md?toc=/azure/app-service/containers/toc.json).
-
-### <a name="customize-application-server-configuration"></a>De configuratie van de toepassings server aanpassen
-
-Web app-exemplaren zijn stateless, dus elke nieuwe instantie die is gestart, moet bij het opstarten worden geconfigureerd ter ondersteuning van de WildFly-configuratie die nodig is voor de toepassing.
-U kunt een startup bash-script schrijven om de WildFly CLI aan te roepen naar:
-
-- Gegevens bronnen instellen
-- Aanbieders van berichten configureren
-- Voeg andere modules en afhankelijkheden toe aan de WildFly-server configuratie.
-
-Het script wordt uitgevoerd wanneer WildFly actief is, maar voordat de toepassing wordt gestart. Het script moet de [JBoss cli](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) van */opt/JBoss/wildfly/bin/JBoss-cli.sh* gebruiken om de toepassings server te configureren met elke configuratie of wijzigingen die nodig zijn nadat de server is gestart.
-
-Gebruik niet de interactieve modus van de CLI om WildFly te configureren. In plaats daarvan kunt u een script met opdrachten aan de JBoss CLI geven met behulp van de opdracht `--file`, bijvoorbeeld:
-
-```bash
-/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
-```
-
-Gebruik FTP om het opstart script te uploaden naar een locatie in uw App Service-exemplaar onder uw */Home* -Directory, zoals */Home/site/Deployments/tools*. Zie [uw app implementeren voor Azure app service met behulp van FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp)voor meer informatie.
-
-Stel het veld met het **opstart script** in de Azure Portal in op de locatie van het opstart shell-script, bijvoorbeeld */Home/site/Deployments/tools/your-startup-script.sh*.
-
-Geef de [app-instellingen](../configure-common.md?toc=/azure/app-service/containers/toc.json#configure-app-settings) in de toepassings configuratie op voor het door geven van omgevings variabelen voor gebruik in het script. Toepassings instellingen houden verbindings reeksen en andere geheimen op die nodig zijn voor het configureren van uw toepassing uit versie beheer.
-
-### <a name="install-modules-and-dependencies"></a>Modules en afhankelijkheden installeren
-
-Als u modules en hun afhankelijkheden wilt installeren in het WildFly klassenpad via de JBoss CLI, moet u de volgende bestanden in hun eigen map maken. Voor sommige modules en afhankelijkheden is mogelijk aanvullende configuratie vereist, zoals JNDI naam of andere API-specifieke configuratie. deze lijst is dus een minimale set van wat u nodig hebt om een afhankelijkheid in de meeste gevallen te configureren.
-
-- Een [XML-module descriptor](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Dit XML-bestand definieert de naam, kenmerken en afhankelijkheden van uw module. In dit [voorbeeld bestand module. XML](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) wordt een post gres-module, het jar-bestand JDBC-afhankelijkheid en andere vereiste module-afhankelijkheden gedefinieerd.
-- Alle benodigde bestands afhankelijkheden van JAR voor uw module.
-- Een script met uw JBoss CLI-opdrachten voor het configureren van de nieuwe module. Dit bestand bevat de opdrachten die door de JBoss CLI moeten worden uitgevoerd om de server te configureren voor het gebruik van de afhankelijkheid. Raadpleeg [dit document](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)voor documentatie over de opdrachten voor het toevoegen van modules, gegevens bronnen en aanbieders van berichten.
-- Een bash-opstart script voor het aanroepen van de JBoss CLI en het uitvoeren van het script in de vorige stap. Dit bestand wordt uitgevoerd wanneer uw App Service-exemplaar opnieuw wordt gestart of wanneer er nieuwe exemplaren worden ingericht tijdens een uitschalen. Met dit opstart script kunt u andere configuraties voor uw toepassing uitvoeren, omdat de JBoss-opdrachten worden door gegeven aan de JBoss-CLI. Dit bestand kan mini maal één opdracht zijn voor het door geven van uw JBoss CLI-opdracht script naar de JBoss CLI:
-
-```bash
-/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
-```
-
-Zodra u de bestanden en inhoud voor uw module hebt, volgt u de onderstaande stappen om de module toe te voegen aan de WildFly-toepassings server.
-
-1. Gebruik FTP om uw bestanden te uploaden naar een locatie in uw App Service-exemplaar onder uw */Home* -adres lijst, zoals */Home/site/Deployments/tools*. Zie [uw app implementeren voor Azure app service met behulp van FTP/S](../deploy-ftp.md)voor meer informatie.
-2. Stel op de pagina **algemene instellingen** van **configuratie** > van de Azure Portal het veld **Startup script** in op de locatie van het opstart shell-script, bijvoorbeeld */Home/site/Deployments/tools/startup.sh*.
-3. Start uw App Service-exemplaar opnieuw op door op de knop **opnieuw opstarten** in het gedeelte **overzicht** van de portal te klikken of de Azure CLI te gebruiken.
-
-### <a name="configure-data-sources"></a>Gegevens bronnen configureren
-
-Als u WildFly/JBoss wilt configureren voor toegang tot een gegevens bron, gebruikt u het algemene proces dat hierboven wordt beschreven in de sectie modules en afhankelijkheden installeren. In de volgende sectie vindt u specifieke informatie over dit proces voor PostgreSQL-, MySQL-en SQL Server-gegevens bronnen.
-
-In deze sectie wordt ervan uitgegaan dat u al een app, een App Service exemplaar en een Azure data base service-exemplaar hebt. De onderstaande instructies verwijzen naar uw App Service naam, de resource groep en de verbindings gegevens van uw data base. U kunt deze informatie vinden op de Azure Portal.
-
-Zie [zelf studie: een Java EE-en post gres-web-app bouwen in azure](tutorial-java-enterprise-postgresql-app.md)als u het hele proces wilt door lopen vanaf het begin met een voor beeld-app.
-
-In de volgende stappen worden de vereisten voor het koppelen van uw bestaande App Service en data base uitgelegd.
-
-1. Down load het JDBC-stuur programma voor [postgresql](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/)of [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server). Pak het gedownloade archief uit om het bestand Driver. jar op te halen.
-
-2. Maak een bestand met een naam als *module. XML* en voeg de volgende opmaak toe. Vervang de tijdelijke aanduiding voor `<module name>` (inclusief de punt haken) door `org.postgres` voor PostgreSQL, `com.mysql` voor MySQL of `com.microsoft` voor SQL Server. Vervang `<JDBC .jar file path>` door de naam van het jar-bestand uit de vorige stap, met inbegrip van het volledige pad naar de locatie waar u het bestand plaatst in uw App Service-exemplaar. Dit kan een wille keurige locatie zijn in de */Home* -map.
-
-    ```xml
-    <?xml version="1.0" ?>
-    <module xmlns="urn:jboss:module:1.1" name="<module name>">
-        <resources>
-           <resource-root path="<JDBC .jar file path>" />
-        </resources>
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="javax.transaction.api"/>
-        </dependencies>
-    </module>
-    ```
-
-3. Maak een bestand met een naam zoals *DataSource-commands. cli* en voeg de volgende code toe. Vervang `<JDBC .jar file path>` door de waarde die u in de vorige stap hebt gebruikt. Vervang `<module file path>` door de bestands naam en het App Service pad uit de vorige stap, bijvoorbeeld */Home/module.XML*.
-
-    **PostgreSQL**
-
-    ```console
-    module add --name=org.postgres --resources=<JDBC .jar file path> --module-xml=<module file path>
-
-    /subsystem=datasources/jdbc-driver=postgres:add(driver-name=postgres,driver-module-name=org.postgres,driver-class-name=org.postgresql.Driver,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
-
-    data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=$DATABASE_CONNECTION_URL --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
-
-    reload --use-current-server-config=true
-    ```
-
-    **MySQL**
-
-    ```console
-    module add --name=com.mysql --resources=<JDBC .jar file path> --module-xml=<module file path>
-
-    /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)
-
-    data-source add --name=mysqlDS --jndi-name=java:jboss/datasources/mysqlDS --connection-url=$DATABASE_CONNECTION_URL --driver-name=mysql --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.cj.jdbc.Driver --jta=true --use-java-context=true --exception-sorter-class-name=com.mysql.cj.jdbc.integration.jboss.ExtendedMysqlExceptionSorter
-
-    reload --use-current-server-config=true
-    ```
-
-    **SQL Server**
-
-    ```console
-    module add --name=com.microsoft --resources=<JDBC .jar file path> --module-xml=<module file path>
-
-    /subsystem=datasources/jdbc-driver=sqlserver:add(driver-name=sqlserver,driver-module-name=com.microsoft,driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver,driver-datasource-class-name=com.microsoft.sqlserver.jdbc.SQLServerDataSource)
-
-    data-source add --name=sqlDS --jndi-name=java:jboss/datasources/sqlDS --driver-name=sqlserver --connection-url=$DATABASE_CONNECTION_URL --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter
-
-    reload --use-current-server-config=true
-    ```
-
-    Dit bestand wordt uitgevoerd door het opstart script dat in de volgende stap wordt beschreven. Hiermee wordt het JDBC-stuur programma geïnstalleerd als een WildFly-module, wordt de bijbehorende WildFly-gegevens bron gemaakt en wordt de server opnieuw geladen om ervoor te zorgen dat de wijzigingen van kracht worden.
-
-4. Maak een bestand met een naam zoals *Startup.sh* en voeg de volgende code toe. Vervang `<JBoss CLI script>` door de naam van het bestand dat u in de vorige stap hebt gemaakt. Zorg ervoor dat u het volledige pad naar de locatie opgeeft waar u het bestand plaatst in uw App Service-exemplaar, bijvoorbeeld */Home/DataSource-commands.cli*.
-
-    ```bash
-    #!/usr/bin/env bash
-    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=<JBoss CLI script>
-    ```
-
-5. Gebruik FTP om het JDBC. jar-bestand, het XML-bestand van de module, het JBoss CLI-script en het opstart script naar uw App Service-exemplaar te uploaden. Plaats deze bestanden op de locatie die u in de vorige stappen hebt opgegeven, zoals */Home*. Zie [uw app implementeren voor Azure app service met behulp van FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp)voor meer informatie over FTP.
-
-6. Gebruik de Azure CLI om instellingen toe te voegen aan uw App Service die uw database verbindings gegevens bevatten. Vervang `<resource group>` en `<webapp name>` door de waarden die uw App Service gebruikt. Vervang `<database server name>`, `<database name>`, `<admin name>`en `<admin password>` door de verbindings gegevens van uw data base. U kunt uw App Service en Data Base-informatie ophalen uit de Azure Portal.
-
-    **PostgreSQL:**
-
-    ```bash
-    az webapp config appsettings set \
-        --resource-group <resource group> \
-        --name <webapp name> \
-        --settings \
-            DATABASE_CONNECTION_URL=jdbc:postgresql://<database server name>:5432/<database name>?ssl=true \
-            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
-            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
-    ```
-
-    **MySQL:**
-
-    ```bash
-    az webapp config appsettings set \
-        --resource-group <resource group> \
-        --name <webapp name> \
-        --settings \
-            DATABASE_CONNECTION_URL=jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT \
-            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
-            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
-    ```
-
-    **SQL Server:**
-
-    ```bash
-    az webapp config appsettings set \
-        --resource-group <resource group> \
-        --name <webapp name> \
-        --settings \
-            DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
-    ```
-
-    De DATABASE_CONNECTION_URL waarden verschillen voor elke database server en verschillen van de waarden op de Azure Portal. De URL-indelingen die hier worden weer gegeven (en in de bovenstaande fragmenten) zijn vereist voor gebruik door WildFly:
-
-    * **Postgresql:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
-    * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
-    * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
-
-7. Ga in het Azure Portal naar uw App Service en zoek de pagina **configuratie** > **algemene instellingen** . Stel het veld **Startup script** in op de naam en locatie van het opstart script, bijvoorbeeld */Home/startup.sh*.
-
-De volgende keer dat uw App Service opnieuw wordt opgestart, wordt het opstart script uitgevoerd en worden de benodigde configuratie stappen uitgevoerd. Als u wilt testen of deze configuratie correct wordt uitgevoerd, hebt u via SSH toegang tot uw App Service en voert u het opstart script zelf uit vanaf de bash-prompt. U kunt ook de App Service-logboeken bekijken. Zie [Logboeken en fout opsporing in apps](#logging-and-debugging-apps)voor meer informatie over deze opties.
-
-Vervolgens moet u de WildFly-configuratie voor uw app bijwerken en opnieuw implementeren. Voer de volgende stappen uit:
-
-1. Open het bestand *src/main/resources/META-INF/persistentie. XML* voor uw app en zoek het `<jta-data-source>`-element. Vervang de inhoud zoals hier wordt weer gegeven:
-
-    **PostgreSQL**
-
-    ```xml
-    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-    ```
-
-    **MySQL**
-
-    ```xml
-    <jta-data-source>java:jboss/datasources/mysqlDS</jta-data-source>
-    ```
-
-    **SQL Server**
-
-    ```xml
-    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
-    ```
-
-2. Bouw en implementeer uw app opnieuw met behulp van de volgende opdracht in de bash-prompt:
-
-    ```bash
-    mvn package -DskipTests azure-webapp:deploy
-    ```
-
-3. Start uw App Service-exemplaar opnieuw op door op de knop **opnieuw opstarten** in het gedeelte **overzicht** van de Azure portal te drukken of door de Azure CLI te gebruiken.
-
-Uw App Service-exemplaar is nu geconfigureerd voor toegang tot uw data base.
-
-Zie [postgresql](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)of [SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898)voor meer informatie over het configureren van database connectiviteit met WildFly.
-
-### <a name="use-service-bus-as-a-message-broker"></a>Service Bus als Message Broker gebruiken
-
-U kunt WildFly en uw op berichten gestuurde bonen configureren om [Azure service bus](/azure/service-bus-messaging) als uw Message Broker te gebruiken. Na de configuratie kunt u berichten verzenden en ontvangen met [Apache Qpid](https://qpid.apache.org) als uw JMS-client (Java Message Service). Er zijn een paar stappen voor het configureren van een JMS-resource adapter (JMS RA) waarmee de Enter prise Java-bonen (EJBs) een externe JMS-verbinding in de fabriek en wachtrij kunnen configureren. Deze externe configuratie verwijst naar Azure Service Bus en gebruikt de Apache Qpid JMS-provider voor het AMQP-protocol.
-
-De volgende stappen beschrijven de vereiste configuratie en code. Bij deze stappen wordt ervan uitgegaan dat u een App Service-exemplaar hebt gemaakt voor het hosten van uw bonen, een Service Bus naam ruimte, een wachtrij en een onderwerp met een abonnement. Zie voor meer informatie over het maken van deze resources:
-
-- [Quick Start: een Java-app maken op Azure App Service in Linux](/azure/app-service/containers/quickstart-java)
-- [Quick Start: Azure CLI gebruiken om een Service Bus wachtrij te maken](/azure/service-bus-messaging/service-bus-quickstart-cli)
-- [Snelstartgids: gebruik de Azure Portal om een Service Bus onderwerp en abonnementen te maken voor het onderwerp](/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)
-
-1. Open een bash-Terminal en gebruik de volgende opdrachten om uw Azure-resource gegevens op te slaan in omgevings variabelen. Vervang de tijdelijke aanduidingen (inclusief de punt haken) door de aangegeven waarden.
-
-    | Variabele            | Waarde                                                                      |
-    |---------------------|----------------------------------------------------------------------------|
-    | RESOURCEGROUP_NAME  | De naam van de resource groep met uw App Service-exemplaar.       |
-    | WEBAPP_NAME         | De naam van uw App Service-exemplaar.                                     |
-    | REGIO              | De naam van de regio waar uw app wordt gehost.                           |
-    | DEFAULT_SBNAMESPACE | De naam van uw Service Bus naam ruimte.                                    |
-    | SB_SAS_POLICY       | De naam van het SAS-beleid (Shared Access Signature) voor uw naam ruimte.   |
-    | SB_SAS_KEY          | De primaire of secundaire sleutel voor het SAS-beleid van uw wachtrij.                  |
-    | SB_QUEUE            | De naam van uw Service Bus wachtrij.                                        |
-    | SB_TOPIC            | De naam van uw Service Bus onderwerp.                                        |
-    | SB_SUBSCRIPTION     | De naam van het abonnement op uw onderwerp.                                |
-
-    ```bash
-    RESOURCEGROUP_NAME=<resource group>
-    WEBAPP_NAME=<web app>
-    WEBAPP_PLAN_NAME=${WEBAPP_NAME}-appservice-plan
-    REGION=<region>
-    DEFAULT_SBNAMESPACE=<namespace>
-    SB_SAS_POLICY=<SAS policy>
-    SB_SAS_KEY=<SAS key>
-    SB_QUEUE=<queue>
-    SB_TOPIC=<topic>
-    SB_SUBSCRIPTION=<subscription>
-    PROVIDER_URL=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000
-    ```
-
-    U kunt deze informatie vinden in de Azure Portal. Voor het SAS-beleid en de-sleutel moet u de waarden voor de naam ruimte gebruiken zodat uw app toegang heeft tot zowel uw wachtrij als uw onderwerp-abonnement. Als u deze waarden wilt vinden op de Azure Portal, navigeert u naar de resource van de naam ruimte, selecteert u **beleid voor gedeelde toegang**en selecteert u vervolgens het **RootManageSharedAccessKey** -beleid.
-
-2. Down load de [Apache QPID JMS-provider](https://qpid.apache.org/components/jms/index.html). Zoek de jar-bestanden in de *lib* *-en lib/optionele* directory's.
-
-3. Maak een bestand met de naam *module. XML* en voeg de volgende opmaak toe. Vervang elke instantie van de tijdelijke aanduiding `<version>` (inclusief de punt haken) door de juiste versie voor elk jar-bestand, zodat de bestands namen overeenkomen met de bestanden die u in stap 1 hebt geëxtraheerd.
-
-    ```xml
-    <module xmlns="urn:jboss:module:1.1" name="org.jboss.genericjms.provider">
-        <resources>
-            <resource-root path="proton-j-<version>.jar"/>
-            <resource-root path="qpid-jms-client-<version>.jar"/>
-            <resource-root path="slf4j-log4j12-<version>.jar"/>
-            <resource-root path="slf4j-api-<version>.jar"/>
-            <resource-root path="log4j-<version>.jar"/>
-            <resource-root path="netty-buffer-<version>.jar" />
-            <resource-root path="netty-codec-<version>.jar" />
-            <resource-root path="netty-codec-http-<version>.jar" />
-            <resource-root path="netty-common-<version>.jar" />
-            <resource-root path="netty-handler-<version>.jar" />
-            <resource-root path="netty-resolver-<version>.jar" />
-            <resource-root path="netty-transport-<version>.jar" />
-            <resource-root path="netty-transport-native-epoll-<version>-linux-x86_64.jar" />
-            <resource-root path="netty-transport-native-kqueue-<version>-osx-x86_64.jar" />
-            <resource-root path="netty-transport-native-unix-common-<version>.jar" />
-            <resource-root path="qpid-jms-discovery-<version>jar" />
-        </resources>
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="javax.jms.api"/>
-        </dependencies>
-    </module>
-    ```
-
-4. Maak een bestand met de naam *Startup.sh* en voeg de volgende code toe.
-
-    ```bash
-    echo "Generating jndi.properties file in /home/site/deployments/tools directory"
-    echo "connectionfactory.mymdbconnection=amqps://${DEFAULT_SBNAMESPACE}.servicebus.windows.net?amqp.idleTimeout=120000&jms.username=${SB_SAS_POLICY}&jms.password=${SB_SAS_KEY}" > /home/site/deployments/tools/jndi.properties
-    echo "queue.mymdbqueue=${SB_QUEUE}" >> /home/site/deployments/tools/jndi.properties
-    echo "topic.mymdbtopic=${SB_TOPIC}" >> /home/site/deployments/tools/jndi.properties
-    echo "queue.mymdbsubscription=${SB_TOPIC}/Subscriptions/${SB_SUBSCRIPTION}" >> /home/site/deployments/tools/jndi.properties
-    echo "====== contents of /home/site/deployments/tools/jndi.properties ======"
-    cat /home/site/deployments/tools/jndi.properties
-    echo "====== EOF /home/site/deployments/tools/jndi.properties ======"
-    echo "Generating commands.cli file for /home/site/deployments/tools directory"
-    echo "# Start batching commands" > /home/site/deployments/tools/commands.cli
-    echo "batch" >> /home/site/deployments/tools/commands.cli
-    echo "# Configure the ee subsystem to enable MDB annotation property substitution" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=ee:write-attribute(name=annotation-property-replacement,value=true)" >> /home/site/deployments/tools/commands.cli
-    echo "# Define system properties to be used in the substititution" >> /home/site/deployments/tools/commands.cli
-    echo "/system-property=property.mymdb.queue:add(value=java:global/remoteJMS/mymdbqueue})" >> /home/site/deployments/tools/commands.cli
-    echo "/system-property=property.mymdb.topic:add(value=java:global/remoteJMS/mymdbsubscription)" >> /home/site/deployments/tools/commands.cli
-    echo "/system-property=property.connection.factory:add(value=java:global/remoteJMS/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=ee:list-add(name=global-modules, value={\"name\" => \"org.jboss.genericjms.provider\", \"slot\" =>\"main\"}" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=naming/binding=\"java:global/remoteJMS\":add(binding-type=external-context,module=org.jboss.genericjms.provider,class=javax.naming.InitialContext,environment=[java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory,org.jboss.as.naming.lookup.by.string=true,java.naming.provider.url=/home/site/deployments/tools/jndi.properties])" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra:add(module=org.jboss.genericjms,transaction-support=XATransaction)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:add(class-name=org.jboss.resource.adapter.jms.JmsManagedConnectionFactory, jndi-name=java:/jms/mymdbconnection)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=ConnectionFactory:add(value=mymdbconnection)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd/config-properties=JndiParameters:add(value=\"java.naming.factory.initial=org.apache.qpid.jms.jndi.JmsInitialContextFactory;java.naming.provider.url=/home/site/deployments/tools/jndi.properties\")" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=resource-adapters/resource-adapter=generic-ra/connection-definitions=sbf-cd:write-attribute(name=security-application,value=true)" >> /home/site/deployments/tools/commands.cli
-    echo "/subsystem=ejb3:write-attribute(name=default-resource-adapter-name, value=generic-ra)" >> /home/site/deployments/tools/commands.cli
-    echo "# Run the batch commands" >> /home/site/deployments/tools/commands.cli
-    echo "run-batch" >> /home/site/deployments/tools/commands.cli
-    echo "reload" >> /home/site/deployments/tools/commands.cli
-    echo "====== contents of /home/site/deployments/tools/commands.cli ======"
-    cat /home/site/deployments/tools/commands.cli
-    echo "======= EOF /home/site/deployments/tools/commands.cli ========"
-    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider
-    mkdir /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main
-    cp  /home/site/deployments/tools/*.jar /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
-    cp /home/site/deployments/tools/module.xml /opt/jboss/wildfly/modules/system/layers/base/org/jboss/genericjms/provider/main/
-    cp /home/site/deployments/tools/jndi.properties /opt/jboss/wildfly/standalone/configuration/
-    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/home/site/deployments/tools/commands.cli
-    echo "Startup Run done"
-    ```
-
-    Uw App Service-exemplaar voert dit script uit telkens wanneer het wordt gestart, zodat er aanvullende configuratie wordt geboden die nodig is voor WildFly. Met dit script worden uw app-afhankelijkheden gekopieerd naar de vereiste locaties. Er worden ook *JNDI. Properties* en *Command. cli* -bestanden gegenereerd die gebruikmaken van de omgevings variabelen die in stap 1 worden weer gegeven. Deze waarden worden ook in een latere stap aan uw App Service-exemplaar door gegeven.
-
-    Het bestand *Commands. cli* is een [Wildfly cli](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) -script dat door het opstart script wordt gestart. Met de opdrachten in dit bestand worden JMS en JNDI geconfigureerd, waardoor het bestand *JNDI. Properties* kan worden gebruikt. Met deze opdrachten maakt u een verbinding tussen uw app en uw Service Bus wachtrij of onderwerp.
-
-5. Gebruik FTP voor het uploaden van de jar-bestanden, het *module. XML-* bestand en het *Startup.sh* -bestand naar uw app service-exemplaar. Plaats *Startup.sh* in de */Home* -map en plaats de andere bestanden in de map */Home/site/Deployments/tools* . Zorg ervoor dat u elk jar-bestand dat wordt vermeld in het bestand *module. XML* uploadt om het transitief sluiten van afhankelijkheden te bezorgen. Zie [uw app implementeren voor Azure app service met behulp van FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp)voor meer informatie over FTP.
-
-6. Werk uw MessageListener-implementatie bij om de volgende `import`-instructies toe te voegen:
-
-    ```java
-    import javax.ejb.ActivationConfigProperty;
-    import javax.ejb.MessageDriven;
-    import javax.ejb.TransactionAttribute;
-    import javax.ejb.TransactionAttributeType;
-    import javax.ejb.TransactionManagement;
-    import javax.ejb.TransactionManagementType;
-    import javax.jms.JMSException;
-    import javax.jms.Message;
-    import javax.jms.MessageListener;
-    import javax.jms.TextMessage;
-    ```
-
-7. Werk vervolgens de aantekeningen van uw listener-klasse bij zodat deze overeenkomen met het volgende voor beeld. Deze klasse biedt een voorbeeld implementatie waarmee de ontvangst van berichten wordt geregistreerd.
-
-    ```java
-    @TransactionManagement(TransactionManagementType.BEAN)
-    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    @MessageDriven(name = "MyQueueListener", activationConfig = {
-            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
-            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.queue}"),
-            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-    public class MyQueueListener implements MessageListener {
-
-        private static final Logger LOGGER = Logger.getLogger(TopicListener.class.toString());
-
-        public void onMessage(Message rcvMessage) {
-            TextMessage msg = null;
-            try {
-                if (rcvMessage instanceof TextMessage) {
-                    msg = (TextMessage) rcvMessage;
-                    LOGGER.info("Received Message from topic: " + msg.getText());
-                } else {
-                    LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());
-                }
-            } catch (JMSException e) {
-                LOGGER.warning("Exception on message : " + e.getMessage());
-                throw new RuntimeException(e);
-            }
-        }
-    }
-    ```
-
-    De waarden `connectionFactory` en `destinationLookup` verwijzen naar de waarden van de WildFly-systeem eigenschappen die worden geconfigureerd door het script *Startup.sh* . De `destinationType` waarde is `javax.jms.Queue`, waarmee wordt aangegeven dat u verbinding maakt met een Service Bus wachtrij-exemplaar. Deze waarde moet worden `javax.jms.Topic` wanneer u verbinding maakt met een Service Bus onderwerp, zoals hier wordt weer gegeven:
-
-    ```java
-    @TransactionManagement(TransactionManagementType.BEAN)
-    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    @MessageDriven(name = "MyTopicListener", activationConfig = {
-            @ActivationConfigProperty(propertyName = "connectionFactory", propertyValue = "${property.connection.factory}"),
-            @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "${property.mymdb.topic}"),
-            @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
-            @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-        public class MyTopicListener implements MessageListener {
-        // ...
-    }
-    ```
-
-8. Werk het gedeelte `dependencies` van het bestand *pom. XML* bij om de volgende afhankelijkheden toe te voegen:
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.qpid</groupId>
-            <artifactId>qpid-jms-client</artifactId>
-            <version>0.40.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.qpid</groupId>
-            <artifactId>proton-j</artifactId>
-            <version>0.31.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.jms</groupId>
-            <artifactId>jboss-jms-api_2.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-    ```
-
-9. Werk de `azure-webapp-maven-plugin` configuratie in uw *pom. XML-* bestand bij om te verwijzen naar de service bus-account gegevens. Indien nodig wijzigt u `1.7.0` in de huidige versie van de [maven-invoeg toepassing voor Azure app service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
-
-    ```xml
-    <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
-        <configuration>
-
-            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-            <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
-            <appName>${WEBAPP_NAME}</appName>
-            <region>${REGION}</region>
-
-            <!-- Java Runtime Stack for Web App on Linux-->
-            <linuxRuntime>wildfly 14-jre8</linuxRuntime>
-
-            <appSettings>
-                <property>
-                    <name>DEFAULT_SBNAMESPACE</name>
-                    <value>${DEFAULT_SBNAMESPACE}</value>
-                </property>
-                <property>
-                    <name>SB_SAS_POLICY</name>
-                    <value>${SB_SAS_POLICY}</value>
-                </property>
-                <property>
-                    <name>SB_SAS_KEY</name>
-                    <value>${SB_SAS_KEY}</value>
-                </property>
-                <property>
-                    <name>PROVIDER_URL</name>
-                    <value>${PROVIDER_URL}</value>
-                </property>
-                <property>
-                    <name>SB_QUEUE</name>
-                    <value>${SB_QUEUE}</value>
-                </property>
-                <property>
-                    <name>SB_TOPIC</name>
-                    <value>${SB_TOPIC}</value>
-                </property>
-                <property>
-                    <name>SB_SUBSCRIPTION</name>
-                    <value>${SB_SUBSCRIPTION}</value>
-                </property>
-            </appSettings>
-        </configuration>
-    </plugin>
-    ```
-
-    Met deze instellingen configureert u uw App Service-exemplaar zodat deze dezelfde omgevings variabelen heeft die u lokaal hebt ingesteld. Het maakt gebruik van omgevings variabelen om uw account gegevens uit uw bron bestanden te beveiligen.
-
-10. Bouw en implementeer uw app opnieuw.
-
-    ```bash
-    mvn package -DskipTests azure-webapp:deploy
-    ```
-
-Uw bericht-aangedreven bonen is nu geconfigureerd om Service Bus als het bericht mechanisme te gebruiken.
-
-De volgende keer dat uw App Service opnieuw wordt opgestart, wordt het opstart script uitgevoerd en worden de benodigde configuratie stappen uitgevoerd. Als u wilt testen of deze configuratie correct wordt uitgevoerd, hebt u via SSH toegang tot uw App Service en voert u het opstart script zelf uit vanaf de bash-prompt. U kunt ook de App Service-logboeken bekijken. Zie [Logboeken en fout opsporing in apps](#logging-and-debugging-apps)voor meer informatie over deze opties.
-
-Voor een voor beeld dat u kunt gebruiken om deze instructies te testen, raadpleegt u de opslag plaats [migrate-Java-EE-app-to-Azure-2](https://github.com/Azure-Samples/migrate-java-ee-app-to-azure-2) op github en zoekt u naar het `helloworld-mdb-propertysubstitution`-voor beeld.
-
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Redis als sessie cache gebruiken met Tomcat
 
 U kunt Tomcat configureren voor het gebruik van een externe sessie opslag, zoals [Azure cache voor redis](/azure/azure-cache-for-redis/). Zo kunt u de status van de gebruikers sessie (zoals de gegevens van de winkel wagen) behouden wanneer een gebruiker wordt overgezet naar een ander exemplaar van uw app, bijvoorbeeld wanneer automatisch schalen, opnieuw opstarten of failover wordt uitgevoerd.
@@ -1011,7 +502,7 @@ Als u Tomcat met redis wilt gebruiken, moet u uw app configureren voor het gebru
     | RESOURCEGROUP_NAME       | De naam van de resource groep met uw App Service-exemplaar.       |
     | WEBAPP_NAME              | De naam van uw App Service-exemplaar.                                     |
     | WEBAPP_PLAN_NAME         | De naam van uw App Service-abonnement.                                         |
-    | REGIO                   | De naam van de regio waar uw app wordt gehost.                           |
+    | DEEL                   | De naam van de regio waar uw app wordt gehost.                           |
     | REDIS_CACHE_NAME         | De naam van uw Azure-cache voor redis-instantie.                           |
     | REDIS_PORT               | De SSL-poort waarop uw redis-cache wordt geluisterd.                             |
     | REDIS_PASSWORD           | De primaire toegangs sleutel voor uw exemplaar.                                  |
@@ -1070,7 +561,7 @@ Als u Tomcat met redis wilt gebruiken, moet u uw app configureren voor het gebru
 
 8. Werk de configuratie van de `azure-webapp-maven-plugin` in het *pom. XML-* bestand van uw app bij om te verwijzen naar uw redis-account gegevens. In dit bestand worden de omgevings variabelen gebruikt die u eerder hebt ingesteld om uw account gegevens uit uw bron bestanden te beveiligen.
 
-    Indien nodig wijzigt u `1.7.0` in de huidige versie van de [maven-invoeg toepassing voor Azure app service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
+    Wijzig zo nodig `1.7.0` in de huidige versie van de [Maven-invoegtoepassing voor Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
 
     ```xml
     <plugin>

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312410"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444142"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -26,7 +26,7 @@ Wanneer u een Cloud service gebruikt, is een best practice het beperken van de t
 > [!NOTE]
 > De informatie in dit artikel werkt met de Azure Machine Learning python SDK-versie 1.0.83.1 of hoger.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Multi-factor Authentication wordt ondersteund als Azure Active Directory (Azure AD) is geconfigureerd om het te gebruiken. Dit is het verificatie proces:
 
@@ -86,10 +86,10 @@ Aan elke werk ruimte is ook een aan het systeem toegewezen beheerde identiteit g
 
 Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)voor meer informatie over beheerde identiteiten.
 
-| Bron | Machtigingen |
+| Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Opslagaccount | Inzender voor Storage BLOB-gegevens |
+| Storage-account | Inzender voor Storage BLOB-gegevens |
 | Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
@@ -105,7 +105,7 @@ Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resou
 
 Zie [experimenten en interferentie uitvoeren in een virtueel netwerk](how-to-enable-virtual-network.md)voor meer informatie.
 
-## <a name="data-encryption"></a>Data-encryptie
+## <a name="data-encryption"></a>Gegevensversleuteling
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
@@ -215,7 +215,7 @@ Aan elke werk ruimte is een door het systeem toegewezen beheerde identiteit geko
 
 Micro soft kan gegevens over niet-gebruikers identificeren, zoals resource namen (bijvoorbeeld de naam van de gegevensset of de naam van het machine learning experiment) of taak omgevings variabelen voor diagnostische doel einden. Al deze gegevens worden opgeslagen met behulp van door micro soft beheerde sleutels in de opslag die wordt gehost in micro soft-abonnementen en [de standaard standaarden voor privacybeleid en gegevens verwerking van micro soft](https://privacy.microsoft.com/privacystatement)worden gevolgd.
 
-Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons.
+Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. En als u [runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)een naam geeft, moet u voor komen dat gevoelige informatie zoals gebruikers namen of namen van geheime projecten worden opgenomen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
 
 U kunt zich afmelden van diagnostische gegevens die worden verzameld door de para meter `hbi_workspace` in te stellen op `TRUE` tijdens het inrichten van de werk ruimte. Deze functionaliteit wordt ondersteund bij het gebruik van de AzureML python SDK, CLI, REST-Api's of Azure Resource Manager sjablonen.
 
@@ -225,7 +225,7 @@ Wanneer u services zoals automatische Machine Learning gebruikt, kan micro soft 
 
 U kunt ook [Diagnostische gegevens die vanuit uw geïmplementeerde eind punt zijn geregistreerd](how-to-enable-app-insights.md) , versleutelen in uw Azure-toepassing Insights-exemplaar.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="metrics"></a>Metrische gegevens
 
@@ -333,9 +333,9 @@ Dit zijn de details:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
+* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
 * [Een Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-* [Het uitvoeren van voorspellingen van batch](how-to-use-parallel-run-step.md)
+* [Batch voorspellingen uitvoeren](how-to-use-parallel-run-step.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

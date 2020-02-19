@@ -6,19 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/28/2020
+ms.date: 02/18/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b19d8f26795dadb14f00aadd86ba99ae664b1a76
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6a045a55772d1d9266663571fc2ecc6911aa5125
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764946"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442885"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
-Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledige stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid.
+Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid van de Cloud.
 
 ![Firewalloverzicht](media/overview/firewall-threat.png)
 
@@ -65,13 +65,15 @@ Met FQDN-tags kunt u eenvoudig bekend netwerkverkeer voor Azure-services toestaa
 
 Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt. U kunt geen eigen servicetag maken en opgeven welke IP-adressen zijn opgenomen in een tag. Microsoft beheert de adresvoorvoegsels die de servicetag omvat en werkt de servicetag automatisch bij wanneer adressen veranderen.
 
-## <a name="threat-intelligence"></a>Bedreigingsinformatie
+## <a name="threat-intelligence"></a>Informatie over bedreigingen
 
-Filteren op basis van bedreigingsinformatie kan voor uw firewall worden ingeschakeld voor waarschuwingen over of het weigeren van verkeer van en naar bekende kwaadaardige IP-adressen en domeinen. De IP-adressen en domeinen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft.
+Op bedreigingen gebaseerd filteren kan worden ingeschakeld voor uw firewall om verkeer van/naar bekende schadelijke IP-adressen en domeinen te Signa lering en te weigeren. De IP-adressen en domeinen zijn afkomstig van de micro soft Threat Intelligence-feed.
 
 ## <a name="outbound-snat-support"></a>Ondersteuning voor uitgaande SNAT
 
-Alle uitgaande IP-adressen van virtueel netwerkverkeer worden geconverteerd naar de openbare IP van Azure Firewall (Source Network Address Translation). U kunt verkeer dat afkomstig is uit uw virtuele netwerk naar externe internetbestemmingen identificeren en toestaan. Azure Firewall geen SNAT wanneer de doel-IP een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, verkrijgt Azure Firewall het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet.
+Alle uitgaande IP-adressen van virtueel netwerkverkeer worden geconverteerd naar de openbare IP van Azure Firewall (Source Network Address Translation). U kunt verkeer dat afkomstig is uit uw virtuele netwerk naar externe internetbestemmingen identificeren en toestaan. Azure Firewall geen SNAT wanneer de doel-IP een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). 
+
+Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, verkrijgt Azure Firewall het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall zodanig configureren dat uw open bare IP-adres bereik **niet** kan worden gesnat. Zie [Azure firewall SNAT-particuliere IP-adresbereiken](snat-private-range.md)voor meer informatie.
 
 ## <a name="inbound-dnat-support"></a>Ondersteuning voor inkomende DNAT
 
