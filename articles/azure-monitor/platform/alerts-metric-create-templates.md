@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425133"
+ms.locfileid: "77444006"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -1510,14 +1510,14 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Sjabloon voor een metrische waarschuwing waarmee meerdere bronnen worden bewaakt
 
-In de vorige secties beschreven voor beelden van Azure Resource Manager sjablonen voor het maken van metrische waarschuwingen die één resource bewaken. Azure Monitor ondersteunt nu het bewaken van meerdere resources met één metrische waarschuwings regel. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL-data bases, elastische SQL-Pools en Databox edge-apparaten.
+In de vorige secties beschreven voor beelden van Azure Resource Manager sjablonen voor het maken van metrische waarschuwingen die één resource bewaken. Azure Monitor ondersteunt nu het bewaken van meerdere resources (van hetzelfde type) met één metrische waarschuwings regel, voor resources die zich in dezelfde Azure-regio bevinden. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL server-data bases, SQL Server elastische Pools en Databox edge-apparaten. Deze functie is ook alleen beschikbaar voor platform metrieken en wordt niet ondersteund voor aangepaste metrische gegevens.
 
 Waarschuwings regel voor dynamische drempel waarden kan ook helpen bij het maken van aangepaste drempel waarden voor honderden metrische reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
 
 In deze sectie worden Azure Resource Manager sjablonen beschreven voor drie scenario's voor het bewaken van meerdere resources met één regel.
 
 - Alle virtuele machines (in één Azure-regio) bewaken in een of meer resource groepen.
-- Alle virtuele machines (in één Azure-regio) bewaken in een abonnement
+- Alle virtuele machines (in één Azure-regio) bewaken in een abonnement.
 - Een lijst met virtuele machines (in één Azure-regio) bewaken in een abonnement.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statische drempel waarschuwing voor alle virtuele machines in een of meer resource groepen
