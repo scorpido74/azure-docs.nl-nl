@@ -323,10 +323,10 @@
       items:
         - name: Basisprincipes
           href: search-monitor-usage.md
-        - name: Queryactiviteit bewaken
-          href: search-monitor-queries.md
         - name: Diagnostische logboeken
           href: search-monitor-logs.md
+        - name: Queryactiviteit bewaken
+          href: search-monitor-queries.md
         - name: Analyse zoekverkeer
           href: search-traffic-analytics.md
     - name: Problemen oplossen

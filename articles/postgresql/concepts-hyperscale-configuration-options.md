@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975632"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462408"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – grootschalige (Citus)-prestatie opties
 
@@ -33,20 +33,23 @@ U kunt de berekenings-en opslag instellingen onafhankelijk selecteren voor worke
 Grootschalige (Citus)-Server groepen zijn beschikbaar in de volgende Azure-regio's:
 
 * Amerikaanse
-    * Canada-centraal *
+    * Canada - midden
+    * VS - centraal
     * VS - oost
     * VS - oost 2
-    * VS Noord-Centraal *
+    * VS - noord-centraal
     * VS - west 2
 * Azië en Stille Oceaan:
-    * Australië-oost *
+    * Australië - oost
+    * Japan - oost
+    * Korea - centraal
     * Azië - zuidoost
 * Europa
     * Europa - noord
-    * UK - zuid
-    * Europa - west
+    * Verenigd Koninkrijk Zuid
+    * Europa -west
 
-Regio's met een asterisk (\*) bieden nog geen ondersteuning voor [hoge Beschik baarheid](concepts-hyperscale-high-availability.md).
+Sommige van deze regio's kunnen niet eerst worden geactiveerd op alle Azure-abonnementen. Als u een regio uit de bovenstaande lijst wilt gebruiken en deze niet in uw abonnement wilt zien, of als u een regio wilt gebruiken die niet in deze lijst voor komt, opent u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="pricing"></a>Prijzen
 Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/postgresql/)voor services voor de meest actuele prijs informatie.
