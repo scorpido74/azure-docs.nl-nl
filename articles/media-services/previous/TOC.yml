@@ -1,5 +1,5 @@
 - name: Documentatie voor Media Services
-  href: index.md
+  href: index.yml
 - name: Overzicht
   href: media-services-overview.md
   items:
