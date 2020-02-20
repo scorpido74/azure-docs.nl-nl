@@ -6,14 +6,14 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/17/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906637"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470731"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Snelstartgids: gegevens analyseren met Databricks
 
@@ -49,7 +49,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Werkruimtenaam**     | Geef een naam op voor uw Databricks-werkruimte.        |
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md) voor meer informatie. |
-    |**Locatie**     | Selecteer **US - west 2**. U kunt desgewenst een andere openbare regio selecteren.        |
+    |**Locatie**     | Selecteer **VS - west 2**. U kunt desgewenst een andere openbare regio selecteren.        |
     |**Prijscategorie**     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
@@ -107,14 +107,7 @@ In deze sectie maakt u een notitieblok in de Azure Databricks-werkruimte en voer
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-
-    > [!NOTE]
-    > Dit codeblok heeft direct toegang tot het Data Lake Gen2-eindpunt door middel van OAuth, maar er zijn andere manieren om de Databricks-werkruimte aan uw Data Lake Storage Gen2-account te koppelen. U kunt bijvoorbeeld de container koppelen met behulp van OAuth of een directe toegang met een gedeelde sleutel gebruiken. <br>Zie het artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) (Engelstalig) op de website van Azure Databricks voor voorbeelden van deze methoden.
-
 5. In dit codeblok vervangt u de tijdelijke aanduidingen `storage-account-name`, `appID`, `password` en `tenant-id` door de waarden die u hebt verzameld toen u de service-principal maakte. Stel de waarde van de tijdelijke aanduiding `container-name` in op de naam die u wilt toewijzen aan de container.
-
-    > [!NOTE]
-    > In een productieomgeving kunt u de verificatiesleutel eventueel in Azure Databricks opslaan. Vervolgens voegt u een opzoeksleutel toe aan uw codeblok in plaats van de verificatiesleutel. Nadat u deze quickstart hebt afgerond, raadpleegt u het artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) (Engelstalig) op de website van Azure Databricks voor voorbeelden van deze methode.
 
 6. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
@@ -196,7 +189,13 @@ Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Spark-cluster in Azure Databricks gemaakt en een Spark-taak met gegevens uitgevoerd in een opslagaccount waarvoor Data Lake Storage Gen2 is ingeschakeld. U kunt ook zoeken op [Spark gegevensbronnen](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) voor meer informatie over het importeren van gegevens uit andere gegevensbronnen in Azure Databricks. Ga naar het volgende artikel voor informatie over het uitvoeren van een ETL-bewerking (Extraction, Transformation, and Loading) met behulp van Azure Databricks.
+In dit artikel hebt u een Spark-cluster in Azure Databricks gemaakt en een Spark-taak met gegevens uitgevoerd in een opslagaccount waarvoor Data Lake Storage Gen2 is ingeschakeld.
+
+Ga naar het volgende artikel voor informatie over het uitvoeren van een ETL-bewerking (Extraction, Transformation, and Loading) met behulp van Azure Databricks.
 
 > [!div class="nextstepaction"]
->[Gegevens uitpakken, transformeren en laden met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)
+>[Gegevens uitpakken, transformeren en laden met behulp van Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+
+- Zie [Spark-gegevens bronnen](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)voor meer informatie over het importeren van gegevens uit andere gegevens bronnen in azure Databricks.
+
+- Zie [Azure data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)voor meer informatie over andere manieren om toegang te krijgen tot Azure data Lake Storage Gen2 vanuit een Azure Databricks-werk ruimte.

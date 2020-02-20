@@ -9,59 +9,54 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 89b35a6372aa10948e947f2783cc228d500dea92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462068"
+ms.locfileid: "77470680"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Quick Start: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een node. js-proxy toepassing (preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-Microsoft Azure IoT Hub biedt momenteel ondersteuning voor het streamen van apparaten als een [Preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-[IoT Hub-apparaatstreams](./iot-hub-device-streams-overview.md) zorgen ervoor dat service- en apparaattoepassingen kunnen communiceren op een beveiligde manier die de firewall toestaat. 
-
-In deze Quick Start wordt de uitvoering beschreven van een node. js-proxy toepassing die wordt uitgevoerd aan de service kant, zodat het verkeer van Secure Shell (SSH) en Remote Desktop Protocol (RDP) kan worden verzonden naar het apparaat via een apparaatgegevens stroom. Zie voor een overzicht van de installatie [lokale proxy](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)-voor beeld. 
-
-Tijdens de open bare preview ondersteunt de node. js SDK alleen Device streams aan de kant van de service. Als gevolg hiervan wordt in deze Snelstartgids beschreven hoe alleen de service-Local proxy-toepassing wordt uitgevoerd. Zie voor het uitvoeren van de toepassing apparaat-lokale proxy:  
-
-   * [SSH-en RDP-apparaten via IoT Hub apparaat-streams inschakelen met behulp van een C-proxy toepassing](./quickstart-device-streams-proxy-c.md)
-   * [SSH en RDP via IoT Hub apparaat-streams inschakelen met C# behulp van een proxy toepassing](./quickstart-device-streams-proxy-csharp.md)
-
-In dit artikel wordt de installatie van SSH (met behulp van poort 22) beschreven en wordt beschreven hoe u de installatie van RDP (die gebruikmaakt van poort 3389) wijzigt. Omdat apparaatversleuteling het toepassings-en protocol-neutraal zijn, kunt u hetzelfde voor beeld wijzigen om andere typen client-server toepassingen verkeer te bieden, meestal door de communicatie poort te wijzigen.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+In deze Quick Start schakelt u het verkeer van Secure Shell (SSH) en Remote Desktop Protocol (RDP) in voor verzen ding naar het apparaat via een apparaatgegevens stroom. Met Azure IoT Hub-apparaatklassen kunnen service-en apparaat-apps communiceren op een veilige en firewall vriendelijke manier. In deze Quick Start wordt de uitvoering van een node. js-proxy toepassing beschreven die aan de service zijde wordt uitgevoerd. Tijdens de open bare preview ondersteunt de node. js SDK alleen Device streams aan de kant van de service. Als gevolg hiervan wordt in deze Snelstartgids beschreven hoe alleen de service-Local proxy-toepassing wordt uitgevoerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
+* Voltooiing van het [inschakelen van SSH en RDP via IOT hub apparaat streams met behulp van een C-proxy toepassing](./quickstart-device-streams-proxy-c.md) of [Schakel SSH en RDP in C# IOT hub via een proxy toepassing](./quickstart-device-streams-proxy-csharp.md).
 
-  * VS - centraal
-  * Centrale VS-EUAP
-  * Azië - zuidoost
-  * Europa - noord
+* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Node. js 10 +](https://nodejs.org).
+
+* [Een voor beeld van een node. js-project](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
+
+U kunt de huidige versie van node. js op uw ontwikkel computer controleren met behulp van de volgende opdracht:
+
+```cmd/sh
+node --version
+```
+
+Microsoft Azure IoT Hub biedt momenteel ondersteuning voor het streamen van apparaten als een [Preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+> [!IMPORTANT]
+> De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
+>
+> * VS - centraal
+> * Centrale VS-EUAP
+> * Europa - noord
+> * Azië - zuidoost
   
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-* Als u de service-Local-toepassing in deze Quick Start wilt uitvoeren, moet u node. js V10 toevoegen. x. x of hoger op uw ontwikkel machine hebben.
-  * Down load [node. js](https://nodejs.org) voor meerdere platforms.
-  * Controleer de huidige versie van node. js op uw ontwikkel computer met behulp van de volgende opdracht:
+### <a name="add-azure-iot-extension"></a>Azure IoT-extensie toevoegen
 
-   ```
-   node --version
-   ```
+Voeg de Azure IoT-extensie voor Azure CLI toe aan uw Cloud Shell-exemplaar door de volgende opdracht uit te voeren. De IoT-extensie voegt IoT Hub, IoT Edge en IoT-specifieke opdrachten (Device Provisioning Service) toe aan de Azure CLI.
 
-* Voeg de Azure IoT-extensie voor Azure CLI toe aan uw Cloud Shell-exemplaar door de volgende opdracht uit te voeren. De IOT-extensie voegt IoT Hub, IoT Edge en IoT-specifieke opdrachten (Device Provisioning Service) toe aan de Azure CLI.
-
-    ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
-    ```
-
-* Als u dit nog niet hebt gedaan, [downloadt u het voor beeld node. js-project](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip) en extraheert u het zip-archief.
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -109,9 +104,11 @@ Zoals eerder vermeld, ondersteunt de IoT Hub node. js SDK alleen Device streams 
    * [SSH-en RDP-apparaten via IoT Hub apparaat-streams inschakelen met behulp van een C-proxy toepassing](./quickstart-device-streams-proxy-c.md)
    * [SSH en RDP via IoT Hub apparaat-streams inschakelen met C# behulp van een proxy toepassing](./quickstart-device-streams-proxy-csharp.md) 
 
-Voordat u verdergaat met de volgende stap, moet u ervoor zorgen dat de toepassing voor de lokale proxy van het apparaat wordt uitgevoerd.
+Voordat u verdergaat met de volgende stap, moet u ervoor zorgen dat de toepassing voor de lokale proxy van het apparaat wordt uitgevoerd. Zie voor een overzicht van de installatie [lokale proxy](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)-voor beeld.
 
 ### <a name="run-the-service-local-proxy-application"></a>Voer de proxytoepassing in de service uit
+
+In dit artikel wordt de installatie van SSH (met behulp van poort 22) beschreven en wordt beschreven hoe u de installatie van RDP (die gebruikmaakt van poort 3389) wijzigt. Omdat apparaatversleuteling het toepassings-en protocol-neutraal zijn, kunt u hetzelfde voor beeld wijzigen om andere typen client-server toepassingen verkeer te bieden, meestal door de communicatie poort te wijzigen.
 
 Met de toepassing voor het uitvoeren van een apparaat-lokale proxy voert u de service-Local proxy-toepassing uit die is geschreven in node. js door de volgende handelingen uit te voeren in een lokaal Terminal venster:
 

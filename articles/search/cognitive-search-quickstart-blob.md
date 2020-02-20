@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720670"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472414"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search cognitieve-vaardigheids maken in de Azure Portal
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Deze Snelstartgids maakt gebruik van Azure Cognitive Search, [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)en [Azure COGNITIVE Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. 
 
-Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen getikt om gratis voor Maxi maal 20 trans acties per Indexeer functie te bieden wanneer deze vanuit Azure Cognitive Search worden aangeroepen. Zolang u de door u geleverde voorbeeld gegevens gebruikt, kunt u het maken of koppelen van een Cognitive Services resource overs Laan.
+Omdat de werk belasting zo klein is, wordt Cognitive Services op de achtergrond getikt om gratis verwerking te bieden voor Maxi maal 20 trans acties. Voor een dergelijke kleine gegevensset kunt u het maken of koppelen van een Cognitive Services resource overs Laan.
 
 1. [Download de voorbeeldgegevens](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) die bestaan uit een kleine set van verschillende typen bestanden. Pak de bestanden uit.
 
@@ -170,12 +170,12 @@ U kunt resources vinden en beheren in de portal met behulp van de koppeling **al
 
 Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
 
-> [!Tip]
-> Als u deze oefening wilt herhalen of als u een andere AI-verrijkings scenario wilt proberen, verwijdert u de Indexeer functie in de portal. Als u de Indexeer functie verwijdert, wordt de gratis dagelijkse transactie teller weer ingesteld op nul voor Cognitive Services verwerking.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt vaardig heden maken met behulp van de portal, de .NET-SDK of de REST API. Probeer het REST API met behulp van Postman en meer voorbeeld gegevens om uw kennis te verfijnen.
 
 > [!div class="nextstepaction"]
 > [Zelf studie: tekst en structuur van JSON-blobs extra heren met behulp van REST-Api's](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> Als u deze oefening wilt herhalen of als u een andere AI-verrijkings scenario wilt proberen, verwijdert u de Indexeer functie in de portal. Als u de Indexeer functie verwijdert, wordt de gratis dagelijkse transactie teller weer ingesteld op nul voor Cognitive Services verwerking.

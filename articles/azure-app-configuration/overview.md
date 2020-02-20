@@ -1,23 +1,21 @@
 ---
-title: Wat is Azure-app configuratie?
+title: Wat is Azure App Configuration?
 description: Een overzicht van de service Azure App Configuration.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899328"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467552"
 ---
-# <a name="what-is-azure-app-configuration"></a>Wat is Azure-app configuratie?
+# <a name="what-is-azure-app-configuration"></a>Wat is Azure App Configuration?
 
 Azure-app-configuratie biedt een service voor het centraal beheren van toepassings instellingen en functie vlaggen. Moderne Program ma's, met name Program ma's die worden uitgevoerd in een Cloud, hebben doorgaans veel onderdelen die worden gedistribueerd. Het verspreiden van configuratie-instellingen over deze onderdelen kan leiden tot moeilijk oplosbare fouten tijdens de implementatie van een toepassing. Gebruik app-configuratie om alle instellingen voor uw toepassing op te slaan en de toegang op één locatie te beveiligen.
-
-App-configuratie is momenteel beschikbaar als open bare preview. Het is gratis voor gebruik tijdens de preview-periode. U kunt zich registreren voor de [Azure Portal](https://portal.azure.com).
 
 ## <a name="why-use-app-configuration"></a>Waarom app-configuratie gebruiken?
 
@@ -58,7 +56,7 @@ De eenvoudigste manier om een app-configuratie archief toe te voegen aan uw toep
 | .NET core en ASP.NET Core | App-configuratie provider voor .NET core |
 | .NET Framework en ASP.NET | App Configuration Builder voor .NET |
 | Java Spring | App-configuratie client voor lente-Cloud |
-| Overige | REST API app-configuratie |
+| Andere | REST API app-configuratie |
 
 ## <a name="next-steps"></a>Volgende stappen
 

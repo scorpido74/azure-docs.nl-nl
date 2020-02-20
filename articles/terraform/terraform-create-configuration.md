@@ -3,12 +3,12 @@ title: 'Quick Start: een terraform-configuratie maken voor Azure'
 description: Maak kennis met Terraform in Azure door een Azure Cosmos DB en Azure Container Instances te implementeren.
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159310"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470018"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Quick Start: een terraform-configuratie maken voor Azure
 
@@ -23,7 +23,7 @@ In deze Quick Start maakt u Azure-resources met behulp van terraform. De stappen
 
 In deze sectie maakt u de configuratie voor een Azure Cosmos DB-exemplaar.
 
-1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Open de Azure Cloud Shell.
 
@@ -173,4 +173,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Installeer en configureer terraform om Azure-resources in te richten](../virtual-machines/linux/terraform-install-configure.md).
+> [Installeer en configureer terraform om Azure-resources in te richten](terraform-install-configure.md).

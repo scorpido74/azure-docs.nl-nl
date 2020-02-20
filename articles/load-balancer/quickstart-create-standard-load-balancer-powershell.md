@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846530"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470408"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Snelstartgids: een Load Balancer maken met behulp van Azure PowerShell
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-Gebruik ```-SKU Basic``` om een open bare basis-IP te maken. Micro soft raadt aan om standaard te gebruiken voor werk belastingen voor de productie.
+Gebruik ```-SKU Basic``` om een open bare basis-IP te maken. Algemene open bare Ip's zijn niet compatibel met **standaard** Load Balancer. Micro soft raadt aan om **standaard** te gebruiken voor werk belastingen voor de productie.
+
+> [!IMPORTANT]
+> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
 
 ## <a name="create-load-balancer"></a>Load Balancer maken
 
@@ -76,7 +79,7 @@ In deze sectie configureert u de front-end-IP en de back-endadresgroep voor de l
 
 ### <a name="create-frontend-ip"></a>Front-end-IP maken
 
-Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
+Maak een front-end IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
 
 ```azurepowershell
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEndPool' -PublicIpAddress $publicIp
@@ -162,10 +165,13 @@ $lb = New-AzLoadBalancer `
 
 Gebruik ```-SKU Basic``` om een basis Load Balancer te maken. Micro soft raadt aan om standaard te gebruiken voor werk belastingen voor de productie.
 
+> [!IMPORTANT]
+> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
+
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 Voordat u enkele VM's implementeert en uw balancer test, moet u ondersteunende netwerkbronnen maken (virtueel netwerk en virtuele NIC's). 
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voorbeeld wordt een virtueel netwerk gemaakt met de naam *myVnet* met *mySubnet*:
 
 ```azurepowershell

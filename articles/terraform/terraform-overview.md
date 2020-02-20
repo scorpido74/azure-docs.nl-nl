@@ -3,12 +3,12 @@ title: Terraform gebruiken met Azure
 description: Inleiding tot het gebruik van Terraform om de Azure-infrastructuur te versioneren en te implementeren.
 ms.topic: overview
 ms.date: 10/26/2019
-ms.openlocfilehash: d1754594c651206a0d4d15e659e2926557f9e912
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 05b92fdf8c0a0f84d2f29b4aa7479850b2721441
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159000"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472159"
 ---
 # <a name="terraform-with-azure"></a>Terraform met Azure
 
@@ -40,6 +40,6 @@ Terraform is vertrouwd bij het implementeren van een infra structuur over meerde
 
 Nu u een overzicht van Terraform en de voordelen daarvan hebt, zijn dit mogelijke volgende stappen:
 
-- Ga aan de slag door [Terraform te installeren en te configureren om Azure te gebruiken](/azure/virtual-machines/linux/terraform-install-configure).
-- [Een virtuele machine maken in Azure met behulp van Terraform](/azure/virtual-machines/linux/terraform-create-complete-vm)
+- Ga aan de slag door [Terraform te installeren en te configureren om Azure te gebruiken](terraform-install-configure.md).
+- [Een virtuele machine maken in Azure met behulp van Terraform](terraform-create-complete-vm.md)
 - De [Azure Resource Manager-module voor Terraform](https://www.terraform.io/docs/providers/azurerm/) verkennen 

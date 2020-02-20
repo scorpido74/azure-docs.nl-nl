@@ -15,14 +15,14 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f5446e836a65c6d40c2cc6703757670988593bd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f89a21eb0cebf30dac2bb55ae1b642a2ff756ead
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896596"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468671"
 ---
-# <a name="what-is-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-resources?
+# <a name="what-are-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-resources?
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -63,7 +63,7 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 | Zelf |  Gemaakt als onderdeel van een Azure-resource (bijvoorbeeld een virtuele machine van Azure of Azure App Service) | Gemaakt als een zelfstandige Azure-resource |
 | Levenscyclus | Gedeelde levens cyclus met de Azure-resource waarmee de beheerde identiteit wordt gemaakt. <br/> Wanneer de bovenliggende resource wordt verwijderd, wordt ook de beheerde identiteit verwijderd. | Onafhankelijke levens cyclus. <br/> Moet expliciet worden verwijderd. |
 | Delen tussen Azure-resources | Kan niet worden gedeeld. <br/> Deze kan alleen worden gekoppeld aan één Azure-resource. | Kan worden gedeeld <br/> Dezelfde door de gebruiker toegewezen beheerde identiteit kan worden gekoppeld aan meer dan één Azure-resource. |
-| Algemene use cases | Werk belastingen die zijn opgenomen in één Azure-resource <br/> Werk belastingen waarvoor u onafhankelijke identiteiten nodig hebt. <br/> Bijvoorbeeld een toepassing die op één virtuele machine wordt uitgevoerd | Workloads die worden uitgevoerd op meerdere resources en die één identiteit kunnen delen. <br/> Workloads waarvoor vooraf autorisatie is vereist voor een beveiligde bron als onderdeel van een inrichtings stroom. <br/> Werk belastingen waarbij resources regel matig worden gerecycled, maar de machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werk belasting waarbij meerdere virtuele machines toegang moeten hebben tot dezelfde resource |
+| Algemene scenario’s | Werk belastingen die zijn opgenomen in één Azure-resource <br/> Werk belastingen waarvoor u onafhankelijke identiteiten nodig hebt. <br/> Bijvoorbeeld een toepassing die op één virtuele machine wordt uitgevoerd | Workloads die worden uitgevoerd op meerdere resources en die één identiteit kunnen delen. <br/> Workloads waarvoor vooraf autorisatie is vereist voor een beveiligde bron als onderdeel van een inrichtings stroom. <br/> Werk belastingen waarbij resources regel matig worden gerecycled, maar de machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werk belasting waarbij meerdere virtuele machines toegang moeten hebben tot dezelfde resource |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Hoe een door het systeem toegewezen beheerde identiteit samenwerkt met een Azure-VM
 

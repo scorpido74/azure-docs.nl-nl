@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843868"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470187"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snelstartgids: een Load Balancer maken om taken te verdelen over Vm's met behulp van de Azure Portal
 
@@ -32,12 +32,12 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-load-balancer"></a>Een load balancer maken
+## <a name="create-a-load-balancer"></a>Een Load Balancer maken
 
 In deze sectie maakt u een Load Balancer die de taak verdeling van virtuele machines ondersteunt. U kunt een open bare Load Balancer of een interne Load Balancer maken. Wanneer u een open bare Load Balancer maakt, moet u ook een nieuw openbaar IP-adres maken dat is geconfigureerd als de front-end (standaard de naam *LoadBalancerFrontend* ) voor de Load Balancer.
 
 1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource maken** > **netwerk** > **Load Balancer**.
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
@@ -46,10 +46,14 @@ In deze sectie maakt u een Load Balancer die de taak verdeling van virtuele mach
     | Name                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
-    | SKU           | Selecteer **Standard** of **Basic**. Micro soft adviseert standaard voor productie werkbelastingen.  |
+    | SKU           | Selecteer **Standard** of **Basic**. Micro soft adviseert standaard voor productie werkbelastingen. |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. Als u een bestaand openbaar IP-adres hebt dat u wilt gebruiken, selecteert u **bestaande gebruiken** |
-    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
+    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   Gebruik ```-SKU Basic``` om een open bare basis-IP te maken. Algemene open bare Ip's zijn niet compatibel met **standaard** Load Balancer. Micro soft raadt aan om **standaard** te gebruiken voor werk belastingen voor de productie.|
     | Beschikbaarheidszone | Typ een *zone-redundante* voor het maken van een flexibele Load Balancer. Als u een zonegebonden Load Balancer wilt maken, selecteert u een specifieke zone van 1, 2 of 3 |
+
+> [!IMPORTANT]
+> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
+
 
 3. Selecteer in het tabblad **controleren en maken** de optie **maken**.   
 
@@ -76,9 +80,9 @@ Als u wilt dat de Load Balancer de status van uw app bewaken, gebruikt u een sta
     
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Enter *myHealthProbe*. |
+    | Name | Voer *myHealthProbe*in. |
     | Protocol | Selecteer **http**. |
-    | Port | Voer *80*in.|
+    | Poort | Voer *80*in.|
     | Interval | Geef *15* **op voor** het aantal seconden tussen de test pogingen. |
     | Drempel waarde voor onjuiste status | Selecteer **2** voor het aantal **foutieve drempel waarden** of opeenvolgende test fouten die moeten optreden voordat een VM wordt beschouwd als beschadigd.|
     | | |
@@ -94,8 +98,8 @@ Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de V
     | Instelling | Waarde |
     | ------- | ----- |
     | Name | Voer *myhttprule als*in. |
-    | Protocol | Selecteer **TCP**. |
-    | Port | Voer *80*in.|
+    | Protocol | selecteer **TCP**. |
+    | Poort | Voer *80*in.|
     | Backend-poort | Voer *80*in. |
     | Back-end-groep | Selecteer *myBackendPool*.|
     | Statustest | Selecteer *myHealthProbe*. |
@@ -106,7 +110,7 @@ Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de V
 
 In deze sectie maakt u een virtueel netwerk, maakt u drie virtuele machines voor de back-end-pool van de Load Balancer en installeert u IIS op de virtuele machines om de Load Balancer te testen.
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 
 1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
@@ -118,7 +122,7 @@ In deze sectie maakt u een virtueel netwerk, maakt u drie virtuele machines voor
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer bestaande resource- *myResourceGroupSLB*. |
     | Locatie | Selecteer **Europa - west**.|
-    | Subnet - Naam | Voer *myBackendSubnet* in. |
+    | Subnet - naam | Voer *myBackendSubnet* in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
 1. Laat de overige standaardwaarden staan en selecteer **Maken**.
 

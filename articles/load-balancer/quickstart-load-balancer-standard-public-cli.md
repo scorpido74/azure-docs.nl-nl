@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: een open bare Load Balancer maken-Azure CLI'
 titleSuffix: Azure Load Balancer
-description: In deze snelstart vindt u meer informatie over het maken van een openbare load balancer met behulp van Azure CLI
+description: In deze snelstart vindt u meer informatie over het maken van een openbare load balancer met Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837185"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470340"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Snelstartgids: een Standard Load Balancer maken om taken te verdelen over Vm's met behulp van Azure CLI
 
@@ -58,7 +58,10 @@ Een openbaar IP-adres voor zonegebonden maken in zone 1 gebruiken:
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
- Gebruik ```--sku basic``` om een open bare basis-IP te maken. Basic biedt geen ondersteuning voor beschikbaarheids zones. Micro soft raadt standaard-SKU aan voor productie werkbelastingen.
+Gebruik ```-SKU Basic``` om een open bare basis-IP te maken. Algemene open bare Ip's zijn niet compatibel met **standaard** Load Balancer. Micro soft raadt aan om **standaard** te gebruiken voor werk belastingen voor de productie.
+
+> [!IMPORTANT]
+> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
 
 ## <a name="create-azure-load-balancer"></a>Een Azure Load Balancer maken
 
@@ -82,6 +85,9 @@ Maak met [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?
     --backend-pool-name myBackEndPool       
   ```
 
+> [!IMPORTANT]
+> In de rest van deze Snelstartgids wordt ervan uitgegaan dat **standaard** -SKU is gekozen tijdens het bovenstaande SKU-selectie proces.
+
 ### <a name="create-the-health-probe"></a>Statustest maken
 
 Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoor te zorgen dat deze netwerkverkeer kunnen verzenden. Het exemplaar van een virtuele machine met mislukte testcontroles wordt uit de load balancer verwijderd totdat deze weer online komt en een testcontrole bepaalt of deze in orde is. Maak met [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) een statustest om de status van de virtuele machines te bewaken. 
@@ -97,7 +103,7 @@ Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoo
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
 
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met *az network lb rule create* de regel [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -114,11 +120,11 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
 
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
-Voordat u enkele VM's implementeert om uw load balancer te testen, maakt u de ondersteunende virtuele-netwerkbronnen.
+Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in *myResourceGroup* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet*.
+Maak met *az network vnet create* een virtueel netwerk met de naam *myVnet* met een subnet met de naam *mySubnet* in [myResourceGroup](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
