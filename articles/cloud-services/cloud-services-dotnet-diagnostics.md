@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361110"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469762"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics in azure inschakelen Cloud Services
 Zie [Azure Diagnostics overzicht](../azure-diagnostics.md) voor een achtergrond op Azure Diagnostics.
@@ -193,7 +193,7 @@ Het configuratie bestand voor diagnostische gegevens definieert waarden die word
 Zie [probleem oplossing Azure Diagnostics](../azure-diagnostics-troubleshooting.md) voor hulp bij veelvoorkomende problemen als u problemen ondervindt.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Bekijk een lijst met verwante artikelen over diagnostische gegevens van virtuele machines van Azure](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) voor het wijzigen van de door u verzamelde informatie, het oplossen van problemen of meer informatie over diagnostiek in het algemeen.
+[Bekijk een lijst met verwante artikelen over diagnostische gegevens van virtuele machines van Azure](../azure-monitor/platform/diagnostics-extension-overview.md) voor het wijzigen van de door u verzamelde informatie, het oplossen van problemen of meer informatie over diagnostiek in het algemeen.
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

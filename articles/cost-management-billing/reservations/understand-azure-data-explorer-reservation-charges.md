@@ -1,19 +1,18 @@
 ---
 title: Reserveringskorting toepassen op Azure Data Explorer
 description: Inzicht in hoe reserveringskorting wordt toegepast op de markeringenmeter van Azure Data Explorer.
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995622"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199327"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Reserveringskorting toepassen op Azure Data Explorer
 
@@ -36,23 +35,23 @@ Een reserveringskorting wordt op uurbasis toegepast op Azure Data Explorer-marke
 ## <a name="examples"></a>Voorbeelden
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor Azure Data Explorer wordt toegepast, afhankelijk van het aantal markeringseenheden dat u hebt aangeschaft en wanneer ze worden uitgevoerd.
-Bijvoorbeeld voor de engineclustergrootte: **2 D11_v2-VM's**, zijn uw totale kosten voor vier eenheden van Azure Data Explorer-markeringenmeters per uur. 
+Bijvoorbeeld voor de engineclustergrootte: **2 D11_v2-VM's**, zijn uw totale kosten voor vier eenheden van Azure Data Explorer-markeringenmeters per uur.
 
-**Scenario 1** 
+**Scenario 1**
 
 U koopt gereserveerde capaciteit voor Azure Data Explorer voor acht Azure Data Explorer-markeringseenheden. U voert een enginecluster uit van twee D13_v2-VM's met in totaal 16 kernen voor 16 eenheden van Azure Data Explorer-markeringseenheden per uur en de rest van de kenmerken komen overeen met de reservering. U betaalt naar gebruik voor acht kernen van Azure Data Explorer-berekeningsgebruik en krijgt de reserveringskorting voor een uur van acht kernen aan Azure Data Explorer-markeringseenheidgebruik.
 
 Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capaciteit voor Azure Data Explorer koopt voor een Azure Data Explorer met 16 kernen en dat de rest van de reserveringskenmerken overeenkomen met de actieve Azure Data Explorer-clusters.
 
-**Scenario 2** 
+**Scenario 2**
 
 U hebt twee Azure Data Explorer-engineclusters met elk acht kernen voor een uur in twee verschillende regio's. De reserveringskorting voor 16 kernen wordt toegepast op zowel het cluster als de 16 eenheden van Azure Data Explorer-markeringen die worden gebruikt.
 
-**Scenario 3** 
+**Scenario 3**
 
 U hebt een Azure Data Explorer-enginecluster met 16 kernen van 13:00 tot 13:30. U hebt nog een Azure Data Explorer-enginecluster met 16 kernen van 13:30 tot 14:00. Beide worden gedekt door de reserveringskorting.
 
-**Scenario 4** 
+**Scenario 4**
 
 U hebt een Azure Data Explorer-enginecluster met 16 kernen van 13:00 tot 13:45. U hebt nog een Azure Data Explorer-enginecluster met 16 kernen van 13:30 tot 14:00. Voor de overlapping van 15 minuten wordt de prijs voor betalen per gebruik in rekening gebracht. De reserveringskorting geldt voor het Azure Data Explorer-markeringsgebruik voor de rest van die tijd.
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116746"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471938"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,7 +111,7 @@ print(blob.location)
 Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<hash>`.
 
 > [!NOTE]
-> De functie voor verpakking voor functions ondersteunt momenteel HTTP-triggers, Blob-triggers en service bus-triggers. Zie [Azure functions-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob?tabs=csharp#trigger---blob-name-patterns)voor meer informatie over triggers.
+> De functie voor verpakking voor functions ondersteunt momenteel HTTP-triggers, Blob-triggers en service bus-triggers. Zie [Azure functions-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)voor meer informatie over triggers.
 
 > [!IMPORTANT]
 > Sla de locatie gegevens op, zoals deze worden gebruikt bij het implementeren van de installatie kopie.

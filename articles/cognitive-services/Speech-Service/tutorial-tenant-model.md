@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189007"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469014"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Zelf studie: een Tenant model maken (preview)
 
@@ -81,7 +81,7 @@ Nadat de beheerder Tenant model heeft ingeschakeld voor uw organisatie, kunt u e
    > Office 365 Enter prise-klanten in Noord-Amerika komen in aanmerking voor het maken van een Tenant model (Engels). Als u een Klanten-lockbox, klant sleutel of Office 365 Government-klant bent, is deze functie niet beschikbaar. Ga als volgt te werk om te bepalen of u een klant van Klanten-lockbox of klant code bent?
    > * [Klanten-lockbox](/microsoft-365/compliance/customer-lockbox-requests)
    > * [Klant sleutel](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365 Government](/microsoft-365/government)
+   > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
 1. Selecteer **Aanmelden**.
 

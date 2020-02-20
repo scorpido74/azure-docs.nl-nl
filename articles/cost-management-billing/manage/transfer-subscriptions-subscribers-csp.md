@@ -1,19 +1,18 @@
 ---
 title: Overdracht van Azure-abonnementen tussen abonnees en CSP's
 description: Lees hoe u Azure-abonnementen kunt overdragen tussen abonnees en CSP's.
-services: billing
 author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: banders
-ms.openlocfilehash: 08aeac9a8cd21e6f13bab0ee10ba4d212d96c5b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76775411"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200517"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Overdracht van Azure-abonnementen tussen abonnees en CSP's
 
@@ -33,7 +32,7 @@ Als u andere Azure-abonnementen wilt overdragen naar een CSP-partner, moet de ab
 1. Zorg ervoor dat de bron- en doelabonnementen van de CSP zich in dezelfde Azure Active Directory-tenant (Azure AD) bevinden.  
     U kunt de Azure AD-tenant voor een Azure CSP-abonnement niet wijzigen. In plaats daarvan moet u het bronabonnement toevoegen of koppelen aan de CSP Azure AD-tenant. Zie [Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie.
     > [!IMPORTANT]
-    > - Wanneer u een abonnement aan een andere Azure Active Directory koppelt, gaat de toegang verloren van gebruikers aan wie rollen zijn toegewezen met [op rollen gebaseerd toegangsbeheer (RBAC](../../role-based-access-control/role-assignments-portal.md)). Klassieke abonnementsbeheerders, waaronder de servicebeheerder en co-beheerders, verliezen ook hun toegang. 
+    > - Wanneer u een abonnement aan een andere Azure Active Directory koppelt, gaat de toegang verloren van gebruikers aan wie rollen zijn toegewezen met [op rollen gebaseerd toegangsbeheer (RBAC](../../role-based-access-control/role-assignments-portal.md)). Klassieke abonnementsbeheerders, waaronder de servicebeheerder en co-beheerders, verliezen ook hun toegang.
     > - Beleidstoewijzingen worden verwijderd uit een abonnement wanneer het abonnement wordt gekoppeld aan een andere Active Directory.
 1. Het gebruikersaccount dat u gebruikt om de overdracht uit te voeren, moet in beide abonnementen beschikken over eigenaarstoegang ingesteld via [RBAC](add-change-subscription-administrator.md).
 1. Voordat u begint, moet u [controleren](/rest/api/resources/resources/validatemoveresources) of alle Azure-resources kunnen worden verplaatst van het bronabonnement naar het doelabonnement.  

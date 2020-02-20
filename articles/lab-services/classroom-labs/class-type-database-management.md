@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 92152652ca264cace12d3f780ebec0f80bb2048a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233764"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469915"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Stel een lab in om database beheer te leren voor relationele data bases
 
@@ -32,7 +32,7 @@ Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nod
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
-Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
 
 | Account instelling Lab | Instructies |
 | ------------------- | ------------ |
@@ -53,7 +53,7 @@ Als u MySQL wilt installeren op Windows Server 2019, kunt u de stappen volgen di
 
 SQL Server 2019 is vooraf geïnstalleerd in de installatie kopie van de virtuele machine die u hebt gekozen bij het maken van het nieuwe lab.
 
-## <a name="cost-estimate"></a>Kostenschatting
+## <a name="cost-estimate"></a>Kosten raming
 
 Laten we een mogelijke schatting van de kosten voor deze klasse beslaan.  We gebruiken een klasse van 25 studenten.  Er zijn 20 uur geplande tijd voor de klasse.  Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd.  Het formaat van de virtuele machine die we hebben gekozen is gemiddeld, dat wil zeggen 42 Lab-eenheden.
 

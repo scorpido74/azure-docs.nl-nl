@@ -1,6 +1,6 @@
 ---
-title: StorSimple-failover, herstel na noodgevallen naar een fysiek apparaat voor StorSimple 8000-reeks | Microsoft Docs
-description: Leer hoe u uw fysieke StorSimple 8000-serie-apparaat naar een ander fysiek apparaat een failover.
+title: Failover, herstel na nood geval naar een ander StorSimple 8000-apparaat
+description: Meer informatie over het uitvoeren van een failover van het fysieke apparaat van de StorSimple 8000-serie naar een ander fysiek apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5fcf95a1a3033a5150945dbd841f12d50ebb023b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e4e890ab5491e46ffe5ea0e1c168d168f9cc729
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577180"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468606"
 ---
-# <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Failover naar een fysiek apparaat voor StorSimple 8000-serie
+# <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Failover naar een fysiek StorSimple-apparaat in de 8000-serie
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie wordt beschreven hoe u failover wilt uitvoeren voor een fysiek StorSimple 8000-serie-apparaat met een andere fysieke StorSimple-apparaat als er zich een noodgeval voordoet. StorSimple maakt gebruik van de functie van de failover-apparaat om gegevens te migreren vanaf een fysiek apparaat van de bron in het datacenter naar een ander fysiek apparaat. De instructies in deze zelfstudie is van toepassing op StorSimple 8000-serie fysieke apparaten met versies van de software Update 3 en hoger.
+In deze zelf studie worden de stappen beschreven die nodig zijn voor het uitvoeren van een failover van een 8000 StorSimple-fysieke apparaat naar een ander StorSimple-fysieke apparaat als er sprake is van een nood geval. StorSimple maakt gebruik van de functie Failover van het apparaat om gegevens te migreren van een fysiek bron apparaat in het Data Center naar een ander fysiek apparaat. De richt lijnen in deze zelf studie zijn van toepassing op fysieke apparaten uit de 8000 StorSimple-serie met software versies update 3 en hoger.
 
-Voor meer informatie over de failover van het apparaat en hoe deze wordt gebruikt om te herstellen na een noodgeval, gaat u naar [Failover en herstel na noodgevallen voor apparaten uit de StorSimple 8000-serie](storsimple-8000-device-failover-disaster-recovery.md).
+Voor meer informatie over failover van apparaten en hoe deze wordt gebruikt om een nood geval te herstellen, gaat u naar [failover en herstel na nood gevallen voor apparaten uit de StorSimple-serie van 8000](storsimple-8000-device-failover-disaster-recovery.md).
 
-Voor een fysieke StorSimple-apparaat met een StorSimple-Cloudapparaat failovers, gaat u naar [failover naar een StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md). Als u wilt een fysiek apparaat naar zichzelf failover, gaat u naar [fungeren als failover voor de dezelfde fysieke StorSimple-apparaat](storsimple-8000-device-failover-same-device.md).
+Als u een failover wilt uitvoeren voor een StorSimple-fysiek apparaat naar een StorSimple Cloud Appliance, gaat u naar [een failover naar een StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md). Als u een failover wilt uitvoeren naar een fysiek apparaat, gaat u naar een [failover naar hetzelfde fysieke StorSimple-apparaat](storsimple-8000-device-failover-same-device.md).
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat u de aandachtspunten voor failover van het apparaat hebt bekeken. Ga voor meer informatie naar [algemene overwegingen voor failover van het apparaat](storsimple-8000-device-failover-disaster-recovery.md).
+- Zorg ervoor dat u de overwegingen voor failover van het apparaat hebt gecontroleerd. Ga voor meer informatie naar [algemene overwegingen voor failover van het apparaat](storsimple-8000-device-failover-disaster-recovery.md).
 
-- Hebt u een StorSimple 8000-serie fysiek apparaat in het datacenter zijn geïmplementeerd. Het apparaat moet uitvoeren Update 3 of hoger, software. Ga voor meer informatie naar [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md).
+- U moet een fysiek StorSimple 8000-serie apparaat hebben geïmplementeerd in het Data Center. Op het apparaat moet update 3 of hoger van de software versie worden uitgevoerd. Ga naar [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md)voor meer informatie.
 
 
-## <a name="steps-to-fail-over-to-a-physical-device"></a>Stappen om een failover uitvoeren naar een fysiek apparaat
+## <a name="steps-to-fail-over-to-a-physical-device"></a>Stappen voor het uitvoeren van een failover naar een fysiek apparaat
 
-De volgende stappen uitvoeren om uw apparaat herstellen naar een fysiek apparaat.
+Voer de volgende stappen uit om uw apparaat terug te zetten naar een fysiek doel apparaat.
 
-1. Controleer of dat de volumecontainer die u failover wilt uitvoeren, cloudmomentopnamen is gekoppeld. Ga voor meer informatie naar [gebruik StorSimple Device Manager-service voor het maken van back-ups](storsimple-8000-manage-backup-policies-u2.md).
-2. Ga naar uw StorSimple Device Manager en klik vervolgens op **apparaten**. In de **apparaten** blade, Ga naar de lijst met apparaten die zijn verbonden met uw service.
-    ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
-3. Selecteer en klik op uw Bronapparaat. Het bronapparaat heeft de volumecontainers die u wilt een failover. Ga naar **instellingen > Volumecontainers**.
-4. Selecteer een volumecontainer die u een failover wilt uitvoeren naar een ander apparaat. Klik op de volumecontainer om de lijst van volumes in deze container weer te geven. Selecteer een volume, klik met de rechtermuisknop en klikt u op **Offline nemen** offline te nemen het volume. Herhaal dit proces voor alle volumes in de volumecontainer.
-5. Herhaal de vorige stap voor alle volumecontainers die u een failover wilt uitvoeren naar een ander apparaat.
-6. Ga terug naar de **apparaten** blade. Klik in de opdrachtbalk op **failover**.
-    ![Klik op mislukt via](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev2.png)
+1. Controleer of de volume container waarnaar u een failover wilt uitvoeren, gekoppelde cloud momentopnamen heeft. Ga voor meer informatie naar [gebruik StorSimple Apparaatbeheer service om back-ups te maken](storsimple-8000-manage-backup-policies-u2.md).
+2. Ga naar uw StorSimple-Apparaatbeheer en klik vervolgens op **apparaten**. Ga op de Blade **apparaten** naar de lijst met apparaten die zijn verbonden met uw service.
+    ![apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
+3. Selecteer en klik op uw bron apparaat. Het bron apparaat heeft de volume containers waarvoor u een failover wilt uitvoeren. Ga naar **instellingen > volume containers**.
+4. Selecteer een volume container waarvoor u een failover wilt uitvoeren naar een ander apparaat. Klik op de volume container om de lijst met volumes in deze container weer te geven. Selecteer een volume, klik met de rechter muisknop en klik op **offline nemen** om het volume offline te halen. Herhaal dit proces voor alle volumes in de volume container.
+5. Herhaal de vorige stap voor alle volume containers waarvoor u een failover wilt uitvoeren naar een ander apparaat.
+6. Ga terug naar de Blade **apparaten** . Klik op de opdracht balk op **failover**.
+    ![op failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev2.png)
     
-7. In de **failover** blade, voer de volgende stappen uit:
+7. Voer de volgende stappen uit op de Blade **failover** :
    
-   1. Klik op **bron**. De volumecontainers met volumes die zijn gekoppeld met behulp van cloudmomentopnamen worden weergegeven. Alleen de containers die worden weergegeven, komen in aanmerking voor failover. Selecteer in de lijst met volumecontainers, de volumecontainers die u wilt een failover. **Alleen de volumecontainers met gekoppelde cloud-momentopnamen en offline volumes worden weergegeven.**
+   1. Klik op **bron**. De volume containers met volumes die zijn gekoppeld aan Cloud momentopnamen worden weer gegeven. Alleen de weer gegeven containers komen in aanmerking voor failover. Selecteer in de lijst met volume containers de volume containers waarvoor u een failover wilt uitvoeren. **Alleen de volume containers met gekoppelde cloud momentopnamen en offline volumes worden weer gegeven.**
 
        ![Bron selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
-   2. Klik op **doel**. Voor de volumecontainers die in de vorige stap hebt geselecteerd, selecteert u een apparaat uit de vervolgkeuzelijst met beschikbare apparaten. Alleen de apparaten die onvoldoende capaciteit voor volumecontainers bron worden weergegeven in de lijst.
+   2. Klik op **doel**. Selecteer een doel apparaat in de vervolg keuzelijst met beschik bare apparaten voor de volume containers die u in de vorige stap hebt geselecteerd. Alleen de apparaten die voldoende capaciteit hebben om te voldoen aan de bron volume containers, worden weer gegeven in de lijst.
 
         ![Doel selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. Controleer ten slotte de failover-instellingen onder **samenvatting**. Nadat u de instellingen hebt doorgenomen, selecteert u het selectievakje waarmee wordt aangegeven dat de volumes in de geselecteerde volumecontainers offline zijn. Klik op **OK**.
+   3. Controleer ten slotte alle failover-instellingen onder **samen vatting**. Nadat u de instellingen hebt gecontroleerd, schakelt u het selectie vakje in om aan te geven dat de volumes in de geselecteerde volume containers offline zijn. Klik op **OK**.
 
-       ![Controleer de instellingen van de failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
+       ![Failover-instellingen controleren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   
-8. StorSimple maakt een failovertaak. Klik op de melding van de taak voor het bewaken van de failovertaak via de **taken** blade.
+8. StorSimple maakt een failover-taak. Klik op het taak bericht om de failover-taak te bewaken via de Blade **taken** .
 
-    Als de volumecontainer waarvoor u een failover lokale volumes heeft, ziet u aparte herstelbewerking taken voor alle lokale volumes (niet voor gelaagde volumes) in de container. Deze herstellen taken kunnen geruime tijd duren om uit te voeren. Is het waarschijnlijk dat de failovertaak eerder kan voltooien. Deze volumes moet lokale garanties alleen nadat het herstellen van taken voltooid zijn.
+    Als de volume container waarvoor u een failover hebt uitgevoerd lokale volumes heeft, ziet u afzonderlijke herstel taken voor elk lokaal volume (niet voor gelaagde volumes) in de container. Het kan enige tijd duren voordat deze herstel taken zijn voltooid. Het is waarschijnlijk dat de failover-taak eerder is voltooid. Deze volumes hebben alleen lokale garanties nadat de herstel taken zijn voltooid.
 
     ![Failover-taak controleren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev13.png)
 
-9. Nadat de failover is voltooid, gaat u naar de **apparaten** blade.
+9. Nadat de failover is voltooid, gaat u naar de Blade **apparaten** .
    
-   1. Selecteer het apparaat dat is gebruikt als het doelapparaat voor de failoverproces.
+   1. Selecteer het apparaat dat is gebruikt als doel apparaat voor het failoverproces.
 
        ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
-   2. Ga naar de **Volumecontainers** blade. Alle volumecontainers, samen met de volumes van het oude apparaat moeten worden vermeld.
+   2. Ga naar de Blade **volume containers** . Alle volume containers, samen met de volumes van het oude apparaat, moeten worden weer gegeven.
 
-       ![Weergave doel volumecontainers](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev16.png)
+       ![Doel volume containers weer geven](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev16.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Nadat u een failover hebt uitgevoerd, moet u mogelijk [deactiveren of verwijderen van uw StorSimple-apparaat](storsimple-8000-deactivate-and-delete-device.md).
-* Voor informatie over het gebruik van de StorSimple Device Manager-service, gaat u naar [de StorSimple Device Manager-service gebruiken voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Nadat u een failover hebt uitgevoerd, moet u mogelijk [uw StorSimple-apparaat deactiveren of verwijderen](storsimple-8000-deactivate-and-delete-device.md).
+* Voor informatie over het gebruik van de StorSimple Apparaatbeheer-service gaat u naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 668e9ddadf151a86be0d8c09fc91b4c70db12f3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e2967a6d12fba2d81dad9de31e7476a027a39d1c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210786"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468827"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 
@@ -23,7 +23,7 @@ Er zijn diverse opties voor het verkennen van de elastische aard van de API van 
 
 Azure Cosmos DB retourneert een frequentie-Limited (429) fouten als clients meer bronnen (RU/s) verbruiken dan de hoeveelheid die u hebt ingericht. Met de Cassandra-API in Azure Cosmos DB worden deze uitzonde ringen omgezet in overbelaste fouten op het Cassandra systeem eigen protocol. 
 
-Als uw systeem niet gevoelig is voor latentie, kan het voldoende zijn om de doorvoer snelheid te verwerken door nieuwe pogingen te gebruiken. Zie het voor [beeld van Java-code](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) voor het transparant afhandelen met behulp van de [Azure Cosmos DB extensie](https://github.com/Azure/azure-cosmos-cassandra-extensions) voor Cassandra-beleid voor [opnieuw proberen](https://docs.datastax.com/drivers/java/2.0/com/datastax/driver/core/policies/RetryPolicy.html) in Java. U kunt ook de [Spark-extensie](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) gebruiken om de frequentie limiet te verwerken.
+Als uw systeem niet gevoelig is voor latentie, kan het voldoende zijn om de doorvoer snelheid te verwerken door nieuwe pogingen te gebruiken. Zie het voor [beeld van Java-code](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) voor het transparant afhandelen met behulp van de [Azure Cosmos DB extensie](https://github.com/Azure/azure-cosmos-cassandra-extensions) voor Cassandra-beleid voor [opnieuw proberen](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) in Java. U kunt ook de [Spark-extensie](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) gebruiken om de frequentie limiet te verwerken.
 
 ## <a name="manage-scaling"></a>Schalen beheren
 

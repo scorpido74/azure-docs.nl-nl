@@ -3,12 +3,12 @@ title: 'Zelf studie: een terraform-basis sjabloon maken in azure met behulp van 
 description: Leer hoe u een Terraform-basissjabloon maakt in Azure met behulp van Yeoman.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159161"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472142"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Zelf studie: een terraform-basis sjabloon maken in azure met behulp van Yeoman
 
@@ -25,7 +25,7 @@ In dit artikel leert u hoe u de volgende taken kunt uitvoeren:
 
 - **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 - **Visual Studio code**: [down load Visual Studio code](https://code.visualstudio.com/download) voor uw platform.
-- **Terraform**: [Installeer terraform](/azure/virtual-machines/linux/terraform-install-configure ) om de module die is gemaakt door Yeoman, uit te voeren.
+- **Terraform**: [Installeer terraform](terraform-install-configure.md) om de module die is gemaakt door Yeoman, uit te voeren.
 - **Docker**: [Installeer docker](https://www.docker.com/get-started) om de module uit te voeren die door de Yeoman-Generator is gemaakt.
 - **Go-programmeer taal**: [Installeer go](https://golang.org/) als door Yeoman gegenereerde test cases zijn code die de go-taal gebruikt.
 
@@ -36,7 +36,7 @@ In dit artikel leert u hoe u de volgende taken kunt uitvoeren:
 
 ### <a name="install-nodejs"></a>Node.js installeren
 
-Als u Terraform in de Cloud Shell wilt gebruiken, moet u [Node.js](https://nodejs.org/en/download/) 6.0+ installeren.
+Als u Terraform in Cloud Shell wilt gebruiken, moet u [Node.js](https://nodejs.org/en/download/) 6.0+ installeren.
 
 >[!NOTE]
 >Als u wilt controleren of Node.js is geïnstalleerd, opent u een terminalvenster en voert u `node --version` in.

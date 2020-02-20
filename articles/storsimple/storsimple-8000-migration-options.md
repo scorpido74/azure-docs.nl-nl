@@ -1,5 +1,5 @@
 ---
-title: Opties evalueren voor het migreren van gegevens uit de StorSimple 5000-7000-serie | Microsoft Docs
+title: Opties voor gegevens migratie van StorSimple 5000-7000 series-apparaten
 description: Hierin wordt een overzicht gegeven van de opties voor het migreren van gegevens uit de StorSimple 5000-7000-serie.
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227763"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471819"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Opties voor het migreren van gegevens uit de StorSimple 5000-7000-serie 
 
@@ -27,7 +27,7 @@ ms.locfileid: "74227763"
 
 De StorSimple 5000-7000-serie bereikt het [einde van de ondersteuning](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) in juli 2019. De klanten die de StorSimple 5000-7000-serie uitvoeren, hebben de mogelijkheid om een upgrade uit te voeren naar andere hybride services van de eerste partij van Azure. In dit artikel worden de hybride opties voor Azure beschreven die beschikbaar zijn voor het migreren van gegevens. 
 
-## <a name="migration-options"></a>Migratie opties
+## <a name="migration-options"></a>Migratieopties
 
 De klanten die gebruikmaken van de StorSimple 5000-7000-serie beschikken over opties van Azure of van derden.
 

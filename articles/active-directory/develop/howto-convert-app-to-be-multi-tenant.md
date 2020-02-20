@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja
+ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212227"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467756"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: aanmelden bij een Azure Active Directory gebruiker met het toepassings patroon met meerdere tenants
 
@@ -37,7 +37,7 @@ Er zijn vier eenvoudige stappen om uw toepassing te converteren naar een Azure A
 3. [Uw code bijwerken om meerdere uitgevers waarden te verwerken](#update-your-code-to-handle-multiple-issuer-values)
 4. [Meer informatie over de toestemming van gebruikers en beheerders en het maken van passende code wijzigingen](#understand-user-and-admin-consent)
 
-Laten we eens kijken naar elke stap. U kunt ook direct naar [deze lijst met voor beelden van multi tenants](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)gaan.
+Laten we eens kijken naar elke stap. U kunt ook direct naar het voor beeld gaan met [een multi tenant SaaS-webtoepassing die Microsoft Graph aanroept met behulp van Azure AD en OpenID Connect Connect](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md).
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Registratie bijwerken naar multi tenant
 

@@ -3,12 +3,12 @@ title: 'Zelf studie: een Kubernetes-cluster maken met Azure Kubernetes service (
 description: Zelfstudie voor het maken van een Kubernetes-cluster met Azure Kubernetes Service en Terraform
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708271"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472244"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Zelf studie: een Kubernetes-cluster maken met de Azure Kubernetes-service met behulp van terraform
 
@@ -25,15 +25,15 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 - **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](terraform-install-configure.md)
 
 - **Azure service-principal**: volg de aanwijzingen in de sectie **Create the service principal** (de service-principal maken) in het artikel [Create an Azure service principal with Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) (een Azure-service-principal maken met Azure CLI). Noteer de waarden voor appId, displayName, password en tenant.
 
-## <a name="create-the-directory-structure"></a>De mapstructuur maken
+## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
 De eerste stap is het maken van een map voor de Terraform-configuratiebestanden voor de oefening.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -45,13 +45,13 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     cd clouddrive
     ```
 
-1. Maak een map met de naam `terraform-aks-k8s`.
+1. Maak een directory met de naam `terraform-aks-k8s`.
 
     ```bash
     mkdir terraform-aks-k8s
     ```
 
-1. Maak de nieuwe directory de actieve directory:
+1. Ga naar de nieuwe map:
 
     ```bash
     cd terraform-aks-k8s

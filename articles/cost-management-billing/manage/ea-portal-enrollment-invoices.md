@@ -1,19 +1,18 @@
 ---
 title: Facturen voor Azure Enterprise-inschrijvingen
 description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur kunt beheren en erop kunt reageren.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 2a75972d00733d23df7f4a59b2d5010404df8dc3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: 37af492ae156aa880c55034550d4165ec046e74f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023392"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199752"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Facturen voor Azure Enterprise-inschrijvingen
 
@@ -71,11 +70,11 @@ De datum waarop u de overschrijdingsfactuur ontvangt, is afhankelijk van de star
   - Kosten die niet onder uw financiële toezegging vallen, vallen onder de overschrijdingsbetaling.  
 
 - **Indirecte inschrijvingen die zijn gestart vóór 1 mei 2018**:
-  
+
   Als u een indirecte EA-klant (Enterprise Agreement) bent met een begindatum van vóór 1 mei 2018, hebt u een factureringsperiode van een kwartaal. De kanaalpartner (CP) brengt kosten rechtstreeks bij u in rekening.  
 
 - **Indirecte inschrijvingen met een startdatum na 1 mei 2018**:
-  
+
   U hebt een maandelijkse factureringsperiode.  
 
 ### <a name="increase-your-monetary-commitment"></a>Uw financiële toezegging verhogen
@@ -617,7 +616,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 - **Exclusions**:
   - Users already participating in the Extended Power BI Pro trial will continue to qualify under the pre-existing offer and can't enter into the Azure EA Power BI Pro trial offer.
   - Users participating in the Offer can only use Power BI Pro with the Microsoft Azure Enterprise content pack. Any other use of Power BI Pro is prohibited.
-  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer. 
+  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer.
   -->
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>Toegang krijgen tot Microsoft Azure Consumption Insights:
@@ -630,7 +629,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 1. Wanneer dit is voltooid, worden een nieuw dashboard, rapport en model weergegeven in het navigatievenster. Selecteer het dashboard om de geïmporteerde gegevens te bekijken.
 
 > [!TIP]
-> 
+>
 > - Raadpleeg het Help-bestand over API-rapporten in de [Enterprise-portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) voor meer informatie over het genereren van de API-sleutel voor uw inschrijving.
 > - Raadpleeg [Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management) voor meer informatie over het verbinden van Power BI met uw Azure-verbruik.
 

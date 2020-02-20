@@ -3,12 +3,12 @@ title: Zelf studie-een schaalset voor virtuele Azure-machines maken met behulp v
 description: Meer informatie over het gebruik van terraform voor het configureren en instellen van een schaalset voor virtuele Azure-machines.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369470"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472227"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken met behulp van terraform
 
@@ -30,13 +30,13 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
 
 - **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform installeren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform installeren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](terraform-install-configure.md)
 
 - **Een SSH-sleutel paar maken**: Zie [een openbaar en persoonlijk SSH-sleutel paar maken en gebruiken voor Linux-vm's in azure](/azure/virtual-machines/linux/mac-create-ssh-keys)voor meer informatie.
 
-## <a name="create-the-directory-structure"></a>De mapstructuur maken
+## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -48,13 +48,13 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
     cd clouddrive
     ```
 
-1. Maak een map met de naam `vmss`.
+1. Maak een directory met de naam `vmss`.
 
     ```bash
     mkdir vmss
     ```
 
-1. Maak de nieuwe directory de actieve directory:
+1. Ga naar de nieuwe map:
 
     ```bash
     cd vmss

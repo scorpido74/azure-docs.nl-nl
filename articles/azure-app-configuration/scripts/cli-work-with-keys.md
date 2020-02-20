@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 366485c8c735af5689e1b2c2e63eb192218f5ce0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433578"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468147"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Werken met sleutelwaarden in een Azure-app-configuratiearchief
 
@@ -31,10 +31,6 @@ Met dit voorbeeldscript wordt een nieuwe sleutelwaarde in een Azure-app-configur
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
-
-U moet eerst de CLI-extensie voor het Azure App Configuration-archief installeren door de volgende opdracht uit te voeren:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -85,13 +81,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het uitvoeren van sleutel waarden in een app-configuratie archief. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het uitvoeren van sleutel waarden in een app-configuratie archief. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Hiermee wordt een sleutelwaarde gemaakt of bijgewerkt. |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Geeft een lijst met sleutel waarden in een app-configuratie archief. |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Hiermee wordt een sleutelwaarde verwijderd. |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Hiermee wordt een sleutelwaarde gemaakt of bijgewerkt. |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Geeft een lijst met sleutel waarden in een app-configuratie archief. |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Hiermee wordt een sleutelwaarde verwijderd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

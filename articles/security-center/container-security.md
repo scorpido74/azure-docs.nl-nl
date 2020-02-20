@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430989"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470765"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -41,7 +41,7 @@ Als er problemen worden gevonden, wordt er een melding weer gegeven in het Secur
 ## <a name="environment-hardening"></a>Omgevings beveiliging
 
 ### <a name="continuous-monitoring-of-your-docker-configuration"></a>Doorlopende bewaking van uw docker-configuratie
-Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-Vm's of andere Linux-machines waarop docker-containers worden uitgevoerd. Security Center doorlopend de configuraties van deze containers evalueren. Vervolgens worden ze vergeleken met de [CIS-Referentie (Center for Internet Security](https://www.cisecurity.org/benchmark/docker/)).
+Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-Vm's of andere Linux-machines waarop docker-containers worden uitgevoerd. Security Center doorlopend de configuraties van deze containers evalueren. Vervolgens worden ze vergeleken met de [CIS-Referentie (Center for Internet Security)](https://www.cisecurity.org/benchmark/docker/).
 
 Security Center bevat de volledige regelset van de CIS docker-Bench Mark en waarschuwt u als uw containers niet voldoen aan een van de besturings elementen. Als er onjuiste configuraties worden gevonden, worden in Security Center beveiligings aanbevelingen gegenereerd. Op de **pagina aanbevelingen** kunt u aanbevelingen bekijken en problemen oplossen. U ziet ook de aanbevelingen op het tabblad **containers** waarin alle virtuele machines worden weer gegeven die zijn geïmplementeerd met docker. 
 
@@ -71,9 +71,9 @@ We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [de
 ## <a name="container-security-faq"></a>Veelgestelde vragen over container beveiliging
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Welke typen installatie kopieën kunnen Azure Security Center scannen?
-Security Center scant installatie kopieën op basis van Linux. 
+Security Center scant installatie kopieën op basis van Linux-besturings systemen die shell toegang bieden. 
 
-De Qualys-scanner biedt geen ondersteuning voor "distroless"-installatie kopieën die alleen uw toepassing en de runtime-afhankelijkheden bevatten.
+De Qualys-scanner ondersteunt geen super minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of Distroless-installatie kopieën die alleen uw toepassing en runtime-afhankelijkheden bevatten (zonder pakket beheer, shell of besturings systeem).
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Hoe scant het Azure Security Center een afbeelding scannen?
 De installatie kopie wordt opgehaald uit het REGI ster. Het wordt vervolgens uitgevoerd in een geïsoleerde sandbox met de Qualys-scanner, waarmee een lijst met bekende beveiligings problemen wordt geëxtraheerd.

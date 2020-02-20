@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513844"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469133"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -64,6 +64,7 @@ Deze fout treedt op wanneer een van de uitbrei dingen de virtuele machine inrich
 
 - Dit probleem kan zich voordoen als er een vergren deling op de resource groep voor herstel punten optreedt waardoor automatisch opruimen van herstel punten wordt voor komen.
 - Dit probleem kan ook optreden als meerdere back-ups per dag worden geactiveerd. Momenteel wordt slechts één back-up per dag aanbevolen, omdat de onmiddellijke herstel punten gedurende 1-5 dagen worden bewaard per de geconfigureerde moment opname en slechts 18 direct RPs kunnen worden gekoppeld aan een VM op een bepaald moment. <br>
+- Het aantal herstel punten tussen herstel punt verzamelingen en resource groepen voor een virtuele machine mag niet groter zijn dan 18. Als u een nieuw herstel punt wilt maken, moet u de bestaande herstel punten verwijderen.
 
 Aanbevolen actie:<br>
 U kunt dit probleem oplossen door de vergren deling van de resource groep van de virtuele machine te verwijderen en de bewerking opnieuw uit te voeren om het opschonen te activeren.
@@ -217,10 +218,10 @@ Verwijder de extensie om ervoor te zorgen dat de VMSnapshot-extensie opnieuw wor
 De uitbrei ding verwijderen:
 
 1. Ga in het [Azure Portal](https://portal.azure.com/)naar de virtuele machine waarop een back-up is mislukt.
-2. Selecteer **instellingen**.
+2. **Instellingen**selecteren.
 3. Selecteer **Extensies**.
 4. Selecteer de **snap shot-extensie**.
-5. Selecteer **Verwijderen**.
+5. Selecteer **verwijderen**.
 
 Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, werkt u voor de Linux-VM naar de [Azure Linux-agent](../virtual-machines/linux/update-agent.md)en voert u de back-up uit.
 
@@ -228,7 +229,7 @@ Bij het uitvoeren van deze stappen wordt de extensie opnieuw geïnstalleerd tijd
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar **alle resources optie**, selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_`<Geo>`_`<number>`.
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
@@ -257,7 +258,7 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, die niet is gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)

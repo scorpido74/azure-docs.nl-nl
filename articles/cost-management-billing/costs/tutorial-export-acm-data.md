@@ -1,21 +1,19 @@
 ---
 title: 'Zelfstudie: Gegevensexports uit Azure Cost Management instellen en beheren'
 description: In dit artikel leest u hoe u gegevensexports uit Azure Cost Management instelt en beheert, zodat u deze kunt gebruiken in externe systemen.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/14/2020
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
-manager: jasonh
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 76ee5aba0f1d0769e15a5969409dfef2a018e477
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40846de9ee8eec3225a05e3c2c68c3ad5af02042
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987283"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201013"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Zelfstudie: Geëxporteerde gegevens maken en beheren
 

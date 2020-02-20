@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0bc66939fc6bd150d57242f144cdb032db8188d1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 5d83d3426a80acc12c2a53051dcfd7b889f47f02
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425048"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468997"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -171,6 +171,7 @@ Back-up maken & ontdubbelde Vm's/schijven herstellen | Azure Backup biedt geen o
 Schijf toevoegen aan beveiligde VM | Ondersteund.
 Grootte van schijf op beveiligde virtuele machine wijzigen | Ondersteund.
 Gedeelde opslag| Het maken van back-ups van virtuele machines met Cluster Shared Volume (CSV) of Scale-out bestandsserver wordt niet ondersteund. CSV-schrijvers mislukken waarschijnlijk tijdens het maken van de back-up. Bij het terugzetten kunnen schijven met CSV-volumes mogelijk niet worden opgehaald.
+[Gedeelde schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Wordt niet ondersteund.
 
 ## <a name="vm-network-support"></a>VM-netwerk ondersteuning
 

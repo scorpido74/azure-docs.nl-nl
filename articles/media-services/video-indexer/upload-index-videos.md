@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209270"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468759"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -93,7 +93,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Statuswijziging indexering: 
     - Eigenschappen:    
     
-        |Naam|Beschrijving|
+        |Name|Beschrijving|
         |---|---|
         |id|De video-ID|
         |state|De videostatus|  
@@ -101,7 +101,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Personen geïdentificeerd in de video:
   - Eigenschappen
     
-      |Naam|Beschrijving|
+      |Name|Beschrijving|
       |---|---|
       |id| De video-ID|
       |faceId|De gezichts-id die wordt weergegeven in de video-index|
@@ -123,6 +123,10 @@ Gebruik deze parameter als onbewerkte of externe opnamen achtergrondgeluiden bev
 - `VideoOnly`-index en extra heren inzichten met alleen video (geen audio wordt genegeerd)
 - `Default`: indexeren en inzichten extraheren met behulp van zowel audio als video
 - `DefaultWithNoiseReduction`: indexeren en inzichten extraheren met behulp van zowel audio als video, waarbij algoritmen voor ruisvermindering worden toegepast op de audiostroom
+
+> [!NOTE]
+> Video Indexer omvat Maxi maal twee sporen van audio. Als het bestand meer audio sporen bevat, worden deze behandeld als één spoor.<br/>
+Als u de nummers afzonderlijk wilt indexeren, moet u het relevante audio bestand extra heren en indexeren als `AudioOnly`.
 
 De prijs is afhankelijk van de geselecteerde optie voor indexering.  
 

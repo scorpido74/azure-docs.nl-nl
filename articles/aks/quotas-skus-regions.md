@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mlearned
-ms.openlocfilehash: a8b561780e2e81499d211252648aeef86561cb9b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1bb928f8e7a1f56c4b6b437f260d875662bff60f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658505"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469831"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)
 
@@ -33,7 +33,7 @@ Alle andere beperkingen voor netwerk, berekening en opslag zijn van toepassing o
 
 ## <a name="restricted-vm-sizes"></a>Beperkte VM-grootten
 
-Elk knoop punt in een AKS-cluster bevat een vaste hoeveelheid reken resources, zoals vCPU en geheugen. Als een AKS-knoop punt onvoldoende Compute-bronnen bevat, kan het samen werken mogelijk niet op de juiste wijze worden uitgevoerd. Gebruik niet de volgende VM-Sku's in AKS om ervoor te zorgen dat het vereiste *uitvoeren-systeem* en uw toepassingen betrouwbaar kunnen worden gepland:
+Elk knoop punt in een AKS-cluster bevat een vaste hoeveelheid reken resources, zoals vCPU en geheugen. Als een AKS-knoop punt onvoldoende Compute-bronnen bevat, kan het samen werken mogelijk niet op de juiste wijze worden uitgevoerd. **Gebruik niet de volgende VM-sku's in AKS**om ervoor te zorgen dat het vereiste *uitvoeren-systeem* en uw toepassingen betrouwbaar kunnen worden gepland:
 
 - Standard_A0
 - Standard_A1
@@ -45,7 +45,7 @@ Elk knoop punt in een AKS-cluster bevat een vaste hoeveelheid reken resources, z
 
 Zie [grootten voor virtuele machines in azure][vm-skus]voor meer informatie over VM-typen en hun reken resources.
 
-## <a name="region-availability"></a>Regionale beschikbaarheid
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
 Zie [AKS Gewest Availability][region-availability](Engelstalig) voor de meest recente lijst van waar u clusters kunt implementeren en uitvoeren.
 

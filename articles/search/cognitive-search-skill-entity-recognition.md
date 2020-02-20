@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479745"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472329"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van entity erkennen
 
@@ -26,7 +26,7 @@ De kwalificatie voor **entiteits herkenning** extraheert entiteiten van verschil
 
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. Text. EntityRecognitionSkill
+Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
 De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
@@ -38,7 +38,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
 | categorieën    | Matrix van categorieën die moeten worden geëxtraheerd.  Mogelijke categorie typen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Als er geen categorie wordt opgegeven, worden alle typen geretourneerd.|
-|defaultLanguageCode |  De taal code van de invoer tekst. De volgende talen worden ondersteund: `de, en, es, fr, it`|
+|defaultLanguageCode |  De taal code van de invoer tekst. De volgende talen worden ondersteund: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Niet alle entiteits categorieën worden ondersteund voor alle talen. Zie de opmerking hieronder.|
 |minimumPrecision | Een waarde tussen 0 en 1. Als de betrouwbaarheids Score (in de `namedEntities` uitvoer) lager is dan deze waarde, wordt de entiteit niet geretourneerd. De standaard waarde is 0. |
 |includeTypelessEntities | Stel deze in op `true` als u bekende entiteiten wilt herkennen die niet aan de huidige categorieën voldoen. Erkende entiteiten worden geretourneerd in het `entities` complexe uitvoer veld. "Windows 10" is bijvoorbeeld een bekende entiteit (een product), maar omdat "Products" geen ondersteunde categorie is, wordt deze entiteit opgenomen in het uitvoer veld entiteiten. De standaard waarde is `false` |
 
@@ -53,7 +53,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
 > [!NOTE]
-> Niet alle entiteits categorieën worden ondersteund voor alle talen. Alleen _en_, _es_ bieden ondersteuning voor het uitpakken van `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` typen.
+> Niet alle entiteits categorieën worden ondersteund voor alle talen. De categorie typen `"Person"`, `"Location"`en `"Organization"` entiteit worden ondersteund voor de volledige lijst met talen hierboven. Alleen _de_Hans-, _en_- _es_-, _fr_ _-en zh-_ ondersteuning ondersteunen het uitpakken van `"Quantity"`, `"Datetime"`, `"URL"`en `"Email"` typen. Zie [taal-en regio ondersteuning voor de Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)voor meer informatie.  
 
 | Uitvoer naam     | Beschrijving                   |
 |---------------|-------------------------------|
@@ -63,7 +63,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 | groot  | Een matrix met teken reeksen waarbij elke teken reeks een hoeveelheid vertegenwoordigt. |
 | Tijd  | Een matrix met teken reeksen waarbij elke teken reeks een datum/tijd vertegenwoordigt (zoals deze in de tekst) waarde wordt weer gegeven. |
 | adres | Een matrix met teken reeksen waarbij elke teken reeks een URL vertegenwoordigt |
-| eBay | Een matrix met teken reeksen waarbij elke teken reeks een e-mail vertegenwoordigt |
+| emails | Een matrix met teken reeksen waarbij elke teken reeks een e-mail vertegenwoordigt |
 | namedEntities | Een matrix met complexe typen die de volgende velden bevat: <ul><li>category</li> <li>waarde (de werkelijke naam van de entiteit)</li><li>offset (de locatie waar deze zich bevindt in de tekst)</li><li>vertrouwen (hogere waarde betekent dat het meer een echte entiteit is)</li></ul> |
 | Rijg | Een matrix met complexe typen met uitgebreide informatie over de entiteiten die zijn geëxtraheerd uit de tekst, met de volgende velden <ul><li> naam (de werkelijke naam van de entiteit. Dit vertegenwoordigt een ' genormaliseerd ' formulier.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (een koppeling naar de Wikipedia-pagina voor de entiteit)</li><li>bingId</li><li>type (de categorie van de entiteit die wordt herkend)</li><li>subtype (alleen beschikbaar voor bepaalde categorieën geeft dit een gedetailleerdere weer gave van het entiteits type)</li><li> komt overeen (een complexe verzameling die bevat)<ul><li>tekst (de onbewerkte tekst voor de entiteit)</li><li>offset (de locatie waar deze zich bevindt)</li><li>lengte (de lengte van de tekst van de onbewerkte entiteit)</li></ul></li></ul> |
 

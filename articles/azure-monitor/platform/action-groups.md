@@ -3,15 +3,15 @@ title: Actie groepen maken en beheren in de Azure Portal
 description: Meer informatie over het maken en beheren van actie groepen in de Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 8/19/2019
+ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030741"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467331"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -89,7 +89,7 @@ E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 ### <a name="email-azure-resource-manager-role"></a>E-mail Azure Resource Manager rol
-E-mail verzenden naar de leden van de rol van het abonnement.
+E-mail verzenden naar de leden van de rol van het abonnement. E-mail wordt alleen verzonden naar **Azure AD-gebruikers** leden van de rol. Er wordt geen e-mail bericht verzonden naar Azure AD-groepen of service-principals.
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
@@ -107,8 +107,6 @@ Mogelijk hebt u een beperkt aantal ITSM-acties in een actie groep.
 Mogelijk hebt u een beperkt aantal logische app-acties in een actie groep.
 
 ### <a name="secure-webhook"></a>Beveiligde webhook
-**De functionaliteit van de beveiligde webhook is momenteel beschikbaar als preview-versie.**
-
 Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om de verbinding tussen uw actie groep en de beveiligde web-API (webhook-eind punt) te beveiligen. De algemene werk stroom voor het gebruik van deze functionaliteit wordt hieronder beschreven. Zie [overzicht van micro soft Identity platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)voor een overzicht van Azure AD-toepassingen en-service-principals.
 
 1. Maak een Azure AD-toepassing voor uw beveiligde web-API. Zie https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.

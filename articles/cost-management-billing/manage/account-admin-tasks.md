@@ -2,21 +2,18 @@
 title: Taken van accountbeheerders in de Azure-portal
 description: In dit artikel wordt beschreven hoe u betalingsbewerkingen uitvoert in de Azure-portal
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132138"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200996"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Taken van accountbeheerders in de Azure-portal
 
@@ -25,35 +22,35 @@ In dit artikel wordt uitgelegd hoe u de volgende taken uitvoert in de Azure-port
 - De bestedingslimiet voor uw abonnement verwijderen
 - Tegoed toevoegen aan uw Azure in Open-abonnement
 
-U moet de accountbeheerder zijn om deze taken te kunnen uitvoeren. 
+U moet de accountbeheerder zijn om deze taken te kunnen uitvoeren.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Naar de betalingswijzen voor uw abonnement navigeren
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek naar **Kostenbeheer en facturering**.
-    
+
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
-1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen in de lijst **Mijn abonnementen**. 
-   
+1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen in de lijst **Mijn abonnementen**.
+
    ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > Als u sommige van uw abonnementen hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2. 
+   > Als u sommige van uw abonnementen hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
 
 1. Selecteer **Betalingswijzen**.
 
     ![Schermopname waarin Betalingswijzen is geselecteerd.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-Hier kunt u een nieuwe creditcard toevoegen, de actieve betalingswijze wijzigen, creditcardgegevens bewerken en creditcards verwijderen. 
+Hier kunt u een nieuwe creditcard toevoegen, de actieve betalingswijze wijzigen, creditcardgegevens bewerken en creditcards verwijderen.
 
 ### <a name="change-active-payment-method"></a>Actieve betalingswijze wijzigen
 
 U kunt de actieve betalingswijze wijzigen door een nieuwe creditcard toe te voegen of door een creditcard te kiezen die al is opgeslagen. Als u een nieuwe creditcard wilt toevoegen om uw actieve betalingswijze te wijzigen, gaat u als volgt te werk:
 
 1. Selecteer '+' in de linkerbovenhoek om een creditcard toe te voegen.
-    
+
     ![Schermopname met het plusteken](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. Voer de creditcardgegevens in op het formulier aan de rechterkant.
@@ -111,7 +108,7 @@ Als u wilt worden goedgekeurd om te betalen via factuur, raadpleegt u [Per factu
 
 ### <a name="edit-invoice-payment-address"></a>Adres voor betaling via factuur bewerken
 
-Als u het adres voor uw factuurbetalingswijze wilt bewerken, klikt u op **Factuur** in de lijst met betalingswijzen voor uw abonnement. Het adresformulier wordt aan de rechterkant geopend. 
+Als u het adres voor uw factuurbetalingswijze wilt bewerken, klikt u op **Factuur** in de lijst met betalingswijzen voor uw abonnement. Het adresformulier wordt aan de rechterkant geopend.
 
 ## <a name="remove-spending-limit"></a>Bestedingslimiet verwijderen
 
@@ -124,15 +121,15 @@ De bestedingslimiet is niet beschikbaar voor abonnementen met toezeggingsplannen
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
-1. Selecteer uw Visual Studio Enterprise-abonnement in de lijst **Mijn abonnementen**. 
+1. Selecteer uw Visual Studio Enterprise-abonnement in de lijst **Mijn abonnementen**.
 
    ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
-    
+
 1. Klik in het abonnementsoverzicht op de oranje banner om de bestedingslimiet te verwijderen.
-    
+
     ![Schermopname met banner voor het verwijderen van de bestedingslimiet](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. Geef aan of u de bestedingslimiet voor onbepaalde tijd wilt verwijderen of alleen voor de huidige factureringsperiode.
@@ -152,15 +149,15 @@ Als u een abonnement voor Azure in Open Licensing hebt, kunt u in de Azure-porta
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
-1. Selecteer uw Azure in Open-abonnement in de lijst **Mijn abonnementen**. 
+1. Selecteer uw Azure in Open-abonnement in de lijst **Mijn abonnementen**.
 
     ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Als u uw abonnement hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. U moet weer de oorspronkelijke map voor het abonnement instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
-    
+
 1. Selecteer **Tegoedgeschiedenis**.
-    
+
     ![Schermopname waarop Tegoedgeschiedenis is geselecteerd](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. Selecteer '+' in de linkerbovenhoek om meer tegoed toe te voegen.
@@ -168,7 +165,7 @@ Als u een abonnement voor Azure in Open Licensing hebt, kunt u in de Azure-porta
     ![Schermopname met de knop Tegoed toevoegen](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. Selecteer een type betalingswijze in de vervolgkeuzelijst. U kunt een productcode toevoegen of tegoed kopen met een creditcard.
-    
+
     ![Schermopname met de vervolgkeuzelijst voor de betalingswijze in de blade Tegoed toevoegen](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. Als u voor Productcode hebt gekozen, doet u het volgende:

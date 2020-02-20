@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9000cab026ec08bd78d8a8f334c8967a8a747c95
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 34699ed89e79448d66343021dd624cb872d0172d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202292"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471681"
 ---
 Voorlopig kunnen alleen Premium-Ssd's gedeelde schijven inschakelen. De schijf grootten die deze functie ondersteunen, zijn P15 en meer. Verschillende schijf grootten kunnen een andere `maxShares` limiet hebben, die u niet overschrijdt wanneer u de `maxShares` waarde instelt.
 

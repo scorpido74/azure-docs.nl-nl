@@ -1,24 +1,17 @@
 ---
 title: Resourcegebruik van Azure-service controleren met REST-API | Microsoft Docs
 description: Lees hier hoe u met behulp van REST-API's van Azure het resourcegebruik van Azure-services kunt controleren.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f421ddc7cd509527053b099c7e4e538ab84b814e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989304"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200568"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Gebruik van Azure-resources controleren met behulp van de REST-API
 
@@ -41,7 +34,7 @@ Authorization: Bearer
 
 De parameter `{subscriptionGuid}` is vereist en moet een abonnements-id bevatten die kan worden gelezen met behulp van de referenties die zijn opgegeven in het API-token. De `{reportName}`
 
-De volgende headers zijn vereist: 
+De volgende headers zijn vereist:
 
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
@@ -93,7 +86,7 @@ Kan
 
 ## <a name="filtering-reports"></a>Rapporten filteren
 
-Gebruik de secties `filter` en `dimensions` van de body van de aanvraag bij het maken van een rapport om u te richten op de kosten voor specifieke resourcetypen. In de vorige body van de aanvraag ziet u hoe u kunt filteren op alle resources in een regio. 
+Gebruik de secties `filter` en `dimensions` van de body van de aanvraag bij het maken van een rapport om u te richten op de kosten voor specifieke resourcetypen. In de vorige body van de aanvraag ziet u hoe u kunt filteren op alle resources in een regio.
 
 ### <a name="get-all-compute-usage"></a>Gebruik van rekenresources ophalen
 
@@ -105,9 +98,9 @@ Gebruik de dimensie `ResourceType` voor het rapporteren van de kosten van virtue
         "name": "ResourceType",
         "operator": "In",
         "values": [
-                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.ClassicCompute/virtualMachines",
                 "Microsoft.Compute/virtualMachines"
-        ] 
+        ]
     }
 }
 ```
@@ -123,7 +116,7 @@ Gebruik de dimensie `ResourceType` voor het rapporteren van de kosten van Azure 
         "operator": "In",
         "values": [
                 "Microsoft.Sql/servers"
-        ] 
+        ]
     }
 }
 ```

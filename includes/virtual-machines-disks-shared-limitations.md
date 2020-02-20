@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4c150d874d56e3de495b0682bee979d13304a01d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77fc6070010791bf96c944114929eba95842c9d4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202214"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471680"
 ---
 In de preview-versie worden beheerde schijven waarvoor gedeelde schijven zijn ingeschakeld, onderhevig aan de volgende beperkingen:
 
@@ -26,4 +26,4 @@ In de preview-versie worden beheerde schijven waarvoor gedeelde schijven zijn in
 - Beschikbaarheids sets en virtuele-machine schaal sets kunnen alleen worden gebruikt met `FaultDomainCount` ingesteld op 1.
 - Azure Backup-en Azure Site Recovery-ondersteuning is nog niet beschikbaar.
 
-Als u geïnteresseerd bent in het proberen van gedeelde schijven, [meldt u zich aan voor de preview-versie](https://aka.ms/shareddisksignup).
+Als u geïnteresseerd bent in het proberen van gedeelde schijven, [meldt u zich aan voor de preview-versie](https://aka.ms/AzureSharedDiskPreviewSignUp).

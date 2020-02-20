@@ -2,22 +2,19 @@
 title: Azure-prijzen voor uw organisatie bekijken en downloaden
 description: Krijg meer informatie over het bekijken en downloaden van prijzen, of het schatten van de kosten met de prijzen van uw organisatie.
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/14/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 72ad7b13010e1369e3e0e4d31ade089012aaf8f3
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 1dd0dfad0c68e18ae272d5d94fedd67d24be9ae1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132864"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200775"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Azure-prijzen voor uw organisatie bekijken en downloaden
 

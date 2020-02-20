@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980076"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467178"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-resource logboeken archiveren in een opslag account
 [Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel wordt het verzamelen van platform Logboeken beschreven in een Azure-opslag account om gegevens te bewaren voor archivering.
@@ -33,7 +33,7 @@ Verzend platform logboeken naar opslag en andere bestemmingen door een diagnosti
 
 
 ## <a name="collect-data-from-compute-resources"></a>Gegevens verzamelen van Compute-resources
-Met Diagnostische instellingen worden bron logboeken verzameld voor Azure-reken resources, zoals elke andere resource, maar niet het gast besturingssysteem of de werk belastingen. Als u deze gegevens wilt verzamelen, moet u de [Windows Azure Diagnostics-agent](diagnostics-extension-overview.md)installeren. Zie [Diagnostische gegevens opslaan en weer geven in azure Storage](diagnostics-extension-to-storage.md) voor meer informatie.
+Met Diagnostische instellingen worden bron logboeken verzameld voor Azure-reken resources, zoals elke andere resource, maar niet het gast besturingssysteem of de werk belastingen. Als u deze gegevens wilt verzamelen, moet u de [Windows Azure Diagnostics-agent](diagnostics-extension-overview.md)installeren. 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>Schema van platform Logboeken in het opslag account

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326790"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469932"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT-component in Azure Cosmos DB
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Eigenschappen of waarde die voor de resultatenset moet worden geselecteerd.  
+  De eigenschappen of de waarde die moet worden geselecteerd voor de resultatenset.  
   
 - `'*'`  
 
-  Geeft aan dat de waarde moet worden opgehaald zonder dat er wijzigingen worden aangebracht. Met name als de verwerkte waarde een object is, worden alle eigenschappen opgehaald.  
+  Hiermee geeft u op dat de waarde zonder wijzigingen moet worden opgehaald. Specifiek als de verwerkte waarde een object is, worden alle eigenschappen worden opgehaald.  
   
 - `<object_property_list>`  
   
-  Hiermee geeft u de lijst met eigenschappen op die moeten worden opgehaald. Elke geretourneerde waarde is een object met de opgegeven eigenschappen.  
+  Hiermee geeft u de lijst met eigenschappen die moeten worden opgehaald. Elke geretourneerde waarde is een object met de eigenschappen die zijn opgegeven.  
   
 - `VALUE`  
 
-  Hiermee geeft u op dat de JSON-waarde moet worden opgehaald in plaats van het volledige JSON-object. Dit betekent dat, in tegens telling tot `<property_list>`, de geschatte waarde in een object niet verloopt.  
+  Hiermee geeft u op dat de JSON-waarde moet worden opgehaald in plaats van de volledige JSON-object. Dit betekent, in tegens telling tot `<property_list>` de geprojecteerde waarde in een object niet inpakt.  
  
 - `DISTINCT`
   
@@ -56,11 +56,11 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Expressie die de waarde vertegenwoordigt die moet worden berekend. Zie de sectie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
+  Expressie voor de waarde die moet worden berekend. Zie de sectie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
 
 ## <a name="remarks"></a>Opmerkingen
 
-De syntaxis van de `SELECT *` is alleen geldig als FROM-component precies één alias heeft gedeclareerd. `SELECT *` biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. SELECT * is alleen geldig als de component FROM is opgegeven en slechts één invoer bron heeft geïntroduceerd.  
+De syntaxis van de `SELECT *` is alleen geldig als FROM-component precies één alias heeft gedeclareerd. `SELECT *` biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. Selecteer * is alleen geldig als FROM-component is opgegeven en slechts één invoer bron geïntroduceerd.  
   
 Zowel `SELECT <select_list>` als `SELECT *` zijn ' syntactische suiker ' en kunnen ook worden aangegeven met behulp van eenvoudige SELECT-instructies, zoals hieronder wordt weer gegeven.  
   
@@ -78,7 +78,7 @@ Zowel `SELECT <select_list>` als `SELECT *` zijn ' syntactische suiker ' en kunn
   
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld van een SELECT-query wordt `address` geretourneerd van `Families` waarvan de `id` overeenkomt met `AndersenFamily`:
+In het volgende voor beeld van de query SELECT worden `address` geretourneerd van `Families` waarvan de `id` overeenkomt met `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -147,7 +147,7 @@ De resultaten zijn:
     }]
 ```
 
-In het voor gaande voor beeld moet de component SELECT een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de variabele naam van het impliciete argument `$1`. Met de volgende query worden twee impliciete argument variabelen geretourneerd: `$1` en `$2`.
+In het voor gaande voor beeld moet de SELECT-component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de impliciete argument naam van de variabele `$1`. Met de volgende query worden twee impliciete argument variabelen geretourneerd: `$1` en `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -168,6 +168,50 @@ De resultaten zijn:
         "name": "AndersenFamily"
       }
     }]
+```
+## <a name="reserved-keywords-and-special-characters"></a>Gereserveerde tref woorden en speciale tekens
+
+Als uw gegevens eigenschappen bevatten met dezelfde namen als gereserveerde tref woorden, zoals ' order ' of ' groep ', hebben de query's voor deze documenten een syntaxis fout. U moet expliciet de eigenschap in `[]` teken toevoegen om de query uit te voeren.
+
+Hier ziet u bijvoorbeeld een document met een eigenschap met de naam `order` en een eigenschap `price($)` die speciale tekens bevat:
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+Als u een query uitvoert die de eigenschap `order` of `price($)` bevat, wordt er een syntaxis fout weer gegeven.
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+Het resultaat is:
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+U moet dezelfde query's opnieuw schrijven zoals hieronder wordt beschreven:
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

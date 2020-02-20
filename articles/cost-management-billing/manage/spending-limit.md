@@ -2,21 +2,18 @@
 title: Bestedingslimiet van Azure | Microsoft Docs
 description: In dit artikel wordt beschreven hoe een bestedingslimiet van Azure werkt en hoe u deze kunt verwijderen.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188307"
+ms.locfileid: "77200551"
 ---
 # <a name="azure-spending-limit"></a>Bestedingslimiet voor Azure
 
@@ -47,21 +44,21 @@ Als u een gratis Azure-account hebt, raadpleegt u [Uw Azure-abonnement upgraden]
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/spending-limit/search-bar.png)
 
-1. Selecteer uw abonnement in de lijst **Mijn abonnementen**. Selecteer bijvoorbeeld *Visual Studio Enterprise*. 
+1. Selecteer uw abonnement in de lijst **Mijn abonnementen**. Selecteer bijvoorbeeld *Visual Studio Enterprise*.
 
    ![Schermopname van het overzicht van Mijn abonnementen](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
-    
+
 1. Klik in het abonnementsoverzicht op de oranje banner om de bestedingslimiet te verwijderen.
-    
+
     ![Schermopname met banner voor het verwijderen van de bestedingslimiet](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
 
 1. Geef aan of u de bestedingslimiet voor onbepaalde tijd wilt verwijderen of alleen voor de huidige factureringsperiode.
-    
+
       ![Schermopname met blade voor het verwijderen van de bestedingslimiet](./media/spending-limit/remove-spending-limit-blade-x.png)
-    
+
       | Optie | Effect |
       | --- | --- |
       | Bestedingslimiet voor onbepaalde tijd verwijderen | De bestedingslimiet wordt niet automatisch weer ingeschakeld aan het begin van de volgende factureringsperiode. U kunt deze echter op elk gewenst moment zelf weer inschakelen. |
@@ -91,13 +88,13 @@ Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde t
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/spending-limit/search-bar.png)
 
-1. Selecteer uw abonnement in de lijst **Mijn abonnementen**. Selecteer bijvoorbeeld *Visual Studio Enterprise*. 
+1. Selecteer uw abonnement in de lijst **Mijn abonnementen**. Selecteer bijvoorbeeld *Visual Studio Enterprise*.
 
    ![Schermopname van het overzicht van Mijn abonnementen](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
-    
+
 1. Klik in het overzicht van het abonnement op de banner boven aan de pagina om de bestedingslimiet weer in te schakelen.
 
 ## <a name="custom-spending-limit"></a>Aangepast bestedingslimiet
