@@ -11,8 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: Azure Multi-Factor Authentication inschakelen
       href: tutorial-enable-azure-mfa.md
-    - name: On-premises integratie van selfservice voor wachtwoordherstel inschakelen
-      href: tutorial-enable-writeback.md
+    - name: Write-back van wachtwoord naar on-premises inschakelen
+      href: tutorial-enable-sspr-writeback.md
     - name: Azure Identity Protection integreren
       href: tutorial-risk-based-sspr-mfa.md
 - name: Concepten
@@ -68,8 +68,6 @@
           href: howto-sspr-deployment.md
         - name: Uw authenticatiegegevens vooraf registreren
           href: howto-sspr-authenticationdata.md
-        - name: Wachtwoord terugschrijven inschakelen
-          href: howto-sspr-writeback.md
         - name: Self-service voor wachtwoordherstel voor Windows-clients
           href: howto-sspr-windows.md
     - name: MFA in de cloud

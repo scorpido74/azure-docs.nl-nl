@@ -527,7 +527,7 @@
               href: platform/resource-logs-blob-format.md
         - name: Gegevens streamen naar Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: VM's en berekeningen bewaken
+    - name: VM's en gastbesturingssysteem beheren
       items:
         - name: Agents
           items:
@@ -537,13 +537,15 @@
               href: 'faq.md#agents'
             - name: Azure Diagnostics-extensie
               items:
+                - name: Overzicht
+                  href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: Overzicht
-                      href: platform/diagnostics-extension-overview.md
                     - name: Installeren en configureren
                       items:
+                        - name: Installatieopties
+                          href: platform/diagnostics-extension-windows-install.md
                         - name: PowerShell
                           href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                         - name: Resource Manager-sjabloon
@@ -561,13 +563,11 @@
                     - name: Verzenden naar Event Hubs
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: Verzenden naar logboeken
-                      href: platform/azure-storage-iis-table.md
-                    - name: Verzenden naar Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
+                      href: platform/diagnostics-extension-logs.md
                     - name: Verzenden naar Application Insights
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Versiegeschiedenis
-                      href: platform/diagnostics-extension-schema.md
+                      href: platform/diagnostics-extension-versions.md
                     - name: Indelingen van resourcelogboeken van JSON-regels
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Problemen oplossen
@@ -588,9 +588,9 @@
                 - name: Linux-agents
                   href: platform/agent-linux.md
                 - name: VM-extensie voor Windows
-                  href: ../virtual-machines/windows/extensions-oms.md
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: VM-extensie voor Linux
-                  href: ../virtual-machines/linux/extensions-oms.md
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics-gateway
                   href: platform/gateway.md
                 - name: Agents beheren
@@ -1151,8 +1151,8 @@
       href: service-limits.md
     - name: Diagnostics-extensie
       items:
-        - name: Schema
-          href: platform/diagnostics-extension-schema-1dot3.md
+        - name: Windows-configuratieschema
+          href: platform/diagnostics-extension-schema-windows.md
     - name: Terminologiewijzigingen
       href: terminology.md
     - name: Application Insights

@@ -26,15 +26,17 @@
       href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL online migreren naar Azure Database for MySQL
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: PostgreSQL online migreren naar Azure Database for PostgreSQL - individuele server
+    - name: PostgreSQL online migreren naar Azure Database for PostgreSQL via de portal
+      href: tutorial-postgresql-azure-postgresql-online-portal.md
+    - name: PostgreSQL online migreren naar Azure Database for PostgreSQL via de CLI
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: RDS PostgreSQL online migreren naar Azure Database for PostgreSQL - individuele server
+    - name: RDS PostgreSQL online migreren naar Azure Database for PostgreSQL
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: MongoDB offline migreren naar de Azure Cosmos DB Mongo-API
       href: tutorial-mongodb-cosmos-db.md
     - name: MongoDB online migreren naar de Azure Cosmos DB Mongo-API
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Oracle online migreren naar Azure Database for PostgreSQL - individuele server
+    - name: Oracle online migreren naar Azure DB for PostgreSQL - individuele server
       href: tutorial-oracle-azure-postgresql-online.md
 - name: Instructiegidsen
   items:
@@ -44,9 +46,9 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Migratieactiviteit bewaken
       href: how-to-monitor-migration-activity.md
-    - name: SSIS-pakketten opnieuw implementeren in individuele Azure SQL Database-database
+    - name: SSIS-pakketten opnieuw implementeren in individuele Azure SQL DB-database
       href: how-to-migrate-ssis-packages.md
-    - name: SSIS-pakketten opnieuw implementeren in een beheerd exemplaar van Azure SQL Database
+    - name: SSIS-pakketten opnieuw implementeren in een beheerd exemplaar van Azure SQL DB
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Resources
   expanded: true
@@ -85,13 +87,13 @@
           href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
         - name: Adresvereisten en een DMS-exemplaar maken
           href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
-        - name: SQL Server 2008 migreren naar een beheerd exemplaar voor Azure SQL Database
+        - name: SQL Server 2008 migreren naar een met Azure SQL-database beheerd exemplaar
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
         - name: PostgreSQL migreren naar Azure Database for PostgreSQL
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
         - name: Een online migratie bewaken en cutover uitvoeren
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
-        - name: Oracle migreren naar Azure SQL Database
+        - name: Oracle migreren naar Azure SQL DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: MongoDB migreren naar Azure Cosmos DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

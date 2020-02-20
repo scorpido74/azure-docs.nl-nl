@@ -36,6 +36,8 @@
           href: exchange-and-refund-azure-reservations.md
         - name: Reserveringen beheren
           href: manage-reserved-vm-instance.md
+        - name: Instelling voor optimaliseren wijzigen
+          href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Reserveringen bekijken
           href: view-reservations.md
     - name: Concepten

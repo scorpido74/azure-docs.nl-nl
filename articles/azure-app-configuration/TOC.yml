@@ -1,4 +1,4 @@
-- name: Documentatie voor Azure App Configuration (preview)
+- name: Documentatie voor Azure App Configuration
   href: index.yml
 - name: Overzicht
   items:
@@ -59,6 +59,8 @@
   items:
     - name: Sleutel-waardearchief
       href: concept-key-value.md
+    - name: Versleutelen met door de klant beheerde sleutels
+      href: concept-customer-managed-keys.md
     - name: Point-in-time-snapshot
       href: concept-point-time-snapshot.md
     - name: Functiebeheer
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: Gebeurtenisverwerking
       href: concept-app-configuration-event.md
+    - name: Verificatie
+      items:
+        - name: Integreren met beheerde Azure-identiteit
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: Toegang met Azure Active Directory inschakelen
+          href: concept-enable-rbac.md
     - name: Hoge beschikbaarheid
       items:
         - name: Tolerantie en herstel na noodgevallen
           href: concept-disaster-recovery.md
 - name: Instructiegidsen
   items:
-    - name: Integreren met beheerde Azure-identiteit
-      href: howto-integrate-azure-managed-service-identity.md
     - name: Configuratiegegevens importeren of exporteren
       href: howto-import-export-data.md
     - name: Gebeurtenissen routeren naar een aangepast eindpunt
@@ -86,7 +92,7 @@
     - name: Configuratie
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-provider
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework-ontwikkelaar

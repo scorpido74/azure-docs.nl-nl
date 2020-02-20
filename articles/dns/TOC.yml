@@ -83,7 +83,7 @@
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: dns-operations-dnszones-cli.md
         - name: DNS-records beheren
           items:
@@ -91,7 +91,7 @@
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: dns-operations-recordsets-cli.md
         - name: Reverse-DNS beheren
           items:
@@ -113,6 +113,10 @@
           href: dns-sdk.md
         - name: Aangepaste domeinen voor Azure-resources
           href: dns-custom-domain.md
+    - name: Privé-DNS
+      items:
+        - name: Privé-DNS-zones en -records beschermen
+          href: dns-protect-private-zones-recordsets.md
     - name: Problemen oplossen
       items:
         - name: Handleiding voor het oplossen van problemen
@@ -127,7 +131,7 @@
           href: cli-samples.md
         - name: Azure PowerShell
           href: /powershell/module/az.dns
-        - name: Azure-CLI
+        - name: Azure CLI
           href: /cli/azure/network/dns
         - name: .NET
           href: /dotnet/api/microsoft.azure.management.dns.models
@@ -145,7 +149,7 @@
           href: /azure/templates/microsoft.network/dns-allversions
     - name: Privé-DNS
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: /cli/azure/network/private-dns
         - name: Azure PowerShell
           href: /powershell/module/az.PrivateDns
