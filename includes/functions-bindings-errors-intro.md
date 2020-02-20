@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 8573a915c572885b53437843b114aa987be4c66b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198446"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474108"
 ---
 Fouten die zijn opgetreden in een Azure Functions kunnen afkomstig zijn van een van de volgende oorsprongen:
 
@@ -37,6 +37,6 @@ De volgende triggers hebben ingebouwde ondersteuning voor nieuwe pogingen:
 * [Azure-wachtrij opslag](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (wachtrij/onderwerp)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Deze triggers worden standaard Maxi maal vijf keer aangevraagd. Na de vijfde nieuwe poging is de Azure Queue-opslag en Azure Service Bus triggers een bericht naar een [verontreinigde wachtrij](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages)schrijven.
+Deze triggers worden standaard Maxi maal vijf keer aangevraagd. Na de vijfde nieuwe poging is de Azure Queue-opslag en Azure Service Bus triggers een bericht naar een [verontreinigde wachtrij](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)schrijven.
 
 U moet het beleid voor opnieuw proberen hand matig implementeren voor alle andere triggers of bindingen typen. Hand matige implementaties kunnen informatie over het schrijven van fouten bevatten in een [wachtrij voor verontreinigde berichten](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Als u naar een verontreinigde wachtrij schrijft, hebt u de mogelijkheid om bewerkingen op een later tijdstip uit te voeren. Deze benadering is hetzelfde als de methode die wordt gebruikt door de Blob Storage-trigger.
