@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array waarschuwingen weergeven en beheren | Microsoft Docs
-description: Beschrijving van waarschuwing voorwaarden StorSimple Virtual Array en ernst en het gebruik van de StorSimple Manager-service voor het beheren van waarschuwingen.
+title: Waarschuwingen voor de virtuele StorSimple-matrix weer geven en beheren
+description: Hierin worden de StorSimple en ernst van de virtuele matrix beschreven en wordt uitgelegd hoe u de StorSimple Manager-service kunt gebruiken voor het beheren van waarschuwingen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,156 +15,156 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60302733"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466940"
 ---
-# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Gebruik StorSimple Device Manager voor het beheren van waarschuwingen voor de StorSimple Virtual Array
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple-Apparaatbeheer gebruiken voor het beheren van waarschuwingen voor de virtuele StorSimple-matrix
 
 ## <a name="overview"></a>Overzicht
 
-De waarschuwingsfunctie in de StorSimple Device Manager-service biedt een manier om te controleren en meldingen met betrekking tot virtuele StorSimple-matrices op basis van realtime wissen. U kunt de waarschuwingen op de **Serviceoverzicht** blade voor het bewaken van de problemen met het controleren van uw virtuele StorSimple-matrices en de algemene Microsoft Azure StorSimple-oplossing.
+De functie waarschuwingen in de StorSimple Apparaatbeheer-service biedt een manier om waarschuwingen te controleren en te wissen die betrekking hebben op virtuele StorSimple-matrices. U kunt de waarschuwingen op de Blade **service overzicht** gebruiken om de status problemen van uw virtuele StorSimple-matrices en de algehele Microsoft Azure StorSimple oplossing centraal te bewaken.
 
-Deze zelfstudie wordt beschreven hoe u meldingen van waarschuwingen, algemene voorwaarden van de waarschuwing, ernstniveau van waarschuwingen configureert en hoe u waarschuwingen weergeven en bijhouden. Daarnaast bevat deze waarschuwing Naslaggids tabellen, zodat ze snel vinden van een specifieke waarschuwing en reageren op de juiste wijze.
+In deze zelf studie wordt beschreven hoe u waarschuwings meldingen, veelvoorkomende waarschuwings voorwaarden en ernst niveaus voor waarschuwingen kunt configureren en hoe u waarschuwingen kunt weer geven en bijhouden. Daarnaast bevat het een snelle naslag tabel voor waarschuwingen, waarmee u snel een specifieke waarschuwing kunt vinden en op de juiste wijze kunt reageren.
 
-![Pagina met waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
+![Pagina waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
 
 ## <a name="configure-alert-settings"></a>Instellingen voor waarschuwingen configureren
 
-U kunt kiezen of u wilt een melding per e-mail van de waarschuwing voorwaarden voor elk van uw virtuele StorSimple-matrices. Bovendien kunt u andere ontvangers in waarschuwingsmeldingen identificeren door te voeren van hun e-mailadressen in de **aanvullende e-mailontvangers** vak, gescheiden door puntkomma's.
+U kunt kiezen of u per e-mail op de hoogte wilt worden gesteld van de waarschuwings voorwaarden voor elk van uw virtuele StorSimple-matrices. Daarnaast kunt u andere ontvangers van waarschuwings meldingen identificeren door hun e-mail adressen in te voeren in het vak **extra e-mail ontvangers** , gescheiden door punt komma's.
 
 > [!NOTE]
-> U kunt maximaal 20 e-mailadressen per virtuele matrix invoeren.
+> U kunt Maxi maal 20 e-mail adressen invoeren per virtuele matrix.
 
-Nadat u e-mailmelding voor een virtuele matrix hebt ingeschakeld, wordt een e-mailbericht telkens wanneer een kritieke waarschuwing wordt gegenereerd door leden van de meldingenlijst ontvangen. De berichten worden verzonden vanuit *storsimple-waarschuwingen-noreply\@mail.windowsazure.com* en vindt u een voorwaarde voor de waarschuwing. Ontvangers kunnen klikken op **Afmelden** om zelf te verwijderen uit de lijst met e-melding.
+Nadat u e-mail meldingen voor een virtuele matrix hebt ingeschakeld, ontvangen leden van de lijst met meldingen een e-mail bericht telkens wanneer een kritieke waarschuwing wordt weer gegeven. De berichten worden verzonden vanuit *storsimple-Alerts-reply\@mail.windowsazure.com* en de waarschuwings voorwaarde wordt beschreven. Ontvangers kunnen klikken op **Afmelden** om zichzelf te verwijderen uit de lijst met e-mail meldingen.
 
-#### <a name="to-enable-email-notification-for-alerts"></a>E-mailmeldingen voor waarschuwingen inschakelen
+#### <a name="to-enable-email-notification-for-alerts"></a>E-mail meldingen inschakelen voor waarschuwingen
 
-1. Ga naar uw StorSimple Device Manager-service en in de **Management** sectie, selecteer en klik op **apparaten**. Selecteer in de lijst met apparaten weergegeven, en klikt u op uw apparaat.
+1. Ga naar de StorSimple-Apparaatbeheer service en selecteer in de sectie **beheer** de optie **apparaten**. Selecteer en klik op uw apparaat in de lijst met apparaten die worden weer gegeven.
    
-    ![instellingen voor waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
-2. Hiermee opent u de **instellingen** blade. In de **apparaatinstellingen** sectie, selecteer **algemene**. Hiermee opent u de **algemene instellingen** blade.
+    ![waarschuwings instellingen](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
+2. Hiermee opent u de Blade **instellingen** . Selecteer in de sectie **Apparaatinstellingen** de optie **Algemeen**. Hiermee opent u de Blade **algemene instellingen** .
    
-    ![configuratie voor meldingen van waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
-3. In de **algemene instellingen** blade, Ga naar **waarschuwingsinstellingen** sectie en stel het volgende:
+    ![configuratie van waarschuwings meldingen](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
+3. Ga op de Blade **algemene instellingen** naar de sectie **waarschuwings instellingen** en stel het volgende in:
    
-   1. In de **Activeer e-mailmelding** veld **Ja**.
-   2. In de **e-servicebeheerders** veld **Ja** als u wilt dat de servicebeheerder en alle medebeheerders de waarschuwingsmeldingen moeten ontvangen.
-   3. In de **aanvullende e-mailontvangers** en voer de e-mailadressen van alle andere ontvangers die de waarschuwingsmeldingen moeten ontvangen. Geef de namen in de indeling *iemand\@somewhere.com*. Gebruik puntkomma te scheiden van de e-mailadressen. U kunt maximaal 20 e-mailadressen per virtuele apparaat configureren.
+   1. Selecteer in het veld **e-mail melding inschakelen** de optie **Ja**.
+   2. Selecteer in het veld **e-mail Service Administrators** de optie **Ja** als u wilt dat de service beheerder en alle mede beheerders de waarschuwings meldingen ontvangen.
+   3. Voer in het veld **extra e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer namen in de notatie *iemand\@somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per virtueel apparaat configureren.
       
-       ![configuratie voor meldingen van waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. Als u wilt een test-e-mailmelding verzenden, klikt u op **testbericht verzenden**. De StorSimple Device Manager-service wordt statusberichten weergegeven als de Testmelding wordt doorgestuurd.
+       ![configuratie van waarschuwings meldingen](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
+   4. Als u een melding voor een test bericht wilt verzenden, klikt u op **test bericht verzenden**. In de StorSimple-Apparaatbeheer service worden status berichten weer gegeven wanneer de test melding wordt doorgestuurd.
       
-       ![Waarschuwingen test-e-mailmelding verzonden](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![E-mail meldingen test melding verzonden](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Als het meldingsbericht test kan niet worden verzonden, kan de StorSimple Device Manager-service een toepasselijk bericht wordt weergegeven. Klik op **OK**, wacht een paar minuten en probeer het vervolgens opnieuw uw test-melding verzenden.
+      > Als het bericht van de test melding niet kan worden verzonden, wordt in de StorSimple-Apparaatbeheer-service een geschikt bericht weer gegeven. Klik op **OK**, wacht enkele minuten en probeer het bericht over het testen opnieuw te verzenden.
       >
       >
-   5. Aan de onderkant van de pagina, klikt u op **opslaan** aan uw configuratie op te slaan. Klik op **Ja** als u om bevestiging wordt gevraagd.
+   5. Klik onder aan de pagina op **Opslaan** om uw configuratie op te slaan. Klik op **Ja** als u om bevestiging wordt gevraagd.
       
-      ![Waarschuwingen test-e-mailmelding verzonden](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![E-mail meldingen test melding verzonden](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
-## <a name="common-alert-conditions"></a>Algemene voorwaarden van de waarschuwing
+## <a name="common-alert-conditions"></a>Algemene waarschuwings voorwaarden
 
-Uw StorSimple Virtual Array genereert waarschuwingen in reactie op tal van voorwaarden. Hier volgen de meest voorkomende typen waarschuwingen voorwaarden:
+De virtuele StorSimple-matrix genereert waarschuwingen als reactie op verschillende voor waarden. Hier volgen de meest voorkomende typen waarschuwings voorwaarden:
 
-* **Problemen met de netwerkverbinding** – deze waarschuwingen gegenereerd wanneer er problemen bij het overbrengen van gegevens. Communicatieproblemen kunnen optreden tijdens de overdracht van gegevens naar en vanuit de Azure storage-account of vanwege een gebrek aan connectiviteit tussen de virtuele apparaten en de StorSimple Device Manager-service. Communicatieproblemen zijn enkele van de moeilijkst om op te lossen omdat er zoveel Point of failure. U moet altijd eerst controleren of verbinding met het netwerk en toegang tot Internet beschikbaar zijn voordat u doorgaat u aan bij de meer geavanceerde probleemoplossing. Voor informatie over de poorten en firewall-instellingen, gaat u naar [systeemvereisten voor StorSimple Virtual Array](storsimple-ova-system-requirements.md). Voor hulp bij het oplossen van problemen, gaat u naar [problemen oplossen met de cmdlet Test-Connection](storsimple-troubleshoot-deployment.md).
-* **Prestatieproblemen** – deze waarschuwingen zijn veroorzaakt doordat het systeem is niet optimaal, zoals wanneer het zich onder een zware belasting.
+* **Connectiviteits problemen** : deze waarschuwingen treden op wanneer er problemen zijn bij het overbrengen van gegevens. Er kunnen communicatie problemen optreden tijdens de overdracht van gegevens naar en van het Azure-opslag account of vanwege een gebrek aan connectiviteit tussen de virtuele apparaten en de StorSimple-Apparaatbeheer service. Communicatie problemen zijn moeilijk te verhelpen, omdat er zoveel storings punten zijn. U moet altijd eerst controleren of de netwerk verbinding en Internet toegang beschikbaar zijn voordat u doorgaat met geavanceerdere probleem oplossing. Voor informatie over poorten en Firewall instellingen gaat u naar [StorSimple Virtual array-systeem vereisten](storsimple-ova-system-requirements.md). Voor hulp bij het oplossen van problemen gaat u naar [problemen oplossen met de cmdlet Test-Connection](storsimple-troubleshoot-deployment.md).
+* **Prestatie problemen** : deze waarschuwingen worden veroorzaakt wanneer uw systeem niet optimaal presteert, bijvoorbeeld wanneer het een zware belasting is.
 
-Bovendien ziet u mogelijk waarschuwingen met betrekking tot beveiliging, updates of mislukte.
+Daarnaast ziet u mogelijk waarschuwingen met betrekking tot beveiliging, updates of mislukte taken.
 
-## <a name="alert-severity-levels"></a>Ernstniveau van waarschuwingen
+## <a name="alert-severity-levels"></a>Ernst niveaus van waarschuwingen
 
-Waarschuwingen hebben verschillende niveaus, afhankelijk van de impact die de waarschuwing situatie heeft en de noodzaak van een reactie op de waarschuwing. De niveaus zijn:
+Waarschuwingen hebben verschillende ernst niveaus, afhankelijk van de impact die de waarschuwings situatie heeft en de nood zaak van een reactie op de waarschuwing. De ernst niveaus zijn:
 
-* **Kritieke** : deze waarschuwing wordt in reactie op een voorwaarde die invloed heeft op de geslaagde prestaties van uw systeem. Actie vereist om ervoor te zorgen dat de service niet wordt onderbroken StorSimple.
-* **Waarschuwing** – dit probleem kritiek kan worden als niet is opgelost. U moet de situatie onderzoeken en elke actie die vereist is om te wissen van het probleem.
-* **Informatie** : deze waarschuwing bevat informatie die nuttig zijn kan bij het bijhouden en beheren van uw systeem.
+* **Kritiek** : deze waarschuwing is in reactie op een voor waarde die van invloed is op de geslaagde prestaties van uw systeem. Actie is vereist om ervoor te zorgen dat de StorSimple-service niet wordt onderbroken.
+* **Waarschuwing** : dit probleem kan cruciaal worden als het niet is opgelost. U moet de situatie onderzoeken en alle acties uitvoeren die nodig zijn om het probleem op te lossen.
+* **Informatie** : deze waarschuwing bevat informatie die nuttig kan zijn bij het volgen en beheren van uw systeem.
 
-## <a name="view-and-track-alerts"></a>Waarschuwingen weergeven en bijhouden
+## <a name="view-and-track-alerts"></a>Waarschuwingen weer geven en bijhouden
 
-De overzichtsblade van de StorSimple Device Manager-service biedt u een snelle weergave op het aantal waarschuwingen op uw virtuele apparaten, gerangschikt op ernstniveau.
+De Blade StorSimple Apparaatbeheer service overzicht bevat een kort overzicht van het aantal waarschuwingen op uw virtuele apparaten, gerangschikt op Ernst niveau.
 
-![Waarschuwingen-dashboard](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
+![Waarschuwingen dashboard](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
 
-Klik op de ernst op om te openen de **waarschuwingen** blade. De resultaten bevatten alleen de waarschuwingen die overeenkomen met die ernstniveau.
+Klik op het Ernst niveau om de Blade **waarschuwingen** te openen. De resultaten omvatten alleen de waarschuwingen die overeenkomen met het Ernst niveau.
 
-![Rapport waarschuwingen binnen het bereik van Waarschuwingstype](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
+![Waarschuwings rapport voor het bereik van waarschuwingen](./media/storsimple-virtual-array-manage-alerts/alerts15.png)
 
-Klik op een waarschuwing in de lijst voor meer informatie over de waarschuwing, de laatste keer dat de waarschuwing is gemeld, waaronder het aantal exemplaren van de waarschuwing op het apparaat en de aanbevolen actie de waarschuwing te verhelpen.
+Klik op een waarschuwing in de lijst voor meer informatie over de waarschuwing, waaronder de laatste keer dat de waarschuwing is gerapporteerd, het aantal instanties van de waarschuwing op het apparaat en de aanbevolen actie om de waarschuwing op te lossen.
 
-![Lijst met waarschuwingen en details](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
+![Lijst met waarschuwingen en Details](./media/storsimple-virtual-array-manage-alerts/alerts16.png)
 
-Als u de gegevens te verzenden naar Microsoft Support nodig hebt, kunt u de details van de waarschuwing kopiëren naar een tekstbestand. Nadat u de aanbeveling wordt gevolgd en de waarschuwingsvoorwaarde on-premises opgelost, moet u de waarschuwing in de lijst wissen. Selecteer de waarschuwing in de lijst en klik vervolgens op **wissen**. Schakel meerdere waarschuwingen, elke waarschuwing selecteert, klikt u op een kolom met uitzondering van de **waarschuwing** kolom en klik vervolgens op **wissen** nadat u hebt geselecteerd de waarschuwingen worden gewist.
+U kunt de waarschuwings Details naar een tekst bestand kopiëren als u de informatie naar Microsoft Ondersteuning moet verzenden. Nadat u de aanbeveling hebt gevolgd en de on-premises waarschuwings voorwaarde hebt opgelost, moet u de waarschuwing in de lijst wissen. Selecteer de waarschuwing in de lijst en klik vervolgens op **wissen**. Als u meerdere waarschuwingen wilt wissen, selecteert u elke waarschuwing, klikt u op een wille keurige kolom, behalve de kolom **waarschuwing** , en klikt u vervolgens op **wissen** nadat u alle waarschuwingen hebt geselecteerd die moeten worden gewist.
 
-Wanneer u klikt op **wissen**, hebt u de mogelijkheid om opmerkingen over de waarschuwing en de stappen die u hebt genomen om het probleem te verhelpen.
+Wanneer u op **wissen**klikt, kunt u opmerkingen over de waarschuwing geven en de stappen die u hebt genomen om het probleem op te lossen.
 
-![Waarschuwing opmerkingen](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
+![waarschuwings opmerkingen](./media/storsimple-virtual-array-manage-alerts/alerts17.png)
 
-Sommige gebeurtenissen worden verwijderd door het systeem als een andere gebeurtenis wordt geactiveerd met nieuwe gegevens.
+Sommige gebeurtenissen worden door het systeem gewist als een andere gebeurtenis wordt geactiveerd met nieuwe gegevens.
 
-## <a name="sort-and-review-alerts"></a>Waarschuwingen voor sorteren en controleren
+## <a name="sort-and-review-alerts"></a>Waarschuwingen sorteren en controleren
 
-De **waarschuwingen** blade kan maximaal 250 waarschuwingen worden weergegeven. Als u dit aantal waarschuwingen hebt overschreden, wordt niet alle waarschuwingen worden weergegeven in de standaardweergave. De volgende velden om aan te passen welke waarschuwingen worden weergegeven, kunt u combineren:
+Op de Blade **waarschuwingen** kunnen maxi maal 250 waarschuwingen worden weer gegeven. Als u het aantal waarschuwingen hebt overschreden, worden niet alle waarschuwingen weer gegeven in de standaard weergave. U kunt de volgende velden combi neren om aan te passen welke waarschuwingen worden weer gegeven:
 
-* **Status** – u kunt een weergeven **Active** of **uitgeschakeld** waarschuwingen. Actieve waarschuwingen worden nog steeds op uw systeem wordt geactiveerd terwijl uitgeschakeld waarschuwingen zijn handmatig verwijderd door een beheerder of via een programma is uitgeschakeld omdat het systeem voorwaarde voor de waarschuwing met nieuwe informatie bijgewerkt.
-* **Ernst** – u kunt waarschuwingen van alle niveaus (kritiek, waarschuwing, informatie), of alleen een bepaalde prioriteit, zoals alleen kritieke waarschuwingen weergeven.
-* **Bron** – u kunt waarschuwingen weergeven vanaf alle bronnen of beperken van de waarschuwingen die afkomstig van de service of een of alle van de virtuele apparaten zijn.
-* **Tijdsbereik** – door op te geven de **van** en **naar** datums en tijdstempels, u kunt kijken waarschuwingen gedurende de periode waarin u geïnteresseerd bent.
+* **Status** : u kunt **actieve** of **gewiste** waarschuwingen weer geven. Actieve waarschuwingen worden nog steeds op uw systeem geactiveerd, terwijl gewiste waarschuwingen hand matig zijn gewist door een beheerder of programmatisch zijn gewist omdat het systeem de waarschuwings voorwaarde heeft bijgewerkt met nieuwe gegevens.
+* **Ernst** : u kunt waarschuwingen weer geven van alle ernst niveaus (kritiek, waarschuwing, informatie) of alleen een bepaalde ernst, zoals alleen kritieke waarschuwingen.
+* **Bron** : u kunt waarschuwingen van alle bronnen weer geven of de waarschuwingen beperken tot de meldingen die afkomstig zijn van de service of van een of meer virtuele apparaten.
+* **Tijds bereik** : door de **begin** -en eind datum en tijds tempels op **te** geven, kunt u waarschuwingen bekijken tijdens de periode waarin u bent geïnteresseerd.
 
-## <a name="alerts-quick-reference"></a>Snelzoekgids voor waarschuwingen
+## <a name="alerts-quick-reference"></a>Naslag informatie voor waarschuwingen
 
-De volgende tabellen worden enkele van de StorSimple-waarschuwingen die u tegenkomen kunt, evenals aanvullende informatie en aanbevelingen indien beschikbaar. StorSimple Virtual Array waarschuwingen kunnen worden onderverdeeld in een van de volgende categorieën:
+De volgende tabellen geven een lijst van enkele van de StorSimple-waarschuwingen die u kunt tegen komen, evenals aanvullende informatie en aanbevelingen waar beschikbaar. Waarschuwingen voor de virtuele StorSimple-matrix vallen in een van de volgende categorieën:
 
-* [Connectiviteitswaarschuwingen cloud](#cloud-connectivity-alerts)
-* [Van configuratiewaarschuwingen](#configuration-alerts)
-* [Waarschuwingen voor taak](#job-failure-alerts)
-* [Waarschuwingen over toepassingsprestaties](#performance-alerts)
+* [Connectiviteits waarschuwingen voor de Cloud](#cloud-connectivity-alerts)
+* [Configuratie waarschuwingen](#configuration-alerts)
+* [Taak fout meldingen](#job-failure-alerts)
+* [Prestatie waarschuwingen](#performance-alerts)
 * [Beveiligingswaarschuwingen](#security-alerts)
 
-### <a name="cloud-connectivity-alerts"></a>Connectiviteitswaarschuwingen cloud
+### <a name="cloud-connectivity-alerts"></a>Connectiviteits waarschuwingen voor de Cloud
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Apparaat <*apparaatnaam*> niet is verbonden met de cloud. |Het apparaat met de naam kan geen verbinding maken met de cloud. |Kan geen verbinding maken met de cloud. Dit kan een van de volgende oorzaken hebben:<ul><li>Het is mogelijk dat er een probleem met de instellingen op uw apparaat.</li><li>Het is mogelijk dat er een probleem met de referenties van het storage-account.</li></ul>Voor meer informatie over het oplossen van problemen met de netwerkverbinding, gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) van het apparaat. |
+| Apparaat-<*apparaatnaam*> is niet verbonden met de Cloud. |Het apparaat met de naam kan geen verbinding maken met de Cloud. |Kan geen verbinding maken met de Cloud. Dit kan een van de volgende oorzaken hebben:<ul><li>Er is mogelijk een probleem met de netwerk instellingen op het apparaat.</li><li>Er is mogelijk een probleem met de referenties van het opslag account.</li></ul>Ga naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) van het apparaat voor meer informatie over het oplossen van verbindings problemen. |
 
-### <a name="configuration-alerts"></a>Van configuratiewaarschuwingen
+### <a name="configuration-alerts"></a>Configuratie waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| On-premises virtueel apparaatconfiguratie wordt niet ondersteund. |Trage prestaties. |De huidige configuratie kan leiden tot verminderde prestaties. Zorg ervoor dat uw server voldoet aan de minimale configuratievereisten. Ga voor meer informatie naar [StorSimple virtuele matrix: vereisten](storsimple-ova-system-requirements.md). |
-| U worden uitgevoerd buiten de ingerichte schijfruimte beschikbaar op <*apparaatnaam*\>. |Waarschuwing voor schijf-ruimte. |U weinig ingerichte schijfruimte beschikbaar. Als u wilt Maak ruimte vrij, houd rekening met workloads verplaatst naar een ander volume of share of het verwijderen van gegevens. |
+| Configuratie van on-premises virtuele apparaten wordt niet ondersteund. |Trage prestaties. |De huidige configuratie kan leiden tot verminderde prestaties. Zorg ervoor dat uw server voldoet aan de minimale configuratie vereisten. Ga voor meer informatie naar [StorSimple Virtual array-vereisten](storsimple-ova-system-requirements.md). |
+| Er is onvoldoende ingerichte schijf ruimte beschikbaar op <*apparaatnaam*\>. |Waarschuwing voor schijf ruimte. |Er is weinig ingerichte schijf ruimte beschikbaar. Om ruimte vrij te maken, kunt u werk belastingen verplaatsen naar een ander volume of gegevens delen of verwijderen. |
 
-### <a name="job-failure-alerts"></a>Waarschuwingen voor taak
+### <a name="job-failure-alerts"></a>Taak fout meldingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Back-up van <*apparaatnaam* \> kan niet worden voltooid. |Back-uptaak is mislukt. |Kan een back-up niet maken. Houd rekening met een van de volgende:<ul><li>Problemen met de netwerkverbinding kunnen worden voorkomen dat de back-upbewerking is voltooid. Zorg ervoor dat er geen verbindingsproblemen zijn. Voor meer informatie over het oplossen van problemen met de netwerkverbinding, gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor uw virtuele apparaat.</li><li>U kunt de beschikbare opslaglimiet hebt bereikt. Overweeg het verwijderen van een back-ups die niet meer nodig zijn om ruimte vrij.</li></ul> De problemen oplossen, wist u de waarschuwing en voer de bewerking opnieuw uit. |
-| Klonen van <*apparaatnaam* \> kan niet worden voltooid. |Kloon de migratietaak is mislukt. |Kan geen een kloon maken. Houd rekening met een van de volgende:<ul><li>De lijst met back-up is mogelijk niet geldig. Vernieuw de lijst om te controleren of dat het nog geldig is.</li><li>Problemen met de netwerkverbinding kunnen worden voorkomen dat de kloonbewerking is voltooid. Zorg ervoor dat er geen verbindingsproblemen zijn.</li><li>U kunt de beschikbare opslaglimiet hebt bereikt. Overweeg het verwijderen van een back-ups die niet meer nodig zijn om ruimte vrij.</li></ul>De problemen oplossen, wist u de waarschuwing en voer de bewerking opnieuw uit. |
+| Kan geen back-up van <*apparaatnaam*\> volt ooien. |De back-uptaak is mislukt. |Kan geen back-up maken. Overweeg een van de volgende:<ul><li>De back-upbewerking kan niet worden voltooid vanwege verbindings problemen. Zorg ervoor dat er geen verbindings problemen zijn. Voor meer informatie over het oplossen van verbindings problemen gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor uw virtuele apparaat.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul> Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
+| De kloon van <*apparaatnaam*\> kan niet worden voltooid. |Fout bij het klonen van de taak. |Kan geen kloon maken. Overweeg een van de volgende:<ul><li>De back-uplijst is mogelijk niet geldig. Vernieuw de lijst om te controleren of deze nog geldig is.</li><li>Connectiviteits problemen kunnen ertoe leiden dat de kloon bewerking niet kan worden voltooid. Zorg ervoor dat er geen verbindings problemen zijn.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul>Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
 
-### <a name="networking-alerts"></a>Waarschuwingen voor netwerken
+### <a name="networking-alerts"></a>Netwerk waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Kan geen verbinding maken met de service voor verificatie. |Gegevenspad-fout |De URL die wordt gebruikt voor verificatie is niet bereikbaar. Zorg ervoor dat uw firewall-regels de URL-patronen die is opgegeven voor het StorSimple-apparaat bevatten. Voor meer informatie over URL-patronen in Azure portal, gaat u naar [StorSimple Virtual Array netwerkvereisten](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
+| Kan geen verbinding maken met de verificatie service. |DataPath-fout |De URL die wordt gebruikt om te verifiëren, is niet bereikbaar. Zorg ervoor dat de firewall regels de URL-patronen bevatten die zijn opgegeven voor het StorSimple-apparaat. Voor meer informatie over URL-patronen in Azure Portal gaat u naar [StorSimple Virtual array Network requirements](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|
 
-### <a name="performance-alerts"></a>Waarschuwingen over toepassingsprestaties
+### <a name="performance-alerts"></a>Prestatie waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| U ervaart onverwachte vertragingen bij overdracht van gegevens. |Trage gegevensoverdracht. |Beperkingsfouten optreden wanneer u de schaalbaarheidsdoelen van een opslagservice overschrijdt. De opslagservice doet dit om ervoor te zorgen dat geen enkele client of de tenant de service ten koste van anderen kunt gebruiken. Voor meer informatie over het oplossen van uw Azure storage-account, gaat u naar [bewaken, problemen vaststellen en oplossen van Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| U hebt onvoldoende lokale ruimte gereserveerd geen schijfruimte meer beschikbaar op <*apparaatnaam*\>. |Trage reactietijd. |10% van de totale ingerichte grootte voor <*apparaatnaam* \> is gereserveerd op de lokale apparaat en u nu weinig de gereserveerde ruimte. De werkbelasting op <*apparaatnaam* \> genereert een hogere snelheid van verloop of u mogelijk hebt onlangs gemigreerd een grote hoeveelheid gegevens. Dit kan leiden tot verminderde prestaties. Houd rekening met een van de volgende acties om dit probleem oplossen:<ul><li>Vergroot de bandbreedte van de cloud op dit apparaat.</li><li>Verminder of werkbelastingen verplaatsen naar een ander volume of share.</li></ul> |
+| U ondervindt onverwachte vertragingen bij de gegevens overdracht. |Trage gegevens overdracht. |Beperkings fouten treden op wanneer u de schaalbaarheids doelen van een opslag service overschrijdt. De opslag service doet dit om er zeker van te zijn dat er geen enkele client of Tenant is die de service bij de kosten van anderen kan gebruiken. Ga voor meer informatie over het oplossen van problemen met uw Azure-opslag account naar [Microsoft Azure Storage controleren, vaststellen en problemen oplossen](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
+| U hebt onvoldoende lokale reserve ring schijf ruimte op <*apparaatnaam*\>. |Trage reactie tijd. |10% van de totale ingerichte grootte voor <*apparaatnaam*\> is gereserveerd op het lokale apparaat en u hebt nu weinig ruimte vrij. De werk belasting op <*apparaatnaam*\> een hogere frequentie van verloop of u hebt onlangs een grote hoeveelheid gegevens gemigreerd. Dit kan leiden tot verminderde prestaties. Overweeg een van de volgende acties om dit probleem op te lossen:<ul><li>Verhoog de Cloud bandbreedte naar dit apparaat.</li><li>Werk belastingen beperken of verplaatsen naar een ander volume of een andere share.</li></ul> |
 
 ### <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Wachtwoord voor <*apparaatnaam* \> verloopt <*getal* \> dagen. |Waarschuwing: wachtwoord. |Uw wachtwoord verloopt <*getal* \> dagen. U kunt uw wachtwoord wijzigen. Ga voor meer informatie naar [wijzigen van het beheerderswachtwoord van de StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md). |
+| Het wacht woord voor <*apparaatnaam*\> verloopt over <*aantal*\> dagen. |Wachtwoord waarschuwing. |Uw wacht woord verloopt over <*aantal*\> dagen. Overweeg uw wacht woord te wijzigen. Ga voor meer informatie naar [het StorSimple-wacht woord van de virtuele matrix van het apparaat wijzigen](storsimple-virtual-array-change-device-admin-password.md). |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over de StorSimple Virtual Array](storsimple-ova-overview.md).
+* [Meer informatie over de StorSimple-virtuele matrix](storsimple-ova-overview.md).

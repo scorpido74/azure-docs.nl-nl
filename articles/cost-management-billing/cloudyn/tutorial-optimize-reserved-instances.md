@@ -4,17 +4,17 @@ description: In deze zelfstudie leert u hoe u de kosten van gereserveerde instan
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 02/13/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: 9b0dbc31f3789cb0033a531ad6c5395d3cfb8bcc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769946"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201115"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -70,7 +70,7 @@ De rode balken geven de totale kosten weer van de aangeschafte gereserveerde ins
 
 ## <a name="benefits-of-ris"></a>Voordelen van gereserveerde instanties
 
-Elke aankoop van een gereserveerde instantie is van toepassing op een virtuele machine van een specifieke grootte en op een specifieke locatie. Bijvoorbeeld: D2s\_v3 die wordt uitgevoerd op de locatie US - west, zoals wordt weergegeven op de volgende afbeelding:
+Elke aankoop van een gereserveerde instantie is van toepassing op een virtuele machine van een specifieke grootte en op een specifieke locatie. Bijvoorbeeld: D2s\_v3 die wordt uitgevoerd op de locatie VS - west, zoals wordt weergegeven op de volgende afbeelding:
 
 ![Details van gereserveerde instanties voor Azure](./media/tutorial-optimize-reserved-instances/azure02.png)
 
@@ -105,7 +105,7 @@ Navigeer in de Cloudyn-portal naar **Optimizer** > **RI Comparison** en selectee
 
 Selecteer in het rapport Reserved Instance Purchase Impact een VM-grootte (instantietype), locatie (regio), reserveringstermijn, aantal en de verwachte runtime. Vervolgens kunt u beoordelen of u met uw aankoop geld bespaart.
 
-Als u bijvoorbeeld een reservering koopt voor een virtuele machine van het type DS1\_v2 in US - oost en deze een heel jaar 24 x 7 uitvoert, kunt u jaarlijks $ 369,48 besparen. Het break-evenpoint is met vijf maanden. Zie de volgende afbeelding:
+Als u bijvoorbeeld een reservering koopt voor een virtuele machine van het type DS1\_v2 in VS - oost en deze een heel jaar 24 x 7 uitvoert, kunt u jaarlijks $ 369,48 besparen. Het break-evenpoint is met vijf maanden. Zie de volgende afbeelding:
 
 ![Break-evenpoint van gereserveerde instantie voor Azure](./media/tutorial-optimize-reserved-instances/azure03.png)
 

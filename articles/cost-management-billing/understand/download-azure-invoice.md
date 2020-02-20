@@ -3,21 +3,18 @@ title: Uw Microsoft Azure-factuur weergeven en downloaden
 description: Hierin wordt beschreven hoe u uw Microsoft Azure-factuur kunt weergeven en downloaden.
 keywords: facturering, factuur, factuur downloaden, Azure-factuur, Azure-gebruik
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987822"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200262"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Uw Microsoft Azure-factuur weergeven en downloaden
 
@@ -87,7 +84,7 @@ Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Facturen voor uw Microsoft-klantovereenkomst ontvangen via e-mail
 
-Als u een factureringsaccount voor een Microsoft-klantovereenkomst hebt, kunt u zich aanmelden om uw factuur via e-mail te ontvangen. Alle gebruikers met de rol van eigenaar, inzender, lezer of factuurbeheerder in een factureringsprofiel ontvangen hun factuur via een e-mailbericht. 
+Als u een factureringsaccount voor een Microsoft-klantovereenkomst hebt, kunt u zich aanmelden om uw factuur via e-mail te ontvangen. Alle gebruikers met de rol van eigenaar, inzender, lezer of factuurbeheerder in een factureringsprofiel ontvangen hun factuur via een e-mailbericht.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
@@ -109,11 +106,11 @@ Als u een factureringsaccount voor een Microsoft-klantovereenkomst hebt, kunt u 
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Meld u af voor ontvangst van uw Microsoft-klantovereenkomst via e-mail
 
-Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden**. Alle gebruikers met de rol van eigenaar, inzender, lezer of factuurbeheerder worden afgemeld voor het ontvangen van een factuur per e-mail. 
+Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden**. Alle gebruikers met de rol van eigenaar, inzender, lezer of factuurbeheerder worden afgemeld voor het ontvangen van een factuur per e-mail.
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Anderen toegang geven tot facturen voor uw Microsoft-klantovereenkomst
 
-U kunt anderen toegang geven om facturen te bekijken, te downloaden en te betalen door hen de rol van factuurbeheerder toe te wijzen voor een factureringsprofiel. Als u ervoor hebt gekozen om facturen per e-mail bericht te ontvangen, krijgen deze gebruikers de facturen ook per e-mail. 
+U kunt anderen toegang geven om facturen te bekijken, te downloaden en te betalen door hen de rol van factuurbeheerder toe te wijzen voor een factureringsprofiel. Als u ervoor hebt gekozen om facturen per e-mail bericht te ontvangen, krijgen deze gebruikers de facturen ook per e-mail.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 

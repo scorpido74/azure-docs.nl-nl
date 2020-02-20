@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: bb661e6d4497a85cf2ef445fc39774e93a04cc99
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b0704c6262451cef615355e871ce7f26005b3132
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899414"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467662"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importeren in een Azure-app-configuratiearchief
 
@@ -31,10 +31,6 @@ Met dit voorbeeld script worden sleutel waarde-instellingen in een Azure-app con
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2,0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)als u wilt installeren of upgraden.
-
-U moet eerst de CLI-extensie voor het Azure App Configuration-archief installeren door de volgende opdracht uit te voeren:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -53,7 +49,7 @@ In dit script worden de volgende opdrachten gebruikt om een app-configuratie arc
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [AZ appconfig KV import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Hiermee worden geïmporteerd naar een app-configuratie opslag resource. |
+| [AZ appconfig KV import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Hiermee worden geïmporteerd naar een app-configuratie opslag resource. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

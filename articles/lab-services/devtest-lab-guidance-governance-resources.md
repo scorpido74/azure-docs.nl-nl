@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981491"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470646"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance van Azure DevTest Labs-infra structuur-bronnen
 Dit artikel heeft betrekking op de uitlijning en het beheer van resources voor DevTest Labs binnen uw organisatie. 
@@ -38,7 +38,7 @@ Voordat een organisatie Azure voor algemene toepassings ontwikkeling begint te g
 
 De **eerste aanbevolen procedure** is het beoordelen van de Azure-taxonomie van organisaties waarbij de afdelingen tussen productie-en ontwikkelings abonnementen worden beschreven. In het volgende diagram maakt de voorgestelde taxonomie gebruik van een logische schei ding van ontwikkel-en test-en productie omgevingen. Met deze methode kan een organisatie facturerings codes introduceren voor het bijhouden van de kosten voor elke omgeving afzonderlijk. Zie voor meer informatie beheer van voorlichtend [abonnement](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Daarnaast kunt u [Azure Tags](../azure-resource-manager/management/tag-resources.md) gebruiken om resources te organiseren voor tracking-en facturerings doeleinden.
 
-De **tweede aanbevolen procedure** is het inschakelen van het DevTest-abonnement in de Azure Enter prise Portal. Hiermee kan een organisatie client besturingssystemen uitvoeren die normaal gesp roken niet beschikbaar zijn in een Azure-Bedrijfs abonnement. Gebruik vervolgens de Enter prise-software waarbij u alleen betaalt voor de reken kracht en geen zorgen hoeft te maken over de licentie verlening. Het zorgt ervoor dat de facturering voor aangewezen services, inclusief galerij afbeeldingen in IaaS zoals Microsoft SQL Server, alleen is gebaseerd op verbruik. [Hier](https://azure.microsoft.com/offers/ms-azr-0148p/) vindt u meer informatie over het Azure DevTest-abonnement dat u hier kunt vinden voor [klanten van Enterprise Agreement](https://azure.microsoft.com/offers/ms-azr-0023p/) (EA) en hoe u deze voor betaalt.
+De **tweede aanbevolen procedure** is het inschakelen van het DevTest-abonnement in de Azure Enter prise Portal. Hiermee kan een organisatie client besturingssystemen uitvoeren die normaal gesp roken niet beschikbaar zijn in een Azure-Bedrijfs abonnement. Gebruik vervolgens de Enter prise-software waarbij u alleen betaalt voor de reken kracht en u hoeft zich geen zorgen te maken over licenties. Het zorgt ervoor dat de facturering voor aangewezen services, inclusief galerij afbeeldingen in IaaS zoals Microsoft SQL Server, alleen is gebaseerd op verbruik. [Hier](https://azure.microsoft.com/offers/ms-azr-0148p/) vindt u meer informatie over het Azure DevTest-abonnement dat u hier kunt vinden voor [klanten van Enterprise Agreement](https://azure.microsoft.com/offers/ms-azr-0023p/) (EA) en hoe u deze voor betaalt.
 
 ![Resource-uitlijning met abonnementen](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 

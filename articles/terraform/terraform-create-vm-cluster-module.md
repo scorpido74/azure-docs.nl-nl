@@ -3,12 +3,12 @@ title: 'Zelf studie: een Azure VM-cluster met terraform maken met behulp van het
 description: Leer hoe u Terraform-modules kunt gebruiken om een cluster met ​​virtuele Windows-machines in Azure te maken
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185547"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472197"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register
 
@@ -25,9 +25,9 @@ Zie voor meer informatie over Terraform de [documentatie van Terraform](https://
 ## <a name="set-up-authentication-with-azure"></a>Verificatie bij Azure instellen
 
 > [!TIP]
-> Als u [Terraform-omgevingsvariabelen](/azure/virtual-machines/linux/terraform-install-configure) gebruikt of deze zelfstudie uitvoert in de [Azure Cloud Shell](/azure/cloud-shell/overview), slaat u deze stap over.
+> Als u [Terraform-omgevingsvariabelen](terraform-install-configure.md) gebruikt of deze zelfstudie uitvoert in de [Azure Cloud Shell](/azure/cloud-shell/overview), slaat u deze stap over.
 
- Lees [Terraform installeren en de toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure) om een ​​Azure-service-principal te maken. Gebruik deze service-principal om een ​​nieuw bestand, `azureProviderAndCreds.tf`, in een lege map te vullen met de volgende code:
+ Lees [Terraform installeren en de toegang tot Azure configureren](terraform-install-configure.md) om een ​​Azure-service-principal te maken. Gebruik deze service-principal om een ​​nieuw bestand, `azureProviderAndCreds.tf`, in een lege map te vullen met de volgende code:
 
 ```hcl
 variable subscription_id {}

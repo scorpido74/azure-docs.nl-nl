@@ -1,21 +1,18 @@
 ---
 title: Migreren van EA naar API’s voor Microsoft-klantovereenkomsten - Azure
 description: Dit artikel helpt u inzicht te krijgen in de gevolgen van het migreren van een Microsoft Enterprise Agreement (EA) naar een Microsoft-klantovereenkomst.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: micflan
-ms.custom: ''
-ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.reviewer: micflan
+ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76514711"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201030"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren vanuit Enterprise Agreement naar API’s voor Microsoft-klantovereenkomst
 

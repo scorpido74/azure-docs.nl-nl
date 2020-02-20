@@ -1,6 +1,7 @@
 ---
-title: Zelfstudie voor het kopiëren van gegevens vanaf VHD's naar beheerde schijven met Azure Data Box zware | Microsoft Docs
-description: Informatie over het kopiëren van gegevens vanaf VHD's van on-premises VM-workloads voor uw Azure Data Box zware
+title: "Zelf studie: kopiëren van Vhd's naar Managed disks"
+titleSuffix: Azure Data Box Heavy
+description: Meer informatie over het kopiëren van gegevens van Vhd's van on-premises VM-workloads naar uw Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,83 +9,83 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670843"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471326"
 ---
-# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Zelfstudie: Gebruik Data Box zware voor het importeren van gegevens als beheerde schijven in Azure
+# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Zelf studie: Data Box Heavy gebruiken om gegevens te importeren als beheerde schijven in azure
 
-Deze zelfstudie wordt beschreven hoe u met Azure Data Box zware kunt u on-premises VHD's migreren naar managed disks in Azure. De VHD's van de on-premises VM's worden gekopieerd naar Data Box zware als pagina-blobs en zijn geüpload naar Azure als beheerde schijven. Deze beheerde schijven kunnen vervolgens worden gekoppeld aan Azure-VM's.
+In deze zelf studie wordt beschreven hoe u de Azure Data Box Heavy gebruikt voor het migreren van uw on-premises Vhd's naar Managed disks in Azure. De Vhd's van on-premises Vm's worden gekopieerd naar Data Box Heavy als pagina-blobs en als beheerde schijven in Azure worden geüpload. Deze beheerde schijven kunnen vervolgens worden gekoppeld aan virtuele Azure-machines.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Lees de voorwaarden
-> * Verbinding maken met Data Box-zwaar
-> * Gegevens kopiëren naar Data Box-zwaar
+> * Vereisten controleren
+> * Verbinding maken met Data Box Heavy
+> * Gegevens kopiëren naar Data Box Heavy
 
 
 ## <a name="prerequisites"></a>Vereisten
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de zelfstudie [ Instellen van Azure Data Box zware](data-box-heavy-deploy-set-up.md).
-2. U hebt uw Data Box-zwaar ontvangen en de status van de volgorde in de portal **geleverd**.
-3. U bent verbonden met een netwerk met hoge snelheid. Voor de snelste kopie snelheden worden bereikt, kunnen twee 40-GbE-verbindingen (één per knooppunt) gelijktijdig worden gebruikt. Als u geen 40-GbE-verbinding beschikbaar hebt, wordt u aangeraden dat u ten minste twee 10 GbE-verbindingen (één per knooppunt hebt). 
-4. U hebt bekeken de:
+1. U hebt de [zelf studie voltooid: stel Azure data Box Heavy](data-box-heavy-deploy-set-up.md)in.
+2. U hebt de Data Box Heavy ontvangen en de orderstatus in de portal is **Geleverd**.
+3. U bent verbonden met een netwerk met hoge snelheid. Voor de snelste kopieersnelheden kunnen twee verbindingen van 40 GbE (één per knooppunt) naast elkaar worden gebruikt. Als u niet beschikt over een 40-GbE-verbinding, is het advies dat u ten minste twee verbindingen van 10 GbE (één per knooppunt) gebruikt. 
+4. U hebt het volgende gecontroleerd:
 
-    - Ondersteund [beheerd schijfgrootten in Azure-object groottelimieten](data-box-heavy-limits.md#azure-object-size-limits).
-    - [Inleiding tot Azure beheerde schijven](/azure/virtual-machines/windows/managed-disks-overview). 
+    - Ondersteunde [beheerde schijf grootten in azure-object grootte limieten](data-box-heavy-limits.md#azure-object-size-limits).
+    - [Inleiding tot Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
 
-## <a name="connect-to-data-box-heavy"></a>Verbinding maken met Data Box-zwaar
+## <a name="connect-to-data-box-heavy"></a>Verbinding maken met Data Box Heavy
 
-Op basis van de resourcegroepen die is opgegeven, maakt gegevens in het zware u een bestandsshare voor elke gekoppelde resource-groep per knooppunt. Bijvoorbeeld, als `mydbmdrg1` en `mydbmdrg2` zijn gemaakt tijdens de bestelling plaatsen, de volgende shares worden gemaakt:
+Op basis van de opgegeven resource groepen, maakt Data Box Heavy één share voor elke gekoppelde resource groep per knoop punt. Als bijvoorbeeld `mydbmdrg1` en `mydbmdrg2` zijn gemaakt bij het plaatsen van de order, worden de volgende shares gemaakt:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-De volgende drie mappen worden gemaakt die overeenkomen met containers in uw opslagaccount in de share.
+Binnen elke share worden de volgende drie mappen gemaakt die overeenkomen met containers in uw opslag account.
 
-- Premium SSD
-- Standard HDD
+- Premium - SSD
+- Standard - HDD
 - Standard - SSD
 
-De volgende tabel bevat de UNC-paden naar de shares op uw Data Box-zwaar.
+In de volgende tabel ziet u de UNC-paden naar de shares op uw Data Box Heavy.
  
-|        Verbindingsprotocol           |             UNC-pad naar de share                                               |
+|        Verbindings Protocol           |             UNC-pad naar de share                                               |
 |-------------------|--------------------------------------------------------------------------------|
 | SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
 | NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
 
-De stappen om verbinding te maken zijn op basis van of u SMB- of NFS gebruiken voor verbinding met gegevens in het zware shares, verschillend.
+De stappen om verbinding te maken, zijn afhankelijk van het feit of u SMB of NFS gebruikt om verbinding te maken met Data Box Heavy-shares.
 
 > [!NOTE]
-> - Verbinding maken via de REST wordt niet ondersteund voor deze functie.
-> - Herhaal de connect-instructies voor het verbinding maken met het tweede knooppunt van de gegevens in het zware.
+> - Verbinding maken via REST wordt niet ondersteund voor deze functie.
+> - Herhaal de verbindings instructies om verbinding te maken met het tweede knoop punt van Data Box Heavy.
 
-### <a name="connect-to-data-box-heavy-via-smb"></a>Verbinding maken met Data Box-zwaar via SMB
+### <a name="connect-to-data-box-heavy-via-smb"></a>Verbinding maken met Data Box Heavy via SMB
 
-Als een computer met Windows Server-host, volgt u deze stappen voor het verbinding maken met de Data Box-zwaar.
+Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om verbinding met de Data Box Heavy te maken.
 
-1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **referenties ophalen** om op te halen van de referenties voor toegang voor de bestandsshares die zijn gekoppeld aan de resourcegroep. U krijgt ook de referenties voor toegang vanuit de **Apparaatdetails** in Azure portal.
+1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **referenties ophalen** om de toegangs referenties op te halen voor de shares die zijn gekoppeld aan uw resource groep. U kunt ook de toegangs referenties ophalen van de **apparaatgegevens** in de Azure Portal.
 
     > [!NOTE]
     > De referenties voor alle shares voor beheerde schijven zijn identiek.
 
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Van de toegang delen en kopiëren in het dialoogvenster van gegevens, kopiëren de **gebruikersnaam** en de **wachtwoord** voor de share. Klik op **OK**.
+2. Kopieer de **gebruikers naam** en het **wacht woord** voor de share in het dialoog venster toegang delen en gegevens kopiëren. Klik op **OK**.
     
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Voor toegang tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voorbeeld) vanaf uw hostcomputer, open een opdrachtvenster. Typ in de opdrachtprompt:
+3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voor beeld), opent u een opdracht venster. Typ bij de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    De UNC-share-paden in dit voorbeeld zijn er als volgt uit:
+    Uw UNC-share paden in dit voor beeld zijn als volgt:
 
     - `\\169.254.250.200\mydbmdrg1_MDisk`
     - `\\169.254.250.200\mydbmdrg2_MDisk`
@@ -102,14 +103,14 @@ Als een computer met Windows Server-host, volgt u deze stappen voor het verbindi
     
     ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
-    U ziet nu de volgende mappen in elke share precreated.
+    U ziet nu de volgende vooraf gemaakte mappen in elke share.
     
     ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
-### <a name="connect-to-data-box-heavy-via-nfs"></a>Verbinding maken met Data Box-zwaar via NFS
+### <a name="connect-to-data-box-heavy-via-nfs"></a>Verbinding maken met Data Box Heavy via NFS
 
-Als u van een Linux-host-computer gebruikmaakt, moet u de volgende stappen voor het configureren van uw apparaat voor toegang tot de NFS-clients uitvoeren.
+Als u een Linux-hostcomputer gebruikt, voert u de volgende stappen uit om uw apparaat te configureren om toegang tot NFS-clients toe te staan.
 
 1. Geef de IP-adressen op van de clients die toegang hebben tot de share. Ga in de lokale gebruikersinterface naar de pagina **Verbinding maken en kopiëren**. Klik onder **NFS-instellingen** op **NFS-clienttoegang**.
 
@@ -121,44 +122,44 @@ Als u van een Linux-host-computer gebruikmaakt, moet u de volgende stappen voor 
 
 2. Zorg dat er een [ondersteunde versie](data-box-system-requirements.md) van de NFS-client op de Linux-hostcomputer is geïnstalleerd. Gebruik de specifieke versie voor uw Linux-distributie.
 
-3. Zodra de NFS-client is geïnstalleerd, gebruikt u de volgende opdracht uit om te koppelen van de NFS-share op uw apparaat:
+3. Zodra de NFS-client is geïnstalleerd, gebruikt u de volgende opdracht om de NFS-share op uw apparaat te koppelen:
 
     `sudo mount <Data Box or Data Box Heavy IP>:/<NFS share on Data Box or Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Het volgende voorbeeld ziet hoe u verbinding maakt via NFS naar een Data Box of gegevens in het zware share. Het IP-adres apparaat van Data Box of gegevens in het zware `169.254.250.200`, de share `mydbmdrg1_MDisk` is gekoppeld aan de ubuntuVM, koppelen punt wordt `/home/databoxubuntuhost/databox`.
+    In het volgende voor beeld ziet u hoe u verbinding maakt via NFS met een Data Box of Data Box Heavy share. De Data Box Data Box Heavy of het IP-adres van het apparaat is `169.254.250.200`, de share `mydbmdrg1_MDisk` is gekoppeld aan het ubuntuVM, het koppel punt dat wordt `/home/databoxubuntuhost/databox`.
 
     `sudo mount -t nfs 169.254.250.200:/mydbmdrg1_MDisk /home/databoxubuntuhost/databox`
 
 
-## <a name="copy-data-to-data-box-heavy"></a>Gegevens kopiëren naar Data Box-zwaar
+## <a name="copy-data-to-data-box-heavy"></a>Gegevens kopiëren naar Data Box Heavy
 
-Nadat u met de server verbonden bent, wordt de volgende stap is om gegevens te kopiëren. Het VHD-bestand wordt gekopieerd naar het tijdelijke opslagaccount dat als pagina-blob. De pagina-blob is vervolgens geconverteerd naar een beheerde schijf en verplaatst naar een resourcegroep.
+Nadat u verbinding hebt gemaakt met de gegevens server, is de volgende stap het kopiëren van gegevens. Het VHD-bestand wordt gekopieerd naar het staging Storage-account als pagina-blob. De pagina-BLOB wordt vervolgens geconverteerd naar een beheerde schijf en verplaatst naar een resource groep.
 
-Bekijk de volgende punten voordat u begint met het kopiëren van gegevens:
+Bekijk de volgende overwegingen voordat u begint met het kopiëren van gegevens:
 
-- Kopieer de VHD's altijd op een van de precreated mappen. Als u de VHD's buiten deze mappen of in een map die u hebt gemaakt kopieert, wordt de VHD's worden geüpload naar Azure Storage-account als pagina-blobs en schijven niet worden beheerd.
-- De vaste VHD's kunnen worden geüpload voor het maken van beheerde schijven. VHDX-bestanden of dynamische en differentiërende VHD's worden niet ondersteund.
-- U kunt slechts één beheerde schijf met een specifieke naam in een resourcegroep hebben in alle precreated mappen. Dit betekent dat de VHD's geüpload naar de precreated mappen moeten een unieke naam hebben. Zorg ervoor dat de opgegeven naam komt niet overeen met een al bestaande beheerde schijf in een resourcegroep.
-- Bekijk limieten van de beheerde schijf in [Omvangslimieten voor Azure-object](data-box-heavy-limits.md#azure-object-size-limits).
+- Kopieer de VHD's altijd naar een van de vooraf gemaakte mappen. Als u de Vhd's buiten deze mappen of in een map die u hebt gemaakt kopieert, worden de Vhd's geüpload naar Azure Storage-account als pagina-blobs en niet-beheerde schijven.
+- Alleen de vaste VHD's kunnen worden geüpload om beheerde schijven te maken. VHDX-bestanden of dynamische en differentiërende Vhd's worden niet ondersteund.
+- U kunt slechts één beheerde schijf met een opgegeven naam in een resource groep in alle voorgemaakte mappen hebben. Dit betekent dat de VHD's die naar de vooraf gemaakte mappen zijn geüpload, unieke namen moeten hebben. Zorg ervoor dat de opgegeven naam niet overeenkomt met een bestaande beheerde schijf in een resourcegroep.
+- Bekijk de limieten voor beheerde schijven in [Azure-object grootte limieten](data-box-heavy-limits.md#azure-object-size-limits).
 
-Afhankelijk van of u verbinding via SMB- of NFS maakt, kunt u het volgende gebruiken:
+Afhankelijk van of u verbinding maakt via SMB of NFS, kunt u het volgende gebruiken:
 
-- [Kopiëren van gegevens via SMB](data-box-heavy-deploy-copy-data.md#copy-data-to-data-box-heavy)
-- [Kopiëren van gegevens via NFS](data-box-heavy-deploy-copy-data-via-nfs.md#copy-data-to-data-box-heavy)
+- [Gegevens kopiëren via SMB](data-box-heavy-deploy-copy-data.md#copy-data-to-data-box-heavy)
+- [Gegevens kopiëren via NFS](data-box-heavy-deploy-copy-data-via-nfs.md#copy-data-to-data-box-heavy)
 
-Wacht tot de kopieertaken zijn voltooid. Zorg ervoor dat de taken kopiëren zonder fouten zijn voltooid voordat u met de volgende stap verdergaat.
+Wacht tot de kopieertaken zijn voltooid. Zorg ervoor dat de Kopieer taken zonder fouten zijn voltooid voordat u naar de volgende stap gaat.
 
 ![Geen fouten op de pagina **Verbinding maken en kopiëren**](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-Als er fouten tijdens het kopiëren zijn, downloadt u de logboeken van de **verbinding maken en kopiëren** pagina.
+Als er fouten optreden tijdens het kopieer proces, downloadt u de logboeken van de pagina **verbinding maken en kopiëren** .
 
-- Als u een bestand dat zich niet in 512 bytes uitgelijnd hebt gekopieerd, wordt het bestand is niet geüpload als pagina-blob naar de staging storage-account. Hier ziet u een fout in de logboeken. Verwijder het bestand en kopieer een bestand dat is 512 bytes uitgelijnd.
+- Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd, wordt het bestand niet geüpload als pagina-BLOB naar uw staging Storage-account. Er wordt een fout in de logboeken weer geven. Verwijder het bestand en kopieer een bestand dat 512 bytes is uitgelijnd.
 
-- Als u een VHDX (deze bestanden worden niet ondersteund) met een lange naam hebt gekopieerd, ziet u een fout in de logboeken.
+- Als u een VHDX hebt gekopieerd (deze bestanden worden niet ondersteund) met een lange naam, wordt een fout in de logboeken weer geven.
 
-    ![Fout in de logboeken van ** pagina verbinding maken en kopiëren **](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
+    ![Fout in de logboeken van * * verbinding maken en kopiëren * * pagina](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 
-    Los de fouten voordat u met de volgende stap doorgaat.
+    Los de fouten op voordat u verdergaat met de volgende stap.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
     
@@ -169,16 +170,16 @@ Wanneer de kopieertaak is voltooid, kunt u naar **Voorbereiding voor verzending*
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd over Azure Data Box zware onderwerpen, zoals:
+In deze zelfstudie zijn verschillende onderwerpen besproken over de Azure Data Box Heavy, zoals:
 
 > [!div class="checklist"]
-> * Lees de voorwaarden
-> * Verbinding maken met Data Box-zwaar
-> * Gegevens kopiëren naar Data Box-zwaar
+> * Vereisten controleren
+> * Verbinding maken met Data Box Heavy
+> * Gegevens kopiëren naar Data Box Heavy
 
 
-Ga naar de volgende zelfstudie voor meer informatie over uw gegevens in het zware naar Microsoft verzenden.
+Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box Heavy naar Microsoft verstuurt.
 
 > [!div class="nextstepaction"]
-> [Uw Azure Data Box-zwaar naar Microsoft verzenden](./data-box-heavy-deploy-picked-up.md)
+> [Uw Azure Data Box Heavy verzenden naar Microsoft](./data-box-heavy-deploy-picked-up.md)
 

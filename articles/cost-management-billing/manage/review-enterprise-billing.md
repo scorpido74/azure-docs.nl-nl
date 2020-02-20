@@ -1,31 +1,23 @@
 ---
 title: Factureringsgegevens van het Azure Enterprise-enrollment controleren met REST API | Microsoft Docs
 description: Meer informatie over het gebruik van Azure REST API's om de factureringsgegevens voor Enterprise-enrollment te controleren.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993464"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199565"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Facturering van Enterprise-enrollment controleren met behulp van REST API's
 
 Met de rapportage-API van Azure kunt u uw Azure-kosten controleren en beheren.
 
-In dit artikel vindt u informatie over het ophalen van de factureringsgegevens voor factureringsaccounts, afdelingen of Enterprise-overeenkomsten (EA) met behulp van de REST API's van Azure. 
+In dit artikel vindt u informatie over het ophalen van de factureringsgegevens voor factureringsaccounts, afdelingen of Enterprise-overeenkomsten (EA) met behulp van de REST API's van Azure.
 
 ## <a name="individual-account-billing"></a>Facturering voor individuele accounts
 
@@ -39,7 +31,7 @@ Authorization: Bearer
 
 De parameter `{billingAccountId}` is vereist en moet de id voor het account bevatten.
 
-De volgende headers zijn vereist: 
+De volgende headers zijn vereist:
 
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
@@ -80,9 +72,9 @@ Statuscode 200 (OK) wordt geretourneerd bij een geslaagd antwoord dat een lijst 
 
 Dit voorbeeld is ingekort; zie [Get usage details for a billing account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy) (Gebruiksgegevens ophalen voor een factureringsaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
 
-## <a name="department-billing"></a>Afdelingsfacturering 
+## <a name="department-billing"></a>Afdelingsfacturering
 
-Gebruiksdetails ophalen voor alle accounts in een afdeling. 
+Gebruiksdetails ophalen voor alle accounts in een afdeling.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,7 +84,7 @@ Authorization: Bearer
 
 De parameter `{departmentId}` is vereist en moet de id voor de afdeling in het inschrijvingsaccount bevatten.
 
-De volgende headers zijn vereist: 
+De volgende headers zijn vereist:
 
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
@@ -148,7 +140,7 @@ Authorization: Bearer
 
 De parameter `{enrollmentAccountId}` is vereist en moet de id van het inschrijvingsaccount bevatten.
 
-De volgende headers zijn vereist: 
+De volgende headers zijn vereist:
 
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
@@ -185,11 +177,11 @@ In het volgende voorbeeld ziet u de uitvoer van de REST API voor de Enterprise-e
     }
   ]
 }
-``` 
+```
 
 Dit voorbeeld is ingekort; zie [Get usage details for an enrollment account](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy) (Gebruiksgegevens ophalen voor een enrollmentaccount) voor een volledige beschrijving van elk antwoordveld en foutafhandeling.
 
-## <a name="next-steps"></a>Volgende stappen 
+## <a name="next-steps"></a>Volgende stappen
 - Bekijk [Overzicht van Enterprise Reporting](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
 - Onderzoek [REST API voor Enterprise-facturering](https://docs.microsoft.com/rest/api/billing/)   
 - [Aan de slag gaan met Azure REST API](https://docs.microsoft.com/rest/api/azure/)   

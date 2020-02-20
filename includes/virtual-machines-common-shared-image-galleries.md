@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020808"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474219"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
 - Beheerde algemene replicatie van installatie kopieën.
 - Versie beheer en groepering van installatie kopieën voor eenvoudiger beheer.
-- Maxi maal beschik bare installatie kopieën met ZRS-accounts (zone redundant Storage) in regio's die Beschikbaarheidszones ondersteunen. ZRS biedt een betere veerkracht tegen zonegebonden fouten.
+- Maxi maal beschik bare installatie kopieën met ZRS-accounts (zone redundant Storage) in regio's die Beschikbaarheidszones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden-fouten.
 - Het delen van meerdere abonnementen en zelfs tussen Active Directory (AD)-tenants met behulp van RBAC.
 - Het schalen van uw implementaties met afbeeldings replica's in elke regio.
 
@@ -31,7 +31,7 @@ Als u een groot aantal beheerde installatie kopieën hebt dat u wilt behouden en
 
 De functie gedeelde installatie kopie galerie heeft meerdere bron typen:
 
-| Bron | Beschrijving|
+| Resource | Beschrijving|
 |----------|------------|
 | **Beheerde installatie kopie** | Een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van [gegeneraliseerde](#generalized-and-specialized-images) vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
 | **Snapshot** | Een kopie van een VHD die kan worden gebruikt om een **installatie kopie versie**te maken. Moment opnamen kunnen worden gemaakt op basis van een [gespecialiseerde](#generalized-and-specialized-images) virtuele machine (een die niet is gegeneraliseerd) en vervolgens alleen worden gebruikt of met moment opnamen van gegevens schijven, om een gespecialiseerde installatie kopie versie te maken.
@@ -51,9 +51,9 @@ Er zijn drie para meters voor elke definitie van de installatie kopie die worden
 
 |Definitie van installatiekopie|Uitgever|Aanbieding|Sku|
 |---|---|---|---|
-|myImage1|Contoso|Financiën|Back-end|
-|myImage2|Contoso|Financiën|Front-end|
-|myImage3|Testen|Financiën|Front-end|
+|myImage1|Contoso|Finance|Back-end|
+|myImage2|Contoso|Finance|Front|
+|myImage3|Testen|Finance|Front|
 
 Alle drie deze hebben unieke sets waarden. De indeling is vergelijkbaar met de manier waarop u op dit moment Publisher, aanbieding en SKU kunt opgeven voor [installatie kopieën van Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) in azure PowerShell om de nieuwste versie van een Marketplace-installatie kopie te verkrijgen. Elke afbeeldings definitie moet een unieke set van deze waarden hebben.
 
@@ -93,21 +93,21 @@ De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's
 
 | Bron regio's        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
-| Australië - centraal     | China - oost        | India - zuid        | Europa - west        |
-| Australië - centraal 2   | China - oost 2      | Azië - zuidoost     | UK - zuid           |
-| Australië - oost        | China - noord       | Japan - Oost         | UK - west            |
-| Australië - zuidoost   | China - noord 2     | Japan - West         | US DoD Central     |
-| Brazilië - Zuid          | Azië - oost         | Korea - centraal      | US DoD East        |
-| Canada-Midden        | VS - oost           | Korea - zuid        | US Gov - Arizona     |
-| Canada-Oost           | VS - oost 2         | VS - noord-centraal   | US Gov - Texas       |
-| India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | US Gov - Virginia    |
+| Australië - centraal     | China East        | India - zuid        | Europa -west        |
+| Australië - centraal 2   | China-oost 2      | Azië - zuidoost     | Verenigd Koninkrijk Zuid           |
+| Australië - oost        | China - noord       | Japan - oost         | Verenigd Koninkrijk West            |
+| Australië - zuidoost   | China-noord 2     | Japan - west         | US DoD Central     |
+| Brazilië - zuid          | Azië - oost         | Korea - centraal      | US DoD East        |
+| Canada - midden        | VS - oost           | Korea - zuid        | VS (overheid) - Arizona     |
+| Canada - oost           | VS - oost 2         | VS - noord-centraal   | VS (overheid) - Texas       |
+| India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | VS (overheid) - Virginia    |
 | VS - centraal            | Frankrijk - centraal    | VS - zuid-centraal   | India - west         |
 | Centrale VS-EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
 |                       |                   |                    | VS - west 2          |
 
 
 
-## <a name="limits"></a>Beperkingen 
+## <a name="limits"></a>Limieten 
 
 Er zijn limieten, per abonnement, voor het implementeren van resources met behulp van de galerie met gedeelde afbeeldingen:
 - 100 gedeelde afbeeldings galerieën, per abonnement, per regio
@@ -144,7 +144,7 @@ De regio's waarvan een versie van de gedeelde installatie kopie wordt gereplicee
 
 ![Afbeelding die laat zien hoe u installatie kopieën kunt repliceren](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Toegang
+## <a name="access"></a>Access
 
 Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 
@@ -157,9 +157,9 @@ U wordt aangeraden op Galerie niveau te delen voor de beste ervaring. Het is nie
 
 Installatie kopieën kunnen ook worden gedeeld, op schaal, zelfs via tenants met behulp van een multi tenant-app-registratie. Zie [Galerie-VM-installatie kopieën delen in azure-tenants](../articles/virtual-machines/linux/share-images-across-tenants.md)voor meer informatie over het delen van installatie kopieën tussen tenants.
 
-## <a name="billing"></a>Billing
-Er zijn geen extra kosten verbonden aan het gebruik van de Shared Image Gallery-service. Er worden kosten in rekening gebracht voor de volgende resources:
-- Opslag kosten voor het opslaan van de versies van de gedeelde installatie kopieën. De kosten zijn afhankelijk van het aantal replica's van de versie van de installatie kopie en het aantal regio's waarnaar de versie wordt gerepliceerd. Als u bijvoorbeeld twee installatie kopieën hebt en beide worden gerepliceerd naar drie regio's, wordt u gewijzigd voor 6 Managed disks op basis van de grootte. Zie [Managed disks prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie.
+## <a name="billing"></a>Facturering
+Er worden geen extra kosten in rekening gebracht voor het gebruik van de service voor de gedeelde afbeeldingen galerie. Er worden kosten in rekening gebracht voor de volgende resources:
+- Opslag kosten voor het opslaan van de versies van de gedeelde installatie kopieën. De kosten zijn afhankelijk van het aantal replica's van de versie van de installatie kopie en het aantal regio's waarnaar de versie wordt gerepliceerd. Als u bijvoorbeeld twee installatie kopieën hebt en beide worden gerepliceerd naar drie regio's, worden er 6 beheerde schijven in rekening gebracht op basis van de grootte. Zie [Managed disks prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie.
 - Uitgaande netwerk kosten voor replicatie van de eerste versie van de installatie kopie van de bron regio naar de gerepliceerde regio's. Volgende replica's worden binnen de regio verwerkt, zodat er geen extra kosten in rekening worden gebracht. 
 
 ## <a name="updating-resources"></a>Resources bijwerken
@@ -222,7 +222,7 @@ U kunt een resource voor de galerie met gedeelde afbeeldingen maken met behulp v
 
 Volg de onderstaande stappen om alle resources van de gedeelde installatie kopie galerie weer te geven in abonnementen waartoe u toegang hebt op de Azure Portal:
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 1. Ga naar **alle resources**.
 1. Selecteer alle abonnementen waaronder u alle resources wilt weer geven.
 1. Zoek naar bronnen van het type **persoonlijke galerie**.

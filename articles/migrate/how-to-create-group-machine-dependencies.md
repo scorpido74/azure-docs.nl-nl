@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 96d1c44eb9ecb71684e817a89f9376a07dbe3ccb
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bf6798d557cb1d27030565e4706864e945de6f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514966"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472091"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Afhankelijkheids visualisatie instellen voor evaluatie
 
@@ -37,10 +37,10 @@ Meer [informatie](concepts-dependency-visualization.md#how-does-it-work) over de
 **Functies** | **Opmerking**
 --- | ---
 Beschikbaarheid | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
-Serviceoverzicht | Bij een afhankelijkheids visualisatie wordt Servicetoewijzing oplossing in Azure Monitor. [Servicetoewijzing](../azure-monitor/insights/service-map.md) detecteert en toont automatisch verbindingen tussen servers.
+Servicetoewijzing | Bij een afhankelijkheids visualisatie wordt Servicetoewijzing oplossing in Azure Monitor. [Servicetoewijzing](../azure-monitor/insights/service-map.md) detecteert en toont automatisch verbindingen tussen servers.
 Agents | Als u afhankelijkheids visualisatie wilt gebruiken, installeert u de volgende agents op de computers die u wilt toewijzen:<br/> - [log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) agent (voorheen micro soft Monitoring Agent (MMA) genoemd.<br/> - [servicetoewijzing-afhankelijkheids agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Als u de installatie van de agent wilt automatiseren, kunt u een implementatie hulpprogramma, zoals Configuration Manager, gebruiken dat een agent implementatie oplossing voor Azure Migrate heeft.
 Agent voor afhankelijkheden | Controleer de ondersteuning voor de [afhankelijkheids agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) voor Windows en Linux.<br/><br/> Meer [informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over het gebruik van scripts voor het installeren van de afhankelijkheids agent.
-Log Analytics-agent (MMA) | Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) over MMA-installatie methoden.<br/><br/> Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 of hoger, hoeft u de MMA-agent niet te installeren. Servicetoewijzing integreert met Operations Manager. U kunt de integratie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)inschakelen met behulp van de richt lijnen. Houd er echter rekening mee dat de afhankelijkheids agent moet worden geïnstalleerd op deze computers.<br/><br/> [Controleer](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) de Linux-besturings systemen die worden ondersteund door de log Analytics-agent.
+Log Analytics-agent (MMA) | Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over MMA-installatie methoden.<br/><br/> Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 of hoger, hoeft u de MMA-agent niet te installeren. Servicetoewijzing integreert met Operations Manager. U kunt de integratie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)inschakelen met behulp van de richt lijnen. Houd er echter rekening mee dat de afhankelijkheids agent moet worden geïnstalleerd op deze computers.<br/><br/> [Controleer](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) de Linux-besturings systemen die worden ondersteund door de log Analytics-agent.
 Beoordelings groepen | Groepen waarvoor u afhankelijkheden wilt visualiseren, mogen niet meer dan 10 machines bevatten. Als u meer dan 10 computers hebt, splitst u deze in kleinere groepen om afhankelijkheden te visualiseren.
 
 ## <a name="associate-a-log-analytics-workspace"></a>Een Log Analytics werkruimte koppelen

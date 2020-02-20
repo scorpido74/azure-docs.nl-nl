@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839795"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471785"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Onderhouds planningen gebruiken voor het beheren van service-updates en-onderhoud
 
@@ -55,7 +55,7 @@ De standaardinstelling is dat voor alle nieuwe Azure SQL Data Warehouse-exemplar
 
 Als u de onderhoudsplanning wilt weergeven die op uw datawarehouse is toegepast, voert u de volgende stappen uit:
 
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2.  Selecteer het data warehouse dat u wilt weer geven. 
 3.  Het geselecteerde data warehouse wordt geopend op de Blade overzicht. De onderhouds planning die wordt toegepast op het Data Warehouse wordt onder **onderhouds planning**weer gegeven.
 
@@ -71,9 +71,9 @@ Een onderhouds planning kan op elk gewenst moment worden bijgewerkt of gewijzigd
 Het primaire en het secundaire Windows-venster moeten verschillende datumbereiken hebben. Een voor beeld is een primair venster van dinsdag – donderdag en een secundaire periode van zaterdag – zondag.
 
 Als u de onderhouds planning voor uw data warehouse wilt wijzigen, voert u de volgende stappen uit:
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2.  Selecteer het data warehouse dat u wilt bijwerken. De pagina wordt geopend op de Blade overzicht. 
-3.  Open de pagina voor onderhouds plannings instellingen door de **overzichts koppeling onderhouds planning (preview)** op de Blade overzicht te selecteren. U kunt ook de optie **onderhouds planning** selecteren in het menu resource aan de linkerkant.  
+3.  Open de pagina voor onderhouds plannings instellingen door de koppeling **overzicht van onderhouds planning** te selecteren op de Blade overzicht. U kunt ook de optie **onderhouds planning** selecteren in het menu resource aan de linkerkant.  
 
     ![Blade opties voor overzicht](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 

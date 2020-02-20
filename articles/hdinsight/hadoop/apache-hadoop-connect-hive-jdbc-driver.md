@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/17/2020
+ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053798"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466923"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query's Apache Hive via het JDBC-stuur programma in HDInsight
 
@@ -25,7 +25,7 @@ Zie [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDB
 
 ## <a name="prerequisites"></a>Vereisten
 
-* An HDInsight Hadoop-cluster. Zie aan de [slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)om een account te maken.
+* An HDInsight Hadoop-cluster. Zie aan de [slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)om een account te maken. Zorg ervoor dat de service-HiveServer2 wordt uitgevoerd.
 * De [jdk-versie 11 of hoger van Java Developer Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) .
 * [Squirrel SQL](http://squirrel-sql.sourceforge.net/). SQuirreL is een JDBC-client toepassing.
 
@@ -37,7 +37,7 @@ JDBC-verbindingen met een HDInsight-cluster op Azure worden gemaakt via poort 44
 
 Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Wanneer u de verbinding tot stand brengt, moet u de naam en het wacht woord van het HDInsight-cluster beheerder gebruiken om de cluster gateway te verifiëren. Wanneer u verbinding maakt vanuit JDBC-clients, zoals SQuirreL SQL, moet u de beheerders naam en het wacht woord opgeven in de client instellingen.
 
@@ -73,7 +73,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
     |Eigenschap | Waarde |
     |---|---|
-    |Naam|Hive|
+    |Name|Hive|
     |Voor beeld-URL|JDBC: hive2://localhost: 443/default; transportMode = HTTP; SSL = True; httpPath =/hive2|
     |Extra klassepad|Gebruik de knop **toevoegen** om alle eerder gedownloade jar-bestanden toe te voegen.|
     |Klassenaam|org. apache. Hive. JDBC. HiveDriver|
@@ -90,7 +90,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
     |Eigenschap |Waarde |
     |---|---|
-    |Naam|Hive in HDInsight|
+    |Name|Hive in HDInsight|
     |Stuurprogramma|Gebruik de vervolg keuzelijst om het **Hive** -stuur programma te selecteren.|
     |URL|JDBC: hive2://CLUSTERNAME.azurehdinsight.net: 443/default; transportMode = HTTP; SSL = True; httpPath =/hive2. Vervang **CLUSTERNAME** door de naam van uw HDInsight-cluster.|
     |Gebruikersnaam|De naam van het cluster aanmeldings account voor uw HDInsight-cluster. De standaard instelling is **admin**.|

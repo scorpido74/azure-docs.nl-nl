@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van Azure Functions met behu
 keywords: jenkins, azure, devops, java, azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158771"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470663"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Implementeren naar Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
 
@@ -131,7 +131,7 @@ In deze sectie maakt u de [Jenkins-pijplijn](https://jenkins.io/doc/book/pipelin
 
 U kunt nu de Jenkins-taak uitvoeren.
 
-1. Haal eerst de autorisatiesleutel op via de instructies in het artikel [HTTP-triggers en -bindingen in Azure Functions](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys).
+1. Haal eerst de autorisatiesleutel op via de instructies in het artikel [HTTP-triggers en -bindingen in Azure Functions](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys).
 
 1. Voer in de browser de URL naar de app in. Vervang de tijdelijke aanduidingen door de desbetreffende waarden en geef een numerieke waarde op voor **&lt;input_number>** als invoer voor de Java-functie.
 

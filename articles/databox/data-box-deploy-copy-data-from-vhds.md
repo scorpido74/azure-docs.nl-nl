@@ -1,5 +1,6 @@
 ---
-title: Zelf studie voor het kopiëren van gegevens van Vhd's naar Managed disks met Azure Data Box | Microsoft Docs
+title: "Zelf studie: kopiëren van Vhd's naar Managed disks"
+titleSuffix: Azure Data Box
 description: Meer informatie over het kopiëren van gegevens van Vhd's van on-premises VM-workloads naar uw Azure Data Box
 services: databox
 author: alkohli
@@ -8,14 +9,14 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240466"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471224"
 ---
-# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Zelfstudie: Data Box gebruiken om gegevens te importeren als managed disks in azure
+# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Zelf studie: Data Box gebruiken om gegevens te importeren als beheerde schijven in azure
 
 In deze zelf studie wordt beschreven hoe u de Azure Data Box gebruikt voor het migreren van uw on-premises Vhd's naar Managed disks in Azure. De Vhd's van on-premises Vm's worden gekopieerd naar Data Box als pagina-blobs en als beheerde schijven in Azure worden geüpload. Deze beheerde schijven kunnen vervolgens worden gekoppeld aan virtuele Azure-machines.
 
@@ -31,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de zelfstudie [ Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
+1. U hebt de [zelf studie voltooid: stel Azure data Box](data-box-deploy-set-up.md)in.
 2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is **Geleverd**.
 3. U bent verbonden met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, gebruikt u een 1-GbE-gegevens koppeling, maar dit is van invloed op de Kopieer snelheden.
 4. U hebt het volgende gecontroleerd:
@@ -41,7 +42,7 @@ Zorg voordat u begint voor het volgende:
 
 ## <a name="connect-to-data-box"></a>Verbinding maken met Data Box
 
-Op basis van de opgegeven resource groepen, maakt Data Box één share voor elke gekoppelde resource groep. Als `mydbmdrg1` en`mydbmdrg2` bijvoorbeeld zijn gemaakt bij het plaatsen van de order, worden de volgende shares gemaakt:
+Op basis van de opgegeven resource groepen, maakt Data Box één share voor elke gekoppelde resource groep. Als bijvoorbeeld `mydbmdrg1` en `mydbmdrg2` zijn gemaakt bij het plaatsen van de order, worden de volgende shares gemaakt:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
@@ -79,7 +80,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voor beeld), opent u een opdracht venster. Typ in de opdrachtprompt:
+3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw resource (*mydbmdrg1* in het volgende voor beeld), opent u een opdracht venster. Typ bij de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -135,9 +136,9 @@ Nadat u verbinding hebt gemaakt met de gegevens server, is de volgende stap het 
 
 Bekijk de volgende overwegingen voordat u begint met het kopiëren van gegevens:
 
-- Kopieer de Vhd's altijd naar een van de voorgemaakte mappen. Als u de Vhd's buiten deze mappen of in een map die u hebt gemaakt kopieert, worden de Vhd's geüpload naar Azure Storage-account als pagina-blobs en niet-beheerde schijven.
-- Alleen de vaste Vhd's kunnen worden geüpload om beheerde schijven te maken. VHDX-bestanden of dynamische en differentiërende Vhd's worden niet ondersteund.
-- U kunt slechts één beheerde schijf met een opgegeven naam in een resource groep in alle voorgemaakte mappen hebben. Dit betekent dat de Vhd's die zijn geüpload naar de voorgemaakte mappen unieke namen moeten hebben. Zorg ervoor dat de opgegeven naam niet overeenkomt met een bestaande beheerde schijf in een resource groep.
+- Kopieer de VHD's altijd naar een van de vooraf gemaakte mappen. Als u de Vhd's buiten deze mappen of in een map die u hebt gemaakt kopieert, worden de Vhd's geüpload naar Azure Storage-account als pagina-blobs en niet-beheerde schijven.
+- Alleen de vaste VHD's kunnen worden geüpload om beheerde schijven te maken. VHDX-bestanden of dynamische en differentiërende Vhd's worden niet ondersteund.
+- U kunt slechts één beheerde schijf met een opgegeven naam in een resource groep in alle voorgemaakte mappen hebben. Dit betekent dat de VHD's die naar de vooraf gemaakte mappen zijn geüpload, unieke namen moeten hebben. Zorg ervoor dat de opgegeven naam niet overeenkomt met een bestaande beheerde schijf in een resourcegroep.
 - Bekijk de limieten voor beheerde schijven in [Azure-object grootte limieten](data-box-limits.md#azure-object-size-limits).
 
 Afhankelijk van of u verbinding maakt via SMB of NFS, kunt u het volgende gebruiken:

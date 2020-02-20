@@ -1,26 +1,20 @@
 ---
 title: Registreren voor Office 365 met een Azure-account | Microsoft Docs
 description: Lees hier meer over het maken van een Office 365-abonnement met behulp van een Azure-account
-services: ''
-documentationcenter: ''
 author: JiangChen79
-manager: adpick
-editor: ''
+ms.reviewer: adwise
 tags: billing,top-support-issue
-ms.assetid: ''
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993594"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199922"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registreren voor een Office 365-abonnement met uw Azure-account
 Als u Azure-abonnement hebt, kunt u uw Azure-account gebruiken om u te registreren voor een Office 365-abonnement. Als u deel uitmaakt van een organisatie die een Azure-abonnement heeft, kunt u Office 365-abonnementen maken voor gebruikers in uw bestaande Azure Active Directory (Azure AD). Registreer u voor Office 365 met een account met de machtiging Globale beheerder of Factureringsbeheerder in uw Azure Active Directory-tenant. Zie [Mijn accountmachtigingen in Azure AD controleren](#RoleInAzureAD) en [Beheerdersrollen toewijzen in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) voor meer informatie.

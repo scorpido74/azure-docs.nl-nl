@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425082"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467910"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics probleem oplossing
 In dit artikel vindt u informatie over het oplossen van problemen die relevant zijn voor het gebruik van Azure Diagnostics. Zie [Azure Diagnostics Overview](diagnostics-extension-overview.md)voor meer informatie over Azure Diagnostics.
@@ -297,5 +297,5 @@ In de portal-ervaring in de virtuele machines worden standaard prestatie meter i
 
 - Hiermee wordt aangegeven of de gegevens in de opslag item namen in het Engels zijn. Als de namen van de items niet in het Engels zijn, kan de grafiek met metrische gegevens niet worden herkend. **Risico beperking**: Wijzig de taal van de computer in het Engels voor systeem accounts. Als u dit wilt doen, selecteert u **configuratie scherm** > **regio** > instellingen voor **beheer** > **kopiëren**. Schakel vervolgens het selectie vakje **welkomst scherm en systeem accounts** uit zodat de aangepaste taal niet wordt toegepast op het systeem account.
 
-- Als u Joker tekens (\*) gebruikt in de namen van uw prestatie meter items, kan de Portal de geconfigureerde en verzamelde teller niet correleren wanneer de prestatie meter items worden verzonden naar de Sink van het Azure Storage. **Risico beperking**: om ervoor te zorgen dat u Joker tekens kunt gebruiken en de portal (\*) wilt uitbreiden, moet u de prestatie meter items door sturen naar de [sink ' Azure monitor '](diagnostics-extension-schema.md#diagnostics-extension-111).
+- Als u Joker tekens (\*) gebruikt in de namen van uw prestatie meter items, kan de Portal de geconfigureerde en verzamelde teller niet correleren wanneer de prestatie meter items worden verzonden naar de Sink van het Azure Storage. **Risico beperking**: om ervoor te zorgen dat u Joker tekens kunt gebruiken en de portal (\*) wilt uitbreiden, moet u uw prestatie meter items door sturen naar de Azure monitor sink.
 

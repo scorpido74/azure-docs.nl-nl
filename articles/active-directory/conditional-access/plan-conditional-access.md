@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185892"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468434"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Procedure: de implementatie van voorwaardelijke toegang plannen in Azure Active Directory
 
@@ -31,6 +31,9 @@ Als aanvullende functies vereist zijn, moet u mogelijk ook gerelateerde licentie
 Er zijn twee soorten beleids regels voor voorwaardelijke toegang: basis lijn en standaard. Een [basislijn beleid](baseline-protection.md) is een vooraf gedefinieerd beleid voor voorwaardelijke toegang. Het doel van dit beleid is ervoor te zorgen dat u ten minste het basis niveau voor beveiliging hebt ingeschakeld. Basislijn beleidsregels. Basislijn beleids regels zijn beschikbaar in alle versies van Azure AD en bieden alleen beperkte aanpassings opties. Als voor een scenario meer flexibiliteit is vereist, schakelt u het basislijn beleid uit en implementeert u uw vereisten in een aangepast standaard beleid.
 
 In een standaard beleid voor voorwaardelijke toegang kunt u alle instellingen aanpassen om het beleid aan te passen aan uw bedrijfs vereisten. Voor het standaard beleid is een Azure AD Premium P1-licentie vereist.
+
+>[!NOTE]
+> We raden u aan om Azure AD-beleid voor voorwaardelijke toegang te gebruiken om de beste afdwinging te verkrijgen na de initiële verificatie van het apparaat. Dit omvat het sluiten van sessies als het apparaat niet meer compatibel is en de code stroom van het apparaat.
 
 ## <a name="draft-policies"></a>Concept beleid
 

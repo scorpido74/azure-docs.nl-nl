@@ -1,20 +1,18 @@
 ---
 title: Reserveringskorting toepassen op Azure Cosmos DB | Microsoft Docs
 description: Lees hoe een reserveringskorting wordt toegepast op ingerichte doorvoer (RU/s) in Azure Cosmos DB.
-services: cosmos-db
 author: bandersmsft
-manager: kfile
+ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.reviewer: sngun
-ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2477e1074ab90d36f92b647dd74513e3fa9ae70f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995557"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200296"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Reserveringskorting toepassen op Azure Cosmos DB
 
@@ -45,10 +43,10 @@ De reserveringskorting wordt toegepast op kosten van Azure Cosmos DB-doorvoer op
 |Azure Cosmos DB - 100 RU/s/uur - KR - zuid|    KR - zuid     |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - EU - west|    EU - west     |      1   |
 |Azure Cosmos DB - 100 RU/s/uur - KR - centraal|   KR - centraal    |       1  |
-|Azure Cosmos DB - 100 RU/s/uur - UK - zuid|   Verenigd Koninkrijk Zuid      |     1    |
-|Azure Cosmos DB - 100 RU/s/uur - UK - west|   Verenigd Koninkrijk West      |    1     |
+|Azure Cosmos DB - 100 RU/s/uur - VK - zuid|   Verenigd Koninkrijk Zuid      |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - VK - west|   Verenigd Koninkrijk West      |    1     |
 |Azure Cosmos DB - 100 RU/s/uur - UK - noord |   UK - noord    |     1    |
-|Azure Cosmos DB - 100 RU/s/uur - UK - zuid 2|   UK - zuid 2      |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - VK - zuid 2|   VK - zuid 2      |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - oost 2|  US - oost 2     |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - noord-centraal|   US - noord-centraal      |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - west|   US - west      |     1    |

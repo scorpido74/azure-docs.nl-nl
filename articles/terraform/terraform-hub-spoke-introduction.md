@@ -3,12 +3,12 @@ title: 'Zelf studie: een hybride netwerk topologie voor hub en spoke maken in az
 description: Zelf studie waarin wordt uitgelegd hoe u een volledige referentie architectuur van een hybride netwerk maakt in azure met behulp van terraform
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159031"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472176"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform
 
@@ -30,7 +30,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 - **Azure-abonnement**: als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
-- **Terraform installeren en configureren**: voor het inrichten van virtuele machines en andere infra structuur in azure, het [installeren en configureren van terraform](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform installeren en configureren**: voor het inrichten van virtuele machines en andere infra structuur in azure, het [installeren en configureren van terraform](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Architectuur hub en spoke-topologie
 
@@ -87,13 +87,13 @@ Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
     cd clouddrive
     ```
 
-1. Maak een map met de naam `hub-spoke`.
+1. Maak een directory met de naam `hub-spoke`.
 
     ```bash
     mkdir hub-spoke
     ```
 
-1. Maak de nieuwe directory de actieve directory:
+1. Ga naar de nieuwe map:
 
     ```bash
     cd hub-spoke

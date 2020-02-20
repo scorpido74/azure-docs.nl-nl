@@ -1,19 +1,18 @@
 ---
 title: Aan de slag met de Azure Enterprise-portal
 description: In dit artikel wordt uitgelegd hoe klanten van de Azure Enterprise Agreement (Azure EA) de Azure Enterprise-portal kunnen gebruiken.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023341"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200826"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Aan de slag met de Azure Enterprise-portal
 
@@ -235,7 +234,7 @@ Houd rekening met deze belangrijke informatie als u accounts gaat overdragen:
   - Van een werk- of schoolaccount naar een ander werk- of schoolaccount.
   - Van een Microsoft-account naar een werk- of schoolaccount.
   - Van een Microsoft-account naar een ander Microsoft-account.
-  
+
     Het doelaccount moet een geldig Azure Commerce-account zijn om als geldig doel voor overdrachten te fungeren. Voor nieuwe accounts wordt u gevraagd een Azure Commerce-account te maken wanneer u zich aanmeldt bij de Azure Enterprise-portal. Voor bestaande accounts moet u eerst een nieuw Azure-abonnement maken voordat het account kan worden overgedragen.
 
 - U kunt geen overdracht uitvoeren van een werk- of schoolaccount naar een Microsoft-account.
@@ -285,7 +284,7 @@ Accounteigenaren kunnen abonnementen weergeven en beheren. U kunt abonnementen g
 
 Wanneer u verschillende abonnementen voor elke toepassingsomgeving maakt, draagt u bij aan de beveiliging van elke omgeving.
 
-- U kunt ook een ander servicebeheerdersaccount toewijzen voor elk abonnement. 
+- U kunt ook een ander servicebeheerdersaccount toewijzen voor elk abonnement.
 - U kunt abonnementen aan elk gewenst aantal services koppelen.
 - De accounteigenaar maakt abonnementen en wijst een servicebeheerdersaccount toe aan elk abonnement in zijn account.
 
@@ -309,7 +308,7 @@ Een abonnement toevoegen:
 1. Selecteer **Abonnementen** en selecteer vervolgens het abonnement dat u hebt gemaakt.
 1. Selecteer **Abonnementsgegevens bewerken**.
 1. Bewerk de velden **Abonnementsnaam** en **Servicebeheerder** en selecteer vervolgens het vinkje.
-  
+
    De abonnementsnaam wordt weergegeven op de rapporten. De naam komt overeen met het project dat is gekoppeld aan het abonnement in de ontwikkelingsportal.
 
 Het kan tot 24 uur duren voordat nieuwe abonnementen worden weergegeven in de lijst abonnementen. Zodra u een abonnement hebt gemaakt, kunt u het volgende:
@@ -509,14 +508,14 @@ De Azure Enterprise-portal biedt twee typen abonnementen voor ondernemingsklante
 - Microsoft Azure Enterprise, ideaal voor:
   - Gebruik in elke productieomgeving
   - Beste prijzen op basis van uitgaven aan infrastructuur
-  
+
   [Neem contact op met de verkoopafdeling van Azure](https://azure.microsoft.com/pricing/enterprise-agreement/) voor meer informatie.
 
 - Enterprise Dev/Test, ideaal voor:
   - Alle werkbelastingen voor ontwikkelen en testen van het team
   - Gemiddelde tot intensieve individuele werkbelastingen voor ontwikkelen en testen
   - Toegang tot speciale MSDN-installatiekopieën en voorkeurstarieven voor services
-  
+
   Bekijk de [Enterprise Dev/Test-aanbieding](https://azure.microsoft.com/offers/ms-azr-0148p/) voor meer informatie.
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Is het mogelijk om het eigendom van een abonnement over te dragen aan een ander account?

@@ -1,21 +1,20 @@
 ---
 title: Uw investeringen in de cloud optimaliseren met Azure Cost Management | Microsoft Docs
 description: Dit artikel helpt u de meeste waarde uit uw investeringen in de cloud te halen, uw kosten te verlagen en te evalueren waar uw geld wordt uitgegeven.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988381"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201064"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Uw investeringen in de cloud optimaliseren met Azure Cost Management
 
@@ -85,20 +84,20 @@ De eerste stap bij het maximaliseren van uw ervaring binnen Cost Management is o
 
 Ga voor meer informatie over de verschillende opties naar [Hoe u Azure kunt kopen](https://azure.microsoft.com/pricing/purchase-options/). Hieronder vindt u enkele van de meest voorkomende factureringsmodellen.
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[Gratis](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[Gratis](https://azure.microsoft.com/free/)
 
 - 12 maanden aan populaire gratis services
 - $200 aan tegoed om services gedurende 30 dagen te verkennen
 - 25+ services zijn altijd gratis
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[Betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Geen minimum bedragen of toezeggingen
 - Concurrerende prijzen
 - Alleen betalen voor wat u gebruikt
 - Op elk moment annuleren
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - Opties voor monetaire toezeggingen vooraf
 - Toegang tot gereduceerde Azure-prijzen

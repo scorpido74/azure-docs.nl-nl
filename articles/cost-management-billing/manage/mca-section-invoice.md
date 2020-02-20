@@ -2,24 +2,21 @@
 title: Uw factuur organiseren op basis van uw behoeften - Azure
 description: Meer informatie over hoe u de kosten op uw factuur kunt organiseren.
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843885"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200741"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Kosten organiseren door uw factureringsrekening aan te passen
 
-Uw factureringsrekening voor uw Microsoft-klantovereenkomst biedt u de flexibiliteit om uw kosten te organiseren op basis van uw behoeften per afdeling, project of ontwikkelomgeving. 
+Uw factureringsrekening voor uw Microsoft-klantovereenkomst biedt u de flexibiliteit om uw kosten te organiseren op basis van uw behoeften per afdeling, project of ontwikkelomgeving.
 
 In dit artikel wordt beschreven hoe u kosten kunt organiseren met behulp van de Azure-portal. Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
@@ -33,7 +30,7 @@ In de factureringsrekening voor een Microsoft-klantovereenkomst gebruikt u factu
 
 Een factureringsprofiel vertegenwoordigt een factuur en de gerelateerde factureringsgegevens, zoals betalingswijzen en factureringsadres. Aan het begin van de maand wordt voor elk factureringsprofiel in uw account een maandelijkse factuur gegenereerd. De factuur bevat de kosten voor het gebruik van Azure en andere aankopen van de vorige maand.
 
-Wanneer u zich aanmeldt voor Azure, wordt bij uw factureringsrekening ook automatisch een factureringsprofiel gemaakt. U kunt extra factureringsprofielen maken om uw kosten in meerdere maandelijkse facturen te organiseren. 
+Wanneer u zich aanmeldt voor Azure, wordt bij uw factureringsrekening ook automatisch een factureringsprofiel gemaakt. U kunt extra factureringsprofielen maken om uw kosten in meerdere maandelijkse facturen te organiseren.
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ Wanneer u zich aanmeldt voor Azure, wordt bij uw factureringsrekening ook automa
 
 ### <a name="invoice-section"></a>Factuursectie
 
-Een factuursectie verwijst naar een kostengroepering op een factuur. Er wordt automatisch een factuursectie gemaakt voor elk factureringsprofiel in uw account. U kunt extra secties maken om uw kosten te organiseren op basis van uw behoeften. Elke factuursectie wordt op de factuur weergegeven met de gemaakte kosten voor die maand. 
+Een factuursectie verwijst naar een kostengroepering op een factuur. Er wordt automatisch een factuursectie gemaakt voor elk factureringsprofiel in uw account. U kunt extra secties maken om uw kosten te organiseren op basis van uw behoeften. Elke factuursectie wordt op de factuur weergegeven met de gemaakte kosten voor die maand.
 
-In de onderstaande afbeelding ziet u een factuur met twee factuursecties: Engineering en Marketing. De samengevatte en gedetailleerde kosten voor elke sectie worden in de factuur weergegeven. De prijzen die in de afbeelding worden weergegeven, zijn alleen bedoeld als voorbeeld en vertegenwoordigen niet de werkelijke prijzen van Azure-services. 
+In de onderstaande afbeelding ziet u een factuur met twee factuursecties: Engineering en Marketing. De samengevatte en gedetailleerde kosten voor elke sectie worden in de factuur weergegeven. De prijzen die in de afbeelding worden weergegeven, zijn alleen bedoeld als voorbeeld en vertegenwoordigen niet de werkelijke prijzen van Azure-services.
 
 ![Afbeelding van een factuur met secties](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** 
 
    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-section-invoice/search-cmb.png)
 
-3. Selecteer in het linkerdeelvenster de optie **Factureringsprofielen**. Selecteer een factureringsprofiel in de lijst. De nieuwe sectie wordt weergegeven op de factuur van het geselecteerde factureringsprofiel. 
+3. Selecteer in het linkerdeelvenster de optie **Factureringsprofielen**. Selecteer een factureringsprofiel in de lijst. De nieuwe sectie wordt weergegeven op de factuur van het geselecteerde factureringsprofiel.
 
    [![Schermopname van de lijst met factureringsprofielen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** 
 
    [![Schermopname van het toevoegen van factuursecties](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. Voer een naam voor de factuursectie in. 
+5. Voer een naam voor de factuursectie in.
 
    [![Schermopname van de pagina voor het maken van een factuursectie](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ Zodra u uw factureringsrekening hebt aangepast op basis van uw behoeften, kunt u
 
 6. Selecteer de factuursectie waaraan u de kosten van het abonnement wilt koppelen. De kosten worden weergegeven onder deze sectie op de factuur van het factureringsprofiel.
 
-7. Selecteer een Azure-plan en voer een beschrijvende naam in voor uw abonnement. 
+7. Selecteer een Azure-plan en voer een beschrijvende naam in voor uw abonnement.
 
 9. Klik op **Create**.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Bestaande abonnementen en producten koppelen
 
-Als u beschikt over bestaande Azure-abonnementen of andere producten, zoals Azure Marketplace en App-bronresources, kunt u ze verplaatsen van de bestaande factuursectie naar een andere factuursectie om uw kosten opnieuw te organiseren. 
+Als u beschikt over bestaande Azure-abonnementen of andere producten, zoals Azure Marketplace en App-bronresources, kunt u ze verplaatsen van de bestaande factuursectie naar een andere factuursectie om uw kosten opnieuw te organiseren.
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ We gaan er nu van uit dat u een ander factureringsprofiel hebt gemaakt en 50 GB 
 |---------|---------|---------|
 |1,84 per TB voor de eerste 50 TB/maand    | 50 TB        | 92,0  |
 |1,77 per TB voor de volgende 450 TB/maand    |  0 TB         | 0,0  |
-|Totaal     |     50 TB  | 92,0 
+|Totaal     |     50 TB  | 92,0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ We gaan er nu van uit dat u een ander factureringsprofiel hebt gemaakt en 50 GB 
 |---------|---------|---------|
 |1,84 per TB voor de eerste 50 TB/maand    | 50 TB        | 92,0  |
 |1,77 per TB voor de volgende 450 TB/maand    |  0 TB         | 0,0  |
-|Totaal     |     50 TB  | 92,0 
+|Totaal     |     50 TB  | 92,0
 
 De totale kosten voor het gebruik van 100 TB aan gegevens in dit scenario bedragen **184,0** (92,0 x 2).
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Voordelen van Azure-reserveringen zijn mogelijk niet van toepassing op alle abonnementen
 
-Azure-reserveringen met een gedeeld bereik worden toegepast op abonnementen in één factureringsprofiel en worden niet gedeeld tussen factureringsprofielen. 
+Azure-reserveringen met een gedeeld bereik worden toegepast op abonnementen in één factureringsprofiel en worden niet gedeeld tussen factureringsprofielen.
 
 ![Info-afbeelding van reserveringstoepassing voor een structuur met een andere factureringsrekening](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-In de bovenstaande afbeelding heeft Contoso twee abonnementen. Het voordeel van Azure-reservering wordt anders toegepast, afhankelijk van de manier waarop de factureringsrekening is gestructureerd. In het scenario links wordt het reserveringsvoordeel toegepast op beide abonnementen die worden gefactureerd voor het engineering-factureringsprofiel. In het scenario rechts wordt het reserveringsvoordeel alleen toegepast op het eerste abonnement, omdat alleen dat abonnement wordt gefactureerd voor het engineering-factureringsprofiel. 
+In de bovenstaande afbeelding heeft Contoso twee abonnementen. Het voordeel van Azure-reservering wordt anders toegepast, afhankelijk van de manier waarop de factureringsrekening is gestructureerd. In het scenario links wordt het reserveringsvoordeel toegepast op beide abonnementen die worden gefactureerd voor het engineering-factureringsprofiel. In het scenario rechts wordt het reserveringsvoordeel alleen toegepast op het eerste abonnement, omdat alleen dat abonnement wordt gefactureerd voor het engineering-factureringsprofiel.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

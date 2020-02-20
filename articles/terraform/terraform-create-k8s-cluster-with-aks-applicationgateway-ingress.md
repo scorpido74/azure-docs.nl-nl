@@ -3,12 +3,12 @@ title: 'Zelf studie: een Application Gateway ingangs controller maken in azure K
 description: Zelfstudie voor het maken van een Kubernetes-cluster met Application Gateway als controller voor inkomend verkeer, met behulp van Azure Kubernetes Service
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772859"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472261"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Zelf studie: een Application Gateway ingangs controller maken in azure Kubernetes service
 
@@ -29,7 +29,7 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 - **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](terraform-install-configure.md)
 
 - **Azure-resource groep**: als u geen Azure-resource groep hebt die u voor de demo kunt gebruiken, [maakt u een Azure-resource groep](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Noteer de naam van de resource groep en de locatie waar deze waarden worden gebruikt in de demo.
 
@@ -37,11 +37,11 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 - **De Service-Principal object-id ophalen**: Voer de volgende opdracht uit in Cloud Shell: `az ad sp list --display-name <displayName>`
 
-## <a name="create-the-directory-structure"></a>De mapstructuur maken
+## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
 De eerste stap is het maken van een map voor de Terraform-configuratiebestanden voor de oefening.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview).
 
@@ -51,13 +51,13 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     cd clouddrive
     ```
 
-1. Maak een map met de naam `terraform-aks-appgw-ingress`.
+1. Maak een directory met de naam `terraform-aks-appgw-ingress`.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
     ```
 
-1. Maak de nieuwe directory de actieve directory:
+1. Ga naar de nieuwe map:
 
     ```bash
     cd terraform-aks-appgw-ingress
@@ -722,7 +722,7 @@ De code in deze sectie maakt gebruik van [helm](/azure/aks/kubernetes-helm) -Kub
     - `verbosityLevel`: Hiermee stelt u het uitbreidings niveau in van de infra structuur voor AGIC-logboek registratie. Zie [registratie niveaus](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) voor mogelijke waarden.
     - `appgw.subscriptionId`: de ID van het Azure-abonnement voor de app-gateway. Voorbeeld: `a123b234-a3b4-557d-b2df-a0bc12de1234`
     - `appgw.resourceGroup`: de naam van de Azure-resource groep waarin de app-gateway is gemaakt. 
-    - `appgw.name`: de naam van de Application Gateway. Voorbeeld: `applicationgateway1`.
+    - `appgw.name`: de naam van de Application Gateway. Voor beeld: `applicationgateway1`.
     - `appgw.shared`: deze Booleaanse vlag moet worden standaard ingesteld op `false`. Stel deze in op `true` als u een [gedeelde app-gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)nodig hebt.
     - `kubernetes.watchNamespace`: Geef de naam ruimte op die AGIC moet volgen. De naam ruimte kan één teken reeks waarde of een door komma's gescheiden lijst met naam ruimten zijn. Als u deze variabele weglaat, of als u deze instelt op lege of lege teken reeks, worden alle toegankelijke naam ruimten door de ingangs controller geobserveerd.
     - `armAuth.type`: een waarde van zowel `aadPodIdentity` als `servicePrincipal`.

@@ -1,7 +1,6 @@
 ---
 title: Cloudyn-budgetten beheren in Azure
 description: Dit artikel helpt u om snel budgetten te maken en deze te beheren in Cloudyn.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 91a1027add615c71784b6be1261fab97aadd9f3a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769988"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201132"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Azure-budgetten beheren met Cloudyn
 

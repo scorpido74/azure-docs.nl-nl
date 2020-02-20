@@ -3,12 +3,12 @@ title: Zelf studie-de Azure terraform Visual Studio code extension configureren
 description: Lees hoe u de Azure Terraform-extensie in Visual Studio Code installeert en gebruikt.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159236"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472278"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Zelf studie: de Azure terraform Visual Studio code extension configureren
 
@@ -23,7 +23,7 @@ In dit artikel leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 - **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform**: [Terraform installeren en configureren](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [installeer en configureer Terraform](terraform-install-configure.md).
 
 - **Visual Studio Code**: installeer de versie van [Visual Studio Code](https://code.visualstudio.com/download) die bij uw omgeving past.
 
@@ -46,7 +46,7 @@ Volg de instructies op de HashiCorp-webpagina [Terraform installeren](https://ww
 
 ### <a name="install-nodejs"></a>Node.js installeren
 
-Als u Terraform in de Cloud Shell wilt gebruiken, moet u [Node.js](https://nodejs.org/) 6.0+ installeren.
+Als u Terraform in Cloud Shell wilt gebruiken, moet u [Node.js](https://nodejs.org/) 6.0+ installeren.
 
 >[!NOTE]
 >U kunt controleren of Node.js is geïnstalleerd door een terminalvenster te openen en `node -v` in te voeren.
@@ -95,7 +95,7 @@ In deze oefening gaat u een basisconfiguratiebestand van Terraform maken en uitv
 
 ### <a name="prepare-a-test-plan-file"></a>Een testplanbestand voorbereiden
 
-1. Selecteert **Bestand > Nieuw bestand** in de menubalk in Visual Studio Code.
+1. Selecteer **Bestand > Nieuw bestand** in de menubalk in Visual Studio Code.
 
 1. Ga in uw browser naar de pagina [Terraform azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#) en kopieer de code in het codeblok **Gebruiksvoorbeeld**:
 
@@ -106,7 +106,7 @@ In deze oefening gaat u een basisconfiguratiebestand van Terraform maken en uitv
     ![Code uit Example Usage plakken](media/terraform-vscode-extension/tf-paste-example-usage-code.png)
 
     >[!NOTE]
-    >U kunt de waarde **naam** van de resourcegroep wijzigen, maar dit moet wel een unieke naam voor uw Azure-abonnement zijn.
+    >U kunt de waarde **name** van de resourcegroep wijzigen, maar dit moet wel een unieke naam voor uw Azure-abonnement zijn.
 
 1. Selecteer **Bestand > Opslaan als** in de menubalk.
 
@@ -124,7 +124,7 @@ In deze oefening gaat u een basisconfiguratiebestand van Terraform maken en uitv
 1. Selecteer **Opslaan**.
 1. In de menubalk selecteert u **Bestand > Map openen**. Navigeer naar de nieuwe map die u hebt gemaakt en selecteer deze map.
 
-### <a name="run-terraform-init-command"></a>Voer de opdracht Terraform *init* uit
+### <a name="run-terraform-init-command"></a>De Terraform-opdracht *init* uitvoeren
 
 1. Start Visual Studio Code.
 
@@ -165,28 +165,28 @@ In deze oefening gaat u een basisconfiguratiebestand van Terraform maken en uitv
 
 ### <a name="visualize-the-plan"></a>Het plan visualiseren
 
-Eerder in deze zelfstudie hebt u GraphViz geïnstalleerd. Terraform kan GraphViz gebruiken om een visuele representatie te geven van ofwel een configuratie- of een uitvoeringsplan. Met de Azure Terraform Visual Studio Code-extensie wordt deze functie geïmplementeerd via de opdracht *visualiseren*.
+Eerder in deze zelfstudie hebt u GraphViz geïnstalleerd. Terraform kan GraphViz gebruiken om een visuele representatie te geven van ofwel een configuratie- of een uitvoeringsplan. Met de Azure Terraform Visual Studio Code-extensie wordt deze functie geïmplementeerd via de opdracht *visualize*.
 
-- Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Visualiseren** in de menubalk.
+- Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Visualize** in de menubalk.
 
     ![Het plan visualiseren](media/terraform-vscode-extension/tf-graph.png)
 
-### <a name="run-terraform-plan-command"></a>De opdracht *plannen* van Terraform uitvoeren
+### <a name="run-terraform-plan-command"></a>De Terraform-opdracht *plan* uitvoeren
 
-De Terraform-opdracht *plannen* wordt gebruikt om te controleren of het uitvoeringsplan voor een reeks wijzigingen doet wat u ervan verwacht.
+De Terraform-opdracht *plan* wordt gebruikt om te controleren of het uitvoeringsplan voor een reeks wijzigingen doet wat u ervan verwacht.
 
 >[!NOTE]
->Terraform *plannen* brengt geen wijzigingen aan in uw daadwerkelijke Azure-resources. Als u de wijzigingen in uw plan daadwerkelijk wilt doorvoeren, gebruiken we de Terraform-opdracht *toepassen*.
+>De Terraform-opdracht *plan* brengt geen wijzigingen aan in uw daadwerkelijke Azure-resources. Als u de wijzigingen in uw plan daadwerkelijk wilt doorvoeren, gebruiken we de Terraform-opdracht *apply*.
 
 - Selecteer **Weergeven** > **Opdrachtenpalet** > **Azure Terraform: plan** in de menubalk.
 
     ![Terraform plan](media/terraform-vscode-extension/tf-terraform-plan.png)
 
-### <a name="run-terraform-apply-command"></a>De Terraform-opdracht *toepassen* uitvoeren
+### <a name="run-terraform-apply-command"></a>De Terraform-opdracht *apply* uitvoeren
 
-Als u tevreden bent met de resultaten van de Terraform-opdracht *plannen*, kunt u de opdracht *toepassen* uitvoeren.
+Als u tevreden bent met de resultaten van de Terraform-opdracht *plan*, kunt u de opdracht *apply* uitvoeren.
 
-1. Selecteer **Weergeven** > **Opdrachtenpalet** > **Azure Terraform: toepassen** in de menubalk.
+1. Selecteer **Weergeven** > **Opdrachtenpalet** > **Azure Terraform: apply** in de menubalk.
 
     ![Terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
@@ -209,13 +209,13 @@ Uw nieuwe resourcegroep moet worden vermeld in de kolom **NAAM**.
 >[!NOTE]
 >U kunt het Azure Portal-venster voorlopig geopend laten; dit gebruiken we in de volgende stap.
 
-### <a name="run-terraform-destroy-command"></a>De Terraform-opdracht *vernietigen* uitvoeren
+### <a name="run-terraform-destroy-command"></a>De Terraform-opdracht *destroy* uitvoeren
 
-1. Selecteer **Weergeven** > **Opdrachtenpalet** > **Azure Terraform: vernietigen** in de menubalk.
+1. Selecteer **Weergeven** > **Opdrachtenpalet** > **Azure Terraform: destroy** in de menubalk.
 
     ![Terraform destroy](media/terraform-vscode-extension/tf-terraform-destroy.png)
 
-1. Voer *ja* in.
+1. Voer *yes* in.
 
     ![Terraform destroy yes](media/terraform-vscode-extension/tf-terraform-destroy-yes.png)
 
@@ -229,13 +229,13 @@ U kunt als volgt bevestigen dat Terraform uw nieuwe resourcegroep heeft vernieti
 
     ![Controleren of uw resourcegroep is vernietigd](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
-## <a name="exercise-2-terraform-compute-module"></a>Oefening 2: de Terraform-module *berekenen*
+## <a name="exercise-2-terraform-compute-module"></a>Oefening 2: de Terraform-module *compute*
 
-In deze oefening leert u hoe u de Terraform-module *berekenen* in de Visual Studio Code-omgeving laadt.
+In deze oefening leert u hoe u de Terraform-module *compute* in de Visual Studio Code-omgeving laadt.
 
 ### <a name="clone-the-terraform-azurerm-compute-module"></a>De module terraform-azurerm-compute klonen
 
-1. Gebruik [deze koppeling](https://github.com/Azure/terraform-azurerm-compute) voor toegang tot de Terraform Azure Rm Compute-module in GitHub.
+1. Gebruik [deze koppeling](https://github.com/Azure/terraform-azurerm-compute) voor toegang tot de module Terraform Azure Rm Compute in GitHub.
 
 1. Selecteer **Klonen of downloaden**.
 
@@ -264,9 +264,9 @@ Voordat u de Terraform-opdrachten kunt gebruiken vanuit Visual Studio Code, moet
 
 ### <a name="module-test-lint"></a>Moduletest: *lint*
 
-1. Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Test uitvoeren** in de menubalk.
+1. Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Execute Test** in de menubalk.
 
-1. Selecteer **lint** in de lijst met testtype-opties.
+1. Selecteer **lint** in de lijst met opties voor testtypen.
 
     ![Testtype selecteren](media/terraform-vscode-extension/tf-select-type-of-test-lint.png)
 
@@ -283,9 +283,9 @@ Na enkele ogenblikken ziet u een lijst in het Terminal-deelvenster dat vergelijk
 
 ### <a name="test-the-module"></a>De module testen
 
-1. Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Test uitvoeren** in de menubalk.
+1. Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Execute Test** in de menubalk.
 
-1. Selecteer **end-to-end** in de lijst met testtype-opties.
+1. Selecteer **end-to-end** in de lijst met opties voor testtypen.
 
     ![Testtype selecteren](media/terraform-vscode-extension/tf-select-type-of-test-end-to-end.png)
 

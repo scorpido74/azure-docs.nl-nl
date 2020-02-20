@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462571"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471870"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Zelf studie: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -76,8 +76,8 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Werkruimtenaam**     | Geef een naam op voor de Databricks-werkruimte.  |
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md) voor meer informatie. |
-    |**Locatie**     | Selecteer **US - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.       |
-    |**Prijscategorie**     |  Selecteer **standaard**.     |
+    |**Locatie**     | Selecteer **VS - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.       |
+    |**Prijscategorie**     |  selecteer **Standaard**.     |
 
     ![Een Azure Databricks-werk ruimte maken](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Een Azure Databricks-service maken")
 
@@ -129,13 +129,13 @@ Gebruik AzCopy om gegevens uit uw *csv*-bestand te kopiëren naar uw Data Lake S
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-   * Vervang de tijdelijke aanduiding `<container-name>` door een wille keurige naam die u wilt toewijzen aan de container.
+   * Vervang de tijdelijke aanduiding `<container-name>` door de naam van een container in uw opslag account.
 
 ## <a name="create-a-container-and-mount-it"></a>Een container maken en koppelen
 
 In deze sectie maakt u een container en een map in uw opslag account.
 
-1. Ga in de [Microsoft Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
+1. Ga in de [Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
 
 2. Selecteer aan de linkerkant **Werkruimte**. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
@@ -161,20 +161,7 @@ In deze sectie maakt u een container en een map in uw opslag account.
     extra_configs = configs)
     ```
 
-18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de waarde van de tijdelijke aanduiding `container-name` door de naam die u in de vorige stap aan de container hebt door gegeven.
-
-Gebruik deze waarden om de vermelde tijdelijke aanduidingen te vervangen.
-
-   * De tijdelijke aanduidingen `appId` en `password` zijn afkomstig uit de app die u bij Active Directory hebt geregistreerd tijdens het maken van een service-principal.
-
-   * De tijdelijke aanduiding `tenant-id` is afkomstig van uw abonnement.
-
-   * De tijdelijke aanduiding `storage-account-name` is de naam van uw Azure Data Lake Storage Gen2-opslagaccount.
-
-   * Vervang de tijdelijke aanduiding `container-name` door een wille keurige naam die u wilt toewijzen aan de container.
-
-   > [!NOTE]
-   > In een productie-instelling kunt u uw wacht woord opslaan in Azure Databricks. Voeg vervolgens een zoek sleutel toe aan uw code blok in plaats van het wacht woord. Nadat u deze quickstart hebt afgerond, raadpleegt u het artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) (Engelstalig) op de website van Azure Databricks voor voorbeelden van deze methode.
+18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de waarde van de tijdelijke aanduiding `container-name` door de naam van de container.
 
 19. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
@@ -290,4 +277,4 @@ Verwijder de resourcegroep en alle gerelateerde resources, wanneer u deze niet m
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Gegevens extraheren, transformeren en laden met Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+> [Gegevens uitpakken, transformeren en laden met Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)

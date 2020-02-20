@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894262"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471177"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Logboeken voor Apache Kafka op HDInsight analyseren
 
 Informatie over het gebruik van Azure Monitor logboeken voor het analyseren van logboeken die zijn gegenereerd door Apache Kafka op HDInsight.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>Logboek locatie
+
+Apache Kafka-Logboeken in het cluster bevinden zich op `/var/log/kafka`. Kafka-logboeken worden niet opgeslagen of bewaard in de levens cyclus van het cluster, ongeacht of beheerde schijven worden gebruikt. De volgende tabel bevat de beschik bare Logboeken.
+
+|Logboek |Beschrijving |
+|---|---|
+|Kafka. out|stdout en stderr van het Kafka-proces. U vindt de opstart-en afsluit logboeken van Kafka in dit bestand.|
+|server. log|Het belangrijkste Kafka-server logboek. Alle Kafka Broker-logboeken worden hier beëindigd.|
+|controller. log|Controller Logboeken als de Broker fungeert als controller.|
+|statechange. log|Alle status wijzigings gebeurtenissen voor Brokers worden vastgelegd in dit bestand.|
+|Kafka-GC. log|Statistieken voor Kafka-garbagecollection.|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor logboeken inschakelen voor Apache Kafka
 
@@ -84,8 +96,8 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
 
     | Logboek type | Beschrijving |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka Broker-server. log |
-    | log\_kafkacontroller\_CL | Kafka Broker controller. log |
+    | Log\_kafkaserver\_CL | Kafka Broker-server. log |
+    | Log\_kafkacontroller\_CL | Kafka Broker controller. log |
     | metrische gegevens\_Kafka\_CL | Kafka JMX-metrische gegevens |
 
     ![CPU-gebruik voor Apache Kafka log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)

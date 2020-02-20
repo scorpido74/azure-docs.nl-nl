@@ -3,12 +3,12 @@ title: 'Zelf studie: een Azure VM-cluster maken met terraform en HCL'
 description: Gebruik terraform en HCL voor het maken van een virtuele Linux-machine cluster met een load balancer in azure
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665357"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470867"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Zelf studie: een Azure VM-cluster maken met terraform en HCL
 
@@ -28,11 +28,11 @@ U leert hoe u de volgende taken kunt uitvoeren:
 ## <a name="1-set-up-azure-authentication"></a>1. Azure-verificatie instellen
 
 > [!NOTE]
-> Als u [Terraform-omgevingsvariabelen](/azure/virtual-machines/linux/terraform-install-configure) gebruikt of deze zelfstudie uitvoert in de [Azure Cloud Shell](terraform-cloud-shell.md), slaat u deze sectie over.
+> Als u [Terraform-omgevingsvariabelen](terraform-install-configure.md) gebruikt of deze zelfstudie uitvoert in de [Azure Cloud Shell](terraform-cloud-shell.md), slaat u deze sectie over.
 
 In deze sectie genereert u een Azure service-principal en twee Terraform-configuratiebestanden die de referenties van de beveiligingsprincipal bevatten.
 
-1. [Stel een Microsoft Azure AD-service-principal in](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure) zodat via Terraform resources kunnen worden ingericht in Azure. Noteer tijdens het maken van de principal de waarden voor de abonnements-id, de tenant, de toepassings-id en het wachtwoord.
+1. [Stel een Microsoft Azure AD-service-principal in](terraform-install-configure.md#set-up-terraform-access-to-azure) zodat via Terraform resources kunnen worden ingericht in Azure. Noteer tijdens het maken van de principal de waarden voor de abonnements-id, de tenant, de toepassings-id en het wachtwoord.
 
 2. Open een opdrachtprompt.
 

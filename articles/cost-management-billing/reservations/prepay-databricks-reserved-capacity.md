@@ -1,19 +1,18 @@
 ---
 title: De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
 description: Ontdek hoe u geld kunt besparen door van tevoren gereserveerde capaciteit voor Azure Databricks te kopen.
-services: billing
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b000934bb218c21a454ed04afe4e9a4495e808ab
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995869"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200381"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
 

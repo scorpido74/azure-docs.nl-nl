@@ -1,17 +1,17 @@
 ---
-title: Nieuwe authenticatie gebruiken voor StorSimple 8000 Apparaatbeheer-service in azure
+title: Azure AD-verificatie voor StorSimple 8000 in Apparaatbeheer
 description: Hierin wordt uitgelegd hoe u verificatie op basis van AAD gebruikt voor uw service, hoe u een nieuwe registratie sleutel genereert en hand matige registratie van de apparaten uitvoert.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b16132c24d35ee2c9902fa2b21c44416d8376b4d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276946"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470901"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>De nieuwe verificatie voor uw StorSimple gebruiken
 
@@ -41,7 +41,7 @@ Als u de StorSimple 8000-serie gebruikt, moet u ervoor zorgen dat de volgende UR
 
 | URL-patroon                         | Cloud | Onderdeel/functionaliteit         |
 |------------------------------------|-------|----------------------------------|
-| `https://login.windows.net`        | Openbare Azure-peering |AAD-verificatie service      |
+| `https://login.windows.net`        | Open bare Azure |AAD-verificatie service      |
 | `https://login.microsoftonline.us` | Amerikaanse overheid |AAD-verificatie service      |
 
 Voor een volledige lijst met URL-patronen voor StorSimple 8000 Series-apparaten gaat u naar [URL-patronen voor firewall regels](storsimple-8000-system-requirements.md#url-patterns-for-firewall-rules).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 32865b84de2dc1c1f8a3fd6beca80a2659f1e3d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74c8c7dfc2beda2d242bc21e12293dc6f3c1cffe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370762"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470833"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker op SUSE Linux Enterprise Server in Azure instellen
 
@@ -41,7 +41,7 @@ Als u niet wilt investeren in één extra virtuele machine, kunt u ook de Azure 
 ![Pacemaker op SLES-overzicht](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Bij het plannen en implementeren van Linux Pacemaker knooppunten en SBD apparaten geclusterde, is het essentieel is voor de algehele betrouwbaarheid van de volledige clusterconfiguratie die de routering tussen de virtuele machines die betrokken zijn en de VM (s) die als host fungeert voor de apparaten SBD wordt niet doorgegeven via alle andere apparaten, zoals [NVA's](https://azure.microsoft.com/solutions/network-appliances/). Anders, problemen en onderhoudsgebeurtenissen met de NVA kunnen een nadelige invloed op de stabiliteit en betrouwbaarheid van de algehele clusterconfiguratie hebben. Om dergelijke obstakels te voor komen, definieert u geen routerings regels van Nva's of door de [gebruiker gedefinieerde routerings regels](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) die verkeer routeren tussen geclusterde knoop punten en SBD-apparaten via nva's en vergelijk bare apparaten bij het plannen en implementeren van Linux pacemaker geclusterde knoop punten en SBD-apparaten. 
+> Wanneer u Linux pacemaker geclusterde knoop punten en SBD-apparaten plant en implementeert, is het essentieel voor de algehele betrouw baarheid van de volledige cluster configuratie, waardoor de route ring tussen de betrokken Vm's en de virtuele machine (s) die de SBD-apparaten hosten, niet via andere apparaten, zoals [nva's](https://azure.microsoft.com/solutions/network-appliances/), wordt door gegeven. Anders, problemen en onderhoudsgebeurtenissen met de NVA kunnen een nadelige invloed op de stabiliteit en betrouwbaarheid van de algehele clusterconfiguratie hebben. Om dergelijke obstakels te voor komen, definieert u geen routerings regels van Nva's of door de [gebruiker gedefinieerde routerings regels](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) die verkeer routeren tussen geclusterde knoop punten en SBD-apparaten via nva's en vergelijk bare apparaten bij het plannen en implementeren van Linux pacemaker geclusterde knoop punten en SBD-apparaten. 
 >
 
 ## <a name="sbd-fencing"></a>De eerste optie SBD
@@ -54,12 +54,15 @@ U moet eerst de iSCSI-doel-virtuele machines maken. iSCSI-doelservers kunnen wor
 
 1. Implementeer nieuwe SLES 12 SP1 of hoger virtuele machines en maak er verbinding mee via ssh. De machines hoeven niet groot te zijn. De grootte van een virtuele machine, zoals Standard_E2s_v3 of Standard_D2s_v3 is voldoende. Zorg ervoor dat u de besturingssysteemschijf van de Premium-opslag.
 
-Voer de volgende opdrachten uit op alle **iSCSI-doel-virtuele machines**.
+Voer de volgende opdrachten uit op alle **virtuele iSCSI-doel machines**.
 
 1. SLES bijwerken
 
    <pre><code>sudo zypper update
    </code></pre>
+
+   > [!NOTE]
+   > Mogelijk moet u het besturings systeem opnieuw opstarten na het bijwerken of bijwerken van het besturings systeem. 
 
 1. Verwijderen van pakketten
 
@@ -81,7 +84,7 @@ Voer de volgende opdrachten uit op alle **iSCSI-doel-virtuele machines**.
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>ISCSI-apparaat maakt op de iSCSI-doelserver
 
-Voer de volgende opdrachten uit op alle **iSCSI-doel-virtuele machines** te maken van de iSCSI-schijven voor de clusters die worden gebruikt door uw SAP-systemen. In het volgende voorbeeld worden SBD apparaten voor meerdere clusters gemaakt. Hier ziet u hoe u een iSCSI-doelserver wilt gebruiken voor meerdere clusters. De apparaten SBD worden geplaatst op de besturingssysteemschijf. Zorg ervoor dat u er genoeg ruimte is.
+Voer de volgende opdrachten uit op alle **virtuele iSCSI-doel machines** om de iSCSI-schijven te maken voor de clusters die door uw SAP-systemen worden gebruikt. In het volgende voorbeeld worden SBD apparaten voor meerdere clusters gemaakt. Hier ziet u hoe u een iSCSI-doelserver wilt gebruiken voor meerdere clusters. De apparaten SBD worden geplaatst op de besturingssysteemschijf. Zorg ervoor dat u er genoeg ruimte is.
 
 **`nfs`** wordt gebruikt om het NFS-cluster te identificeren, wordt **ascsnw1** gebruikt om de ASCS-cluster van **NW1**te identificeren. **dbnw1** wordt gebruikt voor het identificeren van het database cluster van **NW1**, **NFS-0** en **NFS-1** zijn de hostnamen van de NFS-cluster knooppunten, **NW1-Xscs-0** en **NW1-xscs-1** zijn de hostnamen van de **NW1** ASCS-cluster knooppunten, en **NW1-DB-0** en **NW1-db-1** zijn de hostnamen van de database cluster knooppunten. Vervang deze door de hostnamen van de clusterknooppunten en wordt de SID van uw SAP-systeem.
 
@@ -175,9 +178,9 @@ o- / ...........................................................................
 
 Verbinding maken met het iSCSI-apparaat dat is gemaakt in de vorige stap uit het cluster.
 Voer de volgende opdrachten op de knooppunten van het nieuwe cluster die u wilt maken.
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
-1. **[A]**  Verbinding maken met iSCSI-apparaten
+1. **[A]** verbinding maken met de iSCSI-apparaten
 
    Het iSCSI- en SBD services eerst inschakelen.
 
@@ -186,7 +189,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo systemctl enable sbd
    </code></pre>
 
-1. **[1]**  Wijzigt u de initiatornaam op het eerste knooppunt
+1. **[1]** Wijzig de naam van de initiator op het eerste knoop punt
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
@@ -196,7 +199,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-0.local:nfs-0</b>
    </code></pre>
 
-1. **[2]**  Wijzig de initiatornaam op het tweede knooppunt
+1. **[2]** Wijzig de naam van de initiator op het tweede knoop punt
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
@@ -206,7 +209,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-1.local:nfs-1</b>
    </code></pre>
 
-1. **[A]**  De iSCSI-service opnieuw starten
+1. **[A]** de iSCSI-service opnieuw starten
 
    Nu opnieuw opstarten van de iSCSI-service als de wijziging wilt toepassen
 
@@ -214,7 +217,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo systemctl restart iscsi
    </code></pre>
 
-   Verbinding maken met iSCSI-apparaten. In het onderstaande voorbeeld 10.0.0.17 is het IP-adres van de iSCSI-doelserver en 3260 is de standaardpoort. <b>IQN.2006 04.nfs.local:nfs</b> is een van de doelnamen die wordt weergegeven wanneer u de eerste opdracht hieronder (iscsiadm -m-discovery) uitvoert.
+   Verbinding maken met iSCSI-apparaten. In het onderstaande voorbeeld 10.0.0.17 is het IP-adres van de iSCSI-doelserver en 3260 is de standaardpoort. <b>IQN. 2006-04. NFS. local: NFS</b> is een van de doel namen die worden weer gegeven wanneer u de eerste opdracht uitvoert (iscsiadm-m-detectie).
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
@@ -267,11 +270,11 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
    De opdracht lijst drie apparaat-id's voor elk apparaat SBD. Het is raadzaam het gebruik van de ID die met scsi-3, in het bovenstaande dit voorbeeld begint is
 
-   * **/dev/Disk/by-id/SCSI-36001405afb0ba8d3a3c413b8cc2cca03**
+   * **/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03**
    * **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
-   * **/dev/Disk/by-id/SCSI-36001405f88f30e7c9684678bc87fe7bf**
+   * **/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf**
 
-1. **[1]**  Maken van het apparaat SBD
+1. **[1]** het SBD-apparaat maken
 
    De apparaat-ID van de iSCSI-apparaten gebruiken om te maken van de nieuwe SBD apparaten op het eerste clusterknooppunt.
 
@@ -282,7 +285,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo sbd -d <b>/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf</b> -1 60 -4 120 create
    </code></pre>
 
-1. **[A]**  SBD config aanpassen
+1. **[A]** de SBD-configuratie aanpassen
 
    Open het configuratiebestand SBD
 
@@ -313,9 +316,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
 ## <a name="cluster-installation"></a>Clusterinstallatie van
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
-1. **[A]**  SLES bijwerken
+1. **[A]** SLES bijwerken
 
    <pre><code>sudo zypper update
    </code></pre>
@@ -343,7 +346,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo systemctl --no-pager show | grep DefaultTasksMax
    </code></pre>
 
-   Reduceer de grootte van de vervuilde cache. Zie voor meer informatie, [laag schrijfvaardigheden op SLES 11/12 servers met grote RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Reduceer de grootte van de vervuilde cache. Zie [lage schrijf prestaties op SLES 11/12-servers met grote hoeveel heden RAM-geheugen](https://www.suse.com/support/kb/doc/?id=7010287)voor meer informatie.
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -364,7 +367,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
-1. **[1]**  Ssh toegang inschakelen
+1. **[1]** SSH-toegang inschakelen
 
    <pre><code>sudo ssh-keygen
    
@@ -376,7 +379,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. **[2]**  Ssh toegang inschakelen
+1. **[2]** SSH-toegang inschakelen
 
    <pre><code>
    sudo ssh-keygen
@@ -392,13 +395,13 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. **[1]**  Ssh toegang inschakelen
+1. **[1]** SSH-toegang inschakelen
 
    <pre><code># insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]**  Omheining installatie van agents
+1. **[A]** omheining-agents installeren
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
@@ -425,7 +428,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
     sudo zypper in python3-azure-sdk
     </code></pre>
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten. Het voordeel van het gebruik van/etc/hosts is dat het cluster wordt onafhankelijk van DNS, wat erop kan een single point of fouten te.
@@ -441,7 +444,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[1]**  Cluster installeren
+1. **[1]** cluster installeren
 
    <pre><code>sudo ha-cluster-init -u
    
@@ -454,7 +457,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-1. **[2]**  Knooppunt aan cluster toevoegen
+1. **[2]** knoop punt toevoegen aan cluster
 
    <pre><code>sudo ha-cluster-join
    
@@ -464,7 +467,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
    </code></pre>
 
-1. **[A]**  Hacluster wachtwoord wijzigen naar hetzelfde wachtwoord
+1. **[A]** hacluster wacht woord wijzigen in hetzelfde wacht woord
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -519,7 +522,7 @@ Het stonith instellen-apparaat maakt gebruik van een Service-Principal te autori
 
 1. Ga naar <https://portal.azure.com>
 1. Open de Azure Active Directory-blade  
-   Ga naar eigenschappen en noteer de map-ID. Dit is de **tenant-ID**.
+   Ga naar eigenschappen en noteer de map-ID. Dit is de **Tenant-id**.
 1. Klik op App-registraties
 1. Klik op nieuwe registratie
 1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
@@ -527,12 +530,12 @@ Het stonith instellen-apparaat maakt gebruik van een Service-Principal te autori
    De aanmeldings-URL wordt niet gebruikt en kan geldige URL zijn
 1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
-1. Noteer de waarde in. Deze wordt gebruikt als de **wachtwoord** voor de Service-Principal
-1. Selecteer overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikersnaam (**aanmeldings-ID** in de onderstaande stappen) van de Service-Principal
+1. Noteer de waarde in. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
+1. Selecteer overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Een aangepaste rol maken voor de agent omheining
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
 
-De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U hoeft op te geven van de Service-Principal machtigingen voor starten en stoppen (toewijzing ongedaan maken) alle virtuele machines van het cluster. Als u de aangepaste rol die niet al hebt gemaakt, kunt u maken met behulp van [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) of [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
+De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U hoeft op te geven van de Service-Principal machtigingen voor starten en stoppen (toewijzing ongedaan maken) alle virtuele machines van het cluster. Als u de aangepaste rol nog niet hebt gemaakt, kunt u deze maken met behulp van [Power shell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) of [Azure cli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
 
 Gebruik de volgende inhoud voor het invoerbestand. U moet de inhoud voor uw abonnementen die is aangepast, c276fc76-9cd4-44c9-99a7-4fd71546436e en e91d47c4-76f3-4271-a796-21b4ecfe3624 vervangen door de id's van uw abonnement. Als u slechts één abonnement hebt, verwijdert u de tweede vermelding in AssignableScopes.
 
@@ -568,11 +571,11 @@ De aangepaste rol 'Linux omheining Agent rol' die is gemaakt in het vorige hoofd
 1. Klik op de roltoewijzing toevoegen
 1. Selecteer de rol 'Linux omheining Agent rol'
 1. Voer de naam van de toepassing die u hierboven hebt gemaakt
-1. Klik op Opslaan.
+1. Op Opslaan klikken
 
 Herhaal de bovenstaande stappen voor het tweede clusterknooppunt.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  Maken de apparaten stonith instellen
+### <a name="1-create-the-stonith-devices"></a>**[1]** de STONITH-apparaten maken
 
 Nadat u de machtigingen voor de virtuele machines hebt bewerkt, kunt u de apparaten stonith instellen in het cluster configureren.
 
@@ -586,7 +589,7 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="default-pacemaker-configuration-for-sbd"></a>Pacemaker standaardconfiguratie voor SBD
 
-1. **[1]**  Stelt u het gebruik van een apparaat stonith instellen en de vertraging omheining
+1. **[1]** het gebruik van een STONITH-apparaat inschakelen en de Fence-vertraging instellen
 
 <pre><code>sudo crm configure property stonith-timeout=144
 sudo crm configure property stonith-enabled=true

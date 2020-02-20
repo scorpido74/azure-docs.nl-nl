@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5a16d28f31887c8bedcc95424382e674e037450e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512586"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468402"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -30,6 +30,10 @@ Het vereisen van beheerde apparaten voor Cloud app Access bindt **voorwaardelijk
 
 - **[Voorwaardelijke toegang in azure Active Directory: in](../active-directory-conditional-access-azure-portal.md)** dit artikel vindt u een conceptueel overzicht van voorwaardelijke toegang en de gerelateerde terminologie.
 - **[Inleiding tot Apparaatbeheer in azure Active Directory: in](../devices/overview.md)** dit artikel vindt u een overzicht van de verschillende opties die u nodig hebt om apparaten te verkrijgen onder het beheer van de organisatie. 
+
+>[!IMPORTANT] 
+> We raden u aan om Azure AD-beleid voor voorwaardelijke toegang te gebruiken om de beste afdwinging te verkrijgen na de initiële verificatie van het apparaat. Dit omvat het sluiten van sessies als het apparaat niet meer compatibel is en de code stroom van het apparaat.
+
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 

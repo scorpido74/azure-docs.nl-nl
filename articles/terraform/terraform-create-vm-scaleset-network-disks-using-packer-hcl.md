@@ -3,12 +3,12 @@ title: 'Zelf studie: een schaalset voor virtuele Azure-machines maken op basis v
 description: Met behulp van Terraform een virtuele Azure-machineschaalset maken van een aangepaste installatiekopie die is gegenereerd met Packer (compleet met een virtueel netwerk en beheerde gekoppelde schijven).
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159286"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472198"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een verpakker met behulp van terraform
 
@@ -28,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Terraform**: [Installeer terraform en configureer de toegang tot Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Installeer terraform en configureer de toegang tot Azure](terraform-install-configure.md).
 - **SSH-sleutel paar**: [Maak een SSH-sleutel paar](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Verpakker**: [Installeer Packer](https://www.packer.io/docs/install/index.html).
 

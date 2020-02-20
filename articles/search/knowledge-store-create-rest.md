@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754084"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472312"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Maak een kennis archief met behulp van REST en postman
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Deze Snelstartgids maakt gebruik van Azure Cognitive Search, Azure Blob Storage en [azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. 
 
-Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen getikt om gratis Maxi maal 20 trans acties dagelijks te kunnen uitvoeren wanneer deze vanuit Azure Cognitive Search worden aangeroepen. Zolang u de door u geleverde voorbeeld gegevens gebruikt, kunt u het maken of koppelen van een Cognitive Services resource overs Laan.
+Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen getikt om gratis Maxi maal 20 trans acties te kunnen verwerken. Omdat de gegevensset zo klein is, kunt u het maken of koppelen van een Cognitive Services resource overs Laan.
 
 1. [Down load HotelReviews_Free. CSV](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Deze gegevens zijn gegevens van een hotel beoordeling die zijn opgeslagen in een CSV-bestand (afkomstig van Kaggle.com) en bevat 19 delen van klanten feedback over één hotel. 
 
@@ -78,7 +78,7 @@ Als u de waarde voor `admin-key`wilt ophalen, gaat u naar de Azure Cognitive Sea
 ![Het tabblad app-variabelen van postman](media/knowledge-store-create-rest/postman-variables-window.png "Het venster variabelen van postman")
 
 
-| Variabele    | Waar kan ik SmartGlass krijgen? |
+| Variabele    | Waar te verkrijgen? |
 |-------------|-----------------|
 | `admin-key` | Op de pagina **sleutels** van de Azure Cognitive Search-service.  |
 | `api-version` | Geef **een voor beeld van 2019-05-06**. |
@@ -108,7 +108,7 @@ De [bron code](https://github.com/Azure-Samples/azure-search-postman-samples/blo
 > U moet in al uw aanvragen `api-key` en `Content-type` kopteksten instellen. Als in postman een variabele wordt herkend, wordt de variabele in oranje tekst weer gegeven, net als bij `{{admin-key}}` in de vorige scherm afbeelding. Als de variabele verkeerd is gespeld, wordt deze in een rode tekst weer gegeven.
 >
 
-## <a name="create-an-azure-cognitive-search-index"></a>Een Azure Cognitive Services-index maken
+## <a name="create-an-azure-cognitive-search-index"></a>Een Azure Cognitive Search-index maken
 
 Maak een Azure Cognitive Search-index voor de gegevens die u wilt doorzoeken, filteren en Toep assen van verbeteringen in. Maak de index door een PUT-aanvraag uit te geven aan `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Postman vervangt symbolen die tussen dubbele accolades staan (zoals `{{search-service-name}}`, `{{index-name}}`en `{{api-version}}`) met de waarden die u instelt in [postman configureren](#configure-postman). Als u een ander hulp programma gebruikt om uw REST-opdrachten uit te voeren, moet u deze variabelen zelf vervangen.
 
@@ -155,7 +155,7 @@ Selecteer **verzenden** om de put-aanvraag uit te geven. U ziet de status `201 -
 
 Vervolgens verbindt u Azure Cognitive Search met de Hotel gegevens die u hebt opgeslagen in Blob Storage. Als u de gegevens bron wilt maken, stuurt u een POST-aanvraag naar `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. U moet de `api-key`-en `Content-Type`-headers instellen zoals eerder is beschreven. 
 
-Ga in postman naar de aanvraag **gegevens bron maken** en vervolgens naar het deel venster **hoofd tekst** . De volgende code zou moeten worden weergegeven:
+Ga in postman naar de aanvraag **gegevens bron maken** en vervolgens naar het deel venster **hoofd tekst** . U ziet de volgende code:
 
 ```json
 {

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/08/2019
+ms.date: 02/19/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cd37374ab6341356d84f205e92c9612d8481818f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898885"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468844"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -112,7 +112,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50128|Ongeldige domein naam: er zijn geen Tenant gegevens gevonden in de aanvraag of geïmpliceerd door de verstrekte referenties.|
 |50129|Het apparaat is niet gekoppeld aan de werk **plek-koppelen** is vereist voor het registreren van het apparaat.|
 |50130|Claim waarde kan niet worden geïnterpreteerd als een bekende verificatie methode.|
-|50131|Wordt gebruikt in verschillende fout berichten voor voorwaardelijke toegang. Bijvoorbeeld Een slechte Windows-apparaatstatus, geblokkeerde aanvraag vanwege verdachte activiteit, beslissingen voor toegangsbeleid en beveiligingsbeleid.|
+|50131|Wordt gebruikt in verschillende fout berichten voor voorwaardelijke toegang. Voorbeeld: Een slechte Windows-apparaatstatus, geblokkeerde aanvraag vanwege verdachte activiteit, beslissingen voor toegangsbeleid en beveiligingsbeleid.|
 |50132|Referenties zijn om de volgende redenen ingetrokken:<ul><li>SSO-artefact is ongeldig of verlopen</li><li>Sessie is niet actueel genoeg voor toepassing</li><li>Een aanvraag voor stille aanmelding is verzonden, maar de gebruikerssessie met Azure AD is ongeldig of verlopen.</li></ul>|
 |50133|Sessie is ongeldig omdat het wachtwoord is verlopen of recent is gewijzigd.|
 |50135|Het wacht woord moet worden gewijzigd vanwege een account risico.|
@@ -133,6 +133,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50178|Sessie beheer wordt niet ondersteund voor passthrough-gebruikers.|
 |50180|Geïntegreerde Windows-verificatie is vereist. Schakel de tenant in voor een naadloze eenmalige aanmelding (SSO).|
 |50181|Aan OTP gerelateerde fout tijdens het aanmelden. |
+|50194|De toepassing {appId} ({appName}) is niet geconfigureerd als een toepassing met meerdere tenants. Het gebruik van het/veelvoorkomende-eind punt wordt niet ondersteund voor dergelijke toepassingen die worden gemaakt na {time}. Gebruik een Tenant-specifiek eind punt of configureer de toepassing als multi tenant.|
 |50201|Deze bericht prompt wordt weer gegeven voor de gebruiker tijdens het aanmelden wanneer aanvullende informatie aan de gebruiker moet worden verstrekt.|
 |51001|Er is geen domein Hint aanwezig met on-premises beveiligings-id-on-premises UPN.|
 |51004|Gebruikersaccount bestaat niet in de map.|
@@ -185,16 +186,22 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |90010|De aanvraag kan om verschillende redenen niet worden ondersteund. De aanvraag wordt bijvoorbeeld gemaakt met behulp van een niet-ondersteunde aanvraag methode (alleen POST-methode wordt ondersteund) of het token handtekening algoritme dat is aangevraagd, wordt niet ondersteund. Neem contact op met de ontwikkelaar van de toepassing.|
 |90014| Er ontbreekt een vereist veld voor een protocol bericht. Neem contact op met de eigenaar van de toepassing. Als u de eigenaar van de toepassing bent, moet u ervoor zorgen dat u alle benodigde para meters voor de aanmeldings aanvraag hebt. |
 |90051| Ongeldig delegerings token. Er is een ongeldige nationale Cloud-ID ({cloudId}) opgegeven.|
-|90072| Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
+|90072| Het account moet eerst worden toegevoegd als externe gebruiker in de tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
 |90094| De app heeft machtigingen aangevraagd waarvoor de aangemelde gebruiker niet toestemming mag geven en de gebruiker is geblokkeerd. |
 |90095| De app heeft machtigingen aangevraagd waarvoor de aangemelde gebruiker niet toestemming mag geven en de gebruiker heeft het aanvraag formulier voor de [beheerder toestemming](../manage-apps/configure-admin-consent-workflow.md) gegeven. |
+|130500|Aanmelden via telefoon is geblokkeerd vanwege beleid voor gebruikers referenties.|
 |500011| De resource-principal met de naam <site address> is niet gevonden in de Tenant met de naam <tenant ID>. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u de verificatieaanvraag naar de verkeerde tenant verzonden.|
+|500014|De resource {identifier} is uitgeschakeld.|
 |500021| De Tenant wordt beperkt door de bedrijfs proxy. De toegang tot de bron wordt geweigerd.|
 |500121| Verificatie is mislukt tijdens sterke verificatie aanvraag.|
 |500133| De verklaring valt niet binnen het geldige tijds bereik. Zorg ervoor dat het toegangs token niet is verlopen voordat u het gebruikt voor gebruikers bevestiging of een nieuw token aanvragen.|
+|500172|Het certificaat {name} dat is uitgegeven door {Issuer} is niet geldig. Huidige tijd: {curTime}. Certificaat NotBefore: {startTime}. Certificaat NotAfter: {endTime}.|
+|501291|De client-app is een mam-app, het apparaat is niet geregistreerd en de aanvraag wordt verzonden via een Broker. De koppeling werk plek moet worden uitgevoerd om het apparaat te registreren voordat de app kan worden geopend.|
+|530003|Het apparaat moet worden beheerd om toegang te krijgen tot deze resource.|
 |530021|De toepassing voldoet niet aan de goedgekeurde app-vereisten voor voorwaardelijke toegang.|
 |530032|Geblokkeerd door beveiligings beleid.| 
 |700016|De toepassing met de id {appIdentifier} is niet gevonden in de map {tenantnaam}. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u uw verificatie aanvraag verzonden naar de verkeerde Tenant.|
+|700051|Response_type token is niet ingeschakeld voor de toepassing. De toepassing heeft om de volgende redenen een niet-ondersteund antwoord type aangevraagd: response_type token is niet ingeschakeld voor de toepassing. De eigenaar van de toepassing moet naar de Azure Portal gaan of MS Graph aanroepen om de impliciete toegangs token toekenning in te scha kelen.|
 |900432|De vertrouwelijke client wordt niet ondersteund in een cross-Cloud aanvraag.|
 |5000811|Kan hand tekening van SAML-token niet controleren. De id van de handtekening sleutel komt niet overeen met een geldige geregistreerde sleutel.|
 |7000215|Er is een ongeldig client geheim gegeven.|

@@ -1,21 +1,21 @@
 ---
 title: Container installatie kopie implementeren vanaf Azure Container Registry
-description: Meer informatie over het implementeren van containers in Azure Container Instances met behulp van container installatie kopieën in een Azure container Registry.
+description: Meer informatie over het implementeren van containers in Azure Container Instances door container installatie kopieën te halen uit een Azure container Registry.
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981689"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468912"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Implementeren in Azure Container Instances van Azure Container Registry
 
-[Azure container Registry](../container-registry/container-registry-intro.md) is een beheerde container register service in azure die wordt gebruikt voor het opslaan van privé-docker-container installatie kopieën. In dit artikel wordt beschreven hoe u container installatie kopieën die zijn opgeslagen in een Azure container Registry, kunt implementeren in Azure Container Instances.
+[Azure container Registry](../container-registry/container-registry-intro.md) is een beheerde container register service in azure die wordt gebruikt voor het opslaan van privé-docker-container installatie kopieën. In dit artikel wordt beschreven hoe u container installatie kopieën kunt ophalen die zijn opgeslagen in een Azure container Registry bij het implementeren naar Azure Container Instances. Een aanbevolen manier om register toegang te configureren is door een Azure Active Directory Service-Principal en-wacht woord te maken en de aanmeldings referenties op te slaan in een Azure-sleutel kluis.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981689"
 In een productie scenario waarbij u toegang krijgt tot ' headless ' Services en toepassingen, is het raadzaam om register toegang te configureren met behulp van een [Service-Principal](../container-registry/container-registry-auth-service-principal.md). Met een Service-Principal kunt u [toegangs beheer op basis van rollen](../container-registry/container-registry-roles.md) bieden voor uw container installatie kopieën. U kunt bijvoorbeeld een service-principal configureren met alleen pull-toegang tot een register.
 
 Azure Container Registry biedt aanvullende [verificatie opties](../container-registry/container-registry-authentication.md).
+
+> [!NOTE]
+> U kunt niet verifiëren bij Azure Container Registry om installatie kopieën tijdens de implementatie van de container groep te halen met behulp van een [beheerde identiteit](container-instances-managed-identity.md) die is geconfigureerd in dezelfde container groep.
 
 In de volgende sectie maakt u een Azure-sleutel kluis en een Service-Principal en slaat u de referenties van de Service-Principal op in de kluis. 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-U hebt een Azure-sleutelkluis gemaakt en er twee geheimen in opgeslagen:
+U hebt een Azure-sleutel kluis gemaakt en er zijn twee geheimen opgeslagen:
 
 * `$ACR_NAME-pull-usr`: de service principal-ID, voor gebruik als de **gebruikersnaam** van het containerregister.
 * `$ACR_NAME-pull-pwd`: het service principal-wachtwoord, voor gebruik als het **wachtwoord** van het containerregister.
