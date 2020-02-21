@@ -3,12 +3,12 @@ title: Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 description: Een Azure Storage wachtrij integreren met een python-functie met behulp van een uitvoer binding.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198476"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485162"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
@@ -100,7 +100,7 @@ Als u vanuit deze functie naar een Azure Storage wachtrij wilt schrijven, voegt 
 
 In dit geval wordt `msg` als uitvoer argument aan de functie gegeven. Voor een `queue` type moet u ook de naam van de wachtrij in `queueName` opgeven en de *naam* opgeven van de Azure Storage verbinding (van *Local. settings. json*) in `connection`.
 
-Zie voor meer informatie over de details van bindingen [Azure functions triggers en bindingen](functions-triggers-bindings.md) en de configuratie van de [wachtrij-uitvoer](functions-bindings-storage-queue.md#output---configuration).
+Zie voor meer informatie over de details van bindingen [Azure functions triggers en bindingen](functions-triggers-bindings.md) en de configuratie van de [wachtrij-uitvoer](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Code toevoegen voor het gebruik van de uitvoer binding
 
@@ -176,19 +176,19 @@ Als uw functie een HTTP-antwoord voor de webbrowser genereert, wordt er ook `msg
 
 1. Open het bestand *Local. setting. json* van het functie project en kopieer de Connection String waarde. Voer in een Terminal-of opdracht venster de volgende opdracht uit om een omgevings variabele met de naam `AZURE_STORAGE_CONNECTION_STRING`te maken en uw specifieke connection string in plaats van `<connection_string>`te plakken. (Deze omgevings variabele houdt in dat u de connection string niet hoeft op te geven bij elke volgende opdracht met behulp van het argument `--connection-string`.)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ Als uw functie een HTTP-antwoord voor de webbrowser genereert, wordt er ook `msg
     
 1. Beschrijving Gebruik de [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) opdracht om de opslag wachtrijen in uw account weer te geven. De uitvoer van deze opdracht moet een wachtrij bevatten met de naam `outqueue`, die is gemaakt toen de functie het eerste bericht naar die wachtrij heeft geschreven.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -219,21 +219,21 @@ Als uw functie een HTTP-antwoord voor de webbrowser genereert, wordt er ook `msg
     ---
 
 
-1. Gebruik de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven. dit moet de eerste naam zijn die u hebt gebruikt bij het testen van de functie. De opdracht haalt het eerste bericht in de wachtrij op in [Base64-code ring](functions-bindings-storage-queue.md#encoding), dus u moet het bericht ook decoderen om als tekst weer te geven.
+1. Gebruik de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven. dit moet de eerste naam zijn die u hebt gebruikt bij het testen van de functie. De opdracht haalt het eerste bericht in de wachtrij op in [Base64-code ring](functions-bindings-storage-queue-trigger.md#encoding), dus u moet het bericht ook decoderen om als tekst weer te geven.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Omdat u de verwijzing naar de berichten verzameling moet decoderen en van base64 wilt ontsleutelen, voert u Power shell uit en gebruikt u de Power shell-opdracht.
 
@@ -251,13 +251,13 @@ Nu u de functie lokaal hebt getest en hebt gecontroleerd of een bericht naar de 
     
 1. Net als in de vorige Snelstartgids gebruikt u een browser of krul om de opnieuw geïmplementeerde functie te testen.
 
-    # <a name="browsertabbrowser"></a>[Browser](#tab/browser)
+    # <a name="browser"></a>[Browser](#tab/browser)
     
     Kopieer de volledige **invoke-URL** die wordt weer gegeven in de uitvoer van de opdracht publiceren naar een adres balk van de browser en voeg de query parameter `&name=Azure`toe. De browser moet vergelijk bare uitvoer weer geven als u de functie lokaal hebt uitgevoerd.
 
     ![De uitvoer van de functie die wordt uitgevoerd op Azure in een browser](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[Ezelsoor](#tab/curl)
+    # <a name="curl"></a>[Ezelsoor](#tab/curl)
     
     Voer [krul](https://curl.haxx.se/) uit met de **aanroepende URL**en voeg de para meter `&name=Azure`toe. De uitvoer van de opdracht moet de tekst ' Hello Azure ' zijn.
     

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169777"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505572"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -77,6 +77,9 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 | Bijwerken naar Enter prise Edition    | **&check;** | **&check;**  | |     |
 | Reken resources maken en beheren    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Een VM voor een notebook maken |   | **&check;** | |     |
+
+> [!WARNING]
+> Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
 ## <a name='create-workspace'></a>Een werk ruimte maken
 

@@ -4,15 +4,15 @@ description: Meer informatie over het kopen van Azure Cosmos DB gereserveerde ca
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367700"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505965"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Kosten optimaliseren met gereserveerde capaciteit in Azure Cosmos DB
 
@@ -30,7 +30,9 @@ U kunt Azure Cosmos DB gereserveerde capaciteit kopen via de [Azure Portal](http
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>De vereiste door Voer voor aankoop bepalen
 
-De grootte van de reserve ring moet worden gebaseerd op de totale hoeveelheid door Voer die wordt gebruikt door de bestaande of binnenkort gedistribueerde Azure Cosmos DB resources. Met de volgende stappen kunt u de aanbevolen reserverings grootten weer geven in de Azure Portal:
+De omvang van de inkoop met gereserveerde capaciteit moet worden gebaseerd op de totale hoeveelheid door Voer die de bestaande of binnenkort geïmplementeerde Azure Cosmos DB resources op elk uur gebruiken. Bijvoorbeeld: aanschaf van 30.000 RU/s gereserveerde capaciteit als dat het consistente gebruiks patroon van elk uur is. In dit voor beeld wordt een ingerichte door Voer van meer dan 30.000 RU/s gefactureerd op basis van uw betalen naar gebruik-tarief. Als ingerichte door Voer in een uur lager is dan 30.000 RU/s, wordt de extra gereserveerde capaciteit voor dat uur verspild.
+
+We berekenen aankoop aanbevelingen op basis van het gebruiks patroon van uw uur. Het gebruik van de afgelopen 7, 30 en 60 dagen is geanalyseerd en de aanschaf van gereserveerde capaciteit waarmee uw besparing wordt gemaximaliseerd, wordt aanbevolen. Met de volgende stappen kunt u de aanbevolen reserverings grootten weer geven in de Azure Portal:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  
 
@@ -46,7 +48,7 @@ U kunt aanbevelingen filteren op de volgende kenmerken:
 - **Facturerings frequentie** (maandelijks of vooraf)
 - **Type door Voer** (ru versus multi-master ru)
 
-Daarnaast kunt u aanbevelingen bereiken binnen één resource groep, één abonnement of uw volledige Azure-inschrijving. U kunt aanbevelingen weer geven op basis van het gebruik in de afgelopen 7 dagen, 30 dagen of 60 dagen.
+Daarnaast kunt u aanbevelingen bereiken binnen één resource groep, één abonnement of uw volledige Azure-inschrijving. 
 
 Hier volgt een voor beeld van een aanbeveling:
 

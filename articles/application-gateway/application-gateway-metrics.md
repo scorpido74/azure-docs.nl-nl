@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425253"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485179"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -22,7 +22,7 @@ Application Gateway publiceert gegevens punten, met de naam metrieken, naar [Azu
 
 ### <a name="timing-metrics"></a>Metrische gegevens over timing
 
-Application Gateway biedt verschillende ingebouwde metrische gegevens voor de timing die zijn gerelateerd aan de aanvraag en het antwoord die allemaal worden gemeten in milliseconden. 
+Application Gateway biedt verschillende ingebouwde metrische gegevens voor de timing met betrekking tot de aanvraag en het antwoord, die allemaal worden gemeten in milliseconden. 
 
 ![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
@@ -66,7 +66,7 @@ Als er bijvoorbeeld sprake is van een piek in de back-end voor de *reactie tijd*
 
 Als u een piek in de *reactie tijd van de laatste byte* van de back-end hebt gezien, maar de *back-end-reactie tijd* van de backend stabiel is, kan deze worden afgeleid door een groter bestand dat wordt aangevraagd.
 
-En als de *totale tijd van de toepassings gateway* een piek heeft, maar de *reactie tijd van de laatste byte* van de back-end is stabiel, dan kan het een teken van het knel punt van de prestaties zijn op het Application Gateway of een knel punt in het netwerk tussen client en Application Gateway. Bovendien, als de *client RTT* ook een overeenkomende Prikker heeft, geeft dit aan dat de degradatie wordt veroorzaakt door het netwerk tussen client en Application Gateway.
+En als de *totale tijd van de toepassings gateway* een piek heeft, maar de *reactie tijd van de laatste byte* van de back-end is stabiel, dan kan het een teken van het knel punt van de prestaties zijn op het Application Gateway of een knel punt in het netwerk tussen client en Application Gateway. Bovendien, als de *client RTT* ook een overeenkomende Prikker heeft, geeft deze aan dat de degradatie wordt veroorzaakt door het netwerk tussen client en Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrische gegevens
 
@@ -86,7 +86,7 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
 - **Huidige capaciteits eenheden**
 
-   Aantal verbruikte capaciteits eenheden. Capaciteits eenheden meten kosten op basis van verbruik en worden naast de vaste kosten in rekening gebracht. Er zijn drie determinanten voor de capaciteits eenheid: reken eenheid, permanente verbindingen en door voer. Elke capaciteits eenheid bestaat uit Maxi maal 1 Compute-eenheid of 2500 permanente verbindingen, of door Voer van 2,22-Mbps.
+   Aantal verbruikte capaciteits eenheden voor taak verdeling van het verkeer. Er zijn drie determinanten voor de capaciteits eenheid: reken eenheid, permanente verbindingen en door voer. Elke capaciteits eenheid bestaat uit Maxi maal 1 Compute-eenheid of 2500 permanente verbindingen, of door Voer van 2,22-Mbps.
 
 - **Huidige reken eenheden**
 
@@ -98,13 +98,15 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
    
 - **Geschatte gefactureerde capaciteits eenheden**
 
-  Aantal capaciteits eenheden op basis waarvan de facturering wordt geschat. Dit is calcutaed als de hogere waarde tussen *huidige capaciteits eenheden* en *vaste factureer bare capaciteits eenheden*.  
+  Met de v2-SKU wordt het prijs model gevoed door verbruik. Capaciteits eenheden meten kosten op basis van verbruik en worden naast de vaste kosten in rekening gebracht. *Geschatte gefactureerde capaciteits eenheden* duiden het aantal capaciteits eenheden aan waarmee de facturering wordt geschat. Dit wordt berekend als de hogere waarde tussen *huidige capaciteits eenheden* (capaciteits eenheden die zijn vereist om het verkeer te verdelen) en de *vaste factureer bare capaciteits eenheden* (minimale capaciteits eenheden behouden).
 
 - **Mislukte aanvragen**
 
-   Aantal mislukte aanvragen dat Application Gateway heeft geleverd. Het aantal aanvragen kan verder worden gefilterd om het aantal weer te geven per/specifieke back-end-groep-combi natie van http-instellingen.
+  Aantal mislukte aanvragen dat Application Gateway heeft geleverd. Het aantal aanvragen kan verder worden gefilterd om het aantal weer te geven per/specifieke back-end-groep-combi natie van http-instellingen.
    
-- **Vaste factureer bare capaciteits eenheden** Het minimale aantal capaciteits eenheden dat is ingericht volgens de instelling voor de *minimale schaal eenheden* in de Application Gateway configuratie.
+- **Vaste factureer bare capaciteits eenheden**
+
+  Het minimale aantal capaciteits eenheden dat is ingericht volgens de instelling voor de *minimale schaal eenheden* (één exemplaar wordt omgezet in eenheden van 10 capaciteit) in de Application Gateway configuratie.
    
  - **Nieuwe verbindingen per seconde**
 
@@ -143,7 +145,9 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
   Het aantal back-ends dat niet in orde is voor de status test. U kunt filteren op basis van een per back-end-groep om het aantal beschadigde hosts in een specifieke back-end-groep weer te geven.
   
-- **Aanvragen per minuut per Gegezonde host** Het gemiddelde aantal aanvragen dat is ontvangen door elk in orded lid in een back-end-groep in een minuut. U moet de back-end-pool opgeven met de dimensie *hosts HttpSettings* .  
+- **Aanvragen per minuut per gegezonde host**
+
+  Het gemiddelde aantal aanvragen dat is ontvangen door elk in orded lid in een back-end-groep in een minuut. U moet de back-end-pool opgeven met de dimensie *hosts HttpSettings* .  
   
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metrische gegevens die worden ondersteund door Application Gateway v1 SKU

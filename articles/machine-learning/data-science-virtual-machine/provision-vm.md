@@ -1,5 +1,6 @@
 ---
-title: 'Snelstartgids: een Windows-DSVM maken'
+title: 'Snelstartgids: een Windows-Data Science Virtual Machine maken'
+titleSuffix: Azure Data Science Virtual Machine
 description: Configureren en een Data Science Virtual Machine in Azure maken voor analyse en machine learning.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,18 +8,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611914"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525869"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Snelstartgids: de Data Science Virtual Machine instellen voor Windows
 
 Ga aan de slag met een Windows Server 2019-Data Science Virtual Machine.
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 Als u een Windows-Data Science Virtual Machine wilt maken, moet u een Azure-abonnement hebben. [Probeer Azure gratis](https://azure.com/free)uit.
 Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor virtuele machines niet ondersteunen.
@@ -69,5 +70,5 @@ U kunt ook een DSVM aan Azure Notebooks koppelen om Jupyter-notebooks op de virt
 * Bekijk de hulpprogram ma's op de DSVM door het menu **Start** te openen.
 * Meer informatie over de Azure Machine Learning door te lezen [Wat is Azure machine learning?](../overview-what-is-azure-ml.md) en [zelf studies](../index.yml)te proberen.
 * Lees het artikel [tien dingen die u op het data Science virtual machine kunt doen](https://aka.ms/dsvmtenthings).
-* Ga naar de [Azure AI Gallery](https://gallery.cortanaintelligence.com) services voor machine learning en data analytics-voorbeelden die gebruikmaken van Azure Machine Learning en gerelateerde gegevens in Azure. Daarnaast hebt u in het menu **Start** en op het bureau blad van de virtuele machine een pictogram voor deze galerie gegeven.
+* Ga naar de [Azure AI Gallery](https://gallery.cortanaintelligence.com) voor voor beelden van machine learning en gegevens analyse die gebruikmaken van Azure machine learning en gerelateerde gegevens Services in Azure. Daarnaast hebt u in het menu **Start** en op het bureau blad van de virtuele machine een pictogram voor deze galerie gegeven.
 

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025143"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524253"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Taak voorbereiding en taak release taken uitvoeren op batch Compute-knoop punten
 
@@ -58,7 +58,7 @@ Mogelijk wilt u een kopie van de logboek bestanden die door uw taken worden gege
 > 
 
 ## <a name="job-preparation-task"></a>Taak voor het voorbereiden van taken
-Voordat de taken van een taak worden uitgevoerd, voert batch de taak voorbereidings taken uit op elk reken knooppunt dat is gepland om een taak uit te voeren. Standaard wacht de batch-service dat de taak voorbereidings taak moet worden voltooid voordat de taken worden uitgevoerd die zijn gepland om te worden uitgevoerd op het knoop punt. U kunt de service echter zo configureren dat deze niet wordt gewacht. Als het knoop punt opnieuw wordt opgestart, wordt de taak voor het voorbereiden van de taak opnieuw uitgevoerd, maar u kunt dit gedrag ook uitschakelen.
+Voordat de taken van een taak worden uitgevoerd, voert batch de taak voorbereidings taken uit op elk reken knooppunt dat is gepland om een taak uit te voeren. Standaard wacht de batch-service dat de taak voorbereidings taak moet worden voltooid voordat de taken worden uitgevoerd die zijn gepland om te worden uitgevoerd op het knoop punt. U kunt de service echter zo configureren dat deze niet wordt gewacht. Als het knoop punt opnieuw wordt opgestart, wordt de taak voor het voorbereiden van de taak opnieuw uitgevoerd, maar u kunt dit gedrag ook uitschakelen. Als u een taak hebt met een taak voorbereidings taak en taak beheer taak geconfigureerd, wordt de taak voor het voorbereiden van de taak vóór de taak beheer taak uitgevoerd, net zoals voor alle andere taken. De taak voor het voorbereiden van taken wordt altijd eerst uitgevoerd.
 
 De taak voor het voorbereiden van taken wordt alleen uitgevoerd op knoop punten waarop een taak is gepland. Hiermee wordt voor komen dat een voorbereidings taak onnodig wordt uitgevoerd als er geen taak aan een knoop punt is toegewezen. Dit kan gebeuren wanneer het aantal taken voor een taak kleiner is dan het aantal knoop punten in een pool. Dit geldt ook wanneer [gelijktijdige taak uitvoering](batch-parallel-node-tasks.md) is ingeschakeld, waardoor enkele knoop punten niet-actief blijven als het aantal taken lager is dan het totale aantal mogelijke gelijktijdige taken. Door de taak voorbereidings taak niet uit te voeren op niet-actieve knoop punten, kunt u minder geld best Eden aan de kosten voor gegevens overdracht.
 

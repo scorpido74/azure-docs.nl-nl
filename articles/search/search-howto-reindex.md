@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212299"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498382"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Een index opnieuw samen stellen in azure Cognitive Search
 
@@ -33,7 +33,7 @@ Verwijder een index en maak deze opnieuw als aan een van de volgende voor waarde
 | Een analyse functie toewijzen aan een veld | [Analyse](search-analyzers.md) functies worden gedefinieerd in een index en vervolgens toegewezen aan velden. U kunt op elk gewenst moment een nieuwe analyse definitie aan een index toevoegen, maar u kunt alleen een analyse *toewijzing toewijzen* wanneer het veld wordt gemaakt. Dit geldt voor de eigenschappen **Analyzer** en **indexAnalyzer** . De eigenschap **searchAnalyzer** is een uitzonde ring (u kunt deze eigenschap toewijzen aan een bestaand veld). |
 | Een analyse definitie in een index bijwerken of verwijderen | U kunt een bestaande analyse configuratie (Analyzer, tokenizer, token filter of char-filter) in de index niet verwijderen of wijzigen, tenzij u de volledige index opnieuw opbouwt. |
 | Een veld aan een suggestie toevoegen | Als er al een veld bestaat en u dit wilt toevoegen aan de construct [suggesties](index-add-suggesters.md) , moet u de index opnieuw samen stellen. |
-| Een veld verwijderen | Als u alle traceringen van een veld fysiek wilt verwijderen, moet u de index opnieuw samen stellen. Wanneer een onmiddellijke heropbouw niet praktisch is, kunt u de toepassings code wijzigen om de toegang tot het veld ' verwijderd ' uit te scha kelen. De definitie en inhoud van het veld blijven fysiek aanwezig in de index tot de volgende keer opnieuw wordt opgebouwd wanneer u een schema toepast dat het betreffende veld weglaat. |
+| Een veld verwijderen | Als u alle traceringen van een veld fysiek wilt verwijderen, moet u de index opnieuw samen stellen. Wanneer een onmiddellijke heropbouw niet praktisch is, kunt u de toepassings code wijzigen om de toegang tot het veld ' verwijderd ' uit te scha kelen of de [$Select query parameter](search-query-odata-select.md) te gebruiken om te kiezen welke velden worden weer gegeven in de resultatenset. De definitie en inhoud van het veld blijven fysiek aanwezig in de index tot de volgende keer opnieuw wordt opgebouwd wanneer u een schema toepast dat het betreffende veld weglaat. |
 | Lagen wisselen | Als u meer capaciteit nodig hebt, is er geen in-place upgrade in de Azure Portal. Er moet een nieuwe service worden gemaakt en indexen moeten op basis van de nieuwe service volledig worden gebouwd. Om dit proces te automatiseren, kunt u de voorbeeld code **index-Backup-Restore** gebruiken in dit [Azure Cognitive Search .net-voor beeld opslag plaats](https://github.com/Azure-Samples/azure-search-dotnet-samples). Met deze app wordt een back-up van uw index gemaakt in een reeks JSON-bestanden en wordt de index vervolgens opnieuw in een zoek service weer gegeven die u opgeeft.|
 
 ## <a name="update-conditions"></a>Update voorwaarden
@@ -52,9 +52,11 @@ Wanneer u een nieuw veld toevoegt, krijgen bestaande geïndexeerde documenten ee
 
 ## <a name="how-to-rebuild-an-index"></a>Een index opnieuw samen stellen
 
-Tijdens de ontwikkeling worden de index schema's regel matig gewijzigd. U kunt deze plannen door indexen te maken die kunnen worden verwijderd, opnieuw gemaakt en snel opnieuw worden geladen met een kleine representatieve gegevensset. 
+Tijdens de ontwikkeling worden de index schema's regel matig gewijzigd. U kunt deze plannen door indexen te maken die kunnen worden verwijderd, opnieuw gemaakt en snel opnieuw worden geladen met een kleine representatieve gegevensset.
 
 Voor toepassingen die al in productie zijn, raden we u aan een nieuwe index te maken die naast elkaar een bestaande index uitvoert om te voor komen dat een query wordt uitgevoerd op downtime. De code van uw toepassing biedt omleiding naar de nieuwe index.
+
+Indexering wordt niet op de achtergrond uitgevoerd en de service zal de extra indexeringen voor doorlopende query's verdelen. Tijdens het indexeren kunt u [query aanvragen](search-monitor-queries.md) in de portal bewaken om ervoor te zorgen dat query's tijdig worden voltooid.
 
 1. Bepaal of een heropbouw vereist is. Als u alleen velden toevoegt of een deel van de index wijzigt die niet gerelateerd zijn aan velden, kunt u [de definitie](https://docs.microsoft.com/rest/api/searchservice/update-index) mogelijk gewoon bijwerken zonder dat u deze hoeft te verwijderen, opnieuw te maken en volledig opnieuw te laden.
 
@@ -78,6 +80,10 @@ Wanneer u de index laadt, wordt de omgekeerde index van elk veld gevuld met alle
 ## <a name="check-for-updates"></a>Controleren op updates
 
 Zodra het eerste document is geladen, kunt u beginnen met het uitvoeren van een query op een index. Als u de ID van een document kent, retourneert het [opzoek document rest API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) het specifieke document. Voor uitgebreid testen moet u wachten tot de index volledig is geladen en vervolgens query's gebruiken om de context te controleren die u verwacht te zien.
+
+U kunt [Search Explorer](search-explorer.md) of een hulp programma voor het testen van webtoepassingen gebruiken, zoals [na](search-get-started-postman.md) het controleren op bijgewerkte inhoud.
+
+Als u een veld hebt toegevoegd of een andere naam hebt gegeven, gebruikt u [$Select](search-query-odata-select.md) om dat veld te retour neren: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Zie ook
 

@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b5d5bfff3ff97efb351497c48a404beada2036a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b5a2d8a812c5b3b0021ad4f74fc705049807cb1b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209338"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485060"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijs categorieën in Azure Database for PostgreSQL-één server
 
@@ -23,7 +23,6 @@ U kunt een Azure Database for PostgreSQL-server maken in een van drie verschille
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Geheugen per vCore | 2 GB | 5 GB | 10 GB |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
-| Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Bewaar periode voor database back-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
 
 Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs punt.
@@ -46,7 +45,7 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 
 |    | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
-| Opslagtype | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Opslagtype | Basis opslag | Opslag Algemeen | Opslag Algemeen |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
 | Grootte van toename van opslag | 1 GB | 1 GB | 1 GB |
 | IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
@@ -86,7 +85,7 @@ Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik m
 
 Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Backup
 
 De service maakt automatisch back-ups van uw server. De minimale Bewaar periode voor back-ups is zeven dagen. U kunt een Bewaar periode van Maxi maal 35 dagen instellen. De retentie kan op elk moment worden aangepast tijdens de levens duur van de server. U kunt kiezen tussen lokaal redundante en geografisch redundante back-ups. Geografisch redundante back-ups worden ook opgeslagen in het [geo-paard gebied](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) van de regio waar uw server is gemaakt. Deze redundantie biedt een beveiligings niveau in het geval van een ramp. U krijgt ook de mogelijkheid om uw server te herstellen naar een andere Azure-regio waarin de service beschikbaar is met geo-redundante back-ups. Het is niet mogelijk om te wisselen tussen de twee opties voor back-upopslag nadat de server is gemaakt.
 

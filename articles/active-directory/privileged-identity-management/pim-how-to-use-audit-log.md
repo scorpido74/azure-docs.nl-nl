@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024174"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498510"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>De controle geschiedenis voor Azure AD-rollen in PIM weer geven
 
@@ -32,9 +32,9 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
+# <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
 Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven.
 
@@ -50,7 +50,7 @@ Resource controle geeft u een overzicht van alle activiteiten die zijn gekoppeld
 
 1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
 
-    ![Resource audit lijst met filters](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Resource audit lijst met filters](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>Mijn controle weer geven
 
@@ -66,9 +66,9 @@ Met mijn controle kunt u uw activiteiten voor persoonlijke rollen weer geven.
 
 1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
 
-    ![Controle lijst voor de huidige gebruiker](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Controle lijst voor de huidige gebruiker](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+# <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
 ## <a name="view-audit-history"></a>Controlegeschiedenis weergeven
 
@@ -90,12 +90,12 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
 
     | Kolom | Beschrijving |
     | --- | --- |
-    | Tijd | Wanneer de actie is uitgevoerd. |
+    | Time | Wanneer de actie is uitgevoerd. |
     | Aanvrager | Gebruiker die de functie activeert of wijzigt. Als de waarde **Azure System**is, controleert u de controle geschiedenis van Azure voor meer informatie. |
-    | Actie | Acties die door de aanvrager worden uitgevoerd. Acties kunnen toewijzen, intrekken, activeren, deactiveren of AddedOutsidePIM bevatten. |
+    | Bewerking | Acties die door de aanvrager worden uitgevoerd. Acties kunnen toewijzen, intrekken, activeren, deactiveren of AddedOutsidePIM bevatten. |
     | Lid | Gebruiker die een rol activeert of toewijst. |
     | Rol | De rol die is toegewezen of geactiveerd door de gebruiker. |
-    | Redeneren | Tekst die tijdens de activering is ingevoerd in het veld reden. |
+    | Redenering | Tekst die tijdens de activering is ingevoerd in het veld reden. |
     | Verval | Wanneer een geactiveerde rol verloopt. Is alleen van toepassing op in aanmerking komende roltoewijzingen. |
 
 1. Als u de controle geschiedenis wilt sorteren, klikt u op de knoppen **tijd**, **actie**en **rol** .

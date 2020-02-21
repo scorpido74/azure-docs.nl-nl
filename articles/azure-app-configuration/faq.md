@@ -1,31 +1,26 @@
 ---
-title: Veelgestelde vragen over de configuratie van Azure-app | Microsoft Docs
+title: Veelgestelde vragen over Azure-app configuratie
 description: Veelgestelde vragen over Azure-app configuratie
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467586"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523489"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
 
-In dit artikel vindt u veelgestelde vragen over Azure-app configuratie.
+In dit artikel vindt u antwoorden op veelgestelde vragen over Azure-app configuratie.
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Hoe verschilt de app-configuratie van Azure Key Vault?
 
-App-configuratie is ontworpen voor een afzonderlijke reeks use cases: Hiermee kunnen ontwikkel aars toepassings instellingen beheren en de beschik baarheid van functies bepalen. Het doel is om veel van de taken van het werken met complexe configuratie gegevens te vereenvoudigen.
+Met app-configuratie kunnen ontwikkel aars toepassings instellingen beheren en de beschik baarheid van functies bepalen. Het doel is om veel van de taken van het werken met complexe configuratie gegevens te vereenvoudigen.
 
 App-configuratie ondersteunt:
 
@@ -36,11 +31,11 @@ App-configuratie ondersteunt:
 - Gespecialiseerde beheer bewerkingen
 - Een gebruikers interface voor het beheer van functies
 
-App-configuratie is complementair met Key Vault en de twee moeten naast elkaar worden gebruikt in de meeste toepassings implementaties.
+App-configuratie complementen Key Vault en de twee moeten naast elkaar worden gebruikt in de meeste toepassings implementaties.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Moet ik geheimen opslaan in de app-configuratie?
 
-Hoewel app-configuratie een beveiligde beveiliging biedt, is Key Vault nog steeds de beste plaats voor het opslaan van toepassings geheimen. Key Vault biedt versleuteling op hardwareniveau, granulair toegangs beleid en beheer bewerkingen, zoals het draaien van certificaten.
+Hoewel app-configuratie een beveiligde beveiliging biedt, is Key Vault nog steeds de beste plaats voor het opslaan van toepassings geheimen. Key Vault biedt versleuteling op hardwareniveau, granulair toegangs beleid en beheer bewerkingen zoals het draaien van certificaten.
 
 U kunt app-configuratie waarden maken die verwijzen naar geheimen die zijn opgeslagen in Key Vault. Zie [Key Vault verwijzingen gebruiken in een ASP.net core-app](./use-key-vault-references-dotnet-core.md)voor meer informatie.
 
@@ -62,7 +57,7 @@ Er geldt een limiet van 10 KB voor een item met een enkele sleutel waarde.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Hoe kan ik configuraties voor meerdere omgevingen (testen, fase ring, productie, enzovoort) opslaan?
 
-Momenteel kunt u bepalen wie toegang heeft tot de app-configuratie op een niveau per opslag. Gebruik een afzonderlijke opslag voor elke omgeving waarvoor verschillende machtigingen zijn vereist. Deze benadering biedt u de best mogelijke beveiligings isolatie.
+U bepaalt wie toegang kan krijgen tot de app-configuratie op een niveau per opslag. Gebruik een afzonderlijke opslag voor elke omgeving waarvoor verschillende machtigingen zijn vereist. Deze aanpak biedt de best mogelijke beveiligings isolatie.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Wat zijn de aanbevolen manieren om app-configuratie te gebruiken?
 
@@ -70,9 +65,14 @@ Zie [Aanbevolen procedures](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Wat kost de configuratie van de app?
 
-Er zijn twee prijs Categorieën: 1) een gratis laag en 2) een Standard-laag.
+Er zijn twee prijs Categorieën: 
 
-Als u een winkel hebt gemaakt vóór de introductie van de laag standaard, wordt deze automatisch verplaatst naar de gratis laag op algemene Beschik baarheid. U kunt een upgrade uitvoeren naar de Standard-laag of de gratis laag blijven als deze aan uw behoeften voldoet.
+- Gratis laag
+- Standard-laag.
+
+Als u een winkel hebt gemaakt vóór de introductie van de laag standaard, wordt deze automatisch verplaatst naar de gratis laag op algemene Beschik baarheid. U kunt een upgrade uitvoeren naar de Standard-laag of blijven op de laag gratis.
+
+U kunt een archief niet van de Standard-laag naar de gratis laag downgradeen. U kunt een nieuw archief maken in de gratis laag en vervolgens configuratie gegevens in dat archief importeren.
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>Welke app-configuratie-laag moet ik gebruiken?
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444380"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485009"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuele netwerken ontwerpen met NAT-gateway bronnen (open bare preview)
 
@@ -341,7 +341,6 @@ Een SNAT-poort kan na vijf seconden opnieuw worden gebruikt voor hetzelfde doel-
 - De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.
 - NSG op subnet of NIC wordt niet gehonoreerd voor uitgaande stromen naar open bare eind punten met NAT.
 - Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
-- Wanneer een virtueel netwerk meerdere subnetten heeft, kan voor elk subnet een andere NAT-configuratie worden geconfigureerd.
 - NAT kan niet meerdere virtuele netwerken omvatten.
 
 ## <a name="preview-participation"></a>Preview-deelname

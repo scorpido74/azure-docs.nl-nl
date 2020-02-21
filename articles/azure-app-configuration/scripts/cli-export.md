@@ -1,26 +1,20 @@
 ---
 title: Voor beeld van Azure CLI-script-exporteren vanuit een Azure-app configuratie archief
 titleSuffix: Azure App Configuration
-description: Bevat informatie en voorbeeldscripts voor het exporteren vanuit een Azure-app-configuratiearchief
+description: Een Azure CLI-script gebruiken voor het exporteren van de configuratie uit Azure-app configuratie
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: c4fc8f1cd1159f296d37fd67634d1c3171f7d7a9
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3e014504fc1e94c3b323a49b408fa992de00d14a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468248"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523616"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Exporteren vanuit een Azure-app-configuratiearchief
 

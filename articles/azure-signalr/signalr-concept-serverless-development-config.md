@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786772"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523167"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions ontwikkeling en configuratie met de Azure signalerings service
 
@@ -27,12 +27,12 @@ Ga in het Azure Portal naar de pagina *instellingen* van de bron van de signaal 
 
 ![Seingevings service-modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
-## <a name="azure-functions-development"></a>Azure Functions ontwikkeling
+## <a name="azure-functions-development"></a>Azure Functions-ontwikkeling
 
-Een serverloze realtime-toepassing die is gebouwd met Azure Functions en de Azure signalerings service vereist meestal twee Azure Functions:
+Een serverloze toepassing in realtime die is gebouwd met Azure Functions en Azure SignalR Service heeft over het algemeen twee Azure Functions nodig:
 
-* Een ' Negotiate '-functie die de client aanroept om een geldig toegangs token en service-eind punt-URL voor de signaal server te verkrijgen
-* Een of meer functies die berichten verzenden of groepslid maatschap beheren
+* Een functie 'negotiate' die de client aanroept voor een geldig SignalR Service-toegangstoken en service-eindpunt-URL
+* Een of meer functies die berichten sturen of een groepslidmaatschap beheren
 
 ### <a name="negotiate-function"></a>functie onderhandelen
 
@@ -40,7 +40,7 @@ Een client toepassing vereist een geldig toegangs token om verbinding te maken m
 
 Gebruik een door HTTP geactiveerde Azure-functie en de *SignalRConnectionInfo* -invoer binding om het object verbindings gegevens te genereren. De functie moet een HTTP-route hebben die eindigt op `/negotiate`.
 
-Zie voor meer informatie over het maken van de onderhandelings functie de referentie voor [ *SignalRConnectionInfo* -invoer binding](../azure-functions/functions-bindings-signalr-service.md#input).
+Zie voor meer informatie over het maken van de onderhandelings functie de referentie voor [ *SignalRConnectionInfo* -invoer binding](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Zie [app service-verificatie gebruiken](#using-app-service-authentication)voor meer informatie over het maken van een geverifieerd token.
 
@@ -50,7 +50,7 @@ De *signaal* uitvoer binding gebruiken om berichten te verzenden naar clients di
 
 Gebruikers kunnen worden toegevoegd aan een of meer groepen. U kunt ook de uitvoer binding van de *signaal sterkte* gebruiken om gebruikers toe te voegen aan of te verwijderen uit groepen.
 
-Zie voor meer informatie de referentie voor de [ *signaal* uitvoer binding](../azure-functions/functions-bindings-signalr-service.md#output).
+Zie voor meer informatie de referentie voor de [ *signaal* uitvoer binding](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>Seingevings hubs
 
@@ -100,7 +100,7 @@ Er zijn echter enkele speciale overwegingen voor apps die gebruikmaken van de si
 
 De Java script-type script-client maakt HTTP-aanvragen aan de onderhandelings functie om de verbindings onderhandelingen te initiëren. Wanneer de client toepassing wordt gehost op een ander domein dan de Azure function-app, moet CORS (cross-Origin Resource Sharing) zijn ingeschakeld op de functie-app of worden de aanvragen geblokkeerd door de browser.
 
-#### <a name="localhost"></a>Lokalehost
+#### <a name="localhost"></a>lokalehost
 
 Wanneer u de functie-app op uw lokale computer uitvoert, kunt u een sectie `Host` toevoegen aan *lokaal. settings. json* om CORS in te scha kelen. Voeg in de sectie `Host` twee eigenschappen toe:
 

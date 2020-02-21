@@ -3,12 +3,12 @@ title: host. json-verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425201"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484431"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 
@@ -341,7 +341,7 @@ Managed dependency is een functie die momenteel alleen wordt ondersteund met Pow
 
 ## <a name="queues"></a>Bestel
 
-Configuratie-instellingen vindt u in de [opslag wachtrij Triggers en bindingen](functions-bindings-storage-queue.md#host-json).  
+Configuratie-instellingen vindt u in de [opslag wachtrij Triggers en bindingen](functions-bindings-storage-queue-output.md#host-json).  
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -349,7 +349,7 @@ Configuratie-instelling vindt u in [SendGrid-triggers en-bindingen](functions-bi
 
 ## <a name="servicebus"></a>serviceBus
 
-De configuratie-instelling vindt u in [Service Bus triggers en bindingen](functions-bindings-service-bus.md#host-json).
+De configuratie-instelling vindt u in [Service Bus triggers en bindingen](functions-bindings-service-bus-output.md#host-json).
 
 ## <a name="singleton"></a>Singleton
 

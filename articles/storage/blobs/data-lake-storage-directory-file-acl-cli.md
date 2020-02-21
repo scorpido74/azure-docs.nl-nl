@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835117"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486131"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2 (preview-versie)
 
@@ -42,7 +42,7 @@ Voor [beeld](https://github.com/Azure/azure-cli-extensions/tree/master/src/stora
    ```
    Als uw versie van Azure CLI lager is dan `2.0.67`, installeert u een nieuwere versie. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Installeer de `storage-preview`-extensie.
+3. Installeer de `storage-preview` extensie.
 
    ```azurecli
    az extension add -n storage-preview
@@ -77,7 +77,7 @@ Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een
 In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system`.
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>Een map maken
@@ -237,6 +237,12 @@ In dit voor beeld wordt de ACL ingesteld op een map voor de gebruiker die eigena
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
+In dit voor beeld wordt de *standaard* -ACL ingesteld op een map voor de gebruiker die eigenaar is of de groep die eigenaar is, en wordt de ACL vervolgens naar de console afgedrukt.
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
 Gebruik de opdracht `az storage blob access set` om de ACL van een **bestand**in te stellen. 

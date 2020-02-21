@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848439"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504942"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
 
@@ -31,7 +31,7 @@ Dit document is gericht op het inschakelen van op wacht woord gebaseerde verific
 
 ## <a name="requirements"></a>Vereisten
 
-- [Azure multi-factor Authentication](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md)
 - Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
 - Webauthn vereist Windows 10 versie 1809 of hoger * *
@@ -40,7 +40,9 @@ Als u beveiligings sleutels wilt gebruiken om u aan te melden bij Web-apps en-se
 
 ## <a name="prepare-devices-for-preview"></a>Apparaten voorbereiden voor de preview-versie
 
-Op apparaten waarop u wilt testen, moet Windows 10 versie 1809 of hoger worden uitgevoerd. De beste ervaring is met Windows 10 versie 1903 of hoger.
+In azure AD gekoppelde apparaten waarvoor u een pilot uitvoert, moeten Windows 10 versie 1809 of hoger worden uitgevoerd. De beste ervaring is met Windows 10 versie 1903 of hoger.
+
+Voor hybride Azure AD gekoppelde apparaten moet Windows 10 Insider build 18945 of hoger worden uitgevoerd.
 
 ## <a name="enable-passwordless-authentication-method"></a>Verificatie methode met wacht woord inschakelen
 
@@ -59,7 +61,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>Gebruikers registratie en het beheer van FIDO2-beveiligings sleutels
 
-1. Blader naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
+1. Ga naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
 1. Meld u aan als dat nog niet het geval is.
 1. Klik op **beveiligings gegevens**.
    1. Als de gebruiker al ten minste één Azure Multi-Factor Authentication-methode heeft geregistreerd, kunnen ze onmiddellijk een FIDO2-beveiligings sleutel registreren.
@@ -79,13 +81,13 @@ In het voor beeld onder een gebruiker heeft de FIDO2-beveiligings sleutel al ing
 
 ## <a name="troubleshooting-and-feedback"></a>Problemen oplossen en feedback
 
-Als u feedback wilt delen of problemen ondervindt tijdens het vooraf bekijken van deze functie, kunt u deze delen via de Windows feedback hub-app.
+Als u feedback wilt delen of problemen ondervindt tijdens het vooraf bekijken van deze functie, kunt u met de volgende stappen delen via de Windows feedback hub-app:
 
 1. Start de **feedback-hub** en zorg ervoor dat u bent aangemeld.
 1. Feedback verzenden in de volgende categorisatie:
-   1. Categorie: beveiliging en privacy
-   1. Subcategorie: FIDO
-1. Als u logboeken wilt vastleggen, gebruikt u de optie: **mijn probleem opnieuw maken**
+   - Categorie: beveiliging en privacy
+   - Subcategorie: FIDO
+1. Als u logboeken wilt vastleggen, gebruikt u de optie om **mijn probleem opnieuw te maken**
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -95,7 +97,7 @@ Het inrichten van de beheerder en het ongedaan maken van de inrichting van bevei
 
 ### <a name="upn-changes"></a>UPN-wijzigingen
 
-Als de UPN van een gebruiker wordt gewijzigd, kunt u FIDO2-beveiligings sleutels niet meer wijzigen om de wijziging aan te brengen. De oplossing is het opnieuw instellen van het apparaat en de gebruiker moet hun FIDO2-beveiligings sleutels opnieuw registreren.
+We werken aan het ondersteunen van een functie waarmee UPN kan worden gewijzigd op hybride Azure AD en aan Azure AD gekoppelde apparaten. Als de UPN van een gebruiker wordt gewijzigd, kunt u FIDO2-beveiligings sleutels niet meer wijzigen om de wijziging aan te brengen. De oplossing is het opnieuw instellen van het apparaat en de gebruiker moet zich opnieuw registreren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

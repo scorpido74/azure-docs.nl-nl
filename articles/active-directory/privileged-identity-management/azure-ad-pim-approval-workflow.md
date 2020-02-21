@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0b39336591e9939d0e5200304cbeced2d9831979
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025551"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498773"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Aanvragen voor Azure AD-rollen in Privileged Identity Management goed keuren of weigeren
 
@@ -29,28 +29,28 @@ Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt 
 
 ## <a name="determine-your-version-of-pim"></a>Uw versie van PIM bepalen
 
-Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
+Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen voor Azure AD-rollen.
 
-# <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
+# <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
 ## <a name="view-pending-requests"></a>In behandeling zijnde aanvragen weer geven
 
-Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure resource Role-aanvraag in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
+Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
 1. Selecteer **aanvragen goed keuren**.
 
-    ![Aanvragen goed keuren-Azure-bronnen pagina waarin de aanvraag voor beoordeling wordt weer gegeven](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Aanvragen goed keuren-pagina met verzoek voor het controleren van Azure AD-rollen](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     In de sectie **aanvragen voor functie activeringen** ziet u een lijst met aanvragen die wachten op uw goed keuring.
 
@@ -64,7 +64,7 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure resour
 
 1. Selecteer **goed keuren**. U ontvangt een Azure-melding van uw goed keuring.
 
-    ![Melding goed keuren met een aanvraag is goedgekeurd](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Melding goed keuren met een aanvraag is goedgekeurd](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
 ## <a name="deny-requests"></a>Aanvragen weigeren
 
@@ -83,18 +83,18 @@ Hier vindt u informatie over werk stroom meldingen:
 - Goed keurders worden per e-mail op de hoogte gesteld wanneer een aanvraag voor een rol in afwachting is van de beoordeling. E-mail meldingen bevatten een rechtstreekse koppeling naar de aanvraag, waarbij de goed keurder kan goed keuren of weigeren.
 - Aanvragen worden omgezet door de eerste fiatteur die het goed keurt of weigert.
 - Wanneer een goed keurder reageert op de aanvraag, worden alle goed keurders hiervan op de hoogte gesteld van de actie.
-- Resource beheerders worden gewaarschuwd wanneer een goedgekeurde gebruiker actief wordt in hun rol.
+- Globale beheerders en beheerders met geprivilegieerde rollen worden gewaarschuwd wanneer een goedgekeurde gebruiker actief wordt in hun rol.
 
 >[!NOTE]
->Een resource beheerder die meent dat een goedgekeurde gebruiker niet actief mag zijn, kan de toewijzing van de actieve rol in Privileged Identity Management verwijderen. Hoewel resource beheerders geen meldingen ontvangen over aanvragen in behandeling, tenzij ze een goed keurder zijn, kunnen ze openstaande aanvragen voor alle gebruikers weer geven en annuleren door in behandeling zijnde aanvragen in Privileged Identity Management weer te geven.
+>Een globale beheerder of een bevoegde beheerdersrol die meent dat een goedgekeurde gebruiker niet actief mag zijn, kan de toewijzing van de actieve rol in Privileged Identity Management verwijderen. Hoewel beheerders niet op de hoogte worden gesteld van aanvragen die in behandeling zijn, tenzij ze een goed keurder zijn, kunnen ze alle openstaande aanvragen voor alle gebruikers weer geven en annuleren door in behandeling zijnde aanvragen in Privileged Identity Management weer te geven.
 
-# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+# <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
 ## <a name="view-pending-requests"></a>In behandeling zijnde aanvragen weer geven
 
 Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
@@ -132,7 +132,7 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toe
 
     ![Deel venster geselecteerde aanvragen weigeren met een reden voor weigeren](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Klik op **weigeren**.
+1. Selecteer **weigeren**.
 
     Het status symbool wordt bijgewerkt met de weigering.
 

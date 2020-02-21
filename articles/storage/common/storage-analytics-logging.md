@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882640"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484890"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-logboek registratie
 
-Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen voor een opslag service. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslag service. Aanvragen worden op de beste basis geregistreerd.
+Opslaganalyse registreert gedetailleerde informatie over geslaagde en mislukte aanvragen bij een opslagservice. Deze informatie kan worden gebruikt voor het bewaken van afzonderlijke aanvragen en voor het vaststellen van problemen met een opslagservice. Aanvragen worden op de beste basis geregistreerd.
 
- Opslaganalyse logboek registratie is niet standaard ingeschakeld voor uw opslag account. U kunt deze inschakelen in de [Azure Portal](https://portal.azure.com/); Zie [een opslag account bewaken in de Azure Portal](/azure/storage/storage-monitor-storage-account)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de bewerkingen eigenschappen van [BLOB-service ophalen](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [Eigenschappen van wachtrij service ophalen](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)en [Eigenschappen van Table service ophalen](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) om Opslaganalyse in te scha kelen voor elke service.
+ Logboekregistratie van Opslaganalyse is niet standaard ingeschakeld voor uw opslagaccount. U kunt deze inschakelen in de [Azure Portal](https://portal.azure.com/); Zie [een opslag account bewaken in de Azure Portal](/azure/storage/storage-monitor-storage-account)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de bewerkingen eigenschappen van [BLOB-service ophalen](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [Eigenschappen van wachtrij service ophalen](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)en [Eigenschappen van Table service ophalen](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) om Opslaganalyse in te scha kelen voor elke service.
 
  Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor het service-eind punt. Als een opslag account bijvoorbeeld activiteit heeft in het BLOB-eind punt, maar niet in de tabel-of wachtrij-eind punten, worden alleen logboeken gemaakt die betrekking hebben op het Blob service.
 
 > [!NOTE]
->  Opslaganalyse logboek registratie is momenteel alleen beschikbaar voor de services blob, Queue en Table. Premium Storage-account wordt echter niet ondersteund.
+>  Logboekregistratie voor opslaganalyse is momenteel alleen beschikbaar voor de blob-, wachtrij- en tabelservices. Premium-opslagaccounts worden echter niet ondersteund.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -138,7 +138,7 @@ U kunt de opslag services opgeven die u wilt registreren en de retentie periode 
 
 ### <a name="enable-storage-logging-using-powershell"></a>Logboek registratie van opslag inschakelen met Power shell  
 
- U kunt Power shell op uw lokale machine gebruiken om opslag logboek registratie te configureren in uw opslag account met behulp van de Azure PowerShell cmdlet **Get-AzureStorageServiceLoggingProperty** om de huidige instellingen op te halen en de cmdlet  **Stel-AzureStorageServiceLoggingProperty** in om de huidige instellingen te wijzigen.  
+ U kunt Power shell op uw lokale machine gebruiken om opslag logboek registratie te configureren in uw opslag account met behulp van de cmdlet **Get-AzureStorageServiceLoggingProperty** van Azure PowerShell om de huidige instellingen op te halen en de cmdlet **set-AzureStorageServiceLoggingProperty** om de huidige instellingen te wijzigen.  
 
  De cmdlets die de logboek registratie van opslag regelen, gebruiken een **LoggingOperations** -para meter die een teken reeks is met een door komma's gescheiden lijst met aanvraag typen die moeten worden geregistreerd. De drie mogelijke aanvraag typen zijn **lezen**, **schrijven**en **verwijderen**. Als u logboek registratie wilt uitschakelen, gebruikt u de waarde **geen** voor de para meter **LoggingOperations** .  
 
@@ -160,7 +160,7 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  Naast het gebruik van de Azure Portal of de Azure PowerShell-cmdlets voor het beheren van de opslag logboek registratie, kunt u ook een van de Azure Storage-Api's gebruiken. Als u bijvoorbeeld een .NET-taal gebruikt, kunt u de Storage-client bibliotheek gebruiken.  
 
- De klassen **CloudBlobClient**, **CloudQueueClient**en **CloudTableClient** hebben allemaal methoden zoals **SetServiceProperties** en **SetServicePropertiesAsync** die een **ServiceProperties** -object als een bepaalde. U kunt het **ServiceProperties** -object gebruiken voor het configureren van opslag logboek registratie. Het volgende C# code fragment laat zien hoe u kunt wijzigen wat er wordt geregistreerd en de Bewaar periode voor de logboek registratie van de wachtrij:  
+ De klassen **CloudBlobClient**, **CloudQueueClient**en **CloudTableClient** hebben allemaal methoden zoals **SetServiceProperties** en **SetServicePropertiesAsync** die een **ServiceProperties** -object als para meter hebben. U kunt het **ServiceProperties** -object gebruiken voor het configureren van opslag logboek registratie. Het volgende C# code fragment laat zien hoe u kunt wijzigen wat er wordt geregistreerd en de Bewaar periode voor de logboek registratie van de wachtrij:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -180,6 +180,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ## <a name="download-storage-logging-log-data"></a>Logboek gegevens van opslag logboeken downloaden
 
  Als u uw logboek gegevens wilt bekijken en analyseren, moet u de blobs downloaden die de logboek gegevens bevatten die u wilt raadplegen op een lokale computer. Veel hulpprogram ma's voor opslag bladeren maken het mogelijk om blobs te downloaden vanuit uw opslag account. u kunt ook het Azure Storage team dat is voorzien van het opdracht regel programma Azure copy tool [AzCopy](storage-use-azcopy-v10.md) gebruiken om uw logboek gegevens te downloaden.  
+ 
+>[!NOTE]
+> De `$logs`-container is niet geïntegreerd met Event Grid, zodat u geen meldingen ontvangt wanneer er logboek bestanden worden geschreven. 
 
  Om ervoor te zorgen dat u de logboek gegevens downloadt die u interesseert en om te voor komen dat dezelfde logboek gegevens meermaals worden gedownload:  
 

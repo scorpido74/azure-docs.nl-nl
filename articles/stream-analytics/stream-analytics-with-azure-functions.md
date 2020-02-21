@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772874"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505706"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Zelf studie: Azure Functions uitvoeren vanuit Azure Stream Analytics-taken 
 
@@ -195,7 +195,9 @@ Als er een fout optreedt tijdens het verzenden van gebeurtenissen naar Azure Fun
 
 Wanneer u in Azure Portal de waarde van Maximale batchgrootte/Maximum aantal batches probeert leeg te maken (standaard), verandert de waarde weer in de eerder ingevoerde waarde wanneer u de gegevens opslaat. Voer in dat geval de standaardwaarden voor deze velden handmatig in.
 
-Het gebruik van [HTTP-routering](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) in uw Azure Functions wordt momenteel niet ondersteund door Stream Analytics.
+Het gebruik van [http-route ring](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) op uw Azure functions wordt momenteel niet ondersteund door stream Analytics.
+
+Ondersteuning voor het maken van verbinding met Azure Functions die wordt gehost in een virtueel netwerk is niet ingeschakeld.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

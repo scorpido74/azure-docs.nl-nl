@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905446"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484584"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-en Avro-gegevens parseren in Azure Stream Analytics
 
@@ -63,7 +63,7 @@ FROM input
 
 Het resultaat is:
 
-|DeviceID|lat|Lang|Temperatuur|Versie|
+|DeviceID|lat|Lang|Temperatuur|Version|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
@@ -169,6 +169,38 @@ SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
 ```
 
+### <a name="parse-json-record-in-sql-reference-data"></a>JSON-record parseren in SQL-referentie gegevens
+Wanneer u Azure SQL Database als referentie gegevens in uw taak gebruikt, is het mogelijk om een kolom met gegevens in JSON-indeling te hebben. Hieronder ziet u een voor beeld.
+
+|DeviceID|Gegevens|
+|-|-|
+|12345|{"sleutel": "waarde1"}|
+|54321|{"sleutel": "Value2"}|
+
+U kunt de JSON-record in de *gegevens* kolom parseren door een door de gebruiker gedefinieerde Java script-functie te schrijven.
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+U kunt vervolgens een stap in uw Stream Analytics query maken, zoals hieronder wordt weer gegeven om toegang te krijgen tot de velden van uw JSON-records.
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
+```
+
 ## <a name="array-data-types"></a>Matrix gegevens typen
 
 Matrix gegevens typen zijn een geordende verzameling waarden. Enkele typische bewerkingen op matrix waarden worden hieronder beschreven. In deze voor beelden worden de functies [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)en de operator [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) gebruikt.
@@ -265,7 +297,7 @@ Het resultaat is:
 |DeviceId|smKey|smValue|
 |-|-|-|
 |12345|Fabrikant|ABC|
-|12345|Versie|1.2.45|
+|12345|Version|1.2.45|
 
 Als de geëxtraheerde velden in kolommen moeten worden weer gegeven, is het mogelijk om de gegevensset te draaien met de syntaxis [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) naast de bewerking [samen voegen](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Voor deze samen voeging is een [tijds grens](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) vereist die duplicatie voor komt:
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431414"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526311"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Wat is Virtual Network NAT (open bare preview)?
 
@@ -168,7 +168,7 @@ Abonnementen moeten worden geregistreerd om deel te nemen aan de open bare previ
 2. registratie activeren
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>Prijzen
@@ -197,9 +197,7 @@ We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de o
 
 - NAT is compatibel met een standaard-SKU openbaar IP-adres, een openbaar IP-voor voegsel en load balancer-resources.   Basis bronnen (bijvoorbeeld basis load balancer) en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basis bronnen moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
 - De IPv4-adres familie wordt ondersteund.  NAT communiceert niet met een IPv6-adres groep.
-- NSG op subnet of NIC wordt niet gehonoreerd voor uitgaande stromen naar open bare eind punten met NAT.
 - Logboek registratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
-- Wanneer een virtueel netwerk meerdere subnetten heeft, kan voor elk subnet een andere NAT-configuratie worden geconfigureerd.
 - NAT kan niet meerdere virtuele netwerken omvatten.
 
 ## <a name="next-steps"></a>Volgende stappen

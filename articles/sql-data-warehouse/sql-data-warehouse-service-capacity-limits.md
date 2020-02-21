@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e3661797ea408f219a67a1862901fee7c27a1d58
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526413"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -36,7 +36,7 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Database |Maximale grootte | Gen1:240 TB gecomprimeerd op schijf. Deze ruimte is onafhankelijk van tempdb of logboek ruimte en daarom is deze ruimte toegewezen aan permanente tabellen.  Geclusterde column Store-compressie wordt geschat op 5X.  Met deze compressie kan de Data Base worden uitgebreid tot ongeveer 1 PB wanneer alle tabellen zijn geclusterd (het standaard tabel type). <br/><br/> Gen2:240TB voor rowstore en onbeperkte opslag voor column Store-tabellen |
-| Tabel |Maximale grootte |60 TB gecomprimeerd op schijf |
+| Tabel |Maximale grootte | Voor column Store-tabellen geldt geen uppper-limiet. <br/><br/>Voor rij-Store-tabellen, 60 TB gecomprimeerd op schijf |
 | Tabel |Tabellen per data base | 100.000 |
 | Tabel |Kolommen per tabel |1024 kolommen |
 | Tabel |Bytes per kolom |Afhankelijk van het [gegevens type](sql-data-warehouse-tables-data-types.md)van de kolom. De limiet is 8000 voor char-gegevens typen, 4000 voor nvarchar of 2 GB voor de maximale gegevens typen. |
@@ -65,7 +65,7 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Query's uitvoeren |Gelijktijdige query's op systeem weergaven. |100 |
 | Query's uitvoeren |Query's in de wachtrij op systeem weergaven |1000 |
 | Query's uitvoeren |Maximum aantal para meters |2098 |
-| Batch |Maximum grootte |65,536*4096 |
+| Batch |Maximumgrootte |65,536*4096 |
 | Resultaten selecteren |Kolommen per rij |4096<br/><br/>U kunt nooit meer dan 4096 kolommen per rij in het selectie resultaat hebben. Er is geen garantie dat u altijd 4096 kunt hebben. Als het query plan een tijdelijke tabel vereist, kunnen de 1024-kolommen per tabel maximum worden toegepast. |
 | SELECT |Geneste subquery's |32<br/><br/>U kunt nooit meer dan 32 geneste subquery's in een SELECT-instructie hebben. Er is geen garantie dat u altijd 32 kunt hebben. Met een koppeling kan bijvoorbeeld een subquery worden geïntroduceerd in het query plan. Het aantal subquery's kan ook worden beperkt door het beschik bare geheugen. |
 | SELECT |Kolommen per samen voeging |1024 kolommen<br/><br/>In de koppeling kunt u nooit meer dan 1024 kolommen hebben. Er is geen garantie dat u altijd 1024 kunt hebben. Als voor het deelname plan een tijdelijke tabel met meer kolommen is vereist dan het resultaat van de deelname, geldt de limiet van 1024 voor de tijdelijke tabel. |

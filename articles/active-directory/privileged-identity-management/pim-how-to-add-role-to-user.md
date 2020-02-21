@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047106"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498878"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -33,9 +33,9 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
+# <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
 ## <a name="assign-a-role"></a>Een rol toewijzen
 
@@ -75,11 +75,11 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Als u een specifieke duur voor de toewijzing wilt opgeven, schakelt u het selectie vakje uit en wijzigt u de begin-en/of eind datum en-tijd vakken. Als u klaar bent, selecteert u **gereed**.
 
-    ![Instellingen voor lidmaatschappen-datum en tijd](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Instellingen voor lidmaatschappen-datum en tijd](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. Als u de nieuwe roltoewijzing wilt maken, selecteert u **toevoegen**. Er wordt een melding van de status weer gegeven.
 
-    ![Nieuwe toewijzing-melding](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Nieuwe toewijzing-melding](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Een bestaande roltoewijzing bijwerken of verwijderen
 
@@ -87,23 +87,19 @@ Volg deze stappen om een bestaande roltoewijzing bij te werken of te verwijderen
 
 1. Open **Azure AD privileged Identity Management**.
 
-1. Selecteer **Azure-resources**.
+1. Selecteer **Azure AD-rollen**.
 
-1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheer groep.
-
-1. Selecteer onder beheren de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
+1. Selecteer **rollen** om de lijst met rollen voor Azure AD weer te geven.
 
 1. Selecteer de rol die u wilt bijwerken of verwijderen.
 
 1. Zoek naar de roltoewijzing op de tabbladen **in aanmerking komende rollen** of **actieve rollen** .
 
-    ![Roltoewijzing bijwerken of verwijderen](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![Roltoewijzing bijwerken of verwijderen](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. Selecteer **bijwerken** of **verwijderen** om de roltoewijzing bij te werken of te verwijderen.
 
-    Zie [Azure-resource rollen uitbreiden of vernieuwen in privileged Identity Management](pim-resource-roles-renew-extend.md)voor meer informatie over het uitbreiden van een roltoewijzing.
-
-# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+# <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Een gebruiker geschikt maken voor een rol
 

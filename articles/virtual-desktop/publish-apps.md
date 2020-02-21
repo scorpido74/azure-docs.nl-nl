@@ -1,18 +1,18 @@
 ---
 title: Ingebouwde apps publiceren in virtueel bureau blad van Windows-Azure
-description: Het publiceren van moderne apps in Windows virtueel bureau blad.
+description: Het publiceren van ingebouwde apps in Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e8e8512fa9f6a64fb0db688b7badcb699f6ccaa5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367265"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484618"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Ingebouwde apps publiceren in virtueel bureau blad van Windows
 
