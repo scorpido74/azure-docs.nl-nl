@@ -710,7 +710,7 @@
             - name: Veelgestelde vragen
               href: migration-classic-resource-manager-faq.md
 - name: Problemen oplossen
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
 - name: Naslaginformatie
   items:
     - name: Azure CLI
