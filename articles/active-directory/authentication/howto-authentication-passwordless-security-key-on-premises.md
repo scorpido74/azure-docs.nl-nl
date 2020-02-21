@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b569377fd5408f40df080ad63fdfea720a8f9e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
-ms.translationtype: HT
+ms.openlocfilehash: 9e28403d905a25e9e792b3b1f31b79c39cd7728b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506558"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522085"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor on-premises resources met Azure Active Directory (preview-versie)
 
@@ -33,7 +33,7 @@ Azure Active Directory (AD) kan Kerberos ticket granting tickets (Tgt's) uitgeve
 
 Er wordt een Azure AD Kerberos-server object gemaakt in uw on-premises Active Directory en vervolgens veilig gepubliceerd naar Azure Active Directory. Het object is niet gekoppeld aan een fysieke server. Het is gewoon een resource die kan worden gebruikt door Azure Active Directory voor het genereren van Kerberos-Tgt's voor uw Active Directory-domein.
 
-![Een TGT en PRT ophalen uit Azure AD en AD DS](./media/howto-authentication-passwordless-on-premises/fido2-tgt-exchange-process.png)
+![Een TGT (ticket granting ticket) ophalen uit Azure AD en AD DS](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
 
 1. De gebruiker meldt zich aan bij hun Windows 10-apparaat met een FIDO2-beveiligings sleutel en verifieert deze bij Azure AD.
 1. Azure AD controleert de directory op een Kerberos-server sleutel die overeenkomt met het on-premises AD-domein van de gebruiker.
