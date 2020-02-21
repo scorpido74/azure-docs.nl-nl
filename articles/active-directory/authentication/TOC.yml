@@ -130,10 +130,14 @@
       items:
         - name: Implementeren zonder wachtwoord
           href: howto-authentication-passwordless-deployment.md
-        - name: Beveiligingssleutels zonder wachtwoord
-          href: howto-authentication-passwordless-security-key.md
-        - name: Windows 10 zonder wachtwoord
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: FIDO2-beveiligingssleutels zonder wachtwoord
+          items:
+            - name: FIDO2-beveiligingssleutels inschakelen voor uw tenant
+              href: howto-authentication-passwordless-security-key.md
+            - name: Aanmelden bij Windows 10-apparaten
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Eenmalige aanmelding voor on-premises resources
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Zonder wachtwoord aanmelden via telefoon
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello voor Bedrijven

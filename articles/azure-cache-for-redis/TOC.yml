@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Geo-replicatie instellen
           href: cache-how-to-geo-replication.md
+        - name: Besparen met gereserveerde capaciteit
+          href: cache-reserved-pricing.md
         - name: Migreren vanuit Managed Cache Service
           href: cache-migrate-to-redis.md
     - name: Automatiseren

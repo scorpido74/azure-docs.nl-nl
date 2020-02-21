@@ -81,6 +81,9 @@
         - name: Een SAML-serviceprovider registreren
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
+        - name: Een Graph-toepassing registreren
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: Een web-API-toepassing toevoegen
           href: add-web-application.md
         - name: Een systeemeigen clienttoepassing toevoegen
@@ -377,8 +380,6 @@
       items:
         - name: Gebruikers migreren
           href: user-migration.md
-        - name: Gebruikers met externe identiteiten migreren
-          href: migrate-social-identities.md
 - name: Naslaginformatie
   items:
     - name: Opmerkingen bij de release voor Identity Experience Framework
@@ -392,9 +393,11 @@
       displayName: 'cookies, SameSite'
     - name: Foutcodes
       href: error-codes.md
+    - name: Microsoft Graph API-bewerkingen
+      href: microsoft-graph-operations.md
     - name: Regionale beschikbaarheid en opslaglocaties
       href: data-residency.md
-    - name: Facturering inschakelen
+    - name: Factureringsmodel
       href: billing.md
     - name: Beveiligingsbeheer
       href: threat-management.md

@@ -431,53 +431,9 @@
           items:
             - name: Apache Hadoop-sandbox gebruiken
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: Apache Pig gebruiken
+              href: use-pig.md
         - name: Ontwikkelen
-          items:
-            - name: MapReduce gebruiken met Apache Hadoop
-              items:
-                - name: Overzicht van MapReduce
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: SSH gebruiken
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: cURL gebruiken
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: Azure PowerShell gebruiken
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: SDK voor .NET gebruiken
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: De MapReduce-voorbeelden uitvoeren
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: Aangepaste Apache Hadoop MapReduce-programma's uitvoeren
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Streaming C# MapReduce-programma''s ontwikkelen'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: Java MapReduce-programma's ontwikkelen
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 'Apache Hive gebruiken als hulpprogramma voor uitpakken, transformeren en laden (ETL)'
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 'Uitpakken, transformeren en laden op de juiste schaal'
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: Toepassingen zonder interactieve verificatie voor .NET HDInsight maken
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: Big data analyseren
-              items:
-                - name: Analyseren met Power Query
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: Power BI verbinden met Interactive Query
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: Power BI verbinden met Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: Excel verbinden met Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: Verbinding maken met het Apache Hive JDBC-stuurprogramma
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: Opgeslagen tweets analyseren
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: Aanbevelingen genereren met Apache Mahout
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: Geavanceerde analyse voor HDInsight
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: Beheren
           items:
             - name: Lege edge-knooppunten gebruiken
               href: ./hdinsight-apps-use-edge-node.md

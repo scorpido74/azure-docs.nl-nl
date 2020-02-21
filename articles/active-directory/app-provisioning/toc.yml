@@ -77,6 +77,8 @@
       href: application-provisioning-configure-api.md
 - name: Naslaginformatie
   items:
+    - name: Naleving van SCIM 2.0-protocol
+      href: application-provisioning-config-problem-scim-compatibility.md
     - name: Een inrichtingsmethode kiezen
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: HR-inrichting in de cloud

@@ -1,0 +1,139 @@
+### YamlMime:Landing
+title: Problemen met virtuele Linux-machines oplossen
+summary: Documentatie om problemen met virtuele Linux-machines in Azure op te lossen.
+metadata:
+  title: Problemen met virtuele Linux-machines oplossen
+  description: Documentatie voor probleemoplossing en beheer van virtuele Linux-machines in Azure.
+  services: virtual-machines-linux
+  ms.service: virtual-machines-linux
+  ms.topic: landing-page
+  author: genlin
+  ms.author: genli
+  ms.date: 09/09/2019
+  ms.openlocfilehash: 5b5ef5ee550100eed4bd8a236fb102c2870c70ed
+  ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77519271"
+landingContent:
+- title: Implementatiefouten oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Toewijzingsproblemen bij het maken, opnieuw starten of het wijzigen van het formaat van VM’s in Azure oplossen
+      url: allocation-failure.md
+    - text: Probleemoplossing voor implementatieproblemen bij het maken van een nieuwe virtuele machine in Azure
+      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm
+    - text: Fouten met een ongeldige sjabloon oplossen
+      url: ../../azure-resource-manager/templates/error-invalid-template.md
+    - text: Fouten voor een niet-beschikbare SKU oplossen
+      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+- title: Richtlijnen over VM-implementatie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een niet-goedgekeurde installatiekopie voor Azure voorbereiden en uploaden
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic
+    - text: Een installatiekopie van een gegeneraliseerde VM maken of klonen in Azure
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/capture-image
+- title: Ik kan geen verbinding maken met mijn virtuele machine
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Informatie over hoe u diagnostische gegevens over opstarten gebruikt om problemen met virtuele Linux-machines in Azure op te lossen
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+    - text: Het lokale Linux-wachtwoord in Azure-VM's opnieuw instellen
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/reset-password
+    - text: Stel de externe toegang opnieuw in om problemen met een externe server op te lossen met PowerShell of CLI
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection
+    - text: Snelle stappen voor het oplossen van veelvoorkomende problemen met SSH-verbindingen
+      url: https://azure.microsoft.com/documentation/articles/virtual-machines-troubleshoot-ssh-connections/
+- title: Wachtwoord opnieuw instellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: De SSH-sleutel of het wachtwoord herstellen met VM-toegangsextensie
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#ways-to-use-the-vmaccess-extension
+    - text: Offline een lokaal wachtwoord opnieuw instellen voor een virtuele Linux-machine in Azure
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/reset-password
+- title: VM start niet op
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Opstartproblemen van de VM oplossen nadat er specifieke kernelwijzigingen worden toegepast
+      url: https://support.microsoft.com/help/4091524/how-recovery-azure-linux-vm-from-kernel-related-boot-related-issues
+    - text: Gebruik Seriële console voor toegang tot GRUB om de opstartconfiguratiemodus te wijzigen
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode
+    - text: Informatie over hoe u diagnostische gegevens over opstarten gebruikt om problemen met virtuele Linux-machines in Azure op te lossen
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+    - text: Informatie over FSTAB-fouten en oplossingsstappen
+      url: https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors
+- title: Kan VM niet starten of stoppen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Problemen bij het implementeren van virtuele Windows-machines in Azure oplossen
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+    - text: Toewijzingsfouten oplossen (klassiek implementatiemodel)
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+- title: Onverwacht opnieuw opstarten van VM
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Logboeken voor het opnieuw opstarten van virtuele machines weergeven om de oorzaak van het opnieuw opstarten te achterhalen
+      url: https://azure.microsoft.com/blog/viewing-vm-reboot-logs
+- title: Problemen met het beheren van virtuele schijven
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Veelgestelde vragen over virtuele schijven
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks
+    - text: Toewijzingsfouten bij het wijzigen van het formaat van VM's oplossen
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+    - text: Informatie over het tijdelijke station op uw virtuele machine
+      url: https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux#temporary-disk
+    - text: Overzicht van Azure Managed Disks
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/managed-disks-overview
+    - text: Veelgestelde vragen over Azure VM-schijven en beheerde en onbeheerde premium schijven
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks
+- title: Schijfversleutelingsproblemen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Disk Encryption-scenario's voor Linux-VM's
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux
+    - text: Problemen met schijfversleuteling oplossen
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-troubleshooting
+    - text: Veelgestelde vragen over Azure Disk Encryption
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-faq
+- title: VM-prestatieproblemen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Prestatieproblemen van Azure-VM oplossen
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-performance-virtual-machine-linux-windows
+    - text: Diagnostische tests uitvoeren voor Azure-VM's
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics
+- title: Problemen met VM-extensies
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Algemene stappen voor probleemoplossing voor extensies
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+    - text: De extensie in uw virtuele machine installeren
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#installing-the-extension-in-your-vm
+    - text: Aangepaste scriptextensie voor Windows
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+- title: Back-ups en herstellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Problemen oplossen met back-ups van Azure-VM in de Azure-portal
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+    - text: Problemen met Azure Backup Server oplossen
+      url: https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot
+    - text: Overzicht van de functies van Azure Backup
+      url: https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#using-premium-storage-vms-with-azure-backup
+    - text: Inzicht in het maken van een back-up van virtuele Azure-machines naar Recovery Services-kluizen
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm

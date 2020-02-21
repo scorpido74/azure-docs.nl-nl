@@ -1,0 +1,145 @@
+### YamlMime:Landing
+title: Problemen met virtuele machines oplossen in Azure
+summary: Documentatie om problemen met virtuele machines in Azure op te lossen.
+metadata:
+  title: Problemen met virtuele machines oplossen in Azure
+  description: Documentatie over probleemoplossing en beheer van virtuele Windows-machines in Azure.
+  services: virtual-machines-windows
+  ms.service: virtual-machines-windows
+  ms.topic: landing-page
+  author: genlin
+  ms.author: genli
+  ms.date: 09/09/2019
+  ms.openlocfilehash: 4111df079f6e4c0d49ab1381add835d493b3540a
+  ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77519237"
+landingContent:
+- title: Implementatiefouten oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Toewijzingsproblemen bij het maken, opnieuw starten of het wijzigen van het formaat van VM’s in Azure oplossen
+      url: allocation-failure.md
+    - text: Probleemoplossing voor implementatieproblemen bij het maken van een nieuwe virtuele machine in Azure
+      url: troubleshoot-deployment-new-vm-windows.md
+    - text: Fouten met een ongeldige sjabloon oplossen
+      url: ../../azure-resource-manager/templates/error-invalid-template.md
+    - text: Fouten voor een niet-beschikbare SKU oplossen
+      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+- title: Richtlijnen over VM-implementatie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+    - text: Windows-clientbesturingssystemen implementeren of maken in Azure
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/client-images
+    - text: Fouten die betrekking hebben op quota oplossen
+      url: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors
+- title: Ik kan geen verbinding maken met mijn virtuele machine
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Quick steps to address common RDP connection issues (Snelle stappen voor het oplossen van veelvoorkomende problemen met RDP-verbindingen)
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-rdp-connection
+    - text: Problemen met Azure VM RDP-verbinding oplossen op basis van gebeurtenis-id
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/event-id-troubleshoot-vm-rdp-connecton
+    - text: Verificatiefouten oplossen als u RDP gebruikt om verbinding te maken met Azure-VM's
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-authentication-error-rdp-vm
+    - text: Gastnetwerkkaart van de VM is uitgeschakeld
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-nic-disabled
+- title: Wachtwoord opnieuw instellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: De service Extern bureaublad of het bijbehorende aanmeldingswachtwoord opnieuw instellen in een virtuele Windows-machine
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp
+    - text: Offline een lokaal Windows-wachtwoord opnieuw instellen voor een virtuele Azure-machine
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-local-password-without-agent
+    - text: Specifieke RDP-foutberichten oplossen naar een virtuele Windows-machine in Azure
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-specific-rdp-errors
+    - text: Problemen oplossen met verbindingen van Extern bureaublad met een virtuele Azure-machine
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection
+- title: VM start niet op
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Fout bij schijfcontrole tijdens het opstarten
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-check-disk-boot-error
+    - text: Fout met BitLocker tijdens het opstarten
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-bitlocker-boot-error
+    - text: Bijwerkfout voor opstartconfiguratie
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+    - text: Algemene blue screen-fouten
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-common-blue-screen-error
+- title: Kan VM niet starten of stoppen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Oplossen van VM-implementatieproblemen
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+    - text: Toewijzingsfouten oplossen (klassiek implementatiemodel)
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+    - text: Bijwerkfout voor opstartconfiguratie
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-vm-boot-configure-update
+    - text: VM-levenscyclus en -statussen
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle
+- title: Onverwacht opnieuw opstarten van VM
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Logboeken voor het opnieuw opstarten van virtuele machines weergeven om de oorzaak van het opnieuw opstarten te achterhalen
+      url: https://azure.microsoft.com/blog/viewing-vm-reboot-logs
+    - text: Opstartfouten na een herstart diagnosticeren en hiervan herstellen
+      url: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
+    - text: Inzicht in gepland onderhoud voor virtuele Azure-machines
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates
+    - text: Opstarten van Azure-VM loopt vast bij Windows Update
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-stuck-updating-boot-error
+- title: Problemen met het beheren van virtuele schijven
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Veelgestelde vragen over virtuele schijven
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks
+    - text: Toewijzingsfouten bij het wijzigen van het formaat van VM's oplossen
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+    - text: Informatie over het tijdelijke station op uw virtuele machine
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#temporary-disk
+    - text: Overzicht van Azure Managed Disks
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview
+- title: Schijfversleutelingsproblemen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Problemen met Azure Disk Encryption oplossen
+      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg
+    - text: Veelgestelde vragen over Azure Disk Encryption
+      url: https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq
+    - text: Problemen met Azure-extensies oplossen
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+- title: VM-prestatieproblemen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Probleemoplossing van galerieën met gedeelde installatiekopieën is langzaam
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshooting-shared-images#replication-is-slow
+- title: Problemen met VM-extensies
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Algemene stappen voor probleemoplossing voor extensies
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+    - text: De extensie in uw virtuele machine installeren
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-windows
+    - text: Aangepaste scriptextensie voor Windows
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+- title: Back-ups en herstellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Problemen oplossen met back-ups van Azure Virtual Machine in de Azure-portal
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot

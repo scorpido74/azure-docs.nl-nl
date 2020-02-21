@@ -68,6 +68,8 @@
           href: understand-rhel-reservation-charges.md
         - name: Kortingen voor Azure Database for MariaDB
           href: understand-reservation-charges-mariadb.md
+        - name: Kortingen voor Azure Cache voor Redis
+          href: understand-azure-cache-for-redis-reservation-charges.md
         - name: Kortingen voor App Service
           href: reservation-discount-app-service-isolated-stamp.md
         - name: Kortingen voor Azure-softwareabonnementen

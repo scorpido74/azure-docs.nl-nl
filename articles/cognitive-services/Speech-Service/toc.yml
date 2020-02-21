@@ -305,46 +305,50 @@
       items:
         - name: Wat is een spraakassistent?
           href: voice-assistants.md
-    - name: Uw assistent wordt gebouwd
+    - name: Aangepaste opdrachten (preview)
       items:
-        - name: Aangepaste opdrachten (preview)
+        - name: Wat zijn aangepaste opdrachten?
           href: custom-commands.md
-        - name: Direct Line-spraak
+        - name: Snelstartgidsen
+          items:
+            - name: Een aangepaste opdracht maken (preview)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: Een aangepaste opdracht maken met parameters (preview)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: Aangepaste opdrachten gebruiken met Custom Voice (preview-versie)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: Aangepaste opdrachten gebruiken met de Speech-SDK (preview)
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: Instructiegidsen
+          items:
+            - name: Aangepaste opdrachten uitvoeren met de Speech-SDK
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: Parametervalidatie toevoegen aan een aangepaste opdracht
+              href: how-to-custom-speech-commands-validations.md
+            - name: Een bevestiging toevoegen aan een aangepaste opdracht
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: Een correctie met één stap toevoegen aan een aangepaste opdracht
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line-spraak
+      items:
+        - name: Wat is Direct Line-spraak?
           href: direct-line-speech.md
-    - name: Snelstartgidsen
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: 'Java (Windows, macOS, Linux)'
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: Een aangepaste opdracht maken (preview)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: Een aangepaste opdracht maken met parameters (preview)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: Aangepaste opdrachten gebruiken met Custom Voice (preview-versie)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: Aangepaste opdrachten gebruiken met de Speech-SDK (preview)
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: Instructiegidsen
-      items:
-        - name: Aangepaste opdrachten uitvoeren met de Speech-SDK
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Parametervalidatie toevoegen aan een aangepaste opdracht
-          href: how-to-custom-speech-commands-validations.md
-        - name: Een bevestiging toevoegen aan een aangepaste opdracht
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: Een correctie met één stap toevoegen aan een aangepaste opdracht
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: Zelfstudies
-      items:
-        - name: Spraak inschakelen voor uw bot met Speech-SDK
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Resources
-      items:
-        - name: Veelgestelde vragen over spraakassistenten
-          href: faq-voice-assistants.md
+        - name: Snelstartgidsen
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: Zelfstudies
+          items:
+            - name: Spraak inschakelen voor uw bot met Speech-SDK
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: Resources
+          items:
+            - name: Veelgestelde vragen over spraakassistenten
+              href: faq-voice-assistants.md
 - name: Aanpassing
   expanded: false
   items:

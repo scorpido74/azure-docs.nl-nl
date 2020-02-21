@@ -35,7 +35,7 @@
       items:
         - name: Een regel maken
           href: tutorial-create-telemetry-rules.md
-        - name: REST-API gebruiken
+        - name: De IoT Central-API's verkennen
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Concepten
   items:
@@ -83,8 +83,10 @@
           href: howto-version-device-template.md
     - name: Transformeren
       items:
-        - name: Continue gegevensexport configureren
+        - name: Gegevens exporteren naar bestemmingen in Azure
           href: howto-export-data.md
+        - name: De IoT Central-API's verkennen
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Webhooks voor regels maken
           href: howto-create-webhooks.md
         - name: Azure Monitor-actiegroepen verbinden met regels
@@ -159,7 +161,7 @@
   items:
     - name: Opties voor ondersteuning en hulp
       href: /azure/iot-fundamentals/iot-support-help
-    - name: REST-API
+    - name: Naslaginformatie over de IoT Central-API
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Aanvragen van klantgegevens
       href: iot-central-customer-data-requests.md

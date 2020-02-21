@@ -281,23 +281,23 @@
         - name: Azure Backup-rapporten configureren
           items:
             - name: Azure Backup-rapporten configureren
-              href: backup-azure-configure-reports.md
-            - name: Gegevensmodel voor Azure Backup-rapporten
-              href: backup-azure-reports-data-model.md
-            - name: Log Analytics-gegevensmodel voor Azure Backup
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: Diagnostische gebeurtenissen configureren voor Recovery Services-kluizen
           items:
             - name: Diagnostische instellingen gebruik voor Recovery Services-kluizen
               href: backup-azure-diagnostic-events.md
             - name: Log Analytics-gegevensmodel voor resourcespecifieke gebeurtenissen
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: Log Analytics-gegevensmodel voor Azure Backup (Azure Diagnostics-modus)
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: Automation
       items:
         - name: Ingebouwde Azure Policy voor Azure Backup
           items:
             - name: Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
               href: backup-azure-auto-enable-backup.md
+            - name: Diagnostische instellingen voor de cloud op schaal configureren
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Virtuele Azure-machines in de Azure-portal

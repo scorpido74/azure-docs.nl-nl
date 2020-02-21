@@ -153,44 +153,97 @@
         - name: Netwerkprestaties
           href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: VM-typen en -groottes
-      href: null
       items:
-        - name: Groottefamilies
+        - name: Formaten van virtuele machines
           href: sizes.md
         - name: VM's uit de tweede generatie
           href: generation-2.md
         - name: Algemeen doel
-          href: sizes-general.md
-          displayName: Dsv3 Dv3 DSv2 Dv2 Av2
           items:
+            - name: Overzicht
+              href: ../sizes-general.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Av2-serie
+              href: ../av2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: B-serie 'burstable'
-              href: b-series-burstable.md
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: DC-serie
+              href: ../dc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv2- en DSv2-serie
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv3- en DSv3-serie
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dav4- en Dasv4-serie
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geoptimaliseerde rekenkracht
-          href: sizes-compute.md
-          displayName: Fsv2 Fs F-series
-        - name: Geoptimaliseerd geheugen
-          href: sizes-memory.md
-          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
           items:
+            - name: Overzicht
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Fsv2-serie
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Geoptimaliseerd geheugen
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Overzicht
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv2- en DSv2-serie 11-15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev3- en Esv3-serie
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Eav4- en Easv4-serie
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: M-serie
+              href: ../m-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Mv2-serie
+              href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Beperkte vCPU's
               href: constrained-vcpu.md
         - name: Geoptimaliseerde opslag
-          displayName: ls
-          href: sizes-storage.md
           items:
+            - name: Overzicht
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Lsv2-serie
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Prestaties optimaliseren
               href: storage-performance.md
         - name: Versnelde berekeningen
           items:
             - name: Geoptimaliseerde GPU
-              href: sizes-gpu.md
-            - name: NVIDIA GPU-stuurprogramma's instellen
+              items:
+                - name: Overzicht
+                  href: sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NC-serie
+                  href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NCv2-serie
+                  href: ../ncv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NCv3-serie
+                  href: ../ncv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: ND-serie
+                  href: ../nd-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NDv2-serie
+                  href: ../ndv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NV-serie
+                  href: ../nv-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NVv3-serie
+                  href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: NVv4-serie
+                  href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: GPU-stuurprogramma's instellen
               href: n-series-driver-setup.md
             - name: AMD GPU-stuurprogramma's instellen
               href: n-series-amd-driver-setup.md
         - name: Krachtig rekenvermogen
           displayName: H-series
-          href: sizes-hpc.md
+          items:
+            - name: Overzicht
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: H-serie
+              href: ../h-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: HB-serie
+              href: ../hb-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: HBv2-serie
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: HC-serie
+              href: ../hc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Gereserveerde instanties
           items:
             - name: Vooruitbetalen voor VM's
@@ -202,12 +255,12 @@
         - name: Spot-VM's
           href: spot-vms.md
         - name: Vorige generaties
-          href: sizes-previous-gen.md
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
         - name: Geïsoleerde grootten
           href: isolation.md
         - name: Azure Compute Units (ACU)
-          href: acu.md
+          href: ../acu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Benchmarkscores
           href: compute-benchmark-scores.md
         - name: vCPU-quota
@@ -541,7 +594,7 @@
       items:
         - name: Een schijf toevoegen
           items:
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: attach-disk-ps.md
             - name: Azure Portal
               href: attach-managed-disk-portal.md
