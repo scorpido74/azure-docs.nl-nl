@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Volg [deze instructies](./how-to-create-immersive-reader.md) voor het maken van elke insluitende lezer-resource. Het script **Create-ImmersiveReaderResource** heeft `ResourceName`, `ResourceSubdomain`en `ResourceLocation` als para meters. Deze moeten uniek zijn voor elke resource die wordt gemaakt. De overige para meters moeten hetzelfde zijn als de waarde die u hebt gebruikt bij het instellen van uw eerste insluitende lezer-resource. Op deze manier kan elke resource worden gekoppeld aan dezelfde Azure-resource groep en Azure AD-toepassing.
 
-In het onderstaande voor beeld ziet u hoe u twee resources maakt, een in Westus en een andere in Oost-Timor. Let op de unieke waarden voor `ResourceName`, `ResourceSubdomain`en `ResourceLocation`.
+In het onderstaande voor beeld ziet u hoe u twee resources maakt, een in Westus en een andere in Timor-Leste. Let op de unieke waarden voor `ResourceName`, `ResourceSubdomain`en `ResourceLocation`.
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource

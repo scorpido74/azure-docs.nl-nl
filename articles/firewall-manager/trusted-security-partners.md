@@ -25,7 +25,7 @@ Met een snelle configuratie kunt u een hub met een ondersteunde beveiligings par
 
 U kunt beveiligde hubs implementeren die zijn geconfigureerd met de beveiligings partner van uw keuze in meerdere Azure-regio's om connectiviteit en beveiliging voor uw gebruikers overal ter wereld in deze regio's te krijgen. Met de mogelijkheid om de aanbieding van de beveiligings partner voor Internet/SaaS-toepassings verkeer te gebruiken en Azure Firewall voor privé verkeer in de beveiligde hubs, kunt u nu beginnen met het bouwen van uw beveiligings rand op Azure die dicht bij uw wereld wijd gedistribueerde gebruikers en toepassingen ligt.
 
-Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler** en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
+Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler** en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Timor-Leste.
 
 ![Vertrouwde beveiligingspartners](media/trusted-security-partners/trusted-security-partners.png)
 
