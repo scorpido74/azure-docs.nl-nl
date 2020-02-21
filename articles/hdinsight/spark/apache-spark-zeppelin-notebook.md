@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664632"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484805"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark cluster in azure HDInsight
 
@@ -21,9 +21,8 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* Het URI-schema voor de primaire opslag van uw clusters. Dit wordt `wasb://` voor Azure Blob Storage `abfs://` voor Azure Data Lake Storage Gen2 of `adl://` voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, wordt de URI `wasbs://`.  Zie ook [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
+* Het URI-schema voor de primaire opslag van uw clusters. Dit wordt `wasb://` voor Azure Blob Storage `abfs://` voor Azure Data Lake Storage Gen2 of `adl://` voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, wordt de URI `wasbs://`.  Zie [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Een Apache Zeppelin-notebook starten
 
@@ -154,7 +153,7 @@ Hiermee wordt het notitie blok opgeslagen als een JSON-bestand in de download lo
 
 ## <a name="livy-session-management"></a>Livy-sessie beheer
 
-Wanneer u de eerste code alinea in uw Zeppelin-notebook uitvoert, wordt er een nieuwe livy-sessie in uw HDInsight Spark-cluster gemaakt. Deze sessie wordt gedeeld in alle Zeppelin-notitie blokken die u vervolgens maakt. Als de livy-sessie om de een of andere reden wordt beëindigd (het opnieuw opstarten van het cluster, enzovoort), kunt u geen taken uitvoeren vanuit de Zeppelin-notebook.
+Wanneer u de eerste code alinea in uw Zeppelin-notebook uitvoert, wordt er een nieuwe livy-sessie in uw HDInsight Spark-cluster gemaakt. Deze sessie wordt gedeeld in alle Zeppelin-notitie blokken die u vervolgens maakt. Als de livy-sessie om de een of andere reden wordt afgebroken (het opnieuw opstarten van het cluster, enzovoort), kunt u geen taken uitvoeren vanuit de Zeppelin-notebook.
 
 In dat geval moet u de volgende stappen uitvoeren voordat u taken kunt uitvoeren vanuit een Zeppelin-notebook.  
 
@@ -168,11 +167,46 @@ In dat geval moet u de volgende stappen uitvoeren voordat u taken kunt uitvoeren
 
 3. Een code-cel uitvoeren vanuit een bestaand Zeppelin-notebook. Hiermee maakt u een nieuwe livy-sessie in het HDInsight-cluster.
 
-## <a name="seealso"></a>Zie ook
+## <a name="general-information"></a>Algemene informatie
 
-* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+### <a name="validate-service"></a>Service valideren
 
-### <a name="scenarios"></a>Scenario's
+Als u de service van Ambari wilt valideren, gaat u naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` waarbij CLUSTERNAME de naam van uw cluster is.
+
+Als u de service vanaf een opdracht regel wilt valideren, moet u SSH naar het hoofd knooppunt. Schakel de gebruiker over naar Zeppelin met behulp van de opdracht `sudo su zeppelin`. Status opdrachten:
+
+|Opdracht |Beschrijving |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Status van de service.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Service versie.|
+|`ps -aux | grep zeppelin`|PID identificeren.|
+
+### <a name="log-locations"></a>Logboek locaties
+
+|Service |Pad |
+|---|---|
+|Zeppelin-server|/usr/hdp/current/zeppelin-server/|
+|Serverlogboeken|/var/log/zeppelin|
+|Configuratie-Interpreter, Shiro, site. XML, Log4J|/usr/HDP/Current/Zeppelin-server/conf of/etc/Zeppelin/conf|
+|PID-map|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>Inschakelen van logboekregistratie voor foutopsporing
+
+1. Navigeer naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` waarbij CLUSTERNAME de naam van uw cluster is.
+
+1. Ga naar **configuratie** > **Geavanceerde Zeppelin-log4j-Properties** > **log4j_properties_content**.
+
+1. Wijzig `log4j.appender.dailyfile.Threshold = INFO` in `log4j.appender.dailyfile.Threshold = DEBUG`.
+
+1. Voeg `log4j.logger.org.apache.zeppelin.realm=DEBUG`toe.
+
+1. Sla de wijzigingen op en start de service opnieuw.
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+
+### <a name="scenarios"></a>Scenario 's
 
 * [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)

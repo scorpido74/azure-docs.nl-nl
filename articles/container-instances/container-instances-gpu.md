@@ -3,12 +3,12 @@ title: Met GPU ingeschakelde container instantie implementeren
 description: Meer informatie over het implementeren van Azure container instances voor het uitvoeren van Compute-container-apps met GPU-resources.
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: ea3b0ccba2d84487356f4bbd404cec3af1d0979a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.openlocfilehash: c3b202d1f35194d59090c3cc310226d6cfc4dfea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484184"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482952"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Container instanties implementeren die GPU-bronnen gebruiken
 
@@ -42,9 +42,9 @@ Als u Gpu's wilt gebruiken in een container exemplaar, geeft u een *GPU-resource
 
   | SKU | VM-serie |
   | --- | --- |
-  | K80 | [FUNGEREN](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [FUNGEREN](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [NCv3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
@@ -56,7 +56,7 @@ Wanneer u GPU-resources implementeert, stelt u de CPU-en geheugen resources in d
 
 * **Prijzen** : vergelijkbaar met container groepen zonder GPU-resources, Azure-facturen voor bronnen die worden verbruikt gedurende de *duur* van een container groep met GPU-resources. De duur wordt berekend op basis van de tijd voor het ophalen van de installatie kopie van uw eerste container totdat de container groep wordt beëindigd. Het bevat niet de tijd voor het implementeren van de container groep.
 
-  Bekijk de [prijsinformatie](https://azure.microsoft.com/pricing/details/container-instances/).
+  Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/container-instances/).
 
 * **CUDA-Stuur Programma's** : container instanties met GPU-resources zijn vooraf ingericht met NVIDIA CUDA-Stuur Programma's en container-runtimes, zodat u container installatie kopieën kunt gebruiken die zijn ontwikkeld voor CUDA-workloads.
 

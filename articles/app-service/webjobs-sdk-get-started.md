@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640827"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483038"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenis gerichte achtergrond verwerking
 
@@ -177,9 +177,9 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
 
    Het kenmerk `QueueTrigger` vertelt de runtime om deze functie aan te roepen wanneer een nieuw bericht wordt geschreven in een Azure Storage wachtrij met de naam `queue`. De inhoud van het wachtrij bericht wordt gegeven aan de methode code in de para meter `message`. De hoofd tekst van de methode is waar u de trigger gegevens verwerkt. In dit voor beeld registreert de code alleen het bericht.
 
-   De para meter `message` hoeft geen teken reeks te zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
+   De para meter `message` hoeft geen teken reeks te zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Create a storage account
 
 De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle functies die nodig zijn voor de webjobs SDK. In dit gedeelte maakt u een opslag account in Azure en configureert u het project om het te gebruiken. Als u al een opslag account hebt, gaat u verder met stap 6.
 
@@ -273,7 +273,7 @@ In deze sectie maakt en voert u het project lokaal uit en wordt de functie geact
 
    Omdat u het kenmerk `QueueTrigger` hebt gebruikt in de functie `ProcessQueueMessage`, luistert de WeJobs SDK-runtime naar wachtrij berichten wanneer deze wordt gestart. Er wordt een nieuw wachtrij bericht gevonden in de wachtrij met de naam *wachtrij* en de functie wordt aangeroepen.
 
-   Als gevolg van het [Navragen van de wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm), kan het twee minuten duren voordat de runtime het bericht heeft gevonden en de functie aanroept. Deze wacht tijd kan worden verkleind door in de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings)te worden uitgevoerd.
+   Als gevolg van het [Navragen van de wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm), kan het twee minuten duren voordat de runtime het bericht heeft gevonden en de functie aanroept. Deze wacht tijd kan worden verkleind door in de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings)te worden uitgevoerd.
 
    De console-uitvoer ziet er als volgt uit:
 
@@ -322,7 +322,7 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
    |Name  |verbindings reeks  |Database type|
    |---------|---------|------|
-   |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast|
+   |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast telefoonnummer|
 
 1. Als het vak **Toepassings instellingen** geen Application Insights instrumentatie sleutel heeft, voegt u het toe dat u eerder hebt gekopieerd. (De instrumentatie sleutel is mogelijk al aanwezig, afhankelijk van hoe u de App Service-app hebt gemaakt.)
 
@@ -436,7 +436,7 @@ Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies 
 1. Vernieuw de **wachtrij** pagina en het nieuwe bericht verdwijnt omdat het is verwerkt door de functie die wordt uitgevoerd in Azure.
 
    > [!TIP]
-   > Wanneer u test in azure, moet u de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings) gebruiken om ervoor te zorgen dat de functie voor het activeren van een wachtrij direct wordt geactiveerd en vertragingen voor komen als gevolg van het [Navragen van de wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm).
+   > Wanneer u test in azure, moet u de [ontwikkelings modus](webjobs-sdk-how-to.md#host-development-settings) gebruiken om ervoor te zorgen dat de functie voor het activeren van een wachtrij direct wordt geactiveerd en vertragingen voor komen als gevolg van het [Navragen van de wachtrij exponentiële uitstel](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm).
 
 ### <a name="view-logs-in-application-insights"></a>Logboeken in Application Insights weer geven
 

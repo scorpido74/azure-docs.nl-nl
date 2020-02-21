@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368019"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484482"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -1426,7 +1426,7 @@ Voor meer informatie over het gebruik van aangepaste uitbreidings eigenschappen 
 **Service categorie:** Voorwaardelijke toegang  
 **Product mogelijkheden:** Identiteits beveiliging en-beveiliging
 
-De volgende apps zijn te vinden op de lijst met [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
+De volgende apps zijn te vinden op de lijst met [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview):
 
 - Microsoft To-Do
 
@@ -2753,7 +2753,7 @@ De volgende toepassingen worden toegevoegd aan het einde van februari:
 
 Ga voor meer informatie naar:
 
-- [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3044,14 +3044,14 @@ Zie [voorwaardelijke toegang in azure AD](https://docs.microsoft.com/azure/activ
 **Service categorie:** Voorwaardelijke toegang  
 **Product mogelijkheden:** Identiteits beveiliging en-beveiliging
 
-De volgende apps zijn te vinden op de lijst met [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
+De volgende apps zijn te vinden op de lijst met [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview):
 
 - [Micro soft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 Ga voor meer informatie naar:
 
-- [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Zie [on-premises integratie](https://docs.microsoft.com/azure/active-directory/a
 **Service categorie:** Azure AD  
 **Product mogelijkheden:** Identiteits beveiliging en-beveiliging
 
-U kunt nu de toegang tot Office 365 en andere met Azure AD verbonden Cloud-apps beperken tot [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) die ondersteuning bieden voor het intune-beveiligings beleid voor apps met behulp van [voorwaardelijke toegang op basis van Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Intune beveiligingsbeleid voor apps worden gebruikt voor het configureren en beveiligen van bedrijfsgegevens op deze clienttoepassingen.
+U kunt nu de toegang tot Office 365 en andere met Azure AD verbonden Cloud-apps beperken tot [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) die ondersteuning bieden voor het intune-beveiligings beleid voor apps met behulp van [voorwaardelijke toegang op basis van Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Intune beveiligingsbeleid voor apps worden gebruikt voor het configureren en beveiligen van bedrijfsgegevens op deze clienttoepassingen.
 
 Door [app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) te combi neren met op [apparaten gebaseerd](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) beleid voor voorwaardelijke toegang, hebt u de flexibiliteit om gegevens te beveiligen voor persoonlijke en Bedrijfs apparaten.
 
@@ -3189,14 +3189,14 @@ In het beheercentrum van Azure AD kunt u nu:
 **Service categorie:** Voorwaardelijke toegang  
 **Product mogelijkheden:** Identiteits beveiliging en-beveiliging
 
-De volgende apps zijn toegevoegd aan de lijst met [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
+De volgende apps zijn toegevoegd aan de lijst met [goedgekeurde client-apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview):
 
 - Microsoft Planner
 - Azure Information Protection 
 
 Ga voor meer informatie naar:
 
-- [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Vereiste voor client-app vereist](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Voorwaardelijke toegang op basis van Azure AD-app](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

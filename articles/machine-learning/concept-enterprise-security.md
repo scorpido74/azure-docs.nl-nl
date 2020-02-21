@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444142"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486390"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -112,6 +112,7 @@ Zie [experimenten en interferentie uitvoeren in een virtueel netwerk](how-to-ena
 > [!IMPORTANT]
 > Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. Hiermee bepaalt u de hoeveelheid gegevens die door micro soft wordt verzameld voor diagnostische doel einden en wordt extra versleuteling mogelijk in door micro soft beheerde omgevingen.
 
+Zie [Azure Data Encryption at rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)(Engelstalig) voor meer informatie over de werking van versleuteling bij rest in Azure.
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -189,7 +190,9 @@ De besturingssysteem schijf voor elk reken knooppunt dat in Azure Storage is opg
 
 Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssysteem bewerkingen. Als u wilt, kunt u de trainings gegevens voor de schijf gebruiken. De schijf is standaard versleuteld voor werk ruimten waarvoor de para meter `hbi_workspace` is ingesteld op `TRUE`. Deze omgeving is slechts korte tijd voor de duur van de uitvoering en de ondersteuning voor versleuteling is beperkt tot alleen door het systeem beheerde sleutels.
 
-Zie [Azure Data Encryption at rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)(Engelstalig) voor meer informatie over de werking van versleuteling bij rest in Azure.
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
 
 ### <a name="encryption-in-transit"></a>Versleuteling in transit
 

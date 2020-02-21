@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231350"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486257"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestaties en schaal in Durable Functions (Azure Functions)
 
@@ -251,9 +251,9 @@ Bij het plannen van het gebruik van Durable Functions voor een productie toepass
 > [!TIP]
 > In tegens telling tot uitwaaiers zijn ventilatoren beperkt tot één virtuele machine. Als uw toepassing gebruikmaakt van het uitwaaieren, een ventilator patroon en u zich zorgen maakt over de prestaties van de ventilator, kunt u overwegen om de activiteit functie te verdelen over meerdere [onderliggende](durable-functions-sub-orchestrations.md)indelingen.
 
-De volgende tabel bevat de verwachte *maximum* waarden voor door Voer voor de eerder beschreven scenario's. ' Instance ' verwijst naar één exemplaar van een Orchestrator-functie die wordt uitgevoerd op een enkele kleine ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM in azure app service. In alle gevallen wordt ervan uitgegaan dat [uitgebreide sessies](#orchestrator-function-replay) zijn ingeschakeld. De werkelijke resultaten kunnen variëren, afhankelijk van de CPU of het I/O-werk dat door de functie code wordt uitgevoerd.
+De volgende tabel bevat de verwachte *maximum* waarden voor door Voer voor de eerder beschreven scenario's. ' Instance ' verwijst naar één exemplaar van een Orchestrator-functie die wordt uitgevoerd op een enkele kleine ([a1](../../virtual-machines/sizes-previous-gen.md)) VM in azure app service. In alle gevallen wordt ervan uitgegaan dat [uitgebreide sessies](#orchestrator-function-replay) zijn ingeschakeld. De werkelijke resultaten kunnen variëren, afhankelijk van de CPU of het I/O-werk dat door de functie code wordt uitgevoerd.
 
-| Scenario | Maximumdoorvoer |
+| Scenario | Maximale door Voer |
 |-|-|
 | Uitvoering van sequentiële activiteit | 5 activiteiten per seconde, per instantie |
 | Uitvoering van parallelle activiteit (uitwaaieren) | 100 activiteiten per seconde, per instantie |

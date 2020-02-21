@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8032a9b206be4a5eb70a1f40fd33667a1dbdfaa7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c461e543e3b01501ec47589a9eab3d74820491a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714728"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500237"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelf studie: dynamische configuratie in een ASP.NET Core-app gebruiken
 
@@ -53,12 +53,12 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 1. Voeg een verwijzing naar het NuGet-pakket van `Microsoft.Azure.AppConfiguration.AspNetCore` toe door de volgende opdracht uit te voeren:
 
     ```CLI
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
 1. Open *Program.cs*en werk de methode `CreateWebHostBuilder` bij om de methode `config.AddAzureAppConfiguration()` toe te voegen.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -81,7 +81,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -124,7 +124,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 
 3. Open *Startup.cs*en gebruik `IServiceCollection.Configure<T>` in de methode `ConfigureServices` om configuratie gegevens te binden aan de `Settings`-klasse.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -134,7 +134,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -148,7 +148,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 4. Werk de `Configure`-methode bij, waarbij de `UseAzureAppConfiguration` middleware wordt toegevoegd zodat de configuratie-instellingen die voor vernieuwen zijn geregistreerd, kunnen worden bijgewerkt terwijl de ASP.NET Core web-app aanvragen blijft ontvangen.
 
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -165,7 +165,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -217,7 +217,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 
 2. Werk de `HomeController` klasse bij om `Settings` te ontvangen via afhankelijkheids injectie en gebruik van de waarden.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -240,7 +240,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public class HomeController : Controller

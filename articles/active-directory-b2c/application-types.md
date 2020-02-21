@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8c98149d9e9ff65b7b18762f0f17d19053f2f49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec97f986c4472f793c2d38ded2a1c6873b1ee08d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846755"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482782"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Toepassings typen die kunnen worden gebruikt in Active Directory B2C
 
@@ -40,7 +40,7 @@ De interactie van elke toepassing volgt in grote lijnen hetzelfde patroon:
 
 Deze stappen kunnen enigszins verschillen op basis van het type toepassing dat u wilt maken.
 
-## <a name="web-applications"></a>Web-apps
+## <a name="web-applications"></a>Webtoepassingen
 
 Voor webtoepassingen (inclusief .NET, PHP, Java, Ruby, python en node. js) die worden gehost op een server en toegankelijk zijn via een browser, Azure AD B2C ondersteunt [OpenID Connect Connect](protocols-overview.md) voor alle gebruikers ervaringen. In de Azure AD B2C implementatie van OpenID Connect Connect initieert uw webtoepassing gebruikers ervaringen door verificatie aanvragen uit te geven aan Azure AD. Het resultaat van de aanvraag is een `id_token`. Dit beveiligingstoken vertegenwoordigt de identiteit van de gebruiker. Het bevat ook informatie over de gebruiker in de vorm van claims:
 
@@ -125,7 +125,7 @@ Zie [Azure Active Directory v 2.0 en de OAuth 2,0-client referenties stroom voor
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web-API-ketens (namens-stroom)
 
-Veel architecturen bevatten een web-API die een andere downstream web-API moet aanroepen, waarbij beide zijn beveiligd door Azure AD B2C. Dit scenario is gebruikelijk in native clients met een web API-back-end en roept een micro soft online service aan, zoals de Microsoft Graph-API of Azure AD-Graph API.
+Veel architecturen bevatten een web-API die een andere downstream web-API moet aanroepen, waarbij beide zijn beveiligd door Azure AD B2C. Dit scenario is gebruikelijk in systeem eigen clients die een web-API-back-end hebben en een micro soft online service aanroepen, zoals de Microsoft Graph-API.
 
 Dit scenario met web-API-keten kan worden ondersteund met behulp van de OAuth 2.0 JWT bearer-referentietoekenning, ook wel de namens-stroom genoemd.  De namens-stroom is momenteel echter niet geïmplementeerd in Azure AD B2C.
 

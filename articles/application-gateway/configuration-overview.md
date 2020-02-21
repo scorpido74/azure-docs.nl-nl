@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714855"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485077"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -210,7 +210,7 @@ Voor een regel op basis van een pad voegt u meerdere back-end-HTTP-instellingen 
 
 Als omleiding is geconfigureerd voor een basis regel, worden alle aanvragen voor de gekoppelde listener omgeleid naar het doel. Dit is *wereld wijde* omleiding. Als omleiding is geconfigureerd voor een op een pad gebaseerde regel, worden alleen aanvragen in een specifiek site gebied omgeleid. Een voor beeld is een boodschappen mand gebied dat wordt aangeduid met */cart/\** . Dit is een omleiding *op basis van pad* .
 
-Zie [Application Gateway omleidings overzicht](https://docs.microsoft.com/azure/application-gateway/redirect-overview)voor meer informatie over omleidingen.
+Zie [Application Gateway omleidings overzicht](redirect-overview.md)voor meer informatie over omleidingen.
 
 #### <a name="redirection-type"></a>Type omleiding
 
@@ -227,24 +227,24 @@ Kies listener als omleidings doel om verkeer van de ene listener naar de andere 
 ![Het dialoog venster Application Gateway onderdelen](./media/configuration-overview/configure-redirection.png)
 
 Zie voor meer informatie over HTTP-naar-HTTPS-omleiding:
-- [HTTP-naar-HTTPS-omleiding met behulp van de Azure Portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [HTTP-naar-HTTPS-omleiding met behulp van Power shell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [HTTP-naar-HTTPS-omleiding via de Azure CLI](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [HTTP-naar-HTTPS-omleiding met behulp van de Azure Portal](redirect-http-to-https-portal.md)
+- [HTTP-naar-HTTPS-omleiding met behulp van Power shell](redirect-http-to-https-powershell.md)
+- [HTTP-naar-HTTPS-omleiding via de Azure CLI](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Externe site
 
 Kies externe site wanneer u het verkeer wilt omleiden van de listener die is gekoppeld aan deze regel naar een externe site. U kunt ervoor kiezen om de query reeks uit de oorspronkelijke aanvraag op te halen in de aanvraag die wordt doorgestuurd naar het omleidings doel. U kunt het pad naar de externe site die zich in de oorspronkelijke aanvraag bevonden, niet door sturen.
 
 Zie voor meer informatie over omleiding:
-- [Verkeer omleiden naar een externe site met behulp van Power shell](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [Verkeer omleiden naar een externe site door gebruik te maken van de CLI](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [Verkeer omleiden naar een externe site met behulp van Power shell](redirect-external-site-powershell.md)
+- [Verkeer omleiden naar een externe site door gebruik te maken van de CLI](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>De HTTP-header-instelling opnieuw schrijven
 
 Met deze instelling worden HTTP-aanvragen en-antwoord headers toegevoegd, verwijderd of bijgewerkt, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. Ga voor meer informatie naar:
 
- - [Overzicht van HTTP-headers opnieuw schrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Herschrijven van HTTP-header configureren](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [Overzicht van HTTP-headers opnieuw schrijven](rewrite-http-headers.md)
+ - [Herschrijven van HTTP-header configureren](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP-instellingen
 
@@ -252,7 +252,18 @@ De Application Gateway routeert het verkeer naar de back-endservers door gebruik
 
 ### <a name="cookie-based-affinity"></a>Affiniteit op basis van cookies
 
-Deze functie is handig als u een gebruikers sessie op dezelfde server wilt blijven gebruiken. Met door gateways beheerde cookies kan de Application Gateway volgend verkeer van een gebruikers sessie naar dezelfde server sturen voor verwerking. Dit is belang rijk wanneer de sessie status lokaal op de server wordt opgeslagen voor een gebruikers sessie. Als de toepassing geen affiniteit op basis van cookies kan verwerken, kunt u deze functie niet gebruiken. Als u deze wilt gebruiken, moet u ervoor zorgen dat de clients cookies ondersteunen.
+Azure-toepassing gateway maakt gebruik van door gateway beheerde cookies voor het onderhouden van gebruikers sessies. Wanneer een gebruiker de eerste aanvraag verzendt naar Application Gateway, wordt er een affiniteits cookie ingesteld in het antwoord met een hash-waarde die de sessie Details bevat, zodat de volgende aanvragen die de affiniteits cookie uitvoeren, worden doorgestuurd naar dezelfde back-endserver voor persistentie onderhouden. 
+
+Deze functie is handig als u een gebruikers sessie op dezelfde server wilt behouden en wanneer de sessie status lokaal op de server wordt opgeslagen voor een gebruikers sessie. Als de toepassing geen affiniteit op basis van cookies kan verwerken, kunt u deze functie niet gebruiken. Als u deze wilt gebruiken, moet u ervoor zorgen dat de clients cookies ondersteunen.
+
+Vanaf **17 februari 2020** [brengt de](https://www.chromium.org/Home) [V80-update](https://chromiumdash.appspot.com/schedule) een mandaat voor waarbij HTTP-cookies zonder SameSite-kenmerk worden behandeld als SameSite = slordig. In het geval van CORS-aanvragen (cross-Origin Resource Sharing), als de cookie moet worden verzonden in een context van een derde partij, moet deze ' SameSite = none; gebruiken Secure ' Attributes en moeten alleen via HTTPS worden verzonden. Anders in een scenario met alleen HTTP, verzendt de browser de cookies in de context van derden niet. Het doel van deze update van Chrome is de beveiliging te verbeteren en CSRF-aanvallen (cross-site request vervalsing) te voor komen. 
+
+Ter ondersteuning van deze wijziging wordt Application Gateway (alle SKU-typen) een andere identieke cookie met de naam **ApplicationGatewayAffinityCORS** in aanvulling op de bestaande **ApplicationGatewayAffinity** cookie, die vergelijkbaar is, maar deze cookie heeft nu twee meer kenmerken **: SameSite = none; ' Veilig '** toegevoegd, zodat plak sessies zelfs voor cross-Origin-aanvragen kunnen worden onderhouden.
+
+Houd er rekening mee dat de naam van de standaard-affiniteits cookie **ApplicationGatewayAffinity** is en dat deze kan worden gewijzigd door de gebruikers. Als u een aangepaste cookie naam voor affiniteit gebruikt, wordt er een extra cookie toegevoegd met CORS als achtervoegsel, bijvoorbeeld **CustomCookieNameCORS**.
+
+> [!NOTE]
+> Het is verplicht dat als het kenmerk **SameSite = none** is ingesteld, de cookie ook de **beveiligde** vlag moet bevatten en moet worden verzonden via **https**. Als sessie affiniteit vereist is voor CORS, moet u uw werk belasting migreren naar HTTPS. Raadpleeg hier de SSL-en end-to-end SSL-documentatie voor Application Gateway: [overzicht](ssl-overview.md), [How-configure SSL offload](create-ssl-portal.md), [How-to configure end-to-end SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
@@ -262,7 +273,7 @@ Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplan
 
 Application Gateway ondersteunt HTTP en HTTPS voor het routeren van aanvragen naar de back-endservers. Als u HTTP kiest, wordt het verkeer naar de back-endservers niet versleuteld. Als niet-versleutelde communicatie niet acceptabel is, kiest u HTTPS.
 
-Deze instelling in combi natie met HTTPS in de listener ondersteunt [end-to-end SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Zo kunt u veilig gevoelige gegevens die zijn versleuteld verzenden naar de back-end. Elke back-endserver in de back-end-groep waarvoor end-to-end SSL is ingeschakeld, moet worden geconfigureerd met een certificaat om beveiligde communicatie toe te staan.
+Deze instelling in combi natie met HTTPS in de listener ondersteunt [end-to-end SSL](ssl-overview.md). Zo kunt u veilig gevoelige gegevens die zijn versleuteld verzenden naar de back-end. Elke back-endserver in de back-end-groep waarvoor end-to-end SSL is ingeschakeld, moet worden geconfigureerd met een certificaat om beveiligde communicatie toe te staan.
 
 ### <a name="port"></a>Poort
 
@@ -301,7 +312,7 @@ Dit is een snelkoppeling naar een gebruikers interface die de twee vereiste inst
 
 ### <a name="use-custom-probe"></a>Aangepaste test gebruiken
 
-Met deze instelling wordt een [aangepaste test](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) gekoppeld aan een http-instelling. U kunt slechts één aangepaste test koppelen met een HTTP-instelling. Als u een aangepaste test niet expliciet koppelt, wordt de [standaard test](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) gebruikt voor het controleren van de status van de back-end. We raden u aan om een aangepaste test te maken voor meer controle over de status controle van uw back-ends.
+Met deze instelling wordt een [aangepaste test](application-gateway-probe-overview.md#custom-health-probe) gekoppeld aan een http-instelling. U kunt slechts één aangepaste test koppelen met een HTTP-instelling. Als u een aangepaste test niet expliciet koppelt, wordt de [standaard test](application-gateway-probe-overview.md#default-health-probe-settings) gebruikt voor het controleren van de status van de back-end. We raden u aan om een aangepaste test te maken voor meer controle over de status controle van uw back-ends.
 
 > [!NOTE]
 > De aangepaste test controleert de status van de back-end-groep niet, tenzij de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener.
@@ -335,7 +346,7 @@ Nadat u een back-end-pool hebt gemaakt, moet u deze koppelen aan een of meer aan
 
 ## <a name="health-probes"></a>Statuscontroles
 
-Een toepassings gateway controleert standaard de status van alle resources in de back-end. We raden u echter ten zeerste aan een aangepaste test te maken voor elke back-end-HTTP-instelling om meer controle te krijgen over de status controle. Zie [aangepaste Health probe-instellingen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)voor meer informatie over het configureren van een aangepaste test.
+Een toepassings gateway controleert standaard de status van alle resources in de back-end. We raden u echter ten zeerste aan een aangepaste test te maken voor elke back-end-HTTP-instelling om meer controle te krijgen over de status controle. Zie [aangepaste Health probe-instellingen](application-gateway-probe-overview.md#custom-health-probe-settings)voor meer informatie over het configureren van een aangepaste test.
 
 > [!NOTE]
 > Nadat u een aangepaste status test hebt gemaakt, moet u deze koppelen aan een back-end-HTTP-instelling. Een aangepaste test controleert de status van de back-end-pool alleen als de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener met behulp van een regel.

@@ -6,12 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.custom: cli-validate
+ms.openlocfilehash: 92a9368bf6aa4f2cf043b3aabd443b37cdcde390
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759940"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523945"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Zelfstudie: Een app met meerdere containers (preview) maken in Web App for Containers
 
@@ -38,7 +39,7 @@ Voor het volt ooien van deze zelf studie hebt u ervaring nodig met [docker opste
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Voor deze zelf studie gebruikt u het opstellen van het bestand uit [docker](https://docs.docker.com/compose/wordpress/#define-the-project), maar u kunt dit wijzigen in azure database for MySQL, permanente opslag en redis. U vindt het configuratiebestanden in [Azure-voorbeelden](https://github.com/Azure-Samples/multicontainerwordpress). Zie [Opties voor docker-samen stellen](configure-custom-container.md#docker-compose-options)voor ondersteunde configuratie opties.
+Voor deze zelf studie gebruikt u het opstellen van het bestand uit [docker](https://docs.docker.com/compose/wordpress/#define-the-project), maar u kunt dit wijzigen in azure database for MySQL, permanente opslag en redis. U vindt het configuratiebestand in [Azure-voorbeelden](https://github.com/Azure-Samples/multicontainerwordpress). Zie [Opties voor docker-samen stellen](configure-custom-container.md#docker-compose-options)voor ondersteunde configuratie opties.
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -62,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-Maak een resourcegroep in Cloud Shell met de opdracht [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *US - zuid-centraal*. Als u alle ondersteunde locaties voor App Service op Linux in prijscategorie **Standard** wilt zien, voert u de opdracht [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) uit.
+Maak een resourcegroep in Cloud Shell met de opdracht [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - zuid-centraal*. Als u alle ondersteunde locaties voor App Service op Linux in prijscategorie **Standard** wilt zien, voert u de opdracht [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) uit.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -147,7 +148,7 @@ Het wordt niet aanbevolen databasecontainers te gebruiken in een productieomgevi
 
 Maak een Azure Database for MySQL-server met de opdracht [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create).
 
-Vervang in de volgende opdracht de naam van uw MySQL-server, waarbij u de tijdelijke aanduiding _&lt;mysql-server-name >_ ziet (geldige tekens zijn `a-z`, `0-9`en `-`). Deze naam maakt deel uit van de hostnaam van de MySQL-server (`<mysql-server-name>.database.windows.net`) en moet globaal uniek zijn.
+Vervang in de volgende opdracht de naam van uw MySQL-server, waarbij u de tijdelijke aanduiding _&lt;mysql-server-name >_ ziet (geldige tekens zijn `a-z`, `0-9`en `-`). Deze naam maakt deel uit van de hostnaam van de MySQL-server (`<mysql-server-name>.database.windows.net`), hij moet globaal uniek zijn.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -511,7 +512,7 @@ U ziet een logboek voor elke container en een extra logboek voor het bovenliggen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Docker Compose-configuratie converteren die kan worden gebruikt voor Web App for Containers
 > * Een app met meerdere containers implementeren in Azure

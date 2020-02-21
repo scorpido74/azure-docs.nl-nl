@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962506"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525248"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -32,16 +32,18 @@ Het eind punt is beschikbaar via een bekend, niet-routeerbaar IP-adres (`169.254
 > [!IMPORTANT]
 > Deze service is **over het algemeen beschikbaar** in alle Azure-regio's.  Er worden regel matig updates ontvangen om nieuwe informatie over virtuele-machine-instanties beschikbaar te maken. Op deze pagina worden de bijgewerkte [api's voor meta gegevens](#metadata-apis) weer gegeven die beschikbaar zijn.
 
-## <a name="service-availability"></a>Beschikbaarheid van services
+## <a name="service-availability"></a>Service beschikbaarheid
 
 De service is beschikbaar in de algemeen beschik bare Azure-regio's. Niet alle API-versies zijn mogelijk beschikbaar in alle Azure-regio's.
 
 Regio's                                        | Availability?                                 | Ondersteunde versies
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure China 21Vianet](https://www.azure.cn/)                                            | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | Algemeen beschikbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Algemeen beschikbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Algemeen beschikbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | Algemeen beschikbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+
+De versie 2019-11-01 wordt momenteel geïmplementeerd en is mogelijk niet beschikbaar in alle regio's.
 
 Deze tabel wordt bijgewerkt wanneer er service-updates zijn en/of er nieuwe ondersteunde versies beschikbaar zijn.
 
@@ -126,11 +128,11 @@ Aanvragen moeten ook een `Metadata: true`-header bevatten om ervoor te zorgen da
 
 Als er geen gegevens element is gevonden of een ongeldige aanvraag is, retourneert de Instance Metadata Service standaard HTTP-fouten. Bijvoorbeeld:
 
-HTTP-status code | Reden
+HTTP-statuscode | Reden
 ----------------|-------
 200 OK |
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
-404 – Niet gevonden | Het aangevraagde element bestaat niet
+404 niet gevonden | Het aangevraagde element bestaat niet
 methode 405 niet toegestaan | Alleen `GET`-aanvragen worden ondersteund
 429 te veel aanvragen | De API ondersteunt momenteel Maxi maal vijf query's per seconde
 500-service fout     | Na enige tijd opnieuw proberen
@@ -451,7 +453,7 @@ De volgende Api's zijn beschikbaar via het eind punt voor meta gegevens:
 Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
 Attestation | Zie [attested data](#attested-data) | 10-01-2018
-identiteit | Beheerde identiteiten voor Azure-resources. Zie [een toegangs Token ophalen](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+identity | Beheerde identiteiten voor Azure-resources. Zie [een toegangs Token ophalen](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 instance | Zie [instance API](#instance-api) | 2017-04-02
 scheduledevents | Zie [Scheduled Events](scheduled-events.md) | 2017-08-01
 
@@ -466,15 +468,15 @@ Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
 azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 10-01-2018
 customData | Deze functie is momenteel uitgeschakeld en deze documentatie wordt bijgewerkt zodra deze beschikbaar is | 2019-02-01
-location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
-name | Naam van de virtuele machine | 2017-04-02
+locatie | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
+naam | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 besturingssysteemtype | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
 Fonds | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
 platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
-providers | Provider van de virtuele machine | 10-01-2018
+provider | Provider van de virtuele machine | 10-01-2018
 publicKeys | [Verzameling van open bare sleutels](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) die zijn toegewezen aan de virtuele machine en de paden | 2018-04-02
 publisher | Uitgever van de VM-installatie kopie | 2017-04-02
 resourceGroupName | [Resource groep](../../azure-resource-manager/management/overview.md) voor uw virtuele machine | 2017-08-01
@@ -484,7 +486,7 @@ storageProfile | [Opslag profiel](#storage-profile) bekijken | 2019-06-01
 subscriptionId | Azure-abonnement voor de virtuele machine | 2017-08-01
 tags | [Labels](../../azure-resource-manager/management/tag-resources.md) voor uw virtuele machine  | 2017-08-01
 tagsList | Tags die zijn opgemaakt als een JSON-matrix voor eenvoudiger programmatisch parseren  | 2019-06-04
-versie | Versie van de VM-installatie kopie | 2017-04-02
+version | Versie van de VM-installatie kopie | 2017-04-02
 vmId | De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine | 2017-04-02
 vmScaleSetName | [Naam van de schaalset voor virtuele machines](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) van de schaalset voor virtuele machines | 2017-12-01
 vmSize | [VM-grootte](sizes.md) | 2017-04-02
@@ -916,7 +918,7 @@ id      | Resource-id
 offer   | Aanbieding van de installatie kopie van het platform of de Marketplace
 publisher | Uitgever van installatie kopie
 sku     | Afbeeldings-SKU
-versie | Versie van de installatie kopie van het platform of de Marketplace
+version | Versie van de installatie kopie van het platform of de Marketplace
 
 Het object van de besturingssysteem schijf bevat de volgende informatie over de besturingssysteem schijf die wordt gebruikt door de virtuele machine:
 
@@ -926,10 +928,10 @@ in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
 diffDiskSettings | Tijdelijke schijf instellingen
 diskSizeGB | Grootte van de schijf in GB
-installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
+image   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 LUN     | Nummer van de logische eenheid van de schijf
 managedDisk | Beheerde schijf parameters
-name    | Schijf naam
+naam    | Schijf naam
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 
@@ -942,9 +944,9 @@ createOption | Informatie over de manier waarop de virtuele machine is gemaakt
 diffDiskSettings | Tijdelijke schijf instellingen
 diskSizeGB | Grootte van de schijf in GB
 encryptionSettings | Versleutelings instellingen voor de schijf
-installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
+image   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 managedDisk | Beheerde schijf parameters
-name    | Schijf naam
+naam    | Schijf naam
 besturingssysteemtype  | Type besturings systeem dat is opgenomen in de schijf
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
@@ -1023,11 +1025,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 Taal | Voorbeeld
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Aan de slag  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
-JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
+Javascript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl

@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932396"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484414"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
@@ -35,16 +35,16 @@ Raadpleeg [deze hand leiding](https://docs.microsoft.com/azure/security/fundamen
 
 Pass-Through-verificatie is een gratis functie. U hebt geen betaalde versies van Azure AD nodig om het te gebruiken.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Beschik bare Pass-Through-verificatie in de [Microsoft Azure Duitsland Cloud](https://www.microsoft.de/cloud-deutschland) en de [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/)?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Beschik bare Pass-Through-verificatie in de [Microsoft Azure Duitsland Cloud](https://www.microsoft.de/cloud-deutschland) en de [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/)?
 
 Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaar van Azure AD.
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Werkt [voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) met Pass-Through-verificatie?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Werkt [voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) met Pass-Through-verificatie?
 
 Ja. Alle mogelijkheden voor voorwaardelijke toegang, inclusief Azure Multi-Factor Authentication, werken met Pass Through-verificatie.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Ondersteunt Pass-Through-verificatie "alternatieve ID" als de gebruikers naam, in plaats van "userPrincipalName"?
-Bij een beperkt gebied ondersteunt Pass-Through-verificatie alternatieve ID als de gebruikers naam wanneer deze wordt geconfigureerd in Azure AD Connect. Azure AD Connect moet de on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Dit maakt het `UserPrincipalName` op de on-premises AD-en Azure AD identiek. Als u een ander kenmerk wilt gebruiken om te synchroniseren van on-premises AD als de UPN voor Azure AD, moet u een wachtwoord hash-synchronisatie of AD FS gebruiken. Zie voor meer informatie, [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md). Niet alle Office 365-toepassingen ondersteunen `Alternate ID`. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
+Bij een beperkt gebied ondersteunt Pass-Through-verificatie alternatieve ID als de gebruikers naam wanneer deze wordt geconfigureerd in Azure AD Connect. Azure AD Connect moet de on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Dit maakt het `UserPrincipalName` op de on-premises AD-en Azure AD identiek. Als u een ander kenmerk wilt gebruiken om te synchroniseren van on-premises AD als de UPN voor Azure AD, moet u een wachtwoord hash-synchronisatie of AD FS gebruiken. Zie [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md)voor meer informatie. Niet alle Office 365-toepassingen ondersteunen `Alternate ID`. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Fungeert wachtwoord hash synchroniseren als terugval voor Pass-Through-verificatie?
 
@@ -54,7 +54,7 @@ Nee. Pass-Through-verificatie _voert niet_ automatisch een failover uit naar een
 
 Wanneer u Azure AD Connect gebruikt om de aanmeldings methode te wijzigen van de wachtwoord-hash-synchronisatie naar Pass-Through-verificatie, wordt Pass Through-verificatie de primaire aanmeldings methode voor uw gebruikers in beheerde domeinen. Houd er rekening mee dat de wacht woord-hashes van alle gebruikers die eerder zijn gesynchroniseerd door de synchronisatie van wacht woord-hash, in azure AD zijn opgeslagen.
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kan ik een [Azure AD-toepassingsproxy](../manage-apps/application-proxy.md) -connector installeren op dezelfde server als een Pass-Through-verificatie agent?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kan ik een [Azure AD-toepassingsproxy](../manage-apps/application-proxy.md) -connector installeren op dezelfde server als een Pass-Through-verificatie agent?
 
 Ja. De versies van de Pass-Through-verificatie agent, versie 1.5.193.0 of hoger, ondersteunen deze configuratie.
 
@@ -107,7 +107,7 @@ Nee, u kunt slechts één Pass-Through-verificatie agent op één server install
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Moet ik certificaten die worden gebruikt door Pass Through-verificatie agenten hand matig verlengen?
 
-De communicatie tussen elke pass-through-verificatie agent en Azure AD wordt beveiligd met verificatie op basis van certificaten. Deze [certificaten worden elke paar maanden automatisch door Azure AD verlengd](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). U hoeft deze certificaten niet hand matig te vernieuwen. U kunt oude verlopen certificaten zo nodig opschonen.
+De communicatie tussen elke pass-through-verificatie agent en Azure AD wordt beveiligd met verificatie op basis van certificaten. Deze [certificaten worden elke paar maanden automatisch door Azure AD verlengd](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). U hoeft deze certificaten niet hand matig te vernieuwen. U kunt oude verlopen certificaten zo nodig opschonen.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Een Pass-Through-verificatie agent Hoe kan ik verwijderen?
 

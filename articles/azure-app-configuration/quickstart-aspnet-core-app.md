@@ -6,14 +6,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 657edbac67a53952ab79aee74b63c59a44b7de18
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ee50d180c579e117c16f1a956871068f0a46e976
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898657"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498561"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Snelstartgids: een ASP.NET Core-app maken met Azure-app configuratie
 
@@ -63,7 +63,7 @@ Open het *. csproj* -bestand. Voeg een `UserSecretsId`-element toe, zoals hier w
 > [!IMPORTANT]
 > `CreateHostBuilder` vervangt `CreateWebHostBuilder` in .NET Core 3,0.  Selecteer de juiste syntaxis op basis van uw omgeving.
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Open het *. csproj* -bestand. Voeg een `UserSecretsId`-element toe, zoals hier w
 </Project>
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -102,7 +102,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 1. Voeg een verwijzing naar het NuGet-pakket van `Microsoft.Azure.AppConfiguration.AspNetCore` toe door de volgende opdracht uit te voeren:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
 1. Voer de volgende opdracht uit om de pakketten voor uw project te herstellen:
@@ -139,7 +139,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     > [!IMPORTANT]
     > `CreateHostBuilder` vervangt `CreateWebHostBuilder` in .NET Core 3,0.  Selecteer de juiste syntaxis op basis van uw omgeving.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -152,7 +152,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -214,7 +214,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, gaat u naar de hoofdmap van uw toepassing en voert u de volgende opdracht uit in de opdracht shell:
 

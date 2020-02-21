@@ -8,24 +8,25 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce8fcc827afdf0102a459f2c6b58db45eff72fa0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 807dde08d6ae88054524cb9e397d36db41324482
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467384"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484567"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
 Azure Functions biedt [ingebouwde integratie](../../azure-functions/functions-monitoring.md) met Application Insights, die beschikbaar is via de ILogger-interface. Hieronder ziet u de lijst met momenteel ondersteunde functies. Raadpleeg de hand leiding van Azure Functions om [aan](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)de slag te gaan.
 
-Zie [hier](../../azure-functions/functions-versions.md)voor meer informatie over runtime versies.
+Zie [hier](../../azure-functions/functions-versions.md)voor meer informatie over runtime versies van functies.
+
+Zie [afhankelijkheden](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)voor meer informatie over compatibele versies van Application Insights.
 
 ## <a name="supported-features"></a>Ondersteunde functies
 
 | Azure Functions                       | V1                | V2 & v3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatische verzameling van**        |                 |                   |               
 | &bull; aanvragen                     | Ja             | Ja               | 

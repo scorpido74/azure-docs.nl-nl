@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid gebeurtenis bronnen
-description: In dit artikel worden de ondersteunde gebeurtenis bronnen voor Azure Event Grid beschreven. Een gebeurtenis bron is de plaats waar de gebeurtenis plaatsvindt.
+description: Azure-abonnementen, Container Registry, aangepaste onderwerpen, Event Hubs, IoT Hub, Key Vault, Media Services, resource groepen, Service Bus, opslag, kaarten, app-configuratie, signaal R, Machine Learning.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 31923e1cb69eb6681367ed6ea71c10564ae6d489
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846381"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526379"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Gebeurtenis bronnen in Azure Event Grid
 
@@ -129,7 +129,7 @@ Abonneer u op Service Bus gebeurtenissen om te reageren op berichten zonder acti
 | [Overzicht: Azure Service Bus Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Overzicht van het integreren van Service Bus met Event Grid. |
 | [Gebeurtenis schema](event-schema-service-bus.md) | Hiermee worden velden in Service Bus gebeurtenissen weer gegeven. |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 Abonneer u op Blob Storage-gebeurtenissen om te reageren op gemaakte blobs en verwijderde gebeurtenissen.
 
@@ -186,4 +186,4 @@ Abonneer u op Azure Machine Learning werkruimte gebeurtenissen om te reageren op
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Als u wilt snel aan de slag met Event Grid, Zie [aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md).
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

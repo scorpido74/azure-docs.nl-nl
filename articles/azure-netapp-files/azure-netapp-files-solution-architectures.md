@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: b-juche
-ms.openlocfilehash: d47abb24504edc1bc986f0b84f6b6b61b20a3248
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: b198d34b79ae27477259d567aa2167cb0298260e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562491"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485468"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -27,6 +27,7 @@ Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krij
 ## <a name="azure-kubernetes-service-aks-solutions"></a>Oplossingen voor Azure Kubernetes service (AKS)
 
 * [Integratie met AKS Azure NetApp Files](https://github.com/andyzhangx/demo/tree/master/linux/nfs)
+* [Azure NetApp Files integreren met de Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/azure-netapp-files)
 
 ## <a name="oracle-database-solutions"></a>Oracle data base-oplossingen
 

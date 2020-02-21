@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a741fd0616fc17ed133309ea6200dca43a83b7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025580"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484856"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Power shell en Graph-voor beelden voor op groepen gebaseerde licentie verlening in azure AD
 
@@ -82,11 +82,11 @@ HTTP/1.1 200 OK
 
 U kunt alle groepen met een licentie die is toegewezen, vinden door de volgende opdracht uit te voeren:
 ```powershell
-Get-MsolGroup | Where {$_.Licenses}
+Get-MsolGroup -All | Where {$_.Licenses}
 ```
 Meer informatie kan worden weer gegeven over welke producten worden toegewezen:
 ```powershell
-Get-MsolGroup | Where {$_.Licenses} | Select `
+Get-MsolGroup -All | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
     @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
@@ -163,7 +163,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ## <a name="get-all-groups-with-license-errors"></a>Alle groepen met licentie fouten ophalen
 Groepen zoeken die een aantal gebruikers bevatten voor wie de licenties niet konden worden toegewezen:
 ```powershell
-Get-MsolGroup -HasLicenseErrorsOnly $true
+Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
 Uitvoer:
 ```
@@ -285,7 +285,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 Hier volgt een andere versie van het script dat alleen zoekt via groepen die licentie fouten bevatten. Het is mogelijk geoptimaliseerd voor scenario's waarbij u slechts enkele groepen met problemen verwacht.
 
 ```powershell
-$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+$groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
         Get-MsolUser -ObjectId {$_.ObjectId} |
@@ -627,6 +627,6 @@ Zie de volgende artikelen voor meer informatie over de functies die zijn ingeste
 * [Licenties toewijzen aan een groep in Azure Active Directory](licensing-groups-assign.md)
 * [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](licensing-groups-migrate-users.md)
-* [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Gebruikers tussen product licenties migreren met op groepen gebaseerde licentie verlening in Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](licensing-group-advanced.md)
-* [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Power shell-voor beelden voor op groep gebaseerde licentie verlening in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

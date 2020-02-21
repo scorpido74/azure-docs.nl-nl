@@ -1,22 +1,22 @@
 ---
-title: Reageren op Azure-app configuratie sleutel-waarde gebeurtenissen | Microsoft Docs
+title: Reageren op Azure-app configuratie sleutel-waarden gebeurtenissen
 description: Gebruik Azure Event Grid om u te abonneren op app-configuratie gebeurtenissen.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
-ms.date: 05/30/2019
+ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185286"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523795"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reageren op Azure-app configuratie gebeurtenissen
 
-Met Azure-app configuratie gebeurtenissen kunnen toepassingen reageren op wijzigingen in sleutel waarden. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn. In plaats daarvan worden gebeurtenissen gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen aangepaste HTTP-listener en betaalt u alleen voor wat u gebruikt.
+Met Azure-app configuratie gebeurtenissen kunnen toepassingen reageren op wijzigingen in sleutel waarden. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn. In plaats daarvan worden gebeurtenissen gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen aangepaste HTTP-listener. Kritiek, u betaalt alleen voor wat u gebruikt.
 
 Azure-app configuratie gebeurtenissen worden verzonden naar de Azure Event Grid die betrouw bare leverings services beschikbaar maakt voor uw toepassingen via een uitgebreid beleid voor opnieuw proberen en levering van onbestelbare berichten. Zie [Event grid aflevering van berichten en probeer het opnieuw](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
@@ -73,11 +73,12 @@ Hier volgt een voor beeld van een KeyValueModified-gebeurtenis:
 Zie [Azure-app schema configuratie gebeurtenissen](../event-grid/event-schema-app-configuration.md)voor meer informatie.
 
 ## <a name="practices-for-consuming-events"></a>Procedures voor het gebruiken van gebeurtenissen
-Toepassingen die app-configuratie gebeurtenissen verwerken, moeten een aantal aanbevolen procedures volgen:
+Toepassingen die app-configuratie gebeurtenissen verwerken, moeten de volgende aanbevolen procedures volgen:
 > [!div class="checklist"]
-> * Omdat meerdere abonnementen kunnen worden geconfigureerd voor het routeren van gebeurtenissen naar dezelfde gebeurtenis-handler, is het belang rijk om te voor komen dat gebeurtenissen afkomstig zijn uit een bepaalde bron, maar om het onderwerp van het bericht te controleren om ervoor te zorgen dat het afkomstig is van de app-configuratie die u verwacht.
-> * Controleer ook of de Event type is ingesteld als een voor bereiding op het proces en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de verwachte typen zijn.
-> * Wanneer berichten in aflopende volg orde en na enige vertraging kunnen aankomen, gebruikt u de ETAG-velden om te begrijpen of uw informatie over objecten nog steeds actueel is.  Gebruik ook de sequencer-velden om de volg orde van gebeurtenissen op een bepaald object te begrijpen.
+> * Er kunnen meerdere abonnementen worden geconfigureerd voor het routeren van gebeurtenissen naar dezelfde gebeurtenis-handler, dus zorg ervoor dat er geen gebeurtenissen uit een bepaalde bron zijn. In plaats daarvan raadpleegt u het onderwerp van het bericht om te controleren of het app-configuratie-exemplaar de gebeurtenis verzendt.
+> * Controleer het type gebeurtenis en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de typen zijn die u verwacht.
+> * Gebruik de ETAG-velden om te begrijpen of uw informatie over objecten nog steeds up-to-date is.  
+> * Gebruik de sequencer-velden om de volg orde van gebeurtenissen op een bepaald object te begrijpen.
 > * Gebruik het onderwerpveld om toegang te krijgen tot de sleutel waarde die is gewijzigd.
 
 

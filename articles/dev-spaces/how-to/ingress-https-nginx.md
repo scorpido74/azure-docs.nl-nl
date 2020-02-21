@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste NGINX ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: c6158c3229f4cb81df69b05c6973425c346a2046
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466872"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486199"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Een aangepaste NGINX ingangs controller gebruiken en HTTPS configureren
 
@@ -128,7 +128,7 @@ azds space select -n dev -y
 Implementeer de voorbeeld toepassing met behulp van `helm install`.
 
 ```console
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 In het bovenstaande voor beeld wordt de voorbeeld toepassing geïmplementeerd in de naam ruimte voor *ontwikkel aars* .

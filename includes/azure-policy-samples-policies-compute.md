@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: db30b18a7027a62e6cd5bb1ad8d069a41f8a943f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 372850975873c9a6af02846612445edc2899c308
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371038"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495252"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
 |---|---|---|---|
@@ -23,4 +23,4 @@ ms.locfileid: "77371038"
 |[Alleen goedgekeurde VM-uitbrei dingen moeten worden geïnstalleerd](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Dit beleid is van toepassing op de extensies van de virtuele machine die niet zijn goedgekeurd. |Controleren, weigeren, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Automatische patching van besturingssysteem installatie kopieën vereisen op Virtual Machine Scale Sets](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Met dit beleid wordt het inschakelen van automatische installatie kopie patches voor het besturings systeem op Virtual Machine Scale Sets altijd veilig Virtual Machines beveiligen door de nieuwste beveiligings patches elke maand veilig toe te passen. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[Niet-gekoppelde schijven moeten worden versleuteld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Met dit beleid wordt een niet-gekoppelde schijf gecontroleerd zonder dat versleuteling is ingeschakeld. |Controle, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Gebruik nieuwe Azure Resource Manager voor uw virtuele machines om beveiligings uitbreidingen te bieden zoals: sterker toegangs beheer (RBAC), betere controle, implementatie en beheer van Azure op basis van bedrijfs resources, toegang tot beheerde identiteiten, toegang tot de sleutel kluis voor geheimen, op Azure AD gebaseerde verificatie en ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer |Controleren, weigeren, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Gebruik nieuwe Azure Resource Manager voor uw virtuele machines om beveiligings uitbreidingen te bieden zoals: sterker toegangs beheer (RBAC), betere controle, implementatie en beheer op basis van ARM, toegang tot beheerde identiteiten, toegang tot de sleutel kluis voor geheimen, Azure Op AD gebaseerde verificatie en ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer |Controleren, weigeren, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

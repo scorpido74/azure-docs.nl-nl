@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672289"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482340"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service plan
 
@@ -37,7 +37,7 @@ Elke laag biedt ook een specifieke subset van App Service-functies. Deze functie
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> De nieuwe prijs categorie **PremiumV2** voorziet in [dv2-serie vm's](../virtual-machines/windows/sizes-general.md#dv2-series) met snellere processors, SSD-opslag en dubbele geheugen-naar-core-verhouding ten opzichte van de **Standard** -laag. **PremiumV2** biedt ook ondersteuning voor een hogere schaal via een verhoogd aantal instanties, terwijl alle geavanceerde mogelijkheden van het Standard-abonnement nog steeds beschikbaar zijn. Alle beschik bare functies in de bestaande **Premium** -laag zijn opgenomen in **PremiumV2**.
+> De nieuwe prijs categorie **PremiumV2** voorziet in [dv2-serie vm's](../virtual-machines/dv2-dsv2-series.md) met snellere processors, SSD-opslag en dubbele geheugen-naar-core-verhouding ten opzichte van de **Standard** -laag. **PremiumV2** biedt ook ondersteuning voor een hogere schaal via een verhoogd aantal instanties, terwijl alle geavanceerde mogelijkheden van het Standard-abonnement nog steeds beschikbaar zijn. Alle beschik bare functies in de bestaande **Premium** -laag zijn opgenomen in **PremiumV2**.
 >
 > Net als bij andere toegewezen lagen zijn er drie VM-grootten beschikbaar voor deze laag:
 >

@@ -1,5 +1,6 @@
 ---
-title: 'Verwijzing: CentOS DSVM'
+title: 'Verwijzing: CentOS Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: Details over hulpprogram ma's die zijn opgenomen in de CentOS-Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493717"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525835"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Naslag informatie: CentOS (Linux) Data Science Virtual Machine
 
@@ -38,13 +39,13 @@ De belangrijkste software onderdelen die deel uitmaken van een Linux-DSVM zijn:
 * Bibliotheken in R en python voor gebruik in Azure Machine Learning en andere Azure-Services.
 * Ontwikkelingsprogram ma's en editors (RStudio, PyCharm, IntelliJ, emacs, gedit, VI).
 
-Data Science moet worden gesequentied op een reeks taken:
+Wetenschappelijke gegevens omvat het doorlopen van een reeks taken:
 
 1. Gegevens zoeken, laden en vooraf verwerken.
-1. Bouw-en test modellen.
-1. Implementeer de modellen voor gebruik in intelligente toepassingen.
+1. Bouwen en testen van modellen.
+1. De modellen voor gebruik in intelligente toepassingen te implementeren.
 
-Gegevens wetenschappers gebruiken diverse hulp middelen om deze taken uit te voeren. Het kan tijdrovend zijn om de juiste versies van de software te vinden en vervolgens de software te downloaden, te compileren en te installeren.
+Gegevenswetenschappers verschillende hulpprogramma's gebruiken om deze taken te voltooien. Het kan tijdrovend zijn om de juiste versies van de software te vinden en vervolgens de software te downloaden, te compileren en te installeren.
 
 De Linux-DSVM kunnen deze belasting aanzienlijk versnellen. Gebruik de Linux-DSVM om uw analyse project te starten. De Linux-DSVM helpt u bij het werken aan taken in verschillende talen, waaronder R, Python, SQL, C++Java en. Eclips biedt een eenvoudig te gebruiken IDE voor het ontwikkelen en testen van uw code. De Azure SDK, die is opgenomen in de DSVM, helpt u bij het bouwen van uw toepassingen met behulp van verschillende services op Linux voor het micro soft-Cloud platform. Andere talen zijn vooraf geïnstalleerd, waaronder Ruby, perl, PHP en node. js.
 
@@ -53,9 +54,9 @@ Er zijn geen software kosten voor de DSVM-installatie kopie. U betaalt alleen de
 
 ## <a name="machine-learning-server"></a>Machine Learning Server
 
-R is een van de populairste talen voor gegevens analyse en machine learning. Als u R voor uw analyse wilt gebruiken, is de DSVM Machine Learning Server met micro soft R open en de reken kundige kernel-bibliotheek. De reken kundige kernel-bibliotheek optimaliseert veelvoorkomende wiskundige bewerkingen in analytische algoritmen. R open is volledig compatibel met KRANen R. Een van de R-bibliotheken die in KRANs zijn gepubliceerd, kunnen worden geïnstalleerd op R open. 
+R is een van de meest populaire talen voor data-analyse en machine learning. Als u R voor uw analyse wilt gebruiken, is de DSVM Machine Learning Server met micro soft R open en de reken kundige kernel-bibliotheek. De reken kundige kernel-bibliotheek optimaliseert veelvoorkomende wiskundige bewerkingen in analytische algoritmen. R open is volledig compatibel met KRANen R. Een van de R-bibliotheken die in KRANs zijn gepubliceerd, kunnen worden geïnstalleerd op R open. 
 
-U kunt Machine Learning Server gebruiken om R-modellen te schalen en operationeel maken in webservices. U kunt uw R-Program ma's bewerken in een van de standaard editors, zoals RStudio, VI of emacs. De Emacs-editor is vooraf geïnstalleerd op de DSVM. Het emacs ESS (Emacsse Statistics)-pakket vereenvoudigt het werken met R-bestanden in de Emacs-editor.
+U kunt Machine Learning Server gebruiken om R-modellen te schalen en operationeel maken in webservices. U kunt uw R-programma's in een van de standaard-editors, zoals RStudio, vi of Emacs bewerken. De Emacs-editor is vooraf geïnstalleerd op de DSVM. Het emacs ESS (Emacsse Statistics)-pakket vereenvoudigt het werken met R-bestanden in de Emacs-editor.
 
 Als u de R-console wilt openen, voert u in de shell **r**in. Met deze opdracht gaat u naar een interactieve omgeving. Voor het ontwikkelen van uw R-programma gebruikt u doorgaans een editor zoals Emacs of VI, en voert u de scripts uit in R. RStudio biedt een volledige grafische IDE voor het ontwikkelen van uw R-programma.
 
@@ -63,9 +64,9 @@ Een R-script dat u kunt gebruiken voor het installeren van de [Top 20 R pakkette
 
 ## <a name="python"></a>Python
 
-Anaconda python wordt geïnstalleerd met de python 3,5-en 2,7-omgevingen. De 2,7-omgeving heet _root_ en de 3,5-omgeving heet _py35_. Deze distributie bevat de basis-python, samen met ongeveer 300 van de populairste wiskundige, technische en gegevens analyse pakketten.
+Anaconda python wordt geïnstalleerd met de python 3,5-en 2,7-omgevingen. De 2,7-omgeving heet _root_ en de 3,5-omgeving heet _py35_. Deze verdeling bevat de basis Python samen met ongeveer 300 van de meest populaire math, engineering en data analytics-pakketten.
 
-De py35 omgeving is de standaard instelling. Gebruik deze opdracht om de basis omgeving (2,7) te activeren:
+De omgeving py35 is de standaardinstelling. Gebruik deze opdracht om de basis omgeving (2,7) te activeren:
 
 ```bash
 source activate root
@@ -86,7 +87,7 @@ source activate root
 pip install <package>
 ```
 
-Of geef het volledige pad op naar PIP:
+Of geef het volledige pad naar het pip:
 
 ```bash
 /anaconda/bin/pip install <package>
@@ -98,7 +99,7 @@ Voor Conda moet u altijd de omgevings naam (py35 of root) opgeven:
 conda install <package> -n py35
 ```
 
-Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u **pycharm** invoeren om de PYCHARM python IDE te openen. U kunt de standaard tekst editors gebruiken. Daarnaast kunt u Spyder gebruiken, een python IDE die is gebundeld met Anaconda python-distributies. Spyder moet een grafisch bureau blad of X11 door sturen hebben. Het grafische bureau blad heeft een snelkoppeling naar Spyder.
+Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u **pycharm** invoeren om de PYCHARM python IDE te openen. U kunt de standaard-teksteditors. Daarnaast kunt u Spyder gebruiken, een python IDE die is gebundeld met Anaconda python-distributies. Spyder moet een grafische bureaublad of X11 doorsturen. Het grafische bureau blad heeft een snelkoppeling naar Spyder.
 
 ## <a name="jupyter-notebook"></a>Jupyter Notebook
 
@@ -107,9 +108,9 @@ De Anaconda-distributie wordt ook geleverd met een Jupyter Notebook, een omgevin
 De Jupyter Notebook-server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de Jupyter notebook-server. Als u toegang hebt tot de DSVM via SSH of de X2Go-client, kunt u ook toegang krijgen tot de Jupyter Notebook-server op https:\//localhost: 8000/.
 
 > [!NOTE]
-> Ga door als u certificaat waarschuwingen ontvangt.
+> Doorgaan als u certificaatwaarschuwingen.
 
-U kunt vanaf elke host toegang krijgen tot de Jupyter-notebook server. Voer **https:\//\<DNS-naam of IP-adres van DSVM in\>: 8000/** .
+U kunt de Jupyter-notebook-server openen vanaf elke host. Voer **https:\//\<DNS-naam of IP-adres van DSVM in\>: 8000/** .
 
 > [!NOTE]
 > Poort 8000 wordt standaard geopend in de firewall wanneer de DSVM is ingericht. 
@@ -120,7 +121,7 @@ Micro soft heeft voorbeeld notitieblokken, een in Python en één in R, verpakt.
 
 Een exemplaar van de zelfstandige modus van Spark wordt vooraf geïnstalleerd op de Linux-DSVM om u te helpen bij het lokaal ontwikkelen van Spark-toepassingen voordat u ze test en implementeert op grote clusters. 
 
-U kunt PySpark-Program ma's uitvoeren via de Jupyter-kernel. Wanneer u Jupyter opent, selecteert u de knop **Nieuw** en ziet u een lijst met beschik bare kernels. **Spark-python** is de PySpark-kernel waarmee u Spark-toepassingen kunt bouwen met behulp van de python-taal. U kunt ook een python IDE zoals PyCharm of Spyder gebruiken om uw Spark-programma te bouwen. 
+U kunt de PySpark-programma's uitvoeren via de Jupyter-kernel. Wanneer u Jupyter opent, selecteert u de knop **Nieuw** en ziet u een lijst met beschik bare kernels. **Spark-python** is de PySpark-kernel waarmee u Spark-toepassingen kunt bouwen met behulp van de python-taal. U kunt ook een python IDE zoals PyCharm of Spyder gebruiken om uw Spark-programma te bouwen. 
 
 In deze zelfstandige instantie wordt de Spark-stack uitgevoerd in het aanroepende client programma. Met deze functie kunt u sneller en eenvoudiger problemen oplossen in vergelijking met het ontwikkelen van een Spark-cluster.
 
@@ -128,7 +129,7 @@ Jupyter biedt een voor beeld van een PySpark-notebook. U vindt deze in de SparkM
 
 Als u programmeert in R voor Spark, kunt u Machine Learning Server, Spark of sparklyr gebruiken. 
 
-Voordat u uitvoert in een Spark-context in Machine Learning Server, moet u een eenmalige installatie stap uitvoeren om een lokaal Hadoop-en garen-exemplaar met één knoop punt in te scha kelen. Hadoop-services worden standaard geïnstalleerd, maar uitgeschakeld op de DSVM. Als u Hadoop-Services wilt inschakelen, voert u de volgende opdrachten uit als hoofd de eerste keer:
+Voordat u uitvoert in een Spark-context in Machine Learning Server, moet u een eenmalige installatie stap uitvoeren om een lokaal Hadoop-en garen-exemplaar met één knoop punt in te scha kelen. Hadoop-services worden standaard geïnstalleerd maar uitgeschakeld op de DSVM. Als u Hadoop-Services wilt inschakelen, voert u de volgende opdrachten uit als hoofd de eerste keer:
 
 ```bash
 echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -144,7 +145,7 @@ U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet nodig hebt do
 
 De/dsvm/samples/MRS Directory bevat een voor beeld van het ontwikkelen en testen van Machine Learning Server in een externe Spark-context (het zelfstandige Spark-exemplaar op de DSVM).
 
-## <a name="ides-and-editors"></a>Ide's en editors
+## <a name="ides-and-editors"></a>IDE's en editors
 
 U kunt kiezen uit verschillende code editors, waaronder VI/VIM, emacs, gedit, PyCharm, RStudio, eclips, LaTeX en IntelliJ. 
 
@@ -158,7 +159,7 @@ U kunt kiezen uit verschillende code editors, waaronder VI/VIM, emacs, gedit, Py
 
   De Azure SDK voor Java wordt ook geïnstalleerd met de Azure-toolkit voor Eclipse op de DSVM. De Azure SDK voor Java geeft u toegang tot verschillende Azure-Services vanuit een Java-omgeving. 
   
-  Zie [Azure-Toolkit voor eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)voor meer informatie.
+  Zie [Azure-toolkit voor Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)voor meer informatie.
 
 * LaTeX wordt geïnstalleerd via het texlive-pakket, samen met een Emacs-invoeg toepassings pakket met de naam [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html). Met dit pakket wordt het ontwerpen van uw LaTeX-documenten in Emacs vereenvoudigd. 
 
@@ -178,13 +179,13 @@ SQuirreL SQL is een grafische SQL-client die verbinding kan maken met verschille
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
-Voordat u de eerste keer gebruikt, moet u uw stuur Programma's en database aliassen instellen. De JDBC-Stuur Programma's bevinden zich op/usr/share/java/jdbcdrivers.
+Voordat u het eerste gebruik, stuurprogramma's en database-aliassen hebt ingesteld. De JDBC-Stuur Programma's bevinden zich op/usr/share/java/jdbcdrivers.
 
 Zie [Squirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)voor meer informatie.
 
 ### <a name="command-line-tools-for-accessing-sql-server"></a>Opdracht regel Programma's voor toegang tot SQL Server
 
-Het ODBC-stuur programmapakket voor SQL Server wordt ook geleverd met twee opdracht regel Programma's:
+Het pakket ODBC-stuurprogramma voor SQL Server wordt geleverd met twee opdrachtregelprogramma's:
 
 * **bcp**: het BCP-hulp programma kopieert gegevens tussen een exemplaar van SQL Server en een gegevens bestand in een door de gebruiker opgegeven indeling. U kunt het hulp programma BCP gebruiken voor het importeren van grote aantallen nieuwe rijen in SQL Server tabellen of het exporteren van gegevens uit tabellen naar gegevens bestanden. Als u gegevens wilt importeren in een tabel, moet u een indelings bestand gebruiken dat voor die tabel is gemaakt. Of u moet inzicht hebben in de structuur van de tabel en de typen gegevens die geldig zijn voor de kolommen.
 
@@ -195,26 +196,26 @@ Het ODBC-stuur programmapakket voor SQL Server wordt ook geleverd met twee opdra
   Zie [verbinding maken met Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx)voor meer informatie.
 
   > [!NOTE]
-  > Er zijn enkele verschillen in dit hulp programma tussen Linux-en Windows-platforms. Raadpleeg de documentatie voor meer informatie.
+  > Er zijn enkele verschillen in dit hulp programma tussen Linux-en Windows-platforms. Zie de documentatie voor meer informatie.
 
-### <a name="database-access-libraries"></a>Database toegangs bibliotheken
+### <a name="database-access-libraries"></a>Database toegang bibliotheken
 
 Bibliotheken voor database toegang zijn beschikbaar in R en python:
 
 * In R kunt u het RODBC-pakket of het dplyr-pakket gebruiken om SQL-instructies op de database server op te vragen of uit te voeren.
 * In python biedt de pyodbc-bibliotheek database toegang met ODBC als de onderliggende laag.
 
-## <a name="azure-tools"></a>Azure-hulpprogram ma's
+## <a name="azure-tools"></a>Azure-hulpprogramma 's
 
 De volgende Azure-hulpprogram ma's zijn geïnstalleerd op de DSVM:
 
 * **Azure cli**: u kunt de opdracht regel interface in azure gebruiken om Azure-resources te maken en te beheren via shell-opdrachten. Als u de Azure-hulpprogram ma's wilt openen, voert u **Azure Help**in. Zie de [Azure cli-documentatie pagina](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)voor meer informatie.
-* **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U hebt toegang tot Storage Explorer via het pictogram Bureaublad snelkoppeling. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11-door sturing hebben ingesteld.
+* **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U kunt Storage Explorer openen via het pictogram van de snelkoppeling op het bureaublad. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11-door sturing hebben ingesteld.
 * **Azure-bibliotheken**: de volgende bibliotheken zijn vooraf geïnstalleerd op de DSVM:
   
-  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken kunt u toegang krijgen tot Azure Storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-data base in Azure). De vierde bibliotheek, pyodbc (samen met het micro soft ODBC-stuur programma voor SQL Server), biedt toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse van python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg ervoor dat u deze opdracht uitvoert in zowel de python 2,7-als de 3,5-omgeving.
+  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken, kunt u toegang tot Azure storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-database in Azure). De vierde servicebibliotheek pyodbc (samen met het Microsoft ODBC-stuurprogramma voor SQL Server), kunt u toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse met Python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg dat u deze opdracht wordt uitgevoerd in de Python 2.7 en 3,5 omgevingen.
   * **R**: de Azure-gerelateerde bibliotheken in R zijn AZUREML en RODBC.
-  * **Java**: de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de dsvm. De belangrijkste bibliotheken zijn Azure-opslag-en beheer-Api's, Azure Cosmos DB en JDBC-Stuur Programma's voor SQL Server.  
+  * **Java**: de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de dsvm. De sleutel-bibliotheken zijn Azure-opslag en beheer van API's, Azure Cosmos DB en JDBC-stuurprogramma's voor SQL Server.  
 
 U kunt de [Azure Portal](https://portal.azure.com) openen vanuit de vooraf geïnstalleerde Firefox-browser. In de Azure Portal kunt u Azure-resources maken, beheren en bewaken.
 
@@ -233,7 +234,7 @@ Zie [tien dingen die u kunt doen op de data Science virtual machine](vm-do-ten-t
 > [!NOTE]
 > De instructies in [tien dingen die u op het data Science virtual machine kunt doen](vm-do-ten-things.md) , zijn geschreven voor de Windows-versie van de DSVM. De informatie over het implementeren van modellen naar Azure Machine Learning is echter ook van toepassing op de Linux-DSVM.
 
-## <a name="machine-learning-tools"></a>Machine learning-hulpprogram ma's
+## <a name="machine-learning-tools"></a>Hulpprogramma's voor machine learning
 
 De DSVM wordt geleverd met een paar machine learning-hulpprogram ma's en-algoritmen die lokaal worden gecompileerd en vooraf zijn geïnstalleerd. Deze omvatten:
 
@@ -306,7 +307,7 @@ Een. model-bestand wordt geschreven naar de opgegeven map. Zie [binaire classifi
 
 Zie de [XGBoost-documentatie](https://xgboost.readthedocs.org/en/latest/) en de [XGBoost github-opslag plaats](https://github.com/dmlc/xgboost)voor meer informatie over XGBoost.
 
-### <a name="rattle"></a>Rattle
+### <a name="rattle"></a>Rammelaar
 
 Rattle (*R* *A*analytische *t*Ool *t*o *L*verdienen *E*asily) maakt gebruik van op GUI gebaseerde gegevens exploratie en model lering. Rattle:
 - Geeft statistische en visuele samen vattingen van gegevens weer.
@@ -317,7 +318,7 @@ Rattle (*R* *A*analytische *t*Ool *t*o *L*verdienen *E*asily) maakt gebruik van 
 - Hiermee wordt de R-code gegenereerd.
 - Hiermee repliceert u bewerkingen in de gebruikers interface die rechtstreeks kunnen worden uitgevoerd in R of worden gebruikt als uitgangs punt voor meer analyse.
 
-Als u Rattle wilt uitvoeren, moet u zijn aangemeld bij een grafische bureaublad sessie. Voer in een Terminal **r** in om de R-omgeving te openen. Voer bij de R-prompt de volgende opdrachten in:
+Als u Rattle wilt uitvoeren, moet u zijn aangemeld bij een grafische bureaublad sessie. Voer in een Terminal **r** in om de R-omgeving te openen. Voer de volgende opdrachten bij de R-prompt:
 
 ```R
 library(rattle)

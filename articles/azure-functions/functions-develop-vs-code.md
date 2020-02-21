@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210239"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484771"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -92,11 +92,11 @@ Met de project sjabloon maakt u een project in de taal die u hebt gekozen en ins
 
 Afhankelijk van uw taal worden deze andere bestanden gemaakt:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * [HttpExample.cs Class-bibliotheek bestand](functions-dotnet-class-library.md#functions-class-library-project) dat de functie implementeert.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Een package. JSON-bestand in de hoofdmap.
 
@@ -122,7 +122,7 @@ U kunt ook [een nieuwe functie toevoegen aan uw project](#add-a-function-to-your
 
 Met uitzonde ring van HTTP-en timer-triggers, worden bindingen geïmplementeerd in uitbreidings pakketten. U moet de uitbreidings pakketten installeren voor de triggers en bindingen die deze nodig hebben. Het proces voor het installeren van bindings uitbreidingen is afhankelijk van de taal van uw project.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om de uitbreidings pakketten te installeren die u nodig hebt in uw project. Met de volgende opdracht wordt de extensie Azure Storage geïnstalleerd, waarmee bindingen voor blob-, wachtrij-en tabel opslag worden geïmplementeerd.
 
@@ -130,7 +130,7 @@ Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ U kunt een nieuwe functie toevoegen aan een bestaand project door een van de voo
 
 De resultaten van deze actie zijn afhankelijk van de taal van uw project:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Er wordt C# een nieuw Class Library-bestand (. cs) toegevoegd aan uw project.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Er wordt een nieuwe map gemaakt in het project. De map bevat een nieuwe functie. JSON-bestand en het nieuwe Java script-code bestand.
 
@@ -158,7 +158,7 @@ U kunt de functie uitbreiden door invoer-en uitvoer bindingen toe te voegen. Het
 
 In de volgende voor beelden wordt verbinding gemaakt met een opslag wachtrij met de naam `outqueue`, waarbij de connection string voor het opslag account is ingesteld in de instelling `MyStorageConnection` toepassing in lokale. settings. json.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Werk de functie methode bij om de volgende para meter toe te voegen aan de `Run` methode definitie:
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
 
-Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue.md#output) voor meer informatie.
+Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue-output.md) voor meer informatie.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Met Visual Studio code kunt u bindingen toevoegen aan uw function. JSON-bestand door een handige set prompts te volgen. Als u een binding wilt maken, klikt u met de rechter muisknop (CTRL + klik op macOS) op het bestand **Function. json** in de map function en selecteert u **binding toevoegen**:
 
@@ -212,7 +212,7 @@ In de functie code wordt de binding van de `msg` geopend vanuit de `context`, zo
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](functions-bindings-storage-queue.md#output) .
+Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](functions-bindings-storage-queue-output.md) .
 
 ---
 

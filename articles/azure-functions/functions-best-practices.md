@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210256"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486322"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
@@ -62,7 +62,7 @@ Hoe reageert uw code als er een fout optreedt nadat u 5.000 van deze items in ee
 
 Als een wachtrij-item al is verwerkt, mag de functie niet worden uitgevoerd.
 
-Profiteer van de beschik bare verdedigings maatregelen voor onderdelen die u in het Azure Functions platform gebruikt. Zie bijvoorbeeld het **verwerken van verontreinigde wachtrij berichten** in de documentatie voor [Azure Storage wachtrij Triggers en bindingen](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Profiteer van de beschik bare verdedigings maatregelen voor onderdelen die u in het Azure Functions platform gebruikt. Zie bijvoorbeeld het **verwerken van verontreinigde wachtrij berichten** in de documentatie voor [Azure Storage wachtrij Triggers en bindingen](functions-bindings-storage-queue-trigger.md#poison-messages). 
 
 ## <a name="scalability-best-practices"></a>Best practices voor schaal baarheid
 

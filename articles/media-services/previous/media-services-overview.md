@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Media Services | Microsoft Docs
-description: Microsoft Azure Media Services is een uitbreidbaar cloudplatform dat ontwikkelaars in staat stelt om schaalbare toepassingen voor mediabeheer en -levering te bouwen. Dit artikel geeft een overzicht van Azure Media Services.
+description: Microsoft Azure Media Services is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Dit artikel geeft een overzicht van Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8cc6211f9ddecf21301765266b17e88e4e734eed
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895881"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499960"
 ---
 # <a name="azure-media-services-overview"></a>Overzicht van Azure Media Services 
 
@@ -27,7 +27,7 @@ ms.locfileid: "74895881"
 > * [Versie 2](media-services-overview.md)
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies toegevoegd aan Media Services v2. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Media Services is gebaseerd op de REST API's waarmee u veilig video- of audio-inhoud kunt uploaden, opslaan, coderen en verpakken, zowel voor levering on demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
@@ -58,7 +58,7 @@ Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
     * [Azure Media Services voor Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Dit is een niet-Microsoft-versie van een Node.js SDK. Deze wordt onderhouden door een community en biedt nog geen 100% dekking voor AMS API's).
 * Bestaande hulpprogramma's:
-    * [Azure-portal](https://portal.azure.com/)
+    * [Azure Portal](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) is een Winforms-/C#-toepassing voor Windows)
 
 > [!NOTE]

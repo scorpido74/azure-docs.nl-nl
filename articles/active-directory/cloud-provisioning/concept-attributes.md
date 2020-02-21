@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022491"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484533"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Het Azure AD-schema begrijpen
 Een object in Azure Active Directory (Azure AD), zoals elke directory, is een programmatische gegevens constructie op hoog niveau waarmee items worden aangeduid als gebruikers, groepen en contact personen. Wanneer u een nieuwe gebruiker of contact persoon in azure AD maakt, maakt u een nieuw exemplaar van dat object. Deze instanties kunnen worden gedifferentieerd op basis van hun eigenschappen.
@@ -46,9 +46,9 @@ Als u bijvoorbeeld het e-mail kenmerk 'john.smith@contoso.com' had en u het gede
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
-**Voorbeeld van invoer/uitvoer:** <br>
+**Voor beeld van invoer/uitvoer:** <br>
 
-* **INVOER** (e-mail): "john.smith@contoso.com"
+* **Invoer** (mail): "john.smith@contoso.com"
 * **Uitvoer**: "Jan. Smit"
 
 Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)voor meer informatie over het schrijven van aangepaste expressies en de syntaxis.
@@ -67,12 +67,15 @@ De volgende tabel bevat algemene kenmerken en hoe deze worden gesynchroniseerd m
 |ProxyAdress|Direct|ProxyAddress attribuut|
 
 ## <a name="view-the-schema"></a>Het schema weer geven
+> [!WARNING]
+> De configuratie van de Cloud inrichting maakt een service-principal. De Service-Principal is zichtbaar in de Azure Portal. Wijzig de kenmerk toewijzingen niet met behulp van de Service-Principal-ervaring in de Azure Portal.  Dit wordt niet ondersteund.
+
 Volg deze stappen om het schema weer te geven en te controleren.
 
 1.  Ga naar [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 1.  Meld u aan met het account van uw globale beheerder.
 1.  Selecteer aan de linkerkant de optie **machtigingen wijzigen** en zorg ervoor dat **map. readwrite. all** is *gezonden*.
-1.  Voer de query uit https://graph.microsoft.com/beta/serviceprincipals/? $filter = startsWith (DisplayName, ' Active '). Deze query retourneert een gefilterde lijst met Service-principals.
+1.  Voer de query uit https://graph.microsoft.com/beta/serviceprincipals/?$filter = startsWith (DisplayName, ' Active '). Deze query retourneert een gefilterde lijst met Service-principals.
 1.  Zoek `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` en noteer de waarde voor `"id"`.
     ```
     "value": [

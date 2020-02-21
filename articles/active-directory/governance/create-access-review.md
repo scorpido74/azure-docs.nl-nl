@@ -15,12 +15,12 @@ ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 3e769df186597a88247601f4fc70c48263edc88b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084442"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483904"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -53,7 +53,7 @@ Zie [licentie vereisten](access-reviews-overview.md#license-requirements)voor me
 
     ![Een toegangs beoordeling maken-start-en eind datums](./media/create-access-review/start-end-dates.png)
 
-1. Als u wilt dat de toegangs beoordeling terugkeert, wijzigt u de **frequentie** -instelling van **één keer** in **wekelijks**, **maandelijks**, **per kwar taal** of **per jaar**. Gebruik de schuif regelaar **duur** of het tekstvak om te bepalen hoeveel dagen elke beoordeling van de terugkerende serie wordt geopend voor de invoer van revisors. De maximale duur die u voor een maandelijkse beoordeling kunt instellen is bijvoorbeeld 27 dagen, om overlappende beoordelingen te voor komen.
+1. Als u de toegangs beoordeling wilt herhalen, wijzigt u de **frequentie** -instelling van **één keer** in **wekelijks**, **maandelijks**, **per kwar taal**, **half jaar**of **per jaar**. Gebruik de schuif regelaar **duur** of het tekstvak om te bepalen hoeveel dagen elke beoordeling van de terugkerende serie wordt geopend voor de invoer van revisors. De maximale duur die u voor een maandelijkse beoordeling kunt instellen is bijvoorbeeld 27 dagen, om overlappende beoordelingen te voor komen.
 
 1. Gebruik de **eind** instelling om op te geven hoe de terugkerende toegangs beoordelings reeks moet worden beëindigd. De reeks kan op drie manieren eindigen: de serie wordt continu uitgevoerd om te beginnen met beoordelingen, tot een bepaalde datum, of nadat een gedefinieerd aantal exemplaren is voltooid. U, een andere gebruikers beheerder of een andere globale beheerder kunnen de serie na het maken stoppen door de datum in de **instellingen**te wijzigen, zodat deze op die datum eindigt.
 

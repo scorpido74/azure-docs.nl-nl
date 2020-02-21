@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c9eb8b3d909313470ee9febdc5b1c37eea834b08
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084491"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484040"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snelstartgids: gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
 
@@ -91,6 +91,14 @@ Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld 
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kAuthority ' door het volgende code fragment:
+>    ```swift
+>    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
+>    ```
+> 1. Bewerk **View Controller. Swift** en vervang de regel die begint met ' laat kGraphEndpoint ' door het volgende code fragment:
+>    ```swift
+>    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
+>    ```
 > 1. Open de project instellingen. Voer in de sectie **identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
 > 1. Alleen voor iOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** **bron code** > .
 > 1. Voor alleen iOS, onder het hoofd knooppunt dict, vervangt u `CFBundleURLSchemes` door de ***bundel-id*** die u hebt ingevoerd in de portal.
@@ -117,6 +125,16 @@ Navigeer in een Terminal venster naar de map met het gedownloade code voorbeeld 
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. Als u een app bouwt voor [Azure AD National Clouds](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints), vervangt u de regel die begint met ' Let kGraphEndpoint ' en ' laat kAuthority ' door de juiste eind punten. Gebruik de standaard waarden voor globale toegang:
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.com/"
+>     let kAuthority = "https://login.microsoftonline.com/common"
+>     ```
+> 1. Andere eind punten worden [hier](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)beschreven. Als u bijvoorbeeld de Snelstartgids met Azure AD Duitsland wilt uitvoeren, gebruikt u de volgende opties:
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.de/"
+>     let kAuthority = "https://login.microsoftonline.de/common"
+>     ```
 > 1. Open de project instellingen. Voer in de sectie **identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
 > 1. Alleen voor iOS: Klik met de rechter muisknop op **info. plist** en selecteer **openen als** **bron code** > .
 > 1. Voor alleen iOS, onder het hoofd knooppunt dict, vervangt u `Enter_the_bundle_Id_Here` door de ***bundel-id*** die u in de portal hebt gebruikt.

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775222"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484783"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Wat zijn de standaard en aanbevolen knooppunt configuraties voor Azure HDInsight?
 
@@ -44,16 +44,16 @@ De specificaties van alle mini maal aanbevolen VM-typen die in dit document word
 
 Raadpleeg de volgende documenten voor meer informatie over de specificaties van elk VM-type:
 
-* [Grootte van virtuele machines voor algemene doel einden: dv2 Series 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [Grootte van virtuele machines geoptimaliseerd voor geheugen: dv2 Series 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [Grootte van virtuele machines voor algemene doel einden: Av2 Series 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [Grootte van virtuele machines voor algemene doel einden: dv2 Series 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [Grootte van virtuele machines geoptimaliseerd voor geheugen: dv2 Series 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [Grootte van virtuele machines voor algemene doel einden: Av2 Series 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Alle ondersteunde regio's met uitzonde ring van Brazilië-Zuid en Japan-West
 
 > [!Note]
 > Als u de SKU-id wilt ophalen voor gebruik in Power shell en andere scripts, voegt u `Standard_` toe aan het begin van alle VM-Sku's in de onderstaande tabellen. `D12_v2` worden bijvoorbeeld `Standard_D12_v2`.
 
-| Clustertype | Hadoop | HBase | Interactieve query | Storm | Spark | ML Server | Kafka |
+| Cluster type | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Head: standaard VM-grootte | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Kop: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +68,7 @@ Raadpleeg de volgende documenten voor meer informatie over de specificaties van 
 
 ### <a name="brazil-south-and-japan-west-only"></a>Alleen Brazilië-Zuid en Japan-West
 
-| Clustertype | Hadoop | HBase | Interactieve query | Storm | Spark | ML Services |
+| Cluster type | Hadoop | HBase | Interactive Query | Storm | Spark | ML Services |
 |---|---|---|---|---|---|---|
 | Head: standaard VM-grootte | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Kop: Mini maal aanbevolen VM-grootten | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 02/19/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1489ce6bee2ce25ffb268ef20cc8fa587664619
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848926"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483275"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden instellen met een Microsoft-account aangepaste beleids regels gebruiken in Azure Active Directory B2C
 
@@ -29,11 +29,11 @@ In dit artikel wordt beschreven hoe u aanmelden voor gebruikers vanaf een Micros
 - Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md).
 - Als u nog geen Microsoft-account hebt, maakt u er een op [https://www.live.com/](https://www.live.com/).
 
-## <a name="add-an-application"></a>Een toepassing toevoegen
+## <a name="register-an-application"></a>Een toepassing registreren
 
 Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
@@ -47,11 +47,24 @@ Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet
 1. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld *MSA-toepassings client geheim*, en klik vervolgens op **toevoegen**.
 1. Noteer het toepassings wachtwoord dat wordt weer gegeven in de kolom **waarde** . U gebruikt deze waarde in de volgende sectie.
 
+## <a name="configuring-optional-claims"></a>Optionele claims configureren
+
+Als u de `family_name` en `given_name` claims van Azure AD wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](../active-directory/develop/active-directory-optional-claims.md)voor meer informatie.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek en selecteer **Azure Active Directory**.
+1. Selecteer in de sectie **beheren** de optie **app-registraties**.
+1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
+1. Selecteer in de sectie **beheren** de optie **token configuratie (preview)** .
+1. Selecteer **optionele claim toevoegen**.
+1. Selecteer het token type dat u wilt configureren.
+1. Selecteer de optionele claims die u wilt toevoegen.
+1. Klik op **Add**.
+
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
 Nu u de toepassing hebt gemaakt in uw Azure AD-Tenant, moet u het client geheim van die toepassing opslaan in uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
@@ -60,7 +73,7 @@ Nu u de toepassing hebt gemaakt in uw Azure AD-Tenant, moet u het client geheim 
 1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `MSASecret`. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Voer in het **geheim**het client geheim in dat u in de vorige sectie hebt vastgelegd.
 1. Selecteer `Signature`voor **sleutel gebruik**.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
@@ -94,10 +107,12 @@ U kunt Azure AD definiëren als een claim provider door het element **ClaimsProv
             <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
             <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>

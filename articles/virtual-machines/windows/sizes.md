@@ -12,39 +12,34 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/06/2019
+ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 857b60a36cdf3b6ed892199db8be77d16805f69e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 990cb2eef7e0f575de3e510abc38bcc2e3172477
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645953"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485383"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Grootten voor virtuele Windows-machines in azure
 
-In dit artikel worden de beschik bare grootten en opties voor de virtuele machines van Azure beschreven die u kunt gebruiken om uw Windows-apps en-workloads uit te voeren. Het biedt ook overwegingen bij de implementatie om te weten wanneer u van plan bent deze resources te gebruiken.  Dit artikel is ook beschikbaar voor [virtuele Linux-machines](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+In dit artikel worden de beschik bare grootten en opties voor de virtuele machines van Azure beschreven die u kunt gebruiken om uw Windows-apps en-workloads uit te voeren. Het biedt ook overwegingen bij de implementatie om te weten wanneer u van plan bent deze resources te gebruiken.  Dit artikel is ook beschikbaar voor [virtuele Linux-machines](/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
+| Type | Grootten | Beschrijving |
+|------|-------|-------------|
+| [Algemeen doel](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC | Evenwichtige CPU-geheugen verhouding. Ideaal voor testen en ontwikkelen, kleine tot middel grote data bases en webservers met weinig of gemiddeld verkeer. |
+| [Geoptimaliseerde rekenkracht](../sizes-compute.md) | Fsv2 | Hoge CPU-geheugen verhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
+| [Geoptimaliseerd geheugen](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, dv2 | Hoge geheugen-naar-CPU-verhouding. Ideaal voor relationele database servers, gemiddeld tot grote caches en analyse in het geheugen. |
+| [Geoptimaliseerde opslag](../sizes-storage.md)  | Lsv2 | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
+| [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3, NVv4 | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere Gpu's. |
+| [Krachtig rekenvermogen](../sizes-hpc.md) | HB, HC, H | Onze snelste en krach tigste virtuele CPU-machines met optionele netwerk interfaces (RDMA) met hoge door voer. |
 
-| Type                     | Grootten           |    Beschrijving       |
-|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Algemeen doel](sizes-general.md)          | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC  | Evenwichtige CPU-geheugenverhouding. Ideaal voor testen en ontwikkelen, kleine tot middelgrote databases en webservers met weinig of gemiddeld verkeer. |
-| [Geoptimaliseerde rekenkracht](sizes-compute.md)        | Fsv2           | Hoge CPU-geheugenverhouding. Goed voor webservers met gemiddeld verkeer, netwerkapparatuur, batchprocessen en toepassingsservers.        |
-| [Geoptimaliseerd geheugen](sizes-memory.md)         | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, dv2  | Hoge geheugen-naar-CPU-verhouding. Uiterst geschikt voor relationele-databaseservers, middelgrote tot grote caches en analysefuncties in het geheugen.                 |
-| [Geoptimaliseerde opslag](sizes-storage.md)        | Lsv2                | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
-| [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3, NVv4 (preview-versie)| Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere Gpu's.       |
-| [Krachtig rekenvermogen](sizes-hpc.md) | HB, HC,  H | Onze snelste en krachtigste CPU-virtuele machines met optionele netwerkinterfaces (RDMA) voor hoge doorvoer. |
-
-
-<br> 
-
-- Zie [virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)voor meer informatie over de prijzen van de verschillende grootten. 
-- Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor algemene limieten voor virtuele Azure-machines.
+- Zie [virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)voor meer informatie over de prijzen van de verschillende grootten.
+- Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-subscription-service-limits.md)voor algemene limieten voor virtuele Azure-machines.
 - Opslagkosten worden afzonderlijk berekend op basis van het aantal pagina's dat in het opslagaccount is gebruikt. [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie.
-- Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+- Meer informatie over hoe [Azure Compute units (ACU)](../acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 
-
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 Zie het volgende voor informatie over het gebruik van de REST API om te zoeken naar VM-grootten:
 
@@ -54,7 +49,7 @@ Zie het volgende voor informatie over het gebruik van de REST API om te zoeken n
 
 ## <a name="acu"></a>ACU
 
-Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+Meer informatie over hoe [Azure Compute units (ACU)](../acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 
 ## <a name="benchmark-scores"></a>Benchmarkscores
 
@@ -63,14 +58,11 @@ Meer informatie over reken prestaties voor Windows-Vm's met behulp van de [Coopm
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over de verschillende beschik bare VM-grootten:
-- [Algemeen doel](sizes-general.md)
-- [Geoptimaliseerde rekenkracht](sizes-compute.md)
-- [Geoptimaliseerd geheugen](../virtual-machines-windows-sizes-memory.md)
-- [Geoptimaliseerde opslag](../virtual-machines-windows-sizes-storage.md)
-- [Geoptimaliseerde GPU](sizes-gpu.md)
-- [Krachtig rekenvermogen](sizes-hpc.md)
-- Controleer de [vorige generatie](sizes-previous-gen.md) pagina voor een standaard, Dv1 (D1-4 en D11-14 v1) en A8-A11-serie
 
-
-
-
+- [Algemeen doel](../sizes-general.md)
+- [Geoptimaliseerde rekenkracht](../sizes-compute.md)
+- [Geoptimaliseerd geheugen](../sizes-memory.md)
+- [Geoptimaliseerde opslag](../sizes-storage.md)
+- [Geoptimaliseerde GPU](../sizes-gpu.md)
+- [Krachtig rekenvermogen](../sizes-hpc.md)
+- Controleer de [vorige generatie](../sizes-previous-gen.md) pagina voor een standaard, Dv1 (D1-4 en D11-14 v1) en A8-A11-serie

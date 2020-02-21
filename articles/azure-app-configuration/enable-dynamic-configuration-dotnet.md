@@ -1,24 +1,19 @@
 ---
-title: Zelf studie voor het gebruik van Azure-app configuratie dynamische configuratie in een .NET Framework-app | Microsoft Docs
-description: In deze zelf studie leert u hoe u de configuratie gegevens voor .NET Framework-apps dynamisch kunt bijwerken
+title: '.NET Framework zelf studie: dynamische configuratie in Azure-app configuratie'
+description: In deze zelf studie leert u hoe u de configuratie gegevens voor .NET Framework-apps dynamisch kunt bijwerken met behulp van Azure-app-configuratie.
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185236"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484873"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Zelf studie: dynamische configuratie in een .NET Framework-app gebruiken
 
@@ -134,7 +129,7 @@ In deze zelfstudie leert u het volgende:
 
     ![App-lokaal starten](./media/dotnet-app-run.png)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 

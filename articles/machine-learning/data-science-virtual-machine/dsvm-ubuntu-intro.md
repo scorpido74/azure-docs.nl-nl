@@ -1,5 +1,6 @@
 ---
-title: 'Quick Start: een Ubuntu-DSVM maken'
+title: 'Quick Start: een Ubuntu-Data Science Virtual Machine maken'
+titleSuffix: Azure Data Science Virtual Machine
 description: Configureer en maak een Data Science Virtual Machine voor Linux (Ubuntu) om analyses en machine learning te maken.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612084"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526107"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Snelstartgids: de Data Science Virtual Machine instellen voor Linux (Ubuntu)
 
@@ -36,7 +37,7 @@ Hier volgen de stappen voor het maken van een instantie van de Data Science Virt
    
 1. Voer de volgende informatie in voor het configureren van elke stap van de wizard:
 
-    1. **Grondbeginselen van**:
+    1. **Basis beginselen**:
     
        * **Abonnement**: als u meer dan één abonnement hebt, selecteert u de computer waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
        * **Resource groep**: Maak een nieuwe groep of gebruik een bestaande.
@@ -75,7 +76,7 @@ U kunt ook een Data Science Virtual Machine aan Azure Notebooks koppelen om Jupy
 
 ### <a name="ssh"></a>SSH
 
-Nadat de VM is gemaakt, kunt u zich met SSH aanmelden als deze is geconfigureerd met SSH-toegang. Gebruik de accountreferenties op die u hebt gemaakt in de **basisbeginselen** sectie van stap 3 voor de tekst shell-interface. In Windows kunt u een SSH-client hulpprogramma downloaden, zoals [putty](https://www.putty.org). Als u liever een grafisch bureau blad (X Window-Systeem) hebt, kunt u X11 door sturen gebruiken op PuTTy.
+Nadat de VM is gemaakt, kunt u zich met SSH aanmelden als deze is geconfigureerd met SSH-toegang. Gebruik de account referenties die u hebt gemaakt in de sectie **basis beginselen** van stap 3 voor de tekst shell-interface. In Windows kunt u een SSH-client hulpprogramma downloaden, zoals [putty](https://www.putty.org). Als u liever een grafisch bureau blad (X Window-Systeem) hebt, kunt u X11 door sturen gebruiken op PuTTy.
 
 > [!NOTE]
 > De client X2Go beter dan X11 doorsturen tests uitgevoerd. Het is raadzaam om met behulp van de client X2Go voor een grafische interface voor het bureaublad.
@@ -84,7 +85,7 @@ Nadat de VM is gemaakt, kunt u zich met SSH aanmelden als deze is geconfigureerd
 
 De virtuele Linux-machine is al ingericht met de X2Go-server en is klaar om client verbindingen te accepteren. Voor verbinding met het bureaublad van de Linux-VM-grafische, voer de volgende procedure op de client:
 
-1. Download en installeer de client X2Go voor uw clientplatform van [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Down load en installeer de X2Go-client voor uw client platform via [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
 1. Noteer het open bare IP-adres van de virtuele machine, dat u in de Azure Portal kunt vinden door de virtuele machine die u zojuist hebt gemaakt, te openen.
 
    ![IP-adres van Ubuntu-computer](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
@@ -95,10 +96,10 @@ De virtuele Linux-machine is al ingericht met de X2Go-server en is klaar om clie
    * **Tabblad sessie**:
      * **Host**: Voer het IP-adres in van de virtuele machine die u eerder hebt genoteerd.
      * **Aanmelding**: Voer de gebruikers naam in op de virtuele Linux-machine.
-     * **SSH-poort**: 22, de standaardwaarde accepteren.
-     * **Sessietype**: Wijzig de waarde in **XFCE**. De Linux-VM ondersteunt momenteel alleen het XFCE-bureau blad.
-   * **Tabblad Media**: U kunt uitschakelen geluid ondersteuning en client afdrukken als u niet nodig hebt om ze te gebruiken.
-   * **Gedeelde mappen**: als u mappen van uw clientmachines die gekoppeld is op de Linux-VM wilt, voegt u de mappen op de client computer die u wilt delen met de virtuele machine op dit tabblad.
+     * **SSH-poort**: de standaard waarde is 25.
+     * **Sessie type**: Wijzig de waarde in **xfce**. De Linux-VM ondersteunt momenteel alleen het XFCE-bureau blad.
+   * **Tabblad Media**: u kunt geluids ondersteuning en afdrukken via clients uitschakelen als u deze niet nodig hebt.
+   * **Gedeelde mappen**: als u directory's wilt gebruiken van uw client machines die zijn gekoppeld aan de virtuele Linux-machine, voegt u de client computer directory's toe die u wilt delen met de virtuele machine op dit tabblad.
 
    ![X2go-configuratie](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Selecteer **OK**.
@@ -137,6 +138,6 @@ Hier ziet u hoe u kunt doorgaan met uw learning en verkennen:
 
 * [In de gegevens wetenschap van het scenario data Science virtual machine voor Linux](linux-dsvm-walkthrough.md) ziet u hoe u verschillende algemene data Science-taken kunt uitvoeren met de Linux-DSVM die hier is ingericht. 
 * Bekijk de verschillende hulpprogram ma's voor gegevens wetenschap op het DSVM door de hulpprogram ma's die in dit artikel worden beschreven, uit te proberen. U kunt `dsvm-more-info` ook uitvoeren op de shell in de virtuele machine voor een basis kennis Making en verwijzingen naar meer informatie over de hulpprogram ma's die op de VM zijn geïnstalleerd.  
-* Informatie over het bouwen van analytische oplossingen voor end-to-end systematisch met behulp van de [Team Data Science Process](https://aka.ms/tdsp).
-* Ga naar de [Azure AI Gallery](https://gallery.azure.ai/) voor machine learning en data analytics-voorbeelden die gebruikmaken van de Azure AI-services.
+* Leer hoe u end-to-end analytische oplossingen systematisch bouwt met behulp van het [team data Science process](https://aka.ms/tdsp).
+* Ga naar de [Azure AI Gallery](https://gallery.azure.ai/) voor voor beelden van machine learning en gegevens analyse die gebruikmaken van de Azure AI-Services.
 * Raadpleeg de juiste [referentie documentatie](./reference-ubuntu-vm.md) voor deze virtuele machine.

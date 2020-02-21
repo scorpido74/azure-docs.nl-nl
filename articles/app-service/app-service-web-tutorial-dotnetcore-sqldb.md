@@ -5,24 +5,24 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f444ad9b32ca5da923ce5ac711c9947971c4d1e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672001"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500081"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een .NET Core- en SQL Database-app maken in Azure App Service op Linux](./containers/tutorial-dotnetcore-sqldb-app.md) als u naar App Service wilt implementeren op _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een .NET Core- en SQL Database-app maken in Azure App Service op Linux_ als u naar App Service wilt implementeren op [Linux](./containers/tutorial-dotnetcore-sqldb-app.md).
 >
 
 [App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met een SQL-database. Als u klaar bent, hebt u een .NET Core MVC-app die in App Service wordt uitgevoerd.
 
 ![app die in App Service wordt uitgevoerd](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
-U leer het volgende:
+U leert het volgende:
 
 > [!div class="checklist"]
 > * Een SQL-database in Azure maken
@@ -36,7 +36,7 @@ U leer het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 * [Git installeren](https://git-scm.com/)
 * [.NET Core installeren](https://www.microsoft.com/net/core/)
@@ -47,7 +47,7 @@ In deze stap stelt u het lokale .NET Core-project in.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.
+In het terminalvenster, `cd` in een werkmap.
 
 Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen en de hoofdmap ervan te wijzigen.
 
@@ -90,7 +90,7 @@ Voor SQL Database wordt in deze zelfstudie gebruikgemaakt van [Azure SQL Databas
 
 Maak een logische Azure SQL Database-server in Cloud Shell met de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Vervang de tijdelijke aanduiding *\<server_name>* door een unieke SQL Database-naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server_name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang tevens *\<db_username>* en *\<db_password>* door een gebruikersnaam en wachtwoord dat u zelf mag kiezen. 
+Vervang de tijdelijke aanduiding *\<server_name>* door een unieke SQL Database-naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server_name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang tevens *\<db_username>* en *\<db_password>* door een zelfgekozen gebruikersnaam en wachtwoord. 
 
 
 ```azurecli-interactive
@@ -177,7 +177,7 @@ Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in
 
 ### <a name="configure-environment-variable"></a>Omgevings variabele configureren
 
-Vervolgens stelt u de instelling voor `ASPNETCORE_ENVIRONMENT`-app in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
+Vervolgens stelt u de instelling voor de app `ASPNETCORE_ENVIRONMENT` in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
 
 In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding *\<app_name>* .
 
@@ -302,7 +302,7 @@ Breng enkele wijzigingen aan de code aan zodat de eigenschap `Done` kan worden g
 
 Open _Controllers\TodosController.cs_.
 
-Zoek de `Create([Bind("ID,Description,CreatedDate")] Todo todo)`-methode en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw `Create()`-methode er uit als de onderstaande code:
+Zoek de methode `Create([Bind("ID,Description,CreatedDate")] Todo todo)` en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw methode `Create()` er uit als de onderstaande code:
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -310,7 +310,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Open _Views\Todos\Create.cshtml_.
 
-In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander `<div class="form-group">`-element voor `CreatedDate`. Voeg direct na deze twee elementen een ander `<div class="form-group">`-element voor `Done` toe:
+In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander element `<div class="form-group">` voor `CreatedDate`. Voeg direct na deze twee elementen een ander element `<div class="form-group">` voor `Done` toe:
 
 ```csharp
 <div class="form-group">
@@ -324,7 +324,7 @@ In de Razor-code zou u een `<div class="form-group">`-element voor `Description`
 
 Open _Views\Todos\Index.cshtml_.
 
-Zoek het lege `<th></th>`-element. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <th>
@@ -332,7 +332,7 @@ Zoek het lege `<th></th>`-element. Vlak boven dit element voegt u de volgende Ra
 </th>
 ```
 
-Zoek het `<td>`-element dat de `asp-action`-taghelpers bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het element `<td>` dat de taghelpers voor `asp-action` bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <td>
@@ -375,7 +375,7 @@ Het voorbeeldproject volgt al de instructies in [ASP.NET Core-logboekregistratie
 - Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
 - Roept `loggerFactory.AddAzureWebAppDiagnostics()` op in *Program.cs*.
 
-Om het [logboekniveau](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Error` in `Information`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
+Om het [logboekniveau](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Information` in `Error`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
 
 ```azurecli-interactive
 az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information

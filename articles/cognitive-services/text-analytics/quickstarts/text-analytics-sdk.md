@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 79dd6160b65469d6a44167913adb7e319f0f583a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987884"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525342"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken
 
@@ -27,7 +27,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 * Sentimentanalyse
 * Taaldetectie
 * Herkenning van entiteiten
-* Sleuteluitdrukkingen extraheren
+* Sleuteltermextractie
 
 ::: zone pivot="programming-language-csharp"
 
@@ -37,17 +37,6 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * De nieuwste preview-versie van de Text Analytics-API is `3.0-preview`, dat een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [benoemde entiteits herkenning (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De nieuwste stabiele versie is `2.1`.
->    * Volg alleen de instructies voor de versie die u gebruikt.
-> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie. 
-
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -73,6 +62,17 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * De nieuwste preview-versie van de Text Analytics-API is `3.0-preview`, dat een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [benoemde entiteits herkenning (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De nieuwste stabiele versie is `2.1`.
+>    * Volg alleen de instructies voor de versie die u gebruikt.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-other"
 
 ## <a name="additional-language-support"></a>Aanvullende taal ondersteuning
@@ -81,8 +81,8 @@ Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in u
 
 | Taal | Beschik bare versie | 
 |----------|------------------------|
-| Ruby     | [Versie 2,1](ruby-sdk.md)          | 
-| Go       | [Versie 2,1](go-sdk.md)          | 
+| Ruby     | [Versie 2,1](ruby-sdk.md) | 
+| Aan de slag       | [Versie 2,1](go-sdk.md) | 
 
 ::: zone-end
 
@@ -91,7 +91,7 @@ Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in u
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 

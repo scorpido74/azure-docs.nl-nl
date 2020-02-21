@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867170"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524236"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Service-principals met AKS (Azure Kubernetes Service)
 
@@ -70,6 +70,9 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!NOTE]
+> Als u een bestaande service-principal met aangepast geheim gebruikt, zorg er dan voor dat het geheim niet langer is dan 190 bytes.
+
 Als u een AKS-cluster implementeert met behulp van de Azure Portal, kiest u op de pagina *Verificatie* van het dialoogvenster **Kubernetes-cluster maken** de optie **Service-principal configureren**. Selecteer **Bestaande gebruiken** en geef de volgende waarden op:
 
 - **Client-id van de service-principal** is uw *appId*
@@ -95,20 +98,20 @@ In de volgende secties wordt meer uitleg gegeven over algemene machtigingen die 
 
 Als u Azure Container Registry (ACR) als container installatie kopie archief gebruikt, moet u machtigingen verlenen aan de service-principal voor uw AKS-cluster om installatie kopieën te lezen en te verzamelen. De aanbevolen configuratie is momenteel het gebruik van de opdracht [AZ AKS Create][az-aks-create] of [AZ AKS update][az-aks-update] om te integreren met een REGI ster en de juiste rol voor de Service-Principal toe te wijzen. Zie [verifiëren met Azure container Registry van de Azure Kubernetes-service][aks-to-acr]voor gedetailleerde stappen.
 
-### <a name="networking"></a>Networking
+### <a name="networking"></a>Netwerken
 
 U kunt gebruikmaken van geavanceerde netwerkmogelijkheden als het virtuele netwerk en het subnet of de openbare IP-adressen zich in een andere resourcegroep bevinden. Wijs een van de volgende sets rolmachtigingen toe:
 
 - Een [aangepaste rol][rbac-custom-role] maken en de volgende rolmachtigingen definiëren:
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *Micro soft. Network/virtualNetworks/subnetten/schrijven*
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
 - Of wijs de ingebouwde rol [netwerk bijdrager][rbac-network-contributor] toe aan het subnet binnen het virtuele netwerk
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 
 Mogelijk hebt u toegang nodig tot bestaande schijfresources in een andere resourcegroep. Wijs een van de volgende sets rolmachtigingen toe:
 

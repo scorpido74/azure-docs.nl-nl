@@ -7,17 +7,17 @@ ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea9449a89bcfbdb1378f0cceb31a07a288661bf7
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: a23ad0fbe55367552c0747c6199328130fd194d4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687565"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524118"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Een ASP.NET Core-app maken in App Service op Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een ASP.NET Core-app maken in Azure](../app-service-web-get-started-dotnet.md) om een app te implementeren in App Service op _Windows_.
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een ASP.NET Core-app maken in Azure_ om een app te implementeren in App Service op [Windows](../app-service-web-get-started-dotnet.md).
 >
 
 [App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze quickstart laat zien hoe u een [.NET Core](https://docs.microsoft.com/aspnet/core/)-app maakt in App Service on Linux. U maakt de app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) en gebruikt Git om de .NET Core-code in de app te implementeren.

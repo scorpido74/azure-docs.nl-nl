@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 9a44cf9aa5b3287a01617be6439cd04b9a5caa73
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461229"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484227"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -145,7 +145,7 @@ Er zijn verschillende eind punten gedefinieerd in de SCIM RFC. U kunt aan de sla
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Stap 2: inzicht in de implementatie van Azure AD SCIM
 > [!IMPORTANT]
-> Het gedrag van de Azure AD SCIM-implementatie is voor het laatst bijgewerkt op 18 december 2018. Zie [SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service](../manage-apps/application-provisioning-config-problem-scim-compatibility.md)voor meer informatie over wat er is gewijzigd.
+> Het gedrag van de Azure AD SCIM-implementatie is voor het laatst bijgewerkt op 18 december 2018. Zie [SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service](application-provisioning-config-problem-scim-compatibility.md)voor meer informatie over wat er is gewijzigd.
 
 Als u een toepassing bouwt die een SCIM 2,0-gebruikers beheer-API ondersteunt, wordt in deze sectie in detail beschreven hoe de Azure AD SCIM-client is geïmplementeerd. Ook wordt uitgelegd hoe u de verwerking van SCIM-protocol aanvragen en-antwoorden kunt model leren. Nadat u uw SCIM-eind punt hebt geïmplementeerd, kunt u dit testen door de procedure te volgen die in de vorige sectie is beschreven.
 
@@ -1488,7 +1488,7 @@ We raden u aan om uw bestaande documentatie bij te werken en de integratie in uw
 * **Gereedheid voor verkoop-en klant ondersteuning.** Zorg ervoor dat uw verkoop-en ondersteunings teams op de hoogte zijn en dat ze kunnen praten met de integratie mogelijkheden. Geef uw verkoop-en ondersteunings team een korte beschrijving en voeg de integratie in uw verkoop materialen toe. 
 * **Blog bericht en/of druk op release.** Maak een blog bericht of druk op release met een beschrijving van de gezamenlijke integratie, de voor delen en hoe u aan de slag gaat. [Voor beeld: Imprivata en Azure Active Directory pers release](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
 * **Sociale media.** Maak gebruik van uw sociale media, zoals Twitter, Facebook of LinkedIn, om de integratie van uw klanten te stimuleren. Zorg ervoor dat @AzureAD worden toegevoegd, zodat we uw post kunnen retweets. [Voor beeld: Imprivata Twitter post](https://twitter.com/azuread/status/1123964502909779968)
-* **Marketing website.** Maak of werk uw marketing pagina's toe (bijvoorbeeld integratie pagina, partner pagina, prijs pagina enz...) om de beschik baarheid van de gezamenlijke integratie op te halen. [Voor beeld: Pingboard-integratie pagina](https://pingboard.com/org-chart-for), [Smart Sheet-integratie pagina](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), pagina met [Monday.com prijzen](https://monday.com/pricing/) 
+* **Marketing website.** Maak of werk uw marketing pagina's toe (bijvoorbeeld integratie pagina, partner pagina, prijs pagina enz.) om de beschik baarheid van de gezamenlijke integratie op te halen. [Voor beeld: Pingboard-integratie pagina](https://pingboard.com/org-chart-for), [Smart Sheet-integratie pagina](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), pagina met [Monday.com prijzen](https://monday.com/pricing/) 
 * **Technische documentatie.** Maak een Help Center-artikel of technische documentatie over hoe klanten aan de slag kunnen. [Voor beeld: Envoy + Microsoft Azure Active Directory-integratie.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Communicatie van de klant.** Waarschuw klanten van de nieuwe integratie via uw klant communicatie (maandelijkse nieuws brieven, e-mail campagnes, opmerkingen bij de release van het product). 

@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547350"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484703"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions ontwikkelen met Visual Studio  
 
@@ -42,7 +42,7 @@ Andere resources die u nodig hebt, zoals een Azure Storage account, worden tijde
 
 ### <a name="check-your-tools-version"></a>Controleer de versie van uw hulpprogram ma's in Visual Studio 2017
 
-1. Uit de **extra** menu, kiest u **extensies en Updates**. Vouw **geïnstalleerde** > - **hulpprogram ma's** uit en kies **Azure functions en hulpprogram ma's voor webjobs**.
+1. Kies in het menu **extra** de optie **extensies en updates**. Vouw **geïnstalleerde** > - **hulpprogram ma's** uit en kies **Azure functions en hulpprogram ma's voor webjobs**.
 
     ![De versie van de functie hulpprogramma's controleren](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -104,7 +104,7 @@ Het opslag account connection string instellen:
 
 In C# Class Library-functies worden de bindingen die worden gebruikt door de functie gedefinieerd door het Toep assen van kenmerken in de code. Wanneer u de functie triggers maakt op basis van de beschik bare sjablonen, worden de trigger kenmerken voor u toegepast. 
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op het projectknooppunt en selecteer  > **Nieuw item** **Toevoegen**. Selecteer **Azure function**, typ een **naam** voor de klasse en klik op **toevoegen**.
+1. Klik in **Solution Explorer** met de rechtermuisknop op het projectknooppunt en selecteerNieuw item > **Toevoegen**. Selecteer **Azure function**, typ een **naam** voor de klasse en klik op **toevoegen**.
 
 2. Kies uw trigger, stel de bindings eigenschappen in en klik op **maken**. In het volgende voor beeld ziet u de instellingen bij het maken van een door de wachtrij opslag geactiveerde functie. 
 
@@ -136,7 +136,7 @@ In C# Class Library-functies worden de bindingen die worden gebruikt door de fun
     }
     ```
 
-    Er wordt een binding-specifiek kenmerk toegepast op elke bindings parameter die is opgegeven voor de toegangs punt methode. Het kenmerk neemt de bindings gegevens op als para meters. In het vorige voor beeld heeft de eerste para meter een **Queue trigger** kenmerk toegepast, waarmee wordt aangegeven dat de door de wachtrij geactiveerde functie is. De naam van de wachtrij en de connection string instelling worden door gegeven als para meters aan het kenmerk **Queue trigger** . Zie [Azure Queue-opslag bindingen voor Azure functions](functions-bindings-storage-queue.md#trigger)voor meer informatie.
+    Er wordt een binding-specifiek kenmerk toegepast op elke bindings parameter die is opgegeven voor de toegangs punt methode. Het kenmerk neemt de bindings gegevens op als para meters. In het vorige voor beeld heeft de eerste para meter een **Queue trigger** kenmerk toegepast, waarmee wordt aangegeven dat de door de wachtrij geactiveerde functie is. De naam van de wachtrij en de connection string instelling worden door gegeven als para meters aan het kenmerk **Queue trigger** . Zie [Azure Queue-opslag bindingen voor Azure functions](functions-bindings-storage-queue-trigger.md)voor meer informatie.
 
 U kunt de bovenstaande procedure gebruiken om meer functies aan uw functie-app-project toe te voegen. Elke functie in het project kan een andere trigger hebben, maar een functie moet precies één trigger hebben. Zie [Azure functions triggers en bindingen concepten](functions-triggers-bindings.md)voor meer informatie.
 

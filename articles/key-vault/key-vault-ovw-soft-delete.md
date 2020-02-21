@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8559dc357d34d505d45cd0a6491183345ae5cf61
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845814"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526583"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Overzicht van Azure Key Vault voorlopig verwijderen
 
@@ -24,7 +24,7 @@ Met de functie voor voorlopig verwijderen van Key Vault kunt u de verwijderde kl
 
 De functie voor voorlopig verwijderen is in eerste instantie beschikbaar via de [rest](/rest/api/keyvault/), [cli](key-vault-soft-delete-cli.md), [Power shell](key-vault-soft-delete-powershell.md) en [.net/C# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) interfaces.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Azure-sleutel kluizen zijn bijgehouden resources die worden beheerd door Azure Resource Manager. Azure Resource Manager geeft ook een goed gedefinieerd gedrag op voor verwijdering, waardoor een geslaagde Verwijder bewerking ertoe moet leiden dat de bron niet meer toegankelijk is. De functie voor voorlopig verwijderen behandelt het herstel van het verwijderde object, of het verwijderen per ongeluk of opzettelijk is geslaagd.
 
@@ -34,15 +34,13 @@ Azure-sleutel kluizen zijn bijgehouden resources die worden beheerd door Azure R
 
 ### <a name="soft-delete-behavior"></a>Gedrag bij zacht verwijderen
 
-Met deze functie is de Verwijder bewerking voor een sleutel kluis of een sleutel kluis object een tijdelijke verwijdering, waardoor de resources voor een bepaalde Bewaar periode (90 dagen) in feite worden bewaard, terwijl de weer gave van het object wordt verwijderd. De service biedt verder een mechanisme voor het herstellen van het verwijderde object, waardoor het verwijderen in feite ongedaan wordt. 
+Als de functie voor voorlopig verwijderen is ingeschakeld, worden de resources die zijn gemarkeerd als verwijderde resources, gedurende een opgegeven periode (standaard 90 dagen) bewaard. De service biedt verder een mechanisme voor het herstellen van het verwijderde object, waardoor het verwijderen in feite ongedaan wordt.
 
-Voorlopig verwijderen is nu standaard ingeschakeld voor nieuwe sleutel kluizen. Het kan worden uitgeschakeld via de [Azure cli](key-vault-soft-delete-cli.md) of [Azure Power shell](key-vault-soft-delete-powershell.md).
+Bij het maken van een nieuwe sleutel kluis is voorlopig verwijderen standaard ingeschakeld. U kunt een sleutel kluis maken zonder zacht te verwijderen via de [Azure cli](key-vault-soft-delete-cli.md) of [Azure Power shell](key-vault-soft-delete-powershell.md). Wanneer de functie voor het voorlopig verwijderen van een sleutel kluis is ingeschakeld, kan deze niet worden uitgeschakeld
 
-De standaard retentie periode is 90 dagen, maar het is mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde van 7 tot 90 dagen via de Azure Portal. Het retentie beleid voor het leegmaken van de beveiliging gebruikt hetzelfde interval. 
+De standaard retentie periode is 90 dagen, maar tijdens het maken van de sleutel kluis is het mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde tussen 7 en 90 dagen via de Azure Portal. Het retentie beleid voor het leegmaken van de beveiliging gebruikt hetzelfde interval. Eenmaal ingesteld, kan het interval voor het Bewaar beleid niet worden gewijzigd.
 
-Wanneer het voorlopig verwijderen is ingesteld op een sleutel kluis, kan het niet worden uitgeschakeld en kan het interval voor het Bewaar beleid niet worden gewijzigd. 
-
-U kunt de naam van een sleutel kluis die zacht is verwijderd, niet opnieuw gebruiken totdat de Bewaar periode is verstreken. 
+U kunt de naam van een sleutel kluis die zacht is verwijderd, niet opnieuw gebruiken totdat de Bewaar periode is verstreken.
 
 ### <a name="purge-protection"></a>Beveiliging opschonen 
 

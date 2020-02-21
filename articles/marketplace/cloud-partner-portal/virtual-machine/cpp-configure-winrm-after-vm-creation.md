@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817941"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481371"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>WinRM configureren na het maken van de virtuele machine
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u een bestaande, door Azure gehoste virtuele 
 
 ## <a name="enabling-port-traffic"></a>Poort verkeer inschakelen
 
-Het WinRM via HTTPS-protocol gebruikt poort 5896, die niet standaard is ingeschakeld op vooraf geconfigureerde Windows-Vm's die worden aangeboden op de Azure Marketplace. Als u dit protocol wilt inschakelen, gebruikt u de volgende stappen om een nieuwe regel toe te voegen aan de netwerk beveiligings groep (NSG) met de [Azure Portal](https://portal.azure.com).  Zie voor meer informatie over Nsg's [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
+Het WinRM via HTTPS-protocol gebruikt poort 5986, die niet standaard is ingeschakeld op vooraf geconfigureerde Windows-Vm's die worden aangeboden op de Azure Marketplace. Als u dit protocol wilt inschakelen, gebruikt u de volgende stappen om een nieuwe regel toe te voegen aan de netwerk beveiligings groep (NSG) met de [Azure Portal](https://portal.azure.com).  Zie voor meer informatie over Nsg's [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
 1.  Ga naar de Blade **virtuele machines >**   <*vm-naam*>   **> instellingen/netwerken**.
 2.  Klik op de naam van de NSG (in dit voor beeld **testvm11002**) om de eigenschappen weer te geven:

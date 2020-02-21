@@ -1,22 +1,22 @@
 ---
-title: Nalevings certificeringen Azure Firewall
-description: Een lijst met Azure Firewall nalevings certificeringen voor PCI, SOC en ISO
+title: Azure Firewall-certificeringen
+description: Een lijst met Azure Firewall-certificeringen voor PCI-, SOC-, ISO-en ICSA-Labs
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158180"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482174"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Nalevings certificeringen Azure Firewall
+# <a name="azure-firewall-certifications"></a>Azure Firewall-certificeringen
 
-Azure Firewall is Payment Card Industry (PCI), service organisatie Controls (SOC), International Organization for Standardization (ISO) en HITRUST-compatibel.
+Azure Firewall is Payment Card Industry (PCI), service organisatie Controls (SOC), International Organization for Standardization (ISO), ICSA Labs en HITRUST-compatibel.
 
 De volgende certificeringen zijn voor wereld wijd Azure en Azure Government.
 
@@ -29,21 +29,21 @@ De volgende Azure Firewall-certificeringen zijn voor wereld wijd Azure:
 - AMF en ACPR (Frank rijk)
 - APRA (Australië)
 - Argentinië BESCHERMINGSWET
-- IRAP in Australië
+- Australië-IRAP
 - CDSA
 - CFTC 1,31
-- CSA STAR Attestation
+- CSA STAR-Attestation
 - CSA STAR-certificering
-- CSA STAR-zelfevaluatie
+- Zelf evaluatie van CSA ster
 - Wetten voor Canadese privacy
 - DPP (UK)
 - ALGORITHMS IAF EU
-- EU-modelclausules
+- EU-model clausules
 - Europese Bank instantie
 - FCA en PRA (UK)
 - FERPA (VS)
 - FFIEC (VS)
-- FINMA (Zwitserland)
+- FINMA (Zwitser land)
 - FSA (Denemarken)
 - GLBA (VS)
 - Duitsland C5
@@ -65,7 +65,7 @@ De volgende Azure Firewall-certificeringen zijn voor wereld wijd Azure:
 - NHS IG Toolkit (UK)
 - Nederland BIR 2012
 - OSFI (Canada)
-- PCI DSS Level 1
+- PCI DSS niveau 1
 - RBI en IRDAI (India)
 - SOC 1 type 2
 - Sofi 2-type 2
@@ -74,8 +74,8 @@ De volgende Azure Firewall-certificeringen zijn voor wereld wijd Azure:
 - Spanje DPA
 - TISAX
 - TruSight
-- UK G-Cloud
-- WCAG 2.0
+- Verenigd Koninkrijk G-Cloud
+- WCAG 2,0
 
 
 ## <a name="azure-government-certifications"></a>Azure Government-certificeringen
@@ -84,17 +84,17 @@ De volgende Azure Firewall-certificeringen zijn voor Azure Government:
 
 - CJIS
 - CNSSI 1253
-- CSA STAR Attestation
+- CSA STAR-Attestation
 - DFARS
 - DoD DISA SRG Level 2
 - Splinter 10 CFR-deel 810
-- EAR
+- OORMERKEN
 - FIPS 140-2
-- FedRAMP Hoog
+- FedRAMP High
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (VS)
+- MARS-E (VERENIGDE STATEN)
 - NERC
 - NIST Cyber beveiliging Framework
 - NIST SP 800-171
@@ -102,7 +102,15 @@ De volgende Azure Firewall-certificeringen zijn voor Azure Government:
 - Sofi 2-type 2
 - SOC 3
 - SOX (VS)
-- Section 508 VPAT's
+- Sectie 508 Vpat's
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>Certificering van ICSA Labs Corporate firewall
+
+![ICSA-certificering](media/overview/icsa-cert-firewall-small.png)
+
+ICSA Labs is een toonaangevende leverancier bij het testen van derden en het certificeren van beveiligings-en status IT-producten, evenals apparaten die met het netwerk zijn verbonden. Ze meten product compatibiliteit, betrouw baarheid en prestaties voor de meeste leveranciers van de beste technologie van de wereld.
+
+Azure Firewall is de eerste cloud Firewall service om de ICSA Labs Corporate firewall-certificering te bereiken. Zie voor het Azure Firewall-certificerings rapport het [ICSA Labs certificering testen en controle rapport](https://aka.ms/ICSALabsCertification). Zie de pagina [ICSA Labs firewall-certificerings programma](https://www.icsalabs.com/technology-program/firewalls) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

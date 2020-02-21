@@ -1,5 +1,6 @@
 ---
-title: 'Verwijzing: Ubuntu DSVM'
+title: 'Verwijzing: Ubuntu Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: Details over hulpprogram ma's die zijn opgenomen in de Ubuntu-Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 97072f1a17f2b0adbe96afae3263dc84aff0f30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497629"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525818"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -22,9 +23,9 @@ Hieronder vindt u een lijst met beschik bare hulpprogram ma's op uw Ubuntu-Data 
 
 ### <a name="cntk"></a>CNTK
 
-De Microsoft Cognitive Toolkit is een open-source diep Learning Toolkit. Python-bindingen zijn beschikbaar in de hoofd-en py35-Conda-omgeving. Het bevat ook een opdracht regel programma (CNTK) dat al aanwezig is in het pad.
+De Microsoft Cognitive Toolkit is een open-source diep Learning Toolkit. Python-bindingen zijn beschikbaar in de hoofdmap en py35 Conda-omgevingen. Het bevat ook een opdracht regel programma (CNTK) dat al aanwezig is in het pad.
 
-Voor beelden van python-notebooks zijn beschikbaar in JupyterHub. Als u een basis voorbeeld wilt uitvoeren op de opdracht regel, voert u de volgende opdrachten uit in de shell:
+Voorbeeld van Python-laptops zijn beschikbaar in JupyterHub. Als u een basis voorbeeld wilt uitvoeren op de opdracht regel, voert u de volgende opdrachten uit in de shell:
 
 ```bash
 cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
@@ -35,23 +36,23 @@ Zie de sectie CNTK van [github](https://github.com/Microsoft/CNTK) en de [CNTK-w
 
 ### <a name="caffe"></a>Caffe
 
-Caffe is een diep leer raamwerk van het Berkeley Vision and Learning Center. Het is beschikbaar in/opt/Caffe. U kunt voor beelden vinden in/opt/Caffe/examples.
+Caffe is een deep learning-structuur van de visie van Berkeley en Learning Center. Het is beschikbaar in/opt/Caffe. U kunt voor beelden vinden in/opt/Caffe/examples.
 
 ### <a name="caffe2"></a>Caffe2
 
-Caffe2 is een diep leer raamwerk van Facebook dat is gebaseerd op Caffe. Het is beschikbaar in Python 2,7 in de hoofd omgeving Conda. Als u deze wilt activeren, voert u de volgende opdracht uit vanuit de shell:
+Caffe2 is een deep learning-frameworks uit Facebook die is gebouwd op Caffe. Het is beschikbaar in Python 2,7 in de hoofd omgeving Conda. Als u deze wilt activeren, voert u de volgende opdracht uit vanuit de shell:
 
 ```bash
 source /anaconda/bin/activate root
 ```
 
-Enkele voor beelden van notebooks zijn beschikbaar in JupyterHub.
+Sommige laptops voorbeeld zijn beschikbaar in JupyterHub.
 
 ### <a name="h2o"></a>H2O
 
-H2O is een snelle, in-Memory, gedistribueerde machine learning en predictive analytics platform. Er wordt een python-pakket geïnstalleerd in de hoofd-en py35-Anaconda-omgeving. Er is ook een R-pakket geïnstalleerd. 
+H2O is een snelle, in het geheugen, gedistribueerde machine learning en predictive analytics-platform. Een Python-pakket is geïnstalleerd in de basis- en py35 Anaconda-omgevingen. Een R-pakket is ook geïnstalleerd. 
 
-Als u H2O wilt openen vanaf de opdracht regel, voert u `java -jar /dsvm/tools/h2o/current/h2o.jar`uit. Er zijn verschillende [opdracht regel opties](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) die u mogelijk wilt configureren. U kunt de webgebruikersinterface flow openen door naar http://localhost:54321 te bladeren om aan de slag te gaan. Voor beelden van notebooks zijn ook beschikbaar in JupyterHub.
+Als u H2O wilt openen vanaf de opdracht regel, voert u `java -jar /dsvm/tools/h2o/current/h2o.jar`uit. Er zijn verschillende [opdracht regel opties](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) die u mogelijk wilt configureren. U kunt de webgebruikersinterface flow openen door naar http://localhost:54321 te bladeren om aan de slag te gaan. Voorbeeldnotitieblokken zijn ook beschikbaar in JupyterHub.
 
 ### <a name="keras"></a>Keras
 
@@ -59,35 +60,35 @@ Keras is een Neural-netwerk-API op hoog niveau in python. Het kan worden uitgevo
 
 ### <a name="mxnet"></a>MXNet
 
-MXNet is een diep leer raamwerk dat is ontworpen voor zowel efficiency als flexibiliteit. Het bevat R-en Python-bindingen die zijn opgenomen in de DSVM. Voor beelden van notebooks zijn opgenomen in JupyterHub en voorbeeld code is beschikbaar in/dsvm/samples/mxnet.
+MXNet is een deep learning-structuur die is ontworpen voor zowel efficiëntie en flexibiliteit. R en Python-bindingen op de DSVM heeft. Voorbeeldnotitieblokken zijn opgenomen in JupyterHub en voorbeeldcode is beschikbaar in /dsvm/samples/mxnet.
 
-### <a name="nvidia-digits"></a>NVIDIA-CIJFERS
+### <a name="nvidia-digits"></a>NVIDIA CIJFERS
 
 Het trainings systeem van de NVIDIA-Learning GPU, ook wel cijfers genoemd, is een systeem om veelvoorkomende, uitgebreide leer taken te vereenvoudigen. Deze taken omvatten het beheren van gegevens, het ontwerpen en trainen van Neural netwerken op GPU-systemen en het bewaken van prestaties in realtime met geavanceerde visualisatie.
 
 CIJFERS zijn beschikbaar als een service met de naam *cijfers*. Start de service en blader naar http://localhost:5000 om aan de slag te gaan.
 
-CIJFERS worden ook geïnstalleerd als een python-module in de Conda-hoofd omgeving.
+CIJFERS is ook geïnstalleerd als een Python-module in de omgeving Conda-hoofdmap.
 
 ### <a name="tensorflow"></a>TensorFlow
 
-Tensor flow is de bibliotheek voor diepe lessen van Google. Het is een open-source software bibliotheek voor numerieke berekening met behulp van gegevens stroom grafieken. Tensor flow is beschikbaar in de py35 python-omgeving en enkele voor beelden van notebooks zijn opgenomen in JupyterHub.
+TensorFlow is deep learning-bibliotheek van Google. Het is een open-source software bibliotheek voor numerieke berekening met behulp van gegevens stroom grafieken. TensorFlow is beschikbaar in de py35 Python-omgeving, en sommige voorbeeldnotitieblokken zijn opgenomen in JupyterHub.
 
 ### <a name="theano"></a>Theano
 
-Theano is een python-bibliotheek voor een efficiënte numerieke berekening. Deze is beschikbaar in de hoofd-en py35 python-omgeving. 
+Theano is een Python-bibliotheek voor efficiënte numerieke berekeningen. Deze is beschikbaar in de hoofd-en py35 python-omgeving. 
 
 ### <a name="torch"></a>Torch
 
-Torch is een weten schappelijk computing Framework met brede ondersteuning voor machine learning-algoritmen. Het is beschikbaar in/dsvm/tools/Torch en **de interactieve sessie** en LuaRocks package manager zijn beschikbaar op de opdracht regel. Voor beelden zijn beschikbaar in/dsvm/samples/Torch.
+Torch is een wetenschappelijke computing structuur met brede ondersteuning voor machine learning-algoritmen. Het is beschikbaar in/dsvm/tools/Torch en **de interactieve sessie** en LuaRocks package manager zijn beschikbaar op de opdracht regel. Voorbeelden zijn beschikbaar in /dsvm/samples/torch.
 
-PyTorch is ook beschikbaar in de basis-Anaconda-omgeving. Voor beelden zijn/dsvm/samples/pytorch.
+PyTorch is ook beschikbaar in de hoofdmap Anaconda-omgeving. Voorbeelden zijn in /dsvm/samples/pytorch.
 
 ## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Server
 
-R is een van de populairste talen voor gegevens analyse en machine learning. Als u R voor uw analyse wilt gebruiken, is de VM Microsoft Machine Learning Server met micro soft R open en de reken kundige kernel-bibliotheek. De wiskundige kernelmodus optimaliseert wiskundige bewerkingen die gebruikelijk zijn in analytische algoritmen. Micro soft R open is 100 procent compatibel met de KRANs R en een van de R-bibliotheken die in KRANs zijn gepubliceerd, kan worden geïnstalleerd in micro soft R open. 
+R is een van de meest populaire talen voor data-analyse en machine learning. Als u R voor uw analyse wilt gebruiken, is de VM Microsoft Machine Learning Server met micro soft R open en de reken kundige kernel-bibliotheek. De wiskundige kernelmodus optimaliseert wiskundige bewerkingen die gebruikelijk zijn in analytische algoritmen. Micro soft R open is 100 procent compatibel met de KRANs R en een van de R-bibliotheken die in KRANs zijn gepubliceerd, kan worden geïnstalleerd in micro soft R open. 
 
-Machine Learning Server biedt u schaal-en uitoefening van R-modellen in webservices. U kunt uw R-Program ma's bewerken in een van de standaard editors, zoals RStudio, VI of emacs. Als u liever de Emacs-editor gebruikt, is deze vooraf geïnstalleerd. Het emacs ESS (Emacsse Statistics)-pakket vereenvoudigt het werken met R-bestanden in de Emacs-editor.
+Machine Learning Server biedt u schaal-en uitoefening van R-modellen in webservices. U kunt uw R-programma's in een van de standaard-editors, zoals RStudio, vi of Emacs bewerken. Als u liever met behulp van de editor Emacs, is deze vooraf worden geïnstalleerd. Het emacs ESS (Emacsse Statistics)-pakket vereenvoudigt het werken met R-bestanden in de Emacs-editor.
 
 Als u de R-console wilt openen, voert u **R** in de shell in. Met deze opdracht gaat u naar een interactieve omgeving. Voor het ontwikkelen van uw R-programma gebruikt u doorgaans een editor zoals Emacs of VI en voert u de scripts uit in R. Met RStudio beschikt u over een volledige grafische IDE om uw R-programma te ontwikkelen.
 
@@ -95,9 +96,9 @@ Er is ook een R-script waarmee u de [beste 20 R-pakketten](https://www.kdnuggets
 
 ## <a name="python"></a>Python
 
-Anaconda python wordt geïnstalleerd met python 2,7-en 3,5-omgevingen. De 2,7-omgeving heet _root_en de 3,5-omgeving heet _py35_. Deze distributie bevat de basis-python, samen met ongeveer 300 van de populairste wiskundige, technische en gegevens analyse pakketten.
+Anaconda Python is geïnstalleerd met Python 2.7 en 3,5-omgevingen. De 2,7-omgeving heet _root_en de 3,5-omgeving heet _py35_. Deze verdeling bevat de basis Python samen met ongeveer 300 van de meest populaire math, engineering en data analytics-pakketten.
 
-De py35 omgeving is de standaard instelling. Gebruik deze opdracht om de basis omgeving (2,7) te activeren:
+De omgeving py35 is de standaardinstelling. Gebruik deze opdracht om de basis omgeving (2,7) te activeren:
 
 ```bash
 source activate root
@@ -118,7 +119,7 @@ source activate root
 pip install <package>
 ```
 
-Of geef het volledige pad op naar PIP:
+Of geef het volledige pad naar het pip:
 
 ```bash
 /anaconda/bin/pip install <package>
@@ -130,21 +131,21 @@ Voor Conda moet u altijd de omgevings naam (py35 of root) opgeven:
 conda install <package> -n py35
 ```
 
-Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u **pycharm** invoeren om de PYCHARM python IDE te openen. U kunt de standaard tekst editors gebruiken. Daarnaast kunt u Spyder gebruiken, een python IDE die is gebundeld met Anaconda python-distributies. Spyder moet een grafisch bureau blad of X11 door sturen hebben. Het grafische bureau blad heeft een snelkoppeling naar Spyder.
+Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u **pycharm** invoeren om de PYCHARM python IDE te openen. U kunt de standaard-teksteditors. Daarnaast kunt u Spyder gebruiken, een python IDE die is gebundeld met Anaconda python-distributies. Spyder moet een grafische bureaublad of X11 doorsturen. Het grafische bureau blad heeft een snelkoppeling naar Spyder.
 
-## <a name="jupyter-notebook"></a>Jupyter-notebook
+## <a name="jupyter-notebook"></a>Jupyter Notebook
 
-De Anaconda-distributie wordt ook geleverd met een Jupyter-notebook, een omgeving om code en analyse te delen. De Jupyter-notebook wordt geopend via JupyterHub. U meldt zich aan met uw lokale Linux-gebruikers naam en-wacht woord.
+De distributie Anaconda wordt geleverd met een Jupyter-notebook, een omgeving voor het delen van code en -analyse. De Jupyter-notebook toegankelijk is via JupyterHub. U meldt zich aan met uw lokale Linux-gebruikers naam en-wacht woord.
 
-De Jupyter-notebook server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de notebook server. Als u gebruikmaakt van de virtuele machine via SSH of de X2Go-client, kunt u ook toegang krijgen tot de Jupyter-notebook server op [https://localhost:8000/](https://localhost:8000/).
-
-> [!NOTE]
-> Ga door als u certificaat waarschuwingen ontvangt.
-
-U kunt vanaf elke host toegang krijgen tot de Jupyter-notebook server. Voer **https://\<VM-naam of IP-adres in\>: 8000/** .
+De Jupyter-notebook-server is vooraf geconfigureerd met Python 2, 3 van Python en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de notebook server. Als u gebruikmaakt van de virtuele machine via SSH of de X2Go-client, kunt u ook toegang krijgen tot de Jupyter-notebook server op [https://localhost:8000/](https://localhost:8000/).
 
 > [!NOTE]
-> Poort 8000 wordt standaard geopend in de firewall wanneer de virtuele machine wordt ingericht. 
+> Doorgaan als u certificaatwaarschuwingen.
+
+U kunt de Jupyter-notebook-server openen vanaf elke host. Voer **https://\<VM-naam of IP-adres in\>: 8000/** .
+
+> [!NOTE]
+> Poort 8000 wordt standaard in de firewall geopend wanneer de virtuele machine is ingericht. 
 
 We hebben voorbeeld notitieblokken, een in Python en één in R, verpakt. U kunt de koppeling naar de voor beelden op de start pagina van het notitie blok zien nadat u zich bij de Jupyter-notebook hebt geverifieerd met behulp van uw lokale Linux-gebruikers naam en-wacht woord. U kunt een nieuw notitie blok maken door **Nieuw**te selecteren en vervolgens de juiste taal-kernel te selecteren. Als de knop **Nieuw** niet wordt weer gegeven, selecteert u het **Jupyter** pictogram in de linkerbovenhoek om naar de start pagina van de notebook server te gaan.
 
@@ -152,7 +153,7 @@ We hebben voorbeeld notitieblokken, een in Python en één in R, verpakt. U kunt
 
 Een zelfstandig exemplaar van Apache Spark is vooraf geïnstalleerd op de Linux-DSVM om u te helpen bij het lokaal ontwikkelen van Spark-toepassingen voordat u ze test en implementeert op grote clusters. 
 
-U kunt PySpark-Program ma's uitvoeren via de Jupyter-kernel. Wanneer u Jupyter opent, selecteert u de knop **Nieuw** en ziet u een lijst met beschik bare kernels. **Spark-python** is de PySpark-kernel waarmee u Spark-toepassingen kunt bouwen met behulp van de python-taal. U kunt ook een python IDE zoals PyCharm of Spyder gebruiken om uw Spark-programma te bouwen. 
+U kunt de PySpark-programma's uitvoeren via de Jupyter-kernel. Wanneer u Jupyter opent, selecteert u de knop **Nieuw** en ziet u een lijst met beschik bare kernels. **Spark-python** is de PySpark-kernel waarmee u Spark-toepassingen kunt bouwen met behulp van de python-taal. U kunt ook een python IDE zoals PyCharm of Spyder gebruiken om uw Spark-programma te bouwen. 
 
 In deze zelfstandige instantie wordt de Spark-stack uitgevoerd binnen het aanroepende client programma. Met deze functie kunt u sneller en eenvoudiger problemen oplossen, vergeleken met het ontwikkelen van een Spark-cluster.
 
@@ -160,7 +161,7 @@ Jupyter biedt een voor beeld van een PySpark-notebook. U vindt deze in de SparkM
 
 Als u programmeert in R voor Spark, kunt u Microsoft Machine Learning Server, Spark of sparklyr gebruiken. 
 
-Voordat u uitvoert in een Spark-context in Microsoft Machine Learning Server, moet u een eenmalige installatie stap uitvoeren om een lokaal Hadoop-en garen-exemplaar met één knoop punt in te scha kelen. Hadoop-services worden standaard geïnstalleerd, maar uitgeschakeld op de DSVM. Als u deze wilt inschakelen, moet u de volgende opdrachten uitvoeren als hoofd de eerste keer:
+Voordat u uitvoert in een Spark-context in Microsoft Machine Learning Server, moet u een eenmalige installatie stap uitvoeren om een lokaal Hadoop-en garen-exemplaar met één knoop punt in te scha kelen. Hadoop-services worden standaard geïnstalleerd maar uitgeschakeld op de DSVM. Als u deze wilt inschakelen, moet u de volgende opdrachten uitvoeren als hoofd de eerste keer:
 
 ```bash
 echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -176,7 +177,7 @@ U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet nodig hebt do
 
 De/dsvm/samples/MRS Directory bevat een voor beeld van het ontwikkelen en testen van Microsoft Machine Learning Server in een externe Spark-context (het zelfstandige Spark-exemplaar op de DSVM).
 
-## <a name="ides-and-editors"></a>Ide's en editors
+## <a name="ides-and-editors"></a>IDE's en editors
 
 U kunt kiezen uit verschillende code-editors, waaronder VI/vim, emacs, PyCharm, RStudio en IntelliJ. 
 
@@ -196,13 +197,13 @@ SQuirrel SQL, een grafische SQL-Client, kan verbinding maken met verschillende d
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
-Voordat u de eerste keer gebruikt, moet u uw stuur Programma's en database aliassen instellen. De JDBC-Stuur Programma's bevinden zich op/usr/share/java/jdbcdrivers.
+Voordat u het eerste gebruik, stuurprogramma's en database-aliassen hebt ingesteld. De JDBC-Stuur Programma's bevinden zich op/usr/share/java/jdbcdrivers.
 
 Zie [Squirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)voor meer informatie.
 
-### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Opdracht regel Programma's voor toegang tot Microsoft SQL Server
+### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Opdrachtregelprogramma's voor toegang tot Microsoft SQL Server
 
-Het ODBC-stuur programmapakket voor SQL Server wordt ook geleverd met twee opdracht regel Programma's:
+Het pakket ODBC-stuurprogramma voor SQL Server wordt geleverd met twee opdrachtregelprogramma's:
 
 - **bcp**: het BCP-hulp programma kopieert gegevens tussen een exemplaar van Microsoft SQL Server en een gegevens bestand in een door de gebruiker opgegeven indeling. U kunt het hulp programma BCP gebruiken om grote aantallen nieuwe rijen te importeren in SQL Server tabellen, of om gegevens uit tabellen te exporteren naar gegevens bestanden. Als u gegevens wilt importeren in een tabel, moet u een indelings bestand gebruiken dat voor die tabel is gemaakt. Of u moet inzicht hebben in de structuur van de tabel en de typen gegevens die geldig zijn voor de kolommen.
 
@@ -213,45 +214,45 @@ Het ODBC-stuur programmapakket voor SQL Server wordt ook geleverd met twee opdra
   Zie [verbinding maken met Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx)voor meer informatie.
 
   > [!NOTE]
-  > Er zijn enkele verschillen in dit hulp programma tussen Linux-en Windows-platforms. Raadpleeg de documentatie voor meer informatie.
+  > Er zijn enkele verschillen in dit hulp programma tussen Linux-en Windows-platforms. Zie de documentatie voor meer informatie.
 
-### <a name="database-access-libraries"></a>Database toegangs bibliotheken
+### <a name="database-access-libraries"></a>Database toegang bibliotheken
 
 Bibliotheken zijn beschikbaar in R en python voor database toegang:
 
 * In R kunt u het RODBC-pakket of het dplyr-pakket gebruiken om SQL-instructies op de database server op te vragen of uit te voeren.
 * In python biedt de pyodbc-bibliotheek database toegang met ODBC als de onderliggende laag.  
 
-## <a name="azure-tools"></a>Azure-hulpprogram ma's
+## <a name="azure-tools"></a>Azure-hulpprogramma 's
 
-De volgende Azure-hulpprogram ma's zijn geïnstalleerd op de VM:
+De volgende Azure-hulpprogramma's zijn geïnstalleerd op de virtuele machine:
 
 * **Azure cli**: u kunt de opdracht regel interface in azure gebruiken om Azure-resources te maken en te beheren via shell-opdrachten. Als u de Azure-hulpprogram ma's wilt openen, voert u **Azure Help**in. Zie de [Azure cli-documentatie pagina](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)voor meer informatie.
-* **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U hebt toegang tot Storage Explorer via het pictogram Bureaublad snelkoppeling. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11 door sturen hebben ingesteld.
+* **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U kunt Storage Explorer openen via het pictogram van de snelkoppeling op het bureaublad. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11 door sturen hebben ingesteld.
 * **Azure-bibliotheken**: Hier volgen enkele van de vooraf geïnstalleerde bibliotheken.
   
-  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken kunt u toegang krijgen tot Azure Storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-data base in Azure). De vierde bibliotheek, pyodbc (samen met het micro soft ODBC-stuur programma voor SQL Server), biedt toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse van python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg ervoor dat u deze opdracht uitvoert in zowel de python 2,7-als de 3,5-omgeving.
+  * **Python**: de Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken, kunt u toegang tot Azure storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-database in Azure). De vierde servicebibliotheek pyodbc (samen met het Microsoft ODBC-stuurprogramma voor SQL Server), kunt u toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse met Python met behulp van een ODBC-interface. Voer een **PIP-lijst** in om alle weer gegeven bibliotheken weer te geven. Zorg dat u deze opdracht wordt uitgevoerd in de Python 2.7 en 3,5 omgevingen.
   * **R**: de Azure-gerelateerde bibliotheken in R zijn AZUREML en RODBC.
-  * **Java**: de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de virtuele machine. De belangrijkste bibliotheken zijn Azure-opslag-en beheer-Api's, Azure Cosmos DB en JDBC-Stuur Programma's voor SQL Server.  
+  * **Java**: de lijst met Azure Java-bibliotheken vindt u in de map/dsvm/SDK/AzureSDKJava op de virtuele machine. De sleutel-bibliotheken zijn Azure-opslag en beheer van API's, Azure Cosmos DB en JDBC-stuurprogramma's voor SQL Server.  
 
-U kunt de [Azure Portal](https://portal.azure.com) openen vanuit de vooraf geïnstalleerde Firefox-browser. Op de Azure Portal kunt u Azure-resources maken, beheren en bewaken.
+U kunt de [Azure Portal](https://portal.azure.com) openen vanuit de vooraf geïnstalleerde Firefox-browser. In de Azure-portal, kunt u maken, beheren en controleren van Azure-resources.
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning is een volledig beheerde Cloud service waarmee u predictive analytics oplossingen kunt bouwen, implementeren en delen. U kunt uw experimenten en modellen bouwen op basis van Azure Machine Learning Studio (klassiek). U kunt deze openen vanuit een webbrowser op de Data Science Virtual Machine door [Microsoft Azure machine learning](https://studio.azureml.net)te bezoeken.
+Azure Machine Learning is een volledig beheerde cloudservice waarmee u kunt bouwen, implementeren en delen van predictive analytics-oplossingen. U kunt uw experimenten en modellen bouwen op basis van Azure Machine Learning Studio (klassiek). U kunt deze openen vanuit een webbrowser op de Data Science Virtual Machine door [Microsoft Azure machine learning](https://studio.azureml.net)te bezoeken.
 
 Nadat u zich hebt aangemeld bij Azure Machine Learning Studio (klassiek), kunt u een Experimenteer doek gebruiken om een logische stroom te maken voor de machine learning-algoritmen. U hebt ook toegang tot een Jupyter-notebook dat wordt gehost op Azure Machine Learning en probleemloos kan samen werken met de experimenten in Azure Machine Learning Studio (klassiek). 
 
-Operationeel maken de machine learning modellen die u hebt gemaakt door deze in een webservice-interface in te pakken. Met inzet machine learning-modellen kunnen clients die in elke taal zijn geschreven, voor spellingen van deze modellen aanroepen. Zie de [machine learning-documentatie](https://azure.microsoft.com/documentation/services/machine-learning/)voor meer informatie.
+Operationeel maken van de machine learning-modellen die u hebt gemaakt door ze in een webservice-interface. Met inzet machine learning-modellen kunnen clients die in elke taal zijn geschreven, voor spellingen van deze modellen aanroepen. Zie de [machine learning-documentatie](https://azure.microsoft.com/documentation/services/machine-learning/)voor meer informatie.
 
 U kunt ook uw modellen bouwen in R of python op de virtuele machine en deze vervolgens implementeren in productie op Azure Machine Learning. Er zijn bibliotheken geïnstalleerd in R (**azureml**) en python (**azureml**) om deze functionaliteit in te scha kelen.
 
 Zie [tien dingen die u kunt doen op de data Science virtual machine](vm-do-ten-things.md)voor meer informatie over het implementeren van modellen in R en Python in azure machine learning.
 
 > [!NOTE]
-> Deze instructies zijn geschreven voor de Windows-versie van de Data Science Virtual Machine. Maar de informatie over het implementeren van modellen naar Azure Machine Learning is van toepassing op de virtuele Linux-machine.
+> Deze instructies zijn geschreven voor de Windows-versie van de Data Science Virtual Machine. Maar de verstrekte informatie bevat over het implementeren van modellen op Azure Machine Learning is van toepassing op de Linux-VM.
 
-## <a name="machine-learning-tools"></a>Machine learning-hulpprogram ma's
+## <a name="machine-learning-tools"></a>Hulpprogramma's voor machine learning
 
 De VM wordt geleverd met machine learning-hulpprogram ma's en-algoritmen die vooraf zijn gecompileerd en lokaal zijn geïnstalleerd. Deze omvatten:
 
@@ -264,11 +265,11 @@ De VM wordt geleverd met machine learning-hulpprogram ma's en-algoritmen die voo
   
         install.packages(<lib name>)
 
-Hier vindt u meer informatie over de eerste drie machine learning hulpprogram ma's in de lijst.
+Hier is aanvullende informatie over de eerste drie machine learning-hulpprogramma's in de lijst.
 
 ### <a name="vowpal-wabbit"></a>Vowpal Wabbit
 
-Vowpal Wabbit is een machine learning systeem dat gebruikmaakt van technieken zoals online, hashing, allreduce, reducties, learning2search, actief en interactief leren.
+Vowpal Wabbit is een machine learning-systeem dat gebruikmaakt van technieken zoals online, hash, allreduce, kortingen, learning2search, actief, en interactieve training.
 
 Als u het hulp programma wilt uitvoeren op een eenvoudig voor beeld, gebruikt u de volgende opdrachten:
 
@@ -278,11 +279,11 @@ cd vwdemo
 vw house_dataset
 ```
 
-Er zijn andere, grotere demo's in de Directory. Zie [deze sectie van github](https://github.com/JohnLangford/vowpal_wabbit) en de [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)voor meer informatie over Vowpal Wabbit.
+Er zijn andere, groter demo's in die map. Zie [deze sectie van github](https://github.com/JohnLangford/vowpal_wabbit) en de [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)voor meer informatie over Vowpal Wabbit.
 
 ### <a name="xgboost"></a>xgboost
 
-De xgboost-bibliotheek is ontworpen en geoptimaliseerd voor geboostte algoritmen (structuur). Het doel van deze bibliotheek is het pushen van de berekenings limieten van machines tot de Extremes die nodig zijn om grootschalige, schaal bare structuren te bieden die schaalbaar, draagbaar en nauw keurig zijn.
+De xgboost-bibliotheek is ontworpen en geoptimaliseerd voor geboostte algoritmen (structuur). Het doel van deze bibliotheek is om de grenzen van de berekening van machines tot het uiterste dat nodig is voor grootschalige structuur versterking die schaalbare, draagbare en nauwkeurige.
 
 Deze wordt weer gegeven als een opdracht regel en een R-bibliotheek. Als u deze bibliotheek in R wilt gebruiken, kunt u een interactieve R-sessie starten (door **R** in de shell in te voeren) en de bibliotheek te laden.
 
@@ -312,11 +313,11 @@ Een. model-bestand wordt geschreven naar de opgegeven map. Meer informatie over 
 
 Zie de [xgboost-documentatie pagina](https://xgboost.readthedocs.org/en/latest/) en de bijbehorende [github-opslag plaats](https://github.com/dmlc/xgboost)voor meer informatie over xgboost.
 
-### <a name="rattle"></a>Rattle
+### <a name="rattle"></a>Rammelaar
 
-Rattle (de **R** **A**analytische **t**Ool **t**o **L**verdienen **E**asily) maakt gebruik van op GUI gebaseerde gegevens exploratie en model lering. Het biedt statistische en visuele samen vattingen van gegevens, transformeert gegevens die gemakkelijk kunnen worden gemodelleerd, bouwt zowel niet-bewaakte als gecontroleerde modellen van de gegevens, geeft de prestaties van modellen grafisch en scoort nieuwe gegevens sets. Ook wordt er een R-code gegenereerd, waarbij de bewerkingen in de gebruikers interface worden gerepliceerd en die rechtstreeks kunnen worden uitgevoerd in R of worden gebruikt als uitgangs punt voor verdere analyse.
+Rattle (de **R** **A**analytische **t**Ool **t**o **L**verdienen **E**asily) maakt gebruik van op GUI gebaseerde gegevens exploratie en model lering. Deze geeft statistische en visuele samenvattingen van gegevens, transformaties die gemakkelijk kan worden gemodelleerd, zonder supervisie en onder supervisie modellen uit de gegevens is gebaseerd, geeft de prestaties van modellen grafische vorm en scores nieuwe gegevens worden ingesteld. Er wordt ook gegenereerd R-code voor het repliceren van de bewerkingen in de gebruikersinterface die kunnen worden rechtstreeks in R uitvoeren of als uitgangspunt gebruikt voor verdere analyse.
 
-Als u Rattle wilt uitvoeren, moet u zich in een grafische sessie op het bureau blad bevindt. Voer op de Terminal **r** in om de R-omgeving te openen. Voer bij de R-prompt de volgende opdrachten in:
+Als u wilt uitvoeren Rammelaar, moet u zich in een grafische aanmelden-bureaubladsessie. Voer op de Terminal **r** in om de R-omgeving te openen. Voer de volgende opdrachten bij de R-prompt:
 
 ```R
 library(rattle)

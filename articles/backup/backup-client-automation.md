@@ -3,12 +3,12 @@ title: Power shell gebruiken om een back-up te maken van Windows Server naar Azu
 description: In dit artikel leert u hoe u Power shell kunt gebruiken voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: ef5571e6a059eedeba169765785bb0f840c8f256
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 25ea84ba00648e2f515f96885cfdb5bb662c8575
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710861"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483105"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -135,14 +135,16 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 
 ### <a name="registering-using-the-ps-az-module"></a>Registreren met de PS AZ-module
 
+> [!NOTE]
+> Er is een fout met het genereren van een kluis certificaat opgelost in AZ 3.5.0 release. Gebruik AZ 3.5.0 release version of hoger om een kluis certificaat te downloaden.
+
 In de nieuwste AZ-module van Power shell, vanwege de beperkingen van het onderliggende platform, is voor het downloaden van de kluis referenties een zelfondertekend certificaat vereist. In het volgende voor beeld ziet u hoe u een zelfondertekend certificaat kunt opgeven en de kluis referenties kunt downloaden.
 
 ```powershell
-$Vault = Get-AzRecoveryServicesVault -ResourceGroupName $rgName -Name $VaultName
-$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname xxxxxxxxxxxxx
-$certificate =[System.Convert]::ToBase64String($cert.RawData)
-$CredsPath = "C:\downloads"
-$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certificate -Vault $vault -Backup -Path $CredsPath
+$dt = $(Get-Date).ToString("M-d-yyyy")
+$cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -FriendlyName 'test-vaultcredentials' -subject "Windows Azure Tools" -KeyExportPolicy Exportable -NotAfter $(Get-Date).AddHours(48) -NotBefore $(Get-Date).AddHours(-24) -KeyProtection None -KeyUsage None -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2") -Provider "Microsoft Enhanced Cryptographic Provider v1.0"
+$certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx))
+$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
 Voer op de Windows Server-of Windows-client computer de cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) uit om de computer bij de kluis te registreren.

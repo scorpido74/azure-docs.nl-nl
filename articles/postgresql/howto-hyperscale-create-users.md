@@ -5,34 +5,45 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 1/8/2019
+ms.openlocfilehash: 674fd4372bdf7c3782d18aaf04b48eb0067a9b2e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977570"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484924"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
 
-In dit artikel wordt beschreven hoe u gebruikers kunt maken binnen een grootschalige-Server groep (Citus). Voor meer informatie over Azure-abonnements gebruikers en hun bevoegdheden gaat u naar het [artikel op basis van Azure Role Access Control (RBAC)](../role-based-access-control/built-in-roles.md) of raadpleegt u [How to Customize roles](../role-based-access-control/custom-roles.md).
+> [!NOTE]
+> De term ' gebruikers ' verwijst naar gebruikers in een grootschalige (Citus)-Server groep. Voor meer informatie over Azure-abonnements gebruikers en hun bevoegdheden gaat u naar het [artikel op basis van Azure Role Access Control (RBAC)](../role-based-access-control/built-in-roles.md) of raadpleegt u [How to Customize roles](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Het beheerdersaccount voor de server
 
-Een nieuw gemaakte grootschalige-Server groep (Citus) wordt geleverd met verschillende rollen vooraf gedefinieerd:
+De PostgreSQL-engine gebruikt [rollen](https://www.postgresql.org/docs/current/sql-createrole.html) om de toegang tot database objecten te beheren en een nieuw gemaakte grootschalige (Citus)-Server groep wordt geleverd met vooraf gedefinieerde rollen:
 
 * De [standaard postgresql-rollen](https://www.postgresql.org/docs/current/default-roles.html)
-* *azure_pg_admin*
-* *postgres*
-* *citus*
+* `azure_pg_admin`
+* `postgres`
+* `citus`
 
-De PostgreSQL-engine gebruikt bevoegdheden om de toegang tot database objecten te beheren, zoals beschreven in de [product documentatie van postgresql](https://www.postgresql.org/docs/current/static/sql-createrole.html).
-De gebruiker van de server beheerder, *Citus*, is lid van de rol *azure_pg_admin* .
-Het maakt echter geen deel uit van de rol *post gres* (super gebruiker).  Omdat grootschalige een beheerde PaaS-service is, maakt alleen micro soft deel uit van de rol van super gebruiker. De *Citus* -gebruiker heeft beperkte machtigingen en kan bijvoorbeeld geen nieuwe data bases maken.
+Omdat grootschalige een beheerde PaaS-service is, kan alleen micro soft zich aanmelden met de rol van `postgres` super gebruiker. Voor beperkte beheerders toegang biedt grootschalige de `citus` rol.
 
-## <a name="how-to-create-additional-users"></a>Aanvullende gebruikers maken
+Machtigingen voor de `citus` rol:
 
-Het *Citus* -beheerders account heeft geen machtiging voor het maken van extra gebruikers. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
+* Lees alle configuratie variabelen, zelfs variabelen die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
+* Lees alle pagina's\_stat\_\* weer gaven en gebruik verschillende statistieken-gerelateerde uitbrei dingen--zelfs weer gaven of extensies die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
+* Voer bewakings functies uit die toegangs vergrendelingen kunnen hebben voor tabellen, mogelijk gedurende een lange periode.
+* [Maak postgresql-extensies](concepts-hyperscale-extensions.md) (omdat de rol lid is van `azure_pg_admin`).
+
+Met name de `citus` rol heeft enkele beperkingen:
+
+* Kan geen rollen maken
+* Kan geen data bases maken
+
+## <a name="how-to-create-additional-user-roles"></a>Aanvullende gebruikers rollen maken
+
+Zoals vermeld, heeft het `citus` beheerders account geen toestemming om extra gebruikers te maken. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
 
 1. Ga naar de pagina **rollen** voor uw grootschalige-Server groep en klik op **+ toevoegen**:
 
@@ -42,27 +53,19 @@ Het *Citus* -beheerders account heeft geen machtiging voor het maken van extra g
 
    ![Rol toevoegen](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
-De gebruiker wordt gemaakt op het coördinator knooppunt van de Server groep en door gegeven aan alle worker-knoop punten.
+De gebruiker wordt gemaakt op het coördinator knooppunt van de Server groep en door gegeven aan alle worker-knoop punten. Rollen die zijn gemaakt via de Azure Portal hebben het kenmerk `LOGIN`. Dit betekent dat ze echte gebruikers zijn die zich kunnen aanmelden bij de data base.
 
-## <a name="how-to-delete-a-user-or-change-their-password"></a>Een gebruiker verwijderen of het wacht woord wijzigen
+## <a name="how-to-modify-privileges-for-user-role"></a>Bevoegdheden voor een gebruikersrol wijzigen
 
-Ga naar de pagina **rollen** voor uw grootschalige-Server groep en klik op de weglatings tekens **...** naast een gebruiker. De weglatings tekens openen een menu om de gebruiker te verwijderen of hun wacht woord opnieuw in te stellen.
+Nieuwe gebruikers rollen worden meestal gebruikt om toegang tot data bases te bieden met beperkte bevoegdheden. Als u gebruikers bevoegdheden wilt wijzigen, gebruikt u de standaard PostgreSQL-opdrachten met een hulp programma zoals PgAdmin of psql. (Zie [verbinding maken met psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) in de grootschalige (Citus) Quick Start.)
 
-   ![Een rol bewerken](media/howto-hyperscale-create-users/edit-role.png)
-
-De rol *Citus* is bevoegd en kan niet worden verwijderd.
-
-## <a name="how-to-modify-privileges-for-role"></a>Bevoegdheden voor een rol wijzigen
-
-Nieuwe rollen worden meestal gebruikt om toegang tot data bases te bieden met beperkte bevoegdheden. Als u gebruikers bevoegdheden wilt wijzigen, gebruikt u de standaard PostgreSQL-opdrachten met een hulp programma zoals PgAdmin of psql. (Zie [verbinding maken met psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) in de grootschalige (Citus) Quick Start.)
-
-Als u bijvoorbeeld wilt toestaan dat *db_user* *myTable*lezen, moet u de machtiging verlenen:
+Als u bijvoorbeeld wilt toestaan dat `db_user` `mytable`lezen, moet u de machtiging verlenen:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Subsidies die volledig zijn voor het hele systeem (bijvoorbeeld voor alle tabellen in een schema), moeten op elk datum knooppunt worden uitgevoerd.  Gebruik de Help-functie *run_command_on_workers ()* :
+Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Subsidies die voor het hele systeem zijn (bijvoorbeeld voor alle tabellen in een schema), moeten op elk datum knooppunt worden uitgevoerd.  Gebruik de `run_command_on_workers()` helper-functie:
 
 ```sql
 -- applies to the coordinator node
@@ -73,6 +76,14 @@ SELECT run_command_on_workers(
   'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
 );
 ```
+
+## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Een gebruikersrol verwijderen of het wacht woord wijzigen
+
+Als u een gebruiker wilt bijwerken, gaat u naar de pagina **rollen** voor uw grootschalige-Server groep en klikt u op de weglatings tekens **...** naast de gebruiker. De weglatings tekens openen een menu om de gebruiker te verwijderen of hun wacht woord opnieuw in te stellen.
+
+   ![Een rol bewerken](media/howto-hyperscale-create-users/edit-role.png)
+
+De rol `citus` is bevoegd en kan niet worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

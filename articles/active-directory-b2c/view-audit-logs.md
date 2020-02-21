@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847756"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505620"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -38,8 +38,8 @@ De categorie **B2C** in audit Logboeken bevat de volgende soorten activiteiten:
 |Directory |Activiteiten gerelateerd aan adreslijst kenmerken die zijn opgehaald wanneer een beheerder zich aanmeldt met behulp van de Azure Portal. |
 |Toepassing | Maak, lees-, update-en delete-bewerkingen (ruw) in B2C-toepassingen. |
 |Sleutel |RUWE bewerkingen op sleutels die zijn opgeslagen in een B2C-sleutel container. |
-|Bron |RUWE bewerkingen op B2C-resources. Bijvoorbeeld beleid en id-providers.
-|Verificatie |Validatie van gebruikers referenties en het uitgeven van tokens.|
+|Resource |RUWE bewerkingen op B2C-resources. Bijvoorbeeld beleid en id-providers.
+|Authentication |Validatie van gebruikers referenties en het uitgeven van tokens.|
 
 Raadpleeg de categorie **basis directory** voor een ruwe activiteiten voor gebruikers objecten.
 
@@ -88,51 +88,15 @@ Audit logboeken worden gepubliceerd op dezelfde pijp lijn als andere activiteite
 
 ### <a name="enable-reporting-api-access"></a>Rapportage-API-toegang inschakelen
 
-Als u toegang op basis van scripts of toepassingen wilt toestaan voor de rapportage-API van Azure AD, moet u een Azure Active Directory toepassing die in uw Azure AD B2C Tenant is geregistreerd met de volgende API-machtigingen:
+Als u toegang tot de Azure AD-rapportage-API wilt toestaan op basis van scripts of toepassingen, hebt u een toepassing nodig die is geregistreerd in uw Azure AD B2C-Tenant met de volgende API-machtigingen. U kunt deze machtigingen inschakelen voor een bestaande registratie van de toepassing binnen uw B2C-Tenant of een nieuwe maken die specifiek is voor gebruik met audit logboek automatisering.
 
-* Microsoft Graph > toepassings machtigingen > AuditLog. Read. all
+* Microsoft Graph > toepassings machtigingen > AuditLog > AuditLog. Read. all
 
-U kunt deze machtigingen inschakelen voor een bestaande Azure Active Directory van de toepassing in uw B2C-Tenant of een nieuw item maken dat specifiek is voor het gebruik van de functie voor het automatiseren van het controle logboek.
+Volg de stappen in het volgende artikel om een toepassing met de vereiste machtigingen te registreren:
 
-Voer de volgende stappen uit om een toepassing te registreren, de vereiste Microsoft Graph API-machtigingen te verlenen en vervolgens een client geheim te maken.
+[Azure AD B2C beheren met Microsoft Graph](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>Toepassing registreren in Azure Active Directory
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>API-toegangs machtigingen toewijzen
-
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
-
-1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
-1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
-1. Selecteer **toevoegen**en selecteer vervolgens **een API**.
-1. Selecteer **Microsoft Graph**en **Selecteer**.
-1. Selecteer **alle audit logboek gegevens lezen**onder **toepassings machtigingen**.
-1. Selecteer de knop **selecteren** en selecteer vervolgens **gereed**.
-1. Selecteer **machtigingen verlenen**, en selecteer vervolgens **Ja**.
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
-
-1. Selecteer onder **beheren**de optie **API-machtigingen**.
-1. Selecteer onder **geconfigureerde machtigingen** **de optie een machtiging toevoegen**.
-1. Selecteer het tabblad **micro soft-api's** .
-1. Selecteer **Microsoft Graph**.
-1. Selecteer **Toepassingsmachtigingen**.
-1. Vouw **AuditLog** uit en schakel vervolgens het selectie vakje **AuditLog. Read. all** in.
-1. Selecteer **machtigingen toevoegen**. Wacht een paar minuten voordat u verdergaat met de volgende stap.
-1. Selecteer **beheerder toestemming geven voor (uw Tenant naam)** .
-1. Selecteer het account dat momenteel is aangemeld als de rol *globale beheerder* is toegewezen, of Meld u aan met een account in uw Azure AD B2C-Tenant waaraan de rol van *globale beheerder* is toegewezen.
-1. Selecteer **Accepteren**.
-1. Selecteer **vernieuwen**en controleer vervolgens of ' verleend voor... ' wordt weer gegeven onder **status** voor de machtiging ' *AuditLog. Read. all* '. Het kan enkele minuten duren voordat de machtigingen zijn door gegeven.
-
-* * *
-
-### <a name="create-client-secret"></a>Client geheim maken
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-U hebt nu een toepassing met de vereiste API-toegang, een toepassings-ID en een sleutel die u kunt gebruiken in uw automatiserings scripts. Zie de sectie Power shell-script verderop in dit artikel voor een voor beeld van hoe u activiteiten gebeurtenissen kunt ophalen met een script.
+Nadat u een toepassing met de juiste machtigingen hebt geregistreerd, raadpleegt u de sectie Power shell-script verderop in dit artikel voor een voor beeld van hoe u activiteiten gebeurtenissen kunt ophalen met een script.
 
 ### <a name="access-the-api"></a>Toegang tot de API
 
@@ -149,13 +113,14 @@ In het volgende Power shell-script ziet u een voor beeld van het uitvoeren van e
 U kunt dit script proberen in de [Azure Cloud shell](overview.md). Zorg ervoor dat u deze update bijwerkt met de toepassings-ID, het client geheim en de naam van uw Azure AD B2C-Tenant.
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -258,4 +223,4 @@ Hier volgt een voor beeld van de JSON-weer gave van de gebeurtenis activiteit di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt andere beheer taken automatiseren, bijvoorbeeld [gebruikers beheren met .net](manage-user-accounts-graph-api.md).
+U kunt andere beheer taken automatiseren, bijvoorbeeld [Azure AD B2C gebruikers accounts beheren met Microsoft Graph](manage-user-accounts-graph-api.md).

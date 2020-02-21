@@ -17,12 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: fbef4d84e86c3d35e35a8bbeb04a399ad87a1b89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 084c15c7ac3ec782dc48a55e65bf4d7aa43b58a1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164082"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484176"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service-naar-service-aanroepen die een overgedragen gebruikers-id gebruiken in namens-of-flow
 
@@ -267,7 +267,7 @@ Het antwoord bevat een SAML-token dat is gecodeerd in UTF8 en Base64url.
 - **SubjectConfirmationData voor een SAML-verklaring die is gebrond vanuit een OBO-aanroep**: als voor de doel toepassing een waarde voor een ontvanger is vereist in **SubjectConfirmationData**, moet de waarde een antwoord-URL voor niet-joker tekens zijn in de configuratie van de bron toepassing.
 - **Het knoop punt SubjectConfirmationData**: het knoop punt kan geen **InResponseTo** -kenmerk bevatten omdat het geen deel UITmaakt van een SAML-reactie. De toepassing die het SAML-token ontvangt, moet de SAML-bewering zonder het kenmerk **InResponseTo** kunnen accepteren.
 
-- **Instemming**: toestemming moet zijn verleend om een SAML-token met gebruikers gegevens op een OAuth-stroom te ontvangen. Zie [machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)voor meer informatie over machtigingen en het verkrijgen van toestemming voor de beheerder.
+- **Instemming**: toestemming moet zijn verleend om een SAML-token met gebruikers gegevens op een OAuth-stroom te ontvangen. Zie [machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)voor meer informatie over machtigingen en het verkrijgen van toestemming voor de beheerder.
 
 ### <a name="response-with-saml-assertion"></a>Antwoord met SAML-bevestiging
 

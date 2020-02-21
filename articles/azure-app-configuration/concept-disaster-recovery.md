@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 889699ab184b82a7c194043d15358ecdaab5d03d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899639"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523761"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Tolerantie en herstel na noodgevallen
 
@@ -27,9 +27,9 @@ Uw toepassing laadt de configuratie van de primaire en secundaire archieven para
 
 ## <a name="failover-between-configuration-stores"></a>Failover tussen configuratie archieven
 
-Technisch gesp roken voert uw toepassing geen failover uit. Er wordt geprobeerd om dezelfde set configuratie gegevens uit twee app-configuratie archieven tegelijk op te halen. Rang Schik uw code zo dat deze eerst wordt geladen vanuit de secundaire Store en vervolgens op de primaire opslag. Deze aanpak zorgt ervoor dat de configuratie gegevens in de primaire Store voor rang krijgen wanneer deze beschikbaar zijn. Het volgende code fragment laat zien hoe u deze rang schikking kunt implementeren in de .NET Core SLI:
+Technisch gesp roken voert uw toepassing geen failover uit. Er wordt geprobeerd om dezelfde set configuratie gegevens uit twee app-configuratie archieven tegelijk op te halen. Rang Schik uw code zo dat deze eerst wordt geladen vanuit de secundaire Store en vervolgens op de primaire opslag. Deze aanpak zorgt ervoor dat de configuratie gegevens in de primaire Store voor rang krijgen wanneer deze beschikbaar zijn. Het volgende code fragment laat zien hoe u deze ordening in .NET Core kunt implementeren:
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -70,17 +70,18 @@ Vanuit het Azure Portal kunt u een wijziging naar een andere configuratie Store 
 
 1. Ga naar het tabblad **importeren/exporteren** en selecteer > app- **configuratie** **exporteren** > **doel** > **Selecteer een resource**.
 
-2. Op de nieuwe blade die wordt geopend, geeft u het abonnement, de resource groep en de resource naam van uw secundaire archief op en selecteert u vervolgens **Toep assen**.
+1. Op de nieuwe blade die wordt geopend, geeft u het abonnement, de resource groep en de resource naam van uw secundaire archief op. Selecteer vervolgens **Toep assen**.
 
-3. De gebruikers interface wordt bijgewerkt, zodat u kunt kiezen welke configuratie gegevens u wilt exporteren naar uw secundaire archief. U kunt de standaard waarde tijd laten staan en beide **van label** en **naar label** op dezelfde waarde instellen. Selecteer **Toepassen**.
+1. De gebruikers interface wordt bijgewerkt, zodat u kunt kiezen welke configuratie gegevens u wilt exporteren naar uw secundaire archief. U kunt de standaard waarde tijd laten staan en beide **van label** en **naar label** op dezelfde waarde instellen. Selecteer **Toepassen**.
 
-4. Herhaal de vorige stappen voor alle configuratie wijzigingen.
+1. Herhaal de vorige stappen voor alle configuratie wijzigingen.
 
 Gebruik de Azure CLI om dit export proces te automatiseren. De volgende opdracht laat zien hoe u één configuratie wijziging van de primaire opslag naar de secundaire exporteert:
 
+```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u geleerd hoe u uw toepassing kunt uitbreiden om geo-tolerantie te krijgen tijdens de runtime voor app-configuratie. U kunt ook configuratie gegevens van de app-configuratie insluiten tijdens de build-of implementatie tijd. Zie [integreren met een CI/cd-pijp lijn](./integrate-ci-cd-pipeline.md)voor meer informatie.
-

@@ -2,14 +2,14 @@
 title: Resource beschikbaarheid per regio
 description: Beschik baarheid van reken-en geheugen resources voor de Azure Container Instances-service in verschillende Azure-regio's.
 ms.topic: article
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117824"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525299"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
@@ -24,9 +24,9 @@ Zie [quota's en limieten voor Azure container instances](container-instances-quo
 
 ## <a name="availability---general"></a>Beschik baarheid-algemeen
 
-De volgende regio's en resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
+De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
 
-| Regio's | OS | Maximaal CPU | Maxi maal geheugen (GB) | Opslag (GB) |
+| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Brazilië-zuid, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west, VS-West, VS-West 2 | Linux | 4 | 16 | 50 |
 | Australië-oost, Japan-Oost | Linux | 2 | 8 | 50 |
@@ -37,9 +37,9 @@ De volgende regio's en resources zijn beschikbaar voor container groepen met Lin
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Beschik baarheid-Windows Server 2019 LTSC, 1809-implementaties (preview)
 
-De volgende regio's en bronnen zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
+De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
 
-| Regio's | OS | Maximaal CPU | Maxi maal geheugen (GB) | Opslag (GB) |
+| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Australië-oost, Brazilië-zuid, Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, Japan-Oost, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west | Windows | 4 | 16 | 20 |
 | VS-Oost 2, VS-West 2 | Windows | 2 | 3,5 | 20 |
@@ -47,13 +47,16 @@ De volgende regio's en bronnen zijn beschikbaar voor container groepen met Windo
 
 ## <a name="availability---virtual-network-deployment"></a>Beschik baarheid-implementatie van virtueel netwerk
 
-De volgende regio's en resources zijn beschikbaar voor een container groep die is geïmplementeerd in een [virtueel Azure-netwerk](container-instances-vnet.md).
+De volgende regio's en maximum resources zijn beschikbaar voor een container groep die is geïmplementeerd in een [virtueel Azure-netwerk](container-instances-vnet.md).
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>Beschik baarheid-GPU-resources (preview-versie)
 
-De volgende regio's en resources zijn beschikbaar voor een container groep die is geïmplementeerd met [GPU-bronnen](container-instances-gpu.md) (preview-versie).
+De volgende regio's en maximum resources zijn beschikbaar voor een container groep die is geïmplementeerd met [GPU-bronnen](container-instances-gpu.md) (preview-versie).
+
+> [!IMPORTANT]
+> GPU-resources zijn alleen op aanvraag beschikbaar. Als u toegang tot GPU-bronnen wilt aanvragen, moet u een [ondersteunings aanvraag voor Azure][azure-support]indienen.
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -63,3 +66,6 @@ De volgende regio's en resources zijn beschikbaar voor een container groep die i
 Laat het team weten of u extra regio's of meer Beschik baarheid van resources wilt zien op [aka.MS/ACI/feedback](https://aka.ms/aci/feedback).
 
 Zie [problemen met implementaties oplossen met Azure container instances](container-instances-troubleshooting.md)voor meer informatie over het oplossen van problemen met de implementatie van container instanties.
+
+
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

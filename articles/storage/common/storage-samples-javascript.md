@@ -3,108 +3,421 @@ title: Azure Storage voor beelden met behulp van Java script | Microsoft Docs
 description: Voorbeeld code en toepassingen voor Azure Storage weer geven, downloaden en uitvoeren. Ontdek aan de slag met voor beelden voor blobs, wacht rijen, tabellen en bestanden, met behulp van de opslag-client bibliotheken java script/node. js.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/26/2019
+ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 44fe68b8b04a1192c928e04c7d2a9d147f400130
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748286"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485842"
 ---
-# <a name="azure-storage-samples-using-javascript"></a>Azure Storage voor beelden met behulp van Java script
+# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage voor beelden met behulp van V12 java script-client bibliotheken
 
 In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
 > [!NOTE]
-> In deze voor beelden wordt de Azure Storage java script V10 toevoegen-bibliotheek gebruikt. Zie voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) in de GitHub-opslag plaats voor V12-code.
+> Deze voor beelden gebruiken de nieuwste Azure Storage java script V12-bibliotheek. Zie aan de slag [met Azure Blob service in node. js](https://github.com/Azure-Samples/storage-blob-node-getting-started) in de GitHub-opslag plaats voor verouderde V11-code.
 
-## <a name="blob-samples-v10"></a>Voor beelden van blobs (v10 toevoegen)
+## <a name="blob-samples"></a>BLOB-voor beelden
 
-| **Scenario** | **Voorbeeldcode** |
-|--------------|-----------------|
-| Blok-blob | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L43) |
-| Clientversleuteling | [Sleutels voor opslag accounts beheren in een Azure-sleutel waarde met Java script](https://github.com/Azure-Samples/key-vault-node-storage-accounts) |
-| Blob kopiëren | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L73) |
-| Container maken | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L54) |
-| Blob verwijderen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L103) |
-| Container verwijderen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L110) |
-| BLOB-meta gegevens | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L538) |
-| BLOB-eigenschappen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L478) |
-| Container-ACL | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L444) |
-| Meta gegevens van container | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L409) |
-| Container eigenschappen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L377) |
-| Paginabereiken ophalen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L170) |
-| Lease Blob | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
-| Lease-container | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L185) |
-| BLOB/container weer geven | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L134) |
-| Pagina-BLOB | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L129) |
-| SAS | [Shared Access Signature in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L257) |
-| Service-eigenschappen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L308) |
-| Cors-regels instellen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L152) |
-| Moment opname-BLOB | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L79) |
+### <a name="authentication"></a>Authentication
 
-## <a name="file-samples-v10"></a>Bestands voorbeelden (v10 toevoegen)
+:::row:::
+   :::column span="":::
+      [Verifiëren met behulp van connection string](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+   :::column-end:::
+   :::column span="":::
+      [Verifiëren met SAS connection string](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Verificatie met behulp van een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
+   :::column-end:::
+   :::column span="":::
+      [Verifiëren met behulp van AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Verifiëren met behulp van Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/azureAdAuth.js#L47)
+   :::column-end:::
+   :::column span="":::
+      [Verifiëren met een proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Verbinding maken met behulp van een aangepaste pijp lijn](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
+   :::column-end:::
+:::row-end:::
 
-| **Scenario** | **Voorbeeldcode** |
-|--------------|-----------------|
-| Shares/Directory's/bestanden maken | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L97) |
-| Shares/mappen/bestanden verwijderen | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L135) |
-| Bestanden downloaden | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L128) |
-| Mappen en bestanden weer geven | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L115) |
-| Shares weer geven | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L187) |
+### <a name="blob-service"></a>Blob-service
 
-## <a name="queue-samples-v10"></a>Voor beelden van wachtrij (v10 toevoegen)
+:::row:::
+   :::column span="2":::
+      [Een BLOB-serviceclient maken met een SAS-URL](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
+   :::column-end:::
+:::row-end:::
 
-| **Scenario** | **Voorbeeldcode** |
-|--------------|-----------------|
-| Bericht toevoegen | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L142) |
-| Clientversleuteling | [Sleutels voor opslag accounts beheren in Azure Key Vault met Java script](https://github.com/Azure-Samples/key-vault-node-storage-accounts) |
-| Wacht rijen maken | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L57) |
-| Bericht verwijderen | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L164) |
-| Wachtrij verwijderen | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L203) |
-| Wacht rijen weer geven | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L111) |
-| Bericht bekijken | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L170) |
-| Wachtrij-ACL | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L192) |
-| Cors-regels voor wachtrij | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L55) |
-| Meta gegevens van de wachtrij | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L161) |
-| Eigenschappen van Queue-service | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L94) |
-| Wachtrij statistieken | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L149) |
-| Bericht bijwerken | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L176) |
+### <a name="container"></a>Container
 
-## <a name="table-samples-v10"></a>Tabel voorbeelden (v10 toevoegen)
+:::row:::
+   :::column span="":::
+      [Een container maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
+   :::column-end:::
+   :::column span="":::
+      [Een container maken met behulp van een referentie voor een gedeelde sleutel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Containers weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L48)
+   :::column-end:::
+   :::column span="":::
+      [Containers weer geven met behulp van een iterator](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Containers weer geven per pagina](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
+   :::column-end:::
+   :::column span="":::
+      [Container verwijderen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L82)
+   :::column-end:::
+:::row-end:::
 
-| **Scenario** | **Voorbeeldcode** |
-|--------------|-----------------|
-| Batch-entiteiten | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87) |
-| Tabel maken | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41) |
-| Entiteit/tabel verwijderen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67) |
-| Entiteit invoegen/samen voegen/vervangen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49) |
-| Tabellen weer geven | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63) |
-| Entiteiten opvragen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59) |
-| Query tabellen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L140) |
-| Bereik query | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102) |
-| SAS | [Shared Access Signature in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87) |
-| Tabel-ACL | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255) |
-| Cors-regels voor tabel | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149) |
-| Tabel eigenschappen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188) |
-| Tabel statistieken | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243) |
-| Entiteit bijwerken | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49) |
+### <a name="blob"></a>Blob
 
-## <a name="azure-code-samples-library"></a>Bibliotheek voor Azure-code voorbeelden
+:::row:::
+   :::column span="":::
+      [Een BLOB maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L60)
+   :::column-end:::
+   :::column span="":::
+      [Blobs weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L67)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Een BLOB downloaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
+   :::column-end:::
+   :::column span="":::
+      [Blobs weer geven met behulp van een iterator](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Blobs per pagina weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
+   :::column-end:::
+   :::column span="":::
+      [Blobs per hiërarchie weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Blobs weer geven zonder te wachten](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
+   :::column-end:::
+   :::column span="":::
+      [Een BLOB-moment opname maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L56)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Een BLOB-moment opname downloaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
+   :::column-end:::
+   :::column span="":::
+      [Een stroom parallel uploaden naar een BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Parallelle down load blok-BLOB](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
+   :::column-end:::
+   :::column span="":::
+      [De Access-laag op een BLOB instellen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
+   :::column-end:::
+:::row-end:::
 
-Als u de volledige voorbeeld bibliotheek wilt weer geven, gaat u naar de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=storage) -bibliotheek, die voor beelden bevat voor Azure Storage die u lokaal kunt downloaden en uitvoeren. De voorbeeld bibliotheek code bevat voorbeeld code in. zip-indeling. U kunt ook bladeren en de GitHub-opslag plaats voor elk voor beeld klonen.
+### <a name="troubleshooting"></a>Problemen oplossen
 
-[!INCLUDE [storage-node-samples-include](../../../includes/storage-node-samples-include.md)]
+:::row:::
+   :::column span="2":::
+      [Een herstel bare fout activeren met behulp van een container-client](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
+   :::column-end:::
+:::row-end:::
+
+
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2-voor beelden
+
+:::row:::
+   :::column span="":::
+      [Een Data Lake-serviceclient maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
+   :::column-end:::
+   :::column span="":::
+      [Een bestands systeem maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L47)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Bestands systemen weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L42)
+   :::column-end:::
+   :::column span="":::
+      [Een bestand maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L54)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Paden in een bestands systeem weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L63)
+   :::column-end:::
+   :::column span="":::
+      [Een bestand downloaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L69)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Een bestands systeem verwijderen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L78)
+   :::column-end:::
+:::row-end:::
+
+## <a name="azure-files-samples"></a>Azure Files-voor beelden
+
+### <a name="authentication"></a>Authentication
+
+:::row:::
+   :::column span="":::
+      [Verifiëren met behulp van een connection string](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
+   :::column-end:::
+   :::column span="":::
+      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Verifiëren met behulp van AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
+   :::column-end:::
+   :::column span="":::
+      [Verbinding maken met behulp van een aangepaste pijp lijn](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Verbinding maken via een proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/proxyAuth.js)
+   :::column-end:::
+:::row-end:::
+
+### <a name="share"></a>Delen
+
+:::row:::
+   :::column span="":::
+      [Een share maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L48)
+   :::column-end:::
+   :::column span="":::
+      [Shares weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Shares per pagina weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
+   :::column-end:::
+   :::column span="":::
+      [Een share verwijderen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L104)
+   :::column-end:::
+:::row-end:::
+
+### <a name="directory"></a>Directory
+
+:::row:::
+   :::column span="":::
+      [Een map maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L54)
+   :::column-end:::
+   :::column span="":::
+      [Bestanden en mappen weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Bestanden en mappen op pagina weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file"></a>File
+
+:::row:::
+   :::column span="":::
+      [Een bestand parallel uploaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L65)
+   :::column-end:::
+   :::column span="":::
+      [Parallel een lees bare stroom uploaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Een bestand parallel downloaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L93)
+   :::column-end:::
+   :::column span="":::
+      [Bestands ingangen weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Bestands ingangen per pagina weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
+   :::column-end:::
+:::row-end:::
+
+## <a name="queue-samples"></a>Wachtrij voorbeelden
+
+### <a name="authentication"></a>Authentication
+
+:::row:::
+   :::column span="":::
+      [Verifiëren met behulp van een connection string](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
+   :::column-end:::
+   :::column span="":::
+      [Verifiëren met een gedeelde sleutel referentie](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Verifiëren met behulp van AnonymousCredential](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
+   :::column-end:::
+   :::column span="":::
+      [Verbinding maken met behulp van een aangepaste pijp lijn](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Verbinding maken via een proxy](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/proxyAuth.js)
+   :::column-end:::
+   :::column span="":::
+      [Verifiëren met behulp van Azure Active Directory](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/azureAdAuth.js)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue-service"></a>Queue-service
+
+:::row:::
+   :::column span="2":::
+      [Een wachtrij service-client maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue"></a>Wachtrij
+
+:::row:::
+   :::column span="":::
+      [Een nieuwe wachtrij maken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
+   :::column-end:::
+   :::column span="":::
+      [Wacht rijen weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Wacht rijen per pagina weer geven](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
+   :::column-end:::
+   :::column span="":::
+      [Een wachtrij verwijderen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L89)
+   :::column-end:::
+:::row-end:::
+
+### <a name="message"></a>Bericht
+
+:::row:::
+   :::column span="":::
+      [Een bericht verzenden naar een wachtrij](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
+   :::column-end:::
+   :::column span="":::
+      [Berichten bekijken](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Berichten ontvangen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L76)
+   :::column-end:::
+   :::column span="":::
+      [Berichten verwijderen](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
+   :::column-end:::
+:::row-end:::
+
+## <a name="table-samples-v11"></a>Tabel voorbeelden (V11)
+
+:::row:::
+   :::column span="":::
+      [Batch-entiteiten](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
+   :::column-end:::
+   :::column span="":::
+      [Tabel maken](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Entiteit/tabel verwijderen](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67)
+   :::column-end:::
+   :::column span="":::
+      [Entiteit invoegen/samen voegen/vervangen](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Tabellen weer geven](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L63)
+   :::column-end:::
+   :::column span="":::
+      [Entiteiten opvragen](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Query tabellen](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L140)
+   :::column-end:::
+   :::column span="":::
+      [Bereik query](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Shared Access Signature (SAS)](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87)
+   :::column-end:::
+   :::column span="":::
+      [Tabel-ACL](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [CORS-regels (cross-Origin Resource Sharing)](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
+   :::column-end:::
+   :::column span="":::
+      [Tabel eigenschappen](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Tabel statistieken](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243)
+   :::column-end:::
+   :::column span="":::
+      [Entiteit bijwerken](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+   :::column-end:::
+:::row-end:::
+
+## <a name="azure-code-sample-libraries"></a>Voorbeeld bibliotheken van Azure-code
+
+Als u de volledige Java script-voorbeeld bibliotheken wilt weer geven, gaat u naar:
+
+* [Voor beelden van Azure Blob-code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+* [Voor beelden van Azure Data Lake code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+* [Voor beelden van Azure Files code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+* [Voor beelden van Azure-wachtrij code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+
+U kunt de GitHub-opslag plaats voor elke tape wisselaar door bladeren en klonen.
 
 ## <a name="getting-started-guides"></a>Aan de slag-hand leidingen
 
 Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het installeren en aan de slag met de Azure Storage-client bibliotheken.
 
 * [Aan de slag met Azure Blob service in Java script](../blobs/storage-quickstart-blobs-nodejs.md)
-* [Aan de slag met Azure Queue service in Java script](../queues/storage-nodejs-how-to-use-queues.md)
+* [Aan de slag met Azure Queue service in Java script](../queues/storage-quickstart-queues-nodejs.md)
 * [Aan de slag met Azure Table service in Java script](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118142"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482314"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van REST API en python
 
@@ -28,9 +28,13 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
 - Een set van ten minste zes soorten van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
 
+## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-training-data"></a>Trainings gegevens instellen
 
-Eerst moet u de vereiste invoer gegevens instellen. De functie voor gelabelde gegevens heeft speciale invoer vereisten dan die nodig zijn voor het trainen van een aangepast model. 
+Vervolgens moet u de vereiste invoer gegevens instellen. De functie voor gelabelde gegevens heeft speciale invoer vereisten dan die nodig zijn voor het trainen van een aangepast model. 
 
 Zorg ervoor dat alle trainings documenten dezelfde indeling hebben. Als u formulieren in meerdere indelingen hebt, kunt u deze indelen in submappen op basis van de algemene indeling. Wanneer u traint, moet u de API naar een submap sturen.
 

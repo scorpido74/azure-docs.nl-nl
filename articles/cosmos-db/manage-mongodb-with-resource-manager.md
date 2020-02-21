@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 408f29322af2199259f59be1f2c7e891a80a6b35
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65838c36cadba580c578677185683e27b57b1e27
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980582"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525495"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB-API-resources beheren met Azure Resource Manager sjablonen
 
@@ -24,6 +24,8 @@ Azure Cosmos DB resources maken met behulp van een Azure Resource Manager sjablo
 > [!NOTE]
 > Account namen moeten kleine letters en 44 of minder tekens bevatten.
 > Als u RU/s wilt bijwerken, moet u de sjabloon opnieuw verzenden met bijgewerkte waarden voor doorvoer eigenschappen.
+>
+> Op dit moment kunt u alleen 3,2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van Power shell, CLI en Resource Manager-sjablonen. Als u 3,6-versie van accounts wilt maken, gebruikt u Azure Portal in plaats daarvan.
 
 [!code-json[create-cosmos-mongo](~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json)]
 

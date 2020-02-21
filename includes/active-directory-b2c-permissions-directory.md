@@ -3,33 +3,39 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 02/12/2020
 ms.author: marsma
-ms.openlocfilehash: 43bcd1f11eb228bd1454b2ad0f2addb851029f2f
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e5201dfee83ec5360e55533e923e2b55c24c09d9
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73799775"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77492927"
 ---
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
 1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
-1. Selecteer **Windows Azure Active Directory**.
-1. Selecteer onder **toepassings machtigingen**de optie **lezen en Directory gegevens schrijven**.
+1. Selecteer **Microsoft Graph**.
+1. Schakel onder **toepassings machtigingen**het selectie vakje in van de machtiging om aan uw beheer toepassing toe te kennen. Bijvoorbeeld:
+    * **Alle audit logboek gegevens lezen**: Selecteer deze machtiging om de controle logboeken van de map te lezen.
+    * **Directory gegevens lezen en schrijven**: Selecteer deze machtiging voor gebruikers migratie of scenario's voor gebruikers beheer.
+    * **Het vertrouwens raamwerk beleid van uw organisatie lezen en schrijven**: Selecteer deze machtiging voor continue integratie/doorlopende levering (CI/cd)-scenario's. Bijvoorbeeld aangepaste beleids implementatie met Azure-pijp lijnen.
 1. Selecteer **Opslaan**.
 1. Selecteer **machtigingen verlenen**en selecteer vervolgens **Ja**. Het kan enkele minuten duren voordat de machtigingen volledig zijn door gegeven.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer onder **beheren**de optie **API-machtigingen**.
 1. Selecteer onder **geconfigureerde machtigingen** **de optie een machtiging toevoegen**.
-1. Selecteer **Azure Active Directory grafiek**.
+1. Selecteer het tabblad **micro soft api's** en selecteer vervolgens **Microsoft Graph**.
 1. Selecteer **Toepassingsmachtigingen**.
-1. Vouw **Directory** uit en schakel vervolgens het selectie vakje **map. readwrite. all** in.
+1. Vouw de juiste machtigings groep uit en schakel het selectie vakje in van de machtiging om aan uw beheer toepassing toe te kennen. Bijvoorbeeld:
+    * **Auditlog** > **AuditLog. Read. all**: voor het lezen van de controle logboeken van de map.
+    * **Map** > **Directory. readwrite. all**: voor gebruikers migratie of gebruikers beheer scenario's.
+    * **Beleid** > **Policy. readwrite. TrustFramework**: voor continue integratie/continue levering (CI/cd)-scenario's. Bijvoorbeeld aangepaste beleids implementatie met Azure-pijp lijnen.
 1. Selecteer **machtigingen toevoegen**. Wacht een paar minuten voordat u verdergaat met de volgende stap.
 1. Selecteer **beheerder toestemming geven voor (uw Tenant naam)** .
-1. Selecteer een Tenant beheerders account.
+1. Selecteer het momenteel aangemelde Administrator-account of Meld u aan met een account in uw Azure AD B2C-Tenant waaraan ten minste de rol van *Cloud toepassings beheerder* is toegewezen.
 1. Selecteer **Accepteren**.
 1. Selecteer **vernieuwen**en controleer vervolgens of ' verleend voor... ' wordt weer gegeven onder **status**. Het kan enkele minuten duren voordat de machtigingen zijn door gegeven.

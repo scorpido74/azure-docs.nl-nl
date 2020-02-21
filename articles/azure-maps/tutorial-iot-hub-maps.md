@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208366"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505852"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Zelf studie: een IoT-ruimtelijke analyse implementeren met behulp van Azure Maps
 
@@ -116,9 +116,9 @@ Als u bedrijfs logica wilt implementeren op basis van Azure Maps ruimtelijke ana
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
-Als u gebeurtenis gegevens wilt registreren, maken we een **v2storage** -account voor algemeen gebruik in de resource groep ' ContosoRental ' om gegevens als blobs op te slaan. Als u een opslag account wilt maken, volgt u de instructies in [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Vervolgens moet u een container maken om blobs op te slaan. Volg de onderstaande stappen om dit te doen:
+Om gebeurtenis gegevens te registreren, maken we een **v2storage** voor algemeen gebruik dat toegang biedt tot alle Azure Storage services: blobs, bestanden, wacht rijen, tabellen en schijven.  We moeten dit opslag account in de resource groep ' ContosoRental ' plaatsen om gegevens als blobs op te slaan. Als u een opslag account wilt maken, volgt u de instructies in [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Vervolgens moet u een container maken om blobs op te slaan. Volg de onderstaande stappen om dit te doen:
 
-1. Navigeer in uw opslag account naar containers.
+1. Ga in uw ' opslag account-blob, bestand, tabel, wachtrij ' naar containers.
 
     ![blobs](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -155,6 +155,9 @@ Als u verbinding wilt maken met de IoT Hub, moet u een apparaat registreren. Vol
     
     ![REGI ster-apparaat](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. Sla de **primaire verbindings reeks** van het apparaat op om het in een latere stap te gebruiken. u moet een tijdelijke aanduiding met deze Connection String wijzigen.
+
+    ![toevoegen-apparaat](./media/tutorial-iot-hub-maps/connection-string.png)
 
 ## <a name="upload-geofence"></a>Geofence uploaden
 
@@ -188,7 +191,7 @@ Open de Postman-app en voer de onderstaande stappen uit om de geofence te upload
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Kopieer uw status-URI en voeg een `subscription-key` para meter toe met de waarde van de abonnements sleutel van uw Azure Maps-account. De URI-indeling voor de status moet er als volgt uitzien:
+6. Kopieer uw status-URI en voeg hieraan een `subscription-key`-para meter toe. Wijs de waarde van uw abonnements sleutel voor uw Azure Maps-account toe aan de para meter `subscription-key`. De notatie van de status-URI moet er als volgt uitzien, en `{Subscription-key}` vervangen door de sleutel van uw abonnement.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -218,7 +221,7 @@ Alle relevante gebeurtenis gegevens worden vervolgens bewaard in de BLOB Store. 
 
     ![maken-resource](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. Geef op de pagina **functie-app** maken de naam van uw functie-app. Selecteer onder **resource groep**de optie **bestaande gebruiken**en selecteer ' ContosoRental ' in de vervolg keuzelijst. Selecteer .NET Core als runtime stack. Selecteer onder **opslag**de optie **bestaande gebruiken**, selecteer ' contosorentaldata ' in de vervolg keuzelijst en selecteer vervolgens **controleren + maken**.
+2. Geef op de pagina **functie-app** maken de naam van uw functie-app. Selecteer onder **resource groep**de optie **bestaande gebruiken**en selecteer ' ContosoRental ' in de vervolg keuzelijst. Selecteer .NET Core als runtime stack. Onder **hosten**, voor **opslag account**, selecteert u de naam van het opslag account uit een vorige stap. In onze vorige stap noemen we het opslag account **v2storage**.  Selecteer vervolgens **controleren + maken**.
     
     ![maken-app](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Alle relevante gebeurtenis gegevens worden vervolgens bewaard in de BLOB Store. 
 5. Selecteer de sjabloon met een **Azure Event grid trigger**. Installeer uitbrei dingen als u hierom wordt gevraagd, geef de functie een naam en selecteer **maken**.
 
     ![functie-sjabloon](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    De **trigger van Azure Event hub** en de trigger voor het **Azure Event grid** hebben vergelijk bare pictogrammen. Zorg ervoor dat u de **Trigger Azure Event grid**selecteert.
 
-6. Kopieer de [c#-code](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) naar uw functie en klik op **Opslaan**.
+6. Kopieer de [ C# code](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) naar uw functie.
  
-7. Vervang in het c#-script de volgende para meters:
+7. Vervang de C# volgende para meters in het script. Klik op **Opslaan**. Klik nog niet op **uitvoeren**
     * Vervang de **SUBSCRIPTION_KEY** door de primaire abonnements sleutel van uw Azure Maps-account.
     * Vervang de **UDID** door de UDID van de geofence die u hebt geüpload, 
     * Met de functie **CreateBlobAsync** in het script maakt u een BLOB per gebeurtenis in het account voor gegevens opslag. Vervang de **ACCESS_KEY**, **ACCOUNT_NAME**en **STORAGE_CONTAINER_NAME** door de toegangs sleutel van uw opslag account, de account naam en de gegevens opslag container.
@@ -245,7 +250,7 @@ Alle relevante gebeurtenis gegevens worden vervolgens bewaard in de BLOB Store. 
     
     ![Add-Event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Vul de abonnements gegevens in, onder DETAILS van het **gebeurtenis abonnement** naam van uw abonnement en kies voor het gebeurtenis schema Event grid schema. Onder **Details van onderwerp** selecteert u "Azure IOT hub-accounts" als onderwerps type. Kies hetzelfde abonnement dat u hebt gebruikt voor het maken van de resource groep en selecteer ' ContosoRental ' als resource groep. Kies de IoT Hub die u hebt gemaakt als resource. Kies **apparaat-telemetrie** als gebeurtenis type. Nadat u deze opties hebt gekozen, ziet u dat het onderwerp type wordt gewijzigd in automatisch IoT Hub.
+11. Vul de abonnements gegevens in, onder **Details van gebeurtenis abonnementen** naam voor uw gebeurtenis abonnement. Kies Event Grid schema voor het gebeurtenis schema. Onder **Details van onderwerp** selecteert u "Azure IOT hub-accounts" als onderwerps type. Kies hetzelfde abonnement dat u hebt gebruikt voor het maken van de resource groep en selecteer ' ContosoRental ' als resource groep. Kies de IoT Hub die u hebt gemaakt als resource. Kies **apparaat-telemetrie** als gebeurtenis type. Nadat u deze opties hebt gekozen, ziet u dat het onderwerp type wordt gewijzigd in automatisch IoT Hub.
 
     ![Event-grid-abonnement](./media/tutorial-iot-hub-maps/af-egs.png)
  
@@ -263,9 +268,9 @@ In het voorbeeld scenario willen we alle berichten filteren waarbij het huur voe
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Telemetriegegevens naar IoT Hub verzenden
 
-Zodra de Azure function actief is, kunt u nu telemetriegegevens verzenden naar de IoT Hub, die deze router stuurt naar de Event Grid. We gaan een c#-toepassing gebruiken voor het simuleren van locatie gegevens voor een apparaat in het Voer tuig van een huur auto. Als u de toepassing wilt uitvoeren, hebt u de .NET Core SDK 2.1.0 of hoger nodig op uw ontwikkel computer. Volg de onderstaande stappen om gesimuleerde telemetriegegevens naar IoT Hub te verzenden.
+Zodra de Azure function actief is, kunt u nu telemetriegegevens verzenden naar de IoT Hub, die deze router stuurt naar de Event Grid. Laten we een C# toepassing gebruiken om locatie gegevens te simuleren voor een apparaat in het Voer tuig van een huur auto. Als u de toepassing wilt uitvoeren, hebt u de .NET Core SDK 2.1.0 of hoger nodig op uw ontwikkel computer. Volg de onderstaande stappen om gesimuleerde telemetriegegevens naar IoT Hub te verzenden.
 
-1. Down load het [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) c#-project. 
+1. Down load het [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C# -project. 
 
 2. Open het simulatedCar.cs-bestand in een tekst editor naar keuze en vervang de waarde van de `connectionString` door het account dat u hebt opgeslagen toen u het apparaat registreerde en sla de wijzigingen in het bestand op.
  

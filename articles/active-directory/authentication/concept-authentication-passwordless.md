@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory aanmelding zonder wacht woord (preview-versie)
-description: Meer informatie over opties voor aanmelding zonder wacht woord in Azure Active Directory met behulp van FIDO2-beveiligings sleutels of de Microsoft Authenticator-app
+description: Meer informatie over opties voor aanmelden met een wacht woord voor Azure Active Directory met behulp van FIDO2-beveiligings sleutels of de Microsoft Authenticator-app
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756790"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505765"
 ---
-# <a name="passwordless-authentication-options"></a>Verificatie opties met een wacht woord
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Verificatie opties met een wacht woord voor Azure Active Directory
 
 Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te beveiligen, maar gebruikers worden vaak met de extra beveiligingslaag op de hoogte gehouden om hun wacht woord te onthouden. Verificatie methoden met een wacht woord zijn handiger omdat het wacht woord wordt verwijderd en vervangen door iets wat u hebt, en wat u wel of iets weet.
 
@@ -26,7 +26,7 @@ Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te
 | --- | --- | --- |
 | Zonder wachtwoord | Windows 10-apparaat, telefoon of beveiligings sleutel | Biometrische of pincode |
 
-Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt drie verificatie opties met een wacht woord:
+Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op verificatie. Micro soft biedt de volgende drie verificatie opties met een wacht woord:
 
 - Windows Hello voor Bedrijven
 - Microsoft Authenticator-app
@@ -52,7 +52,7 @@ Met de verificator-app wordt een wille keurige iOS-of Android-telefoon omgezet i
 
 FIDO2-beveiligings sleutels zijn een niet-verwerkte op standaarden gebaseerde verificatie methode op basis van een wacht woord, die in elke vorm factor kan worden gebruikt. Fast Identity online (FIDO) is een open standaard voor verificatie met een wacht woord. Met FIDO kunnen gebruikers en organisaties de standaard gebruiken om zich aan te melden bij hun resources zonder gebruikers naam of wacht woord met behulp van een externe beveiligings sleutel of een platform sleutel die is ingebouwd in een apparaat.
 
-Werk nemers kunnen met de open bare preview beveiligings sleutels gebruiken om zich aan te melden bij hun Azure AD-Windows 10-apparaten en eenmalige aanmelding aan te schaffen bij hun Cloud-en on-premises resources. Gebruikers kunnen zich ook aanmelden bij ondersteunde browsers. FIDO2-beveiligings sleutels zijn een uitstekende optie voor ondernemingen die zeer gevoelig zijn voor bedrijven of die scenario's of werk nemers hebben die hun telefoon niet kunnen gebruiken als een tweede factor.
+Voor een open bare Preview kunnen werk nemers beveiligings sleutels gebruiken om zich aan te melden bij hun Azure AD-of hybride Azure AD-lid van Windows 10-apparaten en eenmalige aanmelding op hun Cloud-en on-premises resources op te halen. Gebruikers kunnen zich ook aanmelden bij ondersteunde browsers. FIDO2-beveiligings sleutels zijn een uitstekende optie voor ondernemingen die zeer gevoelig zijn voor bedrijven of die scenario's of werk nemers hebben die hun telefoon niet kunnen gebruiken als een tweede factor.
 
 ![Aanmelden bij micro soft Edge met een beveiligings sleutel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -69,7 +69,7 @@ Een beveiligings sleutel **moet** de volgende functies en uitbrei dingen van het
 
 De volgende providers bieden FIDO2-beveiligings sleutels van verschillende vorm factoren waarvan bekend is dat ze compatibel zijn met de ervaring zonder wacht woord. We raden u aan de beveiligings eigenschappen van deze sleutels te evalueren door contact op te nemen met de leverancier en FIDO Alliance.
 
-| Provider | Contact |
+| Provider | Contactpersoon |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

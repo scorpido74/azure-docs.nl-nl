@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: radeltch
-ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e48cb1baa515e6a1549bf913a3c3e4cf50e1fff6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314195"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525478"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen
 
@@ -83,7 +83,7 @@ Voordat u begint, raadpleegt u eerst de volgende SAP-opmerkingen en-documenten:
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
 * [Best Practice-hand leidingen voor SuSE SAP ha][suse-ha-guide] De gidsen bevatten alle vereiste informatie voor het instellen van netweave HA en SAP HANA systeem replicatie on-premises. Gebruik deze hand leidingen als algemene basis lijn. Ze bieden veel meer gedetailleerde informatie.
 * [Release opmerkingen voor de SUSE-extensie voor hoge Beschik baarheid van 12 SP3][suse-ha-12sp3-relnotes]
-* [SUSE-ondersteuning voor multi-SID-cluster](https://www.suse.com/c/sap-workloads-going-green/)
+* [SUSE multi-SID cluster Guide voor SLES 12 en SLES 15](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
 
 ## <a name="overview"></a>Overzicht
 
@@ -173,7 +173,7 @@ De documenten die hierboven worden weer gegeven, begeleiden u bij de stappen voo
 
 In dit voor beeld wordt ervan uitgegaan dat systeem **NW1** al is geïmplementeerd in het cluster. We laten u zien hoe u kunt implementeren in het cluster SAP Systems **NW2** en **NW3**. 
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
 ### <a name="prerequisites"></a>Vereisten 
 

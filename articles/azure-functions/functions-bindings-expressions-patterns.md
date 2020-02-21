@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766258"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485502"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Expressie patronen voor de binding Azure Functions
 
@@ -179,7 +179,7 @@ Deze meta gegevens waarden zijn toegankelijk in *Function. json* File-eigenschap
   ]
 ```
 
-Details van eigenschappen van meta gegevens voor elke trigger worden beschreven in het bijbehorende referentie artikel. Zie meta gegevens van de [wachtrij activeren](functions-bindings-storage-queue.md#trigger---message-metadata)voor een voor beeld. Documentatie is ook beschikbaar op het tabblad **integreren** van de portal, in de sectie **documentatie** onder het gedeelte bindings configuratie.  
+Details van eigenschappen van meta gegevens voor elke trigger worden beschreven in het bijbehorende referentie artikel. Zie meta gegevens van de [wachtrij activeren](functions-bindings-storage-queue-trigger.md#message-metadata)voor een voor beeld. Documentatie is ook beschikbaar op het tabblad **integreren** van de portal, in de sectie **documentatie** onder het gedeelte bindings configuratie.  
 
 ## <a name="json-payloads"></a>JSON-nettoladingen
 

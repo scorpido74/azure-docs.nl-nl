@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367960"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483751"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory naadloze eenmalige aanmelding
 
@@ -36,7 +36,7 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 ![Naadloze eenmalige aanmelding](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Voor naadloze SSO moet het apparaat van de gebruiker worden toegevoegd aan een **domein** , maar dit wordt niet gebruikt in [Azure AD join](../active-directory-azureadjoin-overview.md) of [Hybrid Azure AD joined] (.. /active-directory-azureadjoin-overview.md) apparaten. SSO PN Azure AD join en hybride Azure AD joined werken op basis van het [primaire vernieuwings token] (. /active-directory/devices/concept-primary-refresh-token.md)
+>Voor naadloze SSO moet het apparaat van de gebruiker alleen lid worden van een **domein** , maar dit wordt niet gebruikt op apparaten die zijn toegevoegd aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md) . SSO op Azure AD join en hybride Azure AD zijn toegevoegd op basis van het [primaire vernieuwings token](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
@@ -78,7 +78,7 @@ voor \*\*is Internet Explorer versie 10 of hoger vereist. Uitgebreide beveiligde
 voor \*\*\*is [aanvullende configuratie](how-to-connect-sso-quick-start.md#browser-considerations) vereist
 
 >[!NOTE]
->Voor Windows 10 is het aanbeveling om [Azure AD samen](../active-directory-azureadjoin-overview.md) te gebruiken voor de optimale ervaring voor eenmalige aanmelding met Azure AD.
+>Voor Windows 10 is het aanbeveling om [Azure AD samen](../devices/concept-azure-ad-join.md) te gebruiken voor de optimale ervaring voor eenmalige aanmelding met Azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
 

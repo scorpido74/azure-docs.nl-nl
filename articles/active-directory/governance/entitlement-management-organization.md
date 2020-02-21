@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548897"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483853"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD
 
@@ -77,7 +77,7 @@ Volg deze stappen om een extern Azure AD-Directory of-domein toe te voegen als v
 1. Klik op **toevoegen** om de Azure AD-Directory of het domein toe te voegen. Op dit moment kunt u slechts één Azure AD-adres lijst of-domein toevoegen per verbonden organisatie.
 
     > [!NOTE]
-    > Alle gebruikers uit de Azure AD-adres lijst of het-domein kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de Directory, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie voor meer informatie, [uitnodigingen toestaan of blokkeren voor B2B-gebruikers van bepaalde organisaties](../b2b/allow-deny-list.md).
+    > Alle gebruikers uit de Azure AD-adres lijst of het-domein kunnen dit toegangs pakket aanvragen. Dit omvat gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de Directory, tenzij deze domeinen worden geblokkeerd door de Azure B2B-lijst voor toestaan of weigeren. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](../b2b/allow-deny-list.md)voor meer informatie.
 
 1. Wanneer u de Azure AD-Directory of het domein hebt toegevoegd, klikt u op **selecteren**.
 
@@ -96,6 +96,23 @@ Volg deze stappen om een extern Azure AD-Directory of-domein toe te voegen als v
 1. Controleer op het tabblad **controleren en maken** de instellingen van uw organisatie en klik vervolgens op **maken**.
 
     ![Toegangs pakket-beleid-verbonden organisatie toevoegen-tabblad controleren + maken](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>Een verbonden organisatie bijwerken 
+
+Als de verbonden organisatie wijzigingen aanbrengt in een ander domein, of als u een nieuwe naam voor die organisatie hebt of als u de sponsors wilt wijzigen, kunt u de verbonden organisatie bijwerken.
+
+**Vereiste rol:** Globale beheerder, gebruikers beheerder of gast uitnodiging
+
+1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+
+1. Klik in het menu links op **verbonden organisaties** en klik vervolgens om de verbonden organisatie te openen.
+
+1. Klik op de pagina overzicht op **bewerken** om de naam of beschrijving van de organisatie te wijzigen.  
+
+1. Klik op de pagina Directory + domein op **Update Directory + domein** om naar een andere map of een ander domein te overschakelen.
+
+1. Klik op de pagina sponsors op **interne sponsors toevoegen** of **Voeg externe sponsors** toe om een gebruiker toe te voegen als sponsor.  Als u een sponsor wilt verwijderen, klikt u op de sponsor en klikt u in het menu aan de rechter kant op **verwijderen**.
+
 
 ## <a name="delete-a-connected-organization"></a>Een verbonden organisatie verwijderen
 

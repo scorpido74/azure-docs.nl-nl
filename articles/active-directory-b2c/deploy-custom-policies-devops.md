@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463139"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498540"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Aangepaste beleids regels implementeren met Azure-pijp lijnen
 
@@ -35,6 +35,7 @@ Er zijn drie primaire stappen vereist om Azure-pijp lijnen in te scha kelen voor
 
 * [Azure AD B2C Tenant](tutorial-create-tenant.md)en referenties voor een gebruiker in de directory met de [B2C IEF Policy](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) beheerdersrol
 * [Aangepast beleid](custom-policy-get-started.md) dat is geüpload naar uw Tenant
+* De [beheer-app](microsoft-graph-get-started.md) die is geregistreerd in uw Tenant met het Microsoft Graph API-machtigings *beleid. readwrite. TrustFramework*
 * [Azure-pijp lijn](https://azure.microsoft.com/services/devops/pipelines/)en toegang tot een [Azure DevOps Services-project][devops-create-project]
 
 ## <a name="client-credentials-grant-flow"></a>Stroom van toekenning van client referenties
@@ -43,47 +44,11 @@ Het scenario dat hier wordt beschreven, maakt gebruik van service-to-service-aan
 
 ## <a name="register-an-application-for-management-tasks"></a>Een toepassing registreren voor beheer taken
 
-Begin met het maken van een toepassings registratie die door Azure-pijp lijnen door de Power shell-scripts wordt gebruikt om te communiceren met Azure AD B2C. Als u al een toepassings registratie hebt die u voor Automation-taken gebruikt, kunt u door gaan naar de sectie [Grant permissions](#grant-permissions) .
+Zoals vermeld in [vereisten](#prerequisites), hebt u een toepassings registratie nodig die uw Power shell-scripts heeft uitgevoerd door Azure-pijp lijnen. Dit kan worden gebruikt voor toegang tot de resources in uw Tenant.
 
-### <a name="register-application"></a>Toepassing registreren
+Als u al een toepassings registratie hebt die u voor Automation-taken gebruikt, moet u ervoor zorgen dat de **Microsoft Graph** > **beleid** > **beleid. eigenschap readwrite. TrustFramework** binnen de **API-machtigingen** van de app-registratie is toegestaan.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="grant-permissions"></a>Machtigingen verlenen
-
-Verleen vervolgens de machtiging van de toepassing om de Microsoft Graph-API te gebruiken voor het lezen en schrijven van aangepaste beleids regels in uw Azure AD B2C-Tenant.
-
-#### <a name="applications"></a>[Toepassingen](#tab/applications/)
-
-1. Op de overzichts pagina van de **geregistreerde app** selecteert u **instellingen**.
-1. Selecteer onder **API-toegang**de optie **vereiste machtigingen**.
-1. Selecteer **toevoegen**en **Selecteer vervolgens een API**.
-1. Selecteer **Microsoft Graph**en **Selecteer**.
-1. Selecteer onder **toepassings machtigingen** **de optie Lees-en schrijf beleid van het vertrouwens raamwerk van uw organisatie**.
-1. Selecteer **selecteren**en vervolgens **gereed**.
-1. Selecteer **machtigingen verlenen**en selecteer vervolgens **Ja**. Het kan enkele minuten duren voordat de machtigingen volledig zijn door gegeven.
-
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
-
-1. Selecteer **app-registraties (preview)** en selecteer vervolgens de webtoepassing die toegang moet hebben tot de Microsoft Graph-API. Bijvoorbeeld *managementapp1*.
-1. Selecteer onder **beheren**de optie **API-machtigingen**.
-1. Selecteer onder **geconfigureerde machtigingen** **de optie een machtiging toevoegen**.
-1. Selecteer het tabblad **micro soft api's** en selecteer vervolgens **Microsoft Graph**.
-1. Selecteer **Toepassingsmachtigingen**.
-1. Vouw het **beleid** uit en selecteer **Policy. readwrite. TrustFramework**.
-1. Selecteer **machtigingen toevoegen**. Wacht een paar minuten voordat u verdergaat met de volgende stap.
-1. Selecteer **beheerder toestemming geven voor (uw Tenant naam)** .
-1. Selecteer het momenteel aangemelde Administrator-account of Meld u aan met een account in uw Azure AD B2C-Tenant waaraan ten minste de rol van *Cloud toepassings beheerder* is toegewezen.
-1. Selecteer **Accepteren**.
-1. Selecteer **vernieuwen**en controleer vervolgens of ' verleend voor... ' wordt weer gegeven onder **status**. Het kan enkele minuten duren voordat de machtigingen zijn door gegeven.
-
-* * *
-
-### <a name="create-client-secret"></a>Client geheim maken
-
-Als u wilt verifiëren met Azure AD B2C, moet uw Power shell-script een client geheim opgeven dat u voor de toepassing maakt.
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+Zie [Azure AD B2C beheren met Microsoft Graph](microsoft-graph-get-started.md)voor instructies voor het registreren van een beheer toepassing.
 
 ## <a name="configure-an-azure-repo"></a>Een Azure-opslag plaats configureren
 
@@ -200,7 +165,7 @@ Voeg vervolgens een taak toe om een beleids bestand te implementeren.
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. Selecteer **Opslaan** om de agent taak op te slaan.

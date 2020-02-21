@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f34fe324f22be41d8cdff0df67777bc254bbc290
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840057"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484261"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Overzicht van gebruikers accounts in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ De volgende typen accounts zijn beschikbaar:
 - **Gast account** : een gast account kan alleen een Microsoft-account of een Azure Active Directory gebruiker zijn die kan worden gebruikt voor toegang tot toepassingen of tenants beheren.
 - **Consument account** : een consument account wordt gebruikt door een gebruiker van de toepassingen die u hebt geregistreerd bij Azure AD B2C. Consumenten accounts kunnen worden gemaakt door:
   - De gebruiker doorloopt een aanmeldings stroom van een gebruiker in een Azure AD B2C-toepassing
-  - Azure AD Graph API gebruiken
+  - Microsoft Graph-API gebruiken
   - Azure Portal gebruiken
 
 ## <a name="work-account"></a>Werk account
@@ -76,12 +76,12 @@ U kunt ook de [Microsoft Graph-API](https://docs.microsoft.com/graph/api/invitat
 
 ## <a name="consumer-user"></a>Consumenten gebruiker
 
-De consumenten gebruiker kan zich aanmelden bij toepassingen die zijn beveiligd door Azure AD B2C, maar kunnen geen toegang krijgen tot Azure-resources zoals de Azure Portal. De gebruiker van de consument kan een lokaal account of federatieve accounts gebruiken, zoals Facebook of Twitter. Een Consumer-account wordt gemaakt met behulp van een [registratie-of aanmeldings gebruikers stroom](user-flow-overview.md)met behulp van de Azure AD-Graph API, of met behulp van de Azure Portal.
+De consumenten gebruiker kan zich aanmelden bij toepassingen die zijn beveiligd door Azure AD B2C, maar kunnen geen toegang krijgen tot Azure-resources zoals de Azure Portal. De gebruiker van de consument kan een lokaal account of federatieve accounts gebruiken, zoals Facebook of Twitter. Een Consumer account wordt gemaakt met behulp van een [registratie-of aanmeldings gebruikers stroom](user-flow-overview.md), met behulp van de Microsoft Graph-API of met behulp van de Azure Portal.
 
 U kunt de gegevens opgeven die worden verzameld wanneer een gebruikers account van een consument wordt gemaakt met behulp van aangepaste gebruikers kenmerken. Zie [aangepaste kenmerken definiëren in azure Active Directory B2C](user-flow-custom-attributes.md)voor meer informatie.
 
-U kunt de informatie in de sectie **gebruikers accounts voor consumenten maken** gebruiken om een Azure AD B2C-consument account te maken met [behulp van de Azure AD-Graph API](manage-user-accounts-graph-api.md) . U kunt ook de informatie in de sectie **gebruikers accounts van consumenten bijwerken** in hetzelfde artikel gebruiken om de eigenschappen van het account te beheren.
+Zie [Azure AD B2C gebruikers accounts beheren met Microsoft Graph](manage-user-accounts-graph-api.md)voor meer informatie over het beheren van consumenten accounts.
 
 ### <a name="migrate-consumer-user-accounts"></a>Gebruikers accounts van consumenten migreren
 
-Mogelijk moet u bestaande consumenten gebruikers accounts van een id-provider migreren naar Azure AD B2C. Zie [gebruikers migratie](user-migration.md) of [Gebruikers migreren met sociale identiteiten](migrate-social-identities.md)voor meer informatie.
+Mogelijk moet u bestaande consumenten gebruikers accounts van een id-provider migreren naar Azure AD B2C. Zie [Gebruikers migreren naar Azure AD B2C](user-migration.md)voor meer informatie.

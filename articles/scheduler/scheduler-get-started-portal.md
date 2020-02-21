@@ -1,36 +1,35 @@
 ---
-title: Geplande taken maken met Azure Scheduler - Azure Portal | Microsoft Docs
-description: Leer hoe u uw eerste geautomatiseerde taak kunt maken, plannen en uitvoeren met Azure Scheduler in de Azure Portal
+title: Geplande taken maken-Azure Portal
+description: Uw eerste geautomatiseerde taak in de Azure Portal maken, plannen en uitvoeren met behulp van Azure scheduler
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300979"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524798"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Uw eerste taak plannen en maken met Azure Scheduler - Azure Portal
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Uw eerste taak maken en plannen met behulp van Azure scheduler-Azure Portal
 
 > [!IMPORTANT]
 > [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) .
 
-In deze zelfstudie leert u hoe u gemakkelijk een taak kunt maken en plannen en die taak vervolgens kunt bewaken en beheren. 
+In deze zelfstudie leert u hoe u gemakkelijk een taak kunt maken en plannen en die taak vervolgens kunt bewaken en beheren.
 
-Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>.
+Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 ## <a name="create-job"></a>Taak maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).  
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer **Een resource maken** in het hoofdmenu van Azure. Voer in het zoekvak ‘Planner’ in. Selecteer in de lijst met resultaten **Planner** en kies daarna **Maken**.
+1. Voer in het zoekvak van Azure `scheduler` in als uw filter. Selecteer in de lijst met resultaten **scheduler-taak verzamelingen**en selecteer **maken**.
 
    ![Scheduler-resource maken](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -38,16 +37,16 @@ Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/fr
 
 1. Voer onder **Scheduler-taak** deze informatie in:
 
-   | Eigenschap | Voorbeeldwaarde | Description |
+   | Eigenschap | Voorbeeldwaarde | Beschrijving |
    |----------|---------------|-------------| 
-   | **Name** | getMicrosoft | De naam van uw taak | 
+   | **Naam** | getMicrosoft | De naam van uw taak | 
    | **Jobverzameling** | <*job-collection-name*> | Maak een taakverzameling of selecteer een bestaande verzameling. | 
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement | 
    |||| 
 
 1. Selecteer **Actie-instellingen - Configureren**, verstrek deze informatie en kies vervolgens **OK** als u klaar bent:
 
-   | Eigenschap | Voorbeeldwaarde | Description |
+   | Eigenschap | Voorbeeldwaarde | Beschrijving |
    |----------|---------------|-------------| 
    | **Actie** | **Http** | Het type actie dat moet worden uitgevoerd | 
    | **Methode** | **Get** | De aan te roepen methode | 
@@ -60,7 +59,7 @@ Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/fr
 
    U kunt maar een taak per keer maken, maar in dit voorbeeld wordt een terugkerend schema ingesteld.
 
-   | Eigenschap | Voorbeeldwaarde | Description |
+   | Eigenschap | Voorbeeldwaarde | Beschrijving |
    |----------|---------------|-------------| 
    | **Terugkeerpatroon** | **Terugkerend** | Voer een eenmalige of terugkerende taak in | 
    | **Beginnen op** | <*datum van vandaag*> | De begindatum van de taak | 
@@ -93,7 +92,7 @@ Selecteer een gebied voor meer informatie over deze gebieden:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Eigenschappen
 
 Selecteer **Eigenschappen** om alleen-lezeneigenschappen te bekijken die de beheermetagegevens voor uw taak beschrijven.
 
@@ -107,7 +106,7 @@ Selecteer **Actie-instellingen** om de geavanceerde instellingen van uw taak te 
 
 ![Actie-instellingen controleren](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-| Actietype | Description | 
+| Actietype | Beschrijving | 
 |-------------|-------------| 
 | Alle typen | U kunt het **Beleid voor opnieuw proberen** en de instellingen voor **foutacties** wijzigen. | 
 | HTTP en HTTPS | U kunt **Methode** wijzigen naar elke toegestane methode. U kunt ook de koptekst en elementaire verificatiegegevens toevoegen, verwijderen of wijzigen. | 

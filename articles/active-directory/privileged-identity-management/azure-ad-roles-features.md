@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896421"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499043"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Beheer mogelijkheden voor Azure AD-rollen in Privileged Identity Management
 
 De beheer ervaring voor Azure AD-rollen in Privileged Identity Management is bijgewerkt om samen te komen hoe Azure AD-rollen en Azure-resource rollen worden beheerd. Voorheen hadden Privileged Identity Management voor Azure-resource rollen een aantal belang rijke functies die niet beschikbaar waren voor Azure AD-rollen.
 
 Wanneer de update momenteel is geïmplementeerd, worden de twee in één beheer ervaring samengevoegd en krijgt u dezelfde functionaliteit voor Azure AD-rollen als voor Azure-resource rollen. In dit artikel wordt u geïnformeerd over de bijgewerkte functies en eventuele vereisten.
+
 
 ## <a name="time-bound-assignments"></a>Tijdgebonden toewijzingen
 

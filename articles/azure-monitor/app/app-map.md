@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407700"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485145"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
 
@@ -45,7 +45,7 @@ Klik op een onderdeel om gerelateerde inzichten te bekijken en ga naar de presta
 
 ![Flyout](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Mislukte pogingen onderzoeken
+### <a name="investigate-failures"></a>Fouten onderzoeken
 
 Selecteer **fouten onderzoeken** om het deel venster fouten te starten.
 
@@ -276,6 +276,6 @@ Als u feedback wilt geven, gebruikt u de optie feedback.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg het artikel over de [telemetrie-correlatie](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)voor meer informatie over hoe correlatie werkt in Application Insights.
+* Raadpleeg het artikel over de [telemetrie-correlatie](correlation.md)voor meer informatie over hoe correlatie werkt in Application Insights.
 * De [end-to-end trans actie diagnostische ervaring](transaction-diagnostics.md) verbindt de telemetrie aan de server zijde van alle Application Insights bewaakte onderdelen tot één weer gave.
 * Raadpleeg voor geavanceerde correlatie scenario's in ASP.NET Core en ASP.NET het artikel [aangepaste bewerkingen bijhouden](custom-operations-tracking.md) .

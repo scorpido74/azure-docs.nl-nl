@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847795"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484312"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Gebruikers stromen in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Met een gebruikers stroom kunt u gedrag in uw toepassingen beheren door de volge
 
 - Account typen die worden gebruikt voor aanmelding, zoals sociale accounts zoals een Facebook-of lokale account
 - Kenmerken die moeten worden verzameld van de consument, zoals de voor naam, de post code en de grootte van de schoenen
-- Verificatie op basis van meerdere factoren van Azure
+- Azure Multi-Factor Authentication
 - Aanpassing van de gebruikers interface
 - Informatie die de toepassing ontvangt als claims in een token
 
@@ -81,10 +81,8 @@ Een e-mail adres kan worden vereist als onderdeel van een gebruikers stroom. Als
 
 Het e-mail adres is niet gegarandeerd om in een van deze gevallen te worden geverifieerd. Een Tenant beheerder kan e-mail verificatie uitschakelen in het basis beleid voor lokale accounts. Zelfs als verificatie via e-mail adres is ingeschakeld, worden adressen niet gecontroleerd als ze afkomstig zijn van een sociale ID-provider en ze zijn niet gewijzigd.
 
-Alleen de eigenschappen **otherMails** en **signInNames** worden weer gegeven via de Active Directory Graph API. Het e-mail adres in de detail eigenschap sterke authenticatie is niet beschikbaar.
+Alleen de eigenschappen **otherMails** en **signInNames** worden weer gegeven via de Microsoft Graph-API. Het e-mail adres in de detail eigenschap sterke authenticatie is niet beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u de aanbevolen gebruikers stromen wilt maken, volgt u de instructies in de [zelf studie: een gebruikers stroom maken](tutorial-create-user-flows.md).
-
-

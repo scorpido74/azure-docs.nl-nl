@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190480"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486165"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureBackup** |Azure Backup.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **opslag** -en **AzureActiveDirectory** -Tags. | Uitgaand | Nee | Ja |
 | **AzureBotService** | Azure Bot Service. | Uitgaand | Nee | Nee |
 | **Cloud** | Alle [open bare IP-adressen van data centers](https://www.microsoft.com/download/details.aspx?id=56519). | Uitgaand | Ja | Ja |
-| **AzureCognitiveSearch** | Azure Cognitive Search (als indexeer functies met een vakkennisset worden gebruikt). | Beide | Nee | Nee |
+| **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Deze tag of de IP-adressen waarop deze tag wordt toegepast, kunnen worden gebruikt om Indexeer functies beveiligde toegang te geven tot gegevens bronnen. Raadpleeg de [documentatie van de indexers verbinding](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) voor meer informatie. | Inkomend | Nee | Nee |
 | **AzureConnectors** | Azure Logic Apps connectors voor probe/back-endverbinding. | Inkomend | Ja | Ja |
 | **AzureContainerRegistry** | Azure Container Registry. | Uitgaand | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos DB. | Uitgaand | Ja | Ja |

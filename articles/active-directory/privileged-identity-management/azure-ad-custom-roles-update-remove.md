@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33bd8554abc7566496cacaa943f0b1fdc15d8507
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: ad5747be47e250cf9c623cc40d21d12c91ee16f5
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048103"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499110"
 ---
 # <a name="update-or-remove-an-assigned-azure-ad-custom-role-in-privileged-identity-management"></a>Een toegewezen Azure AD-aangepaste rol bijwerken of verwijderen in Privileged Identity Management
 
@@ -31,7 +31,9 @@ In dit artikel leest u hoe u Privileged Identity Management (PIM) kunt gebruiken
 - Als u nog geen Privileged Identity Management hebt gebruikt, kunt u aan de slag [met privileged Identity Management](pim-getting-started.md)meer informatie.
 
 > [!NOTE]
-> Aangepaste Azure AD-rollen worden tijdens de preview-fase niet geïntegreerd met de ingebouwde Directory rollen. Zodra de mogelijkheid algemeen beschikbaar is, wordt Role Management-rollen beheer uitgevoerd in de ingebouwde functie-ervaring.
+> Aangepaste Azure AD-rollen worden tijdens de preview-fase niet geïntegreerd met de ingebouwde Directory rollen. Zodra de mogelijkheid algemeen beschikbaar is, wordt het beheer van rollen uitgevoerd in de ingebouwde functie-ervaring. Als u de volgende banner ziet, moeten deze rollen worden beheerd [in de ingebouwde functie-ervaring](pim-how-to-add-role-to-user.md) en dit artikel is niet van toepassing:
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="update-or-remove-an-assignment"></a>Een toewijzing bijwerken of verwijderen
 

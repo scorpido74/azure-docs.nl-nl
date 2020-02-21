@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: eefaaa59a3dc0f0900666bc697f64e4f405a0d74
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190766"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498709"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database automatisch afstemmen
 
@@ -82,8 +82,8 @@ Automatische afstemmings opties kunnen onafhankelijk worden in-of uitgeschakeld 
 > [!IMPORTANT]
 > Vanaf maart worden 2020 wijzigingen in de standaard instellingen van Azure voor automatische afstemming als volgt toegepast:
 > - Nieuwe standaard waarden van Azure worden FORCE_LAST_GOOD_PLAN = ingeschakeld, CREATE_INDEX = uitgeschakeld en DROP_INDEX = uitgeschakeld.
-> - Bestaande servers zonder automatisch afstemmen geconfigureerd voor keuren worden automatisch geconfigureerd met de nieuwe standaard instellingen van Azure. Dit geldt voor alle klanten die momenteel automatisch afstemmen met een niet-gedefinieerde status.
-> - Nieuwe servers die worden gemaakt, worden automatisch geconfigureerd met de nieuwe standaard waarden van Azure (in tegens telling tot eerdere versies van de automatische afstemmings configuratie tijdens het maken van een nieuwe server).
+> - Bestaande servers zonder automatisch afstemmen geconfigureerd voor keuren worden automatisch geconfigureerd om de nieuwe standaard waarden van Azure te overnemen. Dit geldt voor alle klanten die momenteel server instellingen voor automatisch afstemmen in een niet-gedefinieerde status hebben.
+> - Nieuwe servers die worden gemaakt, worden automatisch geconfigureerd voor het overnemen van de nieuwe standaard waarden van Azure (in tegens telling tot eerdere versies van de configuratie voor automatisch afstemmen bij het maken van een nieuwe server).
 >
 
 Het configureren van opties voor automatisch afstemmen op een server en het overnemen van instellingen voor data bases die deel uitmaken van de bovenliggende server is een aanbevolen methode voor het configureren van automatische afstemming, omdat het beheer van automatische afstemmings opties voor een groot aantal data bases vereenvoudigt.

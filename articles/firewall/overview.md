@@ -6,17 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 6a045a55772d1d9266663571fc2ecc6911aa5125
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2d931ed61cc3880a6158fd82f015e663ddb669c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442885"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485281"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
+
+![ICSA-certificering](media/overview/icsa-cert-firewall-small.png)
 
 Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid van de Cloud.
 
@@ -92,9 +94,9 @@ Hiermee worden de volgende scenario's ingeschakeld:
 
 Alle gebeurtenissen zijn geïntegreerd met Azure Monitor, zodat u logboeken kunt archiveren in een opslagaccount, gebeurtenissen kunt streamen naar uw Event Hub of deze kunt verzenden naar Azure Monitor-logboeken.
 
-## <a name="compliance-certifications"></a>Nalevingscertificeringen
+## <a name="certifications"></a>Certificeringen
 
-Azure Firewall zijn betaal kaart Industry (PCI), service organisatie Controls (SOC) en International Organization for Standardization (ISO)-compatibel. Zie [Azure firewall nalevings certificeringen](compliance-certifications.md)voor meer informatie.
+Azure Firewall is Payment Card Industry (PCI), service organisatie Controls (SOC), International Organization for Standardization (ISO) en ICSA Labs-compatibel. Zie [Azure firewall nalevings certificeringen](compliance-certifications.md)voor meer informatie.
 
 
 ## <a name="known-issues"></a>Bekende problemen
@@ -113,7 +115,7 @@ Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken nie
 |Kan de eerste open bare IP-configuratie niet verwijderen|Elk Azure Firewall openbaar IP-adres wordt toegewezen aan een *IP-configuratie*.  De eerste IP-configuratie wordt toegewezen tijdens de implementatie van de firewall en bevat doorgaans een verwijzing naar het subnet van de firewall (tenzij expliciet anders is geconfigureerd via een sjabloon implementatie). U kunt deze IP-configuratie niet verwijderen omdat hiermee de firewall opnieuw wordt toegewezen. U kunt het open bare IP-adres dat is gekoppeld aan deze IP-configuratie, nog steeds wijzigen of verwijderen als de firewall ten minste één ander openbaar IP-adres beschikbaar is voor gebruik.|Dit is standaard.|
 |Beschikbaarheids zones kunnen alleen worden geconfigureerd tijdens de implementatie.|Beschikbaarheids zones kunnen alleen worden geconfigureerd tijdens de implementatie. U kunt Beschikbaarheidszones niet configureren nadat er een firewall is geïmplementeerd.|Dit is standaard.|
 |SNAT op binnenkomende verbindingen|Naast DNAT worden verbindingen via het open bare IP-adres van de firewall (inkomend) omgezet op een van de privé Ip's van de firewall. Deze vereiste is vandaag (ook voor actieve/actieve Nva's) om symmetrische route ring te garanderen.|Als u de oorspronkelijke bron voor HTTP/S wilt behouden, kunt u [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) -headers gebruiken. Gebruik bijvoorbeeld een service zoals [Azure front deur](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) of [Azure-toepassing gateway](../application-gateway/rewrite-http-headers.md) vóór de firewall. U kunt ook WAF toevoegen als onderdeel van Azure front deur en keten aan de firewall.
-|SQL FQDN-filtering alleen ondersteuning in proxy modus (poort 1433)|Voor Azure SQL Database, Azure SQL Data Warehouse en Azure SQL Managed instance:<br><br>Tijdens de preview wordt SQL FQDN-filtering alleen ondersteund in de proxy modus (poort 1433).<br><br>Voor Azure SQL IaaS:<br><br>Als u niet-standaard poorten gebruikt, kunt u die poorten opgeven in de toepassings regels.|Voor SQL in de omleidings modus, wat de standaard instelling is als u vanuit Azure verbinding maakt, kunt u in plaats daarvan de toegang filteren met behulp van de SQL-service-tag als onderdeel van Azure Firewall netwerk regels.
+|SQL FQDN-filtering alleen ondersteuning in proxy modus (poort 1433)|Voor Azure SQL Database, Azure SQL Data Warehouse en Azure SQL Managed instance:<br><br>Tijdens de preview wordt SQL FQDN-filtering alleen ondersteund in de proxy modus (poort 1433).<br><br>Voor Azure SQL IaaS:<br><br>Als u werkt met niet-standaard poorten, kunt u die poorten opgeven in de toepassings regels.|Voor SQL in de omleidings modus, wat de standaard instelling is als u vanuit Azure verbinding maakt, kunt u in plaats daarvan de toegang filteren met behulp van de SQL-service-tag als onderdeel van Azure Firewall netwerk regels.
 |Uitgaand verkeer op TCP-poort 25 is niet toegestaan| Uitgaande SMTP-verbindingen die gebruikmaken van TCP-poort 25 worden geblokkeerd. Poort 25 wordt hoofd zakelijk gebruikt voor niet-geverifieerde e-mail bezorging. Dit is het standaard platform gedrag voor virtuele machines. Zie meer problemen [met uitgaande SMTP-connectiviteit oplossen in azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)voor meer informatie. Maar in tegens telling tot virtuele machines is het momenteel niet mogelijk om deze functionaliteit in te scha kelen op Azure Firewall.|Volg de aanbevolen methode voor het verzenden van e-mail zoals beschreven in het artikel problemen oplossen met SMTP. U kunt ook de virtuele machine uitsluiten waarvoor uitgaande SMTP-toegang is vereist van uw standaard route naar de firewall, en in plaats daarvan de uitgaande toegang rechtstreeks op Internet configureren.
 |Actieve FTP wordt niet ondersteund|Active FTP is uitgeschakeld op Azure Firewall om te beschermen tegen aanvallen met FTP-beveiliging met de opdracht FTP-poort.|U kunt in plaats daarvan passieve FTP gebruiken. U moet nog steeds expliciet TCP-poorten 20 en 21 openen op de firewall.
 

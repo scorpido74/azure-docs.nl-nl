@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471887"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484397"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Toewijzings fouten oplossen bij het maken, opnieuw opstarten of wijzigen van de grootte van Vm's in azure
 
@@ -87,9 +87,9 @@ Terwijl we Azure-infra structuur uitbreiden, implementeren we nieuwere hardware 
 
 |Verouderde VM-serie/grootte|Aanbevolen nieuwere VM-serie/-grootte|Meer informatie|
 |----------------------|----------------------------|--------------------|
-|Av1-serie|[Av2-serie](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 of DSv1-serie (D1 tot en met D5)|[Dv3 of DSv3-serie](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 of DSv1-serie (D11 naar D14)|[Ev3 of ESv3-serie](../windows/sizes-memory.md#ev3-series)|
+|Av1-serie|[Av2-serie](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 of DSv1-serie (D1 tot en met D5)|[Dv3 of DSv3-serie](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 of DSv1-serie (D11 naar D14)|[Ev3 of ESv3-serie](../ev3-esv3-series.md)|
 |D15v2 of DS15v2|Als u een theResource Manager-implementatie model gebruikt om gebruik te kunnen maken van de grotere VM-grootten, overweeg dan om over te stappen op D16v3/DS16v3 of D32v3/DS32v3. Deze zijn ontworpen om te worden uitgevoerd op de nieuwste generatie-hardware. Als u het Resource Manager-implementatie model gebruikt om ervoor te zorgen dat uw VM-exemplaar is geïsoleerd voor hardware die is toegewezen aan één klant, overweeg dan om over te stappen op de nieuwe geïsoleerde VM-grootten, E64i_v3 of E64is_v3, die zijn ontworpen om te worden uitgevoerd op de nieuwste generatie-hardware. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Toewijzings fouten voor grote implementaties (meer dan 500 kern geheugens)

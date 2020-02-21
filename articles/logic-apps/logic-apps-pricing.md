@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896387"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526141"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijs model voor Azure Logic Apps
 
@@ -40,13 +40,15 @@ Meer informatie over hoe facturering werkt voor [Triggers](#triggers) en [acties
 
 ## <a name="fixed-pricing-model"></a>Model met vaste prijzen
 
-Een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) biedt een persoonlijke, geïsoleerde en speciale manier om logische apps te maken en uit te voeren die toegang hebben tot bronnen in een virtueel Azure-netwerk. Voor nieuwe Logic apps die in een ISE worden uitgevoerd, betaalt u een [vaste maandelijkse prijs](https://azure.microsoft.com/pricing/details/logic-apps) voor deze mogelijkheden:
+Een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) biedt een geïsoleerde manier om logische apps te maken en uit te voeren die toegang hebben tot bronnen in een virtueel Azure-netwerk. Voor nieuwe Logic apps die in een ISE worden uitgevoerd, betaalt u een [vaste maandelijkse prijs](https://azure.microsoft.com/pricing/details/logic-apps) voor deze mogelijkheden:
 
-* [Ingebouwde triggers en acties](../connectors/apis-list.md#built-in)
+* [Ingebouwde](../connectors/apis-list.md#built-in) triggers en acties
 
-* [Standard-connectors](../connectors/apis-list.md#managed-connectors)
+  In een ISE worden met ingebouwde triggers en acties het **kern** label weer gegeven en uitgevoerd in dezelfde ISE als uw logische apps.
 
-* [Enter prise-connectors](../connectors/apis-list.md#enterprise-connectors) met zoveel verbindingen als u wilt
+* [Standard](../connectors/apis-list.md#managed-connectors) -connectors en [Enter prise](../connectors/apis-list.md#enterprise-connectors) -connectors (net als u dat wilt)
+
+   Standard-en Enter prise-connectors die het label **ISE** weer geven, worden uitgevoerd in dezelfde ISE als uw logische apps. Connectors die het label ISE niet weer geven, worden uitgevoerd in de service globale Logic Apps. Vaste maandelijkse prijzen gelden ook voor connectors die worden uitgevoerd in de globale service wanneer u deze gebruikt met Logic apps die worden uitgevoerd in een ISE.
 
 * Gebruik van het [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) zonder extra kosten, op basis van uw [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
@@ -60,12 +62,9 @@ Een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtual-net
 
   * **Developer SKU**: Maxi maal vier standaard accounts of Maxi maal vijf standaard accounts. Geen basis accounts.
 
-Zie [Logic apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)voor meer informatie over de limieten van het integratie account. Verderop in dit onderwerp vindt u meer informatie over [de integratie-account lagen en hun prijs model](#integration-accounts) .
+  Zie [Logic apps limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)voor meer informatie over de limieten van het integratie account. Verderop in dit onderwerp vindt u meer informatie over [de integratie-account lagen en hun prijs model](#integration-accounts) .
 
-Voor de Premium ISE SKU heeft de basis eenheid vaste capaciteit, dus als u meer door voer wilt, kunt u tijdens het maken of later [meer schaal eenheden toevoegen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). De Developer ISE SKU beschikt niet over de mogelijkheid om meer schaal eenheden toe te voegen. Logic apps die in een ISE worden uitgevoerd, zijn geen kosten voor het bewaren van gegevens.
-
-> [!NOTE]
-> In een ISE worden met ingebouwde triggers en acties het **kern** label weer gegeven en uitgevoerd in dezelfde ISE als uw logische apps. Standard-en Enter prise-connectors die het label **ISE** weer geven, worden uitgevoerd in dezelfde ISE als uw logische apps. Connectors die het label ISE niet weer geven, worden uitgevoerd in de service globale Logic Apps.
+Als u de Premium ISE SKU kiest, heeft de basis eenheid vaste capaciteit. Als u meer door voer wilt, kunt u tijdens het maken of later [meer schaal eenheden toevoegen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). De Developer ISE SKU beschikt niet over de mogelijkheid om meer schaal eenheden toe te voegen. Logic apps die in een ISE worden uitgevoerd, zijn geen kosten voor het bewaren van gegevens.
 
 Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps)voor prijs tarieven.
 
@@ -108,7 +107,7 @@ Uitgeschakelde Logic apps worden niet in rekening gebracht omdat ze geen nieuwe 
 
 <a name="integration-accounts"></a>
 
-## <a name="integration-accounts"></a>Integratieaccounts
+## <a name="integration-accounts"></a>Integratie accounts
 
 Een [vast prijs model](https://azure.microsoft.com/pricing/details/logic-apps) is van toepassing op [integratie accounts](logic-apps-enterprise-integration-create-integration-account.md) waar u de [B2B-en EDI](logic-apps-enterprise-integration-b2b.md) [-en XML-verwerkings](logic-apps-enterprise-integration-xml.md) functies in azure Logic apps zonder extra kosten kunt verkennen, ontwikkelen en testen. Elk Azure-abonnement kan Maxi maal een [specifieke limiet van integratie accounts](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)hebben. Elk integratie account kan tot een specifieke [limiet van artefacten](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)worden opgeslagen, waaronder handels partners, overeenkomsten, kaarten, schema's, assembly's, certificaten, batch configuraties, enzovoort.
 
@@ -126,7 +125,7 @@ Als u wilt kiezen tussen een gratis, basis of standaard integratie account, raad
 
 <a name="data-retention"></a>
 
-## <a name="data-retention"></a>Gegevens bewaren
+## <a name="data-retention"></a>Bewaartijd van gegevens
 
 Met uitzonde ring van Logic apps die worden uitgevoerd in een Integration service Environment (ISE), worden alle invoer en uitvoer die zijn opgeslagen in de uitvoerings geschiedenis van de logische app, gefactureerd op basis van de [uitvoerings periode](logic-apps-limits-and-config.md#run-duration-retention-limits)van een logische app. Logic apps die in een ISE worden uitgevoerd, zijn geen kosten voor het bewaren van gegevens. Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps)voor prijs tarieven.
 

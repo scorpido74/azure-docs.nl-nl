@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986815"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485332"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -85,12 +85,12 @@ Als u oplossingen wilt weer geven in de Azure Portal, klikt u op **meer** in het
 ## <a name="logs"></a>Logboeken
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Wat is het verschil tussen Azure Monitor logboeken en Azure Data Explorer?
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Monitor-Logboeken is gebaseerd op Azure Data Explorer en maakt gebruik van dezelfde Kusto query language (KQL) met enkele kleine verschillen. Zie [Azure monitor taal verschillen in de logboek query](log-query/data-explorer-difference.md).
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Monitor-Logboeken is gebaseerd op Azure Data Explorer en maakt gebruik van dezelfde Kusto query language (KQL) met enkele kleine verschillen. Zie [Azure monitor taal verschillen in de logboek query](log-query/data-explorer-difference.md).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hoe kan ik logboek gegevens ophalen?
 Alle gegevens worden opgehaald uit een Log Analytics-werk ruimte met behulp van een logboek query die is geschreven met Kusto query language (KQL). U kunt uw eigen query's schrijven of oplossingen en inzichten gebruiken die logboek query's bevatten voor een bepaalde toepassing of service. Zie [overzicht van logboek query's in azure monitor](log-query/log-query-overview.md).
 
-### <a name="what-is-a-log-analytics-workspace"></a>Wat is een Log Analytics-werkruimte?
+### <a name="what-is-a-log-analytics-workspace"></a>Wat is een Log Analytics-werk ruimte?
 Alle door Azure Monitor verzamelde logboek gegevens worden opgeslagen in een Log Analytics-werk ruimte. Een werk ruimte is in feite een container waarin logboek gegevens worden verzameld uit verschillende bronnen. Mogelijk hebt u een enkele Log Analytics-werk ruimte voor al uw bewakings gegevens of hebt u vereisten voor meerdere werk ruimten. Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kunt u een bestaande Log Analytics-werk ruimte verplaatsen naar een ander Azure-abonnement?
@@ -240,7 +240,7 @@ In het Enter prise-plan worden kosten in rekening gebracht voor elke dag dat elk
 
 [Lees het prijs plan](https://azure.microsoft.com/pricing/details/application-insights/).
 
-### <a name="how-much-does-it-cost"></a>Wat kost deze oplossing?
+### <a name="how-much-does-it-cost"></a>Wat kost het?
 
 * Open de **pagina gebruik en geschatte kosten** in een Application Insights resource. Er is een grafiek van recent gebruik. Als u wilt, kunt u een limiet voor gegevens volumes instellen.
 * Open de [Blade Azure-facturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) om uw rekeningen voor alle resources weer te geven.
@@ -347,7 +347,7 @@ Dit is mogelijk als uw code dergelijke gegevens verzendt. Dit kan ook gebeuren a
 
 U kunt het volgende doen:
 
-* Gebruik twee afzonderlijke instrumentatie sleutels (afzonderlijke Application Insights resources) voor client-en Server gegevens. Of
+* Gebruik twee afzonderlijke instrumentatie sleutels (afzonderlijke Application Insights resources) voor client-en Server gegevens. of
 * Schrijf een proxy die op uw server wordt uitgevoerd en laat de webclient gegevens verzenden via die proxy.
 
 ### <a name="post"></a>Hoe kan ik raadpleegt u POST gegevens in diagnostische Zoek opdrachten?
@@ -381,8 +381,8 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 | Stack traceringen ophalen van uitzonde ringen |[TrackException-aanroepen invoegen in uw code](app/asp-net-exceptions.md) (maar sommige worden automatisch gerapporteerd) |Uitzonde ringen detecteren en diagnosticeren |
 | Logboek traceringen zoeken |[Een logboek registratie adapter toevoegen](app/asp-net-trace-logs.md) |Diagnose uitzonde ringen, prestatie problemen |
 | Basis beginselen van client gebruik: pagina weergaven, sessies,... |[Java script-initialisatie functie in webpagina's](app/javascript.md) |Gebruiksanalyse |
-| Aangepaste metrische gegevens van client |[Aanroepen bijhouden op webpagina's](app/api-custom-events-metrics.md) |Gebruikerservaring verbeteren |
-| Aangepaste metrische gegevens voor de server |[Tracerings aanroepen op server](app/api-custom-events-metrics.md) |Business Intelligence |
+| Aangepaste metrische gegevens van client |[Aanroepen bijhouden op webpagina's](app/api-custom-events-metrics.md) |Gebruikers ervaring verbeteren |
+| Aangepaste metrische gegevens voor de server |[Tracerings aanroepen op server](app/api-custom-events-metrics.md) |Business intelligence |
 
 ### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Waarom zijn de aantallen in zoek-en metrische grafieken niet gelijk?
 
@@ -395,7 +395,7 @@ Elk item dat wordt verzonden, bevat een `itemCount`-eigenschap die laat zien hoe
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatisering
 
 #### <a name="configuring-application-insights"></a>Application Insights configureren
 
@@ -520,7 +520,7 @@ Deze veelgestelde vragen over micro soft is een lijst met veelgestelde vragen ov
 
 Voor Agent versie ciprod12042019 en hoger worden deze twee eigenschappen standaard niet ingevuld voor elke logboek regel om de kosten te minimaliseren voor logboek gegevens die worden verzameld. Er zijn twee opties voor het opvragen van de tabel die deze eigenschappen bevat met hun waarden:
 
-#### <a name="option-1"></a>Optie 1 
+#### <a name="option-1"></a>optie 1 
 
 Neem deel aan andere tabellen om deze eigenschaps waarden in de resultaten op te nemen.
 
@@ -678,7 +678,7 @@ Als u een instelling van een status criterium instantie wijzigt, worden alle sta
 Nee, de status van een afzonderlijke processor en een logisch processor niveau is niet opgenomen voor een Windows. alleen het totale CPU-gebruik wordt standaard gecontroleerd om de CPU-belasting effectief te beoordelen op basis van het totale aantal logische Cpu's dat beschikbaar is voor de virtuele machine van Azure. 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>Zijn alle drempel waarden voor status criteria geconfigureerd?  
-Drempelwaarden voor de health-criteria die zijn gericht op een Windows-VM zijn gewijzigd, niet omdat hun statussen zijn ingesteld op *met* of *beschikbaar*. Wanneer u de status van een query de [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wordt de *vergelijkingsoperator* waarde van **LessThan** of **groter dan** met een *drempelwaarde* waarde van **4** voor de service of de entiteit als:
+Drempel waarden voor de status criteria die zijn gericht op een Windows-VM, kunnen niet worden gewijzigd, omdat hun status wordt ingesteld op *actief* of *beschikbaar*. Wanneer u een query uitvoert op de status van de [API voor workload-bewaking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wordt de *ComparisonOperator* -waarde **LessThan** of **GreaterThan** met een *drempel* waarde van **4** voor de service of entiteit weer gegeven als:
    - DNS-Client-Service Health-Service niet actief is. 
    - DHCP-client-service health-Service niet actief is. 
    - RPC-Service Health-Service niet actief is. 
@@ -688,16 +688,19 @@ Drempelwaarden voor de health-criteria die zijn gericht op een Windows-VM zijn g
    - Windows remote management-service health-Service wordt niet uitgevoerd. 
    - Bestandssysteemfout of beschadiging – logische schijf is niet beschikbaar.
 
-Drempelwaarden voor de volgende criteria voor Linux-status zijn gewijzigd, niet omdat hun status is al ingesteld op *waar*. De status wordt weergegeven de *vergelijkingsoperator* met een waarde **LessThan** en *drempelwaarde* waarde van **1** wanneer opgevraagd uit de Workload bewakings-API voor de entiteit, afhankelijk van de context:
+Drempel waarden voor de volgende status criteria van Linux kunnen niet worden gewijzigd, omdat hun status al is ingesteld op *waar*. In de status wordt de *comparisonOperator* met de waarde **LessThan** en de *drempel* waarde **1** weer gegeven wanneer er een query wordt uitgevoerd vanuit de API voor het bewaken van workloads voor de entiteit, afhankelijk van de context:
    - Status van logische schijf – logische schijf is niet online / beschikbaar
    - De Status van de schijf-schijf is niet online / beschikbaar
    - Status van Network Adapter - netwerkadapter is uitgeschakeld
 
 ### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Hoe kan ik wijzigen van waarschuwingen die zijn opgenomen in de status functie?
-Regels voor waarschuwingen die zijn gedefinieerd voor elk criterium status worden niet weergegeven in de Azure-portal. U kunt inschakelen of uitschakelen van een statuswaarschuwing voor de regel alleen in de [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). U kunt ook geen [Azure monitor actie groep](platform/action-groups.md) toewijzen voor status waarschuwingen in de Azure Portal. U kunt de API voor meldings instellingen alleen gebruiken om een actie groep te configureren die wordt geactiveerd wanneer een status waarschuwing wordt geactiveerd. Op dit moment kunt u actiegroepen op basis van een virtuele machine toewijzen zodat alle *statusmeldingen* dezelfde actiegroepen op basis van de VM-trigger wordt geactiveerd. In tegenstelling tot traditionele Azure-waarschuwingen is er geen concept van een aparte actiegroep voor elke status waarschuwingsregel. Bovendien worden alleen actiegroepen die zijn geconfigureerd voor e-mailadres of SMS-berichten ondersteund wanneer de gezondheid van waarschuwingen worden geactiveerd. 
+Regels voor waarschuwingen die zijn gedefinieerd voor elk criterium status worden niet weergegeven in de Azure-portal. U kunt een waarschuwings regel voor de status alleen in-of uitschakelen in de [API voor workload-bewaking](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). U kunt ook geen [Azure monitor actie groep](platform/action-groups.md) toewijzen voor status waarschuwingen in de Azure Portal. U kunt de API voor meldings instellingen alleen gebruiken om een actie groep te configureren die wordt geactiveerd wanneer een status waarschuwing wordt geactiveerd. Op dit moment kunt u actie groepen toewijzen aan een virtuele machine, zodat alle *status waarschuwingen* voor de virtuele machine dezelfde actie groepen activeren. In tegenstelling tot traditionele Azure-waarschuwingen is er geen concept van een aparte actiegroep voor elke status waarschuwingsregel. Bovendien worden alleen actiegroepen die zijn geconfigureerd voor e-mailadres of SMS-berichten ondersteund wanneer de gezondheid van waarschuwingen worden geactiveerd. 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Ik zie niet sommige of alle gegevens in de prestatiegrafieken voor mijn virtuele machine
+Onze prestatie grafieken zijn bijgewerkt voor het gebruik van gegevens die zijn opgeslagen in de tabel *InsightsMetrics* .  Als u gegevens in deze grafieken wilt weer geven, moet u een upgrade uitvoeren om de nieuwe VM Insights-oplossing te gebruiken.  Raadpleeg onze Ga naar de [Veelgestelde vragen](insights/vminsights-ga-release-faq.md) voor meer informatie.
+
 Als u geen prestatie gegevens in de tabel schijf of in een aantal prestatie grafieken ziet, zijn de prestatie meter items mogelijk niet geconfigureerd in de werk ruimte. Voer het volgende [Power shell-script](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)uit om het probleem op te lossen.
+
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hoe verschilt Azure Monitor voor VM's kaart functie van Servicetoewijzing?
 De functie Azure Monitor voor VM's map is gebaseerd op Servicetoewijzing, maar heeft de volgende verschillen:
