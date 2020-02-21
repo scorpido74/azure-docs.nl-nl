@@ -7,12 +7,12 @@ ms.date: 09/30/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3fcc4d9d33637cd61f5621cc95788e9de8ffaec6
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671369"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500118"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure 
 
@@ -91,7 +91,7 @@ Open nu uw browser en navigeer naar [http://localhost:3000](http://localhost:300
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Implementatie in Azure
+## <a name="deploy-to-azure"></a>Implementeren in Azure
 
 In deze sectie implementeert u uw node. js-app met behulp van VS code en de uitbrei ding Azure App Service. Deze Snelstartgids maakt gebruik van het meest eenvoudige implementatie model waarin uw app is ingepakt en geïmplementeerd op een Azure Web App on Linux.
 

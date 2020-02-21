@@ -1,5 +1,6 @@
 ---
-title: Beveiligings functies die worden gebruikt met Azure virtual machines-Azure-beveiliging | Microsoft Docs
+title: Beveiligings functies die worden gebruikt met virtuele Azure-machines
+titleSuffix: Azure security
 description: Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die kunnen worden gebruikt met Azure Virtual Machines.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792623"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500384"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Overzicht van Azure Virtual Machines-beveiliging
 Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die kunnen worden gebruikt met virtuele machines.
@@ -74,7 +75,7 @@ Meer informatie:
 
 Het verbeteren van de sleutel beveiliging kan versleuteling en verificatie beveiliging verbeteren. U kunt het beheer en de beveiliging van uw essentiële geheimen en sleutels vereenvoudigen door ze op te slaan in Azure Key Vault.
 
-Azure Key Vault biedt u de mogelijkheid om uw sleutels op te slaan in Hardware Security Modules (HSM's) die zijn gecertificeerd voor de standaarden van FIPS 140-2 Level 2. Uw SQL Server versleutelings sleutels voor back-up of [transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met alle sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Key Vault biedt de mogelijkheid om uw sleutels op te slaan in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden. Uw SQL Server versleutelings sleutels voor back-up of [transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx) kunnen allemaal worden opgeslagen in Key Vault met alle sleutels of geheimen van uw toepassingen. Machtigingen en toegang tot deze beveiligde items worden beheerd via [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 Meer informatie:
 
@@ -94,7 +95,7 @@ Meer informatie:
 
 ## <a name="virtual-machine-backup"></a>Back-up van virtuele machine
 
-Azure Backup is een schaal bare oplossing die helpt bij het beschermen van uw toepassings gegevens met een kapitaal investering van nul en minimale bedrijfs kosten. Toepassingsfouten kunnen uw gegevens beschadigen, en menselijke fouten kunnen fouten introduceren in uw toepassingen. Met Azure Backup worden uw virtuele machines met Windows en Linux beveiligd.
+Azure Backup is een schaal bare oplossing die helpt bij het beschermen van uw toepassings gegevens met een kapitaal investering van nul en minimale bedrijfs kosten. Toepassings fouten kunnen uw gegevens beschadigen en menselijke fouten kunnen leiden tot fouten in uw toepassingen. Met Azure Backup worden uw virtuele machines met Windows en Linux beveiligd.
 
 Meer informatie:
 

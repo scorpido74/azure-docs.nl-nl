@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048596"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506058"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels voor uw Azure Cosmos-account configureren met Azure Key Vault
 
@@ -61,7 +61,7 @@ Voor informatie over het inschakelen van deze eigenschappen voor een bestaand Az
 
    ![De juiste machtigingen selecteren](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Zoek vervolgens naar **Azure Cosmos DB** Principal en selecteer deze. Kies tot slot onderaan **selecteren** . Als de principal van de **Azure Cosmos DB** zich niet in de lijst bevindt, moet u de resource provider **micro soft. DocumentDB** mogelijk opnieuw registreren zoals beschreven in de sectie [de resource provider registreren](#register-resource-provider) in dit artikel.
+1. Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Vervolgens zoekt u naar **Azure Cosmos DB** Principal en selecteert u deze (om eenvoudiger te vinden, kunt u ook zoeken op Principal-ID: `a232010e-820c-4083-83bb-3ace5fc29d0b` voor elke Azure-regio, met uitzonde ring van Azure Government regio's waar de principal-ID is `57506a73-e302-42a9-b869-6f12d9ec29e9`). Kies tot slot onderaan **selecteren** . Als de principal van de **Azure Cosmos DB** zich niet in de lijst bevindt, moet u de resource provider **micro soft. DocumentDB** mogelijk opnieuw registreren zoals beschreven in de sectie [de resource provider registreren](#register-resource-provider) in dit artikel.
 
    ![Selecteer de Azure Cosmos DB-Principal](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 

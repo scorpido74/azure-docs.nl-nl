@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905273"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526492"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -121,6 +121,8 @@ AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebru
 De logboeken bevatten de status van de fout (`UPLOADFAILED`, `COPYFAILED`en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
 
 Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE%\.azcopy` op Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
+
+De relevante fout is niet noodzakelijkerwijs de eerste fout die in het bestand wordt weer gegeven. Voor fouten, zoals netwerk fouten, time-outs en fouten bij de server bezet, zal AzCopy Maxi maal 20 keer opnieuw proberen en wordt het proces voor nieuwe pogingen meestal voltooid.  De eerste fout die u ziet kan iets onschadelijk zijn.  In plaats van de eerste fout in het bestand te bekijken, zoekt u naar de fouten die zich in de buurt `UPLOADFAILED`, `COPYFAILED`of `DOWNLOADFAILED`bevinden. 
 
 > [!IMPORTANT]
 > Wanneer u een aanvraag indient om Microsoft Ondersteuning (of het probleem met een derde partij op te lossen), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iedereen wordt gedeeld. U kunt de geredigeerde versie vinden aan het begin van het logboek bestand.

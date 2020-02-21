@@ -1,5 +1,6 @@
 ---
-title: Aanbevolen beveiligings procedures voor het beveiligen van uw assets-Microsoft Azure
+title: Aanbevolen beveiligings procedures voor uw Azure-assets
+titleSuffix: Azure security
 description: Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219504"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500290"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -28,18 +29,18 @@ Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveilig
 De aanbevolen procedures zijn gebaseerd op een advies van de mening en ze werken met de huidige mogelijkheden en functie sets van het Azure-platform. Meningen en technologieën veranderen in de loop van de tijd en dit artikel wordt regel matig bijgewerkt om deze wijzigingen weer te geven.
 
 ## <a name="define-and-deploy-strong-operational-security-practices"></a>Krachtige operationele beveiligings procedures definiëren en implementeren
-Azure Operational Security heeft betrekking op de services, besturings elementen en functies die beschikbaar zijn voor gebruikers voor het beveiligen van hun gegevens, toepassingen en andere assets in Azure. Azure Operational Security is gebaseerd op een Framework met de kennis die is opgedaan via mogelijkheden die uniek zijn voor micro soft, waaronder de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl), het [micro soft Security Response Center](https://www.microsoft.com/msrc?rtc=1) Program ma's en dieper inzicht in de Cyber beveiliging Threat landschap.
+Azure Operational Security heeft betrekking op de services, besturings elementen en functies die beschikbaar zijn voor gebruikers voor het beveiligen van hun gegevens, toepassingen en andere assets in Azure. Azure Operational Security is gebaseerd op een Framework met de kennis die is opgedaan via mogelijkheden die uniek zijn voor micro soft, waaronder de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl), het [micro soft Security Response Center](https://www.microsoft.com/msrc?rtc=1) -programma en dieper inzicht in de Cyber beveiliging Threat-landschap.
 
 ## <a name="manage-and-monitor-user-passwords"></a>Gebruikers wachtwoorden beheren en bewaken
 De volgende tabel bevat enkele aanbevolen procedures voor het beheren van gebruikers wachtwoorden:
 
-**Aanbevolen procedure**: Zorg ervoor dat u het juiste niveau van wachtwoord beveiliging hebt in de Cloud.   
-**Details**: Volg de richt lijnen in [micro soft-wachtwoord richtlijnen](https://www.microsoft.com/research/publication/password-guidance/)voor gebruikers van de micro soft Identity platforms (Azure Active Directory, Active Directory en Microsoft-account).
+**Aanbevolen procedure**: Zorg ervoor dat u het juiste niveau van wachtwoord beveiliging in de Cloud hebt.   
+**Details**: Volg de richt lijnen in de [richt lijnen voor micro soft-wacht woorden](https://www.microsoft.com/research/publication/password-guidance/), die zijn afgestemd op gebruikers van de micro soft identity platforms (Azure Active Directory, Active Directory en Microsoft-account).
 
-**Aanbevolen procedure**: Controleren op verdachte acties die betrekking hebben op uw gebruikers accounts.   
-**Details**: Bewaak voor [gebruikers die risico](/azure/active-directory/reports-monitoring/concept-user-at-risk) lopen en [Risk ante aanmeldingen](../../active-directory/reports-monitoring/concept-risk-events.md) met BEhulp van Azure AD-beveiligings rapporten.
+**Best Practice**: monitor voor verdachte acties die betrekking hebben op uw gebruikers accounts.   
+**Details**: monitor voor [gebruikers die risico](/azure/active-directory/reports-monitoring/concept-user-at-risk) lopen en [Risk ante aanmeldingen](../../active-directory/reports-monitoring/concept-risk-events.md) met behulp van Azure AD-beveiligings rapporten.
 
-**Aanbevolen procedure**: Automatische detectie en herstel van wacht woorden met een hoog risico.   
+**Aanbevolen procedure**: automatische detectie en herstel van wacht woorden met een hoog risico.   
 **Details**: [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview) is een functie van de Azure AD Premium P2-editie waarmee u het volgende kunt doen:
 
 - Mogelijke beveiligings problemen detecteren die van invloed zijn op de identiteiten van uw organisatie
@@ -58,25 +59,25 @@ U kunt een flexibele structuur van beheer groepen en abonnementen bouwen in een 
 
 Hier volgen enkele aanbevolen procedures voor het gebruik van beheer groepen:
 
-**Aanbevolen procedure**: Zorg ervoor dat nieuwe abonnementen governance-elementen Toep assen zoals beleid en machtigingen wanneer ze worden toegevoegd.   
-**Details**: Gebruik de hoofd beheer groep om beveiligings elementen op ondernemings niveau toe te wijzen die van toepassing zijn op alle Azure-assets. Beleids regels en machtigingen zijn voor beelden van elementen.
+**Best Practice**: Zorg ervoor dat nieuwe abonnementen governance-elementen Toep assen zoals beleid en machtigingen wanneer ze worden toegevoegd.   
+**Details**: gebruik de hoofd beheer groep om beveiligings elementen op ondernemings niveau toe te wijzen die van toepassing zijn op alle Azure-assets. Beleids regels en machtigingen zijn voor beelden van elementen.
 
-**Aanbevolen procedure**: Lijn de hoogste niveaus van beheer groepen uit met segmentatie strategie om een punt te bieden voor de consistentie van beheer en beleid binnen elk segment.   
-**Details**: Maak één beheer groep voor elk segment in de hoofd beheer groep. Maak geen andere beheer groepen in de hoofdmap.
+**Best Practice**: lijn de hoogste niveaus van beheer groepen uit met segmentatie strategie om een punt te bieden voor de controle en beleids consistentie binnen elk segment.   
+**Details**: Maak een afzonderlijke beheer groep voor elk segment onder de hoofd beheer groep. Maak geen andere beheer groepen in de hoofdmap.
 
-**Aanbevolen procedure**: Beperk de diepte van de beheer groep om Verwar ring te voor komen die zowel bewerkingen als beveiliging belemmeren.   
+**Best Practice**: diepte van beheer groepen beperken om Verwar ring te voor komen die zowel bewerkingen als beveiliging belemmeren.   
 **Details**: Beperk uw hiërarchie tot drie niveaus, met inbegrip van de hoofdmap.
 
-**Aanbevolen procedure**: Selecteer zorgvuldig welke items u wilt Toep assen op de hele onderneming met de hoofd beheer groep.   
-**Details**: Zorg ervoor dat de elementen van de hoofd beheer groep duidelijk moeten worden toegepast op elke resource en dat ze weinig invloed hebben.
+**Best Practice**: Selecteer zorgvuldig welke items u wilt Toep assen op de hele onderneming met de hoofd beheer groep.   
+**Details**: Zorg ervoor dat elementen van de hoofd beheer groep duidelijk moeten worden toegepast op elke resource en dat ze weinig gevolgen hebben.
 
 Goede kandidaten zijn onder andere:
 
 - Wettelijke vereisten die een duidelijke bedrijfs impact hebben (bijvoorbeeld beperkingen met betrekking tot data soevereiniteit)
 - Vereisten met bijna nul mogelijke negatieve invloed op bewerkingen, zoals beleid met controle-of RBAC-machtigingen toewijzingen die zorgvuldig zijn gecontroleerd
 
-**Aanbevolen procedure**: Plan alle zakelijke wijzigingen in de hoofd beheer groep zorgvuldig en test deze voordat u ze toepast (beleid, RBAC-model, enzovoort).   
-**Details**: Wijzigingen in de hoofd beheer groep kunnen van invloed zijn op elke resource in Azure. Hoewel ze een krachtige manier bieden om consistentie tussen de onderneming te garanderen, kunnen fouten of een onjuist gebruik de productie bewerkingen negatief beïnvloeden. Test alle wijzigingen in de hoofd beheer groep in een testlab of productie pilot.
+**Best Practice**: zorgvuldig plannen en testen van alle bedrijfs wijzigingen in de hoofd beheer groep voordat u deze toepast (beleid, RBAC-model, enzovoort).   
+**Details**: wijzigingen in de hoofd beheer groep kunnen van invloed zijn op elke resource in Azure. Hoewel ze een krachtige manier bieden om consistentie tussen de onderneming te garanderen, kunnen fouten of een onjuist gebruik de productie bewerkingen negatief beïnvloeden. Test alle wijzigingen in de hoofd beheer groep in een testlab of productie pilot.
 
 ## <a name="streamline-environment-creation-with-blueprints"></a>Het maken van een omgeving stroom lijnen met blauw drukken
 Met de Azure-service voor [blauw drukken](/azure/governance/blueprints/overview) kunnen Cloud architecten en centrale informatie technologie groepen een Herhaal bare set Azure-resources definiëren die worden geïmplementeerd en voldoet aan de normen, patronen en vereisten van een organisatie. Met Azure-blauw drukken kunnen ontwikkel teams snel nieuwe omgevingen bouwen en maken met een aantal ingebouwde componenten en het vertrouwen dat ze in de organisatie-en bedrijfs voorwaarden maken.
@@ -103,25 +104,25 @@ Bijna alle bedrijfs organisaties hebben een SIEM-systeem (Security Information a
 
 Hier volgen enkele aanbevolen procedures voor het voor komen, detecteren en reageren op bedreigingen:
 
-**Aanbevolen procedure**: Verhoog de snelheid en schaal baarheid van uw SIEM-oplossing met behulp van een SIEM op basis van de Cloud.   
-**Details**: Onderzoek de functies en mogelijkheden van [Azure Sentinel](/azure/sentinel/overview) en vergelijk ze met de mogelijkheden van wat u momenteel op locatie gebruikt. Overweeg het vaststellen van Azure Sentinel als deze voldoet aan de SIEM-vereisten van uw organisatie.
+**Best Practice**: Verhoog de snelheid en schaal baarheid van uw Siem-oplossing met behulp van een Siem op basis van de Cloud.   
+**Details**: onderzoek de functies en mogelijkheden van [Azure Sentinel](/azure/sentinel/overview) en vergelijkt deze met de mogelijkheden van wat u momenteel op locatie gebruikt. Overweeg het vaststellen van Azure Sentinel als deze voldoet aan de SIEM-vereisten van uw organisatie.
 
-**Aanbevolen procedure**: Zoek de meest ernstige beveiligings problemen, zodat u het onderzoek kunt priori teren.   
-**Details**: Bekijk uw [beveiligde Azure-Score](../../security-center/security-center-secure-score.md) voor een overzicht van de aanbevelingen die voortkomen uit de Azure-beleids regels en-initiatieven die zijn ingebouwd in azure Security Center. Deze aanbevelingen helpen u bij het oplossen van de belangrijkste Risico's zoals beveiligings updates, Endpoint Protection, versleuteling, beveiligings configuraties, ontbrekende WAF, met internet verbonden Vm's en nog veel meer.
+**Best Practice**: Zoek de meest ernstige beveiligings problemen, zodat u het onderzoek kunt priori teren.   
+**Details**: Controleer uw [beveiligde Azure-Score](../../security-center/security-center-secure-score.md) voor een overzicht van de aanbevelingen die voortkomen uit de Azure-beleids regels en-initiatieven die zijn ingebouwd in azure Security Center. Deze aanbevelingen helpen u bij het oplossen van de belangrijkste Risico's zoals beveiligings updates, Endpoint Protection, versleuteling, beveiligings configuraties, ontbrekende WAF, met internet verbonden Vm's en nog veel meer.
 
 Met de beveiligde Score, die is gebaseerd op de besturings elementen Center voor Internet Security (CIS), kunt u de Azure-beveiliging van uw organisatie vergelijkt met externe bronnen. Externe validatie helpt bij het valideren en verrijken van de beveiligings strategie van uw team.
 
-**Aanbevolen procedure**: Bewaak de beveiligings postuur van machines, netwerken, opslag en gegevens Services en toepassingen om mogelijke beveiligings problemen op te sporen en op te lossen.  
+**Best Practice**: Controleer de beveiligings postuur van machines, netwerken, opslag en gegevens Services en toepassingen om mogelijke beveiligings problemen op te sporen en op te lossen.  
 **Details**: Volg de [beveiligings aanbevelingen](../../security-center/security-center-recommendations.md) in Security Center starten, met de items met de hoogste prioriteit.
 
-**Aanbevolen procedure**: Integreer Security Center waarschuwingen in uw SIEM-oplossing (Security Information and Event Management).   
-**Details**: De meeste organisaties met een SIEM gebruiken deze als centraal-Clearinghouse voor beveiligings waarschuwingen waarvoor een analisten reactie nodig is. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center worden gepubliceerd in het Azure-activiteiten logboek, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijp lijn voor de route ring van uw bewakings gegevens in een SIEM-hulp programma. Zie [beveiligings oplossingen integreren in Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) voor instructies. Als u Azure Sentinel gebruikt, raadpleegt u [verbinding maken Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Aanbevolen procedure**: Integreer Security Center waarschuwingen in uw Siem-oplossing (Security Information and Event Management).   
+**Details**: de meeste organisaties met een Siem gebruiken deze als centraal-Clearinghouse voor beveiligings waarschuwingen waarvoor een analisten reactie is vereist. Verwerkte gebeurtenissen die zijn geproduceerd door Security Center worden gepubliceerd in het Azure-activiteiten logboek, een van de logboeken die beschikbaar zijn via Azure Monitor. Azure Monitor biedt een geconsolideerde pijp lijn voor de route ring van uw bewakings gegevens in een SIEM-hulp programma. Zie [beveiligings oplossingen integreren in Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) voor instructies. Als u Azure Sentinel gebruikt, raadpleegt u [verbinding maken Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
-**Aanbevolen procedure**: Integreer Azure-logboeken met uw SIEM.   
-**Details**: Gebruik [Azure monitor om gegevens te verzamelen en te exporteren](/azure/azure-monitor/overview#integrate-and-export-data). Deze procedure is essentieel voor het inschakelen van het onderzoek van beveiligings incidenten en het online bewaren van Logboeken is beperkt. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.
+**Best Practice**: Azure-logboeken integreren met uw Siem.   
+**Details**: gebruik [Azure monitor om gegevens te verzamelen en te exporteren](/azure/azure-monitor/overview#integrate-and-export-data). Deze procedure is essentieel voor het inschakelen van het onderzoek van beveiligings incidenten en het online bewaren van Logboeken is beperkt. Zie [verbinding maken met gegevens bronnen](../../sentinel/connect-data-sources.md)als u Azure Sentinel gebruikt.
 
-**Aanbevolen procedure**: Versnel uw onderzoek en jacht processen en verminder fout-positieven door de functies voor het detecteren van eind punten te integreren in uw aanvals onderzoek.   
-**Details**: [Schakel de micro soft Defender ATP-integratie in](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) via uw Security Center-beveiligings beleid. Overweeg het gebruik van Azure Sentinel voor het beletten van dreigingen en reacties op incidenten.
+**Best Practice**: Versnel uw onderzoek en jacht processen en verminder fout-positieven door de functies voor het detecteren van eind punten te integreren in uw aanvals onderzoek.   
+**Details**: [Schakel micro soft Defender ATP-integratie in](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) via uw Security Center-beveiligings beleid. Overweeg het gebruik van Azure Sentinel voor het beletten van dreigingen en reacties op incidenten.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>End-to-end op scenario's gebaseerde netwerk bewaking bewaken
 Klanten bouwen een end-to-end netwerk in azure door netwerk bronnen te combi neren, zoals een virtueel netwerk, ExpressRoute, Application Gateway en load balancers. Bewaking is beschikbaar op elk van de netwerk bronnen.
@@ -130,31 +131,31 @@ Klanten bouwen een end-to-end netwerk in azure door netwerk bronnen te combi ner
 
 Hieronder vindt u de aanbevolen procedures voor netwerk bewaking en beschik bare hulpprogram ma's.
 
-**Aanbevolen procedure**: Automatiseer externe netwerk bewaking met pakket opname.  
-**Details**: Bewaak en diagnose netwerk problemen zonder u aan te melden bij uw Vm's met behulp van Network Watcher. Activeer [pakket vastleggen](../../network-watcher/network-watcher-alert-triggered-packet-capture.md) door waarschuwingen in te stellen en toegang te krijgen tot real-time prestatie gegevens op pakket niveau. Wanneer er een probleem wordt vastgesteld, kunt u dat uitgebreid onderzoeken voor een gedetailleerde diagnose.
+**Best Practice**: externe netwerk bewaking automatiseren met pakket opname.  
+**Details**: netwerk problemen bewaken en diagnosticeren zonder u aan te melden bij uw vm's met behulp van Network Watcher. Activeer [pakket vastleggen](../../network-watcher/network-watcher-alert-triggered-packet-capture.md) door waarschuwingen in te stellen en toegang te krijgen tot real-time prestatie gegevens op pakket niveau. Wanneer er een probleem wordt weer gegeven, kunt u Details onderzoeken voor betere diagnoses.
 
-**Aanbevolen procedure**: Krijg inzicht in uw netwerk verkeer door gebruik te maken van stroom Logboeken.  
-**Details**: Bouw een dieper inzicht in uw netwerk verkeer met behulp van [stroom logboeken voor netwerk beveiligings groepen](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). Informatie in stroom logboeken helpt u bij het verzamelen van gegevens voor naleving, controle en controle van uw netwerk beveiligings profiel.
+**Aanbevolen procedure**: krijg inzicht in uw netwerk verkeer door gebruik te maken van stroom Logboeken.  
+**Details**: bouw een dieper inzicht in uw netwerk verkeer met behulp van [stroom logboeken voor netwerk beveiligings groepen](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). Informatie in stroom logboeken helpt u bij het verzamelen van gegevens voor naleving, controle en controle van uw netwerk beveiligings profiel.
 
-**Aanbevolen procedure**: Problemen met de VPN-verbinding vaststellen.  
-**Details**: Gebruik Network Watcher om [uw meest voorkomende VPN gateway en verbindings problemen vast](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)te stellen. U kunt het probleem niet alleen identificeren, maar ook gedetailleerde logboeken gebruiken om verder te onderzoeken.
+**Best Practice**: problemen met VPN-verbindingen vaststellen.  
+**Details**: gebruik Network Watcher om [de meest voorkomende VPN gateway-en verbindings problemen vast](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)te stellen. U kunt het probleem niet alleen identificeren, maar ook gedetailleerde logboeken gebruiken om verder te onderzoeken.
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>Implementatie beveiligen met behulp van bewezen DevOps-hulpprogram ma's
 Gebruik de volgende best practices voor DevOps om ervoor te zorgen dat uw onderneming en teams productief en efficiënt zijn.
 
-**Aanbevolen procedure**: Automatiseer het bouwen en implementeren van services.  
-**Details**: [Infra structuur als code](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) bestaat uit een reeks technieken en procedures waarmee IT-professionals de last van het dagelijks bouwen en beheren van modulaire infra structuur kunnen opheffen. Zo kunnen IT-professionals hun moderne server omgeving bouwen en onderhouden op een manier zoals hoe software ontwikkelaars toepassings code bouwen en onderhouden.
+**Aanbevolen procedure**: het bouwen en implementeren van services automatiseren.  
+**Details**: de [infra structuur als code](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code) bestaat uit een reeks technieken en procedures waarmee IT-professionals de overhead van dagelijkse ontwikkeling en het beheer van modulaire infra structuur kunnen opheffen. Zo kunnen IT-professionals hun moderne server omgeving bouwen en onderhouden op een manier zoals hoe software ontwikkelaars toepassings code bouwen en onderhouden.
 
 U kunt [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) gebruiken om uw toepassingen in te richten met behulp van een declaratieve sjabloon. U kunt in één enkele sjabloon meerdere services plus de bijbehorende afhankelijkheden implementeren. U gebruikt dezelfde sjabloon om uw toepassing herhaaldelijk te implementeren in elke fase van de levens cyclus van de toepassing.
 
-**Aanbevolen procedure**: Bouw en implementeer automatisch Azure web apps of Cloud Services.  
-**Details**: U kunt uw Azure DevOps Projects configureren om automatisch Azure web apps of Cloud Services te [bouwen en implementeren](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) . Azure DevOps implementeert de binaire bestanden automatisch na het maken van een build naar Azure na elke code inchecken. Het proces voor het bouwen van pakketten is gelijk aan de pakket opdracht in Visual Studio en de publicatie stappen zijn gelijk aan de opdracht publiceren in Visual Studio.
+**Aanbevolen procedure**: automatisch bouwen en implementeren in azure web apps of Cloud Services.  
+**Details**: u kunt uw Azure DevOps projects zo configureren dat deze [automatisch wordt gebouwd en geïmplementeerd](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) in azure web apps of Cloud Services. Azure DevOps implementeert de binaire bestanden automatisch na het maken van een build naar Azure na elke code inchecken. Het proces voor het bouwen van pakketten is gelijk aan de pakket opdracht in Visual Studio en de publicatie stappen zijn gelijk aan de opdracht publiceren in Visual Studio.
 
-**Aanbevolen procedure**: Automatiseer release beheer.  
-**Details**: [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) is een oplossing voor het automatiseren van de implementatie met meerdere stages en het beheren van het release proces. Maak beheerde pijp lijnen voor continue implementatie om snel, eenvoudig en vaak te worden vrijgegeven. Met Azure-pijp lijnen kunt u uw release proces automatiseren en kunt u vooraf gedefinieerde goedkeurings werk stromen hebben. Implementeer on-premises en naar de Cloud, breid en pas ze indien nodig aan.
+**Best Practice**: release beheer automatiseren.  
+**Details**: [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) is een oplossing voor het automatiseren van de implementatie met meerdere fasen en het beheer van het release proces. Maak beheerde pijp lijnen voor continue implementatie om snel, eenvoudig en vaak te worden vrijgegeven. Met Azure-pijp lijnen kunt u uw release proces automatiseren en kunt u vooraf gedefinieerde goedkeurings werk stromen hebben. Implementeer on-premises en naar de Cloud, breid en pas ze indien nodig aan.
 
 **Aanbevolen procedure**: Controleer de prestaties van uw app voordat u deze start of installeer updates voor de productie.  
-**Details**: Voer in de cloud gebaseerde [belasting tests](/azure/devops/test/load-test/overview#alternatives) uit om:
+**Details**: Voer op de cloud gebaseerde [belasting tests](/azure/devops/test/load-test/overview#alternatives) uit om:
 
 - Zoek prestatie problemen in uw app.
 - Verbeter de implementatie kwaliteit.
@@ -163,8 +164,8 @@ U kunt [Azure Resource Manager](https://azure.microsoft.com/documentation/articl
 
 [Apache JMeter](https://jmeter.apache.org/) is een gratis, populair hulp programma voor open source met een krachtige Community-back-up.
 
-**Aanbevolen procedure**: Bewaak de prestaties van de toepassing.  
-**Details**: [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) is een UITBREID bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Gebruik Application Insights om uw Live Web-app te bewaken. Er worden automatisch prestatie afwijkingen gedetecteerd. Het bevat hulpprogram ma's voor analyse waarmee u problemen kunt vaststellen en inzicht kunt krijgen in wat gebruikers daad werkelijk doen met uw app. Het is bedoeld om u te helpen de prestaties en bruikbaarheid continu te verbeteren.
+**Best Practice**: prestaties van toepassingen bewaken.  
+**Details**: [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) is een uitbreid bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Gebruik Application Insights om uw Live Web-app te bewaken. Er worden automatisch prestatie afwijkingen gedetecteerd. Het bevat hulpprogram ma's voor analyse waarmee u problemen kunt vaststellen en inzicht kunt krijgen in wat gebruikers daad werkelijk doen met uw app. Het is bedoeld om u te helpen de prestaties en bruikbaarheid continu te verbeteren.
 
 ## <a name="mitigate-and-protect-against-ddos"></a>Problemen oplossen en beveiligen tegen DDoS
 Distributed Denial of service (DDoS) is een type aanval waarmee toepassings bronnen worden uitgeput. Het doel is de beschik baarheid van de toepassing en de mogelijkheid om legitieme aanvragen af te handelen te beïnvloeden. Deze aanvallen zijn geavanceerder en groter en van invloed op de omvang en de impact. Ze kunnen worden gericht op elk eind punt dat openbaar bereikbaar is via internet.
@@ -172,19 +173,19 @@ Distributed Denial of service (DDoS) is een type aanval waarmee toepassings bron
 Voor het ontwerpen en bouwen van DDoS-tolerantie moet u plannen en ontwerpen voor diverse fout modi. Hieronder vindt u de aanbevolen procedures voor het bouwen van DDoS-flexibele services in Azure.
 
 **Aanbevolen procedure**: Zorg ervoor dat beveiliging een prioriteit heeft gedurende de hele levens cyclus van een toepassing, van ontwerp en implementatie tot implementatie en bewerkingen. Toepassingen kunnen fouten hebben waardoor een relatief laag volume aan aanvragen een groot aantal bronnen kan gebruiken, wat resulteert in een service storing.  
-**Details**: Als u een service die wordt uitgevoerd op Microsoft Azure wilt beveiligen, moet u een goed beeld hebben van de architectuur van uw toepassing en zich richten op de [vijf pijlers van de software kwaliteit](https://docs.microsoft.com/azure/architecture/guide/pillars). U moet rekening houden met typische verkeers volumes, het verbindings model tussen de toepassing en andere toepassingen en de service-eind punten die beschikbaar worden gesteld aan het open bare Internet.
+**Details**: als u een service die wordt uitgevoerd op Microsoft Azure wilt beveiligen, moet u een goed idee hebben van de architectuur van uw toepassing en zich richten op de [vijf pijlers van software kwaliteit](https://docs.microsoft.com/azure/architecture/guide/pillars). U moet rekening houden met typische verkeers volumes, het verbindings model tussen de toepassing en andere toepassingen en de service-eind punten die beschikbaar worden gesteld aan het open bare Internet.
 
 Ervoor zorgen dat een toepassing robuust genoeg is voor het afhandelen van een denial of service die is gericht op de toepassing zelf, is het belangrijkst. Beveiliging en privacy zijn ingebouwd in het Azure-platform, te beginnen met de [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl). De SDL vertrouwt de beveiliging van elke ontwikkelings fase en zorgt ervoor dat Azure voortdurend wordt bijgewerkt om het nog veiliger te maken.
 
-**Aanbevolen procedure**: Ontwerp uw toepassingen zodanig dat ze [horizon taal kunnen worden geschaald](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) om te voldoen aan de vraag naar een versterkte belasting, met name in het geval van een DDoS-aanval. Als uw toepassing afhankelijk is van één exemplaar van een service, wordt er een Single Point of Failure gemaakt. Door meerdere exemplaren in te richten, zorgt u ervoor dat uw systeem robuuster en schaalbaar is.  
-**Details**: Selecteer voor [Azure app service](/azure/app-service/app-service-value-prop-what-is)een [app service-abonnement](../../app-service/overview-hosting-plans.md) dat meerdere exemplaren biedt.
+**Best Practice**: ontwerp uw toepassingen om [horizon taal te schalen](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) om te voldoen aan de vraag naar een versterkte belasting, met name in het geval van een DDoS-aanval. Als uw toepassing afhankelijk is van één exemplaar van een service, wordt er een Single Point of Failure gemaakt. Door meerdere exemplaren in te richten, zorgt u ervoor dat uw systeem robuuster en schaalbaar is.  
+**Details**: selecteer voor [Azure app service](/azure/app-service/app-service-value-prop-what-is)een [app service abonnement](../../app-service/overview-hosting-plans.md) dat meerdere exemplaren biedt.
 
 Configureer voor Azure Cloud Services elk van uw rollen om [meerdere exemplaren](../../cloud-services/cloud-services-choose-me.md)te gebruiken.
 
 Zorg ervoor dat uw VM-architectuur meer dan één virtuele machine bevat voor [Azure virtual machines](/azure/virtual-machines/windows/overview)en dat elke virtuele machine is opgenomen in een [beschikbaarheidsset](/azure/virtual-machines/virtual-machines-windows-manage-availability). We raden u aan virtuele-machine schaal sets te gebruiken voor de mogelijkheden voor automatisch schalen.
 
-**Aanbevolen procedure**: Als u beveiligings beveiliging in een toepassing laagt, vermindert u de kans op een geslaagde aanval. Implementeer beveiligde ontwerpen voor uw toepassingen met behulp van de ingebouwde mogelijkheden van het Azure-platform.  
-**Details**: Het risico van een aanval neemt toe met de grootte (surface area) van de toepassing. U kunt de surface area verminderen door White List te gebruiken om de beschik bare IP-adres ruimte te sluiten en poorten te belui Steren die niet nodig zijn op de load balancers ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) en [Azure-toepassing gateway](/azure/application-gateway/application-gateway-create-probe-portal)).
+**Best Practice**: het laag brengen van beveiligings beveiliging in een toepassing vermindert de kans op een geslaagde aanval. Implementeer beveiligde ontwerpen voor uw toepassingen met behulp van de ingebouwde mogelijkheden van het Azure-platform.  
+**Details**: het risico van een aanval neemt toe met de grootte (Surface Area) van de toepassing. U kunt de surface area verminderen door White List te gebruiken om de beschik bare IP-adres ruimte te sluiten en poorten te belui Steren die niet nodig zijn op de load balancers ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) en [Azure-toepassing gateway](/azure/application-gateway/application-gateway-create-probe-portal)).
 
 [Netwerk beveiligings groepen](../../virtual-network/security-overview.md) zijn een andere manier om de kwets baarheid voor aanvallen te verminderen. U kunt [service Tags](../../virtual-network/security-overview.md#service-tags) en [toepassings beveiligings groepen](../../virtual-network/security-overview.md#application-security-groups) gebruiken om de complexiteit te minimaliseren voor het maken van beveiligings regels en het configureren van netwerk beveiliging, als een natuurlijke uitbrei ding van de structuur van een toepassing.
 
@@ -206,16 +207,16 @@ Schakel Azure Policy in om het vastgelegde beleid van uw organisatie te controle
 
 Hier volgen enkele aanbevolen procedures voor beveiliging na het aannemen van Azure Policy:
 
-**Aanbevolen procedure**: Het beleid ondersteunt verschillende soorten effecten. Meer informatie hierover vindt u in [Azure Policy Definition structure](../../governance/policy/concepts/definition-structure.md#policy-rule). Bedrijfs bewerkingen kunnen een negatieve invloed hebben op het **weigerings** effect en het **herstel** effect, dus begin met het **controle** -effect om het risico van negatieve gevolgen van het beleid te beperken.   
-**Details**: [Start beleids implementaties in de controle modus](../../governance/policy/concepts/definition-structure.md#policy-rule) en stel vervolgens de voortgang op **weigeren** of **herstellen**. De resultaten van het controle-effect testen en bekijken voordat u doorgaat met **weigeren** of **herstellen**.
+**Best Practice**: het beleid ondersteunt verschillende soorten effecten. Meer informatie hierover vindt u in [Azure Policy Definition structure](../../governance/policy/concepts/definition-structure.md#policy-rule). Bedrijfs bewerkingen kunnen een negatieve invloed hebben op het **weigerings** effect en het **herstel** effect, dus begin met het **controle** -effect om het risico van negatieve gevolgen van het beleid te beperken.   
+**Details**: Hiermee start u de [beleids implementaties in de controle modus](../../governance/policy/concepts/definition-structure.md#policy-rule) en vervolgens de voortgang om deze te **weigeren** of te **herstellen**. De resultaten van het controle-effect testen en bekijken voordat u doorgaat met **weigeren** of **herstellen**.
 
 Zie [beleid maken en beheren om naleving af te dwingen](../../governance/policy/tutorials/create-and-manage.md)voor meer informatie.
 
-**Aanbevolen procedure**: Identificeer de rollen die verantwoordelijk zijn voor de bewaking van beleids schendingen en zorg ervoor dat de juiste herstel actie snel wordt uitgevoerd.   
-**Details**: De toegewezen Role monitor moet voldoen aan het [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) of via de [opdracht regel](../../governance/policy/how-to/get-compliance-data.md#command-line).
+**Best Practice**: Identificeer de rollen die verantwoordelijk zijn voor de bewaking van beleids schendingen en zorg ervoor dat de juiste herstel actie snel wordt uitgevoerd.   
+**Details**: de toegewezen Role monitor moet voldoen aan het [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) of via de [opdracht regel](../../governance/policy/how-to/get-compliance-data.md#command-line).
 
-**Aanbevolen procedure**: Azure Policy is een technische weer gave van het schriftelijke beleid van een organisatie. Wijs Alle Azure-beleids regels toe aan het organisatie beleid om Verwar ring te beperken en de consistentie te verg Roten.   
-**Details**: Document toewijzing in de documentatie van uw organisatie of in het Azure-beleid zelf door een verwijzing naar het organisatie beleid toe te voegen in de beschrijving van het Azure- [beleid](../../governance/policy/concepts/definition-structure.md#display-name-and-description) of de beschrijving van het Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) .
+**Best Practice**: Azure Policy is een technische weer gave van het schriftelijke beleid van een organisatie. Wijs Alle Azure-beleids regels toe aan het organisatie beleid om Verwar ring te beperken en de consistentie te verg Roten.   
+**Details**: document toewijzing in de documentatie van uw organisatie of in het Azure-beleid zelf door een verwijzing naar het organisatie beleid toe te voegen in de beschrijving van het Azure- [beleid](../../governance/policy/concepts/definition-structure.md#display-name-and-description) of de beschrijving van het Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) .
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Risico rapporten van Azure AD bewaken
 Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam [risico detectie](../../active-directory/reports-monitoring/concept-risk-events.md). Risico detecties worden vastgelegd in azure AD-beveiligings rapporten. Lees voor meer informatie over het beveiligings rapport [gebruikers die risico](../../active-directory/reports-monitoring/concept-user-at-risk.md) lopen, en het [beveiligings rapport Risk ante aanmeldingen](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
@@ -225,4 +226,4 @@ Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-an
 
 De volgende resources zijn beschikbaar om meer algemene informatie te geven over Azure-beveiliging en gerelateerde micro soft-Services:
 * [Blog van het Azure-beveiligings team](https://blogs.msdn.microsoft.com/azuresecurity/) : voor actuele informatie over de nieuwste Azure-beveiliging
-* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail worden verzonden naarsecure@microsoft.com
+* [Micro soft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) : waar micro soft-beveiligings problemen, met inbegrip van problemen met Azure, kunnen worden gerapporteerd of via e-mail naar secure@microsoft.com

@@ -1,23 +1,27 @@
 ---
-title: Best practices voor beveiliging Playbook voor Azure SQL Database | Microsoft Docs
-description: Dit artikel bevat algemene richt lijnen voor aanbevolen beveiligings procedures in Azure SQL Database.
+title: Playbook voor het adresseren van algemene beveiligings vereisten | Microsoft Docs
+titleSuffix: Azure SQL Database
+description: Dit artikel bevat algemene beveiligings vereisten en aanbevolen procedures in Azure SQL Database.
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845882"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506223"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database best practices voor Playbook-beveiliging
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database
 
-## <a name="overview"></a>Overzicht
+> [!NOTE]
+> Dit document bevat aanbevolen procedures voor het oplossen van algemene beveiligings vereisten. Niet alle vereisten zijn van toepassing op alle omgevingen en u moet uw data base en beveiligings team raadplegen voor de functies die moeten worden geïmplementeerd.
+
+## <a name="solving-common-security-requirements"></a>Veelvoorkomende beveiligings vereisten oplossen
 
 Dit document bevat richt lijnen voor het oplossen van algemene beveiligings vereisten voor nieuwe of bestaande toepassingen met behulp van Azure SQL Database. Het is ingedeeld op beveiligings gebieden op hoog niveau. Raadpleeg de sectie [veelvoorkomende beveiligings Risico's en mogelijke oplossingen](#common-security-threats-and-potential-mitigations) voor meer informatie over het adresseren van specifieke bedreigingen. Hoewel enkele van de gepresenteerde aanbevelingen van toepassing zijn bij het migreren van toepassingen van on-premises naar Azure, zijn migratie scenario's niet de focus van dit document.
 
@@ -59,12 +63,15 @@ Tenzij anders vermeld, raden we u aan alle aanbevolen procedures in elke sectie 
 
 We gaan nu verder met het bijwerken van de aanbevelingen en aanbevolen procedures die hier worden vermeld. Geef een invoer of eventuele correcties voor dit document op met behulp van de **feedback** koppeling onder aan dit artikel.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Database ondersteunt twee typen verificatie:
 
 - SQL-verificatie
-- Azure Active Directory-authenticatie
+- Azure Active Directory-verificatie
+
+> [!NOTE]
+> Azure Active Directory-verificatie wordt mogelijk niet ondersteund voor alle hulpprogram ma's en toepassingen van derden.
 
 ### <a name="central-management-for-identities"></a>Centraal beheer voor identiteiten
 
@@ -82,7 +89,7 @@ Centraal identiteits beheer biedt de volgende voor delen:
 
 - Maak een Azure AD-Tenant en [Maak gebruikers](../active-directory/fundamentals/add-users-azure-active-directory.md) voor het vertegenwoordigen van personen en het maken van [service-principals](../active-directory/develop/app-objects-and-service-principals.md) voor apps, services en hulpprogram ma's voor automatisering. Service-principals zijn gelijk aan service accounts in Windows en Linux. 
 
-- Toegangs rechten toewijzen aan resources voor Azure AD-principals via groeps toewijzing: Azure AD-groepen maken, toegang verlenen aan groepen en afzonderlijke leden toevoegen aan de groepen. Maak in uw data base Inge sloten database gebruikers die uw Azure AD-groepen toewijzen. 
+- Toegangs rechten toewijzen aan resources voor Azure AD-principals via groeps toewijzing: Azure AD-groepen maken, toegang verlenen aan groepen en afzonderlijke leden toevoegen aan de groepen. Maak in uw data base Inge sloten database gebruikers die uw Azure AD-groepen toewijzen. Als u machtigingen wilt toewijzen in de-data base, plaatst u gebruikers in database rollen met de juiste machtigingen.
   - Zie de artikelen [Azure Active Directory verificatie met SQL configureren en beheren](sql-database-aad-authentication-configure.md) en [Azure AD gebruiken voor verificatie met SQL](sql-database-aad-authentication.md).
   > [!NOTE]
   > In een beheerd exemplaar kunt u ook aanmeldingen maken die worden toegewezen aan Azure AD-principals in de hoofd database. Zie [login maken (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
@@ -204,11 +211,6 @@ SQL-verificatie verwijst naar de verificatie van een gebruiker bij het verbinden
 - Als Server beheerder maakt u aanmeldingen en gebruikers. Tenzij u Inge sloten database gebruikers met wacht woorden gebruikt, worden alle wacht woorden opgeslagen in de data base Master.
   - Zie het artikel een [database toegang beheren en verlenen aan SQL database en SQL Data Warehouse](sql-database-manage-logins.md).
 
-- Volg de aanbevolen procedures voor wachtwoord beheer:
-  - Geef een complex wacht woord op, bestaande uit Latijnse hoofd-en kleine letters, cijfers (0-9) en niet-alfanumerieke tekens (zoals $,!, # of%).
-  - Gebruik langere wachtwoord zinnen in plaats van minder wille keurig geselecteerde tekens.
-  - Hand matig wijzigen van het wacht woord afdwingen ten minste elke 90 dagen.
-
 ## <a name="access-management"></a>Toegangsbeheer
 
 Toegangs beheer is het proces van het beheren en beheren van de toegang en bevoegdheden van geautoriseerde gebruikers tot Azure SQL Database.
@@ -250,24 +252,25 @@ De volgende aanbevolen procedures zijn optioneel, maar leiden tot betere beheers
 
 - U hoeft geen machtigingen voor afzonderlijke gebruikers toe te wijzen. Gebruik in plaats daarvan functies (Data Base-of Server functies). Rollen helpen de machtigingen voor rapportage en probleem oplossing aanzienlijk te verbeteren. (Azure RBAC ondersteunt alleen machtigingen toewijzing via rollen.) 
 
-- Gebruik ingebouwde rollen wanneer de machtigingen van de rollen overeenkomen met de vereiste machtigingen voor de gebruiker. U kunt gebruikers toewijzen aan meerdere rollen. 
-
-- Aangepaste rollen maken en gebruiken wanneer ingebouwde rollen te veel of onvoldoende machtigingen verlenen. Typische rollen die in de praktijk worden gebruikt: 
+- Maak en gebruik aangepaste rollen met de exacte machtigingen die nodig zijn. Typische rollen die in de praktijk worden gebruikt: 
   - Beveiligings implementatie 
   - Beheerder 
-  - Developer 
+  - Ontwikkelaar 
   - Ondersteunings personeel 
-  - Accountant 
+  - Auditor 
   - Geautomatiseerde processen 
   - Eind gebruiker 
+  
+- Gebruik ingebouwde rollen alleen wanneer de machtigingen van de rollen overeenkomen met de vereiste machtigingen voor de gebruiker. U kunt gebruikers toewijzen aan meerdere rollen. 
 
 - Houd er rekening mee dat machtigingen in SQL Server data base-engine kunnen worden toegepast op de volgende bereiken. Hoe kleiner het bereik, hoe kleiner de impact van de verleende machtigingen: 
   - Azure SQL Database-Server (speciale rollen in de hoofd database) 
   - Database 
-  - Schema (Zie ook: [schema-ontwerp voor SQL Server: aanbevelingen voor schema ontwerp met beveiliging in het oog](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
+  - Schema
+      - Het is een best practice het gebruik van schemas om machtigingen binnen een Data Base te verlenen. (Zie ook: [schema-ontwerp voor SQL Server: aanbevelingen voor schema ontwerp met beveiliging in het oog](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Object (tabel, weer gave, procedure, enz.) 
   > [!NOTE]
-  > Het is niet raadzaam om machtigingen op het object niveau toe te passen, omdat dit niveau onnodig ingewikkeld wordt toegevoegd aan de algemene implementatie. Als u besluit machtigingen op object niveau te gebruiken, moeten deze duidelijk worden gedocumenteerd. Hetzelfde geldt voor machtigingen op kolom niveau, die voor dezelfde redenen nog minder worden aanbevolen. De standaard regels voor [weigeren](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) zijn niet van toepassing op kolommen.
+  > Het is niet raadzaam om machtigingen op het object niveau toe te passen, omdat dit niveau onnodig ingewikkeld wordt toegevoegd aan de algemene implementatie. Als u besluit machtigingen op object niveau te gebruiken, moeten deze duidelijk worden gedocumenteerd. Hetzelfde geldt voor machtigingen op kolom niveau, die voor dezelfde redenen nog minder worden aanbevolen. Houd er ook rekening mee dat standaard een toekenning op kolom niveau niet wordt overschreven door een [deny](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) op tabel niveau. Hiervoor moet de configuratie van de [common criteria-compliantie server](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option) worden geactiveerd.
 
 - Voer regel matig controles uit met behulp van [evaluatie van beveiligings problemen (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) om te controleren of er te veel machtigingen zijn.
 
@@ -320,7 +323,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 
 - Zorg ervoor dat u altijd een audittrail voor beveiligings acties hebt. 
 
-- U kunt de definitie van de ingebouwde RBAC-rollen ophalen om te zien welke machtigingen worden gebruikt en een aangepaste rol maken op basis van fragmenten en cumulaties van deze via Power shell 
+- U kunt de definitie van de ingebouwde RBAC-rollen ophalen om te zien welke machtigingen worden gebruikt en een aangepaste rol maken op basis van fragmenten en cumulaties van deze via Power shell.
 
 - Omdat elk lid van de databaserol db_owner beveiligings instellingen kan wijzigen, zoals Transparent Data Encryption (TDE), of de SLO kan wijzigen, moet dit lidmaatschap worden verleend. Er zijn echter veel taken waarvoor db_owner bevoegdheden nodig zijn. Taak zoals het wijzigen van een database instelling, zoals het wijzigen van DB-opties. Controle speelt een belang rijke rol in een oplossing.
 
@@ -372,7 +375,7 @@ Schei ding van taken is niet beperkt tot de gegevens in de data base, maar bevat
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Databeveiliging
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 
@@ -409,6 +412,8 @@ Versleuteling op rest is de cryptografische beveiliging van gegevens wanneer dez
 
 Gegevens in gebruik zijn de gegevens die in het geheugen van het database systeem zijn opgeslagen tijdens de uitvoering van SQL-query's. Als uw data base gevoelige gegevens opslaat, kan uw organisatie verplicht worden om ervoor te zorgen dat gebruikers met een hoge bevoegdheden geen gevoelige gegevens in uw data base kunnen bekijken. Gebruikers met hoge bevoegdheden, zoals micro soft-Opera tors of Dba's in uw organisatie, moeten de data base kunnen beheren, maar geen alomtegenwoordig geworden gevoelige gegevens van het geheugen van het SQL Server proces of door de data base te doorzoeken.
 
+De beleids regels die bepalen welke gegevens gevoelig zijn en of de gevoelige gegevens in het geheugen moeten worden versleuteld en niet toegankelijk zijn voor beheerders in platte tekst, zijn specifiek voor uw organisatie en nalevings regels die u moet naleven. Raadpleeg de gerelateerde vereiste: [Identificeer en herken gevoelige gegevens](#identify-and-tag-sensitive-data).
+
 **Implementeren**:
 
 - Gebruik [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) om ervoor te zorgen dat gevoelige gegevens niet worden weer gegeven in niet-gecodeerde tekst in Azure SQL database, zelfs in het geheugen/in gebruik. Always Encrypted beveiligt de gegevens van database beheerders (Dba's) en Cloud beheerders (of ongeldige Actors die hoge privileges, maar niet-geautoriseerde gebruikers kunnen imiteren) en biedt u meer controle over wie toegang heeft tot uw gegevens.
@@ -416,6 +421,8 @@ Gegevens in gebruik zijn de gegevens die in het geheugen van het database systee
 **Aanbevolen procedures**:
 
 - Always Encrypted is geen vervanging voor het versleutelen van gegevens in rust (TDE) of in transit (SSL/TLS). Always Encrypted mag niet worden gebruikt voor niet-gevoelige gegevens om de gevolgen voor de prestaties en functionaliteit te minimaliseren. Het gebruik van Always Encrypted in combi natie met TDE en Transport Layer Security (TLS) wordt aanbevolen voor een uitgebreide beveiliging van gegevens die onderweg zijn, in-transit en in gebruik. 
+
+- Evalueer de gevolgen van het versleutelen van de geïdentificeerde gevoelige gegevens kolommen voordat u Always Encrypted in een productie database implementeert. Over het algemeen vermindert Always Encrypted de functionaliteit van query's op versleutelde kolommen en heeft deze andere beperkingen, die worden vermeld in [Details over always encrypted-functies](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details). Daarom is het mogelijk dat u uw toepassing opnieuw moet ontwerpen om de functionaliteit opnieuw te implementeren, een query biedt geen ondersteuning voor de client zijde of/en het refactorion-schema van uw data base, inclusief de definities van opgeslagen procedures, functies, weer gaven en triggers. Bestaande toepassingen werken mogelijk niet met versleutelde kolommen als ze niet voldoen aan de beperkingen en beperkingen van Always Encrypted. Hoewel het ecosysteem van micro soft-hulpprogram ma's, producten en services die Always Encrypted worden ondersteund, groeit, kunnen ze niet werken met versleutelde kolommen. Het versleutelen van een kolom kan ook van invloed zijn op de query prestaties, afhankelijk van de kenmerken van uw werk belasting. 
 
 - Beheer Always Encrypted sleutels met functie scheiding als u Always Encrypted gebruikt voor het beveiligen van gegevens van kwaad aardige Dba's. Met functie scheiding maakt een beveiligings beheerder de fysieke sleutels. De DBA maakt de kolom hoofd sleutel en meta gegevens objecten van de versleutelings sleutel van de kolom met een beschrijving van de fysieke sleutels in de-data base. Tijdens dit proces heeft de beveiligings beheerder geen toegang nodig tot de data base. de DBA heeft geen toegang tot de fysieke sleutels nodig als tekst zonder opmaak. 
   - Zie het artikel [sleutels beheren met functie scheiding](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation) voor meer informatie. 
@@ -705,7 +712,7 @@ Verbeter uw database beveiliging proactief door mogelijke beveiligings lekken in
 
 ### <a name="identify-and-tag-sensitive-data"></a>Gevoelige gegevens identificeren en labelen 
 
-Detecteer kolommen die mogelijk gevoelige gegevens bevatten. Classificeer de kolommen voor het gebruik van geavanceerde bewakings-en beveiligings scenario's op basis van gevoeligheid. 
+Detecteer kolommen die mogelijk gevoelige gegevens bevatten. Wat wordt beschouwd als gevoelige gegevens sterk, is afhankelijk van de klant, de nalevings verordening, enzovoort, en moet worden geëvalueerd door de gebruikers die verantwoordelijk zijn voor die gegevens. Classificeer de kolommen voor het gebruik van geavanceerde bewakings-en beveiligings scenario's op basis van gevoeligheid. 
 
 **Implementeren**:
 

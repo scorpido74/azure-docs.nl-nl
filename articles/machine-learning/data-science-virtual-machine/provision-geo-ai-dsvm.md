@@ -1,5 +1,6 @@
 ---
-title: 'Quickstart: Een Geo AI-DSVM maken'
+title: 'Snelstartgids: een geo AI-Data Science Virtual Machine maken'
+titleSuffix: Azure Data Science Virtual Machine
 description: Configureer en maak een geo AI-Data Science Virtual Machine op Azure voor georuimtelijke analyse en machine learning.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,16 +8,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170719"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525886"
 ---
-# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Quickstart: Een geografische, kunst matige intelligentie virtuele machine instellen op Azure 
+# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Quick Start: een geo-virtuele machine met kunst matige intelligentie instellen op Azure 
 
-De geo AI-Data Science Virtual Machine (geo-DSVM) is een uitbrei ding van de populaire [Azure-data Science virtual machine](https://aka.ms/dsvm) die speciaal is geconfigureerd voor het combi NEREN van AI-en georuimtelijke analyses. De georuimtelijke analyses in de virtuele machine worden aangestuurd door [ArcGIS Pro](https://www.arcgis.com/features/index.html). Met de Data Science Virtual Machine (DSVM) kunt u snel training krijgen over machine learning en zelfs diep gaande modellen. Voor het ontwikkelen van deze modellen maakt het gebruik van gegevens die zijn verrijkt met geografische informatie. De geo-DSVM wordt alleen ondersteund in Windows 2016 DSVM. 
+De geo AI-Data Science Virtual Machine (geo-DSVM) is een uitbrei ding van de populaire [Azure-data Science virtual machine](https://aka.ms/dsvm) die speciaal is geconfigureerd voor het combi NEREN van AI-en georuimtelijke analyses. De georuimtelijke analyse in de virtuele machine wordt aangedreven door [ArcGIS Pro](https://www.arcgis.com/features/index.html). Met de Data Science Virtual Machine (DSVM) kunt u snel training krijgen over machine learning en zelfs diep gaande modellen. Voor het ontwikkelen van deze modellen maakt het gebruik van gegevens die zijn verrijkt met geografische informatie. De geo-DSVM wordt alleen ondersteund in Windows 2016 DSVM. 
 
 De AI-hulpprogram ma's die deel uitmaken van de geo-DSVM zijn onder andere:
 
@@ -39,26 +40,26 @@ Voer de volgende stappen uit om een exemplaar van de geo AI-Data Science VM te m
 
 ### <a name="wizard-details"></a>Wizard Details ###
 
-**Grondbeginselen van**:
+**Basis beginselen**:
 
-- **Naam**: De naam van de data science-server die u maakt.
+- **Naam**: de naam van de data Science-server die u wilt maken.
     
-- **Gebruikers naam**: Aanmeldings-ID van beheerders account.
+- **Gebruikers naam**: aanmeldings-id van beheerders account.
     
-- **Wachtwoord**: Wacht woord voor beheerders account.
+- **Wacht woord**: wacht woord voor beheerders account.
     
-- **Abonnement**: Als u meer dan één abonnement hebt, selecteert u een waar de machine zich moet worden gemaakt en worden kosten in rekening gebracht.
+- **Abonnement**: als u meer dan één abonnement hebt, selecteert u de computer waarop de machine moet worden gemaakt en gefactureerd.
     
-- **Resourcegroep**: U kunt een nieuw item maken of een **lege** bestaande Azure-resource groep in uw abonnement gebruiken.
+- **Resource groep**: u kunt een nieuw item maken of een **lege** bestaande Azure-resource groep in uw abonnement gebruiken.
     
-- **Locatie**: Selecteer het Data Center dat het meest geschikt is. Normaal gesp roken is het het meren deel van uw gegevens of het zich het dichtst bij uw fysieke locatie voor snelle toegang tot het netwerk. Als u van plan bent om diepere lessen uit te voeren op een GPU, moet u een van de locaties in azure kiezen die GPU VM-exemplaren van de NC-serie hebben. Op dit moment zijn de volgende locaties: VS- **Oost, Noord-Centraal VS, Zuid-Centraal VS, VS-West 2, Europa-Noord, Europa-West**. Ga voor de meest recente lijst naar de pagina [Azure-producten per regio](https://azure.microsoft.com/regions/services/) en zoek naar **NC-serie** onder **Compute**. 
+- **Locatie**: Selecteer het Data Center dat het meest geschikt is. Normaal gesp roken is het het meren deel van uw gegevens of het zich het dichtst bij uw fysieke locatie voor snelle toegang tot het netwerk. Als u van plan bent om diepere lessen uit te voeren op een GPU, moet u een van de locaties in azure kiezen die GPU VM-exemplaren van de NC-serie hebben. Momenteel zijn de volgende locaties: **VS-Oost, Noord-Centraal VS, Zuid-Centraal VS, VS-West 2, Europa-Noord, Europa-West**. Ga voor de meest recente lijst naar de pagina [Azure-producten per regio](https://azure.microsoft.com/regions/services/) en zoek naar **NC-serie** onder **Compute**. 
     
     
-**Instellingen voor**: Selecteer een van de VM-grootten van de NC-Series GPU als u van plan bent om diepere lessen uit te voeren op een GPU op uw Geo-DSVM. Anders kunt u een van de op CPU gebaseerde exemplaren kiezen. Maak een opslagaccount voor uw virtuele machine. 
+**Instellingen**: Selecteer een van de VM-grootten van de NC-Series GPU als u een diepe training wilt uitvoeren op een GPU op uw Geo-DSVM. Anders kunt u een van de op CPU gebaseerde exemplaren kiezen. Maak een opslagaccount voor uw virtuele machine. 
        
-**Samenvatting**: Controleer of alle informatie die u hebt ingevoerd juist is.
+**Samen vatting**: Controleer of alle gegevens die u hebt ingevoerd juist zijn.
     
-**Kopen**: Als u het inrichtings proces wilt starten, klikt u op **kopen**. Een koppeling wordt met de voorwaarden van de service geleverd. Er zijn geen extra kosten in rekening gebracht voor de virtuele machine die u in de stap **grootte** hebt gekozen voor de grootte van de server. 
+**Kopen**: als u het inrichtings proces wilt starten, klikt u op **kopen**. Een koppeling wordt met de voorwaarden van de service geleverd. Er zijn geen extra kosten in rekening gebracht voor de virtuele machine die u in de stap **grootte** hebt gekozen voor de grootte van de server. 
  
  >[!NOTE]
  > Het inrichten moet ongeveer 20 tot 30 minuten duren. De status van de inrichting wordt weergegeven op de Azure-portal.
@@ -87,4 +88,4 @@ Nadat u zich hebt aangemeld bij de ArcGIS Pro Desktop via uw ArcGIS-account, ben
 
 Begin met het gebruik van de geo AI-Data Science VM met hulp van de volgende resource:
 
-* [De Geo AI Data Science VM gebruiken](use-geo-ai-dsvm.md)
+* [De geo AI-Data Science VM gebruiken](use-geo-ai-dsvm.md)

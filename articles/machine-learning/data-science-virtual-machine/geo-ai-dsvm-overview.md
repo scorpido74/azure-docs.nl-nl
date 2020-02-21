@@ -1,5 +1,5 @@
 ---
-title: Wat is de geo kunst matige intelligentie DSVM
+title: Wat is de geo kunst matige intelligentie Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: De geo kunst matige intelligentie Data Science Virtual Machine biedt ArcGIS Pro voor het werken met geografische gegevens, evenals Python-, R-en data Science-werkset voor het werken met ML en AI.
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899909"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526058"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Wat is de geo kunst matige intelligentie Data Science Virtual Machine?
 
@@ -44,5 +44,5 @@ Geo AI Data Science VM combineert de voorspellende mogelijkheden van de DSVM met
 
 Richt een geo AI-Data Science VM in en ga aan de slag met behulp van de volgende resources:
 
-* [Een Geo AI Data Science VM inrichten](provision-geo-ai-dsvm.md)
-* [De Geo AI Data Science VM gebruiken](use-geo-ai-dsvm.md)
+* [Een geo AI-Data Science VM inrichten](provision-geo-ai-dsvm.md)
+* [De geo AI-Data Science VM gebruiken](use-geo-ai-dsvm.md)

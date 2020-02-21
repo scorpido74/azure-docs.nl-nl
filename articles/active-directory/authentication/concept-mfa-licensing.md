@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0d37b0cd042e6e11f8b2029b51c589c96154065
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e49a07f591731a1deb2838751852c0134548966d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909088"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521843"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Functies en licenties voor Azure Multi-Factor Authentication
 
@@ -34,21 +34,21 @@ Azure Multi-Factor Authentication kan worden gebruikt en in licentie worden gege
 | EMS of Microsoft 365 E3 en E5 | EMS E3 of Microsoft 365 E3 (met inbegrip van EMS en Office 365), bevat Azure AD Premium P1. EMS E5 of Microsoft 365 E5 bevat Azure AD Premium P2. U kunt dezelfde functies voor voorwaardelijke toegang in de volgende secties gebruiken om multi-factor Authentication toe te voegen aan gebruikers. |
 | Azure AD Premium P1 | U kunt [voorwaardelijke toegang van Azure AD](../conditional-access/overview.md) gebruiken om gebruikers te vragen voor multi-factor Authentication tijdens bepaalde scenario's of gebeurtenissen die aan uw bedrijfs vereisten voldoen. |
 | Azure AD Premium P2 | Biedt de sterkste beveiligings positie en verbeterde gebruikers ervaring. Voegt [op Risico's gebaseerde voorwaardelijke toegang](../conditional-access/howto-conditional-access-policy-risk.md) toe aan de Azure AD Premium P1-functies die worden aangepast aan de patronen van gebruikers en minimaliseert multi-factor Authentication-prompts. |
-| Office Premium, E3 of E5 | Azure Multi-Factor Authentication is ingeschakeld of uitgeschakeld voor alle gebruikers, voor alle aanmeld gebeurtenissen. Het is niet mogelijk om multi-factor Authentication in te scha kelen voor een subset van gebruikers of alleen onder bepaalde scenario's. Beheer gaat via de Office 365-Portal. Voor een betere gebruikers ervaring kunt u een upgrade uitvoeren naar Azure AD Premium P1 of P2 en voorwaardelijke toegang gebruiken. Zie voor meer informatie [beveiligde Office 365-resources met multi-factor Authentication](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
+| Office 365 Business Premium, E3 of E5 | Azure Multi-Factor Authentication is ingeschakeld of uitgeschakeld voor alle gebruikers, voor alle aanmeld gebeurtenissen. Het is niet mogelijk om multi-factor Authentication in te scha kelen voor een subset van gebruikers of alleen onder bepaalde scenario's. Beheer gaat via de Office 365-Portal. Voor een betere gebruikers ervaring kunt u een upgrade uitvoeren naar Azure AD Premium P1 of P2 en voorwaardelijke toegang gebruiken. Zie voor meer informatie [beveiligde Office 365-resources met multi-factor Authentication](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
 | Azure AD Free | U kunt de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md) gebruiken om multi-factor Authentication in te scha kelen voor alle gebruikers, telkens wanneer er een verificatie aanvraag wordt gedaan. U hebt geen nauw keurige controle van ingeschakelde gebruikers of scenario's, maar biedt wel de extra beveiligings stap.<br /> Zelfs als de standaard instellingen voor beveiliging niet worden gebruikt om multi-factor Authentication voor iedereen in te scha kelen, kunnen gebruikers die de rol van *Azure AD globale beheerder* hebben toegewezen, worden geconfigureerd voor het gebruik van multi-factor Authentication. Deze functie van de gratis laag zorgt ervoor dat de essentiële beheerders accounts worden beveiligd door multi-factor Authentication. |
 
 ## <a name="feature-comparison-of-versions"></a>Functie vergelijking van versies
 
 De volgende tabel bevat een lijst met de functies die beschikbaar zijn in de verschillende versies van Azure Multi-Factor Authentication. Plan uw behoeften voor het beveiligen van gebruikers verificatie en bepaal vervolgens welke benadering aan deze vereisten voldoet. Hoewel Azure AD Free bijvoorbeeld beveiligings standaards biedt die Azure Multi-Factor Authentication bieden, kan alleen de mobiele verificator-app worden gebruikt voor de verificatie prompt, niet via een telefoon gesprek of SMS. Deze methode kan een beperking zijn als u niet zeker weet dat de mobiele verificatie-app is geïnstalleerd op het persoonlijke apparaat van de gebruiker.
 
-| Functie | Azure AD Free-standaard instellingen voor beveiliging | Azure AD Free-globale beheerders van Azure AD | Office Premium, E3 of E5 | Azure AD Premium P1 of P2 |
+| Functie | Azure AD Free-standaard instellingen voor beveiliging | Azure AD Free-globale beheerders van Azure AD | Office 365 Business Premium, E3 of E5 | Azure AD Premium P1 of P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Azure AD-beheerders accounts beveiligen met MFA | ● | ● (Alleen*Azure AD Global Administrator* -accounts) | ● | ● |
 | Mobiele app als een tweede factor | ● | ● | ● | ● |
 | Telefoon gesprek als een tweede factor | | ● | ● | ● |
 | SMS als een tweede factor | | ● | ● | ● |
 | Beheer beheer via verificatie methoden | | ● | ● | ● |
-| Melding bij fraude | | | | ● |
+| Fraudewaarschuwing | | | | ● |
 | MFA-rapporten | | | | ● |
 | Aangepaste begroeting voor telefoongesprekken | | | | ● |
 | Aangepaste beller-ID voor telefoon gesprekken | | | | ● |
@@ -57,15 +57,15 @@ De volgende tabel bevat een lijst met de functies die beschikbaar zijn in de ver
 | MFA voor on-premises toepassingen | | | | ● |
 
 > [!IMPORTANT]
-> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet langer beschikbaar voor Azure Multi-Factor Authentication en kunnen gebruikers van Azure self-service voor wacht woord opnieuw instellen in Azure AD Free/proef-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. Telefoon gesprekken blijven beschikbaar voor gebruikers met Azure AD Premium P1-of P2-tenants of-toepassingen of Office Premium, E3 of E5.
+> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet langer beschikbaar voor Azure Multi-Factor Authentication en kunnen gebruikers van Azure self-service voor wacht woord opnieuw instellen in Azure AD Free/proef-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. Telefoon gesprekken blijven beschikbaar voor gebruikers in Azure AD Premium P1-of P2-tenants of toepassingen of Office 365 Business Premium, E3 of E5.
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Azure-Multi-Factor Authentication kopen en inschakelen
 
-Als u Azure Multi-Factor Authentication wilt gebruiken, moet u zich registreren voor of een in aanmerking komend Azure AD-laag kopen. Azure AD is verkrijgbaar in vier edities: gratis, Office 365 apps Edition (voor Office 365 Premium E3, of E5 klanten), Premium P1 en Premium P2.
+Als u Azure Multi-Factor Authentication wilt gebruiken, moet u zich registreren voor of een in aanmerking komend Azure AD-laag kopen. Azure AD is verkrijgbaar in vier edities: gratis, Office 365 apps Edition (voor Office 365 Business Premium E3, of E5 klanten), Premium P1 en Premium P2.
 
-De editie Gratis wordt geleverd bij een Azure-abonnement. Zie de [sectie hieronder](#azure-ad-free-tier) voor informatie over het gebruik van standaard instellingen voor beveiliging of het beveiligen van accounts met de rol *globale beheerder van Azure AD* .
+De gratis versie is opgenomen in een Azure-abonnement. Zie de [sectie hieronder](#azure-ad-free-tier) voor informatie over het gebruik van standaard instellingen voor beveiliging of het beveiligen van accounts met de rol *globale beheerder van Azure AD* .
 
-De Azure AD Premium-edities zijn beschikbaar via uw micro soft-vertegenwoordiger, het [Open Volume License-programma](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx)en het [programma Cloud Solution Providers](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409). Azure- en Office 365-abonnees kunnen Active Directory Premium P1 en P2 ook online aanschaffen. [Meld](https://portal.office.com/Commerce/Catalog.aspx) u aan om aan te schaffen.
+De Azure AD Premium-edities zijn beschikbaar via uw micro soft-vertegenwoordiger, het [Open Volume License-programma](https://www.microsoft.com/licensing/licensing-programs/open-license.aspx)en het [programma Cloud Solution Providers](https://go.microsoft.com/fwlink/?LinkId=614968&clcid=0x409). Abonnees van Azure en Office 365 kunnen Azure Active Directory Premium P1 en P2 ook online aanschaffen. [Meld](https://portal.office.com/Commerce/Catalog.aspx) u aan om aan te schaffen.
 
 > [!IMPORTANT]
 > Licentie verlening op basis van verbruik is niet langer beschikbaar voor nieuwe klanten vanaf 1 september 2018. Bestaande klanten die gebruikmaken van het op verbruik gebaseerde model, kunnen per ingeschakelde gebruiker of per verificatie facturering blijven gebruiken.

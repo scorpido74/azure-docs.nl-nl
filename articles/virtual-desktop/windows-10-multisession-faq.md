@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470569"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484601"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
-In dit artikel worden veelgestelde vragen beantwoord en best practices voor Windows 10 Enter prise multi-session besproken.
+In dit artikel vindt u antwoorden op veelgestelde vragen en worden aanbevolen procedures voor Windows 10 Enter prise multi-session beschreven.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Wat is Windows 10 Enter prise multi-session? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Wat is Windows 10 Enter prise multi-session?
 
-Windows 10 Enter prise multi-session, voorheen bekend als Windows 10 Enter prise voor Virtual desktops (EVD), is een nieuwe Extern bureaublad-sessiehost waarmee meerdere gelijktijdige interactieve sessies kunnen worden uitgevoerd. Met deze mogelijkheid hebben gebruikers een bekende Windows 10-ervaring, terwijl ze kunnen profiteren van de kosten voordelen van meerdere sessies en bestaande Windows-licenties per gebruiker gebruiken in plaats van RDS-licenties voor client toegang. Zie [prijzen voor Windows Virtual Desktop](https://azure.microsoft.com/pricing/details/virtual-desktop/)voor meer informatie over licenties en prijzen. 
+Windows 10 Enter prise multi-session, voorheen bekend als Windows 10 Enter prise voor Virtual desktops (EVD), is een nieuwe Extern bureaublad sessiehost waarmee meerdere gelijktijdige interactieve sessies kunnen worden toegestaan. Voorheen kan dit alleen door Windows Server worden gedaan. Met deze mogelijkheid hebben gebruikers een bekende Windows 10-ervaring, terwijl ze kunnen profiteren van de kosten voordelen van meerdere sessies en bestaande Windows-licenties per gebruiker gebruiken in plaats van RDS-licenties voor client toegang. Zie [prijzen voor Windows Virtual Desktop](https://azure.microsoft.com/pricing/details/virtual-desktop/)voor meer informatie over licenties en prijzen. 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Hoeveel gebruikers kunnen tegelijkertijd een interactieve sessie op Windows 10 Enter prise Multi-Session hebben?
 
@@ -71,6 +71,31 @@ Zie [Configure the FSLogix profile container](create-host-pools-user-profile.md#
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Welke licentie heb ik nodig om toegang te krijgen tot de multi-sessie van Windows 10 Enter prise?
 
 Zie [prijzen voor Windows Virtual Desktop](https://azure.microsoft.com/pricing/details/virtual-desktop/)voor een volledige lijst van toepasselijke licenties.
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>Waarom verdwijnen mijn apps na het afmelden?
+
+Dit gebeurt omdat u Windows 10 Enter prise multi-session gebruikt met een oplossing voor Profiel beheer, zoals FSLogix. Uw beheerder of profiel oplossing heeft uw systeem geconfigureerd om gebruikers profielen te verwijderen wanneer gebruikers zich afmelden. Deze configuratie betekent dat wanneer uw systeem uw gebruikers profiel verwijdert nadat u zich hebt afgemeld, alle apps die u tijdens uw sessie hebt geïnstalleerd, worden verwijderd. Als u de apps die u hebt geïnstalleerd, wilt blijven gebruiken, moet u uw beheerder vragen deze apps in te richten voor alle gebruikers in uw Windows Virtual Desktop-omgeving.
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>Hoe kan ik zorg ervoor dat de apps niet verdwijnen wanneer gebruikers zich afmelden?
+
+De meeste gevirtualiseerde omgevingen worden standaard geconfigureerd om te voor komen dat gebruikers extra apps op hun profielen installeren. Als u ervoor wilt zorgen dat een app niet verdwijnt wanneer uw gebruiker zich afmeldt bij Windows Virtual Desktop, moet u die app inrichten voor alle gebruikers profielen in uw omgeving. Bekijk de volgende bronnen voor meer informatie over het inrichten van apps:
+
+- [Ingebouwde apps publiceren in virtueel bureau blad van Windows](publish-apps.md)
+- [Opdracht regel opties voor onderhoud van DISM-app-pakket](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Hoe kan ik weet u zeker dat gebruikers geen apps van de Microsoft Store downloaden en installeren?
+
+U kunt de app Microsoft Store uitschakelen om ervoor te zorgen dat gebruikers geen extra apps downloaden buiten de apps die u al hebt ingericht.
+
+De Store-app uitschakelen:
+
+1. Maak een nieuwe groepsbeleid.
+2. Selecteer **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen**.
+3. Selecteer **Store**.
+4. Selecteer **Store-toepassing**.
+5. Selecteer **uitgeschakeld**en selecteer **OK**.
+6. Selecteer **Toepassen**.
  
 ## <a name="next-steps"></a>Volgende stappen
 

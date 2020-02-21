@@ -6,17 +6,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671304"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500025"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelf studie: een node. js-en MongoDB-app bouwen in azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js- en MongoDB-app bouwen in Azure App Service in Linux ](./containers/tutorial-nodejs-mongodb-app.md) om een app te implementeren in App Service in _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een Node.js- en MongoDB-app bouwen in Azure App Service in Linux_  om een app te implementeren in App Service in [Linux](./containers/tutorial-nodejs-mongodb-app.md).
 >
 
 Azure App Service biedt een uiterst schaalbare webhostingservice met self-patchfunctie. In deze zelfstudie ziet u hoe u een Node.js-app maakt in App Service en deze verbindt met een MongoDB-database. Als u klaar bent, beschikt u over een MEAN-toepassing (MongoDB, Express, AngularJS en Node.js) die wordt uitgevoerd in [Azure App Service](overview.md). In het voorbeeld wordt ter vereenvoudiging gebruikgemaakt van het [MEAN.js-webframework](https://meanjs.org/).
@@ -37,7 +37,7 @@ Wat u leert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 1. [Git installeren](https://git-scm.com/)
 2. [Node.js en NPM installeren](https://nodejs.org/)
@@ -65,7 +65,7 @@ In deze stap stelt u het lokale Node.js-project in.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.  
+In het terminalvenster, `cd` in een werkmap.  
 
 Voer de volgende opdracht uit om de voorbeeldopslagplaats te klonen. 
 
@@ -85,7 +85,7 @@ npm install
 npm start
 ```
 
-Als de app is geladen, ziet u een bericht zoals dit:
+Wanneer de app volledig is geladen, ziet u een bericht zoals dit:
 
 ```console
 --
@@ -188,7 +188,7 @@ Kopieer de waarde van `primaryMasterKey`. U hebt deze informatie nodig voor de v
 
 Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_. _.gitignore_ is standaard geconfigureerd om dit bestand buiten de opslagplaats te houden. 
 
-Kopieer er de volgende code in. Vervang de twee tijdelijke aanduidingen *\<cosmosdb_name>* door de naam van de Cosmos DB-database en vervang de tijdelijke aanduiding *\<primary_master_key>* door de sleutel die u in de vorige stap hebt gekopieerd.
+Kopieer er de volgende code naartoe. Vervang de twee tijdelijke aanduidingen *\<cosmosdb_name>* door de naam van de Cosmos DB-database en vervang de tijdelijke aanduiding *\<primary_master_key>* door de sleutel die u in de vorige stap hebt gekopieerd.
 
 ```javascript
 module.exports = {
@@ -337,7 +337,7 @@ In deze stap wijzigt u het `article`-gegevensmodel en publiceert u de wijziging 
 
 Open _modules/articles/server/models/article.server.model.js_.
 
-Voeg een `String`-type met de naam `comment` toe in `ArticleSchema`. Als u klaar bent, ziet het schema er als volgt uit:
+Voeg een `ArticleSchema`-type met de naam `String` toe in `comment`. Als u klaar bent, ziet het schema er als volgt uit:
 
 ```javascript
 const ArticleSchema = new Schema({

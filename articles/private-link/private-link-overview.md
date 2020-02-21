@@ -8,15 +8,18 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 452202555734a208a9f32d6f8899e1f679df4a68
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6f683ae79a2b68391e4bda2b81bcbab3eccc5b2e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443989"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500722"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage, Azure Cosmos DB en SQL Database) en Azure hostende klanten/partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
+
+> [!IMPORTANT]
+> Privé-koppeling van Azure is nu algemeen beschikbaar. Zowel privé-eind punten als persoonlijke koppelings service (Service achter standaard load balancer) zijn algemeen beschikbaar. Met een andere Azure-PaaS wordt de persoonlijke Azure-koppeling op verschillende schema's uitgevoerd. Raadpleeg de sectie [Beschik baarheid](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) hieronder voor een nauw keurige status van Azure PaaS op een privé-koppeling. Zie [Private endpoint](private-endpoint-overview.md#limitations) en [Private Link service](private-link-service-overview.md#limitations)voor bekende beperkingen. 
 
 ![Overzicht van privé-eind punten](media/private-link-overview/private-endpoint.png)
 
@@ -37,7 +40,7 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 
 |Scenario  |Ondersteunde services  |Beschik bare regio's | Status  |
 |:---------|:-------------------|:-----------------|:--------|
-|Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer | Alle open bare regio's  | Preview  |
+|Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer | Alle open bare regio's  | Algemene beschikbaarheid  |
 |Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  Alle open bare regio's      | Preview <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints).  |
 |  | Azure Data Lake Storage Gen2        |  Alle open bare regio's      | Preview <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints).  |
 |  |  Azure SQL Database         | Alle open bare regio's      |   Preview      |
@@ -67,6 +70,9 @@ Zie [Veelgestelde vragen over Azure private link](private-link-faq.md)voor veelg
  
 ## <a name="limits"></a>Limieten  
 Zie [limieten voor persoonlijke Azure-koppelingen](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)voor limieten.
+
+## <a name="service-level-agreement"></a>Service Level Agreement
+Zie [Sla voor Azure private link](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)voor sla.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een persoonlijk eind punt voor SQL Database Server maken met behulp van portal](create-private-endpoint-portal.md)

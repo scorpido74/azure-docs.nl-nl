@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41a4eb565f49b75b64cc072d3017c41000154e2a
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066822"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522557"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -125,7 +125,7 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 |department|GELIJK is aan|verkoop|Alle gebruikers van de verkoop afdeling vallen binnen het bereik van de inrichting|
 |workerID|OVEREENKOMENDE REGEX|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Alle werk nemers met workerIDs tussen 1000000 en 2000000 zijn binnen het bereik van de inrichting.|
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 * [Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren](../app-provisioning/user-provisioning.md)
 * [Kenmerk toewijzingen voor gebruikers inrichting aanpassen](../app-provisioning/customize-application-attributes.md)
 * [Expressies schrijven voor kenmerktoewijzingen](functions-for-customizing-application-data.md)

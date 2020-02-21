@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162154"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499977"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database back-ups Maxi maal tien jaar opslaan
 
@@ -28,7 +28,13 @@ Veel toepassingen hebben wettelijke, nalevings-of andere zakelijke doel einden w
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Hoe SQL Database lange termijn retentie werkt
 
-Lange termijn retentie van back-ups (LTR) maakt gebruik van de volledige database back-ups die [automatisch worden gemaakt](sql-database-automated-backups.md) voor het inschakelen van punt-tijd herstel (PITR). Als een LTR-beleid is geconfigureerd, worden deze back-ups gekopieerd naar verschillende blobs voor lange termijn opslag. De Kopieer bewerking is een achtergrond taak die geen invloed heeft op de prestaties van de data base. De LTR-back-ups worden bewaard gedurende een periode die door het LTR-beleid is ingesteld. Het LTR-beleid voor elke SQL database kan ook bepalen hoe vaak de LTR-back-ups worden gemaakt. Om die flexibiliteit in te scha kelen, kunt u het beleid definiëren met een combi natie van vier para meters: wekelijks retentie van back-ups (W), maandelijkse back-up (M), jaarlijks back-upbewaaring (Y) en week van jaar (WeekOfYear). Als u W opgeeft, wordt één back-up elke week gekopieerd naar de lange termijn opslag. Als u M opgeeft, wordt één back-up in de eerste week van elke maand gekopieerd naar de lange termijn opslag. Als u Y opgeeft, wordt één back-up in de week die is opgegeven door WeekOfYear gekopieerd naar de lange termijn opslag. Elke back-up wordt opgeslagen in de lange termijn opslag voor de periode die door deze para meters is opgegeven. Elke wijziging van het LTR-beleid is van toepassing op de toekomstige back-ups. Als de opgegeven WeekOfYear bijvoorbeeld in het verleden ligt wanneer het beleid is geconfigureerd, wordt het volgende jaar de eerste LTR-back-up gemaakt. 
+Lange termijn retentie van back-ups (LTR) maakt gebruik van de volledige database back-ups die [automatisch worden gemaakt](sql-database-automated-backups.md) voor het inschakelen van punt-tijd herstel (PITR). Als een LTR-beleid is geconfigureerd, worden deze back-ups gekopieerd naar verschillende blobs voor lange termijn opslag. De kopie is een achtergrond taak die geen invloed heeft op de prestaties van de data base-workload. Het LTR-beleid voor elke SQL database kan ook bepalen hoe vaak de LTR-back-ups worden gemaakt.
+
+Als u LTR wilt inschakelen, kunt u een beleid definiëren met behulp van een combi natie van vier para meters: wekelijks retentie van back-ups (W), maandelijkse back-up (M), jaarlijks back-upbewaaring (Y) en week van jaar (WeekOfYear). Als u W opgeeft, wordt één back-up elke week gekopieerd naar de lange termijn opslag. Als u M opgeeft, wordt de eerste back-up van elke maand gekopieerd naar de lange termijn opslag. Als u Y opgeeft, wordt één back-up in de week die is opgegeven door WeekOfYear gekopieerd naar de lange termijn opslag. Als de opgegeven WeekOfYear zich in het verleden bevindt toen het beleid werd geconfigureerd, wordt de eerste LTR-back-up in het volgende jaar gemaakt. Elke back-up wordt opgeslagen in de lange termijn opslag op basis van de beleids parameters die worden geconfigureerd wanneer de LTR-back-up wordt gemaakt.
+
+> [!NOTE]
+> Elke wijziging van het LTR-beleid is alleen van toepassing op toekomstige back-ups. Als een voor beeld van een wekelijkse back-upbewaaring (W), een maandelijkse back-up (M) of een jaarlijkse back-upbewaaring (Y) is gewijzigd, wordt de nieuwe Bewaar instelling alleen van toepassing op nieuwe back-ups. Het bewaren van bestaande back-ups wordt niet gewijzigd. Als u van plan bent oude LTR-back-ups te verwijderen voordat de Bewaar periode verloopt, moet u [de back-ups hand matig verwijderen](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> 
 
 Voor beelden van het LTR-beleid:
 
@@ -75,7 +81,7 @@ Zie voor meer informatie over het configureren van de lange termijn retentie met
 
 ## <a name="restore-database-from-ltr-backup"></a>Data base herstellen vanuit LTR-back-up
 
-Als u een Data Base wilt herstellen vanuit de LTR-opslag, kunt u een specifieke back-up selecteren op basis van de tijds tempel. De data base kan worden hersteld naar een bestaande server onder hetzelfde abonnement als de oorspronkelijke data base. Voor informatie over het herstellen van een Data Base vanuit een LTR-back-up met behulp van de Azure Portal of Power shell, Zie [Azure SQL database lange termijn retentie van back-ups beheren](sql-database-long-term-backup-retention-configure.md).
+Als u een Data Base wilt herstellen vanuit de LTR-opslag, kunt u een specifieke back-up selecteren op basis van de tijds tempel. De data base kan worden hersteld naar een bestaande server onder hetzelfde abonnement als de oorspronkelijke data base. Zie voor meer informatie over het herstellen van een Data Base uit een LTR-back-up, met behulp van de Azure Portal of Power shell [Azure SQL database lange termijn retentie van back-ups beheren](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

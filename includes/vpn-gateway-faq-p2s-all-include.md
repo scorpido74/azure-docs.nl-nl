@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9b106ea43e6a11d616ed2212636975bbbbf65631
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: be858e9200191de7e0bda0ae227519666d80fb7a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75751917"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500593"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hoeveel VPN-clienteindpunten kan mijn punt-naar-site-configuratie hebben?
 
@@ -78,7 +78,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Versie van het besturingssysteem | Datum | Aantal/koppeling |
+   | Versie van het besturingssysteem | Date | Aantal/koppeling |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -98,3 +98,21 @@ Azure biedt voor P2S VPN ondersteuning voor Windows, Mac en Linux.
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Ik heb al een Azure VPN-gateway geïmplementeerd. Kan ik er RADIUS en/of IKEv2 VPN voor inschakelen?
 
 Ja, u kunt deze nieuwe functies op reeds geïmplementeerde gateways inschakelen met behulp van PowerShell of Azure Portal, mits de gateway-SKU die u gebruikt RADIUS en/of IKEv2 ondersteunt. Bijvoorbeeld de VPN-gateway Basic SKU ondersteunt RADIUS of IKEv2 niet.
+
+### <a name="removeconfig"></a>Hoe kan ik de configuratie van een P2S-verbinding verwijderen?
+
+Een P2S-configuratie kan worden verwijderd met behulp van Azure CLI en Power shell met behulp van de volgende opdrachten:
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
+```azurepowershell-interactive
+$gw=Get-AzVirtualNetworkGateway -name <gateway-name>`  
+$gw.VPNClientConfiguration = $null`  
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"
+```

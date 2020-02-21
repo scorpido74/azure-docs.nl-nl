@@ -5,17 +5,17 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: fb6451ce5e1e00bffc9195410125eb61b34555e4
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672097"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500144"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Een PHP-web-app maken in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een PHP-web-app maken en implementeren in App Service onder Linux ](./containers/quickstart-php.md) om een app te implementeren in App Service onder _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een PHP-web-app maken en implementeren in App Service onder Linux_  om een app te implementeren in App Service onder [Linux](./containers/quickstart-php.md).
 >
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze snelstartzelfstudie ziet u hoe u een PHP-app naar Azure App Service implementeert. U maakt de web-app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell en u gebruikt Git om voorbeeldcode van PHP in de web-app te implementeren.
@@ -101,7 +101,7 @@ U hebt een nieuwe lege web-app gemaakt, met Git-implementatie ingeschakeld.
 > De URL van de externe Git wordt weergegeven in de eigenschap `deploymentLocalGitUrl`, met de indeling `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Sla deze URL op, want u hebt deze later nodig.
 >
 
-Blader naar uw nieuwe web-app. Vervang  _&lt;app-naam>_ door de unieke naam van de app die u in de vorige stap hebt gemaakt.
+Blader naar uw nieuwe web-app. Vervang _&lt;app-naam>_ door de unieke naam van de app die u in de vorige stap hebt gemaakt.
 
 ```bash
 http://<app name>.azurewebsites.net

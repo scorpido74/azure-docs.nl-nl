@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766835"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505889"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
@@ -101,9 +101,11 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 ## <a name="nsg-considerations"></a>NSG overwegingen
 
-Als er een netwerk beveiligings groep (NSG) is op een Application Gateway-subnet, moet poort bereik 65503-65534 worden geopend op het toepassings gateway-subnet voor binnenkomend verkeer. Deze poorten zijn vereist voor een goede werking van de back-end-API.
+U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de Application Gateway v1-SKU en TCP-poorten 65200-65535 voor de v2-SKU met het doel-subnet als **enige** en bron als **GatewayManager** -service label. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur.
 
-Daarnaast kan uitgaande internet connectiviteit niet worden geblokkeerd en moet binnenkomend verkeer dat afkomstig is van het label AzureLoadBalancer, worden toegestaan.
+Daarnaast kan uitgaande internet connectiviteit niet worden geblokkeerd en moet binnenkomend verkeer dat afkomstig is van het label **AzureLoadBalancer** , worden toegestaan.
+
+Zie [Application Gateway configuratie-overzicht](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nadat u hebt gebruikgemaakt van Application Gateway status controle, kunt u een [aangepaste Health probe](application-gateway-create-probe-portal.md) in de Azure portal of een [aangepaste status test](application-gateway-create-probe-ps.md) configureren met behulp van power shell en het Azure Resource Manager-implementatie model.

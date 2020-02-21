@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3cdd558a8b14498e981c9c60a077a7286188e02e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469034"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500091"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quick Start: een Java-app maken voor het beheren van Azure Cosmos DB SQL-API-gegevens
 
@@ -35,6 +35,18 @@ In deze Quick Start maakt en beheert u een Azure Cosmos DB SQL-API-account van d
 - [Jdk 8 (Java Development Kit)](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Verwijs uw `JAVA_HOME` omgevings variabele naar de map waarin de JDK is geïnstalleerd.
 - Een [binair maven-archief](https://maven.apache.org/download.cgi). Voer `apt-get install maven` uit op Ubuntu om Maven te installeren.
 - [Git](https://www.git-scm.com/downloads). Voer `sudo apt-get install git` uit om Git te installeren op Ubuntu.
+
+## <a name="introductory-notes"></a>Inleidende opmerkingen
+
+*De structuur van een Cosmos DB-account.* Een Cosmos DB- *account* bevat geen API-of programmeer taal, maar heeft geen of meer *data bases*, een *Data Base* (DB) bevat nul of meer *containers*en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
+
+![Azure Cosmos-account-entiteiten](./media/databases-containers-items/cosmos-entities.png)
+
+U kunt hier meer lezen over data bases, containers en items [.](databases-containers-items.md) Enkele belang rijke eigenschappen worden op het niveau van de container gedefinieerd, onder de *ingerichte door Voer* en de *partitie sleutel*. 
+
+De ingerichte door Voer wordt gemeten in aanvraag eenheden (*RUs*) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfs kosten van het account zijn. Ingerichte door Voer kan worden geselecteerd bij granulatie op basis van een container of nauw keurigheid per data base, maar de specificatie voor door Voer op container niveau verdient doorgaans de voor keur. U kunt hier meer lezen over het inrichten van de door Voer [.](set-throughput.md)
+
+Naarmate items worden ingevoegd in een Cosmos DB container, groeit de data base horizon taal door meer opslag en reken kracht toe te voegen voor het afhandelen van aanvragen. Opslag-en reken capaciteit worden toegevoegd aan discrete eenheden die *partities*worden genoemd, en u moet één veld in uw documenten selecteren als partitie sleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment uit het bereik van partitie sleutel waarden wordt toegewezen. Daarom wordt u aangeraden een partitie sleutel te kiezen die relatief wille keurig of gelijkmatig gedistribueerd is. Als dat niet het geval is, zien sommige partities veel meer aanvragen (*Hot Partition*), terwijl andere partities veel minder aanvragen (*koude partitie*) zien, en dit moet worden vermeden. Meer informatie over partitionering vindt u [hier](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 

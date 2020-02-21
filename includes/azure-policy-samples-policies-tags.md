@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1f949a5c13393758d69223fa49e9e84d91e27310
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 21f4e4234025ab4b9bb14a1e1338aa4b748ef1a6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77370767"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495529"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
 |---|---|---|---|
@@ -22,6 +22,8 @@ ms.locfileid: "77370767"
 |[Tag en de waarde van de resource groep toevoegen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |Hiermee wordt het opgegeven label met de bijbehorende waarde uit de resource groep toegevoegd wanneer een resource waarvoor deze tag ontbreekt, wordt gemaakt of bijgewerkt. Wijzigt de labels van resources die zijn gemaakt voordat dit beleid werd toegepast, totdat deze resources zijn gewijzigd. Er zijn nieuwe effect beleidsregels voor wijzigingen beschikbaar die ondersteuning bieden voor herstel van tags op bestaande bronnen (Zie https://aka.ms/modifydoc). |toevoegen |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json)
 |[Een tag overnemen van de resource groep](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcd3aa116-8754-49c9-a813-ad46512ece54) |Hiermee worden de opgegeven tag en waarde van de bovenliggende resource groep toegevoegd of vervangen wanneer een resource wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een hersteltaak te activeren. |Wijzigen |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_Modify.json)
 |[Een tag overnemen van de resource groep als deze ontbreekt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea3f2387-9b95-492a-a190-fcdc54f7b070) |Hiermee wordt de opgegeven tag met de bijbehorende waarde uit de bovenliggende resource groep toegevoegd wanneer een resource deze tag niet heeft gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een hersteltaak te activeren. Als het label met een andere waarde bestaat, wordt dit niet gewijzigd. |Wijzigen |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_Modify.json)
+|[Een tag overnemen van het abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb27a0cbd-a167-4dfa-ae64-4337be671140) |Hiermee worden de opgegeven tag en waarde van het insluitende abonnement toegevoegd of vervangen wanneer een resource wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een hersteltaak te activeren. |Wijzigen |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_FromSubscription.json)
+|[Een tag overnemen van het abonnement als deze ontbreekt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40df99da-1232-49b1-a39a-6da8d878f469) |Hiermee wordt de opgegeven tag met de bijbehorende waarde uit het insluitende abonnement toegevoegd wanneer een resource die deze tag mist, wordt gemaakt of bijgewerkt. Bestaande resources kunnen worden hersteld door een hersteltaak te activeren. Als het label met een andere waarde bestaat, wordt dit niet gewijzigd. |Wijzigen |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_FromSubscription.json)
 |[Opgegeven label vereist](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F871b6d14-10aa-478d-b590-94f262ecfa99) |Hiermee wordt het bestaan van een tag afgedwongen. Is niet van toepassing op resource groepen. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTag_Deny.json)
 |[Opgegeven label vereist voor resource groepen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96670d01-0a4d-4649-9c89-2d3abc0a5025) |Hiermee wordt het bestaan van een tag op resource groepen afgedwongen. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTag_Deny.json)
 |[Tag en de waarde vereisen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e30110a-5ceb-460c-a204-c1c3969c6d62) |Hiermee wordt een vereiste tag en de bijbehorende waarde afgedwongen. Is niet van toepassing op resource groepen. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTagAndValue_Deny.json)

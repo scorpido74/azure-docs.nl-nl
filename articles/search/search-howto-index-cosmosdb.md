@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642162"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498628"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB gegevens indexeren met behulp van een Indexeer functie in azure Cognitive Search 
 
@@ -29,13 +29,13 @@ In dit artikel wordt beschreven hoe u een Azure Cosmos DB [Indexeer functie](sea
 
 Omdat de terminologie verwarrend kan zijn, is het een goed idee dat [Azure Cosmos DB indexering](https://docs.microsoft.com/azure/cosmos-db/index-overview) en [Azure Cognitive Search indexeren](search-what-is-an-index.md) verschillende bewerkingen zijn, uniek zijn voor elke service. Voordat u begint met het indexeren van Azure Cognitive Search, moet uw Azure Cosmos DB-data base al bestaan en gegevens bevatten.
 
-Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos DB-items](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) die toegankelijk zijn via verschillende protocollen, verkennen.
+Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos DB-items](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) die toegankelijk zijn via verschillende protocollen, verkennen. 
 
-+ Voor [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)gebruiken.
++ Voor [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) gebruiken om de gegevens bron en Indexeer functie te maken.
 
-+ Voor [de MongoDb-API (preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) en [Gremlin-API (preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2019-05-06-preview](search-api-preview.md) gebruiken op een aanroep van [Create indexeerer (rest)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) om de Indexeer functie te maken.
++ Voor de [MongoDb-API (preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2019-05-06-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
-+ Voor [Cassandra-API (preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)kunt u alleen de [rest API versie 2019-05-06-preview](search-api-preview.md) gebruiken op een [rest-aanroep (Create indexeerer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) ).
++ Voor [Cassandra-API (preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) en [Gremlin-API (preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)kunt u alleen de [rest API versie 2019-05-06-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
 
 > [!Note]
@@ -175,10 +175,10 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 
 | Veld   | Beschrijving |
 |---------|-------------|
-| **De naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
+| **naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
 |**type**| Vereist. Moet `cosmosdb`zijn. |
 |**aanmeldings** | Vereist. Moet een Cosmos DB connection string zijn.<br/>Voor SQL-verzamelingen hebben verbindings reeksen de volgende indeling: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Voor Gremlin-grafieken en Cassandra-tabellen meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/><br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Cognitive Search uw Azure Cosmos DB-Data Base niet indexeren.|
-| **container** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
+| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
 | **dataChangeDetectionPolicy** | Aanbevelingen. Zie de sectie [gewijzigde documenten indexeren](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Optioneel. Zie het gedeelte [verwijderde documenten indexeren](#DataDeletionDetectionPolicy) .|
 
@@ -258,10 +258,10 @@ Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de
 | Getallen die eruit zien als gehele getallen |Edm.Int32, Edm.Int64, Edm.String |
 | Getallen die eruitzien als zwevende punten |Edm.Double, Edm.String |
 | Tekenreeks |Edm.String |
-| Matrices van primitieve typen, bijvoorbeeld ["a", "b", "c"] |Collection(EDM.String) |
+| Matrices van primitieve typen, bijvoorbeeld ["a", "b", "c"] |Verzameling (Edm.String) |
 | Teken reeksen die eruitzien als datums |Edm.DateTimeOffset, Edm.String |
 | Geojson-objecten, bijvoorbeeld {"type": "punt", "coördinaten": [Long, lat]} |Edm.GeographyPoint |
-| Andere JSON-objecten |N/A |
+| Andere JSON-objecten |N.v.t. |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4: de Indexeer functie configureren en uitvoeren
 
@@ -288,10 +288,10 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 
 De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen beschik bare REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [micro soft. Azure. Search. Models. Indexeer functie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 
@@ -364,7 +364,7 @@ In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig ver
 
 ## <a name="NextSteps"></a>Volgende stappen
 
-Gefeliciteerd. U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
+Gefeliciteerd! U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
 
 * Zie de [pagina Azure Cosmos DB Service](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
 * Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Cognitive Search.

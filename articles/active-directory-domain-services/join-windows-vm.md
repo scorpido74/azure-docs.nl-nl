@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40a3b1352c383b8b70a0b14f59265188b77a86d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474697"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523682"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelf studie: een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
@@ -24,7 +24,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een Windows Server-VM maken
-> * Verbinding maken met de virtuele machine van Windows Server met een virtueel Azure-netwerk
+> * De virtuele Windows Server-machine verbinden met een virtueel Azure-netwerk
 > * De virtuele machine toevoegen aan het beheerde domein van Azure AD DS
 
 Als u nog geen abonnement op Azure hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
@@ -41,6 +41,8 @@ Voor het volt ooien van deze zelf studie hebt u de volgende resources nodig:
     * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
     * Zorg ervoor dat Azure AD Connect wachtwoord-hash synchronisatie of selfservice voor wachtwoord herstel is uitgevoerd zodat het account zich kan aanmelden bij Azure AD DS beheerd domein.
+* Een Azure bastion-host die is geïmplementeerd in uw Azure AD DS virtuele netwerk.
+    * Maak indien nodig [een Azure bastion-host][azure-bastion].
 
 Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u naar de sectie om [de VM toe te voegen aan het beheerde domein van Azure AD DS](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
@@ -48,7 +50,7 @@ Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u na
 
 In deze zelf studie maakt u een Windows Server-VM die u wilt toevoegen aan uw Azure AD DS beheerde domein met behulp van de Azure Portal. Meld u eerst aan bij de [Azure Portal](https://portal.azure.com)om aan de slag te gaan.
 
-## <a name="create-a-windows-server-virtual-machine"></a>Een virtuele machine voor Windows Server maken
+## <a name="create-a-windows-server-virtual-machine"></a>Een virtuele Windows Server-machine maken
 
 Als u wilt zien hoe een computer moet worden toegevoegd aan een door Azure AD DS beheerd domein, kunt u een virtuele Windows Server-machine maken. Deze VM is verbonden met een virtueel Azure-netwerk dat verbinding maakt met het door Azure AD DS beheerde domein. Het proces om lid te worden van een Azure AD DS beheerd domein is hetzelfde als het toevoegen van een normaal on-premises Active Directory Domain Services domein.
 
@@ -70,13 +72,13 @@ Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u na
     | Gebruikersnaam             | Voer een gebruikers naam in voor het lokale beheerders account dat u op de virtuele machine wilt maken, zoals *azureuser* |
     | Wachtwoord             | Voer een veilig wacht woord voor de lokale beheerder in en bevestig dit om op de VM te maken. Geef geen referenties voor een domein gebruikers account op. |
 
-1. Vm's die in azure zijn gemaakt, zijn standaard niet toegankelijk via internet. Deze configuratie helpt de beveiliging van de virtuele machine te verbeteren en vermindert het gebied voor mogelijke aanvallen. In de volgende stap van deze zelf studie moet u verbinding maken met de virtuele machine met behulp van Remote Desktop Protocol (RDP) en vervolgens de Windows-Server toevoegen aan het beheerde domein van Azure AD DS.
+1. Virtuele machines die in Azure worden gemaakt, zijn standaard toegankelijk via internet met RDP. Wanneer RDP is ingeschakeld, worden er waarschijnlijk een geautomatiseerde aanmeldings aanval uitgevoerd, waardoor accounts met veelvoorkomende namen, zoals *admin* of *Administrator* , mogelijk worden uitgeschakeld vanwege meerdere mislukte opeenvolgende aanmeldings pogingen.
 
-    Wanneer RDP is ingeschakeld, worden er waarschijnlijk een geautomatiseerde aanmeldings aanval uitgevoerd, waardoor accounts met veelvoorkomende namen, zoals *admin* of *Administrator* , mogelijk worden uitgeschakeld vanwege meerdere mislukte opeenvolgende aanmeldings pogingen. RDP moet alleen worden ingeschakeld als dit vereist is, en beperkt tot een aantal toegestane IP-bereiken. [Azure just-in-time-VM-toegang][jit-access] als onderdeel van Azure Security Center kan deze korte, beperkte RDP-sessies inschakelen. U kunt ook [een Azure bastion-host maken en gebruiken (momenteel in Preview)][azure-bastion] om alleen toegang toe te staan via de Azure portal via SSL.
+    RDP moet alleen worden ingeschakeld als dit vereist is, en beperkt tot een aantal toegestane IP-bereiken. Deze configuratie helpt de beveiliging van de virtuele machine te verbeteren en vermindert het gebied voor mogelijke aanvallen. U kunt ook een Azure bastion-host maken en gebruiken die alleen toegankelijk is via de Azure Portal via SSL. In de volgende stap van deze zelf studie gebruikt u een Azure bastion-host om veilig verbinding te maken met de virtuele machine.
 
-    Voor deze zelf studie schakelt u hand matig RDP-verbindingen met de virtuele machine in.
+    Schakel voor Taan direct RDP-verbindingen met de virtuele machine uit.
 
-    Onder **open bare binnenkomende poorten**selecteert u de optie voor het **toestaan van geselecteerde poorten**. Kies *RDP (3389)* in de vervolg keuzelijst voor **Selecteer binnenkomende poorten**.
+    Selecteer onder **open bare binnenkomende poorten**de optie *geen*.
 
 1. Wanneer u klaar bent, selecteert u **volgende: schijven**.
 1. Kies in de vervolg keuzelijst voor het **schijf type van het besturings systeem** *Standard-SSD*en selecteer vervolgens **volgende: netwerken**.
@@ -120,20 +122,23 @@ Het duurt enkele minuten om de virtuele machine te maken. In het Azure Portal wo
 
 ## <a name="connect-to-the-windows-server-vm"></a>Verbinding maken met de Windows Server-VM
 
-We gaan nu verbinding maken met de nieuwe virtuele Windows Server-machine met behulp van RDP en lid worden van het Azure AD DS beheerde domein. Gebruik de referenties van de lokale beheerder die u hebt opgegeven tijdens het maken van de virtuele machine in de vorige stap, niet voor bestaande domein referenties.
+Gebruik een Azure bastion-host om veilig verbinding te maken met uw Vm's. Met Azure Bastion wordt een beheerde host geïmplementeerd in uw virtuele netwerk en worden RDP-of SSH-verbindingen op basis van het web op Vm's geboden. Er zijn geen open bare IP-adressen vereist voor de Vm's en u hoeft geen netwerk beveiligings groeps regels te openen voor extern extern verkeer. U maakt verbinding met virtuele machines met behulp van de Azure Portal van uw webbrowser.
 
-1. Selecteer in het deel venster **overzicht** de optie **verbinding maken**.
+Als u een bastion-host wilt gebruiken om verbinding te maken met uw virtuele machine, voert u de volgende stappen uit:
 
-    ![Verbinding maken met een virtuele Windows-machine in de Azure Portal](./media/join-windows-vm/connect-to-vm.png)
+1. Selecteer in het deel venster **overzicht** voor uw virtuele machine **verbinding maken**en vervolgens **Bastion**.
 
-1. Selecteer de optie om het *RDP-bestand te downloaden*. Sla dit RDP-bestand op in de webbrowser.
-1. Open het gedownloade RDP-bestand om verbinding met de VM te maken. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
-1. Voer de referenties voor de lokale beheerder in die u in de vorige stap hebt opgegeven om de virtuele machine te maken, zoals *localhost\azureuser*
-1. Als tijdens het aanmeldings proces een certificaat waarschuwing wordt weer gegeven, selecteert u **Ja** of **door gaan** met verbinding maken.
+    ![Verbinding maken met een virtuele Windows-machine met behulp van Bastion in de Azure Portal](./media/join-windows-vm/connect-to-vm.png)
+
+1. Voer de referenties in voor uw virtuele machine die u in de vorige sectie hebt opgegeven en selecteer vervolgens **verbinding maken**.
+
+   ![Verbinding maken via de bastion-host in de Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+Als dat nodig is, laat u uw webbrowser pop-ups openen voor de Bastion-verbinding die moet worden weer gegeven. Het duurt een paar seconden om de verbinding met uw virtuele machine te maken.
 
 ## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>De virtuele machine toevoegen aan het beheerde domein van Azure AD DS
 
-Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebracht, kunt u nu lid worden van de VM van Windows Server aan het beheerde domein van Azure AD DS. Dit proces is hetzelfde als een computer die verbinding maakt met een regel matig on-premises Active Directory Domain Services domein.
+Wanneer de virtuele machine is gemaakt en een op een webgebaseerde RDP-verbinding tot stand is gebracht met behulp van Azure Bastion, gaan we nu lid worden van de VM van Windows Server aan het beheerde domein van Azure AD DS. Dit proces is hetzelfde als een computer die verbinding maakt met een regel matig on-premises Active Directory Domain Services domein.
 
 1. Als **Serverbeheer** standaard niet wordt geopend wanneer u zich aanmeldt bij de VM, selecteert u het menu **Start** en kiest u vervolgens **Serverbeheer**.
 1. Selecteer **lokale server**in het linkerdeel venster van het venster **Serverbeheer** . Kies **werk groep**onder **Eigenschappen** in het rechterdeel venster.
@@ -174,22 +179,13 @@ Als de virtuele machine van Windows Server opnieuw is opgestart, worden alle bel
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de volgende zelf studie gebruikt u deze virtuele machine van Windows Server om de beheer hulpprogramma's te installeren waarmee u het door Azure AD DS beheerde domein kunt beheren. Als u niet wilt door gaan in deze reeks zelf studies, raadpleegt u de volgende stappen voor opschonen om [RDP uit te scha kelen](#disable-rdp) of [de virtuele machine te verwijderen](#delete-the-vm). Als dat niet het geval is, [gaat u verder met de volgende zelf studie](#next-steps).
+In de volgende zelf studie gebruikt u deze virtuele machine van Windows Server om de beheer hulpprogramma's te installeren waarmee u het door Azure AD DS beheerde domein kunt beheren. Als u niet wilt door gaan in deze reeks zelf studies, raadpleegt u de volgende stappen voor opschonen om [de virtuele machine te verwijderen](#delete-the-vm). Als dat niet het geval is, [gaat u verder met de volgende zelf studie](#next-steps).
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>De virtuele machine loskoppelen van Azure AD DS beheerde domein
 
 Als u de virtuele machine uit de Azure AD DS beheerde domein wilt verwijderen, volgt u de stappen opnieuw om [de VM aan een domein toe te voegen](#join-the-vm-to-the-azure-ad-ds-managed-domain). In plaats van aan het beheerde domein van Azure AD DS te koppelen, kiest u om lid te worden van een werk groep, zoals de *standaardwerk groep*. Nadat de VM opnieuw is opgestart, wordt het computer object verwijderd uit het door Azure AD DS beheerde domein.
 
 Als u [de virtuele machine verwijdert](#delete-the-vm) zonder lid te worden van het domein, blijft een zwevend computer object in azure AD DS.
-
-### <a name="disable-rdp"></a>RDP uitschakelen
-
-Als u de Windows Server-VM die u in deze zelf studie hebt gemaakt, blijft gebruiken voor het uitvoeren van uw eigen toepassingen of workloads, intrekken dat RDP via internet is geopend. Om de beveiliging te verbeteren en het risico van een aanval te verminderen, moet RDP worden uitgeschakeld via internet. Als u RDP via internet wilt uitschakelen voor de Windows Server-VM, voert u de volgende stappen uit:
-
-1. Selecteer **resource groepen** in het menu links.
-1. Kies uw resource groep, zoals *myResourceGroup*.
-1. Kies uw virtuele machine, bijvoorbeeld *myVM*, en selecteer vervolgens *netwerken*.
-1. Selecteer onder **inkomende netwerk beveiligings regels** voor de netwerk beveiligings groep de regel waarmee RDP is toegestaan en kies vervolgens **verwijderen**. Het duurt een paar seconden om de binnenkomende beveiligings regel te verwijderen.
 
 ### <a name="delete-the-vm"></a>De VM verwijderen
 
@@ -249,6 +245,5 @@ Als u uw door Azure AD DS beheerd domein wilt beheren, configureert u een beheer
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: active-directory-ds-getting-started-password-sync.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

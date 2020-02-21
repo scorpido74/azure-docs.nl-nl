@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461212"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505636"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -34,7 +34,8 @@ Vergelijk twee claims en verwerp een uitzonde ring als deze niet gelijk zijn aan
 | InputClaim | inputClaim2 | tekenreeks | Tweede claim type, dat moet worden vergeleken. |
 | InputParameter | stringComparison | tekenreeks | teken reeks vergelijking, een van de waarden: Ordinal, OrdinalIgnoreCase. |
 
-De **AssertStringClaimsAreEqual** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md). De meta gegevens van het zelfondertekende technische profiel **UserMessageIfClaimsTransformationStringsAreNotEqual** bepalen het fout bericht dat aan de gebruiker wordt gepresenteerd.
+De **AssertStringClaimsAreEqual** -claim transformatie wordt altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md)of een [DisplayConrtol](display-controls.md). De `UserMessageIfClaimsTransformationStringsAreNotEqual` meta gegevens van een zelf-bevestigd technisch profiel bepalen het fout bericht dat wordt weer gegeven aan de gebruiker.
+
 
 ![AssertStringClaimsAreEqual-uitvoering](./media/string-transformations/assert-execution.png)
 
@@ -122,7 +123,7 @@ Gebruik deze claim transformatie om een wille keurig teken reeks claim type te w
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-Hiermee wordt een teken reeks claim gemaakt op basis van de opgegeven invoer parameter in het beleid.
+Hiermee wordt een teken reeks claim gemaakt op basis van de opgegeven invoer parameter in de trans formatie.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 |----- | ----------------------- | --------- | ----- |
@@ -516,6 +517,42 @@ In het volgende voor beeld wordt de domein naam in een van de input parameters-v
     - **errorOnFailedLookup**: False
 - Uitvoer claims:
     - **output claim**: c7026f88-4299-4cdb-965d-3f166464b8a9
+
+Als `errorOnFailedLookup` invoer parameter is ingesteld op `true`, wordt de **LookupValue** -claim transformatie altijd uitgevoerd op basis van een [validatie technische profiel](validation-technical-profile.md) dat wordt aangeroepen door een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md)of een [DisplayConrtol](display-controls.md). De `LookupNotFound` meta gegevens van een zelf-bevestigd technisch profiel bepalen het fout bericht dat wordt weer gegeven aan de gebruiker.
+
+![AssertStringClaimsAreEqual-uitvoering](./media/string-transformations/assert-execution.png)
+
+In het volgende voor beeld wordt de domein naam in een van de input parameters-verzamelingen opgezocht. De claim transformatie zoekt de domein naam in de id en retourneert de waarde (een toepassings-ID) of een fout bericht wordt gegenereerd.
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+    - **inputParameterId**: Live.com
+- Invoer parameters:
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: True
+- Fout:
+    - Er is geen overeenkomst gevonden voor de invoer claim waarde in de lijst met invoer parameter-id's en errorOnFailedLookup is waar.
+
 
 ## <a name="nullclaim"></a>NullClaim
 

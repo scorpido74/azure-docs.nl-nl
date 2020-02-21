@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847054"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482765"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken
 
@@ -34,7 +34,7 @@ Uw Azure AD B2C Directory wordt geleverd met een ingebouwde set kenmerken. Voor 
 * Een id-provider heeft een unieke gebruikers-id, zoals **uniqueUserGUID** , die moeten worden opgeslagen.
 * Een aangepaste gebruikers reis moet persistent worden gemaakt voor een status van een gebruiker, zoals **migrationStatus**.
 
-Azure AD B2C breidt de set kenmerken uit die zijn opgeslagen op elk gebruikers account. U kunt deze kenmerken ook lezen en schrijven met behulp van de [Azure AD-Graph API](manage-user-accounts-graph-api.md).
+Azure AD B2C breidt de set kenmerken uit die zijn opgeslagen op elk gebruikers account. U kunt deze kenmerken ook lezen en schrijven met behulp van de [Microsoft Graph-API](manage-user-accounts-graph-api.md).
 
 Extensie-eigenschappen breiden het schema van de gebruikers objecten in de map uit. De *extensie-eigenschap*, het *aangepaste kenmerk*en de *aangepaste claim* verwijzen naar hetzelfde item in de context van dit artikel. De naam kan variëren, afhankelijk van de context, zoals toepassing, object of beleid.
 
@@ -63,8 +63,8 @@ Instructies zijn opgenomen in de sectie **volgende stappen** in dit artikel.
 9. Voer een vinkje in bij toepassings machtigingen: **Directory gegevens lezen en schrijven**. Selecteer vervolgens **Opslaan**.
 10. Kies **machtigingen verlenen** en bevestig **Ja**.
 11. Kopieer de volgende id's naar het klem bord en sla ze op:
-    * **Toepassings-id**. Voorbeeld: `103ee0e6-f92d-4183-b576-8c3739027780`.
-    * **Object-id**. Voorbeeld: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
+    * **Toepassings-id**. Voor beeld: `103ee0e6-f92d-4183-b576-8c3739027780`.
+    * **Object-id**. Voor beeld: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Wijzig uw aangepaste beleid om de **ApplicationObjectId** toe te voegen
 
@@ -295,9 +295,9 @@ Het ID-token dat teruggestuurd naar uw toepassing bevat de nieuwe extensie-eigen
    extension_<app-guid>_ActivationStatus via Graph API.
    ```
 
-## <a name="reference"></a>Referentie
+## <a name="reference"></a>Naslaginformatie
 
-Zie de Directory schema-uitbrei dingen voor het artikel voor meer informatie over extensie-eigenschappen [| Graph API concepten](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+Zie voor meer informatie over uitbreidings eigenschappen het artikel [aangepaste gegevens toevoegen aan resources met behulp van extensies](https://docs.microsoft.com/graph/extensibility-overview).
 
 > [!NOTE]
 > * Een **TechnicalProfile** is een element type, of functie, waarmee de naam, meta gegevens en het Protocol van een eind punt worden gedefinieerd. De **TechnicalProfile** geeft een overzicht van de uitwisseling van claims die het Framework voor identiteits ervaring uitvoert. Wanneer deze functie wordt aangeroepen in een indelings stap of vanuit een andere **TechnicalProfile**, worden de **InputClaims** en **OutputClaims** als para meters door de aanroeper opgegeven.

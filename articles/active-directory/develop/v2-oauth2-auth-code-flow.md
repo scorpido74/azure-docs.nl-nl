@@ -17,12 +17,12 @@ ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8a847afa2253223ebe9450d350cd18f5f659e0e3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686a9681394a2d23dafbc03cb533d80ca0f8723b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159774"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484465"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -142,7 +142,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
 > [!TIP]
@@ -156,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | Vereist   | Een lijst met door spaties gescheiden bereiken. De bereiken die in dit gedeelte worden aangevraagd, moeten gelijk zijn aan of een subset zijn van de bereiken die in de eerste poot zijn aangevraagd. De scopes moeten allemaal afkomstig zijn van één resource, samen met OIDC-bereiken (`profile`, `openid``email`). Raadpleeg [machtigingen, toestemming en bereiken](v2-permissions-and-consent.md)voor een gedetailleerdere uitleg van scopes. |
 | `code`          | Vereist  | Het authorization_code dat u hebt verkregen in het eerste gedeelte van de stroom. |
 | `redirect_uri`  | Vereist  | Dezelfde redirect_uri waarde die is gebruikt om de authorization_code op te halen. |
-| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. U moet het toepassings geheim niet gebruiken in een systeem eigen app omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde.  Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden.  |
+| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. U moet het toepassings geheim niet gebruiken in een systeem eigen app omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde.  Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. Klik [hier](https://tools.ietf.org/html/rfc3986#page-12)voor meer informatie. |
 | `code_verifier` | Beschrijving  | Hetzelfde code_verifier dat is gebruikt om de authorization_code op te halen. Vereist als PKCE is gebruikt in de aanvraag voor autorisatie code toekenning. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
 
 ### <a name="successful-response"></a>Geslaagde reactie
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps. This secret needs to be URL-Encoded
 ```
 
 > [!TIP]
@@ -268,7 +268,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | Vereist    | Moet `refresh_token` zijn voor dit gedeelte van de autorisatie code stroom. |
 | `scope`         | Vereist    | Een lijst met door spaties gescheiden bereiken. De scopes die in deze leg worden aangevraagd, moeten gelijk zijn aan of een subset zijn van de bereiken die in de oorspronkelijke authorization_code aanvraag poot zijn aangevraagd. Als de scopes die in deze aanvraag zijn opgegeven meerdere bron servers beslaan, retourneert het micro soft Identity platform-eind punt een token voor de resource die in het eerste bereik is opgegeven. Raadpleeg [machtigingen, toestemming en bereiken](v2-permissions-and-consent.md)voor een gedetailleerdere uitleg van scopes. |
 | `refresh_token` | Vereist    | Het refresh_token dat u hebt verkregen in het tweede gedeelte van de stroom. |
-| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. Het mag niet worden gebruikt in een systeem eigen app, omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde. |
+| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. Het mag niet worden gebruikt in een systeem eigen app, omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde. Dit geheim moet URL-gecodeerd zijn. Klik [hier](https://tools.ietf.org/html/rfc3986#page-12)voor meer informatie. |
 
 #### <a name="successful-response"></a>Geslaagde reactie
 

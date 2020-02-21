@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 62e2e3f1a80cef04dc778d5a1950cca97d79dcb0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f4c76539f6b14c3fb5ad5dba8fc8c8df514edfe4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748374"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526838"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metrische gegevens van Azure Storage in Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor biedt uniforme gebruikers interfaces voor bewaking in verschillend
 
 Azure Monitor biedt meerdere manieren voor toegang tot metrische gegevens. U kunt ze openen via de [Azure Portal](https://portal.azure.com), de Azure monitor-API'S (rest en .net) en analyse oplossingen zoals Event hubs. Zie [Azure monitor metrische](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
-Metrieken zijn standaard ingeschakeld en u hebt toegang tot de afgelopen 93 dagen aan gegevens. Als u behouden van gegevens voor een langere periode wilt, kunt u metrische gegevens om een Azure Storage-account te archiveren. Dit is geconfigureerd in [diagnostische instellingen](../../azure-monitor/platform/platform-logs-overview.md) in Azure Monitor.
+Metrieken zijn standaard ingeschakeld en u hebt toegang tot de afgelopen 93 dagen aan gegevens. Als u behouden van gegevens voor een langere periode wilt, kunt u metrische gegevens om een Azure Storage-account te archiveren. Dit wordt geconfigureerd in [Diagnostische instellingen](../../azure-monitor/platform/platform-logs-overview.md) in azure monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Toegang tot metrische gegevens in de Azure Portal
 
@@ -338,7 +338,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 | ------------------- | ----------------- |
 | UsedCapacity | De hoeveelheid opslag die wordt gebruikt door het opslag account. Voor standaardopslagaccounts is dit de som van de capaciteit die wordt gebruikt door blob, table, file en queue. Voor premium-opslagaccounts en blob-opslagaccounts is dit hetzelfde als BlobCapacity. <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-### <a name="blob-storage"></a>Blob-opslag
+### <a name="blob-storage"></a>Blob Storage
 
 | Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
@@ -347,7 +347,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 | ContainerCount    | Het aantal containers in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | IndexCapacity     | De hoeveelheid opslag die wordt gebruikt door ADLS Gen2 hiërarchische index <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-### <a name="table-storage"></a>Tabelopslag
+### <a name="table-storage"></a>Table Storage
 
 | Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
@@ -363,7 +363,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 | QueueCount   | Het aantal wacht rijen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | QueueMessageCount | Het aantal niet-verlopen wachtrij berichten in het opslag account. <br/><br/>Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-### <a name="file-storage"></a>Bestandsopslag
+### <a name="file-storage"></a>File Storage
 
 | Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
@@ -371,7 +371,7 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 | FileCount   | Het aantal bestanden in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 | FileShareCount | Het aantal bestands shares in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-## <a name="transaction-metrics"></a>Metrische gegevens voor transacties
+## <a name="transaction-metrics"></a>Metrische gegevens van trans actie
 
 Metrische gegevens over trans acties worden verzonden voor elke aanvraag naar een opslag account van Azure Storage naar Azure Monitor. In het geval van geen activiteit in uw opslag account, worden er geen gegevens in de periode weer gegeven. Alle metrische gegevens over trans acties zijn beschikbaar op zowel account-als service niveau (Blob-opslag, tabel opslag, Azure Files en wachtrij opslag). De tijd korrel definieert het tijds interval dat metrische waarden worden weer gegeven. De ondersteunde tijd korrels voor alle metrische gegevens van de trans actie zijn PT1H en PT1M.
 
@@ -380,7 +380,7 @@ Azure Storage levert de volgende metrische gegevens over trans acties in Azure M
 | Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
 | Transacties | Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. <br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: ResponseType, geotype, ApiName en Authentication ([definitie](#metrics-dimensions))<br/> Waarde-voor beeld: 1024 |
-| Binnenkomend | De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. <br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
+| Inkomend verkeer | De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. <br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
 | Uitgaand verkeer | De hoeveelheid uitgaande gegevens. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer. <br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
 | SuccessServerLatency | De gemiddelde tijd die nodig is om een aanvraag door Azure Storage te verwerken. Deze waarde bevat niet de netwerklatentie die is opgegeven in SuccessE2ELatency. <br/><br/> Eenheid: milliseconden <br/> Aggregatie type: gemiddeld <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
 | SuccessE2ELatency | De gemiddelde end-to-end-latentie van geslaagde aanvragen aan een opslagservice of de opgegeven API-bewerking. Deze waarde bevat de vereiste verwerkingstijd in Azure Storage die nodig is om de aanvraag te lezen, het antwoord te verzenden en bevestiging van het antwoord te ontvangen. <br/><br/> Eenheid: milliseconden <br/> Aggregatie type: gemiddeld <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
@@ -394,8 +394,9 @@ Azure Storage ondersteunt de volgende dimensies voor metrische gegevens in Azure
 | ------------------- | ----------------- |
 | **BlobType** | Het type BLOB voor alleen metrische gegevens van blobs. De ondersteunde waarden zijn **BlockBlob**, **PageBlob**en **Azure data Lake Storage**. Toevoeg-blob is opgenomen in BlockBlob. |
 | **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: warme laag</li> <li>**Cool**: cool-laag</li> <li>**Archief**: laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: laag type voor de standaard pagina-BLOB</li> <li>**Ongetierd**: laag type voor algemeen gebruik v1-opslag account</li> |
-| **GeoType** | Trans actie van het primaire of secundaire cluster. De beschik bare waarden zijn onder andere **primaire** en **secundaire**. Dit is van toepassing op lees toegang geografisch redundante opslag (RA-GRS) bij het lezen van objecten van een secundaire Tenant. |
-| **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle andere fouten aan de server zijde behalve beschreven </li> <li>**ServerBusyError**: een geverifieerde aanvraag die een HTTP 503-status code heeft geretourneerd. </li> <li>**ServerTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: een geverifieerde aanvraag die is mislukt vanwege ongeoorloofde toegang tot gegevens of een autorisatie fout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerk fouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li> <li>**ClientThrottlingError**: fout met beperking aan client zijde. </li> <li>**ClientTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd. </li> <li>**ClientOtherError**: alle andere fouten aan de client zijde behalve de beschreven. </li> <li>**Geslaagd**: aanvraag geslaagd</li> <li> **SuccessWithThrottling**: de aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |
+| **Geotype** | Trans actie van het primaire of secundaire cluster. De beschik bare waarden zijn onder andere **primaire** en **secundaire**. Dit is van toepassing op lees toegang geografisch redundante opslag (RA-GRS) bij het lezen van objecten van een secundaire Tenant. |
+| **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle andere fouten aan de server zijde behalve beschreven </li> <li>**ServerBusyError**: een geverifieerde aanvraag die een HTTP 503-status code heeft geretourneerd. </li> <li>**ServerTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: een geverifieerde aanvraag die is mislukt vanwege ongeoorloofde toegang tot gegevens of een autorisatie fout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerk fouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li>  <li>**ClientAccountBandwidthThrottlingError**: de aanvraag wordt beperkt over de band breedte voor het overschrijden van de [schaalbaarheids limieten van het opslag account](scalability-targets-standard-account.md).</li><li>**ClientAccountRequestThrottlingError**: de aanvraag wordt beperkt op aanvraag snelheid voor overschrijding van de [schaalbaarheids limieten van het opslag account](scalability-targets-standard-account.md).<li>**ClientThrottlingError**: andere fout met beperking aan client zijde. ClientAccountBandwidthThrottlingError en ClientAccountRequestThrottlingError zijn uitgesloten.</li> <li>**ClientTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd.</li> </li> <li>**ClientOtherError**: alle andere fouten aan de client zijde behalve de beschreven. </li> <li>**Geslaagd**: aanvraag geslaagd</li> <li> **SuccessWithThrottling**: de aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |
+| **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle andere fouten aan de server zijde behalve beschreven </li> <li>**ServerBusyError**: een geverifieerde aanvraag die een HTTP 503-status code heeft geretourneerd. </li> <li>**ServerTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: een geverifieerde aanvraag die is mislukt vanwege ongeoorloofde toegang tot gegevens of een autorisatie fout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerk fouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li>  <li>**ClientAccountBandwidthThrottlingError**: de aanvraag wordt beperkt over de band breedte voor het overschrijden van de [schaalbaarheids limieten van het opslag account](scalability-targets-standard-account.md).</li><li>**ClientAccountRequestThrottlingError**: de aanvraag wordt beperkt op aanvraag snelheid voor overschrijding van de [schaalbaarheids limieten van het opslag account]().<li>**ClientThrottlingError**: andere fout met beperking aan client zijde. ClientAccountBandwidthThrottlingError en ClientAccountRequestThrottlingError zijn uitgesloten.</li> <li>**ClientTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd.</li> </li> <li>**ClientOtherError**: alle andere fouten aan de client zijde behalve de beschreven. </li> <li>**Geslaagd**: aanvraag geslaagd</li> <li> **SuccessWithThrottling**: de aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |
 | **ApiName** | De naam van de bewerking. Bijvoorbeeld: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Zie [document](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor alle bewerkings namen. |
 | **Verificatie** | Het verificatie type dat wordt gebruikt in trans acties. De beschikbare waarden zijn onder meer: <br/> <li>**AccountKey**: de trans actie is geverifieerd met de sleutel van het opslag account.</li> <li>**SAS**: de trans actie wordt geverifieerd met hand tekeningen voor gedeelde toegang.</li> <li>**OAuth**: de trans actie wordt geverifieerd met OAuth-toegangs tokens.</li> <li>**Anoniem**: de trans actie is anoniem aangevraagd. Het bevat geen Preflight-aanvragen.</li> <li>**AnonymousPreflight**: de trans actie is een Preflight-aanvraag.</li> |
 

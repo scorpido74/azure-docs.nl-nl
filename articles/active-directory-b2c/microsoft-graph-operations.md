@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f23d3ffa14deccae9825568dee2f3c8b9ac7e7e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 5eeae1ab6866435311eeec944b4a51ecf2793dee
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492953"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522965"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph bewerkingen die beschikbaar zijn voor Azure AD B2C
 
@@ -57,7 +57,7 @@ Vooraf gemaakte beleids regels configureren voor aanmelding, aanmelden, gecombin
 
 Met de volgende bewerkingen kunt u uw Azure AD B2C Trust Framework-beleid beheren, ook wel [aangepast beleid](custom-policy-overview.md)genoemd.
 
-- [Alle beleids regels voor vertrouwens relaties die zijn geconfigureerd in een Tenant weer geven](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies.md)
+- [Alle beleids regels voor vertrouwens relaties die zijn geconfigureerd in een Tenant weer geven](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies)
 - [Vertrouwens raamwerk beleid maken](https://docs.microsoft.com/graph/api/trustframework-post-trustframeworkpolicy)
 - [Eigenschappen van een bestaand vertrouwens raamwerk beleid lezen](https://docs.microsoft.com/graph/api/trustframeworkpolicy-get)
 - [Het vertrouwens raamwerk beleid bijwerken of maken.](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)

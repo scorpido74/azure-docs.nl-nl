@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460464"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526509"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -117,7 +117,7 @@ Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-reso
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Kan Azure Firewall in een hub virtueel netwerk netwerk verkeer door sturen en filteren tussen twee spoke-virtuele netwerken?
 
-Ja, u kunt Azure Firewall in een hub-virtueel netwerk gebruiken om verkeer tussen twee spoke-netwerken te routeren en te filteren. Subnetten in elk van de spoke virtuele netwerken moeten UDR de Azure Firewall als standaard gateway voor dit scenario goed kunnen gebruiken.
+Ja, u kunt Azure Firewall in een hub-virtueel netwerk gebruiken om verkeer tussen twee spoke-netwerken te routeren en te filteren. Subnetten in elk van de spoke-virtuele netwerken moeten een UDR hebben die naar het Azure Firewall wijst als standaard gateway, zodat dit scenario goed werkt.
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Kan Azure Firewall netwerk verkeer tussen subnetten in hetzelfde virtuele netwerk of gekoppelde virtuele netwerken door sturen en filteren?
 
@@ -137,7 +137,7 @@ Als voor uw configuratie geforceerde tunneling naar een on-premises netwerk is v
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Zijn er beperkingen voor de resource groep van de firewall?
 
-Ja. De firewall, het subnet, het VNet en het open bare IP-adres moeten zich in dezelfde resource groep bevinden.
+Ja. De firewall, het VNet en het open bare IP-adres moeten zich in dezelfde resource groep bestaan.
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Moet ik ook een bijbehorende netwerk regel configureren om dat verkeer toe te staan bij het configureren van DNAT voor binnenkomend netwerk verkeer?
 
@@ -168,11 +168,11 @@ Nee. Azure Firewall hebt geen subnet dat groter is dan/26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Hoe kan ik de door Voer van de firewall verhogen?
 
-De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps. Op dit moment is uitschalen gebaseerd op het CPU-gebruik en de door voer. In sommige gevallen kan een firewall met netwerk regels alleen worden geschaald om de door voer te verhogen omdat de netwerk regels het CPU-gebruik niet aanzienlijk beïnvloeden. Als u een hogere door Voer voor uw firewall nodig hebt, neemt u contact op met de ondersteuning om de oorspronkelijke doorvoer capaciteit van uw firewall te verhogen.
+De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps en wordt geschaald naar 30 Gbps. Het wordt geschaald op basis van het CPU-gebruik en de door voer. Neem contact op met de ondersteuning om de doorvoer capaciteit van uw firewall te verhogen als uw firewall niet wordt geschaald om aan uw behoeften te voldoen en u een hogere doorvoer capaciteit nodig hebt.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Hoe lang duurt het om Azure Firewall uit te schalen?
 
-Het duurt momenteel vijf tot zeven minuten voordat Azure Firewall uitschalen. Als u bursts hebt die een sneller automatisch schalen vereisen, neemt u contact op met de ondersteuning om de oorspronkelijke doorvoer capaciteit van uw firewall te verg Roten.
+Het duurt vijf tot zeven minuten voordat Azure Firewall worden uitgeschaald. Neem contact op met de ondersteuning om de initiële doorvoer capaciteit van uw firewall te verhogen als u bursts hebt die een sneller automatisch schalen vereisen.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Staat Azure Firewall standaard toegang tot Active Directory toe?
 

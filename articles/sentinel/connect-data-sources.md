@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 97b65c9f891d925e702c858753aa5e5feb9c9ac1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462544"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500714"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -45,35 +45,46 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
 
 - **Integratie van service naar service**:<br> Sommige services zijn systeem eigen verbonden, zoals AWS en micro soft-Services, maar deze services maken gebruik van de Azure Foundation voor out-of-the-box Integration, de volgende oplossingen kunnen met een paar klikken worden verbonden:
     - [Amazon Web Services-CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD-controle logboeken en-aanmeldingen](connect-azure-active-directory.md)
     - [Azure-activiteit](connect-azure-activity.md)
+    - [Azure AD-controle logboeken en-aanmeldingen](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Security Center](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [Domein naam server](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Micro soft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Micro soft Web Application Firewall](connect-microsoft-waf.md)
     - [Windows-beveiligings gebeurtenissen](connect-windows-security-events.md) 
     - [Windows Firewall](connect-windows-firewall.md)
+    - [Windows-beveiligings gebeurtenissen](connect-windows-security-events.md)
 
 - **Externe oplossingen via API**: sommige gegevens bronnen zijn verbonden via api's die worden meegeleverd met de verbonden gegevens bron. Doorgaans bieden de meeste beveiligings technologieën een set Api's waarmee gebeurtenis logboeken kunnen worden opgehaald. De Api's maken verbinding met Azure Sentinel en verzamelen specifieke gegevens typen en verzenden ze naar Azure Log Analytics. Apparaten verbonden via API zijn:
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Barracuda CloudGen-firewall](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (beveiliging)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Force Point DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **Externe oplossingen via agent**: Azure Sentinel kan worden verbonden met alle andere gegevens bronnen die in realtime logboek streaming kunnen uitvoeren met behulp van het syslog-protocol, via een agent. <br>De meeste apparaten gebruiken het syslog-protocol om gebeurtenis berichten te verzenden die het logboek zelf en gegevens over het logboek bevatten. De indeling van de logboeken varieert, maar de meeste apparaten ondersteunen de op CEF (common Event Format) gebaseerde opmaak voor logboek gegevens. <br>De Azure Sentinel-agent, die is gebaseerd op de Log Analytics-agent, converteert CEF opgemaakt Logboeken in een indeling die door Log Analytics kan worden opgenomen. Afhankelijk van het type apparaat wordt de agent rechtstreeks op het apparaat geïnstalleerd of op een speciale Linux-server. De agent voor Linux ontvangt gebeurtenissen van de syslog-daemon via UDP, maar als een Linux-machine verwacht een hoog volume aan syslog-gebeurtenissen te verzamelen, worden ze via TCP van de syslog-daemon naar de agent verzonden en van daaruit naar Log Analytics.
     - Firewalls, proxy's en eind punten:
-        - [Drukt](connect-f5.md)
         - [Controle punt](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop Reveal (x)](connect-extrahop.md)
+        - [Drukt](connect-f5.md)
+        - [Force Point-producten](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto-netwerken](connect-paloalto.md)
+        - [Eén identiteits beveiliging](connect-one-identity.md)
         - [Andere CEF-apparaten](connect-common-event-format.md)
         - [Andere syslog-apparaten](connect-syslog.md)
-        - [Barracuda CloudGen-firewall](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop Reveal (x)](connect-extrahop.md)
-        - [Eén identiteits beveiliging](connect-one-identity.md)
         - [Trend Micro diepe beveiliging](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP-oplossingen
     - [Threat Intelligence-providers](connect-threat-intelligence.md)
     - [DNS-machines](connect-dns.md) -agent rechtstreeks geïnstalleerd op de DNS-computer

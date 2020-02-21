@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: f0c38590b667894dd65d212124ef1d26c7918ff7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.date: 02/20/2020
+ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366416"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485043"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -155,7 +155,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 |------|--------------------|---------------------------------------|-------|
 | Berichtgrootte | 100 MB | 200 MB | Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)om deze limiet te omzeilen. Sommige connectors en Api's ondersteunen echter mogelijk geen Chunking of zelfs de standaard limiet. |
 | Bericht grootte met Chunking | 1 GB | 5 GB | Deze limiet geldt voor acties die systeem eigen ondersteuning bieden voor Chunking of waarmee u Chunking in de runtime configuratie kunt inschakelen. <p>Voor de integratie service omgeving ondersteunt de Logic Apps-Engine deze limiet, maar connectors hebben hun eigen segment limieten tot de limiet van de engine. Zie de [API-naslag informatie voor de Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/). Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)voor meer informatie over chunks. |
-|||||   
+|||||
 
 #### <a name="character-limits"></a>Teken limieten
 
@@ -248,12 +248,16 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 | Schema | 8 MB | Als u bestanden wilt uploaden die groter zijn dan 2 MB, gebruikt u een [Azure-opslag account en een BLOB-container](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
-| Runtime-eind punt | Limiet | Opmerkingen |
-|------------------|-------|-------|
-| Lees aanroepen per 5 minuten | 60,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Aanroepen starten per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Tracerings aanroepen per 5 minuten | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
-| Gelijktijdige aanroepen blok keren | ~1,000 | U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
+<a name="integration-account-throughput-limits"></a>
+
+### <a name="throughput-limits"></a>Doorvoer limieten
+
+| Runtime-eind punt | Gratis | Basic | Standard | Opmerkingen |
+|------------------|------|-------|----------|-------|
+| Lees aanroepen per 5 minuten | 3,000 | 30,000 | 60,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Aanroepen starten per 5 minuten | 3,000 | 30,000 | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Tracerings aanroepen per 5 minuten | 3,000 | 30,000 | 45,000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Gelijktijdige aanroepen blok keren | ~1,000 | ~1,000 | ~1,000 | Hetzelfde voor alle Sku's. U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |
 ||||
 
 <a name="b2b-protocol-limits"></a>

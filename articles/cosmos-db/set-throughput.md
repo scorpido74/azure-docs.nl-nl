@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188769"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525512"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
 
@@ -60,11 +60,10 @@ Alle containers die in een Data Base zijn gemaakt met een ingerichte door Voer, 
 
 Als de werk belasting op een logische partitie meer gebruikt dan de door Voer die is toegewezen aan een specifieke logische partitie, zijn uw bewerkingen een beperkt aantal. Wanneer de snelheids beperking optreedt, kunt u de door Voer voor de gehele data base verg Roten of de bewerkingen opnieuw proberen. Zie [logische partities](partition-data.md)voor meer informatie over partitioneren.
 
-Containers in een gedeelde doorvoer database delen de door Voer (RU/s) die zijn toegewezen aan die data base. In een gedeelde doorvoer database:
+Containers in een gedeelde doorvoer database delen de door Voer (RU/s) die zijn toegewezen aan die data base. U kunt Maxi maal vier containers met mini maal 400 RU/s op de data base hebben. Voor elke nieuwe container na de eerste vier is een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een Data Base met gedeelde door Voer met acht containers hebt, is de mini maal RU/s op de data base 800 RU/s.
 
-* U kunt Maxi maal vier containers met mini maal 400 RU/s op de data base hebben. Voor elke nieuwe container na de eerste vier is een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een Data Base met gedeelde door Voer met acht containers hebt, is de mini maal RU/s op de data base 800 RU/s.
-
-* U kunt Maxi maal 25 containers in de data base hebben. Als u al meer dan 25 containers in een gedeelde doorvoer database hebt, kunt u geen extra containers meer maken totdat het aantal containers kleiner is dan 25.
+> [!NOTE]
+> In een gedeelde doorvoer database kunt u Maxi maal 25 containers in de data base hebben. Als u al meer dan 25 containers in een gedeelde doorvoer database hebt, kunt u geen extra containers meer maken totdat het aantal containers kleiner is dan 25.
 
 Als uw workloads het verwijderen en opnieuw maken van alle verzamelingen in een Data Base vereisen, is het raadzaam om de lege data base weg te halen en opnieuw een nieuwe Data Base te maken voordat u de verzameling maakt. In de volgende afbeelding ziet u hoe een fysieke partitie een of meer logische partities kan hosten die deel uitmaken van verschillende containers in een Data Base:
 

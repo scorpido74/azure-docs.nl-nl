@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212213"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500392"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integreren met Azure Managed Identities
 
@@ -78,7 +78,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 1. Voeg een verwijzing naar het pakket *Azure. Identity* toe:
 
     ```cli
-    dotnet add package Azure.Identity --version 1.1.0
+    dotnet add package Azure.Identity
     ```
 
 1. Zoek het eind punt naar het configuratie archief van uw app. Deze URL wordt weer gegeven op het tabblad **toegangs sleutels** voor de Store in de Azure Portal.
@@ -102,7 +102,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     > [!IMPORTANT]
     > `CreateHostBuilder` vervangt `CreateWebHostBuilder` in .NET Core 3,0.  Selecteer de juiste syntaxis op basis van uw omgeving.
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -134,7 +134,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Als u zowel app-configuratie waarden als Key Vault referenties wilt gebruiken, moet u *Program.cs* bijwerken zoals hieronder wordt weer gegeven. Met deze code wordt een nieuwe `KeyVaultClient` gemaakt met behulp van een `AzureServiceTokenProvider` en wordt deze verwijzing door gegeven aan een aanroep van de `UseAzureKeyVault`-methode.
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -150,7 +150,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>

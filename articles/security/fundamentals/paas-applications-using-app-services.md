@@ -1,5 +1,6 @@
 ---
-title: PaaS web-en mobiele toepassingen beveiligen met behulp van Azure App Service | Microsoft Docs
+title: PaaS Web & Mobile-toepassingen beveiligen
+titleSuffix: Azure App Service
 description: 'Meer informatie over Azure App Service aanbevolen procedures voor beveiliging bij het beveiligen van uw PaaS-web-en mobiele toepassingen. '
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999152"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500287"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure App Service
 

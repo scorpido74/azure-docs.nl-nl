@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200075"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500003"
 ---
 # <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
@@ -87,14 +87,55 @@ Configuratie parameters worden als JSON opgegeven:
 
 Gebruik deze optionele eigenschappen om transcriptie te configureren:
 
-| Parameter | Beschrijving |
-|-----------|-------------|
-| `ProfanityFilterMode` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` waarmee de filter functie voor scheld woorden wordt uitgeschakeld, `Masked` waardoor de woorden met sterretjes worden vervangen, `Removed` waardoor alle scheld woorden uit het resultaat worden verwijderd, of `Tags` waarmee de tags voor groveheid worden toegevoegd. De standaard instelling is `Masked`. |
-| `PunctuationMode` | Geeft aan hoe interpunctie in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` die interpunctie uitschakelt, `Dictated` die expliciete interpunctie impliceert, `Automatic` waarmee de decoder met interpunctie kan omgaan, of `DictatedAndAutomatic` die interpunctie tekens of automatisch aanduidt. |
-| `AddWordLevelTimestamps` | Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden zijn `true` die tijds tempels op woord niveau en `false` (de standaard waarde) in staat stelt om deze uit te scha kelen. |
-| `AddSentiment` | Hiermee geeft u sentiment moet worden toegevoegd aan de utterance. Geaccepteerde waarden zijn `true` die sentiment per utterance en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. |
-| `AddDiarization` | Hiermee geeft u op dat diarization-analyse moet worden uitgevoerd op de invoer waarvan wordt verwacht dat deze een mono-kanaal met twee stemmen bevat. Geaccepteerde waarden zijn `true` die diarization en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. Ook moet `AddWordLevelTimestamps` worden ingesteld op True.|
-|`TranscriptionResultsContainerUrl`|Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
+:::row:::
+   :::column span="1":::
+      **Bepaalde**
+   :::column-end:::
+   :::column span="2":::
+      **Beschrijving**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` om het filteren van grove woorden uit te scha kelen, `Masked` om groveheid te vervangen door sterretjes, `Removed` om alle woorden uit het resultaat te verwijderen, of `Tags` om "Gods gang" tags toe te voegen. De standaard instelling is `Masked`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      Geeft aan hoe interpunctie in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` om Lees tekens uit te scha kelen, `Dictated` om expliciete (gesp roken) interpunctie te impliceren, `Automatic` om de decoder te laten omgaan met lees tekens of `DictatedAndAutomatic` om gedicteerde en automatische interpunctie te gebruiken. De standaard instelling is `DictatedAndAutomatic`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden zijn `true` om tijds tempels op woord niveau en `false` (de standaard waarde) in te scha kelen om deze uit te scha kelen.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      Hiermee geeft u sentiment moet worden toegevoegd aan de utterance. Geaccepteerde waarden zijn `true` om sentiment per utterance en `false` (de standaard waarde) in te scha kelen om het uit te scha kelen.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      Hiermee geeft u op dat diarization-analyse moet worden uitgevoerd op de invoer waarvan wordt verwacht dat deze een mono-kanaal met twee stemmen bevat. Geaccepteerde waarden zijn `true` het inschakelen van diarization en `false` (de standaard waarde) om deze uit te scha kelen. Ook moet `AddWordLevelTimestamps` worden ingesteld op True.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
+:::row-end:::
 
 ### <a name="storage"></a>Opslag
 

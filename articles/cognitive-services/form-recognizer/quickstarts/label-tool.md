@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118367"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485349"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
@@ -28,10 +28,14 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 - Een set van ten minste zes soorten van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
 
+## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-the-sample-labeling-tool"></a>Het hulp programma voor het labelen van het voor beeld instellen
 
 U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het labelen van voor beelden. Volg deze stappen om de docker-container in te stellen. Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.
-1. Installeer eerst docker op een hostcomputer. De hostcomputer kan uw lokale computer zijn ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)of [Linux](https://docs.docker.com/install/)). U kunt ook een docker-hosting service gebruiken in azure, zoals de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/index), [Azure container instances](https://docs.microsoft.com/azure/container-instances/index)of een Kubernetes-cluster [dat is geïmplementeerd op een Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). De hostcomputer moet voldoen aan de volgende hardwarevereisten:
+1. Installeer eerst docker op een hostcomputer. De hostcomputer kan uw lokale computer zijn ([Windows](https://docs.docker.com/docker-for-windows/), [macOS](https://docs.docker.com/docker-for-mac/)of [Linux](https://docs.docker.com/install/)). U kunt ook een docker-hosting service gebruiken in azure, zoals de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/index), [Azure container instances](https://docs.microsoft.com/azure/container-instances/index)of een Kubernetes-cluster [dat is geïmplementeerd op een Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). De hostcomputer moet voldoen aan de volgende hardwarevereisten:
 
     | Container | Minimum | Aanbevolen|
     |:--|:--|:--|
@@ -70,7 +74,7 @@ Schakel CORS in voor uw opslag account. Selecteer uw opslag account in de Azure 
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Verbinding maken met het hulp programma voor het labelen van het voor beeld
 
-Het hulp programma voor het labelen van het voor beeld maakt verbinding met een bron (waarbij uw oorspronkelijke formulieren zijn) en een doel (de locatie waar de gemaakte labels en uitvoer gegevens worden geëxporteerd).
+Het hulp programma voor het labelen van labels maakt verbinding met een bron (waarbij uw oorspronkelijke formulieren zijn) en een doel (waar de gemaakte labels en uitvoer gegevens worden geëxporteerd).
 
 Verbindingen kunnen worden ingesteld en gedeeld in projecten. Ze gebruiken een uitbreidbaar provider model, zodat u eenvoudig nieuwe bron/doel providers kunt toevoegen.
 
@@ -89,7 +93,7 @@ Vul de velden in met de volgende waarden:
 In het hulp programma labelen worden uw configuraties en instellingen opgeslagen in projecten. Maak een nieuw project en vul de velden in met de volgende waarden:
 
 * **Weergave naam** : de weergave naam van het project
-* **Beveiligings token** : sommige project instellingen kunnen gevoelige waarden bevatten, zoals API-sleutels of andere gedeelde geheimen. Elk project genereert een beveiligings token dat kan worden gebruikt voor het versleutelen/ontsleutelen van gevoelige project instellingen. Beveiligings tokens kunt u vinden in toepassings instellingen door te klikken op het tandwiel pictogram in de linkerbenedenhoek van de linkernavigatiebalk.
+* **Beveiligings token** : sommige project instellingen kunnen gevoelige waarden bevatten, zoals API-sleutels of andere gedeelde geheimen. Elk project genereert een beveiligings token dat kan worden gebruikt voor het versleutelen/ontsleutelen van gevoelige project instellingen. U kunt beveiligings tokens vinden in de toepassings instellingen door te klikken op het tandwiel pictogram in de linkerbenedenhoek van de linkernavigatiebalk.
 * **Bron verbinding** : de Azure Blob Storage-verbinding die u hebt gemaakt in de vorige stap die u voor dit project wilt gebruiken.
 * **Mappad-optioneel** : als uw bron formulieren zich in een map in de BLOB-container bevinden, geeft u de mapnaam hier op
 * **URI van de formulier Recognizer-service** : de eind punt-URL van de formulier herkenning.
@@ -155,7 +159,7 @@ Klik op het pictogram voors pellen (rechthoeken) aan de linkerkant om het model 
 
 Afhankelijk van de gerapporteerde nauw keurigheid kunt u verdere trainingen doen om het model te verbeteren. Nadat u een voor spelling hebt uitgevoerd, kunt u de betrouwbaarheids waarden voor elk van de toegepaste labels bekijken. Als de gemiddelde nauw keurigheid van de training hoog was, maar de betrouwbaarheids scores laag zijn (of de resultaten onjuist zijn), moet u het bestand dat wordt gebruikt voor de voor spelling, toevoegen aan de Trainingsset, het label en het opnieuw trainen.
 
-De gerapporteerde gemiddelde nauw keurigheid, betrouwbaarheids scores en werkelijke nauw keurigheid kunnen inconsistent zijn wanneer de documenten die worden geanalyseerd, afwijken van die in de training. Houd er bij dat sommige documenten er ongeveer zo uitzien als ze worden weer gegeven door personen, maar kunnen er onderscheid uitzien van het AI-model. U kunt bijvoorbeeld trainen met een formulier type dat twee variaties heeft, waarbij de set training bestaat uit 20% Variation A en 80% variant B. Tijdens de voor spelling zijn de betrouwbaarheids scores voor documenten van variatie A waarschijnlijk lager.
+De gerapporteerde gemiddelde nauw keurigheid, betrouwbaarheids scores en werkelijke nauw keurigheid kunnen inconsistent zijn wanneer de geanalyseerde documenten verschillen van de voor waarden die worden gebruikt in de training. Houd er bij dat sommige documenten er ongeveer zo uitzien als ze worden weer gegeven door personen, maar kunnen er onderscheid uitzien van het AI-model. U kunt bijvoorbeeld trainen met een formulier type dat twee variaties heeft, waarbij de set training bestaat uit 20% Variation A en 80% variant B. Tijdens de voor spelling zijn de betrouwbaarheids scores voor documenten van variatie A waarschijnlijk lager.
 
 ## <a name="save-a-project-and-resume-later"></a>Een project opslaan en later hervatten
 
@@ -165,7 +169,7 @@ Als u het project op een ander tijdstip of in een andere browser wilt hervatten,
 Ga naar de pagina met Project instellingen (schuif regelaar) en noteer de naam van het beveiligings token. Ga vervolgens naar uw toepassings instellingen (tandwiel pictogram), waarin alle beveiligings tokens in uw huidige browser exemplaar worden weer gegeven. Zoek het beveiligings token van uw project en kopieer de naam en sleutel waarde naar een veilige locatie.
 
 ### <a name="restore-project-credentials"></a>Project referenties herstellen
-Als u uw project wilt hervatten, moet u eerst een verbinding maken met dezelfde Blob Storage-container. Volg de bovenstaande stappen om dit te doen. Ga vervolgens naar de pagina met toepassings instellingen (tandwiel pictogram) en kijk of het beveiligings token van uw project daar is. Als dat niet het geval is, voegt u een nieuw beveiligings token toe en kopieert u de token naam en-sleutel uit de vorige stap. Klik vervolgens op instellingen opslaan. 
+Als u uw project wilt hervatten, moet u eerst een verbinding maken met dezelfde Blob Storage-container. Herhaal de bovenstaande stappen om dit te doen. Ga vervolgens naar de pagina met toepassings instellingen (tandwiel pictogram) en kijk of het beveiligings token van uw project daar is. Als dat niet het geval is, voegt u een nieuw beveiligings token toe en kopieert u de token naam en-sleutel uit de vorige stap. Klik vervolgens op instellingen opslaan. 
 
 ### <a name="resume-a-project"></a>Een project hervatten
 Ga ten slotte naar de hoofd pagina (huis pictogram) en klik op Cloud project openen. Selecteer vervolgens de verbinding voor Blob-opslag en selecteer het *. vott* -bestand van het project. De toepassing laadt alle instellingen van het project, omdat deze het beveiligings token heeft.

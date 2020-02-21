@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 6f7497e62be0036c13d5c33fa82301469df16f26
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066185"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522353"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Naslag informatie over SAP SuccessFactors-kenmerken
 
@@ -97,7 +97,7 @@ In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden 
 | 63 | EmpJob\.CostCenter                     | costCenterId                 | Lezen           |
 | 64 | EmpJob\.CostCenter                     | costCenterDescription        | Lezen           |
 | 65 | EmpJob\.afdeling                     | department                   | Lezen           |
-| 66 | EmpJob\.afdeling                     | DepartmentId                 | Lezen           |
+| 66 | EmpJob\.afdeling                     | departmentId                 | Lezen           |
 | 67 | EmpJob\.-deling                       | daarvan                     | Lezen           |
 | 68 | EmpJob\.-deling                       | divisionId                   | Lezen           |
 | 69 | EmpJob\.JobCode                        | jobCode                      | Lezen           |

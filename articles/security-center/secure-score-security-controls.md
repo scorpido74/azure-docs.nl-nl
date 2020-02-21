@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443581"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500250"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>De verbeterde beveiligde Score (preview-versie) 
 
@@ -65,15 +65,15 @@ Het beveiligings beheer met de naam ' systeem updates Toep assen ' heeft bijvoor
 
 De kans op het beveiligings beheer ' systeem updates Toep assen ' in de bovenstaande scherm afbeelding toont ' 2% (1 punt) '. Dit betekent dat als u alle aanbevelingen in dit besturings element herstelt, uw score wordt verhoogd met 2% (in dit geval één punt). Ter vereenvoudiging worden de waarden in de kolom mogelijke toename van de lijst met aanbevelingen afgerond op gehele getallen. In de knop info worden de exacte waarden weer gegeven:
 
+* **Maximale score** -het maximum aantal punten dat u kunt krijgen door alle aanbevelingen binnen een besturings element te volt ooien. De maximum score voor een besturings element duidt op de relatieve betekenis van dat besturings element. Gebruik de maximale score waarden om te sorteren aan welke kwesties het eerst moet worden uitgevoerd. 
 * **Mogelijke toename** : de resterende punten die voor u beschikbaar zijn in het besturings element. Om deze punten toe te voegen aan uw beveiligde Score, worden alle aanbevelingen van het besturings element opgelost. In het bovenstaande voor beeld is het één punt dat wordt weer gegeven voor het besturings element in feite 0,96 punten.
 * **Huidige Score** : de huidige score voor dit besturings element. Elk besturings element draagt bij aan de totale score. In dit voor beeld is het besturings element 5,04 punten bijdraagt aan het totaal. 
-* **Maximale score** : de som van de vorige twee waarden.
 
 ### <a name="calculations---understanding-your-score"></a>Berekeningen: uitleg van uw Score
 
 |Gegevens|Formule en voor beeld|
 |-|-|
-|**Huidige Score van beveiligings beheer**|<br>![vergelijking voor het berekenen van de huidige Score van een beveiligings beheer](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Elk afzonderlijk beveiligings beheer draagt bij aan de beveiligings Score. Elke resource die wordt beïnvloed door een aanbeveling binnen het besturings element, draagt bij aan de huidige Score van het besturings element. De huidige score voor elk besturings element is een meting van de status van de resources *in* het besturings element.<br>![knop info met de waarden die worden gebruikt bij het berekenen van de huidige Score van het beveiligings beheer](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In dit voor beeld wordt de maximale Score van 6 gedeeld door 78, omdat dat de som is van de in orde zijnde en slechte resources.<br>6/78 = 0,0769<br>Vermenigvuldigen met het aantal gezonde resources (74) wordt de huidige score als resultaat:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Huidige Score van beveiligings beheer**|<br>![vergelijking voor het berekenen van de huidige Score van een beveiligings beheer](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Elk afzonderlijk beveiligings beheer draagt bij aan de beveiligings Score. Elke resource die wordt beïnvloed door een aanbeveling binnen het besturings element, draagt bij aan de huidige Score van het besturings element. De huidige score voor elk besturings element is een meting van de status van de resources *in* het besturings element.<br>![knop info met de waarden die worden gebruikt bij het berekenen van de huidige Score van het beveiligings beheer](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In dit voor beeld wordt de maximale Score van 6 gedeeld door 78, omdat dat de som is van de in orde zijnde en slechte resources.<br>6/78 = 0,0769<br>Als u wilt vermenigvuldigen met het aantal ongezonde resources (4), resulteert dit in de huidige Score:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Beveiligingsscore**<br>Enkel abonnement|<br>![Vergelijking voor het berekenen van de huidige beveiligde Score](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Een beveiligde Score van één abonnement waarbij alle besturings elementen zijn ingeschakeld](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In dit voor beeld is er één abonnement met alle beveiligings controles beschikbaar (een potentiële maximum Score van 60 punten). De score toont 28 punten van een mogelijke 60 en de resterende 32 punten worden weer gegeven in de sectie ' potentiële Score verhogen ' van de beveiligings controles.<br>![Lijst met besturings elementen en de potentiële toename van de Score](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Beveiligingsscore**<br>Meerdere abonnementen|<br>De huidige score voor alle resources in alle abonnementen wordt toegevoegd en de berekening is dan hetzelfde als voor één abonnement<br><br>Wanneer er meerdere abonnementen worden weer gegeven, evalueert de beveiligde score alle resources binnen het ingeschakelde beleid en worden de gecombineerde impact van elk van de maximale scores van het beveiligings beheer gegroepeerd.<br>![beveiligde score voor meerdere abonnementen waarbij alle besturings elementen zijn ingeschakeld](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>De gecombineerde score is **geen** gemiddelde. in plaats daarvan is het de geëvalueerde postuur van de status van alle resources in alle abonnementen.<br>Ook als u naar de pagina aanbevelingen gaat en de potentiële punten die beschikbaar zijn, opneemt, zult u merken dat het verschil tussen de huidige Score (24) en de Maxi maal beschik bare Score (60) is.|
 ||||

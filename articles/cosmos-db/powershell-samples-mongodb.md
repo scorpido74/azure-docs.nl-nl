@@ -6,16 +6,19 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 286b2fc349fc16a79dd3048a164f4c86924f0a1c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ca93b4fa85f5ef3ab87d108242e9cbfbd12036ab
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873570"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521860"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure PowerShell-voor beelden voor Azure Cosmos DB MongoDB-API
 
 De volgende tabel bevat koppelingen naar voor beelden Azure PowerShell scripts voor Azure Cosmos DB voor MongoDB-API.
+
+> [!NOTE]
+> Op dit moment kunt u alleen 3,2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van Power shell, CLI en Resource Manager-sjablonen. Als u 3,6-versie van accounts wilt maken, gebruikt u Azure Portal in plaats daarvan.
 
 | | |
 |---|---|

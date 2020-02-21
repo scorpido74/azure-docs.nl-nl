@@ -4,12 +4,12 @@ description: Meer informatie over het beheren van Azure Block Chain Service cons
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: zeyadr
-ms.openlocfilehash: 4eb35838394d3324f460b5e83cfbcb47b8114221
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455538"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505978"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Consortium leden beheren in azure Block Chain service met Power shell
 
@@ -59,7 +59,7 @@ Vervang *\<wacht woord van het gebruikers account\>* met het wacht woord van het
 
 Zoek de andere waarden in de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de pagina **overzicht** van de standaard Block Chain-service.
 
     ![Leden overzicht](./media/manage-consortium-powershell/member-overview.png)
@@ -139,8 +139,8 @@ Gebruik deze cmdlet om details van leden of lijst leden van het consortium op te
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| Naam | De naam van het service-lid van de Block Chain waarvoor u gegevens wilt ophalen. Wanneer een naam wordt ingevoerd, worden de details van het lid geretourneerd. Wanneer een naam wordt wegge laten, wordt een lijst met alle consortium leden geretourneerd. | Nee |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Name | De naam van het service-lid van de Block Chain waarvoor u gegevens wilt ophalen. Wanneer een naam wordt ingevoerd, worden de details van het lid geretourneerd. Wanneer een naam wordt wegge laten, wordt een lijst met alle consortium leden geretourneerd. | Nee |
+| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
@@ -170,8 +170,8 @@ Gebruik deze cmdlet om een Block Chain-lid te verwijderen.
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| Naam | Te verwijderen lidnaam | Ja |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Name | Te verwijderen lidnaam | Ja |
+| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
@@ -196,10 +196,10 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| Naam | Naam van het block Chain-lid | Ja |
+| Name | Naam van het block Chain-lid | Ja |
 | DisplayName | Nieuwe weergave naam | Nee |
 | AccountAddress | Account adres | Nee |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client |  Web3Client-object verkregen van New-Web3Connection| Ja |
 
@@ -228,7 +228,7 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Ja |
 | Rol | De rol consortium. Waarden kunnen een beheerder of gebruiker zijn. BEHEERDER is de rol van beheerder van het consortium. De gebruiker is de rol van het consortium. | Ja |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
@@ -249,7 +249,7 @@ Gebruik deze cmdlet om de uitnodigings status van een lid van een consortium op 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
 | SubscriptionId | De ID van het Azure-abonnement van het lid dat moet worden uitgenodigd. Als de abonnements-ID wordt vermeld, worden de uitnodigingen van de abonnements-ID geretourneerd. Als de abonnements-ID wordt wegge laten, wordt een lijst met alle uitnodigingen van het lid geretourneerd. | Nee |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
@@ -257,7 +257,7 @@ Gebruik deze cmdlet om de uitnodigings status van een lid van een consortium op 
 Stel [een Web3-verbinding](#establish-a-web3-connection) in om de $ContractConnection variabele in te stellen.
 
 ```powershell-interactive
-$ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
+$ContractConnection | Get-BlockchainMemberInvitation –SubscriptionId <Azure subscription ID>
 ```
 
 #### <a name="example-output"></a>Voorbeeld uitvoer
@@ -280,7 +280,7 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
 | SubscriptionId | ID van het Azure-abonnement van het lid dat u wilt intrekken | Ja |
-| Members | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
@@ -305,7 +305,7 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Ja |
 | Rol | Nieuwe consortium functie voor uitnodiging. Waarden kunnen **gebruiker** of **beheerder**zijn. | Ja |
-| Members |  Leden object verkregen van import-ConsortiumManagementContracts | Ja |
+| Leden |  Leden object verkregen van import-ConsortiumManagementContracts | Ja |
 | Web3Account | Web3Account-object verkregen van import-Web3Account | Ja |
 | Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 

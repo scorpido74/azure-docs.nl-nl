@@ -1,5 +1,6 @@
 ---
-title: Aanpassings handleiding voor de analyse van beveiligings code Microsoft Azure
+title: Analyse taken van micro soft-beveiligings code aanpassen
+titleSuffix: Azure
 description: In dit artikel wordt beschreven hoe u de taken in de uitbrei ding analyse van micro soft-beveiligings code aanpast
 author: vharindra
 manager: sukhans
@@ -12,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851533"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499993"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>De build-taken configureren en aanpassen
 
@@ -89,7 +90,7 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
 
 ![De taak voor het maken van referentie scanner configureren](./media/security-tools/3-taskdetails.png)
 
-Beschikbare opties zijn onder meer:
+Beschik bare opties zijn:
 
   - **Uitvoer indeling**: beschik bare waarden zijn **TSV**, **CSV**, **SARIF**en **PREfast**.
   - **Versie van het hulp programma**: we raden u aan om **nieuwste**te selecteren.
@@ -146,7 +147,7 @@ Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [micro s
 
 Details van taak configuratie worden weer gegeven in de volgende lijst en opmerking.
 
-Beschikbare opties zijn onder meer:
+Beschik bare opties zijn:
 
 - **RuleSet**: waarden zijn **sdl vereist**, **SDL wordt aanbevolen**of uw eigen aangepaste regelset.
 - **Versie van analyse**functies: u kunt het beste **meest recente**selecteren.

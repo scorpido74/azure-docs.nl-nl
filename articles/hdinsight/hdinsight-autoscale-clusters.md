@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/11/2020
-ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162851"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484839"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
@@ -78,7 +78,7 @@ Op basis van het aantal AM-containers per knoop punt en de huidige CPU-en geheug
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Een cluster maken met automatisch schalen op basis van een werk belasting
 
-Als u automatisch schalen wilt gebruiken op een cluster, moet de optie **automatisch schalen inschakelen** zijn ingeschakeld wanneer het cluster wordt gemaakt. Als u de functie voor automatisch schalen wilt inschakelen met schalen op basis van een werk belasting, voert u de volgende stappen uit als onderdeel van het normale proces voor het maken van het cluster:
+Als u de functie voor automatisch schalen wilt inschakelen met schalen op basis van een werk belasting, voert u de volgende stappen uit als onderdeel van het normale proces voor het maken van het cluster:
 
 1. Schakel op het tabblad **configuratie en prijzen** het selectie vakje **automatisch schalen inschakelen** in.
 1. Selecteer **op belasting gebaseerd** onder **type automatisch schalen**.

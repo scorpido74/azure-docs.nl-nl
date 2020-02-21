@@ -5,17 +5,17 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/06/2020
-ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 02/16/2020
+ms.openlocfilehash: 302757eb40d52a8dca5dbcb1147deb0532a0cf00
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460532"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506156"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videozelfstudies om gegevens toe te wijzen
 
-Hieronder vindt u een lijst met de zelf studie Video's met toewijzings gegevens stromen die zijn gemaakt door het Azure Data Factory team.
+Hieronder vindt u een lijst met de zelf studie Video's met toewijzings gegevens stromen die zijn gemaakt door het Azure Data Factory team. 
 
 Wanneer updates worden doorgevoerd in het product, hebben sommige functies in de huidige Azure Data Factory gebruikers ervaring een of andere functionaliteit toegevoegd.
 
@@ -100,6 +100,8 @@ Wanneer updates worden doorgevoerd in het product, hebben sommige functies in de
 [Start tijden verlagen](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [Prestaties van SQL-data base](https://youtu.be/iyZT5CY3V_4)
+
+[Logboekregistratie en bewaking](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
 ## <a name="mapping-data-flow-scenarios"></a>Gegevens stroom scenario's toewijzen
 

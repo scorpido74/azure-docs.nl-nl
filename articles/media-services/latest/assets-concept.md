@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186318"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505810"
 ---
 # <a name="assets-in-azure-media-services"></a>Activa in Azure Media Services
 
@@ -28,7 +28,13 @@ Een Asset wordt toegewezen aan een BLOB-container in het [Azure Storage-account]
 
 De opslaglaag van het **Archief** wordt alleen aanbevolen voor zeer grote bron bestanden die al zijn gecodeerd en de uitvoer van de coderings taak in een uitvoer BLOB-container is geplaatst. De blobs in de uitvoer container die u wilt koppelen aan een activum en gebruiken om uw inhoud te streamen of te analyseren, moeten zich in een **warme** of **koud** opslaglaag bevinden.
 
-### <a name="naming-blobs"></a>Naamgeving van blobs
+### <a name="naming"></a>Naamgeving 
+
+#### <a name="assets"></a>Assets
+
+De namen van het activum moeten uniek zijn. Media Services v3-resource namen (bijvoorbeeld assets, taken, trans formaties) zijn onderhevig aan Azure Resource Manager naamgevings beperkingen. Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions)voor meer informatie.
+
+#### <a name="blobs"></a>Blobs
 
 De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) en de [NTFS-naam](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van Blob Storage naar een lokale NTFS-schijf voor verwerking.
 

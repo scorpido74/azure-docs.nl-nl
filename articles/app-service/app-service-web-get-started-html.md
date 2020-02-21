@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ed756a972b3887ac638a061075d2e6fbeea98104
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e850984bd03f4b1e630db5beceed36e122340ead
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747948"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500438"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Een statische HTML-web-app maken in Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "75747948"
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Maak een map 'quickstart' in de Cloud Shell en ga er vervolgens naartoe.
+Maak een map 'snelstart' in de Cloud Shell en ga er vervolgens naartoe.
 
 ```bash
 mkdir quickstart
@@ -34,7 +34,7 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'quickstart'.
+Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'snelstart'.
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
@@ -92,7 +92,7 @@ De pagina wordt als een web-app uitgevoerd in Azure App Service.
 
 ## <a name="update-and-redeploy-the-app"></a>De app bijwerken en opnieuw implementeren
 
-Typ `nano index.html` in Cloud Shell om de nano-teksteditor te openen. Wijzig in de tag van de `<h1>`-kop 'Azure App Service - Sample Static HTML Site' in 'Azure App Service', zoals hieronder wordt weergegeven.
+Typ `nano index.html` in de Cloud Shell om de nano-teksteditor te openen. Wijzig in de tag van de `<h1>`-kop 'Azure App Service - Sample Static HTML Site' in 'Azure App Service', zoals hieronder wordt weergegeven.
 
 ![Nano index.html](media/app-service-web-get-started-html/nano-index-html.png)
 

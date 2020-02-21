@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048088"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498985"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -32,11 +32,11 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen voor Azure AD-rollen.
 
-# <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
+# <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
 ## <a name="open-role-settings"></a>Rolinstellingen openen
 
@@ -46,15 +46,15 @@ Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 gt
 1. Open **Azure AD Privileged Identity Management** &gt; **functies van Azure AD** &gt; **rol**.
 
-    ![Pagina rolinstellingen met een lijst met Azure-resource rollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Pagina rolinstellingen die Azure AD-rollen weer geven](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. Selecteer de rol waarvan u de instellingen wilt configureren.
 
-    ![Pagina Details van de functie-instelling met een lijst met verschillende toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Pagina Details van de functie-instelling met een lijst met verschillende toewijzings-en activerings instellingen](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. Selecteer **bewerken** om de pagina functie-instellingen te openen.
 
-    ![Pagina Rolinstellingen bewerken met opties voor het bijwerken van de toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Pagina Rolinstellingen bewerken met opties voor het bijwerken van de toewijzings-en activerings instellingen](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     In het instellingen deel venster voor elke rol zijn er verschillende instellingen die u kunt configureren.
 
@@ -66,18 +66,18 @@ U kunt kiezen uit een van **deze opties** voor de gewenste duur van de toewijzin
 
 | | |
 | --- | --- |
-| **Permanente toewijzing in aanmerking komend toestaan** | Resource beheerders kunnen een permanente, in aanmerking komende toewijzing toewijzen. |
-| **In aanmerking komende toewijzing laten verlopen na** | Resource beheerders kunnen vereisen dat alle in aanmerking komende toewijzingen een opgegeven begin-en eind datum hebben. |
+| **Permanente toewijzing in aanmerking komend toestaan** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen een permanente, in aanmerking komende toewijzing toewijzen. |
+| **In aanmerking komende toewijzing laten verlopen na** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen vereisen dat alle in aanmerking komende toewijzingen een opgegeven begin-en eind datum hebben. |
 
 En u kunt een van deze **actieve** toewijzings duur opties kiezen:
 
 | | |
 | --- | --- |
-| **Permanente actieve toewijzing toestaan** | Resource beheerders kunnen permanente actieve toewijzing toewijzen. |
-| **Actieve toewijzing laten verlopen na** | Resource beheerders kunnen vereisen dat alle actieve toewijzingen een opgegeven begin-en eind datum hebben. |
+| **Permanente actieve toewijzing toestaan** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen permanente actieve toewijzing toewijzen. |
+| **Actieve toewijzing laten verlopen na** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen vereisen dat alle actieve toewijzingen een opgegeven begin-en eind datum hebben. |
 
 > [!NOTE]
-> Alle toewijzingen met een opgegeven eind datum kunnen worden vernieuwd door resource beheerders. Gebruikers kunnen ook selfservice aanvragen initiëren om roltoewijzingen uit te [breiden of te vernieuwen](pim-resource-roles-renew-extend.md).
+> Alle toewijzingen met een opgegeven eind datum kunnen worden vernieuwd door globale beheerders en beheerders met verhoogde bevoegdheden. Gebruikers kunnen ook selfservice aanvragen initiëren om roltoewijzingen uit te [breiden of te vernieuwen](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
 
@@ -87,13 +87,13 @@ Privileged Identity Management biedt een optionele afdwinging van Azure Multi-Fa
 
 In sommige gevallen wilt u mogelijk een gebruiker toewijzen aan een rol voor een korte duur (bijvoorbeeld één dag). In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management multi-factor Authentication niet afdwingen wanneer de gebruiker hun roltoewijzing gebruikt, omdat ze al actief zijn in de rol vanaf het moment dat deze wordt toegewezen.
 
-Als u er zeker van wilt zijn dat de resource beheerder die aan de toewijzing voldoet, weet wie ze zijn, kunt u multi-factor Authentication afdwingen voor actieve toewijzing door het selectie vakje **multi-factor Authentication op actieve toewijzing vereisen** in te scha kelen.
+Als u er zeker van wilt zijn dat de beheerder die aan de toewijzing voldoet, de vraag is, kunt u multi-factor Authentication afdwingen voor actieve toewijzing door het selectie vakje **multi-factor Authentication op actieve toewijzing vereisen** in te scha kelen.
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication vereisen bij activering
 
 U kunt vereisen dat gebruikers die in aanmerking komen voor een rol bewijzen dat ze Azure Multi-Factor Authentication gebruiken voordat ze kunnen activeren. Multi-factor Authentication zorgt ervoor dat de gebruiker er zeker van is dat ze een redelijke zekerheid hebben. Het afdwingen van deze optie beschermt kritieke resources in situaties waarin het gebruikers account mogelijk is aangetast.
 
-Als u multi-factor Authentication vóór activering wilt vereisen, schakelt u het selectie vakje **multi-factor Authentication vereisen bij activering** in.
+Als u multi-factor Authentication vóór activering wilt vereisen, schakelt u het selectie vakje **multi-factor Authentication vereisen bij activering** in op het tabblad toewijzing van de **instelling rol bewerken**.
 
 Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
 
@@ -121,7 +121,7 @@ Als u wilt dat goed keuring vereist is om een rol te activeren, voert u de volge
 
 1. Wanneer u de instellingen van uw rol hebt opgegeven, selecteert u **bijwerken** om uw wijzigingen op te slaan.
 
-# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+# <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
 ## <a name="open-role-settings"></a>Rolinstellingen openen
 

@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/07/2020
+ms.date: 02/20/2020
 ms.author: raiye
-ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087226"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506038"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+## <a name="february-2020-guest-os"></a>Februari 2020-gast besturingssysteem
+
+>[!NOTE]
+>Het februari-gast besturingssysteem wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem voor februari gast. Deze lijst is onderhevig aan wijzigingen.
+
+| Product categorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2,85, 3,82, 4,75 | 11 februari 2020 |
+|  Rel 20-02 |  [4537813]  |  Windows-beveiliging | 2,85 | 11 februari 2020 |
+|  Rel 20-02 |  [4537794]  |  Windows-beveiliging | 3,82 | 11 februari 2020 |
+|  Rel 20-02 |  [4537803]  |  Windows-beveiliging | 4,75 | 11 februari 2020 |
+|  Rel 20-02 |  [4537764]  |  Meest recente cumulatieve update (LCU) | 5.4 | 11 februari 2020 |
+|  Rel 20-02 |  [4532691]  |  Meest recente cumulatieve update (LCU) | 6,16 | 11 februari 2020 |
+|  Rel 20-02 |  [4534310]  |  Maandelijks samen vouwen | 2,85 | 14 januari 2020 |
+|  Rel 20-02 |  [4536952]  |  Onderhouds stack-update (SSU) | 2,85 | 14 januari 2020 |
+|  Rel 20-02 |  [4537829]  |  Onderhouds stack-update (SSU) | 2,85 | 11 februari 2020 |
+|  Rel 20-02 |  [4538483]  |  Uitgebreide beveiligings updates (ESU) | 2,85 | 11 februari 2020 |
+|  Rel 20-02 |  [4537820]  |  Maandelijks samen vouwen | 2,85 | 11 februari 2020 |
+|  Rel 20-02 |  [4537759]  |  Beveiligings update (Flash) | 3,82, 4,75 | 11 februari 2020 |
+|  Rel 20-02 |  [4534283]  |  Maandelijks samen vouwen | 3,82 | 14 januari 2020 |
+|  Rel 20-02 |  [4532920]  |  Onderhouds stack-update (SSU) | 3,82 | 10 december 2020 |
+|  Rel 20-02 |  [4534297]  |  Niet-beveiliging | 4,75 | 14 januari 2020 |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
 
 ## <a name="january-2020-guest-os"></a>Januari 2020-gast besturingssysteem
 

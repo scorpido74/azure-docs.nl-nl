@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459604"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525529"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalie detectie in Azure Stream Analytics
 
@@ -21,6 +21,12 @@ Azure Stream Analytics biedt in zowel de Cloud als de Azure IoT Edge een machine
 De machine learning modellen nemen een uniforme steek proef van de tijd reeks uit. Als de tijd reeks niet uniform is, kunt u een aggregatie stap invoegen met een tumblingvenstertriggers-venster voordat u anomalie detectie aanroept.
 
 De machine learning-bewerkingen bieden op dit moment geen ondersteuning voor seizoensgebonden trends of multi-variate-correlaties.
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomalie detectie met behulp van machine learning in Azure Stream Analytics
+
+In de volgende video ziet u hoe u in realtime een anomalie kunt detecteren met behulp van machine learning functies in Azure Stream Analytics. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>Model gedrag
 
@@ -125,16 +131,16 @@ De volgende tabel bevat de door Voer waarnemingen voor één knoop punt (6 SU) v
 
 | Geschiedenis grootte (gebeurtenissen) | Duur van het venster (MS) | Totaal aantal invoer gebeurtenissen per seconde |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2200 |
+| 60 | 55 | 2\.200 |
 | 600 | 728 | 1\.650 |
-| 6,000 | 10.910 | 1100 |
+| 6,000 | 10.910 | 1\.100 |
 
 De volgende tabel bevat de door Voer waarnemingen voor één knoop punt (6 SU) voor de gepartitioneerde Case:
 
 | Geschiedenis grootte (gebeurtenissen) | Duur van het venster (MS) | Totaal aantal invoer gebeurtenissen per seconde | Aantal apparaten |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1\.091 | 1100 | 10 |
-| 600 | 10.910 | 1100 | 10 |
+| 60 | 1\.091 | 1\.100 | 10 |
+| 600 | 10.910 | 1\.100 | 10 |
 | 6,000 | 218.182 | <550 | 10 |
 | 60 | 21.819 | 550 | 100 |
 | 600 | 218.182 | 550 | 100 |
@@ -147,12 +153,6 @@ Voorbeeld code voor het uitvoeren van de niet-gepartitioneerde configuraties hie
 
 ### <a name="identifying-bottlenecks"></a>Knel punten identificeren
 Gebruik het deel venster metrieken in uw Azure Stream Analytics-taak om knel punten in uw pijp lijn te identificeren. Bekijk **invoer-en uitvoer gebeurtenissen** voor door Voer en [' watermerk vertraging '](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) of achterstands **gebeurtenissen** om te zien of de taak de invoer snelheid bijhoudt. Voor metrische gegevens van Event hub zoekt u naar **vertraagde aanvragen** en past u de drempel waarden dienovereenkomstig aan. Bekijk voor Cosmos DB metrische gegevens het **maximum aantal gebruikte ru/s per partitie sleutel bereik** onder door Voer om ervoor te zorgen dat de partitie sleutel bereik op gelijke wijze worden verbruikt. Bewaak **logboek-io** en **CPU**voor Azure SQL DB.
-
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Anomalie detectie met behulp van machine learning in Azure Stream Analytics
-
-In de volgende video ziet u hoe u in realtime een anomalie kunt detecteren met behulp van machine learning functies in Azure Stream Analytics. 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,18 +1,18 @@
 ---
-title: Over Azure Point-to-site VPN-verbindingen | Microsoft Docs
+title: Over Azure Point-to-site VPN-verbindingen | VPN Gateway
 description: Dit artikel helpt u bij het begrijpen van Point-to-site-verbindingen en helpt u bij het bepalen van welk P2S VPN-gateway-verificatie type u wilt gebruiken.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110442"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500607"
 ---
 # <a name="about-point-to-site-vpn"></a>Over punt-naar-site-VPN
 
@@ -53,16 +53,16 @@ Op hoog niveau moet u de volgende stappen uitvoeren om Azure AD-verificatie te c
 
 1. [Een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)
 
-2. [Azure AD-verificatie inschakelen op de gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Azure AD-verificatie inschakelen op de gateway](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Azure VPN-client downloaden en configureren](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Verifiëren met behulp van de domein server van Active Directory (AD)
 
-Met AD-domein verificatie kunnen gebruikers verbinding maken met Azure met behulp van de domein referenties van hun organisatie. Hiervoor is een RADIUS-server vereist die met de AD-server kan worden geïntegreerd. Organisaties kunnen ook gebruikmaken van de bestaande RADIUS-implementatie.   
+Met AD-domein verificatie kunnen gebruikers verbinding maken met Azure met behulp van de domein referenties van hun organisatie. Hiervoor is een RADIUS-server vereist die met de AD-server kan worden geïntegreerd. Organisaties kunnen ook gebruikmaken van de bestaande RADIUS-implementatie.
   
-De RADIUS-server kan on-premises of in uw Azure VNET worden geïmplementeerd. Tijdens de verificatie fungeert de Azure-VPN Gateway als een Pass-Through en stuurt verificatie berichten terug tussen de RADIUS-server en het apparaat waarmee u verbinding maakt. Daarom is de gateway bereikbaar voor de RADIUS-server belang rijk. Als de RADIUS-server on-premises aanwezig is, is een VPN S2S-verbinding van Azure naar de on-premises site vereist voor bereik baarheid.  
+De RADIUS-server kan on-premises of in uw Azure VNet worden geïmplementeerd. Tijdens de verificatie fungeert de Azure-VPN Gateway als een Pass-Through en stuurt verificatie berichten terug tussen de RADIUS-server en het apparaat waarmee u verbinding maakt. Daarom is de gateway bereikbaar voor de RADIUS-server belang rijk. Als de RADIUS-server on-premises aanwezig is, is een VPN S2S-verbinding van Azure naar de on-premises site vereist voor bereik baarheid.  
   
 De RADIUS-server kan ook worden geïntegreerd met AD Certificate Services. Hiermee kunt u de RADIUS-server en de implementatie van het ondernemings certificaat voor P2S-certificaat verificatie gebruiken als alternatief voor de Azure-certificaat verificatie. Het voor deel is dat u geen basis certificaten en ingetrokken certificaten naar Azure hoeft te uploaden.
 
@@ -156,9 +156,6 @@ Het zip-bestand bevat ook de waarden van een aantal belang rijke instellingen vo
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>Hoe kan ik een P2S-verbinding configureren?
 
 Een P2S-configuratie vereist enkele specifieke stappen. De volgende artikelen bevatten de stappen voor het door lopen van P2S-configuratie en koppelingen naar het configureren van de VPN-client apparaten:
@@ -169,11 +166,9 @@ Een P2S-configuratie vereist enkele specifieke stappen. De volgende artikelen be
 
 * [OpenVPN configureren](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Hoe kan ik de configuratie van een P2S-verbinding verwijderen?
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>De configuratie van een P2S-verbinding verwijderen
 
-Een P2S-configuratie kan worden verwijderd met AZ CLI en de volgende opdracht: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+Zie de [Veelgestelde vragen](#removeconfig)hieronder voor instructies.
  
 ## <a name="faqcert"></a>Veelgestelde vragen over systeem eigen Azure-certificaat verificatie
 

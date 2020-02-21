@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437308"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505921"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
 
@@ -39,11 +39,15 @@ Zie [gebeurtenisbronnen](event-sources.md) voor meer informatie over de mogelijk
 * [Aangepaste onderwerpen](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub](event-sources.md#iot-hub)
+* [Key Vault (preview-versie)](event-sources.md#key-vault-preview)
 * [Media Services](event-sources.md#media-services)
 * [Resource groepen (beheer bewerkingen)](event-sources.md#resource-groups)
 * [Service Bus](event-sources.md#service-bus)
 * [Opslag-BLOB](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
+* [App-configuratie](event-sources.md#app-configuration)
+* [Signaal R](event-sources.md#azure-signalr)
+* [Machine Learning](event-sources.md#azure-machine-learning)
 
 ## <a name="event-handlers"></a>Event Handlers
 
@@ -55,8 +59,8 @@ Zie [gebeurtenis-handlers](event-handlers.md) voor meer informatie over de mogel
 * [Hybride verbindingen](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Energie automatisering (voorheen bekend als Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Queue Storage](event-handlers.md#queue-storage)
 * [Service Bus](event-handlers.md#service-bus)
+* [Queue Storage](event-handlers.md#queue-storage)
 * [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Concepten
@@ -71,7 +75,7 @@ Azure Event Grid bevat vijf concepten waarmee u aan de slag kunt:
 
 Zie [Concepten in Azure Event Grid](concepts.md) voor meer informatie over deze concepten.
 
-## <a name="capabilities"></a>Mogelijkheden
+## <a name="capabilities"></a>Functionaliteit
 
 Hier volgt een aantal essentiële functies van Azure Event Grid:
 
@@ -100,9 +104,9 @@ Event Grid verbindt gegevensbronnen en gebeurtenis-handlers. Gebruik Event Grid 
 
 ![De automatisering van bewerkingen](./media/overview/Ops_automation.png)
 
-Met Event Grid kunt u sneller automatiseren en makkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
+Met Event Grid kunt u sneller automatiseren en gemakkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
 
-### <a name="application-integration"></a>Integratie van applicaties
+### <a name="application-integration"></a>Integratie van toepassingen
 
 ![Integratie van toepassingen met Azure](./media/overview/app_integration.png)
 

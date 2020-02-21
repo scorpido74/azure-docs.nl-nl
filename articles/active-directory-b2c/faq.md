@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847301"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483292"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -59,7 +59,7 @@ Nee. De standaard scopes die worden gebruikt voor onze ondersteunde providers vo
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Moet mijn toepassing worden uitgevoerd op Azure voor de IT-afdeling met Azure AD B2C?
 
-Nee, u kunt uw toepassing overal hosten (in de Cloud of on-premises). Alles wat uw toepassing nodig heeft voor interactie met Azure AD B2C, is de mogelijkheid om HTTP-aanvragen te verzenden en te ontvangen op openbaar toegankelijke eindpunten.
+Nee, u kunt uw toepassing overal hosten (in de Cloud of on-premises). Alle IT-behoeften moeten communiceren met Azure AD B2C is de mogelijkheid om HTTP-aanvragen te verzenden en ontvangen op openbaar toegankelijke eind punten.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Ik heb meerdere Azure AD B2C-tenants. Hoe kan ik deze beheren op het Azure Portal?
 
@@ -78,7 +78,7 @@ De e-mail handtekening bevat de naam van de Azure AD B2C Tenant die u hebt ingev
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder.
 1. Open de Blade **Azure Active Directory** .
-1. Klik op de **eigenschappen** tabblad.
+1. Klik op het tabblad **Eigenschappen** .
 1. Wijzig het veld **naam** .
 1. Klik bovenaan de pagina op **Opslaan**.
 
@@ -86,15 +86,17 @@ Het is momenteel niet mogelijk om het veld van te wijzigen in het e-mail bericht
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hoe kan ik mijn bestaande gebruikers namen, wacht woorden en profielen van mijn data base migreren naar Azure AD B2C?
 
-U kunt de Azure AD-Graph API gebruiken om uw migratie programma te schrijven. Raadpleeg de [hand leiding voor gebruikers migratie](user-migration.md) voor meer informatie.
+U kunt de Microsoft Graph-API gebruiken om uw migratie programma te schrijven. Raadpleeg de [hand leiding voor gebruikers migratie](user-migration.md) voor meer informatie.
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welke wachtwoord gebruikers stroom wordt gebruikt voor lokale accounts in Azure AD B2C?
 
-De Azure AD B2C wacht woord van de gebruiker voor lokale accounts is gebaseerd op het beleid voor Azure AD. Azure AD B2C's registratie, aanmelden of aanmelden en gebruikers stromen voor het opnieuw instellen van het wacht woord gebruiken de sterke wachtwoord sterkte en verlopen geen wacht woorden. Lees het [wachtwoord beleid voor Azure AD](/previous-versions/azure/jj943764(v=azure.100)) voor meer informatie. Zie [bedreigingen voor resources en gegevens in azure Active Directory B2C beheren](threat-management.md)voor meer informatie over account vergrendelingen en wacht woorden.
+De Azure AD B2C wacht woord van de gebruiker voor lokale accounts is gebaseerd op het beleid voor Azure AD. Azure AD B2C's registratie, aanmelden of aanmelden en gebruikers stromen voor het opnieuw instellen van het wacht woord gebruiken de sterke wachtwoord sterkte en verlopen geen wacht woorden. Zie [wachtwoord beleid en-beperkingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)voor meer informatie.
+
+Zie [bedreigingen voor resources en gegevens in azure Active Directory B2C beheren](threat-management.md)voor meer informatie over account vergrendelingen en wacht woorden.
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Kan ik Azure AD Connect gebruiken om consumenten-id's die op mijn on-premises Active Directory zijn opgeslagen te migreren naar Azure AD B2C?
 
-Nee, Azure AD Connect is niet ontworpen om te werken met Azure AD B2C. Overweeg het gebruik van de [Azure AD-Graph API](manage-user-accounts-graph-api.md) voor gebruikers migratie. Raadpleeg de [hand leiding voor gebruikers migratie](user-migration.md) voor meer informatie.
+Nee, Azure AD Connect is niet ontworpen om te werken met Azure AD B2C. Overweeg de [Microsoft Graph-API](manage-user-accounts-graph-api.md) te gebruiken voor gebruikers migratie. Raadpleeg de [hand leiding voor gebruikers migratie](user-migration.md) voor meer informatie.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Kan mijn app Azure AD B2C pagina's in een iFrame openen?
 
@@ -134,7 +136,7 @@ Volg deze stappen om uw Azure AD B2C-Tenant te verwijderen.
 
 U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (Unified app-registraties)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als *abonnements beheerder*. Gebruik hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om u aan te melden voor Azure.
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
@@ -155,7 +157,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als *abonnements beheerder*. Gebruik hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om u aan te melden voor Azure.
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.

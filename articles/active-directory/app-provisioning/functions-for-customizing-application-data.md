@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01f7f48dd93983edf4be4b797f62afede273c66
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: dd78c78a711b64c58290f09eb2ee52263375002f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066666"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522506"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory
 Bij het configureren van inrichting tot een SaaS-toepassing, is een van de typen kenmerktoewijzingen die u kunt opgeven een expressie-toewijzing. Voor deze, moet u een script-achtige-expressie waarmee u uw gebruikers om gegevens te transformeren naar indelingen die meer geschikt is voor de SaaS-toepassing kunt schrijven.
@@ -532,7 +532,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
 
 ---
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 **Functieassembly**<br> ToUpper (bron, cultuur)
 
 **Beschrijvingen**<br> Neemt een *bron* teken reeks waarde en converteert deze in hoofd letters met de opgegeven cultuur regels. Als er geen *cultuur* gegevens zijn opgegeven, wordt de invariante cultuur gebruikt.

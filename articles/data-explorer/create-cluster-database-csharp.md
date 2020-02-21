@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 2d800dc401b0d85b26a71817a1a70d66539203ae
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a26dc461653f4308b0764b8c5ecc0272717a6171
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902116"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506019"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Een Azure Data Explorer-cluster en-data base maken met behulp vanC#
 
@@ -31,12 +31,9 @@ Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalys
 * Als Visual Studio 2019 niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="install-c-nuget"></a>Nuget C# installeren
+[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
-* Installeer het [Azure Data Explorer (Kusto) nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Installeer het [nuget-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
-
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. Schakel het selectie vakje [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) in om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID`en `Client Secret`kunt ophalen.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Het Azure Data Explorer-cluster maken

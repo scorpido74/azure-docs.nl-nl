@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136237"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505651"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -39,7 +39,7 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 - [SAML2](saml-technical-profile.md) -Federatie met een id-provider voor SAML-protocollen.
 - [Zelfbevestigend](self-asserted-technical-profile.md) : interactie met de gebruiker. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden, de registratie pagina weer te geven of het wacht woord opnieuw in te stellen.
 - [Sessie beheer](custom-policy-reference-sso.md) : verschillende soorten sessies verwerken.
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - [Eenmalig wacht woord](one-time-password-technical-profile.md) : biedt ondersteuning voor het beheren van het genereren en verifiëren van een eenmalig wacht woord. 
 
 ## <a name="technical-profile-flow"></a>Technische profiel stroom

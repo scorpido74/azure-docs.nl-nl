@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210188"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482357"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met behulp van een aangepaste container
 
@@ -370,7 +370,7 @@ Als de installatie kopie is geïmplementeerd in de functie-app in azure, kunt u 
 
 1. Haal de functie-URL op met de Access-sleutel (functie) met behulp van de Azure Portal of gebruik de Azure CLI met de `az rest`-opdracht.)
 
-    # <a name="portaltabportal"></a>[Portal](#tab/portal)
+    # <a name="portal"></a>[Portal](#tab/portal)
 
     1. Meld u aan bij de Azure Portal en zoek vervolgens uw functie-app door de naam van uw functie-app in te voeren in het **zoekvak** boven aan de pagina. Selecteer in de resultaten de **app service** resource.
 
@@ -387,7 +387,7 @@ Als de installatie kopie is geïmplementeerd in de functie-app in azure, kunt u 
     > [!NOTE]  
     > Omdat uw functie-app als een container is geïmplementeerd, kunt u geen wijzigingen aanbrengen in uw functie code in de portal. U moet in plaats daarvan het project bijwerken in de lokale installatie kopie, de installatie kopie naar het REGI ster pushen en vervolgens opnieuw implementeren naar Azure. U kunt in een later stadium doorlopende implementatie instellen.
     
-    # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
     1. Maak een URL-teken reeks in de volgende indeling, vervang `<subscription_id>`, `<resource_group>`en `<app_name>` met de ID van uw Azure-abonnement, de resource groep van de functie-app en de naam van uw functie-app, respectievelijk:
 
@@ -877,19 +877,19 @@ U kunt de wachtrij weer geven in de [Azure Portal](../storage/queues/storage-qui
 
 1. Open het bestand *Local. setting. json* van het functie project en kopieer de Connection String waarde. Voer in een Terminal-of opdracht venster de volgende opdracht uit om een omgevings variabele met de naam `AZURE_STORAGE_CONNECTION_STRING`te maken en uw specifieke connection string in plaats van `<connection_string>`te plakken. (Deze omgevings variabele houdt in dat u de connection string niet hoeft op te geven bij elke volgende opdracht met behulp van het argument `--connection-string`.)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ U kunt de wachtrij weer geven in de [Azure Portal](../storage/queues/storage-qui
     
 1. Beschrijving Gebruik de [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) opdracht om de opslag wachtrijen in uw account weer te geven. De uitvoer van deze opdracht moet een wachtrij bevatten met de naam `outqueue`, die is gemaakt toen de functie het eerste bericht naar die wachtrij heeft geschreven.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -919,21 +919,21 @@ U kunt de wachtrij weer geven in de [Azure Portal](../storage/queues/storage-qui
     
     ---
 
-1. Gebruik de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven. dit moet de eerste naam zijn die u hebt gebruikt bij het testen van de functie. De opdracht haalt het eerste bericht in de wachtrij op in [Base64-code ring](functions-bindings-storage-queue.md#encoding), dus u moet het bericht ook decoderen om als tekst weer te geven.
+1. Gebruik de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven. dit moet de eerste naam zijn die u hebt gebruikt bij het testen van de functie. De opdracht haalt het eerste bericht in de wachtrij op in [Base64-code ring](functions-bindings-storage-queue-trigger.md#encoding), dus u moet het bericht ook decoderen om als tekst weer te geven.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Omdat u de verwijzing naar de berichten verzameling moet decoderen en van base64 wilt ontsleutelen, voert u Power shell uit en gebruikt u de Power shell-opdracht.
 

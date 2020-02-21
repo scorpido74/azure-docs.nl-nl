@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936238"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505863"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -78,8 +78,9 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 --- | ---
 **Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Wordt niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
 **Agent-extensie gebruiken om een back-up te maken van Azure VM waarop Linux wordt uitgevoerd** | App-consistente back-up met [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Herstel op bestandsniveau.<br/><br/> Herstellen door het maken van een VM vanaf een herstelpunt of schijf.
-**DPM gebruiken om een back-up te maken van on-premises of Azure VM waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.<br/><br/> Bestands consistente back-up niet beschikbaar voor Azure VM.
-**MABS gebruiken om een back-up te maken van on-premises machine of Azure VM waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.<br/><br/> Bestandsconsistente back-up is niet beschikbaar voor virtuele Azure-machines.
+**DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
+**MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
+**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Wordt niet ondersteund.
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 
@@ -106,7 +107,7 @@ Azure Backup ondersteunt versleuteling voor in-transit en op rest-gegevens.
     > [!WARNING]
     > Nadat u de kluis hebt ingesteld, hebt alleen u toegang tot de versleutelingssleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
 
-### <a name="data-security"></a>Databeveiliging
+### <a name="data-security"></a>Gegevensbeveiliging
 
 - Wanneer u een back-up maakt van virtuele Azure-machines, moet u de versleuteling instellen *in* de Virtual Machine.
 - Azure Backup biedt ondersteuning voor Azure Disk Encryption, dat gebruikmaakt van BitLocker op virtuele Windows-machines en **dm-crypt** op virtuele Linux-machines.
@@ -128,8 +129,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-**Directe back-ups van on-premises Windows-computers** | N.V.T. | ![Ja][green]
-**Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | N.V.T. | N.V.T.
+**Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Ja][green]
+**Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | N.v.t. | N.v.t.
 **Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
 
 ## <a name="retention-limits"></a>Bewaarlimieten
@@ -151,9 +152,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja. Open bare beperkte preview ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | VS - west-centraal   |
-| MARS-agent/on-premises | Nee                                                           | N/A               |
-| SQL-/SAP HANA          | Nee                                                           | N/A               |
-| AFS                    | Nee                                                           | N/A               |
+| MARS-agent/on-premises | Nee                                                           | N.v.t.               |
+| SQL-/SAP HANA          | Nee                                                           | N.v.t.               |
+| AFS                    | Nee                                                           | N.v.t.               |
 
 
 

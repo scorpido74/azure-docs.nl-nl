@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191879"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500374"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -41,7 +41,7 @@ In dit artikel wordt beschreven hoe u deze taken uitvoert:
 
 * Een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Als u geen virtueel netwerk hebt, leert u hoe u [een virtueel Azure-netwerk maakt](../virtual-network/quick-create-portal.md).
 
-  * Het virtuele netwerk moet vier *lege* subnetten hebben voor het maken en implementeren van resources in uw ISE. Elk subnet ondersteunt een ander Logic Apps onderdeel voor uw ISE. U kunt deze subnetten vooraf maken, maar u kunt wachten totdat u de ISE maakt waar u subnetten tegelijk kunt maken. Meer informatie over de vereisten voor het [subnet](#create-subnet).
+  * Het virtuele netwerk moet vier *lege* subnetten hebben voor het maken en implementeren van resources in uw ISE. Elk subnet ondersteunt een ander Logic Apps onderdeel dat wordt gebruikt in uw ISE. U kunt deze subnetten vooraf maken, maar u kunt wachten totdat u de ISE maakt waar u subnetten tegelijk kunt maken. Meer informatie over de vereisten voor het [subnet](#create-subnet).
 
   * De namen van subnetten moeten beginnen met een alfabetisch teken of een liggend streepje en kunnen niet de volgende tekens gebruiken: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
   
@@ -91,27 +91,25 @@ In deze tabel worden de poorten in uw virtuele Azure-netwerk beschreven die uw I
 
 | Doel | Richting | Doelpoorten | Bron servicetag | Doelservicetag | Opmerkingen |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Intrasubnet-communicatie | Binnenkomende &-uitgaand | * | Adres ruimte voor het virtuele netwerk met de ISE-subnetten | Adres ruimte voor het virtuele netwerk met de ISE-subnetten | Vereist zodat verkeer binnen elk subnet kan stromen. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in deze subnetten opent voor communicatie tussen onderdelen binnen subnetten. |
-| Communicatie tussen subnet | Binnenkomende &-uitgaand | 80, 443 | VirtualNetwork | VirtualNetwork | Voor communicatie tussen subnetten |
-| Communicatie van Azure Logic Apps | Uitgaand | 80, 443 | VirtualNetwork | Internet | De poort is afhankelijk van de externe service waarmee de Logic Apps-service communiceert |
-| Azure Active Directory | Uitgaand | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage afhankelijkheid | Uitgaand | 80, 443, 445 | VirtualNetwork | Opslag | |
-| Communicatie met Azure Logic Apps | Inkomend | 443 | Interne ISE: <br>VirtualNetwork <p><p>Externe ISE: <br>Internet | VirtualNetwork | Het IP-adres voor de computer of service dat de aanvraag triggers of webhooks in uw logische app aanroept. Het sluiten of blok keren van deze poort voor komt HTTP-aanroepen naar Logic apps met aanvraag triggers. |
-| Uitvoerings geschiedenis van de logische app | Inkomend | 443 | Interne ISE: <br>VirtualNetwork <p><p>Externe ISE: <br>Internet | VirtualNetwork | Het IP-adres van de computer van waaruit u de uitvoerings geschiedenis van de logische app wilt weer geven. Hoewel het sluiten of blok keren van deze poort verhindert dat u de uitvoerings geschiedenis bekijkt, kunt u de invoer en uitvoer voor elke stap in de uitvoerings geschiedenis niet weer geven. |
-| Verbindings beheer | Uitgaand | 443 | VirtualNetwork  | AppService | |
-| Diagnostische logboeken publiceren & metrische gegevens | Uitgaand | 443 | VirtualNetwork  | AzureMonitor | |
-| Communicatie van Azure Traffic Manager | Inkomend | Interne ISE: 454 <p><p>Externe ISE: 443 | AzureTrafficManager | VirtualNetwork | |
+| Communicatie tussen subnet binnen het virtuele netwerk | Binnenkomende &-uitgaand | * | De adres ruimte voor het virtuele netwerk met de subnetten van uw ISE | De adres ruimte voor het virtuele netwerk met de subnetten van uw ISE | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
+| Communicatie met uw logische app | Inkomend | 443 | Interne ISE: <br>VirtualNetwork <p><p>Externe ISE: <br>Internet | VirtualNetwork | Het bron-IP-adres voor de computer of service dat aanvraag triggers of webhooks aanroept in uw logische app. <p><p>**Belang rijk**: het sluiten of blok keren van deze poort voor komt http-aanroepen naar Logic apps die aanvraag triggers hebben. |
+| Uitvoerings geschiedenis van de logische app | Inkomend | 443 | Interne ISE: <br>VirtualNetwork <p><p>Externe ISE: <br>Internet | VirtualNetwork | Het bron-IP-adres van de computer of service waarvan u de uitvoerings geschiedenis van de logische app wilt weer geven. <p><p>**Belang rijk**: Hoewel het sluiten of blok keren van deze poort verhindert dat u de uitvoerings geschiedenis bekijkt, kunt u de invoer en uitvoer voor elke stap in de uitvoerings geschiedenis niet weer geven. |
 | Logic Apps Designer: dynamische eigenschappen | Inkomend | 454 | Zie de kolom **opmerkingen** voor het toestaan van IP-adressen | VirtualNetwork | Aanvragen zijn afkomstig van de Logic Apps [binnenkomende](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-adressen van het toegangs punt voor die regio. |
+| Connector implementatie | Inkomend | 454 | AzureConnectors | VirtualNetwork | Vereist voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken ISE-implementaties en wordt het bijwerken of oplossen van connectors voor komen. |
 | Netwerk status controle | Inkomend | 454 | Zie de kolom **opmerkingen** voor het toestaan van IP-adressen | VirtualNetwork | Aanvragen zijn afkomstig van het Logic Apps toegangs punt voor zowel [binnenkomende](../logic-apps/logic-apps-limits-and-config.md#inbound) als [uitgaande](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-adressen voor die regio. |
 | Afhankelijkheid van App Service beheer | Inkomend | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Connector implementatie | Inkomend | 454 | AzureConnectors | VirtualNetwork | Nodig voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken ISE-implementaties en wordt het bijwerken of oplossen van connectors voor komen. |
-| Implementatie van connector beleid | Inkomend | 3443 | APIManagement | VirtualNetwork | Nodig voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken ISE-implementaties en wordt het bijwerken of oplossen van connectors voor komen. |
-| Azure SQL-afhankelijkheid | Uitgaand | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Uitgaand | 1886 | VirtualNetwork | AzureMonitor | Voor het publiceren van de status naar Resource Health |
+| Communicatie van Azure Traffic Manager | Inkomend | Interne ISE: 454 <p><p>Externe ISE: 443 | AzureTrafficManager | VirtualNetwork | |
 | API Management-beheer eindpunt | Inkomend | 3443 | APIManagement | VirtualNetwork | |
+| Implementatie van connector beleid | Inkomend | 3443 | APIManagement | VirtualNetwork | Vereist voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken ISE-implementaties en wordt het bijwerken of oplossen van connectors voor komen. |
+| Communicatie vanuit uw logische app | Uitgaand | 80, 443 | VirtualNetwork | Varieert op basis van bestemming | De eind punten voor de externe service waarmee de logische app moet communiceren. |
+| Azure Active Directory | Uitgaand | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Verbindings beheer | Uitgaand | 443 | VirtualNetwork  | AppService | |
+| Diagnostische logboeken publiceren & metrische gegevens | Uitgaand | 443 | VirtualNetwork  | AzureMonitor | |
+| Azure Storage afhankelijkheid | Uitgaand | 80, 443, 445 | VirtualNetwork | Opslag | |
+| Azure SQL-afhankelijkheid | Uitgaand | 1433 | VirtualNetwork | SQL | |
+| Azure Resource Health | Uitgaand | 1886 | VirtualNetwork | AzureMonitor | Vereist voor het publiceren van de status naar Resource Health |
 | Afhankelijkheid van het logboek-naar-Event hub-beleid en-bewakings agent | Uitgaand | 5672 | VirtualNetwork | EventHub | |
 | Toegang tot Azure cache voor redis instanties tussen Rolinstanties | Inkomend <br>Uitgaand | 6379-6383 | VirtualNetwork | VirtualNetwork | Bovendien moet u, om ISE te kunnen gebruiken met Azure cache voor redis, deze [uitgaande en binnenkomende poorten openen die worden beschreven in de Azure-cache voor redis-Veelgestelde vragen](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Inkomend | * | AzureLoadBalancer | VirtualNetwork | |
 ||||||
 
 <a name="create-environment"></a>
@@ -147,23 +145,19 @@ In deze tabel worden de poorten in uw virtuele Azure-netwerk beschreven die uw I
 
    **Subnet maken**
 
-   Voor het maken en implementeren van resources in uw omgeving, heeft uw ISE vier *lege* subnetten nodig die niet worden overgedragen aan een service. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt.
+   Voor het maken en implementeren van resources in uw omgeving, heeft uw ISE vier *lege* subnetten nodig die niet worden overgedragen aan een service. Elk subnet ondersteunt een ander Logic Apps onderdeel dat wordt gebruikt in uw ISE. U *kunt* deze subnet-adressen niet wijzigen nadat u uw omgeving hebt gemaakt. Elk subnet moet aan de volgende vereisten voldoen:
 
-   > [!IMPORTANT]
-   > 
-   > Namen van subnetten moeten beginnen met een letter of een onderstrepings teken (geen getallen). deze tekens worden niet gebruikt: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
-
-   Daarnaast moet elk subnet aan de volgende vereisten voldoen:
+   * Heeft een naam die begint met een letter of een onderstrepings teken (geen getallen), en deze tekens worden niet gebruikt: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
    * Maakt gebruik van de [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) en een klasse B-adres ruimte.
 
-   * Gebruikt ten minste een `/27` in de adres ruimte, omdat voor elk subnet *ten minste* 32 adressen mini *maal*zijn vereist. Bijvoorbeeld:
+   * Gebruikt ten minste een `/27` in de adres ruimte, omdat voor elk subnet 32 adressen mini *maal*vereist zijn. Bijvoorbeeld:
+
+     * `10.0.0.0/28` heeft slechts 16 adressen en is te klein omdat 2<sup>(32-28)</sup> 2<sup>4</sup> of 16 is.
 
      * `10.0.0.0/27` heeft 32 adressen omdat 2<sup>(32-27)</sup> 2<sup>5</sup> of 32 is.
 
-     * `10.0.0.0/24` heeft 256 adressen omdat 2<sup>(32-24)</sup> 2<sup>8</sup> of 256 is.
-
-     * `10.0.0.0/28` heeft slechts 16 adressen en is te klein omdat 2<sup>(32-28)</sup> 2<sup>4</sup> of 16 is.
+     * `10.0.0.0/24` heeft 256 adressen omdat 2<sup>(32-24)</sup> 2<sup>8</sup> of 256 is. Meer adressen bieden echter geen extra voor delen.
 
      Zie voor meer informatie over het berekenen van adressen [IPv4 CIDR-blokken](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 

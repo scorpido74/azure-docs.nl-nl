@@ -6,17 +6,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688924"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524084"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service in Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een .NET Core- en SQL Database-app maken in Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md) als u in App Service wilt implementeren in _Windows_.
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een .NET Core- en SQL Database-app maken in Azure App Service_ als u in App Service wilt implementeren in [Windows](../app-service-web-tutorial-dotnetcore-sqldb.md).
 >
 
 [App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met een SQL-database. Als u klaar bent, hebt u een .NET Core MVC-app die onder Linux in App Service wordt uitgevoerd.
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 * [Git installeren](https://git-scm.com/)
 * [Installeer .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
@@ -48,7 +48,7 @@ In deze stap stelt u het lokale .NET Core-project in.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.
+In het terminalvenster, `cd` in een werkmap.
 
 Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen en de hoofdmap ervan te wijzigen.
 
@@ -174,7 +174,7 @@ Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in
 
 ### <a name="configure-environment-variable"></a>Omgevings variabele configureren
 
-Vervolgens stelt u de instelling voor `ASPNETCORE_ENVIRONMENT`-app in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
+Vervolgens stelt u de instelling voor de app `ASPNETCORE_ENVIRONMENT` in op _Productie_. Met deze instelling kunt u zien of u in azure werkt, omdat u SQLite gebruikt voor uw lokale ontwikkel omgeving en SQL Database voor uw Azure-omgeving.
 
 In het volgende voorbeeld wordt de app-instelling `ASPNETCORE_ENVIRONMENT` in de Azure-app geconfigureerd. Vervang de tijdelijke aanduiding voor de *\<app-naam >* .
 
@@ -295,7 +295,7 @@ Breng enkele wijzigingen aan de code aan zodat de eigenschap `Done` kan worden g
 
 Open _Controllers\TodosController.cs_.
 
-Zoek de `Create()`-methode en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw `Create()`-methode er uit als de onderstaande code:
+Zoek de methode `Create()` en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw methode `Create()` er uit als de onderstaande code:
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -303,7 +303,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Open _Views\Todos\Create.cshtml_.
 
-In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander `<div class="form-group">`-element voor `CreatedDate`. Voeg direct na deze twee elementen een ander `<div class="form-group">`-element voor `Done` toe:
+In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander element `<div class="form-group">` voor `CreatedDate`. Voeg direct na deze twee elementen een ander element `<div class="form-group">` voor `Done` toe:
 
 ```csharp
 <div class="form-group">
@@ -317,7 +317,7 @@ In de Razor-code zou u een `<div class="form-group">`-element voor `Description`
 
 Open _Views\Todos\Index.cshtml_.
 
-Zoek het lege `<th></th>`-element. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <th>
@@ -325,7 +325,7 @@ Zoek het lege `<th></th>`-element. Vlak boven dit element voegt u de volgende Ra
 </th>
 ```
 
-Zoek het `<td>`-element dat de `asp-action`-taghelpers bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het element `<td>` dat de taghelpers voor `asp-action` bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <td>

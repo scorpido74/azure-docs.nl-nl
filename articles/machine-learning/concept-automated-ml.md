@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366242"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526124"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -215,7 +215,7 @@ Met Azure Machine Learning kunt u automatische ML gebruiken om een python-model 
 
 Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
 
-* Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+* Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
 * Voor klanten met een beperkte of geen code ervaring Azure Machine Learning Studio op [https://ml.azure.com](https://ml.azure.com/)  
 

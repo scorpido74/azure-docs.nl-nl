@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
+ms.date: 02/18/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2a416fa4f9e02372e570b77b0e6fb1af2cad81fb
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113923"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500683"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Zelf studie: automatische bedreigings reacties instellen in azure Sentinel
 
@@ -62,9 +62,9 @@ Volg deze stappen voor het maken van een nieuwe beveiligings Playbook in azure S
 1. Open het **Azure Sentinel** -dash board.
 2. Onder **beheer**selecteert u **Playbooks**.
 
-   ![Logische app](./media/tutorial-respond-threats-playbook/playbookimg.png)
+   ![Logische apps](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. Klik in de **Azure Sentinel-Playbooks (preview)-** pagina op de knop **toevoegen** .
+3. Klik op de pagina **Sentinel-Playbooks van Azure** op de knop **toevoegen** .
 
    ![Logische app maken](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 

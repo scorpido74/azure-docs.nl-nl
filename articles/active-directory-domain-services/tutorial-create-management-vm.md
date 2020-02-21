@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931586"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522990"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: een beheer-VM maken om een Azure Active Directory Domain Services beheerd domein te configureren en te beheren
 
@@ -44,6 +44,8 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
 * Een Windows Server-VM die is gekoppeld aan het beheerde domein van Azure AD DS.
     * Zie, indien nodig, de vorige zelf studie voor het [maken van een Windows Server-VM en voeg deze toe aan een beheerd domein][create-join-windows-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
+* Een Azure bastion-host die is geïmplementeerd in uw Azure AD DS virtuele netwerk.
+    * Maak indien nodig [een Azure bastion-host][azure-bastion].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -84,16 +86,15 @@ In de vorige zelf studie is een Windows Server-VM gemaakt en gekoppeld aan het b
 Als u aan de slag wilt gaan, maakt u als volgt verbinding met de virtuele machine van Windows Server:
 
 1. Selecteer in de Azure Portal **resource groepen** aan de linkerkant. Kies de resource groep waar uw VM is gemaakt, zoals *myResourceGroup*en selecteer vervolgens de virtuele machine, zoals *myVM*.
-1. Selecteer in het **overzichts** venster van de virtuele machine **verbinding maken**.
+1. Selecteer in het deel venster **overzicht** voor uw virtuele machine **verbinding maken**en vervolgens **Bastion**.
 
-    ![Verbinding maken met een virtuele Windows-machine in de Azure Portal](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Verbinding maken met een virtuele Windows-machine met behulp van Bastion in de Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-    U kunt ook [een Azure bastion-host maken en gebruiken (momenteel in Preview)][azure-bastion] om alleen toegang toe te staan via de Azure portal via SSL.
+1. Voer de referenties in voor uw virtuele machine en selecteer vervolgens **verbinding maken**.
 
-1. Selecteer de optie om het *RDP-bestand te downloaden*. Sla dit RDP-bestand op in de webbrowser.
-1. Open het gedownloade RDP-bestand om verbinding met de VM te maken. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
-1. Voer de referenties in van een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* , zoals *contoso\dee*
-1. Als tijdens het aanmeldings proces een certificaat waarschuwing wordt weer gegeven, selecteert u **Ja** of **door gaan** met verbinding maken.
+   ![Verbinding maken via de bastion-host in de Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+Als dat nodig is, laat u uw webbrowser pop-ups openen voor de Bastion-verbinding die moet worden weer gegeven. Het duurt een paar seconden om de verbinding met uw virtuele machine te maken.
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory-beheer Programma's installeren
 
@@ -143,7 +144,7 @@ U kunt ook de *Active Directory-module voor Windows Power shell*gebruiken, geïn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Meer informatie over de beschik bare beheer taken in een door Azure AD DS beheerd domein

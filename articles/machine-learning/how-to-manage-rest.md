@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964954"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525546"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
+Er zijn verschillende manieren om uw Azure ML-resources te beheren. U kunt de [Portal](https://portal.azure.com/), de [opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)of de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)gebruiken. U kunt ook de REST API kiezen. De REST API maakt gebruik van HTTP-termen op een standaard manier om resources te maken, op te halen, bij te werken en te verwijderen. De REST API werkt met elke taal of elk hulp programma waarmee HTTP-aanvragen kunnen worden gemaakt. Met de eenvoudige structuur van de REST is het vaak een goede keuze in script omgevingen en voor MLOps Automation. 
 
 In dit artikel leert u het volgende:
 
@@ -201,19 +201,19 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 U ziet dat bij het weer geven van experimenten het pad begint met `history/v1.0` terwijl de lijst modellen wordt weer gegeven, het pad begint met `modelmanagement/v1.0`. De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. De API-referentie documenten op de koppelingen hieronder staan de bewerkingen, para meters en antwoord codes voor de verschillende bewerkingen.
 
-|Gebied|Pad|Referentie|
+|Onderwerp|Pad|Naslaginformatie|
 |-|-|-|
-|Artifacts|artefact/v 2.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Gegevens archieven|Data Store/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|afstemming afstemmen|Hyperdrive/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellen|Modelmanagement/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Artefacten|artefact/v 2.0/|[Naslaginformatie over REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Gegevens archieven|Data Store/v 1.0/|[Naslaginformatie over REST API](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|afstemming afstemmen|Hyperdrive/v 1.0/|[Naslaginformatie over REST API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Basis|Modelmanagement/v 1.0/|[Naslaginformatie over REST API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|[Naslaginformatie over REST API](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 U kunt de REST API verkennen met behulp van het algemene patroon van:
 
 |URL-onderdeel|Voorbeeld|
 |-|-|
-| https://| |
+| http://| |
 | regionaal-API-server/ | centralus.api.azureml.ms/ |
 | bewerkingen-pad/ | geschiedenis/v 1.0/ |
 | abonnementen/{uw-abonnement-id}/ | abonnementen/abcde123-ABAB-ABAB-1234-0123456789abc/ |

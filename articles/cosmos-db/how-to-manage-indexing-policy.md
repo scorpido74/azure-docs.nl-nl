@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767981"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506231"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB beheren
 
@@ -342,11 +342,11 @@ Met een [indexerings beleid-update](index-policy.md#modifying-the-indexing-polic
 > [!NOTE]
 > Wanneer u het indexerings beleid bijwerkt, wordt de schrijf bewerking naar Azure Cosmos DB onderbroken. Tijdens het opnieuw indexeren kunnen query's gedeeltelijke resultaten retour neren als de index wordt bijgewerkt.
 
-## <a name="use-the-azure-portal"></a>De Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 Azure Cosmos-containers slaan hun indexerings beleid op als een JSON-document waarmee u de Azure Portal rechtstreeks kunt bewerken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Maak een nieuw Azure Cosmos DB-account of selecteer een bestaand account.
 
@@ -472,7 +472,7 @@ indexingPolicy.setIndexingMode(IndexingMode.Consistent);
 // Add an included path
 
 Collection<IncludedPath> includedPaths = new ArrayList<>();
-ExcludedPath includedPath = new IncludedPath();
+IncludedPath includedPath = new IncludedPath();
 includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);

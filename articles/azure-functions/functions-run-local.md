@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208879"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523268"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -43,6 +43,9 @@ Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
 [Azure functions core tools] bevat een versie van dezelfde runtime die voorziet in azure functions runtime die u kunt uitvoeren op uw lokale ontwikkel computer. Het bevat ook opdrachten voor het maken van functies, verbinding maken met Azure en functie projecten implementeren.
 
+>[!IMPORTANT]
+>U moet de [Azure cli](/cli/azure/install-azure-cli) lokaal hebben geïnstalleerd om te kunnen publiceren naar Azure vanaf Azure functions core tools.  
+
 ### <a name="v2"></a>Versie 2. x en 3. x
 
 Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
@@ -50,7 +53,7 @@ Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions ru
 > [!IMPORTANT]
 > U kunt de vereiste voor het installeren van de .NET Core SDK overs Laan door gebruik te maken van [uitbreidings bundels].
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's in Windows te installeren. U kunt ook [Choco lade](https://chocolatey.org/)gebruiken. Zie het Leesmij-bestand met [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie.
 
@@ -76,7 +79,7 @@ In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's i
 
 1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u de [.net Core 2. x SDK voor Windows](https://www.microsoft.com/net/download/windows).
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -100,7 +103,7 @@ In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram M
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulpprogramma's te installeren op uw Ubuntu/Debian Linux-distributie. Raadpleeg het Leesmij-bestand voor de [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)voor andere Linux-distributies.
 
@@ -230,7 +233,7 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-- Zoek en selecteer **opslag accounts**vanuit het [Azure-portal]. 
+- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
   ![opslag accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
@@ -455,6 +458,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 De Azure Functions Core Tools ondersteunt twee typen implementaties: functie project bestanden rechtstreeks implementeren in uw functie-app via [zip-implementatie](functions-deployment-technologies.md#zip-deploy) en [een aangepaste docker-container implementeren](functions-deployment-technologies.md#docker-container). U moet al [een functie-app hebben gemaakt in uw Azure-abonnement](functions-cli-samples.md#create), waar u uw code gaat implementeren. Projecten waarvoor compilatie vereist is, moeten worden gebouwd zodat de binaire bestanden kunnen worden geïmplementeerd.
 
+>[!IMPORTANT]
+>U moet de [Azure cli](/cli/azure/install-azure-cli) lokaal hebben geïnstalleerd om te kunnen publiceren naar Azure vanuit de kern hulpprogramma's.  
+
 Een projectmap kan taalspecifieke bestanden en mappen bevatten die niet mogen worden gepubliceerd. Uitgesloten items worden weer gegeven in een. funcignore-bestand in de hoofdmap van het project.     
 
 ### <a name="project-file-deployment"></a>Implementatie (project bestanden)
@@ -542,7 +548,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

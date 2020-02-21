@@ -10,16 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5ab5d3c0fc1c37feaac2cc6b4b6837627c5a82df
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369688"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500642"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Geavanceerde aanvals detectie in azure-Sentinel
+
+
+> [!IMPORTANT]
+> Sommige Fusion-functies in azure Sentinel zijn momenteel beschikbaar als open bare preview.
+> Deze functies worden zonder service level agreement gegeven en worden niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+
 
 Door gebruik te maken van fusie technologie die is gebaseerd op machine learning, kan Azure Sentinel automatisch meerdere fase aanvallen detecteren door afwijkend gedrag en verdachte activiteiten te combi neren die in verschillende stadia van de Kill-keten worden waargenomen. Azure Sentinel genereert vervolgens incidenten die op een andere manier moeilijk te ondervangen zijn. Deze incidenten omsluiten twee of meer waarschuwingen of activiteiten. Het ontwerp van deze incidenten is een laag volume, een hoge mate van kwaliteit en een hoge ernst.
 
@@ -41,13 +48,32 @@ Deze detectie is standaard ingeschakeld in azure Sentinel. Gebruik de volgende i
 
 Regel sjablonen zijn niet van toepassing op de geavanceerde detectie van de multifase-aanval.
 
+> [!NOTE]
+> Azure Sentinel maakt momenteel gebruik van 30 dagen aan historische gegevens om de machine learning systemen te trainen. Deze gegevens worden altijd versleuteld met behulp van de sleutels van micro soft, zoals door de machine learning pijp lijn wordt door gegeven. De trainings gegevens worden echter niet versleuteld met behulp van door de [klant beheerde sleutels (CMK)](customer-managed-keys.md) als u CMK hebt ingeschakeld in uw Azure Sentinel-werk ruimte. Als u wilt deel nemen aan fusie, gaat u naar **Azure Sentinel** \> **configuratie** \> **Analytics \> actieve regels \> geavanceerde aanval** van meerdere fasen en selecteert u in de kolom **status** de optie **uitschakelen.**
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusie met Palo Alto-netwerken en micro soft Defender ATP
 
-- Netwerk aanvraag naar TOR anoniem maken-service, gevolgd door afwijkend verkeer dat is gemarkeerd door Palo Alto Networks firewall
+In deze scenario's worden twee van de fundamentele logboeken gecombineerd die worden gebruikt door beveiligings analisten: Firewall logboeken van Palo Alto-netwerken en logboeken voor eindpunt detectie vanuit micro soft Defender ATP. In alle scenario's die hieronder worden weer gegeven, wordt er een verdachte activiteit gedetecteerd in het eind punt met een extern IP-adres. vervolgens wordt dit gevolgd door afwijkend verkeer van het externe IP-adres terug naar de firewall. In Palo Alto-Logboeken wordt Azure Sentinel gericht op [bedreigings logboeken](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)en verkeer wordt beschouwd als verdacht Wanneer bedreigingen zijn toegestaan (verdachte gegevens, bestanden, flooden, pakketten, scans, spyware, url's, virussen, beveiligings problemen, bosbrand-virussen, Wildfires).
 
-- Power Shell heeft een verdachte netwerk verbinding gemaakt, gevolgd door afwijkend verkeer dat is gemarkeerd met de firewall Palo Alto Networks
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Netwerk aanvraag naar TOR anoniem maken-service, gevolgd door afwijkend verkeer dat is gemarkeerd met de firewall van Palo Alto Networks.
 
-- Uitgaande verbinding met IP met een geschiedenis van ongeoorloofde toegangs pogingen gevolgd door afwijkend verkeer dat is gemarkeerd door de firewall Palo Alto Networks
+In dit scenario detecteert Azure Sentinel eerst een waarschuwing dat er een netwerk aanvraag naar een TOR anoniem maken-service is gedetecteerd die leidt tot afwijkende activiteiten. Dit is gestart onder account {account naam} met SID-ID {sid} om {time}. Het uitgaande IP-adres voor de verbinding is {IndividualIp}.
+Vervolgens is ongebruikelijke activiteit gedetecteerd door de firewall Palo Alto Networks op {TimeGenerated}. Dit duidt op schadelijk verkeer dat uw netwerk heeft opgegeven het doel-IP-adres voor het netwerk verkeer is {DestinationIP}.
+
+Dit scenario is momenteel beschikbaar als open bare preview.
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Power Shell heeft een verdachte netwerk verbinding gemaakt, gevolgd door afwijkend verkeer dat is gemarkeerd met de firewall Palo Alto Networks.
+
+In dit scenario detecteert Azure Sentinel eerst een waarschuwing dat er door Power shell een verdachte netwerk verbinding is gemaakt die leidt tot afwijkende activiteiten die zijn gedetecteerd door een Palo Alto-netwerk firewall. Dit is gestart door het account {account naam} met SID-ID {sid} om {time}. Het uitgaande IP-adres voor de verbinding is {IndividualIp}. Vervolgens is ongebruikelijke activiteit gedetecteerd door de firewall Palo Alto Networks op {TimeGenerated}. Dit geeft aan dat het schadelijke verkeer uw netwerk heeft binnengekomen. Het doel-IP-adres voor het netwerk verkeer is {DestinationIP}.
+
+Dit scenario is momenteel beschikbaar als open bare preview.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Uitgaande verbinding met IP met een geschiedenis van ongeoorloofde toegangs pogingen gevolgd door afwijkend verkeer dat is gemarkeerd door de firewall Palo Alto Networks
+
+In dit scenario detecteert Azure Sentinel een waarschuwing dat een uitgaande verbinding met een IP-adres door micro soft Defender Advanced Threat Protection is gedetecteerd met een geschiedenis van ongeoorloofde toegangs pogingen die leiden tot afwijkende activiteiten die worden gedetecteerd door de Palo Alto Netwerk firewall. Dit is gestart door het account {account naam} met SID-ID {sid} om {time}. Het uitgaande IP-adres voor de verbinding is {IndividualIp}. Hierna is ongebruikelijke activiteit gedetecteerd door de firewall Palo Alto Networks op {TimeGenerated}. Dit geeft aan dat het schadelijke verkeer uw netwerk heeft binnengekomen. Het doel-IP-adres voor het netwerk verkeer is {DestinationIP}.
+
+Dit scenario is momenteel beschikbaar als open bare preview.
 
 
 

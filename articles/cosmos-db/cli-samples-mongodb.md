@@ -7,16 +7,19 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 9/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8a8b36f61b967af2109e8c897d632b192d208017
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: f7807a4c2024e16f563adbcb46a5c60e5c542dda
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275449"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524560"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Azure CLI-voor beelden voor Azure Cosmos DB MongoDB-API
 
 De volgende tabel bevat koppelingen naar Azure CLI-voorbeeld scripts voor Azure Cosmos DB MongoDB-API. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). Alle Azure Cosmos DB CLI-voorbeeld scripts vindt u in de [Azure Cosmos DB cli github-opslag plaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+
+> [!NOTE]
+> Op dit moment kunt u alleen 3,2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eind punt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van Power shell, CLI en Resource Manager-sjablonen. Als u 3,6-versie van accounts wilt maken, gebruikt u Azure Portal in plaats daarvan.
 
 | |  |
 |---|---|

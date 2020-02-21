@@ -7,7 +7,7 @@ author: msmimart
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0147644e11ec1d54ac38f8099c9e65c25aa94962
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9b60261d63e1bcb75aea9d2e8a6b74902520f391
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067251"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522914"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Er worden geen gebruikers ingericht voor een Azure AD-galerie toepassing
 Nadat automatische inrichting is geconfigureerd voor een toepassing (waaronder controleren of de referenties van de app die zijn opgegeven voor Azure AD om verbinding te maken met de app geldig zijn), worden gebruikers en/of groepen ingericht voor de app. Inrichting wordt bepaald door de volgende zaken:

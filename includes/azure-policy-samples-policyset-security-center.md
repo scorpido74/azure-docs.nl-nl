@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0a84aa1293e772ee6ec49d3edb06a51527848587
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 03569ef8bacbea4e424ec10668cafc7dd0f5558a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371776"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494993"
 ---
 |Name |Beschrijving |Beleidsregels |Version |
 |---|---|---|---|
 |[\[preview-\]: Data Protection Suite inschakelen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/ASC_DataProtection.json) |Gegevens beveiliging inschakelen voor SQL-servers. Dit initiatief wordt automatisch toegewezen door Azure Security Center Standard-laag. |1 |1.0.0-Preview |
-|[\[preview\]: bewaking inschakelen in Azure Security Center](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json) |Bewaak alle beschik bare beveiligings aanbevelingen in Azure Security Center. Dit is het standaard beleid voor Azure Security Center. |98 |1.0.0-Preview |
+|[\[preview\]: bewaking inschakelen in Azure Security Center](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json) |Bewaak alle beschik bare beveiligings aanbevelingen in Azure Security Center. Dit is het standaard beleid voor Azure Security Center. |96 |2.0.0-Preview |

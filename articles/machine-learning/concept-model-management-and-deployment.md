@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122335"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486373"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -114,13 +114,13 @@ U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT 
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-### <a name="analytics"></a>Analytische gegevens
+### <a name="analytics"></a>Analyse
 
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Vastleggen van de governance-gegevens die nodig zijn voor het vastleggen van de end-to-end ML levenscyclus
 
-Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets bij te houden. Specifiek:
+Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets bij te houden. Met name:
 
 - Azure ML [integreert met git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over de opslag plaats/vertakking/het door voeren van uw code.
 - Met de [Azure ml](how-to-create-register-datasets.md) -gegevens sets kunt u gegevens bijhouden, profiel en versie. 
@@ -138,6 +138,19 @@ Met bewaking kunt u begrijpen welke gegevens worden verzonden naar uw model en w
 Deze informatie helpt u inzicht te krijgen in het gebruik van uw model. De verzamelde invoer gegevens kunnen ook nuttig zijn bij het trainen van toekomstige versies van het model.
 
 Zie [How to Enable model Data Collection](how-to-enable-data-collection.md)(Engelstalig) voor meer informatie.
+
+## <a name="retrain-your-model-on-new-data"></a>Uw model opnieuw trainen op nieuwe gegevens
+
+Het is vaak verstandig om uw model bij te werken of het helemaal opnieuw te trainen, terwijl u nieuwe informatie ontvangt. Soms is het ontvangen van nieuwe gegevens een verwacht deel van het domein. Andere keren, zoals beschreven in [gegevens drift detecteren (preview) in gegevens sets](how-to-monitor-datasets.md), kunnen model prestaties afnemen in het vlak van dergelijke zaken als wijzigingen in een bepaalde sensor, natuurlijke gegevens wijzigingen zoals seizoen effecten of functies die in hun relatie met andere functies verschuivingen. 
+
+Er is geen universeel antwoord op ' Hoe kan ik weet of ik opnieuw moet trainen? ' Azure ML-hulpprogram ma's voor gebeurtenis en controle die eerder zijn besproken, zijn goede start punten voor automatisering. Wanneer u hebt besloten om opnieuw te trainen, moet u het volgende doen: 
+
+- Uw gegevens voorverwerken met een herhaalbaar, geautomatiseerd proces
+- Uw nieuwe model trainen
+- Vergelijk de uitvoer van uw nieuwe model met die van uw oude model
+- Vooraf gedefinieerde criteria gebruiken om te kiezen of u het oude model wilt vervangen 
+
+Een thema van de bovenstaande stappen is dat uw retraining automatisch moet worden geautomatiseerd, niet voor ad-hoc. [Azure machine learning pijp lijnen](concept-ml-pipelines.md) zijn een goed antwoord voor het maken van werk stromen met betrekking tot de voor bereiding van gegevens, training, validatie en implementatie. Lees [Retrain-modellen met Azure machine learning Designer (preview)](how-to-retrain-designer.md) om te zien hoe pijp lijnen en de Azure machine learning designer in een trainings scenario passen. 
 
 ## <a name="automate-the-ml-lifecycle"></a>De levens cyclus van ML automatiseren 
 

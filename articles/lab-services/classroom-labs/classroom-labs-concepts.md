@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120896"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526226"
 ---
 # <a name="classroom-labs-concepts"></a>Concepten van leslokaallabs
 
@@ -28,11 +28,17 @@ De volgende lijst bevat concepten en definities voor de belangrijkste Lab-Servic
 
 Quota is de tijds limiet (in uren) die een docent kan instellen voor een student om een Lab-VM te gebruiken. De waarde kan worden ingesteld op 0 of een bepaald aantal uren. Als het quotum is ingesteld op 0, kan een student alleen de virtuele machine gebruiken als er een planning wordt uitgevoerd of wanneer een docent de virtuele machine hand matig inschakelt voor de student.  
 
-De quota uren worden geteld wanneer de student de VM van het lab zelf start.  Als een docent de Lab-VM voor een student hand matig start, worden er geen quota uren gebruikt voor die student.
+De quota uren worden geteld wanneer de student de VM van het lab zelf start.  Als een docent de Lab-VM voor een student hand matig start, worden er geen quota uren voor die student gebruikt.
 
 ## <a name="schedules"></a>Planningen
 
-Schema's zijn de tijd sleuven (één keer of periodiek) die een docent voor de klasse kan maken. Alle virtuele machines in het lab worden automatisch aan het begin van het schema gestart en aan het einde van het schema gestopt. Quota-uren worden niet gebruikt wanneer een schema wordt uitgevoerd.
+Schema's zijn de tijd sleuven die een docent kan maken voor de klasse, zodat de student-Vm's beschikbaar zijn voor klassetijd.  Schema's kunnen een eenmalige of een terugkerende periode zijn.  Quota-uren worden niet gebruikt wanneer een schema wordt uitgevoerd.
+
+Er zijn drie soorten planningen: standaard, alleen starten en alleen stoppen.
+
+- **Standaard**.  Met deze planning worden alle student-Vm's gestart op de opgegeven begin tijd en worden alle student-Vm's afgesloten op de opgegeven eind tijd.
+- **Alleen starten**.   In dit schema worden alle Vm's van de student op het opgegeven tijdstip gestart.  Student-Vm's worden niet gestopt totdat een student de VM stopt via de Azure Lab Services portal of een planning met alleen een stop.
+- **Alleen stoppen**.  Met deze planning worden alle Vm's van de student op het opgegeven tijdstip gestopt.  
 
 ## <a name="template-virtual-machine"></a>Virtuele machine van sjabloon
 

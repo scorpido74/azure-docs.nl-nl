@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047850"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482881"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
 
@@ -24,7 +24,9 @@ Er is een nieuwe versie van Azure Monitor voor VM's uitgebracht. Klanten die Azu
 
 Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde *InsightsMetrics* -tabel als [Azure monitor voor containers](container-insights-overview.md), waardoor het gemakkelijker wordt om de twee gegevens sets op te vragen. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. 
 
-In de volgende week of twee zullen onze prestatie weergaven ook worden bijgewerkt om deze nieuwe tabel te gebruiken.
+Onze prestatie weergaven gebruiken nu de gegevens die we opslaan in de tabel *InsightsMetrics* .  Als u nog niet hebt bijgewerkt voor het gebruik van de meest recente VMInsights-oplossing in uw werk ruimte, worden er geen gegevens meer weer gegeven in uw grafieken.  U kunt een upgrade uitvoeren van de pagina **aan de slag** zoals hieronder wordt beschreven.
+
+Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde *InsightsMetrics* -tabel als [Azure monitor voor containers](container-insights-overview.md) , waardoor het gemakkelijker wordt om de twee gegevens sets op te vragen. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. 
 
 We realiseren dat bestaande klanten die een upgrade uitvoeren, een onderbreking van de werk stroom veroorzaken. Daarom hebben we ervoor gekozen om dit nu uit te voeren in een open bare preview, in plaats van later na GA.
 
@@ -34,6 +36,8 @@ We realiseren dat bestaande klanten die een upgrade uitvoeren, een onderbreking 
 We hebben een nieuwe oplossing met de naam VMInsights, die aanvullende mogelijkheden bevat voor het verzamelen van gegevens, samen met een nieuwe locatie voor het opslaan van deze gegevens in uw Log Analytics-werk ruimte. 
 
 In het verleden hebben we de ServiceMap-oplossing ingeschakeld in uw werk ruimte en de prestatie meter items in uw Log Analytics-werk ruimte om de gegevens naar de *prestatie* tabel te verzenden. Deze nieuwe oplossing verzendt de gegevens naar een tabel met de naam *InsightsMetrics* die ook wordt gebruikt door Azure monitor voor containers. Met dit tabel schema kunnen we aanvullende metrische gegevens en servicegegevens sets opslaan die niet compatibel zijn met de indeling van de *prestatie* tabel.
+
+We hebben onze prestatie grafieken bijgewerkt voor het gebruik van de gegevens die we opslaan in de *InsightsMetrics* -tabel. U kunt een upgrade uitvoeren om de tabel *InsightsMetrics* te gebruiken op de pagina **aan** de slag zoals hieronder wordt beschreven.
 
 
 ## <a name="how-do-i-upgrade"></a>Hoe kan ik upgrade?

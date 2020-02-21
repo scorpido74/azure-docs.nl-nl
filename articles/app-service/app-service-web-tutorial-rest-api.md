@@ -4,14 +4,14 @@ description: Informatie over hoe u met Azure App Service uw RESTful API's met CO
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/21/2018
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2eca624fabf30eae86c480ede6c4bdffc2226bc
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28848d8b676bb5f4182a887f5efdd48c6221041a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671129"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500064"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: een RESTful API hosten met CORS in Azure App Service
 
@@ -30,7 +30,7 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 * [Installeer Git](https://git-scm.com/).
 * [.NET Core installeren](https://www.microsoft.com/net/core/).
@@ -41,7 +41,7 @@ In deze stap stelt u het lokale ASP.NET Core-project in. App Service ondersteunt
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.  
+In het terminalvenster, `cd` in een werkmap.  
 
 Voer de volgende opdracht uit om de voorbeeldopslagplaats te klonen. 
 

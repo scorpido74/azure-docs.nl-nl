@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445817"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520619"
 ---
 Incrementele moment opnamen (preview) zijn punt-in-time-back-ups voor beheerde schijven die, wanneer ze worden gemaakt, alleen van alle wijzigingen bestaan sinds de laatste moment opname. Wanneer u probeert een incrementele moment opname te downloaden of anderszins te gebruiken, wordt de volledige VHD gebruikt. Deze nieuwe mogelijkheid voor moment opnamen van beheerde schijven kan ertoe leiden dat ze rendabeler worden, omdat u niet langer de volledige schijf hoeft op te slaan bij elke afzonderlijke moment opname, tenzij u dat doet. Net als bij gewone moment opnamen kunnen incrementele moment opnamen worden gebruikt voor het maken van een volledige beheerde schijf of, om een gewone moment opname te maken.
 
@@ -21,10 +21,15 @@ Er zijn enkele verschillen tussen een incrementele moment opname en een regulier
 
 Incrementele moment opnamen bieden ook een andere mogelijkheid, die uniek is voor beheerde schijven. Hiermee kunt u de wijzigingen ophalen tussen twee incrementele moment opnamen van dezelfde beheerde schijven, tot aan het blok niveau. U kunt deze mogelijkheid gebruiken om uw gegevensfootprint te verminderen bij het kopiëren van moment opnamen tussen regio's.
 
-## <a name="restrictions"></a>Beperkingen
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
-- Incrementele moment opnamen zijn momenteel alleen beschikbaar in VS-Oost, VS-Oost 2, VS-midden, VS-West-Centraal, Canada-oost, Canada-centraal, Europa-noord, Zuid-Azië-oost.
-- Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd.
+Alleen de volgende regio's worden momenteel ondersteund:
+
+- Beschikbaar als GA aanbieding in de regio's vs-West-Centraal, Canada-oost, Canada-centraal.
+- Beschikbaar als open bare preview in de regio's VS-Oost, VS-Oost 2, VS-midden, Europa-noord, Zuid-Azië-oost.
+
+## <a name="restrictions"></a>Beperkingen
+- Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd (in de preview-versie).
 - Incrementele moment opnamen kunnen momenteel niet worden verplaatst tussen abonnementen.
 - U kunt momenteel alleen SAS-Uri's van Maxi maal vijf moment opnamen van een bepaalde momentopname familie genereren op een bepaald moment.
 - U kunt geen incrementele moment opname maken voor een bepaalde schijf buiten het abonnement van de schijf.

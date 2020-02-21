@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024191"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498929"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management
 
@@ -32,11 +32,11 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Volg de stappen in dit artikel om beveiligings waarschuwingen voor Azure AD-rollen te onderzoeken.
 
-# <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
+# <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
 ![Azure AD-rollen: waarschuwingen in het deel venster waarschuwingen en de ernst](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -120,7 +120,7 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een aantekening van een aanval. |
 | **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor de bijbehorende rol lang genoeg is ingesteld om hun taken uit te voeren. |
 | **Preventie** | Zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen lang genoeg is ingesteld voor gebruikers om hun taken uit te voeren.</br>[Multi-factor Authentication vereisen](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen met accounts die worden gedeeld door meerdere beheerders. |
-| **Actie voor het verkleinen van de portal** | N/A |
+| **Actie voor het verkleinen van de portal** | N.v.t. |
 | **Trigger** | Wordt geactiveerd als een gebruiker dezelfde geprivilegieerde rol meerdere keren binnen een opgegeven periode activeert. U kunt zowel de tijds periode als het aantal activeringen configureren. |
 | **Periode activering verlenging** | Met deze instelling geeft u in dagen, uren, minuten en seconden de periode op die u wilt gebruiken voor het bijhouden van verdachte vernieuwingen. |
 | **Aantal activerings verlengingen** | Met deze instelling bepaalt u het aantal activeringen, van 2 tot 100, op basis waarvan u een melding wilt ontvangen binnen het tijds bestek dat u hebt gekozen. U kunt deze instelling wijzigen door de schuif regelaar te verplaatsen of door een getal in het tekstvak te typen. |
@@ -135,7 +135,7 @@ Pas de instellingen voor de verschillende waarschuwingen aan om te werken met uw
 
 ![Pagina instellen voor een waarschuwing om instellingen in te scha kelen en te configureren](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+# <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
 ![Azure AD-rollen: waarschuwingen in het deel venster waarschuwingen en de ernst](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
@@ -219,7 +219,7 @@ In deze sectie vindt u alle beveiligings waarschuwingen voor Azure AD-rollen, sa
 | **Waarom krijg ik deze waarschuwing?** | Meerdere activeringen naar dezelfde bevoorrechte rol door dezelfde gebruiker is een aantekening van een aanval. |
 | **Hoe kunt u het probleem oplossen?** | Controleer de gebruikers in de lijst en zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor de bijbehorende rol lang genoeg is ingesteld om hun taken uit te voeren. |
 | **Preventie** | Zorg ervoor dat de [activerings duur](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen lang genoeg is ingesteld voor gebruikers om hun taken uit te voeren.</br>[Multi-factor Authentication vereisen](pim-how-to-change-default-settings.md) voor geprivilegieerde rollen met accounts die worden gedeeld door meerdere beheerders. |
-| **Actie voor het verkleinen van de portal** | N/A |
+| **Actie voor het verkleinen van de portal** | N.v.t. |
 | **Trigger** | Wordt geactiveerd als een gebruiker dezelfde geprivilegieerde rol meerdere keren binnen een opgegeven periode activeert. U kunt zowel de tijds periode als het aantal activeringen configureren. |
 | **Periode activering verlenging** | Met deze instelling geeft u in dagen, uren, minuten en seconden de periode op die u wilt gebruiken voor het bijhouden van verdachte vernieuwingen. |
 | **Aantal activerings verlengingen** | Met deze instelling bepaalt u het aantal activeringen, van 2 tot 100, op basis waarvan u een melding wilt ontvangen binnen het tijds bestek dat u hebt gekozen. U kunt deze instelling wijzigen door de schuif regelaar te verplaatsen of door een getal in het tekstvak te typen. |
