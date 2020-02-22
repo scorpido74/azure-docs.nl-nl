@@ -1,5 +1,5 @@
 ---
-title: Connectiviteits problemen met Azure-particuliere koppelingen oplossen
+title: Problemen met de connectiviteit van Azure Private Link oplossen
 description: Stapsgewijze instructies voor het vaststellen van de connectiviteit van particuliere koppelingen
 services: private-link
 documentationcenter: na
@@ -13,103 +13,103 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191044"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539464"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Verbindingsproblemen met Private Link-service oplossen
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Problemen met de connectiviteit van Azure Private Link oplossen
 
-Deze hand leiding bevat stapsgewijze instructies voor het valideren en diagnosticeren van de connectiviteit voor de installatie van uw persoonlijke koppelings service. 
+In dit artikel vindt u stapsgewijze richt lijnen voor het valideren en diagnosticeren van connectiviteit voor uw persoonlijke instellingen van Azure.
 
-Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage, Azure Cosmos DB en SQL Database) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen privé koppelings service maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. 
+Met de persoonlijke Azure-koppeling kunt u Azure Platform as a Service-Services (PaaS) openen, zoals Azure Storage, Azure Cosmos DB en Azure SQL Database, en Azure hostende klanten-of partner services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de service gaat over het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt ook uw eigen persoonlijke koppelings service in uw virtuele netwerk maken en deze privé leveren aan uw klanten.
 
-U kunt de service die wordt uitgevoerd achter Azure Standard Load Balancer inschakelen voor toegang tot persoonlijke koppelingen. Consumenten van uw service kunnen een persoonlijk eind punt in hun virtuele netwerk maken en dit koppelen aan deze service om het privé te benaderen.
+U kunt uw service inschakelen die wordt uitgevoerd achter de standaardlaag van Azure Load Balancer voor toegang tot persoonlijke koppelingen. Consumenten van uw service kunnen een persoonlijk eind punt in hun virtuele netwerk maken en dit koppelen aan deze service om het privé te benaderen.
 
-Hier vindt u de verbindings scenario's die beschikbaar zijn voor de service private link
-- virtueel netwerk uit dezelfde regio 
+Hier volgen de verbindings scenario's die beschikbaar zijn met een persoonlijke koppeling:
+
+- virtueel netwerk uit dezelfde regio
 - regionaal peered virtuele netwerken
 - wereld wijd gekoppelde virtuele netwerken
-- on-premises klant via VPN-of Express route-circuits
+- On-premises klant via VPN-of Azure ExpressRoute-circuits
 
 ## <a name="deployment-troubleshooting"></a>Problemen met implementatie oplossen
 
 Lees de informatie over het [uitschakelen van netwerk beleid op de privé koppelings service](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) voor het oplossen van problemen waarbij u het bron-IP-adres niet kunt selecteren in het subnet van uw keuze voor uw persoonlijke koppelings service.
 
-Zorg ervoor dat de instelling **privateLinkServiceNetworkPolicies** is uitgeschakeld voor het subnet waarvoor u het bron-IP-adres selecteert.
+Zorg ervoor dat de instelling **privateLinkServiceNetworkPolicies** is uitgeschakeld voor het subnet waarmee u het bron-IP-adres selecteert.
 
-## <a name="diagnosing-connectivity-problems"></a>Verbindings problemen vaststellen
+## <a name="diagnose-connectivity-problems"></a>Verbindings problemen vaststellen
 
-Als u verbindings problemen ondervindt met het instellen van uw persoonlijke koppeling, gaat u naar de onderstaande stappen om ervoor te zorgen dat alle gebruikelijke configuraties naar verwachting worden uitgevoerd.
+Als u verbindings problemen ondervindt met het instellen van uw persoonlijke koppelingen, lees dan deze stappen om ervoor te zorgen dat alle gebruikelijke configuraties naar verwachting worden uitgevoerd.
 
-1. Controleer de configuratie van de service voor persoonlijke koppelingen door te bladeren door de resource 
+1. Bekijk de configuratie van de persoonlijke koppeling door te bladeren door de resource.
 
-    a) Ga naar het **persoonlijke koppelings centrum**
+    a. Ga naar het **persoonlijke koppelings centrum**.
 
       ![Persoonlijk koppelings centrum](./media/private-link-tsg/private-link-center.png)
 
-    b) Selecteer **persoonlijke koppelings Services** in het navigatie deel venster links
+    b. Selecteer **privé link services**in het linkerdeel venster.
 
       ![Services voor persoonlijke koppelingen](./media/private-link-tsg/private-link-service.png)
 
-    c) filter en selecteer de persoonlijke koppelings service die u wilt diagnosticeren
+    c. Filter en selecteer de persoonlijke koppelings service die u wilt diagnosticeren.
 
-    d) de verbindingen met het privé-eind punt controleren
-     - Zorg ervoor dat het persoonlijke eind punt waarvan u verbinding zoekt, wordt weer gegeven met de status **goedgekeurd** verbinding. 
-     - Als de bewerking **in behandeling**is, selecteert u deze en keurt u deze goed. 
+    d. Controleer de verbindingen van het privé-eind punt.
+     - Zorg ervoor dat het persoonlijke eind punt waarvan u verbinding zoekt, wordt vermeld met een **goedgekeurde** verbindings status.
+     - Als de status **in behandeling**is, selecteert u deze en keurt u deze goed.
 
        ![Verbindingen met privé-eind punten](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - Ga naar het persoonlijke eind punt waarmee u verbinding maakt door te klikken op de naam. Zorg ervoor dat de status van de verbinding **goed**wordt weer gegeven.
+     - Ga naar het persoonlijke eind punt waarvan u verbinding maakt door de naam te selecteren. Zorg ervoor dat de verbindings status wordt weer gegeven als **goedgekeurd**.
 
        ![Overzicht van de verbinding met het persoonlijke eind punt](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
-     - Zodra beide zijden zijn goedgekeurd, kunt u de connectiviteit opnieuw proberen.
+     - Nadat beide zijden zijn goedgekeurd, kunt u de connectiviteit opnieuw proberen.
 
-    e) de **alias** van het tabblad Overzicht en de **resource-id** op het tabblad Eigenschappen controleren 
-     - Zorg ervoor dat de **alias/resource-id** overeenkomt met de **alias/resource-id** die u gebruikt om een persoonlijk eind punt te maken voor deze service. 
+    e. Controleer de **alias** op het tabblad **overzicht** en de **resource-id** op het tabblad **Eigenschappen** .
+     - Zorg ervoor dat de gegevens van de **alias** en de **bron-id** overeenkomen met de **alias** en de **resource-id** die u gebruikt om een persoonlijk eind punt te maken voor deze service.
 
-       ![Alias controleren](./media/private-link-tsg/pls-overview-pane-alias.png)
+       ![Alias gegevens verifiëren](./media/private-link-tsg/pls-overview-pane-alias.png)
 
-       ![Resource-ID verifiëren](./media/private-link-tsg/pls-properties-pane-resourceid.png)
+       ![Informatie over de resource-ID controleren](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f) zicht baarheid van de beoordeling (sectie Overzicht)
-     - Zorg ervoor dat uw abonnement onder het **zichtbaarheids** bereik valt
+    f. Bekijk de **zichtbaarheids** informatie op het tabblad **overzicht** .
+     - Zorg ervoor dat uw abonnement onder het **zichtbaarheids** bereik valt.
 
-       ![Zicht baarheid controleren](./media/private-link-tsg/pls-overview-pane-visibility.png)
+       ![Zichtbaarheids gegevens controleren](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g) Lees Load Balancer (overzicht) informatie
-     - U kunt navigeren naar load balancer door te klikken op load balancer koppeling
+    g. Bekijk de gegevens van de **Load Balancer** op het tabblad **overzicht** .
+     - U kunt naar de load balancer gaan door de load balancer koppeling te selecteren.
 
-       ![Load Balancer controleren](./media/private-link-tsg/pls-overview-pane-ilb.png)
+       ![Gegevens van de Load Balancer controleren](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
-     - Zorg ervoor dat Load Balancer instellingen zijn geconfigureerd volgens uw verwachtingen
-       - Frontend-IP-configuratie controleren
-       - Back-end-Pools controleren
-       - Taakverdelings regels bekijken
+     - Zorg ervoor dat de load balancer-instellingen zijn geconfigureerd volgens uw verwachtingen.
+       - Controleer de **frontend-IP-configuratie**.
+       - Controleer de **back-end-Pools**.
+       - Controleer de **taakverdelings regels**.
 
-       ![Load Balancer eigenschappen controleren](./media/private-link-tsg/pls-ilb-properties.png)
+       ![load balancer eigenschappen controleren](./media/private-link-tsg/pls-ilb-properties.png)
 
-     - Zorg ervoor dat Load Balancer volgens bovenstaande instellingen werkt
-       - Selecteer een virtuele machine in een ander subnet dan het subnet waar Load Balancer back-end-pool beschikbaar is
-       - Probeer de load balancer front-end van de virtuele machine te openen
-       - Als de verbinding maakt met de back-end-groep volgens de regels voor taak verdeling, is uw load balancer operationeel
-       - U kunt ook de Load Balancer metriek door Azure Monitor bekijken om te zien of gegevens stromen via load balancer
+     - Zorg ervoor dat de load balancer werkt volgens de vorige instellingen.
+       - Selecteer een virtuele machine in een ander subnet dan het subnet waar de back-end-pool van load balancer beschikbaar is.
+       - Probeer toegang te krijgen tot de load balancer front-end vanaf de vorige VM.
+       - Als de verbinding wordt gemaakt met de back-end-pool op basis van de regels voor taak verdeling, is uw load balancer operationeel.
+       - U kunt ook de load balancer metriek door Azure Monitor bekijken om te zien of gegevens via de load balancer stromen.
 
-2. [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) gebruiken om gegevens te controleren, loopt stroom
+1. Gebruik [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) om te zien of gegevens stromen.
 
-    a) op de SErvice resource van de persoonlijke koppeling selecteert u **metrische gegevens**
-     - **Bytes-in** -of **-byte-out** selecteren
-     - De gegevens worden gestroomd wanneer wordt geprobeerd verbinding te maken met de persoonlijke koppelings service. Er wordt een vertraging van ongeveer 10 minuten verwacht.
+    a. Selecteer **metrische gegevens**op de bron van de persoonlijke koppelings service.
+     - Selecteer **bytes in** of **uitgaande bytes**.
+     - Controleer of de gegevens stroom lopen wanneer u verbinding probeert te maken met de persoonlijke koppelings service. Er wordt een vertraging van ongeveer 10 minuten verwacht.
 
        ![De metrische gegevens van de service voor persoonlijke koppelingen controleren](./media/private-link-tsg/pls-metrics.png)
 
-3. Neem contact op met het [ondersteunings](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) team van Azure als uw probleem nog steeds niet is opgelost en er nog steeds een verbindings probleem is 
+1. Neem contact op met het [ondersteunings](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) team van Azure als uw probleem nog steeds niet is opgelost en er nog een probleem is met de verbinding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
  * [Een service voor persoonlijke koppelingen maken](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
-
- * [Gids voor probleem oplossing voor privé-eind punten](troubleshoot-private-endpoint-connectivity.md)
+ * [Probleemoplossings gids voor Azure private Endpoint](troubleshoot-private-endpoint-connectivity.md)

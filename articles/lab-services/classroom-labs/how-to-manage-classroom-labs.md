@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264828"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539447"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
@@ -41,6 +41,9 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     6. Selecteer **Opslaan**.
 
         ![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > U ziet een optie voor het selecteren van een locatie voor uw Lab als het lab-account zodanig is geconfigureerd dat [Lab Creator de optie Lab-locatie kan kiezen](allow-lab-creator-pick-lab-location.md) . 
 4. Geef op de pagina **referenties voor virtuele machine** standaard referenties op voor alle virtuele machines in het lab.
     1. Geef de **naam van de gebruiker** op voor alle virtuele machines in het lab.
     2. Geef het **wachtwoord** voor de gebruiker op. 
@@ -52,12 +55,14 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
         Een docent kan ervoor kiezen om hetzelfde wacht woord te gebruiken voor alle virtuele machines in de test omgeving of studenten toestaan wacht woorden in te stellen voor hun virtuele machines. Deze instelling is standaard ingeschakeld voor alle Windows-en Linux-installatie kopieën, met uitzonde ring van Ubuntu. Wanneer u **Ubuntu** VM selecteert, wordt deze instelling uitgeschakeld, zodat de studenten wordt gevraagd een wacht woord in te stellen wanneer ze zich voor de eerste keer aanmelden.  
 
         ![Nieuw Lab-venster](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > Noteer de gebruikersnaam en het wachtwoord. Deze worden niet opnieuw weergegeven.    
     4. Selecteer vervolgens **volgende** op de pagina **referenties voor de virtuele machine** . 
-5. Voer op de pagina **Lab-beleid** het aantal uren in dat is toegewezen aan elke gebruiker (**quotum voor elke gebruiker**) buiten de geplande tijd voor het lab en selecteer vervolgens **volt ooien**. 
+5. Voer de volgende stappen uit op de pagina **Lab-beleid** :
+    1. Voer het aantal uren in dat is toegewezen aan elke gebruiker (**quotum voor elke gebruiker**) buiten de geplande tijd voor het lab. 
+    2. Voor de optie voor het **automatisch afsluiten van virtuele machines** geeft u op of u wilt dat de virtuele machine automatisch wordt afgesloten wanneer de gebruiker de verbinding verbreekt. U kunt ook opgeven hoe lang de virtuele machine moet wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten. Zie voor meer informatie [automatisch afsluiten van Vm's inschakelen bij het verbreken](how-to-enable-shutdown-disconnect.md)van de verbinding.
+    3. Selecteer vervolgens **volt ooien**. 
 
-    ![Quotum voor elke gebruiker](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![Quotum voor elke gebruiker](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. Het volgende scherm wordt weer gegeven met de status van het maken van een VM-sjabloon. Het maken van de sjabloon in het lab duurt maximaal 20 minuten. 
 
     ![Status van het maken van de sjabloon-VM](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -90,9 +95,9 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     2. Als u alle Vm's tegelijk wilt starten, selecteert u **Alles starten** op de werk balk. 
     3. Als u een specifieke virtuele machine wilt starten, selecteert u de pijl-omlaag in de **status**en selecteert u vervolgens **starten**. U kunt ook een virtuele machine starten door een virtuele machine in de eerste kolom te selecteren en vervolgens te klikken op **Start** op de werk balk.                
 
-### <a name="vm-sizes"></a>VM-grootten  
+### <a name="vm-sizes"></a>Formaten van virtuele machines  
 
-| Grootte | Cores | RAM | Beschrijving | 
+| Grootte | Kerngeheugens | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Deze grootte is het meest geschikt voor de opdracht regel, de webbrowser openen, webservers met weinig verkeer, kleine tot middel grote data bases. |
 | Middelgroot | 4 | 7 GB | Deze grootte is het meest geschikt voor relationele data bases, caching in het geheugen en analyse | 

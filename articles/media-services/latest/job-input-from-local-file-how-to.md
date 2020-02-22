@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: a91305f1c5bfb50e0354dc0054d1a149182d921f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c5acda0ccec409ec06d0f3f2226b9819e3f130c7
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888441"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538410"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Een taak invoer maken op basis van een lokaal bestand
 
@@ -34,7 +34,7 @@ De volgende code laat zien hoe u een invoer element maakt en dit als invoer voor
 
 Met het volgende code fragment wordt een uitvoer element gemaakt als dit nog niet bestaat:
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAssetAsync)]
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 Met het volgende code fragment wordt een coderings taak verzonden:
 

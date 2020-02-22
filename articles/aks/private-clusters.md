@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932597"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544229"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Een persoonlijk Azure Kubernetes service-cluster maken (preview)
 
@@ -31,13 +31,33 @@ Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes s
 * De Azure CLI-versie 2.0.77 of hoger en de Azure CLI AKS preview-extensie versie 0.4.18
 
 ## <a name="currently-supported-regions"></a>Momenteel ondersteunde regio's
+
+* Australië - oost
+* Australië - zuidoost
+* Brazilië - zuid
+* Canada - midden
+* Canada - oost
+* Cenral
+* Azië - oost
+* VS - oost
+* VS - oost 2
+* VS-Oost 2 EUAP
+* Frankrijk - centraal
+* Duitsland - noord
+* Japan - oost
+* Japan - west
+* Korea - centraal
+* Korea - zuid
+* VS - noord-centraal
+* Europa - noord
+* Europa - noord
+* VS - zuid-centraal
+* Verenigd Koninkrijk Zuid
+* Europa -west
 * VS - west
 * VS - west 2
 * VS - oost 2
-* Canada-Midden
-* Europa - noord
-* Europa - west
-* Australië - Oost
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>De nieuwste Azure CLI AKS preview-extensie installeren
 

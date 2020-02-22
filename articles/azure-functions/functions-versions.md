@@ -3,12 +3,12 @@ title: Overzicht van Azure Functions runtime versies
 description: Azure Functions ondersteunt meerdere versies van de runtime. Leer over de verschillen tussen deze versies en hoe de juiste te kiezen.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290373"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539498"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
 
@@ -38,7 +38,7 @@ Zie voor meer informatie [Ondersteunde talen](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Uitvoeren op een specifieke versie
 
-Standaard worden functie-apps die zijn gemaakt in de Azure Portal en door de Azure CLI ingesteld op versie 2. x. U kunt deze versie naar wens wijzigen. U kunt de runtime versie alleen wijzigen in 1. x nadat u de functie-app hebt gemaakt, maar voordat u functies toevoegt.  Verplaatsen tussen 2. x en 3. x is toegestaan, zelfs bij apps met functies, maar het wordt nog steeds aanbevolen om eerst te testen in een nieuwe app.
+Standaard worden functie-apps die zijn gemaakt in de Azure Portal en door de Azure CLI ingesteld op versie 3. x. U kunt deze versie naar wens wijzigen. U kunt de runtime versie alleen wijzigen in 1. x nadat u de functie-app hebt gemaakt, maar voordat u functies toevoegt.  Verplaatsen tussen 2. x en 3. x is toegestaan, zelfs bij apps met functies, maar het wordt nog steeds aanbevolen om eerst te testen in een nieuwe app.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migreren van 1. x naar latere versies
 
@@ -62,15 +62,15 @@ In versie 2.x zijn de volgende wijzigingen  aangebracht:
 
 * De runtime versie 2.x bevat geen ingebouwde ondersteuning voor webhook-providers. Deze wijziging is doorgevoerd om de prestaties te verbeteren. U kunt HTTP-triggers blijven gebruiken als eind punten voor webhooks.
 
-* Het configuratiebestand van de host (host.json) moet leeg zijn of de tekenreeks `"version": "2.0"` bevatten.
+* Het configuratie bestand voor de host (host. json) moet leeg zijn of de teken reeks `"version": "2.0"`hebben.
 
-* Voor het verbeteren van bewaking wordt het WebJobs-dashboard in de portal dat gebruik maakte van de instelling [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) vervangen door Azure Application Insights, dat gebruikmaakt van de [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) instelling. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
+* Ter verbetering van de bewaking wordt het webjobs-dash board in de portal, dat gebruikmaakt van de instelling [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) , vervangen door Azure-toepassing Insights, dat de instelling [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) gebruikt. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
-* Alle functies in een functie-app moeten dezelfde taal delen. Wanneer u een functie-app maakt, moet u een runtimestack voor de app kiezen. De runtimestack wordt opgegeven door de [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) waarde in de toepassingsinstellingen. Deze vereiste is toegevoegd om de footprint en de opstarttijd te verbeteren. Wanneer u lokaal ontwikkelt moet u ook deze instelling in het [bestand local.settings.json](functions-run-local.md#local-settings-file) opnemen.
+* Alle functies in een functie-app moeten dezelfde taal delen. Wanneer u een functie-app maakt, moet u een runtimestack voor de app kiezen. De runtime stack wordt opgegeven door de [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) waarde in toepassings instellingen. Deze vereiste is toegevoegd om de footprint en de opstarttijd te verbeteren. Wanneer u lokaal ontwikkelt, moet u deze instelling ook in het [bestand local. settings. json](functions-run-local.md#local-settings-file)toevoegen.
 
-* De standaardtime-out voor functies in een App Service-plan is gewijzigd naar 30 minuten. U kunt handmatig de time-out op onbeperkt instellen met behulp van de [functionTimeout](functions-host-json.md#functiontimeout) in host.json.
+* De standaardtime-out voor functies in een App Service-plan is gewijzigd naar 30 minuten. U kunt de time-out hand matig wijzigen in onbeperkt door gebruik te maken van de instelling [functionTimeout](functions-host-json.md#functiontimeout) in host. json.
 
-* HTTP-gelijktijdigheids vertragingen worden standaard geïmplementeerd voor verbruiks plan functies, met een standaard waarde van 100 gelijktijdige aanvragen per instantie. U kunt dit wijzigen via de [ `maxConcurrentRequests` ](functions-host-json.md#http) instelling in het bestand host.json.
+* HTTP-gelijktijdigheids vertragingen worden standaard geïmplementeerd voor verbruiks plan functies, met een standaard waarde van 100 gelijktijdige aanvragen per instantie. U kunt dit wijzigen in de instelling [`maxConcurrentRequests`](functions-host-json.md#http) in het bestand host. json.
 
 * Vanwege [.net core-beperkingen](https://github.com/Azure/azure-functions-host/issues/3414)is de ondersteuning F# voor script-functies (. FSX) verwijderd. Gecompileerde F#-functies (.fs) worden nog steeds ondersteund.
 
@@ -84,7 +84,7 @@ Azure Functions versie 3. x is uiterst achterwaarts compatibel met versie 2. x. 
 
 Hieronder vindt u de wijzigingen die u moet kennen voordat u een upgrade uitvoert van een 2. x-app naar 3. x.
 
-#### <a name="javascript"></a>JavaScript
+#### <a name="javascript"></a>Javascript
 
 * Uitvoer bindingen die via `context.done` of retour waarden zijn toegewezen, gedragen zich nu hetzelfde als de instelling in `context.bindings`.
 
@@ -119,7 +119,7 @@ U kunt de volgende updates gebruiken om apps te laten werken om de doel versies 
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio runtime-versies
 
-In Visual Studio selecteert u de runtime versie wanneer u een project maakt. Azure Functions-hulpprogram ma's voor Visual Studio ondersteunt de drie belang rijke runtime versies. De juiste versie wordt gebruikt voor foutopsporing en publicatie op basis van de instellingen voor het project. De versie-instellingen worden gedefinieerd in het `.csproj` bestand in de volgende eigenschappen:
+In Visual Studio selecteert u de runtime versie wanneer u een project maakt. Azure Functions-hulpprogram ma's voor Visual Studio ondersteunt de drie belang rijke runtime versies. De juiste versie wordt gebruikt voor foutopsporing en publicatie op basis van de instellingen voor het project. De versie-instellingen worden gedefinieerd in het `.csproj`-bestand in de volgende eigenschappen:
 
 ##### <a name="version-1x"></a>Versie 1. x
 
@@ -154,9 +154,9 @@ U kunt een bestaande functie die is gericht op 2. x, openen en naar 3. x verplaa
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS code en Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) wordt gebruikt voor het ontwikkelen vanaf de opdrachtregel en ook door de [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio Code. Als u wilt ontwikkelen met versie 3. x, installeert u versie 3. x van de kern Hulpprogramma's. Voor de ontwikkeling van versie 2. x is versie 2. x van de kern Hulpprogramma's vereist, enzovoort. Zie [install the Azure functions core tools](functions-run-local.md#install-the-azure-functions-core-tools)(Engelstalig) voor meer informatie.
+[Azure functions core tools](functions-run-local.md) wordt gebruikt voor de ontwikkeling van de opdracht regel en ook door de [Azure functions extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio code. Als u wilt ontwikkelen met versie 3. x, installeert u versie 3. x van de kern Hulpprogramma's. Voor de ontwikkeling van versie 2. x is versie 2. x van de kern Hulpprogramma's vereist, enzovoort. Zie [install the Azure functions core tools](functions-run-local.md#install-the-azure-functions-core-tools)(Engelstalig) voor meer informatie.
 
-Voor ontwikkeling in Visual Studio Code moet u mogelijk ook de gebruikersinstelling voor de `azureFunctions.projectRuntime` bijwerken zodat deze overeenkomt met de versie van de hulpprogramma's die zijn geïnstalleerd.  Deze instelling werkt ook de sjablonen en talen bij die worden gebruikt tijdens het maken van de functie-app.  Als u apps wilt maken in `~3` kunt u de instelling van de `azureFunctions.projectRuntime` gebruiker bijwerken naar `~3`.
+Voor Visual Studio code ontwikkeling moet u mogelijk ook de gebruikers instelling voor de `azureFunctions.projectRuntime` bijwerken zodat deze overeenkomt met de versie van de geïnstalleerde hulpprogram ma's.  Deze instelling werkt ook de sjablonen en talen bij die worden gebruikt tijdens het maken van de functie-app.  Als u apps wilt maken in `~3` kunt u de instelling van de `azureFunctions.projectRuntime` gebruiker bijwerken naar `~3`.
 
 ![Runtime-instelling Azure Functions extensie](./media/functions-versions/vs-code-version-runtime.png)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513555"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539379"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Over de Mobility-service voor VMware-Vm's en fysieke servers
 
@@ -21,6 +21,9 @@ Wanneer u herstel na nood gevallen instelt voor virtuele VMware-machines en fysi
 - [Push-installatie](#push-installation): site Recovery de mobiliteits agent op de server installeert wanneer de beveiliging is ingeschakeld via Azure Portal.
 - Hand matig installeren: u kunt de Mobility-service hand matig op elke computer installeren via de [gebruikers interface](#install-mobility-agent-through-ui) of de [opdracht prompt](#install-mobility-agent-through-command-prompt).
 - [Geautomatiseerde implementatie](vmware-azure-mobility-install-configuration-mgr.md): u kunt de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals Configuration Manager.
+
+> [!NOTE]
+> De Mobility-agent gebruikt ongeveer 6%-10% van het geheugen op de bron machines voor virtuele VMware-machines of fysieke computers.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Anti-virus op gerepliceerde computers
 
@@ -35,7 +38,7 @@ De push-installatie is een integraal onderdeel van de taak[replicatie inschakele
 
 Details van de werk stroom voor de push-installatie zijn beschreven in de volgende secties.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>Van [9,23-versie](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) en hoger
+### <a name="from-923-version-onwards"></a>Van [9,23-versie](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) en hoger
 
 Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uitgevoerd
 
@@ -55,7 +58,7 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 
 ## <a name="install-mobility-agent-through-ui"></a>Mobility agent installeren via de gebruikers interface
 
-### <a name="prerequisite"></a>Vereisten
+### <a name="prerequisite"></a>Vereiste
 
 - Zorg ervoor dat alle configuraties van servers onder de [ondersteunings matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
 - [Zoek het installatie programma](#locate-installer-files) op basis van het besturings systeem van de server.
@@ -73,7 +76,7 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 
     ![Pagina registratie van Mobility-service](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. Geef in details van de **Configuratie server**het IP-adres en de wachtwoordzin op die u hebt geconfigureerd.  
+5. Geef in details van de **Configuratie server**het IP-adres en de wachtwoordzin op die u hebt geconfigureerd.
 
     ![Pagina registratie van Mobility-service](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -83,7 +86,7 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 
 ## <a name="install-mobility-agent-through-command-prompt"></a>Mobility agent installeren via opdracht prompt
 
-### <a name="prerequisite"></a>Vereisten
+### <a name="prerequisite"></a>Vereiste
 
 - Zorg ervoor dat alle configuraties van servers onder de [ondersteunings matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
 - [Zoek het installatie programma](#locate-installer-files) op basis van het besturings systeem van de server.
@@ -116,16 +119,16 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 **Instelling** | **Details**
 --- | ---
 Gebruik | UnifiedAgent. exe/Role \<MS/MT >/InstallLocation \<installatie locatie >/platform "VmWare"/Silent
-Installatielogboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+Installatie logboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Verplichte installatie parameter. Hiermee geeft u op of de Mobility-service (MS) of het hoofd doel (MT) moet worden geïnstalleerd.
-/InstallLocation| Optionele parameter. Hiermee geeft u de installatie locatie van de Mobility-service (een map).
+/InstallLocation| Optionele para meter. Hiermee geeft u de installatie locatie van de Mobility-service (een map).
 /Platform | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd. **VMware** voor VMware-vm's/fysieke servers; **Azure** voor Azure-vm's.<br/><br/> Als u Azure-Vm's als fysieke machines behandelt, moet u **VMware**opgeven.
 /Silent| Optioneel. Hiermee geeft u op of het installatie programma moet worden uitgevoerd in de Stille modus.
 
 #### <a name="registration-settings"></a>Registratie-instellingen
 **Instelling** | **Details**
 --- | ---
-Gebruik | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
+Gebruik | UnifiedAgentConfigurator. exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
 Agent configuratie logboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Verplichte para meter. Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
 /PassphraseFilePath |  Verplicht. Locatie van de wachtwoordzin. Gebruik een geldig UNC-pad of een lokaal bestandspad.
@@ -156,7 +159,7 @@ Agent configuratie logboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentC
 --- | ---
 Gebruik | ./install-d \<installatie locatie >-r \<MS/MT->-v VmWare-q
 -r | Verplichte installatie parameter. Hiermee geeft u op of de Mobility-service (MS) of het hoofd doel (MT) moet worden geïnstalleerd.
--d | Optionele parameter. Hiermee geeft u de installatie locatie van de Mobility-service op:/usr/local/ASR
+-d | Optionele para meter. Hiermee geeft u de installatie locatie van de Mobility-service op:/usr/local/ASR
 -v | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd. **VMware** voor VMware-vm's/fysieke servers; **Azure** voor Azure-vm's.
 -q | Optioneel. Hiermee geeft u op of het installatie programma moet worden uitgevoerd in de Stille modus.
 
@@ -178,17 +181,17 @@ Ga naar de map%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository op de c
 
 **Installatie bestand** | **Besturings systeem (alleen 64-bits)**
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
-Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7. *
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
-Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enter prise Linux 6,4, 6,5
-Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14,04
-Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16,04 LTS-server
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
-Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
+Micro soft-ASR\_UA\*Windows\*release. exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
+Micro soft-ASR\_UA\*RHEL6-64\*release. tar. gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6.*
+Micro soft-ASR\_UA\*RHEL7-64\*release. tar. gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7. *
+Micro soft-ASR\_UA\*SLES12-64\*release. tar. gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3
+Micro soft-ASR\_UA\*SLES11-SP3-64\*release. tar. gz| SUSE Linux Enterprise Server 11 SP3
+Micro soft-ASR\_UA\*SLES11-SP4-64\*release. tar. gz| SUSE Linux Enterprise Server 11 SP4
+Micro soft-ASR\_UA\*OL6-64\*release. tar. gz | Oracle Enter prise Linux 6,4, 6,5
+Micro soft-ASR\_UA\*UBUNTU-14.04-64\*release. tar. gz | Ubuntu Linux 14,04
+Micro soft-ASR\_UA\*UBUNTU-16.04-64\*release. tar. gz | Ubuntu Linux 16,04 LTS-server
+Micro soft-ASR_UA\*DEBIAN7-64\*release. tar. gz | Debian 7
+Micro soft-ASR_UA\*DEBIAN8-64\*release. tar. gz | Debian 8
 
 ## <a name="next-steps"></a>Volgende stappen
 

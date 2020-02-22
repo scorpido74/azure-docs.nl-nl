@@ -1,5 +1,5 @@
 ---
-title: Problemen met connectiviteit van Azure private endpoint oplossen
+title: Verbindingsproblemen met het Azure-privé-eindpunt oplossen
 description: Stapsgewijze richt lijnen voor het vaststellen van de connectiviteit van privé-eind punten
 services: private-endpoint
 documentationcenter: na
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191070"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538531"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Verbindingsproblemen met privé-eindpunt oplossen
+# <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Verbindingsproblemen met het Azure-privé-eindpunt oplossen
 
-Deze hand leiding bevat stapsgewijze instructies voor het valideren en diagnosticeren van uw connectiviteits instellingen voor het particuliere eind punt. 
+In dit artikel vindt u stapsgewijze instructies voor het valideren en diagnosticeren van uw connectiviteits instellingen voor Azure private endpoint.
 
-Persoonlijk Azure-eind punt is een netwerk interface die u privé en veilig verbindt met een privé koppelings service. Met deze oplossing kunt u uw werk belastingen in azure beveiligen door particuliere verbinding te bieden met uw Azure-service resources vanuit uw virtuele netwerk. Dit brengt deze services effectief naar uw virtuele netwerk. 
+Persoonlijk Azure-eind punt is een netwerk interface die u privé en veilig verbindt met een privé koppelings service. Met deze oplossing kunt u uw werk belastingen in azure beveiligen door particuliere verbinding te bieden met uw Azure-service resources vanuit uw virtuele netwerk. Deze oplossing brengt deze services effectief naar uw virtuele netwerk.
 
-Hier vindt u de verbindings scenario's die beschikbaar zijn voor privé-eind punten 
-- virtueel netwerk uit dezelfde regio 
+Hier volgen de verbindings scenario's die beschikbaar zijn met een persoonlijk eind punt:
+
+- virtueel netwerk uit dezelfde regio
 - regionaal peered virtuele netwerken
 - wereld wijd gekoppelde virtuele netwerken
-- on-premises klant via VPN-of Express route-circuits
+- On-premises klant via VPN-of Azure ExpressRoute-circuits
 
-## <a name="diagnosing-connectivity-problems"></a>Verbindings problemen vaststellen 
-Ga naar de onderstaande stappen om ervoor te zorgen dat alle gebruikelijke configuraties naar verwachting verbindings problemen oplossen met de installatie van uw persoonlijke eind punt.
+## <a name="diagnose-connectivity-problems"></a>Verbindings problemen vaststellen 
 
-1. Bekijk de configuratie van het persoonlijke eind punt door te bladeren door de resource 
+Bekijk deze stappen om te controleren of alle gebruikelijke configuraties naar verwachting problemen oplossen met de installatie van uw persoonlijke eind punt.
 
-    a) Ga naar het **persoonlijke koppelings centrum**
+1. Bekijk de configuratie van het persoonlijke eind punt door te bladeren door de resource.
+
+    a. Ga naar het **persoonlijke koppelings centrum**.
 
       ![Persoonlijk koppelings centrum](./media/private-endpoint-tsg/private-link-center.png)
 
-    b) Selecteer persoonlijke eind punten in het navigatie deel venster links
+    b. Selecteer **privé-eind punten**in het linkerdeel venster.
     
       ![Privé-eind punten](./media/private-endpoint-tsg/private-endpoints.png)
 
-    c) filter en selecteer het persoonlijke eind punt dat u wilt diagnosticeren
+    c. Filter en selecteer het persoonlijke eind punt dat u wilt diagnosticeren.
 
-    d) Controleer het virtuele netwerk en de DNS-gegevens
+    d. Controleer de informatie over het virtuele netwerk en de DNS.
+     - Controleer of de verbindings status is **goedgekeurd**.
+     - Controleer of de virtuele machine verbinding heeft met het virtuele netwerk dat als host fungeert voor de persoonlijke eind punten.
+     - Controleer of de FQDN-gegevens (kopie) en het persoonlijke IP-adres zijn toegewezen.
     
-     - De status van de verbinding valideren is **goedgekeurd**
-     - Zorg ervoor dat de virtuele machine verbinding heeft met het VNet dat als host fungeert voor de privé-eind punten
-     - Er zijn FQDN-gegevens (kopie) en privé-IP-adres toegewezen
+       ![Virtuele netwerk en DNS-configuratie](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-       ![VNet-en DNS-configuratie](./media/private-endpoint-tsg/vnet-dns-configuration.png)    
-    
-2. [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) gebruiken om gegevens te controleren, loopt stroom
+1. Gebruik [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) om te zien of gegevens stromen.
 
-    a) op de privé-eindpunt resource, selecteer **monitor**
-     - Selecteer gegevens-in of gegevens en controleer of de gegevens stromen wanneer er wordt geprobeerd verbinding te maken met het persoonlijke eind punt. Er wordt een vertraging van ongeveer 10 minuten verwacht.
+    a. Selecteer op de resource van het persoonlijke eind punt de optie **monitor**.
+     - Selecteer **gegevens in** of **uit de gegevens**. 
+     - Controleer of de gegevens stroomt wanneer u verbinding probeert te maken met het persoonlijke eind punt. Er wordt een vertraging van ongeveer 10 minuten verwacht.
     
        ![Telemetrie van privé-eind punt controleren](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-3. Problemen met VM-verbinding oplossen van **Network Watcher**
+1.  Gebruik **VM-verbinding oplossen van problemen** met Azure Network Watcher.
 
-    a) Selecteer de client-VM
+    a. Selecteer de client-VM.
 
-    b) Selecteer de sectie **problemen met verbinding oplossen** , tabblad **uitgaand verbinding**
+    b. Selecteer **verbinding oplossen**en selecteer vervolgens het tabblad **uitgaande verbindingen** .
     
       ![Uitgaande verbindingen Network Watcher-testen](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
     
-    c) Selecteer **Network Watcher gebruiken voor het traceren van de detail verbinding**
+    c. Selecteer **Network Watcher gebruiken voor gedetailleerde verbindings tracering**.
     
       ![Network Watcher verbindings problemen oplossen](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d) Selecteer **testen op FQDN**
-     - De FQDN van de persoonlijke eindpunt resource plakken
-     - Geef een poort*op (meestal 443 voor Azure Storage of Cosmos, 1336 voor SQL...* )
+    d. Selecteer **testen op FQDN**.
+     - Plak de FQDN van de persoonlijke eindpunt resource.
+     - Geef een poort op. Gebruik normaal gesp roken 443 voor Azure Storage of Azure Cosmos DB en 1336 voor SQL.
 
-    e) Klik op **testen** en valideer de test resultaten
+    e. Selecteer **testen**en valideer de test resultaten.
     
       ![Network Watcher-test resultaten](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
         
-4. De DNS-omzetting van de test resultaten moet hetzelfde persoonlijke IP-adres hebben dat is toegewezen aan het persoonlijke eind punt
+1. De DNS-omzetting van de test resultaten moet hetzelfde persoonlijke IP-adres hebben dat aan het persoonlijke eind punt is toegewezen.
 
-    a) als de DNS-instellingen onjuist zijn, gaat u als volgt te werk
-     - Privé zone gebruiken: 
-       - Zorg ervoor dat VNet van de client-VM is gekoppeld aan de privé zone
-       - Controleren of de Privé-DNS zone record bestaat, maken indien niet bestaande
-    
-     - Aangepaste DNS gebruiken:
-       - Controleer de DNS-instellingen van uw klant en controleer of de DNS-configuratie juist is.
-       Raadpleeg het [overzicht van privé-eind punten-DNS-configuratie](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration) voor hulp.
+    a. Als de DNS-instellingen onjuist zijn, voert u de volgende stappen uit:
+     - Als u een privé zone gebruikt: 
+       - Zorg ervoor dat het virtuele client-VM-netwerk is gekoppeld aan de privé zone.
+       - Controleer of de privé-DNS-zone record bestaat. Als deze niet bestaat, maakt u deze.
+     - Als u aangepaste DNS gebruikt:
+       - Controleer uw aangepaste DNS-instellingen en controleer of de DNS-configuratie juist is.
+       Zie [overzicht van privé-eind punten: DNS-configuratie](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)voor meer informatie.
 
-    b) als de connectiviteit mislukt vanwege NSG/Udr's
-     - Controleer de uitgaande regels voor NSG en maak de juiste regels voor uitgaande verbindingen om verkeer toe te staan
+    b. Als de verbinding mislukt als gevolg van netwerk beveiligings groepen (Nsg's) of door de gebruiker gedefinieerde routes:
+     - Controleer de uitgaande regels voor NSG en maak de juiste regels voor uitgaande verbindingen om verkeer toe te staan.
     
        ![NSG uitgaande regels](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
-5. Als de verbinding resultaten heeft gevalideerd, kan het connectiviteits probleem te maken hebben met andere aspecten zoals geheimen, tokens en wacht woorden op de toepassingslaag.
-   - In dit geval controleert u de configuratie van de persoonlijke koppelings resource die aan het persoonlijke eind punt is gekoppeld. Raadpleeg de [hand leiding voor het oplossen van problemen met persoonlijke koppelingen](troubleshoot-private-link-connectivity.md). 
+1. Als de verbinding resultaten heeft gevalideerd, kan het connectiviteits probleem te maken hebben met andere aspecten zoals geheimen, tokens en wacht woorden op de toepassingslaag.
+   - In dit geval controleert u de configuratie van de persoonlijke koppelings resource die aan het persoonlijke eind punt is gekoppeld. Zie voor meer informatie de Azure-oplossing voor het [oplossen van problemen met persoonlijke koppelingen](troubleshoot-private-link-connectivity.md).
 
-6. Neem contact op met het [ondersteunings](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) team van Azure als uw probleem nog steeds niet is opgelost en er nog steeds een verbindings probleem is 
+1. Neem contact op met het [ondersteunings](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) team van Azure als uw probleem nog steeds niet is opgelost en er nog een probleem is met de verbinding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
  * [Een persoonlijk eind punt maken op het bijgewerkte subnet (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
-
- * [Gids voor probleem oplossing voor persoonlijke koppelingen](troubleshoot-private-link-connectivity.md)
+ * [Probleemoplossings gids voor persoonlijke koppelingen van Azure](troubleshoot-private-link-connectivity.md)

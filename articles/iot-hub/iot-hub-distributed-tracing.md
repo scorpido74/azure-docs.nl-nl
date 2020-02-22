@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212486"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539532"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -267,7 +267,7 @@ AzureDiagnostics
 
 Voorbeeld logboeken, zoals weer gegeven door Log Analytics:
 
-| TimeGenerated | OperationName | Category | Niveau | CorrelationId | DurationMs | Eigenschappen |
+| TimeGenerated | OperationName | Categorie | Niveau | CorrelationId | DurationMs | Eigenschappen |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informatief | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
@@ -308,8 +308,8 @@ Als de functie voor gedistribueerde tracering voor IoT Hub is ingeschakeld, volg
 1. Het IoT-apparaat verzendt het bericht naar IoT Hub.
 1. Het bericht arriveert bij de IoT hub-gateway.
 1. IoT Hub zoekt naar de `tracestate` in de eigenschappen van de bericht toepassing en controleert of het de juiste indeling heeft.
-1. Als dit het geval is, IoT Hub genereert en registreert de `trace-id` en `span-id` om Diagnostische logboeken te Azure Monitor in de categorie `DiagnosticIoTHubD2C`.
-1. Zodra de verwerking van het bericht is voltooid, wordt door IoT Hub een nieuwe `span-id` gegenereerd en wordt dit samen met de bestaande `trace-id` onder de categorie `DiagnosticIoTHubIngress`.
+1. Als dit het geval is, genereert IoT Hub een wereld wijd unieke `trace-id` voor het bericht, een `span-id` voor de ' hop ' en worden ze geregistreerd om Diagnostische logboeken te Azure Monitor in de bewerking `DiagnosticIoTHubD2C`.
+1. Zodra de verwerking van het bericht is voltooid, wordt door IoT Hub een nieuwe `span-id` gegenereerd en wordt dit samen met de bestaande `trace-id` onder de bewerking `DiagnosticIoTHubIngress`.
 1. Als route ring is ingeschakeld voor het bericht, wordt het door IoT Hub naar het aangepaste eind punt geschreven en wordt een andere `span-id` met dezelfde `trace-id` in de categorie `DiagnosticIoTHubEgress`geregistreerd.
 1. De bovenstaande stappen worden herhaald voor elk gegenereerd bericht.
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522336"
+ms.locfileid: "77538172"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -1448,12 +1448,13 @@ Als u een toepassing bouwt die wordt gebruikt door meer dan één Tenant, kunt u
 ### <a name="gallery-onboarding-checklist"></a>Controle lijst voor onboarding van galerie
 Volg de onderstaande controle lijst om ervoor te zorgen dat uw toepassing voorbereid snelle en klanten een soepele implementatie-ervaring hebben. De gegevens worden verzameld van u bij het onboarden naar de galerie. 
 > [!div class="checklist"]
-> * [Ondersteuning voor SCIM 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (vereist)
+> * Een [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) -gebruikers-en-groeps eindpunt ondersteunen (er is slechts één vereist, maar beide worden aanbevolen)
 > * Ten minste 25 aanvragen per seconde per Tenant ondersteunen (vereist)
-> * Ondersteuning voor schema detectie (aanbevolen)
 > * Ondersteuning voor de OAuth-autorisatie code subsidie of een lang bewaard token zoals hieronder wordt beschreven (vereist)
-> * Een technisch en ondersteunings punt tot stand brengen ter ondersteuning van de voor bereiding van de galerie met klant berichten (vereist)
+> * Een technisch en ondersteunings punt tot stand brengen om klanten te ondersteunen bij het voorbereiden van de galerie van berichten (vereist)
+> * Ondersteuning voor het bijwerken van meerdere groepslid maatschappen met één PATCH (aanbevolen) 
 > * Uw SCIM-eind punt openbaar documenteren (aanbevolen) 
+> * [Ondersteuning voor schema detectie](https://tools.ietf.org/html/rfc7643#section-6) (aanbevolen)
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorisatie voor het inrichten van connectors in de toepassings galerie

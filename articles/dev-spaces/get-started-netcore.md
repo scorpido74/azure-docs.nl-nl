@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een .NET core-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 1b7fbea6c572d220a29b7779e3ca665f01248220
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 353c8c1db5b5f7c6134388788799a6dccef69f9c
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867540"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538854"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en .NET core met Azure dev Spaces
 
@@ -23,7 +23,7 @@ In deze handleiding leert u het volgende:
 > [!Note]
 > Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
 
-## <a name="install-the-azure-cli"></a>Azure-CLI installeren
+## <a name="install-the-azure-cli"></a>Azure CLI installeren
 Azure Dev Spaces vereist minimale instellingen voor de lokale computer. De configuratie van uw ontwikkelomgeving wordt grotendeels opgeslagen in de cloud en kan worden gedeeld met andere gebruikers. Begin met het downloaden en uitvoeren van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI
@@ -34,7 +34,7 @@ az login
 ```
 
 > [!Note]
-> Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+> Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
 U kunt uw abonnementen bekijken door het volgende uit te voeren: 
@@ -98,7 +98,7 @@ U hebt nu een eenvoudige web-app die lokaal kan worden uitgevoerd. U gaat hier n
 1. Voer de volgende opdracht uit (controleer of **webfrontend** de huidige map is):
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Met de opdracht `azds prep` van Azure-CLI worden Docker- en Kubernetes-assets met standaardinstellingen gemaakt:
@@ -110,7 +110,7 @@ Met de opdracht `azds prep` van Azure-CLI worden Docker- en Kubernetes-assets me
 
 Op dit moment is het nog niet nodig om de volledige inhoud van deze bestanden te begrijpen. Wat u wel moet weten is dat **de dezelfde assets voor 'configuratie als code' in Docker en Kubernetes kunnen worden gebruikt van ontwikkeling tot productie, waardoor er meer consistentie tussen de verschillende omgevingen bestaat.**
  
-Er wordt met de opdracht `prep` ook een bestand met de naam `./azds.yaml` gegenereerd. Dit is het configuratiebestand voor Azure Dev Spaces. Dit vormt een aanvulling op de Docker- en Kubernetes-artefacten met extra configuraties die herhaalbare ontwikkelingsmogelijkheden in Azure bieden.
+Er wordt met de opdracht `./azds.yaml` ook een bestand met de naam `prep` gegenereerd. Dit is het configuratiebestand voor Azure Dev Spaces. Dit vormt een aanvulling op de Docker- en Kubernetes-artefacten met extra configuraties die herhaalbare ontwikkelingsmogelijkheden in Azure bieden.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Code schrijven en uitvoeren in Kubernetes
 We gaan onze code uitvoeren! In het terminalvenster voert u deze opdracht uit vanuit de **hoofdcodemap**, webfrontend:
@@ -249,7 +249,7 @@ In plaats van telkens als codewijzigingen zijn aangebracht een nieuwe containeri
 
 Vernieuw de web-app in de browser en ga naar de pagina Info. U ziet dat uw aangepaste bericht wordt weergegeven in de gebruikersinterface.
 
-**U beschikt nu over een methode om code snel te ontwikkelen en foutopsporing rechtstreeks uit te voeren in Kubernetes.** Hierna ziet u hoe u een tweede container kunt maken en aanroepen.
+**U hebt nu een methode voor het snel doorvoeren van code en foutopsporing rechtstreeks in Kubernetes.** Hierna ziet u hoe u een tweede container kunt maken en aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

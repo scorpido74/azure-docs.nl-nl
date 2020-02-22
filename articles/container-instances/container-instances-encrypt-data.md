@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934304"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544314"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
@@ -89,7 +89,7 @@ Het toegangs beleid wordt nu weer gegeven in het toegangs beleid van uw sleutel 
 > Het versleutelen van implementatie gegevens met een door de klant beheerde sleutel is beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon. Neem contact op met de ondersteuning van Azure als u problemen ondervindt.
 
 Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* Stel onder `resources``apiVersion` in op `2012-12-01`.
+* Stel onder `resources``apiVersion` in op `2019-12-01`.
 * Voeg onder de sectie eigenschappen van container groep van de implementatie sjabloon een `encryptionProperties`toe, die de volgende waarden bevat:
   * `vaultBaseUrl`: de DNS-naam van uw sleutel kluis kunt u vinden op de Blade overzicht van de sleutel kluis bron in de portal
   * `keyName`: de naam van de sleutel die u eerder hebt gegenereerd

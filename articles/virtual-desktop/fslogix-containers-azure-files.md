@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 49a63be8e8ac3752006d531f4541cb3c2904c3e3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472465"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539617"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
@@ -87,7 +87,7 @@ Virtueel bureau blad van Windows biedt volledige controle over de grootte, het t
 Om ervoor te zorgen dat uw virtuele Windows-bureau blad-omgeving de best practices volgt:
 
 - Azure Files Storage-account moet zich in dezelfde regio bevinden als de virtuele machines van de host.
-- Azure Files machtigingen moeten overeenkomen met de machtigingen die zijn beschreven in [vereisten-profiel containers](/fslogix/overview#requirements).
+- Azure Files machtigingen moeten overeenkomen met de machtigingen die zijn beschreven in [vereisten-profiel containers](/fslogix/fslogix-storage-config-ht).
 - Elke hostgroep moet zijn gebaseerd op hetzelfde type en dezelfde grootte VM op basis van dezelfde hoofd installatie kopie.
 - Elke VM van een hostgroep moet zich in dezelfde resource groep beheersen voor het beheren, schalen en bijwerken.
 - Voor optimale prestaties moeten de opslag oplossing en de FSLogix-profiel container zich op dezelfde locatie in het Data Center bevinden.

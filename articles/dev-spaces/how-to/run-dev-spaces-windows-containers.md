@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Meer informatie over het uitvoeren van Azure-ontwikkel ruimten op een bestaand cluster met Windows-containers
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Windows-containers
-ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: d376aca45778060c8913924fd2a44031109390d2
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720364"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538786"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interactie met Windows-containers met behulp van Azure dev Spaces
 
@@ -134,11 +134,11 @@ Ga naar de map `webfrontend` en gebruik de opdrachten `azds prep` en `azds up` o
 
 ```console
 cd ../../webfrontend-linux/
-azds prep --public
+azds prep --enable-ingress
 azds up
 ```
 
-De `azds prep --public`-opdracht genereert het helm-diagram en Dockerfiles voor uw toepassing.
+De `azds prep --enable-ingress`-opdracht genereert het helm-diagram en Dockerfiles voor uw toepassing.
 
 > [!TIP]
 > De [Dockerfile-en helm-grafiek](../how-dev-spaces-works.md#prepare-your-code) voor uw project wordt gebruikt door Azure dev Spaces om uw code te bouwen en uit te voeren, maar u kunt deze bestanden aanpassen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.

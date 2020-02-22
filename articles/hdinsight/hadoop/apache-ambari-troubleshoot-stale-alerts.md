@@ -1,18 +1,18 @@
 ---
 title: Verlopen waarschuwingen voor Apache Ambari in azure HDInsight
-description: Discussie en analyse van mogelijke oorzaken en oplossingen voor verlopen Apache Ambari-waarschuwingen in HDInsight.
+description: Discussie en analyse van mogelijke oorzaken en oplossingen voor Ambari verouderde waarschuwingen in HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f19d499b5e50fbb5030a0f396296eed46fc6eee3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722809"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539107"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scenario: Apache Ambari verouderde waarschuwingen in azure HDInsight
 
@@ -20,64 +20,70 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 ## <a name="issue"></a>Probleem
 
-Vanuit de Apache Ambari-gebruikers interface wordt er mogelijk een waarschuwing weer gegeven die vergelijkbaar is met de volgende afbeelding:
+In de Apache Ambari-gebruikers interface ziet u mogelijk een waarschuwing als volgt:
 
 ![Voor beeld van een verlopen Ambari-waarschuwing voor Apache](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
 ## <a name="cause"></a>Oorzaak
 
-Ambari agents voeren voortdurend status controles uit om de status van veel resources te controleren. Elke waarschuwing is geconfigureerd om te worden uitgevoerd op basis van vooraf gedefinieerde tijds intervallen. Na de uitvoering van elke waarschuwing rapporteert Ambari agents de status naar de Ambari-server. Op dit moment als Ambari-server detecteert dat een van de waarschuwingen niet tijdig wordt uitgevoerd, activeert het een ' Ambari server-waarschuwingen '. Er zijn verschillende redenen waarom een status controle niet kan worden uitgevoerd met het gedefinieerde interval:
+Ambari agents bewaken voortdurend de status van veel resources. *Waarschuwingen* kunnen worden geconfigureerd om u te informeren of specifieke cluster eigenschappen binnen de vooraf ingestelde drempel waarden vallen. Nadat elke resource controle is uitgevoerd, rapporteren Ambari-agents de status terug naar de Ambari-server en activeren ze een waarschuwing als er wordt voldaan aan de waarschuwings voorwaarde. Als een waarschuwing niet wordt gecontroleerd volgens het interval in het waarschuwings profiel, activeert de server een waarschuwing over *verlopen waarschuwingen van Ambari server* .
 
-* Wanneer hosts onder intensief gebruik (hoge CPU) worden gebruikt, is er mogelijk dat de Ambari-agent onvoldoende systeem bronnen krijgt om de waarschuwingen tijdig uit te voeren.
+Er zijn verschillende redenen waarom een status controle niet kan worden uitgevoerd met het gedefinieerde interval:
 
-* Het cluster is bezig met het uitvoeren van veel taken/Services tijdens zware belasting.
+* De hosts zijn zwaar gebruik (hoog CPU-gebruik), zodat de Ambari-agent niet genoeg systeem bronnen kan verkrijgen om de waarschuwingen op tijd uit te voeren.
 
-* Op weinig hosts in het cluster kunnen veel onderdelen worden gehost en daarom moet er een groot aantal waarschuwingen worden uitgevoerd. Als het aantal onderdelen groot is, is het mogelijk dat waarschuwings taken hun geplande intervallen kunnen missen
+* Het cluster is bezig met het uitvoeren van veel taken of services tijdens een lange belasting periode.
+
+* Een klein aantal hosts in het cluster fungeert als host voor veel onderdelen en is daarom vereist om veel waarschuwingen uit te voeren. Als het aantal onderdelen groot is, kunnen waarschuwings taken de geplande intervallen missen.
 
 ## <a name="resolution"></a>Oplossing
 
-### <a name="increase-alert-interval-time"></a>Waarschuwings interval duur verhogen
+Probeer de volgende methoden om problemen met Ambari verlopen waarschuwingen op te lossen.
 
-U kunt ervoor kiezen om de waarde van een afzonderlijk waarschuwings interval te verhogen op basis van de reactie tijd van het cluster en de belasting.
+### <a name="increase-the-alert-interval-time"></a>De tijd van waarschuwings interval verhogen
+
+U kunt de waarde van een afzonderlijk waarschuwings interval verhogen op basis van de reactie tijd van uw cluster en laden:
 
 1. Selecteer in de Apache Ambari-gebruikers interface het tabblad **waarschuwingen** .
-1. Selecteer de gewenste naam van de waarschuwings definitie.
+1. Selecteer de naam van de waarschuwings definitie die u wilt.
 1. Selecteer in de definitie **bewerken**.
-1. Wijzig de waarde van het **controle-interval** naar wens en selecteer vervolgens **Opslaan**.
+1. Verhoog de waarde voor het **controle-interval** en selecteer vervolgens **Opslaan**.
 
-### <a name="increase-alert-interval-time-for-ambari-server-alerts"></a>Waarschuwings interval duur verhogen voor waarschuwingen van Ambari-server
+### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>De waarschuwings interval tijd voor Ambari-server waarschuwingen verhogen
 
 1. Selecteer in de Apache Ambari-gebruikers interface het tabblad **waarschuwingen** .
 1. Selecteer in de vervolg keuzelijst **groepen** de optie **AMBARI standaard**.
-1. Selecteer alert **Ambari server-waarschuwingen**.
+1. Selecteer de waarschuwing **Ambari server waarschuwingen** .
 1. Selecteer in de definitie **bewerken**.
-1. Wijzig de waarde van het **controle-interval** naar wens.
-1. Wijzig de waarde van de **interval-multiplier** naar wens en selecteer vervolgens **Opslaan**.
+1. Verhoog de waarde voor het **controle-interval** .
+1. Verhoog de waarde voor **interval vermenigvuldiger** en selecteer vervolgens **Opslaan**.
 
-### <a name="disable-and-enable-the-alert"></a>De waarschuwing uitschakelen en inschakelen
+### <a name="disable-and-reenable-the-alert"></a>De waarschuwing uitschakelen en opnieuw inschakelen
 
-U kunt de waarschuwing uitschakelen en vervolgens weer inschakelen om eventuele verlopen waarschuwingen te verwijderen.
+Als u een verouderde waarschuwing wilt verwijderen, schakelt u deze opnieuw in:
 
 1. Selecteer in de Apache Ambari-gebruikers interface het tabblad **waarschuwingen** .
-1. Selecteer de gewenste naam van de waarschuwings definitie.
-1. Selecteer in de definitie nu **ingeschakeld** .
-1. Selecteer in **het pop-upvenster** bevestigen de optie **uitschakelen**.
-1. Wacht een paar seconden totdat alle waarschuwingen die op de pagina worden weer gegeven, zijn gewist.
-1. Selecteer in de definitie ' **uitgeschakeld** ' aan de rechter kant.
-1. Selecteer in **het pop-upvenster** bevestigen de optie **inschakelen**.
+1. Selecteer de naam van de waarschuwings definitie die u wilt.
+1. Selecteer de optie **ingeschakeld** in het uiterst rechtse deel van de gebruikers interface van de definitie.
+1. Selecteer in het pop-upvenster **bevestigen** de optie **uitschakelen**.
+1. Wacht een paar seconden totdat alle waarschuwingen die op de pagina worden weer gegeven, moeten worden gewist.
+1. Selecteer in de definitie **uitgeschakeld** in het uiterst rechtse deel van de gebruikers interface.
+1. Selecteer in het pop-upvenster **bevestigen** de optie **inschakelen**.
 
-### <a name="increase-alert-grace-time"></a>Respijt tijd van waarschuwing verhogen
+### <a name="increase-the-alert-grace-period"></a>De respijt periode van de waarschuwing verhogen
 
-Voordat de Ambari-agent rapporteert dat een geconfigureerde waarschuwing het schema mist, wordt er een respijt tijd toegepast. Zelfs als de waarschuwing de geplande tijd niet heeft gemist, maar is geactiveerd binnen de respijt tijd van de waarschuwing, wordt de verouderde waarschuwing niet geactiveerd.
+Er is een respijt periode voordat een Ambari-agent rapporteert dat een geconfigureerde waarschuwing het schema mist. Als de waarschuwing de geplande tijd niet heeft gemist, maar wel binnen de respijt periode is uitgevoerd, wordt de verouderde waarschuwing niet gegenereerd.
 
-De standaard waarde voor `alert_grace_period` is 5 seconden. Deze `alert_grace_period` instelling kan worden geconfigureerd in `/etc/ambari-agent/conf/ambari-agent.ini`. Voor hosts waarvan de verouderde waarschuwingen met regel matige tussen pozen worden geactiveerd, kunt u een waarde van 10 verhogen. Start de Ambari-agent opnieuw op
+De standaard waarde voor `alert_grace_period` is 5 seconden. U kunt deze instelling configureren in/etc/ambari-agent/conf/ambari-agent.ini. Voor hosts waarop verouderde waarschuwingen met regel matige tussen pozen optreden, kunt u proberen de waarde te verhogen naar 10. Start vervolgens de Ambari-agent opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+Als uw probleem hier niet is vermeld of als u het niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+* Krijg antwoorden van Azure-experts bij [Azure-Community-ondersteuning](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Verbinding maken met [@AzureSupport](https://twitter.com/azuresupport) op Twitter. Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Als u deze wilt weer geven, selecteert u Help ( **?** ) in het menu van de portal of opent u het deel venster **Help + ondersteuning** . Zie [een Azure-ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. 
+
+  Ondersteuning voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement. Technische ondersteuning is beschikbaar via de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 9be3c14bb435aaa1cddf008a27389bb3b1fdbc3d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3ee7a2ffed9c2c50829f237fdf4c8d3b5a6f1531
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493538"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538769"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
@@ -37,9 +37,9 @@ Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschik
 
 Om te profiteren van de GPU-mogelijkheden van Vm's uit de Azure N-serie, moeten de NVIDIA GPU-Stuur Programma's zijn geïnstalleerd.
 
-Met de [uitbrei ding NVIDIA GPU-stuur programma](/extensions/hpccompute-gpu-windows.md) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](/extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](/extensions/overview.md)voor algemene informatie over VM-extensies.
+Met de [uitbrei ding NVIDIA GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-gpu-windows) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](/azure/virtual-machines/extensions/overview)voor algemene informatie over VM-extensies.
 
-Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u [het stuur programma voor](/windows/n-series-driver-setup.md) de installatie van de Windows-of [n-Series GPU-](/linux/n-series-driver-setup) stuur programma voor Linux voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
+Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u [het stuur programma voor](/azure/virtual-machines/windows/n-series-driver-setup) de installatie van de Windows-of [n-Series GPU-](/azure/virtual-machines/linux/n-series-driver-setup) stuur programma voor Linux voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 

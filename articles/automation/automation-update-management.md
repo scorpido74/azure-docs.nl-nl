@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e7a86f3a709566bcf18241ce3c329c0355be2743
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443836"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539549"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -115,7 +115,7 @@ Voor Linux moet de computer toegang hebben tot een update opslagplaats. De updat
 
 Zie [log Analytics agent voor Linux](https://github.com/microsoft/oms-agent-for-linux)voor meer informatie over het installeren van de log Analytics-agent voor Linux en het downloaden van de meest recente versie. Zie [Windows-computers verbinden met Azure monitor](../log-analytics/log-analytics-windows-agent.md)voor meer informatie over het installeren van de log Analytics-agent voor Windows.
 
-Vm's die zijn gemaakt op basis van de installatie kopieën op Red Hat Enterprise Linux aanvraag (RHEL) die beschikbaar zijn in azure Marketplace, worden geregistreerd voor toegang tot de [Red Hat Update infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) die is geïmplementeerd in Azure. Elke andere Linux-distributie moet worden bijgewerkt vanuit de online bestands opslagplaats van de distributie met behulp van de ondersteunde methoden van de distributie.
+Vm's die zijn gemaakt op basis van de installatie kopieën op Red Hat Enterprise Linux aanvraag (RHEL) die beschikbaar zijn in azure Marketplace, worden geregistreerd voor toegang tot de [Red Hat Update infrastructure (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) die is geïmplementeerd in Azure. Elke andere Linux-distributie moet worden bijgewerkt vanuit de online bestands opslagplaats van de distributie met behulp van de ondersteunde methoden van de distributie.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -184,7 +184,7 @@ De volgende adressen zijn specifiek vereist voor Updatebeheer. Communicatie met 
 
 Voor Windows-computers moet u ook verkeer toestaan voor eind punten die vereist zijn voor Windows Update. U kunt een bijgewerkte lijst met vereiste eind punten vinden in [kwesties met betrekking tot http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Als u een lokale [Windows Update server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)hebt, moet u ook verkeer toestaan naar de server die is opgegeven in uw [WSUS-sleutel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
 
-Zie IP-adressen voor de vereiste eind punten voor [de RHUI content delivery servers](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) voor Red Hat Linux-machines. Raadpleeg de documentatie van uw provider voor andere Linux-distributies.
+Zie IP-adressen voor de vereiste eind punten voor [de RHUI content delivery servers](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) voor Red Hat Linux-machines. Raadpleeg de documentatie van uw provider voor andere Linux-distributies.
 
 Zie [Hybrid worker Role ports](automation-hybrid-runbook-worker.md#hybrid-worker-role)(Engelstalig) voor meer informatie over poorten die de Hybrid Runbook worker nodig heeft.
 

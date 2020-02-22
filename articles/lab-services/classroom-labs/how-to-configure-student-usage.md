@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169210"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539157"
 ---
 # <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 In dit artikel wordt beschreven hoe u gebruikers toevoegt aan het lab, ze aan het lab kunt toevoegen, het aantal uren bepaalt dat ze de virtuele machine kunnen gebruiken, en nog veel meer. 
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u gebruikers toevoegt aan het lab, ze aan he
     ![E-mailadressen van gebruikers toevoegen](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Selecteer **Opslaan**. U ziet de e-mailadressen van gebruikers en hun status (al dan niet geregistreerd) in de lijst. 
 
-    ![Lijst met gebruikers](../media/how-to-configure-student-usage/users-list-new.png)
+    ![Lijst met gebruikers](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > U ziet de namen van de gebruikers in de lijst nadat deze zijn geregistreerd bij het lab. De naam die in de lijst wordt weer gegeven, wordt samengesteld op basis van de voor-en achternaam van de gebruiker in de Azure Active Directory. 
@@ -101,11 +101,14 @@ U kunt ook de registratie koppeling vanuit de portal ophalen en deze verzenden m
 2. Selecteer **gereed**in het dialoog venster **gebruikers registratie** . 
 4. De **registratie koppeling** naar een student verzenden, zodat de student kan worden geregistreerd voor de klasse. 
 
-## <a name="view-users-registered-with-the-lab"></a>Gebruikers weergeven die zijn geregistreerd bij het lab
+## <a name="view-registered-users"></a>Geregistreerde gebruikers weer geven
 
-Selecteer **gebruikers** in het linkermenu om de lijst met gebruikers weer te geven die zijn geregistreerd bij het lab. 
+1. Navigeer naar de [Azure Lab Services-website](https://labs.azure.com). 
+2. Selecteer **Aanmelden** en voer uw referenties in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts.
+3. Op de pagina **Mijn labs** selecteert u het lab waarvoor u het gebruik wilt bijhouden. 
+4. Selecteer **Gebruikers** in het menu links of in de tegel **Gebruikers**. U ziet studenten die zijn geregistreerd bij uw lab.  
 
-![Lijst met gebruikers die zijn geregistreerd bij het lab](../media/how-to-configure-student-usage/students-registered.png)
+    ![Geregistreerde gebruikers](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Quota instellen voor gebruikers
 U kunt quota per gebruiker instellen met behulp van de volgende stappen: 
@@ -115,7 +118,7 @@ U kunt quota per gebruiker instellen met behulp van de volgende stappen:
 3. Geef op de pagina **quotum per gebruiker** het aantal uren op dat u wilt toewijzen aan elke gebruiker (student) buiten de geplande klasse tijd en selecteer vervolgens **Opslaan**.
 
     ![Quotum per gebruiker](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. U ziet nu de gewijzigde waarden op de werk balk: **quotum per gebruiker: \<aantal uur >** . 
+5. U ziet nu de gewijzigde waarden op de werk balk: **quotum per gebruiker: \<aantal uur >** en ook in de lijst gebruikers.
 
     ![Quotum per gebruiker: na](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

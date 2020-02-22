@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756393"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539362"
 ---
 # <a name="message-browsing"></a>Berichten doorzoeken
 
@@ -34,7 +34,7 @@ PEEK retourneert ook berichten die zijn vergrendeld en die momenteel worden verw
 
 ## <a name="peek-apis"></a>Api's bekijken
 
-De methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) en [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) zijn aanwezig in alle .net-en Java-client bibliotheken en op alle receiver-objecten: **MessageReceiver**, **MessageSession**, **QueueClient**en **SubscriptionClient**. Peek werkt op alle wacht rijen en abonnementen en de bijbehorende wacht rijen voor onbestelbare berichten.
+De methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) en [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) bestaan in alle .net-en Java-client bibliotheken en op alle receiver-objecten: **MessageReceiver**, **MessageSession**. Peek werkt op alle wacht rijen en abonnementen en de bijbehorende wacht rijen voor onbestelbare berichten.
 
 Wanneer herhaaldelijk wordt aangeroepen, worden alle berichten die in de wachtrij of het logboek voor het abonnement aanwezig zijn, in volg orde van Volg nummers opgesomd van het laagste beschik bare Volg nummer tot het hoogste niveau. Dit is de volg orde waarin berichten in wachtrij worden gezet en niet de volg orde waarin berichten uiteindelijk kunnen worden opgehaald.
 

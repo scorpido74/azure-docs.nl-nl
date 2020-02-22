@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: ddebde842b5c63dcd5a46fc13e38f2df710a229e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 070e2108afb22539501c0e1808593c95a26b4576
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485434"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539311"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -64,8 +64,8 @@ az vmss create \
     --lb mylb \
     --backend-pool-name mybackendpool
 ```
-    >[!NOTE]
-    >After the scale set has been created, the backend port cannot be modified for a load balancing rule used by a health probe of the load balancer. To change the port, you can remove the health probe by updating the Azure virtual machine scale set, update the port and then configure the health probe again. 
+>[!NOTE]
+> Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren. 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:

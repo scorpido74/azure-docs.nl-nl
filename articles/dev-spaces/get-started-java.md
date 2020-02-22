@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een Java-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 47948b0ce4ac0cb9a78552891e42d7634335839e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: cb79b60cdc1b9e417b402ffe8c29151f7790a390
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121761"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538598"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en Java met Azure dev Spaces
 
@@ -37,7 +37,7 @@ az login
 ```
 
 > [!Note]
-> Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+> Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
 U kunt uw abonnementen bekijken door het volgende uit te voeren: 
@@ -103,7 +103,7 @@ U hebt nu een eenvoudige web-app die lokaal kan worden uitgevoerd. U gaat hier n
 1. Voer de volgende opdracht uit (controleer of **webfrontend** de huidige map is):
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Met de opdracht `azds prep` van Azure-CLI worden Docker- en Kubernetes-assets met standaardinstellingen gemaakt:

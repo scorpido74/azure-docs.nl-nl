@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 0f61a0968922d009b8ba60d80dde132fedaece29
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134080"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539066"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Zelfstudie: Een leslokaallab instellen 
 In deze zelfstudie stelt u een leslokaallab in met virtuele machines die worden gebruikt door studenten in het leslokaal.  
@@ -72,7 +72,7 @@ In deze stap maakt u een Lab voor uw klasse in Azure.
     4. **Stop** de VM van de sjabloon.  
 
 ## <a name="publish-the-template-vm"></a>De sjabloon-VM publiceren
-In deze stap publiceert u de sjabloon-VM. Het publicatie proces maakt Lab-Vm's die in feite kopieën zijn van de sjabloon-VM. 
+In deze stap publiceert u de sjabloon-VM. Wanneer u de sjabloon-VM publiceert, worden in Azure Lab Services Vm's in het lab gemaakt met behulp van de sjabloon. Alle virtuele machines hebben dezelfde configuratie als de sjabloon.
 
 1. Selecteer op de pagina **sjabloon** de optie **publiceren** op de werk balk. 
 

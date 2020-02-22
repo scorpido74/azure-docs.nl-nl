@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906625"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539600"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> Zorg ervoor dat u een v2-opslag account voor algemeen gebruik maakt. Statische websites zijn niet beschikbaar in een ander type opslag account.
+> Zorg ervoor dat u een standaard-opslag account voor algemeen gebruik maakt. Statische websites zijn niet beschikbaar in een ander type opslag account.
 
 In deze zelfstudie wordt gebruikgemaakt van [Visual Studio Code](https://code.visualstudio.com/download), een gratis hulpprogramma voor programmeurs, waarmee de statische website kan worden gebouwd en in een Azure Storage-account kan worden geïmplementeerd.
 
@@ -45,14 +45,14 @@ Nadat u Visual Studio Code hebt geïnstalleerd, installeert u de previewextensie
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/) om aan de slag te gaan.
+Meld u aan bij [Azure Portal](https://portal.azure.com/) om aan de slag te gaan.
 
 ## <a name="configure-static-website-hosting"></a>Het hosten van een statische website configureren
 
 De eerste stap is het configureren van uw opslagaccount voor het hosten van een statische website in de Azure-portal. Wanneer u uw account configureert voor het hosten van een statische website, maakt Azure Storage automatisch een container met de naam *$web*. De *$web*-container bevat de bestanden voor uw statische website. 
 
-1. Open de [Azure-portal](https://portal.azure.com/) in uw webbrowser. 
-1. Zoek uw opslagaccount en geef het accountoverzicht weer.
+1. Open [Azure Portal](https://portal.azure.com/) in uw webbrowser. 
+1. Zoek uw opslagaccount op en geef het accountoverzicht weer.
 1. Selecteer **Statische website** om de configuratiepagina voor statische websites weer te geven.
 1. Selecteer **Ingeschakeld** om het hosten van statische websites in te schakelen voor het opslagaccount.
 1. Geef in het veld **Naam van het indexdocument** een standaardindexpagina van *index.html* op. De standaardindexpagina wordt weergegeven wanneer een gebruiker naar de hoofdmap van uw statische website navigeert.  

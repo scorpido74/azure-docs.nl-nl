@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 303f24ef6d934c0382bd8917833e3ec545f2a540
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776480"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538461"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure lente Cloud CI/CD met GitHub-acties
 
@@ -79,6 +79,7 @@ Maak het `.github/workflow/main.yml`-bestand in de opslag plaats:
 
 ```
 name: AzureSpringCloud
+on: push
 
 env:
   GROUP: <resource group name>
@@ -125,6 +126,7 @@ De opdracht AZ `run` maakt gebruik van de nieuwste versie van Azure CLI. Als er 
 Maak het github/workflow/Main. yml-bestand in de opslag plaats:
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -165,6 +167,7 @@ Een andere mogelijkheid is om de [maven-invoeg toepassing](https://docs.microsof
 
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -194,7 +197,7 @@ jobs:
         mvn azure-spring-cloud:deploy
 ```
 
-## <a name="run-the-workflow"></a>De werk stroom uitvoeren
+## <a name="run-the-workflow"></a>De werkstroom uitvoeren
 GitHub- **acties** moeten automatisch worden ingeschakeld nadat u `.github/workflow/main.yml` naar github hebt gepusht. De actie wordt geactiveerd wanneer u een nieuwe door Voer pusht. Als u dit bestand in de browser maakt, moet uw actie al worden uitgevoerd.
 
 Als u wilt controleren of de actie is ingeschakeld, klikt u op het tabblad **acties** op de pagina github-opslag plaats:

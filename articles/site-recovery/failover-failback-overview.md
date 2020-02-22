@@ -3,12 +3,12 @@ title: Over failover en failback in Azure Site Recovery
 description: Meer informatie over failover en fouten in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3c461d2de4f9ef8e8159c7b9c86f23a846421c5e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498278"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539515"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Over on-premises nood herstel failover/failback
 
@@ -37,8 +37,8 @@ Failover is een activiteit in twee fasen:
 - **Door voeren**: nadat u een failover hebt gecontroleerd, controleert u de virtuele machine in Azure:
     - Vervolgens kunt u de failover door voeren naar het geselecteerde herstel punt of een ander punt selecteren voor de door voer.
     - Na het door voeren van de failover kan het herstel punt niet meer worden gewijzigd.
-    
-    
+
+
 ## <a name="connect-to-azure-after-failover"></a>Verbinding maken met Azure na een failover
 
 Er zijn een aantal vereisten om verbinding te maken met de virtuele Azure-machines die na een failover zijn gemaakt met behulp van RDP/SSH.
@@ -54,12 +54,12 @@ Er zijn een aantal vereisten om verbinding te maken met de virtuele Azure-machin
 
 Site Recovery biedt verschillende opties voor failover.
 
-**Failover** | **Details** | **Recovery** | **Workflowconfiguraties**
+**Failover** | **Details** | **Gave** | **Workflowconfiguraties**
 --- | --- | --- | ---
 **Testfailover** | Wordt gebruikt voor het uitvoeren van een analyse die uw BCDR-strategie valideert, zonder gegevens verlies of downtime.| Hiermee maakt u een kopie van de virtuele machine in azure, zonder dat dit van invloed is op de continue replicatie of in uw productie omgeving. | 1. Voer een testfailover uit op één virtuele machine of op meerdere Vm's in een herstel plan.<br/><br/> 2. Selecteer een herstel punt dat u wilt gebruiken voor de testfailover.<br/><br/> 3. Selecteer een Azure-netwerk waarin de virtuele machine van Azure wordt geplaatst wanneer deze wordt gemaakt na een failover. Het netwerk wordt alleen gebruikt voor de testfailover.<br/><br/> 4. Controleer of de boren naar verwachting werkt. Met Site Recovery worden virtuele machines die in azure zijn gemaakt, automatisch opgeschoond tijdens de analyse.
 **Geplande failover-Hyper-V**  | Meestal gebruikt voor geplande uitval tijd.<br/><br/> De bron-Vm's worden afgesloten. De meest recente gegevens worden gesynchroniseerd voordat de failover wordt gestart. | Geen gegevens verlies voor de geplande werk stroom. | 1. het onderhouds venster voor uitval tijd plannen en gebruikers op de hoogte stellen.<br/><br/> 2. gebruikers gerichte apps offline halen.<br/><br/> 3. Start een geplande failover met het laatste herstel punt. De failover wordt niet uitgevoerd als de computer niet wordt afgesloten of als er fouten optreden.<br/><br/> 4. Controleer na de failover of de replica-VM van Azure actief is in Azure.<br/><br/> 5. Voer de failover door om te volt ooien. Met de actie door voeren worden alle herstel punten verwijderd.
 **Failover-Hyper-V** | Wordt doorgaans uitgevoerd als er sprake is van een niet-geplande onderbreking of als de primaire site niet beschikbaar is.<br/><br/> Sluit de virtuele machine eventueel af en synchroniseer de laatste wijzigingen voordat u de failover initieert.  | Mini maal gegevens verlies voor apps. | 1. Start uw BCDR-plan. <br/><br/> 2. Start een failover. Geef op of Site Recovery de virtuele machine moet afsluiten en synchroniseer/repliceer de meest recente wijzigingen voordat de failover wordt geactiveerd.<br/><br/> 3. u kunt een failover uitvoeren naar een aantal herstel punt opties, in de onderstaande tabel samenvatten.<br/><br/> Als u de optie voor het afsluiten van de virtuele machine niet inschakelt of als Site Recovery deze niet kunt afsluiten, wordt het laatste herstel punt gebruikt.<br/>De failover wordt uitgevoerd, zelfs als de computer niet kan worden afgesloten.<br/><br/> 4. na een failover controleert u of de replica-VM van Azure actief is in Azure.<br/> Indien nodig kunt u een ander herstel punt selecteren in het Bewaar venster van 24 uur.<br/><br/> 5. Voer de failover door om te volt ooien. Met de actie door voeren worden alle beschik bare herstel punten verwijderd.
-**Failover-VMware** | Wordt doorgaans uitgevoerd als er sprake is van een niet-geplande onderbreking of als de primaire site niet beschikbaar is.<br/><br/> Geef desgewenst op dat Site Recovery moet proberen om de virtuele machine af te sluiten en om definitieve wijzigingen te synchroniseren en te repliceren voordat de failover wordt gestart.  | Mini maal gegevens verlies voor apps. | 1. Start uw BCDR-plan. <br/><br/> 2. initieer een failover van Site Recovery. Geef op of Site Recovery moet proberen om het afsluiten van de virtuele machine te activeren en te synchroniseren voordat de failover wordt uitgevoerd.<br/> De failover wordt uitgevoerd, zelfs als de computers niet kunnen worden afgesloten.<br/><br/> 3. Controleer na de failover of de replica-VM van Azure actief is in Azure. <br/>Indien nodig kunt u een ander herstel punt selecteren in het Bewaar venster van 72 uur.<br/><br/> 5. Voer de failover door om te volt ooien. Met de actie door voeren worden alle herstel punten verwijderd.<br/> Voor virtuele Windows-machines Site Recovery de VMware-hulpprogram ma's uitgeschakeld tijdens de failover. 
+**Failover-VMware** | Wordt doorgaans uitgevoerd als er sprake is van een niet-geplande onderbreking of als de primaire site niet beschikbaar is.<br/><br/> Geef desgewenst op dat Site Recovery moet proberen om de virtuele machine af te sluiten en om definitieve wijzigingen te synchroniseren en te repliceren voordat de failover wordt gestart.  | Mini maal gegevens verlies voor apps. | 1. Start uw BCDR-plan. <br/><br/> 2. initieer een failover van Site Recovery. Geef op of Site Recovery moet proberen om het afsluiten van de virtuele machine te activeren en te synchroniseren voordat de failover wordt uitgevoerd.<br/> De failover wordt uitgevoerd, zelfs als de computers niet kunnen worden afgesloten.<br/><br/> 3. Controleer na de failover of de replica-VM van Azure actief is in Azure. <br/>Indien nodig kunt u een ander herstel punt selecteren in het Bewaar venster van 72 uur.<br/><br/> 5. Voer de failover door om te volt ooien. Met de actie door voeren worden alle herstel punten verwijderd.<br/> Voor virtuele Windows-machines Site Recovery de VMware-hulpprogram ma's uitgeschakeld tijdens de failover.
 
 ## <a name="failover-processing"></a>Failover-verwerking
 
@@ -85,6 +85,8 @@ Tijdens een failover kunt u een aantal opties voor herstel punten selecteren.
 **Nieuwste multi-VM-app-consistent** |  Deze optie is beschikbaar voor herstel plannen met een of meer Vm's waarvoor multi-VM-consistentie is ingeschakeld. Voor virtuele machines die deel uitmaken van een replicatie groep, wordt een failover uitgevoerd naar het meest recente algemene herstel punt van een toepassings consistente multi-VM. Er wordt een failover uitgevoerd voor andere Vm's naar het nieuwste toepassings consistente herstel punt.
 **Aangepast** | Gebruik deze optie voor het uitvoeren van een failover van een specifieke virtuele machine naar een bepaald herstel punt in de tijd. Deze optie is niet beschikbaar voor herstel plannen.
 
+> [!NOTE]
+> Herstel punten kunnen niet worden gemigreerd naar een andere Recovery Services kluis.
 
 ## <a name="reprotectionfailback"></a>Beveiliging/failback
 
@@ -136,17 +138,17 @@ Virtuele Hyper-V-machines opnieuw beveiligen en failback van Azure naar on-premi
 - U voert een geplande failback van Azure naar on-premises uit.
 - Er hoeven geen specifieke onderdelen te worden ingesteld voor de failback van Hyper-V-VM'S.
 - Tijdens een geplande failover kunt u opties selecteren om gegevens te synchroniseren voor de failback:
-    - **Gegevens synchroniseren vóór failover**: met deze optie wordt de uitval tijd voor virtuele machines geminimaliseerd wanneer de computers worden gesynchroniseerd zonder dat ze worden afgesloten. 
+    - **Gegevens synchroniseren vóór failover**: met deze optie wordt de uitval tijd voor virtuele machines geminimaliseerd wanneer de computers worden gesynchroniseerd zonder dat ze worden afgesloten.
         - Fase 1: Hiermee wordt een moment opname van de virtuele machine van Azure gemaakt en gekopieerd naar de on-premises Hyper-V-host. De machine blijft actief in Azure.
         - Fase 2: Hiermee wordt de virtuele machine van Azure afgesloten, zodat er geen nieuwe wijzigingen worden uitgevoerd. De laatste set Delta wijzigingen wordt overgedragen naar de on-premises server en de on-premises VM wordt gestart.
-    - **Gegevens alleen synchroniseren tijdens de failover**: deze optie is sneller omdat we verwachten dat het grootste deel van de schijf is gewijzigd en daarom geen controlesom berekeningen uitvoeren. Hiermee wordt de schijf gedownload. We raden u aan deze optie te gebruiken als de virtuele machine al een tijdje is uitgevoerd in azure, of als de on-premises virtuele machine is verwijderd.  
+    - **Gegevens alleen synchroniseren tijdens de failover**: deze optie is sneller omdat we verwachten dat het grootste deel van de schijf is gewijzigd en daarom geen controlesom berekeningen uitvoeren. Hiermee wordt de schijf gedownload. We raden u aan deze optie te gebruiken als de virtuele machine al een tijdje is uitgevoerd in azure, of als de on-premises virtuele machine is verwijderd.
 
 Meer [informatie](hyper-v-azure-failback.md) over Hyper-V-opnieuw beveiligen en failback.
 
 Wanneer u Azure-Vm's opnieuw beveiligt naar on-premises, kunt u opgeven dat u een failback wilt uitvoeren naar de oorspronkelijke locatie of naar een andere locatie.
 
 - **Herstel van de oorspronkelijke locatie**: dit is een failback van Azure naar dezelfde bron on-premises machine als deze bestaat. In dit scenario selecteert u een van de synchronisatie opties die zijn beschreven in de vorige procedure.
-- **Herstel naar een andere locatie**: als de on-premises machine niet bestaat, kunt u een failback uitvoeren van Azure naar een andere locatie. Wanneer u de Azure-VM opnieuw beveiligt naar on-premises, wordt de on-premises machine gemaakt. Met deze optie raden wij u aan de optie voor het synchroniseren van gegevens voor de failover te selecteren 
+- **Herstel naar een andere locatie**: als de on-premises machine niet bestaat, kunt u een failback uitvoeren van Azure naar een andere locatie. Wanneer u de Azure-VM opnieuw beveiligt naar on-premises, wordt de on-premises machine gemaakt. Met deze optie raden wij u aan de optie voor het synchroniseren van gegevens voor de failover te selecteren
 - [Bekijk](hyper-v-azure-failback.md) de vereisten en beperkingen voor locatie failback.
 
 
@@ -156,7 +158,7 @@ Nadat u de on-premises site niet meer hebt gemaakt, schakelt u **achterwaarts re
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Failover van [specifieke virtuele VMware-machines](vmware-azure-tutorial-failover-failback.md) 
+- Failover van [specifieke virtuele VMware-machines](vmware-azure-tutorial-failover-failback.md)
 - Failover van [specifieke virtuele Hyper-V-machines](hyper-v-azure-failover-failback-tutorial.md).
 - Een herstel plan [maken](site-recovery-create-recovery-plans.md) .
 - Failover [van vm's in een herstel plan](site-recovery-failover.md).

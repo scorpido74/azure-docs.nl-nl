@@ -1,29 +1,26 @@
 ---
 title: Share Point-bestanden-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Voeg beveiligde share point-gegevens bronnen aan uw Knowledge Base toe om de Knowledge Base te verrijken met vragen en antwoorden die kunnen worden beveiligd met Active Directory.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843289"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544161"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Een beveiligde share point-gegevens bron toevoegen aan uw Knowledge Base
 
-Voeg beveiligde share point-gegevens bronnen aan uw Knowledge Base toe om de Knowledge Base te verrijken met vragen en antwoorden die kunnen worden beveiligd met Active Directory.
+Voeg beveiligde share point-gegevens bronnen op basis van de Cloud toe aan uw kennis database om de Knowledge Base te verrijken met vragen en antwoorden die kunnen worden beveiligd met Active Directory.
 
 Wanneer u een beveiligd share point-document aan uw Knowledge Base toevoegt als QnA Maker Manager, moet u Active Directory machtigingen voor QnA Maker aanvragen. Zodra deze machtiging van de Active Directory Manager is ontvangen QnA Maker om toegang te krijgen tot share point, hoeft deze niet opnieuw te worden opgegeven. Elk volgend document toevoegen aan de Knowledge Base heeft geen autorisatie nodig als het zich in dezelfde share point-resource bevindt.
 
 Als de QnA Maker Knowledge Base manager niet de Active Directory Manager is, moet u met de Active Directory Manager communiceren om dit proces te volt ooien.
+
+## <a name="prerequisites"></a>Vereisten
+
+QnA Maker gebruikt Microsoft Graph voor machtigingen. Als uw share point on-premises is, kunt u niet extra heren uit share point omdat Microsoft Graph geen machtigingen kunt vaststellen.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Ondersteunde bestands typen toevoegen aan de Knowledge Base
 

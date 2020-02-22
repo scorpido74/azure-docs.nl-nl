@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 249cf7414143f59540d198bb460d8b215f6a7664
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756348"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538393"
 ---
 # <a name="message-deferral"></a>Berichten uitstellen
 
@@ -36,7 +36,7 @@ De API is [BrokeredMessage. defer](/dotnet/api/microsoft.servicebus.messaging.br
 
 Uitgestelde berichten blijven in de hoofd wachtrij, samen met alle andere actieve berichten (in tegens telling tot onbestelbare berichten in een subwachtrij), maar ze kunnen niet langer worden ontvangen met de normale receive/ReceiveAsync-functies. Uitgestelde berichten kunnen worden gedetecteerd via het [Bladeren door berichten](message-browsing.md) als een toepassing deze niet kan bijhouden.
 
-Als u een uitgesteld bericht wilt ophalen, is de eigenaar verantwoordelijk voor het onthouden van de [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) . Elke ontvanger die het Volg nummer van een uitgesteld bericht kent, kan het bericht later expliciet ontvangen met `Receive(sequenceNumber)`. Voor wacht rijen kunt u de [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)gebruiken, de onderwerp-abonnementen gebruiken de [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
+Als u een uitgesteld bericht wilt ophalen, is de eigenaar verantwoordelijk voor het onthouden van de [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) . Elke ontvanger die het Volg nummer van een uitgesteld bericht kent, kan het bericht later expliciet ontvangen met `Receive(sequenceNumber)`.
 
 Als een bericht niet kan worden verwerkt omdat een bepaalde resource voor de verwerking van dat bericht tijdelijk niet beschikbaar is, maar de verwerking van berichten niet samen vatting mag worden onderbroken, is het niet meer mogelijk om de **SequenceNumber** in een [gepland bericht](message-sequencing.md) te onthouden en het uitgestelde bericht opnieuw op te halen wanneer het geplande bericht binnenkomt. Als een Message Handler afhankelijk is van een Data Base voor alle bewerkingen en die data base tijdelijk niet beschikbaar is, moet deze geen uitstel gebruiken, maar in plaats daarvan de ontvangst van berichten samen onderbreken totdat de Data Base weer beschikbaar is.
 
