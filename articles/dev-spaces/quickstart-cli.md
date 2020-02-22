@@ -1,17 +1,17 @@
 ---
 title: Een toepassing ontwikkelen op Kubernetes
 services: azure-dev-spaces
-ms.date: 07/08/2019
+ms.date: 02/20/2020
 ms.topic: quickstart
 description: In deze Quick Start leert u hoe u Azure dev Spaces en de opdracht regel gebruikt voor het ontwikkelen van een toepassing op de Azure Kubernetes-service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867255"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538427"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Quick Start: een toepassing ontwikkelen op Kubernetes-Azure dev Spaces
 In deze handleiding leert u het volgende:
@@ -21,7 +21,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
@@ -76,7 +76,7 @@ Als u uw toepassing wilt uitvoeren op Azure dev Spaces, hebt u een Dockerfile-en
 Genereer de activa docker-en helm-grafiek voor het uitvoeren van de toepassing in Kubernetes met behulp van de `azds prep` opdracht:
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 U moet de `prep`-opdracht uitvoeren vanuit de map *dev-Spaces/samples/nodejs/Getting-Started/webfrontend* om de docker-en helm-grafiek elementen correct te genereren.

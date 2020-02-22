@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, Power shell, desired state Configuration, update beheer, bijhouden van wijzigingen, inventaris, runbooks, Python, grafisch, hybride
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a2551791426c246df278e09cea9cec64a6bc019f
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190309"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539294"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview-versie)
 
@@ -49,7 +49,7 @@ In de meeste gevallen moet de locatie die u selecteert bij het maken van het ins
 
 De volgende versies van het Windows-en Linux-besturings systeem worden officieel ondersteund voor de Azure Connected machine agent: 
 
-- Windows Server 2012 R2 en hoger
+- Windows Server 2012 R2 en hoger (inclusief Windows Server Core)
 - Ubuntu 16,04 en 18,04
 
 >[!NOTE]
@@ -65,6 +65,15 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 ### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
 Voordat u uw computers met Azure-Arc voor servers (preview) configureert, moet u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) controleren om het aantal machines te plannen dat moet worden verbonden.
+
+## <a name="tls-12-protocol"></a>TLS 1.2-protocol
+
+Om te zorgen voor de beveiliging van gegevens die onderweg zijn naar Azure, raden we u aan om de machine te configureren voor het gebruik van Transport Layer Security (TLS) 1,2. Er zijn oudere versies van TLS/Secure Sockets Layer (SSL) gevonden die kwetsbaar zijn en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**. 
+
+|Platform/taal | Ondersteuning | Meer informatie |
+| --- | --- | --- |
+|Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning. | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
+| Windows Server 2012 R2 en hoger | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.|
 
 ### <a name="networking-configuration"></a>Netwerk configuratie
 
@@ -130,6 +139,12 @@ U kunt het Azure Connected machine agent-pakket voor Windows en Linux downloaden
 >[!NOTE]
 >Tijdens deze preview-versie is slechts één pakket vrijgegeven, dat geschikt is voor Ubuntu 16,04 of 18,04.
 
+De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bijgewerkt naar de meest recente versie of automatisch afhankelijk van uw vereisten. Voor Windows kan de agent update automatisch worden uitgevoerd met behulp van Windows Update en voor Ubuntu, met behulp van het opdracht regel programma [apt](https://help.ubuntu.com/lts/serverguide/apt.html) .
+
+### <a name="agent-status"></a>Agent status
+
+De verbonden machine agent stuurt elke 5 minuten een regel matig heartbeat-bericht naar de service. Als er gedurende 15 minuten geen wordt ontvangen, wordt de computer als offline beschouwd en wordt de status automatisch gewijzigd in de **verbinding** met de portal. Wanneer een volgend heartbeat-bericht van de verbonden machine agent wordt ontvangen, wordt de status ervan automatisch gewijzigd in **verbonden**.
+
 ## <a name="install-and-configure-agent"></a>Agent installeren en configureren
 
 Het koppelen van machines in uw hybride omgeving met Azure kan worden uitgevoerd met behulp van verschillende methoden, afhankelijk van uw vereisten. In de volgende tabel ziet u elke methode om te bepalen welke functie het beste werkt voor uw organisatie.
@@ -138,7 +153,6 @@ Het koppelen van machines in uw hybride omgeving met Azure kan worden uitgevoerd
 |--------|-------------|
 | Interactief | Installeer de agent hand matig op een enkele of een beperkt aantal machines Volg de stappen in [computers verbinden met Azure Portal](onboard-portal.md).<br> Vanuit het Azure Portal kunt u een script genereren en uitvoeren op de computer om de installatie-en configuratie stappen van de agent te automatiseren.|
 | Op schaal | Installeer en configureer de agent voor meerdere machines die de [Connect-computers volgen met behulp van een Service-Principal](onboard-service-principal.md).<br> Met deze methode maakt u een Service-Principal om machines niet-interactief te verbinden.|
-
 
 ## <a name="next-steps"></a>Volgende stappen
 
