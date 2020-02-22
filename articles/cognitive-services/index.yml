@@ -1,22 +1,22 @@
 ### YamlMime:Hub
 title: Documentatie voor Azure Cognitive Services
 summary: Ontdek hoe u intelligente en ondersteunde algoritmen voor apps, websites en bots compileert om de behoeften van uw gebruikers te kunnen zien, horen, bespreken en begrijpen.
+brand: azure
 metadata:
   title: Documentatie voor Azure Cognitive Services
   description: Ontdek hoe u intelligente en ondersteunde algoritmen voor apps, websites en bots compileert om de behoeften van uw gebruikers te kunnen zien, horen, bespreken en begrijpen.
   ms.service: cognitive-services
   ms.topic: hub-page
-  brand: azure
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 11/04/2019
-  ms.openlocfilehash: e0fc6aaaedc5eff98017eb62187575ab9afbba59
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.date: 01/21/2020
+  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945200"
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77560759"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -71,7 +71,7 @@ conceptualContent:
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: Insluitende lezer
+      text: Insluitende lezer (preview)
     - url: ./luis/index.yml
       itemType: overview
       text: Language Understanding (LUIS)
@@ -87,7 +87,7 @@ conceptualContent:
   - title: Speech
     summary: Converteer spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.
     links:
-    - url: ./speech-service/index.md
+    - url: ./speech-service/index.yml
       itemType: overview
       text: Speech Service
     - url: ./speaker-recognition/home.md
