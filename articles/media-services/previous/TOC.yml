@@ -397,8 +397,6 @@
       items:
         - name: Media afspelen met bestaande spelers
           href: media-services-playback-content-with-existing-players.md
-        - name: Media afspelen met Media Player
-          href: media-services-develop-video-players.md
         - name: Overige afspeelopties
           items:
             - name: Windows Store-toepassing met smooth streaming
