@@ -6,12 +6,14 @@
       href: overview.md
 - name: Snelstartgidsen
   items:
-    - name: Meervoudige verificatie vereisen voor specifieke apps
-      href: app-based-mfa.md
     - name: Vereisen dat de gebruiksvoorwaarden worden geaccepteerd
       href: require-tou.md
     - name: Toegang blokkeren wanneer er een sessierisico wordt gedetecteerd
       href: app-sign-in-risk.md
+- name: Zelfstudies
+  items:
+    - name: Azure Multi-Factor Authentication vereisen
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: Concepten
   expanded: false
   items:

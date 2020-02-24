@@ -64,6 +64,8 @@
   items:
     - name: Een openbare load balancer upgraden van het type Basic naar het type Standard
       href: upgrade-basic-standard.md
+    - name: Een interne load balancer upgraden van het type Basic naar het type Standard
+      href: upgrade-basicInternal-standard.md
     - name: Regels voor uitgaand verkeer configureren
       items:
         - name: Azure CLI

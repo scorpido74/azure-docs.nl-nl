@@ -123,6 +123,8 @@
       items:
         - name: Uw API beschermen met Azure AD
           href: api-management-howto-protect-backend-with-aad.md
+        - name: Uw SPA-back-end-API beveiligen met Azure AD B2C
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: Verbinding maken met een virtueel netwerk
           href: api-management-using-with-vnet.md
         - name: Verbinding maken met een intern virtueel netwerk

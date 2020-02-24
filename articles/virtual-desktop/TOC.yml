@@ -42,6 +42,8 @@
           href: deploy-windows-7-virtual-machine.md
         - name: Een sessiehost op basis van GPU implementeren
           href: configure-vm-gpu.md
+        - name: Een bestaande hostpool uitbreiden
+          href: expand-existing-host-pool.md
     - name: Een profielcontainer maken
       items:
         - name: Een bestandsshare op VM-basis gebruiken

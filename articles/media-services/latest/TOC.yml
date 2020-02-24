@@ -99,6 +99,8 @@
         - name: Streaming-eindpunten
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: Streaming schalen met CDN
+          href: scale-streaming-cdn.md
         - name: Streaming-locators
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: Taken maken - CLI
           href: cli-create-jobs.md
+        - name: Taken met meerdere typen transformatie-uitvoer
+          href: job-multiple-transform-outputs.md
     - name: Inhoud coderen
       items:
         - name: HTTPS als taakinvoer - .NET
