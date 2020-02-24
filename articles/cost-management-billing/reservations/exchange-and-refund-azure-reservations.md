@@ -2,20 +2,16 @@
 title: Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen
 description: Meer informatie over hoe u Azure-reserveringen kunt inwisselen of retourneren.
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773884"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200432"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inruilen en retourneren voor Azure Reservations
 
@@ -72,12 +68,10 @@ Azure heeft de volgende beleidsregels voor annuleringen, inwisselingen en restit
 - Er is geen boete of jaarlijkse limieten voor inwisselingen.
 
 **Restitutiebeleid**
-- Als u een reservering annuleert, worden er voor de vroegtijdige beëindiging mogelijk kosten van 12% in rekening gebracht.
-- De restitutie die u ontvangt voor een annulering, is het resterende bedrag naar rato minus de kosten voor vroegtijdige beëindiging van 12%. Als u wilt annuleren, gaat u in Azure Portal naar de reservering en selecteert u **Restitutie**.
+- In de toekomst worden voor annuleringen mogelijk kosten voor vroege beëindiging in rekening gebracht van 12%. Momenteel wordt er geen boete berekend.
 - Uw totale restitutiebedrag mag niet groter zijn dan USD 50.000 in een voortschrijdende periode van 12 maanden.
 - Restituties worden berekend op basis van de laagste prijs, zijnde de aankoopprijs of de huidige prijs van de reservering, welke het laagste is.
-- Alleen eigenaren van reserveringen kunnen een restitutie verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Microsoft behoudt zich het recht voor om een boete van 12% voor eventuele restituties te berekenen. Er wordt momenteel geen boete in rekening gebracht, maar deze wordt in de toekomst wel in rekening gebracht.
+- Alleen eigenaren van reserveringsorders kunnen een restitutie verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Niet-Premium Storage inwisselen voor Premium Storage
 

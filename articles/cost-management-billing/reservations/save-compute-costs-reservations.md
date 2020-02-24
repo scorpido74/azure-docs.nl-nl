@@ -2,17 +2,17 @@
 title: Wat zijn Azure-reserveringen?
 description: Meer informatie over Azure-reserveringen en prijzen om geld te besparen op uw virtuele machines, SQL-databases, Azure Cosmos DB en andere resourcekosten.
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841877"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443632"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -37,11 +37,19 @@ Service-abonnementen:
 - **Gereserveerde SQL Database-vCore**: alleen de rekenkosten worden opgenomen in een reservering. De licentie wordt afzonderlijk gefactureerd.
 - **SQL Data Warehouse**: onder een reservering valt het cDWU-gebruik. Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
 - **App Service-zegelkosten**: onder een reservering valt het gebruik van zegels. De reservering is niet van toepassing op werkrollen, dus alle andere resources die aan de zegel zijn gekoppeld, worden afzonderlijk in rekening gebracht.
-- Azure Database for MySQL
-- Azure Database for PostgreSQL
-- Azure Database for MariaDB
-- Azure Data Explorer
+- **Azure Databricks**: onder een reservering valt alleen het DBU-gebruik. Andere kosten, bijvoorbeeld voor berekeningen, opslag en netwerken, worden afzonderlijk toegepast.
+- **Azure Database for MySQL**: alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor software, netwerk of opslag die betrekking hebben op de MySQL Database-server.
+- **Azure Database for PostgreSQL**: alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor software, netwerk of opslag die betrekking hebben op de PostgreSQL Database-servers.
+- **Azure Database for MariaDB**: alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor software, netwerk of opslag die betrekking hebben op de MariaDB Database-server.
+- **Azure Data Explorer**: onder een reservering vallen de wijzigingen in markeringen. Onder een reservering vallen niet de kosten voor berekeningen, netwerk of opslag die betrekking hebben op de clusters.
+- **Premium SSD Managed Disks**: een reservering wordt gemaakt voor een opgegeven schijf-SKU. 
 
+Softwareabonnementen:
+
+- **SUSE Linux**: onder een reservering vallen de kosten voor softwareabonnementen. De kortingen zijn alleen van toepassing op SUSE-meters, en niet op het gebruik van virtuele machines.
+- **Red Hat-abonnementen**: onder een reservering vallen de kosten voor softwareabonnementen. De kortingen zijn alleen van toepassing op RedHat-meters, en niet op het gebruik van virtuele machines.
+- **Azure VMware-oplossing van CloudSimple**: onder een reservering vallen de VMWare CloudSimple-knooppunten. Er kunnen nog steeds aanvullende softwarekosten van toepassing zijn.
+- **Azure Red Hat OpenShift**: een reservering is van toepassing op de OpenShift-kosten, niet op de kosten voor de Azure-infrastructuur.
 
 Voor virtuele Windows-machines en SQL Database kunt u de licentiekosten dekken met [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -118,7 +126,7 @@ De aangeschafte reservering wordt verrekend volgens de betalingswijze die is gek
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
-De reserveringskorting is van toepassing op het resourcegebruik dat overeenkomt met de kenmerken die u selecteert wanneer u de reservering koopt. Kenmerken zijn onder andere het bereik waarop de overeenkomende VM's, SQL-databases, Azure Cosmos DB of andere resources worden uitgevoerd. Als u bijvoorbeeld reserveringskorting voor vier Standard D2 virtuele machines in de regio US - west wilt gebruiken, selecteert u het abonnement waarop de VM's worden uitgevoerd.
+De reserveringskorting is van toepassing op het resourcegebruik dat overeenkomt met de kenmerken die u selecteert wanneer u de reservering koopt. Kenmerken zijn onder andere het bereik waarop de overeenkomende VM's, SQL-databases, Azure Cosmos DB of andere resources worden uitgevoerd. Als u bijvoorbeeld reserveringskorting voor vier Standard D2 virtuele machines in de regio VS - west wilt gebruiken, selecteert u het abonnement waarop de VM's worden uitgevoerd.
 
 Voor een reserveringskorting geldt: *gebruiken of verliezen*. Als u geen overeenkomende resources voor eender welk uur hebt, verliest u een reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
 
@@ -132,7 +140,7 @@ Reserveringskorting is alleen van toepassing op resources die zijn gekoppeld met
 
 ## <a name="when-the-reservation-term-expires"></a>Wanneer de reserveringstermijn verloopt
 
-Aan het einde van de reserveringtermijn verloopt de factureringskorting en worden kosten voor resources in rekening gebracht op basis van gebruik. De standaardinstelling is dat reserveringen niet automatisch worden verlengd. U kunt ervoor kiezen om een reservering automatisch te verlengen door de optie te selecteren in de verlengingsinstellingen. Met automatische verlenging wordt een vervangingsreservering aangeschaft wanneer de bestaande reservering verloopt. De vervangende reservering heeft standaard dezelfde kenmerken als de verlopende reservering. Het is mogelijk om de factureringsfrequentie, -termijn of -kwantiteit in de verlengingsinstellingen aan te passen. Gebruikers met eigenaarstoegang tot de reservering en het abonnement dat wordt gebruikt voor facturering kunnen verlenging instellen.  
+Aan het einde van de reserveringtermijn verloopt de factureringskorting en worden kosten voor resources in rekening gebracht op basis van gebruik. De standaardinstelling is dat reserveringen niet automatisch worden verlengd. U kunt ervoor kiezen om een reservering automatisch te verlengen door de optie te selecteren in de verlengingsinstellingen. Met automatische verlenging wordt een vervangingsreservering aangeschaft wanneer de bestaande reservering verloopt. De vervangende reservering heeft standaard dezelfde kenmerken als de verlopende reservering. U kunt de frequentie, termijn of kwantiteit van de facturering aanpassen in de verlengingsinstellingen. Gebruikers met eigenaarstoegang tot de reservering en het abonnement dat wordt gebruikt voor facturering, kunnen verlenging instellen.  
 
 ## <a name="discount-applies-to-different-sizes"></a>De korting is van toepassing op verschillende grootten
 
