@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: Verbindingsmonitor (preview)
-      href: connection-monitor-2-preview.md
+      href: connection-monitor-preview.md
     - name: Probleem met VM-verkeersfilter vaststellen - Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Probleem met VM-verkeersfilter vaststellen - PowerShell
