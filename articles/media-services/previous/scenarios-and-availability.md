@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843936"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564964"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
@@ -37,7 +37,7 @@ Dit onderwerp bevat algemene scenario's voor het [live](#live_scenarios) of on-d
 
 Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschikken:
 
-* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
+* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
 * Een Azure Media Services-account. Zie [Een account maken](media-services-portal-create-account.md) voor meer informatie.
 * Het streaming-eindpunt van waar u inhoud wilt streamen, moet de status **Wordt uitgevoerd** hebben.
 
@@ -137,7 +137,7 @@ Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarh
 
 ## <a name="consuming-content"></a>Inhoud gebruiken
 
-Azure Media Services biedt de hulpprogramma's die u nodig hebt om geavanceerde, dynamische clientspelertoepassingen te maken voor de meeste platforms, waaronder: iOS-apparaten, Android-apparaten, Windows, Windows Phone, Xbox en settopboxen. In dit onderwerp vindt u koppelingen naar SDK's en frameworks voor spelers die u kunt gebruiken om uw eigen clienttoepassingen te ontwikkelen die kunnen worden gebruikt voor streamingmedia van Media Services. Zie [Toepassingen voor het afspelen van video ontwikkelen](media-services-develop-video-players.md) voor meer informatie
+Azure Media Services biedt de hulpprogramma's die u nodig hebt om geavanceerde, dynamische clientspelertoepassingen te maken voor de meeste platforms, waaronder: iOS-apparaten, Android-apparaten, Windows, Windows Phone, Xbox en settopboxen. 
 
 ## <a name="enabling-azure-cdn"></a>Azure CDN inschakelen
 
@@ -149,7 +149,7 @@ AMS-klanten kunnen streaming-eindpunten, de mediaverwerking en de opslag in hun 
 
 * Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium-**streaming**-eindpunt kiezen. **Standard**-streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium**-streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald. 
 
-    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp [Streaming-eindpunten schalen](media-services-portal-scale-streaming-endpoints.md) voor meer informatie over het schalen van **Premium**-streaming-eindpunten.
+    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp **Streaming-eindpunten schalen** voor meer informatie over het schalen van [Premium](media-services-portal-scale-streaming-endpoints.md)-streaming-eindpunten.
 
 * Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**).
 
@@ -179,8 +179,8 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 |Name|Status|Datacenters
 |---|---|---|
-|Standard|Algemene beschikbaarheid|Alles|
-|Premium|Algemene beschikbaarheid|Alles|
+|Standard|Algemene beschikbaarheid|Alle|
+|Premium|Algemene beschikbaarheid|Alle|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -196,7 +196,7 @@ AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebr
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Media Encoder Standard|Algemene beschikbaarheid|Alles|
+|Media Encoder Standard|Algemene beschikbaarheid|Alle|
 |Media Encoder Premium Workflow|Algemene beschikbaarheid|Overal behalve China|
 
 ### <a name="analytics-media-processors"></a>Mediaprocessors voor analyse
@@ -207,12 +207,12 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Azure Media Face Detector|Preview|Alles|
-|Azure Media Indexer|Algemene beschikbaarheid|Alles|
-|Azure Media Motion Detector|Preview|Alles|
-|Azure Media OCR|Preview|Alles|
-|Azure Media Redactor|Algemene beschikbaarheid|Alles|
-|Azure Media Video Thumbnails|Preview|Alles|
+|Azure Media Face Detector|Preview|Alle|
+|Azure Media Indexer|Algemene beschikbaarheid|Alle|
+|Azure Media Motion Detector|Preview|Alle|
+|Azure Media OCR|Preview|Alle|
+|Azure Media Redactor|Algemene beschikbaarheid|Alle|
+|Azure Media Video Thumbnails|Preview|Alle|
 
 ### <a name="protection"></a>Beveiliging
 
@@ -222,10 +222,10 @@ Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment d
 
 |Versleuteling|Status|Datacenters|
 |---|---|---| 
-|Storage|Algemene beschikbaarheid|Alles|
-|AES-128-sleutels|Algemene beschikbaarheid|Alles|
-|FairPlay|Algemene beschikbaarheid|Alles|
-|PlayReady|Algemene beschikbaarheid|Alles|
+|Opslag|Algemene beschikbaarheid|Alle|
+|AES-128-sleutels|Algemene beschikbaarheid|Alle|
+|FairPlay|Algemene beschikbaarheid|Alle|
+|PlayReady|Algemene beschikbaarheid|Alle|
 |Widevine|Algemene beschikbaarheid|Overal behalve in Duitsland, bij overheden en in China.
 
 ### <a name="reserved-units-rus"></a>Gereserveerde eenheden (RU's)
@@ -248,7 +248,7 @@ Zie de sectie [Schalen](#scaling) voor meer informatie.
 
 |RU-typenaam|Status|Datacenters
 |---|---|---|
-|S1|Algemene beschikbaarheid|Alles|
+|S1|Algemene beschikbaarheid|Alle|
 |S2|Algemene beschikbaarheid|Overal behalve in BR - zuid en India - west|
 |S3|Algemene beschikbaarheid|Overal behalve in India - west|
 

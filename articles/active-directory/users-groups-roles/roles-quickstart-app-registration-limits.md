@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024397"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559042"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Snelstartgids: machtiging verlenen voor het maken van onbeperkte app-registraties
 
-In deze Quick Start maakt u een aangepaste rol met machtigingen voor het maken van een onbeperkt aantal app-registraties en vervolgens wijst u die rol toe aan een gebruiker. De toegewezen gebruiker kan vervolgens de Azure AD-Portal, Azure AD Power shell, Azure AD Graph API of de Microsoft Graph-API gebruiken om toepassings registraties te maken. In tegens telling tot de ingebouwde rol ontwikkelaar van de toepassing verleent deze aangepaste rol de mogelijkheid om een onbeperkt aantal toepassings registraties te maken. De ontwikkelaar van de toepassing verleent de mogelijkheid, maar het totale aantal gemaakte objecten is beperkt tot 250 om te voor komen dat [het object quotum voor het hele directory](directory-service-limits-restrictions.md)wordt bereikt.
+In deze Quick Start maakt u een aangepaste rol met machtigingen voor het maken van een onbeperkt aantal app-registraties en vervolgens wijst u die rol toe aan een gebruiker. De toegewezen gebruiker kan vervolgens de Azure AD-Portal, Azure AD Power shell of de Microsoft Graph-API gebruiken om toepassings registraties te maken. In tegens telling tot de ingebouwde rol ontwikkelaar van de toepassing verleent deze aangepaste rol de mogelijkheid om een onbeperkt aantal toepassings registraties te maken. De ontwikkelaar van de toepassing verleent de mogelijkheid, maar het totale aantal gemaakte objecten is beperkt tot 250 om te voor komen dat [het object quotum voor het hele directory](directory-service-limits-restrictions.md)wordt bereikt.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

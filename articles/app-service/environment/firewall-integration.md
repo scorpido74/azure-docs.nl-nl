@@ -4,15 +4,15 @@ description: Meer informatie over het integreren van Azure Firewall voor het bev
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513338"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565720"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Een App Service Environment vergren delen
 
@@ -24,7 +24,7 @@ De uitgaande afhankelijkheden voor ASE zijn bijna volledig gedefinieerd met FQDN
 
 De oplossing voor het beveiligen van uitgaande adressen berust op het gebruik van een firewall apparaat waarmee het uitgaande verkeer op basis van domein namen kan worden beheerd. Azure Firewall kunt het uitgaande HTTP-en HTTPS-verkeer beperken op basis van de FQDN van de bestemming.  
 
-## <a name="system-architecture"></a>Systeemarchitectuur
+## <a name="system-architecture"></a>Systeem architectuur
 
 Voor het implementeren van een ASE met uitgaand verkeer via een firewall apparaat moeten routes worden gewijzigd in het subnet ASE. Routes worden op een IP-niveau toegepast. Als u zich niet bij het definiëren van uw routes bevindt, kunt u TCP-antwoord verkeer afdwingen voor de bron van een ander adres. Als uw antwoord adres afwijkt van het adres verkeer dat is verzonden naar, wordt het probleem asymmetrische route ring genoemd en wordt TCP onderbroken.
 
@@ -41,9 +41,11 @@ Het verkeer van en naar een ASE moet naleven met de volgende conventies
 
 ## <a name="locking-down-inbound-management-traffic"></a>Inkomend beheer verkeer vergren delen
 
-Als aan uw ASE-subnet nog geen NSG is toegewezen, maakt u er een. In de NSG stelt u de eerste regel in op het toestaan van verkeer van de service-tag met de naam AppServiceManagement op de poorten 454, 455. Dit is alles wat vereist is uit open bare Ip's om uw ASE te beheren. De adressen achter die servicetag worden alleen gebruikt voor het beheren van de Azure App Service. Het beheer verkeer dat via deze verbindingen loopt, wordt versleuteld en beveiligd met verificatie certificaten. Typisch verkeer op dit kanaal omvat dingen zoals door de klant geïnitieerde opdrachten en status controles. 
+Als aan uw ASE-subnet nog geen NSG is toegewezen, maakt u er een. Stel binnen de NSG de eerste regel in om verkeer toe te staan van de servicetag met de naam AppServiceManagement op poorten 454, 455. De regel voor het toestaan van toegang vanaf de AppServiceManagement-tag is het enige wat vereist is van open bare Ip's om uw ASE te beheren. De adressen achter die servicetag worden alleen gebruikt voor het beheren van de Azure App Service. Het beheer verkeer dat via deze verbindingen loopt, wordt versleuteld en beveiligd met verificatie certificaten. Typisch verkeer op dit kanaal omvat dingen zoals door de klant geïnitieerde opdrachten en status controles. 
 
 As die via de portal worden gemaakt met een nieuw subnet, worden gemaakt met een NSG die de regel toestaan bevat voor de AppServiceManagement-tag.  
+
+Uw ASE moet ook binnenkomende aanvragen van de Load Balancer tag op poort 16001 toestaan. De aanvragen van de Load Balancer op poort 16001 blijven Alive-controles tussen de Load Balancer en de front-ends van ASE. Als poort 16001 is geblokkeerd, wordt uw ASE beschadigd.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Firewall configureren met uw ASE 
 
@@ -120,8 +122,8 @@ De volgende informatie is alleen vereist als u een ander firewall apparaat dan A
 
 | Eindpunt | Details |
 |----------| ----- |
-| \*:123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
-| \*:12000 | Deze poort wordt gebruikt voor een systeem bewaking. Als dit is geblokkeerd, zijn er problemen met de sorteren, maar uw ASE blijft actief. |
+| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
+| \*: 12000 | Deze poort wordt gebruikt voor een systeem bewaking. Als dit is geblokkeerd, zijn er problemen met de sorteren, maar uw ASE blijft actief. |
 | 40.77.24.27:80 | Nodig om problemen met ASE te controleren en te melden |
 | 40.77.24.27:443 | Nodig om problemen met ASE te controleren en te melden |
 | 13.90.249.229:80 | Nodig om problemen met ASE te controleren en te melden |
@@ -218,10 +220,10 @@ Met een Azure Firewall krijgt u automatisch alle onderstaande instellingen die z
 
 | Eindpunt |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
-| \*.management.azure.com:443 |
-| \*.update.microsoft.com:443 |
-| \*.windowsupdate.microsoft.com:443 |
+|Go-Prod-\*. cloudapp.net:443 |
+| \*. management.azure.com:443 |
+| \*. update.microsoft.com:443 |
+| \*. windowsupdate.microsoft.com:443 |
 | \*. identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux-afhankelijkheden 
@@ -273,6 +275,21 @@ Linux is niet beschikbaar in US Gov regio's en wordt dus niet weer gegeven als e
 | Azure SQL |
 | Azure Storage |
 | Azure Event Hub |
+
+#### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
+
+| Eindpunt | Details |
+|----------| ----- |
+| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
+| \*: 12000 | Deze poort wordt gebruikt voor een systeem bewaking. Als dit is geblokkeerd, zijn er problemen met de sorteren, maar uw ASE blijft actief. |
+| 40.77.24.27:80 | Nodig om problemen met ASE te controleren en te melden |
+| 40.77.24.27:443 | Nodig om problemen met ASE te controleren en te melden |
+| 13.90.249.229:80 | Nodig om problemen met ASE te controleren en te melden |
+| 13.90.249.229:443 | Nodig om problemen met ASE te controleren en te melden |
+| 104.45.230.69:80 | Nodig om problemen met ASE te controleren en te melden |
+| 104.45.230.69:443 | Nodig om problemen met ASE te controleren en te melden |
+| 13.82.184.151:80 | Nodig om problemen met ASE te controleren en te melden |
+| 13.82.184.151:443 | Nodig om problemen met ASE te controleren en te melden |
 
 #### <a name="dependencies"></a>Afhankelijkheden ####
 
@@ -338,7 +355,7 @@ Linux is niet beschikbaar in US Gov regio's en wordt dus niet weer gegeven als e
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
 |\*. management.usgovcloudapi.net:443 |
-|\*.update.microsoft.com:443 |
+|\*. update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

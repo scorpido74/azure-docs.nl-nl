@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442578"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561439"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal
 
@@ -179,9 +179,10 @@ Voeg eerst een netwerk regel toe om webverkeer toe te staan.
 6. Bij **Actie** selecteert u **Toestaan**.
 6. Typ **AllowWeb**onder **regels**voor **naam**.
 7. Bij **Protocol** selecteert u **TCP**.
-8. Voor **bron adressen**typt u **192.168.1.0/24**.
-9. Typ **10.6.0.0/16** bij doel adres.
-10. Typ **80**bij **doel poorten**.
+8. Selecteer **IP-adres**bij **bron type**.
+9. Voor **bron**, typt u **192.168.1.0/24**.
+10. Typ **10.6.0.0/16** bij **doel adres**.
+11. Typ **80**bij **doel poorten**.
 
 Voeg nu een regel toe om RDP-verkeer toe te staan.
 
@@ -189,10 +190,11 @@ Typ op de tweede regel rij de volgende informatie:
 
 1. **Naam**, typ **AllowRDP**.
 2. Bij **Protocol** selecteert u **TCP**.
-3. Voor **bron adressen**typt u **192.168.1.0/24**.
-4. Typ **10.6.0.0/16** bij doel adres.
-5. Typ **3389**bij **doel poorten**.
-6. Selecteer **Toevoegen**.
+3. Selecteer **IP-adres**bij **bron type**.
+4. Voor **bron**, typt u **192.168.1.0/24**.
+5. Typ **10.6.0.0/16** bij **doel adres**.
+6. Typ **3389**bij **doel poorten**.
+7. Selecteer **Toevoegen**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>De VPN-gateways maken en verbinden
 

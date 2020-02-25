@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539532"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562425"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -131,7 +131,7 @@ Deze instructies zijn voor het bouwen van het voor beeld in Windows. Zie voor an
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Bewerk het voor beeld telemetrie verzenden om gedistribueerde tracering in te scha kelen
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Het voor beeld op github ophalen</a>
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Het voor beeld op GitHub ophalen</a>
 
 1. Gebruik een editor om het `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` bron bestand te openen.
 
@@ -280,7 +280,7 @@ Zie [Azure IOT hub Diagnostische logboeken](iot-hub-monitor-resource-health.md#d
 Als u de stroom van IoT-berichten wilt visualiseren, stelt u de voor beeld-app voor de toepassings toewijzing in. De voor beeld-app verzendt de gedistribueerde tracerings logboeken naar de [toepassings toewijzing](../application-insights/app-insights-app-map.md) met behulp van een Azure-functie en een event hub.
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Het voor beeld op github ophalen</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Het voor beeld op GitHub ophalen</a>
 
 In onderstaande afbeelding ziet u gedistribueerde tracering in de app-toewijzing met drie routerings eindpunten:
 

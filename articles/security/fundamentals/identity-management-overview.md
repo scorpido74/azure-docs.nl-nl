@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840448"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565890"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
@@ -40,12 +40,12 @@ Het artikel is gericht op de volgende kern mogelijkheden van Azure Identity Mana
 
 * Eenmalige aanmelding
 * Omgekeerde proxy
-* Multi-Factor Authentication
+* Meervoudige verificatie
 * Op rollen gebaseerd toegangs beheer (RBAC)
 * Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
-* Identiteits- en toegangsbeheer van consumenten
+* Identiteits-en toegangs beheer van consumenten
 * Apparaatregistratie
-* Privileged identity management
+* Privileged Identity Management
 * Identiteitsbeveiliging
 * Hybride identiteits beheer/Azure AD Connect
 * Azure AD-toegangsbeoordelingen
@@ -64,7 +64,7 @@ Meer informatie:
 
 * [Overzicht van eenmalige aanmelding](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [What is application access and single sign-on with Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
-* [Azure Active Directory eenmalige aanmelding integreren met SaaS-apps](../../active-directory/manage-apps/configure-single-sign-on-portal.md)
+* [Azure Active Directory eenmalige aanmelding integreren met SaaS-apps](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
 ## <a name="reverse-proxy"></a>Omgekeerde proxy
 
@@ -73,11 +73,11 @@ Met Azure AD-toepassingsproxy kunt u on-premises toepassingen, zoals [share poin
 Meer informatie:
 
 * [Azure AD-toepassingsproxy inschakelen](/azure/active-directory/manage-apps/application-proxy-enable)
-* [Toepassingen publiceren die gebruikmaken van Azure AD-toepassingsproxy](/azure/active-directory/active-directory-application-proxy-publish)
+* [Toepassingen publiceren met Azure AD-toepassingsproxy](/azure/active-directory/active-directory-application-proxy-publish)
 * [Eenmalige aanmelding met toepassings proxy](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Werken met voorwaardelijke toegang](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Meervoudige verificatie
 
 Azure Multi-Factor Authentication is een authenticatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke verificatie via verschillende verificatie opties: telefoon gesprekken, tekst berichten, meldingen over mobiele apps of verificatie codes en OAuth-tokens van derden.
 
@@ -114,7 +114,7 @@ Meer informatie:
 * [Aan de slag met Azure Active Directory rapportage](/azure/active-directory/active-directory-reporting-getting-started)
 * [Azure Active Directory-rapportage gids](/azure/active-directory/active-directory-reporting-guide)
 
-## <a name="consumer-identity-and-access-management"></a>Identiteits- en toegangsbeheer van consumenten
+## <a name="consumer-identity-and-access-management"></a>Identiteits-en toegangs beheer van consumenten
 
 Azure AD B2C is een Maxi maal beschik bare, wereld wijde service voor identiteits beheer voor consumenten toepassingen die worden geschaald naar honderden miljoenen identiteiten. De service kan worden geïntegreerd in zowel mobiele als webplatforms. Uw consumenten kunnen zich bij al uw toepassingen aanmelden met behulp van hun bestaande sociale accounts of door nieuwe referenties te maken.
 
@@ -140,7 +140,7 @@ Meer informatie:
 * [Automatische apparaatregistratie met Azure AD voor Windows-apparaten die lid zijn van een domein](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
 * [Automatische registratie van Windows-apparaten die lid zijn van een domein instellen met Azure AD](/azure/active-directory/active-directory-conditional-access-automatic-device-registration-setup)
 
-## <a name="privileged-identity-management"></a>Privileged identity management
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 Met Azure AD Privileged Identity Management kunt u uw bevoorrechte identiteiten en toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Office 365 en Microsoft Intune, beheren, controleren en bewaken.
 
@@ -156,7 +156,7 @@ Met Azure AD Privileged Identity Management kunt u het volgende doen:
 Meer informatie:
 
 * [Wat is Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
-* [Azure AD-directory-rollen in PIM toewijzen](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Azure AD-adreslijst rollen toewijzen in PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Identiteitsbeveiliging
 

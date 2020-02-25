@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988801"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561456"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Zelf studie: implementatie scripts gebruiken om een zelfondertekend certificaat te maken (preview)
 
@@ -266,13 +266,13 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     * **time-out**: Geef de maximale toegestane uitvoerings tijd voor het script op dat is opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**.
     * **argumenten**: Geef de parameter waarden op. De waarden worden gescheiden door spaties.
     * **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren, gebruikt u **primaryScriptURI** in plaats daarvan. Zie [extern script gebruiken](./deployment-script-template.md#use-external-scripts)voor meer informatie.
-        Het declareren van **$DeploymentScriptOutputs** is alleen vereist bij het testen van het script op een lokale computer. Als u de variabele declareert, kan het script worden uitgevoerd op een lokale computer en in een deploymentScript-bron zonder dat er wijzigingen hoeven te worden aangebracht. De waarde die is toegewezen aan $DeploymentScriptOutputs is beschikbaar als uitvoer in de implementaties. Zie [werken met uitvoer van implementatie scripts](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)voor meer informatie.
+        Het declareren van **$DeploymentScriptOutputs** is alleen vereist bij het testen van het script op een lokale computer. Als u de variabele declareert, kan het script worden uitgevoerd op een lokale computer en in een deploymentScript-bron zonder dat er wijzigingen hoeven te worden aangebracht. De waarde die is toegewezen aan $DeploymentScriptOutputs is beschikbaar als uitvoer in de implementaties. Zie [werken met uitvoer van Power shell-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-powershell-script) of [werken met uitvoer van CLI-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-cli-script)voor meer informatie.
     * **cleanupPreference**: Geef de voor keur op wanneer u de resources van het implementatie script wilt verwijderen.  De standaard waarde is **altijd**, wat betekent dat de implementatie script bronnen worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). In deze zelf studie wordt **OnSuccess** gebruikt zodat u de resultaten van de uitvoering van het script kunt bekijken.
     * **retentionInterval**: Geef het interval op waarvoor de service de script bronnen behoudt nadat het een Terminal status heeft bereikt. Resources worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het ISO 8601-patroon. In deze zelf studie wordt P1D gebruikt. Dit betekent een dag.  Deze eigenschap wordt gebruikt wanneer **cleanupPreference** is ingesteld op **OnExpiration**. Deze eigenschap is momenteel niet ingeschakeld.
 
     Het implementatie script neemt drie para meters: sleutel kluis naam, certificaat naam en onderwerpnaam.  Er wordt een certificaat gemaakt en vervolgens het certificaat toegevoegd aan de sleutel kluis.
 
-    **$DeploymentScriptOutputs** wordt gebruikt om de uitvoer waarde op te slaan.  Zie [werken met uitvoer van implementatie scripts](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)voor meer informatie.
+    **$DeploymentScriptOutputs** wordt gebruikt om de uitvoer waarde op te slaan.  Zie [werken met uitvoer van Power shell-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-powershell-script) of [werken met uitvoer van CLI-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-cli-script)voor meer informatie.
 
     De voltooide sjabloon kunt u [hier](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)vinden.
 
@@ -320,7 +320,7 @@ Het uitvoerings resultaat van het implementatie script wordt opgeslagen in de im
 
 ## <a name="debug-the-failed-script"></a>Fouten opsporen in het script
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Open de resource groep. Het is de naam van het project waaraan **RG** is toegevoegd. Er worden twee extra resources weer geven in de resource groep. Deze resources worden bronnen voor het *implementatie script*genoemd.
 
     ![Resource Manager-sjabloon implementatie script resources](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

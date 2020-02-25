@@ -1,5 +1,5 @@
 ---
-title: Gebruik een statisch IP-adres met de Azure Kubernetes-service (AKS) load balancer
+title: Gebruik een statisch IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
 description: Meer informatie over het maken en gebruiken van een statisch IP-adres met de Azure Kubernetes service (AKS) load balancer.
 services: container-service
 author: mlearned
@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5e1f88e82d994c7f912b21781271448d35b5d726
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325447"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558902"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres met de Azure Kubernetes-service (AKS) load balancer
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Gebruik een statisch openbaar IP-adres en een DNS-label met de Azure Kubernetes-service (AKS) load balancer
 
 Het open bare IP-adres dat is toegewezen aan een load balancer bron die is gemaakt met een AKS-cluster, is standaard alleen geldig voor de levens duur van die resource. Als u de Kubernetes-service verwijdert, worden ook de gekoppelde load balancer en het IP-adres verwijderd. Als u een specifiek IP-adres wilt toewijzen of een IP-adres voor opnieuw geïmplementeerde Kubernetes-Services wilt behouden, kunt u een statisch openbaar IP-adres maken en gebruiken.
 
@@ -98,6 +98,30 @@ Maak de service en de implementatie met behulp van de `kubectl apply` opdracht.
 kubectl apply -f load-balancer-service.yaml
 ```
 
+## <a name="apply-a-dns-label-to-the-service"></a>Een DNS-label op de service Toep assen
+
+Als uw service gebruikmaakt van een dynamisch of statisch openbaar IP-adres, kunt u de aantekening van de service gebruiken `service.beta.kubernetes.io/azure-dns-label-name` om een openbaar DNS-label in te stellen. Hiermee publiceert u een Fully Qualified Domain Name voor uw service met behulp van de open bare DNS-servers van Azure en het domein op het hoogste niveau. De aantekening waarde moet uniek zijn binnen de Azure-locatie, dus wordt aanbevolen een voldoende gekwalificeerd label te gebruiken.   
+
+Azure voegt vervolgens automatisch een standaard subnet toe, zoals `<location>.cloudapp.azure.com` (waarbij locatie de regio is die u hebt geselecteerd), naar de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Bijvoorbeeld:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> Zie [Azure DNS][azure-dns-zone] en het [externe DNS][external-dns] -project om de service op uw eigen domein te publiceren.
+
 ## <a name="troubleshoot"></a>Problemen oplossen
 
 Als het statische IP-adres dat is gedefinieerd in de eigenschap *loadBalancerIP* van het Kubernetes-service manifest niet bestaat of niet is gemaakt in de resource groep node en er geen aanvullende delegaties zijn geconfigureerd, mislukt het maken van de Load Balancer-service. Als u problemen wilt oplossen, controleert u de gebeurtenissen voor het maken van een service met de opdracht [kubectl beschrijven][kubectl-describe] . Geef de naam van de service op zoals opgegeven in het YAML-manifest, zoals wordt weer gegeven in het volgende voor beeld:
@@ -136,6 +160,8 @@ Als u meer controle over het netwerk verkeer voor uw toepassingen wilt, kunt u i
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

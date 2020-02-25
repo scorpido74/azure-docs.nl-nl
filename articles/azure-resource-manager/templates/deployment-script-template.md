@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251852"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561150"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -29,7 +29,7 @@ Meer informatie over het gebruik van implementatie scripts in azure-resource sja
 De voor delen van het implementatie script:
 
 - Eenvoudig te coderen, gebruiken en fouten opsporen. U kunt implementatie scripts ontwikkelen in uw favoriete ontwikkel omgevingen. De scripts kunnen worden inge sloten in sjablonen of in externe script bestanden.
-- U kunt de script taal en het platform opgeven. Momenteel worden alleen Azure PowerShell implementatie scripts in de Linux-omgeving ondersteund.
+- U kunt de script taal en het platform opgeven. Momenteel worden Azure PowerShell-en Azure CLI-implementatie scripts in de Linux-omgeving ondersteund.
 - Toestaan dat de identiteiten worden opgegeven die worden gebruikt voor het uitvoeren van de scripts. Op dit moment wordt alleen een door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) ondersteund.
 - Het door geven van opdracht regel argumenten naar het script toestaan.
 - Kan script uitvoer opgeven en deze weer door geven aan de implementatie.
@@ -48,16 +48,29 @@ De voor delen van het implementatie script:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Gebruik het volgende Power shell-script om de ID op te halen door de naam van de resource groep en de naam van de identiteit op te geven.
+  Gebruik het volgende CLI-of Power shell-script om de ID op te halen door de naam van de resource groep en de naam van de identiteit op te geven.
+
+  # <a name="cli"></a>[CLI](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell versie 2.7.0, 2.8.0 of 3.0.0**. U hebt deze versies niet nodig voor het implementeren van sjablonen. Deze versies zijn echter nodig om implementatie scripts lokaal te testen. Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). U kunt een vooraf geconfigureerde docker-installatie kopie gebruiken.  Zie [ontwikkel omgeving configureren](#configure-development-environment).
+- **Azure PowerShell versie 3.0.0, 2.8.0 of 2.7.0** of **Azure CLI-versie 2.0.80, 2.0.79, 2.0.78 of 2.0.77**. U hebt deze versies niet nodig voor het implementeren van sjablonen. Deze versies zijn echter nodig om implementatie scripts lokaal te testen. Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). U kunt een vooraf geconfigureerde docker-installatie kopie gebruiken.  Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
 ## <a name="sample-template"></a>Voorbeeldsjabloon
 
@@ -67,9 +80,9 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +91,7 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -102,13 +115,13 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
 Details van eigenschaps waarde:
 
 - **Identiteit**: de implementatie script service gebruikt een door de gebruiker toegewezen beheerde identiteit voor het uitvoeren van de scripts. Op dit moment wordt alleen door de gebruiker toegewezen beheerde identiteit ondersteund.
-- **soort**: Geef het type script op. Op dit moment wordt alleen Azure PowerShell script ondersteund. De waarde is **AzurePowerShell**.
+- **soort**: Geef het type script op. Momenteel worden Azure PowerShell-en Azure CLI-scripts ondersteund. De waarden zijn **AzurePowerShell** en **AzureCLI**.
 - **updatetag**: als u deze waarde wijzigt tussen de implementaties van een sjabloon, wordt het implementatie script opnieuw uitgevoerd. Gebruik de functie newGuid () of utcNow () die moet worden ingesteld als de defaultValue van een para meter. Zie [script meer dan één keer uitvoeren](#run-script-more-than-once)voor meer informatie.
-- **azPowerShellVersion**: Geef de versie van de Azure PowerShell module op die moet worden gebruikt. Het implementatie script ondersteunt momenteel versie 2.7.0, 2.8.0 en 3.0.0.
+- **azPowerShellVersion**/**azCliVersion**: Geef de module versie op die moet worden gebruikt. Het implementatie script ondersteunt momenteel Azure PowerShell versie 2.7.0, 2.8.0, 3.0.0 en Azure CLI versie 2.0.80, 2.0.79, 2.0.78, 2.0.77.
 - **argumenten**: Geef de parameter waarden op. De waarden worden gescheiden door spaties.
 - **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren, gebruikt u `primaryScriptUri` in plaats daarvan. Zie [inline-script gebruiken](#use-inline-scripts) en [extern script gebruiken](#use-external-scripts)voor voor beelden.
-- **primaryScriptUri**: Geef een openbaar toegankelijke URL op voor het primaire Power shell-script met de ondersteunde Power shell-bestands extensie.
-- **supportingScriptUris**: Geef een matrix met openbaar toegankelijke url's op voor de ondersteuning van Power Shell-bestanden die worden aangeroepen in `ScriptContent` of `PrimaryScriptUri`.
+- **primaryScriptUri**: Geef een openbaar toegankelijke URL op voor het primaire implementatie script met ondersteunde bestands extensies.
+- **supportingScriptUris**: Geef een matrix met openbaar toegankelijke url's op voor de ondersteunende bestanden die worden genoemd in `ScriptContent` of `PrimaryScriptUri`.
 - **time-out**: Geef de maximale toegestane uitvoerings tijd voor het script op dat is opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**.
 - **cleanupPreference**. Geef de voor keur op voor het opschonen van implementatie resources wanneer de uitvoering van het script wordt uitgevoerd in een Terminal status. De standaard instelling is **altijd**, wat betekent dat de resources worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources)voor meer informatie.
 - **retentionInterval**: Geef het interval op waarvoor de service de implementatie script bronnen behoudt nadat de uitvoering van het implementatie script een Terminal status heeft bereikt. De resources van het implementatie script worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het [ISO 8601-patroon](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**. Dit betekent dat er zeven dagen zijn. Deze eigenschap wordt gebruikt wanneer cleanupPreference is ingesteld op *OnExpiration*. De eigenschap *OnExpiration* is momenteel niet ingeschakeld. Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources)voor meer informatie.
@@ -124,7 +137,7 @@ Voor de volgende sjabloon is één resource gedefinieerd met het `Microsoft.Reso
 
 Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output` wordt gebruikt voor fout opsporing. Zie [debug Deployment scripts](#debug-deployment-scripts)(Engelstalig) voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjabloon](#sample-template)voor de beschrijving van de eigenschap.
 
-Als u het script wilt uitvoeren, selecteert u **proberen** om de Cloud shell te openen en plakt u de volgende code in het deel venster shell.
+Als u het script wilt uitvoeren, selecteert u **proberen het** te openen Azure Cloud shell en plakt u de volgende code in het deel venster shell.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +157,7 @@ De uitvoer ziet er als volgt uit:
 
 ## <a name="use-external-scripts"></a>Externe scripts gebruiken
 
-Naast inline-scripts kunt u ook externe script bestanden gebruiken. Momenteel worden alleen Power shell-scripts met de bestands extensie **PS1** ondersteund. Als u externe script bestanden wilt gebruiken, moet u `scriptContent` vervangen door `primaryScriptUri`. Bijvoorbeeld:
+Naast inline-scripts kunt u ook externe script bestanden gebruiken. Alleen primaire Power shell-scripts met de bestands extensie **PS1** worden ondersteund. Voor CLI-scripts kunnen de primaire scripts alle uitbrei dingen (of zonder een uitbrei ding) hebben, zolang de scripts geldige bash-scripts zijn. Als u externe script bestanden wilt gebruiken, moet u `scriptContent` vervangen door `primaryScriptUri`. Bijvoorbeeld:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +183,11 @@ U kunt complexe logica van elkaar scheiden in een of meer ondersteunende script 
 ],
 ```
 
-Ondersteunende script bestanden kunnen worden aangeroepen vanuit inline scripts en primaire script bestanden.
+Ondersteunende script bestanden kunnen worden aangeroepen vanuit inline scripts en primaire script bestanden. Ondersteunende script bestanden hebben geen beperkingen voor de bestands extensie.
 
 De ondersteunende bestanden worden tijdens de runtime gekopieerd naar azscripts/azscriptinput. Gebruik relatief pad om te verwijzen naar de ondersteunende bestanden van inline-scripts en primaire script bestanden.
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>Werken met uitvoer van implementatie scripts
+## <a name="work-with-outputs-from-powershell-script"></a>Werken met uitvoer van Power shell-script
 
 De volgende sjabloon laat zien hoe waarden worden door gegeven tussen twee deploymentScripts-resources:
 
@@ -185,6 +198,16 @@ In de eerste resource definieert u een variabele met de naam **$DeploymentScript
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>Werken met uitvoer van CLI-script
+
+Met de CLI/bash-ondersteuning van het Power shell-implementatie script wordt niet een gemeen schappelijke variabele voor het opslaan van script uitvoer weer gegeven, maar er is een omgevings variabele met de naam **AZ_SCRIPTS_OUTPUT_PATH** waarin de locatie wordt opgeslagen waar het bestand met script uitvoer zich bevindt. Als een implementatie script wordt uitgevoerd vanuit een resource manager-sjabloon, wordt deze omgevings variabele automatisch voor u ingesteld door de bash-shell.
+
+Uitvoer van het implementatie script moet worden opgeslagen op de AZ_SCRIPTS_OUTPUT_PATH locatie en de uitvoer moet een geldig JSON-teken reeks object zijn. De inhoud van het bestand moet worden opgeslagen als een sleutel/waarde-paar. Een matrix met teken reeksen wordt bijvoorbeeld opgeslagen als {"MyResult": ["foo", "Bar"]}.  Alleen de matrix resultaten worden opgeslagen, bijvoorbeeld [' foo ', ' bar '], is ongeldig.
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+[JQ](https://stedolan.github.io/jq/) wordt in het vorige voor beeld gebruikt. Het wordt geleverd met de container installatie kopieën. Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
 ## <a name="debug-deployment-scripts"></a>Fout opsporing voor implementatie scripts
 
@@ -264,7 +287,7 @@ Uitvoering van het implementatie script is een idempotent-bewerking. Als geen va
 
 ## <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 
-Het implementatie script ondersteunt momenteel Azure PowerShell versie 2.7.0, 2.8.0 en 3.0.0.  Als u een Windows-computer hebt, kunt u een van de ondersteunde versies van Azure PowerShell installeren en implementatie scripts gaan ontwikkelen en testen.  Als u geen Windows-computer hebt of als u niet een van deze Azure PowerShell-versies hebt geïnstalleerd, kunt u een vooraf geconfigureerde docker-container installatie kopie gebruiken. De volgende procedure laat zien hoe u de docker-installatie kopie kunt configureren in Windows. Voor Linux en Mac vindt u de informatie op internet.
+U kunt een vooraf geconfigureerde docker-container installatie kopie gebruiken als uw ontwikkel omgeving voor implementatie scripts. De volgende procedure laat zien hoe u de docker-installatie kopie kunt configureren in Windows. Voor Linux en Mac vindt u de informatie op internet.
 
 1. Installeer [docker Desktop](https://www.docker.com/products/docker-desktop) op uw ontwikkel computer.
 1. Open docker Desktop.
@@ -281,7 +304,15 @@ Het implementatie script ondersteunt momenteel Azure PowerShell versie 2.7.0, 2.
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    In het voor beeld wordt gebruikgemaakt van versie 2.7.0.
+    In het voor beeld wordt gebruikgemaakt van versie Power Shell 2.7.0.
+
+    Een CLI-installatie kopie ophalen uit een micro soft Container Registry (MCR):
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    In dit voor beeld wordt gebruikgemaakt van versie CLI 2.0.80. Het implementatie script maakt gebruik van de standaard installatie kopieën voor CLI-containers die [hier](https://hub.docker.com/_/microsoft-azure-cli)worden gevonden.
 
 1. Voer de docker-installatie kopie lokaal uit.
 
@@ -297,12 +328,18 @@ Het implementatie script ondersteunt momenteel Azure PowerShell versie 2.7.0, 2.
 
     **-het** betekent dat de container installatie kopie actief blijft.
 
+    Een CLI-voor beeld:
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. Selecteer **delen** als u een prompt krijgt.
-1. Voer een Power shell-script uit, zoals in de volgende scherm afbeelding wordt weer gegeven (als u een bestand HelloWorld. ps1 hebt in de map d:\docker.)
+1. In de volgende scherm afbeelding ziet u hoe u een Power shell-script uitvoert, aan de hand van een bestand HelloWorld. ps1 in de map d:\docker.
 
     ![Docker-opdracht voor implementatie script van Resource Manager-sjabloon](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-Nadat het Power shell-script is getest, kunt u het gebruiken als een implementatie script.
+Nadat het script is getest, kunt u het gebruiken als een implementatie script.
 
 ## <a name="next-steps"></a>Volgende stappen
 

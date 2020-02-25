@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen SAP HANA 2,0 scale-out HSR-pacemaker Setup met SLES 12 SP3 op Azure virtual machines | Microsoft Docs
+title: SAP HANA scale-out HSR-pacemaker met SLES op Azure Vm's Troubleshooting | Microsoft Docs
 description: Gids voor het controleren en oplossen van problemen met een complexe SAP HANA scale-out configuratie met hoge Beschik baarheid op basis van SAP HANA System Replication (HSR) en pacemaker op SLES 12 SP3 dat wordt uitgevoerd op Azure virtual machines
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb90bfff72f41d8d7ccc34d3ad6dd0e9206bb88e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099667"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566230"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Controleren en problemen oplossen SAP HANA scale-out instellingen voor hoge Beschik baarheid in SLES 12 SP3 
 
@@ -65,7 +65,7 @@ Wanneer u de opdracht **CRM migreren** gebruikt, moet u ervoor zorgen dat u de c
  Voor SAP HANA scale-out HA-verificatie en-certificering werd een installatie gebruikt. Het bestaat uit twee systemen met drie SAP HANA knoop punten: één master en twee werk rollen. De volgende tabel bevat de namen van virtuele machines en interne IP-adressen. Alle verificatie voorbeelden die volgen, zijn uitgevoerd op deze Vm's. Door gebruik te maken van deze VM-namen en IP-adressen in de voor beelden van de opdracht, kunt u beter inzicht krijgen in de opdrachten en de bijbehorende uitvoer:
 
 
-| Knooppunttype | VM-naam | IP-adres |
+| Knooppunt type | VM-naam | IP-adres |
 | --- | --- | --- |
 | Hoofd knooppunt op site 1 | hso-hana-vm-s1-0 | 10.0.0.30 |
 | Worker-knoop punt 1 op site 1 | hso-hana-vm-s1-1 | 10.0.0.31 |
@@ -202,7 +202,7 @@ totem {
 }
 </code></pre>
 
-De tweede sectie, **logboek registratie**, is niet gewijzigd ten opzichte van de opgegeven standaard waarden:
+De tweede sectie, logboek registratie, is niet gewijzigd ten **opzichte**van de opgegeven standaard waarden:
 
 <pre><code>
 logging {
@@ -458,7 +458,7 @@ Tijdens het testen en verifiëren na het opnieuw opstarten van een virtuele mach
 6. Als dat niet het geval is, stelt u deze in op wanneer u in plaats van **hand matig** **opstart** .
 7. Vervolgens schakelt u het bovenste tabblad naar **verbonden doelen**.
 8. Op het scherm **verbonden doelen** ziet u een vermelding voor het SBD-apparaat, zoals in dit voor beeld: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
-9. Controleer of de opstart waarde is ingesteld **op tijdens het opstarten**.
+9. Controleer **of de opstart** waarde is ingesteld **op tijdens het opstarten**.
 10. Als dat niet het geval is, kiest u **bewerken** en wijzigt u deze.
 11. Sla de wijzigingen op en sluit YaST2 af.
 
@@ -538,7 +538,7 @@ Een belang rijk onderdeel van pacemaker is onderhouds modus. In deze modus kunt 
 crm configure property maintenance-mode=true
 </code></pre>
 
-Wanneer u de **status van CRM**controleert, ziet u in de uitvoer dat alle resources zijn gemarkeerdals onbeheerd. In deze status reageert het cluster niet op wijzigingen zoals het starten of stoppen van SAP HANA.
+Wanneer u de **status van CRM**controleert, ziet u in de uitvoer dat alle resources zijn gemarkeerd als **onbeheerd**. In deze status reageert het cluster niet op wijzigingen zoals het starten of stoppen van SAP HANA.
 In het volgende voor beeld ziet u de uitvoer van de opdracht **CRM-status** terwijl het cluster zich in de onderhouds modus bevindt:
 
 <pre><code>
@@ -633,7 +633,7 @@ Failed Actions:
     last-rc-change='Wed Sep 12 17:01:28 2018', queued=0ms, exec=277663ms
 </code></pre>
 
-U moet na storingen een cluster opschonen. Gebruik de **CRM** -opdracht opnieuw en gebruik de opdracht optie opruimen om deze mislukte actie vermeldingen op te halen. Geef de overeenkomstige cluster bron de volgende naam:
+U moet na storingen een cluster opschonen. Gebruik de **CRM** -opdracht opnieuw en gebruik de opdracht optie **opruimen** om deze mislukte actie vermeldingen op te halen. Geef de overeenkomstige cluster bron de volgende naam:
 
 <pre><code>
 crm resource cleanup rsc_SAPHanaCon_HSO_HDB00
@@ -656,7 +656,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Failover of overname
 
-Zoals beschreven in [belang rijke opmerkingen](#important-notes), mag u geen standaard zonder problemen gebruiken om de failover van het cluster of SAP Hana HSR-overname te testen. In plaats daarvan raden we u aan een kernel in te scha kelen, een bron migratie af te dwingen of om alle netwerken op het niveau van het besturings systeem van een virtuele machine af te sluiten. Een andere methode is de stand-by-opdracht van het **\<CRM-knoop punt\>** . Zie het [SuSE-document][sles-12-ha-paper]. 
+Zoals beschreven in [belang rijke opmerkingen](#important-notes), mag u geen standaard zonder problemen gebruiken om de failover van het cluster of SAP Hana HSR-overname te testen. In plaats daarvan raden we u aan een kernel in te scha kelen, een bron migratie af te dwingen of om alle netwerken op het niveau van het besturings systeem van een virtuele machine af te sluiten. Een andere methode is de **CRM-\<knoop punt\> de stand-by** -opdracht. Zie het [SuSE-document][sles-12-ha-paper]. 
 
 De volgende drie voorbeeld opdrachten kunnen een clusterfailover geforceerd:
 
@@ -682,7 +682,7 @@ Het helpt ook de SAP HANA landschaps status te bekijken die afkomstig is van een
 
 Er zijn enkele nieuwe pogingen om onnodige failovers te voor komen. Het cluster reageert alleen als de status wordt gewijzigd van **OK**, retour waarde **4**, naar **fout**, retour waarde **1**. Het is dus correct als de uitvoer van **SAPHanaSR-showAttr** een virtuele machine met de status **offline**weergeeft. Maar er is nog geen activiteit om de primaire en secundaire te scha kelen. Er wordt geen cluster activiteit geactiveerd, zolang SAP HANA geen fout retourneert.
 
-U kunt de status van de SAP Hana landschap controleren als gebruiker  **\<Hana\>sid adm** door het SAP python-script als volgt aan te roepen. Mogelijk moet u het pad aanpassen:
+U kunt de SAP HANA liggende status controleren als gebruiker **\<Hana SID\>adm** door het SAP python-script aan te roepen als volgt. Mogelijk moet u het pad aanpassen:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -753,7 +753,7 @@ De procedure voor onderhoud op de huidige primaire site is complexer:
 
 Bij het migreren van een resource wordt een vermelding toegevoegd aan de cluster configuratie. Een voor beeld is een failover afgedwongen. U moet deze vermeldingen opschonen voordat u de onderhouds modus beëindigt. Zie het volgende voor beeld.
 
-Eerst moet u een clusterfailover afdwingen door de **MSL** -resource te migreren naar het huidige secundaire hoofd knooppunt. Met deze opdracht geeft u een waarschuwing dat een verplaatsings **beperking** is gemaakt:
+Eerst moet u een clusterfailover afdwingen door de **MSL** -resource te migreren naar het huidige secundaire hoofd knooppunt. Met deze opdracht geeft u een waarschuwing dat een **verplaatsings beperking** is gemaakt:
 
 <pre><code>
 crm resource migrate msl_SAPHanaCon_HSO_HDB00 force
@@ -768,7 +768,7 @@ Controleer het failoverproces via de opdracht **SAPHanaSR-showAttr**. Als u de c
 watch SAPHanaSR-showAttr
 </code></pre>
 
-In de uitvoer moet de hand matige failover worden weer gegeven. Het voormalige secundaire hoofd knooppunt isgepromoveerd, in dit voor beeld **HSO-Hana-VM-S2-0**. De voormalige primaire site is gestopt, **LSS** waarde **1** voor het voormalige primaire hoofd knooppunt **HSO-Hana-VM-S1-0**: 
+In de uitvoer moet de hand matige failover worden weer gegeven. Het voormalige secundaire hoofd knooppunt is **gepromoveerd**, in dit voor beeld **HSO-Hana-VM-S2-0**. De voormalige primaire site is gestopt, **LSS** waarde **1** voor het voormalige primaire hoofd knooppunt **HSO-Hana-VM-S1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -807,7 +807,7 @@ Binnen de cluster configuratie vindt u een nieuwe locatie beperking die is veroo
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-Helaas kunnen dergelijke beperkingen van invloed zijn op het algehele gedrag van het cluster. Daarom is het verplicht om ze opnieuw te verwijderen voordat u het hele systeem back-up brengt. Met de opdracht unmigrate kunt u de locatie beperkingen opschonen die eerder zijn gemaakt. De naam kan enigszins verwarrend zijn. De resource wordt niet opnieuw gemigreerd naar de oorspronkelijke VM van waaruit deze is gemigreerd. Alleen de locatie beperkingen worden verwijderd en ook de bijbehorende informatie wordt geretourneerd wanneer u de opdracht uitvoert:
+Helaas kunnen dergelijke beperkingen van invloed zijn op het algehele gedrag van het cluster. Daarom is het verplicht om ze opnieuw te verwijderen voordat u het hele systeem back-up brengt. Met de opdracht **unmigrate** kunt u de locatie beperkingen opschonen die eerder zijn gemaakt. De naam kan enigszins verwarrend zijn. De resource wordt niet opnieuw gemigreerd naar de oorspronkelijke VM van waaruit deze is gemigreerd. Alleen de locatie beperkingen worden verwijderd en ook de bijbehorende informatie wordt geretourneerd wanneer u de opdracht uitvoert:
 
 
 <pre><code>
@@ -822,7 +822,7 @@ Aan het einde van het onderhouds werk stopt u de onderhouds modus van het cluste
 
 ## <a name="hb_report-to-collect-log-files"></a>hb_report voor het verzamelen van logboek bestanden
 
-Voor het analyseren van problemen met pacemaker-clusters is het handig en is de SUSE-ondersteuning gevraagd om het **hb_report** -hulp programma uit te voeren. Alle belang rijke logboek bestanden die u nodig hebt om te analyseren wat er is gebeurd, worden verzameld. In deze voorbeeld aanroep wordt gebruikgemaakt van een begin-en eind tijd waarop een specifiek incident heeft plaatsgevonden. Zie ook [belang rijke opmerkingen](#important-notes):
+Voor het analyseren van problemen met pacemaker-clusters is het handig en wordt u gevraagd door SUSE-ondersteuning om het **hb_report** -hulp programma uit te voeren. Alle belang rijke logboek bestanden die u nodig hebt om te analyseren wat er is gebeurd, worden verzameld. In deze voorbeeld aanroep wordt gebruikgemaakt van een begin-en eind tijd waarop een specifiek incident heeft plaatsgevonden. Zie ook [belang rijke opmerkingen](#important-notes):
 
 <pre><code>
 hb_report -f "2018/09/13 07:36" -t "2018/09/13 08:00" /tmp/hb_report_log
@@ -945,7 +945,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 De cluster-oplossing biedt een browser interface die een GUI biedt voor gebruikers die de voor keur geven aan menu's en afbeeldingen om alle opdrachten op het shell niveau te krijgen.
-Als u de browser interface wilt gebruiken **\<,\>** vervangt u het knoop punt door een werkelijk SAP Hana knoop punt in de volgende URL. Voer vervolgens de referenties in van het cluster (gebruikers **cluster**):
+Als u de browser interface wilt gebruiken, vervangt u **\<knoop punt\>** door een werkelijk SAP Hana knoop punt in de volgende URL. Voer vervolgens de referenties in van het cluster (gebruikers **cluster**):
 
 <pre><code>
 https://&ltnode&gt:7630
@@ -963,13 +963,13 @@ In dit voor beeld worden de locatie beperkingen weer gegeven die zijn veroorzaak
 ![Hawk-lijst beperkingen](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-U kunt de **hb_report** -uitvoer ook uploaden in Hawk onder **geschiedenis**, zoals hieronder wordt weer gegeven. Zie hb_report voor het verzamelen van logboek bestanden: 
+U kunt ook de **hb_report** uitvoer uploaden in Hawk onder **geschiedenis**, zoals hieronder wordt weer gegeven. Zie hb_report voor het verzamelen van logboek bestanden: 
 
-![Hawk hb_report-uitvoer uploaden](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
+![Hawk-upload hb_report uitvoer](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-Met de **geschiedenis Verkenner**kunt u vervolgens alle cluster overgangen door lopen die zijn opgenomen in de **hb_report** -uitvoer:
+Met de **geschiedenis Verkenner**kunt u vervolgens alle cluster overgangen door lopen die zijn opgenomen in de **hb_report** uitvoer:
 
-![Hawk overgangen in de hb_report-uitvoer](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![Hawk overgangen in de hb_report uitvoer](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
 Deze laatste scherm afbeelding toont de sectie **Details** van één overgang. Het cluster is gereageerd op een primair hoofd knooppunt crash, knoop punt **HSO-Hana-VM-S1-0**. Nu wordt het secundaire knoop punt bevorderd als de nieuwe Master, **HSO-Hana-VM-S2-0**:
 

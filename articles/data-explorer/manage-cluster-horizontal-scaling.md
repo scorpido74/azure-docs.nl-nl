@@ -1,5 +1,5 @@
 ---
-title: Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
+title: Horizon taal schalen van cluster beheren (uitschalen) om te voldoen aan de vraag in azure Data Explorer
 description: In dit artikel worden de stappen beschreven voor het uitschalen en schalen in een Azure Data Explorer-cluster op basis van het wijzigen van de vraag.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833291"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560453"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
 
@@ -100,7 +100,7 @@ Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis 
     | **Tijd aggregatie** | Selecteer een aggregatie criterium, zoals **gemiddeld**. |
     | **Metrische naam** | Selecteer de metrische gegevens waarop u de schaal bewerking wilt baseren, zoals het **cache gebruik**. |
     | **Statistieken voor tijd korrels** | Kies een **gemiddelde**, een **minimum**, een **maximum**en een **som**. |
-    | **Operator** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
+    | **And** | Kies de gewenste optie, zoals **groter dan of gelijk aan**. |
     | **Spreek** | Kies een geschikte waarde. Bijvoorbeeld: voor cache gebruik is 80 procent een goed uitgangs punt. |
     | **Duur (in minuten)** | Kies een geschikte hoeveelheid tijd om het systeem terug te laten kijken bij het berekenen van metrische gegevens. Begin met de standaard waarde van 10 minuten. |
     |  |  |
@@ -120,8 +120,8 @@ Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis 
 
     | Instelling | Beschrijving en waarde |
     | --- | --- |
-    | **Minimum** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
-    | **Maximum** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
+    | **Maal** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
+    | **Gehalte** | Het aantal exemplaren dat door uw cluster niet kan worden geschaald, ongeacht het gebruik. |
     | **Standaard** | Het standaard aantal exemplaren. Deze instelling wordt gebruikt als er problemen zijn met het lezen van de metrische gegevens van de resource. |
     |  |  |
 

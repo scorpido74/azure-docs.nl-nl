@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500413"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565783"
 ---
 # <a name="what-is-azure-private-link-service"></a>Wat is Azure Private Link service?
 
@@ -111,6 +111,8 @@ Aangepaste TLV-gegevens:
 |Waarde  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 bytes) die de LINKID van het persoonlijke eind punt vertegenwoordigen. Gecodeerd in little endian-indeling.|
 
+ > [!NOTE]
+ > Service provider is verantwoordelijk om ervoor te zorgen dat de service achter de standaard load balancer zo is geconfigureerd dat de header van het proxy protocol wordt geparseerd volgens de [specificatie](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) wanneer proxy protocol is ingeschakeld op de privé koppelings service. De aanvraag mislukt als het proxy protocol is ingeschakeld op de privé koppelings service en de service niet is geconfigureerd voor het parseren van de header. Op dezelfde manier mislukt de aanvraag als de service een header van het proxy protocol verwacht terwijl de instelling niet is ingeschakeld op de persoonlijke koppelings service. Zodra het proxy protocol is ingeschakeld, wordt de header van het proxy protocol ook opgenomen in HTTP/TCP-status tests van de host naar de virtuele machine van de back-end, zelfs als er geen client informatie in de header voor komt. 
 
 ## <a name="limitations"></a>Beperkingen
 

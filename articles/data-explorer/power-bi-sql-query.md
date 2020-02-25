@@ -1,5 +1,5 @@
 ---
-title: Gegevens visualiseren vanuit Azure Data Explorer met behulp van een SQL-query in Power BI
+title: Gegevens visualiseren vanuit Azure Data Explorer met een Power BI SQL-query
 description: 'In dit artikel leert u hoe u een van de drie opties voor het visualiseren van gegevens in Power BI kunt gebruiken: een SQL-query op een Azure Data Explorer-cluster.'
 author: orspod
 ms.author: orspodek
@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024089"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560470"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Gegevens visualiseren vanuit Azure Data Explorer met behulp van een SQL-query in Power BI
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie.
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie.
 
 Azure Data Explorer biedt drie opties om gegevens te verbinden in Power BI: de ingebouwde connector gebruiken, een query importeren uit Azure Data Explorer, of een SQL-query gebruiken. In dit artikel wordt beschreven hoe u een SQL-query gebruikt om gegevens op te halen en deze te visualiseren in een Power BI-rapport.
 

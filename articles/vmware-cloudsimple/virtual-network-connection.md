@@ -1,6 +1,6 @@
 ---
-title: Virtueel Azure-netwerk verbinden met AVS met behulp van ExpressRoute
-description: Hierin wordt beschreven hoe u peering-informatie kunt verkrijgen voor een verbinding tussen het virtuele Azure-netwerk en uw AVS-omgeving
+title: Virtuele Azure-netwerk verbinden met CloudSimple met behulp van ExpressRoute-Azure VMware-oplossing door CloudSimple
+description: Hierin wordt beschreven hoe u peering-informatie kunt verkrijgen voor een verbinding tussen het virtuele Azure-netwerk en uw CloudSimple-omgeving
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,44 +8,44 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ff11bbafe6f9057ce70c799e0437691d89ccb40
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6b20ee4e04a4443529ecceca8c6fc2206f7df39d
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014399"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77563993"
 ---
-# <a name="connect-azure-virtual-network-to-avs-using-expressroute"></a>Virtueel Azure-netwerk verbinden met AVS met behulp van ExpressRoute
+# <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Virtueel Azure-netwerk verbinden met CloudSimple met behulp van ExpressRoute
 
-U kunt uw automatische AVS-Cloud netwerk uitbreiden naar uw virtuele Azure-netwerk en Azure-resources. Met een ExpressRoute-verbinding kunt u toegang krijgen tot resources die worden uitgevoerd in uw Azure-abonnement vanuit de Privécloud van uw AVS.
+U kunt uw particuliere cloud netwerk uitbreiden naar uw virtuele Azure-netwerk en Azure-resources. Met een ExpressRoute-verbinding kunt u vanuit uw Privécloud toegang krijgen tot resources die worden uitgevoerd in uw Azure-abonnement.
 
 ## <a name="request-authorization-key"></a>Aanvraag autorisatie sleutel
 
-Een autorisatie sleutel is vereist voor de ExpressRoute-verbinding tussen uw Privécloud en het virtuele netwerk van Azure. Als u een sleutel wilt verkrijgen, moet u een ticket indienen met <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">ondersteuning</a>. Gebruik de volgende informatie in de aanvraag:
+Een autorisatie sleutel is vereist voor de ExpressRoute-verbinding tussen uw Privécloud en het virtuele Azure-netwerk. Als u een sleutel wilt verkrijgen, moet u een ticket indienen met <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">ondersteuning</a>.  Gebruik de volgende informatie in de aanvraag:
 
 * Probleem type: **technisch**
-* Abonnement: **Selecteer het abonnement waarin de AVS-service is geïmplementeerd**
-* Service: **VMware-oplossingen (AVS)**
+* Abonnement: **Selecteer het abonnement waarin de CloudSimple-service is geïmplementeerd**
+* Service: **VMware-oplossing per CloudSimple**
 * Probleem type: **service aanvraag**
 * Subtype van het probleem: **autorisatie sleutel voor Azure VNET-verbinding**
 * Subject: **aanvraag voor autorisatie sleutel voor Azure VNET-verbinding**
 
-## <a name="get-peering-information-from-avs-portal"></a>Peering-gegevens ophalen van de AVS-Portal
+## <a name="get-peering-information-from-cloudsimple-portal"></a>Informatie over peering ophalen van CloudSimple Portal
 
-Als u de verbinding wilt instellen, moet u een verbinding tot stand brengen tussen een virtueel Azure-netwerk en uw AVS-omgeving. Als onderdeel van de procedure moet u de URI en autorisatie sleutel van het peer circuit opgeven. Haal de URI en autorisatie sleutel op uit de [AVS-Portal](access-cloudsimple-portal.md). Selecteer **netwerk** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**. Of selecteer **account** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**.
+Als u de verbinding wilt instellen, moet u een verbinding tot stand brengen tussen een virtueel Azure-netwerk en uw CloudSimple-omgeving.  Als onderdeel van de procedure moet u de URI en autorisatie sleutel van het peer circuit opgeven. Haal de URI en autorisatie sleutel op uit de [CloudSimple-Portal](access-cloudsimple-portal.md).  Selecteer **netwerk** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**. Of selecteer **account** in het menu aan de zijkant en selecteer vervolgens **Azure-netwerk verbinding**.
 
-Kopieer de URI van het peer circuit en voor de autorisatie sleutel voor elk van de regio's met behulp van het *Kopieer* pictogram. Voor elke AVS-regio die u wilt verbinden:
+Kopieer de URI van het peer circuit en voor de autorisatie sleutel voor elk van de regio's met behulp van het *Kopieer* pictogram. Voor elke CloudSimple-regio die u wilt verbinden:
 
-1. Klik op **kopiëren** om de URI te kopiëren. Plak deze in een bestand waar het kan worden toegevoegd aan de Azure Portal. 
+1. Klik op **kopiëren** om de URI te kopiëren. Plak deze in een bestand waar het kan worden toegevoegd aan de Azure Portal.  
 2. Klik op **kopiëren** om de autorisatie sleutel te kopiëren en deze ook in het bestand te plakken.
 
-Kopieer de autorisatie sleutel en de URI van het peer circuit met de status **beschikbaar** . De **gebruikte** status geeft aan dat de sleutel al is gebruikt voor het maken van een virtuele netwerk verbinding.
+Kopieer de autorisatie sleutel en de URI van het peer circuit met de status **beschikbaar** .  De **gebruikte** status geeft aan dat de sleutel al is gebruikt voor het maken van een virtuele netwerk verbinding.
 
 ![Virtual Network verbindings pagina](media/virtual-network-connection.png)
 
-Zie voor meer informatie over het instellen van het virtuele Azure-netwerk naar AVS koppeling [verbinding maken met uw cloud omgeving van uw AVS in het virtuele Azure-netwerk met behulp van ExpressRoute](azure-expressroute-connection.md).
+Zie [uw CloudSimple Private Cloud Environment verbinden met het virtuele Azure-netwerk met behulp van ExpressRoute](azure-expressroute-connection.md)voor meer informatie over het instellen van het virtuele netwerk van Azure op CloudSimple.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Virtuele Azure-netwerk verbinding naar de AVS-privécloud](azure-expressroute-connection.md)
+* [Virtuele Azure-netwerk verbinding met Privécloud](azure-expressroute-connection.md)
 * [Verbinding maken met een on-premises netwerk met behulp van Azure ExpressRoute](on-premises-connection.md)

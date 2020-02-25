@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 2d078f9715a0cfa171f0c88776a4ab78c15215a8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186744"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561847"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Selecteer de juiste VM-SKU voor uw Azure Data Explorer-cluster 
 
@@ -27,23 +27,23 @@ U kunt de VM-SKU voor het engine-cluster op elk gewenst moment wijzigen door [he
 
 In dit artikel worden verschillende opties voor de VM-SKU beschreven en vindt u de technische details waarmee u de beste keuze kunt maken.
 
-## <a name="select-a-cluster-type"></a>Een clustertype selecteren
+## <a name="select-a-cluster-type"></a>Een cluster type selecteren
 
 Azure Data Explorer biedt twee typen clusters:
 
-* **Productie**: Productie clusters bevatten twee knoop punten voor Engine-en gegevens beheer clusters en worden beheerd onder de [Sla](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)van Azure Data Explorer.
+* **Productie**: productie clusters bevatten twee knoop punten voor Engine-en gegevens beheer clusters en worden beheerd onder de [SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)van Azure Data Explorer.
 
-* **Dev/test (geen sla)** : Dev/test-clusters hebben één D11 v2-knoop punt voor het engine-cluster en één D1-knoop punt voor het gegevens beheer cluster. Dit cluster type is de laagste kosten configuratie vanwege een laag aantal exemplaren en geen kosten voor Engine-aantekeningen. Er is geen SLA voor deze cluster configuratie, omdat deze geen redundantie heeft.
+* **Dev/test (geen sla)** : dev/test-clusters hebben één D11 v2-knoop punt voor het engine-cluster en één D1-knoop punt voor het gegevens beheer cluster. Dit cluster type is de laagste kosten configuratie vanwege een laag aantal exemplaren en geen kosten voor Engine-aantekeningen. Er is geen SLA voor deze cluster configuratie, omdat deze geen redundantie heeft.
 
 ## <a name="sku-types"></a>SKU-typen
 
 Wanneer u een Azure Data Explorer-cluster maakt, selecteert u de *optimale* VM-SKU voor de geplande werk belasting. U kunt kiezen uit de volgende twee Azure Data Explorer SKU-families:
 
-* **D v2**: De D-SKU is geoptimaliseerd voor berekening en komt in twee soorten voor:
+* **D v2**: de d-SKU is geoptimaliseerd voor reken kracht en komt in twee soorten voor:
     * De VM zelf
     * De VM gebundeld met Premium-opslag schijven
 
-* **LS**: De L-SKU is geoptimaliseerd voor opslag. Het heeft een veel groter SSD-grootte dan de D-SKU met dezelfde prijs.
+* **Ls**: de L-SKU is geoptimaliseerd voor opslag. Het heeft een veel groter SSD-grootte dan de D-SKU met dezelfde prijs.
 
 De belangrijkste verschillen tussen de beschik bare SKU-typen worden beschreven in de volgende tabel:
  
@@ -52,7 +52,7 @@ De belangrijkste verschillen tussen de beschik bare SKU-typen worden beschreven 
 |**Kleine Sku's**|De minimale grootte is D11 met twee kernen|Minimale grootte is N4 met vier kernen |
 |**Beschikbaarheid**|Beschikbaar in alle regio's (de DS + PS-versie heeft een meer beperkte Beschik baarheid)|Beschikbaar in een paar regio's |
 |**Kosten per&nbsp;GB cache per kern**|Hoog met de D-SKU, laag met de DS + PS-versie|Laagste met de optie voor betalen naar gebruik |
-|**Prijzen voor gereserveerde instanties (RI)**|Hoge korting (meer dan&nbsp;55 procent voor een toezeg ging van drie jaar)|Lagere korting (20&nbsp;procent voor een toezeg ging van drie jaar) |  
+|**Prijzen voor gereserveerde instanties (RI)**|Hoge korting (meer dan 55&nbsp;procent voor een toezeg ging van drie jaar)|Lagere korting (20&nbsp;procent voor een toezeg ging van drie jaar) |  
 
 ## <a name="select-your-cluster-vm"></a>De virtuele machine van het cluster selecteren 
 
@@ -62,13 +62,13 @@ Met de verschillende opties voor de VM-SKU kunt u de kosten voor de prestaties e
 * Als u de meest optimale prestaties voor een hoog query volume nodig hebt, moet de ideale SKU worden geoptimaliseerd voor berekening. 
 * Als u grote hoeveel heden gegevens met een relatief lagere query belasting moet opvragen, kan de door opslag geoptimaliseerde SKU bijdragen aan lagere kosten en toch uitstekende prestaties bieden.
 
-Omdat het aantal exemplaren per cluster voor de kleine Sku's beperkt is, is het beter om grotere Vm's te gebruiken met meer RAM-geheugen. Er is meer RAM-geheugen nodig voor sommige query typen waarmee meer eisen worden gesteld aan de RAM-bron, `joins`zoals query's die gebruikmaken van. Daarom raden we u aan om met schaal opties te schalen naar een grotere SKU in plaats van uitschalen door meer instanties toe te voegen.
+Omdat het aantal exemplaren per cluster voor de kleine Sku's beperkt is, is het beter om grotere Vm's te gebruiken met meer RAM-geheugen. Er is meer RAM-geheugen nodig voor sommige query typen waarmee meer eisen worden gesteld aan de RAM-bron, zoals query's die gebruikmaken van `joins`. Daarom raden we u aan om met schaal opties te schalen naar een grotere SKU in plaats van uitschalen door meer instanties toe te voegen.
 
 ## <a name="vm-options"></a>VM-opties
 
 De technische specificaties voor de Azure Data Explorer cluster-Vm's worden beschreven in de volgende tabel:
 
-|**Name**| **Categorie** | **SSD-grootte** | **Kernen** | **NODIG** | **Premium-opslag schijven (&nbsp;1 TB)**| **Minimum aantal exemplaren per cluster** | **Maximum aantal exemplaren per cluster**
+|**Naam**| **Categorie** | **SSD-grootte** | **Kernen** | **NODIG** | **Premium-opslag schijven (1&nbsp;TB)**| **Minimum aantal exemplaren per cluster** | **Maximum aantal exemplaren per cluster**
 |---|---|---|---|---|---|---|---
 |D11 v2| compute-Optimized | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8 (behalve voor de SKU dev/test, die 1 is)
 |D12 v2| compute-Optimized | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16

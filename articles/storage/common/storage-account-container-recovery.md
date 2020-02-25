@@ -1,17 +1,19 @@
 ---
 title: Herstel van opslag account container
 description: Herstel van opslag account container
+services: storage
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
 ms.date: 10/30/2019
 ms.service: storage
-ms.openlocfilehash: f095bdfe7bbb5777a2ad2aabb3bda92d0974457d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: dcscontentpm
+ms.openlocfilehash: 8b9b69fb32edab54fb2df558ea292df264e00cbb
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693577"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562272"
 ---
 # <a name="storage-account-container-recovery"></a>Herstel van opslag account container
 
@@ -39,7 +41,7 @@ Azure Storage biedt gegevens tolerantie via automatische replica's. Dit voor kom
 
    |Type inhoud|LRS|ZRS|GRS|RA-GRS| 
    |---|---|---|---|---|
-   |Opslag container|Nee|Nee|Ja|Ja| 
+   |Storage-Container|Nee|Nee|Ja|Ja| 
 
    * We kunnen proberen de container voor het opslag account te herstellen, maar zonder enige garantie. 
 

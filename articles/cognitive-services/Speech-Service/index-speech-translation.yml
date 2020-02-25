@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Documentatie voor spraak omzetting
+summary: Spraak omzetting van de speech-service biedt de mogelijkheid om audio gegevensstromen in realtime, meertalige spraak naar spraak en spraak naar tekst te converteren
+metadata:
+  title: Documentatie voor spraak omzetting-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562920"
+landingContent:
+- title: Aan de slag
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is spraakomzetting?
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: Spraak naar tekst omzetten
+      url: quickstarts/translate-speech-to-text.md
+    - text: Spraak omzetten in meerdere doel talen
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: Spraak naar spraak omzetten
+      url: quickstarts/translate-speech-to-speech.md
+- title: Stapsgewijze handleidingen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Spraak in realtime vertalen
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: Tekst vertalen en voor REST-Api's nakunsten
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Taalondersteuning
+      url: language-support.md#speech-translation
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: Veelgestelde vragen over spraakomzetting
+      url: https://www.microsoft.com/translator/business/faq/

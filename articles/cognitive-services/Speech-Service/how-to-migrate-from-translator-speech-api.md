@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805906"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560895"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migreren van de Translator Speech-API naar de speech-service
 
-Gebruik dit artikel om uw toepassingen van de micro soft-Translator Speech-API naar de [Speech-Service](index.md)te migreren. In deze hand leiding vindt u een overzicht van de verschillen tussen de Translator Speech-API-en spraak service, en suggesties voor strategieën voor het migreren van uw toepassingen.
+Gebruik dit artikel om uw toepassingen van de micro soft-Translator Speech-API naar de [Speech-Service](index.yml)te migreren. In deze hand leiding vindt u een overzicht van de verschillen tussen de Translator Speech-API-en spraak service, en suggesties voor strategieën voor het migreren van uw toepassingen.
 
 > [!NOTE]
 > Uw Translator Speech-API-abonnements sleutel wordt niet geaccepteerd door de spraak service. U moet een nieuw abonnement voor de spraak service maken.
 
 ## <a name="comparison-of-features"></a>Vergelijking van functies
 
-| Functie                                           | Spraak-API van Translator                                  | Speech-Service | Details                                                                                                                                                                                                                                                                            |
+| Functie                                           | Translator Speech-API                                  | Speech Service | Details                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Vertaling naar tekst                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Vertalen naar spraak                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ Gebruik dit artikel om uw toepassingen van de micro soft-Translator Speech-API n
 | Tijds limiet voor verbinding                             | 90 minuten                                               | Onbeperkt met de SDK. 10 minuten met een websockets-verbinding.                                                                                                                                                                                                                                                                                   |
 | Verificatie sleutel in header                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Meerdere talen vertaald in één aanvraag | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Sdk's beschikbaar                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Raadpleeg de [documentatie](index.md) van de speech-service voor beschik bare sdk's.                                                                                                                                                    |
+| Sdk's beschikbaar                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Raadpleeg de [documentatie](index.yml) van de speech-service voor beschik bare sdk's.                                                                                                                                                    |
 | Websockets verbindingen                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | API voor talen                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | De spraak service ondersteunt hetzelfde bereik aan talen dat wordt beschreven in het [naslag artikel over de conversie van API-talen](../translator-speech/languages-reference.md) . |
 | Filter en markering voor scheld woorden                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Gebruik dit artikel om uw toepassingen van de micro soft-Translator Speech-API n
 
 ## <a name="migration-strategies"></a>Migratiestrategieën
 
-Als u of uw organisatie toepassingen in ontwikkeling of productie heeft die gebruikmaken van de Translator Speech-API, moet u deze bijwerken om de spraak service te gebruiken. Raadpleeg de documentatie van de [Speech-Service](index.md) voor beschik bare sdk's, code voorbeelden en zelf studies. Houd rekening met het volgende wanneer u migreert:
+Als u of uw organisatie toepassingen in ontwikkeling of productie heeft die gebruikmaken van de Translator Speech-API, moet u deze bijwerken om de spraak service te gebruiken. Raadpleeg de documentatie van de [Speech-Service](index.yml) voor beschik bare sdk's, code voorbeelden en zelf studies. Houd rekening met het volgende wanneer u migreert:
 
 * De speech-service biedt geen globaal eind punt. Bepaal of uw toepassing efficiënt werkt wanneer er één regionaal eind punt wordt gebruikt voor al het verkeer. Als dat niet het geval is, gebruikt u geolocatie om het meest efficiënte eind punt te bepalen.
 

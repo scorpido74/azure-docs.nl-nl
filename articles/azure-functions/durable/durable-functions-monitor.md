@@ -4,18 +4,16 @@ description: Meer informatie over het implementeren van een status monitor met d
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f8a589bd4ab4de396c0688f8022515d6fbec96a2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769588"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562119"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Het scenario bewaken in het Durable Functions-weers Watcher-voor beeld
 
 Het monitor patroon verwijst naar een flexibel *terugkerend* proces in een werk stroom, bijvoorbeeld polling totdat aan bepaalde voor waarden wordt voldaan. In dit artikel vindt u een voor beeld waarin [Durable functions](durable-functions-overview.md) wordt gebruikt voor het implementeren van bewaking.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -30,11 +28,13 @@ In dit voor beeld worden de huidige weers omstandigheden van een locatie bewaakt
 * Monitors zijn schaalbaar. Omdat elke monitor een indelings exemplaar is, kunnen er meerdere monitors worden gemaakt zonder nieuwe functies te maken of meer code te definiëren.
 * Monitors kunnen eenvoudig worden geïntegreerd in grotere werk stromen. Een monitor kan één sectie van een complexere Orchestration-functie of een subindeling [zijn.](durable-functions-sub-orchestrations.md)
 
-## <a name="configuring-twilio-integration"></a>Twilio-integratie configureren
+## <a name="configuration"></a>Configuratie
+
+### <a name="configuring-twilio-integration"></a>Twilio-integratie configureren
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Ondergrondse integratie configureren
+### <a name="configuring-weather-underground-integration"></a>Ondergrondse integratie configureren
 
 In dit voor beeld moet u de weers ondergrondse API gebruiken om de huidige weers omstandigheden voor een locatie te controleren.
 
@@ -50,27 +50,29 @@ Zodra u een API-sleutel hebt, voegt u de volgende **app-instelling** toe aan uw 
 
 In dit artikel worden de volgende functies in de voor beeld-app uitgelegd:
 
-* `E3_Monitor`: een Orchestrator-functie die regel matig `E3_GetIsClear` aanroept. Het roept `E3_SendGoodWeatherAlert` als `E3_GetIsClear` waar retourneert.
-* `E3_GetIsClear`: een activiteit functie die de huidige weers omstandigheden voor een locatie controleert.
+* `E3_Monitor`: een [Orchestrator-functie](durable-functions-bindings.md#orchestration-trigger) die regel matig `E3_GetIsClear` aanroept. Het roept `E3_SendGoodWeatherAlert` als `E3_GetIsClear` waar retourneert.
+* `E3_GetIsClear`: een [activiteit functie](durable-functions-bindings.md#activity-trigger) die de huidige weers omstandigheden voor een locatie controleert.
 * `E3_SendGoodWeatherAlert`: een activiteit functie waarmee een SMS-bericht via Twilio wordt verzonden.
 
-In de volgende secties worden de configuratie en code uitgelegd die worden C# gebruikt voor het uitvoeren van scripts en Java script. De code voor Visual Studio-ontwikkeling wordt aan het einde van het artikel weer gegeven.
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator-functie
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>De weer gave-indeling (Visual Studio code en Azure Portal voorbeeld code)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
+
+De Orchestrator vereist een locatie om te bewaken en een telefoon nummer om een bericht te verzenden naar wanneer het duidelijk wordt op de locatie. Deze gegevens worden door gegeven aan de Orchestrator als een sterk getypeerd `MonitorRequest`-object.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 De functie **E3_Monitor** maakt gebruik van de standaard *functie. json* voor Orchestrator-functies.
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
 Hier volgt de code voor het implementeren van de functie:
 
-### <a name="c-script"></a>C# Script
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
+
+---
 
 Deze Orchestrator-functie voert de volgende acties uit:
 
@@ -79,48 +81,52 @@ Deze Orchestrator-functie voert de volgende acties uit:
 3. Roept **E3_GetIsClear** aan om te bepalen of er op de aangevraagde locatie duidelijke skies zijn.
 4. Als de weer gave duidelijk is, roept **E3_SendGoodWeatherAlert** om een SMS-bericht naar het aangevraagde telefoon nummer te verzenden.
 5. Hiermee maakt u een duurzame timer om de indeling te hervatten bij het volgende polling-interval. In het voor beeld wordt een in code vastgelegde waarde gebruikt voor de boog.
-6. Blijft actief totdat de `CurrentUtcDateTime` (.NET) of `currentUtcDateTime` (Java script) de verloop tijd van de monitor geeft of een SMS-waarschuwing wordt verzonden.
+6. Blijft actief totdat de huidige UTC-tijd de verloop tijd van de monitor doorgeeft of een SMS-waarschuwing wordt verzonden.
 
-Meerdere Orchestrator-exemplaren kunnen tegelijkertijd worden uitgevoerd door meerdere **MonitorRequests**te verzenden. De locatie die moet worden bewaakt en het telefoon nummer waarnaar een SMS-waarschuwing moet worden verzonden.
+Meerdere Orchestrator-exemplaren kunnen tegelijkertijd worden uitgevoerd door de Orchestrator-functie meerdere keren aan te roepen. De locatie die moet worden bewaakt en het telefoon nummer waarnaar een SMS-waarschuwing moet worden verzonden.
 
-## <a name="strongly-typed-data-transfer-net-only"></a>Sterk getypeerde gegevens overdracht (alleen .NET)
+### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear-activiteit functie
 
-Voor de Orchestrator zijn meerdere gegevens nodig, waardoor [gedeelde poco-objecten](../functions-reference-csharp.md#reusing-csx-code) worden gebruikt voor gegevens overdracht met een hoge waarde C# in C# en script:  
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+Net als bij andere voor beelden zijn de functies van de Help-activiteit reguliere functies die gebruikmaken van de `activityTrigger` trigger binding. De functie **E3_GetIsClear** haalt de huidige weers omstandigheden op met behulp van de weers ondergrondse API en bepaalt of de lucht duidelijk is.
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-In het Java script-voor beeld worden reguliere JSON-objecten gebruikt als para meters.
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-## <a name="helper-activity-functions"></a>Functies van de Help-activiteit
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Net als bij andere voor beelden zijn de functies van de Help-activiteit reguliere functies die gebruikmaken van de `activityTrigger` trigger binding. De functie **E3_GetIsClear** haalt de huidige weers omstandigheden op met behulp van de weers ondergrondse API en bepaalt of de lucht duidelijk is. De *functie. json* wordt als volgt gedefinieerd:
+De *functie. json* wordt als volgt gedefinieerd:
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
-En dit is de implementatie. Net als de POCOs die wordt gebruikt voor gegevens overdracht, is logica voor het afhandelen van de API-aanroep en het parseren C#van de reactie-json in een gedeelde klasse in. U kunt het vinden als onderdeel van de [Visual Studio-voorbeeld code](#run-the-sample).
-
-### <a name="c-script"></a>C# Script
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+En dit is de implementatie.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-De functie **E3_SendGoodWeatherAlert** maakt gebruik van de Twilio-binding voor het verzenden van een SMS-bericht met de mede deling dat het een goede tijd is voor een walk. De *functie. json* is eenvoudig:
+---
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
+### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert-activiteit functie
+
+De functie **E3_SendGoodWeatherAlert** maakt gebruik van de Twilio-binding voor het verzenden van een SMS-bericht met de mede deling dat het een goede tijd is voor een walk.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
+
+> [!NOTE]
+> U moet het Nuget-pakket van `Microsoft.Azure.WebJobs.Extensions.Twilio` installeren om de voorbeeld code uit te voeren.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+De *functie. json* is eenvoudig:
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
 En dit is de code die het SMS-bericht verzendt:
 
-### <a name="c-script"></a>C# Script
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+---
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
@@ -168,15 +174,6 @@ De indeling wordt [beëindigd](durable-functions-instance-management.md) zodra d
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio-voorbeeld code
-
-Dit is de indeling als één C# bestand in een Visual Studio-project:
-
-> [!NOTE]
-> Als u de voorbeeld code hieronder wilt uitvoeren, moet u het `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet-pakket installeren.
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843053"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561087"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Wat is de QnA Maker-service?
 
@@ -36,7 +36,7 @@ Zodra een QnA Maker Knowledge Base is gepubliceerd, stuurt een client toepassing
 
 ![Een vraag stellen aan een bot en antwoord krijgen van inhoud van kennis basis](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Stap|Actie|
+|Stap|Bewerking|
 |:--|:--|
 |1|De client toepassing verstuurt de _vraag_ van de gebruiker (tekst in hun eigen woorden), "Hoe kan ik op een programmatische manier mijn Knowledge Base bijwerken?" aan uw Knowledge Base-eind punt.|
 |2|QnA Maker maakt gebruik van de getrainde kennis basis om het juiste antwoord te geven en eventuele vervolg vragen die kunnen worden gebruikt voor het verfijnen van de zoek opdracht naar het beste antwoord. QnA Maker retourneert een reactie in JSON-indeling.|
@@ -78,7 +78,11 @@ Nadat de Knowledge Base vragen heeft ontvangen van gebruikers op het gepubliceer
 
 QnA Maker biedt ontwerp, training en publicatie samen met samenwerkings machtigingen voor integratie in de levens cyclus van de volledige ontwikkeling.
 
-## <a name="how-do-i-start"></a>Hoe kan ik beginnen?
+> [!div class="mx-imgBorder"]
+> ![conceptuele afbeelding van de ontwikkelings cyclus](../media/qnamaker-overview-learnabout/development-cycle.png)
+
+
+## <a name="how-do-i-start"></a>Hoe kan ik starten?
 
 **Stap 1**: maak een QnA Maker-resource in de [Azure Portal](https://portal.azure.com).
 

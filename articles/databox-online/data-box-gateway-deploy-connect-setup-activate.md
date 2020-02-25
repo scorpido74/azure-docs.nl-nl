@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken, configureren en Azure Data Box-Gateway moet worden geactiveerd in Azure portal | Microsoft Docs
-description: Derde zelfstudie voor het implementeren van Data Box Gateway u verbinding maken, instellen en activeren van uw virtuele apparaat.
+title: Verbinding maken met Azure Data Box Gateway, configureren en activeren in Azure Portal
+description: De derde zelf studie voor het implementeren van Data Box Gateway geeft u de opdracht om verbinding te maken, uw virtuele apparaat in te stellen en te activeren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,129 +8,129 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 898cb63f8868ce2abaee8784214322edf9a56997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60756406"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561830"
 ---
-# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Zelfstudie: Verbinding maken, instellen, Azure Data Box Gateway activeren
+# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Zelf studie: verbinding maken, instellen, Azure Data Box Gateway activeren
 
 ## <a name="introduction"></a>Inleiding
 
-Deze zelfstudie wordt beschreven hoe u verbinding maken met, instellen en uw gegevens in het Gateway-apparaat activeren met behulp van de lokale webgebruikersinterface. 
+In deze zelf studie wordt beschreven hoe u met behulp van de lokale web-UI verbinding maakt met uw Data Box Gateway-apparaat en hoe u deze kunt instellen en activeert. 
 
-Het proces van setup en activering kan ongeveer tien minuten duren om uit te voeren. 
+Het installatie-en activerings proces kan ongeveer tien minuten duren. 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Verbinding maken met een virtueel apparaat
-> * Instellen en het virtuele apparaat activeren
+> * Het virtuele apparaat instellen en activeren
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u configureren en van uw Data Box-Gateway instellen, controleert u of:
+Voordat u uw Data Box Gateway configureert en instelt, moet u ervoor zorgen dat:
 
-* U hebt een virtueel apparaat ingericht en verkregen van een verbonden URL toe zoals beschreven in de [inrichten van een Data Box-Gateway in Hyper-V](data-box-gateway-deploy-provision-hyperv.md) of [inrichten van een Data Box-Gateway in VMware](data-box-gateway-deploy-provision-vmware.md).
-* U hebt de activeringssleutel van de gegevens in het Gateway-service die u hebt gemaakt om gegevens in het Gateway-apparaten te beheren. Ga voor meer informatie naar [voorbereidingen voor het implementeren van Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
+* U hebt een virtueel apparaat ingericht en daar een verbonden URL aan toegewezen, zoals beschreven in het [inrichten van een Data Box gateway in Hyper-V](data-box-gateway-deploy-provision-hyperv.md) of het [inrichten van een Data Box gateway in VMware](data-box-gateway-deploy-provision-vmware.md).
+* U hebt de activerings sleutel van de Data Box Gateway-Service die u hebt gemaakt voor het beheren van Data Box Gateway apparaten. Ga voor meer informatie naar voor [bereiding voor het implementeren van Azure data Box gateway](data-box-gateway-deploy-prep.md).
 
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Verbinding maken met de installatie van de lokale web-UI 
+## <a name="connect-to-the-local-web-ui-setup"></a>Verbinding maken met de lokale web-UI instellen 
 
-1. Open een browservenster en de toegang tot de lokale webgebruikersinterface van het apparaat op:
+1. Open een browser venster en ga naar de lokale web-UI van het apparaat op:
    
    [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
    
-   Gebruik de verbindings-URL die u hebt genoteerd in de vorige zelfstudie. Er is een fout of een waarschuwing die aangeeft dat er een probleem met het beveiligingscertificaat van de website is.
+   Gebruik de verbindings-URL die u in de vorige zelf studie hebt genoteerd. Er wordt een fout bericht of een waarschuwing weer gegeven waarin wordt aangegeven dat er een probleem is met het beveiligings certificaat van de website.
 
-2. Selecteer **doorgaan naar deze webpagina**. Deze stappen kunnen afwijken afhankelijk van de browser die u gebruikt.
+2. Selecteer **door gaan naar deze webpagina**. Deze stappen kunnen variëren, afhankelijk van de browser die u gebruikt.
    
-    ![Foutbericht voor website security-certificaat](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+    ![Fout bericht van beveiligings certificaat voor website](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
-3. Aanmelden bij de webgebruikersinterface van uw virtuele apparaat. Is het standaardwachtwoord *Wachtwoord1*. 
+3. Meld u aan bij de Web-UI van uw virtuele apparaat. Het standaard wachtwoord is *Wachtwoord1*. 
    
     ![Aanmelden bij de lokale web-UI](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-4. Wijzig bij de prompt wachtwoord voor het apparaat. Het nieuwe wachtwoord moet tussen 8 en 16 tekens bevatten. Deze moet 3 van de volgende waarden bevatten: hoofdletters, kleine letters, cijfers en speciale tekens.
+4. Wijzig bij de prompt het wacht woord van het apparaat. Het nieuwe wacht woord moet tussen 8 en 16 tekens bevatten. De naam moet drie van de volgende tekens bevatten: hoofd letters, kleine letters, cijfers en speciale letters.
 
     ![Wachtwoord voor apparaat wijzigen](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
-U kunt nu op de **Dashboard** van uw apparaat.
+U bent nu klaar met het **dash board** van uw apparaat.
 
-## <a name="set-up-and-activate-the-virtual-device"></a>Instellen en het virtuele apparaat activeren
+## <a name="set-up-and-activate-the-virtual-device"></a>Het virtuele apparaat instellen en activeren
  
-Uw dashboard vindt u de verschillende instellingen die nodig zijn voor het configureren en registreren van het virtuele apparaat met de gegevens in het Gateway-service. De **apparaatnaam**, **netwerkinstellingen**, **Web proxyinstellingen**, en **tijdinstellingen** zijn optioneel. De enige vereiste instellingen zijn **Cloudinstellingen**.
+Uw dash board geeft de verschillende instellingen weer die nodig zijn om het virtuele apparaat te configureren en registreren bij de Data Box Gateway-Service. De **apparaatnaam**, **netwerk instellingen**, **webproxy-instellingen**en **tijd instellingen** zijn optioneel. De enige vereiste instellingen zijn **Cloud instellingen**.
    
-![Lokale web-UI 'Dashboard' pagina](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+![De pagina dash board van lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-1. Selecteer in het linkerdeelvenster **apparaatnaam**, en voer vervolgens een beschrijvende naam voor uw apparaat. De beschrijvende naam moet bevatten van 1 tot 15 tekens lang zijn en zijn letters, cijfers en afbreekstreepjes bevatten.
+1. Selecteer **apparaatnaam**in het linkerdeel venster en geef een beschrijvende naam op voor het apparaat. De beschrijvende naam moet tussen 1 en 15 tekens lang zijn en mag alleen bestaan uit letters, cijfers en afbreek streepjes.
 
-    ![Lokale web-UI 'Apparaatnaam' pagina](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
+    ![Pagina apparaatnaam van lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
-2. (Optioneel) Selecteer in het linkerdeelvenster **netwerkinstellingen** en configureer vervolgens de instellingen. Op uw virtuele apparaat ziet u ten minste één netwerkinterface en meer, afhankelijk van hoeveel u hebt geconfigureerd in de onderliggende virtuele machine. De **netwerkinstellingen** pagina voor een virtueel apparaat met één netwerkinterface ingeschakeld is, zoals hieronder weergegeven.
+2. Beschrijving Selecteer in het linkerdeel venster **netwerk instellingen** en configureer vervolgens de instellingen. Op het virtuele apparaat ziet u ten minste één netwerk interface en meer, afhankelijk van het aantal dat u hebt geconfigureerd op de onderliggende virtuele machine. De pagina **netwerk instellingen** voor een virtueel apparaat met één netwerk interface is ingeschakeld, zoals hieronder wordt weer gegeven.
     
-    ![Lokale web-UI "Netwerkinstellingen" pagina](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
+    ![Pagina netwerk instellingen van lokale webinterface](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
-    Als u netwerkinstellingen configureert, houd er rekening mee:
+    Houd bij het configureren van netwerk instellingen het volgende in acht:
 
-    - Als DHCP is ingeschakeld in uw omgeving, worden netwerkinterfaces automatisch geconfigureerd. Een IP-adres, subnet, gateway en DNS worden automatisch toegewezen.
-    - Als DHCP niet is ingeschakeld, kunt u statische IP-adressen kunt toewijzen, indien nodig.
-    - U kunt uw netwerk-interface configureren als IPv4.
+    - Als DHCP is ingeschakeld in uw omgeving, worden netwerkinterfaces automatisch geconfigureerd. Er wordt automatisch een IP-adres, subnet, gateway en DNS toegewezen.
+    - Als DHCP niet is ingeschakeld, kunt u indien nodig statische IP-adressen toewijzen.
+    - U kunt uw netwerk interface configureren als IPv4.
 
      >[!NOTE] 
-     > We raden aan dat u het lokale IP-adres van de netwerkinterface van statisch naar DHCP, niet overschakelen, tenzij u een ander IP-adres verbinding maken met het apparaat hebt. Als u met behulp van een netwerkinterface en u overschakelen naar DHCP, zou er geen manier om te bepalen van de DHCP-adres. Als u wijzigen in een DHCP-adres wilt, wachten totdat het apparaat is geregistreerd bij de service en vervolgens wijzigen. U kunt bekijken, de IP-adressen van alle netwerkadapters in de **apparaateigenschappen** in Azure portal voor uw service.
+     > Het is raadzaam om het lokale IP-adres van de netwerk interface niet te wijzigen van statisch naar DHCP, tenzij u een ander IP-adres hebt om verbinding te maken met het apparaat. Als u één netwerk interface gebruikt en u overschakelt naar DHCP, is er geen manier om het DHCP-adres te bepalen. Als u een DHCP-adres wilt wijzigen, wacht u totdat het apparaat is geregistreerd bij de service en wijzigt u vervolgens. U kunt vervolgens de IP-adressen van alle adapters weer geven in de eigenschappen van het **apparaat** in de Azure portal voor uw service.
 
-3. Configureer desgewenst uw webproxyserver. Hoewel de configuratie van uw webproxy is optioneel, als u een webproxy gebruikt kunt u deze alleen op deze pagina configureren.
+3. Configureer desgewenst uw webproxyserver. Hoewel de configuratie van de webproxy optioneel is, kunt u deze alleen op deze pagina configureren als u een webproxy gebruikt.
    
-   ![Lokale web-UI 'Webproxy-instellingen' pagina](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
+   ![Pagina Web Proxy-instellingen voor lokale webinterfaces](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
-   Op de **Web proxy** pagina, de volgende handelingen uit:
+   Ga als volgt te werk op de pagina **Web Proxy** :
    
-   1. In de **Web-URL van proxy** voert u de URL in deze indeling: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS-URL's worden niet ondersteund.
-   2. Onder **verificatie**, selecteer **geen** of **NTLM**.
-   3. Als u verificatie gebruikt, voert u een **gebruikersnaam** en **wachtwoord**.
-   4. Als u wilt valideren en de geconfigureerde web proxy-instellingen toepassen, selecteert u **toepassen**.
+   1. Voer in het vak **webproxy-URL** de URL in deze indeling in: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS-Url's worden niet ondersteund.
+   2. Onder **verificatie**selecteert u **geen** of **NTLM**.
+   3. Als u verificatie gebruikt, voert u een **gebruikers naam** en **wacht woord**in.
+   4. Selecteer **Toep assen**om de geconfigureerde web proxy-instellingen te valideren en toe te passen.
 
-4. (Optioneel) Selecteer in het linkerdeelvenster **tijdinstellingen**, en configureer vervolgens de tijdzone en de primaire en secundaire NTP-servers voor uw apparaat. 
+4. Beschrijving Selecteer in het linkerdeel venster **tijd instellingen**en configureer vervolgens de tijd zone en de primaire en secundaire NTP-servers voor uw apparaat. 
 
-    NTP-servers zijn vereist, omdat het apparaat de tijd synchroniseren moet zodat deze kan worden geverifieerd met uw cloud-serviceproviders.
+    NTP-servers zijn vereist omdat uw apparaat tijd moet synchroniseren zodat het kan worden geverifieerd bij uw Cloud serviceproviders.
     
-    ![Lokale web-UI "Tijdinstellingen" pagina](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
+    ![Pagina tijd instellingen van lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
-    In de **tijdinstellingen** pagina, de volgende handelingen uit:
+    Ga als volgt te werk op de pagina **tijd instellingen** :
     
-    1. In de **tijdzone** vervolgkeuzelijst, selecteert u de tijdzone die overeenkomt met de geografische locatie waarin het apparaat is geïmplementeerd.
-        De standaardtijdzone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
+    1. Selecteer in de vervolg keuzelijst **tijd zone** de tijd zone die overeenkomt met de geografische locatie waar het apparaat wordt geïmplementeerd.
+        De standaard tijd zone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
 
-    2. Geef een **primaire NTP-server** voor uw apparaat in of accepteer de standaardwaarde van `time.windows.com`.   
+    2. Geef een **primaire NTP-server** voor uw apparaat op of accepteer de standaard waarde van `time.windows.com`.   
         Zorg ervoor dat in uw netwerk NTP-verkeer kan worden doorgegeven van uw datacenter naar internet.
 
-    3. (Optioneel) in de **secundaire NTP-server** voert u een secundaire server voor uw apparaat.
+    3. Voer desgewenst in het vak **secundaire NTP-server** een secundaire server in voor uw apparaat.
 
-    4. Als u wilt valideren en de geconfigureerde time-instellingen toepassen, selecteert u **toepassen**.
+    4. Selecteer **Toep assen**om de geconfigureerde tijd instellingen te valideren en toe te passen.
 
-6. Selecteer in het linkerdeelvenster **Cloudinstellingen**, en vervolgens het apparaat met de gegevens in het Gateway-service in Azure-portal te activeren.
+6. Selecteer in het linkerdeel venster **Cloud instellingen**en activeer vervolgens uw apparaat met de data Box Gateway-service in azure Portal.
     
-    1. In de **activeringscode** voert u de **activeringscode** die u hebt verkregen [ophalen van de activeringscode](data-box-gateway-deploy-prep.md#get-the-activation-key) voor Data Box-Gateway.
+    1. Voer in het vak **activerings sleutel** de **activerings sleutel** in die u hebt ontvangen voor [de activerings sleutel](data-box-gateway-deploy-prep.md#get-the-activation-key) voor data Box gateway.
 
     2. Selecteer **activeren**.
        
-         ![Lokale web-UI ' Cloud ' instellingenpagina](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
+         ![Pagina Cloud instellingen van de lokale webinterface](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Het apparaat wordt geactiveerd en essentiële updates, indien beschikbaar, worden automatisch toegepast. U ziet een melding in die zin. Controleer de voortgang van de update via de Azure-portal.
+    3. Het apparaat wordt geactiveerd en essentiële updates, indien beschikbaar, worden automatisch toegepast. U ziet een melding voor dat effect. Controleer de voortgang van de update via de Azure Portal.
 
-        ![Lokale web-UI ' Cloud ' instellingenpagina](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![Pagina Cloud instellingen van de lokale webinterface](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
-        **Het dialoogvenster heeft ook een herstelsleutel die u moet het kopiëren en opslaan op een veilige locatie. Deze sleutel wordt gebruikt voor het herstellen van uw gegevens in het geval dat het apparaat niet kan opstarten.**
+        **Het dialoog venster bevat ook een herstel sleutel die u moet kopiëren en opslaan op een veilige locatie. Deze sleutel wordt gebruikt om uw gegevens te herstellen in het geval dat het apparaat niet kan worden opgestart.**
 
 
-    4. U moet mogelijk Wacht enkele minuten voor de update te voltooien. Na de update is voltooid, zich aanmelden bij het apparaat. De **Cloudinstellingen** pagina updates om aan te geven dat het apparaat wordt geactiveerd.
+    4. Mogelijk moet u enkele minuten wachten totdat de update is voltooid. Nadat de update is voltooid, meldt u zich aan bij het apparaat. De pagina **Cloud instellingen** wordt bijgewerkt om aan te geven dat het apparaat is geactiveerd.
 
-        ![Lokale web-UI ' Cloud ' instellingenpagina bijgewerkt](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
+        ![De pagina Cloud instellingen van de lokale webinterface is bijgewerkt](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
-Installatie van het apparaat is voltooid. U kunt nu bestandsshares toevoegen op het apparaat.
+De installatie van het apparaat is voltooid. U kunt nu shares toevoegen aan uw apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -138,9 +138,9 @@ In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Verbinding maken met een virtueel apparaat
-> * Instellen en het virtuele apparaat activeren
+> * Het virtuele apparaat instellen en activeren
 
-Voor meer informatie over het overdragen van gegevens met uw Data Box-Gateway, Zie:
+Zie voor meer informatie over het overdragen van gegevens met uw Data Box Gateway:
 
 > [!div class="nextstepaction"]
-> [Gegevens overdragen met Data Box Gateway](./data-box-gateway-deploy-add-shares.md).
+> [Gegevens overdragen met data Box gateway](./data-box-gateway-deploy-add-shares.md).

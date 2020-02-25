@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Documentatie over discussie scenario's
+summary: Verken de verschillende gespreks scenario's, conversatie transcriptie of uitwisseling van meerdere apparaten.
+metadata:
+  title: Documentatie voor discussie scenario's-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: d6ea318c2745f7d80a49e5fcb1b47381a9f276f7
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562953"
+landingContent:
+- title: Gesprektranscriptie
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Over gesprek transcriptie
+      url: conversation-transcription.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een realtime gesprek transcriberen
+      url: how-to-use-conversation-transcription.md
+    - text: Gesprekken asynchroon transcriberen
+      url: how-to-async-conversation-transcription.md
+    - text: Scenario's voor oproep centrum afhandelen
+      url: call-center-transcription.md
+- title: Gesprek via meerdere apparaten
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Over conversaties met meerdere apparaten
+      url: multi-device-conversation.md
+  - linkListType: quickstart
+    links:
+    - text: Een gesprek beginnen en eraan deelnemen
+      url: quickstarts/multi-device-conversation.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Ondersteuning voor conversatie transcriptie-taal
+      url: conversation-transcription.md#language-support
+    - text: Ondersteuning voor conversaties met meerdere apparaten
+      url: multi-device-conversation.md#language-support
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

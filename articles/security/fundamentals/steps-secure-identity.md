@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190895"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565533"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -35,7 +35,7 @@ Deze controle lijst helpt u bij het snel implementeren van kritieke aanbevolen a
 Zorg ervoor dat u bijhoudt welke functies en stappen zijn voltooid tijdens het lezen van deze controle lijst.
 
 > [!NOTE]
-> Veel van de aanbevelingen in dit document gelden alleen voor toepassingen die zijn geconfigureerd om Azure Active Directory als id-provider te gebruiken. Door apps voor eenmalige aanmelding te configureren, kunt u de voor delen van referentie beleid, detectie van bedreigingen, controle, logboek registratie en andere functies toevoegen aan deze toepassingen. [Eenmalige aanmelding via Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-portal.md) is de basis, waarop al deze aanbevelingen zijn gebaseerd.
+> Veel van de aanbevelingen in dit document gelden alleen voor toepassingen die zijn geconfigureerd om Azure Active Directory als id-provider te gebruiken. Door apps voor eenmalige aanmelding te configureren, kunt u de voor delen van referentie beleid, detectie van bedreigingen, controle, logboek registratie en andere functies toevoegen aan deze toepassingen. [Eenmalige aanmelding via Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md) is de basis, waarop al deze aanbevelingen zijn gebaseerd.
 
 De aanbevelingen in dit document zijn afgestemd op de [identiteits veilige Score](../../active-directory/fundamentals/identity-secure-score.md), een geautomatiseerde evaluatie van de identiteits beveiligings configuratie van uw Azure AD-Tenant. Organisaties kunnen de pagina identiteits beveiliging in de Azure AD-Portal gebruiken om hiaten in hun huidige beveiligings configuratie te vinden om te controleren of ze de huidige [Aanbevolen procedures](identity-management-best-practices.md) van micro soft voor beveiliging volgen. Wanneer u elke aanbeveling op de pagina beveiligde Score implementeert, wordt uw score verhoogd en kunt u uw voortgang volgen, plus de hulp bij het vergelijken van uw implementatie met andere vergelijk bare organisaties of uw branche.
 

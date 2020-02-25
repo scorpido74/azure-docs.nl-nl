@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846859"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564770"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Facturerings model voor Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt 
 
 ### <a name="create-the-link"></a>De koppeling maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met het Azure-abonnement dat u wilt gebruiken (*niet* de map die de Azure AD B2C Tenant bevat).
 1. Selecteer **een resource maken**, voer `Active Directory B2C` in het veld **Marketplace doorzoeken** in en selecteer vervolgens **Azure Active Directory B2C**.
 1. Selecteer **Maken**
@@ -140,4 +140,4 @@ Lees voordat u begint met verplaatsen het hele artikel om de beperkingen en vere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Naast het controleren van het gebruik en de facturerings gegevens binnen een geselecteerd Azure-abonnement, kunt u gedetailleerde dagelijkse gebruiks rapporten bekijken met de API voor [gebruiks rapportage](view-usage-reports.md).
+Zie [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor de meest recente prijs informatie.

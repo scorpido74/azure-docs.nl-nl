@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198663"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562017"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -115,6 +115,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | [Log Analytics lezer](#log-analytics-reader) | Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en controle-instellingen weer geven, inclusief het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Inzender voor logische apps](#logic-app-contributor) | Hiermee kunt u logische apps beheren, maar niet wijzigen. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Logische app-operator](#logic-app-operator) | Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar niet bewerken of bijwerken. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Rol Inzender beheerde toepassing](#managed-application-contributor-role) | Maakt het mogelijk om beheerde toepassings resources te maken. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Rol beheerde toepassings operator](#managed-application-operator-role) | Hiermee kunt u acties voor beheerde toepassings bronnen lezen en uitvoeren | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Lezer voor beheerde toepassingen](#managed-applications-reader) | Hiermee kunt u bronnen in een beheerde app lezen en JIT-toegang aanvragen. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [Inzender beheerde identiteit](#managed-identity-contributor) | Aan de gebruiker toegewezen identiteit maken, lezen, bijwerken en verwijderen | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | [Inzender voor resource beleid](#resource-policy-contributor) | Gebruikers met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Inzender voor scheduler-taak verzamelingen](#scheduler-job-collections-contributor) | Hiermee kunt u scheduler-taak verzamelingen beheren, maar niet de toegang tot deze taken. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Inzender Search Service](#search-service-contributor) | Hiermee kunt u zoek services beheren, maar niet de toegang tot ze. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [Beveiligings beheerder](#security-admin) | In Security Center: kan beveiligings beleid weer geven, beveiligings status weer geven, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven, waarschuwingen en aanbevelingen negeren | fb1c8493-542b-48eb-b624-b4c8fea62acd |
-> | [Beveiligings beheer (verouderd)](#security-manager-legacy) | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Beveiligings lezer](#security-reader) | In Security Center: kunt u aanbevelingen en waarschuwingen weer geven, beveiligings beleid weer geven, beveiligings status weer geven, maar geen wijzigingen aanbrengen | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Beveiligings beheerder](#security-admin) | Kan beveiligings beleid weer geven, beveiligings statussen bekijken, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven, waarschuwingen en aanbevelingen negeren. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Inzender voor beveiligings beoordeling](#security-assessment-contributor) | Hiermee kunt u evaluaties naar Security Center pushen | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | [Beveiligings beheer (verouderd)](#security-manager-legacy) | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [Beveiligings lezer](#security-reader) | Kan aanbevelingen en waarschuwingen weer geven, beveiligings beleid weer geven, beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Inzender Site Recovery](#site-recovery-contributor) | Hiermee kunt u Site Recovery-service beheren, behalve het maken van een kluis en roltoewijzing | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery-operator](#site-recovery-operator) | Een failover en failback, maar geen andere Site Recovery beheer bewerkingen uitvoeren | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery lezer](#site-recovery-reader) | Hiermee kunt u de Site Recovery status weer geven, maar geen andere beheer bewerkingen uitvoeren | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | [Gebruikers aanmelding voor de virtuele machine](#virtual-machine-user-login) | Bekijk Virtual Machines in de portal en meld u aan als een gewone gebruiker. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Inzender voor webabonnementen](#web-plan-contributor) | Hiermee kunt u de Webabonnementen voor websites beheren, maar niet de toegang tot de abonnementen. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website bijdrager](#website-contributor) | Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot de sites. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Inzender voor werkmappen](#workbook-contributor) | Kan gedeelde werkmappen opslaan. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [Werkmap lezer](#workbook-reader) | Kan werkmappen lezen. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>Eigenaar
@@ -346,7 +350,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.ApiManagement/service/restore/action | De API Management-service herstellen vanuit de opgegeven container in een opslag account dat door de gebruiker is opgegeven |
 > | Microsoft.ApiManagement/service/updatecertificate/action | SSL-certificaat voor een API Management-service uploaden |
 > | Microsoft.ApiManagement/service/updatehostname/action | Aangepaste domein namen instellen, bijwerken of verwijderen voor een API Management-service |
-> | Microsoft.ApiManagement/service/write | Een nieuw exemplaar van API Management service maken |
+> | Microsoft.ApiManagement/service/write | API Management service-exemplaar maken of bijwerken |
 > | Microsoft.Authorization/*/read | Lees autorisatie |
 > | Microsoft.Insights/alertRules/* | Waarschuwings regels maken en beheren |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -609,7 +613,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | **Acties** |  |
 > | Micro soft. HybridCompute/machines/lezen | Alle Azure-Arc-machines lezen |
-> | Micro soft. HybridCompute/machines/schrijven | Een Azure Arc-machine schrijven |
+> | Micro soft. HybridCompute/machines/schrijven | Schrijft een Azure-Arc-machine |
 > | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Toewijzing van gast configuratie ophalen. |
 > | **Intact** |  |
 > | *geen* |  |
@@ -626,9 +630,9 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | **Acties** |  |
 > | Micro soft. HybridCompute/machines/lezen | Alle Azure-Arc-machines lezen |
-> | Micro soft. HybridCompute/machines/schrijven | Een Azure Arc-machine schrijven |
-> | Micro soft. HybridCompute/machines/verwijderen | Een Azure-Arc-machine verwijderen |
-> | Micro soft. HybridCompute/machines/opnieuw verbinden/actie | Opnieuw verbinding maken met een Azure-Arc-machine |
+> | Micro soft. HybridCompute/machines/schrijven | Schrijft een Azure-Arc-machine |
+> | Micro soft. HybridCompute/machines/verwijderen | Hiermee wordt een Azure-Arc-machine verwijderd |
+> | Micro soft. HybridCompute/machines/opnieuw verbinden/actie | Opnieuw verbinding maken met een Azure-Arc-computer |
 > | Micro soft. HybridCompute/*/Read |  |
 > | **Intact** |  |
 > | *geen* |  |
@@ -690,6 +694,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Acties** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | De clusterAdmin-referentie van een beheerd cluster weer geven |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Een beheerd cluster toegangs profiel verkrijgen met een rolnaam met behulp van de lijst referentie |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -1540,6 +1545,8 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | Geeft een lijst van de niet-versleutelde referenties die zijn gerelateerd aan de order. |
 > | Microsoft.Databox/locations/availableSkus/action | Met deze methode wordt de lijst met beschik bare sku's geretourneerd. |
+> | Micro soft. Databox/locaties/validateInputs/actie | Met deze methode worden alle typen validaties ondersteund. |
+> | Micro soft. Databox/locaties/regionConfiguration/actie | Deze methode retourneert de configuraties voor de regio. |
 > | Microsoft.Databox/locations/validateAddress/action | Valideert het verzend adres en levert eventueel alternatieve adressen. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
@@ -1565,6 +1572,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
+> | Microsoft.EventGrid/eventSubscriptions/write | Een eventSubscription maken of bijwerken |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -1851,6 +1859,8 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.LabServices/labAccounts/createLab/action | Een lab maken in een Lab-account. |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action |  |
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Informatie over regionale Beschik baarheid ophalen voor elke grootte categorie die is geconfigureerd met een Lab-account |
+> | Micro soft. LabServices/labAccounts/getPricingAndAvailability/Action | Profiteer van de prijzen en beschik baarheid van combi Naties van groottes, geografi en besturings systemen voor het lab-account. |
+> | Micro soft. LabServices/labAccounts/getRestrictionsAndUsage/Action | Kern beperkingen en gebruik voor dit abonnement ophalen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Microsoft.Support/* | Ondersteunings tickets maken en beheren |
 > | **Intact** |  |
@@ -1964,6 +1974,25 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Web/connections/*/read | Lees verbindingen. |
 > | Microsoft.Web/customApis/*/read | Lees de aangepaste API. |
 > | Microsoft.Web/serverFarms/read | De eigenschappen van een App Service plan ophalen |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="managed-application-contributor-role"></a>Rol Inzender beheerde toepassing
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Maakt het mogelijk om beheerde toepassings resources te maken. |
+> | **Id** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **Acties** |  |
+> | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
+> | Micro soft. Solutions/Applications/* |  |
+> | Micro soft. Solutions/REGI ster/actie | Registreren bij oplossingen. |
+> | Micro soft. resources/abonnementen/resourceGroups/* |  |
+> | Microsoft.Resources/deployments/* | Implementaties van resource groepen maken en beheren |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -2337,7 +2366,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschrijving** | In Security Center: kan beveiligings beleid weer geven, beveiligings status weer geven, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven, waarschuwingen en aanbevelingen negeren |
+> | **Beschrijving** | Kan beveiligings beleid weer geven, beveiligings statussen bekijken, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven, waarschuwingen en aanbevelingen negeren. |
 > | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Acties** |  |
 > | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
@@ -2358,11 +2387,26 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
+## <a name="security-assessment-contributor"></a>Inzender voor beveiligings beoordeling
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Hiermee kunt u evaluaties naar Security Center pushen |
+> | **Id** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **Acties** |  |
+> | Micro soft. Security/beoordelingen/schrijven | Beveiligings beoordelingen maken of bijwerken voor uw abonnement |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
 ## <a name="security-manager-legacy"></a>Beveiligings beheer (verouderd)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschrijving** | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder |
+> | **Beschrijving** | Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder. |
 > | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Acties** |  |
 > | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
@@ -2386,7 +2430,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschrijving** | In Security Center: kunt u aanbevelingen en waarschuwingen weer geven, beveiligings beleid weer geven, beveiligings status weer geven, maar geen wijzigingen aanbrengen |
+> | **Beschrijving** | Kan aanbevelingen en waarschuwingen weer geven, beveiligings beleid weer geven, beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. |
 > | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Acties** |  |
 > | Microsoft.Authorization/*/read | Rollen en roltoewijzingen lezen |
@@ -3114,6 +3158,9 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Compute/locations/* | Reken locaties maken en beheren |
 > | Microsoft.Compute/virtualMachines/* | Virtuele machines maken en beheren |
 > | Microsoft.Compute/virtualMachineScaleSets/* | Schaal sets voor virtuele machines maken en beheren |
+> | Microsoft.Compute/disks/write | Hiermee wordt een nieuwe schijf gemaakt of een bestaande bijgewerkt |
+> | Microsoft.Compute/disks/read | De eigenschappen van een schijf ophalen |
+> | Microsoft.Compute/disks/delete | Hiermee wordt de schijf verwijderd |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Insights-waarschuwings regels maken en beheren |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Voegt een back-end-adres groep van een toepassings gateway samen. Niet Alertable. |
@@ -3214,6 +3261,38 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | De eigenschappen van een App Service plan ophalen |
 > | Microsoft.Web/sites/* | Websites maken en beheren (voor het maken van sites is ook schrijf machtigingen vereist voor het bijbehorende App Service plan) |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="workbook-contributor"></a>Inzender voor werkmappen
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Kan gedeelde werkmappen opslaan. |
+> | **Id** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **Acties** |  |
+> | Micro soft. Insights/werkmappen/schrijven | Een werkmap maken of bijwerken |
+> | Micro soft. Insights/werkmappen/verwijderen | Een werkmap verwijderen |
+> | Micro soft. Insights/werkmappen/lezen | Een werkmap lezen |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="workbook-reader"></a>Werkmap lezer
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Kan werkmappen lezen. |
+> | **Id** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **Acties** |  |
+> | micro soft. Insights/werkmappen/lezen | Een werkmap lezen |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |

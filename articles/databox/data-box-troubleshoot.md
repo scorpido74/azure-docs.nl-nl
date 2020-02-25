@@ -1,5 +1,5 @@
 ---
-title: Los problemen op uw Azure Data Box op Azure Data Box Heavy | Microsoft Docs
+title: Los problemen op uw Azure Data Box op Azure Data Box Heavy
 description: Hierin wordt beschreven hoe u problemen oplost die worden weer gegeven in Azure Data Box en Azure Data Box Heavy bij het kopiëren van gegevens naar deze apparaten.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848497"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560062"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
@@ -23,7 +23,7 @@ In dit artikel vindt u informatie over het oplossen van problemen die kunnen opt
 
 De fouten in Data Box en Data Box Heavy worden als volgt samenvatten:
 
-| Fout categorie *        | Description        | Aanbevolen actie    |
+| Fout categorie *        | Beschrijving        | Aanbevolen actie    |
 |----------------------------------------------|---------|--------------------------------------|
 | Container-of share namen | De container-of share namen volgen niet de Azure-naamgevings regels.  |Down load de fout lijsten. <br> Wijzig de naam van de containers of shares. [Meer informatie](#container-or-share-name-errors).  |
 | Maximale grootte van container of share | De totale gegevens in containers of shares overschrijden de limiet van Azure.   |Down load de fout lijsten. <br> Verminder de totale hoeveelheid gegevens in de container of de share. [Meer informatie](#container-or-share-size-limit-errors).|
@@ -31,7 +31,7 @@ De fouten in Data Box en Data Box Heavy worden als volgt samenvatten:
 | Gegevens-of bestands type | De gegevens indeling of het bestands type wordt niet ondersteund. |Down load de fout lijsten. <br> Voor pagina-blobs of Managed disks zorgt u ervoor dat de gegevens 512-bytes zijn uitgelijnd en naar de vooraf gemaakte mappen worden gekopieerd. [Meer informatie](#data-or-file-type-errors). |
 | Niet-kritieke BLOB-of bestands fouten  | De BLOB-of bestands namen voldoen niet aan de Azure-naamgevings regels of het bestands type wordt niet ondersteund. | Deze blobs of bestanden worden mogelijk niet gekopieerd of de namen kunnen worden gewijzigd. [Meer informatie over het oplossen van deze fouten](#non-critical-blob-or-file-errors). |
 
-\*De eerste vier fout categorieën zijn kritieke fouten en moeten worden opgelost voordat u kunt door gaan met het voorbereiden van de verzen ding.
+\* de eerste vier fout categorieën kritieke fouten zijn en moeten worden opgelost voordat u kunt door gaan met het voorbereiden van de verzen ding.
 
 
 ## <a name="container-or-share-name-errors"></a>Fouten in containers of share namen
@@ -40,7 +40,7 @@ Dit zijn fouten met betrekking tot container-en share namen.
 
 ### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
-**Fout beschrijving:** De naam van de container of share moet bestaan uit 3 tot 63 tekens. 
+**Fout beschrijving:** De container-of share naam moet tussen de 3 en 63 tekens lang zijn. 
 
 **Voorgestelde oplossing:** De map onder de Data Box of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslag account. 
 
@@ -51,15 +51,15 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
-**Fout beschrijving:** De naam van de container of share mag alleen letters, cijfers of afbreekstreepjes bevatten.
+**Fout beschrijving:** De container-of share naam mag alleen bestaan uit letters, cijfers of afbreek streepjes.
 
 **Voorgestelde oplossing:** De map onder de Data Box of Data Box Heavy share (SMB/NFS) waarnaar u gegevens hebt gekopieerd, wordt een Azure-container in uw opslag account. 
 
@@ -70,8 +70,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
@@ -88,8 +88,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
@@ -112,7 +112,7 @@ Dit zijn fouten met betrekking tot gegevens die de maximale grootte van een obje
 
 ### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Fout beschrijving:** De bestandsgrootte overschrijdt de maximale bestandsgrootte voor uploaden.
+**Fout beschrijving:** De bestands grootte overschrijdt de maximale bestands grootte voor het uploaden.
 
 **Voorgestelde oplossing:** De BLOB of de bestands grootte overschrijdt de Maxi maal toegestane limiet voor het uploaden.
 
@@ -125,13 +125,13 @@ Dit zijn fouten met betrekking tot niet-ondersteund bestands type of gegevens ty
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
-**Fout beschrijving:** De blob of het bestand is niet juist uitgelijnd.
+**Fout beschrijving:** De BLOB of het bestand is onjuist uitgelijnd.
 
 **Voorgestelde oplossing:** De pagina-BLOB-share op Data Box of Data Box Heavy ondersteunt alleen bestanden van 512 bytes uitgelijnd (bijvoorbeeld VHD/VHDX). Alle gegevens die zijn gekopieerd naar de pagina-blob, worden geüpload naar Azure als pagina-blobs.
 
 Verwijder alle niet-VHD/VHDX-gegevens van de pagina-BLOB-share. U kunt shares gebruiken voor blok-BLOB of Azure files voor algemene gegevens.
 
-Zie [overzicht van pagina](../storage/blobs/storage-blob-pageblob-overview.md)-blobs voor meer informatie.
+Zie [overzicht van pagina-blobs](../storage/blobs/storage-blob-pageblob-overview.md)voor meer informatie.
 
 ### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
@@ -210,7 +210,7 @@ Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
-**Fout beschrijving:** De naam van de blob of het bestand is te lang.
+**Fout beschrijving:** De BLOB of bestands naam is te lang.
 
 **Voorgestelde oplossing:** De BLOB of de bestands namen overschrijden de maximum lengte.
 
@@ -222,7 +222,7 @@ Zie de Azure-naamgevings conventies voor BLOB-namen en bestands namen voor meer 
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
-**Fout beschrijving:** Een van de segmenten in de blob- of bestandsnaam is te lang.
+**Fout beschrijving:** Een van de segmenten in de BLOB of bestands naam is te lang.
 
 **Voorgestelde oplossing:** Een van de padsegmenten in de BLOB of bestands naam overschrijdt het maximum aantal tekens. Een padsegment is de teken reeks tussen opeenvolgende scheidings tekens, bijvoorbeeld de slash/.
 

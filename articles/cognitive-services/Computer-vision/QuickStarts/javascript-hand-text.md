@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte en handgeschreven tekst extra heren-REST, java script'
+title: 'Snelstartgids: Computer Vision 2,0 en 2,1-pak gedrukte en handgeschreven tekst-REST, java script'
 titleSuffix: Azure Cognitive Services
 description: In deze Snelstartgids extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met Java script.
 services: cognitive-services
@@ -11,27 +11,45 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ac869ddd34dd4c021ae7541658e27197eb5e0de4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8c3f5dae62aef6c8e8ec1eeaeb712ebff67397c9
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974764"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566179"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision REST API en Java script
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision 2,0 en 2,1 REST API en Java script
 
 In deze Quick Start haalt u gedrukte en/of handgeschreven tekst uit een afbeelding op met behulp van de Computer Vision REST API. Met de methode voor het lezen en lezen van een [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) - [bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) kunt u tekst in een afbeelding detecteren en herkende tekens in een door een machine Lees bare teken stroom uitpakken. De API bepaalt welk herkennings model voor elke tekst regel moet worden gebruikt, zodat het afbeeldingen ondersteunt met zowel gedrukte als handgeschreven tekst.
 
-> [!IMPORTANT]
-> In tegens telling tot de [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -methode wordt de [batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) -methode asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Content`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de methode voor het resultaat van de [Lees bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+Vergeleken met Computer Vision 2,0 en 2,1 biedt de Computer Vision 3,0 open bare preview-versie:
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+* nog betere nauw keurigheid
+* een gewijzigde uitvoer indeling
+* Betrouwbaarheids score voor woorden
+* ondersteuning van Spaanse en Engelse talen met de para meter extra taal
+
+#### <a name="version-2"></a>[Versie 2](#tab/version-2)
+
+> [!IMPORTANT]
+> De methode voor het [lezen van batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+
+#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+
+> [!IMPORTANT]
+> De methode voor het [lezen van batch](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+
+---
 
 ## <a name="prerequisites"></a>Vereisten
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
 
 U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
+
+#### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
@@ -175,9 +193,175 @@ Image to read:
 </html>
 ```
 
+#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+
+U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
+
+1. Kopieer de volgende code in een teksteditor.
+1. U kunt desgewenst de waarde van het `value` kenmerk voor het `inputImage` besturings element vervangen door de URL van een andere afbeelding waaruit u tekst wilt extra heren.
+1. Sla de code op als een bestand met de extensie `.html`. Bijvoorbeeld `get-text.html`.
+1. Open een browservenster.
+1. Wanneer de webpagina wordt weer gegeven in de browser, vult u de vereiste para meters in en kiest u de knop **afbeelding lezen** .
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Recognition Sample</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    function processImage() {
+        // **********************************************
+        // *** Update or verify the following values. ***
+        // **********************************************
+
+        let subscriptionKey = document.getElementById("key").value;
+        let endpoint = document.getElementById("endpoint").value;
+        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        let language = document.getElementById("language").value;
+        
+        var uriBase = endpoint + "/vision/v3.0-preview/read/analyze";
+
+        // Display the image.
+        var sourceImageUrl = document.getElementById("inputImage").value;
+        document.querySelector("#sourceImage").src = sourceImageUrl;
+
+        const params = {
+            language: language,
+        };
+
+        const searchParams = new URLSearchParams(params);
+
+        // This operation requires two REST API calls. One to submit the image
+        // for processing, the other to retrieve the text found in the image.
+        //
+        // Make the first REST API call to submit the image for processing.
+        $.ajax({
+            url: uriBase + "?" + searchParams.toString(),
+
+            // Request headers.
+            beforeSend: function(jqXHR){
+                jqXHR.setRequestHeader("Content-Type","application/json");
+                jqXHR.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            },
+
+            type: "POST",
+
+            // Request body.
+            data: JSON.stringify({url: sourceImageUrl}),
+        })
+
+        .done(function(data, textStatus, jqXHR) {
+            // Show progress.
+            $("#responseTextArea").val("Text submitted. " +
+                "Waiting 10 seconds to retrieve the recognized text.");
+
+            // Note: The response may not be immediately available. Text
+            // recognition is an asynchronous operation that can take a variable
+            // amount of time depending on the length of the text you want to
+            // recognize. You may need to wait or retry the GET operation.
+            //
+            // Wait ten seconds before making the second REST API call.
+            setTimeout(function () {
+                // "Operation-Location" in the response contains the URI
+                // to retrieve the recognized text.
+                var operationLocation = jqXHR.getResponseHeader("Operation-Location");
+
+                // Make the second REST API call and get the response.
+                $.ajax({
+                    url: operationLocation,
+
+                    // Request headers.
+                    beforeSend: function(jqXHR){
+                        jqXHR.setRequestHeader("Content-Type","application/json");
+                        jqXHR.setRequestHeader(
+                            "Ocp-Apim-Subscription-Key", subscriptionKey);
+                    },
+
+                    type: "GET",
+                })
+
+                .done(function(data) {
+                    // Show formatted JSON on webpage.
+                    $("#responseTextArea").val(JSON.stringify(data, null, 2));
+                })
+
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    // Display error message.
+                    var errorString = (errorThrown === "") ? "Error. " :
+                        errorThrown + " (" + jqXHR.status + "): ";
+                    errorString += (jqXHR.responseText === "") ? "" :
+                        (jQuery.parseJSON(jqXHR.responseText).message) ?
+                            jQuery.parseJSON(jqXHR.responseText).message :
+                            jQuery.parseJSON(jqXHR.responseText).error.message;
+                    alert(errorString);
+                });
+            }, 10000);
+        })
+
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            // Put the JSON description into the text area.
+            $("#responseTextArea").val(JSON.stringify(jqXHR, null, 2));
+
+            // Display error message.
+            var errorString = (errorThrown === "") ? "Error. " :
+                errorThrown + " (" + jqXHR.status + "): ";
+            errorString += (jqXHR.responseText === "") ? "" :
+                (jQuery.parseJSON(jqXHR.responseText).message) ?
+                    jQuery.parseJSON(jqXHR.responseText).message :
+                    jQuery.parseJSON(jqXHR.responseText).error.message;
+            alert(errorString);
+        });
+    };
+</script>
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
+the <strong>Read image</strong> button.
+<br><br>
+Endpoint: 
+<input type="text" name="endpoint" id="endpoint" value="" style="width: 300px;"/>
+<div style="margin: 20px;">Example: https://westus2.api.cognitive.microsoft.com</div>
+Subscription Key:    
+<input type="text" name="key" id="key" value="" style="width: 300px;"/>
+<br><br>
+Language: 
+<input type="text" name="language" id="language"
+    value="en" />
+<div style="margin: 20px;">Accepted values are &quot;en&quot; and &quot;es&quot;</div>
+
+<br><br>
+Image to read:
+<input type="text" name="inputImage" id="inputImage"
+    value="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg" />
+<button onclick="processImage()">Read image</button>
+<br><br>
+<div id="wrapper" style="width:1020px; display:table;">
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response:
+        <br><br>
+        <textarea id="responseTextArea" class="UIInput"
+                  style="width:580px; height:400px;"></textarea>
+    </div>
+    <div id="imageDiv" style="width:420px; display:table-cell;">
+        Source image:
+        <br><br>
+        <img id="sourceImage" width="400" />
+    </div>
+</div>
+</body>
+</html>
+```
+
+---
+
 ## <a name="examine-the-response"></a>Het antwoord bekijken
 
 Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagina parseert en geeft een geslaagd antwoord weer in het browservenster dat vergelijkbaar is met het volgende voorbeeld:
+
+#### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 ```json
 {
@@ -278,6 +462,319 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagin
   ]
 }
 ```
+
+#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+
+```json
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-02-11T20:56:33Z",
+  "lastUpdatedDateTime": "2020-02-11T20:56:34Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "language": "en",
+        "angle": 0.8206,
+        "width": 800,
+        "height": 154,
+        "unit": "pixel",
+        "lines": [
+          {
+            "language": "en",
+            "boundingBox": [
+              6,
+              4,
+              774,
+              14,
+              773,
+              61,
+              5,
+              49
+            ],
+            "text": "The quick brown fox jumps over the lazy",
+            "words": [
+              {
+                "boundingBox": [
+                  14,
+                  5,
+                  76,
+                  6,
+                  74,
+                  49,
+                  12,
+                  48
+                ],
+                "text": "The",
+                "confidence": 0.83
+              },
+              {
+                "boundingBox": [
+                  84,
+                  6,
+                  182,
+                  7,
+                  180,
+                  51,
+                  82,
+                  49
+                ],
+                "text": "quick",
+                "confidence": 0.762
+              },
+              {
+                "boundingBox": [
+                  191,
+                  7,
+                  312,
+                  9,
+                  309,
+                  54,
+                  189,
+                  51
+                ],
+                "text": "brown",
+                "confidence": 0.67
+              },
+              {
+                "boundingBox": [
+                  320,
+                  9,
+                  382,
+                  10,
+                  379,
+                  55,
+                  317,
+                  54
+                ],
+                "text": "fox",
+                "confidence": 0.849
+              },
+              {
+                "boundingBox": [
+                  390,
+                  10,
+                  497,
+                  11,
+                  493,
+                  57,
+                  387,
+                  55
+                ],
+                "text": "jumps",
+                "confidence": 0.703
+              },
+              {
+                "boundingBox": [
+                  506,
+                  11,
+                  596,
+                  12,
+                  591,
+                  59,
+                  502,
+                  57
+                ],
+                "text": "over",
+                "confidence": 0.799
+              },
+              {
+                "boundingBox": [
+                  604,
+                  12,
+                  666,
+                  13,
+                  661,
+                  60,
+                  600,
+                  59
+                ],
+                "text": "the",
+                "confidence": 0.923
+              },
+              {
+                "boundingBox": [
+                  674,
+                  13,
+                  773,
+                  14,
+                  768,
+                  62,
+                  670,
+                  60
+                ],
+                "text": "lazy",
+                "confidence": 0.863
+              }
+            ]
+          },
+          {
+            "language": "en",
+            "boundingBox": [
+              5,
+              53,
+              79,
+              56,
+              77,
+              95,
+              4,
+              92
+            ],
+            "text": "dog",
+            "words": [
+              {
+                "boundingBox": [
+                  6,
+                  53,
+                  74,
+                  56,
+                  72,
+                  95,
+                  5,
+                  92
+                ],
+                "text": "dog",
+                "confidence": 0.418
+              }
+            ]
+          },
+          {
+            "language": "en",
+            "boundingBox": [
+              0,
+              90,
+              787,
+              95,
+              787,
+              145,
+              0,
+              136
+            ],
+            "text": "Pack my box with five dozen liquor jugs",
+            "words": [
+              {
+                "boundingBox": [
+                  1,
+                  96,
+                  79,
+                  93,
+                  79,
+                  135,
+                  0,
+                  136
+                ],
+                "text": "Pack",
+                "confidence": 0.835
+              },
+              {
+                "boundingBox": [
+                  87,
+                  93,
+                  151,
+                  92,
+                  151,
+                  135,
+                  87,
+                  135
+                ],
+                "text": "my",
+                "confidence": 0.88
+              },
+              {
+                "boundingBox": [
+                  162,
+                  92,
+                  226,
+                  91,
+                  225,
+                  135,
+                  161,
+                  135
+                ],
+                "text": "box",
+                "confidence": 0.301
+              },
+              {
+                "boundingBox": [
+                  234,
+                  91,
+                  335,
+                  90,
+                  335,
+                  135,
+                  233,
+                  135
+                ],
+                "text": "with",
+                "confidence": 0.959
+              },
+              {
+                "boundingBox": [
+                  346,
+                  91,
+                  418,
+                  91,
+                  417,
+                  136,
+                  345,
+                  135
+                ],
+                "text": "five",
+                "confidence": 0.489
+              },
+              {
+                "boundingBox": [
+                  426,
+                  91,
+                  527,
+                  93,
+                  527,
+                  138,
+                  425,
+                  136
+                ],
+                "text": "dozen",
+                "confidence": 0.727
+              },
+              {
+                "boundingBox": [
+                  554,
+                  94,
+                  687,
+                  98,
+                  687,
+                  143,
+                  553,
+                  139
+                ],
+                "text": "liquor",
+                "confidence": 0.377
+              },
+              {
+                "boundingBox": [
+                  701,
+                  99,
+                  787,
+                  103,
+                  787,
+                  146,
+                  700,
+                  143
+                ],
+                "text": "jugs",
+                "confidence": 0.693
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

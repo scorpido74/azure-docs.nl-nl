@@ -1,23 +1,23 @@
 ---
-title: Wat is een uitwisseling van meerdere apparaten (preview)-spraak service
+title: Over uitwisseling van meerdere apparaten (preview)-spraak service
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: ralphe
-manager: cpoulain
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/15/2020
-ms.author: ralphe
-ms.openlocfilehash: 8d73c896f784507c2336a79130ff5f35aa61d30f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268073"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560810"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>Wat is een uitwisseling van meerdere apparaten (preview-versie)?
+# <a name="about-multi-device-conversation-preview"></a>Over uitwisseling van meerdere apparaten (preview-versie)
 
 Met **meerdere apparaten** kunt u eenvoudig een spraak-of tekst conversatie maken tussen meerdere clients en de berichten coördineren die ertussen worden verzonden.
 
@@ -43,7 +43,7 @@ Terwijl de [**conversatie transcriptie**](conversation-transcription.md) werkt o
 - **Bericht relay** : de conversatie service met meerdere apparaten distribueert berichten die door de ene client naar alle andere worden verzonden, in de taal (s) van hun keuze.
 - **Bericht identificatie** : elk bericht dat door gebruikers in de conversatie wordt ontvangen, wordt gelabeld met de bijnaam van de gebruiker die het heeft verzonden.
 
-## <a name="use-cases"></a>Use cases
+## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 ### <a name="lightweight-conversations"></a>Lichte conversaties
 
@@ -55,14 +55,14 @@ Omdat gebruikers deel nemen aan de conversatie code en niet zijn vereist voor he
 
 Realtime-transcriptie en-vertalingen kunnen ervoor zorgen dat discussies toegankelijk zijn voor mensen die verschillende talen spreken en/of doof of slechthorend zijn. Elke persoon kan ook actief deel nemen aan de conversatie door de voor keur taal te spreken of chat berichten te verzenden.
 
-### <a name="presentations"></a>Presentaties
+### <a name="presentations"></a>Aanbieding
 
 U kunt ook bijschriften bieden voor presentaties en lezingen op het scherm en op de eigen apparaten van de doel groep. Nadat de doel groep is gekoppeld aan de conversatie code, kunnen ze de transcripten zien in hun Voorkeurs taal, op hun eigen apparaat.
 
 > [!NOTE]
-> Als u een voor beeld wilt bekijken, bekijkt u de [presentatie-vertaler](https://www.microsoft.com/translator/apps/presentation-translator/), een Power Point-invoeg toepassing die gebruikmaakt van de multi-device-conversatie service. U kunt het artikel [hier](https://www.microsoft.com/download/details.aspx?id=55024) downloaden.
+> Als u een voor beeld wilt bekijken, bekijkt u de [presentatie-vertaler](https://www.microsoft.com/translator/apps/presentation-translator/), een Power Point-invoeg toepassing die gebruikmaakt van de multi-device-conversatie service. U kunt deze [hier](https://www.microsoft.com/download/details.aspx?id=55024)downloaden.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 Alle clients gebruiken de Speech SDK om een conversatie te maken of eraan toe te voegen. De Speech SDK communiceert met de service voor meerdere apparaten, die de levens duur van een gesprek beheert, met inbegrip van de lijst met deel nemers, de gekozen taal/talen van elke client en verzonden berichten.  
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844509"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559230"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Aangepaste domein namen in uw Azure Active Directory beheren
 
@@ -67,7 +67,7 @@ U moet deze resource in uw Azure AD-adres lijst wijzigen of verwijderen voordat 
 
 ### <a name="forcedelete-option"></a>ForceDelete optie
 
-U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoalsuser@contoso.com"" bij naar de oorspronkelijke standaard domein naam, zoals "user@contoso.onmicrosoft.com." 
+U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure.com) **ForceDelete** of gebruikmaken van [Microsoft Graph-API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Deze opties gebruiken een asynchrone bewerking en werken alle verwijzingen van de aangepaste domein naam zoalsuser@contoso.comnaar de oorspronkelijke standaard domein naam, zoals 'user@contoso.onmicrosoft.com'. 
 
 Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit geldt ook voor Exchange mail-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
 
@@ -87,13 +87,13 @@ Er wordt een fout geretourneerd wanneer:
 
 ### <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**V: Waarom mislukt het verwijderen van het domein met een fout die aangeeft dat ik Gemastered groups heb op deze domein naam?** <br>
+**V: waarom mislukt het verwijderen van het domein met een fout die aangeeft dat ik Gemastered groups heb op deze domein naam?** <br>
 **A:** Momenteel worden bepaalde groepen, zoals beveiligings groepen met e-mail functionaliteit en gedistribueerde lijsten, door Exchange ingericht en moeten ze hand matig worden opgeschoond in [Exchange-beheer centrum (SBV)](https://outlook.office365.com/ecp/). Er is mogelijk een achtergebleven ProxyAddresses die afhankelijk is van de aangepaste domein naam en moet hand matig worden bijgewerkt naar een andere domein naam. 
 
 **V: Ik ben aangemeld als beheerder\@contoso.com, maar ik kan de domein naam ' contoso.com ' niet verwijderen?**<br>
-**A:** U kunt niet verwijzen naar de aangepaste domein naam die u probeert te verwijderen in de naam van uw gebruikers account. Zorg ervoor dat het account van de globale beheerder de oorspronkelijke standaard domein naam (. onmicrosoft.com) gebruikt admin@contoso.onmicrosoft.com, zoals. Meld u aan met een ander account voor globale beheerders, admin@contoso.onmicrosoft.com zoals een andere aangepaste domein naam, zoals ' fabrikam.com ', waarbij admin@fabrikam.comhet account is.
+**A:** U kunt niet verwijzen naar de aangepaste domein naam die u probeert te verwijderen in de naam van uw gebruikers account. Zorg ervoor dat het account van de globale beheerder de initiële standaard domein naam (. onmicrosoft.com) gebruikt, zoals admin@contoso.onmicrosoft.com. Meld u aan met een ander account voor globale beheerders, zoals admin@contoso.onmicrosoft.com of een andere aangepaste domein naam, zoals ' fabrikam.com ', waarbij het account is admin@fabrikam.com.
 
-**V: Ik heb op de knop domein verwijderen geklikt en Zie `In Progress` status voor de Verwijder bewerking. Hoe lang duurt het? Wat gebeurt er als dit mislukt?**<br>
+**V: Ik heb op de knop domein verwijderen geklikt en zie de `In Progress` status voor de Verwijder bewerking. Hoe lang duurt het? Wat gebeurt er als dit mislukt?**<br>
 **A:** De bewerking domein verwijderen is een asynchrone achtergrond taak waarmee alle verwijzingen naar de domein naam worden hernoemd. Deze moet binnen een minuut of twee worden voltooid. Als het verwijderen van het domein mislukt, zorg er dan voor dat u niet beschikt over:
 
 * Apps die zijn geconfigureerd op de domein naam met de appIdentifierURI
@@ -102,12 +102,12 @@ Er wordt een fout geretourneerd wanneer:
 
 Als u merkt dat aan een van de voor waarden niet is voldaan, moet u de verwijzingen hand matig opschonen en proberen het domein opnieuw te verwijderen.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Power shell of Graph API gebruiken voor het beheren van domein namen
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Power shell of de Microsoft Graph-API gebruiken voor het beheren van domein namen
 
-De meeste beheer taken voor domein namen in Azure Active Directory kunnen ook worden voltooid met behulp van micro soft power shell of via een programma met behulp van Azure AD Graph API.
+De meeste beheer taken voor domein namen in Azure Active Directory kunnen ook worden voltooid met behulp van micro soft power shell of via een programma met behulp van de Microsoft Graph-API.
 
 * [Power shell gebruiken voor het beheren van domein namen in azure AD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Domein namen beheren in azure AD met behulp van Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Bron type van het domein](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Volgende stappen
 

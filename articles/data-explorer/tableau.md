@@ -1,5 +1,5 @@
 ---
-title: Open Database Connectivity-verbinding (ODBC) met Azure Data Explorer gebruiken om gegevens te visualiseren met tableau
+title: Azure Data Explorer ODBC-connector gebruiken om tableau-gegevens te visualiseren
 description: In dit artikel leert u hoe u een Open Database Connectivity (ODBC)-verbinding met Data Explorer Azure kunt gebruiken om gegevens te visualiseren met tableau.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023863"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562442"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Gegevens visualiseren vanuit Azure Data Explorer in tableau
 

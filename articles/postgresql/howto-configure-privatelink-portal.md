@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: e73f5e578ef498d3c6be8422fbbcfa7ac8856adf
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425813"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562595"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>Een persoonlijke koppeling maken en beheren voor Azure Database for PostgreSQL-één server (preview) met behulp van de portal
 
@@ -170,6 +170,9 @@ In deze sectie maakt u een PostgreSQL-server en voegt u hieraan een persoonlijk 
 2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
 
     ![Privé koppeling gemaakt](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
+
+    > [!NOTE] 
+    > De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 

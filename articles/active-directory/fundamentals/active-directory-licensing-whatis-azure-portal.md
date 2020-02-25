@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987152"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561558"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Wat is licentieverlening in Azure Active Directory op basis van groep?
 
@@ -34,7 +34,7 @@ U moet een van de volgende licenties hebben voor het gebruik van op groepen geba
 
 - Betaalde of proef abonnement voor Azure AD Premium P1 en hoger
 
-- Betaalde of proef versie van Office 365 Enter prise E3 of Office 365 a3 of Office 365 GCC G3 en hoger
+- Betaalde of proef versie van Office 365 Enter prise E3 of Office 365 a3 of Office 365 GCC G3 of Office 365 E3 voor GCCH of Office 365 E3 voor DOD en hoger
 
 ### <a name="required-number-of-licenses"></a>Vereist aantal licenties
 Voor elke groep waaraan een licentie is toegewezen, moet u ook een licentie voor elk uniek lid hebben. Hoewel u niet elk lid van de groep een licentie hoeft toe te wijzen, moet u ten minste voldoende licenties hebben om alle leden op te nemen. Als u bijvoorbeeld 1.000 unieke leden hebt die deel uitmaken van gelicentieerde groepen in uw Tenant, moet u ten minste 1.000 licenties hebben om te voldoen aan de licentie overeenkomst.
@@ -68,6 +68,6 @@ Voor meer informatie over scenario’s voor licentiebeheer via licenties op basi
 * [Licenties toewijzen aan een groep in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
 * [Licentieproblemen voor een groep vaststellen en oplossen in Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Gebruikers met een afzonderlijke licentie migreren naar licenties op basis van groepen in Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Het migreren van gebruikers tussen productlicenties groepsgebaseerde licentieverlening in Azure Active Directory gebruiken](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Gebruikers tussen product licenties migreren met op groepen gebaseerde licentie verlening in Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Aanvullende scenario’s voor Azure Active Directory-licenties op basis van groepen](../users-groups-roles/licensing-group-advanced.md)
-* [PowerShell-voorbeelden voor Groepslicenties in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Power shell-voor beelden voor op groep gebaseerde licentie verlening in Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

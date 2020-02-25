@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossingen (AVS): Azure AD als id-bron gebruiken op de AVS-privécloud'
-description: Hierin wordt beschreven hoe u Azure AD als een id-provider toevoegt aan de Privécloud van uw AVS om gebruikers te verifiëren die toegang hebben tot AVS vanuit Azure
+title: 'Azure VMware-oplossing door CloudSimple: Azure AD als identiteits bron gebruiken in een Privécloud'
+description: Hierin wordt beschreven hoe u Azure AD toevoegt als een id-provider in uw CloudSimple-Privécloud om gebruikers te verifiëren die toegang hebben tot CloudSimple vanuit Azure
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,38 +8,38 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a453d40f976d11a41e1ba536d2f7baab15900b13
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77015920"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564581"
 ---
-# <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-avs-private-cloud"></a>Azure AD gebruiken als een id-provider voor vCenter op een Privécloud in de Cloud
+# <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud
 
-U kunt de automatische AVS-functie voor Cloud-vCenter instellen om te verifiëren met Azure Active Directory (Azure AD) voor uw VMware-beheerders om toegang te krijgen tot vCenter. Nadat de id-bron voor eenmalige aanmelding is ingesteld, kan de gebruiker van de **cloudowner** gebruikers van de identiteits bron toevoegen aan vCenter.  
+U kunt uw CloudSimple Private Cloud vCenter instellen om te verifiëren met Azure Active Directory (Azure AD) voor uw VMware-beheerders om toegang te krijgen tot vCenter. Nadat de id-bron voor eenmalige aanmelding is ingesteld, kan de gebruiker van de **cloudowner** gebruikers van de identiteits bron toevoegen aan vCenter.  
 
 U kunt uw Active Directory domein-en domein controllers op een van de volgende manieren instellen:
 
 * Active Directory domein-en domein controllers die on-premises worden uitgevoerd
 * Active Directory domein en domein controllers die op Azure worden uitgevoerd als virtuele machines in uw Azure-abonnement
-* Nieuwe Active Directory domein-en domein controllers die worden uitgevoerd in uw AVS-Privécloud
+* Nieuwe Active Directory domein-en domein controllers die worden uitgevoerd in uw CloudSimple-Privécloud
 * Azure Active Directory-service
 
-In deze hand leiding worden de taken beschreven die nodig zijn om Azure AD in te stellen als een identiteits bron. Raadpleeg voor meer informatie over het gebruik van on-premises Active Directory of Active Directory die worden uitgevoerd in azure de [vCenter-identiteits bronnen instellen om Active Directory te gebruiken](set-vcenter-identity.md) voor gedetailleerde instructies voor het instellen van de identiteits bron.
+In deze hand leiding worden de taken beschreven die nodig zijn om Azure AD in te stellen als een identiteits bron.  Raadpleeg voor meer informatie over het gebruik van on-premises Active Directory of Active Directory die worden uitgevoerd in azure de [vCenter-identiteits bronnen instellen om Active Directory te gebruiken](set-vcenter-identity.md) voor gedetailleerde instructies voor het instellen van de identiteits bron.
 
 ## <a name="about-azure-ad"></a>Over Azure AD
 
-Azure AD is de micro soft multi tenant-, Cloud-en Identity Management-service. Azure AD biedt een schaalbaar, consistent en betrouwbaar verificatie mechanisme om gebruikers te verifiëren en toegang te krijgen tot verschillende services in Azure. Het biedt ook beveiligde LDAP-services voor services van derden om Azure AD als verificatie/identiteits bron te gebruiken. Azure AD combineert essentiële Directory Services, Geavanceerd identiteits bestuur en toegangs beheer voor toepassingen, die kunnen worden gebruikt om toegang te verlenen tot uw automatische AVS-Cloud voor gebruikers die de Privécloud van de AVS beheren.
+Azure AD is de micro soft multi tenant-, Cloud-en Identity Management-service.  Azure AD biedt een schaalbaar, consistent en betrouwbaar verificatie mechanisme om gebruikers te verifiëren en toegang te krijgen tot verschillende services in Azure.  Het biedt ook beveiligde LDAP-services voor services van derden om Azure AD als verificatie/identiteits bron te gebruiken.  Azure AD combineert essentiële Directory Services, Geavanceerd identiteits bestuur en toegangs beheer voor toepassingen, die kunnen worden gebruikt om toegang te verlenen tot uw Privécloud voor gebruikers die de Privécloud beheren.
 
 Als u Azure AD als een identiteits bron met vCenter wilt gebruiken, moet u Azure AD en Azure AD Domain Services instellen. Volg deze instructies:
 
 1. [Azure AD en Azure AD Domain Services instellen](#set-up-azure-ad-and-azure-ad-domain-services)
-2. [Een identiteits bron instellen op uw AVS-vCenter Privécloud](#set-up-an-identity-source-on-your-avs-private-cloud-vcenter)
+2. [Een identiteits bron instellen op de vCenter van uw Privécloud](#set-up-an-identity-source-on-your-private-cloud-vcenter)
 
 ## <a name="set-up-azure-ad-and-azure-ad-domain-services"></a>Azure AD en Azure AD Domain Services instellen
 
-Voordat u aan de slag gaat, moet u toegang hebben tot uw Azure-abonnement met globale beheerders bevoegdheden. De volgende stappen bevatten algemene richt lijnen. Details zijn opgenomen in de Azure-documentatie.
+Voordat u aan de slag gaat, moet u toegang hebben tot uw Azure-abonnement met globale beheerders bevoegdheden.  De volgende stappen bevatten algemene richt lijnen. Details zijn opgenomen in de Azure-documentatie.
 
 ### <a name="azure-ad"></a>Azure AD
 
@@ -52,19 +52,19 @@ Voordat u aan de slag gaat, moet u toegang hebben tot uw Azure-abonnement met gl
     1. Stel een DNS-record in voor uw domein registratie service met de informatie die is opgegeven in Azure.
     2. Stel de naam van het aangepaste domein in op het primaire domein.
 
-U kunt desgewenst andere Azure AD-functies configureren. Deze zijn niet vereist voor het inschakelen van vCenter-verificatie met Azure AD.
+U kunt desgewenst andere Azure AD-functies configureren.  Deze zijn niet vereist voor het inschakelen van vCenter-verificatie met Azure AD.
 
 ### <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 
 > [!NOTE]
-> Dit is een belang rijke stap voor het inschakelen van Azure AD als een identiteits bron voor vCenter. Als u problemen wilt voor komen, moet u ervoor zorgen dat alle stappen correct worden uitgevoerd.
+> Dit is een belang rijke stap voor het inschakelen van Azure AD als een identiteits bron voor vCenter.  Als u problemen wilt voor komen, moet u ervoor zorgen dat alle stappen correct worden uitgevoerd.
 
 1. Schakel Azure AD Domain Services in, zoals beschreven in [enable Azure Active Directory Domain Services met behulp van de Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started.md).
 2. Stel het netwerk in dat door Azure AD Domain Services wordt gebruikt, zoals wordt beschreven in [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started-network.md).
 3. Configureer de groep Administrators voor het beheren van Azure AD Domain Services, zoals beschreven in [enable Azure Active Directory Domain Services met behulp van de Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md).
 4. Werk de DNS-instellingen voor uw Azure AD Domain Services bij zoals beschreven in [enable Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-dns.md).  Als u via Internet verbinding wilt maken met AD, stelt u de DNS-record voor het open bare IP-adres van de Azure AD Domain Services in op de domein naam.
-5. Wachtwoord hash-synchronisatie inschakelen voor gebruikers. Met deze stap wordt de synchronisatie van wacht woord-hashes ingeschakeld die vereist zijn voor NT LAN Manager (NTLM) en Kerberos-verificatie om te Azure AD Domain Services. Wanneer u de synchronisatie voor wachtwoordhashes hebt ingesteld, kunnen gebruikers zich bij het beheerde domein aanmelden met hun zakelijke referenties. Zie [wachtwoord-hash-synchronisatie inschakelen voor Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
-    1. Als alleen Cloud gebruikers aanwezig zijn, moeten ze hun wacht woord wijzigen via <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-toegangs venster</a> om ervoor te zorgen dat wacht woord-hashes worden opgeslagen in de vereiste indeling voor NTLM of Kerberos. Volg de instructies in [Schakel wacht woord-hash synchronisatie naar uw beheerde domein in voor Cloud gebruikers accounts](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds). Deze stap moet worden uitgevoerd voor afzonderlijke gebruikers en voor elke nieuwe gebruiker die in uw Azure AD-Directory is gemaakt met behulp van de Azure Portal of Azure AD Power shell-cmdlets. Gebruikers die toegang nodig hebben tot Azure AD Domain Services, moeten het <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-toegangs venster</a> gebruiken en toegang krijgen tot hun profiel om het wacht woord te wijzigen.
+5. Wachtwoord hash-synchronisatie inschakelen voor gebruikers.  Met deze stap wordt de synchronisatie van wacht woord-hashes ingeschakeld die vereist zijn voor NT LAN Manager (NTLM) en Kerberos-verificatie om te Azure AD Domain Services. Wanneer u de synchronisatie voor wachtwoordhashes hebt ingesteld, kunnen gebruikers zich bij het beheerde domein aanmelden met hun zakelijke referenties. Zie [wachtwoord-hash-synchronisatie inschakelen voor Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+    1. Als alleen Cloud gebruikers aanwezig zijn, moeten ze hun wacht woord wijzigen via <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-toegangs venster</a> om ervoor te zorgen dat wacht woord-hashes worden opgeslagen in de vereiste indeling voor NTLM of Kerberos.  Volg de instructies in [Schakel wacht woord-hash synchronisatie naar uw beheerde domein in voor Cloud gebruikers accounts](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Deze stap moet worden uitgevoerd voor afzonderlijke gebruikers en voor elke nieuwe gebruiker die in uw Azure AD-Directory is gemaakt met behulp van de Azure Portal of Azure AD Power shell-cmdlets. Gebruikers die toegang nodig hebben tot Azure AD Domain Services, moeten het <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-toegangs venster</a> gebruiken en toegang krijgen tot hun profiel om het wacht woord te wijzigen.
 
         > [!NOTE]
         > Als uw organisatie gebruikers accounts in de Cloud heeft, moeten alle gebruikers die Azure Active Directory Domain Services moeten gebruiken, hun wacht woord wijzigen. Een cloudgebruikersaccount is een account dat is gemaakt in uw Azure AD-directory via de Azure portal of Azure AD PowerShell-cmdlets. Deze gebruikersaccounts zijn niet gesynchroniseerd vanuit een on-premises map.
@@ -72,31 +72,31 @@ U kunt desgewenst andere Azure AD-functies configureren. Deze zijn niet vereist 
     2. Als u wacht woorden van uw on-premises Active Directory synchroniseert, volgt u de stappen in de [Active Directory documentatie](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md).
 
 6.  Configureer beveiligde LDAP op uw Azure Active Directory Domain Services, zoals beschreven in [secure LDAP (LDAPS) configureren voor een Azure AD Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md).
-    1. Upload een certificaat voor gebruik door secure LDAP zoals beschreven in het Azure-onderwerp [een certificaat voor beveiligde LDAP verkrijgen](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap). AVS raadt aan gebruik te maken van een ondertekend certificaat dat is uitgegeven door een certificerings instantie om ervoor te zorgen dat vCenter het certificaat kan vertrouwen.
+    1. Upload een certificaat voor gebruik door secure LDAP zoals beschreven in het Azure-onderwerp [een certificaat voor beveiligde LDAP verkrijgen](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap).  CloudSimple raadt aan het gebruik van een ondertekend certificaat dat is uitgegeven door een certificerings instantie om ervoor te zorgen dat vCenter het certificaat kan vertrouwen.
     2. Schakel beveiligde LDAP in zoals beschreven [secure LDAP (LDAPS) inschakelen voor een Azure AD Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md).
     3. Sla het open bare deel van het certificaat (zonder de persoonlijke sleutel) in de CER-indeling op voor gebruik met vCenter tijdens het configureren van de identiteits bron.
     4. Als Internet toegang tot de Azure AD Domain Services vereist is, schakelt u de optie beveiligde toegang tot LDAP via Internet toestaan in.
     5. Voeg de binnenkomende beveiligings regel voor de Azure AD Domain Services NSG voor TCP-poort 636.
 
-## <a name="set-up-an-identity-source-on-your-avs-private-cloud-vcenter"></a>Een identiteits bron instellen op uw AVS-vCenter Privécloud
+## <a name="set-up-an-identity-source-on-your-private-cloud-vcenter"></a>Een identiteits bron instellen op de vCenter van uw Privécloud
 
-1. [Escalatie privileges](escalate-private-cloud-privileges.md) voor uw AVS Private Cloud vCenter.
+1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor uw privécloud.
 2. Verzamel de configuratie parameters die zijn vereist voor het instellen van de identiteits bron.
 
     | **Optie** | **Beschrijving** |
     |------------|-----------------|
     | **Naam** | De naam van de identiteits bron. |
     | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers.  Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
-    | **Domeinnaam** | FQDN-namen van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
+    | **Domein naam** | FQDN-namen van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
     | **Domein alias** | *(optioneel)* De NetBIOS-naam van het domein. Voeg de NetBIOS-naam van het Active Directory domein als alias van de identiteits bron toe als u SSPI-verificaties gebruikt. |
     | **Basis-DN voor groepen** | De DN-basis naam voor groepen. Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
     | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de notatie `ldaps://hostname:port`. De poort is doorgaans 636 voor LDAPS-verbindingen. <br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot stand brengt, is vereist wanneer u `ldaps://` in de primaire of secundaire LDAP-URL gebruikt. |
     | **URL van secundaire server** | Adres van de LDAP-server van de secundaire domein controller die wordt gebruikt voor failover. |
-    | **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt de knop **certificaat kiezen** weer gegeven nadat u `ldaps://` in het tekstvak URL hebt getypt. Een secundaire URL is niet vereist. |
+    | **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt een knop certificaat kiezen weer gegeven nadat u `ldaps://` in het tekstvak URL hebt getypt. Een secundaire URL is niet vereist. |
     | **Gebruikersnaam** | ID van een gebruiker in het domein met mini maal alleen-lezen toegang tot de basis-DN voor gebruikers en groepen. |
     | **Wachtwoord** | Het wacht woord van de gebruiker die is opgegeven door de gebruikers naam. |
 
-3. Meld u aan bij uw AVS Private Cloud vCenter nadat de bevoegdheden zijn geëscaleerd.
+3. Meld u aan bij uw Privécloud-vCenter nadat de bevoegdheden zijn geëscaleerd.
 4. Volg de instructies in [een id-bron toevoegen in vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) met de waarden uit de vorige stap om Azure Active Directory als een identiteits bron in te stellen.
 5. Gebruikers/groepen toevoegen vanuit Azure AD aan vCenter-groepen, zoals beschreven in het VMware-onderwerp [leden toevoegen aan een vCenter-groep voor eenmalige aanmelding](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 

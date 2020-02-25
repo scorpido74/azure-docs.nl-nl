@@ -1,41 +1,36 @@
 ---
-title: ASE gebruiken en beheren
+title: Een App Service Environment gebruiken en beheren
 description: Apps in een Azure App Service omgeving maken, publiceren en schalen. Zoek de algemene taken in één document.
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 806d6ddb09cbaf14c9c488e3d3b39909c22ef284
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7be1676c8949cd30d5e1fe93a73afd75a5a9b67f
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374927"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565640"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service omgeving gebruiken #
 
-Azure App Service Environment is een implementatie van Azure App Service in een subnet in het virtuele Azure-netwerk van een klant. Het bestaat uit:
+De App Service Environment (ASE) is een implementatie van de Azure App Service in een subnet in het virtuele Azure-netwerk van een klant. Een ASE bestaat uit:
 
-- **Front-ends**: de front-ends zijn waar http/https eindigt in een app service omgeving (ASE).
+- **Front-** ends: de front-ends zijn waar http/https eindigt in een app service omgeving.
 - **Werk nemers**: de werk nemers zijn de resources die uw apps hosten.
 - **Data Base**: de Data Base bevat informatie die de omgeving definieert.
 - **Opslag**: de opslag wordt gebruikt voor het hosten van de door de klant gepubliceerde apps.
 
-> [!NOTE]
-> Er zijn twee versies van App Service Environment: ASEv1 en ASEv2. In ASEv1 moet u de resources beheren voordat u ze kunt gebruiken. Zie [Configure an app service Environment v1][ConfigureASEv1](Engelstalig) voor meer informatie over het configureren en beheren van ASEv1. De rest van dit artikel richt zich op ASEv2.
->
->
-
-U kunt een ASE (ASEv1 en ASEv2) implementeren met een externe of interne VIP voor toegang tot apps. De implementatie met een extern VIP wordt meestal een externe ASE genoemd. De interne versie wordt de ILB-ASE genoemd, omdat deze gebruikmaakt van een interne load balancer (ILB). Zie [een ILB ASE maken en gebruiken][MakeILBASE]voor meer informatie over de ILB-ASE.
+U kunt een ASE implementeren met een externe of interne VIP voor toegang tot apps. De implementatie met een extern VIP wordt meestal een externe ASE genoemd. De interne versie wordt de ILB-ASE genoemd, omdat deze gebruikmaakt van een interne load balancer (ILB). Zie [een ILB ASE maken en gebruiken][MakeILBASE]voor meer informatie over de ILB-ASE.
 
 ## <a name="create-an-app-in-an-ase"></a>Een app maken in een ASE ##
 
-Als u een app in een ASE wilt maken, gebruikt u hetzelfde proces als wanneer u het normaal maakt, maar met enkele kleine verschillen. Wanneer u een nieuw App Service plan maakt:
+Als u een app in een ASE wilt maken, gebruikt u hetzelfde proces als wanneer u het normaal maakt, maar met enkele kleine verschillen. Wanneer u een nieuw App Service plan (ASP) maakt:
 
 - In plaats van een geografische locatie te kiezen voor het implementeren van uw app, kiest u een ASE als uw locatie.
-- Alle App Service plannen die in een ASE zijn gemaakt, moeten zich in een geïsoleerde prijs categorie benemen.
+- Alle App Service plannen die in een ASE zijn gemaakt, kunnen zich alleen in een geïsoleerde prijs categorie bevindt.
 
 Als u geen ASE hebt, kunt u er een maken door de instructies in [een app service omgeving maken][MakeExternalASE]te volgen.
 
@@ -43,7 +38,7 @@ Een app maken in een ASE:
 
 1. Selecteer **een resource maken** > **Web en mobiel** > **Web-app**.
 
-2. voer een naam voor de app in. Als u al een App Service plan in een ASE hebt geselecteerd, weerspiegelt de domein naam voor de app de domein naam van de ASE.
+2. Voer een naam in voor de app. Als u al een App Service plan in een ASE hebt geselecteerd, weerspiegelt de domein naam voor de app de domein naam van de ASE.
 
     ![App-naam selecteren][1]
 
@@ -55,15 +50,23 @@ Een app maken in een ASE:
 
 1. Selecteer een bestaand App Service plan in uw ASE of maak een nieuw abonnement door de volgende stappen uit te voeren:
 
-    a. Selecteer **nieuwe maken**.
+    a. Selecteer **een resource maken > web-app**in het Azure Portal menu aan de linkerkant.
 
-    b. Voer de naam in voor het App Service plan.
-
-    c. Selecteer uw ASE in de vervolg keuzelijst **locatie** . 
+    b. Selecteer het abonnement.
     
-    d. Selecteer een **geïsoleerde** prijs categorie. Kies **Selecteren**.
-
-    e. Selecteer **OK**.
+    c. Selecteer of maak de resource groep.
+    
+    d. Geef de naam van uw web-app op.
+    
+    e. Selecteer code of DockerContainer.
+    
+    f. Selecteer runtime stack.
+    
+    g. Selecteer Linux of Windows. 
+    
+    h. Selecteer uw ASE in de vervolg keuzelijst **regio** . 
+    
+    i. Selecteer of maak een nieuw App Service plan. Als u een nieuw App Service plan maakt, selecteert u de juiste **geïsoleerde** SKU-grootte.
     
     ![Geïsoleerde prijs Categorieën][2]
 
@@ -71,45 +74,49 @@ Een app maken in een ASE:
     > Linux-apps en Windows-apps kunnen zich niet in hetzelfde App Service plan bevindt, maar kunnen zich in dezelfde App Service Environment. 
     >
 
-2. Selecteer **Maken**.
+2. Selecteer **controleren + maken** en selecteer vervolgens **maken** als de gegevens correct zijn.
 
 ## <a name="how-scale-works"></a>Hoe schalen werkt ##
 
-Elke App Service-app wordt uitgevoerd in een App Service plan. Het container model is een omgeving waarin App Service plannen worden bewaard en App Service apps worden bewaard. Wanneer u een app schaalt, schaalt u het App Service plan en schaalt u alle apps in hetzelfde abonnement.
+Elke App Service-app wordt uitgevoerd in een App Service plan. App Service omgevingen houden App Service plannen en App Service abonnementen op apps. Wanneer u een app schaalt, schaalt u het App Service plan en schaalt u alle apps in hetzelfde abonnement.
 
-Wanneer u in ASEv2 een App Service plan schaalt, wordt de benodigde infra structuur automatisch toegevoegd. Er is een vertraging om bewerkingen te schalen terwijl de infra structuur is toegevoegd. In ASEv1 moet de benodigde infra structuur worden toegevoegd voordat u uw App Service-abonnement kunt maken of schalen. 
+Wanneer u een App Service plan schaalt, wordt de benodigde infra structuur automatisch toegevoegd. Er is een vertraging om bewerkingen te schalen terwijl de infra structuur is toegevoegd. Als u verschillende schaal bewerkingen op volg orde uitvoert, wordt de eerste aanvraag voor de infrastructuur schaal uitgevoerd op en de andere wachtrij. Wanneer de eerste schaal bewerking is voltooid, worden alle andere infrastructuur aanvragen samen gebruikt. Wanneer de infra structuur wordt toegevoegd, worden de App Service plannen als toepasselijk toegewezen. Het maken van een nieuw App Service plan is zelf een schaal bewerking omdat er extra hardware wordt aangevraagd. 
 
-In de multi tenant-App Service is schalen doorgaans onmiddellijk, omdat een groep resources zo snel mogelijk beschikbaar is om deze te ondersteunen. In een ASE is er geen buffer, en worden de bronnen na behoefte toegewezen.
+In de multi tenant-App Service is het schalen direct omdat een groep resources eenvoudig beschikbaar is om het te ondersteunen. In een ASE is er geen buffer, en worden de bronnen na behoefte toegewezen.
 
-In een ASE kunt u Maxi maal 100 exemplaren schalen. Deze 100-instanties kunnen allemaal in één App Service plan zijn of gedistribueerd zijn over meerdere App Service-abonnementen.
+In een ASE kunt u een App Service plan tot 100 exemplaren schalen. Een ASE kan tot 201 totaal aantal exemplaren hebben in alle App Service-abonnementen die zich in de ASE bevinden. 
 
 ## <a name="ip-addresses"></a>IP-adressen ##
 
-App Service beschikt over de mogelijkheid om een toegewezen IP-adres toe te wijzen aan een app. Deze mogelijkheid is beschikbaar nadat u een SSL op basis van IP hebt geconfigureerd, zoals beschreven in [een bestaand aangepast SSL-certificaat binden aan Azure app service][ConfigureSSL]. In een ASE is er echter een uitzonde ring. U kunt geen extra IP-adressen toevoegen die moeten worden gebruikt voor een SSL op basis van IP-adres in een ILB-ASE.
+App Service beschikt over de mogelijkheid om een toegewezen IP-adres toe te wijzen aan een app. De mogelijkheid om een specifiek IP-adres toe te wijzen aan een app is beschikbaar nadat u een SSL op basis van IP hebt geconfigureerd, zoals beschreven in [een bestaand aangepast SSL-certificaat binden aan Azure app service][ConfigureSSL]. In een ILB-ASE kunt u geen extra IP-adressen toevoegen die moeten worden gebruikt voor een SSL op basis van IP.
 
-In ASEv1 moet u de IP-adressen als bronnen toewijzen voordat u ze kunt gebruiken. In ASEv2 gebruikt u de apps op dezelfde manier als in de multi tenant-App Service. Er bevindt zich altijd één reserve adres in ASEv2 met Maxi maal 30 IP-adressen. Telkens wanneer u er een gebruikt, wordt er een andere toegevoegd, zodat een adres altijd beschikbaar is voor gebruik. Er is een vertraging vereist om een ander IP-adres toe te wijzen, waardoor het snel achter elkaar toevoegen van IP-adressen wordt voor komen.
+Met een externe ASE kunt u op IP gebaseerde SSL voor uw app op dezelfde manier configureren als in de multi tenant-App Service. Er bevindt zich altijd één reserve adres in de ASE met Maxi maal 30 IP-adressen. Telkens wanneer u er een gebruikt, wordt er een andere toegevoegd, zodat een adres altijd beschikbaar is voor gebruik. Er is een vertraging vereist om een ander IP-adres toe te wijzen, waardoor het snel achter elkaar toevoegen van IP-adressen wordt voor komen.
 
 ## <a name="front-end-scaling"></a>Front-end schalen ##
 
-Wanneer u in ASEv2 uw App Service-abonnementen uitschaalt, worden werk nemers automatisch toegevoegd om ze te ondersteunen. Elke ASE wordt gemaakt met twee front-ends. Daarnaast wordt de front-ends automatisch uitgeschaald tegen een snelheid van één front-end voor elke 15 exemplaren in uw App Service-abonnementen. Als u bijvoorbeeld 15 exemplaren hebt, hebt u drie front-ends. Als u schaalt naar 30 instanties, hebt u vier front-ends, enzovoort.
+Wanneer u uw App Service-abonnementen uitbreidt, worden werk nemers automatisch toegevoegd ter ondersteuning van de plannen. Elke ASE wordt gemaakt met twee front-ends. De front-ends worden automatisch uitgeschaald met een snelheid van één front-ends voor elk totaal van 15 exemplaren van een App Service-abonnement. Als u drie App Service plannen hebt met elk vijf instanties, hebt u een totaal van 15 exemplaren en drie front-ends. Als u naar een totaal van 30 exemplaren schaalt, hebt u vier front-ends, enzovoort. 
 
-Dit aantal front-ends moet meer dan voldoende zijn voor de meeste scenario's. U kunt echter met een snellere snelheid uitschalen. U kunt de verhouding instellen op zo weinig als een front-end voor elke vijf exemplaren. Er worden kosten in rekening gebracht voor het wijzigen van de verhouding. Zie [Azure app service prijzen][Pricing]voor meer informatie.
+Het aantal front-ends dat standaard wordt toegewezen, is geschikt voor een gemiddelde belasting. U kunt de verhouding wijzigen in zo weinig als één front-ends voor elke vijf exemplaren. U kunt ook de grootte van de front-ends wijzigen. Standaard zijn deze enkelvoudige kernen. In plaats daarvan kunt u de grootte van de front-ends in de portal wijzigen in twee of vier kern groottes. Er worden kosten in rekening gebracht voor het wijzigen van de verhouding of de grootte van de front-ends. Zie [Azure app service prijzen][Pricing]voor meer informatie. Als u de capaciteit van de belasting van uw ASE wilt verbeteren, krijgt u meer verbetering door eerst te schalen naar twee kern front-ends voordat u de schaal ratio aanpast. Als u de kern grootte van uw front-ends wijzigt, treedt er een upgrade van uw ASE op en moet deze buiten kantoor uren worden uitgevoerd.
 
-Front-end-resources zijn het HTTP/HTTPS-eind punt voor de ASE. Met de standaard front-end-configuratie is het geheugen gebruik per front-end consistent rond 60 procent. Werk belastingen van klanten worden niet uitgevoerd op een front-end. De belangrijkste factor voor een front-end ten opzichte van schaal is de CPU, die voornamelijk wordt aangedreven door HTTPS-verkeer.
+Front-ends bronnen zijn het HTTP/HTTPS-eind punt voor de ASE. Met de standaard front-end-configuratie is het geheugen gebruik per front-end consistent rond 60 procent. De belangrijkste reden voor het schalen van uw front-ends is CPU, dat voornamelijk wordt aangedreven door HTTPS-verkeer.
 
 ## <a name="app-access"></a>App-toegang ##
 
-In een externe ASE wijkt het domein dat wordt gebruikt bij het maken van apps af van de multi tenant-App Service. Het bevat de naam van de ASE. Zie [een app service omgeving maken][MakeExternalASE]voor meer informatie over het maken van een externe ASE. De domein naam in een externe ASE ziet eruit als *.&lt;asename&gt;. p.azurewebsites.net*. Als uw ASE bijvoorbeeld de naam _External-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, bereikt u deze op de volgende url's:
+In een externe ASE is het domein achtervoegsel dat wordt gebruikt voor het maken van de app *.&lt;asename&gt;. p.azurewebsites.net*. Als uw ASE de naam _External-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, bereikt u deze op de volgende url's:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-De URL contoso.scm.external-ase.p.azurewebsites.net wordt gebruikt voor toegang tot de kudu-console of voor het publiceren van uw app met behulp van Web Deploy. Zie [kudu-console voor Azure app service][Kudu]voor meer informatie over de kudu-console. De kudu-console biedt u een webinterface voor het opsporen van fouten, het uploaden van bestanden, het bewerken van bestanden en nog veel meer.
+Zie [een app service omgeving maken][MakeExternalASE] voor meer informatie over het maken van een externe ASE
 
-In een ILB-ASE bepaalt u het domein tijdens de implementatie. Zie [een ILB ASE maken en gebruiken][MakeILBASE]voor meer informatie over het maken van een ILB-ASE. Als u de domein naam _ILB-ASE.info_opgeeft, gebruiken de apps in die ASE dat domein tijdens het maken van de app. De Url's voor de app met de naam _Contoso_:
+In een ILB-ASE is het domein achtervoegsel dat wordt gebruikt voor het maken van de app *.&lt;asename&gt;. appserviceenvironment.net*. Als uw ASE de naam _ILB-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, bereikt u deze op de volgende url's:
 
-- contoso.ilb-ase.info
-- contoso.scm.ilb-ase.info
+- contoso.ilb-ase.appserviceenvironment.net
+- contoso.scm.ilb-ase.appserviceenvironment.net
+
+Zie [een ILB ASE maken en gebruiken][MakeILBASE]voor meer informatie over het maken van een ILB-ASE. 
+
+De SCM-URL wordt gebruikt voor toegang tot de kudu-console of voor het publiceren van uw app met behulp van Web Deploy. Zie [kudu-console voor Azure app service][Kudu]voor meer informatie over de kudu-console. De kudu-console biedt u een webinterface voor het opsporen van fouten, het uploaden van bestanden, het bewerken van bestanden en nog veel meer.
 
 ## <a name="publishing"></a>Publiceren ##
 
@@ -125,21 +132,75 @@ Met een externe ASE werken deze publicatie opties allemaal hetzelfde. Zie [imple
 
 Het belangrijkste verschil met publiceren is ten opzichte van een ILB-ASE. Met een ILB-ASE zijn de publicatie-eind punten alleen beschikbaar via de ILB. De ILB bevindt zich op een privé-IP in het subnet ASE in het virtuele netwerk. Als u geen netwerk toegang tot de ILB hebt, kunt u geen apps publiceren op die ASE. Zoals vermeld in [Create and use a ILB ASE][MakeILBASE], moet u DNS configureren voor de apps in het systeem. Die het SCM-eind punt bevat. Als ze niet juist zijn gedefinieerd, kunt u niet publiceren. Uw Ide's moet ook netwerk toegang hebben tot de ILB om er rechtstreeks naar te kunnen publiceren.
 
-Op internet gebaseerde CI-systemen, zoals GitHub en Azure DevOps, werken niet met een ILB ASE omdat het publicatie-eind punt niet toegankelijk is via internet. Voor Azure DevOps kunt u dit probleem omzeilen door een zelf-hostende release agent te installeren in het interne netwerk waar de ILB kan worden bereikt. U kunt ook een CI-systeem gebruiken dat gebruikmaakt van een pull-model, zoals Dropbox.
+Op internet gebaseerde CI-systemen, zoals GitHub en Azure DevOps, werken niet met een ILB ASE omdat het publicatie-eind punt niet toegankelijk is via internet. U kunt publiceren naar een ILB ASE inschakelen vanuit Azure DevOps door een zelf-hostende release agent te installeren in het VNet dat de ILB ASE bevat. U kunt ook een CI-systeem gebruiken dat gebruikmaakt van een pull-model, zoals Dropbox.
 
 De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. U kunt dit zien in het publicatie Profiel van de app en in de portal-Blade van de app (in **overzicht** > **Essentials** en ook in **Eigenschappen**). 
 
+## <a name="storage"></a>Opslag
+
+Een ASE heeft 1 TB opslag ruimte voor alle apps in de ASE. Een geïsoleerd SKU App Service-abonnement heeft standaard een limiet van 250 GB. Als u vijf of meer App Service abonnementen hebt, moet u erop letten dat u de limiet van 1 TB van de ASE niet overschrijdt. Als u meer dan de limiet van 250 GB per App Service abonnement nodig hebt, neemt u contact op met de ondersteuning om de limiet voor het App Service plan aan te passen aan een maximum van 1 TB. Wanneer de limiet voor het abonnement is aangepast, is er nog steeds een limiet van 1 TB voor alle App Service plannen in het ASE. 
+
+## <a name="logging"></a>Logboekregistratie ##
+
+U kunt uw ASE integreren met Azure Monitor voor het verzenden van logboeken over de ASE naar Storage, Event hub of Log Analytics. De items die vandaag zijn geregistreerd zijn:
+
+| Hiervan | Bericht |
+|---------|----------|
+| ASE is beschadigd | De opgegeven ASE is beschadigd vanwege een ongeldige configuratie van het virtuele netwerk. De ASE wordt onderbroken als de status slecht wordt voortgezet. Zorg ervoor dat de hier gedefinieerde richt lijnen worden gevolgd: https://docs.microsoft.com/azure/app-service/environment/network-info |
+| Het ASE-subnet heeft bijna geen ruimte meer | De opgegeven ASE bevindt zich in een subnet dat bijna geen ruimte meer heeft. Er zijn {0} resterende adressen. Zodra deze adressen zijn uitgeput, kan de ASE niet worden geschaald  |
+| De limiet voor het aantal exemplaren van de ASE is bijna bereikt | De opgegeven ASE is bijna de limiet voor het aantal exemplaren van de ASE. Het bevat momenteel {0} App Service abonnement van een maximum aantal exemplaren van 201. |
+| ASE kan geen afhankelijkheid bereiken | De opgegeven ASE kan niet worden bereikt {0}.  Zorg ervoor dat de hier gedefinieerde richt lijnen worden gevolgd: https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE is onderbroken | De opgegeven ASE is onderbroken. De ASE-suspensie kan worden veroorzaakt door een account tekort of een ongeldige configuratie van het virtuele netwerk. Los de hoofd oorzaak op en hervat de ASE om verkeer door te gaan |
+| Upgrade van ASE is gestart | Een platform upgrade naar de opgegeven ASE is gestart. Verwachte vertragingen bij het schalen van bewerkingen |
+| De ASE-upgrade is voltooid | Een platform upgrade naar de opgegeven ASE is voltooid |
+| Schaal bewerkingen zijn gestart | Een App Service plan ({0}) is begonnen met schalen. Gewenste status: {1} ik{2} werk nemers 
+| Schaal bewerkingen zijn voltooid | Het schalen van een App Service plan ({0}) is voltooid. Huidige status: {1} ik{2} werk nemers |
+| Schaal bewerkingen zijn mislukt | Een App Service plan ({0}) is niet geschaald. Huidige status: {1} ik{2} werk nemers |
+
+Logboek registratie inschakelen voor uw ASE: 
+
+1. Ga naar Diagnostische instellingen in de portal.  
+1. Selecteer diagnostische instelling toevoegen.
+1. Geef een naam op voor de logboek integratie
+1. Controleer de gewenste logboek doelen en configureer deze. 
+1. AppServiceEnvironmentPlatformLogs controleren
+
+![Instellingen voor Diagnostische logboeken van ASE][4]
+
+Als u integreert met Log Analytics, kunt u de logboeken bekijken door Logboeken te selecteren in de ASE-Portal en een query te maken op basis van de AppServiceEnvironmentPlatformLogs. 
+
+## <a name="upgrade-preference"></a>Upgrade voorkeur ##
+
+Als u meerdere as hebt, is het mogelijk dat u een upgrade van sommige as wilt uitvoeren voor anderen. In het object ASE hosting Environment Resource Manager kunt u een waarde instellen voor UpgradePreference. De instelling upgradePreference kan worden geconfigureerd via sjabloon, ARMClient of https://resources.azure.com.  De drie mogelijke waarden zijn:
+
+* Geen: de standaard instelling is dat Azure uw ASE in geen enkele batch bijwerkt.
+* Early-Early betekent dat uw ASE wordt bijgewerkt in de eerste helft van de App Service upgrades
+* Late-Late houdt in dat uw ASE wordt bijgewerkt in de tweede helft van de App Service upgrades
+
+Als u https://resources.azure.comgebruikt, kunt u de waarde van upgradePreferences instellen op:
+
+1. Ga naar resources.azure.com en meld u aan met uw Azure-account
+1. Navigeer door abonnementen\/naam van \[abonnement\]\/resourceGroups\/\[resource groep naam\]\/providers\/micro soft. Web\/hostingEnvironments\/\[ASE naam\]
+1. Boven selecteren voor lezen/schrijven
+1. Selecteer Bewerken
+1. Wijzig de waarde voor upgradePreference in wat u nodig hebt uit de drie opties.
+1. Patch selecteren
+
+![bronnen Azure com-weer gave][5]
+
+De upgradePreferences-functie is echt het meest zinnig wanneer u meerdere as hebt, omdat uw ' early ' geüpgradede as wordt bijgewerkt vóór uw ' late ' as. Wanneer u meerdere as hebt, moet uw dev/test as zijn ingesteld op ' early ' en moet uw productie as worden ingesteld op ' late '.
+
 ## <a name="pricing"></a>Prijzen ##
 
-De prijs-SKU met de naam **geïsoleerd** is gemaakt voor gebruik met ASEv2. Alle App Service plannen die worden gehost in ASEv2, bevinden zich in de afzonderlijke prijs-SKU. De afzonderlijke App Service plan tarieven kunnen per regio verschillen. 
+De prijs-SKU met de naam **geïsoleerd** is alleen voor gebruik met ASE. Alle App Service plannen die worden gehost in de ASE, bevinden zich in de afzonderlijke prijs-SKU. De afzonderlijke App Service plan tarieven kunnen per regio verschillen. 
 
-Naast de prijs voor uw App Service plannen, is er een vast tarief voor ASE zelf. Het vaste tempo wordt niet gewijzigd door de grootte van uw ASE en betaalt voor de ASE-infra structuur met een standaard schaal factor van 1 extra front-end voor elke 15 App Service-abonnement.  
+Naast de prijs voor uw App Service plannen, is er een vast tarief voor ASE zelf. De vaste snelheid verandert niet met de grootte van uw ASE en betaalt voor de ASE-infra structuur een standaard schaal factor van één extra front-end voor elke 15 App Service-abonnement.  
 
-Als de standaard schaal van 1 front-end voor elke 15 App Service-plan exemplaren niet snel genoeg is, kunt u de verhouding aanpassen waarmee de front-ends worden toegevoegd of de grootte van de front-ends.  Wanneer u de verhouding of de grootte aanpast, betaalt u voor de front-end-kernen die niet standaard worden toegevoegd.  
+Als de standaard schaal snelheid van één front-ends voor elke 15 App Service-plan exemplaren niet snel genoeg is, kunt u de verhouding aanpassen waarmee de front-ends worden toegevoegd of de grootte van de front-ends.  Wanneer u de verhouding of grootte aanpast, betaalt u voor de front-ends kernen die niet standaard zouden worden toegevoegd.  
 
 Als u bijvoorbeeld de schaal verhouding wijzigt in 10, wordt een front-end toegevoegd voor elke 10 instanties in uw App Service-abonnementen. De vaste kosten omvatten een schaal tarief van een front-end voor elke 15 exemplaren. Met een schaal ratio van 10 betaalt u een vergoeding voor de derde front-end die is toegevoegd voor de tien App Service-plan exemplaren. U hoeft er niet voor te betalen wanneer u 15 exemplaren bereikt, omdat deze automatisch is toegevoegd.
 
-Als u de grootte van de front-ends hebt aangepast aan twee kernen, maar de verhouding niet aanpast, betaalt u voor de extra kernen.  Een ASE wordt gemaakt met twee front-ends, dus zelfs onder de drempel waarde voor automatisch schalen kunt u twee extra kernen betalen als u de grootte hebt verhoogd naar 2 kern front-ends.
+Als u de grootte van de front-ends hebt aangepast aan twee kernen maar de verhouding niet aanpast, betaalt u voor de extra kernen.  Een ASE wordt gemaakt met twee front-ends, dus zelfs onder de drempel waarde voor automatisch schalen kunt u twee extra kernen betalen als u de grootte hebt verhoogd naar twee kern front-ends.
 
 Zie [Azure app service prijzen][Pricing]voor meer informatie.
 
@@ -157,6 +218,9 @@ Een ASE verwijderen:
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png
 [2]: ./media/using_an_app_service_environment/usingase-pricingtiers.png
 [3]: ./media/using_an_app_service_environment/usingase-delete.png
+[4]: ./media/using_an_app_service_environment/usingase-logsetup.png
+[4]: ./media/using_an_app_service_environment/usingase-logs.png
+[5]: ./media/using_an_app_service_environment/usingase-upgradepref.png
 
 
 <!--Links-->

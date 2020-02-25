@@ -1,6 +1,6 @@
 ---
 title: Een inleiding tot Apache Kafka in HDInsight - Azure
-description: 'Meer informatie over Apache Kafka in HDInsight: Wat het is, wat het doet en waar u voorbeelden en gegevens kunt vinden om aan de slag te gaan.'
+description: 'Meer informatie over Apache Kafka in HDInsight: wat het is, wat het doet en waar u voorbeelden en gegevens kunt vinden om aan de slag te gaan.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960096"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560096"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Wat is Apache Kafka in azure HDInsight?
 
@@ -93,7 +93,9 @@ Hier volgen enkele algemene taken en patronen die kunnen worden uitgevoerd met K
 
 Gebruik de volgende koppelingen voor meer informatie over het gebruik van Apache Kafka in HDInsight:
 
-* [Snelstart: Apache Kafka in HDInsight maken](apache-kafka-get-started.md)
+* [Quickstart: Een Apache Kafka-cluster maken in HDInsight](apache-kafka-get-started.md)
+
+* [Kafka gebruiken met REST-proxy](rest-proxy.md)
 
 * [Zelfstudie: Apache Spark gebruiken met Apache Kafka in HDInsight](../hdinsight-apache-spark-with-kafka.md)
 

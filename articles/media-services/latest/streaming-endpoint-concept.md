@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206103"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562357"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
 
@@ -73,7 +73,7 @@ Aanbevolen gebruik |Aanbevolen voor de meeste streaming-scenario's.|Professionee
 
 <sup>1</sup> wordt alleen rechtstreeks op het streaming-eind punt gebruikt wanneer CDN niet is ingeschakeld op het eind punt.<br/>
 
-## <a name="properties"></a>Eigenschappen
+## <a name="streaming-endpoint-properties"></a>Eigenschappen van streaming-eind punt
 
 Deze sectie bevat informatie over een aantal eigenschappen van het streaming-eind punt. Zie [streaming-eind punt](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)voor voor beelden van het maken van een nieuw streaming-eind punt en beschrijvingen van alle eigenschappen.
 
@@ -130,50 +130,36 @@ Deze sectie bevat informatie over een aantal eigenschappen van het streaming-ein
 
 - `scaleUnits`: bieden u speciale uitvoer capaciteit die kan worden aangeschaft in stappen van 200 Mbps. Als u wilt overstappen op een **Premium** -type, moet u `scaleUnits`aanpassen.
 
-## <a name="working-with-cdn"></a>Werken met CDN
+## <a name="why-use-multiple-streaming-endpoints"></a>Waarom meerdere streaming-eind punten gebruiken?
 
-In de meeste gevallen moet CDN zijn ingeschakeld. Als u echter wilt anticiperen op het maximale gelijktijdigheid van een limiet van 500 viewers, is het raadzaam om CDN uit te scha kelen omdat CDN het beste met gelijktijdigheid kan worden geschaald.
+Eén streaming-eind punt kan zowel live als on-demand Video's streamen en de meeste klanten gebruiken slechts één streaming-eind punt. In deze sectie vindt u enkele voor beelden van waarom u meerdere streaming-eind punten moet gebruiken.
 
-### <a name="considerations"></a>Overwegingen
+* Elke gereserveerde eenheid biedt een band breedte van 200 Mbps. Als u meer dan 2.000 Mbps (2 Gbps) band breedte nodig hebt, kunt u het tweede streaming-eind punt en taak verdeling gebruiken om extra band breedte te bieden.
 
-* Het streaming-eind punt `hostname` en de streaming-URL blijven hetzelfde, ongeacht of u CDN inschakelt.
-* Als u de mogelijkheid wilt bieden om uw inhoud te testen met of zonder CDN, maakt u een ander streaming-eind punt dat niet is ingeschakeld voor CDN.
+    CDN is echter de beste manier om de inhoud van streaming te verg Roten, maar als u zoveel inhoud levert als de CDN meer dan 2 Gbps haalt, kunt u extra streaming-eind punten (oorsprong) toevoegen. In dit geval moet u inhouds-Url's leveren die in de twee streaming-eind punten evenwichtig zijn. Deze benadering biedt een betere caching dan het wille keurig verzenden van aanvragen naar elke oorsprong (bijvoorbeeld via Traffic Manager). 
+    
+    > [!TIP]
+    > Als de CDN meer dan 2 Gbps haalt, kan er meestal iets onjuist worden geconfigureerd (bijvoorbeeld zonder het afschermen van oorsprong).
+    
+* Taak verdeling verschillende CDN-providers. U kunt bijvoorbeeld het standaard streaming-eind punt instellen op het gebruik van het Verizon CDN en een tweede maken om Akamai te gebruiken. Voeg vervolgens een deel van de taak verdeling toe tussen de twee om multi-CDN-verdeling te belasten. 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>Gedetailleerde uitleg over hoe caching werkt
+    De klant houdt vaak taak verdeling over meerdere CDN-providers met behulp van één oorsprong.
+* Gemengde inhoud streaming: Live en video op aanvraag. 
 
-Er is geen specifieke bandbreedte waarde bij het toevoegen van het CDN, omdat de hoeveelheid band breedte die nodig is voor een streaming-eind punt waarvoor CDN is ingeschakeld, varieert. Een partij is afhankelijk van het type inhoud, hoe populair het is, de bitrates en de protocollen. De CDN is alleen in de cache opgeslagen wat er wordt aangevraagd. Dit betekent dat populaire inhoud rechtstreeks vanuit het CDN wordt bediend, op voor waarde dat het video fragment in de cache wordt opgeslagen. Live-inhoud wordt waarschijnlijk in de cache opgeslagen, omdat er meestal veel mensen precies hetzelfde zijn. Inhoud op aanvraag kan een beetje trickier, omdat u een aantal inhoud zou kunnen hebben die populair is en niet. Als u miljoenen video-assets hebt waar geen van de elementen populair zijn (slechts één of twee kijkers per week), maar duizenden personen die alle verschillende Video's volgen, wordt het CDN veel minder effectief. Met deze cache missers verhoogt u de belasting van het streaming-eind punt.
+    De toegangs patronen voor Live en on-demand inhoud zijn zeer verschillend. De live-inhoud wordt in één keer veel vraag voor dezelfde inhoud ontvangen. De inhoud op aanvraag van de video (inhoud van een lang einde van het Archief voor exemplaar) heeft een laag gebruik op dezelfde inhoud. Het opslaan in cache werkt heel goed met de live-inhoud, maar ook op de lange staart inhoud.
 
-U moet ook nadenken over de werking van adaptieve streaming. Elk afzonderlijk video fragment wordt in de cache opgeslagen als een eigen entiteit. Stel bijvoorbeeld dat de eerste keer dat een bepaalde video wordt bekeken. Als er in de Viewer slechts enkele seconden worden weer gegeven, worden alleen de video fragmenten die zijn gekoppeld aan wat de persoon die wordt bekeken in de cache in het CDN opgeslagen. Met adaptieve streaming hebt u doorgaans 5 tot 7 verschillende bitrates voor video. Als één persoon een bitrate bekijkt en een andere persoon een andere bitsnelheid bekijkt, worden ze afzonderlijk in het CDN opgeslagen. Zelfs als twee mensen dezelfde bitsnelheid volgen, kunnen ze worden gestreamd via verschillende protocollen. Elk protocol (HLS, MPEG-DASH, Smooth Streaming) wordt afzonderlijk in de cache opgeslagen. Elke bitsnelheid en elk protocol worden afzonderlijk in de cache opgeslagen en alleen de video fragmenten die zijn aangevraagd, worden in de cache opgeslagen.
+    Houd rekening met een scenario waarbij uw klanten hoofd zakelijk live-inhoud volgen, maar alleen af en toe inhoud op aanvraag kunnen bekijken en wordt geleverd vanuit hetzelfde streaming-eind punt. Het lage gebruik van on-demand inhoud zou cache ruimte innemen die beter zou kunnen worden opgeslagen voor de live-inhoud. In dit scenario raden we u aan om de live-inhoud van één streaming-eind punt en de lange-staart inhoud van een ander streaming-eind punt te leveren. Hierdoor worden de prestaties van de inhoud van de live-gebeurtenis verbeterd.
+    
+## <a name="scaling-streaming-with-cdn"></a>Streamen schalen met CDN
 
-### <a name="enable-azure-cdn-integration"></a>Integratie van Azure CDN inschakelen
+Zie de volgende artikelen:
 
-> [!IMPORTANT]
-> U kunt CDN niet inschakelen voor Azure-accounts voor proef abonnementen of studenten.
->
-> CDN-integratie is ingeschakeld in alle Azure-data centers, met uitzonde ring van regio's van de federale overheid en China.
-
-Nadat een streaming-eind punt is ingericht met CDN ingeschakeld, is er een gedefinieerde wacht tijd op Media Services voordat de DNS-update wordt uitgevoerd om het streaming-eind punt toe te wijzen aan het CDN-eind punt.
-
-Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Het kan tot twee uur duren voordat de Azure CDN integratie is ingeschakeld en de wijzigingen voor alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbreking van het streaming-eind punt en zodra de integratie is voltooid, wordt de stroom vanuit het CDN geleverd. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
-
-Wanneer het standaard streaming-eind punt wordt gemaakt, wordt het standaard geconfigureerd met standaard Verizon. U kunt Premium Verizon-of Standard Akamai-providers configureren met behulp van REST Api's.
-
-Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN van Verizon** voor Standard streaming-eind punten. Premium streaming-eind punten kunnen worden geconfigureerd met alle **Azure CDN prijs categorieën en providers**. 
-
-> [!NOTE]
-> Zie het [CDN-overzicht](../../cdn/cdn-overview.md)voor meer informatie over Azure CDN.
-
-### <a name="determine-if-dns-change-was-made"></a>Bepalen of de DNS-wijziging is doorgevoerd
-
-U kunt bepalen of de DNS-wijziging is doorgevoerd in een streaming-eind punt (het verkeer wordt omgeleid naar de Azure CDN) met behulp van https://www.digwebinterface.com. Als de resultaten azureedge.net domein namen in de resultaten heeft, wordt het verkeer nu naar het CDN gewijsd.
+- [Overzicht van CDN](../../cdn/cdn-overview.md)
+- [Streamen schalen met CDN](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
 Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
-
-## <a name="see-also"></a>Zie ook
-
-[Overzicht van CDN](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

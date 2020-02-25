@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte en handgeschreven tekst extra heren,C#'
+title: 'Snelstartgids: Computer Vision 2,0 en 2,1-pak gedrukte en handgeschreven tekst-REST,C#'
 titleSuffix: Azure Cognitive Services
 description: In deze Snelstartgids extraheert u gedrukte en handgeschreven tekst van een afbeelding met behulp C#van de computer vision-API with.
 services: cognitive-services
@@ -11,28 +11,47 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a18ae7c342563277acbb0fa1b8de3e49a40c5460
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b47c0a87f2b7e4f3fea2d5ed088372cabce2a994
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770778"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566094"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision REST API enC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-c"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision 2,0 en 2,1 REST API enC#
 
 In deze Quick Start haalt u gedrukte en/of handgeschreven tekst uit een afbeelding op met behulp van de Computer Vision REST API. Met de methode voor het lezen en lezen van een [batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) - [bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) kunt u tekst in een afbeelding detecteren en herkende tekens in een door een machine Lees bare teken stroom uitpakken. De API bepaalt welk herkennings model voor elke tekst regel moet worden gebruikt, zodat het afbeeldingen ondersteunt met zowel gedrukte als handgeschreven tekst.
 
-> [!IMPORTANT]
-> De methode voor het [lezen van batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Read een URI in het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens gebruiken, waarmee de methode [resultaat van de Lees bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) wordt weer gegeven om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+Vergeleken met Computer Vision 2,0 en 2,1 biedt de Computer Vision 3,0 open bare preview-versie:
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
+* nog betere nauw keurigheid
+* een gewijzigde uitvoer indeling
+* Betrouwbaarheids score voor woorden
+* ondersteuning van Spaanse en Engelse talen met de para meter extra taal
+
+#### <a name="version-2"></a>[Versie 2](#tab/version-2)
+
+> [!IMPORTANT]
+> De methode voor het [lezen van batch](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+
+#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+
+> [!IMPORTANT]
+> De methode voor het [lezen van batch](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het veld `Operation-Location`-antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API voor de [Lees bewerking](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) wordt aangegeven, om de status te controleren en de resultaten van de methode voor het lezen van de batch te retour neren.
+
+---
+
 
 ## <a name="prerequisites"></a>Vereisten
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) aan voordat u begint.
 
 - U moet beschikken over [Visual Studio 2015 of hoger](https://visualstudio.microsoft.com/downloads/).
 - U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt reeks, respectievelijk met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
+
+#### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 Voer de volgende stappen uit om het voorbeeld in Visual Studio te maken:
 
@@ -205,9 +224,236 @@ namespace CSHttpClientSample
 }
 ```
 
+#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+
+Voer de volgende stappen uit om het voorbeeld in Visual Studio te maken:
+
+1. Maak een nieuwe Visual Studio-oplossing in Visual Studio met behulp van het Visual C# Console App-sjabloon.
+1. Installeer het pakket Newtonsoft.Json NuGet.
+    1. Klik in het menu op **Extra**, selecteer **NuGet Package Manager** en vervolgens **NuGet-pakketten voor oplossing beheren**.
+    1. Klik op het tabblad **Bladeren** en typ 'Newtonsoft.Json' in het vak **Zoeken**.
+    1. Selecteer **Newtonsoft.Json** wanneer dit wordt weergegeven en klik vervolgens op het selectievakje naast uw projectnaam en op **Installeren**.
+1. Voer het programma uit.
+1. Voer bij de prompt het pad in naar een lokale installatie kopie en de taal die u wilt herkennen.
+
+```csharp
+using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Web;
+
+namespace CSHttpClientSample
+{
+    static class Program
+    {
+        // Add your Computer Vision subscription key and endpoint to your environment variables.
+        static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
+
+        // An endpoint should have a format like "https://westus.api.cognitive.microsoft.com"
+        static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
+
+        // the Batch Read method endpoint
+        static string uriBase = endpoint + "/vision/v3.0-preview/read/analyze";
+
+        static void PrintUsage()
+        {
+            // Get the path and filename to process from the user.
+            Console.WriteLine("Cognitive Service Batch Read File Sample");
+            Console.WriteLine("Usage: ");
+            Console.WriteLine("    From Azure Cogntivie Service, retrieve your endpoint and subscription key.");
+            Console.WriteLine("    Set environment variable COMPUTER_VISION_ENDPOINT, such as \"https://westus2.api.cognitive.microsoft.com\"");
+            Console.WriteLine("    Set environment variable COMPUTER_VISION_SUBSCRIPTION_KEY, such as \"1234567890abcdef1234567890abcdef\"\n");
+            Console.WriteLine("    Run the program without argument to enter a file name and a language manually.");
+            Console.WriteLine("    Or run the program with a file name for an image file (bmp/jpg/png/tiff) or a PDF file, plus the language. The language can be \"en\" or \"es\".");
+            Console.WriteLine("       For example: dotnet Program.dll sample.jpg en");
+            Console.WriteLine();
+        }
+
+        static void Main(string[] args)
+        {
+            PrintUsage();
+
+            if (string.IsNullOrEmpty(subscriptionKey) || string.IsNullOrEmpty(endpoint))
+            {
+                Console.Error.WriteLine("Please set environment variables COMPUTER_VISION_ENDPOINT and COMPUTER_VISION_SUBSCRIPTION_KEY.");
+                return;
+            }
+
+            string imageFilePath;
+            string language;
+            if (args.Length == 0)
+            {
+                Console.Write(
+                    "Enter the path to an image (bmp/jpg/png/tiff) or PDF with text you wish to read: ");
+                imageFilePath = Console.ReadLine();
+            }
+            else
+            {
+                imageFilePath = args[0];
+            }
+
+            if (args.Length <= 1)
+            {
+                Console.Write(
+                    "Enter the language to read: \"en\" or \"es\": ");
+                language = Console.ReadLine();
+            }
+            else
+            {
+                language = args[1];
+            }
+
+            Console.WriteLine($"Endpoint:     [{endpoint}]");
+            Console.WriteLine($"Subscription: [{subscriptionKey}]");
+            Console.WriteLine($"URL:          [{uriBase}]");
+
+            if (File.Exists(imageFilePath))
+            {
+                // Call the REST API method.
+                Console.WriteLine("\nWait a moment for the results to appear.\n");
+                ReadText(imageFilePath, language).Wait();
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid file path");
+            }
+            Console.WriteLine("\nPress Enter to exit...");
+            Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Gets the text from the specified image file by using
+        /// the Computer Vision REST API.
+        /// </summary>
+        /// <param name="imageFilePath">The image file with text.</param>
+        static async Task ReadText(string imageFilePath, string language)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                // Request headers.
+                client.DefaultRequestHeaders.Add(
+                    "Ocp-Apim-Subscription-Key", subscriptionKey);
+
+                var builder = new UriBuilder(uriBase);
+                builder.Port = -1;
+                var query = HttpUtility.ParseQueryString(builder.Query);
+                query["language"] = language;
+                builder.Query = query.ToString();
+                string url = builder.ToString();
+
+                HttpResponseMessage response;
+
+                // Two REST API methods are required to extract text.
+                // One method to submit the image for processing, the other method
+                // to retrieve the text found in the image.
+
+                // operationLocation stores the URI of the second REST API method,
+                // returned by the first REST API method.
+                string operationLocation;
+
+                // Reads the contents of the specified local image
+                // into a byte array.
+                byte[] byteData = GetImageAsByteArray(imageFilePath);
+
+                // Adds the byte array as an octet stream to the request body.
+                using (ByteArrayContent content = new ByteArrayContent(byteData))
+                {
+                    // This example uses the "application/octet-stream" content type.
+                    // The other content types you can use are "application/json"
+                    // and "multipart/form-data".
+                    content.Headers.ContentType =
+                        new MediaTypeHeaderValue("application/octet-stream");
+
+                    // The first REST API method, Batch Read, starts
+                    // the async process to analyze the written text in the image.
+                    response = await client.PostAsync(url, content);
+                }
+
+                // The response header for the Batch Read method contains the URI
+                // of the second method, Read Operation Result, which
+                // returns the results of the process in the response body.
+                // The Batch Read operation does not return anything in the response body.
+                if (response.IsSuccessStatusCode)
+                    operationLocation =
+                        response.Headers.GetValues("Operation-Location").FirstOrDefault();
+                else
+                {
+                    // Display the JSON error data.
+                    string errorString = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("\n\nResponse:\n{0}\n",
+                        JToken.Parse(errorString).ToString());
+                    return;
+                }
+
+                // If the first REST API method completes successfully, the second 
+                // REST API method retrieves the text written in the image.
+                //
+                // Note: The response may not be immediately available. Text
+                // recognition is an asynchronous operation that can take a variable
+                // amount of time depending on the length of the text.
+                // You may need to wait or retry this operation.
+                //
+                // This example checks once per second for ten seconds.
+                string contentString;
+                int i = 0;
+                do
+                {
+                    System.Threading.Thread.Sleep(1000);
+                    response = await client.GetAsync(operationLocation);
+                    contentString = await response.Content.ReadAsStringAsync();
+                    ++i;
+                }
+                while (i < 60 && contentString.IndexOf("\"status\":\"succeeded\"") == -1);
+
+                if (i == 60 && contentString.IndexOf("\"status\":\"succeeded\"") == -1)
+                {
+                    Console.WriteLine("\nTimeout error.\n");
+                    return;
+                }
+
+                // Display the JSON response.
+                Console.WriteLine("\nResponse:\n\n{0}\n",
+                    JToken.Parse(contentString).ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\n" + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Returns the contents of the specified file as a byte array.
+        /// </summary>
+        /// <param name="imageFilePath">The image file to read.</param>
+        /// <returns>The byte array of the image data.</returns>
+        static byte[] GetImageAsByteArray(string imageFilePath)
+        {
+            // Open a read-only file stream for the specified file.
+            using (FileStream fileStream =
+                new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
+            {
+                // Read the file's contents into a byte array.
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
+        }
+    }
+}
+```
+
+---
+
 ## <a name="examine-the-response"></a>Het antwoord bekijken
 
 Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldtoepassing parseert en geeft een geslaagd antwoord weer in het consolevenster dat vergelijkbaar is met het volgende voorbeeld:
+
+#### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
 ```json
 {
@@ -308,6 +554,78 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldtoepassi
   ]
 }
 ```
+
+#### <a name="version-3-public-preview"></a>[Versie 3 (open bare preview)](#tab/version-3)
+
+
+```json
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-02-11T16:44:36Z",
+  "lastUpdatedDateTime": "2020-02-11T16:44:36Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "language": "es",
+        "angle": -0.8011,
+        "width": 401,
+        "height": 119,
+        "unit": "pixel",
+        "lines": [
+          {
+            "language": "es",
+            "boundingBox": [
+              15,
+              42,
+              372,
+              38,
+              373,
+              91,
+              15,
+              97
+            ],
+            "text": "¡Buenos días!",
+            "words": [
+              {
+                "boundingBox": [
+                  15,
+                  43,
+                  243,
+                  40,
+                  244,
+                  93,
+                  17,
+                  98
+                ],
+                "text": "¡Buenos",
+                "confidence": 0.56
+              },
+              {
+                "boundingBox": [
+                  254,
+                  40,
+                  370,
+                  38,
+                  371,
+                  91,
+                  255,
+                  93
+                ],
+                "text": "días!",
+                "confidence": 0.872
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

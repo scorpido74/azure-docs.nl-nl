@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een virtuele VMware-machine maken op de AVS-privécloud'
-description: Hierin wordt beschreven hoe u een virtuele VMware-machine maakt op een AVS-Privécloud
+title: 'Quick Start: een Azure VMware-VM maken op een Privécloud-Azure VMware-oplossing door CloudSimple'
+description: Hierin wordt beschreven hoe u een Azure VMware-VM maakt in een CloudSimple-Privécloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cbe88afc4f566bad4bacb408346d4dd25a2f6c96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020060"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566145"
 ---
-# <a name="create-vmware-virtual-machines-on-your-avs-private-cloud"></a>Virtuele VMware-machines maken op uw AVS-Privécloud
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Virtuele VMware-machines maken in uw Privécloud
 
-Als u virtuele machines wilt maken op uw AVS-Privécloud, begint u met het openen van de AVS-Portal vanuit de Azure Portal.
+Als u virtuele machines in uw Privécloud wilt maken, moet u beginnen met het openen van de CloudSimple-Portal vanuit de Azure Portal.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="access-the-avs-portal"></a>Toegang tot de AVS-Portal
+## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
 1. Selecteer **Alle services**.
-2. Zoeken naar **AVS-Services**.
-3. Selecteer de AVS-service waarop u de Privécloud van uw AVS wilt maken.
-4. Klik op de pagina **overzicht** op **Ga naar de AVS-Portal** om een nieuw browser tabblad voor de AVS-portal te openen. Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd. 
+2. Zoek naar **CloudSimple Services**.
+3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
+4. Klik op de pagina **overzicht** op **Ga naar de CloudSimple-Portal** om een nieuw browser tabblad voor CloudSimple-portal te openen.  Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.  
 
-    ![AVS-Portal starten](media/launch-cloudsimple-portal.png)
+    ![CloudSimple-Portal starten](media/launch-cloudsimple-portal.png)
 
 ## <a name="launch-vcenter-web-ui"></a>VCenter-Web-UI starten
 
 U kunt nu vCenter starten om virtuele machines en beleids regels in te stellen.
 
-Start vanuit de AVS-Portal om toegang tot vCenter te krijgen. Klik op de start pagina onder **algemene taken**op **VSphere-client starten**. Selecteer de AVS-privécloud en klik vervolgens op **vSphere-client starten** op de AVS-privécloud.
+Als u toegang wilt krijgen tot vCenter, start u vanuit de CloudSimple-Portal. Klik op de start pagina onder **algemene taken**op **VSphere-client starten**.  Selecteer de privécloud en klik vervolgens op **vSphere-client starten** op de privécloud.
 
    ![VSphere-client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>Een ISO-of vSphere-sjabloon uploaden
 
   > [!WARNING]
-  > Voor de ISO-upload gebruikt u de vSphere HTML5-client. Het gebruik van een Flash-client kan een fout veroorzaken.
+  > Voor de ISO-upload gebruikt u de vSphere HTML5-client.  Het gebruik van een Flash-client kan een fout veroorzaken.
 
 1. Verkrijg de ISO-of vSphere-sjabloon die u wilt uploaden naar vCenter om een virtuele machine te maken en deze beschikbaar te stellen op uw lokale systeem.
 2. Klik in vCenter op het pictogram **schijf** en selecteer **vsanDatastore**. Klik op **bestanden** en klik vervolgens op **nieuwe map**.
@@ -78,7 +78,7 @@ Start vanuit de AVS-Portal om toegang tot vCenter te krijgen. Klik op de start p
 8. Selecteer het gast besturingssysteem van de ISO voor de virtuele machine die u maakt en klik op **volgende**.
     Nieuwe VM-](media/vcvm07.png) ![
 
-9. Selecteer de opties voor harde schijf en netwerk. Selecteer **ISO-bestand Data Store**voor nieuwe cd/dvd-stations. Als u verkeer van het open bare IP-adres naar deze VM wilt toestaan, selecteert u het netwerk als **VM-1**.
+9. Selecteer de opties voor harde schijf en netwerk. Selecteer **ISO-bestand Data Store**voor nieuwe cd/dvd-stations.  Als u verkeer van het open bare IP-adres naar deze VM wilt toestaan, selecteert u het netwerk als **VM-1**.
     Nieuwe VM-](media/vcvm08.png) ![
 
 10. Er wordt een selectie venster geopend. Selecteer het bestand dat u eerder hebt geüpload naar de map Iso's en templates en klik op **OK**.
@@ -90,17 +90,17 @@ Start vanuit de AVS-Portal om toegang tot vCenter te krijgen. Klik op de start p
 De VM wordt nu toegevoegd aan de werk belasting reken resources en is klaar voor gebruik. 
 Nieuwe VM-](media/vcvm12.png) ![
 
-De basis installatie is nu voltooid. U kunt de Privécloud van uw Cloud op dezelfde manier gebruiken als de on-premises VM-infra structuur.
+De basis installatie is nu voltooid. U kunt uw Privécloud op dezelfde manier gebruiken als uw on-premises VM-infra structuur.
 
-De volgende secties bevatten optionele informatie over het instellen van DNS-en DHCP-servers voor AVS-workloads in de Privécloud en het wijzigen van de standaard-netwerk configuratie.
+De volgende secties bevatten optionele informatie over het instellen van DNS-en DHCP-servers voor de werk belasting van de privécloud en het wijzigen van de standaard netwerk configuratie.
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Gebruikers en identiteits bronnen aan vCenter toevoegen (optioneel)
 
-AVS wijst een standaard-vCenter-gebruikers account toe met gebruikers naam `cloudowner@AVS.local`. U hoeft geen extra account in te stellen om aan de slag te gaan. AVS wijst beheerders normaal gesp roken de bevoegdheden toe die ze nodig hebben om normale bewerkingen uit te voeren. Stel uw on-premises Active Directory of Azure AD in als een [extra id-bron](set-vcenter-identity.md) op uw AVS-privécloud.
+CloudSimple wijst een standaard-vCenter-gebruikers account toe met gebruikers naam `cloudowner@cloudsimple.local`. U hoeft geen extra account in te stellen om aan de slag te gaan.  CloudSimple wijst beheerders normaal gesp roken de bevoegdheden toe die ze nodig hebben om normale bewerkingen uit te voeren.  Stel uw on-premises Active Directory of Azure AD in als een [extra id-bron](set-vcenter-identity.md) in uw privécloud.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>Een DNS-en DHCP-server maken (optioneel)
 
-Voor toepassingen en werk belastingen die worden uitgevoerd in een cloud omgeving in de AVS, zijn naam omzetting en DHCP-services vereist voor de toewijzing van lookup-en IP-adressen. U hebt de juiste DHCP-en DNS-infra structuur nodig om deze services te kunnen leveren. U kunt een virtuele machine in vCenter configureren om deze services te bieden in de Privécloud van uw cloud omgeving.
+Toepassingen en werk belastingen die worden uitgevoerd in een Privécloud-omgeving, moeten naam omzetting en DHCP-services voor lookup-en IP-adres toewijzing hebben. U hebt de juiste DHCP-en DNS-infra structuur nodig om deze services te kunnen leveren. U kunt een virtuele machine in vCenter configureren om deze services te leveren in uw Privécloud.
 
 Vereisten
 
@@ -114,7 +114,7 @@ De volgende koppelingen bieden richt lijnen voor het instellen van DHCP-en DNS-s
 
 #### <a name="linux-based-dns-server-setup"></a>Installatie van DNS-server op basis van Linux
 
-Linux biedt verschillende pakketten voor het instellen van DNS-servers. Hier volgt een koppeling naar instructies voor het instellen van een open-source BIND-DNS-server.
+Linux biedt verschillende pakketten voor het instellen van DNS-servers.  Hier volgt een koppeling naar instructies voor het instellen van een open-source BIND-DNS-server.
 
 [Voor beeld van installatie](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
@@ -128,11 +128,11 @@ In deze micro soft-onderwerpen wordt beschreven hoe u een Windows-Server als een
 
 ## <a name="customize-networking-configuration-optional"></a>Netwerk configuratie aanpassen (optioneel)
 
-Met de netwerk pagina's in de AVS-Portal kunt u de configuratie voor Firewall tabellen en open bare IP-adressen voor Vm's opgeven.
+Met de netwerk pagina's in de CloudSimple-Portal kunt u de configuratie voor Firewall tabellen en open bare IP-adressen voor Vm's opgeven.
 
 ### <a name="allocate-public-ips"></a>Open bare IP-adressen toewijzen
 
-1. Navigeer naar **netwerk > openbaar IP** in de AVS-Portal.
+1. Navigeer naar **netwerk > open bare IP** in de CloudSimple-Portal.
 2. Klik op **openbaar IP-adres toewijzen**.
 3. Voer een naam in om de IP-adres vermelding te identificeren.
 4. Behoud de standaard locatie.
@@ -207,10 +207,10 @@ python3 -m http.server 80
 ```
 Start een browser op uw bureau blad en ga naar poort 80 voor het open bare IP-adres om door de bestanden op uw virtuele machine te bladeren.
 
-### <a name="default-avs-firewall-rules-for-public-ip"></a>Standaard-AVS-firewall regels voor openbaar IP-adres
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Standaard CloudSimple-firewall regels voor openbaar IP-adres
 
 * VPN-verkeer: al het verkeer tussen (van/naar) de VPN-en alle werkbelasting netwerken en het beheer netwerk is toegestaan.
-* Intern verkeer van de Privécloud in de Cloud: alle Oost-West-verkeer tussen (van/naar) werkbelasting netwerken en het beheer netwerk (zie hierboven) is toegestaan.
+* Intern verkeer van de privécloud: alle Oost-West-verkeer tussen (van/naar) werkbelasting netwerken en het beheer netwerk (zie hierboven) is toegestaan.
 * Internet verkeer:
   * Al het binnenkomende verkeer van Internet wordt geweigerd aan workload netwerken en het beheer netwerk.
   * Al het uitgaande verkeer naar het Internet vanuit workload netwerken of het beheer netwerk is toegestaan.
@@ -219,7 +219,7 @@ U kunt ook de manier wijzigen waarop het verkeer wordt beveiligd, met de functie
 
 ## <a name="install-solutions-optional"></a>Oplossingen installeren (optioneel)
 
-U kunt oplossingen op uw AVS-Privécloud installeren om optimaal gebruik te kunnen maken van uw AVS-privécloud voor persoonlijke Clouds. U kunt back-ups, herstel na nood gevallen, replicatie en andere functies instellen om uw virtuele machines te beveiligen. Voor beelden hiervan zijn VMware Site Recovery Manager (VMware-Veeam) en back-up& replicatie.
+U kunt oplossingen op uw CloudSimple-Privécloud installeren om optimaal gebruik te kunnen maken van uw persoonlijke Cloud vCenter-omgeving. U kunt back-ups, herstel na nood gevallen, replicatie en andere functies instellen om uw virtuele machines te beveiligen. Voor beelden hiervan zijn VMware Site Recovery Manager (VMware-Veeam) en back-up& replicatie.
 
 Als u een oplossing wilt installeren, moet u voor een beperkte periode extra bevoegdheden aanvragen. Zie [bevoegdheden escaleren](escalate-private-cloud-privileges.md).
 
@@ -227,4 +227,4 @@ Als u een oplossing wilt installeren, moet u voor een beperkte periode extra bev
 
 * [VMware-Vm's in azure gebruiken](quickstart-create-vmware-virtual-machine.md)
 * [Verbinding maken met een on-premises netwerk met behulp van Azure ExpressRoute](on-premises-connection.md)
-* [VPN-gateways instellen op het AVS-netwerk](vpn-gateway.md)
+* [VPN-gateways instellen op het CloudSimple-netwerk](vpn-gateway.md)

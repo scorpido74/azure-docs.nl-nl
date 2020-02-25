@@ -1,6 +1,6 @@
 ---
-title: Lokale web UI-beheer voor Azure Data Box, Azure Data Box zware | Microsoft Docs
-description: Wordt beschreven hoe u de lokale webgebruikersinterface voor het beheren van uw Data Box en gegevens in het zware-apparaten
+title: Azure Data Box/Azure Data Box Heavy beheren met de lokale webgebruikersinterface
+description: Hierin wordt beschreven hoe u de lokale web-UI gebruikt voor het beheren van uw Data Box en Data Box Heavy apparaten
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496250"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560181"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>De lokale webgebruikersinterface gebruiken voor het beheren van uw Data Box en de gegevens in het zware
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
-In dit artikel worden enkele van de configuratie en beheer taken die kunnen worden uitgevoerd op de Data Box en gegevens in het zware-apparaten beschreven. U kunt de gegevens in en gegevens in het zware apparaten via de gebruikersinterface van Azure portal en de lokale webgebruikersinterface voor het apparaat beheren. Dit artikel richt zich op de taken die u kunt uitvoeren met behulp van de lokale webinterface.
+In dit artikel worden enkele van de configuratie-en beheer taken beschreven die kunnen worden uitgevoerd op de Data Box en Data Box Heavy apparaten. U kunt de Data Box en Data Box Heavy apparaten beheren via de Azure Portal gebruikers interface en de lokale webgebruikersinterface voor het apparaat. Dit artikel richt zich op de taken die u kunt uitvoeren met behulp van de lokale webinterface.
 
-Lokale web-UI voor de Data Box en de gegevens in het zware wordt gebruikt voor de eerste configuratie van het apparaat. U kunt ook de lokale webgebruikersinterface afsluiten of opnieuw opstarten van het apparaat, Voer diagnostische tests uit, software bijwerken, logboeken kopiëren weergeven en genereer een logboek-pakket voor Microsoft Support. U kunt twee afzonderlijke lokale web-UI die overeenkomt met elk knooppunt van het apparaat te openen op een Data Box zware apparaat met twee onafhankelijke knooppunten.
+De lokale web-UI voor de Data Box en Data Box Heavy wordt gebruikt voor de initiële configuratie van het apparaat. U kunt ook de lokale web-UI gebruiken om het apparaat af te sluiten of opnieuw op te starten, diagnostische tests uit te voeren, software bij te werken, het kopiëren van logboeken te bekijken en een logboek pakket te genereren voor Microsoft Ondersteuning. Op een Data Box Heavy apparaat met twee onafhankelijke knoop punten, hebt u toegang tot twee afzonderlijke lokale web-UIs die overeenkomen met elk knoop punt van het apparaat.
 
 Dit artikel bevat de volgende zelfstudies:
 
@@ -31,7 +31,7 @@ Dit artikel bevat de volgende zelfstudies:
 
 ## <a name="generate-support-package"></a>Ondersteuningspakket genereren
 
-Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket maken vanuit het systeemlogboek. Microsoft Ondersteuning gebruikt dit pakket om het probleem op te lossen. Voor het genereren van een ondersteuningspakket met, moet u de volgende stappen uitvoeren:
+Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket maken vanuit het systeemlogboek. Microsoft Ondersteuning gebruikt dit pakket om het probleem op te lossen. Als u een ondersteunings pakket wilt genereren, voert u de volgende stappen uit:
 
 1. Ga in de lokale webinterface naar **Contact opnemen met de ondersteuning**  en klik op **Ondersteuningspakket maken**.
 
@@ -52,9 +52,9 @@ Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket mak
 
 ## <a name="shut-down-or-restart-your-device"></a>Apparaat uitschakelen of opnieuw opstarten
 
-U kunt afsluiten of opnieuw opstarten van uw apparaat met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Zorg ervoor dat er geen gegevens worden gekopieerd wanneer u het apparaat afsluit.
+U kunt het apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Zorg ervoor dat er geen gegevens worden gekopieerd wanneer u het apparaat afsluit.
 
-Als u wilt afsluiten van uw apparaat, moet u de volgende stappen uitvoeren.
+Voer de volgende stappen uit om uw apparaat af te sluiten.
 
 1. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
 2. Klik op **Afsluiten**.
@@ -80,11 +80,11 @@ Voer de volgende stappen uit om uw Data Box opnieuw op te starten.
 
 ## <a name="download-bom-or-manifest-files"></a>Stuklijst- of manifestbestanden downloaden
 
-De factuur van materiaal (BOM) of de manifest-bestanden bevatten de lijst van de bestanden die zijn gekopieerd naar de Data Box of de gegevens in het zware. Deze bestanden worden gegenereerd wanneer het voorbereiden van het apparaat te verzenden.
+De lijst met bestanden (stuk lijst) of de manifest bestanden bevatten de lijsten met de gekopieerde-Data Box of Data Box Heavy. Deze bestanden worden gegenereerd wanneer u het apparaat voorbereidt op verzen ding.
 
-Voordat u begint, zorg ervoor dat uw apparaat is voltooid **voorbereiding voor verzending** stap. Volg deze stappen om stuklijst- of manifestbestanden te downloaden:
+Voordat u begint, moet u ervoor zorgen dat uw apparaat **voorbereiding voor verzending** stap is voltooid. Volg deze stappen om stuklijst- of manifestbestanden te downloaden:
 
-1. Ga naar de lokale webgebruikersinterface van uw apparaat. U ziet dat het apparaat de voorbereiding voor verzending is voltooid. Nadat de voorbereiding van het apparaat is voltooid, wordt de status van het apparaat bijgewerkt naar **Gereed voor verzending**.
+1. Ga naar de lokale web-UI voor uw apparaat. U zult zien dat het apparaat klaar is met het verzenden van de verzen ding. Nadat de voorbereiding van het apparaat is voltooid, wordt de status van het apparaat bijgewerkt naar **Gereed voor verzending**.
 
     ![Apparaat gereed voor verzending](media/data-box-portal-admin/ready-to-ship.png)
 
@@ -105,13 +105,13 @@ Voordat u begint, zorg ervoor dat uw apparaat is voltooid **voorbereiding voor v
     |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Pagina-blobs         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok-blobs         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Managed Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Managed Disk         |SMB/NFS         |
+    |mydbmdrg1_MDisk-BOM. txt    |Managed Disk         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM. txt     |Managed Disk         |SMB/NFS         |
 
 U kunt deze lijst gebruiken om de bestanden die zijn geüpload naar het Azure Storage-account te controleren nadat de Data Box is geretourneerd naar het Azure-datacenter. Hieronder ziet u een voorbeeld van een manifestbestand.
 
 > [!NOTE]
-> Op een Data Box intensief zijn twee sets met de lijst met bestanden (BOM) aanwezig overeenkomt met de twee knooppunten op het apparaat.
+> Op een Data Box Heavy zijn twee sets lijst met bestanden (stuk lijst bestanden) aanwezig die overeenkomen met de twee knoop punten op het apparaat.
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -153,7 +153,7 @@ U kunt deze lijst gebruiken om de bestanden die zijn geüpload naar het Azure St
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Dit bestand bevat de lijst van alle bestanden die zijn gekopieerd op de Data Box of de gegevens in het zware. In dit bestand is de *crc64*-waarde gerelateerd aan de controlesom die is gegenereerd voor het bijbehorende bestand.
+Dit bestand bevat de lijst met alle bestanden die zijn gekopieerd op de Data Box of Data Box Heavy. In dit bestand is de *crc64*-waarde gerelateerd aan de controlesom die is gegenereerd voor het bijbehorende bestand.
 
 ## <a name="view-available-capacity-of-the-device"></a>Beschikbare capaciteit van het apparaat weergeven
 
@@ -170,14 +170,14 @@ Er worden standaard controlesommen gegenereerd voor uw gegevens tijdens de voorb
 
 We raden u ten zeerste aan om de controlesom niet uit te schakelen, tenzij de prestaties te veel worden beïnvloed.
 
-1. In de rechterbovenhoek van de lokale webgebruikersinterface van uw apparaat, gaat u naar **instellingen**.
+1. Ga in de rechter bovenhoek van de lokale web-UI van uw apparaat naar **instellingen**.
 
     ![Controlesom uitschakelen](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Controlesomvalidatie **Uitschakelen**
-3. Klik op **Toepassen**.
+3. Klik op **Apply** (Toepassen).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [de Data Box en de gegevens in het zware beheren via de Azure portal](data-box-portal-admin.md).
+- Meer informatie over het [beheren van de data box en het data Box Heavy via de Azure Portal](data-box-portal-admin.md).
 

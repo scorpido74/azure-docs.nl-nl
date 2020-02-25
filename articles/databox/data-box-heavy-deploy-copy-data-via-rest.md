@@ -1,5 +1,5 @@
 ---
-title: Zelf studie voor het kopiëren van gegevens naar Azure Data Box Heavy Blob-opslag via REST Api's | Microsoft Docs
+title: "Zelf studie: gegevens kopiëren naar Azure Data Box Blob-opslag via REST-Api's"
 description: Meer informatie over het kopiëren van gegevens naar uw Azure Data Box Heavy Blob-opslag via REST-Api's
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606301"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560334"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Zelf studie: gegevens kopiëren naar Azure Data Box Blob-opslag via REST-Api's  
 
@@ -107,7 +107,7 @@ Volg deze stappen om het `.cer`-bestand te importeren in het basis archief van e
 #### <a name="use-windows-powershell"></a>Windows Power shell gebruiken
 
 1. Start een Windows PowerShell-sessie als beheerder.
-2. Typ in de opdrachtprompt:
+2. Typ het volgende na de opdrachtprompt:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root

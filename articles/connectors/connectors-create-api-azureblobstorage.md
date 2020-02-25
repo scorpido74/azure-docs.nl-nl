@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789918"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566009"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobs in Azure Blob Storage maken en beheren met behulp van Azure Logic Apps
 
@@ -23,11 +23,11 @@ Stel dat u een hulp programma hebt dat wordt bijgewerkt op een Azure-website. di
 Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
 
 > [!IMPORTANT]
-> Zie de sectie [toegang tot opslag accounts achter firewalls](#storage-firewalls) verderop in dit onderwerp voor meer informatie over het inschakelen van toegang vanaf Azure Logic apps voor opslag accounts achter firewalls.
+> Logic apps hebben geen directe toegang tot opslag accounts die zich achter firewalls bevinden, als ze zich in dezelfde regio. Als tijdelijke oplossing kunt u uw logische apps en opslag account in verschillende regio's hebben. Zie de sectie [toegang tot opslag accounts achter firewalls](#storage-firewalls) verderop in dit onderwerp voor meer informatie over het inschakelen van toegang vanaf Azure Logic apps voor opslag accounts achter firewalls.
 
 <a name="blob-storage-limits"></a>
 
-## <a name="limits"></a>Beperkingen
+## <a name="limits"></a>Limieten
 
 * Met Azure Blob Storage-acties kunnen standaard bestanden worden gelezen of geschreven die *50 MB of kleiner*zijn. Voor het afhandelen van bestanden die groter zijn dan 50 MB maar Maxi maal 1024 MB, worden door Azure Blob Storage acties ondersteuning gegeven voor het delen van [berichten](../logic-apps/logic-apps-handle-large-messages.md). De actie **blob-inhoud ophalen** maakt impliciet gebruik van Chunking.
 
@@ -121,7 +121,7 @@ In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud
 
 1. Wanneer u wordt gevraagd om de verbinding te maken, geeft u de volgende informatie op:
 
-   | Eigenschap | Verplicht | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam die voor uw verbinding moet worden gemaakt |
    | **Opslagaccount** | Ja | <*Storage-account*> | Selecteer uw opslag account in de lijst. |
@@ -129,7 +129,7 @@ In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud
 
    Bijvoorbeeld:
 
-   ![Verbinding maken met Azure Blob Storage-account](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![Verbinding maken met Azure Blob Storage-account](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. Wanneer u klaar bent, selecteert u **maken**
 
@@ -159,9 +159,12 @@ Hier vindt u diverse opties voor toegang tot opslag accounts achter firewalls va
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>Toegang tot opslag accounts in andere regio's
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>Problemen met toegang tot opslag accounts in dezelfde regio
 
-Logic apps hebben geen directe toegang tot opslag accounts die firewall regels hebben en zich in dezelfde regio bevinden. Als u echter toegang toestaat voor de [uitgaande IP-adressen voor beheerde connectors in uw regio](../logic-apps/logic-apps-limits-and-config.md#outbound), kunnen uw logische apps toegang krijgen tot opslag accounts in een andere regio, behalve wanneer u de Azure Table Storage-connector of de Azure Queue Storage-connector gebruikt. Om toegang te krijgen tot uw Table Storage of Queue Storage, kunt u nog steeds de ingebouwde HTTP-trigger en acties gebruiken.
+Logic apps hebben geen directe toegang tot opslag accounts achter firewalls wanneer ze zich in dezelfde regio bevinden. Als tijdelijke oplossing plaatst u uw logische apps in een regio die verschilt van uw opslag account en geeft u toegang tot de [uitgaande IP-adressen voor de beheerde connectors in uw regio](../logic-apps/logic-apps-limits-and-config.md#outbound).
+
+> [!NOTE]
+> Deze oplossing is niet van toepassing op de Azure Table Storage-connector en de Azure Queue Storage-connector. Gebruik in plaats daarvan de ingebouwde HTTP-trigger en acties om toegang te krijgen tot uw Table Storage of Queue Storage.
 
 <a name="access-trusted-virtual-network"></a>
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425915"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561728"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren (preview) met behulp van portal
 
@@ -170,6 +170,9 @@ In deze sectie maakt u een persoonlijk eind punt naar de MariaDB-server.
 2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
 
     ![Privé koppeling gemaakt](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
+
+    > [!NOTE] 
+    > De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718170"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558925"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL-API: releaseopmerkingen en resources
 > [!div class="op_single_selector"]
@@ -42,6 +42,10 @@ De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchr
 |**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="a-name247247"></a><a name="2.4.7"/>2.4.7
+* Oplossen van problemen met time-out van verbindings groep.
+* Hiermee wordt het vernieuwen van het auth-token bij interne nieuwe pogingen opgelost.
 
 ### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
 * De juiste replica beleids label aan client zijde is bijgewerkt op databaseAccount en er zijn databaseAccount configuratie Lees bewerkingen van de cache gemaakt.
@@ -259,8 +263,19 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 
 | Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |13 maart 2018 |--- |
-| [omschreven](#2.1.2) |9 maart 2018 |--- |
+| [2.4.7](#2.4.7) |20 februari 2020 |--- |
+| [2.4.6](#2.4.6) |24 januari 2020 |--- |
+| [2.4.5](#2.4.5) |10 november 2019 |--- |
+| [2.4.4](#2.4.4) |24 oktober 2019 |--- |
+| [2.4.2](#2.4.2) |26 sep, 2019 |--- |
+| [2.4.1](#2.4.1) |Jul 18, 2019 |--- |
+| [2.4.0](#2.4.0) |Mei 04, 2019 |--- |
+| [2.3.0](#2.3.0) |Apr 24, 2019 |--- |
+| [2.2.3](#2.2.3) |Apr 16, 2019 |--- |
+| [2.2.2](#2.2.2) |Apr 05, 2019 |--- |
+| [2.2.0](#2.2.0) |27 mrt, 2019 |--- |
+| [2.1.3](#2.1.3) |13 maart 2019 |--- |
+| [omschreven](#2.1.2) |9 maart 2019 |--- |
 | [2.1.1](#2.1.1) |13 december 2018 |--- |
 | [2.1.0](#2.1.0) |20 november 2018 |--- |
 | [2.0.0](#2.0.0) |21 september 2018 |--- |

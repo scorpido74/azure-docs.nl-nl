@@ -3,21 +3,21 @@ title: Audio content creation-Speech Service
 titleSuffix: Azure Cognitive Services
 description: Het maken van audio-inhoud is een online hulp programma waarmee u de tekst-naar-spraak-uitvoer van micro soft kunt aanpassen en verfijnen voor uw apps en producten.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806202"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561031"
 ---
-# <a name="audio-content-creation"></a>Audio-inhoud maken
+# <a name="improve-synthesis-with-audio-content-creation"></a>De synthese verbeteren met het maken van audio-inhoud
 
 Het [maken van audio-inhoud](https://aka.ms/audiocontentcreation) is een online hulp programma waarmee u de tekst-naar-spraak-uitvoer van micro soft kunt aanpassen en verfijnen voor uw apps en producten. U kunt dit hulp programma gebruiken om open bare en aangepaste stemmen te verfijnen voor nauw keurige natuurlijke expressies en uw uitvoer in de cloud te beheren.
 

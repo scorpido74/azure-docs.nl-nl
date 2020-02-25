@@ -3,16 +3,16 @@ title: Veelgestelde vragen over Azure Files | Microsoft Docs
 description: Vind antwoorden op veelgestelde vragen over Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 07/30/2019
+ms.date: 02/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665382"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565057"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -98,7 +98,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
     Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op twee servers tegelijk worden gewijzigd, worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand heeft de computer ' Bron ' en het conflict nummer dat is toegevoegd aan de naam. Deze is gebaseerd op deze taxonomie: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#-\].\<ext\>  
 
     Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 
@@ -151,13 +151,17 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-ntfs-acls"></a>
   **gaat Azure file sync NTFS-acl's op Directory/bestands niveau behouden samen met de gegevens die zijn opgeslagen in azure files?**
 
-    NTFS-Acl's die worden uitgevoerd op on-premises bestands servers, worden persistent gemaakt door Azure File Sync als meta gegevens. Azure Files biedt geen ondersteuning voor verificatie met Azure AD-referenties voor toegang tot bestands shares die worden beheerd door de Azure File Sync-Service.
+    Vanaf februari 2020 24 worden de nieuwe en bestaande Acl's die zijn gelaagd door Azure file sync bewaard in de NTFS-indeling en worden de ACL-wijzigingen die rechtstreeks aan de Azure-bestands share zijn aangebracht, gesynchroniseerd met alle servers in de synchronisatie groep. Eventuele wijzigingen aan de Acl's die zijn aangebracht in Azure Files worden via Azure file sync gesynchroniseerd. Wanneer u gegevens naar Azure Files kopieert, moet u ervoor zorgen dat u SMB gebruikt om toegang te krijgen tot de share en uw Acl's te bewaren. Bestaande op REST gebaseerde hulp middelen, zoals AzCopy of Storage Explorer, behouden geen Acl's.
+
+    Als u Azure Backup hebt ingeschakeld op de bestands shares die door het bestand sync worden beheerd, kunnen Acl's van bestanden worden hersteld als onderdeel van de werk stroom voor het terugzetten van back-ups. Dit werkt voor de volledige share of afzonderlijke bestanden/directory's.
+
+    Als u moment opnamen gebruikt als onderdeel van de zelf-beheerde back-upoplossing voor bestands shares die worden beheerd door bestands synchronisatie, worden uw Acl's mogelijk niet op de juiste manier teruggezet op NTFS-Acl's als de moment opnamen vóór 24 februari 2020 zijn gemaakt. Als dit het geval is, kunt u contact opnemen met de ondersteuning van Azure.
     
 ## <a name="security-authentication-and-access-control"></a>Beveiliging, verificatie en toegangs beheer
 * <a id="ad-support"></a>
 **zijn verificatie en toegangs beheer op basis van identiteiten die door Azure files worden ondersteund?**  
     
-    Ja, Azure Files biedt ondersteuning voor verificatie op basis van identiteit en toegangs beheer met Azure AD Domain Service (Azure AD DS). Met Azure AD DS-verificatie via SMB voor Azure Files kunnen AD DS Azure-Windows-Vm's die lid zijn van een domein, toegang krijgen tot shares, directory's en bestanden met behulp van Azure AD-referenties. Zie [overzicht van Azure Files Azure Active Directory Domain Service (Azure AD DS) verificatie-ondersteuning voor SMB-toegang](storage-files-active-directory-overview.md)voor meer informatie. 
+    Ja, Azure Files ondersteunt verificatie en toegangs beheer op basis van een identiteit. U kunt op een van de volgende twee manieren een toegangs beheer op basis van de identiteit gebruiken: Azure Active Directory Domain Services (Azure AD DS) (GA) of Active Directory (AD) (preview). Met Azure AD DS-verificatie via SMB voor Azure Files kunnen AD DS Azure-Windows-Vm's die lid zijn van een domein, toegang krijgen tot shares, directory's en bestanden met behulp van Azure AD-referenties. AD ondersteunt verificatie met behulp van aan AD domein gekoppelde computers, on-premises of in azure, om toegang te krijgen tot Azure-bestands shares via SMB. Zie [overzicht van Azure files op identiteit gebaseerde verificatie voor SMB-toegang](storage-files-active-directory-overview.md)voor meer informatie. 
 
     Azure Files biedt twee extra manieren om toegangs beheer te beheren:
 
@@ -168,14 +172,14 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     U kunt de [toegang tot Azure Storage machtigen](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor een uitgebreide weer gave van alle protocollen die worden ondersteund op Azure Storage services. 
 
 * <a id="ad-support-devices"></a>
-**ondersteunt Azure files azure AD DS-verificatie SMB-toegang met behulp van Azure AD-referenties van apparaten die zijn gekoppeld aan of zijn geregistreerd bij Azure AD?**
+**ondersteunt Azure Files Azure Active Directory Domain Services-verificatie (azure AD DS) SMB-toegang via Azure AD-referenties van apparaten die zijn gekoppeld aan of zijn geregistreerd bij Azure AD?**
 
     Nee, dit scenario wordt niet ondersteund.
 
 * <a id="ad-support-rest-apis"></a>
 **zijn er rest-api's ter ondersteuning van Get/set/copy/kopiëren van NTFS-acl's voor mappen/bestanden?**
 
-    Voor Taan bieden we geen ondersteuning voor REST-Api's voor het ophalen, instellen of kopiëren van NTFS-Acl's voor mappen of bestanden.
+    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (of hoger) wordt gebruikt rest API.
 
 * <a id="ad-vm-subscription"></a>
 **heb ik toegang tot Azure files met Azure AD-referenties van een VM onder een ander abonnement?**
@@ -183,19 +187,31 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Als het abonnement waarmee de bestands share is geïmplementeerd, is gekoppeld aan dezelfde Azure AD-Tenant als de Azure AD Domain Services implementatie waaraan de virtuele machine is toegevoegd aan een domein, kunt u vervolgens toegang krijgen tot Azure Files met dezelfde Azure AD-referenties. De beperking wordt niet toegepast op het abonnement, maar op de gekoppelde Azure AD-Tenant.    
     
 * <a id="ad-support-subscription"></a>
-**kan ik Azure files Azure AD DS-verificatie inschakelen met een Azure AD-Tenant die verschilt van de primaire Tenant waarmee de bestands share is gekoppeld?**
+**kan ik Azure files Azure-AD DS of AD-verificatie inschakelen met een Azure AD-Tenant die verschilt van de primaire Tenant waaraan de bestands share is gekoppeld?**
 
-    Nee, Azure Files ondersteunt alleen Azure AD DS-integratie met een Azure AD-Tenant die zich in hetzelfde abonnement als de bestands share bevindt. Er kan slechts één abonnement worden gekoppeld aan een Azure AD-Tenant.
+    Nee, Azure Files ondersteunt alleen Azure AD DS of AD-integratie met een Azure AD-Tenant die zich in hetzelfde abonnement als de bestands share bevindt. Er kan slechts één abonnement worden gekoppeld aan een Azure AD-Tenant. Deze beperking is van toepassing op zowel Azure AD DS als AD-verificatie methoden. Wanneer u AD gebruikt voor verificatie, moet de AD-referentie worden gesynchroniseerd met de Azure AD waaraan het opslag account is gekoppeld.
 
 * <a id="ad-linux-vms"></a>
-**ondersteunt Azure files Azure AD DS-verificatie Linux vm's?**
+**heeft Azure files Azure AD DS of AD-verificatie ondersteuning voor Linux vm's?**
 
     Nee, authenticatie vanuit Linux-Vm's wordt niet ondersteund.
 
-* <a id="ad-aad-smb-afs"></a>
-**kan ik gebruikmaken van Azure files Azure AD DS-verificatie op bestands shares die worden beheerd door Azure file sync?**
+* <a id="ad-multiple-forest"></a>
+ondersteunt **Azure files AD-verificatie de integratie met een AD-omgeving met meerdere forests?**    
 
-    Nee, Azure Files biedt geen ondersteuning voor het behouden van NTFS-Acl's op bestands shares die worden beheerd door Azure File Sync. De Acl's voor bestanden die worden uitgevoerd op on-premises bestands servers worden bewaard door Azure File Sync. NTFS-Acl's die systeem eigen zijn geconfigureerd voor Azure Files worden overschreven door de Azure File Sync-Service. Daarnaast biedt Azure Files geen ondersteuning voor verificatie met Azure AD-referenties voor toegang tot bestands shares die worden beheerd door de Azure File Sync-Service.
+    Azure Files AD-verificatie is alleen geïntegreerd met het forest van de AD-domein service waarop het opslag account is geregistreerd. Als u verificatie van een ander AD-forest wilt ondersteunen, moet uw omgevings vertrouwensrelatie op de juiste wijze zijn geconfigureerd. Azure Files registratie bij een AD-domein service is het voornamelijk hetzelfde als een normale Bestands server, waar het een account in AD voor verificatie maakt. Het enige verschil is dat de geregistreerde SPN van het opslag account eindigt op ' file.core.windows.net ', wat niet overeenkomt met het domein achtervoegsel.
+
+    Neem contact op met uw domein beheerder om te controleren of er een update van uw DNS-routerings beleid is vereist om meerdere Forest-verificatie mogelijk te maken.
+
+* <a id=""></a>
+**welke regio's beschikbaar zijn voor Azure files AD-verificatie (preview)?**
+
+    Raadpleeg de [regionale Beschik baarheid van AD](storage-files-active-directory-domain-services-enable.md#regional-availability) voor meer informatie.
+
+* <a id="ad-aad-smb-afs"></a>
+**kan ik gebruikmaken van Azure files Azure AD DS-verificatie of Active Directory (AD)-verificatie (preview) op bestands shares die worden beheerd door Azure file sync?**
+
+    Ja, u kunt Azure AD DS of AD-verificatie inschakelen op een bestands share die wordt beheerd door Azure file sync. Wijzigingen in de map/bestand NTFS Acl's op lokale bestands servers worden trapsgewijs gelaagd en Azure Files en vice versa.
 
 * <a id="encryption-at-rest"></a>
 **Hoe kan ik ervoor zorgen dat mijn Azure-bestands share op rest versleuteld is?**  
@@ -222,7 +238,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
    Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
 
-## <a name="on-premises-access"></a>Lokale toegang
+## <a name="on-premises-access"></a>On-premises toegang
 
 * <a id="port-445-blocked"></a>
 **Mijn Internet provider of Hiermee wordt poort 445 geblokkeerd die niet kan worden Azure files gekoppeld. Wat moet ik doen?**
@@ -239,7 +255,7 @@ moet **Ik Azure ExpressRoute gebruiken om verbinding te maken met Azure files of
 
     U kunt de bestands share koppelen met behulp van het SMB-protocol als poort 445 (TCP uitgaand) is geopend en de client het SMB 3,0-protocol ondersteunt (bijvoorbeeld als u Windows 10 of Windows Server 2016 gebruikt). Als poort 445 wordt geblokkeerd door het beleid van uw organisatie of door uw Internet provider, kunt u Azure File Sync gebruiken om toegang te krijgen tot uw Azure-bestands share.
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Back-up maken
 * <a id="backup-share"></a>
 **Hoe kan ik een back-up maken van mijn Azure-bestands share?**  
     U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -361,7 +377,7 @@ hoeveel **moment opnamen delen kosten?**
 
 * <a id="rest-rename"></a>
 **is er een bewerking voor naam wijzigen in de rest API?**  
-    Op dit moment niet.
+    Momenteel niet.
 
 * <a id="nested-shares"></a>
 **kan ik geneste shares instellen? Met andere woorden, een share onder een share?**  

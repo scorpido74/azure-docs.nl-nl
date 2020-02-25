@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946307"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566247"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Afgedrukte en handgeschreven tekst herkennen
 
@@ -26,10 +26,10 @@ Computer Vision biedt een aantal services voor het detecteren en uitpakken van g
 
 De Lees-API detecteert tekst inhoud in een afbeelding met onze meest recente herkennings modellen en zet de geïdentificeerde tekst om in een door een machine Lees bare teken stroom. Het is geoptimaliseerd voor tekst-zware afbeeldingen (zoals documenten die digitaal zijn gescand) en voor afbeeldingen met veel visuele ruis. Hiermee wordt bepaald welk herkennings model moet worden gebruikt voor elke tekst regel, met ondersteuning voor afbeeldingen met zowel gedrukte als handgeschreven tekst. De Lees-API wordt asynchroon uitgevoerd omdat grotere documenten enkele minuten kunnen duren om een resultaat te retour neren.
 
-Met de Lees bewerking worden de oorspronkelijke regel groepen van herkende woorden in de uitvoer bijgehouden. Elke regel wordt geleverd met coördinaten van het selectie kader en elk woord in de regel heeft ook een eigen coördinaten. Als een woord is herkend met een lage betrouw baarheid, wordt die informatie ook overgebracht. Raadpleeg de [lezen API-referentie documenten](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) voor meer informatie.
+Met de Lees bewerking worden de oorspronkelijke regel groepen van herkende woorden in de uitvoer bijgehouden. Elke regel wordt geleverd met coördinaten van het selectie kader en elk woord in de regel heeft ook een eigen coördinaten. Als een woord is herkend met een lage betrouw baarheid, wordt die informatie ook overgebracht. Raadpleeg de naslag documenten [lezen API-referentie documenten](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) en [Lees-API-voor beeld](https://go.microsoft.com/fwlink/?linkid=2118322) voor meer informatie.
 
 > [!NOTE]
-> Deze functie is alleen beschikbaar voor Engelse tekst.
+> Deze functie is alleen beschikbaar voor Engelse en Spaanse tekst (preview-versie).
 
 ### <a name="image-requirements"></a>Vereisten voor installatiekopieën
 
@@ -94,4 +94,4 @@ De nauw keurigheid van tekst herkennings bewerkingen is afhankelijk van de kwali
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de Snelstartgids voor het uitpakken van [gedrukte tekst (OCR)](./quickstarts/csharp-print-text.md) om tekst herkenning C# in een eenvoudige app te implementeren.
+Volg de Snelstartgids voor het [uitpakken van tekst (lezen)](./QuickStarts/CSharp-hand-text.md) om tekst herkenning C# in een eenvoudige app te implementeren.

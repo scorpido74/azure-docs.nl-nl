@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371349"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558893"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren met de Azure-portal
 
@@ -26,7 +26,7 @@ Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren van
 
 Netwerkverkeer is onderhevig aan de geconfigureerde firewallregels wanneer u het routeert naar de firewall als standaardgateway van het subnet.
 
-Voor deze zelfstudie maakt u één vereenvoudigd VNet met drie subnetten voor eenvoudige implementatie. Voor productie-implementaties wordt een [hub-en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen, waarbij de firewall zich in een eigen VNet bevindt. De werkbelasting servers bevinden zich in een gepeerd VNets in dezelfde regio met een of meer subnetten.
+Voor deze zelfstudie maakt u één vereenvoudigd VNet met drie subnetten voor eenvoudige implementatie. Voor productie-implementaties wordt een [hub-en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen. De firewall bevindt zich in een eigen VNet. De werkbelasting servers bevinden zich in een gepeerd VNets in dezelfde regio met een of meer subnetten.
 
 * **AzureFirewallSubnet** – De firewall bevindt zich in dit subnet.
 * **Workload-SN** – De workloadserver bevindt zich in dit subnet. Het netwerkverkeer van dit subnet gaat via de firewall.
@@ -60,7 +60,7 @@ De resourcegroep bevat alle resources voor de zelfstudie.
 2. Selecteer **resource groepen** in het menu Azure portal of zoek naar een wille keurige pagina en selecteer *resource groepen* . Selecteer vervolgens **Toevoegen**.
 3. Voer voor de naam van de **resource groep** *test-FW-RG*in.
 4. Bij **Abonnement** selecteert u uw abonnement.
-5. Bij **Resourcegroeplocatie** selecteert u een locatie. Alle volgende resources die u maakt, moeten zich op dezelfde locatie bevinden.
+5. Bij **Resourcegroeplocatie** selecteert u een locatie. Alle andere resources die u maakt, moeten zich op dezelfde locatie behoeven.
 6. Selecteer **Maken**.
 
 ### <a name="create-a-vnet"></a>Een VNet maken
@@ -193,10 +193,11 @@ Dit is de toepassings regel waarmee uitgaande toegang tot www.google.com wordt t
 6. Bij **Prioriteit** typt u **200**.
 7. Bij **Actie** selecteert u **Toestaan**.
 8. Onder **regels**, **doel-FQDN**- **namen**, type **toestaan-Google**.
-9. Bij **Bronadressen** typt u **10.0.2.0/24**.
-10. Bij **Protocol:poort** typt u **http, https**.
-11. Voor **doel-FQDN**-typen, typt u **www.Google.com**
-12. Selecteer **Toevoegen**.
+9. Selecteer **IP-adres**bij **bron type**.
+10. Typ **10.0.2.0/24**voor **bron**.
+11. Bij **Protocol:poort** typt u **http, https**.
+12. Voor **doel-FQDN**-typen, typt u **www.Google.com**
+13. Selecteer **Toevoegen**.
 
 Azure Firewall bevat een ingebouwde regelverzameling voor infrastructuur-FQDN’s die standaard zijn toegestaan. Deze FQDN’s zijn specifiek voor het platform en kunnen niet voor andere doeleinden worden gebruikt. Zie [FQDN's voor infrastructuur](infrastructure-fqdns.md) voor meer informatie.
 
@@ -209,10 +210,11 @@ Dit is de netwerkregel waarmee uitgaande toegang tot twee IP-adressen op poort 5
 3. Bij **Naam** typt u **Net-Coll01**.
 4. Bij **Prioriteit** typt u **200**.
 5. Bij **Actie** selecteert u **Toestaan**.
-6. Onder **regels** **, type** **Allow-DNS**.
+6. Onder **regels**, **IP-adressen**, typt u de **naam** **Allow-DNS**.
 7. Bij **Protocol** selecteert u **UDP**.
-8. Bij **Bronadressen** typt u **10.0.2.0/24**.
-9. Bij doeladres typt u **209.244.0.3,209.244.0.4**.
+9. Selecteer **IP-adres**bij **bron type**.
+1. Typ **10.0.2.0/24**voor **bron**.
+2. Voor het **doel adres**typt u **209.244.0.3, 209.244.0.4**
 
    Dit zijn open bare DNS-servers die worden beheerd door CenturyLink.
 1. Bij **Doelpoorten** typt u **53**.

@@ -1,5 +1,5 @@
 ---
-title: Een Azure Data Explorer-cluster en-data base maken met behulp van Azure CLI
+title: Een Azure Data Explorer-cluster maken & DB met Azure CLI
 description: Ontdek hoe u een Azure Data Explorer-cluster en -database kunt maken met de Azure CLI
 author: radennis
 ms.author: radennis
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bd53a8e29254af617b6cfa68935a191a50fc526c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326775"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561932"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van Azure CLI
 
@@ -28,7 +28,7 @@ Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalys
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een Azure-abonnement nodig om dit artikel te volt ooien. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+U hebt een Azure-abonnement nodig om dit artikel te volt ooien. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -60,7 +60,7 @@ De volgende stappen zijn niet vereist als u opdrachten in Azure Cloud Shell uitv
 
    |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
    |---|---|---|
-   | name | *azureclitest* | De gewenste naam van uw cluster.|
+   | naam | *azureclitest* | De gewenste naam van uw cluster.|
    | sku | *D13_v2* | De SKU die wordt gebruikt voor uw cluster. |
    | resource-group | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
 
@@ -85,7 +85,7 @@ Als het resultaat `provisioningState` met waarde `Succeeded` bevat, is het maken
    |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
    |---|---|---|
    | cluster-name | *azureclitest* | De naam van het cluster waar de database wordt gemaakt.|
-   | name | *clidatabase* | De naam van uw database.|
+   | naam | *clidatabase* | De naam van uw database.|
    | resource-group | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
    | soft-delete-period | *P365D* | Geeft de hoeveelheid tijd aan die gegevens beschikbaar blijven voor de query. Zie [Bewaar beleid](/azure/kusto/concepts/retentionpolicy) voor meer informatie. |
    | hot-cache-period | *P31D* | Geeft aan hoe lang de gegevens in de cache bewaard blijven. Zie [cache beleid](/azure/kusto/concepts/cachepolicy) voor meer informatie. |

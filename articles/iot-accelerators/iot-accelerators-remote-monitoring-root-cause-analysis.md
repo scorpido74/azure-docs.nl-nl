@@ -1,19 +1,19 @@
 ---
 title: Een analyse uitvoeren van de hoofdoorzaak van een waarschuwing - Azure | Microsoft Docs
 description: In deze zelfstudie leest u hoe u met behulp van Azure Time Series Insights een analyse van de hoofdoorzaak uitvoert wanneer een waarschuwing wordt weergegeven.
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444616"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565465"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Zelfstudie: Een analyse uitvoeren van de hoofdoorzaak van een waarschuwing
 

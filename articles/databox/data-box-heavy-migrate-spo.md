@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Heavy gebruiken om de inhoud van de bestands share te migreren naar share point online | Microsoft Docs
+title: Azure Data Box Heavy gebruiken om de inhoud van een bestands share naar share point online te verplaatsen
 description: Gebruik deze zelf studie om te leren hoe u de inhoud van een bestands share naar share point online kunt migreren met behulp van uw Azure Data Box Heavy
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325272"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560045"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>De Azure Data Box Heavy gebruiken om de inhoud van de bestands share te migreren naar share point online
 
@@ -66,8 +66,8 @@ Voer de volgende stappen uit om gegevens te kopiëren naar uw Data Box Heavy.
 2. Nadat u uw Data Box Heavy hebt ontvangen, [stelt u de data Box Heavy](data-box-heavy-deploy-set-up.md)in. U kunt zowel de knoop punten op het apparaat bekabelen en configureren.
 3. [Gegevens kopiëren naar Azure data Box Heavy](data-box-heavy-deploy-copy-data.md). Zorg ervoor dat u tijdens het kopiëren de volgende handelingen uitvoert:
 
-    - Gebruik alleen de map *StorageAccountName_AzFile* in de data Box Heavy om de gegevens te kopiëren. Dit is omdat u wilt dat de gegevens eindigen in een Azure-bestands share, niet in blok-blobs of pagina-blobs.
-    - Kopieer bestanden naar een map in de map *StorageAccountName_AzFile* . Een submap in de map *StorageAccountName_AzFile* maakt een bestands share. Bestanden die rechtstreeks naar de map *StorageAccountName_AzFile* worden gekopieerd, mislukken en worden geüpload als blok-blobs. Dit is de bestands share die u in de volgende stap op uw virtuele machine gaat koppelen.
+    - Gebruik alleen de map *StorageAccountName_AzFile* in het data Box Heavy om de gegevens te kopiëren. Dit is omdat u wilt dat de gegevens eindigen in een Azure-bestands share, niet in blok-blobs of pagina-blobs.
+    - Bestanden kopiëren naar een map in *StorageAccountName_AzFile* map. Een submap in *StorageAccountName_AzFile* map maakt een bestands share. Bestanden die rechtstreeks naar *StorageAccountName_AzFile* map worden gekopieerd, mislukken en worden geüpload als blok-blobs. Dit is de bestands share die u in de volgende stap op uw virtuele machine gaat koppelen.
     - Gegevens kopiëren naar beide knoop punten van uw Data Box Heavy.
 3. Voer [voorbereiding voor verzending](data-box-heavy-deploy-picked-up.md#prepare-to-ship) uit op het apparaat. Een succes volle voor bereiding op verzen ding zorgt ervoor dat bestanden naar Azure kunnen worden geüpload.
 4. [Het apparaat retour neren](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).

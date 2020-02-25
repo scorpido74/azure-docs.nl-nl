@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Documentatie voor spraak naar tekst
+summary: Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime transcriptie van audio-streams in tekst.
+metadata:
+  title: Documentatie voor spraak naar tekst-zelf studies, API-verwijzing-Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562931"
+landingContent:
+- title: Aan de slag
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is spraak-naar-tekst?
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: Spraak herkennen met microfooninvoer
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: Spraak herkennen vanuit een audiobestand
+      url: quickstarts/speech-to-text-from-file.md
+    - text: Spraak herkennen die is opgeslagen in blobopslag
+      url: quickstarts/from-blob.md
+- title: Stapsgewijze handleidingen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Brontaal voor spraakherkenning wijzigen
+      url: how-to-specify-source-language.md
+    - text: Spraakherkenningsmodus kiezen
+      url: how-to-choose-recognition-mode.md
+    - text: Nauwkeurigheid verbeteren met Frasenlijsten
+      url: how-to-phrase-lists.md
+    - text: Nauwkeurigheid verbeteren met tenantmodellen
+      url: tutorial-tenant-model.md
+    - text: Nauwkeurigheid verbeteren met Custom Speech
+      url: how-to-custom-speech.md
+    - text: Een specifiek apparaat voor microfooninvoer selecteren
+      url: how-to-select-audio-input-devices.md
+    - text: Automatische detectie van de brontaal gebruiken
+      url: how-to-automatic-language-detection.md
+    - text: Gecomprimeerde audio-invoerindelingen gebruiken
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: Gecomprimeerde audio-invoerindelingen gebruiken (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: Gecomprimeerde audio-invoerindelingen gebruiken (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: Custom Speech-gegevens voorbereiden
+      url: how-to-custom-speech-test-data.md
+    - text: Custom Speech gegevens controleren
+      url: how-to-custom-speech-inspect-data.md
+    - text: Nauw keurigheid van Custom Speech evalueren
+      url: how-to-custom-speech-evaluate-data.md
+    - text: Aangepast model trainen
+      url: how-to-custom-speech-train-model.md
+    - text: Aangepaste model implementeren
+      url: how-to-custom-speech-deploy-model.md
+    - text: door mensen gelabelde transcripties maken
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Taalondersteuning
+      url: language-support.md#speech-to-text
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Veelgestelde vragen over spraak naar tekst
+      url: faq-stt.md

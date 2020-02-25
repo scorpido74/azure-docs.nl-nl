@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368900"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562544"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure voor on-demand Red Hat Enterprise Linux-machines in Azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -28,7 +28,7 @@ Meer informatie over RHEL-installatie kopieën in azure, met inbegrip van public
 Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
 
 > [!IMPORTANT]
-> RHUI is alleen bedoeld voor PAYGO-installatie kopieën (betalen per gebruik). Voor aangepaste en industriële installatie kopieën, ook wel bekend als uw eigen abonnement (BYOS), moet het systeem aan RHSM of Satellite worden gekoppeld om updates te kunnen ontvangen. Zie het [artikel over Red Hat](https://access.redhat.com/solutions/253273) voor meer informatie.
+> RHUI is alleen bedoeld voor PAYG-installatie kopieën (betalen per gebruik). Voor aangepaste en industriële installatie kopieën, ook wel bekend als uw eigen abonnement (BYOS), moet het systeem aan RHSM of Satellite worden gekoppeld om updates te kunnen ontvangen. Zie het [artikel over Red Hat](https://access.redhat.com/solutions/253273) voor meer informatie.
 
 
 ## <a name="important-information-about-azure-rhui"></a>Belangrijke informatie over Azure RHUI
@@ -105,7 +105,7 @@ Gebruik de volgende instructies om een RHEL-VM te vergren delen naar een bepaald
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. De variabele releasever vergren delen (uitvoeren als root):
+1. De `releasever` variabele vergren delen (als basis uitvoeren):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ Gebruik de volgende instructies om een RHEL-VM te vergren delen naar een bepaald
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Overschakelen van een RHEL-VM naar een niet-EUS (een versie vergrendeling verwijderen)
 Voer het volgende uit als root:
-1. Verwijder het releasever-bestand:
+1. Verwijder het `releasever`-bestand:
     ```bash
     rm /etc/yum/vars/releasever
      ```

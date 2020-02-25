@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268858"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565414"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hoe gebruikers in uw organisatie gast gebruikers kunnen uitnodigen voor een app
 
@@ -105,7 +105,7 @@ Voor Self-service app-beheer is een aantal initiële installaties vereist door e
 2. Selecteer **Azure Active Directory**in het navigatie deel venster.
 3. Selecteer onder **beheren**de optie **bedrijfs toepassingen** > **alle toepassingen**.
 4. Zoek en open de app in de lijst met toepassingen.
-5. Selecteer onder **beheren**de optie **eenmalige aanmelding**en configureer de toepassing voor eenmalige aanmelding. (Zie [eenmalige aanmelding beheren voor zakelijke apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)(Engelstalig) voor meer informatie.
+5. Selecteer onder **beheren**de optie **eenmalige aanmelding**en configureer de toepassing voor eenmalige aanmelding. (Zie [eenmalige aanmelding beheren voor zakelijke apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)(Engelstalig) voor meer informatie.
 6. Selecteer onder **beheren**de optie **self-service**en stel selfservice app-toegang in. (Zie [self-service app-toegang gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)voor meer informatie.) 
 
     > [!NOTE]

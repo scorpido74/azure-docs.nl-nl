@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931215"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561677"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Storage Explorer
 
@@ -60,6 +60,17 @@ Als u geen rol hebt die machtigingen voor een beheer laag verleent, kan Storage 
 
 Er zijn momenteel geen RBAC-oplossing voor dit probleem. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
+### <a name="recommended-built-in-rbac-roles"></a>Aanbevolen geïntegreerde RBAC-rollen
+
+Er zijn verschillende ingebouwde RBAC-rollen die de machtigingen kunnen bieden die nodig zijn om Storage Explorer te gebruiken. Enkele van deze rollen zijn:
+- [Eigenaar](/azure/role-based-access-control/built-in-roles#owner): alles beheren, inclusief toegang tot resources. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
+- [Inzender](/azure/role-based-access-control/built-in-roles#contributor): alles beheren, met uitzonde ring van toegang tot resources. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
+- [Lezer](/azure/role-based-access-control/built-in-roles#reader): bronnen lezen en weer geven.
+- [Inzender voor het opslag account](/azure/role-based-access-control/built-in-roles#storage-account-contributor): volledig beheer van opslag accounts. **Opmerking**: met deze rol krijgt u toegang tot sleutels.
+- [Eigenaar](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)van de opslag-BLOB-gegevens: volledige toegang tot Azure Storage BLOB-containers en-gegevens.
+- [Inzender voor gegevens](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)van de opslag-blob: Lees-, schrijf-en verwijder Azure Storage containers en blobs.
+- [Gegevens lezer](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)van de opslag-Blob: Azure Storage containers en blobs voor lezen en weer geven.
+
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Fout: zelfondertekend certificaat in certificaat keten (en vergelijk bare fouten)
 
 Certificaat fouten treden doorgaans op in een van de volgende situaties:
@@ -89,7 +100,7 @@ Als u niet zeker weet waar het certificaat vandaan komt, volgt u deze stappen om
 
 Als u geen zelfondertekende certificaten kunt vinden door deze stappen te volgen, neemt u contact met ons op via het feedback programma. U kunt Storage Explorer ook openen vanaf de opdracht regel met behulp van de `--ignore-certificate-errors` vlag. Wanneer deze vlag wordt geopend, worden certificaat fouten Storage Explorer genegeerd.
 
-## <a name="sign-in-issues"></a>Aanmeldproblemen
+## <a name="sign-in-issues"></a>Aanmeldingsproblemen
 
 ### <a name="blank-sign-in-dialog-box"></a>Het dialoog venster lege aanmelding
 
@@ -98,7 +109,7 @@ De dialoog vensters met een leeg aanmeld probleem worden meestal beschreven wann
 1. Open op de werk balk links verticaal de knop **instellingen**. Ga in het deel venster instellingen naar **toepassing** > **Meld**u aan. Schakel **Aanmelden met apparaatcode stroom in**.
 2. Open het dialoog venster **verbinding maken** (via het pictogram met de plug-in de verticale balk aan de linkerkant of selecteer **account toevoegen** in het deel venster account).
 3. Kies de omgeving waarin u zich wilt aanmelden.
-4. Selecteer **Aanmelden.**
+4. Selecteer **Aanmelden**.
 5. Volg de instructies op het volgende scherm.
 
 Als u zich niet kunt aanmelden bij het account dat u wilt gebruiken omdat uw standaard browser al is aangemeld bij een ander account, voert u een van de volgende handelingen uit:
@@ -230,7 +241,7 @@ Als dit fout bericht wordt weer gegeven wanneer u een aangepaste verbinding prob
         * `StorageExplorer_CustomConnections_Blobs_v2`
     * Bestandsshares
         * `StorageExplorer_CustomConnections_Files_v1`
-    * Queues
+    * Wachtrijen
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Tabellen
         * `StorageExplorer_CustomConnections_Tables_v1`
@@ -244,20 +255,20 @@ Als u de niet-beschadigde verbindingen wilt behouden, kunt u de volgende stappen
 
 Nadat u alle verbindingen hebt door lopen, moet u voor alle verbindings namen die niet meer worden toegevoegd, de beschadigde gegevens wissen (indien aanwezig) en deze opnieuw toevoegen met behulp van de standaard stappen in Storage Explorer:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. Zoek in het menu **Start** naar **referentie beheer** en open het.
 2. Ga naar **Windows-referenties**.
 3. Onder **algemene referenties**zoekt u naar vermeldingen met de `<connection_type_key>/<corrupted_connection_name>` sleutel (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 1. Open Spotlight (Command + spatie balk) en zoek naar **sleutel hanger toegang**.
 2. Zoek naar vermeldingen met de `<connection_type_key>/<corrupted_connection_name>` sleutel (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 Het lokale referentie beheer varieert afhankelijk van de Linux-distributie. Als uw Linux-distributie geen ingebouwd GUI-hulp programma biedt voor lokaal referentie beheer, kunt u een hulp programma van derden installeren om uw lokale referenties te beheren. U kunt bijvoorbeeld [seahorse](https://wiki.gnome.org/Apps/Seahorse/)gebruiken, een open-source GUI-hulp programma voor het beheren van lokale referenties voor Linux.
 
@@ -309,7 +320,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
 > [!NOTE]
 > Voor Storage Explorer versie 1.7.0 en eerder is .NET Core 2,0 vereist. Als u een nieuwere versie van .NET core hebt geïnstalleerd, moet u een [patch Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Als u Storage Explorer 1.8.0 of hoger gebruikt, kunt u gebruikmaken van tot .NET Core 2,2. Versies van meer dan 2,2 zijn op dit moment niet geverifieerd.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19,04](#tab/1904)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -318,7 +329,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18,04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18,04](#tab/1804)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
@@ -327,7 +338,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +347,7 @@ Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linu
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14,04](#tab/1404)
 
 1. Down load Storage Explorer.
 2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).

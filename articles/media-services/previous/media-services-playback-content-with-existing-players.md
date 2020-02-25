@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895859"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565822"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Uw inhoud afspelen met bestaande spelers
 Azure Media Services ondersteunt veel populaire streaming-indelingen, zoals Smooth Streaming, HTTP Live Streaming en MPEG-Dash. In dit onderwerp vindt u een overzicht van de bestaande spelers die u kunt gebruiken om uw stromen te testen.
@@ -65,9 +65,6 @@ Als u HLS-Url's wilt testen, kunt u ook het volgende gebruiken:
 
 * **Safari** op een IOS-apparaat of
 * **3IVX HLS Player** in Windows.
-
-## <a name="developing-video-players"></a>Video spelers ontwikkelen
-Zie [video spelers ontwikkelen](media-services-develop-video-players.md) voor meer informatie over het ontwikkelen van uw eigen spelers
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

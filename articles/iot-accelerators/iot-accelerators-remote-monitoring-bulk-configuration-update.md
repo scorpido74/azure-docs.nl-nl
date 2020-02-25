@@ -1,19 +1,19 @@
 ---
 title: Apparaten die zijn verbonden met Externe bewaking bulksgewijs beheren - Azure | Microsoft Docs
 description: In deze zelfstudie leert u hoe u de apparaten die zijn verbonden met een externe bewakingsoplossing bulksgewijs kunt beheren.
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980552"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565575"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Zelfstudie: Uw verbonden apparaten bulksgewijs beheren
 
@@ -237,7 +237,7 @@ In deze sectie gaat u een implementatie maken en uitvoeren die de apparaatconfig
 
     ![Implementatie maken](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
-    Klik op **Toepassen**. Op de pagina **Implementaties** ziet u een nieuwe implementatie die de volgende metrische gegevens bevat:
+    Klik op **Apply** (Toepassen). Op de pagina **Implementaties** ziet u een nieuwe implementatie die de volgende metrische gegevens bevat:
 
     * **Gericht** toont het aantal apparaten in de groep met apparaten.
     * **Toegepast** toont het aantal apparaten die is bijgewerkt met de configuratie-inhoud.

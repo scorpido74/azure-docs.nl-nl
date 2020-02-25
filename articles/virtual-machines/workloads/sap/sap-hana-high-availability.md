@@ -1,23 +1,23 @@
 ---
-title: Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server | Microsoft Docs
+title: Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SLES | Microsoft Docs
 description: Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
-ms.author: sedusch
-ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.author: radeltch
+ms.openlocfilehash: 65ba7c0d8115e7125f1318e7fdca979cfab02474
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721497"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565839"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server
 
@@ -112,7 +112,7 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
     - **Systeem beschikbaarheid**: Selecteer **ha**.
     - **Gebruikers naam en wacht woord**beheerder: er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
     - **Nieuw of bestaand subnet**: Hiermee wordt bepaald of er een nieuw virtueel netwerk en subnet moet worden gemaakt of dat er een bestaand subnet wordt gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-    - **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als **/subscriptions/\<abonnement-id >/resourceGroups/\<resource groeps naam >/providers/Microsoft.Network/virtualNetworks/\<naam van het virtuele netwerk >/subnets/\<naam van het subnet >** .
+    - **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID lijkt doorgaans op **/subscriptions/\<abonnement-id >/resourceGroups/\<resource groeps naam >/providers/Microsoft.Network/virtualNetworks/\<naam van het virtuele netwerk >/subnets/\<naam**van het subnet >.
 
 ### <a name="manual-deployment"></a>Hand matige implementatie
 

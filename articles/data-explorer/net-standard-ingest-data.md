@@ -1,5 +1,5 @@
 ---
-title: Gegevens opnemen met behulp van de Azure Data Explorer .NET Standard SDK (preview)
+title: Gegevens opnemen met Azure Data Explorer .NET Standard SDK (preview)
 description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer met behulp van .NET Standard SDK.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187918"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562459"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gegevens opnemen met behulp van de Azure Data Explorer .NET Standard SDK (preview)
 
@@ -30,7 +30,7 @@ Azure Data Explorer (ADX) is een snelle en zeer schaalbare service om gegevens i
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Azure Data Explorer maakt gebruik van de id van uw AAD-tenant om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
 

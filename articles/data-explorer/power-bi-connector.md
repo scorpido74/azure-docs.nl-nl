@@ -1,5 +1,5 @@
 ---
-title: Gegevens visualiseren met de Azure Data Explorer-connector voor Power BI
+title: Gegevens visualiseren met Azure Data Explorer connector voor Power BI
 description: 'In dit artikel leert u hoe u een van de drie opties kunt gebruiken voor het visualiseren van gegevens in Power BI: de Power BI-connector voor Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024215"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560487"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gegevens visualiseren met de Azure Data Explorer-connector voor Power BI
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie. Azure Data Explorer biedt drie opties om gegevens te verbinden in Power BI: de ingebouwde connector gebruiken, een query importeren uit Azure Data Explorer, of een SQL-query gebruiken. Dit artikel laat u zien hoe u de ingebouwde connector kunt gebruiken om gegevens op te halen en deze te visualiseren in een Power BI-rapport. Het gebruik van de Azure Data Explorer systeem eigen connector voor het maken van Power BI Dash boards is eenvoudig. De Power BI-connector ondersteunt de [connectiviteits modi import en direct](https://docs.microsoft.com/power-bi/desktop-directquery-about). U kunt Dash boards maken met de **import** -of **DirectQuery** -modus, afhankelijk van de vereisten voor het scenario, de schaal baarheid en de prestaties. 
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie. Azure Data Explorer biedt drie opties om gegevens te verbinden in Power BI: de ingebouwde connector gebruiken, een query importeren uit Azure Data Explorer, of een SQL-query gebruiken. Dit artikel laat u zien hoe u de ingebouwde connector kunt gebruiken om gegevens op te halen en deze te visualiseren in een Power BI-rapport. Het gebruik van de Azure Data Explorer systeem eigen connector voor het maken van Power BI Dash boards is eenvoudig. De Power BI-connector ondersteunt de [connectiviteits modi import en direct](https://docs.microsoft.com/power-bi/desktop-directquery-about). U kunt Dash boards maken met de **import** -of **DirectQuery** -modus, afhankelijk van de vereisten voor het scenario, de schaal baarheid en de prestaties. 
 
 ## <a name="prerequisites"></a>Vereisten
 

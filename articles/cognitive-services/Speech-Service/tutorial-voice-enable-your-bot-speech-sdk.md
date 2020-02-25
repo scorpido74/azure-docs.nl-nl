@@ -3,19 +3,19 @@ title: 'Zelf studie: stemmen uw bot in te scha kelen met behulp van Speech SDK-S
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie maakt u een echo bot met behulp van micro soft bot-Framework, implementeert u deze in Azure en registreert u deze met het bot-Framework direct line speech Channel. Vervolgens configureert u een voor beeld-client-app voor Windows waarmee u naar uw bot kunt praten en kunt horen dat deze wordt weer gegeven.
 services: cognitive-services
-author: dargilco
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: dcohen
-ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/21/2020
+ms.author: dapine
+ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495176"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562622"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -65,14 +65,13 @@ Dit is wat u moet doen om deze zelf studie te volt ooien:
 
 De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azure-Services. Als u de retour tijd voor reacties van uw bot wilt beperken, moet u ervoor zorgen dat deze services zich in dezelfde Azure-regio bevinden. In deze sectie maakt u een resource groep in de regio **VS-West** . Deze resource groep wordt gebruikt bij het maken van afzonderlijke resources voor het bot-Framework, het directe lijn spraak kanaal en de spraak service.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer **resource groepen**in de linkernavigatiebalk. Klik vervolgens op **toevoegen** om een nieuwe resource groep toe te voegen.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Een resource groep maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
    * Voer een naam in voor de **resource groep**. We raden **SpeechEchoBotTutorial-ResourceGroup**aan.
    * Selecteer in de vervolg keuzelijst **regio** **VS West**.
-1. Klik op **controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-1. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+1. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
+1. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
 1. Net als bij de resources die u later in deze zelf studie maakt, is het een goed idee om deze resource groep vast te maken aan uw dash board voor eenvoudige toegang. Als u deze resource groep wilt vastmaken, klikt u op het speld pictogram in de rechter bovenhoek van het dash board.
 
 ### <a name="choosing-an-azure-region"></a>Een Azure-regio kiezen
@@ -87,15 +86,13 @@ Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations
 
 ## <a name="create-resources"></a>Resources maken
 
-Nu u een resource groep hebt in de regio **VS-West** , is de volgende stap het maken van afzonderlijke resources voor elke service die u in deze zelf studie gaat gebruiken.
+Nu u een resource groep in een ondersteunde regio hebt, is de volgende stap het maken van afzonderlijke resources voor elke service die u in deze zelf studie gaat gebruiken.
 
 ### <a name="create-a-speech-service-resource"></a>Een speech service-resource maken
 
 Volg deze instructies om een spraak bron te maken:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) en selecteer **een resource maken** in de linkernavigatiebalk.
-2. Typ **spraak**in de zoek balk.
-3. Selecteer **spraak**en klik vervolgens op **maken**.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een speech service-resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. U wordt gevraagd om de volgende informatie op te geven:
    * Geef uw resource een **naam**. U kunt **het beste SpeechEchoBotTutorial-speech**
    * Zorg ervoor dat een **gratis proef versie** is geselecteerd voor het **abonnement**.
@@ -107,7 +104,7 @@ Volg deze instructies om een spraak bron te maken:
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) een spraak bron heeft:
 
-| NAAM | TYPE  | LOCATIE |
+| Name | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
@@ -115,9 +112,7 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 De volgende stap is het maken van een App Service-abonnement. Een App Service-plan definieert een set rekenresources waarmee een web-app kan worden uitgevoerd.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) en selecteer **een resource maken** in de linkernavigatiebalk.
-2. Typ **app service plan**op de zoek balk. Zoek en selecteer vervolgens de kaart **app service plan** in de zoek resultaten.
-3. Klik op **Maken**.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Een Azure App Service plan maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**.
@@ -125,12 +120,12 @@ De volgende stap is het maken van een App Service-abonnement. Een App Service-pl
    * Selecteer voor **besturings systeem** **Windows**.
    * Selecteer voor **regio** **VS-West**.
    * Zorg ervoor dat **standaard S1** is geselecteerd voor de **prijs categorie**. Dit moet de standaard waarde zijn. Als dat niet het geval is, moet u ervoor zorgen dat u het **besturings systeem** instelt op **Windows** zoals hierboven wordt beschreven.
-5. Klik op **controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-6. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+5. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
+6. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) twee resources heeft:
 
-| NAAM | TYPE  | LOCATIE |
+| Name | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
@@ -157,11 +152,14 @@ Nu u enkele resources hebt gemaakt, gaan we een bot bouwen. We beginnen met het 
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. Nadat het project is geladen, drukt u op `F5` om het project te bouwen en uit te voeren.
+4. Nadat het project is geladen, drukt u op <kbd>F5</kbd> om het project te bouwen en uit te voeren.
+5. Er wordt een browser geopend en er wordt een scherm weer gegeven dat er ongeveer als volgt uitziet.
+    > [!div class="mx-imgBorder"]
+    > ![echobot-actief-op-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot die worden uitgevoerd op localhost")
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Het bot-voor beeld testen met de bot Framework-emulator
 
-De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) is een bureau blad-app waarmee bot-ontwikkel aars hun bots lokaal of op afstand kunnen testen en door lopen via een tunnel. De emulator ondersteunt getypte tekst als de invoer (niet spraak). De bot antwoordt op de tekst. Volg deze stappen om de bot Framework emulator te gebruiken om uw ECHO-bot die lokaal wordt uitgevoerd, te testen met tekst invoer en tekst uitvoer. Nadat we de bot hebben geïmplementeerd, zullen we deze testen met spraak invoer en spraak uitvoer.
+De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) is een bureau blad-app waarmee bot-ontwikkel aars hun bots lokaal of op afstand kunnen testen en door lopen via een tunnel. De emulator ondersteunt getypte tekst als de invoer (niet spraak). De bot antwoordt op de tekst. Volg deze stappen om de bot Framework emulator te gebruiken om uw ECHO-bot die lokaal wordt uitgevoerd, te testen met tekst invoer en tekst uitvoer. Nadat we de bot hebben geïmplementeerd in azure, zullen we deze testen met spraak invoer en spraak uitvoer.
 
 1. De [bot Framework-emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) versie 4.3.0 of hoger installeren
 2. Start de bot Framework emulator en open uw bot:
@@ -172,7 +170,8 @@ De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) 
    http://localhost:3978/api/messages
    ```
    en klik op verbinden.
-4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' weergegeven. Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
+4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' Bericht. Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
+5. Zo kan een uitwisseling van communicatie met een echo bot er als volgt uitzien: ![bot-Framework-emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework-emulator")
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Uw bot implementeren op een Azure App Service
 
@@ -189,7 +188,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 
 1. Klik in de **Solution Explorer**met de rechter muisknop op het **EchoBot** -project en selecteer **publiceren...**
 1. Er wordt een nieuw venster met **de titel Kies een publicatie doel** geopend.
-1. Selecteer **app service** in de linkernavigatiebalk, selecteer **nieuwe maken**en klik vervolgens op **publiceren**.
+1. Selecteer **app service** in de navigatie van **Azure-Services** , selecteer **nieuwe maken**en klik vervolgens op **publiceren**.
 1. Wanneer het venster **app service maken** wordt weer gegeven:
    * Klik op **een account toevoegen**en meld u aan met de referenties van uw Azure-account. Als u al bent aangemeld, selecteert u het gewenste account in de vervolg keuzelijst.
    * Voor de **naam**van de app moet u een wereld wijd unieke naam invoeren voor uw bot. Deze naam wordt gebruikt om een unieke bot-URL te maken. Er wordt een standaard waarde ingevuld, inclusief de datum en tijd (bijvoorbeeld: "EchoBot20190805125647"). U kunt de standaard naam voor deze zelf studie gebruiken.
@@ -207,7 +206,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 1. De standaard browser moet een pagina openen en weer geven met de volgende tekst: ' uw bot is klaar! '.
 1. Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal en bevestig dat er drie resources zijn:
 
-| NAAM | TYPE  | LOCATIE |
+| Name | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
@@ -218,7 +217,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 U moet een kleine configuratie wijziging aanbrengen zodat uw bot met behulp van websockets met het directe lijn spraak kanaal kan communiceren. Volg deze stappen om Web sockets in te scha kelen:
 
 1. Ga naar het [Azure Portal](https://portal.azure.com)en zoek uw app service. De resource moet een naam hebben die vergelijkbaar is met **EchoBot20190805125647** (uw unieke app-naam).
-2. Klik in de linkernavigatiebalk onder **instellingen**op **configuratie**.
+2. Klik in de navigatie van **Azure-Services** onder **instellingen**op **configuratie**.
 3. Selecteer het tabblad **algemene instellingen** .
 4. Zoek de wissel knop voor **Web sockets** en stel deze **in op aan**.
 5. Klik op **Opslaan**.
@@ -233,9 +232,11 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 > [!NOTE]
 > Zie [een bot verbinden met kanalen](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)als u meer wilt weten over het gebruik van bots kanalen.
 
-1. De eerste stap is het maken van een nieuwe resource voor de registratie. Klik in [Azure Portal](https://portal.azure.com) op **Een resource maken**.
+<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
+
+1. De eerste stap is het maken van een nieuwe resource voor de registratie. Klik in de [Azure Portal](https://portal.azure.com)op **een resource maken**.
 2. Selecteer in de **bot**van het type zoek balk, nadat de resultaten worden weer gegeven, de **registratie bot-kanalen**.
-3. Klik op **Maken**.
+3. Klik op **Create**.
 4. U wordt gevraagd om de volgende informatie op te geven:
    * Voer voor **bot**-ingang **SpeechEchoBotTutorial-BotRegistration**in.
    * Selecteer voor **abonnement**een **gratis proef versie**.
@@ -249,11 +250,11 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 
 Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal. Er moeten nu vier resources worden weer gegeven:
 
-| NAAM | TYPE  | LOCATIE |
+| Name | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-BotRegistration | Registratie botkanalen | Wereldwijd |
+| SpeechEchoBotTutorial-BotRegistration | Registratie van bot-kanalen | Wereldwijd |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 > [!IMPORTANT]
@@ -264,13 +265,13 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 Nu is het tijd om uw bot te registreren met het directe-lijn spraak kanaal. Dit kanaal is wat wordt gebruikt om een verbinding tot stand te brengen tussen uw ECHO bot en een client-app die is gecompileerd met de spraak-SDK.
 
 1. Zoek en open uw **SpeechEchoBotTutorial-BotRegistration-** resource in de [Azure Portal](https://portal.azure.com).
-1. Selecteer in het navigatie venster aan de linkerkant de optie **kanalen**.
+1. Selecteer in de **Azure Services** -navigatie **kanalen**.
    * Zoek naar **meer kanalen**, zoek en klik op **direct line speech**.
    * Bekijk de tekst op de pagina met de titel **directe lijn spraak configureren**en vouw vervolgens de vervolg keuzelijst ' cognitieve service-account ' uit.
    * Selecteer de spraak resource die u eerder hebt gemaakt (bijvoorbeeld **SpeechEchoBotTutorial-speech**) in het menu om uw bot te koppelen aan de sleutel van uw spraak abonnement.
    * Klik op **Opslaan**.
 
-1. Klik op **instellingen**in het navigatie venster aan de linkerkant.
+1. Klik in de navigatie van **Azure-Services** op **instellingen**.
    * Schakel het selectie vakje **streaming-eind punt inschakelen**in het vak in. Dit is nodig voor het inschakelen van een communicatie protocol dat is gebaseerd op Web-sockets tussen uw bot en het directe lijn spraak kanaal.
    * Klik op **Opslaan**.
 
@@ -432,7 +433,7 @@ Nu u de nood zakelijke wijziging hebt aangebracht in de bot, is de volgende stap
 
 Als u de in deze zelf studie geïmplementeerde ECHO-bot niet wilt blijven gebruiken, kunt u deze verwijderen en alle bijbehorende Azure-resources door simpelweg de Azure-resource groep **SpeechEchoBotTutorial-ResourceGroup**te verwijderen.
 
-1. Klik vanuit de [Azure Portal](https://portal.azure.com)op **resource groepen** in het linkernavigatievenster.
+1. Klik vanuit de [Azure Portal](https://portal.azure.com)op **resource groepen** in de navigatie van Azure- **Services** .
 2. Zoek de resource groep met de naam: **SpeechEchoBotTutorial-ResourceGroup**. Klik op de drie puntjes (...).
 3. Selecteer **Resourcegroep verwijderen**.
 

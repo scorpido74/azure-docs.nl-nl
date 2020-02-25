@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192114"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561643"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -55,13 +55,17 @@ Als u dit selectie vakje inschakelt, moeten gebruikers Azure Multi-Factor Authen
 
 Organisaties die Microsoft Intune hebben geïmplementeerd, kunnen de informatie gebruiken die wordt geretourneerd door hun apparaten om apparaten te identificeren die aan specifieke nalevings vereisten voldoen. Deze informatie over beleids naleving wordt vanuit intune doorgestuurd naar Azure AD, waarbij voorwaardelijke toegang kan besluiten om toegang tot resources toe te kennen of te blok keren. Zie voor meer informatie over nalevings beleid het artikel [regels instellen op apparaten om toegang tot resources in uw organisatie in te stellen met intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
 
+Een apparaat kan worden gemarkeerd als compatibel door intune (voor elk besturings systeem van een apparaat) of door een MDM-systeem van derden voor Windows 10-apparaten. MDM-systemen van derden voor apparaten met een ander besturings systeem dan Windows 10 worden niet ondersteund.
+
+Apparaten moeten worden geregistreerd in azure AD voordat ze kunnen worden gemarkeerd als compatibel. Meer informatie over apparaatregistratie vindt u in het artikel, [wat een apparaat-id is](../devices/overview.md).
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Hybride Azure AD-aangesloten apparaat vereisen
 
 Organisaties kunnen ervoor kiezen om de apparaat-id te gebruiken als onderdeel van het beleid voor voorwaardelijke toegang. Organisaties kunnen vereisen dat apparaten hybride Azure AD zijn toegevoegd met dit selectie vakje. Zie het artikel [Wat is een apparaat-id?](../devices/overview.md)voor meer informatie over apparaat-id's.
 
 ### <a name="require-approved-client-app"></a>Goedgekeurde client-apps vereisen
 
-Organisaties kunnen vereisen dat een toegangs poging tot de geselecteerde Cloud-apps moet worden uitgevoerd vanuit een goedgekeurde client-app.
+Organisaties kunnen vereisen dat een toegangs poging tot de geselecteerde Cloud-apps moet worden uitgevoerd vanuit een goedgekeurde client-app. Deze goedgekeurde client APS ondersteunen het [intune-beveiligings beleid voor apps](/intune/app-protection-policy) onafhankelijk van een MDM-oplossing (Mobile-Device Management).
 
 Deze instelling is van toepassing op de volgende client-apps:
 
@@ -102,9 +106,7 @@ Deze instelling is van toepassing op de volgende client-apps:
 
 ### <a name="require-app-protection-policy"></a>Beleid voor app-beveiliging vereisen
 
-In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een app-beveiligings beleid aanwezig is op de client-app voordat toegang beschikbaar is voor de geselecteerde Cloud-apps. 
-
-![Toegang beheren met beleid voor app-beveiliging](./media/technical-reference/22.png)
+In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een [intune-app-beveiligings beleid](/intune/app-protection-policy) aanwezig is op de client-app voordat toegang beschikbaar is voor de geselecteerde Cloud-apps. 
 
 Deze instelling is van toepassing op de volgende client-apps:
 
@@ -118,6 +120,10 @@ Deze instelling is van toepassing op de volgende client-apps:
 - Apps voor het app-beveiligings beleid ondersteunen de functie intune-Mobile Application Management met beleids beveiliging.
 - De vereisten voor het **beveiligings beleid voor apps vereisen** :
     - Biedt alleen ondersteuning voor de voor waarde iOS en Android voor Device platform.
+
+### <a name="terms-of-use"></a>Gebruiksvoorwaarden
+
+Als uw organisatie gebruiks voorwaarden heeft gemaakt, kunnen er aanvullende opties worden weer gegeven onder besturings elementen verlenen. Met deze opties kunnen beheerders bevestigings voorwaarden vereisen als voor waarde voor het openen van de bronnen die door het beleid worden beveiligd. Meer informatie over de gebruiks voorwaarden vindt u in het artikel [Azure Active Directory gebruiks voorwaarden](terms-of-use.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3ee7a2ffed9c2c50829f237fdf4c8d3b5a6f1531
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: d88c76afb3426dce8c68ae4bcda366fe17700aa7
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538769"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566043"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
@@ -31,7 +31,7 @@ Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschik
 
 - De grootte van de [nv-](nv-series.md) en [NVv3-serie](nvv3-series.md) is geoptimaliseerd en ontworpen voor externe visualisatie, streaming, games, code ring en VDI-scenario's met behulp van frameworks zoals OpenGL en DirectX. Deze Vm's worden ondersteund door de NVIDIA Tesla M60 GPU.
 
-- [NVv4-serie](nvv4-series.md) VM-grootten geoptimaliseerd en ontworpen voor VDI en externe visualisatie. Met gepartitioneerde Gpu's biedt NVv4 de juiste grootte voor werk belastingen waarvoor kleinere GPU-resources zijn vereist. Deze Vm's worden ondersteund door de AMD Radeon instinct MI25 GPU.
+- [NVv4-serie](nvv4-series.md) VM-grootten geoptimaliseerd en ontworpen voor VDI en externe visualisatie. Met gepartitioneerde Gpu's biedt NVv4 de juiste grootte voor werk belastingen waarvoor kleinere GPU-resources zijn vereist. Deze Vm's worden ondersteund door de AMD Radeon instinct MI25 GPU. NVv4 Vm's ondersteunen momenteel alleen Windows-gast besturingssystemen.
 
 ## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
 
