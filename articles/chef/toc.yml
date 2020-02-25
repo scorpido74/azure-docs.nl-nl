@@ -21,7 +21,7 @@
     - name: Chef
       items:
         - name: Een Windows-VM maken
-          href: /azure/virtual-machines/windows/chef-automation
+          href: ./chef-automation.md
 - name: Naslaginformatie
   items:
     - name: Azure Chef-extensie

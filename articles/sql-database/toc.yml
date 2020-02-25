@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Controle van beheerde exemplaren
               href: sql-database-managed-instance-auditing.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Verbinding maken en query's uitvoeren
       href: sql-database-connect-query.md
       items:

@@ -41,6 +41,10 @@
       href: cli-samples.md
 - name: Concepten
   items:
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Functies voor ontwikkelaars
       href: batch-api-basics.md
     - name: API's en hulpprogramma’s

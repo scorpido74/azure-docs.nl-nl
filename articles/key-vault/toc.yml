@@ -72,12 +72,12 @@
       items:
         - name: Beveiligingsoverzicht
           href: overview-security.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Beveiligingsgebieden
           href: key-vault-ovw-security-worlds.md
         - name: Uw Key Vault beveiligen
           href: key-vault-secure-your-key-vault.md
-        - name: Ingebouwde beveiligingsmaatregelen
-          href: key-vault-security-controls.md
     - name: Voorlopig verwijderen
       href: key-vault-ovw-soft-delete.md
     - name: Key Vault-gebeurtenissen bewaken
