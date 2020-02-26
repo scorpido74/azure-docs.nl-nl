@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Media Services v2 (verouderd)
+title: Documentatie voor Azure Media Services v2 (verouderd)
 summary: Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. Maak kennis met de nieuwste versie, Media Services v3.
 metadata:
-  title: Documentatie voor Azure Media Services v2
+  title: Documentatie voor Azure Media Services v2 (verouderd)
   description: Meer informatie over veilig streamen van video op aanvraag of live video van broadcastkwaliteit met Media Services, v2.
   services: media-services
   ms.service: media-services
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
-  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.openlocfilehash: 6cd7d5d0ef9bd188b42ca893ffa2bacbda1bdbc8
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/20/2020
-  ms.locfileid: "77500770"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77589382"
 landingContent:
 - title: Over Azure Media Services v2
   linkLists:

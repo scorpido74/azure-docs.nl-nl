@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Concepten
       items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Algemene richtlijnen voor Enterprise-beveiliging
           href: ./domain-joined/general-guidelines.md
         - name: Plan voor ESP-clusters

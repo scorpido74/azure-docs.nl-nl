@@ -1,78 +1,68 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure CDN
+summary: Azure Content Delivery Network (CDN) is een wereldwijde CDN-oplossing voor het leveren van inhoud met een hoge bandbreedte. Deze oplossing kan worden gehost in Azure of op een andere locatie. Met Azure CDN kunt u statische objecten die zijn geladen uit Azure Blob-opslag, een webtoepassing of een openbaar toegankelijke webserver, in de cache opslaan met behulp van de dichtstbijzijnde POP-server (Point of Presence-server). Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt gebruikgemaakt van diverse netwerk- en routeringsoptimalisaties.
 metadata:
-  title: 'Documentatie voor Azure CDN - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Azure Content Delivery Network (CDN) is een wereldwijde CDN-oplossing voor het leveren van inhoud met een hoge bandbreedte. Deze oplossing kan worden gehost in Azure of op een andere locatie. Met Azure CDN kunt u statische objecten die zijn geladen uit Azure Blob-opslag, een webtoepassing of een openbaar toegankelijke webserver, in de cache opslaan met behulp van de dichtstbijzijnde POP-server (Point of Presence-server). Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt gebruikgemaakt van diverse netwerk- en routeringsoptimalisaties.'
-  services: cdn
-  author: twooley
-  manager: twooley
+  title: Documentatie voor Azure CDN - zelfstudies, API-verwijzing
+  description: Azure Content Delivery Network (CDN) is een wereldwijde CDN-oplossing voor het leveren van inhoud met een hoge bandbreedte. Deze oplossing kan worden gehost in Azure of op een andere locatie. Met Azure CDN kunt u statische objecten die zijn geladen uit Azure Blob-opslag, een webtoepassing of een openbaar toegankelijke webserver, in de cache opslaan met behulp van de dichtstbijzijnde POP-server (Point of Presence-server). Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt gebruikgemaakt van diverse netwerk- en routeringsoptimalisaties.
   ms.service: azure-cdn
   ms.topic: landing-page
-  ms.date: 06/08/2018
-  ms.author: twooley
-abstract:
-  description: 'Azure Content Delivery Network (CDN) is een wereldwijde CDN-oplossing voor het leveren van inhoud met een hoge bandbreedte. Deze oplossing kan worden gehost in Azure of op een andere locatie. Met Azure CDN kunt u statische objecten die zijn geladen uit Azure Blob-opslag, een webtoepassing of een openbaar toegankelijke webserver, in de cache opslaan met behulp van de dichtstbijzijnde POP-server (Point of Presence-server). Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt gebruikgemaakt van diverse netwerk- en routeringsoptimalisaties.'
-sections:
-  - title: null
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cdn.svg
-            text: Meer informatie over Azure CDN
-            href: /azure/cdn/cdn-overview
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u Azure CDN inschakelt door een CDN-profiel en een CDN-eindpunt te maken.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/get-started.svg
-            text: Aan de slag met Azure CDN
-            href: /azure/cdn/cdn-create-new-endpoint
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Leer hoe u Azure CDN zo configureert dat het naadloos aansluit bij uw behoeften.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">Een aangepast domein aan uw CDN-eindpunt toevoegen</a>
-          - html: <a href="/azure/cdn/cdn-custom-ssl">HTTPS in een aangepast domein configureren</a>
-          - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">Regels voor caching instellen</a>
-  - title: Video's
-    items:
-      - type: paragraph
-        text: Bekijk video’s die laten zien hoe Azure CDN werkt.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/video-library.svg
-            text: Videobibliotheek voor Azure CDN
-            href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Zoek scripts om algemene taken te beheren.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cdn">Codevoorbeelden</a>'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/module/az.cdn">PowerShell</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/cdn/">Naslaginformatie over REST API</a></p>
+  author: asudbring
+  ms.author: allensu
+  ms.date: 02/24/2020
+  ms.openlocfilehash: 7244b5f70468735a0dcced4d9cc9e71c1194350e
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77582565"
+landingContent:
+- title: Over Azure CDN
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is een netwerk voor contentlevering in Azure?
+      url: cdn-overview.md
+  - linkListType: video
+    links:
+    - text: Videobibliotheek voor Azure CDN
+      url: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een Azure CDN-profiel en een eindpunt maken
+      url: cdn-create-new-endpoint.md
+    - text: Een Azure Storage-account integreren met Azure CDN
+      url: cdn-create-a-storage-account-with-cdn.md
+  - linkListType: tutorial
+    links:
+    - text: Een aangepast domein toevoegen aan uw Azure CDN-eindpunt
+      url: cdn-map-content-to-custom-domain.md
+    - text: HTTPS op een aangepast domein van Azure CDN configureren
+      url: cdn-custom-ssl.md
+    - text: Azure CDN toevoegen aan een Azure App Service-web-app
+      url: cdn-add-to-web-app.md
+  - linkListType: learn
+    links:
+    - text: Een netwerk voor contentlevering voor uw website maken met Azure CDN en Blob-services
+      url: https://docs.microsoft.com/learn/modules/create-cdn-static-resources-blob-storage/
+- title: Bewaking
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: De status van Azure CDN-resources bewaken
+      url: cdn-resource-health.md
+    - text: Diagnostische logboeken in Azure - Azure CDN
+      url: cdn-azure-diagnostic-logs.md
+- title: Rapportage
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Gebruikspatronen van Azure CDN analyseren
+      url: cdn-log-analysis.md
+    - text: Kernrapporten van Verizon
+      url: cdn-analyze-usage-patterns.md
+    - text: Aangepaste rapporten van Verizon
+      url: cdn-verizon-custom-reports.md
+    - text: Gebruiksstatistieken analyseren met geavanceerde HTTP-rapporten in Azure CDN
+      url: cdn-advanced-http-reports.md

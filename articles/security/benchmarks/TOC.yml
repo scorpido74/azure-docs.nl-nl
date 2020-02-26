@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: Penetratietests en Red Team-oefeningen
       href: security-control-penetration-tests-red-team-exercises.md
+- name: Beveiligingsbasislijnen
+  items:
+    - name: Overzicht van Azure-beveiligingsbasislijnen
+      href: security-baselines-overview.md
+    - name: Basislijn voor batch-beveiliging
+      href: ../../batch/security-baseline.md
+    - name: Basislijn voor Key Vault-beveiliging
+      href: ../../key-vault/security-baseline.md
+    - name: Basislijn voor HDInsight-beveiliging
+      href: ../../hdinsight/security-baseline.md
+    - name: Basislijn voor SQL Database-beveiliging
+      href: ../../sql-database/security-baseline.md

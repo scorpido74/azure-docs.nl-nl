@@ -122,6 +122,8 @@
       maintainContext: true
 - name: Instructiegidsen
   items:
+    - name: Migreren van Azure Service Manager-API's (klassiek) naar Resource Manager-API's
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Ontwikkelen
       items:
         - name: Event Hub-verbindingsreeks ophalen
