@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355630"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604379"
 ---
 # <a name="alert-confidence-score-preview"></a>Betrouwbaarheids score voor waarschuwingen (preview-versie)
 
@@ -47,14 +47,6 @@ De gegevens weer geven die hebben bijgedragen aan het vertrouwen van het Securit
   ![Verdachte betrouwbaarheids Score][2]
 
 Gebruik de betrouwbaarheids Score van Security Center om de sorteren van waarschuwingen in uw omgeving te bepalen. De betrouwbaarheids Score bespaart u tijd en moeite door waarschuwingen automatisch te onderzoeken, best practices van de branche en intelligente algoritmen toe te passen en te fungeren als een virtuele analist om te bepalen welke bedreigingen echt zijn en waar u uw aandacht moet richten.
-
-
-## <a name="next-steps"></a>Volgende stappen
-In dit artikel wordt uitgelegd hoe u de betrouwbaarheids Score kunt gebruiken om te bepalen of u waarschuwingen wilt onderzoeken. Zie de volgende onderwerpen voor meer informatie over Security Center:
-
-* [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
-* [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.
-
 
 
 <!--Image references-->

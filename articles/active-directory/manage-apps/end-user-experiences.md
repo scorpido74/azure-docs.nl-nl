@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896899"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586050"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory
 
@@ -32,7 +32,7 @@ Welke methode (n) u wilt implementeren in uw organisatie is uw keuze.
 
 ## <a name="azure-ad-access-panel"></a>Azure AD-toegangs venster
 
-Het toegangs venster op https://myapps.microsoft.com is een portal op Internet waarmee een eind gebruiker met een organisatie account in Azure Active Directory Cloud toepassingen kan weer geven en starten waartoe de Azure AD-beheerder toegang heeft verleend. Als u een eind gebruiker bent met [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), kunt u ook gebruikmaken van self-service voor groeps beheer via het toegangs venster.
+Het toegangs venster op https://myapps.microsoft.com is een webgebaseerde Portal waarmee een eind gebruiker met een organisatie account in Azure Active Directory toepassingen kan weer geven en starten waartoe ze toegang hebben gekregen door de Azure AD-beheerder. Als u een eind gebruiker bent met [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), kunt u ook gebruikmaken van self-service voor groeps beheer via het toegangs venster.
 
 ![Scherm afbeelding toont de Azure AD-toegangs venster Portal](media/what-is-single-sign-on/azure-ad-access-panel.png)
 

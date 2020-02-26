@@ -3,7 +3,7 @@ title: Micro soft Defender ATP-gegevens verbinden met Azure Sentinel | Microsoft
 description: Meer informatie over het verbinden van gegevens van micro soft Defender Advanced Threat Protection naar Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
-ms.author: rkarlin
-ms.openlocfilehash: 19d496ebb61a3ceb47f69f661e30ab529dc64f3d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.author: yelevin
+ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256745"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588209"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Verbinding maken met waarschuwingen van micro soft Defender Advanced Threat Protection 
 
@@ -44,7 +44,7 @@ Als micro soft Defender Advanced Threat Protection wordt geïmplementeerd en uw 
 
 
 1. In azure Sentinel selecteert u **Data connectors**, klikt u op de tegel **micro soft Defender Advanced Threat Protection** en selecteert u de **pagina connector openen**.
-1. Klik op **Verbinden**. 
+1. Klik op **Verbinding maken**. 
 1. Als u het relevante schema in Log Analytics voor de Defender ATP-waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert** en de **provider naam** **MDATP**.
 
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638252"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587240"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database resource limieten en resource governance
 
@@ -27,7 +27,7 @@ Dit artikel bevat een overzicht van de SQL Database resource limieten voor een S
 
 ## <a name="maximum-resource-limits"></a>Maximum aantal resource limieten
 
-| Bron | Limiet |
+| Resource | Limiet |
 | :--- | :--- |
 | Data bases per server | 5000 |
 | Standaard aantal servers per abonnement in een wille keurige regio | 20 |
@@ -37,14 +37,14 @@ Dit artikel bevat een overzicht van de SQL Database resource limieten voor een S
 | Maximum aantal groepen per server | Beperkt door het aantal Dtu's of vCores. Als bijvoorbeeld elke groep 1000 Dtu's is, kan een server 54 groepen ondersteunen.|
 |||
 
-> [!NOTE]
-> Als u meer DTU/eDTU-quotum, vCore quotum of meer servers dan de standaard hoeveelheid wilt verkrijgen, kan een nieuwe ondersteunings aanvraag worden verzonden in de Azure Portal voor het abonnement met het probleem type ' quotum '. Het DTU/eDTU-quotum en de limiet voor de data base per server beperkt het aantal elastische Pools per server.
-
 > [!IMPORTANT]
 > Wanneer het aantal data bases de limiet per SQL Database Server nadert, kunnen de volgende problemen optreden:
 >
 > - De latentie verhogen bij het uitvoeren van query's op de hoofd database.  Dit geldt ook voor weer gaven van gegevens over het resource gebruik, zoals sys. resource_stats.
 > - Het verg Roten van latentie in beheer bewerkingen en het weer geven van portal-gezichts punten waarbij de data bases op de server worden geïnventariseerd.
+
+> [!NOTE]
+> Als u meer DTU/eDTU-quotum, vCore quotum of meer servers dan het standaard aantal wilt verkrijgen, moet u een nieuwe ondersteunings aanvraag indienen in de Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](quota-increase-request.md)voor meer informatie.
 
 ### <a name="storage-size"></a>Opslag grootte
 
@@ -60,7 +60,7 @@ Wanneer het gebruik van hoge berekeningen wordt tegengekomen, zijn de volgende o
 - De reken grootte van de data base of elastische pool verg Roten om de data base te voorzien van meer compute-resources. Zie bronnen van [één data base schalen](sql-database-single-database-scale.md) en [elastische pool resources schalen](sql-database-elastic-pool-scale.md).
 - Query's optimaliseren om het resource gebruik van elke query te verminderen. Zie [query tuning/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 
 Wanneer gebruikte database ruimte de maximale grootte bereikt, worden invoeg bewerkingen en updates die de omvang van de gegevens overschrijden, door data bases ingevoegd en bijgewerkt en ontvangen clients een [fout bericht](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). De instructies SELECT en DELETE blijven slagen.
 

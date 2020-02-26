@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505636"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585727"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -127,7 +127,7 @@ Hiermee wordt een teken reeks claim gemaakt op basis van de opgegeven invoer par
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | waarde | tekenreeks | De teken reeks die moet worden ingesteld |
+| InputParameter | waarde | tekenreeks | De teken reeks die moet worden ingesteld. Deze invoer parameter ondersteunt [teken reeks claim transformatie expressies](string-transformations.md#string-claim-transformations-expressions). |
 | OutputClaim | createdClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, met de waarde die is opgegeven in de invoer parameter. |
 
 Gebruik deze claim transformatie om een teken reeks claim waarde in te stellen.
@@ -297,7 +297,7 @@ Een claim opmaken volgens de gegeven teken reeks voor opmaak. Deze trans formati
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |tekenreeks |Het claim type dat fungeert als teken reeks notatie {0} para meter. |
-| InputParameter | stringFormat | tekenreeks | De teken reeks notatie, met inbegrip van de para meter {0}. |
+| InputParameter | stringFormat | tekenreeks | De teken reeks notatie, met inbegrip van de para meter {0}. Deze invoer parameter ondersteunt [teken reeks claim transformatie expressies](string-transformations.md#string-claim-transformations-expressions).  |
 | OutputClaim | outputClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
 
 Gebruik deze claim transformatie voor het format teren van een wille keurige teken reeks met één para meter {0}. In het volgende voor beeld wordt een **userPrincipalName**gemaakt. Alle technische profielen van de sociale ID-provider, zoals `Facebook-OAUTH` roept de **CreateUserPrincipalName** aan om een **userPrincipalName**te genereren.
@@ -333,7 +333,7 @@ Indeling van twee claims volgens de gegeven teken reeks voor opmaak. Deze trans 
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |tekenreeks | Het claim type dat fungeert als teken reeks notatie {0} para meter. |
 | InputClaim | inputClaim | tekenreeks | Het claim type dat fungeert als teken reeks notatie {1} para meter. |
-| InputParameter | stringFormat | tekenreeks | De teken reeks notatie, met inbegrip van de para meters {0} en {1}. |
+| InputParameter | stringFormat | tekenreeks | De teken reeks notatie, met inbegrip van de para meters {0} en {1}. Deze invoer parameter ondersteunt [teken reeks claim transformatie expressies](string-transformations.md#string-claim-transformations-expressions).   |
 | OutputClaim | outputClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
 
 Gebruik deze claim transformatie om een wille keurige teken reeks te Format teren met twee para meters, {0} en {1}. In het volgende voor beeld wordt een **DisplayName** gemaakt met de opgegeven indeling:
@@ -925,3 +925,12 @@ In het volgende voor beeld wordt een teken reeks met scheidings tekens van gebru
   - **scheidings teken**: ","
 - Uitvoer claims:
   - **output claim**: ["beheerder", "Auteur", "lezer"]
+  
+## <a name="string-claim-transformations-expressions"></a>Teken reeks claim transformaties expressies
+Claim Transforms-expressies in Azure AD B2C aangepaste beleids regels bieden context informatie over de Tenant-ID en de technische profiel-ID.
+
+  | Expressie | Beschrijving | Voorbeeld |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | De technische profileId naam. | Facebook-OAUTH |
+ | `{RelyingPartyTenantId}` | De Tenant-ID van het Relying Party-beleid. | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | De Tenant-ID van het vertrouwens raamwerk. | your-tenant.onmicrosoft.com |

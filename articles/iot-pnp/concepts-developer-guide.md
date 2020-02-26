@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905789"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605219"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play preview-modellen
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 Met IoT Plug en Play kunt u apparaten gebruiken die hun mogelijkheden hebben geregistreerd bij uw IoT-hub. U kunt bijvoorbeeld rechtstreeks toegang krijgen tot de eigenschappen en opdrachten van een apparaat.
 
-Als u een IoT-Plug en Play apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de IoT-taal-Sdk's. De volgende voor beelden gebruiken de IoT Hub REST API.
+Als u een IoT-Plug en Play apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de IoT-taal-Sdk's. De volgende voor beelden gebruiken de IoT Hub REST API. De huidige versie van de API is `2019-07-01-preview`. Voeg `?api-version=2019-07-01-preview` toe aan uw REST PI-aanroepen.
 
 Als u de waarde van een eigenschap apparaat wilt ophalen, zoals de firmware versie (`fwVersion`) in de `DeviceInformation`-interface in de Thermo staat, gebruikt u de REST API van de digitale apparaatdubbels.
 
-Als uw Thermo staat-apparaat `t-123`heet, krijgt u de alle eigenschappen die door uw apparaat worden geïmplementeerd met een REST API GET-aanroep:
+Als uw Thermo staat-apparaat `t-123`heet, krijgt u de alle eigenschappen van alle interfaces die door uw apparaat worden geïmplementeerd met een REST API GET-aanroep:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Meer in het algemeen zijn alle eigenschappen toegankelijk met deze REST API sjabloon waarbij `{device-id}` de id voor het apparaat is:
+Meer in het algemeen zijn alle eigenschappen op alle interfaces toegankelijk met deze REST API sjabloon waarbij `{device-id}` de id is van het apparaat:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Als u de naam van de interface kent en de eigenschappen voor die specifieke interface wilt ophalen, moet u de aanvraag op naam bereiken naar een specifieke interface:
+Als u de naam van de interface kent, zoals `deviceInformation`, en u eigenschappen voor die specifieke interface wilt ophalen, moet u de aanvraag voor een specifieke interface op naam bereiken:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 Meer in het algemeen zijn de eigenschappen voor een specifieke interface toegankelijk via deze REST API sjabloon, waarbij `device-id` de id voor het apparaat is en `{interface-name}` de naam van de interface is:

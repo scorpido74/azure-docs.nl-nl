@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 121117d20f5b9eb6e53da1b8884557fcfb46ff76
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501002"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586373"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -18,7 +18,7 @@ Gebruik het Log Analytics gegevens model om aangepaste waarschuwingen van Log An
 
 > [!NOTE]
 >
-> Dit gegevens model is een verwijzing naar de Azure Diagnostics modus voor het verzenden van diagnostische gebeurtenissen naar Log Analytics (LA). Raadpleeg het volgende artikel voor meer informatie over het gegevens model voor de nieuwe resource-specifieke modus: [gegevens model voor het Azure backup van diagnostische gebeurtenissen](https://aka.ms/diagnosticsdatamodel)
+> Dit gegevens model is een verwijzing naar de Azure Diagnostics modus voor het verzenden van diagnostische gebeurtenissen naar Log Analytics (LA). Raadpleeg het volgende artikel voor meer informatie over het gegevens model voor de nieuwe resource-specifieke modus: [gegevens model voor het Azure backup van diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup gegevens model gebruiken
 

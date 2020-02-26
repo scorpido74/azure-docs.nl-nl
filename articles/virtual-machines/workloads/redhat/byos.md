@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190501"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597691"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 
 Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn beschikbaar in azure via een PAYG-model (betalen per gebruik) of uw eigen abonnement (Red Hat Gold image). Dit document bevat een overzicht van de Red Hat Gold-installatie kopieën in Azure.
+
+>[!NOTE]
+> RHEL BYOS Gold-installatie kopieën zijn beschikbaar in azure openbaar (commercieel) en in Azure Government Clouds. Ze zijn niet beschikbaar in azure China of Azure blackforest-Clouds.
 
 ## <a name="important-points-to-consider"></a>Belang rijke punten om rekening mee te houden
 

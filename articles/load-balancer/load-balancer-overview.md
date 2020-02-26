@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 376741005f0755d01c95baad8d3a3d33e9952933
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ce8ae7f2f4de3659dc8dde98dc71d39886341498
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023902"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602159"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
@@ -31,16 +31,16 @@ Een **[open bare Load Balancer](./concepts-limitations.md#publicloadbalancer)** 
 
 Een **[intern (of privé) Load Balancer](./concepts-limitations.md#internalloadbalancer)** wordt alleen gebruikt wanneer privé ip's alleen op het front-end zijn vereist. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan worden geopend vanuit een on-premises netwerk in een hybride scenario.
 
-<div align="center">
-  <img src='./media/load-balancer-overview/IC744147.png'>
-</div>
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
+</p>
 
 *Afbeelding: toepassingen met meerdere lagen verdelen met behulp van zowel open bare als interne Load Balancer*
 
 Zie [Azure Load Balancer onderdelen en beperkingen](./concepts-limitations.md) voor meer informatie over de afzonderlijke Load Balancer onderdelen
 
 >[!NOTE]
-> Azure biedt een pakket volledig beheerde oplossingen voor taakverdeling voor uw scenario's. Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) als u behoefte hebt aan hoge prestaties en lage latentie, laag-4 taak verdeling. Als u op zoek bent naar globale DNS-taak verdeling, raadpleegt u [Wat is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uw end-to-end-scenario's kunnen van pas komen bij het combi neren van deze oplossingen.
+> Azure biedt een pakket volledig beheerde oplossingen voor taakverdeling voor uw scenario's. Zie [Wat is Azure-toepassing gateway?](../application-gateway/overview.md) als u behoefte hebt aan hoge prestaties en lage latentie, laag-4 taak verdeling? Als u op zoek bent naar globale DNS-taak verdeling, raadpleegt u [Wat is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uw end-to-end-scenario's kunnen van pas komen bij het combi neren van deze oplossingen.
 >
 > Zie [overzicht van opties voor taak verdeling in azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)voor een vergelijking van Azure-opties voor taak verdeling.
 
@@ -71,7 +71,7 @@ De belangrijkste scenario's die u kunt bereiken met Standard Load Balancer zijn 
 
 ### <a name="securebydefault"></a>Standaard beveiligd
 
-Standard Load Balancer is gebouwd op basis van het beveiligings model voor vertrouwens relaties van het netwerk. Standard Load Balancer standaard beveiligd en maakt deel uit van uw virtuele netwerk. Het virtuele netwerk is een privé-en geïsoleerd netwerk.  Dit betekent dat standaard load balancers en standaard open bare IP-adressen worden gesloten voor binnenkomende stromen, tenzij ze worden geopend door netwerk beveiligings groepen. Nsg's worden gebruikt om toegestaan verkeer expliciet toe te staan en te white list.  Als u geen NSG op een subnet of NIC van uw virtuele-machine bron hebt, mag het verkeer deze bron niet bereiken. Zie [netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over nsg's en hoe u deze kunt Toep assen voor uw scenario.
+Standard Load Balancer is gebouwd op basis van het beveiligings model voor vertrouwens relaties van het netwerk. Standard Load Balancer standaard beveiligd en maakt deel uit van uw virtuele netwerk. Het virtuele netwerk is een privé-en geïsoleerd netwerk.  Dit betekent dat standaard load balancers en standaard open bare IP-adressen worden gesloten voor binnenkomende stromen, tenzij ze worden geopend door netwerk beveiligings groepen. Nsg's worden gebruikt om toegestaan verkeer expliciet toe te staan.  Als u geen NSG op een subnet of NIC van uw virtuele-machine bron hebt, mag het verkeer deze bron niet bereiken. Zie [netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over nsg's en hoe u deze kunt Toep assen voor uw scenario.
 Basis Load Balancer is standaard geopend met het internet.
 
 

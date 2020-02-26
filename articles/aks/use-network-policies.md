@@ -2,17 +2,14 @@
 title: Beveiligt u met netwerk beleid in azure Kubernetes service (AKS)
 description: Meer informatie over het beveiligen van verkeer dat in en uit het meren aantal stromen met behulp van Kubernetes-netwerk beleid in azure Kubernetes service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928499"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592863"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Verkeer beveiligen tussen een Peul netwerk beleid dat wordt gebruikt in azure Kubernetes service (AKS)
 
@@ -57,7 +54,7 @@ Beide implementaties gebruiken Linux *iptables* om het opgegeven beleid af te dw
 | Ondersteunde platforms                      | Linux                      | Linux                       |
 | Ondersteunde netwerk opties             | Azure-CNI                  | Azure CNI en kubenet       |
 | Compatibiliteit met Kubernetes-specificatie | Alle beleids typen die worden ondersteund |  Alle beleids typen die worden ondersteund |
-| Aanvullende functies                      | Geen                       | Uitgebreide beleids model dat bestaat uit globaal netwerk beleid, een globaal netwerk en een host-eind punt. Zie [calicoctl User Reference][calicoctl](Engelstalig) voor meer informatie over het gebruik van de `calicoctl` CLI voor het beheren van deze uitgebreide functies. |
+| Aanvullende functies                      | None                       | Uitgebreide beleids model dat bestaat uit globaal netwerk beleid, een globaal netwerk en een host-eind punt. Zie [calicoctl User Reference][calicoctl](Engelstalig) voor meer informatie over het gebruik van de `calicoctl` CLI voor het beheren van deze uitgebreide functies. |
 | Ondersteuning                                  | Ondersteund door ondersteunings-en technisch team van Azure | Ondersteuning voor Calico-community. Zie voor meer informatie over aanvullende betaalde ondersteuning [project Calico-ondersteunings opties][calico-support]. |
 | Logboekregistratie                                  | Regels die zijn toegevoegd aan of verwijderd uit IPTables worden geregistreerd op elke host onder */var/log/Azure-NPM.log* | Zie [Calico-onderdeel Logboeken][calico-logs] voor meer informatie. |
 
@@ -85,7 +82,7 @@ Het volgende voorbeeld script:
 * Hiermee maakt u een AKS-cluster in het gedefinieerde virtuele netwerk en schakelt u netwerk beleid in.
     * De optie *Azure* -netwerk beleid wordt gebruikt. Als u in plaats daarvan Calico wilt gebruiken als de optie voor netwerk beleid, gebruikt u de para meter `--network-policy calico`. Opmerking: Calico kan worden gebruikt met een `--network-plugin azure` of `--network-plugin kubenet`.
 
-Geef uw eigen beveiligde *SP_PASSWORD*op. U kunt de variabelen *RESOURCE_GROUP_NAME* en *CLUSTER_NAME* vervangen:
+Geef uw eigen beveiligde *SP_PASSWORD*op. U kunt de *RESOURCE_GROUP_NAME* en *CLUSTER_NAME* variabelen vervangen:
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup-NP

@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806742"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591214"
 ---
 # <a name="know-the-terms"></a>Inzicht in de voorwaarden
 
@@ -38,7 +38,7 @@ Verschillende algemene definities worden veel gebruikt in de architectuur en tec
    Domein gebruikers van het on-premises domein hebben toegang tot de servers en kunnen services uitvoeren op deze virtuele machines (zoals DBMS-Services). Communicatie en naam omzetting tussen Vm's die on-premises en door Azure geïmplementeerde Vm's zijn geïmplementeerd, is mogelijk. Dit scenario is een typische manier waarop de meeste SAP-assets worden geïmplementeerd. Zie [Azure VPN gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) en [een virtueel netwerk maken met een site-naar-site-verbinding met behulp van de Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
 - **Tenant**: een klant die is GEÏMPLEMENTEERD in Hana-stempel met grote instanties, wordt geïsoleerd in een *Tenant.* Een Tenant wordt geïsoleerd in het netwerk, de opslag en de compute-laag van andere tenants. Opslag-en reken eenheden die aan de verschillende tenants zijn toegewezen, kunnen elkaar niet zien of met elkaar communiceren op het niveau van de HANA-grote instantie stempel. Een klant kan ervoor kiezen om implementaties in verschillende tenants te hebben. Ook is er geen communicatie tussen tenants op het stempel niveau van de grootschalige grote instantie.
 - **SKU-categorie**: voor Hana grote instanties worden de volgende twee categorieën sku's aangeboden:
-    - **Type I-klasse**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm en S224
+    - **Type I-klasse**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 en S224m
     - **Type II-klasse**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm en S960m
 - **Stempel**: definieert de interne implementatie grootte van Hana grote instanties van micro soft. Voordat de eenheden van de grote instanties van HANA kunnen worden geïmplementeerd, moet een HANA-stempel voor grote instanties die uit reken-, netwerk-en opslag racks bestaat, worden geïmplementeerd op een locatie van het Data Center. Een dergelijke implementatie heet een HANA grote instantie stempel of van revisie 4 (zie hieronder). Gebruik de alternatieve waarde voor de rij met **grote instanties**
 - **Revisie**: er zijn twee verschillende stempel revisies voor Hana grote instantie tempels. Deze verschillen qua architectuur en nabijheid van Azure virtual machine-hosts

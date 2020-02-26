@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: e1ed403babe66b465fb1800dc8c5a90c7a8f1a08
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558615"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604112"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Endpoint Protection-problemen met Azure Security Center beheren
 Azure Security Center bewaakt de status van antimalware Protection en meldt dit onder de pagina met problemen met Endpoint Protection. Security Center markeert problemen, zoals gedetecteerde bedreigingen en onvoldoende beveiliging, waardoor uw virtuele machines (Vm's) en computers kwetsbaar zijn voor aanvallen op malware. Door de informatie onder **problemen met Endpoint Protection**te gebruiken, kunt u een plan identificeren om eventuele gevonden problemen op te lossen.
@@ -108,8 +108,6 @@ Raadpleeg de volgende documenten voor meer informatie over Security Center:
 * [Beveiligings status controleren in azure Security Center](security-center-monitoring.md) --meer informatie over het controleren van de status van uw Azure-resources.
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
-* [Azure Security Center FAQ](security-center-faq.md) (Veelgestelde vragen over Azure Security Center): raadpleeg veelgestelde vragen over het gebruik van de service.
-* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over beveiliging en naleving van Azure.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

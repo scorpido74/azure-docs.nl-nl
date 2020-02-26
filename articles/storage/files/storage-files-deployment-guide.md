@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299578"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598779"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files implementeren
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. In dit artikel wordt uitgelegd hoe u Azure Files in uw organisatie nagenoeg implementeert.
@@ -26,14 +26,14 @@ In dit artikel wordt ervan uitgegaan dat u de volgende stappen al hebt uitgevoer
 - Maak een Azure-bestands share met uw gewenste quotum in uw opslag account. Zie [een bestands share maken](storage-how-to-create-file-share.md) voor stapsgewijze instructies voor het maken van een bestands share.
 
 ## <a name="transfer-data-into-azure-files"></a>Gegevens overdragen naar Azure Files
-U wilt wellicht bestaande bestands shares, zoals opgeslagen op locatie, migreren naar uw nieuwe Azure-bestands share. In deze sectie wordt uitgelegd hoe u gegevens kunt verplaatsen naar een Azure-bestands share via verschillende populaire methoden die worden beschreven in de [plannings handleiding](storage-files-planning.md#data-transfer-method)
+U wilt wellicht bestaande bestands shares, zoals opgeslagen op locatie, migreren naar uw nieuwe Azure-bestands share. In deze sectie wordt uitgelegd hoe u gegevens kunt verplaatsen naar een Azure-bestands share via verschillende populaire methoden die worden beschreven in de [plannings handleiding](storage-files-planning.md#migration)
 
 ### <a name="azure-file-sync"></a>Azure File Sync
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
 
 Azure File Sync kan worden gebruikt om gegevens te migreren naar een Azure-bestands share, zelfs als het synchronisatie mechanisme niet gewenst is voor gebruik op lange termijn. Meer informatie over het gebruik van Azure File Sync voor het overdragen van gegevens naar een Azure-bestands share vindt u in [planning voor een Azure file sync implementatie](storage-sync-files-planning.md) en [het implementeren van Azure file sync](storage-sync-files-deployment-guide.md).
 
-### <a name="azure-importexport"></a>Azure Import/Export
+### <a name="azure-importexport"></a>Azure import/export
 Met de Azure import/export-service kunt u veilig grote hoeveel heden gegevens overdragen naar een Azure-bestands share door harde schijven naar een Azure-Data Center te verzenden. Zie [de Microsoft Azure import/export-service gebruiken om gegevens over te dragen naar Azure Storage](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor een meer gedetailleerd overzicht van de service.
 
 > [!Note]  
@@ -65,7 +65,7 @@ Met de volgende stappen worden gegevens van een on-premises locatie naar uw Azur
 
     Er kunnen meerdere shares met een opslag account worden opgegeven. Zie [het CSV-bestand van de gegevensset voorbereiden](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie.
 
-5. Maak het CSV-bestand van het stationset. Het CSV-bestand van het station bevat een lijst met de schijven die beschikbaar zijn voor de on-premises export agent. Het volgende stationset CSV-bestand bevat bijvoorbeeld een lijst met `X:`, `Y:` en `Z:`-stations die moeten worden gebruikt in de on-premises export taak:
+5. Maak het CSV-bestand van het stationset. Het CSV-bestand van het station bevat een lijst met de schijven die beschikbaar zijn voor de on-premises export agent. Het volgende stationset CSV-bestand bevat bijvoorbeeld `X:`, `Y:`en `Z:` stations die moeten worden gebruikt in de on-premises export taak:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey

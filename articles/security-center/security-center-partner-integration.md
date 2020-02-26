@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530949"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603803"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -27,7 +27,7 @@ Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gek
 > Er is een subset van beveiligings oplossingen ingetrokken op 31 juli 2019. Zie voor meer informatie en alternatieve Services de [buiten gebruiks telling van Security Center-functies (2019 juli)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Geïntegreerde Azure-beveiligingsoplossingen
-Met Security Center kunt u gemakkelijk geïntegreerde beveiligingsoplossingen in Azure inschakelen. De voordelen zijn:
+Met Security Center kunt u gemakkelijk geïntegreerde beveiligingsoplossingen in Azure inschakelen. Voordelen zijn:
 
 - **Vereenvoudigde implementatie**: Security Center biedt gestroomlijnde inrichting van geïntegreerde partneroplossingen. Security Center kan de agent op uw virtuele machines inrichten voor oplossingen zoals antimalware en evaluatie van beveiligings problemen. Voor firewall apparaten kan Security Center een groot deel van de vereiste netwerk configuratie zijn.
 - **Geïntegreerde detectie**: beveiligingsgebeurtenissen van partneroplossingen worden automatisch verzameld, samengevoegd en weergegeven als waarschuwingen en incidenten in Security Center. Deze gebeurtenissen worden ook gekoppeld aan detecties van andere bronnen voor geavanceerde detectie van bedreigingen.
@@ -47,7 +47,7 @@ Azure-beveiligingsoplossingen die zijn geïmplementeerd vanuit Security Center, 
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Geïntegreerde Azure-beveiligingsoplossingen en andere gegevensbronnen beheren
 
-1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Meld u aan bij de [Azure-portal](https://azure.microsoft.com/features/azure-portal/).
 
 2. Ga naar het menu van **Microsoft Azure** en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
 
@@ -113,7 +113,7 @@ Alle gebeurtenissen van Azure Security Center worden gepubliceerd in het Azure- 
 
 In de volgende secties wordt beschreven hoe u gegevens kunt configureren om te streamen naar een Event Hub. Bij de stappen wordt ervan uitgegaan dat u al Azure Security Center hebt geconfigureerd in uw Azure-abonnement.
 
-### <a name="high-level-overview"></a>Overzicht
+### <a name="high-level-overview"></a>Overzicht op hoog niveau
 
 ![Overzicht op hoog niveau](media/security-center-export-data-to-siem/overview.png)
 
@@ -129,13 +129,13 @@ Voordat u begint, [maakt u een event hubs naam ruimte](../event-hubs/event-hubs-
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Het Azure-activiteiten logboek streamen naar Event Hubs
 
-Raadpleeg het volgende artikel [Stream-activiteiten logboek om te Event hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Raadpleeg het volgende artikel [Stream-activiteiten logboek om te Event hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md).
 
 #### <a name="install-a-partner-siem-connector"></a>Een partner SIEM-connector installeren 
 
 Door uw bewakings gegevens te routeren naar een event hub met Azure Monitor kunt u eenvoudig integreren met SIEM-en controle hulpprogramma's van de partner.
 
-Zie het volgende artikel voor de lijst met [ondersteunde siem's](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub)
+Zie het volgende artikel voor de lijst met [ondersteunde siem's](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
 ### <a name="example-for-querying-data"></a>Voor beeld voor het opvragen van gegevens 
 
@@ -145,13 +145,11 @@ Hier volgen enkele Splunk-query's die u kunt gebruiken om waarschuwings gegevens
 |----|----|
 | Alle waarschuwingen| index=main Microsoft.Security/locations/alerts|
 | Aantal bewerkingen samenvatten op naam| index = hoofd source type = "Amal: Security" \| tabel bewerkings naam \| aantal statistieken per operationname|
-| Waarschuwings gegevens ophalen: tijd, naam, status, ID en abonnement | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
+| Waarschuwings gegevens ophalen: tijd, naam, status, ID en abonnement | index = hoofd versie van micro soft. Security/locations/Alerts \| tabel \_tijd, eigenschappen. eventname, status, Properties. operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u kunnen lezen hoe u partneroplossingen integreert in Security Center. Zie de volgende artikelen voor meer informatie over Security Center:
+In dit artikel hebt u kunnen lezen hoe u partneroplossingen integreert in Security Center. Zie het volgende artikel voor meer informatie over Security Center:
 
 * [Beveiligingsstatus controleren in Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.
-* [Veelgestelde vragen over Azure Security Center](security-center-faq.md). Krijg antwoorden op veelgestelde vragen over het gebruik van Security Center.
-* [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/). Raadpleeg de blogberichten over beveiliging en naleving in Azure.

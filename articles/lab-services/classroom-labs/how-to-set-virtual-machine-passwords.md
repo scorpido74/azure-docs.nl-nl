@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539430"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591520"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -58,6 +58,9 @@ De tweede manier is om een of meer virtuele machines te selecteren in de lijst e
 ![Geselecteerde Vm's starten](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 Op dezelfde manier kunt u een of meer Vm's stoppen door te klikken op de knop in de kolom **status** of **Stop** te selecteren op de werk balk. 
+
+> [!NOTE]
+> Wanneer een docent een student-VM inschakelt, wordt het quotum voor de student niet beïnvloed. Quota voor een gebruiker Hiermee geeft u het aantal Lab-uren op dat voor de gebruiker buiten de geplande tijd beschikbaar moet zijn. Zie [quota's voor gebruikers instellen](how-to-configure-student-usage.md?#set-quotas-for-users)voor meer informatie over quota's.
 
 ## <a name="reset-vms"></a>Vm's opnieuw instellen
 Als u een of meer Vm's opnieuw wilt instellen, selecteert u deze in de lijst en selecteert u vervolgens **opnieuw instellen** op de werk balk. 

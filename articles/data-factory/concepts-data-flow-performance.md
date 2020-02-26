@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773848"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587580"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -35,8 +35,8 @@ Bij het ontwerpen van gegevens stromen kunt u elke trans formatie per eenheid te
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>De reken grootte verg Roten in Azure Integration Runtime
 
 Een Integration Runtime met meer kernen verhoogt het aantal knoop punten in de Spark-reken omgevingen en biedt meer verwerkings kracht voor het lezen, schrijven en transformeren van uw gegevens.
-* Probeer een **geoptimaliseerde Compute** -cluster als u wilt dat uw verwerkings snelheid hoger is dan de invoer snelheid
-* Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan.
+* Probeer een **geoptimaliseerde Compute** -cluster als u wilt dat de verwerkings snelheid hoger is dan uw invoer snelheid.
+* Probeer een cluster dat is **geoptimaliseerd voor geheugen** als u meer gegevens in het geheugen wilt opslaan. Geoptimaliseerd geheugen heeft een hoger prijs punt per kern dan de compute Optimized, maar zal waarschijnlijk leiden tot snellere transformatie snelheden.
 
 ![Nieuwe IR](media/data-flow/ir-new.png "Nieuwe IR")
 
@@ -73,7 +73,7 @@ Onder **bron opties** in de bron transformatie kunnen de volgende instellingen i
 
 Stel **Batch grootte** in op het tabblad Instellingen voor Azure SQL DB-en Azure SQL DW-sinks om te voor komen dat de gegevens stromen worden verwerkt door rijen. Als Batch grootte is ingesteld, verwerkt ADF database schrijf bewerkingen in batches op basis van de opgegeven grootte.
 
-![Sink](media/data-flow/sink4.png "Sink")
+![Tenen](media/data-flow/sink4.png "Sink")
 
 ### <a name="partitioning-on-sink"></a>Partitioneren op Sink
 
@@ -87,17 +87,24 @@ Voeg in uw pijp lijn een [opgeslagen procedure activiteit](transform-data-using-
 
 Plan een grootte van uw bron en Sink Azure SQL DB en DW vóór de uitvoering van de pijp lijn om de door voer te verhogen en Azure-beperking te minimaliseren zodra u DTU-limieten bereikt. Nadat de uitvoering van de pijp lijn is voltooid, kunt u het formaat van uw data bases herstellen naar hun normale uitvoerings frequentie.
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Alleen Azure SQL DW] Gebruik fase ring om gegevens bulksgewijs te laden via Poly base
+* SQL DB-bron tabel met 887k-rijen en 74-kolommen naar een SQL DB-tabel met één afgeleide kolom transformatie neemt ongeveer 3 minuten end-to-end op met behulp van geheugen geoptimaliseerd 80-kern fout opsporing Azure IRs.
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Alleen Azure Synapse SQL DW] Gebruik fase ring om gegevens bulksgewijs te laden via Poly base
 
 Als u wilt voor komen dat rijen worden ingevoegd in uw DW, schakelt u **fase ring inschakelen** in uw Sink-instellingen in, zodat ADF [poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)kan gebruiken. Met poly Base kan de gegevens bulksgewijs worden geladen met ADF.
 * Wanneer u de gegevens stroom activiteit vanuit een pijp lijn uitvoert, moet u een BLOB of ADLS Gen2 opslag locatie selecteren om uw gegevens tijdens het bulksgewijs laden te zetten.
 
+* Bestands bron van 421Mb-bestand met 74 kolommen naar een Synapse-tabel en één afgeleide kolom transformatie duurt ongeveer 4 minuten end-to-end met behulp van geheugen geoptimaliseerd 80-kern fout opsporing Azure IRs.
+
 ## <a name="optimizing-for-files"></a>Optimaliseren voor bestanden
 
-U kunt bij elke trans formatie instellen welk partitie schema u data factory wilt gebruiken op het tabblad Optimize.
+U kunt bij elke trans formatie instellen welk partitie schema u data factory wilt gebruiken op het tabblad Optimize. Het is een goed idee om eerst op bestanden gebaseerde sinks te testen waarbij de standaard partitionering en optimalisaties behouden blijven.
+
 * Voor kleinere bestanden kan het selecteren van *één partitie* soms beter en sneller werken dan Spark om uw kleine bestanden te partitioneren.
 * Als u niet voldoende informatie over de bron gegevens hebt, kiest u *Round Robin* partitioneren en stelt u het aantal partities in.
 * Als uw gegevens kolommen bevatten die goede hash-sleutels kunnen zijn, kiest u *hash-partitionering*.
+
+* Een bestands bron met een bestands-Sink van een 421Mb-bestand met 74 kolommen en één afgeleide kolom transformatie duurt ongeveer 2 minuten end-to-end met behulp van geheugen geoptimaliseerd 80-kern debug Azure IRs.
 
 Als u fouten opspoort in de voorbeeld weergave van gegevens en de fout opsporing voor de pijp lijn, zijn de limiet-en sampling groottes voor bron gegevens sets op basis van bestanden alleen van toepassing op het aantal geretourneerde rijen, niet het aantal rijen dat wordt gelezen. Dit kan invloed hebben op de prestaties van de uitvoeringen van de fout opsporing en kan ertoe leiden dat de stroom mislukt.
 * Fout opsporing voor clusters is standaard kleine clusters met één knoop punt. het wordt aangeraden om voor beelden van kleine bestanden te gebruiken voor fout opsporing. Ga naar instellingen voor fout opsporing en wijs een kleine subset van uw gegevens aan met behulp van een tijdelijk bestand.

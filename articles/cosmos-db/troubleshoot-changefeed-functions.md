@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441121"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605086"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
@@ -66,7 +66,7 @@ Dit scenario kan meerdere oorzaken hebben en moeten allemaal worden gecontroleer
 
 1. Wordt de Azure-functie geïmplementeerd in dezelfde regio als het Azure Cosmos-account? Voor een optimale netwerklatentie moeten de Azure-functie en het Azure Cosmos-account zich in dezelfde Azure-regio bevinden.
 2. Vinden de wijzigingen in uw Azure Cosmos-container continu of sporadisch plaats?
-In het laatste geval kan er enige vertraging optreden tussen het moment dat de wijzigingen worden opgeslagen en het moment dat de Azure-functie deze ophaalt. Dit komt doordat wanneer tijdens het intern controleren op wijzigingen in de Azure Cosmos-container geen wijzigingen worden aangetroffen die in behandeling zijn om te worden gelezen, de Azure-container gedurende een configureerbare periode (standaard vijf seconden) in de slaapstand geraakt voordat er op nieuwe wijzigingen wordt gecontroleerd (om een hoog RU-verbruik te voorkomen). U kunt deze periode in de slaapstand configureren via de `FeedPollDelay/feedPollDelay`-instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) van de trigger (de waarde bedraagt naar verwachting enkele milliseconden).
+In het laatste geval kan er enige vertraging optreden tussen het moment dat de wijzigingen worden opgeslagen en het moment dat de Azure-functie deze ophaalt. Dit komt doordat wanneer tijdens het intern controleren op wijzigingen in de Azure Cosmos-container geen wijzigingen worden aangetroffen die in behandeling zijn om te worden gelezen, de Azure-container gedurende een configureerbare periode (standaard vijf seconden) in de slaapstand geraakt voordat er op nieuwe wijzigingen wordt gecontroleerd (om een hoog RU-verbruik te voorkomen). U kunt deze periode in de slaapstand configureren via de `FeedPollDelay/feedPollDelay`-instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) van de trigger (de waarde bedraagt naar verwachting enkele milliseconden).
 3. Uw Azure Cosmos-container kan een [beperkt aantal](./request-units.md)zijn.
 4. U kunt het kenmerk `PreferredLocations` in uw trigger gebruiken om een door komma's gescheiden lijst van Azure-regio's op te geven voor het definiëren van een aangepaste voorkeurs volgorde voor verbinding.
 
@@ -93,10 +93,10 @@ Een eenvoudige manier om deze situatie op te lossen is door een `LeaseCollection
 Alle items in een container opnieuw verwerken vanaf het begin:
 1. Stop uw Azure-functie als deze momenteel wordt uitgevoerd. 
 1. De documenten in de lease verzameling verwijderen (of de lease verzameling verwijderen en opnieuw maken, zodat deze leeg is)
-1. Stel het kenmerk [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger in uw functie in op waar. 
+1. Stel het kenmerk [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger in uw functie in op waar. 
 1. Start de Azure-functie opnieuw. Er worden nu alle wijzigingen van het begin gelezen en verwerkt. 
 
-Als u [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) instelt op True, wordt de Azure-functie gestart met het lezen van wijzigingen aan het begin van de geschiedenis van de verzameling in plaats van de huidige tijd. Dit werkt alleen als er geen leases zijn (bijvoorbeeld documenten in de lease-verzameling). Als u deze eigenschap instelt op waar wanneer er al leases zijn gemaakt, heeft dit geen effect. Wanneer een functie wordt gestopt en opnieuw wordt gestart, wordt in dit scenario begonnen met het lezen van het laatste controle punt, zoals gedefinieerd in de verzameling leases. Volg de bovenstaande stappen 1-4 om vanaf het begin opnieuw te verwerken.  
+Als u [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) instelt op True, wordt de Azure-functie gestart met het lezen van wijzigingen aan het begin van de geschiedenis van de verzameling in plaats van de huidige tijd. Dit werkt alleen als er geen leases zijn (bijvoorbeeld documenten in de lease-verzameling). Als u deze eigenschap instelt op waar wanneer er al leases zijn gemaakt, heeft dit geen effect. Wanneer een functie wordt gestopt en opnieuw wordt gestart, wordt in dit scenario begonnen met het lezen van het laatste controle punt, zoals gedefinieerd in de verzameling leases. Volg de bovenstaande stappen 1-4 om vanaf het begin opnieuw te verwerken.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Binding kan alleen worden uitgevoerd met IReadOnlyList\<document > of JArray
 
@@ -106,7 +106,7 @@ U kunt dit probleem omzeilen door de hand matige NuGet verwijzing die is toegevo
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Het polling-interval van Azure function wijzigen voor de detectie van wijzigingen
 
-Zoals eerder is uitgelegd, [duurt het te lang voordat mijn wijzigingen worden ontvangen](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received). in de Azure-functie wordt gedurende een Configureer bare hoeveelheid tijd (standaard 5 seconden) geslapend voordat wordt gecontroleerd op nieuwe wijzigingen (om te voor komen dat het gebruik van hoge ru wordt gebruikt). U kunt deze periode in de slaapstand configureren via de `FeedPollDelay/feedPollDelay`-instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) van de trigger (de waarde bedraagt naar verwachting enkele milliseconden).
+Zoals eerder is uitgelegd, [duurt het te lang voordat mijn wijzigingen worden ontvangen](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received). in de Azure-functie wordt gedurende een Configureer bare hoeveelheid tijd (standaard 5 seconden) geslapend voordat wordt gecontroleerd op nieuwe wijzigingen (om te voor komen dat het gebruik van hoge ru wordt gebruikt). U kunt deze periode in de slaapstand configureren via de `FeedPollDelay/feedPollDelay`-instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) van de trigger (de waarde bedraagt naar verwachting enkele milliseconden).
 
 ## <a name="next-steps"></a>Volgende stappen
 

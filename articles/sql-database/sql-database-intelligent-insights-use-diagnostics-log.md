@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810285"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587348"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Het logboek voor diagnostische gegevens over het Intelligent Insights-Azure SQL Database gebruiken
 
-Deze pagina bevat informatie over het gebruik van het logboek voor Azure SQL Database prestatie diagnose dat is gegenereerd door [intelligent Insights](sql-database-intelligent-insights.md), de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Deze pagina bevat informatie over het gebruik van het logboek voor Azure SQL Database prestatie diagnose dat is gegenereerd door [intelligent Insights](sql-database-intelligent-insights.md), de indeling en de gegevens die het bevat voor uw aangepaste ontwikkelings behoeften. U kunt dit diagnostische logboek verzenden naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 ## <a name="log-header"></a>Logboek header
 
@@ -75,11 +75,11 @@ Met de eigenschap Category (categorie) wordt de categorie van Detecteer bare pre
 
 Afhankelijk van het prestatie probleem dat is gedetecteerd, verschillen de details die worden gegenereerd in het logboek bestand voor diagnostische gegevens dienovereenkomstig.
 
-| Gedetecteerde prestatie patronen | Details die zijn gegenereerd |
+| Detecteerbare prestatiepatronen | Details die zijn gegenereerd |
 | :------------------- | ------------------- |
 | Bron limieten bereiken | <li>Betrokken resources</li><li>Query's uitvoeren op hashes</li><li>Resource verbruiks percentage</li> |
 | Toename van de workload | <li>Aantal query's waarvan de uitvoering is verhoogd</li><li>Een query uitvoeren op hashes van query's met de grootste bijdrage aan de toename van de werk belasting</li> |
-| Geheugen druk | <li>Geheugen-Clerk</li> |
+| Geheugenbelasting | <li>Geheugen-Clerk</li> |
 | Vergren delen | <li>Betroffen query-hashes</li><li>Query-hashes blok keren</li> |
 | Verhoogde MAXDOP | <li>Query's uitvoeren op hashes</li><li>CXP wacht tijden</li><li>Wacht tijden</li> |
 | Pagelatch-conflicten | <li>Query's uitvoeren op hashes van query's die conflicten veroorzaken</li> |

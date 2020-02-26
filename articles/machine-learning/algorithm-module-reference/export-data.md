@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 11f5bd7f01e142273509ae59ddc19a2557464bde
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152309"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598609"
 ---
 # <a name="export-data-module"></a>Gegevens module exporteren
 
 In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om resultaten, tussenliggende gegevens en werk gegevens van uw pijp lijnen op te slaan in de Cloud opslag buiten Azure Machine Learning. 
+Gebruik deze module om resultaten, tussenliggende gegevens en werk gegevens van uw pijp lijnen op te slaan in opslag locaties in de Cloud. 
 
 Deze module biedt ondersteuning voor het exporteren van uw gegevens naar de volgende Cloud gegevens Services:
 
@@ -41,7 +41,13 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
 
 1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Raadpleeg de informatie [in azure Storage-services om toegang te krijgen tot de gegevens](../how-to-access-data.md).
 
-1. Definieer het pad in het gegevens archief waarnaar de gegevens moeten worden geschreven. 
+1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
+
+    Deze optie is standaard niet geselecteerd, wat betekent dat als de module met dezelfde para meters eerder is uitgevoerd, de uitvoer van de laatste uitvoering opnieuw wordt gebruikt om de uitvoerings tijd te verminderen. 
+
+    Als deze is geselecteerd, voert het systeem de module opnieuw uit om de uitvoer opnieuw te genereren.
+
+1. Definieer het pad in het gegevens archief waarin de gegevens zich bevinden. Het pad is een relatief pad. De lege paden of URL-paden zijn niet toegestaan.
 
 
 1. Selecteer bij **bestands indeling**de indeling waarin de gegevens moeten worden opgeslagen.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209539"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598660"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
 Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.
@@ -27,7 +27,7 @@ Voor toegang tot Azure-resources, inclusief Premium Azure-bestands shares, hebt 
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ### <a name="create-a-filestorage-storage-account"></a>Een filestorage-opslag account maken
 
@@ -113,7 +113,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-filestorage-storage-account"></a>Een FileStorage-opslag account maken
 
-Als u een filestorage-opslag account wilt maken vanuit Power shell, gebruikt u de opdracht [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) :
+Als u een FileStorage-opslag account wilt maken vanuit Power shell, gebruikt u de opdracht [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) :
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -211,4 +211,4 @@ az group delete --name myResourceGroup
 In dit artikel hebt u een Premium-bestands share gemaakt. Voor meer informatie over de prestaties van dit account, gaat u naar de sectie prestatie tier van de plannings handleiding.
 
 > [!div class="nextstepaction"]
-> [Prestatie lagen voor bestands shares](storage-files-planning.md#file-share-performance-tiers)
+> [Bestands share lagen](storage-files-planning.md#storage-tiers)

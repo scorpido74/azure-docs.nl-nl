@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697214"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591571"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
@@ -40,9 +40,9 @@ Laten we meteen beginnen met het maken van de identiteit. Als u een probleem ond
 
 U hebt uw Azure AD-toepassing en service-principal gemaakt.
 
-## <a name="assign-the-application-to-a-role"></a>De toepassing aan een rol toewijzen
+## <a name="assign-a-role-to-the-application"></a>Een rol aan de toepassing toewijzen
 
-Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie voor meer informatie over de beschikbare rollen, [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md).
+Als u toegang wilt krijgen tot resources in uw abonnement, moet u een rol aan de toepassing toewijzen. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)voor meer informatie over de beschik bare rollen.
 
 U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen op lagere niveaus van bereik. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
 
@@ -62,7 +62,7 @@ U kunt het bereik instellen op het niveau van het abonnement, de resource groep 
 
    ![Selecteer de rol die u aan de toepassing wilt toewijzen](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Selecteer **opslaan** voltooien van de rol toe te wijzen. U ziet uw toepassing in de lijst met gebruikers die zijn toegewezen aan een rol voor dat bereik.
+1. Selecteer **Opslaan** om de rol toe te wijzen. U ziet uw toepassing in de lijst met gebruikers met een rol voor dat bereik.
 
 De Service-Principal is ingesteld. U kunt deze gebruiken om uw scripts of apps uit te voeren. In de volgende sectie ziet u hoe u waarden kunt ophalen die nodig zijn bij het programmatisch aanmelden.
 
@@ -112,7 +112,7 @@ Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings g
 1. Selecteer **client geheimen-> nieuw client Secret**.
 1. Geef een beschrijving op van het geheim en een duur. Wanneer u klaar bent, selecteert u **toevoegen**.
 
-   Nadat het client geheim is opgeslagen, wordt de waarde van het client geheim weer gegeven. Kopieer deze waarde omdat u de sleutel niet later kunt ophalen. U geeft de sleutel waarde op met de toepassings-ID om u aan te melden als de toepassing. Bewaar de sleutelwaarde op een locatie waar de toepassing deze kan ophalen.
+   Nadat het client geheim is opgeslagen, wordt de waarde van het client geheim weer gegeven. Kopieer deze waarde omdat u de sleutel later niet meer kunt ophalen. U geeft de sleutel waarde op met de toepassings-ID om u aan te melden als de toepassing. Bewaar de sleutelwaarde op een locatie waar de toepassing deze kan ophalen.
 
    ![Kopieer de geheime waarde omdat u deze later niet kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
 
@@ -126,7 +126,7 @@ Houd er rekening mee dat u extra machtigingen moet configureren voor bronnen waa
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
-U moet over voldoende machtigingen beschikken om een toepassing te registreren bij uw Azure AD-Tenant en de toepassing toe te wijzen aan een rol in uw Azure-abonnement.
+U moet over voldoende machtigingen beschikken om een toepassing te registreren bij uw Azure AD-Tenant en de toepassing een rol in uw Azure-abonnement toe te wijzen.
 
 ### <a name="check-azure-ad-permissions"></a>Azure AD-machtigingen controleren
 
@@ -138,11 +138,11 @@ U moet over voldoende machtigingen beschikken om een toepassing te registreren b
 1. Selecteer **gebruikers instellingen**in het linkerdeel venster.
 1. Controleer de instelling **app-registraties** . Deze waarde kan alleen worden ingesteld door een beheerder. Als deze instelling is ingesteld op **Ja**, kan elke gebruiker in de Azure AD-Tenant een app registreren.
 
-Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebruikers met een rol beheerder deze typen toepassingen registreren. Bekijk de [beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) en [rolmachtigingen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) voor meer informatie over beschik bare beheerders rollen en de specifieke machtigingen in azure AD die aan elke rol worden gegeven. Als uw account is toegewezen aan de gebruikersrol, maar de instelling van de app-registratie is beperkt tot gebruikers met beheerders rechten, vraagt u uw beheerder om u toe te wijzen aan een van de beheerders rollen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen om apps registreren.
+Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebruikers met een rol beheerder deze typen toepassingen registreren. Bekijk de [beschik bare rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) en [rolmachtigingen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) voor meer informatie over beschik bare beheerders rollen en de specifieke machtigingen in azure AD die aan elke rol worden gegeven. Als aan uw account de gebruikersrol is toegewezen, maar de instelling van de app-registratie is beperkt tot gebruikers met beheerders rechten, vraagt u de beheerder om een van de beheerders rollen toe te wijzen die alle aspecten van app-registraties kunnen maken en beheren, of om gebruikers in staat te stellen te registreren apps.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-abonnements machtigingen controleren
 
-In uw Azure-abonnement moet uw account beschikken over `Microsoft.Authorization/*/Write` toegang om een AD-app toe te wijzen aan een rol. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account is toegewezen aan de rol **Inzender** , hebt u niet de juiste machtigingen. Er wordt een fout bericht weer gegeven wanneer u een service-principal aan een rol probeert toe te wijzen.
+Uw account moet in uw Azure-abonnement beschikken over `Microsoft.Authorization/*/Write` toegang om een rol toe te wijzen aan een AD-app. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account de rol **Inzender** heeft toegewezen, beschikt u niet over voldoende machtigingen. Er wordt een fout bericht weer gegeven wanneer u probeert om de service-principal een rol toe te wijzen.
 
 Uw abonnements machtigingen controleren:
 
@@ -154,9 +154,9 @@ Uw abonnements machtigingen controleren:
 
    ![Selecteer het abonnement waarvoor u de Service-Principal wilt maken in](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Selecteer **roltoewijzingen** om uw toegewezen rollen weer te geven en te bepalen of u voldoende machtigingen hebt om een AD-app toe te wijzen aan een rol. Als dat niet het geval is, vraagt u uw abonnements beheerder om u toe te voegen aan de rol beheerder van gebruikers toegang. In de volgende afbeelding is de gebruiker toegewezen aan de rol eigenaar, wat betekent dat de gebruiker over de juiste machtigingen beschikt.
+1. Selecteer **roltoewijzingen** om uw toegewezen rollen weer te geven en te bepalen of u voldoende machtigingen hebt om een rol toe te wijzen aan een AD-app. Als dat niet het geval is, vraagt u uw abonnements beheerder om u toe te voegen aan de rol beheerder van gebruikers toegang. In de volgende afbeelding is de gebruiker toegewezen aan de rol eigenaar, wat betekent dat de gebruiker over de juiste machtigingen beschikt.
 
-   ![In dit voor beeld ziet u dat de gebruiker is toegewezen aan de rol eigenaar](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![In dit voor beeld ziet u dat aan de gebruiker de rol eigenaar is toegewezen](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

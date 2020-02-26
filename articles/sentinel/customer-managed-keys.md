@@ -3,7 +3,7 @@ title: Door de klant beheerde sleutels instellen in azure Sentinel | Microsoft D
 description: Meer informatie over het instellen van door de klant beheerde sleutels (CMK) in azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4858e2099baa82226766ecfce32b39471c3b96cd
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.author: yelevin
+ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845316"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587954"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Door de klant beheerde sleutel met Azure-Sentinel instellen
 
@@ -52,7 +52,7 @@ Voer de volgende stappen uit om CMK in te richten: 
 
 5.  Schakel CMK in bij Azure Sentinel.
 
-6.  Azure Sentinel inschakelen
+6.  Activeer Azure Sentinel.
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>STAP 1: een Azure Key Vault maken en een sleutel opslaan
 
@@ -91,7 +91,7 @@ Nadat u goed keuring krijgt, wordt u gevraagd om de volgende informatie op te ge
 -  Key Vault URL: de sleutel-id van de sleutel kopiëren naar de laatste slash:  
     
 
-    ![Sleutel-id](./media/customer-managed-keys/key-identifier.png)
+    ![sleutel-id](./media/customer-managed-keys/key-identifier.png)
 
     Het Azure Sentinel-team schakelt de Azure Sentinel CMK-functie in voor uw beschik bare werk ruimte.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294249"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603747"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -41,7 +41,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### Windows Server-besturings systemen<a name="os-windows"></a>
 
-|Besturingssysteem|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
+|OS|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
@@ -94,7 +94,7 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * PostGreSQL
 * MySQL
 * CosmosDB
-* Opslagaccount
+* Storage-account
 * App Service
 * Functie
 * Cloudservice
@@ -105,12 +105,12 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * Batch-account
 * Service Fabric-account
 * Automation-account
-* Load Balancer
-* Search
+* Load balancer
+* Zoeken
 * Service Bus-naamruimte
 * Stream Analytics
 * Event hub-naamruimte
-* Logische apps
+* Logic apps
 * Redis
 * Data Lake Analytics
 * Data Lake Store
@@ -127,5 +127,3 @@ De beveiliging van Virtual Machines in Azure Stack wordt ook ondersteund. Voor m
 - Meer informatie over [het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center](security-center-planning-and-operations-guide.md).
 - Meer informatie over [functies die beschikbaar zijn voor de verschillende Cloud omgevingen](security-center-services.md).
 - Meer informatie over het [detecteren van bedreigingen voor vm's & servers in azure Security Center](security-center-alerts-iaas.md).
-- Vind [Veelgestelde vragen over het gebruik van Azure Security Center](security-center-faq.md).
-- Vind [blog berichten over de beveiliging en naleving van Azure](https://blogs.msdn.com/b/azuresecurity/).

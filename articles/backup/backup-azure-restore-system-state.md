@@ -4,12 +4,12 @@ description: Stapsgewijze uitleg over het herstellen van de systeem status van W
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172814"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602462"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Systeem status herstellen naar Windows Server
 
@@ -159,7 +159,7 @@ Nadat u de systeem status hebt hersteld als bestanden met behulp van Azure Recov
 Back-up van de systeem status bevat Active Directory gegevens. Gebruik de volgende stappen om Active Directory-domein-service (AD DS) te herstellen van de huidige status naar een eerdere status.
 
 1. Start de domein controller opnieuw op in de modus Active Directory terugzetten (DSRM).
-2. Volg de onderstaande [stappen om](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) Windows Server back-up-cmdlets te gebruiken om AD DS te herstellen.
+2. Volg de onderstaande [stappen om](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) Windows Server back-up-cmdlets te gebruiken om AD DS te herstellen.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Problemen met het herstellen van de systeem status oplossen
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558789"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604286"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
@@ -134,7 +134,7 @@ Op het tabblad **wijzigingen** (zie hieronder) worden alle wijzigingen voor de w
 
    **Werkruimte configuratie** wordt geopend met de weer gave van drie tabbladen: **Windows-REGI ster**, **Windows-bestanden**en Linux- **bestanden**. Elk tabblad bevat de entiteiten die u in die categorie kunt bewerken. Voor elke entiteit die wordt vermeld, geeft Security Center aan of FIM is ingeschakeld (true) of niet is ingeschakeld (false).  Als u de entiteit bewerkt, kunt u FIM in-of uitschakelen.
 
-   ![Werkruimte configuratie][12]
+   ![Configuratie van de werkruimte][12]
 
 2. Selecteer een identiteits beveiliging. In dit voor beeld hebben we een item geselecteerd onder het Windows-REGI ster. **Bewerken voor wijzigingen bijhouden** wordt geopend.
 
@@ -206,7 +206,6 @@ In dit artikel hebt u geleerd hoe u de File Integrity Monitoring (FIM) in Securi
 * [Bewaking van beveiligings status](security-center-monitoring.md)--meer informatie over het controleren van de status van uw Azure-resources.
 * [Beveiligings waarschuwingen beheren en](security-center-managing-and-responding-alerts.md)erop reageren--meer informatie over het beheren van en reageren op beveiligings waarschuwingen.
 * [Partner oplossingen bewaken](security-center-partner-solutions.md) : Leer hoe u de integriteits status van uw partner oplossingen kunt bewaken.
-* [Veelgestelde](security-center-faq.md)vragen over Security Center--vind veelgestelde vraag over het gebruik van de service.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Azure-beveiligingsblog): hier vindt u het laatste nieuws over Azure-beveiliging en andere informatie.
 
 <!--Image references-->

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708254"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598082"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -22,11 +22,11 @@ In dit artikel worden enkele veelvoorkomende problemen met betrekking tot Azure-
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Oorzaak 1: delen die de beperking ondervindt
 
-Het standaard quotum voor een Premium-share is 100 GiB. Dit biedt 100 Baseline IOPS (met een kans om Maxi maal 300 voor een uur te burstiseren). Zie de sectie [ingerichte shares](storage-files-planning.md#provisioned-shares) in de plannings handleiding voor meer informatie over het inrichten en de relatie met IOPS.
+Het standaard quotum voor een Premium-share is 100 GiB. Dit biedt 100 Baseline IOPS (met een kans om Maxi maal 300 voor een uur te burstiseren). Zie de sectie [ingerichte shares](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) in de plannings handleiding voor meer informatie over het inrichten en de relatie met IOPS.
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 
@@ -102,7 +102,7 @@ Dit is een bekend probleem met de implementatie van SMB-client op Linux.
 
 - De belasting over meerdere Vm's spreiden.
 - Gebruik op dezelfde VM meerdere koppel punten met de optie **nosharesock** en verspreid de belasting over deze koppel punten.
-- Probeer in Linux te koppelen met de optie **nostrictsync** om te voor komen dat SMB-leegmaak bewerking wordt afgedwongen bij elke fsync-aanroep. Voor Azure Files is deze optie niet van invloed op de gegevens consistentcy, maar kan de verouderde meta gegevens van het bestand in de mapweergave (**ls-l** opdracht) niet worden veroorzaakt. Het rechtstreeks opvragen van meta gegevens van het**bestand (de** opdracht) retourneert de meest recente meta gegevens van een bestand.
+- Probeer in Linux te koppelen met de optie **nostrictsync** om te voor komen dat SMB-leegmaak bewerking wordt afgedwongen bij elke **fsync** -aanroep. Voor Azure Files is deze optie niet van invloed op de consistentie van gegevens, maar kan de verouderde meta gegevens van een bestand in een map worden weer gegeven (**ls-l** opdracht). Het rechtstreeks opvragen van meta gegevens van het**bestand (de** opdracht) retourneert de meest recente meta gegevens van een bestand.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hoge latenties voor zware werk belastingen voor meta gegevens met uitgebreide open/close-bewerkingen.
 
@@ -194,7 +194,7 @@ Hoger dan de verwachte latentie die toegang heeft tot Azure Files voor intensiev
   > [!NOTE]
   > Als de bestands share een standaard bestands share is, zijn de vervolg keuzelijst dimensie waarden leeg, omdat metrische gegevens per deel niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account. 
 
-8. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregratie granulatie en frequentie) die worden gebruikt om de metrische waarschuwings regel te evalueren en klik op **gereed**.
+8. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregatie granulatie en frequentie) die worden gebruikt om de metrische waarschuwings regel te evalueren en klik op **gereed**.
 
   > [!TIP]
   > Als u een statische drempel waarde gebruikt, kan de metrische grafiek helpen bij het bepalen van een redelijke drempel waarde als de bestands share momenteel wordt beperkt. Als u een dynamische drempel waarde gebruikt, worden in de metrische grafiek de berekende drempel waarden weer gegeven op basis van recente gegevens.

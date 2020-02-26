@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429717"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588855"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Snelstartgids: een NAT-gateway maken met behulp van Azure CLI
 
@@ -33,8 +33,6 @@ In deze Quick start ziet u hoe u de NAT-service van Azure Virtual Network gebrui
 U kunt deze zelf studie volt ooien met behulp van Azure Cloud Shell of de betreffende opdrachten lokaal uitvoeren.  Als u Azure Cloud Shell nog nooit hebt gebruikt, [meldt u zich nu](https://shell.azure.com) aan om door te gaan met de eerste installatie.
 Als u ervoor kiest om deze opdrachten lokaal uit te voeren, moet u CLI installeren.  Voor deze zelf studie moet u een versie van de Azure CLI-versie 2.0.71 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-> [!IMPORTANT]
-> Nadat Virtual Network NAT [Preview is ingeschakeld](./nat-overview.md#enable-preview) voor uw abonnement, gebruikt u https://aka.ms/natportal om toegang te krijgen tot de portal.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 

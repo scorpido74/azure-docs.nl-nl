@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024123"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589404"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
@@ -39,8 +39,12 @@ In dit artikel vindt u een overzicht van IoT Central:
 - Taken bieden geen ondersteuning voor complexe typen.
 - Matrix schema typen worden niet ondersteund.
 - Alleen de C apparaat-SDK en het node. js-apparaat en de service-Sdk's worden ondersteund.
-- Het is alleen beschikbaar op de locaties Verenigde Staten en Europa.
+- Het is alleen beschikbaar op de locaties Verenigde Staten, Europa, Azië en Stille Oceaan en Australië.
 - Voor hulp modellen voor apparaten moeten alle interfaces in hetzelfde bestand zijn gedefinieerd.
+- Ondersteuning voor [IoT Plug en Play](../../iot-pnp/overview-iot-plug-and-play.md) is in de preview-versie en wordt alleen ondersteund in geselecteerde regio's.
+
+    > [!NOTE]
+    > Neem contact op met de technische ondersteuning voor toegang tot het maken van een preview-toepassing met ondersteuning voor IoT Plug en Play-apparaten.
 
 ## <a name="personas"></a>Persona's
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202391"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604261"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Aanbevelingen voor Azure Security Center container begrijpen
 
@@ -42,9 +42,9 @@ Azure Security Center biedt de volgende mogelijkheden om u te helpen bij het bev
 ## <a name="recommendations"></a>Aanbevelingen
 Gebruik de onderstaande tabellen als referentie om inzicht te krijgen in de beschik bare containers die worden gehost op IaaS Linux-machines en de beveiligings evaluatie van hun docker-configuraties.
 
-| Aanbeveling | Description | Herstel |
+| Aanbeveling | Beschrijving | Herstel |
 | --- | --- | --- |
-|Beveiligings problemen in container beveiligings configuraties oplossen |Beveiligings problemen in container beveiligings configuraties oplossen op basis van aanbevolen procedures voor de configuratie.| Beveiligings problemen oplossen in de container beveiligings configuraties:<br>1. Bekijk de lijst met mislukte regels.<br>2. Corrigeer elke regel volgens de opgegeven instructies.|
+|Beveiligings problemen in container beveiligings configuraties oplossen |Beveiligings problemen in container beveiligings configuraties oplossen op basis van aanbevolen procedures voor de configuratie.| Beveiligings problemen oplossen in de container beveiligings configuraties:<br>1. Controleer de lijst met mislukte regels.<br>2. Corrigeer elke regel volgens de opgegeven instructies.|
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -52,12 +52,10 @@ Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekki
 
 * [Identiteit en toegang bewaken in Azure Security Center](security-center-identity-access.md)
 * [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
-* [Beveiligen van uw Azure SQL-service in Azure Security Center](security-center-sql-service-recommendations.md)
+* [Uw Azure SQL-service beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)
 
 Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 * [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
-* [Azure Security Center FAQ](security-center-faq.md) (Veelgestelde vragen over Azure Security Center): raadpleeg veelgestelde vragen over het gebruik van de service.
-

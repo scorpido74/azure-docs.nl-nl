@@ -3,12 +3,12 @@ title: Diagnostische instellingen gebruiken voor Recovery Services kluizen
 description: Een artikel waarin wordt beschreven hoe u de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup gebruikt
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281101"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583942"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen gebruik voor Recovery Services-kluizen
 
@@ -21,14 +21,15 @@ U kunt Diagnostische instellingen voor een Recovery Services kluis configureren 
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Diagnostische gebeurtenissen die beschikbaar zijn voor gebruikers van Azure Backup
 
 Azure Backup levert de volgende diagnostische gebeurtenissen, die elk gedetailleerde gegevens over een specifieke set back-upartefacten bieden:
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Gegevens model voor diagnostische gebeurtenissen van Azure Backup](https://aka.ms/diagnosticsdatamodel)
+[Gegevens model voor diagnostische gebeurtenissen van Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 Gegevens voor deze gebeurtenissen kunnen worden verzonden naar een opslag account, een LA-werk ruimte of een event hub. Als u deze gegevens naar een LA-werk ruimte verzendt, moet u de **resource-specifieke** wissel knop in het scherm **Diagnostische instellingen** selecteren (Zie meer informatie in de onderstaande secties).
 
@@ -37,6 +38,7 @@ Gegevens voor deze gebeurtenissen kunnen worden verzonden naar een opslag accoun
 Als u het schema van Azure Log Analytics wilt uitlijnen, kunt u met Azure Backup nu diagnostische gegevens van de kluis verzenden naar toegewezen LA-tabellen voor back-up. Deze worden aangeduid als [resource-specifieke tabellen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific).
 
 De diagnostische gegevens van uw kluis naar LA verzenden:
+
 1.  Navigeer naar uw kluis en klik op **Diagnostische instellingen**. Klik op **Diagnostische instelling toevoegen**.
 2.  Geef een naam op voor de diagnostische instelling.
 3.  Schakel het selectie vakje **verzenden naar log Analytics** in en selecteer een log Analytics werk ruimte.
@@ -84,4 +86,4 @@ De onderstaande afbeelding toont een voor beeld van een gebruiker die drie Diagn
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over het Log Analytics gegevens model voor de diagnostische gebeurtenissen](https://aka.ms/diagnosticsdatamodel)
+[Meer informatie over het Log Analytics gegevens model voor de diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

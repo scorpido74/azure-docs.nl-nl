@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920757"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589297"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
@@ -35,7 +35,7 @@ Daarnaast hebben aanvallers hun methoden ontwikkeld om veel op hand tekeningen g
 
 ## <a name="what-are-security-alerts"></a>Wat zijn beveiligingswaarschuwingen?
 
-Waarschuwingen zijn de meldingen die Security Center genereert wanneer het bedreigingen op uw resources detecteert. Security Center prioriteiten en de waarschuwingen weer gegeven, samen met de informatie die u nodig hebt om snel het probleem te onderzoeken. Security Center geeft ook aanbevelingen voor hoe u een aanval kunt oplossen.
+Waarschuwingen zijn de meldingen die Security Center gegenereerd wanneer er bedreigingen voor uw resources worden gedetecteerd. Security Center prioriteiten en de waarschuwingen weer gegeven, samen met de informatie die u nodig hebt om snel het probleem te onderzoeken. Security Center biedt ook aanbevelingen voor het oplossen van een aanval.
 
 ## Hoe detecteert Security Center bedreigingen? <a name="detect-threats"> </a>
 
@@ -63,7 +63,7 @@ Gedragsanalyse is een techniek waarbij gegevens worden geanalyseerd en vergeleke
 
 Daarnaast is er een correlatie met andere signalen om te controleren op ondersteunende bewijs van een verbreide campagne. Aan de hand van dit verband kan beter worden vastgesteld welke gebeurtenissen samenhangen met de opgestelde indicatoren van inbreuk. 
 
-### <a name="anomaly-detection"></a>Anomaliedetectie
+### <a name="anomaly-detection"></a>Afwijkingsdetectie
 
 Azure Security Center maakt ook gebruik van afwijkingsdetectie om bedreigingen te identificeren. In tegenstelling tot gedragsanalyses (die afhankelijk zijn van bekende patronen die zijn afgeleid van grote gegevenssets) is afwijkingsdetectie meer "gepersonaliseerd" en richt het zich op basislijnen die specifiek voor uw implementaties zijn. Machine learning wordt toegepast om de normale activiteit voor uw implementaties te bepalen en vervolgens worden regels gegenereerd om afwijkende omstandigheden te definiëren die een veiligheidsrisico zouden kunnen vormen.
 
@@ -72,15 +72,15 @@ Azure Security Center maakt ook gebruik van afwijkingsdetectie om bedreigingen t
 Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde kunt bepalen van elke waarschuwing, zodat u meteen aan de voor waarde wordt gevraagd wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
 
 > [!NOTE]
-> Ernst van waarschuwing wordt anders weer gegeven in de portal en de REST API, de verschillen worden vermeld in de onderstaande lijst.
+> Ernst van waarschuwing wordt anders weer gegeven in de portal en de versies van de REST API die vóór datum 01-01-2019. Als u een oudere versie van de API gebruikt, moet u een upgrade uitvoeren voor de consistente ervaring die hieronder wordt beschreven.
 
-* **Hoog:** Er is een hoge waarschijnlijkheid dat uw resource is aangetast. U ziet het meteen. Security Center heeft hoge betrouw baarheid in zowel de schadelijke intentie als de bevindingen die worden gebruikt voor het uitgeven van de waarschuwing. Een waarschuwing waarmee de uitvoering van een bekend schadelijk hulp programma, zoals Mimikatz, wordt gedetecteerd, is een algemeen hulp programma dat wordt gebruikt voor referentie diefstal.
-* **Gemiddeld (laag in de rest API)** : dit is waarschijnlijk een verdachte activiteit kan erop wijzen dat een bron is aangetast.
+- **Hoog:** Er is een hoge waarschijnlijkheid dat uw resource is aangetast. U ziet het meteen. Security Center heeft hoge betrouw baarheid in zowel de schadelijke intentie als de bevindingen die worden gebruikt voor het uitgeven van de waarschuwing. Een waarschuwing waarmee de uitvoering van een bekend schadelijk hulp programma, zoals Mimikatz, wordt gedetecteerd, is een algemeen hulp programma dat wordt gebruikt voor referentie diefstal.
+- **Gemiddeld:** Dit is waarschijnlijk een verdachte activiteit kan erop wijzen dat een bron is aangetast.
 Het vertrouwen van Security Center in het analyse programma of het zoeken is gemiddeld en het vertrouwen van de schadelijke intentie is gemiddeld voor hoog. Deze worden doorgaans machine learning en detecties op basis van anomalieën. Bijvoorbeeld een aanmeldings poging vanaf een afwijkende locatie.
-* **Laag (informatie in de rest API)** : dit kan een goed aardige positieve of een geblokkeerde aanval zijn.
+- **Laag:** Dit kan een goed aardige positieve of een geblokkeerde aanval zijn.
    * Security Center niet zeker weet dat de intentie schadelijk is en de activiteit mogelijk onschuld is. Logboek wissen is bijvoorbeeld een actie die zich kan voordoen wanneer een aanvaller hun tracks probeert te verbergen, maar in veel gevallen is een routine bewerking door beheerders uitgevoerd.
    * Security Center vertelt u doorgaans niet wanneer er aanvallen zijn geblokkeerd, tenzij dit een interessant geval is. 
-* **Informatie (Silent in de rest API)** : u ziet alleen informatieve waarschuwingen wanneer u inzoomt op een beveiligings incident of als u de rest API met een specifieke waarschuwings-id gebruikt. Een incident bestaat doorgaans uit een aantal waarschuwingen, wat soms alleen ter informatie kan worden weer gegeven, maar in de context van de andere waarschuwingen kan het een betrouw bare zijn. 
+- **Ter informatie:** Er worden alleen informatieve waarschuwingen weer geven wanneer u inzoomt op een beveiligings incident of als u de REST API met een specifieke waarschuwings-ID gebruikt. Een incident bestaat doorgaans uit een aantal waarschuwingen, wat soms alleen ter informatie kan worden weer gegeven, maar in de context van de andere waarschuwingen kan het een betrouw bare zijn. 
  
 
 ## <a name="continuous-monitoring-and-assessments"></a>Doorlopende bewaking en evaluaties
@@ -119,7 +119,7 @@ Beveiligings waarschuwingen en incidenten worden niet alleen beschikbaar in de A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over de verschillende soorten waarschuwingen die beschikbaar zijn in Security Center. Zie voor meer informatie:
+In dit artikel hebt u geleerd over de verschillende soorten waarschuwingen die beschikbaar zijn in Security Center. Ga voor meer informatie naar:
 
 * [Plannings- en bedieningsgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 * [Veelgestelde vragen over Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)

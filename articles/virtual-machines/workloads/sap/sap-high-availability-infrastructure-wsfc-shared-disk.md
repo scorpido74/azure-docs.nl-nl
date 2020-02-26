@@ -1,10 +1,10 @@
 ---
-title: De Azure-infra structuur voorbereiden voor SAP HA met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS | Microsoft Docs
+title: Azure-infra structuur voor SAP ASCS/SCS met WSFC &-gedeelde schijf | Microsoft Docs
 description: Meer informatie over het voorbereiden van de Azure-infra structuur voor SAP HA met behulp van een Windows-failovercluster en gedeelde schijf voor een SAP ASCS/SCS-exemplaar.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647642"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591928"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS
 
@@ -223,7 +223,7 @@ _**Afbeelding 1:** SAP-Azure Resource Manager-para meters met hoge Beschik baarh
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Implementeer virtuele machines met de connectiviteit van een bedrijfs netwerk (cross-premises) voor gebruik in productie
-Voor productie-SAP-systemen implementeert u virtuele Azure-machines met een [bedrijfs netwerk verbinding (cross-premises)][planning-guide-2.2] met behulp van Azure VPN gateway of Azure ExpressRoute.
+Voor productie-SAP-systemen implementeert u virtuele Azure-machines met de connectiviteit van het bedrijfs netwerk met behulp van Azure VPN Gateway of Azure ExpressRoute.
 
 > [!NOTE]
 > U kunt uw Azure Virtual Network-exemplaar gebruiken. Het virtuele netwerk en het subnet zijn al gemaakt en voor bereid.
@@ -373,7 +373,7 @@ Voer de volgende stappen uit om de vereiste DNS-IP-adressen in te stellen:
 
 1. Controleer in de Azure Portal in het deel venster **DNS-servers** of de optie **DNS-servers** voor het virtuele netwerk is ingesteld op **aangepaste DNS**.
 2. Selecteer uw instellingen op basis van het type netwerk dat u hebt. Zie de volgende bronnen voor meer informatie:
-   * [Bedrijfs netwerk connectiviteit (cross-premises)][planning-guide-2.2]: Voeg de IP-adressen van de on-PREMISES DNS-servers toe.  
+   * Voeg de IP-adressen van de on-premises DNS-servers toe.  
    U kunt on-premises DNS-servers uitbreiden naar de virtuele machines die worden uitgevoerd in Azure. In dat scenario kunt u de IP-adressen toevoegen van de virtuele machines van Azure waarop u de DNS-service uitvoert.
    * Voor VM-implementaties die zijn geïsoleerd in Azure: Implementeer een extra virtuele machine in hetzelfde Virtual Network exemplaar dat fungeert als een DNS-server. Voeg de IP-adressen toe van de virtuele Azure-machines die u hebt ingesteld om de DNS-service uit te voeren.
 
@@ -525,7 +525,7 @@ Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u d
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
    * Name
-   * Port
+   * Poort
    * Poort van back-end
 
    Als u bijvoorbeeld het standaard ASCS-instantie nummer wilt wijzigen van 00 in 31, moet u de wijzigingen aanbrengen voor alle poorten die worden vermeld in tabel 1.

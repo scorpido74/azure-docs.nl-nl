@@ -3,22 +3,21 @@ title: Aanbevolen procedures Developer - Pod-beveiliging in Azure Kubernetes Ser
 description: Informatie over de ontwikkelaar van aanbevolen procedures voor het beveiligen van pods in Azure Kubernetes Service (AKS)
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 17f281aeb2ef3f1f32f3e13fe66fe8b74b1d9116
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547673"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595838"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Best practices voor beveiliging van de schil in Azure Kubernetes Service (AKS)
 
 Als u toepassingen ontwikkelen en in Azure Kubernetes Service (AKS uitvoeren), is de beveiliging van uw schillen belangrijkste overweging. Uw toepassingen moeten worden ontworpen voor het principe van het minst vereiste aantal bevoegdheden. Uw persoonlijke gegevens veilig te houden is topprioriteit hebben voor klanten. U wilt niet dat referenties zoals database verbindings reeksen, sleutels of geheimen en certificaten die worden blootgesteld aan de buiten wereld waar een aanvaller kan profiteren van deze geheimen voor schadelijke doel einden. Geen toe te voegen aan uw code of insluit in uw containerinstallatiekopieën. Deze methode wilt maken van een risico voor blootstelling en beperken de mogelijkheid om te roteren deze referenties als de containerinstallatiekopieën moet opnieuw worden opgebouwd.
 
-Dit artikel Best practices is gericht op het beveiligen van AKS. Procedures voor:
+Dit artikel Best practices is gericht op het beveiligen van AKS. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Beveiligingscontext pod gebruiken om te beperken van toegang tot processen en services of uitbreiding van bevoegdheden
@@ -29,22 +28,22 @@ U kunt ook de aanbevolen procedures voor [cluster beveiliging][best-practices-cl
 
 ## <a name="secure-pod-access-to-resources"></a>Beveiligde pod toegang tot resources
 
-**Aanbevolen procedurerichtlijn** : als u wilt uitvoeren als een andere gebruiker of groep en de limiet voor toegang tot het onderliggende knooppunt processen en services, het definiëren van de schil context beveiligingsinstellingen. Toewijzen van de minste aantal bevoegdheden die zijn vereist.
+**Richt lijnen voor best practices** : als u wilt uitvoeren als een andere gebruiker of groep en de toegang tot de onderliggende knooppunt processen en-services wilt beperken, definieert u pod security context Settings. Toewijzen van de minste aantal bevoegdheden die zijn vereist.
 
-Voor uw toepassingen goed te laten werken, schillen mag worden uitgevoerd als een opgegeven gebruiker of groep en niet als *hoofdmap*. De `securityContext` voor een pod of container kunt u definiëren van instellingen zoals *uitvoerenals* of *fsGroup* aan wordt ervan uitgegaan dat de juiste machtigingen. Alleen de gebruiker of groepsmachtigingen toewijzen, en de beveiligingscontext niet gebruiken als een manier om u te wordt ervan uitgegaan dat aanvullende machtigingen. De instellingen voor *runAsUser*, bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
+Als u wilt dat uw toepassingen correct worden uitgevoerd, moet het Peul worden uitgevoerd als een gedefinieerde gebruiker of groep en niet als *basis*. Met de `securityContext` voor een pod of-container kunt u instellingen zoals *runAsUser* of *fsGroup* definiëren om de juiste machtigingen aan te nemen. Alleen de gebruiker of groepsmachtigingen toewijzen, en de beveiligingscontext niet gebruiken als een manier om u te wordt ervan uitgegaan dat aanvullende machtigingen. De instellingen voor *runAsUser*, bevoegdheids escalatie en andere Linux-capaciteiten zijn alleen beschikbaar op Linux-knoop punten en peulen.
 
 Wanneer u als een niet-hoofdgebruiker uitvoert, containers kunnen geen binding met de bevoorrechte poorten onder 1024. In dit scenario kan vervalsen van het feit dat een app wordt uitgevoerd op een bepaalde poort Kubernetes-Services worden gebruikt.
 
 Een beveiligingscontext schil kunt ook aanvullende mogelijkheden of machtigingen voor toegang tot processen en services definiëren. De volgende definities voor algemene beveiliging context kunnen worden ingesteld:
 
-* **allowPrivilegeEscalation** Hiermee definieert u of de schil kunt ervan uitgaan dat *hoofdmap* bevoegdheden. Ontwerp van uw toepassingen, zodat deze instelling is altijd ingesteld op *false*.
-* **Linux-mogelijkheden** kunt u de schil toegang tot de onderliggende processen van het knooppunt. Wees voorzichtig met het toewijzen van deze mogelijkheden. Toewijzen van de minste aantal bevoegdheden die nodig zijn. Zie [Linux-mogelijkheden][linux-capabilities]voor meer informatie.
-* **SELinux labels** is een Linux-kernel security-module waarmee u toegangsbeleid voor toegang tot services, processen en bestandssysteem definiëren. Opnieuw toewijzen van de minste aantal bevoegdheden die nodig zijn. Zie [selinux-opties in Kubernetes][selinux-labels] voor meer informatie.
+* **allowPrivilegeEscalation** definieert of de pod de *root* -bevoegdheden kan aannemen. Ontwerp uw toepassingen zodat deze instelling altijd is ingesteld op *Onwaar*.
+* Met de **Linux-mogelijkheden** kan pod toegang krijgen tot onderliggende knooppunt processen. Wees voorzichtig met het toewijzen van deze mogelijkheden. Toewijzen van de minste aantal bevoegdheden die nodig zijn. Zie [Linux-mogelijkheden][linux-capabilities]voor meer informatie.
+* **Selinux labels** is een Linux-kernel-beveiligings module waarmee u toegangs beleid kunt definiëren voor services, processen en toegang tot het bestands systeem. Opnieuw toewijzen van de minste aantal bevoegdheden die nodig zijn. Zie [selinux-opties in Kubernetes][selinux-labels] voor meer informatie.
 
 Het volgende voorbeeld pod YAML-manifest stelt beveiliging context instellingen op te geven:
 
-* Er wordt een Pod uitgevoerd als gebruikers-ID *1000* en een deel van de groeps-ID *2000*
-* Kan geen bevoegdheden voor het gebruik van escaleren `root`
+* Pod wordt uitgevoerd als gebruikers-ID *1000* en deel van groeps-id *2000*
+* Kan geen bevoegdheden voor het gebruik van `root` escaleren
 * Linux-mogelijkheden voor toegang tot netwerkinterfaces en klok van de realtime (hardware) van de host kunt
 
 ```yaml
@@ -68,7 +67,7 @@ Met uw cluster operator om te bepalen welke beveiliging context-instellingen die
 
 ## <a name="limit-credential-exposure"></a>Referentieblootstelling limiet
 
-**Aanbevolen procedurerichtlijn** -referenties niet definiëren in de code van uw toepassing. Gebruik beheerde identiteiten voor Azure-resources om te laten uw schil aanvraag voor toegang tot andere resources. Een digitale kluis, zoals Azure Key Vault, moet ook worden gebruikt voor het opslaan en ophalen van digitale sleutels en referenties. Beheerde identiteiten van pod zijn alleen bedoeld voor gebruik met Linux-en container installatie kopieën.
+**Richt lijnen voor best practices** : Geef geen referenties in de toepassings code op. Gebruik beheerde identiteiten voor Azure-resources om te laten uw schil aanvraag voor toegang tot andere resources. Een digitale kluis, zoals Azure Key Vault, moet ook worden gebruikt voor het opslaan en ophalen van digitale sleutels en referenties. Beheerde identiteiten van pod zijn alleen bedoeld voor gebruik met Linux-en container installatie kopieën.
 
 Als u wilt beperken het risico van referenties die worden weergegeven in de code van uw toepassing, te voorkomen dat het gebruik van vaste of gedeelde referenties. Referenties of sleutels mag niet rechtstreeks in uw code worden opgenomen. Als deze referenties worden weergegeven, wordt de toepassing moet worden bijgewerkt en opnieuw geïmplementeerd. Er is een betere benadering schillen geven hun eigen identiteit en de manier om te verifiëren zelf of referenties automatisch worden opgehaald uit een digitale-kluis.
 

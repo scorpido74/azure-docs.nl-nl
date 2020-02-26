@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526855"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605009"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -74,7 +74,7 @@ Het beheerde exemplaar heeft twee service lagen: [Algemeen](sql-database-service
 | Maximum aantal database bestanden per exemplaar | Maxi maal 280, tenzij de limiet voor de opslag ruimte van het exemplaar of het bereik voor de [toewijzing van Azure Premium-schijf opslag](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) is bereikt. | 32.767 bestanden per data base, tenzij de maximale opslag grootte van het exemplaar is bereikt. |
 | Maximale grootte van het gegevens bestand | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 2 TB-8 TB) en de [opslag ruimte voor Azure Premium-schijven](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Beperkt tot de momenteel beschik bare opslag grootte van het exemplaar (Maxi maal 1 TB-4 TB). |
 | Maximale grootte van logboek bestand | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. | Beperkt tot 2 TB en momenteel beschik bare exemplaar opslag grootte. |
-| Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
+| Gegevens/logboek IOPS (benadering) | Maxi maal 30-40 K IOPS per exemplaar *, 500-7500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (2500 IOPS/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
 | Doorvoer limiet voor schrijf bewerkingen in logboek (per instantie) | 3 MB/s per vCore<br/>Maxi maal 22 MB/s | 4 MB/s per vCore<br/>Max 48 MB/s |
 | Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[de bestands grootte verg Roten om betere IO-prestaties te krijgen](#file-io-characteristics-in-general-purpose-tier) | Niet beperkt. |
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
@@ -107,7 +107,7 @@ Er zijn ook limieten op exemplaar niveau, zoals de maximale schrijf doorvoer van
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
-Beheerde exemplaren kunnen alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](#obtaining-a-larger-quota-for-sql-managed-instance).
+Beheerde exemplaren kunnen alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Ondersteunde abonnementstypen
 
@@ -122,13 +122,13 @@ Managed instance biedt momenteel alleen ondersteuning voor de implementatie van 
 
 ## <a name="regional-resource-limitations"></a>Regionale resource beperkingen
 
-Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. Het beheerde exemplaar heeft twee standaard limieten per Azure-regio (die op aanvraag kunnen worden verhoogd door een speciale [ondersteunings aanvraag te maken in het Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance)), afhankelijk van een type abonnements type:
+Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. Het beheerde exemplaar heeft twee standaard limieten per Azure-regio (die op aanvraag kunnen worden verhoogd door een speciale [ondersteunings aanvraag te maken in het Azure Portal](quota-increase-request.md) afhankelijk van een type abonnements type:
 
 - **Subnet limiet**: het maximum aantal subnetten waarop beheerde exemplaren in één regio worden geïmplementeerd.
 - **limiet vCore**: het maximum aantal vCore-eenheden dat kan worden geïmplementeerd in alle instanties in één regio. Eén GP-vCore maakt gebruik van één vCore-eenheid en één BC vCore neemt vier vCore eenheden in beslag. Het totale aantal exemplaren is niet beperkt zolang het zich binnen de limiet van de vCore-eenheid bevindt.
 
 > [!Note]
-> Deze limieten zijn standaard instellingen en niet van technische beperkingen. De limieten kunnen op aanvraag worden verhoogd door een speciale [ondersteunings aanvraag te maken in de Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) als u meer beheerde instanties in de huidige regio nodig hebt. Als alternatief kunt u nieuwe beheerde instanties maken in een andere Azure-regio zonder ondersteunings aanvragen te verzenden.
+> Deze limieten zijn standaard instellingen en niet van technische beperkingen. De limieten kunnen op aanvraag worden verhoogd door een speciale [ondersteunings aanvraag te maken in de Azure Portal](quota-increase-request.md) als u meer beheerde instanties in de huidige regio nodig hebt. Als alternatief kunt u nieuwe beheerde instanties maken in een andere Azure-regio zonder ondersteunings aanvragen te verzenden.
 
 De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde abonnements typen (standaard limieten kunnen worden uitgebreid met ondersteunings aanvraag die hieronder wordt beschreven):
 
@@ -146,39 +146,9 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 
 \*\* grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Een groter quotum verkrijgen voor het beheerde exemplaar van SQL
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Een quotum verhoging aanvragen voor een SQL-beheerd exemplaar
 
-Als u meer beheerde exemplaren in uw huidige regio's nodig hebt, verzendt u een ondersteunings aanvraag om het quotum uit te breiden met behulp van de Azure Portal.
-Het proces voor het verkrijgen van een groter quotum initiëren:
-
-1. Open **Help en ondersteuning**en klik op **nieuwe ondersteunings aanvraag**.
-
-   ![Help en ondersteuning](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Op het tabblad basis beginselen van de nieuwe ondersteunings aanvraag:
-   - Selecteer voor **probleem type** **service-en abonnements limieten (quota's)** .
-   - Bij **Abonnement** selecteert u uw abonnement.
-   - Selecteer **SQL database beheerde instantie**bij **quotum type**.
-   - Voor het **ondersteunings plan**selecteert u uw ondersteunings plan.
-
-     ![Quotum voor het probleem type](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. Klik op **Volgende**.
-4. Op het **tabblad probleem** voor de nieuwe ondersteunings aanvraag:
-   - Voor **Ernst**selecteert u het Ernst niveau van het probleem.
-   - Geef aanvullende informatie over uw probleem, inclusief fout berichten, voor **Details**.
-   - Als u **bestanden wilt uploaden**, voegt u een bestand toe met meer informatie (Maxi maal 4 MB).
-
-     ![Details van probleem](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > Een geldige aanvraag moet het volgende omvatten:
-     > - De regio waarin de abonnements limiet moet worden verhoogd.
-     > - Het vereiste aantal vCores, per servicelaag in bestaande subnetten nadat het quotum is verhoogd (als een van de bestaande subnetten moet worden uitgebreid.
-     > - Het vereiste aantal nieuwe subnetten en het totale aantal vCores per servicelaag in de nieuwe subnetten (als u beheerde exemplaren in nieuwe subnetten moet implementeren).
-
-5. Klik op **Volgende**.
-6. Voer op het tabblad contact gegevens voor de nieuwe ondersteunings aanvraag de voor Keurs methode voor contact personen (e-mail adres of telefoon nummer) en de contact gegevens in.
-7. Klik op **Create**.
+Als u meer beheerde exemplaren in uw huidige regio's nodig hebt, verzendt u een ondersteunings aanvraag om het quotum uit te breiden met behulp van de Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](quota-increase-request.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

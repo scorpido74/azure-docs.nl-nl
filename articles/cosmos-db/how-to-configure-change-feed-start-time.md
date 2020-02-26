@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8a5507d11c9545e4053dde832b7305f9bf35e39e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093647"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586271"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>De start tijd voor de wijzigings invoer van de processor configureren
 
@@ -19,21 +19,21 @@ In dit artikel wordt beschreven hoe u de [processor voor wijzigings invoer](./ch
 
 ## <a name="default-behavior"></a>Standaardgedrag
 
-Wanneer een wijzigings verwerkings processor de eerste keer wordt gestart, wordt de container leases geïnitialiseerd en wordt de verwerkings [levenscyclus](./change-feed-processor.md#processing-life-cycle)gestart. Wijzigingen die in de container zijn aangebracht voordat de wijzigings verwerkings processor voor de eerste keer werd geïnitialiseerd, worden niet gedetecteerd.
+Wanneer een wijzigings verwerkings processor de eerste keer wordt gestart, wordt de container leases geïnitialiseerd en wordt de [verwerkings levenscyclus](./change-feed-processor.md#processing-life-cycle)gestart. Wijzigingen die in de container zijn aangebracht voordat de wijzigings verwerkings processor voor de eerste keer werd geïnitialiseerd, worden niet gedetecteerd.
 
 ## <a name="reading-from-a-previous-date-and-time"></a>Lezen van een vorige datum en tijd
 
-Het is mogelijk om de Change feed-processor te initialiseren om wijzigingen te lezen die beginnen op een **specifieke datum en tijd**, door een `DateTime` exemplaar van `WithStartTime` een te geven aan de uitbrei ding van de opbouw functie:
+Het is mogelijk om de Change feed-processor te initialiseren om wijzigingen te lezen die beginnen op een **specifieke datum en tijd**, door een exemplaar van een `DateTime` door te geven aan de uitbrei ding `WithStartTime` Builder:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="TimeInitialization":::
 
 De Change feed-processor wordt geïnitialiseerd voor die specifieke datum en tijd en begint met het lezen van de wijzigingen die zijn opgetreden.
 
 ## <a name="reading-from-the-beginning"></a>Lezen vanaf het begin
 
-In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container**. Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, maar door geven `DateTime.MinValue.ToUniversalTime()`, waardoor de UTC-weer gave `DateTime` van de minimum waarde zou worden gegenereerd, zoals:
+In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container**. Hiervoor kunnen we `WithStartTime` gebruiken op de uitbrei ding van de opbouw functie, maar `DateTime.MinValue.ToUniversalTime()`door geven, waardoor de UTC-weer gave van de minimum `DateTime` waarde wordt gegenereerd, bijvoorbeeld:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartFromBeginningInitialization":::
 
 De Change feed-processor wordt geïnitialiseerd en begint met het lezen van wijzigingen aan het begin van de levens duur van de container.
 

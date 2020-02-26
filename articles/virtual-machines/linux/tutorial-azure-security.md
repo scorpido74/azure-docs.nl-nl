@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034608"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605517"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
 
 Met Azure Security Center kunt u meer inzicht krijgen in de beveiliging van uw Azure-resources. Security Center biedt geïntegreerde beveiligingsbewaking. De service kan bedreigingen detecteren die anders misschien onopgemerkt blijven. In deze zelfstudie krijgt u meer informatie over Azure Security Center en leert u het volgende te doen:
  
 > [!div class="checklist"]
-> * Gegevensverzameling kunt instellen
+> * Gegevensverzameling instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen controleren
+> * Gedetecteerde bedreigingen kunt controleren
 
 ## <a name="security-center-overview"></a>Security Center-overzicht
 
@@ -44,7 +44,7 @@ Security Center biedt niet alleen gegevensdetectie maar ook aanbevelingen voor g
 
 ![Aanbevelingen](./media/tutorial-azure-security/recommendations.png)
 
-## <a name="set-up-data-collection"></a>Gegevensverzameling kunt instellen
+## <a name="set-up-data-collection"></a>Gegevensverzameling instellen
 
 Voordat u VM-beveiligingsconfiguraties kunt inzien, moet u eerst gegevensverzameling instellen in Security Center. Dit omvat het inschakelen van gegevensverzameling, waardoor de Microsoft Monitoring Agent automatisch wordt geïnstalleerd voor alle VM's in uw abonnement.
 
@@ -126,13 +126,13 @@ Selecteer een waarschuwing om informatie weer te geven. U kunt bijvoorbeeld een 
 In deze zelfstudie hebt u Azure Security Center ingesteld en vervolgens VM's in Security Center gecontroleerd. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Gegevensverzameling kunt instellen
+> * Gegevensverzameling instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen controleren
+> * Gedetecteerde bedreigingen kunt controleren
 
 Ga naar de volgende zelfstudie voor meer informatie over het maken van een CI/CD-pijplijn met Jenkins, GitHub en Docker.
 
 > [!div class="nextstepaction"]
-> [Een CI/CD-infrastructuur maken met Jenkins, GitHub en Docker](tutorial-jenkins-github-docker-cicd.md)
+> [Een CI/CD-infrastructuur maken met Jenkins, GitHub en Docker](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
 

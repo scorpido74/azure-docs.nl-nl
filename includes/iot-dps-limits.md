@@ -4,16 +4,16 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a306a05899a644f2ee8ea738789b84ee98221531
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392268"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592413"
 ---
 De volgende tabel bevat de limieten die van toepassing zijn op Azure IoT Hub Device Provisioning Service-resources.
 
-| Bron | Limiet |
+| Resource | Limiet |
 | --- | --- |
 | Maximum aantal services voor het inrichten van apparaten per Azure-abonnement | 10 |
 | Maximum aantal inschrijvingen | 1\.000.000 |
@@ -26,10 +26,13 @@ De volgende tabel bevat de limieten die van toepassing zijn op Azure IoT Hub Dev
 > [!NOTE]
 > Neem contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/)als u het aantal inschrijvingen en registraties voor uw inrichtings service wilt verhogen.
 
+> [!NOTE]
+> Het verhogen van het maximum aantal Ca's wordt niet ondersteund.
+
 De Device Provisioning Service beperkt aanvragen wanneer de volgende quota worden overschreden.
 
 | Vertragen | Waarde per eenheid |
 | --- | --- |
-| Operations | 200/min/service |
+| Bewerkingen | 200/min/service |
 | Apparaatregistraties | 200/min/service |
 | Polling bewerking voor apparaten | 5/10 sec/apparaat |

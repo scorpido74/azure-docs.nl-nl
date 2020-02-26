@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313787"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598830"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
 
@@ -36,19 +36,19 @@ Zie [Microsoft Graph Security API overview](https://aka.ms/graphsecuritydocs)(En
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Als u de Microsoft Graph Security-connector wilt gebruiken, moet u de Azure Active Directory (AD) *expliciet tenantbeheerderstoestemming hebben gegeven*, als onderdeel van de [Microsoft Graph Security-verificatievereisten](https://aka.ms/graphsecurityauth). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
+* Als u de Microsoft Graph beveiligings connector wilt gebruiken, moet u Azure Active Directory (AD) toestemming van de Tenant beheerder *expliciet hebben opgegeven* , die deel uitmaakt van de [Microsoft Graph beveiligings verificatie vereisten](https://aka.ms/graphsecurityauth). Deze toestemming vereist de toepassings-ID en naam van de Microsoft Graph Security connector, die u ook in de [Azure Portal](https://portal.azure.com)kunt vinden:
 
   | Eigenschap | Waarde |
   |----------|-------|
-  | **Toepassingsnaam** | `MicrosoftGraphSecurityConnector` |
-  | **Toepassings-id** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Toepassings naam** | `MicrosoftGraphSecurityConnector` |
+  | **Toepassings-ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
   Voor het verlenen van toestemming voor de connector kan uw Azure AD-Tenant beheerder de volgende stappen volgen:
 
-  * [Geef toestemming van de tenant-beheerder voor Azure AD-toepassingen](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Verleen de Tenant beheerder toestemming voor Azure AD-toepassingen](../active-directory/develop/v2-permissions-and-consent.md).
 
-  * Tijdens de eerste uitvoering van uw logische app, kan uw app toestemming vragen aan uw Azure AD-tenantbeheerder via de [toestemmingservaring van de toepassing](../active-directory/develop/application-consent-experience.md).
+  * Tijdens de eerste uitvoering van de logische app kan uw app toestemming vragen van uw Azure AD-Tenant beheerder met behulp van de toestemming van de [toepassing](../active-directory/develop/application-consent-experience.md).
    
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -91,7 +91,7 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 
 1.  Geef in de trigger informatie op over de waarschuwingen die u wilt bewaken. Voor meer eigenschappen opent u de lijst **nieuwe para meter toevoegen** en selecteert u een para meter om die eigenschap toe te voegen aan de trigger.
 
-   | Eigenschap | Eigenschap (JSON) | Verplicht | Type | Beschrijving |
+   | Eigenschap | Eigenschap (JSON) | Vereist | Type | Beschrijving |
    |----------|-----------------|----------|------|-------------|
    | **Interval** | `interval` | Ja | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p><p>-Maand: 1-16 maanden <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
    | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede**, **minuut**, **uur**, **dag**, **week**of **maand** |
@@ -115,11 +115,11 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u de [documentatie over Microsoft Graph Security Alerts](https://docs.microsoft.com/graph/api/alert-list). Meer informatie over de [schema-eigenschappen](https://docs.microsoft.com/graph/api/resources/alert) die door de connector worden ondersteund om uitgebreide ervaringen met deze connector te maken.
 
-| Actie | Beschrijving |
+| Bewerking | Beschrijving |
 |--------|-------------|
-| **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](https://docs.microsoft.com/graph/api/resources/alert), bijvoorbeeld: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](https://docs.microsoft.com/graph/api/resources/alert), bijvoorbeeld `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
 | **Waarschuwing op ID ontvangen** | Een specifieke waarschuwing ophalen op basis van de waarschuwings-ID. | 
-| **Waarschuwing bijwerken** | Een specifieke waarschuwing bijwerken op basis van de waarschuwings-ID. <p>Om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [Bewerk bare eigenschappen voor waarschuwingen](https://docs.microsoft.com/graph/api/alert-update). Als u bijvoorbeeld een waarschuwing wilt toewijzen aan een beveiligings analist zodat deze kan worden onderzocht, kunt u de waarschuwing voor de eigenschap **toegewezen aan** bijwerken. |
+| **Waarschuwing bijwerken** | Een specifieke waarschuwing bijwerken op basis van de waarschuwings-ID. Om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [Bewerk bare eigenschappen voor waarschuwingen](https://docs.microsoft.com/graph/api/alert-update). Als u bijvoorbeeld een waarschuwing wilt toewijzen aan een beveiligings analist zodat deze kan worden onderzocht, kunt u de waarschuwing voor de eigenschap **toegewezen aan** bijwerken. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Waarschuwings abonnementen beheren
@@ -128,13 +128,34 @@ Microsoft Graph ondersteunt [*abonnementen*](https://docs.microsoft.com/graph/ap
 
 `security/alerts?$filter=status eq 'New'`
 
-| Actie | Beschrijving |
+| Bewerking | Beschrijving |
 |--------|-------------|
 | **Abonnementen maken** | [Maak een abonnement](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) dat u op de hoogte brengt van eventuele wijzigingen. U kunt dit abonnement filteren op de specifieke waarschuwings typen die u wilt. U kunt bijvoorbeeld een abonnement maken dat u op de hoogte stelt van waarschuwingen met hoge urgentie. |
 | **Actieve abonnementen ophalen** | Niet- [verlopen abonnementen ophalen](https://docs.microsoft.com/graph/api/subscription-list). | 
 | **Abonnement bijwerken** | [Werk een abonnement](https://docs.microsoft.com/graph/api/subscription-update) bij door de abonnements-id op te geven. Als u uw abonnement wilt uitbreiden, kunt u bijvoorbeeld de `expirationDateTime` eigenschap van het abonnement bijwerken. | 
 | **Abonnement verwijderen** | [Een abonnement verwijderen](https://docs.microsoft.com/graph/api/subscription-delete) door de abonnements-id op te geven. | 
 ||| 
+
+### <a name="manage-threat-intelligence-indicators"></a>Threat Intelligence-indica toren beheren
+
+Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *alleen* de [ODATA-query parameters op die door Microsoft Graph worden ondersteund](https://docs.microsoft.com/graph/query-parameters). *Geef niet* de volledige basis-URL of de http-actie op, bijvoorbeeld `https://graph.microsoft.com/beta/security/tiIndicators`, of de `GET` of `PATCH` bewerking. Hier volgt een specifiek voor beeld waarin de para meters voor een **Get tiIndicators** -actie worden weer gegeven wanneer u een lijst wilt met de `DDoS` bedreigings type:
+
+`Filter threat intelligence indicator value as threatType eq 'DDoS'`
+
+Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u [' optionele query parameters ' in de referentie documentatie Microsoft Graph Security Threat Intelligence-indicator](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Als u uitgebreide ervaringen met deze connector wilt maken, leest u meer over de [schema-eigenschappen Threat Intelligence-indicator](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) die door de connector wordt ondersteund.
+
+| Bewerking | Beschrijving |
+|--------|-------------|
+| **Threat Intelligence-Indica tors ophalen** | Get tiIndicators gefilterd op basis van een of meer [tiIndicator-eigenschappen](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta), bijvoorbeeld `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Bedreigings informatie-indicator op ID ophalen** | Een specifieke tiIndicator ophalen op basis van de tiIndicator-ID. | 
+| **Bedreigings informatie-indicator maken** | Maak een nieuwe tiIndicator door te boeken naar de tiIndicators-verzameling. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het maken van tiIndicator](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http). |
+| **Meerdere Threat Intelligence-indica toren verzenden** | Maak meerdere nieuwe tiIndicators door een tiIndicators-verzameling te boeken. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verzenden van meerdere tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http). |
+| **Bedreigings informatie-indicator bijwerken** | Een specifieke tiIndicator bijwerken op basis van de tiIndicator-ID. Zie de [Bewerk bare eigenschappen voor tiIndicator](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft. Als u bijvoorbeeld de actie wilt bijwerken die moet worden toegepast als de indicator wordt vergeleken vanuit het targetProduct-beveiligings hulpprogramma, kunt u de eigenschap **Action** van tiIndicator bijwerken. |
+| **Meerdere Threat Intelligence-indica toren bijwerken** | Meerdere tiIndicators bijwerken. Raadpleeg de [vereiste eigenschappen voor het bijwerken van meerdere tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft. |
+| **Bedreigings informatie-indicator op ID verwijderen** | Een specifieke tiIndicator verwijderen op basis van de tiIndicator-ID. |
+| **Meerdere Threat Intelligence-indica toren per id verwijderen** | Verwijder meerdere tiIndicators met hun Id's. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verwijderen van meerdere tiIndicators op id's](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http). |
+| **Meerdere Threat Intelligence-indica toren met externe Id's verwijderen** | Meerdere tiIndicators verwijderen met de externe Id's. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verwijderen van meerdere tiIndicators door externe id's](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http). |
+|||
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 

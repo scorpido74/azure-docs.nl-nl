@@ -2,17 +2,16 @@
 title: Intelligente route ring en Canarische releases met Istio in azure Kubernetes service (AKS)
 description: Meer informatie over het gebruik van Istio voor intelligente route ring en het implementeren van Canarische releases in een Azure Kubernetes service-cluster (AKS)
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530288"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594111"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligente route ring en Canarische releases gebruiken met Istio in azure Kubernetes service (AKS)
 
@@ -351,7 +350,7 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>Een Canarische versie van de toepassing samen vouwen
 
-We gaan nu een nieuwe versie implementeren `2.0` van de onderdelen `voting-app`, `voting-analytics` en `voting-storage`. Het nieuwe `voting-storage`-onderdeel maakt gebruik van MySQL in plaats van redis en de `voting-app` en `voting-analytics` onderdelen worden bijgewerkt zodat ze dit nieuwe `voting-storage`-onderdeel kunnen gebruiken.
+We gaan nu een nieuwe versie implementeren `2.0` van de onderdelen `voting-app`, `voting-analytics`en `voting-storage`. Het nieuwe `voting-storage`-onderdeel maakt gebruik van MySQL in plaats van redis en de `voting-app` en `voting-analytics` onderdelen worden bijgewerkt zodat ze dit nieuwe `voting-storage`-onderdeel kunnen gebruiken.
 
 Het onderdeel `voting-app` ondersteunt nu functionaliteit voor functie vlaggen. Met deze functie vlag kunt u de Istio van de Canarische versie testen voor een subset van gebruikers.
 

@@ -8,12 +8,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
-ms.openlocfilehash: fb576b81adeec99e4080c744749097390d1add1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77111096"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586152"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Toename van quotum aanvragen voor Azure SQL Database
 
@@ -90,7 +90,7 @@ Gebruik de volgende stappen om een verhoging van het aantal servers per abonneme
 
 Zie [SQL database resource limieten en resource governance](sql-database-resource-limits-database-server.md)voor meer informatie.
 
-### <a name="enable-subscription-access-to-a-region"></a>Abonnements toegang tot een regio inschakelen
+### <a id="other"></a>Abonnements toegang tot een regio inschakelen
 
 Sommige aanbiedings typen zijn niet beschikbaar in elke regio. Er wordt mogelijk een fout bericht weer geven, zoals het volgende:
 

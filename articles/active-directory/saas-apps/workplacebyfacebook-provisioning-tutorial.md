@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121446"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603203"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
@@ -51,7 +51,7 @@ De sectie beheerders referenties is vergrendeld voor bestaande werk plek-klanten
 
  
 #### <a name="when-will-these-changes-happen"></a>Wanneer worden deze wijzigingen aangebracht?
-Bij alle nieuwe exemplaren van de werk plek wordt de nieuwe integratie/autorisatie methode al gebruikt. Bestaande integraties worden geleidelijk in februari gemigreerd. De migratie wordt aan het einde van de maand voltooid voor alle tenants. 
+Bij alle nieuwe exemplaren van de werk plek wordt de nieuwe integratie/autorisatie methode al gebruikt. Bestaande integraties worden geleidelijk door mogelijk gemigreerd. Het werkplek team heeft een verlenging gegeven van de deadline van feb-28 tot mei-1. 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]

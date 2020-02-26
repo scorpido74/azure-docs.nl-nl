@@ -9,15 +9,15 @@ ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: d131523e3031f55a818bb1919f39119bf073cb75
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456524"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588719"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Naslag informatie over Azure Cosmos DB bewakings gegevens
-Dit artikel bevat een verwijzing naar logboek-en metrische gegevens die worden verzameld voor het analyseren van de prestaties en beschik baarheid van Azure Cosmos DB. Zie [bewaking Cosmos DB](monitor-cosmos-db.md) voor meer informatie over het verzamelen en analyseren van bewakings gegevens voor Azure Cosmos db.
+Dit artikel bevat naslaginformatie over logboek- en metrische gegevens die worden verzameld om de prestaties en beschikbaarheid van Azure Cosmos DB te analyseren. Zie [bewaking Cosmos DB](monitor-cosmos-db.md) voor meer informatie over het verzamelen en analyseren van bewakings gegevens voor Azure Cosmos db.
 
 
 ## <a name="resource-logs"></a>Resourcelogboeken
@@ -70,8 +70,8 @@ Zie [Azure monitor ondersteunde metrische gegevens](../azure-monitor/platform/me
 
 |Metrisch (metrische weergave naam)|Eenheid (aggregatie type)|Beschrijving|Dimensies| Tijd granulatie| Toewijzing van verouderde metriek | Gebruik |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (beschik bare opslag) |Bytes (totaal) | Totale beschik bare opslag gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min.| Beschik bare opslag| Wordt gebruikt voor het bewaken van beschik bare opslag capaciteit (alleen van toepassing voor vaste opslag verzamelingen). de minimale granulatie moet 5 minuten zijn.| 
-| DataUsage (gegevens gebruik) |Bytes (totaal) |Totaal gegevens gebruik gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min. |Gegevens grootte | Voor het bewaken van het totale gegevens gebruik in de container en de regio, moet de minimale granulatie 5 minuten zijn.|
+| AvailableStorage (beschik bare opslag) |Bytes (totaal) | Totale beschik bare opslag gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min.| Beschikbare opslag| Wordt gebruikt voor het bewaken van beschik bare opslag capaciteit (alleen van toepassing voor vaste opslag verzamelingen). de minimale granulatie moet 5 minuten zijn.| 
+| DataUsage (gegevens gebruik) |Bytes (totaal) |Totaal gegevens gebruik gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min. |Gegevensgrootte | Voor het bewaken van het totale gegevens gebruik in de container en de regio, moet de minimale granulatie 5 minuten zijn.|
 | IndexUsage (index gebruik) | Bytes (totaal) |Totaal gebruik van index gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min.| Index grootte| Voor het bewaken van het totale gegevens gebruik in de container en de regio, moet de minimale granulatie 5 minuten zijn. |
 | DocumentQuota (document quotum) | Bytes (totaal) | Totale opslag quotum gerapporteerd bij een granulatie van 5 minuten per regio.| Databasenaam, verzamel-, regio| 5 min. |Opslagcapaciteit| Voor het bewaken van het totale quotum in container en regio moet de minimale granulatie 5 minuten zijn.|
 | DocumentCount (aantal documenten) | Aantal (totaal) |Totaal aantal documenten gerapporteerd bij een granulatie van 5 minuten per regio| Databasenaam, verzamel-, regio| 5 min. |Aantal documenten|Voor het bewaken van het aantal documenten in de container en de regio moet de minimale granulatie 5 minuten zijn.|
@@ -81,6 +81,8 @@ Zie [Azure monitor ondersteunde metrische gegevens](../azure-monitor/platform/me
 |Metrisch (metrische weergave naam)|Eenheid (aggregatie type)|Beschrijving|Dimensies| Tijd granulatie| Gebruik |
 |---|---|---|---| ---| ---|
 | ReplicationLatency (replicatie latentie)| MilliSeconden (minimum, maximum, gemiddeld) | Replicatie latentie van P99 voor de bron-en doel regio's voor geografisch ingeschakelde account| SourceRegion, TargetRegion| Alle | Wordt gebruikt voor het bewaken van de replicatie latentie van P99 tussen twee regio's voor een geo-gerepliceerd account. |
+| Latentie aan server zijde| MilliSeconden (gemiddeld) | De tijd die de server nodig heeft om de aanvraag te verwerken. | Verzamelingnaam, ConnectionMode, DATABASENAME, OperationType, PublicAPIType, regio | Alle | Wordt gebruikt om de latentie van de aanvraag op de Azure Cosmos DB server te bewaken. |
+
 
 
 #### <a name="availability-metrics"></a>Metrische beschikbaarheids gegevens

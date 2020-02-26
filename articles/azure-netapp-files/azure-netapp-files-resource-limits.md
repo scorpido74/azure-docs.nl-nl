@@ -12,31 +12,31 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/25/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7637d18017f5bdc76c8a271198a88f21a59a6aac
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976244"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604978"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
 Informatie over resource limieten voor Azure NetApp Files helpt u bij het beheren van uw volumes.
 
-## <a name="resource-limits"></a>Bronbeperkingen
+## <a name="resource-limits"></a>Bronlimieten
 
 In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven:
 
-|  Bron  |  Standaardlimiet  |  Aanpasbaar via ondersteunings aanvraag  |
+|  Resource  |  Standaardlimiet  |  Aanpasbaar via ondersteunings aanvraag  |
 |----------------|---------------------|--------------------------------------|
 |  Aantal NetApp-accounts per Azure-regio   |  10    |  Ja   |
 |  Aantal capaciteits Pools per NetApp-account   |    25     |   Ja   |
 |  Aantal volumes per capaciteits pool     |    500   |    Ja     |
 |  Aantal moment opnamen per volume       |    255     |    Nee        |
 |  Aantal subnetten dat wordt gedelegeerd aan Azure NetApp Files (micro soft. NetApp/volumes) per Azure-Virtual Network    |   1   |    Nee    |
-|  Aantal IP-adressen in een VNet (inclusief peered VNets) die toegang hebben tot Azure NetApp Files   |    1000   |    Ja   |
+|  Aantal gebruikte Ip's in een VNet (inclusief onmiddellijk gepeerde VNets) met Azure NetApp Files   |    1000   |    Ja   |
 |  Minimum grootte van één capaciteits groep   |  4 TiB     |    Nee  |
 |  Maximale grootte van één capaciteits groep    |  500 TiB   |   Nee   |
 |  Minimum grootte van één volume    |    100 GiB    |    Nee    |
@@ -76,7 +76,7 @@ Vanuit Azure Portal navigatie vlak:
 4. Op het tabblad Details:
     1. Geef in het vak Beschrijving de volgende informatie op voor het bijbehorende resource type:
 
-        |  Bron  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor toename van quotum       |
+        |  Resource  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor toename van quotum       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Account |  *Subscription ID*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Pool    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |

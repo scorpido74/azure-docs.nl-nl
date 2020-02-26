@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849459"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592200"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Een runbook in Azure Automation plannen
 
@@ -34,8 +34,8 @@ De cmdlets in de volgende tabel worden gebruikt voor het maken en beheren van pl
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Hiermee verwijdert u een schema. |
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Hiermee stelt u de eigenschappen voor een bestaande planning. |
 | [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Hiermee worden geplande runbooks opgehaald. |
-| [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Hiermee wordt een runbook gekoppeld aan een schema. |
-| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Hiermee wordt een runbook ontkoppeld van een schema. |
+| [REGI ster-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Hiermee wordt een runbook gekoppeld aan een schema. |
+| [Registratie ongedaan maken-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Hiermee wordt een runbook ontkoppeld van een schema. |
 
 ## <a name="creating-a-schedule"></a>Het maken van een planning
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 Het meest frequente interval voor een planning in Azure Automation kan één uur worden geconfigureerd. Als u planningen nodig hebt om vaker te worden uitgevoerd, zijn er twee opties:
 
-* Maak een [webhook](../automation-webhooks.md) voor het runbook en gebruik [Azure scheduler](../../scheduler/scheduler-get-started-portal.md) om de webhook aan te roepen. Azure Scheduler biedt meer gedetailleerde granulatie bij het definiëren van een schema.
+* Maak een [webhook](../automation-webhooks.md) voor het runbook en gebruik [Azure Logic apps](../../logic-apps/logic-apps-overview.md) om de webhook aan te roepen. Azure Logic Apps biedt meer verfijnde granulatie bij het definiëren van een schema.
 
 * Maak één keer per uur vier minuten schema's, beginnend bij elke andere. Met dit scenario kan het runbook om de 15 minuten worden uitgevoerd met de verschillende schema's.
 

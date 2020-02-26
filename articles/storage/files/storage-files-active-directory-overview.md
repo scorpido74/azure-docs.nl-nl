@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565078"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598813"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Overzicht van Azure Files verificatie op basis van identiteiten voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Zie [Active Directory authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-active-directory-domain-services-enable.md)voor meer informatie over het inschakelen van AD-verificatie voor Azure-bestands shares.
+Zie [Active Directory authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)voor meer informatie over het inschakelen van AD-verificatie voor Azure-bestands shares.
 
-Zie [Azure Active Directory Domain Service-verificatie inschakelen via SMB voor Azure files](storage-files-active-directory-enable.md)voor meer informatie over het inschakelen van Azure AD DS-verificatie voor Azure-bestands shares.
+Zie [Azure Active Directory Domain Services-verificatie inschakelen voor Azure files](storage-files-identity-auth-active-directory-domain-service-enable.md)voor meer informatie over het inschakelen van Azure AD DS-verificatie voor Azure-bestands shares.
 
 ## <a name="glossary"></a>Woordenlijst 
 Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azure AD domain service-verificatie via SMB voor Azure-bestands shares:
@@ -98,7 +98,7 @@ Wanneer een identiteit die is gekoppeld aan een toepassing die op een virtuele m
 
 ### <a name="enable-identity-based-authentication"></a>Verificatie op basis van identiteit inschakelen
 
-U kunt verificatie op basis van een identiteit inschakelen met behulp van Azure AD DS (GA) of AD (preview) voor Azure-bestands shares in uw nieuwe en bestaande opslag accounts. Er kan slechts één domein service worden gebruikt voor verificatie van bestands toegang op het opslag account. Dit is van toepassing op alle bestands shares in het account. Gedetailleerde stapsgewijze instructies voor het instellen van bestands shares voor verificatie met Azure AD DS (GA) in ons artikel [inschakelen Azure Active Directory Domain Services authenticatie via SMB voor Azure files](storage-files-active-directory-enable.md) en richt lijnen voor AD (preview) in ons andere artikel, [Active Directory over SMB voor Azure-bestands shares](storage-files-active-directory-domain-services-enable.md)inschakelen.
+U kunt verificatie op basis van een identiteit inschakelen met behulp van Azure AD DS (GA) of AD (preview) voor Azure-bestands shares in uw nieuwe en bestaande opslag accounts. Er kan slechts één domein service worden gebruikt voor verificatie van bestands toegang op het opslag account. Dit is van toepassing op alle bestands shares in het account. Gedetailleerde stapsgewijze instructies voor het instellen van bestands shares voor verificatie met Azure AD DS (GA) in ons artikel [schakel Azure Active Directory Domain Services-verificatie in azure files](storage-files-identity-auth-active-directory-domain-service-enable.md) en richt lijnen voor AD (preview) in ons andere artikel in om [Active Directory verificatie via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)in te scha kelen.
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Machtigingen op share niveau voor Azure Files configureren
 
@@ -126,6 +126,6 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van verifi
 Zie de volgende bronnen voor meer informatie over Azure Files en verificatie op basis van identiteit via SMB:
 
 - [Implementatie van Azure Files plannen](storage-files-planning.md)
-- [Active Directory authenticatie via SMB voor Azure-bestands shares inschakelen](storage-files-active-directory-domain-services-enable.md)
-- [Azure Active Directory Domain Services authenticatie inschakelen op Azure Files](storage-files-active-directory-enable.md)
+- [Active Directory authenticatie via SMB voor Azure-bestands shares inschakelen](storage-files-identity-auth-active-directory-enable.md)
+- [Azure Active Directory Domain Services authenticatie inschakelen op Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Veelgestelde vragen](storage-files-faq.md)

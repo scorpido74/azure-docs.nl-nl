@@ -3,12 +3,12 @@ title: Back-up maken van Hyper-V virtuele machines met MABS
 description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444057"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586509"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
 
@@ -145,7 +145,7 @@ Beveiliging voor Livemigratie instellen:
 
 3. Wijs het MABSMachineName $-account toe als alleen-lezen beheerders account op de VMM-beheer server.
 
-4. Verbind alle Hyper-V-hostservers met de `Set-DPMGlobalProperty` Power shell-cmdlet voor alle MABS-servers. De cmdlet accepteert meerdere MABS-server namen. Gebruik de indeling: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Zie [set-DPMGlobalProperty](https://technet.microsoft.com/library/hh881752.aspx)voor meer informatie.
+4. Verbind alle Hyper-V-hostservers met de `Set-DPMGlobalProperty` Power shell-cmdlet voor alle MABS-servers. De cmdlet accepteert meerdere MABS-server namen. Gebruik de indeling: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Zie [set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)voor meer informatie.
 
 5. Nadat alle virtuele machines die op de Hyper-V-hosts in de VMM-Clouds worden uitgevoerd, zijn gedetecteerd in VMM, stelt u een beveiligings groep in en voegt u de virtuele machines toe die u wilt beveiligen. Automatische consistentie controles moeten worden ingeschakeld op het niveau van de beveiligings groep voor beveiliging onder mobiliteits scenario's voor virtuele machines.
 

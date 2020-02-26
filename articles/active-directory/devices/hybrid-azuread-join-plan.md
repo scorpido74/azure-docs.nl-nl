@@ -1,6 +1,6 @@
 ---
 title: Deelname aan een Hybrid Azure Active Directory-Azure Active Directory plannen
-description: Lees hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
+description: Leer hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167385"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591605"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -73,20 +73,21 @@ Als eerste plannings stap moet u uw omgeving controleren en bepalen of u apparat
 
 ## <a name="review-things-you-should-know"></a>Bekijk de dingen die u moet weten
 
-Hybride Azure AD-deelname wordt momenteel niet ondersteund als uw omgeving bestaat uit één AD-forest dat identiteits gegevens synchroniseert met meer dan één Azure AD-Tenant.
+### <a name="unsupported-scenarios"></a>Niet-ondersteunde scenario's
+- Hybride Azure AD-deelname wordt momenteel niet ondersteund als uw omgeving bestaat uit één AD-forest dat identiteits gegevens synchroniseert met meer dan één Azure AD-Tenant.
 
-Als uw omgeving gebruikmaakt van Virtual Desktop Infrastructure (VDI), raadpleegt u [apparaat-id en desktop-virtualisatie](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Hybride Azure AD-samen voeging wordt niet ondersteund voor Windows Server met de rol domein controller (DC).
 
-Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. Vanaf de release van Windows 10 1903 worden Tpm's 1,2 niet gebruikt voor hybride Azure AD-deelname en-apparaten met deze Tpm's als ze geen TPM hebben.
+- Hybride Azure AD-samen voeging wordt niet ondersteund op Windows-apparaten op een lager niveau wanneer u Credential roaming of roaming tussen gebruikers profielen of een verplicht profiel gebruikt.
 
-Hybride Azure AD-samen voeging wordt niet ondersteund voor Windows Server met de rol domein controller (DC).
+### <a name="os-imaging-considerations"></a>Aandachtspunten voor installatie van besturings systeem
+- Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (Sysprep) en als u een installatie kopie van **vóór Windows 10 1809** gebruikt, moet u ervoor zorgen dat de installatie kopie niet afkomstig is van een apparaat dat al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
 
-Hybride Azure AD-samen voeging wordt niet ondersteund op Windows-apparaten op een lager niveau wanneer u Credential roaming of roaming tussen gebruikers profielen of een verplicht profiel gebruikt.
+- Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te maken, moet u ervoor zorgen dat de moment opname niet afkomstig is van een VM die al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
 
-Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (Sysprep) en als u een installatie kopie van **vóór Windows 10 1809** gebruikt, moet u ervoor zorgen dat de installatie kopie niet afkomstig is van een apparaat dat al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
+- Als u gebruikmaakt van [Unified Write Filter](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) en soort gelijke technologieën die wijzigingen in de schijf bij het opnieuw opstarten wissen, moeten ze worden toegepast nadat het apparaat is toegevoegd aan hybride Azure AD. Als u dergelijke technologieën inschakelt voordat hybride Azure AD-deelname is voltooid, wordt het apparaat tijdens elke herstart ontkoppeld
 
-Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te maken, moet u ervoor zorgen dat de moment opname niet afkomstig is van een VM die al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
-
+### <a name="handling-devices-with-azure-ad-registered-state"></a>Apparaten afhandelen met Azure AD-status geregistreerd
 Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](overview.md#getting-devices-in-azure-ad) bij uw Tenant, kan dit leiden tot een dubbele status van hybride Azure AD join en Azure AD geregistreerd apparaat. U wordt aangeraden om een upgrade uit te voeren naar Windows 10 1803 (met KB4489894 toegepast) of hoger om dit scenario automatisch te verhelpen. In versies van vóór 1803 moet u de Azure AD-status geregistreerd hand matig verwijderen voordat u hybride deelname van Azure AD inschakelt. In 1803 en hoger releases zijn de volgende wijzigingen aangebracht om deze dubbele status te voor komen:
 
 - Alle bestaande Azure AD-geregistreerde statussen worden automatisch verwijderd <i>nadat het apparaat is toegevoegd aan hybride Azure AD</i>.
@@ -95,6 +96,11 @@ Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](ove
 
 > [!NOTE]
 > Het geregistreerde Azure AD-apparaat wordt niet automatisch verwijderd als het wordt beheerd door intune.
+
+### <a name="additional-considerations"></a>Aanvullende overwegingen
+- Als uw omgeving gebruikmaakt van Virtual Desktop Infrastructure (VDI), raadpleegt u [apparaat-id en desktop-virtualisatie](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+
+- Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. Vanaf de release van Windows 10 1903 worden Tpm's 1,2 niet gebruikt voor hybride Azure AD-deelname en-apparaten met deze Tpm's als ze geen TPM hebben.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname controleren
 
@@ -148,10 +154,10 @@ De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor
 
 | Type on-premises AD-UPN | Domeintype | Windows 10-versie | Beschrijving |
 | ----- | ----- | ----- | ----- |
-| Bare | Federatief | Van 1703 release | Algemeen beschikbaar |
-| Niet-routeerbaar | Federatief | Van 1803 release | Algemeen beschikbaar |
-| Bare | Managed | Van 1803 release | Azure AD SSPR op Windows-vergrendelings scherm is algemeen beschikbaar. |
-| Niet-routeerbaar | Managed | Niet ondersteund | |
+| Bare | Federatie | Van 1703 release | Algemeen beschikbaar |
+| Niet-routeerbaar | Federatie | Van 1803 release | Algemeen beschikbaar |
+| Bare | Bijgehouden | Van 1803 release | Azure AD SSPR op Windows-vergrendelings scherm is algemeen beschikbaar. |
+| Niet-routeerbaar | Bijgehouden | Niet ondersteund | |
 
 ## <a name="next-steps"></a>Volgende stappen
 

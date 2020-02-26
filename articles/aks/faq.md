@@ -1,17 +1,14 @@
 ---
 title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: mlearned
-ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 8586ff1ae22bf188af3705434ed90e064ff33c0f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086489"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595668"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over Azure Kubernetes service (AKS)
 

@@ -4,12 +4,12 @@ description: Biedt richt lijnen voor probleem oplossing waarmee u de oorzaak van
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198610"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603151"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problemen met langzame back-ups van bestanden en mappen in Azure Backup
 
@@ -44,7 +44,7 @@ We raden u ook ten zeerste aan de [Veelgestelde vragen over de Azure backup-serv
 
 Knel punten op de computer waarvan een back-up wordt gemaakt, kunnen vertragingen veroorzaken. Bijvoorbeeld: de mogelijkheid van de computer om te lezen van of te schrijven naar de schijf of beschik bare band breedte voor het verzenden van gegevens via het netwerk, kan knel punten veroorzaken.
 
-Windows biedt een ingebouwd hulp programma dat [prestatie meter](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (PerfMon) wordt genoemd om deze knel punten te detecteren.
+Windows biedt een ingebouwd hulp programma met de naam [Performance Monitor](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) om deze knel punten te detecteren.
 
 Hier volgen enkele prestatie meter items en bereiken die nuttig kunnen zijn bij het diagnosticeren van knel punten voor optimale back-ups.
 

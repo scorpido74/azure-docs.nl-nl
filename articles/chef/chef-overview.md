@@ -2,14 +2,14 @@
 title: Chef gebruiken met Azure
 description: Inleiding tot het gebruik van chef voor het configureren en testen van uw Azure-infra structuur
 keywords: Azure, chef, devops, virtual machines, overzicht, automatiseren
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: c22faa69bf8f42111d328a9c156dc1a2432731b2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158003"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586339"
 ---
 # <a name="using-chef-with-azure"></a>Chef gebruiken met Azure
 [Chef](https://www.chef.io) is een krachtig automatiserings platform dat de infra structuur van virtuele machines op Azure transformeert in code. Chef automatiseert de manier waarop de infra structuur wordt geconfigureerd, geïmplementeerd en beheerd in uw netwerk, ongeacht de grootte.
@@ -17,18 +17,17 @@ ms.locfileid: "74158003"
 In dit artikel worden de voor delen beschreven van het gebruik van chef voor het beheren van Azure-infra structuur.
 
 ## <a name="chef-extension-on-azure"></a>Chef-extensie op Azure
-Richt een virtuele machine in met chef-client die als een achtergrond service wordt uitgevoerd met de [extensie chef](https://docs.microsoft.com/azure/chef/chef-extension-portal) in azure Portal. Zodra de virtuele machines zijn ingericht, zijn ze klaar om te worden beheerd door een chef-server.
+Richt een virtuele machine in met een chef-client die als een achtergrond service wordt uitgevoerd met de [uitbrei ding chef](https://docs.microsoft.com/azure/chef/chef-extension-portal) op de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040). Zodra de virtuele machines zijn ingericht, zijn ze klaar om te worden beheerd door een chef-server.
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
 Gebruik chef-werk station rechtstreeks in Azure Cloud Shell! Voer al uw chef-hulpprogram ma's en inspecies uit Cloud Shell. U kunt de chef-opdrachten gebruiken van:
 
 * [chef](https://docs.chef.io/ctl_chef.html)
 * [keuken](https://docs.chef.io/ctl_kitchen.html)
-* [inspec](https://www.inspec.io/docs/reference/cli/)
+* [specificatie](https://www.inspec.io/docs/reference/cli/)
 * [gereedschap](https://docs.chef.io/knife.html)
 * [cookstyle](https://docs.chef.io/cookstyle.html)
-* [foodcritic](https://docs.chef.io/foodcritic.html)
-* [chef-run](https://www.chef.sh/docs/chef-workstation/getting-started/)
+* [Chef-uitvoeren](https://www.chef.sh/docs/chef-workstation/getting-started/)
 
 Combi neer onze opdracht hulpprogramma's met de andere hulpprogram ma's die beschikbaar zijn in Cloud Shell, zoals `git`, `az-cli`en `terraform`, en schrijf uw infra structuur en compatibiliteits automatisering vanuit de browser.
 
@@ -40,4 +39,4 @@ Met de chef-oplossing voor het [automatiseren van Azure Marketplace](https://azu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een virtuele Windows-machine maken in azure met behulp van chef](/azure/virtual-machines/windows/chef-automation)
+* [Een virtuele Windows-machine maken in azure met behulp van chef](chef-automation.md)
