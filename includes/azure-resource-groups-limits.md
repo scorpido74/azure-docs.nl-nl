@@ -2,18 +2,19 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: b4338560d515289d3e9aedfa716ec7c3ace51131
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a52e1bc2dde74289cb270fcae832be24de5a06
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392280"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592414"
 ---
-| Bron | Standaardlimiet | Maximumaantal |
+| Resource | Standaardlimiet | Maximumaantal |
 | --- | --- | --- |
-| Resources per [resource groep](../articles/azure-resource-manager/management/overview.md#resource-groups), per resource type |800 |Sommige resource typen kunnen de limiet van 800 overschrijden. Zie [resources niet beperkt tot 800 exemplaren per resource groep](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
+| Resources per [resource groep](../articles/azure-resource-manager/management/overview.md#resource-groups) | N.v.t. | Resources worden niet beperkt door de resource groep. In plaats daarvan worden ze beperkt door het resource type in een resource groep. Zie de volgende rij. | 
+| Resources per resource groep, per resource type |800 |Sommige resource typen kunnen de limiet van 800 overschrijden. Zie [resources niet beperkt tot 800 exemplaren per resource groep](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
 | Implementaties per resource groep in de implementatie geschiedenis |800<sup>1</sup> |800 |
 | Bronnen per implementatie |800 |800 |
 | Beheer vergrendelingen per uniek bereik |20 |20 |

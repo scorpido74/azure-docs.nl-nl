@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353441"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604668"
 ---
 # <a name="adaptive-application-controls"></a>Adaptieve toepassingsbesturingselementen
 Lees hoe u toepassingsbeheer configureert in Azure Security Center met behulp van dit stapsgewijze overzicht.
@@ -174,11 +174,10 @@ Met Azure Security Center kunt u ook een white list-beleid voor toepassingen def
 > Zorg ervoor dat u op **Opslaan** klikt nadat u op **computer verplaatsen**hebt geklikt. Als u niet op **Opslaan**klikt, wordt de computer niet verplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u gebruik kunt maken van adaptieve toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd in Azure-en niet-Azure-Vm's. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
+In dit document hebt u geleerd hoe u gebruik kunt maken van adaptieve toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd in Azure-en niet-Azure-Vm's. Zie de volgende onderwerpen voor meer informatie over het Azure Beveiligingscentrum:
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.
 * [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Meer informatie over de verschillende typen beveiligingswaarschuwingen.
 * [Handleiding voor het oplossen van problemen met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Informatie over het oplossen van veelvoorkomende problemen met Security Center.
-* [Veelgestelde vragen over Azure Security Center](security-center-faq.md). Raadpleeg de veelgestelde vragen over het gebruik van de service.
 * [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/). Raadpleeg de blogberichten over beveiliging en naleving in Azure.

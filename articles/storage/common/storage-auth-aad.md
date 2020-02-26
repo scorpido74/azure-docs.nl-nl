@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965823"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588974"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Toegang verlenen tot blobs en wacht rijen met behulp van Azure Active Directory
 
@@ -27,7 +27,7 @@ Verificatie met Azure AD is beschikbaar voor alle accounts voor algemeen gebruik
 
 Blob-opslag biedt ook ondersteuning voor het maken van Shared Access signatures (SAS) die zijn ondertekend met Azure AD-referenties. Zie [beperkte toegang verlenen tot gegevens met hand tekeningen voor gedeelde toegang](storage-sas-overview.md)voor meer informatie.
 
-Azure Files ondersteunt alleen autorisatie met Azure AD via SMB voor Vm's die zijn toegevoegd aan een domein. Zie [overzicht van Azure Active Directory autorisatie via SMB voor Azure files](../files/storage-files-active-directory-overview.md)voor meer informatie over het gebruik van Azure ad over smb voor Azure files.
+Azure Files ondersteunt alleen autorisatie met AD (preview) of Azure AD DS (GA) via SMB voor Vm's die zijn toegevoegd aan een domein. Zie [overzicht van Azure files op identiteit gebaseerde verificatie voor SMB-toegang](../files/storage-files-active-directory-overview.md)voor meer informatie over het gebruik van AD (preview) of Azure AD DS (ga) over smb voor Azure files.
 
 Autorisatie met Azure AD wordt niet ondersteund voor Azure-tabel opslag. Gedeelde sleutel gebruiken om aanvragen voor Table-opslag te autoriseren.
 

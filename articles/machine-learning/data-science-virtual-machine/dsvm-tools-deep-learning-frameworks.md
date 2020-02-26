@@ -10,17 +10,17 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984707"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587597"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Diep gaande lessen en AI-frameworks voor Azure Data Science VM
 Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
-## <a name="caffehttpsgithubcombvlccaffe"></a>[Caffe](https://github.com/BVLC/caffe)
+## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 |    |           |
 | ------------- | ------------- |
@@ -29,7 +29,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Caffe is geïnstalleerd in `/opt/caffe`.   Voor beelden zijn in `/opt/caffe/examples`.|
 | Het uitvoeren van het programma      | gebruik X2Go om u aan te melden bij uw virtuele machine, start een nieuwe terminal en voer het volgende in:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Er wordt een nieuw browservenster geopend met voorbeeldnotitieblokken. Binaire bestanden zijn in /opt/caffe/build/install/bin geïnstalleerd.<br/><br/>De geïnstalleerde versie van Caffe vereist python 2,7 en werkt niet met python 3,5, die standaard wordt geactiveerd. Als u wilt overschakelen naar python 2,7, voert u `source activate root` uit om over te scha kelen naar de Anaconda-omgeving.|    
 
-## <a name="caffe2httpsgithubcomcaffe2caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
+## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
 |    |           |
 | ------------- | ------------- |
@@ -38,7 +38,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Caffe2 wordt in de Conda-omgeving [python 2,7 (root) geïnstalleerd. |
 | Het uitvoeren van het programma      | Terminal: start python en importeer Caffe2. <br/> * JupyterHub: [Maak verbinding met JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en ga vervolgens naar de map Caffe2 om voorbeeld notitieblokken te vinden. Sommige laptops vereisen de hoofdmap Caffe2 moet worden ingesteld in de Python-code; Voer /opt/caffe2. |
 
-## <a name="chainerhttpschainerorg"></a>[Chainer](https://chainer.org/)
+## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -47,17 +47,17 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Chainer is geïnstalleerd in Python 3,5. |
 | Het uitvoeren van het programma      | Terminal: Activeer de python 3,5-omgeving, voer `python`uit en klik vervolgens `import chainer`. <br/> * JupyterHub: [Maak verbinding met JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en ga vervolgens naar de map Chainer om voorbeeld notitieblokken te vinden.| 
 
-## <a name="cuda-cudnn-nvidia-driverhttpsdevelopernvidiacomcuda-toolkit"></a>[CUDA, cuDNN, NVIDIA-stuur programma](https://developer.nvidia.com/cuda-toolkit)
+## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA, cuDNN, NVIDIA-stuur programma](https://developer.nvidia.com/cuda-toolkit)
 
 |    |           |
 | ------------- | ------------- |
 | Ondersteunde versies | 10.0.130|
 | Ondersteunde DSVM-edities      | Windows en Linux   |
-| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  |_NVIDIA-smi_ is beschikbaar in het systeempad.  |
+| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  |_NVIDIA-SMI_ is beschikbaar op het systeempad.  |
 | Het uitvoeren van het programma      | Open een opdracht prompt (in Windows) of een Terminal (op Linux) en voer _NVIDIA-SMI_uit. |
 
 
-## <a name="horovodhttpsgithubcomuberhorovod"></a>[Horovod](https://github.com/uber/horovod)
+## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
 |    |           |
 | ------------- | ------------- |
@@ -66,7 +66,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Horovod is geïnstalleerd in Python 3,5 |
 | Het uitvoeren van het programma      | Activeer de juiste omgeving bij de Terminal en voer python uit. |
 
-## <a name="kerashttpskerasio"></a>[Keras](https://keras.io/)
+## <a name="keras"></a>[Keras](https://keras.io/)
 
 |    |           |
 | ------------- | ------------- |
@@ -75,7 +75,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Keras is geïnstalleerd in Python 3,6 in Windows en in Python 3,5 in Linux |
 | Het uitvoeren van het programma      | Activeer de juiste omgeving bij de Terminal en voer python uit. |
 
-## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | CNTK is geïnstalleerd in Python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) en in Python 3,5 op [Linux](./dsvm-tools-languages.md#python-linux-edition)) |
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste omgeving en voer python uit. <br/>Jupyter: Maak verbinding met [Jupyter](provision-vm.md) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open vervolgens de map CNTK voor voor beelden. |
 
-## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
 |    |           |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.3.0 |
@@ -92,7 +92,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | MXNet is geïnstalleerd in `C:\dsvm\tools\mxnet` op Windows en `/dsvm/tools/mxnet` op Ubuntu. Python-bindingen worden geïnstalleerd in Python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) en in Python 3,5 op [Linux](./dsvm-tools-languages.md#python-linux-edition)) R-bindingen zijn ook opgenomen in de Ubuntu-DSVM. |
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste Conda-omgeving en voer `import mxnet`uit. <br/>Jupyter: Maak verbinding met [Jupyter](provision-vm.md#access-the-dsvm) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open vervolgens de `mxnet` Directory voor voor beelden. |
 
-## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet-model server](https://github.com/awslabs/mxnet-model-server#quick-start)
+## <a name="mxnet-model-server"></a>[MXNet-model server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
 |    |           |
 | ------------- | ------------- |
@@ -101,7 +101,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | MXNet model server is geïnstalleerd in Python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) en in Python 3,5 op [Linux](./dsvm-tools-languages.md#python-linux-edition)) |
 | Het uitvoeren van het programma      | Terminal: Voer `sudo systemctl stop jupyterhub` uit om de JupyterHub-service eerst te stoppen, omdat beide luistert op dezelfde poort. Activeer vervolgens de juiste Conda-omgeving en voer `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
-## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVidia-systeem beheer interface (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia-systeem beheer interface (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
 
 |    |           |
 | ------------- | ------------- |
@@ -111,16 +111,16 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | `nvidia-smi` zich in het systeempad bevindt. |
 | Het uitvoeren van het programma      | Open een opdracht prompt (in Windows) of een Terminal (op Linux) op een virtuele machine **met GPU**en voer `nvidia-smi`uit. |
 
-## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
+## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde versies | 1.2.0 (Ubuntu 16,04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18,04) |
+| Ondersteunde versies | 1.2.0 (Ubuntu 16,04, Windows 2016), 1.4.0 (Ubuntu 18,04, Windows 2019) |
 | Ondersteunde DSVM-edities      | Linux |
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Geïnstalleerd in [Python 3,5](dsvm-tools-languages.md#python-linux-edition). Voor beelden van Jupyter-notebooks zijn opgenomen. |
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste omgeving en voer python uit.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Maak verbinding en open vervolgens de map PyTorch voor voor beelden.  |
 
-## <a name="tensorflowhttpswwwtensorfloworg"></a>[TensorFlow](https://www.tensorflow.org/)
+## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -129,17 +129,17 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Geïnstalleerd in Python 3,5 onder [Linux](dsvm-tools-languages.md#python-linux-edition) en python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste omgeving en voer python uit. <br/> * Jupyter: Maak verbinding met [Jupyter](provision-vm.md) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open vervolgens de map tensor flow voor voor beelden.   |
 
-## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[Tensor flow voor](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[Tensor flow voor](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |
 | Ondersteunde versies | 1,12 |
 | Ondersteunde DSVM-edities      | Linux |
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | tensorflow_model_server is beschikbaar op de Terminal. |
-| Het uitvoeren van het programma      |  Voorbeelden zijn beschikbaar [online](https://www.tensorflow.org/serving/).   |
+| Het uitvoeren van het programma      |  Voor beelden zijn [online](https://www.tensorflow.org/serving/)beschikbaar.   |
 
 
-## <a name="theanohttpsgithubcomtheanotheano"></a>[Theano](https://github.com/Theano/Theano)
+## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
 |    |           |
 | ------------- | ------------- |

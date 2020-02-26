@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505706"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589450"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Zelf studie: Azure Functions uitvoeren vanuit Azure Stream Analytics-taken 
 
@@ -190,6 +190,9 @@ Volg de zelfstudie [Realtime fraudedetectie](stream-analytics-real-time-fraud-de
 ## <a name="error-handling-and-retries"></a>Foutafhandeling en nieuwe pogingen
 
 Als er een fout optreedt tijdens het verzenden van gebeurtenissen naar Azure Functions, Stream Analytics de meeste bewerkingen opnieuw proberen. Alle http-uitzonde ringen worden opnieuw geprobeerd tot het slagen, met uitzonde ring van HTTP-fout 413 (entiteit te groot). Een te grote fout van een entiteit wordt behandeld als een gegevens fout die wordt onderhevig aan het [beleid voor opnieuw proberen of verwijderen](stream-analytics-output-error-policy.md).
+
+> [!NOTE]
+> De time-out voor HTTP-aanvragen van Stream Analytics naar Azure Functions is ingesteld op 100 seconden. Als uw Azure Functions-app meer dan 100 seconden duurt om een batch te verwerken, Stream Analytics fouten.
 
 ## <a name="known-issues"></a>Bekende problemen
 

@@ -2,17 +2,14 @@
 title: AKS-controller Logboeken (Azure Kubernetes service) weer geven
 description: Meer informatie over het inschakelen en weer geven van de logboeken voor het hoofd knooppunt Kubernetes in azure Kubernetes service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812811"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592785"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Logboeken van Kubernetes-hoofd knooppunten inschakelen en controleren in azure Kubernetes service (AKS)
 
@@ -42,7 +39,7 @@ In de volgende voorbeeld afbeelding van de portal wordt het venster *Diagnostisc
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Een test pod plannen op het AKS-cluster
 
-Als u een aantal logboeken wilt genereren, maakt u een nieuwe pod in uw AKS-cluster. Het volgende voor beeld van een YAML-manifest kan worden gebruikt voor het maken van een Basic NGINX-exemplaar. Maak een bestand met `nginx.yaml` de naam in een editor van uw keuze en plak de volgende inhoud:
+Als u een aantal logboeken wilt genereren, maakt u een nieuwe pod in uw AKS-cluster. Het volgende voor beeld van een YAML-manifest kan worden gebruikt voor het maken van een Basic NGINX-exemplaar. Maak een bestand met de naam `nginx.yaml` in een editor van uw keuze en plak de volgende inhoud:
 
 ```yaml
 apiVersion: v1
@@ -107,20 +104,20 @@ Zie [verzamelde gegevens weer geven of analyseren met][analyze-log-analytics]log
 
 De volgende tabel bevat informatie over het schema dat wordt gebruikt voor elke gebeurtenis om de logboek gegevens te analyseren:
 
-| Veldnaam               | Description |
+| Veldnaam               | Beschrijving |
 |--------------------------|-------------|
-| *ResourceId*             | Azure-resource die het logboek heeft geproduceerd |
-| *tijd*                   | Tijds tempel van het moment waarop het logboek is geüpload |
-| *Categorie*               | Naam van container/onderdeel voor het genereren van het logboek |
-| *OperationName*          | Altijd *micro soft. container service/managedClusters/diagnosticLogs/lezen* |
+| *resourceId*             | Azure-resource die het logboek heeft geproduceerd |
+| *tegelijk*                   | Tijds tempel van het moment waarop het logboek is geüpload |
+| *rubriek*               | Naam van container/onderdeel voor het genereren van het logboek |
+| *operationName*          | Altijd *micro soft. container service/managedClusters/diagnosticLogs/lezen* |
 | *Eigenschappen. log*         | Volledige tekst van het logboek van het onderdeel |
-| *properties.stream*      | *stderr* of *stdout* |
-| *properties.pod*         | De naam van de pod waaruit het logboek afkomstig is |
-| *properties.containerID* | ID van de docker-container waarvan dit logboek afkomstig is |
+| *Eigenschappen. Stream*      | *stderr* of *stdout* |
+| *Eigenschappen. pod*         | De naam van de pod waaruit het logboek afkomstig is |
+| *Properties. containerID* | ID van de docker-container waarvan dit logboek afkomstig is |
 
 ## <a name="log-roles"></a>Logboek rollen
 
-| Role                     | Description |
+| Rol                     | Beschrijving |
 |--------------------------|-------------|
 | *aksService*             | De weergave naam in het controle logboek voor de bewerking van het besturings vlak (van de hcpService) |
 | *masterclient*           | De weergave naam in het controle logboek voor MasterClientCertificate, het certificaat dat u krijgt van AZ AKS Get-credentials |

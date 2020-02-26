@@ -3,14 +3,14 @@ title: Veilig verbinding maken met een Azure Service Fabric-cluster
 description: Hierin wordt beschreven hoe u client toegang tot een Service Fabric cluster verifieert en hoe u communicatie tussen clients en een cluster beveiligt.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458272"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587053"
 ---
-# <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligde cluster
+# <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
 
 Wanneer een client verbinding maakt met een Service Fabric cluster knooppunt, kan de client geverifieerde en beveiligde communicatie tot stand worden gebracht met behulp van certificaat beveiliging of Azure Active Directory (AAD). Deze verificatie zorgt ervoor dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en geïmplementeerde toepassingen en beheer taken kunnen uitvoeren.  Certificaten of AAD-beveiliging moet eerder zijn ingeschakeld op het cluster toen het cluster werd gemaakt.  Zie [cluster beveiliging](service-fabric-cluster-security.md)voor meer informatie over scenario's voor het beveiligen van het cluster. Als u verbinding maakt met een cluster dat is beveiligd met certificaten, [stelt u het client certificaat](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) in op de computer die verbinding maakt met het cluster. 
 
@@ -24,7 +24,7 @@ U kunt verbinding maken met een cluster met behulp van de opdracht `sfctl cluste
 
 Client certificaten kunnen worden opgegeven op twee verschillende manieren, hetzij als een certificaat en sleutel paar, hetzij als één PFX-bestand. U wordt gevraagd om het wacht woord op te geven voor met wacht woord beveiligde PEM-bestanden. Als u het client certificaat als een PFX-bestand hebt verkregen, moet u het PFX-bestand eerst converteren naar een PEM-bestand met behulp van de volgende opdracht. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -32,7 +32,7 @@ Als uw pfx-bestand niet is beveiligd met een wacht woord, gebruikt u-Passin Pass
 
 Geef het bestandspad op in het argument `--pem` om het client certificaat op te geven als een PEM-bestand. Bijvoorbeeld:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,7 +40,7 @@ Met een wacht woord beveiligde PEM-bestanden wordt om een wacht woord gevraagd v
 
 Als u een certificaat wilt opgeven, gebruikt u de argumenten `--cert` en `--key` om de bestands paden naar elk bestand op te geven.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -49,13 +49,13 @@ Soms certificaten die worden gebruikt voor het beveiligen van test-of dev-cluste
 > [!WARNING]
 > Gebruik de optie `no-verify` niet wanneer u verbinding maakt met productie Service Fabric clusters.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 Daarnaast kunt u paden opgeven naar mappen van vertrouwde CA-certificaten of afzonderlijke certificaten. Als u deze paden wilt opgeven, gebruikt u het argument `--ca`. Bijvoorbeeld:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

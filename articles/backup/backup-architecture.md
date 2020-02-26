@@ -3,12 +3,12 @@ title: Architectuur overzicht
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963934"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584384"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -135,7 +135,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
     - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het maken van een back-up kan enige tijd duren. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
 1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
-Azure-Vm's hebben Internet toegang nodig voor besturings opdrachten. Als u een back-up maakt van werk belastingen binnen de virtuele machine (bijvoorbeeld SQL Server database back-ups), heeft de back-end-gegevens ook toegang tot internet nodig.
+U hoeft geen expliciete Internet connectiviteit toe te staan om een back-up te maken van uw Azure-Vm's.
 
 ![Back-ups van virtuele Azure-machines](./media/backup-architecture/architecture-azure-vm.png)
 

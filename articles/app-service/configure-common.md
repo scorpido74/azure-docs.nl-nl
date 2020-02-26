@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198578"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592523"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -168,6 +168,8 @@ Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige 
     - **Bitness**: 32-bits of 64-bits.
     - **WebSocket-protocol**: voor [ASP.net-signa lering] of [socket.io](https://socket.io/), bijvoorbeeld.
     - **Altijd ingeschakeld**: de app wordt geladen, zelfs wanneer er geen verkeer is. Het is vereist voor doorlopende webjobs of voor webjobs die worden geactiveerd met behulp van een CRON-expressie.
+      > [!NOTE]
+      > Met de functie Always on kunt u het eind punt niet beheren. Er wordt altijd een aanvraag naar de hoofdmap van de toepassing verzonden.
     - **Beheerde pijplijn versie**: de IIS- [pipeline-modus]. Stel deze in op **klassiek** als u een verouderde app hebt waarvoor een oudere versie van IIS vereist is.
     - **Http-versie**: ingesteld op **2,0** om ondersteuning voor [https/2-](https://wikipedia.org/wiki/HTTP/2) protocol in te scha kelen.
     > [!NOTE]
@@ -225,7 +227,7 @@ U kunt [aangepaste opslag voor uw container-app toevoegen](containers/how-to-ser
 - **Toegangs sleutel**: voor geavanceerde configuratie, de toegangs sleutel.
 - **Koppelingspad**: het absolute pad in uw container om de aangepaste opslag te koppelen.
 
-Zie voor meer informatie [inhoud bezorgen van Azure Storage in app service op Linux](containers/how-to-serve-content-from-azure-storage.md).
+Zie [Inhoud uit Azure Storage leveren in App Service voor Linux](containers/how-to-serve-content-from-azure-storage.md) voor meer informatie.
 
 ## <a name="configure-language-stack-settings"></a>Taal stack-instellingen configureren
 

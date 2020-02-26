@@ -9,27 +9,36 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589365"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
 In dit artikel vindt u informatie over het gebruik van Azure Machine Learning voor het beheren van de levens cyclus van uw modellen. Azure Machine Learning maakt gebruik van een MLOps-benadering (Machine Learning Operations). MLOps verbetert de kwaliteit en consistentie van uw machine learning oplossingen. 
 
+## <a name="what-is-mlops"></a>Wat is MLOps?
+
+Machine Learning Operations (MLOps) is gebaseerd op [DevOps](https://azure.microsoft.com/overview/what-is-devops/) -principes en-procedures die de efficiëntie van werk stromen verg Roten. Bijvoorbeeld continue integratie, levering en implementatie. MLOps past deze principals toe op het machine learning proces, met als doel:
+
+* Sneller experimenteren en ontwikkelen van modellen
+* Snellere implementatie van modellen in productie
+* Kwaliteits garantie
+
 Azure Machine Learning biedt de volgende MLOps mogelijkheden:
 
-- **Maak reproduceer bare ml-pijp lijnen**. Met pijp lijnen kunt u Herhaal bare en herbruikbare stappen definiëren voor uw gegevens voorbereiding, training en Score processen.
-- **Registreer, verpak en implementeer modellen vanaf elke locatie** en houd gekoppelde meta gegevens bij die vereist zijn voor het gebruik van het model.
-- **Leg de governance-gegevens vast die nodig zijn voor het vastleggen van de end-to-end ml levenscyclus**, waaronder wie modellen publiceert, waarom wijzigingen worden aangebracht en wanneer modellen in productie zijn geïmplementeerd of gebruikt.
-- **Meld u aan bij gebeurtenissen in de levens cyclus van de ml** , zoals het volt ooien van het experiment, model registratie, model implementatie en detectie van gegevens drift.
+- **Maak reproduceer bare ml-pijp lijnen**. Met Machine Learning pijp lijnen kunt u Herhaal bare en herbruikbare stappen definiëren voor uw gegevens voorbereiding, training en Score processen.
+- **Herbruikbare software omgevingen maken** voor trainings-en implementatie modellen.
+- **Registreer, verpak en implementeer modellen vanaf elke locatie**. U kunt ook gekoppelde meta gegevens volgen die vereist zijn voor het gebruik van het model.
+- **Leg de governance-gegevens vast voor de end-to-end ml-levens cyclus**. De vastgelegde informatie kan bestaan uit wie modellen publiceert, waarom wijzigingen zijn aangebracht en wanneer modellen zijn geïmplementeerd of gebruikt voor productie.
+- Meld u **aan en waarschuw op gebeurtenissen in de levens cyclus van ml**. Voor beeld: voltooiing van het experiment, model registratie, model implementatie en detectie van gegevens drift.
 - **Bewaak ml-toepassingen voor operationele en ml-gerelateerde problemen**. Vergelijk model invoer tussen training en demijnen, verken specifieke metrische gegevens en geef bewaking en waarschuwingen op uw ML-infra structuur.
-- **Automatiseer de end-to-end ml-levens cyclus met Azure machine learning en Azure DevOps** om vaak updates te kunnen uitvoeren, nieuwe modellen te testen en voortdurend nieuwe ml-modellen uit te vouwen naast uw andere toepassingen en services.
+- **Automatiseer de end-to-end ml-levens cyclus met Azure machine learning en Azure-pijp lijnen**. Met behulp van pijp lijnen kunt u vaak modellen bijwerken, nieuwe modellen testen en voortdurend nieuwe ML-modellen implementeren naast uw andere toepassingen en services.
 
 ## <a name="create-reproducible-ml-pipelines"></a>Reproduceer bare ML-pijp lijnen maken
 
@@ -38,6 +47,12 @@ Gebruik ML-pijp lijnen van Azure Machine Learning om alle stappen in uw model tr
 Een ML-pijp lijn kan stappen bevatten van gegevens voorbereiding voor het uitpakken van de functie voor het afstemmen van de model evaluatie. Zie [ml-pijp lijnen](concept-ml-pipelines.md)voor meer informatie.
 
 Als u de [Designer](concept-designer.md) gebruikt om uw ml-pijp lijnen te maken, kunt u op elk gewenst moment klikken op **'... '** in de rechter bovenhoek van de ontwerp pagina en vervolgens **klonen**selecteren. Door uw pijp lijn te klonen, kunt u het ontwerp van de pijp lijn herhalen zonder dat uw oude versies verloren gaan.  
+
+## <a name="create-reusable-software-environments"></a>Herbruikbare software omgevingen maken
+
+Met Azure Machine Learning omgevingen kunt u de software afhankelijkheden van uw projecten bijhouden en reproduceren tijdens het ontwikkelen. Met omgevingen kunt u ervoor zorgen dat builds worden verreproduceerd zonder hand matige software configuraties.
+
+Omgevingen beschrijven de PIP-en Conda-afhankelijkheden voor uw projecten en kunnen worden gebruikt voor zowel trainingen als implementatie van modellen. Zie [Wat zijn Azure machine learning omgevingen](concept-environments.md)voor meer informatie.
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>Modellen vanaf elke locatie registreren, inpakken en implementeren
 
@@ -82,7 +97,7 @@ Wanneer u een model als een webservice of IoT Edge apparaat gebruikt, geeft u de
 
 * De modellen die worden gebruikt voor het bepalen van de gegevens die naar de service/het apparaat worden verzonden.
 * Een invoer script. Dit script accepteert aanvragen, maakt gebruik van de model (en) om de gegevens te beoordelen en retourneert een antwoord.
-* Een Conda-omgevings bestand waarin de afhankelijkheden worden beschreven die vereist zijn voor de model (len) en het vermeldings script.
+* Een Azure Machine Learning omgeving waarin de PIP-en Conda-afhankelijkheden worden beschreven die vereist zijn voor de model (len) en het vermeldings script.
 * Alle extra assets, zoals tekst, gegevens, enzovoort, die vereist zijn voor de model (len) en het vermeldings script.
 
 U kunt ook de configuratie van het platform voor doel implementatie opgeven. Bijvoorbeeld, het type van de VM-familie, het beschik bare geheugen en het aantal kernen bij het implementeren naar Azure Kubernetes service.
@@ -124,7 +139,7 @@ Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets
 
 - Azure ML [integreert met git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over de opslag plaats/vertakking/het door voeren van uw code.
 - Met de [Azure ml](how-to-create-register-datasets.md) -gegevens sets kunt u gegevens bijhouden, profiel en versie. 
-- In de geschiedenis van Azure ML run wordt een moment opname van de code, gegevens en reken kracht opgeslagen waarmee een model kan worden getraind.
+- In de geschiedenis van Azure ML run wordt een moment opname van de code, gegevens en berekeningen opgeslagen waarmee een model wordt getraind.
 - In het REGI ster van Azure ML-model worden alle meta gegevens vastgelegd die aan uw model zijn gekoppeld (waarbij experiment wordt getraind, waar het wordt geïmplementeerd als de implementaties in orde zijn).
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Meldingen, automatiseren en waarschuwen voor gebeurtenissen in de levens cyclus van ML
@@ -162,6 +177,8 @@ De [uitbrei ding Azure machine learning](https://marketplace.visualstudio.com/it
 * Maakt het mogelijk om release pijplijnen te activeren door getrainde modellen die zijn gemaakt in een trainings pijplijn.
 
 Voor meer informatie over het gebruik van Azure-pijp lijnen met Azure Machine Learning raadpleegt u de [continue integratie en implementatie van ml-modellen met Azure pipelines](/azure/devops/pipelines/targets/azure-machine-learning) -artikel en de [Azure machine learning MLOps](https://aka.ms/mlops) -opslag plaats.
+
+U kunt Azure Data Factory ook gebruiken om een pijp lijn voor gegevens opname te maken waarmee gegevens worden voor bereid voor gebruik met training. Zie [pijp lijn voor gegevens opname](how-to-cicd-data-ingestion.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483224"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585625"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C gebruikers accounts beheren met Microsoft Graph
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[API-aanroepen maken met behulp van de Microsoft Graph sdk's](https://docs.microsoft.comgraph/sdks/create-requests) bevat informatie over het lezen en schrijven van gegevens van Microsoft Graph, het gebruiken van `$select` om de opgehaalde eigenschappen te bepalen, aangepaste query parameters op te geven en de query parameters `$filter` en `$orderBy` te gebruiken.
+[API-aanroepen maken met behulp van de Microsoft Graph sdk's](https://docs.microsoft.com/graph/sdks/create-requests) bevat informatie over het lezen en schrijven van gegevens van Microsoft Graph, het gebruiken van `$select` om de opgehaalde eigenschappen te bepalen, aangepaste query parameters op te geven en de query parameters `$filter` en `$orderBy` te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

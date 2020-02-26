@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493694"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587257"
 ---
 # <a name="lsv2-series"></a>Lsv2-serie
 
@@ -23,7 +23,7 @@ De Lsv2-serie biedt een hoge door Voer, lage latentie, rechtstreeks toegewezen l
 >
 > De hoge door Voer en IOPs van de lokale schijf maken de virtuele machines uit de Lsv2-serie ideaal voor NoSQL-archieven zoals Apache Cassandra en MongoDB die gegevens repliceren op meerdere Vm's om persistentie te krijgen in het geval van een storing in één virtuele machine.
 >
-> Zie [prestaties optimaliseren op de virtuele machines uit de Lsv2-serie](/linux/storage-performance.md)voor meer informatie.  
+> Zie prestaties optimaliseren voor de virtuele machines uit de Lsv2-serie voor [Windows](../virtual-machines/windows/storage-performance.md) of [Linux](../virtual-machines/linux/storage-performance.md)voor meer informatie.  
 
 ACU: 150-175
 

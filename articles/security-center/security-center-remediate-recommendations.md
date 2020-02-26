@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981912"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603494"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Aanbevelingen herstellen in Azure Security Center
 
@@ -80,7 +80,7 @@ Voor de herstel bewerking wordt gebruikgemaakt van een sjabloon implementatie of
 |Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers|Met deze actie wordt Geavanceerd gegevens beveiliging (ADS) ingeschakeld op deze geselecteerde servers en de bijbehorende data bases. <br>**Opmerking**:<ul><li>Voor elke regio en resource groep van de geselecteerde SQL-servers wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle servers in die regio. <</li><li>ADS wordt in rekening gebracht op $15 per SQL Server.</li></ul>||
 |De evaluatie van beveiligings problemen moet worden ingeschakeld op uw SQL-servers|Met deze actie wordt SQL-evaluatie van beveiligings problemen op deze geselecteerde servers en de bijbehorende data bases ingeschakeld. <br>**Opmerking**:<ul><li>Evaluatie van SQL-beveiligings problemen maakt deel uit van het SQL Advanced Data Security-pakket (ADS). Als ADS nog niet is ingeschakeld, wordt deze automatisch ingeschakeld op de SQL-Server.</li><li>Voor elke regio en resource groep van de geselecteerde SQL-servers wordt een opslag account voor het opslaan van scan resultaten gemaakt en gedeeld door alle instanties in die regio.</li><li>ADS wordt in rekening gebracht op $15 per SQL Server.</li></ul>||
 |Transparante gegevens versleuteling voor SQL-data bases moet zijn ingeschakeld|Met deze actie wordt SQL Database Transparent Data Encryption (TDE) ingeschakeld voor de geselecteerde data bases. <br>**Opmerking**: standaard worden door service beheerde TDe-sleutels gebruikt.
-|Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld|Met deze actie wordt de beveiliging van uw opslag account bijgewerkt zodat alleen aanvragen voor beveiligde verbindingen worden toegestaan. (HTTPS). <br>**Opmerking**:<ul><li>Aanvragen die gebruikmaken van HTTP, worden geweigerd.</li><li>Wanneer u de service Azure files gebruikt, mislukt de verbinding zonder versleuteling, inclusief scenario's met SMB 2,1, SMB 3,0 zonder versleuteling en enkele van de Linux SMB-client. Meer informatie.</li></ul>|
+|Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld|Met deze actie wordt de beveiliging van uw opslag account bijgewerkt zodat alleen aanvragen voor beveiligde verbindingen worden toegestaan. (HTTPS). <br>**Opmerking**:<ul><li>Aanvragen die gebruikmaken van HTTP, worden geweigerd.</li><li>Wanneer u de service Azure files gebruikt, mislukt de verbinding zonder versleuteling, inclusief scenario's met SMB 2,1, SMB 3,0 zonder versleuteling en enkele van de Linux SMB-client. Meer informatie.</li></ul>|
 |Web-App moet alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
 |Functie-App moet alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|
 |De API-app mag alleen toegankelijk zijn via HTTPS|Met deze actie wordt alle verkeer van HTTP naar HTTPS omgeleid voor de geselecteerde resources. <br>**Opmerking**:<ul><li>Een HTTPS-eind punt zonder SSL-certificaat wordt weer gegeven in de browser met een ' privacy-fout '. Gebruikers met een aangepast domein moeten dus controleren of ze een SSL-certificaat hebben ingesteld.</li><li>Zorg ervoor dat de firewalls van de app service worden beveiligd door pakketten en webtoepassingen, zodat HTTPS-sessies worden doorgestuurd.</li></ul>|

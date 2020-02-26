@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928794"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597912"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Snelstartgids: een data factory en pijp lijn maken met behulp van .NET SDK
 
@@ -26,7 +26,7 @@ ms.locfileid: "74928794"
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-dot-net.md)
 
-In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](tutorial-transform-data-spark-portal.md) voor meer informatie over het **transformeren** van gegevens met Azure Data Factory.
+In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie **Zelfstudie: Gegevens transformeren met Spark** voor meer informatie over het [transformeren](tutorial-transform-data-spark-portal.md) van gegevens met Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -48,7 +48,7 @@ In de secties in *How to: gebruik de portal om een Azure AD-toepassing en Servic
 1. Maak in [een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)een toepassing die de .NET-toepassing vertegenwoordigt die u in deze zelf studie maakt. Voor de aanmeldings-URL kunt u een dummy-URL opgeven, zoals wordt getoond in het artikel (`https://contoso.org/exampleapp`).
 2. Haal de **toepassings-id** en **Tenant-id**op in [waarden ophalen voor aanmelden](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)en noteer deze waarden die u later in deze zelf studie gebruikt. 
 3. Haal in [certificaten en geheimen](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)de **verificatie sleutel**op en noteer deze waarde die u later in deze zelf studie gebruikt.
-4. Wijs in [de toepassing toewijzen aan een rol](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)de toepassing toe aan de rol **Inzender** op het abonnements niveau zodat de toepassing gegevens fabrieken kan maken in het abonnement.
+4. Wijs in [de toepassing toewijzen aan een rol](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)de toepassing toe aan de rol **Inzender** op het abonnements niveau zodat de toepassing gegevens fabrieken kan maken in het abonnement.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
@@ -61,7 +61,7 @@ Vervolgens maakt u een C# .net-console toepassing in Visual Studio:
 
 ## <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-1. Selecteer **Extra** > **NuGet-pakketbeheer** > **Package Manager Console**.
+1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**.
 2. Voer in het deel venster **Package Manager-console** de volgende opdrachten uit om pakketten te installeren. Zie het [micro soft. Azure. Management. DataFactory nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)voor meer informatie.
 
     ```powershell

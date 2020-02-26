@@ -1,81 +1,57 @@
 ---
-title: Machines in Azure Migrate groeperen met behulp van een afhankelijkheids visualisatie zonder agent
-description: Hierin wordt beschreven hoe u groepen maakt met behulp van computer afhankelijkheden op een agentloze manier.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Visualisatie van de afhankelijkheid van agents instellen in Azure Migrate
+description: Stel groepen in met behulp van een afhankelijkheids visualisatie zonder agents in Azure Migrate server beoordeling.
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: hamusa
-ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 2/24/2020
+ms.openlocfilehash: c9425ad1fa78f14a194d3fe13c259dadf4eb5eb6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049750"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589127"
 ---
-# <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Visualisatie van de afhankelijkheid van agents instellen voor evaluatie
+# <a name="set-up-agentless-dependency-visualization"></a>Visualisatie van de afhankelijkheid van agents instellen 
 
-In dit artikel wordt beschreven hoe u afhankelijkheids toewijzing zonder agent instelt in Azure Migrate: Server evaluatie. 
+In dit artikel wordt beschreven hoe u afhankelijkheids visualisatie instelt in Azure Migrate: Server Assessment. Met de [visualisatie van afhankelijkheden](concepts-dependency-visualization.md#what-is-dependency-visualization) kunt u afhankelijkheden identificeren en begrijpen tussen computers die u wilt beoordelen en migreren naar Azure.
+
+Met de visualisatie van de afhankelijkheid van agents kunt u computer afhankelijkheden identificeren zonder agents op computers te installeren. Het werkt door de TCP-verbindings gegevens vast te leggen van de computers waarvoor deze is ingeschakeld.
 
 > [!IMPORTANT]
-> Visualisatie van de afhankelijkheid van agents is momenteel beschikbaar als preview-versie voor Azure VMware-Vm's die zijn gedetecteerd met een Azure Migrate apparaat.
-> Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Deze preview wordt gedekt door de klant ondersteuning en kan worden gebruikt voor werk belastingen voor de productie.
+> Visualisatie zonder agents is momenteel alleen beschikbaar als preview-versie van Azure VMware Vm's, gedetecteerd met het Azure Migrate: Server assessment tool.
+> Functies zijn mogelijk beperkt of onvolledig.
+> Deze preview wordt gedekt door de klant ondersteuning en kan worden gebruikt voor werk belastingen voor de productie.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
-
-## <a name="about-dependency-mapping"></a>Over afhankelijkheids toewijzing
-
-Met afhankelijkheids toewijzing kunt u afhankelijkheden visualiseren tussen computers die u wilt beoordelen en migreren. U gebruikt meestal afhankelijkheids toewijzing als u computers wilt beoordelen met een hoger vertrouwens niveau.
-
-- In Azure Migrate: Server analyse verzamelt u computers in groepen voor evaluatie. Groepen bestaan gewoonlijk uit machines die samen moeten worden gemigreerd en de afhankelijkheids toewijzing helpt u bij het controleren van afhankelijkheden van machines, zodat u machines nauw keurig kunt groeperen.
-- Met toewijzing kunt u afhankelijke systemen detecteren die samen moeten worden gemigreerd. U kunt ook bepalen of een actief systeem nog steeds gebruikers is of een kandidaat is voor buiten gebruik stellen in plaats van migratie.
-- Met het visualiseren van afhankelijkheden kunt u ervoor zorgen dat er geen onverwachte storingen optreden tijdens de migratie.
-
-## <a name="about-agentless-visualization"></a>Over visualisatie zonder agents
-
-Voor visualisatie zonder agent hoeft u geen agents op computers te installeren. Het werkt door de TCP-verbindings gegevens vast te leggen van de computers waarvoor deze is ingeschakeld.
-
-- Nadat de detectie van afhankelijkheden is gestart, verzamelt het apparaat gegevens van machines met een polling-interval van vijf minuten.
-- De volgende gegevens worden verzameld:
-    - TCP-verbindingen
-    - Namen van processen die actieve verbindingen hebben
-    - Namen van geïnstalleerde toepassingen die de bovenstaande processen uitvoeren
-    - Nee. van verbindingen die zijn gedetecteerd bij elk polling-interval
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-- Visualisatie zonder agent is momenteel alleen beschikbaar voor virtuele VMware-machines.
 - Nu kunt u een server niet toevoegen aan of verwijderen uit een groep in de weer gave afhankelijkheids analyse.
-- Afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
+- Een afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
 - De afhankelijkheids gegevens kunnen momenteel niet worden gedownload in de indeling tabellair.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
+- [Bekijk](concepts-dependency-visualization.md#agentless-visualization) de vereisten en kosten die zijn gekoppeld aan de visualisatie van de afhankelijkheid van agents.
+- Bekijk de [ondersteunings vereisten](migrate-support-matrix-vmware.md#agentless-dependency-visualization) voor het instellen van de visualisatie van agentloze afhankelijkheden.
 - Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-- De afhankelijkheids analyse zonder agent is momenteel alleen beschikbaar voor VMware-machines.
 - Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
-- Zorg ervoor dat u uw VMware-machines in Azure Migrate hebt gedetecteerd. u kunt dit doen door een Azure Migrate apparaat voor [VMware](how-to-set-up-appliance-vmware.md)in te stellen. Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie. [Meer informatie](migrate-appliance.md).
-- [Bekijk de vereisten voor het](migrate-support-matrix-vmware.md#agentless-dependency-visualization) instellen van de visualisatie van de afhankelijkheid van agents.
-
+- Zorg ervoor dat u een [Azure migrate apparaat](migrate-appliance.md) hebt ingesteld om uw on-premises machines te detecteren. Meer informatie over het instellen van een apparaat voor [VMware](how-to-set-up-appliance-vmware.md) -vm's. Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie.
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Een gebruikers account maken voor detectie
 
-Stel een gebruikers account in met de vereiste machtigingen zodat de server evaluatie toegang kan krijgen tot de virtuele machine voor detectie. U kunt één gebruikers account opgeven.
+Stel een gebruikers account in zodat de server evaluatie toegang kan krijgen tot de virtuele machine voor detectie. U kunt één gebruikers account opgeven.
 
-- **Vereiste machtiging voor Windows-vm's**: het gebruikers account moet een lokale of een domein beheerder zijn.
-- **Vereiste machtiging voor Linux-vm's**: de hoofd bevoegdheid is vereist voor het account. De gebruikers account vereist ook deze twee mogelijkheden op/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
+- **Windows-vm's**: het gebruikers account moet een lokale of een domein beheerder zijn.
+- **Linux-vm's**: de hoofd bevoegdheid is vereist voor het account. De gebruikers account vereist ook deze twee mogelijkheden op/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Het gebruikers account toevoegen aan het apparaat
 
-U moet het gebruikers account toevoegen aan het apparaat.
+Voeg het gebruikers account toe aan het apparaat.
 
-Voeg het account als volgt toe:
-
-1. Open de app voor het beheren van apparaten. Navigeer naar het deel venster **vCenter-gegevens opgeven** .
-2. Klik in de sectie **toepassing en afhankelijkheden detecteren op vm's** op **referenties toevoegen** .
-3. Kies het **besturings systeem**.
-4. Geef een beschrijvende naam op voor het account.
-5. Geef de **gebruikers naam** en het **wacht woord** op
+1. Open de app voor het beheren van apparaten. 
+2. Navigeer naar het deel venster **vCenter-gegevens opgeven** .
+3. Klik in **toepassing en afhankelijkheden van Vm's detecteren**op **referenties toevoegen**
+3. Kies het **besturings systeem**, geef een beschrijvende naam op voor het account en de **gebruikers naam**/**wacht woord**
 6. Klik op **Opslaan**.
 7. Klik op **opslaan en detectie starten**.
 
@@ -94,17 +70,17 @@ Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen.
 
     ![Detectie van afhankelijkheid starten](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-U kunt afhankelijkheden 6 uur na het starten van de detectie van afhankelijkheden visualiseren.
+U kunt afhankelijkheden ongeveer zes uur na het starten van de detectie van afhankelijkheden visualiseren.
 
 ## <a name="visualize-dependencies"></a>Afhankelijkheden visualiseren
 
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
-2. Zoek naar de machine waarvoor u de afhankelijkheids toewijzing wilt weer geven.
-3. Klik op **afhankelijkheden weer geven** in de kolom **afhankelijkheden** .
+2. Zoek naar de computer die u wilt weer geven.
+3. Klik in de kolom **afhankelijkheden** op **afhankelijkheden weer geven**
 4. Wijzig de tijds periode waarvoor u de kaart wilt weer geven met de vervolg keuzelijst **tijd duur** .
-5. Vouw de **client** groep uit om de computers weer te geven die een afhankelijkheid hebben op de geselecteerde computer.
+5. Vouw de **client** groep uit om de machines met een afhankelijkheid op de geselecteerde computer weer te geven.
 6. Vouw de **poort** groep uit om de computers weer te geven die een afhankelijkheid hebben van de geselecteerde computer.
-7. Als u naar de kaart weergave van een van de afhankelijke computers wilt gaan, klikt u op de naam van de computer en vervolgens op **Server toewijzing laden**
+7. Als u wilt navigeren naar de kaart weergave van een van de afhankelijke machines, klikt u op de computer naam > **Server toewijzing laden**
 
     ![Server poort groep uitvouwen en server toewijzing laden](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
 
@@ -131,4 +107,4 @@ Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De machines groeperen](how-to-create-a-group.md)
+[Groepeert de machines](how-to-create-a-group.md) voor evaluatie.

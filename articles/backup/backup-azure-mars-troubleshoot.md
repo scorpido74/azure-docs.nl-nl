@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 06c741547e0206059195f481ed29dc8e69aa4dd3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665321"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583806"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -20,11 +20,11 @@ In dit artikel wordt beschreven hoe u fouten kunt oplossen die tijdens de config
 U wordt aangeraden het volgende te controleren voordat u begint met het oplossen van problemen met micro soft de Azure Recovery Services-agent (MARS):
 
 - [Zorg ervoor dat de Mars-agent up-to-date is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
-- [Zorg ervoor dat u verbinding hebt met het netwerk tussen de Mars-agent en Azure](https://aka.ms/AB-A4dp50).
+- [Zorg ervoor dat u verbinding hebt met het netwerk tussen de Mars-agent en Azure](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Zorg ervoor dat MARS wordt uitgevoerd (in de service console). Als dat het geval is, start u de bewerking opnieuw en probeert u het opnieuw.
-- [Zorg ervoor dat 5% tot 10% beschik bare volume ruimte beschikbaar is op de locatie van de Scratch map](https://aka.ms/AB-AA4dwtt).
-- [Controleer of een ander proces of antivirus software de Azure backup verstoort](https://aka.ms/AB-AA4dwtk).
-- Zie [back-ups worden niet volgens schema uitgevoerd](https://aka.ms/ScheduledBackupFailManualWorks)als de geplande back-up mislukt, maar hand matige back-up werkt.
+- [Zorg ervoor dat 5% tot 10% beschik bare volume ruimte beschikbaar is op de locatie van de Scratch map](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder).
+- [Controleer of een ander proces of antivirus software de Azure backup verstoort](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
+- Zie [back-ups worden niet volgens schema uitgevoerd](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)als de geplande back-up mislukt, maar hand matige back-up werkt.
 - Zorg ervoor dat uw besturings systeem over de meest recente updates beschikt.
 - [Zorg ervoor dat niet-ondersteunde stations en bestanden met niet-ondersteunde kenmerken worden uitgesloten van een back-up](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup).
 - Zorg ervoor dat de klok op het beveiligde systeem is geconfigureerd voor de juiste tijd zone.
@@ -33,7 +33,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
   - Zorg ervoor dat de agent wordt verwijderd van de server en dat deze wordt gewist uit de portal.
   - Gebruik dezelfde wachtwoordzin die voor het eerst is gebruikt om de server te registreren.
 - Zorg ervoor dat Azure PowerShell 3.7.0 is geïnstalleerd op zowel de bron-als de Kopieer computer voordat u de back-up start, voor offline back-ups.
-- Als de back-upagent wordt uitgevoerd op een virtuele machine van Azure, raadpleegt u [dit artikel](https://aka.ms/AB-AA4dwtr).
+- Als de back-upagent wordt uitgevoerd op een virtuele machine van Azure, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine).
 
 ## <a name="invalid-vault-credentials-provided"></a>Ongeldige kluis referenties ingevoerd
 
@@ -42,10 +42,10 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 | Oorzaak | Aanbevolen acties |
 | ---     | ---    |
 | **De kluis referenties zijn niet geldig** <br/> <br/> De kluis referentie bestanden zijn mogelijk beschadigd of verlopen. (Het is bijvoorbeeld mogelijk dat ze meer dan 48 uur vóór de registratie tijd hebben gedownload.)| Down load nieuwe referenties van Recovery Services kluis op de Azure Portal. (Zie stap 6 in het gedeelte [de Mars-agent downloaden](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) .) Voer vervolgens de volgende stappen uit: <ul><li> Als u MARS al hebt geïnstalleerd en geregistreerd, opent u de MMC-console Microsoft Azure Backup Agent en selecteert u vervolgens **server registreren** in het deel venster **acties** om de registratie met de nieuwe referenties te volt ooien. <br/> <li> Als de nieuwe installatie mislukt, probeert u opnieuw te installeren met de nieuwe referenties.</ul> **Opmerking**: als er meerdere kluis referentie bestanden zijn gedownload, is alleen het meest recente bestand geldig voor de volgende 48 uur. U wordt aangeraden een nieuw kluis referentie bestand te downloaden.
-| **De registratie van Proxy Server/firewall is geblokkeerd** <br/>of <br/>**Geen Internet verbinding** <br/><br/> Als uw computer of proxy server beperkte internet connectiviteit heeft en u geen toegang hebt tot de benodigde Url's, mislukt de registratie.| Voer de volgende stappen uit:<br/> <ul><li> Werk samen met uw IT-team om te controleren of het systeem verbinding heeft met internet.<li> Als u geen proxy server hebt, moet u ervoor zorgen dat de proxy optie niet is geselecteerd bij het registreren van de agent. [Controleer de proxy-instellingen](#verifying-proxy-settings-for-windows).<li> Als u een firewall/proxy server hebt, moet u samen werken met uw netwerk team om ervoor te zorgen dat deze Url's en IP-adressen toegang hebben:<br/> <br> **Adres**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Probeer de registratie opnieuw uit te voeren nadat u de voor gaande stappen voor probleem oplossing hebt door lopen.
+| **De registratie van Proxy Server/firewall is geblokkeerd** <br/>of <br/>**Geen Internet verbinding** <br/><br/> Als uw computer of proxy server beperkte internet connectiviteit heeft en u geen toegang hebt tot de benodigde Url's, mislukt de registratie.| Voer de volgende stappen uit:<br/> <ul><li> Werk samen met uw IT-team om te controleren of het systeem verbinding heeft met internet.<li> Als u geen proxy server hebt, moet u ervoor zorgen dat de proxy optie niet is geselecteerd bij het registreren van de agent. [Controleer de proxy-instellingen](#verifying-proxy-settings-for-windows).<li> Als u een firewall/proxy server hebt, moet u samen werken met uw netwerk team om ervoor te zorgen dat deze Url's en IP-adressen toegang hebben:<br/> <br> **Adres**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Probeer de registratie opnieuw uit te voeren nadat u de voor gaande stappen voor probleem oplossing hebt door lopen.<br></br> Als u verbinding maakt via Azure ExpressRoute, moet u ervoor zorgen dat de instellingen zijn geconfigureerd zoals beschreven in [ondersteuning voor Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Registratie wordt geblokkeerd door antivirus software** | Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
-### <a name="additional-recommendations"></a>Extra aanbevelingen
+### <a name="additional-recommendations"></a>Aanvullende aanbevelingen
 
 - Ga naar C:/Windows/Temp en controleer of er meer dan 60.000 of 65.000 bestanden met de extensie. tmp zijn. Als dat het geval is, verwijdert u deze bestanden.
 - Zorg ervoor dat de datum en tijd van de computer overeenkomen met de lokale tijd zone.

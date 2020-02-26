@@ -1,6 +1,6 @@
 ---
-title: Opties voor Azure IoT Hub apparaat-naar-cloud | Microsoft Docs
-description: Handleiding voor ontwikkelaars - richtlijnen over het gebruik van apparaat-naar-cloud-berichten, gerapporteerde eigenschappen of bestand uploaden voor cloud-naar-apparaat-berichten.
+title: Opties voor apparaat-naar-cloud van Azure IoT Hub | Microsoft Docs
+description: 'Ontwikkelaars handleiding: richt lijnen voor het gebruik van apparaat-naar-Cloud-berichten, gerapporteerde eigenschappen of het uploaden van bestanden voor Cloud-naar-apparaat-communicatie.'
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,38 +8,38 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02dc1b55d85b7137a5c1f57999cc3b7e9b1efe29
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60885513"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591333"
 ---
-# <a name="device-to-cloud-communications-guidance"></a>Richtlijnen voor communicatie van apparaat-naar-cloud
+# <a name="device-to-cloud-communications-guidance"></a>Communicatie richtlijnen voor apparaat-naar-Cloud
 
-Bij het verzenden van informatie van de apparaat-app op de oplossing voor back-end, IoT Hub wordt aangegeven dat drie opties:
+Bij het verzenden van informatie van de apparaat-app naar de back-end van de oplossing, IoT Hub drie opties beschikbaar:
 
-* [Apparaat-naar-cloud-berichten](iot-hub-devguide-messages-d2c.md) voor time series telemetriegegevens en waarschuwingen.
+* [Apparaat-naar-Cloud-berichten](iot-hub-devguide-messages-d2c.md) voor time series-telemetrie en-waarschuwingen.
 
-* [Apparaatdubbel de gerapporteerde eigenschappen](iot-hub-devguide-device-twins.md) voor het melden van informatie over de apparaatstatus, zoals de beschikbare mogelijkheden voorwaarden of de status van langlopende werkstromen. Bijvoorbeeld, configuratie en software-updates.
+* De [gerapporteerde eigenschappen van het](iot-hub-devguide-device-twins.md) apparaat worden gerapporteerd voor informatie over de status van het apparaat, zoals de beschik bare mogelijkheden, voor waarden of de status van langlopende werk stromen. Bijvoorbeeld configuratie-en software-updates.
 
-* [Bestand uploaden](iot-hub-devguide-file-upload.md) voor media-bestanden en grote telemetrie batches geüpload door tijdelijk verbonden apparaten of gecomprimeerd om bandbreedte te sparen.
+* Uploads van [bestanden](iot-hub-devguide-file-upload.md) voor media bestanden en grote telemetriegegevens worden geüpload door apparaten die op een regel matig zijn aangesloten of die zijn gecomprimeerd om band breedte te besparen.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Hier volgt een gedetailleerde vergelijking van de verschillende opties voor de communicatie van apparaat-naar-cloud.
+Hier volgt een gedetailleerde vergelijking van de verschillende opties voor apparaat-naar-Cloud communicatie.
 
-|  | Apparaat-naar-cloud-berichten | Gerapporteerde eigenschappen van de apparaatdubbel | Uploaden van bestanden |
+|  | Apparaat-naar-cloud-berichten | De gerapporteerde eigenschappen van het apparaat dubbele | Uploaden van bestanden |
 | ---- | ------- | ---------- | ---- |
-| Scenario | Tijdreeks Telemetrie en waarschuwingen. Bijvoorbeeld, 256 KB sensor gegevensbatches verzonden om de 5 minuten. | Beschikbare mogelijkheden en voorwaarden. Bijvoorbeeld, de huidige apparaat connectiviteitsmodus zoals Mobiel of Wi-Fi. Langlopende werkstromen, zoals configuratie- en software-updates synchroniseren. | Mediabestanden. Groot (meestal gecomprimeerde) telemetrie batches. |
-| Opslaan en ophalen | Tijdelijk opgeslagen door IoT Hub, maximaal 7 dagen. Alleen sequentieel lezen. | Opgeslagen door de IoT Hub in de apparaatdubbel. Met behulp van ophalen mogelijk de [IoT Hub-querytaal](iot-hub-devguide-query-language.md). | Opgeslagen in Azure Storage-account van gebruiker. |
-| Grootte | Maximaal 256 KB-berichten. | Gerapporteerde eigenschappen maximale grootte is 8 KB. | Maximale bestandsgrootte die wordt ondersteund door Azure Blob Storage. |
-| Frequentie | Hoog. Zie voor meer informatie, [IoT-Hub beperkt](iot-hub-devguide-quotas-throttling.md). | Gemiddeld. Zie voor meer informatie, [IoT-Hub beperkt](iot-hub-devguide-quotas-throttling.md). | Laag. Zie voor meer informatie, [IoT-Hub beperkt](iot-hub-devguide-quotas-throttling.md). |
-| Protocol | Beschikbaar op alle protocollen. | Beschikbaar met behulp van MQTT- of AMQP. | Beschikbaar zijn wanneer u elk protocol voor, maar vereist HTTPS op het apparaat. |
+| Scenario | Telemetrische time series en waarschuwingen. Bijvoorbeeld: 256-KB-sensor gegevens batches die elke vijf minuten worden verzonden. | Beschik bare mogelijkheden en voor waarden. Bijvoorbeeld de huidige connectiviteits modus voor apparaten, zoals mobiel of WiFi. Het synchroniseren van langlopende werk stromen, zoals configuratie-en software-updates. | Media bestanden. Grote (meestal gecomprimeerde) telemetrie-batches. |
+| Opslag en ophalen | Tijdelijk opgeslagen door IoT Hub, Maxi maal 7 dagen. Alleen sequentiële Lees bewerkingen. | Opgeslagen door IoT Hub op het dubbele apparaat. Kan worden opgehaald met behulp van de [IOT hub-query taal](iot-hub-devguide-query-language.md). | Opgeslagen in Azure Storage account van de gebruiker. |
+| Grootte | Maxi maal 256 KB-berichten. | De maximale grootte van de gerapporteerde eigenschappen is 32 KB. | Maximale bestands grootte die wordt ondersteund door Azure Blob Storage. |
+| Frequency | Hoog. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Gemiddeld. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Laag. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. |
+| Protocol | Beschikbaar op alle protocollen. | Beschikbaar via MQTT of AMQP. | Beschikbaar wanneer u een protocol gebruikt, maar HTTPS vereist op het apparaat. |
 
-Een toepassing mogelijk nodig voor het verzenden van gegevens als een tijdreeks telemetrie of waarschuwing en het beschikbaar maken in de apparaatdubbel. In dit scenario kunt u een van de volgende opties kiezen:
+Een toepassing moet mogelijk gegevens verzenden als een telemetrie-tijd reeks of-waarschuwing en deze beschikbaar maken op het apparaat dubbele. In dit scenario kunt u een van de volgende opties kiezen:
 
-* De apparaat-app verzendt een bericht apparaat-naar-cloud en rapporten van een eigenschap wijzigen.
-* De back-end oplossing kunt de gegevens opslaan in de apparaatdubbel-tags wanneer wordt het bericht ontvangen.
+* De apparaat-app verzendt een apparaat-naar-Cloud bericht en rapporteert een eigenschaps wijziging.
+* Met de back-end van de oplossing kunt u de gegevens opslaan in de tags van de dubbele apparaten wanneer het bericht wordt ontvangen.
 
-Sinds de apparaat-naar-cloud-berichten inschakelen voor een veel hogere doorvoer dan apparaatdubbel werkt, is het soms wenselijk is om te voorkomen dat het bijwerken van de apparaatdubbel voor elk bericht dat apparaat-naar-cloud.
+Omdat apparaat-naar-Cloud-berichten een veel hogere door voer hebben dan dubbele updates van het apparaat, is het soms wenselijk om te voor komen dat het apparaat voor elk apparaat-naar-Cloud bericht wordt bijgewerkt.

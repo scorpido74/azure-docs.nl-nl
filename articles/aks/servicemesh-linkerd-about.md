@@ -2,16 +2,15 @@
 title: Overzicht van Linkerd
 description: Een overzicht van Linkerd verkrijgen
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 9d0a65f2cf557120ec5a551494e697c876ad5c59
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530210"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593764"
 ---
 # <a name="linkerd"></a>Linkerd
 
@@ -60,7 +59,7 @@ De volgende ontwerp principes [begeleiden][design-principles] het Linkerd-projec
 - U hoeft **alleen maar** de bestaande toepassingen te onderbreken en geen ingewikkelde configuratie te hoeven uitvoeren.
 
 
-### <a name="capabilities"></a>Mogelijkheden
+### <a name="capabilities"></a>Functionaliteit
 
 Linkerd biedt de volgende mogelijkheden:
 
@@ -73,7 +72,7 @@ Linkerd biedt de volgende mogelijkheden:
 - Behulp van behulp van behulp van een gouden metrische waarde, tikken, traceren, service profielen en metrische gegevens van de route, webdashboard met topologie grafieken, Prometheus, grafana
 
 
-### <a name="scenarios"></a>Scenario's
+### <a name="scenarios"></a>Scenario 's
 
 Linkerd is goed geschikt voor de volgende scenario's:
 

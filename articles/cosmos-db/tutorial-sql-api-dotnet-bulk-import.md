@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896282"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587563"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Gegevens bulksgewijs importeren naar Azure Cosmos DB SQL-API-account met behulp van de .NET SDK
 
@@ -120,13 +120,13 @@ Laten we beginnen met het overschrijven van de standaard `Main` methode en het d
 
 Voeg in de methode `Main` de volgende code toe om het object CosmosClient te initialiseren:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 Nadat de bulk uitvoering is ingeschakeld, worden in de CosmosClient intern gelijktijdige bewerkingen in enkele service aanroepen gegroepeerd. Op deze manier optimaliseert het het gebruik van de door Voer om service aanroepen over partities te verdelen en uiteindelijk afzonderlijke resultaten toe te wijzen aan de oorspronkelijke bellers.
 
 U kunt vervolgens een container maken om al onze items op te slaan.  Definieer `/pk` als de partitie sleutel, 50000 RU/s als ingerichte door Voer en een aangepast indexerings beleid waarmee alle velden worden uitgesloten voor het optimaliseren van de schrijf doorvoer. Voeg de volgende code toe na de CosmosClient-initialisatie-instructie:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>Stap 6: een lijst met gelijktijdige taken vullen
 
@@ -141,22 +141,22 @@ Voeg eerst het loze pakket toe aan de oplossing met behulp van de DotNet opdrach
 
 Definieer de definitie van de items die u wilt opslaan. U moet de klasse `Item` in het `Program.cs` bestand definiëren:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 Maak vervolgens een hulp functie binnen de klasse `Program`. Met deze hulp functie wordt het aantal items opgehaald dat u hebt gedefinieerd om wille keurige gegevens te plaatsen en te genereren:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 Lees de items en serialisatie deze naar stream-instanties met behulp van de `System.Text.Json`-klasse. Vanwege de aard van de automatisch gegenereerde gegevens, moet u de gegevens serialiseren als stromen. U kunt het item exemplaar ook rechtstreeks gebruiken, maar door ze te converteren naar stromen, kunt u gebruikmaken van de prestaties van stream-Api's in de CosmosClient. Normaal gesp roken kunt u de gegevens rechtstreeks gebruiken zolang u de partitie sleutel kent. 
 
 
 Als u de gegevens wilt converteren naar stream-instanties, voegt u de volgende code toe in de `Main`-methode, nadat u de container hebt gemaakt:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 Gebruik vervolgens de gegevens stromen om gelijktijdige taken te maken en de taken lijst in te vullen om de items in de container in te voegen. Als u deze bewerking wilt uitvoeren, voegt u de volgende code toe aan de klasse `Program`:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 Al deze gelijktijdige punt bewerkingen worden samen uitgevoerd (dat is in bulk), zoals beschreven in de sectie Inleiding.
 

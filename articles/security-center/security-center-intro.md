@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939440"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604066"
 ---
-# <a name="what-is-azure-security-center"></a>Wat is Azure Beveiligingscentrum?
+# <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
 Azure Security Center is een geïntegreerd beveiligingsbeheersysteem voor de infrastructuur dat de beveiligingsstatus van uw datacenters verbetert en geavanceerde beveiliging tegen bedreigingen biedt voor uw hybride workloads in de cloud, of ze nu plaatsvinden in Azure of niet, en on-premises.
 
@@ -81,9 +81,9 @@ Een van de krach tigste hulpprogram ma's Security Center voorziet in het voortdu
 
 ![Security Center-netwerkoverzicht](media/security-center-intro/sc-net-map.png)
 
-Security Center verkleint uw beveiligings waarschuwingen één stap eenvoudiger door een **beveiligde Score**toe te voegen. De beveiligingsscores worden nu gekoppeld aan elke aanbeveling die u ontvangt, zodat u weet hoe belangrijk elke aanbeveling is voor uw algehele beveiligingsstatus. Dit is van cruciaal belang bij het instellen van **de prioriteit van uw beveiligings werk**.
+Security Center verkleint uw beveiligings waarschuwingen één stap eenvoudiger door een **beveiligde Score**toe te voegen. De beveiligde scores zijn nu gekoppeld aan elke aanbeveling die u ontvangt, zodat u begrijpt hoe belang rijk elke aanbeveling is voor uw algemene beveiligings postuur. Dit is van cruciaal belang bij het instellen van **de prioriteit van uw beveiligings werk**.
 
-![Security Center-beveiligingsscore](media/security-center-intro/sc-secure-score.png)
+![Beveiligde Score Security Center](media/security-center-intro/sc-secure-score.png)
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>De beveiliging optimaliseren en verbeteren door aanbevolen beheeropties te configureren
 
@@ -97,7 +97,7 @@ Met de aanbevelingen kunt u de kwetsbaarheid voor aanvallen verminderen voor al 
 
 ![Voorbeeld van een Security Center-aanbeveling](media/security-center-intro/sc-recommendation-example.png)
 
-## <a name="protect-against-threats"></a>Beschermen tegen bedreigingen
+## <a name="protect-against-threats"></a>Beveiligen tegen bedreigingen
 
 Met de beveiliging tegen bedreigingen van Security Center kunt u bedreigingen detecteren en voorkomen op de IaaS-laag (infrastructuur als een dienst), andere servers dan Azure-servers en PaaS-services (platform als een dienst) in Azure.
 

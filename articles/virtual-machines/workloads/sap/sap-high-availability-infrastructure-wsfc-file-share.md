@@ -1,10 +1,10 @@
 ---
-title: Azure-infrastructuur voorbereiding voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-exemplaren | Microsoft Docs
+title: Azure-infra structuur voor SAP ASCS/SCS HA met WSFC-& bestands share | Microsoft Docs
 description: Azure-infrastructuur voorbereiding voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647540"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591537"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties
 
@@ -209,7 +209,7 @@ ms.locfileid: "75647540"
 
 In dit artikel worden de voorbereidende stappen voor Azure-infra structuur beschreven die nodig zijn voor het installeren en configureren van hoogwaardige SAP-systemen op een Windows Server failover clustering cluster (WSFC) met scale-out bestands share als optie voor het clusteren van SAP ASCS/SCS-instanties.
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 Lees het volgende artikel voordat u de installatie start:
 
@@ -222,8 +222,8 @@ Lees het volgende artikel voordat u de installatie start:
 | --- | --- | --- | --- |
 | Eerste cluster knooppunt ASCS/SCS-cluster | ascs-1 | 10.0.6.4 | ascs-as |
 | Tweede cluster knooppunt ASCS/SCS-cluster | ascs-2 | 10.0.6.5 | ascs-as |
-| Cluster netwerk naam |ascs-cl | 10.0.6.6 | n.v.t. |
-| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | n.v.t. |
+| Cluster netwerk naam |ascs-cl | 10.0.6.6 | N.v.t. |
+| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | N.v.t. |
 
 
 **Tabel 1**: ASCS/SCS-cluster
@@ -240,8 +240,8 @@ Lees het volgende artikel voordat u de installatie start:
 | Eerste cluster knooppunt | sofs-1 | 10.0.6.10 | sofs-as |
 | Tweede cluster knooppunt | sofs-2 | 10.0.6.11 | sofs-as |
 | Derde cluster knooppunt | sofs-3 | 10.0.6.12 | sofs-as |
-| Cluster netwerk naam | sofs-cl | 10.0.6.13 | n.v.t. |
-| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | n.v.t. |
+| Cluster netwerk naam | sofs-cl | 10.0.6.13 | N.v.t. |
+| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | N.v.t. |
 
 **Tabel 3**: cluster scale-out bestandsserver
 

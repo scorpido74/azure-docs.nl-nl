@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524253"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586781"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Taak voorbereiding en taak release taken uitvoeren op batch Compute-knoop punten
 
@@ -54,20 +54,23 @@ Mogelijk wilt u een kopie van de logboek bestanden die door uw taken worden gege
 
 > [!TIP]
 > Een andere manier om logboeken en andere taak-en taak uitvoer gegevens te behouden, is door de [Azure batch bestands conventies](batch-task-output.md) bibliotheek te gebruiken.
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>Taak voor het voorbereiden van taken
-Voordat de taken van een taak worden uitgevoerd, voert batch de taak voorbereidings taken uit op elk reken knooppunt dat is gepland om een taak uit te voeren. Standaard wacht de batch-service dat de taak voorbereidings taak moet worden voltooid voordat de taken worden uitgevoerd die zijn gepland om te worden uitgevoerd op het knoop punt. U kunt de service echter zo configureren dat deze niet wordt gewacht. Als het knoop punt opnieuw wordt opgestart, wordt de taak voor het voorbereiden van de taak opnieuw uitgevoerd, maar u kunt dit gedrag ook uitschakelen. Als u een taak hebt met een taak voorbereidings taak en taak beheer taak geconfigureerd, wordt de taak voor het voorbereiden van de taak vóór de taak beheer taak uitgevoerd, net zoals voor alle andere taken. De taak voor het voorbereiden van taken wordt altijd eerst uitgevoerd.
+
+
+Voordat de taken van een taak worden uitgevoerd, voert batch de taak voorbereidings taken uit op elk reken knooppunt dat is gepland om een taak uit te voeren. Batch wacht op het volt ooien van de taak voorbereidings taak voordat de taken worden uitgevoerd die zijn gepland om te worden uitgevoerd op het knoop punt. U kunt de service echter zo configureren dat deze niet wordt gewacht. Als het knoop punt opnieuw wordt opgestart, wordt de taak voor het voorbereiden van de taak opnieuw uitgevoerd. U kunt dit gedrag ook uitschakelen. Als u een taak hebt met een taak voorbereidings taak en taak beheer taak geconfigureerd, wordt de taak voor het voorbereiden van de taak vóór de taak beheer taak uitgevoerd, net zoals voor alle andere taken. De taak voor het voorbereiden van taken wordt altijd eerst uitgevoerd.
 
 De taak voor het voorbereiden van taken wordt alleen uitgevoerd op knoop punten waarop een taak is gepland. Hiermee wordt voor komen dat een voorbereidings taak onnodig wordt uitgevoerd als er geen taak aan een knoop punt is toegewezen. Dit kan gebeuren wanneer het aantal taken voor een taak kleiner is dan het aantal knoop punten in een pool. Dit geldt ook wanneer [gelijktijdige taak uitvoering](batch-parallel-node-tasks.md) is ingeschakeld, waardoor enkele knoop punten niet-actief blijven als het aantal taken lager is dan het totale aantal mogelijke gelijktijdige taken. Door de taak voorbereidings taak niet uit te voeren op niet-actieve knoop punten, kunt u minder geld best Eden aan de kosten voor gegevens overdracht.
 
 > [!NOTE]
 > [JobPreparationTask][net_job_prep_cloudjob] wijkt af van [CloudPool. StartTask][pool_starttask] in dat JobPreparationTask aan het begin van elke taak wordt uitgevoerd, terwijl StartTask alleen wordt uitgevoerd wanneer een reken knooppunt eerst aan een groep wordt toegevoegd of opnieuw wordt opgestart.
-> 
-> 
+>
 
-## <a name="job-release-task"></a>Taak voor taak release
+
+>## <a name="job-release-task"></a>Taak voor taak release
+
 Zodra een taak is gemarkeerd als voltooid, wordt de taak vrijgave uitgevoerd op elk knoop punt in de pool dat ten minste één taak heeft uitgevoerd. U markeert een taak als voltooid door een Terminate-aanvraag uit te geven. De batch-service stelt vervolgens de taak status in op *beëindigen*, beëindigt actieve of actieve taken die zijn gekoppeld aan de taak en voert de taak vrijgave uit. De taak wordt vervolgens verplaatst naar de status *voltooid* .
 
 > [!NOTE]

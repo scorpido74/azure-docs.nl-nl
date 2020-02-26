@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048188"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592099"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutel configuratie 
 
@@ -86,8 +86,8 @@ Voor Application Insights CMK-configuratie volgt u de bijlage-inhoud voor stap 3
 1. Abonnements white list: dit is vereist voor deze vroege Access-functie
 2. Azure Key Vault maken en de sleutel opslaan
 3. Een *cluster* bron maken
-4. Machtigingen verlenen aan uw Key Vault
-5. Inrichting van Azure Monitor-gegevens archief (ADX-cluster)
+4. Inrichting van Azure Monitor-gegevens archief (ADX-cluster)
+5. Machtigingen verlenen aan uw Key Vault
 6. Koppeling van Log Analytics werk ruimten
 
 De procedure wordt momenteel niet ondersteund in de gebruikers interface en het inrichtings proces wordt uitgevoerd via REST API.
@@ -135,7 +135,7 @@ Deze instellingen zijn beschikbaar via CLI en Power shell:
 
 ### <a name="create-cluster-resource"></a>*Cluster* bron maken
 
-Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn white list, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden. Voor Application Insights en Log Analytics zijn afzonderlijke cluster bronnen vereist. Het type van de cluster bron wordt gedefinieerd tijdens de aanmaak tijd door de eigenschap clusterType in te stellen op ' LogAnalytics ' of ' ApplicationInsights '. Het bron type van het cluster kan niet worden gewijzigd.
+Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn white list, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden. Voor Application Insights en Log Analytics zijn afzonderlijke cluster bronnen vereist. Het type van de *cluster* bron wordt gedefinieerd tijdens de aanmaak tijd door de eigenschap clusterType in te stellen op ' LogAnalytics ' of ' ApplicationInsights '. Het bron type van het cluster kan niet worden gewijzigd.
 
 Voor Application Insights CMK-configuratie volgt u de bijlage inhoud voor deze stap.
 
@@ -156,61 +156,73 @@ Content-type: application/json
    }
 }
 ```
+De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
 de waarde ' clusterType ' is ' ApplicationInsights ' voor Application Insights CMK.
 
 **Antwoord**
 
-De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
+202 geaccepteerd. Dit is een standaard Resource Manager-antwoord voor asynchrone bewerkingen.
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-' principalId ' is een GUID die wordt gegenereerd door de beheerde identiteits service voor de *cluster* bron.
-
-> [!IMPORTANT]
-> Kopieer de waarde ' cluster-id ', want u hebt deze nodig in de volgende stappen.
-
-Als u de *cluster* bron om welke reden dan ook wilt verwijderen, kunt u deze met een andere naam of clusterType maken met behulp van deze API-aanroep:
+Als u de *cluster* bron om welke reden dan ook wilt verwijderen, kunt u deze rest API maken met een andere naam of clusterType:
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inrichting van Azure Monitor-gegevens archief (ADX-cluster)
+
+Tijdens de vroegtijdige toegangs periode van de functie wordt het ADX-cluster hand matig ingericht door het product team nadat de vorige stappen zijn voltooid. Gebruik het kanaal dat u met micro soft hebt om de *cluster* resource gegevens op te geven. De JSON-reactie kan worden opgehaald met behulp van GET REST API:
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**Antwoord**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+' principalId ' is een GUID die wordt gegenereerd door de beheerde identiteits service voor de *cluster* bron.
+
+> [!IMPORTANT]
+> Kopieer de waarde ' cluster-id ', want u hebt deze nodig in de volgende stappen.
+
+
 ### <a name="grant-key-vault-permissions"></a>Key Vault machtigingen verlenen
 
-Werk uw Key Vault bij en voeg het toegangs beleid voor de cluster bron toe. De machtigingen voor uw Key Vault worden vervolgens door gegeven aan de Azure Monitor opslag die moet worden gebruikt voor gegevens versleuteling.
+> [!IMPORTANT]
+> Deze stap moet worden uitgevoerd nadat u een bevestiging van de product groep hebt ontvangen via uw micro soft-kanaal dat aan het ADX-aanbod van Azure Monitor-gegevens archief is voldaan. Het bijwerken van het toegangs beleid voor de Key Vault voorafgaand aan deze inrichting kan mislukken.
+
+Werk uw Key Vault bij met een nieuw toegangs beleid waarmee u machtigingen voor uw *cluster* bron kunt verlenen. Deze machtigingen worden gebruikt door de Azure Monitor opslag voor gegevens versleuteling.
 Open uw Key Vault in Azure Portal en klik vervolgens op toegangs beleid en vervolgens op toegangs beleid toevoegen om een nieuw beleid te maken met de volgende instellingen:
 
 - Belang rijke machtigingen: Selecteer Get, terugloop sleutel en de machtigingen voor de uitpakken sleutel.
-
-- Selecteer Principal: Voer de cluster-id in die de ' clusterId-waarde is in het antwoord van de vorige stap.
+- Selecteer Principal: Voer de waarde van het cluster-id in die is geretourneerd in het antwoord in de vorige stap.
 
 ![Key Vault machtigingen verlenen](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 De machtiging *Get* is vereist om te controleren of uw Key Vault is geconfigureerd als herstelbaar om uw sleutel en de toegang tot uw Azure monitor gegevens te beveiligen.
 
-Het duurt enkele minuten totdat de *cluster* bron is door gegeven in azure Resource Manager. Bij het configureren van dit toegangs beleid onmiddellijk nadat de *cluster* bron is gemaakt, kan er een tijdelijke fout optreden. In dit geval probeert u het over enkele minuten opnieuw.
-
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Cluster bron bijwerken met sleutel-id Details
 
-Deze stap is van toepassing op de volgende belang rijke versie-updates in uw Key Vault. Werk de *cluster* bron bij met Key Vault *sleutel-id* -Details zodat Azure monitor opslag de nieuwe sleutel versie kan gebruiken. Selecteer de huidige versie van uw sleutel in Azure Key Vault om de details van de sleutel-id op te halen.
+Deze stap is van toepassing op toekomstige belang rijke versie-updates in uw Key Vault. Werk de *cluster* bron bij met Key Vault *sleutel-id* -Details zodat Azure monitor opslag de nieuwe sleutel versie kan gebruiken. Selecteer de huidige versie van uw sleutel in Azure Key Vault om de details van de sleutel-id op te halen.
 
 ![Key Vault machtigingen verlenen](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 ' KeyVaultProperties ' bevat de details van de Key Vault sleutel-id.
@@ -264,44 +276,6 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inrichting van Azure Monitor-gegevens archief (ADX-cluster)
-
-Tijdens de vroegtijdige toegangs periode van de functie wordt het ADX-cluster hand matig ingericht door het product team nadat de vorige stappen zijn voltooid. Gebruik het kanaal dat u met micro soft hebt om de volgende details op te geven:
-
-- Bevestig dat de bovenstaande stappen zijn uitgevoerd.
-
-- De JSON-reactie van de vorige stap. Deze kan op elk gewenst moment worden opgehaald met behulp van een Get API-aanroep:
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **Antwoord**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Werkruimte koppeling met *cluster* resource
 
@@ -560,7 +534,7 @@ De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
 > [!IMPORTANT]
 > Kopieer de waarde ' cluster-id ', want u hebt deze nodig in de volgende stappen.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-updatehttpsdocsmicrosoftcomrestapiapplication-insightscomponentscreateorupdate-api"></a>Een onderdeel koppelen aan een *cluster* bron met behulp van [onderdelen-API maken of bijwerken](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Een onderdeel koppelen aan een *cluster* bron met behulp van [onderdelen-API maken of bijwerken](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

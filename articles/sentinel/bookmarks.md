@@ -1,8 +1,8 @@
 ---
 title: Jacht-blad wijzers gebruiken voor gegevens onderzoek in azure Sentinel
 description: In dit artikel wordt beschreven hoe u de Azure Sentinel jacht-blad wijzers gebruikt om gegevens bij te houden.
-author: cabailey
-ms.author: cabailey
+author: yelevin
+ms.author: yelevin
 manager: rkarlin
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563731"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588685"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Gegevens bijhouden tijdens de jacht met Azure Sentinel
 
@@ -34,7 +34,7 @@ Als er momenteel een preview-versie beschikbaar is, kunt u, als u iets vindt dat
 
 U kunt ook in de preview-versie uw bladwijzer gegevens visualiseren door te klikken op **onderzoeken** in de bladwijzer gegevens. Hiermee wordt de onderzoek ervaring gestart waarbij u uw bevindingen kunt bekijken, onderzoeken en visueel kunnen communiceren met behulp van een interactief diagram en tijd lijn van een interactieve entiteit.
 
-## <a name="add-a-bookmark"></a>Een bladwijzer toevoegen
+## <a name="add-a-bookmark"></a>Een blad wijzer toevoegen
 
 1. Ga in de Azure Portal naar **Sentinel** > **Threat Management** > **jacht** om query's uit te voeren voor verdacht en afwijkend gedrag.
 

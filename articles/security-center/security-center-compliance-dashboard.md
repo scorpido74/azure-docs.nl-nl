@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112312"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604455"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Zelf studie: de naleving van regelgeving verbeteren
 ---
@@ -49,7 +49,7 @@ Dankzij de weergave in het dashboard Naleving van regelgeving kunt u uw aandacht
 >
 > Met de functie [voor dynamische nalevings pakketten (preview)](update-regulatory-compliance-packages.md) kunt u de standaarden die in het dash board voor nalevings beleid worden weer gegeven, upgraden naar de nieuwe *dynamische* pakketten. U kunt ook dezelfde preview-functie gebruiken om nieuwe nalevings pakketten toe te voegen en uw compatibiliteit met aanvullende standaarden te controleren. 
 
-1.  Selecteer in het hoofd menu van Security Center onder **beleids & naleving** de optie naleving van **regelgeving**. <br>
+1.  Selecteer in het hoofd menu van Security Center onder **beleids &AMP; naleving** de optie naleving van **regelgeving**. <br>
 Boven aan het scherm ziet u een dashboard met een overzicht van de nalevingsstatus in combinatie met de set ondersteunde richtlijnen voor naleving. U ziet de totale nalevingsscore en het aantal positieve en negatieve beoordelingen die op elke standaard van toepassing zijn.
 
     ![computerbeschrijving met hoge betrouwbaarheid](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -62,7 +62,7 @@ Boven aan het scherm ziet u een dashboard met een overzicht van de nalevingsstat
 
     Het rapport bevat een samen vatting van de nalevings status voor de geselecteerde standaard op basis van Security Center evaluatie gegevens en is ingedeeld volgens de besturings elementen van die specifieke standaard. Het rapport kan worden gedeeld met relevante belanghebbenden en kan dienen om bewijs te leveren aan interne en externe accountants.
 
-    ![download](./media/security-center-compliance-dashboard/download-report.png)
+    ![Downloaden](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>De nalevingspostuur verbeteren
 
@@ -104,5 +104,3 @@ Zie voor meer informatie:
 -   [Aanbevelingen voor beveiliging beheren in azure Security Center](security-center-recommendations.md) -meer informatie over het gebruik van aanbevelingen in azure Security Center om uw Azure-resources te beveiligen.
 
 -   [Verbeter uw beveiligde Score in azure Security Center](security-center-secure-score.md) : Ontdek hoe u beveiligings problemen en beveiligings aanbevelingen kunt voor de meeste verbetering van uw beveiligings postuur.
-
--   [Veelgestelde](security-center-faq.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service.

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 8edadbf946a28239ae4d28d56b3dccd77b451a71
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277160"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589008"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Snelstartgids: uw lente-Cloud toepassing vanuit de bron code starten
 
@@ -62,10 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Open een Azure CLI-venster en voer de volgende opdrachten uit om een exemplaar van de Azure lente-Cloud in te richten. Houd er rekening mee dat we hier ook een openbaar domein aan kunnen toewijzen.
+Maak een resource groep die uw Azure lente-Cloud service bevat. U kunt meer te weten komen over [Azure-resource groepen](../azure-resource-manager/management/overview.md).
 
 ```azurecli
-    az spring-cloud create -n <resource name> -g <resource group name> --is-public true
+az group create --location eastus --name <resource group name>
+```
+
+Voer de volgende opdrachten uit om een exemplaar van de Azure lente-Cloud in te richten. Bereid een naam voor de Azure lente-Cloud service voor. De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
+
+```azurecli
+az spring-cloud create -n <resource name> -g <resource group name>
 ```
 
 Het service-exemplaar duurt ongeveer vijf minuten om te implementeren.
@@ -155,7 +161,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u de volgende zaken geleerd:
+In deze snelstart hebt u de volgende zaken geleerd:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/26/2019
-ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/31/2020
+ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939169"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591367"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator gebruiken voor lokale ontwikkeling en tests
 
@@ -52,7 +52,7 @@ De Azure Cosmos-emulator heeft de volgende hardware-en software vereisten:
   * 2 GB RAM
   * 10 GB beschikbare schijfruimte
 
-## <a name="installation"></a>Installeren
+## <a name="installation"></a>Installatie
 
 U kunt de Azure Cosmos-emulator downloaden en installeren vanuit het [micro soft Download centrum](https://aka.ms/cosmosdb-emulator) of u kunt de emulator uitvoeren op docker voor Windows. Zie [Uitvoeren op Docker](#running-on-docker) voor instructies over het gebruik van de emulator op Docker voor Windows.
 
@@ -243,7 +243,7 @@ Typ `Microsoft.Azure.Cosmos.Emulator.exe /?` bij de opdrachtprompt om een lijst 
 | GetStatus |Hiermee wordt de status van de Azure Cosmos-emulator opgehaald. De status wordt aangegeven door de afsluitcode: 1 = starten, 2 = wordt uitgevoerd, 3 = gestopt. Een negatieve afsluitcode geeft aan dat er een fout is opgetreden. Er wordt geen andere uitvoer geproduceerd. | Micro soft. Azure. Cosmos. emulator. exe/GetStatus| |
 | Afsluiten| De Azure Cosmos-emulator wordt afgesloten.| Micro soft. Azure. Cosmos. emulator. exe/shutdown | |
 |DataPath | Specificeert het pad waarin de gegevensbestanden worden opgeslagen. De standaard waarde is%LocalAppdata%\CosmosDBEmulator. | Micro soft. Azure. Cosmos. emulator. exe/DataPath =\<DataPath\> | \<gegevenspad\>: een toegankelijk pad |
-|Port | Specificeert het poortnummer dat moet worden gebruikt voor de emulator. De standaard waarde is 8081. |Micro soft. Azure. Cosmos. emulator. exe/Port =\<poort\> | \<poort\>: enkel poortnummer |
+|Poort | Specificeert het poortnummer dat moet worden gebruikt voor de emulator. De standaard waarde is 8081. |Micro soft. Azure. Cosmos. emulator. exe/Port =\<poort\> | \<poort\>: enkel poortnummer |
 | ComputePort | Het poort nummer opgegeven dat moet worden gebruikt voor de compute Interop-Gateway Service. De poort voor de HTTP-eindpunt test van de gateway wordt berekend als ComputePort + 79. Daarom moeten ComputePort en ComputePort + 79 open en beschikbaar zijn. De standaard waarde is 8900. | Micro soft. Azure. Cosmos. emulator. exe/ComputePort =\<ComputePort\> | \<computeport\>: één poort nummer |
 | EnableMongoDbEndpoint = 3.2 | Hiermee wordt MongoDB API 3,2 | Micro soft. Azure. Cosmos. emulator. exe/EnableMongoDbEndpoint = 3.2 | |
 | EnableMongoDbEndpoint = 3.6 | Hiermee wordt MongoDB API 3,6 | Micro soft. Azure. Cosmos. emulator. exe/EnableMongoDbEndpoint = 3.6 | |
