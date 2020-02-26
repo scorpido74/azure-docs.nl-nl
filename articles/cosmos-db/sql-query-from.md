@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873366"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587682"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>De component FROM in Azure Cosmos DB
 
@@ -49,19 +49,19 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Hiermee geeft u een gegevensbron, met of zonder een alias. Als alias niet opgegeven is, wordt deze worden afgeleid van de `<container_expression>` van de volgende regels:  
+  Hiermee geeft u een gegevensbron, met of zonder een alias. Als er geen alias is opgegeven, wordt deze afgeleid van de `<container_expression>` met de volgende regels:  
   
   -  De expressie is een container_name, zal container_name worden gebruikt als een alias.  
   
-  -  Als de expressie `<container_expression>`, en vervolgens %{Property_Name/ en vervolgens %{Property_Name/ wordt gebruikt als een alias. De expressie is een container_name, zal container_name worden gebruikt als een alias.  
+  -  Als de expressie is `<container_expression>`, dan property_name, wordt property_name als alias gebruikt. De expressie is een container_name, zal container_name worden gebruikt als een alias.  
   
-- AS `input_alias`  
+- Als `input_alias`  
   
-  Hiermee wordt aangegeven dat de `input_alias` is een set waarden die zijn geretourneerd door de onderliggende container-expressie.  
+  Geeft aan dat de `input_alias` een set waarden is die door de onderliggende container expressie wordt geretourneerd.  
  
 - `input_alias` IN  
   
-  Hiermee wordt aangegeven dat de `input_alias` de set met waarden die zijn verkregen met iteratie van alle matrixelementen van elk matrix geretourneerd door de onderliggende container-expressie moet vertegenwoordigen. Een waarde die is geretourneerd door onderliggende container-expressie die is geen matrix wordt genegeerd.  
+  Hiermee geeft u op dat de `input_alias` de set waarden moet vertegenwoordigen die worden verkregen door te herhalen over alle matrix elementen van elke matrix die wordt geretourneerd door de onderliggende container expressie. Een waarde die is geretourneerd door onderliggende container-expressie die is geen matrix wordt genegeerd.  
   
 - `<container_expression>`  
   
@@ -79,17 +79,17 @@ FROM <from_specification>
   
   Hiermee geeft u op dat document moet worden opgehaald uit de andere bron die wordt gedefinieerd door de opgegeven alias.  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  Hiermee geeft u het document moet worden opgehaald door het openen van de `property_name` eigenschap of matrixindex matrixelement voor alle documenten die zijn opgehaald door bits-container expressie opgegeven.  
+  Hiermee wordt aangegeven dat het document moet worden opgehaald door toegang te krijgen tot de eigenschap `property_name`.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Hiermee geeft u het document moet worden opgehaald door het openen van de `property_name` eigenschap of matrixindex matrixelement voor alle documenten die zijn opgehaald door bits-container expressie opgegeven.  
+  Hiermee wordt aangegeven dat het document moet worden opgehaald door de `property_name` eigenschap of het element array_index matrix te openen voor alle documenten die zijn opgehaald met de opgegeven container expressie.  
   
 ## <a name="remarks"></a>Opmerkingen
   
-Alle aliassen opgegeven of afgeleid in de `<from_source>(`s) moet uniek zijn. De syntaxis van de `<container_expression>.`%{Property_Name/ is hetzelfde als `<container_expression>' ['"property_name"']'`. De syntaxis van de laatste kan echter worden gebruikt als een eigenschapsnaam een niet-id-teken bevat.  
+Alle aliassen die in de `<from_source>(`s zijn opgenomen of uitgesteld, moeten uniek zijn. De syntaxis `<container_expression>.`property_name is hetzelfde als `<container_expression>' ['"property_name"']'`. De syntaxis van de laatste kan echter worden gebruikt als een eigenschapsnaam een niet-id-teken bevat.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>afhandeling van ontbrekende eigenschappen, ontbrekende matrixelementen en niet-gedefinieerde waarden
   
@@ -99,9 +99,9 @@ Als een expressie voor een container toegang heeft tot de eigenschappen of matri
   
 Een expressie voor een container zijn binnen het bereik van container of binnen het bereik van document:  
   
--   Een expressie is container binnen het bereik, als de onderliggende bron van de container-expressie de hoofdmap is of `container_name`. Deze expressie vertegenwoordigt een set documenten die zijn opgehaald uit de container rechtstreeks en is niet afhankelijk van de verwerking van andere expressies container.  
+-   Een expressie is container-scoped als de onderliggende bron van de container expressie ROOT of `container_name`is. Deze expressie vertegenwoordigt een set documenten die zijn opgehaald uit de container rechtstreeks en is niet afhankelijk van de verwerking van andere expressies container.  
   
--   Een expressie is document binnen het bereik, als de onderliggende bron van de container-expressie is `input_alias` die eerder in de query is geïntroduceerd. Deze expressie vertegenwoordigt een set documenten die zijn verkregen door het evalueren van de container-expressie in het bereik van elk document die behoren tot de verzameling die zijn gekoppeld aan de alias-container.  De resulterende set is een samenvoeging van die worden verkregen door het evalueren van de container-expressie voor elk van de documenten in de onderliggende verzameling. 
+-   Een expressie is een document bereik, als de onderliggende bron van de container expressie `input_alias` eerder in de query is geïntroduceerd. Deze expressie vertegenwoordigt een set documenten die zijn verkregen door het evalueren van de container-expressie in het bereik van elk document die behoren tot de verzameling die zijn gekoppeld aan de alias-container.  De resulterende set is een samenvoeging van die worden verkregen door het evalueren van de container-expressie voor elk van de documenten in de onderliggende verzameling. 
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -114,7 +114,7 @@ De component FROM kan de bron naar een kleinere subset beperken. Als u alleen ee
     FROM Families.children
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [
@@ -154,7 +154,7 @@ De voor gaande query heeft een matrix als bron gebruikt, maar u kunt ook een obj
     FROM Families.address.state
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [

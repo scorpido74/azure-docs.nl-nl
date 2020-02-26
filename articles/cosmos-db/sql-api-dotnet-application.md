@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6af5f4c3ab028f8f0c6945eba86ec79dd6027680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444930"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587461"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelf studie: een ASP.NET Core MVC-webtoepassing ontwikkelen met Azure Cosmos DB met behulp van .NET SDK
 
@@ -110,7 +110,7 @@ Nu gaan we de modellen, de weer gaven en de controllers toevoegen aan deze MVC-t
 
 1. Vervang de inhoud van de klasse *item.cs* door de volgende code:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
 Azure Cosmos DB gebruikt JSON om gegevens te verplaatsen en op te slaan. U kunt het kenmerk `JsonProperty` gebruiken om te bepalen hoe JSON-serialisatie en objecten worden gedeserialiseerd. De klasse `Item` demonstreert het kenmerk `JsonProperty`. Met deze code bepaalt u de indeling van de naam van de eigenschap die naar JSON gaat. De naam van de .NET-eigenschap `Completed`wordt ook gewijzigd.
 
@@ -183,7 +183,7 @@ Nadat u deze stappen hebt uitgevoerd, sluit u alle *cshtml* -documenten in Visua
 
 1. Vervang de inhoud van *ItemController.cs* door de volgende code:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 
 Het kenmerk **ValidateAntiForgeryToken** wordt hier gebruikt om deze toepassing te beschermen tegen aanvallen via aanvraagvervalsing op meerdere sites. Uw weer gaven werken ook met dit anti-vervalsing token. Zie voor [komen van CSRF-aanvallen (cross-site request vervalsing) in ASP.NET MVC-toepassing][Preventing Cross-Site Request Forgery]voor meer informatie en voor beelden. De broncode op [GitHub][GitHub] beschikt over de volledige implementatie.
 
@@ -203,11 +203,11 @@ Eerst voegen we een klasse toe die de logica bevat voor het maken van verbinding
 
 1. Vervang de inhoud van *CosmosDBService.cs* door de volgende code:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
 1. Herhaal de vorige twee stappen, maar deze keer gebruik de naam *ICosmosDBService*en gebruik de volgende code:
 
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs)]
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
 1. Voeg in de handler **ConfigureServices** de volgende regel toe:
 
@@ -219,7 +219,7 @@ Eerst voegen we een klasse toe die de logica bevat voor het maken van verbinding
 
 1. Voeg binnen hetzelfde bestand de volgende methode toe **InitializeCosmosClientInstanceAsync**, die de configuratie leest en de-client initialiseert.
 
-    [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync":::
 
 1. Definieer de configuratie in het bestand *appSettings. json* van het project. Open het bestand en voeg een sectie toe met de naam **CosmosDb**:
 

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978732"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588784"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Cosmos DB SQL-API-resources (core) beheren met Azure Resource Manager sjablonen
 
-In dit artikel leert u hoe u Azure Resource Manager sjablonen kunt gebruiken om het beheer van uw Azure Cosmos DB accounts, data bases en containers te automatiseren.
+In dit artikel leert u hoe u Azure Resource Manager-sjablonen kunt gebruiken om het beheer van uw Azure Cosmos DB-accounts, -databases en -containers te automatiseren.
 
 In dit artikel worden alleen Azure Resource Manager sjabloon voorbeelden voor SQL-API-accounts weer gegeven. U kunt ook voor beelden van sjablonen vinden voor [Cassandra](manage-cassandra-with-resource-manager.md)-, [Gremlin](manage-gremlin-with-resource-manager.md)-, [MongoDb](manage-mongodb-with-resource-manager.md)-en [Table](manage-table-with-resource-manager.md) -api's.
 
@@ -39,7 +39,7 @@ Als u de Azure Cosmos DB resources wilt maken, kopieert u de volgende voorbeeld 
 > * Account namen zijn beperkt tot 44 tekens, alle kleine letters.
 > * Als u de doorvoer waarden wilt wijzigen, dient u de sjabloon opnieuw in met de bijgewerkte RU/s.
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > Als u een container met een grote partitie sleutel wilt maken, wijzigt u de vorige sjabloon om de eigenschap `"version":2` op te nemen in het `partitionKey`-object.
@@ -136,7 +136,7 @@ Kopieer de volgende voorbeeld sjabloon en implementeer deze zoals beschreven, me
 * U kunt ook de galerie van [Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) start bezoeken en de sjabloon implementeren vanuit de Azure Portal.
 * U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
 ### <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543304"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580488"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ In dit artikel vindt u informatie over de twee manieren waarop u [Azure machine 
 
 - Optie 2: als u niet-gestructureerde gegevens hebt, maakt u een FileDataset en koppelt of downloadt u bestanden naar een externe Compute voor training.
 
-Azure Machine Learning gegevens sets bieden een naadloze integratie met Azure Machine Learning trainings producten zoals [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) en [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py).
+Azure Machine Learning gegevens sets bieden een naadloze integratie met Azure Machine Learning trainings producten zoals [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) en [Azure machine learning pijp lijnen](how-to-create-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -100,11 +100,12 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Optie 2: bestanden koppelen aan een extern Compute-doel
 
 Als u uw gegevens bestanden beschikbaar wilt maken voor het reken doel voor training, gebruikt u [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) om bestanden te koppelen of te downloaden waarnaar wordt verwezen.
 
-### <a name="mount-vs-download"></a>V.s. koppelen Download
+### <a name="mount-vs-download"></a>Koppeling versus downloaden
 Wanneer u een gegevensset koppelt, koppelt u de bestanden waarnaar wordt verwezen door de gegevensset naar een directory (koppel punt) en maakt u deze beschikbaar op het berekenings doel. Koppelen wordt ondersteund voor op Linux gebaseerde berekeningen, waaronder Azure Machine Learning compute, virtual machines en HDInsight. Als uw gegevens grootte de grootte van de berekenings schijf overschrijdt of als u alleen een deel van de gegevensset in uw script laadt, wordt de koppeling aanbevolen. Omdat het downloaden van een gegevensset die groter is dan de grootte van de schijf mislukt, en koppelen, wordt alleen het deel van de gegevens geladen dat door het script wordt gebruikt op het moment van de verwerking. 
 
 Wanneer u een gegevensset downloadt, worden alle bestanden waarnaar wordt verwezen door de gegevensset gedownload naar het Compute-doel. Downloaden wordt ondersteund voor alle reken typen. Als uw script alle bestanden verwerkt waarnaar wordt verwezen door de gegevensset, en uw berekenings schijf past in uw volledige gegevensset, wordt het downloaden aanbevolen om te voor komen dat de gegevens van opslag services worden gestreamd.
@@ -199,4 +200,4 @@ De [notitie blokken](https://aka.ms/dataset-tutorial) van de gegevensset tonen e
 
 * [Classificatie modellen voor installatie kopieën trainen](https://aka.ms/filedataset-samplenotebook) met FileDatasets
 
-* [Omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)
+* [Train met gegevens sets met behulp van pijp lijnen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

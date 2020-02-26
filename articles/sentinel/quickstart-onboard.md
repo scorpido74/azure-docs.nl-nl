@@ -2,19 +2,19 @@
 title: 'Snelstartgids: onboarding in azure-Sentinel'
 description: Meer informatie over het verzamelen van gegevens in azure Sentinel door dit Quick Start-document te volgen.
 services: sentinel
-author: rkarlin
-ms.author: rkarlin
+author: yelevin
+ms.author: yelevin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 925bc229aecc848032ab8847088b7d6ff377a137
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278281"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581546"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Snelstartgids: Azure-Sentinel op de trein
 
@@ -45,13 +45,13 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
 
 1. Zoek en selecteer **Azure Sentinel**.
 
-   ![zoeken](./media/quickstart-onboard/search-product.png)
+   ![opdracht](./media/quickstart-onboard/search-product.png)
 
 1. Selecteer **Toevoegen**.
 
 1. Selecteer de werk ruimte die u wilt gebruiken of maak een nieuwe. U kunt Azure Sentinel uitvoeren op meer dan één werk ruimte, maar de gegevens worden geïsoleerd voor één werk ruimte.
 
-   ![zoeken](./media/quickstart-onboard/choose-workspace.png)
+   ![opdracht](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Standaardwerk ruimten die zijn gemaakt door Azure Security Center worden niet weer gegeven in de lijst. u kunt geen Azure-Sentinel installeren.

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951017"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585761"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikaten en PredicateValidations
 
@@ -42,16 +42,17 @@ Het element **predikaten** bevat het volgende element:
 
 Het **predicaat** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor het predicaat. Andere elementen kunnen deze id in het beleid gebruiken. |
 | Methode | Ja | Het type methode dat moet worden gebruikt voor validatie. Mogelijke waarden: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**of **IsDateRange**. De waarde **IsLengthRange** controleert of de lengte van een teken reeks claim waarde binnen het opgegeven minimum-en maximum aantal para meters ligt. De waarde **MatchesRegex** controleert of een teken reeks claim waarde overeenkomt met een reguliere expressie. De waarde **IncludesCharacters** controleert of een teken reeks claim waarde een tekenset bevat. De waarde **IsDateRange** controleert of een datum claim waarde ligt tussen een bereik van de opgegeven minimum-en maximum parameters. |
+| HelpText | Nee | Een fout bericht voor gebruikers als de controle mislukt. Deze teken reeks kan worden gelokaliseerd met behulp van de [taal aanpassing](localization.md) |
 
 Het **predicaat** -element bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | Een fout bericht voor gebruikers als de controle mislukt. Deze teken reeks kan worden gelokaliseerd met behulp van de [taal aanpassing](localization.md) |
+| UserHelpText | 0:1 | Keur Een fout bericht voor gebruikers als de controle mislukt. |
 | Parameters | 1:1 | De para meters voor het methode type van de teken reeks validatie. |
 
 Het element **para meters** bevat de volgende elementen:
@@ -69,11 +70,10 @@ Het **parameter** element bevat de volgende kenmerken:
 In het volgende voor beeld ziet u een `IsLengthRange` methode met de para meters `Minimum` en `Maximum` waarmee het lengte bereik van de teken reeks wordt opgegeven:
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
@@ -81,8 +81,7 @@ In het volgende voor beeld ziet u een `IsLengthRange` methode met de para meters
 In het volgende voor beeld ziet u een `MatchesRegex` methode met de para meter `RegularExpression` die een reguliere expressie specificeert:
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
@@ -92,8 +91,7 @@ In het volgende voor beeld ziet u een `MatchesRegex` methode met de para meter `
 In het volgende voor beeld ziet u een `IncludesCharacters` methode met de para meter `CharacterSet` die de set tekens bevat:
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
@@ -143,7 +141,7 @@ Het element **PredicateValidations** bevat het volgende element:
 
 Het element **PredicateValidation** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor de validatie van predikaten. Het element **claim** type kan deze id in het beleid gebruiken. |
 
@@ -161,7 +159,7 @@ Het element **PredicateGroups** bevat het volgende element:
 
 Het element **PredicateGroup** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor de predicaat groep.  |
 
@@ -169,14 +167,14 @@ Het **PredicateGroup** -element bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  Een beschrijving van het predikaat waarmee gebruikers kunnen zien welke waarde ze moeten typen. |
+| UserHelpText | 0:1 |  Een beschrijving van het predikaat waarmee gebruikers kunnen zien welke waarde ze moeten typen. |
 | PredicateReferences | 1: n | Een lijst met predikaten-verwijzingen. |
 
 Het **PredicateReferences** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nee | Hiermee geeft u op dat de waarde moet overeenkomen met een groot aantal predicaat definities voor de invoer die moet worden geaccepteerd. |
+| MatchAtLeast | Nee | Hiermee geeft u op dat de waarde moet overeenkomen met een groot aantal predicaat definities voor de invoer die moet worden geaccepteerd. Als niet wordt opgegeven, moet de waarde overeenkomen met alle predicaat definities. |
 
 Het **PredicateReferences** -element bevat de volgende elementen:
 
@@ -186,7 +184,7 @@ Het **PredicateReferences** -element bevat de volgende elementen:
 
 Het **PredicateReference** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor de validatie van predikaten.  |
 
@@ -206,58 +204,50 @@ Met **predikaten** en **PredicateValidationsInput** kunt u de complexiteits vere
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
       <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -361,8 +351,7 @@ Met de **predikaten** en **PredicateValidations** elementen kunt u de minimum-en
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

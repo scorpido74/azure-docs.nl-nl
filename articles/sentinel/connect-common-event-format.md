@@ -3,7 +3,7 @@ title: CEF-gegevens verbinden met Azure Sentinel preview | Microsoft Docs
 description: Meer informatie over het verbinden van CEF-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
-ms.author: rkarlin
-ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610638"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588345"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -52,7 +52,7 @@ Als u TLS-communicatie tussen de beveiligings oplossing en de syslog-computer wi
 ## <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat op de Linux-machine die u als proxy gebruikt, een van de volgende besturings systemen wordt uitgevoerd:
 
-- 64-bit
+- 64-bits
   - CentOS 6 en 7
   - Amazon Linux 2017,09
   - Oracle Linux 6 en 7
@@ -60,7 +60,7 @@ Zorg ervoor dat op de Linux-machine die u als proxy gebruikt, een van de volgend
   - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
   - SUSE Linux Enterprise Server 12
-- 32-bit
+- 32-bits
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6

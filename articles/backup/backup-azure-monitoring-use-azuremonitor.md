@@ -4,12 +4,12 @@ description: Bewaak Azure Backup werk belastingen en maak aangepaste waarschuwin
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: acdd7ae870334fe3a77a37505fac5e02b3af360d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500673"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583862"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
@@ -29,11 +29,11 @@ In Azure Monitor kunt u uw eigen waarschuwingen maken in een Log Analytics-werk 
 > [!IMPORTANT]
 > Zie voor meer informatie over de kosten voor het maken van deze query [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
-Selecteer een van de grafieken om de sectie **Logboeken** van de log Analytics-werk ruimte te openen. Bewerk de query's in de sectie **logs** en maak waarschuwingen.
+Open de sectie **logs** van de werk ruimte log Analytics en schrijf een query op uw eigen Logboeken. Wanneer u **nieuwe waarschuwings regel**selecteert, wordt de pagina Azure monitor waarschuwings-maken geopend, zoals wordt weer gegeven in de volgende afbeelding.
 
-![Een waarschuwing maken in een Log Analytics-werk ruimte](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+![Een waarschuwing maken in een Log Analytics-werk ruimte](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-Wanneer u **nieuwe waarschuwings regel**selecteert, wordt de pagina Azure monitor waarschuwings-maken geopend, zoals wordt weer gegeven in de volgende afbeelding. Hier is de resource al gemarkeerd als de Log Analytics-werk ruimte en de integratie van de actie groep.
+Hier is de resource al gemarkeerd als de Log Analytics-werk ruimte en de integratie van de actie groep.
 
 ![De pagina Log Analytics waarschuwing: maken](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
@@ -122,6 +122,26 @@ De standaard grafieken bieden u Kusto query's voor basis scenario's waarop u waa
     )
     on BackupItemUniqueId
     ````
+
+- Verbruikte back-upopslag per back-upitem
+
+    ````Kusto
+    CoreAzureBackup
+    //Get all Backup Items
+    | where OperationName == "BackupItem"
+    //Get distinct Backup Items
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+    | join kind=leftouter
+    (AddonAzureBackupStorage
+    | where OperationName == "StorageAssociation"
+    //Get latest record for each Backup Item
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | project BackupItemUniqueId , StorageConsumedInMBs)
+    on BackupItemUniqueId
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | sort by StorageConsumedInMBs desc
+    ````
+
 
 ### <a name="diagnostic-data-update-frequency"></a>Update frequentie van diagnostische gegevens
 

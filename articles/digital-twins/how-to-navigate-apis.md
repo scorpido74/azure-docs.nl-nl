@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: 86ade45cd00e82e8787a117c23003d2a74750cf0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/24/2020
+ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552165"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589093"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Apparaatdubbels Management-Api's gebruiken
 
@@ -37,7 +37,7 @@ De volgende lijst bevat de onderdelen van de Digital Apparaatdubbels-Api's.
 
 * [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): u kunt deze api's gebruiken om aangepaste eigenschappen te maken voor uw *Spaces*, *apparaten*, *gebruikers*en *Sens oren*. Deze eigenschappen worden gemaakt als sleutel/waarde-paren. U kunt het gegevens type voor deze eigenschappen definiëren door hun *PrimitiveDataType*in te stellen. U kunt bijvoorbeeld een eigenschap met de naam *BasicTemperatureDeltaProcessingRefreshTime* van het type *uint* definiëren voor uw Sens oren en vervolgens voor elk van uw Sens oren een waarde voor deze eigenschap toewijzen. U kunt ook beperkingen voor deze waarden toevoegen tijdens het maken van de eigenschap, zoals *min* -en *maximum aantal* bereiken, en toegestane waarden als *ValidationData*.
 
-* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): met deze api's kunt u de voor waarden opgeven die u wilt evalueren op basis van de gegevens van uw binnenkomende apparaten. Zie [dit artikel](concepts-user-defined-functions.md#matchers) voor meer informatie. 
+* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): met deze api's kunt u de voor waarden opgeven die u wilt evalueren op basis van de gegevens van uw binnenkomende apparaten. Raadpleeg [dit artikel](concepts-user-defined-functions.md#matchers) voor meer informatie. 
 
 * [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): met deze api's kunt u een aangepaste functie maken, verwijderen of bijwerken die wordt uitgevoerd wanneer de voor waarden die worden gedefinieerd door de *matchers* optreden, om gegevens te verwerken die afkomstig zijn van uw installatie. Raadpleeg [dit artikel](concepts-user-defined-functions.md#user-defined-functions) voor meer informatie over deze aangepaste functies, ook wel de door de *gebruiker gedefinieerde functies*genoemd. 
 

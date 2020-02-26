@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552777"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587393"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Wat zijn SQL Database exemplaar groepen (preview)?
 
@@ -126,7 +126,7 @@ Als u problemen ondervindt met betrekking tot de implementatie van een exemplaar
 
 Als u problemen ondervindt met betrekking tot single instances of data bases in een groep, moet u een regel matig ondersteunings ticket maken voor Azure SQL Database Managed instances.
 
-Als u grotere implementaties van beheerde exemplaren wilt maken (met of zonder exemplaar groepen), moet u mogelijk een groter regionaal quotum verkrijgen. Gebruik de [Standard Managed instance procedure voor het aanvragen van een groter quotum](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), maar houd er rekening mee dat als u exemplaar groepen gebruikt, het totale vCore-verbruik *op groeps niveau* wordt vergeleken met uw quotum om te bepalen of u nieuwe resources mag maken zonder verder uw quotum te verg Roten.
+Als u grotere implementaties van beheerde exemplaren wilt maken (met of zonder exemplaar groepen), moet u mogelijk een groter regionaal quotum verkrijgen. Zie [aanvraag quotum verhogingen voor Azure SQL database](quota-increase-request.md)voor meer informatie. Houd er rekening mee dat als u exemplaar groepen gebruikt, de implementatie logica het totale vCore verbruik *op het groeps niveau* vergelijkt met uw quotum om te bepalen of u nieuwe bronnen mag maken zonder uw quotum verder te verhogen.
 
 ## <a name="instance-pool-billing"></a>Facturering van exemplaar groep
 

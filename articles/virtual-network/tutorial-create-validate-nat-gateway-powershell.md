@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d734553dd8eaf51d42cc31304f6a42c9cad5bbcd
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: bb75631beed73a6ebd9d1cf2c00c375726fed387
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429668"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586985"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Zelf studie: een NAT-gateway maken met behulp van Azure PowerShell en de NAT-service testen
 
@@ -35,8 +35,6 @@ U kunt deze zelf studie volt ooien met behulp van Azure Cloud Shell of de betref
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-> [!IMPORTANT]
-> Nadat Virtual Network NAT [Preview is ingeschakeld](./nat-overview.md#enable-preview) voor uw abonnement, gebruikt u https://aka.ms/natportal om toegang te krijgen tot de portal.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, Power shell, desired state Configuration, update beheer, bijhouden van wijzigingen, inventaris, runbooks, Python, grafisch, hybride
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.topic: overview
-ms.openlocfilehash: a2551791426c246df278e09cea9cec64a6bc019f
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539294"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586237"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview-versie)
 
@@ -51,6 +51,10 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 - Windows Server 2012 R2 en hoger (inclusief Windows Server Core)
 - Ubuntu 16,04 en 18,04
+- CentOS Linux 7
+- SUSE Linux Enterprise Server (SLES) 15
+- Red Hat Enterprise Linux (RHEL) 7
+- Amazon Linux 7
 
 >[!NOTE]
 >Deze preview-versie van de verbonden machine-agent voor Windows ondersteunt alleen Windows Server die is geconfigureerd voor gebruik van de Engelse taal.

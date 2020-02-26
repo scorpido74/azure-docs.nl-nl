@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f4954b3a33cdd73c1e004ad1e643f9e24abf1e4
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485230"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586254"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -180,10 +180,24 @@ Ga als volgt te werk om de verbinding van een machine met Azure Arc voor servers
     ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
     ```
 
-1. Als u de Linux-agent wilt verwijderen, voert u de volgende opdracht uit:
+1. Als u de Linux-agent wilt verwijderen, is de opdracht die moet worden gebruikt, afhankelijk van het Linux-besturings systeem.
+
+    - Voor Ubuntu voert u de volgende opdracht uit:
 
       ```bash
       sudo apt purge azcmagent
+      ```
+
+    - Voor RHEL, CentOS en Amazon Linux voert u de volgende opdracht uit:
+
+      ```bash
+      sudo yum remove azcmagent
+      ```
+
+    - Voor SLES voert u de volgende opdracht uit:
+
+      ```bash
+      sudo zypper remove azcmagent
       ```
 
 ## <a name="next-steps"></a>Volgende stappen

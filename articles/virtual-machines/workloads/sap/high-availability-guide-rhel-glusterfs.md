@@ -1,10 +1,10 @@
 ---
-title: GlusterFS op Azure-Vm's op Red Hat Enterprise Linux voor SAP NetWeaver | Microsoft Docs
+title: GlusterFS op virtuele machines van Azure op RHEL voor SAP NetWeaver | Microsoft Docs
 description: GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.author: radeltch
+ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749047"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591911"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver
 
@@ -98,7 +98,7 @@ U kunt een van de Quick Start-sjablonen op github gebruiken voor het implementer
    4. Beheerders naam, beheerders wachtwoord of SSH-sleutel  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    5. Subnet-ID  
-      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/ **&lt;subnet naam&gt;**
+      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/&lt;naam van het **subnet&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
@@ -120,7 +120,7 @@ U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een loa
 
 De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1, **[2]** -alleen van toepassing op knoop punt 2, **[3]** -alleen van toepassing op knoop punt 3.
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
@@ -181,7 +181,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo systemctl enable glusterd
    </code></pre>
 
-1. **[1]** Create GluserFS
+1. **[1]** GluserFS maken
 
    Voer de volgende opdrachten uit om het GlusterFS-cluster te maken
 

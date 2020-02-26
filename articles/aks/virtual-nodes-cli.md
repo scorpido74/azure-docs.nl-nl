@@ -2,17 +2,14 @@
 title: Virtuele knoop punten maken met behulp van de Azure CLI in azure Kubernetes Services (AKS)
 description: Meer informatie over hoe u de Azure CLI gebruikt om een AKS-cluster (Azure Kubernetes Services) te maken dat virtuele knoop punten gebruikt voor het uitvoeren van een Peul.
 services: container-service
-author: mlearned
 ms.topic: conceptual
-ms.service: container-service
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 2133d1aefe3363a2fb2af73c004e22ba0a0239ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2b726dff1e2c23b94118a11fb6b6ccf1f9622d4d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901504"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592741"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten met behulp van de Azure CLI
 
@@ -87,7 +84,7 @@ Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geï
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 Maak een virtueel netwerk met behulp van de opdracht [AZ Network vnet Create][az-network-vnet-create] . In het volgende voor beeld wordt een virtuele netwerk naam *myVnet* met het adres voorvoegsel *10.0.0.0/8*en een subnet met de naam *myAKSSubnet*. Het adres voorvoegsel van dit subnet is standaard ingesteld op *10.240.0.0/16*:
 
@@ -190,7 +187,7 @@ az aks enable-addons \
 
 ## <a name="connect-to-the-cluster"></a>Verbinding maken met het cluster
 
-Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In deze stap worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In deze stap worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

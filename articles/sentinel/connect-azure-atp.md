@@ -3,7 +3,7 @@ title: Azure ATP-gegevens verbinden met Azure-Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Azure ATP-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6f099a0eb6501b6576c4560e0b397d3105bb15f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610706"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588583"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Gegevens verbinden vanuit Azure Advanced Threat Protection (ATP)
 
@@ -46,7 +46,7 @@ Als Azure ATP is geïmplementeerd en uw gegevens worden opgenomen, kunnen verdac
 
 1. U kunt selecteren of u wilt dat de waarschuwingen van Azure ATP automatisch incidenten genereren in azure Sentinel automatisch. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
 
-1. Klik op **Connect** (Verbinden).
+1. Klik op **Verbinding maken**.
 
 1. Als u het relevante schema in Log Analytics voor de Azure ATP-waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
 

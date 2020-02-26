@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744698"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587376"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Problemen met de Azure SQL Database prestaties oplossen met Intelligent Insights
 
-Op deze pagina vindt u informatie over de prestatie problemen Azure SQL Database en beheerde exemplaren die zijn gedetecteerd via het logboek voor diagnostische gegevens over de [intelligent Insights](sql-database-intelligent-insights.md) database prestaties. De telemetrie van het diagnostische logboek kan worden gestreamd naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
+Op deze pagina vindt u informatie over de prestatie problemen Azure SQL Database en beheerde exemplaren die zijn gedetecteerd via het logboek voor diagnostische gegevens over de [intelligent Insights](sql-database-intelligent-insights.md) database prestaties. De telemetrie van het diagnostische logboek kan worden gestreamd naar [Azure monitor-logboeken](../azure-monitor/insights/azure-sql.md), [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)of een oplossing van derden voor aangepaste DevOps-waarschuwingen en rapportage mogelijkheden.
 
 > [!NOTE]
 > Zie de [Aanbevolen stroom diagram voor probleem oplossing](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in dit document voor een snelle SQL database voor het oplossen van problemen met intelligent Insights.
@@ -30,12 +30,12 @@ Op deze pagina vindt u informatie over de prestatie problemen Azure SQL Database
 
 Intelligent Insights detecteert automatisch prestatie problemen met de SQL Database en de data bases van het beheerde exemplaar op basis van de wacht tijden van de query uitvoering, fouten of time-outs. Er worden prestatie patronen gedetecteerd die worden uitgevoerd in het diagnostische logboek. In de onderstaande tabel vindt u een overzicht van gedetecteerde prestatie patronen.
 
-| Gedetecteerde prestatie patronen | Beschrijving van Azure SQL Database en elastische Pools | Beschrijving voor data bases in een beheerd exemplaar |
+| Detecteerbare prestatiepatronen | Beschrijving van Azure SQL Database en elastische Pools | Beschrijving voor data bases in een beheerd exemplaar |
 | :------------------- | ------------------- | ------------------- |
 | [Bron limieten bereiken](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Het verbruik van beschik bare resources (Dtu's), data base worker-threads of data base-aanmeldings sessies die beschikbaar zijn op het bewaakte abonnement, heeft limieten bereikt. Dit is van invloed op de SQL Database prestaties. | Het verbruik van CPU-Resources bereikt de limieten voor beheerde exemplaren. Dit is van invloed op de prestaties van de data base. |
 | [Toename van de workload](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Er is een verhoging of continue accumulatie van de werk belasting voor de data base gedetecteerd. Dit is van invloed op de SQL Database prestaties. | Er is een toename van de werk belasting gedetecteerd. Dit is van invloed op de prestaties van de data base. |
-| [Geheugen druk](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Werk nemers die aangevraagde geheugen subsidies, moeten wachten op geheugen toewijzingen voor statistisch significante hoeveel heden tijd. Of een grotere accumulatie van werk nemers die geheugen subsidies hebben aangevraagd. Dit is van invloed op de SQL Database prestaties. | Werk nemers die geheugen subsidies hebben aangevraagd, wachten op een statistisch significante hoeveelheid tijd op geheugen toewijzingen. Dit is van invloed op de prestaties van de data base. |
-| [Vergrendelen](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Er is een buitensporige database vergrendeling gedetecteerd die van invloed is op de SQL Database prestaties. | Er is een buitensporige database vergrendeling gedetecteerd die invloed heeft op de prestaties van de data base. |
+| [Geheugen druk](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Werk nemers die aangevraagde geheugen subsidies, moeten wachten op geheugen toewijzingen gedurende een statistisch significante hoeveelheid tijd, of een grotere accumulatie van werk nemers die aangevraagde geheugen subsidies bestaan. Dit is van invloed op de SQL Database prestaties. | Werk nemers die geheugen subsidies hebben aangevraagd, wachten op een statistisch significante hoeveelheid tijd op geheugen toewijzingen. Dit is van invloed op de prestaties van de data base. |
+| [Vergren delen](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Er is een buitensporige database vergrendeling gedetecteerd die van invloed is op de SQL Database prestaties. | Er is een buitensporige database vergrendeling gedetecteerd die invloed heeft op de prestaties van de data base. |
 | [Verhoogde MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | De maximale mate van parallellisme (MAXDOP) is gewijzigd, wat van invloed is op de efficiëntie van de query-uitvoering. Dit is van invloed op de SQL Database prestaties. | De maximale mate van parallellisme (MAXDOP) is gewijzigd, wat van invloed is op de efficiëntie van de query-uitvoering. Dit is van invloed op de prestaties van de data base. |
 | [Pagelatch-conflicten](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Meerdere threads proberen gelijktijdig toegang te krijgen tot dezelfde gegevens buffer pagina's in het geheugen, wat resulteert in verhoogde wacht tijden en pagelatch-conflicten veroorzaakt. Dit is van invloed op de SQL database de prestaties. | Meerdere threads proberen gelijktijdig toegang te krijgen tot dezelfde gegevens buffer pagina's in het geheugen, wat resulteert in verhoogde wacht tijden en pagelatch-conflicten veroorzaakt. Dit is van invloed op de Data Base op de prestaties. |
 | [Ontbrekende index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Ontbrekende index gevonden die van invloed is op de prestaties van de SQL database. | Ontbrekende index gevonden die van invloed is op de database prestaties. |
@@ -90,7 +90,7 @@ Het diagnostische logboek voert het aantal query's uit waarvan de uitvoering is 
 
 U kunt overwegen de werk belastingen gelijkmatig te verdelen over de data base. Overweeg het optimaliseren van de query die de prestaties beïnvloedt door indexen toe te voegen. U kunt uw werk belasting ook verdelen over meerdere data bases. Als deze oplossingen niet mogelijk zijn, kunt u overwegen de prijs categorie van uw SQL database-abonnement te verhogen om de hoeveelheid beschik bare resources te verg Roten.
 
-## <a name="memory-pressure"></a>Geheugen druk
+## <a name="memory-pressure"></a>Geheugenbelasting
 
 ### <a name="what-is-happening"></a>Wat gebeurt er
 
@@ -110,7 +110,7 @@ U kunt de werk belasting ook verminderen door deze te optimaliseren of te verdel
 
 Zie [geheugen subsidies Meditation: de verwarrende SQL Server Memory Consumer met veel namen](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)voor aanvullende suggesties voor probleem oplossing.
 
-## <a name="locking"></a>Vergrendelen
+## <a name="locking"></a>Vergren delen
 
 ### <a name="what-is-happening"></a>Wat gebeurt er
 

@@ -7,16 +7,16 @@ tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 01/21/2020
-ms.openlocfilehash: 12c2b0b089702b9e56ae099abbefd85769bc1d21
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549324"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587886"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Snelstartgids: een Azure Cosmos DB en een container maken met behulp van Azure Resource Manager sjabloon
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel sleutel/waarde-data bases, document databases en grafiek databases te maken en op te vragen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon voor het maken van een Azure Cosmos-data base en een container in die data base. U kunt later gegevens opslaan in deze container.
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel sleutel/waarde-data bases, document databases en grafiek databases te maken en op te vragen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon voor het maken van een Azure Cosmos-data base en een container in die data base. U kunt later gegevens opslaan in deze container.
 
 [Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.DocumentDB/allversions).
 
@@ -34,7 +34,7 @@ Een Azure-abonnement of gratis Azure Cosmos DB proef account
 
 De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)start-sjablonen.
 
-[!code-json[<Resource Manager template create Azure Cosmos DB>](~/quickstart-templates/101-cosmosdb-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
 
 Er zijn drie Azure-resources gedefinieerd in de sjabloon:
 
@@ -58,7 +58,7 @@ Meer Azure Cosmos DB sjabloon voorbeelden vindt u in de Quick Start- [sjabloon g
 
     * **Abonnement**: selecteer een Azure-abonnement.
     * **Resource groep**: Selecteer **nieuwe maken**, voer een unieke naam in voor de resource groep en klik vervolgens op **OK**.
-    * **Locatie**: selecteer een locatie.  Bijvoorbeeld **US - centraal**.
+    * **Locatie**: selecteer een locatie.  Bijvoorbeeld **VS - centraal**.
     * **Account naam**: Voer een naam in voor het Azure Cosmos-account. Het moet wereld wijd uniek zijn. 
     * **Locatie**: Geef een locatie op waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevindt als de resource groep. 
     * **Primaire regio**: de primaire replica regio voor het Azure Cosmos-account.
@@ -78,7 +78,7 @@ De Azure Portal wordt gebruikt voor het implementeren van de sjabloon. Naast de 
 
 U kunt de Azure Portal gebruiken om het Azure Cosmos-account, de data base en de container te controleren, of door het volgende Azure CLI-of Azure PowerShell-script te gebruiken om het gemaakte geheim weer te geven.
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your Azure Cosmos account name:" &&
@@ -88,7 +88,7 @@ read resourcegroupName &&
 az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
@@ -103,7 +103,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 Als u van plan bent om verder te gaan met de volgende en zelf studies, kunt u deze resources in plaats daarvan blijven gebruiken.
 Als u deze niet meer nodig hebt, verwijdert u de resource groep, waarmee het Azure Cosmos-account en de gerelateerde resources worden verwijderd. De resource groep verwijderen met behulp van Azure CLI of Azure Power shell:
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -112,7 +112,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

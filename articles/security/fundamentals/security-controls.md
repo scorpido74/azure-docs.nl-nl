@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 570cc8457e69b7056b2865af9c1feb5d62a395eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 777e0289818053b9029fd9f541714fbdb254dad4
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981454"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588668"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Index van "ingebouwde beveiligings controles"-artikelen voor Azure-Services
 
@@ -30,10 +30,9 @@ Ingebouwde artikelen over beveiligings beheer zijn beschikbaar voor de volgende 
 - [Azure Cosmos DB](../../cosmos-db/cosmos-db-security-controls.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-security-controls.md)
 - [Azure ExpressRoute](../../expressroute/expressroute-security-controls.md)
-- [Azure Key Vault](../../key-vault/key-vault-security-controls.md)
 - [Azure Load Balancer](../../load-balancer/load-balancer-security-controls.md)
 - [Azure Service Bus berichten](../../service-bus-messaging/service-bus-messaging-security-controls.md)
-- [Azure Service Bus Relay](../../service-bus-relay/service-bus-relay-security-controls.md)
+- [Azure Service Bus relay](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
 - [Azure SQL Database](../../sql-database/sql-database-security-controls.md)
 - [Azure Storage](../../storage/common/storage-security-controls.md)

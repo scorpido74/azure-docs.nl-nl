@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049890"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586599"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -70,7 +70,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
 * Het Azure NetApp Files overgedragen subnet moet alle Active Directory Domain Services (toevoegen) domein controllers in het domein, inclusief alle lokale en externe domein controllers, kunnen bereiken. Anders kan er sprake zijn van een onderbreking van de service.  
 
-    Als u domein controllers hebt die niet bereikbaar zijn via het Azure NetApp Files gedelegeerde subnet, kunt u een ondersteunings aanvraag voor Azure verzenden om de scope te wijzigen van **Algemeen** (standaard) naar **site**.  Azure NetApp Files moet alleen communiceren met domein controllers in de site waar de Azure NetApp Files adres ruimte van het geplaatste subnet zich bevindt.
+    Als u domein controllers hebt die niet bereikbaar zijn via het Azure NetApp Files overgedragen subnet, kunt u een Active Directory site opgeven tijdens het maken van de Active Directory verbinding.  Azure NetApp Files moet alleen communiceren met domein controllers in de site waar de Azure NetApp Files adres ruimte van het geplaatste subnet zich bevindt.
 
     Zie [de site topologie ontwerpen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
     
@@ -88,8 +88,10 @@ Zie Azure NetApp Files [SMB Veelgestelde vragen](https://docs.microsoft.com/azur
         Dit is de DNS-server die is vereist voor de Active Directory domein deelname en SMB-verificatie bewerkingen. 
     * **Secundaire DNS-**    
         Dit is de secundaire DNS-server voor het controleren van redundante naam Services. 
-    * **Domeinen**  
+    * **AD DNS-domein naam**  
         Dit is de domein naam van de Active Directory Domain Services die u wilt toevoegen.
+    * **AD-site naam**  
+        Dit is de naam van de site die de detectie van de domein controller beperkt is.
     * **Voor voegsel van SMB-server (computer-account)**  
         Dit is het naam voorvoegsel voor het machine account in Active Directory dat Azure NetApp Files gebruikt voor het maken van nieuwe accounts.
 

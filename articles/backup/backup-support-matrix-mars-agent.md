@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425014"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582633"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -67,6 +67,29 @@ En naar deze IP-adressen:
 
 De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van het HTTPS-protocol op poort 443.
 
+### <a name="azure-expressroute-support"></a>Ondersteuning voor Azure ExpressRoute
+
+U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.
+
+Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/adressen:
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
+
+Bij micro soft-peering moet u de volgende services/regio's en relevante Community-waarden selecteren:
+
+- Azure Active Directory (12076:5060)
+- Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
+- Azure Storage (op basis van de locatie van uw Recovery Services kluis)
+
+Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+
+>[!NOTE]
+>Open bare peering is afgeschaft voor nieuwe circuits.
+
 ### <a name="throttling-support"></a>Ondersteuning voor beperking
 
 **Functie** | **Details**
@@ -124,7 +147,7 @@ Windows 7| 1\.700 GB
 --- | ---
 Versleuteld| Ondersteund.
 Gecomprimeerd | Ondersteund.
-Verspreide gegevens | Ondersteund.
+Sparse | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
 Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
 Reparsepunt| Wordt niet ondersteund. Genegeerd.

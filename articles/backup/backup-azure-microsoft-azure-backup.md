@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425184"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586424"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -45,7 +45,7 @@ De eerste stap voor het voorbereiden van de Azure Backup Server is het instellen
 
 Wanneer u een server kiest voor het uitvoeren van Azure Backup Server, is het raadzaam om te beginnen met een galerie-installatie kopie van Windows Server 2016 Data Center of Windows Server 2019 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine in azure, zelfs als u Azure nog nooit eerder hebt gebruikt. De aanbevolen minimum vereisten voor de virtuele machine van de server (VM) zijn: Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
 
-Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. Het artikel [Installeer DPM als een virtuele machine van Azure](https://technet.microsoft.com/library/jj852163.aspx), en helpt deze nuances te verklaren. Lees dit artikel volledig voordat u de computer implementeert.
+Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. Het artikel [Installeer DPM als een virtuele machine van Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)), en helpt deze nuances te verklaren. Lees dit artikel volledig voordat u de computer implementeert.
 
 ### <a name="using-an-on-premises-server"></a>Een on-premises server gebruiken
 
@@ -56,7 +56,7 @@ Als u de basis server niet wilt uitvoeren in azure, kunt u de-server uitvoeren o
 | Windows Server 2019 |64 bits |Standard, Datacenter, Essentials |
 | Windows Server 2016 en de nieuwste SPs |64 bits |Standard, Datacenter, Essentials  |
 
-U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en ontdubbeling](https://technet.microsoft.com/library/dn891438.aspx) samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
+U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en ontdubbeling](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
 
 > [!NOTE]
 > Azure Backup Server is ontworpen om te worden uitgevoerd op een toegewezen server met één doel. U kunt Azure Backup Server niet installeren op:
@@ -196,7 +196,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    De Scratch locatie is een vereiste voor het maken van een back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](https://technet.microsoft.com/library/hh758075.aspx)voor meer informatie over opslag groepen.
+    De Scratch locatie is een vereiste voor het maken van een back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))voor meer informatie over opslag groepen.
 5. Geef een sterk wacht woord op voor beperkte lokale gebruikers accounts en klik op **volgende**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -305,6 +305,14 @@ Als u een firewall of proxy hebt die toegang tot Azure blokkeert, moet u de volg
 * \*.microsoftonline.com
 * \*.windows.net
 
+Als u ExpressRoute micro soft-peering gebruikt, selecteert u de volgende services/regio's:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure regio (per locatie van uw Recovery Services kluis)
+* Azure Storage (volgens de locatie van uw Recovery Services kluis)
+
+Ga naar [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+
 Zodra de verbinding met Azure is hersteld op de Azure Backup Server machine, worden de bewerkingen die kunnen worden uitgevoerd, bepaald door de status van het Azure-abonnement. De bovenstaande tabel bevat details over de bewerkingen die zijn toegestaan zodra de computer is verbonden.
 
 ### <a name="handling-subscription-states"></a>Abonnements statussen verwerken
@@ -351,7 +359,7 @@ U kunt ook verwijzen naar [Azure backup gerelateerde Veelgestelde vragen](backup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt gedetailleerde informatie krijgen over het [voorbereiden van uw omgeving voor dpm](https://technet.microsoft.com/library/hh758176.aspx) op de micro soft TechNet-site. Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) gebruiken voor het uitvoeren van verschillende bewerkingen.
+Hier vindt u gedetailleerde informatie over [het voorbereiden van uw omgeving voor dpm](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12)). Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) gebruiken voor het uitvoeren van verschillende bewerkingen.
 
 U kunt deze artikelen gebruiken om een beter inzicht te krijgen in de beveiliging van werk belasting met behulp van Microsoft Azure Backup-Server.
 

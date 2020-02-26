@@ -3,12 +3,12 @@ title: Power shell gebruiken om een back-up te maken van Windows Server naar Azu
 description: In dit artikel leert u hoe u Power shell kunt gebruiken voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 25ea84ba00648e2f515f96885cfdb5bb662c8575
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ff723eb2ebe48a7019fecec9106c1618a636b94c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483105"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583106"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -101,7 +101,7 @@ Ga naar **configuratie scherm** > **Program Ma's** > **Program ma's en onderdele
 
 ![Agent geïnstalleerd](./media/backup-client-automation/installed-agent-listing.png)
 
-### <a name="installation-options"></a>Installatie opties
+### <a name="installation-options"></a>Installatieopties
 
 Als u alle beschik bare opties wilt weer geven via de opdracht regel, gebruikt u de volgende opdracht:
 
@@ -147,7 +147,7 @@ $certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptograp
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
-Voer op de Windows Server-of Windows-client computer de cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) uit om de computer bij de kluis te registreren.
+Voer op de Windows Server-of Windows-client computer de cmdlet [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) uit om de computer bij de kluis te registreren.
 Deze en andere cmdlets die worden gebruikt voor het maken van een back-up, zijn afkomstig uit de MSONLINE-module, die door de Mars-AgentInstaller is toegevoegd als onderdeel van het installatie proces.
 
 Het installatie programma van de agent werkt de $Env:P SModulePath-variabele niet bij. Dit betekent dat automatisch laden van de module mislukt. U kunt het volgende doen om dit op te lossen:
@@ -187,7 +187,7 @@ Wanneer de verbinding van de Windows-computer met Internet via een proxy server 
 
 Bandbreedte gebruik kan ook worden beheerd met de opties van `work hour bandwidth` en `non-work hour bandwidth` voor een bepaalde set dagen van de week.
 
-Het instellen van de proxy-en bandbreedte gegevens wordt uitgevoerd met behulp van de cmdlet [set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) :
+Het instellen van de proxy-en bandbreedte gegevens wordt uitgevoerd met behulp van de cmdlet [set-OBMachineSetting](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obmachinesetting?view=winserver2012-ps) :
 
 ```powershell
 Set-OBMachineSetting -NoProxy
@@ -233,7 +233,7 @@ Alle back-ups van Windows-servers en-clients naar Azure Backup zijn onderworpen 
 2. Een **Bewaar schema** dat aangeeft hoe lang de herstel punten in azure moeten worden bewaard.
 3. Een **specificatie voor het opnemen/uitsluiten van bestanden** die bepaalt waarvan een back-up moet worden gemaakt.
 
-In dit document wordt ervan uitgegaan dat er geen back-up is geconfigureerd. We beginnen met het maken van een nieuw back-upbeleid met de cmdlet [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) .
+In dit document wordt ervan uitgegaan dat er geen back-up is geconfigureerd. We beginnen met het maken van een nieuw back-upbeleid met de cmdlet [New-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obpolicy?view=winserver2012-ps) .
 
 ```powershell
 $NewPolicy = New-OBPolicy
@@ -243,7 +243,7 @@ Op dit moment is het beleid leeg en zijn er andere cmdlets nodig om te definiër
 
 ### <a name="configuring-the-backup-schedule"></a>Het back-upschema configureren
 
-De eerste van de drie delen van een beleid is het back-upschema dat wordt gemaakt met de cmdlet [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . Het back-upschema definieert wanneer back-ups moeten worden gemaakt. Wanneer u een planning maakt, moet u twee invoer parameters opgeven:
+De eerste van de drie delen van een beleid is het back-upschema dat wordt gemaakt met de cmdlet [New-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obschedule?view=winserver2012-ps) . Het back-upschema definieert wanneer back-ups moeten worden gemaakt. Wanneer u een planning maakt, moet u twee invoer parameters opgeven:
 
 * De **dagen van de week** waarop de back-up moet worden uitgevoerd. U kunt de back-uptaak uitvoeren op slechts één dag of op elke dag van de week, of een combi natie hiervan.
 * **Tijden van de dag** waarop de back-up moet worden uitgevoerd. U kunt Maxi maal drie verschillende tijdstippen van de dag definiëren wanneer de back-up wordt geactiveerd.
@@ -254,7 +254,7 @@ U kunt bijvoorbeeld een back-upbeleid configureren dat op 4 P.M. elke zaterdag e
 $Schedule = New-OBSchedule -DaysOfWeek Saturday, Sunday -TimesOfDay 16:00
 ```
 
-Het back-upschema moet worden gekoppeld aan een beleid en dit kan worden bereikt met behulp van de cmdlet [set-OBSchedule](https://technet.microsoft.com/library/hh770407) .
+Het back-upschema moet worden gekoppeld aan een beleid en dit kan worden bereikt met behulp van de cmdlet [set-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obschedule?view=winserver2012-ps) .
 
 ```powershell
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
@@ -266,13 +266,13 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>Een Bewaar beleid configureren
 
-In het Bewaar beleid wordt gedefinieerd hoe lang herstel punten die zijn gemaakt op basis van back-uptaken, behouden blijven. Wanneer u een nieuw Bewaar beleid maakt met behulp van de cmdlet [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) , kunt u het aantal dagen opgeven dat de back-upherstel punten moeten worden bewaard met Azure backup. In het onderstaande voor beeld wordt een Bewaar beleid van zeven dagen ingesteld.
+In het Bewaar beleid wordt gedefinieerd hoe lang herstel punten die zijn gemaakt op basis van back-uptaken, behouden blijven. Wanneer u een nieuw Bewaar beleid maakt met behulp van de cmdlet [New-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obretentionpolicy?view=winserver2012-ps) , kunt u het aantal dagen opgeven dat de back-upherstel punten moeten worden bewaard met Azure backup. In het onderstaande voor beeld wordt een Bewaar beleid van zeven dagen ingesteld.
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-Het Bewaar beleid moet worden gekoppeld aan het hoofd beleid met de cmdlet [set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405):
+Het Bewaar beleid moet worden gekoppeld aan het hoofd beleid met de cmdlet [set-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obretentionpolicy?view=winserver2012-ps):
 
 ```powershell
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
@@ -309,7 +309,7 @@ Een `OBFileSpec`-object definieert de bestanden die moeten worden opgenomen en u
 
 Deze laatste wordt bereikt met behulp van de vlag-NonRecursive in de opdracht New-OBFileSpec.
 
-In het onderstaande voor beeld maakt u een back-up van volume C: en D: en sluit u de binaire bestanden van het besturings systeem in de Windows-map en eventuele tijdelijke mappen uit. Hiervoor maken we twee bestands specificaties met de cmdlet [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) -One voor insluiting en één voor uitsluiting. Zodra de bestands specificaties zijn gemaakt, worden ze gekoppeld aan het beleid met behulp van de cmdlet [add-OBFileSpec](https://technet.microsoft.com/library/hh770424) .
+In het onderstaande voor beeld maakt u een back-up van volume C: en D: en sluit u de binaire bestanden van het besturings systeem in de Windows-map en eventuele tijdelijke mappen uit. Hiervoor maken we twee bestands specificaties met de cmdlet [New-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obfilespec?view=winserver2012-ps) -One voor insluiting en één voor uitsluiting. Zodra de bestands specificaties zijn gemaakt, worden ze gekoppeld aan het beleid met behulp van de cmdlet [add-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/add-obfilespec?view=winserver2012-ps) .
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -433,7 +433,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="applying-the-policy"></a>Het beleid Toep assen
 
-Het beleids object is nu voltooid en heeft een bijbehorend back-upschema, retentie beleid en een lijst met uitsluitingen/uitsluiting van bestanden. Dit beleid kan nu worden doorgevoerd voor het gebruik van Azure Backup. Voordat u het zojuist gemaakte beleid toepast, moet u ervoor zorgen dat er geen bestaand back-upbeleid is gekoppeld aan de server met behulp van de cmdlet [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . Als u het beleid verwijdert, wordt om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
+Het beleids object is nu voltooid en heeft een bijbehorend back-upschema, retentie beleid en een lijst met uitsluitingen/uitsluiting van bestanden. Dit beleid kan nu worden doorgevoerd voor het gebruik van Azure Backup. Voordat u het zojuist gemaakte beleid toepast, moet u ervoor zorgen dat er geen bestaand back-upbeleid is gekoppeld aan de server met behulp van de cmdlet [Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) . Als u het beleid verwijdert, wordt om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -443,7 +443,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-Het door voeren van het beleids object wordt uitgevoerd met de cmdlet [set-OBPolicy](https://technet.microsoft.com/library/hh770421) . Hiermee wordt ook om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
+Het door voeren van het beleids object wordt uitgevoerd met de cmdlet [set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy?view=winserver2012-ps) . Hiermee wordt ook om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -491,7 +491,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-U kunt de details van het bestaande back-upbeleid weer geven met behulp van de cmdlet [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) . U kunt verder inzoomen met behulp van de cmdlet [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) voor het back-upschema en de cmdlet [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) voor het Bewaar beleid
+U kunt de details van het bestaande back-upbeleid weer geven met behulp van de cmdlet [Get-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obpolicy?view=winserver2012-ps) . U kunt verder inzoomen met behulp van de cmdlet [Get-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obschedule?view=winserver2012-ps) voor het back-upschema en de cmdlet [Get-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obretentionpolicy?view=winserver2012-ps) voor het Bewaar beleid
 
 ```powershell
 Get-OBPolicy | Get-OBSchedule
@@ -546,7 +546,7 @@ IsRecursive : True
 
 ### <a name="performing-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren
 
-Zodra een back-upbeleid is ingesteld, worden de back-ups volgens het schema uitgevoerd. Het activeren van een back-up op aanvraag is ook mogelijk met de cmdlet [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
+Zodra een back-upbeleid is ingesteld, worden de back-ups volgens het schema uitgevoerd. Het activeren van een back-up op aanvraag is ook mogelijk met de cmdlet [Start-OBBackup](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obbackup?view=winserver2012-ps) :
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -576,7 +576,7 @@ In deze sectie wordt u begeleid bij de stappen voor het automatiseren van herste
 
 ### <a name="picking-the-source-volume"></a>Het bron volume wordt opgehaald
 
-Als u een item van Azure Backup wilt herstellen, moet u eerst de bron van het item identificeren. Omdat we de opdrachten uitvoeren in de context van een Windows-Server of een Windows-client, wordt de computer al geïdentificeerd. De volgende stap bij het identificeren van de bron is het identificeren van het volume dat het bevat. Een lijst met volumes of bronnen waarvan een back-up van deze computer wordt gemaakt, kan worden opgehaald door de cmdlet [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) uit te voeren. Met deze opdracht wordt een matrix geretourneerd van alle bronnen waarvan een back-up van deze server/client is gemaakt.
+Als u een item van Azure Backup wilt herstellen, moet u eerst de bron van het item identificeren. Omdat we de opdrachten uitvoeren in de context van een Windows-Server of een Windows-client, wordt de computer al geïdentificeerd. De volgende stap bij het identificeren van de bron is het identificeren van het volume dat het bevat. Een lijst met volumes of bronnen waarvan een back-up van deze computer wordt gemaakt, kan worden opgehaald door de cmdlet [Get-OBRecoverableSource](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverablesource?view=winserver2012-ps) uit te voeren. Met deze opdracht wordt een matrix geretourneerd van alle bronnen waarvan een back-up van deze server/client is gemaakt.
 
 ```powershell
 $Source = Get-OBRecoverableSource
@@ -595,7 +595,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Een back-uppunt kiezen waarvan u wilt herstellen
 
-U haalt een lijst met back-uppunten op door de cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) uit te voeren met de juiste para meters. In ons voor beeld kiezen we het meest recente back-uppunt voor het bron volume *C:* en gebruiken om een specifiek bestand te herstellen.
+U haalt een lijst met back-uppunten op door de cmdlet [Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem?view=winserver2012-ps) uit te voeren met de juiste para meters. In ons voor beeld kiezen we het meest recente back-uppunt voor het bron volume *C:* en gebruiken om een specifiek bestand te herstellen.
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -654,13 +654,13 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>Het herstel proces activeren
 
-Om het herstel proces te activeren, moeten we eerst de herstel opties opgeven. U kunt dit doen met behulp van de cmdlet [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) . Voor dit voor beeld gaan we ervan uit dat we de bestanden willen herstellen naar *C:\Temp*. Er wordt ook van uitgegaan dat we bestanden willen overs laan die al bestaan in de doelmap *C:\Temp*. Als u een dergelijke herstel optie wilt maken, gebruikt u de volgende opdracht:
+Om het herstel proces te activeren, moeten we eerst de herstel opties opgeven. U kunt dit doen met behulp van de cmdlet [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption?view=winserver2012-ps) . Voor dit voor beeld gaan we ervan uit dat we de bestanden willen herstellen naar *C:\Temp*. Er wordt ook van uitgegaan dat we bestanden willen overs laan die al bestaan in de doelmap *C:\Temp*. Als u een dergelijke herstel optie wilt maken, gebruikt u de volgende opdracht:
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Activeer nu het herstel proces met behulp van de [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) opdracht op de geselecteerde `$Item` uit de uitvoer van de `Get-OBRecoverableItem`-cmdlet:
+Activeer nu het herstel proces met behulp van de [Start-OBRecovery](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery?view=winserver2012-ps) opdracht op de geselecteerde `$Item` uit de uitvoer van de `Get-OBRecoverableItem`-cmdlet:
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption

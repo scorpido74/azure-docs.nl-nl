@@ -3,12 +3,12 @@ title: Preview van Azure Service Fabric docker-implementatie
 description: Azure Service Fabric accepteert de indeling docker opstellen, waarmee u gemakkelijker bestaande containers kunt organiseren met behulp van Service Fabric. Deze ondersteuning is momenteel in preview.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6dd45e81a0db06cbaa75da3f94b9e7624b0acd69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458043"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589331"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-ondersteuning voor implementatie in azure Service Fabric (preview-versie)
 
@@ -69,37 +69,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 U kunt ook de volgende Service Fabric CLI-opdracht gebruiken:
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 Nadat u de implementatie hebt gemaakt, kunt u de status ervan controleren met behulp van de volgende opdracht:
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Gebruik de volgende opdracht om de opstel implementatie te verwijderen:
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Gebruik de volgende opdracht om een upgrade voor samen stellen van de implementatie te starten:
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Als u de upgrade voor het opstellen van de implementatie wilt terugdraaien, gebruikt u de volgende opdracht:
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Nadat de upgrade is geaccepteerd, kan de voortgang van de upgrade worden gevolgd met de volgende opdracht:
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 

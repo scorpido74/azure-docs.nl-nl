@@ -2,14 +2,14 @@
 title: Installeer de chef-client vanuit de Azure Portal
 description: Meer informatie over het implementeren en configureren van uw chef-client vanuit de Azure Portal
 keywords: Azure, chef, devops, client, installeren, portal
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158259"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586356"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installeer de chef-client vanuit de Azure Portal
 U kunt de chef-client extensie rechtstreeks toevoegen aan een Linux-of Windows-machine via de Azure Portal. Dit artikel begeleidt u bij het proces met behulp van een nieuwe virtuele Linux-machine.
@@ -56,7 +56,7 @@ In deze sectie gebruikt u eerst de Azure Portal om een Linux-machine te maken. T
    - **Meld u aan met Azure Active Directory** -Select **disabled**.
    - **Abonnement** : Selecteer het gewenste Azure-abonnement als u meer dan één hebt.
    - **Resource groep** : Voer een naam in voor de resource groep.
-   - **Locatie**: selecteer **US - oost**.
+   - **Locatie**: selecteer **VS - oost**.
 
      ![Tabblad basis voor het maken van een virtuele machine](./media/chef-extension-portal/add-vm-basics.png)
 
@@ -79,24 +79,24 @@ In deze sectie gebruikt u eerst de Azure Portal om een Linux-machine te maken. T
 1. Geef op het tabblad **installatie-uitbrei ding** de volgende waarden op en selecteer vervolgens **OK**.
 
     - **URL** van de chef-server: Voer de chef-server-URL in die de naam van de organisatie bevat, bijvoorbeeld *https://api.chef.io/organization/mycompany* .
-    - **Chef-knooppunt naam** : Voer de naam van het chef-knoop punt in. Dit kan een wille keurige waarde zijn.
-    - **Lijst uitvoeren** : Voer de chef uit die is toegevoegd aan de machine. Dit kan leeg blijven.
-    - **Validatie client naam** : Voer de naam van de chef-validatie client in. bijvoorbeeld *Tarcher-validator*.
+    - **Chef-knooppunt naam** : Voer de naam van het chef-knoop punt in.
+    - **Lijst uitvoeren** : Voer de chef uit die is toegevoegd aan de machine. Deze waarde mag leeg blijven.
+    - **Validatie client naam** : Voer de naam van de chef-validatie client in. Bijvoorbeeld `tarcher-validator`.
     - **Validatie sleutel** : Selecteer een bestand met de validatie sleutel die wordt gebruikt bij het Boots trappen van uw machines.
-    - **Client configuratie bestand** : Selecteer een configuratie bestand voor chef-client. Dit kan leeg blijven.
-    - **Chef-client versie** : Geef de versie op van de chef-client die u wilt installeren. Dit kan leeg blijven. Met een lege waarde wordt de nieuwste versie geïnstalleerd.
+    - **Client configuratie bestand** : Selecteer een configuratie bestand voor chef-client. Deze waarde mag leeg blijven.
+    - **Chef-client versie** : Geef de versie op van de chef-client die u wilt installeren. Deze waarde mag leeg blijven, waardoor de nieuwste versie wordt geïnstalleerd.
     - **SSL-verificatie modus** : Selecteer **geen** of **peer**. *Geen* is geselecteerd voor de demo.
-    - **Chef-omgeving** : Voer de chef-omgeving in waarvan dit knoop punt lid moet zijn. Dit kan leeg blijven.
-    - **Versleuteld Databag Secret** : Selecteer een bestand dat het geheim bevat voor de versleutelde Databag waartoe deze computer toegang moet hebben. Dit kan leeg blijven.
-    - **SSL-certificaat voor chef-server** : Selecteer het SSL-certificaat dat aan uw chef-server is toegewezen. Dit kan leeg blijven.
+    - **Chef-omgeving** : Voer de chef-omgeving in waarvan dit knoop punt lid moet zijn. Deze waarde mag leeg blijven.
+    - **Versleutelde gegevens verzameling Secret** : Selecteer een bestand met het geheim voor de versleutelde gegevens verzameling waartoe deze computer toegang moet hebben. Deze waarde mag leeg blijven.
+    - **SSL-certificaat voor chef-server** : Selecteer het SSL-certificaat dat aan uw chef-server is toegewezen. Deze waarde mag leeg blijven.
 
       ![De chef-server installeren op een virtuele Linux-machine](./media/chef-extension-portal/install-extension.png)
 
-1. Wanneer u terugkeert naar het tabblad **extensies** , selecteert u **OK**.
+1. Wanneer het tabblad **extensies** wordt weer gegeven, selecteert u **OK**.
 
-1. Wanneer u terugkeert naar het tabblad **instellingen** , selecteert u **OK**.
+1. Wanneer het tabblad **instellingen** wordt weer gegeven, selecteert u **OK**.
 
-1. Wanneer u terugkeert naar het tabblad **maken** (dit staat voor een samen vatting van de opties die u hebt geselecteerd en ingevoerd), controleert u de gegevens en de **Gebruiksvoorwaarden**en selecteert u **maken**.
+1. Wanneer het tabblad **maken** wordt weer gegeven, ziet u een samen vatting van de opties die u hebt geselecteerd en ingevoerd. Controleer de gegevens, evenals de **Gebruiksvoorwaarden**, en selecteer **maken**.
 
 Wanneer het proces van het maken en implementeren van de virtuele machine met de chef-extensie is voltooid, wordt in een melding aangegeven dat de bewerking is geslaagd of mislukt. Daarnaast wordt de resource pagina voor de nieuwe virtuele machine automatisch geopend in het Azure Portal zodra deze is gemaakt.
 
@@ -104,4 +104,5 @@ Wanneer het proces van het maken en implementeren van de virtuele machine met de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een virtuele Windows-machine maken in azure met behulp van chef](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Een virtuele Windows-machine maken in azure met behulp van chef](chef-automation.md)

@@ -3,18 +3,18 @@ title: Over SAP HANA back-up van de data base in azure Vm's
 description: In dit artikel vindt u informatie over het maken van back-ups van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: aad9e7e89c54100f460a7f348702d0a59e88f519
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479460"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586560"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Over SAP HANA back-up van de data base in azure Vm's
 
 SAP HANA data bases zijn bedrijfskritische workloads waarvoor een lage Recovery Point Objective (RPO) en een doel stelling voor snel herstel (RTO) zijn vereist. U kunt nu [back-ups maken van SAP Hana-data bases die worden uitgevoerd op virtuele Azure-machines](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) met [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview).
 
-Azure Backup is [Backint gecertificeerd](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) door SAP, om systeem eigen back-upondersteuning te bieden door gebruik te maken van de systeem eigen api's van SAP Hana. Deze aanbieding van Azure Backup wordt afgestemd met de mantra van de back-ups van de **infra structuur** van Azure backup, waardoor er geen back-upinfrastructuur hoeft te worden geïmplementeerd en beheerd. U kunt nu zonder problemen back-ups maken en herstellen van SAP HANA-data bases die worden uitgevoerd op virtuele Azure-machines (Vm's uit de[M-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#m-series) worden ook nu ondersteund) en gebruikmaken van de mogelijkheden voor bedrijfs beheer die Azure backup bieden.
+Azure Backup is [Backint gecertificeerd](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) door SAP, om systeem eigen back-upondersteuning te bieden door gebruik te maken van de systeem eigen api's van SAP Hana. Deze aanbieding van Azure Backup wordt afgestemd met de mantra van de back-ups van de **infra structuur** van Azure backup, waardoor er geen back-upinfrastructuur hoeft te worden geïmplementeerd en beheerd. U kunt nu zonder problemen back-ups maken en herstellen van SAP HANA-data bases die worden uitgevoerd op virtuele Azure-machines (Vm's uit de[M-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) worden ook nu ondersteund) en gebruikmaken van de mogelijkheden voor bedrijfs beheer die Azure backup bieden.
 
 ## <a name="added-value"></a>Toegevoegde waarde
 

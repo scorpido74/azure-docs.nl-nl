@@ -1,20 +1,20 @@
 ---
 title: Azure Security Center gegevens verbinden met Azure Sentinel
 description: Meer informatie over het verbinden van Azure Security Center gegevens met Azure Sentinel.
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: yelevin
+ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190883"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588532"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Verbinding maken met gegevens van Azure Security Center
 

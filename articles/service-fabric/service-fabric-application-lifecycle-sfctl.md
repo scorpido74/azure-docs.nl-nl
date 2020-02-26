@@ -5,12 +5,12 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610230"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589144"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Een Azure Service Fabric-toepassing beheren met behulp van Azure Service Fabric CLI (sfctl)
 
@@ -47,7 +47,7 @@ Voordat u een toepassing maakt, uploadt u het toepassings pakket naar het archie
 
 Als uw toepassings pakket zich bijvoorbeeld in de `app_package_dir` Directory bevindt, gebruikt u de volgende opdrachten om de map te uploaden:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ Voor grote toepassings pakketten kunt u de optie `--show-progress` opgeven om de
 
 Wanneer het uploaden is voltooid, moet de toepassing worden ingericht. Gebruik de volgende opdracht om de toepassing in te richten:
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ Het is raadzaam het toepassings pakket te verwijderen nadat de toepassing is ger
 
 Als u het toepassings pakket uit het archief met installatie kopieën wilt verwijderen, gebruikt u de volgende opdracht:
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 Nadat u de toepassing hebt ingericht, gebruikt u de volgende opdracht voor het benoemen en maken van uw toepassing:
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ De naam van de toepassing moet beginnen met het voor voegsel `fabric:/`.
 
 Nadat u een toepassing hebt gemaakt, maakt u services van de toepassing. In het volgende voor beeld maken we een nieuwe stateless service van onze toepassing. De services die u kunt maken op basis van een toepassing, worden gedefinieerd in een service manifest in het eerder ingerichte toepassings pakket.
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 Gebruik de volgende status opdrachten om te controleren of alles in orde is:
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 Als u wilt controleren of de service in orde is, gebruikt u vergelijk bare opdrachten om de status van de service en de toepassing op te halen:
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -122,7 +122,7 @@ Als u een toepassing wilt verwijderen, voert u de volgende taken uit:
 
 Als u de toepassing wilt verwijderen, gebruikt u de volgende opdracht:
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 Nadat u de toepassing hebt verwijderd, kunt u de inrichting van het toepassings type ongedaan maken als u het niet meer nodig hebt. Gebruik de volgende opdracht om de inrichting van het toepassings type ongedaan te maken:
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ Nadat u de toepassing hebt gemaakt, kunt u dezelfde reeks stappen herhalen om ee
 
 Als u een upgrade wilt uitvoeren, moet u eerst de volgende versie van de toepassing inrichten met dezelfde opdrachten als vóór:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 Het wordt aanbevolen om een bewaakte automatische upgrade uit te voeren door de volgende opdracht uit te voeren:
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

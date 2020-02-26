@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/17/2020
+ms.date: 2/24/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f2940496682372b0d00d2b419aa941dcedd533c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444006"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586526"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -1251,7 +1251,7 @@ U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings reg
 
 Zie [aangepaste metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)voor meer informatie over aangepaste metrische gegevens in azure monitor.
 
-Wanneer u een waarschuwings regel voor een aangepaste metriek maakt, moet u zowel de naam van de metriek als de metrische naam ruimte opgeven.
+Wanneer u een waarschuwings regel voor een aangepaste metriek maakt, moet u zowel de naam van de metriek als de metrische naam ruimte opgeven. U moet er ook voor zorgen dat de aangepaste metriek al wordt gerapporteerd. u kunt geen waarschuwings regel maken voor een aangepaste metriek die nog niet bestaat.
 
 Sla de JSON hieronder op als customstaticmetricalert. json voor het doel van deze procedure.
 

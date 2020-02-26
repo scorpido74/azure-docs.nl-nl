@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904820"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587614"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric-CLI
 
@@ -39,9 +39,9 @@ De Service Fabric-CLI is bedoeld ter ondersteuning van de nieuwste runtimeversie
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
-U kunt optioneel een doelversie van de CLI opgeven om te installeren, door het achtervoegsel `==<version>` achter de opdracht `pip install` te plaatsen. Bijvoorbeeld, voor versie 1.1.0 is de syntaxis:
+U kunt optioneel een doelversie van de CLI opgeven om te installeren, door het achtervoegsel `pip install` achter de opdracht `==<version>` te plaatsen. Bijvoorbeeld, voor versie 1.1.0 is de syntaxis:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -67,14 +67,14 @@ Voor Windows 10, Windows Server 2016 en Windows Server 2012 R2 gebruikt u de off
 
 U kunt nu een nieuw opdrachtvenster openen en de versie van Python en pip opvragen.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Voer vervolgens de volgende opdracht uit om de Azure Service Fabric CLI (sfctl) te installeren en de CLI-Help-pagina weer te geven:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -103,7 +103,7 @@ Controleer dan of `~/.local/bin` toegankelijk is vanuit het `$PATH`:
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 Als de installatie op Windows-subsysteem voor Linux mislukt vanwege onjuiste mapmachtigingen, kunt u het opnieuw proberen met verhoogde machtigingen:
@@ -148,7 +148,7 @@ Opdrachten worden altijd voorafgegaan door `sfctl`. Voor algemene informatie ove
 
 Opdrachten volgen een herhaalbare structuur, met het doel van de opdracht vóór de bewerking of actie.
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -161,7 +161,7 @@ U kunt pas bewerkingen uitvoeren nadat u een cluster hebt geselecteerd waarmee u
 > [!WARNING]
 > Gebruik geen niet-beveiligde Service Fabric-clusters in een productieomgeving.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -169,7 +169,7 @@ Het clustereindpunt moet worden voorafgegaan door `http` of `https`. Het moet de
 
 Voor clusters die zijn beveiligd met een certificaat, kunt u een met PEM gecodeerd certificaat opgeven. Het certificaat kan worden opgegeven als een enkel bestand of als een certificaat-sleutelpaar. Als het een zelfondertekend certificaat is dat niet is ondertekend door een CA, kunt u de optie `--no-verify` kiezen om CA-verificatie over te slaan.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -181,7 +181,7 @@ De gegevens van een clusterverbinding blijven behouden tussen meerdere Service F
 
 Als u bijvoorbeeld de status van het Service Fabric-cluster wilt weten, voert u de volgende opdracht uit:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -218,13 +218,13 @@ Hier volgen enkele suggesties en tips voor het oplossen van veelvoorkomende prob
 
 De CLI van Service Fabric ondersteunt clientcertificaten als PEM-bestanden (extensie .pem). Als u PFX-bestanden van Windows gebruikt, moet u deze certificaten converteren naar PEM-indeling. Gebruik de volgende opdracht om een PFX-bestand te converteren naar een PEM-bestand:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Op een vergelijkbare manier kunt u de volgende opdracht gebruiken (hier wordt geen wachtwoord verstrekt) om een PEM-bestand te converteren naar een PFX-bestand:
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -246,13 +246,13 @@ Gedetailleerde logboeken zijn vaak nuttig zijn wanneer u fouten opspoort of een 
 
 Als u hulp nodig hebt met een specifieke opdracht of een groep opdrachten, gebruikt u de `-h`-vlag.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Hier volgt nog een voorbeeld:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -260,7 +260,7 @@ sfctl application create -h
 
 Voer de volgende opdrachten uit om de Service Fabric-CLI bij te werken (vervang `pip` door `pip3`, afhankelijk van wat u tijdens de oorspronkelijke installatie hebt gekozen):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

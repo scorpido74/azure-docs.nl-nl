@@ -3,7 +3,7 @@ title: Incidenten onderzoeken met Azure Sentinel | Microsoft Docs
 description: Gebruik deze zelf studie om te leren hoe u incidenten met Azure Sentinel kunt onderzoeken.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024621"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587189"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
@@ -54,7 +54,7 @@ U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing
 
 1. Als u meer informatie over de waarschuwingen en entiteiten in het incident wilt weer geven, selecteert u **volledige details weer geven** op de pagina incident en bekijkt u de relevante tabbladen met een overzicht van de informatie over het incident. Bekijk op het tabblad **waarschuwingen** de waarschuwing zelf. U kunt alle relevante informatie over de waarschuwing zien: de query die de waarschuwing heeft geactiveerd, het aantal resultaten dat per query wordt geretourneerd en de mogelijkheid om playbooks uit te voeren op de waarschuwingen. Als u nog meer wilt inzoomen op het incident, selecteert u het aantal **gebeurtenissen**. Hiermee opent u de query die de resultaten heeft gegenereerd en de gebeurtenissen die de waarschuwing hebben geactiveerd in Log Analytics. Op het tabblad **entiteiten** ziet u alle entiteiten die u hebt toegewezen als onderdeel van de definitie van de waarschuwings regel.
 
-    ![Waarschuwings details weer geven](media/tutorial-investigate-cases/alert-details.png)
+    ![Waarschuwingsdetails weergeven](media/tutorial-investigate-cases/alert-details.png)
 
 1. Als u een incident actief onderzoekt, is het een goed idee om de status van het incident in te stellen op **in behandeling** tot u het hebt gesloten.
 

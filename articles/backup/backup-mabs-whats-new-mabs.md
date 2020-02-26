@@ -3,12 +3,12 @@ title: Wat is er nieuw in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server biedt uitgebreide back-upmogelijkheden voor het beveiligen van Vm's, bestanden en mappen, werk belastingen en nog veel meer. Meer informatie over het installeren of upgraden van Azure Backup Server v3.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172227"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582803"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Wat is er nieuw in Microsoft Azure Backup Server
 
@@ -18,7 +18,7 @@ De volgende functies zijn opgenomen in MABS V3:
 
 ## <a name="volume-to-volume-migration"></a>Migratie van volumes naar volume
 
-Met Modern Backup Storage (MBS) in MABS v2 hebben we werkbelasting bewuste opslag aangekondigd, waar u bepaalde werk belastingen zodanig configureert dat een back-up wordt gemaakt van specifieke opslag, op basis van opslag eigenschappen. Na de configuratie is het echter mogelijk dat u back-ups van bepaalde gegevens bronnen wilt verplaatsen naar andere opslag voor optimaal gebruik van bronnen. MABS V3 biedt u de mogelijkheid om uw back-ups te migreren en ze zodanig te configureren dat deze in [drie stappen](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/)worden opgeslagen op een ander volume.
+Met Modern Backup Storage (MBS) in MABS v2 hebben we werkbelasting bewuste opslag aangekondigd, waar u bepaalde werk belastingen zodanig configureert dat een back-up wordt gemaakt van specifieke opslag, op basis van opslag eigenschappen. Na de configuratie is het echter mogelijk dat u back-ups van bepaalde gegevens bronnen wilt verplaatsen naar andere opslag voor optimaal gebruik van bronnen. MABS V3 biedt u de mogelijkheid om uw back-ups te migreren en ze zodanig te configureren dat deze in [drie stappen](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)worden opgeslagen op een ander volume.
 
 ## <a name="prevent-unexpected-data-loss"></a>Onverwacht gegevens verlies voor komen
 

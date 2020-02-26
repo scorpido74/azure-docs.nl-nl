@@ -3,7 +3,7 @@ title: Trend Micro diepe beveiliging verbinden met Azure Sentinel | Microsoft Do
 description: Meer informatie over het verbinden van een trend micro diepe beveiliging met Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610434"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588022"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Verbinding maken met Trend Micro diepe beveiliging
 

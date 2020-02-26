@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545157"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587325"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights met AI gebruiken om database prestaties te controleren en op te lossen (preview-versie)
 
@@ -50,7 +50,7 @@ Geïdentificeerd SQL Database prestatie verminderingen worden vastgelegd in het 
 
 | Eigenschap             | Details              |
 | :------------------- | ------------------- |
-| Database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
+| database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
 | Waargenomen tijds bereik | Begin-en eind tijd voor de periode van het gedetecteerde inzicht. |
 | Beïnvloede metrische gegevens | Metrische gegevens waardoor een inzicht werd gegenereerd: <ul><li>De duur van de query wordt verhoogd [seconden].</li><li>Overmatig wacht tijd [seconden].</li><li>Time-outaanvragen [percentage].</li><li>Gefoutde aanvragen [percentage].</li></ul>|
 | Impact waarde | Waarde van een gemeten meting. |
@@ -113,7 +113,7 @@ Zie [wat te doen met metrische gegevens en Diagnostische logboeken in Event hubs
 
 ### <a name="set-up-with-azure-storage"></a>Instellen met Azure Storage
 
-Als u Intelligent Insights met opslag wilt gebruiken, moet u Intelligent Insights logboek gegevens zodanig configureren dat ze naar de opslag worden gestreamd. Zie [streamen in azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage).
+Als u Intelligent Insights met opslag wilt gebruiken, moet u Intelligent Insights logboek gegevens zodanig configureren dat ze naar de opslag worden gestreamd. Zie [streamen in azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage).
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Aangepaste integraties van Intelligent Insights logboek
 
@@ -164,7 +164,7 @@ Het model voor buitensporige wacht tijden bewaakt afzonderlijke database query's
 - Resource limieten voor elastische Pools bereiken
 - Buitensporig aantal werk-of sessie-threads
 - Buitensporige database vergrendeling
-- Geheugendruk
+- Geheugen druk
 - Andere wacht statistieken
 
 Het bereiken van resource limieten of bronnen limieten voor elastische Pools duidt op het verbruik van beschik bare resources voor een abonnement of in de elastische groep met absolute drempel waarden. Deze statistieken wijzen op de prestaties van de werk belasting. Een buitensporig aantal werk-of sessie-threads geeft een toestand aan waarin het aantal werkthreads of sessies gepaard absolute drempel waarden heeft gepasseerd. Deze statistieken wijzen op de prestaties van de werk belasting.

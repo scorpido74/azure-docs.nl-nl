@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461999"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587121"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -328,7 +328,7 @@ Voor waarden kunnen ook worden gevormd met behulp van een **waarde**. **waarde**
 **waarde** wordt gekoppeld aan elke ondersteunde [voor waarde](#conditions).
 
 > [!WARNING]
-> Als het resultaat van een _sjabloon functie_ een fout is, mislukt de beleids evaluatie. Een mislukte evaluatie is een impliciete **weigering**. Zie voor meer informatie [sjabloon fouten voor komen](#avoiding-template-failures).
+> Als het resultaat van een _sjabloon functie_ een fout is, mislukt de beleids evaluatie. Een mislukte evaluatie is een impliciete **weigering**. Zie voor meer informatie [sjabloon fouten voor komen](#avoiding-template-failures). Gebruik [enforcementMode](./assignment-structure.md#enforcement-mode) van **DoNotEnforce** om de impact van een mislukte evaluatie op nieuwe of bijgewerkte resources te voor komen tijdens het testen en valideren van een nieuwe beleids definitie.
 
 #### <a name="value-examples"></a>Voor beelden van waarden
 
@@ -580,13 +580,22 @@ Alle [Resource Manager-sjabloon functies](../../../azure-resource-manager/templa
 
 De volgende functies zijn beschikbaar voor gebruik in een beleids regel, maar verschillen van het gebruik in een Azure Resource Manager sjabloon:
 
-- addDays (dateTime, numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **DateTime**: [required] string-string in de indeling Universal ISO 8601 datetime ' jjjj-mm-ddTuu: mm: SS. fffffffZ '
   - **numberOfDaysToAdd**: [vereist] geheel getal-aantal dagen dat moet worden toegevoegd
-- utcNow ()-in tegens telling tot een resource manager-sjabloon, kan dit buiten de standaard waarde worden gebruikt.
+- `utcNow()`, in tegens telling tot een resource manager-sjabloon, kan dit buiten de standaard waarde worden gebruikt.
   - Retourneert een teken reeks die is ingesteld op de huidige datum en tijd 8601 in de indeling JJJJ-MM-DDTuu: mm: SS. fffffffZ
 
-Daarnaast is de functie `field` beschikbaar voor beleids regels. `field` wordt hoofd zakelijk gebruikt in combi natie met **AuditIfNotExists** en **DeployIfNotExists** om te verwijzen naar velden in de resource die worden geëvalueerd. Een voor beeld van dit gebruik is te zien in het [DeployIfNotExists-voor beeld](effects.md#deployifnotexists-example).
+De volgende functies zijn alleen beschikbaar in beleids regels:
+
+- `field(fieldName)`
+  - **FieldName**: [required] string: naam van het [veld](#fields) dat moet worden opgehaald
+  - Retourneert de waarde van het veld van de resource die wordt geëvalueerd door de if-voor waarde
+  - `field` wordt hoofd zakelijk gebruikt in combi natie met **AuditIfNotExists** en **DeployIfNotExists** om te verwijzen naar velden in de resource die worden geëvalueerd. Een voor beeld van dit gebruik is te zien in het [DeployIfNotExists-voor beeld](effects.md#deployifnotexists-example).
+- `requestContext().apiVersion`
+  - Retourneert de API-versie van de aanvraag waarvoor beleids evaluatie is geactiveerd (bijvoorbeeld: `2019-09-01`). Dit is de API-versie die is gebruikt in de PUT/PATCH-aanvraag voor evaluaties voor het maken of bijwerken van de resource. De nieuwste API-versie wordt altijd gebruikt tijdens de evaluatie van de naleving van bestaande resources.
+  
+
 
 #### <a name="policy-function-example"></a>Voor beeld van beleids functie
 

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561150"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586703"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -42,7 +42,12 @@ De voor delen van het implementatie script:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Een door de gebruiker toegewezen beheerde identiteit met de rol van Inzender op abonnements niveau**. Deze identiteit wordt gebruikt om implementatie scripts uit te voeren. Zie [een door de gebruiker toegewezen beheerde identiteit maken met behulp van de Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) [, of met behulp van](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)als u er een wilt maken. U hebt de identiteits-ID nodig wanneer u de sjabloon implementeert. De indeling van de identiteit is:
+- **Een door de gebruiker toegewezen beheerde identiteit met de rol van de mede werker van de doel resource groep**. Deze identiteit wordt gebruikt om implementatie scripts uit te voeren. Als u bewerkingen buiten de resource groep wilt uitvoeren, moet u extra machtigingen verlenen. Wijs de identiteit bijvoorbeeld toe aan het abonnements niveau als u een nieuwe resource groep wilt maken.
+
+  > [!NOTE]
+  > De engine voor implementatie scripts moet een opslag account en een container exemplaar op de achtergrond maken.  Een door de gebruiker toegewezen beheerde identiteit met de rol van Inzender op abonnements niveau is vereist als het abonnement de Azure Storage-account (micro soft. Storage) en Azure container instance (micro soft. ContainerInstance) niet heeft geregistreerd hardwareproviders.
+
+  Als u een identiteit wilt maken, raadpleegt u [een door de gebruiker toegewezen beheerde identiteit maken met behulp van de Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), of met behulp van [Azure cli](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)of met [behulp van Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). U hebt de identiteits-ID nodig wanneer u de sjabloon implementeert. De indeling van de identiteit is:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -99,8 +104,7 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
-    ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+    ", // or "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -208,6 +212,12 @@ Uitvoer van het implementatie script moet worden opgeslagen op de AZ_SCRIPTS_OUT
 [!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
 
 [JQ](https://stedolan.github.io/jq/) wordt in het vorige voor beeld gebruikt. Het wordt geleverd met de container installatie kopieën. Zie [ontwikkel omgeving configureren](#configure-development-environment).
+
+## <a name="handle-non-terminating-errors"></a>Niet-afsluit fouten verwerken
+
+U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
+) variabele in uw implementatie script. De engine van de implementatie script kan de waarde niet instellen of wijzigen.  Ondanks de waarde die u hebt ingesteld voor $ErrorActionPreference, stelt het implementatie script de inrichtings status van de resource in op *mislukt* als er een fout optreedt in het script.
+
 
 ## <a name="debug-deployment-scripts"></a>Fout opsporing voor implementatie scripts
 

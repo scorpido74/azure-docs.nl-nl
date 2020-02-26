@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b3e4ff60ab290d25afb003f0753cf852cefffe1a
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 75297f15dbc0067767d97afd7c8aa16738f2fc1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069554"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581307"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -63,9 +63,11 @@ De voorbeeld sjabloon heeft twee para meters:
     De namen van de andere services worden wille keurig gegenereerd.
 
 > [!TIP]
-> Terwijl de sjabloon die aan dit document is gekoppeld, een nieuwe Azure Container Registry maakt, kunt u ook een nieuwe werk ruimte maken zonder container register te maken. Als het container register in de werk ruimte aanwezig is, wordt er een gemaakt wanneer u een bewerking uitvoert waarvoor een container register vereist is. Bijvoorbeeld training of implementatie van een model.
+> Terwijl de sjabloon die aan dit document is gekoppeld, een nieuwe Azure Container Registry maakt, kunt u ook een nieuwe werk ruimte maken zonder container register te maken. Er wordt een gemaakt wanneer u een bewerking uitvoert waarvoor een container register is vereist. Bijvoorbeeld training of implementatie van een model.
 >
 > U kunt ook verwijzen naar een bestaand container register of opslag account in de Azure Resource Manager-sjabloon in plaats van een nieuwe te maken.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 Zie de volgende artikelen voor meer informatie over sjablonen:
 

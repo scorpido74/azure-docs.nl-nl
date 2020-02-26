@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513776"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583171"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -27,10 +27,10 @@ Azure Backup kunt back-ups maken van virtuele Azure-machines met en zonder de Az
 
 **Type VM-schijf** | **ADE (BEK/DM-cryptografie)** | **ADE en KEK**
 --- | --- | ---
-**Unmanaged** | Ja | Ja
-**Beheerd**  | Ja | Ja
+**Beheerde** | Ja | Ja
+**Bijgehouden**  | Ja | Ja
 
-- Meer informatie over [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)en [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
+- Meer informatie over [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)en [KEKs](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/).
 - Lees de [Veelgestelde vragen](../security/azure-security-disk-encryption-faq.md) over de schijf versleuteling van Azure VM.
 
 ### <a name="limitations"></a>Beperkingen

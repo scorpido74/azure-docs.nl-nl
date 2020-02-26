@@ -3,7 +3,7 @@ title: Incidenten maken op basis van waarschuwingen in azure Sentinel | Microsof
 description: Meer informatie over het maken van incidenten op basis van waarschuwingen in azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029763"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587971"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatisch incidenten maken op basis van beveiligings waarschuwingen van micro soft
 
@@ -47,7 +47,7 @@ Gebruik de ingebouwde regels die beschikbaar zijn in azure Sentinel om te kiezen
 
 1. U kunt de regel details wijzigen en ervoor kiezen om de waarschuwingen te filteren waarmee incidenten worden gemaakt op basis van de ernst van de waarschuwing of de tekst in de naam van de waarschuwing.  
       
-    Als u bijvoorbeeld **Azure Security Center** in het veld **micro soft-beveiligings service** kiest en **hoog** kiest in het veld **filteren op Ernst** , worden alleen incidenten met hoge urgentie Azure Security Center waarschuwingen automatisch gemaakt. in azure Sentinel.  
+    Als u bijvoorbeeld **Azure Security Center** in het veld **micro soft-beveiligings service** kiest en **hoog** kiest in het veld **filteren op Ernst** , worden er door alleen waarschuwingen met hoge Ernst Azure Security Center automatisch incidenten in azure Sentinel gemaakt.  
 
     ![Wizard regel maken](media/incidents-from-alerts/create-rule-wizard.png)
 

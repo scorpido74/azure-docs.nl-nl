@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: e212c95a827b01485d4bdfdc557e459a92162c88
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 46bad14978957ab474cfc0eda3e523874246d3f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263201"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586220"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Quickstart: Een Spark-taak uitvoeren op Azure Databricks met Azure portal
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u de Azure Portal om een Azure Databricks-werk ruim
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -52,10 +52,10 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Werkruimtenaam**     | Geef een naam op voor uw Databricks-werkruimte.        |
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie. |
-    |**Locatie**     | Selecteer **US - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.        |
+    |**Locatie**     | Selecteer **VS - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.        |
     |**Prijscategorie**     |  Kies tussen **Standard**, **Premium**of **proef versie**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
-4. Selecteer **controleren + maken**en vervolgens **maken**. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werk ruimte kunt u de implementatie status weer geven in **meldingen**.
+3. Selecteer **controleren + maken**en vervolgens **maken**. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werk ruimte kunt u de implementatie status weer geven in **meldingen**. Zodra dit proces is voltooid, wordt uw gebruikers account automatisch toegevoegd als een gebruiker met beheerders rechten in de werk ruimte.
 
     ![Tegel implementatie van Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Tegel implementatie van Databricks")
 
@@ -149,7 +149,7 @@ Voer de volgende taken uit om een notitie blok in Databricks te maken, Configure
    * Stel **Aggregatie** in op **AANTAL**.
    * **Weergave type** instellen op **cirkel diagram**.
 
-     Klik op **Toepassen**.
+     Klik op **Apply** (Toepassen).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -3,7 +3,7 @@ title: Symantec ICDx-gegevens verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van Symantec ICDx-gegevens met Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 111bc7cd0439eee2026a6a980e9e126b63ac58c6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610485"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588090"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Verbinding maken met uw Symantec ICDx-apparaat 
 
@@ -42,7 +42,7 @@ Symantec ICDx kan Logboeken rechtstreeks integreren en exporteren naar Azure Sen
 4. Onder **doorstuur servers**, naast Microsoft Azure Sentinel (log Analytics), klikt u op **toevoegen**. 
 4. Klik in het **Microsoft Azure Sentinel (log Analytics)** -venster op **Geavanceerd weer geven**. 
 5. Ga als volgt te werk boven aan het venster uitvouwen tot Microsoft Azure Sentinel (Log Analytics):
-    -   **Naam**: Typ een naam voor de doorstuur server die uit niet meer dan 30 tekens bestaat. Kies een unieke, herken bare naam. Deze naam wordt weer gegeven in de lijst met doorstuur servers op het scherm **configuratie** en in de Dash boards op het **dash board** . Bijvoorbeeld: Microsoft Azure Log Analytics East. Dit veld is vereist.
+    -   **Naam**: Typ een naam voor de doorstuur server die uit niet meer dan 30 tekens bestaat. Kies een unieke, herken bare naam. Deze naam wordt weer gegeven in de lijst met doorstuur servers op het scherm **configuratie** en in de Dash boards op het **dash board** . Bijvoorbeeld: Microsoft Azure Log Analytics East. Dit veld is verplicht.
     -   **Beschrijving**: Typ een beschrijving voor de doorstuur server. Deze beschrijving wordt ook weer gegeven in de lijst met doorstuur servers op het **configuratie** scherm. Neem Details op zoals het gebeurtenis type dat wordt doorgestuurd en de groep die de gegevens moet controleren.
     -   **Opstart type**: Selecteer de methode voor opstarten voor de configuratie van de doorstuur server. Uw opties zijn hand matig en automatisch.<br>De standaard instelling is automatisch. 
 6. Onder **gebeurtenissen**gaat u als volgt te werk: 
@@ -57,12 +57,12 @@ Symantec ICDx kan Logboeken rechtstreeks integreren en exporteren naar Azure Sen
         - U kunt ook op opgeslagen Query's klikken om een opgeslagen query toe te passen.
     - **Opgenomen kenmerken**: Typ de door komma's gescheiden lijst met kenmerken die moeten worden opgenomen in de doorgestuurde gegevens. De Inge sloten kenmerken hebben voor rang op uitgesloten kenmerken.
     - **Uitgesloten kenmerken**: Typ de door komma's gescheiden lijst met kenmerken die moeten worden uitgesloten van de doorgestuurde gegevens.
-    - **Batch grootte**: Selecteer het aantal gebeurtenissen dat per batch moet worden verzonden. Uw opties zijn 10, 50, 100, 500 en 1000.<br>De standaardwaarde is 100. 
+    - **Batch grootte**: Selecteer het aantal gebeurtenissen dat per batch moet worden verzonden. Uw opties zijn 10, 50, 100, 500 en 1000.<br>De standaard waarde is 100. 
     - **Frequentie limiet**: Selecteer de snelheid waarmee gebeurtenissen worden doorgestuurd, uitgedrukt als gebeurtenissen per seconde. Uw opties zijn onbeperkt, 500, 1000, 5000 en 10000. <br> De standaard waarde is 5000. 
 7. Onder **Azure Destination**gaat u als volgt te werk: 
-    - **Werk ruimte-id**: plak de werk ruimte-id hieronder. Dit veld is vereist.
-    - **Primaire sleutel**: plak de primaire sleutel van hieronder. Dit veld is vereist.
-    - **Aangepaste logboek naam**: Typ de naam van het aangepaste logboek in het Microsoft Azure-Portal log Analytics werk ruimte waarnaar u gebeurtenissen wilt door sturen. De standaard waarde is SymantecICDx. Dit veld is vereist.
+    - **Werk ruimte-id**: plak de werk ruimte-id hieronder. Dit veld is verplicht.
+    - **Primaire sleutel**: plak de primaire sleutel van hieronder. Dit veld is verplicht.
+    - **Aangepaste logboek naam**: Typ de naam van het aangepaste logboek in het Microsoft Azure-Portal log Analytics werk ruimte waarnaar u gebeurtenissen wilt door sturen. De standaard waarde is SymantecICDx. Dit veld is verplicht.
 8. Klik op *Opslaan* om de configuratie van de doorstuur server te volt ooien. 
 9. Als u de doorstuur server wilt starten, klikt u op **meer** onder **Opties**en vervolgens op **starten**.
 10. Als u het relevante schema in Log Analytics voor de Symantec ICDx-gebeurtenissen wilt gebruiken, zoekt u naar **SymantecICDx_CL**.

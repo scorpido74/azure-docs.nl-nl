@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024650"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584538"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
@@ -37,7 +37,7 @@ Functie ondersteuning valt in de volgende twee categorieën:
 
 In de volgende tabel wordt het huidige ondersteunings niveau voor de drie hosting plannen aangegeven, wanneer dit wordt uitgevoerd op Windows of Linux:
 
-| | Verbruiksabonnement | Premium-plan | Toegewezen plan |
+| | Verbruiksabonnement | Premium-abonnement | Toegewezen plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Algemene beschikbaarheid | Algemene beschikbaarheid | Algemene beschikbaarheid |
 | Linux | Algemene beschikbaarheid | Algemene beschikbaarheid | Algemene beschikbaarheid |
@@ -158,7 +158,7 @@ Schalen kan variëren op basis van een aantal factoren en op verschillende manie
 
 Andere triggers kunnen ook verschillende schaal limieten hebben, zoals hieronder wordt beschreven:
 
-* [Event Hub](functions-bindings-event-hubs.md#trigger---scaling)
+* [Event Hub](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Aanbevolen procedures en patronen voor schaal bare apps
 
@@ -177,7 +177,7 @@ Nuttige query's en informatie over het begrijpen van uw verbruiks factuur vindt 
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>Servicebeperkingen
+## <a name="service-limits"></a>Servicelimieten
 
 In de volgende tabel worden de limieten aangegeven die van toepassing zijn op app-functies wanneer ze worden uitgevoerd in de verschillende hosting plannen:
 

@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: bfd18a009ed9ab5edffafcd0327b1d846cae02d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6d163609d505516514f078e5d5374c20b5a24e89
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643845"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585580"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Doorvoer inrichten voor een Azure Cosmos-container
 
 In dit artikel wordt uitgelegd hoe u de door Voer kunt inrichten voor een container (verzameling, grafiek of tabel) in Azure Cosmos DB. U kunt de door Voer voor één container inrichten of [door Voer in te richten op een Data Base](how-to-provision-database-throughput.md) en deze te delen tussen de containers in de data base. U kunt de door Voer voor een container inrichten met behulp van Azure Portal, Azure CLI of Azure Cosmos DB Sdk's.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -64,9 +64,10 @@ await client.CreateDocumentCollectionAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.Net v3-SDK
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
 
-## <a name="javascript-sdk"></a>JavaScript-SDK
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs" id="ContainerCreateWithThroughput":::
+
+## <a name="javascript-sdk"></a>JavaScript SDK
 
 ```javascript
 // Create a new Client

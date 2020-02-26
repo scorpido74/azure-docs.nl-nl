@@ -3,22 +3,22 @@ title: Diagnostische instellingen voor de kluis op schaal configureren
 description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bdc3dd1da9d3ddc966b664f8bec479f5a8ff10f2
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501080"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584503"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
 
-De rapportage oplossing die wordt verschaft door Azure Backup maakt gebruik van Log Analytics (LA). Voor de gegevens van een bepaalde kluis die naar LA moeten worden verzonden, moet een [Diagnostische instelling](https://aka.ms/AzureBackupDiagnosticsDocs) worden gemaakt voor die kluis.
+De rapportage oplossing die wordt verschaft door Azure Backup maakt gebruik van Log Analytics (LA). Voor de gegevens van een bepaalde kluis die naar LA moeten worden verzonden, moet een [Diagnostische instelling](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) worden gemaakt voor die kluis.
 
 Vaak is het toevoegen van een diagnostische instelling hand matig per kluis een lastigere taak. Daarnaast moet voor elke nieuwe kluis die wordt gemaakt, diagnostische instellingen zijn ingeschakeld om rapporten voor deze kluis te kunnen weer geven. 
 
 Azure Backup biedt een ingebouwde [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)om het maken van diagnostische instellingen op schaal te vereenvoudigen (met La als doel). Dit beleid voegt een instelling voor diagnostische gegevens van LA toe aan alle kluizen in een bepaald abonnement of resource groep. De volgende secties bevatten instructies over het gebruik van dit beleid.
 
-## <a name="supported-scenarios"></a>Ondersteunde scenario's 
+## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
 * Het beleid kan in één keer worden toegepast op alle Recovery Services kluizen in een bepaald abonnement (of op een resource groep in het abonnement). De gebruiker die het beleid toewijst, moet de toegang ' eigenaar ' hebben voor het abonnement waaraan het beleid is toegewezen.
 
@@ -49,6 +49,7 @@ Volg de onderstaande stappen om het beleid voor kluizen toe te wijzen in het ver
 ![Basis principes van beleids toewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. Onder **para meters**voert u de volgende gegevens in:
+
 * **Profiel naam** : de naam die wordt toegewezen aan de diagnostische instellingen die door het beleid zijn gemaakt.
 * **Log Analytics-werk ruimte** : de log Analytics werk ruimte waaraan de diagnostische instelling moet worden gekoppeld. Diagnostische gegevens van alle kluizen in het bereik van de beleids toewijzing worden gepusht naar de opgegeven LA-werk ruimte.
 
@@ -69,7 +70,7 @@ De herstel taak wordt toegepast op kluizen die niet-compatibel zijn volgens de d
 * Voor de kluis is geen diagnostische instelling aanwezig.
 * Diagnostische instellingen zijn aanwezig voor de kluis, maar voor geen van de instellingen zijn **alle** resource-specifieke gebeurtenissen ingeschakeld met La as Destination en de **resource** die is geselecteerd in de wissel knop. 
 
-Zelfs als een gebruiker een kluis heeft waarvoor de gebeurtenis AzureBackupReport is ingeschakeld in de AzureDiagnostics-modus (die wordt ondersteund door de back-uprapporten), is de herstel taak nog steeds van toepassing op deze [kluis, omdat](https://aka.ms/AzureBackupDiagnosticsDocs#legacy-event)de resource-specifieke modus de aanbevolen manier is om Diagnostische instellingen te maken. 
+Zelfs als een gebruiker een kluis heeft waarvoor de gebeurtenis AzureBackupReport is ingeschakeld in de AzureDiagnostics-modus (die wordt ondersteund door de back-uprapporten), is de herstel taak nog steeds van toepassing op deze [kluis, omdat](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)de resource-specifieke modus de aanbevolen manier is om Diagnostische instellingen te maken.
 
 Als een gebruiker een kluis heeft met slechts een subset van de zes resource-specifieke gebeurtenissen ingeschakeld, is de herstel taak voor deze kluis van toepassing, omdat back-uprapporten alleen zoals verwacht worden uitgevoerd als alle zes specifieke resource gebeurtenissen zijn ingeschakeld.
 
@@ -82,6 +83,7 @@ Als een gebruiker een kluis heeft met slechts een subset van de zes resource-spe
 > Houd er rekening mee dat de herstel taak **niet** kan mislukken als de bestaande diagnostische instelling als alleen AzureBackupReport is ingeschakeld met de werk ruimte X als de bestemming, omdat in dit geval er geen overlap is tussen de gebeurtenissen die worden ingeschakeld door de bestaande instelling en de gebeurtenissen die zijn ingeschakeld door de instelling die is gemaakt door de herstel taak.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Meer informatie over het gebruik van back-uprapporten](https://aka.ms/AzureBackupReportDocs)
-- [Meer informatie over Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
-- [Azure Policy gebruiken om back-ups automatisch in te scha kelen voor alle Vm's in een bereik opgeven](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+
+* [Meer informatie over het gebruik van back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports)
+* [Meer informatie over Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
+* [Azure Policy gebruiken om back-ups automatisch in te scha kelen voor alle Vm's in een bereik opgeven](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)

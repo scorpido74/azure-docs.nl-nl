@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80f38f8bf323717693df70399ad982c51dda8f13
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169805"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580710"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -340,6 +340,8 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 ### <a name="use-a-dataset"></a>Een gegevensset gebruiken 
 
 Als u een `TabularDataset` of `FileDataset` in uw pijp lijn wilt gebruiken, moet u deze omzetten in een [DatasetConsumptionConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py) -object door [as_named_input (naam)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-)aan te roepen. U geeft dit `DatasetConsumptionConfig`-object door als een van de `inputs` aan de pijplijn stap. 
+
+Gegevens sets die zijn gemaakt op basis van Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL kunnen worden gebruikt als invoer voor elke pijplijn stap. Met uitzonde ring van het schrijven van uitvoer naar een [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) of [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py), kunnen uitvoer gegevens ([PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) alleen worden geschreven naar Azure Blob en Azure file share-data stores.
 
 ```python
 dataset_consuming_step = PythonScriptStep(

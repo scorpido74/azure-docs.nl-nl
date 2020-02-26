@@ -4,12 +4,12 @@ description: Dit artikel bevat een overzicht van DPM/Azure Backup Server-beveili
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173323"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586475"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Een back-up maken van een share point-Farm naar Azure met DPM
 
@@ -19,7 +19,7 @@ U maakt een back-up van een share point-Farm naar Microsoft Azure met behulp van
 
 Azure Backup voor DPM ondersteunt de volgende scenario's:
 
-| Workload | Versie | Share point-implementatie | DPM-implementatie type | DPM-System Center 2012 R2 | Beveiliging en herstel |
+| Workload | Version | Share point-implementatie | Type DPM-implementatie | DPM-System Center 2012 R2 | Beveiliging en herstel |
 | --- | --- | --- | --- | --- | --- |
 | SharePoint |Share point 2013, share point 2010, share Point 2007, share Point 3,0 |Share point is geïmplementeerd als een fysieke server of Hyper-V/VMware-virtuele machine <br> -------------- <br> SQL AlwaysOn |Fysieke server of een on-premises Hyper-V-virtuele machine |Ondersteunt back-ups naar Azure via update pakket 5 |Opties voor herstel van share point-Farm beveiligen: herstel Farm, Data Base, en bestand of lijst item van schijf herstel punten.  Farm-en database herstel van Azure-herstel punten. |
 
@@ -33,11 +33,11 @@ Voordat u doorgaat, moet u ervoor zorgen dat u voldoet aan alle [vereisten voor 
 
 ### <a name="dpm-agent"></a>DPM-agent
 
-De DPM-agent moet zijn geïnstalleerd op de server waarop share point wordt uitgevoerd, op de servers met SQL Server en alle andere servers die deel uitmaken van de share point-farm. Zie [beveiligings agent](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)instellen voor meer informatie over het instellen van de beveiligings agent.  De enige uitzonde ring hierop is dat u de agent alleen op één Webfront-end (WFE)-Server installeert. DPM moet de agent op één WFE-server alleen gebruiken als het toegangs punt voor de beveiliging.
+De DPM-agent moet zijn geïnstalleerd op de server waarop share point wordt uitgevoerd, op de servers met SQL Server en alle andere servers die deel uitmaken van de share point-farm. Zie [beveiligings agent](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)instellen voor meer informatie over het instellen van de beveiligings agent.  De enige uitzonde ring hierop is dat u de agent alleen op één Webfront-end (WFE)-Server installeert. DPM moet de agent op één WFE-server alleen gebruiken als het toegangs punt voor de beveiliging.
 
 ### <a name="sharepoint-farm"></a>SharePoint-farm
 
-Voor elke 10.000.000-items in de farm moet er ten minste 2 GB aan ruimte zijn op het volume waar de DPM-map zich bevindt. Deze ruimte is vereist voor het genereren van catalogi. Voor DPM om specifieke items te herstellen (site verzamelingen, sites, lijsten, document bibliotheken, mappen, afzonderlijke documenten en lijst items), maakt catalogus genereren een lijst van de Url's die zijn opgenomen in elke inhouds database. U kunt de lijst met Url's bekijken in het deel venster herstelbaar item in het taak gebied **herstel** van DPM Administrator-console.
+Voor elke 10 miljoen items in de farm moet er minimaal 2 GB vrije schijfruimte beschikbaar zijn op het volume waarin de DPM-map zich bevindt. Deze ruimte is vereist voor het genereren van de catalogus. Voor DPM om specifieke items te herstellen (site verzamelingen, sites, lijsten, document bibliotheken, mappen, afzonderlijke documenten en lijst items), maakt catalogus genereren een lijst van de Url's die zijn opgenomen in elke inhouds database. U kunt de lijst met Url's bekijken in het deel venster herstelbaar item in het taak gebied **herstel** van DPM Administrator-console.
 
 ### <a name="sql-server"></a>SQL Server
 
@@ -59,17 +59,17 @@ Zie voor meer informatie het blog bericht dat [DPM Update Rollup 5](https://blog
 * DPM die een share point-Farm beveiligt, beveiligt geen zoek indexen of Application Service-data bases. U moet de beveiliging van deze data bases afzonderlijk configureren.
 * DPM biedt geen back-up van share point-SQL Server data bases die worden gehost op scale-out Bestands server-shares (SOFS).
 
-## <a name="configure-sharepoint-protection"></a>Share point-beveiliging configureren
+## <a name="configure-sharepoint-protection"></a>SharePoint-beveiliging configureren
 
 Voordat u DPM kunt gebruiken om share point te beveiligen, moet u de share point VSS Writer-Service (WSS Writer Service) configureren met behulp van **ConfigureSharePoint. exe**.
 
-U kunt **ConfigureSharePoint. exe** vinden in de map [DPM-installatiepad] \Bin op de front-endwebserver. Dit hulp programma biedt de beveiligings agent de referenties voor de share point-farm. U voert dit op één WFE-server uit. Als u meerdere WFE-servers hebt, selecteert u slechts één wanneer u een beveiligings groep configureert.
+U kunt **ConfigureSharePoint. exe** vinden in de map [DPM-installatiepad] \Bin op de front-endwebserver. Dit hulp programma biedt de beveiligings agent de referenties voor de share point-farm. U voert de agent uit op één WFE-server. Als u meerdere WFE-servers hebt, selecteert u slechts één wanneer u een beveiligings groep configureert.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>De share point VSS Writer-service configureren
 
 1. Ga op de WFE-server, vanaf een opdracht prompt, naar [DPM-installatie locatie] \bin\
 2. Voer ConfigureSharePoint-EnableSharePointProtection in.
-3. Voer de referenties van de farm beheerder in. Dit account moet lid zijn van de lokale beheerders groep op de WFE-server. Als de farm beheerder geen lokale beheerder is, wijst u de volgende machtigingen toe op de WFE-server:
+3. Geef de referenties van de farmbeheerder op. Deze account moet een lid zijn van een lokale beheerdersgroep op de WFE-server. Als de farmbeheerder geen lokale beheerder is, wijst u de volgende machtigingen toe op de WFE-server:
    * Ken de WSS_Admin_WPG groep volledig beheer toe aan de DPM-map (% Program Files%\Microsoft Data Protection Manager\DPM).
    * Verleen de WSS_Admin_WPG groep lees toegang tot de DPM-register sleutel (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
@@ -102,12 +102,12 @@ Nadat u DPM en de share point-farm hebt geconfigureerd zoals eerder is uitgelegd
     ![Methode voor gegevens beveiliging selecteren](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > Met de methode voor schijf beveiliging kunt u aan korte herstel tijd doelen voldoen. Azure is een betaal bare, lange termijn beveiliging doel vergeleken met tapes. Zie [Azure Backup gebruiken om uw tape infrastructuur te vervangen](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/) voor meer informatie
+   > Met de methode voor schijf beveiliging kunt u aan korte herstel tijd doelen voldoen. Azure is een betaal bare, lange termijn beveiliging doel vergeleken met tapes. Zie [Azure Backup gebruiken om uw tape infrastructuur te vervangen](./backup-azure-backup-cloud-as-tape.md) voor meer informatie
    >
    >
 5. Selecteer op de pagina doelen voor de **korte termijn opgeven** de gewenste **Bewaar termijn** en bepaal wanneer u back-ups wilt maken.
 
-    ![Doelen voor de korte termijn opgeven](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+    ![Korte-termijndoelstellingen opgeven](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
    > [!NOTE]
    > Omdat herstel het vaakst vereist is voor gegevens die minder dan vijf dagen oud zijn, hebben we een Bewaar termijn van vijf dagen op de schijf geselecteerd en wordt ervoor gezorgd dat de back-up plaatsvindt tijdens niet-productie-uren, voor dit voor beeld.
@@ -243,5 +243,5 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over DPM-beveiliging van share point-Zie [video serie-DPM-beveiliging van share point](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-* Raadpleeg de [release opmerkingen voor System Center 2012-Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
-* Raadpleeg de [release opmerkingen voor Data Protection Manager in System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)
+* Raadpleeg de [release opmerkingen voor System Center 2012-Data Protection Manager](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN)
+* Raadpleeg de [release opmerkingen voor Data Protection Manager in System Center 2012 SP1](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860394(v=sc.12)?redirectedfrom=MSDN)

@@ -2,7 +2,7 @@
 title: Bedreigings informatie gegevens verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van bedreigings informatie gegevens met Azure Sentinel.
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
-ms.author: cabailey
-ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.author: yelevin
+ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384124"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588039"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verbinding maken met gegevens van Threat Intelligence-providers
 
