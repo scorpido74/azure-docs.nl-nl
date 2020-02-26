@@ -12,8 +12,8 @@
     - name: CI/CD met Docker Swarm en Azure DevOps
       href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
     - name: 'CI/CD met Docker, Jenkins en Linux'
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-- name: Handleidingen
+      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
+- name: Instructiegidsen
   items:
     - name: Docker-VM-extensie
       href: /azure/virtual-machines/linux/dockerextension

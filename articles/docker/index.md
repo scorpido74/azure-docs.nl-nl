@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610450"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605580"
 ---
 <div class="content">
    <h1>Docker op Azure</h1>   
@@ -33,7 +33,7 @@ Docker is een populair platform voor containerbeheer en beeldbewerking waarmee u
 <ol>
   <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Python en PostgreSQL bouwen met Docker</a></li>
   <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">CI/CD met Docker Swarm en Azure DevOps Services</a></li>
-  <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Docker, Jenkins en virtuele Linux-machines integreren</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Docker, Jenkins en virtuele Linux-machines integreren</a></li>
 </ol>
 <h2>Resources</h2>
 <p>Zie de volgende links voor extra referentiemateriaal en hulpmiddelen voor het werken met Docker op Azure.</p>
