@@ -2,17 +2,14 @@
 title: Concepten-beveiliging in azure Kubernetes Services (AKS)
 description: Meer informatie over beveiliging in azure Kubernetes service (AKS), met inbegrip van Master-en knooppunt communicatie, netwerk beleid en Kubernetes geheimen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547928"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595940"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)
 
@@ -22,9 +19,9 @@ In dit artikel worden de belangrijkste concepten geïntroduceerd voor het beveil
 
 - [Beveiliging van hoofd onderdelen](#master-security)
 - [Knooppunt beveiliging](#node-security)
-- [Upgraden van clusters](#cluster-upgrades)
+- [Cluster upgrades](#cluster-upgrades)
 - [Netwerkbeveiliging](#network-security)
-- [Kubernetes Secrets](#kubernetes-secrets)
+- [Kubernetes geheimen](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Master beveiliging
 
@@ -65,7 +62,7 @@ Zie [een AKS-cluster upgraden][aks-upgrade-cluster]voor meer informatie.
 
 Voor connectiviteit en beveiliging met on-premises netwerken kunt u uw AKS-cluster implementeren in bestaande subnetten van het virtuele Azure-netwerk. Deze virtuele netwerken kunnen een Azure site-naar-site VPN-of Express route-verbinding weer naar uw on-premises netwerk hebben. Kubernetes ingress-controllers kunnen worden gedefinieerd met persoonlijke, interne IP-adressen, zodat services alleen toegankelijk zijn via deze interne netwerk verbinding.
 
-### <a name="azure-network-security-groups"></a>Netwerkbeveiligingsgroepen in Azure
+### <a name="azure-network-security-groups"></a>Azure-netwerk beveiligings groepen
 
 Azure gebruikt regels voor netwerk beveiligings groepen om de stroom van verkeer in virtuele netwerken te filteren. Met deze regels worden de bron-en doel-IP-adresbereiken, poorten en protocollen gedefinieerd die toegang tot bronnen toestaan of weigeren. Standaard regels worden gemaakt om TLS-verkeer toe te staan voor de Kubernetes-API-server. Bij het maken van services met load balancers, poort toewijzingen of ingangs routes, wijzigt AKS automatisch de netwerk beveiligings groep voor verkeer dat op de juiste wijze stroomt.
 

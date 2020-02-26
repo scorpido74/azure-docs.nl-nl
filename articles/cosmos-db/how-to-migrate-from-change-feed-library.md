@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f651beb181430f65d0b4c86f285e74958f8366eb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077553"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588880"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB .NET v3 SDK
 
@@ -21,23 +21,23 @@ In dit artikel worden de vereiste stappen beschreven voor het migreren van de co
 
 De .NET v3 SDK heeft verschillende belang rijke wijzigingen, de volgende zijn de belangrijkste stappen voor het migreren van uw toepassing:
 
-1. Converteer de `DocumentCollectionInfo` instanties naar `Container` verwijzingen voor de containers bewaakt en leases.
-1. Aanpassingen die worden gebruikt `WithProcessorOptions` , moeten worden bijgewerkt voor `WithLeaseConfiguration` gebruik `WithPollInterval` en voor intervallen `WithStartTime` , [voor begin tijd](how-to-configure-change-feed-start-time.md)en `WithMaxItems` het definiëren van het maximum aantal items.
-1. Stel de `processorName` op `GetChangeFeedProcessorBuilder` in op overeenkomen met de `ChangeFeedProcessorOptions.LeasePrefix`waarde die is `string.Empty` geconfigureerd op of gebruik anders.
-1. De wijzigingen worden niet meer geleverd als een `IReadOnlyList<Document>`in plaats daarvan, maar het `IReadOnlyCollection<T>` `T` is een type dat u moet definiëren. er is geen klasse van het basis item meer.
+1. Converteer de `DocumentCollectionInfo`-exemplaren naar `Container` verwijzingen voor de containers bewaakt en leases.
+1. Aanpassingen die gebruikmaken van `WithProcessorOptions` moeten worden bijgewerkt om `WithLeaseConfiguration` en `WithPollInterval` te gebruiken voor intervallen, `WithStartTime` [voor begin tijd](how-to-configure-change-feed-start-time.md)en `WithMaxItems` om het maximum aantal items te definiëren.
+1. Stel de `processorName` in op `GetChangeFeedProcessorBuilder` om overeen te komen met de waarde die is geconfigureerd op `ChangeFeedProcessorOptions.LeasePrefix`of gebruik `string.Empty`.
+1. De wijzigingen worden niet langer bezorgd als een `IReadOnlyList<Document>`, maar het is een `IReadOnlyCollection<T>` waarbij `T` een type is dat u moet definiëren, er is niet meer een basis item klasse.
 1. Als u de wijzigingen wilt afhandelen, hebt u geen implementatie meer nodig. in plaats daarvan moet u [een gemachtigde definiëren](change-feed-processor.md#implementing-the-change-feed-processor). De gemachtigde kan een statische functie zijn of, als u de status van de uitvoeringen wilt hand haven, uw eigen klasse maken en een instantie methode door geven als gemachtigde.
 
 Als de oorspronkelijke code voor het bouwen van de wijzigings verwerkings processor er bijvoorbeeld als volgt uitziet:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorLibrary)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorLibrary":::
 
 De gemigreerde code ziet er als volgt uit:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorMigrated":::
 
 En de gemachtigde kan een statische methode zijn:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="Delegate":::
 
 ## <a name="state-and-lease-container"></a>Provincie en lease-container
 

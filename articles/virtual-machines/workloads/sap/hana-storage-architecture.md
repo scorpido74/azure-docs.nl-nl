@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d25201c8195fa6c4c36e159904b5b71a20a45ea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099645"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598490"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Opslag architectuur van SAP HANA (grote exemplaren)
 
@@ -36,6 +36,8 @@ Zie de volgende tabel voor meer informatie over de opslag toewijzing. De tabel b
 | S192 | 4\.608 GB | 1\.024 GB | 1\.536 GB | 1\.024 GB |
 | S192m | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
 | S192xm |  11.520 GB |  1\.536 GB |  1\.792 GB |  1\.536 GB |
+| S224 |  4\.224 GB |  512 GB |  1\.024 GB |  512 GB |
+| S224m |  8\.448 GB |  512 GB |  1\.024 GB |  512 GB |
 | S384 | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
 | S384m | 12.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
 | S384xm | 16.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
@@ -72,13 +74,13 @@ Raadpleeg [HLI ondersteunde scenario's](hana-supported-scenario.md) voor de deta
 
 Het is mogelijk om meer dan één Active SAP HANA-exemplaar te hosten op HANA grote instantie-eenheden. Als u de mogelijkheden van moment opnamen van opslag en herstel na nood gevallen wilt bieden, is voor een dergelijke configuratie een volumeset per exemplaar vereist. Op dit moment kunnen HANA grote instantie-eenheden als volgt worden onderverdeeld:
 
-- **S72, S72m, S96, S144, S192**: In stappen van 256 GB, met 256 GB de kleinste begin eenheid. Verschillende stappen, zoals 256 GB en 512 GB, kunnen worden gecombineerd tot het maximum van het geheugen van de eenheid.
-- **S144m en S192m**: In stappen van 256 GB, met 512 GB de kleinste eenheid. Verschillende stappen, zoals 512 GB en 768 GB, kunnen worden gecombineerd tot het maximum van het geheugen van de eenheid.
-- **Klasse type II**: In stappen van 512 GB, met de kleinste start eenheid van 2 TB. Verschillende stappen, zoals 512 GB, 1 TB en 1,5 TB, kunnen worden gecombineerd tot het maximum van het geheugen van de eenheid.
+- **S72, S72m, S96, S144, S192**: in stappen van 256 GB, met 256 GB de kleinste begin eenheid. Verschillende stappen, zoals 256 GB en 512 GB, kunnen worden gecombineerd tot het maximum van het geheugen van de eenheid.
+- **S144m en S192m**: in stappen van 256 GB, met 512 GB de kleinste eenheid. Verschillende stappen, zoals 512 GB en 768 GB, kunnen worden gecombineerd tot het maximum van het geheugen van de eenheid.
+- **Type II-klasse**: in stappen van 512 GB, met de kleinste start eenheid van 2 TB. Verschillende stappen, zoals 512 GB, 1 TB en 1,5 TB, kunnen worden gecombineerd tot het maximum van het geheugen van de eenheid.
 
 Enkele voor beelden van het uitvoeren van meerdere SAP HANA-exemplaren kunnen er als volgt uitzien.
 
-| SKU | Geheugengrootte | Opslaggrootte | Grootten met meerdere data bases |
+| SKU | Geheugen grootte | Opslag grootte | Grootten met meerdere data bases |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768-GB HANA-instantie<br /> of 1x512-GB instance + 1x256-GB instantie<br /> of 3x256-GB exemplaren | 
 | S72m | 1,5 TB | 6 TB | 3x512GB HANA-instanties<br />of 1x512-GB instance + 1x1-TB instantie<br />of 6x256-GB exemplaren<br />of 1x 1,5-TB instantie | 

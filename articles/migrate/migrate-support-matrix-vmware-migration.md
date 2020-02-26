@@ -3,19 +3,19 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77013991"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597980"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
 In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het migreren van virtuele VMware-machines met [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool) . Als u op zoek bent naar informatie over het beoordelen van virtuele VMware-machines voor migratie naar Azure, raadpleegt u de [ondersteunings matrix voor evaluatie](migrate-support-matrix-vmware.md).
 
 
-## <a name="migration-options"></a>Migratie opties
+## <a name="migration-options"></a>Migratieopties
 
 U kunt virtuele VMware-machines op een aantal manieren migreren:
 
@@ -35,7 +35,7 @@ Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u 
 --- | ---
 **VMware vCenter Server** | Versie 5,5, 6,0, 6,5 of 6,7.
 **ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5 of 6,7.
-**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft de volgende machtigingen nodig:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> **Data Store. LowLevelFileOperations**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: het in-of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met behulp van de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. AllowReadOnlyDiskAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowVirtualMachineDownload**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **virtuele machine. interactie. uitschakelen**: Hiermee staat u toe dat de VM wordt uitgeschakeld tijdens de migratie naar Azure.
+**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft de volgende machtigingen nodig:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **Data Store. LowLevelFileOperations**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: het in-of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met behulp van de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. AllowDiskAccess**: (met name voor vSphere 6,0 en hoger) toestaan dat een schijf op een virtuele machine wordt geopend voor wille keurige Lees toegang op de schijf met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowReadOnlyDiskAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/>- **VirtualMachine. provisioning. AllowVirtualMachineDownload**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **virtuele machine. interactie. uitschakelen**: Hiermee staat u toe dat de VM wordt uitgeschakeld tijdens de migratie naar Azure.
 
 
 
@@ -53,7 +53,7 @@ Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u 
 **Gedeeld schijf cluster** | Wordt niet ondersteund.
 **Onafhankelijke schijven** | Wordt niet ondersteund.
 **RDM/passthrough-schijven** | Als Vm's een RDM-of passthrough-schijf hebben, worden deze schijven niet gerepliceerd naar Azure.
-**NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
+**NBS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
 **iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
 **Storage vMotion** | Wordt niet ondersteund. De replicatie wordt niet uitgevoerd als een virtuele machine gebruikmaakt van Storage vMotion.
@@ -107,7 +107,7 @@ De tabel bevat een overzicht van de VMware VM-ondersteuning voor VMware-Vm's die
 **Gedeeld schijf cluster** | Wordt niet ondersteund.
 **Onafhankelijke schijven** | Ondersteund.
 **Passthrough-schijven** | Ondersteund.
-**NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
+**NBS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
 **iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
 **Storage vMotion** | Ondersteund
@@ -129,7 +129,7 @@ Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon di
 
 **Apparaatconfiguratie** | **Verbinding**
 --- | ---
-Virtuele machines | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
+VM's | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
 Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
 Proces server | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.<br/> Standaard wordt de proces server uitgevoerd op het replicatie apparaat.
 

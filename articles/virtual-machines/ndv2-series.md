@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 79e7f2a8dad59de4dc9d84a26d24c82889c14c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6c002838d5a4f515a594d61e5137196c4d391795
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493317"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605439"
 ---
 # <a name="updated-ndv2-series-preview"></a>Bijgewerkte NDv2-serie (preview-versie)
 
@@ -24,13 +24,16 @@ NDv2-instanties bieden uitstekende prestaties voor HPC-en AI-workloads die gebru
 
 De NDv2 is in de praktijk opgebouwd voor zowel reken kundige, intense schaling (bundeling van 8 Gpu's per VM) en uitschalen (waarbij meerdere Vm's samen werken). De NDv2-serie biedt nu ondersteuning voor 100-Gigabit InfiniBand EDR back-end-netwerken, vergelijkbaar met die van de HB-serie HPC-VM, om hoogwaardige clusters mogelijk te maken voor parallelle scenario's, waaronder gedistribueerde trainingen voor AI en ML. Dit back-upnetwerk biedt ondersteuning voor alle belang rijke InfiniBand-protocollen, met inbegrip van die van de NCCL2-bibliotheken van NVIDIA, waardoor het clusteren van Gpu's naadloos kan worden gegroepeerd.
 
+
+> [!NOTE]
 > Als u InfiniBand op de ND40rs_v2 virtuele machine [inschakelt](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) , gebruikt u het OFED-stuur programma 4.7-1.0.0.1 Mellanox.
-
+>
 > Vanwege het toegenomen GPU-geheugen vereist de nieuwe ND40rs_v2 VM het gebruik van [virtuele machines van de tweede generatie](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) en Marketplace-installatie kopieën. 
-
+>
 > [Meld u aan om vroegtijdige toegang tot de preview-versie van de virtuele machine NDv2 te vragen.](https://aka.ms/AzureNDrv2Preview)
-
+>
 > Opmerking: de ND40s_v2 met 16 GB per GPU-geheugen is niet meer beschikbaar voor preview en is vervangen door de bijgewerkte ND40rs_v2.
+
 <br>
 
 Premium Storage: ondersteund

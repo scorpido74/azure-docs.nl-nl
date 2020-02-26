@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 3dc7ebe224f1edb1b0fabc40441bd399fda6c133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355594"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604248"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Beheer van meerdere tenants in Security Center
 
@@ -53,8 +53,8 @@ De weer gaven en acties zijn in principe hetzelfde. Hier volgen enkele voorbeeld
 - **Geavanceerde functies voor Cloud beveiliging en meer beheren**: beheer de verschillende detectie-en beveiligings services van bedreigingen, zoals [just-in-time-VM-toegang](security-center-just-in-time.md), [adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md), [adaptieve toepassings besturings elementen](security-center-adaptive-application.md)en meer.
  
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel wordt uitgelegd hoe cross-Tenant beheer werkt in Security Center. Zie de volgende onderwerpen voor meer informatie over Security Center:
+In dit artikel wordt uitgelegd hoe cross-Tenant beheer werkt in Security Center. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
 * [Breid uw beveiligings postuur uit met Azure Security Center](security-center-monitoring.md) -Leer hoe u de status van uw Azure-resources kunt bewaken.
-* [Veelgestelde](security-center-faq.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service.
+* [Veelgestelde](faq-general.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service.
 * [Meer informatie over Azure Lighthouse in Enter prise-scenario's](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) : Ontdek hoe Azure Lighthouse het beheer van meerdere tenants in een onderneming kan vereenvoudigen. Dit maakt gebruik van verschillende Azure AD-tenants.

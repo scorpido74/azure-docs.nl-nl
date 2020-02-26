@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385553"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598745"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell persistent maken
 Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende sessies op te slaan. Bij de eerste keer starten Cloud Shell u gevraagd om een nieuwe of bestaande bestands share te koppelen om bestanden in verschillende sessies te behouden.
@@ -62,15 +62,25 @@ Cloud Shell gebruikt een Azure-bestands share in een opslag account binnen een o
 Gebruikers moeten de toegang tot hun bestanden vergren delen door de machtigingen in te stellen op het opslag account of het abonnements niveau.
 
 ## <a name="supported-storage-regions"></a>Ondersteunde opslag regio's
-Gekoppelde Azure Storage-accounts moeten zich in dezelfde regio bevinden als de Cloud Shell machine waarnaar u ze koppelt. Als u uw huidige regio wilt zoeken, kunt u `env` uitvoeren in bash en de variabele `ACC_LOCATION`zoeken. Bestands shares ontvangen een installatie kopie van 5 GB die voor u is gemaakt om uw `$Home` Directory te behouden.
+Als u uw huidige regio wilt zoeken, kunt u `env` uitvoeren in bash en de variabele `ACC_LOCATION`vinden, of vanuit Power shell `$env:ACC_LOCATION`uitvoeren. Bestands shares ontvangen een installatie kopie van 5 GB die voor u is gemaakt om uw `$Home` Directory te behouden.
 
 Cloud Shell machines bestaan in de volgende regio's:
 
-|Gebied|Regio|
+|Onderwerp|Regio|
 |---|---|
 |Noord- en Zuid-Amerika|VS-Oost, Zuid-Centraal VS, VS-West|
 |Europa|Europa - noord, Europa - west|
 |Azië en Stille Oceaan|India, midden, Zuidoost-Azië|
+
+Klanten moeten een primaire regio kiezen, tenzij ze een vereiste hebben dat hun gegevens in rust worden opgeslagen in een bepaalde regio. Als ze een dergelijke vereiste hebben, moet er een secundaire opslag regio worden gebruikt.
+
+### <a name="secondary-storage-regions"></a>Secundaire opslag regio's
+Als er een secundaire opslag regio wordt gebruikt, bevindt het gekoppelde Azure Storage-account zich in een andere regio als de Cloud Shell machine waarnaar u ze koppelt. Jeroen kan het opslag account bijvoorbeeld zodanig instellen dat het zich bevindt in Canada-oost, een secundaire regio, maar de machine waaraan deze is gekoppeld, bevindt zich nog in een primaire regio. Haar data-at-rest bevindt zich in Canada, maar wordt verwerkt in de Verenigde Staten.
+
+> [!NOTE]
+> Als er een secundaire regio wordt gebruikt, zijn de toegang tot bestanden en opstart tijd voor Cloud Shell mogelijk langzamer.
+
+Een gebruiker kan `(Get-CloudDrive | Get-AzStorageAccount).Location` uitvoeren in Power shell om de locatie van de bestands share te zien.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resource beleid
 Opslag accounts die u in Cloud Shell maakt, worden gelabeld met `ms-resource-usage:azure-cloud-shell`. Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.
@@ -139,7 +149,7 @@ De bestands share blijft bestaan, tenzij u deze hand matig verwijdert. Cloud She
 ![De clouddrive-unmount'command uitvoeren](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Hoewel met deze opdracht geen resources worden verwijderd, hand matig verwijderen van een resource groep, opslag account of bestands share die is toegewezen aan Cloud Shell, worden uw `$Home` Directory-schijf kopie en alle bestanden in de bestands share gewist. Deze actie kunt u niet ongedaan maken.
+> Hoewel met deze opdracht geen resources worden verwijderd, hand matig verwijderen van een resource groep, opslag account of bestands share die is toegewezen aan Cloud Shell, worden uw `$Home` Directory-schijf kopie en alle bestanden in de bestands share gewist. Deze actie kan niet ongedaan worden gemaakt.
 ## <a name="powershell-specific-commands"></a>Power shell-specifieke opdrachten
 
 ### <a name="list-clouddrive-azure-file-shares"></a>`clouddrive` Azure-bestands shares weer geven

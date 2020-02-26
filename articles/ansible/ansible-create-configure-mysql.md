@@ -4,12 +4,12 @@ description: Ontdek hoe u Ansible gebruikt om een Azure Database for MySQL-serve
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156524"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603122"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Zelf studie: data bases configureren in Azure Database for MySQL met behulp van Ansible
 
@@ -23,7 +23,7 @@ ms.locfileid: "74156524"
 >
 > * Een MySql-server maken
 > * Een MySql-data base maken
-> * Een filewall-regel configureren zodat een externe app verbinding kan maken met uw server
+> * Een firewall regel configureren zodat een externe app verbinding kan maken met uw server
 > * Verbinding maken met uw MySql-server vanuit de Azure Cloud shell
 > * Een query uitvoeren op uw beschik bare MySQL-servers
 > * Alle data bases in de verbonden servers weer geven

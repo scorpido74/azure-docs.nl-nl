@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772576"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605456"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>In-place wijziging van SQL Server Edition op Azure VM
 
@@ -35,7 +35,7 @@ Als u een in-place wijziging van de editie van SQL Server wilt uitvoeren, hebt u
 
 - Een [Azure-abonnement](https://azure.microsoft.com/free/).
 - Een [SQL Server VM in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) die is geregistreerd bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)van de SQL-VM.
-- Stel media in met de **gewenste versie** van SQL Server. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace SQL Server VM-installatie kopie met de gewenste versie (meestal in `c:\SQLInstalls`) gebruiken. 
+- Stel media in met de **gewenste versie** van SQL Server. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace SQL Server VM-installatie kopie met de gewenste versie (meestal in `C:\SQLServerFull`) gebruiken. 
 
 
 ## <a name="upgrade-an-edition"></a>Een editie bijwerken
@@ -77,7 +77,7 @@ Nadat de SQL Server-editie is gedowngraded, wijzigt u de eigenschap Edition van 
 
 Nadat u de editie van SQL Server hebt gewijzigd met behulp van de installatie media en u uw SQL Server VM hebt geregistreerd bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md)van de SQL-VM, kunt u de Azure Portal vervolgens gebruiken om de eigenschap Edition van de SQL Server virtuele machine te wijzigen voor facturerings doeleinden. Voer hiertoe de volgende stappen uit: 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar uw SQL Server virtuele machine bron. 
 1. Selecteer **configureren**onder **instellingen**. Selecteer vervolgens de gewenste versie van SQL Server in de vervolg keuzelijst onder **editie**. 
 

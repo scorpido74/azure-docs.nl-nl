@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964767"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587291"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
@@ -77,7 +77,7 @@ Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag R
 
 > [!IMPORTANT]
 > Reken resources, I/O en gegevens-en logboek opslag worden in rekening gebracht per data base of elastische pool. Back-upopslag wordt per data base in rekening gebracht. Zie [Managed](sql-database-managed-instance.md)instances (Engelstalig) voor meer informatie over beheerde exemplaar kosten.
-> **Beperkingen van de regio:** Zie voor de huidige lijst met ondersteunde regio's [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, [verzendt u een ondersteunings aanvraag via de Azure Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Beperkingen van de regio:** Zie voor de huidige lijst met ondersteunde regio's [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, [verzendt u een ondersteunings aanvraag via de Azure Portal](quota-increase-request.md).
 
 Als uw afzonderlijke data base of elastische pool meer dan 300 Dtu's verbruikt, kan het converteren naar het op vCore gebaseerde aankoop model uw kosten verlagen. U kunt converteren met behulp van de API van Choice of met behulp van de Azure Portal, zonder uitval tijd. Conversie is echter niet vereist en wordt niet automatisch uitgevoerd. Als het op DTU gebaseerde aankoop model voldoet aan uw prestatie-en bedrijfs vereisten, moet u het blijven gebruiken.
 

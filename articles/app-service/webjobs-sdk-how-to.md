@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486339"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602939"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor op gebeurtenissen gebaseerde achtergrond verwerking
 
@@ -395,7 +395,7 @@ static async Task Main()
 }
 ```
 
-Zie het artikel over [Azure CosmosDB-binding](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) voor meer informatie.
+Zie het artikel over [Azure CosmosDB-binding](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) voor meer informatie.
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>Configuratie van Event Hubs trigger (versie 3. *x*)
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-Zie het artikel over [Event hubs binding](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) voor meer informatie.
+Zie het artikel over [Event hubs binding](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings) voor meer informatie.
 
 ### <a name="queue-storage-trigger-configuration"></a>Configuratie van trigger voor opslag van wachtrij
 

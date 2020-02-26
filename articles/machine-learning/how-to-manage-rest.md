@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525546"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580625"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 U ontvangt een `202 Accepted` antwoord en, in de geretourneerde headers, een `Location`-URI. U kunt deze URI ophalen voor informatie over de implementatie, met inbegrip van nuttige informatie over fout opsporing als er een probleem is met een van de afhankelijke bronnen (bijvoorbeeld als u bent verg eten om beheerders toegang in te scha kelen in uw container register). 
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="resource-provider-errors"></a>Fouten van de resource provider
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>De werk ruimte verplaatsen
+
+> [!WARNING]
+> Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
+
+### <a name="deleting-the-azure-container-registry"></a>De Azure Container Registry verwijderen
+
+In de Azure Machine Learning-werk ruimte wordt Azure Container Registry (ACR) gebruikt voor bepaalde bewerkingen. Er wordt automatisch een ACR-exemplaar gemaakt wanneer dit voor het eerst nodig is.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

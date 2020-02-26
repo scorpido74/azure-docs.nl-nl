@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666292"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603860"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligings waarschuwingen beheren en erop reageren in Azure Security Center
 
@@ -65,7 +65,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
     > [!NOTE]
     >In sommige gevallen is het bron-IP-adres niet beschikbaar. sommige logboeken voor Windows-beveiligings gebeurtenissen bevatten niet het IP-adres.
 
-1. De herstelstappen die door Security Center worden voorgesteld, verschillen per beveiligingswaarschuwing. Volg deze voor elke waarschuwing. In sommige gevallen moet u mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren, om een waarschuwing voor de detectie van bedreigingen te verhelpen. 
+1. De herstels tappen die door Security Center worden voorgesteld, zijn afhankelijk van de beveiligings waarschuwing. Volg deze voor elke waarschuwing. In sommige gevallen moet u mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren, om een waarschuwing voor de detectie van bedreigingen te verhelpen. 
 
     De volgende onderwerpen helpen u bij het door lopen van de verschillende waarschuwingen, volgens de resource typen:
     
@@ -80,10 +80,8 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
     
 ## <a name="see-also"></a>Zie ook
 
-In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over Security Center:
+In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
 * [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
 * [Beveiligings incidenten afhandelen](security-center-incident.md)
 * [Plannings- en bedieningsgids voor Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
-* [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure.

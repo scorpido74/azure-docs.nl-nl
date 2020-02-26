@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 502b4cef4fc44abcc55c1733b86fb6052e3e43ab
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: b64583bc61b87e900690e397fac57d64d145db05
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372745"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585693"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -117,6 +117,7 @@ Het **UserJourneyBehaviors** -element bevat de volgende elementen:
 | SessionExpiryInSeconds | 0:1 | De levens duur van de Azure AD B2C's-sessie cookie die is opgegeven als een geheel getal dat is opgeslagen in de browser van de gebruiker bij geslaagde verificatie. |
 | JourneyInsights | 0:1 | De Azure-toepassing Insights-instrumentatie sleutel die moet worden gebruikt. |
 | ContentDefinitionParameters | 0:1 | De lijst met sleutel waardeparen die moeten worden toegevoegd aan de laad-URI van de inhouds definitie. |
+|ScriptExecution| 0:1| De ondersteunde modi voor [Java script](javascript-samples.md) -uitvoering. Mogelijke waarden: `Allow` of `Disallow` (standaard).
 
 ### <a name="singlesignon"></a>SingleSignOn
 

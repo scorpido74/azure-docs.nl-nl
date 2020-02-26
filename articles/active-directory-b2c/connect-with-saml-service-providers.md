@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836657"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581460"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -259,7 +259,7 @@ Het uiteindelijke Relying Party-beleids bestand moet er als volgt uitzien:
 
 Sla de wijzigingen op en upload het nieuwe beleids bestand. Nadat u beide beleids regels (de extensie en de Relying Party bestanden) hebt geüpload, opent u een webbrowser en navigeert u naar de meta gegevens van het beleid.
 
-De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang `tenant-name` door de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (ID) van het beleid:
+Azure AD B2C IDP-beleid bevat informatie die wordt gebruikt in het SAML-protocol om de configuratie van een SAML-ID-provider beschikbaar te maken. Meta gegevens definiëren de locatie van de services, zoals aanmelden en afmelden, certificaten, aanmeldings methode en meer. De meta gegevens van het Azure AD B2C beleid zijn beschikbaar op de volgende URL. Vervang `tenant-name` door de naam van uw Azure AD B2C Tenant en `policy-name` met de naam (ID) van het beleid:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -269,7 +269,7 @@ Uw aangepaste beleid en Azure AD B2C Tenant zijn nu gereed. Maak vervolgens een 
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 uw toepassing registreren in Azure Active Directory
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748457"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604567"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Waarschuwings validatie (EICAR-test bestand) in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
@@ -79,5 +79,4 @@ In dit artikel hebben we aandacht besteed aan het valideren van waarschuwingen. 
 * [Beveiligings status bewaken in azure Security Center](security-center-monitoring.md) -meer informatie over het controleren van de status van uw Azure-resources.
 * [Beveiligings waarschuwingen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) -meer informatie over de verschillende typen beveiligings waarschuwingen.
 * [Azure Security Center probleemoplossings handleiding](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) : informatie over het oplossen van veelvoorkomende problemen in Security Center.
-* [Veelgestelde](security-center-faq.md) vragen over Azure Security Center: vind een veelgestelde vraag over het gebruik van de service.
 * [Blog over Azure-beveiliging](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over beveiliging en naleving van Azure.

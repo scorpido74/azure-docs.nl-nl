@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/10/2019
+ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c6a230f6abeab45c56aab2db40b8b1defcc06d90
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099683"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598694"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -95,8 +95,8 @@ Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installat
 | [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden][rhel-azr-supp]
 | [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure][rhel-azr-inst]
 | [Implementatie van IBM Db2 Azure Virtual Machines DBMS voor SAP-workload][dbms-db2] |
-| [IBM Db2 HADR 11.1][db2-hadr-11.1] |
-| [IBM Db2 HADR 10.5][db2-hadr-10.5] |
+| [IBM Db2 HADR 11,1][db2-hadr-11.1] |
+| [IBM Db2 HADR 10,5][db2-hadr-10.5] |
 | [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid: beheer van IBM Db2 voor Linux, UNIX en Windows in een cluster][rhel-db2-supp]
 
 
@@ -185,7 +185,7 @@ Als u een basis-pacemaker-cluster wilt maken voor deze IBM Db2-server, raadpleeg
 
 Voordat u begint met de installatie van een SAP-omgeving op basis van IBM Db2 LUW, raadpleegt u de volgende documentatie:
 
-+ Documentatie voor Azure
++ Azure-documentatie
 + SAP-documentatie
 + IBM-Documentatie
 
@@ -370,7 +370,7 @@ De volgende items worden voorafgegaan door een van beide:
 - **[1]** : alleen van toepassing op knoop punt 1 
 - **[2]** : alleen van toepassing op knoop punt 2
 
-**[A]** vereisten voor pacemaker-configuratie:
+**[A]** vereiste voor configuratie van pacemaker:
 1. Sluit beide database servers met gebruikers-DB2\<sid-> met db2stop.
 1. Wijzig de shell-omgeving voor de DB2\<sid > gebruiker naar */bin/ksh*:
 <pre><code># Install korn shell:
@@ -434,6 +434,11 @@ Daemon-status: corosync: actief/uitgeschakeld pacemaker: actief/uitgeschakeld pc
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer configureren
 Als u Azure Load Balancer wilt configureren, is het raadzaam om de [Azure Standard load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) te gebruiken en vervolgens de volgende handelingen uit te voeren.
+
+> [!NOTE]
+> De Standard Load Balancer SKU heeft beperkingen voor het openen van open bare IP-adressen van de knoop punten onder de Load Balancer. De connectiviteit van het [open bare eind punt van het artikel voor virtual machines het gebruik van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) beschrijft manieren om deze knoop punten in te scha kelen voor toegang tot open bare IP-adressen
+
+
 
 1. Een front-end-IP-adres groep maken:
 

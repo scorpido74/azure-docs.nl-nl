@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521785"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603221"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Bijwerken naar dynamische compliantie pakketten in uw nalevings dashboard voor regelgeving (preview-versie)
 
@@ -75,6 +75,5 @@ In dit artikel hebt u het volgende geleerd:
 Raadpleeg de volgende artikelen voor meer gerelateerde materialen: 
 
 - [Security Center-nalevings dashboard voor regelgeving](security-center-compliance-dashboard.md)
-- [Werken met beveiligings beleid](tutorial-security-policy.md)
+- [Werken met beveiligingsbeleid](tutorial-security-policy.md)
 - [Aanbevelingen voor beveiliging beheren in azure Security Center](security-center-recommendations.md) -meer informatie over het gebruik van aanbevelingen in azure Security Center om uw Azure-resources te beveiligen.
-- Veelgestelde vragen over [Azure Security Center](security-center-faq.md) : Krijg antwoorden op veelgestelde Vraags over het gebruik van Security Center.

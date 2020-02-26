@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092954"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585285"
 ---
 # <a name="use-the-change-feed-estimator"></a>De Estimator van de wijzigings feed gebruiken
 
-In dit artikel wordt beschreven hoe u de voortgang van uw [feeds](./change-feed-processor.md) voor wijzigings instanties kunt bewaken terwijl de wijzigings feed wordt gelezen.
+In dit artikel wordt beschreven hoe u de voortgang van uw [feeds voor wijzigings](./change-feed-processor.md) instanties kunt bewaken terwijl de wijzigings feed wordt gelezen.
 
 ## <a name="why-is-monitoring-progress-important"></a>Waarom is de bewakings voortgang belang rijk?
 
@@ -33,11 +33,11 @@ Net als bij de [Change feed-processor](./change-feed-processor.md)werkt de Estim
 
 Als u bijvoorbeeld de processor voor de wijzigings feed als volgt definieert:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
 
-De juiste manier om een Estimator te initialiseren om te meten dat de processor `GetChangeFeedEstimatorBuilder` als zodanig wordt gebruikt:
+De juiste manier om een Estimator te initialiseren om te meten dat de processor `GetChangeFeedEstimatorBuilder` als zodanig gebruikt:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
 
 Waarbij zowel de processor als de Estimator dezelfde `leaseContainer` en dezelfde naam hebben.
 
@@ -45,7 +45,7 @@ De andere twee para meters zijn de gemachtigde. er wordt dan een getal weer gege
 
 Een voor beeld van een gemachtigde die de schatting ontvangt, is:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
 
 U kunt deze schatting verzenden naar uw bewakings oplossing en deze gebruiken om te begrijpen hoe de voortgang in de loop van de tijd gedraagt.
 

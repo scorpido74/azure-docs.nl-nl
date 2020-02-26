@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484805"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598269"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark cluster in azure HDInsight
 
@@ -150,6 +150,25 @@ De Zeppelin-notebooks worden opgeslagen in het cluster hoofd knooppunten. Als u 
 ![Notitie blok downloaden](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Het notitie blok downloaden")
 
 Hiermee wordt het notitie blok opgeslagen als een JSON-bestand in de download locatie.
+
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Shiro gebruiken voor het configureren van toegang tot Zeppelin-tolken in Enterprise Security Package (ESP)-clusters
+Zoals hierboven vermeld, wordt de `%sh`-interpreter niet ondersteund vanaf HDInsight 4,0. Daarnaast is er, omdat `%sh` interpreter mogelijke beveiligings problemen introduceert, zoals het openen van de tabtoets met shell-opdrachten, ook verwijderd uit de ESP-clusters van HDInsight 3,6. Dit betekent dat `%sh` interpreter niet beschikbaar is als u standaard op **nieuwe notitie maken** of in de interpreter-gebruikers interface klikt. 
+
+Geprivilegieerde domein gebruikers kunnen het `Shiro.ini`-bestand gebruiken om de toegang tot de gebruikers interface van de interpreter te beheren. Daarom kunnen alleen deze gebruikers nieuwe `%sh`-interpreters maken en machtigingen instellen voor elke nieuwe `%sh`-interpreter. Volg de volgende stappen om de toegang te beheren met het `shiro.ini`-bestand:
+
+1. Definieer een nieuwe rol met behulp van de naam van een bestaande domein groep. In het volgende voor beeld is `adminGroupName` een groep bevoegde gebruikers in AAD. Gebruik geen speciale tekens of spaties in de groeps naam. De tekens na `=` geven de machtigingen voor deze rol. `*` betekent dat de groep volledige machtigingen heeft.
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Voeg de nieuwe rol toe voor toegang tot Zeppelin-interpreters. In het volgende voor beeld krijgen alle gebruikers in `adminGroupName` toegang tot Zeppelin-tolken en kunnen nieuwe interpreters worden gemaakt. U kunt meerdere rollen tussen de haakjes in `roles[]`plaatsen, gescheiden door komma's. Gebruikers die de benodigde machtigingen hebben, hebben dan toegang tot Zeppelin-interpreters.
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
 
 ## <a name="livy-session-management"></a>Livy-sessie beheer
 

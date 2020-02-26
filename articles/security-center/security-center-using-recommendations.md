@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355283"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603285"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center aanbevelingen gebruiken om de beveiliging te verbeteren
 U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 

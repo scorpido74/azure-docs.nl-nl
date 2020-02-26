@@ -2,18 +2,15 @@
 title: 'Snelstart: een AKS-cluster (Azure Kubernetes Service) maken'
 description: Meer informatie over hoe u snel een Kubernetes-cluster maakt met behulp van een Azure Resource Manager sjabloon en hoe u een toepassing implementeert in azure Kubernetes service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 307074618cae75ba57be219b4f975e2aec279682
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 5fe82dbce2069b0ae1a88599d020f4ba6b116027
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255511"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595289"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Snelstartgids: een AKS-cluster (Azure Kubernetes service) implementeren met behulp van een Azure Resource Manager sjabloon
 
@@ -85,7 +82,7 @@ De sjabloon die in deze Quick Start wordt gebruikt, is het [implementeren van ee
     * **Cluster naam**: Voer een unieke naam in voor het AKS-cluster, zoals *myAKSCluster*.
     * **DNS-voor voegsel**: Voer een uniek DNS-voor voegsel voor uw cluster in, zoals *myakscluster*.
     * **Gebruikers naam voor Linux-beheerder**: Voer een gebruikers naam in om verbinding te maken via SSH, zoals *azureuser*.
-    * **Open bare SSH RSA-sleutel**: Kopieer en plak het *open bare* deel van uw SSH-sleutel paar (standaard de inhoud van *~/.ssh/id_rsa.pub*).
+    * **Open bare SSH RSA-sleutel**: Kopieer en plak het *open bare* deel van uw SSH-sleutel paar (standaard de inhoud van *~/.ssh/id_rsa. pub*).
     * **Service-Principal-client-id**: Kopieer en plak de *AppID* van uw service-principal van de `az ad sp create-for-rbac` opdracht.
     * **Service-Principal-client geheim**: Kopieer en plak het *wacht woord* van de service-principal van de `az ad sp create-for-rbac` opdracht.
     * **Ik ga akkoord met de status van de voor waarden hierboven**: Schakel dit selectie vakje in om akkoord te gaan.
@@ -104,7 +101,7 @@ Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kub
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -251,7 +248,7 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Zodra het *EXTERNAL-IP*-adres is gewijzigd van *in behandeling* in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
+Zodra het *Extern IP-adres* is gewijzigd van *in behandeling* in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
 
 ```
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m

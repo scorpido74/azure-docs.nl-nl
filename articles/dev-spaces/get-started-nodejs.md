@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een node. js-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: cc59d5693740d1d2d6550af3aa61fa9b66420a39
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 1ad30a5dd7504c7e224e4b2d26d1f5a4fe1da38a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539413"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602868"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio code en node. js met Azure dev Spaces
 
@@ -34,7 +34,7 @@ az login
 ```
 
 > [!Note]
-> Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+> Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
 U kunt uw abonnementen bekijken door het volgende uit te voeren: 
@@ -61,7 +61,7 @@ az group create --name MyResourceGroup --location <region>
 Maak een Kubernetes-cluster met de volgende opdracht:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 Het duurt een paar minuten om het cluster te maken.
@@ -215,7 +215,7 @@ Hiermee wordt de foutopsporingsconfiguratie voor Azure Dev Spaces toegevoegd ond
 
 ### <a name="select-the-azds-debug-configuration"></a>Selecteer de AZDS-foutopsporingsconfiguratie
 1. Om de foutopsporingsweergave te openen, klikt u op het pictogram Foutopsporing in de **activiteitenbalk** van VS Code.
-1. Selecteer **Launch Program (AZDS)** als de actieve foutopsporingsconfiguratie.
+1. Selecteer **Programma starten (AZDS)** als de actieve foutopsporingsconfiguratie.
 
 ![](media/get-started-node/debug-configuration-nodejs2.png)
 

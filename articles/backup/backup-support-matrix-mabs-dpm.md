@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444023"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582650"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -113,11 +113,34 @@ U kunt MABS implementeren op een Azure Stack virtuele machine, zodat u een back-
 
 De DPM-server-MABS moet toegang hebben tot deze Url's:
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Ondersteuning voor Azure ExpressRoute
+
+U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.
+
+Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/adressen:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Bij micro soft-peering moet u de volgende services/regio's en relevante Community-waarden selecteren:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
+* Azure Storage (op basis van de locatie van uw Recovery Services kluis)
+
+Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+
+>[!NOTE]
+>Open bare peering is afgeschaft voor nieuwe circuits.
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>DPM/MABS-verbinding met Azure Backup
 

@@ -2,17 +2,14 @@
 title: Een HTTPS-ingang maken met het Azure Kubernetes service-cluster (AKS)
 description: Meer informatie over het installeren en configureren van een NGINX ingress-controller die wordt gebruikt voor het automatisch genereren van TLS-certificaten in een Azure Kubernetes service-cluster (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.author: mlearned
-ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898803"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595532"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Een HTTPS ingress-controller maken in azure Kubernetes service (AKS)
 
@@ -344,7 +341,7 @@ In dit artikel zijn enkele externe onderdelen opgenomen in AKS. Zie de volgende 
 
 - [Helm CLI][helm-cli]
 - [NGINX ingress-controller][nginx-ingress]
-- [cert-manager][cert-manager]
+- [CERT-beheerder][cert-manager]
 
 U kunt ook het volgende doen:
 

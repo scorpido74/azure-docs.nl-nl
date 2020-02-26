@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/27/2019
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707475"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598524"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -54,8 +54,11 @@ Gezien de minimale opslag latentie is essentieel voor de DBMS-systemen, zelfs al
 
 **Aanbeveling: als Stripe-grootte voor de RAID 0, is het gebruik van de volgende aanbevelingen:**
 
-- 64 KB of 128 KB voor **/Hana/data**
+- 256 KB voor **/Hana/data**
 - 32 KB voor **/Hana/log**
+
+> [!IMPORTANT]
+> De Stripe-grootte voor/Hana/data is gewijzigd ten opzichte van eerdere aanbevelingen die 64 KB of 128 KB aan 256 KB aanroepen op basis van ervaringen van klanten met recentere Linux-versies. De grootte van 256 KB levert een iets betere prestaties op
 
 > [!NOTE]
 > U hoeft geen redundantie niveau te configureren met behulp van RAID-volumes, aangezien Azure Premium en standaard opslag drie installatie kopieën van een VHD behouden. Het gebruik van een RAID-volume is uitsluitend voor het configureren van volumes die voldoende I/O-door Voer bieden.
@@ -65,7 +68,7 @@ Het samen voegen van een aantal Azure-Vhd's onder een RAID, is cumulatief van ee
 Houd ook rekening met de totale I/O-door Voer van de virtuele machine bij het aanpassen van de grootte of het kiezen van een virtuele machine. De totale opslag doorvoer voor de VM wordt beschreven in de grootte van het door het artikel [geoptimaliseerde virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
 
 ## <a name="linux-io-scheduler-mode"></a>Scheduler-modus Linux I/O
-Linux heeft verschillende I/O-plannings modi. Algemene aanbeveling via Linux-leveranciers en SAP is om de I/O scheduler-modus voor schijf volumes van de modus **cfq** opnieuw te configureren in de modus **nooperation** . Er wordt naar Details verwezen in [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux heeft verschillende I/O-plannings modi. Algemene aanbeveling via Linux-leveranciers en SAP is om de I/O scheduler-modus voor schijf volumes van de **cfq** -modus opnieuw te configureren in de **nooperation** (niet-multiwachtrij) of **geen** voor de modus voor meerdere wacht rijen. Er wordt naar Details verwezen in [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Oplossingen met Premium Storage en Azure Write Accelerator voor virtuele machines uit de M-serie van Azure
@@ -153,9 +156,9 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
 | M64ls | 512 GiB | 1\.000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
 | M64s | 1\.000 GiB | 1\.000 MB/s | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
-| M64ms | 1\.750 GiB | 1\.000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
+| M64ms | 1,750 GiB | 1\.000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
 | M128s | 2\.000 GiB | 2\.000 MB/s |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
+| M128ms | 3,800 GiB | 2\.000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
 | M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
 | M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
@@ -182,7 +185,7 @@ Micro soft is bezig met het implementeren van een nieuw Azure-opslag type met de
 
 Ultra Disk biedt u de mogelijkheid om één schijf te definiëren die voldoet aan uw grootte, IOPS en bereik voor schijf doorvoer. In plaats van logische volume managers zoals LVM of MDADM boven op Azure Premium Storage te gebruiken om volumes te maken die voldoen aan de vereisten voor IOPS en opslag doorvoer. U kunt een configuratie mix uitvoeren tussen ultra disk en Premium Storage. Als gevolg hiervan kunt u het gebruik van ultra Disk beperken tot de essentiële/Hana/data-en/Hana/log-volumes en de andere volumes bedekken met Azure Premium Storage
 
-Andere voor delen van ultra Disk kunnen de betere lees latentie zijn in vergelijking met Premium Storage. De snellere lees latentie kan de voor delen hebben wanneer u de HANA-start tijden en de volgende belasting van de gegevens in het geheugen wilt verminderen. Voor delen van ultra Disk-opslag kunnen ook vilt zijn wanneer HANA opslag punten schrijft. Omdat Premium Storage schijven voor/Hana/data doorgaans niet Write Accelerator in de cache wordt geplaatst, wordt de schrijf latentie voor/Hana/data op Premium Storage vergeleken met de ultra schijf hoger. Het kan worden verwacht dat opslag ruimte die naar een ultra schijf schrijft, beter presteert op ultra schijf.
+Andere voor delen van ultra Disk kunnen de betere lees latentie zijn in vergelijking met Premium Storage. De snellere lees latentie kan de voor delen hebben wanneer u de HANA-opstart tijden en de daaropvolgende belasting van de gegevens in het geheugen wilt reduceren. Voor delen van ultra Disk-opslag kunnen ook vilt zijn wanneer HANA opslag punten schrijft. Omdat Premium Storage schijven voor/Hana/data doorgaans niet Write Accelerator in de cache wordt geplaatst, wordt de schrijf latentie voor/Hana/data op Premium Storage vergeleken met de ultra schijf hoger. Het kan worden verwacht dat opslag ruimte die naar een ultra schijf schrijft, beter presteert op ultra schijf.
 
 > [!IMPORTANT]
 > Ultra disk is nog niet in alle Azure-regio's aanwezig en biedt nog geen ondersteuning voor alle typen VM'S die hieronder worden weer gegeven. Raadpleeg het artikel wat zijn de [schijf typen die beschikbaar zijn in azure?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)voor meer informatie over hoe Ultra Disk beschikbaar is en welke VM-families worden ondersteund.
@@ -194,18 +197,18 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 
 | VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /Hana/data volume | I/O-door Voer van/Hana/data | /Hana/data IOPS | /Hana/log volume | I/O-door Voer van/Hana/log | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBps | 7\.500 | 512 GB | 500 MBps  | 2\.000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2\.000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2\.000 |
-| M64ls | 512 GiB | 1\.000 MB/s | 600 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2\.500 |
-| M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2\.500 |
-| M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2\.500 |
-| M128s | 2\.000 GiB | 2\.000 MB/s |2\.400 GB | 1\.200 MBps |9\.000 | 512 GB | 800 MBps  | 3\.000 | 
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 4\.800 GB | 1200 MBps |9\.000 | 512 GB | 800 MBps  | 3\.000 | 
-| M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2\.500 | 
-| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2\.500 | 
-| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3\.000 | 
-| M416ms_v2 | 11.400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3\.000 |   
+| E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBps | 7\.500 | 512 GB | 500 MBps  | 2,000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2,000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7\.500 | 256 GB | 250 MBps  | 2,000 |
+| M64ls | 512 GiB | 1\.000 MB/s | 600 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2,500 |
+| M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2,500 |
+| M64ms | 1,750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBps | 7\.500 | 512 GB | 400 MBps  | 2,500 |
+| M128s | 2\.000 GiB | 2\.000 MB/s |2\.400 GB | 1\.200 MBps |9\.000 | 512 GB | 800 MBps  | 3,000 | 
+| M128ms | 3,800 GiB | 2\.000 MB/s | 4\.800 GB | 1200 MBps |9\.000 | 512 GB | 800 MBps  | 3,000 | 
+| M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 3\.500 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2,500 | 
+| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.200 GB | 1\.000 MBps | 9\.000 | 512 GB | 400 MBps  | 2,500 | 
+| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.200 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3,000 | 
+| M416ms_v2 | 11.400 GiB | 2\.000 MB/s | 14.400 GB | 1\.500 MBps | 9\.000 | 512 GB | 800 MBps  | 3,000 |   
 
 De vermelde waarden zijn bedoeld als uitgangs punt en moeten worden geëvalueerd op basis van de werkelijke vereisten. Het voor deel van Azure Ultra disk is dat de waarden voor IOPS en door Voer kunnen worden aangepast zonder de nood zaak om de virtuele machine af te sluiten of de werk belasting die op het systeem wordt toegepast, te onderbreken.   
 
@@ -224,9 +227,9 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 | M32ls | 256 GiB | 500 MB/s | 600 GB | 400 MBps | 9\.500 | 
 | M64ls | 512 GiB | 1\.000 MB/s | 1\.100 GB | 900 MBps | 10.000 | 
 | M64s | 1\.000 GiB | 1\.000 MB/s |  1\.700 GB | 900 MBps | 10.000 | 
-| M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.600 GB | 900 MBps | 10.000 | 
+| M64ms | 1,750 GiB | 1\.000 MB/s | 2\.600 GB | 900 MBps | 10.000 | 
 | M128s | 2\.000 GiB | 2\.000 MB/s |2\.900 GB | 1\.800 MBps |12,000 | 
-| M128ms | 3\.800 GiB | 2\.000 MB/s | 5\.300 GB | 1\.800 MBps |12,000 |  
+| M128ms | 3,800 GiB | 2\.000 MB/s | 5\.300 GB | 1\.800 MBps |12,000 |  
 | M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 4\.000 GB | 900 MBps | 10.000 |  
 | M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 7\.700 GB | 900 MBps | 10.000 | 
 | M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 7\.700 GB | 1, 800 Mbps | 12,000 |  
@@ -294,6 +297,6 @@ Documentatie over het implementeren van een SAP HANA scale-out configuratie met 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 - [SAP Hana hand leiding voor maximale Beschik baarheid voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

@@ -2,17 +2,14 @@
 title: Statisch IP-adres voor uitgaand verkeer in azure Kubernetes service (AKS)
 description: Meer informatie over het maken en gebruiken van een statisch openbaar IP-adres voor uitgaand verkeer in een Azure Kubernetes service (AKS)-cluster
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696367"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595753"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Een statisch openbaar IP-adres gebruiken voor uitgaand verkeer in azure Kubernetes service (AKS)
 
@@ -28,13 +25,13 @@ Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfiguree
 
 ## <a name="egress-traffic-overview"></a>Overzicht van uitgaand verkeer
 
-Uitgaand verkeer van een AKS-cluster volgt [Azure Load Balancer conventies][outbound-connections]. Voordat de eerste Kubernetes-service van `LoadBalancer` het type wordt gemaakt, maken de agent knooppunten in een AKS-cluster geen deel uit van een Azure Load Balancer groep. In deze configuratie hebben de knoop punten geen openbaar IP-adres op exemplaar niveau. Azure zet de uitgaande stroom om naar een IP-adres van een open bare bron dat niet configureerbaar of deterministisch is.
+Uitgaand verkeer van een AKS-cluster volgt [Azure Load Balancer conventies][outbound-connections]. Voordat de eerste Kubernetes-service van het type `LoadBalancer` wordt gemaakt, maken de agent knooppunten in een AKS-cluster geen deel uit van een Azure Load Balancer groep. In deze configuratie hebben de knoop punten geen openbaar IP-adres op exemplaar niveau. Azure zet de uitgaande stroom om naar een IP-adres van een open bare bron dat niet configureerbaar of deterministisch is.
 
-Zodra een Kubernetes-service van `LoadBalancer` het type is gemaakt, worden er agent knooppunten toegevoegd aan een Azure Load Balancer groep. Voor uitgaande stromen wordt de stroom door Azure omgezet naar het eerste open bare IP-adres dat is geconfigureerd op de load balancer. Dit open bare IP-adres is alleen geldig voor de levens duur van die resource. Als u de Kubernetes Load Balancer-service verwijdert, worden de gekoppelde load balancer en het IP-adres ook verwijderd. Als u een specifiek IP-adres wilt toewijzen of een IP-adres voor opnieuw geïmplementeerde Kubernetes-Services wilt behouden, kunt u een statisch openbaar IP-adres maken en gebruiken.
+Zodra een Kubernetes-service van het type `LoadBalancer` is gemaakt, worden er agent knooppunten toegevoegd aan een Azure Load Balancer groep. Voor uitgaande stromen wordt de stroom door Azure omgezet naar het eerste open bare IP-adres dat is geconfigureerd op de load balancer. Dit open bare IP-adres is alleen geldig voor de levens duur van die resource. Als u de Kubernetes Load Balancer-service verwijdert, worden de gekoppelde load balancer en het IP-adres ook verwijderd. Als u een specifiek IP-adres wilt toewijzen of een IP-adres voor opnieuw geïmplementeerde Kubernetes-Services wilt behouden, kunt u een statisch openbaar IP-adres maken en gebruiken.
 
 ## <a name="create-a-static-public-ip"></a>Een statisch openbaar IP-adres maken
 
-Haal de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en voeg de `--query nodeResourceGroup` query parameter toe. In het volgende voor beeld wordt de resource groep node opgehaald voor de AKS-cluster naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
+Haal de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en voeg de query parameter `--query nodeResourceGroup` toe. In het volgende voor beeld wordt de resource groep node opgehaald voor de AKS-cluster naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -75,7 +72,7 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 ## <a name="create-a-service-with-the-static-ip"></a>Een service maken met het statische IP-adres
 
-Als u een service met het statische open bare IP-adres wilt `loadBalancerIP` maken, voegt u de eigenschap en de waarde van het statische open bare IP-adres toe aan het yaml-manifest. Maak een bestand met `egress-service.yaml` de naam en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt.
+Als u een service met het statische open bare IP-adres wilt maken, voegt u de eigenschap `loadBalancerIP` en de waarde van het statische open bare IP-adres toe aan het YAML-manifest. Maak een bestand met de naam `egress-service.yaml` en kopieer de volgende YAML. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt.
 
 ```yaml
 apiVersion: v1
@@ -89,7 +86,7 @@ spec:
   - port: 80
 ```
 
-Maak de service en de implementatie met `kubectl apply` behulp van de opdracht.
+Maak de service en de implementatie met behulp van de `kubectl apply` opdracht.
 
 ```console
 kubectl apply -f egress-service.yaml
@@ -99,7 +96,7 @@ Met deze service wordt een nieuw frontend-IP-adres geconfigureerd op de Azure Lo
 
 ## <a name="verify-egress-address"></a>Uitgangs adres controleren
 
-Als u wilt controleren of het statische open bare IP-adres wordt gebruikt, kunt u de DNS-zoek service `checkip.dyndns.org`gebruiken zoals.
+Als u wilt controleren of het statische open bare IP-adres wordt gebruikt, kunt u de DNS-zoek service gebruiken, zoals `checkip.dyndns.org`.
 
 Starten en koppelen aan een Basic *Debian* Pod:
 
@@ -107,7 +104,7 @@ Starten en koppelen aan een Basic *Debian* Pod:
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
-Om toegang te krijgen tot een website vanuit de container, `apt-get` gebruikt u `curl` om in de container te installeren.
+Als u toegang wilt krijgen tot een website vanuit de container, gebruikt u `apt-get` om `curl` in de container te installeren.
 
 ```console
 apt-get update && apt-get install curl -y

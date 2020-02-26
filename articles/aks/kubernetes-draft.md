@@ -3,16 +3,15 @@ title: Ontwikkelen op Azure Kubernetes service (AKS) met Draft
 description: Concept gebruiken met AKS en Azure Container Registry
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292959"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595218"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Snelstartgids: ontwikkelen op Azure Kubernetes service (AKS) met Draft
 
@@ -23,7 +22,7 @@ In dit artikel wordt beschreven hoe u concept gebruikt om een toepassing te verp
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Docker is geïnstalleerd en geconfigureerd. Docker biedt pakketten die docker configureren op een [Mac][docker-for-mac]-, [Windows][docker-for-windows]-of [Linux][docker-for-linux] -systeem.
 * [Helm v2 is geïnstalleerd][helm-install].
@@ -103,7 +102,7 @@ Als u Azure Cloud Shell gebruikt, is `kubectl` al geïnstalleerd. Als u het loka
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In het volgende voor beeld worden referenties opgehaald voor het AKS-cluster met de naam *MyAKS* in de *MyResourceGroup*:
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. In het volgende voor beeld worden referenties opgehaald voor het AKS-cluster met de naam *MyAKS* in de *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -320,7 +319,7 @@ Zie de documentatie over concepten op GitHub voor meer informatie over het gebru
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-login
 [az-group-delete]: /cli/azure/group#az-group-delete
-[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[ om ]: /cli/azure/aks#az-aks-get-credentials
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
 [kubernetes-ingress]: ./ingress-basic.md
 

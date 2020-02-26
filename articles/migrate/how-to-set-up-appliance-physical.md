@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028829"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598167"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
 In dit artikel wordt beschreven hoe u het Azure Migrate apparaat instelt als u fysieke servers wilt beoordelen met het Azure Migrate: Server Assessment-hulp programma.
-
-> [!NOTE]
-> Als hier functies worden vermeld die u nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze worden in de volgende week weer gegeven.
 
 Het Azure Migrate apparaat is een licht gewicht apparaat dat door de Azure Migrate server-evaluatie wordt gebruikt om het volgende te doen:
 
@@ -44,7 +41,7 @@ Down load het zip-bestand voor het apparaat.
 2. Op **computers detecteren** > **zijn uw machines gevirtualiseerd? klikt u**op **niet gevirtualiseerd/Overig**.
 3. Klik op **downloaden** om het zip-bestand te downloaden.
 
-    ![Virtuele machine downloaden](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![Virtuele machine downloaden](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>Beveiliging controleren
@@ -55,17 +52,12 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
 2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  De gegenereerde hash moet overeenkomen met deze instellingen voor de meest recente versie van het apparaat.
-
-  **Algoritme** | **Hash-waarde**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  De gegenereerde hash moet overeenkomen met deze [instellingen](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)voor de meest recente versie van het apparaat.
 
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatie script uitvoeren
-= Het installatie script doet het volgende:
+Het installatie script doet het volgende:
 
 - Installeert agents en een webtoepassing voor detectie en evaluatie van fysieke servers.
 - Installeer Windows-rollen, waaronder Windows Activation service, IIS en Power shell ISE.
@@ -80,13 +72,16 @@ Voer het script als volgt uit:
 1. Pak het zip-bestand uit naar een map op de server die als host moet fungeren voor het apparaat.
 2. Start Power shell op de bovenstaande server met beheerders bevoegdheden (met verhoogde bevoegdheden).
 3. Wijzig de Power shell-map in de map waarin de inhoud is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script uit door de volgende opdracht uit te voeren:
+4. Voer het script met de naam **AzureMigrateInstaller. ps1** uit door de volgende opdracht uit te voeren:
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 Met het script wordt de web-app voor het toestel gestart wanneer deze is voltooid.
 
+In het geval van problemen kunt u de script Logboeken openen op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log voor het oplossen van problemen.
 
+> [!NOTE]
+> Voer het Azure Migrate-installatie script niet uit op een bestaand Azure Migrate apparaat.
 
 ### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
@@ -128,7 +123,7 @@ Maak verbinding van het apparaat met fysieke servers en start de detectie.
 2. Geef het **besturings systeem**, de beschrijvende naam voor de referenties, de **gebruikers naam** en het **wacht woord** op en klik op **toevoegen**.
 U kunt elk voor Windows-en Linux-servers één set referenties toevoegen.
 4. Klik op **server toevoegen**en geef Server Details-FQDN/IP-adres en beschrijvende naam van referenties (één vermelding per rij) op om verbinding te maken met de server.
-3. Klik op **valideren**. Na validatie wordt de lijst met servers weer gegeven die kunnen worden gedetecteerd.
+3. Klik op **Valideren**. Na validatie wordt de lijst met servers weer gegeven die kunnen worden gedetecteerd.
     - Als de validatie mislukt voor een server, controleert u de fout door de muis aanwijzer boven het pictogram in de kolom **status** te bewegen. Los problemen op en valideer opnieuw.
     - Als u een server wilt verwijderen, selecteert u > **verwijderen**.
 4. Klik na validatie op **opslaan en start de detectie** om het detectie proces te starten.

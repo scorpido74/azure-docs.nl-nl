@@ -2,20 +2,20 @@
 title: Azure Information Protection verbinden met Azure Sentinel
 description: Meer informatie over het verbinden van Azure Information Protection gegevens in azure Sentinel.
 services: sentinel
-author: cabailey
+author: yelevin
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: cabailey
-ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563680"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588549"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verbinding maken met gegevens van Azure Information Protection
 

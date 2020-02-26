@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429654"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587002"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Zelf studie: een NAT-gateway maken met behulp van de Azure Portal en de NAT-service testen
 
@@ -30,10 +30,7 @@ In deze zelf studie maakt u een NAT-gateway om uitgaande connectiviteit te biede
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-> [!IMPORTANT]
-> Nadat Virtual Network NAT [Preview is ingeschakeld](./nat-overview.md#enable-preview) voor uw abonnement, gebruikt u https://aka.ms/natportal om toegang te krijgen tot de portal.
-
-Meld u aan bij de [Azure-portal](https://aka.ms/natportal).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>De bron voorbereiden voor uitgaand verkeer
 

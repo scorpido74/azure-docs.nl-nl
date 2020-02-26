@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fbff3679004b8278b7634c2dc21253973cf34d0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3a3e4c76463aaea0735d20d4fcc283aee460b48f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647659"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597521"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver
 
@@ -168,7 +168,7 @@ In dit artikel worden de stappen beschreven die u kunt nemen om SAP-systemen met
 
 Ter vereenvoudiging van de implementatie en configuratie gebruiken we in dit artikel de SAP-sjablonen met een hoge Beschik baarheid van de 3-tier met drie lagen. Met de sjablonen wordt de implementatie van de volledige infra structuur geautomatiseerd die u nodig hebt voor een SAP-systeem met hoge Beschik baarheid. De infra structuur biedt ook ondersteuning voor de SAP'S-grootte (SAP Application Performance Standard) van uw SAP-systeem.
 
-## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Vereisten
+## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Vereisten
 Voordat u begint, moet u ervoor zorgen dat u voldoet aan de vereisten die worden beschreven in de volgende secties. Zorg er ook voor dat alle resources die worden vermeld in de sectie [resources][sap-ha-guide-2] , worden gecontroleerd.
 
 In dit artikel wordt gebruikgemaakt van Azure Resource Manager sjablonen voor [SAP NetWeaver met drie lagen met behulp van Managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Zie [SAP Azure Resource Manager-sjablonen](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)voor een nuttige overzicht van sjablonen.
@@ -207,7 +207,7 @@ De Azure Resource Manager-en klassieke implementatie modellen van Azure verschil
 - Ondersteuning voor SAP multi-SID-scenario's
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Resource groepen
-In Azure Resource Manager kunt u resource groepen gebruiken om alle toepassings resources in uw Azure-abonnement te beheren. Een geïntegreerde benadering, in een resource groep, hebben alle resources dezelfde levens cyclus. Zo worden bijvoorbeeld alle resources tegelijk gemaakt en worden deze tegelijkertijd verwijderd op hetzelfde moment. Meer informatie over [resourcegroepen](../../../azure-resource-manager/management/overview.md#resource-groups).
+In Azure Resource Manager kunt u resource groepen gebruiken om alle toepassings resources in uw Azure-abonnement te beheren. Een geïntegreerde benadering, in een resource groep, hebben alle resources dezelfde levens cyclus. Zo worden bijvoorbeeld alle resources tegelijk gemaakt en worden deze tegelijkertijd verwijderd op hetzelfde moment. Lees meer over [resourcegroepen](../../../azure-resource-manager/management/overview.md#resource-groups).
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure interne load balancer afhankelijkheid van de Azure-resource groep
 
@@ -420,7 +420,7 @@ _**Afbeelding 11:** SAP-Azure Resource Manager-para meters met hoge Beschik baar
 
   * **Netwerk kaarten voor alle virtuele machines, met de bijbehorende IP-adressen**:
     * <*SAPSystemSID*>-NIC-di-<*nummer*>
-    * <*SAPSystemSID*>-nic-ascs-<*Number*>
+    * <*SAPSystemSID*>-NIC-ascs-<*nummer*>
     * <*SAPSystemSID*>-NIC-db-<*nummer*>
 
   * **Azure-opslag accounts (alleen onbeheerde schijven)**
@@ -443,7 +443,7 @@ _**Afbeelding 11:** SAP-Azure Resource Manager-para meters met hoge Beschik baar
 >
 
 ### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Implementeer virtuele machines met de connectiviteit van een bedrijfs netwerk (cross-premises) voor gebruik in productie
-Voor productie-SAP-systemen implementeert u virtuele Azure-machines met een [bedrijfs netwerk verbinding (cross-premises)][planning-guide-2.2] met behulp van Azure site-naar-site VPN of Azure ExpressRoute.
+Voor productie-SAP-systemen implementeert u virtuele Azure-machines met connectiviteit van het bedrijfs netwerk met behulp van Azure site-naar-site VPN of Azure ExpressRoute.
 
 > [!NOTE]
 > U kunt uw Azure Virtual Network-exemplaar gebruiken. Het virtuele netwerk en het subnet zijn al gemaakt en voor bereid.
@@ -554,7 +554,7 @@ Als u de sjabloon multi-SID voor de Data Base wilt instellen, voert u in de sjab
 - **Type besturings systeem**. Selecteer het besturings systeem van de virtuele machines.
 - **DBTYPE**. Selecteer het type Data Base dat u op het cluster wilt installeren. Selecteer **SQL** als u Microsoft SQL Server wilt installeren. Selecteer **Hana** als u SAP Hana wilt installeren op de virtuele machines. Zorg ervoor dat u het juiste type besturings systeem selecteert: Selecteer **Windows** voor SQL en selecteer een Linux-distributie voor Hana. De Azure Load Balancer die is verbonden met de virtuele machines, wordt geconfigureerd voor de ondersteuning van het geselecteerde database type:
   * **SQL**. De load balancer-balans poort 1433 wordt geladen. Zorg ervoor dat u deze poort gebruikt voor de installatie van SQL Server altijd.
-  * **HANA**. De load balancer worden taakverdelings poorten 35015 en 35017. Zorg ervoor dat u SAP HANA installeert met instantie nummer **50**.
+  * **Hana**. De load balancer worden taakverdelings poorten 35015 en 35017. Zorg ervoor dat u SAP HANA installeert met instantie nummer **50**.
   In het load balancer wordt test poort 62550 gebruikt.
 - **SAP-systeem grootte**. Stel het aantal SAP'S in dat door het nieuwe systeem moet worden geboden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
 - **Systeem beschikbaarheid**. Selecteer **ha**.
@@ -589,7 +589,7 @@ Voer de volgende stappen uit om de vereiste DNS-IP-adressen in te stellen.
 
 1. Controleer in de Azure Portal op de Blade **DNS-servers** of de optie **DNS-servers** voor het virtuele netwerk is ingesteld op **aangepaste DNS**.
 2. Selecteer uw instellingen op basis van het type netwerk dat u hebt. Zie de volgende bronnen voor meer informatie:
-   * [Bedrijfs netwerk connectiviteit (cross-premises)][planning-guide-2.2]: Voeg de IP-adressen van de on-PREMISES DNS-servers toe.  
+   * Voeg de IP-adressen van de on-premises DNS-servers toe.  
    U kunt on-premises DNS-servers uitbreiden naar de virtuele machines die worden uitgevoerd in Azure. In dat scenario kunt u de IP-adressen toevoegen van de virtuele machines van Azure waarop u de DNS-service uitvoert.
    * Voor VM-implementaties die zijn geïsoleerd in Azure: Implementeer een extra virtuele machine in hetzelfde Virtual Network exemplaar dat fungeert als een DNS-server. Voeg de IP-adressen van de virtuele Azure-machines die u hebt ingesteld voor het uitvoeren van de DNS-service toe.
 
@@ -698,7 +698,7 @@ Als u vereiste interne taakverdelings eindpunten wilt maken, moet u eerst deze t
 | Server- *lbrule3200* in wachtrij plaatsen |32 <*InstanceNumber*> |3200 |
 | ABAP-bericht server/ *lbrule3600* |36 <*InstanceNumber*> |3600 |
 | Intern ABAP-bericht/ *lbrule3900* |39 <*InstanceNumber*> |3900 |
-| Message Server HTTP / *Lbrule8100* |81 <*InstanceNumber*> |8100 |
+| HTTP- *Lbrule8100* van bericht server |81 <*InstanceNumber*> |8100 |
 | ASCS HTTP/ *Lbrule50013* voor SAP-start service |5 <*InstanceNumber*> 13 |50013 |
 | ASCS HTTPS/ *Lbrule50014* voor SAP-start service |5 <*InstanceNumber*> 14 |50014 |
 | Replicatie- *Lbrule50016* in wachtrij plaatsen |5 <*InstanceNumber*> 16 |50016 |
@@ -716,7 +716,7 @@ Vervolgens maakt u deze eind punten voor taak verdeling voor de SAP NetWeaver Ja
 | Server- *lbrule3201* in wachtrij plaatsen |32 <*InstanceNumber*> |3201 |
 | Gateway server- *lbrule3301* |33 <*InstanceNumber*> |3301 |
 | Java-bericht server- *lbrule3900* |39 <*InstanceNumber*> |3901 |
-| Message Server HTTP / *Lbrule8101* |81 <*InstanceNumber*> |8101 |
+| HTTP- *Lbrule8101* van bericht server |81 <*InstanceNumber*> |8101 |
 | SCS HTTP/ *Lbrule50113* voor SAP-start service |5 <*InstanceNumber*> 13 |50113 |
 | SCS HTTPS/ *Lbrule50114* voor SAP-start service |5 <*InstanceNumber*> 14 |50114 |
 | Replicatie- *Lbrule50116* in wachtrij plaatsen |5 <*InstanceNumber*> 16 |50116 |
@@ -741,7 +741,7 @@ Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u d
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
    * Name
-   * Port
+   * Poort
    * Poort van back-end
 
    Als u bijvoorbeeld het standaard ASCS-instantie nummer wilt wijzigen van 00 in 31, moet u de wijzigingen aanbrengen voor alle poorten die worden vermeld in tabel 1.
@@ -1268,7 +1268,7 @@ Een test poort toevoegen:
    }
    ```
 
-   Nadat u de **SAP <*SID*>** cluster online rol, Controleer **ProbePort** is ingesteld op de nieuwe waarde.
+   Nadat u de **SAP-<*sid*>** cluster functie online hebt gebracht, controleert u of **ProbePort** is ingesteld op de nieuwe waarde.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>

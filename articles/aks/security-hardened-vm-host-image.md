@@ -3,17 +3,16 @@ title: Beveiligings beveiliging in hosts van virtuele AKS-machines
 description: Meer informatie over de beveiligings beveiliging in AKS VM host-besturings systeem
 services: container-service
 author: saudas
-ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885631"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594377"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Beveiligings beveiliging in hosts van virtuele AKS-machines 
 
@@ -75,7 +74,7 @@ AKS: de engine kan op dit moment niet worden gestimuleerd of gerespecteerd aan e
 |5.4.1.1 |Controleren of het wacht woord verloopt 90 dagen of minder |
 |5.4.1.4 |Controleren of inactieve wachtwoord vergrendeling 30 dagen of minder is |
 |5.4.4 |Zorg ervoor dat de umask van de standaard gebruiker 027 of meer beperkend is |
-|5,6 |Controleren of de toegang tot de su-opdracht is beperkt|
+|5.6 |Controleren of de toegang tot de su-opdracht is beperkt|
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
  

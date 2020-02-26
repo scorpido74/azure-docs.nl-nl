@@ -3,16 +3,16 @@ title: Veelgestelde vragen over Azure Files | Microsoft Docs
 description: Vind antwoorden op veelgestelde vragen over Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565057"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598184"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Veelgestelde vragen over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -85,7 +85,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
 * <a id="afs-region-availability"></a>
   **welke regio's worden ondersteund voor Azure file sync?**  
-    De lijst met beschik bare regio's vindt u in de sectie [Beschik baarheid van regio's](storage-sync-files-planning.md#region-availability) van de Azure file sync plannings handleiding. Er wordt voortdurend ondersteuning toegevoegd voor extra regio's, waaronder niet-open bare regio's.
+    De lijst met beschik bare regio's vindt u in de sectie [Beschik baarheid van regio's](storage-sync-files-planning.md#azure-file-sync-region-availability) van de Azure file sync plannings handleiding. Er wordt voortdurend ondersteuning toegevoegd voor extra regio's, waaronder niet-open bare regio's.
 
 * <a id="cross-domain-sync"></a>
   **kan ik servers die lid zijn van een domein en niet-domein lid zijn in dezelfde synchronisatie groep?**  
@@ -155,13 +155,13 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
     Als u Azure Backup hebt ingeschakeld op de bestands shares die door het bestand sync worden beheerd, kunnen Acl's van bestanden worden hersteld als onderdeel van de werk stroom voor het terugzetten van back-ups. Dit werkt voor de volledige share of afzonderlijke bestanden/directory's.
 
-    Als u moment opnamen gebruikt als onderdeel van de zelf-beheerde back-upoplossing voor bestands shares die worden beheerd door bestands synchronisatie, worden uw Acl's mogelijk niet op de juiste manier teruggezet op NTFS-Acl's als de moment opnamen vóór 24 februari 2020 zijn gemaakt. Als dit het geval is, kunt u contact opnemen met de ondersteuning van Azure.
+    Als u moment opnamen gebruikt als onderdeel van de zelf-beheerde back-upoplossing voor bestands shares die worden beheerd door bestands synchronisatie, worden uw Acl's mogelijk niet op de juiste wijze teruggezet naar NTFS-Acl's als de moment opnamen zijn gemaakt vóór februari 24, 2020. Als dit het geval is, kunt u contact opnemen met de ondersteuning van Azure.
     
 ## <a name="security-authentication-and-access-control"></a>Beveiliging, verificatie en toegangs beheer
 * <a id="ad-support"></a>
 **zijn verificatie en toegangs beheer op basis van identiteiten die door Azure files worden ondersteund?**  
     
-    Ja, Azure Files ondersteunt verificatie en toegangs beheer op basis van een identiteit. U kunt op een van de volgende twee manieren een toegangs beheer op basis van de identiteit gebruiken: Azure Active Directory Domain Services (Azure AD DS) (GA) of Active Directory (AD) (preview). Met Azure AD DS-verificatie via SMB voor Azure Files kunnen AD DS Azure-Windows-Vm's die lid zijn van een domein, toegang krijgen tot shares, directory's en bestanden met behulp van Azure AD-referenties. AD ondersteunt verificatie met behulp van aan AD domein gekoppelde computers, on-premises of in azure, om toegang te krijgen tot Azure-bestands shares via SMB. Zie [overzicht van Azure files op identiteit gebaseerde verificatie voor SMB-toegang](storage-files-active-directory-overview.md)voor meer informatie. 
+    Ja, Azure Files ondersteunt verificatie en toegangs beheer op basis van een identiteit. U kunt op een van de volgende twee manieren een toegangs beheer op basis van de identiteit gebruiken: Active Directory (AD) (preview) of Azure Active Directory Domain Services (Azure AD DS) (GA). AD ondersteunt verificatie met behulp van aan AD domein gekoppelde computers, on-premises of in azure, om toegang te krijgen tot Azure-bestands shares via SMB. Met Azure AD DS-verificatie via SMB voor Azure Files kunnen AD DS Azure-Windows-Vm's die lid zijn van een domein, toegang krijgen tot shares, directory's en bestanden met behulp van Azure AD-referenties. Zie [overzicht van Azure files op identiteit gebaseerde verificatie voor SMB-toegang](storage-files-active-directory-overview.md)voor meer informatie. 
 
     Azure Files biedt twee extra manieren om toegangs beheer te beheren:
 
@@ -199,14 +199,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="ad-multiple-forest"></a>
 ondersteunt **Azure files AD-verificatie de integratie met een AD-omgeving met meerdere forests?**    
 
-    Azure Files AD-verificatie is alleen geïntegreerd met het forest van de AD-domein service waarop het opslag account is geregistreerd. Als u verificatie van een ander AD-forest wilt ondersteunen, moet uw omgevings vertrouwensrelatie op de juiste wijze zijn geconfigureerd. Azure Files registratie bij een AD-domein service is het voornamelijk hetzelfde als een normale Bestands server, waar het een account in AD voor verificatie maakt. Het enige verschil is dat de geregistreerde SPN van het opslag account eindigt op ' file.core.windows.net ', wat niet overeenkomt met het domein achtervoegsel.
-
-    Neem contact op met uw domein beheerder om te controleren of er een update van uw DNS-routerings beleid is vereist om meerdere Forest-verificatie mogelijk te maken.
+    Azure Files AD-verificatie is alleen geïntegreerd met het forest van de AD-domein service waarop het opslag account is geregistreerd. Als u verificatie van een ander AD-forest wilt ondersteunen, moet uw omgevings vertrouwensrelatie op de juiste wijze zijn geconfigureerd. De manier waarop Azure Files registreren bij een AD-domein service, is voornamelijk hetzelfde als een normale Bestands server, waarbij een identiteit (computer-of service-aanmeldings account) in AD voor verificatie wordt gemaakt. Het enige verschil is dat de geregistreerde SPN van het opslag account eindigt op ' file.core.windows.net ', wat niet overeenkomt met het domein achtervoegsel. Neem contact op met uw domein beheerder om te controleren of er een update van uw DNS-routerings beleid is vereist om meerdere Forest-verificatie mogelijk te maken vanwege het andere domein achtervoegsel.
 
 * <a id=""></a>
 **welke regio's beschikbaar zijn voor Azure files AD-verificatie (preview)?**
 
-    Raadpleeg de [regionale Beschik baarheid van AD](storage-files-active-directory-domain-services-enable.md#regional-availability) voor meer informatie.
+    Raadpleeg de [regionale Beschik baarheid van AD](storage-files-identity-auth-active-directory-enable.md#regional-availability) voor meer informatie.
 
 * <a id="ad-aad-smb-afs"></a>
 **kan ik gebruikmaken van Azure files Azure AD DS-verificatie of Active Directory (AD)-verificatie (preview) op bestands shares die worden beheerd door Azure file sync?**
@@ -347,7 +345,7 @@ hoeveel **moment opnamen delen kosten?**
 
 * <a id="need-larger-share"></a>
 **welke grootten beschikbaar zijn voor Azure-bestands shares?**  
-    Groottes van Azure-bestands shares (Premium en Standard) kunnen tot 100 TiB worden geschaald. Zie de sectie [onboarding to large file shares (Standard-laag)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) van de plannings handleiding voor onboarding-instructies voor de grotere bestands shares voor de laag standaard.
+    Groottes van Azure-bestands shares (Premium en Standard) kunnen tot 100 TiB worden geschaald. Zie de sectie [onboarding to large file shares (Standard-laag)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) van de plannings handleiding voor onboarding-instructies voor de grotere bestands shares voor de laag standaard.
 
 * <a id="lfs-performance-impact"></a>
 **breidt mijn werk belastingen of Azure file sync uit met het quotum voor bestands shares?**

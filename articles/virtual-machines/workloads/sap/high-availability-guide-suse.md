@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op SUSE Linux Enterprise Server voor SAP-toepassingen | Microsoft Docs
+title: Azure Vm's hoge Beschik baarheid voor SAP NetWeaver op SLES | Microsoft Docs
 description: Hand leiding voor hoge Beschik baarheid voor SAP NetWeaver op SUSE Linux Enterprise Server voor SAP-toepassingen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4dbce04df4a2542884f1f24b3207fe45fd4b26ae
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985514"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598235"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor SAP-toepassingen
 
@@ -267,9 +267,9 @@ U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een
 
 Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](high-availability-guide-suse-pacemaker.md) voor het maken van een basis pacemaker-cluster voor deze (a) SCS-server.
 
-### <a name="installation"></a>Installeren
+### <a name="installation"></a>Installatie
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
 1. **[A]** SuSE-connector installeren
 
@@ -319,7 +319,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-1. **[A]**  Omzetten van de hostnaam instellen
+1. **[A]** omzetting van hostnaam van installatie
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
@@ -669,7 +669,7 @@ In de stappen onderstaande wordt ervan uitgegaan dat u de toepassings server ins
 
 1. Besturings systeem configureren
 
-   Reduceer de grootte van de vervuilde cache. Zie voor meer informatie, [laag schrijfvaardigheden op SLES 11/12 servers met grote RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Reduceer de grootte van de vervuilde cache. Zie [lage schrijf prestaties op SLES 11/12-servers met grote hoeveel heden RAM-geheugen](https://www.suse.com/support/kb/doc/?id=7010287)voor meer informatie.
 
    <pre><code>sudo vi /etc/sysctl.conf
 

@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen voor Hyper-V
 description: Meer informatie over het instellen van een Azure Migrate apparaat om Hyper-V-Vm's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029086"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598337"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
 
@@ -48,12 +48,8 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
 2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  Voor de toestel versie 2.19.11.12 moet de gegenereerde hash overeenkomen met deze instellingen.
+3.  Voor de toestel versie 2.19.11.12 moet de gegenereerde hash overeenkomen met deze [instellingen](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security).
 
-  **Algoritme** | **Hash-waarde**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
 
@@ -73,7 +69,7 @@ Importeer het gedownloade bestand en maak de virtuele machine.
 3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.
 4. In **opslag mappen**, behoud de standaard instelling. Klik op **Volgende**.
 5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden.
-6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **Voltooien**.
+6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **volt ooien**.
 7. Start de virtuele machine in Hyper-V-beheer > **virtual machines**.
 
 
@@ -133,7 +129,7 @@ Maak verbinding van het apparaat met Hyper-V-hosts of-clusters en start de VM-de
 
 1. Geef bij **gebruikers naam** en **wacht woord**de account referenties op die door het apparaat worden gebruikt voor het detecteren van vm's. Geef een beschrijvende naam op voor de referenties en klik op **Details opslaan**.
 2. Klik op **host toevoegen**en geef de gegevens van de Hyper-V-host/het cluster op.
-3. Klik op **valideren**. Na validatie wordt het aantal Vm's weer gegeven dat op elke host/het cluster kan worden gedetecteerd.
+3. Klik op **Valideren**. Na validatie wordt het aantal Vm's weer gegeven dat op elke host/het cluster kan worden gedetecteerd.
     - Als de validatie voor een host mislukt, controleert u de fout door de muis aanwijzer boven het pictogram in de kolom **status** te bewegen. Los problemen op en valideer opnieuw.
     - Als u hosts of clusters wilt verwijderen, selecteert u > **verwijderen**.
     - U kunt een specifieke host niet verwijderen uit een cluster. U kunt alleen het hele cluster verwijderen.

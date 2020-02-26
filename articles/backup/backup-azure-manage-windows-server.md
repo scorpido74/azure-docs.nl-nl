@@ -3,12 +3,12 @@ title: Azure Recovery Services-kluizen en-servers beheren
 description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173046"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586441"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
@@ -77,7 +77,7 @@ Het rapport back-upwaarschuwingen bevat de waarschuwingen voor de kluis.
 
 In de lijst met waarschuwingen voor back-ups worden de geselecteerde gegevens voor de gefilterde waarschuwingen weer gegeven. In het menu waarschuwingen voor back-ups kunt u filteren op kritieke of waarschuwings meldingen.
 
-| Waarschuwings niveau | Gebeurtenissen die waarschuwingen genereren |
+| Waarschuwingsniveau | Gebeurtenissen die waarschuwingen genereren |
 | ----------- | ----------- |
 | Kritiek | U ontvangt kritieke waarschuwingen wanneer: back-uptaken mislukken, herstel taken mislukken en wanneer u de beveiliging op een server stopt, maar de gegevens behouden.|
 | Waarschuwing | Er worden waarschuwingen weer gegeven wanneer back-uptaken worden voltooid met waarschuwingen, bijvoorbeeld wanneer minder dan 100 bestanden geen back-up worden gemaakt als gevolg van beschadiging of als er een back-up van meer dan 1.000.000 bestanden wordt gemaakt. |
@@ -205,7 +205,7 @@ De filters wijzigen:
 Het item type is het type back-upbeheer van het beveiligde exemplaar. Er zijn vier typen; Zie de volgende lijst. U kunt alle item typen of één item type weer geven. U kunt niet twee of drie item typen selecteren. De beschik bare typen items zijn:
 
 * Alle item typen
-* virtuele Azure-machine
+* Virtuele Azure-machine
 * Bestanden en mappen
 * Azure Storage
 * Azure-workload
@@ -217,7 +217,7 @@ U kunt één bewerking of alle bewerkingen weer geven. U kunt twee of drie bewer
 * Alle bewerkingen
 * Registreren
 * Back-up configureren
-* Backup
+* Back-up maken
 * Herstellen
 * Back-up uitschakelen
 * Back-upgegevens verwijderen
@@ -272,4 +272,4 @@ De tegel back-upopslag in het dash board toont de opslag die wordt gebruikt in A
 
 * [Windows Server of Windows-client herstellen vanuit Azure](backup-azure-restore-windows-server.md)
 * Zie [Azure backup Overview](backup-introduction-to-azure-backup.md) (Engelstalig) voor meer informatie over Azure backup
-* Ga naar het [Azure Backup forum](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

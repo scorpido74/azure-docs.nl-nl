@@ -3,7 +3,7 @@ title: Wat is Azure Sentinel? | Microsoft Docs
 description: Meer informatie over Azure Sentinel, de belangrijkste mogelijkheden en hoe het werkt.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: yelevin
+ms.openlocfilehash: 7d0f246a96072a6e433b0762256467f1c20a45fe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939118"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581715"
 ---
 # <a name="what-is-azure-sentinel"></a>Wat is Azure Sentinel?
 
@@ -55,11 +55,11 @@ Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt g
 
 ![Dashboards](./media/tutorial-monitor-data/access-workbooks.png)
 
-## <a name="analytics"></a>Analytische gegevens
+## <a name="analytics"></a>Analyse
 
 Om het geluid te verminderen en het aantal waarschuwingen dat u moet controleren en te minimaliseren, gebruikt Azure Sentinel [Analytics om waarschuwingen in incidenten te correleren](tutorial-detect-threats-built-in.md). **Incidenten** zijn groepen gerelateerde waarschuwingen die samen een mogelijke bedreiging maken die kan worden onderzocht en opgelost. Gebruik de ingebouwde correlatie regels als-is of gebruik deze als uitgangs punt om uw eigen samen te stellen. Azure Sentinel biedt ook machine learning regels om uw netwerk gedrag toe te wijzen en vervolgens te zoeken naar afwijkingen in uw resources. Deze analyse verbindt de punten door waarschuwingen met een laag niveau te combi neren over verschillende entiteiten in potentiële beveiligings incidenten met hoge betrouw baarheid.
 
-![Gevallen](./media/tutorial-investigate-cases/incident-severity.png)
+![Incidenten](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>Integratie van & voor beveiligings automatisering

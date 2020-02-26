@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501119"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582701"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -41,11 +41,11 @@ De gegevens in een werk ruimte van LA worden standaard 30 dagen bewaard. Als u g
 
 Azure Resource Manager resources, zoals Recovery Services kluizen, registreert u informatie over geplande bewerkingen en door de gebruiker geactiveerde bewerkingen als diagnostische gegevens. 
 
-Selecteer in de sectie bewaking van uw Recovery Services kluis **Diagnostische instellingen** en geef het doel op voor de diagnostische gegevens van de Recovery Services kluis. Meer [informatie over het gebruik van diagnostische gebeurtenissen](https://aka.ms/AzureBackupDiagnosticDocs).
+Selecteer in de sectie bewaking van uw Recovery Services kluis **Diagnostische instellingen** en geef het doel op voor de diagnostische gegevens van de Recovery Services kluis. Meer [informatie over het gebruik van diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
 
 ![Blade instellingen voor diagnostische gegevens](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup biedt ook een ingebouwde Azure Policy, waarmee de configuratie van diagnostische instellingen voor alle kluizen in een bepaald bereik wordt geautomatiseerd. Raadpleeg het volgende artikel voor meer informatie over het gebruik van dit beleid: [instellingen voor diagnostische gegevens van de kluis op schaal configureren](https://aka.ms/AzureBackupDiagnosticsPolicyDocs)
+Azure Backup biedt ook een ingebouwde Azure Policy, waarmee de configuratie van diagnostische instellingen voor alle kluizen in een bepaald bereik wordt geautomatiseerd. Raadpleeg het volgende artikel voor meer informatie over het gebruik van dit beleid: [instellingen voor diagnostische gegevens van de kluis op schaal configureren](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 3. **Rapporten weer geven op de Azure Portal:**
 
@@ -53,7 +53,7 @@ Wanneer u uw kluizen zo hebt geconfigureerd dat gegevens naar LA worden verzonde
 
 ![Kluis dashboard](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-Als u op deze koppeling klikt, wordt de werkmap van het back-uprapport geopend. 
+Als u op deze koppeling klikt, wordt de werkmap van het back-uprapport geopend.
 
 > [!NOTE]
 > De aanvankelijke belasting van het rapport kan tot wel 1 minuut duren.

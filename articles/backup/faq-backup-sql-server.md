@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172020"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597079"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -37,13 +37,15 @@ Automatisch herstellen als een mogelijkheid is standaard ingeschakeld voor alle 
 - Sla de wijzigingen op en sluit het bestand.
 - Open op het SQL Server-exemplaar **taak beheer** en start de **AzureWLBackupCoordinatorSvc** -service vervolgens opnieuw.
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Kan ik bepalen hoeveel gelijktijdige back-ups er worden uitgevoerd op de SQL Server?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Kan ik bepalen hoeveel gelijktijdige back-ups worden uitgevoerd op de SQL Server?
 
 Ja. U kunt de snelheid waarmee het back-upbeleid wordt uitgevoerd, beperken om de impact op een SQL Server-exemplaar te minimaliseren. Ga als volgt te werk om de instelling te wijzigen:
 
 1. Maak het bestand *ExtensionSettingsOverrides. json* in de map *C:\Program Files\Azure workload Backup\bin* van het SQL Server-exemplaar.
 2. In het bestand *ExtensionSettingsOverrides. json* wijzigt u de instelling **DefaultBackupTasksThreshold** in een lagere waarde (bijvoorbeeld 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+De standaard waarde van DefaultBackupTasksThreshold is **20**.
 
 3. Sla de wijzigingen op en sluit het bestand.
 4. Open **Taakbeheer** op het SQL Server-exemplaar. Start de service **AzureWLBackupCoordinatorSvc** opnieuw.<br/> <br/>

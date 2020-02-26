@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757796"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605676"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer onderdelen en beperkingen
 Azure Load Balancer bevat verschillende belang rijke onderdelen voor de bewerking.  Deze onderdelen kunnen worden geconfigureerd in uw abonnement via de Azure Portal, Azure CLI of Azure PowerShell.  
@@ -73,7 +73,9 @@ Zie [de distributie modus configureren voor Azure Load Balancer](./load-balancer
 
 Op de volgende afbeelding wordt een hash-distributiepunt weergegeven:
 
-  ![Hash-distributie](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="Hash-distributie">
+</p>
 
   *Afbeelding: hash-distributie*
 
@@ -132,9 +134,11 @@ Een openbaar Load Balancer wijst het open bare IP-adres en de poort van binnenko
 
 In de volgende afbeelding ziet u een eind punt met gelijke taak verdeling voor Internet verkeer dat wordt gedeeld door drie Vm's voor de open bare en TCP-poort 80. Deze drie VM's maken deel uit van een set met taakverdeling.
 
-![Voorbeeld van een openbare Load Balancer](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="Open bare load balancer">
+</p>
 
-*Afbeelding: webverkeer balanceren met behulp van een open bare Load Balancer*
+*Afbeelding: webverkeer balanceren met behulp van een open bare load balancer*
 
 Internetclients verzenden webpagina aanvragen naar het open bare IP-adres van een web-app op TCP-poort 80. Azure Load Balancer distribueert de aanvragen over de drie Vm's in de set met gelijke taak verdeling. Zie [Load Balancer-concepten](concepts-limitations.md#load-balancer-concepts)voor meer informatie over Load Balancer-algoritmen.
 
@@ -151,7 +155,10 @@ Met een interne Load Balancer zijn de volgende typen taakverdeling mogelijk:
 * **Voor toepassingen met meerdere lagen**: taak verdeling voor toepassingen met meerdere lagen op internet waarbij de back-endservers niet op internet zijn gericht. Voor de back-end-lagen is taak verdeling van verkeer van de Internet gerichte laag vereist. Zie de volgende afbeelding.
 * **Voor Line-Of-Business-toepassingen**: taakverdeling voor Line-Of-Business-toepassingen die worden gehost in Azure zonder extra load balancer-hardware of -software. Dit scenario bevat on-premises servers die zich in de set computers bevinden waarvan het verkeer wordt verdeeld.
 
-![Voorbeeld van een interne Load Balancer](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="Open bare load balancer">
+</p>
 
 *Afbeelding: toepassingen met meerdere lagen verdelen met behulp van zowel open bare als interne Load Balancer*
 
@@ -202,7 +209,7 @@ Zie [limieten voor load balancers](https://docs.microsoft.com/azure/azure-resour
 - Meer informatie over het gebruik van [Standard Load Balancer en Beschikbaarheidszones](load-balancer-standard-availability-zones.md).
 - Meer informatie over [status controles](load-balancer-custom-probe-overview.md).
 - Meer informatie over [Standard Load Balancer diagnostische gegevens](load-balancer-standard-diagnostics.md).
-- Meer informatie over het gebruik van [Load Balancer voor uitgaande verbindingen](load-balancer-outbound-connections.md).
+- Meer informatie over het gebruik [van Load Balancer voor uitgaande verbindingen](load-balancer-outbound-connections.md).
 - Meer informatie over [Uitgaande regels](load-balancer-outbound-rules-overview.md).
 - Meer informatie over [TCP Reset bij niet-actief](load-balancer-tcp-reset.md).
 - Meer informatie over Standard Load Balancer met de taakverdelings [regels van ha-poorten](load-balancer-ha-ports-overview.md).

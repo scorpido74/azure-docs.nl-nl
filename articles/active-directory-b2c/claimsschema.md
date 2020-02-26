@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372987"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581103"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -175,6 +175,8 @@ Het **beperkings** element bevat de volgende elementen:
 
 #### <a name="enumeration"></a>Opsomming
 
+Het **opsommings** element definieert beschik bare opties die de gebruiker kan selecteren voor een claim in de gebruikers interface, zoals een waarde in een `CheckboxMultiSelect`, `DropdownSingleSelect`of `RadioSingleSelect`. U kunt ook beschik bare opties definiëren en lokaliseren met het element [LocalizedCollections](localization.md#localizedcollections) . Gebruik [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) -claim transformatie om een item op te zoeken in een claim **opsommings** verzameling.
+
 Het **opsommings** element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
@@ -209,7 +211,7 @@ Het element **pattern** kan de volgende kenmerken bevatten:
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
-| HelpText | Nee | Het patroon of de reguliere expressie voor deze claim. |
+| HelpText | Nee | Een fout bericht voor gebruikers als de reguliere expressie is mislukt. |
 
 In het volgende voor beeld wordt een **e-mail** claim geconfigureerd met de reguliere expressie invoer validatie en Help-tekst:
 
@@ -247,7 +249,7 @@ Het **UserInputType** -element beschik bare invoer typen voor gebruikers:
 |Bepaalde | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Een veld waarin alleen tekst in een alinea code wordt weer gegeven. |
 |Wachtwoord | `string` |Tekstvak voor wacht woord.|
 |RadioSingleSelect |`string` | Verzameling keuze rondjes. De claim waarde is de geselecteerde waarde.|
-|Kenmerk | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Alleen-lezen tekstvak. |
+|Kenmerk | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Tekstvak met het kenmerk alleen-lezen. |
 |Tekstvak |`boolean`, `int`, `string` |Tekstvak met één regel. |
 
 
@@ -407,5 +409,3 @@ Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waar
   </Restriction>
 </ClaimType>
 ```
-
-Als u een van de **opsommings** waarden in een claim voor een **responseMsg** wilt weer geven, gebruikt u `GetMappedValueFromLocalizedCollection` of `CreateStringClaim` claims trans formatie. Zie voor meer informatie [teken reeks claim transformaties](string-transformations.md)

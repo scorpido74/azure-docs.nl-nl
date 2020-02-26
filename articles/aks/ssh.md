@@ -2,17 +2,14 @@
 title: SSH-cluster knooppunten in azure Kubernetes service (AKS)
 description: Meer informatie over het maken van een SSH-verbinding met Azure Kubernetes service-cluster knooppunten (AKS) voor het oplossen van problemen en onderhouds taken.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dfdcda40a24142f85bbeb360aacf0971d72d181f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926377"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593628"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Verbinding maken met de cluster knooppunten van SSH naar Azure Kubernetes service (AKS) voor onderhoud of probleem oplossing
 

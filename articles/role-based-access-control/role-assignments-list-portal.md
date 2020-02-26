@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720702"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598065"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
 
@@ -116,7 +116,7 @@ Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of
 
 ## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Roltoewijzingen weer geven voor een door de gebruiker toegewezen beheerde identiteit
 
-1. Open een door het systeem toegewezen beheerde identiteit in het Azure Portal.
+1. Open een door de gebruiker toegewezen beheerde identiteit in het Azure Portal.
 
 1. Klik op **Azure-resources**.
 

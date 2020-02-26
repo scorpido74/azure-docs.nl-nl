@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816638"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598582"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -22,32 +22,30 @@ Als u een Azure-bestandsshare wilt gebruiken buiten de Azure-regio waarin deze w
 U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitgevoerd in een virtuele machine in Azure of on-premises. In de volgende tabel ziet u welke versies van het besturingssysteem de toegang tot bestandsshares ondersteunen en in welke omgeving:
 
 | Windows-versie        | SMB-versie | Koppelbaar in Azure-VM | Koppelbaar on-premises |
-|------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | Ja | Ja |
+|------------------------|-------------|-----------------------|-----------------------|
+| Windows Server 2019 | SMB 3.0 | Ja | Ja |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ja | Ja |
 | Windows Server Semi-Annual-kanaal<sup>2</sup> | SMB 3.0 | Ja | Ja |
-| Windows Server 2016    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
-| Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
-| Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 7              | SMB 2.1     | Ja                   | Nee                   |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nee                   |
+| Windows Server 2016 | SMB 3.0 | Ja | Ja |
+| Windows 8.1 | SMB 3.0 | Ja | Ja |
+| Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
+| Windows Server 2012 | SMB 3.0 | Ja | Ja |
+| Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nee |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nee |
 
-<sup>1</sup> Windows 10, versies 1507, 1607, 1703, 1709, 1803, 1809 en 1903.  
-<sup>2</sup> Windows Server, versies 1803, 1809 en 1903.
+<sup>1</sup> Windows 10, versies 1507, 1607, 1709, 1803, 1809, 1903 en 1909.  
+<sup>2</sup> Windows Server, versies 1809, 1903 en 1909.  
+<sup>3</sup> Reguliere micro soft-ondersteuning voor Windows 7 en Windows Server 2008 R2 is beëindigd. Het is mogelijk om aanvullende ondersteuning voor beveiligings updates te kopen via het [Extended Security Update (ESU)-programma](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates). We raden u ten zeerste aan de migratie uit te voeren van deze besturings systemen.
 
 > [!Note]  
 > We raden altijd aan de meest recente KB voor uw versie van Windows te nemen.
 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Vereisten 
-* **Naam van opslagaccount**: Voor het koppelen van een Azure-bestandsshare hebt u de naam van het opslagaccount nodig.
+* **Naam van het opslagaccount**: voor het koppelen van een Azure-bestandsshare hebt u de naam van het opslagaccount nodig.
 
-* **Sleutel van het opslagaccount**: Voor het koppelen van een Azure-bestandsshare hebt u de primaire (of secundaire) opslagsleutel nodig. SAS-sleutels worden momenteel niet ondersteund voor koppelen.
+* **Sleutel van het opslagaccount**: voor het koppelen van een Azure-bestandsshare hebt u de primaire (of secundaire) opslagsleutel nodig. SAS-sleutels worden momenteel niet ondersteund voor koppelen.
 
-* **Zorg ervoor dat poort 445 open is**: Het SMB-protocol vereist dat TCP-poort 445 open is. Verbindingen mislukken als poort 445 is geblokkeerd. Met de cmdlet `Test-NetConnection` kunt u controleren of uw firewall poort 445 blokkeert. Hier vindt u meer informatie over de verschillende manieren waarop u de [tijdelijke oplossing poort 445 kunt blok keren](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Zorg ervoor dat poort 445 open is**: het SMB-protocol vereist dat TCP-poort 445 open is; verbindingen mislukken als poort 445 is geblokkeerd. Met de cmdlet `Test-NetConnection` kunt u controleren of uw firewall poort 445 blokkeert. Hier vindt u meer informatie over de verschillende manieren waarop u de [tijdelijke oplossing poort 445 kunt blok keren](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
     In de volgende Power shell-code wordt ervan uitgegaan dat de module Azure PowerShell is geïnstalleerd, raadpleegt u [Azure PowerShell module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie. Vergeet niet om `<your-storage-account-name>` en `<your-resource-group-name>` te vervangen door de betreffende namen van uw opslagaccount.
 
@@ -82,7 +80,7 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 ## <a name="using-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 Als u een Azure-bestandsshare met Windows wilt gebruiken, moet u deze koppelen, wat betekent dat u er een stationsletter of koppelingspunt aan moet toewijzen. U kunt ook toegang krijgen tot de share via het [UNC-pad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
 
-In tegenstelling tot andere SMB-shares waarmee u mogelijk te maken hebt gehad, zoals die worden gehost op een Windows Server, Linux Samba-server of NAS-apparaat, ondersteunt Azure-bestandsshares momenteel geen Kerberos-verificatie met uw Active Directory- (AD) of Azure Active Directory-identiteit (AAD). Er wordt momenteel aan deze functie [gewerkt](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). In plaats daarvan krijgt u toegang tot uw Azure-bestandsshare met de opslagaccountsleutel van het opslagaccount dat uw Azure-bestandsshare bevat. Een opslagaccountsleutel is de beheerdersleutel voor een opslagaccount en bevat alle beheerdersmachtigingen voor alle bestanden en mappen binnen de bestandsshare die u opent, evenals voor alle bestandsshares en opslagaccountresources (blobs, wachtrijen, tabellen enz.) die in uw opslagaccount worden bewaard. Als dit niet voldoende is voor uw werkbelasting, is [Azure File Sync](storage-files-planning.md#data-access-method) in de tussentijd mogelijk de oplossing voor het gebrek aan Kerberos-verificatie en ACL-ondersteuning, tot Kerberos-verificatie op basis van AAD- en ACL-ondersteuning openbaar beschikbaar is.
+In tegenstelling tot andere SMB-shares waarmee u mogelijk te maken hebt gehad, zoals die worden gehost op een Windows Server, Linux Samba-server of NAS-apparaat, ondersteunt Azure-bestandsshares momenteel geen Kerberos-verificatie met uw Active Directory- (AD) of Azure Active Directory-identiteit (AAD). Er wordt momenteel aan deze functie [gewerkt](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). In plaats daarvan krijgt u toegang tot uw Azure-bestandsshare met de opslagaccountsleutel van het opslagaccount dat uw Azure-bestandsshare bevat. Een sleutel voor een opslag account is een beheerders sleutel voor een opslag account, met inbegrip van beheerders machtigingen voor alle bestanden en mappen in de bestands share waartoe u toegang hebt, en voor alle bestands shares en andere opslag resources (blobs, wacht rijen, tabellen, enzovoort) binnen uw opslag account. Als dit niet voldoende is voor uw werkbelasting, is [Azure File Sync](storage-sync-files-planning.md) in de tussentijd mogelijk de oplossing voor het gebrek aan Kerberos-verificatie en ACL-ondersteuning, tot Kerberos-verificatie op basis van AAD- en ACL-ondersteuning openbaar beschikbaar is.
 
 Een algemeen patroon om Line-Of-Business-toepassingen die een SMB-bestandsshare van Azure verwachten te verplaatsen, is om een Azure-bestandsshare te gebruiken als alternatief voor het uitvoeren van een toegewezen Windows-bestandsserver in een virtuele Azure-machine. Als u een Line-Of-Business-toepassing succesvol wilt migreren zodat deze een Azure-bestandsshare gebruikt, is een belangrijk aandachtspunt dat veel Line-of-Business-toepassingen worden uitgevoerd in de context van een toegewezen serviceaccount met beperkte systeemmachtigingen, in plaats van het beheerdersaccount van de virtuele machine. U moet er daarom voor zorgen dat u de referenties voor de Azure-bestandsshare koppelt/opslaat in de context van een serviceaccount in plaats van uw beheerdersaccount.
 
@@ -207,7 +205,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 7. Wanneer u klaar bent om de Azure-bestandsshare te ontkoppelen, kunt u dit doen door met de rechtermuisknop in de Verkenner op de vermelding voor de share onder **Netwerklocaties** te klikken en **Verbinding verbreken** te selecteren.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Toegang tot momentopnamen van Windows-shares
-Als u een momentopname van een share hebt gemaakt, ofwel handmatig ofwel automatisch met behulp van een script of een service zoals Azure Backup, kunt u eerdere versies van een share, een map of een bepaald bestand op een bestandsshare van Windows bekijken. U kunt een momentopname van een share delen vanuit de [Azure-portal](storage-how-to-use-files-portal.md), [Azure PowerShell](storage-how-to-use-files-powershell.md) en de [Azure CLI](storage-how-to-use-files-cli.md).
+Als u een momentopname van een share hebt gemaakt, ofwel handmatig ofwel automatisch met behulp van een script of een service zoals Azure Backup, kunt u eerdere versies van een share, een map of een bepaald bestand op een bestandsshare van Windows bekijken. U kunt een moment opname van een share maken vanuit de [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)en [Azure cli](storage-how-to-use-files-cli.md).
 
 #### <a name="list-previous-versions"></a>Vorige versies weergeven
 Blader naar het item of het bovenliggende item dat moet worden teruggezet. Dubbelklik om naar de gewenste map te gaan. Klik er met de rechtermuisknop op en selecteer **Eigenschappen** in het menu.
@@ -236,13 +234,13 @@ In de volgende tabel staat gedetailleerde informatie over de status van SMB 1 in
 | Windows Server 2019                       | Uitgeschakeld             | Verwijderen met Windows-functie |
 | Windows Server-versie 1709 en hoger            | Uitgeschakeld             | Verwijderen met Windows-functie |
 | Windows 10-versie 1709 en hoger                | Uitgeschakeld             | Verwijderen met Windows-functie |
-| Windows Server 2016                       | Enabled              | Verwijderen met Windows-functie |
-| Windows 10-versies 1507, 1607 en 1703 | Enabled              | Verwijderen met Windows-functie |
-| Windows Server 2012 R2                    | Enabled              | Verwijderen met Windows-functie | 
-| Windows 8.1                               | Enabled              | Verwijderen met Windows-functie | 
-| Windows Server 2012                       | Enabled              | Uitschakelen met Register       | 
-| Windows Server 2008 R2                    | Enabled              | Uitschakelen met Register       |
-| Windows 7                                 | Enabled              | Uitschakelen met Register       | 
+| Windows Server 2016                       | Ingeschakeld              | Verwijderen met Windows-functie |
+| Windows 10-versies 1507, 1607 en 1703 | Ingeschakeld              | Verwijderen met Windows-functie |
+| Windows Server 2012 R2                    | Ingeschakeld              | Verwijderen met Windows-functie | 
+| Windows 8.1                               | Ingeschakeld              | Verwijderen met Windows-functie | 
+| Windows Server 2012                       | Ingeschakeld              | Uitschakelen met Register       | 
+| Windows Server 2008 R2                    | Ingeschakeld              | Uitschakelen met Register       |
+| Windows 7                                 | Ingeschakeld              | Uitschakelen met Register       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1-gebruik controleren
 > Van toepassing op Windows Server 2019, Windows Server Semi-Annual-kanaal (versie 1709 en 1803), Windows Server 2016, Windows 10 (versies 1507, 1607, 1703, 1709 en 1803), Windows Server 2012 R2 en Windows 8,1

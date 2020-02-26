@@ -2,15 +2,15 @@
 title: Zelf studie-resource aan sjabloon toevoegen
 description: Hierin worden de stappen beschreven voor het maken van uw eerste Azure Resource Manager sjabloon. Meer informatie over de syntaxis van het sjabloon bestand en het implementeren van een opslag account.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765592"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586679"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Zelf studie: een resource toevoegen aan uw Resource Manager-sjabloon
 
@@ -26,7 +26,10 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 Als u een opslag account definitie wilt toevoegen aan de bestaande sjabloon, bekijkt u de gemarkeerde JSON in het volgende voor beeld. In plaats van een poging om secties van de sjabloon te kopiëren, kopieert u het hele bestand en vervangt u uw sjabloon door de inhoud ervan.
 
-Vervang **{Geef unieke naam}** door een unieke naam voor het opslag account. De naam van het opslagaccount moet uniek zijn in Azure. De naam mag alleen kleine letters of cijfers bevatten. De waarde mag niet langer zijn dan 24 tekens. U kunt een naamgevings patroon gebruiken zoals het gebruik van **store1** als voor voegsel en vervolgens uw initialen en de datum van vandaag toevoegen. De naam die u gebruikt, kan er bijvoorbeeld uitzien als **store1abc09092019**.
+Vervang **{Geef unieke naam}** door een unieke naam voor het opslag account.
+
+> [!IMPORTANT]
+> De naam van het opslagaccount moet uniek zijn in Azure. De naam mag alleen kleine letters of cijfers bevatten. De waarde mag niet langer zijn dan 24 tekens. U kunt een naamgevings patroon gebruiken zoals het gebruik van **store1** als voor voegsel en vervolgens uw initialen en de datum van vandaag toevoegen. De naam die u gebruikt, kan er bijvoorbeeld uitzien als **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ U kunt de sjabloon implementeren om het opslag account te maken. Geef uw impleme
 
 Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -94,7 +97,7 @@ Deze implementatie duurt langer dan de implementatie van de lege sjabloon omdat 
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. U ziet dat er een opslag account is geïmplementeerd.

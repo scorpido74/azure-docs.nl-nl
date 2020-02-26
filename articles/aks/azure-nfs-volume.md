@@ -3,16 +3,15 @@ title: Een NFS (Network File System) Ubuntu-server maken voor gebruik door een P
 description: Meer informatie over het hand matig maken van een NFS-Ubuntu Linux server volume voor gebruik met een Peul in azure Kubernetes service (AKS)
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063812"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596620"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Hand matig een NFS-server volume (Network File System) maken en gebruiken met Azure Kubernetes service (AKS)
 Het delen van gegevens tussen containers is vaak een benodigd onderdeel van op containers gebaseerde services en toepassingen. Normaal gesp roken hebt u verschillende peulen die toegang nodig hebben tot dezelfde informatie op een extern permanent volume.    

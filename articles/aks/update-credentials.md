@@ -2,17 +2,14 @@
 title: De referenties voor een AKS-cluster (Azure Kubernetes service) opnieuw instellen
 description: Meer informatie over het bijwerken of opnieuw instellen van de Service-Principal-referenties voor een cluster in azure Kubernetes service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 46665e78450538cdc473de32e6c2e9a418660af1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432915"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593067"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>De referenties voor een Service-Principal in azure Kubernetes service (AKS) bijwerken of draaien
 
@@ -67,7 +64,7 @@ De uitvoer lijkt op die in het volgende voorbeeld. Noteer uw eigen `appId` en `p
 }
 ```
 
-Definieer nu variabelen voor de Service-Principal-ID en het client geheim met behulp van de uitvoer van uw eigen [AZ AD SP create-for-RBAC-][az-ad-sp-create] opdracht, zoals wordt weer gegeven in het volgende voor beeld. De *SP_ID* is uw *AppId*en het *SP_SECRET* is uw *wacht woord*:
+Definieer nu variabelen voor de Service-Principal-ID en het client geheim met behulp van de uitvoer van uw eigen [AZ AD SP create-for-RBAC-][az-ad-sp-create] opdracht, zoals wordt weer gegeven in het volgende voor beeld. De *SP_ID* is uw *appId*en de *SP_SECRET* is uw *wacht woord*:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5

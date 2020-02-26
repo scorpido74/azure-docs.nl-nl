@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186956"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598048"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Aan de slag met de hand leiding voor Azure-ontwikkel aars
 
@@ -33,7 +33,7 @@ Deze hand leiding is een inleiding tot het Azure-platform voor toepassings ontwi
 
 ## <a name="where-do-i-start"></a>Waar moet ik beginnen?
 
-Met alle services die Azure biedt, kan dit een intimideren-taak zijn om te bepalen welke services u nodig hebt ter ondersteuning van uw oplossings architectuur. In deze sectie worden de Azure-Services uitgelegd die ontwikkel aars vaak gebruiken. Zie de [Azure-documentatie](../../index.md)voor een lijst met alle Azure-Services.
+Met alle services die Azure biedt, kan dit een intimideren-taak zijn om te bepalen welke services u nodig hebt ter ondersteuning van uw oplossings architectuur. In deze sectie worden de Azure-Services uitgelegd die ontwikkel aars vaak gebruiken. Zie de [Azure-documentatie](../../index.yml)voor een lijst met alle Azure-Services.
 
 Eerst moet u bepalen hoe u uw toepassing in azure wilt hosten. Moet u uw volledige infra structuur beheren als een virtuele machine (VM). Kunt u gebruikmaken van de platform beheer faciliteiten die Azure biedt? Misschien hebt u een serverloos Framework nodig om alleen de uitvoering van de host te kunnen uitvoeren?
 
@@ -163,7 +163,7 @@ Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken
   >
   > **Aan de slag**: [gebruik een aangepaste docker-installatie kopie voor app service op Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook om onbevoegde toegang tot uw resources te voor komen. Azure biedt verschillende manieren om uw app-clients te verifiëren.
 

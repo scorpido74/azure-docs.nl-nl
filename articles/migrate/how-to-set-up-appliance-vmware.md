@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen voor VMware
 description: Meer informatie over het instellen van een Azure Migrate apparaat om VMware-Vm's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291937"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598150"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
 
@@ -35,7 +35,7 @@ Als u het apparaat wilt instellen, doet u het volgende:
 2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMWare vSphere-hypervisor**.
 3. Klik op **Downloaden** om het .OVA-sjabloonbestand te downloaden.
 
-
+  ![Selecties voor het downloaden van een bestand met een eicellen](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>Beveiliging controleren
 
@@ -45,12 +45,8 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 2. Voer de volgende opdracht uit om de hash voor de eicellen te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. De gegenereerde hash moet overeenkomen met deze instellingen voor de meest recente versie van het apparaat.
+3. De gegenereerde hash moet overeenkomen met deze [instellingen](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)voor de meest recente versie van het apparaat.
 
-  **Algoritme** | **Hash-waarde**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>De apparaat-VM maken
@@ -58,6 +54,8 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 Importeer het gedownloade bestand en maak een virtuele machine.
 
 1. Klik in de Client vSphere-console op **Bestand** > **OVF-sjabloon implementeren**.
+![menu opdracht voor het implementeren van een OVF-sjabloon](./media/tutorial-assess-vmware/deploy-ovf.png)
+
 2. Geef in de wizard OVF-sjabloon implementeren > **bron**de locatie op van het bestand van de eicellen.
 3. Geef bij **naam** en **locatie**een beschrijvende naam op voor de virtuele machine. Selecteer het inventaris object waarin de VM wordt gehost.
 5. Geef in **host/cluster**de host of het cluster op waarop de virtuele machine wordt uitgevoerd.
@@ -124,7 +122,7 @@ Voor de detectie van toepassingen, functies en onderdelen en het visualiseren va
 2. Selecteer het **besturings systeem**.
 3. Geef een beschrijvende naam op voor de referentie.
 4. Geef in **gebruikers naam** en **wacht woord**een account op met ten minste gast toegang op de vm's.
-5. Klik op **Add**.
+5. Klik op **Toevoegen**.
 
 Nadat u de vCenter Server-en VM-referenties (optioneel) hebt opgegeven, klikt u op **opslaan en detectie starten** om de detectie van de on-premises omgeving te starten.
 

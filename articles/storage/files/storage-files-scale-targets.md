@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151986"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598568"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure bestanden schaalbaarheids- en prestatiedoelen
 
@@ -51,8 +51,8 @@ Zie de sectie [bereik schaal doelen van Azure Storage](#azure-storage-account-sc
 ### <a name="file-share-and-file-scale-targets"></a>Bestands shares en bestands schaal doelen
 
 > [!NOTE]
-> Standaard bestands shares groter dan 5 TiB hebben bepaalde beperkingen.
-> Zie de sectie [onboarding to large shares](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) in de plannings handleiding voor een lijst met beperkingen, regionale informatie en instructies voor het inschakelen van deze grotere grootte van de bestands share.
+> Standaard bestands shares groter dan 5 TiB hebben bepaalde beperkingen en regionale beperkingen.
+> Zie de sectie [onboarding to large shares](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) in de plannings handleiding voor een lijst met beperkingen, regionale informatie en instructies voor het inschakelen van deze grotere grootte van de bestands share.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

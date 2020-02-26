@@ -2,16 +2,15 @@
 title: Overzicht van consul
 description: Een overzicht van consul verkrijgen
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 7ffbd2386cd0e50cec8976e6bdd6c5778aa014d7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928432"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594206"
 ---
 # <a name="consul"></a>Consul
 
@@ -71,7 +70,7 @@ Consul biedt de volgende mogelijkheden:
 - **Waarneem** bare statistieken, UI-dash board, Prometheus, grafana
 
 
-### <a name="scenarios"></a>Scenario's
+### <a name="scenarios"></a>Scenario 's
 
 Consul is goed geschikt voor de volgende scenario's:
 

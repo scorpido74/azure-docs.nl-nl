@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093607"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604966"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Het verbindings beleid configureren dat wordt gebruikt door Azure Functions trigger voor Cosmos DB
 
@@ -23,7 +23,7 @@ Er zijn twee verbindings modi: directe modus en gateway modus. Zie het artikel o
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>De verbindings modus en het protocol wijzigen
 
-Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de **verbindings modus** en het **verbindings protocol**. U kunt de standaard verbindings modus en het protocol dat wordt gebruikt door de Azure Functions trigger voor Cosmos DB en alle [Azure Cosmos DB bindingen](../azure-functions/functions-bindings-cosmosdb-v2.md#output)) wijzigen. Als u de standaard instellingen wilt wijzigen, moet u het `host.json` bestand in uw Azure functions project of Azure functions app zoeken en de volgende [extra instelling](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)toevoegen:
+Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de **verbindings modus** en het **verbindings protocol**. U kunt de standaard verbindings modus en het protocol dat wordt gebruikt door de Azure Functions trigger voor Cosmos DB en alle [Azure Cosmos DB bindingen](../azure-functions/functions-bindings-cosmosdb-v2-output.md)) wijzigen. Als u de standaard instellingen wilt wijzigen, moet u het `host.json` bestand in uw Azure Functions project of Azure Functions app zoeken en de volgende [extra instelling](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)toevoegen:
 
 ```js
 {
@@ -34,9 +34,9 @@ Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configu
 }
 ```
 
-Waar `connectionMode` moet de gewenste verbindings modus (direct of gateway) en `protocol` het gewenste verbindings Protocol (TCP of https) hebben. 
+Waarbij `connectionMode` de gewenste verbindings modus (direct of gateway) moet hebben en `protocol` het gewenste verbindings Protocol (TCP of https). 
 
-Als uw Azure functions project werkt met Azure functions v1-runtime, heeft de configuratie een geringe naam verschil. u moet in `documentDB` plaats van `cosmosDB`het volgende gebruiken:
+Als uw Azure Functions project werkt met Azure Functions v1-runtime, heeft de configuratie een geringe naam verschil. u moet `documentDB` gebruiken in plaats van `cosmosDB`:
 
 ```js
 {

@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500525"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602596"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Zelf studie: een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat (preview) te maken en dit te verbinden met uw IoT Central toepassing
 
 Een _mogelijkheidsprofiel_ (DCM) beschrijft de mogelijkheden van een [IOT Plug en Play-apparaat (preview-versie)](../../iot-pnp/overview-iot-plug-and-play.md) . IoT Central kunt een DCM gebruiken om een sjabloon en visualisaties voor een apparaat te maken wanneer het apparaat voor de eerste keer verbinding maakt.
+
+Ondersteuning voor [IoT Plug en Play](../../iot-pnp/overview-iot-plug-and-play.md) is in de preview-versie en wordt alleen ondersteund in geselecteerde regio's.
+
+> [!NOTE]
+> Neem contact op met de technische ondersteuning voor toegang tot het maken van een preview-toepassing met ondersteuning voor IoT Plug en Play-apparaten.
 
 In deze zelfstudie leert u het volgende:
 

@@ -2,17 +2,14 @@
 title: Beperk de toegang tot kubeconfig in azure Kubernetes service (AKS)
 description: Meer informatie over het beheren van de toegang tot het Kubernetes-configuratie bestand (kubeconfig) voor cluster beheerders en cluster gebruikers
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/28/2020
-ms.author: mlearned
-ms.openlocfilehash: 8b9b1bf2a24002d606659c81e6fc426614fd5fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114213"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595872"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Gebruik Azure-functies voor toegangs beheer op basis van rollen om toegang te definiëren tot het Kubernetes-configuratie bestand in azure Kubernetes service (AKS)
 

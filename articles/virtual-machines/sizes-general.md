@@ -12,14 +12,14 @@ ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 674197bd4d1562d8492a2605d8929572d450af90
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d8a13d9013b2ad526c8e332cf3ea74e04f253d98
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493577"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597708"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemene doel einden
 
@@ -31,7 +31,7 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
 
 - [Dav4 en Dasv4-Series](dav4-dasv4-series.md) zijn nieuwe grootten die gebruikmaken van de 2.35 GHz EPYC<sup>TM</sup> 7452-processor van AMD in een configuratie met meerdere threads, met Maxi maal 256 MB L3-cache van 8 GB aan de L3-cache tot elke 8 kernen die de klant opties verhogen voor het uitvoeren van hun werk belastingen voor algemeen gebruik. De Dav4-serie en de Dasv4-serie hebben dezelfde geheugen-en schijf configuraties als de D & Dsv3-serie.
 
-- De [DC-serie](dc-series.md) is een familie van virtuele machines in azure die u kan helpen bij het beschermen van de vertrouwelijkheid en integriteit van uw gegevens en code tijdens het verwerken van de open bare Cloud. Deze machines worden ondersteund door de nieuwste generatie van 3,7 GHz Intel® Xeon® E-2176G-processor met SGX-technologie. Met de Intel Turbo Boost-technologie kunnen deze machines tot 4,7 GHz gaan. Met instanties van DC-reeksen kunnen klanten veilige enclave toepassingen bouwen om hun code en gegevens te beschermen terwijl ze worden gebruikt.
+- De [DCv2-serie](dcv2-series.md) kan u helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen tijdens de verwerking in de open bare Cloud. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G-processor met SGX-technologie. Met de Intel Turbo Boost-technologie kunnen deze machines tot wel 5.0 GHz gaan. Met DCv2-serie-instanties kunnen klanten veilige, op enclave gebaseerde toepassingen bouwen om hun code en gegevens te beschermen terwijl ze worden gebruikt.
 
 - [Dv2 en Dsv2-serie](dv2-dsv2-series.md) Vm's, een follow-on van de oorspronkelijke D-serie, bevat een krachtigere CPU en optimale configuratie van CPU naar geheugen, zodat deze geschikt zijn voor de meeste productie werkbelastingen. De dv2-serie is ongeveer 35% sneller dan de D-serie. Dv2-serie wordt uitgevoerd op de Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met de Intel Turbo Boost-technologie 2,0. De Dv2-serie heeft dezelfde geheugen- en schijfconfiguraties als de D-serie.
 

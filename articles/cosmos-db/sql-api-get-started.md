@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173914"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587444"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Zelf studie: een .NET-console-app maken voor het beheren van gegevens in Azure Cosmos DB SQL-API-account
 
@@ -118,7 +118,7 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
    > [!NOTE]
    > Als u bekend bent met de vorige versie van de .NET SDK, kunt u bekend zijn met de *verzameling* en het *document*van de voor waarden. Omdat Azure Cosmos DB meerdere API-modellen ondersteunt, gebruikt versie 3,0 van de .NET SDK de algemene voor waarden *container* en *item*. Een *container* kan een verzameling, grafiek of tabel zijn. Een *item* kan een document, Edge/vertex of rij zijn en is de inhoud in een container. Zie [werken met data bases, containers en items in azure Cosmos DB](databases-containers-items.md)voor meer informatie.
 
-1. Open de [Azure Portal](https://portal.azure.com). Zoek uw Azure Cosmos DB-account en selecteer vervolgens **sleutels**.
+1. Open de [Azure-portal](https://portal.azure.com). Zoek uw Azure Cosmos DB-account en selecteer vervolgens **sleutels**.
 
    ![Azure Cosmos DB sleutels van Azure Portal ophalen](./media/sql-api-get-started/cosmos-getting-started-portal-keys.png)
 
@@ -146,13 +146,13 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
 
 1. Voeg de volgende code toe om de asynchrone taak **GetStartedDemoAsync** uit te voeren vanuit de methode **Main**. Uitzonderingen worden door de methode **Main** onderschept en naar de console geschreven.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
     In de console wordt het volgende bericht weer gegeven: **einde van demo, druk op een wille keurige toets om af te sluiten.** Dit bericht bevestigt dat uw toepassing een verbinding heeft gemaakt met Azure Cosmos DB. U kunt vervolgens het consolevenster sluiten.
 
-Gefeliciteerd. U hebt verbinding gemaakt met een Azure Cosmos DB-account.
+Gefeliciteerd! U hebt verbinding gemaakt met een Azure Cosmos DB-account.
 
 ## <a name="step-4-create-a-database"></a>Stap 4: een database maken
 
@@ -160,7 +160,7 @@ Een database is de logische container voor items die zijn gepartitioneerd in con
 
 1. Kopieer en plak de `CreateDatabaseAsync` methode onder uw `GetStartedDemoAsync` methode.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
 
     `CreateDatabaseAsync` maakt een nieuwe Data Base met de ID `FamilyDatabase` als deze nog niet bestaat, met de ID die is opgegeven in het veld `databaseId`.
 
@@ -268,7 +268,7 @@ Een database is de logische container voor items die zijn gepartitioneerd in con
             });
    ```
 
-Gefeliciteerd. U hebt een Azure Cosmos-data base gemaakt.  
+Gefeliciteerd! U hebt een Azure Cosmos-data base gemaakt.  
 
 ## <a id="CreateColl"></a>Stap 5: een container maken
 
@@ -281,7 +281,7 @@ Een container kan worden gemaakt met behulp van de methode [**CreateContainerIfN
 
 1. Kopieer en plak de `CreateContainerAsync` methode onder uw `CreateDatabaseAsync` methode. `CreateContainerAsync` maakt een nieuwe container met de ID `FamilyContainer` als deze nog niet bestaat) door gebruik te maken van de ID die is opgegeven in het `containerId` veld dat door `LastName` eigenschap is gepartitioneerd.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
 
 1. Kopieer de onderstaande code en plak deze waar u de CosmosClient hebt geïnstantieerd om de methode **CreateContainer** aan te roepen die u zojuist hebt toegevoegd.
 
@@ -299,7 +299,7 @@ Een container kan worden gemaakt met behulp van de methode [**CreateContainerIfN
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd. U hebt een Azure Cosmos-container gemaakt.  
+Gefeliciteerd! U hebt een Azure Cosmos-container gemaakt.  
 
 ## <a id="CreateDoc"></a>Stap 6: items toevoegen aan de container
 
@@ -313,11 +313,13 @@ Eerst gaan we een `Family` klasse maken die objecten vertegenwoordigt die zijn o
 
 1. Kopieer en plak de `Family`, de `Parent`, de `Child`, de `Pet`en de `Address`-klasse in `Family.cs`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+
 
 1. Voeg na de `CreateContainerAsync`-methode de `AddItemsToContainerAsync`-methode weer toe in *Program.cs*.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+
 
     Met de code wordt gecontroleerd of er al een item met dezelfde ID bestaat. Er worden twee items ingevoegd, één voor de *familie* en de *Wakefield-serie*.
 
@@ -338,7 +340,7 @@ Eerst gaan we een `Family` klasse maken die objecten vertegenwoordigt die zijn o
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd. U hebt twee Azure Cosmos-items gemaakt.  
+Gefeliciteerd! U hebt twee Azure Cosmos-items gemaakt.  
 
 ## <a id="Query"></a>Stap 7: query's uitvoeren op Azure Cosmos DB-resources
 
@@ -346,7 +348,7 @@ Azure Cosmos DB biedt ondersteuning voor uitgebreide query's voor de JSON-docume
 
 1. Kopieer en plak de `QueryItemsAsync` methode na uw `AddItemsToContainerAsync` methode.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
 
 1. Voeg een aanroep naar ``QueryItemsAsync`` toe in de methode ``GetStartedDemoAsync``.
 
@@ -366,7 +368,7 @@ Azure Cosmos DB biedt ondersteuning voor uitgebreide query's voor de JSON-docume
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd. U hebt een query uitgevoerd op een Azure Cosmos-container.
+Gefeliciteerd! U hebt een query uitgevoerd op een Azure Cosmos-container.
 
 ## <a id="ReplaceItem"></a>Stap 8: een JSON-item vervangen
 
@@ -374,7 +376,7 @@ Nu gaan we een item bijwerken in Azure Cosmos DB. We wijzigen de `IsRegistered` 
 
 1. Kopieer en plak de `ReplaceFamilyItemAsync` methode na uw `QueryItemsAsync` methode.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
 
 1. Voeg een aanroep naar `ReplaceFamilyItemAsync` toe in de methode `GetStartedDemoAsync`.
 
@@ -395,7 +397,7 @@ Nu gaan we een item bijwerken in Azure Cosmos DB. We wijzigen de `IsRegistered` 
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd. U hebt een Azure Cosmos-item vervangen.
+Gefeliciteerd! U hebt een Azure Cosmos-item vervangen.
 
 ## <a id="DeleteDocument"></a>Stap 9: item verwijderen
 
@@ -403,7 +405,7 @@ Nu gaan we een item verwijderen uit Azure Cosmos DB.
 
 1. Kopieer en plak de `DeleteFamilyItemAsync` methode na uw `ReplaceFamilyItemAsync` methode.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
 
 1. Voeg een aanroep naar `DeleteFamilyItemAsync` toe in de methode `GetStartedDemoAsync`.
 
@@ -425,7 +427,7 @@ Nu gaan we een item verwijderen uit Azure Cosmos DB.
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd. U hebt een Azure Cosmos-item verwijderd.
+Gefeliciteerd! U hebt een Azure Cosmos-item verwijderd.
 
 ## <a id="DeleteDatabase"></a>Stap 10: de database verwijderen
 
@@ -433,15 +435,15 @@ Nu gaan we onze data base verwijderen. Als u de gemaakte data base verwijdert, w
 
 1. Kopieer en plak de `DeleteDatabaseAndCleanupAsync` methode na uw `DeleteFamilyItemAsync` methode.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
 
 1. Voeg een aanroep naar ``DeleteDatabaseAndCleanupAsync`` toe in de methode ``GetStartedDemoAsync``.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd. U hebt een Azure Cosmos-data base verwijderd.
+Gefeliciteerd! U hebt een Azure Cosmos-data base verwijderd.
 
 ## <a id="Run"></a>Stap 11: uw C#-consoletoepassing volledig uitvoeren
 
@@ -474,7 +476,7 @@ Deleted Database: FamilyDatabase
 End of demo, press any key to exit.
 ```
 
-Gefeliciteerd. U hebt de zelfstudie voltooid en beschikt nu over een werkende C#-consoletoepassing.
+Gefeliciteerd! U hebt de zelfstudie voltooid en beschikt nu over een werkende C#-consoletoepassing.
 
 ## <a id="GetSolution"></a> De volledige zelfstudieoplossing ophalen
 

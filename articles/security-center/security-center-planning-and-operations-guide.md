@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 039a30d23c45471d88132f544c11df813fb4b8e6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280999"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603735"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -33,8 +33,7 @@ In de volgende sectie leert u hoe u voor elk van deze gebieden een planning maak
 
 
 > [!NOTE]
-> Raadpleeg de [Azure Security Center frequently asked questions (Veelgestelde vragen over het Azure Beveiligingscentrum)](security-center-faq.md) voor een lijst met veelgestelde vragen die ook nuttig kunnen zijn tijdens de ontwerp- en planningsfase.
->
+> Raadpleeg de [Azure Security Center frequently asked questions (Veelgestelde vragen over het Azure Beveiligingscentrum)](faq-general.md) voor een lijst met veelgestelde vragen die ook nuttig kunnen zijn tijdens de ontwerp- en planningsfase.
 
 ## <a name="security-roles-and-access-controls"></a>Beveiligingsrollen en toegangsbeheer
 Afhankelijk van de grootte en de structuur van uw organisatie kunnen meerdere individuen en teams het Beveiligingscentrum gebruiken om verschillende beveiligingstaken uit te voeren. In het volgende diagram vindt u een voorbeeld met fictieve personen en hun respectieve rollen en beveiligingsverantwoordelijkheden:
@@ -143,8 +142,7 @@ De Microsoft Monitoring Agent voor Windows vereist TCP-poort 443. Zie de [Handle
 Als u gegevensverzameling op een bepaald moment wilt uitschakelen, kunt u dat doen in het beveiligingsbeleid. Omdat de micro soft monitoring agent echter door andere Azure-beheer-en bewakings Services kan worden gebruikt, wordt de agent niet automatisch verwijderd wanneer u het verzamelen van gegevens in Security Center uitschakelt. U kunt de agent indien nodig echter handmatig verwijderen.
 
 > [!NOTE]
-> Lees de [veelgestelde vragen over Azure Security Center](security-center-faq.md) (Engelstalig) als u een lijst met ondersteunde virtuele machines nodig hebt.
->
+> Lees de [veelgestelde vragen over Azure Security Center](faq-vms.md) (Engelstalig) als u een lijst met ondersteunde virtuele machines nodig hebt.
 
 ### <a name="workspace"></a>Werkruimte
 
@@ -152,9 +150,9 @@ Een werkruimte is een Azure-resource die als een container voor gegevens fungeer
 
 Gegevens die (namens Azure Security Center) via de Microsoft Monitoring Agent worden verzameld, worden opgeslagen in een bestaande Log Analytics-werkruimte die is gekoppeld aan uw Azure-abonnement, of in een nieuwe werkruimte, rekening houdend met de geolocatie van de virtuele machine.
 
-In Azure Portal kunt u bladeren om een overzicht te zien van uw Log Analytics-werkruimten, inclusief alle werkruimten die door Azure Security Center zijn gemaakt. Er wordt een gerelateerde resourcegroep gemaakt voor nieuwe werkruimten. Beide volgen deze naamconventie:
+In Azure Portal kunt u bladeren om een overzicht te zien van uw Log Analytics-werkruimten, inclusief alle werkruimten die door Azure Security Center zijn gemaakt. Een gerelateerde resourcegroep wordt gemaakt voor nieuwe werkruimten. Beide volgen deze naamconventie:
 
-* Werkruimte: *DefaultWorkspace-[abonnements-id]-[geolocatie]*
+* Werkruimte: *Standaardwerkruimte-[abonnement-ID]-[geo]*
 * Resource groep: *DefaultResourceGroup-[geo]*
 
 Voor werkruimten die zijn gemaakt door Azure Security Center worden gegevens 30 dagen bewaard. Voor bestaande werkruimten is de bewaarperiode gebaseerd op de prijscategorie van de werkruimte. Als u wilt, kunt u ook een bestaande werkruimte gebruiken.
@@ -199,7 +197,7 @@ Wanneer u nieuwe resources (virtuele machines, SQL Databases) toevoegt aan uw Az
 
 U moet ook regel matig bestaande resources controleren op wijzigingen in de configuratie waarvoor beveiligings Risico's zijn ontstaan, van aanbevolen basis lijnen en beveiligings waarschuwingen. Begin bij het dashboard van Security Center. Daar hebt u drie belang rijke gebieden die consistent kunnen worden beoordeeld.
 
-![Operations](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![Bewerkingen](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. Het venster **Preventie** biedt snel toegang tot uw belangrijkste resources. Gebruik deze optie voor het bewaken van Compute, Netwerken, Opslag en gegevens en Toepassingen.
 2. In het venster **Aanbevelingen** kunt u de aanbevelingen van Security Center controleren. Tijdens de continue bewaking is het mogelijk dat u niet dagelijks aanbevelingen hebt. Dit is normaal omdat u alle aanbevelingen voor de eerste Security Center-installatie hebt behandeld. Daarom bevat deze sectie niet elke dag nieuwe informatie en hoeft u deze alleen te raadplegen wanneer dat nodig is.
@@ -249,10 +247,10 @@ In de video [over het gebruik van de Azure Security Center & Microsoft Operation
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u kunnen lezen hoe u een planning kunt maken voor het overstappen op Security Center. Zie de volgende onderwerpen voor meer informatie over Security Center:
+In dit document hebt u kunnen lezen hoe u een planning kunt maken voor het overstappen op Security Center. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.
 * [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
-* [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
+* [Azure Security Center FAQ](faq-general.md): raadpleeg veelgestelde vragen over het gebruik van de service.
 * [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure.

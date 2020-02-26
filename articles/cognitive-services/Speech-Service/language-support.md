@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935347"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605727"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Taal-en regio ondersteuning voor de spraak service
 
@@ -95,9 +95,10 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte spraak naam
 --------|----------|--------|---------|------------
 `de-DE` | Duits (Duitsland) | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
-`en-US` | English (US) | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, GuyNeural)" | "en-US-GuyNeural"
 `en-US` | English (US) | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, JessaNeural)" | "en-US-JessaNeural"
+`en-US` | English (US) | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, GuyNeural)" | "en-US-GuyNeural"
 `it-IT` | Italiaans (Italië) | Vrouw |"Micro soft server Speech Text to Speech Voice (IT-IT, ElsaNeural)" | ' it-IT-ElsaNeural '
+`pt-BR` | Portugees (Brazilië) | Vrouw | "Micro soft server Speech Text to Speech Voice (pt-BR, FranciscaNeural)" | "pt-BR-FranciscaNeural"
 `zh-CN` | Chinees (vasteland) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
 Zie voor meer informatie over het configureren en aanpassen van Neural stemmen de taal voor de [opmaak van spraak synthese](speech-synthesis-markup.md#adjust-speaking-styles).
@@ -207,7 +208,7 @@ Stem aanpassing is beschikbaar voor `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`,
 
 ## <a name="speech-translation"></a>Spraakomzetting
 
-De **Spraakomzetting** API biedt ondersteuning voor verschillende talen voor spraak-naar-spraak- en spraak naar tekst converteren. De bron taal moet altijd afkomstig zijn uit de tabel met spraak-naar-tekst taal. De beschikbare talen voor doel, is afhankelijk van of het doel van de vertaling spraak of tekst is. U mag vertalen binnenkomende spraak in meer dan [60 talen](https://www.microsoft.com/translator/business/languages/). Er is een subset van talen beschikbaar voor [spraak synthese](language-support.md#text-languages).
+De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie van spraak naar spraak en spraak naar tekst. De bron taal moet altijd afkomstig zijn uit de tabel met spraak-naar-tekst taal. De beschikbare talen voor doel, is afhankelijk van of het doel van de vertaling spraak of tekst is. U kunt binnenkomende spraak omzetten in meer dan [60 talen](https://www.microsoft.com/translator/business/languages/). Er is een subset van talen beschikbaar voor [spraak synthese](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Tekst-talen
 
@@ -286,4 +287,4 @@ De **Spraakomzetting** API biedt ondersteuning voor verschillende talen voor spr
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw proef abonnement voor spraak services ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Zie voor het herkennen van gesproken tekst in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Zie spraak herkennen inC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

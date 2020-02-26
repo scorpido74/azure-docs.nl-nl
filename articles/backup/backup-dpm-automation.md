@@ -3,12 +3,12 @@ title: Power shell gebruiken voor het maken van back-ups van DPM-workloads
 description: Meer informatie over het implementeren en beheren van Azure Backup voor Data Protection Manager (DPM) met behulp van Power shell
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: d3a8b2ff95957b69bab4932ce8a7e5a1ab4bfa44
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172403"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583092"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
 
@@ -45,7 +45,7 @@ De volgende installatie-en registratie taken kunnen worden geautomatiseerd met P
 * De Azure Backup-Agent installeren
 * Registreren bij de Azure Backup-Service
 * Netwerk instellingen
-* Versleutelings instellingen
+* Versleutelingsinstellingen
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -117,7 +117,7 @@ De agent wordt weer gegeven in de lijst met geïnstalleerde Program ma's. Ga naa
 
 ![Agent geïnstalleerd](./media/backup-dpm-automation/installed-agent-listing.png)
 
-### <a name="installation-options"></a>Installatie opties
+### <a name="installation-options"></a>Installatieopties
 
 Als u alle beschik bare opties wilt weer geven via de opdracht regel, gebruikt u de volgende opdracht:
 
@@ -138,7 +138,7 @@ De beschik bare opties zijn onder andere:
 | /ph |Hostadres van proxy |- |
 | /po |Poort nummer van de proxy-host |- |
 | /pu |Gebruikers naam proxy host |- |
-| /pw |Proxy wachtwoord |- |
+| /pw |Wachtwoord voor proxy |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>DPM registreren bij een Recovery Services kluis
 
@@ -154,7 +154,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-Voer op de DPM-server de cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) uit om de computer bij de kluis te registreren.
+Voer op de DPM-server de cmdlet [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) uit om de computer bij de kluis te registreren.
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -171,13 +171,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>Initiële configuratie-instellingen
 
-Zodra de DPM-server is geregistreerd bij de Recovery Services kluis, begint de standaard instellingen voor abonnementen. Deze abonnements instellingen omvatten netwerken, versleuteling en het Faserings gebied. Als u de abonnements instellingen wilt wijzigen, moet u eerst een ingang ophalen voor de bestaande (standaard) instellingen met behulp van de cmdlet [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) :
+Zodra de DPM-server is geregistreerd bij de Recovery Services kluis, begint de standaard instellingen voor abonnementen. Deze abonnements instellingen omvatten netwerken, versleuteling en het Faserings gebied. Als u de abonnements instellingen wilt wijzigen, moet u eerst een ingang ophalen voor de bestaande (standaard) instellingen met behulp van de cmdlet [Get-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) :
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Alle wijzigingen worden aangebracht in dit lokale Power shell-object ```$setting``` en vervolgens wordt het volledige object doorgevoerd naar DPM en Azure Backup om ze op te slaan met de cmdlet [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . U moet de vlag ```–Commit``` gebruiken om ervoor te zorgen dat de wijzigingen behouden blijven. De instellingen worden niet toegepast en worden gebruikt door Azure Backup tenzij ze worden vastgelegd.
+Alle wijzigingen worden aangebracht in dit lokale Power shell-object ```$setting``` en vervolgens wordt het volledige object doorgevoerd naar DPM en Azure Backup om ze op te slaan met de cmdlet [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . U moet de vlag ```–Commit``` gebruiken om ervoor te zorgen dat de wijzigingen behouden blijven. De instellingen worden niet toegepast en worden gebruikt door Azure Backup tenzij ze worden vastgelegd.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Netwerken
 
-Als de verbinding van de DPM-computer met de Azure Backup-service op Internet via een proxy server wordt uitgevoerd, moeten de proxyserver instellingen worden ingesteld voor geslaagde back-ups. Dit wordt gedaan met behulp van de ```-ProxyServer```en ```-ProxyPort```, ```-ProxyUsername``` en de ```ProxyPassword``` parameters met de cmdlet [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . In dit voor beeld is er geen proxy server, dus we verwijderen expliciet informatie die betrekking heeft op de proxy.
+Als de verbinding van de DPM-computer met de Azure Backup-service op Internet via een proxy server wordt uitgevoerd, moeten de proxyserver instellingen worden ingesteld voor geslaagde back-ups. Dit wordt gedaan met behulp van de ```-ProxyServer```en ```-ProxyPort```, ```-ProxyUsername``` en de ```ProxyPassword``` parameters met de cmdlet [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . In dit voor beeld is er geen proxy server, dus we verwijderen expliciet informatie die betrekking heeft op de proxy.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -199,7 +199,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>Het faserings gebied configureren
 
-De Azure Backup-agent die op de DPM-server wordt uitgevoerd, heeft tijdelijke opslag nodig voor gegevens die vanuit de cloud worden hersteld (lokaal faserings gebied). Configureer het faserings gebied met de cmdlet [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) en de para meter ```-StagingAreaPath```.
+De Azure Backup-agent die op de DPM-server wordt uitgevoerd, heeft tijdelijke opslag nodig voor gegevens die vanuit de cloud worden hersteld (lokaal faserings gebied). Configureer het faserings gebied met de cmdlet [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) en de para meter ```-StagingAreaPath```.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
@@ -207,7 +207,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 In het bovenstaande voor beeld wordt het faserings gebied ingesteld op *C:\StagingArea* in het Power shell-object ```$setting```. Zorg ervoor dat de opgegeven map al bestaat, anders mislukt de laatste door voering van de abonnements instellingen.
 
-### <a name="encryption-settings"></a>Versleutelings instellingen
+### <a name="encryption-settings"></a>Versleutelingsinstellingen
 
 De back-upgegevens die naar Azure Backup worden verzonden, worden versleuteld om de vertrouwelijkheid van de gegevens te beveiligen. De wachtwoordzin voor versleuteling is het wacht woord voor het ontsleutelen van de gegevens op het moment van herstel. Het is belang rijk om deze informatie veilig en veilig te blijven nadat deze is ingesteld.
 
@@ -234,20 +234,20 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 In deze sectie voegt u een productie server toe aan DPM en beschermt u de gegevens vervolgens naar de lokale DPM-opslag en vervolgens op Azure Backup. In de voor beelden wordt gedemonstreerd hoe u een back-up van bestanden en mappen maakt. De logica kan eenvoudig worden uitgebreid om een back-up te maken van een gegevens bron die door DPM wordt ondersteund. Alle DPM-back-ups zijn onderhevig aan een beveiligings groep (PG) met vier onderdelen:
 
-1. **Groeps leden** is een lijst van alle Beveilig bare objecten (ook wel *gegevens bronnen* genoemd in DPM) die u wilt beveiligen in dezelfde beveiligings groep. U kunt bijvoorbeeld productie-Vm's in één beveiligings groep beveiligen en SQL Server data bases in een andere beveiligings groep, aangezien deze mogelijk verschillende back-upvereisten hebben. Voordat u een back-up van een gegevens bron op een productie server kunt maken, moet u ervoor zorgen dat de DPM-agent op de server is geïnstalleerd en wordt beheerd door DPM. Volg de stappen voor [het installeren van de DPM-agent](https://technet.microsoft.com/library/bb870935.aspx) en het koppelen hiervan aan de juiste DPM-server.
+1. **Groeps leden** is een lijst van alle Beveilig bare objecten (ook wel *gegevens bronnen* genoemd in DPM) die u wilt beveiligen in dezelfde beveiligings groep. U kunt bijvoorbeeld productie-Vm's in één beveiligings groep beveiligen en SQL Server data bases in een andere beveiligings groep, aangezien deze mogelijk verschillende back-upvereisten hebben. Voordat u een back-up van een gegevens bron op een productie server kunt maken, moet u ervoor zorgen dat de DPM-agent op de server is geïnstalleerd en wordt beheerd door DPM. Volg de stappen voor [het installeren van de DPM-agent](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) en het koppelen hiervan aan de juiste DPM-server.
 2. Met de **methode voor gegevens beveiliging** worden de doel locaties voor back-ups opgegeven: tape, schijf en Cloud. In ons voor beeld zullen we gegevens beveiligen op de lokale schijf en in de Cloud.
 3. Een **back-upschema** dat opgeeft wanneer er back-ups moeten worden gemaakt en hoe vaak de gegevens moeten worden gesynchroniseerd tussen de DPM-server en de productie server.
 4. Een **Bewaar schema** dat aangeeft hoe lang de herstel punten in azure moeten worden bewaard.
 
 ### <a name="creating-a-protection-group"></a>Een beveiligings groep maken
 
-Maak eerst een nieuwe beveiligings groep met behulp van de cmdlet [New-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) .
+Maak eerst een nieuwe beveiligings groep met behulp van de cmdlet [New-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) .
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Met de bovenstaande cmdlet wordt een beveiligings groep gemaakt met de naam *ProtectGroup01*. Een bestaande beveiligings groep kan ook later worden gewijzigd om een back-up toe te voegen aan de Azure-Cloud. Als u echter wijzigingen wilt aanbrengen in de beveiligings groep: nieuw of bestaand, moeten we een ingang voor een *gewijzigd* object ophalen met behulp van de cmdlet [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
+Met de bovenstaande cmdlet wordt een beveiligings groep gemaakt met de naam *ProtectGroup01*. Een bestaande beveiligings groep kan ook later worden gewijzigd om een back-up toe te voegen aan de Azure-Cloud. Als u echter wijzigingen wilt aanbrengen in de beveiligings groep: nieuw of bestaand, moeten we een ingang voor een *gewijzigd* object ophalen met behulp van de cmdlet [Get-DPMModifiableProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) .
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -262,13 +262,13 @@ Elke DPM-agent kent de lijst met gegevens bronnen op de server waarop deze is ge
 3. Een lijst met alle gegevens bronnen op de server ophalen.
 4. Een of meer gegevens bronnen kiezen en toevoegen aan de beveiligings groep
 
-De lijst met servers waarop de DPM-agent is geïnstalleerd en die wordt beheerd door de DPM-server is verkregen met de cmdlet [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) . In dit voor beeld wordt gefilterd en wordt alleen PS met de naam *productionserver01* voor back-up geconfigureerd.
+De lijst met servers waarop de DPM-agent is geïnstalleerd en die wordt beheerd door de DPM-server is verkregen met de cmdlet [Get-DPMProductionServer](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . In dit voor beeld wordt gefilterd en wordt alleen PS met de naam *productionserver01* voor back-up geconfigureerd.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-Haal nu de lijst met gegevens bronnen op ```$server``` op met behulp van de cmdlet [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . In dit voor beeld wordt gefilterd op het volume *D:\\* die u wilt configureren voor back-up. Deze gegevens bron wordt vervolgens toegevoegd aan de beveiligings groep met behulp van de cmdlet [add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Gebruik het *aanpas* bare beveiligings groeps object ```$MPG``` om de toevoegingen te maken.
+Haal nu de lijst met gegevens bronnen op ```$server``` op met behulp van de cmdlet [Get-DPMDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) . In dit voor beeld wordt gefilterd op het volume *D:\\* die u wilt configureren voor back-up. Deze gegevens bron wordt vervolgens toegevoegd aan de beveiligings groep met behulp van de cmdlet [add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) . Gebruik het *aanpas* bare beveiligings groeps object ```$MPG``` om de toevoegingen te maken.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
@@ -280,7 +280,7 @@ Herhaal deze stap zo vaak als nodig is, totdat u alle geselecteerde gegevens bro
 
 ### <a name="selecting-the-data-protection-method"></a>De methode voor gegevens beveiliging selecteren
 
-Zodra de gegevens bronnen zijn toegevoegd aan de beveiligings groep, is de volgende stap het opgeven van de beveiligings methode met behulp van de cmdlet [set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) . In dit voor beeld is de beveiligings groep ingesteld voor een lokale schijf en een back-up van de Cloud. U moet ook de gegevens bron opgeven die u wilt beveiligen met de Cloud met de vlag [add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) met-online.
+Zodra de gegevens bronnen zijn toegevoegd aan de beveiligings groep, is de volgende stap het opgeven van de beveiligings methode met behulp van de cmdlet [set-DPMProtectionType](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) . In dit voor beeld is de beveiligings groep ingesteld voor een lokale schijf en een back-up van de Cloud. U moet ook de gegevens bron opgeven die u wilt beveiligen met de Cloud met de vlag [add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) met-online.
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -289,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>De Bewaar termijn instellen
 
-Stel de Bewaar periode voor de back-uppunten in met behulp van de cmdlet [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) . Hoewel het afwijkend lijkt om de Bewaar periode in te stellen voordat het back-upschema is gedefinieerd, wordt met de cmdlet ```Set-DPMPolicyObjective``` automatisch een standaard back-upschema ingesteld dat vervolgens kan worden gewijzigd. Het is altijd mogelijk om eerst het back-upschema en het Bewaar beleid in te stellen.
+Stel de Bewaar periode voor de back-uppunten in met behulp van de cmdlet [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) . Hoewel het afwijkend lijkt om de Bewaar periode in te stellen voordat het back-upschema is gedefinieerd, wordt met de cmdlet ```Set-DPMPolicyObjective``` automatisch een standaard back-upschema ingesteld dat vervolgens kan worden gewijzigd. Het is altijd mogelijk om eerst het back-upschema en het Bewaar beleid in te stellen.
 
 In het onderstaande voor beeld stelt de cmdlet de Bewaar parameters in voor schijf back-ups. Hierdoor blijven back-ups 10 dagen behouden en worden gegevens elke 6 uur gesynchroniseerd tussen de productie server en de DPM-server. De ```SynchronizationFrequencyMinutes``` definieert niet hoe vaak een back-uppunt wordt gemaakt, maar hoe vaak gegevens worden gekopieerd naar de DPM-server.  Met deze instelling voor komt u dat back-ups te groot worden.
 
@@ -297,7 +297,7 @@ In het onderstaande voor beeld stelt de cmdlet de Bewaar parameters in voor schi
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-Voor back-ups naar Azure (DPM verwijst ernaar als online back-ups) de Bewaar termijn kan worden geconfigureerd voor [lange termijn retentie met behulp van een groot vader-vader-zoon-Scheme (GFS)](backup-azure-backup-cloud-as-tape.md). Dat wil zeggen dat u een gecombineerd Bewaar beleid kunt definiëren waarbij dagelijks, wekelijks, maandelijks en jaarlijks Bewaar beleid wordt betrokken. In dit voor beeld maken we een matrix die het complexe Bewaar schema vertegenwoordigt dat we willen en vervolgens de Bewaar termijn configureren met de cmdlet [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) .
+Voor back-ups naar Azure (DPM verwijst ernaar als online back-ups) de Bewaar termijn kan worden geconfigureerd voor [lange termijn retentie met behulp van een groot vader-vader-zoon-Scheme (GFS)](backup-azure-backup-cloud-as-tape.md). Dat wil zeggen dat u een gecombineerd Bewaar beleid kunt definiëren waarbij dagelijks, wekelijks, maandelijks en jaarlijks Bewaar beleid wordt betrokken. In dit voor beeld maken we een matrix die het complexe Bewaar schema vertegenwoordigt dat we willen en vervolgens de Bewaar termijn configureren met de cmdlet [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) .
 
 ```powershell
 $RRlist = @()
@@ -310,7 +310,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>Het back-upschema instellen
 
-DPM stelt automatisch een standaard back-upschema in als u de beveiligings doelstelling opgeeft met behulp van de cmdlet ```Set-DPMPolicyObjective```. Als u de standaard schema's wilt wijzigen, gebruikt u de cmdlet [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) , gevolgd door de cmdlet [set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) .
+DPM stelt automatisch een standaard back-upschema in als u de beveiligings doelstelling opgeeft met behulp van de cmdlet ```Set-DPMPolicyObjective```. Als u de standaard schema's wilt wijzigen, gebruikt u de cmdlet [Get-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) , gevolgd door de cmdlet [set-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) .
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -332,7 +332,7 @@ Als u de wekelijkse planning wilt wijzigen, moet u dus verwijzen naar het ```$on
 
 ### <a name="initial-backup"></a>Eerste back-up
 
-Als er voor de eerste keer een back-up van een gegevens bron wordt gemaakt, moet DPM een initiële replica maken waarmee een volledige kopie van de gegevens bron wordt gemaakt die op het DPM-replica volume moet worden beveiligd. Deze activiteit kan worden gepland voor een specifiek tijdstip of kan hand matig worden geactiveerd met de cmdlet [set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) met de para meter ```-NOW```.
+Als er voor de eerste keer een back-up van een gegevens bron wordt gemaakt, moet DPM een initiële replica maken waarmee een volledige kopie van de gegevens bron wordt gemaakt die op het DPM-replica volume moet worden beveiligd. Deze activiteit kan worden gepland voor een specifiek tijdstip of kan hand matig worden geactiveerd met de cmdlet [set-DPMReplicaCreationMethod](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) met de para meter ```-NOW```.
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -340,11 +340,11 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>De grootte van het herstel punt volume van de DPM-replica & wijzigen
 
-U kunt ook de grootte van het DPM-replica volume en het schaduw kopie volume wijzigen met de cmdlet [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , zoals in het volgende voor beeld: Get-DatasourceDiskAllocation-data source $DS set-DatasourceDiskAllocation-data source $DS-ProtectionGroup $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2GB)
+U kunt ook de grootte van het DPM-replica volume en het schaduw kopie volume wijzigen met de cmdlet [set-DPMDatasourceDiskAllocation](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) , zoals in het volgende voor beeld: Get-DatasourceDiskAllocation-data source $DS set-DatasourceDiskAllocation-data source $DS-ProtectionGroup $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>De wijzigingen door voeren in de beveiligings groep
 
-Ten slotte moeten de wijzigingen worden doorgevoerd voordat DPM de back-up kan maken op basis van de nieuwe configuratie van de beveiligings groep. Dit kan worden bereikt met de cmdlet [set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) .
+Ten slotte moeten de wijzigingen worden doorgevoerd voordat DPM de back-up kan maken op basis van de nieuwe configuratie van de beveiligings groep. Dit kan worden bereikt met de cmdlet [set-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) .
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
@@ -352,7 +352,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ## <a name="view-the-backup-points"></a>De back-uppunten weer geven
 
-U kunt de cmdlet [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) gebruiken om een lijst met alle herstel punten voor een gegevens bron op te halen. In dit voor beeld zullen we het volgende doen:
+U kunt de cmdlet [Get-DPMRecoveryPoint](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) gebruiken om een lijst met alle herstel punten voor een gegevens bron op te halen. In dit voor beeld zullen we het volgende doen:
 
 * alle PGs op de DPM-server ophalen en opslaan in een matrix ```$PG```
 * de gegevens bronnen ophalen die overeenkomen met de ```$PG[0]```
@@ -370,7 +370,7 @@ Het herstellen van gegevens is een combi natie van een ```RecoverableItem```-obj
 
 In het onderstaande voor beeld laten we zien hoe u een Hyper-V virtuele machine van Azure Backup herstelt door back-uppunten te combi neren met het doel voor herstel. Dit voor beeld bevat het volgende:
 
-* Een herstel optie maken met de cmdlet [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) .
+* Een herstel optie maken met de cmdlet [New-DPMRecoveryOption](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) .
 * De matrix met back-uppunten ophalen met behulp van de cmdlet ```Get-DPMRecoveryPoint```.
 * Een back-uppunt kiezen om te herstellen van.
 

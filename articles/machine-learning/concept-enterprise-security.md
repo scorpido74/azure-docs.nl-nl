@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486390"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605618"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -37,7 +37,6 @@ Multi-factor Authentication wordt ondersteund als Azure Active Directory (Azure 
 [Verificatie ![in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md)voor meer informatie. Dit artikel bevat informatie en voor beelden over verificatie, waaronder het gebruik van service-principals en geautomatiseerde werk stromen.
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Verificatie voor de implementatie van de webservice
 
@@ -77,6 +76,9 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 | Webservice aanroepen | ✓ | ✓ | ✓ |
 
 Als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste rollen maken. Aangepaste rollen worden alleen ondersteund voor bewerkingen in de werk ruimte en Machine Learning Compute. Aangepaste rollen kunnen Lees-, schrijf-of verwijder machtigingen hebben voor de werk ruimte en op de reken resource in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van de resource groep of op een specifiek abonnements niveau. Zie [gebruikers en rollen beheren in een Azure machine learning-werk ruimte](how-to-assign-roles.md)voor meer informatie.
+
+> [!WARNING]
+> Azure Machine Learning wordt momenteel niet ondersteund met Azure Active Directory Business-to-Business-samen werking.
 
 ### <a name="securing-compute-targets-and-data"></a>Reken doelen en gegevens beveiligen
 

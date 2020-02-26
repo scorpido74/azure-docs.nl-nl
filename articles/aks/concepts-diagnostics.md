@@ -3,16 +3,15 @@ title: Overzicht van diagnostische gegevens over Azure Kubernetes service (AKS)
 description: Meer informatie over zelf diagnose van clusters in azure Kubernetes service.
 services: container-service
 author: yunjchoi
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291376"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596178"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Overzicht van diagnostische gegevens over Azure Kubernetes service (AKS)
 
@@ -26,7 +25,7 @@ Voor toegang tot AKS Diagnostics:
 - Klik op **problemen opsporen en oplossen** in het navigatie venster aan de linkerkant, waarmee AKS Diagnostics wordt geopend.
 - Kies een categorie die het beste het probleem van het cluster beschrijft met behulp van de tref woorden in de tegel start pagina of typ een tref woord dat uw probleem het beste beschrijft in de zoek balk, bijvoorbeeld problemen met het _cluster knooppunt_.
 
-![Startpagina](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
+![Gaan](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Een diagnostisch rapport weer geven
 
@@ -76,7 +75,7 @@ Identiteits-en beveiligings beheer detecteert verificatie-en autorisatie fouten 
 
 - Knooppunt autorisatie fouten
 - 401 fouten
-- 403-fouten
+- 403 fouten
 
 ## <a name="next-steps"></a>Volgende stappen
 

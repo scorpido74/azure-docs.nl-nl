@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370479"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580675"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,10 +57,10 @@ Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de 
 [Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-Principal| ✓ | ✓ | ✓ |✓
 Azure&nbsp;SQL&nbsp;-data base| SQL-verificatie <br>Service-Principal| ✓ | ✓ | ✓ |✓
 Azure&nbsp;PostgreSQL | SQL-verificatie| ✓ | ✓ | ✓ |✓
-Azure&nbsp;data base-&nbsp;voor&nbsp;MySQL | SQL-verificatie|  | ✓ | ✓ |✓
-Databricks&nbsp;bestand&nbsp;systeem| Geen verificatie | | ✓* | ✓ * |✓* 
+Azure&nbsp;data base-&nbsp;voor&nbsp;MySQL | SQL-verificatie|  | ✓* | ✓* |✓*
+Databricks&nbsp;bestand&nbsp;systeem| Geen verificatie | | ✓** | ✓ ** |✓** 
 
-\* alleen ondersteund in lokale Compute-doel scenario's
+*MySQL wordt alleen ondersteund voor pijplijn [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). <br> \** Databricks wordt alleen ondersteund voor pijplijn [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)
 
 ### <a name="storage-guidance"></a>Richtlijnen voor Azure Storage
 
@@ -77,7 +77,7 @@ Wanneer u een Azure Storage-oplossing registreert als een gegevens opslag, maakt
 
 >[!IMPORTANT]
 > Als onderdeel van het proces voor het maken en registreren van de huidige gegevens opslag heeft Azure Machine Learning gecontroleerd of de door de gebruiker aangelegde principal (gebruikers naam, Service-Principal of SAS-token) toegang heeft tot de onderliggende opslag service. 
-<br>
+<br><br>
 Voor Azure Data Lake Storage data stores van 1 en 2 wordt deze validatie echter later uitgevoerd wanneer methoden voor gegevens toegang, zoals [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) of [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) , worden aangeroepen. 
 
 ### <a name="python-sdk"></a>Python-SDK
@@ -87,10 +87,13 @@ Alle registratie methoden bevinden zich op de klasse [`Datastore`](https://docs.
 U vindt de informatie die u nodig hebt om de `register()` methode te vullen met behulp van de [Azure Portal](https://portal.azure.com):
 
 1. Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. 
-2. Ga naar de pagina **overzicht** voor meer informatie, zoals de account naam, de container en de naam van de bestands share. Ga naar **toegangs sleutels** in het deel venster **instellingen** voor verificatie-informatie, zoals account sleutel of SAS-token. 
+2. Ga naar de pagina **overzicht** voor meer informatie, zoals de account naam, de container en de naam van de bestands share. 
+3. Ga naar **toegangs sleutels** in het deel venster **instellingen** voor verificatie-informatie, zoals account sleutel of SAS-token. 
+
+4. Ga naar de pagina **overzicht** van uw **app-registraties**voor de Service-Principal-items, zoals Tenant-ID en client-id. 
 
 > [!IMPORTANT]
-> Als uw opslag account zich in een virtueel netwerk bevindt, wordt alleen het maken van een Azure Blob-gegevens opslag ondersteund. Als u uw werk ruimte toegang wilt verlenen tot uw opslag account, stelt u de para meter `grant_workspace_access` in op `True`.
+> Als uw opslag account zich in een virtueel netwerk bevindt, wordt alleen het maken van een blob, bestands share, ADLS gen 1-en ADLS gen-gegevens opslag **via de SDK** ondersteund. Als u uw werk ruimte toegang wilt verlenen tot uw opslag account, stelt u de para meter `grant_workspace_access` in op `True`.
 
 In de volgende voor beelden ziet u hoe u een Azure Blob-container, een Azure-bestands share en Azure Data Lake Storage generatie 2 kunt registreren als gegevens opslag. Raadpleeg voor andere opslag Services de [referentie documentatie voor de `register_azure_*`-methoden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods).
 
@@ -134,7 +137,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generatie 2
 
-Gebruik [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met [Service-Principal-machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Gebruik [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met [Service-Principal-machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Als u de Service-Principal wilt gebruiken, moet u [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Met de volgende code wordt de `adlsgen2_datastore_name` gegevens opslag voor de `ws`-werk ruimte gemaakt en geregistreerd. Met deze data store krijgt u toegang tot het bestands systeem `test` op het `account_name` Storage-account met behulp van de gegeven referenties voor de Service-Principal.
 
@@ -162,12 +165,19 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 Maak een nieuwe gegevens opslag in een paar stappen in Azure Machine Learning studio:
 
+> [!IMPORTANT]
+> Als uw opslag account zich in een virtueel netwerk bevindt, wordt alleen het maken van gegevens opslag [via de SDK](#python-sdk) ondersteund. 
+
 1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
 1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.
 1. Selecteer **+ nieuwe gegevens opslag**.
 1. Vul het formulier in voor een nieuwe gegevens opslag. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor Azure Storage type en verificatie type.
   
-U kunt de informatie vinden die u nodig hebt om het formulier op de [Azure Portal](https://portal.azure.com)in te vullen. Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De **overzichts** pagina bevat informatie zoals de account naam, container en naam van de bestands share. Ga voor verificatie-items, zoals account sleutel of SAS-token, naar **account sleutels** in het deel venster **instellingen** .
+U kunt de informatie vinden die u nodig hebt om het formulier op de [Azure Portal](https://portal.azure.com)in te vullen. Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De **overzichts** pagina bevat informatie zoals de account naam, container en naam van de bestands share. 
+
+* Ga voor verificatie-items, zoals account sleutel of SAS-token, naar **account sleutels** in het deel venster **instellingen** . 
+
+* Ga naar de pagina **overzicht** van uw **app-registraties**voor de Service-Principal-items, zoals Tenant-ID en client-id. 
 
 In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een Azure Blob-gegevens opslag maakt: 
     

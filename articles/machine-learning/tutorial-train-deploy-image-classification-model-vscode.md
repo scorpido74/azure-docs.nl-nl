@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een tensor flow model voor de classificatie van een installatie kopie trainen en implementeren met behulp van de Visual Studio code extension van Azure Machine Learning'
+title: 'Zelf studie: een model trainen en implementeren met behulp van de Visual Studio code extension'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u een afbeeldings classificatie model traint en implementeert met behulp van tensor flow en de Visual Studio code extension van Azure Machine Learning
 services: machine-learning
@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 899681f2bb9c3ef2a0368015a58db30a843738f5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157554"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602543"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Een tensor flow model voor de classificatie van een installatie kopie trainen en implementeren met behulp van de Visual Studio code extension van Azure Machine Learning
 
-Meer informatie over hoe u een afbeeldings classificatie model traint om handgeschreven getallen te herkennen met tensor flow en de extensie Azure Machine Learning Visual Studio code.
+Meer informatie over hoe u een afbeeldings classificatie model traint en implementeert om handgeschreven getallen te herkennen met tensor flow en de extensie Azure Machine Learning Visual Studio code.
 
 In deze zelfstudie leert u het volgende:
 
@@ -56,11 +56,11 @@ Het eerste wat u moet doen om een toepassing in Azure Machine Learning te bouwen
     > [!div class="mx-imgBorder"]
     > ![Een werkruimte maken](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. Er wordt standaard een naam gegenereerd met de datum en tijd van het maken. Wijzig in het opdracht palet de naam in ' TeamWorkspace ' en druk op **Enter**.
-1. Selecteer **een nieuwe resource groep maken** in het opdracht palet. 
-1. Voer ' TeamWorkspace-RG ' in het tekstvak opdracht palet in en druk op **Enter**. 
-1. Kies in het opdracht palet een locatie voor uw werk ruimte. Het is raadzaam om een locatie te kiezen die het dichtst bij de locatie ligt die u voor het implementeren van uw model wilt gebruiken. In dit geval kiest u **VS West 2**.
-1. Wanneer u wordt gevraagd een SKU voor een werk ruimte te selecteren, selecteert u **Basic** om een eenvoudige werk ruimte te maken. Zie [Azure machine learning Overview](./overview-what-is-azure-ml.md#sku)voor meer informatie over verschillende werk ruimte-aanbiedingen.
+1. Er wordt standaard een naam gegenereerd met de datum en tijd van het maken. Wijzig in het vak tekst invoer de naam in ' TeamWorkspace ' en druk op **Enter**.
+1. Selecteer **een nieuwe resource groep maken**. 
+1. Geef een naam op voor de resource groep "TeamWorkspace-RG" en druk op **Enter**. 
+1. Kies een locatie voor uw werk ruimte. Het is raadzaam om een locatie te kiezen die het dichtst bij de locatie ligt die u voor het implementeren van uw model wilt gebruiken. Bijvoorbeeld ' vs West 2 '.
+1. Wanneer u wordt gevraagd om het type werk ruimte te selecteren, selecteert u **Basic** om een eenvoudige werk ruimte te maken. Zie [Azure machine learning Overview](./overview-what-is-azure-ml.md#sku)voor meer informatie over verschillende werk ruimte-aanbiedingen.
 
 Op dit punt wordt een aanvraag voor Azure gemaakt om een nieuwe werk ruimte in uw account te maken. Na een paar minuten wordt de nieuwe werk ruimte weer gegeven in het knoop punt van uw abonnement. 
 
@@ -77,7 +77,7 @@ Een of meer experimenten kunnen worden gemaakt in uw werk ruimte om de uitvoerin
     > [!div class="mx-imgBorder"]
     > ![Een experiment maken](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Geef in het opdracht palet prompt het experiment ' MNIST ' op en druk op **Enter** om het nieuwe experiment te maken. 
+1. Noem het experiment "MNIST" en druk op **Enter** om het nieuwe experiment te maken. 
 
 Net als werk ruimten wordt een aanvraag verzonden naar Azure om een experiment te maken met de meegeleverde configuraties. Na een paar minuten wordt het nieuwe experiment weer gegeven in het knoop punt *experimenten* van uw werk ruimte. 
 
@@ -90,14 +90,14 @@ Een reken doel maken:
 1. Op de activiteiten balk van Visual Studio, selecteert u het pictogram van **Azure** . De weer gave Azure Machine Learning wordt weer gegeven. 
 1. Vouw het knoop punt van uw abonnement uit. 
 1. Vouw het knoop punt **TeamWorkspace** uit. 
-1. Onder het werkruimteknooppunt met de rechtermuisknop op de **Compute** knooppunt en kies **maken Compute**. 
+1. Klik onder het knoop punt werk ruimte met de rechter muisknop op het knoop punt **Compute** en kies **Compute maken**. 
 
     > [!div class="mx-imgBorder"]
     > ![een compute-doel](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png) maken
 
 1. Selecteer **Azure machine learning Compute (AmlCompute)** . Azure Machine Learning Compute is een beheerde-reken infrastructuur waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken die kan worden gebruikt met andere gebruikers in uw werk ruimte.
-1. Kies een VM-grootte. Selecteer **Standard_F2s_v2**in het opdracht palet prompt. De grootte van uw virtuele machine heeft invloed op de hoeveelheid tijd die nodig is om uw modellen te trainen. Zie [grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie over VM-grootten.
-1. Geef in het opdracht palet prompt de naam van de compute ' TeamWkspc-com ' op en druk op **Enter** om uw reken proces te maken.
+1. Kies een VM-grootte. Selecteer **Standard_F2s_v2** in de lijst met opties. De grootte van uw virtuele machine heeft invloed op de hoeveelheid tijd die nodig is om uw modellen te trainen. Zie [grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie over VM-grootten.
+1. Noem de compute "TeamWkspc-com" en druk op **Enter** om uw reken proces te maken.
 
 Na een paar minuten wordt het nieuwe Compute-doel weer gegeven in het *reken* knooppunt van uw werk ruimte.
 
@@ -115,10 +115,10 @@ Een uitvoerings configuratie maken:
     > [!div class="mx-imgBorder"]
     > ![een uitvoerings configuratie maken](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
-1. In het opdracht palet prompt geeft u de Voer configuratie de naam MNIST-RC op en drukt u op **Enter** om uw reken proces te maken.
+1. Geef de configuratie van de Voer ' MNIST-RC ' een naam en druk op **Enter** om uw uitvoerings configuratie te maken.
 1. Selecteer vervolgens **tensor flow training met één knoop punt** als het type trainings taak.
 1. Druk op **Enter** om door het script bestand te bladeren dat u op de computer wilt uitvoeren. In dit geval is het script om het model te trainen het `train.py`-bestand in de `vscode-tools-for-ai/mnist-vscode-docs-sample` Directory.
-1. Voer het volgende in de opdracht palet prompt in om de vereiste pakketten op te geven.
+1. Voer het volgende in het invoervak in om de vereiste pakketten op te geven.
     
     ```text
     pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
@@ -187,12 +187,12 @@ Een Azure Machine Learning experiment uitvoeren:
 1. Vouw het knoop punt van uw abonnement uit. 
 1. Vouw het knoop punt **TeamWorkspace > experimenten** uit. 
 1. Klik met de rechter muisknop op het **MNIST** -experiment.
-1. Selecteer **Experiment uit te voeren**.
+1. Selecteer **experiment uitvoeren**.
 
     > [!div class="mx-imgBorder"]
     > ![een experiment uit te voeren](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
-1. Selecteer in het opdracht palet het **TeamWkspc-com** Compute target.
+1. Selecteer in de lijst met opties voor Compute target het **TeamWkspc-com** Compute target.
 1. Selecteer vervolgens de configuratie van **MNIST-RC-** uitvoering.
 1. Op dit moment wordt een aanvraag verzonden naar Azure om uw experiment uit te voeren op het geselecteerde Compute-doel in uw werk ruimte. Dit proces duurt enkele minuten. De hoeveelheid tijd voor het uitvoeren van de trainings taak wordt beïnvloed door diverse factoren, zoals het reken type en de gegevens grootte van de training. Als u de voortgang van uw experiment wilt volgen, klikt u met de rechter muisknop op het huidige knoop punt uitvoeren en selecteert u **uitvoeren in azure portal weer geven**.
 1. Wanneer het dialoog venster voor het openen van een externe website wordt weer gegeven, selecteert u **openen**.
@@ -222,9 +222,9 @@ Uw model registreren:
     > [!div class="mx-imgBorder"]
     > een model ![registreren](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. Geef in het opdracht palet het model ' MNIST-tensor flow-model ' op en druk op **Enter**.
-1. Een tensor flow-model bestaat uit verschillende bestanden. Selecteer **model map** als de indeling van het model in het opdracht palet. 
-1. Selecteer de `azureml_outputs/Run_1/outputs/Run_1/outputs/outputs/model` Directory.
+1. Geef het model de naam MNIST-tensor flow-model en druk op **Enter**.
+1. Een tensor flow-model bestaat uit verschillende bestanden. Selecteer **model map** als de indeling van het model in de lijst met opties. 
+1. Selecteer de `azureml_outputs/Run_1/outputs/outputs/model` Directory.
 
     Een bestand met uw model configuraties wordt weer gegeven in Visual Studio code met vergelijk bare inhoud als hieronder:
 
@@ -234,7 +234,7 @@ Uw model registreren:
         "tags": {
             "": ""
         },
-        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\Run_1\\outputs\\outputs\\model",
+        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\outputs\\model",
         "description": ""
     }
     ```
@@ -266,10 +266,10 @@ Een webservice implementeren als een ACI:
     > [!div class="mx-imgBorder"]
     > ![Model implementeren](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. Selecteer **Azure container instances**in het opdracht palet.
-1. Geef uw service de naam mnist-tensor flow-SVC en druk op **Enter** in het opdracht palet.
-1. Kies het script dat moet worden uitgevoerd in de container door in het opdracht palet op **Enter** te drukken en te bladeren naar het `score.py`-bestand in de map `mnist-vscode-docs-sample`.
-1. Geef de afhankelijkheden op die nodig zijn om het script uit te voeren door op **Enter** te drukken in het opdracht palet en te bladeren naar het `env.yml`-bestand in de map `mnist-vscode-docs-sample`.
+1. Selecteer **Azure container instances**.
+1. Geef uw service de naam mnist-tensor flow-SVC en druk op **Enter**.
+1. Kies het script dat moet worden uitgevoerd in de container door op **Enter** te drukken in het invoervak en te bladeren naar het `score.py`-bestand in de map `mnist-vscode-docs-sample`.
+1. Geef de afhankelijkheden op die nodig zijn om het script uit te voeren door op **Enter** te drukken in het invoervak en te bladeren naar het `env.yml`-bestand in de map `mnist-vscode-docs-sample`.
 
     Een bestand met uw model configuraties wordt weer gegeven in Visual Studio code met vergelijk bare inhoud als hieronder:
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 02/25/2020
 ms.author: juergent
-ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a4b3378909d40fe2b770f70f83054a97f2646bd3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783786"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602354"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -83,8 +83,8 @@ Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installat
 | [SUSE Linux Enterprise Server voor SAP-toepassingen 12 SP4 best practices-hand leidingen][sles-for-sap-bp] |
 | [SUSE Linux Enter prise-extensie voor hoge Beschik baarheid 12 SP4][sles-ha-guide] |
 | [Implementatie van IBM Db2 Azure Virtual Machines DBMS voor SAP-workload][dbms-db2] |
-| [IBM Db2 HADR 11.1][db2-hadr-11.1] |
-| [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
+| [IBM Db2 HADR 11,1][db2-hadr-11.1] |
+| [IBM Db2 HADR R 10,5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Overzicht
 Om hoge Beschik baarheid te kunnen garanderen, wordt IBM Db2 LUW met HADR geïnstalleerd op ten minste twee virtuele machines van Azure, die worden geïmplementeerd in een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) of op meerdere [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
@@ -171,7 +171,7 @@ Als u een basis-pacemaker-cluster wilt maken voor deze IBM Db2-server, raadpleeg
 
 Voordat u begint met de installatie van een SAP-omgeving op basis van IBM Db2 LUW, raadpleegt u de volgende documentatie:
 
-+ Documentatie voor Azure
++ Azure-documentatie
 + SAP-documentatie
 + IBM-Documentatie
 
@@ -421,6 +421,9 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer configureren
 Als u Azure Load Balancer wilt configureren, is het raadzaam om de [Azure Standard load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) te gebruiken en vervolgens de volgende handelingen uit te voeren.
+
+> [!NOTE]
+> De Standard Load Balancer SKU heeft beperkingen voor het openen van open bare IP-adressen van de knoop punten onder de Load Balancer. De connectiviteit van het [open bare eind punt van het artikel voor virtual machines het gebruik van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) beschrijft manieren om deze knoop punten in te scha kelen voor toegang tot open bare IP-adressen
 
 1. Een front-end-IP-adres groep maken:
 

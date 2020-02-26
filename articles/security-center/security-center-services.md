@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754225"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603407"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -33,7 +33,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 
 ## Ondersteunde functies van de virtuele machine/server<a name="vm-server-features"></a>
 
-### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
+### <a name="windows"></a>[Windows](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
@@ -59,7 +59,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
 
 
-### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+### <a name="linux"></a>[Linux](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
@@ -95,7 +95,7 @@ De volgende tabel bevat een matrix met:
 
 Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-protection.md)voor meer informatie over wanneer er aanbevelingen worden gegenereerd voor elk van deze beveiligings maatregelen.
 
-| Endpoint Protection| Platformen | Security Center-installatie | Security Center Discovery |
+| Eindpuntbeveiliging| Platformen | Security Center-installatie | Security Center Discovery |
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nee, ingebouwd in besturingssysteem| Ja |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
@@ -118,18 +118,18 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 
 |Service|Aanbevelingen (gratis)|Waarschuwingen voor detectie van bedreigingen (standaard)|Evaluatie van beveiligings problemen (standaard)|
 |----|:----:|:----:|:----:|
-|SQL-databases|✔|✔|✔|
+|SQL Databases|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Database for PostgreSQL *|✔|✔|-|
 |Azure Database for MySQL *|✔|✔|-|
 |Azure CosmosDB *|-|✔|-|
 |Opslagaccounts|✔|-|-|
-|Blobopslag|✔|✔|-|
+|Blob Storage|✔|✔|-|
 |App Service|✔|✔|-|
 |Function App|✔|-|-|
 |Cloud Services|✔|-|-|
-|Virtual Network|✔|-|-|
+|Virtueel netwerk|✔|-|-|
 |Subnet|✔|-|-|
 |NIC|✔|-|-|
 |Netwerkbeveiligingsgroepen|✔|-|-|
@@ -137,12 +137,12 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 |Batch-account|✔|-|-|
 |Service Fabric-account|✔|-|-|
 |Automation-account|✔|-|-|
-|Load Balancer|✔|-|-|
+|Load balancer|✔|-|-|
 |Cognitive Search|✔|-|-|
 |Service Bus-naamruimte|✔|-|-|
 |Stream Analytics|✔|-|-|
 |Event hub-naamruimte|✔|-|-|
-|Logische apps|✔|-|-|
+|Logic apps|✔|-|-|
 |Cache voor redis|✔|-|-|
 |Data Lake Analytics|✔|-|-|
 |Azure Data Lake Storage|✔|-|-|
@@ -159,5 +159,5 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 - Meer informatie over [het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center](security-center-planning-and-operations-guide.md).
 - Bekijk de [platforms die Security Center ondersteunen](security-center-os-coverage.md).
 - Meer informatie over het [detecteren van bedreigingen voor vm's & servers in azure Security Center](security-center-alerts-iaas.md).
-- Vind [Veelgestelde vragen over het gebruik van Azure Security Center](security-center-faq.md).
+- Vind [Veelgestelde vragen over Azure Security Center](faq-general.md).
 - Vind [blog berichten over de beveiliging en naleving van Azure](https://blogs.msdn.com/b/azuresecurity/).

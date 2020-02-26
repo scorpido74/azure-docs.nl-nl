@@ -2,22 +2,21 @@
 title: Over service netten
 description: Verkrijg een overzicht van de service netten, hun architectuur en mogelijkheden, en welke criteria u moet overwegen wanneer u er een moet selecteren om te implementeren.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530704"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594308"
 ---
 # <a name="about-service-meshes"></a>Over service netten
 
 Een service-net biedt mogelijkheden als verkeers beheer, tolerantie, beleid, beveiliging, sterke identiteit en de waarneem baarheid van uw workloads. Uw toepassing is losgekoppeld van deze operationele mogelijkheden en het service-net verplaatst deze uit de toepassingslaag en omlaag naar de laag van de infra structuur.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Dit zijn enkele van de scenario's die kunnen worden ingeschakeld voor uw workloads wanneer u een service-net gebruikt:
 
@@ -39,7 +38,7 @@ Het **gegevens vlak** bestaat doorgaans uit een proxy die transparant is geïnje
 
 ![Typische architectuur voor Service-Mesh](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>Mogelijkheden
+## <a name="capabilities"></a>Functionaliteit
 
 Elk van de service netten hebben een natuurlijke en focus op het ondersteunen van specifieke scenario's, maar u zult doorgaans ontdekken dat er een aantal van de volgende mogelijkheden wordt geïmplementeerd.
 
@@ -88,7 +87,7 @@ Houd rekening met de volgende gebieden en welke hiervan het meest zijn afgestemd
 
 - **Business** -Commercial Support, Foundation (CNCF), OSS-licentie, governance
 
-- **Operationeel** : installatie/upgrades, resource vereisten, prestatie vereisten, integraties (metrische gegevens, telemetrie, Dash boards, hulpprogram MA'S, SMI), gemengde werk belastingen (Linux en Windows-knooppunt groepen), compute (Kubernetes, virtual machines), meerdere clusters
+- **Operationeel** : installatie/upgrades, resource vereisten, prestatie vereisten, integraties (metrische gegevens, telemetrie, Dash boards, hulpprogram MA'S, SMI), gemengde werk belastingen (Linux en Windows-knooppunt groepen), compute (Kubernetes, virtual machines), multi-cluster
 
 - **Beveiliging** -verificatie, identiteit, certificaat beheer en rotatie, pluggable externe CA
 

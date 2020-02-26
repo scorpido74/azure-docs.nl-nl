@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In deze Quick start ziet u hoe u team Kubernetes kunt ontwikkelen met containers en micro Services met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 1b36cf30574c0c9892a0383bee7e2f914bc9feac
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1f087225fc594b7c6469c4988ea1bf93ec558a71
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482391"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605266"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Snelstartgids: team ontwikkeling op Kubernetes-Azure dev Spaces
 
@@ -25,7 +25,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Helm 3 is geïnstalleerd][helm-installed].
 
@@ -35,7 +35,7 @@ U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Met 
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster

@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 4b156ad12238e6ab33aaa40283cdd324bddce206
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d73d85471269bafb6f6d2e080a68f0cab10e3962
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134429"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585965"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een python-toepassing bouwen met een Azure Cosmos DB SQL-API-account
 
@@ -129,26 +129,27 @@ De volgende code fragmenten zijn allemaal afkomstig uit het bestand *cosmos_get_
 
 * De CosmosClient wordt geïnitialiseerd. Zorg ervoor dat u de waarden voor het eind punt en de sleutel bijwerkt, zoals beschreven in de sectie [uw Connection String bijwerken](#update-your-connection-string) . 
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_cosmos_client":::
 
 * Er wordt een nieuwe database gemaakt.
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_database_if_not_exists":::
 
 * Er wordt een nieuwe container gemaakt, met 400 RU/s, [ingerichte door Voer](request-units.md). We kiezen `lastName` als de [partitie sleutel](partitioning-overview.md#choose-partitionkey), waardoor we efficiënte query's kunnen uitvoeren op deze eigenschap. 
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_container_if_not_exists":::
 
 * Bepaalde items worden toegevoegd aan de container. Containers zijn een verzameling items (JSON-documenten) die een gevarieerd schema kunnen hebben. De hulp methoden ```get_[name]_family_item``` retour neren van een familie die zijn opgeslagen in Azure Cosmos DB als JSON-documenten.
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="create_item":::
 
 * Punt lezen (zoek acties voor sleutel waarden) worden uitgevoerd met behulp van de `read_item` methode. De [ru-kosten](request-units.md) van elke bewerking worden afgedrukt.
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
+
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="read_item":::
 
 * Er wordt een query uitgevoerd met behulp van de SQL-query syntaxis. Omdat we de partitie sleutel waarden van ```lastName``` in de component WHERE gebruiken, wordt deze query op efficiënte wijze door Azure Cosmos DB gerouteerd naar de relevante partities, waardoor de prestaties worden verbeterd.
 
-    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
+    :::code language="python" source="~/azure-cosmos-db-python-getting-started/cosmos_get_started.py" id="query_items":::
    
 ## <a name="run-the-app"></a>De app kunt uitvoeren
 

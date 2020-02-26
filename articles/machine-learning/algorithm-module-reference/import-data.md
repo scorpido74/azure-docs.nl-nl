@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163191"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598456"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -48,9 +48,7 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
 1. Voeg de module **gegevens importeren** toe aan de pijp lijn. U kunt deze module vinden in de categorie **gegevens invoer en uitvoer** in de ontwerp functie.
 
-1. Klik op **wizard gegevens importeren starten** om de gegevens bron te configureren met behulp van een wizard.
-
-    De wizard haalt de account naam en referenties op en helpt u bij het configureren van andere opties. Als u een bestaande configuratie bewerkt, worden eerst de huidige waarden geladen.
+1. Selecteer de module om het rechterdeel venster te openen.
 
 1. Selecteer **gegevens bron**en kies het type gegevens bron. Dit kan HTTP of gegevens opslag zijn.
 
@@ -60,6 +58,11 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
     ![import-data-preview](media/module/import-data.png)
 
+1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
+
+    Deze optie is standaard niet geselecteerd, wat betekent dat als de module met dezelfde para meters eerder is uitgevoerd, de uitvoer van de laatste uitvoering opnieuw wordt gebruikt om de uitvoerings tijd te verminderen. 
+
+    Als deze is geselecteerd, voert het systeem de module opnieuw uit om de uitvoer opnieuw te genereren. Selecteer deze optie daarom wanneer onderliggende gegevens in de opslag worden bijgewerkt, zodat u de meest recente gegevens kunt ophalen.
 
 
 1. Voer de pijplijn uit.

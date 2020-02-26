@@ -2,23 +2,20 @@
 title: Operator aanbevolen procedures - beheer van installatiekopieën voor Container in Azure Kubernetes Services (AKS)
 description: Meer over de best practices uit de cluster-operator voor informatie over het beheren en beveiligen van containerinstallatiekopieën in Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442899"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594739"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor het beheer van container-installatiekopie en beveiliging in Azure Kubernetes Service (AKS)
 
-Als u toepassingen ontwikkelen en in Azure Kubernetes Service (AKS uitvoeren), is de beveiliging van uw containers en containerinstallatiekopieën belangrijkste overweging. Containers die verouderd zijn basis afbeeldingen of niet-gepatchte toepassing runtimes introduceren een beveiligingsrisico en een mogelijke aanvalsvector. Om te beperken deze risico's, moet u de hulpprogramma's die zoeken en oplossen van problemen in uw containers op build-tijd, evenals runtime integreren. De eerder in het proces dat de kwetsbaarheid of verouderd basisinstallatiekopie wordt geblokkeerd, is het veiliger het cluster. In dit artikel *containers* betekent dat zowel de containerinstallatiekopieën worden opgeslagen in een container registry, en de actieve containers.
+Als u toepassingen ontwikkelen en in Azure Kubernetes Service (AKS uitvoeren), is de beveiliging van uw containers en containerinstallatiekopieën belangrijkste overweging. Containers die verouderd zijn basis afbeeldingen of niet-gepatchte toepassing runtimes introduceren een beveiligingsrisico en een mogelijke aanvalsvector. Om te beperken deze risico's, moet u de hulpprogramma's die zoeken en oplossen van problemen in uw containers op build-tijd, evenals runtime integreren. De eerder in het proces dat de kwetsbaarheid of verouderd basisinstallatiekopie wordt geblokkeerd, is het veiliger het cluster. In dit artikel worden zowel de container installatie kopieën *die zijn opgeslagen* in een container register als de actieve containers.
 
-In dit artikel richt zich op het beveiligen van uw containers in AKS. Procedures voor:
+In dit artikel richt zich op het beveiligen van uw containers in AKS. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Zoeken en afbeelding beveiligingsproblemen herstellen
@@ -30,7 +27,7 @@ U kunt ook [container beveiliging in Security Center][security-center-containers
 
 ## <a name="secure-the-images-and-run-time"></a>Beveiligen van de installatiekopieën en uitvoeringstijd
 
-**Aanbevolen procedurerichtlijn** - Scan van uw containerinstallatiekopieën op beveiligingsproblemen en alleen installatiekopieën die zijn geslaagd voor de validatie te implementeren. Regelmatig de basisinstallatiekopieën en runtime voor de toepassing bijwerken en opnieuw implementeren van workloads in de AKS-cluster.
+**Richt lijnen voor best practices** : scan de container installatie kopieën op beveiligings problemen en implementeer alleen installatie kopieën die zijn geslaagd voor validatie. Regelmatig de basisinstallatiekopieën en runtime voor de toepassing bijwerken en opnieuw implementeren van workloads in de AKS-cluster.
 
 Een probleem met de acceptatie van werkbelastingen op basis van een container met het controleren van de beveiliging van installatiekopieën en runtime die wordt gebruikt om uw eigen toepassingen te bouwen. Hoe zorgt u ervoor dat u niet leiden beveiligingsproblemen in uw implementaties tot? De implementatie werk stroom moet een proces bevatten voor het scannen van container installatie kopieën met behulp van hulpprogram ma's zoals [Twistlock][twistlock] of [zeeblauw][aqua]. vervolgens mogen alleen geverifieerde installatie kopieën worden geïmplementeerd.
 
@@ -40,7 +37,7 @@ In het voorbeeld van een echte, kunt u een continue integratie en continue imple
 
 ## <a name="automatically-build-new-images-on-base-image-update"></a>Automatisch maken van nieuwe installatiekopieën op updates van basisinstallatiekopieën
 
-**Aanbevolen procedurerichtlijn** - als voor het gebruik van de basisinstallatiekopieën voor toepassingsinstallatiekopieën van, automation gebruiken om te maken van nieuwe afbeeldingen wanneer de basisinstallatiekopie wordt bijgewerkt. Als de basisinstallatiekopieën doorgaans beveiligingsverbeteringen bevatten, de containerinstallatiekopieën voor alle downstream-toepassing bijwerken
+**Richt lijnen voor best practices** : als u basis installatie kopieën voor toepassings installatie kopieën gebruikt, moet u Automation gebruiken om nieuwe installatie kopieën te bouwen wanneer de basis installatie kopie wordt bijgewerkt. Als de basisinstallatiekopieën doorgaans beveiligingsverbeteringen bevatten, de containerinstallatiekopieën voor alle downstream-toepassing bijwerken
 
 Telkens wanneer die een basisinstallatiekopie wordt bijgewerkt, moeten eventuele downstream containerinstallatiekopieën ook worden bijgewerkt. Dit bouw proces moet worden geïntegreerd in de validatie-en implementatie pijplijnen, zoals [Azure-pijp lijnen][azure-pipelines] of Jenkins. Deze pipelines zorgt ervoor dat uw toepassingen worden uitgevoerd op de bijgewerkte op basis van installatiekopieën. Zodra de containerinstallatiekopieën van uw toepassing worden gevalideerd, kunnen de AKS-implementaties voor het uitvoeren van de meest recente, beveiligde installatiekopieën worden bijgewerkt.
 

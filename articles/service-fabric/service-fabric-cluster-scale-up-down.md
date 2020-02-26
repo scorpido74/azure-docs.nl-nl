@@ -3,19 +3,19 @@ title: Een Service Fabric cluster in-of uitschalen
 description: Schaal een Service Fabric cluster in of uit om te voldoen aan de vraag door regels voor automatisch schalen in te stellen voor elk knooppunt type/virtuele-machine schaalset. Toevoegen of verwijderen van knooppunten in een Service Fabric-cluster
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774465"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587478"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Een cluster in- of uitschalen
 
 > [!WARNING]
 > Lees deze sectie voordat u schaalt
 
-Schaal rekenresources zdroji de werkbelasting van uw toepassing vereist opzettelijke planning, bijna altijd duurt langer dan een uur om uit te voeren voor een productie-omgeving en vereist dat u meer informatie over uw werkbelasting bedrijfscontext; zelfs als u deze activiteit voordat u nooit eerder hebt gedaan, het raadzaam u starten door te lezen en te begrijpen [Service Fabric-cluster overwegingen voor capaciteitsplanning](service-fabric-cluster-capacity.md), voordat u doorgaat met de rest van dit document. Deze aanbeveling is om te voorkomen dat onbedoelde LiveSite problemen en u kunt het beste testen is de bewerkingen die u besluit om uit te voeren op basis van een niet-productieomgeving. U kunt op elk gewenst moment [productieproblemen melden of betaalde ondersteuning aanvragen voor Azure](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Voor technici toegewezen voor het uitvoeren van deze bewerkingen die beschikken over de juiste context, moet vergroten / verkleinen in dit artikel wordt beschreven, maar u bepalen en weten welke bewerkingen zijn geschikt is voor uw situatie; zoals welke resources op schaal (CPU, opslag, geheugen), welke richting om te schalen (horizontaal of verticaal), en welke bewerkingen moeten worden uitgevoerd (Resource-sjabloon implementeren, Portal, PowerShell/CLI).
+Het schalen van reken resources voor de bron van de werk belasting van uw toepassing vereist een opzettelijke planning, duurt bijna altijd langer dan een uur om te volt ooien voor een productie omgeving. hiervoor moet u de werk belasting en de bedrijfs context begrijpen. Als u deze activiteit nog nooit eerder hebt uitgevoerd, is het raadzaam eerst te lezen en te weten Service Fabric overwegingen voor de planning van de [cluster capaciteit](service-fabric-cluster-capacity.md)voordat u verdergaat met de rest van dit document. Deze aanbeveling is om te voorkomen dat onbedoelde LiveSite problemen en u kunt het beste testen is de bewerkingen die u besluit om uit te voeren op basis van een niet-productieomgeving. U kunt op elk gewenst moment [productie problemen melden of betaalde ondersteuning aanvragen voor Azure](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Voor technici toegewezen voor het uitvoeren van deze bewerkingen die beschikken over de juiste context, moet vergroten / verkleinen in dit artikel wordt beschreven, maar u bepalen en weten welke bewerkingen zijn geschikt is voor uw situatie; zoals welke resources op schaal (CPU, opslag, geheugen), welke richting om te schalen (horizontaal of verticaal), en welke bewerkingen moeten worden uitgevoerd (Resource-sjabloon implementeren, Portal, PowerShell/CLI).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -24,7 +24,7 @@ Schaal rekenresources zdroji de werkbelasting van uw toepassing vereist opzettel
 Virtuele-machineschaalsets vormen een Azure compute-resource die u gebruiken kunt om te implementeren en beheren van een verzameling van virtuele machines als een set. Elk knooppunttype die is gedefinieerd in een Service Fabric-cluster is ingesteld als een afzonderlijke virtuele-machineschaalset. Elk knooppunttype kan vervolgens worden geschaald of uit onafhankelijk van elkaar, hebben verschillende sets open poorten en verschillende capaciteitsstatistieken hebben. Meer informatie hierover vindt u in het [service Fabric knooppunt typen](service-fabric-cluster-nodetypes.md) document. Aangezien de Service Fabric knooppunt typen in uw cluster worden gemaakt van virtuele-machine schaal sets op de back-end, moet u regels voor automatisch schalen instellen voor elk type knoop punt/virtuele-machine schaalset.
 
 > [!NOTE]
-> Uw abonnement moet hebben onvoldoende cores om toe te voegen van de nieuwe virtuele machines die gezamenlijk dit cluster. Er momenteel geen validatie, zodat u een implementatiefout tijd als een van de quotalimieten zijn bereikt. Één knooppunttype kunt 100 knooppunten per VMSS ook gewoon niet overschrijden. U moet mogelijk om toe te voegen automatisch schalen, kunnen niet en VMSS van de betreffende schaal bereiken automagically van VMSS toevoegen. De VMSS in-place toe te voegen aan een live cluster is een lastige taak en vaak resulteert dit in nieuwe clusters inrichten met de juiste knooppunttypen ingericht tijdens de aanmaak; gebruikers [clustercapaciteit plannen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) dienovereenkomstig. 
+> Uw abonnement moet hebben onvoldoende cores om toe te voegen van de nieuwe virtuele machines die gezamenlijk dit cluster. Er momenteel geen validatie, zodat u een implementatiefout tijd als een van de quotalimieten zijn bereikt. Één knooppunttype kunt 100 knooppunten per VMSS ook gewoon niet overschrijden. U moet mogelijk om toe te voegen automatisch schalen, kunnen niet en VMSS van de betreffende schaal bereiken automagically van VMSS toevoegen. Het toevoegen van een VMSS aan een live cluster is een uitdagende taak. Dit leidt er meestal toe dat gebruikers nieuwe clusters inrichten met de juiste knooppunt typen die tijdens de aanmaak zijn ingericht. [plan de cluster capaciteit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) dienovereenkomstig. 
 > 
 > 
 
@@ -40,7 +40,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Regels voor automatisch schalen instellen voor het knooppunt type/de virtuele-machine schaalset
-Als uw cluster meerdere knooppunt typen heeft, herhaalt u dit voor elke knooppunt typen/virtuele-machine schaal sets die u wilt schalen (in of uit). Bedenk eerst hoeveel knooppunten u moet hebben, voordat u automatisch schalen instelt. Het minimum aantal knooppunten dat u nodig hebt voor het primaire knooppunttype, wordt bepaald door het betrouwbaarheidsniveau dat u hebt gekozen. Meer informatie over [betrouwbaarheid niveaus](service-fabric-cluster-capacity.md).
+Als uw cluster meerdere knooppunt typen heeft, herhaalt u dit voor elke knooppunt typen/virtuele-machine schaal sets die u wilt schalen (in of uit). Bedenk eerst hoeveel knooppunten u moet hebben, voordat u automatisch schalen instelt. Het minimum aantal knooppunten dat u nodig hebt voor het primaire knooppunttype, wordt bepaald door het betrouwbaarheidsniveau dat u hebt gekozen. Meer informatie over [betrouwbaarheids niveaus](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
 > Verkleint het primaire knooppunt, typt u het cluster stabiel die lager is dan het minimale aantal maken of het uitvallen. Dit kan leiden tot verlies van gegevens voor uw toepassingen en de systeemservices.
@@ -104,7 +104,7 @@ Als u de knooppunten van het cluster gelijkmatig verdeeld wilt houden in upgrade
 Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
-```azurecli
+```shell
 sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
@@ -186,7 +186,7 @@ else
 
 In onderstaande **sfctl**-code wordt de volgende opdracht gebruikt om de waarde van **knooppuntnaam** op te halen van het laatst gemaakte knooppunt: `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
-```azurecli
+```shell
 # Inform the node that it is going to be removed
 sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
 
@@ -229,7 +229,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Gedrag dat u kunt zien in Service Fabric Explorer
-Wanneer u een cluster omhoog schalen wordt het aantal knooppunten (virtuele-machineschaalset exemplaren) die deel van het cluster uitmaken weergegeven in de Service Fabric Explorer.  Echter, wanneer u de schaal van een cluster omlaag u ziet het verwijderde knooppunt/VM-exemplaar in een slechte status weergegeven, tenzij u aanroepen [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) met de naam van het juiste knooppunt.   
+Wanneer u een cluster omhoog schalen wordt het aantal knooppunten (virtuele-machineschaalset exemplaren) die deel van het cluster uitmaken weergegeven in de Service Fabric Explorer.  Wanneer u echter een cluster omlaag schaalt, ziet u dat het verwijderde knoop punt/VM-exemplaar in een slechte staat wordt weer gegeven, tenzij u [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) aanroept met de juiste knooppunt naam.   
 
 Hier is de uitleg van dit gedrag.
 
@@ -238,21 +238,21 @@ De knooppunten die worden vermeld in Service Fabric Explorer zijn een weerspiege
 Om ervoor te zorgen dat een knooppunt wordt verwijderd wanneer een virtuele machine wordt verwijderd, hebt u twee opties:
 
 1. Kies duurzaamheidsniveau Gold of Silver voor de knooppunttypen in uw cluster, waardoor u de infrastructuurintegratie. Die vervolgens wordt automatisch verwijderd de knooppunten van de systeemstatus van de services (FM) wanneer u omlaag schalen.
-Raadpleeg [de informatie over duurzaamheid niveaus hier](service-fabric-cluster-capacity.md)
+Raadpleeg [hier de details over duurzaamheids niveaus](service-fabric-cluster-capacity.md)
 
-2. Nadat het VM-exemplaar is verkleind, moet u aan te roepen de [cmdlet Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
+2. Zodra het VM-exemplaar omlaag is geschaald, moet u de [cmdlet Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)aanroepen.
 
 > [!NOTE]
-> Service Fabric-clusters vereist een bepaald aantal knooppunten zodat u op het moment om de beschikbaarheid en het behouden van status - aangeduid als "onderhouden quorum." Het is dus doorgaans onveilige alle machines in het cluster wordt afgesloten, tenzij u eerst hebt uitgevoerd een [volledige back-up van uw staat](service-fabric-reliable-services-backup-restore.md).
+> Service Fabric-clusters vereist een bepaald aantal knooppunten zodat u op het moment om de beschikbaarheid en het behouden van status - aangeduid als "onderhouden quorum." Het is dus doorgaans veilig om alle computers in het cluster af te sluiten, tenzij u eerst een [volledige back-up hebt gemaakt van uw status](service-fabric-reliable-services-backup-restore.md).
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees de volgende ook meer informatie over planning clustercapaciteit, een cluster upgraden en services partitioneren:
 
-* [De clustercapaciteit van uw plannen](service-fabric-cluster-capacity.md)
-* [Upgraden van clusters](service-fabric-cluster-upgrade.md)
-* [Stateful services van de partitie voor maximale schaal](service-fabric-concepts-partitioning.md)
+* [De cluster capaciteit plannen](service-fabric-cluster-capacity.md)
+* [Cluster upgrades](service-fabric-cluster-upgrade.md)
+* [Stateful Services partitioneren voor maximale schaal](service-fabric-concepts-partitioning.md)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png

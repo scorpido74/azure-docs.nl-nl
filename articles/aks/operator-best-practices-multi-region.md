@@ -3,23 +3,22 @@ title: Hoge Beschik baarheid en herstel na nood gevallen in azure Kubernetes ser
 description: Meer informatie over de aanbevolen procedures van een cluster operator voor maximale uptime van uw toepassingen, waardoor u een hoge Beschik baarheid krijgt en herstel na nood geval in azure Kubernetes service (AKS) kunt voorbereiden.
 services: container-service
 author: lastcoolnameleft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549152"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594737"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)
 
 Wanneer u clusters beheert in azure Kubernetes service (AKS), wordt de uptime van toepassingen belang rijker. AKS biedt hoge Beschik baarheid door gebruik te maken van meerdere knoop punten in een beschikbaarheidsset. Maar deze meerdere knoop punten beveiligen uw systeem niet vanuit een regionale storing. Plan vooruit om bedrijfs continuïteit te behouden en voor bereidingen voor nood herstel om uw uptime te maximaliseren.
 
-Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na nood gevallen in AKS. Procedures voor:
+Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na nood gevallen in AKS. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Plan voor AKS-clusters in meerdere regio's.

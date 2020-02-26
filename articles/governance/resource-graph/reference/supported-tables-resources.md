@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530222"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602568"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -116,6 +116,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Compute/sharedvmimages
 - micro soft. Compute/sharedvmimages/versies
 - micro soft. Compute/moment opnamen
+- micro soft. Compute/sshpublickeys
 - micro soft. Compute/informatie
 - micro soft. Compute/informatie/Extensions
 - micro soft. Compute/virtualmachinescalesets
@@ -277,6 +278,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Network/firewallpolicies
 - micro soft. Network/frontdoors
 - micro soft. Network/frontdoorwebapplicationfirewallpolicies
+- micro soft. Network/ipallocations
 - micro soft. Network/ipgroups
 - micro soft. Network/loadbalancers
 - micro soft. Network/localnetworkgateways

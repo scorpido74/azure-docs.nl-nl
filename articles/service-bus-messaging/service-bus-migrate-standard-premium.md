@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790382"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587495"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Bestaande Azure Service Bus Standard-naam ruimten migreren naar de Premium-laag
 Voorheen beAzure Service Bus de aangeboden naam ruimten alleen in de laag standaard. Naam ruimten zijn instellingen voor multi tenants die zijn geoptimaliseerd voor omgevingen met lage door Voer en ontwikkel aars. De Premium-laag biedt toegewezen bronnen per naam ruimte voor voorspel bare latentie en verhoogde door voer tegen een vaste prijs. De Premium-laag is geoptimaliseerd voor omgevingen met hoge door Voer en productie waarvoor extra bedrijfs functies nodig zijn.
@@ -32,7 +32,7 @@ Enkele van de punten waarop moet worden genoteerd:
 - De **Premium** -naam ruimte mag **geen entiteiten** bevatten voordat de migratie slaagt. 
 - Alle **entiteiten** in de standaard naam ruimte worden tijdens het migratie proces **gekopieerd** naar de Premium-naam ruimte. 
 - Migratie ondersteunt **1.000 entiteiten per Messa ging-eenheid** op de Premium-laag. Als u wilt weten hoeveel Messa ging-eenheden u nodig hebt, begint u met het aantal entiteiten dat u hebt in uw huidige standaard naam ruimte. 
-- U kunt niet rechtstreeks migreren van de **Basic-laag** naar de **premier-laag**, maar dit moet u ook indirect doen door de migratie eerst van Basic naar standaard en vervolgens van de standaard naar Premium in de volgende stap uit te voeren.
+- U kunt niet rechtstreeks migreren van de **Basic-laag** naar de **Premium-laag**, maar dit kan ook indirect doen door de migratie eerst van Basic naar standaard en vervolgens van de standaard naar Premium in de volgende stap uit te voeren.
 
 ## <a name="migration-steps"></a>Migratiestappen
 Sommige voor waarden zijn gekoppeld aan het migratie proces. Raadpleeg de volgende stappen om de kans op fouten te verminderen. In deze stappen wordt het migratie proces beschreven en worden de stapsgewijze details weer gegeven in de volgende secties.
@@ -62,7 +62,7 @@ Als u uw Service Bus Standard-naam ruimte wilt migreren naar Premium met behulp 
    ```
 
     >[!IMPORTANT]
-    > De alias/naam van het na de migratie (post_migration_dns_name) wordt gebruikt voor toegang tot de oude standaard naam ruimte na migratie. Gebruik deze om de wacht rijen en de abonnementen af te zuigen en verwijder vervolgens de naam ruimte.
+    > De alias/naam (post_migration_dns_name) na de migratie wordt gebruikt voor toegang tot de oude standaard naam ruimte na migratie. Gebruik deze om de wacht rijen en de abonnementen af te zuigen en verwijder vervolgens de naam ruimte.
 
 1. Koppel de standaard-en Premium-naam ruimten en start de synchronisatie met behulp van de volgende opdracht:
 
@@ -176,7 +176,7 @@ De migratie kan worden afgebroken met behulp van de `Abort`-opdracht of met behu
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 ![de stroom afgebroken: de synchronisatie wordt afgebroken][]
 ![de stroom is afgebroken][]
@@ -190,7 +190,7 @@ De entiteiten in de Premium-naam ruimte worden echter niet verwijderd of de Prem
 >[!IMPORTANT]
 > Als u besluit de migratie af te breken, verwijdert u de Premium-naam ruimte die u voor de migratie hebt ingericht, zodat u niet in rekening wordt gebracht voor de resources.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Ik wil de berichten niet hoeven te verwerken. Wat kan ik doen?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Ik wil de berichten niet hoeven te verwerken. Wat moet ik doen?
 
 Er zijn mogelijk berichten die door de toepassingen van de afzender worden verzonden en die zijn toegewezen aan de opslag in de standaard naam ruimte terwijl de migratie plaatsvindt en net voordat de migratie wordt doorgevoerd.
 

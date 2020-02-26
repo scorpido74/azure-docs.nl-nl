@@ -3,16 +3,15 @@ title: Best practices voor ontwikkel aars-resource beheer in azure Kubernetes Se
 description: Meer informatie over de aanbevolen procedures voor het ontwikkelen van toepassingen voor resource management in azure Kubernetes service (AKS)
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: e98a1f49ebf0fd8811be8efe8d001d450959369a
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 66676c90e73d1886c86d8afda8cbbecce239a005
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549237"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596025"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 

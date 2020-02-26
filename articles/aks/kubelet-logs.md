@@ -2,23 +2,20 @@
 title: Kubelet-logboeken weer geven in azure Kubernetes service (AKS)
 description: Informatie over het oplossen van problemen in de kubelet-logboeken van Azure Kubernetes service (AKS)-knoop punten
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: mlearned
-ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615186"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595379"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Kubelet-logboeken ophalen van cluster knooppunten van Azure Kubernetes service (AKS)
 
 Als onderdeel van het maken van een AKS-cluster moet u mogelijk Logboeken bekijken om een probleem op te lossen. De ingebouwde Azure Portal is de mogelijkheid om logboeken te bekijken voor de [AKS-Master onderdelen][aks-master-logs] of- [containers in een AKS-cluster][azure-container-logs]. Af en toe moet u mogelijk *kubelet* -logboeken ophalen van een AKS-knoop punt voor het oplossen van problemen.
 
-Dit artikel laat u zien hoe u kunt `journalctl` gebruiken om de *kubelet* -Logboeken in een AKS-knoop punt weer te geven.
+In dit artikel wordt beschreven hoe u `journalctl` kunt gebruiken om de *kubelet* -logboeken op een AKS-knoop punt weer te geven.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

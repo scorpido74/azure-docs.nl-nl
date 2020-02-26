@@ -3,7 +3,7 @@ title: Azure-Sentinel verwijderen | Microsoft Docs
 description: Uw Azure-Sentinel-exemplaar verwijderen.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
-ms.author: rkarlin
-ms.openlocfilehash: d71a9fc21cca75312696a1bc17c4896c2e5bce2d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610353"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581681"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Azure-Sentinel uit uw werk ruimte verwijderen
 
@@ -64,7 +64,7 @@ Binnen de eerste 48 uur zijn de gegevens-en analytische regels (inclusief realti
 
 -   Analytische regels
 
--   Bladwijzers
+-   Wijzer
 
 Uw playbooks, opgeslagen werkmappen, opgeslagen jacht-query's en notitie blokken worden niet verwijderd. **Sommige kunnen worden verbroken vanwege de verwijderde gegevens. U kunt deze hand matig verwijderen.**
 

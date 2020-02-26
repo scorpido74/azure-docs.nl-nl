@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202062"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603990"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Incidenten en waarschuwingen onderzoeken in Azure Security Center (buiten gebruik gesteld)
 Dit document helpt u bij het gebruik van de functie voor onderzoek (preview) in Azure Security Center om beveiligings incidenten en-waarschuwingen te onderzoeken.
@@ -64,17 +64,17 @@ Het tabblad **Entiteiten** bevat alle gerelateerde entiteiten gegroepeerd op typ
 
 ![Entiteiten](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 Het tabblad **Zoeken** bevat alle typen logboeken die beschikbaar zijn voor de entiteit. Voor elk type logboek kunt u zien hoeveel records er zijn vastgelegd in het logboek. Klik op een type logboek om naar het zoekscherm te gaan. Hier kunt u uw zoekopdracht verfijnen en de verschillende zoekfuncties gebruiken, zoals het instellen van waarschuwingen. In de huidige versie is het tabblad Zoeken alleen beschikbaar voor de entiteiten gebruikers en computers.
 
-![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Zoeken](./media/security-center-investigation/security-center-investigation-fig5.png)
 
-### <a name="exploration"></a>Verkenning
+### <a name="exploration"></a>Verkennen
 
-Via het tabblad **Verkennen** kan de onderzoeker gegevens onderzoeken die te maken hebben met verschillende aspecten van de entiteit. Als er bijvoorbeeld onderzoek wordt gedaan naar een computer, ziet u op dit tabblad een overzicht van de processen die op de computer zijn uitgevoerd. In sommige gevallen bevat het tabblad Verkennen gegevens die kunnen wijzen op een verdachte activiteit. De onderzoeker kan de gegevens bestuderen op het tabblad of openen in het zoekscherm om grote gegevenssets te onderzoeken en geavanceerde zoekopties te gebruiken zoals filteren en exporteren naar Excel.
+Via het tabblad **Verkennen** kan de onderzoeker gegevens onderzoeken die te maken hebben met verschillende aspecten van de entiteit. Wanneer een computer bijvoorbeeld wordt onderzocht, wordt de lijst met processen die op de machine worden uitgevoerd, weer gegeven op het tabblad verkennen. In sommige gevallen presenteert het tabblad verkennen gegevens die kunnen wijzen op een verdacht probleem. De onderzoeker kan de gegevens bestuderen op het tabblad of openen in het zoekscherm om grote gegevenssets te onderzoeken en geavanceerde zoekopties te gebruiken zoals filteren en exporteren naar Excel.
 
-![Verkenning](./media/security-center-investigation/security-center-investigation-fig6.png)
+![Verkennen](./media/security-center-investigation/security-center-investigation-fig6.png)
 
 ### <a name="timeline"></a>Tijdlijn
 
@@ -118,6 +118,3 @@ In dit document hebt u gelezen hoe u de onderzoeksfunctie in Security Center geb
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.
 * [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Meer informatie over de verschillende typen beveiligingswaarschuwingen.
-* [Handleiding voor het oplossen van problemen met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Informatie over het oplossen van veelvoorkomende problemen met Security Center.
-* [Veelgestelde vragen over Azure Security Center](security-center-faq.md). Raadpleeg de veelgestelde vragen over het gebruik van de service.
-* [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/). Raadpleeg de blogberichten over beveiliging en naleving in Azure.

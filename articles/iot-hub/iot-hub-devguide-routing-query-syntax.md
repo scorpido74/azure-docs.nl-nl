@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064815"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598201"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Query syntaxis voor het routeren van berichten IoT Hub
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 Een volledige lijst met ondersteunde Opera tors en functies wordt weer gegeven in de [expressie en voor waarden](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
-## <a name="message-routing-query-based-on-message-body"></a>Bericht routerings query op basis van bericht tekst 
+## <a name="message-routing-query-based-on-message-body"></a>Bericht routerings query op basis van bericht tekst
 
 Als u het uitvoeren van query's op bericht hoofdtekst wilt inschakelen, moet het bericht in een JSON worden gecodeerd in UTF-8, UTF-16 of UTF-32. De `contentType` moet worden ingesteld op `application/JSON` en `contentEncoding` op een van de ondersteunde UTF-code ringen in de systeem eigenschap. Als deze eigenschappen niet worden opgegeven, wordt de query-expressie niet door IoT Hub geëvalueerd op de bericht tekst. 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld wilt weer geven C#in, downloadt u de [Azure IOT C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het zip-bestand master. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice*laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
+
 
 ### <a name="query-expressions"></a>Query-expressies
 

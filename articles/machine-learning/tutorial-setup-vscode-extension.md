@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Machine Learning Visual Studio code extension instellen'
+title: 'Zelf studie: de Visual Studio code extension instellen'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het instellen van de Visual Studio code Azure Machine Learning-extensie.
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 4000fcc80d507d3b1e871d7f3288fc3b77693c76
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157610"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604857"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio code extension instellen
 
@@ -30,7 +30,8 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement. Als u er nog geen hebt, kunt u zich aanmelden om de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)te proberen.
-- Installeer [Visual Studio code](https://code.visualstudio.com/docs/setup/setup-overview), een licht gewicht, platformoverschrijdende code-editor. 
+- Visual Studio Code. Als u dit niet hebt, [installeert u het](https://code.visualstudio.com/docs/setup/setup-overview).
+- [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-the-extension"></a>De extensie installeren
 
@@ -38,6 +39,9 @@ In deze zelfstudie leert u het volgende:
 1. Selecteer **uitbreidings** pictogram op de **activiteiten balk** om de weer gave extensies te openen.
 1. Zoek in de weer gave extensies naar ' Azure Machine Learning '.
 1. Selecteer **Installeren**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Azure Machine Learning VS code-extensie installeren](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
 
 > [!NOTE]
 > U kunt de Azure Machine Learning-extensie ook installeren via de Visual Studio Marketplace door [het installatie programma rechtstreeks te downloaden](https://aka.ms/vscodetoolsforai). 
@@ -49,9 +53,9 @@ De overige stappen in deze zelf studie zijn getest met **versie 0.6.8** van de u
 Als u resources wilt inrichten en werk belastingen op Azure wilt uitvoeren, moet u zich aanmelden met de referenties van uw Azure-account. Azure Machine Learning installeert automatisch de Azure-account extensie om het account beheer te helpen. Ga naar de volgende site voor [meer informatie over de Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
 1. Open het opdracht palet door **> opdracht venster weer geven** te selecteren in de menu balk. 
-1. Voer de opdracht ' Azure: Sign in ' in het tekstvak in om het aanmeldings proces te starten.
+1. Voer de opdracht ' Azure: Sign in ' in het opdracht palet in om het aanmeldings proces te starten.
 
-## <a name="run-a-script-in-azure"></a>Een script uitvoeren in azure
+## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Een trainings script voor machine learning model uitvoeren in azure
 
 Nu u bent aangemeld bij Azure met uw account referenties, gebruikt u de stappen in deze sectie om te leren hoe u de extensie gebruikt om een machine learning model te trainen.
 
@@ -79,16 +83,16 @@ Nu u bent aangemeld bij Azure met uw account referenties, gebruikt u de stappen 
 
     ```json
     {
-        "workspace": "WS12191742",
-        "resourceGroup": "WS12191742-rg2",
+        "workspace": "WS01311608",
+        "resourceGroup": "WS01311608-rg1",
         "location": "South Central US",
-        "experiment": "WS12191742-exp2",
+        "experiment": "WS01311608-exp1",
         "compute": {
-            "name": "WS12191742-com2",
+            "name": "WS01311608-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS12191742-com2-rc1",
+            "filename": "WS01311608-com1-rc1",
             "condaDependencies": [
                 "python=3.6.2",
                 "tensorflow=1.15.0"
@@ -100,8 +104,38 @@ Nu u bent aangemeld bij Azure met uw account referenties, gebruikt u de stappen 
     }
     ```
 
-1. Selecteer **experiment verzenden** om uw experiment uit te voeren in Azure. Hiermee wordt het `train.py`-en configuratie bestand naar de Azure Machine Learning-werk ruimte verzonden. Vervolgens wordt de trainings taak gestart op een reken resource in Azure.
-1. Na enkele minuten wordt een map met de naam `output` lokaal gemaakt, die een getraind tensor flow-model bevat.
+1. Wanneer u tevreden bent met uw configuratie, verzendt u uw experiment door het opdracht palet te openen en de volgende opdracht in te voeren:
+
+    ```text
+    Azure ML: Submit Experiment
+    ```
+
+    Hiermee wordt het `train.py`-en configuratie bestand naar de Azure Machine Learning-werk ruimte verzonden. Vervolgens wordt de trainings taak gestart op een reken resource in Azure.
+
+### <a name="track-the-progress-of-the-training-script"></a>De voortgang van het trainings script volgen
+
+Het uitvoeren van uw script kan enkele minuten duren. De voortgang volgen:
+
+1. Selecteer het pictogram van **Azure** in de activiteiten balk.
+1. Vouw het knoop punt van uw abonnement uit.
+1. Vouw het knoop punt van uw lopende experiment uit. Dit bevindt zich in het `{workspace}/Experiments/{experiment}` knoop punt waar de waarden voor uw werk ruimte en experiment hetzelfde zijn als de eigenschappen die zijn gedefinieerd in het configuratie bestand.
+1. Alle uitvoeringen voor het experiment worden vermeld, evenals hun status. Als u de meest recente status wilt weten, klikt u op het pictogram vernieuwen boven aan de weer gave Azure Machine Learning.
+
+    > [!div class="mx-imgBorder"]
+    > ![bijhouden van de voortgang van het experiment](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
+
+### <a name="download-the-trained-model"></a>Het getrainde model downloaden
+
+Wanneer de uitvoering van het experiment is voltooid, is de uitvoer een getraind model. De uitvoer lokaal downloaden:
+
+1. Klik met de rechter muisknop op de meest recente uitvoering en selecteer **Download uitvoer**.
+
+    > [!div class="mx-imgBorder"]
+    > ](./media/tutorial-setup-vscode-extension/download-trained-model.PNG) getraind model ![downloaden
+
+1. Selecteer een locatie waar de uitvoer moet worden opgeslagen.
+1. Een map met de naam van uw run wordt lokaal gedownload. Navigeer naar die pagina.
+1. De model bestanden bevinden zich in de `outputs/outputs/model` Directory.
 
 ## <a name="next-steps"></a>Volgende stappen
 

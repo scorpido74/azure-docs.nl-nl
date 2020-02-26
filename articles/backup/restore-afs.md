@@ -3,12 +3,12 @@ title: Azure-bestands shares herstellen
 description: Informatie over het gebruik van de Azure Portal om een volledige bestands share of specifieke bestanden te herstellen vanaf een herstel punt dat is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930713"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586846"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-bestands shares herstellen
 
@@ -21,6 +21,7 @@ In dit artikel leert u het volgende:
 * Volg de status van de herstel bewerking.
 
 ## <a name="steps-to-perform-a-restore-operation"></a>Stappen voor het uitvoeren van een herstel bewerking
+
 Voer de volgende stappen uit om een herstel bewerking uit te voeren.
 
 ### <a name="select-the-file-share-to-restore"></a>Selecteer de bestands share die u wilt herstellen
@@ -110,7 +111,7 @@ U kunt deze terugzet optie gebruiken om afzonderlijke bestanden of mappen op de 
 
     ![Oorspronkelijke locatie voor herstel op item niveau](./media/restore-afs/original-location-item-level.png)
 
-2. Kies **bestand selecteren** om de bestanden of mappen te selecteren die u wilt herstellen.
+1. Kies **bestand selecteren** om de bestanden of mappen te selecteren die u wilt herstellen.
 
     ![Kies bestand selecteren](./media/restore-afs/select-file.png)
 

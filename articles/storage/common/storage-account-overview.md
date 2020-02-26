@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157262"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597165"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -72,7 +72,7 @@ BlockBlobStorage-accounts ondersteunen momenteel geen lagen op dynamische, koele
 
 Een FileStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan en maken van Premium-bestands shares. Dit type opslag account ondersteunt bestanden, maar geen blok-blobs, toevoeg-blobs, pagina-blobs, tabellen of wacht rijen.
 
-FileStorage-accounts bieden unieke prestatie kenmerken, zoals IOPS-bursting. Zie de sectie [prestatie lagen voor bestands shares](../files/storage-files-planning.md#file-share-performance-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
+FileStorage-accounts bieden unieke prestatie gerichte kenmerken, zoals IOPS-bursting. Zie de sectie [opslag lagen voor bestands shares](../files/storage-files-planning.md#storage-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
 
 ## <a name="naming-storage-accounts"></a>Naamgeving van opslag accounts
 

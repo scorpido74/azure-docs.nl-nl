@@ -1,27 +1,29 @@
 ---
-title: Logische apps verplaatsen tussen abonnementen, resource groepen of regio's
+title: Logische apps migreren tussen abonnementen, resource groepen of regio's
 description: Logische apps of integratie accounts migreren naar andere Azure-abonnementen, resource groepen of locaties (regio's)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965893"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605605"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logische app-resources verplaatsen naar andere Azure-abonnementen, resource groepen of regio's
 
-Als u uw logische app of gerelateerde resources wilt verplaatsen naar een ander Azure-abonnement, een resource groep of een andere regio, hebt u verschillende manieren om deze taken uit te voeren, zoals de Azure Portal, Azure PowerShell, Azure CLI en REST API. Lees de volgende overwegingen voordat u resources verplaatst: 
+Als u uw logische app of gerelateerde resources wilt migreren naar een ander Azure-abonnement, een resource groep of een andere regio, hebt u verschillende manieren om deze taken uit te voeren, zoals de Azure Portal, Azure PowerShell, Azure CLI en REST API. Lees de volgende overwegingen voordat u resources verplaatst: 
 
 * U kunt alleen [specifieke logische app-resource typen](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) verplaatsen tussen Azure-resource groepen of-abonnementen.
 
 * Controleer de [limieten](../logic-apps/logic-apps-limits-and-config.md) voor het aantal logische app-resources dat u kunt hebben in uw Azure-abonnement en in elke Azure-regio. Deze beperkingen bepalen of u specifieke resource typen kunt verplaatsen wanneer de regio hetzelfde blijft in abonnementen of resource groepen. U kunt bijvoorbeeld slechts één integratie account voor de gratis laag hebben voor elke Azure-regio in elk Azure-abonnement.
 
-* Wanneer u resources verplaatst, worden er nieuwe resource-Id's gemaakt door Azure. Zorg er daarom voor dat u de nieuwe Id's gebruikt en eventuele scripts of hulpprogram ma's die aan de verplaatste resources zijn gekoppeld, bijwerkt. Nadat u logische apps hebt verplaatst tussen abonnementen, resource groepen of regio's, moet u alle op OAuth gebaseerde verbindingen opnieuw maken of autoriseren.
+* Nadat u logische apps hebt gemigreerd tussen abonnementen, resource groepen of regio's, moet u alle verbindingen waarvoor open verificatie (OAuth) vereist is, opnieuw maken of autoriseren.
+
+* Wanneer u resources verplaatst, worden er nieuwe resource-Id's gemaakt door Azure. Zorg er daarom voor dat u de nieuwe Id's gebruikt en eventuele scripts of hulpprogram ma's die aan de verplaatste resources zijn gekoppeld, bijwerkt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -84,7 +86,7 @@ Zie de volgende onderwerpen voor meer informatie over implementatie sjablonen vo
 * [Azure Resource Manager sjablonen maken voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Azure Resource Manager sjablonen voor Azure Logic Apps implementeren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Gerelateerde bronnen
+### <a name="related-resources"></a>Gerelateerde resources
 
 Sommige Azure-resources, zoals on-premises gegevens gateway resources in azure, kunnen bestaan in een regio die verschilt van de Logic apps die gebruikmaken van deze resources. Andere Azure-resources, zoals gekoppelde integratie accounts, moeten zich echter in dezelfde regio bevinden als uw logische apps. Zorg er op basis van uw scenario voor dat uw Logic apps toegang hebben tot de resources die door uw apps in dezelfde regio worden verwacht.
 

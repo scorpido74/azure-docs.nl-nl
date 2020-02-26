@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425456"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597538"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -34,7 +34,7 @@ Fysieke machine |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren
 **Houders** | De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **Implementatie** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> Het apparaat kan verbinding maken met één vCenter Server.
 **Hardware** | Resources in vCenter om een virtuele machine toe te wijzen met 32 GB RAM 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch. 
-**Hash-waarde** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**Hash-waarde** | [Hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) controleren
 **vCenter-Server/host** | De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> vCenter Server met 5,5, 6,0, 6,5 of 6,7.
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
@@ -52,7 +52,7 @@ Fysieke machine |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren
 **Houders** | De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **Implementatie van het apparaat**   |  U implementeert het apparaat als een Hyper-V-VM.<br/> De apparaat-VM van Azure Migrate is Hyper-V VM versie 5,0.<br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 **Hardware** | Resources op de Hyper-V-host om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.
-**Hash-waarde** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Hash-waarde** | [Hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security) controleren
 **Hyper-V-host** | Met Windows Server 2012 R2 of hoger.
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie** | Een apparaat kan tot 5000 Hyper-V-Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
@@ -67,7 +67,7 @@ Fysieke machine |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren
 **Download koppeling** | [Download koppeling](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Download grootte** | 59,7 MB
 **Hardware** | Toegewezen fysieke machine of een virtuele machine gebruiken. Voor de computer met het apparaat is 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte en een externe switch vereist.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
-**Hash-waarde** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Hash-waarde** | [Hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security) controleren
 **Besturingssysteem** | Op de apparaatapparaat moet Windows Server 2016 worden uitgevoerd. 
 **Implementatie van het apparaat**   |  Het toestel installatie script wordt gedownload van de portal (in een gezipte map). <br/> U comprimeert de map en voert het Power shell-script (AzureMigrateInstaller. ps1) uit.
 **Detectie** | Een apparaat kan Maxi maal 250 fysieke servers detecteren.

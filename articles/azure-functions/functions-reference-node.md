@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Ja
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714790"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584486"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
 
@@ -232,7 +232,7 @@ U kunt ervoor kiezen om uitvoer binding gegevens te definiëren met behulp van d
 context.bindingData
 ```
 
-Retourneert een benoemd object dat trigger-meta gegevens en functie aanroepgegevens bevat (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Voor een voor beeld van meta gegevens van triggers raadpleegt u dit [voor beeld van Event hubs](functions-bindings-event-hubs.md#trigger).
+Retourneert een benoemd object dat trigger-meta gegevens en functie aanroepgegevens bevat (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Voor een voor beeld van meta gegevens van triggers raadpleegt u dit [voor beeld van Event hubs](functions-bindings-event-hubs-trigger.md).
 
 ### <a name="contextdone-method"></a>context. Done-methode
 
@@ -418,14 +418,17 @@ De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies ma
 
 ## <a name="node-version"></a>Knooppunt versie
 
-De volgende tabel bevat de node. js-versie die wordt gebruikt door elke primaire versie van de functions runtime:
+In de volgende tabel ziet u de huidige ondersteunde node. js-versies voor elke primaire versie van de functions-runtime, door het besturings systeem:
 
-| Functie versie | Node. js-versie | 
-|---|---|
-| 1.x | 6.11.2 (vergrendeld door de runtime) |
-| 2.x  | _Actieve LTS_ en _onderhoud LTS_ node. js-versies (~ 10 aanbevolen). Richt de versie in Azure in door de WEBSITE_NODE_DEFAULT_VERSION [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) in te stellen op `~10`.|
+| Functie versie | Knooppunt versie (Windows) | Knooppunt versie (Linux) |
+|---|---| --- |
+| 1.x | 6.11.2 (vergrendeld door de runtime) | N.v.t. |
+| 2.x  | ~ 8<br/>~ 10 (aanbevolen)<br/>~ 12<sup>*</sup> | ~ 8 (aanbevolen)<br/>~ 10  |
+| controleert | ~ 10<br/>~ 12 (aanbevolen)  | ~ 10<br/>~ 12 (aanbevolen) |
 
-U kunt de huidige versie bekijken die door de runtime wordt gebruikt door de bovenstaande app-instelling te controleren of door `process.version` af te drukken vanuit een functie.
+<sup>*</sup> Het knoop punt ~ 12 is momenteel toegestaan op versie 2. x van de functions-runtime. Voor de beste prestaties raden we u echter aan functions runtime versie 3. x met het knoop punt ~ 12 te gebruiken. 
+
+U kunt de huidige versie bekijken die door de runtime wordt gebruikt door de bovenstaande app-instelling te controleren of door `process.version` af te drukken vanuit een functie. Richt de versie in Azure in door de WEBSITE_NODE_DEFAULT_VERSION [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) in te stellen op een ondersteunde versie van LTS, zoals `~10`.
 
 ## <a name="dependency-management"></a>Beheer van afhankelijkheden
 Als u Community-bibliotheken in uw Java script-code wilt gebruiken, zoals in het onderstaande voor beeld wordt weer gegeven, moet u ervoor zorgen dat alle afhankelijkheden zijn geïnstalleerd op uw functie-app in Azure.

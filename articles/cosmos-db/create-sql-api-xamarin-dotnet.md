@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466305"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586764"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een TODO-app bouwen met Xamarin met behulp van Azure Cosmos DB SQL-API-account
 
@@ -38,7 +38,7 @@ In deze Quick start ziet u hoe u een Azure Cosmos DB SQL-API-account, een docume
 
 Als u in Windows ontwikkelt en Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** en **Mobile Development met .NET**-workloads inschakelt tijdens de installatie van Visual Studio.
 
-Als u een Mac gebruikt, kunt u **gratis** [Visual Studio voor Mac](https://www.visualstudio.com/vs/mac/) downloaden.
+Als u een Mac gebruikt, kunt u de **gratis** [Visual Studio voor Mac](https://www.visualstudio.com/vs/mac/)downloaden.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -128,7 +128,7 @@ Laten we nog eens kort bekijken hoe de app met Azure Cosmos DB communiceert.
 
 * Bij het uitvoeren van een query op een container voor documenten wordt de `DocumentClient.CreateDocumentQuery<T>` methode gebruikt, zoals hier wordt weer gegeven in de functie `CosmosDBService.GetToDoItems`:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     Het `CreateDocumentQuery<T>` neemt een URI die verwijst naar de container die in de vorige sectie is gemaakt. U kunt ook LINQ-operators opgeven, zoals een `Where`-component. In dit geval worden alleen taken die niet zijn voltooid, geretourneerd.
 
@@ -141,13 +141,13 @@ Laten we nog eens kort bekijken hoe de app met Azure Cosmos DB communiceert.
 
 * De functie `ComsmosDBService.InsertToDoItem` laat zien hoe u een nieuw document kunt invoegen:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     De URI van het item is opgegeven, evenals het item dat moet worden ingevoegd.
 
 * Met de functie `CosmosDBService.UpdateToDoItem` wordt gedemonstreerd hoe u een bestaand document vervangt door een nieuwe.
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     Hier is een nieuwe URI vereist om het te vervangen document uniek te identificeren en wordt verkregen door `UriFactory.CreateDocumentUri` te gebruiken en de data base en de namen van containers en de ID van het document door te geven.
 
@@ -155,11 +155,11 @@ Laten we nog eens kort bekijken hoe de app met Azure Cosmos DB communiceert.
 
 * Het verwijderen van een item wordt getoond met de functie `CosmosDBService.DeleteToDoItem`:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     Let op de unieke document-URI die wordt gemaakt en doorgegeven aan de functie `DocumentClient.DeleteDocumentAsync`.
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB.
 

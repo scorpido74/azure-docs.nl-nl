@@ -3,7 +3,7 @@ title: Werken met meerdere tenants naar Azure Sentinel voor MSSP-service provide
 description: Werken met meerdere tenants voor Azure Sentinel voor MSSP-service providers.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 34997fb3cd91e4540c76ecdd781d21e2ed1bdb07
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: caa79b572d0024b93abd2d32ca99d92cc2a8b4bb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240494"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582072"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Werken met meerdere tenants in azure Sentinel 
 
-Als u een MSSP (Managed Security service provider) bent en u [Azure Lighthouse](../lighthouse/overview.md) gebruikt voor het beheren van de Security Operations Centers (SOC) van uw klanten, kunt u Azure-Sentinel-bronnen van uw klanten beheren zonder rechtstreeks verbinding te maken met de de Tenant van de klant, vanuit uw eigen Azure-Tenant. 
+Als u een beheerde Security service provider (MSSP) bent en u [Azure Lighthouse](../lighthouse/overview.md) gebruikt voor het beheren van de beveiliging van uw klanten, kunt u de Azure-Sentinel-resources van uw klanten beheren zonder rechtstreeks verbinding te maken met de Tenant van de klant, vanuit uw eigen Azure-Tenant. 
 
 ## <a name="prerequisites"></a>Vereisten
 - [Onboarding van Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
-- Om dit goed te laten werken, moet uw Tenant zijn geregistreerd bij de Azure Sentinel resource provider op ten minste één abonnement. Als u een geregistreerde Azure-Sentinel hebt in uw Tenant, bent u klaar om aan de slag te gaan. Als dat niet het geval is, selecteert u in de Azure Portal **abonnementen** , gevolgd door **resource providers** , zoekt `Microsoft.Security.Insights` en selecteert u **registreren**.
-   ![Resource providers controleren](media/multiple-tenants-service-providers/check-resource-provider.png)
+- Om dit goed te laten werken, moet uw Tenant zijn geregistreerd bij de Azure Sentinel resource provider op ten minste één abonnement. Als u een geregistreerde Azure-Sentinel hebt in uw Tenant, bent u klaar om aan de slag te gaan. Als dat niet het geval is, selecteert u in de Azure Portal **abonnementen** gevolgd door **resource providers** en vervolgens zoekt u naar `Microsoft.Security.Insights` en selecteert u **registreren**.
+   resource providers ![controleren](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Toegang tot Azure Sentinel van andere tenants
 1. Selecteer onder **adres lijst + abonnement**de gedelegeerde directory's en de abonnementen waar de Azure Sentinel-werk ruimten van uw klant zich bevinden.
 

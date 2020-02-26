@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474193"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608746"
 ---
 Als u wilt maken en beheren van virtuele Azure-machines (VM's) op een consistente manier op schaal, een vorm van automatisering doorgaans gewenst. Er zijn veel hulpprogramma's en oplossingen waarmee u kunt de volledige Azure-infrastructuur-implementatie en beheer van levenscyclus automatiseren. In dit artikel worden enkele van de infrastructuur voor automation-hulpprogramma's die u in Azure gebruiken kunt. Deze hulpprogramma's wordt vaak aanpassen aan een van de volgende methoden:
 
@@ -40,7 +40,7 @@ Leer hoe u het volgende doet:
 Leer hoe u het volgende doet:
 
 - [Implementeer chef automatiseren vanuit Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Installeer chef in Windows en maak Azure-vm's](../articles/virtual-machines/windows/chef-automation.md).
+- [Installeer chef in Windows en maak Azure-vm's](../articles/chef/chef-automation.md).
 
 
 ## <a name="puppet"></a>Puppet
@@ -128,7 +128,7 @@ Meer informatie over:
 
 Leer hoe u het volgende doet:
 
-- [Maak een ontwikkel infrastructuur op een virtuele Linux-machine in azure met Jenkins, github en docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
+- [Maak een ontwikkel infrastructuur op een virtuele Linux-machine in azure met Jenkins, github en docker](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen

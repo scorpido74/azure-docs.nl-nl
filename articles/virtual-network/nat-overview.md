@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526311"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589433"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Wat is Virtual Network NAT (open bare preview)?
 
@@ -139,9 +139,6 @@ NAT is momenteel beschikbaar in deze regio's:
 ## <a name = "enable-preview"></a>Deelname aan open bare preview
 
 Abonnementen moeten worden geregistreerd om deel te nemen aan de open bare preview.  Deelname vereist een proces met twee stappen en instructies worden hieronder vermeld voor Azure CLI en Azure PowerShell.  Het kan enkele minuten duren voordat de activering is voltooid.
-
-> [!IMPORTANT]
-> Nadat Virtual Network NAT [Preview is ingeschakeld](./nat-overview.md#enable-preview) voor uw abonnement, gebruikt u https://aka.ms/natportal om toegang te krijgen tot de portal.
 
 ### <a name="azure-cli"></a>Azure CLI
 

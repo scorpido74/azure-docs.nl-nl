@@ -2,18 +2,16 @@
 title: Implementatie centrum voor Azure Kubernetes
 description: Implementatie centrum in azure DevOps vereenvoudigt het instellen van een robuuste Azure DevOps-pijp lijn voor uw toepassing
 ms.author: puagarw
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972975"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596076"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Implementatie centrum voor Azure Kubernetes
 
@@ -65,16 +63,16 @@ In deze zelfstudie leert u het volgende:
 
     - **Azure-opslag plaatsen**: Kies een opslag plaats in uw bestaande project en organisatie.
 
-        ![Azure-opslagplaatsen](media/deployment-center-launcher/azure-repos.gif)
+        ![Azure-opslag plaatsen](media/deployment-center-launcher/azure-repos.gif)
 
-    - **GitHub**: Autoriseer en selecteer de opslag plaats voor uw GitHub-account.
+    - **Github**: autoriseer en selecteer de opslag plaats voor uw github-account.
 
         ![GitHub](media/deployment-center-launcher/github.gif)
 
 
 1. Het implementatie Centrum analyseert de opslag plaats en detecteert uw Dockerfile. Als u de Dockerfile wilt bijwerken, kunt u het geïdentificeerde poort nummer bewerken.
 
-    ![Toepassingsinstellingen](media/deployment-center-launcher/application-settings.png)
+    ![Toepassings instellingen](media/deployment-center-launcher/application-settings.png)
 
     Als de opslag plaats de Dockerfile niet bevat, wordt in het systeem een bericht weer gegeven dat er een moet worden doorgevoerd.
 
@@ -84,7 +82,7 @@ In deze zelfstudie leert u het volgende:
 
     Azure-pijp lijnen is een Cloud service die u kunt gebruiken om automatisch uw code project te bouwen en te testen en deze beschikbaar te maken voor andere gebruikers. Azure-pijp lijnen combi neren doorlopende integratie en doorlopende levering om voortdurend en consistent te testen en uw code te bouwen en te verzenden naar een doel.
 
-    ![Containerregister](media/deployment-center-launcher/container-registry.png)
+    ![Container Registry](media/deployment-center-launcher/container-registry.png)
 
 1. Selecteer de koppeling om de actieve pijp lijn weer te geven.
 
@@ -126,7 +124,7 @@ Het implementatie centrum maakt en configureert automatisch de relatie tussen uw
 
 1. Selecteer de trigger voor **continue implementatie** aan de rechter kant van de optie voor **neerzetten** . Deze release pijplijn heeft een ingeschakelde CD-trigger die een implementatie uitvoert wanneer er een nieuw build-artefact beschikbaar is. U kunt de trigger ook uitschakelen om hand matige uitvoering van uw implementaties te vereisen.
 
-1. Selecteer **taken**om alle taken voor de pijp lijn te controleren. De release stelt de Tiller omgeving in, configureert de para meter `imagePullSecrets`, installeert helm-hulpprogram ma's en implementeert de helm-grafieken naar het Kubernetes-cluster.
+1. Selecteer **taken**om alle taken voor de pijp lijn te controleren. De release stelt de Tiller-omgeving in, configureert de para meter `imagePullSecrets`, installeert helm-hulpprogram ma's en implementeert de helm-grafieken naar het Kubernetes-cluster.
 
 1. Selecteer **releases weer geven**om de release geschiedenis weer te geven.
 

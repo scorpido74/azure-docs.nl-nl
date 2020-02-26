@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
-ms.openlocfilehash: 21a3bfd09e83571e489e15e9351e12220a99e563
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301254"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598286"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Beperkings bewerkingen op Azure Service Bus
 
@@ -55,6 +55,11 @@ Niet alle bewerkingen zijn gelijk gemaakt. Dit zijn de kosten voor de tegoeden v
 |-----------|-----------|
 | Gegevens bewerkingen (Send, SendAsync, receive, ReceiveAsync, Peek) |1 tegoed per bericht |
 | Beheer bewerkingen (maken, lezen, bijwerken, verwijderen voor wacht rijen, onderwerpen, abonnementen, filters) | 10 tegoed |
+
+> [!NOTE]
+> Houd er rekening mee dat wanneer u naar een onderwerp verzendt, elk bericht wordt geëvalueerd op basis van filter (s) voordat het op het abonnement beschikbaar wordt gesteld.
+> Elke filter evaluatie telt ook op basis van de krediet limiet (d.w.z. 1 tegoed per filter evaluatie).
+>
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>Hoe weet ik dat ik een beperking heb?
 
