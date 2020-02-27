@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367157"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614072"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Een organisatie-eenheid (OE) maken in een Azure AD Domain Services beheerd domein
 
@@ -66,11 +66,11 @@ Als u een aangepaste OE wilt maken, gebruikt u de Active Directory-beheer Progra
 1. Meld u aan bij uw beheer-VM. Zie [verbinding maken met een virtuele machine van Windows Server][connect-windows-server-vm]voor stappen voor het maken van verbinding met behulp van de Azure Portal.
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
 1. Als u organisatie-eenheden wilt maken en beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
-1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aadds.contoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven:
+1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven:
 
     ![Selecteer uw door Azure AD DS beheerde domein in het Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. Het deel venster **taken** wordt weer gegeven aan de rechter kant van de Active Directory-Beheercentrum. Selecteer onder het domein, zoals *aadds.contoso.com*, de optie **Nieuw > organisatie-eenheid**.
+1. Het deel venster **taken** wordt weer gegeven aan de rechter kant van de Active Directory-Beheercentrum. Selecteer onder het domein, zoals *aaddscontoso.com*, de optie **Nieuw > organisatie-eenheid**.
 
     ![Selecteer de optie voor het maken van een nieuwe organisatie-eenheid in de Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 

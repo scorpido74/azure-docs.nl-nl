@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 22f50a6d5136eaff457c24864dae71261a20e13e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525248"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615619"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -134,6 +134,7 @@ HTTP-statuscode | Reden
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
 404 niet gevonden | Het aangevraagde element bestaat niet
 methode 405 niet toegestaan | Alleen `GET`-aanvragen worden ondersteund
+410 verdwenen | Probeer het na enige tijd opnieuw uit met een maximum van 70 seconden
 429 te veel aanvragen | De API ondersteunt momenteel Maxi maal vijf query's per seconde
 500-service fout     | Na enige tijd opnieuw proberen
 
@@ -457,7 +458,7 @@ identity | Beheerde identiteiten voor Azure-resources. Zie [een toegangs Token o
 instance | Zie [instance API](#instance-api) | 2017-04-02
 scheduledevents | Zie [Scheduled Events](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Exemplaar-API
+### <a name="instance-api"></a>Exemplaar-API
 
 De volgende Compute-categorieën zijn beschikbaar via de instance API:
 
@@ -569,7 +570,6 @@ Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, ret
 ```
 
 De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details zoals vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
-
 
 ## <a name="example-scenarios-for-usage"></a>Voorbeeld scenario's voor gebruik  
 
@@ -717,9 +717,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 ```
 
 **Antwoord**
+
 ```bash
 AzurePublicCloud
 ```
+
 De Cloud en de waarden van de Azure-omgeving worden hieronder weer gegeven.
 
  Cloud   | Azure-omgeving
@@ -838,10 +840,12 @@ Nadat u de hand tekening hierboven hebt opgehaald, kunt u controleren of de hand
 
  Cloud | Certificaat
 ---------|-----------------
-[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+Er is een bekend probleem rond het certificaat dat wordt gebruikt voor het ondertekenen. De certificaten hebben mogelijk niet exact overeenkomen met de `metadata.azure.com` voor de open bare Cloud. Daarom moet de certificerings validatie een algemene naam van een `.metadata.azure.com` subdomein toestaan.
 
 ```bash
 
@@ -871,7 +875,7 @@ Bij het uitvoeren van een query op Instance Metadata Service met Failovercluster
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > De volgende voorbeeld uitvoer van een Windows Server-VM met failovercluster ingeschakeld bevat alleen de IPv4-route tabel voor eenvoud.
 
 ```bat

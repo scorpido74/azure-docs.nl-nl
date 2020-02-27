@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424929"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623693"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
@@ -22,6 +22,20 @@ In dit artikel wordt een algemene aanbevolen benadering besproken voor het oplos
 U kunt query optimalisaties in Azure Cosmos DB breed categoriseren: optimalisaties die de administratie kosten van de aanvraag eenheid (RU) van de query en Optima Lise ring beperken die alleen de latentie verminderen. Door de RU-kosten van een query te verminderen, zult u bijna zeker de latentie verminderen.
 
 In dit document worden voor beelden gebruikt die opnieuw kunnen worden gemaakt met behulp van de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset.
+
+## <a name="important"></a>Belangrijk
+
+- Volg de [Tips voor prestaties](performance-tips.md)voor de beste prestaties.
+    > [!NOTE] 
+    > Windows 64-bits host verwerking wordt aanbevolen voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop. dll om query's lokaal te parseren en te optimaliseren, en wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij het ServiceInterop. dll-bestand niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway uitgevoerd om de geoptimaliseerde query te verkrijgen. 
+- Cosmos DB-query biedt geen ondersteuning voor een minimum aantal items.
+    - De code moet elke pagina grootte van 0 tot maximum aantal items verwerken
+    - Het aantal items op een pagina kan zonder kennisgeving worden gewijzigd.
+- Lege pagina's worden verwacht voor query's en kunnen op elk gewenst moment worden weer gegeven. 
+    - De reden waarom lege pagina's worden weer gegeven in de Sdk's is het mogelijk maken om de query te annuleren. Er wordt ook duidelijk gemaakt dat de SDK meerdere netwerk aanroepen uitvoert.
+    - Lege pagina's kunnen in bestaande werk belastingen worden weer gegeven, omdat een fysieke partitie wordt gesplitst in Cosmos DB. De eerste partitie heeft nu 0 resultaten, wat resulteert in de lege pagina.
+    - Lege pagina's worden veroorzaakt door de back-end preempting de query omdat de query meer dan enige vaste tijd neemt op de back-end om de documenten op te halen. Als Cosmos DB een query waardoor, wordt een vervolg token geretourneerd waarmee de query kan worden voortgezet. 
+- Zorg ervoor dat u de query volledig leegmaakt. Bekijk de voor beelden van de SDK en gebruik een lus while op het `FeedIterator.HasMoreResults` om de hele query uit te laten gaan.
 
 ### <a name="obtaining-query-metrics"></a>Metrische query gegevens verkrijgen:
 
@@ -144,7 +158,7 @@ Indexerings beleid:
 }
 ```
 
-**Ru-kosten:** 409,51 ru
+**Ru-kosten:** 409,51 RUs
 
 ### <a name="optimized"></a>Geoptimaliseerd
 
@@ -163,7 +177,7 @@ Bijgewerkt indexerings beleid:
 }
 ```
 
-**Ru-kosten:** 2,98 ru
+**Ru-kosten:** 2,98 RUs
 
 U kunt op elk gewenst moment aanvullende eigenschappen toevoegen aan het indexerings beleid, zonder dat dit van invloed is op de schrijf Beschik baarheid of de prestaties. Als u een nieuwe eigenschap aan de index toevoegt, zullen query's die gebruikmaken van deze eigenschap onmiddellijk de nieuwe beschik bare index gebruiken. De query maakt gebruik van de nieuwe index terwijl deze wordt gebouwd. Als gevolg hiervan zijn de query resultaten mogelijk inconsistent, omdat het opnieuw maken van de index actief is. Als een nieuwe eigenschap is geïndexeerd, worden query's die alleen gebruikmaken van bestaande indexen, niet beïnvloed tijdens het opnieuw opbouwen van de index. U kunt de voortgang van de [index transformatie volgen](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
@@ -217,7 +231,7 @@ Indexerings beleid:
 }
 ```
 
-**Ru-kosten:** 44,28 ru
+**Ru-kosten:** 44,28 RUs
 
 ### <a name="optimized"></a>Geoptimaliseerd
 
@@ -257,7 +271,7 @@ Bijgewerkt indexerings beleid:
 
 ```
 
-**Ru-kosten:** 8,86 ru
+**Ru-kosten:** 8,86 RUs
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Expressies voor samen voegen optimaliseren met behulp van een subquery
 Subquery's voor meerdere waarden kunnen `JOIN`-expressies optimaliseren door predikaten te pushen na elke Select-many-expressie in plaats van na alle kruis koppelingen in de `WHERE`-component.
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Ru-kosten:** 167,62 ru
+**Ru-kosten:** 167,62 RUs
 
 Voor deze query komt de index overeen met een document met een tag met de naam ' zuigeling Formula ', nutritionValue groter dan 0 en een bedrag dat groter is dan 1. Met de `JOIN`-expressie kunt u het cross-product van alle items met tags, nutriënten en matrices voor elk overeenstemmende document uitvoeren voordat een filter wordt toegepast. Met de component `WHERE` wordt vervolgens het filter predicaat toegepast op elke `<c, t, n, s>` tuple.
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Ru-kosten:** 22,17 ru
+**Ru-kosten:** 22,17 RUs
 
 Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en dat er vijf items zijn voor beide nutriënten en dat er matrices worden gereserveerd. De `JOIN`-expressies worden vervolgens uitgebreid naar 1 x 1 x 5 x 5 = 25 items, in tegens telling tot 1.000 items in de eerste query.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720993"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623316"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET
 
@@ -24,6 +24,35 @@ ms.locfileid: "76720993"
 Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloos kan worden geschaald met gegarandeerde latentie en door voer. U hoeft geen grote architectuur wijzigingen aan te brengen of complexe code te schrijven om uw data base te schalen met Azure Cosmos DB. Omhoog en omlaag schalen is net zo eenvoudig als het maken van één API-aanroep. Zie voor meer informatie [over het inrichten van container doorvoer](how-to-provision-container-throughput.md) of [het inrichten van de doorvoer capaciteit van de data base](how-to-provision-database-throughput.md). Omdat Azure Cosmos DB echter via netwerk aanroepen wordt geopend, zijn er optimalisaties aan de client zijde die u kunt uitvoeren om de prestaties van de [SQL .NET SDK](sql-api-sdk-dotnet-standard.md)te verbeteren.
 
 Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd rekening met de volgende opties:
+
+## <a name="hosting-recommendations"></a>Aanbevelingen hosten
+
+1.  **Gebruik Windows 64-bits in plaats van Linux of Windows 32 host processing voor query-intensieve werk belastingen.**
+
+    Windows 64-bits host verwerking wordt aanbevolen voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop. dll om query's lokaal te parseren en te optimaliseren, en wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij het ServiceInterop. dll-bestand niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway uitgevoerd om de geoptimaliseerde query te verkrijgen. De volgende typen toepassingen hebben een 32-bits hostproces als standaard, dus als u deze wilt wijzigen in 64-bits, voert u deze stappen uit op basis van het type van uw toepassing:
+
+    - Voor uitvoer bare toepassingen kunt u dit doen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64** in het venster **project eigenschappen** op het tabblad **opbouwen** .
+
+    - Voor test projecten op basis van VSTest kunt u dit doen door **test** instellingen te selecteren->**tests**->**standaard processor architectuur als x64**uit te voeren in de menu optie van **Visual Studio test** .
+
+    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren, onder **extra**->**opties**->**projecten en oplossingen**->- **webprojecten**.
+
+    - Voor ASP.NET-webtoepassingen die zijn geïmplementeerd op Azure, kunt u dit doen door het **platform als 64-bit** te kiezen in de **Toepassings instellingen** op de Azure Portal.
+
+    > [!NOTE] 
+    > Visual Studio gebruikt standaard nieuwe projecten voor elke CPU. Het is raadzaam om het project in te stellen op x64 om te voor komen dat het wordt overgeschakeld naar x86. Elk CPU-project kan eenvoudig overschakelen naar x86 als een afhankelijkheid wordt toegevoegd die alleen x86 is.<br/>
+    > ServiceInterop. dll moet zich in dezelfde map bevindt als de SDK-dll wordt uitgevoerd vanaf. U moet dit alleen doen voor gebruikers die hand matig omgaan-dll's hebben of aangepaste build/Deployment-systemen hebben.
+    
+2. **Garbage Collection aan de server zijde inschakelen (GC)**
+
+    Het verminderen van de frequentie van garbagecollection kan in sommige gevallen helpen. Stel in .NET [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in op waar.
+
+3. **Uw client opschalen-workload**
+
+    Als u test met hoge doorvoer niveaus (> 50.000 RU/s), kan de client toepassing het knel punt worden als gevolg van de machine die op CPU-of netwerk gebruik uitvalt. Als u dit punt bereikt, kunt u het Azure Cosmos DB-account nog verder pushen door uw client toepassingen op meerdere servers te schalen.
+
+    > [!NOTE] 
+    > Hoog CPU-gebruik kan leiden tot grotere latentie en time-outuitzonderingen voor aanvragen.
 
 ## <a name="networking"></a>Netwerken
 <a id="direct-connection"></a>
@@ -96,6 +125,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     ![afbeelding van het Azure Cosmos DB verbindings beleid](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
+
 4. **Aantal threads/taken verhogen**
 
     Omdat aanroepen naar Azure Cosmos DB via het netwerk worden gemaakt, moet u mogelijk de mate van parallellisme van uw aanvragen variëren, zodat de client toepassing zeer weinig tijd nodig heeft om te wachten tussen aanvragen. Als u bijvoorbeeld gebruikt. De [parallelle bibliotheek](https://msdn.microsoft.com//library/dd460717.aspx)van de taak van het net maakt u in de volg orde van de taken die worden gelezen of geschreven naar Azure Cosmos db.
@@ -121,9 +151,11 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     Elk DocumentClient-en CosmosClient-exemplaar is thread-safe en voert efficiënt verbindings beheer en adres caching uit wanneer deze in de directe modus worden uitgevoerd. Als u efficiënt verbindings beheer en betere prestaties wilt toestaan door de SDK-client, wordt u aangeraden één exemplaar per AppDomain te gebruiken voor de levens duur van de toepassing.
 
    <a id="max-connection"></a>
+
 4. **System.Net MaxConnections per host verg Roten met de gateway modus**
 
-    Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer de gateway modus wordt gebruikt, en deze worden onderhevig aan de standaard verbindings limiet per hostnaam of IP-adres. Mogelijk moet u het MaxConnections instellen op een hogere waarde (100-1000) zodat de client bibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos DB kan gebruiken. In de .NET SDK 1.8.0 en hoger is de standaard waarde voor [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50 en u kunt de waarde wijzigen door de [documenten. client. Connection Policy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) in te stellen op een hogere waarde.   
+    Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer de gateway modus wordt gebruikt, en deze worden onderhevig aan de standaard verbindings limiet per hostnaam of IP-adres. Mogelijk moet u het MaxConnections instellen op een hogere waarde (100-1000) zodat de client bibliotheek meerdere gelijktijdige verbindingen met Azure Cosmos DB kan gebruiken. In de .NET SDK 1.8.0 en hoger is de standaard waarde voor [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50 en u kunt de waarde wijzigen door de [documenten. client. Connection Policy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) in te stellen op een hogere waarde.
+
 5. **Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
 
      De SQL .NET SDK-versie 1.9.0 en hoger ondersteunen parallelle query's, waarmee u een gepartitioneerde verzameling parallel kunt doorzoeken. Zie [code voorbeelden](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) met betrekking tot het werken met de sdk's voor meer informatie. Parallelle query's zijn ontworpen om de latentie en door Voer van query's te verbeteren ten opzichte van hun serieel equivalent. Parallelle query's bieden twee para meters die gebruikers kunnen afstemmen op hun vereisten, (a) MaxDegreeOfParallelism: om het maximum aantal partities te beheren, kan een query parallel worden uitgevoerd en (b) MaxBufferedItemCount: om het aantal vooraf opgehaalde resultaten.
@@ -135,10 +167,8 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     (b) ***tuning MaxBufferedItemCount\:*** parallel query is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt bij de algehele latentie verbetering van een query. MaxBufferedItemCount is de para meter om het aantal vooraf opgehaalde resultaten te beperken. Als u MaxBufferedItemCount instelt op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het maximale voor deel ontvangen van vooraf ophalen.
 
     Het vooraf ophalen van werkt op dezelfde manier, ongeacht de mate van parallellisme, en er is één buffer voor de gegevens van alle partities.  
-6. **GC aan server zijde inschakelen**
 
-    Het verminderen van de frequentie van garbagecollection kan in sommige gevallen helpen. Stel in .NET [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in op waar.
-7. **Uitstel implementeren met RetryAfter-intervallen**
+6. **Uitstel implementeren met RetryAfter-intervallen**
 
     Tijdens prestatie tests moet u de belasting verg Roten tot een klein aantal aanvragen wordt beperkt. Als deze beperking is ingesteld, moet de client toepassing uitstel op een vertraging voor het door de server opgegeven interval voor nieuwe pogingen. Door de uitstel te respecteren, zorgt u ervoor dat u de minimale hoeveelheid tijd die wacht tussen nieuwe pogingen. Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in versie 1.8.0 en hoger van de SQL [.net](sql-api-sdk-dotnet.md) en [Java](sql-api-sdk-java.md), versie 1.9.0 en hoger van het [node. js](sql-api-sdk-node.md) en [python](sql-api-sdk-python.md), en alle ondersteunde versies van de [.net core](sql-api-sdk-dotnet-core.md) sdk's. Voor meer informatie, [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
@@ -147,16 +177,13 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
     readDocument.RequestDiagnosticsString 
     ```
-    
-8. **Uw client opschalen-workload**
 
-    Als u test met hoge doorvoer niveaus (> 50.000 RU/s), kan de client toepassing het knel punt worden als gevolg van de machine die op CPU-of netwerk gebruik uitvalt. Als u dit punt bereikt, kunt u het Azure Cosmos DB-account nog verder pushen door uw client toepassingen op meerdere servers te schalen.
-9. **Document-Uri's in cache opslaan voor minder lees latentie**
+7. **Document-Uri's in cache opslaan voor minder lees latentie**
 
-    Cache waar mogelijk document-Uri's voor de beste Lees prestaties. U moet de logica definiëren om de ResourceID bij het maken van de resource op te slaan in de cache. Zoek opdrachten op basis van ResourceID zijn sneller dan zoek acties op basis van een naam, zodat de prestaties worden verbeterd in de cache. 
+    Cache waar mogelijk document-Uri's voor de beste Lees prestaties. U moet logica definiëren om de resource-ID in de cache op te slaan wanneer u de resource maakt. Zoek opdrachten op basis van resource-id's zijn sneller dan zoek acties op basis van namen, zodat de prestaties worden verbeterd in de cache. 
 
    <a id="tune-page-size"></a>
-10. **De pagina grootte voor query's/feeds voor betere prestaties afstemmen**
+8. **De pagina grootte voor query's/feeds voor betere prestaties afstemmen**
 
    Bij het uitvoeren van een bulk Lees bewerking van documenten met behulp van de functie voor lees bewerkingen (bijvoorbeeld ReadDocumentFeedAsync) of bij het uitgeven van een SQL-query, worden de resultaten op een gesegmenteerde manier geretourneerd als de resultatenset te groot is. Standaard worden resultaten geretourneerd in delen van 100 items of 1 MB, waarbij de limiet eerst wordt bereikt.
 
@@ -173,21 +200,9 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     
    Wanneer een query wordt uitgevoerd, worden de resulterende gegevens verzonden binnen een TCP-pakket. Als u een te lage waarde voor `maxItemCount`opgeeft, is het aantal trips dat nodig is voor het verzenden van de gegevens in het TCP-pakket hoog. Dit is van invloed op de prestaties. Als u niet zeker weet welke waarde voor `maxItemCount` eigenschap moet worden ingesteld, kunt u deze het beste instellen op-1 en de SDK de standaard waarde laten kiezen. 
 
-11. **Aantal threads/taken verhogen**
+9. **Aantal threads/taken verhogen**
 
     Zie het [aantal threads/taken](#increase-threads) in de sectie netwerken verg Roten.
-
-12. **64-bits host verwerking gebruiken**
-
-    De SQL-SDK werkt in een 32-bits hostproces wanneer u SQL .NET SDK versie 1.11.4 en hoger gebruikt. Als u echter query's voor meerdere partities gebruikt, wordt de verwerking van 64-bits host aanbevolen voor betere prestaties. De volgende typen toepassingen hebben een 32-bits hostproces als standaard, dus als u deze wilt wijzigen in 64-bits, voert u deze stappen uit op basis van het type van uw toepassing:
-
-    - Voor uitvoer bare toepassingen kunt u dit doen door de optie **32-bit** te selecteren in het venster **project eigenschappen** op het tabblad **opbouwen** .
-
-    - Voor test projecten op basis van VSTest kunt u dit doen door **test** instellingen te selecteren->**tests**->**standaard processor architectuur als x64**uit te voeren in de menu optie van **Visual Studio test** .
-
-    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren, onder **extra**->**opties**->**projecten en oplossingen**->- **webprojecten**.
-
-    - Voor ASP.NET-webtoepassingen die zijn geïmplementeerd op Azure, kunt u dit doen door het **platform als 64-bit** te kiezen in de **Toepassings instellingen** op de Azure Portal.
 
 ## <a name="indexing-policy"></a>Indexeringsbeleid
  
@@ -247,7 +262,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     Hoewel het gedrag voor automatische pogingen helpt om de flexibiliteit en bruikbaarheid voor de meeste toepassingen te verbeteren, is het mogelijk om conflicteert bij het uitvoeren van benchmarks voor prestaties, met name bij het meten van latentie.  De door de client waargenomen latentie krijgt een waarschuwing als het experiment de server beperking bereikt en zorgt ervoor dat de client-SDK op de achtergrond opnieuw probeert. Om latentie pieken te voor komen tijdens prestatie experimenten, meet u de kosten die worden geretourneerd door elke bewerking en zorgt u ervoor dat aanvragen onder het gereserveerde aanvraag tarief vallen. Zie [aanvraag eenheden](request-units.md)voor meer informatie.
 3. **Ontwerpen voor kleinere documenten voor een hogere door Voer**
 
-    De aangevraagde kosten van een bepaalde bewerking worden rechtstreeks gecorreleerd aan de grootte van het document. Bewerkingen voor grote documenten kosten meer dan bewerkingen voor kleine documenten.
+    De aanvraag kosten (d.w.z. kosten voor aanvraag verwerking) van een bepaalde bewerking worden rechtstreeks gecorreleerd aan de grootte van het document. Bewerkingen voor grote documenten kosten meer dan bewerkingen voor kleine documenten.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [prestaties en schalen testen met Azure Cosmos DB](performance-testing.md)voor een voorbeeld toepassing die wordt gebruikt om Azure Cosmos DB te evalueren voor scenario's met hoge prestaties op een aantal client computers.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132220"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612564"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Zelf studie: wachtwoord synchronisatie inschakelen in Azure Active Directory Domain Services voor hybride omgevingen
 
@@ -68,7 +68,7 @@ Als Azure AD Connect is geïnstalleerd en geconfigureerd om te synchroniseren me
 
     In dit voor beeld worden de volgende connectors gebruikt:
 
-    * De Azure AD-connector heet *contoso.onmicrosoft.com-Aad*
+    * De Azure AD-connector heet *aaddscontoso.onmicrosoft.com-Aad*
     * De on-premises AD DS connector bevindt zich in de naam *onprem.contoso.com*
 
 1. Kopieer en plak het volgende Power shell-script naar de computer waarop Azure AD Connect is geïnstalleerd. Met het script wordt een volledige wachtwoord synchronisatie geactiveerd met verouderde wacht woord-hashes. Werk de `$azureadConnector`-en `$adConnector` variabelen bij met de namen van de connectors uit de vorige stap.

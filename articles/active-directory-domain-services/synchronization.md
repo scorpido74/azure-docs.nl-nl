@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132206"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612930"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een Azure AD Domain Services beheerd domein
 
@@ -47,9 +47,9 @@ De volgende tabel bevat enkele algemene kenmerken en hoe deze worden gesynchroni
 | SID-geschiedenis voor gebruikers en groepen | On-premises primaire gebruikers-en groeps-SID | Het kenmerk *SidHistory* voor gebruikers en groepen in azure AD DS is zo ingesteld dat het overeenkomt met de overeenkomstige primaire gebruiker of groeps-sid in een on-premises AD DS omgeving. Deze functie helpt bij het opheffen van lift-en Shift-locaties naar Azure AD DS eenvoudiger, omdat u resources niet opnieuw moet gebruiken. |
 
 > [!TIP]
-> **Aanmelden bij het beheerde domein met de UPN-indeling** Het kenmerk *SAMAccountName* , zoals `CONTOSO\driley`, kan automatisch worden gegenereerd voor sommige gebruikers accounts in een door Azure AD DS beheerd domein. Automatische gegenereerde *SAMAccountName* van gebruikers kan afwijken van het UPN-voor voegsel, dus is niet altijd een betrouw bare manier om u aan te melden.
+> **Aanmelden bij het beheerde domein met de UPN-indeling** Het kenmerk *SAMAccountName* , zoals `AADDSCONTOSO\driley`, kan automatisch worden gegenereerd voor sommige gebruikers accounts in een door Azure AD DS beheerd domein. Automatische gegenereerde *SAMAccountName* van gebruikers kan afwijken van het UPN-voor voegsel, dus is niet altijd een betrouw bare manier om u aan te melden.
 >
-> Als meerdere gebruikers bijvoorbeeld hetzelfde *mailNickname* -kenmerk hebben of gebruikers over lange UPN-voor voegsels beschikken, kunnen de *SAMAccountName* voor deze gebruikers automatisch worden gegenereerd. Gebruik de UPN-indeling, zoals `driley@contoso.com`, om u op een betrouw bare manier aan te melden bij een door Azure AD DS beheerd domein.
+> Als meerdere gebruikers bijvoorbeeld hetzelfde *mailNickname* -kenmerk hebben of gebruikers over lange UPN-voor voegsels beschikken, kunnen de *SAMAccountName* voor deze gebruikers automatisch worden gegenereerd. Gebruik de UPN-indeling, zoals `driley@aaddscontoso.com`, om u op een betrouw bare manier aan te melden bij een door Azure AD DS beheerd domein.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Kenmerk toewijzing voor gebruikers accounts
 

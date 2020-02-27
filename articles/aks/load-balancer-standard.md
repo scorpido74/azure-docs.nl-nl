@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595102"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622173"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -39,7 +39,7 @@ Als u een bestaand cluster hebt met de basis-SKU Load Balancer, zijn er belang r
 
 Als u bijvoorbeeld een blauw/groen-implementatie wilt maken voor het migreren van clusters, kunt u het beste de `load-balancer-sku` type van een cluster definiëren tijdens het maken van een cluster. *Basic SKU* load balancers maken echter gebruik van *elementaire SKU* -IP-adressen die niet compatibel zijn met *Standard SKU* load balancers, aangezien hiervoor *standaard-SKU* -IP-adressen zijn vereist. Bij het migreren van clusters om Load Balancer Sku's te upgraden, is een nieuw IP-adres met een compatibele IP-adres-SKU vereist.
 
-Voor meer overwegingen over het migreren van clusters raadpleegt u de [documentatie over migratie overwegingen](acs-aks-migration.md) om een lijst met belang rijke onderwerpen weer te geven waarmee u rekening moet houden bij de migratie. De onderstaande beperkingen zijn ook belang rijke verschillen in de situatie bij het gebruik van standaard SKU load balancers in AKS.
+Voor meer overwegingen over het migreren van clusters raadpleegt u de [documentatie over migratie overwegingen](aks-migration.md) om een lijst met belang rijke onderwerpen weer te geven waarmee u rekening moet houden bij de migratie. De onderstaande beperkingen zijn ook belang rijke verschillen in de situatie bij het gebruik van standaard SKU load balancers in AKS.
 
 ### <a name="limitations"></a>Beperkingen
 

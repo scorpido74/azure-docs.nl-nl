@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276885"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615155"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Zelf studie: ruimtelijke Azure-ankers delen in sessies en apparaten met een Azure Cosmos DB back-end
 
@@ -21,7 +21,7 @@ Deze zelf studie is een voortzetting van het [delen van Azure spatiale ankers in
 
 ![GIF-illustratie van object persistentie](./media/persistence.gif)
 
-Het is belang rijk dat u de eenheid en Azure Cosmos DB in deze zelf studie gebruikt, maar dit is een voor beeld van het delen van ruimtelijke ankers-id's op alle apparaten. U kunt andere talen en back-endtechnologieën gebruiken om hetzelfde doel te bereiken. De ASP.NET Core web-app die in deze zelf studie wordt gebruikt, vereist ook de .NET Core 2,2-SDK. Het werkt prima op Web Apps voor Windows, maar wordt op dit moment niet uitgevoerd op Web Apps voor Linux.
+Het is belang rijk dat u de eenheid en Azure Cosmos DB in deze zelf studie gebruikt, maar dit is een voor beeld van het delen van ruimtelijke ankers-id's op alle apparaten. U kunt andere talen en technologieën gebruiken om hetzelfde doel te bereiken. De ASP.NET Core web-app die in deze zelf studie wordt gebruikt, vereist ook de .NET Core 2,2-SDK. Het werkt prima op Web Apps voor Windows, maar wordt op dit moment niet uitgevoerd op Web Apps voor Linux.
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -42,6 +42,12 @@ Open `SharingService\appsettings.json`in **Solution Explorer**.
 Zoek de eigenschap `StorageConnectionString` en stel de waarde in op hetzelfde als de `Connection String` waarde die u hebt gekopieerd in de [stap een database account maken](#create-a-database-account). Sla het bestand op.
 
 U kunt de service voor delen opnieuw publiceren en de voor beeld-app uitvoeren.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Als gevolg van het verbreken van wijzigingen, wordt unit 2019,3 momenteel niet ondersteund. Gebruik unit 2019,1 of 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111749"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648492"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -161,28 +161,27 @@ Deze opslag plaats bevat:
 
 **Voor Windows:**
 
-• TelemetryMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer.
+* TelemetryMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer.
 
-• SubscribeMQTTWin32: bevat code voor het abonneren op gebeurtenissen van een bepaalde IoT-hub op een Windows-computer.
+* SubscribeMQTTWin32: bevat code voor het abonneren op gebeurtenissen van een bepaalde IoT-hub op een Windows-computer.
 
-• DeviceTwinMQTTWin32: bevat code voor het zoeken naar en abonneren op de dubbele gebeurtenissen van een apparaat in de Azure IoT hub op een Windows-computer.
+* DeviceTwinMQTTWin32: bevat code voor het zoeken naar en abonneren op de dubbele gebeurtenissen van een apparaat in de Azure IoT hub op een Windows-computer.
 
-• PnPMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht met IoT plug & Play preview-mogelijkheden voor apparaten naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer. Meer informatie over IoT plug & [hier](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) afspelen
+* PnPMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht met IoT plug & Play preview-mogelijkheden voor apparaten naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer. Meer informatie over IoT plug & [hier](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) afspelen
 
 **Voor Linux:**
 
-• MQTTLinux: bevat code-en build-script voor uitvoering op Linux (WSL, Ubuntu en Raspbian zijn tot nu toe getest).
+* MQTTLinux: bevat code en bouw script voor uitvoering op Linux (WSL, Ubuntu en Raspbian zijn tot nu toe getest).
 
-• LinuxConsoleVS2019: bevat dezelfde code, maar in een VS2019-project gericht WSL (Windows Linux-subsysteem). Met dit project kunt u fouten opsporen in de code die wordt uitgevoerd in Linux stap voor stap van Visual Studio.
+* LinuxConsoleVS2019: bevat dezelfde code, maar in een VS2019-project gericht WSL (Windows Linux-subsysteem). Met dit project kunt u fouten opsporen in de code die wordt uitgevoerd in Linux stap voor stap van Visual Studio.
 
 **Voor mosquitto_pub:**
 
-• Deze map bevat twee voor beelden van opdrachten die worden gebruikt met mosquitto_pub hulp programma dat wordt meegeleverd door Mosquitto.org.
+Deze map bevat twee voor beelden van opdrachten die worden gebruikt met mosquitto_pub hulp programma van Mosquitto.org.
 
-Mosquitto_sendmessage: een eenvoudig tekst bericht verzenden naar een Azure IoT hub die fungeert als een apparaat.
+* Mosquitto_sendmessage: een eenvoudig tekst bericht verzenden naar een Azure IoT hub die fungeert als een apparaat.
 
-Mosquitto_subscribe: om gebeurtenissen weer te geven die in een Azure IoT-hub optreden.
-
+* Mosquitto_subscribe: om gebeurtenissen weer te geven die in een Azure IoT-hub optreden.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Het MQTT-protocol direct gebruiken (als een module)
 
@@ -342,7 +341,7 @@ De mogelijke status codes zijn:
 
 |Status | Beschrijving |
 | ----- | ----------- |
-| 204 | Geslaagd (er is geen inhoud geretourneerd) |
+| 200 | Geslaagd |
 | 429 | Te veel aanvragen (beperkt), conform [IOT hub beperking](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Server fouten |
 
@@ -373,7 +372,7 @@ De mogelijke status codes zijn:
 
 |Status | Beschrijving |
 | ----- | ----------- |
-| 200 | Geslaagd |
+| 204 | Geslaagd (er is geen inhoud geretourneerd) |
 | 400 | Ongeldige aanvraag. Onjuist gevormde JSON |
 | 429 | Te veel aanvragen (beperkt), conform [IOT hub beperking](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Server fouten |

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031557"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622018"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -26,8 +26,8 @@ De nieuwe v2-SKU bevat de volgende verbeteringen:
   Zone redundantie is alleen beschikbaar wanneer Azure-zones beschikbaar zijn. In andere regio's worden alle andere functies ondersteund. Zie [Wat zijn Beschikbaarheidszones in azure?](../availability-zones/az-overview.md#services-support-by-region) voor meer informatie.
 - **Statische VIP**: Application Gateway v2-SKU ondersteunt alleen het statische VIP-type. Dit zorgt ervoor dat het VIP dat is gekoppeld aan de toepassings gateway niet wordt gewijzigd voor de levens cyclus van de implementatie, zelfs na het opnieuw opstarten.  Er is geen statische VIP in v1. Daarom moet u de URL van de toepassings gateway gebruiken in plaats van het IP-adres voor de route ring van domein namen naar App Services via de Application Gateway.
 - **Header herschrijven**: met Application Gateway kunt u HTTP-aanvraag-en reactie headers toevoegen, verwijderen of bijwerken met v2-SKU. Zie [HTTP-headers herschrijven met Application Gateway](rewrite-http-headers.md) voor meer informatie
-- **Key Vault Integration (preview)** : Application Gateway v2 ondersteunt de integratie met Key Vault (in open bare preview) voor server certificaten die zijn gekoppeld aan LISTENERS waarvoor https is ingeschakeld. Zie [SSL-beëindiging met Key Vault certificaten](key-vault-certs.md)voor meer informatie.
-- **Azure Kubernetes service ingress-controller (preview)** : met de Application Gateway v2 ingress-controller kan de Azure-toepassing gateway worden gebruikt als binnenkomend verkeer voor een Azure Kubernetes service (AKS), ook wel AKS-cluster genoemd. Zie de [documentatie pagina](https://azure.github.io/application-gateway-kubernetes-ingress/)voor meer informatie.
+- **Key Vault-integratie**: Application Gateway v2 ondersteunt de integratie met Key Vault voor server certificaten die zijn gekoppeld aan LISTENERS waarvoor https is ingeschakeld. Zie [SSL-beëindiging met Key Vault certificaten](key-vault-certs.md)voor meer informatie.
+- **Azure Kubernetes service ingangs controller**: Application Gateway de Azure-toepassing gateway kan worden gebruikt als binnenkomend verkeer voor een Azure Kubernetes service (AKS), ook wel AKS-cluster genoemd. Zie [Wat is Application Gateway ingress-controller?](ingress-controller-overview.md)voor meer informatie.
 - **Verbeteringen in prestaties**: de v2-SKU biedt tot 5X betere SSL-offload-prestaties, vergeleken met de Standard-WAF SKU.
 - **Snellere implementatie en update tijd** De v2-SKU biedt een snellere implementatie en tijd voor het bijwerken in vergelijking met Standard/WAF SKU. Dit omvat ook wijzigingen in de configuratie van WAF.
 

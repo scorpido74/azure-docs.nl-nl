@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445644"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623422"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de Azure Cosmos DB Cassandra-API via open-source Cassandra client[stuurprogramma's](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met Cassandra Query Language (CQL) v4 [wire-protocol](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec). 
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de Azure Cosmos DB Cassandra-API via open-source Cassandra client[stuurprogramma's](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) die compatibel zijn met Cassandra Query Language (CQL) v4 [wire-protocol](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver). 
 
 Door de Azure Cosmos DB Cassandra API te gebruiken, kunt u profiteren van de voordelen van de Apache Cassandra API’s en van de enterprise-mogelijkheden die Azure Cosmos DB biedt. De enterprise-mogelijkheden zijn onder andere [wereldwijde distributie](distribute-data-globally.md), [automatische scale-out partitionering](partition-data.md), beschikbaarheid- en latentiegaranties, versleuteling van gegevens in rust, back-ups en nog veel meer.
 
@@ -94,11 +94,11 @@ Azure Cosmos DB Cassandra-API ondersteunt de volgende CQL-functies:
   
 
 
-## <a name="cassandra-api-limits"></a>Cassandra-API limieten
+## <a name="cassandra-api-limits"></a>Limieten voor Cassandra-API
 
-Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Op dezelfde manier heeft elke entiteit of een gelijkwaardige rij geen limieten voor het aantal kolommen. De totale grootte van de entiteit mag echter niet meer zijn dan 2 MB. De gegevens per partitie sleutel mogen niet groter zijn dan 10 GB, zoals in alle andere Api's.
+Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Op dezelfde manier heeft elke entiteit of een gelijkwaardige rij geen limieten voor het aantal kolommen. De totale grootte van de entiteit mag echter niet meer zijn dan 2 MB. De gegevens per partitie sleutel mogen niet groter zijn dan 20 GB, zoals in alle andere Api's.
 
-## <a name="tools"></a>Tools 
+## <a name="tools"></a>Hulpprogramma's 
 
 Azure Cosmos DB Cassandra-API is een beheerd serviceplatform. Het vereist geen beheeroverhead of hulpprogramma's zoals Garbage Collector, Java Virtual Machine (JVM) en nodetool om het cluster te beheren. Het ondersteunt hulpprogramma’s zoals cqlsh, dat binaire CQLv4-compatibiliteit gebruikt. 
 
@@ -194,7 +194,7 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 ```
 
 
-## <a name="usage-of-cassandra-retry-connection-policy"></a>Gebruik van Cassandra verbindings beleid opnieuw proberen
+## <a name="usage-of-cassandra-retry-connection-policy"></a>Gebruik van het Cassandra-beleid voor opnieuw proberen
 
 Azure Cosmos DB is een bron systeem. Dit betekent dat u een bepaald aantal bewerkingen in een bepaalde seconde kunt uitvoeren op basis van de aanvraag eenheden die door de bewerkingen worden gebruikt. Als een toepassing die limiet in een opgegeven seconde overschrijdt, worden aanvragen op basis van een rente beperking en uitzonde ringen gegenereerd. Met de Cassandra-API in Azure Cosmos DB worden deze uitzonde ringen omgezet in overbelaste fouten op het Cassandra systeem eigen protocol. Om ervoor te zorgen dat uw toepassing aanvragen kan onderscheppen en opnieuw proberen in het geval van een limiet, worden de [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) -en [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) -extensies gegeven. Als u andere Sdk's gebruikt om toegang te krijgen tot Cassandra-API in Azure Cosmos DB, maakt u een verbindings beleid om het opnieuw te proberen op deze uitzonde ringen.
 

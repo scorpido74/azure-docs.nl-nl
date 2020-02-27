@@ -7,23 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424946"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623307"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
 Het opnemen van streaming is gericht op scenario's die een lage latentie vereisen met een opname tijd van minder dan 10 seconden voor verschillende volume gegevens. Het wordt gebruikt om de operationele verwerking van veel tabellen in een of meer data bases te optimaliseren, waarbij de gegevens stroom in elke tabel relatief klein is (weinig records per seconde), maar het totale gegevens opname volume hoog is (duizenden records per seconde).
 
 Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanneer de hoeveelheid gegevens groter wordt dan 1 MB per seconde per tabel. Lees [overzicht van gegevens opname](/azure/data-explorer/ingest-data-overview) voor meer informatie over de verschillende methoden voor opname.
-
-> [!NOTE]
-> Streaming-opname ondersteunt de volgende functies niet:
-> * [Database cursors](/azure/kusto/management/databasecursor).
-> * [Gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/tables#create-ingestion-mapping) gegevens toewijzing wordt ondersteund. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,6 +27,9 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
 * [Een Azure Data Explorer-cluster en-data base](create-cluster-database-portal.md) maken
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Opname van streaming op uw cluster inschakelen
+
+> [!WARNING]
+> Controleer de [beperkingen](#limitations) voordat u het opnemen van de opname van stoom inschakelt.
 
 1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster. Selecteer **configuraties**in **instellingen**. 
 1. Selecteer in het deel venster **configuraties** om opnemen **van** **streaming**in te scha kelen.
@@ -49,8 +47,9 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
 
 Er zijn twee ondersteunde typen streaming-opname:
 
-* [Event hub](/azure/data-explorer/ingest-data-event-hub) gebruikt als gegevens bron
-* Aangepaste opname vereist dat u een toepassing schrijft die gebruikmaakt van een van de Azure Data Explorer-client bibliotheken. Zie voor [beeld van streaming opname](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) voor een voorbeeld toepassing.
+
+* [**Event hub**](/azure/data-explorer/ingest-data-event-hub) gebruikt als gegevens bron
+* **Aangepaste opname** vereist dat u een toepassing schrijft die gebruikmaakt van een van de Azure Data Explorer-client bibliotheken. Zie voor [beeld van streaming opname](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) voor een voorbeeld toepassing.
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Kies het juiste type stroom opname
 
@@ -78,6 +77,10 @@ Er zijn twee ondersteunde typen streaming-opname:
 * Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.
 * Het inschakelen van streaming-opname in een cluster, zelfs wanneer er geen gegevens worden opgenomen via streaming, maakt gebruik van de lokale SSD-schijf van de cluster machines voor het streamen van opname gegevens en vermindert de opslag ruimte die beschikbaar is voor warme cache.
 * Er kunnen geen [gebieds Tags](/azure/kusto/management/extents-overview.md#extent-tagging) worden ingesteld voor de gegevens van de streaming-opname.
+
+Streaming-opname ondersteunt de volgende functies niet:
+* [Database cursors](/azure/kusto/management/databasecursor).
+* [Gegevens toewijzing](/azure/kusto/management/mappings). Alleen [vooraf gemaakte](/azure/kusto/management/tables#create-ingestion-mapping) gegevens toewijzing wordt ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

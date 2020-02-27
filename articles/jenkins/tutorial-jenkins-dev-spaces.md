@@ -3,12 +3,12 @@ title: De Azure dev Space-invoeg toepassing gebruiken voor Jenkins met de Azure 
 description: Meer informatie over het gebruik van de Azure dev Spaces-invoeg toepassing in een continue integratie pijplijn.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209675"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619986"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Zelf studie: de Azure dev Spaces-invoeg toepassing gebruiken voor Jenkins met de Azure Kubernetes-service 
 
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u de Azure dev Spaces-invoeg toepassing gebruikt voor Jenkins en de Azure Container Registry-invoeg toepassing om code te bouwen en te implementeren op een dev-ruimte.
-
-De volgende lijst met resources biedt meer informatie over Azure dev Spaces, ACR-taken en CI/CD met Jenkins.
-
-Azure dev Spaces:
-* [Hoe Azure Dev Spaces werkt en is geconfigureerd](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR taken:
-* [OS- en frameworkpatching automatiseren met ACR Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatische build van code door voeren](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-CI/CD met Jenkins op Azure:
-* [Jenkins doorlopende implementatie](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [CI/CD met Jenkins op Azure](jenkins-continuous-deployment.md)

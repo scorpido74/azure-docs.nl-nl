@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525512"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621950"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
 
@@ -108,7 +108,7 @@ U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst
 |RUs toegewezen of beschikbaar voor een specifieke container|Er zijn geen garanties. RUs toegewezen aan een bepaalde container is afhankelijk van de eigenschappen. Eigenschappen kunnen de keuze zijn van partitie sleutels van containers die de door Voer, de distributie van de werk belasting en het aantal containers delen. |Alle ru's die zijn geconfigureerd op de container zijn exclusief zijn gereserveerd voor de container.|
 |Maximale opslag voor een container|Limited.|Limited.|
 |Maximale doorvoer per logische partitie van een container|10K ru 's|10K ru 's|
-|Maximale opslag (gegevens en index) per logische partitie van een container|10 GB|10 GB|
+|Maximale opslag (gegevens en index) per logische partitie van een container|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Volgende stappen
 

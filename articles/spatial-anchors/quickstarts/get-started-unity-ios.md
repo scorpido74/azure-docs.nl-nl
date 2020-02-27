@@ -8,23 +8,23 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3cbf0fa4a32145add0a5475f22ea0d936584c9bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465191"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615384"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Quick Start: een app Unitruimte maken met ruimtelijke Azure-ankers
 
-In deze Quick Start wordt beschreven hoe u een iOS-app unit maakt met behulp van [Azure spatiale ankers](../overview.md). Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARKit iOS-app met Unity gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
+In deze Quick Start wordt beschreven hoe u een iOS-app unit maakt met behulp van [Azure spatiale ankers](../overview.md). Azure Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARKit iOS-app met Unity gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
 U leert het volgende:
 
 > [!div class="checklist"]
 > * Een Spatial Anchors-account maken
 > * Build-instellingen voor Unity voorbereiden
-> * De Spatial Anchors-account-id en -accountsleutel configureren
+> * Spatial Anchors-account-id en -accountsleutel configureren
 > * Xcode-project exporteren
 > * Implementeren en uitvoeren op een iOS-apparaat
 
@@ -34,7 +34,7 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unit 2019.1 +</a>, de nieuwste versie van <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> is geïnstalleerd.
+- Een macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">unit 2019,1 of 2019,2</a>, de meest recente versie van <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> is geïnstalleerd.
 - Git geïnstalleerd via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens `brew install git` uit en `brew install git-lfs`.
 - Een door een ontwikkelaar geactiveerd en <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">met ARKit compatibel</a> iOS-apparaat.
 
@@ -48,13 +48,13 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 [!INCLUDE [iOS Unity Build Settings](../../../includes/spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
+## <a name="configure-account-identifier-and-key"></a>Configureer de account-id en -sleutel
 
 Ga in het deelvenster **Project** naar `Assets/AzureSpatialAnchors.Examples/Scenes` en open het scènebestand `AzureSpatialAnchorsBasicDemo.unity`.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Sla de scène op door **File** -> **Save** te selecteren.
+Sla de scène op door **Bestand** -> **Opslaan** te selecteren.
 
 ## <a name="export-the-xcode-project"></a>Xcode-project exporteren
 
@@ -81,6 +81,10 @@ brew update
 brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Als gevolg van het verbreken van wijzigingen, wordt unit 2019,3 momenteel niet ondersteund. Gebruik unit 2019,1 of 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

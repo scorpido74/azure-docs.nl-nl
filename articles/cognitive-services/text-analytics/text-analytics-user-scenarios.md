@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 02/25/2020
 ms.author: aahi
-ms.openlocfilehash: 19df2cfc58f0653b09600b43e5859753781d7151
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560784"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614445"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Voor beelden van gebruikers scenario's voor de Text Analytics-API
 
@@ -44,6 +44,12 @@ Gebruik Sleuteltermextractie en entiteits herkenning om ondersteunings aanvragen
 Feedback van gebruikers producten op de Twitter-of Facebook-pagina van uw product bewaken. Gebruik de gegevens om klant sentiment te analyseren naar nieuwe producten, sleutel zinnen te extra heren over functies en functie aanvragen of klachten van klanten te adresseren wanneer deze zich voordoen. Zie het voor beeld [Microsoft flow sjabloon](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
 ![Een afbeelding waarin wordt beschreven hoe u uw product-en bedrijfs feedback op sociale media kunt controleren met behulp van sleutel woorden extractie](media/use-cases/social-feed.svg)
+
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Documenten met gevoelige informatie classificeren en redigeren
+
+Gebruik benoemde entiteit herkenning om persoonlijke en gevoelige gegevens in documenten te identificeren. Gebruik de gegevens voor het classificeren van documenten of redactie ze zodanig dat ze veilig kunnen worden gedeeld.
+
+![Een afbeelding waarin wordt beschreven hoe u NER kunt gebruiken om persoonlijke gegevens te detecteren en documenten te classificeren en te redigeren](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>Volgende stappen
 

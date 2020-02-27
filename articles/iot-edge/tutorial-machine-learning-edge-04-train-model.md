@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133445"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650755"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Zelf studie: een Azure Machine Learning model trainen en implementeren
 
@@ -83,7 +83,7 @@ Laten we eens kijken welke bestanden u hebt geüpload naar uw Azure Notebooks-pr
 * **01-turbofan\_regressie. ipynb:** In dit notitie blok wordt gebruikgemaakt van de Machine Learning service-werk ruimte om een machine learning experiment te maken en uit te voeren. In ruime mate voert het notitie blok de volgende stappen uit:
 
   1. Hiermee worden gegevens gedownload van het Azure Storage-account dat is gegenereerd door de apparaat-harnas.
-  1. Verken en bereidt gegevens voor de training en het classificatie-AD model voor.
+  1. De gegevens worden verkend en voor bereid, waarna de gegevens worden gebruikt om het classificatie model te trainen.
   1. Evalueer het model vanuit het experiment met een test gegevensset (test\_FD003. txt).
   1. Hiermee wordt het beste classificatie model gepubliceerd in de werk ruimte Machine Learning service.
 

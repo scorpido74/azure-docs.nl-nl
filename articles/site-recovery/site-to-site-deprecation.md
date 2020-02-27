@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 29a939452d9b90bd8afda7db4e115d10956ee5e5
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606631"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623606"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Afschaffing van herstel na nood gevallen tussen door de klant beheerde sites (met VMM) met behulp van Azure Site Recovery
 
@@ -26,9 +26,9 @@ DR tussen sites die eigendom zijn van de klant die worden beheerd door System Ce
 
 ## <a name="what-changes-should-you-expect"></a>Welke wijzigingen moet u verwachten?
 
-- Vanaf november 2019 is geen nieuwe gebruiker on-boards toegestaan voor deze scenario's. **Bestaande replicaties en beheer bewerkingen** , waaronder failover, testfailover, bewaking enz. **worden niet beïnvloed**.
+- Vanaf 2020 ontvangt u Azure Portal meldingen & e-mail communicatie met de aanstaande afschaffing van site-naar-site-replicatie van Hyper-V-Vm's. De afschaffing wordt gepland voor maart 2023.
 
-- Als u een bestaande configuratie hebt, kunt u geen nieuwe VMMs registreren.
+- Als u een bestaande configuratie hebt, heeft dit geen invloed op de instelling.
 
 - Zodra de scenario's zijn afgeschaft, kunnen de bestaande replicaties worden onderbroken als de klant de alternatieve benaderingen volgt. Klanten kunnen geen DR-gerelateerde bewerkingen weer geven, beheren of uitvoeren via de Azure Site Recovery ervaring in Azure Portal.
  

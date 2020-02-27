@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549445"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612767"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
@@ -63,16 +63,16 @@ Het certificaat dat u wilt aanvragen of maken, moet voldoen aan de volgende vere
 
 * **Vertrouwde uitgever** : het certificaat moet worden uitgegeven door een certificerings instantie die wordt vertrouwd door computers die verbinding maken met het beheerde domein met behulp van secure LDAP. Deze instantie kan een open bare CERTIFICERINGs instantie of een bedrijfs certificerings instantie zijn die door deze computers wordt vertrouwd.
 * **Levens duur** : het certificaat moet ten minste de volgende 3-6 maanden geldig zijn. Secure LDAP toegang tot uw beheerde domein wordt verstoord wanneer het certificaat is verlopen.
-* **Onderwerpnaam** : de onderwerpnaam van het certificaat moet uw beheerde domein zijn. Als uw domein bijvoorbeeld de naam *aadds.contoso.com*heeft, moet de onderwerpnaam van het certificaat * *. aadds.contoso.com*zijn.
+* **Onderwerpnaam** : de onderwerpnaam van het certificaat moet uw beheerde domein zijn. Als uw domein bijvoorbeeld de naam *aaddscontoso.com*heeft, moet de onderwerpnaam van het certificaat * *. aaddscontoso.com*zijn.
     * De alternatieve naam van de DNS-naam of het onderwerp van het certificaat moet een Joker certificaat zijn om ervoor te zorgen dat de beveiligde LDAP goed werkt met de Azure AD Domain Services. Domein controllers gebruiken wille keurige namen en kunnen worden verwijderd of toegevoegd om ervoor te zorgen dat de service beschikbaar blijft.
 * **Sleutel gebruik** : het certificaat moet worden geconfigureerd voor *digitale hand tekeningen* en *sleutel codering*.
 * **Certificaat doeleinde** -het certificaat moet geldig zijn voor SSL-server authenticatie.
 
-In deze zelf studie maakt u een zelfondertekend certificaat voor secure LDAP met de cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Open een Power shell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de *$dnsName* variabele door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *aadds.contoso.com*:
+In deze zelf studie maakt u een zelfondertekend certificaat voor secure LDAP met de cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Open een Power shell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de *$dnsName* variabele door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
-$dnsName="aadds.contoso.com"
+$dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
 $lifetime=Get-Date
@@ -94,7 +94,7 @@ PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 
 Thumbprint                                Subject
 ----------                                -------
-959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aadds.contoso.com
+959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aaddscontoso.com
 ```
 
 ## <a name="understand-and-export-required-certificates"></a>Vereiste certificaten begrijpen en exporteren
@@ -125,7 +125,7 @@ Voordat u het digitale certificaat dat u in de vorige stap hebt gemaakt, kunt ge
 
     ![Open het archief met persoonlijke certificaten in de micro soft Management Console](./media/tutorial-configure-ldaps/open-personal-store.png)
 
-1. Het zelfondertekende certificaat dat u in de vorige stap hebt gemaakt, wordt weer gegeven, zoals *aadds.contoso.com*. Klik met de rechter muisknop op dit certificaat en kies **alle taken > exporteren...**
+1. Het zelfondertekende certificaat dat u in de vorige stap hebt gemaakt, wordt weer gegeven, zoals *aaddscontoso.com*. Klik met de rechter muisknop op dit certificaat en kies **alle taken > exporteren...**
 
     ![Certificaat exporteren in micro soft Management Console](./media/tutorial-configure-ldaps/export-cert.png)
 
@@ -150,7 +150,7 @@ Voordat u het digitale certificaat dat u in de vorige stap hebt gemaakt, kunt ge
 
 Client computers moeten de verlener van het beveiligde LDAP-certificaat vertrouwen om met behulp van LDAPS verbinding te kunnen maken met het beheerde domein. Op de client computers is een certificaat vereist om gegevens te versleutelen die door Azure AD DS worden ontsleuteld. Als u een open bare certificerings instantie gebruikt, moet de computer deze certificaat verleners automatisch vertrouwen en een bijbehorend certificaat hebben. In deze zelf studie gebruikt u een zelfondertekend certificaat en hebt u een certificaat gegenereerd dat de persoonlijke sleutel bevat in de vorige stap. Nu gaan we het zelfondertekende certificaat exporteren en installeren in het vertrouwde certificaat archief op de client computer:
 
-1. Ga terug naar de MMC voor *certificaten (lokale computer) > Archief met persoonlijke > certificaten* . Het zelfondertekende certificaat dat in een vorige stap is gemaakt, wordt weer gegeven, zoals *aadds.contoso.com*. Klik met de rechter muisknop op dit certificaat en kies **alle taken > exporteren...**
+1. Ga terug naar de MMC voor *certificaten (lokale computer) > Archief met persoonlijke > certificaten* . Het zelfondertekende certificaat dat in een vorige stap is gemaakt, wordt weer gegeven, zoals *aaddscontoso.com*. Klik met de rechter muisknop op dit certificaat en kies **alle taken > exporteren...**
 1. Selecteer in de **wizard Certificaat exporteren**de optie **volgende**.
 1. Als u de persoonlijke sleutel voor clients niet nodig hebt, kiest u op de pagina **persoonlijke sleutel exporteren** de optie **Nee, de persoonlijke sleutel niet exporteren**en selecteert u **volgende**.
 1. Selecteer op de pagina **bestands indeling voor export** de optie **Base-64 Encoded X. 509 (. CER)** als de bestands indeling voor het geëxporteerde certificaat:
@@ -180,7 +180,7 @@ Als er een digitaal certificaat is gemaakt en geëxporteerd dat de persoonlijke 
 
     ![Zoek en selecteer uw door Azure AD DS beheerde domein in het Azure Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
-1. Kies uw beheerde domein, zoals *aadds.contoso.com*.
+1. Kies uw beheerde domein, zoals *aaddscontoso.com*.
 1. Kies aan de linkerkant van het Azure AD DS-venster **secure LDAP**.
 1. Beveiligde LDAP-toegang tot uw beheerde domein is standaard uitgeschakeld. Schakel **secure LDAP** in om in te **scha kelen**.
 1. Secure LDAP toegang tot uw beheerde domein via internet is standaard uitgeschakeld. Wanneer u open bare beveiligde toegang tot LDAP inschakelt, is uw domein gevoelig voor wachtwoord beveiliging tegen aanvallen via internet. In de volgende stap wordt een netwerk beveiligings groep geconfigureerd om de toegang tot de vereiste bron-IP-adresbereiken te vergren delen.
@@ -216,10 +216,10 @@ We gaan een regel maken om binnenkomende beveiligde LDAP-toegang via TCP-poort 6
     | Bron                            | IP-adressen |
     | IP-adressen van bron/CIDR-bereiken | Een geldig IP-adres of-bereik voor uw omgeving |
     | Poortbereiken van bron                | *            |
-    | Bestemming                       | Alle          |
+    | Doel                       | Alle          |
     | Poortbereiken van doel           | 636          |
     | Protocol                          | TCP          |
-    | Actie                            | Toestaan        |
+    | Bewerking                            | Toestaan        |
     | Prioriteit                          | 401          |
     | Name                              | AllowLDAPS   |
 
@@ -235,10 +235,10 @@ Wanneer beveiligde LDAP-toegang via internet is ingeschakeld, werkt u de DNS-zon
 
 Configureer uw externe DNS-provider om een hostrecord, zoals *LDAPS*, te maken om dit externe IP-adres op te lossen. Als u eerst lokaal op uw computer wilt testen, kunt u een vermelding in het Windows-hosts-bestand maken. Als u het hosts-bestand op uw lokale computer wilt bewerken, opent u *Klad blok* als beheerder en opent u het bestand *C:\Windows\System32\drivers\etc*
 
-In het volgende voor beeld van een DNS-vermelding, met uw externe DNS-provider of in het lokale hosts-bestand, wordt verkeer voor *LDAPS.aadds.contoso.com* naar het externe IP-adres van *40.121.19.239*opgelost:
+In het volgende voor beeld van een DNS-vermelding, met uw externe DNS-provider of in het lokale hosts-bestand, wordt verkeer voor *LDAPS.aaddscontoso.com* naar het externe IP-adres van *40.121.19.239*opgelost:
 
 ```
-40.121.19.239    ldaps.aadds.contoso.com
+40.121.19.239    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Query's naar het beheerde domein testen
@@ -246,13 +246,13 @@ In het volgende voor beeld van een DNS-vermelding, met uw externe DNS-provider o
 Gebruik het hulp programma *Ldp. exe* om verbinding te maken en te verbinden met uw Azure AD DS beheerde domein en om te zoeken in LDAP. Dit hulp programma is opgenomen in het Remote Server Administration Tools-pakket (RSAT). Zie [install Remote Server Administration Tools][rsat](Engelstalig) voor meer informatie.
 
 1. Open *Ldp. exe* en maak verbinding met het beheerde domein. Selecteer **verbinding**en kies vervolgens **verbinding maken...** .
-1. Voer de naam van het beveiligde LDAP-DNS-domein in van uw beheerde domein dat in de vorige stap is gemaakt, zoals *LDAPS.aadds.contoso.com*. Als u beveiligde LDAP wilt gebruiken, stelt u **poort** in op *636*en schakelt u het selectie vakje in voor **SSL**.
+1. Voer de naam van het beveiligde LDAP-DNS-domein in van uw beheerde domein dat in de vorige stap is gemaakt, zoals *LDAPS.aaddscontoso.com*. Als u beveiligde LDAP wilt gebruiken, stelt u **poort** in op *636*en schakelt u het selectie vakje in voor **SSL**.
 1. Selecteer **OK** om verbinding te maken met het beheerde domein.
 
 Maak vervolgens een binding met uw door Azure AD DS beheerd domein. Gebruikers (en service accounts) kunnen geen LDAP-eenvoudige bindingen uitvoeren als NTLM-wachtwoord synchronisatie is uitgeschakeld op uw Azure AD DS-exemplaar. Zie [Secure Your Azure AD DS Managed Domain][secure-domain](Engelstalig) voor meer informatie over het uitschakelen van NTLM-wachtwoord hash-synchronisatie.
 
 1. Selecteer de menu optie **verbinding** en kies vervolgens **binden...** .
-1. Geef de referenties op van een gebruikers account dat deel uitmaakt van de groep *Aad DC-Administrators* , zoals *contosoadmin*. Voer het wacht woord van het gebruikers account in en voer vervolgens uw domein in, bijvoorbeeld *aadds.contoso.com*.
+1. Geef de referenties op van een gebruikers account dat deel uitmaakt van de groep *Aad DC-Administrators* , zoals *contosoadmin*. Voer het wacht woord van het gebruikers account in en voer vervolgens uw domein in, bijvoorbeeld *aaddscontoso.com*.
 1. Kies voor **bindings type**de optie voor *binden met referenties*.
 1. Selecteer **OK** om een binding te maken met uw Azure AD DS beheerde domein.
 
@@ -265,7 +265,7 @@ Als u de objecten wilt zien die zijn opgeslagen in uw Azure AD DS beheerde domei
 
     ![Zoeken naar objecten in uw Azure AD DS beheerde domein met behulp van LDP. exe](./media/tutorial-configure-ldaps/ldp-query.png)
 
-Als u rechtstreeks een query wilt uitvoeren op een specifieke container, kunt u in het menu **> structuur van weer gave** een **basis** opgeven zoals *OE = AADDC gebruikers, DC = CONTOSO, DC = com* of *OE = AADDC computers, DC = CONTOSO, DC = com*. Zie [basis beginselen van LDAP-query's][ldap-query-basics]voor meer informatie over het opmaken en maken van query's.
+Als u rechtstreeks een query wilt uitvoeren op een specifieke container, kunt u in het menu **> structuur van weer gave** een **basis** opgeven zoals *OE = AADDC gebruikers, DC = AADDSCONTOSO, DC = com* of *OE = AADDC computers, DC = AADDSCONTOSO, DC = com*. Zie [basis beginselen van LDAP-query's][ldap-query-basics]voor meer informatie over het opmaken en maken van query's.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -273,11 +273,11 @@ Als u een DNS-vermelding hebt toegevoegd aan het lokale hosts-bestand van uw com
 
 1. Open *Klad blok* op uw lokale computer als beheerder
 1. Blader naar en open het bestand *C:\Windows\System32\drivers\etc*
-1. Verwijder de regel voor de record die u hebt toegevoegd, zoals `40.121.19.239    ldaps.aadds.contoso.com`
+1. Verwijder de regel voor de record die u hebt toegevoegd, zoals `40.121.19.239    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een digitaal certificaat maken voor gebruik met Azure AD DS

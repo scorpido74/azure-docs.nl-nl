@@ -6,14 +6,14 @@ ms.service: service-bus
 documentationcenter: ''
 author: axisc
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903323"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624092"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens op rest door gebruik te maken van de Azure Portal
 Azure Service Bus Premium zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Service Bus Premium is afhankelijk van Azure Storage om de gegevens op te slaan en de standaard instelling is dat alle gegevens die zijn opgeslagen met Azure Storage, worden versleuteld met door micro soft beheerde sleutels. 
@@ -78,22 +78,22 @@ Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de kla
     1. Vul de Details voor de sleutel in en klik op **selecteren**. Dit zorgt ervoor dat de versleuteling van gegevens in rust in de naam ruimte met een door de klant beheerde sleutel. 
 
 
-> [!IMPORTANT]
-> Als u een door de klant beheerde sleutel en geo-nood herstel wilt gebruiken, raadpleegt u de onderstaande- 
->
-> Voor het inschakelen van versleuteling in rust met door de klant beheerde sleutel, wordt een [toegangs beleid](../key-vault/key-vault-secure-your-key-vault.md) ingesteld voor de service bus beheerde identiteit op de opgegeven Azure-hoofd kluis. Dit zorgt voor gecontroleerde toegang tot de Azure-sleutel kluis vanuit de Azure Service Bus naam ruimte.
->
-> Vanwege dit:
-> 
->   * Als [geo-nood herstel](service-bus-geo-dr.md) al is ingeschakeld voor de service bus naam ruimte en u de door de klant beheerde sleutel wilt inschakelen, 
->     * Koppeling verbreekt
->     * [Stel het toegangs beleid](../key-vault/managed-identity.md) voor de beheerde identiteit voor de primaire en secundaire naam ruimten in op de sleutel kluis.
->     * Stel versleuteling in voor de primaire naam ruimte.
->     * De primaire en secundaire naam ruimten opnieuw koppelen.
-> 
->   * Als u geo-DR wilt inschakelen voor een Service Bus naam ruimte waarin de door de klant beheerde sleutel al is ingesteld,
->     * [Stel het toegangs beleid](../key-vault/managed-identity.md) voor de beheerde identiteit voor de secundaire naam ruimte in op de sleutel kluis.
->     * Koppel de primaire en secundaire naam ruimte.
+    > [!IMPORTANT]
+    > Als u een door de klant beheerde sleutel en geo-nood herstel wilt gebruiken, raadpleegt u de onderstaande- 
+    >
+    > Voor het inschakelen van versleuteling in rust met door de klant beheerde sleutel, wordt een [toegangs beleid](../key-vault/key-vault-secure-your-key-vault.md) ingesteld voor de service bus beheerde identiteit op de opgegeven Azure-hoofd kluis. Dit zorgt voor gecontroleerde toegang tot de Azure-sleutel kluis vanuit de Azure Service Bus naam ruimte.
+    >
+    > Vanwege dit:
+    > 
+    >   * Als [geo-nood herstel](service-bus-geo-dr.md) al is ingeschakeld voor de service bus naam ruimte en u de door de klant beheerde sleutel wilt inschakelen, 
+    >     * Koppeling verbreekt
+    >     * [Stel het toegangs beleid](../key-vault/managed-identity.md) voor de beheerde identiteit voor de primaire en secundaire naam ruimten in op de sleutel kluis.
+    >     * Stel versleuteling in voor de primaire naam ruimte.
+    >     * De primaire en secundaire naam ruimten opnieuw koppelen.
+    > 
+    >   * Als u geo-DR wilt inschakelen voor een Service Bus naam ruimte waarin de door de klant beheerde sleutel al is ingesteld,
+    >     * [Stel het toegangs beleid](../key-vault/managed-identity.md) voor de beheerde identiteit voor de secundaire naam ruimte in op de sleutel kluis.
+    >     * Koppel de primaire en secundaire naam ruimte.
 
 
 ## <a name="rotate-your-encryption-keys"></a>Uw versleutelings sleutels draaien
@@ -105,6 +105,224 @@ U kunt de sleutel in de sleutel kluis draaien met behulp van het rotatie mechani
 Als u de toegang tot de versleutelings sleutels intrekt, worden de gegevens niet verwijderd uit Service Bus. De gegevens kunnen echter niet worden geopend vanuit de naam ruimte Service Bus. U kunt de versleutelings sleutel intrekken via toegangs beleid of door de sleutel te verwijderen. Meer informatie over toegangs beleid en het beveiligen van uw sleutel kluis van [beveiligde toegang tot een sleutel kluis](../key-vault/key-vault-secure-your-key-vault.md).
 
 Zodra de versleutelings sleutel is ingetrokken, wordt de Service Bus-service op de versleutelde naam ruimte niet meer bruikbaar. Als de toegang tot de sleutel is ingeschakeld of de verwijderde sleutel is hersteld, wordt de sleutel door Service Bus service gekozen, zodat u toegang hebt tot de gegevens van de versleutelde Service Bus naam ruimte.
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager-sjabloon gebruiken om versleuteling in te scha kelen
+In deze sectie wordt beschreven hoe u de volgende taken kunt uitvoeren met behulp van **Azure Resource Manager sjablonen**. 
+
+1. Maak een **Premium** -service bus naam ruimte met een **beheerde service-identiteit**.
+2. Maak een **sleutel kluis** en verleen de service-identiteit toegang tot de sleutel kluis. 
+3. Werk de Service Bus naam ruimte bij met de sleutel kluis gegevens (sleutel/waarde). 
+
+
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Een Premium-Service Bus naam ruimte maken met een beheerde service-identiteit
+In deze sectie wordt beschreven hoe u een Azure Service Bus naam ruimte met een beheerde service-identiteit maakt met behulp van een Azure Resource Manager sjabloon en Power shell. 
+
+1. Maak een Azure Resource Manager sjabloon om een Service Bus naam ruimte voor de Premium-laag te maken met een beheerde service-identiteit. Geef het bestand de naam: **CreateServiceBusPremiumNamespace. json**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+    
+             }
+          }
+       ],
+       "outputs":{
+          "ServiceBusNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.ServiceBus/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Maak een sjabloon parameter bestand met de naam: **CreateServiceBusPremiumNamespaceParams. json**. 
+
+    > [!NOTE]
+    > Vervang de volgende waarden: 
+    > - `<ServiceBusNamespaceName>`-naam van uw Service Bus naam ruimte
+    > - `<Location>` locatie van uw Service Bus naam ruimte
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    ```
+3. Voer de volgende Power shell-opdracht uit om de sjabloon te implementeren om een Premium-Service Bus naam ruimte te maken. Vervolgens haalt u de ID van de Service Bus naam ruimte op om deze later te gebruiken. Vervang `{MyRG}` door de naam van de resource groep voordat u de opdracht uitvoert.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
+    
+    $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
+    ```
+ 
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Identiteit van Service Bus naam ruimte verlenen toegang tot de sleutel kluis
+
+1. Voer de volgende opdracht uit om een sleutel kluis te maken met **opschoon beveiliging** en **zacht verwijderen** ingeschakeld. 
+
+    ```powershell
+    New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
+    ```
+    
+    OF
+    
+    Voer de volgende opdracht uit om een **bestaande sleutel kluis**bij te werken. Geef waarden op voor de naam van de resource groep en de sleutel kluis voordat u de opdracht uitvoert. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Stel het toegangs beleid voor de sleutel kluis zo in dat de beheerde identiteit van de Service Bus naam ruimte toegang kan krijgen tot de sleutel waarde in de sleutel kluis. Gebruik de ID van de Service Bus naam ruimte uit de vorige sectie. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Gegevens in Service Bus naam ruimte versleutelen met door de klant beheerde sleutel van de sleutel kluis
+U hebt de volgende stappen tot nu toe uitgevoerd: 
+
+1. Er is een Premium-naam ruimte met een beheerde identiteit gemaakt.
+2. Maak een sleutel kluis en verleend de beheerde identiteit toegang tot de sleutel kluis. 
+
+In deze stap werkt u de Service Bus naam ruimte bij met sleutel kluis gegevens. 
+
+1. Maak een JSON-bestand met de naam **UpdateServiceBusNamespaceWithEncryption. json** met de volgende inhoud: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Maak een sjabloon parameter bestand: **UpdateServiceBusNamespaceWithEncryptionParams. json**.
+
+    > [!NOTE]
+    > Vervang de volgende waarden: 
+    > - `<ServiceBusNamespaceName>`-naam van uw Service Bus naam ruimte
+    > - `<Location>` locatie van uw Service Bus naam ruimte
+    > - `<KeyVaultName>`-naam van uw sleutel kluis
+    > - `<KeyName>`-de naam van de sleutel in de sleutel kluis  
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Voer de volgende Power shell-opdracht uit om de Resource Manager-sjabloon te implementeren. Vervang `{MyRG}` door de naam van uw resource groep voordat u de opdracht uitvoert. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
+    ```
+    
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

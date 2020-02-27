@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161389"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620891"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -178,7 +178,7 @@ We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validat
 
 Een JWT bevat drie segmenten, gescheiden door het `.`-teken. Het eerste segment wordt de **kop**, het tweede als de **hoofd tekst**en de derde als de **hand tekening**genoemd. Het handtekening segment kan worden gebruikt om de echtheid van het token te valideren, zodat het kan worden vertrouwd door uw app.
 
-Tokens die zijn uitgegeven door Azure AD, worden ondertekend met behulp van standaard algoritmen voor asymmetrische versleuteling van de industrie, zoals RSA 256. De kop van de JWT bevat informatie over de sleutel en versleutelings methode die wordt gebruikt om het token te ondertekenen:
+Tokens die zijn uitgegeven door Azure AD, worden ondertekend met behulp van standaard algoritmen voor asymmetrische versleuteling van de industrie, zoals RS256. De kop van de JWT bevat informatie over de sleutel en versleutelings methode die wordt gebruikt om het token te ondertekenen:
 
 ```json
 {

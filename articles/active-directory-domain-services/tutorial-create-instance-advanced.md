@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931613"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612549"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren met geavanceerde configuratie opties
 
@@ -69,17 +69,17 @@ Wanneer u een exemplaar van Azure AD DS maakt, geeft u een DNS-naam op. Er zijn 
 * **Niet-routeerbaar domein achtervoegsels:** U wordt geadviseerd om een niet-routeerbaar domein naam achtervoegsel, zoals *contoso. local*, te voor komen. Het achtervoegsel *. local* is niet routeerbaar en kan problemen met de DNS-omzetting veroorzaken.
 
 > [!TIP]
-> Als u een aangepaste domein naam maakt, moet u rekening houden met bestaande DNS-naam ruimten. U kunt het beste een uniek voor voegsel voor de domein naam toevoegen. Als uw naam van de DNS-basis bijvoorbeeld *contoso.com*is, maakt u een Azure AD DS beheerd domein met de aangepaste domein naam *Corp.contoso.com* of *DS.contoso.com*. In een hybride omgeving met een on-premises AD DS omgeving zijn deze voor voegsels mogelijk al in gebruik. Gebruik een uniek voor voegsel voor Azure AD DS.
+> Als u een aangepaste domein naam maakt, moet u rekening houden met bestaande DNS-naam ruimten. Het is raadzaam een domein naam te gebruiken die losstaat van een bestaande Azure-of on-premises DNS-naam ruimte.
 >
-> U kunt de DNS-basis naam voor uw Azure AD DS beheerde domein gebruiken, maar u moet mogelijk enkele extra DNS-records maken voor andere services in uw omgeving. Als u bijvoorbeeld een webserver uitvoert die als host fungeert voor een-site met behulp van de DNS-naam van de basis, kan er sprake zijn van naam conflicten waarvoor extra DNS-vermeldingen zijn vereist.
+> Als u bijvoorbeeld een bestaande DNS-naam ruimte van *contoso.com*hebt, maakt u een door Azure AD DS beheerd domein met de aangepaste domein naam *aaddscontoso.com*. Als u beveiligde LDAP wilt gebruiken, moet u deze aangepaste domein naam registreren en de vereiste certificaten genereren.
 >
-> In deze zelf studies en artikelen met procedures wordt het aangepaste domein *aadds.contoso.com* als een kort voor beeld gebruikt. Geef in alle opdrachten uw eigen domein naam op. Dit kan ook een uniek voor voegsel bevatten.
+> Mogelijk moet u enkele extra DNS-records maken voor andere services in uw omgeving, of voorwaardelijke DNS-doorstuur servers tussen bestaande DNS-naam ruimten in uw omgeving. Als u bijvoorbeeld een webserver uitvoert die als host fungeert voor een-site met behulp van de DNS-naam van de basis, kan er sprake zijn van naam conflicten waarvoor extra DNS-vermeldingen zijn vereist.
 >
-> Zie [een naam voorvoegsel selecteren voor het domein] [naam-prefix] voor meer informatie.
+> In deze zelf studies en artikelen met procedures wordt het aangepaste domein *aaddscontoso.com* als een kort voor beeld gebruikt. Geef in alle opdrachten uw eigen domein naam op.
 
 De volgende DNS-naam beperkingen zijn ook van toepassing:
 
-* **Beperkingen voor domein voorvoegsels:** U kunt geen beheerd domein met een voor voegsel maken dat langer is dan 15 tekens. Het voor voegsel van de opgegeven domein naam (bijvoorbeeld *Contoso* in de domein naam *contoso.com* ) mag Maxi maal 15 tekens bevatten.
+* **Beperkingen voor domein voorvoegsels:** U kunt geen beheerd domein met een voor voegsel maken dat langer is dan 15 tekens. Het voor voegsel van uw opgegeven domein naam (zoals *aaddscontoso* in de domein naam *aaddscontoso.com* ) mag Maxi maal 15 tekens bevatten.
 * **Conflicten met netwerk naam:** De DNS-domein naam voor uw beheerde domein mag niet al bestaan in het virtuele netwerk. Controleer met name op de volgende scenario's die leiden tot een naam conflict:
     * Als u al een Active Directory domein met dezelfde DNS-domein naam hebt in het virtuele Azure-netwerk.
     * Als het virtuele netwerk waar u het beheerde domein wilt inschakelen, een VPN-verbinding heeft met uw on-premises netwerk. In dit scenario zorgt u ervoor dat u geen domein hebt met dezelfde DNS-domein naam in uw on-premises netwerk.
@@ -170,7 +170,7 @@ Controleer op de pagina **samen vatting** van de wizard de configuratie-instelli
 
     ![Melding in de Azure Portal van de implementatie die wordt uitgevoerd](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. Selecteer uw resource groep, zoals *myResourceGroup*, en kies vervolgens uw Azure AD DS-exemplaar in de lijst met Azure-resources, zoals *aadds.contoso.com*. Op het tabblad **overzicht** ziet u dat het beheerde domein momenteel wordt *geïmplementeerd*. U kunt het beheerde domein pas configureren als het volledig is ingericht.
+1. Selecteer uw resource groep, zoals *myResourceGroup*, en kies vervolgens uw Azure AD DS-exemplaar in de lijst met Azure-resources, zoals *aaddscontoso.com*. Op het tabblad **overzicht** ziet u dat het beheerde domein momenteel wordt *geïmplementeerd*. U kunt het beheerde domein pas configureren als het volledig is ingericht.
 
     ![Status van domein Services tijdens de inrichtings status](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 
@@ -226,7 +226,7 @@ Het duurt enkele minuten voordat u uw wacht woord voor het nieuwe wacht woord he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * DNS-en virtuele netwerk instellingen configureren voor een beheerd domein
