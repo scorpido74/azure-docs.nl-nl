@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.custom: hdinsightactive
+ms.date: 02/24/2020
+ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937618"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623093"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
 
@@ -21,11 +21,11 @@ Apache HBase wordt doorgaans opgevraagd met de API op laag niveau (scans, haalt 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Twee afzonderlijke HDInsight-clusters die zijn geïmplementeerd in hetzelfde virtuele netwerk. Eén HBase en een Spark met ten minste Spark 2,1 (HDInsight 3,6) geïnstalleerd. Zie op [Linux gebaseerde clusters in HDInsight maken met behulp van de Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie.
+* Twee afzonderlijke HDInsight-clusters die zijn geïmplementeerd in hetzelfde [virtuele netwerk](./hdinsight-plan-virtual-network-deployment.md). Eén HBase en een Spark met ten minste Spark 2,1 (HDInsight 3,6) geïnstalleerd. Zie op [Linux gebaseerde clusters in HDInsight maken met behulp van de Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Het [URI-schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Blob Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://`.  Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit schema is wasb://voor Azure Blob Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, wordt de URI `wasbs://`.  Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Algemeen proces
 
@@ -34,7 +34,7 @@ Het proces op hoog niveau voor het inschakelen van uw Spark-cluster voor het uit
 1. Bereid enkele voorbeeld gegevens voor in HBase.
 2. Haal het hbase-site. XML-bestand op in de map HBase cluster Configuration (/etc/hbase/conf).
 3. Plaats een kopie van hbase-site. XML in de configuratiemap van Spark 2 (/etc/spark2/conf).
-4. Voer `spark-shell` een verwijzing naar de Spark HBase-connector uit met de bijbehorende `packages` maven-coördinaten in de optie.
+4. Voer `spark-shell` een verwijzing naar de Spark HBase-connector uit met de Maven-coördinaten in de `packages` optie.
 5. Definieer een catalogus die het schema toewijst van Spark in HBase.
 6. Interactie met de HBase-gegevens met behulp van de RDD-of data frame-Api's.
 
@@ -42,13 +42,13 @@ Het proces op hoog niveau voor het inschakelen van uw Spark-cluster voor het uit
 
 In deze stap maakt en vult u een tabel in Apache HBase op die u vervolgens kunt uitvoeren met behulp van Spark.
 
-1. Gebruik de `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door de `HBASECLUSTER` naam van uw HBase-cluster te vervangen en voer de opdracht in:
+1. Gebruik de opdracht `ssh` om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `HBASECLUSTER` te vervangen door de naam van uw HBase-cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Gebruik de `hbase shell` opdracht om de HBase-interactieve shell te starten. Voer de volgende opdracht in voor uw SSH-verbinding:
+2. Gebruik de opdracht `hbase shell` om de HBase Interactive shell te starten. Voer de volgende opdracht in voor uw SSH-verbinding:
 
     ```bash
     hbase shell
@@ -60,7 +60,7 @@ In deze stap maakt en vult u een tabel in Apache HBase op die u vervolgens kunt 
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Gebruik de `put` opdracht om waarden in een opgegeven kolom in een opgegeven rij in een bepaalde tabel in te voegen. Voer de volgende opdracht in:
+4. Gebruik de opdracht `put` om in een opgegeven rij in een bepaalde tabel waarden in te voegen voor een opgegeven kolom. Voer de volgende opdracht in:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -95,11 +95,19 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 Sluit vervolgens uw SSH-verbinding met uw HBase-cluster af.
 
+```bash
+exit
+```
+
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Hbase-site. XML op uw Spark-cluster plaatsen
 
-1. Maak met SSH verbinding met het hoofd knooppunt van uw Spark-cluster.
+1. Maak met SSH verbinding met het hoofd knooppunt van uw Spark-cluster. Bewerk de onderstaande opdracht door `SPARKCLUSTER` te vervangen door de naam van uw Spark-cluster en voer de volgende opdracht in:
 
-2. Voer de onderstaande opdracht in om `hbase-site.xml` de standaard opslag van uw Spark-cluster te kopiëren naar de map Spark 2-configuratie op de lokale opslag van het cluster:
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
+    ```
+
+2. Voer de onderstaande opdracht in om `hbase-site.xml` van de standaard opslag van uw Spark-cluster te kopiëren naar de map Spark 2-configuratie op de lokale opslag van het cluster:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -119,7 +127,7 @@ Sluit vervolgens uw SSH-verbinding met uw HBase-cluster af.
 
 In deze stap definieert u een catalogus object dat het schema toewijst van Apache Spark aan Apache HBase.  
 
-1. Voer in uw open Spark-shell de volgende `import` instructies in:
+1. Voer in uw open Spark-shell de volgende `import`-instructies in:
 
     ```scala
     import org.apache.spark.sql.{SQLContext, _}
@@ -128,7 +136,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
     import spark.sqlContext.implicits._
     ```  
 
-2. Voer de onderstaande opdracht in om een catalogus te definiëren voor de tabel contact personen die u hebt gemaakt in HBase:
+1. Voer de onderstaande opdracht in om een catalogus te definiëren voor de tabel contact personen die u hebt gemaakt in HBase:
 
     ```scala
     def catalog = s"""{
@@ -146,11 +154,11 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
 
     De code doet het volgende:  
 
-     a. Definieer een catalogus schema voor de HBase-tabel `Contacts`met de naam.  
+     a. Definieer een catalogus schema voor de HBase-tabel met de naam `Contacts`.  
      b. Identificeer de rowkey als `key`en wijs de kolom namen die worden gebruikt in Spark toe aan het kolom familie, de kolom naam en het kolom Type zoals gebruikt in HBase.  
-     c. De rowkey moet ook gedetailleerd worden gedefinieerd als een benoemde kolom (`rowkey`) met een specifieke kolom familie `cf` van `rowkey`.  
+     c. De rowkey moet ook gedetailleerd worden gedefinieerd als een benoemde kolom (`rowkey`), die een specifieke kolom familie heeft `cf` van `rowkey`.  
 
-3. Voer de onderstaande opdracht in om een methode te definiëren die een data frame rond `Contacts` uw tabel in HBase biedt:
+1. Voer de onderstaande opdracht in om een methode te definiëren die een data frame rond uw `Contacts` tabel in HBase biedt:
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,40 +170,42 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
      }
     ```
 
-4. Maak een instantie van de data frame:
+1. Maak een instantie van de data frame:
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. Query uitvoeren op de data frame:
+1. Query uitvoeren op de data frame:
 
     ```scala
     df.show()
     ```
 
-6. U ziet nu twee rijen met gegevens:
+    U ziet nu twee rijen met gegevens:
 
-        +------+--------------------+--------------+-------------+--------------+
-        |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
-        +------+--------------------+--------------+-------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+-------------+--------------+
+    ```output
+    +------+--------------------+--------------+-------------+--------------+
+    |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
+    +------+--------------------+--------------+-------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+-------------+--------------+
+    ```
 
-7. Registreer een tijdelijke tabel zodat u een query kunt uitvoeren op de HBase-tabel met behulp van Spark SQL:
+1. Registreer een tijdelijke tabel zodat u een query kunt uitvoeren op de HBase-tabel met behulp van Spark SQL:
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. Een SQL-query voor de `contacts` tabel uitgeven:
+1. Geef een SQL-query op voor de tabel `contacts`:
 
     ```scala
     spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
-9. De resultaten moeten er als volgt uitzien:
+    De resultaten moeten er als volgt uitzien:
 
     ```output
     +-------------+--------------------+
@@ -208,7 +218,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
 
 ## <a name="insert-new-data"></a>Nieuwe gegevens invoegen
 
-1. Als u een nieuwe contactpersoonrecord wilt invoegen, definieert `ContactRecord` u een klasse:
+1. Als u een nieuwe contactpersoonrecord wilt invoegen, definieert u een `ContactRecord` klasse:
 
     ```scala
     case class ContactRecord(
@@ -220,7 +230,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
         )
     ```
 
-2. Maak een instantie van `ContactRecord` en plaats deze in een matrix:
+1. Maak een instantie van `ContactRecord` en plaats deze in een matrix:
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -229,19 +239,19 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
     newData(0) = newContact
     ```
 
-3. Sla de matrix van nieuwe gegevens op naar HBase:
+1. Sla de matrix van nieuwe gegevens op naar HBase:
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. Bekijk de resultaten:
+1. Bekijk de resultaten:
 
     ```scala  
     df.show()
     ```
 
-5. De uitvoer ziet er als volgt uit:
+    De uitvoer ziet er als volgt uit:
 
     ```output
     +------+--------------------+--------------+------------+--------------+
@@ -253,7 +263,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. Sluit de Spark-shell door de volgende opdracht in te voeren:
+1. Sluit de Spark-shell door de volgende opdracht in te voeren:
 
     ```scala
     :q

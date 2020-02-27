@@ -1,23 +1,23 @@
 ---
-title: Inkomend verkeer filteren met Azure Firewall DNAT met behulp van de portal
+title: Inkomend Internet verkeer filteren met Azure Firewall DNAT met behulp van de portal
 description: In deze zelfstudie leert u hoe u Azure Firewall DNAT kunt implementeren en configureren via de Azure-portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/26/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1528087ced54ddcab2e3dd44b65fb3411cae3004
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195724"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621791"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Zelfstudie: Binnenkomend verkeer filteren met Azure Firewall DNAT via de Azure-portal
+# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Zelf studie: inkomend Internet verkeer filteren met Azure Firewall DNAT met behulp van de Azure Portal
 
-U kunt Azure Firewall Destination Network Address Translation (DNAT) configureren voor het omzetten en filteren van inkomend verkeer naar uw subnetten. Wanneer u DNAT configureert, wordt de actie Verzameling van NAT-regels ingesteld op **Dnat**. Elke regel in de verzameling van NAT-regels kan vervolgens worden gebruikt voor de omzetting van het openbare IP-adres en de openbare poort van uw firewall in een privé-IP-adres en -poort. Met DNAT-regels wordt er impliciet een overeenkomende netwerkregel toegevoegd om het omgezette verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer. Zie [Verwerkingslogica voor Azure Firewall-regels](rule-processing.md) voor meer informatie over de verwerkingslogica voor Azure Firewall-regels.
+U kunt Azure Firewall (DNAT) van het Doelnet doel configureren voor het vertalen en filteren van inkomend Internet verkeer naar uw subnetten. Wanneer u DNAT configureert, wordt de actie Verzameling van NAT-regels ingesteld op **Dnat**. Elke regel in de verzameling van NAT-regels kan vervolgens worden gebruikt voor de omzetting van het openbare IP-adres en de openbare poort van uw firewall in een privé-IP-adres en -poort. Met DNAT-regels wordt er impliciet een overeenkomende netwerkregel toegevoegd om het omgezette verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer. Zie [Verwerkingslogica voor Azure Firewall-regels](rule-processing.md) voor meer informatie over de verwerkingslogica voor Azure Firewall-regels.
 
 In deze zelfstudie leert u het volgende:
 
@@ -151,7 +151,7 @@ Als de implementatie is voltooid, ziet u het privé IP-adres voor de virtuele ma
 
    |Instelling  |Waarde  |
    |---------|---------|
-   |Naam     |FW-DNAT-test|
+   |Name     |FW-DNAT-test|
    |Abonnement     |\<uw abonnement\>|
    |Resourcegroep     |**Bestaande gebruiken**: RG-DNAT-Test |
    |Locatie     |Selecteer dezelfde locatie die u eerder hebt gebruikt|

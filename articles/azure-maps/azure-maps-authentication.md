@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210120"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649820"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
 Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutels en Azure Active Directory-verificatie. In dit artikel wordt uitgelegd hoe u deze verificatie methoden kunt gebruiken om uw implementatie van Azure Maps services te begeleiden.
+
+> [!NOTE]
+> Ter verbetering van de veilige communicatie met Azure Maps, ondersteunen we nu Transport Layer Security (TLS) 1,2. de ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld. Om service onderbrekingen te voor komen, moet u **uw servers en toepassingen bijwerken om TLS 1,2 te gebruiken vóór 2 April 2020**.  Als u momenteel TLS 1. x gebruikt, evalueert u uw TLS 1,2-gereedheid en ontwikkelt u een migratie plan met de tests die zijn beschreven in [het oplossen van het TLS 1,0-probleem](https://docs.microsoft.com/security/solving-tls1-problem).
 
 ## <a name="shared-key-authentication"></a>Gedeelde sleutel verificatie
 

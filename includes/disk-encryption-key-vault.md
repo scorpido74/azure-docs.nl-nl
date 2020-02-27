@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72511466"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77618507"
 ---
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -69,7 +69,7 @@ U kunt ook een sleutel kluis maken met behulp van de [Resource Manager-sjabloon]
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Geavanceerd toegangs beleid voor sleutel kluis instellen
 
-Het Azure-platform moet toegang hebben tot de versleutelings sleutels of geheimen in uw sleutel kluis om ze beschikbaar te maken voor de VM voor het opstarten en ontsleutelen van de volumes. 
+Het Azure-platform moet toegang hebben tot de sleutels of geheimen in uw key vault zodat ze beschikbaar voor de virtuele machine voor opstarten en ontsleutelen van de volumes. 
 
 Als u de sleutel kluis voor schijf versleuteling, implementatie of sjabloon implementatie niet hebt ingeschakeld op het moment van maken (zoals in de vorige stap is gedemonstreerd), moet u het geavanceerde toegangs beleid bijwerken.  
 
@@ -115,30 +115,30 @@ Gebruik [AZ Key kluis update](/cli/azure/keyvault#az-keyvault-update) om schijf 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 1. Selecteer uw sleutel kluis, ga naar **toegangs beleid**en **Klik om geavanceerd toegangs beleid weer te geven**.
 2. Schakel het selectie vakje **toegang tot Azure Disk Encryption voor volume versleuteling inschakelen**in.
 3. Selecteer **toegang tot Azure virtual machines inschakelen voor implementatie** en/of **toegang tot Azure Resource Manager voor sjabloon implementatie**inschakelen, indien nodig. 
 4. Klik op **Opslaan**.
 
-    ![Geavanceerd toegangs beleid voor Azure Key kluis](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
+    ![Azure-sleutelkluis geavanceerde toegangsbeleid](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="set-up-a-key-encryption-key-kek"></a>Een Key Encryption Key instellen (KEK)
 
-Als u een sleutel versleutelings sleutel (KEK) wilt gebruiken voor een extra beveiligingslaag voor de versleutelings sleutels, voegt u een KEK toe aan uw sleutel kluis. Wanneer een sleutel versleutelings sleutel is opgegeven, wordt met Azure Disk Encryption die sleutel gebruikt om de versleutelings geheimen te verpakken voordat er naar Key Vault wordt geschreven.
+Als u wilt een sleutel key-versleuteling (KEK) te gebruiken voor een extra beveiligingslaag voor versleutelingssleutels, moet u een KEK-sleutel toevoegen aan uw key vault. Wanneer een sleutel van versleutelingssleutel is opgegeven, gebruikt Azure Disk Encryption die sleutel het verpakken van de geheimen van de versleuteling voor het schrijven naar de Key Vault.
 
 U kunt een nieuwe KEK genereren met behulp van de opdracht voor het maken van de Azure CLI [AZ-sleutel](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) , de Azure PowerShell [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet of de [Azure Portal](https://portal.azure.com/). U moet een RSA-sleutel type genereren. Azure Disk Encryption biedt nog geen ondersteuning voor het gebruik van elliptische curve toetsen.
 
 U kunt in plaats daarvan een KEK importeren uit uw on-premises sleutel beheer HSM. Zie [Key Vault-documentatie](/azure/key-vault/key-vault-hsm-protected-keys)voor meer informatie.
 
-Uw sleutel kluis KEK-Url's moeten een versie nummer hebben. Azure dwingt deze beperking van versie beheer af. Zie de volgende voor beelden voor geldige geheime en KEK-Url's:
+Uw sleutel kluis KEK-Url's moeten een versie nummer hebben. Azure wordt deze beperking van versiebeheer afgedwongen. Zie de volgende voorbeelden voor geldige geheim en KEK-sleutel-URL's:
 
 * Voor beeld van een geldige geheime URL: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 * Voor beeld van een geldige KEK-URL: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-Azure Disk Encryption biedt geen ondersteuning voor het opgeven van poort nummers als onderdeel van sleutel kluis geheimen en KEK-Url's. Voor voor beelden van niet-ondersteunde en ondersteunde sleutel kluis-Url's, zie de volgende voor beelden:
+Azure Disk Encryption biedt geen ondersteuning voor het opgeven van de poortnummers als onderdeel van de key vault-geheimen en KEK-sleutel-URL's. Zie voor voorbeelden van niet-ondersteunde en ondersteunde key vault-URL's in de volgende voorbeelden:
 
   * Aanvaard bare sleutel kluis-URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Onaanvaardbaar URL voor sleutel kluis: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
@@ -151,7 +151,7 @@ Gebruik de opdracht voor het maken van een nieuwe KEK in de Azure CLI [AZ-sleute
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
 ```
 
-. U kunt in plaats daarvan een persoonlijke sleutel importeren met behulp van de Azure CLI [AZ sleutel import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) opdracht:
+U kunt in plaats daarvan een persoonlijke sleutel importeren met behulp van de Azure CLI [AZ sleutel import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) opdracht:
 
 In beide gevallen moet u de naam van uw KEK opgeven voor de para meter Azure CLI [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-Encryption-Key. 
 

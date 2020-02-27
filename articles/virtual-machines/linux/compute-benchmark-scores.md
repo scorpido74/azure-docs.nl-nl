@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036694"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650841"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Benchmark scores berekenen voor virtuele Linux-machines
 De volgende coopmerkingen-benchmark scores tonen reken prestaties voor de hoge prestaties van de VM-reeks van Azure waarop Ubuntu wordt uitgevoerd. Er zijn ook Compute-benchmark scores beschikbaar voor [virtuele Windows-machines](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -52,6 +52,8 @@ De volgende coopmerkingen-benchmark scores tonen reken prestaties voor de hoge p
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 8 | 1 | 62,9 | 49.838 | 633 | 1,27% | 182 |
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 8 | 1 | 62,9 | 49.123 | 2\.483 | 5,05% | 259 |
 
+Opmerking: Vm's uit de Av2-serie kunnen worden geïmplementeerd op diverse typen hardware en processors (zoals hierboven weer gegeven). Vm's uit de Av2-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte wordt beperkt om relatief consistente processor prestaties te bieden voor het actieve exemplaar, ongeacht de hardware waarop het wordt geïmplementeerd. software die gebruikmaakt van specifieke nieuwere processor optimalisaties, kan echter meer belang rijke verschillen in de processor typen zien.
+
 ## <a name="b---burstable"></a>B-afbreekbaar
 (3/15/2019 12:27:08 uur aan pbi 3897709)
 
@@ -69,6 +71,10 @@ De volgende coopmerkingen-benchmark scores tonen reken prestaties voor de hoge p
 | Standard_B4ms | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 54.051 | 1\.260 | 2,33% | 672 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 111.929 | 1\.562 | 1,40% | 35 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 8 | 1 | 31,4 | 109.537 | 1\.354 | 1,24% | 665 |
+
+Opmerking: virtuele machines uit de B-serie zijn voor workloads met een burstieve prestatie vereisten. Bij het gebruik van minder dan de basis lijn worden de tegoeden door VM-exemplaren geaccumuleerd. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine met Maxi maal 100% aan de basis lijn worden gebonden met een korte CPU-burst-vereisten. De burst-tijd is afhankelijk van de beschik bare tegoeden die een functie zijn van de grootte en tijd van de virtuele machine.  
+
+Coopmerkingen is een korte test die doorgaans binnen de beschik bare burst-tegoeden wordt uitgevoerd.  De bovenstaande getallen vertegenwoordigen doorgaans de burst-prestaties van de virtuele machine, die aangeven wat de prestaties van de korte, burstie, werk belastingen (normaal op B-serie) meestal zijn.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3-General Compute + Premium Storage
 (3/12/2019 6:52:03 PM aan pbi 3897709)

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793995"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620877"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Ondersteuning voor topologieën en scenario's voor het inrichten van Clouds Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Cloud inrichting. Dit artikel bevat alleen ondersteunde configuraties en scenario's.
@@ -33,12 +33,16 @@ Hier volgt een lijst met informatie die u moet onthouden wanneer u een oplossing
 - Het bron anker voor objecten wordt automatisch gekozen.  Er wordt gebruikgemaakt van MS-DS-ConsistencyGuid indien aanwezig, anders wordt ObjectGUID gebruikt.
 - U kunt het kenmerk dat wordt gebruikt voor het bron anker niet wijzigen.
 
+## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-Tenant
+![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+De eenvoudigste topologie is één on-premises forest met een of meer domeinen en één Azure AD-Tenant.  Zie [zelf studie: Eén forest met één Azure AD-Tenant](tutorial-single-forest.md) voor een voor beeld van dit scenario.
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>Meerdere forests, één Azure AD-Tenant
 ![Topologie voor een multi-forest en één Tenant](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-De meest voorkomende topologie is een meerdere AD-forests met een of meer domeinen en één Azure AD-Tenant.  
+Een algemene topologie is een meerdere AD-forests met een of meer domeinen en één Azure AD-Tenant.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Bestaand forest met Azure AD Connect, nieuw forest met Cloud inrichting
 ![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,10 +54,7 @@ Dit scenario is een topologie die vergelijkbaar is met het scenario met meerdere
 
 Zie voor een voor beeld van dit scenario [zelf studie: Pilot Azure AD Connect Cloud Provisioning in een bestaand GESYNCHRONISEERD AD-forest](tutorial-pilot-aadc-aadccp.md)
 
-## <a name="single-forest-single-azure-ad-tenant"></a>Eén forest, één Azure AD-Tenant
-![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-De eenvoudigste topologie is één on-premises forest met een of meer domeinen en één Azure AD-Tenant.  Zie [zelf studie: Eén forest met één Azure AD-Tenant](tutorial-single-forest.md) voor een voor beeld van dit scenario.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: c40a3b1352c383b8b70a0b14f59265188b77a86d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523682"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613880"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelf studie: een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
@@ -149,16 +149,16 @@ Wanneer de virtuele machine is gemaakt en een op een webgebaseerde RDP-verbindin
 
     ![Kiezen of u de eigenschappen van de werk groep of het domein wilt wijzigen](./media/join-windows-vm/change-domain.png)
 
-1. Geef in het vak **domein** de naam op van uw Azure AD DS beheerde domein, zoals *contoso.com*, en selecteer vervolgens **OK**.
+1. Geef in het vak **domein** de naam op van uw Azure AD DS beheerde domein, zoals *aaddscontoso.com*, en selecteer vervolgens **OK**.
 
     ![Opgeven welke Azure AD DS beheerde domein moet worden toegevoegd](./media/join-windows-vm/join-domain.png)
 
 1. Voer de domein referenties in om lid te worden van het domein. Gebruik de referenties voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* . Alleen leden van deze groep hebben bevoegdheden om computers te koppelen aan het Azure AD DS beheerde domein. Het account moet deel uitmaken van de Azure AD DS beheerde domein-of Azure AD-Tenant accounts van externe mappen die zijn gekoppeld aan uw Azure AD-Tenant, kan niet correct worden geverifieerd tijdens het proces voor het samen voegen van het domein. Account referenties kunnen op een van de volgende manieren worden opgegeven:
 
-    * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de User Principal Name (UPN) in voor het gebruikers account, zoals geconfigureerd in azure AD. Het UPN-achtervoegsel van de *contosoadmin* van de gebruiker wordt bijvoorbeeld `contosoadmin@contoso.onmicrosoft.com`. Er zijn enkele algemene gebruiks gevallen waarbij de UPN-indeling betrouwbaar kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName* -indeling:
+    * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de User Principal Name (UPN) in voor het gebruikers account, zoals geconfigureerd in azure AD. Het UPN-achtervoegsel van de *contosoadmin* van de gebruiker wordt bijvoorbeeld `contosoadmin@aaddscontoso.onmicrosoft.com`. Er zijn enkele algemene gebruiks gevallen waarbij de UPN-indeling betrouwbaar kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName* -indeling:
         * Als het UPN-voor voegsel van een gebruiker lang is, zoals *deehasareallylongname*, kan de *SAMAccountName* automatisch worden gegenereerd.
         * Als meerdere gebruikers hetzelfde UPN-voor voegsel hebben in uw Azure AD-Tenant, zoals *Dee*, kan de *SAMAccountName* -indeling automatisch worden gegenereerd.
-    * **SAMAccountName-indeling** : Voer de account naam in de *sAMAccountName* -indeling in. De *SAMAccountName* van de gebruiker *contosoadmin* zou bijvoorbeeld `CONTOSO\contosoadmin`zijn.
+    * **SAMAccountName-indeling** : Voer de account naam in de *sAMAccountName* -indeling in. De *SAMAccountName* van de gebruiker *contosoadmin* zou bijvoorbeeld `AADDSCONTOSO\contosoadmin`zijn.
 
 1. Het duurt een paar seconden om lid te worden van het door Azure AD DS beheerde domein. Wanneer dit is voltooid, ontvangt u het volgende bericht:
 
@@ -169,9 +169,9 @@ Wanneer de virtuele machine is gemaakt en een op een webgebaseerde RDP-verbindin
 1. Start de VM opnieuw op om het proces te volt ooien om lid te worden van het Azure AD DS beheerde domein.
 
 > [!TIP]
-> U kunt een virtuele machine met behulp van Power shell aan een domein toevoegen met de cmdlet [add-computer][add-computer] . In het volgende voor beeld wordt het *CONTOSO* -domein toegevoegd en wordt de virtuele machine opnieuw opgestart. Voer desgevraagd de referenties in voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* :
+> U kunt een virtuele machine met behulp van Power shell aan een domein toevoegen met de cmdlet [add-computer][add-computer] . In het volgende voor beeld wordt het domein *AADDSCONTOSO* toegevoegd en wordt de virtuele machine opnieuw opgestart. Voer desgevraagd de referenties in voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* :
 >
-> `Add-Computer -DomainName CONTOSO -Restart`
+> `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
 > Als u een domein wilt toevoegen aan een virtuele machine zonder verbinding te maken en de verbinding hand matig te configureren, kunt u de cmdlet [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell gebruiken.
 
@@ -207,7 +207,7 @@ Als er geen prompt wordt weer gegeven waarin wordt gevraagd om referenties om li
 Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windows Server-VM opnieuw aan het beheerde domein toe te voegen.
 
 * Controleer of de virtuele machine is verbonden met hetzelfde virtuele netwerk als Azure AD DS is ingeschakeld of een peered netwerk verbinding heeft.
-* Voer een ping uit voor de DNS-domein naam van het beheerde domein, zoals `ping contoso.com`.
+* Voer een ping uit voor de DNS-domein naam van het beheerde domein, zoals `ping aaddscontoso.com`.
     * Als de ping-aanvraag mislukt, probeert u de IP-adressen voor het beheerde domein te pingen, zoals `ping 10.0.0.4`. Het IP-adres voor uw omgeving wordt weer gegeven op de pagina *Eigenschappen* wanneer u de Azure AD DS beheerde domein selecteert in de lijst met Azure-resources.
     * Als u het IP-adres, maar niet het domein, kunt pingen, is het mogelijk dat DNS onjuist is geconfigureerd. Controleer of de IP-adressen van het beheerde domein zijn geconfigureerd als DNS-servers voor het virtuele netwerk.
 * Probeer de cache van de DNS-resolver op de virtuele machine leeg te maken met behulp van de `ipconfig /flushdns` opdracht.
@@ -220,7 +220,7 @@ Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windo
 
 * Zorg ervoor dat het gebruikers account dat u opgeeft, deel uitmaakt van de groep *Aad DC Administrators* .
 * Controleer of het account deel uitmaakt van de Azure AD DS beheerde domein of Azure AD-Tenant. Accounts van externe mappen die zijn gekoppeld aan uw Azure AD-Tenant, kunnen niet correct worden geverifieerd tijdens het proces voor het samen voegen van het domein.
-* Gebruik de UPN-indeling om referenties op te geven, zoals `contosoadmin@contoso.onmicrosoft.com`. Als er veel gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang, kan de *SAMAccountName* voor uw account automatisch worden gegenereerd. In dergelijke gevallen kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
+* Gebruik de UPN-indeling om referenties op te geven, zoals `contosoadmin@aaddscontoso.onmicrosoft.com`. Als er veel gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang, kan de *SAMAccountName* voor uw account automatisch worden gegenereerd. In dergelijke gevallen kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
 * Controleer of u [wachtwoord synchronisatie hebt ingeschakeld][password-sync] voor uw beheerde domein. Zonder deze configuratie stap zijn de vereiste wacht woord-hashes niet aanwezig in de Azure AD DS beheerde domein om uw aanmeldings poging correct te verifiëren.
 * Wacht tot de wachtwoord synchronisatie is voltooid. Wanneer het wacht woord van een gebruikers account wordt gewijzigd, wordt met een automatische achtergrond synchronisatie vanuit Azure AD het wacht woord in azure AD DS bijgewerkt. Het duurt enige tijd voordat het wacht woord beschikbaar is voor gebruik door een domein.
 

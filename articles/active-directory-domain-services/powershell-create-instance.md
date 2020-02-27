@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: dddbc15a80fe741b9ad1634aac18cb13819dc235
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ee85002aea962dfa675ac6c09a6bfbaeba8e9e79
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704431"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613229"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services inschakelen met behulp van Power shell
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Wanneer de groep *Aad DC-Administrators* is gemaakt, voegt u een gebruiker aan de groep toe met behulp van de cmdlet [add-AzureADGroupMember][Add-AzureADGroupMember] . U krijgt eerst de groeps object-ID voor *Aad DC-Administrators* met behulp van de cmdlet [Get-AzureADGroup][Get-AzureADGroup] en vervolgens de object-id van de gewenste gebruiker met de cmdlet [Get-AzureADUser][Get-AzureADUser] .
 
-In het volgende voor beeld wordt de gebruikers object-ID voor het account met een UPN van `admin@contoso.onmicrosoft.com`. Vervang dit gebruikers account door de UPN van de gebruiker die u wilt toevoegen aan de groep *Aad DC-Administrators* :
+In het volgende voor beeld wordt de gebruikers object-ID voor het account met een UPN van `admin@aaddscontoso.onmicrosoft.com`. Vervang dit gebruikers account door de UPN van de gebruiker die u wilt toevoegen aan de groep *Aad DC-Administrators* :
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -74,7 +74,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,7 +128,7 @@ $Vnet= New-AzVirtualNetwork `
 
 ## <a name="create-an-azure-ad-ds-managed-domain"></a>Een door Azure AD DS beheerd domein maken
 
-Nu gaan we een beheerd domein van Azure AD DS maken. Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *aadds.contoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] .
+Nu gaan we een beheerd domein van Azure AD DS maken. Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *aaddscontoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] .
 
 Als u een regio kiest die Beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources verdeeld over zones voor extra redundantie.
 
@@ -138,7 +138,7 @@ Er is niets waarmee u kunt configureren voor Azure AD DS worden gedistribueerd o
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
 New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
@@ -167,12 +167,12 @@ In het volgende volledige Power shell-script worden alle taken gecombineerd die 
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@aaddscontoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "aadds.contoso.com"
+$ManagedDomainName = "aaddscontoso.com"
 
 # Connect to your Azure AD directory.
 Connect-AzureAD

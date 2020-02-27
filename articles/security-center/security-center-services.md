@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603407"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616369"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -39,9 +39,9 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Standard|
-|[Waarschuwingen voor het detecteren van bedreigingen voor virtuele machines](security-center-alerts-iaas.md)|✔|✔|✔|Detectie van bedreigingen (gratis) (standaard)|
+|[Waarschuwingen voor het detecteren van bedreigingen voor virtuele machines](threat-protection.md)|✔|✔|✔|Detectie van bedreigingen (gratis) (standaard)|
 |[Waarschuwingen voor detectie van bedreigingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Waarschuwingen voor detectie van bedreigingen op basis van het netwerk](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Waarschuwingen voor detectie van bedreigingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -67,7 +67,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Standard|
 |[Waarschuwingen voor het detecteren van bedreigingen voor virtuele machines](security-center-alerts-iaas.md)|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Detectie van bedreigingen (gratis) (standaard)|
 |[Waarschuwingen voor detectie van bedreigingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Waarschuwingen voor detectie van bedreigingen op basis van het netwerk](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Waarschuwingen voor detectie van bedreigingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|

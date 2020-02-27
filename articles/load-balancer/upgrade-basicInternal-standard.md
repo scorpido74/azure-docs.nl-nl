@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566398"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616721"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>Een upgrade uitvoeren van de interne Load Balancer van Azure van de Basic-SKU naar de standaard-SKU
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure: er is geen uitgaande verbinding vereist
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU.
 
 Er zijn twee fasen in een upgrade:
@@ -28,12 +28,12 @@ In dit artikel wordt beschreven hoe u de configuratie migreert. Het toevoegen va
 
 Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
-* Hiermee maakt u een standaard interne SKU Load Balancer in de resource groep en de locatie die u opgeeft.
-* Kopieert de configuraties van de interne basis versie van de SKU-Load Balancer naadloos naar de zojuist gemaakte standaard interne Load Balancer.
+* Hiermee maakt u een standaard interne SKU Load Balancer op de locatie die u opgeeft. Houd er rekening mee dat er geen [uitgaande verbinding](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) wordt gegeven door de standaard interne Load Balancer.
+* Hiermee worden de configuraties van de basis-SKU Load Balancer naadloos gekopieerd naar de zojuist gemaakte Standard Load Balancer.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Script ondersteunt alleen interne Load Balancer upgrade. Voor interne basis Load Balancer-upgrade maakt u een interne standaard Load Balancer als uitgaande verbinding niet gewenst is en maakt u een interne standaard Load Balancer en standaard interne Load Balancer als uitgaande verbinding is vereist.
+* Script ondersteunt alleen interne Load Balancer upgrade, waarbij geen uitgaande verbinding vereist is. Raadpleeg deze [pagina](upgrade-InternalBasic-To-PublicStandard.md) voor instructies als u een [uitgaande verbinding](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) voor sommige vm's hebt vereist. 
 * Het Standard Load Balancer heeft nieuwe open bare adressen. Het is niet mogelijk om de IP-adressen die zijn gekoppeld aan de bestaande basis Load Balancer naadloos te verplaatsen naar Standard Load Balancer omdat ze verschillende Sku's hebben.
 * Als de standaard load balancer in een andere regio wordt gemaakt, kunt u de virtuele machines die in de oude regio bestaan, niet koppelen aan de zojuist gemaakte Standard Load Balancer. Om deze beperking te omzeilen, moet u ervoor zorgen dat u een nieuwe virtuele machine maakt in de nieuwe regio.
 * Als uw Load Balancer geen frontend-IP-configuratie of back-end-pool heeft, zult u waarschijnlijk een fout bij het uitvoeren van het script aangaan. Zorg ervoor dat deze niet leeg zijn.

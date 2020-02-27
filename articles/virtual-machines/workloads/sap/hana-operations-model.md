@@ -3,22 +3,22 @@ title: Operations-model van SAP HANA op Azure (grote exemplaren) | Microsoft Doc
 description: Operations-model van SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a8ea845dd53048766abc337a1351a408ea7f1bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e147e4a5f104ca4cd1a10a776c907e3f9f1d6128
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099693"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616978"
 ---
 # <a name="operations-model-and-responsibilities"></a>Bewerkingsmodel en verantwoordelijkheden
 
@@ -32,15 +32,15 @@ Deze service is geoptimaliseerd voor SAP HANA, dus zijn er gebieden waar u moet 
 
 De volgende lijst bevat meer details over elk van de lagen en uw verantwoordelijkheden:
 
-**Netwerken**: Alle interne netwerken voor de grote instantie stempel met SAP HANA. Uw verantwoordelijkheid omvat toegang tot opslag, connectiviteit tussen de instanties (voor uitschalen en andere functies), connectiviteit naar het landschap en connectiviteit met Azure waarbij de SAP-toepassingslaag wordt gehost op Vm's. Het bevat ook een WAN-verbinding tussen Azure-data centers voor het repliceren van nood herstel doeleinden. Alle netwerken worden gepartitioneerd door de Tenant en hebben de kwaliteit van de service toegepast.
+**Netwerken**: alle interne netwerken voor de grote instantie stempel met SAP Hana. Uw verantwoordelijkheid omvat toegang tot opslag, connectiviteit tussen de instanties (voor uitschalen en andere functies), connectiviteit naar het landschap en connectiviteit met Azure waarbij de SAP-toepassingslaag wordt gehost op Vm's. Het bevat ook een WAN-verbinding tussen Azure-data centers voor het repliceren van nood herstel doeleinden. Alle netwerken worden gepartitioneerd door de Tenant en hebben de kwaliteit van de service toegepast.
 
-**Opslag**: De gevirtualiseerde gepartitioneerde opslag voor alle volumes die nodig zijn voor de SAP HANA servers, en voor moment opnamen. 
+**Opslag**: de gevirtualiseerde gepartitioneerde opslag voor alle volumes die nodig zijn voor de SAP Hana servers, en voor moment opnamen. 
 
-**Servers**: De toegewezen fysieke servers voor het uitvoeren van de SAP HANA Db's die aan tenants zijn toegewezen. De servers van de klasse type I van de Sku's zijn door hardware abstracted. Met deze typen servers wordt de server configuratie verzameld en onderhouden in profielen, die kunnen worden verplaatst van één fysieke hardware naar een andere fysieke hardware. Een dergelijk (hand matig) verplaatsen van een profiel door bewerkingen kan worden vergeleken met een Azure-service voor herstel. De servers van de klasse-Sku's van type II bieden geen enkele mogelijkheid.
+**Servers**: de toegewezen fysieke servers voor het uitvoeren van de SAP Hana db's die aan tenants zijn toegewezen. De servers van de klasse type I van de Sku's zijn door hardware abstracted. Met deze typen servers wordt de server configuratie verzameld en onderhouden in profielen, die kunnen worden verplaatst van één fysieke hardware naar een andere fysieke hardware. Een dergelijk (hand matig) verplaatsen van een profiel door bewerkingen kan worden vergeleken met een Azure-service voor herstel. De servers van de klasse-Sku's van type II bieden geen enkele mogelijkheid.
 
-**SDDC**: De beheer software die wordt gebruikt voor het beheren van Data Centers als door software gedefinieerde entiteiten. Hiermee kan micro soft resources groeperen op schaal, Beschik baarheid en prestatie redenen.
+**SDDC**: de beheer software die wordt gebruikt voor het beheren van Data Centers als door software gedefinieerde entiteiten. Hiermee kan micro soft resources groeperen op schaal, Beschik baarheid en prestatie redenen.
 
-**O/S**: Het besturings systeem dat u kiest (SUSE Linux of Red Hat Linux) dat wordt uitgevoerd op de-servers. De installatie kopieën van het besturings systeem die u opgeeft, zijn door de afzonderlijke Linux-leverancier naar micro soft verzonden voor het uitvoeren van SAP HANA. U moet een abonnement met de Linux-leverancier hebben voor de specifieke voor SAP HANA geoptimaliseerde installatie kopie. U bent zelf verantwoordelijk voor het registreren van de installatie kopieën bij de leverancier van het besturings systeem. 
+**O/S**: het besturings systeem dat u kiest (SuSE Linux of Red Hat Linux) dat wordt uitgevoerd op de-servers. De installatie kopieën van het besturings systeem die u opgeeft, zijn door de afzonderlijke Linux-leverancier naar micro soft verzonden voor het uitvoeren van SAP HANA. U moet een abonnement met de Linux-leverancier hebben voor de specifieke voor SAP HANA geoptimaliseerde installatie kopie. U bent zelf verantwoordelijk voor het registreren van de installatie kopieën bij de leverancier van het besturings systeem. 
 
 Vanaf het punt van overdracht door micro soft bent u verantwoordelijk voor eventuele verdere patches van het Linux-besturings systeem. Deze patches omvatten extra pakketten die nodig kunnen zijn voor een geslaagde SAP HANA installatie en die niet zijn opgenomen door de specifieke Linux-leverancier in hun SAP HANA geoptimaliseerde besturingssysteem installatie kopieën. (Zie de documentatie van de HANA-installatie van SAP en SAP Notes (Engelstalig) voor meer informatie.) 
 
@@ -55,15 +55,15 @@ Uw verantwoordelijkheid omvat ook bewaking en capaciteits planning van:
 
 De onderliggende infra structuur van HANA grote instanties biedt functionaliteit voor het maken van back-ups en het herstellen van het besturingssysteem volume. Het gebruik van deze functionaliteit is ook uw verantwoordelijkheid.
 
-**Middleware**: Het SAP HANA-exemplaar, voornamelijk. Beheer, bewerkingen en controle zijn uw verantwoordelijkheid. U kunt de meegeleverde functionaliteit gebruiken om opslag momentopnamen te gebruiken voor back-up-en herstel bewerkingen en herstel na een nood geval. Deze mogelijkheden worden geboden door de-infra structuur. Uw verantwoordelijkheden omvatten ook het ontwerpen van hoge Beschik baarheid of herstel na nood gevallen met deze mogelijkheden, het gebruik ervan en de bewaking om te bepalen of opslag momentopnamen zijn uitgevoerd.
+**Middleware**: de SAP Hana-instantie, voornamelijk. Beheer, bewerkingen en controle zijn uw verantwoordelijkheid. U kunt de meegeleverde functionaliteit gebruiken om opslag momentopnamen te gebruiken voor back-up-en herstel bewerkingen en herstel na een nood geval. Deze mogelijkheden worden geboden door de-infra structuur. Uw verantwoordelijkheden omvatten ook het ontwerpen van hoge Beschik baarheid of herstel na nood gevallen met deze mogelijkheden, het gebruik ervan en de bewaking om te bepalen of opslag momentopnamen zijn uitgevoerd.
 
-**Gegevens**: Uw gegevens die worden beheerd door SAP HANA, en andere gegevens zoals back-upbestanden die zich op volumes of bestands shares bevinden. Uw verantwoordelijkheden omvatten beschik bare schijf ruimte voor bewaking en het beheren van de inhoud op de volumes. U bent ook verantwoordelijk voor het bewaken van de geslaagde uitvoering van back-ups van schijf volumes en opslag momentopnamen. Het uitvoeren van gegevens replicatie naar nood herstel sites is de verantwoordelijkheid van micro soft.
+**Gegevens**: uw gegevens die worden beheerd door SAP Hana, en andere gegevens zoals back-upbestanden die zich op volumes of bestands shares bevinden. Uw verantwoordelijkheden omvatten beschik bare schijf ruimte voor bewaking en het beheren van de inhoud op de volumes. U bent ook verantwoordelijk voor het bewaken van de geslaagde uitvoering van back-ups van schijf volumes en opslag momentopnamen. Het uitvoeren van gegevens replicatie naar nood herstel sites is de verantwoordelijkheid van micro soft.
 
-**Toepassingen** De SAP-toepassings exemplaren of, in het geval van niet-SAP-toepassingen, de toepassingslaag van die toepassingen. Uw verantwoordelijkheden omvatten implementatie, beheer, bewerkingen en controle van deze toepassingen. U bent verantwoordelijk voor de capaciteits planning van het CPU-resource verbruik, het geheugen verbruik, het Azure Storage verbruik en het gebruik van netwerk bandbreedte in virtuele netwerken. U bent ook verantwoordelijk voor het plannen van de capaciteit van het Resource verbruik van virtuele netwerken naar SAP HANA op Azure (grote exemplaren).
+**Toepassingen:** De SAP-toepassings exemplaren of, in het geval van niet-SAP-toepassingen, de toepassingslaag van die toepassingen. Uw verantwoordelijkheden omvatten implementatie, beheer, bewerkingen en controle van deze toepassingen. U bent verantwoordelijk voor de capaciteits planning van het CPU-resource verbruik, het geheugen verbruik, het Azure Storage verbruik en het gebruik van netwerk bandbreedte in virtuele netwerken. U bent ook verantwoordelijk voor het plannen van de capaciteit van het Resource verbruik van virtuele netwerken naar SAP HANA op Azure (grote exemplaren).
 
-**Wan's**: De verbindingen die u tot stand brengt van on-premises naar Azure-implementaties voor werk belastingen. Alle klanten met HANA grote instanties gebruiken Azure ExpressRoute voor connectiviteit. Deze verbinding maakt geen deel uit van de SAP HANA van de Azure-oplossing (grote exemplaren). U bent zelf verantwoordelijk voor het instellen van deze verbinding.
+**Wan's**: de verbindingen die u tot stand brengt van on-premises naar Azure-implementaties voor werk belastingen. Alle klanten met HANA grote instanties gebruiken Azure ExpressRoute voor connectiviteit. Deze verbinding maakt geen deel uit van de SAP HANA van de Azure-oplossing (grote exemplaren). U bent zelf verantwoordelijk voor het instellen van deze verbinding.
 
-**Archief**: U kunt liever kopieën van gegevens archiveren met uw eigen methoden in opslag accounts. Voor het archiveren moeten beheer, naleving, kosten en bewerkingen worden uitgevoerd. U bent verantwoordelijk voor het genereren van archief kopieën en back-ups op Azure en het op een compatibele manier op te slaan.
+**Archief**: u kunt liever kopieën van gegevens archiveren met uw eigen methoden in opslag accounts. Voor het archiveren moeten beheer, naleving, kosten en bewerkingen worden uitgevoerd. U bent verantwoordelijk voor het genereren van archief kopieën en back-ups op Azure en het op een compatibele manier op te slaan.
 
 Zie de [Sla voor SAP Hana op Azure (grote exemplaren)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
 

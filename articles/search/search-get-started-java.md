@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406732"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624024"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in Java met behulp van REST-Api's
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "74406732"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Maak een Java-Console toepassing die een Azure Cognitive Search-index maakt, laadt en opvraagt met behulp van [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)en de [rest API Azure Cognitive Search](/rest/api/searchservice/). In dit artikel vindt u stapsgewijze instructies voor het maken van de toepassing. U kunt ook [de volledige toepassing downloaden en uitvoeren](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Maak een Java-Console toepassing die een zoek index maakt, laadt en opvraagt met behulp van [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)en de [rest API Azure Cognitive Search](/rest/api/searchservice/). In dit artikel vindt u stapsgewijze instructies voor het maken van de toepassing. U kunt ook [de volledige toepassing downloaden en uitvoeren](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We hebben de volgende software en services gebruikt om dit voor beeld te bouwen en te testen:
+We hebben de volgende software en services gebruikt voor het bouwen en testen van deze Snelstartgids:
 
 + [IntelliJ-idee](https://www.jetbrains.com/idea/)
 

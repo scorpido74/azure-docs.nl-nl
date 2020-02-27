@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509135"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614252"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>De status controleren van een door Azure Active Directory Domain Services beheerd domein
 
@@ -29,7 +29,7 @@ In dit artikel leest u hoe u de status van Azure AD DS kunt bekijken en hoe u de
 De status van een beheerd domein van Azure AD DS wordt weer gegeven met behulp van de Azure Portal. Informatie over de tijd van de laatste back-up en synchronisatie met Azure AD kan worden weer gegeven, samen met eventuele waarschuwingen die duiden op een probleem met de status van het beheerde domein. Voer de volgende stappen uit om de status van een beheerd domein van Azure AD DS te bekijken:
 
 1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
-1. Selecteer uw door Azure AD DS beheerde domein, zoals *aadds.contoso.com*.
+1. Selecteer uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*.
 1. Selecteer aan de linkerkant van het venster Azure AD DS resource de optie **status**. De volgende voorbeeld scherm afbeelding toont een gezonde Azure AD DS beheerde domein en de status van de laatste back-up en Azure AD-synchronisatie:
 
     ![Overzicht van status pagina's in de Azure Portal de Azure Active Directory Domain Services status weer geven](./media/check-health/health-page.png)
@@ -53,7 +53,7 @@ Met de status voor een beheerd domein van Azure AD DS worden twee soorten inform
 
 Monitors zijn gebieden van een Azure AD DS beheerde domein die regel matig worden gecontroleerd. Als er actieve waarschuwingen zijn voor het beheerde domein van Azure AD DS, kan dit ertoe leiden dat een van de monitors een probleem meldt. Azure AD Domain Services heeft momenteel monitors voor de volgende gebieden:
 
-* Back-up
+* Back-up maken
 * Synchronisatie met Azure AD
 
 #### <a name="backup-monitor"></a>Back-upmonitor

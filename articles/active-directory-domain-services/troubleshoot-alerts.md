@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 0bb02e6436bf9c9ebb9e54efa73aeed03ab44f3e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c83caf31e25ae2212ed120e77e017ac3849898e8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512661"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612909"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekende problemen: gemeen schappelijke waarschuwingen en oplossingen in Azure Active Directory Domain Services
 
@@ -30,7 +30,7 @@ Dit artikel bevat informatie over het oplossen van problemen met algemene waarsc
 
 *De Azure AD-Directory die aan uw beheerde domein is gekoppeld, is mogelijk verwijderd. Het beheerde domein bevindt zich niet meer in een ondersteunde configuratie. Micro soft kan uw beheerde domein niet bewaken, beheren, patchen en synchroniseren.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Deze fout treedt meestal op wanneer een Azure-abonnement wordt verplaatst naar een nieuwe Azure AD-adres lijst en de oude Azure AD-adres lijst die is gekoppeld aan Azure AD DS wordt verwijderd.
 
@@ -42,7 +42,7 @@ Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bes
 
 *Azure AD Domain Services kan niet worden ingeschakeld in een Azure AD B2C map.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Azure AD DS wordt automatisch gesynchroniseerd met een Azure AD-adres lijst. Als de Azure AD-Directory is geconfigureerd voor B2C, kan Azure AD DS niet worden geïmplementeerd en gesynchroniseerd.
 
@@ -60,7 +60,7 @@ De status van het beheerde domein van Azure AD DS wordt binnen twee uur automati
 
 *Het IP-adres bereik voor het virtuele netwerk waarin u Azure AD Domain Services hebt ingeschakeld, bevindt zich in een openbaar IP-bereik. Azure AD Domain Services moet zijn ingeschakeld in een virtueel netwerk met een privé-IP-adres bereik. Deze configuratie is van invloed op de mogelijkheid van micro soft om uw beheerde domein te bewaken, te beheren, te patchen en te synchroniseren.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Zorg ervoor dat u bekend bent met de [persoonlijke IP v4-adres ruimten](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces)voordat u begint.
 
@@ -88,7 +88,7 @@ De status van het beheerde domein van Azure AD DS wordt binnen twee uur automati
 
 *Uw Azure-abonnement dat is gekoppeld aan uw beheerde domein, is verwijderd.  Azure AD Domain Services moet een actief abonnement zijn om goed te kunnen werken.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Azure AD DS vereist een actief abonnement en kan niet worden verplaatst naar een ander abonnement. Als het Azure-abonnement waaraan het beheerde Azure AD DS-domein is gekoppeld, is verwijderd, moet u een Azure-abonnement en een Azure AD DS beheerd domein opnieuw maken.
 
@@ -102,7 +102,7 @@ Azure AD DS vereist een actief abonnement en kan niet worden verplaatst naar een
 
 *Uw Azure-abonnement dat is gekoppeld aan uw beheerde domein, is niet actief.  Azure AD Domain Services moet een actief abonnement zijn om goed te kunnen werken.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Voor Azure AD DS is een actief abonnement vereist. Als het Azure-abonnement waaraan het beheerde domein van Azure AD DS is gekoppeld, niet actief is, moet u dit vernieuwen om het abonnement opnieuw te activeren.
 
@@ -117,7 +117,7 @@ Wanneer het beheerde domein opnieuw wordt ingeschakeld, wordt de status van het 
 
 *Het abonnement dat door Azure AD Domain Services wordt gebruikt, is verplaatst naar een andere map. Azure AD Domain Services moet een actief abonnement hebben in dezelfde map om goed te kunnen functioneren.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Azure AD DS vereist een actief abonnement en kan niet worden verplaatst naar een ander abonnement. Als het Azure-abonnement waaraan het beheerde Azure AD DS-domein is gekoppeld, is verplaatst, verplaatst u het abonnement terug naar de vorige map of [verwijdert u het beheerde domein](delete-aadds.md) uit de bestaande map en [maakt u een vervangend Azure AD DS beheerd domein in het gekozen abonnement](tutorial-create-instance.md).
 
@@ -127,13 +127,13 @@ Azure AD DS vereist een actief abonnement en kan niet worden verplaatst naar een
 
 *Een resource die wordt gebruikt voor uw beheerde domein, is verwijderd. Deze resource is nodig om Azure AD Domain Services goed te laten functioneren.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Azure AD DS maakt extra resources om goed te werken, zoals open bare IP-adressen, virtuele netwerk interfaces en een load balancer. Als een van deze resources wordt verwijderd, heeft het beheerde domein de status niet-ondersteund en voor komt u dat het domein wordt beheerd. Zie [netwerk bronnen die door Azure AD DS worden gebruikt](network-considerations.md#network-resources-used-by-azure-ad-ds)voor meer informatie over deze resources.
 
 Deze waarschuwing wordt gegenereerd wanneer een van deze vereiste bronnen wordt verwijderd. Als de resource minder dan vier uur geleden is verwijderd, is er een kans dat het Azure-platform de verwijderde resource automatisch opnieuw kan maken. In de volgende stappen wordt uitgelegd hoe u de status en tijds tempel controleert voor het verwijderen van resources:
 
-1. Zoek en selecteer in het Azure Portal **Domain Services**. Kies uw door Azure AD DS beheerd domein, zoals *aadds.contoso.com*.
+1. Zoek en selecteer in het Azure Portal **Domain Services**. Kies uw door Azure AD DS beheerd domein, zoals *aaddscontoso.com*.
 1. Selecteer in de navigatie balk aan de linkerkant de optie **status**.
 1. Selecteer op de pagina status de waarschuwing met de ID *AADDS109*.
 1. De waarschuwing heeft een tijds tempel voor de eerste keer dat deze is gevonden. Als de tijds tempel minder dan vier uur geleden is, kan het Azure-platform de resource mogelijk automatisch opnieuw maken en de waarschuwing zelf oplossen.
@@ -146,7 +146,7 @@ Deze waarschuwing wordt gegenereerd wanneer een van deze vereiste bronnen wordt 
 
 *Het subnet dat is geselecteerd voor de implementatie van Azure AD Domain Services, is vol en heeft geen ruimte voor de extra domein controller die moet worden gemaakt.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Het subnet van het virtuele netwerk voor Azure AD DS vereist voldoende IP-adressen voor de automatisch gemaakte resources. Deze IP-adres ruimte bevat de nood zaak om vervangings resources te maken als er een onderhouds gebeurtenis is. Als u het risico van het uitvoeren van beschik bare IP-adressen wilt minimaliseren, kunt u geen aanvullende resources, zoals uw eigen Vm's, implementeren in hetzelfde subnet van het virtuele netwerk als Azure AD DS.
 
@@ -158,7 +158,7 @@ Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bes
 
 *Een service-principal die Azure AD Domain Services gebruikt voor het onderhouden van uw domein is niet gemachtigd om resources te beheren in het Azure-abonnement. De Service-Principal moet machtigingen krijgen om uw beheerde domein te onderhouden.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Sommige automatisch gegenereerde service-principals worden gebruikt voor het beheren en maken van resources voor een Azure AD DS beheerd domein. Als de toegangs machtigingen voor een van deze service-principals zijn gewijzigd, kan het domein de resources niet op de juiste manier beheren. In de volgende stappen wordt uitgelegd hoe u toegangs machtigingen voor een Service-Principal begrijpt en vervolgens verkent:
 
@@ -171,7 +171,7 @@ Sommige automatisch gegenereerde service-principals worden gebruikt voor het beh
 
 *Er is vastgesteld dat het subnet van het virtuele netwerk in dit domein mogelijk niet voldoende IP-adressen heeft. Azure AD Domain Services moet mini maal twee beschik bare IP-adressen hebben in het subnet waarin deze is ingeschakeld. U kunt het beste ten minste 3-5 reserved IP-adressen binnen het subnet hebben. Dit kan zijn gebeurd als andere virtuele machines worden geïmplementeerd in het subnet, waardoor het aantal beschik bare IP-adressen wordt uitgeput of als er een beperking geldt voor het aantal beschik bare IP-adressen in het subnet.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Het subnet van het virtuele netwerk voor Azure AD DS vereist voldoende IP-adressen voor de automatisch gemaakte resources. Deze IP-adres ruimte bevat de nood zaak om vervangings resources te maken als er een onderhouds gebeurtenis is. Als u het risico van het uitvoeren van beschik bare IP-adressen wilt minimaliseren, kunt u geen aanvullende resources, zoals uw eigen Vm's, implementeren in hetzelfde subnet van het virtuele netwerk als Azure AD DS.
 
@@ -194,7 +194,7 @@ De status van het beheerde domein van Azure AD DS wordt binnen twee uur automati
 
 *De resources die door Azure AD Domain Services worden gebruikt, zijn in een onverwachte status gedetecteerd en kunnen niet worden hersteld.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bestaande Azure AD DS beheerde domein te verwijderen](delete-aadds.md) en opnieuw te maken. Als u problemen ondervindt met het verwijderen van het beheerde domein van Azure AD DS, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij probleem oplossing.
 
@@ -204,7 +204,7 @@ Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bes
 
 *Het subnet dat is geselecteerd voor de implementatie van Azure AD Domain Services, is ongeldig en kan niet worden gebruikt.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bestaande Azure AD DS beheerde domein te verwijderen](delete-aadds.md) en opnieuw te maken. Als u problemen ondervindt met het verwijderen van het beheerde domein van Azure AD DS, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij probleem oplossing.
 
@@ -214,7 +214,7 @@ Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bes
 
 *Een of meer netwerk bronnen die door het beheerde domein worden gebruikt, kunnen niet worden uitgevoerd omdat het doel bereik is vergrendeld.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Resource vergrendelingen kunnen worden toegepast op Azure-resources om te voor komen dat ze worden gewijzigd of verwijderd. Omdat Azure AD DS een beheerde service is, heeft het Azure-platform de mogelijkheid om configuratie wijzigingen aan te brengen. Als een resource vergrendeling wordt toegepast op een aantal van de onderdelen van Azure AD DS, kunnen de beheer taken van het Azure-platform niet worden uitgevoerd.
 
@@ -229,7 +229,7 @@ Voer de volgende stappen uit om te controleren op resource vergrendelingen op de
 
 *Een of meer netwerk bronnen die door het beheerde domein worden gebruikt, kunnen niet worden uitgevoerd vanwege beleids beperking (en).*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Beleids regels worden toegepast op Azure-resources en-resource groepen die bepalen welke configuratie acties zijn toegestaan. Omdat Azure AD DS een beheerde service is, heeft het Azure-platform de mogelijkheid om configuratie wijzigingen aan te brengen. Als er een beleid wordt toegepast op een aantal van de onderdelen van Azure AD DS, kunnen de beheer taken van het Azure-platform mogelijk niet worden uitgevoerd.
 
@@ -244,7 +244,7 @@ Voer de volgende stappen uit om te controleren of er beleid is toegepast op de o
 
 *Het beheerde domein is voor het laatst gesynchroniseerd met Azure AD op [date]. Gebruikers kunnen zich mogelijk niet aanmelden bij het beheerde domein of groepslid maatschappen zijn mogelijk niet gesynchroniseerd met Azure AD.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 [Controleer de status van Azure AD DS](check-health.md) voor waarschuwingen die duiden op problemen in de configuratie van het beheerde domein. Problemen met de netwerk configuratie kunnen de synchronisatie van Azure AD blok keren. Als u waarschuwingen kunt oplossen die duiden op een configuratie probleem, wacht u twee uur en controleert u of de synchronisatie is voltooid.
 
@@ -259,7 +259,7 @@ De volgende veelvoorkomende oorzaken hebben tot gevolg dat synchronisatie in een
 
 *Het beheerde domein is voor het laatst een back-up gemaakt op [date].*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 [Controleer de status van Azure AD DS](check-health.md) voor waarschuwingen die duiden op problemen in de configuratie van het beheerde domein. Door problemen met de netwerk configuratie kan het Azure-platform verhinderen dat back-ups worden gemaakt. Als u waarschuwingen kunt oplossen die duiden op een configuratie probleem, wacht u twee uur en controleert u of de synchronisatie is voltooid.
 
@@ -269,7 +269,7 @@ De volgende veelvoorkomende oorzaken hebben tot gevolg dat synchronisatie in een
 
 *Het beheerde domein is onderbroken omdat het Azure-abonnement dat is gekoppeld aan het domein, niet actief is.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 > [!WARNING]
 > Als een door Azure AD DS beheerd domein gedurende lange tijd wordt onderbroken, wordt het verwijderd. Los zo snel mogelijk de reden voor de onderbreking op. Zie voor meer informatie [inzicht in de onderbroken statussen voor Azure AD DS](suspension.md).
@@ -287,7 +287,7 @@ Wanneer het beheerde domein opnieuw wordt ingeschakeld, wordt de status van het 
 
 *Het beheerde domein is onderbroken vanwege een ongeldige configuratie. De service kan de domein controllers voor uw beheerde domein lange tijd niet beheren, patchen of bijwerken.*
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 > [!WARNING]
 > Als een door Azure AD DS beheerd domein gedurende lange tijd wordt onderbroken, wordt het verwijderd. Los zo snel mogelijk de reden voor de onderbreking op. Zie voor meer informatie [inzicht in de onderbroken statussen voor Azure AD DS](suspension.md).

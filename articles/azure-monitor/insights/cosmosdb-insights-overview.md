@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166406"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622980"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor verkennen voor Azure Cosmos DB (preview-versie)
 
@@ -35,8 +35,35 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. deze Azure 
 >[!NOTE]
 >Er zijn geen kosten verbonden aan het verkrijgen van toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de Azure Monitor essentiële functies die u configureert of inschakelt, zoals wordt beschreven op de pagina met [Azure monitor prijs informatie](https://azure.microsoft.com/pricing/details/monitor/) .
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Metrische gegevens van het bewerkings niveau voor Azure Cosmos DB weer geven
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>Toegang tot Azure Monitor voor Azure Cosmos DB
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+
+1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
+
+   ![Deel venster metrische gegevens in Azure Monitor](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
+
+   ![Kies een Cosmos DB account om de metrische gegevens weer te geven](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. Vervolgens kunt u een metriek selecteren in de lijst met beschik bare metrische gegevens. U kunt metrische gegevens selecteren die specifiek zijn voor aanvraag eenheden, opslag, latentie, Beschik baarheid, Cassandra en andere. Zie het artikel [metrische gegevens per categorie](../../cosmos-db/monitor-cosmos-db-reference.md) voor meer informatie over alle beschik bare metrische gegevens in deze lijst. In dit voor beeld selecteren we **aanvraag eenheden** en **Gem** als de aggregatie waarde.
+
+   Naast deze details kunt u ook het **tijds bereik** en de **tijd granulatie** van de metrische gegevens selecteren. U kunt Maxi maal de metrische gegevens weer geven voor de afgelopen 30 dagen.  Nadat u het filter hebt toegepast, wordt een grafiek weer gegeven op basis van het filter. U kunt het gemiddelde aantal verbruikte aanvraag eenheden per minuut voor de geselecteerde periode bekijken.  
+
+   ![Kies een waarde in het Azure Portal](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>Filters toevoegen aan metrische gegevens
+
+U kunt ook de metrische gegevens en de grafiek die worden weer gegeven met een specifieke **verzamelingnaam**, **DATABASENAME**, **OperationType**, **Region**en **status**code filteren. Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de vereiste eigenschap, zoals **OperationType** , en selecteert u een waarde zoals **query**. In de grafiek worden vervolgens de verbruikte aanvraag eenheden voor de query bewerking voor de geselecteerde periode weer gegeven. De bewerkingen die zijn uitgevoerd via een opgeslagen procedure, worden niet geregistreerd, zodat ze niet beschikbaar zijn onder de metrische waarde voor OperationType.
+
+![Een filter toevoegen om de metrische granulatie te selecteren](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+U kunt metrische gegevens groeperen met behulp van de optie **splitsing Toep assen** . U kunt bijvoorbeeld de aanvraag eenheden per bewerkings type groeperen en de grafiek voor alle bewerkingen tegelijk bekijken, zoals wordt weer gegeven in de volgende afbeelding:
+
+![Splitsings filter Toep assen toevoegen](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Metrische gegevens over gebruik en prestaties voor Azure Cosmos DB weer geven
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts in al uw abonnementen weer te geven.
 
@@ -74,7 +101,7 @@ Selecteer **fouten** aan de bovenkant van de pagina en het gedeelte **storingen*
 
 ![Scherm opname van fouten met uitsplitsing op basis van het type HTTP-aanvraag](./media/cosmosdb-insights-overview/failures.png)
 
-| Coderen      |  Beschrijving       | 
+| Code      |  Beschrijving       | 
 |-----------|:--------------------|
 | `200 OK`  | Een van de volgende REST-bewerkingen is geslaagd: </br>-Een resource ophalen. </br> : In een resource plaatsen. </br> -POST op een resource. </br> -POST op een opgeslagen procedure resource om de opgeslagen procedure uit te voeren.|
 | `201 Created` | Er is een POST-bewerking voor het maken van een resource geslaagd. |
@@ -90,7 +117,7 @@ Selecteer de optie **capaciteit** boven aan de pagina en het gedeelte **capacite
 
 Net als bij de overzichts werkmap selecteert de vervolg keuzelijst naast een Azure Cosmos DB resource in de kolom **abonnement** een uitsplitsing van de afzonderlijke containers waaruit de data base is opgebouwd.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>Bewerkingen 
 
 Selecteer **bewerkingen** boven aan de pagina en het gedeelte **bewerkingen** van de werkmap sjabloon wordt geopend. Het biedt u de mogelijkheid om uw aanvragen weer te geven die zijn gesplitst op basis van het type aanvragen. 
 

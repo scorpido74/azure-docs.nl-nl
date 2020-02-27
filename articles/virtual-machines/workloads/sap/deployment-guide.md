@@ -4,7 +4,7 @@ description: Meer informatie over het implementeren van SAP-software op virtuele
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19dc9f25cc7355eb540b68f009a77b1ca1e5fb86
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645834"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614903"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -117,7 +117,7 @@ ms.locfileid: "75645834"
 [deployment-guide-4.1]:deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 (Azure PowerShell-cmdlets implementeren)
 [deployment-guide-4.2]:deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e (SAP-relevante Power shell-cmdlets downloaden en importeren)
 [deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (Een VM toevoegen aan een on-premises domein-alleen Windows)
-[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux)
+[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Spreek)
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (De Azure VM-agent downloaden, installeren en inschakelen)
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
@@ -361,7 +361,7 @@ Ken de volgende informatie toe voor SAP-grootte:
 
 In Azure Resource Manager kunt u resource groepen gebruiken om alle toepassings resources in uw Azure-abonnement te beheren. Zie voor meer informatie [Overzicht van Azure Resource Manager][resource-group-overview].
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-bronnen
 
@@ -420,7 +420,7 @@ De eenvoudigste manier om een nieuwe virtuele machine te maken met een installat
 
 De wizard begeleidt u bij het instellen van de vereiste para meters voor het maken van de virtuele machine, naast alle vereiste resources, zoals netwerk interfaces en opslag accounts. Enkele van deze para meters zijn:
 
-1. **Grondbeginselen van**:
+1. **Basis beginselen**:
    * **Naam**: de naam van de resource (de naam van de virtuele machine).
    * **VM-schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
    * **Gebruikers naam en wacht woord** of **open bare SSH-sleutel**: Voer de gebruikers naam en het wacht woord in van de gebruiker die tijdens het inrichten is gemaakt. Voor een virtuele Linux-machine kunt u de open bare Secure shell-sleutel (SSH) invoeren die u gebruikt om u aan te melden bij de computer.
@@ -431,8 +431,8 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
 
      Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie voor meer informatie [opslag: Microsoft Azure Storage en gegevens schijven][planning-guide-storage-microsoft-azure-storage-and-data-disks] en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
 
-1. **Instellingen voor**:
-   * **Opslag**
+1. **Instellingen**:
+   * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
      * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks][planning-guide-managed-disks] in de plannings handleiding voor meer informatie over Managed disks.
      * **Opslag account**: Selecteer een bestaand opslag account of maak een nieuwe. Niet alle opslag typen werken voor het uitvoeren van SAP-toepassingen. Zie [opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)voor meer informatie over opslag typen.
@@ -471,12 +471,12 @@ U kunt een virtuele machine maken met behulp van een van de SAP-sjablonen die zi
 
 Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
-1. **Grondbeginselen van**:
+1. **Basis beginselen**:
    * **Abonnement**: het abonnement dat moet worden gebruikt voor het implementeren van de sjabloon.
    * **Resource groep**: de resource groep die moet worden gebruikt voor het implementeren van de sjabloon. U kunt een nieuwe resource groep maken, maar u kunt ook een bestaande resource groep in het abonnement selecteren.
    * **Locatie**: waar de sjabloon wordt geïmplementeerd. Als u een bestaande resource groep hebt geselecteerd, wordt de locatie van die resource groep gebruikt.
 
-1. **Instellingen voor**:
+1. **Instellingen**:
    * **SAP-systeem-id**: de SAP-systeem-id (sid).
    * **Bs-type**: het besturings systeem dat u wilt implementeren, bijvoorbeeld Windows Server 2012 R2, SuSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) of Oracle Linux 7,2.
 
@@ -506,7 +506,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
 De Azure VM-agent wordt standaard geïmplementeerd wanneer u een installatie kopie gebruikt vanuit Azure Marketplace.
 
-#### <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
+#### <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
 Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste VM-extensies niet downloaden of Azure-infrastructuur informatie voor de SAP host agent verzamelen via de SAP-extensie voor Azure. Zie [Configure the proxy][deployment-guide-configure-proxy](Engelstalig) voor meer informatie.
 
@@ -545,7 +545,7 @@ U kunt verschillende stappen gebruiken om een persoonlijke installatie kopie voo
 >
 
 ---
-U kunt een aangepaste installatie kopie voorbereiden en maken en deze vervolgens gebruiken om meerdere nieuwe Vm's te maken. Dit wordt beschreven in [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide]. Uw Data Base-inhoud instellen met behulp van SAP software Provisioning Manager voor het installeren van een nieuw SAP-systeem (herstelt een database back-up van een schijf die is gekoppeld aan de virtuele machine) of door een back-up van een Data Base rechtstreeks te herstellen vanuit Azure Storage, als uw DBMS ondersteunt. Zie voor meer informatie, [Azure virtuele Machines DBMS-implementatie voor SAP NetWeaver][dbms-guide]. Als u al een SAP-systeem op uw on-premises VM hebt geïnstalleerd (met name voor systemen met twee lagen), kunt u de SAP-systeem instellingen aanpassen na de implementatie van de virtuele Azure-machine met behulp van de procedure voor het wijzigen van het systeem dat wordt ondersteund door SAP software Provisioning Manager (SAP-notitie [1619720]). Als dat niet het geval is, kunt u de SAP-software installeren nadat u de virtuele Azure-machine hebt geïmplementeerd.
+U kunt een aangepaste installatie kopie voorbereiden en maken en deze vervolgens gebruiken om meerdere nieuwe Vm's te maken. Dit wordt beschreven in [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide]. Uw Data Base-inhoud instellen met behulp van SAP software Provisioning Manager voor het installeren van een nieuw SAP-systeem (herstelt een database back-up van een schijf die is gekoppeld aan de virtuele machine) of door een back-up van een Data Base rechtstreeks te herstellen vanuit Azure Storage, als uw DBMS ondersteunt. Zie [Azure virtual machines DBMS-implementatie voor SAP net-Weaver][dbms-guide]voor meer informatie. Als u al een SAP-systeem op uw on-premises VM hebt geïnstalleerd (met name voor systemen met twee lagen), kunt u de SAP-systeem instellingen aanpassen na de implementatie van de virtuele Azure-machine met behulp van de procedure voor het wijzigen van het systeem dat wordt ondersteund door SAP software Provisioning Manager (SAP-notitie [1619720]). Als dat niet het geval is, kunt u de SAP-software installeren nadat u de virtuele Azure-machine hebt geïmplementeerd.
 
 Het volgende stroom diagram toont de SAP-specifieke volg orde van de stappen voor het implementeren van een virtuele machine vanuit een aangepaste installatie kopie:
 
@@ -560,7 +560,7 @@ De eenvoudigste manier om een nieuwe virtuele machine te maken op basis van een 
 
 De wizard begeleidt u bij het instellen van de vereiste para meters voor het maken van de virtuele machine, naast alle vereiste resources, zoals netwerk interfaces en opslag accounts. Enkele van deze para meters zijn:
 
-1. **Grondbeginselen van**:
+1. **Basis beginselen**:
    * **Naam**: de naam van de resource (de naam van de virtuele machine).
    * **VM-schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
    * **Gebruikers naam en wacht woord** of **open bare SSH-sleutel**: Voer de gebruikers naam en het wacht woord in van de gebruiker die tijdens het inrichten is gemaakt. Voor een virtuele Linux-machine kunt u de open bare Secure shell-sleutel (SSH) invoeren die u gebruikt om u aan te melden bij de computer.
@@ -571,8 +571,8 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
 
      Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie voor meer informatie [opslag: Microsoft Azure Storage en gegevens schijven][planning-guide-storage-microsoft-azure-storage-and-data-disks] en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
 
-1. **Instellingen voor**:
-   * **Opslag**
+1. **Instellingen**:
+   * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
      * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks][planning-guide-managed-disks] in de plannings handleiding voor meer informatie over Managed disks.
    * **Netwerk**
@@ -610,11 +610,11 @@ Als u een implementatie wilt maken met behulp van een installatie kopie van een 
 
 Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
-1. **Grondbeginselen van**:
+1. **Basis beginselen**:
    * **Abonnement**: het abonnement dat moet worden gebruikt voor het implementeren van de sjabloon.
    * **Resource groep**: de resource groep die moet worden gebruikt voor het implementeren van de sjabloon. U kunt een nieuwe resource groep maken of een bestaande resource groep selecteren in het abonnement.
    * **Locatie**: waar de sjabloon wordt geïmplementeerd. Als u een bestaande resource groep hebt geselecteerd, wordt de locatie van die resource groep gebruikt.
-1. **Instellingen voor**:
+1. **Instellingen**:
    * **SAP-systeem-id**: de SAP-systeem-id.
    * **Bs-type**: het type besturings systeem dat u wilt implementeren (Windows of Linux).
    * **SAP-systeem grootte**: de grootte van het SAP-systeem.
@@ -652,7 +652,7 @@ Als u de sjablonen wilt gebruiken die in de voor gaande sectie worden beschreven
 
 Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of Azure ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP NetWeaver][planning-guide]), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze stap.
 
-#### <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
+#### <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
 Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste VM-uitbrei dingen niet downloaden of Azure-infrastructuur gegevens voor de SAP host agent verzamelen via de SAP-extensie voor Azure, raadpleegt [u de proxy configureren][deployment-guide-configure-proxy].
 
@@ -705,11 +705,11 @@ Als u een implementatie wilt maken met behulp van een persoonlijke besturingssys
 
 Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
-1. **Grondbeginselen van**:
+1. **Basis beginselen**:
    * **Abonnement**: het abonnement dat moet worden gebruikt voor het implementeren van de sjabloon.
    * **Resource groep**: de resource groep die moet worden gebruikt voor het implementeren van de sjabloon. U kunt een nieuwe resource groep maken of een bestaande resource groep selecteren in het abonnement.
    * **Locatie**: waar de sjabloon wordt geïmplementeerd. Als u een bestaande resource groep hebt geselecteerd, wordt de locatie van die resource groep gebruikt.
-1. **Instellingen voor**:
+1. **Instellingen**:
    * **SAP-systeem-id**: de SAP-systeem-id.
    * **Bs-type**: het type besturings systeem dat u wilt implementeren (Windows of Linux).
    * **SAP-systeem grootte**: de grootte van het SAP-systeem.
@@ -742,7 +742,7 @@ Als u geen gebruik maakt van de sjablonen die in de voor gaande sectie worden be
 
 Als uw Azure-implementatie is verbonden met een on-premises Active Directory of een DNS-exemplaar via een Azure site-naar-site-VPN-verbinding of ExpressRoute (dit wordt *Cross-premises* genoemd in [Azure virtual machines planning en implementatie voor SAP NetWeaver][planning-guide]), wordt verwacht dat de virtuele machine wordt toegevoegd aan een on-premises domein. Zie [een virtuele machine toevoegen aan een on-premises domein (alleen Windows)][deployment-guide-4.3]voor meer informatie over overwegingen voor deze taak.
 
-#### <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
+#### <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
 Afhankelijk van de configuratie van uw on-premises netwerk moet u mogelijk de proxy op uw virtuele machine instellen. Als uw virtuele machine is verbonden met uw on-premises netwerk via VPN of ExpressRoute, is de virtuele machine mogelijk niet in staat om toegang te krijgen tot internet en kunt u de vereiste VM-uitbrei dingen niet downloaden of Azure-infrastructuur gegevens voor de SAP host agent verzamelen via de SAP-extensie voor Azure, raadpleegt [u de proxy configureren][deployment-guide-configure-proxy].
 
@@ -849,7 +849,7 @@ Als u een virtuele machine implementeert vanuit Azure Marketplace, is deze stap 
 
 Er is geen interactie van de gebruiker vereist om de Azure VM-agent bij te werken. De VM-agent wordt automatisch bijgewerkt en het opnieuw opstarten van de VM is niet vereist.
 
-#### <a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
+#### <a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Spreek
 
 Gebruik de volgende opdrachten om de VM-agent voor Linux te installeren:
 

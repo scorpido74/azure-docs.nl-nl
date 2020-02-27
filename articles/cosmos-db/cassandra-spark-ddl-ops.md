@@ -1,6 +1,6 @@
 ---
-title: DDL-bewerkingen in Azure Cosmos DB Cassandra-API van Spark
-description: Dit artikel wordt uitgelegd keyspace en een tabel DDL-bewerkingen op Azure Cosmos DB Cassandra-API van Spark.
+title: DDL-bewerkingen in Azure Cosmos DB Cassandra-API vanuit Spark
+description: In dit artikel vindt u informatie over de bewerking van de toetsen ruimte en tabel-DDL voor Azure Cosmos DB Cassandra-API van Spark.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898879"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622574"
 ---
-# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-bewerkingen in Azure Cosmos DB Cassandra-API van Spark
+# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-bewerkingen in Azure Cosmos DB Cassandra-API vanuit Spark
 
-Dit artikel wordt uitgelegd keyspace en een tabel DDL-bewerkingen op Azure Cosmos DB Cassandra-API van Spark.
+In dit artikel vindt u informatie over de bewerking van de toetsen ruimte en tabel-DDL voor Azure Cosmos DB Cassandra-API van Spark.
 
-## <a name="cassandra-api-related-configuration"></a>Cassandra-API-gerelateerde configuratie 
+## <a name="cassandra-api-related-configuration"></a>Configuratie met betrekking tot Cassandra-API 
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,9 +48,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="keyspace-ddl-operations"></a>Keyspace DDL-bewerkingen
+## <a name="keyspace-ddl-operations"></a>DDL-bewerkingen voor Keys
 
-### <a name="create-a-keyspace"></a>Een keyspace maken
+### <a name="create-a-keyspace"></a>Een spatie maken
 
 ```scala
 //Cassandra connector instance
@@ -60,34 +60,34 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE KEYSPACE IF NOT EXISTS books_ks WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 } "))
 ```
 
-#### <a name="validate-in-cqlsh"></a>In cqlsh valideren
+#### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
-Voer de volgende opdracht in cqlsh en ziet u de keyspace die u eerder hebt gemaakt.
+Voer de volgende opdracht uit in cqlsh en Bekijk de spatie die u eerder hebt gemaakt.
 
 ```bash
 DESCRIBE keyspaces;
 ```
 
-### <a name="drop-a-keyspace"></a>Een keyspace verwijderen
+### <a name="drop-a-keyspace"></a>Een spatie verwijderen
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP KEYSPACE books_ks"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>In cqlsh valideren
+#### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
 ```bash
 DESCRIBE keyspaces;
 ```
-## <a name="table-ddl-operations"></a>Tabel-DDL-bewerkingen
+## <a name="table-ddl-operations"></a>DDL-bewerkingen voor tabel
 
-**Overwegingen met betrekking tot:**  
+**Tot**  
 
-- Doorvoer kan worden toegewezen op het tabelniveau van de met behulp van de instructie create table.  
-- Een partitiesleutel kunt 10 GB aan gegevens opslaan.  
-- Een record kan maximaal 2 MB aan gegevens opslaan.  
-- Een partitiesleutelbereik kan meerdere partitiesleutels opslaan.
+- De door Voer kan worden toegewezen op tabel niveau met behulp van de instructie CREATE TABLE.  
+- Met één partitie sleutel kan 20 GB aan gegevens worden opgeslagen.  
+- Met één record kunnen Maxi maal 2 MB aan gegevens worden opgeslagen.  
+- Een partitie sleutel bereik kan meerdere partitie sleutels bevatten.
 
 ### <a name="create-a-table"></a>Een tabel maken
 
@@ -96,23 +96,23 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>In cqlsh valideren
+#### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
-Voer de volgende opdracht in cqlsh en ziet u de tabel met de naam ' boeken: 
+Voer de volgende opdracht uit in cqlsh en zie de tabel ' boeken: 
 
 ```bash
 USE books_ks;
 DESCRIBE books;
 ```
 
-Ingerichte doorvoer en de standaard TTL-waarden worden niet weergegeven in de uitvoer van de vorige opdracht, kunt u deze waarden ophalen uit de portal.
+Ingerichte door Voer en standaard TTL-waarden worden niet weer gegeven in de uitvoer van de vorige opdracht. u kunt deze waarden ophalen uit de portal.
 
-### <a name="alter-table"></a>De tabel wijzigen
+### <a name="alter-table"></a>ALTER TABLE
 
-U kunt de volgende waarden wijzigen met behulp van de opdracht alter tabel:
+U kunt de volgende waarden wijzigen met behulp van de opdracht ALTER TABLE:
 
-* ingerichte doorvoer 
-* Time-to-live-waarde
+* ingerichte door Voer 
+* time-to-Live-waarde
 <br>Kolom wijzigingen worden momenteel niet ondersteund.
 
 ```scala
@@ -120,16 +120,16 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("ALTER TABLE books_ks.books WITH cosmosdb_provisioned_throughput=8000, WITH default_time_to_live=0;"))
 ```
 
-### <a name="drop-table"></a>Tabel verwijderen
+### <a name="drop-table"></a>Tabel neerzetten
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS books_ks.books;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>In cqlsh valideren
+#### <a name="validate-in-cqlsh"></a>Valideren in cqlsh
 
-Voer de volgende opdracht in cqlsh en ziet u de tabel 'boeken' is niet meer beschikbaar:
+Voer de volgende opdracht uit in cqlsh en u ziet dat de tabel ' boeken ' niet meer beschikbaar is:
 
 ```bash
 USE books_ks;
@@ -138,11 +138,11 @@ DESCRIBE tables;
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na het maken van de keyspace en de tabel, gaat u verder met de volgende artikelen voor CRUD-bewerkingen en nog veel meer:
+Nadat u de spatie en de tabel hebt gemaakt, gaat u verder met de volgende artikelen voor ruwe bewerkingen en meer:
  
 * [Bewerkingen maken/invoegen](cassandra-spark-create-ops.md)  
-* [leesbewerkingen](cassandra-spark-read-ops.md)  
-* [Upsert-bewerkingen](cassandra-spark-upsert-ops.md)  
-* [Verwijderbewerkingen](cassandra-spark-delete-ops.md)  
-* [Aggregatiebewerkingen uit te voeren](cassandra-spark-aggregation-ops.md)  
-* [Kopieerbewerkingen tabel](cassandra-spark-table-copy-ops.md)  
+* [Lees bewerkingen](cassandra-spark-read-ops.md)  
+* [Upsert bewerkingen](cassandra-spark-upsert-ops.md)  
+* [Bewerkingen verwijderen](cassandra-spark-delete-ops.md)  
+* [Aggregatie bewerkingen](cassandra-spark-aggregation-ops.md)  
+* [Tabel Kopieer bewerkingen](cassandra-spark-table-copy-ops.md)  

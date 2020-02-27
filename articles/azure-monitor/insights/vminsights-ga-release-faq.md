@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482881"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620380"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
 
@@ -25,8 +25,6 @@ Er is een nieuwe versie van Azure Monitor voor VM's uitgebracht. Klanten die Azu
 Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde *InsightsMetrics* -tabel als [Azure monitor voor containers](container-insights-overview.md), waardoor het gemakkelijker wordt om de twee gegevens sets op te vragen. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. 
 
 Onze prestatie weergaven gebruiken nu de gegevens die we opslaan in de tabel *InsightsMetrics* .  Als u nog niet hebt bijgewerkt voor het gebruik van de meest recente VMInsights-oplossing in uw werk ruimte, worden er geen gegevens meer weer gegeven in uw grafieken.  U kunt een upgrade uitvoeren van de pagina **aan de slag** zoals hieronder wordt beschreven.
-
-Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde *InsightsMetrics* -tabel als [Azure monitor voor containers](container-insights-overview.md) , waardoor het gemakkelijker wordt om de twee gegevens sets op te vragen. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. 
 
 We realiseren dat bestaande klanten die een upgrade uitvoeren, een onderbreking van de werk stroom veroorzaken. Daarom hebben we ervoor gekozen om dit nu uit te voeren in een open bare preview, in plaats van later na GA.
 

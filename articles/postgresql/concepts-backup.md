@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769860"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619628"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
 
@@ -20,6 +20,8 @@ Azure Database for PostgreSQL maakt automatisch server back-ups en slaat ze op i
 ## <a name="backups"></a>Back-ups
 
 Azure Database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+
+Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen in Azure Database for PostgreSQL. U kunt [pg_dump](howto-migrate-using-dump-and-restore.md) gebruiken om een Data Base te kopiëren.
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
@@ -52,7 +54,7 @@ De geschatte duur van de herstel bewerking is afhankelijk van verschillende fact
 > [!IMPORTANT]
 > Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
-### <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
+### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
 Onafhankelijk van de optie voor de redundantie van de back-up kunt u een herstel bewerking uitvoeren op elk gewenst moment binnen de retentie periode van de back-up. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het wordt gemaakt met de oorspronkelijke server configuratie voor de prijs categorie, het berekenen van de berekening, het aantal vCores, de opslag grootte, de Bewaar periode voor back-ups en de optie voor de redundantie van back-ups.
 
@@ -73,7 +75,7 @@ Tijdens de geo-herstel bewerking kunnen de volgende server configuraties worden 
 Na een herstel na een van beide herstel mechanismen moet u de volgende taken uitvoeren om uw gebruikers en toepassingen back-ups te maken en uit te voeren:
 
 - Als de nieuwe server de oorspronkelijke server moet vervangen, kunt u clients en client toepassingen omleiden naar de nieuwe server
-- Zorg ervoor dat de juiste firewall regels op server niveau zijn ingesteld, zodat gebruikers verbinding kunnen maken
+- Zorg ervoor dat de juiste firewall-en VNet-regels op server niveau aanwezig zijn voor gebruikers om verbinding te maken. Deze regels worden niet van de oorspronkelijke server gekopieerd.
 - Zorg ervoor dat de juiste aanmeldingen en machtigingen op database niveau aanwezig zijn
 - Waarschuwingen configureren, indien van toepassing
 

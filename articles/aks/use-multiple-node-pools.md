@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 846425e6d36462636ea1f4e82d6c7233dcb28ac9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592880"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615696"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -29,8 +29,7 @@ U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfiguree
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
 * Zie [quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)][quotas-skus-regions].
-* U kunt de standaard-knooppunt groep (First) niet verwijderen.
-* De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
+* Het is niet mogelijk om de groep van het systeem knooppunt te verwijderen, standaard de eerste knooppunt groep.
 * Het AKS-cluster moet het standaard SKU-load balancer gebruiken om meerdere knooppunt groepen te kunnen gebruiken. de functie wordt niet ondersteund met Basic SKU load balancers.
 * Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 * De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.

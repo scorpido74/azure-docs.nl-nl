@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780233"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614802"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-gegevens worden opnieuw gehydrateerd op basis van de opslaglaag
 
@@ -51,8 +51,8 @@ Blobs in de archief laag moeten mini maal 180 dagen worden opgeslagen. Als u gea
 ## <a name="quickstart-scenarios"></a>Snelstartscenario's
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Een archief-BLOB naar een online-laag opnieuw gehydrateerd
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek in het Azure Portal **alle resources**en selecteer deze.
 
@@ -70,14 +70,14 @@ Blobs in de archief laag moeten mini maal 180 dagen worden opgeslagen. Als u gea
 
 ![Laag van opslag account wijzigen](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de BLOB-laag van een archief-BLOB te wijzigen. De variabele `$rgName` moet worden geïnitialiseerd met de naam van de resource groep. De variabele `$accountName` moet worden geïnitialiseerd met de naam van uw opslag account. De variabele `$containerName` moet worden geïnitialiseerd met de container naam. De variabele `$blobName` moet worden geïnitialiseerd met de naam van de blob. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

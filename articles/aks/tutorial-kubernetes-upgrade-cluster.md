@@ -3,14 +3,14 @@ title: 'Zelfstudie voor Kubernetes op Azure: Een cluster bijwerken'
 description: In deze zelfstudie Azure Kubernetes Service (AKS) leert u hoe u een bestaand AKS-cluster kunt bijwerken naar de nieuwste Kubernetes-versie.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 57cad9472c599bf0ad8f3e3d2ff53cb224db689a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593125"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622033"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Zelfstudie: Kubernetes bijwerken in AKS (Azure Kubernetes Service)
 
@@ -37,12 +37,12 @@ Voordat u een cluster bijwerkt, gebruikt u de opdracht [az aks get-upgrades][] o
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-In het volgende voor beeld is de huidige versie *1.13.10*en de beschik bare versies worden weer gegeven in de kolom *upgrades* .
+In het volgende voor beeld is de huidige versie *1.14.8*en de beschik bare versies worden weer gegeven in de kolom *upgrades* .
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
 ## <a name="upgrade-a-cluster"></a>Een cluster upgraden
@@ -58,13 +58,13 @@ Om onderbreking van actieve toepassingen te minimaliseren, worden AKS-knooppunte
 Gebruik de opdracht [az aks upgrade][] als u het AKS-cluster wilt bijwerken. In het volgende voor beeld wordt het cluster bijgewerkt naar Kubernetes versie *1.14.6*.
 
 > [!NOTE]
-> U kunt slechts één secundaire versie per keer bijwerken. U kunt bijvoorbeeld upgraden van *1.12. x* naar *1.13. x*, maar kan geen upgrade uitvoeren van *1.12. x* naar *1.14. x* direct. Als u een upgrade van *1.12. x* naar *1.14. x*wilt uitvoeren, moet u eerst een upgrade uitvoeren van *1.12. x* naar *1.13. x*en vervolgens een andere upgrade van *1.13. x* naar *1.14. x*.
+> U kunt slechts één secundaire versie per keer bijwerken. U kunt bijvoorbeeld upgraden van *1.14. x* naar *1.15. x*, maar niet rechtstreeks upgraden van *1.14. x* naar *1.16. x* . Als u een upgrade van *1.14. x* naar *1.16. x*wilt uitvoeren, moet u eerst upgraden van *1.14. x* naar *1.15. x*en vervolgens een andere upgrade uitvoeren van *1.15. x* naar *1.16. x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-In de volgende gecomprimeerde voorbeeld uitvoer ziet u de *kubernetesVersion* nu rapporten *1.14.6*:
+In de volgende gecomprimeerde voorbeeld uitvoer ziet u de *kubernetesVersion* nu rapporten *1.15.5*:
 
 ```json
 {
@@ -82,7 +82,7 @@ In de volgende gecomprimeerde voorbeeld uitvoer ziet u de *kubernetesVersion* nu
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.15.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +97,12 @@ Controleer als volgt of de upgrade is geslaagd met de opdracht [az aks show][]:
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-In de volgende voorbeeld uitvoer ziet u het AKS-cluster voert *KubernetesVersion 1.14.6*uit:
+In de volgende voorbeeld uitvoer ziet u het AKS-cluster voert *KubernetesVersion 1.15.5*uit:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen

@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ab4569860d24a397816aa2e6c92f2e90f9a14ed1
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526533"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615936"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -134,6 +134,7 @@ HTTP-statuscode | Reden
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
 404 niet gevonden | Het aangevraagde element bestaat niet
 methode 405 niet toegestaan | Alleen `GET`-aanvragen worden ondersteund
+410 verdwenen | Probeer het na enige tijd opnieuw uit met een maximum van 70 seconden
 429 te veel aanvragen | De API ondersteunt momenteel Maxi maal vijf query's per seconde
 500-service fout     | Na enige tijd opnieuw proberen
 
@@ -457,7 +458,7 @@ identity | Beheerde identiteiten voor Azure-resources. Zie [een toegangs Token o
 instance | Zie [instance API](#instance-api) | 2017-04-02
 scheduledevents | Zie [Scheduled Events](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Exemplaar-API
+### <a name="instance-api"></a>Exemplaar-API
 
 De volgende Compute-categorieën zijn beschikbaar via de instance API:
 
@@ -570,7 +571,6 @@ Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, ret
 
 De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details zoals vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 
-
 ## <a name="example-scenarios-for-usage"></a>Voorbeeld scenario's voor gebruik  
 
 ### <a name="tracking-vm-running-on-azure"></a>VM bijhouden waarop Azure wordt uitgevoerd
@@ -589,7 +589,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Plaatsen van containers, fout-/updatedomein op basis van gegevenspartities 
+### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Plaatsen van containers, fout-/updatedomein op basis van gegevenspartities
 
 Voor bepaalde scenario's is het plaatsen van verschillende gegevens replica's van groot belang. Het is bijvoorbeeld mogelijk dat u de `platformFaultDomain` van [HDFS replica](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) of container plaatsing via een [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) wilt weten en dat `platformUpdateDomain` de virtuele machine wordt uitgevoerd.
 U kunt [Beschikbaarheidszones](../../availability-zones/az-overview.md) ook gebruiken voor de instanties om deze beslissingen te nemen.
@@ -609,7 +609,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>Meer informatie krijgen over de VM tijdens de ondersteuningsaanvraag
 
-Als service provider kunt u een ondersteunings oproep krijgen waarin u meer informatie over de virtuele machine wilt weten. Als u de klant vraagt om de berekenings-meta gegevens te delen, kan de ondersteunings medewerker basis informatie geven over het type virtuele machine op Azure. 
+Als service provider kunt u een ondersteunings oproep krijgen waarin u meer informatie over de virtuele machine wilt weten. Als u de klant vraagt om de berekenings-meta gegevens te delen, kan de ondersteunings medewerker basis informatie geven over het type virtuele machine op Azure.
 
 **Aanvraag**
 
@@ -839,10 +839,12 @@ Nadat u de hand tekening hierboven hebt opgehaald, kunt u controleren of de hand
 
  Cloud | Certificaat
 ---------|-----------------
-[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+Er is een bekend probleem rond het certificaat dat wordt gebruikt voor het ondertekenen. De certificaten hebben mogelijk niet exact overeenkomen met de `metadata.azure.com` voor de open bare Cloud. Daarom moet de certificerings validatie een algemene naam van een `.metadata.azure.com` subdomein toestaan.
 
 ```bash
 

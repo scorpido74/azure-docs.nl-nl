@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775235"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611834"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
@@ -59,7 +59,7 @@ Het configuratie bestand definieert het volgende:
 - De client-ID die u hebt ontvangen van de registratie van de toepassing.
 - Een client geheim of een certificaat.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [appSettings. json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) van het voor beeld van de [.net Core-Console-daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
 
@@ -75,7 +75,7 @@ Het configuratie bestand definieert het volgende:
 
 U geeft een `ClientSecret` of een `CertificateName`op. Deze instellingen zijn exclusief.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Wanneer u een vertrouwelijke client met client geheimen bouwt, is het configuratie bestand van de [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) in het voor beeld van [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) als volgt:
 
@@ -102,18 +102,13 @@ Wanneer u een vertrouwelijke client met certificaten bouwt, zijn de [para meters
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
-
-[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) is de klasse die wordt gebruikt voor het configureren van MSAL java dev-voor beelden:
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-public class TestData {
-
-    final static String TENANT_SPECIFIC_AUTHORITY = "https://login.microsoftonline.com/<TenantId>/";
-    final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
-    final static String CONFIDENTIAL_CLIENT_ID = "";
-    final static String CONFIDENTIAL_CLIENT_SECRET = "";
-}
+ private final static String CLIENT_ID = "";
+ private final static String AUTHORITY = "https://login.microsoftonline.com/<tenant>/";
+ private final static String CLIENT_SECRET = "";
+ private final static Set<String> SCOPE = Collections.singleton("https://graph.microsoft.com/.default");
 ```
 
 ---
@@ -128,7 +123,7 @@ De bouw is anders, afhankelijk van of u client geheimen of certificaten gebruikt
 
 Raadpleeg het MSAL-pakket in de code van uw toepassing.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 Voeg het [micro soft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-pakket toe aan uw toepassing.
 In MSAL.NET wordt de vertrouwelijke client toepassing vertegenwoordigd door de `IConfidentialClientApplication`-interface.
@@ -139,19 +134,22 @@ using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import msal
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 import com.microsoft.aad.msal4j.ClientCredentialFactory;
 import com.microsoft.aad.msal4j.ClientCredentialParameters;
 import com.microsoft.aad.msal4j.ConfidentialClientApplication;
 import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCredential;
+import com.microsoft.aad.msal4j.MsalException;
+import com.microsoft.aad.msal4j.SilentParameters;
 ```
 
 ---
@@ -160,7 +158,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 Dit is de code voor het instantiëren van de vertrouwelijke client toepassing met een client geheim:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
@@ -169,7 +167,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .Build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -184,14 +182,16 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(TestData.CONFIDENTIAL_CLIENT_SECRET))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 ---
@@ -200,7 +200,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 Hier volgt de code voor het bouwen van een toepassing met een certificaat:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
@@ -210,7 +210,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -225,7 +225,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In MSAL Java zijn er twee bouwers voor het instantiëren van de vertrouwelijke client toepassing met certificaten:
 
@@ -234,11 +234,13 @@ In MSAL Java zijn er twee bouwers voor het instantiëren van de vertrouwelijke c
 InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
 string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(pkcs12Certificate, certificatePassword))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(pkcs12Certificate, certificatePassword);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 of
@@ -247,18 +249,20 @@ of
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
 X509Certificate publicCertificate = getPublicCertificate(); /* x509 public certificate used as a thumbprint */
 
-ConfidentialClientApplication app = ConfidentialClientApplication.builder(
-        TestData.CONFIDENTIAL_CLIENT_ID,
-        ClientCredentialFactory.create(rsaPrivateKey, publicKeyCertificate))
-        .authority(TestData.TENANT_SPECIFIC_AUTHORITY)
-        .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(key, publicCertificate);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
 
 ---
 
 #### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Geavanceerd scenario: de vertrouwelijke client toepassing instantiëren met client verklaringen
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 In plaats van een client geheim of een certificaat kan de vertrouwelijke client toepassing ook de identiteit bewijzen door gebruik te maken van client verklaringen.
 
@@ -291,7 +295,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Zie voor meer informatie [client verklaringen](msal-net-client-assertions.md).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 In MSAL python kunt u client claims opgeven door gebruik te maken van de claims die worden ondertekend door de persoonlijke sleutel van deze `ConfidentialClientApplication`.
 
@@ -311,25 +315,33 @@ app = msal.ConfidentialClientApplication(
 
 Zie de naslag documentatie voor MSAL python voor [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)voor meer informatie.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-MSAL Java is beschikbaar als open bare preview. Ondertekende verklaringen worden nog niet ondersteund.
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromClientAssertion(assertion);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
 > [Daemon-app-tokens ophalen voor de app](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [Daemon-app-tokens ophalen voor de app](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [Daemon-app-tokens ophalen voor de app](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)

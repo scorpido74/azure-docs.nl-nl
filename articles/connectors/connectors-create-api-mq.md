@@ -9,12 +9,12 @@ ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118046"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650944"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanaf Azure Logic Apps
 
@@ -134,7 +134,10 @@ Wanneer u de actie **berichten verzenden** toevoegt, is de eerste eerder geconfi
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg de [referentie pagina](/connectors/mq/)van de connector voor technische informatie over acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/mq/).
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

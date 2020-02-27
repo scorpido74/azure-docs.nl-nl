@@ -3,12 +3,12 @@ title: Power shell gebruiken om een back-up te maken van Windows Server naar Azu
 description: In dit artikel leert u hoe u Power shell kunt gebruiken voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: ff723eb2ebe48a7019fecec9106c1618a636b94c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583106"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622814"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -403,34 +403,6 @@ State           : New
 PolicyState     : Valid
 ```
 
-## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>Back-up maken van de systeem status van Windows Server in de MABS-agent
-
-In deze sectie wordt de Power shell-opdracht voor het instellen van de systeem status in de MABS-agent beschreven.
-
-### <a name="schedule"></a>Planning
-
-```powershell
-$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
-```
-
-### <a name="retention"></a>Bewaartermijn
-
-```powershell
-$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
-```
-
-### <a name="configuring-schedule-and-retention"></a>Planning en bewaar periode configureren
-
-```powershell
-New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
- ```
-
-### <a name="verifying-the-policy"></a>Het beleid controleren
-
-```powershell
-Get-OBSystemStatePolicy
- ```
-
 ### <a name="applying-the-policy"></a>Het beleid Toep assen
 
 Het beleids object is nu voltooid en heeft een bijbehorend back-upschema, retentie beleid en een lijst met uitsluitingen/uitsluiting van bestanden. Dit beleid kan nu worden doorgevoerd voor het gebruik van Azure Backup. Voordat u het zojuist gemaakte beleid toepast, moet u ervoor zorgen dat er geen bestaand back-upbeleid is gekoppeld aan de server met behulp van de cmdlet [Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) . Als u het beleid verwijdert, wordt om bevestiging gevraagd. Als u de bevestiging wilt overs Laan, gebruikt u de vlag `-Confirm:$false` met de cmdlet.
@@ -565,6 +537,34 @@ Job completed.
 The backup operation completed successfully.
 ```
 
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>Back-up maken van de systeem status van Windows Server in de MABS-agent
+
+In deze sectie wordt de Power shell-opdracht voor het instellen van de systeem status in de MABS-agent beschreven.
+
+### <a name="schedule"></a>Planning
+
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>Bewaartermijn
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>Planning en bewaar periode configureren
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>Het beleid controleren
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
+
 ## <a name="restore-data-from-azure-backup"></a>Gegevens herstellen vanaf Azure Backup
 
 In deze sectie wordt u begeleid bij de stappen voor het automatiseren van herstel van gegevens uit Azure Backup. Hiervoor moet u de volgende stappen uitvoeren:
@@ -631,7 +631,7 @@ Het object `$Rps` is een matrix met back-uppunten. Het eerste element is het laa
 
 ### <a name="specifying-an-item-to-restore"></a>Een item opgeven dat moet worden hersteld
 
-Als u een specifiek bestand wilt herstellen, geeft u de bestands naam ten opzichte van het basis volume op. Als u bijvoorbeeld C:\Test\Cat.job wilt ophalen, voert u de volgende opdracht uit. 
+Als u een specifiek bestand wilt herstellen, geeft u de bestands naam ten opzichte van het basis volume op. Als u bijvoorbeeld C:\Test\Cat.job wilt ophalen, voert u de volgende opdracht uit.
 
 ```powershell
 $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE

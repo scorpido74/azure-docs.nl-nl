@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906797"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651358"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
 
@@ -145,11 +145,11 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder **gedeelde onderdelen**niet. U ziet iets als de volgende scherm afbeelding:
 
-        ![Functies selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Onderdelen selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Selecteer **volgende**en selecteer vervolgens **verwijderen**.
 
-1. <a name="ports"></a>Open de firewall poorten.
+1. <span id="ports"></span> Open de firewall poorten.  
 
    Open op elke virtuele machine deze poorten op het Windows Firewall:
 
@@ -369,7 +369,7 @@ De load balancer maken:
 
 1. Selecteer **Toevoegen**.
 
-1. <a name="probe"> </a>Stel op de Blade **status test toevoegen** de volgende Health probe para meters in.
+1. <span id="probe"></span> Stel op de Blade **status test toevoegen** de volgende Health probe para meters in.
 
    - **Naam**: een naam voor de status test.
    - **Protocol**: TCP.

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191256"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648288"
 ---
 # <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Zelf studie: een logistiek regressie model maken in R met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ U maakt een werk ruimte via de Azure Portal, een webconsole voor het beheren van
 
 ## <a name="azure"></a>Een notitieblokmap-map klonen
 
-In dit voor beeld wordt de Cloud notebook server in uw werk ruimte gebruikt voor een installatie zonder een vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](how-to-configure-environment.md#local) als u de controle wilt over uw omgeving, pakketten en afhankelijkheden.
+In dit voor beeld wordt de Cloud notebook server in uw werk ruimte gebruikt voor een installatie zonder een vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) als u de controle wilt over uw omgeving, pakketten en afhankelijkheden.
 
 U voltooit de volgende proef installatie en voert stappen uit in Azure Machine Learning Studio, een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus.
 

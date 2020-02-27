@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566009"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650858"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobs in Azure Blob Storage maken en beheren met behulp van Azure Logic Apps
 
@@ -137,7 +137,10 @@ In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/azureblobconnector/)voor technische details, zoals triggers, acties en limieten, zoals wordt beschreven in het open API-bestand van de connector (voorheen Swagger).
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/azureblobconnector/).
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 <a name="storage-firewalls"></a>
 

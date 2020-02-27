@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: da06112b0990898227191c919b209c8a95d15197
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692393"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616532"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Tabellen ontwerpen in Azure SQL Data Warehouse
 
@@ -43,8 +43,8 @@ Als u de organisatie van de tabellen in SQL Data Warehouse wilt weer geven, kunt
 
 | WideWorldImportersDW-tabel  | Tabel type | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Plaats | Dimensie | WWI. DimCity |
-| Bestellen | Fact | WWI. FactOrder |
+| Plaats | Dimensie | wwi.DimCity |
+| Bestellen | Fact | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Tabel persistentie 
@@ -96,7 +96,7 @@ De tabel categorie bepaalt vaak welke optie u kiest voor het distribueren van de
 | Faseren        | Gebruik Round-Robin voor de faserings tabel. De belasting met CTAS is snel. Wanneer de gegevens zich in de faserings tabel bevindt, gebruikt u invoegen... Selecteer deze optie om de gegevens naar productie tabellen te verplaatsen. |
 
 ## <a name="table-partitions"></a>Tabelpartities
-Een gepartitioneerde tabel bevat en voert bewerkingen uit op de tabel rijen op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden gepartitioneerd op dag, maand of jaar. U kunt de query prestaties verbeteren via partitie-eliminatie, waardoor een query scan wordt beperkt tot gegevens in een partitie. U kunt de gegevens ook onderhouden via partitie wisseling. Omdat de gegevens in SQL Data Warehouse al zijn gedistribueerd, kunnen er te veel partities de query prestaties vertragen. Zie [richt lijnen voor partitioneren](sql-data-warehouse-tables-partition.md)voor meer informatie.  Als de partitie wordt overgeschakeld naar tabel partities die niet leeg zijn, kunt u de optie TRUNCATE_TARGET in uw [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) -instructie gebruiken als de bestaande gegevens moeten worden afgekapt. De onderstaande code schakelt in de getransformeerde dagelijkse gegevens naar de SalesFact die bestaande gegevens overschrijven. 
+Een gepartitioneerde tabel bevat en voert bewerkingen uit op de tabel rijen op basis van gegevensbereiken. Een tabel kan bijvoorbeeld worden gepartitioneerd op dag, maand of jaar. U kunt de query prestaties verbeteren via partitie-eliminatie, waardoor een query scan wordt beperkt tot gegevens in een partitie. U kunt de gegevens ook onderhouden via partitie wisseling. Omdat de gegevens in SQL Data Warehouse al zijn gedistribueerd, kunnen er te veel partities de query prestaties vertragen. Zie [richt lijnen voor partitioneren](sql-data-warehouse-tables-partition.md)voor meer informatie.  Als de partitie wordt overgeschakeld naar tabel partities die niet leeg zijn, kunt u de optie TRUNCATE_TARGET gebruiken in de instructie [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) als de bestaande gegevens moeten worden afgekapt. De onderstaande code schakelt in de getransformeerde dagelijkse gegevens naar de SalesFact die bestaande gegevens overschrijven. 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -107,7 +107,7 @@ SQL Data Warehouse slaat een tabel standaard op als een geclusterde column store
 
 Zie [Wat is er nieuw voor column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)voor een overzicht van Column Store-functies. Zie [maximale Rijg roep-kwaliteit voor column Store-indexen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor het verbeteren van Column store-index prestaties.
 
-## <a name="statistics"></a>statistieken
+## <a name="statistics"></a>Statistieken
 De query optimalisatie maakt gebruik van statistieken op kolom niveau wanneer het plan voor het uitvoeren van een query wordt gemaakt. Om de query prestaties te verbeteren, is het belang rijk om statistieken te hebben over afzonderlijke kolommen, met name kolommen die worden gebruikt in query-samen voegingen. [Het maken van statistieken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) gebeurt automatisch.  Het bijwerken van statistieken gebeurt echter niet automatisch. Statistieken bijwerken nadat een groot aantal rijen zijn toegevoegd of gewijzigd. U kunt bijvoorbeeld statistieken bijwerken na een belasting. Zie [Statistieken-richt lijnen](sql-data-warehouse-tables-statistics.md)voor meer informatie.
 
 ## <a name="primary-key-and-unique-key"></a>Primaire sleutel en unieke sleutel
@@ -144,7 +144,7 @@ SQL Data Warehouse ondersteunt veel, maar niet alle, van de tabel functies die w
 - [Door de gebruiker gedefinieerde typen](/sql/relational-databases/native-client/features/using-user-defined-types)
 
 ## <a name="table-size-queries"></a>Tabel grootte query's
-Een eenvoudige manier om ruimte en rijen te identificeren die worden gebruikt door een tabel in elk van de 60-distributies, is [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)te gebruiken.
+Een eenvoudige manier om ruimte en rijen te identificeren die worden gebruikt door een tabel in elk van de 60-distributies, is door [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)te gebruiken.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -213,6 +213,7 @@ LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where dist
 LEFT OUTER JOIN sys.columns c
     ON cdp.[object_id] = c.[object_id]
     AND cdp.[column_id] = c.[column_id]
+WHERE pn.[type] = 'COMPUTE'
 )
 , size
 AS

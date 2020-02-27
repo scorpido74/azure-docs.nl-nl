@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0282336cb5df7d010571a15e9d1f9d93b82d461e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f24412aa7e53c52f0fcbf0c266b57db077d41eb1
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160318"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612041"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Micro soft Identity platform code samples (v 2.0-eind punt)
 
@@ -46,11 +46,11 @@ In deze voor beelden ziet u hoe u een toepassing met één pagina schrijft die i
 
 | Platform | Beschrijving | Koppeling |
 | -------- | --------------------- | -------- |
-| ![deze afbeelding ziet u het Java script [-logo](media/sample-v2-code/logo_js.png) java script (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Aanroepen Microsoft Graph |[Java script-graphapi-Web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+| ![deze afbeelding ziet u het Java script [-logo](media/sample-v2-code/logo_js.png) java script (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Aanroepen Microsoft Graph |[Java script-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![deze afbeelding ziet u het Java script [-logo](media/sample-v2-code/logo_js.png) java script (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Roept B2C aan |[B2C-java script-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
 | ![deze afbeelding ziet u het Java script [-logo](media/sample-v2-code/logo_js.png) java script (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Hiermee wordt een eigen web-API aangeroepen |[Java script-singlepageapp-DotNet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
 | ![deze afbeelding ziet u het hoek JS-logo](media/sample-v2-code/logo_angular.png) [Java script (MSAL AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)| Aanroepen Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MsalAngularjsDemoApp)
-| ![deze afbeelding ziet u het hoek logo](media/sample-v2-code/logo_angular.png) [Java script (MSAL hoek)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Aanroepen Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MSALAngularDemoApp) |
+| ![deze afbeelding ziet u het hoek logo](media/sample-v2-code/logo_angular.png) [Java script (MSAL hoek)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| Aanroepen Microsoft Graph  | [Java script-singlepageapp-hoek](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
 
 ## <a name="web-applications"></a>Webtoepassingen
 

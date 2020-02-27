@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192231"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620735"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -52,7 +52,9 @@ Bij het configureren van een locatie als voor waarde kunnen organisaties ervoor 
 
 Bij het opnemen van **een locatie**bevat deze optie een IP-adres op Internet die niet alleen de benoemde locaties heeft geconfigureerd. Als u **een wille keurige locatie**selecteert, kunnen beheerders ervoor kiezen **alle vertrouwde** of **geselecteerde locaties**uit te sluiten.
 
-Sommige organisaties kunnen er bijvoorbeeld voor kiezen om geen multi-factor Authentication te vereisen wanneer hun gebruikers zijn verbonden met het netwerk op een vertrouwde locatie, zoals hun fysieke hoofd kantoor. Beheerders kunnen een beleid maken dat een wille keurige locatie bevat, maar de geselecteerde locaties voor hun hoofd netwerken uitsluit
+Sommige organisaties kunnen er bijvoorbeeld voor kiezen om geen multi-factor Authentication te vereisen wanneer hun gebruikers zijn verbonden met het netwerk op een vertrouwde locatie, zoals hun fysieke hoofd kantoor. Beheerders kunnen een beleid maken dat een wille keurige locatie bevat, maar sluit de geselecteerde locaties voor hun hoofd netwerken uit.
+
+Meer informatie over locaties vindt u in het artikel, [Wat is de voor waarde voor de locatie in azure Active Directory voorwaardelijke toegang](location-condition.md).
 
 ## <a name="client-apps-preview"></a>Client-apps (preview-versie)
 
@@ -64,9 +66,21 @@ Beleid voor voorwaardelijke toegang is standaard van toepassing op browser toepa
    - Moderne verificatie-clients
       - Deze optie omvat toepassingen zoals het Office-bureau blad en de telefoon toepassingen.
    - Exchange ActiveSync-clients
+      - Dit omvat standaard alle gebruik van het Exchange ActiveSync-protocol (EAS). Het kiezen van **beleid alleen Toep assen op ondersteunde platforms** wordt beperkt tot ondersteunde platforms zoals IOS, Android en Windows.
       - Wanneer het beleid het gebruik van Exchange ActiveSync blokkeert, ontvangt de betrokken gebruiker één quarantaine-e-mail. Dit e-mail bericht bevat informatie over waarom ze zijn geblokkeerd en bevatten herstel instructies als dit mogelijk is.
    - Andere clients
-      - Deze optie omvat clients die gebruikmaken van basis/verouderde verificatie protocollen, waaronder IMAP-, MAPI-, POP-, SMTP-en verouderde Office-toepassingen die geen ondersteuning bieden voor moderne verificatie.
+      - Deze optie omvat clients die gebruikmaken van basis/verouderde verificatie protocollen die geen ondersteuning bieden voor moderne verificatie.
+         - Geverifieerde SMTP: wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.
+         - Automatische detectie: wordt door Outlook-en EAS-clients gebruikt om post vakken in Exchange Online te vinden en er verbinding mee te maken.
+         - Exchange Online Power shell: wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.
+         - Exchange Web Services (EWS): een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.
+         - IMAP4: wordt gebruikt door IMAP-e-mailclients.
+         - MAPI via HTTP (MAPI/HTTP): wordt gebruikt door Outlook 2010 en hoger.
+         - Offline adresboek (OAB): een kopie van de adres lijst verzamelingen die worden gedownload en gebruikt door Outlook.
+         - Outlook Anywhere (RPC via HTTP): wordt gebruikt door Outlook 2016 en eerder.
+         - Outlook-service: wordt gebruikt door de mail-en agenda-app voor Windows 10.
+         - POP3: wordt gebruikt door POP-e-mailclients.
+         - Reporting Web Services: wordt gebruikt voor het ophalen van rapport gegevens in Exchange Online.
 
 Deze voor waarden worden meestal gebruikt voor het vereisen van een beheerd apparaat, het blok keren van verouderde verificatie en het blok keren van webtoepassingen, maar het toestaan van mobiele of desktop-apps
 
@@ -101,7 +115,7 @@ Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt
 |    |    |
 | --- | --- |
 | Pad | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Naam | 1 |
+| Name | 1 |
 | Type | REG_SZ (teken reeks) |
 | Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
@@ -110,7 +124,7 @@ Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sl
 |    |    |
 | --- | --- |
 | Pad | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Naam | 1 |
+| Name | 1 |
 | Type | REG_SZ (teken reeks) |
 | Gegevens | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}} |
 
@@ -139,7 +153,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
 | App Power BI | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
-| Skype voor Bedrijven | Office 365 Exchange Online| Android, IOS |
+| Skype voor Bedrijven | Office 365 Exchange Online| Android, iOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-clients

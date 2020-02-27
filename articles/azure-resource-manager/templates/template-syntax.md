@@ -2,13 +2,13 @@
 title: Sjabloon structuur en syntaxis
 description: Hierin worden de structuur en eigenschappen van Azure Resource Manager sjablonen beschreven met declaratieve JSON-syntaxis.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/25/2020
+ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209457"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622903"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen
 
@@ -260,10 +260,14 @@ Het volgende voorbeeld ziet u de structuur van de uitvoerdefinitie van een:
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -273,7 +277,8 @@ Het volgende voorbeeld ziet u de structuur van de uitvoerdefinitie van een:
 | uitvoer naam |Ja |De naam van de uitvoerwaarde. Moet een geldige JavaScript-id. |
 | condition |Nee | Booleaanse waarde die aangeeft of deze uitvoer waarde wordt geretourneerd. Als `true`, wordt de waarde opgenomen in de uitvoer voor de implementatie. Als `false`, wordt de uitvoer waarde overgeslagen voor deze implementatie. Wanneer deze niet is opgegeven, wordt de standaard waarde `true`. |
 | type |Ja |Type van de uitvoerwaarde. Uitvoerwaarden ondersteuning van de dezelfde typen als sjabloon invoerparameters die zijn opgegeven. Als u **securestring** opgeeft voor het uitvoer type, wordt de waarde niet weer gegeven in de implementatie geschiedenis en kan deze niet worden opgehaald uit een andere sjabloon. Als u een geheime waarde in meer dan één sjabloon wilt gebruiken, slaat u het geheim op in een Key Vault en verwijst u naar het geheim in het parameter bestand. Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](key-vault-parameter.md)voor meer informatie. |
-| waarde |Ja |De sjabloontaalexpressie dat wordt geëvalueerd en geretourneerd als de uitvoerwaarde. |
+| waarde |Nee |De sjabloontaalexpressie dat wordt geëvalueerd en geretourneerd als de uitvoerwaarde. Geef een **waarde** of een **kopie**op. |
+| Kopieer |Nee | Wordt gebruikt om meer dan één waarde voor een uitvoer te retour neren. **Waarde** opgeven of **kopiëren**. Zie [uitvoer iteratie in azure Resource Manager-sjablonen](copy-outputs.md)voor meer informatie. |
 
 Zie [uitvoer in azure Resource Manager sjabloon](template-outputs.md)voor voor beelden van het gebruik van uitvoer.
 
@@ -302,7 +307,7 @@ Voor inline opmerkingen kunt u `//` of `/* ... */` gebruiken, maar deze syntaxis
   ],
 ```
 
-In Visual Studio code kan de [uitbrei ding van de Azure Resource Manager-Hulpprogram ma's](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) automatisch een resource manager-sjabloon detecteren en de taal modus dienovereenkomstig wijzigen. Als u **Azure Resource Manager sjabloon** in de rechter BENEDENHOEK van VS code ziet, kunt u de inline opmerkingen gebruiken. De inline opmerkingen worden niet meer als ongeldig gemarkeerd.
+In Visual Studio code kan de [uitbrei ding van de Azure Resource Manager-Hulpprogram ma's](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) automatisch een resource manager-sjabloon detecteren en de taal modus dienovereenkomstig wijzigen. Als u in de rechter benedenhoek van VS code **Azure Resource Manager-sjabloon** ziet, kunt u de inline opmerkingen gebruiken. De inline opmerkingen worden niet meer als ongeldig gemarkeerd.
 
 ![Visual Studio code Azure Resource Manager-sjabloon modus](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -379,7 +384,7 @@ U kunt geen meta gegevens object toevoegen aan door de gebruiker gedefinieerde f
 
 ## <a name="multi-line-strings"></a>Reeksen met meerdere regels
 
-U kunt een teken reeks opsplitsen in meerdere regels. Bijvoorbeeld de eigenschap Location en een van de opmerkingen in het volgende JSON-voor beeld.
+U kunt een teken reeks opsplitsen in meerdere regels. Zie bijvoorbeeld de eigenschap Location en een van de opmerkingen in het volgende JSON-voor beeld.
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651454"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange EDIFACT-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterpris
 
 ## <a name="create-an-edifact-agreement"></a>Een EDIFACT-overeenkomst maken 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com "Azure Portal"). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com "Azure-portal"). 
 
 2. Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' Integration ' in en selecteer vervolgens **integratie accounts**.
 
@@ -63,7 +63,7 @@ Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterpris
 
    | Eigenschap | Beschrijving |
    | --- | --- |
-   | Naam |Naam van de overeenkomst |
+   | Name |Naam van de overeenkomst |
    | Type overeenkomst | Moet EDIFACT zijn |
    | Host-partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
    | Host-id |Een id voor de host-partner |
@@ -88,7 +88,7 @@ Configureer deze eigenschappen op basis van uw overeenkomst met de partner die b
 
 U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de geselecteerde instellingen.
 
-### <a name="identifiers"></a>Id's
+### <a name="identifiers"></a>Identifiers
 
 | Eigenschap | Beschrijving |
 | --- | --- |
@@ -102,7 +102,7 @@ U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de ge
 | Ontvangst van bericht (CONTRL) |Schakel dit selectie vakje in om een technische (CONTRL) bevestiging te retour neren naar de verzender van het uitwisselings certificaat. De bevestiging wordt verzonden naar de verzender van het uitwisselings bericht op basis van de instellingen voor verzenden voor de overeenkomst. |
 | Bevestiging (CONTRL) |Schakel dit selectie vakje in om een functionele (CONTRL) bevestiging te retour neren naar de verzender van het uitwisselings bericht dat de bevestiging wordt verzonden naar de verzender van het uitwisselings certificaat op basis van de instellingen voor het verzenden van de overeenkomst. |
 
-### <a name="schemas"></a>Schema 's
+### <a name="schemas"></a>Schema's
 
 | Eigenschap | Beschrijving |
 | --- | --- |
@@ -115,6 +115,7 @@ U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de ge
 | SCHEMA |Selecteer het eerder geüploade schema dat u wilt gebruiken uit het gekoppelde integratie account. |
 
 ### <a name="control-numbers"></a>Controle nummers
+
 | Eigenschap | Beschrijving |
 | --- | --- |
 | Dubbele uitwisselings controle nummers niet toestaan |Selecteer deze eigenschap om dubbele interwijzigingen te blok keren. Als u deze waarde selecteert, controleert de decoderings actie EDIFACT of het uitwisselings controle nummer (UNB5) voor de ontvangen uitwisseling niet overeenkomt met een eerder verwerkte Interchange Control-nummer. Als er een overeenkomst wordt gedetecteerd, wordt de uitwisseling niet verwerkt. |
@@ -123,13 +124,13 @@ U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de ge
 | Geen duplicaten voor het instellen van transactie sets toestaan |Selecteer deze eigenschap om interacties te blok keren met dubbele trans actie-UNH1 (set Control Numbers). |
 | EDIFACT bevestigings controle nummer |Als u de referentie nummers van de transactie set wilt opgeven voor gebruik in een bevestiging, voert u een waarde in voor het voor voegsel, een bereik van de referentie nummers en een achtervoegsel. |
 
-### <a name="validations"></a>Validaties
+### <a name="validation"></a>Validatie
 
 Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, wordt met de validatie de rij ' default ' gebruikt.
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Bericht type |Selecteer het type EDI-bericht. |
+| Berichttype |Selecteer het type EDI-bericht. |
 | EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
 | Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
 | Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
@@ -161,7 +162,7 @@ Configureer deze eigenschappen op basis van uw overeenkomst met uw partner die b
 
 Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die voldoen aan de geselecteerde instellingen.
 
-### <a name="identifiers"></a>Id's
+### <a name="identifiers"></a>Identifiers
 
 | Eigenschap | Beschrijving |
 | --- | --- |
@@ -173,13 +174,15 @@ Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die vold
 | UNB7 (toepassings verwijzing-ID) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal 14 tekens |
 
 ### <a name="acknowledgment"></a>Bevestiging
+
 | Eigenschap | Beschrijving |
 | --- | --- |
 | Ontvangst van bericht (CONTRL) |Schakel dit selectie vakje in als de gehoste partner verwacht een technische bevestiging (CONTRL) te ontvangen. Met deze instelling geeft u op dat de gehoste partner, die het bericht verzendt, een bevestiging vraagt van de gast partner. |
 | Bevestiging (CONTRL) |Schakel dit selectie vakje in als de gehoste partner verwacht een CONTRL-bevestiging te ontvangen. Met deze instelling geeft u op dat de gehoste partner, die het bericht verzendt, een bevestiging vraagt van de gast partner. |
 | SG1/SG4-lus genereren voor geaccepteerde transactie sets |Als u ervoor hebt gekozen om een functionele bevestiging aan te vragen, schakelt u dit selectie vakje in om het genereren van SG1/SG4-lussen in functionele CONTRL-ontvangst bevestigingen voor geaccepteerde transactie sets af te dwingen. |
 
-### <a name="schemas"></a>Schema 's
+### <a name="schemas"></a>Schema's
+
 | Eigenschap | Beschrijving |
 | --- | --- |
 | UNH 2.1 (TYPE) |Selecteer een type transactieset. |
@@ -188,6 +191,7 @@ Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die vold
 | SCHEMA |Selecteer het schema dat u wilt gebruiken. Schema's bevinden zich in uw integratie account. Als u toegang wilt krijgen tot uw schema's, koppelt u eerst uw integratie account aan uw logische app. |
 
 ### <a name="envelopes"></a>Enveloppen
+
 | Eigenschap | Beschrijving |
 | --- | --- |
 | UNB8 (verwerkings prioriteits code) |Voer een alfabetische waarde in die niet meer dan één teken lang is. |
@@ -211,19 +215,20 @@ Met uitzonde ring van de tekenset kunt u een andere set scheidings tekens invoer
 | Achtervoegsel |Selecteer het teken dat wordt gebruikt met de segment-id. Als u een achtervoegsel aanwijst, kan het gegevens element van het segment Terminator leeg zijn. Als de eind afsluit van het segment leeg blijft, moet u een achtervoegsel aanwijzen. |
 
 ### <a name="control-numbers"></a>Controle nummers
+
 | Eigenschap | Beschrijving |
 | --- | --- |
 | UNB5 (Interchange Control Number) |Voer een voor voegsel, een reeks waarden voor het uitwisselings controle nummer en een achtervoegsel in. Deze waarden worden gebruikt voor het genereren van een uitgaande uitwisseling. Het voor voegsel en achtervoegsel zijn optioneel, terwijl het controle nummer is vereist. Het controle nummer wordt voor elk nieuw bericht verhoogd. het voor voegsel en achtervoegsel blijven hetzelfde. |
 | UNG5 (groeps controle nummer) |Voer een voor voegsel, een reeks waarden voor het uitwisselings controle nummer en een achtervoegsel in. Deze waarden worden gebruikt om het groeps controle nummer te genereren. Het voor voegsel en achtervoegsel zijn optioneel, terwijl het controle nummer is vereist. Het controle nummer wordt voor elk nieuw bericht verhoogd totdat de maximum waarde is bereikt. het voor voegsel en achtervoegsel blijven hetzelfde. |
 | UNH1 (referentie nummer van de bericht header) |Voer een voor voegsel, een reeks waarden voor het uitwisselings controle nummer en een achtervoegsel in. Deze waarden worden gebruikt om het referentie nummer van de bericht header te genereren. Het voor voegsel en achtervoegsel zijn optioneel, terwijl het referentie nummer is vereist. Het referentie nummer wordt voor elk nieuw bericht verhoogd. het voor voegsel en achtervoegsel blijven hetzelfde. |
 
-### <a name="validations"></a>Validaties
+### <a name="validation"></a>Validatie
 
 Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, wordt met de validatie de rij ' default ' gebruikt.
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Bericht type |Selecteer het type EDI-bericht. |
+| Berichttype |Selecteer het type EDI-bericht. |
 | EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen van het schema, de lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens. |
 | Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
 | Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
@@ -240,9 +245,13 @@ Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoeg
 
     ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>Swagger-bestand weer geven
-Zie [EDIFACT](/connectors/edifact/)voor informatie over het weer geven van de Swagger-gegevens voor de EDIFACT-connector.
+## <a name="connector-reference"></a>Connector-verwijzing
 
-## <a name="learn-more"></a>Meer informatie
-* [Meer informatie over de Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
+Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/edifact/).
 
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

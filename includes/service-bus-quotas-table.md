@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159148"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651551"
 ---
 De volgende tabel bevat de quotum gegevens die specifiek zijn voor Azure Service Bus berichten. Voor informatie over prijzen en andere quota's voor Service Bus raadpleegt u [Service Bus prijzen](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Quotum naam | Scope | Opmerkingen | Waarde |
+| Quotum naam | Bereik | Opmerkingen | Waarde |
 | --- | --- | --- | --- |
 | Maximum aantal basis-of standaard naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Basic-of Standard-naam ruimten worden geweigerd door de Azure Portal. |100|
 | Maximum aantal Premium-naam ruimten per Azure-abonnement |Naamruimte |Volgende aanvragen voor aanvullende Premium-naam ruimten worden geweigerd door de portal. |100 |
@@ -36,7 +36,7 @@ De volgende tabel bevat de quotum gegevens die specifiek zijn voor Azure Service
 | Aantal SQL-filters per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra filters in het onderwerp worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |2,000 |
 | Aantal correlatie filters per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra filters in het onderwerp worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |100.000 |
 | Grootte van SQL-filters of-acties |Naamruimte |Volgende aanvragen voor het maken van extra filters worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |Maximale lengte van teken reeks voor filter voorwaarde: 1.024 (1 K).<br /><br />Maximale lengte van regel actie teken reeks: 1.024 (1 K).<br /><br />Maximum aantal expressies per regel actie: 32. |
-| Aantal [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regels per naam ruimte, wachtrij of onderwerp |Entiteit, naam ruimte |Volgende aanvragen voor het maken van aanvullende regels worden afgewezen en er wordt een uitzonde ring ontvangen door de aanroepende code. |Maximum aantal regels: 12. <br /><br /> Regels die zijn geconfigureerd voor een Service Bus naam ruimte, zijn van toepassing op alle wacht rijen en onderwerpen in die naam ruimte. |
+| Aantal [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regels per naam ruimte, wachtrij of onderwerp |Entiteit, naam ruimte |Volgende aanvragen voor het maken van aanvullende regels worden afgewezen en er wordt een uitzonde ring ontvangen door de aanroepende code. |Maximum aantal regels per entiteits type: 12. <br /><br /> Regels die zijn geconfigureerd voor een Service Bus naam ruimte, zijn van toepassing op alle typen: wacht rijen en onderwerpen. |
 | Aantal berichten per trans actie | Transactie | Extra inkomende berichten worden geweigerd en een uitzonde ring met de melding ' kan niet meer dan 100 berichten verzenden in één trans actie ' wordt ontvangen door de aanroepende code. | 100 <br /><br /> Voor bewerkingen voor **verzenden ()** en **SendAsync ()** . |
 | Aantal regels voor het virtuele netwerk en IP-filter | Naamruimte | &nbsp; | 128 | 
 

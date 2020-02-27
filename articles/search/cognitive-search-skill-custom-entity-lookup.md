@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960605"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651335"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Aangepaste entiteit opzoeken cognitieve vaardigheid (preview-versie)
 
@@ -63,7 +63,7 @@ Para meters zijn hoofdletter gevoelig.
 
 Er zijn drie verschillende manieren om de lijst met aangepaste entiteiten te voorzien van de aangepaste vaardigheid voor het opzoeken van entiteiten. U kunt de lijst opgeven in een. CSV-bestand, a. JSON-bestand of als een inline-definitie als onderdeel van de vaardigheids definitie.  
 
-Als het definitie bestand een is. CSV of. JSON-bestand, het pad van het bestand moet worden gegeven als onderdeel van de para meter *entitiesDefitionUri* . In dit geval wordt het bestand eenmaal gedownload aan het begin van elke Indexeer functie die wordt uitgevoerd. Het bestand moet toegankelijk zijn zolang de Indexeer functie is bedoeld om te worden uitgevoerd.
+Als het definitie bestand een is. CSV of. JSON-bestand, het pad van het bestand moet worden gegeven als onderdeel van de para meter *entitiesDefitionUri* . In dit geval wordt het bestand eenmaal gedownload aan het begin van elke Indexeer functie die wordt uitgevoerd. Het bestand moet toegankelijk zijn zolang de Indexeer functie is bedoeld om te worden uitgevoerd. Daarnaast moet het bestand UTF-8 zijn gecodeerd.
 
 Als de definitie inline wordt vermeld, moet deze als inline worden verschaft als de inhoud van de para meter *inlineEntitiesDefinition* . 
 
@@ -145,7 +145,7 @@ De onderstaande tabellen bevatten meer informatie over de verschillende configur
 
 |  Veldnaam  |        Beschrijving  |
 |--------------|----------------------|
-| name | De entiteits descriptor op het hoogste niveau. Overeenkomsten in de vaardigheids uitvoer worden gegroepeerd op basis van deze naam en moeten de "genormaliseerde" vorm vertegenwoordigen van de tekst die wordt gevonden.  |
+| naam | De entiteits descriptor op het hoogste niveau. Overeenkomsten in de vaardigheids uitvoer worden gegroepeerd op basis van deze naam en moeten de "genormaliseerde" vorm vertegenwoordigen van de tekst die wordt gevonden.  |
 | description  | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
 | type | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
 | subtype | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931235"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612511"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelf studie: een uitgaande forest-vertrouwens relatie maken met een on-premises domein in Azure Active Directory Domain Services (preview-versie)
 
@@ -89,7 +89,7 @@ Als u binnenkomende vertrouwens relatie wilt configureren voor het on-premises A
    > [!NOTE]
    > Als u de menu optie **vertrouwens relaties** niet ziet, controleert u onder **Eigenschappen** voor het *type forest*. Alleen *bron* -forests kunnen vertrouwens relaties maken. Als het forest-type *gebruiker*is, kunt u geen vertrouwens relaties maken. Er is momenteel geen manier om het type forest van een door Azure AD DS beheerd domein te wijzigen. U moet het beheerde domein verwijderen en opnieuw maken als een resource-forest.
 
-1. Voer een naam in voor Azure AD DS domein naam, bijvoorbeeld *aadds.contoso.com*, en selecteer vervolgens **volgende**
+1. Voer een naam in voor Azure AD DS domein naam, bijvoorbeeld *aaddscontoso.com*, en selecteer vervolgens **volgende**
 1. Selecteer de optie voor het maken van een **forestvertrouwensrelatie**en vervolgens het maken van een **eenrichtings vertrouwensrelatie: inkomend** vertrouwen.
 1. Kies ervoor om de vertrouwens relatie **alleen voor dit domein**te maken. In de volgende stap maakt u de vertrouwens relatie in de Azure Portal voor het beheerde domein van Azure AD DS.
 1. Kies voor het gebruik van **forest-dekkende verificatie**en voer vervolgens een vertrouwens wachtwoord in en bevestig dit. Dit wacht woord wordt ook ingevoerd in de Azure Portal in de volgende sectie.
@@ -102,7 +102,7 @@ Met het on-premises AD DS domein dat is geconfigureerd voor het oplossen van het
 
 Voer de volgende stappen uit om de uitgaande vertrouwens relatie voor het door Azure AD DS beheerde domein te maken in de Azure Portal:
 
-1. In de Azure Portal zoekt en selecteert u **Azure AD Domain Services**en selecteert u vervolgens uw beheerde domein, zoals *aadds.contoso.com*
+1. In de Azure Portal zoekt en selecteert u **Azure AD Domain Services**en selecteert u vervolgens uw beheerde domein, zoals *aaddscontoso.com*
 1. Selecteer in het menu aan de linkerkant van het Azure AD DS Managed Domain de optie **vertrouwens relaties**en kies vervolgens om + een vertrouwens relatie **toe te voegen** .
 1. Voer een weergave naam in die de vertrouwens relatie identificeert en vervolgens de naam van het on-premises vertrouwde forest-DNS, zoals *onprem.contoso.com*
 1. Geef het wacht woord op voor de vertrouwens relatie die is gebruikt bij het configureren van de binnenkomende forestvertrouwensrelatie voor het on-premises AD DS domein in de vorige sectie.
@@ -194,7 +194,7 @@ Met de virtuele machine van Windows Server die is toegevoegd aan het Azure AD DS
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Verificatie tussen forests valideren voor een resource
 
 1. Meld u aan op een Windows-computer die is toegevoegd aan uw on-premises Active Directory met behulp van een gebruikers account uit uw on-premises Active Directory.
-1. Gebruik **Windows Verkenner**om verbinding te maken met de share die u hebt gemaakt met behulp van de volledig gekwalificeerde hostnaam en de share, zoals `\\fs1.aadds.contoso.com\CrossforestShare`.
+1. Gebruik **Windows Verkenner**om verbinding te maken met de share die u hebt gemaakt met behulp van de volledig gekwalificeerde hostnaam en de share, zoals `\\fs1.aaddscontoso.com\CrossforestShare`.
 1. U kunt de schrijf machtiging controleren door met de rechter muisknop in de map te selecteren, op **Nieuw**te kiezen en vervolgens **tekst document**te selecteren. Gebruik de standaard naam **nieuw tekst document**.
 
     Als de schrijf machtigingen juist zijn ingesteld, wordt er een nieuw tekst document gemaakt. De volgende stappen worden vervolgens naar wens geopend, bewerkt en verwijderd.
@@ -204,7 +204,7 @@ Met de virtuele machine van Windows Server die is toegevoegd aan het Azure AD DS
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * DNS configureren in een on-premises AD DS omgeving ter ondersteuning van Azure AD DS-connectiviteit

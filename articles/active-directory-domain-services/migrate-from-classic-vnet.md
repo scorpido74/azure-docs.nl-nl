@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161644"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613434"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
@@ -206,12 +206,12 @@ Voer de volgende stappen uit om het beheerde domein voor Azure AD DS voor te ber
     $creds = Get-Credential
     ```
 
-1. Voer nu de `Migrate-Aadds` cmdlet uit met de para meter *-Prepare* . Geef de *-ManagedDomainFqdn* op voor uw eigen Azure AD DS beheerde domein, zoals *contoso.com*:
+1. Voer nu de `Migrate-Aadds` cmdlet uit met de para meter *-Prepare* . Geef de *-ManagedDomainFqdn* op voor uw eigen Azure AD DS beheerde domein, zoals *aaddscontoso.com*:
 
     ```powershell
     Migrate-Aadds `
         -Prepare `
-        -ManagedDomainFqdn contoso.com `
+        -ManagedDomainFqdn aaddscontoso.com `
         -Credentials $creds
     ```
 
@@ -219,7 +219,7 @@ Voer de volgende stappen uit om het beheerde domein voor Azure AD DS voor te ber
 
 Met het door Azure AD DS beheerde domein dat is voor bereid en waarvan een back-up is gemaakt, kan het domein worden gemigreerd. Met deze stap worden de Azure AD Domain Services-Vm's van de domein controller opnieuw gemaakt met behulp van het Resource Manager-implementatie model. Het kan 1 tot drie uur duren voordat deze stap is voltooid.
 
-Voer de `Migrate-Aadds` cmdlet uit met behulp van de para meter *-commit* . Geef de *-ManagedDomainFqdn* op voor uw eigen Azure AD DS beheerde domein dat in de vorige sectie is voor bereid, zoals *contoso.com*:
+Voer de `Migrate-Aadds` cmdlet uit met behulp van de para meter *-commit* . Geef de *-ManagedDomainFqdn* op voor uw eigen Azure AD DS beheerde domein dat in de vorige sectie is voor bereid, zoals *aaddscontoso.com*:
 
 Geef de doel resource groep op die het virtuele netwerk bevat waarnaar u Azure-AD DS wilt migreren, zoals *myResourceGroup*. Geef het virtuele netwerk van het doel op, bijvoorbeeld *myVnet*, en het subnet, zoals *DomainServices*.
 
@@ -228,7 +228,7 @@ Wanneer deze opdracht wordt uitgevoerd, kunt u de volgende keer niet terugdraaie
 ```powershell
 Migrate-Aadds `
     -Commit `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
@@ -265,7 +265,7 @@ Test nu de verbinding met het virtuele netwerk en de naam omzetting. Voer de vol
 
 1. Controleer of u het IP-adres van een van de domein controllers kunt pingen, zoals `ping 10.1.0.4`
     * De IP-adressen van de domein controllers worden weer gegeven op de pagina **Eigenschappen** voor de Azure AD DS beheerde domein in de Azure Portal.
-1. Naam omzetting van het beheerde domein verifiëren, zoals `nslookup contoso.com`
+1. Naam omzetting van het beheerde domein verifiëren, zoals `nslookup aaddscontoso.com`
     * Geef de DNS-naam voor uw eigen Azure AD DS beheerde domein op om te controleren of de DNS-instellingen juist zijn en worden omgezet.
 
 De tweede domein controller moet beschikbaar zijn 1-2 uur nadat de migratie-cmdlet is voltooid. Als u wilt controleren of de tweede domein controller beschikbaar is, kijkt u op de pagina **Eigenschappen** van het Azure AD DS beheerde domein in de Azure Portal. Als er twee IP-adressen worden weer gegeven, is de tweede domein controller klaar.
@@ -309,12 +309,12 @@ Tot een bepaald punt in het migratie proces kunt u ervoor kiezen om het door Azu
 
 Als er een fout optreedt tijdens het uitvoeren van de Power shell-cmdlet om de migratie voor te bereiden in stap 2 of voor de migratie zelf in stap 3, kan het door Azure AD DS beheerde domein worden teruggezet naar de oorspronkelijke configuratie. Voor deze terugdraaien is het oorspronkelijke klassieke virtuele netwerk vereist. Houd er rekening mee dat de IP-adressen na het terugdraaien mogelijk nog steeds worden gewijzigd.
 
-Voer de `Migrate-Aadds`-cmdlet uit met de para meter *-abort* . Geef de *-ManagedDomainFqdn* voor uw eigen Azure AD DS beheerde domein die is voor bereid in een vorige sectie, zoals *contoso.com*, en de naam van het klassieke virtuele netwerk, zoals *myClassicVnet*:
+Voer de `Migrate-Aadds`-cmdlet uit met de para meter *-abort* . Geef de *-ManagedDomainFqdn* voor uw eigen Azure AD DS beheerde domein die is voor bereid in een vorige sectie, zoals *aaddscontoso.com*, en de naam van het klassieke virtuele netwerk, zoals *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```

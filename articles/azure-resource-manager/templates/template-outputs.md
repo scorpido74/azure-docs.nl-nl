@@ -2,13 +2,13 @@
 title: Uitvoer in sjablonen
 description: Hierin wordt beschreven hoe u uitvoer waarden definieert in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 7244e1ac0eff973d550a2bae8a70fa5055ca2248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483919"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622843"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Uitvoer in Azure Resource Manager sjabloon
 
@@ -43,6 +43,24 @@ In de sectie outputs kunt u voorwaardelijk een waarde Retour neren. Normaal gesp
 
 Zie [voorwaardelijke uitvoer sjabloon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)voor een eenvoudig voor beeld van voorwaardelijke uitvoer.
 
+## <a name="dynamic-number-of-outputs"></a>Dynamisch aantal uitvoer bewerkingen
+
+In sommige scenario's weet u niet het aantal exemplaren van een waarde die u moet retour neren bij het maken van de sjabloon. U kunt een variabele aantal waarden retour neren met behulp van het element **copy** .
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+Zie [herhalingen in azure Resource Manager-sjablonen](copy-outputs.md)voor meer informatie.
+
 ## <a name="linked-templates"></a>Gekoppelde sjablonen
 
 Gebruik de functie [Reference](template-functions-resource.md#reference) in de bovenliggende sjabloon om de uitvoer waarde van een gekoppelde sjabloon op te halen. De syntaxis van de bovenliggende sjabloon is:
@@ -61,7 +79,7 @@ In het volgende voor beeld ziet u hoe u het IP-adres instelt op een load balance
 }
 ```
 
-U kunt geen gebruiken de `reference` functie in de uitvoersectie van een [geneste sjabloon](linked-templates.md#nested-template). Als u wilt de waarden voor een geïmplementeerde resource in een geneste sjabloon, uw geneste sjabloon te converteren naar een gekoppelde sjabloon.
+U kunt de functie `reference` niet gebruiken in het gedeelte outputs van een [geneste sjabloon](linked-templates.md#nested-template). Als u wilt de waarden voor een geïmplementeerde resource in een geneste sjabloon, uw geneste sjabloon te converteren naar een gekoppelde sjabloon.
 
 ## <a name="get-output-values"></a>Uitvoer waarden ophalen
 
@@ -69,7 +87,7 @@ Wanneer de implementatie is geslaagd, worden de uitvoer waarden automatisch gere
 
 Als u uitvoer waarden wilt ophalen uit de implementatie geschiedenis, kunt u script gebruiken.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -77,7 +95,7 @@ Als u uitvoer waarden wilt ophalen uit de implementatie geschiedenis, kunt u scr
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \
@@ -92,9 +110,9 @@ az group deployment show \
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van uitvoer.
 
-|Sjabloon  |Beschrijving  |
+|Template  |Beschrijving  |
 |---------|---------|
-|[Kopieer variabelen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Complexe variabelen maakt en deze waarden weergeeft. Niet alle resources niet implementeren. |
+|[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Complexe variabelen maakt en deze waarden weergeeft. Niet alle resources niet implementeren. |
 |[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en de uitvoer van de resource-ID. |
 |[Load balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Koppelingen naar de voorgaande sjabloon. Maakt gebruik van de resource-ID in de uitvoer bij het maken van de load balancer. |
 

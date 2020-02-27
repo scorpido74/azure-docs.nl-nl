@@ -4,7 +4,7 @@ description: SAP S/4HANA of BW/4HANA implementeren op een Azure VM
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101448"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616211"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA of BW/4HANA implementeren op Azure
 In dit artikel wordt beschreven hoe u S/4HANA implementeert in azure met behulp van de SAP Cloud Appliance Library (SAP CAL) 3,0. Volg dezelfde stappen om andere oplossingen op basis van SAP HANA, zoals BW/4HANA, te implementeren.
@@ -67,7 +67,7 @@ De pagina **oplossingen** toont enkele van de SAP CAL Hana-oplossingen die besch
 
    ![SAP CAL-accounts](./media/cal-s4h/s4h-pic3c.png)
 
-1. Als u de SAP CAL wilt machtigen voor implementatie in het Azure-abonnement datu hebt gedefinieerd, klikt u op autoriseren. De volgende pagina wordt weer gegeven op het browser tabblad:
+1. Als u de SAP CAL wilt machtigen voor implementatie in het Azure-abonnement dat u hebt gedefinieerd, klikt u op **autoriseren**. De volgende pagina wordt weer gegeven op het browser tabblad:
 
    ![Aanmelden bij de Cloud Services van Internet Explorer](./media/cal-s4h/s4h-pic4c.png)
 
@@ -119,7 +119,7 @@ Hier wordt het Basic-pad voor de implementatie beschreven.
 
     d. Voer een hoofd **wachtwoord** in voor de oplossing van acht of negen tekens. Het wacht woord wordt gebruikt voor de beheerders van de verschillende onderdelen.
 
-   ![Basis modus SAP-CAL: Instantie maken](./media/cal-s4h/s4h-pic10a.png)
+   ![Basis modus SAP-CAL: exemplaar maken](./media/cal-s4h/s4h-pic10a.png)
 
 1. Klik op **maken**en klik in het bericht venster dat wordt weer gegeven op **OK**.
 

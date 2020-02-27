@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste NGINX ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486199"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622422"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Een aangepaste NGINX ingangs controller gebruiken en HTTPS configureren
 
@@ -96,7 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Open [Values. yaml][values-yaml] en vervang alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* met *nginx. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. Vervang ook *kubernetes.io/ingress.class: nginx-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: nginx # aangepaste*inkomend verkeer. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
+Open [Values. yaml][values-yaml] en voer de volgende updates uit:
+* Alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* vervangen door *nginx. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. 
+* Vervang *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: nginx # aangepaste*inkomend verkeer. 
+
+Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -149,6 +153,9 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
 Ga naar de *bikesharingweb* -service door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> Als er een fout pagina wordt weer geven in plaats van de *bikesharingweb* -service, controleert u of u **zowel** de *kubernetes.io/ingress.class* aantekening als de host in het bestand *Values. yaml* hebt bijgewerkt.
 
 Gebruik de `azds space select` opdracht om een onderliggende ruimte onder *dev* te maken en geef de url's weer voor toegang tot de onderliggende ontwikkel ruimte.
 

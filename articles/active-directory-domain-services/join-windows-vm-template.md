@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712567"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613753"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
 
@@ -93,8 +93,8 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een door Azure AD D
     | Bestaande Subnetnaam      | De naam van het bestaande subnet van het virtuele netwerk, zoals *werk belastingen*. |
     | DNS-label voorvoegsel          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
-    | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *aadds.contoso.com*. |
-    | Domein gebruikers naam           | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aadds.contoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
+    | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *aaddscontoso.com*. |
+    | Domein gebruikers naam           | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
     | Domeinwachtwoord           | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
     | Gebruikers naam van de VM-beheerder         | Geef een lokaal Administrator-account op om te maken op de VM. |
@@ -123,7 +123,7 @@ Voer de volgende stappen uit om een bestaande virtuele machine met Windows Serve
     | Resourcegroep            | Kies de resource groep met uw bestaande VM. |
     | Locatie                  | Selecteer de locatie van de bestaande virtuele machine. |
     | VM-lijst                   | Voer de door komma's gescheiden lijst in van de bestaande virtuele machine (s) die u wilt toevoegen aan de Azure AD DS beheerde domein, zoals *myVM1, myVM2*. |
-    | Gebruikers naam voor domein deelname     | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aadds.contoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
+    | Gebruikers naam voor domein deelname     | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
     | Domein deelname gebruikers wachtwoord | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
 

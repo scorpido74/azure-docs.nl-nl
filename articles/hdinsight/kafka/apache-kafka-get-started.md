@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/01/2019
-ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.custom: mvc
+ms.date: 02/24/2020
+ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030005"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623513"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal
 
-Apache Kafka is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten.
+[Apache Kafka](./apache-kafka-introduction.md) is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten.
 
-In deze snelstart leert u hoe u met Azure Portal een [Apache Kafka](https://kafka.apache.org)-cluster maakt. U leert ook hoe u de inbegrepen hulpprogramma's gebruikt voor het verzenden en ontvangen van berichten via Apache Kafka.
+In deze Quick Start leert u hoe u een Apache Kafka cluster maakt met behulp van de Azure Portal. U leert ook hoe u de inbegrepen hulpprogramma's gebruikt voor het verzenden en ontvangen van berichten via Apache Kafka. Zie [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)voor uitgebreide uitleg van de beschik bare configuraties. Zie [clusters maken in de portal](../hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie over het gebruik van de portal om clusters te maken.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -33,23 +33,25 @@ Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-cluster maken
 
-Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
+Voer de volgende stappen uit om een Apache Kafka cluster te maken op HDInsight:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Ga in het menu links naar **+ een resource maken** > **Analytics** > **HDInsight**.
+1. Selecteer in het bovenste menu de optie **+ een resource maken**.
 
-    ![Azure Portal bron-HDInsight maken](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+    ![Azure Portal bron-HDInsight maken](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. Typ of Selecteer onder **basis beginselen**de volgende waarden:
+1. Selecteer **Analytics** > **Azure HDInsight** om naar de pagina **HDInsight-cluster maken** te gaan.
+
+1. Geef op **het tabblad basis beginselen** de volgende informatie op:
 
     |Eigenschap  |Beschrijving  |
     |---------|---------|
-    |Abonnement    |  Selecteer uw Azure-abonnement. |
+    |Abonnement    |  Selecteer in de vervolg keuzelijst het Azure-abonnement dat wordt gebruikt voor het cluster. |
     |Resourcegroep     | Maak een resourcegroep of selecteer een bestaande resourcegroep.  Een resourcegroep is een container met Azure-onderdelen.  In dit geval bevat de resourcegroep het HDInsight-cluster en het afhankelijke Azure Storage-account. |
-    |Clusternaam   | Voer een naam in voor het Hadoop-cluster. Omdat alle clusters in HDInsight dezelfde DNS-naamruimte delen, moet deze naam uniek zijn. De naam mag Maxi maal 59 tekens bevatten, inclusief letters, cijfers en afbreek streepjes. De eerste en laatste tekens van de naam mogen geen streepjes zijn. |
-    |Locatie    | Selecteer een Azure-locatie waar u het cluster wilt maken.  Kies een locatie zo dicht mogelijk bij u in de buurt voor betere prestaties. |
-    |Cluster type| Selecteer **cluster type selecteren**. Selecteer vervolgens **Kafka** als het cluster type.|
+    |Clusternaam   | Voer een wereld wijd unieke naam in. De naam mag Maxi maal 59 tekens bevatten, inclusief letters, cijfers en afbreek streepjes. De eerste en laatste tekens van de naam mogen geen streepjes zijn. |
+    |Regio    | Selecteer in de vervolg keuzelijst een regio waar het cluster wordt gemaakt.  Kies een regio dichter bij u voor betere prestaties. |
+    |Cluster type| Selecteer **cluster type selecteren** om een lijst te openen. Selecteer in de lijst **Kafka** als het cluster type.|
     |Version|De standaard versie voor het cluster type wordt opgegeven. Selecteer in de vervolg keuzelijst de optie als u een andere versie wilt opgeven.|
     |Gebruikers naam en wacht woord voor cluster aanmelding    | De standaard aanmeldings naam is **admin**. Het wacht woord moet uit minstens tien tekens bestaan en moet ten minste één cijfer, één hoofd letter en één kleine letters bevatten, één niet-alfanumeriek teken (met uitzonde ring van de tekens ' ") \). Zorg ervoor dat u **geen makkelijk te raden** wachtwoorden gebruikt, zoals 'Pass@word1'.|
     |SSH-gebruikersnaam (Secure Shell) | De standaardgebruikersnaam is **sshuser**.  U kunt hier echter een andere naam opgeven als u dat wilt. |
@@ -100,15 +102,13 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
 
 ## <a name="connect-to-the-cluster"></a>Verbinding maken met het cluster
 
-1. Gebruik de volgende opdracht om verbinding te maken met het primaire hoofdknooppunt van het Apache Kafka-cluster. Vervang `sshuser` door de SSH-gebruikersnaam. Vervang `mykafka` door de naam van uw Apache Kafka-cluster.
+1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Wanneer u voor het eerst verbinding maakt met het cluster, wordt in de SSH-client mogelijk de waarschuwing weergegeven dat de authenticiteit van de host niet kan worden vastgesteld. Wanneer u wordt gevraagd de host te bevestigen, typt u __yes__ en drukt u vervolgens op __Enter__ om de host toe te voegen aan de lijst met vertrouwde servers van uw SSH-client.
-
-3. Voer het wachtwoord voor de SSH-gebruiker in wanneer hierom wordt gevraagd.
+1. Voer het wachtwoord voor de SSH-gebruiker in wanneer hierom wordt gevraagd.
 
     Zodra er verbinding is gemaakt, ziet u informatie die er ongeveer als volgt uitziet:
 
@@ -155,6 +155,7 @@ In deze sectie vraagt u de hostgegevens op uit de Apache Ambari REST API in het 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+
     > [!Note]  
     > Als u dit proces van buiten het cluster uitvoert, is er een andere procedure voor het opslaan van de cluster naam. Haal de cluster naam op in kleine letters van de Azure Portal. Vervang vervolgens de cluster naam voor `<clustername>` in de volgende opdracht en voer deze uit: `export clusterName='<clustername>'`.
 
@@ -295,9 +296,7 @@ Ga als volgt te werk om de resourcegroep te verwijderen in Azure Portal:
 3. Selecteer __Resourcegroep verwijderen__ en bevestig dit.
 
 > [!WARNING]  
-> De facturering voor het gebruik van HDInsight-clusters begint zodra er een cluster is gemaakt en stopt als een cluster wordt verwijderd. De facturering wordt pro-rato per minuut berekend, dus u moet altijd uw cluster verwijderen wanneer het niet meer wordt gebruikt.
->
-> Door een Apache Kafka in HDInsight-cluster te verwijderen, worden alle gegevens verwijderd die zijn opgeslagen in Kafka.
+> Als u een Apache Kafka cluster op HDInsight verwijdert, worden alle gegevens die zijn opgeslagen in Kafka, verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446172"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650875"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Gebeurtenissen bewaken, ontvangen en verzenden met Azure Event Hubs en Azure Logic Apps
 
@@ -33,7 +33,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 Als u ervoor wilt zorgen dat uw logische app toegang heeft tot uw event hub, controleert u uw machtigingen en haalt u de connection string voor uw Event Hubs naam ruimte op.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga naar uw Event Hubs *naam ruimte*, niet een specifieke Event hub. 
 
@@ -74,9 +74,9 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 
    ![Trigger-eigenschappen](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Event Hub-naam** | Ja | De naam van de Event hub die u wilt bewaken |
+   | **Event hub-naam** | Ja | De naam van de Event hub die u wilt bewaken |
    | **Inhoudstype** | Nee | Het inhouds type van de gebeurtenis. De standaardwaarde is `application/octet-stream`. |
    | **Naam van consumentengroep** | Nee | De [naam van de Event hub-consumenten groep](../event-hubs/event-hubs-features.md#consumer-groups) die moet worden gebruikt voor het lezen van gebeurtenissen. Als niet wordt opgegeven, wordt de standaard Consumer groep gebruikt. |
    | **Maximum aantal gebeurtenissen** | Nee | Het maximum aantal gebeurtenissen. De trigger retourneert tussen één en het aantal gebeurtenissen dat door deze eigenschap is opgegeven. |
@@ -86,7 +86,7 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 
    **Aanvullende eigenschappen**
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Inhouds schema** | Nee | Het JSON-inhouds schema voor de gebeurtenissen die moeten worden gelezen vanuit de Event hub. Als u bijvoorbeeld het inhouds schema opgeeft, kunt u de logische app alleen activeren voor de gebeurtenissen die overeenkomen met het schema. |
    | **Minimale partitie sleutel** | Nee | Voer de minimale [partitie](../event-hubs/event-hubs-features.md#partitions) -id in die u wilt lezen. Standaard worden alle partities gelezen. |
@@ -130,12 +130,12 @@ Selecteer in de lijst acties deze actie: **gebeurtenis verzenden-Event hubs**
 
    ![De naam van de Event hub selecteren en de inhoud van de gebeurtenis opgeven](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Event Hub-naam** | Ja | De Event hub waarnaar u de gebeurtenis wilt verzenden |
+   | **Event hub-naam** | Ja | De Event hub waarnaar u de gebeurtenis wilt verzenden |
    | **Inhoud** | Nee | De inhoud voor de gebeurtenis die u wilt verzenden |
    | **Eigenschappen** | Nee | De app-eigenschappen en-waarden die moeten worden verzonden |
-   | **Partitiesleutel** | Nee | De [partitie](../event-hubs/event-hubs-features.md#partitions) -id voor het verzenden van de gebeurtenis |
+   | **Partitie sleutel** | Nee | De [partitie](../event-hubs/event-hubs-features.md#partitions) -id voor het verzenden van de gebeurtenis |
    ||||
 
    U kunt bijvoorbeeld de uitvoer van uw Event Hubs trigger naar een andere Event hub verzenden:
@@ -152,10 +152,10 @@ Selecteer in de lijst acties deze actie: **gebeurtenis verzenden-Event hubs**
 
 1. Wanneer u wordt gevraagd om de verbindings gegevens, geeft u de volgende gegevens op:
 
-   | Eigenschap | Verplicht | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam die voor uw verbinding moet worden gemaakt |
-   | **Event Hubs naam ruimte** | Ja | <*event-hubs-namespace*> | Selecteer de Event Hubs naam ruimte die u wilt gebruiken. |
+   | **Event Hubs naam ruimte** | Ja | <*gebeurtenis-hubs-naam ruimte*> | Selecteer de Event Hubs naam ruimte die u wilt gebruiken. |
    |||||  
 
    Bijvoorbeeld:
@@ -173,8 +173,11 @@ Selecteer in de lijst acties deze actie: **gebeurtenis verzenden-Event hubs**
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](/connectors/eventhubs/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
+Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/eventhubs/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector.
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

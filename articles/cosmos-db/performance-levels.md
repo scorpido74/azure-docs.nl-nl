@@ -1,106 +1,106 @@
 ---
-title: Buiten gebruik gestelde prestatieniveaus van Azure Cosmos DB
-description: Meer informatie over de S1, S2 en S3 prestatieniveaus die eerder beschikbaar in Azure Cosmos DB.
+title: Azure Cosmos DB prestatie niveaus buiten gebruik gesteld
+description: Meer informatie over de prestatie niveaus S1, S2 en S3 die eerder beschikbaar zijn in Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928278"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623329"
 ---
-# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Buiten gebruik stellen van de prestatieniveaus S1, S2 en S3
+# <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>De prestatie niveaus S1, S2 en S3 buiten gebruik stellen
 
 > [!IMPORTANT] 
-> De prestatieniveaus S1, S2 en S3 besproken in dit artikel worden buiten gebruik gesteld en zijn niet meer beschikbaar voor nieuwe Azure Cosmos DB-accounts.
+> De prestatie niveaus S1, S2 en S3 die in dit artikel worden besproken, worden buiten gebruik gesteld en zijn niet langer beschikbaar voor nieuwe Azure Cosmos DB accounts.
 >
 
-In dit artikel biedt een overzicht van de prestatieniveaus S1, S2 en S3 en wordt beschreven hoe de verzamelingen die gebruikmaken van deze prestatieniveaus gemigreerde met één gepartitioneerde verzamelingen kunnen worden. Na het lezen van dit artikel, zal het mogelijk om de volgende vragen te beantwoorden:
+In dit artikel vindt u een overzicht van de prestatie niveaus S1, S2 en S3, en wordt beschreven hoe de verzamelingen die gebruikmaken van deze prestatie niveaus kunnen worden gemigreerd naar enkele gepartitioneerde verzamelingen. Na het lezen van dit artikel, zal het mogelijk om de volgende vragen te beantwoorden:
 
-- [Waarom worden de prestatieniveaus S1, S2 en S3 zijn stopgezet?](#why-retired)
-- [Hoe verzamelingen met één partitie en gepartitioneerde verzamelingen zich verhouden tot de S1, S2 en S3-prestaties?](#compare)
-- [Wat moet ik doen om ervoor te zorgen ononderbroken toegang tot mijn gegevens?](#uninterrupted-access)
-- [Hoe wordt mijn verzameling wijzigen na de migratie?](#collection-change)
-- [Hoe wordt mijn facturering wijzigen nadat ik ben gemigreerd naar verzamelingen met één partitie?](#billing-change)
-- [Wat gebeurt er als ik meer dan 10 GB aan opslagruimte nodig?](#more-storage-needed)
-- [Kan ik wisselen tussen de S1, S2 en S3 prestatieniveaus vóór de geplande migratie?](#change-before)
-- [Hoe Migreer ik van de S1, S2 en S3-prestatieniveaus voor verzamelingen met één partitie op mijn eigen?](#migrate-diy)
-- [Hoe krijg ik als ik een EA-klant bent beïnvloed?](#ea-customer)
+- [Waarom worden de prestatie niveaus S1, S2 en S3 buiten gebruik gesteld?](#why-retired)
+- [Hoe worden afzonderlijke partitie verzamelingen en gepartitioneerde verzamelingen vergeleken met de prestatie niveaus S1, S2 en S3?](#compare)
+- [Wat moet ik doen om te zorgen voor ononderbroken toegang tot mijn gegevens?](#uninterrupted-access)
+- [Hoe wordt de verzameling gewijzigd na de migratie?](#collection-change)
+- [Hoe wordt mijn facturering gewijzigd nadat ik ben gemigreerd naar verzamelingen met één partitie?](#billing-change)
+- [Wat moet ik doen als ik meer dan 20 GB aan opslag nodig heb?](#more-storage-needed)
+- [Kan ik wisselen tussen de prestatie niveaus S1, S2 en S3 vóór de geplande migratie?](#change-before)
+- [Hoe kan ik migreren van de prestatie niveaus S1, S2 en S3 naar enkelvoudige partitie verzamelingen?](#migrate-diy)
+- [Hoe kan ik last hebben van een EA-klant?](#ea-customer)
 
 <a name="why-retired"></a>
 
-## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Waarom zijn de prestaties S1, S2 en S3-niveaus buiten gebruik gesteld?
+## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Waarom worden de prestatie niveaus S1, S2 en S3 buiten gebruik gesteld?
 
-De prestatieniveaus S1, S2 en S3 bieden de flexibiliteit die de standaardaanbieding van de Azure Cosmos DB biedt. Met de S1, S2 en S3-prestaties, de doorvoer-en opslagcapaciteit zijn vooraf ingesteld en is niet aangeboden voor elasticiteit. Azure Cosmos DB biedt nu de mogelijkheid tot het aanpassen van de doorvoer en opslag, bieden u veel meer flexibiliteit in de mogelijkheid om te schalen wanneer uw behoeften veranderen.
+De prestatie niveaus S1, S2 en S3 bieden niet de flexibiliteit die de standaard Azure Cosmos DB aanbieding biedt. Met de prestatie niveaus S1, S2 en S3 zijn de prestaties van de door Voer en opslag capaciteit vooraf ingesteld en zijn er geen beschik bare mogelijkheden. Azure Cosmos DB biedt nu de mogelijkheid om uw door Voer en opslag aan te passen, waardoor u veel meer flexibiliteit hebt in de mogelijkheid om te schalen wanneer uw behoeften veranderen.
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Hoe verzamelingen met één partitie en gepartitioneerde verzamelingen zich verhouden tot de S1, S2 en S3-prestaties?
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>Hoe worden afzonderlijke partitie verzamelingen en gepartitioneerde verzamelingen vergeleken met de prestatie niveaus S1, S2 en S3?
 
-De volgende tabel vergelijkt de doorvoer en opslag opties die beschikbaar zijn in verzamelingen met één partitie, gepartitioneerde verzamelingen, en S1, S2, S3-prestatieniveau. Hier volgt een voorbeeld van de regio VS Oost 2:
+De volgende tabel vergelijkt de door Voer en opslag opties die beschikbaar zijn in verzamelingen met één partitie, gepartitioneerde verzamelingen en de prestatie niveaus S1, S2 en S3. Hier volgt een voor beeld van de regio VS Oost 2:
 
 |   |Gepartitioneerde verzameling|Verzameling met één partitie|S1|S2|S3|
 |---|---|---|---|---|---|
-|Maximumdoorvoer|Onbeperkt|10 K RU/s|250 RU/s|1 K RU/s|2.5 K RU/s|
-|Minimale doorvoer|2.5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2.5 K RU/s|
-|Maximale opslag|Onbeperkt|10 GB|10 GB|10 GB|10 GB|
-|Prijs (maandelijks)|Doorvoer: $6 / 100 RU/s<br><br>Opslag: $ 0,25/GB|Doorvoer: $6 / 100 RU/s<br><br>Opslag: $ 0,25/GB|$25 USD|$50 USD|$100 USD|
+|Maximale door Voer|Onbeperkt|10.000 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
+|Minimale door Voer|2,5 K RU/s|400 RU/s|250 RU/s|1 K RU/s|2,5 K RU/s|
+|Maximale opslag|Onbeperkt|20 GB|20 GB|20 GB|20 GB|
+|Prijs (maandelijks)|Door Voer: $6/100 RU/s<br><br>Opslag: $0,25/GB|Door Voer: $6/100 RU/s<br><br>Opslag: $0,25/GB|$25 USD|$50 USD|$100 USD|
 
-Bent u een EA-klant? Als dit het geval is, raadpleegt u [hoe ben ik last van als ik een EA-klant ben?](#ea-customer)
+Bent u een EA-klant? Als dat het geval is, raadpleegt [u hoe weet ik of ik een EA-klant heb?](#ea-customer)
 
 <a name="uninterrupted-access"></a>
 
-## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Wat moet ik doen om ervoor te zorgen ononderbroken toegang tot mijn gegevens?
+## <a name="what-do-i-need-to-do-to-ensure-uninterrupted-access-to-my-data"></a>Wat moet ik doen om te zorgen voor ononderbroken toegang tot mijn gegevens?
 
-Als u een S1, S2 of S3-verzameling hebt, moet u de verzameling migreren naar een verzameling met één partitie programmatisch [met behulp van de .NET SDK](#migrate-diy). 
+Als u een S1-, S2-of S3-verzameling hebt, moet u de verzameling programmatisch met [behulp van de .NET SDK](#migrate-diy)migreren naar een enkele partitie verzameling. 
 
 <a name="collection-change"></a>
 
-## <a name="how-will-my-collection-change-after-the-migration"></a>Hoe wordt mijn verzameling wijzigen na de migratie?
+## <a name="how-will-my-collection-change-after-the-migration"></a>Hoe wordt de verzameling gewijzigd na de migratie?
 
-Als u een S1-verzameling hebt, kunt u deze migreren naar een verzameling met één partitie met de doorvoer van 400 RU/s. 400 RU/s is de laagste doorvoer beschikbaar bij verzamelingen met één partitie. Echter, de kosten voor 400 RU/s in een verzameling met één partitie ongeveer hetzelfde is als u met de S1-verzameling en 250 RU/s: zijn betaalt, zodat u niet voor de extra 150 RU/s voor u beschikbaar betaalt.
+Als u een S1-verzameling hebt, kunt u deze migreren naar een enkele partitie verzameling met een door Voer van 400 RU/s. 400 RU/s is de laagste door Voer die beschikbaar is voor verzamelingen met één partitie. De kosten voor 400 RU/s in één partitie verzameling zijn echter ongeveer hetzelfde als u hebt betaald met uw S1-verzameling en 250 RU/s. u betaalt dus niet voor de extra 150 RU/s die voor u beschikbaar zijn.
 
-Als u een S2-verzameling hebt, kunt u deze migreren naar een verzameling met één partitie met 1 K RU/s. Er is geen wijziging ziet u op het doorvoerniveau van uw.
+Als u een S2-verzameling hebt, kunt u deze migreren naar een enkele partitie verzameling met 1 K RU/s. U ziet dat uw doorvoer niveau niet wordt gewijzigd.
 
-Als u een S3-verzameling hebt, kunt u deze migreren naar een verzameling met één partitie met 2,5 K RU/s. Er is geen wijziging ziet u op het doorvoerniveau van uw.
+Als u een S3-verzameling hebt, kunt u deze migreren naar een enkele partitie verzameling met 2,5 K RU/s. U ziet dat uw doorvoer niveau niet wordt gewijzigd.
 
-In elk van deze gevallen is na de migratie van de verzameling, kunt u zich voor het aanpassen van uw doorvoerniveau of het omhoog en omlaag schalen naar behoefte met lage latentie om toegang te bieden aan uw gebruikers. 
+In elk van deze gevallen kunt u, nadat u de verzameling hebt gemigreerd, uw doorvoer niveau aanpassen of het omhoog en omlaag schalen naar behoefte om toegang te bieden tot uw gebruikers met lage latentie. 
 
 <a name="billing-change"></a>
 
-## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Hoe wordt mijn facturering wijzigen nadat ik gemigreerd naar de verzamelingen met één partitie?
+## <a name="how-will-my-billing-change-after-i-migrated-to-the-single-partition-collections"></a>Hoe wordt mijn facturering gewijzigd nadat ik ben gemigreerd naar de verzamelingen met enkele partities?
 
-Ervan uitgaande dat u 10 S1 verzamelingen, 1 GB aan opslagruimte voor elk daarvan in de regio VS-Oost, hebben en u deze 10 S1-verzamelingen migreren naar 10 verzamelingen met één partitie op 400 RU/sec. (het minimale niveau). Uw factuur ziet er als volgt als u de 10 verzamelingen met één partitie wilt voor een volledige maand houden:
+Ervan uitgaande dat u 10 S1-verzamelingen hebt, 1 GB aan opslag voor elke, in de regio VS Oost en migreert u deze 10 S1-verzamelingen naar tien enkelvoudige partitie verzamelingen op 400 RU/SEC (het minimale niveau). Uw factuur ziet er als volgt uit als u de tien afzonderlijke partitie verzamelingen voor een volledige maand wilt houden:
 
-![Hoe S1 prijzen voor 10 verzamelingen vergelijkt met 10 verzamelingen met behulp van de prijzen voor een verzameling met één partitie](./media/performance-levels/s1-vs-standard-pricing.png)
+![Hoe S1 prijzen voor 10 verzamelingen vergelijkt met 10 verzamelingen met prijzen voor een enkele partitie verzameling](./media/performance-levels/s1-vs-standard-pricing.png)
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Wat gebeurt er als ik meer dan 10 GB aan opslagruimte nodig?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Wat moet ik doen als ik meer dan 20 GB aan opslag nodig heb?
 
-Of u hebt een verzameling met prestatieniveau S1, S2 of S3, of een verzameling met één partitie, die allemaal 10 GB aan opslagruimte beschikbaar is zijn, dat kunt u het hulpprogramma voor gegevensmigratie van Azure Cosmos DB uw gegevens te migreren naar een gepartitioneerde verzameling met vrijwel onbeperkte opslag. Zie voor meer informatie over de voordelen van een gepartitioneerde verzameling [partitioneren en schalen in Azure Cosmos DB](sql-api-partition-data.md). 
+Of u een verzameling hebt met het prestatie niveau S1, S2 of S3, of een enkele partitie verzameling hebt, die allemaal 20 GB aan opslag ruimte beschikbaar heeft, kunt u het hulp programma voor gegevens migratie van Azure Cosmos DB gebruiken om uw gegevens te migreren naar een gepartitioneerde verzameling met vrijwel onbeperkte opslag. Zie [partitioneren en schalen in azure Cosmos DB](sql-api-partition-data.md)voor meer informatie over de voor delen van een gepartitioneerde verzameling. 
 
 <a name="change-before"></a>
 
-## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Kan ik wisselen tussen de S1, S2 en S3 prestatieniveaus vóór de geplande migratie?
+## <a name="can-i-change-between-the-s1-s2-and-s3-performance-levels-before-the-planned-migration"></a>Kan ik wisselen tussen de prestatie niveaus S1, S2 en S3 vóór de geplande migratie?
 
-Alleen bestaande accounts met S1, S2 en S3-prestaties kunnen worden gewijzigd en niveau prestatielagen programmatisch alter [met behulp van de .NET SDK](#migrate-diy). Als u van S1-, S3- of S3 naar een verzameling met één partitie wijzigt, kunt u niet terug naar de prestatieniveaus S1, S2 of S3.
+Alleen bestaande accounts met de prestaties S1, S2 en S3 kunnen met [behulp van de .NET SDK](#migrate-diy)worden gewijzigd en de niveaus van de prestatie niveaus programmatisch wijzigen. Als u S1, S3 of S3 van een enkele partitie verzameling wijzigt, kunt u niet terugkeren naar de prestatie niveaus S1, S2 of S3.
 
 <a name="migrate-diy"></a>
 
-## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Hoe Migreer ik van de S1, S2 en S3-prestatieniveaus voor verzamelingen met één partitie op mijn eigen?
+## <a name="how-do-i-migrate-from-the-s1-s2-s3-performance-levels-to-single-partition-collections-on-my-own"></a>Hoe kan ik migreren van de prestatie niveaus S1, S2 en S3 naar enkelvoudige partitie verzamelingen?
 
-U kunt migreren vanaf de prestatieniveaus S1, S2 en S3 naar verzamelingen met één partitie programmatisch [met behulp van de .NET SDK](#migrate-diy). U kunt dit doen op uw eigen vóór de geplande migratie om te profiteren van de doorvoer van flexibele opties beschikbaar bij verzamelingen met één partitie.
+U kunt met [behulp van de .NET SDK](#migrate-diy)van de prestatie niveaus S1, S2 en S3 via een programma worden gemigreerd naar enkelvoudige partitie verzamelingen. U kunt dit zelf doen vóór de geplande migratie om te profiteren van de flexibele doorvoer opties die beschikbaar zijn voor verzamelingen met één partitie.
 
-### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>Migreren naar verzamelingen met één partitie met behulp van de .NET SDK
+### <a name="migrate-to-single-partition-collections-by-using-the-net-sdk"></a>Migreren naar enkelvoudige partitie verzamelingen met behulp van de .NET SDK
 
-In deze sectie heeft alleen betrekking op de prestaties van een verzameling wijzigen niveau met behulp van de [SQL .NET API](sql-api-sdk-dotnet.md), maar het proces is vergelijkbaar voor onze andere SDK's.
+Deze sectie heeft alleen betrekking op het wijzigen van het prestatie niveau van een verzameling met behulp van de [SQL .net API](sql-api-sdk-dotnet.md), maar het proces is vergelijkbaar voor onze andere sdk's.
 
-Hier volgt een codefragment voor het wijzigen van de verzamelingsdoorvoer naar 5000 aanvraageenheden per seconde:
+Hier volgt een code fragment voor het wijzigen van de door Voer van de verzameling tot 5.000 aanvraag eenheden per seconde:
     
 ```csharp
     //Fetch the resource to be updated
@@ -116,7 +116,7 @@ Hier volgt een codefragment voor het wijzigen van de verzamelingsdoorvoer naar 5
     await client.ReplaceOfferAsync(offer);
 ```
 
-Ga naar [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) extra voorbeelden bekijken en meer informatie over onze aanbieding methoden:
+Ga naar [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) om aanvullende voor beelden te bekijken en meer te weten te komen over onze aanbiedings methoden:
 
 * [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
 * [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
@@ -125,13 +125,13 @@ Ga naar [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.document
 
 <a name="ea-customer"></a>
 
-## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>Hoe krijg ik als ik een EA-klant bent beïnvloed?
+## <a name="how-am-i-impacted-if-im-an-ea-customer"></a>Hoe kan ik last hebben van een EA-klant?
 
-EA-klanten worden beveiligd tot het einde van hun huidige contract prijs.
+EA-klanten worden beschermd tegen het einde van hun huidige contract.
 
 ## <a name="next-steps"></a>Volgende stappen
-De volgende bronnen voor meer informatie over prijzen en beheren van gegevens met Azure Cosmos DB:
+Bekijk de volgende bronnen voor meer informatie over prijzen en het beheren van gegevens met Azure Cosmos DB:
 
-1.  [Partitioneren van gegevens in Cosmos DB](sql-api-partition-data.md). Is het verschil tussen één partitie container en gepartitioneerde containers, evenals tips over het implementeren van een strategie voor partitionering naadloos schalen.
-2.  [Prijzen van cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/). Meer informatie over de kosten van het inrichten van de doorvoer en opslag verbruikt.
-3.  [Aanvraageenheden](request-units.md). Informatie over het gebruik van de doorvoer voor verschillende bewerkingstypen, bijvoorbeeld lezen, schrijven, query's.
+1.  [Gegevens partitioneren in Cosmos DB](sql-api-partition-data.md). Inzicht in het verschil tussen container met één partitie en gepartitioneerde containers, en tips voor het implementeren van een strategie voor partitionering om probleemloos te schalen.
+2.  [Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/). Meer informatie over de kosten voor het inrichten van de door Voer en opslag verbruik.
+3.  [Aanvraag eenheden](request-units.md). Inzicht in het verbruik van door Voer voor verschillende bewerkings typen, bijvoorbeeld lezen, schrijven, query.

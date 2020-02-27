@@ -8,14 +8,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 629b75963ba90a25d59c1601fcd479fce40c92e7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e3385234433a292ce146c9aed25ecfeb1095d79a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467263"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616117"
 ---
-# <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents 
+# <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
+
 Voor virtuele machines en andere reken bronnen is een agent vereist om bewakings gegevens te verzamelen om de prestaties en beschik baarheid van hun gast besturingssysteem en werk belastingen te meten. In dit artikel worden de agents beschreven die door Azure Monitor worden gebruikt en kunt u bepalen wat u moet doen aan de vereisten voor uw specifieke omgeving.
 
 > [!NOTE]
@@ -24,6 +25,7 @@ Voor virtuele machines en andere reken bronnen is een agent vereist om bewakings
 Mogelijk hebt u een specifieke set vereisten waaraan niet volledig kan worden voldaan met één agent voor een bepaalde virtuele machine. U kunt bijvoorbeeld metrische waarschuwingen gebruiken waarvoor Azure Diagnostics-extensie vereist is, maar u ook wilt gebruikmaken van de functionaliteit van Azure Monitor voor VM's waarvoor de Log Analytics agent en de afhankelijkheids agent vereist zijn. In dergelijke gevallen kunt u meerdere agents gebruiken. Dit is een veelvoorkomend scenario voor klanten die van elke functionaliteit moeten zijn.
 
 ## <a name="summary-of-agents"></a>Samen vatting van agents
+
 De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents voor Windows en Linux. Meer details hierover vindt u in de volgende sectie. 
 
 ### <a name="windows-agents"></a>Windows-agents
@@ -46,11 +48,12 @@ De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents 
 | Gegevens die worden verzonden naar | Azure Storage<br>Event Hub | Azure Monitor metrische gegevens | Azure Monitor-logboeken | Azure Monitor-logboeken |
 
 ## <a name="log-analytics-agent"></a>Log Analytics-agent
+
 De [log Analytics-agent](log-analytics-agent.md) verzamelt bewakings gegevens van het gast besturingssysteem en werk belastingen van virtuele machines in azure, andere cloud providers en on-premises. Hiermee worden gegevens verzameld in een Log Analytics-werk ruimte. De Log Analytics-agent is dezelfde agent die wordt gebruikt door System Center Operations Manager, en u kunt computers met meerdere thuis agenten gebruiken om met uw beheer groep en Azure Monitor tegelijk te communiceren. Deze agent is ook vereist voor bepaalde inzichten en oplossingen in Azure Monitor.
 
 
 > [!NOTE]
-> De Log Analytics-agent voor Windows wordt vaak aangeduid als micro soft Management Agent (MMA). De Log Analytics-agent voor Linux wordt vaak OMS-agent genoemd.
+> De Log Analytics-agent voor Windows wordt vaak micro soft Monitoring Agent (MMA) genoemd. De Log Analytics-agent voor Linux wordt vaak OMS-agent genoemd.
 
 
 
@@ -68,6 +71,7 @@ De beperkingen van de Log Analytics-agent zijn:
 - Kan geen gegevens verzenden naar Azure Monitor meet waarden, Azure Storage of Azure Event Hubs.
 
 ## <a name="azure-diagnostics-extension"></a>Azure-extensie voor diagnostische gegevens
+
 Met de [extensie Azure Diagnostics](diagnostics-extension-overview.md) worden bewakings gegevens verzameld van het gast besturingssysteem en de workloads van Azure virtual machines en andere reken bronnen. Er worden voornamelijk gegevens in Azure Storage verzameld, maar u kunt ook gegevenssinks definiëren om gegevens te verzenden naar andere bestemmingen, zoals Azure Monitor metrieken en Azure Event Hubs.
 
 Gebruik de diagnostische extensie van Azure als u het volgende moet doen:
@@ -82,9 +86,8 @@ De beperkingen van de Azure Diagnostics-extensie zijn onder andere:
 - Kan alleen worden gebruikt met Azure-resources.
 - Beperkte mogelijkheid om gegevens te verzenden naar Azure Monitor-Logboeken.
 
-
-
 ## <a name="telegraf-agent"></a>Telegraf-agent
+
 De [InfluxData-telegrafe-agent](collect-custom-metrics-linux-telegraf.md) wordt gebruikt voor het verzamelen van prestatie gegevens van Linux-computers tot Azure monitor meet waarden.
 
 Gebruik telegrafie agent als u het volgende moet doen:
@@ -94,24 +97,25 @@ Gebruik telegrafie agent als u het volgende moet doen:
 
 
 ## <a name="dependency-agent"></a>Agent voor afhankelijkheden
+
 De afhankelijkheids agent verzamelt gedetecteerde gegevens over processen die worden uitgevoerd op de virtuele machine en de afhankelijkheden van het externe proces. 
 
 Gebruik de afhankelijkheids agent als u het volgende moet doen:
 
 * Gebruik de kaart functie [Azure monitor voor VM's](../insights/vminsights-overview.md) of de [servicetoewijzing](../insights/service-map.md) oplossing.
 
-
 Houd rekening met het volgende wanneer u de afhankelijkheids agent gebruikt:
 
 - Voor de afhankelijkheids agent moet de Log Analytics agent op dezelfde virtuele machine zijn geïnstalleerd.
 - Op virtuele Linux-machines moet de Log Analytics-agent zijn geïnstalleerd vóór de diagnostische Azure-extensie.
 
-
 ## <a name="extensions-compared-to-agents"></a>Uitbrei dingen vergeleken met agents
+
 De Log Analytics-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) en [Linux](../../virtual-machines/extensions/oms-linux.md) Installeer de log Analytics agent op virtuele machines van Azure. Met de uitbrei ding voor de Azure Monitor afhankelijkheid voor [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) en [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) wordt de afhankelijkheids agent op virtuele machines van Azure geïnstalleerd. Dit zijn dezelfde agents die hierboven worden beschreven, maar u kunt ze ook beheren via de extensies van de [virtuele machine](../../virtual-machines/extensions/overview.md). Gebruik waar mogelijk extensies om de agents te installeren en te beheren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Meer informatie over elk van de agents vindt u op het volgende:
 
 - [Overzicht van de Log Analytics-agent](log-analytics-agent.md)

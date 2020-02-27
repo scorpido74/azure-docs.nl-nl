@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186628"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649361"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een regel voor het instellen van een firewall frequentie van webtoepassingen met behulp van Azure PowerShell
-De frequentie limiet regel voor Azure Web Application firewall (WAF) voor Azure front-deur bepaalt het aantal aanvragen dat is toegestaan vanaf één client-IP gedurende een duur van één minuut.
-In dit artikel wordt beschreven hoe u een regel voor frequentie limiet voor WAF configureert waarmee het aantal aanvragen dat is toegestaan van één enkele client naar een webtoepassing die */promo* bevat in de URL met behulp van Azure PowerShell, wordt beheerd.
+De frequentie limiet regel voor Azure Web Application firewall (WAF) voor Azure front-deur bepaalt het aantal aanvragen dat is toegestaan van clients gedurende een duur van één minuut.
+In dit artikel wordt beschreven hoe u een regel voor frequentie limiet voor WAF configureert waarmee het aantal aanvragen dat is toegestaan van clients naar een webtoepassing met */promo* in de URL met behulp van Azure PowerShell, wordt beheerd.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -32,7 +32,7 @@ U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 
 Connect-AzAccount
 
 ```
-Voordat u de Front Door-module installeert, moet u controleren of u de nieuwste versie van PowerShellGet hebt geïnstalleerd. Voer de onderstaande opdracht uit en open PowerShell opnieuw.
+Zorg ervoor dat de huidige versie van PowerShellGet is geïnstalleerd voordat u de front-deur module installeert. Voer de volgende opdracht uit en open Power shell opnieuw.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber

@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 813a13739020bed839cc389897704395c77a322d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586492"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614375"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
 
@@ -38,8 +38,8 @@ Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-d
 
 Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de Exchange-Server:
 
-1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
-2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents >** in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) voor gedetailleerde stappen.
+1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents >** in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
 

@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714489"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648422"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -41,11 +41,11 @@ In dit artikel vindt u een overzicht van het controle rapport.
  
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 
-* Gebruikers in **beveiligings beheerders**, **beveiligings lezer**, **Report Reader** of **Global Administrator** rollen
+* Gebruikers in de **beveiligings beheerder**, **beveiligings lezer**, **rapport lezer** , **globale lezer** of **globale beheerders** rollen
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-De Azure AD-controle logboeken bieden records van systeem activiteiten voor naleving. Om het controle rapport te openen, selecteert u **controle logboeken** in het gedeelte **activiteit** van **Azure Active Directory**. Houd er rekening mee dat audit Logboeken een latentie van Maxi maal een uur kunnen hebben, zodat het lang kan duren voordat de gegevens van de controle activiteit worden weer gegeven in de portal nadat u de taak hebt voltooid.
+De Azure AD-controle logboeken bieden records van systeem activiteiten voor naleving. Om het controle rapport te openen, selecteert u **controle logboeken** in het gedeelte **bewaking** van **Azure Active Directory**. Houd er rekening mee dat audit Logboeken een latentie van Maxi maal een uur kunnen hebben, zodat het lang kan duren voordat de gegevens van de controle activiteit worden weer gegeven in de portal nadat u de taak hebt voltooid.
 
 
 
@@ -90,16 +90,20 @@ U kunt de controle gegevens filteren op de volgende velden:
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
 - Alle
+- AAD-beheer UX
 - Toegangsbeoordelingen
-- Account inrichten 
-- SSO van de toepassing
+- Account inrichten
+- Toepassingsproxy
 - Verificatiemethoden
 - B2C
 - Voorwaardelijke toegang
 - Hoofddirectory
 - Beheer rechten
+- Hybride verificatie
 - Identiteitsbeveiliging
 - Uitgenodigde gebruikers
+- MIM-service
+- MyApps
 - PIM
 - Self-service voor groepsbeheer
 - Selfservice voor wachtwoordbeheer
@@ -118,7 +122,11 @@ Met het filter **categorie** kunt u een van de volgende filters selecteren:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- Beheer van handelingen
+- Label
 - Overige
+- PermissionGrantPolicy
 - Beleid
 - ResourceManagement
 - RoleManagement
@@ -134,14 +142,13 @@ Met het filter **status** kunt u filteren op basis van de status van een audit b
 - Geslaagd
 - Fout
 
-Met het **doel** filter kunt u zoeken naar een bepaald doel op naam of User Principal Name (UPN). De doel naam en UPN zijn hoofdletter gevoelig. 
+Met het **doel** filter kunt u zoeken naar een bepaald doel door de naam of het User Principal Name (UPN) te starten. De doel naam en UPN zijn hoofdletter gevoelig. 
 
-Met het filter **gestart door** kunt u de naam van een actor of een Universal Principal Name (UPN) definiëren. De naam en UPN zijn hoofdletter gevoelig.
+Met het filter **gestart door** kunt u definiëren hoe de naam van een actor of een Universal Principal Name (UPN) begint met. De naam en UPN zijn hoofdletter gevoelig.
 
 Met het filter **datum bereik** kunt u een tijds bestek voor de geretourneerde gegevens definiëren.  
 Mogelijke waarden zijn:
 
-- 1 maand
 - 7 dagen
 - 24 uur
 - Aangepast telefoonnummer
@@ -179,11 +186,11 @@ Met de controlerapporten op basis van gebruikers en groepen krijgt u antwoord op
 
 - Welke licenties zijn toegewezen aan een groep of een gebruiker?
 
-Als u alleen controle gegevens wilt bekijken die gerelateerd zijn aan gebruikers, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **activiteit** van het tabblad **gebruikers** . Dit ingangs punt heeft **UserManagement** als voorgeselecteerde categorie.
+Als u alleen controle gegevens wilt bekijken die gerelateerd zijn aan gebruikers, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **bewaking** van het tabblad **gebruikers** . Dit ingangs punt heeft **UserManagement** als voorgeselecteerde categorie.
 
 ![Auditlogboeken](./media/concept-audit-logs/users.png "Auditlogboeken")
 
-Als u alleen controle gegevens wilt bekijken die aan groepen zijn gerelateerd, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **activiteit** van het tabblad **groepen** . Dit ingangs punt heeft **GroupManagement** als voorgeselecteerde categorie.
+Als u alleen controle gegevens wilt bekijken die aan groepen zijn gerelateerd, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **bewaking** van het tabblad **groepen** . Dit ingangs punt heeft **GroupManagement** als voorgeselecteerde categorie.
 
 ![Auditlogboeken](./media/concept-audit-logs/groups.png "Auditlogboeken")
 

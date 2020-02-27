@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212192"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620634"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Geef claim transformaties voor het telefoon nummer op in Azure AD B2C
 
@@ -26,9 +26,39 @@ In dit artikel vindt u Naslag informatie en voor beelden voor het gebruik van de
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
+
+Hiermee wordt een `phoneNumber` gegevens type geconverteerd naar een `string` gegevens type.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | phoneNumber | phoneNumber |  Het claim type dat moet worden geconverteerd naar een teken reeks. |
+| OutputClaim | phoneNumberString | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
+
+In dit voor beeld wordt de claim cellPhoneNumber met het waardetype `phoneNumber` geconverteerd naar een cellPhone-claim met het waardetype `string`.
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+  - **phonenumber**: + 11234567890 (phonenumber)
+- Uitvoer claims:
+  - **phoneNumberString**: + 11234567890 (teken reeks)
+
+
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-Met deze claim wordt de indeling van het telefoon nummer gevalideerd. Als het een geldige indeling heeft, wijzigt u deze in een standaard indeling die wordt gebruikt door Azure AD B2C. Als het opgegeven telefoon nummer geen geldige indeling heeft, wordt een fout bericht weer gegeven.
+Deze claim transformatie valideert de notatie van het telefoon nummer. Als het een geldige indeling heeft, wijzigt u deze in een standaard indeling die wordt gebruikt door Azure AD B2C. Als het opgegeven telefoon nummer geen geldige indeling heeft, wordt een fout bericht weer gegeven.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
@@ -68,10 +98,10 @@ Het zelfondertekende technische profiel dat het validatie technische profiel aan
 ### <a name="example-1"></a>Voorbeeld 1
 
 - Invoer claims:
-  - **phoneNumberString**: 045 456-7890
+  - **phoneNumberString**: 033 456-7890
   - **land**: DK
 - Uitvoer claims:
-  - **output claim**: + 450546148120
+  - **output claim**: + 450334567890
 
 ### <a name="example-2"></a>Voorbeeld 2
 
@@ -79,6 +109,7 @@ Het zelfondertekende technische profiel dat het validatie technische profiel aan
   - **phoneNumberString**: + 1 (123) 456-7890
 - Uitvoer claims: 
   - **output claim**: + 11234567890
+
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264760"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617639"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevens drift (preview) detecteren in gegevens sets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ Met behulp van Azure Machine Learning wordt de gegevens drift bewaakt via data s
 
 Voor de doel-DataSet moet de `timeseries` Trait worden ingesteld door de time stamp-kolom op te geven van een kolom in de gegevens of een virtuele kolom die is afgeleid van het pad patroon van de bestanden. Dit kan worden gedaan met behulp van de python-SDK of Azure Machine Learning Studio. Een kolom met een ' fijne korrel ' tijds tempel moet worden opgegeven om `timeseries` eigenschappen toe te voegen aan de gegevensset. Als uw gegevens zijn gepartitioneerd in mapstructuur met tijd gegevens, zoals {JJJJ/MM/DD}, kunt u een virtuele kolom maken met de patroon instelling pad en instellen als de tijds tempel "grof korrels" om het belang van de tijd reeks functionaliteit te verbeteren. 
 
-#### <a name="python-sdk"></a>Python SDK
+#### <a name="python-sdk"></a>Python-SDK
 
 De methode [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) van de klasse [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) definieert de time stamp-kolom voor de gegevensset. 
 
@@ -233,7 +233,7 @@ Zie ons [voor beeld](https://aka.ms/datadrift-notebook)van een notebook voor een
 
 De gegevens monitor produceert twee groepen resultaten: overzicht van drift en Details van de functie. In de volgende animatie ziet u de beschik bare drift-monitor diagrammen op basis van de geselecteerde functie en metrische gegevens. 
 
-![Demovideo](./media/how-to-monitor-datasets/video.gif)
+![Demo video](./media/how-to-monitor-datasets/video.gif)
 
 ### <a name="drift-overview"></a>Overzicht van drift
 
@@ -266,8 +266,8 @@ Numerieke functies worden in elke controle van de gegevensset profileeerd. Het v
 | ------ | ----------- |  
 | Wasserstein afstand | Minimale hoeveelheid werk voor het transformeren van basislijn distributie in de doel verdeling. |
 | Gemiddelde waarde | De gemiddelde waarde van de functie. |
-| Minimumwaarde | De minimum waarde van de functie. |
-| Maximumwaarde | De maximum waarde van de functie. |
+| Minimum waarde | De minimum waarde van de functie. |
+| Maximum waarde | De maximum waarde van de functie. |
 
 ![Numerieke functie gegevens](./media/how-to-monitor-datasets/feature-details.png)
 
@@ -301,7 +301,7 @@ De metrische gegevens van de gegevensset-monitor worden opgeslagen als `customMe
 
 Nadat u metrische gegevens hebt geïdentificeerd om waarschuwings regels in te stellen, maakt u een nieuwe waarschuwings regel:
 
-![Nieuwe waarschuwingsregel](./media/how-to-monitor-datasets/alert-rule.png)
+![Nieuwe waarschuwings regel](./media/how-to-monitor-datasets/alert-rule.png)
 
 U kunt een bestaande actie groep gebruiken of een nieuwe maken om de actie te definiëren die moet worden uitgevoerd wanneer aan de voor waarden van de set wordt voldaan:
 
@@ -326,6 +326,6 @@ Kolommen, of functies, worden in de gegevensset geclassificeerd als categorische
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Kop naar de [Azure machine learning Studio](https://ml.azure.com) of de [python-notebook](https://aka.ms/datadrift-notebook) voor het instellen van een monitor voor de gegevensset.
+* Kop naar de [Azure machine learning Studio](https://ml.azure.com) of de [python-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) voor het instellen van een monitor voor de gegevensset.
 * Zie gegevens drift instellen voor [modellen die zijn geïmplementeerd in azure Kubernetes service](how-to-monitor-data-drift.md).
 * Stel de gegevensset-drijf monitors in met [Event grid](how-to-use-event-grid.md). 

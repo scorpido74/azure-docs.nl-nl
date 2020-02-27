@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789236"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647662"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Op het scherm gestuurde apps op IBM-mainframes 3270 integreren met Azure met behulp van Azure Logic Apps en IBM 3270-connector
 
@@ -218,11 +218,11 @@ In dit voor beeld voert u een CICS-trans actie met de naam ' WBGB ' uit met de v
 
 Stel dat u deze stappen herhaalt, maar u voert onjuiste gegevens in zodat u het scherm kunt vastleggen waarin de fout wordt weer gegeven. Dit zijn de schermen die u vastlegt:
 
-* BERICHT-10
+* MSG-10
 * CICS-Welkom
 * Leeg
-* WBGB_1 (invoer)
-* WBGB_2 (fout)
+* WBGB_1 (input)
+* WBGB_2 (error)
 * Empty_1
 * MSG-10_1
 
@@ -358,7 +358,7 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 1. Als er nog geen verbinding bestaat, geeft u de benodigde informatie voor de verbinding op en kiest u **maken**.
 
-   | Eigenschap | Verplicht | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam voor de verbinding |
    | **Integratie account-ID** | Ja | <*Integration-account-name*> | De naam van uw integratie account |
@@ -378,7 +378,7 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 1. Geef de benodigde informatie op voor de actie:
 
-   | Eigenschap | Verplicht | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **Hidx-naam** | Ja | <*HIDX-bestands naam*> | Selecteer het 3270-HIDX-bestand dat u wilt gebruiken. |
    | **Methode naam** | Ja | <*methode: naam*> | Selecteer de methode in het HIDX-bestand dat u wilt gebruiken. Nadat u een methode hebt geselecteerd, wordt de lijst **nieuwe para meter toevoegen** weer gegeven, zodat u para meters kunt selecteren voor gebruik met deze methode. |
@@ -409,7 +409,10 @@ Wanneer u al deze stappen hebt voltooid, kunt u de actie die u in uw logische ap
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg de [referentie pagina van de connector](/connectors/si3270/)voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/si3270/).
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

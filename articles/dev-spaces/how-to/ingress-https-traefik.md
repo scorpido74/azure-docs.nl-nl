@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste traefik ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486182"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623168"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
 
@@ -49,15 +49,18 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 Maak een Kubernetes-naam ruimte voor de traefik ingangs controller en installeer deze met behulp van `helm`.
 
+> [!NOTE]
+> Als op uw AKS geen RBAC is ingeschakeld, verwijdert u de para meter *--set RBAC. Enabled = True* .
+
 ```console
 kubectl create ns traefik
-helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 > [!NOTE]
 > In het bovenstaande voor beeld wordt een openbaar eind punt gemaakt voor uw ingangs controller. Als u in plaats daarvan een persoonlijk eind punt voor uw ingangs controller moet gebruiken, voegt u de *--set service. annotaties toe. Service\\. beta\\. kubernetes\\. io/Azure-Load-Balancer-internal "= True* para meter voor de *installatie opdracht helm* .
 > ```console
-> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
 > Dit persoonlijke eind punt wordt weer gegeven in het virtuele netwerk waar u AKS-cluster wordt geïmplementeerd.
 
@@ -95,7 +98,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Open [Values. yaml][values-yaml] en vervang alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* met *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. Vervang ook *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
+Open [Values. yaml][values-yaml] en voer de volgende updates uit:
+* Alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* vervangen door *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. 
+* Vervang *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. 
+
+Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -148,6 +155,9 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
 Ga naar de *bikesharingweb* -service door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> Als er een fout pagina wordt weer geven in plaats van de *bikesharingweb* -service, controleert u of u **zowel** de *kubernetes.io/ingress.class* aantekening als de host in het bestand *Values. yaml* hebt bijgewerkt.
 
 Gebruik de `azds space select` opdracht om een onderliggende ruimte onder *dev* te maken en geef de url's weer voor toegang tot de onderliggende ontwikkel ruimte.
 

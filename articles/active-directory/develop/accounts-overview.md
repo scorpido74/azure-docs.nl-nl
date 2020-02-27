@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: a0f0f3be1647c820591923a094ef7fce86ab9672
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699441"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611884"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Accounts en tenantprofielen (Android)
 
@@ -52,7 +52,7 @@ Een account in het micro soft Identity platform bestaat uit:
 
 ## <a name="account-overview-diagram"></a>Diagram van account overzicht
 
-![Diagram van account overzicht](./media/accounts-overview/accounts-overview.png)
+![Diagram van account overzicht](./media/accounts-overview/accounts-overview.svg)
 
 In het bovenstaande diagram:
 

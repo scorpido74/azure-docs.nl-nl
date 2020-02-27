@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512756"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613190"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Wacht woord-en account vergrendelings beleid in beheerde domeinen
 
@@ -87,7 +87,7 @@ Als u een aangepast wachtwoord beleid wilt maken, gebruikt u de Active Directory
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
 1. Als u organisatie-eenheden wilt maken en beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
-1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aadds.contoso.com*.
+1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*.
 1. Open de **systeem** container en vervolgens de **Password Settings Container**.
 
     Er wordt een ingebouwd wachtwoord beleid voor het beheerde domein van Azure AD DS weer gegeven. U kunt dit ingebouwde beleid niet wijzigen. Maak in plaats daarvan een aangepast wachtwoord beleid om het standaard beleid te onderdrukken.
@@ -112,7 +112,7 @@ Als u een aangepast wachtwoord beleid wilt maken, gebruikt u de Active Directory
 
     ![Selecteer de gebruikers en groepen waarop u het wachtwoord beleid wilt Toep assen](./media/how-to/fgpp-applies-to.png)
 
-1. Wachtwoord beleid kan alleen worden toegepast op groepen. Vouw in het dialoog venster **locaties** de domein naam uit, zoals *aadds.contoso.com*, en selecteer vervolgens een OE, zoals **AADDC-gebruikers**. Als u een aangepaste OE hebt die een groep gebruikers bevat die u wilt Toep assen, selecteert u die organisatie-eenheid.
+1. Wachtwoord beleid kan alleen worden toegepast op groepen. Vouw in het dialoog venster **locaties** de domein naam uit, zoals *aaddscontoso.com*, en selecteer vervolgens een OE, zoals **AADDC-gebruikers**. Als u een aangepaste OE hebt die een groep gebruikers bevat die u wilt Toep assen, selecteert u die organisatie-eenheid.
 
     ![Selecteer de organisatie-eenheid waarvan de groep deel uitmaakt](./media/how-to/fgpp-container.png)
 

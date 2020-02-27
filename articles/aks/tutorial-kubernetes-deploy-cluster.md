@@ -3,14 +3,14 @@ title: 'Zelfstudie voor Kubernetes in Azure: Een cluster implementeren'
 description: In deze zelfstudie Azure Kubernetes Service (AKS) gaat u een AKS-cluster maken en kubectl gebruiken om verbinding te maken met het hoofdknooppunt van Kubernetes.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: e0163b844bf677f0a74e308c7c873c42e6e57c8c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1e977d927a301bee4be6cf3856114692542981b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593220"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621206"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Zelfstudie: Een AKS-cluster (Azure Kubernetes Service) implementeren
 
@@ -73,7 +73,7 @@ Als u de verbinding met uw cluster wilt controleren, voert u de opdracht [kubect
 $ kubectl get nodes
 
 NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
+aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

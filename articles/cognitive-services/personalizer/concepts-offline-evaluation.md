@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513606"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623592"
 ---
 # <a name="offline-evaluation"></a>Offline-evaluatie
 
@@ -49,6 +49,16 @@ Hier volgen enkele belang rijke aandachtspunten voor de representatieve offline-
 Personaler kan het offline-evaluatie proces gebruiken om automatisch een betrouwbaarder leer beleid te detecteren.
 
 Nadat u de offline-evaluatie hebt uitgevoerd, kunt u de vergelijkende effectiviteit van Personaler voor het nieuwe beleid bekijken vergeleken met het huidige online beleid. U kunt dat leer beleid vervolgens Toep assen om het direct van kracht te laten zijn door het te downloaden en te uploaden in het deel venster modellen en beleid. U kunt het ook downloaden voor toekomstige analyses of voor gebruik.
+
+Huidige beleids regels die zijn opgenomen in de evaluatie:
+
+| Leer instellingen | Doel|
+|--|--|
+|**Online beleid**| Het huidige leer beleid dat wordt gebruikt in Personaler |
+|**Gebonden**|De standaard waarde van de toepassing (zoals bepaald door de eerste actie die wordt verzonden in Rangings aanroepen)|
+|**Wille keurig beleid**|Een imaginair positie gedrag dat altijd een wille keurige keuze van de acties retourneert uit de opgegeven records.|
+|**Aangepast beleid**|Er zijn extra leer beleid geüpload bij het starten van de evaluatie.|
+|**Geoptimaliseerd beleid**|Als de evaluatie is gestart met de optie om een geoptimaliseerd beleid te detecteren, wordt het ook vergeleken en kunt u het downloaden of het online leer beleid maken, waarbij de huidige wordt vervangen.|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Meer informatie over de relevantie van offline-evaluatie resultaten
 
@@ -92,7 +102,7 @@ We raden u aan functie-evaluaties te bekijken en te vragen:
 
 * Wat andere, extra, functies kunnen uw toepassing of systeem volgen langs de regels die effectiever zijn?
 * Welke functies kunnen worden verwijderd vanwege een geringe effectiviteit? Met functies met weinig effectiviteit voegt u _ruis_ toe aan de machine learning.
-* Zijn er onbedoeld onderdelen die per ongeluk zijn opgenomen? Voor beelden hiervan zijn: persoonlijk identificeer bare informatie (PII), dubbele Id's, enzovoort.
+* Zijn er onbedoeld onderdelen die per ongeluk zijn opgenomen? Voor beelden hiervan zijn: door de gebruiker geïdentificeerde informatie, dubbele Id's, enzovoort.
 * Zijn er ongewenste functies die niet mogen worden gebruikt om te personaliseren als gevolg van regelgevende of verantwoordelijke overwegingen voor het gebruik? Zijn er functies die een proxy kunnen hebben (dat wil zeggen, goed spie gelen of correleren met) ongewenste functies?
 
 

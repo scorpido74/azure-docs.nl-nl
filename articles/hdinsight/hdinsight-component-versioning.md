@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198953"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649990"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?
 
@@ -62,6 +62,12 @@ De versie van het Hadoop-ecosysteem onderdeel dat is gekoppeld aan HDInsight-clu
 Zie [opmerkingen](hdinsight-release-notes.md) bij de release van hdinsight voor aanvullende release opmerkingen over de nieuwste versies van HDInsight.
 
 ## <a name="supported-hdinsight-versions"></a>Ondersteunde HDInsight-versies
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>Verval en buiten gebruiks telling voor HDInsight-versies ondersteunen
+
+**Verval** van de ondersteuning houdt in dat micro soft geen ondersteuning meer biedt voor de opgegeven HDInsight-versie en niet langer beschikbaar is via de Azure portal voor het maken van een cluster. Deze versies kunnen echter nog steeds worden gemaakt met behulp van de Azure CLI of de verschillende Sdk's. 
+
+**Buiten** gebruik stellen van een HDInsight-versie houdt in dat bestaande clusters nog steeds worden uitgevoerd. Nieuwe clusters van deze versie kunnen echter niet op een wille keurige manier worden gemaakt (met inbegrip van CLI en Sdk's). Andere functies van het besturings systeem (zoals hand matig schalen en automatisch schalen) werken mogelijk ook niet na het buiten gebruik stellen van de versie. Er is geen ondersteuning beschikbaar voor de buiten gebruik gestelde versies.
 
 De volgende tabellen geven een lijst van de versies van HDInsight. De ondersteunings vervaldatums en pensioen datums worden ook gegeven, wanneer ze bekend zijn.
 

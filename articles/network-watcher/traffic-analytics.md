@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426221"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620009"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -201,7 +201,7 @@ U kunt ook Traffic Analytics configureren met de Power shell [-cmdlet Set-AzNetw
 
 ## <a name="view-traffic-analytics"></a>Traffic Analytics weer geven
 
-Selecteer aan de linkerkant van de portal **alle services**en voer vervolgens *monitor* in het vak **filter** in. Wanneer de **monitor** wordt weer gegeven in de zoek resultaten, selecteert u deze. Als u Traffic Analytics en de mogelijkheden ervan wilt gaan verkennen, selecteert u **Network Watcher**en vervolgens **Traffic Analytics**.
+Zoek **Network Watcher** in de zoek balk van de portal om Traffic Analytics te bekijken. **Traffic Analytics** Klik in het menu links in de Network Watcher om Traffic Analytics en de mogelijkheden ervan te verkennen. 
 
 ![Toegang tot het dash board van Traffic Analytics](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

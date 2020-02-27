@@ -1,19 +1,19 @@
 ---
-title: Partitionering in Azure Cosmos DB
+title: Partitioneren in Azure Cosmos DB
 description: Meer informatie over partitioneren in Azure Cosmos DB, aanbevolen procedures bij het kiezen van een partitie sleutel en het beheren van logische partities
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871989"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621870"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Partitionering in Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db"></a>Partitioneren in Azure Cosmos DB
 
 Azure Cosmos DB maakt gebruik van partitionering om afzonderlijke containers in een Data Base te schalen om te voldoen aan de prestatie behoeften van uw toepassing. In partitioneren worden de items in een container onderverdeeld in afzonderlijke subsets met de naam *logische partities*. Logische partities worden gevormd op basis van de waarde van een *partitie sleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitie sleutel waarde.
 
@@ -37,7 +37,7 @@ Zie [logische partities](partition-data.md)voor meer informatie over de manier w
 
 Hieronder vindt u een goede richt lijn voor het kiezen van een partitie sleutel:
 
-* Eén logische partitie heeft een maximale limiet van 10 GB aan opslag ruimte.  
+* Eén logische partitie heeft een bovengrens van 20 GB aan opslag ruimte.  
 
 * Azure Cosmos-containers hebben een minimale door Voer van 400 aanvraag eenheden per seconde (RU/s). Wanneer de door Voer is ingericht voor een Data Base, is het minimale RUs per container 100 aanvraag eenheden per seconde (RU/s). Aanvragen naar dezelfde partitie sleutel kunnen niet groter zijn dan de door Voer die is toegewezen aan een partitie. Als aanvragen de toegewezen door Voer overschrijden, zijn aanvragen een beperkt aantal. Het is dus belang rijk om een partitie sleutel te kiezen die niet resulteert in ' hot spots ' in uw toepassing.
 

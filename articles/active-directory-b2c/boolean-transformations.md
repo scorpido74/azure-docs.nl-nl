@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983075"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620843"
 ---
 # <a name="boolean-claims-transformations"></a>Booleaanse claim transformaties
 
@@ -120,9 +120,9 @@ Controleert of de Booleaanse waarde van een claims gelijk is aan `true` of `fals
 
 | Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | booleaans | Het claim type dat moet worden bevestigd. |
+| InputClaim | inputClaim | booleaans | Het claim type dat moet worden bevestigd. |
 | InputParameter |valueToCompareTo | booleaans | De waarde die moet worden vergeleken (waar of onwaar). |
-| OutputClaim | inputClaim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| OutputClaim | compareResult | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
 
 De volgende claim transformatie laat zien hoe u de waarde van een Booleaanse claim type met een `true` waarde controleert. Als de waarde van de `IsAgeOver21Years` claim type gelijk is aan `true`, retourneert de claim transformatie `true`, anders `false`.

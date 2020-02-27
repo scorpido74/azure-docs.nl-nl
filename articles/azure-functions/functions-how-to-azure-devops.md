@@ -1,16 +1,16 @@
 ---
 title: Functie-app-code continu bijwerken met behulp van Azure DevOps
 description: Meer informatie over het instellen van een Azure DevOps-pijp lijn die gericht is op Azure Functions.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834024"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649939"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continue levering met behulp van Azure DevOps
 
@@ -25,11 +25,11 @@ U hebt twee opties voor het definiëren van uw pijp lijn:
 
 Als u een YAML-pijp lijn wilt maken, bouwt u eerst uw app en implementeert u vervolgens de app.
 
-### <a name="build-your-app"></a>Uw app ontwikkelen
+### <a name="build-your-app"></a>Uw app bouwen
 
 Hoe u uw app in azure-pijp lijnen bouwt, is afhankelijk van de programmeer taal van uw app. Elke taal heeft specifieke build-stappen voor het maken van een implementatie-artefact. Een implementatie artefact wordt gebruikt om uw functie-app in azure te implementeren.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 U kunt het volgende voor beeld gebruiken om een YAML-bestand te maken om een .NET-app te bouwen:
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 U kunt het volgende voor beeld gebruiken om een YAML-bestand te maken om een Java script-app te bouwen:
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 U kunt een van de volgende voor beelden gebruiken om een YAML-bestand te maken voor het bouwen van een app voor een specifieke python-versie. Python wordt alleen ondersteund voor functie-apps die worden uitgevoerd op Linux.
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 U kunt het volgende voor beeld gebruiken om een YAML-bestand te maken om een Power shell-app te verpakken. Power shell wordt alleen ondersteund voor Windows Azure Functions.
 
@@ -215,7 +215,7 @@ steps:
 
 Sjablonen in azure DevOps zijn vooraf gedefinieerde groepen taken die een app bouwen of implementeren.
 
-### <a name="build-your-app"></a>Uw app ontwikkelen
+### <a name="build-your-app"></a>Uw app bouwen
 
 Hoe u uw app in azure-pijp lijnen bouwt, is afhankelijk van de programmeer taal van uw app. Elke taal heeft specifieke build-stappen voor het maken van een implementatie-artefact. Een implementatie artefact wordt gebruikt om de functie-app in azure bij te werken.
 

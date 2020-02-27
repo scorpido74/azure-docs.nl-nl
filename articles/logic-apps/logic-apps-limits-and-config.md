@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485043"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650892"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -149,11 +149,13 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 | Inkomende aanvraag | 120 seconden <br>(2 minuten) | 240 seconden <br>(4 minuten) | Voor beelden van inkomende aanvragen zijn oproepen die worden ontvangen door de aanvraag triggers en webhook-triggers. <p><p>**Opmerking**: voor de oorspronkelijke beller om het antwoord te krijgen, moeten alle stappen in het antwoord binnen de limiet worden voltooid, tenzij u een andere logische app als geneste werk stroom aanroept. Zie [Logic apps aanroepen, activeren of nesten](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie. |
 |||||
 
+<a name="message-size-limits"></a>
+
 #### <a name="message-size"></a>Berichtgrootte
 
 | Name | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| Berichtgrootte | 100 MB | 200 MB | Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)om deze limiet te omzeilen. Sommige connectors en Api's ondersteunen echter mogelijk geen Chunking of zelfs de standaard limiet. |
+| Berichtgrootte | 100 MB | 200 MB | ISE-connectors maken gebruik van de limiet van ISE, niet de niet-ISE-connector limieten. <p><p>Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)om deze limiet te omzeilen. Sommige connectors en Api's ondersteunen echter mogelijk geen Chunking of zelfs de standaard limiet. |
 | Bericht grootte met Chunking | 1 GB | 5 GB | Deze limiet geldt voor acties die systeem eigen ondersteuning bieden voor Chunking of waarmee u Chunking in de runtime configuratie kunt inschakelen. <p>Voor de integratie service omgeving ondersteunt de Logic Apps-Engine deze limiet, maar connectors hebben hun eigen segment limieten tot de limiet van de engine. Zie de [API-naslag informatie voor de Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/). Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)voor meer informatie over chunks. |
 |||||
 

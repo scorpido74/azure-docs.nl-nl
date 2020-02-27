@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592099"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620316"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutel configuratie 
 
@@ -172,7 +172,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inrichting van Azure Monitor-gegevens archief (ADX-cluster)
 
-Tijdens de vroegtijdige toegangs periode van de functie wordt het ADX-cluster hand matig ingericht door het product team nadat de vorige stappen zijn voltooid. Gebruik het kanaal dat u met micro soft hebt om de *cluster* resource gegevens op te geven. De JSON-reactie kan worden opgehaald met behulp van GET REST API:
+Tijdens de vroegtijdige toegangs periode van de functie wordt het ADX-cluster hand matig ingericht door het product team nadat de vorige stappen zijn voltooid. Gebruik uw micro soft-kanaal om de *cluster* resource gegevens op te geven. Kopieer het JSON-antwoord van de *cluster* resource Get rest API:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview

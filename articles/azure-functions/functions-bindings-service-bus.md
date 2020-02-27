@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b505a90057a213d7f64d4d168a6a70da0ff03c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485298"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621080"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-bindingen voor Azure Functions
 
@@ -30,11 +30,11 @@ Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pak
 
 | Taal                                        | Toevoegen door...                                   | Opmerkingen 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Het [NuGet-pakket]installeren, versie 3. x | |
+| C#                                              | Het [NuGet-pakket]installeren, versie 4. x | |
 | C#Script, Java, java script, Python, Power shell | De [uitbreidings bundel] registreren          | De [Extensie van Azure-Hulpprogram Ma's] wordt aanbevolen voor gebruik met Visual Studio code. |
 | C#Script (alleen online in Azure Portal)         | Een binding toevoegen                            | Zie [uw extensies bijwerken]om bestaande bindings extensies bij te werken zonder uw functie-app opnieuw te publiceren. |
 
-[NuGet-pakket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus
+[NuGet-pakket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [uitbreidings bundel]: ./functions-bindings-register.md#extension-bundles
 [Uw extensies bijwerken]: ./install-update-binding-extensions-manual.md

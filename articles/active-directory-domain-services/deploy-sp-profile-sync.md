@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509050"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613869"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit op de virtuele machine met Azure AD DS Management:
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
 1. Als u groepslid maatschap wilt beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
-1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aadds.contoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven.
+1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven.
 1. Selecteer de organisatie-eenheid **gebruikers** en kies vervolgens de beveiligings groep *Aad DC-service accounts* .
 1. Selecteer **leden**en klik vervolgens op **toevoegen...** .
 1. Voer de naam van het share point-service account in en selecteer **OK**. In het volgende voor beeld heeft het share point-service account de naam *SPAdmin*:

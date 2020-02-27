@@ -4,12 +4,12 @@ description: Meer informatie over het upgraden van een Azure Kubernetes service-
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 9acf08765ee42401229bc464b4513856127e9f66
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592982"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621979"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes service) upgraden
 
@@ -22,7 +22,7 @@ Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters di
 Voor dit artikel moet u de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!WARNING]
-> Een AKS-cluster upgrade activeert een cordon en afvoer van uw knoop punten. Als er een beperkt reken quotum beschikbaar is, kan de upgrade mislukken.  Zie [quota verg Roten](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) voor meer informatie.
+> Een AKS-cluster upgrade activeert een cordon en afvoer van uw knoop punten. Als er een beperkt reken quotum beschikbaar is, kan de upgrade mislukken. Zie [quota verg Roten](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) voor meer informatie.
 > Als u uw eigen implementatie van de automatische schaal van het cluster uitvoert, schakelt u deze uit (u kunt deze schalen naar nul replica's) tijdens de upgrade, omdat er sprake is van een kans dat het upgrade proces wordt verstoord. Met Managed automatische schalen wordt dit automatisch afgehandeld. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Controleren op beschik bare AKS-cluster upgrades

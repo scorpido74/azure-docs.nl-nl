@@ -1,24 +1,24 @@
 ---
-title: Aanmelden met de telefoon en aanmelden met aangepast beleid
+title: Aanmelden bij de telefoon en aanmelden met aangepast beleid (preview-versie)
 titleSuffix: Azure AD B2C
-description: Informatie over het verzenden van eenmalige wacht woorden in SMS-berichten naar de telefoons van uw toepassings gebruikers met aangepaste beleids regels in Azure Active Directory B2C.
+description: Eenmalige wacht woorden (OTP) in tekst berichten verzenden naar de telefoons van uw toepassings gebruikers met aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840329"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647534"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Stel aanmelding via de telefoon in en meld u aan met aangepast beleid in Azure AD B2C
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Stel de telefoon registratie in en meld u aan met aangepast beleid in Azure AD B2C (preview-versie)
 
 Met aanmelden en aanmelden in Azure Active Directory B2C (Azure AD B2C) kunnen uw gebruikers zich registreren en aanmelden bij uw toepassingen met behulp van een eenmalig wacht woord (OTP) dat in een tekst bericht naar de telefoon wordt verzonden. Eenmalige wacht woorden kunnen u helpen het risico te verkleinen dat uw gebruikers hun wacht woord verg eten of het probleem hebben aangetast.
 
@@ -26,7 +26,13 @@ Volg de stappen in dit artikel om het aangepaste beleid te gebruiken zodat uw kl
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="pricing"></a>Prijzen
+
+Eenmalige wacht woorden worden naar uw gebruikers verzonden met behulp van SMS-berichten en er worden kosten in rekening gebracht voor elk bericht dat wordt verzonden. Zie de sectie **afzonderlijke kosten** van [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)voor prijs informatie.
+
 ## <a name="prerequisites"></a>Vereisten
+
+U hebt de volgende resources nodig voordat u OTP kunt instellen.
 
 * [Azure AD B2C Tenant](tutorial-create-tenant.md)
 * [Webtoepassing geregistreerd](tutorial-register-applications.md) in uw Tenant
@@ -69,6 +75,22 @@ Wanneer u elk bestand uploadt, voegt Azure het voor voegsel toe `B2C_1A_`.
 1. Kies `https://jwt.ms`voor **Selecteer antwoord-URL**.
 1. Selecteer **nu uitvoeren** en meld u aan met een e-mail adres of telefoon nummer.
 1. Selecteer **nu opnieuw uitvoeren** en meld u aan met hetzelfde account om te controleren of u de juiste configuratie hebt.
+
+## <a name="get-user-account-by-phone-number"></a>Gebruikers account op telefoon nummer ophalen
+
+Een gebruiker die zich aanmeldt met een telefoon nummer, maar geen herstel-e-mail adres opgeeft, wordt in uw Azure AD B2C Directory opgeslagen met hun telefoon nummer als aanmeldings naam. Als de gebruiker zijn of haar telefoon nummer wil wijzigen, moet uw Help Desk of ondersteunings team eerst zijn of haar account vinden en vervolgens hun telefoon nummer bijwerken.
+
+U kunt een gebruiker vinden op basis van hun telefoon nummer (aanmeldings naam) door gebruik te maken van [Microsoft Graph](manage-user-accounts-graph-api.md):
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+Bijvoorbeeld:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

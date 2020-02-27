@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ff30ed0f52bcbc174b99d2a96d6fdce95d390555
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620505"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649973"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Foutafhandeling in grafische Azure Automation-runbooks
 
@@ -20,7 +20,10 @@ Als er sprake is van een niet-afsluit fout die optreedt bij een runbook-activite
 
 Uw grafische runbook moet fout verwerkings code bevatten om te kunnen omgaan met uitvoerings problemen. Als u de uitvoer van een activiteit wilt valideren of een fout wilt verwerken, kunt u een Power shell-code activiteit gebruiken, voorwaardelijke logica definiëren op de uitvoer koppeling van de activiteit of een andere methode Toep assen.
 
-Azure Automation grafische runbooks zijn verbeterd met de mogelijkheid om fout afhandeling te bieden. U kunt nu van uitzonderingen niet-afsluitfouten maken en foutkoppelingen tussen activiteiten maken. Dankzij het verbeterde proces kan uw runbook fouten opvangen en gerealiseerde of onverwachte voor waarden beheren.  
+Azure Automation grafische runbooks zijn verbeterd met de mogelijkheid om fout afhandeling te bieden. U kunt nu van uitzonderingen niet-afsluitfouten maken en foutkoppelingen tussen activiteiten maken. Dankzij het verbeterde proces kan uw runbook fouten opvangen en gerealiseerde of onverwachte voor waarden beheren. 
+
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="powershell-error-types"></a>Power Shell-fout typen
 

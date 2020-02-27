@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807954"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624152"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Wereld wijd beschik bare Services ontwerpen met behulp van Azure SQL Database
 
@@ -119,7 +119,7 @@ De resources van de toepassing moeten in elke geografie worden geïmplementeerd,
 
 ![Scenario 3. Configuratie met primair in VS-Oost.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-Aan het einde van de dag (bijvoorbeeld op 23:00 uur lokale tijd) moeten de actieve data bases worden overgeschakeld naar de volgende regio (Europa-noord). Deze taak kan volledig worden geautomatiseerd met behulp van de [Azure-plannings service](../scheduler/scheduler-intro.md).  De taak omvat de volgende stappen:
+Aan het einde van de dag, bijvoorbeeld om 11 uur lokale tijd, moeten de actieve data bases worden overgeschakeld naar de volgende regio (Europa-noord). Deze taak kan volledig worden geautomatiseerd met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md). De taak omvat de volgende stappen:
 
 * Primaire server in de failovergroep overschakelen naar Europa-noord met behulp van een beschrijvende failover (1)
 * De failovergroep verwijderen tussen de VS-Oost en het Europa-noord
@@ -130,7 +130,7 @@ In het volgende diagram ziet u de nieuwe configuratie na de geplande failover:
 
 ![Scenario 3. Overgang van de primaire naar Europa-noord.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Als er zich een storing voordoet in Europa-noord bijvoorbeeld, wordt de failover van de automatische data base geïnitieerd door de failoverrelatie, waardoor de toepassing effectief wordt verplaatst naar de volgende regio voor planning (1).  In dat geval is de VS-Oost de enige resterende secundaire regio totdat Europa-noord weer online is. De overige twee regio's leveren de klanten in alle drie de geografische gebieden door rollen te scha kelen. Azure scheduler moet dienovereenkomstig worden aangepast. Omdat de resterende regio's extra gebruikers verkeer van Europa verkrijgen, worden de prestaties van de toepassing niet alleen beïnvloed door extra latentie, maar ook door een groter aantal eind gebruikers. Zodra de onderbreking in Europa-noord is verholpen, wordt de secundaire data base onmiddellijk gesynchroniseerd met de huidige primaire. Het volgende diagram illustreert een onderbreking in Europa-noord:
+Als er zich een storing voordoet in Europa-noord bijvoorbeeld, wordt de failover van de automatische data base geïnitieerd door de failoverrelatie, waardoor de toepassing effectief wordt verplaatst naar de volgende regio voor planning (1).  In dat geval is de VS-Oost de enige resterende secundaire regio totdat Europa-noord weer online is. De overige twee regio's leveren de klanten in alle drie de geografische gebieden door rollen te scha kelen. Azure Logic Apps moet dienovereenkomstig worden aangepast. Omdat de resterende regio's extra gebruikers verkeer van Europa verkrijgen, worden de prestaties van de toepassing niet alleen beïnvloed door extra latentie, maar ook door een groter aantal eind gebruikers. Zodra de onderbreking in Europa-noord is verholpen, wordt de secundaire data base onmiddellijk gesynchroniseerd met de huidige primaire. Het volgende diagram illustreert een onderbreking in Europa-noord:
 
 ![Scenario 3. Uitval in Europa-noord.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

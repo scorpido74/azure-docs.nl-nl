@@ -3,21 +3,21 @@ title: 'Bekende problemen: online migraties naar SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over bekende problemen/migratie beperkingen met online migraties voor het Azure SQL Database met behulp van de Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437827"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650772"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure SQL Database
 
@@ -28,7 +28,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migratie van tijdelijke tabellen wordt niet ondersteund
 
-**Symptoom**
+**Duid**
 
 Als uw bron database uit een of meer tijdelijke tabellen bestaat, mislukt de migratie van de data base tijdens de bewerking ' volledige gegevens laden ' en ziet u mogelijk het volgende bericht:
 
@@ -40,7 +40,7 @@ Als uw bron database uit een of meer tijdelijke tabellen bestaat, mislukt de mig
 
 **Tijdelijke oplossing**
 
-Volg de volgende stappen.
+Gebruik de volgende stappen.
 
 1. Zoek de tijdelijke tabellen in uw bron schema met behulp van de onderstaande query.
 
@@ -52,13 +52,13 @@ Volg de volgende stappen.
 
 3. Voer de migratie activiteit opnieuw uit.
 
-**Bronnen**
+**Resources**
 
 Zie het artikel [tijdelijke tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)voor meer informatie.
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migratie van tabellen bevat een of meer kolommen met het gegevens type hierarchyid
 
-**Symptoom**
+**Duid**
 
 Er wordt mogelijk een SQL-uitzonde ring weer gegeven met de suggestie ' ntext is incompatibel met hierarchyid ' tijdens de bewerking ' volledige gegevens laden ':
 
@@ -66,7 +66,7 @@ Er wordt mogelijk een SQL-uitzonde ring weer gegeven met de suggestie ' ntext is
 
 **Tijdelijke oplossing**
 
-Volg de volgende stappen.
+Gebruik de volgende stappen.
 
 1. Zoek de gebruikers tabellen die kolommen bevatten met het gegevens type hierarchyid met behulp van de onderstaande query.
 
@@ -82,7 +82,7 @@ Volg de volgende stappen.
 
 **Tijdelijke oplossing**
 
-Volg de volgende stappen.
+Gebruik de volgende stappen.
 
 1. Zoek de triggers die momenteel actief zijn in de bron database met behulp van de volgende query:
 
@@ -96,7 +96,7 @@ Volg de volgende stappen.
 
 ### <a name="support-for-lob-data-types"></a>Ondersteuning voor LOB-gegevens typen
 
-**Symptoom**
+**Duid**
 
 Als de LOB-kolom (lengte van Large Object) groter is dan 32 KB, worden gegevens mogelijk afgekapt bij het doel. U kunt de lengte van de LOB-kolom controleren met behulp van de volgende query:
 
@@ -110,7 +110,7 @@ Als u een LOB-kolom hebt die groter is dan 32 KB, neemt u contact op met het tec
 
 ### <a name="issues-with-timestamp-columns"></a>Problemen met Time Stamp-kolommen
 
-**Symptoom**
+**Duid**
 
 De time stamp-waarde van Azure Database Migration Service wordt niet gemigreerd. Azure Database Migration Service wordt in plaats daarvan een nieuwe time stamp-waarde in de doel tabel gegenereerd.
 
@@ -120,7 +120,7 @@ Als u Azure Database Migration Service nodig hebt om de exacte tijds tempel waar
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Gegevens migratie fouten bieden geen aanvullende details over de Blade gedetailleerde status van data base
 
-**Symptoom**
+**Duid**
 
 Wanneer u problemen met de migratie ondervinden in de status weergave Details van data bases, is het selecteren van de koppeling **fouten in gegevens migratie** op het bovenste lint mogelijk niet meer specifieke informatie over de migratie fouten.
 
@@ -138,7 +138,7 @@ Voer de volgende stappen uit om specifieke fout gegevens op te halen.
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Geografie gegevens type wordt niet ondersteund in SQLDB online migratie
 
-**Symptoom**
+**Duid**
 
 De migratie mislukt met een fout bericht met de volgende tekst:
 
@@ -150,7 +150,7 @@ Hoewel Azure Database Migration Service het geografie gegevens type voor offline
 
 ### <a name="supported-editions"></a>Ondersteunde versies
 
-**Symptoom**
+**Duid**
 
 De migratie mislukt met een fout bericht met de volgende tekst:
 

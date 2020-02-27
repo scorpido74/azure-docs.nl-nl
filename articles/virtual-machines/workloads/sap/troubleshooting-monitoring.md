@@ -3,22 +3,22 @@ title: Bewaking van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
 description: Bewaak SAP HANA op een Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0aea4dddef65600fe30f36499d4ad2a4f461245
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077941"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617297"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA (grote exemplaren) in azure controleren
 
@@ -27,7 +27,7 @@ SAP HANA op Azure (grote exemplaren) is niet anders dan andere IaaS-implementati
 - CPU
 - Geheugen
 - Netwerk bandbreedte
-- Schijfruimte
+- Schijf ruimte
 
 Met Azure Virtual Machines moet u nagaan of de resource klassen die hierboven worden genoemd, voldoende zijn of uitgeput raken. Hier vindt u meer informatie over elk van de verschillende klassen:
 

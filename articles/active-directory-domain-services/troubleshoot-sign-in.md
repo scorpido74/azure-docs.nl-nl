@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827052"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612741"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met het aanmelden van accounts oplossen met een door Azure AD Domain Services beheerd domein
 
@@ -32,7 +32,7 @@ De meest voorkomende redenen voor een gebruikers account waarmee u zich niet kun
 
 Afhankelijk van de grootte van uw map kan het enige tijd duren voordat gebruikers accounts en referentie-hashes beschikbaar zijn in azure AD DS. Voor grote mappen kan deze eerste eenrichtings synchronisatie vanuit Azure AD enkele uren duren en Maxi maal één dag of twee. Zorg ervoor dat u lang genoeg wacht voordat u opnieuw probeert te authenticeren.
 
-Voor hybride omgevingen die gebruikers Azure AD Connect om on-premises Directory gegevens te synchroniseren met Azure AD, moet u ervoor zorgen dat u de meest recente versie van Azure AD Connect uitvoert en [Azure AD Connect hebt geconfigureerd om een volledige synchronisatie uit te voeren nadat u Azure hebt ingeschakeld AD DS][azure-ad-connect-phs]. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw uitvoeren.
+Voor hybride omgevingen die gebruikers Azure AD Connect om on-premises Directory gegevens te synchroniseren met Azure AD, moet u ervoor zorgen dat u de meest recente versie van Azure AD Connect uitvoert en [Azure AD Connect hebt geconfigureerd om een volledige synchronisatie uit te voeren nadat u Azure AD DS hebt ingeschakeld][azure-ad-connect-phs]. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw uitvoeren.
 
 Als er problemen blijven optreden met accounts die niet zijn gesynchroniseerd via Azure AD Connect, start u de Azure AD Sync-service opnieuw. Op de computer waarop Azure AD Connect is geïnstalleerd, opent u een opdracht prompt venster en voert u de volgende opdrachten uit:
 
@@ -59,7 +59,7 @@ Azure AD DS beheerde domeinen zonder on-premises synchronisatie, alleen accounts
     * [Wijzig het wacht woord voor het account][enable-user-accounts] om de vereiste wacht woord-hashes te genereren en wacht vijf tien minuten voordat u zich opnieuw probeert aan te melden.
     * Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet elk account de stappen opnieuw uitvoeren om het wacht woord te wijzigen en de vereiste wachtwoord hashes te genereren.
 * **Ja, het wacht woord is gewijzigd.**
-    * Meld u aan met de *UPN* -indeling, zoals `driley@contoso.com`, in plaats van de bestands indeling *SAMAccountName* , zoals `CONTOSO\deeriley`.
+    * Meld u aan met de *UPN* -indeling, zoals `driley@aaddscontoso.com`, in plaats van de bestands indeling *SAMAccountName* zoals `AADDSCONTOSO\deeriley`.
     * De *SAMAccountName* kan automatisch worden gegenereerd voor gebruikers waarvan het UPN-voor voegsel langer is dan of gelijk is aan die van een andere gebruiker in het beheerde domein. De *UPN* -indeling is gegarandeerd uniek binnen een Azure AD-Tenant.
 
 ## <a name="the-account-is-locked-out"></a>Het account is vergrendeld

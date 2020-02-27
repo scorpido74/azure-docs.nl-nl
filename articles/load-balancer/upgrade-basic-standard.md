@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776662"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616754"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>Een upgrade uitvoeren voor de open bare Azure-Load Balancer van de Basic SKU naar de standaard-SKU
+# <a name="upgrade-azure-public-load-balancer"></a>Open bare Azure-Load Balancer bijwerken
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU.
 
 Er zijn twee fasen in een upgrade:
@@ -28,8 +28,8 @@ In dit artikel wordt beschreven hoe u de configuratie migreert. Het toevoegen va
 
 Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
-* Hiermee maakt u een standaard open bare SKU Load Balancer in de resource groep en de locatie die u opgeeft.
-* Kopieert de configuraties van de open bare basis-SKU-Load Balancer naadloos naar de nieuwe open bare standaard Load Balancer.
+* Hiermee maakt u een standaard SKU-Load Balancer in de resource groep en de locatie die u opgeeft.
+* Hiermee worden de configuraties van de basis-SKU Load Balancer naadloos gekopieerd naar de zojuist gemaakte Standard Load Balancer.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -70,18 +70,9 @@ Het script uitvoeren:
 
 1. Gebruik `Import-Module Az` om de AZ-modules te importeren.
 
-1. Voer `Get-Help AzureLBUpgrade.ps1` uit om de vereiste para meters te controleren:
+1. Controleer de vereiste para meters:
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   Para meters voor het script:
-   * **oldRgName: [teken reeks]: vereist** – dit is de resource groep voor de bestaande basis Load Balancer u een upgrade wilt uitvoeren. Als u deze teken reeks waarde wilt vinden, gaat u naar Azure Portal, selecteert u de basis Load Balancer bron en klikt u op het **overzicht** voor de Load Balancer. De resource groep bevindt zich op deze pagina.
+   * **oldRgName: [teken reeks]: vereist** – dit is de resource groep voor de bestaande basis Load Balancer u een upgrade wilt uitvoeren. Als u deze teken reeks waarde wilt vinden, gaat u naar Azure Portal, selecteert u de basis Load Balancer bron en klikt u op het **overzicht** van de Load Balancer. De resource groep bevindt zich op deze pagina.
    * **oldLBName: [teken reeks]: vereist** – dit is de naam van de bestaande Basic-Balancer die u wilt bijwerken. 
    * **newrgName: [teken reeks]: vereist** – dit is de resource groep waarin de Standard Load Balancer worden gemaakt. Dit kan een nieuwe resource groep of een bestaande zijn. Als u een bestaande resource groep kiest, moet u er rekening mee houden dat de naam van de Load Balancer uniek moeten zijn binnen de resource groep. 
    * **newlocation: [string]: vereist** : dit is de locatie waar de Standard Load Balancer wordt gemaakt. Het wordt aanbevolen om dezelfde locatie van de gekozen basis Load Balancer over te nemen naar de Standard Load Balancer voor een betere koppeling met andere bestaande resources.
@@ -134,4 +125,4 @@ U kunt een e-mail verzenden naar slbupgradesupport@microsoft.com, een ondersteun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over de standaardversie van Load Balancer](load-balancer-overview.md)
+[Meer informatie over Standard Load Balancer](load-balancer-overview.md)

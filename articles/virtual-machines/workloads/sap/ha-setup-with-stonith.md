@@ -4,7 +4,7 @@ description: Hoge Beschik baarheid instellen voor SAP HANA op Azure (grote insta
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212524"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615086"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hoge Beschik baarheid die in SUSE is ingesteld met behulp van de STONITH
 Dit document bevat gedetailleerde stapsgewijze instructies voor het instellen van de hoge Beschik baarheid op SUSE-besturings systeem met behulp van het STONITH-apparaat.
@@ -130,8 +130,8 @@ In deze sectie worden de stappen beschreven voor het instellen van het cluster S
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+![zypperpatternSAPHANASR-doc. png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 het cluster instellen
 3.2.1 u kunt *HA-cluster-init* opdracht gebruiken of de wizard YaST2 gebruiken om het cluster in te stellen. In dit geval wordt de wizard YaST2 gebruikt. U voert deze stap **alleen uit op het primaire knoop punt**.
@@ -320,7 +320,7 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 de resources valideren
 
 Wanneer u de opdracht *crm_mon*uitvoert, ziet u de twee resources.
-![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![crm_mon_command. png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
 U kunt ook de status zien op het *IP-adres van https://\<knoop punt >: 7630/CIB/Live/State*
 
@@ -393,11 +393,11 @@ Onder afhankelijkheden selecteert u ' Aanbevolen pakketten installeren ' ![YaST-
 
 Bekijk de wijzigingen en klik op OK
 
-![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
+![Yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
 Installatie van pakketten loopt ![YaST-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-Klik op Next
+Klik op Volgende.
 
 ![YaST-installation-report. png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
@@ -413,7 +413,7 @@ zypper -n install libyui-qt
 ```
 ![Zypper-install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
 ![Zypper-install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) YaST2 de grafische weer gave nu moeten kunnen openen, zoals hier wordt weer gegeven.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![YaST2-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Scenario 3: YaST2 biedt geen hoge Beschik baarheid
 Als u de optie hoge Beschik baarheid wilt weer geven in het YaST2-beheer centrum, moet u de extra pakketten installeren.
@@ -433,8 +433,8 @@ Software beheer van YaST2 > > gebruiken
 
 De patronen selecteren
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![YaST-pattern1. png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+![YaST-pattern2. png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 Klik op **accepteren**
 

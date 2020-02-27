@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471343"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614281"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -66,7 +66,7 @@ In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welk
 |    FileStorage    | Europa - west<br /> US - oost    |    Alleen Azure Files    |
 
 <sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
-<sup>2</sup> Azure-schijven voor virtuele machines, met inbegrip van beheerde en onbeheerde schijven, bieden alleen ondersteuning voor LRS. Ze bieden geen ondersteuning voor ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
+<sup>2</sup> opslag accounts die Azure Managed disks voor virtuele machines bevatten, gebruiken altijd LRS. Onbeheerde schijven van Azure moeten ook LRS gebruiken. Het is mogelijk om een opslag account te maken voor Azure unmanaged disks die gebruikmaken van GRS, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de consistentie van de asynchrone geo-replicatie. Geen van de beheerde schijven of niet-Managed disks ondersteunen ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
 
 Voor informatie over welke regio's ZRS ondersteunen, Zie **Services ondersteuning per regio** in [Wat zijn Azure-beschikbaarheidszones?](../../availability-zones/az-overview.md).
 

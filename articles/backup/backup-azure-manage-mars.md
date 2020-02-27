@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497004"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617601"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -172,4 +172,4 @@ Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegev
 ## <a name="next-steps"></a>Volgende stappen
 
 - Raadpleeg de [ondersteunings matrix voor de Mars-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)voor meer informatie over ondersteunde scenario's en beperkingen.
-- Meer informatie over het [Bewaar gedrag van back-upbeleid op aanvraag](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).
+- Meer informatie over het [Bewaar gedrag van back-upbeleid op aanvraag](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior).

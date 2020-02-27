@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120866"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619335"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Snelstartgids: functie vlaggen toevoegen aan een .NET Framework-app
 
@@ -31,11 +31,18 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Selecteer **functie beheer** >  **+ toevoegen** om een functie vlag met de naam `Beta`toe te voegen.
+
+    > [!div class="mx-imgBorder"]
+    > functie vlag ![met de naam bèta](media/add-beta-feature-flag.png) inschakelen
+
+    Houd `label` nu niet gedefinieerd.
 
 ## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
 
@@ -43,7 +50,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Klik op **Maken**.
+1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4,8** of hoger. Klik op **Create**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
@@ -67,13 +74,8 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 1. Werk de `Main` methode bij om verbinding te maken met de app-configuratie, waarbij u de `UseFeatureFlags` optie opgeeft, zodat functie vlaggen worden opgehaald. Vervolgens wordt een bericht weer gegeven als de functie vlag `Beta` is ingeschakeld.
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {
@@ -99,7 +101,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
         }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Stel een omgevings variabele met de naam **Connections Tring** in op de Connection String van de app-configuratie opslag. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441949"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616076"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integratie van Azure Kubernetes Services met Security Center (preview-versie)
 Azure Kubernetes service (AKS) is de beheerde service van micro soft voor het ontwikkelen, implementeren en beheren van toepassingen in containers. 
@@ -45,7 +45,7 @@ Het gebruik van de twee services biedt samen:
     * Onbewerkte beveiligings gebeurtenissen, zoals netwerk gegevens en het maken van processen
     * Het Kubernetes-controle logboek
 
-    Zie [detectie van bedreigingen voor Azure-containers](security-center-alerts-compute.md#azure-containers-) voor meer informatie.
+    Zie [Threat Protection for Azure containers](threat-protection.md#azure-containers) (Engelstalig) voor meer informatie.
 
     Zie voor de lijst met mogelijke waarschuwingen deze secties in de naslag tabel waarschuwingen: [waarschuwingen op AKS-niveau](alerts-reference.md#alerts-akscluster) en [waarschuwingen op hostniveau op container](alerts-reference.md#alerts-containerhost)niveau.  
 

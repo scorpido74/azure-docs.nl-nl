@@ -1,5 +1,5 @@
 ---
-title: Versies van pagina-indeling
+title: Versie van pagina-indeling
 titleSuffix: Azure AD B2C
 description: Versie geschiedenis van de pagina-indeling voor UI-aanpassing in aangepast beleid.
 services: active-directory-b2c
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149504"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620600"
 ---
-# <a name="page-layout-versions"></a>Versies van pagina-indeling
+# <a name="page-layout-versions"></a>Versie van pagina-indeling
 
 Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verbeteringen in hun pagina-elementen. In het volgende wijzigingslog bestand worden de wijzigingen aangegeven die in elke versie zijn geïntroduceerd.
 
@@ -33,7 +33,7 @@ Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verb
 
 - Alle pagina's
   - Toegankelijkheids oplossingen
-  - U kunt nu het kenmerk `data-preload="true"` toevoegen in uw HTML-tags om de laad volgorde voor CSS en Java script te bepalen.
+  - U kunt nu het kenmerk `data-preload="true"` toevoegen [in uw HTML-tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) om de laad volgorde voor CSS en Java script te bepalen.
     - Laad gekoppelde CSS-bestanden op hetzelfde moment als uw HTML-sjabloon zodat er geen Flik kering is tussen het laden van de bestanden.
     - De volg orde bepalen waarin uw `script` Tags worden opgehaald en uitgevoerd voordat de pagina wordt geladen.
   - Het veld e-mail is nu `type=email` en mobiele toetsen borden bieden de juiste suggesties

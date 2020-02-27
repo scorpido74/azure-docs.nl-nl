@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499948"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623961"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -33,7 +33,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-windows"></a>Waarschuwingen voor Windows-computers
 
-[Meer details en opmerkingen](security-center-alerts-iaas.md#windows-)
+[Meer details en opmerkingen](threat-protection.md#windows-machines)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -124,7 +124,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-linux"></a>Waarschuwingen voor Linux-machines
 
-[Meer details en opmerkingen](security-center-alerts-iaas.md#linux-)
+[Meer details en opmerkingen](threat-protection.md#linux-machines)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -213,7 +213,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azureappserv"></a>Waarschuwingen voor Azure App Service
 
-[Meer details en opmerkingen](security-center-alerts-compute.md#azure-app-service-)
+[Meer details en opmerkingen](threat-protection.md#app-services)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -238,7 +238,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-akscluster"></a>Waarschuwingen voor containers-Azure Kubernetes Service-clusters
 
-[Meer details en opmerkingen](security-center-alerts-compute.md#azure-containers-)
+[Meer details en opmerkingen](threat-protection.md#azure-containers)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -253,7 +253,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-containerhost"></a>Waarschuwingen voor containers-hostniveau
 
-[Meer details en opmerkingen](security-center-alerts-compute.md#azure-containers-)
+[Meer details en opmerkingen](threat-protection.md#azure-containers)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -269,7 +269,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-sql-db-and-warehouse"></a>Waarschuwingen voor SQL Database en SQL Data Warehouse
 
-[Meer details en opmerkingen](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[Meer details en opmerkingen](threat-protection.md#data-sql)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -287,7 +287,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azurestorage"></a>Waarschuwingen voor Azure Storage
 
-[Meer details en opmerkingen](security-center-alerts-data-services.md#azure-storage-)
+[Meer details en opmerkingen](threat-protection.md#azure-storage)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -308,7 +308,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azurecosmos"></a>Waarschuwingen voor Azure Cosmos DB (preview-versie)
 
-[Meer details en opmerkingen](security-center-alerts-data-services.md#azure-cosmos-db)
+[Meer details en opmerkingen](threat-protection.md#cosmos-db)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -319,7 +319,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azurenetlayer"></a>Waarschuwingen voor Azure Network Layer
 
-[Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-network-layer)
+[Meer details en opmerkingen](threat-protection.md#network-layer)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -344,7 +344,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azureresourceman"></a>Waarschuwingen voor Azure Resource Manager (preview-versie)
 
-[Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[Meer details en opmerkingen](threat-protection.md#management-layer)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -363,7 +363,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azurekv"></a>Waarschuwingen voor Azure Key Vault (preview-versie)
 
-[Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-keyvault)
+[Meer details en opmerkingen](threat-protection.md#azure-keyvault)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -381,7 +381,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 
 ## <a name="alerts-azureddos"></a>Waarschuwingen voor Azure DDoS Protection
 
-[Meer details en opmerkingen](security-center-alerts-integration.md#azure-ddos)
+[Meer details en opmerkingen](threat-protection.md#azure-ddos)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
@@ -418,6 +418,7 @@ De ondersteunde intenties van de Kill-keten van Security Center zijn gebaseerd o
 ## <a name="next-steps"></a>Volgende stappen
 Zie het volgende voor meer informatie over waarschuwingen:
 
+* [Beveiliging tegen bedreigingen in Azure Security Center](threat-protection.md)
 * [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Beveiligings waarschuwingen en aanbevelingen exporteren (preview-versie)](continuous-export.md)

@@ -1,16 +1,16 @@
 ---
 title: GitHub-acties gebruiken om code-updates te maken in Azure Functions
 description: Leer hoe u GitHub-acties kunt gebruiken om een werk stroom te definiëren voor het bouwen en implementeren van Azure Functions projecten in GitHub.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: aelnably
-ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769146"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649905"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -48,7 +48,7 @@ In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw a
 
 U kunt het publicatie Profiel van uw functie-app downloaden door naar de pagina **overzicht** van uw app te gaan en te klikken op **publicatie profiel ophalen**.
 
-   ![Publicatieprofiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
+   ![Publicatie profiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
 
 Kopieer de inhoud van het bestand.
 
@@ -69,7 +69,7 @@ GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
 Het instellen van de omgeving wordt uitgevoerd met een taalspecifiek installatie actie voor de publicatie.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-node` actie voor het instellen van de omgeving:
 
@@ -84,7 +84,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
         node-version: '10.x'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-python` actie voor het instellen van de omgeving:
 
@@ -99,7 +99,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
         python-version: 3.6
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-dotnet` actie voor het instellen van de omgeving:
 
@@ -114,7 +114,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-java` actie voor het instellen van de omgeving:
 
@@ -138,7 +138,7 @@ Dit is afhankelijk van de taal en voor talen die door Azure Functions worden ond
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app bouwt, die specifiek is voor de taal:
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -153,7 +153,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app
         popd
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -167,7 +167,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -180,7 +180,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

@@ -3,18 +3,18 @@ title: Meerdere exemplaren van een eigenschap definiëren
 description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het maken van een eigenschap in een resource.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b1e31f981f361b4cfbe7e7930f2c70bfce8b8656
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210864"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622867"
 ---
 # <a name="property-iteration-in-azure-resource-manager-templates"></a>Eigenschaps herhaling in Azure Resource Manager sjablonen
 
 In dit artikel wordt beschreven hoe u meer dan één exemplaar van een eigenschap in uw Azure Resource Manager sjabloon maakt. Door het element **copy** toe te voegen aan de sectie eigenschappen van een resource in uw sjabloon, kunt u het aantal items voor een eigenschap tijdens de implementatie dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
 
-U kunt ook kopiëren met [resources](copy-resources.md) en [variabelen](copy-variables.md)gebruiken.
+U kunt ook kopiëren met [resources](copy-resources.md), [variabelen](copy-variables.md)en [uitvoer](copy-outputs.md)gebruiken.
 
 ## <a name="property-iteration"></a>Eigenschaps herhaling
 
@@ -192,7 +192,10 @@ In het volgende voor beeld ziet u een veelvoorkomend scenario voor het maken van
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [zelf studie: meerdere resource-instanties maken met behulp van Resource Manager-sjablonen](template-tutorial-create-multiple-instances.md)als u een zelf studie wilt door lopen.
-* Zie [resource herhaling in azure Resource Manager sjablonen](copy-resources.md) en [variabele herhaling in azure Resource Manager sjablonen](copy-variables.md)voor ander gebruik van het Kopieer element.
+* Zie voor andere toepassingen van het element copy:
+  * [Resource iteratie in Azure Resource Manager sjablonen](copy-resources.md)
+  * [Variabele herhaling in Azure Resource Manager sjablonen](copy-variables.md)
+  * [Uitvoer herhaling in Azure Resource Manager sjablonen](copy-outputs.md)
 * Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor meer informatie over de secties van een sjabloon.
 * Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.
 

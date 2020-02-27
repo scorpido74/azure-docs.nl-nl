@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380865"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620856"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -48,13 +48,30 @@ Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de eerste-factor Aut
 
 In deze sectie wordt uitgelegd hoe u een beleid voor voorwaardelijke toegang configureert om verouderde verificatie te blok keren. 
 
+### <a name="legacy-authentication-protocols"></a>Verouderde verificatie protocollen
+
+De volgende opties worden beschouwd als verouderde verificatie protocollen
+
+- Geverifieerde SMTP: wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.
+- Automatische detectie: wordt door Outlook-en EAS-clients gebruikt om post vakken in Exchange Online te vinden en er verbinding mee te maken.
+- Exchange Online Power shell: wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.
+- Exchange Web Services (EWS): een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.
+- IMAP4: wordt gebruikt door IMAP-e-mailclients.
+- MAPI via HTTP (MAPI/HTTP): wordt gebruikt door Outlook 2010 en hoger.
+- Offline adresboek (OAB): een kopie van de adres lijst verzamelingen die worden gedownload en gebruikt door Outlook.
+- Outlook Anywhere (RPC via HTTP): wordt gebruikt door Outlook 2016 en eerder.
+- Outlook-service: wordt gebruikt door de mail-en agenda-app voor Windows 10.
+- POP3: wordt gebruikt door POP-e-mailclients.
+- Reporting Web Services: wordt gebruikt voor het ophalen van rapport gegevens in Exchange Online.
+- Andere clients-andere protocollen die zijn geïdentificeerd als het gebruik van verouderde verificatie.
+
 ### <a name="identify-legacy-authentication-use"></a>Gebruik van verouderde authenticatie identificeren
 
 Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
 
 1. Navigeer naar het **Azure Portal** > **Azure Active Directory** > **aanmeldingen**.
 1. Voeg de kolom client-app toe als deze niet wordt weer gegeven door te klikken op de **kolommen** > **client-app**.
-1. **Filters toevoegen** > **Client-App** > Selecteer alle opties voor **andere clients** en klik op **Toep assen**.
+1. **Voeg filters toe** > **Client-App** > Selecteer alle verouderde verificatie protocollen en klik op **Toep assen**.
 
 Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt door verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In het veld **client-app** onder het tabblad **basis informatie** wordt aangegeven welk verouderde verificatie protocol is gebruikt.
 
@@ -90,7 +107,7 @@ De veiligheids functie is nood zakelijk omdat het *blok keren van alle gebruiker
 
 U kunt aan deze veiligheids functie voldoen door één gebruiker uit uw beleid uit te sluiten. In het ideale geval moet u enkele [beheerders accounts voor nood gevallen in azure AD](../users-groups-roles/directory-emergency-access.md) definiëren en deze uitsluiten van uw beleid.
 
-## <a name="policy-deployment"></a>Implementatie van beleid
+## <a name="policy-deployment"></a>Beleidsimplementatie
 
 Voordat u uw beleid in productie neemt, moet u het volgende doen:
  

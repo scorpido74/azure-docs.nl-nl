@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185884"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620688"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen oplossen met behulp van het hulp programma What If in voorwaardelijke toegang
 
@@ -98,7 +98,7 @@ U start een evaluatie door te klikken op **What if**. Het evaluatie resultaat ge
 
 Als er een [klassiek beleid](policy-migration.md#classic-policies) bestaat voor de geselecteerde Cloud-apps, wordt er een indicator aan u gepresenteerd. Als u op de indicator klikt, wordt u omgeleid naar de klassieke beleids pagina. Op de pagina klassiek beleid kunt u een klassiek beleid migreren of alleen uitschakelen. U kunt teruggaan naar het evaluatie resultaat door deze pagina te sluiten.
 
-In de lijst met beleids regels die van toepassing zijn op de geselecteerde gebruiker, kunt u ook een lijst met [besturings elementen voor granting](controls.md#grant-controls) en [sessie](controls.md#session-controls) besturings elementen zoeken die aan uw gebruiker moeten voldoen.
+In de lijst met beleids regels die van toepassing zijn op de geselecteerde gebruiker, kunt u ook een lijst met [besturings elementen voor granting](concept-conditional-access-grant.md) en [sessie besturings elementen](concept-conditional-access-session.md) zoeken die aan uw gebruiker moeten voldoen.
 
 In de lijst met beleids regels die niet van toepassing zijn op uw gebruiker, kunt u ook zoeken naar de redenen waarom dit beleid niet van toepassing is. Voor elke vermelde beleids regel vertegenwoordigt de reden de eerste voor waarde waaraan niet is voldaan. Een mogelijke reden voor een beleid dat niet wordt toegepast, is een uitgeschakeld beleid omdat deze niet verder worden geëvalueerd.   
 

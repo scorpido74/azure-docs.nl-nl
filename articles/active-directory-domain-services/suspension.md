@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704279"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612961"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Meer informatie over de statussen en het oplossen van onderbroken domeinen in Azure Active Directory Domain Services
 
@@ -96,7 +96,7 @@ U ziet een [waarschuwing][resolve-alerts] op de pagina Azure AD DS Health in de 
 Voer de volgende stappen uit om de status van een door Azure AD DS beheerd domein met de status *opgeschort* te herstellen:
 
 1. Zoek en selecteer in het Azure Portal **Domain Services**.
-1. Kies uw door Azure AD DS beheerd domein in de lijst, zoals *aadds.contoso.com*, en selecteer vervolgens **status**.
+1. Kies uw door Azure AD DS beheerd domein in de lijst, zoals *aaddscontoso.com*, en selecteer vervolgens **status**.
 1. Selecteer de waarschuwing, zoals *AADDS503* of *AADDS504*, afhankelijk van de oorzaak van de onderbreking.
 1. Kies de oplossings koppeling die in de waarschuwing wordt weer gegeven en volg de stappen om deze op te lossen.
 

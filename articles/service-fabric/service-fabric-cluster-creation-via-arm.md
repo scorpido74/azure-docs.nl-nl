@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-cluster maken
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van Azure Resource Manager.  U kunt een cluster maken met behulp van een standaard sjabloon of uw eigen cluster sjabloon gebruiken.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 935f67c25f4a2aee7d06be7591dbe7576c87806e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349870"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624111"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Een Service Fabric-cluster maken met behulp van Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ In dit artikel gebruikt u de modules Service Fabric RM Power shell of Azure CLI 
 * [Azure CLI-versie 2,0 en hoger][azure-CLI]
 
 U kunt hier de referentie documentatie voor de Service Fabric-modules vinden:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [AZ. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [AZ SF CLI-module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -262,7 +262,7 @@ $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretID -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Implementeer het cluster met behulp van Azure CLI:
@@ -271,11 +271,11 @@ Implementeer het cluster met behulp van Azure CLI:
 declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
-declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+declare $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifier az $secretID  \
-    --template-file $templateFilePath --parameter-file $parametersFilePath 
+    --secret-identifier $secretID  \
+    --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

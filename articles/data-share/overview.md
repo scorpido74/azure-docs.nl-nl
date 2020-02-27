@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964444"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621857"
 ---
 # <a name="what-is-azure-data-share"></a>Wat is Azure Data Share?
 
@@ -23,7 +23,7 @@ Met Azure data share kunnen organisaties eenvoudig en veilig gegevens delen met 
 
 Een gegevens provider kan bepalen hoe hun gegevens worden verwerkt door voor waarden voor de gegevens share op te geven. De gegevensgebruiker moet deze voorwaarden accepteren voordat deze de gegevens kan ontvangen. Gegevensproviders kunnen de frequentie opgeven waarmee hun gegevensgebruikers updates ontvangen. De toegang tot nieuwe updates kan op elk moment door de gegevensprovider worden ingetrokken. 
 
-Azure data share helpt inzichten te verbeteren door het eenvoudig te combi neren van gegevens van derden tot uitgebreide analyses en AI-scenario's. Gebruik eenvoudig de hulp middelen van Azure Analytics waarmee u gegevens kunt voorbereiden, verwerken en analyseren met behulp van Azure data share. 
+Azure data share helpt inzichten te verbeteren door het eenvoudig te combi neren van gegevens van derden tot uitgebreide analyses en AI-scenario's. Gebruik eenvoudig de kracht van Azure Analytics-hulpprogram ma's voor het voorbereiden, verwerken en analyseren van gegevens die worden gedeeld met Azure data share. 
 
 Zowel de gegevens provider als de gegevens verbruiker moeten een Azure-abonnement hebben om gegevens te kunnen delen en ontvangen. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
 
@@ -35,7 +35,7 @@ Azure data share kan ook worden gebruikt om een gegevens Marketplace te maken vo
 
 Een ander gebruiks voorbeeld voor een Azure-gegevens share is het maken van een Data consortium. Een aantal verschillende onderzoek instituten kan bijvoorbeeld gegevens delen met één vertrouwde hoofd tekst. Gegevens worden geanalyseerd, geaggregeerd of verwerkt met behulp van Azure Analytics-hulpprogram ma's en vervolgens gedeeld met de betrokken partijen. 
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 Azure data share biedt momenteel delen op basis van moment opnamen en in-place delen. 
 

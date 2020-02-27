@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526509"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621964"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -50,11 +50,11 @@ Er zijn drie typen regel verzamelingen:
 
 * *Toepassings regels*: Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
 * *Netwerk regels*: Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
-* *NAT-regels*: DNAT-regels configureren om binnenkomende verbindingen toe te staan.
+* *NAT-regels*: DNAT-regels configureren om binnenkomende Internet verbindingen toe te staan.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Ondersteunt Azure Firewall het filteren van inkomend verkeer?
 
-Azure Firewall ondersteunt filters voor inkomend en uitgaand verkeer. Inkomende beveiliging wordt doorgaans gebruikt voor niet-HTTP/S-protocollen. Bijvoorbeeld RDP-, SSH-en FTP-protocollen. Gebruik voor de beste binnenkomende HTTP/S-beveiliging een Web Application Firewall zoals [Azure Web Application firewall op Azure-toepassing gateway](../web-application-firewall/ag/ag-overview.md).
+Azure Firewall ondersteunt filters voor inkomend en uitgaand verkeer. Inkomende beveiliging wordt doorgaans gebruikt voor niet-HTTP/S-protocollen. Bijvoorbeeld RDP-, SSH-en FTP-protocollen. Gebruik een Web Application Firewall zoals [Azure Web Application firewall (WAF)](../web-application-firewall/overview.md)voor de beste beveiliging via HTTP/S.
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welke logboek registratie en analyse services worden ondersteund door de Azure Firewall?
 
@@ -139,7 +139,7 @@ Als voor uw configuratie geforceerde tunneling naar een on-premises netwerk is v
 
 Ja. De firewall, het VNet en het open bare IP-adres moeten zich in dezelfde resource groep bestaan.
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Moet ik ook een bijbehorende netwerk regel configureren om dat verkeer toe te staan bij het configureren van DNAT voor binnenkomend netwerk verkeer?
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Moet ik ook een bijbehorende netwerk regel configureren om dat verkeer toe te staan bij het configureren van DNAT voor binnenkomend Internet netwerk verkeer?
 
 Nee. NAT-regels voegen impliciet een bijbehorende netwerk regel toe om het vertaalde verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer. Zie [Verwerkingslogica voor Azure Firewall-regels](rule-processing.md) voor meer informatie over de verwerkingslogica voor Azure Firewall-regels.
 

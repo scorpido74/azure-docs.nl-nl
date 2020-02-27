@@ -1,31 +1,26 @@
 ---
 title: Belonings Score-persoonlijker
-titleSuffix: Azure Cognitive Services
 description: De belonings score geeft aan hoe goed de aanpassings keuze, RewardActionID, voor de gebruiker heeft geresulteerd. De waarde van de belonings score wordt bepaald door uw bedrijfs logica, op basis van waarnemingen van gebruikers gedrag. Personaler traint de machine learning modellen door de beloningen te evalueren.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490884"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623787"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Belonings scores geven aan dat het succes van personalisatie is geslaagd
 
 De belonings score geeft aan hoe goed de aanpassings keuze, [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response), voor de gebruiker heeft geresulteerd. De waarde van de belonings score wordt bepaald door uw bedrijfs logica, op basis van waarnemingen van gebruikers gedrag.
 
-Personaler traint de machine learning modellen door de beloningen te evalueren. 
+Personaler traint de machine learning modellen door de beloningen te evalueren.
+
+Meer informatie [over](how-to-settings.md#configure-rewards-for-the-feedback-loop) het configureren van de standaard belonings Score in de Azure portal voor uw persoonlijke resource.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Belonings-API gebruiken om belonings score naar persoonlijker te verzenden
 
-Beloningen worden naar persoonlijke voor keuren verzonden met behulp van de [belonings-API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward). Normaal gesp roken is een beloning een getal van 0 tot en met 1. Een negatieve beloning, met de waarde-1, is mogelijk in bepaalde scenario's en mag alleen worden gebruikt als u ervaring hebt met het versterken van Learning (RL). Personaler traint het model om de hoogst mogelijke som van beloningen in de loop van de tijd te krijgen.
+Beloningen worden naar persoonlijke voor keuren verzonden met behulp van de [belonings-API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward). Een beloning is doorgaans een getal van 0 tot 1. Een negatieve beloning, met de waarde-1, is mogelijk in bepaalde scenario's en mag alleen worden gebruikt als u ervaring hebt met het versterken van Learning (RL). Personaler traint het model om de hoogst mogelijke som van beloningen in de loop van de tijd te krijgen.
 
 Er worden beloningen verzonden nadat het gebruikers gedrag is opgetreden. Dit kan later dagen duren. De maximale hoeveelheid tijd Personaler wacht totdat een gebeurtenis wordt beschouwd als een vergoeding of een standaard beloning is geconfigureerd met de [wacht tijd](#reward-wait-time) op het Azure Portal.
 
@@ -47,16 +42,16 @@ Houd rekening met de volgende signalen en gedragingen voor de context van de bel
 
 Er moet een belonings Score worden berekend in uw bedrijfs logica. De score kan worden weer gegeven als:
 
-* Eén getal dat eenmaal is verzonden 
+* Eén getal dat eenmaal is verzonden
 * Een score die onmiddellijk wordt verzonden (zoals 0,8) en een extra Score die later wordt verzonden (meestal 0,2).
 
 ## <a name="default-rewards"></a>Standaard beloningen
 
 Als er binnen de [wacht tijd](#reward-wait-time)van de beloning geen vergoeding wordt ontvangen, wordt de duur sinds de rang gesprek impliciet de **standaard beloning** toegepast op die positie-gebeurtenis.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Het opbouwen van beloningen met meerdere factoren  
+## <a name="building-up-rewards-with-multiple-factors"></a>Het opbouwen van beloningen met meerdere factoren
 
-Voor effectief aanpassen kunt u de belonings Score op basis van meerdere factoren samen stellen. 
+Voor effectief aanpassen kunt u de belonings Score op basis van meerdere factoren samen stellen.
 
 U kunt bijvoorbeeld deze regels Toep assen voor het personaliseren van een lijst met video-inhoud:
 
@@ -93,10 +88,10 @@ Als u belonings scores opneemt, ligt uw definitieve beloning mogelijk buiten het
 * **Houd rekening met onbedoelde gevolgen**: Maak belonings functies die leiden tot de verantwoordelijke uitkomsten met [ethiek en verantwoordelijk gebruik](ethics-responsible-use.md).
 
 * **Incrementele beloningen gebruiken**: het toevoegen van gedeeltelijke voor delen voor kleinere gebruikers gedrag helpt persoonlijker te maken met betere beloningen. Met deze incrementele beloning kan het algoritme ervoor worden geprofiteerd dat het dichter bij de gebruiker komt in het uiteindelijke gewenste gedrag.
-    * Als er een lijst met films wordt weer gegeven, kunt u, als de gebruiker de eerste keer aanwijst voor een tijdje, bepalen dat er een bepaalde gebruikers betrokkenheid heeft plaatsgevonden. Het gedrag kan tellen met een belonings Score van 0,1. 
-    * Als de gebruiker de pagina opent en vervolgens afsluit, kan de belonings score 0,2 zijn. 
+    * Als er een lijst met films wordt weer gegeven, kunt u, als de gebruiker de eerste keer aanwijst voor een tijdje, bepalen dat er een bepaalde gebruikers betrokkenheid heeft plaatsgevonden. Het gedrag kan tellen met een belonings Score van 0,1.
+    * Als de gebruiker de pagina opent en vervolgens afsluit, kan de belonings score 0,2 zijn.
 
-## <a name="reward-wait-time"></a>wacht tijd op beloning
+## <a name="reward-wait-time"></a>Wacht tijd op beloning
 
 Personaler geeft de informatie van een classificatie oproep samen met de beloningen die worden verzonden in belonings gesprekken om het model te trainen. Deze kunnen zich op verschillende tijdstippen voordoen. Personaler wacht op een beperkte tijd, vanaf het moment dat de rang oproep heeft plaatsgevonden, zelfs als de rang oproep is gemaakt als inactieve gebeurtenis en later wordt geactiveerd.
 
@@ -106,12 +101,12 @@ Als de **wacht tijd** voor de beloning is verlopen en er geen belonings informat
 
 Volg deze aanbevelingen voor betere resultaten.
 
-* Stel de berekenings tijd even lang zo kort als mogelijk, terwijl u voldoende tijd hebt om gebruikers feedback te krijgen. 
+* Stel de berekenings tijd even lang zo kort als mogelijk, terwijl u voldoende tijd hebt om gebruikers feedback te krijgen.
 
 * Kies niet een duur die korter is dan de tijd die nodig is om feedback te krijgen. Als er bijvoorbeeld een aantal van uw voor delen beschikbaar is nadat een gebruiker 1 minuut van een video heeft bekeken, moet het experiment ten minste dubbele waarde zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Leer versterking](concepts-reinforcement-learning.md) 
+* [Leer versterking](concepts-reinforcement-learning.md)
 * [Probeer de classificatie-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [Probeer de belonings-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

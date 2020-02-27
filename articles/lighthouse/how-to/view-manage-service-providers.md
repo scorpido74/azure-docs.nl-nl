@@ -1,18 +1,18 @@
 ---
 title: Serviceproviders weergeven en beheren
 description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046122"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649735"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
-Klanten kunnen de pagina **service providers** in het [Azure Portal](https://portal.azure.com) gebruiken om informatie over service providers en service providers weer te geven, specifieke resources te delegeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md)en een winkel te bieden voor extra service providers. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+Klanten kunnen de pagina **service providers** in het [Azure Portal](https://portal.azure.com) gebruiken om informatie over service providers en service providers te bekijken, specifieke resources te delegeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md)en naar nieuwe aanbiedingen voor service providers te kijken. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
 Om toegang te krijgen tot de pagina **service providers** in de Azure Portal, kan de klant **alle services**selecteren en vervolgens zoeken naar **service providers** en selecteren. Deze kunnen ook worden gevonden door ' service providers ' in te voeren in het zoekvak boven aan de Azure Portal.
 
@@ -23,7 +23,7 @@ Houd er wel op dat op de pagina **service providers** alleen informatie wordt we
 
 ## <a name="view-service-provider-details"></a>Details van service provider weer geven
 
-Als u informatie wilt weer geven over de service provider (s) waarmee een klant werkt, kunt u de **provider aanbiedingen** selecteren aan de linkerkant van de pagina **service providers** .
+Om informatie over service providers weer te geven, kan de klant **provider aanbiedingen** selecteren aan de linkerkant van de pagina **service providers** .
 
 Voor elke service provider-aanbieding ziet de klant de naam van de service provider en de bijbehorende aanbieding, samen met de naam die de klant tijdens het voorbereidings proces heeft ingevoerd.
 
@@ -59,12 +59,20 @@ Nadat u de wijzigingen hebt bekeken, kan de klant ervoor kiezen om bij te werken
 
 Delegaties vertegenwoordigen de roltoewijzingen die machtigingen verlenen aan de service provider voor de resources die een klant heeft gedelegeerd. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **service providers** .
 
-Met filters boven aan de pagina kunt u uw delegatie gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
+Met filters boven aan de pagina kunt u uw delegatie gegevens sorteren en groeperen. U kunt ook filteren op specifieke klanten, aanbiedingen of tref woorden.
 
 > [!NOTE]
 > Klanten krijgen deze roltoewijzingen niet te zien of gebruikers van de Tenant van de service provider die deze rollen hebben gekregen bij het [weer geven van roltoewijzings gegevens voor het overgedragen bereik in de Azure Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) of via api's.
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="audit-delegations-in-your-environment"></a>Audit overdrachten in uw omgeving
 
+Klanten willen mogelijk inzicht krijgen in de abonnementen en/of resource groepen die zijn gedelegeerd aan service providers voor het beheer van [gedelegeerde resources van Azure](../concepts/azure-delegated-resource-management.md). Dit is met name handig voor klanten met een groot aantal abonnementen of met veel gebruikers die beheer taken uitvoeren.
+
+We bieden een [Azure Policy ingebouwde beleids definitie](../../governance/policy/samples/built-in-policies.md#lighthouse) voor het controleren van de overdracht van scopes naar een beheer Tenant. U kunt dit beleid toewijzen aan een beheer groep die alle abonnementen bevat die u wilt controleren. Wanneer u controleert op naleving van dit beleid, worden alle gedelegeerde abonnementen en/of resource groepen (binnen de beheer groep waaraan het beleid is toegewezen) weer gegeven in een niet-compatibele status. U kunt vervolgens de resultaten bekijken en controleren of er geen onverwachte delegaties zijn.
+
+Zie [Quick Start: een beleids toewijzing maken](../../governance/policy/assign-policy-portal.md)voor meer informatie over het toewijzen van een beleid en het weer geven van de resultaten van de nalevings status.
+
+## <a name="next-steps"></a>Volgende stappen
+ 
 - Meer informatie over [Azure Lighthouse](../overview.md).
 - Meer informatie over hoe service providers [klanten kunnen bekijken en beheren](view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.

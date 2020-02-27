@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3a83c496191baaebc30f6fe0aedda790827644cb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605741"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617576"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -32,7 +32,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Registreren bij een kluis | Er zijn ongeldige kluisreferenties opgegeven. Het bestand is beschadigd of heeft niet de meest recente referenties die zijn gekoppeld aan de herstel service. | Aanbevolen actie: <br> <ul><li> Down load het meest recente referentie bestand van de kluis en probeer het opnieuw. <br>OF</li> <li> Als de vorige actie niet werkt, kunt u de referenties downloaden naar een andere lokale map of een nieuwe kluis maken. <br>OF</li> <li> Probeer de datum-en tijd instellingen bij te werken zoals beschreven in [dit blog](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/). <br>OF</li> <li> Controleer of c:\Windows\Temp meer dan 65000 bestanden heeft. Verplaats verouderde bestanden naar een andere locatie of verwijder de items in de map Temp. <br>OF</li> <li> Controleer de status van certificaten. <br> a. Open **computer certificaten beheren** (in het configuratie scherm). <br> b. Vouw het **persoonlijke** knoop punt en de onderliggende knooppunt **certificaten**uit.<br> c.  Verwijder het certificaat **Windows Azure-Hulpprogram ma's**. <br> d. Voer de registratie opnieuw uit op de Azure Backup-client. <br> OF </li> <li> Controleer of er groeps beleid aanwezig is. </li></ul> |
+| Registreren bij een kluis | Er zijn ongeldige kluisreferenties opgegeven. Het bestand is beschadigd of heeft niet de meest recente referenties die zijn gekoppeld aan de herstel service. | Aanbevolen actie: <br> <ul><li> Down load het meest recente referentie bestand van de kluis en probeer het opnieuw. <br>OF</li> <li> Als de vorige actie niet werkt, kunt u de referenties downloaden naar een andere lokale map of een nieuwe kluis maken. <br>OF</li> <li> Probeer de datum-en tijd instellingen bij te werken zoals beschreven in [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided). <br>OF</li> <li> Controleer of c:\Windows\Temp meer dan 65000 bestanden heeft. Verplaats verouderde bestanden naar een andere locatie of verwijder de items in de map Temp. <br>OF</li> <li> Controleer de status van certificaten. <br> a. Open **computer certificaten beheren** (in het configuratie scherm). <br> b. Vouw het **persoonlijke** knoop punt en de onderliggende knooppunt **certificaten**uit.<br> c.  Verwijder het certificaat **Windows Azure-Hulpprogram ma's**. <br> d. Voer de registratie opnieuw uit op de Azure Backup-client. <br> OF </li> <li> Controleer of er groeps beleid aanwezig is. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>De replica is inconsistent
 
@@ -62,7 +62,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Agent (s) pushen naar beveiligde servers | De agent bewerking is mislukt vanwege een communicatie fout met de DPM Agent Coordinator-service op \<ServerName >. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <ul><li> Als u een computer koppelt van een niet-vertrouwd domein, volgt u [deze stappen](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757801(v=sc.12)). <br> OF </li><li> Als u een computer koppelt van een vertrouwd domein, kunt u het probleem oplossen met behulp van de stappen die worden beschreven in [deze blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>OF</li><li> Probeer anti virus uit te scha kelen als een stap voor het oplossen van problemen. Als het probleem is opgelost, wijzigt u de antivirus instellingen, zoals wordt voorgesteld in [dit artikel](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
+| Agent (s) pushen naar beveiligde servers | De agent bewerking is mislukt vanwege een communicatie fout met de DPM Agent Coordinator-service op \<ServerName >. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <ul><li> Als u een computer koppelt van een niet-vertrouwd domein, volgt u [deze stappen](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> OF </li><li> Als u een computer koppelt van een vertrouwd domein, kunt u het probleem oplossen met behulp van de stappen die worden beschreven in [deze blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>OF</li><li> Probeer anti virus uit te scha kelen als een stap voor het oplossen van problemen. Als het probleem is opgelost, wijzigt u de antivirus instellingen, zoals wordt voorgesteld in [dit artikel](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Setup kan de meta gegevens van het REGI ster niet bijwerken
 
@@ -75,7 +75,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Agent (s) pushen naar beveiligde servers | De referenties die voor de server zijn opgegeven, zijn ongeldig. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <br> Probeer de beveiligings agent hand matig te installeren op de productie server zoals opgegeven in [dit artikel](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)).|
+| Agent (s) pushen naar beveiligde servers | De referenties die voor de server zijn opgegeven, zijn ongeldig. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <br> Probeer de beveiligings agent hand matig te installeren op de productie server zoals opgegeven in [dit artikel](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).|
 | Azure Backup Agent kan geen verbinding maken met de Azure Backup-Service (ID: 100050) | De Azure Backup-Agent kan geen verbinding maken met de Azure Backup-service. | **Als de aanbevolen actie die wordt weer gegeven in het product niet werkt, voert u de volgende stappen uit**: <br>1. Voer de volgende opdracht uit vanaf een prompt met verhoogde bevoegdheid: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Hiermee opent u het venster Internet Explorer. <br/> 2. Ga naar **Hulpprogram ma's** > **Internet opties** > **verbindingen** > **LAN-instellingen**. <br/> 3. Wijzig de instellingen voor het gebruik van een proxy server. Geef vervolgens de proxyserver gegevens op.<br/> 4. als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall instellingen op de computer of de proxy deze [url's](backup-configure-vault.md#verify-internet-access) en dit [IP-adres](backup-configure-vault.md#verify-internet-access)toestaan.|
 | Installatie van Azure Backup-agent mislukt | De installatie van Microsoft Azure Recovery Services is mislukt. Alle wijzigingen die zijn aangebracht in het systeem door de Microsoft Azure Recovery Services-installatie zijn teruggedraaid. (ID: 4024) | Installeer de Azure-agent hand matig.
 

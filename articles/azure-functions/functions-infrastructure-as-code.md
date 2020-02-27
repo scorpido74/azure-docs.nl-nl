@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963951"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621054"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -26,12 +26,12 @@ Zie voor voorbeeld sjablonen:
 
 Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 
-| Bron                                                                           | Vereiste | Naslag informatie en eigenschappen                                                         |   |
+| Resource                                                                           | Vereiste | Naslag informatie en eigenschappen                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Een functie-app                                                                     | Verplicht    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Een [Azure Storage](../storage/index.yml) -account                                   | Verplicht    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
-| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Een functie-app                                                                     | Vereist    | [Micro soft. web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| Een [Azure Storage](../storage/index.yml) -account                                   | Vereist    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Micro soft. Insights/onderdelen](/azure/templates/microsoft.insights/components)         |   |
+| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> Een hosting plan is alleen vereist wanneer u uw functie-app wilt uitvoeren in een [Premium-abonnement](./functions-premium-plan.md) (in Preview) of op een [app service plan](../app-service/overview-hosting-plans.md).
 
@@ -39,7 +39,7 @@ Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 > Hoewel dit niet vereist is, wordt het ten zeerste aanbevolen om Application Insights voor uw app te configureren.
 
 <a name="storage"></a>
-### <a name="storage-account"></a>Opslagaccount
+### <a name="storage-account"></a>Storage-account
 
 Een Azure-opslag account is vereist voor een functie-app. U hebt een algemeen doel account nodig dat blobs, tabellen, wacht rijen en bestanden ondersteunt. Zie [Azure functions vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.
 
@@ -309,17 +309,25 @@ Het Premium-abonnement biedt dezelfde schaal als het verbruiks abonnement, maar 
 
 ### <a name="create-a-premium-plan"></a>Een Premium-abonnement maken
 
-Een Premium-abonnement is een speciaal type resource ' server farm '. U kunt dit opgeven met behulp van `EP1`, `EP2`of `EP3` voor de waarde van de eigenschap `sku`.
+Een Premium-abonnement is een speciaal type resource ' server farm '. U kunt dit opgeven met behulp van `EP1`, `EP2`of `EP3` voor de waarde van de eigenschap `Name` in het [object beschrijving](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)van `sku`.
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```
@@ -467,7 +475,7 @@ Linux-apps moeten ook een `linuxFxVersion` eigenschap bevatten onder `siteConfig
 | Stack            | Voorbeeldwaarde                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
+| Javascript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
 | .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
 
 ```json
@@ -640,9 +648,9 @@ Een functie-app heeft veel onderliggende resources die u kunt gebruiken in uw im
 U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
-* [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
-* [REST API](../azure-resource-manager/templates/deploy-rest.md)
+* [REST-API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Knop implementeren naar Azure
 

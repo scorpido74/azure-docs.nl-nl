@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586424"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617619"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -56,7 +56,7 @@ Als u de basis server niet wilt uitvoeren in azure, kunt u de-server uitvoeren o
 | Windows Server 2019 |64 bits |Standard, Datacenter, Essentials |
 | Windows Server 2016 en de nieuwste SPs |64 bits |Standard, Datacenter, Essentials  |
 
-U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en ontdubbeling](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
+U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Meer informatie over hoe [DPM en ontdubbeling](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) samen werken wanneer ze worden geïmplementeerd in virtuele Hyper-V-machines.
 
 > [!NOTE]
 > Azure Backup Server is ontworpen om te worden uitgevoerd op een toegewezen server met één doel. U kunt Azure Backup Server niet installeren op:
@@ -359,7 +359,7 @@ U kunt ook verwijzen naar [Azure backup gerelateerde Veelgestelde vragen](backup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier vindt u gedetailleerde informatie over [het voorbereiden van uw omgeving voor dpm](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12)). Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) gebruiken voor het uitvoeren van verschillende bewerkingen.
+Hier vindt u gedetailleerde informatie over [het voorbereiden van uw omgeving voor dpm](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019). Het bevat ook informatie over de ondersteunde configuraties waarvoor Azure Backup Server kunnen worden geïmplementeerd en gebruikt. U kunt een reeks [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) gebruiken voor het uitvoeren van verschillende bewerkingen.
 
 U kunt deze artikelen gebruiken om een beter inzicht te krijgen in de beveiliging van werk belasting met behulp van Microsoft Azure Backup-Server.
 

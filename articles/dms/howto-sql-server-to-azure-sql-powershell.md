@@ -3,21 +3,21 @@ title: 'Power shell: SQL Server migreren naar SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het migreren van on-premises SQL Server naar Azure SQL Database met behulp van Azure PowerShell met de Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f67572adc3b40115b2c6d4618718867eacf8c95e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746296"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650687"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>SQL Server on-premises migreren naar Azure SQL Database met behulp van Azure PowerShell
 
@@ -70,7 +70,7 @@ U kunt een nieuw exemplaar van Azure Database Migration Service maken met behulp
 * *Naam van de Azure-resource groep*. U kunt de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) gebruiken om een Azure-resource groep te maken zoals eerder wordt weer gegeven en de naam opgeven als een para meter.
 * *Service naam*. Teken reeks die overeenkomt met de gewenste unieke service naam voor Azure Database Migration Service 
 * *Locatie*. Hiermee geeft u de locatie van de service. Een Azure Data Center-locatie opgeven, zoals vs-West of Zuidoost-Azië
-* *Sku*. Deze para meter komt overeen met de naam van een DMS-SKU. De momenteel ondersteunde SKU-naam is *GeneralPurpose_4vCores*.
+* *SKU*. Deze para meter komt overeen met de naam van een DMS-SKU. De momenteel ondersteunde SKU-naam is *GeneralPurpose_4vCores*.
 * *Id van het virtuele subnet*. U kunt de cmdlet [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) gebruiken om een subnet te maken. 
 
 In het volgende voor beeld wordt een service gemaakt met de naam *MyDMS* in de resource groep *MyDMSResourceGroup* die zich bevindt in de regio *VS-Oost* met behulp van een virtueel netwerk met de naam *MyVNET* en subnet genaamd *MySubnet*.
@@ -95,7 +95,7 @@ Nadat u een Azure Database Migration Service-exemplaar hebt gemaakt, moet u een 
 
 U kunt een object data base-verbindings gegevens maken met behulp van de cmdlet `New-AzDmsConnInfo`. Deze cmdlet verwacht de volgende para meters:
 
-* *ServerType*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
+* *Server type*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
 * *Gegevens bron*. De naam of het IP-adres van een SQL Server exemplaar of Azure SQL database.
 * *AuthType*. Het verificatie type voor de verbinding. Dit kan SqlAuthentication of WindowsAuthentication zijn.
 * Met de para meter *TrustServerCertificate* wordt een waarde ingesteld die aangeeft of het kanaal is versleuteld tijdens het passeren van de verificatie van de certificaat keten om de vertrouwens relatie te valideren. De waarde kan True of False zijn.

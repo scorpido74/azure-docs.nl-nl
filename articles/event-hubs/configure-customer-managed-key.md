@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903285"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621994"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -107,7 +107,7 @@ Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. 
 | resourceId | Resource-ID Azure Resource Manager |
 | keyVault | Volledige naam van de sleutel kluis. |
 | sleutel | De naam van de sleutel die wordt gebruikt voor het versleutelen van de Event Hubs naam ruimte. |
-| versie | De versie van de sleutel die wordt gebruikt. |
+| version | De versie van de sleutel die wordt gebruikt. |
 | operation | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
 | code | De code die aan de bewerking is gekoppeld. Voor beeld: fout code, 404 betekent dat de sleutel niet is gevonden. |
 | message | Elk fout bericht dat is gekoppeld aan de bewerking |
@@ -144,12 +144,268 @@ Hier volgt een voor beeld van het logboek voor een door de klant beheerde sleute
 }
 ```
 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Resource Manager-sjabloon gebruiken om versleuteling in te scha kelen
+In deze sectie wordt beschreven hoe u de volgende taken kunt uitvoeren met behulp van **Azure Resource Manager sjablonen**. 
+
+1. Maak een **Event hubs naam ruimte** met een beheerde service-identiteit.
+2. Maak een **sleutel kluis** en verleen de service-identiteit toegang tot de sleutel kluis. 
+3. Werk de Event Hubs naam ruimte bij met de sleutel kluis gegevens (sleutel/waarde). 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Een Event Hubs cluster en een naam ruimte maken met een beheerde service-identiteit
+In deze sectie wordt beschreven hoe u een Azure Event Hubs-naam ruimte met een beheerde service-identiteit maakt met behulp van een Azure Resource Manager sjabloon en Power shell. 
+
+1. Maak een Azure Resource Manager sjabloon voor het maken van een Event Hubs naam ruimte met een beheerde service-identiteit. Geef het bestand de naam: **CreateEventHubClusterAndNamespace. json**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Maak een sjabloon parameter bestand met de naam: **CreateEventHubClusterAndNamespaceParams. json**. 
+
+    > [!NOTE]
+    > Vervang de volgende waarden: 
+    > - `<EventHubsClusterName>`-naam van uw Event Hubs cluster    
+    > - `<EventHubsNamespaceName>`-naam van uw Event Hubs naam ruimte
+    > - `<Location>` locatie van uw Event Hubs naam ruimte
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. Voer de volgende Power shell-opdracht uit om de sjabloon te implementeren om een Event Hubs naam ruimte te maken. Vervolgens haalt u de ID van de Event Hubs naam ruimte op om deze later te gebruiken. Vervang `{MyRG}` door de naam van de resource groep voordat u de opdracht uitvoert.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Identiteit van Event Hubs naam ruimte verlenen toegang tot de sleutel kluis
+
+1. Voer de volgende opdracht uit om een sleutel kluis te maken met **opschoon beveiliging** en **zacht verwijderen** ingeschakeld. 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    OF    
+    
+    Voer de volgende opdracht uit om een **bestaande sleutel kluis**bij te werken. Geef waarden op voor de naam van de resource groep en de sleutel kluis voordat u de opdracht uitvoert. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Stel het toegangs beleid voor de sleutel kluis zo in dat de beheerde identiteit van de Event Hubs naam ruimte toegang kan krijgen tot de sleutel waarde in de sleutel kluis. Gebruik de ID van de Event Hubs naam ruimte uit de vorige sectie. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Gegevens in Event Hubs naam ruimte versleutelen met door de klant beheerde sleutel van de sleutel kluis
+U hebt de volgende stappen tot nu toe uitgevoerd: 
+
+1. Er is een Premium-naam ruimte met een beheerde identiteit gemaakt.
+2. Maak een sleutel kluis en verleend de beheerde identiteit toegang tot de sleutel kluis. 
+
+In deze stap werkt u de Event Hubs naam ruimte bij met sleutel kluis gegevens. 
+
+1. Maak een JSON-bestand met de naam **CreateEventHubClusterAndNamespace. json** met de volgende inhoud: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Maak een sjabloon parameter bestand: **UpdateEventHubClusterAndNamespaceParams. json**. 
+
+    > [!NOTE]
+    > Vervang de volgende waarden: 
+    > - `<EventHubsClusterName>`-naam van uw Event Hubs cluster.        
+    > - `<EventHubsNamespaceName>`-naam van uw Event Hubs naam ruimte
+    > - `<Location>` locatie van uw Event Hubs naam ruimte
+    > - `<KeyVaultName>`-naam van uw sleutel kluis
+    > - `<KeyName>`-de naam van de sleutel in de sleutel kluis
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Voer de volgende Power shell-opdracht uit om de Resource Manager-sjabloon te implementeren. Vervang `{MyRG}` door de naam van uw resource groep voordat u de opdracht uitvoert. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
+
 ## <a name="troubleshoot"></a>Problemen oplossen
 Schakel als best practice altijd Logboeken in, zoals wordt weer gegeven in de vorige sectie. Het helpt bij het volgen van de activiteiten wanneer BYOK-versleuteling is ingeschakeld. Het helpt ook om het probleem op te lossen.
 
 Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleuteling is ingeschakeld.
 
-| Actie | Foutcode | Resulterende status van gegevens |
+| Bewerking | Foutcode | Resulterende status van gegevens |
 | ------ | ---------- | ----------------------- | 
 | De machtiging voor het verpakken/uitpakken van een sleutel kluis verwijderen | 403 |    Niet toegankelijk |
 | Het lidmaatschap van AAD-rollen verwijderen uit een AAD-principal die de machtiging voor terugloop/uitpakken heeft gekregen | 403 |  Niet toegankelijk |

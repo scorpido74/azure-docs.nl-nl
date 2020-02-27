@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705680"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619881"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Veelgestelde vragen over Video Indexer
 
@@ -59,7 +59,7 @@ Nee, Video Indexer biedt de integratie van meerdere machine learning modellen in
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Welke media-indelingen ondersteunt Video Indexer?
 
-Video Indexer biedt ondersteuning voor de meeste algemene media-indelingen. Raadpleeg de lijst met [Azure Media Encoder standaard indelingen](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) voor meer informatie.
+Video Indexer ondersteunt de meeste gang bare media-indelingen. Raadpleeg de lijst met [Azure Media Encoder standaard indelingen](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) voor meer informatie.
 
 ### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Hoe kan ik een medium uploaden naar Video Indexer?
 
@@ -76,6 +76,14 @@ Ja, u kunt Video Indexer integreren in serverloze technologieën zoals Logic App
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>In welke Azure-regio's is video indexer beschikbaar?
 
 Op de pagina [regio's](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) kunt u zien welke Azure-regio's video indexer beschikbaar zijn.
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Kan ik Video Indexer modellen voor mijn specifieke gebruiks Case aanpassen? 
+
+Ja. In Video Indexer kunt u enkele van de beschik bare modellen aanpassen zodat deze beter aansluiten bij uw behoeften. 
+
+Ons persoons model ondersteunt bijvoorbeeld out-of-the-box 1.000.000-gezichten van beroemdheden-herkenning, maar u kunt deze ook trainen om andere gezichten te herkennen die zich niet in die data base bevinden. 
+
+Zie artikelen over het aanpassen van [person](customize-person-model-overview.md), [Brands](customize-brands-model-overview.md)en [taal](customize-language-model-overview.md) modellen voor meer informatie. 
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Wat is de SLA voor Video Indexer?
 
@@ -119,6 +127,21 @@ Video Indexer valt onder de [privacyverklaring van micro soft](https://privacy.m
 
 Video Indexer heeft momenteel de SOC-certificering. Raadpleeg het [vertrouwens centrum van micro soft](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)om de certificering van video indexer te controleren.
 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Wat is het verschil tussen privé-en open bare Video's? 
+
+Wanneer Video's naar Video Indexer worden geüpload, kunt u kiezen uit twee privacy-instellingen: privé en openbaar. Open bare Video's zijn toegankelijk voor iedereen, waaronder anonieme en niet-geïdentificeerde gebruikers. Persoonlijke items zijn alleen beperkt tot de account leden. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Ik heb geprobeerd een video als openbaar te uploaden en deze is gemarkeerd voor ongepaste of aanstootgevende inhoud. wat betekent dit? 
+
+Wanneer u een video uploadt naar Video Indexer, wordt een automatische inhouds analyse uitgevoerd door de algoritmen en modellen om ervoor te zorgen dat er geen ongeschikte inhoud openbaar wordt weer gegeven. Als een video zo verdacht is dat deze expliciete inhoud bevat, is het niet mogelijk om deze als openbaar in te stellen. De account leden kunnen echter nog steeds toegang krijgen tot het bestand als een persoonlijke video (Bekijk het, down load de inzichten en geëxtraheerde artefacten en voer andere bewerkingen uit die beschikbaar zijn voor account leden).   
+
+Als u de video voor open bare toegang wilt instellen, kunt u het volgende doen: 
+
+* Bouw uw eigen interface-laag (zoals app of website) en gebruik deze om te communiceren met de Video Indexer-service. Op die manier blijft de video privé in onze portal en kunnen uw gebruikers via uw interface communiceren. U kunt bijvoorbeeld nog steeds inzichten krijgen of de video weer geven in uw eigen interface. 
+* Vraag een menselijke beoordeling van de inhoud aan, wat zou leiden tot het verwijderen van de beperking, ervan uitgaande dat de inhoud niet expliciet is. 
+
+    Deze optie kan worden bekeken als de Video Indexer website rechtstreeks door uw gebruikers wordt gebruikt als de interface laag en voor open bare (niet-geverifieerde) weer gave. 
+
 ## <a name="api-questions"></a>API-vragen
 
 ### <a name="what-apis-does-video-indexer-offer"></a>Welke Api's biedt Video Indexer?
@@ -161,7 +184,7 @@ Video Indexer maakt gebruik van een eenvoudig prijs model voor betalen per gebru
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Wanneer ben ik gefactureerd voor het gebruik van Video Indexer?
 
-Wanneer u een video opstuurt om deze te laten indexeren, geeft u aan dat de video, de audio of beide moeten worden geanalyseerd. Op basis hiervan wordt bepaald voor welke SKU's kosten in rekening worden gebracht. Als er tijdens de verwerking een kritieke fout optreedt, wordt er als antwoord een foutcode geretourneerd. In een dergelijk geval worden er geen kosten in rekening gebracht.  Kritieke fouten kunnen worden veroorzaakt door een bug in onze code of een kritiek probleem met een interne afhankelijkheid van de service. Bij fouten zoals onjuiste verificatie of de onjuiste extractie van inzichten, wordt er gewoon een antwoord geretourneerd; deze fouten zijn niet kritiek. Als er een geldig antwoord wordt geretourneerd (geen foutcode), worden er kosten in rekening gebracht.
+Bij het verzenden van een video die moet worden geïndexeerd, definieert de gebruiker de indexering voor video analyse, analyse van audio of beide. Hiermee wordt bepaald welke Sku's er in rekening worden gebracht. Als er een fout optreedt tijdens het verwerken van een kritiek niveau, wordt een fout code geretourneerd als antwoord. In zo'n geval vindt er geen facturering plaats.  Een kritieke fout kan worden veroorzaakt door een bug in onze code of een kritieke fout in een interne afhankelijkheid van de service. Fouten zoals een onjuiste identificatie of inzichtelijke extractie worden niet als kritiek beschouwd en er wordt een antwoord geretourneerd. In alle gevallen waarin een geldig antwoord (niet-fout code) wordt geretourneerd, wordt de facturering uitgevoerd.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Biedt Video Indexer een gratis proef versie?
 

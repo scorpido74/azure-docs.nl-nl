@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846210"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622724"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -43,7 +43,7 @@ De __actie__ die wordt weer gegeven voor de gebruiker, wordt gekozen met machine
 
 Enkele voorbeeld scenario's zijn:
 
-|Inhouds type|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
+|Type inhoud|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
 |--|--|--|--|
 |Nieuws lijst|a. `The president...` (National, politiek, [tekst])<br>b. `Premier League ...` (globaal, sport, [tekst, afbeelding, video])<br> c. `Hurricane in the ...` (regionaal, weer, [tekst, afbeelding]|Nieuws van apparaten lezen<br>Maand of seizoen<br>|een `The president...`|
 |Lijst met films|1. `Star Wars` (1977, [actie, Adventure, fictief], George Lucas)<br>2. `Hoop Dreams` (1994, [documentaire, sport], Stefan Jeroen<br>3. `Casablanca` (1942, [Romaans, drama, War], Michael Curtiz)|De film van het apparaat wordt bekeken<br>scherm grootte<br>Type gebruiker<br>|3. `Casablanca`|
@@ -63,7 +63,7 @@ De **belonings** - [API](https://westus2.dev.cognitive.microsoft.com/docs/servic
 
 Persoonlijker gebruiken wanneer inhoud:
 
-* Heeft een beperkte set items (Maxi maal ~ 50) waaruit kan worden geselecteerd. Als u een grotere lijst hebt, [gebruikt u een aanbevelings engine](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines) om de lijst omlaag te brengen tot 50 items.
+* Heeft een beperkte set items (Maxi maal ~ 50) waaruit kan worden geselecteerd. Als u een grotere lijst hebt, [gebruikt u een aanbevelings engine](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) om de lijst omlaag te brengen tot 50 items.
 * Bevat informatie over de inhoud die u wilt geclassificeerd: _acties met functies_ en _context functies_.
 * Heeft ten minste ongeveer 1 KB/dag aan inhoud gerelateerde gebeurtenissen die persoonlijk kunnen worden toegepast. Als het vereiste minimum verkeer niet door Personaler wordt ontvangen, neemt de service meer tijd in beslag om het afzonderlijke beste inhouds item te bepalen.
 

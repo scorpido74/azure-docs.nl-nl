@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720497"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613979"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD-toepassingsproxy implementeren voor beveiligde toegang tot interne toepassingen in een Azure AD Domain Services beheerd domein
 
@@ -74,7 +74,7 @@ Wanneer een virtuele machine gereed is om te worden gebruikt als Azure AD-toepas
         > [!NOTE]
         > Het globale beheerders account dat wordt gebruikt voor het registreren van de connector, moet behoren tot dezelfde map als waarin u de Application proxy-service inschakelt.
         >
-        > Als het Azure AD-domein bijvoorbeeld *contoso.com*is, moet de globale beheerder worden `admin@contoso.com` of een andere geldige alias in dat domein.
+        > Als het Azure AD-domein bijvoorbeeld *aaddscontoso.com*is, moet de globale beheerder worden `admin@aaddscontoso.com` of een andere geldige alias in dat domein.
 
    * Als verbeterde beveiliging van Internet Explorer is ingeschakeld voor de virtuele machine waarop u de connector installeert, wordt het registratie scherm mogelijk geblokkeerd. Als u toegang wilt toestaan, volgt u de instructies in het fout bericht of schakelt u de verbeterde beveiliging van Internet Explorer uit tijdens het installatie proces.
    * Zie [problemen met toepassings proxy oplossen](../active-directory/manage-apps/application-proxy-troubleshoot.md)als de registratie van de connector mislukt.
@@ -99,16 +99,16 @@ Zie [Configure Kerberos-beperkte delegering (KCD) in azure Active Directory Doma
 
 Gebruik [Get-ADComputer][Get-ADComputer] om de instellingen op te halen voor de computer waarop de Azure AD-toepassingsproxy-connector is geïnstalleerd. Voer de volgende cmdlets uit vanaf de virtuele machine voor het beheer van het domein en u bent aangemeld als gebruikers account dat lid is van de groep *Azure AD DC-Administrators* .
 
-In het volgende voor beeld wordt informatie opgehaald over het computer account met de naam *appproxy.contoso.com*. Geef uw eigen computer naam op voor de Azure AD-toepassingsproxy-VM die u in de vorige stappen hebt geconfigureerd.
+In het volgende voor beeld wordt informatie opgehaald over het computer account met de naam *appproxy.aaddscontoso.com*. Geef uw eigen computer naam op voor de Azure AD-toepassingsproxy-VM die u in de vorige stappen hebt geconfigureerd.
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Gebruik de Power shell-cmdlet [set-ADComputer][Set-ADComputer] voor elke toepassings server waarop de apps achter Azure worden uitgevoerd AD-toepassingsproxy voor het configureren van KCD op basis van een resource. In het volgende voor beeld worden de Azure AD-toepassingsproxy-connector machtigingen verleend voor het gebruik van de *appserver.contoso.com* -computer:
+Gebruik de Power shell-cmdlet [set-ADComputer][Set-ADComputer] voor elke toepassings server waarop de apps achter Azure worden uitgevoerd AD-toepassingsproxy voor het configureren van KCD op basis van een resource. In het volgende voor beeld worden de Azure AD-toepassingsproxy-connector machtigingen verleend voor het gebruik van de *appserver.aaddscontoso.com* -computer:
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 Als u meerdere Azure AD-toepassingsproxy-connectors implementeert, moet u op resources gebaseerde KCD configureren voor elk connector exemplaar.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705303"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614082"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure AD Domain Services
 
@@ -65,32 +65,32 @@ Maak eerst een aangepaste OE met behulp van de cmdlet [New-ADOrganizationalUnit]
 > [!TIP]
 > [Gebruik uw beheer-VM][tutorial-create-management-vm]om deze stappen uit te voeren om een gMSA te maken. Deze beheer-VM moet al de vereiste AD Power shell-cmdlets en de verbinding met het beheerde domein hebben.
 
-In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *aadds.contoso.com*. Gebruik uw eigen OE en beheerde domein naam:
+In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *aaddscontoso.com*. Gebruik uw eigen OE en beheerde domein naam:
 
 ```powershell
-New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
 Maak nu een gMSA met de cmdlet [New-ADServiceAccount][New-ADServiceAccount] . De volgende voorbeeld parameters worden gedefinieerd:
 
 * **-Naam** is ingesteld op *WebFarmSvc*
 * **-Path** para meter geeft u de aangepaste OE op voor de gMSA die u in de vorige stap hebt gemaakt.
-* DNS-vermeldingen en spn's (Service Principal Names) worden ingesteld voor *WebFarmSvc.aadds.contoso.com*
-* Principals in *CONTOSO-server $* mogen het wacht woord gebruiken om de identiteit op te halen.
+* DNS-vermeldingen en spn's (Service Principal Names) worden ingesteld voor *WebFarmSvc.aaddscontoso.com*
+* Principals in *AADDSCONTOSO-server $* mogen het wacht woord niet ophalen met behulp van de identiteit.
 
 Geef uw eigen namen en domein namen op.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.aadds.contoso.com `
-    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -DNSHostName WebFarmSvc.aaddscontoso.com `
+    -Path "OU=MYNEWOU,DC=aaddscontoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
-        http/WebFarmSvc.aadds.contoso.com/contoso, `
-        http/WebFarmSvc/aadds.contoso.com, `
-        http/WebFarmSvc/contoso `
-    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+    -ServicePrincipalNames http/WebFarmSvc.aaddscontoso.com/aaddscontoso.com, `
+        http/WebFarmSvc.aaddscontoso.com/aaddscontoso, `
+        http/WebFarmSvc/aaddscontoso.com, `
+        http/WebFarmSvc/aaddscontoso `
+    -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
 Toepassingen en services kunnen nu zo worden geconfigureerd dat ze de gMSA gebruiken.

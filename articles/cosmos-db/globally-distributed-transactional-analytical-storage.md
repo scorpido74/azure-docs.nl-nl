@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445408"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623384"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Wereld wijd gedistribueerde transactionele en analytische opslag voor Azure Cosmos-containers
 
@@ -30,7 +30,7 @@ De transactionele opslag engine wordt ondersteund door de lokale Ssd's, terwijl 
 |Functie  |Transactionele opslag  |Analytische opslag |
 |---------|---------|---------|
 |Maximale opslag per Azure Cosmos-container |   Onbeperkt      |    Onbeperkt     |
-|Maximale opslag per logische partitie sleutel   |   10 GB      |   Onbeperkt      |
+|Maximale opslag per logische partitie sleutel   |   20 GB      |   Onbeperkt      |
 |Opslag codering  |   Rij-georiënteerde, met een interne indeling.   |   Kolom-georiënteerd met Apache Parquet-indeling. |
 |Opslag locatie |   Gerepliceerde opslag die wordt ondersteund door de lokale/intra cluster-Ssd's. |  Gerepliceerde opslag wordt ondersteund door goedkope externe/off-Ssd's.       |
 |Duurzaamheid  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: b98fb4044028ec9b335dc314732da04d18a3e2f9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b26947f2dd25f950b2d69d58321582a503aea83d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894962"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619696"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -25,7 +25,7 @@ De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-impl
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
-> * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
+> * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Verbinding maken tussen verschillende implementatiemodellen - Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Verbinding maken tussen verschillende implementatiemodellen - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
@@ -89,7 +89,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
 - **Instellingen voor virtuele-netwerkgateway** 
     - **Naam**: Voer *TestVNet1GW*in.
     - **Gatewaytype**: selecteer **VPN**.
-    - **VPN-type**: Selecteer **op Route gebaseerde**.
+    - **VPN-type**: Selecteer **op route gebaseerd**.
     - **SKU**: Selecteer de gateway-SKU die u wilt gebruiken.
     - **Naam van openbaar IP-adres**: Voer *TestVNet1GWIP* in
     - **Verbinding** 
@@ -103,7 +103,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
    - **Adres ruimte**: Voer *10.41.0.0/16*in.
    - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken.
    - **Resource groep**: Voer *TestRG4*in.
-   - **Locatie**: selecteer **US - west**.
+   - **Locatie**: Selecteer **VS-West**.
    - **Subnet** 
       - **Naam**: Voer een *frontend*in.
       - **Adres bereik**: Voer *10.41.0.0/24*in.
@@ -114,7 +114,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
 - **Instellingen voor virtuele-netwerkgateway** 
     - **Naam**: Voer *TestVNet4GW*in.
     - **Gatewaytype**: selecteer **VPN**.
-    - **VPN-type**: Selecteer **op Route gebaseerde**.
+    - **VPN-type**: Selecteer **op route gebaseerd**.
     - **SKU**: Selecteer de gateway-SKU die u wilt gebruiken.
     - **Naam van openbaar IP-adres**: Voer *TestVNet4GWIP*in.
     - **Verbinding** 
@@ -153,7 +153,7 @@ Wanneer de virtuele netwerkgateways voor TestVNet1 en TestVNet4 zijn voltooid, k
    ![Pagina verbindingen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Pagina verbindingen")
 2. Onder **Instellingen** selecteert u **Verbindingen**, en vervolgens **Toevoegen** om de pagina **Verbinding toevoegen** te openen.
 
-   ![Verbinding toevoegen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Een verbinding toevoegen")
+   ![Verbinding toevoegen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "een verbinding toevoegen")
 3. Vul op de pagina **Verbinding toevoegen** de waarden voor uw verbinding in:
 
    - **Naam**: Voer een naam in voor de verbinding. Bijvoorbeeld *TestVNet1toTestVNet4*.

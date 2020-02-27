@@ -1,10 +1,10 @@
 ---
-title: VM van Azure-infra structuur opnieuw opstarten voor een hogere Beschik baarheid van een SAP-systeem | Microsoft Docs
+title: Herstart van Azure Vm's gebruiken voor ' hogere Beschik baarheid ' van een SAP-systeem | Microsoft Docs
 description: VM van Azure-infra structuur opnieuw opstarten gebruiken om een hogere Beschik baarheid van SAP-toepassingen te krijgen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2e15765d5acdfe79bbf9e58135a62614ff7caf9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647472"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623805"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>VM van Azure-infra structuur opnieuw opstarten gebruiken om een hogere Beschik baarheid van een SAP-systeem te krijgen
 

@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 03171e395bb23da05ee5420f60abca9a16ffb774
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 395210c582ba7f5e8170a96a46e2816336e33b2d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600291"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624034"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-eigenschappen en meta gegevens beheren met .NET
 
@@ -25,7 +25,7 @@ Naast de gegevens die ze bevatten, ondersteunen blobs systeem eigenschappen en m
 
 - Door de **gebruiker gedefinieerde META**gegevens: door de gebruiker gedefinieerde meta gegevens bestaan uit een of meer naam/waarde-paren die u opgeeft voor een Blob Storage-Resource. U kunt meta gegevens gebruiken om aanvullende waarden met de resource op te slaan. Meta gegevens waarden zijn alleen bedoeld voor eigen doel einden en zijn niet van invloed op de werking van de resource.
 
-Het ophalen van meta gegevens en eigenschaps waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de `FetchAttributes`-of `FetchAttributesAsync`-methode aan te roepen. De uitzonde ring op deze regel is dat de methoden `Exists` en `ExistsAsync` de juiste `FetchAttributes`-methode aanroepen onder de voor vallen. Wanneer u een van deze methoden aanroept, hoeft u `FetchAttributes` ook niet aan te roepen.
+Het ophalen van meta gegevens en eigenschaps waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de `FetchAttributes`-of `FetchAttributesAsync`-methode aan te roepen. De uitzonde ring op deze regel is dat de methoden `Exists` en `ExistsAsync` de juiste `FetchAttributes`-methode aanroepen onder de voor vallen. Wanneer u een van deze methoden aanroept, hoeft u `FetchAttributes`ook niet aan te roepen.
 
 > [!IMPORTANT]
 > Als u merkt dat de eigenschaps-of meta gegevens waarden voor een opslag bron niet zijn ingevuld, controleert u of de code de `FetchAttributes`-of `FetchAttributesAsync`-methode aanroept.
@@ -163,4 +163,4 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 - [Bewerking BLOB-eigenschappen instellen](/rest/api/storageservices/set-blob-properties)
 - [Bewerking BLOB-eigenschappen ophalen](/rest/api/storageservices/get-blob-properties)
 - [Bewerking voor BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
-- [Bewerking BLOB-meta gegevens ophalen](/rest/api/storageservices/set-blob-metadata)
+- [Bewerking BLOB-meta gegevens ophalen](/rest/api/storageservices/get-blob-metadata)

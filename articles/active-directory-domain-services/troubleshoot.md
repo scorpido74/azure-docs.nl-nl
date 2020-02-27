@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512620"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612720"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Veelvoorkomende fouten en stappen voor probleem oplossing voor Azure Active Directory Domain Services
 
@@ -28,9 +28,9 @@ Dit artikel bevat probleemoplossings stappen voor veelvoorkomende problemen in a
 
 Als u problemen ondervindt met het inschakelen van Azure AD DS, raadpleegt u de volgende veelvoorkomende fouten en stappen om deze op te lossen:
 
-| **Voorbeeld fout bericht** | **Resolutie** |
+| **Voorbeeld fout bericht** | **Afsluiting** |
 | --- |:--- |
-| *De naam contoso.com wordt al gebruikt in dit netwerk. Geef een naam op die niet wordt gebruikt.* |[Domein naam conflict in het virtuele netwerk](troubleshoot.md#domain-name-conflict) |
+| *De naam addscontoso.com wordt al gebruikt in dit netwerk. Geef een naam op die niet wordt gebruikt.* |[Domein naam conflict in het virtuele netwerk](troubleshoot.md#domain-name-conflict) |
 | *Domain Services kan niet worden ingeschakeld in deze Azure AD-Tenant. De service heeft niet de juiste machtigingen voor de toepassing met de naam Azure AD Domain Services Sync. Verwijder de toepassing met de naam Azure AD Domain Services Sync en probeer vervolgens Domain Services in te scha kelen voor uw Azure AD-Tenant.* |[Domain Services beschikt niet over voldoende machtigingen voor de Azure AD Domain Services Sync-toepassing](troubleshoot.md#inadequate-permissions) |
 | *Domain Services kan niet worden ingeschakeld in deze Azure AD-Tenant. De domein Services-toepassing in uw Azure AD-Tenant beschikt niet over de vereiste machtigingen om domein Services in te scha kelen. Verwijder de toepassing met de toepassings-id d87dcbc6-a371-462e-88e3-28ad15ec4e64 en probeer vervolgens Domain Services in te scha kelen voor uw Azure AD-Tenant.* |[De Domain Services-toepassing is niet juist geconfigureerd in uw Azure AD-Tenant](troubleshoot.md#invalid-configuration) |
 | *Domain Services kan niet worden ingeschakeld in deze Azure AD-Tenant. De Microsoft Azure AD toepassing is uitgeschakeld in uw Azure AD-Tenant. Schakel de toepassing met de toepassings-id 00000002-0000-0000-C000-000000000000 te gebruiken in en probeer vervolgens Domain Services in te scha kelen voor uw Azure AD-Tenant.* |[De Microsoft Graph toepassing is uitgeschakeld in uw Azure AD-Tenant](troubleshoot.md#microsoft-graph-disabled) |
@@ -39,11 +39,11 @@ Als u problemen ondervindt met het inschakelen van Azure AD DS, raadpleegt u de 
 
 **Fout bericht**
 
-*De naam contoso.com wordt al gebruikt in dit netwerk. Geef een naam op die niet wordt gebruikt.*
+*De naam aaddscontoso.com wordt al gebruikt in dit netwerk. Geef een naam op die niet wordt gebruikt.*
 
-**Resolutie**
+**Afsluiting**
 
-Controleer of u geen bestaande AD DS omgeving hebt met dezelfde domein naam op hetzelfde of een gekoppeld virtueel netwerk. U hebt bijvoorbeeld een AD DS domein met de naam *contoso.com* dat wordt uitgevoerd op virtuele Azure-machines. Wanneer u probeert een met Azure AD DS beheerd domein met dezelfde domein naam *contoso.com* in het virtuele netwerk in te scha kelen, mislukt de aangevraagde bewerking.
+Controleer of u geen bestaande AD DS omgeving hebt met dezelfde domein naam op hetzelfde of een gekoppeld virtueel netwerk. U hebt bijvoorbeeld een AD DS domein met de naam *aaddscontoso.com* dat wordt uitgevoerd op virtuele Azure-machines. Wanneer u probeert een met Azure AD DS beheerd domein met dezelfde domein naam *aaddscontoso.com* in het virtuele netwerk in te scha kelen, mislukt de aangevraagde bewerking.
 
 Deze fout wordt veroorzaakt door naam conflicten voor de domein naam in het virtuele netwerk. Met een DNS-zoek opdracht wordt gecontroleerd of een bestaande AD DS omgeving reageert op de aangevraagde domein naam. U kunt dit probleem oplossen door een andere naam te gebruiken om uw door Azure AD DS beheerde domein in te stellen of de inrichting van het bestaande AD DS domein te deactiveren en vervolgens opnieuw te proberen om Azure AD DS in te scha kelen.
 
@@ -53,7 +53,7 @@ Deze fout wordt veroorzaakt door naam conflicten voor de domein naam in het virt
 
 *Domain Services kan niet worden ingeschakeld in deze Azure AD-Tenant. De service heeft niet de juiste machtigingen voor de toepassing met de naam Azure AD Domain Services Sync. Verwijder de toepassing met de naam Azure AD Domain Services Sync en probeer vervolgens Domain Services in te scha kelen voor uw Azure AD-Tenant.*
 
-**Resolutie**
+**Afsluiting**
 
 Controleer of er een toepassing met de naam *Azure AD Domain Services synchronisatie* in uw Azure AD-adres lijst is. Als deze toepassing bestaat, verwijdert u deze en probeert u Azure AD DS in te scha kelen. Voer de volgende stappen uit om een bestaande toepassing te controleren en deze indien nodig te verwijderen:
 
@@ -68,7 +68,7 @@ Controleer of er een toepassing met de naam *Azure AD Domain Services synchronis
 
 *Domain Services kan niet worden ingeschakeld in deze Azure AD-Tenant. De domein Services-toepassing in uw Azure AD-Tenant beschikt niet over de vereiste machtigingen om domein Services in te scha kelen. Verwijder de toepassing met de toepassings-id d87dcbc6-a371-462e-88e3-28ad15ec4e64 en probeer vervolgens Domain Services in te scha kelen voor uw Azure AD-Tenant.*
 
-**Resolutie**
+**Afsluiting**
 
 Controleer of u een bestaande toepassing met de naam *AzureActiveDirectoryDomainControllerServices* hebt met een toepassings-id van *D87dcbc6-a371-462e-88e3-28ad15ec4e64* in uw Azure AD-adres lijst. Als deze toepassing bestaat, verwijdert u deze en probeert u Azure AD DS in te scha kelen.
 
@@ -112,7 +112,7 @@ if ($sp -ne $null)
 
 *Domain Services kan niet worden ingeschakeld in deze Azure AD-Tenant. De Microsoft Azure AD toepassing is uitgeschakeld in uw Azure AD-Tenant. Schakel de toepassing met de toepassings-id 00000002-0000-0000-C000-000000000000 te gebruiken in en probeer vervolgens Domain Services in te scha kelen voor uw Azure AD-Tenant.*
 
-**Resolutie**
+**Afsluiting**
 
 Controleer of u een toepassing hebt uitgeschakeld met de id *00000002-0000-0000-C000-000000000000 te gebruiken*. Deze toepassing is de Microsoft Azure AD toepassing en biedt Graph API toegang tot uw Azure AD-Tenant. Als u uw Azure AD-Tenant wilt synchroniseren, moet u deze toepassing inschakelen.
 
@@ -128,9 +128,9 @@ Voer de volgende stappen uit om de status van deze toepassing te controleren en 
 
 Als een of meer gebruikers in uw Azure AD-Tenant zich niet kunnen aanmelden bij het met Azure AD DS beheerde domein, voert u de volgende stappen uit:
 
-* **Indeling van referenties** : Probeer de UPN-indeling om referenties op te geven, zoals `dee@contoso.onmicrosoft.com`. De UPN-indeling is de aanbevolen manier om referenties op te geven in azure AD DS. Zorg ervoor dat deze UPN juist is geconfigureerd in azure AD.
+* **Indeling van referenties** : Probeer de UPN-indeling om referenties op te geven, zoals `dee@aaddscontoso.onmicrosoft.com`. De UPN-indeling is de aanbevolen manier om referenties op te geven in azure AD DS. Zorg ervoor dat deze UPN juist is geconfigureerd in azure AD.
 
-    De *SAMAccountName* voor uw account, zoals *CONTOSO\driley* , kan automatisch worden gegenereerd als er meerdere gebruikers zijn met hetzelfde UPN-voor voegsel in uw TENANT of als uw UPN-voor voegsel langer is dan lang. Daarom kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
+    De *SAMAccountName* voor uw account, zoals *AADDSCONTOSO\driley* , kan automatisch worden gegenereerd als er meerdere gebruikers zijn met hetzelfde UPN-voor voegsel in uw TENANT of als uw UPN-voor voegsel langer is dan lang. Daarom kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
 
 * **Wachtwoord synchronisatie** : Zorg ervoor dat u wachtwoord synchronisatie hebt ingeschakeld voor [Cloud gebruikers][cloud-only-passwords] of voor [hybride omgevingen met behulp van Azure AD CONNECT][hybrid-phs].
     * **Hybrid Synchronized accounts:** Als de betrokken gebruikers accounts worden gesynchroniseerd vanuit een on-premises map, controleert u de volgende gebieden:

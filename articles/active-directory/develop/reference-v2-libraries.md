@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 09d0def2ebd012670b9502f6f9b02ad18a02922d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9d2df175fa9d1ed33eb17ae85e01a4fd7a24e728
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160403"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611934"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Micro soft Identity platform-verificatie bibliotheken
 
@@ -93,7 +93,7 @@ Zie ook [scenario's voor ondersteunde platforms en talen](authentication-flows-a
 
 | Platform | Bibliotheeknaam | Geteste versie | Broncode | Voorbeeld |
 |:---:|:---:|:---:|:---:|:---:|
-|![Javascript](media/sample-v2-code/logo_js.png)|[Hello. js](https://adodson.com/hello.js/) | Versie 1.13.5 |[Hello. js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+|![Javascript](media/sample-v2-code/logo_js.png)|[Hello. js](https://adodson.com/hello.js/) | Versie 1.13.5 |[Hello. js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Scribe java](https://github.com/scribejava/scribejava) | [Versie 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect Connect-bibliotheek](https://github.com/GluuFederation/oxAuth) | [Versie 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect Connect-bibliotheek](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [Aanvragen-OAuthlib](https://github.com/requests/requests-oauthlib) | [Versie 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Aanvragen-OAuthlib](https://github.com/requests/requests-oauthlib) | |

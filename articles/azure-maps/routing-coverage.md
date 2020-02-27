@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b8b3dbf515aa3bcc9075a748b9d717cfa36b6ab0
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988937"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648918"
 ---
 # <a name="azure-maps-routing-coverage"></a>Routerings dekking Azure Maps
 
@@ -37,9 +37,9 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 <br>  
 
 
-## <a name="africa"></a>Afrika
+## <a name="africa"></a>Africa
 
-| Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
+| Land/regio                 | Routing         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Algerije                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
@@ -75,14 +75,14 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Tanzania                       |        ✓       |                       |             |
 | Togo                           |        ✓       |                       |             |
 | Tunesië                        |        ✓       |                       |             |
-| Uganda                         |        ✓       |                       |             |
+| Oeganda                         |        ✓       |                       |             |
 | Zambia                         |        ✓       |                       |             |
 | Zimbabwe                       |        ✓       |                       |             |
 
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
+| Land/regio                 | Routing         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentinië                      |        ✓       |         ✓            |     ✓       |
 | Antigua en Barbuda            |        ✓       |                      |             |
@@ -125,9 +125,9 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Venezuela                      |        ✓       |                      |             |
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-| Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
+| Land/regio                 | Routing         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Australië                      |        ✓       |         ✓            |     ✓       |
 | \+ Christmas eiland              |        ✓       |                      |             |
@@ -135,7 +135,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Cambodja                       |        ✓       |                      |             |
 | Fiji                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hong Kong SAR                  |        ✓       |         ✓            |             |
+| Hongkong SAR                  |        ✓       |         ✓            |             |
 | India                          |        ✓       |         ✓            |             |
 | Indonesië                      |        ✓       |         ✓            |             |
 | Kazachstan                |        ✓       |                     |             |
@@ -145,7 +145,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Maleisië                       |        ✓       |         ✓            |             |
 | Myanmar                        |        ✓       |                      |             |
 | Nieuw-Zeeland                    |        ✓       |         ✓            |     ✓       | 
-| Filippijnen                    |        ✓       |         ✓            |             |
+| Filipijnen                    |        ✓       |         ✓            |             |
 | Singapore                      |        ✓       |         ✓            |             |
 | Taiwan                         |        ✓       |         ✓            |             |
 | Thailand                       |        ✓       |         ✓            |             |
@@ -154,12 +154,12 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 
 ## <a name="europe"></a>Europa
 
-| Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
+| Land/regio                 | Routing         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albanië                        |        ✓       |                      |             |
 | Andorra                        |        ✓       |         ✓            |             |
 | Oostenrijk                        |        ✓       |         ✓            |     ✓       | 
-| Wit-Rusland                        |        ✓       |                      |             |
+| Belarus                        |        ✓       |                      |             |
 | België                        |        ✓       |         ✓            |     ✓      | 
 | Bolivia                        |        ✓       |                      |             |
 | Bosnia-Herzegovina             |        ✓       |                      |             |
@@ -192,7 +192,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Luxemburg                     |        ✓       |         ✓            |     ✓      | 
 | Noord-Macedonië                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
-| Moldavië                        |        ✓       |                      |             |
+| Werden                        |        ✓       |                      |             |
 | Monaco                         |        ✓       |         ✓            |             |
 | Montenegro                     |        ✓       |                      |     ✓      | 
 | Nederland                    |        ✓       |         ✓            |     ✓      | 
@@ -206,7 +206,6 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Roemenië                        |        ✓       |         ✓            |     ✓      | 
 | Russische Federatie             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| \+ Sint-Maarten                  |        ✓       |                      |             |
 | Servië                         |        ✓       |                      |     ✓      | 
 | Slowakije                       |        ✓       |         ✓            |     ✓      | 
 | Slovenië                       |        ✓       |         ✓            |     ✓      |
@@ -224,12 +223,12 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | +Montserrat                    |        ✓       |                      |             |
 | \+ Turks-en Caicos-eilanden      |        ✓       |                      |             |
 | Vaticaan stad                   |        ✓       |         ✓            |             |
-| Man                    |        ✓       |                      |             |
+| Isle of man                    |        ✓       |                      |             |
 
 
 ## <a name="middle-east"></a>Midden-Oosten
 
-| Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
+| Land/regio                 | Routing         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrein                        |        ✓       |         ✓            |             |
 | Irak                           |        ✓       |                      |             |

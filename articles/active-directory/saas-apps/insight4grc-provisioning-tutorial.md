@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057478"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621517"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Zelf studie: Insight4GRC configureren voor automatische gebruikers inrichting
 
@@ -90,7 +90,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Geef in de sectie **beheerders referenties** de referenties van uw Insight4GRC en de gebruikers naam op. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in het gedeelte **beheerders referenties** de URL van het scim-eind punt op in de **Tenant-URL**. De enpoint-URL moet de indeling hebben `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` waarbij **Insight4GRC domain name** de waarde is die in de vorige stappen is opgehaald. Invoer van de Bearer-token waarde die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/insight4grc-provisioning-tutorial/provisioning.png)
 

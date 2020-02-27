@@ -4,7 +4,7 @@ description: SAP HANA op Azure (grote exemplaren) migreren naar Azure virtual ma
 services: virtual-machines-linux
 documentationcenter: ''
 author: bentrin
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82d39ef9f0b9bfee15bb78e897b247426bf8e2a2
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369722"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617045"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA voor migratie van grote Azure-instanties naar Azure Virtual Machines
 In dit artikel worden mogelijke scenario's voor grootschalige implementaties in azure beschreven en wordt de aanpak voor planning en migratie met een geminimaliseerde overgangs downtime geboden

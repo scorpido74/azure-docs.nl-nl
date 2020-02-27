@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: 2b3c6fc404e9a5fefc15aa7b7162ff5573c3be5a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166147"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616351"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Snelstart: een afbeeldingsclassificatieproject maken met de Custom Vision-SDK voor Java
 
-In dit artikel leest u hoe u aan de slag kunt met de Custom Vision Java SDK om een installatie kopie classificatie model te bouwen. Wanneer u het project hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Java-toepassing te maken. Zie de [handleiding voor browsers](getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+In dit artikel leest u hoe u aan de slag kunt met de Custom Vision Java SDK om een installatie kopie classificatie model te bouwen. Wanneer u het project hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de standaardeindpunt-URL voor voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Java-toepassing te maken. Zie de _handleiding voor browsers_ als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken [zonder](getting-started-build-a-classifier.md) code.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Java IDE naar keuze
 - [JDK 7 of 8](https://aka.ms/azure-jdks) is geïnstalleerd.
-- Maven is geïnstalleerd
+- [Maven](https://maven.apache.org/) geïnstalleerd
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>De Custom Vision-SDK en voorbeeldcode ophalen
 
 Als u een Java-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de Maven-pakketten van Custom Vision nodig. Deze pakketten zijn opgenomen in het voorbeeld project dat u wilt downloaden, maar u kunt deze afzonderlijk openen.
 
-U kunt de Custom Vision-SDK uit de centrale maven-opslagplaats installeren:
+U vindt de Custom Vision SDK in de centrale opslag plaats maven:
 
 - [Training-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Voorspelling-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
@@ -43,7 +43,10 @@ Met dit Java-project wordt een nieuwe afbeeldingsclassificatieproject van Custom
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-Het programma is zodanig geconfigureerd dat uw belangrijkste gegevens als omgevingsvariabelen worden opgeslagen. Stel deze variabelen in via de map **Vision/CustomVision** in PowerShell. Voer daarna de volgende opdrachten in:
+Het programma is geconfigureerd om te verwijzen naar de belangrijkste gegevens als omgevings variabelen. Ga naar de map **Vision/CustomVision** en voer de volgende Power shell-opdrachten in om de omgevings variabelen in te stellen. 
+
+> [!NOTE]
+> Als u een niet-Windows-besturings systeem gebruikt, raadpleegt u [omgevings variabelen configureren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) voor instructies.
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -88,9 +91,9 @@ Het voorspellingseindpunt, dat door het `predictor`-object hier wordt weergegeve
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Als u de oplossing met Maven wilt compileren en uitvoeren, voert u de volgende opdracht uit in de projectmap in PowerShell:
+Als u de oplossing wilt compileren en uitvoeren met behulp van Maven, navigeert u naar de projectmap (**Vision/CustomVision**) in een opdracht prompt en voert u de volgende opdracht uit:
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

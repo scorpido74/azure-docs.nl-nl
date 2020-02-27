@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 47fa4083c26f18149b0b69b05f2cfd0b227de868
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776287"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619573"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -20,6 +20,8 @@ Azure Database for MySQL maakt automatisch server back-ups en slaat ze op in een
 ## <a name="backups"></a>Back-ups
 
 Azure Database for MySQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of moment opnamen back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt [deze optioneel configureren](howto-restore-server-portal.md#set-backup-configuration) tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+
+Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen in Azure Database for MySQL. U kunt [mysqldump](concepts-migrate-dump-restore.md) gebruiken om een Data Base te kopiëren.
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
@@ -52,7 +54,7 @@ De geschatte duur van de herstel bewerking is afhankelijk van verschillende fact
 > [!IMPORTANT]
 > Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
-### <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
+### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
 Onafhankelijk van de optie voor de redundantie van de back-up kunt u een herstel bewerking uitvoeren op elk gewenst moment binnen de retentie periode van de back-up. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het wordt gemaakt met de oorspronkelijke server configuratie voor de prijs categorie, het berekenen van de berekening, het aantal vCores, de opslag grootte, de Bewaar periode voor back-ups en de optie voor de redundantie van back-ups.
 

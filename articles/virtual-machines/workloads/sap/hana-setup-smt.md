@@ -4,21 +4,21 @@ description: SMT-server instellen voor SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d9e86e54a4c94db97b6c89b3ef8799855963020
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099764"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616997"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Een SMT-server instellen voor SUSE Linux
 Grote instanties van SAP HANA hebben geen directe verbinding met internet. Het is geen eenvoudig proces om een dergelijke eenheid te registreren bij de provider van het besturings systeem en om updates te downloaden en toe te passen. Een oplossing voor SUSE Linux is het instellen van een SMT-server in een virtuele machine van Azure. Host de virtuele machine in een virtueel Azure-netwerk dat is verbonden met de HANA grote instantie. Met een dergelijke SMT-server kan de HANA-eenheid voor grote instanties updates registreren en downloaden. 
@@ -34,7 +34,7 @@ De vereisten voor het installeren van een SMT-server die voldoet aan de taak voo
 
 Meld u eerst aan bij het [SuSE-klanten centrum](https://scc.suse.com/).
 
-Ga naar de**referenties**van de **organisatie** > . In deze sectie vindt u de referenties die nodig zijn voor het instellen van de SMT-server.
+Ga naar **organisatie** > **organisatie referenties**. In deze sectie vindt u de referenties die nodig zijn voor het instellen van de SMT-server.
 
 Installeer vervolgens een SUSE Linux-VM in het virtuele Azure-netwerk. Als u de virtuele machine wilt implementeren, maakt u een SLES 12 SP2 galerie-afbeelding van Azure (Selecteer BYOS SUSE-afbeelding). In het implementatie proces definieert u geen DNS-naam en gebruikt u geen statische IP-adressen.
 
@@ -131,7 +131,7 @@ Het is mogelijk dat het certificaat van de server door de client wordt geladen, 
 
 ![Scherm opname van client registratie fout](./media/hana-installation/image13_registration_failed.PNG)
 
-Als de registratie mislukt, raadpleegt u het SuSE-ondersteunings [document](https://www.suse.com/de-de/support/kb/doc/?id=7006024)en voert u de stappen uit die hier worden beschreven.
+Als de registratie mislukt, raadpleegt u het [SuSE-ondersteunings document](https://www.suse.com/de-de/support/kb/doc/?id=7006024)en voert u de stappen uit die hier worden beschreven.
 
 > [!IMPORTANT] 
 > Geef voor de server naam de naam van de virtuele machine (in dit geval *smtserver*) op zonder de Fully Qualified Domain name. 

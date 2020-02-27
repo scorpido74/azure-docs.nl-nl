@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982586"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623620"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -260,7 +260,7 @@ Gebruik de module voor het **evalueren van modellen** om te evalueren hoe goed u
 
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoering verzenden.
+Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoering verzenden om uw machine learning model te trainen. U kunt op elk moment een pijplijn uitvoering verzenden terwijl u pijp lijnen in de ontwerp functie bouwt. U kunt dit doen om uw werk te controleren terwijl u de functies van uw pijp lijn naar verwachting controleert.
 
 1. Selecteer boven aan het canvas de optie **uitvoeren**.
 

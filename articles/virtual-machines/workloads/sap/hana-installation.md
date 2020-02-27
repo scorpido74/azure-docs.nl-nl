@@ -4,7 +4,7 @@ description: SAP HANA installeren op een SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264166"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617094"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
 
@@ -115,7 +115,7 @@ Hieronder vindt u SAP-ondersteunings opmerkingen die van toepassing zijn op het 
 - [SAP-ondersteunings Opmerking #2397039-FAQ: SAP op RHEL](https://launchpad.support.sap.com/#/notes/2397039)
 - [SAP-ondersteunings Opmerking #2002167-Red Hat Enterprise Linux 7. x: installatie en upgrade](https://launchpad.support.sap.com/#/notes/2002167)
 
-### <a name="time-synchronization"></a>Tijdsynchronisatie
+### <a name="time-synchronization"></a>Tijd synchronisatie
 
 SAP-toepassingen die zijn gebouwd op basis van de SAP NetWeaver-architectuur, zijn gevoelig voor tijd verschillen voor de verschillende onderdelen waaruit het SAP-systeem bestaat. SAP ABAP Short dumps met de fout titel ZDATE\_groot\_tijd\_verschil is waarschijnlijk bekend. Dat komt doordat deze korte dumps worden weer gegeven wanneer de systeem tijd van de verschillende servers of Vm's te ver uit elkaar liggen.
 
@@ -124,7 +124,7 @@ Voor SAP HANA op Azure (grote instanties), is de tijd synchronisatie die wordt u
 Als gevolg hiervan moet u een afzonderlijke tijd server instellen die kan worden gebruikt door SAP-toepassings servers die worden uitgevoerd op virtuele Azure-machines en op de SAP HANA data base-exemplaren die worden uitgevoerd op HANA grote instanties. De opslag infrastructuur in grote instantie stempels is tijd gesynchroniseerd met NTP-servers.
 
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 We gaan ervan uit dat u de aanbevelingen bij het ontwerpen van uw virtuele Azure-netwerken hebt gevolgd en dat deze virtuele netwerken worden verbonden met de HANA grote instanties, zoals beschreven in de volgende documenten:
 
 - [Overzicht en architectuur van SAP HANA (grote instanties) op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
@@ -134,7 +134,7 @@ Er zijn enkele details over de netwerken van de afzonderlijke eenheden. Elke HAN
 
 Zie voor meer informatie over Ethernet-Details voor uw architectuur de door [HLI ondersteunde scenario's](hana-supported-scenario.md).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag indeling voor SAP HANA op Azure (grote instanties) wordt geconfigureerd door SAP HANA op Azure `service management` via door SAP aanbevolen richt lijnen. Deze richt lijnen zijn gedocumenteerd in het Witboek [SAP Hana Storage-vereisten](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) . 
 
