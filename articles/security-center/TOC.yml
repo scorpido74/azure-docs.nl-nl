@@ -181,6 +181,20 @@
   items:
     - name: REST-API’s
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Veelgestelde vragen over Azure Security Center
+      items:
+        - name: Algemene vragen
+          href: faq-general.md
+        - name: Vragen over facturering
+          href: faq-billing.md
+        - name: Vragen over machtigingen
+          href: faq-permissions.md
+        - name: Vragen over gegevensverzameling en agents
+          href: faq-data-collection-agents.md
+        - name: Vragen over virtuele machines
+          href: faq-vms.md
+        - name: Bestaande gebruikers van Azure Log Analytics
+          href: faq-azure-monitor-logs.md
     - name: Releaseopmerkingen
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Buitengebruikstelling van functies en API (juli 2019)
@@ -195,8 +209,6 @@
       href: security-center-privacy.md
     - name: Documentatie voor Azure Security Center for IoT
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: Veelgestelde vragen
-      href: security-center-faq.md
     - name: Documentatie over beveiliging in Azure
       href: /azure/security/
     - name: Azure-updates

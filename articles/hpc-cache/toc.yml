@@ -8,7 +8,7 @@
   items:
     - name: De geaggregeerde naamruimte plannen
       href: hpc-cache-namespace.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Vereisten
       href: hpc-cache-prereqs.md
@@ -42,6 +42,8 @@
       href: hpc-cache-support-ticket.md
     - name: Rond firewallinstellingen van Blob-opslag werken
       href: hpc-cache-blob-firewall-fix.md
+    - name: Problemen met NFS-opslagdoel maken oplossen
+      href: troubleshoot-nas.md
     - name: Herstellen na een regionale storing
       href: hpc-region-recovery.md
     - name: Azure NetApp Files gebruiken met Azure HPC Cache

@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: Problemen oplossen en fouten opsporen
           href: how-to-troubleshoot-deployment.md
-    - name: Webservices gebruiken
-      items:
-        - name: In realtime gebruiken
+        - name: Clients maken
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Batch-voorspellingen ontwerpen
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: Modellen bewaken
-      items:
-        - name: Modelgegevens verzamelen en evalueren
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: Gegevensafwijkingen detecteren
-          href: how-to-monitor-data-drift.md
-        - name: Controleren met behulp van Application Insights
-          href: how-to-enable-app-insights.md
+        - name: Modellen bewaken
+          items:
+            - name: Modelgegevens verzamelen en evalueren
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: Gegevensafwijkingen detecteren
+              href: how-to-monitor-data-drift.md
+            - name: Controleren met behulp van Application Insights
+              href: how-to-enable-app-insights.md
     - name: Machine Learning-pijplijnen maken en gebruiken
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: Fouten in parallelle uitvoerstap opsporen en oplossen
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: Batch-voorspellingen ontwerpen
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Resourcequota beheren
       displayName: limits
       href: how-to-manage-quotas.md

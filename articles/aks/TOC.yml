@@ -143,6 +143,8 @@
           href: availability-zones.md
         - name: Meerdere knooppuntgroepen gebruiken
           href: use-multiple-node-pools.md
+        - name: Spotknooppuntpools gebruiken (preview-versie)
+          href: spot-node-pool.md
         - name: AKS met Terraform implementeren
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

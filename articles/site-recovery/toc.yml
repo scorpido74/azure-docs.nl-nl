@@ -417,6 +417,8 @@
               href: vmware-physical-secondary-disaster-recovery.md
         - name: Virtuele Hyper-V-machines
           items:
+            - name: Afschaffing van site-naar-site-scenario's voor Hyper-V-machines
+              href: site-to-site-deprecation.md
             - name: Stapsgewijze handleiding voor herstel na noodgevallen van virtuele Hyper-V-machines in VMM-clouds naar een secundaire site
               href: hyper-v-vmm-disaster-recovery.md
             - name: Een oefening voor herstel na noodgeval uitvoeren voor virtuele Hyper-V-machines naar een secundaire site

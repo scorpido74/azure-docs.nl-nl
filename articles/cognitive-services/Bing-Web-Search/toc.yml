@@ -27,14 +27,8 @@
           href: quickstarts/ruby.md
     - name: SDK's
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
+        - name: Bing Web Search-clientbibliotheken
+          href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: Een web-app van één pagina maken
@@ -45,7 +39,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
     - name: SDK-voorbeelden
       href: sdk-samples.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Antwoorden filteren
       href: filter-answers.md
@@ -73,7 +67,7 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference'
     - name: Bing Webzoekopdrachten-API v5
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v5-reference'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'

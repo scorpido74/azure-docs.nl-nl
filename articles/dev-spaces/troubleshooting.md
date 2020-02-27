@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 0c6a712f1dfb4410f3eee0fbd0192c6147618f96
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539583"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605245"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -24,7 +24,7 @@ Om problemen effectiever op te lossen, kan het helpen om meer gedetailleerde log
 
 Stel de omgevings variabele `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` in op 1 voor de Visual Studio-extensie. Zorg ervoor dat opnieuw opstarten van Visual Studio voor de omgeving in te voeren. Wanneer deze functie is ingeschakeld, worden gedetailleerde logboeken naar uw `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` Directory geschreven.
 
-In de CLI kunt u meer informatie tijdens het uitvoeren van de opdracht uitvoeren met behulp van de `--verbose` switch. U kunt ook meer gedetailleerde logboeken bekijken in `%TEMP%\Azure Dev Spaces`. Op een Mac kan de map TEMP worden gevonden door `echo $TMPDIR` uit te voeren vanuit een Terminal venster. Op een Linux-computer wordt de map TEMP doorgaans `/tmp`.
+In de CLI kunt u meer informatie tijdens het uitvoeren van de opdracht uitvoeren met behulp van de `--verbose` switch. U kunt ook meer gedetailleerde logboeken bekijken in `%TEMP%\Azure Dev Spaces`. Op een Mac kan de map *temp* worden gevonden door `echo $TMPDIR` uit te voeren vanuit een Terminal venster. Op een Linux-computer wordt de map *temp* doorgaans `/tmp`. Controleer bovendien of logboek registratie is ingeschakeld in uw [Azure cli-configuratie bestand](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
 Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exemplaar of pod. Het `azds.yaml` bestand bevat een instelling, *replicaCount*, die het aantal peulen aangeeft dat Kubernetes voor uw service wordt uitgevoerd. Als u de *replicaCount* wijzigt om uw toepassing te configureren voor het uitvoeren van meerdere peulen voor een bepaalde service, wordt het fout opsporingsprogramma gekoppeld aan de eerste Pod, wanneer deze alfabetisch wordt weer gegeven. Het fout opsporingsprogramma koppelt aan een andere pod wanneer de oorspronkelijke pod wordt gerecycled, mogelijk als gevolg van onverwacht gedrag.
 
@@ -474,7 +474,7 @@ Als u Azure-ontwikkel ruimten wilt inschakelen op een AKS-cluster waarvoor het u
 | cloudflare.docker.com | HTTPS:443 | Voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
 | gcr.io | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
 | storage.googleapis.com | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
-| azds-<guid>.<location>. azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json|
+| azds-<guid>.<location>.azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout: kan het cluster \<cluster\> in het abonnement niet vinden \<abonnements-\>"
 

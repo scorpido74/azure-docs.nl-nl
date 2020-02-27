@@ -23,9 +23,11 @@
     - name: Hoe Personalizer werkt
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: Waar kunt u Personalizer gebruiken?
+    - name: Waar kan ik Personalizer gebruiken
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Terminologie
+      href: terminology.md
     - name: Ethiek & verantwoordelijk gebruik
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -34,9 +36,11 @@
         - name: Actie en context
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Actieve en inactieve gebeurtenissen
+        - name: Leerbeleid
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Actieve en inactieve gebeurtenissen
+          href: concept-active-inactive-events.md
         - name: Voordelen
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -56,15 +60,15 @@
       href: concepts-scalability-performance.md
 - name: Instructiegidsen
   items:
-    - name: Personalizer maken en configureren
+    - name: Een Personalizer-resource maken
+      href: how-to-create-resource.md
+    - name: Een leerproces configureren
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: Uw leerbeleid beheren
-      href: how-to-learning-policy.md
-    - name: Analyseren
-      items:
-        - name: Offline-evaluatie
-          href: how-to-offline-evaluation.md
+    - name: Model- en leerinstellingen beheren
+      href: how-to-manage-model.md
+    - name: Analyseren met een offline evaluatie
+      href: how-to-offline-evaluation.md
 - name: Naslaginformatie
   items:
     - name: Voorbeelden

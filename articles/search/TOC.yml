@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: Schalen voor prestaties
           href: search-performance-optimization.md
+        - name: Service verplaatsen tussen regio's
+          href: search-howto-move-across-regions.md
         - name: Multitenant-architectuur
           href: search-modeling-multitenant-saas-applications.md
     - name: Beveiliging

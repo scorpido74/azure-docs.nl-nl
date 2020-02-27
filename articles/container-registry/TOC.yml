@@ -141,15 +141,17 @@
       items:
         - name: Compileren van containerinstallatiekopieën automatiseren
           items:
-            - name: Compileren vanuit broncontext
+            - name: 1 - Compileren vanuit broncontext
               href: container-registry-tutorial-quick-task.md
-            - name: Compileren op basis van doorgevoerde code
+            - name: 2a - Compileren op basis van doorgevoerde code
               href: container-registry-tutorial-build-task.md
-            - name: Taak met meerdere stappen wanneer code is doorgevoerd
+            - name: 2b - Taak met meerdere stappen wanneer code is ingevoerd
               href: container-registry-tutorial-multistep-task.md
-            - name: Compileren op basis van update aan basisinstallatiekopie
+            - name: 3a - Compileren op basis van update aan basisinstallatiekopie
               href: container-registry-tutorial-base-image-update.md
-            - name: Een taak plannen
+            - name: 3b - Compileren op basis van update aan privébasisinstallatiekopie
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 - Bouwen volgens een planning
               href: container-registry-tasks-scheduled.md
     - name: Voorbeelden
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: Taken met meerdere stappen
           href: container-registry-tasks-multi-step.md
+        - name: Updates van basisinstallatiekopieën
+          href: container-registry-tasks-base-images.md
     - name: Instructiegidsen
       expanded: false
       items:

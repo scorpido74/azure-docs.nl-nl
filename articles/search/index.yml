@@ -10,29 +10,43 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 02/25/2020
+  ms.openlocfilehash: b1df45b155e9c9d1bd4433d7ddc765c126686a07
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76721061"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77614960"
 landingContent:
 - title: Over Cognitive Search
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure Cognitive Search?
+    - text: Wat is Azure Cognitive Search
       url: search-what-is-azure-search.md
-  - linkListType: architecture
-    links:
-    - text: Hoe zoeken in de volledige tekst werkt in Cognitive Search
-      url: search-lucene-query-architecture.md
+    - text: Wat is AI-verrijking
+      url: cognitive-search-concept-intro.md
+    - text: Wat is een indexeerfunctie
+      url: search-indexer-overview.md
   - linkListType: video
     links:
     - text: Wat is Cognitive Search? (1 min. 27 sec.)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-- title: Aan de slag
+- title: Azure-gegevens indexeren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uit Azure Blob-opslag indexeren
+      url: search-blob-storage-integration.md
+    - text: Uit Azure SQL Database indexeren
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Uit Cosmos DB indexeren
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: Semi-gestructureerde blobgegevens indexeren
+      url: search-semi-structured-data.md
+- title: Quickstarts van tien minuten
   linkLists:
   - linkListType: quickstart
     links:
@@ -40,31 +54,11 @@ landingContent:
       url: search-create-service-portal.md
     - text: Een index maken
       url: search-get-started-portal.md
-    - text: Een verrijkingspijplijn maken
-      url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
     - text: Een app maken
-      url: tutorial-csharp-create-first-app.md
-  - linkListType: learn
-    links:
-    - text: Inleiding tot Azure Cognitive Search
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
-- title: Gebruiken met blobopslag
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: AI gebruiken om blobgegevens te begrijpen
-      url: search-blob-ai-integration.md
-    - text: Uw blob-inhoud doorzoeken
-      url: search-blob-storage-integration.md
-    - text: Uitbreidingen voor Store AI
-      url: knowledge-store-concept-intro.md
-  - linkListType: tutorial
-    links:
-    - text: Semi-gestructureerde blobgegevens indexeren
-      url: search-semi-structured-data.md
-- title: Uw gegevens indexeren
+      url: search-create-app-portal.md
+    - text: Onbewerkte tekst en afbeeldingen opnemen en extraheren
+      url: cognitive-search-quickstart-blob.md
+- title: Gegevens indexeren
   linkLists:
   - linkListType: concept
     links:
@@ -72,32 +66,22 @@ landingContent:
       url: search-what-is-an-index.md
     - text: Gegevens importeren
       url: search-what-is-data-import.md
-    - text: Een indexeerfunctie gebruiken
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Uit Azure SQL Database indexeren
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Uit Cosmos DB-gegevens indexeren
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: Index maken (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: Indexeerfunctie maken (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
-- title: Uw gegevens verrijken
+- title: Verrijken met AI
   linkLists:
   - linkListType: concept
     links:
-    - text: AI-verrijkingspijplijn
-      url: cognitive-search-concept-intro.md
     - text: Vaardighedensets
       url: cognitive-search-defining-skillset.md
     - text: Knowledge Stores
       url: knowledge-store-concept-intro.md
     - text: Projecties
-      url: knowledge-store-projection-overview.md
+      url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
     - text: Cognitive Services toevoegen
@@ -110,11 +94,11 @@ landingContent:
     links:
     - text: Ingebouwde vaardigheden
       url: cognitive-search-predefined-skills.md
-- title: Uw gegevens opvragen
+- title: Querygegevens
   linkLists:
   - linkListType: concept
     links:
-    - text: Overzicht
+    - text: Querytypen en querysamenstelling
       url: search-query-overview.md
     - text: Eenvoudige syntaxis (standaardinstelling)
       url: query-simple-syntax.md

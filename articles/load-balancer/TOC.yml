@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: Procedures
   items:
-    - name: Een openbare load balancer upgraden van het type Basic naar het type Standard
-      href: upgrade-basic-standard.md
-    - name: Een interne load balancer upgraden van het type Basic naar het type Standard
-      href: upgrade-basicInternal-standard.md
+    - name: Een load balancer upgraden van het type Basic naar het type Standard
+      items:
+        - name: Een openbare load balancer van het type Basic upgraden
+          href: upgrade-basic-standard.md
+        - name: 'Een Basis load balancer upgraden: geen uitgaande verbinding vereist'
+          href: upgrade-basicInternal-standard.md
+        - name: 'Een Basic load balancer upgraden: uitgaande verbinding vereist'
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Regels voor uitgaand verkeer configureren
       items:
         - name: Azure Portal

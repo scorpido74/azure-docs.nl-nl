@@ -59,6 +59,8 @@
       href: high-availability-disaster-recovery.md
     - name: Omgevingsvariabelen voor de runtime van taken
       href: batch-compute-node-environment-variables.md
+    - name: Batch-integratie met Azure-beleid
+      href: batch-integration-policies.md
 - name: Instructiegidsen
   items:
     - name: Batch-accounts beheren

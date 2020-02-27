@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: Clusters maken met sjablonen
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: Clusters maken met de opdrachtregel
+            - name: Clusters maken met Azure CLI
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: Clusters maken met PowerShell
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

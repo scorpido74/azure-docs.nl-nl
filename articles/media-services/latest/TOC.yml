@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Latentie
           href: live-event-latency.md
+        - name: Foutcodes voor Live-gebeurtenissen
+          href: live-event-error-codes.md
     - name: Bewaking
       items:
         - name: Gebeurtenissen met Event Grid
@@ -175,6 +177,8 @@
           items:
             - name: Foutcodes voor streaming-eindpunten
               href: streaming-endpoint-error-codes.md
+            - name: Foutcodes voor Live-gebeurtenissen
+              href: live-event-error-codes.md
             - name: Foutcodes in taak
               href: job-error-codes.md
     - name: Hulp bij migratie van v2 naar v3
@@ -325,6 +329,8 @@
       items:
         - name: Foutcodes voor streaming-eindpunten
           href: streaming-endpoint-error-codes.md
+        - name: Foutcodes voor Live-gebeurtenissen
+          href: live-event-error-codes.md
         - name: Foutcodes in taak
           href: job-error-codes.md
 - name: Resources

@@ -100,28 +100,20 @@
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
 - name: Instructiegidsen
   items:
-    - name: Knowledge base bewerken
+    - name: Azure-resources beheren
       items:
-        - name: Een knowledge base bewerken
-          href: How-To/edit-knowledge-base.md
-        - name: Gesprekken met meerdere beurten maken met vervolgvragen
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Chit-chat toevoegen
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Een beveiligd SharePoint-bestand toevoegen
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Resources beheren
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Analyse ophalen
+          href: How-To/get-analytics-knowledge-base.md
+        - name: Een bedrijfscontinuïteitsplan maken
+          href: How-To/business-continuity-plan.md
     - name: Knowledge base beheren
       items:
         - name: Een knowledge base maken
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Antwoord ophalen met metagegevens
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Standaardantwoord instellen
-          href: How-to/change-default-answer.md
         - name: Een bot maken met QnA Maker en LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Taal selecteren
@@ -136,17 +128,27 @@
         - name: Actief leren gebruiken om uw knowledge base te verbeteren
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: Services beheren
+        - name: Een knowledge base bewerken
+          href: How-To/edit-knowledge-base.md
+        - name: Gesprekken met meerdere beurten maken met vervolgvragen
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Chit-chat toevoegen
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Een beveiligd SharePoint-bestand toevoegen
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Knowledge base bewerken
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: Gebruiken met een clienttoepassing
       items:
-        - name: Resources beheren
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Analyse ophalen
-          href: How-To/get-analytics-knowledge-base.md
-        - name: Capaciteit kiezen
-          href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: Een bedrijfscontinuïteitsplan maken
-          href: How-To/business-continuity-plan.md
+        - name: Bot-framework
+          href: Tutorials/create-qna-bot.md
+        - name: LUIS en QnA Maker
+          href: Tutorials/integrate-qnamaker-luis.md
+    - name: Analyse en telemetrie
+      href: How-To/get-analytics-knowledge-base.md
 - name: Naslaginformatie
   items:
     - name: Talen
@@ -155,12 +157,20 @@
       href: limits.md
     - name: Problemen oplossen
       href: troubleshooting.md
-    - name: Bestandsindelingen
+    - name: Serviceconfiguratie
+      href: reference-app-service.md
+    - name: Content- en gegevensformaten
       items:
-        - name: Referentie voor Markdown
-          href: reference-markdown-format.md
-        - name: TSV batchgewijs testen
-          href: reference-tsv-format-batch-testing.md
+        - name: Richtlijnen voor contentindelingen
+          href: reference-document-format-guidelines.md
+        - name: URL's
+          href: reference-document-type-url.md
+        - name: Gegevensrichtlijnen importeren en exporteren
+          href: reference-data-guidelines.md
+    - name: Weergave-indeling
+      href: reference-markdown-format.md
+    - name: Indeling voor batchgewijs testen
+      href: reference-tsv-format-batch-testing.md
     - name: Naslaginformatie over REST-API
       items:
         - name: API's ontwerpen
@@ -169,7 +179,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: API trainen
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: Voorbeelden
       items:
         - name: QnA Maker-helpbot
@@ -197,7 +206,7 @@
             - name: Referentiedocumentatie
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
             - name: Voorbeelden
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
