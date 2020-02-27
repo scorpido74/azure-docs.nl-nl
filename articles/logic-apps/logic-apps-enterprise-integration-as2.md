@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666700"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650556"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange AS2-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
+
+> [!IMPORTANT]
+> De oorspronkelijke AS2-connector wordt afgeschaft, dus zorg ervoor dat u in plaats daarvan de **AS2 (v2)** -connector gebruikt. Deze versie biedt dezelfde functionaliteit als de oorspronkelijke versie, is standaard voor de runtime van de Logic Apps en biedt aanzienlijke prestatie verbeteringen in de voor waarden voor door Voer en bericht grootte. Daarnaast hoeft de systeem eigen v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
 
 Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze bevat triggers en acties voor het beheren van AS2-communicatie. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
 
@@ -46,9 +49,6 @@ Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector
 
 In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt toevoegen aan een bestaande logische app.
 
-> [!IMPORTANT]
-> De oorspronkelijke AS2-connector wordt afgeschaft, dus zorg ervoor dat u in plaats daarvan de **AS2 (v2)** -connector gebruikt. Deze versie biedt dezelfde functionaliteit als de oorspronkelijke versie, is standaard voor de runtime van de Logic Apps en biedt aanzienlijke prestatie verbeteringen in de voor waarden voor door Voer en bericht grootte. Daarnaast hoeft de systeem eigen v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
-
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
@@ -63,9 +63,9 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
 * Als u [Azure Key Vault](../key-vault/key-vault-overview.md) gebruikt voor certificaat beheer, controleert u of uw kluis sleutels de bewerkingen voor **versleuteling** en **ontsleuteling** toestaan. Anders mislukken de coderings-en decodeer acties.
 
-  Ga in het Azure Portal naar uw sleutel kluis, Bekijk de **toegestane bewerkingen**van uw kluis sleutel en bevestig dat de bewerkingen **versleutelen** en **ontsleutelen** zijn geselecteerd.
+  Ga in het Azure Portal naar de sleutel in uw sleutel kluis, Controleer de **toegestane bewerkingen**van uw sleutel en bevestig dat de bewerkingen voor **versleutelen** en **ontsleutelen** zijn geselecteerd, bijvoorbeeld:
 
-  ![Controleer de bewerkingen van de kluis sleutel](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![Controleer de bewerkingen van de kluis sleutel](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -92,6 +92,9 @@ In dit artikel wordt uitgelegd hoe u de AS2-code ring en decodeer acties kunt to
 
    ![Bericht coderings eigenschappen](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
+> [!TIP]
+> Als u problemen ondervindt bij het verzenden van ondertekende of versleutelde berichten, kunt u overwegen verschillende SHA256-algoritme indelingen te proberen. De AS2-specificatie biedt geen informatie over SHA256-indelingen, dus elke provider gebruikt een eigen implementatie of indeling.
+
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>AS2-berichten decoderen
@@ -116,8 +119,11 @@ Zie de [sjabloon en het scenario voor de AS2 Logic-app](https://azure.microsoft.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](/connectors/as2/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
+Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/as2/). 
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), gebruikt de oorspronkelijke ISE versie van deze connector de ISE- [bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

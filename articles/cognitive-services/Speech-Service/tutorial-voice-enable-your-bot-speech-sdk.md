@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562622"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616638"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -155,7 +155,7 @@ Nu u enkele resources hebt gemaakt, gaan we een bot bouwen. We beginnen met het 
 4. Nadat het project is geladen, drukt u op <kbd>F5</kbd> om het project te bouwen en uit te voeren.
 5. Er wordt een browser geopend en er wordt een scherm weer gegeven dat er ongeveer als volgt uitziet.
     > [!div class="mx-imgBorder"]
-    > ![echobot-actief-op-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot die worden uitgevoerd op localhost")
+    > [![echobot-actief-op-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot die worden uitgevoerd op localhost")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Het bot-voor beeld testen met de bot Framework-emulator
 
@@ -171,7 +171,7 @@ De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) 
    ```
    en klik op verbinden.
 4. De bot moet u onmiddellijk begroeten met ' Hallo en Welkom! ' Bericht. Typ een tekst bericht en bevestig dat u een reactie van de bot ontvangt.
-5. Zo kan een uitwisseling van communicatie met een echo bot er als volgt uitzien: ![bot-Framework-emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework-emulator")
+5. Zo kan een uitwisseling van communicatie met een echo bot er als volgt uitzien: [ ![bot-Framework-emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework-emulator")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Uw bot implementeren op een Azure App Service
 
@@ -188,13 +188,14 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 
 1. Klik in de **Solution Explorer**met de rechter muisknop op het **EchoBot** -project en selecteer **publiceren...**
 1. Er wordt een nieuw venster met **de titel Kies een publicatie doel** geopend.
-1. Selecteer **app service** in de navigatie van **Azure-Services** , selecteer **nieuwe maken**en klik vervolgens op **publiceren**.
+1. Selecteer **app service** in de navigatie van **Azure-Services** , selecteer **nieuwe maken**en klik vervolgens op **profiel maken**.
 1. Wanneer het venster **app service maken** wordt weer gegeven:
    * Klik op **een account toevoegen**en meld u aan met de referenties van uw Azure-account. Als u al bent aangemeld, selecteert u het gewenste account in de vervolg keuzelijst.
    * Voor de **naam**van de app moet u een wereld wijd unieke naam invoeren voor uw bot. Deze naam wordt gebruikt om een unieke bot-URL te maken. Er wordt een standaard waarde ingevuld, inclusief de datum en tijd (bijvoorbeeld: "EchoBot20190805125647"). U kunt de standaard naam voor deze zelf studie gebruiken.
    * Voor het **abonnement**stelt u deze in op **gratis proef versie**
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**
    * Voor **hosting plan**selecteert u **SpeechEchoBotTutorial-AppServicePlan**
+   * Voor **Application Insights**, achterlaten **als niets**
 1. Klik op **Maken**.
 1. Er wordt een bericht weer gegeven in Visual Studio dat er als volgt uitziet:
 
@@ -232,12 +233,9 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 > [!NOTE]
 > Zie [een bot verbinden met kanalen](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)als u meer wilt weten over het gebruik van bots kanalen.
 
-<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
 
-1. De eerste stap is het maken van een nieuwe resource voor de registratie. Klik in de [Azure Portal](https://portal.azure.com)op **een resource maken**.
-2. Selecteer in de **bot**van het type zoek balk, nadat de resultaten worden weer gegeven, de **registratie bot-kanalen**.
-3. Klik op **Create**.
-4. U wordt gevraagd om de volgende informatie op te geven:
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Een Azure bot-kanaal registratie maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+2. U wordt gevraagd om de volgende informatie op te geven:
    * Voer voor **bot**-ingang **SpeechEchoBotTutorial-BotRegistration**in.
    * Selecteer voor **abonnement**een **gratis proef versie**.
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**.
@@ -254,7 +252,7 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-BotRegistration | Registratie van bot-kanalen | Wereldwijd |
+| SpeechEchoBotTutorial-BotRegistration | Registratie van bot-kanalen | internationaal |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 > [!IMPORTANT]
@@ -271,7 +269,7 @@ Nu is het tijd om uw bot te registreren met het directe-lijn spraak kanaal. Dit 
    * Selecteer de spraak resource die u eerder hebt gemaakt (bijvoorbeeld **SpeechEchoBotTutorial-speech**) in het menu om uw bot te koppelen aan de sleutel van uw spraak abonnement.
    * Klik op **Opslaan**.
 
-1. Klik in de navigatie van **Azure-Services** op **instellingen**.
+1. Klik in de navigatie van het **bot-beheer** op **instellingen**.
    * Schakel het selectie vakje **streaming-eind punt inschakelen**in het vak in. Dit is nodig voor het inschakelen van een communicatie protocol dat is gebaseerd op Web-sockets tussen uw bot en het directe lijn spraak kanaal.
    * Klik op **Opslaan**.
 
@@ -310,6 +308,7 @@ Als uw probleem niet wordt opgelost in de tabel, raadpleegt u [spraak assistente
 Elke bot verzendt en ontvangt **activiteiten** berichten. In het venster **activiteiten logboek** van de direct line speech-client ziet u getimede logboeken met elke activiteit die de client heeft ontvangen van de bot. U kunt ook de activiteiten zien die de client naar de bot heeft verzonden met behulp van de [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) methode. Wanneer u een logboek item selecteert, worden de details van de gekoppelde activiteit als JSON weer gegeven.
 
 Hier volgt een voor beeld van een JSON van een activiteit die de client heeft ontvangen:
+
 ```json
 {
     "attachments":[],
@@ -395,7 +394,6 @@ U kunt kiezen uit een van de talen die worden vermeld in de tabel met [spraak-na
 1. Open de client-app direct line speech, klik op de knop instellingen (bovenste tandwiel pictogram) en voer `de-de` in het veld taal in (dit is de waarde van de land instelling die wordt vermeld in de tabel met [spraak-naar-tekst](language-support.md#speech-to-text) ). Hiermee wordt de gesp roken taal herkend en wordt de standaard `en-us`overschreven. Dit geeft ook een direct lijn spraak kanaal om een standaard Duitse stem te gebruiken voor het antwoord van de bot.
 2. Sluit de pagina instellingen en klik op de knop opnieuw verbinding maken om een nieuwe verbinding met uw ECHO-bot tot stand te brengen.
 3. Klik op de knop microfoon en zeg een zin in het Duits. U ziet de herkende tekst en de reactie van de echo met de standaard Duitse stem.
-
 
 ### <a name="change-the-default-bot-voice"></a>De standaard bot voice wijzigen
 

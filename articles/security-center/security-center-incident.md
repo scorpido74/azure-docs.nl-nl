@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604073"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615974"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Beveiligings incidenten beheren in Azure Security Center
 
@@ -48,14 +48,20 @@ Voor meer informatie over waarschuwingen, [het beheren van en reageren op beveil
 
 De volgende onderwerpen helpen u bij het door lopen van de verschillende waarschuwingen, volgens de resource typen:
 
-* [IaaS Vm's en server waarschuwingen](security-center-alerts-iaas.md)
-* [Systeem eigen Compute-waarschuwingen](security-center-alerts-compute.md)
-* [Data Services-waarschuwingen](security-center-alerts-data-services.md)
+* [Waarschuwingen voor IaaS Windows-computers](threat-protection.md#windows-machines)
+* [Waarschuwingen voor IaaS Linux-machines](threat-protection.md#linux-machines)
+* [Waarschuwingen voor Azure App Service](threat-protection.md#app-services)
+* [Waarschuwingen voor Azure-containers](threat-protection.md#azure-containers)
+* [Waarschuwingen voor SQL Database en SQL Data Warehouse](threat-protection.md#data-sql)
+* [Waarschuwingen voor Azure Storage](threat-protection.md#azure-storage)
+* [Waarschuwingen voor Cosmos DB](threat-protection.md#cosmos-db)
 
 In de volgende onderwerpen wordt uitgelegd hoe Security Center de verschillende telemetrie gebruikt die wordt verzameld van integratie met de Azure-infra structuur, om extra beveiligings lagen toe te passen voor resources die in azure zijn geïmplementeerd:
 
-* [Waarschuwingen voor service lagen](security-center-alerts-service-layer.md)
-* [Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection](security-center-alerts-integration.md)
+* [Waarschuwingen voor Azure Management Layer (Azure Resource Manager) (preview)](threat-protection.md#management-layer)
+* [Waarschuwingen voor Azure Key Vault (preview-versie)](threat-protection.md#azure-keyvault)
+* [Waarschuwingen voor Azure Network Layer](threat-protection.md#network-layer)
+* [Waarschuwingen van andere services](threat-protection.md#alerts-other)
 
 ## <a name="see-also"></a>Zie ook
 In dit document hebt u kunnen lezen hoe u de mogelijkheid beveiligingsincidenten in Azure Security Center gebruikt. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
@@ -63,4 +69,3 @@ In dit document hebt u kunnen lezen hoe u de mogelijkheid beveiligingsincidenten
 * [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
 * [Beveiligingswaarschuwingen beheren](security-center-managing-and-responding-alerts.md)
 * [Plannings- en bedieningsgids voor Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure.

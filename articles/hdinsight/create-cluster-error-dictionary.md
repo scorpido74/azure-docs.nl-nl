@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905494"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617527"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van een cluster
 
@@ -36,7 +36,7 @@ De externe server heeft een fout geretourneerd: (404) niet gevonden. "
 
 De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegeven als onderdeel van de aanvraag Create cluster. De service ontvangt het voor gaande fout bericht wanneer er wordt geprobeerd om de script actie te openen.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 - Voor een HTTP-of HTTPS-URL verifieert u de URL door te proberen ernaar te gaan vanuit een incognito-browser venster.
 - Zorg ervoor dat het script bestaat in het opslag account dat u in de aanvraag geeft voor een WASB-URL. Zorg er ook voor dat de opslag sleutel voor dit opslag account juist is.
@@ -58,7 +58,7 @@ De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegev
 
 De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegeven als onderdeel van de aanvraag Create cluster. De service ontvangt het voor gaande fout bericht wanneer er wordt geprobeerd om de script actie te openen.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Voeg het bijbehorende Azure Data Lake Storage gen 1-account toe aan het cluster. Voeg ook de service-principal die toegang heeft tot het Data Lake Storage gen 1-account toe aan het cluster.
 
@@ -74,7 +74,7 @@ Voeg het bijbehorende Azure Data Lake Storage gen 1-account toe aan het cluster.
 
 De grootte van de virtuele machine die u hebt opgegeven, is niet toegestaan voor de rol. Deze fout kan optreden omdat de waarde voor de VM-grootte niet werkt zoals verwacht of niet geschikt is voor de computer functie.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 In het fout bericht worden de geldige waarden voor de VM-grootte weer gegeven. Selecteer een van deze waarden en voer de aanvraag cluster maken opnieuw uit.
 
@@ -90,7 +90,7 @@ De VirtualNetworkId is niet geldig. VirtualNetworkId '\<USER_VIRTUALNETWORKID\>'
 
 De **VirtualNetworkId** -waarde die u hebt opgegeven tijdens het maken van het cluster heeft niet de juiste indeling.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Zorg ervoor dat de waarden voor **VirtualNetworkId** en subnet de juiste indeling hebben. De **VirtualNetworkId** -waarde ophalen:
 
@@ -114,7 +114,7 @@ Hier volgt een voor beeld van een virtuele netwerk-ID:
 
 Het aangepaste script dat u hebt gegeven tijdens de aanvraag voor het maken van een cluster wordt uitgevoerd nadat het cluster is geïmplementeerd. Deze fout code geeft aan dat er een fout is opgetreden tijdens het uitvoeren van het aangepaste script met de naam \<SCRIPT_NAME\>.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Omdat het script het aangepaste script is, raden we u aan het probleem op te lossen en het script zo nodig opnieuw uit te voeren. Raadpleeg de logboeken in de map/var/lib/ambari-agent/* om de script fout op te lossen. Of open de pagina **bewerkingen** in de gebruikers interface van Ambari en selecteer vervolgens de bewerking **run_customscriptaction** om de fout gegevens weer te geven.
 
@@ -130,7 +130,7 @@ Omdat het script het aangepaste script is, raden we u aan het probleem op te los
 
 De aangepaste meta Store is niet compatibel met de geselecteerde versie van het HDInsight-cluster. Op dit moment ondersteunen HDInsight 4,0-clusters alleen de meta Store-versie 3,0 en hoger, terwijl HDInsight 3,6-clusters geen ondersteuning bieden voor de meta Store-versie 3,0 en hoger.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Alleen meta Store-versies gebruiken die worden ondersteund door uw versie van het HDInsight-cluster. Als u geen aangepaste meta Store opgeeft, maakt HDInsight intern een meta Store en verwijdert deze vervolgens tijdens het verwijderen van het cluster.
 
@@ -146,7 +146,7 @@ Alleen meta Store-versies gebruiken die worden ondersteund door uw versie van he
 
 Een firewall regel in uw netwerk beveiligings groep (NSG) blokkeert de cluster communicatie met de essentiële Azure-status-en beheer Services.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verkeer te beheren, voert u de volgende acties uit voordat u HDInsight installeert:
 
@@ -167,12 +167,12 @@ Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verk
 
 U hebt niet de vereiste machtigingen voor het beheren van de identiteit opgegeven. De door de gebruiker toegewezen beheerde identiteit heeft geen Blob Storage rol Inzender op het Azure Data Lake Storage Gen2 Storage-account.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Open Azure Portal.
 1. Ga naar uw opslagaccount.
 1. Kijk onder **Access Control (IAM)** .
-1. Zorg ervoor dat de rol voor de rol van blobgegevens van de opslag of de eigenaar van de blobgegevens ' toegewezen ' toegang heeft tot de door de gebruiker toegewezen beheerde identiteit voor het abonnement.
+1. Zorg ervoor dat de gebruiker de rol Storage BLOB data contributor of de gebruikersrol Storage BLOB-gegevens eigenaar heeft toegewezen.
 
 Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage Gen2-account](hdinsight-hadoop-use-data-lake-storage-gen2.md)voor meer informatie.
 
@@ -188,7 +188,7 @@ Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage
 
 Als netwerk beveiligings groepen of door de gebruiker gedefinieerde routes (Udr's) binnenkomend verkeer naar uw HDInsight-cluster beheren, moet u ervoor zorgen dat uw cluster kan communiceren met de essentiële Azure-status-en beheer Services.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verkeer te beheren, voert u de volgende acties uit voordat u HDInsight installeert:
 
@@ -208,7 +208,7 @@ Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verk
 
 Deze fout wordt doorgaans gegenereerd wanneer er een tijdelijk probleem is of een Azure-storing.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Controleer de [Azure-status](https://status.azure.com) pagina voor eventuele Azure-uitval die van invloed kunnen zijn op de cluster implementatie. Als er geen storingen zijn, voert u de cluster implementatie opnieuw uit.
 

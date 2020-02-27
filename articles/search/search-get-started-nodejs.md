@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406937"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623998"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in node. js met REST-Api's
 > [!div class="op_single_selector"]
@@ -31,19 +31,24 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick Start.
+We hebben de volgende software en services gebruikt voor het bouwen en testen van deze Snelstartgids:
 
-+ [Node.js](https://nodejs.org).
-+ [NPM](https://www.npmjs.com) moet worden geïnstalleerd door node. js.
-+ In dit artikel vindt u een voor beeld van een structuur van de index en de bijbehorende documenten of vanuit de [ **Quick** start van de opslag plaats](https://github.com/Azure-Samples/azure-search-javascript-samples/).
++ [Node.js](https://nodejs.org)
+
++ [NPM](https://www.npmjs.com) moet worden geïnstalleerd door node. js
+
++ In dit artikel vindt u een voor beeld van een structuur van de index en de bijbehorende documenten of vanuit de [ **Quick** start-map van de opslag plaats](https://github.com/Azure-Samples/azure-search-javascript-samples/)
+
 + [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
 
 Aanbevolen:
 
-* [Visual Studio Code](https://code.visualstudio.com).
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) -en [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) -uitbrei dingen voor VSCode.
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>Sleutels en Url's ophalen
 
 Aanroepen naar de service vereisen een URL-eind punt en een toegangs sleutel voor elke aanvraag. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
@@ -108,16 +113,17 @@ Begin met het openen van een Power shell-console of een andere omgeving waarin u
       }
     }
     ```
-Maak een bestand **azure_search_config. json** om uw zoek service gegevens op te slaan:
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. Maak een bestand **azure_search_config. json** om uw zoek service gegevens op te slaan:
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 Vervang de `[SERVICE_NAME]` waarde door de naam van uw zoek service. Vervang `[ADMIN_KEY]` en `[QUERY_KEY]` door de sleutel waarden die u eerder hebt vastgelegd. 
 
@@ -403,7 +409,7 @@ Met het [ **nconf** -pakket](https://github.com/indexzero/nconf) kunt u configur
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ Geef tot slot de belangrijkste asynchrone `run`-functie op en roep deze aan. Dez
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();

@@ -4,12 +4,12 @@ description: Host de Jenkins-build, implementeer een automatiseringsserver in Az
 keywords: jenkins, azure, devops, overzicht
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605689"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620167"
 ---
 # <a name="azure-and-jenkins"></a>Azure en Jenkins
 
@@ -33,7 +33,7 @@ Voeg buildagents toe aan een bestaande Jenkins-implementatie om de capaciteit va
 
 Zodra Jenkins-taken en -pijplijnen zijn geconfigureerd voor gebruik met een [Azure-service-principal](/azure/azure-resource-manager/resource-group-overview), kunnen deze referenties worden gebruikt om:
 
-- U kunt het bouwen van artefacten veilig opslaan en archiveren in [Azure Storage](/azure/storage/common/storage-introduction) met behulp van de [Azure Storage-invoeg toepassing](https://plugins.jenkins.io/windows-azure-storage). Raadpleeg de [Instructies voor Jenkins-opslag](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) voor meer informatie.
+- U kunt het bouwen van artefacten veilig opslaan en archiveren in [Azure Storage](/azure/storage/common/storage-introduction) met behulp van de [Azure Storage-invoeg toepassing](https://plugins.jenkins.io/windows-azure-storage). Raadpleeg de [Instructies voor Jenkins-opslag](storage-java-jenkins-continuous-integration-solution.md) voor meer informatie.
 - Beheer en configureer Azure-resources met [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline).
 
 ## <a name="deploy-your-code-into-azure-services"></a>Uw code implementeren in Azure-services

@@ -2,14 +2,14 @@
 title: Probleem oplossing-persoonlijker
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het oplossen van problemen met persoonlijke instellingen.
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469541"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650517"
 ---
 # <a name="personalizer-troubleshooting"></a>Problemen met persoonlijker oplossen
 
@@ -32,6 +32,19 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het oplossen van p
 </details>
 
 ## <a name="learning-loop"></a>Learning-lus
+
+<details>
+<summary>
+<b>De learning-lus bereikt geen 100% in overeenstemming met het systeem zonder persoonlijker. Hoe kan ik dit probleem oplossen?</b></summary>
+
+**Antwoord**: de redenen waarom u uw doel niet bereikt met de learning-lus:
+* Er zijn onvoldoende functies verzonden met de positie-API-aanroep
+* Fouten in de functies die zijn verzonden, zoals het verzenden van niet-geaggregeerde functie gegevens zoals tijds tempels voor het classificeren van de API
+* Fouten met loop-verwerking, zoals het verzenden van belonings gegevens naar belonings-API voor gebeurtenissen
+
+Als u dit wilt oplossen, moet u de verwerking wijzigen door de functies te wijzigen die naar de lus worden verzonden, of om ervoor te zorgen dat de beloning een correcte beoordeling is van de kwaliteit van de reactie van de rang schikking.
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ Wanneer de nieuwe update periode begint, wordt het bijgewerkte model gebruikt en
 <details>
 <summary><b>Hoe kan ik een leer beleid importeren?</b></summary>
 
-**Antwoord**: meer informatie over [concepten van het trainings beleid](concept-active-learning.md#understand-learning-policy-settings) en [het Toep assen](how-to-learning-policy.md) van een nieuw leer beleid. Als u geen leer beleid wilt selecteren, kunt u de [offline-evaluatie](how-to-offline-evaluation.md) gebruiken om een leer beleid te suggereren op basis van uw huidige gebeurtenissen.
+**Antwoord**: meer informatie over [concepten van het trainings beleid](concept-active-learning.md#understand-learning-policy-settings) en [het Toep assen](how-to-manage-model.md) van een nieuw leer beleid. Als u geen leer beleid wilt selecteren, kunt u de [offline-evaluatie](how-to-offline-evaluation.md) gebruiken om een leer beleid te suggereren op basis van uw huidige gebeurtenissen.
 
 </details>
 

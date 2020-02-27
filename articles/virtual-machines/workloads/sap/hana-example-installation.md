@@ -4,21 +4,21 @@ description: HANA installeren op SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101283"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617214"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>HANA installeren op SAP HANA op Azure (grote exemplaren)
 
@@ -39,7 +39,7 @@ De HANA-eenheden voor grote instanties zijn niet rechtstreeks verbonden met inte
 
 U hebt een SAP S-gebruiker of een andere gebruiker nodig, waarmee u de SAP Marketplace kunt openen.
 
-1. Meld u aan en ga naar [SAP Service Marketplace](https://support.sap.com/en/index.html). Selecteer **Software** > -**installaties downloaden en upgraden** > **per alfabetische index**. Selecteer vervolgens **onder H – SAP Hana platform Edition** > **SAP Hana platform Edition 2,0** > -**installatie**. Down load de bestanden die worden weer gegeven in de volgende scherm afbeelding.
+1. Meld u aan en ga naar [SAP Service Marketplace](https://support.sap.com/en/index.html). Selecteer **Software** > - **installaties downloaden en** > **op alfabetische volg orde**bijwerken. Selecteer vervolgens **onder H – SAP Hana platform edition** > **SAP HANA platform Edition 2,0** > **installatie**. Down load de bestanden die worden weer gegeven in de volgende scherm afbeelding.
 
    ![Scherm afbeelding van de bestanden die moeten worden gedownload](./media/hana-installation/image16_download_hana.PNG)
 

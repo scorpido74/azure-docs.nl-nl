@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/20/2020
+ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186887"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623153"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -82,20 +82,18 @@ Wijs de beheerde identiteit toe aan de rol van de eigenaar van de **opslag-BLOB*
     ![Scherm afbeelding die laat zien hoe u een RBAC-rol toewijst](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Selecteer **Opslaan**. De gebruikers-id die u hebt geselecteerd, wordt nu weer gegeven onder de geselecteerde rol.
-1. Nadat deze initiële installatie is voltooid, kunt u een cluster maken via de portal. Het cluster moet zich in dezelfde Azure-regio bevinden als het opslag account. Selecteer in de sectie **opslag** van het menu cluster maken de volgende opties:
+1. Nadat deze initiële installatie is voltooid, kunt u een cluster maken via de portal. Het cluster moet zich in dezelfde Azure-regio bevinden als het opslag account. Selecteer op het tabblad **opslag** van het menu cluster maken de volgende opties:
 
     * Selecteer **Azure data Lake Storage Gen2**voor het **primaire opslag type**.
-    * Onder **Selecteer een opslag account**zoekt en selecteert u het zojuist gemaakte data Lake Storage Gen2-opslag account.
+    * Onder **primair opslag account**zoekt en selecteert u het zojuist gemaakte data Lake Storage Gen2-opslag account.
 
-        ![Opslag instellingen voor het gebruik van Data Lake Storage Gen2 met Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    * Selecteer onder **identiteit**de zojuist gemaakte door de gebruiker toegewezen beheerde identiteit.
 
-    * Onder **identiteit**selecteert u het juiste abonnement en de zojuist gemaakte door de gebruiker toegewezen beheerde identiteit.
+        ![Opslag instellingen voor het gebruik van Data Lake Storage Gen2 met Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
-        ![Identiteits instellingen voor het gebruik van Data Lake Storage Gen2 met HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-
-> [!NOTE]
-> * Als u een secundaire Data Lake Storage Gen2 account wilt toevoegen, moet u op het niveau van het opslag account eenvoudigweg de beheerde identiteit toewijzen die u eerder hebt gemaakt voor het nieuwe Data Lake Storage Gen2-opslag account dat u wilt toevoegen. U wordt aangeraden een secundaire Data Lake Storage Gen2-account toe te voegen via de Blade ' extra opslag accounts ' op HDInsight wordt niet ondersteund.
-> * U kunt RA-GRS of RA-ZRS inschakelen op het Azure-opslag account dat door HDInsight wordt gebruikt. Het maken van een cluster op basis van het ' RA-GRS-of RA-ZRS-secundaire eind punt wordt echter niet ondersteund.
+    > [!NOTE]
+    > * Als u een secundaire Data Lake Storage Gen2 account wilt toevoegen, moet u op het niveau van het opslag account eenvoudigweg de beheerde identiteit toewijzen die u eerder hebt gemaakt voor het nieuwe Data Lake Storage Gen2-opslag account dat u wilt toevoegen. U wordt aangeraden een secundaire Data Lake Storage Gen2-account toe te voegen via de Blade ' extra opslag accounts ' op HDInsight wordt niet ondersteund.
+    > * U kunt RA-GRS of RA-ZRS inschakelen op het Azure-opslag account dat door HDInsight wordt gebruikt. Het maken van een cluster op basis van het ' RA-GRS-of RA-ZRS-secundaire eind punt wordt echter niet ondersteund.
 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Een cluster met Data Lake Storage Gen2 maken via de Azure CLI
@@ -151,7 +149,7 @@ az group deployment create --name HDInsightADLSGen2Deployment \
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>Een cluster met Data Lake Storage Gen2 maken via Azure PowerShell
 
-Het gebruik van Power shell om een HDInsight-cluster met Azure Data Lake Storage Gen2 te maken wordt momenteel niet ondersteund.
+Het gebruik van Power shell om een HDInsight-cluster met Azure Data Lake Storage Gen2 te maken, wordt momenteel niet ondersteund.
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Toegangs beheer voor Data Lake Storage Gen2 in HDInsight
 
@@ -205,7 +203,7 @@ Voor beelden zijn gebaseerd op een [SSH-verbinding](./hdinsight-hadoop-linux-use
 
 #### <a name="a-few-hdfs-commands"></a>Enkele hdfs-opdrachten
 
-1. Maak een eenvoudig bestand op lokale opslag.
+1. Maak een bestand op lokale opslag.
 
     ```bash
     touch testFile.txt

@@ -12,12 +12,12 @@ ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581460"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647588"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -276,7 +276,6 @@ Uw aangepaste beleid en Azure AD B2C Tenant zijn nu gereed. Maak vervolgens een 
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1*.
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**
 1. Onder **omleidings-URI**selecteert u **Web**en voert u vervolgens `https://localhost`in. U wijzigt deze waarde later in het manifest van de toepassings registratie.
-1. Selecteer **verlenen beheerder toestemming geven aan OpenID Connect-en offline_access machtigingen**.
 1. Selecteer **Registreren**.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 het app-manifest bijwerken
@@ -338,7 +337,7 @@ De laatste stap is het inschakelen van Azure AD B2C als een SAML-IdP in uw SAML-
 Enkele of alle volgende zijn doorgaans vereist:
 
 * **Meta gegevens**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Verlener**: `https://tenant-name.onmicrosoft.com/policy-name`
+* **Verlener**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **Aanmeldings-URL/SAML-eind punt/SAML-URL**: Controleer de waarde in het bestand met meta gegevens
 * **Certificaat**: dit is *B2C_1A_SamlIdpCert*, maar zonder de persoonlijke sleutel. De open bare sleutel van het certificaat ophalen:
 

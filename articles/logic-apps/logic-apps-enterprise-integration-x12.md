@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792316"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651471"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
@@ -34,7 +34,7 @@ Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterpris
 
 ## <a name="create-an-x12-agreement"></a>Een X12-overeenkomst maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com "Azure Portal"). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com "Azure-portal"). 
 
 2. Selecteer in het hoofd menu van Azure **alle services**. 
    Voer in het zoekvak ' Integration ' in en selecteer vervolgens **integratie accounts**.  
@@ -66,7 +66,7 @@ Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterpris
 
     | Eigenschap | Beschrijving |
     | --- | --- |
-    | Naam |Naam van de overeenkomst |
+    | Name |Naam van de overeenkomst |
     | Type overeenkomst | Moet X12 zijn |
     | Host-partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
     | Host-id |Een id voor de host-partner |
@@ -91,7 +91,7 @@ Configureer deze eigenschappen op basis van uw overeenkomst met de partner die b
 
 U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de geselecteerde instellingen.
 
-### <a name="identifiers"></a>Id's
+### <a name="identifiers"></a>Identifiers
 
 ![Id-eigenschappen instellen](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
 
@@ -112,7 +112,7 @@ U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de ge
 | FA verwacht |Retourneert een functionele bevestiging van de verzender van het uitwisselings certificaat. Selecteer vervolgens of u de 997-of 999-bevestigingen wilt, op basis van de schema versie |
 | AK2/IK2-lus toevoegen |Hiermee kunnen AK2-lussen worden gegenereerd in functionele bevestigingen voor geaccepteerde transactie sets |
 
-### <a name="schemas"></a>Schema 's
+### <a name="schemas"></a>Schema's
 
 Selecteer een schema voor elk transactie type (ST1) en Sender Application (GS2). De receive-pijp lijn ontleedt het inkomende bericht door te voldoen aan de waarden voor ST1 en GS2 in het inkomende bericht met de waarden die u hier instelt, en het schema van het inkomende bericht met het schema dat u hier hebt ingesteld.
 
@@ -146,7 +146,7 @@ Selecteer een schema voor elk transactie type (ST1) en Sender Application (GS2).
 | Dubbele items van groeps controle nummers niet toestaan |Interwijzigingen met dubbele groeps controle nummers blok keren. |
 | Geen duplicaten voor het instellen van transactie sets toestaan |Interacties blok keren met dubbele trans acties set control numbers. |
 
-### <a name="validations"></a>Validaties
+### <a name="validation"></a>Validatie
 
 ![Validatie-eigenschappen voor ontvangen berichten instellen](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -154,7 +154,7 @@ Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoeg
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Bericht type |Selecteer het type EDI-bericht. |
+| Berichttype |Selecteer het type EDI-bericht. |
 | EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
 | Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
 | Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
@@ -187,7 +187,7 @@ Configureer deze eigenschappen op basis van uw overeenkomst met uw partner die b
 
 Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die voldoen aan de geselecteerde instellingen.
 
-### <a name="identifiers"></a>Id's
+### <a name="identifiers"></a>Identifiers
 
 ![Id-eigenschappen instellen](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
 
@@ -208,7 +208,7 @@ Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die vold
 | FA verwacht |Een functie-bevestigingen (FA) retour neren naar de verzender van het uitwisselings certificaat. Selecteer of u de 997-of 999-bevestigingen wilt, op basis van de schema versies waarmee u werkt. Deze bevestigingen worden verwacht door de host-partner op basis van de ontvangst instellingen van de overeenkomst. |
 | VA-versie |De VA-versie selecteren |
 
-### <a name="schemas"></a>Schema 's
+### <a name="schemas"></a>Schema's
 
 ![Te gebruiken schema selecteren](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
@@ -248,7 +248,7 @@ Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die vold
 | Uitwisselings controle nummer (ISA13) |Vereist, voer een bereik van waarden in voor het uitwisselings controle nummer. Voer een numerieke waarde in met mini maal 1 en Maxi maal 999999999 |
 | Groeps controle nummer (GS06) |Vereist, voer een bereik van getallen in voor het groeps controle nummer. Voer een numerieke waarde in met mini maal 1 en Maxi maal 999999999 |
 | ST02 (trans actie set Control Number) |Vereist, voer een bereik van getallen in voor het besturings nummer van de Transactieset. Voer een bereik met numerieke waarden in met mini maal 1 en Maxi maal 999999999 |
-| Voorvoegsel |Optioneel, opgegeven voor het bereik van de trans actie besturings nummers die worden gebruikt bij bevestiging. Voer een numerieke waarde in voor de middelste twee velden en een alfanumerieke waarde (indien gewenst) voor het voor voegsel en de achtervoegsel velden. De middelste velden zijn vereist en bevatten de minimum-en maximum waarden voor het controle nummer |
+| Beleids |Optioneel, opgegeven voor het bereik van de trans actie besturings nummers die worden gebruikt bij bevestiging. Voer een numerieke waarde in voor de middelste twee velden en een alfanumerieke waarde (indien gewenst) voor het voor voegsel en de achtervoegsel velden. De middelste velden zijn vereist en bevatten de minimum-en maximum waarden voor het controle nummer |
 | Achtervoegsel |Optioneel, opgegeven voor het bereik van de besturings getallen voor trans actie sets die worden gebruikt in een bevestiging. Voer een numerieke waarde in voor de middelste twee velden en een alfanumerieke waarde (indien gewenst) voor het voor voegsel en de achtervoegsel velden. De middelste velden zijn vereist en bevatten de minimum-en maximum waarden voor het controle nummer |
 
 ### <a name="character-sets-and-separators"></a>Teken sets en scheidings tekens
@@ -279,7 +279,7 @@ Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoeg
 
 | Eigenschap | Beschrijving |
 | --- | --- |
-| Bericht type |Selecteer het type EDI-bericht. |
+| Berichttype |Selecteer het type EDI-bericht. |
 | EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
 | Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
 | Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
@@ -296,9 +296,13 @@ Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoeg
 
     ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>De Swagger weer geven
-Zie [Swagger-gegevens](/connectors/x12/). 
+## <a name="connector-reference"></a>Connector-verwijzing
 
-## <a name="learn-more"></a>Meer informatie
-* [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
+Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/x12/). 
 
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)

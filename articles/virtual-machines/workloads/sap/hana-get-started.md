@@ -4,7 +4,7 @@ description: Snelstartgids voor het hand matig installeren van SAP HANA met éé
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750367"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617238"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Snelstartgids: hand matige installatie van single-instance SAP HANA op Azure Virtual Machines
 ## <a name="introduction"></a>Inleiding
@@ -50,7 +50,7 @@ Zie [SAP Hana hoge Beschik baarheid voor Azure virtual machines](https://docs.mi
 
 Als u een SAP HANA exemplaar of S/4HANA-of BW/4HANA-systeem snel wilt implementeren, kunt u overwegen om de [SAP Cloud Appliance Library](https://cal.sap.com)te gebruiken. In [deze hand leiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)vindt u documentatie over het implementeren van een S/4HANA-systeem via de SAP Cloud Appliance Library op Azure. U hebt alleen een Azure-abonnement nodig en een SAP-gebruiker die kan worden geregistreerd met de SAP Cloud Appliance Library.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 ### <a name="sap-hana-backup"></a>SAP HANA back-up
 Zie voor informatie over het maken van een back-up van SAP HANA-data bases op virtuele machines van Azure:
 * [Back-upgids voor SAP Hana op Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
@@ -118,7 +118,7 @@ In deze sectie vindt u de belangrijkste stappen voor een hand matige, SAP HANA i
 8. Voer de lokale IP-adressen van de virtuele test-Vm's in het bestand/etc/hosts-bestand in.
 9. Voer de para meter **niet** in het bestand/etc/fstab-bestand in.
 10. Stel de Linux-kernel-para meters in volgens de Linux-versie van het besturings systeem die u gebruikt. Zie voor meer informatie de SAP-opmerkingen over HANA en de sectie kernel-para meters in deze hand leiding.
-11. Wissel ruimte toevoegen.
+11. Voeg wisselruimte toe.
 12. U kunt eventueel een grafisch bureau blad installeren op de virtuele machines die u wilt testen. Gebruik anders een installatie van een externe SAPinst.
 13. Down load de SAP-software via de SAP Service Marketplace.
 14. Installeer het SAP ASCS-exemplaar op de app Server-VM.
@@ -140,7 +140,7 @@ In deze sectie vindt u de belangrijkste stappen voor een hand matige, SAP HANA i
 8. Voer de lokale IP-adressen van de virtuele test-Vm's in het bestand/etc/hosts-bestand in.
 9. Voer de para meter **niet** in het bestand/etc/fstab-bestand in.
 10. Stel de kernel-para meters in volgens de Linux-versie van het besturings systeem die u gebruikt. Zie voor meer informatie de SAP-opmerkingen over HANA en de sectie kernel-para meters in deze hand leiding.
-11. Wissel ruimte toevoegen.
+11. Voeg wisselruimte toe.
 12. U kunt eventueel een grafisch bureau blad installeren op de virtuele machines die u wilt testen. Gebruik anders een installatie van een externe SAPinst.
 13. Down load de SAP-software via de SAP Service Marketplace.
 14. Maak een groep, sapsys, met groeps-ID 1001, op de HANA DB-Server-VM.
@@ -180,13 +180,13 @@ Afhankelijk van het soort probleem worden patches ingedeeld op categorie en erns
 - Optioneel
 - Functie
 - Document
-- yast
+- Yast
 
 Veelgebruikte waarden voor ernst zijn:
 
 - Kritiek
 - Belangrijk
-- Gemiddeld
+- Prioriteit
 - Laag
 - Opgegeven
 
@@ -251,7 +251,7 @@ In de volgende scherm afbeelding ziet u hoe de kernel-instellingen zijn gewijzig
 
 ![De kernel-instellingen zijn gewijzigd in het configuratie bestand en gecompileerd met behulp van grub2-mkconfig](./media/hana-get-started/image006.jpg)
 
-Een andere mogelijkheid is om de instellingen te wijzigen met behulp van YaST en de **opstart lader**  >  instellingen voor**kernel-para meters** :
+Een andere mogelijkheid is om de instellingen te wijzigen met behulp van YaST en de **opstart lader** > instellingen voor **kernel-para meters** :
 
 ![Het tabblad Instellingen voor kernel-para meters in YaST-opstart laad programma](./media/hana-get-started/image007.jpg)
 
@@ -358,9 +358,9 @@ Nadat het ASCS-exemplaar is geïnstalleerd op de app Server-VM, wordt dit aanged
 
 ![SAP-beheer console met het ASCS-exemplaar dat is geïnstalleerd op de app Server-VM met behulp van een groen pictogram](./media/hana-get-started/image016.jpg)
 
-Op de VM van de app-server wordt de/sapmnt-Directory gedeeld via NFS met behulp van de **rw** -en **no_root_squash** -opties. De standaard waarden zijn **ro** en **root_squash**. Dit kan leiden tot problemen bij het installeren van het data base-exemplaar.
+Op de VM van de app-server wordt de/sapmnt-map gedeeld via NFS met behulp van de **rw's** en de **no_root_squash** opties. De standaard waarden zijn **ro** en **root_squash**, wat kan leiden tot problemen bij het installeren van het data base-exemplaar.
 
-![De/sapmnt-map via NFS delen met behulp van de RW-en no_root_squash-opties](./media/hana-get-started/image017b.jpg)
+![De/sapmnt-map via NFS delen met behulp van de rw's en no_root_squash opties](./media/hana-get-started/image017b.jpg)
 
 Als de volgende scherm afbeelding wordt weer gegeven, moet de/sapmnt-share van de virtuele machine van de app-server worden geconfigureerd op de SAP HANA DB-Server-VM met behulp van de **NFS-client** en YaST:
 
@@ -432,13 +432,13 @@ Op de volgende scherm afbeelding ziet u alle belang rijke opties die u eerder he
 > [!IMPORTANT]
 > Directory's met de naam voor HANA-logboeken en-gegevens volumes en het installatiepad, dat in dit voor beeld/Hana/Shared is, en/usr/sap mogen geen deel uitmaken van het hoofd bestands systeem. Deze mappen maken deel uit van de Azure-gegevens schijven die zijn gekoppeld aan de virtuele machine. Zie de sectie schijf installatie voor meer informatie. 
 
-Deze methode helpt voor komen dat het hoofd bestandssysteem bijna vol is. U ziet dat de HANA-systeem beheerder gebruikers-ID heeft `1005` en deel uitmaakt van de `sapsys` groep met de ID `1001` die is gedefinieerd vóór de installatie.
+Deze methode helpt voor komen dat het hoofd bestandssysteem bijna vol is. U ziet dat de HANA-systeem beheerder gebruikers-ID heeft `1005` en deel uitmaakt van de `sapsys` groep met de ID `1001`die is gedefinieerd vóór de installatie.
 
 ![Lijst met alle belang rijke SAP HANA onderdelen die eerder zijn geselecteerd](./media/hana-get-started/image032.jpg)
 
 Controleer de `\<HANA SID\>adm user` gegevens in de map/etc/passwd. Zoek naar `azdadm`, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![HANA \<HANA SID \>adm gebruikers gegevens die worden weer gegeven in de map/etc/passwd](./media/hana-get-started/image033.jpg)
+![HANA \<HANA SID\>adm-gebruikers gegevens die worden weer gegeven in de map/etc/passwd](./media/hana-get-started/image033.jpg)
 
 Nadat u SAP HANA hebt geïnstalleerd met behulp van HDBLCM, ziet u de bestands structuur in SAP HANA Studio, zoals wordt weer gegeven in de volgende scherm afbeelding. Het SAPABAP1-schema, dat alle SAP NetWeaver-tabellen bevat, is nog niet beschikbaar.
 

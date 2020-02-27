@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373118"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651725"
 ---
 ## <a name="use-custom-page-content"></a>Aangepaste pagina-inhoud gebruiken
 
@@ -61,7 +61,7 @@ Wanneer u uw eigen HTML-en CSS-bestanden gebruikt om de gebruikers interface aan
 ## <a name="guidelines-for-using-custom-page-content"></a>Richt lijnen voor het gebruik van aangepaste pagina-inhoud
 
 - Gebruik een absolute URL wanneer u externe resources zoals media, CSS en Java script-bestanden opneemt in uw HTML-bestand.
-- Voeg het kenmerk `data-preload="true"` toe aan uw HTML-tags om de laad volgorde voor CSS en Java script te bepalen. Met `data-preload=true`wordt de pagina samengesteld voordat deze wordt weer gegeven aan de gebruiker. Met dit kenmerk wordt voor komen dat de pagina wordt ' Flik keren ' door het CSS-bestand vooraf te laden, zonder dat de HTML ongedaan wordt weer gegeven voor de gebruiker. Het volgende HTML-code fragment toont het gebruik van de `data-preload`-tag.
+- Met de [pagina-indeling versie](../articles/active-directory-b2c/page-layout.md) 1.2.0 en hoger kunt u het kenmerk `data-preload="true"` toevoegen aan uw HTML-tags om de laad volgorde voor CSS en Java script te bepalen. Met `data-preload=true`wordt de pagina samengesteld voordat deze wordt weer gegeven aan de gebruiker. Met dit kenmerk wordt voor komen dat de pagina wordt ' Flik keren ' door het CSS-bestand vooraf te laden, zonder dat de HTML ongedaan wordt weer gegeven voor de gebruiker. Het volgende HTML-code fragment toont het gebruik van de `data-preload`-tag.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

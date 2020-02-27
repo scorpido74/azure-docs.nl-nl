@@ -3,12 +3,12 @@ title: Share Point-bestanden-QnA Maker
 description: Voeg beveiligde share point-gegevens bronnen aan uw Knowledge Base toe om de Knowledge Base te verrijken met vragen en antwoorden die kunnen worden beveiligd met Active Directory.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544161"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650432"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Een beveiligde share point-gegevens bron toevoegen aan uw Knowledge Base
 
@@ -20,7 +20,8 @@ Als de QnA Maker Knowledge Base manager niet de Active Directory Manager is, moe
 
 ## <a name="prerequisites"></a>Vereisten
 
-QnA Maker gebruikt Microsoft Graph voor machtigingen. Als uw share point on-premises is, kunt u niet extra heren uit share point omdat Microsoft Graph geen machtigingen kunt vaststellen.
+* In de cloud gebaseerde share point-QnA Maker gebruikt Microsoft Graph voor machtigingen. Als uw share point on-premises is, kunt u niet extra heren uit share point omdat Microsoft Graph geen machtigingen kunt vaststellen.
+* URL-indeling-QnA Maker ondersteunt alleen share point-url's die zijn gegenereerd voor delen en de indeling https://*. share point. com
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Ondersteunde bestands typen toevoegen aan de Knowledge Base
 

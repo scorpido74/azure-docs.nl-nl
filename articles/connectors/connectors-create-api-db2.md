@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446183"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651378"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Toegang tot en beheer van IBM DB2-resources met behulp van Azure Logic Apps
 
@@ -26,7 +26,7 @@ De DB2-connector bevat een micro soft-client die communiceert met externe DB2-se
 
 De IBM DB2-connector ondersteunt deze IBM DB2-platforms en-versies samen met IBM DB2-compatibele producten die ondersteuning bieden voor Distributed relation data base Architecture (DRDA) SQL Access Manager (SQLAM)-versies 10 en 11:
 
-| Platform | Versie | 
+| Platform | Version | 
 |----------|---------|
 | IBM DB2 voor z/O'S | 11,1, 10,1 |
 | IBM DB2 voor i | 7,3, 7,2, 7,1 |
@@ -80,7 +80,7 @@ In de voor beelden in dit artikel wordt de **terugkeer patroon** trigger gebruik
 
 Als u de verbinding wilt instellen, geeft u deze verbindings Details op wanneer u hierom wordt gevraagd, kiest u **maken**en slaat u vervolgens uw logische app op:
 
-| Eigenschap | Verplicht | Beschrijving |
+| Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
 | **Verbinding maken via on-premises gateway** | Nee | Geldt alleen voor on-premises verbindingen. |
 | **Verbindingsnaam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' |
@@ -100,7 +100,7 @@ Bijvoorbeeld:
 
 Voordat u een verbinding maakt, moet uw on-premises gegevens gateway al zijn geïnstalleerd. Anders kunt u de instelling van uw verbinding niet volt ooien. Als u de gateway hebt geïnstalleerd, gaat u door met het leveren van deze verbindings gegevens en kiest u **maken**.
 
-| Eigenschap | Verplicht | Beschrijving |
+| Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
 | **Verbinding maken via on-premises gateway** | Ja | Is van toepassing wanneer u een on-premises verbinding wilt en de on-premises verbindings eigenschappen wilt weer geven. |
 | **Verbindingsnaam** | Ja | De naam voor de verbinding, bijvoorbeeld ' MyLogicApp-DB2-Connection ' | 
@@ -151,7 +151,7 @@ Als u één record in een DB2-database tabel wilt ophalen, gebruikt u de actie *
 
 1. Geef waarden op voor alle vereiste eigenschappen (*). Nadat u een tabel hebt geselecteerd, toont de actie de relevante eigenschappen die specifiek zijn voor records in die tabel.
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel met de gewenste record, zoals ' gebied ' in dit voor beeld |
    | **Gebieds-ID** | Ja | De ID voor de record die u wilt, zoals ' 99999 ' in dit voor beeld |
@@ -231,7 +231,7 @@ Als u één record wilt toevoegen aan een tabel met een DB2-Data Base, gebruikt 
 
    In dit voor beeld ziet u de volgende eigenschappen:
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel waar de record moet worden toegevoegd, zoals ' gebied ' |
    | **Gebieds-ID** | Ja | De ID voor het gebied dat moet worden toegevoegd, zoals "99999" |
@@ -278,7 +278,7 @@ Als u één record in een DB2-database tabel wilt bijwerken, gebruikt u de actie
 
    In dit voor beeld ziet u de volgende eigenschappen:
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel waar de record moet worden bijgewerkt, bijvoorbeeld ' gebied ' |
    | **Rij-ID** | Ja | De ID voor de record die moet worden bijgewerkt, bijvoorbeeld "99999" |
@@ -326,7 +326,7 @@ Als u één record uit een DB2-database tabel wilt verwijderen, gebruikt u de ac
 
    In dit voor beeld ziet u de volgende eigenschappen:
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Tabel naam** | Ja | De tabel waar de record moet worden verwijderd, zoals ' gebied ' |
    | **Rij-ID** | Ja | De ID voor de record die moet worden verwijderd, bijvoorbeeld "99999" |
@@ -359,7 +359,10 @@ Vouw de actie **rij verwijderen** uit.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie de [referentie pagina van de connector](/connectors/db2/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/db2/).
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

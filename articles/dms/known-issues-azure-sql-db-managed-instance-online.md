@@ -2,21 +2,21 @@
 title: Bekende problemen en beperkingen met online migraties voor het Azure SQL Database van het beheerde exemplaar
 description: Meer informatie over bekende problemen/migratie beperkingen die zijn gekoppeld aan online migraties naar Azure SQL Database Managed instance.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: bc1cbfc1e86db758a4f4d0240f81f5363f817312
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 88e2b5894686ee93caecf33e04940803eb75f394
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483139"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648662"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure SQL Database beheerde instantie
 

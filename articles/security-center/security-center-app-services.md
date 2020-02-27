@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: c286efcfad78a8f7acf9974605d53ed3cc06a09e
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604529"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616472"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Uw Azure App Service web-apps en Api's beveiligen
 
@@ -29,7 +29,7 @@ Als u geavanceerde beveiliging tegen bedreigingen wilt inschakelen voor uw Azure
 
 Wanneer het App Service-abonnement is ingeschakeld, bepaalt Security Center de resources die door uw App Service plan worden gedekt en worden beveiligings aanbevelingen gegenereerd op basis van de bevindingen. Security Center beschermt het VM-exemplaar waarin uw App Service wordt uitgevoerd en de beheer interface. Er worden ook aanvragen en antwoorden gecontroleerd die worden verzonden naar en van uw apps die worden uitgevoerd in App Service.
 
-Security Center maakt gebruik van de schaal van de Cloud en de zicht baarheid die Azure als een Cloud provider heeft, om te controleren op veelvoorkomende web app-aanvallen. Security Center kunt aanvallen op uw toepassingen detecteren en opkomende aanvallen identificeren, zelfs wanneer een aanvaller zich in de Reconnaissance-fase bevindt, scans voor het identificeren van beveiligings problemen in meerdere door Azure gehoste toepassingen. Als Azure-systeem eigen service is Security Center ook in een unieke positie voor het bieden van op de host gebaseerde beveiligings analyse voor de onderliggende reken knooppunten voor deze PaaS, Security Center waardoor het mogelijk is om aanvallen te detecteren op webtoepassingen die al zijn misbruikt. Zie voor meer informatie over het detecteren van bedreigingen van de Security Center van Azure App Service [bedreigingen detectie voor native computing](security-center-alerts-compute.md#azure-app-service-)in de Cloud.
+Security Center maakt gebruik van de schaal van de Cloud en de zicht baarheid die Azure als een Cloud provider heeft, om te controleren op veelvoorkomende web app-aanvallen. Security Center kunt aanvallen op uw toepassingen detecteren en opkomende aanvallen identificeren, zelfs wanneer een aanvaller zich in de Reconnaissance-fase bevindt, scans voor het identificeren van beveiligings problemen in meerdere door Azure gehoste toepassingen. Als Azure-systeem eigen service is Security Center ook in een unieke positie voor het bieden van op de host gebaseerde beveiligings analyse voor de onderliggende reken knooppunten voor deze PaaS, Security Center waardoor het mogelijk is om aanvallen te detecteren op webtoepassingen die al zijn misbruikt. Zie [bedreigings beveiliging voor Azure app service](threat-protection.md#app-services)voor meer informatie.
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Bewaking en beveiliging van App Service inschakelen

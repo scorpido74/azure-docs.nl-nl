@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622913"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648832"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -38,11 +38,11 @@ De volgende query prestatie-indica toren zijn beschikbaar voor elke query die wo
 
 - [Totale CPU](#total-cpu): de totale reken kracht die wordt gebruikt om de query op alle reken knooppunten te verwerken. Dit is de tijd die wordt gebruikt voor het berekenen van computers, parseren en het ophalen van gegevens. 
 
-- [Gegevens volume](#data-volume): algemene gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door de grootte van de doel tabel, gebruikte tijds periode, toegepaste filters en het aantal kolommen waarnaar wordt verwezen.
+- [Gegevens die worden gebruikt voor verwerkte query's](#data-used-for-processed-query): algemene gegevens die zijn geopend voor het verwerken van de query. Beïnvloed door de grootte van de doel tabel, gebruikte tijds periode, toegepaste filters en het aantal kolommen waarnaar wordt verwezen.
 
-- [Tijds bereik](#time-range): het gat tussen de nieuwste en oudste gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door het expliciete tijds bereik dat is opgegeven voor de query.
+- [Tijds panne van de verwerkte query](#time-span-of-the-processed-query): het gat tussen de nieuwste en oudste gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door het expliciete tijds bereik dat is opgegeven voor de query.
 
-- [Leeftijd van gegevens](#age-of-data): het gat tussen nu en de oudste gegevens die zijn gebruikt voor het verwerken van de query. Dit is van invloed op de efficiëntie van het ophalen van gegevens.
+- [Ouderdom van verwerkte gegevens](#age-of-processed-data): het gat tussen nu en de oudste gegevens die zijn gebruikt voor het verwerken van de query. Dit is van invloed op de efficiëntie van het ophalen van gegevens.
 
 - [Aantal werk ruimten](#number-of-workspaces): hoeveel werk ruimten tijdens de query verwerking zijn geopend vanwege impliciete of expliciete selectie.
 
@@ -151,7 +151,7 @@ Heartbeat
 > Deze indicator presenteert alleen CPU van het directe cluster. In een query met meerdere regio's zou het slechts een van de regio's vertegenwoordigen. In een query met meerdere werk ruimten zijn mogelijk niet alle werk ruimten inbegrepen.
 
 
-## <a name="data-volume"></a>Gegevensvolume
+## <a name="data-used-for-processed-query"></a>Gegevens die worden gebruikt voor verwerkte query's
 
 Een kritieke factor bij het verwerken van de query is het volume van de gegevens die worden gescand en gebruikt voor de verwerking van query's. Azure Data Explorer maakt gebruik van agressieve optimalisaties die het gegevens volume aanzienlijk reduceren ten opzichte van andere gegevens platforms. Toch zijn er kritieke factoren in de query die van invloed kunnen zijn op het gebruikte gegevens volume.
 In Azure Monitor-Logboeken wordt de kolom **TimeGenerated** gebruikt als een manier om de gegevens te indexeren. Het beperken van de waarden van de **TimeGenerated** om een bereik zo klein mogelijk te maken, vormen een aanzienlijke verbetering van de prestaties van query's door de hoeveelheid gegevens die moet worden verwerkt aanzienlijk te beperken.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range"></a>Tijdsbereik
+## <a name="time-span-of-the-processed-query"></a>Tijds panne van de verwerkte query
 
 Alle logboeken in Azure Monitor-logboeken worden gepartitioneerd op basis van de kolom **TimeGenerated** . Het aantal geopende partities is rechtstreeks gerelateerd aan de tijds Panne. Het verminderen van het tijds bereik is de meest efficiënte manier om de uitvoering van een prompt query's te voor gaan.
 
@@ -262,7 +262,7 @@ by Computer
 > [!IMPORTANT]
 > Deze indicator is niet beschikbaar voor query's voor meerdere regio's.
 
-## <a name="age-of-data"></a>Gegevens leeftijd
+## <a name="age-of-processed-data"></a>Ouderdom van verwerkte gegevens
 Azure Data Explorer maakt gebruik van verschillende opslag lagen: lokale SSD-schijven in het geheugen en veel langzamere Azure-blobs. De nieuwere gegevens, hoe hoger is de kans dat deze wordt opgeslagen in een meer krachtige laag met een kleinere latentie, waardoor de duur en CPU van de query worden verminderd. Met uitzonde ring van de gegevens zelf, heeft het systeem ook een cache voor meta gegevens. De oudere gegevens, de mindere meta gegevens worden in de cache opgeslagen.
 
 Hoewel voor sommige query's gebruik van oude gegevens vereist is, zijn er gevallen waarin oude gegevens per ongeluk worden gebruikt. Dit gebeurt wanneer query's worden uitgevoerd zonder tijds bereik in de meta gegevens op te geven en niet alle tabel verwijzingen filter bevatten in de kolom **TimeGenerated** . In deze gevallen scant het systeem alle gegevens die in die tabel zijn opgeslagen. Wanneer de gegevens retentie lang is, kan deze lange tijd bereiken en dus gegevens die net zo oud zijn als de Bewaar periode van de gegevens bedekken.

@@ -3,8 +3,8 @@ title: Overzicht van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
 description: Overzicht van het implementeren van SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101170"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616954"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Wat is SAP HANA on Azure (grote exemplaren)?
 
@@ -26,9 +26,9 @@ SAP HANA op Azure (grote exemplaren) is een unieke oplossing voor Azure. Naast h
 
 De isolatie van de klant binnen het infrastructuur stempel wordt uitgevoerd in de tenants. dit ziet er als volgt uit:
 
-- **Netwerken**: Isolatie van klanten binnen infrastructuur stack via virtuele netwerken per door de klant toegewezen Tenant. Een Tenant wordt toegewezen aan één klant. Een klant kan meerdere tenants hebben. De netwerk isolatie van tenants verbiedt netwerk communicatie tussen tenants in het niveau van de infrastructuur stempel, zelfs als de tenants bij dezelfde klant horen.
-- **Opslag onderdelen**: Isolatie via opslag-virtuele machines waaraan opslag volumes zijn toegewezen. Opslag volumes kunnen alleen worden toegewezen aan één virtuele opslag machine. Een virtuele opslag machine wordt uitsluitend toegewezen aan één enkele Tenant in de SAP HANA TDI Certified Infrastructure-stack. Als gevolg hiervan kunnen opslag volumes die zijn toegewezen aan een virtuele opslag machine alleen worden geopend in een specifieke en gerelateerde Tenant. Ze zijn niet zichtbaar tussen de verschillende geïmplementeerde tenants.
-- **Server of host**: Een server-of host-eenheid wordt niet gedeeld tussen klanten of tenants. Een server of host die is geïmplementeerd voor een klant, is een Atomic bare-metal Compute-eenheid die is toegewezen aan één enkele Tenant. *Er wordt geen* hardware-partitionering of zachte partitionering gebruikt. Dit kan ertoe leiden dat u een host of een server met een andere klant kunt delen. Opslag volumes die zijn toegewezen aan de virtuele opslag machine van de specifieke Tenant, worden aan een dergelijke server gekoppeld. Een Tenant kan één tot veel server eenheden van verschillende Sku's worden toegewezen.
+- **Netwerken**: isolatie van klanten binnen infrastructuur stack via virtuele netwerken per door de klant toegewezen Tenant. Een Tenant wordt toegewezen aan één klant. Een klant kan meerdere tenants hebben. De netwerk isolatie van tenants verbiedt netwerk communicatie tussen tenants in het niveau van de infrastructuur stempel, zelfs als de tenants bij dezelfde klant horen.
+- **Opslag onderdelen**: isolatie via opslag-virtuele machines waaraan opslag volumes zijn toegewezen. Opslag volumes kunnen alleen worden toegewezen aan één virtuele opslag machine. Een virtuele opslag machine wordt uitsluitend toegewezen aan één enkele Tenant in de SAP HANA TDI Certified Infrastructure-stack. Als gevolg hiervan kunnen opslag volumes die zijn toegewezen aan een virtuele opslag machine alleen worden geopend in een specifieke en gerelateerde Tenant. Ze zijn niet zichtbaar tussen de verschillende geïmplementeerde tenants.
+- **Server of host**: een server of host-eenheid wordt niet gedeeld tussen klanten of tenants. Een server of host die is geïmplementeerd voor een klant, is een Atomic bare-metal Compute-eenheid die is toegewezen aan één enkele Tenant. *Er wordt geen* hardware-partitionering of zachte partitionering gebruikt. Dit kan ertoe leiden dat u een host of een server met een andere klant kunt delen. Opslag volumes die zijn toegewezen aan de virtuele opslag machine van de specifieke Tenant, worden aan een dergelijke server gekoppeld. Een Tenant kan één tot veel server eenheden van verschillende Sku's worden toegewezen.
 - Binnen een SAP HANA op de infra structuur van Azure (grote instanties) worden veel verschillende tenants geïmplementeerd en geïsoleerd via de Tenant concepten op het niveau van netwerken, opslag en reken kracht. 
 
 
@@ -36,10 +36,10 @@ Deze bare-metal server eenheden worden alleen ondersteund om SAP HANA uit te voe
 
 Vanaf juli 2019 maken we onderscheid tussen twee verschillende revisies van HANA grote instantie stempels en locatie van implementaties:
 
-- Revisie 3 (Rev 3): Zijn de stem pels die beschikbaar zijn gesteld om te worden geïmplementeerd voor de klant vóór 2019 juli
-- "Revisie 4" (Rev 4): Nieuw stempel ontwerp dat dicht bij de Azure-VM-hosts is geïmplementeerd en wat tot nu toe wordt vrijgegeven in de Azure-regio's van:
+- Revisie 3 (Rev 3): zijn de stem pels die beschikbaar zijn gesteld voor de klant om te implementeren vóór 2019 juli
+- "Revisie 4" (Rev 4): nieuw stempel ontwerp dat is geïmplementeerd in dicht bij Azure VM-hosts en wat tot nu toe wordt vrijgegeven in de Azure-regio's van:
     -  VS - west 2 
-    -  East US 
+    -  VS - oost 
     -  Europa -west
     -  Europa - noord
 
