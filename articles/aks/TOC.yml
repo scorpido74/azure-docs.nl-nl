@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: Quota en regionale limieten
       href: quotas-skus-regions.md
-    - name: Van ACS naar AKS migreren
-      href: acs-aks-migration.md
+    - name: Migreren naar AKS
+      href: aks-migration.md
     - name: Ondersteunde Kubernetes-versie
       href: supported-kubernetes-versions.md
     - name: Beveiligingsverbetering in hostbesturingssysteem

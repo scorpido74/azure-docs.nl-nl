@@ -83,8 +83,10 @@
       href: concept-workspace.md
     - name: Omgevingen
       href: concept-environments.md
-    - name: Gegevens
+    - name: Toegang tot gegevens
       href: concept-data.md
+    - name: Gegevensopname
+      href: concept-data-ingestion.md
     - name: Modeltraining
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

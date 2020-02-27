@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: Controleren op taakfouten
           href: batch-job-task-error-checking.md
+        - name: Fouten in Batch-service detecteren en afhandelen
+          href: batch-retry-after-errors.md
     - name: Bronbestanden maken
       href: resource-files.md
     - name: Taken persistent maken

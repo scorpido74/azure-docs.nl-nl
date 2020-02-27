@@ -1,23 +1,23 @@
 - name: Documentatie voor Azure Cognitive Search
   href: index.yml
 - name: Overzicht
-  expanded: true
   items:
     - name: Wat is Azure Cognitive Search?
       href: search-what-is-azure-search.md
     - name: Nieuwe functies
       href: whats-new.md
 - name: Snelstartgidsen
+  expanded: true
   items:
-    - name: Een service maken
-      href: search-create-service-portal.md
     - name: Portal
       items:
+        - name: Een service maken
+          href: search-create-service-portal.md
         - name: Een index maken
           href: search-get-started-portal.md
         - name: Een app maken
           href: search-create-app-portal.md
-        - name: Een cognitieve-vaardighedenset maken
+        - name: Een set vaardigheden maken
           href: cognitive-search-quickstart-blob.md
         - name: Een Knowledge Store maken
           href: knowledge-store-create-portal.md
@@ -99,61 +99,7 @@
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Instructiegidsen
   items:
-    - name: Planning
-      items:
-        - name: Een laag kiezen
-          href: search-sku-tier.md
-        - name: Servicelimieten
-          href: search-limits-quotas-capacity.md
-        - name: Capaciteit aanpassen
-          href: search-capacity-planning.md
-        - name: Schalen voor prestaties
-          href: search-performance-optimization.md
-        - name: Service verplaatsen tussen regio's
-          href: search-howto-move-across-regions.md
-        - name: Multitenant-architectuur
-          href: search-modeling-multitenant-saas-applications.md
-    - name: Beveiliging
-      items:
-        - name: Beveiligingsoverzicht
-          href: search-security-overview.md
-        - name: Een privé-eindpunt maken
-          href: service-create-private-endpoint.md
-        - name: Beheer van servicesleutels
-          href: search-security-api-keys.md
-        - name: Op rollen gebaseerde beheerderstoegang
-          href: search-security-rbac.md
-        - name: Beveiligingsfilters
-          href: search-security-trimming-for-azure-search.md
-        - name: Filteren op AAD-identiteiten
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Versleutelingssleutels beheren
-          href: search-security-manage-encryption-keys.md
-    - name: Ontwikkeling
-      items:
-        - name: API-versies
-          href: search-api-versions.md
-        - name: Lijst met preview-functies
-          href: search-api-preview.md
-        - name: Ontwikkelen in .NET
-          href: search-howto-dotnet-sdk.md
-        - name: Upgrade uitvoeren voor de SDK
-          items:
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Management SDK
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: Upgrade uitvoeren voor de REST-API
-          href: search-api-migration.md
-    - name: Een index maken
+    - name: Indexen en constructs maken
       items:
         - name: Een basisindex maken
           href: search-what-is-an-index.md
@@ -185,7 +131,7 @@
           href: search-howto-complex-data-types.md
         - name: Relationele gegevens modelleren
           href: index-sql-relational-data.md
-    - name: Indexeren (importeren)
+    - name: Elke soort gegevens opnemen
       items:
         - name: Overzicht van gegevensimport
           href: search-what-is-data-import.md
@@ -197,16 +143,16 @@
           href: search-howto-large-index.md
         - name: Gelijktijdige updates verwerken
           href: search-howto-concurrency.md
-    - name: Een indexeerfunctie gebruiken
+    - name: Azure-gegevens opnemen
       items:
         - name: Indexeerfuncties configureren
           href: search-indexer-overview.md
-        - name: Velden toewijzen
-          href: search-indexer-field-mappings.md
         - name: Indexeerfuncties bewaken
           href: search-howto-monitor-indexers.md
         - name: Indexeerfuncties inplannen
           href: search-howto-schedule-indexers.md
+        - name: Velden toewijzen
+          href: search-indexer-field-mappings.md
         - name: Gegevensbronnen
           items:
             - name: Azure-blobs
@@ -223,19 +169,19 @@
                   href: search-howto-index-csv-blobs.md
                 - name: JSON-blobs indexeren
                   href: search-howto-index-json-blobs.md
+            - name: Azure-tabellen
+              href: search-howto-indexing-azure-tables.md
             - name: Azure Cosmos DB
               href: search-howto-index-cosmosdb.md
             - name: Azure Data Lake Storage Gen2
               href: search-howto-index-azure-data-lake-storage.md
-            - name: Azure SQL Database
+            - name: SQL Database
               href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: Azure-tabelopslag
-              href: search-howto-indexing-azure-tables.md
             - name: Beheerde SQL-exemplaren
               href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
             - name: SQL Server-VM's
               href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-    - name: AI-verrijking
+    - name: Opnemen met AI
       items:
         - name: Een Cognitive Services-resource toevoegen
           href: cognitive-search-attach-cognitive-services.md
@@ -275,7 +221,7 @@
               href: knowledge-store-connect-power-bi.md
             - name: Projectievoorbeelden
               href: knowledge-store-projections-examples.md
-    - name: Query's uitvoeren voor documenten
+    - name: Query’s uitvoeren
       items:
         - name: Querytypen en querysamenstelling
           href: search-query-overview.md
@@ -295,7 +241,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis (preview)
               href: search-more-like-this.md
-    - name: Filters toepassen
+    - name: Filteren
       items:
         - name: Filteroverzicht
           href: search-filters.md
@@ -309,24 +255,80 @@
           href: search-query-understand-collection-filters.md
         - name: Voorbeelden van facetten op meerdere niveaus
           href: search-example-adventureworks-multilevel-faceting.md
-    - name: Resultaten verwerken
+    - name: Resultaten
       items:
         - name: Paginagerelateerde functies
           href: search-pagination-page-layout.md
         - name: Relevantie afstemmen (scoreprofielen)
           href: index-add-scoring-profiles.md
-    - name: Een service beheren
+    - name: Plannen
+      items:
+        - name: Een laag kiezen
+          href: search-sku-tier.md
+        - name: Servicelimieten
+          href: search-limits-quotas-capacity.md
+        - name: Capaciteit aanpassen
+          href: search-capacity-planning.md
+        - name: Schalen voor prestaties
+          href: search-performance-optimization.md
+        - name: Multitenant-architectuur
+          href: search-modeling-multitenant-saas-applications.md
+    - name: Ontwikkelen
+      items:
+        - name: API-versies
+          href: search-api-versions.md
+        - name: Lijst met preview-functies
+          href: search-api-preview.md
+        - name: Ontwikkelen in .NET
+          href: search-howto-dotnet-sdk.md
+        - name: Upgrade uitvoeren voor de SDK
+          items:
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: Upgrade uitvoeren voor de REST-API
+          href: search-api-migration.md
+    - name: Beveiligen
+      items:
+        - name: Beveiligingsoverzicht
+          href: search-security-overview.md
+        - name: Een privé-eindpunt maken
+          href: service-create-private-endpoint.md
+        - name: Beheer van servicesleutels
+          href: search-security-api-keys.md
+        - name: Op rollen gebaseerde beheerderstoegang
+          href: search-security-rbac.md
+        - name: Beveiligingsfilters
+          href: search-security-trimming-for-azure-search.md
+        - name: Filteren op AAD-identiteiten
+          href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Versleutelingssleutels beheren
+          href: search-security-manage-encryption-keys.md
+    - name: Beheren
       items:
         - name: Portal
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
-    - name: Controle en logboekregistratie
+        - name: Service verplaatsen tussen regio's
+          href: search-howto-move-across-regions.md
+    - name: Controleren
       items:
         - name: Basisprincipes
           href: search-monitor-usage.md
         - name: Diagnostische logboeken
           href: search-monitor-logs.md
+        - name: Diagnostische logboeken visualiseren
+          href: search-monitor-logs-powerbi.md
         - name: Queryactiviteit bewaken
           href: search-monitor-queries.md
         - name: Analyse zoekverkeer
