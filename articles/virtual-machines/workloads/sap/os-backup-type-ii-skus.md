@@ -4,7 +4,7 @@ description: Back-up en herstel van het besturings systeem uitvoeren voor SAP HA
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098724"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616869"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Back-up en herstel van het besturings systeem voor de type II Sku's van Revision 3-stem pels
 
@@ -31,7 +31,7 @@ In dit document worden de stappen beschreven voor het uitvoeren van een back-up 
 >[!NOTE]
 >De back-upscripten van het besturings systeem gebruiken de achterzijde-software, die vooraf is geïnstalleerd op de server.  
 
-Nadat het inrichten is voltooid door het micro soft `Service Management` -team, is de server standaard geconfigureerd met twee back-upschemas om een back-up te maken van het bestandssysteem niveau van het besturings systeem. U kunt de planningen van de back-uptaken controleren met behulp van de volgende opdracht:
+Nadat het inrichten is voltooid door het team van micro soft `Service Management`, is de server standaard geconfigureerd met twee back-upschemas om een back-up te maken van het bestandssysteem niveau van het besturings systeem. U kunt de planningen van de back-uptaken controleren met behulp van de volgende opdracht:
 ```
 #crontab –l
 ```
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-De volgende scherm afbeelding toont het herstellen van een volledige back-up: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+De volgende scherm afbeelding toont het herstellen van een volledige back-up: ![RearToolConfiguration. PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

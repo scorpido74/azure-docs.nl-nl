@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 3dbe5871a78634d2866ec1a3d1455492762ff2aa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538172"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619247"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -966,6 +966,9 @@ Als u de service in Internet Information Services wilt hosten, bouwt een ontwikk
 
 Aanvragen van Azure Active Directory bevatten een OAuth 2.0-bearer-token.   Alle services die de aanvraag ontvangen, moeten de verlener verifiëren als Azure Active Directory voor de verwachte Azure Active Directory Tenant, voor toegang tot de Microsoft Graph API-service.  In het token wordt de verlener geïdentificeerd door een ISS-claim, zoals "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  In dit voor beeld is het basis adres van de claim waarde, https://sts.windows.net, Azure Active Directory als verlener geïdentificeerd, terwijl het relatieve adres segment cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven. De doel groep van het token is de toepassings sjabloon-ID voor de app in de galerie. De toepassings sjabloon-ID voor alle aangepaste apps is 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. De toepassings sjabloon-ID voor elke app in de galerie varieert. Neem contact op met ProvisioningFeedback@microsoft.com voor vragen over de toepassings sjabloon-ID voor een galerie toepassing. Elk van de toepassingen die in één Tenant zijn geregistreerd, kan dezelfde `iss` claim ontvangen met SCIM-aanvragen.
 
+   > [!NOTE]
+   > Het is ***niet*** raadzaam dit veld leeg te laten en te vertrouwen op een token dat door Azure AD wordt gegenereerd. Deze optie is voornamelijk beschikbaar voor test doeleinden.
+
 Ontwikkel aars die gebruikmaken van de CLI-bibliotheken van micro soft voor het bouwen van een SCIM-service kunnen aanvragen van Azure Active Directory met het pakket micro soft. Owin. Security. ActiveDirectory verifiëren door de volgende stappen te volgen: 
 
 Ten eerste, in een provider, implementeert u de eigenschap micro soft. SystemForCrossDomainIdentityManagement. IProvider. StartupBehavior door het retour neren van een methode die wordt aangeroepen wanneer de service wordt gestart: 
@@ -1450,6 +1453,8 @@ Volg de onderstaande controle lijst om ervoor te zorgen dat uw toepassing voorbe
 > [!div class="checklist"]
 > * Een [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) -gebruikers-en-groeps eindpunt ondersteunen (er is slechts één vereist, maar beide worden aanbevolen)
 > * Ten minste 25 aanvragen per seconde per Tenant ondersteunen (vereist)
+> * Technische hulp en ondersteunings contacten tot stand brengen om klanten te begeleiden post galerie voorbereiden (vereist)
+> * 3 niet-verlopende test referenties voor uw toepassing (vereist)
 > * Ondersteuning voor de OAuth-autorisatie code subsidie of een lang bewaard token zoals hieronder wordt beschreven (vereist)
 > * Een technisch en ondersteunings punt tot stand brengen om klanten te ondersteunen bij het voorbereiden van de galerie van berichten (vereist)
 > * Ondersteuning voor het bijwerken van meerdere groepslid maatschappen met één PATCH (aanbevolen) 
@@ -1498,7 +1503,7 @@ We raden u aan om uw bestaande documentatie bij te werken en de integratie in uw
 
 Bepaalde apps staan inkomend verkeer naar hun app toe. De Azure AD-inrichtings service werkt alleen zoals verwacht als de gebruikte IP-adressen zijn toegestaan. Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). U kunt deze Ip's naar behoefte downloaden en Program meren in uw firewall. De gereserveerde IP-bereiken voor Azure AD-inrichting vindt u onder ' AzureActiveDirectoryDomainServices '.
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Verwante artikelen:
 
 * [Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-apps automatiseren](user-provisioning.md)
 * [Kenmerk toewijzingen voor gebruikers inrichting aanpassen](customize-application-attributes.md)

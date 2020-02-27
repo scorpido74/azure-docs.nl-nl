@@ -2,21 +2,21 @@
 title: Veelgestelde vragen-Azure Database Migration Service
 description: Veelgestelde vragen over het gebruik van Azure Database Migration Service om database migraties uit te voeren.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/20/2020
+ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064832"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650978"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
 

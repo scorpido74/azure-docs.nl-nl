@@ -2,13 +2,13 @@
 title: Overzicht van ACR-taken
 description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938883"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615960"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -70,26 +70,12 @@ Meer informatie over het activeren van builds op basis van de bron code in de tw
 
 ## <a name="automate-os-and-framework-patching"></a>Reparatie van besturings systemen en Framework automatiseren
 
-De kracht van ACR taken om de werk stroom voor het bouwen van containers echt te verbeteren, is van de mogelijkheid om een update naar een basis installatie kopie te detecteren. Wanneer de bijgewerkte basis installatie kopie naar het REGI ster wordt gepusht of een basis installatie kopie is bijgewerkt in een open bare opslag plaats, zoals in docker hub, kunnen ACR-taken automatisch eventuele installatie kopieën van toepassingen maken op basis van het bestand.
+De kracht van ACR taken om de werk stroom voor het bouwen van containers echt te verbeteren, is van de mogelijkheid om een update naar een *basis installatie kopie*te detecteren. Een functie van de meeste container installatie kopieën, een basis installatie kopie is een bovenliggende installatie kopie waarop een of meer installatie kopieën van toepassingen zijn gebaseerd. Basis installatie kopieën bevatten doorgaans het besturings systeem en soms toepassings raamwerken. 
 
-Container installatie kopieën kunnen breed worden gecategoriseerd in *basis* installatie kopieën en *toepassings* installatie kopieën. Uw basis installatie kopieën bevatten doorgaans het besturings systeem en toepassings raamwerken waarop uw toepassing is gebouwd, samen met andere aanpassingen. Deze basis installatie kopieën zijn normaal gesp roken gebaseerd op open bare upstream-installatie kopieën, bijvoorbeeld: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]of [node. js][base-node]. Diverse installatie kopieën van uw toepassing kunnen een gemeen schappelijke basis installatie kopie delen.
+U kunt een ACR-taak instellen om een afhankelijkheid van een basis installatie kopie bij te houden bij het opbouwen van een toepassings installatie kopie. Wanneer de bijgewerkte basis installatie kopie naar het REGI ster wordt gepusht of een basis installatie kopie is bijgewerkt in een open bare opslag plaats, zoals in docker hub, kunnen ACR-taken automatisch eventuele installatie kopieën van toepassingen maken op basis van het bestand.
+Met deze automatische detectie en het opnieuw samen stellen van ACR-taken bespaart u de tijd en inspanningen die normaal gesp roken nodig zijn voor het hand matig bijhouden en bijwerken van elke toepassings installatie kopie die verwijst naar de bijgewerkte basis installatie kopie.
 
-Wanneer een installatie kopie van een besturings systeem of app-Framework wordt bijgewerkt door de upstream-Maintainer, bijvoorbeeld met een kritieke beveiligings patch voor het besturings systeem, moet u ook uw basis installatie kopieën bijwerken om de essentiële oplossing op te nemen. Elke toepassings installatie kopie moet vervolgens ook opnieuw worden opgebouwd om deze upstream-oplossingen op te nemen die nu zijn opgenomen in uw basis installatie kopie.
-
-Omdat ACR-taken de afhankelijkheden van basis installatie kopieën dynamisch detecteren bij het samen stellen van een container installatie kopie, kan deze detecteert wanneer de basis installatie kopie van de toepassings installatie kopie wordt bijgewerkt. Met één vooraf geconfigureerde [Build-taak](container-registry-tutorial-base-image-update.md#create-a-task)bouwt ACR taken vervolgens **automatisch elke installatie kopie van de toepassing opnieuw** op. Met deze automatische detectie en het opnieuw samen stellen van ACR-taken bespaart u de tijd en inspanningen die normaal gesp roken nodig zijn voor het hand matig bijhouden en bijwerken van elke toepassings installatie kopie die verwijst naar de bijgewerkte basis installatie kopie.
-
-Voor installatie kopieën van een Dockerfile houdt een ACR-taak een update van een basis installatie kopie bij wanneer de basis installatie kopie zich op een van de volgende locaties bevindt:
-
-* Hetzelfde Azure container Registry waarin de taak wordt uitgevoerd
-* Een ander Azure container registry in dezelfde regio 
-* Een open bare opslag plaats in docker hub
-* Een open bare opslag plaats in micro soft Container Registry
-
-> [!NOTE]
-> * De trigger voor het bijwerken van de basis installatie kopie is standaard ingeschakeld in een ACR-taak. 
-> * Op dit moment worden ACR-updates voor installatie kopieën van de toepassing (*runtime*) alleen door de taken bijgehouden. ACR-taken volgen geen updates van basis afbeeldingen voor tussenliggende (*buildtime*)-installatie kopieën die worden gebruikt in de Dockerfiles met meerdere fasen. 
-
-Meer informatie over patches voor besturings systemen en Framework in de ACR-zelf studie voor de derde taak [voor het automatiseren van installatie kopieën voor de update van de basis installatie kopie met Azure container Registry taken](container-registry-tutorial-base-image-update.md).
+Meer informatie over het [bijwerken van basis installatie kopieën](container-registry-tasks-base-images.md) voor ACR-taken. En lees hoe u een installatie kopie bouwt wanneer een basis installatie kopie wordt gepusht naar een container register in de zelf studie [container installatie kopieën automatiseren wanneer een basis installatie kopie wordt bijgewerkt in een Azure container Registry](container-registry-tutorial-base-image-update.md)
 
 ## <a name="schedule-a-task"></a>Een taak plannen
 
@@ -133,7 +119,7 @@ De volgende tabel bevat enkele voor beelden van ondersteunde context locaties vo
 
 Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef het `--platform` label op om Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen te maken. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/de architectuur (bijvoorbeeld `--platform Linux/arm`). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant (bijvoorbeeld `--platform Linux/arm64/v8`):
 
-| Besturingssysteem | Architectuur|
+| OS | Architectuur|
 | --- | ------- | 
 | Linux | amd64<br/>scherp<br/>arm64<br/>386 |
 | Windows | amd64 |

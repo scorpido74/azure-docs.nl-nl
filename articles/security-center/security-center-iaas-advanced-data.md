@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907029"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617115"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines (preview-versie)
 Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Deze preview-functie bevat functionaliteit voor het identificeren en beperken van potentiële database problemen en het detecteren van afwijkende activiteiten die kunnen wijzen op bedreigingen voor uw data base. 
@@ -61,7 +61,7 @@ Als u een nieuwe werk ruimte wilt maken, volgt u de instructies in [een log Anal
 Als u de host van de SQL Server wilt verbinden met een werk ruimte, volgt u de instructies in [Windows-computers verbinden met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>E-mail meldingen voor ATP-waarschuwingen instellen 
+## <a name="set-up-email-notification-for-security-alerts"></a>E-mail meldingen instellen voor beveiligings waarschuwingen 
 
 U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wanneer Security Center waarschuwingen worden gegenereerd. Het e-mail bericht bevat een directe koppeling naar de waarschuwing in Azure Security Center met alle relevante informatie. 
 

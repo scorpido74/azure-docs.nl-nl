@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: a98c8b5d7c312582cf6644f74bda664c5031468b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166157"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616331"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Snelstart: een objectdetectieproject maken met de Custom Vision-SDK voor Java
 
@@ -25,24 +25,27 @@ In dit artikel leest u hoe u aan de slag kunt met de Custom Vision SDK met Java 
 
 - Een Java IDE naar keuze
 - [JDK 7 of 8](https://aka.ms/azure-jdks) is geïnstalleerd.
-- Maven is geïnstalleerd
+- [Maven](https://maven.apache.org/) geïnstalleerd
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>De Custom Vision-SDK en voorbeeldcode ophalen
 
 Als u een Java-app wilt schrijven die gebruikmaakt van Custom Vision, hebt u de Maven-pakketten van Custom Vision nodig. Deze pakketten zijn opgenomen in het voorbeeld project dat u wilt downloaden, maar u kunt ze hier afzonderlijk openen.
 
-U kunt de Custom Vision-SDK uit de centrale maven-opslagplaats installeren:
+U vindt de Custom Vision SDK in de centrale opslag plaats maven:
 - [Training-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Voorspelling-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 Kloon of download het project [Voorbeelden voor Cognitive Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). Ga naar de map **Vision/CustomVision/** .
 
-Met dit Java-project wordt een nieuwe objectdetectieproject van Custom Vision gemaakt met de naam __Sample Java OD Project__. Dit kan worden geopend via de [Custom Vision-website](https://customvision.ai/). Vervolgens worden afbeeldingen geüpload om een classificatie te trainen en te testen. In dit project moet met de classificatie worden vastgesteld of een boom een __Canadese den__ of een __Japanse sierkers__ is.
+Met dit Java-project wordt een nieuwe objectdetectieproject van Custom Vision gemaakt met de naam __Sample Java OD Project__. Dit kan worden geopend via de [Custom Vision-website](https://customvision.ai/). Vervolgens worden afbeeldingen geüpload om een classificatie te trainen en te testen. In dit project is de classificatie bedoeld om te bepalen of een object een **Fork** of **schaar**is.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-Het programma is zodanig geconfigureerd dat uw belangrijkste gegevens als omgevingsvariabelen worden opgeslagen. Stel deze variabelen in via de map **Vision/CustomVision** in PowerShell. Voer daarna de volgende opdrachten in:
+Het programma is geconfigureerd om te verwijzen naar de belangrijkste gegevens als omgevings variabelen. Ga naar de map **Vision/CustomVision** en voer de volgende Power shell-opdrachten in om de omgevings variabelen in te stellen. 
+
+> [!NOTE]
+> Als u een niet-Windows-besturings systeem gebruikt, raadpleegt u [omgevings variabelen configureren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) voor instructies.
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -94,9 +97,9 @@ Het voorspellingseindpunt, dat door het `predictor`-object hier wordt weergegeve
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Als u de oplossing met Maven wilt compileren en uitvoeren, voert u de volgende opdracht uit in de projectmap in PowerShell:
+Als u de oplossing wilt compileren en uitvoeren met behulp van Maven, navigeert u naar de projectmap (**Vision/CustomVision**) in een opdracht prompt en voert u de volgende opdracht uit:
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

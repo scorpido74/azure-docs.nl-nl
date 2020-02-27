@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276970"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615474"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Zelf studie: ruimtelijke Azure-ankers delen in sessies en apparaten
 
@@ -21,20 +21,20 @@ In deze zelf studie leert u hoe u met behulp van [Azure spatiale ankers](../over
 
 ![Persistentie](./media/persistence.gif)
 
-Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een app die kan worden geïmplementeerd op twee of meer apparaten. Azure Spatial Anchors dat door één exemplaar is gemaakt, kan worden gedeeld met andere.
+Azure Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een app die kan worden geïmplementeerd op twee of meer apparaten. Azure Spatial Anchors dat door één exemplaar is gemaakt, kan worden gedeeld met andere.
 
 U leert het volgende:
 
 > [!div class="checklist"]
 > * Implementeer een ASP.NET Core-web-app in Azure die kan worden gebruikt voor het delen van bladwijzers en deze opslaat in het geheugen voor een bepaalde tijd.
-> * Configureer de scène AzureSpatialAnchorsLocalSharedDemo binnen het Unity-voorbeeld van onze Quickstarts om de web-app Sharing Anchors te kunnen gebruiken.
+> * Configureer de scène AzureSpatialAnchorsLocalSharedDemo binnen het Unity-voorbeeld van onze quickstarts om te profiteren van de web-app Sharing Anchors.
 > * Implementeer en voer uit op een of meer apparaten.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Houd er rekening mee dat, hoewel u in deze zelfstudie gebruik zult maken van Unity en een ASP.NET Core-web-app, dit alleen een voorbeeld is om te laten zien hoe het delen van Azure Spatial Anchor-id's naar andere apparaten werkt. U kunt andere talen en back-end-technologieën gebruiken om hetzelfde doel te krijgen. De ASP.NET Core-web-app die wordt gebruikt in deze zelfstudie heeft bovendien een afhankelijkheid van .NET Core 2.2 SDK. Het werkt goed op reguliere Azure Web Apps (Windows), maar werkt momenteel niet in Azure Web Apps voor Linux.
+Houd er rekening mee dat, hoewel u in deze zelfstudie gebruik zult maken van Unity en een ASP.NET Core-web-app, dit alleen een voorbeeld is om te laten zien hoe het delen van Azure Spatial Anchor-id's naar andere apparaten werkt. U kunt andere talen en back-end-technologieën gebruiken om hetzelfde doel te krijgen. De ASP.NET Core-web-app die wordt gebruikt in deze zelfstudie heeft bovendien een afhankelijkheid van .NET Core 2.2 SDK. Het werkt goed op reguliere Azure-web-apps (Windows), maar werkt momenteel niet in Azure-web-apps voor Linux.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -42,15 +42,15 @@ Houd er rekening mee dat, hoewel u in deze zelfstudie gebruik zult maken van Uni
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-## <a name="deploy-your-sharing-anchors-service"></a>Sharing Anchors Service implementeren
+## <a name="deploy-your-sharing-anchors-service"></a>Uw Sharing Anchor-service implementeren
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 Open Visual Studio en open het project in de map `Sharing\SharingServiceSample`.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 U moet een resource groep en een App Service plan maken voordat u de service in VS code implementeert.
 
@@ -89,6 +89,12 @@ Open Visual Studio code en open het project in de map `Sharing\SharingServiceSam
 ## <a name="deploy-the-sample-app"></a>De voor beeld-app implementeren
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Als gevolg van het verbreken van wijzigingen, wordt unit 2019,3 momenteel niet ondersteund. Gebruik unit 2019,1 of 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

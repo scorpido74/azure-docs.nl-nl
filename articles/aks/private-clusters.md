@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een AKS-cluster (private Azure K
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594563"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649504"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Een persoonlijk Azure Kubernetes service-cluster maken (preview)
 
@@ -55,6 +55,18 @@ Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes s
 * VS - west 2
 * VS - oost 2
 
+## <a name="currently-supported-availability-zones"></a>Momenteel ondersteunde Beschikbaarheidszones
+
+* VS - centraal
+* VS - oost
+* VS - oost 2
+* Frankrijk - centraal
+* Japan - oost
+* Europa - noord
+* Azië - zuidoost
+* Verenigd Koninkrijk Zuid
+* Europa -west
+* VS - west 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>De nieuwste Azure CLI AKS preview-extensie installeren
 
@@ -115,6 +127,7 @@ Waarbij *--Enable-Private-cluster* is een verplichte vlag voor een persoonlijk c
 > Als de docker Bridge-adres CIDR (172.17.0.1/16) in conflict is met de CIDR van het subnet, wijzigt u het docker Bridge-adres op de juiste manier.
 
 ## <a name="connect-to-the-private-cluster"></a>Verbinding maken met het persoonlijke cluster
+
 Het API-server eindpunt heeft geen openbaar IP-adres. Daarom moet u een virtuele Azure-machine (VM) in een virtueel netwerk maken en verbinding maken met de API-server. Ga hiervoor als volgt te werk:
 
 1. Referenties ophalen om verbinding te maken met het cluster.
@@ -148,7 +161,8 @@ Het API-server eindpunt heeft geen openbaar IP-adres. Daarom moet u een virtuele
 * Als u een aangepaste DNS-server wilt gebruiken, implementeert u een AD-server met DNS om door te sturen naar deze IP-168.63.129.16
 
 ## <a name="limitations"></a>Beperkingen 
-* Beschikbaarheidszones worden momenteel alleen ondersteund voor regio's VS-Oost 2 en VS-West 2
+* Toegestane IP-bereiken kunnen niet worden toegepast op het eind punt van de persoonlijke API-server, maar zijn alleen van toepassing op de open bare API-server
+* Beschikbaarheidszones momenteel worden ondersteund voor bepaalde regio's, zie het begin van dit document 
 * De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters, Azure-eind punten en service-eind punten van virtuele netwerken, die momenteel niet worden ondersteund in hetzelfde virtuele netwerk.
 * Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om persoonlijke Azure Container Instances (ACI) in te draaien in een particulier Azure Virtual Network
 * Geen ondersteuning voor Azure DevOps-integratie uit het vak met privé clusters

@@ -1,16 +1,16 @@
 ---
-title: Fouten in uw toepassing opsporen met Visual Studio
+title: Fouten opsporen in uw toepassing in Visual Studio
 description: Verbeter de betrouw baarheid en prestaties van uw services door deze te ontwikkelen en fouten op te sporen in Visual Studio op een lokaal ontwikkelings cluster.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458113"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624143"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Fouten opsporen in uw Service Fabric-toepassing met behulp van Visual Studio
 > [!div class="op_single_selector"]

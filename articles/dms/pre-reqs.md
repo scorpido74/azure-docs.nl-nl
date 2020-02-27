@@ -2,21 +2,21 @@
 title: Vereisten voor Azure Database Migration Service
 description: Meer informatie over een overzicht van de vereisten voor het gebruik van de Azure Database Migration Service voor het uitvoeren van database migraties.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 7ba317da9524c322d47fe57a866d429ff8f7e952
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/25/2020
+ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748732"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651488"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Overzicht van vereisten voor het gebruik van de Azure Database Migration Service
 
@@ -35,18 +35,25 @@ Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle
 * Schakel het TCP/IP-protocol in, dat standaard is uitgeschakeld tijdens de installatie van SQL Server Express, door de instructies in het artikel [In- of uitschakelen van een Server Network Protocol](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) te volgen.
 
     > [!IMPORTANT]
-    > Voor het maken van een instantie van Azure Database Migration Service is toegang tot de instellingen van de virtuele-networt vereist die normaal gesp roken niet in dezelfde resource groep zijn. Als gevolg hiervan moet de gebruiker die een exemplaar van DMS maakt, toestemming hebben op abonnements niveau. Voer het volgende script uit om de vereiste rollen te maken, die u indien nodig kunt toewijzen:
+    > Het maken van een instantie van Azure Database Migration Service vereist toegang tot de instellingen van het virtuele netwerk die normaal gesp roken niet binnen dezelfde resource groep vallen. Als gevolg hiervan moet de gebruiker die een exemplaar van DMS maakt, toestemming hebben op abonnements niveau. Voer het volgende script uit om de vereiste rollen te maken, die u indien nodig kunt toewijzen:
     >
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -106,7 +113,7 @@ Naast Azure Database Migration Service vereisten die gemeen schappelijk zijn voo
 
 Wanneer u de Azure Database Migration Service gebruikt voor het uitvoeren van SQL Server naar Azure SQL Database migraties, naast de vereisten die gemeen schappelijk zijn voor alle migratie scenario's, moet u rekening houden met de volgende aanvullende vereisten:
 
-* Maak een instantie van Azure SQL Database exemplaar, dat u doet door de details in artikel C[een Azure SQL database in de Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)te volgen.
+* Maak een Azure SQL Database-exemplaar, dit doet u door de details in het artikel [Een Azure SQL-database maken in de Azure-portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) te volgen.
 * Download en installeer de [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 of hoger.
 * Stel uw Windows-firewall open voor toegang van de Azure Database Migration Service tot de brondatabase van SQL Server. Standaard verloopt dit via TCP-poort 1433.
 * Als u meerdere benoemde SQL Server-exemplaren met behulp van dynamische poorten uitvoert, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
@@ -116,7 +123,7 @@ Wanneer u de Azure Database Migration Service gebruikt voor het uitvoeren van SQ
 
    > [!NOTE]
    > Voor een volledig overzicht van de vereisten die nodig zijn om de Azure Database Migration Service te gebruiken om migraties uit te voeren van SQL Server naar Azure SQL Database, raadpleegt u de zelf studie [SQL Server migreren naar Azure SQL database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
-   > 
+   >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Vereisten voor het migreren van SQL Server naar een Azure SQL Database beheerd exemplaar
 

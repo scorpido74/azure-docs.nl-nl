@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 880f1c601cf4132fdec9e5d25b1bf1f2ff175ab7
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486240"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650534"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Richt lijnen voor prestaties voor SQL Server in azure Virtual Machines
 
@@ -136,7 +136,7 @@ Voor virtuele machines die Premium Ssd's ondersteunen, kunt u TempDB ook opslaan
      > [!WARNING]
      > Stop de SQL Server-service bij het wijzigen van de cache-instelling van Azure VM-schijven om te voor komen dat de data base wordt beschadigd.
 
-* **NTFS Allocation Unit Size**: bij het format teren van de gegevens schijf wordt aanbevolen dat u een 64-KB-Allocation Unit Size gebruikt voor gegevens-en logboek bestanden en Tempdb.
+* **NTFS Allocation Unit Size**: bij het format teren van de gegevens schijf wordt aanbevolen dat u een 64-KB-Allocation Unit Size gebruikt voor gegevens-en logboek bestanden en Tempdb. Als TempDB op de tijdelijke schijf wordt geplaatst (D:\ station) de prestaties die worden verkregen door gebruik te maken van dit station, wegen de nood zaak van een 64K Allocation Unit Size. 
 
 * **Best practices voor schijf beheer**: wanneer u een gegevens schijf verwijdert of het cache type wijzigt, stopt u de SQL Server-service tijdens de wijziging. Wanneer de cache-instellingen worden gewijzigd op de besturingssysteem schijf, stopt Azure de virtuele machine, wijzigt het cache type en start de VM opnieuw op. Wanneer de cache-instellingen van een gegevens schijf zijn gewijzigd, wordt de VM niet gestopt, maar wordt de gegevens schijf losgekoppeld van de virtuele machine tijdens de wijziging en vervolgens opnieuw gekoppeld.
 

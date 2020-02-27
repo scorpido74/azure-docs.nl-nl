@@ -3,14 +3,14 @@ title: VM's buiten bedrijfsuren starten/stoppen oplossing
 description: Deze VM-beheer oplossing Start en stopt uw Azure Resource Manager virtuele machines volgens een planning en proactief bewaakt vanuit Azure Monitor Logboeken.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2019
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030168"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616046"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>VM's buiten bedrijfsuren starten/stoppen oplossing in Azure Automation
 
@@ -51,7 +51,7 @@ Er zijn bepaalde machtigingen die een gebruiker nodig heeft om de Vm's voor het 
 
 Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten kantoor uren naar een bestaand Automation-account en Log Analytics werk ruimte, moeten de gebruiker die de oplossing implementeert de volgende machtigingen voor de **resource groep**hebben. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over rollen.
 
-| Machtiging | Scope|
+| Machtiging | Bereik|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Resourcegroep |
 | Microsoft.Automation/automationAccounts/variables/write | Resourcegroep |
@@ -80,7 +80,7 @@ Voor het implementeren van de oplossing voor het starten/stoppen van Vm's buiten
 - Een lid van de rol ontwikkelaar van [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **toepassing** . Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
 - Inzender voor het abonnement of de volgende machtigingen.
 
-| Machtiging |Scope|
+| Machtiging |Bereik|
 | --- | --- |
 | Micro soft. Authorization/Operations/Read | Abonnement|
 | Micro soft. Authorization/permissions/Read |Abonnement|
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om de VM's buiten bedrijfsuren starten/stoppen oplo
 
 2. Controleer op de pagina **VM's buiten bedrijfsuren starten/stoppen** voor de geselecteerde oplossing de samenvattings informatie en klik vervolgens op **maken**.
 
-   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure-portal](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. De pagina **oplossing toevoegen** wordt weer gegeven. U wordt gevraagd de oplossing te configureren voordat u deze kunt importeren in uw Automation-abonnement.
 
@@ -151,7 +151,7 @@ Voer de volgende stappen uit om de VM's buiten bedrijfsuren starten/stoppen oplo
 > [!NOTE]
 > Als u een abonnement voor Azure Cloud Solution Provider (Azure CSP) hebt nadat de implementatie is voltooid, gaat u in uw Automation-account naar **variabelen** onder **gedeelde resources** en stelt u de [**External_EnableClassicVMs**](#variables) variabele in op **Onwaar**. Zo stopt de oplossing met het zoeken naar klassieke VM-resources.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 De oplossing bevat drie afzonderlijke scenario's. Deze scenario's zijn:
 
@@ -200,36 +200,6 @@ In een omgeving met twee of meer onderdelen op meerdere Vm's die een gedistribue
 1. In dit scenario wordt de **External_Start_ResourceGroupNames** -en **External_Stop_ResourceGroupnames** variabelen niet nageleefd. Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](../automation/automation-schedules.md)voor meer informatie.
 1. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u hand matig de bewakings-en diagnostische/bewakings actie-groupsrunbook uit met de para meter ingesteld op **False**, of laat u het Automation-schema **Sequenced-StartVM** en **Sequence-StopVM** automatisch uitvoeren volgens uw voorgeschreven schema.
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Scenario 3: automatisch starten/stoppen op basis van CPU-gebruik
-
-Met deze oplossing kunt u de kosten van het uitvoeren van virtuele machines in uw abonnement beheren door Azure-Vm's te evalueren die niet worden gebruikt tijdens niet-piek perioden, zoals na uur, en ze automatisch af te sluiten als het processor gebruik lager is dan x%.
-
-De oplossing is standaard vooraf geconfigureerd om het percentage CPU-metriek te evalueren om te controleren of het gemiddelde gebruik 5% of minder is. Dit scenario wordt bepaald door de volgende variabelen en kan worden gewijzigd als de standaard waarden niet voldoen aan uw vereisten:
-
-- External_AutoStop_MetricName
-- External_AutoStop_Threshold
-- External_AutoStop_TimeAggregationOperator
-- External_AutoStop_TimeWindow
-
-U kunt de actie richten op een abonnement en resource groep, of een specifieke lijst met Vm's maken, maar niet beide.
-
-#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>De actie stoppen op basis van een abonnement en resource groep
-
-1. Configureer de variabelen **External_Stop_ResourceGroupNames** en **External_ExcludeVMNames** om de doel-vm's op te geven.
-1. Het **Schedule_AutoStop_CreateAlert_Parent** schema inschakelen en bijwerken.
-1. Voer het **AutoStop_CreateAlert_Parent** runbook uit met de actie parameter ingesteld op **Start** en de para meter WHATIF ingesteld op **True** om een voor beeld van de wijzigingen weer te geven.
-
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>De start-en stop actie richten op de VM-lijst
-
-1. Voer het **AutoStop_CreateAlert_Parent** runbook uit met de actie parameter ingesteld op **starten**, voeg een door Komma's gescheiden lijst met vm's toe aan de para meter *VMList* en stel de para meter WHATIF in op **True**. Bekijk een voor beeld van uw wijzigingen.
-1. Configureer de para meter **External_ExcludeVMNames** met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
-1. In dit scenario wordt de **External_Start_ResourceGroupNames** -en **External_Stop_ResourceGroupnames** variabelen niet nageleefd. Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](../automation/automation-schedules.md)voor meer informatie.
-
-Nu u een planning hebt voor het stoppen van Vm's op basis van CPU-gebruik, moet u een van de volgende planningen inschakelen om ze te starten.
-
-- Doel start actie op basis van het abonnement en de resource groep. Raadpleeg de stappen in [scenario 1](#scenario-1-startstop-vms-on-a-schedule) voor het testen en inschakelen van planningen **gepland StartVM** .
-- Doel start actie op basis van abonnement, resource groep en label. Raadpleeg de stappen in [scenario 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) voor het testen en inschakelen van planningen **met Sequence-StartVM** .
-
 ## <a name="solution-components"></a>Oplossingsonderdelen
 
 Deze oplossing omvat vooraf geconfigureerde runbooks, planningen en integratie met Azure Monitor-logboeken, zodat u de opstart-en afsluit werkzaamheden van uw virtuele machines kunt aanpassen aan uw bedrijfs behoeften.
@@ -266,7 +236,7 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 |External_AutoStop_Threshold | De drempel waarde voor de Azure-waarschuwings regel die is opgegeven in de variabele _External_AutoStop_MetricName_. Percentage waarden kunnen variëren van 1 tot en met 100.|
 |External_AutoStop_TimeAggregationOperator | De tijds samenvoegings operator, die wordt toegepast op de geselecteerde venster grootte om de voor waarde te evalueren. Acceptabele waarden zijn **Average**, **minimum**, **maximum**, **Total**en **last**.|
 |External_AutoStop_TimeWindow | De venster grootte waarover Azure geselecteerde metrische gegevens analyseert voor het activeren van een waarschuwing. Deze para meter accepteert invoer in time span-indeling. Mogelijke waarden zijn 5 minuten tot zes uur.|
-|External_EnableClassicVMs| Hiermee geeft u op of klassieke Vm's zijn gericht op de oplossing. De standaardwaarde is True (Waar). Dit moet worden ingesteld op False voor CSP-abonnementen. Klassieke Vm's vereisen een [klassiek uitvoeren als-account](automation-create-standalone-account.md#classic-run-as-accounts).|
+|External_EnableClassicVMs| Hiermee geeft u op of klassieke Vm's zijn gericht op de oplossing. De standaardwaarde is Waar. Dit moet worden ingesteld op False voor CSP-abonnementen. Klassieke Vm's vereisen een [klassiek uitvoeren als-account](automation-create-standalone-account.md#classic-run-as-accounts).|
 |External_ExcludeVMNames | Voer de namen van de virtuele machines in die moeten worden uitgesloten, waarbij de namen worden gescheiden door een komma zonder spaties. Dit is beperkt tot 140 Vm's. Als u meer dan 140 Vm's toevoegt aan deze door komma's gescheiden lijst, kunnen Vm's die zijn ingesteld om te worden uitgesloten, onbedoeld worden gestart of gestopt.|
 |External_Start_ResourceGroupNames | Hiermee geeft u een of meer resource groepen op en scheidt u de waarden met behulp van een komma, die is gericht op Start acties.|
 |External_Stop_ResourceGroupNames | Hiermee geeft u een of meer resource groepen op en scheidt u de waarden met behulp van een komma, gericht op het stoppen van acties.|
@@ -277,7 +247,7 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 
 In alle scenario's zijn de **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**en **External_ExcludeVMNames** variabelen nodig voor het doel van vm's, met uitzonde ring van het leveren van een door komma's gescheiden lijst met vm's voor de **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**en **ScheduledStartStop_Parent** runbooks. Dat wil zeggen dat uw virtuele machines zich in doel resource groepen moeten bevinden om te starten en te stoppen. De logica werkt op vergelijk bare wijze als het Azure-beleid. in dat doel kunt u het abonnement of de resource groep richten en acties laten overnemen door nieuw gemaakte Vm's. Op deze manier wordt voor komen dat u een afzonderlijke planning moet onderhouden voor elke VM en het beheer begint en stopt op schaal.
 
-### <a name="schedules"></a>Schema's
+### <a name="schedules"></a>Planningen
 
 De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt in uw Automation-account. U kunt ze wijzigen of uw eigen aangepaste schema's maken. Standaard zijn alle schema's uitgeschakeld, met uitzonde ring van **Scheduled_StartVM** en **Scheduled_StopVM**.
 
@@ -314,7 +284,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |SourceSystem | Hiermee wordt het bronsysteem voor de verzonden gegevens opgegeven. Voor Automation is de waarde OpsManager|
 |StreamType | Hiermee wordt het type gebeurtenis opgegeven. Mogelijke waarden zijn:<br>- Uitgebreid<br>- Uitvoer<br>- Fout<br>- Waarschuwing|
 |SubscriptionId | Hiermee wordt de abonnements-id van de taak opgegeven.
-|Tijd | Datum en tijd van uitvoering van de runbooktaak.|
+|Time | Datum en tijd van uitvoering van de runbooktaak.|
 
 ### <a name="job-streams"></a>Taakstromen
 
@@ -333,7 +303,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |RunbookName | De naam van het runbook.|
 |SourceSystem | Hiermee wordt het bronsysteem voor de verzonden gegevens opgegeven. Voor Automation is de waarde OpsManager.|
 |StreamType | Het type taakstroom. Mogelijke waarden zijn:<br>-Voortgang<br>- Uitvoer<br>- Waarschuwing<br>- Fout<br>- Foutopsporing<br>- Uitgebreid|
-|Tijd | Datum en tijd van uitvoering van de runbooktaak.|
+|Time | Datum en tijd van uitvoering van de runbooktaak.|
 
 Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records van **JobLogs** of **JobStreams**worden geretourneerd, kunt u de weer gave **JobLogs** of **JobStreams** selecteren, waarin een reeks tegels wordt weer gegeven met een overzicht van de updates die worden geretourneerd door de zoek opdracht.
 
@@ -341,7 +311,7 @@ Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records va
 
 De volgende tabel bevat voorbeeldzoekopdrachten in logboeken voor taakrecords die worden verzameld met deze oplossing.
 
-|Query | Beschrijving|
+|Query's uitvoeren | Beschrijving|
 |----------|----------|
 |Taken zoeken voor runbook-ScheduledStartStop_Parent die zijn voltooid | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Taken zoeken voor runbook-SequencedStartStop_Parent die zijn voltooid | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

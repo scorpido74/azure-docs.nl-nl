@@ -3,12 +3,12 @@ title: Power shell gebruiken voor het maken van back-ups van DPM-workloads
 description: Meer informatie over het implementeren en beheren van Azure Backup voor Data Protection Manager (DPM) met behulp van Power shell
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 06c138a4015a0b730369e091fc57a34d2190051d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583092"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616734"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
 
@@ -234,7 +234,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 In deze sectie voegt u een productie server toe aan DPM en beschermt u de gegevens vervolgens naar de lokale DPM-opslag en vervolgens op Azure Backup. In de voor beelden wordt gedemonstreerd hoe u een back-up van bestanden en mappen maakt. De logica kan eenvoudig worden uitgebreid om een back-up te maken van een gegevens bron die door DPM wordt ondersteund. Alle DPM-back-ups zijn onderhevig aan een beveiligings groep (PG) met vier onderdelen:
 
-1. **Groeps leden** is een lijst van alle Beveilig bare objecten (ook wel *gegevens bronnen* genoemd in DPM) die u wilt beveiligen in dezelfde beveiligings groep. U kunt bijvoorbeeld productie-Vm's in één beveiligings groep beveiligen en SQL Server data bases in een andere beveiligings groep, aangezien deze mogelijk verschillende back-upvereisten hebben. Voordat u een back-up van een gegevens bron op een productie server kunt maken, moet u ervoor zorgen dat de DPM-agent op de server is geïnstalleerd en wordt beheerd door DPM. Volg de stappen voor [het installeren van de DPM-agent](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) en het koppelen hiervan aan de juiste DPM-server.
+1. **Groeps leden** is een lijst van alle Beveilig bare objecten (ook wel *gegevens bronnen* genoemd in DPM) die u wilt beveiligen in dezelfde beveiligings groep. U kunt bijvoorbeeld productie-Vm's in één beveiligings groep beveiligen en SQL Server data bases in een andere beveiligings groep, aangezien deze mogelijk verschillende back-upvereisten hebben. Voordat u een back-up van een gegevens bron op een productie server kunt maken, moet u ervoor zorgen dat de DPM-agent op de server is geïnstalleerd en wordt beheerd door DPM. Volg de stappen voor [het installeren van de DPM-agent](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) en het koppelen hiervan aan de juiste DPM-server.
 2. Met de **methode voor gegevens beveiliging** worden de doel locaties voor back-ups opgegeven: tape, schijf en Cloud. In ons voor beeld zullen we gegevens beveiligen op de lokale schijf en in de Cloud.
 3. Een **back-upschema** dat opgeeft wanneer er back-ups moeten worden gemaakt en hoe vaak de gegevens moeten worden gesynchroniseerd tussen de DPM-server en de productie server.
 4. Een **Bewaar schema** dat aangeeft hoe lang de herstel punten in azure moeten worden bewaard.

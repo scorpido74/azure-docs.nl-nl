@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116711"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649087"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -76,7 +76,7 @@ Gegevens sets maken op basis van een [Azure-gegevens opslag](how-to-access-data.
 
 U kunt TabularDatasets maken via de SDK of met behulp van Azure Machine Learning Studio. 
 
-Gebruik de methode [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) op de klasse `TabularDatasetFactory` om bestanden te lezen in de CSV-of. TSV-indeling en om een niet-geregistreerde TabularDataset te maken. Als u een lees bewerking uitvoert van meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave.
+Gebruik de methode [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) op de klasse `TabularDatasetFactory` om bestanden te lezen in de CSV-of. TSV-indeling en om een niet-geregistreerde TabularDataset te maken. Als u een lees bewerking uitvoert van meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -96,7 +96,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-Wanneer u een TabularDataset maakt, worden de kolom gegevens typen standaard automatisch afgeleid. Als de instelde typen niet overeenkomen met uw verwachtingen, kunt u kolom typen opgeven door de volgende code te gebruiken. U kunt ook [meer te weten komen over ondersteunde gegevens typen](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
+Wanneer u een TabularDataset maakt, worden de kolom gegevens typen standaard automatisch afgeleid. Als de instelde typen niet overeenkomen met uw verwachtingen, kunt u kolom typen opgeven door de volgende code te gebruiken. Als uw opslag zich achter een virtueel netwerk of een firewall bevindt, neemt u de para meters `validate=False` en `infer_column_types=False` op in uw `from_delimited_files()`-methode. Dit omzeilt de initiële validatie controle en zorgt ervoor dat u uw gegevensset kunt maken op basis van deze beveiligde bestanden. U kunt ook [meer te weten komen over ondersteunde gegevens typen](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py).
+
+> [!NOTE] 
+>De para meter `infer_column_type` is alleen van toepassing op gegevens sets die zijn gemaakt op basis van bestanden met scheidings tekens. 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -109,7 +112,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Dummy tekst|Pclass|Naam|Seks|Leeftijd|SibSp|Parch|Kaart|Tickets|Hand|Ingeschepend
+| |PassengerId|Dummy tekst|Pclass|Name|Seks|Leeftijd|SibSp|Parch|Kaart|Tickets|Hand|Ingeschepend
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
 1|2|True|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
@@ -149,7 +152,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>Een FileDataset maken
 
-Gebruik de methode [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) op de `FileDatasetFactory`-klasse om bestanden in een wille keurige indeling te laden en een niet-geregistreerde FileDataset te maken:
+Gebruik de methode [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) op de klasse `FileDatasetFactory` om bestanden in een wille keurige indeling te laden en een niet-geregistreerde FileDataset te maken. Als uw opslag zich achter een virtueel netwerk of een firewall bevindt, stelt u de para meter `validate =False` in de methode `from_files()`. Hiermee wordt de eerste validatie stap omzeild en zorgt u ervoor dat u uw gegevensset kunt maken op basis van deze beveiligde bestanden.
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively

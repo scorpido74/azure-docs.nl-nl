@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
-ms.translationtype: MT
+ms.openlocfilehash: a5ba6ce01b308c9461d28441e17e36f1b9400564
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045201"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624097"
 ---
 # <a name="vcore-model-overview"></a>Overzicht van vCore-modellen
 
@@ -32,7 +32,7 @@ Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek
 ||**Algemeen doel**|**Bedrijfs kritiek**|**Grootschalige**|
 |---|---|---|---|
 |Ideaal voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
-|Storage|Maakt gebruik van externe opslag.<br/>**Afzonderlijke data bases en geprovisionte elastische Pools**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**Beheerd exemplaar**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Afzonderlijke data bases en geprovisionte elastische Pools**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
+|Opslag|Maakt gebruik van externe opslag.<br/>**Afzonderlijke data bases en geprovisionte elastische Pools**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**Beheerd exemplaar**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Afzonderlijke data bases en geprovisionte elastische Pools**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
 |IOPS en door Voer (ongeveer)|**Afzonderlijke data bases en elastische Pools**: Zie resource limieten voor [afzonderlijke data bases](../sql-database/sql-database-vcore-resource-limits-single-databases.md) en [elastische Pools](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Beheerd exemplaar**: zie [overzicht Azure SQL database de resource limieten voor beheerde exemplaren](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Zie resource limieten voor [afzonderlijke data bases](../sql-database/sql-database-vcore-resource-limits-single-databases.md) en [elastische Pools](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS en door Voer is afhankelijk van de werk belasting.|
 |Beschikbaarheid|1 replica, geen replica's met lees schaal|3 replica's, 1 [replica met lees grootte](sql-database-read-scale-out.md),<br/>zone-redundante hoge Beschik baarheid (HA)|1 replica met lees-en schrijf bewerkingen, plus 0-4 [replica's met lees grootte](sql-database-read-scale-out.md)|
 |Back-ups|[Geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|Back-ups op basis van moment opnamen in azure externe opslag. Herstelt het gebruik van deze moment opnamen voor snel herstel. Back-ups zijn onmiddellijk en zijn niet van invloed op de I/O-prestaties van compute. Herstel bewerkingen zijn snel en zijn geen omvang van de gegevens bewerking (minuten in plaats van uren of dagen).|
@@ -59,7 +59,7 @@ Opties voor Compute-lagen in het vCore-model bevatten de ingerichte en serverloz
 De ingerichte Compute-laag biedt een specifieke hoeveelheid reken bronnen die continu worden ingericht, onafhankelijk van de werkbelasting activiteit, en facturen voor de hoeveelheid Compute die is ingericht tegen een vaste prijs per uur.
 
 
-### <a name="serverless-compute"></a>Serverloze rekenervaring
+### <a name="serverless-compute"></a>Serverloze compute
 
 Met de [serverloze Compute-laag](sql-database-serverless.md) worden reken resources automatisch geschaald op basis van de werkbelasting activiteit en worden er facturen in rekening gebracht voor de hoeveelheid reken kracht per seconde.
 
@@ -95,11 +95,11 @@ Als u hardware van de M-serie wilt inschakelen voor een abonnement en een regio,
 ### <a name="compute-and-memory-specifications"></a>Specificaties van Compute en geheugen
 
 
-|Hardware genereren  |Computing  |Geheugen  |
+|Hardware genereren  |Compute  |Geheugen  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-processors<br>-Tot 24 vCores (1 vCore = 1 fysieke kern) inrichten  |-7 GB per vCore<br>-Maxi maal 168 GB inrichten|
-|Gen5     |**Ingerichte compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160-processors (Skylake)<br>-Maxi maal 80 vCores (1 vCore = 1 Hyper Thread) inrichten<br><br>**Serverloze compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160-processors (Skylake)<br>-Schaal automatisch naar 16 vCores (1 vCore = 1 Hyper Thread)|**Ingerichte compute**<br>-5,1 GB per vCore<br>-Maxi maal 408 GB inrichten<br><br>**Serverloze compute**<br>-Automatisch schalen naar 24 GB per vCore<br>-Maxi maal 48 GB automatisch schalen|
-|Fsv2-reeks     |-Intel Xeon Platinum 8168-processors (SkyLake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Provision 72 vCores (1 vCore = 1 Hyper Thread)|-1,9 GB per vCore<br>-Inrichting van 136 GB|
+|GEN5     |**Ingerichte compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160-processors (Skylake)<br>-Maxi maal 80 vCores (1 vCore = 1 Hyper Thread) inrichten<br><br>**Serverloze compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160-processors (Skylake)<br>-Schaal automatisch naar 16 vCores (1 vCore = 1 Hyper Thread)|**Ingerichte compute**<br>-5,1 GB per vCore<br>-Maxi maal 408 GB inrichten<br><br>**Serverloze compute**<br>-Automatisch schalen naar 24 GB per vCore<br>-Maxi maal 48 GB automatisch schalen|
+|Fsv2-serie     |-Intel Xeon Platinum 8168-processors (SkyLake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Provision 72 vCores (1 vCore = 1 Hyper Thread)|-1,9 GB per vCore<br>-Inrichting van 136 GB|
 |M-serie     |-Intel Xeon E7-8890 v3 2,5 GHz-processors<br>-Provision 128 vCores (1 vCore = 1 Hyper Thread)|-29 GB per vCore<br>-Inrichting van 3,7 TB|
 
 
@@ -142,7 +142,7 @@ Selecteer op het tabblad **basis beginselen** de koppeling **Data Base configure
   
 **Het genereren van de hardware van een bestaand beheerd exemplaar wijzigen**
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Selecteer op de pagina beheerd exemplaar de **prijs categorie** koppeling die in de sectie instellingen is geplaatst
 
@@ -150,43 +150,25 @@ Selecteer op de pagina beheerd exemplaar de **prijs categorie** koppeling die in
 
 Op de pagina **prijs categorie** kunt u de generatie van de hardware wijzigen, zoals beschreven in de vorige stappen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Gebruik het volgende PowerShell-script:
+Gebruik het volgende Power shell-script:
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Zorg ervoor dat u de abonnements-ID, naam en resource groep van het beheerde exemplaar opgeeft.
+Raadpleeg de opdracht [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) voor meer informatie.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Gebruik de volgende CLI-opdracht:
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+Raadpleeg [AZ SQL mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) Command voor meer informatie.
 
 ---
 
@@ -194,11 +176,11 @@ Zorg ervoor dat u de abonnements-ID, naam en resource groep van het beheerde exe
 
 #### <a name="gen4gen5-1"></a>Gen4/Gen5
 
-Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's. 
+Gen4-hardware wordt [gefaseerd uitgevoerd](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) en is niet meer beschikbaar voor de nieuwe implementaties. Alle nieuwe data bases moeten worden geïmplementeerd op GEN5-hardware.
 
 GEN5 is wereld wijd beschikbaar in de meeste regio's.
 
-#### <a name="fsv2-series"></a>Fsv2-reeks
+#### <a name="fsv2-series"></a>Fsv2-serie
 
 Fsv2-serie is beschikbaar in de volgende regio's: Australië-centraal, Australië-centraal 2, Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Azië-oost, VS-Oost, Frankrijk-centraal, India centraal, India-West, Korea-centraal, Korea-zuid, Noord Europa, Zuid-Afrika-noord, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West 2.
 

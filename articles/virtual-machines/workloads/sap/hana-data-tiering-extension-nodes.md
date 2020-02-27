@@ -3,27 +3,27 @@ title: Gegevens lagen en uitbrei dingen voor het SAP HANA op Azure (grote exempl
 description: Gegevenslaagingen en extensie knooppunten voor SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 261009edc20f946fa86f0482d8ab5045f4b4f84b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099841"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617164"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA gegevenslaagings-en uitbrei ding knooppunten gebruiken
 
 SAP ondersteunt een gegevenslaag model voor SAP BW van verschillende versies van SAP NetWeaver en SAP BW/4HANA. Zie voor meer informatie over het gegevenslaag model het SAP [-document SAP BW/4HANA en SAP BW op Hana met SAP Hana extensie knooppunten](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-Met HANA grote instanties kunt u de optie-1 configuratie van SAP HANA extensie knooppunten gebruiken, zoals wordt uitgelegd in de veelgestelde vragen en SAP-Blog documenten. U kunt de optie-2 configuraties instellen met de volgende HANA-Sku's voor grote instanties: S72m, S192, S192m, S384 en S384m. 
+Met HANA grote instanties kunt u de optie-1 configuratie van SAP HANA extensie knooppunten gebruiken, zoals wordt uitgelegd in de veelgestelde vragen en SAP-Blog documenten. De opties voor optie 2 kunnen worden ingesteld met de volgende HANA-Sku's voor grote instanties: S72m, S192, S192m, S384 en S384m. 
 
 Wanneer u de documentatie bekijkt, is het voor deel mogelijk niet direct zichtbaar. Maar wanneer u de SAP-formaat richtlijnen bekijkt, kunt u een voor deel zien met behulp van optie-1 en optie-2 SAP HANA extensie knooppunten. Hier volgen enkele voor beelden:
 

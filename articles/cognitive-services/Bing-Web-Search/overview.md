@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892988"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650279"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Wat is de Bing Webzoekopdrachten-API?
 
@@ -40,7 +40,7 @@ Bing Web Search biedt u geen toegang tot direct antwoord. Het bevat ook aanvulle
 
 ## <a name="workflow"></a>Werkstroom
 
-De Bing Webzoekopdrachten-API kan eenvoudig worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON-antwoorden kunnen worden geparseerd. De service is toegankelijk via de [REST API](quickstarts/python.md) of de [Bing Webzoekopdrachten-SDK's](web-sdk-python-quickstart.md).
+De Bing Webzoekopdrachten-API kan eenvoudig worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON-antwoorden kunnen worden geparseerd. De service is toegankelijk via de [rest API](quickstarts/python.md) -of de [Bing Web Search-client bibliotheken](./quickstarts/client-libraries.md).
 
 1. [Maak een Azure-resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) voor de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) maken.  
 2. Verzend een [aanvraag naar de Bing Webzoekopdrachten-API](quickstarts/python.md).
@@ -48,7 +48,7 @@ De Bing Webzoekopdrachten-API kan eenvoudig worden aangeroepen vanuit elke progr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Gebruik onze [Python-snelstartgids](quickstarts/python.md) om uw eerste aanroep naar de Bing Webzoekopdrachten-API te maken.  
+* Gebruik onze [Python-snelstartgids](./quickstarts/client-libraries.md?pivots=programming-language-python) om uw eerste aanroep naar de Bing Webzoekopdrachten-API te maken.  
 * [Maak een web-app van één pagina](tutorial-bing-web-search-single-page-app.md).
 * Bekijk de documentatie [Referentie voor Webzoekopdrachten-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).  
 * Meer informatie over [Vereisten voor gebruik en weergave](UseAndDisplayRequirements.md) voor Bing Webzoekopdrachten.  

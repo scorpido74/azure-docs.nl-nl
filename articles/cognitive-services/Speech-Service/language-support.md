@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605727"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617282"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Taal-en regio ondersteuning voor de spraak service
 
@@ -37,8 +37,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
  Landinstelling | Taal | Ondersteund | Aanpassingen
 ------|------------|-----------|-------------
 `ar-AE` | Arabisch (VAE) | Ja | Nee
-`ar-BH` | Arabisch (Bahrein) | Ja | Taal model
-`ar-EG` | Arabisch (Egypte), moderne standard | Ja | Taal model
+`ar-BH` | Arabisch (Bahrein), modern, standaard | Ja | Taal model
+`ar-EG` | Arabisch (Egypte) | Ja | Taal model
 `ar-KW` | Arabisch (Koeweit) | Ja | Nee
 `ar-QA` | Arabisch (Qatar) | Ja | Nee
 `ar-SA` | Arabisch (Saoedi-Arabië) | Ja | Nee
@@ -50,7 +50,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `en-GB` | Engels (Verenigd Koninkrijk) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
 `en-IN` | English (India) | Ja | Akoestische model<br>Taal model
 `en-NZ` | Engels (Nieuw-Zeeland) | Ja | Akoestische model<br>Taal model
-`en-US` | Engels (Verenigde Staten) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`en-US` | Nederlands (Nederland) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
 `es-ES` | Spaans (Spanje) | Ja | Akoestische model<br>Taal model
 `es-MX` | Spaans (Mexico) | Ja | Akoestische model<br>Taal model
 `fi-FI` | Fins (Finland) | Ja | Taal model
@@ -95,8 +95,8 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte spraak naam
 --------|----------|--------|---------|------------
 `de-DE` | Duits (Duitsland) | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
-`en-US` | English (US) | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, JessaNeural)" | "en-US-JessaNeural"
-`en-US` | English (US) | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, GuyNeural)" | "en-US-GuyNeural"
+`en-US` | Engels (VS) | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, JessaNeural)" | "en-US-JessaNeural"
+`en-US` | Engels (VS) | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, GuyNeural)" | "en-US-GuyNeural"
 `it-IT` | Italiaans (Italië) | Vrouw |"Micro soft server Speech Text to Speech Voice (IT-IT, ElsaNeural)" | ' it-IT-ElsaNeural '
 `pt-BR` | Portugees (Brazilië) | Vrouw | "Micro soft server Speech Text to Speech Voice (pt-BR, FranciscaNeural)" | "pt-BR-FranciscaNeural"
 `zh-CN` | Chinees (vasteland) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
@@ -128,14 +128,14 @@ Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-AU, HayleyRUS)" | "en-AU-HayleyRUS"
 `en-CA` | Engels (Canada) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-CA, Linda)" | "en-CA-Linda"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-CA, HeatherRUS)" | "en-CA-HeatherRUS"
-`en-GB` | English (UK) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-GB, Susan, Apollo)" | "en-GB-Susan-Apollo"
+`en-GB` | Engels (GB) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-GB, Susan, Apollo)" | "en-GB-Susan-Apollo"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-GB, HazelRUS)" | "en-GB-HazelRUS"
 | | | Man | "Microsoft Server spraak tekst en spraak, spraak (en-GB, George, Apollo)" | "en-GB-George-Apollo"
 `en-IE` | Engels (Ierland) | Man | "Microsoft Server spraak tekst en spraak, spraak (en Internet Explorer, Jan)" | "en-IE-Johan"
 `en-IN` | English (India) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-IN, Heera, Apollo)" | "en-IN-heera-Apollo"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-IN, PriyaRUS)" | "en-IN-PriyaRUS"
 | | | Man | "Microsoft Server spraak tekst en spraak, spraak (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo"
-`en-US` | English (US) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-US, ZiraRUS)" | "en-US-ZiraRUS"
+`en-US` | Engels (VS) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-US, ZiraRUS)" | "en-US-ZiraRUS"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-US, JessaRUS)" | "en-US-JessaRUS"
 | | | Man | "Microsoft Server spraak tekst en spraak, spraak (en-US, BenjaminRUS)" | "en-US-BenjaminRUS"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (en-US, Jessa24kRUS)" | "en-US-Jessa24kRUS"
@@ -158,7 +158,7 @@ Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte
 | | | Man | "Microsoft Server spraak tekst en spraak, spraak (High-IN, Hemant)" | "Hi-IN-Hemant"
 `hr-HR` | Kroatisch | Man | "Microsoft Server tekst naar spraak stem (hr-HR, Matej)" | "hr-HR-Matej"
 `hu-HU` | Hongaars | Man | "Microsoft Server spraak tekst en spraak, spraak (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
-`id-ID` | Indonesisch| Man | "Microsoft Server spraak tekst en spraak, spraak (id-ID, Andika)" | "id-ID-andika"
+`id-ID` | Bahasa Indonesia| Man | "Microsoft Server spraak tekst en spraak, spraak (id-ID, Andika)" | "id-ID-andika"
 `it-IT` | Italiaans | Man | "Microsoft Server spraak tekst en spraak, spraak (it-IT, Cosimo, Apollo)" | "it-IT-Cosimo-Apollo"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (it-IT, LuciaRUS)" | "it-IT-LuciaRUS"
 `ja-JP` | Japans | Vrouw | "Microsoft Server tekst naar spraak stem (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo"
@@ -167,7 +167,7 @@ Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte
 `ko-KR` | Koreaans | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS"
 `ms-MY` | Maleis | Man | "Microsoft Server-stem tekst naar spraak (ms-mijn Rizwan)" | ' MS-MY-Rizwan '
 `nb-NO` | Noors | Vrouw | "Microsoft Server-stem tekst naar spraak (nb-NO HuldaRUS)" | "nb-NO-HuldaRUS"
-`nl-NL` | Nederlands | Vrouw | "Microsoft Server tekst naar spraak stem (nl-NL, HannaRUS)" | "nl-NL-HannaRUS"
+`nl-NL` | Dutch | Vrouw | "Microsoft Server tekst naar spraak stem (nl-NL, HannaRUS)" | "nl-NL-HannaRUS"
 `pl-PL` | Pools | Vrouw | "Microsoft Server tekst naar spraak stem (pl-PL, PaulinaRUS)" | "pl-PL-PaulinaRUS"
 `pt-BR` | Portugees (Brazilië) | Vrouw | "Microsoft Server tekst naar spraak stem (pt-BR, HeloisaRUS)" | "pt-BR-HeloisaRUS"
 | | | Man |"Microsoft Server tekst naar spraak stem (pt-BR, Daniel, Apollo)" | "pt-BR-Daniel-Apollo"
@@ -226,9 +226,9 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
-| Nederlands      | `nl`          |
+| Dutch      | `nl`          |
 | Nederlands      | `en`          |
-| Estisch      | `et`          |
+| Estlands      | `et`          |
 | Fiji      | `fj`          |
 | Filipijns      | `fil`          |
 | Fins      | `fi`          |
@@ -240,7 +240,7 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 | Hindi      | `hi`          |
 | Hmong Daw      | `mww`          |
 | Hongaars      | `hu`          |
-| Indonesisch      | `id`          |
+| Bahasa Indonesia      | `id`          |
 | Iers      | `ga`          |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |

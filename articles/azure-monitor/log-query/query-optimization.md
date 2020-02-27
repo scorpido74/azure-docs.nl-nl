@@ -6,25 +6,25 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.date: 02/25/2019
+ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589842"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622913"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
-Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om uw logboeken en query's op te slaan en te beheren. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werk ruimte wordt opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
+Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
 
-De meeste technieken zijn gebruikelijk voor query's die rechtstreeks worden uitgevoerd op Azure Data Explorer en Azure Monitor logboeken, hoewel er verschillende aspecten van Azure Monitor logboeken zijn die hier worden besproken. Zie voor meer tips voor Azure Data Explorer optimalisatie de [Aanbevolen procedures voor query's](/azure/kusto/query/best-practices).
+De meeste technieken zijn gebruikelijk voor query's die rechtstreeks worden uitgevoerd op Azure Data Explorer en Azure Monitor-logboeken, maar er zijn verschillende unieke overwegingen voor Azure Monitor logboeken die hier worden beschreven. Zie voor meer tips voor Azure Data Explorer optimalisatie de [Aanbevolen procedures voor query's](/azure/kusto/query/best-practices).
 
 Geoptimaliseerde query's:
 
 - Voer sneller uit, verminder de totale duur van de uitvoering van de query.
 - Hebben een kleinere kans om te beperken of te worden afgewezen.
 
-U moet in het bijzonder aandacht schenken aan query's die worden gebruikt voor recurrente en burste-gebruik, zoals Dash boards en Power BI. De impact van een ingrijpende query in deze gevallen is aanzienlijk.
+U moet in het bijzonder aandacht schenken aan query's die worden gebruikt voor recurrente en burstie, zoals Dash boards, waarschuwingen, Logic Apps en Power BI. De impact van een ingrijpende query in deze gevallen is aanzienlijk.
 
 ## <a name="query-performance-pane"></a>Het deel venster query prestaties
 Nadat u een query in Log Analytics hebt uitgevoerd, klikt u op de pijl-omlaag boven de query resultaten om het deel venster query prestaties weer te geven met de resultaten van verschillende prestatie-indica toren voor de query. Deze prestatie-indica toren worden beschreven in de volgende sectie.
@@ -38,11 +38,11 @@ De volgende query prestatie-indica toren zijn beschikbaar voor elke query die wo
 
 - [Totale CPU](#total-cpu): de totale reken kracht die wordt gebruikt om de query op alle reken knooppunten te verwerken. Dit is de tijd die wordt gebruikt voor het berekenen van computers, parseren en het ophalen van gegevens. 
 
-- [Gegevens die worden gebruikt voor verwerkte query's](#data-used-for-query-processing): algemene gegevens die zijn geopend voor het verwerken van de query. Beïnvloed door de grootte van de doel tabel, gebruikte tijds periode, toegepaste filters en het aantal kolommen waarnaar wordt verwezen.
+- [Gegevens volume](#data-volume): algemene gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door de grootte van de doel tabel, gebruikte tijds periode, toegepaste filters en het aantal kolommen waarnaar wordt verwezen.
 
-- [Tijds panne van de verwerkte query](#time-range-of-the-data-processed): het gat tussen de nieuwste en oudste gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door de query expliciete tijds duur en filters toegepast. Dit kan groter zijn dan de expliciete periode vanwege het partitioneren van gegevens.
+- [Tijds bereik](#time-range): het gat tussen de nieuwste en oudste gegevens die zijn gebruikt voor het verwerken van de query. Beïnvloed door het expliciete tijds bereik dat is opgegeven voor de query.
 
-- [Ouderdom van verwerkte gegevens](#age-of-the-oldest-data-used): het gat tussen nu en de oudste gegevens die zijn gebruikt voor het verwerken van de query. Dit is van invloed op de efficiëntie van het ophalen van gegevens.
+- [Leeftijd van gegevens](#age-of-data): het gat tussen nu en de oudste gegevens die zijn gebruikt voor het verwerken van de query. Dit is van invloed op de efficiëntie van het ophalen van gegevens.
 
 - [Aantal werk ruimten](#number-of-workspaces): hoeveel werk ruimten tijdens de query verwerking zijn geopend vanwege impliciete of expliciete selectie.
 
@@ -123,7 +123,7 @@ Perf
 by CounterPath
 ```
 
-Het CPU-verbruik kan ook worden beïnvloed door where-voor waarden of uitgebreide kolommen waarvoor intensieve computing nodig is. Alle triviale teken reeks vergelijkingen zoals [gelijk aan = =](/azure/kusto/query/datatypes-string-operators) en [startsWith](/azure/kusto/query/datatypes-string-operators) hebben ongeveer dezelfde CPU-impact, terwijl geavanceerde tekst overeenkomsten een meer impact hebben. In het bijzonder is de operator heeft efficiënter dat de operator contains. Vanwege technieken voor het afhandelen van reeksen is het efficiënter om te zoeken naar teken reeksen die langer zijn dan vier tekens dan korte teken reeksen.
+Het CPU-verbruik kan ook worden beïnvloed door where-voor waarden of uitgebreide kolommen waarvoor intensieve computing nodig is. Alle triviale teken reeks vergelijkingen zoals [gelijk aan = =](/azure/kusto/query/datatypes-string-operators) en [startsWith](/azure/kusto/query/datatypes-string-operators) hebben ongeveer dezelfde CPU-impact, terwijl geavanceerde tekst overeenkomsten meer impact hebben. In het bijzonder is de operator [heeft](/azure/kusto/query/datatypes-string-operators) efficiënter dat de operator [contains](/azure/kusto/query/datatypes-string-operators) . Vanwege technieken voor het afhandelen van reeksen is het efficiënter om te zoeken naar teken reeksen die langer zijn dan vier tekens dan korte teken reeksen.
 
 De volgende query's produceren bijvoorbeeld vergelijk bare resultaten, afhankelijk van het computer naamgevings beleid, maar de tweede is efficiënter:
 
@@ -151,7 +151,7 @@ Heartbeat
 > Deze indicator presenteert alleen CPU van het directe cluster. In een query met meerdere regio's zou het slechts een van de regio's vertegenwoordigen. In een query met meerdere werk ruimten zijn mogelijk niet alle werk ruimten inbegrepen.
 
 
-## <a name="data-used-for-query-processing"></a>Gegevens die worden gebruikt voor het verwerken van query's
+## <a name="data-volume"></a>Gegevensvolume
 
 Een kritieke factor bij het verwerken van de query is het volume van de gegevens die worden gescand en gebruikt voor de verwerking van query's. Azure Data Explorer maakt gebruik van agressieve optimalisaties die het gegevens volume aanzienlijk reduceren ten opzichte van andere gegevens platforms. Toch zijn er kritieke factoren in de query die van invloed kunnen zijn op het gebruikte gegevens volume.
 In Azure Monitor-Logboeken wordt de kolom **TimeGenerated** gebruikt als een manier om de gegevens te indexeren. Het beperken van de waarden van de **TimeGenerated** om een bereik zo klein mogelijk te maken, vormen een aanzienlijke verbetering van de prestaties van query's door de hoeveelheid gegevens die moet worden verwerkt aanzienlijk te beperken.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>Tijds bereik van de verwerkte gegevens
+## <a name="time-range"></a>Tijdsbereik
 
 Alle logboeken in Azure Monitor-logboeken worden gepartitioneerd op basis van de kolom **TimeGenerated** . Het aantal geopende partities is rechtstreeks gerelateerd aan de tijds Panne. Het verminderen van het tijds bereik is de meest efficiënte manier om de uitvoering van een prompt query's te voor gaan.
 
@@ -259,14 +259,10 @@ by Computer
 ) on Computer
 ```
 
-De meting is altijd groter dan de opgegeven werkelijke tijd. Als bijvoorbeeld het filter voor de query zeven dagen is, kan het systeem 7,5 of 8,1 dagen scannen. Dit komt doordat het systeem de gegevens partitioneert in segmenten in een variabele grootte. Om ervoor te zorgen dat alle relevante records worden gescand, wordt de volledige partitie gescand die enkele uren en zelfs meer dan een dag kan omvatten.
+> [!IMPORTANT]
+> Deze indicator is niet beschikbaar voor query's voor meerdere regio's.
 
-Er zijn verschillende gevallen waarin het systeem geen nauw keurige meting van het tijds bereik kan bieden. Dit gebeurt in de meeste gevallen waarin de duur van de query minder dan een dag of in meerdere werk ruimte query's.
-
-> [!NOTE]
-> Deze indicator presenteert alleen gegevens die zijn verwerkt in het directe cluster. In een query met meerdere regio's zou het slechts een van de regio's vertegenwoordigen. In een query met meerdere werk ruimten zijn mogelijk niet alle werk ruimten inbegrepen.
-
-## <a name="age-of-the-oldest-data-used"></a>Leeftijd van de oudste gebruikte gegevens
+## <a name="age-of-data"></a>Gegevens leeftijd
 Azure Data Explorer maakt gebruik van verschillende opslag lagen: lokale SSD-schijven in het geheugen en veel langzamere Azure-blobs. De nieuwere gegevens, hoe hoger is de kans dat deze wordt opgeslagen in een meer krachtige laag met een kleinere latentie, waardoor de duur en CPU van de query worden verminderd. Met uitzonde ring van de gegevens zelf, heeft het systeem ook een cache voor meta gegevens. De oudere gegevens, de mindere meta gegevens worden in de cache opgeslagen.
 
 Hoewel voor sommige query's gebruik van oude gegevens vereist is, zijn er gevallen waarin oude gegevens per ongeluk worden gebruikt. Dit gebeurt wanneer query's worden uitgevoerd zonder tijds bereik in de meta gegevens op te geven en niet alle tabel verwijzingen filter bevatten in de kolom **TimeGenerated** . In deze gevallen scant het systeem alle gegevens die in die tabel zijn opgeslagen. Wanneer de gegevens retentie lang is, kan deze lange tijd bereiken en dus gegevens die net zo oud zijn als de Bewaar periode van de gegevens bedekken.
@@ -289,7 +285,7 @@ Voor het uitvoeren van query's voor meerdere regio's moet het systeem serialisat
 Als er geen echte reden is om al deze regio's te scannen, moet u het bereik aanpassen zodat het minder regio's beslaat. Als het bron bereik is geminimaliseerd, maar er nog steeds veel regio's worden gebruikt, kan dit worden veroorzaakt door een onjuiste configuratie. Audit logboeken en diagnostische instellingen worden bijvoorbeeld verzonden naar verschillende werk ruimten in verschillende regio's of er zijn meerdere configuraties voor Diagnostische instellingen. 
 
 > [!IMPORTANT]
-> Wanneer een query wordt uitgevoerd in meerdere regio's, zijn de CPU-en gegevens metingen niet nauw keurig en wordt de meting alleen in een van de regio's weer gegeven.
+> Deze indicator is niet beschikbaar voor query's voor meerdere regio's.
 
 ## <a name="number-of-workspaces"></a>Aantal werk ruimten
 Werk ruimten zijn logische containers die worden gebruikt om logboek gegevens te scheiden en te beheren. De back-end optimaliseert de locatie van de werk ruimte op fysieke clusters in de geselecteerde regio.
@@ -305,7 +301,7 @@ Voor het uitvoeren van query's in meerdere regio's en meerdere clusters moet het
 > In sommige scenario's met meerdere werk ruimten zijn de CPU-en gegevens metingen niet nauw keurig en wordt de meting alleen voor een aantal werk ruimten weer gegeven.
 
 ## <a name="parallelism"></a>Parallelle uitvoering
-Azure Monitor logboeken maakt gebruik van grote clusters van Azure Data Explorer om de query's uit te voeren. Deze clusters variëren op schaal, waardoor er Maxi maal 140 reken knooppunten kunnen worden opgehaald. Het systeem schaalt automatisch de clusters volgens de locatie logica en capaciteit van de werk ruimte.
+Azure Monitor logboeken maakt gebruik van grote clusters van Azure Data Explorer om query's uit te voeren en deze clusters variëren op schaal. Het systeem schaalt automatisch de clusters volgens de locatie logica en capaciteit van de werk ruimte.
 
 Om een query efficiënt uit te voeren, wordt deze gepartitioneerd en gedistribueerd naar Compute-knoop punten op basis van de gegevens die nodig zijn voor de verwerking ervan. Er zijn enkele situaties waarin het systeem dit niet efficiënt kan doen. Dit kan leiden tot een lange duur van de query. 
 

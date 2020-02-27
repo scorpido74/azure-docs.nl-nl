@@ -1,5 +1,5 @@
 ---
-title: Automatische back-up voor SQL Server 2014 Azure Virtual Machines | Microsoft Docs
+title: Automatische back-up voor SQL Server 2014 Azure Virtual Machines
 description: Hierin wordt de functie voor automatische back-ups beschreven voor SQL Server 2014 Vm's die worden uitgevoerd in Azure. Dit artikel is specifiek voor Vm's met behulp van Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7dea85d8de17a0f65e6e73b5b5fbe619d464d3d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790601"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650323"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatische back-up voor SQL Server 2014 Virtual Machines (Resource Manager)
 
@@ -68,15 +68,12 @@ In de volgende tabel worden de opties beschreven die kunnen worden geconfigureer
 | **Versleuteling** | Inschakelen/uitschakelen (uitgeschakeld) | Hiermee wordt versleuteling in-of uitgeschakeld. Als versleuteling is ingeschakeld, bevinden de certificaten die worden gebruikt voor het herstellen van de back-up zich in het opgegeven opslag account in dezelfde `automaticbackup`-container met dezelfde naam Conventie. Als het wacht woord wordt gewijzigd, wordt er een nieuw certificaat met dat wacht woord gegenereerd, maar blijft het oude certificaat voor het herstellen van eerdere back-ups. |
 | **Wachtwoord** | Wachtwoord tekst | Een wacht woord voor versleutelings sleutels. Dit is alleen vereist als versleuteling is ingeschakeld. Als u een versleutelde back-up wilt herstellen, moet u het juiste wacht woord en het bijbehorende certificaat hebben dat is gebruikt op het moment dat de back-up werd gemaakt. |
 
-## <a name="configure-in-the-portal"></a>Configureren in de portal
-
-U kunt de Azure Portal gebruiken om automatische back-ups te configureren tijdens het inrichten of voor bestaande SQL Server 2014 Vm's.
 
 ## <a name="configure-new-vms"></a>Nieuwe Vm's configureren
 
 Gebruik de Azure Portal om automatische back-ups te configureren wanneer u een nieuwe virtuele machine van SQL Server 2014 maakt in het Resource Manager-implementatie model.
 
-Schuif op het tabblad **SQL Server instellingen** naar **automatische back-up** en selecteer **inschakelen**. U kunt ook de retentie periode en het opslag account opgeven, en ook versleuteling inschakelen, back-ups maken van systeem databases en een back-upschema configureren.  De volgende Azure Portal scherm afbeelding toont de **automatische back-** upinstellingen voor SQL.
+Schuif op het tabblad **SQL Server instellingen** naar **automatische back-up** en selecteer **inschakelen**. De volgende Azure Portal scherm afbeelding toont de **automatische back-** upinstellingen voor SQL.
 
 ![Configuratie van automatische back-up van SQL in Azure Portal](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
@@ -84,13 +81,15 @@ Schuif op het tabblad **SQL Server instellingen** naar **automatische back-up** 
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Voor bestaande SQL Server virtuele machines navigeert u naar de [resource virtuele SQL-machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) en selecteert u vervolgens **back-ups**. 
+Voor bestaande SQL Server virtuele machines kunt u automatische back-ups inschakelen en uitschakelen, de Bewaar periode wijzigen, het opslag account opgeven en versleuteling van de Azure Portal inschakelen. 
+
+Ga naar de [resource van de virtuele SQL-machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) voor uw SQL Server 2014 virtuele machine en selecteer vervolgens **back-ups**. 
 
 ![Automatische back-up van SQL voor bestaande Vm's](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
 Wanneer u klaar bent, selecteert u de knop **Toep assen** aan de onderkant van de pagina **back-ups** om uw wijzigingen op te slaan.
 
-Als u automatische back-up voor de eerste keer inschakelt, configureert Azure de SQL Server IaaS-agent op de achtergrond. Gedurende deze periode wordt mogelijk niet weer gegeven dat de automatische back-up is geconfigureerd in de Azure Portal. Wacht enkele minuten totdat de agent is geïnstalleerd en geconfigureerd. Daarna worden de nieuwe instellingen door de Azure Portal weer gegeven.
+Als u automatische back-up voor de eerste keer inschakelt, configureert Azure de SQL Server IaaS-agent op de achtergrond. Gedurende deze periode wordt mogelijk niet weer gegeven dat de automatische back-up is geconfigureerd in de Azure Portal. Wacht enkele minuten totdat de agent is geïnstalleerd en geconfigureerd. Daarna worden de nieuwe instellingen weer gegeven in de Azure Portal.
 
 > [!NOTE]
 > U kunt ook automatische back-ups configureren met behulp van een sjabloon. Zie [Azure Quick Start-sjabloon voor automatische back-ups](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update)voor meer informatie.
@@ -100,7 +99,7 @@ Als u automatische back-up voor de eerste keer inschakelt, configureert Azure de
 U kunt Power shell gebruiken om automatische back-ups te configureren. Voordat u begint, moet u het volgende doen:
 
 - [Down load en installeer de nieuwste Azure PowerShell](https://aka.ms/webpi-azps).
-- Open Windows Power shell en koppel deze aan uw account met de opdracht **Connect-AzAccount** .
+- Open Windows Power shell en koppel deze aan uw account met de opdracht **Connect-AzAccount** . 
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -258,7 +257,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 Als u automatische back-ups wilt bewaken op SQL Server 2014, hebt u twee belang rijke opties. Omdat automatische back-up gebruikmaakt van de SQL Server beheerde back-upfunctie, zijn dezelfde bewakings technieken van toepassing op beide.
 

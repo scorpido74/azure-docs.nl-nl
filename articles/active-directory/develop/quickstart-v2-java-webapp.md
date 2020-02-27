@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 3e1369901e259af6722d9e5a14fababac80f1d02
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160556"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611999"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app
 
@@ -37,7 +37,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
 > 1. Ga naar de [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
@@ -97,6 +97,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+    aad.msGraphEndpointHost="https://graph.microsoft.com/"
     ```
 
     > [!div renderon="docs"]
@@ -109,13 +110,13 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
  1. Als u HTTPS met localhost wilt gebruiken, vult u de eigenschappen server. SSL. key in. Gebruik het hulp programma voor het maken van een zelfondertekend certificaat (opgenomen in JRE).
 
    ```
-   Example: 
+   Example:
    keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 
    server.ssl.key-store-type=PKCS12  
    server.ssl.key-store=classpath:keystore.p12  
    server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert 
+   server.ssl.key-alias=testCert
    ```
 
    Plaats het gegenereerde bestand van de opslag in de map resources.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 9f3e06f66996be4a2b43b64e6100c62a2fa41381
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443649"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649956"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -19,6 +19,9 @@ U kunt de functie Hybrid Runbook Worker van Azure Automation gebruiken om runboo
 Nadat u een runbook worker hebt geïmplementeerd, raadpleegt u [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md) voor meer informatie over het configureren van runbooks voor het automatiseren van processen in uw on-premises Data Center of een andere cloud omgeving.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Installatie en configuratie van Windows Hybrid Runbook Worker
 
@@ -51,7 +54,8 @@ Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planni
 ### <a name="server-onboarding-for-management-with-automation-dsc"></a>Server onboarding voor beheer met Automation DSC
 
 Zie voor meer informatie over het onboarden van servers voor beheer met DSC [onboarding-machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md).
-Als u de [updatebeheer oplossing](../operations-management-suite/oms-solution-update-management.md)inschakelt, wordt elke Windows-computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook worker voor de ondersteuning van runbooks die in deze oplossing zijn opgenomen. Het is echter niet geregistreerd bij Hybrid Worker groepen die al zijn gedefinieerd in uw Automation-account. 
+
+Als u de [updatebeheer oplossing](../operations-management-suite/oms-solution-update-management.md)inschakelt, wordt elke Windows-computer die is verbonden met uw log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook worker voor de ondersteuning van runbooks die in deze oplossing zijn opgenomen. Het is echter niet geregistreerd bij Hybrid Worker groepen die al zijn gedefinieerd in uw Automation-account.
 
 ### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>De computer toevoegen aan een Hybrid Runbook Worker groep
 
@@ -65,19 +69,17 @@ Voer op de doel computer de volgende stappen uit om de installatie en configurat
 
 Down load het script New-OnPremiseHybridWorker. ps1 van de [PowerShell Gallery](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) rechtstreeks van de computer waarop de Hybrid Runbook worker-functie of een andere computer in uw omgeving wordt uitgevoerd. Kopieer het script naar de werk nemer. Het script New-OnPremiseHybridWorker. ps1 vereist de volgende para meters tijdens de uitvoering:
 
-   * *AAResourceGroupName* (verplicht): de naam van de resource groep die is gekoppeld aan uw Automation-account.
-   * *OMSResourceGroupName* (optioneel): de naam van de resource groep voor de log Analytics-werk ruimte. Als deze resource groep niet is opgegeven, wordt *AAResourceGroupName* gebruikt.
-   * *SubscriptionID* (verplicht): de id van het Azure-abonnement waarin uw Automation-account zich bevindt.
-   * *TenantID* (optioneel): de id van de Tenant organisatie die aan uw Automation-account is gekoppeld.
-   * *Workspacenaam* (optioneel): de naam van de log Analytics werk ruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een.
-   * *AutomationAccountName* (verplicht): de naam van uw Automation-account.
-   * *HybridGroupName* (verplicht): de naam van een Hybrid Runbook worker groep die u opgeeft als doel voor de runbooks die dit scenario ondersteunen.
-   * *Referentie* (optioneel): de referenties die moeten worden gebruikt wanneer u zich aanmeldt bij de Azure-omgeving.
+* *AAResourceGroupName* (verplicht): de naam van de resource groep die is gekoppeld aan uw Automation-account.
+* *OMSResourceGroupName* (optioneel): de naam van de resource groep voor de log Analytics-werk ruimte. Als deze resource groep niet is opgegeven, wordt *AAResourceGroupName* gebruikt.
+* *SubscriptionID* (verplicht): de id van het Azure-abonnement waarin uw Automation-account zich bevindt.
+* *TenantID* (optioneel): de id van de Tenant organisatie die aan uw Automation-account is gekoppeld.
+* *Workspacenaam* (optioneel): de naam van de log Analytics werk ruimte. Als u geen Log Analytics-werk ruimte hebt, maakt en configureert het script een.
+* *AutomationAccountName* (verplicht): de naam van uw Automation-account.
+* *HybridGroupName* (verplicht): de naam van een Hybrid Runbook worker groep die u opgeeft als doel voor de runbooks die dit scenario ondersteunen.
+* *Referentie* (optioneel): de referenties die moeten worden gebruikt wanneer u zich aanmeldt bij de Azure-omgeving.
   
-   > [!NOTE]
-   > Bij het inschakelen van oplossingen worden slechts bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werkruimte aan een Automation-Account.
-   >
-   > Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
+> [!NOTE]
+> Bij het inschakelen van oplossingen worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
 
 ### <a name="2-open-windows-powershell-command-line-shell"></a>2. Open Windows Power shell-opdracht regel shell
 

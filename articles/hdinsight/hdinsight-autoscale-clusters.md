@@ -7,18 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/21/2020
+ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484839"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616093"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
 > [!Important]
-> De functie voor automatisch schalen werkt alleen voor Apache Spark-, ApacheHive-, LLAP-en Apache-HBase-clusters die zijn gemaakt na 8 mei 2019. Automatisch schalen voor LLAP en HBase zijn in preview.
+> De functie voor automatisch schalen van Azure HDInsight is uitgebracht voor algemene Beschik baarheid op 7 november, 2019 voor Spark-en Hadoop-clusters en bevat verbeteringen die niet beschikbaar zijn in de preview-versie van de functie. Als u een Spark-cluster hebt gemaakt vóór november 7, 2019 en u de functie voor automatisch schalen op uw cluster wilt gebruiken, is het aanbevolen pad om een nieuw cluster te maken en automatisch schalen op het nieuwe cluster in te scha kelen. 
+>
+>Automatisch schalen voor interactieve Query's (LLAP) en HBase-clusters is nog steeds beschikbaar als preview-versie. Automatisch schalen is alleen beschikbaar voor Spark-, Hadoop-, interactieve query-en HBase-clusters. 
+
 
 Met de functie voor automatisch schalen van Azure HDInsight wordt het aantal worker-knoop punten in een cluster omhoog en omlaag geschaald. Andere typen knoop punten in het cluster kunnen momenteel niet worden geschaald.  Tijdens het maken van een nieuw HDInsight-cluster kunnen er mini maal en Maxi maal aantal worker-knoop punten worden ingesteld. Automatisch schalen bewaakt vervolgens de resource vereisten van de analyse belasting en schaalt het aantal worker-knoop punten omhoog of omlaag. Er zijn geen extra kosten verbonden aan deze functie.
 

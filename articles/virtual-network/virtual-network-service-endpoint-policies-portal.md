@@ -1,35 +1,35 @@
 ---
-title: Maken en koppelen van de service-eindpuntbeleid - Azure portal
+title: Service-eindpunt beleid maken en koppelen-Azure Portal
 titlesuffix: Azure Virtual Network
-description: Meer informatie over het instellen van en de bijbehorende service-eindpuntbeleidsregels met behulp van de Azure-portal in dit artikel.
+description: In dit artikel leert u hoe u en het bijbehorende service-eindpunt beleid kunt instellen met behulp van de Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 09/18/2018
-ms.author: kumud
-ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/21/2020
+ms.author: rdhillon
+ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710917"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651159"
 ---
-# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Maken, wijzigen of verwijderen van de service-eindpuntbeleid met behulp van de Azure portal
+# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Service-eindpunt beleid maken, wijzigen of verwijderen met behulp van de Azure Portal
 
-Service-eindpuntbeleid kunnen u voor het filteren van verkeer in virtuele netwerken tot specifieke Azure-resources, via service-eindpunten. Als u niet bekend met service-eindpuntbeleid bent, Zie [overzicht van de beleidsregels van de service-eindpunt](virtual-network-service-endpoint-policies-overview.md) voor meer informatie.
+Met service-eindpunt beleid kunt u virtueel netwerk verkeer filteren op specifieke Azure-resources, via service-eind punten. Als u niet bekend bent met het service-eindpunt beleid, raadpleegt u overzicht van het [service-eindpunt beleid](virtual-network-service-endpoint-policies-overview.md) voor meer informatie.
 
  In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een service-eindpuntbeleid maken
-> * Een beleidsdefinitie voor service-eindpunt maken
+> * Een service-eindpunt beleid maken
+> * Een beleids definitie voor service-eind punten maken
 > * Een virtueel netwerk met een subnet maken
-> * Een service-eindpuntbeleid aan een subnet koppelen
+> * Een service-eindpunt beleid aan een subnet koppelen
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -37,87 +37,80 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-service-endpoint-policy"></a>Een service-eindpuntbeleid maken
+## <a name="create-a-service-endpoint-policy"></a>Een service-eindpunt beleid maken
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
-2. Typ in het deelvenster Zoeken in 'service-eindpuntbeleid' en selecteer **Service-eindpuntbeleid (Preview)** en selecteer vervolgens **maken**.
-3. Invoeren of selecteren, de volgende informatie in **grondbeginselen** 
+2. Typ ' service-eindpunt beleid ' in het deel venster zoeken en selecteer **service-eindpunt beleid** en selecteer vervolgens **maken**.
 
-   - Abonnement: Selecteer uw abonnement voor het beleid.    
-   - Resourcegroep: Selecteer **Nieuwe maken** en voer *myResourceGroup* in.     
-   - Name           : myEndpointPolicy
-   - Locatie: US - west-centraal     
+![Service-eindpunt beleid maken](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
+
+3. Voer de volgende informatie in de **basis beginselen** in of Selecteer deze. 
+
+   - Abonnement: Selecteer uw abonnement voor beleid
+   - Resource groep: Selecteer **nieuwe maken** en voer *myResourceGroup* in
+   - Naam: myEndpointPolicy
+   - Locatie: VS-Centraal
  
-   ![Grondbeginselen van beleid voor service-eindpunt maken](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
-   
-4. Invoeren of selecteren, de volgende informatie in **beleidsdefinities**
+   ![Basis beginselen van het service-eindpunt beleid maken](./media/virtual-network-service-endpoint-policies-portal/create-sep-basics.png)
 
-   - Klik op **+ een resource toevoegen**, invoeren, of selecteert, de volgende informatie, accepteer de standaardwaarden voor de overige instellingen en klik op **toevoegen**.  
-   - Bereik: Selecteer **één Account** of **alle accounts in het abonnement** of **alle accounts in de resourcegroep**.    
-   - Abonnement: Selecteer uw abonnement voor storage-account. Beleid en storage-accounts kunnen zich in verschillende abonnementen.   
-   - Resourcegroep: Selecteer de resourcegroep. Vereist als het bereik is ingesteld als 'Alle accounts in de resourcegroep' of 'Één account'.  
-   - Bron: mystorageaccountportal    
-   - Klik op **+ een resource toevoegen** om door te gaan meer resources toe te voegen.
-   
-   ![Service-eindpunt beleidsdefinities maken](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
-   
-5. Optioneel: Typ of selecteer, de volgende informatie in **Tags**:
-   
-   - Sleutel: Selecteer de sleutel voor het beleid. Bijvoorbeeld: Schuld     
-   - Waarde: Voer de waarde-paar voor de sleutel. Bijvoorbeeld: Finance
+4. Selecteer **+ toevoegen** onder **resources** en voer de volgende informatie in of Selecteer deze in het deel venster **resources toevoegen** .
 
-6. Selecteer **Controleren + maken**. De informatie en klik op valideren **maken**. Als u wilt meer wijzigingen aanbrengen, klikt u op **vorige**. 
+   - Service: alleen **micro soft. Storage** is beschikbaar met service-eindpunt beleid
+   - Bereik: Selecteer één van de **afzonderlijke**accounts, **alle rekeningen in het abonnement** en **alle accounts in de resource groep**
+   - Abonnement: Selecteer uw abonnement voor het opslag account. Beleids-en opslag accounts kunnen zich in verschillende abonnementen bevindt.
+   - Resource groep: Selecteer de resource groep. Vereist als het bereik is ingesteld als ' alle accounts in de resource groep ' of ' Eén account '.  
+   - Resource: Selecteer uw Azure Storage Resource onder het geselecteerde abonnement of de resource groep.
+   - Klik onderaan op de knop **toevoegen** om de resource toe te voegen
 
-   ![Laatste validaties van beleid voor service-eindpunt maken](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-finalcreatereview.PNG)
+   ![Definitie van het service-eindpunt beleid-resource](./media/virtual-network-service-endpoint-policies-portal/create-sep-add-resource.png)
+
+   - Voeg meer resources toe door de bovenstaande stappen indien nodig te herhalen
+
+5. Optioneel: Typ of selecteer de volgende gegevens in **Tags**:
+   
+   - Sleutel: Selecteer uw sleutel voor het beleid. Bijvoorbeeld: afd     
+   - Waarde: Voer een waardepaar in voor de sleutel. Ex: Finance
+
+6. Selecteer **Controleren + maken**. Valideer de gegevens en klik op **maken**. Klik op **vorige**om verdere bewerkingen uit te voeren. 
+
+   ![Definitieve validaties van het service-eindpunt beleid maken](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
- 
-## <a name="view-endpoint-policies"></a>Eindpunt-beleid weergeven 
+## <a name="view-endpoint-policies"></a>Eindpunt beleid weer geven 
 
-1. In de *alle services* vak in de portal, begint te typen *service-eindpuntbeleid*. Selecteer **Service-eindpunt Policies(Preview)** .
-2. Onder **abonnementen**, selecteer uw abonnement en resourcegroep, zoals weergegeven in de volgende afbeelding
+1. Begin met het typen van *service-eindpunt beleid*in het vak *alle services* in de portal. Selecteer **service-eindpunt beleid**.
+2. Onder **abonnementen**selecteert u uw abonnement en resource groep, zoals wordt weer gegeven in de volgende afbeelding:
 
-   ![Beleid weergeven](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)
+   ![Beleid weer geven](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
-3. Selecteer het beleid en klik op **beleidsdefinities** weergeven of toevoegen van meer beleidsdefinities.
+3. Selecteer het beleid en klik op **beleids definities** om meer beleids definities weer te geven of toe te voegen.
 
-   ![Beleidsdefinities weergeven](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicy-adddefinitions.PNG)
+   ![Beleids definities weer geven](./media/virtual-network-service-endpoint-policies-portal/sep-policy-definition.png)
 
-4. Selecteer **subnetten die zijn gekoppeld** om de subnetten weer te geven het beleid is gekoppeld. Voor het beleid aan een subnet koppelt, klikt u op 'Navigeren naar virtueel netwerk in dezelfde regio'.
+4. Selecteer **gekoppelde subnetten** om de subnetten te bekijken waaraan het beleid is gekoppeld. Als er nog geen subnet is gekoppeld, volgt u de instructies in de volgende stap.
 
-   ![Gekoppelde subnetten weergeven](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-view-associatedsubnets.PNG)
+   ![Gekoppelde subnetten](./media/virtual-network-service-endpoint-policies-portal/sep-associated-subnets.png)
  
-## <a name="associate-a-policy-to-a-subnet"></a>Een beleid aan een subnet koppelen
+5. Een beleid aan een subnet koppelen
 
 >[!WARNING] 
-> Zorg ervoor dat alle resources die zijn geopend vanuit het subnet voor de geselecteerde service voordat u koppelt het beleid worden toegevoegd aan het beleid. Zodra het beleid gekoppeld is, alleen de toegang tot de resources die worden vermeld in het beleid zijn toegestaan, voor eindpunt regio's voor de service. 
+> Zorg ervoor dat alle bronnen die toegankelijk zijn vanaf het subnet, worden toegevoegd aan de beleids definitie voordat u het beleid aan het opgegeven subnet koppelt. Wanneer het beleid is gekoppeld, wordt alleen toegang tot de *weer gegeven resources toestaan* via service-eind punten toegestaan. 
+>
+> Zorg er ook voor dat er geen beheerde Azure-Services bestaan in het subnet dat is gekoppeld aan het service-eindpunt beleid
 
-Voordat u een beleid aan een subnet koppelen kunt, moet u een virtueel netwerk en subnet maken en vervolgens kunt u het beleid aan het subnet koppelen:
+- Voordat u een beleid aan een subnet kunt koppelen, moet u een virtueel netwerk en een subnet maken. Raadpleeg het artikel [een Virtual Network maken](./quick-create-portal.md) voor meer informatie.
 
-1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
-2. Selecteer **Netwerken** en selecteer vervolgens **Virtueel netwerk**.
-3. Voer onder **Virtueel netwerk maken** de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Maken**:
-   - Name           : myVirtualNetwork      
-   - Adresruimte: 10.0.0.0/16      
-   - Abonnement: Selecteer uw abonnement. Beleid moet zich in hetzelfde abonnement bevinden als het VNet     
-   - Resourcegroep: Selecteer **gebruik bestaande** en selecteer vervolgens *myResourceGroup*     
-   - Locatie: US - west-centraal     
-   - Subnetnaam: persoonlijke     
-   - Adresbereik: 10.0.0.0/24
-     
-4. Begin in het vak *Resources, services en documenten zoeken* bovenaan de portal **myVirtualNetwork** te typen. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit.
-5. Onder **instellingen**, selecteer **subnetten** en selecteer vervolgens **persoonlijke**.
-6. Zoals weergegeven in de volgende afbeelding, selecteert u **Service-eindpunten**, selecteer **Microsoft.Storage**, selecteer **Service-eindpuntbeleid**, selecteer  **myEndpointPolicy**, en selecteer vervolgens **opslaan**:
+- Zodra u het virtuele netwerk en het subnet hebt ingesteld, moet u Virtual Network Service-eind punten voor Azure Storage configureren. Selecteer op de Blade Virtual Network **service-eind punten**en selecteer in het volgende deel venster **micro soft. Storage** en selecteer onder **subnetten** het gewenste VNet of subnet
 
-   ![Beleid koppelen](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-associatepolicies.PNG)
+- Nu kunt u het service-eindpunt beleid selecteren in de vervolg keuzelijst van het bovenstaande deel venster als u al een service-eindpunt beleid hebt gemaakt voordat u het service-eind punt voor het subnet configureert, zoals hieronder wordt weer gegeven
+
+    ![Subnet koppelen tijdens het maken van service-eind punt](./media/virtual-network-service-endpoint-policies-portal/vnet-config-service-endpoint-add-sep.png)
+
+- OF als u een service-eindpunt beleid koppelt nadat de service-eind punten al zijn geconfigureerd, kunt u ervoor kiezen om het subnet te koppelen vanuit de Blade van het service-eindpunt beleid door te navigeren naar het deel venster **gekoppelde subnetten** , zoals hieronder wordt weer gegeven
+
+    ![Subnet koppelen via SEP](./media/virtual-network-service-endpoint-policies-portal/sep-edit-subnet-association.png)
 
 >[!WARNING] 
->Toegang tot de serviceresources in andere regio's kunnen worden van dit subnet, op basis van Netwerkbeveiligingsgroepen (nsg's). Om toegang te beperken tot alleen eindpunt regio's, door nsg's te beperken tot alleen serviceverkeer in eindpunt regio's. Zie voor meer informatie over nsg's maken met servicetags per regio [servicetags Azure NSG.](manage-network-security-group.md?toc=%2fcreate-a-security-rule%2f.json)
-
-In het onderstaande voorbeeld is de NSG beperkt voor toegang tot alleen Azure Storage-resources in WestCentralUS en WestUS2, met een regel "Deny alle" Als de regel van een lagere prioriteit.
-
-![Alle NSG weigeren](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-nsg-rules.PNG)
-
+>Toegang tot Azure Storage resources in alle regio's wordt beperkt door het service-eindpunt beleid van dit subnet.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt gemaakt van een service-eindpuntbeleid en die aan een subnet gekoppeld. Zie voor meer informatie over service-eindpuntbeleid [overzicht van de beleidsregels van de service-eindpunt.](virtual-network-service-endpoint-policies-overview.md)
-
+In deze zelf studie hebt u een service-eindpunt beleid gemaakt en gekoppeld aan een subnet. Zie [overzicht van service-eindpunt beleid](virtual-network-service-endpoint-policies-overview.md) voor meer informatie over beleids regels voor service-eind punten.

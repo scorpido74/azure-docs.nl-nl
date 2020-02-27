@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356157"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651097"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Uw Azure Data Box Edge apparaat retour neren of vervangen
 
@@ -47,7 +47,7 @@ Voer de volgende stappen uit om uw apparaat opnieuw in te stellen met behulp van
 
 Met de reset worden de gegevens van de gegevens schijven van apparaten gewist. Afhankelijk van de hoeveelheid gegevens op uw apparaat, neemt dit proces ongeveer 30-40 minuten in beslag.
 
-U kunt ook verbinding maken met de Power shell-interface van het apparaat `Reset-HcsAppliance` en de cmdlet gebruiken om de gegevens van de gegevens schijven te wissen. Zie [uw apparaat opnieuw instellen](data-box-edge-connect-powershell-interface.md#reset-your-device)voor meer informatie.
+U kunt ook verbinding maken met de Power shell-interface van het apparaat en de cmdlet `Reset-HcsAppliance` gebruiken om de gegevens van de gegevens schijven te wissen. Zie [uw apparaat opnieuw instellen](data-box-edge-connect-powershell-interface.md#reset-your-device)voor meer informatie.
 
 > [!NOTE]
 > - Als u uitwisselt of een upgrade naar een nieuw apparaat uitvoert, raden wij u aan uw apparaat opnieuw in te stellen nadat u het nieuwe apparaat hebt ontvangen.
@@ -59,7 +59,7 @@ Voer de volgende stappen uit om het retour proces te starten.
 
 1. Open een ondersteunings ticket met Microsoft Ondersteuning dat aangeeft dat u het apparaat wilt retour neren. Selecteer het probleem type als **Data Box edge hardware**.
 
-    ![Ondersteunings ticket openen](media/data-box-edge-return-device/open-support-ticket-1.png)  
+    ![Ondersteuningsticket openen](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
 2. Een Microsoft Ondersteuning-Engineer neemt contact met u op. Geef de verzend gegevens op.
 3. Als u een verzend doos nodig hebt, kunt u deze aanvragen. Antwoord **Ja** op de vraag **moet een leeg vak zijn om te retour neren**.
@@ -72,7 +72,7 @@ Voer de volgende stappen uit om het retour proces te starten.
 3. Koppel de stroom kabels los en verwijder alle netwerk kabels van het apparaat.
 4. Bereid het verzend pakket voor met behulp van uw eigen box of het lege vak dat u van Azure hebt ontvangen. Plaats het apparaat en de stroom snoeren die met het apparaat in het vak zijn geleverd.
 5. Breng het verzend label op dat u hebt ontvangen van Azure op het pakket.
-6. Een ophaling plannen met uw regionale luchtvaart maatschappij. Als u het apparaat in ons retourneert, is uw provider UPS. Een ophaling plannen:
+6. Maak een afspraak met een transportbedrijf voor het ophalen van de zending. Als u het apparaat in ons retourneert, kan uw provider UPS of FedEx zijn. Een ophaling plannen met UPS:
 
     1. Neem contact op met de lokale nood voeding (land-specifiek gratis nummer).
     2. Neem in uw gesprek het tracerings nummer van omgekeerde verzen ding op zoals op het afgedrukte label wordt weer gegeven.
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om het apparaat en de resource in Azure Portal te v
 
 2. Typ op de Blade **apparaat verwijderen** de naam van het apparaat dat u wilt verwijderen en selecteer **verwijderen**.
 
-    ![Verwijderen bevestigen](media/data-box-edge-return-device/delete-resource-2.png)
+    ![De verwijdering bevestigen](media/data-box-edge-return-device/delete-resource-2.png)
 
 U wordt gewaarschuwd wanneer het apparaat en de bijbehorende resource zijn verwijderd.
 

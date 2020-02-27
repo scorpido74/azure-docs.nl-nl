@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586703"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616301"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -77,7 +77,7 @@ De voor delen van het implementatie script:
 
 - **Azure PowerShell versie 3.0.0, 2.8.0 of 2.7.0** of **Azure CLI-versie 2.0.80, 2.0.79, 2.0.78 of 2.0.77**. U hebt deze versies niet nodig voor het implementeren van sjablonen. Deze versies zijn echter nodig om implementatie scripts lokaal te testen. Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). U kunt een vooraf geconfigureerde docker-installatie kopie gebruiken.  Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
-## <a name="sample-template"></a>Voorbeeldsjabloon
+## <a name="sample-templates"></a>Voorbeeldsjablonen
 
 De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [hier](/azure/templates/microsoft.resources/deploymentscripts)vinden.
 
@@ -130,6 +130,15 @@ Details van eigenschaps waarde:
 - **cleanupPreference**. Geef de voor keur op voor het opschonen van implementatie resources wanneer de uitvoering van het script wordt uitgevoerd in een Terminal status. De standaard instelling is **altijd**, wat betekent dat de resources worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources)voor meer informatie.
 - **retentionInterval**: Geef het interval op waarvoor de service de implementatie script bronnen behoudt nadat de uitvoering van het implementatie script een Terminal status heeft bereikt. De resources van het implementatie script worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het [ISO 8601-patroon](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**. Dit betekent dat er zeven dagen zijn. Deze eigenschap wordt gebruikt wanneer cleanupPreference is ingesteld op *OnExpiration*. De eigenschap *OnExpiration* is momenteel niet ingeschakeld. Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources)voor meer informatie.
 
+### <a name="additional-samples"></a>Aanvullende voor beelden
+
+- [een certificaat maken en toewijzen aan een sleutel kluis](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
+
+- [een door de gebruiker toegewezen beheerde identiteit maken en toewijzen aan een resource groep en een implementatie script uitvoeren](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json).
+
+> [!NOTE]
+> U kunt het beste een door de gebruiker toegewezen identiteit maken en vooraf machtigingen verlenen. U kunt zich aanmelden en aan machtigingen gerelateerde fouten krijgen als u de identiteit maakt en machtigingen verleent in dezelfde sjabloon waar u implementatie scripts uitvoert. Het duurt enige tijd voordat de machtigingen van kracht worden.
+
 ## <a name="use-inline-scripts"></a>Inline-scripts gebruiken
 
 Voor de volgende sjabloon is één resource gedefinieerd met het `Microsoft.Resources/deploymentScripts` type.
@@ -139,7 +148,7 @@ Voor de volgende sjabloon is één resource gedefinieerd met het `Microsoft.Reso
 > [!NOTE]
 > Omdat de inline-implementatie scripts tussen dubbele aanhalings tekens staan, moeten de teken reeksen in de implementatie scripts in plaats daarvan tussen enkele aanhalings tekens worden geplaatst. Het escape-teken voor Power **&#92;** shell is. U kunt ook overwegen om de teken reeks vervanging te gebruiken zoals deze wordt weer gegeven in het vorige JSON-voor beeld. Zie de standaard waarde van de para meter name.
 
-Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output` wordt gebruikt voor fout opsporing. Zie [debug Deployment scripts](#debug-deployment-scripts)(Engelstalig) voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjabloon](#sample-template)voor de beschrijving van de eigenschap.
+Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output` wordt gebruikt voor fout opsporing. Zie [debug Deployment scripts](#debug-deployment-scripts)(Engelstalig) voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjablonen](#sample-templates)voor de beschrijving van de eigenschap.
 
 Als u het script wilt uitvoeren, selecteert u **proberen het** te openen Azure Cloud shell en plakt u de volgende code in het deel venster shell.
 
@@ -217,7 +226,6 @@ Uitvoer van het implementatie script moet worden opgeslagen op de AZ_SCRIPTS_OUT
 
 U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 ) variabele in uw implementatie script. De engine van de implementatie script kan de waarde niet instellen of wijzigen.  Ondanks de waarde die u hebt ingesteld voor $ErrorActionPreference, stelt het implementatie script de inrichtings status van de resource in op *mislukt* als er een fout optreedt in het script.
-
 
 ## <a name="debug-deployment-scripts"></a>Fout opsporing voor implementatie scripts
 

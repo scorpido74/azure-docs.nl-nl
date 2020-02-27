@@ -2,21 +2,21 @@
 title: Migratie activiteit bewaken-Azure Database Migration Service
 description: Meer informatie over het gebruik van de Azure Database Migration Service voor het bewaken van migratie activiteiten.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437940"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648509"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Migratie activiteiten bewaken met behulp van de Azure Database Migration Service
 In dit artikel leert u hoe u de voortgang van een migratie kunt controleren op database niveau en op tabel niveau.
@@ -34,7 +34,7 @@ De volgende tabel bevat de velden op de Blade op database niveau en beschrijft d
 <table id='overview' class='overview'>
   <thead>
     <tr>
-      <th class="x-hidden-focus"><strong>Veld naam</strong></th>
+      <th class="x-hidden-focus"><strong>Veldnaam</strong></th>
       <th><strong>Veld substatus</strong></th>
       <th><strong>Beschrijving</strong></th>
     </tr>
@@ -63,7 +63,7 @@ De volgende tabel bevat de velden op de Blade op database niveau en beschrijft d
       <td>De DMS-pijp lijn wordt uitgevoerd en er wordt gemigreerd.</td>
     </tr>
     <tr>
-      <td>Compleet</td>
+      <td>Complete</td>
       <td>De migratie is voltooid.</td>
     </tr>
     <tr>
@@ -93,7 +93,7 @@ De volgende tabel bevat de velden op de Blade op database niveau en beschrijft d
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Hebben</strong></td>
-      <td>N/A</td>
+      <td>N.v.t.</td>
       <td>Totale tijd van de migratie activiteit die wordt geïnitialiseerd voor de migratie is voltooid of de migratie is mislukt.</td>
     </tr>
      </tbody>
@@ -133,7 +133,7 @@ In de volgende tabel worden de velden beschreven die worden weer gegeven in voor
 | ------------- | ------------- |
 | **Status-synchroniseren**      | Doorlopende synchronisatie wordt uitgevoerd. |
 | **Invoegen**      | Aantal CDC-invoeg bewerkingen in rijen die op het doel zijn toegepast.      |
-| **Update** | Aantal CDC-updates in rijen die op het doel zijn toegepast.      |
+| **Bijwerken** | Aantal CDC-updates in rijen die op het doel zijn toegepast.      |
 | **Verwijderen**      | Aantal verwijderde CDC in rijen die op het doel zijn toegepast. |
 | **Totaal toegepast**      | Totaal van CDC-updates,-invoegen en-verwijderen in rijen die op het doel zijn toegepast. |
 | **Gegevens fouten** | Het aantal gegevens fouten in deze tabel is opgetreden. Enkele voor beelden van de fouten zijn *511: kan geen rij van grootte% d maken die groter is dan de toegestane maximale rijgrootte van% d, 8114: fout bij het converteren van het gegevens type% LS naar% ls.*  De klant moet een query uitvoeren uit dms_apply_exceptions tabel in het Azure-doel om de fout gegevens weer te geven.    |

@@ -3,21 +3,21 @@ title: 'Power shell: SQL Server migreren naar een beheerd exemplaar van SQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het migreren van on-premises SQL Server naar Azure SQL Database beheerde instantie met behulp van Azure PowerShell en de Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746628"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650721"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migreren naar SQL Database beheerde instantie met Power shell & Azure Database Migration Service
 
@@ -27,7 +27,7 @@ In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
 > * Maak een resourcegroep.
-> * Maak een exemplaar van de Azure Database Migration Service.
+> * Maak een instantie van Azure Database Migration Service.
 > * Een migratie project maken in een exemplaar van Azure Database Migration Service.
 > * De migratie uitvoeren.
 
@@ -43,7 +43,7 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 * Een lokale kopie van de **AdventureWorks2016** -data base, die [hier](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)kan worden gedownload.
 * Om het TCP/IP-protocol in te scha kelen, dat standaard is uitgeschakeld bij SQL Server Express installatie. Schakel het TCP/IP-protocol in door het artikel [een server netwerk protocol in of uit](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)te scha kelen.
 * Als u uw [Windows Firewall wilt configureren voor toegang tot de data base-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Een door Azure SQL Database beheerd exemplaar. U kunt een beheerde instantie van Azure SQL Database maken door de details in het artikel [een Azure SQL database beheerd exemplaar maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)te volgen.
 * Om [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 of nieuwer te downloaden en te installeren.
 * Een Microsoft Azure Virtual Network gemaakt met behulp van het Azure Resource Manager-implementatie model, waarmee u de Azure Database Migration Service met site-naar-site-verbinding met uw on-premises bron servers kunt maken met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
@@ -79,7 +79,7 @@ Voor deze cmdlet worden de volgende vereiste para meters verwacht:
 * *Naam van de Azure-resource groep*. U kunt [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) opdracht gebruiken om een Azure-resource groep te maken zoals eerder wordt weer gegeven en de naam opgeven als een para meter.
 * *Service naam*. Teken reeks die overeenkomt met de gewenste unieke service naam voor Azure Database Migration Service.
 * *Locatie*. Hiermee geeft u de locatie van de service. Geef een Azure Data Center-locatie op, zoals vs-West of Zuidoost-Azië.
-* *Sku*. Deze para meter komt overeen met de naam van een DMS-SKU. Momenteel ondersteunde SKU-namen zijn *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
+* *SKU*. Deze para meter komt overeen met de naam van een DMS-SKU. Momenteel ondersteunde SKU-namen zijn *Basic_1vCore*, *Basic_2vCores* *GeneralPurpose_4vCores*.
 * *Id van het virtuele subnet*. U kunt de cmdlet- [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) gebruiken om een subnet te maken.
 
 In het volgende voor beeld wordt een service gemaakt met de naam *MyDMS* in de resource groep *MyDMSResourceGroup* die zich bevindt in de regio *VS Oost* met behulp van een virtueel netwerk met de naam *MyVNET* en een subnet met de naam *MySubnet*.
@@ -107,7 +107,7 @@ Nadat u een Azure Database Migration Service-exemplaar hebt gemaakt, moet u een 
 
 U kunt een object data base-verbindings gegevens maken met behulp van de cmdlet `New-AzDmsConnInfo`, die de volgende para meters verwacht:
 
-* *ServerType*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
+* *Server type*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
 * *Gegevens bron*. De naam of het IP-adres van een SQL Server exemplaar of Azure SQL Database exemplaar.
 * *AuthType*. Het verificatie type voor de verbinding. Dit kan SqlAuthentication of WindowsAuthentication zijn.
 * *TrustServerCertificate*. Met deze para meter wordt een waarde ingesteld die aangeeft of het kanaal is versleuteld tijdens het passeren van het door lopen van de certificaat keten om de vertrouwens relatie te valideren. De waarde kan `$true` of `$false`zijn.
@@ -415,7 +415,7 @@ Nadat de migratie is voltooid, kunt u de Azure Database Migration Service-instan
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Zie de micro soft [Data Base Migration Guide (Engelstalig](https://datamigration.microsoft.com/)) voor meer informatie over aanvullende migratie scenario's (bron/doel paren).
 

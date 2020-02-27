@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790588"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651425"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatische back-up v2 voor Azure Virtual Machines (Resource Manager)
 
@@ -118,11 +118,7 @@ Vervolgens wordt de volledige back-up van alle data bases opnieuw gestart, op di
 > [!IMPORTANT]
 > Bij het plannen van dagelijkse back-ups wordt aangeraden een breed tijd venster te plannen om ervoor te zorgen dat er binnen deze tijd een back-up van alle data bases kan worden gemaakt. Dit is vooral belang rijk wanneer u een grote hoeveelheid gegevens hebt waarvan u een back-up wilt maken.
 
-## <a name="configure-in-the-portal"></a>Configureren in de portal
-
-U kunt de Azure Portal gebruiken om automatische back-ups v2 te configureren tijdens het inrichten of voor bestaande SQL Server 2016/2017 Vm's.
-
-## <a name="configure-for-new-vms"></a>Configureren voor nieuwe Vm's
+## <a name="configure-new-vms"></a>Nieuwe Vm's configureren
 
 Gebruik de Azure Portal voor het configureren van automatische back-up v2 wanneer u een nieuwe SQL Server 2016-of 2017-Virtuele machine maakt in het Resource Manager-implementatie model.
 
@@ -315,7 +311,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 Als u automatische back-ups wilt bewaken op SQL Server 2016/2017, hebt u twee belang rijke opties. Omdat automatische back-up gebruikmaakt van de SQL Server beheerde back-upfunctie, zijn dezelfde bewakings technieken van toepassing op beide.
 

@@ -3,12 +3,12 @@ title: Limieten en grenzen - QnA Maker
 description: QnA Maker heeft meta-limieten voor het delen van de knowledge base en de service. Het is belangrijk dat u uw knowledge base binnen de grenzen om te testen en publiceren.
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252005"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650364"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker kennisdatabase limieten en grenzen
 
@@ -55,7 +55,7 @@ Het maximum aantal diep gaande koppelingen dat kan worden verkend voor het uitpa
 
 ## <a name="metadata-limits"></a>Limieten voor metagegevens
 
-Meta gegevens worden opgeslagen en vergeleken in kleine letters.
+Meta gegevens worden weer gegeven als een op tekst gebaseerde sleutel: waardepaar, zoals `product:windows 10`. Het wordt opgeslagen en vergeleken in kleine letters.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Door de prijs categorie voor Azure Cognitive Search
 
@@ -71,8 +71,8 @@ De lengte en de acceptabele tekens voor de naam en waarde van de meta gegevens w
 
 |Item|Toegestane tekens|Overeenkomst met regex-patroon|Maximum aantal tekens|
 |--|--|--|--|
-|Naam|Hulp<br>alfanumeriek (letters en cijfers)<br>`_` (onderstrepings teken)|`^[a-zA-Z0-9_]+$`|100|
-|Waarde|Maakt alles mogelijk behalve<br>`:` (dubbele punt)<br>`|` (verticale pijp)|`^[^:|]+$`|500|
+|Naam (sleutel)|Hulp<br>alfanumeriek (letters en cijfers)<br>`_` (onderstrepings teken)<br> Mag geen spaties bevatten.|`^[a-zA-Z0-9_]+$`|100|
+|Waarde|Maakt alles mogelijk behalve<br>`:` (dubbele punt)<br>`|` (verticale pijp)<br>Er is slechts één waarde toegestaan.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Limieten voor Knowledge Base-inhoud
@@ -103,4 +103,4 @@ Dit duidt op de limieten voor elke update-actie. dat wil zeggen, klikken op *ops
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over wanneer en hoe u de [service prijs categorieën](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)wijzigt.
+Meer informatie over wanneer en hoe u de [service prijs categorieën](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)wijzigt.

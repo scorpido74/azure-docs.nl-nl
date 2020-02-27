@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561760"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623123"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Apache Hive gebruiken als een hulp programma voor uitpakken, transformeren en laden (ETL)
 
@@ -70,7 +70,7 @@ U kunt Hive gebruiken om gegevens uit te voeren op verschillende doelen, waarond
 
 * Een relationele data base, zoals SQL Server of Azure SQL Database.
 * Een Data Warehouse, zoals Azure SQL Data Warehouse.
-* Er.
+* Excel.
 * Azure Table-en Blob-opslag.
 * Toepassingen of services waarvoor gegevens moeten worden verwerkt in specifieke indelingen of als bestanden die specifieke typen gegevens structuur bevatten.
 * Een JSON-document archief zoals [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -81,7 +81,7 @@ Het ETL-model wordt doorgaans gebruikt wanneer u het volgende wilt doen:
 
 * Laad stroom gegevens of grote volumes met semi-gestructureerde of ongestructureerde gegevens uit externe bronnen in een bestaand data base-of informatie systeem.
 * Reinig, Transformeer en valideer de gegevens voordat u deze laadt, mogelijk door meer dan één trans formatie door middel van het cluster te gebruiken.
-* Genereer rapporten en visualisaties die regel matig worden bijgewerkt.  Als het rapport bijvoorbeeld te lang duurt om te genereren gedurende de dag, kunt u het rapport plannen om 's nachts uit te voeren.  U kunt Azure scheduler en Power shell gebruiken om automatisch een Hive-query uit te voeren.
+* Genereer rapporten en visualisaties die regel matig worden bijgewerkt. Als het rapport bijvoorbeeld te lang duurt om te genereren gedurende de dag, kunt u het rapport plannen om 's nachts uit te voeren. Als u automatisch een Hive-query wilt uitvoeren, kunt u [Azure Logic apps](../../logic-apps/logic-apps-overview.md) en Power shell gebruiken.
 
 Als het doel voor de gegevens geen data base is, kunt u een bestand genereren in de juiste indeling in de query, bijvoorbeeld een CSV. Dit bestand kan vervolgens worden geïmporteerd in Excel of Power BI.
 

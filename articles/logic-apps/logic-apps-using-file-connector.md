@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792785"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651403"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestands systemen met Azure Logic Apps
 
-Met de bestandssysteem connector en Azure Logic Apps kunt u geautomatiseerde taken en werk stromen maken om bestanden te maken en te beheren op een on-premises bestands share, bijvoorbeeld:  
+Met Azure Logic Apps en de File System-connector kunt u geautomatiseerde taken en werk stromen maken waarmee u bestanden op een on-premises bestands share maakt en beheert, bijvoorbeeld:
 
 - Bestanden maken, ophalen, toevoegen, bijwerken en verwijderen.
 - Bestanden in mappen of hoofd mappen weer geven.
@@ -65,7 +65,7 @@ In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises b
 
    ![Verbinding maken](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Eigenschap | Verplicht | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    | -------- | -------- | ----- | ----------- |
    | **Verbindingsnaam** | Ja | <*naam* van de verbinding> | De naam die u voor de verbinding wilt hebben |
    | **Hoofdmap** | Ja | <*root-mapnaam*> | De hoofdmap voor uw bestands systeem, bijvoorbeeld als u de on-premises gegevens gateway hebt geïnstalleerd, zoals een lokale map op de computer waarop de on-premises gegevens gateway is geïnstalleerd, of de map voor een netwerk share waartoe de computer toegang heeft. <p>Bijvoorbeeld: `\\PublicShare\\DropboxFiles` <p>De hoofdmap is de bovenliggende map, die wordt gebruikt voor relatieve paden voor alle bestand-gerelateerde acties. |
@@ -93,7 +93,10 @@ In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises b
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg de [referentie pagina](/connectors/fileconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/fileconnector/).
+
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,44 +12,47 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e5b9b989ed8111e2bf36194ae2c8a333db7e66b4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843851"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650793"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Snelstartgids: een Load Balancer maken om taken van Vm's te verdelen met behulp van Azure Resource Manager sjabloon
 
 Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). In deze Quick start ziet u hoe u een Azure Resource Manager sjabloon kunt implementeren waarmee een standaard-load balancer wordt gemaakt voor de taak verdeling van Vm's. Het gebruik van Resource Manager-sjablonen neemt minder stappen in vergelijking met andere implementatie methoden.
 
-[Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.network/loadbalancers).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-a-load-balancer"></a>Een load balancer maken
+## <a name="create-a-load-balancer"></a>Een Load Balancer maken
 
 Load Balancer en open bare IP-Sku's moeten overeenkomen. Wanneer u een Standard Load Balancer maakt, moet u ook een nieuw standaard openbaar IP-adres maken dat is geconfigureerd als de front-end voor de standaard load balancer. Als u een basis Load Balancer wilt maken, gebruikt u [deze sjabloon](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Micro soft raadt aan om standaard-SKU te gebruiken voor werk belastingen voor productie.
 
-De sjabloon die in deze Quick Start wordt gebruikt, is een [Quick Start sjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
+### <a name="review-the-template"></a>De sjabloon controleren
 
-[!code-json[<Azure Resource Manager template create standard load balancer>](~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json)]
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)start-sjablonen.
+
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-150" highlight="58-122":::
 
 Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
 
-- **Microsoft.Network/loadBalancers**
-- **Micro soft. Network/publicIPAddresses**: voor de Load Balancer.
-- **Microsoft.Network/networkSecurityGroups**
-- **Microsoft.Network/virtualNetworks**
-- **Micro soft. Compute/virutalMachines** (3 van deze)
-- **Micro soft. Network/publicIPAddresses** (3): voor elk van de drie virtuele machines.
-- **Micro soft. Network/networkInterfaces** (3 van deze)
-- **Micro soft. Compute/virtualMachine/Extensions** (3): gebruik om de IIS-en de webpagina's te configureren
+- [**Micro soft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Micro soft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): voor de Load Balancer en voor elk van de drie virtuele machines.
+- [**Micro soft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Micro soft. Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3 van deze)
+- [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3 van deze)
+- [**Micro soft. Compute/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): gebruik om de IIS-en de webpagina's te configureren
 
 Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)start-sjablonen voor meer informatie over de sjablonen die zijn gerelateerd aan Azure Load Balancer.
+
+### <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer **deze** in het volgende code blok proberen om Azure Cloud shell te openen en volg de instructies om u aan te melden bij Azure.
 
@@ -88,7 +91,7 @@ Azure PowerShell wordt gebruikt voor het implementeren van de sjabloon. Naast Az
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **resource groepen** in het linkerdeel venster.
 

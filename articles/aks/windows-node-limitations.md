@@ -4,12 +4,12 @@ description: Meer informatie over de bekende beperkingen bij het uitvoeren van W
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592490"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615647"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -51,9 +51,9 @@ De hoofd knooppunten (het besturings vlak) in een AKS-cluster worden gehost door
 
 AKS-clusters met Windows-knooppunt Pools moeten het netwerk model van Azure CNI (Geavanceerd) gebruiken. Kubenet (Basic)-netwerken worden niet ondersteund. Zie [Network concepten for Applications in AKS][azure-network-models](Engelstalig) voor meer informatie over de verschillen in netwerk modellen. -Het Azure CNI-netwerk model vereist aanvullende planning en overwegingen voor het beheer van IP-adressen. Zie [Azure cni-netwerken configureren in AKS][configure-azure-cni]voor meer informatie over het plannen en implementeren van Azure cni.
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>Kan ik het minimum aantal van elk per knoop punt wijzigen?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik de maximale waarde wijzigen. aantal peulen per knoop punt?
 
-Het is momenteel een vereiste om te worden ingesteld op mini maal 30, om de betrouw baarheid van uw clusters te garanderen.
+Het is momenteel een vereiste om te worden ingesteld op Maxi maal 30, om de betrouw baarheid van uw clusters te garanderen.
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Hoe Patch ik mijn Windows-knoop punten?
 

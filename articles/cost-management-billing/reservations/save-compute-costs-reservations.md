@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443632"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500577"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -20,7 +20,7 @@ Met behulp van Azure-reserveringen kunt u geld besparen omdat u een abonnement v
 
 U kunt vooraf of maandelijks voor een reservering betalen. De totale kosten van betalingen vooraf en per maand voor reserveringen zijn hetzelfde en u hoeft ook geen toeslag te betalen wanneer u voor maandelijks betalen kiest. Maandelijkse betaling is beschikbaar voor Azure-reserveringen, niet voor producten van derden.
 
-U kunt een reservering kopen via [Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+U kunt een reservering kopen via [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 ## <a name="why-buy-a-reservation"></a>Redenen om een reservering te kopen
 

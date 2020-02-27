@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c913cb978796abeed5766ffa030aaeb6142320ec
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892920"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650910"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Quick Start: blobs maken, downloaden en vermelden met Azure CLI
 
@@ -28,18 +28,60 @@ Azure CLI is de nieuwe opdrachtregel van Azure voor het beheren van Azure-resour
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om uw versie te bepalen. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor deze Snelstartgids gebruikmaken van de Azure CLI-versie 2.0.46 of hoger. Voer `az --version` uit om uw versie te bepalen. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
-[!INCLUDE [storage-quickstart-tutorial-intro-include-cli](../../../includes/storage-quickstart-tutorial-intro-include-cli.md)]
+Als u de Azure CLI lokaal uitvoert, moet u zich aanmelden en verifiëren. Deze stap is niet nodig als u Azure Cloud Shell gebruikt. Als u zich wilt aanmelden bij Azure CLI, voert u `az login` uit en verifieert u in het browser venster:
+
+```azurecli
+az login
+```
+
+## <a name="authorize-access-to-blob-storage"></a>Toegang tot Blob Storage machtigen
+
+U kunt de toegang tot de Blob-opslag toestaan via de Azure CLI met behulp van de Azure AD-referenties of door de toegangs sleutel voor het opslag account te gebruiken. Het gebruik van Azure AD-referenties wordt aanbevolen. In dit artikel wordt beschreven hoe u Blob Storage-bewerkingen kunt autoriseren met behulp van Azure AD.
+
+Azure CLI-opdrachten voor gegevens bewerkingen op Blob Storage ondersteunen de para meter `--auth-mode`, waarmee u kunt opgeven hoe een bepaalde bewerking moet worden geautoriseerd. Stel de para meter `--auth-mode` in op `login` om te autoriseren met Azure AD-referenties. Zie voor meer informatie [Azure cli-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+Alleen bewerkingen voor Blob Storage-gegevens ondersteunen de para meter `--auth-mode`. Beheer bewerkingen, zoals het maken van een resource groep of een opslag account, gebruiken automatisch Azure AD-referenties voor autorisatie.
+
+## <a name="create-a-resource-group"></a>Een resourcegroep maken
+
+Maak een Azure-resourcegroep met de opdracht [az group create](/cli/azure/group). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+
+```azurecli
+az group create \
+    --name <resource-group> \
+    --location <location>
+```
+
+## <a name="create-a-storage-account"></a>Create a storage account
+
+Maak een algemeen opslagaccount met de opdracht [az storage account create](/cli/azure/storage/account). Het algemeen opslagaccount kan voor alle vier de services worden gebruikt: blobs, bestanden, tabellen en wachtrijen.
+
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+
+```azurecli
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --location <location> \
+    --sku Standard_ZRS \
+    --encryption blob
+```
 
 ## <a name="create-a-container"></a>Een container maken
 
-Blobs worden altijd naar een container geüpload. U kunt groepen blobs ordenen net zoals u bestanden op uw computer in mappen ordent.
+Blobs worden altijd naar een container geüpload. U kunt groepen blobs in containers organiseren die vergelijkbaar zijn met de manier waarop u uw bestanden op uw computer in mappen ordent.
 
-Gebruik de opdracht [az storage container create](/cli/azure/storage/container) om een container te maken voor het opslaan van blobs.
+Gebruik de opdracht [az storage container create](/cli/azure/storage/container) om een container te maken voor het opslaan van blobs. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
-```azurecli-interactive
-az storage container create --name sample-container
+```azurecli
+az storage container create \
+    --account-name <storage-account> \
+    --name <container> \
+    --auth-mode login
 ```
 
 ## <a name="upload-a-blob"></a>Een blob uploaden
@@ -54,60 +96,65 @@ vi helloworld
 
 Wanneer het bestand wordt geopend, drukt u op **Insert (invoegen**). Typ *Hallo wereld*en druk vervolgens op **ESC**. Typ vervolgens *: x*en druk vervolgens op **Enter**.
 
-In dit voorbeeld wordt met de opdracht [az storage blob upload](/cli/azure/storage/blob) een blob geüpload naar de container die u in de laatste stap hebt gemaakt. Het is niet nodig om een bestandspad op te geven sinds het bestand is gemaakt in de hoofdmap:
+In dit voorbeeld wordt met de opdracht [az storage blob upload](/cli/azure/storage/blob) een blob geüpload naar de container die u in de laatste stap hebt gemaakt. Het is niet nodig om een bestandspad op te geven sinds het bestand is gemaakt in de hoofdmap. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
-```azurecli-interactive
+```azurecli
 az storage blob upload \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file helloworld
+    --file helloworld \
+    --auth-mode login
 ```
 
-Met deze bewerking wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is. Upload zoveel bestanden als u nodig hebt, voordat u doorgaat.
+Met deze bewerking wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is. Upload zoveel bestanden als u nodig hebt voordat u doorgaat.
 
 Als u meerdere bestanden tegelijk wilt uploaden, kunt u de opdracht [az storage blob upload-batch](/cli/azure/storage/blob) gebruiken.
 
 ## <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Gebruik de opdracht [az storage blob list](/cli/azure/storage/blob) om de blobs in de container weer te geven.
+Gebruik de opdracht [az storage blob list](/cli/azure/storage/blob) om de blobs in de container weer te geven. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
-```azurecli-interactive
+```azurecli
 az storage blob list \
-    --container-name sample-container \
-    --output table
+    --account-name <storage-account> \
+    --container-name <container> \
+    --output table \
+    --auth-mode login
 ```
 
 ## <a name="download-a-blob"></a>Een blob downloaden
 
-Gebruik de opdracht [az storage blob download](/cli/azure/storage/blob) om de blob te downloaden die u eerder hebt geüpload.
+Gebruik de opdracht [az storage blob download](/cli/azure/storage/blob) om de blob te downloaden die u eerder hebt geüpload. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
-```azurecli-interactive
+```azurecli
 az storage blob download \
-    --container-name sample-container \
+    --account-name <storage-account> \
+    --container-name <container> \
     --name helloworld \
-    --file ~/destination/path/for/file
+    --file ~/destination/path/for/file \
+    --auth-mode login
 ```
 
 ## <a name="data-transfer-with-azcopy"></a>Gegevensoverdracht met AzCopy
 
-Het hulpprogramma [AzCopy](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) is een andere optie voor krachtige, scriptbare gegevensoverdracht voor Azure Storage. U kunt AzCopy gebruiken om gegevens over te brengen naar en van blob-, bestands- en tabelopslag.
+Het opdracht regel hulpprogramma AzCopy biedt hoogwaardige, script bare gegevens overdracht voor Azure Storage. U kunt AzCopy gebruiken om gegevens over te dragen van en naar Blob Storage en Azure Files. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy V10 toevoegen, de nieuwste versie van AzCopy. Zie [gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy V10 toevoegen met Blob Storage.
 
-In het volgende voor beeld wordt AzCopy gebruikt om een bestand met de naam *Mijnbestand. txt* te uploaden naar de container van de voor *beeld-container* . Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+In het volgende voor beeld wordt AzCopy gebruikt om een lokaal bestand te uploaden naar een blob. Vergeet niet om de voorbeeld waarden te vervangen door uw eigen waarden:
 
 ```bash
-azcopy \
-    --source /mnt/myfiles \
-    --destination https://<account-name>.blob.core.windows.net/sample-container \
-    --dest-key <account-key> \
-    --include "myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u een van de resources in de resource groep niet meer nodig hebt, met inbegrip van het opslag account dat u in deze Quick Start hebt gemaakt, verwijdert u de resource groep met de opdracht [AZ Group delete](/cli/azure/group) . Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
 
-```azurecli-interactive
-az group delete --name <resource-group-name>
+```azurecli
+az group delete \
+    --name <resource-group> \
+    --no-wait
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

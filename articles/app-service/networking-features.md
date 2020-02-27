@@ -4,15 +4,15 @@ description: Meer informatie over de netwerk functies in Azure App Service en we
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971754"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649223"
 ---
 # <a name="app-service-networking-features"></a>App Service-netwerk functies
 
@@ -27,8 +27,8 @@ Het Azure App Service is een gedistribueerd systeem. De rollen die binnenkomende
 | Binnenkomende functies | Uitgaande functies |
 |---------------------|-------------------|
 | Toegewezen adres van de app | Hybride verbindingen |
-| Toegangsbeperkingen | Vereiste VNet-integratie voor gateway |
-| Service-eindpunten | VNet-integratie (preview-versie) |
+| Toegangs beperkingen | Vereiste VNet-integratie voor gateway |
+| Service-eind punten | VNet-integratie |
 
 Tenzij anders vermeld, kunnen alle functies tegelijk worden gebruikt. U kunt de functies combi neren om uw verschillende problemen op te lossen.
 
@@ -38,13 +38,13 @@ U kunt het probleem op een aantal manieren oplossen voor een gegeven use-case.  
  
 | Inkomende use cases | Functie |
 |---------------------|-------------------|
-| Ondersteuning voor op IP gebaseerde SSL-behoeften voor uw app | toegewezen adres van de app |
-| Niet gedeeld, toegewezen inkomend adres voor uw app | toegewezen adres van de app |
-| De toegang tot uw app beperken vanuit een reeks goed gedefinieerde adressen | Toegangsbeperkingen |
-| Mijn app beschikbaar maken voor privé Ip's in mijn VNet | ILB ASE </br> Application Gateway met Service-eind punten |
-| Toegang tot mijn app beperken van resources in een VNet | Service-eindpunten </br> ILB ASE |
+| Ondersteuning voor op IP gebaseerde SSL-behoeften voor uw app | Toegewezen adres van de app |
+| Niet gedeeld, toegewezen inkomend adres voor uw app | Toegewezen adres van de app |
+| De toegang tot uw app beperken vanuit een reeks goed gedefinieerde adressen | Toegangs beperkingen |
+| Mijn app beschikbaar maken voor privé Ip's in mijn VNet | ILB ASE </br> Application Gateway met service-eindpunten |
+| Toegang tot mijn app beperken van resources in een VNet | Service-eind punten </br> ILB ASE |
 | Mijn app beschikbaar maken op een privé-IP in mijn VNet | ILB ASE </br> persoonlijk IP-adres voor inkomend verkeer op een Application Gateway met Service-eind punten |
-| Mijn app beveiligen met een WAF | Application Gateway + ILB ASE </br> Application Gateway met Service-eind punten </br> Azure front deur met toegangs beperkingen |
+| Mijn app beveiligen met een WAF | Application Gateway + ILB ASE </br> Application Gateway met service-eindpunten </br> Azure front deur met toegangs beperkingen |
 | Taak verdeling van verkeer naar mijn apps in verschillende regio's | Azure front deur met toegangs beperkingen | 
 | Taak verdeling van verkeer in dezelfde regio | [Application Gateway met Service-eind punten][appgwserviceendpoints] | 
 
@@ -56,7 +56,9 @@ In de volgende uitgaande use-cases wordt uitgelegd hoe u App Service-netwerk fun
 | Toegang tot resources in een Azure-Virtual Network in een andere regio | Vereiste VNet-integratie voor gateway </br> ASE en VNet-peering |
 | Toegang tot resources die zijn beveiligd met Service-eind punten | VNet-integratie </br> ASE |
 | Toegang tot bronnen in een particulier netwerk dat niet is verbonden met Azure | Hybride verbindingen |
-| Toegang tot resources via ExpressRoute-circuits | VNet-integratie (beperkt tot RFC 1918-adressen voor nu) </br> ASE | 
+| Toegang tot resources via ExpressRoute-circuits | VNet-integratie </br> ASE | 
+| Uitgaand verkeer van uw web-app beveiligen | VNet-integratie en netwerk beveiligings groepen </br> ASE | 
+| Uitgaand verkeer van uw web-app door sturen | VNet-integratie en route tabellen </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>Standaard netwerk gedrag
@@ -82,11 +84,11 @@ Wanneer u een aan een app toegewezen adres gebruikt, loopt uw verkeer nog steeds
 
 U kunt meer informatie over het instellen van een adres in uw app met behulp van de zelf studie over het [configureren van SSL op basis van IP][appassignedaddress]. 
 
-### <a name="access-restrictions"></a>Toegangsbeperkingen 
+### <a name="access-restrictions"></a>Toegangs beperkingen 
 
 Met de mogelijkheid tot toegangs beperkingen kunt u **inkomende** aanvragen filteren op basis van het IP-adres van de oorsprong. De filter actie vindt plaats op de front-end-rollen die upstream zijn van de werk rollen waar uw apps worden uitgevoerd. Aangezien de front-end-rollen upstream van de werk nemers zijn, kan de mogelijkheid tot toegangs beperkingen worden beschouwd als beveiliging op netwerk niveau voor uw apps. Met deze functie kunt u een lijst met adressen blokken voor toestaan en weigeren maken die in volg orde van prioriteit worden geëvalueerd. Het is vergelijkbaar met de functie voor netwerk beveiligings groepen (NSG) die zich in azure-netwerken bevindt.  U kunt deze functie gebruiken in een ASE of in de multi tenant-service. Wanneer u gebruikt met een ILB-ASE, kunt u de toegang beperken tot persoonlijke adres blokken.
 
-![Toegangsbeperkingen](media/networking-features/access-restrictions.png)
+![Toegangs beperkingen](media/networking-features/access-restrictions.png)
 
 De functie toegangs beperkingen helpt bij scenario's waarin u de IP-adressen wilt beperken die kunnen worden gebruikt om uw app te bereiken. De gebruiks voorbeelden voor deze functie zijn:
 
@@ -146,15 +148,17 @@ Als deze functie is ingeschakeld, gebruikt uw app de DNS-server waarop het doel-
 
 ### <a name="vnet-integration"></a>VNet-integratie
 
-De gateway vereist VNet-integratie functie is zeer nuttig, maar er is nog steeds geen oplossing voor het openen van resources over ExpressRoute. Op het niveau van de ExpressRoute-verbindingen is het nodig dat apps aanroepen van beveiligde services voor service-eind punten kunnen maken. Voor het oplossen van beide extra behoeften is een andere VNet-integratie mogelijkheid toegevoegd. Met de nieuwe functie VNet-integratie kunt u de back-end van uw app in een subnet in een resource manager-VNet in dezelfde regio plaatsen. Deze functie is niet beschikbaar vanuit een App Service Environment, die zich al in een VNet bevindt. Met deze functie wordt ingeschakeld:
+De gateway vereist VNet-integratie functie is zeer nuttig, maar er is nog steeds geen oplossing voor het openen van resources over ExpressRoute. Op het niveau van de ExpressRoute-verbindingen is het nodig dat apps aanroepen van beveiligde services voor service-eind punten kunnen maken. Voor het oplossen van beide extra behoeften is een andere VNet-integratie mogelijkheid toegevoegd. Met de nieuwe functie VNet-integratie kunt u de back-end van uw app in een subnet in een resource manager-VNet in dezelfde regio plaatsen. Deze functie is niet beschikbaar vanuit een App Service Environment, die zich al in een VNet bevindt. Met deze functie kunt u:
 
 * Toegang tot resources in de Resource Manager-VNets in dezelfde regio
 * Toegang tot resources die zijn beveiligd met Service-eind punten 
 * Toegang tot bronnen die toegankelijk zijn via ExpressRoute of VPN-verbindingen
+* Alle uitgaande verkeer beveiligen 
+* Geforceerde tunneling voor al het uitgaande verkeer. 
 
 ![VNet-integratie](media/networking-features/vnet-integration.png)
 
-Deze functie is beschikbaar als preview-versie en mag niet worden gebruikt voor werk belastingen voor de productie. Lees de documenten over [app service VNet-integratie][vnetintegration]voor meer informatie over deze functie.
+Lees de documenten over [app service VNet-integratie][vnetintegration]voor meer informatie over deze functie.
 
 ## <a name="app-service-environment"></a>App Service-omgeving 
 

@@ -4,14 +4,14 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251954"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651063"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -95,7 +95,9 @@ Als u een NFS-opslag systeem (bijvoorbeeld een on-premises hardware NAS-systeem)
 > [!NOTE]
 > Het maken van een opslag doel mislukt als de cache onvoldoende toegang tot het NFS-opslag systeem heeft.
 
-* **Netwerk verbinding:** De Azure HPC-cache vereist netwerk toegang met hoge band breedte tussen het subnet van de cache en het Data Center van het NFS-systeem. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) of vergelijk bare toegang wordt aanbevolen. Als u een VPN gebruikt, moet u dit mogelijk configureren om TCP MSS op 1350 te zetten om ervoor te zorgen dat grote pakketten niet worden geblokkeerd.
+Meer informatie vindt u in het oplossen van problemen [met NAS-configuratie en NFS-opslag doel](troubleshoot-nas.md).
+
+* **Netwerk verbinding:** De Azure HPC-cache vereist netwerk toegang met hoge band breedte tussen het subnet van de cache en het Data Center van het NFS-systeem. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) of vergelijk bare toegang wordt aanbevolen. Als u een VPN gebruikt, moet u dit mogelijk configureren om TCP MSS op 1350 te zetten om ervoor te zorgen dat grote pakketten niet worden geblokkeerd. Lees de [beperkingen voor VPN-pakket grootte](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) voor meer hulp bij het oplossen van VPN-instellingen.
 
 * **Poort toegang:** De cache moet toegang hebben tot specifieke TCP/UDP-poorten op uw opslag systeem. Verschillende typen opslag hebben verschillende poort vereisten.
 
@@ -109,6 +111,8 @@ Als u een NFS-opslag systeem (bijvoorbeeld een on-premises hardware NAS-systeem)
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  Zorg ervoor dat alle poorten die door de ``rpcinfo`` query worden geretourneerd, onbeperkt verkeer van het subnet van de Azure HPC-cache toestaan.
+
   * Naast de poorten die door de `rpcinfo` opdracht worden geretourneerd, moet u ervoor zorgen dat deze veelgebruikte poorten binnenkomend en uitgaand verkeer toestaan:
 
     | Protocol | Poort  | Service  |
@@ -121,16 +125,20 @@ Als u een NFS-opslag systeem (bijvoorbeeld een on-premises hardware NAS-systeem)
 
   * Controleer de firewall instellingen om er zeker van te zijn dat verkeer op al deze vereiste poorten is toegestaan. Controleer of de firewalls in Azure en on-premises firewalls in uw Data Center worden gebruikt.
 
-* **Directory toegang:** Schakel de `showmount`-opdracht in op het opslag systeem. De Azure HPC-cache maakt gebruik van deze opdracht om te controleren of de configuratie van de opslag doel naar een geldige export wijst en om ervoor te zorgen dat meerdere koppels geen toegang hebben tot dezelfde submappen (die een conflict met bestanden in gevaar brengen).
+* **Directory toegang:** Schakel de `showmount`-opdracht in op het opslag systeem. De Azure HPC-cache maakt gebruik van deze opdracht om te controleren of de configuratie van de opslag doel naar een geldige export wijst en om ervoor te zorgen dat meerdere koppels geen toegang hebben tot dezelfde submappen (een risico voor conflicterende bestanden).
 
   > [!NOTE]
   > Als uw NFS-opslag systeem gebruikmaakt van het ONTAP 9,2-besturings systeem van NetApp, **moet u `showmount`niet inschakelen** . [Neem contact op met micro soft-service en ondersteuning](hpc-cache-support-ticket.md) voor hulp.
+
+  Meer informatie over toegang tot mapweergave vindt u in het artikel NFS-opslag doel [probleem oplossing](troubleshoot-nas.md#enable-export-listing).
 
 * **Hoofd toegang:** De cache maakt verbinding met het back-end-systeem als gebruiker-ID 0. Controleer deze instellingen op uw opslag systeem:
   
   * Schakel `no_root_squash`in. Deze optie zorgt ervoor dat de externe hoofd gebruiker toegang kan krijgen tot bestanden die eigendom zijn van de hoofdmap.
 
   * Controleer het export beleid om er zeker van te zijn dat er geen beperkingen zijn voor toegang tot de hoofdmap vanuit het subnet van de cache.
+
+  * Als uw opslag export bevat die submappen zijn van een andere export, controleert u of de cache hoofd toegang heeft tot het laagste segment van het pad. Lees de hoofdmap van de [Directory-paden](troubleshoot-nas.md#allow-root-access-on-directory-paths) in het artikel over het oplossen van problemen met de NFS-opslag doel voor meer informatie.
 
 * Opslag van NFS-back-end moet een compatibel hardware/software-platform zijn. Neem contact op met het team van HPC-cache voor meer informatie.
 

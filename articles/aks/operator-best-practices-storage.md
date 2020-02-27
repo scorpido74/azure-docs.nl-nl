@@ -4,12 +4,12 @@ description: Meer over de best practices uit de cluster-operator voor opslag, ve
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 6521655ded45f0a1d15c3ec40a44993d757b8854
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594665"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649616"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor opslag en back-ups in Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ De volgende tabel geeft een overzicht van de typen beschikbare opslag en de bijb
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Gedeelde configuratie       | Azure Files   | Ja | Ja | Ja | Ja |
 | Gestructureerde app-gegevens        | Azure-schijven   | Ja | Nee  | Nee  | Ja |
-| Niet-gestructureerde gegevens, bewerkingen in het bestandssysteem | [BlobFuse (preview-versie)][blobfuse] | Ja | Ja | Ja | Nee |
+| Niet-gestructureerde gegevens, bewerkingen in het bestandssysteem | [BlobFuse][blobfuse] | Ja | Ja | Ja | Nee |
 
 De twee belangrijkste typen opslag die is geleverd voor volumes in AKS worden ondersteund door Azure-schijven of Azure Files. Voor een betere beveiliging beide soorten opslag Azure Storage Service Encryption (SSE) gebruiken standaard die gegevens in rust worden versleuteld. Schijven kunnen niet op dit moment worden versleuteld met Azure Disk Encryption op het niveau van het AKS-knooppunten.
 

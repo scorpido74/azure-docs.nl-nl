@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190427"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649275"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -199,7 +199,7 @@ Op dit moment kunt u geen punt-naar-site-VPN-verbindingen hebben met een virtuee
 
 Op dit moment wordt het verbinden van een App Service web-app met een virtueel netwerk met een statische routerings gateway (op beleid gebaseerd) niet ondersteund. Als het virtuele netwerk van het doel al bestaat, moet er een punt-naar-site-VPN zijn ingeschakeld, met een dynamische routerings gateway voordat het kan worden verbonden met een app. Als uw gateway is ingesteld op statische route ring, kunt u geen punt-naar-site-VPN inschakelen. 
 
-Zie [een app integreren met een virtueel Azure-netwerk](web-sites-integrate-with-vnet.md#getting-started)voor meer informatie.
+Zie [een app integreren met een virtueel Azure-netwerk](web-sites-integrate-with-vnet.md)voor meer informatie.
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Waarom kan ik in mijn App Service Environment slechts één App Service plan maken, zelfs als ik twee werk rollen heb?
 

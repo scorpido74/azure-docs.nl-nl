@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647582"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanuit uw SMTP-account met Azure Logic Apps
 
@@ -49,7 +49,7 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
 1. Wanneer u hierom wordt gevraagd, geeft u de volgende verbindings gegevens op:
 
-   | Eigenschap | Verplicht | Beschrijving |
+   | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Verbindingsnaam** | Ja | Een naam voor de verbinding met de SMTP-server | 
    | **SMTP-server adres** | Ja | Het adres voor de SMTP-server | 
@@ -65,12 +65,10 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg de [referentie pagina](/connectors/smtpconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
+Voor meer technische informatie over deze connector, zoals triggers, acties en limieten, zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/smtpconnector/).
 
-## <a name="get-support"></a>Krijg ondersteuning
-
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

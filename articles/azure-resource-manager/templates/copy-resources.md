@@ -3,18 +3,18 @@ title: Meerdere exemplaren van bronnen implementeren
 description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manager sjabloon om het resource type meermaals te implementeren.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210825"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620222"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Resource iteratie in Azure Resource Manager sjablonen
 
 In dit artikel wordt beschreven hoe u meer dan één exemplaar van een resource in uw Azure Resource Manager-sjabloon maakt. Door het element **kopiëren** toe te voegen aan de sectie resources van uw sjabloon, kunt u het aantal resources dat moet worden geïmplementeerd, dynamisch instellen. U hoeft ook geen sjabloon syntaxis te herhalen.
 
-U kunt ook kopiëren met [Eigenschappen](copy-properties.md) en [variabelen](copy-variables.md)gebruiken.
+U kunt ook kopiëren met [Eigenschappen](copy-properties.md), [variabelen](copy-variables.md) en [uitvoer](copy-outputs.md)gebruiken.
 
 Zie [voor waarde-element](conditional-resource-deployment.md)als u wilt opgeven of een resource helemaal moet worden geïmplementeerd.
 
@@ -130,6 +130,8 @@ In het volgende voor beeld wordt één opslag account gemaakt voor elke naam die
   "outputs": {}
 }
 ```
+
+Als u waarden van de geïmplementeerde resources wilt retour neren, kunt u [in de sectie outputs de Kopieer versie](copy-outputs.md)gebruiken.
 
 ## <a name="serial-or-parallel"></a>Serieel of parallel
 
@@ -279,7 +281,10 @@ In de volgende voor beelden ziet u algemene scenario's voor het maken van meer d
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [zelf studie: meerdere resource-instanties maken met behulp van Resource Manager-sjablonen](template-tutorial-create-multiple-instances.md)als u een zelf studie wilt door lopen.
-* Zie [eigenschaps herhaling in azure Resource Manager sjablonen](copy-properties.md) en [variabele herhalingen in azure Resource Manager sjablonen](copy-variables.md)voor andere toepassingen van het element copy.
+* Zie voor andere toepassingen van het element copy:
+  * [Eigenschaps herhaling in Azure Resource Manager sjablonen](copy-properties.md)
+  * [Variabele herhaling in Azure Resource Manager sjablonen](copy-variables.md)
+  * [Uitvoer herhaling in Azure Resource Manager sjablonen](copy-outputs.md)
 * Zie [using Copy](linked-templates.md#using-copy)voor informatie over het gebruik van kopiëren met geneste sjablonen.
 * Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor meer informatie over de secties van een sjabloon.
 * Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van uw sjabloon.

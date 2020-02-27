@@ -4,22 +4,22 @@ description: Er zijn twee belang rijke back-upmogelijkheden voor SAP HANA op vir
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078605"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617419"
 ---
-# <a name="sap-hana-backup-based-on-storage-snapshots"></a>Back-up van SAP HANA op basis van opslagmomentopnamen
+# <a name="sap-hana-backup-based-on-storage-snapshots"></a>Back-up SAP HANA op basis van moment opnamen van opslag
 
 ## <a name="introduction"></a>Inleiding
 
@@ -51,10 +51,10 @@ De moment opname wordt op schijf weer gegeven in de SAP HANA data directory.
 
 Een moet ervoor zorgen dat de bestandssysteem consistentie ook wordt gegarandeerd voordat de moment opname van de opslag wordt uitgevoerd terwijl SAP HANA zich in de modus voor het voorbereiden van moment opnamen bevindt. Zie _SAP Hana consistentie van gegevens bij het maken van moment opnamen van opslag_ in de bijbehorende [back-upgids voor artikel voor SAP HANA op Azure virtual machines](sap-hana-backup-guide.md).
 
-Zodra de moment opname van de opslag is voltooid, is het van cruciaal belang om de moment opname van de SAP HANA te bevestigen. Er is een overeenkomende SQL-instructie om uit te voeren: MOMENT opname van back-upgegevens sluiten (Zie back [-up van back-UPGEGEVENS sluiten moment opname maken en herstellen)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm).
+Zodra de moment opname van de opslag is voltooid, is het van cruciaal belang om de moment opname van de SAP HANA te bevestigen. Er is een overeenkomende SQL-instructie die moet worden uitgevoerd: moment opname van back-upgegevens sluiten (Zie back [-UPGEGEVENS sluiten momentopname overzicht (back-up en herstel)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
-> Bevestig de HANA-moment opname. Als &quot;gevolg van het kopiëren van aan-&quot; schrijven kan SAP Hana extra schijf ruimte nodig hebben in de modus voor het voorbereiden van moment opnamen en het is niet mogelijk om nieuwe back-ups te starten totdat de SAP Hana moment opname is bevestigd.
+> Bevestig de HANA-moment opname. Als gevolg van het &quot;kopiëren en schrijven, is voor&quot; SAP HANA mogelijk extra schijf ruimte nodig in de modus voor het voorbereiden van moment opnamen en kunnen er geen nieuwe back-ups worden gestart totdat de moment opname van de SAP HANA is bevestigd.
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>Gegevens van HANA-VM'S via Azure Backup-Service
 
@@ -66,15 +66,15 @@ De Azure Backup-service biedt een optie om een back-up te maken van een virtuele
 
 Er zijn twee belang rijke aandachtspunten op basis van dit artikel:
 
-_&quot;Voor virtuele Linux-machines zijn alleen bestands consistente back-ups mogelijk, omdat Linux geen gelijkwaardig platform heeft voor VSS.&quot;_
+_&quot;voor virtuele Linux-machines zijn alleen bestands consistente back-ups mogelijk, omdat Linux geen gelijkwaardig platform heeft voor VSS.&quot;_
 
-_&quot;Toepassingen moeten hun eigen &quot;&quot; mechanisme voor het herstellen van de herstelde gegevens implementeren.&quot;_
+_&quot;toepassingen moeten hun eigen &quot;herstel&quot; mechanisme implementeren op de herstelde gegevens.&quot;_
 
 Daarom moet u er zeker van zijn dat SAP HANA zich in een consistente status op de schijf bevindt wanneer de back-up wordt gestart. Zie _SAP Hana moment opnamen_ die eerder in het document zijn beschreven. Maar er is een mogelijk probleem wanneer SAP HANA in deze modus voor het voorbereiden van moment opnamen blijft. Zie [een moment opname van een opslag maken (SAP Hana Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) voor meer informatie.
 
 Dat artikel staat voor:
 
-_&quot;Het wordt ten zeerste aanbevolen om een opslag momentopname zo snel mogelijk te bevestigen of te annuleren nadat deze is gemaakt. Terwijl de opslag momentopname wordt voor bereid of gemaakt, worden de relevante gegevens van de moment opname geblokkeerd. Terwijl de gegevens van de moment opname relevant blijven, kunnen er nog steeds wijzigingen in de Data Base worden aangebracht. Door dergelijke wijzigingen worden de relevante gegevens van de geblokkeerde moment opname niet gewijzigd. In plaats daarvan worden de wijzigingen geschreven naar posities in het gegevens gebied dat gescheiden is van de moment opname van de opslag. Wijzigingen worden ook naar het logboek geschreven. Hoe langer de gegevens die relevant zijn voor de moment opname, worden geblokkeerd, des te meer het gegevens volume kan groeien.&quot;_
+_&quot;het wordt aangeraden om een opslag momentopname zo snel mogelijk te bevestigen of te annuleren nadat deze is gemaakt. Terwijl de opslag momentopname wordt voor bereid of gemaakt, worden de relevante gegevens van de moment opname geblokkeerd. Terwijl de gegevens van de moment opname relevant blijven, kunnen er nog steeds wijzigingen in de Data Base worden aangebracht. Door dergelijke wijzigingen worden de relevante gegevens van de geblokkeerde moment opname niet gewijzigd. In plaats daarvan worden de wijzigingen geschreven naar posities in het gegevens gebied dat gescheiden is van de moment opname van de opslag. Wijzigingen worden ook naar het logboek geschreven. Hoe langer de gegevens die relevant zijn voor de moment opname, worden geblokkeerd, des te meer het gegevens volume kan groeien.&quot;_
 
 Azure Backup zorgt voor de consistentie van het bestands systeem via Azure VM-extensies. Deze uitbrei dingen zijn niet zelfstandig beschikbaar en werken alleen in combi natie met Azure Backup service. Het is echter nog steeds nodig om scripts te bieden voor het maken en verwijderen van een moment opname van een SAP HANA om de consistentie van apps te garanderen.
 
@@ -105,7 +105,7 @@ Het herstel proces van een toepassings consistente back-up die is gemaakt met Az
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>Het terugzetten van de HANA-licentie sleutel en de VM via Azure Backup Service
 
-De Azure Backup-service is ontworpen voor het maken van een nieuwe virtuele machine tijdens het herstellen. Er is momenteel geen plan voor een &quot;in-place&quot; herstel bewerking van een bestaande Azure-VM.
+De Azure Backup-service is ontworpen voor het maken van een nieuwe virtuele machine tijdens het herstellen. Er is momenteel geen plan om een &quot;in-place&quot; herstel van een bestaande Azure-VM uit te voeren.
 
 ![In deze afbeelding ziet u de optie herstellen van de Azure-service in de Azure Portal](media/sap-hana-backup-storage-snapshots/image019.png)
 

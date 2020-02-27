@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 10eacb9cc1ca4641396212ec9564308d7ef74c3a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: 384207f1afdb027ec90a71cbbfe5356d10d87319
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484669"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619517"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL prijs Categorieën
 
@@ -83,9 +83,9 @@ Als u bijvoorbeeld 1000 GB aan opslag hebt ingericht en het werkelijke gebruik m
 
 Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up maken
 
-De service maakt automatisch back-ups van uw server. De minimale Bewaar periode voor back-ups is zeven dagen. U kunt een Bewaar periode van Maxi maal 35 dagen instellen. De retentie kan op elk moment worden aangepast tijdens de levens duur van de server. U kunt kiezen tussen lokaal redundante en geografisch redundante back-ups. Geografisch redundante back-ups worden ook opgeslagen in het [geo-paard gebied](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) van de regio waar uw server is gemaakt. Deze redundantie biedt een beveiligings niveau in het geval van een ramp. U krijgt ook de mogelijkheid om uw server te herstellen naar een andere Azure-regio waarin de service beschikbaar is met geo-redundante back-ups. Het is niet mogelijk om te wisselen tussen de twee opties voor back-upopslag nadat de server is gemaakt.
+De service maakt automatisch back-ups van uw server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups. Meer informatie over back-ups vindt u in het [artikel concepten](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Resources omhoog/omlaag schalen
 
