@@ -1,18 +1,17 @@
 ---
 title: Limieten voor Azure Monitor-service | Microsoft Docs
 description: Een lijst met limieten in verschillende gebieden van Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 236e41bcbb7055c4fda55ecd535bb0eccf224bcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394235"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657908"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor-service limieten
 
@@ -40,6 +39,6 @@ In dit artikel vindt u een overzicht van de limieten op verschillende gebieden v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Prijzen voor Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
+- [Azure Monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/)
 - [Gebruik en geschatte kosten in Azure Monitor bewaken](platform/usage-estimated-costs.md)
-- [Het gebruik en de kosten van Application Insights beheren](app/pricing.md)
+- [Het gebruik en de kosten voor Application Insights beheren](app/pricing.md)

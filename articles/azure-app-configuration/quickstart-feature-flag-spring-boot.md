@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766443"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655749"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Snelstartgids: functie vlaggen toevoegen aan een Spring boot-app
 
@@ -21,9 +21,9 @@ De bron voor het beheer van Spring boot-onderdelen breidt het Framework uit met 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- Een ondersteunde [SDK voor Java Development Kit](https://docs.microsoft.com/java/azure/jdk) met versie 8.
-- [Apache Maven](https://maven.apache.org/download.cgi) -versie 3,0 of hoger.
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Een ondersteunde [SDK voor Java Development Kit](https://docs.microsoft.com/java/azure/jdk) met versie 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) -versie 3,0 of hoger.
 
 ## <a name="create-an-app-configuration-instance"></a>Een app-configuratie-exemplaar maken
 
@@ -42,14 +42,14 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 1. Blader naar <https://start.spring.io/>.
 
-2. Geef de volgende opties op:
+1. Geef de volgende opties op:
 
-   - Genereer een **Maven**-project met **Java**.
-   - Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
-   - Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.  In dit artikel wordt gebruikgemaakt van `com.example` en `demo`.
-   - Voeg de **lente** webafhankelijkheid toe.
+   * Genereer een **Maven**-project met **Java**.
+   * Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
+   * Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.  In dit artikel wordt gebruikgemaakt van `com.example` en `demo`.
+   * Voeg de **lente** webafhankelijkheid toe.
 
-3. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Als u hierom wordt gevraagd, moet u het project downloaden naar uw lokale computer.
+1. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Als u hierom wordt gevraagd, moet u het project downloaden naar uw lokale computer.
 
 ## <a name="add-feature-management"></a>Functie beheer toevoegen
 
@@ -57,20 +57,41 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 1. Open het bestand *pom. XML* in een tekst editor en voeg het volgende toe aan de lijst met `<dependencies>`.:
 
+### <a name="spring-cloud-11x"></a>Lente Cloud 1.1. x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Lente Cloud 1.2. x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
         }
     }
     ```
+
 1. Maak een nieuw Java-bestand met de naam *MessageProperties.java* in de pakketmap van uw app.
 
     ```java
@@ -131,7 +153,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     }
     ```
 
-1. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app. 
+1. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app.
 
     ```java
     package com.example.demo;
@@ -220,42 +242,42 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
     ```
 
-6. Maak een nieuwe map met de naam CSS onder `static` en in een nieuw CSS-bestand met de naam *Main. CSS*.
+1. Maak een nieuwe map met de naam CSS onder `static` en in een nieuw CSS-bestand met de naam *Main. CSS*.
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
-1. Maak een Spring boot-toepassing met maven en voer deze uit.
+1. Maak uw Spring Boot-app met Maven en voer deze uit.
 
     ```shell
     mvn clean package
@@ -268,7 +290,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 1. Selecteer in de portal voor app-configuratie **functie beheer**en wijzig de status van de **bèta** sleutel in **op**:
 
-    | Sleutel | Staat |
+    | Sleutel | Status |
     |---|---|
     | Bèta | Aan |
 
@@ -284,6 +306,6 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt om de functies in een Spring boot-web-app te beheren via de [beheer bibliotheken voor onderdelen](https://go.microsoft.com/fwlink/?linkid=2074664).
 
-- Meer informatie over [functie beheer](./concept-feature-management.md).
-- [Functie vlaggen beheren](./manage-feature-flags.md).
-- [Gebruik functie vlaggen in een lente boot core-app](./use-feature-flags-spring-boot.md).
+* Meer informatie over [functie beheer](./concept-feature-management.md).
+* [Functie vlaggen beheren](./manage-feature-flags.md).
+* [Gebruik functie vlaggen in een lente boot core-app](./use-feature-flags-spring-boot.md).

@@ -1,18 +1,17 @@
 ---
 title: Voor beelden van Log Analytics Smart Analytics | Microsoft Docs
 description: Voor beelden die gebruikmaken van slimme Analytics-functies in Log Analytics voor het uitvoeren van een analyse van gebruikers activiteit.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 03a4b8df24a0ab1dbe3cfabd3ccf207005b0e186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659829"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Voor beelden van Log Analytics Smart Analytics
 In dit artikel vindt u voor beelden van het gebruik van slimme Analytics-functies in Log Analytics voor het uitvoeren van analyse van gebruikers activiteit. U kunt deze voor beelden gebruiken om uw eigen toepassingen te analyseren die worden bewaakt door Application Insights of gebruik de concepten in deze query's voor vergelijk bare analyse van andere gegevens. 

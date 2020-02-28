@@ -1,18 +1,17 @@
 ---
 title: Optimaliseer uw System Center Operations Manager-omgeving met Azure Log Analytics | Microsoft Docs
 description: U kunt de System Center Operations Manager-statuscontrole-oplossing gebruiken om het risico en de status van uw omgevingen volgens een regel matig interval te evalueren.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8add2acb8f263c54f6014699f792380d256d9b0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402868"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663467"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimaliseer uw omgeving met de System Center Operations Manager-statuscontrole-oplossing (preview-versie)
 
@@ -57,8 +56,8 @@ De System Center Operations Manager-statuscontrole oplossing verzamelt gegevens 
 
 * Register
 * Windows Management Instrumentation (WMI)
-* Gebeurtenislogboek
-* Bestandsgegevens
+* Gebeurtenis logboek
+* Bestands gegevens
 * Rechtstreeks vanuit Operations Manager Power shell-en SQL-query's uit te werken vanaf een beheer server die u hebt opgegeven.  
 
 Gegevens worden verzameld op de beheer server en elke zeven dagen doorgestuurd naar Log Analytics.  
@@ -83,7 +82,7 @@ Het run as-account moet voldoen aan de volgende vereisten voordat u doorgaat:
 4. Selecteer op de pagina **algemene eigenschappen** de optie **Windows** in het **Run as-account type:** list.
 5. Typ een weergave naam in het tekstvak **weergave naam** en typ eventueel een beschrijving in het vak **Beschrijving** en klik vervolgens op **volgende**.
 6. Selecteer op de pagina **distributie beveiliging** de optie **veiliger**.
-7. Klik op **Maken**.  
+7. Klik op **Create**.  
 
 Nu het run as-account is gemaakt, moet het worden ingesteld op beheerser vers in de beheer groep en zijn gekoppeld aan een vooraf gedefinieerd run as-profiel zodat werk stromen met de referenties worden uitgevoerd.  
 
@@ -148,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 De management pack van de System Center Operations Manager-statuscontrole oplossing bevat een regel met de naam *micro soft System Center Operations Manager run Health Check Rule*. Deze regel is verantwoordelijk voor het uitvoeren van de status controle. Als u de regel wilt inschakelen en de frequentie wilt configureren, gebruikt u de onderstaande procedures.
 
-De regel voor het uitvoeren van de status controle van micro soft System Center Operations Manager is standaard uitgeschakeld. Als u de status controle wilt uitvoeren, moet u de regel inschakelen op een beheer server. Volg de volgende stappen.
+De regel voor het uitvoeren van de status controle van micro soft System Center Operations Manager is standaard uitgeschakeld. Als u de status controle wilt uitvoeren, moet u de regel inschakelen op een beheer server. Gebruik de volgende stappen.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>De regel voor een specifieke beheer server inschakelen
 
@@ -198,7 +197,7 @@ De weging voor elke aanbeveling wordt uitgedrukt als een percentage van de total
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u de Score 100% in elk focus gebied richten?
 
-Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
+Niet noodzakelijkerwijs. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
 
 Elke aanbeveling bevat richt lijnen over waarom het belang rijk is. Gebruik deze richt lijnen om te evalueren of implementatie van de aanbeveling geschikt is voor u, gezien de aard van uw IT-Services en de zakelijke behoeften van uw organisatie.
 

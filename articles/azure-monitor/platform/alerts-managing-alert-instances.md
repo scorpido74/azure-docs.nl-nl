@@ -1,57 +1,58 @@
 ---
 title: Waarschuwings instanties in Azure Monitor beheren
 description: Waarschuwings instanties in azure beheren
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: 955ed75f8253798e6970c02b0abf5794298ae6da
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555643"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667615"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Waarschuwings instanties met Unified Alerts beheren
+
 Met de [geïntegreerde ervaring voor waarschuwingen](https://aka.ms/azure-alerts-overview) in azure monitor kunt u al uw verschillende soorten waarschuwingen in azure zien. Dit omvat meerdere abonnementen, in één deel venster. In dit artikel wordt beschreven hoe u uw waarschuwings instanties kunt weer geven en hoe u specifieke waarschuwings instanties vindt voor het oplossen van problemen.
 
 > [!NOTE]
-   >  U hebt alleen toegang tot waarschuwingen die in de afgelopen 30 dagen zijn gegenereerd.
+> U hebt alleen toegang tot waarschuwingen die in de afgelopen 30 dagen zijn gegenereerd.
 
 ## <a name="go-to-the-alerts-page"></a>Ga naar de pagina waarschuwingen
 
 U kunt op de volgende manieren naar de pagina waarschuwingen gaan:
 
-   + Selecteer  > **waarschuwingen** **bewaken** in het [Azure Portal](https://portal.azure.com/).  
-     ![Screenshot van bewaken van waarschuwingen ](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+- Selecteer > **waarschuwingen** **bewaken** in het [Azure Portal](https://portal.azure.com/).  
+
+     ![Scherm afbeelding van monitor waarschuwingen](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + De context van een specifieke resource gebruiken. Open een resource, ga naar de sectie **bewaking** en kies **waarschuwingen**. De landings pagina wordt vooraf gefilterd op waarschuwingen voor die specifieke resource.
-   
+- De context van een specifieke resource gebruiken. Open een resource, ga naar de sectie **bewaking** en kies **waarschuwingen**. De landings pagina wordt vooraf gefilterd op waarschuwingen voor die specifieke resource.
+
      ![Scherm opname van waarschuwingen voor het controleren van resources](media/alerts-managing-alert-instances/alert-resource.JPG)
-    
-   + De context van een specifieke resource groep gebruiken. Open een resource groep, ga naar de sectie **bewaking** en kies **waarschuwingen**. De landings pagina wordt vooraf gefilterd op waarschuwingen voor die specifieke resource groep.    
-   
+
+- De context van een specifieke resource groep gebruiken. Open een resource groep, ga naar de sectie **bewaking** en kies **waarschuwingen**. De landings pagina wordt vooraf gefilterd op waarschuwingen voor die specifieke resource groep.    
+
      ![Scherm opname van bewakings waarschuwingen van resource groep](media/alerts-managing-alert-instances/alert-rg.JPG)
 
 ## <a name="find-alert-instances"></a>Waarschuwings instanties zoeken
 
 Op de pagina **overzicht van waarschuwingen** vindt u een overzicht van alle waarschuwings exemplaren in Azure. U kunt de samenvattings weergave wijzigen door **meerdere abonnementen** te selecteren (Maxi maal 5) of door te filteren op **resource groepen**, specifieke **resources**of **Peri Oden**. Selecteer **Totaal aantal waarschuwingen**of een van de ernst banden om naar de lijst weergave voor uw waarschuwingen te gaan.     
-   ![Screenshot van de pagina overzicht van waarschuwingen ](media/alerts-managing-alert-instances/alerts-summary.jpg)
+
+![Scherm afbeelding van de pagina overzicht van waarschuwingen](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
 Op de pagina **alle waarschuwingen** worden alle waarschuwings exemplaren in azure weer gegeven. Als u vanuit een waarschuwings melding naar de portal komt, kunt u de beschik bare filters gebruiken om te beperken op dat specifieke waarschuwings exemplaar.
 
 > [!NOTE]
->  Als u op de pagina bent gekomen door een van de ernst banden te selecteren, wordt de lijst vooraf gefilterd op basis van de ernst.
+> Als u op de pagina bent gekomen door een van de ernst banden te selecteren, wordt de lijst vooraf gefilterd op basis van de ernst.
 
 Naast de filters die beschikbaar zijn op de vorige pagina, kunt u ook filteren op basis van de bewakende service (bijvoorbeeld platform voor metrische gegevens), de bewaken van de voor waarde (geactiveerd of opgelost), Ernst, waarschuwings status (nieuw/bevestigd/gesloten) of de ID van de Smart-groep.
 
-   ![Scherm afbeelding van alle pagina waarschuwingen](media/alerts-managing-alert-instances/all-alerts.jpg)
+![Scherm afbeelding van alle pagina waarschuwingen](media/alerts-managing-alert-instances/all-alerts.jpg)
 
-   > [!NOTE]
-   >  Als u op de pagina bent gekomen door een van de ernst banden te selecteren, wordt de lijst vooraf gefilterd op basis van de ernst.
- 
+> [!NOTE]
+> Als u op de pagina bent gekomen door een van de ernst banden te selecteren, wordt de lijst vooraf gefilterd op basis van de ernst.
+
 Als u een waarschuwings instantie selecteert, wordt de pagina **waarschuwings Details** geopend, zodat u meer informatie over dat specifieke waarschuwings exemplaar kunt zien.   
-   ![Screenshot van de pagina waarschuwings Details ](media/alerts-managing-alert-instances/alert-details.jpg)  
+
+![Scherm afbeelding van de pagina met waarschuwings Details](media/alerts-managing-alert-instances/alert-details.jpg)  
 

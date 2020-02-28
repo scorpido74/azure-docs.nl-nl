@@ -1,19 +1,17 @@
 ---
 title: Snapshot Debugger voor .NET-apps in Azure App Service inschakelen | Microsoft Docs
 description: Snapshot Debugger voor .NET-apps in Azure App Service inschakelen
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f6eb6376075337edd7656e4bc83b5b7fddde479
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c23da585034e74d85be5a3c41b124f00408a0f4a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899897"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671423"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Snapshot Debugger voor .NET-apps in Azure App Service inschakelen
 
@@ -26,18 +24,18 @@ Volg de onderstaande instructies om Snapshot Debugger voor een app in te scha ke
 * [Azure Virtual Machines-en virtuele-machine schaal sets](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [On-premises virtuele of fysieke machines](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Als u een preview-versie van .NET Core gebruikt, volgt u de instructies voor het [inschakelen van Snapshot debugger eerst voor andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op te geven bij de toepassing. Daarna voert u de overige instructies hieronder uit. 
+Als u een preview-versie van .NET Core gebruikt, volgt u de instructies voor het [inschakelen van Snapshot debugger in andere omgevingen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) eerst om het [micro soft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-pakket op te nemen met de toepassing en voert u de overige instructies hieronder uit. 
 
 Application Insights Snapshot Debugger wordt vooraf geïnstalleerd als onderdeel van de App Services runtime, maar u moet deze inschakelen om moment opnamen voor uw App Service-app op te halen. Nadat u een app hebt geïmplementeerd, moet u, zelfs als u de SDK van Application Insights in de bron code hebt opgenomen, de volgende stappen volgen om de fout opsporing voor moment opnamen in te scha kelen.
 
 1. Ga naar het deel venster **app Services** in het Azure Portal.
 2. Navigeer naar **instellingen >** deel venster Application Insights.
 
-   ![App Insights inschakelen op App Services portal](./media/snapshot-debugger/applicationinsights-appservices.png)
+   ![App Insights inschakelen in App Services-portal](./media/snapshot-debugger/applicationinsights-appservices.png)
 
 3. Volg de instructies in het deel venster om een nieuwe resource te maken of selecteer een bestaande app Insights-resource om uw app te controleren. Zorg er ook voor dat beide Schakel opties voor Snapshot Debugger zijn **ingeschakeld**.
 
-   ![App Insights-site-uitbrei ding toevoegen][Enablement UI]
+   ![App Insights-site-extensie toevoegen][Enablement UI]
 
 4. Snapshot Debugger is nu ingeschakeld met behulp van een App Services app-instelling.
 

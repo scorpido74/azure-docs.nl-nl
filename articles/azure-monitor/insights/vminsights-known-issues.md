@@ -1,27 +1,26 @@
 ---
 title: Azure Monitor voor bekende problemen-machines (preview) | Microsoft Docs
 description: In dit artikel worden bekende problemen met Azure Monitor voor VM's beschreven, een oplossing in azure die de status, detectie van toepassings afhankelijkheden en prestatie bewaking van het Azure VM-besturings systeem combineert.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 711b3707d536c4858578817589670edf0f467b64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450676"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670726"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Bekende problemen met Azure Monitor voor virtuele machines (preview)
 
 In dit artikel worden bekende problemen met Azure Monitor voor VM's beschreven, een oplossing in azure die de status, detectie van toepassings onderdelen en prestatie bewaking van het Azure VM-besturings systeem combineert. 
 
-## <a name="health"></a>Gezondheid 
+## <a name="health"></a>Status 
 Hieronder vindt u bekende problemen met de huidige versie van de status functie:
 
-- Als een virtuele machine van Azure wordt verwijderd of verwijderd, wordt deze ergens anders weer gegeven in de lijst weergave van de virtuele machine. Bovendien op de status van een virtuele machine verwijderd of verwijderde klikt, wordt de **diagnostische gegevens over gezondheid** weergeven en start vervolgens een lus laden. Als u de naam van de verwijderde virtuele machine selecteert, wordt een deelvenster geopend met een bericht weergegeven dat de virtuele machine is verwijderd.
+- Als een virtuele machine van Azure wordt verwijderd of verwijderd, wordt deze ergens anders weer gegeven in de lijst weergave van de virtuele machine. Daarnaast wordt door het klikken op de status van een verwijderde of verwijderde virtuele machine de weer gave **status diagnostiek** geopend en wordt vervolgens een load-lus gestart. Als u de naam van de verwijderde virtuele machine selecteert, wordt een deelvenster geopend met een bericht weergegeven dat de virtuele machine is verwijderd.
 - Wijzigingen in de configuratie, zoals het bijwerken van een drempelwaarde, wordt er maximaal 30 minuten duren, zelfs als de portal of Workload Monitor API kan ze onmiddellijk bijwerken. 
 - De status diagnostiek werkt sneller dan de andere weer gaven. De informatie wordt mogelijk vertraagd wanneer u hiertussen schakelt. 
 - Voor Linux-Vm's is de titel van de pagina die de status criteria voor één VM-weer gave bevat, de gehele domein naam van de virtuele machine in plaats van de door de gebruiker gedefinieerde VM-naam. 

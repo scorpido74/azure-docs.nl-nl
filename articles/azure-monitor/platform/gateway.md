@@ -1,18 +1,17 @@
 ---
 title: Computers verbinden met behulp van de Log Analytics-gateway | Microsoft Docs
 description: Verbind uw apparaten en Operations Manager bewaakte computers met behulp van de Log Analytics-gateway om gegevens te verzenden naar de Azure Automation-en Log Analytics-service wanneer ze geen toegang tot internet hebben.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773294"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672290"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -70,9 +69,9 @@ Computers die zijn aangewezen voor het uitvoeren van de Log Analytics gateway, m
 De Log Analytics gateway is beschikbaar in de volgende talen:
 
 - Chinees (vereenvoudigd)
-- Chinees (traditioneel)
+- Chinees (Traditioneel)
 - Tsjechisch
-- Nederlands
+- Dutch
 - Nederlands
 - Frans
 - Duits
@@ -90,7 +89,7 @@ De Log Analytics gateway is beschikbaar in de volgende talen:
 
 De Log Analytics-gateway ondersteunt alleen Transport Layer Security (TLS) 1,0, 1,1 en 1,2.  Secure Sockets Layer (SSL) wordt niet ondersteund.  Configureer de gateway voor het gebruik van ten minste TLS 1,2 om te zorgen voor de beveiliging van gegevens die onderweg zijn naar Log Analytics. Oudere versies van TLS of SSL zijn kwetsbaar. Hoewel ze momenteel achterwaartse compatibiliteit toestaan, kunt u ze beter niet gebruiken.  
 
-Raadpleeg voor meer informatie, [verzenden van gegevens veilig gebruik TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Aantal ondersteunde agent-verbindingen
 
@@ -107,7 +106,7 @@ Down load de nieuwste versie van het installatie bestand voor de Log Analytics g
 
 Voer de volgende stappen uit om de Log Analytics-gateway op te halen uit de Azure Portal:
 
-1. Blader door de lijst met services en selecteer vervolgens **Log Analytics**. 
+1. Blader door de lijst met Services en selecteer vervolgens **log Analytics**. 
 1. Selecteer een werkruimte.
 1. Selecteer in de Blade van de werk ruimte onder **algemeen** **Quick Start**. 
 1. Selecteer **computers**onder **een gegevens bron kiezen om verbinding te maken met de werk ruimte**.
@@ -124,13 +123,13 @@ of
 
 Voer de volgende stappen uit als u een gateway wilt installeren met de wizard Setup. 
 
-1. Dubbelklik in de doelmap op **Log Analytics gateway.msi**.
+1. Dubbel klik in de doelmap op **log Analytics gateway. msi**.
 1. Op de pagina **Welkom** selecteert u **Volgende**.
 
    ![Scherm afbeelding van de welkomst pagina in de wizard gateway installeren](./media/gateway/gateway-wizard01.png)
 
 1. Selecteer op de pagina **gebruiksrecht overeenkomst** **de optie Ik ga akkoord met de voor waarden in de gebruiksrecht overeenkomst** om akkoord te gaan met de licentie voorwaarden voor micro soft-software en selecteer **volgende**.
-1. Op de **poort- en proxy-adres** pagina:
+1. Op de pagina **poort en proxy adres** :
 
    a. Voer het TCP-poort nummer in dat voor de gateway moet worden gebruikt. Setup gebruikt dit poort nummer voor het configureren van een binnenkomende regel op Windows Firewall.  De standaardwaarde is 8080.
       Het geldige bereik van het poort nummer is 1 tot en met 65535. Als de invoer niet in dit bereik valt, wordt een foutbericht weergegeven.
@@ -190,11 +189,11 @@ U kunt de gateway configureren voor maximale Beschik baarheid met behulp van Net
 
 ### <a name="microsoft-network-load-balancing"></a>Micro soft Network Load Balancing
 
-Zie voor informatie over het ontwerpen en implementeren van een Windows Server 2016 network load balancing-cluster, [Network load balancing](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). In de volgende stappen wordt beschreven hoe u een micro soft Network Load Balancing-cluster configureert.  
+Zie [Network Load Balancing](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)voor meer informatie over het ontwerpen en implementeren van een Windows Server 2016 Network Load Balancing-cluster. In de volgende stappen wordt beschreven hoe u een micro soft Network Load Balancing-cluster configureert.  
 
 1. Meld u aan de Windows-server die deel uitmaakt van het NLB-cluster met een Administrator-account.  
-2. Beheer van netwerktaakverdeling in Serverbeheer openen, klikt u op **extra**, en klik vervolgens op **beheer van netwerktaakverdeling**.
-3. Als u wilt verbinding maken met een Log Analytics gateway-server met de Microsoft Monitoring Agent is geïnstalleerd, met de rechtermuisknop op het IP-adres van het cluster en klik vervolgens op **Host aan Cluster toevoegen**. 
+2. Open beheer van netwerk taakverdeling in Serverbeheer, klik op **extra**en klik vervolgens op **beheer van netwerk**taakverdeling.
+3. Klik met de rechter muisknop op het IP-adres van het cluster en klik vervolgens op **host toevoegen aan cluster**om verbinding te maken met een log Analytics Gateway server waarop micro soft monitoring agent is geïnstalleerd. 
 
     ![Beheer van netwerk taakverdeling – host aan cluster toevoegen](./media/gateway/nlb02.png)
  
@@ -271,7 +270,7 @@ Nadat u de integratie met Log Analytics hebt voltooid, verwijdert u de wijziging
 
    ![Scherm opname van Operations Manager, met het proxyserver adres](./media/gateway/scom02.png)
 
-1. Selecteer **Finish**. Uw Operations Manager-beheergroep is nu geconfigureerd voor communicatie via de gatewayserver aan de Log Analytics-service.
+1. Selecteer **Voltooien**. Uw Operations Manager-beheergroep is nu geconfigureerd voor communicatie via de gatewayserver aan de Log Analytics-service.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Operations Manager configureren, waarbij specifieke agenten een proxy server gebruiken
 
@@ -283,9 +282,9 @@ Voor grote of complexe omgevingen wilt u mogelijk dat alleen specifieke servers 
 
 Specifieke servers of groepen configureren voor het gebruik van de Log Analytics-Gateway server: 
 
-1. Open de Operations Manager-console en selecteer de **ontwerpen** werkruimte.  
+1. Open de Operations Manager-console en selecteer de werk ruimte **ontwerpen** .  
 1. Selecteer in de werk ruimte ontwerpen de optie **regels**. 
-1. Selecteer de knop **bereik** op de werk balk Operations Manager. Als deze knop niet beschikbaar is, moet u ervoor zorgen dat u een object hebt geselecteerd, niet een map, in het deel venster **bewaking** . De **bereik Management Pack-objecten** in het dialoogvenster geeft een lijst van algemene gerichte klassen, groepen of objecten. 
+1. Selecteer de knop **bereik** op de werk balk Operations Manager. Als deze knop niet beschikbaar is, moet u ervoor zorgen dat u een object hebt geselecteerd, niet een map, in het deel venster **bewaking** . In het dialoog venster **bereik van Management Pack-objecten** wordt een lijst met veelgebruikte doel klassen, groepen of objecten weer gegeven. 
 1. In het veld **zoeken naar** voert u **Health Service** in en selecteert u deze in de lijst. Selecteer **OK**.  
 1. Zoek naar een regel voor de instellingen van de **Advisor-proxy**. 
 1. Selecteer op de Operations Manager werk balk **onderdrukkingen** en wijs vervolgens **de Rule\For een specifiek object van klasse: Health Service** en selecteer een object in de lijst.  Of maak een aangepaste groep die het Health Service-object bevat van de servers waarop u deze onderdrukking wilt Toep assen. Pas vervolgens de onderdrukking toe op uw aangepaste groep.
@@ -307,7 +306,7 @@ Raadpleeg de sectie [uw netwerk configureren](../../automation/automation-hybrid
 Als uw computer automatisch is geregistreerd als Hybrid Runbook Worker, bijvoorbeeld als de Updatebeheer oplossing is ingeschakeld voor een of meer virtuele machines, volgt u deze stappen:
 
 1. De gegevens van de Runtime-service-URL's toevoegen aan de lijst met toegestane Host op de Log Analytics-gateway. Bijvoorbeeld: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. De Log Analytics-gateway-service opnieuw starten met behulp van de volgende PowerShell-cmdlet: `Restart-Service OMSGatewayService`
+1. Start de Log Analytics Gateway Service opnieuw met behulp van de volgende Power shell-cmdlet: `Restart-Service OMSGatewayService`
 
 Als uw computer is toegevoegd aan Azure Automation met behulp van de Hybrid Runbook Worker registratie-cmdlet, volgt u deze stappen:
 

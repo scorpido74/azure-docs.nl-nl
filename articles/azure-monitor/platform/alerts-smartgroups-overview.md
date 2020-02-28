@@ -1,20 +1,18 @@
 ---
 title: Slimme groepen
 description: Slimme groepen zijn aggregaties van waarschuwingen waarmee u waarschuwings ruis kunt verminderen
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552362"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665490"
 ---
 # <a name="smart-groups"></a>Slimme groepen
+
 Een gemeen schappelijke uitdaging bij het omgaan met waarschuwingen is de ruis te verhelpen om erachter te komen wat de voor delen zijn: slimme groepen zijn bedoeld als oplossing voor dat probleem.  
 
 Slimme groepen worden automatisch gemaakt met behulp van machine learning algoritmen voor het combi neren van gerelateerde waarschuwingen die een enkel probleem vertegenwoordigen.  Wanneer een waarschuwing wordt gemaakt, wordt deze toegevoegd aan een nieuwe slimme groep of een bestaande slimme groep op basis van informatie zoals historische patronen, vergelijk bare eigenschappen en vergelijk bare structuur. Als% CPU op meerdere virtuele machines in een abonnement bijvoorbeeld tegelijk leidt tot veel afzonderlijke waarschuwingen, en als dergelijke waarschuwingen op elk moment in het verleden zijn opgetreden, zullen deze waarschuwingen waarschijnlijk worden gegroepeerd in één enkele slimme groep, waardoor een mogelijke algemene hoofd oorzaak. Dit betekent dat slimme groepen niet alleen kunnen worden gebruikt om de ruis te reduceren door gerelateerde waarschuwingen te beheren als één geaggregeerde eenheid, maar deze hand leidingen begeleiden de mogelijke algemene hoofd oorzaken voor hun waarschuwingen.
@@ -24,15 +22,16 @@ Op dit moment beschouwt het algoritme alleen waarschuwingen van dezelfde monitor
 U kunt de details van Smart groepen bekijken en de status instellen op dezelfde manier als met waarschuwingen. Elke waarschuwing is lid van slechts één slimme groep. 
 
 ## <a name="smart-group-state"></a>Status van slimme groep
+
 De status van een slimme groep is een vergelijkbaar concept met de waarschuwings status, waarmee u het oplossings proces op het niveau van een slimme groep kunt beheren. Net als bij de status van de waarschuwing, heeft het een **nieuwe** status, die kan worden gewijzigd in **bevestigd** of **gesloten**, wanneer een slimme groep wordt gemaakt.
 
 De volgende statussen van de Smart Group worden ondersteund.
 
-| Staat | Beschrijving |
+| Status | Beschrijving |
 |:---|:---|
 | Nieuw | Het probleem is zojuist gedetecteerd en nog niet gecontroleerd. |
 | Bevestigd | Een beheerder heeft de slimme groep gecontroleerd en ermee begonnen. |
-| wegen | Het probleem is opgelost. Nadat een Smart-groep is gesloten, kunt u deze opnieuw openen door deze te wijzigen in een andere status. |
+| Gesloten | Het probleem is opgelost. Nadat een Smart-groep is gesloten, kunt u deze opnieuw openen door deze te wijzigen in een andere status. |
 
 [Meer informatie over het wijzigen van de status van uw slimme groep.](https://aka.ms/managing-alert-smart-group-states)
 

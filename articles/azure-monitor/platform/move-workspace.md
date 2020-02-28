@@ -1,18 +1,17 @@
 ---
 title: Een Log Analytics werkruimte verplaatsen in Azure Monitor | Microsoft Docs
 description: Meer informatie over het verplaatsen van uw Log Analytics-werk ruimte naar een ander abonnement of een andere resource groep.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980090"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659489"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
@@ -82,7 +81,7 @@ Gebruik de volgende procedure om het Automation-account te ontkoppelen van de we
 
 ## <a name="move-your-workspace"></a>Uw werk ruimte verplaatsen
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 Gebruik de volgende procedure om uw werk ruimte te verplaatsen met behulp van de Azure Portal:
 
 1. Open het menu **log Analytics werk ruimten** en selecteer vervolgens uw werk ruimte.

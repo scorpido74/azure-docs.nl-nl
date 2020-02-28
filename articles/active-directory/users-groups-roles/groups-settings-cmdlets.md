@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984945"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656871"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
@@ -63,7 +63,7 @@ Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op a
    ```
    Met deze cmdlet-aanroep worden alle beschik bare sjablonen geretourneerd:
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ Met deze stappen maakt u instellingen op mapniveau, die van toepassing zijn op a
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. Maak vervolgens een nieuw instellingen object op basis van deze sjabloon:
   
@@ -171,7 +171,7 @@ Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemp
    ```
 2. Als u gast beleid wilt instellen voor groepen op het mapniveau, hebt u Group. Unified Temp late nodig
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. Maak vervolgens een nieuw instellingen object op basis van deze sjabloon:
   
@@ -262,7 +262,7 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
    ```
 2. Ophalen van het sjabloon object voor de groepen. Unified. Guest-sjabloon:
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. Maak een nieuw instellingen object op basis van de sjabloon:
    ```powershell
@@ -324,4 +324,4 @@ U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Act
 ## <a name="additional-reading"></a>Meer lezen
 
 * [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md) (Toegang tot resources beheren met Azure Active Directory-groepen)
-* [Uw on-premises identiteiten integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
+* [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

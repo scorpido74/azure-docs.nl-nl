@@ -1,18 +1,17 @@
 ---
 title: Optimaliseer uw SQL Server-omgeving met Azure Monitor | Microsoft Docs
 description: Met Azure Monitor kunt u de SQL Health Check-oplossing gebruiken om het risico en de status van uw omgevingen op een regel matig interval te evalueren.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168900"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662481"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimaliseer uw SQL-omgeving met de SQL Server Health Check-oplossing in Azure Monitor
 
@@ -79,7 +78,7 @@ Gebruik de volgende informatie om de Operations Manager uitvoeren als-account in
 
 1. Open de operations-console in Operations Manager en klik vervolgens op **beheer**.
 2. Klik onder **Run as-configuratie**op **profielen**en open **SQL-evaluatie uitvoeren als-profiel**.
-3. Klik op de pagina **Run As-accounts** op **Toevoegen**.
+3. Klik op de pagina **uitvoeren als-accounts** op **toevoegen**.
 4. Selecteer een Windows run as-account dat de referenties bevat die nodig zijn voor SQL Server, of klik op **Nieuw** om er een te maken.
 
    > [!NOTE]
@@ -146,7 +145,7 @@ De weging voor elke aanbeveling wordt uitgedrukt als een percentage van de total
 **Wijzigings-en configuratie beheer** : dit focus gebied bevat aanbevelingen voor het beveiligen van dagelijkse bewerkingen, zodat de wijzigingen geen negatieve invloed hebben op uw infra structuur, het bepalen van wijzigings beheer procedures en het bijhouden en controleren van systeem configuraties.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u de Score 100% in elk focus gebied richten?
-Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
+Niet noodzakelijkerwijs. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
 
 Elke aanbeveling bevat richt lijnen over waarom het belang rijk is. Gebruik deze richt lijnen om te evalueren of implementatie van de aanbeveling geschikt is voor u, gezien de aard van uw IT-Services en de zakelijke behoeften van uw organisatie.
 
@@ -215,7 +214,7 @@ De resultaten kunnen vervolgens worden geëxporteerd naar Excel voor verder onde
 
 *Is er een manier om te configureren hoe vaak de controle wordt uitgevoerd?*
 
-* Op dit moment niet.
+* Momenteel niet.
 
 *Als er een andere server wordt gedetecteerd nadat ik de SQL Health Check-oplossing heb toegevoegd, wordt deze gecontroleerd?*
 
@@ -243,7 +242,7 @@ De resultaten kunnen vervolgens worden geëxporteerd naar Excel voor verder onde
 
 *Is er een manier om te configureren wanneer gegevens worden verzameld?*
 
-* Op dit moment niet.
+* Momenteel niet.
 
 *Waarom moet ik een uitvoeren als-account configureren?*
 

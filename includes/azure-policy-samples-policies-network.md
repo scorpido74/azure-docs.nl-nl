@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 7927866adb5efbdc8eb55b9b5209603a3658ae2c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e38ac438a398ced31b2918768efeb453649de62e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495190"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780250"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Er moet een aangepast IPsec/IKE-beleid worden toegepast op alle gateway verbindingen van Azure Virtual Network](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Dit beleid zorgt ervoor dat alle gateway verbindingen van het virtuele netwerk van Azure gebruikmaken van een aangepast beleid voor de Internet Protocol Security (IPSec)/Internet Key Exchange (IKE). Ondersteunde algoritmen en belangrijkste sterke punten- https://aka.ms/AA62kb0 |Controle, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[App Service moet een service-eind punt van een virtueel netwerk gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Dit beleid controleert alle App Service die niet zijn geconfigureerd voor het gebruik van een service-eind punt voor een virtueel netwerk. |AuditIfNotExists, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)
 |[Azure VPN-gateways mogen geen standaard-SKU gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Dit beleid zorgt ervoor dat VPN-gateways geen gebruik maken van de SKU Basic. |Controle, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json)

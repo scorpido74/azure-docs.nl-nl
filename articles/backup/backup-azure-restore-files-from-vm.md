@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114320"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660917"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -206,7 +206,7 @@ Als u het script uitvoert op een computer met beperkte toegang, controleert u of
   - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (voor Azure China 21Vianet)
   - <https://pod01-rec2.geo-name.backup.windowsazure.us> (voor Azure Amerikaanse overheid)
   - <https://pod01-rec2.geo-name.backup.windowsazure.de> (voor Azure Duitsland)
-- uitgaande poort 3260
+- Uitgaande poorten 53 (DNS), 443, 3260
 
 > [!NOTE]
 >

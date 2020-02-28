@@ -3,17 +3,16 @@ title: Metrische gegevens van Windows-schaal sets verzamelen in Azure Monitor me
 description: De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een Windows-schaalset voor virtuele machines
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 24f83e4f6285d045e67bdaef431ebcff2345ef84
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364081"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663889"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
 
@@ -238,7 +237,7 @@ Sla beide bestanden op en sluit deze.
 
 Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShell:  
 
-1. Start PowerShell. 
+1. Start Power shell. 
 1. Meld u aan bij Azure met `Login-AzAccount`.
 1. U kunt uw lijst met abonnementen ophalen met behulp van `Get-AzSubscription`.
 1. Stel het abonnement in dat u maakt of werk de virtuele machine bij: 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623606"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661667"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Afschaffing van herstel na nood gevallen tussen door de klant beheerde sites (met VMM) met behulp van Azure Site Recovery
 
@@ -36,10 +36,8 @@ DR tussen sites die eigendom zijn van de klant die worden beheerd door System Ce
 
 Hieronder vindt u de alternatieven die de klant kan kiezen om ervoor te zorgen dat de DR-strategie niet wordt beïnvloed wanneer het scenario wordt afgeschaft. 
 
-- Optie 1 (aanbevolen): Kies ervoor om [Azure te gaan gebruiken als het Dr-doel voor vm's op Hyper-V-hosts](hyper-v-azure-tutorial.md).
+- Optie 1 (aanbevolen): Kies ervoor om [Azure te gaan gebruiken als het Dr-doel](hyper-v-vmm-azure-tutorial.md).
 
-    > [!IMPORTANT]
-    > Houd er rekening mee dat uw on-premises omgeving nog steeds SCVMMM heeft, maar u kunt ASR alleen configureren met verwijzingen naar de Hyper-V-hosts.
 
 - Optie 2: u kunt door gaan met site-naar-site-replicatie met behulp van de onderliggende [Hyper-V-replica oplossing](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), maar u kunt geen Dr-configuraties beheren met Azure site Recovery in de Azure Portal. 
 
@@ -50,15 +48,11 @@ Voer de volgende stappen uit als u ervoor kiest om te gaan met optie 1:
 
 1. [Schakel de beveiliging uit van alle virtuele machines die zijn gekoppeld aan de VMMs](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario). Gebruik de optie **replicatie en verwijderen uitschakelen** of voer de vermelde scripts uit om ervoor te zorgen dat de replicatie-instellingen op locatie worden opgeruimd. 
 
-2. [De registratie van alle VMM-servers ongedaan maken](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. [Verwijder de registratie van alle VMM-servers](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) van de site-naar-site-replicatie Configuratie.
 
 3. [Azure-resources voorbereiden](tutorial-prepare-azure-for-hyperv.md) voor het inschakelen van replicatie van uw virtuele machines.
 4. [On-premises Hyper-V-servers voorbereiden](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> Houd er rekening mee dat u de stappen onder VMM voorbereiden niet hoeft uit te voeren.
-
-5. [Replicatie voor de virtuele machines instellen](hyper-v-azure-tutorial.md)
+5. [Replicatie voor de virtuele machines in de VMM-Cloud instellen](hyper-v-vmm-azure-tutorial.md)
 6. Optioneel, maar aanbevolen: [een Dr-analyse uitvoeren](tutorial-dr-drill-azure.md)
 
 Als u ervoor kiest om te gaan met optie 2 van Hyper-V replica, voert u de volgende stappen uit:

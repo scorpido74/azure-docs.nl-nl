@@ -1,20 +1,18 @@
 ---
 title: Application Insights Telemetry in Visual Studio CodeLens | Microsoft Docs
 description: Krijg snel toegang tot uw Application Insights-aanvraag en uitzonderingstelemetrie met CodeLens in Visual Studio.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 4232431be221fca076a6bff9305093354f08c44d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dc334932bfd57bc81a58314ee68f02aeed520f41
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899324"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670947"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetry in Visual Studio CodeLens
 De methoden in de code van uw webtoepassing kunnen worden voorzien van aantekeningen met telemetrie over runtime-uitzonderingen en reactietijden voor aanvragen. Als u [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) installeert in uw toepassing, wordt de telemetrie weergegeven in Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx): het opmerkingengedeelte boven aan elke functie, waar u doorgaans handige informatie ziet, zoals vanaf hoeveel plaatsen er wordt verwezen naar de functie en wie de toepassing voor het laatst heeft bewerkt.
@@ -35,7 +33,7 @@ Zoek naar Application Insights Telemetry in de CodeLens-indicatoren van de openb
 > 
 
 ## <a name="exceptions-in-codelens"></a>Uitzonderingen in CodeLens
-![Nader te bepalen](./media/visual-studio-codelens/codelens-exceptions.png)
+![NOG TE BEPALEN](./media/visual-studio-codelens/codelens-exceptions.png)
 
 De CodeLens-uitzonderingsindicator geeft aan hoeveel uitzonderingen er zijn opgetreden in de afgelopen 24 uur. U ziet de 15 uitzonderingen die het meest zijn optreden in uw toepassing gedurende die periode tijdens het verwerken van de aanvraag van de methode.
 
@@ -57,7 +55,7 @@ Voor meer informatie klikt u op de CodeLens-uitzonderingsindicator:
 > 
 
 ## <a name="requests-in-codelens"></a>Aanvragen in CodeLens
-![Nader te bepalen](./media/visual-studio-codelens/codelens-requests.png)
+![NOG TE BEPALEN](./media/visual-studio-codelens/codelens-requests.png)
 
 De CodeLens-aanvraagindicator toont het aantal HTTP-aanvragen dat de afgelopen 24 uur is verwerkt door een methode, plus het percentage van deze aanvragen dat is mislukt.
 

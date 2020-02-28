@@ -1,18 +1,17 @@
 ---
 title: Een Azure-resource bewaken met Azure Monitor
 description: Meer informatie over het verzamelen en analyseren van gegevens voor een Azure-resource in Azure Monitor.
-ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 3081c0f8fa8450643a992c8e82840a44db263f76
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863975"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661861"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Quick Start: een Azure-resource bewaken met Azure Monitor
 [Azure monitor](../overview.md) begint met het verzamelen van gegevens uit Azure-resources op het moment dat ze worden gemaakt. Deze Snelstartgids bevat een kort overzicht van de gegevens die automatisch worden verzameld voor een resource en hoe u deze kunt weer geven in de Azure Portal voor een bepaalde resource. U kunt later een configuratie toevoegen voor het verzamelen van aanvullende gegevens en u kunt naar het Azure Monitor menu gaan om dezelfde hulpprogram ma's te gebruiken voor toegang tot gegevens die zijn verzameld voor alle resources in uw abonnement.

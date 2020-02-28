@@ -1,18 +1,17 @@
 ---
 title: Meer informatie over de werking van het hulp programma voor vrijwillige migratie voor Azure Monitor-waarschuwingen
 description: Meer informatie over de werking van het hulp programma voor het migreren van waarschuwingen en het oplossen van problemen.
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680678"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665269"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Meer informatie over de werking van het hulp programma voor migratie
 
@@ -93,7 +92,7 @@ Alle klassieke waarschuwingen op Cosmos DB metrieken kunnen worden gemigreerd, b
 - Waargenomen lees latentie
 - Waargenomen schrijf latentie
 - Service beschikbaarheid
-- Storage-capaciteit
+- Opslagcapaciteit
 - Vertraagde aanvragen
 - Totaal aantal aanvragen
 
@@ -165,7 +164,7 @@ Voor Storage-account services, zoals blob, tabel, bestand en wachtrij, worden de
 | Geslaagd | Metrische gegevens van trans acties met dimensies "ResponseType" = "geslaagd" | |
 | TotalBillableRequests| Transacties | |
 | TotalEgress | Uitgaand verkeer | |
-| TotalIngress | Binnenkomend | |
+| TotalIngress | Inkomend verkeer | |
 | TotalRequests | Transacties | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft.insights/components
@@ -227,7 +226,7 @@ Klassieke waarschuwings regels hebben een e-mail, webhook, een logische app en r
 > [!NOTE]
 > Klassieke waarschuwingen verzonden gelokaliseerde e-mail berichten op basis van de land instelling van de klassieke beheerder wanneer ze worden gebruikt voor het melden van klassieke beheerders rollen. Nieuwe e-mail meldingen worden verzonden via actie groepen en zijn alleen beschikbaar in het Engels.
 
-## <a name="rollout-phases"></a>Implementatiefasen
+## <a name="rollout-phases"></a>Implementatie fasen
 
 Het migratie programma wordt in fasen geïmplementeerd voor klanten die klassieke waarschuwings regels gebruiken. Abonnements eigenaren ontvangen een e-mail wanneer het abonnement gereed is om te worden gemigreerd met het hulp programma.
 

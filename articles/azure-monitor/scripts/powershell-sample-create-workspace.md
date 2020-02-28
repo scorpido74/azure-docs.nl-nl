@@ -1,18 +1,17 @@
 ---
 title: Voorbeeld van Azure PowerShell-script - Een Log Analytics-werkruimte maken | Microsoft Docs
 description: Voorbeeld van Azure PowerShell-script - Een Log Analytics-werkruimte maken
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: 242ba4d8487e25ae0d6c5fd7dc1525942deb2a64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc60be2364e80c288300d78cc5dd23eed4ea9e62
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363095"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658146"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Een Log Analytics-werkruimte maken met PowerShell
 
@@ -30,7 +29,7 @@ Met dit script kunt u snel aan de slag met een Azure Log Analytics-werkruimte. D
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt om een nieuwe Log Analytics-werkruimte voor uw abonnement te maken. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een nieuwe Log Analytics-werkruimte voor uw abonnement te maken. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

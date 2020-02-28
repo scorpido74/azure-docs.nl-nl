@@ -1,21 +1,19 @@
 ---
 title: Op logboek gebaseerde en vooraf geaggregeerde metrische gegevens in Azure-toepassing inzichten | Microsoft Docs
 description: Waarom het gebruik van op logboek gebaseerd versus vooraf geaggregeerde metrische gegevens in Azure-toepassing inzichten
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406596"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669757"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Vooraf samengevoegde metrische gegevens op basis van logboeken in Application Insights
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Op logboek gebaseerde en vooraf geaggregeerde metrische gegevens in Application Insights
 
 In dit artikel wordt uitgelegd wat het verschil is tussen ' traditionele ' Application Insights metrische gegevens die zijn gebaseerd op Logboeken en vooraf geaggregeerde metrische gegevens die momenteel beschikbaar zijn in de open bare preview. Beide soorten metrische gegevens zijn beschikbaar voor de gebruikers van Application Insights en elk een unieke waarde voor het controleren van de status van toepassingen, diagnostische gegevens en analyses. De ontwikkel aars die toepassingen maken, kunnen bepalen welk type metrische gegevens het meest geschikt zijn voor een bepaald scenario, afhankelijk van de grootte van de toepassing, het verwachte volume van de telemetrie en zakelijke vereisten voor de precisie van metrische gegevens en waarschuwingen.
 
@@ -63,7 +61,7 @@ Het verzamelen van dimensies met aangepaste metrische gegevens is standaard uitg
 
 Gebruik [Azure Monitor Metrics Explorer](../platform/metrics-getting-started.md) voor het uitzetten van grafieken van vooraf geaggregeerde en op Logboeken gebaseerde metrische gegevens en om Dash boards te ontwerpen met grafieken. Nadat u de gewenste Application Insights resource hebt geselecteerd, gebruikt u de naam ruimte kiezer om te scha kelen tussen Standard (preview) en metrische gegevens op basis van een logboek of selecteert u een aangepaste metrische naam ruimte:
 
-![Metrische naamruimte](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+![Metrische naam ruimte](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

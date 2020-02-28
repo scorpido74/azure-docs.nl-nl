@@ -2,18 +2,17 @@
 title: Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 description: Naslag informatie over metrische gegevens en logboeken voor metrische waarschuwingen in Azure Monitor
 author: harelbr
+ms.author: harelbr
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 14dc7b33a82b490f005d9684e4c9cb76bd947a7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9585e74170d21ad899224462b6e41e7e9bb75727
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364489"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664811"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -34,53 +33,53 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.ApiManagement/service | Ja| Nee | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
 |Micro soft. AppPlatform/lente |Nee| Ja|
 |Microsoft.Automation/automationAccounts | Ja| Nee | [Automation-accounts](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
-|Microsoft.Batch/batchAccounts | N/A| Nee | [Batch-accounts](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
+|Microsoft.Batch/batchAccounts | N.v.t.| Nee | [Batch-accounts](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
 |Microsoft.Cache/Redis|Ja| Nee |[Azure Cache voor Redis](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
 |Micro soft. ClassicStorage/Storage accounts/mmxclassic|Nee|Ja|
 |Micro soft. ClassicStorage/Storage accounts/mmxclassic/blobServices|Nee|Ja|
 |Micro soft. ClassicStorage/Storage accounts/mmxclassic/fileServices|Nee|Ja|
 |Micro soft. ClassicStorage/Storage accounts/mmxclassic/queueServices|Nee|Ja|
 |Micro soft. ClassicStorage/Storage accounts/mmxclassic/tableServices|Nee|Ja| |
-|Microsoft.CognitiveServices/accounts| N/A | Nee | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.CognitiveServices/accounts| N.v.t. | Nee | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines |Ja | Ja | [Virtuele machines](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets |N/A | Ja |[Virtuele-machineschaalsets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Compute/virtualMachineScaleSets |N.v.t. | Ja |[Virtuele-machineschaalsets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroups | Ja| Nee | [Container groepen](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
 |Microsoft.ContainerService/managedClusters | Ja | Nee | [Beheerde clusters](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft.DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | |
 |Microsoft.DataFactory/datafactories| Ja| Nee | [Gegevens fabrieken v1](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories |Ja | Nee |[Gegevens fabrieken v2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
 |Micro soft. DataShare/accounts |Nee| Ja|
-|Microsoft.DBforMySQL/servers |N/A| Nee |[DB voor MySQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/servers |N/A | Nee | [DB voor PostgreSQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft.Devices/IotHubs | N/A | Nee |[IoT Hub metrische gegevens](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
+|Microsoft.DBforMySQL/servers |N.v.t.| Nee |[DB voor MySQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers |N.v.t. | Nee | [DB voor PostgreSQL](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft.Devices/IotHubs | N.v.t. | Nee |[IoT Hub metrische gegevens](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
 |Microsoft.Devices/provisioningServices| Ja | Nee |[Metrische gegevens DPS](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)|
 |Micro soft. EventGrid/domeinen|Nee|Ja| |
 |Micro soft. EventGrid/topics |Ja | Nee |[Event Grid onderwerpen](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
 |Microsoft.EventHub/clusters |Ja| Nee |[Event Hubs clusters](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
 |Microsoft.EventHub/namespaces |Ja| Nee |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft.KeyVault/vaults| Nee |Nee |[Kluizen](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft.Logic/workflows |N/A | Nee |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft.Logic/workflows |N.v.t. | Nee |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces|Ja| Nee | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
-|Microsoft.Network/applicationGateways|N/A| Nee |  |
-|Microsoft.Network/dnsZones | N/A| Nee | [DNS-zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft.Network/expressRouteCircuits | N/A | Nee |[Express route-circuits](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft.Network/applicationGateways|N.v.t.| Nee |  |
+|Microsoft.Network/dnsZones | N.v.t.| Nee | [DNS-zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft.Network/expressRouteCircuits | N.v.t. | Nee |[Express route-circuits](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Micro soft. Network/loadBalancers (alleen voor standaard-Sku's)| Ja| Nee | [Load balancers](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
 |Micro soft. Network/natGateways|Nee|Ja|
 |Micro soft. Network/privateEndpoints|Nee|Ja|
 |Micro soft. Network/privateLinkServices|Nee|Ja|
-|Microsoft.Network/publicipaddresses |N/A | Nee |[Openbare IP-adressen](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.Network/publicipaddresses |N.v.t. | Nee |[Openbare IP-adressen](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.Network/trafficManagerProfiles | Ja | Nee | [Traffic Manager profielen](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.OperationalInsights/workspaces| Ja | Nee | [Log Analytics-werk ruimten](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Micro soft. relay/naam ruimten | Ja | Nee | [Relays](../../azure-monitor/platform/metrics-supported.md#microsoftrelaynamespaces)|
 |Micro soft. peering/peeringServices|Nee|Ja|
-|Micro soft. PowerBIDedicated/capaciteiten | N/A | Nee | [Beschikt](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
-|Microsoft.Search/searchServices |N/A|Nee | [Services zoeken](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
+|Micro soft. PowerBIDedicated/capaciteiten | N.v.t. | Nee | [Beschikt](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft.Search/searchServices |N.v.t.|Nee | [Services zoeken](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces |Ja| Nee |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
 |Microsoft.Sql/servers/elasticPools |   Nee | Ja |
 |Microsoft.Sql/servers/databases    | Nee | Ja |
 |Microsoft.Storage/storageAccounts |Ja | Nee | [Opslagaccounts](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | Ja| Nee | [BLOB Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Bestands Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [wachtrij Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) en [tabel Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft.StreamAnalytics/streamingjobs |N/A| Nee | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.StreamAnalytics/streamingjobs |N.v.t.| Nee | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |Micro soft. micro soft. VMWareCloudSimple/informatie |Ja|Nee |[CloudSimple Virtual Machines](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
 |Microsoft.Web/serverfarms | Ja | Nee | [App Service plannen](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | Ja | Nee | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) en [functions](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|

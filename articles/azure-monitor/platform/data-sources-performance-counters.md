@@ -1,18 +1,17 @@
 ---
 title: Prestatie meter items verzamelen en analyseren in Azure Monitor | Microsoft Docs
 description: Prestatie meter items worden verzameld door Azure Monitor om de prestaties van Windows-en Linux-agents te analyseren.  In dit artikel wordt beschreven hoe u een verzameling prestatie meter items configureert voor Windows-en Linux-agents, hoe deze worden opgeslagen in de werk ruimte en hoe u deze kunt analyseren in de Azure Portal.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363826"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670539"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
 Prestatie meter items in Windows en Linux bieden inzicht in de prestaties van hardwareonderdelen, besturings systemen en toepassingen.  Azure Monitor kunt prestatie meter items op regel matige intervallen verzamelen voor analyse van bijna realtime (NRT), naast het samen voegen van prestatie gegevens voor langere termijn analyse en rapportage.
@@ -55,7 +54,7 @@ Volg deze procedure om een nieuw Linux-prestatie meter item toe te voegen om te 
 1. Standaard worden alle wijzigingen in de configuratie automatisch doorgegeven naar alle agents.  Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.  Als u dit bestand hand matig op elke Linux-agent wilt wijzigen, schakelt u het selectie vakje de *onderstaande configuratie Toep assen op mijn Linux-machines* uit en volgt u de onderstaande instructies.
 2. Typ de naam van de teller in het tekstvak in de indeling *object (instantie) \counter*.  Wanneer u begint te typen, wordt er een overeenkomende lijst met algemene prestatie meter items weer gegeven.  U kunt een item in de lijst selecteren of een van uw eigen items typen.  
 3. Klik op **+** of druk op **Enter** om de teller toe te voegen aan de lijst met andere tellers voor het object.
-4. Alle tellers voor een object gebruiken hetzelfde **steekproef interval**.  De standaardinstelling is 10 seconden.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
+4. Alle tellers voor een object gebruiken hetzelfde **steekproef interval**.  De standaard waarde is 10 seconden.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
 5. Wanneer u klaar bent met het toevoegen van items, klikt u op de knop **Opslaan** boven aan het scherm om de configuratie op te slaan.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-prestatie meter items configureren in het configuratie bestand
@@ -77,7 +76,7 @@ De para meters in dit element worden in de volgende tabel beschreven.
 | Parameters | Beschrijving |
 |:--|:--|
 | naam van object\_ | Object naam voor de verzameling. |
-| instance\_regex |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` alle exemplaren. Als u metrische gegevens voor de processor wilt verzamelen voor alleen het \_totale exemplaar, kunt u `_Total`opgeven. Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)`. |
+| \_regex van exemplaar |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` alle exemplaren. Als u metrische gegevens voor de processor wilt verzamelen voor alleen het \_totale exemplaar, kunt u `_Total`opgeven. Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)`. |
 | \_naam van het item\_regex | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen, geeft u het volgende op: `.*`. Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven: `.+Swap.+` |
 | interval | De frequentie waarmee de tellers van het object worden verzameld. |
 
@@ -87,14 +86,14 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 | Objectnaam | Tellernaam |
 |:--|:--|
 | Logische schijf | % Vrije inodes |
-| Logische schijf | Percentage vrije ruimte |
+| Logische schijf | % vrije ruimte |
 | Logische schijf | % Gebruikte inodes |
 | Logische schijf | Percentage gebruikte ruimte |
-| Logische schijf | Bytes gelezen op schijf/sec |
-| Logische schijf | Schijf lezen per seconde |
+| Logische schijf | gelezen bytes per seconde |
+| Logische schijf | leesbewerkingen per seconde |
 | Logische schijf | Schijfoverdrachten per seconde |
-| Logische schijf | Bytes geschreven naar schijf/sec |
-| Logische schijf | Schijf schrijven per seconde |
+| Logische schijf | geschreven Bytes per seconde |
+| Logische schijf | schrijfbewerkingen per seconde |
 | Logische schijf | Beschikbare Megabytes |
 | Logische schijf | Logische schijf Bytes per seconde |
 | Geheugen | Percentage beschikbaar geheugen |
@@ -130,14 +129,14 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 | Processor | % I/o-wacht tijd |
 | Processor | Percentage tijd in Nice |
 | Processor | Percentage tijd in beschermde modus |
-| Processor | % Processortijd |
+| Processor | Percentage processortijd |
 | Processor | Percentage gebruikers tijd |
 | Systeem | Vrij fysiek geheugen |
 | Systeem | Vrije ruimte in wissel geheugen bestanden |
 | Systeem | Vrij virtueel geheugen |
 | Systeem | Processen |
 | Systeem | Grootte opgeslagen in Wissel bestanden |
-| Systeem | Actieve tijdsduur |
+| Systeem | Bedrijfstijd |
 | Systeem | Gebruikers |
 
 
@@ -200,7 +199,7 @@ Prestatie records hebben het type **perf** en hebben de eigenschappen in de volg
 ## <a name="log-queries-with-performance-records"></a>Query's vastleggen met prestatie records
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee prestatie records worden opgehaald.
 
-| Query | Beschrijving |
+| Query's uitvoeren | Beschrijving |
 |:--- |:--- |
 | Prestaties |Alle prestatie gegevens |
 | Perf &#124; waarbij computer = "bemijnen" |Alle prestatie gegevens van een bepaalde computer |
@@ -219,5 +218,5 @@ De volgende tabel bevat verschillende voor beelden van logboek query's waarmee p
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Verzamelen van prestatie meter items van Linux-toepassingen](data-sources-linux-applications.md) , waaronder de MySQL-en Apache HTTP-server.
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.  
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.  
 * Verzamelde gegevens exporteren naar [Power bi](powerbi.md) voor extra visualisaties en analyse.

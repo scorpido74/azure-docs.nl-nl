@@ -1,18 +1,17 @@
 ---
 title: Weer gaven in beheer oplossingen | Microsoft Docs
 description: 'Beheer oplossingen bevatten meestal een of meer weer gaven voor het visualiseren van gegevens.  In dit artikel wordt beschreven hoe u een weer gave exporteert die is gemaakt met de ontwerp functie voor weer gaven en deze opneemt in een beheer oplossing. '
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553899"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663042"
 ---
 # <a name="views-in-management-solutions-preview"></a>Weer gaven in beheer oplossingen (preview-versie)
 > [!NOTE]
@@ -87,7 +86,7 @@ Alle Log Analytics resources die in een resource manager-sjabloon zijn gedefinie
 
  De volgende tabel bevat de Log Analytics-API-versies voor weer gaven in oude en bijgewerkte werk ruimten: 
 
-| Werkruimte versie | API-versie | Query |
+| Werkruimte versie | API-versie | Query's uitvoeren |
 |:---|:---|:---|
 | V1 (verouderd)   | 2015-11-01-preview | Verouderde indeling.<br> Voor beeld: type = Event EventLevelName = error  |
 | v2 (bijgewerkt) | 2015-11-01-preview | Verouderde indeling.  Geconverteerd naar een bijgewerkte indeling bij de installatie.<br> Voor beeld: type = Event EventLevelName = error<br>Geconverteerd naar: gebeurtenis &#124; waarbij EventLevelName = = "Error"  |

@@ -3,17 +3,16 @@ title: Update van klassieke waarschuwingen & bewaking in Azure Monitor
 description: Beschrijving van het buiten gebruik stellen van klassieke bewakings Services en-functionaliteit, eerder weer gegeven in Azure Portal onder waarschuwingen (klassiek).
 author: yanivlavi
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659472"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Unified Alerting-& bewaking in Azure Monitor vervangt klassieke waarschuwingen & bewaking
 
@@ -76,14 +75,14 @@ Dit artikel wordt voortdurend bijgewerkt met koppelingen & Details over de nieuw
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Prijzen voor gemigreerde waarschuwings regels
 
-We implementeren een hulp programma voor migratie om u te helpen bij het migreren van uw Azure Monitor [klassieke waarschuwingen](../../azure-monitor/platform/alerts-classic.overview.md) naar de nieuwe waarschuwings ervaring. De gemigreerde waarschuwingsregels en bijbehorende gemigreerde actiegroepen (e-mail, webhook of LogicApp) blijven gratis. De functionaliteit waarover u beschikte met klassieke waarschuwingen, waaronder de mogelijkheid om de drempelwaarde, het aggregatietype en het detailniveau voor de aggregatie te bewerken, blijven gratis voor uw gemigreerde waarschuwingsregel. Als u de gemigreerde waarschuwingsregel echter bewerkt om een van de nieuwe functies, meldingen of actietypen van het waarschuwingsplatform te gebruiken, wordt een bijpassend bedrag in rekening gebracht. Zie voor meer informatie over de prijzen voor waarschuwings regels en meldingen [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
+We implementeren een hulp programma voor migratie om u te helpen bij het migreren van uw Azure Monitor [klassieke waarschuwingen](../../azure-monitor/platform/alerts-classic.overview.md) naar de nieuwe waarschuwings ervaring. De gemigreerde waarschuwings regels en de bijbehorende gemigreerde actie groepen (e-mail, webhook of LogicApp) blijven kosteloos. De functionaliteit die u had met klassieke waarschuwingen met inbegrip van de mogelijkheid om de drempel waarde, het aggregatie type te bewerken en de aggregatie granulatie blijft gratis beschikbaar voor uw gemigreerde waarschuwings regel. Als u echter de gemigreerde waarschuwings regel bewerkt om een van de nieuwe functies, meldingen of actie typen van het waarschuwings platform te gebruiken, worden er kosten in rekening gebracht. Zie voor meer informatie over de prijzen voor waarschuwings regels en meldingen [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
-Hieronder staan voorbeelden van situaties waarin u moet betalen voor het wijzigen van uw waarschuwingsregel:
+Hier volgen enkele voor beelden van gevallen waarin u kosten in rekening brengt voor uw waarschuwings regel:
 
-- Elke nieuwe (niet-gemigreerde) waarschuwingsregel die wordt gemaakt bovenop gratis regels op het nieuwe Azure Monitor-platform
-- Alle gegevens die worden gebruikt en behouden bovenop de gratis eenheden die bij Azure Monitor zijn inbegrepen
-- Alle webtests die door Application Insights worden uitgevoerd en uit meerdere tests bestaan
-- Alle aangepaste metrische gegevens die worden opgeslagen bovenop de gratis eenheden die bij Azure Monitor zijn begrepen
+- Er is een nieuwe (niet-gemigreerde) waarschuwings regel gemaakt die groter is dan de beschik bare eenheden op het nieuwe Azure Monitor-platform
+- Alle gegevens die zijn opgenomen en bewaard buiten de beschik bare eenheden van Azure Monitor
+- Alle webtests met meerdere tests die zijn uitgevoerd door Application Insights
+- Aangepaste metrische gegevens die zijn opgeslagen buiten de beschik bare eenheden die zijn opgenomen in Azure Monitor
 - Alle gemigreerde waarschuwings regels die worden bewerkt om nieuwere metrische waarschuwings functies te gebruiken, zoals frequentie, meerdere resources/dimensies, [Dynamische drempel waarden](alerts-dynamic-thresholds.md), het wijzigen van de bron/het signaal, enzovoort.
 - Gemigreerde actie groepen die zijn bewerkt voor het gebruik van nieuwere meldingen of actie typen zoals SMS, spraak oproep en/of ITSM-integratie.
 

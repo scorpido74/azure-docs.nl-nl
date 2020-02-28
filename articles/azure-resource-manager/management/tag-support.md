@@ -2,13 +2,13 @@
 title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207924"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657570"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -116,8 +116,8 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. migrate](#microsoftmigrate)
 > - [Micro soft. MixedReality](#microsoftmixedreality)
 > - [Micro soft. NetApp](#microsoftnetapp)
-> - [Micro soft. notebooks](#microsoftnotebooks)
 > - [Micro soft. Network](#microsoftnetwork)
+> - [Micro soft. notebooks](#microsoftnotebooks)
 > - [Micro soft. notification hubs](#microsoftnotificationhubs)
 > - [Micro soft. ObjectStore](#microsoftobjectstore)
 > - [Micro soft. OffAzure](#microsoftoffazure)
@@ -136,7 +136,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. ResourceHealth](#microsoftresourcehealth)
 > - [Micro soft. resources](#microsoftresources)
 > - [Micro soft. SaaS](#microsoftsaas)
-> - [Micro soft. scheduler](#microsoftscheduler)
 > - [Micro soft. Search](#microsoftsearch)
 > - [Micro soft. Security](#microsoftsecurity)
 > - [Micro soft. SecurityGraph](#microsoftsecuritygraph)
@@ -292,6 +291,9 @@ Ga naar de naam ruimte van een resource provider:
 > | automationAccounts | Ja | Ja |
 > | automationAccounts/configuraties | Ja | Ja |
 > | automationAccounts/Jobs | Nee | Nee |
+> | automationAccounts / privateEndpointConnectionProxies | Nee | Nee |
+> | automationAccounts / privateEndpointConnections | Nee | Nee |
+> | automationAccounts / privateLinkResources | Nee | Nee |
 > | automationAccounts/runbooks | Ja | Ja |
 > | automationAccounts / softwareUpdateConfigurations | Nee | Nee |
 > | automationAccounts/webhooks | Nee | Nee |
@@ -430,7 +432,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingRoleAssignments | Nee | Nee |
 > | billingRoleDefinitions | Nee | Nee |
 > | createBillingRoleAssignment | Nee | Nee |
-> | afdeling | Nee | Nee |
+> | Afdeling | Nee | Nee |
 > | enrollmentAccounts | Nee | Nee |
 > | factureer | Nee | Nee |
 > | Making | Nee | Nee |
@@ -711,6 +713,7 @@ Ga naar de naam ruimte van een resource provider:
 > | registers/importImage | Nee | Nee |
 > | registers/privateEndpointConnectionProxies | Nee | Nee |
 > | registers/privateEndpointConnectionProxies/valideren | Nee | Nee |
+> | registers/privateEndpointConnections | Nee | Nee |
 > | registers/privateLinkResources | Nee | Nee |
 > | registers/queueBuild | Nee | Nee |
 > | registers/regenerateCredential | Nee | Nee |
@@ -757,7 +760,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Afdeling | Nee | Nee |
 > | Dimensies | Nee | Nee |
 > | EnrollmentAccounts | Nee | Nee |
-> | dump | Nee | Nee |
+> | Dump | Nee | Nee |
 > | ExternalBillingAccounts | Nee | Nee |
 > | ExternalBillingAccounts/waarschuwingen | Nee | Nee |
 > | ExternalBillingAccounts/dimensies | Nee | Nee |
@@ -1052,6 +1055,7 @@ Ga naar de naam ruimte van een resource provider:
 > | partnerNamespaces/eventChannels | Nee | Nee |
 > | partnerRegistrations | Ja | Ja |
 > | partnerTopics | Ja | Ja |
+> | partnerTopics / eventSubscriptions | Nee | Nee |
 > | systemTopics | Ja | Ja |
 > | systemTopics / eventSubscriptions | Nee | Nee |
 > | onderwerp | Ja | Ja |
@@ -1288,6 +1292,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | getEntities | Nee | Nee |
 > | managementGroups | Nee | Nee |
+> | managementGroups/instellingen | Nee | Nee |
 > | resources | Nee | Nee |
 > | startTenantBackfill | Nee | Nee |
 > | tenantBackfillStatus | Nee | Nee |
@@ -1395,15 +1400,7 @@ Ga naar de naam ruimte van een resource provider:
 > | netAppAccounts | Ja | Nee |
 > | netAppAccounts / capacityPools | Ja | Nee |
 > | netAppAccounts/capacityPools/volumes | Ja | Nee |
-> | netAppAccounts/capacityPools/volumes/mountTargets | Ja | Nee |
-> | netAppAccounts/capacityPools/volumes/moment opnamen | Ja | Nee |
-
-## <a name="microsoftnotebooks"></a>Micro soft. notebooks
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | NotebookProxies | Nee | Nee |
+> | netAppAccounts/capacityPools/volumes/moment opnamen | Nee | Nee |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1495,6 +1492,13 @@ Ga naar de naam ruimte van een resource provider:
 > Voor de Azure front-deur service kunt u Tags Toep assen bij het maken van de resource, maar het bijwerken of toevoegen van labels wordt momenteel niet ondersteund.
 
 
+## <a name="microsoftnotebooks"></a>Micro soft. notebooks
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | Nee | Nee |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1556,6 +1560,7 @@ Ga naar de naam ruimte van een resource provider:
 > | legacyPeerings | Nee | Nee |
 > | peerAsns | Nee | Nee |
 > | Peerings | Ja | Ja |
+> | peeringServiceCountries | Nee | Nee |
 > | peeringServiceProviders | Nee | Nee |
 > | peeringServices | Ja | Ja |
 
@@ -1681,13 +1686,6 @@ Ga naar de naam ruimte van een resource provider:
 > | toepassingen | Ja | Ja |
 > | saasresources | Nee | Nee |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | jobcollections | Ja | Ja |
-
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1756,7 +1754,7 @@ Ga naar de naam ruimte van een resource provider:
 > | aggregaties | Nee | Nee |
 > | alertRules | Nee | Nee |
 > | alertRuleTemplates | Nee | Nee |
-> | wijzer | Nee | Nee |
+> | Wijzer | Nee | Nee |
 > | meldingen | Nee | Nee |
 > | dataConnectors | Nee | Nee |
 > | dataConnectorsCheckRequirements | Nee | Nee |
@@ -2026,6 +2024,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | apparaten | Ja | Ja |
+> | registeredSubscriptions | Nee | Nee |
 > | crediteur | Nee | Nee |
 > | leveranciers/sku's | Nee | Nee |
 > | leveranciers/vnfs | Nee | Nee |
@@ -2047,7 +2046,7 @@ Ga naar de naam ruimte van een resource provider:
 > | apiManagementAccounts / connectionAcls | Nee | Nee |
 > | apiManagementAccounts/verbindingen | Nee | Nee |
 > | billingMeters | Nee | Nee |
-> | Bewijzen | Ja | Ja |
+> | bewijzen | Ja | Ja |
 > | connectionGateways | Ja | Ja |
 > | inbel | Ja | Ja |
 > | customApis | Ja | Ja |

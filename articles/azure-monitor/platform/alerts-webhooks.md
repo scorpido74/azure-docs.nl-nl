@@ -2,20 +2,19 @@
 title: Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
 description: Meer informatie over het omleiden van Azure-metrische waarschuwingen naar andere, niet-Azure-systemen.
 author: harelbr
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: fd4bf2d404a7152da04e72d323f463c18167f5bf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705510"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665065"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
+
 U kunt webhooks gebruiken om een Azure-waarschuwings melding naar andere systemen te routeren voor nabewerkingen of aangepaste acties. U kunt een webhook gebruiken voor een waarschuwing om deze te routeren naar services die SMS-berichten verzenden, fouten in het logboek registreren, een team informeren via chat-of bericht Services of voor verschillende andere acties. 
 
 In dit artikel wordt beschreven hoe u een webhook instelt voor een waarschuwing voor een Azure-metriek. U ziet ook hoe de payload voor het HTTP POST-bericht op een webhook eruit ziet. Zie [een webhook aanroepen in een Azure-activiteiten logboek waarschuwing](alerts-log-webhook.md)voor meer informatie over de installatie en het schema voor een Azure-activiteiten logboek waarschuwing (waarschuwing voor gebeurtenissen).
@@ -75,7 +74,7 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 | context |J | |De context van de waarschuwing. |
 | tijdstempel |J | |Het tijdstip waarop de waarschuwing is geactiveerd. |
 | id |J | |Elke waarschuwings regel heeft een unieke ID. |
-| name |J | |De naam van de waarschuwing. |
+| naam |J | |De naam van de waarschuwing. |
 | description |J | |Een beschrijving van de waarschuwing. |
 | conditionType |J |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
 | condition |J | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |

@@ -3,17 +3,16 @@ title: Aangepaste metrische gegevens in Azure Monitor
 description: Meer informatie over aangepaste metrische gegevens in Azure Monitor en hoe deze worden gemodelleerd.
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669167"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662345"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Aangepaste metrische gegevens in Azure Monitor
 
@@ -60,7 +59,7 @@ Elk gegevens punt dat naar Azure Monitor wordt verzonden, moet worden gemarkeerd
 ### <a name="namespace"></a>Naamruimte
 Naam ruimten zijn een manier om Vergelijk bare metrische gegevens te categoriseren of groeperen. Met behulp van naam ruimten kunt u isolatie verkrijgen tussen groepen metrische gegevens die verschillende inzichten of prestatie-indica toren kunnen verzamelen. U kunt bijvoorbeeld een naam ruimte hebben met de naam **contosomemorymetrics** die geheugen gebruik houdt van metrische gegevens die uw app profiel. Een andere naam ruimte met de naam **contosoapptransaction** kan alle metrische gegevens over gebruikers transacties in uw toepassing bijhouden.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 **Naam** is de naam van de metrische gegevens die worden gerapporteerd. Normaal gesp roken is de naam beschrijvend genoeg om te helpen bij het identificeren van wat wordt gemeten. Een voor beeld hiervan is een metrische waarde die het aantal door het geheugen gebruikte bytes op een bepaalde VM meet. Dit kan een metrische naam zijn, zoals het **geheugen bytes dat in gebruik**is.
 
 ### <a name="dimension-keys"></a>Dimensie sleutels
@@ -181,7 +180,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 | **Europa** | |
 |Europa - noord    | https:\/-northeurope.monitoring.azure.com/ |
 |Europa -west     | https:\/-westeurope.monitoring.azure.com/ |
-|UK - zuid | https:\/-uksouth.monitoring.azure.com
+|Verenigd Koninkrijk Zuid | https:\/-uksouth.monitoring.azure.com
 |Frankrijk - centraal | https:\/-francecentral.monitoring.azure.com |
 | **Africa** | |
 |Zuid-Afrika - noord | https:\/-southafricanorth.monitoring.azure.com
@@ -197,7 +196,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 ## <a name="quotas-and-limits"></a>Quota en limieten
 Azure Monitor de volgende gebruiks limieten opleggen voor aangepaste metrische gegevens:
 
-|Category|Limiet|
+|Categorie|Limiet|
 |---|---|
 |Actieve tijd reeks/abonnementen/regio|50,000|
 |Dimensie sleutels per metriek|10|
@@ -211,6 +210,6 @@ Aangepaste metrische gegevens van verschillende services gebruiken:
  - [Schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassiek)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuele Linux-machine met behulp van de Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST-API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klassieke Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

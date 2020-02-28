@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4a7ab395715d45894d355a35da81f6c2e58861ec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5202cc69fc9deb73342c8cc541d205525bd65c63
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495293"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780327"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
-|---|---|---|---|
+|---|---|---|---|---|
 |[\[preview\]: \[AKS-engine\] geen geprivilegieerde containers in Kubernetes-cluster toestaan](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Dit beleid staat het maken van geprivilegieerde containers in een Kubernetes-cluster niet toe. Ga naar https://aka.ms/kubepolicydocvoor instructies over het gebruik van dit beleid. |enforceOPAConstraint, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege_EnforceOPAConstraint.json)
 |[\[preview-\]: \[AKS-engine\] HTTPS-inkomend verkeer in Kubernetes-cluster af te dwingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Dit beleid afdwingt HTTPS-inkomend verkeer in een Kubernetes-cluster. Ga naar https://aka.ms/kubepolicydocvoor instructies over het gebruik van dit beleid. |enforceOPAConstraint, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly_EnforceOPAConstraint.json)
 |[\[preview\]: \[AKS-engine\] interne load balancers afdwingen in Kubernetes-cluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3fc4dc25-5baf-40d8-9b05-7fe74c1bc64e) |Met dit beleid worden load balancers afgedwongen geen open bare IP-adressen in een Kubernetes-cluster. Ga naar https://aka.ms/kubepolicydocvoor instructies over het gebruik van dit beleid. |enforceOPAConstraint, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/LoadbalancerNoPublicIPs_EnforceOPAConstraint.json)

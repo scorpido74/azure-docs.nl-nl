@@ -1,18 +1,14 @@
 ---
 title: Open tellingen bijhouden met Azure-toepassing inzichten | Microsoft Docs
 description: Biedt instructies voor het integreren van opentellingen met de lokale doorstuur server en Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddb8dfbf14f2c75e4d16693076e56a711d8861ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432548"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669978"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Gedistribueerde traceringen van Go verzamelen (preview-versie)
 
@@ -28,7 +24,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource"></a>Application Insights resource maken
 
@@ -49,7 +45,7 @@ Eerst moet u een Application Insights resource maken waarmee een instrumentatie 
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resourcegroep waarin App Insights-gegevens worden gehost |
    | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
-2. Klik op **Maken**.
+2. Klik op **Create**.
 
 ## <a name="configure-local-forwarder"></a>Lokale doorstuur server configureren
 

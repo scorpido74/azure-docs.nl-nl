@@ -1,19 +1,15 @@
 ---
 title: 'Snelstartgids: websites controleren met Azure Monitor Application Insights'
 description: Biedt Snelstartgids-instructies voor het instellen van client/browser-side website bewaking met Azure Monitor Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963616"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670845"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Quick Start: uw website bewaken met Azure Monitor Application Insights
 
@@ -30,7 +26,7 @@ Met Azure Monitor Application Insights kunt u eenvoudig de beschikbaarheid, de p
 
 Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke toepassing met een internetverbinding, ongeacht of deze on-premises wordt uitgevoerd of in de cloud. Gebruik de volgende stappen om deze gegevens te bekijken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Een resource maken** > **Hulpprogramma's voor beheer** > **Application Insights**.
 
    > [!NOTE]
@@ -44,7 +40,7 @@ Met Application Insights kunnen telemetriegegevens worden verzameld vanuit elke 
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resource groep om Application Insights gegevens te hosten. Maak een nieuwe resourcegroep of gebruik een bestaande. |
    | **Locatie** | VS - oost | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost |
 
-3. Klik op **Maken**.
+3. Klik op **Create**.
 
 ## <a name="create-an-html-file"></a>Een HTML-bestand maken
 

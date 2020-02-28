@@ -1,18 +1,14 @@
 ---
 title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft Docs
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/25/2019
-ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819556"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663910"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren uit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
@@ -158,7 +154,7 @@ De continue export wordt opnieuw gestart.
 
 Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop-clusters in de Cloud. HDInsight biedt diverse technologieën voor het beheren en analyseren van big data, en u kunt deze gebruiken voor het verwerken van gegevens die zijn geëxporteerd uit Application Insights.
 
-## <a name="q--a"></a>Vragen en antwoorden
+## <a name="q--a"></a>Q & A
 * *Maar het enige wat ik wil, is een eenmalige down load van een grafiek.*  
 
     Ja, dat kunt u doen. Klik boven aan het tabblad op **gegevens exporteren**.
@@ -183,7 +179,7 @@ Overweeg op grotere schaal [HDInsight](https://azure.microsoft.com/services/hdin
     Bewerk de export en open het tabblad uitvoer bestemming. Wijzig dezelfde opslag als voorheen en klik op OK om te bevestigen. Het exporteren wordt opnieuw gestart. Als de wijziging in de afgelopen paar dagen valt, gaan er geen gegevens verloren.
 * *Kan ik het exporteren onderbreken?*
 
-    Ja. Klik op uitschakelen.
+    Ja. Klik op Uitschakelen.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 

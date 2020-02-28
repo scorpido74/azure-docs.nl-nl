@@ -1,18 +1,17 @@
 ---
 title: Grafieken en diagrammen maken op basis van Azure Monitor-logboek query's | Microsoft Docs
 description: Beschrijft verschillende visualisaties in Azure Monitor om uw logboek gegevens op verschillende manieren weer te geven.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: ca60ed68277486ca5ed7d7d90ad72506a4844936
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398087"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670318"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Grafieken en diagrammen maken op basis van Azure Monitor-logboek query's
 
@@ -38,7 +37,7 @@ Standaard worden resultaten weer gegeven als een tabel:
 
 Als u een betere weer gave wilt, selecteert u **grafiek**en kiest u de optie **cirkel** om de resultaten te visualiseren:
 
-![Cirkeldiagram](media/charts/charts-and-diagrams-pie.png)
+![Cirkel diagram](media/charts/charts-and-diagrams-pie.png)
 
 
 ## <a name="timecharts"></a>Timecharts

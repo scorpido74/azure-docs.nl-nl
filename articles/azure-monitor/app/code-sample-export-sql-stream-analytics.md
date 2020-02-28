@@ -1,18 +1,14 @@
 ---
 title: Exporteren naar SQL vanuit Azure-toepassing Insights | Microsoft Docs
 description: Application Insights gegevens doorlopend naar SQL exporteren met behulp van Stream Analytics.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2017
-ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678272"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663672"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met behulp van Stream Analytics
 In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar een Azure-SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -26,7 +22,7 @@ We beginnen met de veronderstelling dat u de app die u wilt bewaken al hebt.
 In dit voor beeld gebruiken we de pagina weergave gegevens, maar hetzelfde patroon kan eenvoudig worden uitgebreid naar andere gegevens typen, zoals aangepaste gebeurtenissen en uitzonde ringen. 
 
 ## <a name="add-application-insights-to-your-application"></a>Application Insights toevoegen aan uw toepassing
-Aan de slag gaan:
+Aan de slag:
 
 1. [Application Insights instellen voor uw webpagina's](../../azure-monitor/app/javascript.md). 
    
@@ -76,7 +72,7 @@ Doorlopend exporteren voert altijd gegevens uit naar een Azure Storage-account, 
 
 De gebeurtenissen worden geschreven naar BLOB-bestanden in JSON-indeling. Elk bestand kan een of meer gebeurtenissen bevatten. Daarom willen we de gegevens van de gebeurtenis lezen en de gewenste velden filteren. Er zijn allerlei dingen die we kunnen doen met de gegevens, maar het plan is nu het gebruik van Stream Analytics om de gegevens naar een SQL database te verplaatsen. Zo kunt u heel eenvoudig veel interessante query's uitvoeren.
 
-## <a name="create-an-azure-sql-database"></a>Een Azure SQL Database maken
+## <a name="create-an-azure-sql-database"></a>Een Azure SQL-database maken
 Nadat u het abonnement in [Azure Portal][portal]hebt gemaakt, maakt u de data base (en een nieuwe server, tenzij u er al een hebt) waarnaar u de gegevens gaat schrijven.
 
 ![Nieuwe, gegevens, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -163,7 +159,7 @@ Het voor voegsel van het pad geeft aan hoe Stream Analytics de invoer bestanden 
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
-In dit voor beeld:
+In dit voorbeeld:
 
 * `webapplication27` is de naam van de Application Insights resource, **in kleine letters**. 
 * `1234...` is de instrumentatie sleutel van de Application Insights resource **waarvoor streepjes zijn verwijderd**. 

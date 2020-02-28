@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure-status | Microsoft Docs
 description: Een globale weer gave van de status van Azure-Services
-ms.topic: article
+ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 1257476234709380de3452015313e3a3bf71e04d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463988"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654151"
 ---
 # <a name="azure-status-overview"></a>Overzicht van Azure-status
 
@@ -22,7 +22,7 @@ De Azure-status pagina wordt in realtime bijgewerkt als de status van Azure-Serv
 
 ![Azure-status vernieuwen](./media/azure-status-overview/update.PNG)
 
-## <a name="azure-status-history"></a>Statusgeschiedenis van Azure
+## <a name="azure-status-history"></a>Status geschiedenis van Azure
 
 Terwijl de Azure-status pagina altijd de meest recente status informatie bevat, kunt u oudere gebeurtenissen weer geven met behulp van de [pagina status geschiedenis van Azure](https://status.azure.com/status/history/).
 

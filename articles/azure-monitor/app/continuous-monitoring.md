@@ -1,18 +1,14 @@
 ---
 title: Continue bewaking van uw DevOps release-pijp lijn met Azure-pijp lijnen en Azure-toepassing inzichten | Microsoft Docs
 description: Biedt instructies voor het snel instellen van doorlopende bewaking met Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/16/2019
-ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677521"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655392"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Doorlopende bewaking aan uw release pijplijn toevoegen
 
@@ -24,7 +20,7 @@ Met continue bewaking kunnen release pijplijnen bewakings gegevens omvatten van 
 
 1. Selecteer een organisatie en project in [Azure DevOps](https://dev.azure.com).
    
-1. Selecteer in het linkermenu op de pagina project **pijp lijnen**  > **releases**. 
+1. Selecteer in het linkermenu op de pagina project **pijp lijnen** > **releases**. 
    
 1. Vervolg de pijl naast **Nieuw** en selecteer **nieuwe release pijplijn**. Als u nog geen pijp lijn hebt, selecteert u **nieuwe pijp lijn** op de pagina die wordt weer gegeven.
    

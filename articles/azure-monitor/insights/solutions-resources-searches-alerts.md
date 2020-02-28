@@ -1,19 +1,18 @@
 ---
 title: Opgeslagen Zoek opdrachten in beheer oplossingen | Microsoft Docs
 description: Beheer oplossingen bevatten doorgaans opgeslagen logboek query's voor het analyseren van gegevens die zijn verzameld door de oplossing. In dit artikel wordt beschreven hoe u Log Analytics opgeslagen Zoek opdrachten kunt definiëren in een resource manager-sjabloon.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61fc64e140af091b5ff3f631398daf901557791b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977722"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663025"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics opgeslagen Zoek opdrachten en waarschuwingen toevoegen aan beheer oplossing (preview)
 
@@ -44,7 +43,7 @@ Alle Log Analytics resources die in een resource manager-sjabloon zijn gedefinie
 
 De volgende tabel geeft een overzicht van de API-versie voor de resource die in dit voor beeld wordt gebruikt.
 
-| Resourcetype | API-versie | Query |
+| Resourcetype | API-versie | Query's uitvoeren |
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Gebeurtenis &#124; waarbij EventLevelName = = "Error"  |
 
@@ -112,7 +111,7 @@ Een opgeslagen zoek opdracht kan een of meer schema's bevatten met elk schema da
     }
 De eigenschappen voor plannings resources worden beschreven in de volgende tabel.
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | enabled       | Ja | Hiermee wordt aangegeven of de waarschuwing wordt ingeschakeld wanneer deze wordt gemaakt. |
 | interval      | Ja | Hoe vaak de query wordt uitgevoerd in minuten. |
@@ -164,17 +163,17 @@ Waarschuwings acties hebben de volgende structuur. Dit omvat algemene variabelen
 
 De eigenschappen van resources voor waarschuwings acties worden beschreven in de volgende tabellen.
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | `type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
 | `name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
 | `description` | Nee | Optionele beschrijving van de waarschuwing. |
-| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
+| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **kritieke**<br>**waarschuwing**<br>**informatief**
 
 #### <a name="threshold"></a>Drempelwaarde
 Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings drempel gedefinieerd.
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt =<br>lt = kleiner dan** |
 | `Value` | Ja | De waarde waarmee de resultaten worden vergeleken. |
@@ -182,7 +181,7 @@ Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings dre
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Deze sectie is optioneel. Neem deze op voor een waarschuwing voor metrische metingen.
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | `TriggerCondition` | Ja | Hiermee geeft u op of de drempel waarde is voor het totale aantal schendingen of opeenvolgende schendingen van de volgende waarden:<br><br>**Totaal<br>opeenvolgend** |
 | `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt =<br>lt = kleiner dan** |
@@ -192,7 +191,7 @@ Deze sectie is optioneel. Neem deze op voor een waarschuwing voor metrische meti
 #### <a name="throttling"></a>Beperking
 Deze sectie is optioneel. Neem deze sectie op als u waarschuwingen van dezelfde regel wilt onderdrukken gedurende een bepaalde hoeveelheid tijd nadat een waarschuwing is gemaakt.
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | DurationInMinutes | Ja als het bandbreedte-element is opgenomen | Aantal minuten dat waarschuwingen worden onderdrukt nadat een van dezelfde waarschuwings regel is gemaakt. |
 
@@ -201,7 +200,7 @@ Alle waarschuwingen in Azure, gebruik actiegroep als het standaardmechanisme voo
 
 Voor gebruikers die hun waarschuwingen hebt uitgebreid naar Azure, hebt een planning nu actiegroep informatie doorgegeven, samen met de drempelwaarde, kunnen een waarschuwing wilt maken. E-mail gegevens, webhook-Url's, Details van Runbook-automatisering en andere acties moeten eerst worden gedefinieerd in een actie groep naast het maken van een waarschuwing. een kan [actie groep maken van Azure monitor](../../azure-monitor/platform/action-groups.md) in portal of [actie groep gebruiken-resource sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Elementnaam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | AzNsNotification | Ja | De resource-ID van de actie groep van Azure die moet worden gekoppeld aan een waarschuwing voor het nemen van de benodigde acties wanneer aan waarschuwings criteria wordt voldaan. |
 | CustomEmailSubject | Nee | Aangepaste onderwerpregel van het e-mail bericht dat wordt verzonden naar alle adressen die zijn opgegeven in de gekoppelde actie groep. |

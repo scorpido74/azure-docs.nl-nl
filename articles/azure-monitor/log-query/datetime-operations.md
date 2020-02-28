@@ -1,18 +1,17 @@
 ---
 title: Werken met datum-en tijd waarden in Azure Monitor-logboek query's | Microsoft Docs
 description: Hierin wordt beschreven hoe u met datum-en tijd gegevens in Azure Monitor-logboek query's kunt werken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365339"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655375"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Werken met datum-en tijd waarden in Azure Monitor-logboek query's
 
@@ -32,9 +31,9 @@ TimeSpans worden uitgedrukt als een decimaal gevolgd door een tijds eenheid:
 |Steno   | tijds eenheid    |
 |:---|:---|
 |d           | dag          |
-|u           | uur         |
-|m           | minuut       |
-|s           | seconde       |
+|h           | uur         |
+|m           | notulen       |
+|s           | tweede       |
 |ms          | milliseconde  |
 |wacht | wacht  |
 |beurs        | nano seconden   |
@@ -128,7 +127,7 @@ Event
 
 Deze query levert de volgende resultaten op:
 
-|tijdstempel|aantal_|
+|tijdstempel|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7\.136|
 |2018-07-29T00:00:00.000|12.315|
@@ -137,7 +136,7 @@ Deze query levert de volgende resultaten op:
 |2018-08-01T00:00:00.000|5\.416|
 
 
-## <a name="time-zones"></a>Tijdzones
+## <a name="time-zones"></a>Tijd zones
 Omdat alle datum-/tijdwaarden worden uitgedrukt in UTC, is het vaak handig deze waarden te converteren naar de lokale tijd zone. Gebruik deze berekening bijvoorbeeld om UTC naar PST-tijden te converteren:
 
 ```Kusto
@@ -164,4 +163,4 @@ Zie andere lessen voor het gebruik van de [Kusto-query taal](/azure/kusto/query/
 - [JSON en gegevens structuren](json-data-structures.md)
 - [Geavanceerde query's schrijven](advanced-query-writing.md)
 - [Joins](joins.md)
-- [Grafieken](charts.md)
+- [Diagrammen](charts.md)
