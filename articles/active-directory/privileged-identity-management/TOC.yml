@@ -47,6 +47,8 @@
       items:
         - name: Functie-update
           href: azure-ad-roles-features.md
+        - name: PowerShell voor Azure AD-rollen
+          href: powershell-for-azure-ad-roles.md
         - name: Rollen toewijzen
           href: pim-how-to-add-role-to-user.md
         - name: Aanvragen goedkeuren

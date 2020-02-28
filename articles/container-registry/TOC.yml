@@ -19,6 +19,8 @@
           href: container-registry-get-started-powershell.md
         - name: Gebeurtenissen verzenden naar Event Grid - CLI
           href: container-registry-event-grid-quickstart.md
+        - name: Java-installatiekopieën bouwen en pushen - CLI
+          href: container-registry-java-quickstart.md
     - name: Zelfstudies
       expanded: false
       items:

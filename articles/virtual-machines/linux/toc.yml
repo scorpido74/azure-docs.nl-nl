@@ -276,7 +276,7 @@
       items:
         - name: Buiten gebruik gesteld vanaf 1 maart 2023
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Overzicht
+        - name: Migratieoverzicht
           href: migration-classic-resource-manager-overview.md
         - name: Gedetailleerde informatie over migratie
           href: migration-classic-resource-manager-deep-dive.md
