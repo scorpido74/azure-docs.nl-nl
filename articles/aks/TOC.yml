@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: Toegang van SSH-knooppunt
           href: ssh.md
+        - name: Linux-prestatiehulpprogramma's
+          href: troubleshoot-linux.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

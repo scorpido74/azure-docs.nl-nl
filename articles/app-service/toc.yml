@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: Een app klonen
           href: app-service-web-app-cloning.md
-        - name: Resources verplaatsen
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: Verwijderde App Service herstellen
           href: app-service-undelete.md
+    - name: App verplaatsen
+      items:
+        - name: Schakelen tussen regio's
+          href: manage-move-across-regions.md
+        - name: Abonnementen verplaatsen
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: Achtergrondtaken uitvoeren
       items:
         - name: WebJobs maken

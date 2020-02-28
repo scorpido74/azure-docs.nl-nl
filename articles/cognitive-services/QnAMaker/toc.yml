@@ -88,6 +88,8 @@
         - name: Levenscyclus van ontwikkeling
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: Verbeteren met suggesties voor actief leren
+          href: Concepts/active-learning-suggestions.md
     - name: Knowledge base bewerken
       items:
         - name: Antwoord ophalen

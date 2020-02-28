@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: Kolommen in gegevensset selecteren
       href: select-columns-in-dataset.md
+    - name: Gegevens splitsen
+      href: split-data.md
 - name: Functies selecteren
   items:
     - name: Functieselectie op basis van filters
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: Aanbevelingsfunctie van SVD-training
       href: train-svd-recommender.md
+- name: Afwijkingsdetectie
+  items:
+    - name: Anomaliedetectie op basis van PCA
+      href: pca-based-anomaly-detection.md
+    - name: Anomaliedetectiemodel trainen
+      href: train-anomaly-detection-model.md
 - name: Fouten en probleemoplossing voor module
   href: designer-error-codes.md

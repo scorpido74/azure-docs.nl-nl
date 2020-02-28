@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: Snelstartgidsen
   items:
-    - name: Een privé-eindpunt maken
-      items:
-        - name: Azure Portal
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Een Private Link-service maken
-      items:
-        - name: Azure Portal
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: Een privé-eindpunt maken - Portal
+      href: create-private-endpoint-portal.md
+    - name: Een privé-eindpunt maken - PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: Een privé-eindpunt maken - Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: Een Private Link-service maken - Portal
+      href: create-private-link-service-portal.md
+    - name: Een Private Link-service maken - PowerShell
+      href: create-private-link-service-powershell.md
+    - name: Een Private Link-service maken - Azure CLI
+      href: create-private-link-service-cli.md
 - name: Concepten
   items:
     - name: Privé-eindpunt

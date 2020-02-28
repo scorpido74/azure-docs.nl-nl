@@ -366,6 +366,24 @@
           href: hybrid-use-benefit-licensing.md
         - name: Multitenant Hosting-rechten voor Windows 10 gebruiken
           href: windows-desktop-multitenant-hosting-deployment.md
+    - name: Migreren van een klassieke implementatie naar Azure Resource Manager
+      items:
+        - name: Buiten gebruik gesteld vanaf 1 maart 2023
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Overzicht
+          href: migration-classic-resource-manager-overview.md
+        - name: Gedetailleerde informatie over migratie
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Plan voor migratie
+          href: migration-classic-resource-manager-plan.md
+        - name: Migreren met PowerShell
+          href: migration-classic-resource-manager-ps.md
+        - name: Algemene migratiefouten
+          href: migration-classic-resource-manager-errors.md
+        - name: Community-hulpprogramma's voor migratie
+          href: migration-classic-resource-manager-community-tools.md
+        - name: Veelgestelde vragen
+          href: migration-classic-resource-manager-faq.md
     - name: Virtuele machines beveiligen
       items:
         - name: Aanbevelingen
@@ -677,7 +695,7 @@
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
     - name: VM-extensies gebruiken
       href: ../extensions/overview.md
-    - name: Virtuele machines verplaatsen en migreren
+    - name: VM's verplaatsen
       items:
         - name: Abonnement of resourcegroep wijzigen
           href: move-vm.md
@@ -694,21 +712,6 @@
               href: aws-to-azure.md
             - name: Azure Site Recovery gebruiken
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Migreren van een klassieke implementatie naar Azure Resource Manager
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: Gedetailleerde informatie over migratie
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: Plan voor migratie
-              href: migration-classic-resource-manager-plan.md
-            - name: Migreren met PowerShell
-              href: migration-classic-resource-manager-ps.md
-            - name: Algemene migratiefouten
-              href: migration-classic-resource-manager-errors.md
-            - name: Community-hulpprogramma's voor migratie
-              href: migration-classic-resource-manager-community-tools.md
-            - name: Veelgestelde vragen
-              href: migration-classic-resource-manager-faq.md
 - name: Problemen oplossen
   href: ../troubleshooting/index.yml
 - name: Naslaginformatie

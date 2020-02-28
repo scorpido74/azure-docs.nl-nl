@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: Zelfstudies
   items:
-    - name: 'Uw eerste C#-app maken'
+    - name: 'Een C#-app maken'
       items:
         - name: 1 - Eenvoudige zoekpagina
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5 - Ordening van resultaten toevoegen
           href: tutorial-csharp-orders.md
-    - name: Azure SQL Database indexeren
-      href: search-indexer-tutorial.md
-    - name: Azure JSON-blobs indexeren
-      href: search-semi-structured-data.md
-    - name: Meerdere Azure-gegevensbronnen indexeren
-      href: tutorial-multiple-data-sources.md
-    - name: Verrijken met AI (cognitief zoeken)
+    - name: Azure-gegevens indexeren
+      items:
+        - name: Azure SQL Database indexeren
+          href: search-indexer-tutorial.md
+        - name: Azure JSON-blobs indexeren
+          href: search-semi-structured-data.md
+        - name: Meerdere Azure-gegevensbronnen indexeren
+          href: tutorial-multiple-data-sources.md
+    - name: AI gebruiken om inhoud te maken
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md
