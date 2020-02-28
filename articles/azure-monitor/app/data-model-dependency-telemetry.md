@@ -1,25 +1,21 @@
 ---
 title: Azure Monitor Application Insights afhankelijkheids gegevens model
 description: Application Insights gegevens model voor de telemetrie van de afhankelijkheid
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872635"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671916"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie van afhankelijkheid: Application Insights gegevens model
 
 Telemetrie van afhankelijkheid (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) vertegenwoordigt een interactie van het bewaakte onderdeel met een extern onderdeel, zoals SQL of een http-eind punt.
 
-## <a name="name"></a>Naam
+## <a name="name"></a>Name
 
 De naam van de opdracht die is gestart met deze afhankelijkheids aanroep. Waarde voor weinig kardinaliteit. Voor beelden zijn opgeslagen procedure naam en URL-pad sjabloon.
 
@@ -35,7 +31,7 @@ Opdracht gestart door deze afhankelijkheids aanroep. Voor beelden hiervan zijn d
 
 Naam van type afhankelijkheid. Lage kardinaliteit waarde voor logische groepering van afhankelijkheden en interpretatie van andere velden, zoals opdrachtnaam en resultCode. Voor beelden zijn SQL, Azure Table en HTTP.
 
-## <a name="target"></a>Kiezen
+## <a name="target"></a>Doel
 
 Doel site van een afhankelijkheids aanroep. Voor beelden zijn server naam, hostadres. Zie [correlatie](../../azure-monitor/app/correlation.md) pagina voor meer informatie.
 
@@ -43,7 +39,7 @@ Doel site van een afhankelijkheids aanroep. Voor beelden zijn server naam, hosta
 
 De duur van de aanvraag in de indeling: `DD.HH:MM:SS.MMMMMM`. Moet minder dan `1000` dagen zijn.
 
-## <a name="result-code"></a>Resultaatcode
+## <a name="result-code"></a>Resultaat code
 
 De resultaat code van een afhankelijkheids aanroep. Voor beelden hiervan zijn de SQL-fout code en de HTTP-status code.
 

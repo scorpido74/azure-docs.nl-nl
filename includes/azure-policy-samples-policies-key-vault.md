@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 270a5557de6edbd26a9a204ed2ce24f6c35e736e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b699a3c329fe2ac8e430f4b58d1fce2637b35469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494946"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780645"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
-|---|---|---|---|
-|[Diagnostische instellingen voor Key Vault implementeren in Event hub](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Hiermee worden de diagnostische instellingen voor de Key Vault geïmplementeerd om te streamen naar een regionale Event hub wanneer een Key Vault waarvoor deze diagnostische instellingen ontbreken, wordt gemaakt of bijgewerkt. |deployIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
+|---|---|---|---|---|
+|[Diagnostische instellingen voor Key Vault implementeren in Event hub](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Hiermee worden de diagnostische instellingen voor de Key Vault geïmplementeerd om te streamen naar een regionale Event hub wanneer een Key Vault waarvoor deze diagnostische instellingen ontbreken, wordt gemaakt of bijgewerkt. |deployIfNotExists |2.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
 |[Diagnostische logboeken in Key Vault moeten worden ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Het inschakelen van Diagnostische logboeken controleren. Zo kunt u een activiteit spoor opnieuw maken om te gebruiken voor onderzoek doeleinden; Wanneer er een beveiligings incident optreedt of wanneer uw netwerk is aangetast |AuditIfNotExists, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json)
 |[Key Vault objecten moeten worden hersteld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Dit beleid controleert of de sleutel kluis objecten niet kunnen worden hersteld. De functie voor voorlopig verwijderen helpt bij het effectief vasthouden van de resources voor een bepaalde Bewaar periode (90 dagen), zelfs na het verwijderen van een bewerking, terwijl het uiterlijk van het object wordt verwijderd. Als ' beveiliging opschonen ' is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd als de retentie periode van 90 dagen is verstreken. Deze kluizen en objecten kunnen nog steeds worden hersteld, waardoor klanten er zeker van zijn dat het Bewaar beleid wordt gevolgd. |Controle, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json)
 |[Toegestane certificaat sleutel typen beheren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Dit beleid beheert de toegestane sleutel typen voor certificaten. |controleren, weigeren, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json)

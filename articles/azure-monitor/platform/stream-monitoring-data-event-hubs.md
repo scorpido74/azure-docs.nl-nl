@@ -3,17 +3,16 @@ title: Azure-bewakings gegevens streamen naar Event Hub
 description: Meer informatie over het streamen van uw Azure-bewakings gegevens naar een Event Hub om de gegevens op te halen in een partner SIEM of een analyse programma.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750335"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658860"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure-bewakings gegevens streamen naar een Event Hub
 Azure Monitor biedt een volledige stack bewakings oplossing voor toepassingen en services in azure, in andere Clouds en on-premises. Naast het gebruik van Azure Monitor voor het analyseren van die gegevens en het gebruiken voor verschillende bewakings scenario's, moet u deze mogelijk verzenden naar andere controle hulpprogramma's in uw omgeving. De meest efficiënte methode voor het streamen van bewakings gegevens naar externe hulpprogram ma's is in de meeste gevallen het gebruik van [Azure Event hubs](/azure/event-hubs/). In dit artikel vindt u een korte beschrijving van de manier waarop u bewakings gegevens uit verschillende bronnen kunt streamen naar een Event Hub en koppelingen naar gedetailleerde richt lijnen.

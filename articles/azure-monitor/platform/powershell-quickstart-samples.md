@@ -1,18 +1,15 @@
 ---
 title: Voor beelden van Azure Monitor Power shell-snel starten
 description: Gebruik Power shell om toegang te krijgen tot Azure Monitor functies, zoals automatisch schalen, waarschuwingen, webhooks en het zoeken naar activiteiten Logboeken.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551848"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659286"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Voor beelden van Azure Monitor Power shell-snel starten
 In dit artikel wordt beschreven hoe u Power shell-opdrachten kunt gebruiken om toegang te krijgen tot Azure Monitor-functies.
@@ -149,18 +146,18 @@ U kunt de eigenschappen e-mail en webhook maken met behulp van `New-AzAlertRuleE
 
 De volgende tabel beschrijft de para meters en waarden die worden gebruikt om een waarschuwing te maken met behulp van een metriek.
 
-| Bepaalde | waarde |
+| parameter | waarde |
 | --- | --- |
-| Naam |simpletestdiskwrite |
+| Name |simpletestdiskwrite |
 | Locatie van deze waarschuwings regel |VS - oost |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Metrische waarde van de waarschuwing die wordt gemaakt |\PhysicalDisk (_Totaal) \Gelezen schrijf bewerkingen per seconde. Raadpleeg de `Get-MetricDefinitions`-cmdlet voor informatie over het ophalen van de exacte metrische namen |
-| and |GreaterThan |
+| Metrische waarde van de waarschuwing die wordt gemaakt |\PhysicalDisk (_Total) \Gelezen schrijf bewerkingen per seconde. Raadpleeg de `Get-MetricDefinitions`-cmdlet voor informatie over het ophalen van de exacte metrische namen |
+| operator |GreaterThan |
 | Drempel waarde (aantal per seconde in voor deze metrische gegevens) |1 |
 | WindowSize (UU: mm: SS-indeling) |00:05:00 |
 | aggregator (statistiek van de metrische gegevens, waarbij het gemiddelde aantal in dit geval wordt gebruikt) |Average |
-| aangepaste e-mail berichten (teken reeks matrix) |' foo@example.com ', ' bar@example.com ' |
+| aangepaste e-mail berichten (teken reeks matrix) |'foo@example.com', 'bar@example.com' |
 | e-mail verzenden naar eigen aars, mede werkers en lezers |-SendToServiceOwners |
 
 Een e-mail actie maken
@@ -388,7 +385,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Houd er rekening mee dat de eigenschap WorkspaceId de *resource-id* van de werk ruimte gebruikt. U kunt de resource-ID van uw Log Analytics-werk ruimte verkrijgen met de volgende opdracht:
+Houd er rekening mee dat de eigenschap WorkspaceId de *resource-id* van de werk ruimte gebruikt. U vindt de resource-ID van uw Log Analytics-werkruimte met de volgende opdracht:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

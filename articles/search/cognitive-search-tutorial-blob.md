@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113655"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667020"
 ---
 # <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Zelf studie: tekst en structuur van JSON-blobs in azure extra heren met REST-Api's (Azure Cognitive Search)
 
-Als u ongestructureerde tekst-of afbeeldings inhoud in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) u helpen bij het extra heren van informatie en het maken van nieuwe inhoud die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn afbeeldings bestanden (JPG, PNG, TIFF) kan verwerken, is deze zelf studie gericht op inhoud op basis van een woord, waarbij taal detectie en tekst analyse worden toegepast voor het maken van nieuwe velden en informatie die u kunt gebruiken in query's, facetten en filters.
+Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn installatie kopieën kan verwerken, wordt in deze zelf studie aandacht besteed aan tekst, het Toep assen van taal detectie en de verwerking van natuurlijke taal om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
 
 > [!div class="checklist"]
-> * Begin met hele documenten (ongestructureerde tekst) zoals PDF, MD, DOCX en PPTX in Azure Blob-opslag.
+> * Begin met hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag.
 > * Definieer een pijp lijn die tekst extraheert, taal detecteert, entiteiten herkent en sleutel zinnen detecteert.
 > * Definieer een index voor het opslaan van de uitvoer (onbewerkte inhoud, plus pijp lijn gegenereerde naam/waarde-paren).
 > * Voer de pijp lijn uit om trans formaties en analyses te starten en om de index te maken en te laden.
@@ -38,7 +38,9 @@ Als u geen Azure-abonnement hebt, opent u een [gratis account](https://azure.mic
 
 ## <a name="1---create-services"></a>1-services maken
 
-In dit overzicht wordt gebruikgemaakt van Azure Cognitive Search voor indexering en query's, Cognitive Services voor AI-verrijking en Azure Blob-opslag om de gegevens op te geven. Maak indien mogelijk alle drie de services in dezelfde regio en resource groep voor nabijheid en beheer baarheid. In de praktijk kan uw Azure Storage-account zich in een wille keurige regio bevinden.
+In deze zelf studie maakt gebruik van Azure Cognitive Search voor het indexeren en uitvoeren van query's, Cognitive Services op de back-end voor AI-verrijking en Azure Blob-opslag om de gegevens op te geven. Deze zelf studie bevindt zich onder de gratis toewijzing van 20 trans acties per Indexeer functie per dag op Cognitive Services, dus de enige services die u moet maken, zijn zoeken en opslag.
+
+Maak, indien mogelijk, beide in dezelfde regio en resource groep voor nabijheid en beheer baarheid. In de praktijk kan uw Azure Storage-account zich in een wille keurige regio bevinden.
 
 ### <a name="start-with-azure-storage"></a>Beginnen met Azure Storage
 
@@ -481,13 +483,13 @@ Deze query's illustreren een aantal manieren waarop u kunt werken met query synt
 
 ## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
 
-In de vroege experimentele stadia van de ontwikkeling van pijp lijnen is het verwijderen van de objecten uit Azure Cognitive Search de meest praktische benadering van het maken van een nieuwe fase en staat u toe dat uw code opnieuw wordt gemaakt. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+In de vroege stadia van de ontwikkeling is het praktisch om objecten uit Azure Cognitive Search te verwijderen en uw code toe te staan om ze opnieuw samen te stellen. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
 
 Uw documenten opnieuw indexeren met de nieuwe definities:
 
 1. Verwijder de Indexeer functie, de index en de vaardig heden.
-2. Objecten wijzigen.
-3. Maak uw service opnieuw om de pijp lijn uit te voeren. 
+2. Wijzig de object definities.
+3. Objecten opnieuw maken in uw service. Als de Indexeer functie opnieuw wordt gemaakt, wordt de pijp lijn uitgevoerd. 
 
 U kunt de portal gebruiken om indexen, Indexeer functies en vaardig heden te verwijderen, of door gebruik te **verwijderen** en url's aan elk object toe te voegen. Met de volgende opdracht wordt een Indexeer functie verwijderd.
 

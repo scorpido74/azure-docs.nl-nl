@@ -1,18 +1,15 @@
 ---
 title: Voor beelden van Azure Monitor CLI Quick Start
 description: Voor beeld van CLI-opdrachten voor Azure Monitor-functies. Azure Monitor is een Microsoft Azure-service waarmee u waarschuwings meldingen kunt verzenden, webadressen moet aanroepen op basis van de waarden van geconfigureerde telemetriegegevens en automatisch schalen Cloud Services, Virtual Machines en Web Apps.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893532"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663501"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Voor beelden van Azure Monitor CLI Quick Start
 In dit artikel vindt u een voor beeld van opdracht regel interface-opdrachten (CLI) om u te helpen bij het openen van Azure Monitor-functies. Met Azure Monitor kunt u Cloud Services, Virtual Machines en Web Apps automatisch schalen en waarschuwings meldingen verzenden of de Url's van websites aanroepen op basis van de waarden van geconfigureerde telemetriegegevens.
@@ -150,7 +147,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
 az monitor log-profiles delete --name <profile name>
 ```
 
-## <a name="diagnostics"></a>Diagnostics
+## <a name="diagnostics"></a>Diagnostiek
 
 Gebruik de informatie in deze sectie om met Diagnostische instellingen te werken.
 

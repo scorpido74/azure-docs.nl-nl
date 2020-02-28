@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623307"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664929"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
@@ -76,7 +76,7 @@ Er zijn twee ondersteunde typen streaming-opname:
 * De limiet voor de gegevens grootte per opname aanvraag is 4 MB.
 * Schema-updates, zoals het maken en wijzigen van tabellen en opname toewijzingen, kunnen tot vijf minuten duren voor de service streaming-opname.
 * Het inschakelen van streaming-opname in een cluster, zelfs wanneer er geen gegevens worden opgenomen via streaming, maakt gebruik van de lokale SSD-schijf van de cluster machines voor het streamen van opname gegevens en vermindert de opslag ruimte die beschikbaar is voor warme cache.
-* Er kunnen geen [gebieds Tags](/azure/kusto/management/extents-overview.md#extent-tagging) worden ingesteld voor de gegevens van de streaming-opname.
+* Er kunnen geen [gebieds Tags](/azure/kusto/management/extents-overview#extent-tagging) worden ingesteld voor de gegevens van de streaming-opname.
 
 Streaming-opname ondersteunt de volgende functies niet:
 * [Database cursors](/azure/kusto/management/databasecursor).

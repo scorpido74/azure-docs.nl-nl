@@ -1,18 +1,17 @@
 ---
 title: Wire data-oplossing in Azure Monitor | Microsoft Docs
 description: Gegevens van wire data is een geconsolideerde netwerk en de prestaties van gegevens van computers met Log Analytics-agents. Netwerkgegevens worden gecombineerd met uw logboekgegevens om te helpen bij het correleren van gegevens.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365798"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670641"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (preview)-oplossing in Azure Monitor
 
@@ -54,8 +53,8 @@ Wire Data haalt zijn gegevens uit de Microsoft-agent voor afhankelijkheden. De D
 
 | **Verbonden bron** | **Ondersteund** | **Beschrijving** |
 | --- | --- | --- |
-| Windows-agents | Ja | Wire Data analyseert en verzamelt gegevens van Windows-agentcomputers. <br><br> Naast de [Log Analytics-agent voor Windows](../platform/agent-windows.md), Windows-agents moeten de agent voor Microsoft Dependency. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
-| Linux-agents | Ja | Wire Data analyseert en verzamelt gegevens van Linux-agentcomputers.<br><br> Naast de [Log Analytics-agent voor Linux](../learn/quick-collect-linux-computer.md), Linux-agents moeten de agent voor Microsoft Dependency. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
+| Windows-agents | Ja | Wire Data analyseert en verzamelt gegevens van Windows-agentcomputers. <br><br> Naast de Log Analytics- [agent voor Windows](../platform/agent-windows.md)vereist Windows-agents de micro soft-afhankelijkheids agent. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
+| Linux-agents | Ja | Wire Data analyseert en verzamelt gegevens van Linux-agentcomputers.<br><br> Naast de Log Analytics- [agent voor Linux is voor](../learn/quick-collect-linux-computer.md)Linux-agents de micro soft-afhankelijkheids agent vereist. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
 | Beheergroep System Center Operations Manager | Ja | Wire Data analyseert en verzamelt gegevens van Windows- en Linux-agents in een verbonden [System Center Operations Manager-beheergroep](../platform/om-agents.md). <br><br> Er is een directe verbinding van de System Center Operations Manager agent computer naar Azure Monitor vereist. |
 | Azure Storage-account | Nee | Omdat Wire Data gegevens van agentcomputers verzamelt, zijn er geen gegevens te verzamelen van Azure Storage. |
 
@@ -72,7 +71,7 @@ Als u een System Center Operations Manager gebruiker bent met een beheer groep d
 - Er is geen aanvullende configuratie vereist wanneer uw System Center Operations Manager-agents toegang hebben tot internet om verbinding te maken met Azure Monitor.
 - U moet de Log Analytics-gateway configureren om te werken met System Center Operations Manager wanneer uw System Center Operations Manager agents geen toegang krijgen tot Azure Monitor via internet.
 
-Als uw Windows-of Linux-computers niet rechtstreeks verbinding kunnen maken met de service, moet u de Log Analytics agent configureren om verbinding te maken met Azure Monitor via de Log Analytics gateway. U kunt de Log Analytics gateway downloaden vanaf de [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Als uw Windows-of Linux-computers niet rechtstreeks verbinding kunnen maken met de service, moet u de Log Analytics agent configureren om verbinding te maken met Azure Monitor via de Log Analytics gateway. U kunt de Log Analytics-gateway downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -94,7 +93,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 
-#### <a name="windows-desktop"></a>Windows-desktop
+#### <a name="windows-desktop"></a>Windows-bureaublad
 
 - Windows 10-1803
 - Windows 10
@@ -115,7 +114,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 |:--|:--|
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
-| 7.6 | 3.10.0-957 |
+| 7,6 | 3.10.0-957 |
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -136,8 +135,8 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 |:--|:--|
 | Ubuntu 18.04 | kernel 4,15.\*<br>4,18 * |
 | Ubuntu 16.04.3 | kernel 4.15. * |
-| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
-| 14.04 | 3.13.\*<br>4.4.\* |
+| 16.04 | 4,4.\*<br>4,8.\*<br>4,10.\*<br>4,11.\*<br>4,13.\* |
+| 14.04 | 3,13.\*<br>4,4.\* |
 
 ##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enter prise server
 
@@ -154,7 +153,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### <a name="dependency-agent-downloads"></a>Agent voor afhankelijkheden downloaden
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| File | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -180,7 +179,7 @@ De afhankelijkheids agent wordt geïnstalleerd op computers met Windows via Inst
 
 Gebruik de volgende stappen om de afhankelijkheids agent te installeren op elke computer waarop Windows wordt uitgevoerd:
 
-1. De volgende stappen in Log Analytics-agent installeren [gegevens verzamelen van Windows-computers die worden gehost in uw omgeving](../../azure-monitor/platform/agent-windows.md).
+1. Installeer de Log Analytics agent volgens de stappen in [gegevens verzamelen van Windows-computers die in uw omgeving worden gehost](../../azure-monitor/platform/agent-windows.md).
 2. Down load de Windows-afhankelijkheids agent met behulp van de koppeling in de vorige sectie en voer deze uit met behulp van de volgende opdracht: `InstallDependencyAgent-Windows.exe`
 3. Volg de wizard om de agent te installeren.
 4. Als de agent voor afhankelijkheden niet kan worden gestart, controleert u de logboeken voor uitgebreide foutgegevens. Voor Windows-agents is dit de logboekmap: %Programfiles%\Microsoft Dependency Agent\logs.
@@ -206,7 +205,7 @@ De afhankelijkheids agent is geïnstalleerd op Linux-computers via InstallDepend
 
 Gebruik de volgende stappen voor het installeren van de agent voor afhankelijkheden op elke Linux-computer:
 
-1. De volgende stappen in Log Analytics-agent installeren [gegevens verzamelen van Linux-computers die worden gehost in uw omgeving](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key).
+1. Installeer de Log Analytics agent volgens de stappen in [gegevens verzamelen van Linux-computers die in uw omgeving worden gehost](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key).
 2. Down load de Linux-afhankelijkheids agent met de koppeling in de vorige sectie en installeer deze met de volgende opdracht: sh InstallDependencyAgent-Linux64. bin
 3. Als de agent voor afhankelijkheden niet kan worden gestart, controleert u de logboeken voor uitgebreide foutgegevens. Voor Linux-agents is dit de logboekmap: /var/opt/microsoft/dependency-agent/log.
 
@@ -393,7 +392,7 @@ Een record met het type _WireData_ is gemaakt voor elk type invoergegevens. Wire
 | IPVersion | IP-versie |
 | Richting | Binnenkomend of uitgaand |
 | MaliciousIP | IP-adres van een bekende schadelijke bron |
-| Ernst | Ernst van mogelijke malware |
+| Severity | Ernst van mogelijke malware |
 | RemoteIPCountry | Land/regio van het externe IP-adres |
 | ManagementGroupName | Naam van de Operations Manager-beheergroep |
 | SourceSystem | Bron waar gegevens zijn verzameld |

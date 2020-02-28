@@ -1,18 +1,17 @@
 ---
 title: Netwerkprestatiemeter oplossing in azure Log Analytics | Microsoft Docs
 description: Gebruik de ExpressRoute-monitor mogelijkheid in Netwerkprestatiemeter om end-to-end connectiviteit en prestaties tussen uw filialen en Azure te bewaken via Azure ExpressRoute.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898885"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660747"
 ---
 # <a name="expressroute-monitor"></a>Monitor voor ExpressRoute
 
@@ -28,7 +27,7 @@ U kunt de Azure ExpressRoute-monitor mogelijkheid gebruiken in [Netwerkprestatie
 Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter oplossing](network-performance-monitor.md) en selecteert **u configureren**.
 
 ### <a name="configure-network-security-group-rules"></a>Regels voor netwerk beveiligings groepen configureren 
-Voor de servers in azure die worden gebruikt voor bewaking via Netwerkprestatiemeter, configureert u NSG-regels (netwerk beveiligings groep) om TCP-verkeer toe te staan op de poort die door Netwerkprestatiemeter wordt gebruikt voor synthetische trans acties. De standaard poort is 8084. Met deze configuratie kan de Log Analytics-agent die is geïnstalleerd op virtuele machines van Azure, communiceren met een on-premises bewakings agent. 
+Voor de servers in azure die worden gebruikt voor bewaking via Netwerkprestatiemeter, configureert u NSG-regels (netwerk beveiligings groep) om TCP-verkeer toe te staan op de poort die door Netwerkprestatiemeter wordt gebruikt voor synthetische trans acties. De standaardpoort is 8084. Met deze configuratie kan de Log Analytics-agent die is geïnstalleerd op virtuele machines van Azure, communiceren met een on-premises bewakings agent. 
 
 Zie [netwerk beveiligings groepen](../../virtual-network/manage-network-security-group.md)voor meer informatie over nsg's. 
 
@@ -76,7 +75,7 @@ Het Netwerkprestatiemeter-dash board toont een overzicht van de status van Expre
 
 ### <a name="circuits-list"></a>Lijst met circuits 
 
-Als u een lijst met alle bewaakte ExpressRoute-circuits wilt weer geven, selecteert u de tegel ExpressRoute-circuits. U kunt een circuit selecteren en de bijbehorende status, trend grafieken voor pakket verlies, bandbreedte gebruik en latentie weer geven. De grafieken zijn interactief. U kunt een aangepast tijd venster selecteren voor het uitzetten van de grafieken. Sleep de muis over een gebied in het diagram om in te zoomen en Bekijk nauw keurige gegevens punten. 
+Als u een lijst met alle bewaakte ExpressRoute-circuits wilt weer geven, selecteert u de tegel ExpressRoute-circuits. U kunt een circuit selecteren en de status, trendgrafieken voor pakketverlies en bandbreedtegebruik latentie weergeven. De grafieken zijn interactief. U kunt een aangepaste tijdvenster voor het uitzetten van de grafieken selecteren. Sleep de muis over een gebied in het diagram om in te zoomen en Bekijk nauw keurige gegevens punten. 
 
 ![Lijst met ExpressRoute-circuits](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
@@ -88,7 +87,7 @@ Het bandbreedte gebruik, de latentie en de verlies grafieken zijn interactief. U
 
 ### <a name="peerings-list"></a>Lijst met peerings 
 
-Als u een lijst wilt weer geven met alle verbindingen met virtuele netwerken via persoonlijke peering, selecteert u de tegel **privé-peerings** op het dash board. Hier kunt u een virtuele netwerk verbinding selecteren en de bijbehorende status, trend grafieken voor pakket verlies, bandbreedte gebruik en latentie weer geven. 
+Als u een lijst wilt weer geven met alle verbindingen met virtuele netwerken via persoonlijke peering, selecteert u de tegel **privé-peerings** op het dash board. Hier kunt u een virtuele netwerkverbinding en de status, trendgrafieken voor pakketverlies en bandbreedtegebruik latentie weergeven. 
 
 ![ExpressRoute-peerings](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
@@ -104,7 +103,7 @@ In deze weer gave worden virtuele netwerk verbindingen weer gegeven. 
 
 ![ExpressRoute virtuele netwerk verbindingen](media/network-performance-monitor-expressroute/expressroute-vnet.png)
  
-## <a name="diagnostics"></a>Diagnostics 
+## <a name="diagnostics"></a>Diagnostiek 
 
 Netwerkprestatiemeter helpt u bij het vaststellen van verschillende verbindings problemen met circuits. Hieronder vindt u enkele van de problemen die u kunt zien.
 

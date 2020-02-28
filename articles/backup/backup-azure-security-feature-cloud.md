@@ -3,16 +3,16 @@ title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705493"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660832"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
-Zorgen over beveiligingsproblemen, zoals malware, ransomware en inbraak nemen toe. Deze beveiligingsproblemen kunnen kostbaar zijn, zowel met betrekking tot geld als gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen.
+Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen.
 
 Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een virtuele machine verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor de klant. Azure versleutelt ook alle back-upgegevens op rest met behulp van [Storage service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) om uw gegevens verder te beveiligen.
 
@@ -133,7 +133,7 @@ De ' DeleteState ' van het back-upitem wordt teruggezet op ' NotDeleted '. De be
 
 ## <a name="disabling-soft-delete"></a>Tijdelijke verwijdering uitschakelen
 
-Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht. Alleen een back-upbeheerder kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle verwijderde beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
+Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht. Alleen de eigenaar van de kluis kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle toekomstige verwijderingen van beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens die zich in de voorlopig verwijderde status bevindt voordat u deze functie uitschakelt, blijven voor de periode van 14 dagen in een voorlopig verwijderde status. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Zacht verwijderen uitschakelen met Azure Portal
 

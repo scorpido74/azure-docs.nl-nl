@@ -5,24 +5,22 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: dec088ed751856957735867f740dc951c3b8f2ac
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 028ed1a632016fcbdf29bb47ab81a36f659785da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162069"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660473"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten met behulp van Power shell
 
 Dit artikel helpt u bij het configureren van een op Azure route gebaseerde VPN-gateway om verbinding te maken met meerdere on-premises op beleid gebaseerde VPN-apparaten met aangepaste IPsec/IKE-beleids regels op S2S VPN-verbindingen.
 
-
-
 ## <a name="about"></a>Over op beleid gebaseerde en op route gebaseerde VPN-gateways
 
-Beleid *versus* op route gebaseerde VPN-apparaten wijken af van hoe de selecters van het IPSec-verkeer worden ingesteld op een verbinding:
+Op beleid gebaseerde en *op route gebaseerde* VPN-apparaten verschillen in hoe de selecters van het IPSec-verkeer worden ingesteld op een verbinding:
 
 * **Op beleid gebaseerd** VPN-apparaten gebruiken de combi Naties van voor voegsels van beide netwerken om te definiëren hoe verkeer wordt versleuteld/ontsleuteld via IPsec-tunnels. Het is doorgaans gebaseerd op Firewall apparaten die pakket filters uitvoeren. IPsec-tunnel versleuteling en-ontsleuteling worden toegevoegd aan de pakket filtering en de verwerkings engine.
 * **Op basis van route** VPN-apparaten gebruiken any-to-any-verkeer (joker tekens) en kunnen route ring/doorstuur tabellen direct verkeer naar verschillende IPsec-tunnels. Het is doorgaans gebaseerd op router platforms waar elke IPsec-tunnel wordt gemodelleerd als een netwerk interface of VTI (virtuele tunnel Interface).
@@ -58,160 +56,153 @@ In het volgende diagram ziet u waarom Transit routering via Azure VPN-gateway ni
 
 Zoals in het diagram wordt weer gegeven, bevat de Azure VPN-gateway verkeers selecties van het virtuele netwerk naar elk van de on-premises netwerk voorvoegsels, maar niet de voor voegsels voor cross-Connection. Bijvoorbeeld: on-premises site 2, site 3 en site 4 kunnen elk VNet1 respectievelijk communiceren, maar kunnen geen verbinding maken via de Azure VPN-gateway. In het diagram ziet u de selectie vakjes voor kruis verbindingen verkeer die niet beschikbaar zijn in de Azure VPN-gateway onder deze configuratie.
 
-## <a name="configurepolicybased"></a>Op beleid gebaseerde verkeers selecties configureren op een verbinding
+## <a name="workflow"></a>Workflowconfiguraties
 
 De instructies in dit artikel volgen hetzelfde voor beeld zoals beschreven in [IPSec/IKE-beleid configureren voor S2S-of vnet-naar-vnet-verbindingen](vpn-gateway-ipsecikepolicy-rm-powershell.md) om een S2S-VPN-verbinding tot stand te brengen. Dit wordt weer gegeven in het volgende diagram:
 
 ![S2S-beleid](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
 De werk stroom voor het inschakelen van deze verbinding:
-1. Het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken voor uw cross-premises verbinding
-2. Een IPsec/IKE-beleid maken
-3. Pas het beleid toe wanneer u een S2S-of VNet-naar-VNet-verbinding maakt en **de op beleid gebaseerde verkeers selectie vakjes op de verbinding inschakelt**
-4. Als de verbinding al is gemaakt, kunt u het beleid Toep assen of bijwerken voor een bestaande verbinding
+1. Maak het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway voor uw cross-premises verbinding.
+2. Een IPsec/IKE-beleid maken.
+3. Pas het beleid toe wanneer u een S2S-of VNet-naar-VNet-verbinding maakt en **Schakel de op beleid gebaseerde verkeers selectie vakjes** in voor de verbinding.
+4. Als de verbinding al is gemaakt, kunt u het beleid Toep assen of bijwerken voor een bestaande verbinding.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial).
+* Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial).
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+* [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="enablepolicybased"></a>Op beleid gebaseerde verkeers selectie inschakelen op een verbinding
+## <a name="enablepolicybased"></a>Op beleid gebaseerde verkeers selectie inschakelen
 
-Zorg ervoor dat u [deel 3 van het artikel IPSec/IKE-beleid configureren](vpn-gateway-ipsecikepolicy-rm-powershell.md) voor deze sectie hebt voltooid. In het volgende voor beeld worden dezelfde para meters en stappen gebruikt:
+In deze sectie wordt beschreven hoe u op beleid gebaseerde verkeers selectie vakjes inschakelt voor een verbinding. Zorg ervoor dat u [deel 3 van het artikel IPSec/IKE-beleid configureren](vpn-gateway-ipsecikepolicy-rm-powershell.md)hebt voltooid. Voor de stappen in dit artikel worden dezelfde para meters gebruikt.
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Stap 1: het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken
 
-#### <a name="1-connect-to-your-subscription-and-declare-your-variables"></a>1. Maak verbinding met uw abonnement en Declareer de variabelen
+#### <a name="connect-to-your-subscription-and-declare-your-variables"></a>Verbinding maken met uw abonnement en uw variabelen declareren
 
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+1. Als u Power shell lokaal op uw computer uitvoert, meldt u zich aan met de cmdlet *Connect-AzAccount* . Of gebruik in plaats daarvan Azure Cloud Shell in uw browser.
 
-Declareer uw variabelen. Voor deze oefening gebruiken we de volgende variabelen:
+2. Declareer uw variabelen. Voor deze oefening gebruiken we de volgende variabelen:
 
-```azurepowershell-interactive
-$Sub1          = "<YourSubscriptionName>"
-$RG1           = "TestPolicyRG1"
-$Location1     = "East US 2"
-$VNetName1     = "TestVNet1"
-$FESubName1    = "FrontEnd"
-$BESubName1    = "Backend"
-$GWSubName1    = "GatewaySubnet"
-$VNetPrefix11  = "10.11.0.0/16"
-$VNetPrefix12  = "10.12.0.0/16"
-$FESubPrefix1  = "10.11.0.0/24"
-$BESubPrefix1  = "10.12.0.0/24"
-$GWSubPrefix1  = "10.12.255.0/27"
-$DNS1          = "8.8.8.8"
-$GWName1       = "VNet1GW"
-$GW1IPName1    = "VNet1GWIP1"
-$GW1IPconf1    = "gw1ipconf1"
-$Connection16  = "VNet1toSite6"
+   ```azurepowershell-interactive
+   $Sub1          = "<YourSubscriptionName>"
+   $RG1           = "TestPolicyRG1"
+   $Location1     = "East US 2"
+   $VNetName1     = "TestVNet1"
+   $FESubName1    = "FrontEnd"
+   $BESubName1    = "Backend"
+   $GWSubName1    = "GatewaySubnet"
+   $VNetPrefix11  = "10.11.0.0/16"
+   $VNetPrefix12  = "10.12.0.0/16"
+   $FESubPrefix1  = "10.11.0.0/24"
+   $BESubPrefix1  = "10.12.0.0/24"
+   $GWSubPrefix1  = "10.12.255.0/27"
+   $DNS1          = "8.8.8.8"
+   $GWName1       = "VNet1GW"
+   $GW1IPName1    = "VNet1GWIP1"
+   $GW1IPconf1    = "gw1ipconf1"
+   $Connection16  = "VNet1toSite6"
+   $LNGName6      = "Site6"
+   $LNGPrefix61   = "10.61.0.0/16"
+   $LNGPrefix62   = "10.62.0.0/16"
+   $LNGIP6        = "131.107.72.22"
+   ```
 
-$LNGName6      = "Site6"
-$LNGPrefix61   = "10.61.0.0/16"
-$LNGPrefix62   = "10.62.0.0/16"
-$LNGIP6        = "131.107.72.22"
-```
+#### <a name="create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>Het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken
 
-#### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2. het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken
+1. Maak een resourcegroep.
 
-Maak een resourcegroep.
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG1 -Location $Location1
+   ```
+2. Gebruik het volgende voor beeld om de TestVNet1 van het virtuele netwerk met drie subnetten en de VPN-gateway te maken. Als u waarden wilt vervangen, is het belang rijk dat u het subnet van de gateway altijd een naam GatewaySubnet. Als u een andere naam kiest, mislukt het maken van de gateway.
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name $RG1 -Location $Location1
-```
+    ```azurepowershell-interactive
+    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+    $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+    $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+    
+    New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+    
+    $gw1pip1    = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
+    $vnet1      = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+    $subnet1    = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+    $gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $subnet1 -PublicIpAddress $gw1pip1
+    
+    New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance
+    
+    New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
+    ```
 
-Gebruik het volgende voor beeld om de TestVNet1 van het virtuele netwerk met drie subnetten en de VPN-gateway te maken. Als u waarden wilt vervangen, is het belang rijk dat u het subnet van de gateway altijd een naam GatewaySubnet. Als u een andere naam kiest, mislukt het maken van de gateway.
+### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>Stap 2: een S2S-VPN-verbinding maken met een IPsec/IKE-beleid
 
-```azurepowershell-interactive
-$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+1. Een IPsec/IKE-beleid maken.
 
-New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+   > [!IMPORTANT]
+   > U moet een IPsec/IKE-beleid maken om de optie ' UsePolicyBasedTrafficSelectors ' in te scha kelen voor de verbinding.
 
-$gw1pip1    = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
-$vnet1      = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
-$subnet1    = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
-$gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $subnet1 -PublicIpAddress $gw1pip1
+   In het volgende voor beeld wordt een IPsec/IKE-beleid met deze algoritmen en para meters gemaakt:
+    * IKEv2: AES256, SHA384, DHGroup24
+    * IPsec: AES256, SHA256, PFS geen, SA-levens duur van 14400 seconden & 102400000KB
 
-New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance
+   ```azurepowershell-interactive
+   $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
+   ```
+1. Maak de S2S VPN-verbinding met op beleid gebaseerde verkeers selecties en IPsec/IKE-beleid en pas het IPsec/IKE-beleid toe dat in de vorige stap is gemaakt. Houd rekening met de extra para meter-UsePolicyBasedTrafficSelectors $True, waarmee op beleid gebaseerde verkeers selecties worden ingeschakeld op de verbinding.
 
-New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
-```
+   ```azurepowershell-interactive
+   $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
+   $lng6 = Get-AzLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 
-### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>Stap 2: een S2S-VPN-verbinding maken met een IPsec/IKE-beleid
+   New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
+   ```
+1. Na het volt ooien van de stappen maakt de S2S VPN-verbinding gebruik van de gedefinieerde IPsec/IKE-beleid en schakelt u op beleid gebaseerde verkeers selectie vakjes in voor de verbinding. U kunt dezelfde stappen herhalen om meer verbindingen toe te voegen aan extra on-premises op beleid gebaseerde VPN-apparaten vanuit dezelfde Azure VPN-gateway.
 
-#### <a name="1-create-an-ipsecike-policy"></a>1. een IPsec/IKE-beleid maken
+## <a name="update"></a>Voor het bijwerken van op beleid gebaseerde verkeers selecters
+In deze sectie wordt beschreven hoe u de optie voor het op beleid gebaseerde verkeers selectie bijwerkt voor een bestaande S2S-VPN-verbinding.
 
-> [!IMPORTANT]
-> U moet een IPsec/IKE-beleid maken om de optie ' UsePolicyBasedTrafficSelectors ' in te scha kelen voor de verbinding.
+1. Haal de verbindings bron op.
 
-In het volgende voor beeld wordt een IPsec/IKE-beleid met deze algoritmen en para meters gemaakt:
-* IKEv2: AES256, SHA384, DHGroup24
-* IPsec: AES256, SHA256, PFS geen, SA-levens duur van 14400 seconden & 102400000KB
-
-```azurepowershell-interactive
-$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
-```
-
-#### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Maak de S2S-VPN-verbinding met op beleid gebaseerde verkeers selecties en IPsec/IKE-beleid
-Maak een S2S-VPN-verbinding en pas het IPsec/IKE-beleid toe dat in de vorige stap is gemaakt. Houd rekening met de extra para meter-UsePolicyBasedTrafficSelectors $True, waarmee op beleid gebaseerde verkeers selecties worden ingeschakeld op de verbinding.
-
-```azurepowershell-interactive
-$vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
-$lng6 = Get-AzLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
-
-New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
-```
-
-Na het volt ooien van de stappen maakt de S2S VPN-verbinding gebruik van de gedefinieerde IPsec/IKE-beleid en schakelt u op beleid gebaseerde verkeers selectie vakjes in voor de verbinding. U kunt dezelfde stappen herhalen om meer verbindingen toe te voegen aan extra on-premises op beleid gebaseerde VPN-apparaten vanuit dezelfde Azure VPN-gateway.
-
-## <a name="update-policy-based-traffic-selectors-for-a-connection"></a>Op beleid gebaseerde verkeers selecties bijwerken voor een verbinding
-In de laatste sectie ziet u hoe u de optie voor het op beleid gebaseerde verkeers selectie bijwerkt voor een bestaande S2S-VPN-verbinding.
-
-### <a name="1-get-the-connection"></a>1. de verbinding ophalen
-Haal de verbindings bron op.
-
-```azurepowershell-interactive
-$RG1          = "TestPolicyRG1"
-$Connection16 = "VNet1toSite6"
-$connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
-```
-
-### <a name="2-check-the-policy-based-traffic-selectors-option"></a>2. Controleer de optie op beleid gebaseerde verkeers selectie
+   ```azurepowershell-interactive
+   $RG1          = "TestPolicyRG1"
+   $Connection16 = "VNet1toSite6"
+   $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+   ```
+1. Bekijk de optie op beleid gebaseerde verkeers selectie.
 De volgende regel geeft aan of de op beleid gebaseerde verkeers selecties worden gebruikt voor de verbinding:
 
-```azurepowershell-interactive
-$connection6.UsePolicyBasedTrafficSelectors
-```
+   ```azurepowershell-interactive
+   $connection6.UsePolicyBasedTrafficSelectors
+   ```
 
-Als de regel '**True**' retourneert, worden op beleid gebaseerde verkeers selecties geconfigureerd op de verbinding. anders wordt '**False**' geretourneerd.
+   Als de regel '**True**' retourneert, worden op beleid gebaseerde verkeers selecties geconfigureerd op de verbinding. anders wordt '**False**' geretourneerd.
+1. Zodra u de verbindings bron hebt opgehaald, kunt u de op beleid gebaseerde verkeers selectie vakjes op een verbinding in-of uitschakelen.
 
-### <a name="3-enabledisable-the-policy-based-traffic-selectors-on-a-connection"></a>3. Schakel de op beleid gebaseerde verkeers selectie vakjes in of uit voor een verbinding
-Zodra u de verbindings bron hebt opgehaald, kunt u de optie in-of uitschakelen.
+   - Om in te scha kelen
 
-#### <a name="to-enable-usepolicybasedtrafficselectors"></a>UsePolicyBasedTrafficSelectors inschakelen
-In het volgende voor beeld wordt de optie op beleid gebaseerde verkeers selectie ingeschakeld, maar blijft het IPsec/IKE-beleid ongewijzigd:
+      In het volgende voor beeld wordt de optie op beleid gebaseerde verkeers selectie ingeschakeld, maar blijft het IPsec/IKE-beleid ongewijzigd:
 
-```azurepowershell-interactive
-$RG1          = "TestPolicyRG1"
-$Connection16 = "VNet1toSite6"
-$connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+      ```azurepowershell-interactive
+      $RG1          = "TestPolicyRG1"
+      $Connection16 = "VNet1toSite6"
+      $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
 
-Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
-```
+      Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
+      ```
 
-#### <a name="to-disable-usepolicybasedtrafficselectors"></a>UsePolicyBasedTrafficSelectors uitschakelen
-In het volgende voor beeld wordt de optie voor het op beleid gebaseerde verkeers selectie uitgeschakeld, maar blijft het IPsec/IKE-beleid ongewijzigd:
+   - Uitschakelen
 
-```azurepowershell-interactive
-$RG1          = "TestPolicyRG1"
-$Connection16 = "VNet1toSite6"
-$connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+      In het volgende voor beeld wordt de optie voor het op beleid gebaseerde verkeers selectie uitgeschakeld, maar blijft het IPsec/IKE-beleid ongewijzigd:
 
-Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
-```
+      ```azurepowershell-interactive
+      $RG1          = "TestPolicyRG1"
+      $Connection16 = "VNet1toSite6"
+      $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
+
+      Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
+      ```
 
 ## <a name="next-steps"></a>Volgende stappen
 Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor de stappen.

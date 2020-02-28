@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: df27a77c202951a6c789703f12712e75bd8b5906
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161678"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656968"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -45,38 +45,38 @@ Er worden twee sleutels beschikbaar gemaakt, die beide gelijktijdig geldig zijn 
 
 De SDK heeft ingebouwde ondersteuning voor verificatie met account sleutels; u hoeft alleen de eigenschap AccountKey in te stellen voor uw cloudSession-object.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accountKey = @"MyAccountKey";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.accountKey = "MyAccountKey"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccountKey(R"(MyAccountKey)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -120,38 +120,38 @@ Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanb
 
 Met dat moet uw toepassing MSAL een Azure AD-token kunnen verkrijgen. u kunt dat Azure AD-token instellen als de **authenticationToken** in uw Cloud sessie configuratie object.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AuthenticationToken(R"(MyAuthenticationToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -211,38 +211,38 @@ En het antwoord bevat het MR-token in tekst zonder opmaak.
 
 Dat MR-token vervolgens wordt geretourneerd naar de client. Uw client-app kan deze vervolgens instellen als toegangs token in de Cloud sessie configuratie.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accessToken = @"MyAccessToken";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.accessToken = "MyAccessToken"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccessToken(R"(MyAccessToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -264,7 +264,13 @@ Om het niveau van toegang te beheren dat wordt verleend aan toepassingen, servic
 Maak uw eerste app met Azure spatiale ankers.
 
 > [!div class="nextstepaction"]
-> [Unity](../unity-overview.yml)
+> [Eenheid (HoloLens)](../quickstarts/get-started-unity-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Unity (iOS)](../quickstarts/get-started-unity-ios.md)
+
+> [!div class="nextstepaction"]
+> [Unity (Android)](../quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](../quickstarts/get-started-ios.md)
@@ -274,3 +280,9 @@ Maak uw eerste app met Azure spatiale ankers.
 
 > [!div class="nextstepaction"]
 > [HoloLens](../quickstarts/get-started-hololens.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (Android)](../quickstarts/get-started-xamarin-android.md)
+
+> [!div class="nextstepaction"]
+> [Xamarin (iOS)](../quickstarts/get-started-xamarin-ios.md)

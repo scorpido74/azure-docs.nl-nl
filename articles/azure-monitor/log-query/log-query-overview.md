@@ -1,18 +1,17 @@
 ---
 title: Overzicht van logboek query's in Azure Monitor | Microsoft Docs
 description: Beantwoordt veelgestelde vragen met betrekking tot logboek query's en haalt u aan de slag.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900274"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670114"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
 Met logboek query's kunt u de waarde van de gegevens die in [Azure monitor logboeken](../platform/data-platform-logs.md)worden verzameld, volledig benutten. Met een krachtige query taal kunt u gegevens uit meerdere tabellen samen voegen, grote gegevens sets verzamelen en complexe bewerkingen met minimale code uitvoeren. Vrijwel elke vraag kan worden beantwoord en de analyse wordt uitgevoerd zolang de ondersteunende gegevens zijn verzameld en u begrijpt hoe u de juiste query kunt bouwen.

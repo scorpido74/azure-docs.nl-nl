@@ -1,15 +1,14 @@
 ---
 title: Azure resource Health-gebeurtenissen ophalen met behulp van de REST API | Microsoft Docs
 description: Gebruik de Azure REST Api's om de status gebeurtenissen voor uw Azure-resources op te halen.
-ms.custom: REST
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2017
-ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451381"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653998"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Resource Health ophalen met behulp van de REST API 
 
@@ -32,7 +31,7 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|  
-|*Authorization:*|Vereist. Stel in op een geldig `Bearer` [toegangs token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-parameters
 

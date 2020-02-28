@@ -2,13 +2,13 @@
 title: Modus voor volledige verwijdering
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207805"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664403"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -141,7 +141,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. ResourceHealth](#microsoftresourcehealth)
 > - [Micro soft. resources](#microsoftresources)
 > - [Micro soft. SaaS](#microsoftsaas)
-> - [Micro soft. scheduler](#microsoftscheduler)
 > - [Micro soft. Search](#microsoftsearch)
 > - [Micro soft. Security](#microsoftsecurity)
 > - [Micro soft. SecurityGraph](#microsoftsecuritygraph)
@@ -297,6 +296,9 @@ Ga naar de naam ruimte van een resource provider:
 > | automationAccounts | Ja |
 > | automationAccounts/configuraties | Ja |
 > | automationAccounts/Jobs | Nee |
+> | automationAccounts / privateEndpointConnectionProxies | Nee |
+> | automationAccounts / privateEndpointConnections | Nee |
+> | automationAccounts / privateLinkResources | Nee |
 > | automationAccounts/runbooks | Ja |
 > | automationAccounts / softwareUpdateConfigurations | Nee |
 > | automationAccounts/webhooks | Nee |
@@ -716,6 +718,7 @@ Ga naar de naam ruimte van een resource provider:
 > | registers/importImage | Nee |
 > | registers/privateEndpointConnectionProxies | Nee |
 > | registers/privateEndpointConnectionProxies/valideren | Nee |
+> | registers/privateEndpointConnections | Nee |
 > | registers/privateLinkResources | Nee |
 > | registers/queueBuild | Nee |
 > | registers/regenerateCredential | Nee |
@@ -762,7 +765,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Afdeling | Nee |
 > | Dimensies | Nee |
 > | EnrollmentAccounts | Nee |
-> | dump | Nee |
+> | Dump | Nee |
 > | ExternalBillingAccounts | Nee |
 > | ExternalBillingAccounts/waarschuwingen | Nee |
 > | ExternalBillingAccounts/dimensies | Nee |
@@ -1057,6 +1060,7 @@ Ga naar de naam ruimte van een resource provider:
 > | partnerNamespaces/eventChannels | Nee |
 > | partnerRegistrations | Ja |
 > | partnerTopics | Ja |
+> | partnerTopics / eventSubscriptions | Nee |
 > | systemTopics | Ja |
 > | systemTopics / eventSubscriptions | Nee |
 > | onderwerp | Ja |
@@ -1293,6 +1297,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | getEntities | Nee |
 > | managementGroups | Nee |
+> | managementGroups/instellingen | Nee |
 > | resources | Nee |
 > | startTenantBackfill | Nee |
 > | tenantBackfillStatus | Nee |
@@ -1554,6 +1559,7 @@ Ga naar de naam ruimte van een resource provider:
 > | legacyPeerings | Nee |
 > | peerAsns | Nee |
 > | Peerings | Ja |
+> | peeringServiceCountries | Nee |
 > | peeringServiceProviders | Nee |
 > | peeringServices | Ja |
 
@@ -1679,13 +1685,6 @@ Ga naar de naam ruimte van een resource provider:
 > | toepassingen | Ja |
 > | saasresources | Nee |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Modus voor volledige verwijdering |
-> | ------------- | ----------- |
-> | jobcollections | Ja |
-
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1754,7 +1753,7 @@ Ga naar de naam ruimte van een resource provider:
 > | aggregaties | Nee |
 > | alertRules | Nee |
 > | alertRuleTemplates | Nee |
-> | wijzer | Nee |
+> | Wijzer | Nee |
 > | meldingen | Nee |
 > | dataConnectors | Nee |
 > | dataConnectorsCheckRequirements | Nee |
@@ -2015,6 +2014,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | apparaten | Ja |
+> | registeredSubscriptions | Nee |
 > | crediteur | Nee |
 > | leveranciers/sku's | Nee |
 > | leveranciers/vnfs | Nee |
@@ -2036,7 +2036,7 @@ Ga naar de naam ruimte van een resource provider:
 > | apiManagementAccounts / connectionAcls | Nee |
 > | apiManagementAccounts/verbindingen | Nee |
 > | billingMeters | Nee |
-> | Bewijzen | Ja |
+> | bewijzen | Ja |
 > | connectionGateways | Ja |
 > | inbel | Ja |
 > | customApis | Ja |

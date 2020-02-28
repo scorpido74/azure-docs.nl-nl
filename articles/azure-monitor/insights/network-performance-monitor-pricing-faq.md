@@ -1,18 +1,17 @@
 ---
 title: Veelgestelde vragen over prijzen voor Azure Netwerkprestatiemeter | Microsoft Docs
 description: Veelgestelde vragen-Azure Netwerkprestatiemeter
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 3d69637c2851764363209ed8dfbe8c24c636ffba
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898791"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654389"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Prijs wijzigingen voor Azure Netwerkprestatiemeter
 
@@ -110,7 +109,7 @@ Een verbinding is een test op het bereiken van een eind punt (URL of netwerk ser
 
 Raadpleeg de sectie [verbindings bewaking](https://azure.microsoft.com/pricing/details/network-watcher/) voor de kosten voor het bewaken van een eind punt voor de hele maand. De kosten voor gegevens zijn beschikbaar op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor log Analytics, in de sectie gegevens opname.
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 [Veelgestelde vragen over log Analytics prijs](https://azure.microsoft.com/pricing/details/log-analytics/): de sectie Veelgestelde vragen bevat informatie over de gratis laag, de prijzen per knoop punt en andere prijs informatie.
 

@@ -1,18 +1,17 @@
 ---
 title: Gegevens visualiseren van Azure Monitor | Microsoft Docs
 description: Hierin wordt een overzicht gegeven van de beschik bare methoden voor het visualiseren van metrische gegevens en logboeken die zijn opgeslagen in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
-ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597839"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657806"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Gegevens visualiseren van Azure Monitor
 Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiseren van logboek-en metrische gegevens die zijn opgeslagen in Azure Monitor.
@@ -48,7 +47,7 @@ Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren va
 ## <a name="azure-monitor-views"></a>Azure Monitor weergaven
 Met [weer gaven in azure monitor](platform/view-designer.md) kunt u aangepaste visualisaties met logboek gegevens maken. Deze worden gebruikt door [bewakings oplossingen](insights/solutions.md) om de verzamelde gegevens te presen teren.
 
-![Weergeven](media/visualizations/view.png)
+![Weergave](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Voordelen
 - Uitgebreide visualisaties voor logboek gegevens.

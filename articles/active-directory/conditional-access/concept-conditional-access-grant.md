@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585880"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656310"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -55,7 +55,7 @@ Als u dit selectie vakje inschakelt, moeten gebruikers Azure Multi-Factor Authen
 
 Organisaties die Microsoft Intune hebben geïmplementeerd, kunnen de informatie gebruiken die wordt geretourneerd door hun apparaten om apparaten te identificeren die aan specifieke nalevings vereisten voldoen. Deze informatie over beleids naleving wordt vanuit intune doorgestuurd naar Azure AD, waarbij voorwaardelijke toegang kan besluiten om toegang tot resources toe te kennen of te blok keren. Zie voor meer informatie over nalevings beleid het artikel [regels instellen op apparaten om toegang tot resources in uw organisatie in te stellen met intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
 
-Een apparaat kan worden gemarkeerd als compatibel door intune (voor elk besturings systeem van een apparaat) of door een MDM-systeem van derden voor Windows 10-apparaten. MDM-systemen van derden voor apparaten met een ander besturings systeem dan Windows 10 worden niet ondersteund.
+Een apparaat kan worden gemarkeerd als compatibel door intune (voor elk besturings systeem van een apparaat) of door een MDM-systeem van derden voor Windows 10-apparaten. Jamf Pro is het enige ondersteunde MDM-systeem van derden. Meer informatie over integratie vindt u in het artikel, [Integreer Jamf Pro met intune voor naleving](/intune/protect/conditional-access-integrate-jamf).
 
 Apparaten moeten worden geregistreerd in azure AD voordat ze kunnen worden gemarkeerd als compatibel. Meer informatie over apparaatregistratie vindt u in het artikel, [wat een apparaat-id is](../devices/overview.md).
 

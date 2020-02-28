@@ -3,17 +3,16 @@ title: Gegevens van klassieke Windows-VM'S naar Azure Monitor Data Base voor met
 description: De metrische gegevens van het gast besturingssysteem verzenden naar het Azure Monitor van een virtuele Windows-machine (klassiek)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655807"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure Monitor metrics voor een virtuele Windows-machine (klassiek)
 
@@ -60,7 +59,7 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
 
 ## <a name="author-diagnostics-extension-configuration"></a>Configuratie van de extensie voor diagnostische gegevens van auteur
 
-1. Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatie meter items de diagnostische uitbrei ding moet worden verzameld voor uw klassieke VM. Hier volgt een voorbeeld:
+1. Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatie meter items de diagnostische uitbrei ding moet worden verzameld voor uw klassieke VM. Hier volgt een voor beeld:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

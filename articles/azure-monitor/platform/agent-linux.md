@@ -1,18 +1,17 @@
 ---
 title: Linux-computers verbinden met Azure Monitor | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u verbinding maakt tussen Linux-computers die worden gehost in andere Clouds of on-premises naar Azure Monitor met de Log Analytics-agent voor Linux.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668703"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux-computers verbinden met Azure Monitor
 
@@ -68,9 +67,9 @@ Voordat u de Log Analytics-agent voor Linux installeert, hebt u eerst de werkrui
  
 4. Selecteer **Verbonden bronnen** en selecteer vervolgens **Linux-servers**.
 
-5. De waarde rechts van **Werkruimte-id** en **Primaire sleutel**. Kopieer en plak beide in uw favoriete editor.
+5. De waarde rechts van **Werkruimte-ID** en **Primaire sleutel**. Kopieer en plak beide in uw favoriete editor.
 
-## <a name="install-the-agent-manually"></a>De agent handmatig installeren
+## <a name="install-the-agent-manually"></a>De agent hand matig installeren
 
 De Log Analytics-agent voor Linux bevindt zich in een zelfextraherende shell-script bundel en kan worden geïnstalleerd. Deze bundel bevat Debian-en RPM-pakketten voor elk van de agent onderdelen en kan rechtstreeks of geëxtraheerd worden geïnstalleerd om de afzonderlijke pakketten op te halen. Er is één bundel voor x64 en één voor x86-architecturen. 
 

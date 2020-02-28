@@ -1,18 +1,17 @@
 ---
 title: Query bereik vastleggen in Azure Monitor Log Analytics | Microsoft Docs
 description: Beschrijft het bereik en het tijds bereik voor een logboek query in Azure Monitor Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365203"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660306"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Query bereik en tijds bereik in Azure Monitor vastleggen Log Analytics
 Wanneer u een [logboek query](log-query-overview.md) uitvoert in [Log Analytics in het Azure Portal](get-started-portal.md), is de set gegevens die door de query wordt geëvalueerd, afhankelijk van het bereik en het tijds bereik dat u selecteert. In dit artikel worden de bereik-en tijds periode beschreven en wordt uitgelegd hoe u deze kunt instellen, afhankelijk van uw vereisten. Ook wordt het gedrag van verschillende soorten bereiken beschreven.
@@ -23,7 +22,7 @@ Het query bereik definieert de records die door de query worden geëvalueerd. Di
 
 De scope wordt altijd linksboven in het Log Analytics-venster weer gegeven. Een pictogram geeft aan of het bereik een Log Analytics-werk ruimte of een Application Insights-toepassing is. Geen pictogram geeft aan dat er een andere Azure-resource is.
 
-![Scope](media/scope/scope.png)
+![Bereik](media/scope/scope.png)
 
 Het bereik wordt bepaald door de methode die u gebruikt om Log Analytics te starten. in sommige gevallen kunt u het bereik wijzigen door erop te klikken. De volgende tabel geeft een lijst van de verschillende soorten bereiken die worden gebruikt en de verschillende Details voor elk bereik.
 
@@ -40,13 +39,13 @@ Het bereik wordt bepaald door de methode die u gebruikt om Log Analytics te star
 Wanneer het query bereik een Log Analytics werk ruimte of een Application Insights toepassing is, zijn alle opties in de portal en alle query opdrachten beschikbaar. De volgende opties in de portal zijn niet beschikbaar als deze zijn gekoppeld aan een resource, omdat ze zijn verbonden met één werk ruimte of toepassing:
 
 - Opslaan
-- Queryverkenner
-- Nieuwe waarschuwingsregel
+- Query Verkenner
+- Nieuwe waarschuwings regel
 
 U kunt de volgende opdrachten niet gebruiken in een query wanneer het bereik is ingesteld op een resource, omdat het query bereik al werk ruimten bevat met gegevens voor die resource of set resources:
 
 - [app](app-expression.md)
-- [workspace](workspace-expression.md)
+- [werk ruimte](workspace-expression.md)
  
 
 ## <a name="query-limits"></a>Query limieten

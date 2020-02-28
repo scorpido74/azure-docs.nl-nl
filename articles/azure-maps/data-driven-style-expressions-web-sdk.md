@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189654"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657100"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
@@ -91,6 +91,8 @@ Gegevens expressies bieden toegang tot de eigenschaps gegevens in een functie.
 | `['has', string, object]` | booleaans | Hiermee wordt bepaald of de eigenschappen van het object de opgegeven eigenschap hebben. |
 | `['id']` | waarde | Hiermee haalt u de ID van de functie op als deze een bevat. |
 | `['length', string | array]` | getal | Hiermee wordt de lengte van een teken reeks of een matrix opgehaald. |
+| `['in', boolean | string | number, array]` | booleaans | Hiermee wordt bepaald of een item in een matrix voor komt |
+| `['in', substring, string]` | booleaans | Hiermee wordt bepaald of een subtekenreeks voor komt in een teken reeks |
 
 **Voorbeelden**
 

@@ -1,18 +1,17 @@
 ---
 title: Een Log Analytics-werkruimte met behulp van Azure PowerShell maken | Microsoft Docs
 description: Informatie over het maken van een Log Analytics-werkruimte om het beheer van oplossingen en gegevens verzamelen van uw cloud en on-premises omgevingen met Azure PowerShell mogelijk.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 87550e7ee3008418fde84596a811d44d02191cee
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513521"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659897"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Een Log Analytics-werkruimte maken met Azure PowerShell
 
@@ -25,11 +24,11 @@ De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-re
  
 Zie de volgende onderwerpen voor andere bronnen, zoals Azure-VM's en Windows of Linux-VM's in uw omgeving:
 
-* [Verzamelen van gegevens van virtuele machines van Azure](../learn/quick-collect-azurevm.md)
-* [Gegevens verzamelen van hybride Linux-computer](../learn/quick-collect-linux-computer.md)
-* [Gegevens verzamelen van hybride Windows-computer](quick-collect-windows-computer.md)
+* [Gegevens verzamelen van virtuele machines van Azure](../learn/quick-collect-azurevm.md)
+* [Gegevens verzamelen van een hybride Linux-computer](../learn/quick-collect-linux-computer.md)
+* [Gegevens verzamelen van de hybride Windows-computer](quick-collect-windows-computer.md)
 
-Als u geen Azure-abonnement hebt, maakt u [een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan [een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -48,7 +47,7 @@ De volgende parameters instelt een standaardwaarde:
 * SKU - standaard ingesteld op de nieuwe prijzen Per GB-laag met de uitgebracht in het prijsmodel van April 2018
 
 >[!WARNING]
->Als het maken of configureren van een Log Analytics-werkruimte in een abonnement dat is deelneemt aan het nieuwe prijsmodel April 2018, is het de enige geldige Log Analytics prijscategorie **PerGB2018**. 
+>Als u een Log Analytics-werk ruimte maakt of configureert in een abonnement dat is aangemeld met het nieuwe prijs model van april 2018, is de enige geldige Log Analytics prijs categorie **PerGB2018**. 
 >
 
 ### <a name="create-and-deploy-template"></a>Sjabloon maken en implementeren
@@ -109,8 +108,8 @@ De volgende parameters instelt een standaardwaarde:
     }
     ```
 
-2. De sjabloon bijwerken om aan uw eisen voldoen. Beoordeling [Microsoft.OperationalInsights/workspaces sjabloon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) verwijzing voor meer informatie over welke eigenschappen en waarden worden ondersteund. 
-3. Sla dit bestand als **deploylaworkspacetemplate.json** naar een lokale map.   
+2. De sjabloon bijwerken om aan uw eisen voldoen. Raadpleeg de naslag informatie over [micro soft. OperationalInsights/werkruimte sjablonen](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) als u wilt weten welke eigenschappen en waarden worden ondersteund. 
+3. Sla dit bestand op als **deploylaworkspacetemplate. json** naar een lokale map.   
 4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten in de map met de sjabloon. Wanneer u wordt gevraagd om de naam van een werk ruimte, geeft u een naam op die wereld wijd uniek is voor alle Azure-abonnementen.
 
     ```powershell
@@ -125,6 +124,6 @@ De implementatie kan enkele minuten duren. Als deze is voltooid, ziet u een beri
 Nu dat u een werkruimte beschikbaar hebt, kunt u verzamelen van telemetrie bewaking configureren, uitvoeren van zoekopdrachten in Logboeken om die gegevens te analyseren en toevoegen van een oplossing om aanvullende gegevens en analytische informatie te bieden.  
 
 * Zie [Azure service-logboeken en-metrische gegevens verzamelen voor gebruik in azure monitor](../platform/collect-azure-metrics-logs.md)voor informatie over het inschakelen van het verzamelen van data van Azure-resources met Azure Diagnostics of Azure Storage.  
-* Voeg [System Center Operations Manager als een gegevensbron](../platform/om-agents.md) voor het verzamelen van gegevens van agents die rapporteren van uw Operations Manager-beheergroep en sla deze op in uw Log Analytics-werkruimte.  
-* Verbinding maken met [Configuration Manager](../platform/collect-sccm.md) voor het importeren van computers die lid van verzamelingen in de hiërarchie zijn.  
+* Voeg [System Center Operations Manager als gegevens bron](../platform/om-agents.md) toe om gegevens te verzamelen van agents die uw Operations Manager beheer groep rapporteren en op te slaan in uw log Analytics-werk ruimte.  
+* Verbind [Configuration Manager](../platform/collect-sccm.md) om computers te importeren die lid zijn van verzamelingen in de hiërarchie.  
 * Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.

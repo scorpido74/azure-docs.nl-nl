@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589467"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669553"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Virtuele netwerken ontwerpen met NAT-gateway bronnen (open bare preview)
 
@@ -34,7 +34,7 @@ NAT-gateway bronnen maken deel uit van [Virtual Network NAT](nat-overview.md) en
 
 
 >[!NOTE] 
->Virtual Network NAT is op dit moment beschikbaar als open bare preview. Het is momenteel alleen beschikbaar in een beperkt aantal [regio's](nat-overview.md#region-availability). Deze preview is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network NAT is op dit moment beschikbaar als open bare preview. Het is momenteel alleen beschikbaar in een beperkt aantal [regio's](nat-overview.md#region-availability). Deze preview is beschikbaar zonder service level agreement en wordt niet aanbevolen voor productie werkbelastingen. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>NAT implementeren
 
@@ -365,5 +365,5 @@ We willen weten hoe we de service kunnen verbeteren. Deel uw [feedback over de o
   * [rest API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
   * [Azure cli](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
   * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Vertel ons wat u verder kunt bouwen in UserVoice](https://aka/natuservoice).
+- [Vertel ons wat u verder kunt bouwen in UserVoice](https://aka.ms/natuservoice).
 - [Feedback geven over de open bare preview](https://aka.ms/natfeedback).

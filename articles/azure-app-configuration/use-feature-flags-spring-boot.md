@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687169"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656021"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Zelf studie: functie vlaggen gebruiken in een Spring boot-app
 
@@ -51,11 +51,23 @@ U wordt aangeraden de functie vlaggen buiten de toepassing te blijven en deze af
 
 De eenvoudigste manier om uw Spring boot-toepassing te verbinden met app-configuratie is via de configuratie provider:
 
+### <a name="spring-cloud-11x"></a>Lente Cloud 1.1. x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Lente Cloud 1.2. x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,23 +81,22 @@ Feature Manager ondersteunt *Application. yml* als een configuratie bron voor fu
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
 Per Conventie wordt het gedeelte `feature-management` van dit YML-document gebruikt voor instellingen voor functie vlaggen. Het vorige voor beeld toont drie functie vlaggen waarvoor de filters zijn gedefinieerd in de eigenschap `EnabledFor`:
 
-* `FeatureA` is *aan*.
-* `FeatureB` is *uitgeschakeld*.
-* `FeatureC` Hiermee geeft u een filter op met de naam `Percentage` met een `Parameters` eigenschap. `Percentage` is een configureerbaar filter. In dit voor beeld geeft `Percentage` een kans van 50 procent *op*voor de `FeatureC`-vlag.
+* `feature-a` is *aan*.
+* `feature-b` is *uitgeschakeld*.
+* `feature-c` Hiermee geeft u een filter op met de naam `Percentage` met een `parameters` eigenschap. `Percentage` is een configureerbaar filter. In dit voor beeld geeft `Percentage` een kans van 50 procent *op*voor de `feature-c`-vlag.
 
 ## <a name="feature-flag-checks"></a>Controles van functie vlaggen
 
@@ -94,7 +105,7 @@ Het basis patroon van functie beheer is om eerst te controleren of een functie v
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -118,11 +129,11 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Controller acties
 
-In MVC-controllers gebruikt u het kenmerk `@FeatureGate` om te bepalen of een bepaalde actie is ingeschakeld. Voor de volgende `Index` actie moet `FeatureA` zijn *ingeschakeld* voordat deze kan worden uitgevoerd:
+In MVC-controllers gebruikt u het kenmerk `@FeatureGate` om te bepalen of een bepaalde actie is ingeschakeld. Voor de volgende `Index` actie moet `feature-a` zijn *ingeschakeld* voordat deze kan worden uitgevoerd:
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
@@ -132,7 +143,7 @@ Wanneer een MVC-controller of-actie wordt geblokkeerd omdat de vlag voor het bep
 
 ## <a name="mvc-filters"></a>MVC-filters
 
-U kunt MVC-filters zo instellen dat ze worden geactiveerd op basis van de status van een functie vlag. Met de volgende code wordt een MVC-filter toegevoegd met de naam `FeatureFlagFilter`. Dit filter wordt alleen in de MVC-pijp lijn geactiveerd als `FeatureA` is ingeschakeld.
+U kunt MVC-filters zo instellen dat ze worden geactiveerd op basis van de status van een functie vlag. Met de volgende code wordt een MVC-filter toegevoegd met de naam `FeatureFlagFilter`. Dit filter wordt alleen in de MVC-pijp lijn geactiveerd als `feature-a` is ingeschakeld.
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -156,11 +167,11 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Routes
 
-U kunt functie vlaggen gebruiken om routes om te leiden. Met de volgende code wordt een gebruiker omgeleid van `FeatureA` is ingeschakeld:
+U kunt functie vlaggen gebruiken om routes om te leiden. Met de volgende code wordt een gebruiker omgeleid van `feature-a` is ingeschakeld:
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }

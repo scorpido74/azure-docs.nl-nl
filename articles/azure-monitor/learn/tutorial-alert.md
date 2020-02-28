@@ -1,25 +1,24 @@
 ---
 title: Waarschuwingen verzenden vanuit Azure Application Insights | Microsoft Docs
 description: Zelfstudie over het verzenden van waarschuwingen als reactie op fouten in uw toepassing met behulp van Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: e45e6fb38296c5f3337f9edfb50cd9548ca5e210
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398435"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656259"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Toepassingsstatus bewaken en waarschuwingen erover verzenden met Azure Application Insights
 
 Met Azure Application Insights kunt u uw toepassing bewaken en waarschuwingen ontvangen wanneer deze niet beschikbaar is, wanneer er fouten optreden, of wanneer er sprake is van prestatieproblemen.  In deze zelf studie doorloopt u het proces van het maken van tests om de beschik baarheid van uw toepassing continu te controleren.
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Beschikbaarheidstest maken voor het continu controleren van de reacties van de toepassing
@@ -27,7 +26,7 @@ Procedures voor:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 Een [Application Insights-resource](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)maken.
 

@@ -1,18 +1,14 @@
 ---
 title: Node.js-services bewaken met Azure Application Insights | Microsoft Docs
 description: Prestaties bewaken en problemen detecteren in Node.js-services met Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820721"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670012"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
@@ -88,7 +84,7 @@ Selecteer in de sectie **ONDERZOEKEN** de andere beschikbare weergaven voor info
 
 ![Sectie onderzoeken](./media/nodejs/007-investigate-pane.png)
 
-#### <a name="no-data"></a>Geen gegevens?
+#### <a name="no-data"></a>Zijn er geen gegevens?
 
 Er kan vertraging optreden voordat items worden weergegeven in de portal omdat met de SDK gegevens in batches worden geplaatst voor verzending. Als u geen gegevens ziet in de resource, kunt u de volgende oplossingen proberen:
 

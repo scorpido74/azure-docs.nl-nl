@@ -1,18 +1,17 @@
 ---
 title: DNS-analyse oplossing in Azure Monitor | Microsoft Docs
 description: Stel de DNS-analyse-oplossing in Azure Monitor in en gebruik deze om inzicht te krijgen in de DNS-infra structuur voor beveiliging, prestaties en bewerkingen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: bca77db3452aecb31852c4c50e7754c7777fc458
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971265"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657330"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Verzamel inzichten over uw DNS-infrastructuur met de oplossing DNS Analytics Preview
 
@@ -38,31 +37,31 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 | --- | --- | --- |
 | [Windows-agents](../platform/agent-windows.md) | Ja | De oplossing verzamelt DNS-gegevens van Windows-agents. |
 | [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen DNS-gegevens van directe Linux-agents. |
-| [System Center Operations Manager-beheergroep](../platform/om-agents.md) | Ja | De oplossing verzamelt DNS-gegevens van agents in een verbonden beheergroep van Operations Manager. Een directe verbinding van de Operations Manager agent naar Azure Monitor is niet vereist. Gegevens uit de beheergroep doorgestuurd naar de Log Analytics-werkruimte. |
+| [System Center Operations Manager beheer groep](../platform/om-agents.md) | Ja | De oplossing verzamelt DNS-gegevens van agents in een verbonden beheergroep van Operations Manager. Een directe verbinding van de Operations Manager agent naar Azure Monitor is niet vereist. Gegevens uit de beheergroep doorgestuurd naar de Log Analytics-werkruimte. |
 | [Azure Storage-account](../platform/collect-azure-metrics-logs.md) | Nee | Azure storage wordt niet gebruikt door de oplossing. |
 
 ### <a name="data-collection-details"></a>Details van de verzameling gegevens
 
-De oplossing verzamelt DNS-inventarisatie- en DNS-gebeurtenis met betrekking tot gegevens van de DNS-servers waarop een Log Analytics-agent is geïnstalleerd. Deze gegevens worden vervolgens geüpload naar Azure Monitor en weer gegeven in het dash board van de oplossing. Inventarisatie-gerelateerde gegevens, zoals het aantal DNS-servers, -zones en -bronrecords worden verzameld door het uitvoeren van de DNS PowerShell-cmdlets. De gegevens worden eenmaal per twee dagen bijgewerkt. De gebeurtenis-gerelateerde gegevens worden verzameld in de buurt van real-time uit de [analytische en auditlogboeken](https://technet.microsoft.com/library/dn800669.aspx#enhanc) geleverd door de verbeterde DNS-logboekregistratie en diagnostische gegevens in Windows Server 2012 R2.
+De oplossing verzamelt DNS-inventarisatie- en DNS-gebeurtenis met betrekking tot gegevens van de DNS-servers waarop een Log Analytics-agent is geïnstalleerd. Deze gegevens worden vervolgens geüpload naar Azure Monitor en weer gegeven in het dash board van de oplossing. Inventarisatie-gerelateerde gegevens, zoals het aantal DNS-servers, -zones en -bronrecords worden verzameld door het uitvoeren van de DNS PowerShell-cmdlets. De gegevens worden eenmaal per twee dagen bijgewerkt. De gebeurtenis gegevens worden in realtime verzameld van de [analyse-en audit logboeken](https://technet.microsoft.com/library/dn800669.aspx#enhanc) die zijn opgenomen in de verbeterde DNS-logboek registratie en diagnoses in Windows Server 2012 R2.
 
 ## <a name="configuration"></a>Configuratie
 
 Gebruik de volgende informatie in de oplossing te configureren:
 
-- Hebt u een [Windows](../platform/agent-windows.md) of [Operations Manager](../platform/om-agents.md) -agent op elke DNS-server die u wilt bewaken.
-- U kunt de oplossing DNS Analytics toevoegen aan uw Log Analytics-werkruimte van de [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). U kunt ook het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](solutions.md)gebruiken.
+- U moet beschikken over een [Windows](../platform/agent-windows.md) -of [Operations Manager](../platform/om-agents.md) -agent op elke DNS-server die u wilt bewaken.
+- U kunt de DNS-analyse oplossing toevoegen aan uw Log Analytics-werk ruimte vanuit [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). U kunt ook het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](solutions.md)gebruiken.
 
 De oplossing start het verzamelen van gegevens zonder de noodzaak van verdere configuratie. Echter, kunt u de volgende configuratie voor het aanpassen van het verzamelen van gegevens.
 
 ### <a name="configure-the-solution"></a>De oplossing configureren
 
-Klik op het dashboard van de oplossing **configuratie** om de pagina configuratie van DNS Analytics te openen. Er zijn twee soorten wijzigingen in de configuratie die u kunt maken:
+Klik in het dash board van de oplossing op **configuratie** om de pagina DNS-analyse configuratie te openen. Er zijn twee soorten wijzigingen in de configuratie die u kunt maken:
 
-- **Goedgekeurde domeinnamen**. De opzoekquery's worden niet door de oplossing worden verwerkt. Wordt een lijst met toegestane domeinnaamachtervoegsels bijgehouden. De lookup-query's die worden omgezet naar de domeinnamen die overeenkomen met de naam van domeinachtervoegsels in deze lijst met toegestane adressen worden niet verwerkt door de oplossing. Geen verwerking van white list-domein namen helpt bij het optimaliseren van de gegevens die naar Azure Monitor worden verzonden. De standaard goedgekeurde lijst bevat populaire openbare domeinnamen, zoals www.google.com en www.facebook.com. U kunt de volledige lijst met weergeven door te schuiven.
+- **Domein namen white list**. De opzoekquery's worden niet door de oplossing worden verwerkt. Wordt een lijst met toegestane domeinnaamachtervoegsels bijgehouden. De lookup-query's die worden omgezet naar de domeinnamen die overeenkomen met de naam van domeinachtervoegsels in deze lijst met toegestane adressen worden niet verwerkt door de oplossing. Geen verwerking van white list-domein namen helpt bij het optimaliseren van de gegevens die naar Azure Monitor worden verzonden. De standaard goedgekeurde lijst bevat populaire openbare domeinnamen, zoals www.google.com en www.facebook.com. U kunt de volledige lijst met weergeven door te schuiven.
 
   De lijst om toe te voegen van eventuele achtervoegsel domeinnaam die u wilt opzoeken inzichten voor weergeven, kunt u wijzigen. U kunt ook een achtervoegsel domeinnaam die u niet wilt opzoeken inzichten voor verwijderen.
 
-- **Dremepelwaarde voor zeer actieve Client**. DNS-clients die groter zijn dan de drempelwaarde voor het aantal opzoekaanvragen zijn gemarkeerd de **DNS-Clients** blade. De standaarddrempelwaarde is 1000. U kunt de drempel voor bewerken.
+- **Drempel waarde voor dremepelwaarde-client**. DNS-clients die de drempel voor het aantal lookup-aanvragen overschrijden, worden gemarkeerd op de Blade **DNS-clients** . De standaarddrempelwaarde is 1000. U kunt de drempel voor bewerken.
 
     ![Goedgekeurde domeinnamen](./media/dns-analytics/dns-config.png)
 
@@ -90,7 +89,7 @@ De DNS-tegel bevat het aantal DNS-servers waarop de gegevens worden verzameld. H
 
 ### <a name="solution-dashboard"></a>Dashboard van de oplossing
 
-Dashboard van de oplossing bevat een samenvatting van de gegevens voor de verschillende functies van de oplossing. Het bevat ook koppelingen naar de gedetailleerde weergave voor forensische analyse en diagnose. Standaard worden de gegevens weergegeven voor de afgelopen zeven dagen. U kunt het bereik van de datum en tijd wijzigen met behulp van de **-upbesturingselement voor selectie van datum / tijd-** , zoals wordt weergegeven in de volgende afbeelding:
+Dashboard van de oplossing bevat een samenvatting van de gegevens voor de verschillende functies van de oplossing. Het bevat ook koppelingen naar de gedetailleerde weergave voor forensische analyse en diagnose. Standaard worden de gegevens weergegeven voor de afgelopen zeven dagen. U kunt het datum-en tijds bereik wijzigen met behulp van het **besturings element datum-tijd selectie**, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Time-upbesturingselement voor selectie](./media/dns-analytics/dns-time.png)
 
@@ -100,7 +99,7 @@ Dashboard van de oplossing ziet u de volgende blades:
 
 ![De blade DNS-beveiliging](./media/dns-analytics/dns-security-blade.png)
 
-Wanneer u een client-IP-adres in de lijst klikt, wordt zoeken in Logboeken wordt geopend en worden de details van het opzoeken van de respectieve query. In het volgende voorbeeld DNS Analytics gedetecteerd dat de communicatie is uitgevoerd met een [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621):
+Wanneer u een client-IP-adres in de lijst klikt, wordt zoeken in Logboeken wordt geopend en worden de details van het opzoeken van de respectieve query. In het volgende voor beeld heeft DNS-analyse gedetecteerd dat de communicatie is uitgevoerd met een [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621):
 
 ![Resultaten van de logboekzoekopdracht ircbot weergeven](./media/dns-analytics/ircbot.png)
 
@@ -114,15 +113,15 @@ De informatie helpt u bij het identificeren van de:
 - De reden voor witte het schadelijke IP-adres.
 - Tijd van de detectie.
 
-**Domeinen die zijn opgevraagd**. Biedt de meest voorkomende domeinnamen worden opgevraagd met de DNS-clients in uw omgeving. Hier vindt u de lijst van alle domeinnamen die zijn opgevraagd. U kunt ook inzoomen op de details van de lookup-aanvraag van een specifieke domeinnaam in zoeken in Logboeken.
+**Query's in domeinen**. Biedt de meest voorkomende domeinnamen worden opgevraagd met de DNS-clients in uw omgeving. Hier vindt u de lijst van alle domeinnamen die zijn opgevraagd. U kunt ook inzoomen op de details van de lookup-aanvraag van een specifieke domeinnaam in zoeken in Logboeken.
 
 ![Domeinen opgevraagde blade](./media/dns-analytics/domains-queried-blade.png)
 
-**DNS-Clients**. Rapporten van de clients *inbreuk op de drempelwaarde* voor het aantal query's in de geselecteerde tijdsperiode. U kunt de lijst van alle DNS-clients en de details van de query's die door deze in zoeken in Logboeken weergeven.
+**DNS-clients**. Rapporteert de clients die *de drempel waarde* voor het aantal query's in de gekozen tijds periode hebben geschonden. U kunt de lijst van alle DNS-clients en de details van de query's die door deze in zoeken in Logboeken weergeven.
 
 ![Blade DNS-Clients](./media/dns-analytics/dns-clients-blade.png)
 
-**Dynamische DNS-registraties**. Rapporten naam registratiefouten. Alle fouten voor het adres van [bronrecords](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (Type A en AAAA) zijn gemarkeerd, samen met de client-IP-adressen die de van registratieaanvragen. U kunt deze informatie vervolgens gebruiken om te vinden van de hoofdoorzaak van de registratie is mislukt door de volgende stappen:
+**Dynamische DNS-registraties**. Rapporten naam registratiefouten. Alle registratie fouten voor adres [bron records](https://en.wikipedia.org/wiki/List_of_DNS_record_types) (type A en AAAA) worden gemarkeerd samen met de client-ip's die de registratie aanvragen hebben ingediend. U kunt deze informatie vervolgens gebruiken om te vinden van de hoofdoorzaak van de registratie is mislukt door de volgende stappen:
 
 1. Zoek de zone die gemachtigd is voor de naam die de client wilt bijwerken.
 
@@ -134,43 +133,43 @@ De informatie helpt u bij het identificeren van de:
 
     ![Dynamische DNS-registraties-blade](./media/dns-analytics/dynamic-dns-reg-blade.png)
 
-**Naam van aanvragen voor naamregistraties**. De bovenste tegel ziet u een trendlijn van geslaagde en mislukte DNS-aanvragen voor dynamische updates. De lagere tegel geeft een lijst van de top 10-clients die mislukte DNS-update aanvragen om de DNS-servers, gesorteerd op basis van het aantal fouten te verzenden.
+**Naam registratie aanvragen**. De bovenste tegel ziet u een trendlijn van geslaagde en mislukte DNS-aanvragen voor dynamische updates. De lagere tegel geeft een lijst van de top 10-clients die mislukte DNS-update aanvragen om de DNS-servers, gesorteerd op basis van het aantal fouten te verzenden.
 
 ![Naam registratie aanvragen blade](./media/dns-analytics/name-reg-req-blade.png)
 
-**Voorbeeld van een Analytics-query's DDI**. Bevat een lijst van de meest voorkomende zoekquery's die rechtstreeks ophalen van onbewerkte analytics-gegevens.
+Voor **beelden van DDI Analytics-query's**. Bevat een lijst van de meest voorkomende zoekquery's die rechtstreeks ophalen van onbewerkte analytics-gegevens.
 
 
 ![Voorbeeldquery's](./media/dns-analytics/queries.png)
 
 U kunt deze query's gebruiken als uitgangspunt voor het maken van uw eigen query's voor aangepaste rapportage. De query's koppelen aan de pagina DNS Analytics zoeken in Logboeken is waar de resultaten worden weergegeven:
 
-- **Lijst met DNS-Servers**. Geeft een lijst weer van alle DNS-servers met hun bijbehorende FQDN-naam, domeinnaam, naam van het forest en server IP-adressen.
-- **Lijst met DNS-Zones**. Geeft een lijst weer van alle DNS-zones met de naam van de bijbehorende zone, de status van de dynamische update, naamservers en DNSSEC-ondertekeningsstatus.
-- **Ongebruikte resourcerecords**. Geeft een lijst van alle niet-gebruikte/verouderd resourcerecords. Deze lijst bevat de naam van de resource record, bronrecordtype, de bijbehorende DNS-server, tijd voor het genereren van record en de naam van zone. U kunt deze lijst gebruiken om te identificeren van de DNS-bronrecords die niet langer in gebruik zijn. Op basis van deze informatie, kunt u vervolgens verwijderen die items uit de DNS-servers.
-- **Querybelasting van DNS-Servers**. Toont informatie zodat u een perspectief van de DNS-belasting op uw DNS-servers krijgt. Deze informatie kunt u de capaciteit voor de servers plannen. Gaat u naar de **metrische gegevens** tab om de weergave wijzigen in een grafische visualisatie. In deze weergave helpt u begrijpen hoe de DNS-belasting is verdeeld over de DNS-servers. Deze DNS-query tarief laat trends zien voor elke server.
+- **Lijst met DNS-servers**. Geeft een lijst weer van alle DNS-servers met hun bijbehorende FQDN-naam, domeinnaam, naam van het forest en server IP-adressen.
+- **Lijst met DNS-zones**. Geeft een lijst weer van alle DNS-zones met de naam van de bijbehorende zone, de status van de dynamische update, naamservers en DNSSEC-ondertekeningsstatus.
+- **Ongebruikte resource records**. Geeft een lijst van alle niet-gebruikte/verouderd resourcerecords. Deze lijst bevat de naam van de resource record, bronrecordtype, de bijbehorende DNS-server, tijd voor het genereren van record en de naam van zone. U kunt deze lijst gebruiken om te identificeren van de DNS-bronrecords die niet langer in gebruik zijn. Op basis van deze informatie, kunt u vervolgens verwijderen die items uit de DNS-servers.
+- **DNS-servers query laden**. Toont informatie zodat u een perspectief van de DNS-belasting op uw DNS-servers krijgt. Deze informatie kunt u de capaciteit voor de servers plannen. U kunt naar het tabblad **metrische gegevens** gaan om de weer gave te wijzigen in een grafische visualisatie. In deze weergave helpt u begrijpen hoe de DNS-belasting is verdeeld over de DNS-servers. Deze DNS-query tarief laat trends zien voor elke server.
 
     ![Zoekresultaten voor DNS-servers query-logboek](./media/dns-analytics/dns-servers-query-load.png)
 
-- **Querybelasting van DNS-Zones**. Toont de statistieken van de DNS-zone-query-per-seconde van alle zones op de DNS-servers die worden beheerd door de oplossing. Klik op de **metrische gegevens** tabblad om te wijzigen van de weergave van gedetailleerde records in een grafische visualisatie van de resultaten.
-- **Configuratiegebeurtenissen**. Bevat alle DNS-configuratie wijzigen-gebeurtenissen en bijbehorende berichten. Vervolgens kunt u deze gebeurtenissen op basis van tijd van de gebeurtenis, gebeurtenis-ID, DNS-server, filteren of taakcategorie. Aan de hand van de gegevens kunt u wijzigingen in specifieke DNS-servers op specifieke tijdstippen met controleren.
-- **Logboek met analytische DNS**. Geeft alle analytische gebeurtenissen op alle DNS-servers die worden beheerd door de oplossing. U kunt vervolgens filteren deze gebeurtenissen op basis van tijd van de gebeurtenis, gebeurtenis-ID, DNS-server, client-IP-die de opzoekquery query type taakcategorie en. DNS-server-analysegebeurtenissen inschakelen activiteiten bijhouden op de DNS-server. Een analytische gebeurtenis wordt geregistreerd telkens wanneer de server verzendt of ontvangt DNS-gegevens.
+- **DNS-zones query belasting**. Toont de statistieken van de DNS-zone-query-per-seconde van alle zones op de DNS-servers die worden beheerd door de oplossing. Klik op het tabblad **metrische gegevens** om de weer gave te wijzigen van gedetailleerde records in een grafische visualisatie van de resultaten.
+- **Configuratie gebeurtenissen**. Bevat alle DNS-configuratie wijzigen-gebeurtenissen en bijbehorende berichten. Vervolgens kunt u deze gebeurtenissen op basis van tijd van de gebeurtenis, gebeurtenis-ID, DNS-server, filteren of taakcategorie. Aan de hand van de gegevens kunt u wijzigingen in specifieke DNS-servers op specifieke tijdstippen met controleren.
+- **Analytisch logboek van DNS**. Geeft alle analytische gebeurtenissen op alle DNS-servers die worden beheerd door de oplossing. U kunt vervolgens filteren deze gebeurtenissen op basis van tijd van de gebeurtenis, gebeurtenis-ID, DNS-server, client-IP-die de opzoekquery query type taakcategorie en. DNS-server-analysegebeurtenissen inschakelen activiteiten bijhouden op de DNS-server. Een analytische gebeurtenis wordt geregistreerd telkens wanneer de server verzendt of ontvangt DNS-gegevens.
 
 ### <a name="search-by-using-dns-analytics-log-search"></a>Zoeken met behulp van DNS Analytics zoeken in Logboeken
 
 U kunt een query maken op de pagina zoeken in Logboeken. U kunt uw zoekresultaten filteren met behulp van facet besturingselementen. U kunt ook geavanceerde query's te transformeren, te filteren en rapport maken op uw resultaten. Start met behulp van de volgende query's:
 
-1. In de **query zoekvak**, type `DnsEvents` om alle DNS-gebeurtenissen die worden gegenereerd door de DNS-servers worden beheerd door de oplossing weer te geven. De lijst met resultaten de logboekgegevens voor alle gebeurtenissen met betrekking tot de opzoekquery's, dynamische registraties en wijzigingen in de configuratie.
+1. Typ in het **vak Zoek opdracht**`DnsEvents` om alle DNS-gebeurtenissen weer te geven die zijn gegenereerd door de DNS-servers die worden beheerd door de oplossing. De lijst met resultaten de logboekgegevens voor alle gebeurtenissen met betrekking tot de opzoekquery's, dynamische registraties en wijzigingen in de configuratie.
 
     ![Zoeken in Logboeken DnsEvents](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a. Als u wilt de logboekgegevens voor een lookup-query's weergeven, selecteert u **LookUpQuery** als de **Subtype** filter vanuit de besturingselement facet aan de linkerkant. Er wordt een tabel met een lijst met alle gebeurtenissen van de lookup-query voor de geselecteerde periode weergegeven.
+    a. Als u de logboek gegevens voor opzoek query's wilt weer geven, selecteert u **LookUpQuery** als **subtype** filter in het facet besturings element aan de linkerkant. Er wordt een tabel met een lijst met alle gebeurtenissen van de lookup-query voor de geselecteerde periode weergegeven.
 
-    b. Als u wilt de logboekgegevens voor dynamische registraties weergeven, selecteert u **DynamicRegistration** als de **Subtype** filter vanuit de besturingselement facet aan de linkerkant. Er wordt een tabel met een lijst met alle gebeurtenissen van de dynamische registratie voor de geselecteerde periode weergegeven.
+    b. Als u de logboek gegevens voor dynamische registraties wilt weer geven, selecteert u **DynamicRegistration** als **subtype** filter in het facet besturings element aan de linkerkant. Er wordt een tabel met een lijst met alle gebeurtenissen van de dynamische registratie voor de geselecteerde periode weergegeven.
 
-    c. Als u wilt weergeven van de logboekgegevens voor wijzigingen in de configuratie, selecteer **ConfigurationChange** als de **Subtype** filter vanuit de besturingselement facet aan de linkerkant. Er wordt een tabel met een lijst met alle wijzigingsgebeurtenissen voor de configuratie voor de geselecteerde periode weergegeven.
+    c. Als u de logboek gegevens voor configuratie wijzigingen wilt weer geven, selecteert u **ConfigurationChange** als **subtype** filter in het facet besturings element aan de linkerkant. Er wordt een tabel met een lijst met alle wijzigingsgebeurtenissen voor de configuratie voor de geselecteerde periode weergegeven.
 
-1. In de **query zoekvak**, type `DnsInventory` om alle DNS-inventarisatie-gerelateerde gegevens voor de DNS-servers worden beheerd door de oplossing weer te geven. De lijst met resultaten de logboekgegevens voor DNS-servers, DNS-zones en resourcerecords.
+1. Typ in het **vak Zoek opdracht**`DnsInventory` om alle DNS-inventaris gegevens weer te geven voor de DNS-servers die worden beheerd door de oplossing. De lijst met resultaten de logboekgegevens voor DNS-servers, DNS-zones en resourcerecords.
 
     ![Zoeken in Logboeken DnsInventory](./media/dns-analytics/log-search-dnsinventory.png)
     

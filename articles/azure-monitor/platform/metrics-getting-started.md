@@ -3,17 +3,16 @@ title: Aan de slag met de Azure Metrics Explorer
 description: Meer informatie over het maken van uw eerste metrieke grafiek met Azure Metrics Explorer.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861078"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662278"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Aan de slag met Azure Metrics Explorer
 
@@ -38,14 +37,14 @@ Als u een metrische grafiek wilt maken, vanuit uw resource, resource groep, abon
 
 3. Selecteer een metrische waarde in een lijst met beschik bare metrische gegevens.
 
-    > ![Een metrische waarde selecteren](./media/metrics-getting-started/metric-picker.png)
+    > ![Een metriek selecteren](./media/metrics-getting-started/metric-picker.png)
 
 4. U kunt desgewenst de metrische aggregatie wijzigen. U kunt bijvoorbeeld aangeven dat de grafiek minimum-, maximum-of gemiddelde waarden van de metriek moet weer geven.
 
 > [!NOTE]
 > Gebruik de knop **metriek toevoegen** en herhaal deze stappen als u meerdere metrische gegevens wilt zien die in dezelfde grafiek zijn getekend. Voor meerdere grafieken in één weer gave selecteert u de knop **grafiek toevoegen** bovenaan.
 
-## <a name="select-a-time-range"></a>Een tijdsbereik selecteren
+## <a name="select-a-time-range"></a>Een tijds bereik selecteren
 
 In de grafiek worden standaard de meest recente 24 uur aan metrische gegevens weer gegeven. Gebruik het deel venster **tijd kiezer** om het tijds bereik te wijzigen, in te zoomen of uit te zoomen op de grafiek. 
 

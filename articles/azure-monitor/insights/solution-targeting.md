@@ -1,18 +1,17 @@
 ---
 title: Bewakings oplossingen richten in Azure Monitor | Microsoft Docs
 description: Met behulp van doel-en bewakings oplossingen kunt u de bewakings oplossingen beperken tot een specifieke set agents.  In dit artikel wordt beschreven hoe u een scope configuratie maakt en toepast op een oplossing.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 04b47cb6079d9213c1a20425f62286f1b2aa778b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555306"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663229"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Doelen voor bewakings oplossingen in Azure Monitor (preview-versie)
 Wanneer u een bewakings oplossing aan uw abonnement toevoegt, wordt deze automatisch standaard geïmplementeerd voor alle Windows-en Linux-agents die zijn verbonden met uw Log Analytics-werk ruimte.  U kunt uw kosten beheren en de hoeveelheid gegevens die voor een oplossing wordt verzameld beperken door deze te beperken tot een bepaalde set agents.  In dit artikel wordt beschreven hoe u **doel items van oplossingen** kunt gebruiken. Dit is een functie waarmee u een bereik kunt Toep assen op uw oplossingen.

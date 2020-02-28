@@ -1,14 +1,14 @@
 ---
 title: Wat is Azure Service Health?
 description: Persoonlijke informatie over hoe uw Azure-apps worden beïnvloed door de huidige en toekomstige problemen met de Azure-service en het onderhoud.
-ms.topic: article
+ms.topic: overview
 ms.date: 05/10/2019
-ms.openlocfilehash: 039583d9243f8ce76b33afcee098e71a670b5285
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 44b819a88baec383d2faf80ab37edb903b0a5f4d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939199"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654083"
 ---
 # <a name="what-is-azure-service-health"></a>Wat is Azure Service Health?
 

@@ -1,18 +1,14 @@
 ---
 title: Zoek functie gebruiken in Azure-toepassing Insights | Microsoft Docs
 description: Zoek en filter ruwe telemetriegegevens die zijn verzonden door uw web-app.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678067"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669672"
 ---
 # <a name="using-search-in-application-insights"></a>Zoeken in Application Insights gebruiken
 
@@ -60,12 +56,12 @@ Open de vervolg keuzelijst gebeurtenis typen en kies de gebeurtenis typen die u 
 
 De gebeurtenis typen zijn:
 
-* **Traceer**  - [Diagnostische logboeken](../../azure-monitor/app/asp-net-trace-logs.md) , waaronder TrackTrace, log4net, NLog en System. Diagnostics. trace-aanroepen.
+* **Traceer** - [Diagnostische logboeken](../../azure-monitor/app/asp-net-trace-logs.md) , waaronder TrackTrace, log4net, NLog en System. Diagnostics. trace-aanroepen.
 * **Aanvraag** -HTTP-aanvragen die door uw server toepassing worden ontvangen, waaronder pagina's, scripts, afbeeldingen, stijl bestanden en gegevens. Deze gebeurtenissen worden gebruikt voor het maken van de aanvraag-en antwoord overzichts diagrammen.
-* **Pagina weergave**  - [telemetrie verzonden door de webclient](../../azure-monitor/app/javascript.md), die wordt gebruikt om pagina weergave rapporten te maken.
+* **Pagina weergave** - [telemetrie verzonden door de webclient](../../azure-monitor/app/javascript.md), die wordt gebruikt om pagina weergave rapporten te maken.
 * **Aangepaste gebeurtenis** : als u aanroepen naar track Event () hebt ingevoegd om het [gebruik te controleren](../../azure-monitor/app/api-custom-events-metrics.md), kunt u deze hier zoeken.
 * **Uitzonde ring** -niet-onderschepte [uitzonde ringen in de server](../../azure-monitor/app/asp-net-exceptions.md)en die u registreert met behulp van TrackException ().
-* **Afhankelijkheid**  - [aanroepen van uw server toepassing](../../azure-monitor/app/asp-net-dependencies.md) naar andere services, zoals rest api's of data bases en Ajax-aanroepen vanuit uw [client code](../../azure-monitor/app/javascript.md).
+* **Afhankelijkheid** - [aanroepen van uw server toepassing](../../azure-monitor/app/asp-net-dependencies.md) naar andere services, zoals rest api's of data bases en Ajax-aanroepen vanuit uw [client code](../../azure-monitor/app/javascript.md).
 * **Beschik baarheid** -resultaten van [beschikbaarheids testen](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filteren op eigenschaps waarden
@@ -98,7 +94,7 @@ Zoeken naar volledige woorden, geen subtekenreeksen. Gebruik aanhalings tekens v
 
 | Tekenreeks | *Niet* gevonden | Gegeven |
 | --- | --- | --- |
-| HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
+| HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Verenigde Staten|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Dit zijn de zoek expressies die u kunt gebruiken:
@@ -110,7 +106,7 @@ Dit zijn de zoek expressies die u kunt gebruiken:
 | `apple OR banana` |Gebeurtenissen zoeken die een van beide woorden bevatten. Gebruik ' of ', niet ' of '. |
 | `apple NOT banana` |Gebeurtenissen zoeken die één woord bevatten, maar niet de andere. |
 
-## <a name="sampling"></a>Sampling
+## <a name="sampling"></a>Steekproeven
 
 Als uw app een grote hoeveelheid telemetrie genereert (en u de ASP.NET SDK-versie 2.0.0-beta3 of hoger gebruikt), beperkt de adaptieve steekproef module automatisch het volume dat naar de portal wordt verzonden door alleen een representatieve Fractie van gebeurtenissen te verzenden. Gebeurtenissen die betrekking hebben op dezelfde aanvraag, worden echter geselecteerd of als groep opgeheven, zodat u kunt navigeren tussen gerelateerde gebeurtenissen.
 

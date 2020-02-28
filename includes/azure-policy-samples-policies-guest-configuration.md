@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 984d7d9af306adc94bfc45d705581c08bfe07687
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a7cc1104785dcf4938d810e5e4b31f05abeb4406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495192"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780360"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Configureer tijd zone op Windows-computers.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Dit beleid maakt een toewijzing van een gast configuratie om de opgegeven tijd zone op virtuele Windows-machines in te stellen. |deployIfNotExists |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json)
 |[Vereisten implementeren voor het controleren van virtuele Linux-machines die externe verbindingen van accounts zonder wacht woorden toestaan](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |Dit beleid maakt een toewijzing van een gast configuratie om virtuele Linux-machines te controleren die externe verbindingen van accounts zonder wacht woorden toestaan. Er wordt ook een door het systeem toegewezen beheerde identiteit gemaakt en de VM-extensie voor gast configuratie geïmplementeerd. Dit beleid mag alleen worden gebruikt in combi natie met het bijbehorende controle beleid in een initiatief. Ga voor meer informatie over gast configuratie beleidsregels naar https://aka.ms/gcpol |deployIfNotExists |1.1.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json)
 |[Vereisten implementeren voor het controleren van virtuele Linux-machines waarop de machtigingen voor het passwd-bestand niet zijn ingesteld op 0644](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff19aa1c1-6b91-4c27-ae6a-970279f03db9) |Dit beleid maakt een toewijzing van een gast configuratie om virtuele Linux-machines te controleren waarvoor geen passwd-bestands machtigingen zijn ingesteld op 0644. Er wordt ook een door het systeem toegewezen beheerde identiteit gemaakt en de VM-extensie voor gast configuratie geïmplementeerd. Dit beleid mag alleen worden gebruikt in combi natie met het bijbehorende controle beleid in een initiatief. Ga voor meer informatie over gast configuratie beleidsregels naar https://aka.ms/gcpol |deployIfNotExists |1.1.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword121_Deploy.json)

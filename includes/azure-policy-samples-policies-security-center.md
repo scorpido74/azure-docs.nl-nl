@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 786075b4641675f7b36df427fff69f33c9cfc2c5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 27b453c4e20c2ae3ccb6ddda5a00e42ba4e522f6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495345"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780620"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Evaluatie van beveiligings problemen voor \[\] moet worden ingeschakeld op Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Bewaakt beveiligings problemen die worden gedetecteerd door Azure Security Center beveiligingslek evaluatie op Virtual Machines |AuditIfNotExists, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json)
 |[\[preview\]: er moeten geautoriseerde IP-bereiken worden gedefinieerd op Kubernetes Services](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Beperk de toegang tot de Kubernetes-Service Management-API door API-toegang alleen toe te kennen aan IP-adressen in specifieke bereiken. Het is raadzaam de toegang tot geautoriseerde IP-bereiken te beperken om ervoor te zorgen dat alleen toepassingen van toegestane netwerken toegang hebben tot het cluster. |Controle, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json)
 |[\[preview\]: door sturen via IP op uw virtuele machine moet worden uitgeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd352bd5-2853-4985-bf0d-73806b4a5744) |Door door sturen via IP in te scha kelen op de NIC van een virtuele machine kan de computer verkeer ontvangen die is geadresseerd aan andere bestemmingen. Door sturen via IP is zelden vereist (bijvoorbeeld wanneer de virtuele machine wordt gebruikt als een virtueel netwerk apparaat). dit moet daarom worden gecontroleerd door het netwerk beveiligings team. |AuditIfNotExists, uitgeschakeld |1.0.0-Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_IPForwardingOnVirtualMachines_Audit.json)

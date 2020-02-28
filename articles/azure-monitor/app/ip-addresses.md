@@ -1,18 +1,16 @@
 ---
 title: IP-adressen die worden gebruikt door Application Insights en Log Analytics | Microsoft Docs
 description: Uitzonde ringen voor Server firewalls vereist voor Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 02f1e5e3f3252ffa026d8dffe9fe83c9e5abe65b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7c1c65552e73fd79da0e8f0405e2ee55addff36b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899106"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656242"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
@@ -52,7 +50,7 @@ Status Monitor configuratie: alleen nodig als u wijzigingen aanbrengt.
 | Configuratie |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Configuratie |`auth.gfx.ms` | |`443` |
 | Configuratie |`login.live.com` | |`443` |
-| Installeren | `globalcdn.nuget.org`, `packages.nuget.org`,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
+| Installatie | `globalcdn.nuget.org`, `packages.nuget.org`,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Beschikbaarheidstests
 Dit is de lijst met adressen waarvan de [webtesten voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
@@ -234,7 +232,7 @@ Opmerking: het loganalytics.io-domein is eigendom van het Log Analytics-team.
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | gateway.azureserviceprofiler.net | Dynamics | 443
-| Storage | *.core.windows.net | Dynamics | 443
+| Opslag | *.core.windows.net | Dynamics | 443
 
 ## <a name="snapshot-debugger"></a>Snapshot Debugger
 
@@ -245,4 +243,4 @@ Opmerking: het loganalytics.io-domein is eigendom van het Log Analytics-team.
 | --- | --- | --- | --- |
 | Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portal | ppe.gateway.azureserviceprofiler.net | Dynamics | 443
-| Storage | *.core.windows.net | Dynamics | 443
+| Opslag | *.core.windows.net | Dynamics | 443

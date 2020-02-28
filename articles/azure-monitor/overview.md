@@ -1,22 +1,21 @@
 ---
 title: Overzicht van Azure Monitor | Microsoft Docs
 description: Overzicht van Microsoft-services en -functionaliteiten die bijdragen aan een complete bewakingsstrategie voor uw Azure-services en -toepassingen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: f5d98ecdac3acacda2b592f88e7db45dc181e8da
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934464"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669162"
 ---
 # <a name="azure-monitor-overview"></a>Overzicht van Azure Monitor
 
-Met Azure Monitor worden de beschikbaarheid en prestaties van uw toepassingen en services gemaximaliseerd, door een uitgebreide oplossing te bieden voor het verzamelen en analyseren van, en werken met telemetriegegevens vanuit uw cloud- en on-premises omgeving. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.
+Azure Monitor maximaliseert de beschik baarheid en prestaties van uw toepassingen en services door een uitgebreide oplossing te bieden voor het verzamelen, analyseren en uitvoeren van telemetrie in uw Cloud-en on-premises omgevingen. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.
 
 Er zijn slechts enkele voor beelden van wat u kunt doen met Azure Monitor:
 
@@ -68,7 +67,7 @@ Schakel de bewaking in voor uw [app Services toepassing](app/azure-web-apps.md) 
 
 Azure Monitor kunt logboek gegevens verzamelen van elke REST-client met behulp van de [Data Collector-API](platform/data-collector-api.md). Hierdoor kunt u aangepaste bewakings scenario's maken en de bewaking uitbreiden naar resources die geen telemetrie via andere bronnen beschikbaar stellen.
 
-## <a name="insights"></a>Inzichten
+## <a name="insights"></a>Insights
 Bewakings gegevens zijn alleen nuttig als u de zicht baarheid van uw computer omgeving kunt verg Roten. Azure Monitor bevat verschillende functies en hulpprogram ma's waarmee u inzicht krijgt in uw toepassingen en andere bronnen waarvan ze afhankelijk zijn. Het [bewaken van oplossingen](insights/solutions.md) en functies, zoals [Application Insights](app/app-insights-overview.md) en [Azure monitor voor containers](insights/container-insights-overview.md) , bieden uitgebreide inzichten in verschillende aspecten van uw toepassing en specifieke Azure-Services. 
 
 ### <a name="application-insights"></a>Application Insights
@@ -119,7 +118,7 @@ Met [Azure-Dash boards](../azure-portal/azure-portal-dashboards.md) kunt u versc
 ### <a name="views"></a>Weergaven
 [Weer gaven](../log-analytics/log-analytics-view-designer.md) geven logboek gegevens visueel presen teren in azure monitor.  Elke weer gave bevat één tegel die inzoomt op een combi natie van visualisaties, zoals staaf-en lijn diagrammen, en bevat een overzicht van belang rijke gegevens.  Bewakings oplossingen bevatten weer gaven waarin gegevens voor een bepaalde toepassing worden samenvatten, en u kunt uw eigen weer gaven maken om gegevens uit een logboek query weer te geven. Net als andere elementen in Azure Monitor kunnen weer gaven worden toegevoegd aan Azure-Dash boards.
 
-![Weergeven](media/overview/view.png)
+![Weergave](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power bi](https://powerbi.microsoft.com) is een Business Analytics-service die interactieve visualisaties biedt in diverse gegevens bronnen. Dit is een doel matige manier om gegevens beschikbaar te maken voor anderen binnen en buiten uw organisatie. U kunt Power BI zodanig configureren dat [logboek gegevens van Azure monitor automatisch worden geïmporteerd](../log-analytics/log-analytics-powerbi.md) om te profiteren van deze extra visualisaties.
@@ -135,7 +134,7 @@ U hebt vaak de vereiste om Azure Monitor te integreren met andere systemen en om
 [Azure Event hubs](https://docs.microsoft.com/azure/event-hubs) is een streaming-service voor het streamen van gegevens en het opnemen van gebeurtenissen, waarmee u in een real-time analyse provider of batch-en opslag adapters data kunt transformeren en opslaan. Gebruik Event Hubs om [Azure monitor gegevens te streamen](platform/stream-monitoring-data-event-hubs.md) naar Siem-en controle hulpprogramma's van de partner.
 
 
-### <a name="logic-apps"></a>Logische apps
+### <a name="logic-apps"></a>Logic Apps
 [Logic apps](https://azure.microsoft.com/services/logic-apps) is een service waarmee u taken en bedrijfs processen kunt automatiseren met werk stromen die kunnen worden geïntegreerd met verschillende systemen en services. Er zijn activiteiten beschikbaar die metrische gegevens lezen en schrijven en Logboeken in Azure Monitor, waarmee u werk stromen kunt bouwen die zijn geïntegreerd met verschillende systemen.
 
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049672"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660033"
 ---
 # <a name="linux-support"></a>Linux Support
 
@@ -21,6 +21,9 @@ U kunt de Linux SDK voor Windows Virtual Desktop gebruiken om een zelfstandige v
 ## <a name="what-is-the-linux-sdk"></a>Wat is de Linux SDK?
 
 U kunt de SDK-Api's gebruiken om bron feeds op te halen, verbinding te maken met de sessies van een bureau blad of externe toepassing en veel van de omleidingen te gebruiken die onze clients van de eerste partij ondersteunen.
+
+> [!NOTE]
+> De SDK is momenteel in ontwikkeling. Dit document wordt bijgewerkt met instructies voor toegang tot de SDK wanneer deze beschikbaar is.
 
 ### <a name="supported-linux-distributions"></a>Ondersteunde Linux-distributies
 
@@ -54,8 +57,6 @@ Voordat u een Linux-client voor Windows virtueel bureau blad kunt ontwikkelen, m
 2. Test de beschik bare clients van de eerste partij om vertrouwd te raken met de gebruikers ervaring van het virtuele Windows-bureau blad.
 
 ## <a name="next-steps"></a>Volgende stappen
-
-De SDK is momenteel in ontwikkeling. Dit document wordt bijgewerkt met instructies voor toegang tot de SDK wanneer deze beschikbaar is.
 
 Bekijk onze documentatie voor de volgende clients:
 

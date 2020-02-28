@@ -7,20 +7,21 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616754"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659948"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Open bare Azure-Load Balancer bijwerken
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU.
 
-Er zijn twee fasen in een upgrade:
+Er zijn drie fasen in een upgrade:
 
 1. De configuratie migreren
 2. Vm's toevoegen aan back-endservers van Standard Load Balancer
+3. Een uitgaande regel maken voor de load balancer voor de uitgaande verbinding
 
 In dit artikel wordt beschreven hoe u de configuratie migreert. Het toevoegen van Vm's aan back-endservers kan variëren, afhankelijk van uw specifieke omgeving. Er zijn echter algemene aanbevelingen [van](#add-vms-to-backend-pools-of-standard-load-balancer)een hoog niveau.
 
@@ -82,7 +83,7 @@ Het script uitvoeren:
     **Voorbeeld**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Vm's toevoegen aan back-endservers van Standard Load Balancer
@@ -108,6 +109,12 @@ Hier volgen enkele scenario's voor het toevoegen van Vm's aan back-endservers va
 
 * **Nieuwe Vm's maken om toe te voegen aan de back-endservers van de zojuist gemaakte standaard open bare Load Balancer**.
     * Meer instructies voor het maken van een VM en het koppelen hiervan aan Standard Load Balancer vindt u [hier](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Een uitgaande regel voor de uitgaande verbinding maken
+
+Volg de [instructies](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) voor het maken van een uitgaande regel, zodat u kunt
+* Geef de uitgaande NAT van een geheel nieuwe definitie op.
+* Het gedrag van bestaande uitgaande NAT schalen en afstemmen.
 
 ## <a name="common-questions"></a>Veelgestelde vragen
 

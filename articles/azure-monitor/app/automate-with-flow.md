@@ -1,18 +1,14 @@
 ---
 title: Azure-toepassing Insights-processen automatiseren met Microsoft Flow
 description: Meer informatie over hoe u Microsoft Flow kunt gebruiken om Herhaal bare processen snel te automatiseren met behulp van de Application Insights-connector.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7566ae87f92707180b09d50eb6e5eeccedae85b9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407548"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655088"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Azure-toepassing Insights-processen automatiseren met de connector voor Microsoft Flow
 
@@ -41,7 +37,7 @@ In deze zelf studie leert u hoe u een stroom maakt die gebruikmaakt van het algo
 
     ![Terugkeer patroon van schema instellen met behulp van de frequentie en het interval](./media/automate-with-flow/2-schedule.png)
 
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 ### <a name="step-3-add-an-application-insights-action"></a>Stap 3: een Application Insights actie toevoegen
 
@@ -66,7 +62,7 @@ Geef een naam op voor de verbinding, samen met de toepassings-ID en API-sleutel.
 
 Als het vak verbinding niet meteen wordt weer gegeven, klikt u in de rechter bovenhoek van het vak op het weglatings teken om de query in te voeren. Selecteer vervolgens mijn verbindingen of gebruik een bestaand account.
 
-Klik op **Maken**.
+Klik op **Create**.
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Stap 5: de analyse query en het grafiek type opgeven
 Met dit voor beeld worden de mislukte aanvragen in de afgelopen dag geselecteerd en wordt er een relatie met de uitzonde ringen die zijn opgetreden als onderdeel van de bewerking. Analytics correleert deze op basis van de operation_Id-id. De query segmenteert vervolgens de resultaten met behulp van de algoritme van de autocluster.

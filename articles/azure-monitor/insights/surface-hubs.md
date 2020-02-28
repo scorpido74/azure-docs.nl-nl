@@ -1,18 +1,17 @@
 ---
 title: Surface hubs bewaken met Azure Monitor | Microsoft Docs
 description: Gebruik de Surface Hub oplossing om de status van uw Surface hubs bij te houden en inzicht te krijgen in de manier waarop ze worden gebruikt.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400900"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662498"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Surface hubs bewaken met Azure Monitor om hun status bij te houden
 
@@ -32,7 +31,7 @@ Vervolgens voegt u een bestaande Log Analytics-werk ruimte toe, of maakt u een n
 * Automatisch via intune
 * Hand matig door **instellingen** op uw Surface hub apparaat.
 
-## <a name="set-up-monitoring"></a>Controle instellen
+## <a name="set-up-monitoring"></a>Bewaking instellen
 U kunt de status en activiteit van uw Surface Hub bewaken met behulp van Azure Monitor. U kunt de Surface Hub inschrijven met behulp van intune of lokaal met behulp van **instellingen** op de Surface hub.
 
 ## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>Surface hubs aansluiten op Azure Monitor via intune
@@ -61,7 +60,7 @@ Als u intune niet gebruikt om uw omgeving te beheren, kunt u apparaten hand mati
 3. Klik op **Dit apparaat**en klik onder **bewaking**op **log Analytics instellingen configureren**.
 4. Selecteer **bewaking inschakelen**.
 5. Typ in het dialoog venster Log Analytics instellingen de Log Analytics **werk ruimte-id** en typ de **werkruimte sleutel**.  
-   ![settings](./media/surface-hubs/settings.png)
+   instellingen voor ![](./media/surface-hubs/settings.png)
 6. Klik op **OK** om de configuratie te volt ooien.
 
 Er wordt een bevestiging weer gegeven met de melding of de configuratie is toegepast op het apparaat. Als dat het geval is, wordt er een bericht weer gegeven met de mede deling dat de agent is verbonden met Azure Monitor. Het apparaat begint vervolgens met het verzenden van gegevens naar Azure Monitor waar u deze kunt bekijken en er actie op moet ondernemen.

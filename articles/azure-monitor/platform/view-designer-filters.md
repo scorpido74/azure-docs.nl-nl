@@ -1,18 +1,17 @@
 ---
 title: Filters in Azure Monitor weergaven | Microsoft Docs
 description: Met een filter in een Azure Monitor weergave kunnen gebruikers de gegevens in de weer gave filteren op basis van de waarde van een bepaalde eigenschap zonder de weer gave zelf te wijzigen.  In dit artikel wordt beschreven hoe u een filter gebruikt en voegt u er een toe aan een aangepaste weer gave.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931972"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658571"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filters in Azure Monitor weer gaven
 Met een **filter** in een [Azure monitor weergave](view-designer.md) kunnen gebruikers de gegevens in de weer gave filteren op basis van de waarde van een bepaalde eigenschap zonder de weer gave zelf te wijzigen.  Zo kunt u gebruikers van uw weer gave toestaan om de weer gave alleen te filteren op gegevens van een bepaalde computer of een set computers.  U kunt meerdere filters maken op één weer gave zodat gebruikers meerdere eigenschappen kunnen filteren.  In dit artikel wordt beschreven hoe u een filter gebruikt en voegt u er een toe aan een aangepaste weer gave.
@@ -34,7 +33,7 @@ Als u alle waarden voor een filter verwijdert, wordt dat filter niet meer toegep
 
 Een filter maken op het tabblad **filters** bij het [bewerken van een weer gave](view-designer.md).  Het filter is globaal voor de weer gave en is van toepassing op alle onderdelen in de weer gave.  
 
-![Filter instellingen](media/view-designer-filters/filters-settings.png)
+![Instellingen filteren](media/view-designer-filters/filters-settings.png)
 
 De volgende tabel beschrijft de instellingen voor een filter.
 
@@ -42,18 +41,18 @@ De volgende tabel beschrijft de instellingen voor een filter.
 |:---|:---|
 | Veldnaam | De naam van het veld dat wordt gebruikt voor het filteren.  Dit veld moet overeenkomen met het veld samenvatten in de **query voor waarden**. |
 | Query voor waarden | Query die moet worden uitgevoerd om filter vervolg keuzelijst voor de gebruiker in te vullen.  Deze query moet ofwel een [samen vatting](/azure/kusto/query/summarizeoperator) ofwel een [DISTINCT](/azure/kusto/query/distinctoperator) gebruiken om unieke waarden op te geven voor een bepaald veld, en dit moet overeenkomen met de naam van het **veld**.  U kunt [sorteren](/azure/kusto/query/sortoperator) gebruiken om de waarden te sorteren die voor de gebruiker worden weer gegeven. |
-| Tag | De naam voor het veld dat wordt gebruikt in query's die het filter ondersteunen en wordt ook weer gegeven voor de gebruiker. |
+| Label | De naam voor het veld dat wordt gebruikt in query's die het filter ondersteunen en wordt ook weer gegeven voor de gebruiker. |
 
 ### <a name="examples"></a>Voorbeelden
 
 De volgende tabel bevat enkele voor beelden van algemene filters.  
 
-| Veldnaam | Query voor waarden | Tag |
+| Veldnaam | Query voor waarden | Label |
 |:--|:--|:--|
 | Computer   | Unieke &#124; heartbeat- &#124; computer sorteren op computer ASC | Computers |
-| EventLevelName | Gebeurtenis &#124; DISTINCT EventLevelName | Ernst |
-| SeverityLevel | Syslog &#124; DISTINCT-SeverityLevel | Ernst |
-| SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | Change type |
+| EventLevelName | Event &#124; distinct EventLevelName | Severity |
+| Ernstniveau | Syslog &#124; DISTINCT-SeverityLevel | Severity |
+| SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | ChangeType |
 
 
 ## <a name="modify-view-queries"></a>Weergave query's wijzigen

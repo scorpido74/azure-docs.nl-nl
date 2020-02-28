@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420599"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654661"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Apparaat-id's beheren met de Azure Portal
 
@@ -29,15 +29,10 @@ Dit artikel:
 
 ## <a name="manage-device-identities"></a>Apparaatidentiteiten beheren
 
-De Azure AD-Portal biedt een centrale plek voor het beheren van uw apparaat-id's. U kunt deze locatie bereiken met behulp van een [directe koppeling](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) of door de volgende hand matige stappen te volgen:
+De Azure AD-Portal biedt een centrale plek voor het beheren van uw apparaat-id's. U kunt deze locatie bereiken met behulp van een [directe koppeling](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) of:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-
-2. Zoek en selecteer **Azure Active Directory** of Selecteer deze in de **Start** pagina.
-
-3. Klik in de sectie **beheren** op **apparaten**.
-
-   ![Apparaatinstellingen configureren](./media/device-management-azure-portal/74.png)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Ga naar **Azure Active Directory** > **apparaten**.
 
 Op de pagina **apparaten** kunt u het volgende doen:
 
@@ -50,13 +45,11 @@ Op de pagina **apparaten** kunt u het volgende doen:
 
 Als u uw apparaat-id's wilt beheren met de Azure AD-Portal, moeten uw apparaten zijn [geregistreerd of zijn gekoppeld](overview.md) aan Azure AD. Als beheerder kunt u het proces voor het registreren en toevoegen van apparaten nauw keurig afstemmen door de apparaatinstellingen te configureren.
 
-![Apparaatinstellingen configureren](./media/device-management-azure-portal/22.png)
-
-Op de pagina Apparaatinstellingen kunt u het volgende configureren:
+Op de pagina Apparaatinstellingen kunt u instellingen configureren met betrekking tot apparaat-id's:
 
 ![Een intune-apparaat beheren](./media/device-management-azure-portal/21.png)
 
-- **Gebruikers kunnen apparaten toevoegen aan Azure AD** : met deze instelling kunt u de gebruikers selecteren die hun apparaten als aan Azure AD gekoppelde apparaten kunnen registreren. De standaard waarde is **alle**.
+- **Gebruikers kunnen apparaten toevoegen aan Azure AD** : met deze instelling kunt u de gebruikers selecteren die hun apparaten als aan Azure AD gekoppelde apparaten kunnen registreren. De standaardwaarde is **Alle**.
 
 > [!NOTE]
 > **Gebruikers mogen apparaten toevoegen aan de Azure AD** -instelling is alleen van toepassing op Azure AD-deelname op Windows 10.
@@ -81,12 +74,7 @@ Deze optie is een Premium-functie die beschikbaar is via producten als Azure AD 
 U hebt twee opties voor het zoeken van geregistreerde en gekoppelde apparaten:
 
 - **Alle apparaten** in het gedeelte **beheren** van de pagina **apparaten**  
-
-   ![Alle apparaten](./media/device-management-azure-portal/41.png)
-
 - **Apparaten** in het gedeelte **beheren** van een **gebruikers** pagina
-
-   ![Alle apparaten](./media/device-management-azure-portal/43.png)
 
 Met beide opties kunt u een weer gave openen die:
 
@@ -177,7 +165,7 @@ Als u de BitLocker-sleutels wilt bekijken of kopiëren, moet u eigenaar zijn van
 - Globale beheerder
 - Helpdesk beheerder
 - Intune-servicebeheerder
-- Beveiligingsbeheerder
+- Beveiligingsbeheer
 - Beveiligings lezer
 
 > [!NOTE]
@@ -193,13 +181,11 @@ Apparaat-activiteiten zijn beschikbaar via de activiteiten Logboeken. Deze logbo
 
 Uw ingangs punt voor de controle gegevens is **controle logboeken** in het gedeelte **activiteit** van de pagina **apparaten** .
 
-![Auditlogboeken](./media/device-management-azure-portal/61.png)
-
-Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
+Het controle logboek heeft een standaard lijst weergave waarin het volgende wordt weer gegeven:
 
 - De datum en tijd waarop de gebeurtenis is opgetreden
 - De doelen
-- De initiator/Actor (wie) van een activiteit
+- de initiator/Actor (wie) van een activiteit
 - De activiteit (wat)
 
 ![Auditlogboeken](./media/device-management-azure-portal/63.png)

@@ -1,18 +1,17 @@
 ---
 title: Wat is er nieuw in Azure Monitor documentatie
 description: Er zijn belang rijke updates voor Azure Monitor documentatie bijgewerkt voor elke maand.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2020
-ms.openlocfilehash: f390de40504d4d6065705ca23555ac2164c9847b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065563"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657738"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw in Azure Monitor documentatie?
 In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw zijn of aanzienlijk zijn bijgewerkt. Het wordt de eerste week van elke maand vernieuwd, zodat artikel updates van de vorige maand worden meegenomen.

@@ -3,16 +3,15 @@ title: Samen vatting van de conversie van Designer naar werkmappen Azure Monitor
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: e49b4c0220b6c00fe3a7a6e1cab219364a2a89b7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171239"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658843"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Conversie samenvatting en toegang van Designer naar werkmappen weer geven
 [View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Deze worden gefaseerd en vervangen door werkmappen, die extra functionaliteit bieden. In dit artikel vindt u informatie over het maken van overzichts samenvatting en machtigingen die vereist zijn voor toegang tot werkmappen.

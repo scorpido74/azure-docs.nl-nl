@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044708"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659863"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
 
-Dit artikel bevat achtergrond informatie over het gebruik van [virtuele netwerken van Azure](../virtual-network/virtual-networks-overview.md) met Azure HDInsight. Ook worden ontwerp-en implementatie beslissingen beschreven die moeten worden uitgevoerd voordat u een virtueel netwerk kunt implementeren voor uw HDInsight-cluster. Zodra de plannings fase is voltooid, kunt u door gaan met het [maken van virtuele netwerken voor Azure HDInsight-clusters](hdinsight-create-virtual-network.md). Zie [IP-adressen voor hdinsight-beheer](hdinsight-management-ip-addresses.md)voor meer informatie over de IP-adressen voor hdinsight-beheer die nodig zijn om netwerk beveiligings groepen en door de gebruiker gedefinieerde routes correct te configureren.
+Dit artikel bevat achtergrond informatie over het gebruik van [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) (VNets) met Azure HDInsight. Ook worden ontwerp-en implementatie beslissingen beschreven die moeten worden uitgevoerd voordat u een virtueel netwerk kunt implementeren voor uw HDInsight-cluster. Zodra de plannings fase is voltooid, kunt u door gaan met het [maken van virtuele netwerken voor Azure HDInsight-clusters](hdinsight-create-virtual-network.md). Zie [IP-adressen voor hdinsight-beheer](hdinsight-management-ip-addresses.md)voor meer informatie over de IP-adressen voor hdinsight-beheer die nodig zijn om netwerk beveiligings groepen (nsg's) en door de gebruiker gedefinieerde routes correct te configureren.
 
 Als u een Azure-Virtual Network gebruikt, worden de volgende scenario's ingeschakeld:
 
 * Rechtstreeks verbinding maken met HDInsight vanuit een on-premises netwerk.
 * Verbinding maken tussen HDInsight en gegevens archieven in een virtueel Azure-netwerk.
-* Rechtstreeks toegang tot [Apache Hadoop](https://hadoop.apache.org/) services die niet openbaar via internet beschikbaar zijn. Bijvoorbeeld [Apache Kafka](https://kafka.apache.org/) api's of de [Apache HBase](https://hbase.apache.org/) Java API.
+* Rechtstreeks toegang tot Apache Hadoop services die niet openbaar via internet beschikbaar zijn. Bijvoorbeeld Apache Kafka Api's of de Apache HBase Java API.
 
 > [!IMPORTANT]
 > Als u een HDInsight-cluster in een VNET maakt, worden er verschillende netwerk bronnen gemaakt, zoals Nic's en load balancers. Verwijder deze netwerk bronnen **niet** , omdat deze nodig zijn om het cluster goed te laten functioneren met het VNET.
@@ -64,19 +64,19 @@ Volg de stappen in deze sectie om te ontdekken hoe u een nieuwe HDInsight kunt t
 2. Gebruikt u netwerk beveiligings groepen, door de gebruiker gedefinieerde routes of Virtual Network apparaten om het verkeer naar of van het virtuele netwerk te beperken?
 
     Als beheerde service vereist HDInsight onbeperkte toegang tot meerdere IP-adressen in het Azure-Data Center. Werk alle bestaande netwerk beveiligings groepen of door de gebruiker gedefinieerde routes bij om communicatie met deze IP-adressen toe te staan.
-    
+
     HDInsight host meerdere services, die gebruikmaken van verschillende poorten. Verkeer naar deze poorten blok keren. Zie de sectie Beveiliging voor een lijst met poorten die via virtuele-toestel firewalls kunnen worden toegestaan.
-    
+
     Gebruik de volgende Azure PowerShell of Azure CLI-opdrachten om uw bestaande beveiligings configuratie te vinden:
 
     * Netwerkbeveiligingsgroepen
 
         Vervang `RESOURCEGROUP` door de naam van de resource groep die het virtuele netwerk bevat en voer de volgende opdracht in:
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -141,7 +141,7 @@ Voor het inschakelen van naam omzetting tussen het virtuele netwerk en bronnen i
 4. Het door sturen van de DNS-servers configureren. De configuratie is afhankelijk van het type extern netwerk.
 
    * Als het externe netwerk een on-premises netwerk is, configureert u DNS als volgt:
-        
+
      * __Aangepaste DNS__ (in het virtuele netwerk):
 
          * Hiermee worden aanvragen voor het DNS-achtervoegsel van het virtuele netwerk doorgestuurd naar de recursieve resolver van Azure (168.63.129.16). Azure verwerkt aanvragen voor bronnen in het virtuele netwerk
@@ -235,12 +235,12 @@ Zie voor meer informatie over het beheren van uitgaand verkeer van HDInsight-clu
 
 #### <a name="forced-tunneling-to-on-premises"></a>Geforceerde tunneling naar on-premises
 
-Geforceerde tunneling is een door de gebruiker gedefinieerde routerings configuratie waarbij al het verkeer van een subnet wordt afgedwongen op een specifiek netwerk of locatie, zoals uw on-premises netwerk. HDInsight biedt __geen__ ondersteuning voor geforceerde tunneling van verkeer naar on-premises netwerken. 
+Geforceerde tunneling is een door de gebruiker gedefinieerde routerings configuratie waarbij al het verkeer van een subnet wordt afgedwongen op een specifiek netwerk of locatie, zoals uw on-premises netwerk. HDInsight biedt __geen__ ondersteuning voor geforceerde tunneling van verkeer naar on-premises netwerken.
 
 ## <a id="hdinsight-ip"></a>Vereiste IP-adressen
 
-Als u netwerk beveiligings groepen of door de gebruiker gedefinieerde routes gebruikt om verkeer te beheren, raadpleegt u [IP-adressen voor HDInsight-beheer](hdinsight-management-ip-addresses.md).
-    
+Zie [IP-adressen van HDInsight-beheer](hdinsight-management-ip-addresses.md)als u netwerk beveiligings groepen of door de gebruiker gedefinieerde routes gebruikt om verkeer te beheren.
+
 ## <a id="hdinsight-ports"></a>Vereiste poorten
 
 Als u van plan bent een **firewall** te gebruiken en u toegang te krijgen tot het cluster van buiten op bepaalde poorten, moet u mogelijk verkeer toestaan op de poorten die nodig zijn voor uw scenario. Standaard is er geen speciale white list nodig, zolang het Azure Management-verkeer dat in de vorige sectie wordt uitgelegd, het cluster op poort 443 mag bereiken.
@@ -251,13 +251,16 @@ Zie het scenario document van het [virtuele apparaat](../virtual-network/virtual
 
 ## <a name="load-balancing"></a>Taakverdeling
 
-Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. Het type van deze load balancer bevindt zich op het niveau van de [basis-SKU](../load-balancer/concepts-limitations.md#skus) met bepaalde beperkingen. Een van deze beperkingen is dat als u twee virtuele netwerken in verschillende regio's hebt, u geen verbinding kunt maken met Basic load balancers. Zie de [Veelgestelde vragen over virtuele netwerken: beperkingen voor wereld wijde vnet-peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)voor meer informatie.
+Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. Het type van deze load balancer bevindt zich op het niveau van de [basis-SKU](../load-balancer/concepts-limitations.md#skus), met bepaalde beperkingen. Een van deze beperkingen is dat als u twee virtuele netwerken in verschillende regio's hebt, u geen verbinding kunt maken met Basic load balancers. Zie de [Veelgestelde vragen over virtuele netwerken: beperkingen voor wereld wijde vnet-peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)voor meer informatie.
 
 ## <a name="transport-layer-security"></a>Transport Layer Security
 
 Verbindingen met het cluster via het endpoint van het open bare cluster `https://<clustername>.azurehdinsight.net` worden via cluster gateway knooppunten via een proxy. Deze verbindingen worden beveiligd met een protocol dat TLS wordt genoemd. Het afdwingen van hogere versies van TLS op gateways verbetert de beveiliging voor deze verbindingen. Zie [het probleem met het TLS 1,0 oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie over de reden waarom u nieuwere versies van TLS moet gebruiken.
 
-U kunt de minimale TLS-versie (s) die wordt ondersteund op de gateway knooppunten voor uw HDInsight-cluster beheren met behulp van de eigenschap *minSupportedTlsVersion* in een resource manager-sjabloon tijdens de implementatie. Zie de Quick Start- [sjabloon voor mini maal TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)voor een voorbeeld sjabloon. Deze eigenschap ondersteunt drie waarden: "1,0", "1,1" en "1,2", die overeenkomen met respectievelijk TLS 1.0 +, TLS 1.1 + en TLS 1.2 +. Standaard, zonder deze eigenschap op te geven, accepteren Azure HDInsight-clusters TLS 1,2-verbindingen op open bare HTTPS-eind punten, evenals oudere versies voor achterwaartse compatibiliteit. Uiteindelijk dwingt HDInsight TLS 1,2 of hoger af op alle gateway knooppunt verbindingen.
+Standaard accepteren Azure HDInsight-clusters TLS 1,2-verbindingen op open bare HTTPS-eind punten, evenals oudere versies voor achterwaartse compatibiliteit. U kunt de minimale TLS-versie die wordt ondersteund op de gateway knooppunten tijdens het maken van het cluster beheren met behulp van de Azure Portal of een resource manager-sjabloon. Selecteer voor de Portal de TLS-versie op het tabblad **beveiliging en netwerk** tijdens het maken van het cluster. Gebruik de eigenschap **minSupportedTlsVersion** voor een resource manager-sjabloon op het moment van implementatie. Zie de Quick Start- [sjabloon voor mini maal TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)voor een voorbeeld sjabloon. Deze eigenschap ondersteunt drie waarden: "1,0", "1,1" en "1,2", die overeenkomen met respectievelijk TLS 1.0 +, TLS 1.1 + en TLS 1.2 +.
+
+> [!IMPORTANT]
+> Vanaf 30 juni 2020 afdwingt Azure HDInsight TLS 1,2 of hogere versies voor alle HTTPS-verbindingen. We raden u aan om ervoor te zorgen dat alle clients klaar zijn voor het verwerken van TLS 1,2 of hoger. Zie [Azure HDINSIGHT TLS 1,2 Enforcement](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 34a75559c25b23d719101bb3bcfb42c155074a2d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 29d34cc4f64a7d942e377b11299aeaad0f18c76d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495289"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780183"
 ---
 |Name |Beschrijving |Effect (s) |Version |Bron |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Allowed locations](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe56962a6-4747-49cd-b67b-bf8b01975c4c) (Toegestane locaties) |Met dit beleid kunt u de locaties beperken die uw organisatie kan opgeven tijdens het implementeren van resources. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen. Resourcegroepen, Microsoft.AzureActiveDirectory/b2cDirectories en resources die gebruikmaken van de regio 'global' worden uitgesloten. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedLocations_Deny.json)
 |[Toegestane locaties voor resource groepen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe765b5de-1225-4ba3-bd56-1ac6695af988) |Met dit beleid kunt u de locaties beperken waarop uw organisatie resource groepen kan maken in. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/ResourceGroupAllowedLocations_Deny.json)
 |[Allowed resource types](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa08ec900-254a-4555-9bf5-e42af04b5c5c) (Toegestane resourcetypen) |Met dit beleid kunt u de resource typen opgeven die uw organisatie kan implementeren. Dit beleid is alleen van invloed op resource typen die de tags ' labels ' en ' Location ' ondersteunen. Als u alle resources wilt beperken, moet u dit beleid dupliceren en de ' mode ' wijzigen in ' all '. |toestaan |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/AllowedResourceTypes_Deny.json)

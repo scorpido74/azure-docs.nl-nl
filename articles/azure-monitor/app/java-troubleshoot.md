@@ -1,18 +1,14 @@
 ---
 title: Problemen met Application Insights in een Java-webproject oplossen
 description: 'Probleemoplossings handleiding: Live java-apps bewaken met Application Insights.'
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432538"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657177"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.
@@ -74,7 +70,7 @@ In code:
     config.setTrackingIsDisabled(true);
 ```
 
-**of**
+**Of**
 
 Werk ApplicationInsights. XML bij (in de map resources in uw project). Voeg het volgende toe onder het hoofd knooppunt:
 
@@ -171,7 +167,7 @@ Ja, de server kan via het open bare internet telemetrie verzenden naar de Applic
 
 In uw firewall moet u mogelijk TCP-poorten 80 en 443 openen voor uitgaand verkeer naar dc.services.visualstudio.com en f5.services.visualstudio.com.
 
-## <a name="data-retention"></a>Gegevens bewaren
+## <a name="data-retention"></a>Bewaartijd van gegevens
 **Hoe lang worden gegevens in de portal bewaard? Is het veilig?**
 
 Zie [gegevens retentie en privacy][data].
@@ -192,7 +188,7 @@ Application Insights gebruikt `org.apache.http`. Dit wordt verplaatst binnen App
 * [Code schrijven om het gebruik van uw app bij te houden][track]
 * [Diagnostische logboeken vastleggen][javalogs]
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Een probleem in GitHub bestand oplossen](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

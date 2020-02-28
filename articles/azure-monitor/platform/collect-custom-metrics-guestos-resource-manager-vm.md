@@ -3,17 +3,16 @@ title: Metrische gegevens van Windows-VM'S verzamelen in Azure Monitor met een s
 description: Metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een virtuele Windows-machine
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364115"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657364"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een virtuele Windows-machine
 
@@ -240,7 +239,7 @@ Sla beide bestanden op en sluit deze.
 
 We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te implementeren.
 
-1. Start PowerShell.
+1. Start Power shell.
 1. Meld u aan bij Azure met `Login-AzAccount`.
 1. U kunt uw lijst met abonnementen ophalen met behulp van `Get-AzSubscription`.
 1. Stel het abonnement in dat u gebruikt om de virtuele machine te maken of bij te werken in:

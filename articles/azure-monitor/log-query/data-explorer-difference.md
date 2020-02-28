@@ -1,18 +1,17 @@
 ---
 title: Verschillen in de query taal van Azure Monitor-logboek | Microsoft Docs
 description: Naslag informatie voor de Kusto-query taal die wordt gebruikt door Azure Monitor. Bevat extra elementen die specifiek zijn voor Azure Monitor en elementen die niet worden ondersteund in Azure Monitor-logboek query's.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 16a221c0530d65e11589ac272a8e032de0cd3d2b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4601968a318388086a60ef98e4359ae01f652ed
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933104"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662099"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Verschillen in de query taal van Azure Monitor-logboek
 
@@ -31,13 +30,13 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 ### <a name="functions-not-supported-in-azure-monitor"></a>Functies die niet worden ondersteund in Azure Monitor
 
 * [cluster ()](/azure/kusto/query/clusterfunction)
-* [cursor_after()](/azure/kusto/query/cursorafterfunction)
-* [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
-* [cursor_current(), current_cursor()](/azure/kusto/query/cursorcurrent)
+* [cursor_after ()](/azure/kusto/query/cursorafterfunction)
+* [cursor_before_or_at ()](/azure/kusto/query/cursorbeforeoratfunction)
+* [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
 * [Data Base ()](/azure/kusto/query/databasefunction)
-* [current_principal()](/azure/kusto/query/current-principalfunction)
-* [extent_id()](/azure/kusto/query/extentidfunction)
-* [extent_tags()](/azure/kusto/query/extenttagsfunction)
+* [current_principal ()](/azure/kusto/query/current-principalfunction)
+* [extent_id ()](/azure/kusto/query/extentidfunction)
+* [extent_tags ()](/azure/kusto/query/extenttagsfunction)
 
 ### <a name="operators-not-supported-in-azure-monitor"></a>Opera tors worden niet ondersteund in Azure Monitor
 

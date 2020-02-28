@@ -1,18 +1,17 @@
 ---
 title: OMS-Portal naar Azure verplaatsen | Microsoft Docs
 description: De OMS-portal wordt sunsetted met alle functionaliteit die wordt verplaatst naar de Azure Portal. In dit artikel vindt u meer informatie over deze overgang.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932152"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659251"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-Portal, verplaatsen naar Azure
 
@@ -59,7 +58,7 @@ In beide gevallen moet uw beheerder hand matig de juiste rol toewijzen uit de vo
 
 | Machtiging OMS-Portal | Azure-rol |
 |:---|:---|
-| ReadOnly | Lezer van Log Analytics |
+| Kenmerk | Lezer van Log Analytics |
 | Inzender | Inzender van Log Analytics |
 | Beheerder | Eigenaar | 
  
@@ -84,7 +83,7 @@ De gegevens die worden verzameld door de oplossing voor waarschuwings beheer (re
 De OMS-app voor mobiele apps wordt samen met de OMS-Portal sunsetted. In plaats van de OMS-app voor toegang tot informatie over uw IT-infra structuur, Dash boards en opgeslagen query's, kunt u rechtstreeks vanuit uw browser toegang krijgen tot de Azure Portal op uw mobiele apparaat. Als u meldingen wilt ontvangen, moet u [Azure-actie groepen](action-groups.md) configureren om meldingen te ontvangen in de vorm van SMS of een telefoon oproep
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-connector en oplossing
-[Application Insights-connector](app-insights-connector.md) biedt een manier om Application Insights gegevens in een log Analytics-werk ruimte te gebruiken. Deze gegevens duplicatie is vereist om inzicht in de infra structuur en toepassings gegevens mogelijk te maken. Met Application Insights uitgebreide ondersteuning voor het bewaren van gegevens in maart, 2019 en de mogelijkheid om [query's](../log-query/cross-workspace-query.md) uit te voeren op meerdere resources, maar niet meer [Azure monitor Application Insights bronnen kunnen worden weer gegeven](../log-query/unify-app-resource-data.md), hoeft u geen dubbele gegevens uit uw Application Insights resources en verzenden naar Log Analytics. Bovendien verzendt de connector een subset van de eigenschappen van de toepassing naar Log Analytics, terwijl de query's voor meerdere bronnen u uitgebreide flexibiliteit bieden.  
+[Application Insights-connector](app-insights-connector.md) biedt een manier om Application Insights gegevens in een log Analytics-werk ruimte te gebruiken. Deze gegevens duplicatie is vereist om inzicht in de infra structuur en toepassings gegevens mogelijk te maken. Met Application Insights uitgebreide ondersteuning voor het bewaren van gegevens in maart, 2019 en de mogelijkheid om [query's](../log-query/cross-workspace-query.md) uit te voeren op meerdere resources, maar u hoeft niet alleen [meer Azure monitor Application Insights bronnen weer te geven](../log-query/unify-app-resource-data.md), hoeft u geen gegevens van uw Application Insights resources te dupliceren en deze naar log Analytics te verzenden. Bovendien verzendt de connector een subset van de eigenschappen van de toepassing naar Log Analytics, terwijl de query's voor meerdere bronnen u uitgebreide flexibiliteit bieden.  
 
 Daarom is Application Insights-connector afgeschaft en uit Azure Marketplace verwijderd, samen met de OMS-Portal op 30 maart 2019. Bestaande verbindingen blijven werken tot en met 30 juni 2019. In de OMS-Portal is het niet mogelijk om bestaande verbindingen te configureren en te verwijderen vanuit de portal. Dit wordt ondersteund met behulp van de REST API die beschikbaar worden gesteld in januari, 2019 en er wordt een melding verzonden naar de [updates van Azure](https://azure.microsoft.com/updates/). 
 

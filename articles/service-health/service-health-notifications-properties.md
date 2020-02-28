@@ -1,14 +1,14 @@
 ---
 title: Wat zijn status meldingen van Azure service?
 description: Met service status meldingen kunt u service status berichten weer geven die zijn gepubliceerd door Microsoft Azure.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451552"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653965"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Servicestatusmeldingen bekijken met de Azure-portal
 
@@ -30,7 +30,7 @@ detailhandelkanalen | Een van de volgende waarden: **beheerder** of **bewerking*
 correlationId | Meestal een GUID in de teken reeks indeling. Gebeurtenissen die tot dezelfde actie behoren, delen meestal dezelfde correlatie.
 eventDataId | De unieke id van een gebeurtenis.
 eventName | De titel van een gebeurtenis.
-level | Het niveau van een gebeurtenis
+niveau | Het niveau van een gebeurtenis
 resourceProviderName | De naam van de resource provider voor de betrokken resource.
 resourceType| Het type resource van de betrokken resource.
 subStatus | Doorgaans de HTTP-status code van de bijbehorende REST-aanroep, maar kan ook andere teken reeksen bevatten die een substatus beschrijven. Bijvoorbeeld: OK (HTTP-status code: 200), gemaakt (HTTP-status code: 201), geaccepteerd (HTTP-status code: 202), geen inhoud (HTTP-status code: 204), ongeldige aanvraag (HTTP-status code: 400), niet gevonden (HTTP-status code: 404), conflict (HTTP-status code: 409), interne server Fout (HTTP-status code: 500), service niet beschikbaar (HTTP-status code: 503) en time-out voor gateway (HTTP-status code: 504).

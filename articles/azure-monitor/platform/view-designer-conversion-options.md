@@ -3,16 +3,15 @@ title: Conversie opties Azure Monitor Designer weer geven voor werkmappen
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: f04ebc1a4a53825709479ca3f1dc7ce1245fc67f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171551"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658707"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Conversie opties Azure Monitor Designer weer geven voor werkmappen
 [View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Ze worden gefaseerd en vervangen door werkmappen die extra functionaliteit bieden. In dit artikel worden de basis concepten vergeleken tussen de twee en de opties voor het converteren van weer gaven naar werkmappen.

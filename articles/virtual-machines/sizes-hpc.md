@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: dc2086223dea9bff311aac9e7d4771b5273f0e91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493551"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660016"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>High Performance Compute-VM-grootten
 
@@ -87,7 +87,7 @@ In bepaalde implementaties van A8-en A9-instanties wordt de uitbrei ding HpcVmDr
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Zie [extensies en functies van virtuele machines](/extensions/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. U kunt ook werken met uitbrei dingen voor virtuele machines die zijn geïmplementeerd in het [klassieke implementatie model](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
+  Zie [extensies en functies van virtuele machines](./extensions/overview.md)voor meer informatie. U kunt ook werken met uitbrei dingen voor virtuele machines die zijn geïmplementeerd in het [klassieke implementatie model](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
 - **RDMA-netwerk adres ruimte** : het RDMA-netwerk in azure behoudt de adres ruimte 172.16.0.0/16. Als u MPI-toepassingen wilt uitvoeren op instanties die zijn geïmplementeerd in een virtueel Azure-netwerk, moet u ervoor zorgen dat de adres ruimte van het virtuele netwerk het RDMA-netwerk niet overlapt.
 

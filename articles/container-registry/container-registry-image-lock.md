@@ -3,12 +3,12 @@ title: Installatiekopieën vergrendelen
 description: Stel kenmerken in voor een container installatie kopie of opslag plaats, zodat deze niet kan worden verwijderd of overschreven in een Azure container Registry.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972923"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659693"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Een container installatie kopie in een Azure container Registry vergren delen
 
@@ -19,7 +19,7 @@ Voor dit artikel moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (v
 > [!IMPORTANT]
 > Dit artikel is niet van toepassing op het vergren delen van een volledig REGI ster, bijvoorbeeld met behulp van **instellingen > sloten** in de Azure Portal of `az lock` opdrachten in de Azure cli. Het vergren delen van een register bron voor komt niet dat u gegevens in opslag plaatsen kunt maken, bijwerken of verwijderen. Het vergren delen van een REGI ster is alleen van invloed op beheer bewerkingen, zoals het toevoegen of verwijderen van replicaties of het verwijderen van het REGI ster zelf. Meer informatie over [het vergren delen van resources om onverwachte wijzigingen te voor komen](../azure-resource-manager/management/lock-resources.md).
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Een gecodeerde afbeelding in Azure Container Registry is standaard *onveranderbaar*, dus met de juiste machtigingen kunt u herhaaldelijk een installatie kopie met dezelfde tag naar een REGI ster bijwerken en pushen. Container installatie kopieën kunnen ook naar behoefte worden [verwijderd](container-registry-delete.md) . Dit gedrag is handig wanneer u installatie kopieën ontwikkelt en een grootte voor het REGI ster moet behouden.
 
@@ -44,7 +44,7 @@ Als u de huidige kenmerken van een opslag plaats wilt weer geven, voert u de vol
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 

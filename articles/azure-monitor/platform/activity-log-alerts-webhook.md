@@ -1,18 +1,15 @@
 ---
 title: Het webhook-schema dat wordt gebruikt in waarschuwingen voor activiteiten logboeken begrijpen
 description: Meer informatie over het schema van de JSON dat wordt gepost naar een webhook-URL wanneer een activiteiten logboek waarschuwing wordt geactiveerd.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748800"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669043"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks voor Azure-activiteiten logboek waarschuwingen
 Als onderdeel van de definitie van een actie groep kunt u webhook-eind punten configureren voor het ontvangen van waarschuwings meldingen voor activiteiten Logboeken. Met webhooks kunt u deze meldingen naar andere systemen sturen voor nabewerkingen of aangepaste acties. In dit artikel ziet u hoe de payload voor het HTTP POST-bericht naar een webhook eruit ziet.
@@ -263,7 +260,7 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 | context |De context van de gebeurtenis. |
 | resourceProviderName |De resource provider van de betrokken resource. |
 | conditionType |Altijd ' gebeurtenis '. |
-| name |De naam van de waarschuwings regel. |
+| naam |De naam van de waarschuwings regel. |
 | id |De resource-ID van de waarschuwing. |
 | description |De beschrijving van de waarschuwing wordt ingesteld wanneer de waarschuwing wordt gemaakt. |
 | subscriptionId |Azure-abonnements-ID. |
@@ -280,7 +277,7 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 | eventDataId |De unieke id voor de gebeurtenis. |
 | Source |De naam van de Azure-service of-infra structuur die de gebeurtenis heeft gegenereerd. |
 | httpRequest |De aanvraag omvat meestal de clientRequestId-, clientIpAddress-en HTTP-methode (bijvoorbeeld PUT). |
-| level |Een van de volgende waarden: kritiek, fout, waarschuwing en informatief. |
+| niveau |Een van de volgende waarden: kritiek, fout, waarschuwing en informatief. |
 | operationId |Meestal een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
 | operationName |Naam van de bewerking. |
 | properties |De eigenschappen van de gebeurtenis. |

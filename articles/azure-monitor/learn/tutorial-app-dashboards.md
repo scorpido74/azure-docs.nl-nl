@@ -1,19 +1,18 @@
 ---
 title: Aangepaste dashboards maken in Azure Application Insights | Microsoft Docs
 description: Zelfstudie over het maken van aangepaste KPI-dashboards met behulp van Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 47d8eaff5f154e198c277ec2b63a2d09e66f7180
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900510"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661631"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Aangepaste KPI-dashboards maken met behulp van Azure Application Insights
 
@@ -102,7 +101,7 @@ Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke servic
     ```
 
 4. Klik op **Uitvoeren** om de resultaten van de query te valideren.
-5. Klik op het speld pictogram ![Speld pictogram](media/tutorial-app-dashboards/pushpin.png) en selecteer de naam van het dash board. De reden hiervoor is dat u een dash board selecteert, in tegens telling tot de vorige stappen waarbij het laatste dash board is gebruikt, omdat de Logboeken-console (Analytics) een afzonderlijke service is en moet worden geselecteerd uit alle beschik bare gedeelde Dash boards.
+5. Klik op het speld pictogram ![speld pictogram](media/tutorial-app-dashboards/pushpin.png) en selecteer de naam van het dash board. De reden hiervoor is dat u een dash board selecteert, in tegens telling tot de vorige stappen waarbij het laatste dash board is gebruikt, omdat de Logboeken-console (Analytics) een afzonderlijke service is en moet worden geselecteerd uit alle beschik bare gedeelde Dash boards.
 
 5. Voordat u teruggaat naar het dash board, voegt u nog een query toe, maar deze keer wordt deze weer gegeven als een grafiek zodat u de verschillende manieren ziet om een logboeken query te visualiseren in een dash board. Begin met de volgende query die de top 10 bewerkingen met de meeste uitzonderingen weergeeft.
 
@@ -117,7 +116,7 @@ Omdat Azure-toepassingen Insights-Logboeken (Analytics) een afzonderlijke servic
 
     ![Logboeken (Analytics)-grafiek](media/tutorial-app-dashboards/11querychart.png)
 
-6. Klik op het speld pictogram ![Speld pictogram](media/tutorial-app-dashboards/pushpin.png) in de rechter bovenhoek om de grafiek aan uw dash board vast te maken, selecteert u de koppeling om terug te gaan naar uw dash board.
+6. Klik op het speld pictogram ![speld pictogram](media/tutorial-app-dashboards/pushpin.png) in de rechter bovenhoek om de grafiek aan uw dash board vast te maken, selecteert u de koppeling om terug te gaan naar uw dash board.
 4. De resultaten van de query's worden nu aan uw dashboard toegevoegd in de indeling die u hebt geselecteerd.  Klik en sleep elke query naar de gewenste plek en klik vervolgens op **Aanpassen voltooid**.
 5. Het potlood pictogram selecteren ![Potlood pictogram](media/tutorial-app-dashboards/pencil.png) op elke titel om hen een beschrijvende titel te geven.
 

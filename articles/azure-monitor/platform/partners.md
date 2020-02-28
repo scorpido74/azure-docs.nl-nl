@@ -1,18 +1,15 @@
 ---
 title: Partners die integreren met Azure Monitor
 description: Meer informatie over de partners van Azure Monitor en hoe u toegang kunt krijgen tot documentatie voor de integratie met deze.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023868"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659455"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -89,7 +86,7 @@ De Dynatrace OneAgent kan worden geïntegreerd met Azure-Vm's en App Services vi
 
 [Ga naar de documentatie.][dynatrace-doc]
 
-## <a name="elastic"></a>Flexibel
+## <a name="elastic"></a>Elastisch
 
 ![Elastisch logo](./media/partners/elastic.png)
 
@@ -247,7 +244,7 @@ Sumo Logic is een beveiligde, Cloud systeem eigen machine voor gegevens analyse,
 
 ![Turbonomic-logo](./media/partners/Turbonomic.png)
 
-Turbonomic voorziet in automatisering van workloads voor hybride clouds door tegelijkertijd de prestaties, kosten en naleving in realtime te optimaliseren. Turbonomic helpt organisaties in hun Azure-omgeving te elastisch door continu te optimaliseren om ervoor te zorgen dat toepassingen voortdurend de bronnen krijgen die ze nodig hebben om hun SLA te leveren en niets meer over reken kracht, opslag en netwerk voor de IaaS en PaaS maskeerlaag. Organisaties kunnen migraties simuleren, werk belastingen op de juiste schaal schalen en Datacenter bronnen buiten gebruik stellen voor een verantwoorde migratie naar Azure-tijd, binnen het budget, terwijl de prestaties en naleving worden gegarandeerd. Turbonomic is API-gestuurd en wordt uitgevoerd als een agentloze VM in Azure en on-premises.
+Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijkertijd de prestaties, kosten en naleving in realtime te optimaliseren. Turbonomic helpt organisaties in hun Azure-omgeving te elastisch door continu te optimaliseren om ervoor te zorgen dat toepassingen voortdurend de bronnen krijgen die ze nodig hebben om hun SLA te leveren en niets meer over reken kracht, opslag en netwerk voor de IaaS en PaaS maskeerlaag. Organisaties kunnen migraties simuleren, werk belastingen op de juiste schaal schalen en Datacenter bronnen buiten gebruik stellen voor een verantwoorde migratie naar Azure-tijd, binnen het budget, terwijl de prestaties en naleving worden gegarandeerd. Turbonomic is API-gestuurde en wordt uitgevoerd als een virtuele machine zonder agent in Azure en on-premises.
 
 [Meer informatie.][turbonomic-doc]
 

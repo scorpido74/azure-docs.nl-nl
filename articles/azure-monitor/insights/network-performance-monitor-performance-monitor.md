@@ -1,18 +1,17 @@
 ---
 title: Functie prestatie meter in Netwerkprestatiemeter oplossing in azure Log Analytics | Microsoft Docs
 description: Met de functie prestatie meter in Netwerkprestatiemeter kunt u de netwerk connectiviteit op verschillende punten in uw netwerk bewaken. U kunt Cloud implementaties en on-premises locaties, meerdere data centers en filialen, en bedrijfskritische toepassingen voor multi-tier of micro services bewaken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898835"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654525"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netwerkprestatiemeter oplossing: prestatie bewaking
 
@@ -101,7 +100,7 @@ Als u ervoor kiest om ICMP te gebruiken tijdens de implementatie, kunt u op elk 
 
 Zelfs als de standaard regel een specifiek protocol gebruikt, kunt u nieuwe regels maken met een ander protocol. U kunt zelfs een combi natie van regels maken waarbij sommige regels ICMP gebruiken en anderen TCP gebruiken. 
 
-## <a name="walkthrough"></a>Kennismaking 
+## <a name="walkthrough"></a>Walkthrough 
 
 Bekijk nu een eenvoudig onderzoek naar de hoofd oorzaak van een status gebeurtenis.
 

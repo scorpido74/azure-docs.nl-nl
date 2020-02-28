@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429772"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656589"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -47,7 +47,7 @@ In dit artikel vindt u een overzicht van het rapport met aanmeldingen.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot aanmeldingsactiviteiten?
 
-* Uw tenant moet beschikken over een eraan gekoppelde Azure AD Premium-licentie om het complete rapport van aanmeldingsactiviteiten te kunnen zien. Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden. Het duurt enkele dagen voordat de gegevens in de rapporten worden weer gegeven nadat u een upgrade hebt uitgevoerd naar een Premium-licentie zonder gegevens activiteiten vóór de upgrade.
+* Aan uw Tenant moet een Azure AD Premium-licentie zijn gekoppeld om het rapport alle activiteiten voor aanmelden te bekijken. Zie [Aan de slag met Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) om uw versie van Azure Active Directory te upgraden. Het duurt enkele dagen voordat de gegevens in de rapporten worden weer gegeven nadat u een upgrade hebt uitgevoerd naar een Premium-licentie zonder gegevens activiteiten vóór de upgrade.
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport
 
@@ -101,65 +101,96 @@ Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
 ## <a name="filter-sign-in-activities"></a>Aanmeldactiviteiten filteren
 
-U moet eerst de gerapporteerde gegevens beperken tot een niveau dat geschikt is voor u. Ten tweede filtert u aanmeldings gegevens met een datum veld als standaard filter. Azure AD biedt u een breed scala aan extra filters die u kunt instellen.
+U moet eerst de gerapporteerde gegevens beperken tot een niveau dat geschikt is voor u. Ten tweede filtert u aanmeldings gegevens met een datum veld als standaard filter. Azure AD biedt u een breed scala aan extra filters die u kunt instellen:
 
 ![Aanmeldings activiteit](./media/concept-sign-ins/04.png "Aanmeldingsactiviteit")
 
-Met het filter **Gebruiker** kunt u de naam of de UPN (User Principal Name) van de gewenste gebruiker opgeven.
+**Aanvraag-id** : de id van de aanvraag die u vindt.
 
-Met het filter **Toepassing** kunt u de naam van de gewenste toepassing opgeven.
+**Gebruiker** -de naam of de User Principal Name (UPN) van de gebruiker die u bezorgt.
 
-Met het filter **Aanmeldingsstatus** kunt u selecteren:
+**Toepassing** -de naam van de doel toepassing.
+ 
+**Status** -de aanmeldings status die u bevalt:
 
-- Alles
 - Geslaagd
+
 - Fout
 
-Met het filter voor **voorwaardelijke toegang** kunt u de CA-beleids status voor de aanmelding selecteren:
+- Onderbroken
 
-- Alles
-- Niet toegepast
+
+**IP-adres** : het IP-adres van het apparaat dat wordt gebruikt om verbinding te maken met uw Tenant.
+
+De **locatie** -de locatie van de verbinding vanaf:
+
+- Plaats
+
+- Provincie
+
+- Land/regio
+
+
+**Resource** -de naam van de service die wordt gebruikt voor de aanmelding.
+
+
+**Resource-id** : de id van de service die wordt gebruikt voor de aanmelding.
+
+
+**Client-app** : het type client-app dat wordt gebruikt om verbinding te maken met uw Tenant:
+
+![Client-App-filter](./media/concept-sign-ins/client-app-filter.png)
+
+
+|Name|Moderne verificatie|Beschrijving|
+|---|:-:|---|
+|Geverifieerde SMTP| |Wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.|
+|Autodis cover| |Wordt gebruikt door Outlook-en EAS-clients om post vakken in Exchange Online te vinden en er verbinding mee te maken.|
+|Exchange ActiveSync:| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
+|Browser|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
+|Exchange ActiveSync:| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiceSync om verbinding te maken met Exchange Online|
+|Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
+|Exchange-webservices| |Een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
+|IMAP4| |Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.|
+|MAPI via HTTP| |Gebruikt door Outlook 2010 en hoger.|
+|Mobiele apps en bureaubladclients|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers die mobiele apps en desktop-clients gebruiken.|
+|Offlineadresboek| |Een kopie van de adres lijst verzamelingen die worden gedownload en gebruikt door Outlook.|
+|Outlook Anywhere (RPC via HTTP)| |Gebruikt door Outlook 2016 en eerder.|
+|Outlook-service| |Wordt gebruikt door de mail-en agenda-app voor Windows 10.|
+|POP3| |Een legacy-mailclient die gebruikmaakt van POP3 om e-mail op te halen.|
+|Reporting Web Services| |Wordt gebruikt om rapport gegevens op te halen in Exchange Online.|
+|Andere clients| |Toont alle aanmeldings pogingen van gebruikers, waarbij de client-app niet is opgenomen of onbekend.|
+
+
+
+**Besturings systeem** : het besturings systeem dat wordt uitgevoerd op het apparaat dat wordt gebruikt voor aanmelding bij uw Tenant. 
+
+
+**Browser voor apparaten** : als de verbinding is gestart vanuit een browser, kunt u in dit veld filteren op browser naam.
+
+
+**Correlatie-id** : de correlatie-id van de activiteit.
+
+
+**Voorwaardelijke toegang** : de status van de toegepaste regels voor voorwaardelijke toegang
+
+- Niet toegepast 
+
 - Geslaagd
+
 - Fout
 
-Met het filter **Datum** kunt u een tijdsbestek opgeven voor de geretourneerde gegevens.  
-Mogelijke waarden zijn:
 
-- Eén maand
-- 7 dagen
-- 24 uur
-- Aangepast tijdsinterval
 
-Wanneer u een aangepast tijdsbestek selecteert, kunt u een begintijd en eindtijd configureren.
 
-Als u extra velden toevoegt aan uw aanmeldingsweergave, worden deze velden automatisch toegevoegd aan de lijst met filters. Als u bijvoorbeeld het veld **Client-app** aan uw lijst toevoegt, krijgt u ook een andere filteroptie waarmee u de volgende filters kunt instellen:  
-![Aanmeldings activiteit](./media/concept-sign-ins/12.png "Aanmeldingsactiviteit")
 
-- **Browser**  
-    Dit filter toont alle gebeurtenissen waarbij aanmeldings pogingen zijn gedaan met behulp van browser stromen.
-- **Exchange ActiveSync (ondersteund)**  
-    Dit filter toont alle aanmeldings pogingen waarbij het protocol Exchange ActiveSync (EAS) is geprobeerd van ondersteunde platforms zoals iOS, Android en Windows Phone.
-- **Exchange ActiveSync (niet ondersteund)**  
-    Dit filter toont alle aanmeldings pogingen waarbij het EAS-protocol is geprobeerd uit niet-ondersteunde platformen, zoals Linux distributies.
-- **Mobile apps-en desktop-clients** Het filter toont alle aanmeldings pogingen die geen browser stromen gebruiken. Bijvoorbeeld mobiele apps vanaf elk platform met behulp van een protocol of van desktop-client-apps, zoals Office op Windows of MacOS.
-  
-- **Andere clients**
-    - **IMAP**  
-        Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.
-    - **MAPI**  
-        Office 2013, waarbij ADAL is ingeschakeld en gebruikmaakt van MAPI.
-    - **Oude Office-clients**  
-        Office 2013 in de standaard configuratie waarbij ADAL niet is ingeschakeld en gebruikmaakt van MAPI of Office 2016 waarbij ADAL is uitgeschakeld.
-    - **POP**  
-        Een legacy-mailclient die gebruikmaakt van POP3 om e-mail op te halen.
-    - **SMTP**  
-        Een verouderde e-mailclient die gebruikmaakt van SMTP om e-mail te verzenden.
+
 
 ## <a name="download-sign-in-activities"></a>Aanmeldactiviteiten downloaden
 
 Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
-![Downloaden](./media/concept-sign-ins/71.png "Download")
+![Downloaden](./media/concept-sign-ins/71.png "Downloaden")
 
 > [!IMPORTANT]
 > Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
@@ -199,7 +230,7 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Client
 - Locatie
 - IP-adres
-- Datum
+- Date
 - MFA vereist
 - Aanmeldingsstatus
 
@@ -228,7 +259,7 @@ De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldin
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 
-![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Reporting")
+![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapportage")
 
 Als u op een dag in de appgebruikgrafiek klikt, ziet u een gedetailleerd overzicht van de aanmeldactiviteiten.
 

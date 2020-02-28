@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198238"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657041"
 ---
 # <a name="glossary"></a>Woordenlijst
 
@@ -47,9 +47,9 @@ In de volgende lijst worden veelvoorkomende woorden beschreven die worden gebrui
 
 <a name="asynchronous-request"></a>**Asynchrone aanvraag**: een HTTP-aanvraag waarmee een verbinding wordt geopend en een aanvraag wordt gemaakt naar de server die een id voor de asynchrone aanvraag retourneert, waarna de verbinding wordt gesloten. De server blijft de aanvraag verwerken en de gebruiker kan de status controleren met behulp van de id. Wanneer de verwerking van de aanvraag is voltooid, kan de gebruiker de reactie downloaden. Dit type aanvraag wordt gebruikt voor langlopende processen.
 
-<a name="autocomplete"></a>**Automatisch aanvullen**: een functie in een toepassing voor spelt de rest van een woord dat een gebruiker typt. 
+<a name="autocomplete"></a>**Automatisch aanvullen**: een functie in een toepassing die de rest van een woord voor spelt dat een gebruiker typt. 
 
-<a name="autosuggest"></a>**Automatische suggestie**: een functie in een toepassing waarin de logische mogelijkheden voor het typen van de gebruiker worden voor speld.
+<a name="autosuggest"></a>**Automatische suggestie**: een functie in een toepassing die logische mogelijkheden voorspelt voor wat de gebruiker typt.
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location Based Services (lbs)** : de oude naam van Azure Maps bij de preview-versie.
 

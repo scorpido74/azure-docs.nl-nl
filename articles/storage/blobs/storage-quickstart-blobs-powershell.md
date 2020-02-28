@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892495"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664249"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quick Start: blobs uploaden, downloaden en vermelden met Power shell
 
@@ -65,7 +65,7 @@ Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Context $ctx
 ```
 
-Upload zoveel bestanden als u nodig hebt, voordat u doorgaat.
+Upload zoveel bestanden als u nodig hebt voordat u doorgaat.
 
 ## <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
@@ -97,16 +97,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Gegevensoverdracht met AzCopy
 
-Het hulpprogramma [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) is een andere optie voor krachtige, scriptbare gegevensoverdracht voor Azure Storage. Gebruik AzCopy om gegevens over te brengen naar en van blob-, bestands- en tabelopslag.
+Het opdracht regel hulpprogramma AzCopy biedt hoogwaardige, script bare gegevens overdracht voor Azure Storage. U kunt AzCopy gebruiken om gegevens over te dragen van en naar Blob Storage en Azure Files. Zie [aan de slag met AzCopy](../common/storage-use-azcopy-v10.md)voor meer informatie over AzCopy V10 toevoegen, de nieuwste versie van AzCopy. Zie [gegevens overdragen met AzCopy en Blob Storage](../common/storage-use-azcopy-blobs.md)voor meer informatie over het gebruik van AzCopy V10 toevoegen met Blob Storage.
 
-Als een kort voorbeeld volgt hier de AzCopy-opdracht voor het uploaden van een bestand met de naam *myfile.txt* naar de container *mystoragecontainer* vanuit een PowerShell-venster.
+In het volgende voor beeld wordt AzCopy gebruikt om een lokaal bestand te uploaden naar een blob. Vergeet niet om de voorbeeld waarden te vervangen door uw eigen waarden:
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen

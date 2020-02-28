@@ -1,20 +1,19 @@
 ---
-title: Overzicht van Azure Monitor werkmappen
+title: Overzicht van Azure Monitor Workbooks
 description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
-ms.service: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cf11ce3a77fb47b7d8586ef56141a72cd0a10c2e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872856"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658231"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
@@ -30,7 +29,7 @@ Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
 
 * [Logboeken](workbooks-data-sources.md#logs)
 * [Metrische gegevens](workbooks-data-sources.md#metrics)
-* [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
+* [Azure-resource grafiek](workbooks-data-sources.md#azure-resource-graph)
 * [Waarschuwingen (preview-versie)](workbooks-data-sources.md#alerts-preview)
 * [Workload status (preview-versie)](workbooks-data-sources.md#workload-health-preview)
 * [Azure Resource Health (preview-versie)](workbooks-data-sources.md#azure-resource-health)
@@ -41,7 +40,7 @@ Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
 Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw gegevens. Raadpleeg de onderstaande voorbeeld koppelingen voor gedetailleerde voor beelden van elk type visualisatie:
 
 * [Tekst](workbooks-visualizations.md#text)
-* [Grafieken](workbooks-visualizations.md#charts)
+* [Diagrammen](workbooks-visualizations.md#charts)
 * [Rasters](workbooks-visualizations.md#grids)
 * [Pagina's](workbooks-visualizations.md#tiles)
 * [Mapstructuren](workbooks-visualizations.md#trees)
@@ -57,7 +56,7 @@ Selecteer vervolgens **werkmappen (preview)** .
 
 ![Scherm afbeelding van de knop voor beeld van werkmappen gemarkeerd in een rood vak](./media/workbooks-overview/workbooks-preview.png)
 
-### <a name="gallery"></a>Galerie
+### <a name="gallery"></a>Gallery
 
 Hiermee gaat u naar de galerie met werkmappen:
 

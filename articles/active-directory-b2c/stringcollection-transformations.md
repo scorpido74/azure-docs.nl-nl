@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982293"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656089"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection-claim transformaties
 
@@ -26,13 +26,13 @@ In dit artikel vindt u voor beelden voor het gebruik van de teken reeks voor het
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Voegt een teken reeks claim toe aan een nieuwe stringCollection-claim.
+Voegt een teken reeks claim toe aan een nieuwe unieke waarde stringCollection claim. 
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
-| InputClaim | innings | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
-| OutputClaim | innings | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | item | tekenreeks | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
+| InputClaim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| OutputClaim | verzameling | stringCollection | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, met de waarde die is opgegeven in de invoer claim. |
 
 Gebruik deze claim transformatie om een teken reeks toe te voegen aan een nieuwe of bestaande stringCollection. Dit wordt vaak gebruikt in een **Aad-UserWriteUsingAlternativeSecurityId-** technisch profiel. Voordat een nieuw sociaal account wordt gemaakt, leest **CreateOtherMailsFromEmail** claims Transform het claim type en voegt de waarde toe aan het **otherMails** claim type.
 
@@ -60,13 +60,13 @@ De volgende claim transformatie voegt het **e-mail** claim type toe aan **otherM
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-Voegt een teken reeks parameter toe aan een nieuwe stringCollection-claim.
+Voegt een teken reeks parameter toe aan een nieuwe unieke waarde stringCollection claim.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | innings | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
-| InputParameter | item | string | De waarde die moet worden toegevoegd aan de uitvoer claim. |
-| OutputClaim | innings | stringCollection | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| InputParameter | item | tekenreeks | De waarde die moet worden toegevoegd aan de uitvoer claim. |
+| OutputClaim | verzameling | stringCollection | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, met de waarde die is opgegeven in de invoer parameter. |
 
 Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant e-mail adres (admin@contoso.com) aan de claim **otherMails** toegevoegd.
 
@@ -99,8 +99,8 @@ Hiermee wordt het eerste item opgehaald uit de gegeven teken reeks verzameling.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | innings | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
-| OutputClaim | extractedItem | string | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
+| InputClaim | verzameling | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
+| OutputClaim | extractedItem | tekenreeks | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
 
 In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het eerste item in de **e-mail** claim geretourneerd.
 
@@ -130,8 +130,8 @@ Hiermee wordt gecontroleerd of een StringCollection claim type een-element bevat
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | Het claim type dat moet worden doorzocht. |
-|InputParameter|item|string|De waarde waarnaar moet worden gezocht.|
-|InputParameter|ignoreCase|string|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
+|InputParameter|item|tekenreeks|De waarde waarnaar moet worden gezocht.|
+|InputParameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
 | OutputClaim | outputClaim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de verzameling een dergelijke teken reeks bevat |
 
 In het volgende voor beeld wordt gecontroleerd of het claim type `roles` stringCollection de waarde **admin**bevat.

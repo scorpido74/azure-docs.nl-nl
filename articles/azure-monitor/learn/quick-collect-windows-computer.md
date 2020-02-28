@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398951"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659846"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens verzamelen van een Windows-computer in een hybride omgeving met Azure Monitor
 
@@ -37,7 +36,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 1. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
-    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure-portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Selecteer **maken**en selecteer vervolgens opties voor de volgende items:
 
@@ -149,7 +148,7 @@ U kunt de agent van de computer verwijderen en de Log Analytics-werk ruimte verw
 
 Voer de volgende stappen uit om de agent te verwijderen:
 
-1. Open het Configuratiescherm.
+1. Open het configuratie scherm.
 
 2. Open **Programma's en onderdelen**.
 

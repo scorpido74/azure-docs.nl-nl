@@ -4,18 +4,17 @@ description: Meer informatie over alle Azure Monitor werkmap visualisaties-onder
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394486"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658027"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Visualisaties van Azure Monitor werkmap
 
@@ -41,7 +40,7 @@ Tekst wordt toegevoegd aan de hand van een besturings element voor een prijs opw
 > [!TIP]
 > Gebruik dit [Cheat-blad voor prijs verlaging](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) om meer te weten te komen over verschillende opmaak opties.
 
-## <a name="charts"></a>Grafieken
+## <a name="charts"></a>Diagrammen
 
 Met werkmappen kunnen bewakings gegevens worden weer gegeven als grafieken. Ondersteunde grafiek typen zijn onder andere lijn-, staaf-, staaf-categorische, vlak-, spreidings-en cirkel-en tijd diagrammen. Auteurs kunnen ervoor kiezen om de hoogte, breedte, kleuren palet, legenda, titels, no-data-bericht, enzovoort van de grafiek aan te passen.
 
@@ -115,7 +114,7 @@ In het onderstaande voor beeld ziet u een raster waarin pictogrammen, Heatmaps e
 
 ![Scherm opname van raster query op basis van logboek](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Tegels
+## <a name="tiles"></a>Pagina's
 
 Tegels zijn een zeer handige manier om samenvattings gegevens te presen teren in werkmappen. In de onderstaande afbeelding ziet u een algemeen gebruik van tegels-samen vatting op app-niveau boven op een gedetailleerd raster.
 

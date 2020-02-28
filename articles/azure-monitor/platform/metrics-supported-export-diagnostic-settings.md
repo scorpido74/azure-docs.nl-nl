@@ -2,18 +2,15 @@
 title: De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
 description: Een lijst met metrische gegevens die beschikbaar zijn voor elk resource type met Azure Monitor.
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
-author: rboucher
-ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: e530663ef4ebfbef9371c48f4c70578b14a63605
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368235"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661359"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
 
@@ -1234,15 +1231,15 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_% toegewezen bytes in gebruik  |  % Toegewezen bytes in gebruik  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_ percentage DPC-tijd  |  Percentage DPC-tijd  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage vrije inodes Average_  |  % Vrije inodes  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  % Beschik bare ruimte Average_  |  Percentage vrije ruimte  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  % Beschik bare ruimte Average_  |  Percentage vrije ruimte  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  % Beschik bare ruimte Average_  |  % vrije ruimte  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  % Beschik bare ruimte Average_  |  % vrije ruimte  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  % Niet-actieve tijd Average_  |  Percentage niet-actieve tijd  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage interrupt-tijd van Average_  |  Percentage interrupt-tijd  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_% i/o-wacht tijd  |  % I/o-wacht tijd  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Tijd van Average_% leuk  |  Percentage tijd in Nice  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage tijd in beschermde modus Average_  |  Percentage tijd in beschermde modus  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage processor tijd van Average_  |  % Processortijd  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage processor tijd van Average_  |  % Processortijd  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage processor tijd van Average_  |  Percentage processortijd  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage processor tijd van Average_  |  Percentage processortijd  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_% gebruikte inodes  |  % Gebruikte inodes  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_ percentage gebruikt geheugen  |  Percentage gebruikt geheugen  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Percentage gebruikte ruimte Average_  |  Percentage gebruikte ruimte  |  Count  |  Average | 
@@ -1251,23 +1248,23 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB  |  Beschikbare megabytes (MB)  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB geheugen  |  Beschikbaar geheugen in megabytes  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Available MB wisselen  |  Beschik bare mega bytes wisselen  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Schijf sec/lezen  |  Gemiddelde Lees tijd schijf  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Schijf sec/lezen  |  Gemiddelde Lees tijd schijf  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Schijfoverdrachten per seconde  |  Gemiddelde tijd schijf overdracht  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Schijf sec/schrijven  |  Gemiddelde schrijf tijd schijf  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Schijf sec/schrijven  |  Gemiddelde schrijf tijd schijf  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Gelezen bytes per seconde  |  Gemiddelde Lees tijd schijf  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Gelezen bytes per seconde  |  Gemiddelde Lees tijd schijf  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. overdrachttijd  |  Gemiddelde tijd schijf overdracht  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. voor de fysieke schijf  |  Gemiddelde schrijf tijd schijf  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. voor de fysieke schijf  |  Gemiddelde schrijf tijd schijf  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Ontvangen Average_Bytes per seconde  |  Ontvangen bytes per seconde  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Verzonden Average_Bytes per seconde  |  Verzonden bytes per seconde  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Bytes totaal per seconde  |  Totaal aantal bytes per seconde  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Wachtrij lengte van Average_Current schijf  |  Huidige wachtrij lengte voor de schijf  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Lees bewerkingen in bytes per seconde  |  Bytes gelezen op schijf/sec  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Reads/sec  |  Schijf lezen per seconde  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Reads/sec  |  Schijf lezen per seconde  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Lees bewerkingen in bytes per seconde  |  gelezen bytes per seconde  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Reads/sec  |  leesbewerkingen per seconde  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Reads/sec  |  leesbewerkingen per seconde  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk overdrachten per seconde  |  Schijfoverdrachten per seconde  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk overdrachten per seconde  |  Schijfoverdrachten per seconde  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk geschreven bytes per seconde  |  Bytes geschreven naar schijf/sec  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk schrijf bewerkingen per seconde  |  Schijf schrijven per seconde  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk schrijf bewerkingen per seconde  |  Schijf schrijven per seconde  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk geschreven bytes per seconde  |  geschreven Bytes per seconde  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk schrijf bewerkingen per seconde  |  schrijfbewerkingen per seconde  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Disk schrijf bewerkingen per seconde  |  schrijfbewerkingen per seconde  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Free Megabytes  |  Beschikbare Megabytes  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Free Megabytes  |  Beschikbare Megabytes  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Free fysiek geheugen  |  Vrij fysiek geheugen  |  Count  |  Average | 
@@ -1291,7 +1288,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Verzonden Average_Total pakketten  |  Totaal aantal verzonden pakketten  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Total RX-fouten  |  Totaal aantal RX-fouten  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Total TX-fouten  |  Totaal aantal TX-fouten  |  Count  |  Average | 
-| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Uptime  |  Actieve tijdsduur  |  Count  |  Average | 
+| **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Uptime  |  Bedrijfstijd  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Used MB wissel ruimte  |  Gebruikte MB wissel ruimte  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Used geheugen KB  |  Gebruikte geheugen-kBytes  |  Count  |  Average | 
 | **Ja**  | Nee |  Microsoft.OperationalInsights/workspaces  |  Average_Used geheugen MB  |  Gebruikt geheugen Mbytes  |  Count  |  Average | 
@@ -1499,7 +1496,7 @@ De tabel bevat de volgende kolommen.
 | **Ja**  | Nee |  Micro soft. StorageCache/caches  |  StorageTargetTotalReadThroughput  |  Totale Lees doorvoer StorageTarget  |  BytesPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. StorageCache/caches  |  StorageTargetTotalWriteThroughput  |  Totale schrijf doorvoer StorageTarget  |  BytesPerSecond  |  Average | 
 | **Ja**  | Nee |  Micro soft. StorageCache/caches  |  StorageTargetWriteIOPS  |  StorageTarget write IOPS  |  Count  |  Average | 
-| **Ja**  | Nee |  Micro soft. StorageCache/caches  |  Actieve tijdsduur  |  Actieve tijdsduur  |  Count  |  Average | 
+| **Ja**  | Nee |  Micro soft. StorageCache/caches  |  Bedrijfstijd  |  Bedrijfstijd  |  Count  |  Average | 
 | **Ja**  | Nee |  microsoft.storagesync/storageSyncServices  |  ServerSyncSessionResult  |  Resultaat van synchronisatie sessie  |  Count  |  Average | 
 | **Ja**  | Nee |  microsoft.storagesync/storageSyncServices  |  StorageSyncBatchTransferredFileBytes  |  Gesynchroniseerde bytes  |  Bytes  |  Totaal | 
 | **Ja**  | Nee |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledNetworkBytesByApplication  |  Grootte van intrekken van Cloud lagen op toepassing  |  Bytes  |  Totaal | 

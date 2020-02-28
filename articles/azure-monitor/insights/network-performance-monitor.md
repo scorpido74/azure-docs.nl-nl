@@ -1,18 +1,17 @@
 ---
 title: Netwerkprestatiemeter oplossing in azure | Microsoft Docs
 description: Netwerkprestatiemeter in azure helpt u bij het bewaken van de prestaties van uw netwerken, in bijna realtime, om knel punten in netwerk prestaties te detecteren en te vinden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654474"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -38,7 +37,7 @@ Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatieme
 ## <a name="supported-regions"></a>Ondersteunde regio's
 NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de volgende regio's:
 * Europa - noord
-* Europa - west
+* Europa -west
 * Frankrijk - centraal
 
 * VS - west-centraal
@@ -58,7 +57,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Korea - centraal
 * India - centraal
 * Virginia van de Amerikaanse overheid
-* China - oost 2
+* China-oost 2
 
 
 De lijst met ondersteunde regio's voor de monitor ExpressRoute is beschikbaar in de [documentatie](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117).
@@ -224,7 +223,7 @@ In elke weer gave wordt een moment opname van uw netwerk status op een bepaald m
 
  
 
-### <a name="trend-charts"></a>Trendgrafieken 
+### <a name="trend-charts"></a>Trend grafieken 
 
 Op elk niveau dat u inzoomt, ziet u de trend van de toepasselijke metrische gegevens. Dit kan verlies, latentie, reactie tijd of bandbreedte gebruik zijn. Als u het tijds interval voor de trend wilt wijzigen, gebruikt u het besturings element tijd boven aan de grafiek. 
 
@@ -233,7 +232,7 @@ Trend grafieken tonen een historisch perspectief van de prestaties van prestatie
 U kunt dit soort problemen gemakkelijk detecteren door te kijken naar een trend diagram. Het probleem wordt weer gegeven als een plotselinge piek in netwerk latentie of pakket verlies. Als u het probleem wilt onderzoeken, gebruikt u het besturings element netwerk status recorder om de moment opname en de topologie van het netwerk te bekijken voor dat punt op het moment dat het probleem optrad.
 
  
-![Trendgrafieken](media/network-performance-monitor/trend-charts.png)
+![Trend grafieken](media/network-performance-monitor/trend-charts.png)
  
 
 ### <a name="topology-map"></a>Topologie toewijzing 

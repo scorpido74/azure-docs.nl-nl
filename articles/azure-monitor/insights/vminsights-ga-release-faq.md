@@ -1,18 +1,17 @@
 ---
 title: Veelgestelde vragen over Azure Monitor voor VM's (GA) | Microsoft Docs
 description: Azure Monitor voor VM's is een oplossing in azure met een combi natie van de status-en prestatie bewaking van het Azure VM-besturings systeem, evenals het automatisch detecteren van toepassings onderdelen en afhankelijkheden met andere resources en het toewijzen van de communicatie tussen ermee. In dit artikel vindt u antwoorden op veelgestelde vragen over de GA-versie.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620380"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656191"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 988bd6dbb157276a9ee37c8ca3051a808f8b6499
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587019"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661070"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Zelf studie: een NAT-gateway maken met behulp van Azure CLI en de NAT-service testen
 
@@ -62,7 +62,7 @@ Voor toegang tot het open bare Internet hebt u een of meer open bare IP-adressen
 
 ### <a name="create-a-public-ip-prefix"></a>Een openbaar IP-voor voegsel maken
 
-U kunt een of meer open bare IP-adres bronnen, open bare IP-voor voegsels of beide met NAT-gateway gebruiken. We voegen een open bare IP-prefix bron toe aan dit scenario om te demonstreren.   Gebruik [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip-prefix) om een open bare IP-adres voorvoegsel resource te maken met de naam **myPublicIPprefixsource** in **myResourceGroupNAT**.
+U kunt een of meer open bare IP-adres bronnen, open bare IP-voor voegsels of beide met NAT-gateway gebruiken. We voegen een open bare IP-prefix bron toe aan dit scenario om te demonstreren.   Gebruik [AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) om een open bare IP-adres voorvoegsel resource te maken met de naam **myPublicIPprefixsource** in **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
