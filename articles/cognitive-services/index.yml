@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 01/21/2020
-  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 6f49c2e645ba0ecf48c8c111b9afd7c12722f4ad
+  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77560759"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "77919325"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -114,36 +114,6 @@ conceptualContent:
     - url: ./Bing-web-search/index.yml
       itemType: overview
       text: Hubpagina voor Bing Search-API's
-    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
-      itemType: overview
-      text: Zoeken met automatische suggesties
-    - url: ./bing-custom-search/overview.md
-      itemType: overview
-      text: Aangepast zoeken
-    - url: ./bing-entities-search/overview.md
-      itemType: overview
-      text: Entiteiten zoeken
-    - url: ./bing-image-search/overview.md
-      itemType: overview
-      text: Afbeeldingen zoeken
-    - url: ./bing-local-business-search/overview.md
-      itemType: overview
-      text: Lokale bedrijven zoeken (preview)
-    - url: ./bing-news-search/search-the-web.md
-      itemType: overview
-      text: Nieuws zoeken
-    - url: ./bing-spell-check/overview.md
-      itemType: overview
-      text: Spellingscontrole
-    - url: ./Bing-Video-Search/overview.md
-      itemType: overview
-      text: Video's zoeken
-    - url: ./bing-visual-search/overview.md
-      itemType: overview
-      text: Visueel zoeken
-    - url: ./bing-web-search/overview.md
-      itemType: overview
-      text: Webpagina's zoeken
   - title: Containers voor Cognitive Services
     summary: Met containerondersteuning in Azure Cognitive Services kunnen ontwikkelaars gebruikmaken van dezelfde uitgebreide API's die beschikbaar zijn in Azure. Ook biedt de ondersteuning flexiliteit in de implementatie en hostlocatie van de service die bij Docker-containers horen.
     links:
