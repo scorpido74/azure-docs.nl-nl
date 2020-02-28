@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor logboek processen automatiseren met Microsoft Flow
 description: Meer informatie over hoe u Microsoft Flow kunt gebruiken om Herhaal bare processen snel te automatiseren met behulp van de Azure Log Analytics-connector.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 92f0d2916b0f28760f7d028ee3e6dc0be37c32d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166940"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672307"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Azure Monitor logboek processen automatiseren met de connector voor Microsoft Flow
 Met [Microsoft flow](https://ms.flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Uitvoer van de ene actie kan worden gebruikt als invoer voor een andere, zodat u integratie tussen verschillende services kunt maken.  Met de Azure Log Analytics-connector voor Microsoft Flow kunt u werk stromen bouwen met gegevens die zijn opgehaald door logboek query's van een Log Analytics-werk ruimte in Azure Monitor.

@@ -1,24 +1,22 @@
 ---
 title: Azure-toepassing Insights-agent-aan de slag | Microsoft Docs
 description: Een Snelstartgids voor Application Insights agent. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ef354bc61d849a4d536bd26355ef21b0f1c0035
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7819de1f3dfab7f934421de86c0481d2e063f7a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671185"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Aan de slag met Azure Monitor Application Insights-agent voor on-premises servers
 
 Dit artikel bevat de Quick Start-opdrachten die naar verwachting werken voor de meeste omgevingen.
 De instructies zijn afhankelijk van de PowerShell Gallery voor het distribueren van updates.
-Deze opdrachten ondersteunen de Power shell-para meter `-Proxy`.
+Deze opdrachten ondersteunen de Power shell-`-Proxy` para meter.
 
 Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md)voor een uitleg van deze opdrachten, instructies voor het aanpassen en informatie over het oplossen van problemen.
 

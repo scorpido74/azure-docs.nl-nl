@@ -1,18 +1,15 @@
 ---
 title: Actie regels voor Azure Monitor waarschuwingen
 description: Meer informatie over actie regels in Azure Monitor zijn en hoe u deze kunt configureren en beheren.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767684"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668465"
 ---
 # <a name="action-rules-preview"></a>Actie regels (preview-versie)
 
@@ -54,7 +51,7 @@ U ziet nu de pagina stroom voor het maken van actie regels. Configureer de volge
 
 ![Stroom voor maken van nieuwe actie regel](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Scope
+### <a name="scope"></a>Bereik
 
 Kies eerst het bereik (Azure-abonnement, resource groep of doel resource). U kunt ook meerdere combi Naties van bereiken binnen één abonnement selecteren.
 
@@ -64,7 +61,7 @@ Kies eerst het bereik (Azure-abonnement, resource groep of doel resource). U kun
 
 U kunt ook filters definiëren om ze te beperken tot een specifieke subset van de waarschuwingen. 
 
-De beschik bare filters zijn: 
+De beschikbare filters zijn: 
 
 * **Ernst**: de optie voor het selecteren van een of meer waarschuwings ernst. **Ernst = Sev1** betekent dat de actie regel van toepassing is op alle waarschuwingen die zijn ingesteld op Sev1.
 * **Bewakings service**: een filter op basis van de oorspronkelijke bewakings service. Dit filter is ook meervoudige selectie. Bijvoorbeeld: de **controle service = "Application Insights"** betekent dat de actie regel van toepassing is voor alle waarschuwingen op basis van Application Insights.
@@ -103,7 +100,7 @@ Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie g
 ### <a name="action-rule-details"></a>Details van de actie regel
 
 Configureer als laatste de volgende Details voor de actie regel:
-* Naam
+* Name
 * De resource groep waarin deze is opgeslagen
 * Beschrijving 
 

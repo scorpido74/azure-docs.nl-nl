@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435731"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663742"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
 Meer informatie over het gebruik van [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) om Apache Hive-query's uit te voeren op HDInsight.
 
-Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDInsight-cluster. Als u Beeline lokaal wilt installeren, raadpleegt u [Beeline-client installeren](#install-beeline-client)hieronder. Beeline maakt gebruik van JDBC om verbinding te maken met HiveServer2, een service die wordt gehost op uw HDInsight-cluster. U kunt Beeline ook gebruiken voor toegang tot de component op HDInsight op afstand via internet. De volgende voor beelden bieden de meest voorkomende verbindings reeksen die worden gebruikt om verbinding te maken met HDInsight vanuit beeline:
+Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDInsight-cluster. Als u Beeline lokaal wilt installeren, raadpleegt u [Beeline-client installeren](#install-beeline-client)hieronder. Beeline maakt gebruik van JDBC om verbinding te maken met HiveServer2, een service die wordt gehost op uw HDInsight-cluster. U kunt Beeline ook gebruiken voor toegang tot de component op HDInsight op afstand via internet. De volgende voor beelden bieden de meest voorkomende verbindings reeksen die worden gebruikt om verbinding te maken met HDInsight vanuit Beeline.
 
 ## <a name="types-of-connections"></a>Typen verbindingen
 
@@ -59,7 +59,9 @@ Vervang `<username>` door de naam van een account in het domein met machtigingen
 
 ### <a name="over-public-or-private-endpoints"></a>Via open bare of persoonlijke eind punten
 
-Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam van het cluster aanmeldings account (standaard `admin`) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om verbinding te maken met het `clustername.azurehdinsight.net` adres. Deze verbinding wordt tot stand gebracht via poort `443`en is versleuteld met SSL:
+Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam van het cluster aanmeldings account (standaard `admin`) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om verbinding te maken met het `clustername.azurehdinsight.net` adres. Deze verbinding wordt tot stand gebracht via poort `443`en is versleuteld met SSL.
+
+Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
@@ -71,19 +73,17 @@ of voor een persoonlijk eind punt:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
-
 Persoonlijke eind punten verwijzen naar een basis load balancer, die alleen toegankelijk is vanaf de VNETs die in dezelfde regio is gepeerd. Zie [beperkingen voor wereld wijde VNet-peering en load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. U kunt de `curl` opdracht met `-v` optie om verbindings problemen met open bare of persoonlijke eind punten op te lossen voordat u Beeline gebruikt.
 
 ---
 
-### <a id="sparksql"></a>Beeline gebruiken met Apache Spark
+### <a name="use-beeline-with-apache-spark"></a>Beeline gebruiken met Apache Spark
 
 Apache Spark biedt een eigen implementatie van HiveServer2, die ook wel de Spark Thrift-server wordt genoemd. Deze service maakt gebruik van Spark SQL om query's op te lossen in plaats van Hive, en kan betere prestaties leveren, afhankelijk van uw query.
 
 #### <a name="through-public-or-private-endpoints"></a>Via open bare of privé-eind punten
 
-Het gebruikte connection string is iets anders. In plaats van `httpPath=/hive2` `httpPath/sparkhive2`:
+Het gebruikte connection string is iets anders. In plaats van `httpPath=/hive2` deze `httpPath/sparkhive2`. Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -94,8 +94,6 @@ of voor een persoonlijk eind punt:
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
-
-Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
 Persoonlijke eind punten verwijzen naar een basis load balancer, die alleen toegankelijk is vanaf de VNETs die in dezelfde regio is gepeerd. Zie [beperkingen voor wereld wijde VNet-peering en load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. U kunt de `curl` opdracht met `-v` optie om verbindings problemen met open bare of persoonlijke eind punten op te lossen voordat u Beeline gebruikt.
 
@@ -111,7 +109,7 @@ Wanneer u rechtstreeks verbinding maakt met het hoofd knooppunt van het cluster 
 
 ---
 
-## <a id="prereq"></a>Vereisten
+## <a name="prerequisites-for-examples"></a>Vereisten voor voor beelden
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -121,7 +119,7 @@ Wanneer u rechtstreeks verbinding maakt met het hoofd knooppunt van het cluster 
 
 * Optie 2: een lokale Beeline-client.
 
-## <a id="beeline"></a>Een Hive-query uitvoeren
+## <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
 
 Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-verbinding.
 
@@ -188,24 +186,21 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
         GROUP BY t4;
     ```
 
     Deze instructies doen de volgende acties:
 
-    * `DROP TABLE`-als de tabel bestaat, wordt deze verwijderd.
-
-    * `CREATE EXTERNAL TABLE`-maakt een **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie.
-
-    * `ROW FORMAT`: de indeling van de gegevens. In dit geval worden de velden in elk logboek gescheiden door een spatie.
-
-    * `STORED AS TEXTFILE LOCATION`-waar de gegevens worden opgeslagen en in welke bestands indeling.
-
-    * `SELECT`: Hiermee selecteert u een telling van alle rijen waarin de kolom **T4** de waarde **[error]** bevat. Deze query retourneert de waarde **3** als er drie rijen met deze waarde zijn.
-
-    * `INPUT__FILE__NAME LIKE '%.log'`-Hive probeert het schema toe te passen op alle bestanden in de map. In dit geval bevat de map bestanden die niet overeenkomen met het schema. Om garbage-gegevens in de resultaten te voor komen, geeft deze instructie aan dat de component alleen gegevens moet retour neren van bestanden die eindigen op. log.
+    |Rekeningoverzicht |Beschrijving |
+    |---|---|
+    |TABEL NEERZETTEN|Als de tabel bestaat, wordt deze verwijderd.|
+    |EXTERNE TABEL MAKEN|Hiermee maakt u een **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie.|
+    |RIJ-INDELING|Hoe de gegevens worden ingedeeld. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
+    |OPGESLAGEN ALS TEXTFILE-LOCATIE|Waar de gegevens worden opgeslagen en in welke bestands indeling.|
+    |SELECT|Hiermee wordt het aantal rijen geselecteerd waarin de kolom **T4** de waarde **[error]** bevat. Deze query retourneert de waarde **3** als er drie rijen met deze waarde zijn.|
+    |INPUT__FILE__NAME zoals%. log|Hive probeert het schema toe te passen op alle bestanden in de map. In dit geval bevat de map bestanden die niet overeenkomen met het schema. Om garbage-gegevens in de resultaten te voor komen, geeft deze instructie aan dat de component alleen gegevens moet retour neren van bestanden die eindigen op. log.|
 
    > [!NOTE]  
    > Externe tabellen moeten worden gebruikt wanneer u verwacht dat de onderliggende gegevens worden bijgewerkt door een externe bron. Bijvoorbeeld een geautomatiseerd proces voor het uploaden van gegevens of een MapReduce-bewerking.
@@ -236,7 +231,11 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. Gebruik `!exit`om Beeline af te sluiten.
+6. Beeline afsluiten:
+
+    ```bash
+    !exit
+    ```
 
 ## <a name="run-a-hiveql-file"></a>Een HiveQL-bestand uitvoeren
 
@@ -248,7 +247,7 @@ Dit is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen o
     nano query.hql
     ```
 
-2. Gebruik de volgende tekst als de inhoud van het bestand. Met deze query maakt u een nieuwe interne tabel met de naam **errorLogs**:
+1. Gebruik de volgende tekst als de inhoud van het bestand. Met deze query maakt u een nieuwe interne tabel met de naam **errorLogs**:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -257,16 +256,18 @@ Dit is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen o
 
     Deze instructies doen de volgende acties:
 
-   * **Create Table als het niet bestaat** : als de tabel nog niet bestaat, wordt deze gemaakt. Omdat het **externe** tref woord niet wordt gebruikt, maakt deze instructie een interne tabel. Interne tabellen worden opgeslagen in het Hive-Data Warehouse en worden volledig beheerd door Hive.
-   * **Opgeslagen als Orc** : Hiermee worden de gegevens opgeslagen in de indeling van de geoptimaliseerde rij in kolommen (Orc). De ORC-indeling is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.
-   * **overschrijven invoegen... SELECT** -rijen selecteren in de **tabel log4jLogs** die **[error]** bevatten en vervolgens de gegevens invoegen in de tabel **errorLogs** .
+    |Rekeningoverzicht |Beschrijving |
+    |---|---|
+    |CREATE TABLE ALS DEZE NIET BESTAAT|Als de tabel nog niet bestaat, wordt deze gemaakt. Omdat het **externe** tref woord niet wordt gebruikt, maakt deze instructie een interne tabel. Interne tabellen worden opgeslagen in het Hive-Data Warehouse en worden volledig beheerd door Hive.|
+    |OPGESLAGEN ALS ORC|Hiermee worden de gegevens opgeslagen in de ORC-indeling (Optimized Row in kolommen). De ORC-indeling is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.|
+    |OVERSCHRIJVEN INVOEGEN... UITGESCHAKELD|Hiermee worden rijen uit de **log4jLogs** -tabel met **[error]** geselecteerd en worden de gegevens vervolgens ingevoegd in de tabel **errorLogs** .|
 
     > [!NOTE]  
     > In tegens telling tot externe tabellen, verwijdert het verwijderen van een interne tabel ook de onderliggende gegevens.
 
-3. Als u het bestand wilt opslaan, gebruikt u **Ctrl**+**X**en voert u vervolgens **Y**en tenslotte **Enter**.
+1. Als u het bestand wilt opslaan, gebruikt u **Ctrl**+**X**en voert u vervolgens **Y**en tenslotte **Enter**.
 
-4. Gebruik het volgende om het bestand uit te voeren met beeline:
+1. Gebruik het volgende om het bestand uit te voeren met beeline:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
@@ -275,7 +276,7 @@ Dit is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen o
     > [!NOTE]  
     > Met de para meter `-i` start u Beeline en voert u de instructies in het `query.hql`-bestand uit. Zodra de query is voltooid, ontvangt u de `jdbc:hive2://headnodehost:10001/>` prompt. U kunt ook een bestand uitvoeren met de para meter `-f`, die Beeline verlaat nadat de query is voltooid.
 
-5. Als u wilt controleren of de **errorLogs** -tabel is gemaakt, gebruikt u de volgende instructie om alle rijen uit **errorLogs**te retour neren:
+1. Als u wilt controleren of de **errorLogs** -tabel is gemaakt, gebruikt u de volgende instructie om alle rijen uit **errorLogs**te retour neren:
 
     ```hiveql
     SELECT * from errorLogs;
@@ -310,7 +311,9 @@ Hoewel Beeline is opgenomen op de hoofd knooppunten van uw HDInsight-cluster, wi
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Het bashrc-bestand (meestal gevonden in ~/.bashrc) wijzigen. Open het bestand met `nano ~/.bashrc` en voeg de volgende regel toe aan het einde van het bestand:
+    1. Open het bashrc-bestand (meestal gevonden in ~/.bashrc): `nano ~/.bashrc`.
+
+    1. Wijzig het bashrc-bestand. Voeg de volgende regel toe aan het einde van het bestand:
 
         ```bash
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -335,11 +338,12 @@ Hoewel Beeline is opgenomen op de hoofd knooppunten van uw HDInsight-cluster, wi
 1. Wijzig het bashrc-bestand verder. U moet het pad naar de locatie waar de archieven zijn uitgepakt, identificeren. Als u het [Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10)gebruikt en u de stappen precies hebt gevolgd, wordt het pad `/mnt/c/Users/user/`, waarbij `user` uw gebruikers naam is.
 
     1. Open het bestand: `nano ~/.bashrc`
+
     1. Wijzig de onderstaande opdrachten met het juiste pad en voer deze vervolgens aan het einde van het bashrc-bestand in:
 
         ```bash
-        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
-        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
+        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 

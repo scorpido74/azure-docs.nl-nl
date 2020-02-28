@@ -1,18 +1,17 @@
 ---
 title: IIS-logboeken in Azure Monitor | Microsoft Docs
 description: Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die door Azure Monitor kunnen worden verzameld.  In dit artikel wordt beschreven hoe u een verzameling IIS-logboeken en-Details configureert van de records die ze in Azure Monitor maken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932492"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670573"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>IIS-logboeken in Azure Monitor verzamelen
 Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die kunnen worden verzameld door Azure Monitor en worden opgeslagen als [logboek gegevens](data-platform.md).
@@ -56,15 +55,15 @@ IIS-logboek records hebben een type **W3CIISLog** en hebben de eigenschappen in 
 | Manifestatie |Poort op de server waarmee de client is verbonden. |
 | sSiteName |De naam van de IIS-site. |
 | TimeGenerated |De datum en tijd waarop de vermelding is geregistreerd. |
-| timeTaken |De tijds duur voor het verwerken van de aanvraag in milliseconden. |
+| TimeTaken |De tijds duur voor het verwerken van de aanvraag in milliseconden. |
 
 ## <a name="log-queries-with-iis-logs"></a>Query's vastleggen in Logboeken met IIS-logboeken
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee IIS-logboek records worden opgehaald.
 
-| Query | Beschrijving |
+| Query's uitvoeren | Beschrijving |
 |:--- |:--- |
 | W3CIISLog |Alle IIS-logboek records. |
-| W3CIISLog &#124; waarbij scStatus = = 500 |Alle IIS-logboek records met de retour status 500. |
+| W3CIISLog &#124; where scStatus==500 |Alle IIS-logboek records met de retour status 500. |
 | Aantal &#124; samen vattingen van W3CIISLog () door overschrijving |Aantal IIS-logboek vermeldingen op client-IP-adres. |
 | W3CIISLog &#124; waarbij csHost = = "www\.contoso.com" &#124; aantal overzichten () door csUriStem |Aantal IIS-logboek vermeldingen op URL voor de host-www\.contoso.com. |
 | W3CIISLog &#124; Total Sum (csBytes) door Computer &#124; nemen 500000 |Het totale aantal bytes dat door elke IIS-computer is ontvangen. |

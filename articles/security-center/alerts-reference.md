@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623961"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661956"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -399,8 +399,8 @@ De ondersteunde intenties van de Kill-keten van Security Center zijn gebaseerd o
 
 |Intentie|Beschrijving|
 |------|-------|
-|**Probing**|Zoeken kan worden geprobeerd om toegang te krijgen tot een bepaalde bron, onafhankelijk van een schadelijk doel of een mislukte poging om toegang te krijgen tot een gericht systeem om gegevens te verzamelen voordat ze worden misbruikt. Deze stap wordt doorgaans gedetecteerd als een poging, afkomstig van buiten het netwerk, om het doel systeem te scannen en een ingangs punt te identificeren.|
-|**Beveiliging**|Exploiting is het stadium waarin een aanvaller beheert om een aanvaller binnen te verkrijgen op de aangevallen bron. Deze fase is relevant voor Compute-hosts en-bronnen zoals gebruikers accounts, certificaten, enzovoort. Threat actors kunnen de resource vaak na deze fase beheren.|
+|**Voor aanvallen**</br>(vervangt probingen)|Een voor deel is dat er een poging wordt gedaan om toegang te krijgen tot een bepaalde bron, ongeacht een schadelijk doel of een mislukte poging om toegang te krijgen tot een gericht systeem om informatie te verzamelen voordat deze wordt misbruikt. Deze stap wordt doorgaans gedetecteerd als een poging, afkomstig van buiten het netwerk, om het doel systeem te scannen en een ingangs punt te identificeren.</br>Meer informatie over de fase van de voor bereiding kan worden gelezen op de [pagina van Mitre](https://attack.mitre.org/matrices/pre/).|
+|**InitialAccess**</br>(ter vervanging van de licentie)|InitialAccess is het stadium waarin een aanvaller beheert om een aanvaller binnen op te halen van de aangevallen resource. Deze fase is relevant voor Compute-hosts en-bronnen zoals gebruikers accounts, certificaten, enzovoort. Threat actors kunnen de resource vaak na deze fase beheren.|
 |**Behouden**|Persistentie is een toegangs-, actie-of configuratie wijziging voor een systeem waarmee een bedreigings actor een permanente aanwezigheid op dat systeem krijgt. Threat actors moeten vaak toegang hebben tot systemen via onderbrekingen, zoals het opnieuw opstarten van het systeem, het verlies van referenties of andere fouten waarvoor een hulp programma voor externe toegang opnieuw moet worden gestart of een alternatieve back-upbewerking moet worden geboden om de toegang te herstellen.|
 |**PrivilegeEscalation**|Escalatie van bevoegdheden is het resultaat van acties waarmee een kwaadwillende persoon een hoger machtigings niveau kan verkrijgen voor een systeem of netwerk. Bepaalde hulpprogram ma's of acties vereisen een hoger bevoegdheids niveau om te werken en zijn waarschijnlijk veel punten nodig tijdens een bewerking. Gebruikers accounts met machtigingen om toegang te krijgen tot specifieke systemen of specifieke functies uit te voeren die nodig zijn om hun doel stelling te verwezenlijken, kunnen ook worden beschouwd als een escalatie van bevoegdheden.|
 |**DefenseEvasion**|Verdedigings fraude bestaat uit technieken die een kwaadwillende persoon kan gebruiken om detectie te omzeilen of om andere verdediging te voor komen. Soms zijn deze acties hetzelfde als (of variaties van) technieken in andere categorieën met het toegevoegde voor deel van een bepaalde verdediging of beperking.|

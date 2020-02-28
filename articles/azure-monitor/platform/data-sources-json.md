@@ -1,18 +1,17 @@
 ---
 title: Aangepaste JSON-gegevens verzamelen in Azure Monitor | Microsoft Docs
 description: Aangepaste JSON-gegevens bronnen kunnen worden verzameld in Azure Monitor met behulp van de Log Analytics-agent voor Linux.  Deze aangepaste gegevens bronnen kunnen eenvoudige scripts zijn die JSON als resultaat hebben, zoals krul of een van de 300 + invoeg toepassingen met een vloeiende waarde. In dit artikel wordt de configuratie beschreven die vereist is voor het verzamelen van gegevens.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 3e636fef31951e172f57c715ac7e080b35a978bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450614"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662158"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Aangepaste JSON-gegevens bronnen met de Log Analytics-agent voor Linux verzamelen in Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -100,4 +99,4 @@ Geneste JSON-gegevens bronnen worden ondersteund, maar worden geïndexeerd op ba
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren. 
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 

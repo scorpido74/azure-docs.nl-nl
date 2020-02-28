@@ -1,18 +1,17 @@
 ---
 title: Aan de slag met logboek query's in Azure Monitor | Microsoft Docs
 description: In dit artikel vindt u een zelf studie voor het schrijven van logboek query's in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: b3b176a6027b0f03c3802867df7be1e339286df2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670176"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met logboek query's in Azure Monitor
 
@@ -40,7 +39,7 @@ Volg een video versie van deze zelf studie:
 Query's kunnen beginnen met een tabel naam of met de *Zoek* opdracht. U moet beginnen met een tabel naam omdat hiermee een duidelijk bereik voor de query wordt gedefinieerd en de query prestaties en relevantie van de resultaten worden verbeterd.
 
 > [!NOTE]
-> De Kusto-querytaal die door Azure Monitor wordt gebruikt, is hoofdlettergevoelig. Trefwoorden in de taal worden over met kleine letters geschreven. Wanneer u namen van tabellen of kolommen in een query gebruikt, moet u ervoor zorgen dat u de juiste aanvraag gebruikt, zoals wordt weer gegeven in het deel venster schema.
+> De Kusto-query taal die door Azure Monitor wordt gebruikt, is hoofdletter gevoelig. Taal trefwoorden worden meestal in kleine letters geschreven. Wanneer u namen van tabellen of kolommen in een query gebruikt, moet u ervoor zorgen dat u de juiste aanvraag gebruikt, zoals wordt weer gegeven in het deel venster schema.
 
 ### <a name="table-based-queries"></a>Query's op basis van een tabel
 Azure Monitor organiseert logboek gegevens in tabellen, die elk bestaan uit meerdere kolommen. Alle tabellen en kolommen worden weer gegeven in het deel venster schema in Log Analytics in de analyse Portal. Identificeer een tabel waarin u geïnteresseerd bent en bekijk vervolgens een stukje gegevens:

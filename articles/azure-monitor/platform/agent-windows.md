@@ -1,18 +1,17 @@
 ---
 title: Windows-computers verbinden met Azure Monitor | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Windows-computers Azure Monitor die worden gehost in andere Clouds of on-premises verbindt met de Log Analytics-agent voor Windows.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689981"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668635"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-computers verbinden met Azure Monitor
 
@@ -20,9 +19,9 @@ Als u virtuele machines of fysieke computers in uw lokale Data Center of een and
 
 Op een bewaakte Windows-computer wordt de agent vermeld als de micro soft Monitoring Agent-service. De service micro soft monitoring agent verzamelt gebeurtenissen van logboek bestanden en Windows-gebeurtenis logboeken, prestatie gegevens en andere telemetrie. Zelfs wanneer de agent niet kan communiceren met Azure Monitor it-rapporteert, blijft de agent actief en worden de verzamelde gegevens op de schijf van de bewaakte computer in de wachtrij geplaatst. Wanneer de verbinding wordt hersteld, verzendt de service micro soft Monitoring Agent verzamelde gegevens naar de service.
 
-De agent kan worden geïnstalleerd met behulp van een van de volgende methoden. De meeste installaties maken zo nodig gebruik van een combinatie van deze methoden voor het installeren van verschillende sets computers.  Verderop in dit artikel vindt u meer informatie over het gebruik van elke methode.
+De agent kan worden geïnstalleerd met behulp van een van de volgende methoden. De meeste installaties gebruiken een combi natie van deze methoden om verschillende sets computers te installeren, indien van toepassing.  Verderop in dit artikel vindt u meer informatie over het gebruik van elke methode.
 
-* Handmatige installatie. Setup wordt hand matig uitgevoerd op de computer met behulp van de installatie wizard, vanaf de opdracht regel of wordt geïmplementeerd met een bestaand hulp programma voor software distributie.
+* Hand matige installatie. Setup wordt hand matig uitgevoerd op de computer met behulp van de installatie wizard, vanaf de opdracht regel of wordt geïmplementeerd met een bestaand hulp programma voor software distributie.
 * Azure Automation Desired State Configuration (DSC). DSC gebruiken in Azure Automation met een script voor Windows-computers die al in uw omgeving zijn geïmplementeerd.  
 * Power shell-script.
 * Resource Manager-sjabloon voor virtuele machines waarop Windows on-premises wordt uitgevoerd in Azure Stack. 
@@ -95,7 +94,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 
 |MMA-specifieke opties                   |Opmerkingen         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Optionele parameter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
+| NOAPM=1                               | Optionele para meter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = de agent configureren om te rapporteren aan een werk ruimte                |
 |OPINSIGHTS_WORKSPACE_ID                | Werk ruimte-ID (GUID) voor de toe te voegen werk ruimte                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Werkruimte sleutel die in eerste instantie wordt gebruikt voor verificatie met de werk ruimte |

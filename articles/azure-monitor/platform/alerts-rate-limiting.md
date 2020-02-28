@@ -1,38 +1,36 @@
 ---
-title: Frequentielimieten instellen voor SMS, e-mailberichten, Azure-App pushmeldingen te verzenden en webhooks
-description: Begrijpen hoe Azure beperkt het aantal mogelijke SMS, e-mail, Azure-App push of webhook-meldingen van een actiegroep.
+title: Frequentie limiet voor SMS, e-mails, Azure-app push meldingen en webhooks
+description: Krijg inzicht in de manier waarop Azure het aantal mogelijke SMS-, e-mail-, Azure-app push-of webhook-meldingen beperkt van een actie groep.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346645"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665524"
 ---
-# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Frequentielimieten instellen voor spraak-, SMS, e-mailberichten, Azure-App pushmeldingen te verzenden en webhook-berichten
-Frequentielimiet is een onderbreking van de meldingen die wordt uitgevoerd wanneer er te veel worden verzonden naar een bepaald telefoonnummer, e-mailadres of apparaat. Gelden enkele beperkingen zorgt ervoor dat er waarschuwingen beheerbare en bruikbare zijn.
+# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Frequentie limiet voor spraak, SMS, e-mails Azure-app push meldingen en webhook-berichten
+Frequentie beperking is het opschorten van meldingen die optreden wanneer te veel wordt verzonden naar een bepaald telefoon nummer, e-mail adres of apparaat. Als u de frequentie beperkt, zorgt u ervoor dat waarschuwingen kunnen worden beheerd en wat actie kan worden uitgevoerd.
 
-De maximale snelheid drempelwaarden zijn:
+De drempel waarden voor frequentie limieten zijn:
 
-- **SMS**: Niet meer dan 1 SMS om de 5 minuten.
-- **Stem**: Spraakoproep om de 5 minuten niet meer dan 1.
-- **e-mailbericht**: Niet meer dan 100 e-mailberichten in een uur.
+- **SMS**: niet meer dan 1 SMS om de vijf minuten.
+- **Voice**: Maxi maal 1 telefoon oproep om de vijf minuten.
+- **E-mail**: maxi maal 100 e-mail berichten in een uur.
  
-  Andere acties zijn niet snelheidsbeperking van toepassing.
+  Andere acties zijn geen tarieven beperkt.
 
-## <a name="rate-limit-rules"></a>Regels voor snelheid
-- Een bepaalde telefoonnummer of e-mailbericht is snelheidsbeperking van toepassing wanneer wordt ontvangen van berichten die meer dan de drempelwaarde is toegestaan.
-- Een telefoonnummer of e-mailbericht kan deel uitmaken van actiegroepen voor veel abonnementen. Snelheidsbeperking van toepassing is in alle abonnementen. Het geldt zodra de drempelwaarde is bereikt, zelfs als de berichten worden verzonden bij meerdere abonnementen.
-- Wanneer een e-mailadres tarief beperkt is, wordt een extra melding wordt verzonden om te communiceren met de gelden enkele beperkingen. De e-mailbericht Staten wanneer de frequentielimiet is verlopen.
+## <a name="rate-limit-rules"></a>Frequentie limiet regels
+- Een bepaald telefoon nummer of e-mail adres is beperkt wanneer er meer berichten worden ontvangen dan de drempel waarde toestaat.
+- Een telefoon nummer of e-mail adres kan deel uitmaken van actie groepen in veel abonnementen. De frequentie beperking is van toepassing op alle abonnementen. Deze is van toepassing zodra de drempel waarde is bereikt, zelfs als berichten worden verzonden vanuit meerdere abonnementen.
+- Wanneer een e-mail adres een beperkt aantal is, wordt er een extra melding verzonden om de frequentie limiet te communiceren. De e-mail status wanneer de frequentie limiet verloopt.
 
 ## <a name="next-steps"></a>Volgende stappen ##
-* Meer informatie over [SMS waarschuwen gedrag](alerts-sms-behavior.md).
-* Krijgen een [overzicht van waarschuwingen voor activiteitenlogboeken](alerts-overview.md), en leer hoe u waarschuwingen ontvangt.  
-* Meer informatie over het [waarschuwingen configureren wanneer er een melding van de health service wordt geplaatst](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Meer informatie over het [gedrag van SMS-waarschuwingen](alerts-sms-behavior.md).
+* Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
+* Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 

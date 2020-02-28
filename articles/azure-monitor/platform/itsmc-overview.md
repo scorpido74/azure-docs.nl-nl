@@ -1,18 +1,17 @@
 ---
 title: IT Service Management-connector in azure Log Analytics | Microsoft Docs
 description: Dit artikel bevat een overzicht van IT Service Management-connector (ITSMC) en informatie over hoe u deze oplossing kunt gebruiken om de ITSM-werk items in azure Log Analytics centraal te controleren en te beheren, en eventuele problemen snel op te lossen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990671"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672222"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -66,7 +65,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
    >[!NOTE]
    >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
 
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
 Wanneer de oplossings resource is geïmplementeerd, verschijnt er een melding in de rechter bovenhoek van het venster.
 
@@ -82,7 +81,7 @@ Gebruik de volgende stappen, afhankelijk van het ITSM-product waarmee u verbindi
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [Cher well](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Nadat u uw ITSM-hulp middelen hebt bereid, volgt u de onderstaande stappen om een verbinding te maken:
 
@@ -179,7 +178,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Staat
+- Status
 - Urgentie
 - Impact
 - Prioriteit
@@ -189,7 +188,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Gesloten door
 - Bron
 - Toegewezen aan
-- Category
+- Categorie
 - Titel
 - Beschrijving
 - Datum gemaakt
@@ -212,8 +211,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Toegewezen aan
 - Titel
 - Type
-- Category
-- Staat
+- Categorie
+- Status
 - Escalatie
 - Conflict status
 - Urgentie
@@ -237,7 +236,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics veld | Het veld ServiceNow |
 |:--- |:--- |
 | ServiceDeskId_s| Aantal |
-| IncidentState_s | Staat |
+| IncidentState_s | Status |
 | Urgency_s |Urgentie |
 | Impact_s |Impact|
 | Priority_s | Prioriteit |
@@ -246,12 +245,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | Gesloten door |
 | Source_s| Type contact |
 | AssignedTo_s | Toegewezen aan  |
-| Category_s | Category |
+| Category_s | Categorie |
 | Title_s|  Korte beschrijving |
 | Description_s|  Opmerkingen |
 | CreatedDate_t|  Had |
 | ClosedDate_t| Gesloten|
-| ResolvedDate_t|Gecontroleerd|
+| ResolvedDate_t|Opgelost|
 | Computer  | Configuratie-item |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Uitvoer gegevens voor een wijzigings aanvraag voor een ServiceNow
@@ -264,18 +263,18 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Title_s|  Korte beschrijving |
 | Type_s|  Type |
-| Category_s|  Category |
-| CRState_s|  Staat|
+| Category_s|  Categorie |
+| CRState_s|  Status|
 | Urgency_s|  Urgentie |
 | Priority_s| Prioriteit|
 | Risk_s| Risico|
 | Impact_s| Impact|
 | RequestedDate_t  | Aangevraagd door datum |
-| ClosedDate_t | Gesloten datum |
+| ClosedDate_t | Datum gesloten |
 | PlannedStartDate_t  |     Geplande begin datum |
 | PlannedEndDate_t  |   Geplande eind datum |
-| WorkStartDate_t  | Werkelijke begin datum |
-| WorkEndDate_t | Werkelijke eind datum|
+| WorkStartDate_t  | Werkelijke begindatum |
+| WorkEndDate_t | Werkelijke einddatum|
 | Description_s | Beschrijving |
 | Computer  | Configuratie-item |
 

@@ -3,150 +3,149 @@ title: Geavanceerde functies van Azure Metrics Explorer
 description: Meer informatie over geavanceerde functies van Azure Monitor Metrics Explorer
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256806"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662397"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Geavanceerde functies van Azure Metrics Explorer
 
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat u bekend met de basisfuncties van Metrics Explorer bent. Als u een nieuwe gebruiker bent en u wilt meer informatie over het maken van uw eerste grafiek met metrische gegevens, raadpleegt [aan de slag met Azure Metrics Explorer](metrics-getting-started.md).
+> In dit artikel wordt ervan uitgegaan dat u bekend bent met de basis functies van Metrics Explorer. Zie aan de slag [met Azure Metrics Explorer](metrics-getting-started.md)als u een nieuwe gebruiker bent en wilt weten hoe u uw eerste meet diagram maakt.
 
-## <a name="metrics-in-azure"></a>Metrische gegevens in Azure
+## <a name="metrics-in-azure"></a>Metrische gegevens in azure
 
-[Metrische gegevens in Azure Monitor](data-platform-metrics.md) zijn van de reeks meetwaarden en aantallen die worden verzameld en opgeslagen na verloop van tijd. Er zijn metrische gegevens voor standard (of 'platform') en aangepaste metrische gegevens. De standaard metrische gegevens worden aan u vertrekt door de Azure-platform zelf. Standaard metrische gegevens weer de status en gebruik statistische gegevens van uw Azure-resources. Terwijl aangepaste metrische gegevens naar Azure worden verzonden door uw toepassingen met behulp van de [Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure Diagnostics (WAD)-extensie](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), of door [Azure REST-API bewaken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+[Metrische gegevens in azure monitor](data-platform-metrics.md) zijn de reeks gemeten waarden en aantallen die gedurende een bepaalde periode worden verzameld en opgeslagen. Er zijn standaard metrische gegevens (of platformen) en aangepaste metrische gegevens. De standaard metrische gegevens worden aan u door het Azure-platform zelf verschaft. Standaard waarden zijn de status-en gebruiks statistieken van uw Azure-resources. Terwijl aangepaste metrische gegevens worden verzonden naar Azure door uw toepassingen met behulp [van de Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), een [Windows Azure Diagnostics-extensie (WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)of door [Azure monitor rest API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>Weergaven met meerdere metrische gegevens en grafieken maken
+## <a name="create-views-with-multiple-metrics-and-charts"></a>Weer gaven met meerdere metrische gegevens en grafieken maken
 
-U kunt grafieken die meerdere metrische gegevens lijnen tekenen of meerdere grafieken met metrische gegevens tegelijk weergeven. Deze functie kunt u naar:
+U kunt grafieken maken waarin meerdere metrische regels worden getekend of meerdere metrische grafieken tegelijk worden weer gegeven. Met deze functionaliteit kunt u:
 
-- Koppel gerelateerde metrische gegevens over dezelfde grafiek om te zien hoe een waarde is gerelateerd aan een andere
-- metrische gegevens weergeven met verschillende eenheden in de nabijheid
-- visueel aggregeren en vergelijkt u metrische gegevens uit meerdere bronnen
+- gerelateerde metrische gegevens aan dezelfde grafiek correleren om te zien hoe de ene waarde aan een andere is gerelateerd
+- meet waarden met verschillende maat eenheden in een nabijheid weer geven
+- statistieken visueel samen voegen en vergelijken van meerdere resources
 
-Als u 5 storage-accounts hebt en u wilt weten hoeveel totale ruimte tussen deze wordt gebruikt, kunt u bijvoorbeeld een (gestapeld) vlakdiagram waarin de afzonderlijke gebruiker en de som van alle waarden op bepaalde tijdstippen in-time maken.
+Als u bijvoorbeeld 5 opslag accounts hebt en u wilt weten hoeveel totale ruimte er tussen de twee is verbruikt, kunt u een (gestapeld) vlak diagram maken waarin de afzonderlijke en som van alle waarden op bepaalde tijdstippen worden weer gegeven.
 
-### <a name="multiple-metrics-on-the-same-chart"></a>Meerdere metrische gegevens over dezelfde grafiek
+### <a name="multiple-metrics-on-the-same-chart"></a>Meerdere metrische gegevens in hetzelfde diagram
 
-Eerste, [maakt u een nieuwe grafiek](metrics-getting-started.md#create-your-first-metric-chart). Klik op **metrische waarde toevoegen** en Herhaal de stappen om nog een metrische waarde toevoegen aan dezelfde grafiek.
+Maak eerst [een nieuwe grafiek](metrics-getting-started.md#create-your-first-metric-chart). Klik op **metrische gegevens toevoegen** en herhaal de stappen om een andere metriek toe te voegen in hetzelfde diagram.
 
    > [!NOTE]
-   > Normaal gesproken u niet metrische gegevens met verschillende eenheden (dat wil zeggen "milliseconden" en 'kilobytes') of met aanmerkelijk verschillende schalen in een grafiek hebt. In plaats daarvan kunt u overwegen meerdere diagrammen. Klik op de knop grafiek toevoegen aan meerdere diagrammen maken in metrics explorer.
+   > Normaal gesp roken wilt u geen metrische gegevens met verschillende maat eenheden hebben (bijvoorbeeld ' milliseconden ' en ' KB ') of met een aanzienlijk andere schaal op één grafiek. In plaats daarvan kunt u meerdere grafieken gebruiken. Klik op de knop grafiek toevoegen om meerdere grafieken te maken in Metrics Explorer.
 
-### <a name="multiple-charts"></a>Meerdere diagrammen
+### <a name="multiple-charts"></a>Meerdere grafieken
 
-Klik op de **toevoegen grafiek** en een andere grafiek maken met een andere meetwaarde.
+Klik op de **grafiek toevoegen** en maak een andere grafiek met een andere metriek.
 
-### <a name="order-or-delete-multiple-charts"></a>Volgorde of meerdere diagrammen verwijderen
+### <a name="order-or-delete-multiple-charts"></a>Meerdere grafieken best Ellen of verwijderen
 
-Als u wilt sorteren of meerdere diagrammen verwijderen, klikt u op het beletselteken ( **...**  ) symbool grafiektype in het menu openen en kies het juiste menu-item van **omhoog**, **omlaag**, of **verwijderen**.
+Als u meerdere grafieken wilt best Ellen of verwijderen, klikt u op het symbool met weglatings tekens ( **...** ) om het menu grafiek te openen en kiest u de juiste menu **opdracht van omhoog**, **omlaag**of **verwijderen**.
 
-## <a name="apply-filters-to-charts"></a>Filters toepassen op grafieken
+## <a name="apply-filters-to-charts"></a>Filters toep assen op grafieken
 
-U kunt filters toepassen op de grafieken met metrische gegevens met dimensies. Bijvoorbeeld, als de metriek "Aantal transacties" een dimensie heeft, "reactietype', waarmee wordt aangegeven of het antwoord van transacties is geslaagd of mislukt vervolgens filteren op deze dimensie wilt tekenen regel in een grafiek voor alleen geslaagde (of alleen mislukt) transacties. 
+U kunt filters toep assen op de grafieken waarin metrische gegevens met dimensies worden weer gegeven. Als de metrische "trans actie Count" bijvoorbeeld een dimensie heeft, "antwoord type", waarmee wordt aangegeven of het antwoord van de trans acties is geslaagd of mislukt en vervolgens filteren op deze dimensie een grafiek regel voor alleen geslaagde (of alleen mislukte) trans acties zou verwerken. 
 
 ### <a name="to-add-a-filter"></a>Een filter toevoegen
 
 1. Selecteer **filter toevoegen** boven de grafiek
 
-2. Selecteer welke dimensie (eigenschap) die u wilt filteren
+2. Selecteer welke dimensie (eigenschap) u wilt filteren
 
-   ![de installatiekopie van de metrische gegevens](./media/metrics-charts/00006.png)
+   ![afbeelding van metrische gegevens](./media/metrics-charts/00006.png)
 
-3. Selecteer welke dimensiewaarden die u opnemen wilt, wanneer het uitzetten van de grafiek (dit voorbeeld wordt gefilterd op de opslagaccount-transacties):
+3. Selecteer welke dimensie waarden u wilt gebruiken bij het tekenen van de grafiek (in dit voor beeld ziet u hoe de geslaagde opslag transacties worden gefilterd):
 
-   ![de installatiekopie van de metrische gegevens](./media/metrics-charts/00007.png)
+   ![afbeelding van metrische gegevens](./media/metrics-charts/00007.png)
 
-4. Na het selecteren van de filterwaarden, klikt u op weg van de Selector Filter om deze te sluiten. Het diagram toont nu het aantal opslagtransacties zijn mislukt:
+4. Nadat u de filter waarden hebt geselecteerd, klikt u op een van de filter selectie vakjes om deze te sluiten. De grafiek toont nu hoeveel opslag transacties zijn mislukt:
 
-   ![de installatiekopie van de metrische gegevens](./media/metrics-charts/00008.png)
+   ![afbeelding van metrische gegevens](./media/metrics-charts/00008.png)
 
-5. U kunt de stappen 1-4 meerdere filters toepassen op de dezelfde grafieken herhalen.
+5. U kunt stap 1-4 herhalen om meerdere filters op dezelfde grafieken toe te passen.
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>Splitsen op een grafiek van toepassing
+## <a name="apply-splitting-to-a-chart"></a>Splitsen Toep assen op een grafiek
 
-U kunt een metrische waarde splitsen op dimensie om te visualiseren hoe verschillende segmenten van de metrische gegevens vergelijken ten opzichte van elkaar en identificeren van de afgelegen segmenten van een dimensie.
+U kunt een metriek per dimensie splitsen om te visualiseren hoe verschillende segmenten van de metrische gegevens met elkaar worden vergeleken en de begrote segmenten van een dimensie identificeren.
 
-### <a name="apply-splitting"></a>Toepassing splitsen
+### <a name="apply-splitting"></a>Splitsing Toep assen
 
-1. Klik op **toepassen splitsen** boven de grafiek.
+1. Klik op **splitsing Toep assen** boven de grafiek.
  
    > [!NOTE]
-   > Splitsen kan niet worden gebruikt met grafieken die meerdere metrische gegevens hebben. U kunt ook meerdere filters, maar slechts één splitsen dimensie toegepast op één grafiek hebben.
+   > Splitsen kan niet worden gebruikt voor grafieken met meerdere metrische gegevens. U kunt ook meerdere filters hebben, maar er is slechts één Splits dimensie toegepast op één grafiek.
 
-2. Kies een dimensie waarop u wilt indelen van de grafiek:
+2. Kies een dimensie waarop u de grafiek wilt segmenteren:
 
-   ![de installatiekopie van de metrische gegevens](./media/metrics-charts/00010.png)
+   ![afbeelding van metrische gegevens](./media/metrics-charts/00010.png)
 
-   Het diagram toont nu nu meerdere regels, één voor elk segment van dimensie:
+   Nu toont de grafiek nu meerdere regels, één voor elk segment van de dimensie:
 
-   ![de installatiekopie van de metrische gegevens](./media/metrics-charts/00012.png)
+   ![afbeelding van metrische gegevens](./media/metrics-charts/00012.png)
 
-3. Klikt u op weg van de **groepering Selector** om deze te sluiten.
+3. Klik ergens buiten de **groeperings kiezer** om het venster te sluiten.
 
    > [!NOTE]
-   > Filteren en splitsen in dezelfde dimensie gebruiken om te verbergen van de segmenten zijn niet relevant voor uw scenario en grafieken gemakkelijker te lezen.
+   > Gebruik zowel filteren als opsplitsen op dezelfde dimensie om de segmenten te verbergen die niet relevant zijn voor uw scenario en om grafieken gemakkelijker te kunnen lezen.
 
-## <a name="lock-boundaries-of-chart-y-axis"></a>Grenzen van de vergrendeling van grafiek y-as
+## <a name="lock-boundaries-of-chart-y-axis"></a>Grenzen van grafiek y-as vergren delen
 
-Vergrendeling van het bereik van de y-as wordt belangrijk wanneer de grafiek kleinere fluctuaties van hogere waarden toont. 
+Het vergren delen van het bereik van de y-as wordt belang rijk wanneer de grafiek kleinere schommelingen van grotere waarden weergeeft. 
 
-Wanneer het aantal geslaagde aanvragen wordt weergegeven van 99,99% bij minder dan 99,5%, kan er bijvoorbeeld een significante vermindering van de kwaliteit van de service vertegenwoordigen. Echter, dat u een kleine numerieke waarde boven is moeilijk of zelfs onmogelijk van de standaardinstellingen van de grafiek. In dit geval kunt u de laagste grens van de grafiek voor 99%, waardoor deze kleine vervolgkeuzelijst duidelijker vergrendelen. 
+Wanneer het volume van geslaagde aanvragen bijvoorbeeld van 99,99% tot 99,5% daalt, kan dit een aanzienlijke vermindering van de Quality of service betekenen. Het merkt van een kleine schommeling van de numerieke waarde zou echter lastig of zelfs onmogelijk van de standaard instellingen voor de grafiek zijn. In dit geval kunt u de laagste grens van de grafiek vergren delen op 99%, waardoor deze kleine weg duidelijker wordt. 
 
-Een ander voorbeeld is een schommelingen in het beschikbare geheugen, waarbij de waarde zal technisch nooit contact met u 0. Oplossen van het bereik tot een hogere waarde kan eenvoudiger de val in het beschikbare geheugen te zien. 
+Een ander voor beeld is een schommeling in het beschik bare geheugen, waarbij de waarde technisch nooit 0 is. Als u het bereik naar een hogere waarde herstelt, kan dit het beschik bare geheugen gemakkelijker maken. 
 
-Gebruiken voor het beheren van de y-as-bereik, de '...' grafiek van menu en selecteer **grafiek bewerken** voor toegang tot geavanceerde grafiekinstellingen. Wijzig de waarden in de sectie y-as-bereik, of gebruik **automatisch** knop om terug te keren naar de standaardinstellingen.
+Als u het bereik van de y-as wilt beheren, gebruikt u de '... ' menu grafiek en selecteer **grafiek bewerken** om toegang te krijgen tot geavanceerde grafiek instellingen. Wijzig de waarden in de sectie bereik van de Y-as of gebruik de knop **automatisch** om de standaard waarden te herstellen.
 
-![de installatiekopie van de metrische gegevens](./media/metrics-charts/00014-manually-set-granularity.png)
+![afbeelding van metrische gegevens](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
-> Vergrendelen van de grenzen van de y-as voor de grafieken die verschillende bijhouden telt of opgeteld gedurende een bepaalde tijd (en dus gebruik count, som, minimum of maximum aggregaties) moet u meestal een vaste tijdgranulatie op te geven in plaats van afhankelijk zijn van de automatische standaardwaarden. Dit is nodig omdat de waarden in grafieken wijzigen wanneer de tijdgranulatie wordt automatisch gewijzigd door de gebruiker vergroten of verkleinen browservenster of als een schermresolutie gaan. De resulterende wijzigen in tijd granulariteit effecten het uiterlijk van de grafiek, ongeldig huidige selectie van y-as-bereik.
+> Het vergren delen van de grenzen van de y-as voor de grafieken die verschillende aantallen of sommen gedurende een bepaalde periode bijhouden (en dus gebruik van Count, Sum, minimum of maximum aggregaties), is het meestal nodig om een vaste tijd granulatie op te geven in plaats van de automatische standaard waarden te gebruiken. Dit is nodig omdat de waarden in grafieken worden gewijzigd wanneer de granulatie van de tijd automatisch wordt gewijzigd door het browser venster van de gebruiker opnieuw te wijzigen of door de ene scherm resolutie naar de andere te gaan. De resulterende wijziging van de tijd granulatie heeft gevolgen voor het uiterlijk van de grafiek, waarbij de huidige selectie van het bereik van de y-as ongeldig is.
 
-## <a name="pin-charts-to-dashboards"></a>Grafieken vastmaken aan dashboards
+## <a name="pin-charts-to-dashboards"></a>Grafieken vastmaken aan dash boards
 
-Na het configureren van de grafieken, kunt u deze toevoegen aan de dashboards, zodat u kunt opnieuw mogelijk in de context van andere bewaking telemetrie bekijken of met uw team delen.
+Nadat u de grafieken hebt geconfigureerd, kunt u deze toevoegen aan de Dash boards, zodat u deze weer in de context van andere telemetrie-bewaking of delen met uw team.
 
-Voor een geconfigureerde grafiek vastmaken aan een dashboard:
+Een geconfigureerde grafiek vastmaken aan een dash board:
 
-Na het configureren van de grafiek, klik op de **grafiek acties** menu in de rechter hoek van de grafiek belangrijkste, en klikt u op **vastmaken aan dashboard**.
+Nadat u uw grafiek hebt geconfigureerd, klikt u op het menu **grafiek acties** in de rechter bovenhoek van de grafiek en klikt **u op vastmaken aan dash board**.
 
-![de installatiekopie van de metrische gegevens](./media/metrics-charts/00013.png)
+![afbeelding van metrische gegevens](./media/metrics-charts/00013.png)
 
 ## <a name="create-alert-rules"></a>Waarschuwingsregels maken
 
-U kunt de criteria die u hebt ingesteld voor het visualiseren van uw metrische gegevens zoals de basis van een metrische waarde op basis van de waarschuwingsregel. De nieuwe waarschuwingsregel bevat de doelresource, metrische gegevens, opsplitsen en filterdimensies van de grafiek. U wordt mogelijk zijn om deze instellingen later in het deelvenster met het maken van waarschuwingsregel te wijzigen.
+U kunt de criteria die u hebt ingesteld voor het visualiseren van uw metrische gegevens, gebruiken als basis voor een waarschuwings regel op basis van metrische gegevens. De nieuwe waarschuwings regel bevat uw doel resource, metrische gegevens, opsplitsen en filter dimensies uit uw diagram. U kunt deze instellingen later wijzigen in het deel venster waarschuwings regel maken.
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Klik op om een nieuwe waarschuwingsregel **nieuwe waarschuwingsregel**
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Als u een nieuwe waarschuwings regel wilt maken, klikt u op **nieuwe waarschuwings regel**
 
-![Knop nieuwe waarschuwingsregel rood gemarkeerd](./media/metrics-charts/015.png)
+![Knop nieuwe waarschuwings regel gemarkeerd in rood](./media/metrics-charts/015.png)
 
-U gaat naar het deelvenster voor het maken van waarschuwingsregel met de grootte van het onderliggende metrische gegevens van de grafiek die vooraf is ingevuld voor het genereren van regels voor aangepaste waarschuwingen te vereenvoudigen.
+U wordt naar het deel venster waarschuwings regels maken geleid met de onderliggende metrische dimensies van uw grafiek die vooraf zijn ingevuld om het eenvoudiger te maken om aangepaste waarschuwings regels te genereren.
 
-![Waarschuwingsregel maken](./media/metrics-charts/016.png)
+![Waarschuwings regel maken](./media/metrics-charts/016.png)
 
-Bekijk deze [artikel](alerts-metric.md) voor meer informatie over het instellen van metrische waarschuwingen.
+Raadpleeg dit [artikel](alerts-metric.md) voor meer informatie over het instellen van metrische waarschuwingen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-*Ik zie niet alle gegevens in de grafiek.*
+*Ik zie geen gegevens in mijn grafiek.*
 
-* Filters toepassen op de grafieken in het deelvenster. Zorg ervoor dat u een filter op dat niet van toepassing op alle gegevens op een andere is niet ingesteld terwijl u te op één grafiek focussen bent.
+* Filters zijn van toepassing op alle grafieken in het deel venster. Zorg ervoor dat, terwijl u zich in de ene grafiek bevindt, geen filter is ingesteld waarmee alle gegevens op een andere worden uitgesloten.
 
-* Als u wilt andere filters instellen op de verschillende grafieken, ze in verschillende blades maken, deze opslaan als afzonderlijke Favorieten. Als u wilt, kunt u deze vastmaken aan het dashboard zodat u ze naast elkaar kunt zien.
+* Als u verschillende filters op verschillende grafieken wilt instellen, maakt u deze op verschillende Blades en slaat u ze op als afzonderlijke favorieten. Als u wilt, kunt u deze vastmaken aan het dash board, zodat u ze naast elkaar kunt zien.
 
-* Als u een grafiek op een eigenschap die is niet gedefinieerd in de metrische gegevens segmenteren, wordt er niets in de grafiek. Wist u de segmentatie (splitsen), of kies een andere eigenschap.
+* Als u een grafiek segmenteert op basis van een eigenschap die niet op de metriek is gedefinieerd, is er niets in de grafiek. Probeer de segmentatie (splitsen) uit te scha kelen of kies een andere eigenschap.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-  Lezen [het maken van aangepaste KPI-dashboards](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) voor meer informatie over de aanbevolen procedures voor het maken van bruikbare dashboards met metrische gegevens.
+  Lees [aangepaste KPI-Dash boards maken](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) voor meer informatie over de aanbevolen procedures voor het maken van Dash boards met maat staven met metrische gegevens.
 

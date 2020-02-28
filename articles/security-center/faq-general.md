@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604789"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661836"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Veelgestelde vragen: algemene vragen over Azure Security Center
 
@@ -38,16 +38,17 @@ De volgende Azure-resources worden bewaakt door Azure Security Center:
 * Virtuele machines (Vm's) (inclusief [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Virtuele-machineschaalsets
 * Virtuele netwerken van Azure
+* Containers
 * Azure SQL-service
 * Azure-opslagaccount
 * Azure-Web Apps (in [app service Environment](../app-service/environment/intro.md))
 * Oplossingen van partners die zijn geïntegreerd met uw Azure-abonnement, zoals een firewall voor webtoepassingen op virtuele machines en op App Service-omgeving
 
-Daarnaast kunnen niet-Azure-computers (met inbegrip van on-premises) ook worden bewaakt door Azure Security Center (zowel [Windows-computers](./quick-onboard-windows-computer.md) als [Linux-computers](./quick-onboard-linux-computer.md) worden ondersteund)
+Daarnaast kunnen niet-Azure-machines (inclusief on-premises) ook worden bewaakt door Azure Security Center. Zowel [Windows-computers](./quick-onboard-windows-computer.md) als [Linux-machines](./quick-onboard-linux-computer.md) worden ondersteund.
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hoe kan ik de huidige beveiligingsstatus van mijn Azure-resources bekijken?
-Op de pagina **overzicht van Security Center** ziet u de algemene beveiligings postuur van uw omgeving, onderverdeeld op basis van compute-, netwerk-, opslag-& gegevens en toepassingen. Elk resourcetype heeft een indicator die laat zien als alle mogelijke beveiligingsproblemen zijn geïdentificeerd. Te klikken op elke tegel geeft een lijst van beveiligingsproblemen die zijn geïdentificeerd door Security Center, samen met een overzicht van de resources in uw abonnement.
+Op de pagina **overzicht van Security Center** ziet u de algemene beveiligings postuur van uw omgeving, onderverdeeld op basis van compute-, netwerk-, opslag-& gegevens en toepassingen. Elk resource type heeft een indicator waarin de geïdentificeerde beveiligings problemen worden weer gegeven. Te klikken op elke tegel geeft een lijst van beveiligingsproblemen die zijn geïdentificeerd door Security Center, samen met een overzicht van de resources in uw abonnement.
 
 
 

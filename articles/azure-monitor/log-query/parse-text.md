@@ -1,18 +1,17 @@
 ---
 title: Tekst gegevens parseren in Logboeken van Azure Monitor | Microsoft Docs
 description: Beschrijft verschillende opties voor het parseren van logboek gegevens in Azure Monitor records wanneer de gegevens worden opgenomen en wanneer deze worden opgehaald in een query, waarbij de relatieve voor delen voor elk van elkaar worden vergeleken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 82ad197a1f64040dfb91aa73d7a6dfd4210f99a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365271"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672443"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Tekst gegevens parseren in Azure Monitor logboeken
 Sommige logboek gegevens die worden verzameld door Azure Monitor, bevatten meerdere stukjes informatie in één eigenschap. Het parseren van deze gegevens in meerdere eigenschappen maakt het gemakkelijker om in query's te gebruiken. Een veelvoorkomend voor beeld is een [aangepast logboek](../../log-analytics/log-analytics-data-sources-custom-logs.md) dat een volledige logboek vermelding met meerdere waarden in één eigenschap verzamelt. Door afzonderlijke eigenschappen voor de verschillende waarden te maken, kunt u zoeken en samen voegen.
@@ -138,8 +137,8 @@ MyCustomCSVLog_CL
 Als uw gegevens zijn ingedeeld in een bekende structuur, kunt u een van de functies in de [Kusto-query taal](/azure/kusto/query/) gebruiken voor het parseren van vooraf gedefinieerde structuren:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
-- [XML](/azure/kusto/query/parse-xmlfunction)
-- [IPv4](/azure/kusto/query/parse-ipv4function)
+- [INDELING](/azure/kusto/query/parse-xmlfunction)
+- [IPv6](/azure/kusto/query/parse-ipv4function)
 - [URL](/azure/kusto/query/parseurlfunction)
 - [URL-query](/azure/kusto/query/parseurlqueryfunction)
 - [Bestandspad](/azure/kusto/query/parsepathfunction)
@@ -189,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [query's bijgehouden](log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.
+* Meer informatie over [logboek query's](log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.

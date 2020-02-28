@@ -1,18 +1,16 @@
 ---
 title: API-naslag informatie over Azure-toepassing Insights-agent
 description: Application Insights agent API-verwijzing. Start-Trace. ETW-logboeken verzamelen van Status Monitor en Application Insights SDK.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899650"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671219"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights agent-API: start-ApplicationInsightsMonitoringTrace
 
@@ -47,8 +45,8 @@ Deze gebeurtenissen verzamelen:
 ### <a name="what-events-to-collect"></a>Welke gebeurtenissen moeten worden verzameld
 
 Er zijn drie opties voor het verzamelen van gebeurtenissen:
-1. Gebruik de schakel optie `-CollectSdkEvents` om gebeurtenissen te verzamelen die afkomstig zijn van de Application Insights SDK.
-2. Gebruik de schakel optie `-CollectRedfieldEvents` om gebeurtenissen te verzamelen die worden gegenereerd door Status Monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
+1. Gebruik de Schakel `-CollectSdkEvents` om gebeurtenissen te verzamelen die afkomstig zijn van de Application Insights SDK.
+2. Gebruik de Schakel `-CollectRedfieldEvents` om gebeurtenissen te verzamelen die worden gegenereerd door Status Monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
 3. Gebruik beide Schakel opties om beide gebeurtenis typen te verzamelen.
 4. Standaard als er geen schakelaar is opgegeven, worden beide gebeurtenis typen verzameld.
 
@@ -110,7 +108,7 @@ Timeout Reached. Stopping...
 
 Extra probleem oplossing:
 
-- Bekijk de volgende stappen voor het oplossen van problemen: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
+- Bekijk hier de aanvullende stappen voor probleem oplossing: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
 - Raadpleeg de [API-verwijzing](status-monitor-v2-overview.md#powershell-api-reference) voor meer informatie over de para meters die u mogelijk hebt gemist.
 - Als u meer hulp nodig hebt, kunt u contact met ons opnemen op [github](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 

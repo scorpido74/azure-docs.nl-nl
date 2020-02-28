@@ -1,18 +1,17 @@
 ---
 title: PowerShell gebruiken om te maken en configureren van een Log Analytics-werkruimte | Microsoft Docs
 description: Log Analytics werk ruimten in Azure Monitor gegevens opslaan van servers in uw on-premises of Cloud infrastructuur. U kunt gegevens van de machine verzamelen uit Azure storage wanneer die worden gegenereerd door Azure diagnostics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363520"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659271"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics werk ruimte beheren in Azure Monitor met behulp van Power shell
 
@@ -30,7 +29,7 @@ U kunt de [log Analytics Power shell-cmdlets](https://docs.microsoft.com/powersh
 * De log analytics-agent toevoegen aan een virtuele machine van Azure
 * Log analytics om gegevens te indexeren die zijn verzameld met behulp van Azure diagnostics configureren
 
-In dit artikel bevat twee codevoorbeelden van die illustratie van enkele van de functies die u vanuit PowerShell uitvoeren kunt.  U kunt verwijzen naar de [Log Analytics PowerShell-cmdlet-verwijzing](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor andere functies.
+In dit artikel bevat twee codevoorbeelden van die illustratie van enkele van de functies die u vanuit PowerShell uitvoeren kunt.  U kunt verwijzen naar de [log Analytics Power shell-cmdlet-verwijzing](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor andere functies.
 
 > [!NOTE]
 > Log Analytics werd voorheen Operational Insights, die daarom is het de naam die wordt gebruikt in de cmdlets genoemd.
@@ -205,23 +204,23 @@ Voor bewaking zonder agent van Azure-resources, moeten de resources hebben van A
 | Toepassingsgateways    | Ja | Ja |
 | Automation-accounts     | Ja | |
 | Batch-accounts          | Ja | Ja |
-| Data Lake Analytics     | Ja | |
+| Data Lake analytics     | Ja | |
 | Data Lake store         | Ja | |
 | Elastische SQL-groep        |     | Ja |
 | Event hub-naamruimte     |     | Ja |
 | IoT Hubs                |     | Ja |
 | Key Vault               | Ja | |
-| Load Balancers          | Ja | |
-| Logische apps              | Ja | Ja |
+| Load balancers          | Ja | |
+| Logic Apps              | Ja | Ja |
 | Netwerkbeveiligingsgroepen | Ja | |
 | Azure Cache voor Redis             |     | Ja |
 | Services zoeken         | Ja | Ja |
 | Service Bus-naamruimte   |     | Ja |
 | SQL (v12)               |     | Ja |
-| Web Sites               |     | Ja |
+| Websites               |     | Ja |
 | Web Server-farms        |     | Ja |
 
-Raadpleeg voor de details van de beschikbare metrische gegevens, [ondersteunde metrische gegevens met Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
+Raadpleeg voor meer informatie over de beschik bare metrische gegevens de [ondersteunde metrische gegevens met Azure monitor](../../azure-monitor/platform/metrics-supported.md).
 
 Raadpleeg voor meer informatie over de beschik bare logboeken [ondersteunde services en schema's voor bron logboeken](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
@@ -275,5 +274,5 @@ U kunt dit script ook gebruiken voor het verzamelen van Logboeken van de storage
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Controleer de Log Analytics PowerShell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor meer informatie over het gebruik van PowerShell voor de configuratie van Log Analytics.
+* [Raadpleeg log Analytics Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.operationalinsights/) voor meer informatie over het gebruik van Power shell voor configuratie van log Analytics.
 

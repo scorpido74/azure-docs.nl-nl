@@ -3,16 +3,15 @@ title: Algemene taken voor de conversie van Designer naar werkmappen Azure Monit
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 444535f0fcc96685a9562a8f9536c0a2c2998946
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171538"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658741"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Algemene taken voor de conversie van Designer naar werkmappen weer geven
 [View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Ze worden gefaseerd en vervangen door werkmappen die extra functionaliteit bieden. In dit artikel vindt u informatie over taken die gemeen schappelijk zijn in het converteren van weer gaven naar werkmappen.

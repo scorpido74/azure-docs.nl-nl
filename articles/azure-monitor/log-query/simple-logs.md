@@ -1,18 +1,17 @@
 ---
 title: Eenvoudige Logboeken in Azure Monitor (preview) | Microsoft Docs
 description: Met de eenvoudige Logboeken kunt u eenvoudige query's maken in Azure Monitor zonder rechtstreeks met KQL te communiceren.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
-ms.openlocfilehash: 0b8b23d5d355614bf74b1b22c6a8443b9a2f9391
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932977"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660254"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Eenvoudige Logboeken in Azure Monitor (preview-versie)
 Azure Monitor biedt een [rijke ervaring](get-started-portal.md) voor het maken van [logboek query's](log-query-overview.md) met BEhulp van de KQL-taal. U hebt mogelijk niet de volledige kracht van KQL nodig, maar u hebt de voor keur aan een vereenvoudigde ervaring voor elementaire query vereisten. Met de eenvoudige Logboeken kunt u eenvoudige query's maken zonder dat ze rechtstreeks met KQL werken. U kunt ook eenvoudige Logboeken gebruiken als leer hulpprogramma voor KQL, zoals u meer geavanceerde query's nodig hebt.
@@ -21,7 +20,7 @@ Azure Monitor biedt een [rijke ervaring](get-started-portal.md) voor het maken v
 > Eenvoudige logboeken worden momenteel alleen geïmplementeerd als test voor Cosmos DB en sleutel kluizen. Deel uw ervaring met micro soft via de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor) zodat wij kunnen bepalen of we deze functie zullen uitbreiden en vrijgeven.
 
 
-## <a name="scope"></a>Scope
+## <a name="scope"></a>Bereik
 Met de eenvoudige Logboeken kunt u gegevens ophalen uit de *AzureDiagnostics*-, *AzureMetrics*-en *AzureActivity* -tabel voor de geselecteerde resource. 
 
 ## <a name="using-simple-logs"></a>Eenvoudige Logboeken gebruiken

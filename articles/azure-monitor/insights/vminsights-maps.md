@@ -1,18 +1,17 @@
 ---
 title: App-afhankelijkheden weer geven met Azure Monitor voor VM's (preview-versie)
 description: De kaart is een functie van Azure Monitor voor VM's. Het detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. In dit artikel vindt u informatie over het gebruik van de kaart functie in verschillende scenario's.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450709"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670743"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Gebruik de kaart functie van Azure Monitor voor VM's (preview) om inzicht te krijgen in toepassings onderdelen
 In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. U kunt de virtuele machines op twee manieren bekijken. Een kaart rechtstreeks vanuit een virtuele machine weer geven of een kaart van Azure Monitor weer geven om de onderdelen van verschillende Vm's te bekijken. In dit artikel vindt u meer informatie over deze twee weergave methoden en over het gebruik van de kaart functie. 
@@ -20,7 +19,7 @@ In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geve
 Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor meer informatie over het configureren van Azure monitor voor VM's.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="introduction-to-the-map-experience"></a>Inleiding tot de kaart ervaring
 Voordat u aan de kaart ervaring gaat, moet u weten hoe de informatie wordt gepresenteerd en gevisualiseerd. Of u de kaart functie rechtstreeks vanuit een virtuele machine of van Azure Monitor selecteert, de kaart functie biedt een consistente ervaring. Het enige verschil is dat van Azure Monitor, één kaart toont alle leden van een toepassing of cluster met meerdere lagen.
@@ -121,7 +120,7 @@ Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkh
 
 In Azure Monitor biedt de kaart functie een globaal overzicht van uw Vm's en de bijbehorende afhankelijkheden. Voor toegang tot de kaart functie in Azure Monitor:
 
-1. Selecteer in de Azure portal, **Monitor**. 
+1. Selecteer in de Azure Portal **monitor**. 
 2. Klik in de sectie **inzichten** op **virtual machines (preview)** .
 3. Selecteer het tabblad **map** .
 

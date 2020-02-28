@@ -1,18 +1,15 @@
 ---
 title: Ondersteunde services en schema's voor Azure resource logs
 description: Meer informatie over de ondersteunde services en het gebeurtenis schema voor Azure-resource Logboeken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-author: rboucher
-ms.author: robb
-ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120142"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670386"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
@@ -27,21 +24,21 @@ Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`
 
 | Name | Vereist/optioneel | Beschrijving |
 |---|---|---|
-| tijd | Verplicht | De tijds tempel (UTC) van de gebeurtenis. |
-| resourceId | Verplicht | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
+| tijd | Vereist | De tijds tempel (UTC) van de gebeurtenis. |
+| resourceId | Vereist | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
 | tenantId | Vereist voor Tenant logboeken | De Tenant-ID van de Active Directory-Tenant waaraan deze gebeurtenis is gekoppeld. Deze eigenschap wordt alleen gebruikt voor logboeken op Tenant niveau, maar wordt niet weer gegeven in Logboeken op resource niveau. |
-| operationName | Verplicht | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd. Als de gebeurtenis een RBAC-bewerking vertegenwoordigt, is dit de naam van de RBAC-bewerking (bijvoorbeeld Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Normaal gesp roken gemodelleerd in de vorm van een resource manager-bewerking, zelfs als ze niet de werkelijke gedocumenteerde Resource Manager-bewerkingen (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | Vereist | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd. Als de gebeurtenis een RBAC-bewerking vertegenwoordigt, is dit de naam van de RBAC-bewerking (bijvoorbeeld Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Normaal gesp roken gemodelleerd in de vorm van een resource manager-bewerking, zelfs als ze niet de werkelijke gedocumenteerde Resource Manager-bewerkingen (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optioneel | De API-versie die aan de bewerking is gekoppeld als de bewerking is uitgevoerd met een API (bijvoorbeeld `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Als er geen API is die overeenkomt met deze bewerking, vertegenwoordigt de versie de versie van die bewerking in het geval dat de eigenschappen die aan de bewerking zijn gekoppeld in de toekomst worden gewijzigd. |
-| category | Verplicht | De logboek categorie van de gebeurtenis. Categorie is de granulariteit waarmee u Logboeken voor een bepaalde resource kunt in-of uitschakelen. De eigenschappen die worden weer gegeven in de BLOB eigenschappen van een gebeurtenis zijn hetzelfde binnen een bepaalde logboek categorie en hetzelfde resource type. Veelvoorkomende logboek categorieën zijn ' Auditing ' ' Execution ' en ' request '. |
+| category | Vereist | De logboek categorie van de gebeurtenis. Categorie is de granulariteit waarmee u Logboeken voor een bepaalde resource kunt in-of uitschakelen. De eigenschappen die worden weer gegeven in de BLOB eigenschappen van een gebeurtenis zijn hetzelfde binnen een bepaalde logboek categorie en hetzelfde resource type. Veelvoorkomende logboek categorieën zijn ' Auditing ' ' Execution ' en ' request '. |
 | resultType | Optioneel | De status van de gebeurtenis. Typische waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
 | resultSignature | Optioneel | De substatus van de gebeurtenis. Als deze bewerking overeenkomt met een REST API-aanroep, is dit de HTTP-status code van de bijbehorende REST-aanroep. |
 | resultDescription | Optioneel | De statische tekst beschrijving van deze bewerking, bijvoorbeeld. Opslag bestand ophalen. |
 | durationMs | Optioneel | De duur van de bewerking in milliseconden. |
 | callerIpAddress | Optioneel | Het IP-adres van de beller, als de bewerking overeenkomt met een API-aanroep die afkomstig zou zijn van een entiteit met een openbaar beschikbaar IP-adres. |
 | correlationId | Optioneel | Een GUID die wordt gebruikt om een set gerelateerde gebeurtenissen samen te voegen. Normaal gesp roken, als twee gebeurtenissen dezelfde operationname hebben, maar twee verschillende statussen hebben (bijvoorbeeld ' Started ' en ' geslaagd '), delen ze dezelfde correlatie-ID. Dit kan ook andere relaties tussen gebeurtenissen vertegenwoordigen. |
-| identiteit | Optioneel | Een JSON-BLOB waarmee de identiteit wordt beschreven van de gebruiker of toepassing die de bewerking heeft uitgevoerd. Dit omvat meestal de autorisatie en claims/JWT-token van Active Directory. |
+| identity | Optioneel | Een JSON-BLOB waarmee de identiteit wordt beschreven van de gebruiker of toepassing die de bewerking heeft uitgevoerd. Dit omvat meestal de autorisatie en claims/JWT-token van Active Directory. |
 | Niveau | Optioneel | Het Ernst niveau van de gebeurtenis. Moet een van de volgende informatie hebben: waarschuwing, fout of kritiek. |
-| location | Optioneel | De regio van de resource waarmee de gebeurtenis wordt verzonden, bijvoorbeeld. "VS-Oost" of "Frankrijk-zuid" |
+| locatie | Optioneel | De regio van de resource waarmee de gebeurtenis wordt verzonden, bijvoorbeeld. "VS-Oost" of "Frankrijk-zuid" |
 | properties | Optioneel | Alle uitgebreide eigenschappen die betrekking hebben op deze specifieke gebeurtenis categorie. Alle aangepaste/unieke eigenschappen moeten in dit deel B van het schema worden geplaatst. |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>Servicespecifieke schema's voor resource logboeken
@@ -51,12 +48,12 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | --- | --- |
 | Azure Active Directory | [Overzicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), schema voor [audit logboeken](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) en [aanmeldingen](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
-| API Management | [API Management bron logboeken](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
+| API-beheer | [API Management bron logboeken](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Toepassingsgateways |[Logboek registratie voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log Analytics voor Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch logboek registratie](../../batch/batch-diagnostics.md) |
-| Azure Database voor MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database voor PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Data Explorer | [Azure Data Explorer-logboeken](../../data-explorer/using-diagnostic-logs.md) |
 | Cognitive Services | [Logboek registratie voor Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Logboek registratie voor Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
@@ -71,25 +68,25 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | IoT Hub | [IoT Hub bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Logboek registratie voor Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
-| Load Balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
-| Logische apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| Load balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
+| Logic Apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS Protection Standard beheren](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Dedicated | [Logboek registratie voor Power BI Embedded in azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Gegevens model voor Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Search |[Zoek Traffic Analytics inschakelen en gebruiken](../../search/search-traffic-analytics.md) |
+| Zoeken |[Zoek Traffic Analytics inschakelen en gebruiken](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus logboeken](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database logboek registratie](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Taak logboeken](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager-logboek schema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuele netwerken | Het schema is niet beschikbaar. |
-| Virtuele-netwerkgateways | Het schema is niet beschikbaar. |
+| Virtuele netwerkgateways | Het schema is niet beschikbaar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Ondersteunde logboek categorieën per resource type
 
 Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen resources. Dit is een lijst van alle beschik bare in een formulier.  Bijvoorbeeld: categorieën van micro soft. SQL/servers/data bases zijn niet beschikbaar voor alle typen data bases. Zie [informatie over SQL database diagnostische logboek registratie](../../sql-database/sql-database-metrics-diag-logging.md)voor meer informatie. 
 
-|Resourcetype|Category|Weergave naam categorie|
+|Resourcetype|Categorie|Weergave naam categorie|
 |---|---|---|
 |Micro soft. AAD/domainServices|SystemSecurity|SystemSecurity|
 |Micro soft. AAD/domainServices|AccountManagement|AccountManagement|
@@ -128,13 +125,13 @@ Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen re
 |Micro soft. Databricks/werk ruimten|dbfs|Databricks-bestandssysteem|
 |Micro soft. Databricks/werk ruimten|clusters|Databricks-clusters|
 |Micro soft. Databricks/werk ruimten|accounts|Databricks-accounts|
-|Micro soft. Databricks/werk ruimten|functies|Databricks-taken|
+|Micro soft. Databricks/werk ruimten|Functies|Databricks-taken|
 |Micro soft. Databricks/werk ruimten|notitieblok|Databricks Notebook|
 |Micro soft. Databricks/werk ruimten|SSH|Databricks SSH|
-|Micro soft. Databricks/werk ruimten|werkruimte|Databricks-werkruimte|
+|Micro soft. Databricks/werk ruimten|werkruimte|Databricks-werk ruimte|
 |Micro soft. Databricks/werk ruimten|geheimen|Databricks geheimen|
 |Micro soft. Databricks/werk ruimten|sqlPermissions|Databricks SQLPermissions|
-|Micro soft. Databricks/werk ruimten|instancePools|Instantiegroepen|
+|Micro soft. Databricks/werk ruimten|instancePools|Instantie groepen|
 |Micro soft. DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
 |Microsoft.DataFactory/factories|ActivityRuns|Logboek voor uitvoering van pijplijn activiteit|
 |Microsoft.DataFactory/factories|PipelineRuns|Logboek voor uitvoering van pijp lijn|
@@ -155,14 +152,14 @@ Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen re
 |Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL-server logboeken|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|Runtime statistieken voor PostgreSQL query Store|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|Wacht statistieken voor PostgreSQL query Store|
-|Micro soft. DesktopVirtualization/werk ruimten|Check Point|Check Point|
+|Micro soft. DesktopVirtualization/werk ruimten|Controlepunt|Controlepunt|
 |Micro soft. DesktopVirtualization/werk ruimten|Fout|Fout|
 |Micro soft. DesktopVirtualization/werk ruimten|Beheer|Beheer|
-|Micro soft. DesktopVirtualization/werk ruimten|Feed|Feed|
-|Micro soft. DesktopVirtualization/applicationGroups|Check Point|Check Point|
+|Micro soft. DesktopVirtualization/werk ruimten|Voerder|Voerder|
+|Micro soft. DesktopVirtualization/applicationGroups|Controlepunt|Controlepunt|
 |Micro soft. DesktopVirtualization/applicationGroups|Fout|Fout|
 |Micro soft. DesktopVirtualization/applicationGroups|Beheer|Beheer|
-|Micro soft. DesktopVirtualization/hostPools|Check Point|Check Point|
+|Micro soft. DesktopVirtualization/hostPools|Controlepunt|Controlepunt|
 |Micro soft. DesktopVirtualization/hostPools|Fout|Fout|
 |Micro soft. DesktopVirtualization/hostPools|Beheer|Beheer|
 |Micro soft. DesktopVirtualization/hostPools|Verbinding|Verbinding|
@@ -198,14 +195,14 @@ Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen re
 |Microsoft.EventHub/namespaces|KafkaUserErrorLogs|Fout logboeken van Kafka-gebruikers|
 |Microsoft.EventHub/namespaces|EventHubVNetConnectionEvent|Logboeken voor VNet/IP-filtering verbindingen|
 |Microsoft.EventHub/namespaces|CustomerManagedKeyUserLogs|Door de klant beheerde sleutel logboeken|
-|Micro soft. HealthcareApis/Services|AuditLogs|Auditlogboeken|
+|Micro soft. HealthcareApis/Services|Audit logs bevat|Auditlogboeken|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Evaluaties automatisch schalen|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Schaal acties automatisch schalen|
 |Microsoft.IoTSpaces/Graph|Tracering|Tracering|
 |Microsoft.IoTSpaces/Graph|Functioneren|Functioneren|
 |Microsoft.IoTSpaces/Graph|Controleren|Controleren|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Microsoft.IoTSpaces/Graph|Binnenkomend|Binnenkomend|
+|Microsoft.IoTSpaces/Graph|Inkomend verkeer|Inkomend verkeer|
 |Microsoft.IoTSpaces/Graph|Uitgaand verkeer|Uitgaand verkeer|
 |Microsoft.KeyVault/vaults|Audit event|Auditlogboeken|
 |Microsoft.Kusto/Clusters|SucceededIngestion|Geslaagde opname bewerkingen|
@@ -319,4 +316,4 @@ Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen re
 * [Meer informatie over bron logboeken](../../azure-monitor/platform/platform-logs-overview.md)
 * [Resource bron logboeken streamen naar **Event hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Logboeken van Azure storage met Log Analytics analyseren](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Logboeken analyseren vanuit Azure Storage met Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

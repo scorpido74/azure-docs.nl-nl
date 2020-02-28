@@ -1,18 +1,15 @@
 ---
 title: Overzicht van klassieke waarschuwingen in Microsoft Azure en Azure Monitor
 description: Klassieke waarschuwingen worden afgeschaft. Met waarschuwingen kunt u de metrische gegevens, gebeurtenissen of logboeken van Azure-resources bewaken en een melding ontvangen wanneer aan de opgegeven voor waarde wordt voldaan.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668263"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
 
@@ -81,8 +78,8 @@ De oudere metrische waarschuwingen gebruiken echter geen actie groepen. In plaat
 
 Webhooks maken automatisering en herstel mogelijk, bijvoorbeeld met:
 - Azure Automation Runbook
-- Azure Functions
-- Azure Logic Apps
+- Azure-functie
+- Azure Logic-app
 - een service van derden
 
 ## <a name="next-steps"></a>Volgende stappen

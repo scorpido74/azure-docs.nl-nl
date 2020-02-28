@@ -1,22 +1,20 @@
 ---
 title: Waarschuwingen voor activiteiten logboek in Azure Monitor
 description: Ontvang een melding via SMS, webhook, SMS, e-mail en meer wanneer bepaalde gebeurtenissen in het activiteiten logboek optreden.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747524"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669010"
 ---
-# <a name="alerts-on-activity-log"></a>Waarschuwingen in het activiteiten logboek 
+# <a name="alerts-on-activity-log"></a>Waarschuwingen in het activiteiten logboek
 
 ## <a name="overview"></a>Overzicht
+
 Waarschuwingen voor activiteiten logboeken zijn waarschuwingen die worden geactiveerd wanneer een nieuwe [activiteiten logboek gebeurtenis](activity-log-schema.md) optreedt die overeenkomt met de voor waarden die zijn opgegeven in de waarschuwing. Op basis van de volg orde en het volume van de gebeurtenissen die zijn vastgelegd in het [activiteiten logboek van Azure](platform-logs-overview.md), wordt de waarschuwings regel geactiveerd. Waarschuwings regels voor activiteiten logboeken zijn Azure-resources, zodat ze kunnen worden gemaakt met behulp van een Azure Resource Manager sjabloon. Ze kunnen ook worden gemaakt, bijgewerkt of verwijderd in de Azure Portal. In dit artikel worden de concepten geïntroduceerd van waarschuwingen voor activiteiten Logboeken. Zie [waarschuwingen voor activiteiten logboek maken en beheren](alerts-activity-log.md)voor meer informatie over het maken of gebruiken van waarschuwings regels voor activiteiten Logboeken.
 
 > [!NOTE]
@@ -50,7 +48,7 @@ Waarschuwingen voor activiteiten logboeken bevatten enkele algemene opties:
 > [!NOTE]
 > In een abonnement kunnen Maxi maal 100 waarschuwings regels worden gemaakt voor een activiteit van het bereik: een enkele resource, alle resources in de resource groep (of) het volledige abonnements niveau.
 
-Wanneer een waarschuwing voor een activiteiten logboek wordt geactiveerd, wordt een actie groep gebruikt voor het genereren van acties of meldingen. Een actie groep is een herbruikbare set meldings ontvangers, zoals e-mail adressen, webhook-Url's of SMS-telefoon nummers. Er kan vanuit meerdere waarschuwingen naar de ontvangers worden verwezen om uw meldings kanalen te centraliseren en te groeperen. Wanneer u de waarschuwing voor uw activiteiten logboek definieert, hebt u twee opties. U kunt het volgende doen:
+Wanneer een waarschuwing voor een activiteiten logboek wordt geactiveerd, wordt een actie groep gebruikt voor het genereren van acties of meldingen. Een actie groep is een herbruikbare set meldings ontvangers, zoals e-mail adressen, webhook-Url's of SMS-telefoon nummers. Er kan vanuit meerdere waarschuwingen naar de ontvangers worden verwezen om uw meldings kanalen te centraliseren en te groeperen. Wanneer u de waarschuwing voor uw activiteiten logboek definieert, hebt u twee opties. U kunt:
 
 * Een bestaande actie groep gebruiken in uw activiteiten logboek waarschuwing.
 * Maak een nieuwe actie groep.

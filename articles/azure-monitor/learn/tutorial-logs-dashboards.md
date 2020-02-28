@@ -1,23 +1,22 @@
 ---
 title: Dashboards van Azure Log Analytics-gegevens maken en delen | Microsoft Docs
 description: In deze zelf studie leert u hoe Log Analytics Dash boards al uw opgeslagen logboek query's kunt visualiseren, zodat u één lens krijgt om uw omgeving weer te geven.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365560"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661529"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Dashboards van Log Analytics-gegevens maken en delen
 
-Log Analytics Dash boards kunnen al uw opgeslagen logboek query's visualiseren, zodat u IT-operationele gegevens in de organisatie kunt vinden, correleren en delen.  In deze zelf studie wordt gebruikgemaakt van het maken van een logboek query die wordt gebruikt ter ondersteuning van een gedeeld dash board dat toegankelijk is voor uw IT-ondersteunings team.  Procedures voor:
+Log Analytics Dash boards kunnen al uw opgeslagen logboek query's visualiseren, zodat u IT-operationele gegevens in de organisatie kunt vinden, correleren en delen.  In deze zelf studie wordt gebruikgemaakt van het maken van een logboek query die wordt gebruikt ter ondersteuning van een gedeeld dash board dat toegankelijk is voor uw IT-ondersteunings team.  In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een gedeeld dashboard maken in de Azure-portal

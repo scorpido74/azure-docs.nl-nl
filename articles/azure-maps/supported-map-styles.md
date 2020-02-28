@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208281"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664488"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
 Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
@@ -52,7 +52,7 @@ De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lucht foto-afbeelding.
 
-![stijl van satellite_road_labelse kaart](./media/supported-map-styles/satellite_road_labels.png)
+![stijl van satellite_road_labelse kaart](./media/supported-map-styles/satellite-road-labels.png)
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
@@ -61,7 +61,7 @@ Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lu
 ## <a name="grayscale_dark"></a>grayscale_dark
 het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 
-![stijl van gray_scalee kaart](./media/supported-map-styles/grayscale_dark.png)
+![stijl van gray_scalee kaart](./media/supported-map-styles/grayscale-dark.png)
 
 **Toepasselijke Api's:**
 * [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 ## <a name="grayscale_light"></a>grayscale_light
 **grijs waarden licht** is een lichte versie van het kaart type weg.
 
-![stijl van licht grijs waarden diagram](./media/supported-map-styles/grayscale_light.png)
+![stijl van licht grijs waarden diagram](./media/supported-map-styles/grayscale-light.png)
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
@@ -99,6 +99,14 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** is een donkere kaart stijl met een hoger contrast dan de andere stijlen.
+
+![donkere kaart stijl met hoog contrast](./media/supported-map-styles/high-contrast-dark.png)
+
+**Toepasselijke Api's:**
+* Web SDK-kaart besturings element
 
 ## <a name="next-steps"></a>Volgende stappen
 

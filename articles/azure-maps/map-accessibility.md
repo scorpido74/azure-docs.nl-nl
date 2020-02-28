@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209780"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672460"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
@@ -32,9 +32,11 @@ De Azure Maps Web-SDK is gebaseerd op een groot aantal toegankelijkheids functie
 Meer informatie over de conformiteit van de volledige toegankelijkheid van alle micro soft-producten vindt u [hier](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Zoek naar ' Azure Maps Web ' om het document speciaal te vinden voor de Azure Maps Web-SDK. 
 
 ## <a name="navigating-the-map"></a>Navigeren in de kaart
+
 Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, gedraaid en in hoogte kan worden gesteld. Hieronder vindt u meer informatie over de verschillende manieren waarop u kunt navigeren door de kaart.
 
 **De kaart zoomen**
+
 - Met een muis dubbelklikt u op de kaart om op één niveau te zoomen.
 - Schuif met behulp van een muis op het wieltje om in te zoomen op de kaart.
 - Met behulp van een touchscreen kunt u de kaart met twee vingers aanraken om uit te zoomen of de vingers van elkaar splitsen om in te zoomen.
@@ -45,23 +47,46 @@ Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, ged
 - Houd de `Shift` knop ingedrukt en druk op de knop met de rechter muisknop op de kaart en sleep om een gebied te tekenen om in te zoomen op de kaart.
 
 **Kaart pannen**
+
 - Met een muis houdt u omlaag met de linkermuisknop op de kaart en sleept u deze naar een wille keurige richting.
 - Gebruik een aanraak scherm om de kaart aan te raken en te slepen in een wille keurige richting.
 - Met de kaart focus, gebruikt u de pijl toetsen om de kaart te verplaatsen.
 
 **De kaart draaien**
+
 - Met een muis kunt u op omlaag drukken met de rechter muisknop op de kaart en naar links of rechts slepen. 
 - Gebruik een touchscreen om de kaart met twee vingers te raken en te draaien.
 - Met de kaart focus, gebruikt u de toetsen SHIFT en pijl links of rechts.
 - Het besturings element voor rotatie gebruiken met een muis, aanrakend of toetsen bord/Enter-toets.
 
 **De kaart verkopen**
+
 - Gebruik de muis door met de rechter muisknop op de kaart te klikken en omhoog of omlaag te slepen. 
 - Met een aanraak scherm raakt u de kaart met twee vingers en sleept u deze naar boven of beneden.
 - Met de kaart focus, gebruikt u de Shift-toets plus de toetsen pijl-omhoog of omlaag. 
 - Het besturings element pitch gebruiken met een muis, aanrakend of toetsen bord/Enter-toets.
 
-**De kaart stijl wijzigen** Niet alle ontwikkel aars willen dat alle mogelijke kaart stijlen beschikbaar zijn in hun toepassing. De ontwikkelaar kan de kaart stijl programmatisch instellen en wijzigen. Als de ontwikkelaar het besturings element stijl kiezer van de kaart weergeeft, kan de gebruiker de kaart stijl wijzigen met behulp van de muis, een touch of het toetsen bord met het tabblad of Enter-toets. De ontwikkelaar kan opgeven welke kaart stijlen ze beschikbaar willen maken in het besturings element kaart stijl kiezer. 
+## <a name="change-the-map-style"></a>De kaart stijl wijzigen
+
+Niet alle ontwikkel aars willen dat alle mogelijke kaart stijlen beschikbaar zijn in hun toepassing. Als de ontwikkelaar het besturings element stijl kiezer van de kaart weergeeft, kan de gebruiker de kaart stijl wijzigen met behulp van de muis, een touch of het toetsen bord met het tabblad of Enter-toets. De ontwikkelaar kan opgeven welke kaart stijlen ze beschikbaar willen maken in het besturings element kaart stijl kiezer. De ontwikkelaar kan de kaart stijl ook programmatisch instellen en wijzigen.
+
+**Hoog contrast gebruiken**
+
+- Wanneer het kaart besturings element wordt geladen, wordt gecontroleerd of er een hoog contrast is ingeschakeld en wordt dit door de browser ondersteund.
+- Het kaart besturings element bewaakt de modus Hoog contrast van het apparaat niet. Als de modus apparaat wordt gewijzigd, wordt de kaart niet. Daarom moet de gebruiker de kaart opnieuw laden door de pagina te vernieuwen.
+- Wanneer een hoog contrast wordt gedetecteerd, wordt automatisch overgeschakeld naar een hoog contrast en worden alle ingebouwde besturings elementen gebruikt als stijl met een hoog contrast. Voor beeld: ZoomControl, PitchControl, CompassControl, StyleControl en andere ingebouwde besturings elementen, wordt een stijl met een hoog contrast gebruikt.
+- Er zijn twee typen hoog contrast, licht en donker. Als het type van het hoge contrast kan worden gedetecteerd door de besturings elementen van de kaart, wordt het gedrag van de kaart dienovereenkomstig aangepast. Als Light, wordt de stijl van de grayscale_light kaart geladen. Als het type niet kan worden gedetecteerd of donker is, wordt de high_contrast_dark stijl geladen.
+- Als u aangepaste besturings elementen maakt, is het handig om te weten of de ingebouwde besturings elementen een stijl met een hoog contrast gebruiken. Ontwikkel aars kunnen een CSS-klasse toevoegen op de kaart container div om te controleren. De CSS-klassen die worden toegevoegd, worden `high-contrast-dark` en `high-contrast-light`. Als u wilt controleren met behulp van Java script, gebruikt u:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+of gebruik:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>Sneltoetsen
 

@@ -1,18 +1,14 @@
 ---
 title: Afhankelijkheid bijhouden van het Azure Application Insights | Microsoft Docs
 description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsoft Azure webtoepassing met Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277686"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666238"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
 
@@ -57,12 +53,12 @@ Afhankelijkheden worden automatisch verzameld met behulp van een van de volgende
 
 Hier volgen enkele voor beelden van afhankelijkheden die niet automatisch worden verzameld, en waarvoor hand matige tracering is vereist.
 
-* Azure Cosmos DB is automatisch bijgehouden alleen als [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) wordt gebruikt. De TCP-modus wordt niet door Application Insights worden vastgelegd.
+* Azure Cosmos DB wordt alleen automatisch bijgehouden als [http/https](../../cosmos-db/performance-tips.md#networking) wordt gebruikt. De TCP-modus wordt niet door Application Insights worden vastgelegd.
 * Redis
 
 Voor de afhankelijkheden die niet automatisch door SDK worden verzameld, kunt u ze hand matig bijhouden met behulp van de [TrackDependency-API](api-custom-events-metrics.md#trackdependency) die wordt gebruikt door de standaard modules voor automatisch verzamelen.
 
-Als u uw code met een assembly die u niet zelf schrijft maken, kunt u bijvoorbeeld alle aanroepen naar deze, om erachter te komen wat de bijdrage van voor uw reactietijden wordt tijd. Als u wilt dat deze gegevens worden weergegeven in de afhankelijkheidsgrafiek in Application Insights, verzenden met behulp van `TrackDependency`.
+Als u uw code met een assembly die u niet zelf schrijft maken, kunt u bijvoorbeeld alle aanroepen naar deze, om erachter te komen wat de bijdrage van voor uw reactietijden wordt tijd. Als u wilt dat deze gegevens worden weer gegeven in de afhankelijkheids grafieken in Application Insights, verzendt u deze met behulp van `TrackDependency`.
 
 ```csharp
 
@@ -107,13 +103,13 @@ In de bovenstaande gevallen wordt de juiste methode voor het valideren van de in
 
 ## <a name="where-to-find-dependency-data"></a>Waar vind ik afhankelijkheidsgegevens
 
-* [Overzicht van de toepassing](app-map.md) worden gevisualiseerd met afhankelijkheden tussen uw app en door in aangrenzende onderdelen.
+* [Toepassings toewijzing](app-map.md) visualeert afhankelijkheden tussen uw app en naburige onderdelen.
 * In [transactie diagnostiek](transaction-diagnostics.md) worden Unified, gecorreleerde Server gegevens weer gegeven.
 * Op het [tabblad browsers](javascript.md) worden Ajax-aanroepen weer gegeven in de browser van uw gebruikers.
 * Klik van trage of mislukte aanvragen om de afhankelijkheids aanroepen te controleren.
-* [Analytics](#logs-analytics) kan worden gebruikt om gegevens van de afhankelijkheid opvragen.
+* [Analyses](#logs-analytics) kunnen worden gebruikt voor het opvragen van afhankelijkheids gegevens.
 
-## <a name="diagnosis"></a> Diagnose van trage aanvragen
+## <a name="diagnosis"></a>Langzame aanvragen diagnosticeren
 
 Elke aanvraag gebeurtenis is gekoppeld aan de afhankelijkheids aanroepen, uitzonde ringen en andere gebeurtenissen die worden bijgehouden terwijl uw app de aanvraag verwerkt. Als sommige aanvragen niet goed worden uitgevoerd, kunt u nagaan of het gaat om een trage reactie van een afhankelijkheid.
 
@@ -194,5 +190,5 @@ Net als elke Application Insights SDK is de module afhankelijkheids verzameling 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md)
-* [Gebruiker- en paginagegevens toevoegen](../../azure-monitor/app/javascript.md)
+* [Pagina gegevens van gebruiker &](../../azure-monitor/app/javascript.md)
 * [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)

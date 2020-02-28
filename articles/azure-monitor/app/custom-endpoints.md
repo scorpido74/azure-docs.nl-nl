@@ -1,18 +1,14 @@
 ---
 title: Azure-toepassing Insights standaard SDK-eind punten overschrijven
 description: Wijzig de standaard Azure Monitor Application Insights SDK-eind punten voor regio's als Azure Government.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432591"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671984"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
 
@@ -178,7 +174,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 ```javascript
 <script type="text/javascript">
@@ -209,8 +205,8 @@ Als u momenteel de [Application Insights rest API](https://dev.applicationinsigh
 
 |Regio |  De naam van eindpunt | Waarde |
 |-----------------|:------------|:-------------|
-| Azure China | REST API | `api.applicationinsights.azure.cn` |
-| Azure Government | REST API | `api.applicationinsights.us`|
+| Azure China | REST-API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST-API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Bewaking op basis van agent/uitbrei ding voor Azure-app Services wordt **momenteel niet ondersteund** in deze regio's. Zodra deze functionaliteit beschikbaar wordt, wordt dit artikel bijgewerkt.

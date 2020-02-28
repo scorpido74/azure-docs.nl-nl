@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279162"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662124"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
 
@@ -114,7 +114,7 @@ Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md
 1. Als u toepassings logboeken wilt bekijken, zoekt u naar een container met de naam **Insights-logs-applicationconsole**.
 1. Als u metrische gegevens van de toepassing wilt controleren, zoekt u naar een container met de naam **Insights-metrische gegevens-pt1m**.
 
-Zie voor meer informatie over het verzenden van diagnostische gegevens naar een opslag account [Diagnostische gegevens opslaan en weer geven in azure Storage](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage).
+Zie voor meer informatie over het verzenden van diagnostische gegevens naar een opslag account [Diagnostische gegevens opslaan en weer geven in azure Storage](../storage/common/storage-introduction.md).
 
 ### <a name="use-your-event-hub"></a>Uw Event Hub gebruiken
 

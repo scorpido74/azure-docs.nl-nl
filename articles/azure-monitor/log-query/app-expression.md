@@ -1,18 +1,17 @@
 ---
 title: app ()-expressie in Azure Monitor logboek query's | Microsoft Docs
 description: De app-expressie wordt gebruikt in een Azure Monitor logboek query om gegevens op te halen uit een specifieke Application Insights-app in dezelfde resource groep, een andere resource groep of een ander abonnement.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933085"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670251"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app ()-expressie in Azure Monitor query
 
@@ -31,10 +30,10 @@ De `app` expressie wordt gebruikt in een Azure Monitor query om gegevens op te h
 
 | Id | Beschrijving | Voorbeeld
 |:---|:---|:---|
-| Naam resource | Door de mens lees bare naam van de app (ook wel "onderdeel naam") | app ("fabrikamapp") |
-| Gekwalificeerde naam | Volledige naam van de app in de vorm: ' subscriptionname/resourceGroup/naam van onderdeel ' | app (' AI-prototype/fabrikam/fabrikamapp ') |
+| Resourcenaam | Door de mens lees bare naam van de app (ook wel "onderdeel naam") | app("fabrikamapp") |
+| Gekwalificeerde naam | Volledige naam van de app in de vorm: ' subscriptionname/resourceGroup/naam van onderdeel ' | app('AI-Prototype/Fabrikam/fabrikamapp') |
 | Id | GUID van de app | app ("988ba129-363e-4415-8fe7-8cbab5447518") |
-| Azure-Resource-ID | Id voor de Azure-resource |app ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| Azure-Resource-ID | Id voor de Azure-resource |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Opmerkingen

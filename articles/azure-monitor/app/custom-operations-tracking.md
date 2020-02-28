@@ -1,19 +1,15 @@
 ---
 title: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET SDK
 description: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET SDK
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951340"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671814"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -217,7 +213,7 @@ Het is ook mogelijk dat u de Application Insights bewerkings-ID met de ID van de
 #### <a name="enqueue"></a>Schedul
 Omdat opslag wachtrijen de HTTP-API ondersteunen, worden alle bewerkingen met de wachtrij automatisch bijgehouden door Application Insights. In veel gevallen moet deze instrumentatie voldoende zijn. Voor het correleren van traceringen aan de gebruiker met producenten traceringen moet u echter een correlatie context door geven aan de hand van de manier waarop we dit doen in het HTTP-protocol voor correlatie. 
 
-In dit voor beeld ziet u hoe u de `Enqueue`-bewerking kunt volgen. U kunt het volgende doen:
+In dit voor beeld ziet u hoe u de `Enqueue`-bewerking kunt volgen. U kunt:
 
  - **Nieuwe pogingen (indien van toepassing)** : ze hebben allemaal een gemeen schappelijk bovenliggend item dat de `Enqueue` bewerking is. Anders worden ze bijgehouden als onderliggende items van de inkomende aanvraag. Als er meerdere logische aanvragen naar de wachtrij zijn, kan het lastig zijn om te ontdekken welke aanroep een nieuwe poging heeft gedaan.
  - **Correlatie van opslag Logboeken (als en wanneer nodig)** : ze zijn gerelateerd aan Application Insights telemetrie.
@@ -345,7 +341,7 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 - Gebruik `Activity.SetParentId(message.ParentId)` om consumenten-en producer-logboeken te correleren.
 - Start de `Activity`.
 - Volg de bewerkings-, proces-en verwijder bewerkingen met behulp van `Start/StopOperation` helpers. Doe dit vanuit dezelfde asynchrone controle stroom (uitvoerings context). Op deze manier worden ze op de juiste wijze gecorreleerd.
-- Beëindig de `Activity`.
+- Stop de `Activity`.
 - Gebruik `Start/StopOperation`of bel `Track` telemetrie hand matig.
 
 ### <a name="dependency-types"></a>Afhankelijkheids typen

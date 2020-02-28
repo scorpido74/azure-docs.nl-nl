@@ -1,18 +1,14 @@
 ---
 title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microsoft Docs
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises of in Vm's worden gehost.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820749"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670046"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
@@ -29,7 +25,7 @@ Status Monitor wordt gebruikt om een .NET-toepassing die in IIS wordt gehost on-
 - (Er zijn ook afzonderlijke artikelen over het instrumenteren van [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
 
 
-![Scherm afbeelding van de overzichts grafieken van app Insights met informatie over mislukte aanvragen, reactie tijd van de server en server aanvragen](./media/monitor-performance-live-website-now/overview-graphs.png)
+![Schermopname van App Insights-overzicht grafieken met informatie over mislukte aanvragen, serverreactietijd en serveraanvragen](./media/monitor-performance-live-website-now/overview-graphs.png)
 
 U kunt kiezen uit twee routes om Application Insights toe te passen op uw .NET-webtoepassingen:
 
@@ -168,7 +164,7 @@ Verwijder een van de bestanden die in de toepassingsmap zijn gevonden:
 - Alle dll-bestanden in de bin-map, te beginnen met ' Microsoft.AI '. of ' micro soft. ApplicationInsights. '.
 - Deze DLL in de bin-map micro soft. Web. Infrastructure. dll
 - Deze DLL in de bin directory "System. Diagnostics. DiagnosticSource. dll"
-- Verwijder in de toepassingsmap ' App_Data\packages '
+- Verwijder ' App_Data \packages ' in de map van de toepassing
 - Verwijder ' applicationinsights. config ' in de map van de toepassing.
 
 
@@ -206,7 +202,7 @@ Controleer welke apps worden bewaakt:
 * Geeft de Application Insights-bewakingsstatus voor elke web-app (of de benoemde app) op deze IIS-server.
 * Retourneert `ApplicationInsightsApplication` voor elke app:
 
-  * `Start-ApplicationInsightsMonitoring`: de app wordt bewaakt en was in runtime geïnstrumenteerd, door het hulpprogramma Status Monitor of door `SdkState==EnabledAfterDeployment`.
+  * `SdkState==EnabledAfterDeployment`: de app wordt bewaakt en was in runtime geïnstrumenteerd, door het hulpprogramma Status Monitor of door `Start-ApplicationInsightsMonitoring`.
   * `SdkState==Disabled` : de app is niet geïnstrumenteerd voor Application Insights. De app is niet geïnstrumenteerd, of bewaking tijdens de uitvoering is uitgeschakeld met het hulpprogramma Status Monitor of met `Stop-ApplicationInsightsMonitoring`.
   * `SdkState==EnabledByCodeInstrumentation`: de app was geïnstrumenteerd door de SDK toe te voegen aan de broncode. De SDK kan niet worden bijgewerkt of gestopt.
   * `SdkVersion` toont de versie die voor het bewaken van deze app wordt gebruikt.
@@ -272,12 +268,12 @@ Status Monitor verzamelt niet zelf telemetrie. Het configureert enkel de web-app
 
 Wanneer u een web-app selecteert die u met Status Monitor wilt instrumenteren:
 
-* Hiermee worden de Application Insights-assembly's en het bestand ApplicationInsights. config gedownload en geplaatst in de map binaire bestanden van de web-app.
+* Gedownload en wordt de Application Insights-assembly's en het bestand ApplicationInsights.config in de web-app binaire bestanden map geplaatst.
 * Schakelt CLR-profilering in voor het verzamelen van afhankelijkheidsaanroepen.
 
-### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Welke versie van Application Insights SDK wordt Status Monitor geïnstalleerd?
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Welke versie van Application Insights-SDK installeren Status Monitor?
 
-Vanaf nu kunnen Status Monitor alleen Application Insights SDK-versie 2,3 of 2,4 installeren. 
+Vanaf nu kunt Status Monitor alleen Application Insights-SDK-versie 2.3 of 2.4 installeren. 
 
 De Application Insights SDK-versie 2,4 is de [laatste versie voor de ondersteuning van .net 4,0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) die [EOL januari 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Daarom kan vanaf nu Status Monitor worden gebruikt voor het instrumenteren van een .NET 4,0-toepassing. 
 

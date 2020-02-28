@@ -1,24 +1,23 @@
 ---
 title: Syslog-berichten verzamelen en analyseren in Azure Monitor | Microsoft Docs
 description: Syslog is een protocol voor het vastleggen van gebeurtenis die geldt voor Linux. In dit artikel wordt beschreven hoe u een verzameling van syslog-berichten configureert in Log Analytics en Details van de records die ze maken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450629"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670488"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-gegevens bronnen in Azure Monitor
 Syslog is een protocol voor het vastleggen van gebeurtenis die geldt voor Linux. Toepassingen wordt berichten die kunnen worden opgeslagen op de lokale computer of worden geleverd met een Syslog-collector verzonden. Wanneer de Log Analytics-agent voor Linux is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent. De agent verzendt het bericht vervolgens naar Azure Monitor waar een corresponderende record wordt gemaakt.  
 
 > [!NOTE]
-> Azure Monitor ondersteunt het verzamelen van berichten die worden verzonden door rsyslog of syslog-ng, waarbij rsyslog de standaard-daemon is. De standaard syslog-daemon op versie 5 van Red Hat Enterprise Linux, CentOS en Oracle Linux-versie (sysklog) wordt niet ondersteund voor de verzameling van syslog. Syslog-gegevens verzamelen uit deze versie van deze distributies de [rsyslog-daemon](http://rsyslog.com) moet worden geïnstalleerd en geconfigureerd ter vervanging van sysklog.
+> Azure Monitor ondersteunt het verzamelen van berichten die worden verzonden door rsyslog of syslog-ng, waarbij rsyslog de standaard-daemon is. De standaard syslog-daemon op versie 5 van Red Hat Enterprise Linux, CentOS en Oracle Linux-versie (sysklog) wordt niet ondersteund voor de verzameling van syslog. Als u syslog-gegevens uit deze versie van deze distributies wilt verzamelen, moet de [rsyslog-daemon](http://rsyslog.com) worden geïnstalleerd en geconfigureerd om sysklog te vervangen.
 >
 >
 
@@ -29,11 +28,11 @@ De volgende faciliteiten worden ondersteund met de syslog-Collector:
 * spatiëren
 * user
 * mail
-* Daemon
+* daemon
 * dienst
 * syslog
 * beschikken
-* news
+* Nieuwe
 * uucp
 * cron
 * authpriv
@@ -63,7 +62,7 @@ Wanneer de [log Analytics-agent is geïnstalleerd op een Linux-client](../../azu
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Het configuratiebestand voor rsyslog bevindt zich in **/etc/rsyslog.d/95-omsagent.conf**. De Standaardinhoud worden hieronder weergegeven. Dit syslog-berichten verzonden vanaf de lokale agent voor alle installaties met een niveau van de waarschuwing of hoger worden verzameld.
+Het configuratie bestand voor rsyslog bevindt zich op **/etc/rsyslog.d/95-omsagent.conf**. De Standaardinhoud worden hieronder weergegeven. Dit syslog-berichten verzonden vanaf de lokale agent voor alle installaties met een niveau van de waarschuwing of hoger worden verzameld.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -89,7 +88,7 @@ U kunt een faciliteit verwijderen door het verwijderen van een sectie van het co
 
 
 #### <a name="syslog-ng"></a>Syslog-ng het volgende
-Het configuratiebestand voor syslog-ng het volgende is een locatie op **/etc/syslog-ng/syslog-ng.conf**.  De Standaardinhoud worden hieronder weergegeven. Dit syslog-berichten verzonden vanaf de lokale agent voor alle faciliteiten en alle ernstcategorieën worden verzameld.   
+Het configuratie bestand voor syslog-aardgas is locatie op **/etc/syslog-ng/syslog-ng.conf**.  De Standaardinhoud worden hieronder weergegeven. Dit syslog-berichten verzonden vanaf de lokale agent voor alle faciliteiten en alle ernstcategorieën worden verzameld.   
 
     #
     # Warnings (except iptables) in one file:
@@ -151,11 +150,11 @@ U kunt een faciliteit verwijderen door het verwijderen van een sectie van het co
 De Log Analytics-agent luistert naar syslog-berichten op de lokale client op poort 25224.  Wanneer de agent is geïnstalleerd, wordt een standaardconfiguratie voor syslog toegepast en gevonden in de volgende locatie:
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
-* Syslog-ng het volgende: `/etc/syslog-ng/syslog-ng.conf`
+* Syslog-aardgas: `/etc/syslog-ng/syslog-ng.conf`
 
 U kunt het poortnummer dat door het maken van twee configuratiebestanden wijzigen: een FluentD-configuratiebestand en een rsyslog of syslog-ng-bestand, afhankelijk van de Syslog-daemon die u hebt geïnstalleerd.  
 
-* Het FluentD-configuratiebestand moet een nieuw bestand in: `/etc/opt/microsoft/omsagent/conf/omsagent.d` en vervang de waarde in de **poort** vermelding met uw aangepaste poortnummer.
+* Het gefluente configuratie bestand moet een nieuw bestand zijn dat zich bevindt in: `/etc/opt/microsoft/omsagent/conf/omsagent.d` en vervang de waarde in de **poort** vermelding door uw aangepaste poort nummer.
 
         <source>
           type syslog
@@ -168,10 +167,10 @@ U kunt het poortnummer dat door het maken van twee configuratiebestanden wijzige
           type filter_syslog
         </filter>
 
-* Voor rsyslog, moet u een nieuw configuratiebestand zich in maken: `/etc/rsyslog.d/` en vervang de waarde % SYSLOG_PORT % met uw aangepaste poortnummer.  
+* Voor rsyslog moet u een nieuw configuratie bestand maken in: `/etc/rsyslog.d/` en de waarde% SYSLOG_PORT% vervangen door uw aangepaste poort nummer.  
 
     > [!NOTE]
-    > Als u deze waarde in het configuratiebestand wijzigen `95-omsagent.conf`, zal worden overschreven wanneer de agent van toepassing een standaardconfiguratie is.
+    > Als u deze waarde wijzigt in het configuratie bestand `95-omsagent.conf`, wordt deze overschreven wanneer de agent een standaard configuratie toepast.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -180,7 +179,7 @@ U kunt het poortnummer dat door het maken van twee configuratiebestanden wijzige
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* De configuratie van de syslog-ng het volgende moet worden gewijzigd door het kopiëren van de voorbeeldconfiguratie hieronder wordt weergegeven en de aangepaste gewijzigde instellingen toe te voegen aan het einde van het configuratiebestand van de syslog-ng.conf zich in `/etc/syslog-ng/`. Voer **niet** gebruiken het standaardlabel **% WORKSPACE_ID % _oms** of **% WORKSPACE_ID_OMS**, definiëren van een aangepaste label voor het te onderscheiden van de wijzigingen.  
+* Het syslog-ng-config moet worden gewijzigd door de hieronder weer gegeven voorbeeld configuratie te kopiëren en de aangepaste gewijzigde instellingen toe te voegen aan het einde van het syslog-ng. conf-configuratie bestand dat zich in `/etc/syslog-ng/`bevindt. Gebruik **niet** het standaard label **% WORKSPACE_ID% _oms** of **% WORKSPACE_ID_OMS**, Definieer een aangepast label om uw wijzigingen te onderscheiden.  
 
     > [!NOTE]
     > Als u de standaardwaarden in het configuratiebestand wijzigt, wordt deze overschreven wanneer de agent van toepassing een standaardconfiguratie is.
@@ -193,15 +192,15 @@ U kunt het poortnummer dat door het maken van twee configuratiebestanden wijzige
 Nadat de wijzigingen zijn voltooid, moet de syslog en de Log Analytics Agent-service opnieuw worden gestart om ervoor te zorgen dat de configuratie wijzigingen van kracht worden.   
 
 ## <a name="syslog-record-properties"></a>Eigenschappen van de Syslog-record
-Syslog-records zijn een type **Syslog** en hebben de eigenschappen in de volgende tabel.
+Syslog-records hebben het type **syslog** en hebben de eigenschappen in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
 | Computer |De computer waarop de gebeurtenis is verzameld. |
-| Opslagruimte |Hiermee definieert u het gedeelte van het systeem dat het bericht wordt gegenereerd. |
+| Faciliteit |Hiermee definieert u het gedeelte van het systeem dat het bericht wordt gegenereerd. |
 | HostIP |IP-adres van het systeem het bericht te verzenden. |
 | Hostnaam |De naam van het systeem het bericht te verzenden. |
-| Foutcode |Ernst van de gebeurtenis. |
+| Ernstniveau |Ernst van de gebeurtenis. |
 | SyslogMessage |Tekst van het bericht. |
 | ProcessID |ID van het proces dat het bericht wordt gegenereerd. |
 | eventTime |Datum en tijd waarop de gebeurtenis is gegenereerd. |
@@ -209,7 +208,7 @@ Syslog-records zijn een type **Syslog** en hebben de eigenschappen in de volgend
 ## <a name="log-queries-with-syslog-records"></a>Logboeken-query's met Syslog-records
 De volgende tabel bevat voorbeelden van Logboeken-query's die Syslog-records ophalen.
 
-| Query | Beschrijving |
+| Query's uitvoeren | Beschrijving |
 |:--- |:--- |
 | Syslog |Alle Syslogs. |
 | Syslog &#124; waar SeverityLevel == "error" |Alle Syslog-records met de ernst van fout. |
@@ -217,6 +216,6 @@ De volgende tabel bevat voorbeelden van Logboeken-query's die Syslog-records oph
 | Syslog &#124; summarize AggregatedValue = count() by faciliteit |Telling van Syslog-records door de faciliteit. |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [query's bijgehouden](../../azure-monitor/log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.
-* Gebruik [aangepaste velden](../../azure-monitor/platform/custom-fields.md) parseren van gegevens van syslog-records in afzonderlijke velden.
-* [Linux-agents configureren](../../azure-monitor/learn/quick-collect-linux-computer.md) voor het verzamelen van andere typen gegevens.
+* Meer informatie over [logboek query's](../../azure-monitor/log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.
+* Gebruik [aangepaste velden](../../azure-monitor/platform/custom-fields.md) voor het parseren van gegevens van syslog-records in afzonderlijke velden.
+* [Configureer Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) om andere typen gegevens te verzamelen.

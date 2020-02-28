@@ -1,19 +1,17 @@
 ---
 title: Wijziging van detectie melding van Smart-Azure-toepassing inzichten
 description: Wijzig de standaard ontvangers voor meldingen van Slimme detectie. Met Slimme detectie kunt u toepassings traceringen bewaken met Azure-toepassing Insights voor ongebruikelijke patronen in de telemetrie Trace.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432459"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671780"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Wijziging e-mail melding voor slimme detectie
 
@@ -21,15 +19,15 @@ Op basis van feedback van klanten worden op 1 april 2019 de standaard rollen gew
 
 ## <a name="what-is-changing"></a>Wat wordt er gewijzigd?
 
-Op dit moment worden er e-mail meldingen voor slimme detectie standaard verzonden naar de rol van het _abonnement_, de _mede_werkers van het abonnement en de functie voor _abonnements lezers_ . Deze rollen zijn vaak toegewezen aan gebruikers die niet actief betrokken zijn bij de bewaking, waardoor veel van deze gebruikers de meldingen onnodig ontvangen. Om deze ervaring te verbeteren, worden er een wijziging aangebracht zodat e-mail meldingen alleen de [bewakings lezer controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) en [Inzender rollen controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
+Op dit moment worden er e-mail meldingen voor slimme detectie standaard verzonden naar de rol van het _abonnement_, de _mede_werkers van het abonnement en de functie voor _abonnements lezers_ . Deze rollen omvatten vaak gebruikers die niet actief betrokken zijn bij de bewaking, waardoor veel van deze gebruikers onnodig meldingen ontvangen. Om deze ervaring te verbeteren, worden er een wijziging aangebracht zodat e-mail meldingen alleen de [bewakings lezer controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) en [Inzender rollen controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
 
 ## <a name="scope-of-this-change"></a>Bereik van deze wijziging
 
-Deze wijziging is van invloed op alle regels voor slimme detectie, behalve:
+Deze wijziging is van invloed op alle slimme detectie regels, met uitzonde ring van de volgende:
 
-* Regels voor slimme detectie die zijn gemarkeerd als preview. Deze slimme detectie regels ondersteunen vandaag nog geen e-mail meldingen.
+* Slimme detectie regels zijn gemarkeerd als preview. Deze slimme detectie regels ondersteunen vandaag nog geen e-mail meldingen.
 
-* Regel voor afwijkende fouten. Deze regel begint met het richten op de nieuwe standaard rollen, zodra deze zijn gemigreerd van een klassieke waarschuwing naar het Unified Alerts-platform (meer informatie is [hier](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)beschikbaar.)
+* Regel voor afwijkingen van de fout. Deze regel begint met het richten op de nieuwe standaard rollen, zodra deze zijn gemigreerd van een klassieke waarschuwing naar het Unified Alerts-platform (meer informatie is [hier](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)beschikbaar.)
 
 ## <a name="how-to-prepare-for-this-change"></a>Hoe bereidt u zich voor op deze wijziging?
 

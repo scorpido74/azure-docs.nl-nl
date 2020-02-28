@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656735"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Beperkingen voor omleidings-URI en antwoord-URL
 
@@ -54,7 +54,7 @@ Het Azure AD-toepassings model biedt geen ondersteuning voor joker tekens voor a
 > [!NOTE]
 > Met de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring kunnen ontwikkel aars geen joker tekens toevoegen aan de gebruikers interface. Het toevoegen van een Joker teken-URI voor apps die aanmelden op werk-of school accounts wordt alleen ondersteund via de manifest editor van de app. Door te gaan, kunnen nieuwe apps geen joker tekens gebruiken in de omleidings-URI. Oudere apps die joker tekens bevatten in omleidings-Uri's, blijven echter werken.
 
-Als uw scenario meer omleidings-Uri's vereist dan de Maxi maal toegestane limiet, kunt u een van de volgende benaderingen gebruiken in plaats van het toevoegen van een URI voor het omleiden van joker tekens.
+Als voor uw scenario meer omleidings-Uri's zijn vereist dan de Maxi maal toegestane limiet, moet u rekening houden met de volgende benadering, in plaats van het toevoegen van een Joker teken-URI.
 
 ### <a name="use-a-state-parameter"></a>Een para meter State gebruiken
 
@@ -70,10 +70,6 @@ In deze benadering:
 
 > [!NOTE]
 > Met deze aanpak kan een aangetaste client de aanvullende para meters wijzigen die in de para meter State worden verzonden, waardoor de gebruiker wordt omgeleid naar een andere URL. Dit is de [Open redirector-bedreiging](https://tools.ietf.org/html/rfc6819#section-4.2.4) die wordt beschreven in RFC 6819. Daarom moet de client deze para meters beveiligen door de status te versleutelen of op een andere manier te verifiëren, zoals het valideren van de domein naam in de omleidings-URI op basis van het token.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Omleidings-Uri's toevoegen aan service-principals
-
-Een andere manier is om omleidings-Uri's toe te voegen aan de [service-principals](app-objects-and-service-principals.md#application-and-service-principal-relationship) die de registratie van uw app in een Azure AD-Tenant vertegenwoordigen. U kunt deze aanpak gebruiken wanneer u geen para meter State of uw scenario gebruikt om nieuwe omleidings-Uri's toe te voegen aan de registratie van uw app voor elke nieuwe Tenant die u ondersteunt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

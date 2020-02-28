@@ -1,18 +1,17 @@
 ---
 title: Een query uitvoeren op Logboeken vanuit Azure Monitor voor VM's (preview) | Microsoft Docs
 description: Met Azure Monitor voor VM's oplossing worden metrische gegevens verzameld en wordt er informatie vastgelegd in en in dit artikel worden de records beschreven en worden voorbeeld query's opgenomen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670709"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Logboeken van Azure Monitor voor VM's opvragen (preview-versie)
 
@@ -116,10 +115,10 @@ Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis
 |Beschrijving |Beschrijving van de waargenomen bedreiging. |
 |TLPLevel |TLP-niveau (Traffic Light Protocol) is een van de gedefinieerde waarden, *wit*, *groen*, *geel*, *rood*. |
 |Betrouwbaarheid |De waarden zijn *0 – 100*. |
-|Ernst |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
+|Severity |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
 |FirstReportedDateTime |De eerste keer dat de provider de indicator heeft gerapporteerd. |
 |LastReportedDateTime |De laatste keer dat de indicator door de stroom is gezien. |
-|isActive |Hiermee wordt aangegeven dat indica toren worden gedeactiveerd met de waarde *True* of *False* . |
+|IsActive |Hiermee wordt aangegeven dat indica toren worden gedeactiveerd met de waarde *True* of *False* . |
 |ReportReferenceLink |Koppelingen naar rapporten die zijn gerelateerd aan een gegeven waarneembaar. |
 |AdditionalInformation |Biedt aanvullende informatie, indien van toepassing, over de waargenomen bedreiging. |
 
@@ -133,7 +132,7 @@ Elke record in VMBoundPort wordt geïdentificeerd aan de hand van de volgende ve
 |:--|:--|
 |Proces | De identiteit van het proces (of groep processen) waarmee de poort is gekoppeld.|
 |Ip | IP-adres van poort (kan *IP-adressen*van joker tekens zijn) |
-|Port |Het poort nummer |
+|Poort |Het poort nummer |
 |Protocol | Het protocol.  Voor beeld: *TCP* of *UDP* (alleen *TCP* wordt momenteel ondersteund).|
  
 De identiteit van een poort wordt afgeleid van de bovenstaande vijf velden en wordt opgeslagen in de eigenschap PortId. Deze eigenschap kan worden gebruikt om snel records te vinden voor een specifieke poort in de loop van de tijd. 
@@ -242,7 +241,7 @@ Records met een type *VMProcess* hebben inventaris gegevens voor met TCP verbond
 |FileVersion | De versie van het bestand |
 |ExecutablePath |Het pad van het uitvoer bare bestand |
 |CommandLine | De opdracht regel |
-|WorkingDirectory | De werkmap |
+|Variabele workingdirectory | De werkmap |
 |Services | Een matrix met services waaronder het proces wordt uitgevoerd |
 |UserName | Het account waarmee het proces wordt uitgevoerd |
 |UserDomain | Het domein waaronder het proces wordt uitgevoerd |

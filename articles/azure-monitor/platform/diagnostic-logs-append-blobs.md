@@ -3,17 +3,16 @@ title: Voorbereiden van opmaak wijziging in Azure Monitor bron logboeken
 description: Hierin wordt de impact beschreven en wordt uitgelegd hoe u uw hulp middelen bijwerkt voor het verwerken van de nieuwe Azure-resource logboeken die zijn gewijzigd voor het gebruik van toevoeg-blobs op 1 november 2018.
 author: johnkemnetz
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893515"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670437"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Voorbereiden van opmaak wijziging in Azure Monitor bron logboeken die zijn gearchiveerd in een opslag account
 

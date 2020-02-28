@@ -1,19 +1,18 @@
 ---
 title: Een bestand met een beheer oplossing maken in azure | Microsoft Docs
 description: Beheer oplossingen bieden verpakte beheer scenario's die klanten aan hun Azure-omgeving kunnen toevoegen.  In dit artikel vindt u informatie over het maken van beheer oplossingen voor gebruik in uw eigen omgeving of voor uw klanten beschikbaar.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977698"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662534"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Een bestand met een beheer oplossing maken in azure (preview)
 > [!NOTE]
@@ -22,7 +21,7 @@ ms.locfileid: "75977698"
 Beheer oplossingen in Azure worden geïmplementeerd als [Resource Manager-sjablonen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  De belangrijkste taak bij het leren van beheer oplossingen is leren hoe u [een sjabloon](../../azure-resource-manager/templates/template-syntax.md)maakt.  In dit artikel vindt u unieke details over de sjablonen die worden gebruikt voor oplossingen en over het configureren van typische bronnen voor oplossingen.
 
 
-## <a name="tools"></a>Tools
+## <a name="tools"></a>Hulpprogramma's
 
 U kunt een tekst editor gebruiken om te werken met oplossings bestanden, maar we raden u aan de functies van Visual Studio of Visual Studio code te benutten zoals beschreven in de volgende artikelen.
 
@@ -79,12 +78,12 @@ De volgende tabel bevat de standaard parameters voor alle beheer oplossingen.  D
 
 | Parameter | Type | Beschrijving |
 |:--- |:--- |:--- |
-| accountName |string |Azure Automation account naam. |
-| pricingTier |string |Prijs categorie van zowel Log Analytics werk ruimte als Azure Automation account. |
-| regionId |string |De regio van het Azure Automation-account. |
-| solutionName |string |De naam van de oplossing.  Als u de oplossing implementeert via Quick Start-sjablonen, moet u de naam van de oplossing definiëren als para meter, zodat u een teken reeks kunt definiëren in plaats daarvan een gebruiker in te stellen. |
-| workspaceName |string |Naam van Log Analytics werk ruimte. |
-| workspaceRegionId |string |De regio van de Log Analytics-werk ruimte. |
+| accountName |tekenreeks |Azure Automation account naam. |
+| pricingTier |tekenreeks |Prijs categorie van zowel Log Analytics werk ruimte als Azure Automation account. |
+| regionId |tekenreeks |De regio van het Azure Automation-account. |
+| solutionName |tekenreeks |De naam van de oplossing.  Als u de oplossing implementeert via Quick Start-sjablonen, moet u de naam van de oplossing definiëren als para meter, zodat u een teken reeks kunt definiëren in plaats daarvan een gebruiker in te stellen. |
+| workspaceName |tekenreeks |Naam van Log Analytics werk ruimte. |
+| workspaceRegionId |tekenreeks |De regio van de Log Analytics-werk ruimte. |
 
 
 Hieronder ziet u de structuur van de standaard parameters die u kunt kopiëren en plakken in het oplossings bestand.  
@@ -154,7 +153,7 @@ U kunt ook complexe variabelen definiëren die meerdere sets waarden hebben.  De
 
 In dit geval verwijst u naar variabele waarden via de oplossing met de syntaxis **variabelen (' naam variabele '). eigenschap**.  Als u bijvoorbeeld de variabele oplossings naam wilt openen, gebruikt u **variabelen (' oplossing '). Naam**.
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 [Resources](../../azure-resource-manager/templates/template-syntax.md#resources) definiëren de verschillende bronnen die door uw beheer oplossing worden geïnstalleerd en geconfigureerd.  Dit is het grootste en meest complexe gedeelte van de sjabloon.  U kunt de structuur en volledige beschrijving van resource-elementen in [ontwerp Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md#resources)ophalen.  Andere resources die u doorgaans definieert, worden in andere artikelen in deze documentatie beschreven. 
 
 
@@ -213,13 +212,13 @@ De oplossings resource heeft de eigenschappen in de volgende tabel.  Dit omvat d
 
 Het bovenstaande voor beeld is voor een oplossing met een runbook, een planning en een weer gave.  In het element **Properties** wordt *verwezen naar* de planning en het runbook, zodat deze niet worden verwijderd wanneer de oplossing wordt verwijderd.  De weer gave is *opgenomen* zodat deze wordt verwijderd wanneer de oplossing wordt verwijderd.
 
-### <a name="plan"></a>Plan
+### <a name="plan"></a>Plannen
 De **plan** entiteit van de oplossings resource heeft de eigenschappen in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| name |De naam van de oplossing. |
-| versie |De versie van de oplossing, zoals bepaald door de auteur. |
+| naam |De naam van de oplossing. |
+| version |De versie van de oplossing, zoals bepaald door de auteur. |
 | product |Unieke teken reeks voor het identificeren van de oplossing. |
 | publisher |Uitgever van de oplossing. |
 

@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560453"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664130"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
 
@@ -59,13 +59,14 @@ Wanneer uw cluster de status over het gebruik benadert, kunt u uitschalen om opt
 * Het aantal cluster exemplaren ligt onder het maximum aantal exemplaren dat door de gebruiker is gedefinieerd.
 * Het cache gebruik is gedurende een uur hoog.
 * De CPU is gedurende een uur hoog.
+* Het gebruik van de opname is gedurende een uur hoog.
 
 > [!NOTE]
 > De schaal van de logica voor het opschalen van gegevens neemt momenteel geen rekening met de metrische opname capaciteit. Als deze waarde belang rijk is voor uw use-case, gebruikt u [aangepaste automatisch schalen](#custom-autoscale).
 
 **Schalen in**
 
-Als uw cluster de status onder gebruik nadert, kunt u inschalen om de kosten te verlagen, maar de prestaties te behouden. Er worden meerdere metrische gegevens gebruikt om te controleren of het veilig is om in het cluster te schalen. De volgende regels worden dagelijks geëvalueerd gedurende 7 dagen voordat de schaal in wordt uitgevoerd:
+Als uw cluster de status onder gebruik nadert, kunt u inschalen om de kosten te verlagen, maar de prestaties te behouden. Er worden meerdere metrische gegevens gebruikt om te controleren of het veilig is om in het cluster te schalen. De volgende regels worden elk uur geëvalueerd voor 6 uur voordat de schaal in wordt uitgevoerd:
 * Het aantal exemplaren ligt boven 2 en hoger dan het minimum aantal exemplaren dat is gedefinieerd.
 * Om ervoor te zorgen dat resources niet overbelast zijn, moeten de volgende metrische gegevens worden gecontroleerd voordat de schaal in wordt uitgevoerd: 
     * Cache gebruik is niet hoog

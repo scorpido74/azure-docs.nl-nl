@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics-gegevens importeren in Power BI | Microsoft Docs
 description: Power BI is een op de cloud gebaseerde Business Analytics-service van micro soft die uitgebreide visualisaties en rapporten biedt voor analyse van verschillende gegevens sets.  In dit artikel wordt beschreven hoe u Log Analytics gegevens kunt configureren en importeren in Power BI en hoe u deze kunt configureren om automatisch te vernieuwen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394706"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659280"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor logboek gegevens importeren in Power BI
 
@@ -51,7 +50,7 @@ Power BI Desktop is een bureaublad toepassing waarmee u gegevens sets en rapport
 
 
 
-## <a name="publish-to-power-bi"></a>Publiceren in Power BI
+## <a name="publish-to-power-bi"></a>Publiceren naar Power BI
 Wanneer u naar Power BI publiceert, worden er een gegevensset en een rapport gemaakt.  Als u een rapport in Power BI Desktop maakt, wordt dit gepubliceerd met uw gegevens.  Als dat niet het geval is, wordt er een leeg rapport gemaakt.  U kunt het rapport wijzigen in Power BI of een nieuw item maken op basis van de gegevensset.
 
 1. Een rapport maken op basis van uw gegevens.  Gebruik [Power bi desktop documentatie](https://docs.microsoft.com/power-bi/desktop-report-view) als u er niet vertrouwd mee bent.  

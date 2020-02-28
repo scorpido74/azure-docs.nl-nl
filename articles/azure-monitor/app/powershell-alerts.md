@@ -1,18 +1,14 @@
 ---
 title: Power shell gebruiken om waarschuwingen in te stellen in Application Insights | Microsoft Docs
 description: De configuratie van Application Insights automatiseren om e-mails over metrische wijzigingen te ontvangen.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928572"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669842"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
@@ -60,7 +56,7 @@ Start Azure PowerShell en [Maak verbinding met uw abonnement](/powershell/azure/
 
 
 
-## <a name="example-1"></a>Voor beeld 1
+## <a name="example-1"></a>Voorbeeld 1
 Stuur mij een e-mail als het antwoord van de server op HTTP-aanvragen, gemiddeld meer dan vijf minuten, lager is dan 1 seconde. Mijn Application Insights resource wordt IceCreamWebApp genoemd en bevindt zich in de resource groep fabrikam. Ik ben de eigenaar van het Azure-abonnement.
 
 De GUID is de abonnements-ID (niet de instrumentatie sleutel van de toepassing).
@@ -76,7 +72,7 @@ De GUID is de abonnements-ID (niet de instrumentatie sleutel van de toepassing).
      -SendEmailToServiceOwners `
      -Location "East US" -RuleType Metric
 
-## <a name="example-2"></a>Voor beeld 2
+## <a name="example-2"></a>Voorbeeld 2
 Ik heb een toepassing waarin ik [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) gebruik om een metrische waarde met de naam ' salesPerHour ' te rapporteren. Een e-mail verzenden naar mijn collega's als "salesPerHour" onder 100 daalt, gemiddeld meer dan 24 uur.
 
     Add-AzMetricAlertRule -Name "poor sales" `
@@ -112,7 +108,7 @@ Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerappo
 | `performanceCounter.requests_in_application_queue.value` |ASP.NET aanvragen in uitvoerings wachtrij |Lengte van de wachtrij voor toepassings aanvragen. |
 | `performanceCounter.requests_per_sec.value` |Frequentie van ASP.NET-aanvragen |Het aantal aanvragen voor de toepassing per seconde van ASP.NET. |
 | `remoteDependencyFailed.durationMetric.count` |Afhankelijkheids fouten |Aantal mislukte aanroepen van de server toepassing naar externe bronnen. |
-| `request.duration` |Server reactietijd |Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord. |
+| `request.duration` |Serverreactietijd |Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord. |
 | `request.rate` |Aanvraag frequentie |Het aantal aanvragen per seconde voor de toepassing. |
 | `requestFailed.count` |Mislukte aanvragen |Aantal HTTP-aanvragen dat heeft geresulteerd in een reactie code > = 400 |
 | `view.count` |Pagina weergaven |Aantal client gebruikers aanvragen voor een webpagina. Synthetisch verkeer wordt gefilterd. |
@@ -122,7 +118,7 @@ De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 
 | Metrische groep | Verzamel module |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>weergeven |[Browser-Java script](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>weergave |[Browser-Java script](../../azure-monitor/app/javascript.md) |
 | Performance Counter |[Prestaties](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Afhankelijkheid](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | schot<br/>requestFailed |[Server aanvraag](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |

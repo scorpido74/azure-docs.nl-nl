@@ -3,17 +3,16 @@ title: Diagnostische instelling maken voor het verzamelen van Logboeken en metri
 description: Diagnostische instellingen maken voor het door sturen van Azure-platform logboeken naar Azure Monitor-logboeken, Azure-opslag of Azure Event Hubs.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751081"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672409"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure
 [Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzenden van platform logboeken naar verschillende bestemmingen.
@@ -23,19 +22,19 @@ ms.locfileid: "75751081"
 
 Elke Azure-resource vereist een eigen diagnostische instelling, waarmee het volgende wordt gedefinieerd:
 
-- Categorieën van logboeken en metrische gegevens die worden verzonden naar de doelen die in de instelling zijn gedefinieerd. De beschikbare categorieën verschillen per resourcetype.
-- Een of meer doelen voor het verzenden van de logboeken. Huidige doelen omvatten Log Analytics-werkruimte, Event Hubs en Azure Storage.
+- Categorieën van Logboeken en metrische gegevens die worden verzonden naar de bestemmingen die in de instelling zijn gedefinieerd. De beschik bare categorieën verschillen per resource type.
+- Een of meer bestemmingen voor het verzenden van de logboeken. Huidige doelen bevatten Log Analytics-werk ruimte, Event Hubs en Azure Storage.
  
-Een enkele diagnostische instelling kan niet meer dan een van de doelen definiëren. Als u gegevens wilt verzenden naar meer dan één bepaald type doel (bijvoorbeeld twee verschillende Log Analytics-werkruimten), maakt u meerdere instellingen. Elke resource kan maximaal vijf diagnostische instellingen hebben.
+Een enkele diagnostische instelling kan niet meer dan een van de doelen definiëren. Als u gegevens wilt verzenden naar meer dan een van een bepaald type bestemming (bijvoorbeeld twee verschillende Log Analytics werk ruimten), maakt u meerdere instellingen. Elke resource kan Maxi maal vijf Diagnostische instellingen hebben.
 
 
 > [!NOTE]
 > De [metrische gegevens](metrics-supported.md) van het platform worden automatisch verzameld om [Azure monitor metrische gegevens](data-platform-metrics.md). Diagnostische instellingen kunnen worden gebruikt voor het verzamelen van metrische gegevens voor bepaalde Azure-Services in Azure Monitor logboeken voor analyse met andere bewakings informatie met behulp van [logboek query's](../log-query/log-query-overview.md).
 
-## <a name="destinations"></a>Bestemmingen 
+## <a name="destinations"></a>Ontvangst 
 Platform logboeken kunnen worden verzonden naar de doelen in de volgende tabel. De configuratie voor elke bestemming wordt uitgevoerd met hetzelfde proces voor het maken van diagnostische instellingen die in dit artikel worden beschreven. Volg elke koppeling in de volgende tabel voor meer informatie over het verzenden van gegevens naar deze bestemming.
 
-| Bestemming | Beschrijving |
+| Doel | Beschrijving |
 |:---|:---|
 | [Log Analytics-werkruimte](resource-logs-collect-workspace.md) | Door Logboeken te verzamelen in een Log Analytics-werk ruimte kunt u ze analyseren met andere bewakings gegevens die zijn verzameld door Azure Monitor met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
 | [Event hubs](resource-logs-stream-event-hubs.md) | Door Logboeken naar Event Hubs te verzenden, kunt u gegevens streamen naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen. |
@@ -72,7 +71,7 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
     | Instelling | Beschrijving |
     |:---|:---|
     | Log Analytics-werkruimte | De naam van de werk ruimte. |
-    | Opslagaccount | De naam van het opslag account. |
+    | Storage-account | De naam van het opslag account. |
     | Event hub-naamruimte | De naam ruimte waar de Event Hub wordt gemaakt (als dit uw eerste keer is dat streaming-logboeken zijn) of gestreamd naar (als er al resources zijn die de logboek categorie naar deze naam ruimte streamen).
     | Naam van Event Hub | Geef eventueel een Event Hub naam op voor het verzenden van alle gegevens in de instelling. Als u geen naam opgeeft, wordt er een Event Hub voor elke logboek categorie gemaakt. Als u meerdere categorieën verzendt, wilt u mogelijk een naam opgeven om het aantal gemaakte Event hubs te beperken. Zie [Azure Event hubs quota's en limieten](../../event-hubs/event-hubs-quotas.md) voor meer informatie. |
     | De naam van een Event hub-beleid | Hiermee worden de machtigingen gedefinieerd die het streaming-mechanisme heeft. |

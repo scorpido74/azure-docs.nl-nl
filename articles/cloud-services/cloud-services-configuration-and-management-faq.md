@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019414"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656922"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -115,7 +115,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Opstart taken voor een Cloud service configureren en uitvoeren](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Veelvoorkomende opstart taken voor de Cloud service](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
-## <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
+## <a name="monitoring-and-logging"></a>Bewaking en registratie
 
 ### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Wat zijn de toekomstige Cloud Services in de Azure Portal die u kunnen helpen bij het beheren en bewaken van toepassingen?
 
@@ -137,7 +137,7 @@ U hebt de lokale opslag limiet voor het schrijven naar de logboekmap uitgeput.â€
 * Verhoog de quotum limiet voor lokale bronnen.
 
 Raadpleeg de volgende documenten voor meer informatie:
-* [Diagnostische gegevens opslaan en weergeven in Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
+* [Diagnostische gegevens opslaan en weergeven in Azure Storage](/azure/storage/common/storage-introduction)
 * [IIS-logboeken stoppen met schrijven in Cloud service](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hoe kan ik WAD-logboek registratie inschakelen voor Cloud Services?
@@ -196,7 +196,7 @@ Windows 10 en Windows Server 2016 worden geleverd met ondersteuning voor HTTP/2 
 5. Start de server opnieuw op.
 6. Ga naar de **standaard website** en maak onder **bindingen**een nieuwe TLS-binding met het zelfondertekende certificaat dat zojuist is gemaakt. 
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 - [HTTP/2 op IIS](https://blogs.iis.net/davidso/http2)
 - [Video: HTTP/2 in Windows 10: browser, apps en webserver](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -219,7 +219,7 @@ Cloud Services biedt geen ondersteuning voor het RBAC-model (op rollen gebaseerd
 
 Zie [inzicht krijgen in de verschillende rollen in azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Extern bureau blad
+## <a name="remote-desktop"></a>Extern bureaublad
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Kunnen interne technici van micro soft extern bureau blad naar Cloud service-instanties zonder toestemming?
 Micro soft volgt een strikt proces dat interne technici niet in staat stelt om extern bureau blad in uw Cloud service te plaatsen zonder schrijf machtiging (e-mail adres of andere schriftelijke communicatie) van de eigenaar of de gebruiker.
@@ -250,7 +250,7 @@ Zie [Application Insights voor Azure Cloud Services](https://docs.microsoft.com/
 
 Zie voor meer informatie over het inschakelen van Azure Diagnostics logboek registratie voor Cloud Services voor het [instellen van diagnostische gegevens voor Azure Cloud Services en virtuele machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Encarta
+## <a name="generic"></a>Algemeen
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Kunt u ' all sniff ' toevoegen aan mijn website? Hoe kan ik
 Als u wilt voor komen dat clients de MIME-typen sniffen, voegt u een instelling toe in het bestand *Web. config* .

@@ -2,18 +2,17 @@
 title: Webhook-acties voor logboek waarschuwingen in azure-waarschuwingen
 description: In dit artikel wordt beschreven hoe u een waarschuwings regel voor het logboek maakt met behulp van de Log Analytics-werk ruimte of de Application Insights, hoe de waarschuwing gegevens pusht als een HTTP-webhook en de details van de verschillende aanpassingen die mogelijk zijn.
 author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838571"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667700"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-acties voor waarschuwings regels voor logboeken
 Wanneer er een [logboek waarschuwing wordt gemaakt in azure](alerts-log.md), kunt u [deze configureren met behulp van actie groepen](action-groups.md) om een of meer acties uit te voeren. In dit artikel worden de verschillende webhook-acties beschreven die beschikbaar zijn en wordt getoond hoe u een aangepaste JSON-gebaseerde webhook configureert.
@@ -27,7 +26,7 @@ Met de acties voor webhook kunt u een extern proces aanroepen via één HTTP POS
 
 Webhook-acties vereisen de eigenschappen in de volgende tabel.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | **Webhook-URL** |De URL van de webhook. |
 | **Aangepaste JSON-nettolading** |De aangepaste nettolading die met de webhook moet worden verzonden wanneer deze optie wordt gekozen tijdens het maken van de waarschuwing. Zie [logboek waarschuwingen beheren](alerts-log.md)voor meer informatie.|
@@ -38,7 +37,7 @@ Webhook-acties vereisen de eigenschappen in de volgende tabel.
 Webhooks bevatten een URL en een nettolading die in JSON is ingedeeld en die de gegevens die naar de externe service worden verzonden. De payload bevat standaard de waarden in de volgende tabel. U kunt ervoor kiezen om deze Payload te vervangen door een aangepaste versie. In dat geval gebruikt u de variabelen in de tabel voor elk van de para meters om hun waarden in uw aangepaste nettolading op te laten staan.
 
 
-| Parameter | Variabele | Description |
+| Parameter | Variabele | Beschrijving |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |De naam van de waarschuwings regel. |
 | *Ernst* |#severity |Ernst ingesteld voor de waarschuwing voor het geactiveerde logboek. |
@@ -49,7 +48,7 @@ Webhooks bevatten een URL en een nettolading die in JSON is ingedeeld en die de 
 | *Eind tijd van zoek interval* |#searchintervalendtimeutc |De eind tijd voor de query in UTC, met de notatie mm/dd/jjjj uu: mm: SS AM/PM. |
 | *Zoek interval* |#searchinterval |Tijd venster voor de waarschuwings regel, met de indeling uu: mm: SS. |
 | *Tijd in zoek interval* |#searchintervalstarttimeutc |Begin tijd voor de query in UTC met de notatie mm/dd/jjjj uu: mm: SS AM/PM. 
-| *SearchQuery* |#searchquery |Zoek query in logboek die wordt gebruikt door de waarschuwings regel. |
+| *Search query* |#searchquery |Zoek query in logboek die wordt gebruikt door de waarschuwings regel. |
 | *SearchResults* |"IncludeSearchResults": True|Records die worden geretourneerd door de query als een JSON-tabel, beperkt tot de eerste 1.000 records, als "IncludeSearchResults": True, wordt toegevoegd aan een aangepaste JSON-webhook-definitie als eigenschap op het hoogste niveau. |
 | *Waarschuwings type*| #alerttype | Het type waarschuwings regel voor het logboek dat is geconfigureerd als [metrische meet](alerts-unified-log.md#metric-measurement-alert-rules) waarde of [aantal resultaten](alerts-unified-log.md#number-of-results-alert-rules).|
 | *WorkspaceID* |#workspaceid |ID van uw Log Analytics-werk ruimte. |
@@ -124,7 +123,7 @@ De volgende voor beeld-nettolading is voor een standaard-webhook-actie *zonder e
  ```
 
 > [!NOTE]
-> De waarde van het veld ' Ernst ' kan worden gewijzigd als u [uw API-voor keur](alerts-log-api-switch.md) hebt overgeschakeld voor logboek waarschuwingen op Log Analytics.
+> De waarde van het veld ' Ernst ' kan worden gewijzigd als u [uw API-voor keur hebt overgeschakeld](alerts-log-api-switch.md) voor logboek waarschuwingen op Log Analytics.
 
 
 #### <a name="log-alert-for-application-insights"></a>Logboek waarschuwing voor Application Insights

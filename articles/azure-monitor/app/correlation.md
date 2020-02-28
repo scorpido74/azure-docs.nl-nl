@@ -1,19 +1,17 @@
 ---
 title: Correlatie van de telemetrie van Azure-toepassing Insights | Microsoft Docs
 description: Application Insights telemetrie-correlatie
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951323"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672052"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -35,7 +33,7 @@ In een micro Services-omgeving kunnen traceringen van onderdelen naar verschille
 
 ## <a name="example"></a>Voorbeeld
 
-We bekijken een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die door de webbrowser van de client wordt geopend met behulp van `GET /Home/Stock`. De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value`.
+Laten we eens naar een voorbeeld kijken. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die door de webbrowser van de client wordt geopend met behulp van `GET /Home/Stock`. De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value`.
 
 U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
@@ -47,11 +45,11 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofd `operation_Id`delen. Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID (`qJSXU`) toegewezen aan de telemetrie van de afhankelijkheid en wordt de ID van de pagina weergave gebruikt als `operation_ParentId`. De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId`.
 
-| itemType   | name                      | Id           | operation_ParentId | operation_Id |
+| itemType   | naam                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
-| request    | Home/Stock ophalen            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| verzoek    | Home/Stock ophalen            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | einde | /API/Stock/value ophalen      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
 Wanneer de oproep `GET /api/stock/value` wordt gedaan bij een externe service, moet u de identiteit van die server weten zodat u het veld `dependency.target` op de juiste wijze kunt instellen. Wanneer de externe service geen bewaking ondersteunt, wordt `target` ingesteld op de hostnaam van de service (bijvoorbeeld `stock-prices-api.com`). Maar als de service zichzelf identificeert door een vooraf gedefinieerde HTTP-header te retour neren, bevat `target` de service-identiteit waarmee Application Insights een gedistribueerde tracering kunt bouwen door de telemetrie van die service op te vragen.
@@ -267,7 +265,7 @@ Het veld `id` heeft de indeling `<trace-id>.<span-id>`, waarbij de `trace-id` wo
 
 Het veld `operation_ParentId` heeft de indeling `<trace-id>.<parent-id>`, waarbij zowel de `trace-id` als de `parent-id` worden opgehaald uit de trace-header die in de aanvraag is door gegeven.
 
-### <a name="log-correlation"></a>Logboekcorrelatie
+### <a name="log-correlation"></a>Logboek correlatie
 
 Met opentellingen python kunt u Logboeken correleren door een tracerings-ID, een span-ID en een steekproef vlag toe te voegen om records te registreren. U voegt deze kenmerken toe door integratie van de [logboek registratie](https://pypi.org/project/opencensus-ext-logging/)van opentellingen te installeren. De volgende kenmerken worden toegevoegd aan python `LogRecord`-objecten: `traceId`, `spanId`en `traceSampled`. Houd er rekening mee dat dit alleen van toepassing is op Logboeken die zijn gemaakt na de integratie.
 

@@ -1,18 +1,17 @@
 ---
 title: Agent gegevens bronnen configureren in Azure Monitor | Microsoft Docs
 description: Gegevens bronnen definiëren de logboek gegevens die Azure Monitor verzameld van agents en andere verbonden bronnen.  In dit artikel wordt beschreven hoe Azure Monitor gegevens bronnen gebruikt, wordt uitgelegd hoe u deze kunt configureren en wordt een overzicht gegeven van de verschillende gegevens bronnen die beschikbaar zijn.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932821"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668771"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Gegevens bronnen van agents in Azure Monitor
 De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de gegevens bronnen die u configureert.  De gegevens van agents worden opgeslagen als [logboek gegevens](data-platform-logs.md) met een set records.  Elke gegevens bron maakt records van een bepaald type met elk type met een eigen set eigenschappen.
@@ -23,7 +22,7 @@ De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de 
 De volgende tabel geeft een lijst van de agent gegevens bronnen die momenteel beschikbaar zijn in Azure Monitor.  Elk heeft een koppeling naar een afzonderlijk artikel met Details voor die gegevens bron.   Het bevat ook informatie over de methode en frequentie van de verzameling. 
 
 
-| Gegevens bron | Platform | Log Analytics-agent | Operations Manager-agent | Azure Storage | Operations Manager vereist? | Operations Manager agent gegevens die via een beheer groep zijn verzonden | Verzamelingsfrequentie |
+| Gegevensbron | Platform | Log Analytics-agent | Operations Manager-agent | Azure-opslag | Operations Manager vereist? | Operations Manager agent gegevens die via een beheer groep zijn verzonden | Verzamelingsfrequentie |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Aangepaste logboeken](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | bij aankomst |
 | [Aangepaste logboeken](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | bij aankomst |

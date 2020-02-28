@@ -1,18 +1,17 @@
 ---
 title: Overzicht van Azure Monitor voor VM's (preview) inschakelen | Microsoft Docs
 description: Meer informatie over het implementeren en configureren van Azure Monitor voor VM's. Ontdek de systeem vereisten.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669570"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
 
@@ -44,14 +43,14 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 - VS - oost2
 - VS - centraal
 - VS - noord-centraal
-- Canada-Midden
-- UK - zuid
+- Canada - midden
+- Verenigd Koninkrijk Zuid
 - Europa - noord
-- Europa - west
+- Europa -west
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
-- Japan - Oost
+- Japan - oost
 - Australië - oost
 - Australië - zuidoost
 
@@ -99,12 +98,12 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 |SUSE Linux Enterprise Server (SLES) 12 | X | X |
 |Debian 9.4, 8 | X<sup>1</sup> | |
 
-<sup>1</sup> prestaties van de functie van Azure Monitor voor virtuele machines is alleen beschikbaar via Azure Monitor. Het is niet rechtstreeks beschikbaar vanuit het linkerdeel venster van de Azure-VM.
+<sup>1</sup> de functie prestaties van Azure monitor voor VM's is alleen beschikbaar vanuit Azure monitor. Het is niet rechtstreeks beschikbaar vanuit het linkerdeel venster van de Azure-VM.
 
 >[!NOTE]
 >In het Linux-besturings systeem:
 > - Alleen standaard- en SMP Linux kernelversies worden ondersteund.
-> - Niet-standaard kernel versies, zoals fysieke Address Extension (PAE) en Xen, worden niet ondersteund voor een Linux-distributie. Bijvoorbeeld, een systeem met de tekenreeks voor de release van *2.6.16.21-0.8-xen* wordt niet ondersteund.
+> - Niet-standaard kernel versies, zoals fysieke Address Extension (PAE) en Xen, worden niet ondersteund voor een Linux-distributie. Bijvoorbeeld, een systeem met de release reeks *2.6.16.21-0,8-xen* wordt niet ondersteund.
 > - Aangepaste kernels, met inbegrip van hercompilaties van standaard-kernels, worden niet ondersteund.
 > - De CentOSPlus-kernel wordt ondersteund.
 > - Er moet een patch worden uitgevoerd voor de Linux-kernel voor het Spectre-beveiligings probleem. Neem contact op met de leverancier van de Linux-distributie voor meer informatie.
@@ -113,7 +112,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 | Versie van het besturingssysteem | Kernelversie |
 |:--|:--|
-| 7.6 | 3.10.0-957 |
+| 7,6 | 3.10.0-957 |
 | 7.5 | 3.10.0-862 |
 | 7.4 | 3.10.0-693 |
 
@@ -137,7 +136,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 |:--|:--|
 | 18,04 | 5,0 (inclusief door Azure afgestemde kernel)<br>4,18 *<br>4,15* |
 | 16.04.3 | 4,15. * |
-| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
+| 16.04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -174,16 +173,16 @@ De volgende tabel beschrijft de verbonden bronnen die ondersteuning biedt voor d
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| File | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
-## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
+## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
 Als u de functies in Azure Monitor voor VM's wilt inschakelen en gebruiken, moet u de rol *log Analytics Inzender* hebben. Als u de prestaties, de status en de kaart gegevens wilt bekijken, moet u de rol *bewakings lezer* hebben voor de Azure-VM. De Log Analytics-werkruimte moet worden geconfigureerd voor Azure Monitor voor virtuele machines.
 
-Zie voor meer informatie over het beheren van toegang tot een Log Analytics-werkruimte [werkruimten beheren](../../azure-monitor/platform/manage-access.md).
+Zie [werk ruimten beheren](../../azure-monitor/platform/manage-access.md)voor meer informatie over het controleren van de toegang tot een log Analytics-werk ruimte.
 
 ## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Azure Monitor voor VM's inschakelen (preview)
 
@@ -207,38 +206,38 @@ Azure Monitor voor VM's configureert een Log Analytics werk ruimte voor het verz
 
 |Objectnaam |Naam van het prestatiemeteritem |
 |------------|-------------|
-|Logische schijf |Percentage vrije ruimte |
+|Logische schijf |% vrije ruimte |
 |Logische schijf |Gemiddelde Lees tijd schijf |
 |Logische schijf |Gemiddelde tijd schijf overdracht |
 |Logische schijf |Gemiddelde schrijf tijd schijf |
-|Logische schijf |Schijf Bytes per seconde |
-|Logische schijf |Bytes gelezen op schijf/sec |
-|Logische schijf |Schijf lezen per seconde |
+|Logische schijf |bytes per seconde |
+|Logische schijf |gelezen bytes per seconde |
+|Logische schijf |leesbewerkingen per seconde |
 |Logische schijf |Schijfoverdrachten per seconde |
-|Logische schijf |Bytes geschreven naar schijf/sec |
-|Logische schijf |Schijf schrijven per seconde |
+|Logische schijf |geschreven Bytes per seconde |
+|Logische schijf |schrijfbewerkingen per seconde |
 |Logische schijf |Beschikbare Megabytes |
 |Geheugen |Beschikbare megabytes (MB) |
-|-Netwerkadapter |Ontvangen bytes per seconde |
-|-Netwerkadapter |Verzonden bytes per seconde |
-|Processor |% Processortijd |
+|Netwerkadapter |Ontvangen bytes per seconde |
+|Netwerkadapter |Verzonden bytes per seconde |
+|Processor |Percentage processortijd |
 
 ### <a name="linux-performance-counters"></a>Linux-prestatiemeteritems
 
 |Objectnaam |Naam van het prestatiemeteritem |
 |------------|-------------|
 |Logische schijf |Percentage gebruikte ruimte |
-|Logische schijf |Bytes gelezen op schijf/sec |
-|Logische schijf |Schijf lezen per seconde |
+|Logische schijf |gelezen bytes per seconde |
+|Logische schijf |leesbewerkingen per seconde |
 |Logische schijf |Schijfoverdrachten per seconde |
-|Logische schijf |Bytes geschreven naar schijf/sec |
-|Logische schijf |Schijf schrijven per seconde |
+|Logische schijf |geschreven Bytes per seconde |
+|Logische schijf |schrijfbewerkingen per seconde |
 |Logische schijf |Beschikbare Megabytes |
 |Logische schijf |Logische schijf Bytes per seconde |
 |Geheugen |Beschikbaar geheugen in megabytes |
 |Netwerk |Totaal aantal ontvangen Bytes |
 |Netwerk |Totaal aantal verzonden Bytes |
-|Processor |% Processortijd |
+|Processor |Percentage processortijd |
 
 ## <a name="management-packs"></a>Management packs
 
@@ -252,7 +251,7 @@ Microsoft verzamelt automatisch gebruiks- en -gegevens door uw gebruik van de Az
 
 De kaart functie bevat gegevens over de configuratie van uw software om nauw keurige en efficiënte probleemoplossings mogelijkheden te bieden. De gegevens bevatten informatie zoals het besturings systeem en de versie, het IP-adres, de DNS-naam en de naam van het werk station. Microsoft biedt geen namen, adressen of andere contactgegevens verzameld.
 
-Zie voor meer informatie over het verzamelen van gegevens en het gebruik, de [privacyverklaring van Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -260,4 +259,4 @@ Nu u bewaking hebt ingeschakeld voor uw virtuele machine, zijn bewakings gegeven
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure monitor voor VM's prestaties weer geven](vminsights-performance.md)voor meer informatie over het gebruik van de functie voor prestatie bewaking. Afhankelijkheden van gedetecteerde toepassingen, Zie [weergave Azure Monitor voor virtuele machines kaart](vminsights-maps.md).
+Zie [Azure monitor voor VM's prestaties weer geven](vminsights-performance.md)voor meer informatie over het gebruik van de functie voor prestatie bewaking. Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven.

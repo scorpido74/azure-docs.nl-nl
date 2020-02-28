@@ -1,19 +1,15 @@
 ---
 title: Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
 description: Aangepaste dagelijkse/wekelijkse/maandelijkse rapporten automatiseren met Azure-toepassing Insights-gegevens
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677616"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655120"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
 
@@ -74,7 +70,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights gepland samenvattings rapport
 
-1. Selecteer in de Azure Portal **een resource maken**  > **compute**  > **functie-app**.
+1. Selecteer in de Azure Portal **een resource maken** > **compute** > **functie-app**.
 
    ![Een functie-app scherm opname van een Azure-resource maken](./media/automate-custom-reports/function-app-01.png)
 
@@ -91,7 +87,7 @@ availabilityResults
 5. Selecteer de **_sjabloon geplande samen vatting Application Insights_** .
 
      > [!NOTE]
-     > Functie-apps worden standaard gemaakt met runtime versie 2. x. U moet [Azure functions runtime versie](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** instellen voor het gebruik van de sjabloon Application Insights geplande samen vatting.  scherm afbeelding van ![runtime ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Functie-apps worden standaard gemaakt met runtime versie 2. x. U moet [Azure functions runtime versie](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** instellen voor het gebruik van de sjabloon Application Insights geplande samen vatting.  scherm opname van ![-runtime](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -101,15 +97,15 @@ availabilityResults
 
    ![Scherm opname van functie-instellingen](./media/automate-custom-reports/function-app-05.png)
 
-7. Selecteer uw **functie-app**  > **platform functies**  > **Toepassings instellingen**.
+7. Selecteer uw **functie-app** > **platform functies** > **Toepassings instellingen**.
 
     ![Scherm opname van de Azure function-toepassings instellingen](./media/automate-custom-reports/function-app-07.png)
 
-8. Maak drie nieuwe toepassings instellingen met de juiste overeenkomende waarden ``AI_APP_ID``, ``AI_APP_KEY`` en ``SendGridAPI``. Selecteer **Opslaan**.
+8. Maak drie nieuwe toepassings instellingen met de juiste overeenkomende waarden ``AI_APP_ID``, ``AI_APP_KEY``en ``SendGridAPI``. Selecteer **Opslaan**.
 
      ![Scherm opname van de functie integratie interface](./media/automate-custom-reports/function-app-08.png)
     
-    (De waarden voor AI_ vindt u onder API-toegang voor de Application Insights resource waarover u een rapport wilt maken. Als u geen Application Insights-API-sleutel hebt, kunt u een **API-sleutel maken**.)
+    (De AI_ waarden vindt u onder API-toegang voor de Application Insights resource waarover u een rapport wilt maken. Als u geen Application Insights-API-sleutel hebt, kunt u een **API-sleutel maken**.)
     
    * AI_APP_ID = toepassings-ID
    * AI_APP_KEY = API-sleutel
@@ -146,7 +142,7 @@ Deze stappen zijn alleen van toepassing als u nog geen SendGrid-account hebt gec
 
      ![Scherm opname van API-sleutel instellingen](./media/automate-custom-reports/function-app-14.png)
 
-3. Hiermee wordt de site van SendGrid gestart. Selecteer **instellingen**  > **API-sleutels**.
+3. Hiermee wordt de site van SendGrid gestart. Selecteer **instellingen** > **API-sleutels**.
 
      ![Scherm opname van API-sleutel toepassing maken en weer geven](./media/automate-custom-reports/function-app-15.png)
 

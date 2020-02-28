@@ -1,22 +1,21 @@
 ---
 title: Interactieve rapporten maken Azure Monitor voor VM's met werkmappen | Microsoft Docs
 description: Vereenvoudig complexe rapportage met vooraf gedefinieerde en aangepaste werkmappen met para meters voor Azure Monitor voor VM's.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365917"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670668"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken Azure Monitor voor VM's met werkmappen
 
-Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang hebben tot dezelfde Azure-resources.
+Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere team leden die toegang hebben tot dezelfde Azure-resources.
 
 Werkmappen zijn handig voor scenario's zoals:
 
@@ -27,7 +26,7 @@ Werkmappen zijn handig voor scenario's zoals:
 
 Azure Monitor voor VM's bevat verschillende werkmappen om aan de slag te gaan, en in de volgende tabel ziet u een overzicht.
 
-| Werkmap | Beschrijving | Scope |
+| Werkmap | Beschrijving | Bereik |
 |----------|-------------|-------|
 | Prestaties | Biedt een aanpas bare versie van onze weer gave top N-lijsten en-diagrammen in één werkmap die gebruikmaakt van alle Log Analytics prestatie meter items die u hebt ingeschakeld.| Op schaal |
 | Prestatiemeteritems | Een bovenste N grafiek weergave in een breed scala aan prestatie meter items. | Op schaal |
@@ -45,13 +44,13 @@ Azure Monitor voor VM's bevat verschillende werkmappen om aan de slag te gaan, e
 
 Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u beginnen met het openen van een sjabloon en het maken van een aangepaste werkmap door lopen. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer **virtuele Machines**.
+2. Selecteer **virtual machines**.
 
 3. Selecteer een VM in de lijst.
 
-4. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
+4. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
 
 5. Selecteer op de pagina voor het maken van de VM-inzichten het tabblad **prestaties** of **kaarten** en selecteer vervolgens **werkmappen weer geven** op de koppeling op de pagina. 
 

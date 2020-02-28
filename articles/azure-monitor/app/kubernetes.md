@@ -1,18 +1,16 @@
 ---
 title: Gebruik Application Insights om uw Azure Kubernetes-service (AKS) of andere door Kubernetes gehoste toepassingen te bewaken-Azure Monitor | Microsoft Docs
 description: Azure Monitor maakt gebruik van service mesh-technologie, Istio, op uw Kubernetes-cluster om toepassings bewaking te bieden voor elke Kubernetes-gehoste toepassing. Op deze manier kunt u Application Insights telemetrie met betrekking tot binnenkomende en uitgaande aanvragen verzamelen van en op basis van de gehele uitvoering in uw cluster.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432524"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666783"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Controle van toepassings bewaking op nul voor Kubernetes-gehoste toepassingen
 
@@ -33,7 +31,7 @@ Azure Monitor maakt nu gebruik van de teching van service-net op uw Kubernetes-c
 - Een [Application Insight-resource](create-new-resource.md)
 - Een service-net hebben. Als er in uw cluster geen Istio is geïmplementeerd, kunt u leren hoe u [Istio in azure Kubernetes service installeert en gebruikt](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Mogelijkheden
+## <a name="capabilities"></a>Functionaliteit
 
 Door het gebruik van een controle toepassings bewaking van nul voor Kubernetes gehoste apps kunt u het volgende gebruiken:
 
@@ -44,7 +42,7 @@ Door het gebruik van een controle toepassings bewaking van nul voor Kubernetes g
 - [Gedistribueerd-traceren](../../azure-monitor/app/distributed-tracing.md)
 - [End-to-end-transactie bewaking](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
 
-## <a name="installation-steps"></a>Installatie stappen
+## <a name="installation-steps"></a>Installatiestappen
 
 We voeren de volgende stappen uit om de oplossing in te scha kelen:
 - Implementeer de toepassing (als deze nog niet is geïmplementeerd).
@@ -74,7 +72,7 @@ Toepassingen die buiten het service net worden uitgevoerd, worden niet beïnvloe
 
 1. Down load en pak een [ *Application Insights adapter* release](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
 2. Navigeer naar */src/kubernetes/* in de map release.
-3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
+3. *Application-Insights bewerken-istio-mixer-adapter-Deployment. yaml*
     - Bewerk de waarde van *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* omgevings variabele zodat de instrumentatie sleutel van de Application Insights resource in azure Portal de telemetrie bevat.
     - Als dat nodig is, bewerkt u de waarde van *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* omgevings variabele zodat deze een door komma's gescheiden lijst bevat met naam ruimten waarvoor u bewaking wilt inschakelen. Laat het veld leeg om alle naam ruimten te controleren.
 4. Pas *elk* yaml-bestand toe dat is gevonden onder *src/kubernetes/* door de volgende handelingen uit te voeren (u moet nog steeds binnen */src/kubernetes/* ):

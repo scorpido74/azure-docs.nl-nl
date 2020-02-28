@@ -1,18 +1,17 @@
 ---
 title: Veelgestelde vragen-Netwerkprestatiemeter oplossing in azure | Microsoft Docs
 description: In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter in azure vastgelegd. Met Netwerkprestatiemeter (NPM) kunt u de prestaties van uw netwerken nagenoeg in realtime bewaken en netwerk prestatie knelpunten detecteren en vinden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538188"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654430"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -69,7 +68,7 @@ U moet ten minste één agent gebruiken voor elk subnet dat u wilt bewaken.
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Wat is het maximum aantal agents dat ik kan gebruiken of zie fout '... ' u hebt de configuratie limiet bereikt "?
 NPM beperkt het aantal Ip's tot 5000 Ip's per werk ruimte. Als een knoop punt zowel IPv4-als IPv6-adressen heeft, worden de twee Ip's voor dat knoop punt geteld. Deze limiet van 5000 Ip's zou daarom de bovengrens bepalen van het aantal agents. U kunt het tabblad inactieve agents verwijderen van knoop punten in NPM > > configureren. NPM houdt ook geschiedenis bij van alle IP-adressen die ooit zijn toegewezen aan de virtuele machine die als host fungeert voor de agent en die elke worden beschouwd als een afzonderlijk IP-adres dat bijdragen aan de maximum limiet van 5000 Ip's. Om IP-adressen voor uw werk ruimte vrij te maken, kunt u de pagina knoop punten gebruiken om de IP-adressen te verwijderen die niet in gebruik zijn.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Hoe worden verlies en latentie berekend?
 Bron agenten verzenden TCP-SYN-aanvragen (als TCP is gekozen als protocol voor bewaking) of ICMP-ECHO aanvragen (als ICMP is gekozen als het protocol voor bewaking) tot doel-IP met regel matige tussen pozen om ervoor te zorgen dat alle paden tussen de bron-IP-doel de combi natie wordt gedekt. Het percentage ontvangen pakketten en de round-trip tijd van het pakket wordt gemeten om het verlies en de latentie van elk pad te berekenen. Deze gegevens worden geaggregeerd over het polling-interval en over alle paden om de geaggregeerde waarden van verlies en latentie voor de IP-combi natie voor het betreffende polling-interval op te halen.
@@ -225,7 +224,7 @@ Aangezien de netwerk paden tussen A en B kunnen verschillen van de netwerk paden
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Waarom worden al mijn ExpressRoute-circuits en peering-verbindingen niet gedetecteerd?
 NPM detecteert nu ExpressRoute-circuits en peering verbindingen in alle abonnementen waartoe de gebruiker toegang heeft. Kies alle abonnementen waar uw Express-route resources zijn gekoppeld en schakel bewaking in voor elke gedetecteerde resource. NPM zoekt naar verbindings objecten bij het detecteren van een persoonlijke peering, dus controleer of er een VNET is gekoppeld aan uw peering.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>De functie voor het controleren van de monitor heeft een diagnostisch bericht ' verkeer wordt niet door gegeven via een circuit '. Wat houdt dat in?
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>De functie voor het controleren van de monitor heeft een diagnostisch bericht ' verkeer wordt niet door gegeven via een circuit '. Wat moet dat betekenen?
 
 Er kan een scenario zijn met een goede verbinding tussen de on-premises en Azure-knoop punten, maar het verkeer gaat niet over het ExpressRoute-circuit dat is geconfigureerd om te worden bewaakt door NPM. 
 

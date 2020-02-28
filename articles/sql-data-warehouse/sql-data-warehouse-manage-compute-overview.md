@@ -11,27 +11,27 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c715b2328f66c58fa744235c8762b31fd0b30d1f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923606"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669486"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Compute in Azure SQL Data Warehouse beheren
 Meer informatie over het beheren van reken bronnen in Azure SQL Data Warehouse. Lagere kosten door het Data Warehouse te onderbreken of het Data Warehouse te schalen om te voldoen aan de prestatie vereisten. 
 
 ## <a name="what-is-compute-management"></a>Wat is reken beheer?
-In de architectuur van SQL Data Warehouse zijn opslag- en rekencapaciteit gescheiden, zodat deze afzonderlijk kunnen worden geschaald. Daardoor kunt u de rekenkracht aanpassen om aan prestatievereisten te voldoen zonder dat dit consequenties heeft voor de opslag van gegevens. U kunt ook rekenresources pauzeren en hervatten. Een natuurlijk gevolg van deze architectuur is dat de [facturering](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor reken capaciteit en opslag gescheiden is. U kunt op de kosten voor rekenuren besparen door de berekeningen te onderbreken als u uw datawarehouse een tijdje niet nodig hebt. 
+De architectuur van SQL Data Warehouse scheidt opslag en reken kracht, waardoor elk afzonderlijk kan worden geschaald. Hierdoor kunt u de reken kracht schalen om te voldoen aan de prestatie vereisten, onafhankelijk van de gegevens opslag. U kunt ook de reken resources onderbreken en hervatten. Een natuurlijk gevolg van deze architectuur is dat de [facturering](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor reken capaciteit en opslag gescheiden is. Als u uw data warehouse niet enige tijd hoeft te gebruiken, kunt u de reken kosten besparen door Compute te onderbreken. 
 
 ## <a name="scaling-compute"></a>Berekening schalen
-U kunt de schaal omhoog of omlaag schalen door de instellingen voor het [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) voor uw data warehouse aan te passen. De prestaties voor het laden en voor query's kunnen lineair toenemen als u meer datawarehouse-eenheden wilt toevoegen. 
+U kunt de schaal omhoog of omlaag schalen door de instellingen voor het [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) voor uw data warehouse aan te passen. Het laden en de query prestaties kunnen lineair toenemen naarmate u meer data warehouse-eenheden toevoegt. 
 
 Zie [Azure Portal](quickstart-scale-compute-portal.md), [Power shell](quickstart-scale-compute-powershell.md)of [T-SQL](quickstart-scale-compute-tsql.md) Quick starts (Engelstalig) voor stapsgewijze instructies. U kunt ook uitschaal bewerkingen uitvoeren met een [rest API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Om een schaalbewerking uit te voeren, beëindigt SQL Data Warehouse eerst alle binnenkomende query's, waarna transacties worden teruggedraaid om een consistente status te garanderen. Het aanpassen van de schaal vindt alleen plaats als de transactie is teruggedraaid. Voor schaalbewerkingen ontkoppelt het systeem de opslaglaag van de rekenknooppunten, waarna de rekenknooppunten worden toegevoegd en de opslaglaag weer aan de rekenlaag wordt gekoppeld. Elk datawarehouse is opgeslagen als 60 distributies, die gelijkmatig zijn verdeeld over de rekenknooppunten. Wanneer u meer rekenknooppunten toevoegt, levert dat meer rekenkracht op. Naarmate het aantal rekenknooppunten toeneemt, neemt het aantal distributies per rekenknooppunt af en is er meer rekenkracht beschikbaar voor uw query's. Evenzo verlagen Data Warehouse-eenheden het aantal reken knooppunten, waardoor de reken resources voor query's worden verminderd.
+Als u een schaal bewerking wilt uitvoeren, wordt door SQL Data Warehouse eerst alle binnenkomende query's af te breken en worden vervolgens de trans acties teruggedraaid om een consistente status te krijgen. Schalen wordt alleen uitgevoerd wanneer het terugdraaien van de trans actie is voltooid. Voor een schaal bewerking koppelt het systeem de opslaglaag van de reken knooppunten en voegt reken knooppunten toe en koppelt de opslaglaag vervolgens opnieuw aan de compute-laag. Elk data warehouse wordt opgeslagen als 60-distributies, die gelijkmatig worden gedistribueerd naar de reken knooppunten. Het toevoegen van meer reken knooppunten voegt meer reken kracht toe. Naarmate het aantal reken knooppunten toeneemt, neemt het aantal verdelingen per reken knooppunt af, waardoor er meer reken kracht is voor uw query's. Evenzo verlagen Data Warehouse-eenheden het aantal reken knooppunten, waardoor de reken resources voor query's worden verminderd.
 
-De volgende tabel laat zien hoe het aantal distributies per Compute-knoop punt verandert naarmate de Data Warehouse-eenheden worden gewijzigd.  DWU6000 biedt 60 Compute-knoop punten en behaalt veel hogere query prestaties dan DWU100. 
+De volgende tabel laat zien hoe het aantal distributies per Compute-knoop punt verandert naarmate de Data Warehouse-eenheden worden gewijzigd.  DW30000c biedt 60 Compute-knoop punten en behaalt veel hogere query prestaties dan DW100c. 
 
 | Datawarehouse-eenheden  | \# van reken knooppunten | \# van distributies per knoop punt |
 | -------- | ---------------- | -------------------------- |

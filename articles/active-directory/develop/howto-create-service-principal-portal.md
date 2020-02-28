@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591571"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656383"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
@@ -85,7 +85,7 @@ Daemon-toepassingen kunnen twee soorten referenties gebruiken om te verifiëren 
 
 ### <a name="upload-a-certificate"></a>Een certificaat uploaden
 
-U kunt een bestaand certificaat gebruiken als u er een hebt.  Desgewenst kunt u een zelfondertekend certificaat maken voor test doeleinden. Open Power shell en voer [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om een zelfondertekend certificaat te maken in het certificaat archief van de gebruiker op uw computer: 
+U kunt een bestaand certificaat gebruiken als u er een hebt.  U kunt eventueel ook een zelfondertekend certificaat maken voor *test doeleinden*. Open Power shell en voer [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) uit met de volgende para meters om een zelfondertekend certificaat te maken in het certificaat archief van de gebruiker op uw computer: 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Dit certificaat exporteren naar een bestand met behulp van de MMC-module [gebruikers certificaat beheren](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) , toegankelijk via het configuratie scherm van Windows.
 
+1. Selecteer **uitvoeren** in het menu **Start** en voer vervolgens **certmgr. msc**in.
+
+   Het hulp programma certificaat beheer voor de huidige gebruiker wordt weer gegeven.
+
+1. Als u uw certificaten wilt weer geven, vouwt u onder **certificaten-huidige gebruiker** in het linkerdeel venster de **persoonlijke** map uit.
+1. Klik met de rechter muisknop op het certificaat dat u hebt gemaakt, selecteer **alle taken-> exporteren**.
+1. Volg de wizard Certificaat exporteren.  Exporteer de persoonlijke sleutel, geef een wacht woord op voor het certificaat bestand en exporteer het naar een bestand.
+
 Het certificaat uploaden:
 
+1. Selecteer **Azure Active Directory**.
+1. Selecteer uw toepassing in **app-registraties** in azure AD.
 1. Selecteer **certificaten & geheimen**.
 1. Selecteer **certificaat uploaden** en selecteer het certificaat (een bestaand certificaat of het zelfondertekende certificaat dat u hebt geëxporteerd).
 
@@ -146,15 +156,21 @@ Uw account moet in uw Azure-abonnement beschikken over `Microsoft.Authorization/
 
 Uw abonnements machtigingen controleren:
 
-1. Selecteer uw account in de rechter bovenhoek en selecteer **...-> mijn machtigingen**.
+1. Zoek en selecteer **abonnementen**of selecteer **abonnementen** op de **Start** pagina.
 
-   ![Uw account en uw gebruikers machtigingen selecteren](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Zoeken](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. Selecteer in de vervolg keuzelijst het abonnement waarvoor u de Service-Principal wilt maken in. Selecteer vervolgens **Klik hier om de volledige toegangs gegevens voor dit abonnement weer te geven**.
+1. Selecteer het abonnement waarin u de Service-Principal wilt maken.
+
+   ![Abonnement selecteren voor toewijzing](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   Als u het gewenste abonnement niet ziet, selecteert u **globaal abonnementen filter**. Zorg ervoor dat het gewenste abonnement is geselecteerd voor de portal.
+
+1. Selecteer **Mijn machtigingen**. Selecteer vervolgens **Klik hier om de volledige toegangs gegevens voor dit abonnement weer te geven**.
 
    ![Selecteer het abonnement waarvoor u de Service-Principal wilt maken in](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Selecteer **roltoewijzingen** om uw toegewezen rollen weer te geven en te bepalen of u voldoende machtigingen hebt om een rol toe te wijzen aan een AD-app. Als dat niet het geval is, vraagt u uw abonnements beheerder om u toe te voegen aan de rol beheerder van gebruikers toegang. In de volgende afbeelding is de gebruiker toegewezen aan de rol eigenaar, wat betekent dat de gebruiker over de juiste machtigingen beschikt.
+1. Selecteer **weer gave** in **roltoewijzingen** om uw toegewezen rollen weer te geven en te bepalen of u voldoende machtigingen hebt om een rol toe te wijzen aan een AD-app. Als dat niet het geval is, vraagt u uw abonnements beheerder om u toe te voegen aan de rol beheerder van gebruikers toegang. In de volgende afbeelding is de gebruiker toegewezen aan de rol eigenaar, wat betekent dat de gebruiker over de juiste machtigingen beschikt.
 
    ![In dit voor beeld ziet u dat aan de gebruiker de rol eigenaar is toegewezen](./media/howto-create-service-principal-portal/view-user-role.png)
 

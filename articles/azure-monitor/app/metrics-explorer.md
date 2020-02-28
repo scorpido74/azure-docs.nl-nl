@@ -1,18 +1,14 @@
 ---
 title: Metrische gegevens verkennen in Azure-toepassing inzichten | Microsoft Docs
 description: Grafieken in metrische Explorer interpreteren en metrische Explorer-Blades aanpassen.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820786"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670165"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Metrische gegevens in Application Insights verkennen
 Metrische gegevens in [Application Insights][start] worden gemeten waarden en aantallen gebeurtenissen die worden verzonden via telemetrie van uw toepassing. Ze helpen prestatie problemen te detecteren en trends te bekijken in de manier waarop uw toepassing wordt gebruikt. Er is een breed scala aan standaard waarden en u kunt ook uw eigen aangepaste metrische gegevens en gebeurtenissen maken.
@@ -173,7 +169,7 @@ Voeg een waarschuwing toe om een melding te ontvangen van een e-mail bericht van
 Meer [informatie over waarschuwingen][alerts].
 
 
-## <a name="continuous-export"></a>Continuous Export
+## <a name="continuous-export"></a>Continue export
 Als u gegevens continu wilt exporteren, zodat u deze extern kunt verwerken, kunt u overwegen [continue export](../../azure-monitor/app/export-telemetry.md)te gebruiken.
 
 ### <a name="power-bi"></a>Power BI

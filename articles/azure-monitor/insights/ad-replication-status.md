@@ -1,18 +1,17 @@
 ---
 title: Active Directory replicatie status bewaken met Azure Monitor | Microsoft Docs
 description: Het Active Directory-replicatiestatus Solution Pack bewaakt uw Active Directory omgeving regel matig voor replicatie fouten.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406084"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667173"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replicatie status controleren met Azure Monitor
 
@@ -42,7 +41,7 @@ Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers 
 
 1. Controleer of de computer lid is van het domein dat u wilt bewaken met behulp van de AD-replicatiestatus-oplossing.
 2. [Verbind de Windows-computer met Azure monitor](../../azure-monitor/platform/om-agents.md) of [Maak verbinding met uw bestaande Operations Manager omgeving om Azure monitor](../../azure-monitor/platform/om-agents.md)als deze nog niet is verbonden.
-3. Stel op die computer de volgende register sleutel in:<br>Key: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
+3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management groups\<ManagementGroupName > \Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
 
    > [!NOTE]
    > Deze wijzigingen worden pas van kracht nadat u de micro soft Monitoring Agent-service (HealthService. exe) opnieuw hebt gestart.

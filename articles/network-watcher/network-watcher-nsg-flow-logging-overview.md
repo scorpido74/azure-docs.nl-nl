@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7f30a5a70f71ff958d9b222d2a9e21d03d85e06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840992"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670760"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -33,11 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 U kunt stroom logboeken analyseren en inzicht krijgen in uw netwerk verkeer met behulp van [Traffic Analytics](traffic-analytics.md).
 
-Dezelfde Bewaar beleidsregels voor andere logboeken zijn van toepassing op stroom Logboeken. U kunt het Bewaar beleid voor logboek registratie instellen van 1 dag tot 365 dagen. Als geen bewaarbeleid is ingesteld, worden de logboeken voor altijd bewaard.
-
-> [!NOTE] 
-> Het gebruik van de functie voor het retentie beleid met NSG-stroom registratie kan leiden tot een groot aantal opslag bewerkingen en de bijbehorende kosten. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0.
-
+Dezelfde Bewaar beleidsregels voor andere logboeken zijn van toepassing op stroom Logboeken. U kunt het Bewaar beleid voor logboek registratie instellen van 1 dag tot 365 dagen. Als er geen Bewaar beleid is ingesteld, worden de logboeken voor altijd bewaard.
 
 ## <a name="log-file"></a>Logboekbestand
 
@@ -47,7 +43,7 @@ Stroom logboeken bevatten de volgende eigenschappen:
 * **systemId** -resource-id van de netwerk beveiligings groep.
 * **categorie** : de categorie van de gebeurtenis. De categorie is altijd **NetworkSecurityGroupFlowEvent**
 * **ResourceID** -de resource-id van de NSG
-* **operationName** - Always NetworkSecurityGroupFlowEvents
+* **operationname** -altijd NetworkSecurityGroupFlowEvents
 * **Eigenschappen** : een verzameling eigenschappen van de stroom
     * **Versie** -versie nummer van het gebeurtenis schema voor het stroom logboek
     * **stromen** : een verzameling stromen. Deze eigenschap heeft meerdere vermeldingen voor verschillende regels

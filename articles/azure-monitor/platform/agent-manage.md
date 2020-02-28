@@ -1,18 +1,16 @@
 ---
-title: De Azure Log Analytics-agent beheren | Microsoft Docs
+title: De Azure Log Analytics-agent beheren
 description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de Log Analytics Windows-of Linux-agent die op een computer is geïmplementeerd.
-ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364778"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668686"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>De Log Analytics-agent voor Windows en Linux beheren en onderhouden
 
@@ -22,7 +20,7 @@ Na de eerste implementatie van de Log Analytics Windows-of Linux-agent in Azure 
 
 De Log Analytics-agent voor Windows en Linux kan hand matig worden bijgewerkt naar de meest recente versie of automatisch afhankelijk van het implementatie scenario en de omgeving waarin de virtuele machine wordt uitgevoerd. De volgende methoden kunnen worden gebruikt om de agent bij te werken.
 
-| Omgeving | Installatiemethode | Upgrade methode |
+| Omgeving | Installatiemethode | Upgrademethode |
 |--------|----------|-------------|
 | Azure VM | VM-extensie Log Analytics agent voor Windows/Linux | De agent wordt standaard automatisch geüpgraded tenzij u uw Azure Resource Manager-sjabloon hebt geconfigureerd om u af te melden door de eigenschap *autoUpgradeMinorVersion* in te stellen op **False**. |
 | Aangepaste installatie kopieën van Azure VM | Hand matige installatie van Log Analytics agent voor Windows/Linux | Het bijwerken van Vm's naar de nieuwste versie van de agent moet worden uitgevoerd vanaf de opdracht regel met het Windows Installer-pakket of Linux self-extracting en installeer bare shell script bundel.|
@@ -34,7 +32,7 @@ Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste v
 
 U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-werk ruimte door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
@@ -58,7 +56,7 @@ U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-w
 
 4. Klik in het dialoog venster **Setup van micro soft Monitoring Agent** op **Ik ga akkoord** om de gebruiksrecht overeenkomst te accepteren.
 
-5. Klik in het dialoogvenster **Setup van Microsoft Monitoring Agent** op **Bijwerken**. Op de statuspagina wordt de voortgang van de upgrade weergegeven.
+5. Klik in het dialoog venster **Setup van micro soft Monitoring Agent** op **upgrade**. Op de status pagina wordt de voortgang van de upgrade weer gegeven.
 
 6. Wanneer de **configuratie van micro soft monitoring agent is voltooid.** pagina wordt weer gegeven, klikt u op **volt ooien**.
 
@@ -68,7 +66,7 @@ U kunt de nieuwste versie van de Windows-agent downloaden van uw Log Analytics-w
 
 2. Als u de installatie bestanden van de agent wilt extra heren, voert u een opdracht prompt met verhoogde bevoegdheid uit `MMASetup-<platform>.exe /c` en wordt u gevraagd om het pad naar het bestand te extra heren. U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>`door te geven.
 
-3. Voer de volgende opdracht uit, waarbij D:\ de locatie is van het upgradelogboekbestand.
+3. Voer de volgende opdracht uit, waarbij D:\ is de locatie voor het upgrade logboek bestand.
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1

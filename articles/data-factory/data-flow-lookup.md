@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655057"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Zoek transformatie voor het toewijzen van gegevens stromen Azure Data Factory
 
@@ -36,9 +36,19 @@ Nadat u de lookup-trans formatie hebt gebruikt, kunt u een voorwaardelijke Split
 
 ## <a name="first-or-last-value"></a>Eerste of laatste waarde
 
-Wanneer u meerdere overeenkomsten van uw zoek opdracht hebt, wilt u mogelijk de meerdere overeenkomende rijen verminderen door de eerste of de laatste overeenkomst te kiezen. U kunt dit doen met behulp van een statistische trans formatie na de zoek actie.
+De opzoek transformatie wordt geïmplementeerd als een left outer join. Wanneer u meerdere overeenkomsten van uw zoek opdracht hebt, wilt u mogelijk de meerdere overeenkomende rijen verminderen door de eerste overeenkomende rij, de laatste overeenkomst of een wille keurige rij te kiezen.
 
-In dit geval wordt een geaggregeerde trans formatie met de naam ```PickFirst``` gebruikt om de eerste waarde uit de zoek overeenkomsten te kiezen.
+### <a name="option-1"></a>optie 1
+
+![Zoek opdracht in één rij](media/data-flow/singlerowlookup.png "Zoek opdracht in één rij")
+
+* Met meerdere rijen overeenkomen: laat het veld leeg om één overeenkomende rij te retour neren
+* Zoeken op: Selecteer eerst, laatste of wille keurige overeenkomst
+* Sorteer voorwaarden: als u eerste of laatste selecteert, vereist ADF dat uw gegevens worden besteld, zodat er sprake is van logica achter de eerste en laatste
+
+### <a name="option-2"></a>Optie 2
+
+U kunt dit ook doen met behulp van een statistische trans formatie na de zoek actie. In dit geval wordt een geaggregeerde trans formatie met de naam ```PickFirst``` gebruikt om de eerste waarde uit de zoek overeenkomsten te kiezen.
 
 ![Aggregatie opzoeken](media/data-flow/lookup333.png "Aggregatie opzoeken")
 
@@ -48,7 +58,7 @@ In dit geval wordt een geaggregeerde trans formatie met de naam ```PickFirst``` 
 
 In Data Factory worden gegevens stromen uitgevoerd in een uitgebreide Spark-omgeving. Als uw gegevensset kan worden aangepast in de geheugen ruimte van het worker-knoop punt, kunnen we de prestaties van de zoek opdracht optimaliseren.
 
-![Broadcast-koppeling](media/data-flow/broadcast.png "Deelnemen aan uitzending")
+![Broadcast-koppeling](media/data-flow/broadcast.png "Broadcast-koppeling")
 
 ### <a name="broadcast-join"></a>Broadcast-koppeling
 

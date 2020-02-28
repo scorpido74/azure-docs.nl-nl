@@ -1,18 +1,17 @@
 ---
 title: Overzicht van Azure Diagnostics extensie
 description: Diagnostische gegevens van Azure gebruiken voor het opsporen van fouten, het meten van prestaties, bewaking, verkeers analyse in Cloud Services, virtuele machines en service Fabric
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467993"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672375"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Overzicht van Azure Diagnostics extensie
 Azure Diagnostics extensie is een [agent in azure monitor](agents-overview.md) die bewakings gegevens verzamelt van het gast besturingssysteem van Azure Compute-resources, inclusief virtuele machines. Dit artikel bevat een overzicht van Azure Diagnostics extensie, inclusief specifieke functionaliteit die wordt ondersteund en opties voor installatie en configuratie. 
@@ -86,7 +85,7 @@ LAD schrijft gegevens naar tabellen in Azure Storage. Het ondersteunt de sinks i
 
 
 ## <a name="installation-and-configuration"></a>Installatie en configuratie
-De diagnostische uitbrei ding wordt geïmplementeerd als een [extensie voor virtuele machines](/virtual-machines/extensions/overview) in azure, zodat deze dezelfde installatie opties ondersteunt met Resource Manager-sjablonen, Power shell en cli. Zie [extensies en functies van virtuele machines voor Windows](/virtual-machines/extensions/features-windows) -en [virtuele-machine extensies en-functies voor Linux](/virtual-machines/extensions/features-linux) voor algemene informatie over het installeren en onderhouden van extensies van virtuele machines.
+De diagnostische uitbrei ding wordt geïmplementeerd als een [extensie voor virtuele machines](../../virtual-machines/extensions/overview.md) in azure, zodat deze dezelfde installatie opties ondersteunt met Resource Manager-sjablonen, Power shell en cli. Zie [extensies en functies van virtuele machines voor Windows](../../virtual-machines/extensions/features-windows.md) -en [virtuele-machine extensies en-functies voor Linux](../../virtual-machines/extensions/features-linux.md) voor algemene informatie over het installeren en onderhouden van extensies van virtuele machines.
 
 U kunt ook de diagnostische Windows-en Linux-extensie installeren en configureren in het Azure Portal onder **Diagnostische instellingen** in de sectie **bewaking** van het menu van de virtuele machine.
 

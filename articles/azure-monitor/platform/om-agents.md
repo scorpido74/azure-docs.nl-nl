@@ -1,18 +1,17 @@
 ---
 title: Operations Manager verbinding maken met Azure Monitor | Microsoft Docs
 description: Als u uw bestaande investering in System Center Operations Manager wilt behouden en combineren met de uitgebreide mogelijkheden van Log Analytics, kunt u Operations Manager integreren met uw werkruimte.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363656"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659404"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager verbinden met Azure Monitor
 
@@ -40,20 +39,20 @@ Controleer de volgende vereisten voordat u begint.
 
 * Azure Monitor ondersteunt alleen System Center Operations Manager 2016 of hoger, Operations Manager 2012 SP1 UR6 of hoger en Operations Manager 2012 R2 UR2 of hoger. Proxyondersteuning is toegevoegd aan Operations Manager 2012 SP1 UR7 en Operations Manager 2012 R2 UR3.
 * Voor het integreren van System Center Operations Manager 2016 met de Amerikaanse Government-Cloud is een bijgewerkte Advisor-management pack opgenomen in update pakket 2 of hoger. System Center Operations Manager 2012 R2 vereist een bijgewerkte Advisor management pack die is opgenomen in update pakket 3 of hoger.
-* Alle Operations Manager-agents moeten voldoen aan de minimale vereisten voor ondersteuning. Zorg ervoor dat de agents op de minimale update zijn, anders kan de communicatie met Windows-agent mislukken en fouten genereren in het Operations Manager-gebeurtenis logboek.
+* Alle Operations Manager-agents moeten voldoen aan de vereisten voor minimale ondersteuning. Zorg ervoor dat de agents op de minimale update zijn, anders kan de communicatie met Windows-agent mislukken en fouten genereren in het Operations Manager-gebeurtenis logboek.
 * Een Log Analytics-werkruimte. Zie Log Analytics overzicht van de [werk ruimte](design-logs-deployment.md)voor meer informatie. 
 * U bent geverifieerd bij Azure met een account dat lid is van de [rol log Analytics Inzender](manage-access.md#manage-access-using-azure-permissions).
 
 * Ondersteunde regio's: alleen de volgende Azure-regio's worden ondersteund door System Center Operations Manager om verbinding te maken met een Log Analytics-werk ruimte:
     - VS - west-centraal
     - Australië - zuidoost
-    - Europa - west
+    - Europa -west
     - VS - oost
     - Azië - zuidoost
-    - Japan - Oost
-    - UK - zuid
+    - Japan - oost
+    - Verenigd Koninkrijk Zuid
     - India - centraal
-    - Canada-Midden
+    - Canada - midden
     - VS - west 2
 
 >[!NOTE]
@@ -70,7 +69,7 @@ Controleer de volgende vereisten voordat u begint.
 
 Hieronder vindt u de informatie over de proxy-en firewall configuratie die is vereist voor de Operations Manager agent, beheerser vers en Operations-console om te communiceren met Azure Monitor. Verkeer van elk onderdeel is uitgaand van uw netwerk naar Azure Monitor.
 
-|Bron | Poortnummer| HTTPS-controle overslaan|  
+|Resource | Poortnummer| HTTPS-controle overslaan|  
 |---------|------|-----------------------|  
 |**Agent**|||  
 |\*.ods.opinsights.azure.com| 443 |Ja|  
@@ -96,7 +95,7 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 
 ### <a name="tls-12-protocol"></a>TLS 1.2-protocol
 
-Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn Azure Monitor, kunt u het beste de agent en beheer groep configureren om ten minste Transport Layer Security (TLS) 1,2 te gebruiken. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**. Raadpleeg voor meer informatie, [verzenden van gegevens veilig gebruik TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn Azure Monitor, kunt u het beste de agent en beheer groep configureren om ten minste Transport Layer Security (TLS) 1,2 te gebruiken. Er zijn oudere versies van TLS/Secure Sockets Layer (SSL) gevonden die kwetsbaar zijn en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**. Raadpleeg voor meer informatie [veilig verzenden van gegevens met behulp van TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager verbinding maken met Azure Monitor
 
@@ -105,8 +104,8 @@ Voer de volgende stappen uit om uw Operations Manager-beheergroep te verbinden m
 Tijdens de eerste registratie van uw Operations Manager-beheer groep met een Log Analytics-werk ruimte is de optie om de proxy configuratie voor de beheer groep op te geven niet beschikbaar in de operations-console.  Deze optie is pas beschikbaar als de beheergroep bij de service is geregistreerd.  Als u dit wilt omzeilen, moet u de systeem proxy configuratie bijwerken met behulp van Netsh op het systeem waarop de operations-console wordt uitgevoerd om de integratie te configureren en alle beheerser vers in de beheer groep.  
 
 1. Open een opdrachtprompt met verhoogde bevoegdheid.
-   a. Ga naar **Start** en het type **cmd**.
-   b. Met de rechtermuisknop op **opdrachtprompt** en selecteert u uitvoeren als beheerder **.
+   a. Ga naar **Start** en typ **cmd**.
+   b. Klik met de rechter muisknop op **opdracht prompt** en selecteer als administrator uitvoeren * *.
 1. Voer de volgende opdracht in en druk op **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`

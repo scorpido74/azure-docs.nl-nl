@@ -1,18 +1,16 @@
 ---
 title: 'Snelstartgids: analyse van Java-Web-apps met Azure-toepassing Insights'
 description: 'Toepassingsprestaties bewaken met Application Insights voor Java-web-apps. '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963679"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670080"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstartgids: aan de slag met Application Insights in een Java-webproject
 
@@ -27,7 +25,7 @@ Application Insights is een uitbreid bare analyse service voor webontwikkelaars 
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Een Application Insights-instrumentatiesleutel ophalen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Maak een Application Insights resource in het Azure Portal. Stel het toepassingstype in op Java-webtoepassing.
 
 3. Zoek de instrumentatiesleutel van de nieuwe resource. U moet deze sleutel zo dadelijk in de code van uw project plakken.
@@ -38,7 +36,7 @@ Application Insights is een uitbreid bare analyse service voor webontwikkelaars 
 
 *Kies het project type.*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 Als uw project al is ingesteld voor het gebruik van Maven voor Build, voegt u de volgende code samen in uw *pom. XML-* bestand.
 
@@ -56,7 +54,7 @@ Vervolgens vernieuwt u de projectafhankelijkheden om de binaire bestanden te dow
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u de volgende code samen in uw *Build. Gradle* -bestand.
 
@@ -70,13 +68,13 @@ Vervolgens vernieuwt u de projectafhankelijkheden om de binaire bestanden te dow
     }
 ```
 
-# <a name="other-typestabother"></a>[Andere typen](#tab/other)
+# <a name="other-types"></a>[Andere typen](#tab/other)
 
 Download de [nieuwste versie](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) en kopieer de vereiste bestanden in uw project, waarbij eventuele vorige versies worden vervangen.
 
 ---
 
-### <a name="questions"></a>Vragen
+### <a name="questions"></a>Beantwoorden
 * *Wat is de relatie tussen de `-web-auto`, `-web` en `-core` onderdelen?*
   * `applicationinsights-web-auto` geeft u metrische gegevens die het aantal HTTP servlet-aanvragen en-reactie tijden bijhouden door het Application Insights servlet-filter tijdens runtime automatisch te registreren.
   * `applicationinsights-web` biedt ook metrische gegevens die het aantal servlet en reactie tijden voor HTTP-aanvragen bijhouden, maar hiervoor hand matige registratie van het Application Insights servlet-filter in uw toepassing.
@@ -297,7 +295,7 @@ Nu u de SDK hebt geïnstalleerd, kunt u de API gebruiken voor het verzenden van 
 * [Houd aangepaste gebeurtenissen en metrische gegevens][api] bij om te zien wat gebruikers met uw toepassing doen.
 * [Zoeken naar gebeurtenissen en logboeken][diagnostic] om problemen te onderzoeken.
 
-## <a name="availability-web-tests"></a>Beschibaarheidswebtests
+## <a name="availability-web-tests"></a>Webtests voor beschikbaarheid
 Application Insights kan uw website regelmatig testen om te controleren of deze actief is en goed reageert.
 
 [Meer informatie over het instellen van Beschik baarheid van webtesten.][availability]

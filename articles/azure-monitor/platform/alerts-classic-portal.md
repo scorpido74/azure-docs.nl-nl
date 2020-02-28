@@ -2,16 +2,15 @@
 title: Klassieke waarschuwingen voor metrische gegevens maken, weer geven en beheren met behulp van Azure Monitor
 description: Meer informatie over het gebruik van Azure Portal, CLI of Power shell voor het maken, weer geven en beheren van regels voor klassieke metrische gegevens.
 author: yanivlavi
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: yalavi
-ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705595"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668312"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klassieke metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
@@ -23,7 +22,7 @@ Klassieke metrische waarschuwingen in Azure Monitor bieden een manier om een mel
 
 2. Selecteer in de sectie **controle** de optie **waarschuwingen (klassiek)** . De tekst en het pictogram kunnen enigszins verschillen voor verschillende resources. Als u hier geen **waarschuwingen (klassiek)** vindt, kunt u deze vinden in **waarschuwingen** of **waarschuwings regels**.
 
-    ![Controleren](media/alerts-classic-portal/AlertRulesButton.png)
+    ![Bewaking](media/alerts-classic-portal/AlertRulesButton.png)
 
 3. Selecteer de opdracht **metrische waarschuwing toevoegen (klassiek)** en vul de velden in.
 

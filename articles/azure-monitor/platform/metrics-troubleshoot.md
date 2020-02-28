@@ -3,17 +3,16 @@ title: Problemen met Azure Monitor metrische grafieken oplossen
 description: Problemen oplossen met metrische grafieken maken, aanpassen of interpreteren
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974873"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659659"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problemen met metrische grafieken oplossen
 
@@ -29,7 +28,7 @@ U hebt op de knop **Resource selecteren** geklikt, maar u ziet uw resource niet 
 
 1. Controleer of u de juiste resourcegroep hebt geselecteerd.
     > [!WARNING]
-    > Voor de beste prestaties, wanneer u metrische gegevens Verkenner voor het eerst opent, heeft de vervolg keuzelijst **resource groep** geen vooraf geselecteerde resource groepen. U moet minstens één groep kiezen om resources te zien te krijgen.
+    > Wanneer u Metrics Explorer de eerste keer opent, bevat de vervolgkeuzelijst **Resourcegroep** geen vooraf geselecteerde resourcegroepen. Dit is om de beste prestatie te kunnen bieden. U moet minstens één groep kiezen om resources te zien te krijgen.
 
 ## <a name="chart-shows-no-data"></a>Diagram toont geen gegevens
 

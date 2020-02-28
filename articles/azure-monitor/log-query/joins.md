@@ -1,18 +1,17 @@
 ---
 title: Samen voegen in Azure Monitor-logboek query's | Microsoft Docs
 description: Dit artikel bevat een les over het gebruik van samen voegingen in Azure Monitor-logboek query's.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397845"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670199"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Samen voegen in Azure Monitor-logboek query's
 
@@ -80,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Typen samen voegen
 Geef het type samen voeging met het argument _kind_ op. Elk type voert een andere overeenkomst uit tussen de records van de opgegeven tabellen, zoals beschreven in de volgende tabel.
 
-| Type samenvoeging | Beschrijving |
+| Type samen voeging | Beschrijving |
 |:---|:---|
 | innerunique | Dit is de standaard modus voor samen voegen. Eerst worden de waarden van de overeenkomende kolom in de linkertabel gevonden en worden dubbele waarden verwijderd.  Vervolgens wordt de reeks unieke waarden vergeleken met de rechter tabel. |
 | wend | Alleen overeenkomende records in beide tabellen zijn opgenomen in de resultaten. |
@@ -106,4 +105,4 @@ Zie andere lessen voor het gebruik van Azure Monitor-logboek query's:
 - [Geavanceerde aggregaties](advanced-aggregations.md)
 - [JSON en gegevens structuren](json-data-structures.md)
 - [Geavanceerde query's schrijven](advanced-query-writing.md)
-- [Grafieken](charts.md)
+- [Diagrammen](charts.md)

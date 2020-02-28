@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2a7cab3422a0d44e45e622e2d556b5fec4ff659c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750275"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669468"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snelstartgids: een Java-lente-app maken met Azure-app configuratie
 
@@ -31,11 +31,11 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een Java lente-app om
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
+1. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
-    | /application/config.message | Hallo! |
+    | /application/config.message | Hello |
 
     Laat het **Label** en het **inhouds type** nu leeg.
 
@@ -45,30 +45,42 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 1. Blader naar <https://start.spring.io/>.
 
-2. Geef de volgende opties op:
+1. Geef de volgende opties op:
 
-   * Genereer een **Maven**-project met **Java**.
-   * Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
-   * Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.
-   * Voeg de **lente** webafhankelijkheid toe.
+   - Genereer een **Maven**-project met **Java**.
+   - Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
+   - Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.
+   - Voeg de **lente** webafhankelijkheid toe.
 
-3. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar een pad op uw lokale computer.
+1. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar een pad op uw lokale computer.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
 1. Nadat u de bestanden op het lokale systeem hebt uitgepakt, kunt u de toepassing voor het uitvoeren van een eenvoudige Spring boot bewerken. Zoek het bestand *pom.xml* in de hoofdmap van uw app.
 
-2. Open het bestand *pom.xml* in een teksteditor en voeg de starter Spring Cloud Azure Config toe aan de lijst van `<dependencies>`:
+1. Open het bestand *pom.xml* in een teksteditor en voeg de starter Spring Cloud Azure Config toe aan de lijst van `<dependencies>`:
+
+    **Lente Cloud 1.1. x**
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <version>1.1.2</version>
     </dependency>
     ```
 
-3. Maak een nieuw Java-bestand met de naam *MessageProperties.java* in de pakketmap van uw app. Voeg de volgende regels toe:
+    **Lente Cloud 1.2. x**
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+1. Maak een nieuw Java-bestand met de naam *MessageProperties.java* in de pakketmap van uw app. Voeg de volgende regels toe:
 
     ```java
     package com.example.demo;
@@ -89,7 +101,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     }
     ```
 
-4. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app. Voeg de volgende regels toe:
+1. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app. Voeg de volgende regels toe:
 
     ```java
     package com.example.demo;
@@ -112,7 +124,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     }
     ```
 
-5. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
+1. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -126,13 +138,31 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     }
     ```
 
-6. Maak een nieuw bestand met de naam `bootstrap.properties` in de map resources van uw app en voeg de volgende regels toe aan het bestand. Vervang de voorbeeld waarden door de juiste eigenschappen voor de app-configuratie opslag.
+1. Maak een nieuw bestand met de naam `bootstrap.properties` in de map resources van uw app en voeg de volgende regels toe aan het bestand. Vervang de voorbeeld waarden door de juiste eigenschappen voor de app-configuratie opslag.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
+    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+1. Stel een omgevings variabele met de naam **APP_CONFIGURATION_CONNECTION_STRING**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Voer op de opdracht regel de volgende opdracht uit en start de opdracht prompt om de wijziging toe te passen:
+
+    ```CLI
+        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    ```
+
+    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
+
+    ```azurepowershell
+        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    ```
+
+    Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
+
+    ```console
+        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
+    ```
+
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Maak een Spring boot-toepassing met maven en voer deze uit, bijvoorbeeld:
 

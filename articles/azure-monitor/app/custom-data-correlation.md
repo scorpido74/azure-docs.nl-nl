@@ -1,19 +1,17 @@
 ---
 title: Inzichten Azure-toepassing | Microsoft Docs
 description: ''
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 03f802297c2ecaac0c126ed3de6401b40e1f804b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 75c5bd5bd6a7ded8679c30446a45809a1ea4406a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678165"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672001"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights gegevens correleren met aangepaste gegevens bronnen
 
@@ -47,7 +45,7 @@ Om het verzenden van logboek gegevens naar Azure Monitor te starten. Er zijn ver
 
 Application Insights is gebaseerd op het Azure Monitor-logboek platform. We kunnen daarom [Cross-resource join's](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) gebruiken voor het correleren van gegevens die zijn opgenomen in azure monitor met onze Application Insights-gegevens.
 
-We kunnen bijvoorbeeld onze Lab-inventaris en-locaties opnemen in een tabel met de naam ' LabLocations_CL ' in een Log Analytics-werk ruimte met de naam ' myLA '. Als we de aanvragen die zijn bijgehouden in Application Insights-app met de naam "myAI", vervolgens willen bekijken en de computer namen die de aanvragen hebben verzonden, correleren aan de locaties van deze machines die zijn opgeslagen in de eerder genoemde aangepaste tabel, kunnen we de volgende query uitvoeren vanuit de Application Insights-of Azure Monitor context:
+We kunnen bijvoorbeeld onze Lab-inventaris en-locaties opnemen in een tabel met de naam ' LabLocations_CL ' in een Log Analytics werk ruimte met de naam ' myLA '. Als we de aanvragen die zijn bijgehouden in Application Insights-app met de naam "myAI", vervolgens willen bekijken en de computer namen die de aanvragen hebben verzonden, correleren aan de locaties van deze machines die zijn opgeslagen in de eerder genoemde aangepaste tabel, kunnen we de volgende query uitvoeren vanuit de Application Insights-of Azure Monitor context:
 
 ```
 app('myAI').requests

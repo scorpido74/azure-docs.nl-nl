@@ -1,18 +1,17 @@
 ---
 title: Aangepaste logboeken verzamelen in Azure Monitor | Microsoft Docs
 description: Azure Monitor kunt gebeurtenissen verzamelen uit tekst bestanden op zowel Windows-als Linux-computers.  In dit artikel wordt beschreven hoe u een nieuw aangepast logboek en Details definieert van de records die ze in Azure Monitor maken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450668"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670590"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste Logboeken in Azure Monitor
 
@@ -47,7 +46,7 @@ De logboek bestanden die moeten worden verzameld, moeten voldoen aan de volgende
 ## <a name="defining-a-custom-log"></a>Een aangepast logboek definiëren
 Gebruik de volgende procedure om een aangepast logboek bestand te definiëren.  Ga naar het einde van dit artikel voor een overzicht van een voor beeld van het toevoegen van een aangepast logboek.
 
-### <a name="step-1-open-the-custom-log-wizard"></a>Step 1. De wizard aangepast logboek openen
+### <a name="step-1-open-the-custom-log-wizard"></a>Stap 1. De wizard aangepast logboek openen
 De wizard aangepast logboek wordt uitgevoerd in de Azure Portal en stelt u in staat om een nieuw aangepast logboek te definiëren dat u wilt verzamelen.
 
 1. Selecteer in de Azure Portal **log Analytics werk ruimten** > uw werk ruimte > **Geavanceerde instellingen**.
@@ -77,8 +76,8 @@ De volgende tabel bevat voor beelden van geldige patronen om andere logboek best
 
 | Beschrijving | Pad |
 |:--- |:--- |
-| Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs\\\*.txt |
-| Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\log\*.txt |
+| Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs\\\*. txt |
+| Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\log\*. txt |
 | Alle bestanden in */var/log/audit* met de extensie. txt in de Linux-agent |/var/log/audit/*. txt |
 | Alle bestanden in */var/log/audit* met een naam die begint met log en een. txt-extensie in de Linux-agent |/var/log/audit/log\*. txt |
 
@@ -123,7 +122,7 @@ Aangepaste logboek records hebben een type met de naam van het logboek dat u opg
 | TimeGenerated |De datum en tijd waarop de record is verzameld door Azure Monitor.  Als in het logboek een scheidings teken op basis van tijd wordt gebruikt, is dit de tijd die van de vermelding is verzameld. |
 | SourceSystem |Type agent waaruit het record is verzameld. <br> OpsManager: Windows-agent, Direct Connect of System Center Operations Manager <br> Linux: alle Linux-agents |
 | RawData |Volledige tekst van het verzamelde item. Waarschijnlijk wilt u [deze gegevens in afzonderlijke eigenschappen parseren](../log-query/parse-text.md). |
-| ManagementGroupName |Naam van de beheer groep voor System Center Operations-agents.  Voor andere agents is dit AOI -\<werkruimte-ID\> |
+| ManagementGroupName |Naam van de beheer groep voor System Center Operations-agents.  Voor andere agents is dit AOI-\<werk ruimte-ID\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Voorbeeld scenario voor het toevoegen van een aangepast logboek
@@ -170,4 +169,4 @@ In de gevallen waarin uw gegevens niet kunnen worden verzameld met aangepaste lo
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [tekst gegevens parseren in azure monitor](../log-query/parse-text.md) voor methoden om elke geïmporteerde logboek vermelding te parseren in meerdere eigenschappen.
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.

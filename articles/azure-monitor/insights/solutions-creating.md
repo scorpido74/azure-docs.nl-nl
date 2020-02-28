@@ -1,19 +1,18 @@
 ---
 title: Een beheer oplossing bouwen in azure | Microsoft Docs
 description: Beheer oplossingen bevatten ingebouwde beheer scenario's in azure die klanten aan hun Log Analytics-werk ruimte kunnen toevoegen.  In dit artikel vindt u informatie over het maken van beheer oplossingen voor gebruik in uw eigen omgeving of voor uw klanten beschikbaar.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969699"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663212"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Een beheer oplossing ontwerpen en bouwen in azure (preview)
 > [!NOTE]
@@ -28,7 +27,7 @@ Beheer oplossingen bevatten Azure-resources die samen werken om een bepaald behe
 De basis strategie bestaat uit het starten van de beheer oplossing door de afzonderlijke onderdelen in uw Azure-omgeving te bouwen.  Zodra u de functionaliteit hebt werken, kunt u deze in een bestand met een [beheer oplossing]( solutions-solution-file.md)inpakken. 
 
 
-## <a name="design-your-solution"></a>Ontwerp uw oplossing
+## <a name="design-your-solution"></a>Uw oplossing ontwerpen
 In het volgende diagram ziet u het meest voorkomende patroon voor een beheer oplossing.  De verschillende onderdelen in dit patroon worden hieronder beschreven.
 
 ![Overzicht van beheer oplossingen](media/solutions-creating/solution-overview.png)

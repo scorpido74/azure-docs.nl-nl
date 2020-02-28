@@ -3,17 +3,16 @@ title: Metrische op logboek gebaseerd op basis van Azure-toepassing Insights | M
 description: Dit artikel bevat een overzicht van Azure-toepassing Insights-metrische gegevens met ondersteunde aggregaties en dimensies. De details over metrische gegevens op basis van een logboek bevatten de onderliggende Kusto-query-instructies.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887254"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664912"
 ---
 # <a name="application-insights-log-based-metrics"></a>Metrische gegevens op basis van het logboek Application Insights
 
@@ -80,7 +79,7 @@ De metrische *beschikbaarheids tests* weerspiegelt het aantal van de webtests da
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
-|Aantal|Aantal|Uitvoerings locatie, naam van test, resultaat van test|
+|Count|Count|Uitvoerings locatie, naam van test, resultaat van test|
 
 ```Kusto
 availabilityResults
@@ -99,7 +98,7 @@ De metrische gegevens van de browser worden verzameld door de Application Insigh
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -115,7 +114,7 @@ browserTimings
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -131,7 +130,7 @@ browserTimings
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -147,7 +146,7 @@ browserTimings
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -163,7 +162,7 @@ browserTimings
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|
 |---|---|---|
-|Milliseconden|Gemiddeld, min, Max|Geen|
+|Milliseconden|Gemiddeld, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -185,7 +184,7 @@ Deze metriek weerspiegelt het aantal uitzonde ringen dat is veroorzaakt door de 
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Aantal|Aantal|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Count|Count|None|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -200,7 +199,7 @@ Het aantal mislukte afhankelijkheids aanroepen.
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Aantal|Aantal|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Count|Count|None|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 dependencies
@@ -215,7 +214,7 @@ Telkens wanneer u een uitzonde ring registreert op Application Insights, wordt e
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Aantal|Aantal|Rolnaam van Cloud, instantie van Cloud-rol, apparaattype|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Count|Count|Rolnaam van Cloud, instantie van Cloud-rol, apparaattype|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -229,7 +228,7 @@ Het aantal bijgehouden server aanvragen dat is gemarkeerd als *mislukt*. Standaa
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Aantal|Aantal|Cloud rolinstantie, naam van Cloud functie, reëel of synthetisch verkeer, prestaties aanvragen, respons code|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Count|Count|Cloud rolinstantie, naam van Cloud functie, reëel of synthetisch verkeer, prestaties aanvragen, respons code|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 requests
@@ -244,7 +243,7 @@ Met deze metriek wordt het aantal server uitzonderingen weer gegeven.
 
 |Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Aantal|Aantal|Rolnaam van Cloud, instantie van Cloud-rol|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Count|Count|Rolnaam van Cloud, instantie van Cloud-rol|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions

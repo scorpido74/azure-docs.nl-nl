@@ -1,18 +1,17 @@
 ---
 title: De implementatie van uw Azure Monitor-logboeken ontwerpen | Microsoft Docs
 description: In dit artikel worden de overwegingen en aanbevelingen beschreven voor klanten die de implementatie van een werk ruimte in Azure Monitor voorbereiden.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: f2d530792e1a6f598dbf2ed66889c01cc43467ed
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e493b07814821496f941a4b81402ba0b49acbede
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162239"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670454"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 

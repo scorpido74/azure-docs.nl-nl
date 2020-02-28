@@ -1,18 +1,14 @@
 ---
 title: Web-app-analyse voor ASP.NET instellen met Azure Application Insights | Microsoft Docs
 description: Configureer prestaties, Beschik baarheid en hulpprogram ma's voor analyse van gebruikers gedrag voor uw ASP.NET-website, die on-premises of in azure wordt gehost.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677678"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665915"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Application Insights instellen voor uw ASP.NET-website
 
@@ -34,7 +30,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 > [!IMPORTANT]
 > De scherm afbeeldingen in dit voor beeld zijn gebaseerd op Visual Studio 2017 versie 15.9.9 en hoger. De ervaring om Application Insights toe te voegen, is afhankelijk van zowel de versie van Visual Studio als het sjabloon type ASP.NET. Oudere versies kunnen alternatieve tekst bevatten, zoals "Configure Application Insights".
 
-Klik met de rechter muisknop op de naam van uw web-app in de Solution Explorer en kies  >  **toevoegen** **Application Insights Telemetry**
+Klik met de rechter muisknop op de naam van uw web-app in de Solution Explorer en kies > **toevoegen** **Application Insights Telemetry**
 
 ![Schermopname van Solution Explorer waarin Application Insights is gemarkeerd](./media/asp-net/add-telemetry-new.png)
 
@@ -54,7 +50,7 @@ Als u een resourcegroep of locatie wilt instellen voor het opslaan van uw gegeve
 
 ![Schermopname van de pagina Uw app registreren bij Application Insights](./media/asp-net/00005-register-ed.png)
 
- Selecteer **Project**  > **NuGet-pakketten te beheren**  > **pakket Bron: nuget.org** > Controleer of u de laatste stabiele versie van de Application Insights SDK hebt.
+ Selecteer **Project** > **NuGet-pakketten te beheren** > **pakket Bron: nuget.org** > Controleer of u de laatste stabiele versie van de Application Insights SDK hebt.
 
  Er wordt telemetrie verzonden naar [Azure Portal](https://portal.azure.com), zowel tijdens de foutopsporing als na het publiceren van de app.
 > [!NOTE]
@@ -149,6 +145,6 @@ Er zijn ook andere onderwerpen die u kunt bekijken als u geïnteresseerd bent in
 * [Slimme diagnostische gegevens](../../azure-monitor/app/proactive-diagnostics.md): deze tests worden automatisch uitgevoerd, zodat u niets hoeft te doen om ze in te stellen. Deze geeft aan of een app een ongebruikelijk aantal mislukte aanvragen heeft.
 * [Metrische waarschuwingen](../../azure-monitor/app/alerts.md): Stel waarschuwingen in om u te waarschuwen als een metriek een drempel waarde overschrijdt. U kunt deze instellen op aangepaste metrische gegevens die u in uw app codeert.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatisering
 
 * [Het maken van een Application Insights-resource automatiseren](../../azure-monitor/app/powershell.md)

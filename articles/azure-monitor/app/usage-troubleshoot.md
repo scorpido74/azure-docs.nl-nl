@@ -1,19 +1,17 @@
 ---
 title: Problemen oplossen met hulpprogram ma's voor gebruikers analyse-Azure-toepassing Insights
 description: 'Gids voor probleem oplossing: analyse van site-en app-gebruik met Application Insights.'
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432285"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670913"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problemen oplossen met hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights
 Hebt u vragen over de [hulpprogram ma's voor analyse van gebruikers gedrag in Application Insights](usage-overview.md): [gebruikers, sessies, gebeurtenissen](usage-segmentation.md), [trechters](usage-funnels.md), [Gebruikersstromen](usage-flows.md), [retentie](usage-retention.md)of cohorten? Hier volgen enkele antwoorden.
@@ -50,6 +48,6 @@ Als uw app te veel aangepaste gebeurtenis namen verzendt, wijzigt u de naam in d
 
 * [Overzicht van analyse hulpprogramma's voor gebruikers gedrag](usage-overview.md)
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

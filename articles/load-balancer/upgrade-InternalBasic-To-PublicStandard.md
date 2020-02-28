@@ -7,21 +7,22 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77618202"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659982"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure-uitgaande verbinding vereist
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU. Aangezien standaard interne Load Balancer geen uitgaande verbinding biedt, bieden we een oplossing om in plaats daarvan een open bare standaard Load Balancer te maken.
 
-Er zijn drie fasen in een upgrade:
+Er zijn vier fasen in een upgrade:
 
 1. Migreer de configuratie naar de standaard open bare Load Balancer
 2. Vm's toevoegen aan back-endservers van standaard open bare Load Balancer
-3. NSG-regels instellen voor subnet/Vm's die moeten worden onthouden van/naar Internet
+3. Een uitgaande regel maken voor de Load Balancer voor de uitgaande verbinding
+4. NSG-regels instellen voor subnet/Vm's die moeten worden onthouden van/naar Internet
 
 In dit artikel wordt beschreven hoe u de configuratie migreert. Het toevoegen van Vm's aan back-endservers kan variëren, afhankelijk van uw specifieke omgeving. Er zijn echter algemene aanbevelingen [van](#add-vms-to-backend-pools-of-standard-load-balancer)een hoog niveau.
 
@@ -83,7 +84,7 @@ Het script uitvoeren:
     **Voorbeeld**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Vm's toevoegen aan back-endservers van Standard Load Balancer
@@ -109,6 +110,12 @@ Hier volgen enkele scenario's voor het toevoegen van Vm's aan back-endservers va
 
 * **Nieuwe Vm's maken om toe te voegen aan de back-endservers van de zojuist gemaakte standaard open bare Load Balancer**.
     * Meer instructies voor het maken van een VM en het koppelen hiervan aan Standard Load Balancer vindt u [hier](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Een uitgaande regel voor de uitgaande verbinding maken
+
+Volg de [instructies](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) voor het maken van een uitgaande regel, zodat u kunt
+* Geef de uitgaande NAT van een geheel nieuwe definitie op.
+* Het gedrag van bestaande uitgaande NAT schalen en afstemmen.
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>NSG-regels maken voor Vm's die de communicatie van of naar Internet onthouden
 Als u Internet verkeer niet wilt bereiken naar uw virtuele machines, kunt u een [NSG-regel](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) maken op de netwerk interface van de vm's.

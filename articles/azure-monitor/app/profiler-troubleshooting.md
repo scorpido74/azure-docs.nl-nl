@@ -1,19 +1,17 @@
 ---
 title: Problemen met Azure-toepassing Insights Profiler oplossen
 description: Dit artikel bevat probleemoplossings stappen en informatie om ontwikkel aars te helpen bij het inschakelen of gebruiken van Application Insights Profiler.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671559"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
 
@@ -51,7 +49,7 @@ Profiler schrijft traceer berichten en aangepaste gebeurtenissen naar uw Applica
 * Zorg ervoor dat uw app wordt uitgevoerd op .NET Framework 4,6.
 * Als uw web-app een ASP.NET Core toepassing is, moet er ten minste ASP.NET Core 2,0 worden uitgevoerd.
 * Als de gegevens die u probeert weer te geven ouder zijn dan een paar weken, probeert u het tijd filter te beperken en probeert u het opnieuw. Traceringen worden na zeven dagen verwijderd.
-* Zorg ervoor dat proxy's of een firewall de toegang tot https://gateway.azureserviceprofiler.net niet heeft geblokkeerd.
+* Zorg ervoor dat proxy's of een firewall de toegang tot https://gateway.azureserviceprofiler.netniet heeft geblokkeerd.
 * Profilering wordt niet ondersteund voor gratis of gedeelde app service-abonnementen. Als u een van deze abonnementen gebruikt, probeert u omhoog te schalen naar een van de basis plannen en Profiler moet aan de slag gaan.
 
 ### <a id="double-counting"></a>Dubbel tellen in parallelle threads
@@ -117,7 +115,7 @@ Op dit moment kunt u Profiler inschakelen voor Maxi maal vier Azure-web-apps en 
 
 Als u uw web-app opnieuw implementeert naar een Web Apps resource waarvoor Profiler is ingeschakeld, ziet u mogelijk het volgende bericht:
 
-*Map is niet leeg 'D:\\\\site\\wwwroot\\App_Data taken*
+*Map is niet leeg 'D:\\\\site\\wwwroot\\App_Data taken*\\
 
 Deze fout treedt op als u Web Deploy uitvoert vanuit scripts of vanuit de Azure DevOps-implementatie pijplijn. De oplossing is om de volgende aanvullende implementatie parameters toe te voegen aan de Web Deploy-taak:
 
@@ -177,8 +175,8 @@ Als uw toepassing verbinding maakt met Internet via een proxy of een firewall, m
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
-[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[Profiler-Webtaak]:./media/profiler-troubleshooting/Profiler-webjob.png
+[Profiler-Webtaak-logboek]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

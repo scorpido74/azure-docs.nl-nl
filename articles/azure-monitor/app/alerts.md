@@ -1,21 +1,19 @@
 ---
-title: Waarschuwingen instellen in Azure-toepassing Insights | Microsoft Docs
+title: Waarschuwingen instellen in Azure-toepassing Insights
 description: Ontvang een melding over trage reactie tijden, uitzonde ringen en andere wijzigingen in de prestaties of het gebruik van uw web-app.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678410"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666714"
 ---
 # <a name="set-alerts-in-application-insights"></a>Waarschuwingen instellen in Application Insights
+
 [Azure-toepassing Insights][start] kan u waarschuwen voor wijzigingen in de metrische gegevens voor prestaties of gebruik in uw web-app. 
 
 Application Insights bewaakt uw Live-App op een [groot aantal verschillende platformen][platforms] om u te helpen bij het vaststellen van prestatie problemen en het begrijpen van gebruiks patronen.
@@ -28,6 +26,7 @@ Er zijn meerdere typen waarschuwingen:
 * [**Proactieve diagnoses**](../../azure-monitor/app/proactive-diagnostics.md) worden automatisch geconfigureerd om u te informeren over ongebruikelijke prestatie patronen.
 
 ## <a name="set-a-metric-alert"></a>Een waarschuwing voor metrische gegevens instellen
+
 Open het tabblad waarschuwings regels en gebruik vervolgens de knop toevoegen.
 
 ![Klik op het tabblad waarschuwings regels op waarschuwing toevoegen. Stel uw app in als de resource die u wilt meten, geef een naam op voor de waarschuwing en kies een waarde.](./media/alerts/01-set-metric.png)
@@ -171,7 +170,7 @@ Deze sectie is alleen van toepassing op klassieke waarschuwingen en helpt u bij 
 
 Gebruik de nieuwe waarschuwings ervaring/bijna realtime waarschuwingen als u gebruikers op basis van hun rollen wilt waarschuwen. Met [actie groepen](../platform/action-groups.md)kunt u e-mail meldingen configureren voor gebruikers met een van de rollen Inzender/eigenaar/lezer (niet gecombineerd als één optie).
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatisering
 * [Power shell gebruiken voor het automatiseren van het instellen van waarschuwingen](../../azure-monitor/app/powershell-alerts.md)
 * [Webhooks gebruiken om het reageren op waarschuwingen te automatiseren](../../azure-monitor/platform/alerts-webhooks.md)
 

@@ -1,22 +1,21 @@
 ---
 title: Servicetoewijzing oplossing gebruiken in azure | Microsoft Docs
 description: Serviceoverzicht is een oplossing in Azure die automatisch toepassingsonderdelen op Windows- en Linux-systemen detecteert en de communicatie tussen services toewijst. Dit artikel bevat informatie voor het implementeren van Serviceoverzicht in uw omgeving en het gebruik hiervan in een verscheidenheid aan scenario's.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168180"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663620"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing-oplossing gebruiken in azure
 
-Met Servicetoewijzing worden automatisch toepassingsonderdelen op Windows- en Linux-systemen gedetecteerd en wordt de communicatie tussen services toegewezen. Met Servicetoewijzing kun u uw servers weergeven op de manier waarop ze hun waarde voor u hebben: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
+Serviceoverzicht ontdekt automatisch toepassingsonderdelen op Windows- en Linux-systemen en wijst de communicatie tussen services toe. Met Servicetoewijzing kunt u uw servers weergeven op de manier zoals u ze ziet: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
 
 In dit artikel worden de details van het voorbereiden en gebruiken van Servicetoewijzing beschreven. Zie [het overzicht van Azure monitor voor VM's inschakelen](vminsights-enable-overview.md#prerequisites)voor meer informatie over het configureren van de vereisten voor deze oplossing. Als u wilt samenvatten, hebt u het volgende nodig:
 
@@ -42,7 +41,7 @@ U opent Servicetoewijzing in de Azure Portal vanuit uw Log Analytics-werk ruimte
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Use cases: Zorg dat uw IT-processen afhankelijk zijn van afhankelijkheids detectie
 
-### <a name="discovery"></a>Discovery
+### <a name="discovery"></a>Detectie
 
 Servicetoewijzing bouwt automatisch een algemene referentie kaart van afhankelijkheden op uw servers, processen en services van derden. Hiermee worden alle TCP-afhankelijkheden gedetecteerd en toegewezen, waarbij onverwachte verbindingen worden geïdentificeerd, externe systemen van derden waarvan u afhankelijk bent en afhankelijkheden van traditionele, donkere gebieden van uw netwerk, zoals Active Directory. Servicetoewijzing detecteert mislukte netwerk verbindingen die door uw beheerde systemen worden geprobeerd, en helpt u bij het identificeren van mogelijke server onjuiste configuratie, service storing en netwerk problemen.
 
@@ -159,7 +158,7 @@ Bepaalde processen dienen specifieke rollen op computers: webservers, toepassing
 |:--|:--|
 | ![Webserver](media/service-map/role-web-server.png) | Webserver |
 | ![App-server](media/service-map/role-application-server.png) | Toepassings server |
-| ![Databaseserver](media/service-map/role-database.png) | Databaseserver |
+| ![Database server](media/service-map/role-database.png) | Database server |
 | ![LDAP-server](media/service-map/role-ldap.png) | LDAP-server |
 | ![SMB-server](media/service-map/role-smb.png) | SMB-server |
 
@@ -422,7 +421,7 @@ Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor ser
 | `PhysicalMemory_d` | Het fysieke geheugen in MB |
 | `Cpus_d` | Het aantal Cpu's |
 | `CpuSpeed_d` | De CPU-snelheid in MHz|
-| `VirtualizationState_s` | *unknown*, *physical*, *virtual*, *hypervisor* |
+| `VirtualizationState_s` | *onbekend*, *fysiek*, *virtueel*, *Hyper Visor* |
 | `VirtualMachineType_s` | *hyper-v*, *VMware*, enzovoort |
 | `VirtualMachineNativeMachineId_g` | De VM-ID die is toegewezen door de Hyper Visor |
 | `VirtualMachineName_s` | De naam van de virtuele machine |
@@ -539,7 +538,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 Alle gegevens van de server, het proces en de afhankelijkheid in Servicetoewijzing zijn beschikbaar via de [Servicetoewijzing rest API](https://docs.microsoft.com/rest/api/servicemap/).
 
@@ -547,7 +546,7 @@ Alle gegevens van de server, het proces en de afhankelijkheid in Servicetoewijzi
 
 Microsoft verzamelt automatisch gebruiks- en prestatiegegevens gegevens via uw gebruik van de Service Map-service. Microsoft gebruikt deze gegevens te bieden en de kwaliteit, beveiliging en integriteit van de Service Map-service te verbeteren. Om nauw keurige en efficiënte probleemoplossings mogelijkheden te bieden, bevatten de gegevens informatie over de configuratie van uw software, zoals het besturings systeem en de versie, het IP-adres, de DNS-naam en de naam van het werk station. Micro soft verzamelt geen namen, adressen of andere contact gegevens.
 
-Zie voor meer informatie over het verzamelen van gegevens en het gebruik, de [privacyverklaring van Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -572,7 +571,7 @@ Het kan handig zijn om eerst de [meest recente runtime-bibliotheken](https://sup
 
 De volgende tabel bevat de codenummers en voorgestelde oplossingen.
 
-| Coderen | Beschrijving | Resolutie |
+| Code | Beschrijving | Oplossing |
 |:--|:--|:--|
 | 0x17 | Het installatieprogramma bibliotheek vereist een Windows-update die is niet geïnstalleerd. | Zoek in de meest recente bibliotheek installer-logboekbestand.<br><br>Als een verwijzing naar `Windows8.1-KB2999226-x64.msu` wordt gevolgd door een regel `Error 0x80240017: Failed to execute MSU package,` hebt u niet de vereiste onderdelen om KB2999226 te installeren. Volg de instructies in de sectie vereisten in [Universal C runtime in het Windows](https://support.microsoft.com/kb/2999226) -artikel. Mogelijk moet u Windows Update uitvoeren en meerdere keren opnieuw om de vereiste onderdelen installeren.<br><br>Voer het installatieprogramma van Microsoft Dependency agent opnieuw uit. |
 

@@ -1,19 +1,15 @@
 ---
 title: Gegevens model voor aanvraag-telemetrie-Azure-toepassing Insights
 description: Application Insights gegevens model voor aanvraag-telemetrie
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928842"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671899"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie aanvragen: Application Insights gegevens model
 
@@ -21,7 +17,7 @@ Een telemetrie van aanvragen (in [Application Insights](../../azure-monitor/app/
 
 Telemetrie van aanvragen ondersteunt het model voor standaard uitbreid baarheid met aangepaste `properties` en `measurements`.
 
-## <a name="name"></a>Naam
+## <a name="name"></a>Name
 
 De naam van de aanvraag vertegenwoordigt het codepad dat is gemaakt om de aanvraag te verwerken. Lage kardinaliteit waarde om een betere groepering van aanvragen mogelijk te maken. Voor HTTP-aanvragen vertegenwoordigt deze de HTTP-methode en het URL-pad sjabloon zoals `GET /values/{id}` zonder de daad werkelijke `id` waarde.
 
@@ -59,7 +55,7 @@ Maximale lengte: 1024 tekens
 
 ## <a name="success"></a>Geslaagd
 
-Indicatie van een geslaagde of mislukte aanroep. Dit veld is vereist. Wanneer niet expliciet worden ingesteld op `false`, wordt een aanvraag als geslaagd beschouwd. Stel deze waarde in op `false` als de bewerking is onderbroken door een uitzonde ring of geretourneerde fout code.
+Indicatie van een geslaagde of mislukte aanroep. Dit veld is verplicht. Wanneer niet expliciet worden ingesteld op `false`, wordt een aanvraag als geslaagd beschouwd. Stel deze waarde in op `false` als de bewerking is onderbroken door een uitzonde ring of geretourneerde fout code.
 
 Voor de webtoepassingen Application Insights een aanvraag definiëren als geslaagd wanneer de respons code kleiner is dan `400` of gelijk is aan `401`. Er zijn echter gevallen waarin deze standaard toewijzing niet overeenkomt met de semantiek van de toepassing. De reactie code `404` kan duiden op "no records", die deel kunnen uitmaken van de normale stroom. Dit kan ook duiden op een verbroken koppeling. Voor de verbroken koppelingen kunt u zelfs meer geavanceerde logica implementeren. U kunt verbroken koppelingen alleen als fouten markeren als deze koppelingen zich op dezelfde site bevinden door het analyseren van URL-verwijzings bronnen. Of markeer ze als storingen wanneer ze worden geopend vanuit de mobiele toepassing van het bedrijf. Evenzo `301` en `302` geeft aan dat er een fout is opgetreden bij het openen van de client die geen ondersteuning biedt voor omleiden.
 

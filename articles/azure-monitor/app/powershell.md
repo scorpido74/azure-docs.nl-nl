@@ -1,18 +1,14 @@
 ---
 title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977823"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669791"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -354,7 +350,7 @@ U kunt ook het prijs plan op een bestaande Application Insights resource instell
                -appName myApp
 ```
 
-|priceCode|plannen|
+|priceCode|Fonds|
 |---|---|
 |1|Per GB (voorheen de naam van het Basic-abonnement)|
 |2|Per knoop punt (voorheen de naam van het bedrijfs plan)|

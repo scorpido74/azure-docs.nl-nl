@@ -1,18 +1,17 @@
 ---
 title: Werken met teken reeksen in Azure Monitor-logboek query's | Microsoft Docs
 description: In dit artikel vindt u een zelf studie voor het gebruik van Azure Monitor Log Analytics in de Azure Portal voor het opvragen en analyseren van logboek gegevens in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 940c82e9ef7016639a3ab334040c408f83996e2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8be4f318149590ff08b73fda719e99a17220ec2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365305"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670148"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Werken met JSON en gegevens structuren in Azure Monitor-logboek query's
 
@@ -133,4 +132,4 @@ Zie andere lessen voor het gebruik van logboek query's in Azure Monitor:
 - [Geavanceerde aggregaties](advanced-aggregations.md)
 - [Geavanceerde query's schrijven](advanced-query-writing.md)
 - [Joins](joins.md)
-- [Grafieken](charts.md)
+- [Diagrammen](charts.md)

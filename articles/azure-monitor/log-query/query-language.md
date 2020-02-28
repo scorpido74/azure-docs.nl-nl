@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor-logboek query's | Microsoft Docs
 description: Verwijzingen naar bronnen voor het schrijven van logboek query's in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894355"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669383"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor-logboek query's
 Azure Monitor-logboeken zijn gebaseerd op Azure Data Explorer en Azure Monitor logboek query's gebruiken een versie van dezelfde Kusto-query taal. De [documentatie voor de Kusto-query taal](/azure/kusto/query) bevat alle Details voor de taal en moet uw primaire resource zijn voor het schrijven van Azure monitor-logboek query's. Deze pagina bevat koppelingen naar andere bronnen voor het leren van query's en over verschillen met de Azure Monitor implementatie van de taal.
@@ -28,7 +27,7 @@ Azure Monitor-logboeken zijn gebaseerd op Azure Data Explorer en Azure Monitor l
 - Het [analyseren van logboek gegevens in azure monitor](../../azure-monitor/log-query/log-query-overview.md) biedt een beknopt overzicht van logboek query's en beschrijft hoe Azure monitor logboek gegevens zijn gestructureerd.
 - Het [weer geven en analyseren van logboek gegevens in azure monitor](../../azure-monitor/log-query/portals.md) een uitleg van de portals waar u logboek query's maakt en uitvoert.
 
-## <a name="reference"></a>Referentie
+## <a name="reference"></a>Naslaginformatie
 
 - [Naslag informatie over de query taal](/azure/kusto/query) is de volledige taal verwijzing voor de Kusto-query taal.
 - [Azure monitor taal verschillen in de logboek query](data-explorer-difference.md) beschrijft de verschillen tussen versies van de query taal Kusto.

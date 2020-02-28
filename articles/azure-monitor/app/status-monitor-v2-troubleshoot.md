@@ -1,18 +1,16 @@
 ---
 title: Problemen oplossen met Azure-toepassing Insights-agent en bekende problemen | Microsoft Docs
 description: De bekende problemen met Application Insights agent en voor beelden van probleem oplossing. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899580"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671151"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Problemen met Application Insights agent oplossen (voorheen Status Monitor v2 genoemd)
 
@@ -26,8 +24,8 @@ Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met on
 
 Als een of meer van deze DLL-bestanden aanwezig zijn in de bin-map, kan de bewaking mislukken:
 
-- Microsoft. ApplicationInsights. dll
-- Micro soft. AspNet. TelemetryCorrelation. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
 - System. Diagnostics. DiagnosticSource. dll
 
 Sommige van deze DLL-bestanden zijn opgenomen in de Visual Studio-sjablonen voor standaard-apps, zelfs als deze niet worden gebruikt door uw app.
@@ -88,7 +86,7 @@ Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/
 ### <a name="troubleshooting-powershell"></a>Problemen met Power shell oplossen
 
 #### <a name="determine-which-modules-are-available"></a>Bepalen welke modules beschikbaar zijn
-U kunt de `Get-Module -ListAvailable`-opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
+U kunt de `Get-Module -ListAvailable` opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
 
 #### <a name="import-a-module-into-the-current-session"></a>Een module in de huidige sessie importeren
 Als een module niet is geladen in een Power shell-sessie, kunt u deze hand matig laden met behulp van de `Import-Module <path to psd1>` opdracht.
@@ -126,7 +124,7 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor e
 U kunt de processen op de geinstrumenteerde computer controleren om te bepalen of alle Dll's zijn geladen.
 Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
 
-Gebruik de `Get-ApplicationInsightsMonitoringStatus -InspectProcess` opdracht om de Dll's te controleren.
+Gebruik de opdracht `Get-ApplicationInsightsMonitoringStatus -InspectProcess` om de Dll's te controleren.
 
 Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor een gedetailleerde beschrijving van het gebruik van deze cmdlet.
 
@@ -136,10 +134,10 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor e
 #### <a name="setup"></a>Instellen
 
 1. Down load PerfView. exe en PerfView64. exe van [github](https://github.com/Microsoft/perfview/releases).
-2. Start PerfView64. exe.
+2. Start PerfView64.exe.
 3. Vouw **Geavanceerde opties**uit.
 4. Schakel deze selectie vakjes uit:
-    - **Telefoon**
+    - **Zip**
     - **Samen**
     - **.NET-symbool verzameling**
 5. Deze **extra providers**instellen: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
@@ -147,9 +145,9 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-get-status.md) voor e
 
 #### <a name="collecting-logs"></a>Logboeken verzamelen
 
-1. Voer in een opdracht console met beheerders bevoegdheden de `iisreset /stop` opdracht uit om IIS en alle web-apps uit te scha kelen.
+1. Voer in een opdracht console met beheerders bevoegdheden de opdracht `iisreset /stop` uit om IIS en alle web-apps uit te scha kelen.
 2. Selecteer in PerfView de optie **verzameling starten**.
-3. Voer in een opdracht console met beheerders bevoegdheden de `iisreset /start` opdracht uit om IIS te starten.
+3. Voer in een opdracht console met beheerders bevoegdheden de opdracht `iisreset /start` uit om IIS te starten.
 4. Probeer naar uw app te bladeren.
 5. Nadat de app is geladen, keert u terug naar PerfView en selecteert u **verzameling stoppen**.
 

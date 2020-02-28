@@ -1,18 +1,16 @@
 ---
 title: API-naslag informatie over Azure-toepassing Insights-agent
 description: Application Insights agent API-verwijzing. Enable-ApplicationInsightsMonitoring. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899713"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671304"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights agent-API: Enable-ApplicationInsightsMonitoring
 
@@ -47,12 +45,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voor beeld:
-- `MachineFilter` komt overeen met de huidige computer door gebruik te maken van het Joker teken `'.*'`.
+In dit voorbeeld:
+- `MachineFilter` komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
 - `AppFilter='WebAppExclude'` biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
 - `AppFilter='WebAppOne'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
 - `AppFilter='WebAppTwo'` wijst de opgegeven app een unieke instrumentatie sleutel toe.
-- Ten slotte maakt `AppFilter` ook gebruik van het Joker teken `'.*'` om te voldoen aan alle web-apps die niet overeenkomen met de eerdere regels en wijst u een standaard instrumentatie sleutel toe.
+- Ten slotte gebruikt `AppFilter` ook het Joker teken `'.*'` om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
 - Spaties worden toegevoegd voor de Lees baarheid.
 
 ```powershell
@@ -72,7 +70,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
-U kunt één installatie script maken voor verschillende computers door `MachineFilter` in te stellen.
+U kunt één installatie script maken voor verschillende computers door `MachineFilter`in te stellen.
 
 > [!IMPORTANT]
 > Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.

@@ -1,18 +1,17 @@
 ---
 title: Log Analytics-werk ruimten beheren in Azure Monitor | Microsoft Docs
 description: U kunt de toegang beheren tot gegevens die zijn opgeslagen in een Log Analytics werk ruimte in Azure Monitor met behulp van resource, werk ruimte of machtiging op tabel niveau. In dit artikel wordt beschreven hoe u dit kunt volt ooien.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289115"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672103"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboek gegevens en-werk ruimten in Azure Monitor beheren
 
@@ -28,7 +27,7 @@ In dit artikel wordt uitgelegd hoe u de toegang tot logboeken beheert en hoe u d
 
 U kunt de toegangs beheer modus die is geconfigureerd op een werk ruimte weer geven vanuit de Azure Portal of met Azure PowerShell.  U kunt deze instelling wijzigen met een van de volgende ondersteunde methoden:
 
-* Azure Portal
+* Azure-portal
 
 * Azure PowerShell
 
@@ -104,7 +103,7 @@ Elke werkruimte kunnen meerdere accounts worden gekoppeld, en elk account kan to
 
 Voor de volgende activiteiten zijn ook Azure-machtigingen vereist:
 
-|Actie |Azure-machtigingen nodig |Opmerkingen |
+|Bewerking |Azure-machtigingen nodig |Opmerkingen |
 |-------|-------------------------|------|
 | Bewakings oplossingen toevoegen en verwijderen | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Deze machtigingen moeten worden toegekend op het niveau van de resourcegroep of het abonnement. |
 | De prijscategorie wijzigen | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -134,10 +133,10 @@ De rol Lezer van Log Analytics bevat de volgende Azure acties:
 
 | Type    | Machtiging | Beschrijving |
 | ------- | ---------- | ----------- |
-| Actie | `*/read`   | De mogelijkheid om alle Azure-resources en resourceconfiguratie weer te geven. Omvat: <br> Status van de VM-extensie <br> Configuratie van Azure Diagnostics voor resources <br> Alle eigenschappen en instellingen van alle resources. <br> Voor werk ruimten kunnen volledige onbeperkte machtigingen de werk ruimte-instellingen lezen en query's uitvoeren op de gegevens. Bekijk meer gedetailleerde opties hierboven. |
-| Actie | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Afgeschaft, u hoeft ze niet aan gebruikers toe te wijzen. |
-| Actie | `Microsoft.OperationalInsights/workspaces/search/action` | Afgeschaft, u hoeft ze niet aan gebruikers toe te wijzen. |
-| Actie | `Microsoft.Support/*` | Mogelijkheid ondersteuningsaanvragen te openen |
+| Bewerking | `*/read`   | De mogelijkheid om alle Azure-resources en resourceconfiguratie weer te geven. Omvat: <br> Status van de VM-extensie <br> Configuratie van Azure Diagnostics voor resources <br> Alle eigenschappen en instellingen van alle resources. <br> Voor werk ruimten kunnen volledige onbeperkte machtigingen de werk ruimte-instellingen lezen en query's uitvoeren op de gegevens. Bekijk meer gedetailleerde opties hierboven. |
+| Bewerking | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Afgeschaft, u hoeft ze niet aan gebruikers toe te wijzen. |
+| Bewerking | `Microsoft.OperationalInsights/workspaces/search/action` | Afgeschaft, u hoeft ze niet aan gebruikers toe te wijzen. |
+| Bewerking | `Microsoft.Support/*` | Mogelijkheid ondersteuningsaanvragen te openen |
 |Geen bewerking | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Hiermee voorkomt u dat het lezen van de werkruimte sleutel die nodig is om te gebruiken van de gegevensverzameling-API en om agents te installeren. Hiermee voorkomt u dat de gebruiker van het toevoegen van nieuwe resources in de werkruimte |
 
 Leden van de rol *Inzender van Log Analytics* kunnen:
@@ -293,6 +292,6 @@ Als u een rol wilt maken met alleen toegang tot de tabel _Security Baseline Base
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Log Analytics-agent overzicht](../../azure-monitor/platform/log-analytics-agent.md) voor het verzamelen van gegevens van computers in uw datacenter of andere cloudomgeving.
+* Zie [overzicht van log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) voor het verzamelen van gegevens van computers in uw Data Center of een andere cloud omgeving.
 
 * Zie [gegevens verzamelen over Azure virtual machines](../../azure-monitor/learn/quick-collect-azurevm.md) voor het configureren van gegevens verzameling vanuit Azure vm's.

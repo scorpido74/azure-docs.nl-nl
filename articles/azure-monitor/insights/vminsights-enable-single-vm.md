@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor voor VM's inschakelen (preview) voor evaluatie | Microsoft Docs
 description: Meer informatie over het evalueren van Azure Monitor voor VM's op één virtuele machine in azure of op een schaalset voor virtuele machines.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400581"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664608"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Azure Monitor voor VM's inschakelen (preview) voor evaluatie
 
@@ -23,19 +22,19 @@ Voordat u begint, controleert u [de vereisten](vminsights-enable-overview.md) en
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>Bewaking inschakelen voor één Azure VM
 Controle van uw virtuele Azure-machine inschakelen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **virtuele Machines**.
+1. Selecteer **virtual machines**.
 
 1. Selecteer een VM in de lijst.
 
-1. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
+1. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
 
-1. Op de **inzichten (preview)** weergeeft, schakelt **Probeer nu**.
+1. Selecteer **nu proberen**op de pagina **inzichten (preview)** .
 
     ![Azure Monitor voor virtuele machines voor een virtuele machine inschakelen](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. Op de **Azure Monitor Insights voorbereiden** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement, selecteert u deze in de vervolgkeuzelijst.  
+1. Als u een bestaande Log Analytics-werk ruimte in hetzelfde abonnement hebt, selecteert u op de pagina **Azure monitor Insights voorbereiden** .  
 
     De lijst preselecteert de standaard werkruimte en de locatie waar de virtuele machine in het abonnement is geïmplementeerd. 
 
@@ -50,7 +49,7 @@ Nadat u bewaking hebt ingeschakeld, moet u mogelijk ongeveer 10 minuten wachten 
 
 De bewaking van uw Azure virtual machine-schaalset inschakelen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **Virtual Machine Scale sets**.
 

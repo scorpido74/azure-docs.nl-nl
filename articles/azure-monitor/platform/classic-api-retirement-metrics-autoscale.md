@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
 description: Metrische gegevens en klassieke Api's automatisch schalen, ook wel Azure Service Management (ASM) of het implementatie model van RDFE buiten gebruik gesteld
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/19/2018
-ms.openlocfilehash: 7a93419ee84e6a50ce07cefa941a8df9f85b7b6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552194"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663552"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
 
@@ -88,7 +85,7 @@ Er is een pensioen melding verzonden naar e-mail adressen voor de volgende accou
 
 Als u vragen hebt, kunt u contact met ons opnemen op MonitorClassicAPIhelp@microsoft.com.  
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 - [Nieuwere REST-Api's voor Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
 - [Nieuwere Azure Monitor-SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

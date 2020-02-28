@@ -1,18 +1,14 @@
 ---
 title: Exporteren met behulp van Stream Analytics vanuit Azure-toepassing inzichten | Microsoft Docs
 description: Stream Analytics kunt de gegevens die u exporteert, continu transformeren, filteren en routeren vanuit Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677939"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664011"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
 [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is het ideale hulp programma voor het verwerken van gegevens die zijn [geëxporteerd vanuit Application Insights](export-telemetry.md). Stream Analytics kunnen gegevens uit verschillende bronnen ophalen. De gegevens kunnen worden getransformeerd en gefilterd en vervolgens worden doorgestuurd naar verschillende Sinks.
@@ -99,7 +95,7 @@ Het voorvoegsel patroon van het pad geeft aan waar Stream Analytics de invoer be
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
-In dit voor beeld:
+In dit voorbeeld:
 
 * `webapplication27` is de naam van de Application Insights resource in **kleine letters**.
 * `1234...` is de instrumentatie sleutel van de Application Insights resource, waarbij **streepjes worden wegge laten**. 
@@ -111,7 +107,7 @@ In dit voor beeld:
 > 
 
 ## <a name="add-new-output"></a>Nieuwe uitvoer toevoegen
-Selecteer nu uw taak > **uitvoer**  > **toevoegen**.
+Selecteer nu uw taak > **uitvoer** > **toevoegen**.
 
 ![](./media/export-stream-analytics/SA006.png)
 
@@ -205,7 +201,7 @@ U kunt deze gegevensset nu gebruiken in rapporten en dash boards in [Power bi](h
 
 ![Selecteer uw gegevensset en velden in Power BI.](./media/export-stream-analytics/210.png)
 
-## <a name="no-data"></a>Geen gegevens?
+## <a name="no-data"></a>Zijn er geen gegevens?
 * Controleer of u [de datum notatie correct instelt](#set-path-prefix-pattern) op jjjj-mm-dd (met streepjes).
 
 ## <a name="video"></a>Video

@@ -1,19 +1,18 @@
 ---
 title: 'Snelstartgids: node. js controleren met Azure Monitor Application Insights'
 description: Biedt instructies om snel een node. js-web-app in te stellen voor bewaking met Azure Monitor Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963526"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660220"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Quick Start: uw node. js-webtoepassing bewaken met Azure-toepassing Insights
 
@@ -30,7 +29,7 @@ Met Azure Application Insights kunt u eenvoudig de beschikbaarheid, de prestatie
 
 Application Insights kunt telemetriegegevens verzamelen van elke toepassing met een Internet verbinding, ongeacht of deze on-premises of in de Cloud wordt uitgevoerd. Gebruik de volgende stappen om deze gegevens te bekijken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **Een resource maken** > **Hulpprogramma's voor ontwikkelaars** > **Application Insights**.
 

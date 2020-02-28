@@ -1,18 +1,17 @@
 ---
 title: Richt lijnen voor persoons gegevens die zijn opgeslagen in azure Log Analytics | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u persoons gegevens beheert die zijn opgeslagen in azure Log Analytics en hoe u deze kunt herkennen en verwijderen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7f8b40094b30a01e4189bcf04d4c194e5b0b4285
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394757"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659227"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 

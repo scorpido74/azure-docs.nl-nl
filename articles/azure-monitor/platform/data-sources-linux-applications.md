@@ -1,18 +1,17 @@
 ---
 title: Prestaties van Linux-toepassingen verzamelen in Azure Monitor | Microsoft Docs
 description: In dit artikel vindt u informatie over het configureren van de Log Analytics-agent voor Linux voor het verzamelen van prestatie meter items voor MySQL-en Apache HTTP-server.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395834"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670556"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Verzamelen van prestatie meter items voor Linux-toepassingen in Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -44,18 +43,18 @@ De vermeldingen in het verificatie bestand worden beschreven in de volgende tabe
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| Port | Hiermee wordt de huidige poort van het MySQL-exemplaar geluisterd. Poort 0 geeft aan dat de volgende eigenschappen worden gebruikt voor het standaard exemplaar. |
+| Poort | Hiermee wordt de huidige poort van het MySQL-exemplaar geluisterd. Poort 0 geeft aan dat de volgende eigenschappen worden gebruikt voor het standaard exemplaar. |
 | Binding-adres| Huidig MySQL-bindings adres. |
 | gebruikersnaam| MySQL-gebruiker die wordt gebruikt om het MySQL-Server exemplaar te bewaken. |
 | Base64-gecodeerd wacht woord| Wacht woord van de MySQL-bewakings gebruiker die is gecodeerd in base64. |
 | Auto update| Hiermee geeft u op of wijzigingen in het bestand My. cnf opnieuw moeten worden gescand en het MySQL OMI-verificatie bestand moet worden overschreven wanneer de MySQL OMI-provider wordt bijgewerkt. |
 
-### <a name="default-instance"></a>Standaardexemplaar
+### <a name="default-instance"></a>Standaard exemplaar
 Het MySQL OMI-verificatie bestand kan een standaard exemplaar en poort nummer definiëren om het beheer van meerdere MySQL-instanties op één Linux-host eenvoudiger te maken.  Het standaard exemplaar wordt aangeduid met een instantie met poort 0. Alle extra instanties nemen eigenschappen over van het standaard exemplaar, tenzij ze verschillende waarden opgeven. Als bijvoorbeeld het MySQL-exemplaar dat luistert op poort 3308 is toegevoegd, worden het standaard exemplaar van het binding-adres, de gebruikers naam en het met base64 gecodeerde wacht woord gebruikt om het exemplaar te controleren op 3308. Als het exemplaar op 3308 is gebonden aan een ander adres en dezelfde MySQL-gebruikers naam en-wacht woord gebruikt, zijn alleen het binding-adres nodig en worden de andere eigenschappen overgenomen.
 
 De volgende tabel bevat voor beelden van exemplaar-instellingen 
 
-| Beschrijving | Bestand |
+| Beschrijving | File |
 |:--|:--|
 | Standaard exemplaar en-exemplaar met poort 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Standaard exemplaar en-exemplaar met poort 3308 en andere gebruikers naam en wacht woord. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -77,7 +76,7 @@ De volgende tabel bevat informatie over de syntaxis voor het gebruik van mycimpr
 | standaard *wachtwoord voor bind adres gebruikers naam* | mycimprovauth standaard 127.0.0.1 hoofd-pwd | Hiermee stelt u het standaard exemplaar in het MySQL OMI-verificatie bestand.<br>Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd. |
 | *standaard of port_num* verwijderen | mycimprovauth 3308 | Hiermee verwijdert u het opgegeven exemplaar standaard of op poort nummer. |
 | Help | Help bij mycimprov | Een lijst met te gebruiken opdrachten afdrukken. |
-| afdrukken | mycimprov afdrukken | Hiermee drukt u een eenvoudig te lezen MySQL OMI-verificatie bestand. |
+| Afdruk | mycimprov afdrukken | Hiermee drukt u een eenvoudig te lezen MySQL OMI-verificatie bestand. |
 | port_num *wacht woord van gebruikers naam voor bind-adres* bijwerken | mycimprov update 3307 127.0.0.1 root pwd | Hiermee wordt het opgegeven exemplaar bijgewerkt of wordt het exemplaar toegevoegd als het niet bestaat. |
 
 Met de volgende voorbeeld opdrachten wordt een standaard gebruikers account gedefinieerd voor de MySQL-server op localhost.  Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd
@@ -112,8 +111,8 @@ Zodra u de Log Analytics-agent voor Linux hebt geconfigureerd om gegevens te ver
 
 | Objectnaam | Tellernaam |
 |:--|:--|
-| MySQL-database | Schijf ruimte in bytes |
-| MySQL-database | Tabellen |
+| MySQL-data base | Schijf ruimte in bytes |
+| MySQL-data base | Tabellen |
 | MySQL-server | Gebroken verbindings percentage |
 | MySQL-server | Verbinding gebruiken pct |
 | MySQL-server | Schijfruimte gebruik in bytes |
@@ -162,4 +161,4 @@ Zodra u de Log Analytics-agent voor Linux hebt geconfigureerd om gegevens te ver
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Verzamelen van prestatie meter items](data-sources-performance-counters.md) van Linux-agents.
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren. 
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 

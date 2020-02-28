@@ -1,18 +1,17 @@
 ---
 title: HTTP-gegevens verzamelaar-API Azure Monitor | Microsoft Docs
 description: U kunt de Azure Monitor HTTP data collector API gebruiken om POST JSON-gegevens toe te voegen aan een Log Analytics-werk ruimte vanaf elke client die de REST API kan aanroepen. In dit artikel wordt beschreven hoe u de API gebruikt en bevat voor beelden van het publiceren van gegevens met behulp van verschillende programmeer talen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932595"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666749"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Logboek gegevens naar Azure Monitor verzenden met de HTTP-gegevens verzamelaar-API (open bare preview)
 In dit artikel leest u hoe u de HTTP data collector API kunt gebruiken om logboek gegevens te verzenden naar Azure Monitor van een REST API-client.  Hierin wordt beschreven hoe u gegevens opmaakt die worden verzameld door uw script of toepassing, deze toevoegen aan een aanvraag en die aanvraag hebben toegestaan door Azure Monitor.  Er zijn voor beelden van Power C#shell, en python.
@@ -38,24 +37,24 @@ Als u de HTTP data collector API wilt gebruiken, maakt u een POST-aanvraag die d
 ### <a name="request-uri"></a>Aanvraag-URI
 | Kenmerk | Eigenschap |
 |:--- |:--- |
-| Methode |Verzenden |
+| Methode |POST |
 | URI |https://\<KlantId\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| Inhouds type |application/json |
+| Type inhoud |application/json |
 
 ### <a name="request-uri-parameters"></a>URI-para meters aanvragen
 | Parameter | Beschrijving |
 |:--- |:--- |
 | Nummer |De unieke id voor de Log Analytics-werk ruimte. |
-| Bron |De naam van de API-resource:/API/logs. |
+| Resource |De naam van de API-resource:/API/logs. |
 | API-versie |De versie van de API die moet worden gebruikt voor deze aanvraag. Momenteel is dit 2016-04-01. |
 
-### <a name="request-headers"></a>Aanvraag headers
+### <a name="request-headers"></a>Aanvraagheaders
 | Header | Beschrijving |
 |:--- |:--- |
 | Autorisatie |De autorisatie handtekening. Verderop in dit artikel vindt u meer informatie over het maken van een HMAC-SHA256-header. |
-| Logboek-type |Geef het record type op van de gegevens die worden verzonden. Mag alleen letters, cijfers en onderstrepings tekens (_) bevatten en mag niet langer zijn dan 100. |
-| x-MS-date |De datum waarop de aanvraag is verwerkt, in RFC 1123-indeling. |
-| x-MS-AzureResourceId | Resource-ID van de Azure-resource waaraan de gegevens moeten worden gekoppeld. Hiermee wordt de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) ingevuld en kunnen de gegevens worden opgenomen in [resource-context](design-logs-deployment.md#access-mode) query's. Als dit veld niet wordt opgegeven, worden de gegevens niet opgenomen in resource-context query's. |
+| Log-Type |Geef het record type op van de gegevens die worden verzonden. Mag alleen letters, cijfers en onderstrepings tekens (_) bevatten en mag niet langer zijn dan 100. |
+| x-ms-date |De datum waarop de aanvraag is verwerkt, in RFC 1123-indeling. |
+| x-ms-AzureResourceId | Resource-ID van de Azure-resource waaraan de gegevens moeten worden gekoppeld. Hiermee wordt de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) gevuld en kunnen de gegevens worden opgenomen in [resource-context](design-logs-deployment.md#access-mode) query's. Als dit veld niet wordt opgegeven, worden de gegevens niet opgenomen in resource-context query's. |
 | gegenereerde tijd-veld | De naam van een veld in de gegevens die de tijds tempel van het gegevens item bevat. Als u een veld opgeeft, wordt de inhoud ervan gebruikt voor **TimeGenerated**. Als dit veld niet is opgegeven, is de standaard waarde voor **TimeGenerated** het tijdstip waarop het bericht wordt opgenomen. De inhoud van het veld bericht moet de ISO 8601-notatie JJJJ-MM-DDTuu: mm: ssZ hebben. |
 
 ## <a name="authorization"></a>Autorisatie
@@ -137,7 +136,7 @@ Als u het gegevens type van een eigenschap wilt identificeren, voegt Azure Monit
 |:--- |:--- |
 | Tekenreeks |_s |
 | Booleaans |_b |
-| Dubbelklik |_d |
+| Double-waarde |_d |
 | Datum en tijd |_t |
 | GUID (opgeslagen als een teken reeks) |_g |
 
@@ -146,7 +145,7 @@ Het gegevens type dat Azure Monitor gebruikt voor elke eigenschap is afhankelijk
 * Als het record type niet bestaat, wordt door Azure Monitor een nieuwe gemaakt met behulp van het JSON-type deinterferentie om het gegevens type voor elke eigenschap voor de nieuwe record te bepalen.
 * Als het record type bestaat, probeert Azure Monitor een nieuwe record te maken op basis van bestaande eigenschappen. Als het gegevens type voor een eigenschap in de nieuwe record niet overeenkomt met en niet kan worden geconverteerd naar het bestaande type, of als de record een eigenschap bevat die niet bestaat, maakt Azure Monitor een nieuwe eigenschap met het relevante achtervoegsel.
 
-Met deze verzend vermelding zou bijvoorbeeld een record met drie eigenschappen, **number_d**, **boolean_b**en **string_s**worden gemaakt:
+Met deze verzend vermelding maakt u bijvoorbeeld een record met drie eigenschappen, **number_d**, **boolean_b**en **string_s**:
 
 ![Voorbeeld record 1](media/data-collector-api/record-01.png)
 
@@ -154,18 +153,18 @@ Als u deze volgende vermelding vervolgens hebt verzonden met alle waarden die zi
 
 ![Voorbeeld record 2](media/data-collector-api/record-02.png)
 
-Maar als u deze volgende verzen ding hebt gemaakt, maakt Azure Monitor de nieuwe eigenschappen **boolean_d** en **string_d**. Deze waarden kunnen niet worden geconverteerd:
+Maar als u deze volgende verzen ding hebt gemaakt, Azure Monitor de nieuwe eigenschappen **boolean_d** en **string_d**maken. Deze waarden kunnen niet worden geconverteerd:
 
 ![Voorbeeld record 3](media/data-collector-api/record-03.png)
 
-Als u de volgende vermelding vervolgens hebt verzonden voordat het record type werd gemaakt, maakt Azure Monitor een record met drie eigenschappen, **aantal-gunstig**, **boolean_s**en **string_s**. In deze vermelding wordt elk van de oorspronkelijke waarden opgemaakt als een teken reeks:
+Als u de volgende vermelding vervolgens hebt verzonden voordat het record type werd gemaakt, maakt Azure Monitor een record met drie eigenschappen, **number_s**, **boolean_s**en **string_s**. In deze vermelding wordt elk van de oorspronkelijke waarden opgemaakt als een teken reeks:
 
 ![Voorbeeld record 4](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>Gereserveerde eigenschappen
 De volgende eigenschappen zijn gereserveerd en mogen niet worden gebruikt in een aangepast record type. U krijgt een fout melding als uw payload een van deze eigenschaps namen bevat.
 
-- bouw
+- tenant
 
 ## <a name="data-limits"></a>Gegevenslimieten
 Er zijn enkele beperkingen rond de gegevens die worden gepost naar de Azure Monitor Data Collection-API.
@@ -181,18 +180,18 @@ De HTTP-status code 200 betekent dat de aanvraag is ontvangen voor verwerking. D
 
 Deze tabel bevat de volledige set met status codes die de service kan retour neren:
 
-| Coderen | Status | Foutcode | Beschrijving |
+| Code | Status | Foutcode | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |De aanvraag is geaccepteerd. |
-| 400 |Ongeldige aanvraag |InactiveCustomer |De werk ruimte is gesloten. |
-| 400 |Ongeldige aanvraag |InvalidApiVersion |De API-versie die u hebt opgegeven, wordt niet herkend door de service. |
-| 400 |Ongeldige aanvraag |InvalidCustomerId |De opgegeven werk ruimte-ID is ongeldig. |
-| 400 |Ongeldige aanvraag |InvalidDataFormat |Ongeldige JSON verzonden. De antwoord tekst bevat mogelijk meer informatie over het oplossen van de fout. |
-| 400 |Ongeldige aanvraag |InvalidLogType |Het opgegeven logboek type bevat speciale tekens of cijfers. |
-| 400 |Ongeldige aanvraag |MissingApiVersion |De API-versie is niet opgegeven. |
-| 400 |Ongeldige aanvraag |MissingContentType |Het inhouds type is niet opgegeven. |
-| 400 |Ongeldige aanvraag |MissingLogType |Het vereiste logboek type voor de waarde is niet opgegeven. |
-| 400 |Ongeldige aanvraag |UnsupportedContentType |Het inhouds type is niet ingesteld op **Application/JSON**. |
+| 400 |Ongeldig verzoek |InactiveCustomer |De werk ruimte is gesloten. |
+| 400 |Ongeldig verzoek |InvalidApiVersion |De API-versie die u hebt opgegeven, wordt niet herkend door de service. |
+| 400 |Ongeldig verzoek |InvalidCustomerId |De opgegeven werk ruimte-ID is ongeldig. |
+| 400 |Ongeldig verzoek |InvalidDataFormat |Ongeldige JSON verzonden. De antwoord tekst bevat mogelijk meer informatie over het oplossen van de fout. |
+| 400 |Ongeldig verzoek |InvalidLogType |Het opgegeven logboek type bevat speciale tekens of cijfers. |
+| 400 |Ongeldig verzoek |MissingApiVersion |De API-versie is niet opgegeven. |
+| 400 |Ongeldig verzoek |MissingContentType |Het inhouds type is niet opgegeven. |
+| 400 |Ongeldig verzoek |MissingLogType |Het vereiste logboek type voor de waarde is niet opgegeven. |
+| 400 |Ongeldig verzoek |UnsupportedContentType |Het inhouds type is niet ingesteld op **Application/JSON**. |
 | 403 |Verboden |InvalidAuthorization |De service kan de aanvraag niet verifiëren. Controleer of de werk ruimte-ID en de verbindings sleutel geldig zijn. |
 | 404 |Niet gevonden | | De gegeven URL is onjuist of de aanvraag is te groot. |
 | 429 |Te veel aanvragen | | De service ondervindt een groot aantal gegevens van uw account. Voer de aanvraag later opnieuw uit. |

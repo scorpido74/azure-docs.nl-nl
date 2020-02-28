@@ -1,18 +1,17 @@
 ---
 title: Azure Key Vault oplossing in Azure Monitor | Microsoft Docs
 description: U kunt de Azure Key Vault oplossing in Azure Monitor gebruiken om Azure Key Vault logboeken te controleren.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889104"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667140"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -114,8 +113,8 @@ De Azure Key Vault oplossing analyseert records die een type sleutel **kluizen**
 | `Resource` |De naam van de sleutel kluis |
 | `ResourceGroup` |Resource groep van de sleutel kluis |
 | `ResourceId` |Azure Resource Manager-resource-id. Voor Key Vault-Logboeken is dit de Key Vault Resource-ID. |
-| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
-| `ResourceType` | *VAULTS* |
+| `ResourceProvider` |*Micro soft. KEYVAULT* |
+| `ResourceType` | *KLUIZEN* |
 | `ResultSignature` |HTTP-status (bijvoorbeeld *OK*) |
 | `ResultType` |Resultaat van REST API aanvraag (bijvoorbeeld *geslaagd*) |
 | `SubscriptionId` |Azure-abonnements-ID van het abonnement met de Key Vault |

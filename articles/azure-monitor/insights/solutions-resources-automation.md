@@ -1,19 +1,18 @@
 ---
 title: Azure Automation bronnen in beheer oplossingen | Microsoft Docs
 description: Beheer oplossingen bevatten doorgaans runbooks in Azure Automation voor het automatiseren van processen, zoals het verzamelen en verwerken van bewakings gegevens.  In dit artikel wordt beschreven hoe u runbooks en hun gerelateerde resources opneemt in een oplossing.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401822"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663059"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-resources toevoegen aan een beheer oplossing (preview)
 > [!NOTE]
@@ -107,7 +106,7 @@ De eigenschappen voor Automation-taken worden beschreven in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| runbook |Entiteit met één naam en de naam van het runbook dat moet worden gestart. |
+| Runbook |Entiteit met één naam en de naam van het runbook dat moet worden gestart. |
 | parameters |Entiteit voor elke parameter waarde die wordt vereist door het runbook. |
 
 De taak bevat de naam van het runbook en de parameter waarden die naar het runbook moeten worden verzonden.  De taak moet [afhankelijk]( solutions-solution-file.md#resources) zijn van het runbook dat wordt gestart, omdat het runbook moet worden gemaakt voor de taak.  Als u meerdere runbooks hebt die moeten worden gestart, kunt u de volg orde definiëren door een taak te laten afhangen van andere taken die eerst moeten worden uitgevoerd.
@@ -169,7 +168,7 @@ De eigenschappen voor referentie bronnen worden in de volgende tabel beschreven.
 | wachtwoord |Wacht woord voor de referentie. |
 
 
-## <a name="schedules"></a>Schema's
+## <a name="schedules"></a>Planningen
 [Azure Automation planningen](../../automation/automation-schedules.md) hebben het type **micro soft. Automation/automationAccounts/schedules** en hebben de volgende structuur. Dit omvat algemene variabelen en para meters, zodat u dit code fragment kunt kopiëren en plakken in het oplossings bestand en de parameter namen wijzigt. 
 
     {
@@ -236,8 +235,8 @@ De eigenschappen voor taak schema's worden in de volgende tabel beschreven.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| schedule name |Één **name** entiteit met de naam van de planning. |
-| runbook name  |Één **name** entiteit met de naam van het runbook.  |
+| schedule name |Entiteit met één **naam** en de naam van het schema. |
+| runbook name  |Entiteit met één **naam** en de naam van het runbook.  |
 
 
 
@@ -275,9 +274,9 @@ Als u de aanvankelijke waarde voor de variabele instelt, moet deze worden geconf
 
 | Gegevenstype | Beschrijving | Voorbeeld | Wordt omgezet in |
 |:--|:--|:--|:--|
-| string   | Plaats de waarde tussen dubbele aanhalings tekens.  | "\"Hello World-\"" | "Hallo wereld" |
+| tekenreeks   | Plaats de waarde tussen dubbele aanhalings tekens.  | "\"Hello World-\"" | "Hallo wereld" |
 | numeric  | Numerieke waarde met enkele aanhalings tekens.| "64" | 64 |
-| booleaans  | **true** of **false** tussen aanhalingstekens.  Houd er rekening mee dat deze waarde moet worden omgezet in kleine letters. | "true" | waar |
+| booleaans  | **waar** of **Onwaar** in aanhalings tekens.  Houd er rekening mee dat deze waarde moet worden omgezet in kleine letters. | 'true' | true |
 | datum/tijd | Geserialiseerde datum waarde.<br>U kunt de ConvertTo-JSON-cmdlet in Power shell gebruiken om deze waarde te genereren voor een bepaalde datum.<br>Voor beeld: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | \\/date (1495656897378)\\/' | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modules

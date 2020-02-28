@@ -1,18 +1,17 @@
 ---
 title: Structuur van Azure Monitor logboeken | Microsoft Docs
 description: U hebt een logboek query nodig om logboek gegevens op te halen van Azure Monitor.  In dit artikel wordt beschreven hoe nieuwe logboek query's worden gebruikt in Azure Monitor en vindt u concepten die u moet begrijpen voordat u er een kunt maken.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893634"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662073"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
@@ -59,8 +58,8 @@ In tegens telling tot een Log Analytics-werk ruimte heeft een Application Insigh
 | browserTimings      | Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken. |
 | customEvents        | Aangepaste gebeurtenissen die door uw toepassing zijn gemaakt. |
 | customMetrics       | Aangepaste metrische gegevens die door uw toepassing zijn gemaakt. |
-| afhankelijkheden        | Aanroepen van de toepassing naar externe onderdelen. |
-| Uitzonderingen          | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing. |
+| elkaar        | Aanroepen van de toepassing naar externe onderdelen. |
+| uitzonderingen          | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing. |
 | Page views           | Gegevens over elke website weergave met browser informatie. |
 | Performance Counters | Prestatie metingen van de reken resources die de toepassing ondersteunen. |
 | aanvragen            | Details van elke toepassings aanvraag.  |

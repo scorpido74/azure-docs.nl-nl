@@ -1,18 +1,17 @@
 ---
 title: Geavanceerde query's in Azure Monitor | Microsoft Docs
 description: Dit artikel bevat een zelf studie voor het gebruik van de analyse Portal om query's te schrijven in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894508"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670284"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Geavanceerde query's schrijven in Azure Monitor
 
@@ -69,7 +68,7 @@ Event
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
 
-## <a name="print"></a>Afdruk
+## <a name="print"></a>Afdrukken
 `print` retourneert een tabel met één kolom en één rij, waarin het resultaat van een berekening wordt weer gegeven. Dit wordt vaak gebruikt in gevallen waarin u een eenvoudige berekening nodig hebt. Bijvoorbeeld om de huidige tijd in PST te zoeken en een kolom toe te voegen met EST:
 
 ```Kusto

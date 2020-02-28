@@ -1,18 +1,17 @@
 ---
 title: Zoek query's in Azure Monitor logs | Microsoft Docs
 description: Dit artikel bevat een zelf studie om aan de slag te gaan met zoeken in Azure Monitor-logboek query's.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660237"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Zoek query's in Azure Monitor-logboeken
 Azure Monitor-logboek query's kunnen beginnen met een tabel naam of een zoek opdracht. In deze zelf studie worden Zoek query's behandeld. Er zijn voor delen van elke methode.
@@ -30,7 +29,7 @@ search "error"
 Hoewel ze gemakkelijk te gebruiken zijn, zijn onbereikbare query's, zoals hierboven aangegeven, niet efficiënt en kunnen ze veel irrelevante resultaten retour neren. Het is raadzaam om te zoeken in de relevante tabel of zelfs een specifieke kolom.
 
 ### <a name="table-scoping"></a>Bereik van tabel
-Als u een term in een specifieke tabel wilt doorzoeken, voegt u `in (table-name)` toe na de **Zoek** operator:
+Als u een term in een specifieke tabel wilt doorzoeken, voegt u `in (table-name)` toe, net na de **Zoek** operator:
 
 ```Kusto
 search in (Event) "error"
@@ -55,7 +54,7 @@ search in (Event) Source:"error"
 > Als u `==` gebruikt in plaats van `:`, bevatten de resultaten records waarin de *bron* kolom de exacte waarde ' fout ' heeft en in dit exacte geval. Using ': ' bevat records waarbij de *bron* waarden heeft, zoals ' fout code 404 ' of ' fout '.
 
 ## <a name="case-sensitivity"></a>Hoofdletter gevoeligheid
-De term zoek opdracht is standaard hoofdletter gevoelig, dus het zoeken naar ' DNS ' kan resulteren in resultaten zoals ' DNS ', ' DNS ' of ' DNS '. Als u de Zoek hoofdletter gevoelig wilt maken, gebruikt u de optie `kind`:
+De term zoek opdracht is standaard hoofdletter gevoelig, dus het zoeken naar ' DNS ' kan resulteren in resultaten zoals ' DNS ', ' DNS ' of ' DNS '. Als u de zoek actie gevoelig wilt maken, gebruikt u de optie `kind`:
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
@@ -90,12 +89,12 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-U kunt ook alles in een tabel ophalen door alleen een Joker teken te gebruiken: `search in (Event) *`, maar dit is hetzelfde als het schrijven van alleen `Event`.
+U kunt ook alles in een tabel ophalen met behulp van een Joker teken: `search in (Event) *`, maar dit is hetzelfde als het schrijven van alleen `Event`.
 
 > [!TIP]
 > Hoewel u `search *` kunt gebruiken om elke kolom uit elke tabel op te halen, is het raadzaam om altijd uw query's op specifieke tabellen te bereiken. Het kan enige tijd duren voordat query's zonder bereik zijn voltooid en mogelijk te veel resultaten retour neren.
 
-## <a name="add-and--or-to-search-queries"></a>Toevoegen *en* / *of* Zoek query's
+## <a name="add-and--or-to-search-queries"></a>Query's toevoegen *en* / *of* zoeken
 Gebruiken **en** zoeken naar records die meerdere termen bevatten:
 
 ```Kusto

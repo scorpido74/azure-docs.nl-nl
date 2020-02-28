@@ -1,23 +1,22 @@
 ---
 title: Azure Monitor voor het verkrijgen van resource groepen | Microsoft Docs
 description: Inzicht in de status en prestaties van uw gedistribueerde toepassingen en services op het niveau van de resource groep met Azure Monitor
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553984"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663535"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Resource groepen bewaken met Azure Monitor (preview-versie)
 
-Moderne toepassingen zijn vaak complex en zeer gedistribueerd met veel discrete onderdelen die samen werken om een service te leveren. Door deze complexiteit te herkennen, biedt Azure Monitor bewakings inzichten voor resource groepen. Dit maakt het eenvoudig om problemen op te lossen die uw afzonderlijke bronnen tegen komen, terwijl u context biedt aan de status en prestaties van de resource groep &mdash;and uw toepassing &mdash;as een geheel.
+Moderne toepassingen zijn vaak complex en zeer gedistribueerd met veel discrete onderdelen die samen werken om een service te leveren. Door deze complexiteit te herkennen, biedt Azure Monitor bewakings inzichten voor resource groepen. Dit maakt het eenvoudig om problemen op te lossen die uw afzonderlijke bronnen tegen komen, terwijl de status en prestaties van de&mdash;van de resource groep en uw toepassing&mdash;als geheel gemakkelijk zijn.
 
 ## <a name="access-insights-for-resource-groups"></a>Toegang tot inzichten voor resource groepen
 

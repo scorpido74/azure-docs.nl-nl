@@ -1,18 +1,17 @@
 ---
 title: Aan de slag met Azure Monitor Log Analytics | Microsoft Docs
 description: In dit artikel vindt u een zelf studie over het gebruik van Log Analytics in de Azure Portal om query's te schrijven.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933053"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670233"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Aan de slag met Log Analytics in Azure Monitor
 
@@ -40,11 +39,11 @@ Log Analytics is een webprogramma dat wordt gebruikt om Azure Monitor-logboek qu
 ## <a name="firewall-requirements"></a>Firewall vereisten
 Als u Log Analytics wilt gebruiken, moet uw browser toegang hebben tot de volgende adressen. Als uw browser toegang heeft tot de Azure Portal via een firewall, moet u toegang tot deze adressen inschakelen.
 
-| URI | IP | Poorten |
+| Uri | IP | Poorten |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamisch | 80.443 |
-| api.loganalytics.io | Dynamisch | 80.443 |
-| docs.loganalytics.io | Dynamisch | 80.443 |
+| portal.loganalytics.io | Dynamisch | 80,443 |
+| api.loganalytics.io | Dynamisch | 80,443 |
+| docs.loganalytics.io | Dynamisch | 80,443 |
 
 ## <a name="basic-queries"></a>Eenvoudige query's
 Query's kunnen worden gebruikt om termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van uw gegevens. Beginnen met een basis query:
@@ -95,7 +94,7 @@ Log Analytics resultaten automatisch bereiken:
 Deze query is zeer algemeen en er worden te veel resultaten geretourneerd om nuttig te zijn. U kunt de resultaten filteren door middel van de tabel elementen of door expliciet een filter toe te voegen aan de query. Het filteren van resultaten via de tabel elementen is van toepassing op de bestaande resultatenset, terwijl een filter op de query zelf een nieuwe gefilterde resultatenset retourneert, waardoor nauw keurigere resultaten kunnen worden verkregen.
 
 ### <a name="add-a-filter-to-the-query"></a>Een filter toevoegen aan de query
-Er staat een pijl links van elke record. Klik op deze pijl om de Details voor een specifieke record te openen.
+Er staat een pijl links van elke record. Klik op deze pijl om de details voor een bepaalde record openen.
 
 Beweeg de muis aanwijzer boven een kolom naam voor de pictogrammen ' + ' en '-' om weer te geven. Als u een filter wilt toevoegen waarmee alleen records met dezelfde waarde worden geretourneerd, klikt u op het plus teken (+). Klik op-om records met deze waarde uit te sluiten en klik vervolgens op **uitvoeren** om de query opnieuw uit te voeren.
 
@@ -106,7 +105,7 @@ We gaan nu de aandacht richten op gebeurtenissen met een Ernst _fout_. Dit is op
 
 Klik op het filter pictogram naast de kolom Titel en selecteer in het pop-upvenster waarden die _beginnen met_ de tekst _fout_:
 
-![Filter](media/get-started-portal/filter.png)
+![Filteren](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Resultaten sorteren en groeperen
@@ -134,7 +133,7 @@ Wanneer u een aangepast tijds bereik selecteert, zijn de geselecteerde waarden i
 Als de query expliciet een filter voor _TimeGenerated_bevat, wordt in de titel van de tijd kiezer de _set in de query_weer gegeven. Hand matige selectie wordt uitgeschakeld om conflicten te voor komen.
 
 
-## <a name="charts"></a>diagrammen
+## <a name="charts"></a>Diagrammen
 Naast het retour neren van resultaten in een tabel, kunnen query resultaten in visuele indelingen worden weer gegeven. Gebruik de volgende query als voor beeld:
 
 ```Kusto

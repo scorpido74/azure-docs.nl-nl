@@ -1,18 +1,14 @@
 ---
 title: Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens | Microsoft Docs
 description: Voeg een paar regels code toe aan de apparaat-of bureau blad-app, de webpagina of de service om het gebruik en de diagnose problemen op te sporen.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432674"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666493"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -752,7 +748,7 @@ function Authenticated(signInId) {
 
 In een ASP.NET Web MVC-toepassing, bijvoorbeeld:
 
-*Razor*
+*Scheer*
 
 ```cshtml
 @if (Request.IsAuthenticated)
@@ -1168,7 +1164,7 @@ Als u een van deze waarden zelf instelt, kunt u overwegen om de relevante regel 
 * **Sessie**: de sessie van de gebruiker. De ID wordt ingesteld op een gegenereerde waarde, die wordt gewijzigd wanneer de gebruiker enige tijd niet actief is geweest.
 * **Gebruiker**: gebruikers informatie.
 
-## <a name="limits"></a>Beperkingen
+## <a name="limits"></a>Limieten
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
@@ -1176,7 +1172,7 @@ Gebruik [steek proeven](../../azure-monitor/app/sampling.md)om te voor komen dat
 
 Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privacy.md)om te bepalen hoe lang de gegevens worden bewaard.
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
 * [ASP.NET-verwijzing](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
 * [Naslaginformatie over Java](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
@@ -1188,12 +1184,12 @@ Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privac
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server-pakketten](https://github.com/Microsoft/applicationInsights-dotnet-server)
-* [Java-SDK](https://github.com/Microsoft/ApplicationInsights-Java)
-* [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
+* [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
+* [Node.js-SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 
-## <a name="questions"></a>Vragen
+## <a name="questions"></a>Beantwoorden
 
 * *Welke uitzonde ringen kunnen Track_ ()-aanroepen worden gegenereerd?*
 
@@ -1205,4 +1201,4 @@ Zie [gegevens retentie en privacy](../../azure-monitor/app/data-retention-privac
 ## <a name="next"></a>Volgende stappen
 
 * [Zoeken naar gebeurtenissen en Logboeken](../../azure-monitor/app/diagnostic-search.md)
-* [Probleemoplossing](../../azure-monitor/app/troubleshoot-faq.md)
+* [Problemen oplossen](../../azure-monitor/app/troubleshoot-faq.md)

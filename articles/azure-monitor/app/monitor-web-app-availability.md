@@ -1,19 +1,15 @@
 ---
 title: De beschikbaarheid en reactiesnelheid van een website bewaken | Microsoft Docs
 description: Stel webtests in Application Insights in. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819296"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670029"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Beschik baarheid van alle websites bewaken
 
@@ -74,7 +70,7 @@ Als u uw eerste beschikbaarheids aanvraag wilt maken, opent u het deel venster B
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
 |**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
-|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie**  = **aantal test locaties-2, met een minimum van vijf test locaties.**|
+|**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is de **drempel waarde voor de waarschuwing locatie** = **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="see-your-availability-test-results"></a>De resultaten van de beschikbaarheidstest bekijken
 
@@ -122,7 +118,7 @@ Naast de onbewerkte resultaten kunt u ook twee belang rijke metrische gegevens o
 1. Beschikbaarheid: percentage van de tests die zijn geslaagd, bekeken over alle testuitvoeringen.
 2. Testduur: gemiddelde testduur van alle testuitvoeringen.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatisering
 
 * Gebruik [PowerShell-scripts om automatisch een beschikbaarheidstest in te stellen](../../azure-monitor/app/powershell.md#add-an-availability-test).
 * Stel een [webhook](../../azure-monitor/platform/alerts-webhooks.md) in die wordt aangeroepen wanneer er een waarschuwing wordt gegenereerd.

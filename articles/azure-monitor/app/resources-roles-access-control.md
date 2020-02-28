@@ -1,18 +1,14 @@
 ---
 title: Resources, rollen en toegangs beheer in Azure-toepassing inzichten | Microsoft Docs
 description: Eigen aren, mede werkers en lezers van de inzichten van uw organisatie.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/14/2019
-ms.openlocfilehash: 28eb7e490890b46a4025a6cf62e13b364bd7b6dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 617134c523148e713f7d34b46e0fbf6ae862591f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432350"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671525"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
@@ -72,7 +68,7 @@ Als u informatie wilt weer geven over alle ingebouwde rollen van op rollen gebas
 
 ![Scherm afbeelding van de lijst met gebruikers rollen in toegangs beheer](./media/resources-roles-access-control/0003-user-roles.png)
 
-#### <a name="select-a-role"></a>Een rol selecteren
+#### <a name="select-a-role"></a>Rol selecteren
 
 Waar van toepassing, gaan we een koppeling naar de bijbehorende officiële referentie documentatie.
 
@@ -98,17 +94,17 @@ Waar van toepassing, gaan we een koppeling naar de bijbehorende officiële refer
 
 ' Bewerken ' omvat het maken, verwijderen en bijwerken:
 
-* Resources
+* Bronnen
 * Webtests
 * Waarschuwingen
 * Continue export
 
-#### <a name="select-the-user"></a>Gebruiker selecteren
+#### <a name="select-the-user"></a>De gebruiker selecteren
 
 Als de gebruiker die u wilt, niet in de adres lijst staat, kunt u iedereen uitnodigen met een Microsoft-account.
 (Als ze gebruikmaken van services zoals Outlook.com, OneDrive, Windows Phone of XBox Live, hebben ze een Microsoft-account.)
 
-## <a name="related-content"></a>Verwante inhoud
+## <a name="related-content"></a>Gerelateerde inhoud
 
 * [Op rollen gebaseerd toegangs beheer in azure](../../role-based-access-control/role-assignments-portal.md)
 

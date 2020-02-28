@@ -3,17 +3,16 @@ title: Azure-platform logboeken streamen naar een Event Hub
 description: Informatie over het streamen van Azure-bron logboeken naar een Event Hub voor het verzenden van gegevens naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750356"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658911"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Azure-platform logboeken streamen naar Azure Event Hubs
 [Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel worden streaming-platform logboeken voor Event hubs beschreven om gegevens te verzenden naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.
@@ -57,14 +56,14 @@ Met Diagnostische instellingen worden bron logboeken verzameld voor Azure-reken 
 ## <a name="consuming-log-data-from-event-hubs"></a>Logboek gegevens van Event hubs gebruiken
 Platform logboeken van Event hubs worden gebruikt in JSON-indeling met de elementen in de volgende tabel.
 
-| Naam van element | Beschrijving |
+| Element naam | Beschrijving |
 | --- | --- |
 | records |Een matrix van alle logboek gebeurtenissen in deze nettolading. |
 | tijd |Tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
 | category |Logboek categorie voor deze gebeurtenis. |
 | resourceId |De resource-ID van de resource die deze gebeurtenis heeft gegenereerd. |
 | operationName |Naam van de bewerking. |
-| level |Optioneel. Hiermee wordt het logboek gebeurtenis niveau aangegeven. |
+| niveau |Optioneel. Hiermee wordt het logboek gebeurtenis niveau aangegeven. |
 | properties |De eigenschappen van de gebeurtenis. Deze verschillen voor elke Azure-service, zoals beschreven [ ]()in. |
 
 

@@ -1,19 +1,17 @@
 ---
 title: Problemen met de beschikbaarheids tests van Azure-toepassing Insights oplossen | Microsoft Docs
 description: Problemen met webtests oplossen in Azure-toepassing Insights. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899528"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671100"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -48,7 +46,7 @@ Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich kunn
 > [!NOTE]
 > De URL mislukt mogelijk niet bij browsers met een beperkte validatie van HTTP-headers. Zie dit blogbericht voor een gedetailleerde uitleg van dit probleem: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>Veelgestelde vragen voor probleemoplossing
+## <a name="common-troubleshooting-questions"></a>Veelgestelde vragen over het oplossen van problemen
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Site ziet er goed uit, maar er worden test fouten weer gegeven? Waarom Application Insights waarschuwing?
 

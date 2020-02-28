@@ -1,18 +1,14 @@
 ---
 title: Docker-toepassingen bewaken in Azure-toepassing Insights | Microsoft Docs
 description: Docker-prestatie meter items, gebeurtenissen en uitzonde ringen kunnen worden weer gegeven op Application Insights, samen met de telemetrie van de apps in de container.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 66a2481d25c863bbdbf4d72c4683a309918776db
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677922"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669604"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-toepassingen in Application Insights bewaken (afgeschaft)
 
@@ -75,17 +71,17 @@ Klik op de tegel docker.
 U ziet binnenkort gegevens die arriveren vanuit de docker-app, met name als u andere containers hebt die worden uitgevoerd op uw docker-engine.
 
 ### <a name="docker-container-events"></a>Docker-container gebeurtenissen
-![Hierbij](./media/docker/13.png)
+![Voorbeeld](./media/docker/13.png)
 
 Klik op [zoeken](../../azure-monitor/app/diagnostic-search.md)om afzonderlijke gebeurtenissen te onderzoeken. Zoek en filter om de gewenste gebeurtenissen te vinden. Klik op een gebeurtenis om meer details weer te geven.
 
 ### <a name="exceptions-by-container-name"></a>Uitzonde ringen op container naam
-![Hierbij](./media/docker/14.png)
+![Voorbeeld](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Docker-context is toegevoegd aan app-telemetrie
 Aanvraag-telemetrie die is verzonden vanuit de toepassings instrument met AI SDK, wordt verrijkt met de gegevens van docker-context.
 
-## <a name="q--a"></a>Vragen en antwoorden
+## <a name="q--a"></a>Q & A
 *Wat staat er Application Insights ik mij niet kan ophalen uit docker?*
 
 * Gedetailleerde uitsplitsing van prestatie meter items per container en installatie kopie.

@@ -1,18 +1,17 @@
 ---
 title: De migratie van Azure Monitor klassieke waarschuwingen voorbereiden door uw Logic apps en runbooks bij te werken
-author: yanivlavi
 description: Meer informatie over het wijzigen van uw webhooks, Logic apps en runbooks om een vrijwillige migratie voor te bereiden.
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705561"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665589"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Bereid uw Logic apps en runbooks voor op de migratie van klassieke waarschuwings regels
 
@@ -31,8 +30,8 @@ De volgende tabel bevat een verwijzing naar de programmatische interfaces voor z
 
 |         |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
 |---------|---------|---------|
-|REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure-CLI     | [AZ-monitor waarschuwing](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing AZ monitor Metrics](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|REST-API     | [micro soft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [micro soft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [AZ-monitor waarschuwing](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing AZ monitor Metrics](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sjabloon | [Voor klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Voor nieuwe metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
@@ -44,26 +43,26 @@ Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de k
 
 |  |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
 |---------|---------|---------|
-|Is de waarschuwing geactiveerd of opgelost?    | **status**       | **data.status** |
-|Contextuele informatie over de waarschuwing     | **context**        | **data.context**        |
-|Tijds tempel waarop de waarschuwing is geactiveerd of opgelost     | **context. time stamp**       | **data.context.timestamp**        |
+|Is de waarschuwing geactiveerd of opgelost?    | **hebben**       | **data. status** |
+|Contextuele informatie over de waarschuwing     | **context**        | **data. context**        |
+|Tijds tempel waarop de waarschuwing is geactiveerd of opgelost     | **context. time stamp**       | **data. context. time stamp**        |
 | ID van waarschuwings regel | **context.id** | **data.context.id** |
-| Naam van waarschuwingsregel | **context.name** | **data.context.name** |
-| Beschrijving van de waarschuwings regel | **context.description** | **data.context.description** |
-| Voor waarde waarschuwings regel | **context.condition** | **data.context.condition** |
-| Naam van metrische waarde | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
+| Naam van waarschuwings regel | **context.name** | **data.context.name** |
+| Beschrijving van de waarschuwings regel | **context. Description** | **data. context. Description** |
+| Voor waarde waarschuwings regel | **context. condition** | **data. context. condition** |
+| Metrische naam | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
 | Tijd aggregatie (hoe de metrische gegevens worden geaggregeerd over het evaluatie venster)| **context. condition. timeAggregation** | **context. condition. timeAggregation** |
-| Evaluatie periode | **context.condition.windowSize** | **data.context.condition.windowSize** |
-| Operator (hoe de cumulatieve metrische waarde wordt vergeleken met de drempel) | **context.condition.operator** | **data.context.condition.operator** |
-| Drempelwaarde | **context.condition.threshold** | **data. context. condition. overzet [0]. drempel waarde** |
-| Metrische waarde | **context.condition.metricValue** | **data. context. condition. overzet [0]. metricValue** |
-| Abonnements-id | **context.subscriptionId** | **data.context.subscriptionId** |
-| Resource groep van de betrokken resource | **context.resourceGroup** | **data.context.resourceGroup** |
-| Naam van de betrokken resource | **context.resourceName** | **data.context.resourceName** |
-| Type van de betrokken resource | **context.resourceType** | **data.context.resourceType** |
-| Resource-ID van de betrokken resource | **context.resourceId** | **data.context.resourceId** |
-| Directe koppeling naar de pagina overzicht van portal-resources | **context.portalLink** | **data.context.portalLink** |
-| Aangepaste Payload-velden die moeten worden door gegeven aan de webhook-of logische app | **Eigenschappen** | **data.properties** |
+| Evaluatie periode | **context. condition. windowSize** | **data. context. condition. windowSize** |
+| Operator (hoe de cumulatieve metrische waarde wordt vergeleken met de drempel) | **context. condition. operator** | **data. context. condition. operator** |
+| Drempelwaarde | **context. condition. threshold** | **data. context. condition. overzet [0]. drempel waarde** |
+| Metrische waarde | **context. condition. metricValue** | **data. context. condition. overzet [0]. metricValue** |
+| Abonnements-id | **context. subscriptionId** | **data. context. subscriptionId** |
+| Resource groep van de betrokken resource | **context. resourceGroup** | **data. context. resourceGroup** |
+| Naam van de betrokken resource | **context. ResourceName** | **data. context. ResourceName** |
+| Type van de betrokken resource | **context. resource type** | **data. context. resource type** |
+| Resource-ID van de betrokken resource | **context. resourceId** | **data. context. resourceId** |
+| Directe koppeling naar de pagina overzicht van portal-resources | **context. portalLink** | **data. context. portalLink** |
+| Aangepaste Payload-velden die moeten worden door gegeven aan de webhook-of logische app | **eigenschappen** | **data. Properties** |
 
 De payloads zijn vergelijkbaar, zoals u kunt zien. In de volgende sectie vindt u:
 

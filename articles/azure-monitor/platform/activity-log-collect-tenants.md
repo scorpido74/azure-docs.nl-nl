@@ -1,18 +1,17 @@
 ---
 title: Azure-activiteiten logboeken verzamelen in een Log Analytics werk ruimte in azure-tenants | Microsoft Docs
 description: Gebruik Event Hubs en Logic Apps voor het verzamelen van gegevens uit het Azure-activiteiten logboek en verzend het naar een Log Analytics-werk ruimte in Azure Monitor in een andere Tenant.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: e3b368f8a59d201f70bfad05125ed59b4b8551c5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529997"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669264"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure-activiteiten logboeken verzamelen in Azure Monitor over Azure Active Directory tenants (verouderd)
 
@@ -56,7 +55,7 @@ Hieronder volgen de vereisten voor de Azure-resources die in dit scenario worden
 
    ![Nieuwe event hub Marketplace](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
-3. Voer onder **Naamruimte maken** een nieuwe naamruimte in of selecteer een bestaande. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
+3. Voer onder **Naamruimte maken** een nieuwe naamruimte in of selecteer een bestaande. Er wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
 
    ![afbeelding van dialoogvenster event hub maken](media/collect-activity-logs-subscriptions/create-event-hub1.png)
 
@@ -292,7 +291,7 @@ De [Azure log Analytics Data Collector](https://docs.microsoft.com/connectors/az
 
    ![De actie Gegevens verzenden van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Maken**.
+3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Create**.
 
    ![De actie Verbinding van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 

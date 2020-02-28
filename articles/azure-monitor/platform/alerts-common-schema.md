@@ -1,18 +1,15 @@
 ---
 title: Algemeen waarschuwings schema voor Azure monitor-waarschuwingen
 description: Meer informatie over het algemene waarschuwings schema, waarom u het moet gebruiken en hoe u het kunt inschakelen
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552450"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668176"
 ---
 # <a name="common-alert-schema"></a>Algemeen waarschuwingsschema
 
@@ -34,10 +31,10 @@ Dit betekent dat u mogelijk minder integraties kunt hebben, waardoor het proces 
 
 Het algemene waarschuwings schema wordt in eerste instantie in uw waarschuwings meldingen gemanifesteerd. De uitbrei dingen die u ziet, worden hieronder weer gegeven:
 
-| Bewerking | Opties|
+| Bewerking | Verbeteringen|
 |:---|:---|
 | Sms | Een consistente SMS-sjabloon voor alle waarschuwings typen. |
-| E-mail | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |
+| Email | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |
 | Webhook/Logic-app/Azure function/Automation-Runbook | Een consistente JSON-structuur voor alle waarschuwings typen, waarmee u eenvoudig integraties kunt bouwen voor de verschillende typen waarschuwingen. |
 
 Het nieuwe schema biedt ook een rijkere ervaring op het niveau van waarschuwingen voor zowel de Azure Portal als de Azure mobile app in de onmiddellijke toekomst. 

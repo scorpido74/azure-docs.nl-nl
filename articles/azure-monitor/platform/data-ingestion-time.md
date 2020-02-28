@@ -1,18 +1,17 @@
 ---
 title: Opname tijd van gegevens vastleggen in Azure Monitor | Microsoft Docs
 description: Hierin worden de verschillende factoren beschreven die van invloed zijn op de latentie bij het verzamelen van logboek gegevens in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894144"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666634"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Opname tijd van gegevens vastleggen in Azure Monitor
 Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. Er zijn vaak vragen over de tijd die nodig is om te zorgen dat logboek gegevens beschikbaar worden nadat deze zijn verzameld. In dit artikel worden de verschillende factoren beschreven die van invloed zijn op deze latentie.

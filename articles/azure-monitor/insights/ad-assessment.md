@@ -1,18 +1,17 @@
 ---
 title: Optimaliseer uw Active Directory-omgeving met Azure Monitor | Microsoft Docs
 description: U kunt de Active Directory Health Check-oplossing gebruiken om het risico en de status van uw omgevingen volgens een regel matig interval te evalueren.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167835"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667224"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimaliseer uw Active Directory-omgeving met de Active Directory Health Check-oplossing in Azure Monitor
 
@@ -60,10 +59,10 @@ Active Directory status controle verzamelt gegevens uit de volgende bronnen met 
 - Register
 - LDAP
 - .NET Framework
-- Gebeurtenislogboek
+- Gebeurtenis logboek
 - Active Directory Service interfaces (ADSI)
-- Windows PowerShell
-- Bestandsgegevens
+- Windows Powershell
+- Bestands gegevens
 - Windows Management Instrumentation (WMI)
 - De API voor het hulp programma DCDIAG
 - API voor de File Replication-service (NTFRS)
@@ -97,7 +96,7 @@ De weging voor elke aanbeveling wordt uitgedrukt als een percentage van de total
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Moet u de Score 100% in elk focus gebied richten?
 
-Dat hoeft niet. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
+Niet noodzakelijkerwijs. De aanbevelingen zijn gebaseerd op de kennis en ervaringen van micro soft-technici over duizenden klant bezoeken. Er zijn echter geen twee server infrastructuren hetzelfde, en specifieke aanbevelingen kunnen meer of minder relevant zijn voor u. Sommige beveiligings aanbevelingen kunnen bijvoorbeeld minder relevant zijn als uw virtuele machines niet worden blootgesteld aan Internet. Enkele Beschik baarheid van aanbevelingen kan minder relevant zijn voor services die ad-hoc gegevens verzameling en-rapportage met lage prioriteit bieden. Problemen die belang rijk zijn voor een volwassen bedrijf zijn mogelijk minder belang rijk voor het opstarten. U kunt ook bepalen welke focus gebieden uw prioriteiten hebben en vervolgens kijken hoe uw scores in de loop van de tijd veranderen.
 
 Elke aanbeveling bevat richt lijnen over waarom het belang rijk is. Gebruik deze richt lijnen om te evalueren of implementatie van de aanbeveling geschikt is voor u, gezien de aard van uw IT-Services en de zakelijke behoeften van uw organisatie.
 
@@ -184,7 +183,7 @@ De resultaten kunnen vervolgens worden geëxporteerd naar Excel voor verder onde
 
 *Is er een manier om te configureren hoe vaak de status controle wordt uitgevoerd?*
 
-* Op dit moment niet.
+* Momenteel niet.
 
 *Als er een andere server voor wordt gedetecteerd nadat ik een oplossing voor de status controle heb toegevoegd, wordt deze gecontroleerd*
 
@@ -204,7 +203,7 @@ De resultaten kunnen vervolgens worden geëxporteerd naar Excel voor verder onde
 
 *Is er een manier om te configureren wanneer gegevens worden verzameld?*
 
-* Op dit moment niet.
+* Momenteel niet.
 
 *Waarom worden alleen de tien beste aanbevelingen weer gegeven?*
 

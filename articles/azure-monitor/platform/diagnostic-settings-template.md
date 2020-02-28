@@ -3,17 +3,16 @@ title: Een diagnostische instelling maken in azure met behulp van de Resource Ma
 description: Diagnostische instellingen maken met een resource manager-sjabloon voor het door sturen van Azure-platform logboeken naar Azure Monitor-logboeken, Azure-opslag of Azure Event Hubs.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977555"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672426"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
 [Diagnostische instellingen](diagnostic-settings.md) in azure monitor opgeven waar u de [platform logboeken](platform-logs-overview.md) wilt verzenden die worden verzameld door Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u details en voor beelden voor het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) voor het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties.
