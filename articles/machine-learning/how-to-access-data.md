@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.author: keli19
+author: likebupt
 ms.reviewer: nibaccam
-ms.date: 01/15/2020
+ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 1db3679053edbbc2874c456b1c8db4a4f8e0dabd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623679"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164866"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -186,6 +186,10 @@ In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een Azur
 <a name="get"></a>
 
 ## <a name="get-datastores-from-your-workspace"></a>Gegevens opslag ophalen uit uw werk ruimte
+
+> [!IMPORTANT]
+> Met Azure Machine Learning Designer (preview) wordt automatisch een gegevens archief met de naam **azureml_globaldatasets** gemaakt wanneer u een voor beeld opent in de start pagina van de ontwerp functie. Dit gegevens archief bevat alleen voorbeeld gegevens sets. Gebruik deze gegevens opslag **niet** voor vertrouwelijke gegevens toegang.
+> ![automatisch gemaakte gegevens opslag voor voorbeeld gegevens sets voor Designer](media/how-to-access-data/datastore-designer-sample.png)
 
 Als u een specifieke gegevens opslag die in de huidige werk ruimte is geregistreerd wilt ophalen, gebruikt u de statische methode [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) op de `Datastore`-klasse:
 

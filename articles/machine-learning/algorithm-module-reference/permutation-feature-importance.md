@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314943"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920362"
 ---
 # <a name="permutation-feature-importance"></a>Belang van permutatiefunctie
 
-In dit artikel wordt beschreven hoe u de permutatie functie urgentie module in Azure Machine Learning Designer gebruikt voor het berekenen van een aantal belang rijke scores voor de functie van uw gegevensset. U kunt deze scores gebruiken om u te helpen bij het bepalen van de beste functies die in een model moeten worden gebruikt.
+In dit artikel wordt beschreven hoe u de permutatie functie urgentie module in Azure Machine Learning Designer (preview) gebruikt om een aantal score punten van de functie voor uw gegevensset te berekenen. U kunt deze scores gebruiken om u te helpen bij het bepalen van de beste functies die in een model moeten worden gebruikt.
 
 In deze module worden functie waarden wille keurig in de andere volg orde, één kolom per keer. De prestaties van het model worden vóór en na gemeten. U kunt een van de standaard metrische gegevens kiezen om prestaties te meten.
 
@@ -46,7 +46,7 @@ Als u een set functie scores wilt genereren, moet u een al getraind model en een
 
     -   **Classificatie**
 
-        Nauw keurigheid, precisie, intrekken, gemiddeld logboek verlies  
+        Nauw keurigheid, precisie, intrekken  
 
     -   **Regressie**
 

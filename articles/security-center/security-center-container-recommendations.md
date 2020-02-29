@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604261"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912357"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Aanbevelingen voor Azure Security Center container begrijpen
 
@@ -35,7 +35,7 @@ Azure Security Center biedt de volgende mogelijkheden om u te helpen bij het bev
 
     ![tabblad container](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Realtime detectie van container bedreigingen**<br> Security Center biedt in realtime detectie van bedreigingen voor uw containers op Linux-machines met gecontroleerde onderdelen. De waarschuwingen identificeren verschillende verdachte docker-activiteiten, zoals het maken van een geprivilegieerde container op de host, een indicatie van een SSH-server (Secure Shell) die binnen een docker-container wordt uitgevoerd of het gebruik van crypto-Miners. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
+- **Real-time container Threat Protection**<br> Security Center voorziet in realtime beveiliging van bedreigingen voor uw containers op Linux-machines met gecontroleerde onderdelen. De waarschuwingen identificeren verschillende verdachte docker-activiteiten, zoals het maken van een geprivilegieerde container op de host, een indicatie van een SSH-server (Secure Shell) die binnen een docker-container wordt uitgevoerd of het gebruik van crypto-Miners. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
 
     ![tabblad container](./media/security-center-container-recommendations/docker-threat-detection.png)
 

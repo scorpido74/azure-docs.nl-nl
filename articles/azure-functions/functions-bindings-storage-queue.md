@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482255"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164590"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Queue Storage-trigger en bindingen voor Azure Functions-overzicht
 
@@ -20,7 +20,7 @@ Azure Functions kunnen worden uitgevoerd als nieuwe Azure Queue-opslag berichten
 | Bewerking | Type |
 |---------|---------|
 | Een functie uitvoeren als gegevens wijzigingen in de wachtrij-opslag | [Trigger](./functions-bindings-storage-queue-trigger.md) |
-| Wachtrij opslag berichten schrijven |[Uitvoer binding](./functions-bindings-storage-blob-output.md) |
+| Wachtrij opslag berichten schrijven |[Uitvoer binding](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
@@ -49,4 +49,4 @@ Functions 1. x apps hebben automatisch een verwijzing naar het pakket [micro sof
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een functie uitvoeren als gegevens wijzigingen in de wachtrij-opslag (trigger)](./functions-bindings-storage-queue-trigger.md)
-- [Wachtrij opslag berichten schrijven (uitvoer binding)](./functions-bindings-storage-blob-output.md)
+- [Wachtrij opslag berichten schrijven (uitvoer binding)](./functions-bindings-storage-queue-output.md)

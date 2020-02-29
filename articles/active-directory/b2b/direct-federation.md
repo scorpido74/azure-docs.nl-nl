@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888893"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161483"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -64,6 +64,10 @@ Als u de meta gegevens-URL in de instellingen van de identiteits provider opgeef
 
 ### <a name="limit-on-federation-relationships"></a>Limiet voor Federatie relaties
 Momenteel wordt een maximum van 1.000 Federatie relaties ondersteund. Deze limiet omvat zowel [interne](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als directe overkoepelende organisaties.
+
+### <a name="limit-on-multiple-domains"></a>Limiet voor meerdere domeinen
+Er wordt momenteel geen ondersteuning geboden voor directe Federatie met meerdere domeinen van dezelfde Tenant.
+
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Kan ik directe Federatie instellen met een domein waarvoor een niet-beheerde Tenant (geverifieerd door een e-mail bericht) bestaat? 
 Ja. Als het domein niet is geverifieerd en de Tenant geen [beheerder](../users-groups-roles/domains-admin-takeover.md)heeft ondergaan, kunt u direct Federatie met dat domein instellen. Niet-beheerd of e-mail berichten-gecontroleerd, tenants worden gemaakt wanneer een gebruiker een B2B-uitnodiging inwisselt of een self-service registratie voor Azure AD uitvoert met behulp van een domein dat nog niet bestaat. U kunt direct Federation instellen met deze domeinen. Als u probeert om direct Federatie in te stellen met een domein met DNS-verificatie, in de Azure Portal of via Power shell, ziet u een fout melding.

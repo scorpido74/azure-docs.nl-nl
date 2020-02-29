@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840261"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917387"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
@@ -24,17 +24,7 @@ ms.locfileid: "76840261"
 
 In Azure Active Directory B2C (Azure AD B2C) is de stroom voor het wacht woord voor de resource-eigenaar (ROPC) een OAuth-standaard verificatie stroom. In deze stroom wordt een toepassing, ook wel bekend als de Relying Party, de uitwisseling van geldige referenties voor tokens. De referenties bevatten een gebruikers-ID en wacht woord. De geretourneerde tokens zijn een ID-token, toegangs token en een vernieuwings token.
 
-De volgende opties worden ondersteund in de ROPC-stroom:
-
-- **Systeem eigen client** -gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker.
-- **Data transport voor open bare clients** : alleen gebruikers referenties die worden verzameld door een toepassing worden verzonden in de API-aanroep. De referenties van de toepassing worden niet verzonden.
-- **Nieuwe claims toevoegen** : de inhoud van het id-token kan worden gewijzigd om nieuwe claims toe te voegen.
-
-De volgende stromen worden niet ondersteund:
-
-- **Server-naar-server** -het identiteits beheersysteem heeft een betrouw bare IP-adres nodig dat door de aanroeper (de systeem eigen client) is verzameld als onderdeel van de interactie. In een API-aanroep aan de server zijde wordt alleen het IP-adres van de server gebruikt. Als er te veel aanmeldingen mislukken, kan het identiteits beschermings systeem een herhaald IP-adres als een aanvaller bekijken.
-- **Toepassing met één pagina** : een front-end-toepassing die voornamelijk is geschreven in Java script. De toepassing wordt vaak geschreven met behulp van een framework zoals AngularJS, wordt. js of Durandal.
-- **Vertrouwelijke client stroom** : de client-id van de toepassing wordt gevalideerd, maar het toepassings geheim is niet.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -258,7 +248,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
+- Vervang `your-tenant-name` door de naam van uw Azure AD B2C Tenant.
 - Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Waarde |
@@ -303,7 +293,7 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant.
+- Vervang `your-tenant-name` door de naam van uw Azure AD B2C Tenant.
 - Vervang `B2C_1A_ROPC_Auth` door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Waarde |

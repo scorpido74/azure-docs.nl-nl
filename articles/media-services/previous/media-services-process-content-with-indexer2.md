@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 9c463095612b1540cc593b17a0e52bfd24db30d2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514473"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163791"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Media bestanden indexeren met Azure Media Indexer 2 Preview
 
 > [!NOTE]
-> De [Azure media indexer 2](media-services-process-content-with-indexer2.md) media processor wordt buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
+> De **Azure media indexer 2** media processor wordt buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processor. Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
 
 Met de **Azure media indexer 2 Preview** media processor (MP) kunt u media bestanden en inhoud doorzoekbaar maken, evenals ondertitelings tracks genereren. Vergeleken met de vorige versie van [Azure media indexer](media-services-index-content.md), heeft **Azure media indexer 2-Preview** snellere indexering en biedt het uitgebreidere taal ondersteuning. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees (Mandarijn, vereenvoudigd), Portugees, Arabisch, Russisch en Japans.
 
@@ -297,7 +297,7 @@ namespace IndexContent
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

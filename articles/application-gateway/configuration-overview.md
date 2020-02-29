@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485077"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913256"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -256,14 +256,14 @@ Azure-toepassing gateway maakt gebruik van door gateway beheerde cookies voor he
 
 Deze functie is handig als u een gebruikers sessie op dezelfde server wilt behouden en wanneer de sessie status lokaal op de server wordt opgeslagen voor een gebruikers sessie. Als de toepassing geen affiniteit op basis van cookies kan verwerken, kunt u deze functie niet gebruiken. Als u deze wilt gebruiken, moet u ervoor zorgen dat de clients cookies ondersteunen.
 
-Vanaf **17 februari 2020** [brengt de](https://www.chromium.org/Home) [V80-update](https://chromiumdash.appspot.com/schedule) een mandaat voor waarbij HTTP-cookies zonder SameSite-kenmerk worden behandeld als SameSite = slordig. In het geval van CORS-aanvragen (cross-Origin Resource Sharing), als de cookie moet worden verzonden in een context van een derde partij, moet deze ' SameSite = none; gebruiken Secure ' Attributes en moeten alleen via HTTPS worden verzonden. Anders in een scenario met alleen HTTP, verzendt de browser de cookies in de context van derden niet. Het doel van deze update van Chrome is de beveiliging te verbeteren en CSRF-aanvallen (cross-site request vervalsing) te voor komen. 
+De [V80-update](https://chromiumdash.appspot.com/schedule) van de [chroom browser](https://www.chromium.org/Home) heeft een opdracht ingediend waarbij HTTP-cookies zonder [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) kenmerk moeten worden behandeld als SameSite = slordig. In het geval van CORS-aanvragen (cross-Origin Resource Sharing), als de cookie moet worden verzonden in een context van een derde partij, moet het gebruik van *SameSite = none; Beveiligde* kenmerken en deze moeten alleen via HTTPS worden verzonden. Anders in een scenario met alleen HTTP, verzendt de browser de cookies niet in de context van derden. Het doel van deze update van Chrome is de beveiliging te verbeteren en CSRF-aanvallen (cross-site request vervalsing) te voor komen. 
 
-Ter ondersteuning van deze wijziging wordt Application Gateway (alle SKU-typen) een andere identieke cookie met de naam **ApplicationGatewayAffinityCORS** in aanvulling op de bestaande **ApplicationGatewayAffinity** cookie, die vergelijkbaar is, maar deze cookie heeft nu twee meer kenmerken **: SameSite = none; ' Veilig '** toegevoegd, zodat plak sessies zelfs voor cross-Origin-aanvragen kunnen worden onderhouden.
+Ter ondersteuning van deze wijziging wordt vanaf februari 17 2020, Application Gateway (alle SKU-typen) een andere cookie met de naam *ApplicationGatewayAffinityCORS* geïnjecteerd naast de bestaande *ApplicationGatewayAffinity* cookie. Aan het *ApplicationGatewayAffinityCORS* -cookie zijn twee meer kenmerken toegevoegd ( *"SameSite = none; Beveiligd '* ), zodat plak sessies zelfs voor cross-Origin-aanvragen worden bewaard.
 
-Houd er rekening mee dat de naam van de standaard-affiniteits cookie **ApplicationGatewayAffinity** is en dat deze kan worden gewijzigd door de gebruikers. Als u een aangepaste cookie naam voor affiniteit gebruikt, wordt er een extra cookie toegevoegd met CORS als achtervoegsel, bijvoorbeeld **CustomCookieNameCORS**.
+Houd er rekening mee dat de naam van de standaard-affiniteits cookie *ApplicationGatewayAffinity* is en u kunt deze wijzigen. Als u een aangepaste cookie naam voor affiniteit gebruikt, wordt er een extra cookie toegevoegd met CORS als achtervoegsel. Bijvoorbeeld *CustomCookieNameCORS*.
 
 > [!NOTE]
-> Het is verplicht dat als het kenmerk **SameSite = none** is ingesteld, de cookie ook de **beveiligde** vlag moet bevatten en moet worden verzonden via **https**. Als sessie affiniteit vereist is voor CORS, moet u uw werk belasting migreren naar HTTPS. Raadpleeg hier de SSL-en end-to-end SSL-documentatie voor Application Gateway: [overzicht](ssl-overview.md), [How-configure SSL offload](create-ssl-portal.md), [How-to configure end-to-end SSL](end-to-end-ssl-portal.md).
+> Als het kenmerk *SameSite = none* is ingesteld, is het verplicht dat de cookie ook de *beveiligde* vlag bevat en moet worden verzonden via https.  Als sessie affiniteit vereist is voor CORS, moet u uw werk belasting migreren naar HTTPS. Raadpleeg hier de SSL-en end-to-end SSL-documentatie voor Application Gateway: [overzicht](ssl-overview.md), [How-configure SSL offload](create-ssl-portal.md), [How-to configure end-to-end SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 

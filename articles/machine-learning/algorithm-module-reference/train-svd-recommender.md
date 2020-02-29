@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313906"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920791"
 ---
 # <a name="train-svd-recommender"></a>Aanbevelingsfunctie van SVD-training
 
-In dit artikel wordt beschreven hoe u de module Train SVD aanbevelen in Azure Machine Learning Designer gebruikt. Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor de ontleding van één waarde (SVD).  
+In dit artikel wordt beschreven hoe u de module Train SVD Adviseering gebruikt in Azure Machine Learning Designer (preview). Met deze module kunt u een aanbevelings model trainen op basis van het algoritme voor de ontleding van één waarde (SVD).  
 
 De Train SVD Aanbevelener-module leest een gegevensset van de beoordeling van de gebruikers items. Er wordt een getrainde SVD-aanbeveling geretourneerd. U kunt het getrainde model vervolgens gebruiken om beoordelingen te voors pellen of aanbevelingen te genereren met behulp van de module [Score SVD aanbevelen](score-svd-recommender.md) .  
 
@@ -48,14 +48,11 @@ Voordat u de module gebruikt, moeten de invoer gegevens de indeling hebben die h
 + De tweede kolom bevat item-id's.
 + De derde kolom bevat de classificatie voor het combi neren van gebruikers items. Classificatie waarden moeten numeriek type zijn.  
 
-De gegevensset voor **restaurant classificaties** in azure machine learning Designer (Selecteer **opgeslagen gegevens sets** en vervolgens voor **beelden**) toont de verwachte indeling:
+De gegevensset voor **film classificaties** in azure machine learning Designer ( **gegevens sets** selecteren en vervolgens **steek proeven**) toont de verwachte indeling:
 
-|userID|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![Film classificaties](media/module/movie-ratings-dataset.png)
 
-In dit voor beeld kunt u zien dat één gebruiker twee afzonderlijke restaurants heeft beoordeeld. 
+In dit voor beeld ziet u dat één gebruiker verschillende films heeft beoordeeld. 
 
 ### <a name="train-the-model"></a>Het model trainen
 
@@ -65,7 +62,7 @@ In dit voor beeld kunt u zien dat één gebruiker twee afzonderlijke restaurants
     
     Elke factor meet de hoeveelheid van de gebruiker met betrekking tot het item. Het aantal factoren is ook de dimensionaliteit van de latente factor ruimte. Wanneer het aantal gebruikers en items toeneemt, is het beter om een groter aantal factoren in te stellen. Maar als het aantal te groot is, kunnen de prestaties verloren.
     
-3.  Het **aantal iteraties van aanbevelings algoritmen** geeft aan hoe vaak de invoer gegevens moeten worden verwerkt door de algoritme. Hoe hoger dit aantal, hoe nauw keuriger de voor spellingen zijn. Een hoger nummer betekent echter een tragere training. De standaardwaarde is 30.
+3.  Het **aantal iteraties van aanbevelings algoritmen** geeft aan hoe vaak de invoer gegevens moeten worden verwerkt door de algoritme. Hoe hoger dit aantal, hoe nauw keuriger de voor spellingen zijn. Een hoger nummer betekent echter een tragere training. De standaard waarde is 30.
 
 4.  Voer voor het **leer tempo**een getal in tussen 0,0 en 2,0 dat de stap grootte voor Learning definieert.
 

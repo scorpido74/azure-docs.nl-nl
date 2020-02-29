@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842351"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913205"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Uw App Service-app configureren voor het gebruik van Azure AD-aanmelding
 
@@ -25,6 +25,9 @@ Volg deze aanbevolen procedures bij het instellen van uw app en verificatie:
 - Vermijd het delen van machtigingen tussen omgevingen door afzonderlijke app-registraties voor afzonderlijke implementatie sleuven te gebruiken. Bij het testen van nieuwe code kunt u deze procedure gebruiken om te voor komen dat problemen van invloed zijn op de productie-app.
 
 ## <a name="express"> </a>Configureren met Express-instellingen
+
+> [!NOTE]
+> De **Express** -optie is niet beschikbaar voor overheids Clouds. 
 
 1. In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app.
 2. Selecteer in het linkernavigatievenster de optie **verificatie/autorisatie** > **op**.

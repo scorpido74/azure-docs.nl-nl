@@ -2,17 +2,17 @@
 title: NCv3-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de NCv3-serie.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 363f8d2aae4e77453b8291637f2f6067d24bb80b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1f93fd3c293f8f6108d7c5fbcd83f2f7a8b8f5d9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661121"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162159"
 ---
 # <a name="ncv3-series"></a>NCv3-serie
 
@@ -21,6 +21,10 @@ Virtuele machines uit de NCv3-serie worden aangedreven door [Nvidia Tesla V100](
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 > [!IMPORTANT]
 > Voor deze VM-serie wordt het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../azure-supportability/resource-manager-core-quotas-request.md) aan voor deze reeks in een [beschik bare regio](https://azure.microsoft.com/regions/services/).

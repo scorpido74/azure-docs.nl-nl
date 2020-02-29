@@ -2,19 +2,19 @@
 title: Dv3 en Dsv3-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de Dv3-en Dsv3-serie.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: db50cadee4aeb618e85e977ca02f4fa6ff203d4b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493759"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164403"
 ---
-# <a name="dv3-and-dsv3-series"></a>Dv3 en Dsv3-serie
+# <a name="dv3-and-dsv3-series"></a>Dv3- en DSv3-serie
 
 De Dv3-serie wordt uitgevoerd op de Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors in een Hyper-Threaded configuratie, waardoor u een betere toegevoegde waarde hebt voor het algemeen werk belastingen voor het doel. Het geheugen is uitgevouwen (van ~ 3,5 GiB/vCPU naar 4 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading. De Dv3-serie heeft niet langer de VM-grootten van het hoge geheugen van de D/dv2-serie, die zijn verplaatst naar de Ev3 voor geoptimaliseerd geheugen [en de Esv3-serie](ev3-esv3-series.md).
 
@@ -33,6 +33,10 @@ ACU: 160-190
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Maximum aantal Nic's/netwerk bandbreedte |
 |---|---|---|---|---|---|---|
@@ -55,6 +59,10 @@ ACU: 160-190
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|

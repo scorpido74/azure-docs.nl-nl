@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170051"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921059"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Bericht bezorging Event Grid en probeer het opnieuw
 
@@ -26,12 +26,33 @@ Event Grid standaard elke gebeurtenis afzonderlijk naar abonnees verzenden. De a
 
 De batch levering heeft twee instellingen:
 
-* **Max Events per batch** is het maximum aantal gebeurtenissen Event grid per batch wordt geleverd. Dit aantal wordt nooit overschreden. er kunnen echter minder gebeurtenissen worden geleverd als er geen andere gebeurtenissen beschikbaar zijn op het moment van publiceren. Event Grid vertraging gebeurtenissen niet op om een batch te maken als er minder gebeurtenissen beschikbaar zijn. Moet tussen 1 en 5.000.
-* De **Voorkeurs Batch grootte in kilo bytes** is het doel plafond voor Batch grootte in kB. Net als bij de maximale gebeurtenissen kan de Batch grootte kleiner zijn als er meer gebeurtenissen niet beschikbaar zijn op het moment van publiceren. Het is mogelijk dat een batch groter is dan de voorkeurs Batch grootte *als* één gebeurtenis groter is dan de voorkeurs grootte. Als de voorkeurs grootte bijvoorbeeld 4 KB is en een gebeurtenis van 10 KB naar Event Grid wordt gepusht, wordt de gebeurtenis met 10 KB nog steeds in een eigen batch opgenomen, in plaats van dat deze wordt verwijderd.
+* **Max. gebeurtenissen per batch** -maximum aantal gebeurtenissen Event grid per batch worden geleverd. Dit aantal wordt nooit overschreden. er kunnen echter minder gebeurtenissen worden geleverd als er geen andere gebeurtenissen beschikbaar zijn op het moment van publiceren. Event Grid vertraging gebeurtenissen niet op om een batch te maken als er minder gebeurtenissen beschikbaar zijn. Moet tussen 1 en 5.000.
+* De **voor Keurs-Batch grootte in kilo bytes** -doel plafond voor Batch grootte in kB. Net als bij de maximale gebeurtenissen kan de Batch grootte kleiner zijn als er meer gebeurtenissen niet beschikbaar zijn op het moment van publiceren. Het is mogelijk dat een batch groter is dan de voorkeurs Batch grootte *als* één gebeurtenis groter is dan de voorkeurs grootte. Als de voorkeurs grootte bijvoorbeeld 4 KB is en een gebeurtenis van 10 KB naar Event Grid wordt gepusht, wordt de gebeurtenis met 10 KB nog steeds in een eigen batch opgenomen, in plaats van dat deze wordt verwijderd.
 
 Batch levering is geconfigureerd op basis van per gebeurtenis abonnement via de portal, CLI, Power shell of Sdk's.
 
+### <a name="azure-portal"></a>Azure Portal: 
 ![Instellingen voor batch levering](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+Gebruik de volgende para meters bij het maken van een gebeurtenis abonnement: 
+
+- **Max-gebeurtenissen-per batch** -maximum aantal gebeurtenissen in een batch. Moet een getal tussen 1 en 5000 zijn.
+- **voor keur-Batch-grootte-in-kilo bytes** -de gewenste Batch grootte in kB. Moet een getal tussen 1 en 1024 zijn.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Voor meer informatie over het gebruik van Azure CLI met Event Grid raadpleegt [u opslag gebeurtenissen naar een webeindpunt routeren met Azure cli](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Schema en duur van opnieuw proberen
 
@@ -97,7 +118,7 @@ Alle andere codes die zich niet in de bovenstaande set (200-204) bevinden, worde
 | 400 ongeldige aanvraag | Na 5 minuten of meer opnieuw proberen (Deadletter direct bij het instellen van Deadletter) |
 | 401 niet gemachtigd | Opnieuw proberen na 5 minuten of langer |
 | 403 verboden | Opnieuw proberen na 5 minuten of langer |
-| 404 – Niet gevonden | Opnieuw proberen na 5 minuten of langer |
+| 404 niet gevonden | Opnieuw proberen na 5 minuten of langer |
 | 408 Time-out van aanvraag | Opnieuw proberen na twee minuten of langer |
 | de 413-aanvraag entiteit is te groot | Na 10 seconden of meer opnieuw proberen (Deadletter onmiddellijk als Deadletter is ingesteld) |
 | 503 Service niet beschikbaar | Opnieuw proberen na 30 seconden of langer |

@@ -1,23 +1,23 @@
 ---
-title: Modellen opnieuw trainen met Azure Machine Learning Designer
+title: Modellen opnieuw trainen met behulp van Azure Machine Learning Designer (preview)
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het opnieuw trainen van modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer.
+description: Meer informatie over het opnieuw trainen van modellen met gepubliceerde pijp lijnen in Azure Machine Learning Designer (preview).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311866"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921590"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellen opnieuw trainen met Azure Machine Learning Designer
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met Azure Machine Learning Designer (preview)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 In deze procedure leert u hoe u Azure Machine Learning Designer kunt gebruiken om een machine learning model opnieuw te trainen. Meer informatie over het gebruik van gepubliceerde pijp lijnen voor het automatiseren van machine learning werk stromen voor retraining.
 
@@ -69,11 +69,11 @@ De ontwerp functie slaat alle pijplijn uitvoer, inclusief getrainde modellen, op
 
 1. Selecteer de module **Train model** .
 
-1. Selecteer in het deel venster instellingen de optie **uitvoer**.
+1. Selecteer in het deel venster instellingen de optie **uitvoer en logboeken**.
 
-1. Selecteer **Trained_model** om het model te downloaden.
+1. Klik op het pictogram **uitvoer weer geven** en volg de instructies in het pop-upvenster om het getrainde model te vinden.
 
-![Scherm afbeelding die laat zien hoe het getrainde model kan worden gedownload](./media/how-to-retrain-designer/download-model.png)
+![Scherm afbeelding die laat zien hoe het getrainde model kan worden gedownload](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Een pijplijn parameter maken
 

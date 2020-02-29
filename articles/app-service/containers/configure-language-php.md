@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte PHP-c
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671839"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913868"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Een Linux PHP-app voor Azure App Service configureren
 
@@ -39,52 +39,26 @@ Voer de volgende opdracht uit in het [Cloud shell](https://shell.azure.com) om d
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Componist uitvoeren
+## <a name="customize-build-automation"></a>Bouw automatisering aanpassen
 
-Kudu voert standaard geen [Composer](https://getcomposer.org/)uit. Als u Composer automatisering tijdens de implementatie van kudu wilt inschakelen, moet u een [aangepast implementatie script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)opgeven.
+Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
 
-Wijzig vanuit een lokaal Terminal venster de map in de hoofdmap van uw opslag plaats. Volg de stappen voor de installatie van de [opdracht regel](https://getcomposer.org/download/) om *Composer. Phar*te downloaden.
+1. Voer een aangepast script uit als dit wordt opgegeven door `PRE_BUILD_SCRIPT_PATH`.
+1. Voer `php composer.phar install` uit.
+1. Voer een aangepast script uit als dit wordt opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
-Voer de volgende opdrachten uit:
+`PRE_BUILD_COMMAND` en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Definieer `PRE_BUILD_COMMAND`voor het uitvoeren van opdrachten die vooraf zijn gebouwd. Als u opdrachten na het bouwen wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-De hoofdmap van uw opslag plaats bevat nu twee nieuwe bestanden naast *Composer. Phar*: *. Deployment* en *Deploy.sh*. Deze bestanden werken zowel voor Windows-als Linux-smaak van App Service.
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)voor meer omgevings variabelen voor het aanpassen van het bouwen van Automation.
 
-Open *Deploy.sh* en zoek het gedeelte `Deployment`. Vervang de hele sectie door de volgende code:
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-Leg al uw wijzigingen door en implementeer de code opnieuw. Componist moet nu worden uitgevoerd als onderdeel van implementatie automatisering.
+Zie [Oryx documentation](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)(Engelstalig) voor meer informatie over de manier waarop app service php-apps in Linux uitvoert en bouwt.
 
 ## <a name="customize-start-up"></a>Opstarten aanpassen
 

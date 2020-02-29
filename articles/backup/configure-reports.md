@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582701"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161198"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -47,6 +47,9 @@ Selecteer in de sectie bewaking van uw Recovery Services kluis **Diagnostische i
 
 Azure Backup biedt ook een ingebouwde Azure Policy, waarmee de configuratie van diagnostische instellingen voor alle kluizen in een bepaald bereik wordt geautomatiseerd. Raadpleeg het volgende artikel voor meer informatie over het gebruik van dit beleid: [instellingen voor diagnostische gegevens van de kluis op schaal configureren](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
+> [!NOTE]
+> Zodra u de diagnostische gegevens hebt geconfigureerd, kan het tot 24 uur duren voordat de eerste push-bewerking is voltooid. Wanneer de gegevens worden gestart in de werk ruimte van de LA, is het mogelijk dat u de gegevens in de rapporten niet onmiddellijk kunt zien, omdat de gegevens voor de huidige gedeeltelijke dag niet worden weer gegeven in de rapporten ( [meer informatie hierover](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)). Daarom is het raadzaam om de rapporten 2 dagen na het configureren van uw kluizen te bekijken om gegevens naar Log Analytics te verzenden.
+
 3. **Rapporten weer geven op de Azure Portal:**
 
 Wanneer u uw kluizen zo hebt geconfigureerd dat gegevens naar LA worden verzonden, kunt u de back-uprapporten bekijken door te navigeren naar de Blade van de kluis en te klikken op het menu **-item back-uprapporten** . 
@@ -56,7 +59,8 @@ Wanneer u uw kluizen zo hebt geconfigureerd dat gegevens naar LA worden verzonde
 Als u op deze koppeling klikt, wordt de werkmap van het back-uprapport geopend.
 
 > [!NOTE]
-> De aanvankelijke belasting van het rapport kan tot wel 1 minuut duren.
+> * De aanvankelijke belasting van het rapport kan tot wel 1 minuut duren.
+> * De Recovery Services kluis is slechts een ingangs punt voor back-uprapporten. Zodra de werkmap met back-uprapporten wordt geopend vanaf de Blade van een kluis, ziet u de gegevens die zijn geaggregeerd in al uw kluizen (door de juiste set LA-werk ruimten te selecteren).
 
 Hieronder ziet u een beschrijving van de verschillende tabbladen die het rapport bevat:
 

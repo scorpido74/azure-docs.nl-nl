@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201489"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921144"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
@@ -32,7 +32,7 @@ De metrische gegevens van het gebruik SU%, die tussen 0% en 100% liggen, beschri
     ![Configuratie van Stream Analytics taak Azure Portal][img.stream.analytics.preview.portal.settings.scale]
     
 4. Gebruik de schuif regelaar om de SUs voor de taak in te stellen. U ziet dat u beperkt bent tot specifieke SU-instellingen. 
-5. U kunt het aantal SUs dat is toegewezen aan uw taak wijzigen, zelfs wanneer dit wordt uitgevoerd. Dit is niet mogelijk als uw taak gebruikmaakt van een [niet-gepartitioneerde uitvoer](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) of [een query met meerdere stappen heeft met andere partities op basis van waarden](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values). De taak moet ook ten minste 6 SUs hebben om deze instelling te kunnen wijzigen wanneer de taak wordt uitgevoerd. U kunt de keuze van een aantal SU-waarden beperken wanneer de taak wordt uitgevoerd. 
+5. U kunt het aantal SUs dat is toegewezen aan uw taak wijzigen, zelfs wanneer dit wordt uitgevoerd. Dit is niet mogelijk als uw taak gebruikmaakt van een [niet-gepartitioneerde uitvoer](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) of [een query met meerdere stappen heeft met andere partities op basis van waarden](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values). U kunt de keuze van een aantal SU-waarden beperken wanneer de taak wordt uitgevoerd. 
 
 ## <a name="monitor-job-performance"></a>Taak prestaties bewaken
 Met behulp van de Azure Portal kunt u de door Voer van een taak volgen:

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3807f713065d16d4c6743c65f6a770d158ac7191
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058490"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920124"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen voor het oplossen van problemen met een virtuele Linux-machine in azure
 Er zijn veel mogelijke redenen waarom de SSH-client de SSH-service mogelijk niet kan bereiken op de virtuele machine. Als u de meer [algemene stappen](troubleshoot-ssh-connection.md)voor het oplossen van SSH-problemen hebt gevolgd, moet u het verbindings probleem verder oplossen. In dit artikel vindt u gedetailleerde stappen voor probleem oplossing om te bepalen waar de SSH-verbinding is mislukt en hoe u deze kunt oplossen.
@@ -33,7 +33,7 @@ In het volgende diagram ziet u de onderdelen die betrokken zijn.
 De volgende stappen helpen u bij het isoleren van de oorzaak van de fout en het afnemen van oplossingen en oplossingen.
 
 1. Controleer de status van de virtuele machine in de portal.
-   Selecteer **virtuele machines** > *VM-naam*in het [Azure Portal](https://portal.azure.com).
+   Selecteer in het [Azure Portal](https://portal.azure.com) **virtuele machines** > VM- *naam*.
 
    Het status venster voor de virtuele machine moet worden **uitgevoerd**weer gegeven. Schuif omlaag om recente activiteiten voor compute-, opslag-en netwerk bronnen weer te geven.
 
@@ -72,11 +72,11 @@ Als u verificatie via certificaat gebruikt, controleert u of u deze machtigingen
 
 * Chmod 700 ~/.ssh
 * Chmod 644 ~/.ssh/\*. pub
-* Chmod 600 ~/.ssh/id_rsa (of andere bestanden waarop uw persoonlijke sleutels zijn opgeslagen)
+* Chmod 600 ~/.ssh/id_rsa (of andere bestanden waarin uw persoonlijke sleutels zijn opgeslagen)
 * Chmod 644 ~/.ssh/known_hosts (bevat hosts die u via SSH hebt verbonden)
 
-## <a name="source-2-organization-edge-device"></a>Bron 2: Apparaat voor organisatie rand
-Als u wilt voor komen dat uw organisatie apparaat als bron van de fout wordt veroorzaakt, controleert u of een computer die rechtstreeks is verbonden met internet, SSH-verbindingen kan maken met uw Azure-VM. Als u de virtuele machine via een site-naar-site-VPN of een Azure ExpressRoute-verbinding opent, [gaat u naar bron 4: Netwerk beveiligings groepen](#nsg).
+## <a name="source-2-organization-edge-device"></a>Bron 2: apparaat voor organisatie rand
+Als u wilt voor komen dat uw organisatie apparaat als bron van de fout wordt veroorzaakt, controleert u of een computer die rechtstreeks is verbonden met internet, SSH-verbindingen kan maken met uw Azure-VM. Als u de virtuele machine via een site-naar-site-VPN of een Azure ExpressRoute-verbinding opent, gaat u naar [bron 4: netwerk beveiligings groepen](#nsg).
 
 ![Diagram voor het markeren van het organisatie apparaat](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -90,9 +90,12 @@ Als u een SSH-verbinding kunt maken met een computer die rechtstreeks is verbond
 
 Werk samen met uw netwerk beheerder om de instellingen van uw organisatie rand apparaten te corrigeren om SSH-verkeer met Internet toe te staan.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Bron 3: Cloud service-eind punt en ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Bron 3: eind punt van Cloud service en ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
-> Deze bron is alleen van toepassing op virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model. Voor virtuele machines die zijn gemaakt met behulp van Resource Manager [, gaat u naar bron 4: Netwerk beveiligings groepen](#nsg).
+> Deze bron is alleen van toepassing op virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model. Ga door naar [bron 4: netwerk beveiligings groepen](#nsg)voor virtuele machines die zijn gemaakt met behulp van Resource Manager.
 
 Als u het eind punt van de Cloud service en ACL als bron van de fout wilt elimineren, controleert u of een andere virtuele machine van Azure in hetzelfde virtueel netwerk verbinding kan maken via SSH.
 
@@ -102,14 +105,14 @@ Als u nog geen VM in hetzelfde virtuele netwerk hebt, kunt u er eenvoudig een ma
 
 Als u een SSH-verbinding met een VM in hetzelfde virtuele netwerk kunt maken, controleert u de volgende gebieden:
 
-* **De eindpunt configuratie voor SSH-verkeer op de doel-VM.** De particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de SSH-service op de VM luistert. (De standaard poort is 22). Controleer het SSH TCP-poort nummer in de Azure portal door **virtuele machines** > *VM naam* > **instellingen** > **eind punten**te selecteren.
+* **De eindpunt configuratie voor SSH-verkeer op de doel-VM.** De particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de SSH-service op de VM luistert. (De standaard poort is 22). Controleer het SSH TCP-poort nummer in de Azure Portal door **virtuele machines** > *VM-naam* > **instellingen** > - **eind punten**te selecteren.
 * **De ACL voor het SSH-verkeer eindpunt op de virtuele doel machine.** U kunt met een ACL het toegestane of geweigerde binnenkomende verkeer van Internet opgeven, op basis van het bron-IP-adres. Onjuist geconfigureerde Acl's kunnen binnenkomend SSH-verkeer naar het eind punt verhinderen. Controleer uw Acl's om ervoor te zorgen dat binnenkomend verkeer van de open bare IP-adressen van uw proxy of een andere Edge-Server wordt toegestaan. Zie [about Network Access Control Lists (acl's)](../../virtual-network/virtual-networks-acl.md)voor meer informatie.
 
 Als u het eind punt als een bron van het probleem wilt elimineren, verwijdert u het huidige eind punt, maakt u een ander eind punt en geeft u de SSH-naam op (TCP-poort 22 voor het open bare en particuliere poort nummer). Zie [eind punten instellen op een virtuele machine in azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer informatie.
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>Bron 4: Netwerkbeveiligingsgroepen
+## <a name="source-4-network-security-groups"></a>Bron 4: netwerk beveiligings groepen
 Met netwerk beveiligings groepen kunt u meer nauw keurige controle hebben over toegestaan binnenkomend en uitgaand verkeer. U kunt regels maken die subnetten en Cloud Services omvatten in een virtueel Azure-netwerk. Controleer de regels voor de netwerk beveiligings groep om ervoor te zorgen dat SSH-verkeer van en naar Internet wordt toegestaan.
 Zie [over netwerk beveiligings groepen](../../virtual-network/security-overview.md)voor meer informatie.
 

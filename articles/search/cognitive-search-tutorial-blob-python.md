@@ -1,97 +1,130 @@
 ---
-title: "Zelf studie: een vakkennisset maken in python met behulp van REST-Api's"
+title: 'Zelf studie: python en AI over Azure-blobs'
 titleSuffix: Azure Cognitive Search
-description: Bekijk een voor beeld van het uitpakken van gegevens, natuurlijke taal en afbeelding AI-verwerking in azure Cognitive Search met behulp van een Jupyter python-notebook. Geëxtraheerde gegevens worden geïndexeerd en eenvoudig geopend door de query.
+description: Bekijk een voor beeld van tekst extractie en natuurlijke taal verwerking over inhoud in Blob Storage met behulp van een Jupyter python notebook en de Azure Cognitive Search REST-Api's.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d9ae7f4b7dd8b0f45ae02bd2a90aca78127fd3d3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/26/2020
+ms.openlocfilehash: 743c6fa6545342f2a7655059016637fc54158b64
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472397"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164012"
 ---
-# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Zelf studie: een AI-verrijkings pijplijn maken met behulp van REST en python
+# <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelf studie: python en AI gebruiken voor het genereren van Doorzoek bare inhoud van Azure-blobs
 
-In deze zelf studie leert u de mechanismen voor het verrijken van de programmering van gegevens in azure Cognitive Search met *cognitieve vaardig heden*. Vaardig heden worden ondersteund door NLP (natuurlijke taal verwerking) en mogelijkheden voor de analyse van installatie kopieën in Cognitive Services. Via de vaardig heden-compositie en-configuratie kunt u tekst-en tekst representaties van een afbeelding of gescand document bestand extra heren. U kunt ook taal, entiteiten, sleutel zinnen en meer detecteren. Het resultaat is uitgebreide aanvullende inhoud in een zoek index die is gemaakt met AI-verrijkingen in een indexerings pijplijn. 
+Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn installatie kopieën kan verwerken, wordt in deze python-zelf studie aandacht besteed aan tekst, het Toep assen van taal detectie en de verwerking van natuurlijke taal om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
 
-In deze zelf studie gebruikt u python om de volgende taken uit te voeren:
+In deze zelf studie gebruikt u python en [rest](https://docs.microsoft.com/rest/api/searchservice/) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
-> * Een indexeringspijplijn maken die voorbeeldgegevens onderweg naar een index verrijkt
-> * Pas ingebouwde vaardigheden toe: herkenning van entiteiten, taaldetectie, tekstbewerkingen en extractie van sleuteltermen
-> * Vaardigheden aan elkaar koppelen door invoeren aan uitvoeren toe te wijzen in een set vaardigheden
-> * Aanvragen uitvoeren en resultaten bekijken
-> * De index en indexeerfuncties opnieuw instellen voor verdere ontwikkeling
+> * Begin met hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag.
+> * Definieer een pijp lijn die tekst extraheert, taal detecteert, entiteiten herkent en sleutel zinnen detecteert.
+> * Definieer een index voor het opslaan van de uitvoer (onbewerkte inhoud, plus pijp lijn gegenereerde naam/waarde-paren).
+> * Voer de pijp lijn uit om trans formaties en analyses te starten en om de index te maken en te laden.
+> * Bekijk de resultaten met zoeken in volledige tekst en een uitgebreide query syntaxis.
 
-Output is een volledige tekst zoekopdracht bare index op Azure Cognitive Search. U kunt de index uitbreiden met andere standaardfuncties, zoals [synoniemen](search-synonyms.md), [scoreprofielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analyses](search-analyzers.md) en [filters](search-filters.md). 
-
-Deze zelf studie wordt uitgevoerd op de gratis service, maar het aantal gratis trans acties is beperkt tot 20 documenten per dag. Als u deze zelf studie meer dan één keer op dezelfde dag wilt uitvoeren, verwijdert u de Indexeer functie om de teller opnieuw in te stellen.
-
-> [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
->
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
-
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, opent u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelf studie worden de volgende services, hulpprogram ma's en gegevens gebruikt. 
-
-+ [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld gegevens. Zorg ervoor dat het opslag account zich in dezelfde regio bevindt als Azure Cognitive Search.
-
-+ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), met python 3. x-en Jupyter-notebooks.
-
-+ De [voorbeeld gegevens](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) bestaan uit een kleine set verschillende typen. 
-
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
-
-## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
-
-Als u met uw Azure Cognitive Search-service wilt communiceren, hebt u de service-URL en een toegangs sleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
-
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
-
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
-
-![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
-
-Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Een geldige sleutel brengt een vertrouwens relatie tot stand, op basis van aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
-
-## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
-
-De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Bron gegevens moeten afkomstig zijn van een ondersteund gegevens bron type van een [Azure Cognitive Search indexer](search-indexer-overview.md). In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
-
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
-
-1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om voorbeeld gegevens te bevatten. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
-
-1. Nadat de container is gemaakt, opent u deze en selecteert u **uploaden** op de opdracht balk om de voorbeeld bestanden te uploaden die u in een vorige stap hebt gedownload.
-
-   ![Bronbestanden in Azure-blobopslag](./media/cognitive-search-quickstart-blob/sample-data.png)
-
-1. Nadat de voorbeeldbestanden zijn geladen, haalt u de containernaam en een verbindingsreeks voor de Blob-opslag op. U kunt dat doen door in de Azure-portal naar uw opslagaccount te navigeren. Klik op **toegangs sleutels**en kopieer het veld **verbindings reeks** .
-
-De connection string heeft de volgende indeling: `DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
-
-Blijf de connection string het handigst. U hebt deze in een toekomstige stap nodig.
-
-Er zijn andere manieren om de verbindingsreeks op te geven, zoals een Shared Access Signature bieden. Zie [Indexing Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials) (Azure Blob Storage indexeren) voor meer informatie over referenties voor gegevensbronnen.
-
-## <a name="create-a-jupyter-notebook"></a>Een Jupyter-notebook maken
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
++ [Een bestaande zoek service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [maken](search-create-service-portal.md) of zoeken 
 
 > [!Note]
-> In dit artikel wordt beschreven hoe u een gegevens bron, index, Indexeer functie en vakkennisset maakt met behulp van een reeks python-scripts. Als u het voor beeld van een volledig notitie blok wilt downloaden, gaat u naar [Azure-Search-python-samples opslag plaats](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
+> U kunt de gratis service voor deze zelf studie gebruiken. Een gratis zoek service beperkt u tot drie indexen, drie Indexeer functies en drie gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u begint, moet u ervoor zorgen dat u over voldoende ruimte beschikt om de nieuwe resources te accepteren.
+
+## <a name="download-files"></a>Bestanden downloaden
+
+1. Open deze [OneDrive-map](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) en klik in de linkerbovenhoek op **downloaden** om de bestanden naar uw computer te kopiëren. 
+
+1. Klik met de rechter muisknop op het zip-bestand en selecteer **Alles uitpakken**. Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
+
+## <a name="1---create-services"></a>1-services maken
+
+In deze zelf studie maakt gebruik van Azure Cognitive Search voor het indexeren en uitvoeren van query's, Cognitive Services op de back-end voor AI-verrijking en Azure Blob-opslag om de gegevens op te geven. Deze zelf studie bevindt zich onder de gratis toewijzing van 20 trans acties per Indexeer functie per dag op Cognitive Services, dus de enige services die u moet maken, zijn zoeken en opslag.
+
+Maak, indien mogelijk, beide in dezelfde regio en resource groep voor nabijheid en beheer baarheid. In de praktijk kan uw Azure Storage-account zich in een wille keurige regio bevinden.
+
+### <a name="start-with-azure-storage"></a>Beginnen met Azure Storage
+
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/) en klik op **+ resource maken**.
+
+1. Zoek naar het *opslag account* en selecteer het opslag account van micro soft.
+
+   ![Opslag account maken](media/cognitive-search-tutorial-blob/storage-account.png "Opslag account maken")
+
+1. Op het tabblad basis beginselen zijn de volgende items vereist. Accepteer de standaard waarden voor alle andere.
+
+   + **Resourcegroep**. Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
+
+   + **Naam van opslag account**. Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam van dubbel zinnigheid per type en regio, bijvoorbeeld *blobstoragewestus*. 
+
+   + **Locatie**. Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Cognitive Search en Cognitive Services. Een enkele locatie vernietigt bandbreedte kosten.
+
+   + **Soort account**. Kies de standaard *StorageV2 (algemeen gebruik v2)* .
+
+1. Klik op **beoordeling + maken** om de service te maken.
+
+1. Zodra de app is gemaakt, klikt u op **Ga naar de resource** om de pagina overzicht te openen.
+
+1. Klik op **blobs** -service.
+
+1. Klik op **+ container** om een container te maken en geef deze de naam *tandwiel-Search-demo*.
+
+1. Selecteer *tandwiel-Search-demo* en klik vervolgens op **uploaden** om de map te openen waarin u de bestanden hebt opgeslagen. Selecteer alle niet-afbeeldings bestanden. U moet 7 bestanden hebben. Klik op **OK** om te uploaden.
+
+   ![Voorbeeld bestanden uploaden](media/cognitive-search-tutorial-blob/sample-files.png "Voorbeeld bestanden uploaden")
+
+1. Voordat u Azure Storage verlaat, moet u een connection string ophalen zodat u een verbinding in azure Cognitive Search kunt formuleren. 
+
+   1. Ga terug naar de pagina overzicht van uw opslag account (we hebben *blobstragewestus* als voor beeld gebruikt). 
+   
+   1. Selecteer in het navigatie deel venster links de optie **toegangs sleutels** en kopieer een van de verbindings reeksen. 
+
+   De connection string is een URL die vergelijkbaar is met het volgende voor beeld:
+
+      ```http
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      ```
+
+1. Sla de connection string op in Klad blok. U hebt deze later nodig bij het instellen van de gegevens bron verbinding.
+
+### <a name="cognitive-services"></a>Cognitive Services
+
+AI-verrijking wordt ondersteund door Cognitive Services, waaronder Text Analytics en Computer Vision voor de verwerking van natuurlijke taal en afbeelding. Als u een echt prototype of project wilt volt ooien, moet u op dit punt Cognitive Services (in dezelfde regio als Azure Cognitive Search), zodat u het kunt koppelen aan index bewerkingen.
+
+Voor deze oefening kunt u echter het inrichten van resources overs Laan omdat Azure Cognitive Search verbinding kan maken met Cognitive Services achter de schermen en u 20 gratis trans acties per Indexeer functie uitvoert. Omdat in deze zelf studie 7 trans acties worden gebruikt, is de gratis toewijzing voldoende. Voor grotere projecten plant u het inrichten van Cognitive Services op de S0-laag voor betalen per gebruik. Zie [Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md)voor meer informatie.
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Het derde onderdeel is Azure Cognitive Search, dat u [in de portal kunt maken](search-create-service-portal.md). U kunt de gratis laag gebruiken om deze procedure te volt ooien. 
+
+Net als bij Azure Blob-opslag neemt het even de tijd om de toegangs sleutel te verzamelen. Daarnaast moet u, wanneer u begint met het structureren van aanvragen, het eind punt en de beheer-API-sleutel opgeven die worden gebruikt om elke aanvraag te verifiëren.
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en-URL voor Azure Cognitive Search ophalen
+
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en haal de naam van uw zoek service op in de pagina **overzicht** van de zoek service. U kunt uw service naam bevestigen door de URL van het eind punt te controleren. Als uw eind punt-URL is `https://mydemo.search.windows.net`, wordt uw service naam `mydemo`.
+
+2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+
+   Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
+
+   ![De service naam en de beheer-en query sleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+
+Alle aanvragen vereisen een API-sleutel in de header van elke aanvraag die naar uw service wordt verzonden. Een geldige sleutel brengt een vertrouwens relatie tot stand, op basis van aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
+
+## <a name="2---start-a-notebook"></a>2: een notitie blok starten
+
+Maak het notitie blok met behulp van de volgende instructies of down load een volledig notitie blok van [Azure-Search-python-samples opslag plaats](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
 
 Gebruik Anaconda Navigator om Jupyter Notebook te starten en een nieuw python 3-notebook te maken.
-
-## <a name="connect-to-azure-cognitive-search"></a>Verbinding maken met Azure Cognitive Search
 
 Voer in uw notebook dit script uit om de bibliotheken te laden die worden gebruikt voor het werken met JSON en het formuleren van HTTP-aanvragen.
 
@@ -101,7 +134,7 @@ import requests
 from pprint import pprint
 ```
 
-Definieer vervolgens de namen voor de gegevens bron, index, Indexer en vaardigheidset. Voer dit script uit om de namen in te stellen voor deze zelf studie.
+Definieer in hetzelfde notitie blok de namen voor de gegevens bron, index, Indexer en vaardigheidset. Voer dit script uit om de namen in te stellen voor deze zelf studie.
 
 ```python
 # Define the names for the data source, skillset, index and indexer
@@ -110,9 +143,6 @@ skillset_name = "cogsrch-py-skillset"
 index_name = "cogsrch-py-index"
 indexer_name = "cogsrch-py-indexer"
 ```
-
-> [!Tip]
-> Bij een gratis service bent u beperkt tot drie indexen, Indexeer functies en gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Zorg ervoor dat u over voldoende ruimte beschikt om nieuwe objecten te maken voordat u verder gaat.
 
 Vervang in het volgende script de tijdelijke aanduidingen voor uw zoek service (uw-zoek service naam) en de beheer-API-sleutel (uw-beheer-API-sleutel) en voer deze uit om het eind punt van de zoek service in te stellen.
 
@@ -126,11 +156,15 @@ params = {
 }
 ```
 
-## <a name="create-a-data-source"></a>Een gegevensbron maken
+## <a name="3---create-the-pipeline"></a>3: de pijp lijn maken
 
-Nu dat uw services en bronbestanden zijn voorbereid, kunt u de onderdelen van uw indexeringspijplijn samenstellen. Begin met een gegevens bron object dat Azure Cognitive Search vertelt hoe externe bron gegevens moeten worden opgehaald.
+In azure Cognitive Search treedt AI-verwerking op tijdens het indexeren (of gegevens opname). In dit deel van het scenario worden vier objecten gemaakt: gegevens bron, index definitie, vaardig heden, Indexeer functie. 
 
-Vervang in het volgende script de tijdelijke aanduiding uw-BLOB-RESOURCE-CONNECTION-STRING door de connection string voor de blob die u in de vorige stap hebt gemaakt. Voer vervolgens het script uit om een gegevens bron te maken met de naam `cogsrch-py-datasource`.
+### <a name="step-1-create-a-data-source"></a>Stap 1: een gegevensbron maken
+
+Een [gegevens bron object](https://docs.microsoft.com/rest/api/searchservice/create-data-source) biedt de Connection String aan de BLOB-container met de bestanden.
+
+Vervang in het volgende script de tijdelijke aanduiding uw-BLOB-RESOURCE-CONNECTION-STRING door de connection string voor de blob die u in de vorige stap hebt gemaakt. Vervang de tekst van de tijdelijke aanduiding voor de container. Voer vervolgens het script uit om een gegevens bron te maken met de naam `cogsrch-py-datasource`.
 
 ```python
 # Create a data source
@@ -143,7 +177,7 @@ datasource_payload = {
         "connectionString": datasourceConnectionString
     },
     "container": {
-        "name": "basic-demo-data-pr"
+        "name": "<YOUR-BLOB-CONTAINER-NAME>"
     }
 }
 r = requests.put(endpoint + "/datasources/" + datasource_name,
@@ -157,19 +191,18 @@ Controleer in de Azure Portal op de pagina zoek service dashboard of de cogsrch-
 
 ![De tegel gegevens bronnen in de portal](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "De tegel gegevens bronnen in de portal")
 
-## <a name="create-a-skillset"></a>Een set vaardigheden maken
+### <a name="step-2-create-a-skillset"></a>Stap 2: een vaardig heden maken
 
 In deze stap definieert u een reeks verrijkings stappen die op uw gegevens worden toegepast. We noemen elke verrijkingsstap een *vaardigheid* en de reeks verrijkingsstappen een *set vaardigheden*. In deze zelf studie worden [ingebouwde cognitieve vaardig heden](cognitive-search-predefined-skills.md) voor de vaardig heden gebruikt:
+
++ [Entiteits herkenning](cognitive-search-skill-entity-recognition.md) voor het extra heren van de namen van organisaties uit inhoud in de BLOB-container.
 
 + [Taaldetectie](cognitive-search-skill-language-detection.md) om de taal van de inhoud vast te stellen.
 
 + [Tekst splitsen](cognitive-search-skill-textsplit.md) om grote inhoud in kleinere stukken op te delen voordat u de vaardigheid voor sleuteltermextractie aanroept. Sleuteltermextractie accepteert invoeren van 50.000 tekens of minder. Enkele voorbeeldbestanden moeten worden opgesplitst om aan deze limiet te voldoen.
 
-+ [Entiteits herkenning](cognitive-search-skill-entity-recognition.md) voor het extra heren van de namen van organisaties uit inhoud in de BLOB-container.
-
 + [Sleuteltermextractie](cognitive-search-skill-keyphrases.md) voor het ophalen van de belangrijkste sleuteltermen. 
 
-### <a name="python-script"></a>Python-script
 Voer het volgende script uit om een vaardig heden met de naam `cogsrch-py-skillset`te maken.
 
 ```python
@@ -270,7 +303,7 @@ Uitvoer kan worden toegewezen aan een index die wordt gebruikt als invoer voor e
 
 Zie [How to define a skillset](cognitive-search-defining-skillset.md) (Een set vaardigheden definiëren) voor meer informatie over de grondbeginselen van vaardigheden.
 
-## <a name="create-an-index"></a>Een index maken
+### <a name="step-3-create-an-index"></a>Stap 3: een index maken
 
 In deze sectie definieert u het index schema door de velden op te geven die moeten worden meegenomen in de Doorzoek bare index en de zoek kenmerken voor elk veld in te stellen. Velden hebben een type en kunnen kenmerken opnemen die bepalen hoe het veld wordt gebruikt (doorzoekbaar, sorteerbaar enzovoort). Veldnamen in een index hoeven niet identiek te zijn aan de veldnamen in de bron. In een latere stap voegt u veldverwijzingen in een indexeerfunctie toe om bron-doelvelden te verbinden. Definieer voor deze stap de index met behulp van veldnaamconventies die relevant zijn voor uw zoektoepassing.
 
@@ -338,9 +371,11 @@ De aanvraag moet de status code 201 bevestigen van geslaagde pogingen retour ner
 
 Zie [Create Index (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over het definiëren van een index.
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Een indexeerfunctie maken, velden toewijzen en transformaties uitvoeren
+### <a name="step-4-create-and-run-an-indexer"></a>Stap 4: een Indexeer functie maken en uitvoeren
 
-Tot nu toe hebt u een gegevens bron, een vaardig heden en een index gemaakt. Deze drie onderdelen gaan deel uitmaken van een [indexeerfunctie](search-indexer-overview.md) die de onderdelen combineert in één meervoudige bewerking. U moet veld toewijzingen definiëren om deze objecten te koppelen aan een Indexeer functie.
+Een [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) verstuurt de pijp lijn. De drie onderdelen die u tot nu toe hebt gemaakt (gegevens bron, vaardig heden, index) zijn invoer naar een Indexeer functie. Het maken van de Indexeer functie op Azure Cognitive Search is de gebeurtenis die de volledige pijp lijn in beweging zet. 
+
+U moet veld toewijzingen definiëren om deze objecten te koppelen aan een Indexeer functie.
 
 + De fieldMappings worden vóór de vaardig heden verwerkt, waarbij bron velden van de gegevens bron worden toegewezen aan de doel velden in een index. Als veld namen en-typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
 
@@ -401,14 +436,14 @@ r = requests.put(endpoint + "/indexers/" + indexer_name,
 print(r.status_code)
 ```
 
-De aanvraag zou snel de status code 201 kunnen retour neren, maar het kan enkele minuten duren voordat de verwerking is voltooid. Hoewel de gegevensset klein is, zijn analytische vaardig heden, zoals het analyseren van afbeeldingen, reken kracht en tijd.
+De aanvraag moet een status code van 201 binnenkort retour neren, maar het kan enkele minuten duren voordat de verwerking is voltooid. Hoewel de gegevensset klein is, zijn analytische vaardig heden, zoals het analyseren van afbeeldingen, reken kracht en tijd.
 
-Gebruik het script [indexeerere status controleren](#check-indexer-status) in de volgende sectie om te bepalen wanneer het Indexeer proces is voltooid.
+U kunt de status van de [Indexeer functie bewaken](#check-indexer-status) om te bepalen wanneer de Indexeer functie wordt uitgevoerd of voltooid.
 
 > [!TIP]
 > Het maken van een indexeerfunctie roept de pijplijn aan. Als er een probleem optreedt bij het openen van de gegevens, het toewijzen van invoer en uitvoer, of met de volg orde van bewerkingen, wordt deze in deze fase weer gegeven. Als u de pijp lijn opnieuw wilt uitvoeren met code-of script wijzigingen, moet u mogelijk eerst objecten verwijderen. Zie [Reset and re-run](#reset) (Opnieuw instellen en uitvoeren) voor meer informatie.
 
-#### <a name="explore-the-request-body"></a>De aanvraagbody verkennen
+#### <a name="about-the-request-body"></a>Over de hoofd tekst van de aanvraag
 
 Het script stelt `"maxFailedItems"` op -1 in, wat de indexeerengine de opdracht geeft om fouten tijdens het importeren van gegevens te negeren. Dit is nuttig omdat de demo-gegevensbron maar een paar documenten bevat. Voor een grotere gegevensbron zou u de waarde op groter dan 0 instellen.
 
@@ -418,7 +453,7 @@ Wanneer inhoud wordt uitgepakt, kunt u instellen dat `imageAction` tekst ophaalt
 
 <a name="check-indexer-status"></a>
 
-## <a name="check-indexer-status"></a>De status van de indexeerfunctie controleren
+## <a name="4---monitor-indexing"></a>4: indexeren controleren
 
 Nadat de indexeerfunctie is gedefinieerd, wordt deze automatisch uitgevoerd wanneer u de aanvraag verzendt. Afhankelijk van welke cognitieve vaardigheden u hebt gedefinieerd, kan het indexeren langer duren dan verwacht. Als u wilt weten of de verwerking van de Indexeer functie is voltooid, voert u het volgende script uit.
 
@@ -433,18 +468,18 @@ Controleer in het antwoord op de waarde ' lastResult ' voor de waarden ' status 
 
 ![Indexeer functie is gemaakt](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexeer functie is gemaakt")
 
-Waarschuwingen komen veel voor bij sommige combinaties van bronbestand en vaardigheid en wijzen niet altijd op een probleem. In deze zelf studie zijn de waarschuwingen onschadelijk. Een van de JPEG-bestanden die geen tekst bevat, toont bijvoorbeeld de waarschuwing in deze scherm opname.
+Waarschuwingen komen veel voor bij sommige combinaties van bronbestand en vaardigheid en wijzen niet altijd op een probleem. Veel waarschuwingen zijn onschadelijk. Als u bijvoorbeeld een JPEG-bestand indexeert dat geen tekst bevat, ziet u de waarschuwing in deze scherm opname.
 
 ![Voor beeld van Indexeer functie waarschuwing](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Voor beeld van Indexeer functie waarschuwing")
 
-## <a name="query-your-index"></a>Een query uitvoeren in uw index
+## <a name="5---search"></a>5-zoeken
 
 Voer nadat het indexeren is voltooid query's uit waarmee de inhoud van afzonderlijke velden wordt geretourneerd. Standaard worden de belangrijkste 50 resultaten door Azure Cognitive Search geretourneerd. De voorbeeldgegevens zijn beperkt, dus de standaardinstelling werkt prima. Als u echter werkt met grotere gegevenssets, moet u mogelijk parameters opnemen in de queryreeks om meer resultaten te retourneren. Zie [pagina resultaten in Azure Cognitive Search](search-pagination-page-layout.md)voor instructies.
 
-Voer als verificatiestap query's uit op de index voor alle velden.
+Als verificatie stap haalt u de index definitie op waarin alle velden worden weer gegeven.
 
 ```python
-# Query the index for all fields
+# Query the service for the index definition
 r = requests.get(endpoint + "/indexes/" + index_name,
                  headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
@@ -477,13 +512,13 @@ U kunt GET of POST gebruiken, afhankelijk van de complexiteit en lengte van de q
 
 ## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
 
-In de vroege experimentele stadia van de ontwikkeling van pijp lijnen is het verwijderen van de objecten uit Azure Cognitive Search de meest praktische benadering van het maken van een nieuwe fase en staat u toe dat uw code opnieuw wordt gemaakt. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+In de vroege stadia van de ontwikkeling is het praktisch om objecten uit Azure Cognitive Search te verwijderen en uw code toe te staan om ze opnieuw samen te stellen. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
 
 Uw documenten opnieuw indexeren met de nieuwe definities:
 
-1. Verwijder de index om persistente gegevens te verwijderen. Verwijder de indexeerfunctie om deze in de service opnieuw te maken.
-2. Wijzig de vaardig heden-en index definities.
-3. Maak de index en indexeerfunctie opnieuw in de service om de pijplijn uit te voeren.
+1. Verwijder de Indexeer functie, de index en de vaardig heden.
+2. Wijzig de object definities.
+3. Objecten opnieuw maken in uw service. Als de Indexeer functie opnieuw wordt gemaakt, wordt de pijp lijn uitgevoerd. 
 
 U kunt de portal gebruiken om indexen, Indexeer functies en vaardig heden te verwijderen. Wanneer u de Indexeer functie verwijdert, kunt u eventueel de index, de vaardig heden en de gegevens bron selectief verwijderen.
 
@@ -498,7 +533,7 @@ r = requests.delete(endpoint + "/skillsets/" + skillset_name,
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-Naarmate uw code meer vormt krijgt, is het raadzaam om uw herbouwstrategie te verfijnen. Zie [How to rebuild an index](search-howto-reindex.md) (Een index herbouwen) voor meer informatie.
+De statuscode 204 wordt na verwijdering geretourneerd.
 
 ## <a name="takeaways"></a>Opgedane kennis
 

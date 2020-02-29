@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623408"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916503"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -168,6 +168,9 @@ De volgende tabel bevat de limieten die specifiek zijn voor de ondersteuning van
 | --- | --- |
 | Maximale geheugen grootte van MongoDB-query | 40 MB |
 | Maximale uitvoerings tijd voor MongoDB-bewerkingen| 30s |
+| Time-out voor niet-actieve verbinding voor sluiting verbinding aan server zijde * | 30 minuten |
+
+\* het is raadzaam dat client toepassingen de time-out voor niet-actieve verbindingen in de stuur programma-instellingen instellen op 2-3 minuten omdat de [standaardtime-out voor Azure LoadBalancer 4 minuten is](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Met deze time-out wordt voor komen dat niet-actieve verbindingen worden gesloten door een tussenliggende load balancer tussen de client computer en Azure Cosmos DB.
 
 ## <a name="try-cosmos-db-free-limits"></a>Probeer Cosmos DB gratis limieten
 

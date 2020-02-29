@@ -17,30 +17,30 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: df1602fe82b4a625dd5f01de2bd7236816fbb0ac
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987710"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164658"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
-Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt die videostreaming van broadcast-kwaliteit mogelijk maken, de toegankelijkheid en distributie verbeteren, inhoud analyseren en nog veel meer. Of u nu een app-ontwikkelaar, een oproep centrum, een overheids instantie of een entertainment bedrijf bent, Media Services helpt u bij het maken van apps die media-ervaringen van een uitstekende kwaliteit leveren aan grote doel groepen op de meest populaire mobiele apparaten en browsers.
+Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt voor het creëren van videostreaming van broadcast-kwaliteit, het verbeteren van toegankelijkheid en distributie, het analyseren van inhoud en nog veel meer. Of u nu een app-ontwikkelaar, een oproep centrum, een overheids instantie of een entertainment bedrijf bent, Media Services helpt u bij het maken van apps die media-ervaringen van een uitstekende kwaliteit leveren aan grote doel groepen op de meest populaire mobiele apparaten en browsers.
 
 De Media Services v3 Sdk's zijn gebaseerd op [Media Services v3 OpenAPI Specification (Swagger)](https://aka.ms/ams-v3-rest-sdk).
 
 > [!NOTE]
 > Op dit moment kunt u de Azure Portal niet gebruiken voor het beheren van v3-resources. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
-## <a name="compliance-privacy-and-security"></a>Naleving, privacy en beveiliging
+## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
+
+Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Azure Media Services en mag u Media Services of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk voor anderen kunnen zijn.
+
+Voordat u een video/afbeelding naar Media Services uploadt, moet u over alle juiste rechten beschikken voor het gebruik van de video/afbeelding, inclusief, indien vereist door de wet, alle vereiste mede werkers (indien van toepassing) in de video/afbeelding, voor gebruik, verwerking en opslag van hun gegevens in Media Services en Azure. Sommige jurisdicties kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde gegevens categorieën, zoals biometrische gegevens. Voordat u Media Services en Azure gebruikt voor het verwerken en opslaan van gegevens die onder bijzondere wettelijke vereisten vallen, moet u ervoor zorgen dat u voldoet aan de wettelijke vereisten die voor u van toepassing kunnen zijn.
+
+Ga naar het [vertrouwens centrum](https://www.microsoft.com/trust-center/?rtc=1)van micro soft voor meer informatie over naleving, privacy en beveiliging in Media Services. Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft, het verwerken en bewaren van gegevens, inclusief de manier waarop u uw gegevens kunt verwijderen, de [Privacy verklaring](https://privacy.microsoft.com/PrivacyStatement), de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") en de [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Door Media Services te gebruiken, gaat u ermee akkoord dat u bent gebonden aan de OST, DPA en de privacyverklaring.
  
-Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetten, in het gebruik van Azure Media Services en mag u Azure Media Services of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk voor anderen is. 
-
-Voordat u Video's/installatie kopieën, inclusief biometrische gegevens, uploadt naar Media Services voor verwerking en opslag, moet u (1) alle juiste rechten hebben op de Video's/installatie kopieën. en (2) hebben alle passende toestemmingen van de afzonderlijke (en) in de Video's, waardoor de biometrische gegevens in Media Services kunnen worden gebruikt en opgeslagen. 
-
-Ga naar het [vertrouwens centrum](https://www.microsoft.com/trust-center/?rtc=1)van Azure voor meer informatie over naleving, privacy en hoe micro soft uw gegevens beschermt en beveiligt in azure Media Services. Raadpleeg [de privacyverklaring van micro soft, de](https://privacy.microsoft.com/PrivacyStatement) [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") en de [addendum op gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") voor meer informatie over de privacy van micro soft en het afhandelen van uw gegevens. Informatie over het bewaren en verwijderen van klant gegevens is beschikbaar in de DPA. Door Azure Media Services te gebruiken, gaat u akkoord met de OST, de DPA en de privacyverklaring.
-
 ## <a name="what-can-i-do-with-media-services"></a>Wat kan ik doen met Media Services?
 
 Met Media Services kunt u diverse media werk stromen in de Cloud bouwen. Hieronder vindt u enkele voor beelden van wat u kunt doen met Media Services:
@@ -74,7 +74,7 @@ In de Quick starts worden de belangrijkste dag-1 instructies voor nieuwe klanten
 * [Video bestanden streamen-CLI](stream-files-cli-quickstart.md)
 * [Video bestanden streamen: node. js](stream-files-nodejs-quickstart.md)
 
-### <a name="tutorials"></a>Zelfstudie
+### <a name="tutorials"></a>Zelfstudies
 
 De zelf studies tonen op scenario's gebaseerde procedures voor een aantal van de belangrijkste Media Services taken.
 
@@ -88,7 +88,7 @@ De zelf studies tonen op scenario's gebaseerde procedures voor een aantal van de
 
 Gebruik [deze voorbeeld browser](https://docs.microsoft.com/samples/browse/?products=azure-media-services) om te bladeren door Azure Media Services code voorbeelden.
 
-### <a name="how-to-guides"></a>Handleidingen
+### <a name="how-to-guides"></a>Instructiegidsen
 
 Instructies voor het uitvoeren van een taak zijn voorbeeld codes. In deze sectie vindt u veel voor beelden. Hier volgen enkele hiervan:
 
@@ -106,4 +106,3 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 ## <a name="next-steps"></a>Volgende stappen
 
 [Meer informatie over basis concepten](concepts-overview.md)
-

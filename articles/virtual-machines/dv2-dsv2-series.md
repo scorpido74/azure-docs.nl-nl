@@ -2,19 +2,19 @@
 title: Dv2 en Dsv2-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de dv2-en Dsv2-serie.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: cdfb8e333e3834adf242029e9e00eac9cf9abebe
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493096"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164420"
 ---
-# <a name="dv2-and-dsv2-series"></a>Dv2 en DSv2-serie
+# <a name="dv2-and-dsv2-series"></a>Dv2- en DSv2-serie
 
 De dv2-en Dsv2-serie, een follow-on van de oorspronkelijke D-serie, is voorzien van een krachtigere CPU en een optimale configuratie van CPU naar geheugen, zodat deze geschikt is voor de meeste productie werkbelastingen. De dv2-serie is ongeveer 35% sneller dan de D-serie. Dv2-serie wordt uitgevoerd op de Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met de Intel Turbo Boost-technologie 2,0. De Dv2-serie heeft dezelfde geheugen- en schijfconfiguraties als de D-serie.
 
@@ -27,6 +27,10 @@ ACU: 210-250
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Max. aantal gegevensschijven | Door Voer: IOPS | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -45,6 +49,10 @@ ACU: 210-250
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|

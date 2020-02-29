@@ -1,27 +1,41 @@
 ---
 title: Bekende problemen met Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Meer informatie over de beperkingen en bekende problemen met Azure Data Lake Storage Gen2
+description: Meer informatie over beperkingen en bekende problemen met Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834951"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919608"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
-Dit artikel bevat een overzicht van de functies en hulpprogram ma's die nog niet worden ondersteund of die slechts gedeeltelijk worden ondersteund met opslag accounts die een hiërarchische naam ruimte (Azure Data Lake Storage Gen2) hebben.
+In dit artikel worden beperkingen en bekende problemen met Azure Data Lake Storage Gen2 beschreven.
 
-<a id="blob-apis-disabled" />
+## <a name="supported-blob-storage-features"></a>Ondersteunde functies van Blob-opslag
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>Problemen en beperkingen bij het gebruik van BLOB-Api's
+Een toenemend aantal functies voor Blob Storage werkt nu met accounts die een hiërarchische naam ruimte hebben. Zie [Blob Storage-functies die beschikbaar zijn in azure data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)voor een volledige lijst.
+
+## <a name="supported-azure-service-integrations"></a>Ondersteunde Azure-service-integraties
+
+Data Lake Storage Gen2 ondersteunt verschillende Azure-Services die u kunt gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. Zie [Azure-Services die ondersteuning bieden voor Azure data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)voor een lijst met ondersteunde Azure-Services.
+
+Zie [Azure-Services die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-azure-services.md).
+
+## <a name="supported-open-source-platforms"></a>Open source-platforms ondersteund
+
+Data Lake Storage Gen2 ondersteuning voor verschillende open source-platforms. Zie voor een volledige lijst [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
+
+Zie [open-source platforms die Azure data Lake Storage Gen2 ondersteunen](data-lake-storage-supported-open-source-platforms.md).
+
+## <a name="blob-storage-apis"></a>BLOB storage-API 's
 
 BLOB-Api's en Data Lake Storage Gen2-Api's kunnen op dezelfde gegevens worden gebruikt.
 
@@ -48,38 +62,57 @@ Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchi
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="filesystem-support-in-sdks"></a>Bestandssysteem ondersteuning in Sdk's
+## <a name="file-system-support-in-sdks"></a>Ondersteuning voor bestands systemen in Sdk's
 
-- [.Net](data-lake-storage-directory-file-acl-dotnet.md)-, [Java](data-lake-storage-directory-file-acl-java.md) -en [python](data-lake-storage-directory-file-acl-python.md) -ondersteuning bevinden zich in de open bare preview. Andere Sdk's worden momenteel niet ondersteund.
+- [.Net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) , [python](data-lake-storage-directory-file-acl-python.md)en [Java script](data-lake-storage-directory-file-acl-javascript.md) en ondersteuning zijn beschikbaar als open bare preview. Andere Sdk's worden momenteel niet ondersteund.
 - Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
 
-## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Bestandssysteem ondersteuning in Power shell en Azure CLI
+## <a name="file-system-support-in-powershell-and-azure-cli"></a>Ondersteuning voor bestands systemen in Power shell en Azure CLI
 
 - [Power shell](data-lake-storage-directory-file-acl-powershell.md) en [Azure cli](data-lake-storage-directory-file-acl-cli.md) -ondersteuning zijn beschikbaar als open bare preview.
 - Het ophalen en instellen van ACL-bewerkingen is momenteel niet recursief.
 
-## <a name="support-for-other-blob-storage-features"></a>Ondersteuning voor andere Blob Storage-functies
+## <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
 
-De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet worden ondersteund of die slechts gedeeltelijk worden ondersteund met opslag accounts die een hiërarchische naam ruimte (Azure Data Lake Storage Gen2) hebben.
+* Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund.  
 
-| Functie/hulp programma    | Meer informatie    |
-|--------|-----------|
-| **Account-failover** |Nog niet ondersteund|
-| **AzCopy** | Versie-specifieke ondersteuning <br><br>Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.|
-| **Beheer beleid voor Azure Blob Storage levenscyclus** | Levenscyclus beheer beleid wordt ondersteund (preview-versie).  Meld u aan voor de preview van levenscyclus beheer-beleid en Archive Access [-laag.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)   <br><br>Alle toegangs lagen worden ondersteund. De Access-laag voor het archief is momenteel beschikbaar als preview-versie. Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund.  Er zijn momenteel een aantal fouten die het levenscyclus beheer beleid en de Access-laag voor archieven beïnvloeden.  |
-| **Azure Content Delivery Network (CDN)** | Nog niet ondersteund|
-| **Azure Search** |Ondersteund (preview-versie)|
-| **Azure-opslagverkenner** | Versie-specifieke ondersteuning. <br><br>Gebruik alleen versies `1.6.0` of hoger. <br> Er is momenteel een opslag fout die van invloed is op de versie `1.11.0` die kan leiden tot verificatie fouten in bepaalde scenario's. Er wordt een oplossing voor de opslag fout geïmplementeerd, maar als tijdelijke oplossing wordt u aangeraden versie `1.10.x` te gebruiken die beschikbaar is als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` wordt niet beïnvloed door de opslag fout.|
-| **BLOB-container-Acl's** |Nog niet ondersteund|
-| **Blobfuse** |Nog niet ondersteund|
-| **Aangepaste domeinen** |Nog niet ondersteund|
-| **Storage Explorer in de Azure Portal** | Beperkte ondersteuning. Acl's worden nog niet ondersteund. |
-| **Registratie in diagnoselogboek** |Diagnostische logboeken worden ondersteund (preview). <br><br>Azure Storage Explorer 1,10. x kan niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
-| **Onveranderbare opslag** |Nog niet ondersteund <br><br>Onveranderbare opslag biedt de mogelijkheid om gegevens op te slaan in een [worm (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
-| **Lagen op object niveau** |De lagen cool en Archive worden ondersteund. De Archive-laag is beschikbaar als preview-versie. Alle andere toegangs lagen worden nog niet ondersteund. <br><br> Er zijn momenteel enkele fouten die van invloed zijn op de toegangs laag voor het archief.  Meld u aan voor de preview-versie van de Access [-laag voor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)het archief.|
-| **Statische websites** |Nog niet ondersteund <br><br>Met name de mogelijkheid om bestanden te leveren aan [statische websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Toepassingen van derden** | Beperkte ondersteuning <br><br>Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2. <br>Toepassingen die BLOB-Api's aanroepen, werken waarschijnlijk.|
-|**Voorlopig verwijderen** |Nog niet ondersteund|
-| **Versie functies** |Nog niet ondersteund <br><br>Dit omvat het [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)en andere versies van functies, zoals [moment opnamen](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
+* Er zijn momenteel een aantal fouten die het levenscyclus beheer beleid en de Access-laag voor archieven beïnvloeden. 
+
+## <a name="diagnostic-logs"></a>Diagnostische logboeken
+
+Azure Storage Explorer 1,10. x kan niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
+
+## <a name="blobfuse"></a>Blobfuse
+
+Blobfuse wordt niet ondersteund.
+
+
+
+<a id="known-issues-tools" />
+
+## <a name="azcopy"></a>AzCopy
+
+Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.
+
+<a id="storage-explorer" />
+
+## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
+
+Gebruik alleen versies `1.6.0` of hoger. Er is momenteel een opslag fout die van invloed is op de versie `1.11.0` die in bepaalde scenario's verificatie fouten kan veroorzaken. Er wordt een oplossing voor de opslag fout geïmplementeerd, maar als tijdelijke oplossing wordt u aangeraden versie `1.10.x` te gebruiken die beschikbaar is als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` wordt niet beïnvloed door de opslag fout.
+
+<a id="explorer-in-portal" />
+
+## <a name="storage-explorer-in-the-azure-portal"></a>Storage Explorer in azure Portal
+
+Acl's worden nog niet ondersteund.
+
+<a id="third-party-apps" />
+
+## <a name="thirdpartyapplications"></a>Toepassingen van derden
+
+Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2 toepassingen die BLOB-Api's aanroepen, waarschijnlijk zullen werken.
+
+
+
 
 

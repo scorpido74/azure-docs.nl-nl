@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 3849106fbc488f456a4d267d0ccef76647c1939f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981314"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918237"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan geen extern bureaublad met een virtuele machine omdat de netwerkinterface is uitgeschakeld
 
 In dit artikel wordt uitgelegd hoe u een probleem in die u niet een extern bureaublad-verbinding naar Azure Windows Virtual Machines (VM's) als de netwerkinterface is uitgeschakeld op te lossen.
 
-> [!NOTE]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel bevat informatie over het Resource Manager-implementatiemodel, dat wordt u aangeraden voor nieuwe implementaties in plaats van het klassieke implementatiemodel.
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -32,14 +30,14 @@ U kunt een RDP-verbinding of een ander type verbinding met een andere poort aanb
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
+Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
 
-Seriële besturingselement gebruiken om in te schakelen de interface voor de virtuele machine, of [opnieuw instellen van de netwerkinterface](#reset-network-interface) voor de virtuele machine.
+Als u de interface voor de virtuele machine wilt inschakelen, gebruikt u serieel beheer of de [netwerk interface opnieuw instellen](#reset-network-interface) voor de virtuele machine.
 
 ### <a name="use-serial-control"></a>Seriële besturingselement gebruiken
 
-1. Verbinding maken met [seriële Console- en CMD-instantie openen](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Als de seriële Console is niet ingeschakeld op de virtuele machine, Zie [opnieuw instellen van de netwerkinterface](#reset-network-interface).
+1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](#reset-network-interface).
 2. Controleer de status van de netwerkinterface:
 
         netsh interface show interface
@@ -64,4 +62,4 @@ Seriële besturingselement gebruiken om in te schakelen de interface voor de vir
 
 ## <a name="reset-network-interface"></a>De netwerkinterface opnieuw instellen
 
-Als u wilt herstellen van de netwerkinterface, wijzigt u het IP-adres naar een ander IP-adres dat beschikbaar is in het Subnet. U doet dit door Azure portal of Azure PowerShell te gebruiken. Zie voor meer informatie, [opnieuw instellen van de netwerkinterface](reset-network-interface.md).
+Als u wilt herstellen van de netwerkinterface, wijzigt u het IP-adres naar een ander IP-adres dat beschikbaar is in het Subnet. U doet dit door Azure portal of Azure PowerShell te gebruiken. Zie [netwerk interface opnieuw instellen](reset-network-interface.md)voor meer informatie.

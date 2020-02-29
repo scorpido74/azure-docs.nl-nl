@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 2a1a9b1973ded5db7182fb1898fc7222904c39c3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 1811cc54c3554d62b22a7ea8816aa5af1876422c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863958"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163621"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor .NET
 
@@ -85,7 +85,6 @@ Vanuit de projectmap:
 Hier volgt de code:
 
 ```csharp
-using Azure.Storage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using System;
@@ -124,7 +123,7 @@ Gebruik de volgende .NET-klassen om te communiceren met deze resources:
 * [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
 * [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): de klasse `BlobDownloadInfo` vertegenwoordigt de eigenschappen en inhoud die zijn geretourneerd door het downloaden van een blob.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor .NET:
 
@@ -181,7 +180,7 @@ Het volgende code fragment:
 
 1. Hiermee maakt u een tekst bestand in de lokale *gegevens* Directory.
 1. Hiermee wordt een verwijzing naar een [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) -object opgehaald door de methode [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) in de container aan te roepen vanuit de sectie [een container maken](#create-a-container) .
-1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de methode [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) aan te roepen. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
+1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de methode [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) aan te roepen. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
 
 Voeg deze code toe aan het einde van de `Main` methode:
 
@@ -201,7 +200,7 @@ Console.WriteLine("Uploading to Blob storage as blob:\n\t {0}\n", blobClient.Uri
 
 // Open the file and upload its data
 using FileStream uploadFileStream = File.OpenRead(localFilePath);
-await blobClient.UploadAsync(uploadFileStream);
+await blobClient.UploadAsync(uploadFileStream, true);
 uploadFileStream.Close();
 ```
 

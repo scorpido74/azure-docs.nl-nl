@@ -2,19 +2,19 @@
 title: Dav4 en Dasv4-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de Dav4-en Dasv4-serie.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: f371281e4072902f9946eb9fd107b68a1e4bf4f6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493876"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162176"
 ---
-# <a name="dav4-and-dasv4-series"></a>Dav4 en Dasv4-serie
+# <a name="dav4-and-dasv4-series"></a>Dav4- en Dasv4-serie
 
 De Dav4-serie en de Dasv4-serie zijn nieuwe grootten die gebruikmaken van de 2.35 GHz EPYC<sup>TM</sup> 7452-processor van AMD in een configuratie met meerdere threads, met maxi maal 256 MB L3-cache van 8 GB aan de L3-cache tot elke 8 kernen die de klant opties verhogen voor het uitvoeren van hun werk belastingen voor algemeen gebruik. De Dav4-serie en de Dasv4-serie hebben dezelfde geheugen-en schijf configuraties als de D & Dsv3-serie.
 
@@ -25,6 +25,10 @@ ACU: 230-260
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 De grootte van de Dav4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een maximale maximum frequentie van 3.35 GHz kan bereiken. De grootte van de Dav4-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium SSD wilt gebruiken, gebruikt u de Dasv4-grootten. De prijs-en facturerings meters voor Dasv4-grootten zijn gelijk aan die van de Dav4-serie.
 
@@ -48,6 +52,10 @@ ACU: 230-260
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 De grootte van de Dasv4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootte van de Dasv4-serie biedt een combi natie van vCPU, geheugen en tijdelijke opslag voor de meeste productiewerk belastingen.
 

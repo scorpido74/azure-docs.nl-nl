@@ -2,17 +2,17 @@
 title: NV-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines van de NV-serie.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 5b530fe33d28d6059c72a6a4ee6f14beee532fee
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a36911d147e64a54b5a15d3925e93188373c6429
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666893"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161921"
 ---
 # <a name="nv-series"></a>NV-serie
 
@@ -23,6 +23,10 @@ Elke GPU in NV-exemplaren wordt geleverd met een GRID-licentie. Deze licentie ge
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. aantal NIC's | Virtuele werk stations | Virtuele toepassingen |
 |---|---|---|---|---|---|---|---|---|---|

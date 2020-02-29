@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: 63f6be105def083354abf8c546d1c334f4daa70e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975401"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919903"
 ---
-# <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec Endpoint Protection installeren en configureren op een Windows VM
-> [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+# <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec-Endpoint Protection installeren en configureren op een Windows-VM
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 In dit artikel wordt beschreven hoe u de Symantec Endpoint Protection-client installeert en configureert op een bestaande virtuele machine (VM) waarop Windows Server wordt uitgevoerd. Deze volledige client omvat services zoals virus-en spyware beveiliging, firewall en bescherming tegen indringers. De-client wordt geïnstalleerd als een beveiligings extensie met behulp van de VM-agent.
 
@@ -64,7 +65,7 @@ U kunt als volgt controleren of de Symantec-beveiligings uitbreiding is geïnsta
 2. Klik voor Windows Server 2008 R2 op **Start > Symantec Endpoint Protection**. Voor Windows Server 2012 of Windows Server 2012 R2 typt u **Symantec**in het Start scherm en klikt u vervolgens op **Symantec Endpoint Protection**.
 3. Op het tabblad **status** van het venster **status-Symantec Endpoint Protection** past u updates of opnieuw opstarten toe, indien nodig.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 [Aanmelden bij een virtuele machine met Windows Server][Logon]
 
 [Azure VM-extensies en-functies][Ext]

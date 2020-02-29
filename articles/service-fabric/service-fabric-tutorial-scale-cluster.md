@@ -4,12 +4,12 @@ description: In deze zelf studie leert u hoe u een Service Fabric cluster kunt s
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f33f1a9b3e3132475f9a35a3703327b1a193d1e1
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639034"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921382"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen
 
@@ -37,7 +37,7 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Installeer [Azure Power shell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure cli](/cli/azure/install-azure-cli).
 * Een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) maken in Azure
 
@@ -845,7 +845,7 @@ Nadat u een Service Fabric cluster hebt gemaakt, kunt u het type van een cluster
 
 [Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] in deze zelf studie, zijn er drie knooppunt typen in het cluster.  
 
-De grootte van de virtuele machines in het tweede knooppunt type wordt ingesteld in de para meter *vmNodeType1Size* .  Wijzig de waarde van de para meter *vmNodeType1Size* van Standard_D2_V2 naar [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), waarmee de resources van elk VM-exemplaar worden verdubbeld.
+De grootte van de virtuele machines in het tweede knooppunt type wordt ingesteld in de para meter *vmNodeType1Size* .  Wijzig de waarde van de para meter *vmNodeType1Size* van Standard_D2_V2 naar [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), waarmee de resources van elk VM-exemplaar worden verdubbeld.
 
 De VM-SKU voor alle drie de knooppunt typen wordt ingesteld in de para meter *vmImageSku* .  Het wijzigen van de VM-SKU van een knooppunt type moet voorzichtig zijn en wordt niet aanbevolen voor het primaire knooppunt type.
 
@@ -862,7 +862,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Knoop punten toevoegen en verwijderen (uitschalen en schalen in)

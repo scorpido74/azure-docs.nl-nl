@@ -15,18 +15,20 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 24d8a0b88da44c53cb176244cd5fe7377514abda
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978120"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914786"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Een SQL Server virtuele machine inrichten met behulp van Azure PowerShell (klassiek)
 
+[!INCLUDE [classic-vm-deprecation](../../../../includes/classic-vm-deprecation.md)]
+
 In dit artikel worden de stappen beschreven voor het maken van een SQL Server virtuele machine in azure met behulp van de Power shell-cmdlets.
 
-> [!IMPORTANT] 
+> [!NOTE] 
 > Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 Voor de Resource Manager-versie van dit onderwerp raadpleegt [u een SQL Server virtuele machine inrichten met behulp van Azure PowerShell Resource Manager](../sql/virtual-machines-windows-ps-sql-create.md).
@@ -140,7 +142,7 @@ Maak ten slotte de virtuele machine met Power shell:
 > [!NOTE]
 > Zie de sectie **uw opdrachtset bouwen** in [gebruik Azure PowerShell voor het maken en vooraf configureren van op Windows gebaseerde virtual machines](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer uitleg en configuratie opties.
 
-## <a name="example-powershell-script"></a>Voorbeeld PowerShell-script
+## <a name="example-powershell-script"></a>Voor beeld Power shell-script
 
 Het volgende script geeft een voor beeld van een volledig script waarmee een **SQL Server 2016 RTM Enter prise op een virtuele machine met Windows Server 2012 R2** wordt gemaakt. Als u dit script gebruikt, moet u de eerste variabelen aanpassen op basis van de vorige stappen in dit onderwerp.
 

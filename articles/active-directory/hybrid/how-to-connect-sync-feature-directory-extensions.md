@@ -16,15 +16,16 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889809"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917910"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronisatie: Directory-extensies
-U kunt Directory-extensies gebruiken om het schema uit te breiden in Azure Active Directory (Azure AD) met uw eigen kenmerken van on-premises Active Directory. Met deze functie kunt u LOB-apps bouwen door gebruik te maken van kenmerken die u on-premises blijft beheren. Deze kenmerken kunnen worden gebruikt via [Azure AD Graph API Directory-extensies](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) of [Microsoft Graph](https://developer.microsoft.com/graph/). U kunt de beschik bare kenmerken weer geven met behulp van respectievelijk [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) en [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). U kunt deze functie ook gebruiken om dynamische groepen te maken in azure AD.
+U kunt Directory-extensies gebruiken om het schema uit te breiden in Azure Active Directory (Azure AD) met uw eigen kenmerken van on-premises Active Directory. Met deze functie kunt u LOB-apps bouwen door gebruik te maken van kenmerken die u on-premises blijft beheren. Deze kenmerken kunnen worden gebruikt via [uitbrei dingen](https://docs.microsoft.com/graph/extensibility-overview
+). U kunt de beschik bare kenmerken weer geven met behulp van [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer). U kunt deze functie ook gebruiken om dynamische groepen te maken in azure AD.
 
 Op dit moment gebruikt geen Office 365-werk belasting deze kenmerken.
 
@@ -61,16 +62,12 @@ Zorg ervoor dat u **alle toepassingen** selecteert om deze app weer te geven.
 
 De kenmerken worden voorafgegaan door **uitbrei ding \_{ApplicationId}\_** . ApplicationId heeft dezelfde waarde voor alle kenmerken in uw Azure AD-Tenant. U hebt deze waarde nodig voor alle andere scenario's in dit onderwerp.
 
-## <a name="viewing-attributes-using-graph"></a>Kenmerken weer geven met Graph
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Kenmerken weer geven met behulp van de Microsoft Graph-API
 
-Deze kenmerken zijn nu beschikbaar via de Azure AD-Graph API. U kunt query's uitvoeren met behulp van [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/).
-
-![Azure AD Graph Explorer](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-U kunt ook de kenmerken opvragen via de Microsoft Graph-API met behulp van [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#).
+Deze kenmerken zijn nu beschikbaar via de Microsoft Graph-API met behulp van [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> In Microsoft Graph moet u vragen om de kenmerken te retour neren. Selecteer de kenmerken als volgt expliciet: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID extension_9d98ed114c4840d298fad781915f27e4_division.
+> In de Microsoft Graph-API moet u vragen om de kenmerken te retour neren. Selecteer de kenmerken als volgt expliciet: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
 > Zie [Microsoft Graph: query parameters gebruiken](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)voor meer informatie.
 
@@ -99,4 +96,4 @@ Een van de handigste scenario's is het gebruik van deze kenmerken in dynamische 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over de [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md) configuratie.
 
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).

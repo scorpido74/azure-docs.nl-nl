@@ -2,17 +2,17 @@
 title: DC-serie-Azure Virtual Machines
 description: Specificaties voor de Vm's van de DC-serie.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: c4e141b7854925f5d12afce19481a6e9c2f8dd1d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 41b08a921b4cc71275c216e86e89e49b59fc950a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599221"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163740"
 ---
 # <a name="preview-dcv2-series"></a>Voor beeld: DCv2-serie
 
@@ -24,6 +24,10 @@ Voor beelden van use cases zijn onder meer het vertrouwelijk delen van gegevens,
 Premium Storage: ondersteund *
 
 Premium Storage caching: ondersteund *
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 \* Met uitzonde ring van Standard_DC8_v2
 

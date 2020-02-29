@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647647"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161871"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
@@ -31,7 +31,28 @@ Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit on
 
 ## <a name="limits"></a>Limieten
 
-* Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk. Voor het afhandelen van bestanden die groter zijn dan 15 MB, worden met SFTP-SSH-acties [bericht chunks](../logic-apps/logic-apps-handle-large-messages.md)ondersteund, met uitzonde ring van de actie bestand kopiëren, waarmee slechts 15 MB bestanden kunnen worden verwerkt. De actie **Bestands inhoud ophalen** maakt impliciet gebruik van bericht Chunking.
+* SFTP-SSH-acties die ondersteuning bieden voor [segmentering](../logic-apps/logic-apps-handle-large-messages.md) , kunnen bestanden van Maxi maal 1 GB afhandelen, terwijl SFTP-SSH-acties die geen ondersteuning bieden voor bestands verwerking, bestanden tot 50 MB kunnen verwerken. Hoewel de standaard grootte van het segment 15 MB is, kan deze grootte dynamisch worden gewijzigd, beginnend bij 5 MB en geleidelijk toenemen tot een maximum van 50 MB, op basis van factoren zoals netwerk latentie, Server reactietijd, enzovoort.
+
+  > [!NOTE]
+  > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), maakt de ISE-versie van deze connector gebruik van de [ISE-bericht limieten](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) in plaats daarvan.
+
+  Segment grootte is gekoppeld aan een verbinding, wat betekent dat u dezelfde verbinding kunt gebruiken voor acties die Chunking ondersteunen en vervolgens voor acties die geen ondersteuning bieden voor Chunking. In dit geval wordt de segment grootte voor acties die geen Chunking-bereik ondersteunen van 5 MB tot 50 MB. In deze tabel ziet u welke SFTP-SSH-acties Chunking ondersteunen:
+
+  | Bewerking | Ondersteuning voor segmentering |
+  |--------|------------------|
+  | **Bestand kopiëren** | Nee |
+  | **Bestand maken** | Ja |
+  | **Map maken** | Niet van toepassing |
+  | **Bestand verwijderen** | Niet van toepassing |
+  | **Archief naar map uitpakken** | Niet van toepassing |
+  | **Bestands inhoud ophalen** | Ja |
+  | **Bestands inhoud ophalen met behulp van pad** | Ja |
+  | **Meta gegevens van bestand ophalen** | Niet van toepassing |
+  | **Meta gegevens van bestand ophalen met behulp van pad** | Niet van toepassing |
+  | **Bestanden in de map weer geven** | Niet van toepassing |
+  | **Bestands naam wijzigen** | Niet van toepassing |
+  | **Bestand bijwerken** | Nee |
+  |||
 
 * SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering. Bij het aanvragen van bestands inhoud selecteren triggers alleen bestanden die 15 MB of kleiner zijn. Als u bestanden groter dan 15 MB wilt ophalen, volgt u dit patroon:
 
@@ -46,10 +67,6 @@ Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit on
 Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de SFTP-connector waarbij de SFTP-SSH-connector over de volgende mogelijkheden beschikt:
 
 * Maakt gebruik van de [SSH.net-bibliotheek](https://github.com/sshnet/SSH.NET), een open-source SSH-bibliotheek (Secure Shell) die .net ondersteunt.
-
-* Met SFTP-SSH-acties kunnen standaard bestanden worden gelezen of geschreven die *1 GB of kleiner* zijn, maar slechts in *15 MB* segmenten tegelijk.
-
-  Voor het verwerken van bestanden die groter zijn dan 15 MB, kunnen SFTP-SSH-acties gebruikmaken van [bericht Chunking](../logic-apps/logic-apps-handle-large-messages.md). De actie bestand kopiëren ondersteunt echter slechts 15 MB aan bestanden omdat die actie geen ondersteuning biedt voor het segmenteren van berichten. SFTP-SSH-Triggers bieden geen ondersteuning voor segmentering. Als u grote bestanden wilt uploaden, hebt u zowel lees-als schrijf machtigingen nodig voor de hoofdmap op uw SFTP-server.
 
 * Biedt de actie **map maken** , waarmee een map op het opgegeven pad op de sftp-server wordt gemaakt.
 

@@ -1,17 +1,17 @@
 ---
 title: Data flow-afvlakkings transformatie toewijzen
-description: Gegevens stroom-afvlakkings transformatie van Azure data factory-toewijzing
+description: Afvlakkings transformatie van gegevens stroom Azure Data Factory toewijzen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 435d2469be8eb572caa02e381d84ae4e9ac32f4b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77674842"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164726"
 ---
 # <a name="azure-data-factory-flatten-transformation"></a>Azure Data Factory Plate trans formatie
 
@@ -29,7 +29,7 @@ Kies eerst de matrix kolom die u wilt uitrollen en draaien.
 
 ## <a name="unroll-root"></a>Hoofdmap uitrollen
 
-Standaard wordt de structuur door ADF afgevlakt bij de niet-gedraaide matrix die u hierboven hebt gekozen. U kunt ook een ander deel van de hiërarchie kiezen om uit te vouwen.
+Standaard wordt de structuur door ADF afgevlakt bij de niet-gedraaide matrix die u hierboven hebt gekozen. U kunt ook een ander deel van de hiërarchie kiezen om uit te vouwen. ' Hoofdmap uitrollen ' is een optionele instelling.
 
 ## <a name="input-columns"></a>Invoer kolommen
 

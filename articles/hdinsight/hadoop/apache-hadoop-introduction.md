@@ -1,20 +1,19 @@
 ---
 title: Wat is de Apache Hadoop technologie stack? - Azure HDInsight
 description: Een inleiding tot HDInsight en de Apache Hadoop technologie stack en-onderdelen.
-keywords: azure hadoop, hadoop azure, hadoop-inleiding, hadoop-informatie, hadoop-technologiestack, inleiding tot hadoop, informatie over hadoop, wat is een hadoop-cluster, wat is hadoop-cluster, waar wordt hadoop voor gebruikt
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: e98a11d9aee1c4f76453dc1716f92514b021444f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088202"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917829"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Wat is Apache Hadoop in azure HDInsight?
 
@@ -24,15 +23,15 @@ Azure HDInsight is een volledig beheerde, open-source analyse service in de Clou
 
 Zie [onderdelen en versies die beschikbaar zijn met hdinsight](../hdinsight-component-versioning.md)voor een overzicht van de beschik bare Hadoop-technologie stack onderdelen op hdinsight. Zie de [pagina met Azure-functies voor HDInsight](https://azure.microsoft.com/services/hdinsight/) voor meer informatie over Hadoop in HDInsight.
 
-## <a id="whatis"></a>Wat is MapReduce
+## <a name="what-is-mapreduce"></a>Wat is MapReduce
 
 Apache Hadoop MapReduce is een software raamwerk voor het schrijven van taken waarmee enorme hoeveel heden gegevens worden verwerkt. Invoer gegevens worden in onafhankelijke segmenten gesplitst. Elk segment wordt parallel verwerkt over de knoop punten in uw cluster. Een MapReduce-taak bestaat uit twee functies:
 
-* **Mapper**: Gebruikt invoer gegevens, analyseert deze (meestal met filter-en sorteer bewerkingen) en verstuurt Tuples (sleutel-waardeparen)
+* **Mapper**: gebruikt invoer gegevens, analyseert deze (meestal met filter-en sorteer bewerkingen) en verzendt Tuples (sleutel-waardeparen)
 
-* **Reductier**: Verbruikt Tuples die worden verzonden door de Mapper en voert een samenvattings bewerking uit die een kleiner, gecombineerd resultaat van de toewijzings gegevens maakt
+* **Versmaller**: door de Mapper gegenereerde Tuples worden gebruikt en een samenvattings bewerking wordt uitgevoerd waarmee een kleiner, gecombineerd resultaat van de toewijzings gegevens wordt gemaakt
 
-In het volgende diagram ziet u een voor beeld van een basis aantal woorden MapReduce-taak:   
+In het volgende diagram ziet u een voor beeld van een basis aantal woorden MapReduce-taak:
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,7 +50,7 @@ Hadoop streaming communiceert met de Mapper en de verkorter dan STDIN en STDOUT.
 
     [key]/t[value]
 
-Zie [Hadoop streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html)voor meer informatie.
+Zie [Hadoop streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)voor meer informatie.
 
 Raadpleeg het volgende document voor voor beelden van het gebruik van Hadoop streaming met HDInsight:
 

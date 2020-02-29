@@ -2,17 +2,17 @@
 title: NVv3-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de NVv3-serie.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: a353abe8cdedb01138c8b633750b90bd9870e5d2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42c11ed41ca4d84f1acf137bbb681a2dbe24dfe2
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666876"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161904"
 ---
 # <a name="nvv3-series"></a>NVv3-serie
 
@@ -21,6 +21,10 @@ De virtuele machines uit de NVv3-serie worden aangedreven door [Nvidia Tesla M60
 Elke GPU in NVv3-exemplaren wordt geleverd met een GRID-licentie. Deze licentie geeft u de flexibiliteit om een NV-exemplaar te gebruiken als een virtueel werk station voor één gebruiker, of 25 gelijktijdige gebruikers kunnen verbinding maken met de virtuele machine voor een virtuele-toepassings scenario.
 
 Premium Storage caching: ondersteund
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's | Virtuele werk stations | Virtuele toepassingen |
 |---|---|---|---|---|---|---|---|---|---|---|

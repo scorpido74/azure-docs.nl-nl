@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 621188b3901bdea1a7ae50ac49c0e6f625a3e79a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251920"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915772"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,39 +43,6 @@ In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen di
 
 De meta gegevens en het antwoord op de service-die overeenkomen met de meta gegevens van de webservice en de voor spellingen van het model, worden vastgelegd in de Azure-toepassing Insights-traceringen onder het bericht `"model_data_collection"`. U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze gegevens of een [continue export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) naar een opslag account instellen voor een langere retentie of verdere verwerking. Model gegevens kunnen vervolgens worden gebruikt in de Azure Machine Learning voor het instellen van labels, retraining, uitleg, gegevens analyse of ander gebruik. 
 
-## <a name="use-the-azure-portal-to-configure"></a>De Azure Portal gebruiken om te configureren
-
-U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen. 
-
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com)
-
-1. Selecteer op het tabblad **implementaties** de service waar u Azure-toepassing Insights wilt inschakelen
-
-   [![lijst met Services op het tabblad implementaties](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. Selecteer **bewerken**
-
-   [knop bewerken ![](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in
-
-   [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
-
-### <a name="disable"></a>Uitschakelen
-
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com)
-1. Selecteer **implementaties**, selecteer de service en selecteer vervolgens **bewerken** .
-
-   [![de knop bewerken gebruiken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** in
-
-   [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
- 
 ## <a name="use-python-sdk-to-configure"></a>Python-SDK gebruiken om te configureren 
 
 ### <a name="update-a-deployed-service"></a>Een geïmplementeerde service bijwerken

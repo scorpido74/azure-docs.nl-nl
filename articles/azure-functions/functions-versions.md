@@ -3,12 +3,12 @@ title: Overzicht van Azure Functions runtime versies
 description: Azure Functions ondersteunt meerdere versies van de runtime. Leer over de verschillen tussen deze versies en hoe de juiste te kiezen.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539498"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919750"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
 
@@ -58,7 +58,7 @@ Er zijn enkele functies verwijderd, bijgewerkt of vervangen na versie 1. x. In d
 
 In versie 2.x zijn de volgende wijzigingen  aangebracht:
 
-* Sleutels voor het aanroepen van HTTP-eind punten worden altijd versleuteld opgeslagen in Azure Blob-opslag. In versie 1.x werden sleutels standaard opgeslagen in Azure File opslag. Bij het upgraden van een app vanaf versie 1.x naar versie 2.x worden bestaande geheimen in de bestandsopslag opnieuw ingesteld.
+* Sleutels voor het aanroepen van HTTP-eind punten worden altijd versleuteld opgeslagen in Azure Blob-opslag. In versie 1. x zijn sleutels standaard opgeslagen in azure file storage. Bij het upgraden van een app vanaf versie 1.x naar versie 2.x worden bestaande geheimen in de bestandsopslag opnieuw ingesteld.
 
 * De runtime versie 2.x bevat geen ingebouwde ondersteuning voor webhook-providers. Deze wijziging is doorgevoerd om de prestaties te verbeteren. U kunt HTTP-triggers blijven gebruiken als eind punten voor webhooks.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597691"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920566"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 
@@ -41,6 +41,9 @@ Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn beschikbaar in azure v
 - De installatie kopieën hebben geen recht, dus moet u abonnement-manager gebruiken om de Vm's te registreren en te abonneren om updates van Red Hat direct te ontvangen
 
 - Het is momenteel niet mogelijk om dynamisch te scha kelen tussen BYOS-en PAYG-facturerings modellen voor Linux-installatie kopieën. Het opnieuw implementeren van de VM vanaf de betreffende installatie kopie is vereist om te scha kelen tussen het facturerings model
+
+>[!NOTE]
+> De RHEL BYOS-installatie kopieën van generatie 2 zijn momenteel niet beschikbaar via de Marketplace-aanbieding. Als u een RHEL BYOS-installatie kopie van generatie 2 nodig hebt, gaat u naar het coud Access-dash board in Red Hat Subscription Management. Meer informatie vindt u in de [documentatie van Red Hat](https://access.redhat.com/articles/4847681).
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Vereisten en voor waarden voor toegang tot de Red Hat Gold-installatie kopieën
 

@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: db74415d3c6c5f6636a150d212bc2bc3d790fbec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686380"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912049"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Onboarding van Azure Security Center Standard voor verbeterde beveiliging
 Voer een upgrade uit naar Security Center Standard om te profiteren van verbeterde beveiligings beheer en bedreigings beveiliging voor uw hybride Cloud werkbelastingen. U kunt standaard gratis proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor Security Center voor meer informatie.
 
-Security Center Standard omvat:
+Security Center Standard-laag bevat:
 
-- **Hybride beveiliging** : krijg een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen. Pas het beveiligings beleid toe en evalueer voortdurend de beveiliging van uw hybride Cloud werkbelastingen om te zorgen voor naleving van de beveiligings standaarden. Verzamel, zoek en analyseer beveiligingsgegevens van verschillende bronnen, inclusief firewalls en andere oplossingen van partners.
-- **Geavanceerde detectie van bedreigingen** : Gebruik geavanceerde analyses en de Microsoft intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen. Maak gebruik van de ingebouwde gedragsanalyses en machine learning om aanvallen en zero-day exploits te identificeren. Controleer netwerken, computers en cloudservices op inkomende aanvallen en activiteiten na het schenden van de beveiliging. Stroomlijn het onderzoek met interactieve hulpprogramma's en contextuele bedreigingsinformatie.
+- **Hybride beveiliging** : krijg een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen. Pas het beveiligings beleid toe en evalueer voortdurend de beveiliging van uw hybride Cloud werkbelastingen om te zorgen voor naleving van de beveiligings standaarden. Verzamel, zoek en analyseer beveiligings gegevens uit verschillende bronnen, inclusief firewalls en andere partner oplossingen.
+- **Beveiligings waarschuwingen** : Gebruik geavanceerde analyses en de Microsoft intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen. Maak gebruik van ingebouwde gedrags analyses en machine learning om aanvallen te identificeren en gebruik te maken van een Zero-Day-aanval. Bewaak netwerken, machines en Cloud Services voor inkomende aanvallen en activiteit na inbreuk. Stroom lijn onderzoek met interactieve hulpprogram ma's en contextuele bedreigings informatie.
 - **Toegangs-en toepassings besturings elementen** : blok keer malware en andere ongewenste toepassingen door White List aanbevelingen toe te passen die zijn afgestemd op uw specifieke werk belastingen en die worden aangedreven door machine learning. Verminder de kwets baarheid van het netwerk met Just-in-time, gecontroleerde toegang tot beheer poorten op Azure-Vm's, waardoor de bloot stelling aan brute kracht en andere netwerk aanvallen drastisch wordt verkleind.
 
 ## <a name="detecting-unprotected-resources"></a>Niet-beveiligde bronnen detecteren
@@ -63,7 +63,7 @@ Security Center kan de beveiligingsstatus van uw niet-Azure-computers controlere
 1. Ga terug naar aan de **slag**.
 2. Selecteer het tabblad **Aan de slag**.
 
-   ![Niet-Azure](./media/security-center-onboarding/non-azure.png)
+   ![Non-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Klik op **Configureren** onder **Nieuwe niet-Azure-computers toevoegen**. Een lijst met uw Log Analytics-werkruimten wordt weergegeven. De lijst bevat, indien van toepassing, de standaardwerkruimte die is gemaakt door Security Center toen automatisch inrichten werd ingeschakeld. Selecteer deze werkruimte of een andere werkruimte die u wilt gebruiken.
 

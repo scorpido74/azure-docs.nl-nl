@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 55afeb52323ead7db8be7e8fd1dabc880328e888
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892631"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921535"
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell gebruiken voor het inschakelen van Azure Diagnostics in een virtuele machine met Windows
+# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Power shell gebruiken om Azure Diagnostics in te scha kelen op een virtuele machine met Windows
 
 Azure Diagnostics is de mogelijkheid binnen Azure om het verzamelen van diagnostische gegevens op een geïmplementeerde toepassing mogelijk te maken. U kunt de diagnostische extensie gebruiken om diagnostische gegevens te verzamelen, zoals toepassings Logboeken of prestatie meter items van een virtuele Azure-machine (VM) met Windows. 
 
@@ -62,6 +62,9 @@ De cmdlet retourneert *PublicSettings*, die de diagnostische configuratie bevat.
 De cmdlet [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) kan worden gebruikt om de diagnostische uitbrei ding van de virtuele machine te verwijderen.  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>De diagnostische uitbrei ding inschakelen als u het klassieke implementatie model gebruikt
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 U kunt de cmdlet [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) gebruiken om een uitbrei ding van diagnostische gegevens in te scha kelen op een virtuele machine die u maakt via het klassieke implementatie model. In het volgende voor beeld ziet u hoe u een nieuwe virtuele machine maakt op basis van het klassieke implementatie model waarin de diagnostische uitbrei ding is ingeschakeld.
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage

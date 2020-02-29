@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6d326b3cb5a964e43ce77ee459533a4271d5ed73
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152377"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919937"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
 
@@ -59,6 +59,8 @@ Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor 
     - **Eén para meter**
 
       Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven. U hebt deze waarden mogelijk geleerd door te experimenteren of ze als richt lijn te ontvangen.
+
+    - **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren. 
 
 
 

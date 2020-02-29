@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749880"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919410"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Meer informatie over het opnieuw opstarten van het systeem voor Azure VM
 
@@ -30,10 +30,7 @@ De beste manier om een toepassing die wordt uitgevoerd op Azure te beveiligen te
 
 U wordt aangeraden twee of meer virtuele machines in een beschikbaarheidsset te groeperen om dit niveau van redundantie voor uw toepassing te bieden. Deze configuratie zorgt ervoor dat tijdens een geplande of ongeplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan het 99,95 procent van [Azure Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Raadpleeg de volgende artikelen voor meer informatie over beschikbaarheids sets:
-
-- [De beschik baarheid van Vm's beheren](../windows/manage-availability.md)
-- [De beschik baarheid van Vm's configureren](../windows/classic/configure-availability.md)
+Zie [de beschik baarheid van virtuele machines beheren](../windows/manage-availability.md) voor meer informatie over beschikbaarheids sets.
 
 ## <a name="resource-health-information"></a>Resource Health informatie
 

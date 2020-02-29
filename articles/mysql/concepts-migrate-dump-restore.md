@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770931"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163774"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-data base migreren naar Azure Database for MySQL met dump en herstel
 In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-ups en het herstellen van data bases in uw Azure Database for MySQL
@@ -22,10 +22,10 @@ In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-u
 Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 - [Azure Database for MySQL-server maken-Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) -opdracht regel programma dat op een computer is geïnstalleerd.
-- MySQL Workbench [MySQL Workbench down load](https://dev.mysql.com/downloads/workbench/), Toad, Navicat of een ander mysql-hulp programma van derden om dump-en herstel opdrachten uit te voeren.
+- MySQL Workbench [MySQL Workbench down load](https://dev.mysql.com/downloads/workbench/) of een ander mysql-hulp programma van derden om dump-en herstel opdrachten uit te voeren.
 
 ## <a name="use-common-tools"></a>Algemene hulpprogram ma's gebruiken
-Gebruik algemene hulpprogram ma's, zoals MySQL Workbench, mysqldump, Toad of Navicat, om gegevens op afstand te verbinden en te herstellen in Azure Database for MySQL. Gebruik deze hulpprogram ma's op de client computer met een Internet verbinding om verbinding te maken met de Azure Database for MySQL. Gebruik een met SSL versleutelde verbinding voor best practices voor beveiliging, Zie [SSL-connectiviteit ook configureren in azure database for MySQL](concepts-ssl-connection-security.md). U hoeft de dump bestanden niet te verplaatsen naar een speciale Cloud locatie wanneer u migreert naar Azure Database for MySQL. 
+Gebruik veelvoorkomende hulpprogram ma's en hulpprogram ma's zoals MySQL Workbench of mysqldump om gegevens extern te verbinden en te herstellen in Azure Database for MySQL. Gebruik deze hulpprogram ma's op de client computer met een Internet verbinding om verbinding te maken met de Azure Database for MySQL. Gebruik een met SSL versleutelde verbinding voor best practices voor beveiliging, Zie [SSL-connectiviteit ook configureren in azure database for MySQL](concepts-ssl-connection-security.md). U hoeft de dump bestanden niet te verplaatsen naar een speciale Cloud locatie wanneer u migreert naar Azure Database for MySQL. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Veelvoorkomende toepassingen voor dump en herstel
 U kunt MySQL-hulpprogram ma's, zoals mysqldump en mysqlpump, gebruiken om data bases te dumpen en te laden in een Azure MySQL-data base in verschillende algemene scenario's. In andere scenario's kunt u in plaats daarvan de benadering voor [importeren en exporteren](concepts-migrate-import-export.md) gebruiken.
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Een Data Base maken op de doel-Azure Database for MySQL server
-Maak een lege data base op de doel Azure Database for MySQL server waarnaar u de gegevens wilt migreren. Gebruik een hulp programma zoals MySQL Workbench, Toad of Navicat om de data base te maken. De data base kan dezelfde naam hebben als de Data Base waarin de dumping gegevens zijn opgenomen of u kunt een Data Base met een andere naam maken.
+Maak een lege data base op de doel Azure Database for MySQL server waarnaar u de gegevens wilt migreren. Gebruik een hulp programma zoals MySQL Workbench om de data base te maken. De data base kan dezelfde naam hebben als de Data Base waarin de dumping gegevens zijn opgenomen of u kunt een Data Base met een andere naam maken.
 
 Als u verbinding wilt krijgen, zoekt u de verbindings gegevens in het **overzicht** van uw Azure database for MySQL.
 

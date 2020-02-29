@@ -1,5 +1,6 @@
 ---
-title: Aan de slag met aangepaste beleids regels-Azure Active Directory B2C
+title: Aan de slag met aangepaste beleidsregels
+titleSuffix: Azure AD B2C
 description: Meer informatie over het aan de slag gaan met aangepaste beleids regels in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 02/28/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 04978b561e3b0057318d08146f344411dec55ee4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114034"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161666"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ ms.locfileid: "77114034"
 
 - Als u nog geen account hebt, [maakt u een Azure AD B2C-Tenant](tutorial-create-tenant.md) die is gekoppeld aan uw Azure-abonnement.
 - [Registreer uw toepassing](tutorial-register-applications.md) in de Tenant die u hebt gemaakt, zodat deze kan communiceren met Azure AD B2C.
-- Voer de stappen in [instellen registratie in en meld u aan met een Facebook-account](identity-provider-facebook.md) om een Facebook-toepassing te configureren.
+- Voer de stappen in [instellen registratie in en meld u aan met een Facebook-account](identity-provider-facebook.md) om een Facebook-toepassing te configureren. Hoewel een Facebook-toepassing niet vereist is voor het gebruik van aangepast beleid, wordt deze in deze walkthrough gebruikt om aan te tonen dat sociale aanmelding in een aangepast beleid wordt ingeschakeld.
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
@@ -75,7 +76,7 @@ U moet deze twee toepassingen in uw Azure AD B2C-Tenant slechts eenmaal registre
 
 Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app-registraties (verouderde)** ervaring of onze nieuwe geïntegreerde **app-registraties (preview-versie)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
@@ -86,7 +87,7 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app
 1. Voer voor **aanmeldings-URL**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`in, waarbij `your-tenant-name` de domein naam van de Azure AD B2C Tenant is. Alle Url's moeten nu gebruikmaken van [b2clogin.com](b2clogin.md).
 1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
 1. Voer bij **naam**`IdentityExperienceFramework`in.
@@ -110,7 +111,7 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>De ProxyIdentityExperienceFramework-toepassing registreren
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Selecteer in **app-registraties (verouderd)** de optie **nieuwe toepassing registreren**.
 1. Voer bij **naam**`ProxyIdentityExperienceFramework`in.
@@ -122,7 +123,7 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 1. Schakel het selectie vakje naast **toegangs IdentityExperienceFramework**in, klik op **selecteren**en klik vervolgens op **gereed**.
 1. Selecteer **machtigingen verlenen**en Bevestig door **Ja**te selecteren.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
 1. Voer bij **naam**`ProxyIdentityExperienceFramework`in.
@@ -221,6 +222,8 @@ Wanneer u de bestanden uploadt, voegt Azure het voor voegsel toe `B2C_1A_`.
 1. Meld u aan met hetzelfde account om te controleren of u de juiste configuratie hebt.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook toevoegen als een id-provider
+
+Zoals vermeld in [vereisten](#prerequisites), is Facebook niet vereist voor het gebruik van aangepast beleid, maar wordt hier *niet* gebruikt om te laten zien hoe u federatieve sociale aanmelding kunt inschakelen in een aangepast beleid.
 
 1. Vervang in het bestand `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** de waarde van `client_id` door de id van de Facebook-toepassing:
 

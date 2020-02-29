@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187689"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160808"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Een zelf-hostende IR configureren als proxy voor een Azure-SSIS IR in Azure Data Factory
 
@@ -165,7 +165,7 @@ De tweede faserings taken die op uw Azure-SSIS IR worden uitgevoerd, worden niet
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
-- Op dit moment worden alleen gegevensstroom taken met Open Database Connectivity (ODBC), OLEDB-of plat file-verbindings beheer en ODBC-, OLEDB-en platte bestands bronnen of OLEDB-bestemming ondersteund. 
+- Op dit moment worden alleen gegevensstroom taken met Open Database Connectivity (ODBC), OLEDB-of plat file-verbindings beheer en ODBC-, OLEDB-of platte bestands bronnen ondersteund. 
 - Er worden alleen Azure Blob Storage-gekoppelde services ondersteund die zijn geconfigureerd met de *account sleutel*, *Shared Access Signature (SAS) URI*of *Service-Principal* -verificatie.
 
 ## <a name="next-steps"></a>Volgende stappen

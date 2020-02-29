@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981339"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918220"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Extern bureaublad verbreekt regel matig de verbinding met Azure VM
 
 In dit artikel wordt uitgelegd hoe u veelvuldige verbindingen met een virtuele Azure-machine (VM) kunt oplossen via Remote Desktop Protocol RDP).
 
-> [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model te gebruiken.
 
 ## <a name="symptom"></a>Symptoom
 
@@ -42,7 +40,7 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 
 ### <a name="serial-control"></a>Seriële controle
 
-1. Verbinding maken met [seriële Console- en CMD-instantie openen](./serial-console-windows.md). Voer vervolgens de volgende opdrachten uit om de RDP-configuraties opnieuw in te stellen. Als de seriële console niet is ingeschakeld op uw virtuele machine, gaat u naar de volgende stap.
+1. Verbinding maken met de [seriële console en het Open cmd-exemplaar](./serial-console-windows.md). Voer vervolgens de volgende opdrachten uit om de RDP-configuraties opnieuw in te stellen. Als de seriële console niet is ingeschakeld op uw virtuele machine, gaat u naar de volgende stap.
 2. Verminder de RDP-beveiligingslaag in 0. Bij deze instelling wordt de communicatie tussen de server en de client gebruikt voor de systeem eigen RDP-versleuteling.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
@@ -89,10 +87,10 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 
 ### <a name="repair-the-vm-offline"></a>Herstel de virtuele machine offline
 
-1. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md).
-2. Nadat de besturingssysteemschijf is gekoppeld aan de virtuele machine voor herstel, zorg ervoor dat de schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+2. Nadat de besturingssysteem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
 3. Ga naar de map **\Windows\System32\Config** op de besturingssysteem schijf die u hebt gekoppeld. Kopieer alle bestanden in deze map als back-up als een terugdraai actie vereist is.
-4. Start de Register-Editor (regedit.exe).
+4. Start de REGI ster-editor (Regedit. exe).
 5. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **File** > **Component laden**:
 6. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** . Laad vervolgens de software component **\windows\system32\config\SOFTWARE** onder de sleutel **HKEY_LOCAL_MACHINE** . Voer **BROKENSOFTWARE**in als de naam van de Hive-software. 
 7. Open een opdracht prompt venster met verhoogde bevoegdheid (**als administrator uitvoeren**) en voer opdrachten uit in de resterende stappen om de RDP-configuraties opnieuw in te stellen. 
@@ -165,7 +163,7 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 18. Start de virtuele machine opnieuw op en probeer opnieuw verbinding te maken met behulp van RDP.
 
-## <a name="need-help"></a>Hebt u hulp nodig? 
+## <a name="need-help"></a>Hulp nodig? 
 Neem contact op met ondersteuning. Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1d17f9af5700df5458cc4373dfc5cd8fb7774f91
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949181"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912393"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
 
@@ -24,16 +24,7 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-In Azure Active Directory B2C (Azure AD B2C) worden de volgende opties ondersteund:
-
-- **Systeem eigen client**: gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker. Het apparaat kan een mobiele toepassing zijn die wordt uitgevoerd in een systeem eigen besturings systeem, zoals Android en iOS.
-- **Open bare client stroom**: alleen gebruikers referenties, verzameld door een toepassing, worden in de API-aanroep verzonden. De referenties van de toepassing worden niet verzonden.
-- **Nieuwe claims toevoegen**: de inhoud van het id-token kan worden gewijzigd om nieuwe claims toe te voegen.
-
-De volgende stromen worden niet ondersteund:
-
-- **Server-naar-server: voor**het systeem voor identiteits beveiliging is een betrouw bare IP-adres nodig dat door de aanroeper (de systeem eigen client) is verzameld als onderdeel van de interactie. In een API-aanroep aan de server zijde wordt alleen het IP-adres van de server gebruikt. Als een dynamische drempel van mislukte authenticaties wordt overschreden, kan het identiteits beschermings systeem een herhaald IP-adres identificeren als een aanvaller.
-- **Vertrouwelijke client stroom**: de client-id van de toepassing wordt gevalideerd, maar het toepassings geheim wordt niet gevalideerd.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Een gebruikers stroom van een resource-eigenaar maken
 
@@ -71,7 +62,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 | wachtwoord | Passxword1 |
 | grant_type | wachtwoord |
 | scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | token id_token |
 
 *Client_id* is de waarde die u eerder hebt genoteerd als de toepassings-id. *Offline_access* is optioneel als u een vernieuwings token wilt ontvangen. De gebruikers naam en het wacht woord die u gebruikt, moeten referenties zijn van een bestaande gebruiker in uw Azure AD B2C-Tenant.
@@ -109,8 +100,8 @@ Een POST-aanroep maken zoals deze wordt weer gegeven met de informatie in de vol
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* en *resource* zijn de waarden die u eerder hebt genoteerd als de toepassings-id. *Refresh_token* is het token dat u in de eerder genoemde authenticatie oproep hebt ontvangen.

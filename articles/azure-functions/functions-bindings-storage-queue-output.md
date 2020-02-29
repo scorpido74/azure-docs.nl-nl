@@ -6,16 +6,18 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 2c16cc965c1e7e98727170fd5896dd081482c692
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493499"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164641"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Queue Storage-uitvoer bindingen voor Azure Functions
 
 Azure Functions kunt nieuwe Azure Queue-opslag berichten maken door een uitvoer binding in te stellen.
+
+Zie het [overzicht](./functions-bindings-storage-queue.md)voor meer informatie over de installatie-en configuratie details.
 
 ## <a name="example"></a>Voorbeeld
 

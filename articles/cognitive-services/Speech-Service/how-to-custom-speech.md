@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424997"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918951"
 ---
 # <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
@@ -43,7 +43,7 @@ Dit diagram markeert de onderdelen waaruit de [Custom speech Portal](https://aka
 
 ## <a name="set-up-your-azure-account"></a>Uw Azure-account instellen
 
-Er is een abonnement op de spraak service vereist voordat u de [Custom speech Portal](https://speech.microsoft.com/customspeech) kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een standaard abonnement op spraak service: [een spraak abonnement maken](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Er is een abonnement op de spraak service vereist voordat u de [Custom speech Portal](https://speech.microsoft.com/customspeech) kunt gebruiken om een aangepast model te maken. Volg deze instructies voor het maken van een standaard abonnement op spraak service: [een spraak abonnement maken](get-started.md#new-resource).
 
 > [!NOTE]
 > Zorg ervoor dat u Standard (S0)-abonnementen maakt, maar gratis proef abonnementen (F0) worden niet ondersteund.

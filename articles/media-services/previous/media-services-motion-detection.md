@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083757"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913001"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Bewegingen detecteren met Azure Media Analytics
+
+> [!NOTE]
+> De **Azure Media Motion detector** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
  
 ## <a name="overview"></a>Overzicht
 
@@ -42,7 +45,7 @@ Wanneer u een taak met **Azure Media Motion detector**maakt, moet u een voor ins
 ### <a name="parameters"></a>Parameters
 U kunt de volgende para meters gebruiken:
 
-| Naam | Opties | Beschrijving | Standaard |
+| Name | Opties | Beschrijving | Standaard |
 | --- | --- | --- | --- |
 | sensitivityLevel |String:'low', 'medium', 'high' |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
 | frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
@@ -108,7 +111,7 @@ In de volgende tabel worden elementen van het JSON-uitvoer bestand beschreven.
 | events |Elk gebeurtenis fragment bevat de beweging die binnen die tijds duur is gedetecteerd. |
 | type |In de huidige versie is dit altijd ' 2 ' voor algemene beweging. Dit label biedt video-Api's de flexibiliteit voor het categoriseren van bewegingen in toekomstige versies. |
 | regionId |Zoals hierboven is uitgelegd, is dit altijd 0 in deze versie. Dit label geeft video-API de flexibiliteit om beweging in verschillende regio's in toekomstige versies te vinden. |
-| regio's |Verwijst naar het gebied in uw video waar u aandacht besteedt aan beweging. <br/><br/>-' id ' vertegenwoordigt het gebied regio – in deze versie is er slechts één, ID 0. <br/>-"type" vertegenwoordigt de vorm van de regio die u voor de beweging bevalt. Op dit moment worden "Rectangle" en "veelhoek" ondersteund.<br/> Als u ' Rectangle ' hebt opgegeven, heeft de regio dimensies in X, Y, width en height. De X-en Y-coördinaten vertegenwoordigen de linkerbovenhoek van de linker XY-coördinaten van de regio in een genormaliseerde schaal van 0,0 tot 1,0. De breedte en hoogte staan voor de grootte van de regio in een genormaliseerde schaal van 0,0 tot 1,0. In de huidige versie worden X, Y, width en height altijd vastgesteld op 0, 0 en 1, 1. <br/>Als u ' veelhoek ' hebt opgegeven, heeft de regio dimensies in punten. <br/> |
+| secties |Verwijst naar het gebied in uw video waar u aandacht besteedt aan beweging. <br/><br/>-' id ' vertegenwoordigt het gebied regio – in deze versie is er slechts één, ID 0. <br/>-"type" vertegenwoordigt de vorm van de regio die u voor de beweging bevalt. Op dit moment worden "Rectangle" en "veelhoek" ondersteund.<br/> Als u ' Rectangle ' hebt opgegeven, heeft de regio dimensies in X, Y, width en height. De X-en Y-coördinaten vertegenwoordigen de linkerbovenhoek van de linker XY-coördinaten van de regio in een genormaliseerde schaal van 0,0 tot 1,0. De breedte en hoogte staan voor de grootte van de regio in een genormaliseerde schaal van 0,0 tot 1,0. In de huidige versie worden X, Y, width en height altijd vastgesteld op 0, 0 en 1, 1. <br/>Als u ' veelhoek ' hebt opgegeven, heeft de regio dimensies in punten. <br/> |
 | fragmenten |De meta gegevens worden gesegmenteerd in verschillende segmenten die fragmenten worden genoemd. Elk fragment bevat een start, een duur, een intervalnummer en een of meer gebeurtenissen. Een fragment zonder gebeurtenissen houdt in dat er geen bewegingen zijn gedetecteerd tijdens de start tijd en duur. |
 | vier Kante haken [] |Elk haakje vertegenwoordigt één interval in de gebeurtenis. Lege haken voor dat interval betekent dat er geen beweging is gedetecteerd. |
 | locaties |In deze nieuwe vermelding onder gebeurtenissen wordt de locatie vermeld waarop de beweging heeft plaatsgevonden. Dit is specifieker dan de detectie zones. |
@@ -384,7 +387,7 @@ namespace VideoMotionDetection
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 [Azure Media Services Motion detector-blog](https://azure.microsoft.com/blog/motion-detector-update/)
 
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)

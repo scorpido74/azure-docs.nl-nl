@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152207"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921161"
 ---
 # <a name="module-k-means-clustering"></a>Module: K-betekent clustering
 
@@ -107,11 +107,11 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
   
     -   Als u de **modus trainer maken** instelt op **één para meter**, voegt u een gecodeerde gegevensset toe en traint u het model met behulp van de module [clustering model trainen](train-clustering-model.md) .  
   
-### <a name="results"></a>Resultaten
+## <a name="results"></a>Resultaten
 
 Nadat u klaar bent met het configureren en trainen van het model, hebt u een model dat u kunt gebruiken voor het genereren van scores. Er zijn echter meerdere manieren om het model te trainen en meerdere manieren om de resultaten weer te geven en te gebruiken: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Een moment opname van het model vastleggen in uw werk ruimte
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Een moment opname van het model vastleggen in uw werk ruimte
 
 Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebruikt:
 
@@ -121,7 +121,7 @@ Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebru
 
 Het opgeslagen model vertegenwoordigt de trainings gegevens op het moment dat u het model hebt opgeslagen. Als u later de trainings gegevens die in de pijp lijn worden gebruikt, bijwerkt, wordt het opgeslagen model niet bijgewerkt. 
 
-#### <a name="see-the-clustering-result-dataset"></a>De gegevensset van het cluster resultaat bekijken 
+### <a name="see-the-clustering-result-dataset"></a>De gegevensset van het cluster resultaat bekijken 
 
 Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebruikt:
 
@@ -142,3 +142,7 @@ U kunt dit probleem op een aantal manieren voor komen:
 -   Maak meerdere modellen, variërend van metrische gegevens of meer.  
   
 Over het algemeen is het mogelijk dat een wille keurige configuratie een lokaal geoptimaliseerde set clusters oplevert voor het clusteren van modellen. Met andere woorden, de set clusters die door het model wordt geretourneerd, is alleen geschikt voor de huidige gegevens punten en kan niet worden gegeneraliseerd met andere gegevens. Als u een andere initiële configuratie gebruikt, kan de K-betekent-methode een andere, superieure, configuratie hebben. 
+
+## <a name="next-steps"></a>Volgende stappen
+
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

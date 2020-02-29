@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102091"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918373"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Verbinding maken met een SQL Server virtuele machine in azure
 
@@ -39,7 +39,7 @@ Als u in de Azure Portal een SQL Server virtuele machine inricht, hebt u de moge
 
 De opties voor connectiviteit zijn onder andere:
 
-| Optie | Description |
+| Optie | Beschrijving |
 |---|---|
 | **Open** | Via Internet verbinding maken met SQL Server |
 | **Eigen** | Verbinding maken met SQL Server in hetzelfde virtuele netwerk |
@@ -59,7 +59,7 @@ Als u via Internet verbinding wilt maken met uw SQL Server data base-engine, sel
 > [!IMPORTANT]
 > Het TCP/IP-protocol wordt niet automatisch ingeschakeld voor de installatie kopieën van de virtuele machine voor de SQL Server Developer-en Express-edities. Voor ontwikkel aars en Express-edities moet u SQL Server Configuration Manager gebruiken om [het TCP/IP-protocol hand matig in te scha kelen](#manualtcp) nadat de virtuele machine is gemaakt.
 
-Elke client met Internet toegang kan verbinding maken met het SQL Server-exemplaar door ofwel het open bare IP-adres van de virtuele machine of een DNS-label op te geven dat aan dat IP-adres is toegewezen. Als de SQL Server poort 1433 is, hoeft u deze niet op te geven in de connection string. Met de volgende Connection String maakt u verbinding met een SQL-VM met `sqlvmlabel.eastus.cloudapp.azure.com` een DNS-label voor het gebruik van SQL-verificatie (u kunt ook het open bare IP-adres gebruiken).
+Elke client met Internet toegang kan verbinding maken met het SQL Server-exemplaar door ofwel het open bare IP-adres van de virtuele machine of een DNS-label op te geven dat aan dat IP-adres is toegewezen. Als de SQL Server poort 1433 is, hoeft u deze niet op te geven in de connection string. De volgende connection string maakt verbinding met een SQL-VM met een DNS-label van `sqlvmlabel.eastus.cloudapp.azure.com` met behulp van SQL-verificatie (u kunt ook het open bare IP-adres gebruiken).
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
@@ -135,9 +135,9 @@ Hoewel de portal opties biedt voor het automatisch configureren van connectivite
 
 De volgende tabel bevat de vereisten om verbinding te maken met SQL Server die worden uitgevoerd op een virtuele Azure-machine.
 
-| Vereiste | Description |
+| Vereiste | Beschrijving |
 |---|---|
-| [Verificatie modus SQL Server inschakelen](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | SQL Server-verificatie is vereist om extern verbinding te maken met de virtuele machine tenzij u Active Directory op een Virtual Network hebt geconfigureerd. |
+| [Verificatie modus SQL Server inschakelen](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server-verificatie is vereist om extern verbinding te maken met de virtuele machine tenzij u Active Directory op een Virtual Network hebt geconfigureerd. |
 | [Een SQL-aanmelding maken](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Als u SQL-verificatie gebruikt, hebt u een SQL-aanmelding nodig met een gebruikers naam en wacht woord die ook machtigingen voor uw doel database hebben. |
 | [TCP/IP-protocol inschakelen](#manualtcp) | SQL Server moet verbindingen via TCP toestaan. |
 | [Firewall regel inschakelen voor de SQL Server poort](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | De firewall op de virtuele machine moet binnenkomend verkeer op de SQL Server poort toestaan (standaard 1433). |

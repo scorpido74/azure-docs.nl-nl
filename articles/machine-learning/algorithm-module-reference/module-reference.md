@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 12/17/2019
-ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/22/2020
+ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162579"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920090"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer (preview)
 
 Deze referentie-inhoud bevat de technische achtergrond informatie over elk van de machine learning algoritmen en modules die beschikbaar zijn in Azure Machine Learning Designer (preview).
 
@@ -57,6 +57,7 @@ Zie voor hulp bij het kiezen van algoritmen
 | R-taal | Schrijf code en sluit deze in een module in om R met uw pijp lijn te integreren. | [R-script uitvoeren](execute-r-script.md) |
 | Tekstanalyse | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. | [N-gram functies uit tekst extra heren](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) |
 | Aanbeveling | Aanbevelings modellen bouwen. | [Aanbeveling evalueren](evaluate-recommender.md) <br/> [Aanbeveling van Score SVD](score-svd-recommender.md) <br/> [Train SVD-aanbeveling](train-SVD-recommender.md) |
+| Afwijkingsdetectie | Anomalie detectie modellen bouwen. | [Anomalie detectie op basis van PCA](pca-based-anomaly-detection.md) <br/> [Model voor afwijkings detectie trainen](train-anomaly-detection-model.md) |
 
 ## <a name="error-messages"></a>Foutberichten
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7f5f75385374b6949ee3ef5e5ef298b8d54cc36e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526243"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163247"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureCosmosDB** | Azure Cosmos DB. | Uitgaand | Ja | Ja |
 | **AzureDatabricks** | Azure Databricks. | Beide | Nee | Nee |
 | **AzureDataExplorerManagement** | Beheer van Azure Data Explorer. | Inkomend | Nee | Nee |
-| **AzureDataLake** | Azure Data Lake. | Uitgaand | Nee | Ja |
+| **AzureDataLake** | Azure Data Lake Storage Gen1. | Uitgaand | Nee | Ja |
 | **AzureEventGrid** | Azure Event Grid. <br/><br/>*Opmerking:* Deze tag behandelt Azure Event Grid-eind punten in VS Zuid-Centraal, VS Oost, VS Oost 2, VS West 2 en VS centraal. | Beide | Nee | Nee |
 | **AzureFrontDoor** | De voor deur van Azure. | Beide | Nee | Nee |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de labels **AzureActiveDirectory** en **AzureFrontDoor.** front-end. U kunt ook white list volgende Ip's (deze afhankelijkheid wordt binnenkort verwijderd): 13.107.6.181 & 13.107.9.181. | Uitgaand | Nee | Nee |

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 95bfa7b1918da09e4f5913eeb2b57c290b093efe
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904954"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162378"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager sjablonen voor Azure Logic Apps implementeren
 
@@ -20,9 +20,9 @@ Nadat u een Azure Resource Manager sjabloon voor uw logische app hebt gemaakt, k
 * [Azure Portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
-* [Azure-CLI](#cli)
+* [Azure CLI](#cli)
 * [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
-* [Azure DevOps Azure-pijp lijnen](#azure-pipelines)
+* [Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
 
@@ -96,6 +96,7 @@ Zie de volgende onderwerpen en voor beelden voor meer informatie over doorlopend
 * [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voor beeld: een actie van een functie-app instellen voor Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voor beeld: verbinding maken met een integratie account van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Voor beeld: Azure-pijp lijnen organiseren met behulp van Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 Hier volgen de algemene stappen op hoog niveau voor het gebruik van Azure-pijp lijnen:
 

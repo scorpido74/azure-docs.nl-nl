@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651080"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921552"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Active Directory authenticatie via SMB voor Azure-bestands shares inschakelen
 
@@ -62,7 +62,7 @@ Voordat u AD-verificatie voor Azure-bestands shares inschakelt, moet u ervoor zo
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Azure Files AD-verificatie in de [meeste open bare regio's](https://azure.microsoft.com/global-infrastructure/regions/)beschikbaar is, is de subset van regio's die deze nog niet beschikbaar is:
+Azure Files AD-verificatie (preview) is beschikbaar in de [meeste open bare regio's](https://azure.microsoft.com/global-infrastructure/regions/) , met uitzonde ring van:
 
 - VS - west
 - VS - west 2
@@ -130,7 +130,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 #Register the target storage account with your active directory environment under the target OU
-join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationUnitName "<ou-name-here>"
+join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
 De volgende beschrijving bevat een overzicht van alle acties die worden uitgevoerd wanneer de `join-AzStorageAccountForAuth` cmdlet wordt uitgevoerd. U kunt deze stappen hand matig uitvoeren als u de opdracht liever niet gebruikt:

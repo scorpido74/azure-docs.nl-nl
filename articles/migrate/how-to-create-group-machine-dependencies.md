@@ -3,12 +3,12 @@ title: Afhankelijkheids visualisatie instellen in Azure Migrate
 description: Hierin wordt het instellen van afhankelijkheids visualisatie in Azure Migrate server-evaluatie beschreven.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589040"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916282"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
 
@@ -76,7 +76,7 @@ De agent installeren op een Windows-computer:
 5. Klik op **toevoegen** om een nieuwe log Analytics-werk ruimte toe te voegen. Plak de werk ruimte-ID en-sleutel die u hebt gekopieerd uit de portal. Klik op **Volgende**.
 
 U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode als Configuration Manager of [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196).
-- Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) over het gebruik van deze methoden om de MMA-agent te installeren.
+- Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over het gebruik van deze methoden om de MMA-agent te installeren.
 - De MMA-agent kan ook worden geïnstalleerd met behulp van dit [script](https://go.microsoft.com/fwlink/?linkid=2104394).
 - Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) over de Windows-besturings systemen die worden ondersteund door MMA.
 

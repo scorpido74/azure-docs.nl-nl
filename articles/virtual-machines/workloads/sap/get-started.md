@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 02/27/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b9e7e165998e1e4c45379fb5a8ca22edc194efe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 64aa6dcd9d21d2102c5d61dbc050fc9aa07aa534
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661376"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163859"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -117,8 +117,9 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingslogboek
+- 02/27/2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [hoge beschik BAARHEID voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) en [hoge Beschik baarheid voor SAP NetWeaver op Azure VM'S in SLES multi-sid-hand leiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) voor het aanpassen van de cluster parameter "on Fail"
 - 02/26/2020: Wijzig in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) om de bestandssysteem keuze voor Hana op Azure te verduidelijken
-- 02/25/2020: wijziging in [architectuur met hoge Beschik baarheid en scenario's voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) om de koppeling toe te voegen aan de ha voor SAP NetWeaver op Azure vm's in de RHEL-hand leiding voor multi-sid
+- 02/26/2020: wijziging in [architectuur met hoge Beschik baarheid en scenario's voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) om de koppeling toe te voegen aan de ha voor SAP NetWeaver op Azure vm's in de RHEL-hand leiding voor multi-sid
 - 02/26/2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [hoge beschik BAARHEID voor SAP NW op Azure vm's op SLES met ANF voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) en [Azure vm's hoge beschik BAARHEID voor sap netweaver op RHEL met Azure NetApp files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) om de instructie te verwijderen die multi
 - 02/26/2020: release van [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's in de RHEL-hand leiding voor multi-sid](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) om een koppeling toe te voegen aan de SuSE multi-sid-cluster gids
 - 02/25/2020: wijziging in [architectuur met hoge Beschik baarheid en scenario's voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) om koppelingen toe te voegen aan nieuwere ha-artikelen

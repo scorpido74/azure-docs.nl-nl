@@ -6,18 +6,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 36d15858e1fb535189891303a89b00021027f1e8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227038"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163757"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
 
 Met Azure Functions kunt u uw functies ontwikkelen als Power shell-scripts.
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 U kunt fouten opsporen in uw Power shell-functies, lokaal als u Power shell-scripts gebruikt, met de volgende standaard ontwikkelingsprogram ma's:
 

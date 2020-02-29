@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087023"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920940"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelf studie: een model trainen en implementeren vanuit de CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ De `examples/cli-train-deploy` Directory van het project bevat de volgende besta
 De opslag plaats bevat de volgende bestanden, die worden gebruikt voor het implementeren van het getrainde model als een webservice:
 
 * `aciDeploymentConfig.yml`: een __configuratie__ bestand voor de implementatie. Dit bestand definieert de hosting omgeving die nodig is voor het model.
-* `inferenceConfig.yml`: een configuration__ bestand. Dit bestand definieert de software omgeving die door de service wordt gebruikt om gegevens met het model te scoren.
+* `inferenceConfig.yml`: een Afleidings __configuratie__ bestand. Dit bestand definieert de software omgeving die door de service wordt gebruikt om gegevens met het model te scoren.
 * `score.py`: een python-script dat binnenkomende gegevens accepteert, het het model verlaagt en vervolgens een antwoord retourneert.
 * `scoring-env.yml`: de Conda-afhankelijkheden die nodig zijn om het model en `score.py` script uit te voeren.
 * `testdata.json`: een gegevens bestand dat kan worden gebruikt voor het testen van de geïmplementeerde webservice.

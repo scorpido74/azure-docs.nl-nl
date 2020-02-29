@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718742"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163045"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's
 
@@ -24,6 +24,9 @@ Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografie, wa
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
+> [!NOTE]
+> Toegewezen Azure-regionale paren kunnen niet worden gewijzigd.
+
 Afbeelding 1: Azure-regionale paren
 
 | Geografie | Gekoppelde regio's |  |
@@ -32,23 +35,23 @@ Afbeelding 1: Azure-regionale paren
 | Australië |Australië - oost |Australië - zuidoost |
 | Australië |Australië - centraal |Australië - centraal 2 |
 | Brazilië |Brazilië - zuid |VS - zuid-centraal |
-| Canada |Canada - centraal |Canada - oost |
+| Canada |Canada - midden |Canada - oost |
 | China |China - noord |China East|
-| China |China - noord 2 |China - oost 2|
-| Europa |Europa - noord (Ierland) |Europa - west (Nederland) |
+| China |China-noord 2 |China-oost 2|
+| Europa |Europa-noord (Ierland) |Europa-west (Nederland) |
 | Frankrijk |Frankrijk - centraal|Frankrijk - zuid|
 | Duitsland |Duitsland - centraal |Duitsland - noordoost |
 | India |India - centraal |India - zuid |
 | India |India - west |India - zuid |
-| Japan |Japan - Oost |Japan - west |
+| Japan |Japan - oost |Japan - west |
 | Korea |Korea - centraal |Korea - zuid |
 | Noord-Amerika |VS - oost |VS - west |
 | Noord-Amerika |VS - oost 2 |VS - centraal |
 | Noord-Amerika |VS - noord-centraal |VS - zuid-centraal |
 | Noord-Amerika |VS - west 2 |VS - west-centraal 
 | Zuid-Afrika | Zuid-Afrika - noord | Zuid-Afrika - west
-| VK |Verenigd Koninkrijk West |UK - zuid |
-| Verenigde Arabische Emiraten | VAE - noord | VAE - centraal
+| VK |Verenigd Koninkrijk West |Verenigd Koninkrijk Zuid |
+| Verenigde Arabische Emiraten | UAE - noord | UAE - centraal
 | Amerikaans Ministerie van defensie |US DoD East |US DoD Central |
 | Amerikaanse overheid |VS (overheid) - Arizona |VS (overheid) - Texas |
 | Amerikaanse overheid |US Gov - Iowa |VS (overheid) - Virginia |

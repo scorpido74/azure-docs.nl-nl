@@ -3,12 +3,12 @@ title: Veelgestelde vragen-detectie, evaluatie en afhankelijkheids analyse in Az
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6db521791e5ebb846585d4e0e823ba20d178d54a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589229"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918543"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse
 
@@ -100,7 +100,7 @@ Nee, de visualisatie van de afhankelijkheid kan niet worden geëxporteerd. Azure
 
 ## <a name="can-i-automate--mmadependency-agent-installation"></a>Kan ik de installatie van MMA/dependency agent automatiseren?
 
-Gebruik dit [script om de afhankelijkheids agent te installeren](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Volg deze [instructies voor het installeren van MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) met behulp van de opdracht regel of de automatisering. Voor MMA gebruikt u [Dit script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Gebruik dit [script om de afhankelijkheids agent te installeren](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Volg deze [instructies voor het installeren van MMA](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) met behulp van de opdracht regel of de automatisering. Voor MMA gebruikt u [Dit script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 Naast scripts kunt u ook implementatie hulpprogramma's zoals micro soft endpoint Configuration Manager en [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gebruiken om de agents te implementeren.
 

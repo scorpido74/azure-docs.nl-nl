@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: a697c1e43ccd486f8c98399ea9065902bd247f7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152139"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920430"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Module logistiek-regressie voor multi klasse
 
@@ -40,7 +40,7 @@ In een logistiek-regressie met meerdere klassen kan de classificatie worden gebr
 
     + **Eén para meter**: gebruik deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden als argumenten op.
 
-    + **Parameter bereik**: gebruik deze optie als u niet zeker bent van de beste para meters en een parameter sweep wilt gebruiken.
+    + **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
 
 3. **Optimalisatie tolerantie**, geeft u de drempel waarde voor optimalisatie convergentie op. Als de verbetering tussen herhalingen kleiner is dan de drempel waarde, wordt het algoritme gestopt en wordt het huidige model geretourneerd.
 

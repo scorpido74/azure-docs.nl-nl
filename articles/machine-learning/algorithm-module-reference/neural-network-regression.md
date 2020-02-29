@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 97095e4802373a1dd3f7b795c2fe567b778d2d5e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153822"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920379"
 ---
 # <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
 
@@ -56,7 +56,9 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
   
 2. Geef aan hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.  
+    -   **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.
+
+    -   **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.   
 
 3.  In **specificatie van verborgen laag**selecteert u **volledig verbonden Case**. Met deze optie wordt een model gemaakt met behulp van de standaard Neural-netwerk architectuur, die voor een Neural netwerk regressie model deze kenmerken heeft:  
   
@@ -72,7 +74,6 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
 
 6.  Geef voor **aantal Learning-iteraties**het maximum aantal keren op dat het algoritme de trainings cases verwerkt.
 
-7.  Voor * * de aanvankelijke leer gewicht diameter, typt u een waarde die de knooppunt gewichten aan het begin van het leer proces bepaalt.
 
 8.  Voor **de impuls**typt u een waarde die tijdens het leren moet worden toegepast als gewicht op knoop punten uit eerdere iteraties.
 

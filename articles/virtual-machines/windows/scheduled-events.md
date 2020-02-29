@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772630"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920657"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events voor Windows-Vm's
 
@@ -56,18 +56,19 @@ Azure meta data service geeft informatie weer over het uitvoeren van Virtual Mac
 ### <a name="endpoint-discovery"></a>Eindpunt detectie
 Voor VNET ingeschakelde Vm's is de meta gegevens service beschikbaar vanaf een statisch niet-routeerbaar IP-adres, `169.254.169.254`. Het volledige eind punt voor de meest recente versie van Scheduled Events is: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de standaard aanvragen voor Cloud Services en klassieke Vm's vereist om het te gebruiken IP-adres te ontdekken. Raadpleeg dit voor beeld voor meer informatie over [het detecteren van het eind punt van de host](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
-Er is een versie van de Scheduled Events-service. Versies zijn verplicht en de huidige versie is `2017-11-01`.
+Er is een versie van de Scheduled Events-service. Versies zijn verplicht en de huidige versie is `2019-01-01`.
 
-| Versie | Release type | Regio's | Opmerkingen bij de release | 
+| Version | Releasetype | Regio's | Releaseopmerkingen | 
 | - | - | - | - |
-| 2017-11-01 | Algemene beschikbaarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
-| 2017-08-01 | Algemene beschikbaarheid | Alles | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
-| 2017-03-01 | Preview | Alles |<li>Eerste release
+| 2019-01-01 | Algemene beschikbaarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' Terminate ' voor de virtuele-machine schaal sets |
+| 2017-11-01 | Algemene beschikbaarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
+| 2017-08-01 | Algemene beschikbaarheid | Alle | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
+| 2017-03-01 | Preview | Alle |<li>Eerste release |
 
 > [!NOTE] 
 > Eerdere Preview-versies van geplande gebeurtenissen die {nieuwste} worden ondersteund als de API-versie. Deze indeling wordt niet meer ondersteund en zal in de toekomst worden afgeschaft.
@@ -90,9 +91,9 @@ Wanneer u een query uitvoert op de Metadata Service, moet u de header-`Metadata:
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen
 U kunt een query uitvoeren voor Scheduled Events door eenvoudigweg de volgende aanroep te nemen:
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
 ```
 
 Een antwoord bevat een matrix met geplande gebeurtenissen. Een lege matrix betekent dat er momenteel geen gebeurtenissen zijn gepland.
@@ -103,7 +104,7 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -118,9 +119,9 @@ De DocumentIncarnation is een ETag en biedt een eenvoudige manier om te controle
 |Eigenschap  |  Beschrijving |
 | - | - |
 | Gebeurtenis-id | De wereld wijde unieke id voor deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: de virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden. <li>`Reboot`: de virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: de virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: de locatie van de virtuele machine wordt verwijderd (tijdelijke schijven gaan verloren).|
+| EventType | Dit heeft invloed op deze gebeurtenis. <br><br> Waarden: <br><ul><li> `Freeze`: de virtuele machine is gepland om enkele seconden te worden onderbroken. De CPU-en netwerk verbinding wordt mogelijk onderbroken, maar er is geen invloed op het geheugen of geopende bestanden. <li>`Reboot`: de virtuele machine is gepland voor opnieuw opstarten (niet-permanent geheugen gaat verloren). <li>`Redeploy`: de virtuele machine is ingepland om te worden verplaatst naar een ander knoop punt (tijdelijke schijven gaan verloren). <li>`Preempt`: de locatie van de virtuele machine wordt verwijderd (tijdelijke schijven gaan verloren). <li> `Terminate`: de virtuele machine is gepland om te worden verwijderd. |
 | ResourceType | Het type resource dat door deze gebeurtenis wordt beïnvloed. <br><br> Waarden: <ul><li>`VirtualMachine`|
-| Resources| Lijst met resources die van invloed zijn op deze gebeurtenis. Dit is gegarandeerd dat machines van Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar mag niet alle computers in de UD bevatten. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Bronnen| Lijst met resources die van invloed zijn op deze gebeurtenis. Dit is gegarandeerd dat machines van Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar mag niet alle computers in de UD bevatten. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Gebeurtenis status | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de eigenschap `NotBefore`.<li>`Started`: deze gebeurtenis is gestart.</ul> Er wordt nooit `Completed` of een vergelijk bare status gegeven; de gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
 | NotBefore| Tijdstip waarna deze gebeurtenis kan worden gestart. <br><br> Voorbeeld: <br><ul><li> Ma, 19 sep 2016 18:29:47 GMT  |
 
@@ -133,6 +134,7 @@ Elke gebeurtenis wordt een minimale tijd in de toekomst gepland op basis van het
 | Opnieuw opstarten | 15 minuten |
 | Opnieuw implementeren | 10 minuten |
 | Preempt | 30 seconden |
+| Tijdig | [Configureer bare gebruiker](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 tot 15 minuten |
 
 ### <a name="event-scope"></a>Gebeurtenis bereik     
 Geplande gebeurtenissen worden verzonden naar:
@@ -158,9 +160,9 @@ Hieronder wordt de JSON verwacht in de hoofd tekst van de `POST` aanvraag. De aa
 }
 ```
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -206,7 +208,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2019-01-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

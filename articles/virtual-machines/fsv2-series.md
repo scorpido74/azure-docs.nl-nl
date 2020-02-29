@@ -2,17 +2,17 @@
 title: Fsv2-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de Fsv2-serie.
 services: virtual-machines
-author: jonbeck7
+author: brbell
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 47ddd4733e4778493ad5e3671ae9c914176de33f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493083"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164845"
 ---
 # <a name="fsv2-series"></a>Fsv2-serie
 
@@ -25,6 +25,10 @@ ACU: 195 - 210
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | van vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|

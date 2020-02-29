@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 541d1001f8b5881f2773f795d7bd849704cbd796
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1afd99a569de96e9075b4b5b6eff902abd8642e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153686"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916758"
 ---
 # <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
 
@@ -41,6 +41,8 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
     -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
+
+    -   **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
   
 3.  Geef bij **optimalisatie tolerantie**een drempel waarde op die moet worden gebruikt bij het optimaliseren van het model. Als de verbetering tussen herhalingen onder de opgegeven drempel waarde valt, wordt het algoritme gezien als geconvergeerd op een oplossing en stopt de training.  
   

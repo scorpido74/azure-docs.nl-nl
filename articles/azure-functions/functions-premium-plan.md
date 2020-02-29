@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615682"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161564"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -109,29 +109,30 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |Australië - centraal 2| ✔<sup>1</sup> | |
 |Australië - oost| ✔ | ✔<sup>1</sup> |
 |Australië - zuidoost | ✔ | ✔<sup>1</sup> |
-|Brazilië - zuid| ✔<sup>2</sup> |  |
+|Brazilië - zuid| ✔<sup>2</sup> | ✔<sup>1</sup> |
 |Canada - midden| ✔ | ✔<sup>1</sup> |
-|VS - centraal| ✔ |  |
-|Azië - oost| ✔ |  |
+|VS - centraal| ✔ | ✔<sup>1</sup> |
+|Azië - oost| ✔ | ✔<sup>1</sup> |
 |VS - oost | ✔ | ✔<sup>1</sup> |
 |VS - oost 2| ✔ | ✔<sup>1</sup> |
-|Frankrijk - centraal| ✔ |  |
+|Frankrijk - centraal| ✔ | ✔<sup>1</sup> |
 |Duitsland - west-centraal| ✔ | |
 |Japan - oost| ✔ | ✔<sup>1</sup> |
 |Japan - west| ✔ | ✔<sup>1</sup> |
 |Korea - centraal| ✔ | ✔<sup>1</sup> |
-|VS - noord-centraal| ✔ |  |
+|VS - noord-centraal| ✔ | ✔<sup>1</sup> |
 |Europa - noord| ✔ | ✔<sup>1</sup> |
+|Noor wegen-Oost| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |VS - zuid-centraal| ✔ | ✔<sup>1</sup> |
 |India - zuid | ✔ | |
 |Azië - zuidoost| ✔ | ✔<sup>1</sup> |
 |Verenigd Koninkrijk Zuid| ✔ | ✔<sup>1</sup> |
-|Verenigd Koninkrijk West| ✔ |  |
+|Verenigd Koninkrijk West| ✔ | ✔<sup>1</sup> |
 |Europa -west| ✔ | ✔<sup>1</sup> |
-|India - west| ✔ |  |
-|VS - west-centraal| | ✔<sup>1</sup> |
+|India - west| ✔ | ✔<sup>1</sup> |
+|VS - west-centraal| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |VS - west| ✔ | ✔<sup>1</sup> |
-|VS - west 2| ✔ |  |
+|VS - west 2| ✔ | ✔<sup>1</sup> |
 
 <sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  
 <sup>2</sup> Maxi maal aantal uitschalen beperkt tot 60 exemplaren.

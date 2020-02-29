@@ -11,20 +11,19 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 2710263aa099618d57f763edd199673ae04b53ed
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5a2d6bfe2c58d382aea14b6ca8d4151acb9adfbf
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160475"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160858"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app
 
 In deze Quick Start leert u hoe u een python-webtoepassing integreert met het micro soft Identity-platform. Uw app meldt zich aan bij een gebruiker, haalt een toegangs token op om de Microsoft Graph-API aan te roepen en brengt een aanvraag naar de Microsoft Graph-API.
 
-Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen) en werk-of school accounts van elk bedrijf of organisatie die gebruikmaakt van Azure Active Directory.
+Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen) en werk-of school accounts van elk bedrijf of organisatie die gebruikmaakt van Azure Active Directory. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
-![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +39,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) en hand matig (optie 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
 > 1. Ga naar de [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Selecteer **nieuwe registratie**.
@@ -92,45 +91,56 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > > ![Al geconfigureerd](media/quickstart-v2-aspnet-webapp/green-check.png) Uw toepassing is al geconfigureerd met dit kenmerk
 
 #### <a name="step-2-download-your-project"></a>Stap 2: Uw project downloaden
+> [!div renderon="docs"]
+> [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-[Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
-
-#### <a name="step-3-configure-the-application"></a>Stap 3: de toepassing configureren
-
-1. Pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
-1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
-1. Open het bestand **app_config. py** , dat u kunt vinden in de hoofdmap en vervang door het volgende code fragment:
-
-```python
-CLIENT_ID = "Enter_the_Application_Id_here"
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-```
+> [!div class="sxs-lookup" renderon="portal"]
+> Down load het project en pak het zip-bestand uit naar een lokale map dichter bij de hoofdmap, bijvoorbeeld **C:\Azure-samples**
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Het code voorbeeld downloaden]()
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-the-application"></a>Stap 3: de toepassing configureren
+> 
+> 1. Pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
+> 1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
+> 1. Open het bestand **app_config. py** , dat u kunt vinden in de hoofdmap en vervang door het volgende code fragment:
+> 
+> ```python
+> CLIENT_ID = "Enter_the_Application_Id_here"
+> CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+> AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
+> ```
 > Waar:
 >
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
 > - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
 > - `Enter_the_Tenant_Name_Here`: is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
 
-#### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>Stap 3: het code voorbeeld uitvoeren
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
 
 1. U moet de MSAL python-bibliotheek installeren, kolf Framework, kolf-sessies voor sessie beheer aan de server zijde en aanvragen met behulp van PIP als volgt:
 
-   ```Shell
-   pip install -r requirements.txt
-   ```
+    ```Shell
+    pip install -r requirements.txt
+    ```
 
 2. Voer app.py uit vanuit de shell of de opdracht regel:
 
-   ```Shell
-   python app.py
-   ```
+    ```Shell
+    python app.py
+    ```
    > [!IMPORTANT]
    > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [deze instructies](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)voor meer informatie over het gebruik van een certificaat.
 
 ## <a name="more-information"></a>Meer informatie
+
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ### <a name="getting-msal"></a>MSAL ophalen
 MSAL is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform.

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 8eb54e232478ae24e1efb49a8ad43dc827aa2b6a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150677"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920396"
 ---
 # <a name="normalize-data-module"></a>Gegevens module normaliseren
 
@@ -104,7 +104,7 @@ In de module **normaliseren gegevens** worden twee uitvoer gegenereerd:
 
 - Als u de trans formatie wilt opslaan zodat u dezelfde normalisatie methode op een andere gegevensset kunt Toep assen, selecteert u de module en selecteert u **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster.
 
-    U kunt de opgeslagen trans formaties vervolgens laden vanuit de groep **trans formaties** van het navigatie deel venster links en deze Toep assen op een gegevensset met hetzelfde schema met behulp van de [./apply-trans formatie](apply-transformation.md).  
+    U kunt de opgeslagen trans formaties vervolgens laden vanuit de groep **trans formaties** van het navigatie deel venster links en deze Toep assen op een gegevensset met hetzelfde schema met behulp van [Apply Transform](apply-transformation.md).  
 
 
 ## <a name="next-steps"></a>Volgende stappen

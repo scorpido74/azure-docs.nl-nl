@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 47cea412489693cedb05bd8a94a914b1757b8058
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152156"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921365"
 ---
 # <a name="multiclass-decision-forest-module"></a>Module voor de beslissings forest voor multi klassen
 
@@ -55,6 +55,7 @@ De classificatie van het beslissings forest in Azure Machine Learning bestaat ui
 
     + **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een set waarden als argumenten op.
 
+    + **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.   
 
 5. **Aantal beslissings structuren**: Typ het maximum aantal beslissings structuren dat in de ensemble kan worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar kan de tijd van de training toenemen.
 

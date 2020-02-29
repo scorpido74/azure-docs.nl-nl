@@ -1,6 +1,6 @@
 ---
-title: Fouten oplossen wanneer u Azure-klassieke opslagaccounts, containers of VHD's verwijderen | Microsoft Docs
-description: Klik hier voor meer informatie over het oplossen van problemen bij het verwijderen van storage-resources met gekoppelde VHD's.
+title: Problemen oplossen bij het verwijderen van klassieke Azure-opslag accounts,-containers of-Vhd's | Microsoft Docs
+description: Problemen oplossen bij het verwijderen van opslag resources met gekoppelde Vhd's.
 services: storage
 author: AngshumanNayakMSFT
 tags: top-support-issue,azure-service-management
@@ -8,120 +8,124 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926233"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915034"
 ---
-# <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Oplossen van fouten bij het verwijderen van het klassieke opslag-resource
-Dit artikel bevat richtlijnen voor probleemoplossing bij een van de volgende fouten optreedt bij het verwijderen van Azure klassieke storage-account, container of *.vhd pagina-blob-bestand. 
+# <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Fouten bij het verwijderen van klassieke opslag resources oplossen
+Dit artikel bevat richt lijnen voor probleem oplossing wanneer een van de volgende fouten optreedt bij het verwijderen van het klassieke Azure-opslag account, de container of de VHD-pagina blob-bestand. 
 
 
-In dit artikel heeft alleen betrekking op problemen met klassieke opslagresources. Als een gebruiker verwijdert een klassieke virtuele machine met behulp van de Azure portal, PowerShell of CLI en vervolgens de schijven worden niet automatisch verwijderd. De gebruiker beschikt over de optie voor het verwijderen van de resource 'Disk'. Als de optie niet is geselecteerd, wordt de 'Schijf'-resource te voorkomen dat verwijderen van het opslagaccount, container en de werkelijke *.vhd pagina-blob-bestand.
+Dit artikel behandelt alleen problemen met klassieke opslag resources. Als een gebruiker een klassieke virtuele machine verwijdert met behulp van de Azure Portal, Power shell of CLI, worden de schijven niet automatisch verwijderd. De gebruiker krijgt de mogelijkheid om de schijf bron te verwijderen. Als de optie niet is geselecteerd, wordt voor komen dat het opslag account, de container en de daad werkelijke VHD-pagina blob-bestand worden verwijderd.
 
-Meer informatie over Azure-schijven kunt u vinden [hier](../../virtual-machines/windows/managed-disks-overview.md). Azure wordt voorkomen dat het verwijderen van een schijf die is gekoppeld aan een virtuele machine om beschadiging te voorkomen. Dit voorkomt ook dat het verwijderen van containers en storage-accounts waarvoor een pagina-blob die is gekoppeld aan een virtuele machine. 
+Meer informatie over Azure-schijven vindt u [hier](../../virtual-machines/windows/managed-disks-overview.md). Azure voor komt dat een schijf die is gekoppeld aan een virtuele machine wordt verwijderd om beschadiging te voor komen. Er wordt ook voor komen dat containers en opslag accounts worden verwijderd, die een pagina-BLOB hebben die is gekoppeld aan een virtuele machine. 
 
-## <a name="what-is-a-disk"></a>Wat is een 'Disk'?
-Een resource 'Disk' wordt gebruikt om een bestand met *.vhd pagina blob aan een virtuele machine, als een besturingssysteemschijf of een gegevensschijf koppelen. Een besturingssysteemschijf of gegevens schijfbron, tot verwijderd, blijft een lease op het bestand *.vhd bevatten. De storage-resources in het pad dat wordt weergegeven in onderstaande afbeelding kan niet worden verwijderd als een resource 'Disk' naar deze verwijst.
+## <a name="what-is-a-disk"></a>Wat is een ' schijf '?
+Een ' schijf ' bron wordt gebruikt voor het koppelen van een VHD-bestand van het type *. vhd's aan een virtuele machine, als een besturingssysteem schijf of gegevens schijf. Een besturingssysteem schijf of gegevens schijf bron, totdat deze is verwijderd, blijft een lease in het VHD-bestand. Een opslag resource in het pad dat wordt weer gegeven in de onderstaande afbeelding, kan niet worden verwijderd als een ' schijf ' bron naar deze resource verwijst.
 
-![Schermafbeelding van de portal, met het deelvenster van de schijf (klassiek) 'Eigenschap' openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
+![Scherm afbeelding van de portal, met het deel venster voor de schijf (klassiek) geopend](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 
 
-## <a name="steps-while-deleting-a-classic-virtual-machine"></a>Stappen bij het verwijderen van een klassieke virtuele machine 
-1. Verwijder het klassieke virtuele machine.
-2. Als het selectievakje 'Schijf' is ingeschakeld, de **schijflease** (weergegeven in de afbeelding hierboven) die zijn gekoppeld aan de pagina-blob *.vhd is verbroken. De werkelijke pagina blob *.vhd bestand nog steeds aanwezig in de storage-account.
-![Schermafbeelding van de portal, met de virtuele machine (klassiek) "Verwijderen" fout deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+## <a name="steps-while-deleting-a-classic-virtual-machine"></a>Stappen voor het verwijderen van een klassieke virtuele machine 
 
-3. Zodra de lease of meer schijven verbroken wordt, kan de pagina BLOB (s) zelf worden verwijderd. Een opslagaccount of container kan worden verwijderd zodra alle 'Disk' resource aanwezig zijn in deze zijn verwijderd.
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
+1. Verwijder de klassieke virtuele machine.
+2. Als het selectie vakje "schijven" is ingeschakeld, is de lease van de **schijf** (weer gegeven in de bovenstaande afbeelding) die aan de pagina-blob *. VHD is gekoppeld, beschadigd. Het daad werkelijke pagina-blob *. VHD-bestand blijft aanwezig in het opslag account.
+![scherm opname van de portal, waarbij het deel venster voor het verwijderen van de virtuele machine (klassiek) wordt geopend](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+
+3. Zodra de lease van de schijf of schijven is verbroken, kunnen de pagina-BLOB (s) zelf worden verwijderd. Een opslag account of-container kan worden verwijderd zodra alle ' schijf ' in de bron aanwezig is.
 
 >[!NOTE] 
->Als gebruiker Hiermee verwijdert u de virtuele machine, maar niet de VHD, blijft kosten voor opslag op het wisselbestand van de blob-*.vhd doorlopen. De kosten worden in overeenstemming met het type opslagaccount, Controleer de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie. Als de gebruiker wil niet langer de virtuele harde schijven kunt gebruiken, verwijder it/ze om toekomstige kosten te voorkomen. 
+>Als de gebruiker de virtuele machine verwijdert, maar niet de VHD, blijven de opslag kosten toenemen op het VHD-bestand van de pagina-blob. De kosten zijn in overeenstemming met het type opslag account. Controleer de pagina met [prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie. Als de gebruiker de VHD (s) niet langer wil gebruiken, moet u deze verwijderen om toekomstige kosten te voor komen. 
 
-## <a name="unable-to-delete-storage-account"></a>Kan niet worden verwijderd van de storage-account 
+## <a name="unable-to-delete-storage-account"></a>Kan het opslag account niet verwijderen 
 
-Wanneer de gebruiker probeert te verwijderen van een klassiek opslagaccount die niet meer nodig is, kan de gebruiker het volgende gedrag zien.
+Wanneer een gebruiker probeert een klassiek opslag account te verwijderen dat niet meer nodig is, ziet de gebruiker mogelijk het volgende gedrag.
 
-#### <a name="azure-portal"></a>Azure Portal 
-Gebruiker navigeert naar de klassieke storage-account op de [Azure-portal](https://portal.azure.com) en klikt op **verwijderen**, gebruiker ziet het volgende bericht: 
+#### <a name="azure-portal"></a>Azure-portal 
+De gebruiker navigeert naar het klassieke opslag account op de [Azure Portal](https://portal.azure.com) en klikt op **verwijderen**. de gebruiker ziet het volgende bericht: 
 
-Met een of meer schijven 'gekoppeld' aan een virtuele machine
+Met een of meer schijven gekoppeld aan een virtuele machine
 
-![Schermafbeelding van de portal, met de virtuele machine (klassiek) "Verwijderen" fout deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
-
-
-Met 'niet-gekoppelde' aan een virtuele machine (s)
-
-![Schermafbeelding van de portal, met de virtuele machine (klassiek) "Verwijderen" zonder fout deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_unattached_portal.jpg)
+![Scherm opname van de portal, waarbij het fout paneel voor het verwijderen van de virtuele machine (klassiek) is geopend](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
 
 
-#### <a name="azure-powershell"></a>Azure PowerShell
-Gebruiker probeert te verwijderen van een storage-account, dat niet meer wordt gebruikt, met behulp van klassieke PowerShell-cmdlets. Gebruiker ziet het volgende bericht:
+Met een of meer schijven ' ontkoppeld ' aan een virtuele machine
 
-> <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
-> 
-> <span style="color:red">Remove-AzureStorageAccount : BadRequest: Storage-account myclassicaccount heeft een of meer actieve installatiekopieën en/of schijven, bijvoorbeeld  
-> myclassicaccount. Zorg ervoor dat deze installatiekopieën en/of schijven worden verwijderd voordat u dit opslagaccount verwijdert.</span>
-
-## <a name="unable-to-delete-storage-container"></a>Kan niet worden verwijderd van de storage-container
-
-Wanneer de gebruiker probeert te verwijderen van een klassieke opslag-blob-container die niet meer nodig is, kan de gebruiker het volgende gedrag zien.
-
-#### <a name="azure-portal"></a>Azure Portal 
-Azure-portal wouldn't toestaan dat de gebruiker verwijderen van een container als een lease "Of meer schijven" bestaat die verwijst naar een bestand voor de blob *.vhd in de container. Het is om te voorkomen dat per ongeluk verwijderen van een bestand van de virtuele harde schijven met een of meer schijven lease op deze standaard. 
-
-![Schermafbeelding van de portal, met de storage-container 'list' deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_container_portal.jpg)
+![Scherm opname van de portal, met het venster voor het verwijderen van de virtuele machine (klassiek) zonder fouten](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_unattached_portal.jpg)
 
 
 #### <a name="azure-powershell"></a>Azure PowerShell
-Als de gebruiker ervoor kiest om te verwijderen met behulp van PowerShell, resulteert dit in de volgende fout. 
+De gebruiker probeert een opslag account te verwijderen dat niet meer wordt gebruikt, door gebruik te maken van klassieke Power shell-cmdlets. De gebruiker ziet het volgende bericht:
 
-> <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
+> <span style="color:cyan">**Remove-AzureStorageAccount-StorageAccountName myclassicaccount**</span>
 > 
-> <span style="color:red">Remove-AzureStorageContainer : De externe server heeft een fout geretourneerd: (412) er is momenteel een lease voor de container en er is geen lease-ID is opgegeven in de aanvraag... HTTP-statuscode: 412 - HTTP-foutbericht: Er is momenteel een lease voor de container en er is geen lease-ID is opgegeven in de aanvraag.</span>
+> <span style="color:red">Remove-AzureStorageAccount: onjuiste aanvraag: het opslag account myclassicaccount heeft een of meer actieve installatie kopieën (s) en/of schijf (en), bijvoorbeeld  
+> myclassicaccount. Zorg ervoor dat deze installatie kopie (n) en/of schijven zijn verwijderd voordat u dit opslag account verwijdert.</span>
 
-## <a name="unable-to-delete-a-vhd"></a>Kan niet worden verwijderd van een vhd 
+## <a name="unable-to-delete-storage-container"></a>Kan de opslag container niet verwijderen
 
-Na het verwijderen van de virtuele machine van Azure, worden de gebruiker probeert te verwijderen van het vhd-bestand (pagina-blobs) en wordt de hieronder weergegeven:
+Wanneer een gebruiker probeert een klassieke opslag BLOB-container te verwijderen die niet meer nodig is, ziet de gebruiker mogelijk het volgende gedrag.
 
-#### <a name="azure-portal"></a>Azure Portal 
-In de portal, kunnen er twee ervaringen, afhankelijk van de lijst met blobs die zijn geselecteerd voor verwijdering.
+#### <a name="azure-portal"></a>Azure-portal 
+Azure Portal de gebruiker niet toe te staan om een container te verwijderen als er een lease van een schijf bestaat die verwijst naar een blob-bestand van de VHD-pagina in de container. Het ontwerp om onbedoelde verwijdering te voor komen van een VHD-bestand met een lease (s) op de schijven. 
 
-1. Als er slechts 'Geleased' blobs zijn geselecteerd, wordt niet klikt u vervolgens de knop verwijderen weergegeven.
-![Schermafbeelding van de portal, met de container blob 'list' deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+![Scherm opname van de portal, met het deel venster opslag container "lijst" geopend](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_container_portal.jpg)
 
 
-2. Als er een combinatie van 'Geleased' en 'Beschikbaar'-blobs zijn geselecteerd, wordt de knop 'Verwijderen' wordt weergegeven. Maar de bewerking 'Delete' wordt niet achter de pagina-blobs, waarvoor een schijflease op deze. 
-![Schermafbeelding van de portal, met het deelvenster container blob 'list' open](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![schermafbeelding van de portal, met de geselecteerde blob "verwijderen" deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+#### <a name="azure-powershell"></a>Azure PowerShell
+Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert dit in de volgende fout. 
+
+> <span style="color:cyan">**Remove-AzureStorageContainer-context $context naam-vhd's**</span>
+> 
+> <span style="color:red">Remove-AzureStorageContainer: de externe server heeft een fout geretourneerd: (412) er is momenteel een lease in de container en er is geen lease-ID opgegeven in de aanvraag. HTTP-status code: 412-HTTP-fout bericht: er is momenteel een lease in de container en er is geen lease-ID opgegeven in de aanvraag.</span>
+
+## <a name="unable-to-delete-a-vhd"></a>Kan een VHD niet verwijderen 
+
+Na het verwijderen van de virtuele machine van Azure probeert de gebruiker het VHD-bestand (pagina-blob) te verwijderen en wordt het volgende bericht weer gegeven:
+
+#### <a name="azure-portal"></a>Azure-portal 
+Op de portal zijn er twee ervaringen, afhankelijk van de lijst met blobs die voor verwijdering zijn geselecteerd.
+
+1. Als alleen ' geleasde ' blobs zijn geselecteerd, wordt de knop verwijderen niet weer gegeven.
+![scherm opname van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+
+
+2. Als er een combi natie van ' geleasde ' en ' beschik bare ' blobs zijn geselecteerd, wordt de knop verwijderen weer gegeven. Maar de bewerking ' verwijderen ' laat achter de pagina-blobs, die een lease voor de schijf bevatten. 
+![scherm opname van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+![scherm opname van de portal, met het geselecteerde deel venster ' verwijderen ' van de BLOB openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
-Als de gebruiker ervoor kiest om te verwijderen met behulp van PowerShell, resulteert dit in de volgende fout. 
+Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert dit in de volgende fout. 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
+> <span style="color:cyan">**Remove-AzureStorageBlob-context $context-container vhd's-blob "classicvm-OS-8698. VHD"** </span>
 > 
-> <span style="color:red">Remove-AzureStorageBlob : De externe server heeft een fout geretourneerd: (412) er is momenteel een lease op de blob en er is geen lease-ID is opgegeven in de aanvraag... HTTP-statuscode: 412 - HTTP-foutbericht: Er is momenteel een lease op de blob en er is geen lease-ID is opgegeven in de aanvraag.</span>
+> <span style="color:red">Remove-AzureStorageBlob: de externe server heeft een fout geretourneerd: (412) er is momenteel een lease op de BLOB en er is geen lease-ID opgegeven in de aanvraag. HTTP-status code: 412-HTTP-fout bericht: er is momenteel een lease voor de BLOB en er is geen lease-ID opgegeven in de aanvraag.</span>
 
 
 ## <a name="resolution-steps"></a>Oplossingen
 
 ### <a name="to-remove-classic-disks"></a>Klassieke schijven verwijderen
-Volg deze stappen op de Azure-portal:
+Volg deze stappen op de Azure Portal:
 1.  Navigeer naar [Azure Portal](https://portal.azure.com).
-2.  Navigeer naar de Disks(classic). 
-3.  Klik op het tabblad Schijven. ![Schermafbeelding van de portal, met de container blob 'list' deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+2.  Navigeer naar de schijven (klassiek). 
+3.  Klik op het tabblad schijven. ![scherm opname van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Selecteer de gegevensschijf en klik vervolgens op Schijf verwijderen.
- ![Schermafbeelding van de portal, met de container blob 'list' deelvenster openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
+ ![scherm opname van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
  
-5.  Opnieuw proberen te verwijderen die eerder is mislukt.
-6.  Een opslagaccount of container kan niet worden verwijderd, zolang er één schijf.
+5.  Voer de Verwijder bewerking opnieuw uit die eerder is mislukt.
+6.  Een opslag account of-container kan niet worden verwijderd zolang deze één schijf heeft.
 
-### <a name="to-remove-classic-images"></a>Klassieke installatiekopieën verwijderen   
-Volg deze stappen op de Azure-portal:
+### <a name="to-remove-classic-images"></a>Klassieke installatie kopieën verwijderen   
+Volg deze stappen op de Azure Portal:
 1.  Navigeer naar [Azure Portal](https://portal.azure.com).
-2.  Navigeer naar de OS-installatiekopieën (klassiek).
-3.  De installatiekopie verwijderen.
-4.  Opnieuw proberen te verwijderen die eerder is mislukt.
-5.  Een opslagaccount of container kan niet worden verwijderd, zolang er één installatiekopie.
+2.  Navigeer naar besturingssysteem installatie kopieën (klassiek).
+3.  Verwijder de installatie kopie.
+4.  Voer de Verwijder bewerking opnieuw uit die eerder is mislukt.
+5.  Een opslag account of-container kan niet worden verwijderd zolang deze één installatie kopie heeft.

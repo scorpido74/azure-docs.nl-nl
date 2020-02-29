@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: lahugh
-ms.openlocfilehash: 7b739e8a282fdd462ee6b465371bc04a9172ab46
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6654506a1e53165ef0891ba0de32a7937c21c904
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493070"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164811"
 ---
 # <a name="h-series"></a>H-serie
 
@@ -23,6 +23,10 @@ ACU: 290-300
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 | Grootte | vCPU | Processor | Geheugen (GB) | Geheugen bandbreedte GB/s | Basis-CPU-frequentie (GHz) | Frequentie van alle kernen (GHz, piek) | Frequentie met één kern geheugen (GHz, piek) | RDMA-prestaties (GB/s) | MPI-ondersteuning | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Maximum aantal Ethernet Nic's |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

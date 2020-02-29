@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5298655437e04736e56193c443b8a770ea929606
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152411"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919954"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Regressie module voor versterkte beslissings structuur
 
@@ -54,7 +54,9 @@ De methode voor het verhogen van de kleur overgang kan ook worden gebruikt voor 
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden als argumenten op.  
+    -   **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden als argumenten op. 
+     
+    -   **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.    
    
   
 3. **Maximum aantal Leaves per boom structuur**: Hiermee geeft u het maximum aantal Terminal knooppunten (bladeren) op dat in een wille keurige structuur kan worden gemaakt.  
@@ -75,7 +77,6 @@ De methode voor het verhogen van de kleur overgang kan ook worden gebruikt voor 
 
     Standaard is de wille keurige Seed ingesteld op 0, wat betekent dat de aanvankelijke Seed-waarde wordt opgehaald uit de systeem klok.
   
-8. **Onbekende categorische-niveaus toestaan**: Selecteer deze optie als u een groep wilt maken voor onbekende waarden in de trainings-en validatie sets. Als u deze optie uitschakelt, kan het model alleen de waarden accepteren die deel uitmaken van de trainings gegevens. Het model is mogelijk minder nauw keurig voor bekende waarden, maar het kan betere voor spellingen bieden voor nieuwe (onbekende) waarden.
 
 9. Voeg een trainings gegevensset en een van de trainings modules toe:
 

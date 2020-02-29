@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670777"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920209"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -159,19 +159,19 @@ Dit voor beeld verwijst naar de **allowedLocations** -para meter die is gedemons
 
 ### <a name="strongtype"></a>strongType
 
-Binnen de `metadata` eigenschap kunt u **strongType** gebruiken om een multi-select lijst met opties te bieden in de Azure Portal. Toegestane waarden voor **strongType** zijn momenteel:
+Binnen de `metadata` eigenschap kunt u **strongType** gebruiken om een multi-select lijst met opties te bieden in de Azure Portal. **strongType** kan een ondersteund _resource type_ of een toegestane waarde zijn. Als u wilt bepalen of een _resource type_ geldig is voor **strongType**, gebruikt u [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider).
+
+Sommige _resource typen_ die niet worden geretourneerd door **Get-AzResourceProvider** worden ondersteund. Dit zijn:
+
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
+
+Het niet- _bron type_ toegestane waarden voor **strongType** zijn:
 
 - `location`
 - `resourceTypes`
 - `storageSkus`
 - `vmSKUs`
 - `existingResourceGroups`
-- `omsWorkspace`
-- `Microsoft.EventHub/Namespaces/EventHubs`
-- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
-- `Microsoft.EventHub/Namespaces/AuthorizationRules`
-- `Microsoft.RecoveryServices/vaults`
-- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>Definitielocatie
 

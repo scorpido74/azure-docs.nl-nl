@@ -2,17 +2,17 @@
 title: NCv2-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de NCv2-serie.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 4ea199cdc75732ff3af730fa79530399e4372ebd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f4a382e422fd56e754d8014bfb4f0f0af1a3ec77
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661030"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163978"
 ---
 # <a name="ncv2-series"></a>NCv2-serie
 
@@ -23,6 +23,10 @@ De NC24rs v2-configuratie biedt een netwerk interface met lage latentie en hoge 
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 > [!IMPORTANT]
 > Voor deze VM-serie wordt het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../azure-supportability/resource-manager-core-quotas-request.md) aan voor deze reeks in een [beschik bare regio](https://azure.microsoft.com/regions/services/).

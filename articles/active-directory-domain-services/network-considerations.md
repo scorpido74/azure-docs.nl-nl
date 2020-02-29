@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613326"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917336"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure AD Domain Services
 
@@ -143,6 +143,11 @@ De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD
 * Als u geen toegang hebt tot deze poort, kan uw door Azure AD DS beheerde domein niet worden bijgewerkt, geconfigureerd, ondersteund of gecontroleerd.
 * Voor Azure AD DS beheerde domeinen die gebruikmaken van een virtueel netwerk op basis van Resource Manager, kunt u de inkomende toegang tot deze poort beperken tot het *AzureActiveDirectoryDomainServices* -service label.
     * Voor verouderde Azure AD DS beheerde domeinen die gebruikmaken van een klassiek virtueel netwerk, kunt u de inkomende toegang tot deze poort beperken tot de volgende bron-IP-adressen: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*en *104.40.87.209*.
+
+    > [!NOTE]
+    > In 2017 is Azure AD Domain Services beschikbaar voor de host in een Azure Resource Manager netwerk. Sindsdien hebben we een veiligere service met de moderne mogelijkheden van Azure Resource Manager kunnen bouwen. Omdat Azure Resource Manager implementaties volledig worden vervangen door klassieke implementaties, worden Azure AD DS-implementaties met een klassiek virtueel netwerk ingetrokken op 1 maart 2023.
+    >
+    > Zie voor meer informatie de [officiële afschaffing melding](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 
