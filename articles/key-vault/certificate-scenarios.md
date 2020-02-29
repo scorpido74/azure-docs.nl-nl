@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832859"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197620"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Aan de slag met Key Vault-certificaten
 De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
@@ -63,7 +64,7 @@ Opmerking: dit proces, tot en met stap 3,1, is een eenmalige-bewerking.
 **Stap 4** : de volgende beschrijvingen komen overeen met de stappen voor groen genummerd in het voor gaande diagram.  
   (1): in het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint door een sleutel te maken in uw sleutel kluis.  
   (2)-Key Vault een TLS/SSL-certificaat aanvraag naar de CA verzendt.  
-  (3): uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificeringsinstantie met x509-certificaat ontvangt.  
+  (3): uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificerings instantie met x509-certificaat ontvangt.  
   (4): de CA reageert op de TLS/SSL-certificaat aanvraag van Key Vault met een x509 TLS/SSL-certificaat.  
   (5): het maken van het nieuwe certificaat is voltooid met de fusie van het x509-certificaat voor de CA.  
 

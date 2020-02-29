@@ -3,21 +3,21 @@ title: Azure AD B2C als een SAML-IdP configureren voor uw toepassingen
 title-suffix: Azure AD B2C
 description: Azure AD B2C configureren om te voorzien in uw toepassingen (service providers) voor het SAML-protocol. Azure AD B2C fungeert als één ID-provider (IdP) voor uw SAML-toepassing.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912237"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189647"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -63,7 +63,7 @@ Als u nog geen SAML-service provider en een bijbehorend meta gegevens eindpunt h
 
 ## <a name="1-set-up-certificates"></a>1. certificaten instellen
 
-Als u een vertrouwens relatie tussen uw service provider en Azure AD B2C wilt maken, moet u x509-certificaten en de bijbehorende persoonlijke sleutels opgeven.
+Als u een vertrouwens relatie tussen uw service provider en Azure AD B2C wilt maken, moet u de x509-certificaten van de web-app opgeven.
 
 * **Certificaten van service provider**
   * Certificaat met een persoonlijke sleutel die is opgeslagen in uw web-app. Dit certificaat wordt door uw service provider gebruikt voor het ondertekenen van de SAML-aanvraag die naar Azure AD B2C is verzonden. Azure AD B2C leest de open bare sleutel van de meta gegevens van de service provider om de hand tekening te valideren.

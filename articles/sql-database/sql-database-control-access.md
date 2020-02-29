@@ -1,30 +1,30 @@
 ---
 title: Toegang verlenen
-description: Meer informatie over het verlenen van toegang tot Microsoft Azure SQL Database en SQL Data Warehouse.
+description: Meer informatie over het verlenen van toegang tot Microsoft Azure SQL Database en Azure Synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: sql-data-warehouse, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 05/08/2019
-ms.openlocfilehash: 05a949bbd99a36c41143190d216116f78c433951
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 5142cc941b37cfef7be79e5129b6df7094bfd00e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826593"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197841"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Toegangs beheer Azure SQL Database en SQL Data Warehouse
+# <a name="azure-sql-database-and-azure-synapse-access-control"></a>Access Control Azure SQL Database en Azure Synapse
 
-Om beveiliging te bieden, hebben Azure- [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) toegang tot het beheer van de firewall regels voor het beperken van de connectiviteit op basis van het IP-adres, authenticatie mechanismen waarbij gebruikers hun identiteit kunnen bewijzen en autorisatie mechanismen gebruikers beperken tot specifieke acties en gegevens. 
+Om beveiliging te bieden, hebben Azure [SQL database](sql-database-technical-overview.md) en [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) toegang tot het beheer van de firewall regels voor het beperken van de connectiviteit op basis van het IP-adres, authenticatie mechanismen waarbij gebruikers hun identiteit bewijzen en autorisatie mechanismen beperken gebruikers tot specifieke acties en gegevens. 
 
 > [!IMPORTANT]
-> Zie [SQL security overview](sql-database-security-overview.md) (SQL-beveiligingsoverzicht) voor een overzicht van de beveiligingsfuncties van SQL Database. Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie. Zie [SQL Data Warehouse Security Overview](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md) (Engelstalig) voor een overzicht van SQL Data Warehouse beveiligings functies
+> Zie [SQL security overview](sql-database-security-overview.md) (SQL-beveiligingsoverzicht) voor een overzicht van de beveiligingsfuncties van SQL Database. Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie. Zie [overzicht van Azure Synapse-beveiliging](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md) voor een overzicht van de beveiligings functies van SQL Analytics in azure Synapse
 
 ## <a name="firewall-and-firewall-rules"></a>Firewall en firewallregels
 

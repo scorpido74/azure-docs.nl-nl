@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: scale Compute-Power shell '
-description: De schaal van rekenkracht vergroten in Azure SQL Data Warehouse in PowerShell. De schaal van rekenkracht vergroten voor betere prestaties of de schaal juist verkleinen om kosten te besparen.
+description: Schaal berekenen in SQL-groep in Power shell. Vergroot de schaal van Compute voor betere prestaties, of verklein de schaal juist om kosten te besparen.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f4c2087052e4c3b4fac4d27bb4ecdc2ebf8a42f6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5952f17c83b778e8713488b5c53c9f210c84a146
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692965"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200465"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Snelstartgids: reken processen in Azure SQL Data Warehouse schalen in Azure PowerShell
+# <a name="quickstart-scale-compute-in-in-azure-synapse-analytics-sql-pool-using-azure-powershell"></a>Snelstartgids: Compute scale in in azure Synapse Analytics SQL-groep met behulp van Azure PowerShell
 
-Schaal Compute in Azure SQL Data Warehouse met behulp van Azure PowerShell. [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen.
+Schaal Compute in SQL pool met behulp van Azure PowerShell. [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties, of verklein de schaal juist om kosten te besparen.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -28,7 +28,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt dat u kunt schalen. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+In deze Quick Start wordt ervan uitgegaan dat u al een SQL-groep hebt die u kunt schalen. Als u er een wilt maken, gebruikt u [maken en verbinden-Portal](create-data-warehouse-portal.md) om een SQL-groep met de naam **mySampleDataWarehouse**te maken.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
@@ -56,39 +56,38 @@ Zoek de databasenaam, de servernaam en de resourcegroep op voor het datawarehous
 
 Volg deze stappen om de locatiegegevens voor uw datawarehouse op te zoeken.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
-2. Klik op **SQL Data Warehouses** op de linkerpagina in de Azure Portal.
-3. Selecteer **mySampleDataWarehouse** op de pagina **SQL Data Warehouses**. De datawarehouse wordt geopend.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linker navigatie pagina van het Azure Portal.
+3. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** om het Data Warehouse te openen.
 
     ![Servernaam en resourcegroep](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Noteer de naam van het datawarehouse. Deze wordt gebruikt als de databasenaam. Een datawarehouse is een type database. Noteer ook de naam van de server en de resourcegroep. U gebruikt deze in de opdrachten voor het onderbreken en hervatten.
-5. Als uw server foo.database.windows.net is, gebruikt u alleen het eerste deel als de servernaam in de PowerShell-cmdlets. Op de voorgaande afbeelding is de volledige servernaam newserver 20171113.database.windows.net. We gebruiken **newserver-20180430** als de servernaam in de PowerShell-cmdlet.
+4. Noteer de naam van het datawarehouse. Deze wordt gebruikt als de databasenaam. Een datawarehouse is een type database. Noteer ook de naam van de server en de resourcegroep. U gebruikt de server naam en de naam van de resource groep in de opdrachten Pause en resume.
+5. Gebruik alleen het eerste deel van de server naam in de Power shell-cmdlets. In de voor gaande afbeelding is de volledige server naam sqlpoolservername.database.windows.net. We gebruiken **sqlpoolservername** als de server naam in de Power shell-cmdlet.
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
 
-In SQL Data Warehouse kunt u het aantal rekenresources verhogen of verlagen door de DWU’s aan te passen. Met behulp van [Maken en verbinden - portal](create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU’s voor **mySampleDataWarehouse** aangepast.
+In SQL-pool kunt u de reken resources verg Roten of verkleinen door Data Warehouse-eenheden aan te passen. Met behulp van [Maken en verbinden - portal](create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU’s voor **mySampleDataWarehouse** aangepast.
 
-Als u Data Warehouse-eenheden wilt wijzigen, gebruikt u de Power shell [-cmdlet Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) . In het volgende voor beeld worden de Data Warehouse-eenheden ingesteld op DW300c voor de Data Base- **mySampleDataWarehouse** die wordt gehost in de **MyResourceGroup** van de resource groep op de server **mynewserver-20180430**.
+Als u Data Warehouse-eenheden wilt wijzigen, gebruikt u de Power shell [-cmdlet Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) . In het volgende voor beeld worden de Data Warehouse-eenheden ingesteld op DW300c voor de Data Base- **mySampleDataWarehouse**, die wordt gehost in de resource groep **resourcegroupname** op server **sqlpoolservername**.
 
 ```Powershell
-Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
 ```
 
 ## <a name="check-data-warehouse-state"></a>Status van datawarehouse controleren
 
-Als u de huidige status van het Data Warehouse wilt zien, gebruikt u de Power shell [-cmdlet Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) . Hiermee wordt de status van de **mySampleDataWarehouse**-database in resourceGroup **myResourceGroup** en server **mynewserver-20180430.database.windows.net**.
+Als u de huidige status van het Data Warehouse wilt zien, gebruikt u de Power shell [-cmdlet Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) . Met deze cmdlet wordt de status van de **mySampleDataWarehouse** -data base in ResourceGroup **resourcegroupname** en server **sqlpoolservername.database.Windows.net**weer gegeven.
 
 ```powershell
-$database = Get-AzSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
-$database
+$database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
 ```
 
 Dit resulteert in ongeveer het volgende:
 
 ```powershell
-ResourceGroupName             : myResourceGroup
-ServerName                    : mynewserver-20171113
+ResourceGroupName             : resourcegroupname
+ServerName                    : sqlpoolservername
 DatabaseName                  : mySampleDataWarehouse
 Location                      : North Europe
 DatabaseId                    : 34d2ffb8-b70a-40b2-b4f9-b0a39833c974
@@ -106,7 +105,7 @@ ElasticPoolName               :
 EarliestRestoreDate           :
 Tags                          :
 ResourceId                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
-                                resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/mynewserver-20171113/databases/mySampleDataWarehouse
+                                resourceGroups/resourcegroupname/providers/Microsoft.Sql/servers/sqlpoolservername/databases/mySampleDataWarehouse
 CreateMode                    :
 ReadScale                     : Disabled
 ZoneRedundant                 : False
@@ -121,7 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt nu geleerd hoe u de rekenkracht voor uw datawarehouse kunt schalen. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
+U hebt nu geleerd hoe u de reken kracht voor de SQL-groep kunt schalen. Voor meer informatie over SQL-pool gaat u verder met de zelf studie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]
->[Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)
+>[Gegevens laden in een SQL-groep](load-data-from-azure-blob-storage-using-polybase.md)

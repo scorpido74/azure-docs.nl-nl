@@ -3,20 +3,20 @@ title: Beschik baarheid van regio's en gegevens locatie
 titleSuffix: Azure AD B2C
 description: Beschik baarheid van regio's, gegevens locatie en informatie over Azure Active Directory B2C preview-tenants.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 532136be69356b634959a762f4eeb1c1c4af5a82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849173"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188845"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Beschik baarheid van regio's & gegevens locatie
 
@@ -28,13 +28,13 @@ Azure AD B2C is **over het algemeen wereld wijd beschikbaar** met de optie voor 
 
 De [gegevens locatie](#data-residency) verwijst naar de locatie waar de gebruikers gegevens worden opgeslagen.
 
-## <a name="region-availability"></a>Regionale beschikbaarheid
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
 Azure AD B2C is wereld wijd beschikbaar via de open bare Azure-Cloud.
 
 Dit wijkt af van het model, gevolgd door de meeste andere Azure-Services, die doorgaans *Beschik baarheid* met *gegevens locatie*. U kunt voor beelden van dit bekijken op de pagina [producten van Azure die beschikbaar zijn per regio](https://azure.microsoft.com/regions/services/) en de [Active Directory B2C prijs calculator](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
-## <a name="data-residency"></a>Gegevensresidentie
+## <a name="data-residency"></a>Gegevenslocatie
 
 Azure AD B2C gebruikers gegevens worden opgeslagen in Verenigde Staten, Europa of de regio van Azië en Stille Oceaan.
 

@@ -2,20 +2,20 @@
 title: Id van lokalisatie reeks-Azure Active Directory B2C | Microsoft Docs
 description: Geef de Id's op voor een inhouds definitie met de id API. signuporsignin in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982854"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187488"
 ---
 # <a name="localization-string-ids"></a>Id's van lokalisatiereeksen
 
@@ -33,16 +33,16 @@ De volgende Id's worden gebruikt voor een inhouds definitie met de ID `api.signu
 | **logonIdentifier_email** | E-mailadres |
 | **requiredField_email** | Voer uw e-mail adres in |
 | **invalid_email** | Voer een geldig e-mail adres in |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
+| **email_pattern** | ^ [a-zA-Z0-9.! # $% & ' ' *+/=? ^ _\`{\|} ~-] + @ [a-zA-Z0-9-] + (?:\\. [ a-zA-Z0-9-] +)* $ |
 | **local_intro_username** | Meld u aan met uw gebruikers naam |
 | **logonIdentifier_username** | Gebruikersnaam |
 | **requiredField_username** | Voer uw gebruikers naam in |
-| **Wachtwoord** | Wachtwoord |
+| **wacht woord** | Wachtwoord |
 | **requiredField_password** | Voer uw wacht woord in |
 | **invalid_password** | Het wacht woord dat u hebt opgegeven, heeft niet de verwachte indeling. |
 | **forgotpassword_link** | Uw wacht woord verg eten? |
 | **createaccount_intro** | Hebt u geen account? |
-| **createaccount_link** | Nu aanmelden |
+| **createaccount_link** | Nu registreren |
 | **divider_title** | OF |
 | **cancel_message** | De gebruiker is het wacht woord verg eten |
 | **button_signin** | Aanmelden |
@@ -104,7 +104,7 @@ Hieronder ziet u de Id's voor een inhouds definitie met een ID van `api.localacc
 | **ver_but_send** | Verificatie code verzenden |
 | **alert_yes** | Ja |
 | **error_fieldIncorrect** | Een of meer velden zijn onjuist ingevuld. Controleer uw vermeldingen en probeer het opnieuw. |
-| **jaareinde** | Jaar |
+| **jaareinde** | Year |
 | **verifying_blurb** | De gegevens worden verwerkt. een ogen blik geduld... |
 | **button_cancel** | Annuleren |
 | **ver_fail_no_retry** | U hebt te veel onjuiste pogingen gedaan. Probeer het later opnieuw. |
@@ -115,14 +115,14 @@ Hieronder ziet u de Id's voor een inhouds definitie met een ID van `api.localacc
 | **error_requiredFieldMissing** | Een vereist veld ontbreekt. Vul alle vereiste velden in en probeer het opnieuw. |
 | **initial_intro** | Geef de volgende details op. |
 | **ver_but_resend** | Nieuwe code verzenden |
-| **button_continue** | Create |
+| **button_continue** | Maken |
 | **error_passwordEntryMismatch** | De invoer velden voor het wacht woord komen niet overeen. Voer hetzelfde wacht woord in beide velden in en probeer het opnieuw. |
 | **ver_incorrect_format** | Onjuiste indeling. |
 | **ver_but_edit** | E-mail wijzigen |
 | **ver_but_verify** | Code verifiëren |
 | **alert_no** | Nee |
 | **ver_info_msg** | De verificatie code is verzonden naar het postvak in. Kopieer het naar het invoervak hieronder. |
-| **profieldag** | Dag |
+| **profieldag** | Day |
 | **ver_fail_throttled** | Er zijn te veel aanvragen om dit e-mail adres te controleren. Wacht even en probeer het opnieuw. |
 | **helplink_text** | Wat is dit? |
 | **ver_fail_retry** | Deze code is onjuist. Probeer het opnieuw. |

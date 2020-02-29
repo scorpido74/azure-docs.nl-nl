@@ -2,20 +2,20 @@
 title: Overzicht van tokens-Azure Active Directory B2C
 description: Meer informatie over de tokens die worden gebruikt in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 543a3558333933e9d8d6262c76c1e6e9419be877
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848185"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186485"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
@@ -57,7 +57,7 @@ De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-toke
 | Verleend op | `iat` | `1438535543` | Het tijdstip waarop het token is uitgegeven, uitgedrukt in de epoche-tijd. |
 | Verloop tijd | `exp` | `1438539443` | Het tijdstip waarop het token ongeldig wordt, uitgedrukt in de epoche-tijd. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. |
 | Niet voor | `nbf` | `1438535543` | Het tijdstip waarop het token geldig wordt, uitgedrukt in de epoche-tijd. Deze tijd is doorgaans hetzelfde als het tijdstip waarop het token is uitgegeven. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. |
-| Versie | `ver` | `1.0` | De versie van het ID-token, zoals gedefinieerd door Azure AD B2C. |
+| Version | `ver` | `1.0` | De versie van het ID-token, zoals gedefinieerd door Azure AD B2C. |
 | Code-hash | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een code-hash die is opgenomen in een ID-token wanneer het token wordt uitgegeven met een OAuth 2,0-autorisatie code. Een code-hash kan worden gebruikt om de authenticiteit van een autorisatie code te valideren. Zie de [OpenID Connect Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html)voor meer informatie over het uitvoeren van deze validatie.  |
 | Toegangs token-hash | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een toegangs token-hash opgenomen in een ID-token wanneer het token wordt uitgegeven met een OAuth 2,0-toegangs token. Een toegangs token-hash kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie de [OpenID Connect Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html) voor meer informatie over het uitvoeren van deze validatie.  |
 | nonce | `nonce` | `12345` | Een nonce is een strategie die wordt gebruikt om token replay-aanvallen te verhelpen. Uw toepassing kan een nonce in een autorisatie aanvraag opgeven met behulp van de `nonce` query parameter. De waarde die u in de aanvraag opgeeft, wordt niet gewijzigd in de `nonce` claim van een ID-token. Met deze claim kan uw toepassing de waarde verifiëren op basis van de waarde die is opgegeven voor de aanvraag. Uw toepassing moet deze validatie uitvoeren tijdens het validatie proces van het ID-token. |
@@ -65,7 +65,7 @@ De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-toke
 | Naslag informatie over verificatie context klassen | `acr` | Niet van toepassing | Wordt alleen gebruikt met oudere beleids regels. |
 | Vertrouwens raamwerk beleid | `tfp` | `b2c_1_signupsignin1` | De naam van het beleid dat is gebruikt om het ID-token op te halen. |
 | Verificatie tijd | `auth_time` | `1438535543` | Het tijdstip waarop de laatste ingevoerde referenties door een gebruiker worden weer gegeven in de epoche-tijd. Er is geen discriminatie tussen deze verificatie een nieuwe aanmelding, een eenmalige aanmelding (SSO)-sessie of een ander aanmeldings type. De `auth_time` is de laatste keer dat de toepassing (of gebruiker) een verificatie poging heeft gestart op basis van Azure AD B2C. De methode die wordt gebruikt om te verifiëren, is niet gedifferentieerd. |
-| Scope | `scp` | `Read`| De machtigingen die zijn verleend aan de resource voor een toegangs token. Meerdere verleende machtigingen worden gescheiden door een spatie. |
+| Bereik | `scp` | `Read`| De machtigingen die zijn verleend aan de resource voor een toegangs token. Meerdere verleende machtigingen worden gescheiden door een spatie. |
 | Gemachtigde partij | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | De **toepassings-id** van de client toepassing die de aanvraag heeft gestart. |
 
 ## <a name="configuration"></a>Configuratie
@@ -89,11 +89,11 @@ Deze instellingen zijn niet beschikbaar voor gebruikers stromen voor wacht woord
 
 De volgende eigenschappen worden gebruikt voor het [beheren van token compatibiliteit](configure-tokens.md):
 
-- **Claim verlener (ISS)** : met deze eigenschap wordt de Azure AD B2C Tenant geïdentificeerd waarmee het token is uitgegeven. De standaardwaarde is `https://<domain>/{B2C tenant GUID}/v2.0/`. De waarde van `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` bevat Id's voor zowel de Azure AD B2C Tenant als de gebruikers stroom die in de token aanvraag is gebruikt. Als uw toepassing of bibliotheek Azure AD B2C moet voldoen aan de specificatie van de [OpenID Connect Connect-detectie 1,0](https://openid.net/specs/openid-connect-discovery-1_0.html), moet u deze waarde gebruiken.
+- **Claim verlener (ISS)** : met deze eigenschap wordt de Azure AD B2C Tenant geïdentificeerd waarmee het token is uitgegeven. De standaard waarde is `https://<domain>/{B2C tenant GUID}/v2.0/`. De waarde van `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` bevat Id's voor zowel de Azure AD B2C Tenant als de gebruikers stroom die in de token aanvraag is gebruikt. Als uw toepassing of bibliotheek Azure AD B2C moet voldoen aan de specificatie van de [OpenID Connect Connect-detectie 1,0](https://openid.net/specs/openid-connect-discovery-1_0.html), moet u deze waarde gebruiken.
 
 - **Subject (sub-claim)** : deze eigenschap identificeert de entiteit waarvoor het token gegevens bevestigingen. De standaard waarde is **ObjectID**, waarmee de `sub` claim in het token wordt gevuld met de object-id van de gebruiker. De waarde van **niet-ondersteund** wordt alleen gegeven voor achterwaartse compatibiliteit. Het is raadzaam om zo snel mogelijk naar **ObjectID** te scha kelen.
 
-- **Claim die de beleids-id vertegenwoordigt** : deze eigenschap geeft het claim type aan waarin de beleids naam die wordt gebruikt in de token aanvraag is ingevuld. De standaardwaarde is `tfp`. De waarde van `acr` wordt alleen gegeven voor achterwaartse compatibiliteit.
+- **Claim die de beleids-id vertegenwoordigt** : deze eigenschap geeft het claim type aan waarin de beleids naam die wordt gebruikt in de token aanvraag is ingevuld. De standaard waarde is `tfp`. De waarde van `acr` wordt alleen gegeven voor achterwaartse compatibiliteit.
 
 ## <a name="pass-through"></a>Pass-through
 

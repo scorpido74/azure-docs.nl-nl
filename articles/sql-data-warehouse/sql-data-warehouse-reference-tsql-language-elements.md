@@ -1,6 +1,6 @@
 ---
 title: Taalelementen T-SQL
-description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse.
+description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692524"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198419"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>T-SQL-taal elementen die worden ondersteund in Azure SQL Data Warehouse
-Koppelingen naar de documentatie voor T-SQL-taal elementen die worden ondersteund in Azure SQL Data Warehouse.
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>T-SQL-taal elementen die worden ondersteund in SQL Analytics
+Koppelingen naar de documentatie voor T-SQL-taal elementen die in SQL Analytics worden ondersteund.
 
 ## <a name="core-elements"></a>Kern elementen
 * [syntaxis conventies](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -82,7 +82,7 @@ Koppelingen naar de documentatie voor T-SQL-taal elementen die worden ondersteun
 * [| = (Bitsgewijze of gelijk aan)](https://msdn.microsoft.com/library/cc627409.aspx)
 * [& = (bitsgewijze en is gelijk aan)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -195,7 +195,7 @@ Koppelingen naar de documentatie voor T-SQL-taal elementen die worden ondersteun
 * [SOUNDEX](https://msdn.microsoft.com/library/ms187384.aspx)
 * [GELIJKE](https://msdn.microsoft.com/library/ms187950.aspx)
 * [SQL_VARIANT_PROPERTY](https://msdn.microsoft.com/library/ms178550.aspx)
-* [SQRT](https://msdn.microsoft.com/library/ms176108.aspx)
+* [WORTEL](https://msdn.microsoft.com/library/ms176108.aspx)
 * [WORTEL](https://msdn.microsoft.com/library/ms173569.aspx)
 * [STATS_DATE](https://msdn.microsoft.com/library/ms190330.aspx)
 * [STDEV](https://msdn.microsoft.com/library/ms190474.aspx)
@@ -220,7 +220,7 @@ Koppelingen naar de documentatie voor T-SQL-taal elementen die worden ondersteun
 * [UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
 * [HOOFD](https://msdn.microsoft.com/library/ms180055.aspx)
 * [GEBRUIKER](https://msdn.microsoft.com/library/ms186738.aspx)
-* [GEBRUIKERS NAAM](https://msdn.microsoft.com/library/ms188014.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [GERESERVEERD](https://msdn.microsoft.com/library/ms186290.aspx)
 * [FUNCTIE](https://msdn.microsoft.com/library/ms188735.aspx)
 * [JAAREINDE](https://msdn.microsoft.com/library/ms186313.aspx)
@@ -278,5 +278,5 @@ Koppelingen naar de documentatie voor T-SQL-taal elementen die worden ondersteun
 * [XACT_ABORT INSTELLEN](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [T-SQL-instructies in Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md)en [systeem weergaven in Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md)voor meer informatie.
+Zie [T-SQL-instructies in SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)en [systeem weergaven in SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md)voor meer informatie.
 

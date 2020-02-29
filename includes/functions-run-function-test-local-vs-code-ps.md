@@ -2,20 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964085"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191014"
 ---
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure Functions-project lokaal kunt uitvoeren en debuggen.  
+Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure Functions-project lokaal kunt uitvoeren en debuggen. Zie [debug Power shell Azure functions Local](../articles/azure-functions/functions-debug-powershell-local.md)(Engelstalig) voor meer informatie over fout opsporing in Visual Studio code. 
 
-1. Als u fouten wilt opsporen in uw functie, voegt u een aanroep naar de cmdlet [`Wait-Debugger`](/powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6) in de functie code in voordat u de debugger kunt koppelen. Druk vervolgens op F5 om het functie-app-project te starten en de debugger te koppelen. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
+1. Druk op F5 om het functie-app-project te starten. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
 
 1. Kopieer het URL-eindpunt van de door HTTP getriggerde functie in het deelvenster **Terminal**.
 
@@ -38,9 +38,6 @@ Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure F
 
     ![Uitvoering van functies in het Terminal paneel](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. Als u het fout opsporingsprogramma wilt stoppen, drukt u op CTRL + C om de kern Hulpprogramma's te stoppen.
+1. Wanneer u klaar bent, drukt u op **CTRL + C** om de kern hulpprogramma's te stoppen.
 
 Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure.
-
-> [!NOTE]
-> Vergeet niet alle aanroepen naar `Wait-Debugger` te verwijderen voordat u uw functies naar Azure publiceert. 

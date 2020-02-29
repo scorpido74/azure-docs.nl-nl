@@ -1,6 +1,6 @@
 ---
 title: Tabellen partitioneren
-description: Aanbevelingen en voor beelden voor het gebruik van tabel partities in Azure SQL Data Warehouse.
+description: Aanbevelingen en voor beelden voor het gebruik van tabel partities in SQL Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,24 +10,24 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 25485502ff1ae6858ee7d0f840c22940dc3ab9b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685416"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192146"
 ---
-# <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitioneren van tabellen in SQL Data Warehouse
-Aanbevelingen en voor beelden voor het gebruik van tabel partities in Azure SQL Data Warehouse.
+# <a name="partitioning-tables-in-sql-analytics"></a>Tabellen partitioneren in SQL Analytics
+Aanbevelingen en voor beelden voor het gebruik van tabel partities in SQL Analytics.
 
 ## <a name="what-are-table-partitions"></a>Wat zijn tabel partities?
-Met tabel partities kunt u uw gegevens onderverdelen in kleinere gegevens groepen. In de meeste gevallen worden tabel partities gemaakt in een datum kolom. Partitioneren wordt ondersteund op alle SQL Data Warehouse tabel typen. inclusief geclusterde column Store, geclusterde index en heap. Partitioneren wordt ook ondersteund voor alle distributie typen, inclusief hash-of round robin gedistribueerd.  
+Met tabel partities kunt u uw gegevens onderverdelen in kleinere gegevens groepen. In de meeste gevallen worden tabel partities gemaakt in een datum kolom. Partitioneren wordt ondersteund op alle SQL Analytics-tabel typen. inclusief geclusterde column Store, geclusterde index en heap. Partitioneren wordt ook ondersteund voor alle distributie typen, inclusief hash-of round robin gedistribueerd.  
 
 Partitioneren kan gebruikmaken van gegevens onderhoud en query prestaties. Of de IT-mede werkers al dan niet van elkaar afhankelijk zijn van de manier waarop gegevens worden geladen en of voor beide doel einden dezelfde kolom kan worden gebruikt, omdat partitioneren slechts op één kolom kan worden uitgevoerd.
 
 ### <a name="benefits-to-loads"></a>Te laden voor delen
-Het belangrijkste voor deel van het partitioneren in SQL Data Warehouse is het verbeteren van de efficiëntie en prestaties van het laden van gegevens door het gebruik van het verwijderen van partities, scha kelen en samen voegen. In de meeste gevallen worden gegevens gepartitioneerd in een datum kolom die nauw is verbonden met de volg orde waarin de gegevens in de-Data Base worden geladen. Een van de grootste voor delen van het gebruik van partities voor het bijhouden van gegevens, het vermijden van transactie logboek registratie. Hoewel het eenvoudig is om gegevens in te voegen, bij te werken of te verwijderen, kan dit de eenvoudigste benadering zijn, met een beetje goed en moeite, met partitioneren tijdens het laad proces en de prestaties aanzienlijk kunnen verbeteren.
+Het belangrijkste voor deel van partitionering in SQL Analytics is het verbeteren van de efficiëntie en prestaties van het laden van gegevens door het gebruik van het verwijderen van partities, scha kelen en samen voegen. In de meeste gevallen worden gegevens gepartitioneerd in een datum kolom die nauw is verbonden met de volg orde waarin de gegevens in de-Data Base worden geladen. Een van de grootste voor delen van het gebruik van partities voor het bijhouden van gegevens, het vermijden van transactie logboek registratie. Hoewel het eenvoudig is om gegevens in te voegen, bij te werken of te verwijderen, kan dit de eenvoudigste benadering zijn, met een beetje goed en moeite, met partitioneren tijdens het laad proces en de prestaties aanzienlijk kunnen verbeteren.
 
 Het wisselen van partities kan worden gebruikt om een sectie van een tabel snel te verwijderen of te vervangen.  Een tabel met verkoop feiten kan bijvoorbeeld alleen gegevens bevatten over de afgelopen 36 maanden. Aan het einde van elke maand worden de oudste verkoop gegevens uit de tabel verwijderd.  Deze gegevens kunnen worden verwijderd met behulp van een instructie DELETE om de gegevens voor de oudste maand te verwijderen. Het verwijderen van een grote hoeveelheid gegevens rijen per rij met een DELETE-instructie kan echter te veel tijd in beslag nemen en het risico van grote trans acties te maken die lang duren als er iets fout gaat. Een optimale benadering is het verwijderen van de oudste gegevens partitie. Als het verwijderen van de afzonderlijke rijen uren kan duren, kan het verwijderen van een volledige partitie enkele seconden duren.
 
@@ -37,10 +37,10 @@ Partitioneren kan ook worden gebruikt om de query prestaties te verbeteren. Een 
 ## <a name="sizing-partitions"></a>Grootte van partities aanpassen
 Hoewel partitioneren kan worden gebruikt om de prestaties van bepaalde scenario's te verbeteren, kan het maken van een tabel met **te veel** partities in bepaalde omstandigheden de prestaties nadelig beïnvloeden.  Deze problemen zijn vooral van toepassing op geclusterde column Store-tabellen. Voor partitionering is het belang rijk te weten wanneer u partitioneren gebruikt en het aantal partities dat moet worden gemaakt. Er is geen harde regel om te bepalen hoeveel partities te vaak zijn. Dit is afhankelijk van uw gegevens en het aantal partities dat u tegelijkertijd laadt. Een geslaagd partitie schema is doorgaans tien tot honderden partities, geen duizenden.
 
-Wanneer u partities maakt voor **geclusterde column Store** -tabellen, is het belang rijk om te bepalen hoeveel rijen bij elke partitie horen. Voor optimale compressie en prestaties van geclusterde column Store-tabellen, is mini maal 1.000.000 rijen per distributie en partitie nodig. Voordat partities worden gemaakt, splitst SQL Data Warehouse elke tabel al op in 60 gedistribueerde data bases. Elke partitie die is toegevoegd aan een tabel, is een aanvulling op de distributies die zijn gemaakt achter de schermen. Als in dit voor beeld de tabel sales feiten 36 maandelijkse partities bevat, en u hebt aangegeven dat SQL Data Warehouse 60-distributies heeft, moet de tabel verkoop feiten 60.000.000 rijen per maand of 2.100.000.000 rijen bevatten wanneer alle maanden worden ingevuld. Als een tabel minder dan het aanbevolen minimum aantal rijen per partitie bevat, kunt u overwegen minder partities te gebruiken om het aantal rijen per partitie te verg Roten. Zie het artikel [indexeren](sql-data-warehouse-tables-index.md) , dat query's bevat waarmee de kwaliteit van de cluster-column Store-indexen kan worden beoordeeld voor meer informatie.
+Wanneer u partities maakt voor **geclusterde column Store** -tabellen, is het belang rijk om te bepalen hoeveel rijen bij elke partitie horen. Voor optimale compressie en prestaties van geclusterde column Store-tabellen, is mini maal 1.000.000 rijen per distributie en partitie nodig. Voordat partities worden gemaakt, splitst SQL Analytics elke tabel al in 60 gedistribueerde data bases. Elke partitie die is toegevoegd aan een tabel, is een aanvulling op de distributies die zijn gemaakt achter de schermen. Als in dit voor beeld de tabel sales feiten 36 maandelijkse partities bevat, en u hebt gezien dat een SQL Analytics-data base 60 distributies heeft, moet de tabel verkoop feiten 60.000.000 rijen per maand of 2.100.000.000 rijen bevatten wanneer alle maanden worden ingevuld. Als een tabel minder dan het aanbevolen minimum aantal rijen per partitie bevat, kunt u overwegen minder partities te gebruiken om het aantal rijen per partitie te verg Roten. Zie het artikel [indexeren](sql-data-warehouse-tables-index.md) , dat query's bevat waarmee de kwaliteit van de cluster-column Store-indexen kan worden beoordeeld voor meer informatie.
 
 ## <a name="syntax-differences-from-sql-server"></a>Syntaxis verschillen ten opzichte van SQL Server
-SQL Data Warehouse introduceert een manier om partities te definiëren die eenvoudiger zijn dan SQL Server. Het partitioneren van functies en schema's wordt niet gebruikt in SQL Data Warehouse omdat ze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de gepartitioneerde kolom en de grens punten aan te duiden. De syntaxis van partitionering kan enigszins afwijken van SQL Server, de basis concepten zijn hetzelfde. SQL Server en SQL Data Warehouse ondersteunen één partitie kolom per tabel, die partities kan bevatten. Zie [gepartitioneerde tabellen en indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes)voor meer informatie over partitioneren.
+SQL Analytics introduceert een manier om partities te definiëren die eenvoudiger zijn dan SQL Server. Het partitioneren van functies en schema's wordt niet gebruikt in SQL Analytics omdat deze zich in SQL Server bevinden. In plaats daarvan hoeft u alleen de gepartitioneerde kolom en de grens punten aan te duiden. De syntaxis van partitionering kan enigszins afwijken van SQL Server, de basis concepten zijn hetzelfde. SQL Server en SQL Analytics ondersteunen één partitie kolom per tabel, die partities kan bevatten. Zie [gepartitioneerde tabellen en indexen](/sql/relational-databases/partitions/partitioned-tables-and-indexes)voor meer informatie over partitioneren.
 
 In het volgende voor beeld wordt de instructie [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) gebruikt voor het partitioneren van de tabel FactInternetSales in de kolom OrderDateKey:
 
@@ -69,12 +69,12 @@ WITH
 ```
 
 ## <a name="migrating-partitioning-from-sql-server"></a>Partitioneren migreren van SQL Server
-SQL Server partitie definities alleen migreren naar SQL Data Warehouse:
+SQL Server partitie definities alleen migreren naar SQL Analytics:
 
 - Elimineer het SQL Server [partitie schema](/sql/t-sql/statements/create-partition-scheme-transact-sql).
 - Voeg de [partitie functie](/sql/t-sql/statements/create-partition-function-transact-sql) definitie toe aan uw Create Table.
 
-Als u een gepartitioneerde tabel van een SQL Server-exemplaar migreert, kan de volgende SQL u helpen bij het berekenen van het aantal rijen in elke partitie. Houd er rekening mee dat als dezelfde partitie granulatie op SQL Data Warehouse wordt gebruikt, het aantal rijen per partitie afneemt met een factor van 60.  
+Als u een gepartitioneerde tabel van een SQL Server-exemplaar migreert, kan de volgende SQL u helpen bij het berekenen van het aantal rijen in elke partitie. Houd er rekening mee dat als dezelfde partitie granulatie wordt gebruikt voor SQL Analytics, het aantal rijen per partitie afneemt met een factor van 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -111,7 +111,7 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="partition-switching"></a>Partitie overschakelen
-SQL Data Warehouse ondersteunt het splitsen van partities, samen voegen en scha kelen. Elk van deze functies wordt uitgevoerd met behulp van de instructie [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) .
+SQL Analytics ondersteunt het splitsen van partities, samen voegen en scha kelen. Elk van deze functies wordt uitgevoerd met behulp van de instructie [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) .
 
 Als u wilt scha kelen tussen partities tussen twee tabellen, moet u ervoor zorgen dat de partities worden uitgelijnd op de respectievelijke grenzen en dat de tabel definities overeenkomen. Als er geen controle beperkingen beschikbaar zijn voor het afdwingen van het bereik van waarden in een tabel, moet de bron tabel dezelfde partitie grenzen bevatten als de doel tabel. Als de grenzen van de partitie niet hetzelfde zijn, mislukt de partitie-switch omdat de meta gegevens van de partitie niet worden gesynchroniseerd.
 
@@ -227,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Nieuwe gegevens laden in partities die gegevens in één stap bevatten
-Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, moet u een `ALTER TABLE` gebruiken om de gegevens over te scha kelen.  Vervolgens is een andere `ALTER TABLE` vereist om de nieuwe gegevens te scha kelen.  In SQL Data Warehouse wordt de `TRUNCATE_TARGET` optie ondersteund in de `ALTER TABLE` opdracht.  Met `TRUNCATE_TARGET` met de `ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld waarin `CTAS` wordt gebruikt om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
+Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, moet u een `ALTER TABLE` gebruiken om de gegevens over te scha kelen.  Vervolgens is een andere `ALTER TABLE` vereist om de nieuwe gegevens te scha kelen.  In SQL Analytics wordt de optie `TRUNCATE_TARGET` ondersteund in de `ALTER TABLE` opdracht.  Met `TRUNCATE_TARGET` met de `ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld waarin `CTAS` wordt gebruikt om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -328,7 +328,7 @@ Als u wilt voor komen dat uw tabel wordt **geroestd** in uw broncode beheer syst
     DROP TABLE #partitions;
     ```
 
-Met deze aanpak blijft de code in broncode beheer statisch en kunnen de grens waarden voor partitioneren dynamisch zijn. na verloop van tijd met het magazijn in ontwikkeling.
+Met deze aanpak blijft de code in broncode beheer statisch en kunnen de grens waarden voor partitioneren dynamisch zijn. na verloop van tijd in ontwikkeling met de data base.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de artikelen in [tabel Overview](sql-data-warehouse-tables-overview.md)voor meer informatie over het ontwikkelen van tabellen.

@@ -1,25 +1,26 @@
 ---
 title: Dynamische gegevensmaskering
-description: Dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-gemachtigde gebruikers voor SQL Database en het Data Warehouse
+description: Dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-gemachtigde gebruikers voor SQL Database en Azure Synapse
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/04/2019
-ms.openlocfilehash: 149c42829762920583948958da8252a01e35ef1f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/06/2020
+tags: azure-synpase
+ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721911"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192911"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamische gegevens maskering voor Azure SQL Database en Data Warehouse
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamische gegevens maskering voor Azure SQL Database en Azure Synapse Analytics
 
 SQL Database dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-bevoegde gebruikers. 
 
@@ -29,7 +30,7 @@ Een service medewerker in Call Center kan bijvoorbeeld bellers identificeren met
 
 ## <a name="dynamic-data-masking-basics"></a>Basis beginselen van dynamische gegevens maskering
 
-U stelt een beleid voor dynamische gegevens maskering in de Azure Portal in door de bewerking voor dynamische gegevens maskering te selecteren op de Blade SQL Database configuratie of de Blade instellingen. Deze functie kan niet worden ingesteld met behulp van de portal voor SQL DW (gebruik Power shell of REST API)
+U stelt een beleid voor dynamische gegevens maskering in de Azure Portal in door de bewerking voor dynamische gegevens maskering te selecteren op de Blade SQL Database configuratie of de Blade instellingen. Deze functie kan niet worden ingesteld met behulp van de portal voor Azure Synapse (gebruik Power shell of REST API)
 
 ### <a name="dynamic-data-masking-permissions"></a>Machtigingen voor dynamische gegevens maskering
 

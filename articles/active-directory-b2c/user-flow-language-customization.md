@@ -2,20 +2,20 @@
 title: Taal aanpassing in Azure Active Directory B2C
 description: Meer informatie over het aanpassen van de taal ervaring in uw gebruikers stromen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab34c1c34c2d2a67b5e3fdd6a5e84f0663455e20
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847912"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185757"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Taal aanpassing in Azure Active Directory B2C
 
@@ -207,16 +207,16 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 | Bulgaars             | bg            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Bengalees                | bn            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Catalaans               | certificering            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Tsjechisch                 | cs            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Tsjechisch                 | Support            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Deens                | da            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Duits                | de            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Grieks                 | el            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Nederlands               | en            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Spaans               | es            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Duits                | normalis            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Grieks                 | ei            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Nederlands               | nl            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Spaans               | s            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Estisch              | et            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Baskisch                | EU            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Fins               | fi            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Frans                | fr            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Fins               | spanning            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Frans                | nl            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Galicisch              | boekhoud            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Gujarati              | gu            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Hebreeuws                | Hij            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
@@ -224,9 +224,9 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 | Kroatisch              | afdeling            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Hongaars             | hu            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Indonesisch            | id            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Italiaans               | it            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Japans              | ja            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Kazachstaans                | kk            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Italiaans               | ,            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Japans              | Japan            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Kazachs                | kk            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Kanarees               | kn            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Koreaans                | ko            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Litouws            | lt            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
@@ -234,25 +234,25 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 | Malayalam             | ml            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Marathi               | Dhr            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Maleis                 | ms            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Noors Bokmål      | nb            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
+| Noors Bokmål      | NB            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Nederlands                 | nl            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Noors             | nee            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Punjabi               | PA            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Pools                | pl            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Portugees-Brazilië   | pt-br         | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Portugees-Portugal | pt-pt         | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Roemeens              | ro            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Roemeens              | Roll            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Russisch               | ru            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Slowaaks                | SK            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Sloveens             | lineaire            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Servisch-cyrillisch    | SR-Cryl-CS    | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Servisch-Latijn       | SR-latn-cs    | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Zweeds               | sv            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Zweeds               | SV            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Tamil                 | &            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Telugu                | Ken            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Thais                  | e            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Turks               | formulieren            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Oekraïens             | rijk            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Vietnamees            | beschreven            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Chinees-vereenvoudigd  | zh-hans       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Chinees-traditioneel | zh-hant       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Chinese - Simplified  | zh-hans       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Chinese - Traditional | zh-hant       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |

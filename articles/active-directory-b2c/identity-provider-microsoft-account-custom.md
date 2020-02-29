@@ -3,20 +3,20 @@ title: Aanmelden met een micro soft-account account instellen met behulp van aan
 titleSuffix: Azure AD B2C
 description: Aangepaste beleids regels gebruiken om micro soft-account (MSA) in te scha kelen als een id-provider met behulp van het OpenID Connect Connect (OIDC)-protocol.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b7d8fbddc86c0d05d7b0d4ce46cb06c5fc92a2cf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483275"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188114"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden instellen met een Microsoft-account aangepaste beleids regels gebruiken in Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ Als u de `family_name` en `given_name` claims van Azure AD wilt ophalen, kunt u 
 1. Selecteer **optionele claim toevoegen**.
 1. Selecteer het token type dat u wilt configureren.
 1. Selecteer de optionele claims die u wilt toevoegen.
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 

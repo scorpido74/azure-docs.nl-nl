@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u continue integratie (CI) en contin
 keywords: Jenkins, azure, devops, virtual machine, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606466"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192605"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
 
@@ -96,9 +96,9 @@ Eerst moet u twee Jenkins-invoegtoepassingen configureren: **NodeJS** en **Conti
 5. Selecteer **Release activeren in TFS/Team Services**. Voer de URI voor uw Azure DevOps Services-organisatie in, bijvoorbeeld **https://{naam-van-uw-organisatie}.visualstudio.com**.
 6. Voer de naam van het **project** in.
 7. Kies een naam voor de release-pijplijn. (U maakt deze release-pijplijn later in Azure DevOps Services.)
-8. Kies de referenties om verbinding te maken met uw Azure DevOps Services of Team Foundation Server-omgeving:
+8. Kies referenties om verbinding te maken met uw Azure DevOps-Services of Azure DevOps Server omgeving:
    - Laat **Gebruikersnaam** leeg als u Azure DevOps Services gebruikt. 
-   - Geef een gebruikersnaam en wachtwoord op als u een on-premises versie van Team Foundation Server gebruikt.    
+   - Voer een gebruikers naam en wacht woord in als u een on-premises versie van Azure DevOps Server gebruikt.    
    ![Jenkins-acties na maken configureren](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Sla het Jenkins-project op.
 

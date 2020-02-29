@@ -3,20 +3,20 @@ title: Aanmelden met een Google-account instellen met aangepaste beleids regels
 titleSuffix: Azure AD B2C
 description: Stel aanmelden met een Google-account in Azure Active Directory B2C met aangepaste beleids regels.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed11fcb24f06eae1b2baa6975a3cd8016042813e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8d02c86a1ff330aa4003299e1494a164089d8470
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847457"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188219"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Google-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -41,14 +41,14 @@ Als u aanmelden voor gebruikers wilt inschakelen vanuit een Google-account, moet
 6. Onder **toepassings type**selecteert u **Web Application**.
 7. Voer een **naam** in voor uw toepassing.
 8. Voer in **geautoriseerde java script-oorsprong**`https://your-tenant-name.b2clogin.com` in en voer in **geautoriseerde omleidings-uri's**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in. Vervang uw-Tenant naam door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
-8. Klik op **Maken**.
+8. Klik op **Create**.
 9. Kopieer de waarden van de **client-id** en het **client geheim**. U hebt beide nodig om Google te configureren als een id-provider in uw Tenant. Client geheim is een belang rijke beveiligings referentie.
 
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
 U moet het client geheim opslaan dat u eerder in uw Azure AD B2C-Tenant hebt vastgelegd.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
@@ -57,7 +57,7 @@ U moet het client geheim opslaan dat u eerder in uw Azure AD B2C-Tenant hebt vas
 7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `GoogleSecret`. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
 9. Selecteer `Signature`voor **sleutel gebruik**.
-10. Klik op **Maken**.
+10. Klik op **Create**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 

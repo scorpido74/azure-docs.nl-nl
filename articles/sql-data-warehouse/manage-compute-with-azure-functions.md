@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: Compute beheren met Azure Functions'
-description: Azure Functions gebruiken om de rekenniveaus van uw datawarehouse te beheren.
+description: Azure functions gebruiken voor het beheren van de reken kracht van uw SQL-groep in azure Synapse Analytics.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693016"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193138"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure Functions gebruiken om reken resources te beheren in Azure SQL Data Warehouse
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Functions gebruiken om reken resources te beheren in azure Synapse Analytics SQL-groep
 
-In deze zelf studie wordt gebruikgemaakt van Azure Functions om reken resources te beheren voor een Data Warehouse in Azure SQL Data Warehouse.
+In deze zelf studie wordt gebruikgemaakt van Azure Functions om reken resources te beheren voor een SQL-groep in azure Synapse Analytics.
 
-Als u de Azure-functie-app met SQL Data Warehouse wilt gebruiken, dient u voor hetzelfde abonnement als uw datawarehouse-exemplaar een [service-principalaccount](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) te maken met inzenderstoegang. 
+Als u Azure functie-app wilt gebruiken met SQL-pool, moet u een [Service-Principal-account](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) maken met toegang tot Inzender onder hetzelfde abonnement als uw exemplaar van SQL-groep. 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Schalen op basis van een timer met een Azure Resource Manager sjabloon implementeren
 
 Als u de sjabloon wilt implementeren, hebt u de volgende informatie nodig:
 
-- Naam van de resourcegroep waarin zich het SQL DW-exemplaar bevindt
-- Naam van de logische server waarin zich het SQL DW-exemplaar bevindt
-- Naam van het SQL DW-exemplaar
+- De naam van de resource groep waaraan uw exemplaar van SQL-groep is in
+- Naam van de logische server waarvan uw SQL-groeps instantie zich bevindt
+- De naam van het exemplaar van de SQL-groep
 - Tenant-id (directory-id) van de Azure Active Directory
 - Abonnements-id 
 - Toepassings-id van de service-principal
@@ -119,17 +119,17 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 5. Stel de bewerkings variabele als volgt in op het gewenste gedrag:
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -177,7 +177,7 @@ Op weekdagen om 8:00 uur omhoog schalen naar DW1000 en om 16:00 uur omlaag schal
 
 Meer informatie over Azure-functies die door een [timertrigger](../azure-functions/functions-create-scheduled-function.md) worden geactiveerd.
 
-Bekijk de [opslagplaats met voorbeelden](https://github.com/Microsoft/sql-data-warehouse-samples) van SQL Data Warehouse (Engelstalig).
+De [opslag plaats voor beelden](https://github.com/Microsoft/sql-data-warehouse-samples)van SQL-pool wordt uitgecheckt.
 
 
 

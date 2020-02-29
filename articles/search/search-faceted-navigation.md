@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112078"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190650"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
 
@@ -34,9 +34,9 @@ Bij het ontwikkelen van uw toepassing is het schrijven van code voor het maken v
 ## <a name="sample-code-and-demo"></a>Voorbeeld code en demo
 In dit artikel wordt een portal voor taak zoekopdrachten als voor beeld gebruikt. Het voor beeld wordt geïmplementeerd als een ASP.NET MVC-toepassing.
 
--   Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](https://azjobsdemo.azurewebsites.net/).
+- Bekijk en test de werk demonstratie online in [Azure Cognitive Search Job Portal-demo](http://azjobsdemo.azurewebsites.net/).
 
--   Down load de code van de [Azure-samples opslag plaats op github](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+- Down load de code van de [Azure-samples opslag plaats op github](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
 ## <a name="get-started"></a>Aan de slag
 Als u niet bekend bent met het ontwikkelen van de zoek functie, is het de beste manier om te zien wat de facet navigatie is, dat de mogelijkheden voor zelf zoeken worden weer gegeven. Het is een type inzoom ervaring op basis van vooraf gedefinieerde filters, waarmee u snel Zoek resultaten kunt beperken met behulp van Point-and-click-acties. 
@@ -70,7 +70,7 @@ Nauw keurigheid, gezien als de mogelijkheid om irrelevante treffers te filteren,
 -   **Search =**  
     De waarde van deze para meter vormt de zoek expressie. Het kan een enkel tekst fragment zijn of een complexe Zoek expressie die meerdere voor waarden en Opera tors bevat. Op de-server wordt een zoek expressie gebruikt voor Zoek opdrachten in volledige tekst, query's uitvoeren op Doorzoek bare velden in de index voor overeenkomende termen, waarbij resultaten worden geretourneerd in rang orde. Als u `search` instelt op NULL, heeft de uitvoering van de query de volledige index (dat wil zeggen `search=*`). In dit geval zijn andere elementen van de query, zoals een `$filter` of Score profiel, de primaire factoren die van invloed zijn op welke documenten worden geretourneerd `($filter`) en in welke volg orde (`scoringProfile` of `$orderby`).
 
--   **$filter=**  
+-   **$filter =**  
     Een filter is een krachtig mechanisme voor het beperken van de grootte van de zoek resultaten op basis van de waarden van specifieke document kenmerken. Een `$filter` wordt het eerst geëvalueerd, gevolgd door de facet logica die de beschik bare waarden en de bijbehorende aantallen voor elke waarde genereert
 
 Complexe Zoek expressies verminderen de prestaties van de query. Gebruik waar mogelijk goed opgebouwde filter expressies om de nauw keurigheid te verhogen en de query prestaties te verbeteren.

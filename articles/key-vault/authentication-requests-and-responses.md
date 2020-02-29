@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b84084dafe79a8caa9cdb70bc201f68834079845
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148229"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196073"
 ---
 # <a name="authentication-requests-and-responses"></a>Verificatie, vragen en antwoorden
 
@@ -87,7 +88,7 @@ In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Z
 
 ```  
 
-## <a name="authentication"></a>Verificatie  
+## <a name="authentication"></a>Authentication  
  Alle aanvragen voor Azure Key Vault moeten worden geverifieerd. Azure Key Vault ondersteunt Azure Active Directory toegangs tokens die kunnen worden verkregen met behulp van OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
  Zie [uw client toepassing registreren bij Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)voor meer informatie over het registreren van uw toepassing en het verifiëren van het gebruik van Azure Key Vault.

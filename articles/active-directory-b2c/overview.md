@@ -2,20 +2,20 @@
 title: Wat is Azure Active Directory B2C?
 description: Meer informatie over hoe u Azure Active Directory B2C kunt gebruiken ter ondersteuning van externe identiteiten in uw toepassingen, waaronder sociale aanmelding bij Facebook, Google en andere id-providers.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7159d695d502f2fba7a8b502eed7fdeffbe0ad03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850249"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184057"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Wat is Azure Active Directory B2C?
 
@@ -53,7 +53,7 @@ Azure AD B2C kunt het verzamelen van de gegevens van de gebruiker tijdens de reg
 
 ## <a name="progressive-profiling"></a>Progressieve profilering
 
-Een andere reis optie voor een gebruiker bevat progressieve profilering. Met de progressieve profilering kunnen uw klanten snel hun eerste trans actie volt ooien door een minimale hoeveelheid informatie te verzamelen. Verzamelt vervolgens geleidelijk meer profiel gegevens van de klant voor toekomstige aanmeldingen.
+Een andere reis optie voor een gebruiker bevat progressieve profilering. Met de progressieve profilering kunnen uw klanten snel hun eerste transactie voltooien door een minimale hoeveelheid informatie te verzamelen. Verzamelt vervolgens geleidelijk meer profiel gegevens van de klant voor toekomstige aanmeldingen.
 
 ![Een visuele voors telling van progressieve profilering](./media/overview/scenario-progressive.png)
 

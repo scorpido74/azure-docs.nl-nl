@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609839"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196976"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Toepassingen voor meerdere omgevingen beheren
 
@@ -42,7 +42,7 @@ Wanneer u een benoemde instantie van een toepassing maakt in Service Fabric, kun
 
   - In Power shell neemt de [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet de toepassings parameters op als hash-tabel.
   - Met behulp van sfctl krijgt de [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) -opdracht para meters als een JSON-teken reeks. Het install.sh-script maakt gebruik van sfctl.
-  - Visual Studio biedt een set parameter bestanden in de map para meters in het toepassings project. Deze parameter bestanden worden gebruikt bij het publiceren vanuit Visual Studio met behulp van Azure DevOps Services of Team Foundation Server. In Visual Studio worden de parameter bestanden door gegeven aan het script Deploy-FabricApplication. ps1.
+  - Visual Studio biedt een set parameter bestanden in de map para meters in het toepassings project. Deze parameter bestanden worden gebruikt bij het publiceren vanuit Visual Studio met behulp van Azure DevOps Services of Azure DevOps Server. In Visual Studio worden de parameter bestanden door gegeven aan het script Deploy-FabricApplication. ps1.
 
 ## <a name="next-steps"></a>Volgende stappen
 In de volgende artikelen ziet u hoe u een aantal van de concepten kunt gebruiken die hier worden beschreven:

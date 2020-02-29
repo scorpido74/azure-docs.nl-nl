@@ -4,12 +4,12 @@ description: Meer informatie over het bijwerken van Linux-knoop punten en het au
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594937"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191279"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)
 
@@ -51,13 +51,23 @@ Tijdens een upgrade gebeurtenis kunt u niet op dezelfde Kubernetes-versie blijve
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Kured implementeren in een AKS-cluster
 
-Als u de `kured` Daemonset wilt implementeren, past u het volgende voor beeld-YAML-manifest toe vanaf de pagina GitHub-project. Met dit manifest maakt u een rol en cluster functie, bindingen en een service account. vervolgens implementeert u de Daemonset met `kured` versie 1.1.0 die AKS-clusters 1,9 of hoger ondersteunt.
+Als u de `kured` Daemonset wilt implementeren, installeert u de volgende officiële Kured helm-grafiek. Hiermee maakt u een rol en cluster functie, bindingen en een service account en implementeert vervolgens de Daemonset met `kured`.
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-U kunt ook aanvullende para meters voor `kured`configureren, zoals integratie met Prometheus of toegestane vertraging. Zie de [installatie documenten voor kured][kured-install]voor meer informatie over aanvullende configuratie parameters.
+U kunt ook aanvullende para meters voor `kured`configureren, zoals integratie met Prometheus of toegestane vertraging. Zie de [Kured helm-grafiek][kured-install]voor meer informatie over aanvullende configuratie parameters.
 
 ## <a name="update-cluster-nodes"></a>Cluster knooppunten bijwerken
 
@@ -96,7 +106,7 @@ Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters di
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

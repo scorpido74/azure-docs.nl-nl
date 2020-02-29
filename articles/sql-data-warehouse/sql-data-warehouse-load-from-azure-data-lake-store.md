@@ -1,34 +1,34 @@
 ---
 title: Zelf studie gegevens laden van Azure Data Lake Storage
-description: Gebruik poly base externe tabellen om gegevens van Azure Data Lake Storage naar Azure SQL Data Warehouse te laden.
+description: Gebruik poly base externe tabellen om gegevens van Azure Data Lake Storage voor SQL Analytics te laden.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923626"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194577"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Gegevens laden van Azure Data Lake Storage naar SQL Data Warehouse
-In deze hand leiding wordt beschreven hoe u met poly base externe tabellen gegevens laadt van Azure Data Lake Storage naar Azure SQL Data Warehouse. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, is het raadzaam om de gegevens te importeren in de SQL Data Warehouse voor de beste prestaties. 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Gegevens laden uit Azure Data Lake Storage voor SQL Analytics
+In deze hand leiding wordt beschreven hoe u met poly base externe tabellen gegevens laadt van Azure Data Lake Storage. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, raden we u aan om de gegevens te importeren voor de beste prestaties. 
 
 > [!NOTE]  
-> Een alternatief voor het laden is de [instructie Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) die momenteel beschikbaar is als open bare preview. Als u feedback wilt geven over de instructie COPY, stuurt u een e-mail naar de volgende distributie lijst: sqldwcopypreview@service.microsoft.com.
+> Een alternatief voor het laden is de [instructie Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) die momenteel beschikbaar is als open bare preview.  De instructie COPY biedt de meeste flexibiliteit. Als u feedback wilt geven over de instructie COPY, stuurt u een e-mail naar de volgende distributie lijst: sqldwcopypreview@service.microsoft.com.
 >
 > [!div class="checklist"]
 
 > * Maak database objecten die vereist zijn om te laden uit Data Lake Storage.
 > * Verbinding maken met een Data Lake Storage Directory.
-> * Gegevens laden in Azure SQL Data Warehouse.
+> * Gegevens laden in het Data Warehouse.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -37,7 +37,7 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 Als u deze zelf studie wilt uitvoeren, hebt u het volgende nodig:
 
-* Een Azure SQL Data Warehouse. Zie [maken en query's en Azure SQL Data Warehouse](create-data-warehouse-portal.md).
+* Een SQL-groep. Zie [een SQL-groep en query gegevens maken](create-data-warehouse-portal.md).
 * Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). Voor dit opslag account moet u een van de volgende referenties configureren of opgeven om te laden: een sleutel voor een opslag account, een Azure Directory-toepassings gebruiker of een AAD-gebruiker die de juiste RBAC-rol heeft voor het opslag account. 
 
 ##  <a name="create-a-credential"></a>Een referentie maken
@@ -194,7 +194,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Column Store-compressie optimaliseren
-SQL Data Warehouse slaat de tabel standaard op als een geclusterde column store-index. Nadat het laden is voltooid, zijn sommige gegevens rijen mogelijk niet gecomprimeerd naar de column Store.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [Column Store-indexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie.
+Tabellen worden standaard gedefinieerd als een geclusterde column store-index. Nadat het laden is voltooid, zijn sommige gegevens rijen mogelijk niet gecomprimeerd naar de column Store.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [Column Store-indexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie.
 
 Als u de query prestaties en column Store-compressie wilt optimaliseren na een laad opdracht, bouwt u de tabel opnieuw op om ervoor te zorgen dat de column store-index alle rijen kan comprimeren.
 
@@ -212,19 +212,20 @@ Als u besluit om met één kolom statistieken te maken voor elke kolom van elke 
 Het volgende voor beeld is een goed uitgangs punt voor het maken van statistieken. Er worden statistieken voor één kolom gemaakt voor elke kolom in de dimensie tabel en voor elke join-kolom in de feiten tabellen. U kunt later altijd statistieken met één of meerdere kolommen toevoegen aan andere feiten tabel kolommen.
 
 ## <a name="achievement-unlocked"></a>Prestaties vergren delen.
-U hebt gegevens geladen in Azure SQL Data Warehouse. Fantastische taak!
+U hebt gegevens geladen in uw data warehouse. Fantastische taak!
 
 ## <a name="next-steps"></a>Volgende stappen 
 In deze zelf studie hebt u externe tabellen gemaakt om de structuur te definiëren voor gegevens die zijn opgeslagen in Data Lake Storage Gen1. vervolgens gebruikt u de poly base-CREATE TABLE als SELECT-instructie voor het laden van gegevens in uw data warehouse. 
 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
+>
 > * Er zijn data base-objecten gemaakt die nodig zijn om te laden uit Data Lake Storage.
 > * Verbonden met een Data Lake Storage Directory.
-> * De gegevens zijn geladen in Azure SQL Data Warehouse.
+> * De gegevens zijn geladen in het Data Warehouse.
 >
 
-Het laden van gegevens is de eerste stap bij het ontwikkelen van een Data Warehouse-oplossing met behulp van SQL Data Warehouse. Bekijk onze ontwikkelings bronnen.
+Het laden van gegevens is de eerste stap bij het ontwikkelen van een Data Warehouse-oplossing met behulp van Azure Synapse Analytics. Bekijk onze ontwikkelings bronnen.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het ontwikkelen van tabellen in SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
+> [Meer informatie over het ontwikkelen van tabellen voor gegevens opslag](sql-data-warehouse-tables-overview.md)

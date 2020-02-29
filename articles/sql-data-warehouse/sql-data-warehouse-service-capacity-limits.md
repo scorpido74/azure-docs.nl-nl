@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: azure-synapse
+ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526413"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198181"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -30,16 +31,18 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Database verbinding |Maximum aantal gelijktijdige open sessies |1024<br/><br/>Het aantal gelijktijdige open sessies varieert op basis van de geselecteerde DWU. DWU600c en hoger ondersteunen Maxi maal 1024 geopende sessies. DWU500c en lager ondersteunen een maximum aantal gelijktijdige open sessies van 512. Opmerking: er gelden limieten voor het aantal query's dat gelijktijdig kan worden uitgevoerd. Wanneer de limiet voor gelijktijdigheid wordt overschreden, wordt de aanvraag in een interne wachtrij geplaatst, waarin wordt gewacht om te worden verwerkt. |
 | Database verbinding |Maxi maal geheugen voor voor bereide instructies |20 MB |
 | [Werklastbeheer](resource-classes-for-workload-management.md) |Maximum aantal gelijktijdige query's |128<br/><br/>  Er worden Maxi maal 128 gelijktijdige query's uitgevoerd en er worden resterende query's in de wachtrij geplaatst.<br/><br/>Het aantal gelijktijdige query's kan afnemen wanneer gebruikers worden toegewezen aan hogere bron klassen of wanneer de instelling van de [Data Warehouse-eenheid](memory-concurrency-limits.md) wordt verlaagd. Sommige query's, zoals DMV-query's, mogen altijd worden uitgevoerd en hebben geen invloed op de limiet voor gelijktijdige query's. Zie het artikel [gelijktijdigheids limieten](memory-concurrency-limits.md) voor meer informatie over het gelijktijdig uitvoeren van query's. |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximum GB |399 GB per DW100. Daarom heeft TempDB het formaat 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximum GB |399 GB per DW100c. Daarom heeft TempDB het formaat 3,99 TB. |
+||||
 
 ## <a name="database-objects"></a>Database objecten
+
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
-| Database |Maximale grootte | Gen1:240 TB gecomprimeerd op schijf. Deze ruimte is onafhankelijk van tempdb of logboek ruimte en daarom is deze ruimte toegewezen aan permanente tabellen.  Geclusterde column Store-compressie wordt geschat op 5X.  Met deze compressie kan de Data Base worden uitgebreid tot ongeveer 1 PB wanneer alle tabellen zijn geclusterd (het standaard tabel type). <br/><br/> Gen2:240TB voor rowstore en onbeperkte opslag voor column Store-tabellen |
-| Tabel |Maximale grootte | Voor column Store-tabellen geldt geen uppper-limiet. <br/><br/>Voor rij-Store-tabellen, 60 TB gecomprimeerd op schijf |
+| Database |Maximale grootte | Gen1:240 TB gecomprimeerd op schijf. Deze ruimte is onafhankelijk van tempdb of logboek ruimte en daarom is deze ruimte toegewezen aan permanente tabellen.  Geclusterde column Store-compressie wordt geschat op 5X.  Met deze compressie kan de Data Base worden uitgebreid tot ongeveer 1 PB wanneer alle tabellen zijn geclusterd (het standaard tabel type). <br/><br/> Gen2: onbeperkte opslag voor column Store-tabellen.  Het Rowstore-gedeelte van de data base is nog steeds beperkt tot 240 TB gecomprimeerd op schijf. |
+| Tabel |Maximale grootte |Onbeperkte grootte voor column Store-tabellen. <br>60 TB voor rowstore-tabellen gecomprimeerd op schijf. |
 | Tabel |Tabellen per data base | 100.000 |
 | Tabel |Kolommen per tabel |1024 kolommen |
-| Tabel |Bytes per kolom |Afhankelijk van het [gegevens type](sql-data-warehouse-tables-data-types.md)van de kolom. De limiet is 8000 voor char-gegevens typen, 4000 voor nvarchar of 2 GB voor de maximale gegevens typen. |
+| Tabel |Bytes per kolom |Afhankelijk van het [gegevens type](sql-data-warehouse-tables-data-types.md)van de kolom. Voor teken gegevens typen kan de maximum limiet Maxi maal 2 GB op de pagina (rijen overloop) worden opgeslagen.  Niet-Unicode-tekens zoals char-of varchar-limiet is 8000 op een gegevens pagina, Unicode-tekens zoals nchar-of nvarchar-limiet is 4000 op een gegevens pagina.  Opslag capaciteit van gegevens pagina's gebruiken om de prestaties te verbeteren. |
 | Tabel |Bytes per rij, gedefinieerde grootte |8060 bytes<br/><br/>Het aantal bytes per rij wordt op dezelfde manier berekend als voor SQL Server met pagina compressie. Net als bij SQL Server wordt opslag voor de rij-overloop ondersteund, waardoor kolommen met een **variabele lengte** buiten rijen kunnen worden geplaatst. Wanneer variabele length-rijen uit de rij worden gepusht, wordt alleen de basis van 24 bytes in de hoofd record opgeslagen. Zie voor meer informatie [rij-overflow gegevens die groter zijn dan 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tabel |Partities per tabel |15.000<br/><br/>Voor hoge prestaties raden we u aan het aantal partities dat u nodig hebt, te minimaliseren en toch uw bedrijfs vereisten te ondersteunen. Naarmate het aantal partities groeit, neemt de overhead voor DDL (Data Definition Language) en DML-bewerkingen (data manipulatie Language) toe en leidt dit tot tragere prestaties. |
 | Tabel |Tekens per partitie grenswaarde. |4000 |
@@ -52,13 +55,17 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Statistieken |Statistieken gemaakt voor kolommen per tabel. |30,000 |
 | Opgeslagen procedures |Maximum aantal geneste niveaus. |8 |
 | Weergave |Kolommen per weer gave |1,024 |
+||||
 
 ## <a name="loads"></a>Laden
+
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Poly base belastingen |MB per rij |1<br/><br/>Poly base laadt rijen die kleiner zijn dan 1 MB. Het laden van LOB-gegevens typen in tabellen met een geclusterde column store-index (CCI) wordt niet ondersteund.<br/><br/> |
+||||
 
 ## <a name="queries"></a>Query's
+
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | Query's uitvoeren |Query's in de wachtrij voor gebruikers tabellen. |1000 |
@@ -73,8 +80,10 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | SELECT |Aantal bytes per GESORTEERDe kolom |8060 bytes<br/><br/>De kolommen in de ORDER BY-component kunnen Maxi maal 8060 bytes bevatten |
 | Id's per instructie |Aantal id's waarnaar wordt verwezen |65,535<br/><br/> Het aantal id's dat kan worden opgenomen in één expressie van een query is beperkt. Het overschrijden van dit getal resulteert in SQL Server fout 8632. Zie [interne fout: er is een limiet voor de expressie Services bereikt](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)voor meer informatie. |
 | Letterlijke teken reeksen | Aantal letterlijke teken reeksen in een instructie | 20,000 <br/><br/>Het aantal teken reeks constanten in één expressie van een query is beperkt. Het overschrijden van dit getal resulteert in SQL Server fout 8632.|
+||||
 
 ## <a name="metadata"></a>Metagegevens
+
 | Systeem weergave | Maximum aantal rijen |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10.000 |
@@ -86,6 +95,8 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | sys.dm_pdw_request_steps |Totaal aantal stappen voor de meest recente 1000 SQL-aanvragen die zijn opgeslagen in sys. dm_pdw_exec_requests. |
 | sys.dm_pdw_os_event_logs |10.000 |
 | sys.dm_pdw_sql_requests |De meest recente 1000 SQL-aanvragen die zijn opgeslagen in sys. dm_pdw_exec_requests. |
+|||
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Zie het [blad Cheat](cheat-sheet.md)voor aanbevelingen voor het gebruik van Azure Synapse.

@@ -6,16 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: af3611e4c4d1f5d8ca52b3ceb80d79dcfd7d2061
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190741"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200019"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
 
 In deze Quick start ziet u hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
+
+Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
+* [App starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
+* [App starten met Azure CLI](spring-cloud-quickstart-launch-app-cli.md)
+
+In dit artikel worden de vereiste afhankelijkheden beschreven en wordt uitgelegd hoe u deze toevoegt aan het POM-bestand.
 
 ## <a name="java-runtime-version"></a>Java runtime-versie
 
@@ -25,16 +31,18 @@ Azure lente-Cloud ondersteunt Java 8 en Java 11. De hosting omgeving bevat de ni
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Lente-boot-en lente-Cloud versies
 
-Azure lente-Cloud ondersteunt alleen veer boot-apps. Deze versie 2,1 en versie 2,2 van de lente boot wordt ondersteund. De volgende tabel geeft een overzicht van de ondersteunde veer boot-en lente-Cloud combinaties:
+Als u een bestaande Spring boot-toepassing wilt voorbereiden voor implementatie in azure lente-Cloud, neemt u de voor-en achterliggende Cloud afhankelijkheden op in het POM-bestand van de toepassing, zoals wordt weer gegeven in de volgende secties.
+
+De Azure lente-Cloud ondersteunt alleen veer boot-apps van veer boot versie 2,1 of versie 2,2. De volgende tabel geeft een overzicht van de ondersteunde veer boot-en lente-Cloud combinaties:
 
 Spring boot-versie | Lente-Cloud versie
 ---|---
 2.1 | Greenwich. RELEASE
 2.2 | Hoxton. RELEASE
 
-Controleer of uw pom. XML-bestand de juiste Spring-en lente-Cloud afhankelijkheden heeft, op basis van uw Spring boot-versie.
-
 ### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring boot versie 2,1
+
+Voor Spring boot versie 2,1 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -60,6 +68,8 @@ Controleer of uw pom. XML-bestand de juiste Spring-en lente-Cloud afhankelijkhed
 
 ### <a name="dependencies-for-spring-boot-version-22"></a>Afhankelijkheden voor Spring boot versie 2,2
 
+Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
+
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
@@ -84,7 +94,7 @@ Controleer of uw pom. XML-bestand de juiste Spring-en lente-Cloud afhankelijkhed
 
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure veer cloud client-afhankelijkheid
 
-Azure lente-Cloud host en beheert lente-Cloud onderdelen voor u. Voor beelden van dergelijke onderdelen zijn lente Cloud Service Registry en lente-Cloud configuratie server. Neem de Azure veer cloud-client bibliotheek op in uw afhankelijkheden om communicatie met uw Azure lente-Cloud service-exemplaar toe te staan.
+Azure lente-Cloud hosts en beheert lente-Cloud onderdelen. De onderdelen omvatten veer-Cloud service register en lente-Cloud configuratie server. Neem de Azure veer cloud-client bibliotheek op in uw afhankelijkheden om communicatie met uw Azure lente-Cloud service-exemplaar toe te staan.
 
 De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor uw app die een lente-boot-en lente-Cloud gebruiken.
 
@@ -97,6 +107,8 @@ Neem een van de volgende afhankelijkheden op in het bestand pom. XML. Selecteer 
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Afhankelijkheid voor Azure lente Cloud versie 2,1
 
+Voor Spring boot versie 2,1 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -106,6 +118,8 @@ Neem een van de volgende afhankelijkheden op in het bestand pom. XML. Selecteer 
 ```
 
 ### <a name="dependency-for-azure-spring-cloud-version-22"></a>Afhankelijkheid voor Azure lente Cloud versie 2,2
+
+Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
 
 ```xml
 <dependency>
@@ -117,7 +131,33 @@ Neem een van de volgende afhankelijkheden op in het bestand pom. XML. Selecteer 
 
 ## <a name="other-required-dependencies"></a>Andere vereiste afhankelijkheden
 
-Uw toepassing moet de volgende afhankelijkheden bevatten om de ingebouwde functies van Azure lente Cloud in te scha kelen. Deze insluiting zorgt ervoor dat uw toepassing zichzelf correct configureert voor elk onderdeel.  
+Uw toepassing moet de volgende afhankelijkheden bevatten om de ingebouwde functies van Azure lente Cloud in te scha kelen. Deze insluiting zorgt ervoor dat uw toepassing zichzelf correct configureert voor elk onderdeel.
+
+### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient aantekening
+
+Voeg de volgende aantekening toe aan de bron code van de toepassing.
+```java
+@EnableDiscoveryClient
+```
+Zie bijvoorbeeld de piggymetrics-toepassing uit eerdere voor beelden:
+```java
+package com.piggymetrics.gateway;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableZuulProxy
+
+public class GatewayApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplication.class, args);
+    }
+}
+```
 
 ### <a name="service-registry-dependency"></a>Afhankelijkheid van service register
 
@@ -175,6 +215,13 @@ Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` 
 ```
 
  U moet ook een Azure-toepassing Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Lees de [zelf studie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md) voor meer informatie over het gebruik van Application Insights met Azure lente Cloud.
+
+## <a name="see-also"></a>Zie ook
+* [Toepassings logboeken en metrische gegevens analyseren](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Stel uw configuratie server in](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
+* [Gedistribueerde tracering gebruiken met Azure veer Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Hand leiding voor veer Snelstartgids](https://spring.io/quickstart)
+* [Spring boot-documentatie](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Volgende stappen
 

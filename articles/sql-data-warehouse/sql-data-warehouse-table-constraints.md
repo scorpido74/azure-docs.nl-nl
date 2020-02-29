@@ -1,6 +1,6 @@
 ---
 title: Primaire, refererende en unieke sleutels
-description: Ondersteuning voor tabel beperkingen in Azure SQL Data Warehouse
+description: Ondersteuning voor tabel beperkingen in SQL Analytics in azure Synapse Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685494"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198130"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Primaire sleutel, refererende sleutel en unieke sleutel in Azure SQL Data Warehouse
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>Primaire sleutel, refererende sleutel en unieke sleutel in SQL Analytics
 
-Meer informatie over tabel beperkingen in Azure SQL Data Warehouse, waaronder primaire sleutel, refererende sleutel en unieke sleutel.
+Meer informatie over tabel beperkingen in SQL Analytics, waaronder primaire sleutel, refererende sleutel en unieke sleutel.
 
 ## <a name="table-constraints"></a>Tabelbeperkingen 
-Azure SQL Data Warehouse ondersteunt deze tabel beperkingen: 
+SQL Analytics ondersteunt deze tabel beperkingen: 
 - De primaire sleutel wordt alleen ondersteund als niet-geclusterd en niet afgedwongen worden gebruikt.    
 - EEN unieke beperking wordt alleen ondersteund als er geen afgedwongen wordt toegepast.   
 
-REFERERende-sleutel beperking wordt niet ondersteund in Azure SQL Data Warehouse.  
+REFERERende-sleutel beperking wordt niet ondersteund in SQL Analytics.  
 
 ## <a name="remarks"></a>Opmerkingen
-Met een primaire sleutel en/of een unieke sleutel kan data warehouse-engine een optimaal uitvoerings plan voor een query genereren.  Alle waarden in een primaire-sleutel kolom of een kolom met unieke beperkingen moeten uniek zijn. 
+Met een primaire sleutel en/of unieke sleutel kan SQL Analytics engine een optimaal uitvoerings plan voor een query genereren.  Alle waarden in een primaire-sleutel kolom of een kolom met unieke beperkingen moeten uniek zijn. 
 
-Na het maken van een tabel met een primaire sleutel of UNIQUE-beperking in azure Data Warehouse, moeten gebruikers ervoor zorgen dat alle waarden in die kolommen uniek zijn.  Een schending van dat kan ertoe leiden dat de query onnauwkeurig resultaat retourneert.  In dit voor beeld ziet u hoe een query onnauwkeurig resultaat kan retour neren als de kolom Primary Key of unique constraint dubbele waarden bevat.  
+Na het maken van een tabel met een primaire sleutel of unieke beperking in SQL Analytics, moeten gebruikers ervoor zorgen dat alle waarden in die kolommen uniek zijn.  Een schending van dat kan ertoe leiden dat de query onnauwkeurig resultaat retourneert.  In dit voor beeld ziet u hoe een query onnauwkeurig resultaat kan retour neren als de kolom Primary Key of unique constraint dubbele waarden bevat.  
 
 ```sql
  -- Create table t1
@@ -158,12 +158,12 @@ a1          total
 ```
 
 ## <a name="examples"></a>Voorbeelden
-Maak een Data Warehouse-tabel met een primaire sleutel: 
+Maak een SQL Analytics-tabel met een primaire sleutel: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Een Data Warehouse-tabel maken met een unieke beperking:
+Maak een SQL Analytics-tabel met een unieke beperking:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de tabellen voor uw data warehouse hebt gemaakt, is de volgende stap het laden van gegevens in de tabel. Zie [gegevens laden naar SQL Data Warehouse](load-data-wideworldimportersdw.md)voor een zelf studie over het laden van.
+Nadat u de tabellen voor uw SQL Analytics-Data Base hebt gemaakt, is de volgende stap het laden van gegevens in de tabel. Zie [gegevens laden in SQL Analytics-data bases](load-data-wideworldimportersdw.md)voor een zelf studie die u kunt laden.

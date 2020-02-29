@@ -1,6 +1,6 @@
 ---
-title: CREATE TABLE ALS SELECTEREN (CTAS)
-description: Uitleg en voor beelden van de instructie CREATE TABLE als SELECT (CTAS) in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+title: CREATE TABLE AS SELECT (CTAS)
+description: Uitleg en voor beelden van de instructie CREATE TABLE als SELECT (CTAS) in SQL Analytics voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,19 +10,19 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685862"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195903"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE als SELECT (CTAS) in Azure SQL Data Warehouse
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>CREATE TABLE als SELECT (CTAS) in SQL Analytics
 
-In dit artikel wordt de CREATE TABLE als SELECT (CTAS) T-SQL-instructie in Azure SQL Data Warehouse uitgelegd voor het ontwikkelen van oplossingen. Het artikel bevat ook code voorbeelden.
+In dit artikel wordt de CREATE TABLE als SELECT (CTAS) T-SQL-instructie in SQL Analytics beschreven voor het ontwikkelen van oplossingen. Het artikel bevat ook code voorbeelden.
 
-## <a name="create-table-as-select"></a>CREATE TABLE ALS SELECTEREN
+## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
 De instructie [create table as select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) is een van de belangrijkste T-SQL-functies die beschikbaar zijn. CTAS is een parallelle bewerking waarmee een nieuwe tabel wordt gemaakt op basis van de uitvoer van een SELECT-instructie. CTAS is de eenvoudigste en snelste manier om gegevens in een tabel met één opdracht te maken en in te voegen.
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>CTAS gebruiken om niet-ondersteunde functies te omzeilen
 
-U kunt CTAS ook gebruiken om een aantal van de hieronder vermelde niet-ondersteunde functies te omzeilen. Deze methode kan vaak nuttig zijn, omdat uw code niet alleen compatibel is, maar vaak sneller wordt uitgevoerd op SQL Data Warehouse. Deze prestaties zijn een resultaat van het volledig geevenwijdige ontwerp. Scenario's zijn onder andere:
+U kunt CTAS ook gebruiken om een aantal van de hieronder vermelde niet-ondersteunde functies te omzeilen. Deze methode kan vaak nuttig zijn, omdat uw code niet alleen compatibel is, maar vaak sneller wordt uitgevoerd op SQL Analytics. Deze prestaties zijn een resultaat van het volledig geevenwijdige ontwerp. Scenario's zijn onder andere:
 
 * ANSI-samen voegingen voor UPDATEs
 * ANSI-samen voegingen bij verwijderen
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Data Warehouse ondersteunt geen ANSI-samen voegingen in de `FROM`-component van een `UPDATE`-instructie, zodat u het vorige voor beeld niet kunt gebruiken zonder het te wijzigen.
+SQL Analytics ondersteunt geen ANSI-samen voegingen in de `FROM`-component van een `UPDATE`-instructie, dus u kunt het vorige voor beeld niet gebruiken zonder het te wijzigen.
 
 U kunt een combi natie van een CTAS en een impliciete koppeling gebruiken om het vorige voor beeld te vervangen:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Vervanging van ANSI-lidmaatschap voor Delete-instructies
 
-Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS, met name voor `DELETE`-instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt omdat SQL Data Warehouse geen ondersteuning biedt voor ANSI-samen voegingen in de `FROM`-component van een `DELETE`-instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
+Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS, met name voor `DELETE`-instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt doordat SQL Analytics geen ondersteuning biedt voor ANSI-samen voegingen in de `FROM`-component van een `DELETE`-instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
 
 Hier volgt een voor beeld van een geconverteerde `DELETE`-instructie:
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 U kunt zien dat type consistentie en het onderhouden van de eigenschappen van de null-waarde voor een CTAS een technisch best practice is. Het helpt bij het behoud van de integriteit van uw berekeningen en zorgt er ook voor dat de partitie kan worden overgeschakeld.
 
-CTAS is een van de belangrijkste instructies in SQL Data Warehouse. Zorg ervoor dat u het goed begrijpt. Raadpleeg de [CTAS-documentatie](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+CTAS is een van de belangrijkste instructies in SQL Analytics. Zorg ervoor dat u het goed begrijpt. Raadpleeg de [CTAS-documentatie](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een magazijn maken-Azure Power shell'
-description: Maak snel een SQL Database logische server, een firewall regel op server niveau en een Data Warehouse met Azure PowerShell.
+title: 'Snelstartgids: een Data Warehouse maken (Power shell)'
+description: Maak snel een logische Azure Synapse Analytics-Data Warehouse-server met een firewall regel op server niveau met Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,24 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461524"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199985"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Snelstartgids: een Azure SQL Data Warehouse met Azure PowerShell maken en doorzoeken
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Snelstartgids: & een Data Warehouse maken met Azure PowerShell
 
-Maak snel een Azure SQL Data Warehouse met behulp van Azure PowerShell.
+Maak een Azure Synapse Analytics-Data Warehouse door een SQL-groep in te richten met behulp van Azure PowerShell.
+
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 > [!NOTE]
-> Het maken van een SQL Data Warehouse kan leiden tot een nieuwe factureerbare service.  Zie [Prijzen van SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor meer informatie.
+> Het maken van een magazijn kan resulteren in een nieuwe factureer bare service.  Zie [prijzen voor Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)voor meer informatie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +70,7 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -78,6 +80,7 @@ Maak een [Azure-resource groep](../azure-resource-manager/management/overview.md
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>Een logische server maken
 
 Maak een [logische Azure SQL-Server](../sql-database/sql-database-logical-servers.md) met de opdracht [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) . Een logische server bevat een groep met databases die worden beheerd als groep. In het volgende voor beeld wordt een wille keurig benoemde server in de resource groep gemaakt met een beheerder met de naam `ServerAdmin` en een wacht woord van `ChangeYourAdminPassword1`. U kunt deze vooraf gedefinieerde waarden vervangen.
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database en SQL Data Warehouse communiceren via poort 1433. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. Als dat het geval is, kunt u geen verbinding maken met uw Azure SQL-Server tenzij uw IT-afdeling poort 1433 opent.
+> SQL-eind punten communiceren via poort 1433. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. Als dat het geval is, kunt u geen verbinding maken met uw Azure SQL-Server tenzij uw IT-afdeling poort 1433 opent.
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 De vereiste parameters zijn:
 
 * **RequestedServiceObjectiveName**: de hoeveelheid [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) die u aanvraagt. Het verhogen van deze waarde verhoogt de reken kosten. Zie [geheugen-en gelijktijdigheids limieten](memory-concurrency-limits.md)voor een lijst met ondersteunde waarden.
-* **DATABASENAME**: de naam van de SQL Data Warehouse die u maakt.
+* **DATABASENAME**: de naam van het data warehouse dat u wilt maken.
 * **Servername**: de naam van de server die u gebruikt voor het maken van.
 * **ResourceGroupName**: de resource groep die u gebruikt. Gebruik Get-AzureResource om beschikbare resourcegroepen in uw abonnement te zoeken.
-* **Edition**: moet DataWarehouse zijn, als u een SQL Data Warehouse wilt maken.
+* **Edition**: moet ' Data Warehouse ' zijn om een gegevens Warehouse te maken.
 
 De optionele parameters zijn:
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu een Data Warehouse gemaakt, een firewall regel gemaakt die is verbonden met uw data warehouse en enkele query's uitgevoerd. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
+U hebt nu een Data Warehouse gemaakt, een firewall regel gemaakt die is verbonden met uw data warehouse en enkele query's uitgevoerd. Ga voor meer informatie naar de zelf studie voor het laden van gegevens.
 > [!div class="nextstepaction"]
->[Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)
+>[Gegevens in een Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)

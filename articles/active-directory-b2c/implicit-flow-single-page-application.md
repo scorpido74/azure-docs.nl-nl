@@ -3,20 +3,20 @@ title: Eenmalige aanmelding met impliciete stroom
 titleSuffix: Azure AD B2C
 description: Meer informatie over het toevoegen van een eenmalige aanmelding met de OAuth 2,0 impliciete stroom met Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: efef55ab42313854ab27d323824a76488d520ad1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3e77e597fbd33a1f1358ecaa2d2aea3fe075a70f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847379"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187726"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Aanmelden met één pagina met de impliciete OAuth 2,0-stroom in Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ De impliciete aanmeldings stroom ziet er ongeveer uit zoals in de volgende afbee
 
 Wanneer uw webtoepassing de gebruiker moet verifiëren en een gebruikers stroom kan uitvoeren, kan deze de gebruiker naar het `/authorize`-eind punt sturen. De gebruiker actie onderneemt afhankelijk van de gebruikers stroom.
 
-In deze aanvraag geeft de client aan welke machtigingen moeten worden verkregen van de gebruiker in de para meter `scope` en de gebruikers stroom om uit te voeren. Als u wilt weten hoe de aanvraag werkt, kunt u de aanvraag in een browser plakken en deze uitvoeren. Vervang `{tenant}` met de naam van uw Azure AD B2C-tenant. Vervang `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` door de App-ID van de toepassing die u eerder hebt geregistreerd in uw Tenant. Vervang `{policy}` door de naam van een beleid dat u hebt gemaakt in uw Tenant, bijvoorbeeld `b2c_1_sign_in`.
+In deze aanvraag geeft de client aan welke machtigingen moeten worden verkregen van de gebruiker in de para meter `scope` en de gebruikers stroom om uit te voeren. Als u wilt weten hoe de aanvraag werkt, kunt u de aanvraag in een browser plakken en deze uitvoeren. Vervang `{tenant}` door de naam van uw Azure AD B2C Tenant. Vervang `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` door de App-ID van de toepassing die u eerder hebt geregistreerd in uw Tenant. Vervang `{policy}` door de naam van een beleid dat u hebt gemaakt in uw Tenant, bijvoorbeeld `b2c_1_sign_in`.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -51,7 +51,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| Parameter | Verplicht | Beschrijving |
+| Parameter | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 |bouw| Ja | De naam van uw Azure AD B2C-Tenant|
 |verslaggev| Ja| De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of `b2c_1_edit_profile`. |
@@ -166,18 +166,18 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parameter | Vereist? | Beschrijving |
 | --- | --- | --- |
-|bouw| Verplicht | De naam van uw Azure AD B2C-Tenant|
-verslaggev| Verplicht| De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of `b2c_1_edit_profile`. |
-| client_id |Verplicht |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com). |
-| response_type |Verplicht |Moet `id_token` voor OpenID Connect Connect-aanmelding bevatten.  Het kan ook het antwoord type `token`bevatten. Als u `token` hier gebruikt, kan uw app direct een toegangs token ontvangen van het eind punt voor toestemming, zonder dat u een tweede aanvraag naar het toestemming eind punt hoeft te doen. Als u het `token`-antwoord type gebruikt, moet de para meter `scope` een bereik bevatten dat aangeeft voor welke resource het token moet worden uitgegeven. |
+|bouw| Vereist | De naam van uw Azure AD B2C-Tenant|
+verslaggev| Vereist| De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of `b2c_1_edit_profile`. |
+| client_id |Vereist |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com). |
+| response_type |Vereist |Moet `id_token` voor OpenID Connect Connect-aanmelding bevatten.  Het kan ook het antwoord type `token`bevatten. Als u `token` hier gebruikt, kan uw app direct een toegangs token ontvangen van het eind punt voor toestemming, zonder dat u een tweede aanvraag naar het toestemming eind punt hoeft te doen. Als u het `token`-antwoord type gebruikt, moet de para meter `scope` een bereik bevatten dat aangeeft voor welke resource het token moet worden uitgegeven. |
 | redirect_uri |Aanbevolen |De omleidings-URI van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd, met uitzonde ring van de URL-code ring. |
-| scope |Verplicht |Een lijst met door spaties gescheiden bereiken.  Voor het ophalen van tokens, neemt u alle scopes op die u nodig hebt voor de gewenste resource. |
+| scope |Vereist |Een lijst met door spaties gescheiden bereiken.  Voor het ophalen van tokens, neemt u alle scopes op die u nodig hebt voor de gewenste resource. |
 | response_mode |Aanbevolen |Hiermee geeft u de methode op die wordt gebruikt om het resulterende token terug naar uw app te verzenden. Gebruik `fragment`voor impliciete stroom. Er kunnen twee andere modi worden opgegeven, `query` en `form_post`, maar werken niet in de impliciete stroom. |
 | state |Aanbevolen |Een waarde die is opgenomen in de aanvraag die wordt geretourneerd in de token reactie.  Dit kan een teken reeks zijn van alle inhoud die u wilt gebruiken.  Normaal gesp roken wordt een wille keurig gegenereerde, unieke waarde gebruikt om vervalsing van aanvragen op meerdere sites te voor komen.  De status wordt ook gebruikt om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is opgetreden. Bijvoorbeeld de pagina of weer gave waarin de gebruiker zich bevond. |
-| nonce |Verplicht |Een waarde die is opgenomen in de aanvraag, gegenereerd door de app, die is opgenomen in de resulterende ID-token als claim.  De app kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. Normaal gesp roken is de waarde een wille keurige, unieke teken reeks waarmee de oorsprong van de aanvraag wordt geïdentificeerd. |
-| verschijnt |Verplicht |Als u tokens in een verborgen iframe wilt vernieuwen en ophalen, gebruikt u `prompt=none` om ervoor te zorgen dat het iframe niet vastloopt op de aanmeldings pagina en direct wordt geretourneerd. |
-| login_hint |Verplicht |Als u tokens wilt vernieuwen en ophalen in een verborgen iframe, neemt u de gebruikers naam van de gebruiker op in deze hint om onderscheid te maken tussen meerdere sessies die de gebruiker op een bepaald moment kan hebben. U kunt de gebruikers naam van een eerdere aanmelding extra heren met behulp van de `preferred_username` claim (het `profile` bereik is vereist om de `preferred_username` claim te ontvangen). |
-| domain_hint |Verplicht |Deze waarde kan `consumers` of `organizations` zijn.  Voor het vernieuwen en ophalen van tokens in een verborgen iframe, neemt u de `domain_hint` waarde op in de aanvraag.  Extraheer de `tid` claim van het ID-token van een eerdere aanmelding om te bepalen welke waarde moet worden gebruikt (het `profile` bereik is vereist om de `tid` claim te kunnen ontvangen). Als de `tid` claim waarde `9188040d-6c67-4c5b-b112-36a304b66dad`is, gebruikt u `domain_hint=consumers`.  Gebruik anders `domain_hint=organizations`. |
+| nonce |Vereist |Een waarde die is opgenomen in de aanvraag, gegenereerd door de app, die is opgenomen in de resulterende ID-token als claim.  De app kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. Normaal gesp roken is de waarde een wille keurige, unieke teken reeks waarmee de oorsprong van de aanvraag wordt geïdentificeerd. |
+| verschijnt |Vereist |Als u tokens in een verborgen iframe wilt vernieuwen en ophalen, gebruikt u `prompt=none` om ervoor te zorgen dat het iframe niet vastloopt op de aanmeldings pagina en direct wordt geretourneerd. |
+| login_hint |Vereist |Als u tokens wilt vernieuwen en ophalen in een verborgen iframe, neemt u de gebruikers naam van de gebruiker op in deze hint om onderscheid te maken tussen meerdere sessies die de gebruiker op een bepaald moment kan hebben. U kunt de gebruikers naam van een eerdere aanmelding extra heren met behulp van de `preferred_username` claim (het `profile` bereik is vereist om de `preferred_username` claim te ontvangen). |
+| domain_hint |Vereist |Deze waarde kan `consumers` of `organizations` zijn.  Voor het vernieuwen en ophalen van tokens in een verborgen iframe, neemt u de `domain_hint` waarde op in de aanvraag.  Extraheer de `tid` claim van het ID-token van een eerdere aanmelding om te bepalen welke waarde moet worden gebruikt (het `profile` bereik is vereist om de `tid` claim te kunnen ontvangen). Als de `tid` claim waarde `9188040d-6c67-4c5b-b112-36a304b66dad`is, gebruikt u `domain_hint=consumers`.  Gebruik anders `domain_hint=organizations`. |
 
 Door de para meter `prompt=none` in te stellen, slaagt of mislukt deze aanvraag onmiddellijk en keert u terug naar uw toepassing.  Een geslaagde reactie wordt verzonden naar uw app op de aangegeven omleidings-URI, met behulp van de methode die is opgegeven in de para meter `response_mode`.
 
@@ -229,7 +229,7 @@ U kunt de gebruiker gewoon omleiden naar de `end_session_endpoint` die wordt ver
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| Parameter | Verplicht | Beschrijving |
+| Parameter | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die u wilt gebruiken voor het ondertekenen van de gebruiker uit uw toepassing. |

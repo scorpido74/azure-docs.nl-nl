@@ -1,6 +1,6 @@
 ---
-title: Een verwijderde datawarehouse herstellen
-description: Instructies voor het herstellen van een verwijderde Azure SQL Data Warehouse.
+title: Een verwijderde SQL-groep herstellen
+description: Instructies voor het herstellen van een verwijderde SQL-groep.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759649"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196611"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Een verwijderde Azure SQL Data Warehouse herstellen
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Een verwijderde SQL-groep herstellen met behulp van Azure Synapse Analytics
 
-In dit artikel leert u hoe u een verwijderde SQL Data Warehouse herstelt met behulp van Azure Portal en Power shell:
+In dit artikel leert u hoe u een SQL herstelt met behulp van de Azure Portal of Power shell.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Controleer de DTU-capaciteit.** Elk SQL Data Warehouse wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) met een standaard-DTU-quotum.  Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
+**Controleer de DTU-capaciteit.** Elke SQL-groep wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) die een standaard DTU-quotum heeft.  Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Een verwijderd Data Warehouse herstellen via Power shell
 
-Als u een verwijderde SQL Data Warehouse wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Als de bijbehorende logische server ook is verwijderd, kunt u dat data warehouse niet herstellen.
+Als u een verwijderde SQL-groep wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Als de bijbehorende logische server ook is verwijderd, kunt u dat data warehouse niet herstellen.
 
 1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](https://docs.microsoft.com/powershell/azure/overview).
 2. Open PowerShell.
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Een verwijderde data base herstellen met behulp van de Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar de SQL-server waarop uw verwijderde data warehouse werd gehost.
 3. Selecteer het pictogram **Verwijderde data bases** in de inhouds opgave.
 
@@ -86,5 +86,5 @@ $RestoredDatabase.status
     ![Database naam opgeven](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een bestaand Data Warehouse herstellen](sql-data-warehouse-restore-active-paused-dw.md)
-- [Herstellen vanuit een geografisch back-updata Warehouse](sql-data-warehouse-restore-from-geo-backup.md)
+- [Een bestaande SQL-groep herstellen](sql-data-warehouse-restore-active-paused-dw.md)
+- [Een SQL-groep met geo-back-ups herstellen](sql-data-warehouse-restore-from-geo-backup.md)

@@ -9,14 +9,14 @@ ms.workload: big-compute
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
-ms.openlocfilehash: 14cbacf43e83dc768e9a85620df131533b746671
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463100"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192299"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Veilige toegang Key Vault met batch
+# <a name="securely-access-key-vault-with-batch"></a>Key Vault veilig openen met Batch
 
 In dit artikel leert u hoe u batch knooppunten instelt op veilige toegang tot referenties die zijn opgeslagen in Azure Key Vault. Het is niet mogelijk om uw beheerders referenties in Key Vault in te stellen en vervolgens de referenties voor het verkrijgen van een vaste code voor toegang tot Key Vault vanuit een script. De oplossing is het gebruik van een certificaat dat uw batch knooppunten toegang geeft tot Key Vault. Met een paar stappen kunnen we beveiligde sleutel opslag voor batch implementeren.
 
@@ -40,7 +40,7 @@ cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 Gebruik vervolgens het hulp programma `makecert` om zelfondertekende certificaat bestanden te maken met de naam `batchcertificate.cer` en `batchcertificate.pvk`. De gebruikte algemene naam (CN) is niet van belang voor deze toepassing, maar het is wel handig om er iets van te maken dat aangeeft waarvoor het certificaat wordt gebruikt.
 
 ```console
-makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
+makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
 Voor batch is een `.pfx`-bestand vereist. Gebruik het hulp programma [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) om de `.cer` en `.pvk` bestanden die door `makecert` zijn gemaakt, te converteren naar één `.pfx`-bestand.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552016"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194632"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Stappen voor het migreren naar de Azure-ontwerp bron
 
@@ -32,7 +32,10 @@ Als u geen Azure-abonnement hebt, [meldt u zich](https://azure.microsoft.com/fre
 
 ## <a name="access-the-migration-process"></a>Toegang tot het migratie proces
 
-U wordt wekelijks gevraagd uw apps te migreren. U kunt dit venster annuleren zonder te migreren. Als u vóór de volgende geplande periode wilt migreren, kunt u beginnen met het migratie proces vanaf het **vergrendelings** pictogram op de bovenste werk balk van de Luis-Portal.
+U wordt wekelijks gevraagd uw apps te migreren. U kunt dit venster annuleren zonder te migreren. Als u vóór de volgende geplande periode wilt migreren, kunt u beginnen met het migratie proces vanuit het **Azure** -pictogram op de bovenste werk balk van de Luis-Portal.
+
+> [!div class="mx-imgBorder"]
+> ![migratie pictogram](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>App-eigenaar begint met het migratie proces
 

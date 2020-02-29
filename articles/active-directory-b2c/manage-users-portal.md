@@ -2,20 +2,20 @@
 title: Azure AD B2C gebruikers accounts voor consumenten maken & verwijderen in de Azure Portal
 description: Meer informatie over het gebruik van de Azure Portal voor het maken en verwijderen van consumenten gebruikers in uw Azure AD B2C Directory.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840414"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187216"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Gebruik de Azure Portal om consumenten gebruikers te maken en te verwijderen in Azure AD B2C
 
@@ -29,15 +29,15 @@ Als u gebruikers wilt toevoegen of verwijderen, moet aan uw account de rol *gebr
 
 Zoals beschreven in [overzicht van gebruikers accounts in azure AD B2C](user-overview.md), zijn er drie typen gebruikers accounts die kunnen worden gemaakt in een Azure AD B2C map:
 
-* Overwerk
-* Gast
-* Consument
+* Werk
+* Guest
+* Gebruikers
 
 In dit artikel wordt aandacht besteed aan het werken met **consumenten accounts** in de Azure Portal. Zie [gebruikers toevoegen of verwijderen met Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md)voor meer informatie over het maken en verwijderen van accounts voor werk en gast.
 
 ## <a name="create-a-consumer-user"></a>Een consument gebruiker maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Onder **Beheren**, selecteer **Gebruikers**.

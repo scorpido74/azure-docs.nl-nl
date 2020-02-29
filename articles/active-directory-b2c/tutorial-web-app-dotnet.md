@@ -3,29 +3,29 @@ title: 'Zelf studie: verificatie inschakelen in een webtoepassing'
 titleSuffix: Azure AD B2C
 description: Zelfstudie over het gebruik van Azure Active Directory B2C voor het opgeven van gebruikersaanmelding voor een ASP.NET-webtoepassing.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2f9a678ae8fea95f842f30234229c648e1966d40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850081"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183313"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Zelf studie: verificatie inschakelen in een webtoepassing met behulp van Azure Active Directory B2C
 
-In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers te registreren in een ASP.NET-webtoepassing. Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers te registreren in een ASP.NET-webtoepassing. Met Azure AD B2C zijn uw toepassingen in staat om zich met behulp van open-standaardprotocollen te verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Bijwerken van de toepassing in Azure AD B2C
+> * De toepassing bijwerken in Azure AD B2C
 > * Het voorbeeld configureren voor gebruik van de toepassing
 > * Aanmelden met behulp van de gebruikersstroom
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Maak gebruikersstromen](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
+* [Gebruikersstromen maken](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
 * Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de **ASP.net-en Web Development** -werk belasting.
 
 ## <a name="update-the-application-registration"></a>De registratie van de toepassing bijwerken
@@ -44,9 +44,9 @@ In de zelf studie die u hebt voltooid als onderdeel van de vereisten, registreer
 
 U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (Unified app-registraties)** gebruiken om de toepassing bij te werken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **Toepassingen** en selecteer vervolgens de toepassing *webapp1*.
@@ -54,9 +54,9 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 1. Selecteer **Opslaan**.
 1. Noteer de toepassings-ID voor gebruik in een latere stap wanneer u de webtoepassing configureert op de pagina Eigenschappen.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** , selecteer het tabblad **toepassingen die eigendom** zijn en selecteer vervolgens de toepassing *webapp1* .
@@ -73,7 +73,7 @@ Maak vervolgens een client geheim voor de geregistreerde webtoepassing. In het v
 
 [!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-## <a name="configure-the-sample"></a>Configureren van het voorbeeld
+## <a name="configure-the-sample"></a>Voorbeeld configureren
 
 In deze zelfstudie configureert u een voorbeeld dat u kunt downloaden uit GitHub. Het voorbeeld maakt gebruik van ASP.NET voor een eenvoudige takenlijst. In het voorbeeld worden [Microsoft OWIN-middlewareonderdelen](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/) gebruikt. [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) of kloon de voorbeeld-web-app vanuit GitHub. Zorg ervoor dat u het voorbeeldbestand uitpakt in een map en dat het aantal tekens van het pad minder is dan 260.
 
@@ -120,10 +120,10 @@ De functie **taken lijst** werkt echter pas nadat u de volgende zelf studie in d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Bijwerken van de toepassing in Azure AD B2C
+> * De toepassing bijwerken in Azure AD B2C
 > * Het voorbeeld configureren voor gebruik van de toepassing
 > * Aanmelden met behulp van de gebruikersstroom
 

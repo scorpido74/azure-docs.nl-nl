@@ -2,20 +2,20 @@
 title: Gedrag van sessies configureren-Azure Active Directory B2C | Microsoft Docs
 description: Het gedrag van sessies in Azure Active Directory B2C configureren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840227"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186808"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Sessie gedrag in Azure Active Directory B2C configureren
 
@@ -48,7 +48,7 @@ De volgende use cases zijn ingeschakeld met behulp van deze eigenschappen:
 
 ## <a name="configure-the-properties"></a>De eigenschappen configureren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD B2C Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **gebruikers stromen (beleid)** .

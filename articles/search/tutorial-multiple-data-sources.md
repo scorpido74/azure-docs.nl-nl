@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/28/2020
+ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495003"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196566"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Zelf studie: gegevens uit meerdere gegevens bronnen in één Azure Cognitive Search-index combi neren
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Zelf studie: index gegevens uit meerdere gegevens bronnen inC#
 
 Met Azure Cognitive Search kunt u gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één gecombineerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
 
 In deze zelf studie wordt beschreven hoe u Hotel gegevens van een Azure Cosmos DB gegevens bron indexeert en samen voegen met details van Hotel kamers die vanuit Azure Blob Storage-documenten worden getrokken. Het resultaat is een gecombineerde zoek index voor hotels met complexe gegevens typen.
 
-In deze zelf C#studie wordt gebruikgemaakt van de .NET-SDK voor Azure Cognitive Search en de Azure Portal om de volgende taken uit te voeren:
+In deze zelf C# studie wordt en de [.NET SDK](https://aka.ms/search-sdk) gebruikt om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Voorbeeld gegevens uploaden en gegevens bronnen maken
@@ -30,19 +30,19 @@ In deze zelf C#studie wordt gebruikgemaakt van de .NET-SDK voor Azure Cognitive 
 > * Hotel gegevens van Azure Cosmos DB indexeren
 > * Hotel Room-gegevens uit Blob Storage samen voegen
 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick Start. 
++ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [Een bestaande zoek service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [maken](search-create-service-portal.md) of zoeken 
 
-- [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
+> [!Note]
+> U kunt de gratis service voor deze zelf studie gebruiken. Een gratis zoek service beperkt u tot drie indexen, drie Indexeer functies en drie gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u begint, moet u ervoor zorgen dat u over voldoende ruimte beschikt om de nieuwe resources te accepteren.
 
-- [Maak een Azure Cosmos DB account](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor het opslaan van de gegevens van het voorbeeld Hotel.
-
-- [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld kamer gegevens.
-
-- [Installeer Visual Studio 2019](https://visualstudio.microsoft.com/) om te gebruiken als IDE.
-
-### <a name="install-the-project-from-github"></a>Het project installeren vanuit GitHub
+## <a name="download-files"></a>Bestanden downloaden
 
 1. Ga naar de voorbeeld opslagplaats op GitHub: [Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Selecteer **klonen of downloaden** en maak uw persoonlijke lokale kopie van de opslag plaats.
@@ -340,13 +340,23 @@ Open in Azure Portal de pagina **overzicht** van de zoek service en zoek de inde
 
 Klik op de index Hotel-ruimtes-voor beeld in de lijst. U ziet een Search Explorer-interface voor de index. Voer een query in voor een term zoals "luxe". Er wordt ten minste één document in de resultaten weer gegeven. in dit document moet een lijst met room-objecten in de ruimten van de kamers staan.
 
+## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
+
+In de vroege experimentele stadia van de ontwikkeling kunt u het beste de objecten uit Azure Cognitive Search verwijderen en uw code zo instellen dat deze opnieuw worden opgebouwd. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+
+In de voorbeeld code voor deze zelf studie wordt gecontroleerd op bestaande objecten en worden deze verwijderd zodat u de code opnieuw kunt uitvoeren.
+
+U kunt ook de portal gebruiken om indexen, Indexeer functies en gegevens bronnen te verwijderen.
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om na een zelf studie op te schonen, is door de resource groep te verwijderen die de Azure Cognitive Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van de Azure Cognitive Search-service.
+Wanneer u aan het eind van een project aan het werk bent, is het een goed idee om de resources te verwijderen die u niet meer nodig hebt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+
+U kunt resources vinden en beheren in de portal met behulp van de koppeling alle resources of resource groepen in het navigatie deel venster aan de linkerkant.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Er zijn verschillende benaderingen en meerdere opties voor het indexeren van JSON-blobs. Als uw bron gegevens JSON-inhoud bevatten, kunt u deze opties bekijken om te zien wat het beste werkt voor uw scenario.
+Nu u bekend bent met het concept van het opnemen van gegevens uit meerdere bronnen, gaan we de configuratie van de Indexeer functie nader bekijken, te beginnen met Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)
+> [Een Azure Cosmos DB Indexeer functie configureren](search-howto-index-cosmosdb.md)

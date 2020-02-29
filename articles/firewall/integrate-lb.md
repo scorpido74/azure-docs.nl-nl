@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167069"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196697"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall integreren met Azure Standard Load Balancer
 
@@ -39,9 +39,23 @@ U kunt dit probleem voor komen door een extra hostroute te maken voor het open b
 
 ![Asymmetrisch routeren](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-De volgende routes zijn bijvoorbeeld voor een firewall op openbaar IP-adres 13.86.122.41 en privé IP-adres 10.3.1.4.
+### <a name="route-table-example"></a>Voor beeld van route tabel
 
-![Routetabel](media/integrate-lb/route-table.png)
+De volgende routes zijn bijvoorbeeld voor een firewall op openbaar IP-adres 20.185.97.136 en privé IP-adres 10.0.1.4.
+
+> [!div class="mx-imgBorder"]
+> ![Routetabel](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>Voor beeld van NAT-regel
+
+In het volgende voor beeld zet een NAT-regel RDP-verkeer voor de firewall om op 20.185.97.136 naar de load balancer op 20.42.98.220:
+
+> [!div class="mx-imgBorder"]
+> ![NAT-regel](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>Statuscontroles
+
+Houd er rekening mee dat er een webservice moet worden uitgevoerd op de hosts in de groep load balancer als u TCP-status tests gebruikt voor poort 80, of HTTP/HTTPS-tests.
 
 ## <a name="internal-load-balancer"></a>Interne load balancer
 
@@ -56,6 +70,8 @@ U kunt dit scenario dus op dezelfde manier implementeren als het open bare load 
 Als u de beveiliging van uw scenario met taak verdeling verder wilt verbeteren, kunt u netwerk beveiligings groepen (Nsg's) gebruiken.
 
 U kunt bijvoorbeeld een NSG maken op het back-end-subnet waar de virtuele machines met gelijke taak verdeling zich bevinden. Binnenkomend verkeer dat afkomstig is van het IP-adres/poort van de Firewall toestaan.
+
+![Netwerkbeveiligingsgroep](media/integrate-lb/nsg-01.png)
 
 Zie voor meer informatie over Nsg's [beveiligings groepen](../virtual-network/security-overview.md).
 

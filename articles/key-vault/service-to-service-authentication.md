@@ -9,12 +9,13 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.subservice: general
+ms.openlocfilehash: 6377edf72651c9cddf570d0c6db9d5ceb40409f4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177458"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200716"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
@@ -75,7 +76,7 @@ Verificatie met behulp van Visual Studio:
 
 Als u problemen ondervindt met het gebruik van Visual Studio, zoals fouten met betrekking tot het token provider bestand, moet u de voor gaande stappen zorgvuldig door nemen.
 
-Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp;>&nbsp;**opties** en selecteert u vervolgens **Azure&nbsp;service&nbsp;verificatie**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
+Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Als u dit wilt doen, selecteert u **extra**&nbsp;>&nbsp;**Opties**en selecteert u vervolgens **Azure&nbsp;service&nbsp;-verificatie**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
 
 #### <a name="authenticating-with-azure-cli"></a>Verifiëren met Azure CLI
 

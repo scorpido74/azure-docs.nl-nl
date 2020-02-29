@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 11/21/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2a6c5ca9f7d2ceaef08b28e78b38b94a459548f5
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.custom: azure-synapse
+ms.openlocfilehash: bd3ad98116b18a77a77e8f6f327689d0ebb7dd21
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304756"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200512"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Snelstartgids: werk belasting isolatie configureren met T-SQL
 
@@ -25,17 +25,17 @@ In deze Quick Start maakt u snel een werkbelasting groep en classificatie voor h
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 > [!NOTE]
-> Het maken van een SQL Data Warehouse kan leiden tot een nieuwe factureerbare service.  Zie [Prijzen van SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor meer informatie.
+> Het maken van een SQL Analytics-exemplaar in azure Synapse Analytics kan resulteren in een nieuwe factureer bare service.  Zie [prijzen voor Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)voor meer informatie.
 >
 >
 
 ## <a name="prerequisites"></a>Vereisten
  
-In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt en dat u beschikt over de machtigingen voor de beheer DATABASE. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+In deze Quick Start wordt ervan uitgegaan dat u al een exemplaar van SQL Analytics hebt in azure Synapse en dat u de machtigingen voor de data base beheert. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>Aanmelding maken voor DataLoads
 
@@ -109,7 +109,7 @@ DROP USER [ELTLogin]
 
 Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en gegevens die zijn opgeslagen in uw data warehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
 
-- Als u de gegevens in de opslag wilt houden, kunt u het berekenen onderbreken wanneer u het datawarehouse niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag. Wanneer u klaar bent om met de gegevens te werken, hervat u de compute.
+- Als u de gegevens in de opslag ruimte wilt bewaren, kunt u de reken proces onderbreken wanneer u de SQL-groep niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag. Wanneer u klaar bent om met de gegevens te werken, hervat u de compute.
 - Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen.
 
 Volg deze stappen om resources op te schonen.
@@ -129,4 +129,4 @@ Volg deze stappen om resources op te schonen.
 ## <a name="next-steps"></a>Volgende stappen
 
 - U hebt nu een werkbelasting groep gemaakt. Voer enkele query's uit als ELTLogin om te zien hoe ze worden uitgevoerd. Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en de toegewezen werkbelasting groep weer te geven.
-- Zie [workload Management](sql-data-warehouse-workload-management.md) en [workload-isolatie](sql-data-warehouse-workload-isolation.md)voor meer informatie over het beheer van Azure SQL Data Warehouse workload.
+- Zie [workload Management](sql-data-warehouse-workload-management.md) en [workload-isolatie](sql-data-warehouse-workload-isolation.md)voor meer informatie over het beheer van SQL Analytics-workloads.

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure Data Explorer-cluster en-data base maken'
+title: 'Snelstartgids: een Azure Data Explorer-cluster maken & DB'
 description: In deze snelstart leert u hoe u een Azure Data Explorer-cluster en -database maakt en hoe u gegevens opneemt (laadt).
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984350"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199849"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Snelstart: een Azure Data Explorer-cluster en -database maken
 
@@ -25,13 +25,13 @@ ms.locfileid: "76984350"
 > * [ARM-sjabloon](create-cluster-database-resource-manager.md)
 
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. In deze snelstart maakt u een cluster en een database.
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. In deze snelstart maakt u een cluster en een database.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Een cluster maken
 
@@ -65,7 +65,7 @@ Maak een Azure Data Explorer-cluster met een gedefinieerde set met reken- en ops
 
     ![Ga naar resource](media/create-cluster-database-portal/notification-resource.png)
 
-## <a name="create-a-database"></a>Database maken
+## <a name="create-a-database"></a>Een database maken
 
 U bent nu klaar voor de tweede stap in het proces: het maken van de database.
 
@@ -73,7 +73,7 @@ U bent nu klaar voor de tweede stap in het proces: het maken van de database.
 
     ![Stap 2: een database maken](media/create-cluster-database-portal/database-creation.png)
 
-1. Vul in het formulier de volgende gegevens in.
+1. Vul het formulier in met de volgende gegevens.
 
     ![Een databaseformulier maken](media/create-cluster-database-portal/create-database.png)
 

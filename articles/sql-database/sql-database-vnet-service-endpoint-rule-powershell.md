@@ -1,6 +1,6 @@
 ---
 title: Power shell voor VNet-eind punten en-regels voor één en gepoolde data bases
-description: Voorziet in Power shell-scripts voor het maken en beheren van virtuele service-eind punten voor uw Azure SQL Database en SQL Data Warehouse.
+description: Voorziet in Power shell-scripts voor het maken en beheren van virtuele service-eind punten voor uw Azure SQL Database en Azure Synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c4ea6c3fc5f415316e2b5cfcdf80c0681cc3f6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+tags: azure-synapse
+ms.openlocfilehash: f61403ef50af209fdc6e811191d31ccc83f8da73
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422488"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191857"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>Power shell: een virtueel service-eind punt en een VNet-regel voor SQL maken
 
-*Regels voor virtuele netwerken* zijn één firewall beveiligings functie waarmee wordt bepaald of de database server voor uw afzonderlijke data bases en elastische Pools in azure [SQL database](sql-database-technical-overview.md) of voor uw data bases in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) communicatie accepteert die worden verzonden vanuit bepaalde subnetten in virtuele netwerken.
+*Regels voor virtuele netwerken* zijn één firewall beveiligings functie waarmee wordt bepaald of de database server voor uw afzonderlijke data bases en elastische Pools in azure [SQL database](sql-database-technical-overview.md) of voor uw data bases in azure [Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken.
 
 > [!IMPORTANT]
-> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als SQL Data Warehouse-data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. Dit artikel is *niet* van toepassing op de implementatie van een **beheerd exemplaar** in Azure SQL database omdat er geen service-eind punt aan is gekoppeld.
+> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database als data warehouse in azure Synapse die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud. Dit artikel is *niet* van toepassing op de implementatie van een **beheerd exemplaar** in Azure SQL database omdat er geen service-eind punt aan is gekoppeld.
 
 In dit artikel vindt u een Power shell-script dat de volgende acties onderneemt:
 
@@ -296,7 +297,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 Met dit laatste script verwijdert u de resources die de vorige scripts hebben gemaakt voor de demonstratie. Het script vraagt echter om bevestiging voordat het volgende wordt verwijderd:
 
 - Azure SQL Database Server
-- Azure-resourcegroep
+- Azure-resource groep
 
 U kunt script 4 telkens uitvoeren nadat het script 1 is voltooid.
 

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: b7d876c7f865b8368451ea1b6cc96ade89a59aa8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365210"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190956"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Fouten met runbooks oplossen
 
@@ -471,7 +471,7 @@ Het runbook wordt na drie uur weer gegeven met de status **gestopt** . Mogelijk 
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-Dit gedrag is inherent aan het ontwerp van Azure-sandboxes vanwege de bewaking van de ' fair share ' van processen binnen Azure Automation. Als de app langer dan drie uur wordt uitgevoerd, stopt de billijke share automatisch een runbook. De status van een runbook dat de duur van de billijke share overschrijdt, verschilt per runbook-type. Power shell-en python-runbooks zijn ingesteld op de status **gestopt** . De Power shell-werk stroom-runbooks zijn ingesteld op **mislukt**.
+Dit gedrag is inherent aan het ontwerp van Azure-sandboxes vanwege de [billijke](../automation-runbook-execution.md#fair-share) bewaking van processen binnen Azure Automation. Als de app langer dan drie uur wordt uitgevoerd, stopt de billijke share automatisch een runbook. De status van een runbook dat de duur van de reële share overschrijdt, verschilt per runbook-type. Power shell-en python-runbooks zijn ingesteld op de status **gestopt** . De Power shell-werk stroom-runbooks zijn ingesteld op **mislukt**.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -481,7 +481,7 @@ Het runbook is groter dan de limiet van 3 uur die is toegestaan door een billijk
 
 Een aanbevolen oplossing is om het runbook uit te voeren op een [Hybrid Runbook worker](../automation-hrw-run-runbooks.md).
 
-Hybrid Workers worden niet beperkt door de [redelijke share](../automation-runbook-execution.md#fair-share) 3-uurs runbook-limiet die Azure-sandboxes hebben. Runbooks die worden uitgevoerd op Hybrid Runbook Workers moeten worden ontwikkeld ter ondersteuning van het opnieuw starten van gedrag als er onverwachte problemen zijn met de lokale infra structuur.
+Hybrid Workers worden niet beperkt door de limiet van het aantal gemeen schappelijke runbook-beperkingen van drie uur die Azure-sandboxes hebben. Runbooks die worden uitgevoerd op Hybrid Runbook Workers moeten worden ontwikkeld ter ondersteuning van het opnieuw starten van gedrag als er onverwachte problemen zijn met de lokale infra structuur.
 
 Een andere optie is om het runbook te optimaliseren door [onderliggende runbooks](../automation-child-runbooks.md)te maken. Als uw runbook met dezelfde functie wordt uitgevoerd op verschillende bronnen, zoals een database bewerking op verschillende data bases, kunt u die functie verplaatsen naar een onderliggend runbook. Elk van deze onderliggende runbooks wordt parallel uitgevoerd in afzonderlijke processen. Dit gedrag vermindert de totale tijd voor het volt ooien van het bovenliggende runbook.
 

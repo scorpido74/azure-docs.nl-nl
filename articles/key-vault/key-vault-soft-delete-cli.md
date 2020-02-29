@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976299"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197314"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault soft-delete gebruiken met CLI
 
@@ -32,11 +33,11 @@ Zie Naslag informatie voor [Azure cli-Key Vault](https://docs.microsoft.com/cli/
 
 Key Vault bewerkingen worden als volgt afzonderlijk beheerd via machtigingen op basis van op rollen gebaseerde toegangs beheer (RBAC):
 
-| Bewerking | Description | Gebruikers machtiging |
+| Bewerking | Beschrijving | Gebruikers machtiging |
 |:--|:--|:--|
-|List|Een lijst met verwijderde sleutel kluizen.|Microsoft.KeyVault/deletedVaults/read|
+|Lijst|Een lijst met verwijderde sleutel kluizen.|Microsoft.KeyVault/deletedVaults/read|
 |Herstellen|Hiermee herstelt u een verwijderde sleutel kluis.|Microsoft.KeyVault/vaults/write|
-|Leegmaken|Verwijdert permanent een verwijderde sleutel kluis en alle bijbehorende inhoud.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|Opschonen|Verwijdert permanent een verwijderde sleutel kluis en alle bijbehorende inhoud.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Zie [uw sleutel kluis beveiligen](key-vault-secure-your-key-vault.md)voor meer informatie over machtigingen en toegangs beheer.
 
@@ -150,11 +151,11 @@ Een voorlopig verwijderde sleutel permanent verwijderen (ook wel het verwijderen
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-De **herstel** - en opschoon acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid. Als een gebruiker of service-principal een **herstel** -of opschoon actie kan uitvoeren, moeten ze beschikken over de juiste machtiging voor die sleutel of dit geheim. Standaard wordt **leegmaken** niet toegevoegd aan het toegangs beleid van een sleutel kluis wanneer de snelkoppeling ' alle ' wordt gebruikt om alle machtigingen te verlenen. U moet de machtiging **verwijderen** specifiek verlenen. 
+De **herstel** -en **opschoon** acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid. Als een gebruiker of service-principal een **herstel** -of **opschoon** actie kan uitvoeren, moeten ze beschikken over de juiste machtiging voor die sleutel of dit geheim. Standaard wordt **leegmaken** niet toegevoegd aan het toegangs beleid van een sleutel kluis wanneer de snelkoppeling ' alle ' wordt gebruikt om alle machtigingen te verlenen. U moet de machtiging **verwijderen** specifiek verlenen. 
 
 #### <a name="set-a-key-vault-access-policy"></a>Een sleutel kluis toegangs beleid instellen
 
-Met de volgende opdracht user@contoso.com wordt een machtiging verleend voor het gebruik van verschillende bewerkingen op sleutels in *ContosoVault* , waaronder opschonen:
+Met de volgende opdracht wordt user@contoso.com toestemming verleend voor het gebruik van verschillende bewerkingen op sleutels in *ContosoVault* , waaronder **opschonen**:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
@@ -206,7 +207,7 @@ Dit geldt ook voor de sleutel kluis. Als u een voorlopig verwijderde sleutel klu
 
 ### <a name="purging-a-key-vault"></a>Een sleutel kluis verwijderen
 
-Wanneer een sleutel kluis wordt leeg gemaakt, wordt de volledige inhoud definitief verwijderd, inclusief de sleutels, geheimen en certificaten. Als u een tijdelijke, verwijderde sleutel kluis wilt verwijderen, gebruikt `az keyvault purge` u de opdracht. U kunt de locatie van de verwijderde sleutel kluizen van uw abonnement vinden met behulp van de opdracht `az keyvault list-deleted`.
+Wanneer een sleutel kluis wordt leeg gemaakt, wordt de volledige inhoud definitief verwijderd, inclusief de sleutels, geheimen en certificaten. Als u een tijdelijke, verwijderde sleutel kluis wilt verwijderen, gebruikt u de opdracht `az keyvault purge`. U kunt de locatie van de verwijderde sleutel kluizen van uw abonnement vinden met behulp van de opdracht `az keyvault list-deleted`.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault

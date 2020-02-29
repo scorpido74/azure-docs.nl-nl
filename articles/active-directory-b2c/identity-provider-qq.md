@@ -2,20 +2,20 @@
 title: Stel registratie in en meld u aan met een QQ-account met behulp van Azure Active Directory B2C
 description: Gebruik Azure Active Directory B2C om u aan te melden en u aan te melden bij klanten met QQ-accounts in uw toepassingen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda344c32d03425c7cfec4d253e18451eb1f5a1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0f15124c64e5cca54112987d486ddadaca79452
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847405"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187984"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een QQ-account met behulp van Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Als u een QQ-account wilt gebruiken als een id-provider in Azure Active Director
 
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ configureren als een id-provider
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer **id-providers**en selecteer vervolgens **QQ (preview)** .

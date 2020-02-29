@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435861"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196923"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
 
@@ -59,7 +59,7 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     |table|hivesampletable|
     |Hive-kolom|*|
     |Select User|hiveuser1|
-    |Machtigingen|selecteert u|
+    |Machtigingen|uitgeschakeld|
 
     ![HDInsight ESP zwerver Hive-beleid configureren](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -77,7 +77,7 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     |table|hivesampletable|
     |Hive-kolom|ClientID, devicemake|
     |Select User|hiveuser2|
-    |Machtigingen|selecteert u|
+    |Machtigingen|uitgeschakeld|
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-gegevensbron maken
 
@@ -87,7 +87,7 @@ De instructies vindt u in [Hive ODBC-gegevensbron maken](../hadoop/apache-hadoop
  | --- | --- |
  | Naam van de gegevensbron | Geef uw gegevensbron een naam |
  | Host | Voer CLUSTERNAME.azurehdinsight.net in. Bijvoorbeeld: myHDICluster.azurehdinsight.net |
- | Port | Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
+ | Poort | Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
  | Database | Gebruik **Standaard**. |
  | Type Hive-server | Selecteer **Hive Server 2** |
  | Mechanisme | Selecteer **Azure HDInsight Service** |
@@ -115,7 +115,7 @@ In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft
 
 1. Selecteer **hivesampletable**en selecteer **volgende**.
 
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 
 1. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, selecteert u **Eigenschappen**. Dit kan een paar seconden duren.
 
@@ -152,7 +152,7 @@ Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in
 
 * Zie [hdinsight-clusters met ESP configureren](apache-domain-joined-configure.md)voor meer informatie over het configureren van een hdinsight-cluster met Enterprise Security Package.
 * Zie [hdinsight-clusters beheren met ESP](apache-domain-joined-manage.md)voor meer informatie over het beheren van een hdinsight-cluster met ESP.
-* Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)voor het uitvoeren van Hive-QUERY'S met SSH op HDInsight-clusters met ESP.
+* Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)voor het uitvoeren van Hive-QUERY'S met SSH op HDInsight-clusters met ESP.
 * Zie [verbinding maken met Apache Hive in azure HDInsight met behulp van het Hive JDBC-stuur programma voor het](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) verbinden van de component met hive JDBC.
 * Zie [Excel verbinden met Apache Hadoop met het micro soft Hive ODBC-station voor het](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) verbinden van Excel met Hadoop met behulp van Hive ODBC.
 * Zie [Excel verbinden met Apache Hadoop met behulp van Power query](../hadoop/apache-hadoop-connect-excel-power-query.md) om Excel te verbinden met Hadoop met behulp van Power query

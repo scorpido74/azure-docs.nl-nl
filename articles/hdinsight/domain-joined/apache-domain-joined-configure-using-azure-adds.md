@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 02/03/2020
-ms.openlocfilehash: a3a23e2adb60b2b0fd5f4a5e790990ce2ad85fa9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf239cbf69f3816e5ec03e07e2bd5fe370308f22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031144"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196855"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Enterprise Security Package configuraties met Azure Active Directory Domain Services in HDInsight
 
@@ -132,4 +132,4 @@ De beheerde identiteit die u hebt gemaakt, kan worden gekozen in de vervolg keuz
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [configure Apache Hive policies for HDInsight clusters with ESP](apache-domain-joined-run-hive.md)(Engelstalig) voor het configureren van Hive-beleid en het uitvoeren van Hive-query's.
-* Zie [SSH gebruiken met Apache Hadoop op basis van Linux in hdinsight via Linux, UNIX of OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)voor het gebruik van SSH om verbinding te maken met hdinsight-clusters met ESP.
+* Zie [SSH gebruiken met Apache Hadoop op basis van Linux in hdinsight via Linux, UNIX of OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)voor het gebruik van SSH om verbinding te maken met hdinsight-clusters met ESP.

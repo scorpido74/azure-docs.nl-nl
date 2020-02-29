@@ -3,20 +3,20 @@ title: Naslag informatie voor de fout code
 titleSuffix: Azure AD B2C
 description: Een lijst met de fout codes die kunnen worden geretourneerd door de Azure Active Directory B2C-service.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735077"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188661"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Fout codes: Azure Active Directory B2C
 
@@ -58,10 +58,10 @@ De volgende fouten kunnen worden geretourneerd door de Azure Active Directory B2
 | `AADB2C90052` | Ongeldige gebruikers naam of wacht woord. |
 | `AADB2C90053` | Kan een gebruiker met de opgegeven referentie niet vinden. |
 | `AADB2C90054` | Ongeldige gebruikers naam of wacht woord. |
-| `AADB2C90055` | In het bereik '{0}' dat in de aanvraag is opgegeven, moet een resource worden opgegeven, bijvoorbeeld 'https://example.com/calendar.read '. |
+| `AADB2C90055` | In het bereik '{0}' dat in de aanvraag is opgegeven, moet een resource worden opgegeven, bijvoorbeeld 'https://example.com/calendar.read'. |
 | `AADB2C90057` | De opgegeven toepassing is niet geconfigureerd om de OAuth-impliciete stroom toe te staan. |
 | `AADB2C90058` | De opgegeven toepassing is niet geconfigureerd om open bare clients toe te staan. |
-| `AADB2C90067` | De omleidings-URI van de post afmelding{0}heeft een ongeldige indeling. Geef een op https gebaseerde URL op, zoals 'https://example.com/return ' of voor native-clients, gebruik de IETF native client URI ' urn: IETF: WG: OAuth: 2.0: OOB '. |
+| `AADB2C90067` | De omleidings-URI van de post afmelding{0}heeft een ongeldige indeling. Geef een op https gebaseerde URL op, zoals 'https://example.com/return' of voor native-clients, gebruik de IETF native client URI ' urn: IETF: WG: OAuth: 2.0: OOB '. |
 | `AADB2C90068` | De gegeven toepassing met ID{0}is niet geldig voor deze service. Gebruik een toepassing die is gemaakt via de B2C-Portal en probeer het opnieuw. |
 | `AADB2C90075` | De claim uitwisseling '{0}' die is opgegeven in stap '{1}' heeft een HTTP-fout melding geretourneerd met code '{2}' en reden '{3}'. |
 | `AADB2C90077` | De gebruiker heeft geen bestaande sessie en de aanvraag prompt parameter heeft de waarde{0}. |

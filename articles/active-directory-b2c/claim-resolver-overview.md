@@ -3,20 +3,20 @@ title: Claim resolvers in aangepast beleid
 titleSuffix: Azure AD B2C
 description: Meer informatie over het gebruik van claim resolvers in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/02/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161598"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189834"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -117,9 +117,9 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | {SAML: ForceAuthn} | De waarde van het `ForceAuthN` kenmerk, van het `AuthnRequest` element van de SAML-aanvraag. | True |
 | {SAML: ProviderName} | De waarde van het `ProviderName` kenmerk, van het `AuthnRequest` element van de SAML-aanvraag.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Claim resolvers gebruiken 
+## <a name="using-claim-resolvers"></a>Claim resolvers gebruiken
 
-U kunt claim resolvers gebruiken met de volgende elementen: 
+U kunt claim resolvers gebruiken met de volgende elementen:
 
 | Item | Element | Instellingen |
 | ----- | ----------------------- | --------|
@@ -135,7 +135,7 @@ U kunt claim resolvers gebruiken met de volgende elementen:
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |Technisch profiel voor [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
 
-Instellingen: 
+Instellingen:
 1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld op `true`.
 1. Het kenmerk voor de invoer-of uitvoer claims `AlwaysUseDefaultValue` moet worden ingesteld op `true`.
 
@@ -195,7 +195,7 @@ Als gevolg hiervan worden Azure AD B2C de bovenstaande para meters naar de pagin
 
 ### <a name="content-definition"></a>Inhouds definitie
 
-In een [ContentDefinition](contentdefinitions.md) -`LoadUri`kunt u claim resolvers verzenden om inhoud vanaf verschillende locaties te halen, op basis van de gebruikte para meters. 
+In een [ContentDefinition](contentdefinitions.md) -`LoadUri`kunt u claim resolvers verzenden om inhoud vanaf verschillende locaties te halen, op basis van de gebruikte para meters.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -224,7 +224,7 @@ Met Azure-toepassing inzichten en claim resolvers kunt u inzicht krijgen in het 
 
 ### <a name="relying-party-policy"></a>Beleid voor Relying Party
 
-In het technische profiel van een [Relying Party](relyingparty.md) beleid wilt u mogelijk de Tenant-id of correlatie-id verzenden naar de Relying Party toepassing binnen de JWT. 
+In het technische profiel van een [Relying Party](relyingparty.md) beleid wilt u mogelijk de Tenant-id of correlatie-id verzenden naar de Relying Party toepassing binnen de JWT.
 
 ```XML
 <RelyingParty>

@@ -405,6 +405,8 @@
           href: v2-admin-consent.md
         - name: Ervaringen met toepassingstoestemming
           href: application-consent-experience.md
+    - name: Voorwaardelijke toegang
+      href: v2-conditional-access-dev-guide.md
     - name: Nationale clouds
       items:
         - name: Overzicht

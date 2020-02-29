@@ -3,20 +3,20 @@ title: Overzicht van technische profielen in aangepast beleid
 titleSuffix: Azure AD B2C
 description: Meer informatie over hoe technische profielen worden gebruikt in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505651"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183649"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -40,7 +40,7 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 - [Zelfbevestigend](self-asserted-technical-profile.md) : interactie met de gebruiker. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden, de registratie pagina weer te geven of het wacht woord opnieuw in te stellen.
 - [Sessie beheer](custom-policy-reference-sso.md) : verschillende soorten sessies verwerken.
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Eenmalig wacht woord](one-time-password-technical-profile.md) : biedt ondersteuning voor het beheren van het genereren en verifiëren van een eenmalig wacht woord. 
+- [Eenmalig wacht woord](one-time-password-technical-profile.md) : biedt ondersteuning voor het beheren van het genereren en verifiëren van een eenmalig wacht woord.
 
 ## <a name="technical-profile-flow"></a>Technische profiel stroom
 
@@ -48,7 +48,7 @@ Alle typen technische profielen delen hetzelfde concept. U verzendt invoer claim
 
 ![Diagram dat de technische profiel stroom illustreert](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **Eenmalige aanmelding (SSO) sessie beheer** : Hiermee wordt de sessie status van het technische profiel hersteld met behulp van [SSO-sessie beheer](custom-policy-reference-sso.md). 
+1. **Eenmalige aanmelding (SSO) sessie beheer** : Hiermee wordt de sessie status van het technische profiel hersteld met behulp van [SSO-sessie beheer](custom-policy-reference-sso.md).
 1. **Invoer claims trans formatie** -invoer claims van elke invoer [claim transformatie](claimstransformations.md) worden opgehaald uit de verzameling claims.  De uitvoer claims van een invoer claims transformatie kunnen invoer claims van een volgende invoer claim transformatie zijn.
 1. **Invoer claims** : claims worden opgehaald uit de claim Bag en worden gebruikt voor het technische profiel. Een [zelfbevestigend technisch profiel](self-asserted-technical-profile.md) gebruikt bijvoorbeeld de invoer claims om de uitvoer claims die de gebruiker levert, vooraf in te vullen. Een REST API technisch profiel gebruikt de invoer claims voor het verzenden van invoer parameters naar het REST API eind punt. Azure Active Directory gebruikt een invoer claim als een unieke id voor het lezen, bijwerken of verwijderen van een account.
 1. **Uitvoering van technisch profiel** -het technische profiel waarmee de claims worden uitgewisseld met de geconfigureerde partij. Bijvoorbeeld:
@@ -64,7 +64,7 @@ Alle typen technische profielen delen hetzelfde concept. U verzendt invoer claim
 
 ## <a name="technical-profile-inclusion"></a>Technisch profiel opnemen
 
-Een technisch profiel kan een ander technisch profiel bevatten om instellingen te wijzigen of nieuwe functionaliteit toe te voegen.  Het `IncludeTechnicalProfile`-element is een verwijzing naar het basis-technische profiel van waaruit een technisch profiel is afgeleid. Er is geen limiet voor het aantal niveaus. 
+Een technisch profiel kan een ander technisch profiel bevatten om instellingen te wijzigen of nieuwe functionaliteit toe te voegen.  Het `IncludeTechnicalProfile`-element is een verwijzing naar het basis-technische profiel van waaruit een technisch profiel is afgeleid. Er is geen limiet voor het aantal niveaus.
 
 Het **Aad-UserReadUsingAlternativeSecurityId-error-** technisch profiel bevat bijvoorbeeld de **Aad-UserReadUsingAlternativeSecurityId**. Met dit technische profiel wordt het `RaiseErrorIfClaimsPrincipalDoesNotExist` meta gegevens item ingesteld op `true`, en wordt er een fout gegenereerd als er geen sociaal account in de directory bestaat. **Aad-UserReadUsingAlternativeSecurityId-fout** onderdrukt dit gedrag en schakelt dat fout bericht uit.
 

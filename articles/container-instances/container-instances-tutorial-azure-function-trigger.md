@@ -4,12 +4,12 @@ description: Een door HTTP geactiveerde Power shell-functie zonder server maken 
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533378"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196532"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Zelf studie: een Azure-functie activeren die door HTTP wordt geactiveerd om een container groep te maken
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zie [uw eerste Power shell-functie in azure maken](../azure-functions/functions-create-first-function-powershell.md#prerequisites) voor vereisten voor het installeren en gebruiken van Visual Studio code met de Azure functions van uw besturings systeem.
+Zie [uw eerste functie in azure maken](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) voor vereisten voor het installeren en gebruiken van Visual Studio code met de Azure functions van uw besturings systeem.
 
 Voor sommige stappen in dit artikel wordt gebruikgemaakt van de Azure CLI. U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze stappen uit te voeren. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 

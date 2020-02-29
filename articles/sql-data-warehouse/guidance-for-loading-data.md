@@ -1,26 +1,26 @@
 ---
 title: Best practices voor laden van gegevens
-description: Aanbevelingen en prestatieoptimalisatie voor het laden van gegevens in Azure SQL Data Warehouse.
+description: Aanbevelingen en prestatie optimalisaties voor het laden van gegevens in SQL Analytics
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d59a66b25b55572865f297436331971434d831c3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686095"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199883"
 ---
-# <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Aanbevolen procedures voor het laden van gegevens in Azure SQL Data Warehouse
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Aanbevolen procedures voor het laden van gegevens voor gegevens opslag
 
-Aanbevelingen en prestatieoptimalisatie voor het laden van gegevens in Azure SQL Data Warehouse.
+Aanbevelingen en prestatie optimalisaties voor het laden van gegevens
 
 ## <a name="preparing-data-in-azure-storage"></a>Gegevens voorbereiden in Azure Storage
 
@@ -36,9 +36,9 @@ Splits grote gecomprimeerde bestanden in kleinere gecomprimeerde bestanden.
 
 ## <a name="running-loads-with-enough-compute"></a>Laadtaken uitvoeren met voldoende rekenkracht
 
-Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laadtaak verwacht, kunt u uw datawarehouse opschalen vóór de laadtaak.
+Voer voor de hoogste laadsnelheid slechts één taak tegelijk uit. Voer een zo klein mogelijk aantal laadtaken tegelijk uit als dit niet haalbaar is. Als u een grote laad taak verwacht, kunt u de SQL-groep vóór de belasting verg Roten of verkleinen.
 
-Als u loads wilt uitvoeren met geschikte rekenresources, maakt u gebruikers voor het laadproces die zijn aangewezen voor het uitvoeren van loads. Wijs elke gebruiker voor het laadproces toe aan een specifieke resourceklasse. Als u een belasting wilt uitvoeren, meldt u zich aan als een van de laad gebruikers en voert u de belasting uit. De load wordt uitgevoerd met de resourceklasse van de gebruiker.  Deze methode is eenvoudiger dan de resourceklasse van een gebruiker aanpassen om te voldoen aan de huidige benodigde resourceklasse.
+Als u loads wilt uitvoeren met geschikte rekenresources, maakt u gebruikers voor het laadproces die zijn aangewezen voor het uitvoeren van loads. Wijs elke laad gebruiker toe aan een specifieke resource klasse of werkbelasting groep. Als u een belasting wilt uitvoeren, meldt u zich aan als een van de laad gebruikers en voert u de belasting uit. De load wordt uitgevoerd met de resourceklasse van de gebruiker.  Deze methode is eenvoudiger dan de resourceklasse van een gebruiker aanpassen om te voldoen aan de huidige benodigde resourceklasse.
 
 ### <a name="example-of-creating-a-loading-user"></a>Voorbeeld van het maken van een gebruiker voor het laadproces
 
@@ -89,7 +89,7 @@ Columnstore-indexen vereisen grote hoeveelheden geheugen voor het comprimeren va
 - Laad genoeg rijen om nieuwe rijgroepen volledig te vullen. Tijdens een bulksgewijze laadtaak worden elke 1.048.576 rijen rechtstreeks in de columnstore gecomprimeerd als een volledige rijgroep. Laadtaken met minder dan 102.400 rijen verzenden de rijen naar de deltastore waarin rijen zijn ondergebracht in een b-tree-index. Als u te weinig rijen laadt, gaan deze mogelijk allemaal naar de deltastore en worden ze niet direct naar columnstore-indeling gecomprimeerd.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Batch grootte verg Roten bij gebruik van SQLBulkCopy-API of BCP
-Zoals eerder is vermeld, biedt het laden met poly base de hoogste door Voer met SQL Data Warehouse. Als u geen poly Base kunt gebruiken om te laden en u de SQLBulkCopy-API (of BCP) moet gebruiken, kunt u overwegen om de Batch grootte te verg Roten voor een betere door voer. 
+Zoals eerder is vermeld, biedt het laden met poly base de hoogste door Voer met SQL Data Warehouse. Als u geen poly Base kunt gebruiken om te laden en u de SQLBulkCopy-API (of BCP) moet gebruiken, kunt u overwegen om de Batch grootte te verg Roten voor een betere door voer. een goede vuist regel is een batch grootte tussen 100.000 en 1M rijen.
 
 ## <a name="handling-loading-failures"></a>Afhandeling van fouten bij het laden
 

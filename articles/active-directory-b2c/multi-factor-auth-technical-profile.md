@@ -3,20 +3,20 @@ title: Technische profielen voor Azure MFA in aangepast beleid
 titleSuffix: Azure AD B2C
 description: Aangepaste beleids verwijzing voor de technische profielen van Azure Multi-Factor Authentication (MFA) in Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8aaea6b2afb4d89e6e667edba0eeba2f4ddcca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480214"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184278"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een Azure MFA-technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -53,12 +53,12 @@ De eerste modus van dit technische profiel is om een code te genereren en deze t
 
 Het **InputClaims** -element bevat een lijst met claims die naar Azure MFA moeten worden verzonden. U kunt de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in het technische profiel voor MFA.
 
-| ClaimReferenceId | Verplicht | Beschrijving |
+| ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | userPrincipalName | Ja | De id voor de gebruiker die eigenaar is van het telefoon nummer. |
 | phoneNumber | Ja | Het telefoon nummer waarnaar een SMS-code moet worden verzonden. |
-| CompanyName | Nee |De bedrijfs naam in het SMS. Als u dit niet opgeeft, wordt de naam van uw toepassing gebruikt. |
-| landinstellingen | Nee | De land instelling van het SMS. Als dat niet is vermeld, wordt de land instelling van de gebruiker gebruikt. |
+| companyName | Nee |De bedrijfs naam in het SMS. Als u dit niet opgeeft, wordt de naam van uw toepassing gebruikt. |
+| instelling | Nee | De land instelling van het SMS. Als dat niet is vermeld, wordt de land instelling van de gebruiker gebruikt. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de Azure MFA-service worden verzonden.
 
@@ -70,7 +70,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 ### <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Bewerking | Ja | Moet **OneWaySMS**zijn.  |
 | UserMessageIfInvalidFormat | Nee | Aangepast fout bericht als het ingevoerde telefoon nummer geen geldig telefoon nummer is |
@@ -115,7 +115,7 @@ De tweede modus van dit technische profiel is om een code te controleren. De vol
 
 Het **InputClaims** -element bevat een lijst met claims die naar Azure MFA moeten worden verzonden. U kunt de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in het technische profiel voor MFA.
 
-| ClaimReferenceId | Verplicht | Beschrijving |
+| ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- | ----------- |
 | phoneNumber| Ja | Hetzelfde telefoon nummer als eerder gebruikt om een code te verzenden. Het wordt ook gebruikt om een sessie voor telefoon verificatie te vinden. |
 | verificationCode  | Ja | De verificatie code van de gebruiker die moet worden geverifieerd |
@@ -130,7 +130,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 ## <a name="metadata"></a>Metagegevens
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Bewerking | Ja | Moet worden **gecontroleerd** |
 | UserMessageIfInvalidFormat | Nee | Aangepast fout bericht als het ingevoerde telefoon nummer geen geldig telefoon nummer is |

@@ -2,20 +2,20 @@
 title: Referentie-vertrouwens raamwerken in Azure Active Directory B2C | Microsoft Docs
 description: Een onderwerp over Azure Active Directory B2C aangepast beleid en het Framework voor identiteits ervaring.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ffa25eec9c4b668f428d8e8b5a780a5fe4625a2c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849160"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188882"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Vertrouwens raamwerken definiëren met Azure AD B2C Identity experience Framework
 
@@ -36,9 +36,9 @@ Azure AD B2C aangepaste beleids regels die gebruikmaken van het Framework voor i
 
 Het vertrouwens raamwerk is een schriftelijke specificatie van het identiteits-, beveiligings-, privacy-en gegevens beveiligings beleid waaraan deel nemers in een community van belang moeten voldoen.
 
-Federatieve identiteiten bieden een basis voor het realiseren van identiteits garantie voor eind gebruikers op internet. Door identiteits beheer te delegeren aan derden, kan één digitale identiteit voor een eind gebruiker opnieuw worden gebruikt met meerdere relying party's.  
+Federatieve identiteiten bieden een basis voor het realiseren van identiteits garantie voor eind gebruikers op internet. Door identiteits beheer te delegeren aan derden, kan één digitale identiteit voor een eind gebruiker opnieuw worden gebruikt met meerdere relying party's.
 
-Identiteits controle vereist dat id-providers (id) en kenmerk providers (AtPs) zich houden aan specifieke beveiligings-, privacy-en operationeel beleid en-procedures.  Als ze geen rechtstreekse controles kunnen uitvoeren, moeten relying party's (RPs) vertrouwens relaties ontwikkelen met de id en AtPs waarmee ze werken.  
+Identiteits controle vereist dat id-providers (id) en kenmerk providers (AtPs) zich houden aan specifieke beveiligings-, privacy-en operationeel beleid en-procedures.  Als ze geen rechtstreekse controles kunnen uitvoeren, moeten relying party's (RPs) vertrouwens relaties ontwikkelen met de id en AtPs waarmee ze werken.
 
 Naarmate het aantal consumenten en providers van digitale identiteits gegevens groeit, is het lastig om het Pairwise-beheer van deze vertrouwens relaties te voortzetten, of zelfs de Pairwise-uitwisseling van de technische meta gegevens die vereist zijn voor de netwerk verbinding.  Bij het oplossen van deze problemen hebben Federatie hubs slechts een beperkt aantal geslaagd.
 
@@ -65,13 +65,13 @@ TFs zijn de linchpins van het OIX-vertrouwens raamwerk model (Open Identity Exch
 
 Daarom bepaalt een TF-specificatie hoe identiteits gegevens worden uitgewisseld tussen de deel nemers van de community van belang: relying party's, identiteits-en kenmerk providers en controle Programma's voor kenmerken.
 
-Een TF-specificatie is een of meer documenten die dienen als referentie voor het governance van de community van belang voor het bepalen van de beweringen en het gebruik van digitale identiteits gegevens in de community. Het is een gedocumenteerde set beleids regels en procedures die zijn ontworpen om vertrouwen in de digitale identiteiten in te richten die worden gebruikt voor online trans acties tussen leden van een community van belang.  
+Een TF-specificatie is een of meer documenten die dienen als referentie voor het governance van de community van belang voor het bepalen van de beweringen en het gebruik van digitale identiteits gegevens in de community. Het is een gedocumenteerde set beleids regels en procedures die zijn ontworpen om vertrouwen in de digitale identiteiten in te richten die worden gebruikt voor online trans acties tussen leden van een community van belang.
 
 Met andere woorden, een TF-specificatie definieert de regels voor het maken van een levensvatbaar federatieve identiteits ecosysteem voor een community.
 
 Er is momenteel een wijde overeenkomst tussen de voor delen van een dergelijke benadering. Er is geen twijfel dat de specificaties van het vertrouwens raamwerk de ontwikkeling van digitale identiteits ecosystemen met Controleer bare kenmerken van veiligheid, verzekeringen en privacy vergemakkelijken, wat betekent dat ze opnieuw kunnen worden gebruikt in meerdere community's van belang.
 
-Daarom gebruikt Azure AD B2C aangepast beleid dat het Framework voor identiteits ervaring gebruikt, de specificatie als basis voor de gegevens representatie van een TF om interoperabiliteit te vergemakkelijken.  
+Daarom gebruikt Azure AD B2C aangepast beleid dat het Framework voor identiteits ervaring gebruikt, de specificatie als basis voor de gegevens representatie van een TF om interoperabiliteit te vergemakkelijken.
 
 Azure AD B2C aangepaste beleids regels die gebruikmaken van het Framework voor identiteits ervaring, vertegenwoordigen een TF-specificatie als een mengeling van menselijk en machine-Lees bare gegevens. Sommige secties van dit model (doorgaans secties die meer gericht zijn op governance) worden weer gegeven als verwijzingen naar gepubliceerde documentatie over beveiligings-en privacybeleid, samen met de bijbehorende procedures (indien van toepassing). In andere secties worden de meta gegevens van de configuratie en runtime regels beschreven die de operationele automatisering vergemakkelijken.
 
@@ -106,21 +106,21 @@ In termen van de implementatie bestaat de TF-specificatie uit een set beleids re
 ### <a name="understand-claims"></a>Informatie over claims
 
 > [!NOTE]
-> We verwijzen gezamenlijk naar alle mogelijke soorten identiteits gegevens die kunnen worden uitgewisseld als ' claims ': claims over de authenticatie referenties van een eind gebruiker, identiteits hebben, communicatie apparaat, fysieke locatie, persoonlijke identificatie kenmerken, enzovoort.  
+> We verwijzen gezamenlijk naar alle mogelijke soorten identiteits gegevens die kunnen worden uitgewisseld als ' claims ': claims over de authenticatie referenties van een eind gebruiker, identiteits hebben, communicatie apparaat, fysieke locatie, persoonlijke identificatie kenmerken, enzovoort.
 >
-> We gebruiken de term ' claims '--in plaats van ' Attributes '--omdat deze gegevens artefacten in online trans acties geen feiten zijn die rechtstreeks kunnen worden geverifieerd door de Relying Party. In plaats daarvan zijn er beweringen of claims over feiten waarvoor de Relying Party voldoende vertrouwen moet ontwikkelen om de aangevraagde trans actie van de eind gebruiker te verlenen.  
+> We gebruiken de term ' claims '--in plaats van ' Attributes '--omdat deze gegevens artefacten in online trans acties geen feiten zijn die rechtstreeks kunnen worden geverifieerd door de Relying Party. In plaats daarvan zijn er beweringen of claims over feiten waarvoor de Relying Party voldoende vertrouwen moet ontwikkelen om de aangevraagde trans actie van de eind gebruiker te verlenen.
 >
-> We gebruiken ook de term ' claims ' omdat Azure AD B2C aangepaste beleids regels die gebruikmaken van het Framework voor identiteits ervaring, zijn ontworpen om de uitwisseling van alle typen digitale identiteits gegevens op een consistente manier te vereenvoudigen, ongeacht of het onderliggende protocol gedefinieerd voor gebruikers verificatie of het ophalen van kenmerken.  We gebruiken ook de term ' claim providers ' om gezamenlijk te verwijzen naar id-providers, kenmerk providers en controle Programma's voor kenmerken wanneer we niet willen onderscheiden van hun specifieke functies.   
+> We gebruiken ook de term ' claims ' omdat Azure AD B2C aangepaste beleids regels die gebruikmaken van het Framework voor identiteits ervaring, zijn ontworpen om de uitwisseling van alle typen digitale identiteits gegevens op een consistente manier te vereenvoudigen, ongeacht of het onderliggende protocol gedefinieerd voor gebruikers verificatie of het ophalen van kenmerken.  We gebruiken ook de term ' claim providers ' om gezamenlijk te verwijzen naar id-providers, kenmerk providers en controle Programma's voor kenmerken wanneer we niet willen onderscheiden van hun specifieke functies.
 
 Daarom bepalen ze hoe identiteits gegevens worden uitgewisseld tussen een Relying Party, identiteit en kenmerk providers en controle Programma's voor kenmerken. Ze bepalen welke identiteits-en kenmerk providers vereist zijn voor de verificatie van een Relying Party. Ze moeten worden beschouwd als een domein-specifieke taal (DSL), dat wil zeggen, een computer taal die speciaal is bedoeld voor een bepaald toepassings domein met overname, *indien* -instructies, polymorfisme.
 
-Deze beleids regels vormen het door de machine Lees bare deel van de TF-construct in Azure AD B2C aangepaste beleids regels maken gebruik van het Framework voor identiteits ervaring. Ze omvatten alle operationele gegevens, waaronder meta gegevens en technische profielen van claim providers, claim schema definities, claim transformatie functies en gebruikers trajecten die zijn ingevuld om operationele integratie en automatisering te vergemakkelijken.  
+Deze beleids regels vormen het door de machine Lees bare deel van de TF-construct in Azure AD B2C aangepaste beleids regels maken gebruik van het Framework voor identiteits ervaring. Ze omvatten alle operationele gegevens, waaronder meta gegevens en technische profielen van claim providers, claim schema definities, claim transformatie functies en gebruikers trajecten die zijn ingevuld om operationele integratie en automatisering te vergemakkelijken.
 
-Er wordt van uitgegaan dat er sprake is van *levende documenten* , omdat er een goede kans bestaat dat de inhoud gedurende een periode wordt gewijzigd met betrekking tot de actieve deel nemers die in het beleid zijn gedeclareerd. Het is ook mogelijk dat de voor waarden van een deel nemer worden gewijzigd.  
+Er wordt van uitgegaan dat er sprake is van *levende documenten* , omdat er een goede kans bestaat dat de inhoud gedurende een periode wordt gewijzigd met betrekking tot de actieve deel nemers die in het beleid zijn gedeclareerd. Het is ook mogelijk dat de voor waarden van een deel nemer worden gewijzigd.
 
 De Federatie-instellingen en-onderhoud worden uitgebreid vereenvoudigd door relying party's te gebruiken voor het afschermen van vertrouwens relaties en het opnieuw configureren van connectiviteit als verschillende claim providers/controle Programma's die worden toegevoegd aan of verlaten (de Community vertegenwoordigd door) de set beleids regels.
 
-Interoperabiliteit is een andere belang rijke uitdaging. Aanvullende claim providers/controle Programma's moeten worden geïntegreerd, omdat relying party's waarschijnlijk niet alle benodigde protocollen ondersteunen. Azure AD B2C aangepast beleid lost dit probleem op door de industrie standaard protocollen te ondersteunen en door specifieke gebruikers ritten toe te passen om aanvragen te transponeren wanneer relying party's en kenmerk providers niet hetzelfde protocol ondersteunen.  
+Interoperabiliteit is een andere belang rijke uitdaging. Aanvullende claim providers/controle Programma's moeten worden geïntegreerd, omdat relying party's waarschijnlijk niet alle benodigde protocollen ondersteunen. Azure AD B2C aangepast beleid lost dit probleem op door de industrie standaard protocollen te ondersteunen en door specifieke gebruikers ritten toe te passen om aanvragen te transponeren wanneer relying party's en kenmerk providers niet hetzelfde protocol ondersteunen.
 
 Gebruikers trajecten zijn protocol profielen en meta gegevens die worden gebruikt voor het vastmaken van de Wire-interoperabiliteit tussen de Relying Party en andere deel nemers. Er zijn ook operationele runtime regels die worden toegepast op identiteits informatie Exchange-aanvraag/antwoord berichten voor het afdwingen van naleving van het gepubliceerde beleid als onderdeel van de TF-specificatie. Het idee van gebruikers ritten is essentieel voor de aanpassing van de klant ervaring. Ook wordt het lampje uitgescheiden van de werking van het systeem op protocol niveau.
 

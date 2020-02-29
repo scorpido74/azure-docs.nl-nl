@@ -3,20 +3,20 @@ title: Claim transformaties voor het telefoon nummer in aangepaste beleids regel
 titleSuffix: Azure AD B2C
 description: Verwijzing naar het aangepaste beleid voor claim transformaties voor telefoon nummer in Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/26/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620634"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183925"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Geef claim transformaties voor het telefoon nummer op in Azure AD B2C
 
@@ -107,7 +107,7 @@ Het zelfondertekende technische profiel dat het validatie technische profiel aan
 
 - Invoer claims:
   - **phoneNumberString**: + 1 (123) 456-7890
-- Uitvoer claims: 
+- Uitvoer claims:
   - **output claim**: + 11234567890
 
 

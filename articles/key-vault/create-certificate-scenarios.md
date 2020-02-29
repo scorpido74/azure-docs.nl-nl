@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9f88af7027f6c907b5b55eb9aac545d98e2fbb7a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880848"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199730"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Het maken van certificaten controleren en beheren
 Van toepassing op: Azure
@@ -85,14 +86,14 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` ophalen
 
 OF
 
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` ophalen
 
 > [!NOTE]
-> Als *request_id* is opgegeven in de query, fungeert deze als een filter. Als de *request_id* in de query en in het in behandeling zijnde object verschillend zijn, wordt de HTTP-status code 404 geretourneerd.
+> Als *request_id* in de query is opgegeven, fungeert deze als een filter. Als de *request_id* in de query en in het in behandeling zijnde object verschillend zijn, wordt de HTTP-status code 404 geretourneerd.
 
 ### <a name="response"></a>Antwoord
 
@@ -120,11 +121,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` ophalen
 
 OF
 
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` ophalen
 
 ### <a name="response"></a>Antwoord
 
@@ -152,11 +153,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` ophalen
 
 OF
 
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` ophalen
 
 ### <a name="response"></a>Antwoord
 
@@ -191,11 +192,11 @@ Een object dat in behandeling is, kan worden verwijderd of overschreven door een
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` ophalen
 
 OF
 
-TOEVOEGEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` ophalen
 
 ### <a name="response"></a>Antwoord
 
@@ -292,14 +293,14 @@ Een annulering kan alleen worden aangevraagd. Een aanvraag kan al dan niet worde
 
 |Methode|Aanvraag-URI|
 |------------|-----------------|
-|PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|VERZENDEN|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-VERZENDEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-VERZENDEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -335,11 +336,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-VERWIJDERD`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"` verwijderen
 
 OF
 
-VERWIJDERD`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"` verwijderen
 
 ### <a name="response"></a>Antwoord
 
@@ -413,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|De naam van element|Vereist|type|Version|Description|
+|Elementnaam|Vereist|Type|Version|Beschrijving|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ja|array|\<introductie van versie >|X509-certificaat keten als basis 64 teken reeks matrix.|
+|x5c|Ja|matrix|\<introductie van versie >|X509-certificaat keten als basis 64 teken reeks matrix.|
 
 ### <a name="response"></a>Antwoord
 

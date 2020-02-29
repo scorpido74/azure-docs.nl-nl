@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720313"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193031"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW) 
 
@@ -25,7 +25,7 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
 - SQL Analytics: op T-SQL gebaseerde analyses volt ooien 
     - SQL-groep (betalen per DWU ingericht): algemeen beschikbaar
     - SQL on-demand (betalen per TB verwerkte) – (preview-versie)
-- Spark: diep geïntegreerde Apache Spark (preview-versie) 
+- Spark: diep geïntegreerde Apache Spark (preview-versie)
 - Gegevens integratie: hybride gegevens integratie (preview-versie)
 - Studio: uniforme gebruikers ervaring.  (Preview-versie)
 

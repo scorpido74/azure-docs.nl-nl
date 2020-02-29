@@ -1,6 +1,6 @@
 ---
 title: Integratie van bronbeheer
-description: Data base DevOps-ervaring op ondernemings niveau voor SQL Data Warehouse met systeem eigen integratie van broncode beheer met behulp van Azure opslag plaatsen (Git en GitHub).
+description: Data base DevOps-ervaring op ondernemings niveau voor SQL-pool met native broncode beheer integratie met behulp van Azure opslag plaatsen (Git en GitHub).
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720024"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198206"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integratie van broncode beheer voor Azure SQL Data Warehouse
+# <a name="source-control-integration-for-sql-pool"></a>Integratie van broncode beheer voor SQL-groep
 
-In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server Data Tools) integreert met broncode beheer.  Integratie van broncode beheer is de eerste stap bij het bouwen van uw continue integratie-en implementatie pijplijn met SQL Data Warehouse. 
+In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server Data Tools) integreert met broncode beheer.  Integratie van broncode beheer is de eerste stap bij het bouwen van een continue integratie-en implementatie pijplijn met de resource van de SQL-groep in azure Synapse Analytics. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -81,4 +81,4 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontwikkelen voor Azure SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+- [Ontwikkelen voor SQL-groep](sql-data-warehouse-overview-develop.md)

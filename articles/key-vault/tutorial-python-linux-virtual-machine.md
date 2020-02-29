@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242413"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198147"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Zelf studie: een virtuele Linux-machine en een python-app gebruiken om geheimen op te slaan in Azure Key Vault
 
@@ -62,7 +63,7 @@ az login
 
 Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-Maak een resourcegroep met behulp van de opdracht `az group create` in de locatie US - west met de volgende code. Vervang `YourResourceGroupName` door een naam van uw keuze.
+Maak een resourcegroep met behulp van de opdracht `az group create` in de locatie VS - west met de volgende code. Vervang `YourResourceGroupName` door een naam van uw keuze.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -77,7 +78,7 @@ Vervolgens maakt u een sleutelkluis in de resourcegroep die u in de vorige stap 
 
 * Naam sleutel kluis: de naam moet een teken reeks van 3-24 tekens zijn en moet alleen 0-9, a-z, A-Z en afbreek streepjes (-) bevatten.
 * Naam van de resourcegroep.
-* Locatie: **US - west**.
+* Locatie: **VS - west**.
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"

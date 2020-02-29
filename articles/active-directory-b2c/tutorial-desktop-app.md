@@ -3,24 +3,24 @@ title: 'Zelf studie: gebruikers verifiëren in een systeem eigen client toepassi
 titleSuffix: Azure AD B2C
 description: Zelfstudie over het gebruik van Azure Active Directory B2C voor het opgeven van gebruikersaanmeldingsreferenties voor een .NETdesktop-app.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 4c271a750719f475a859f9a492009bfaf74da869
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850004"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186196"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Zelf studie: gebruikers verifiëren in een systeem eigen desktop-client met behulp van Azure Active Directory B2C
 
-In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers te registreren in een Windows Presentation Foundation (WPF)-bureaublad toepassing. Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers te registreren in een Windows Presentation Foundation (WPF)-bureaublad toepassing. Met Azure AD B2C zijn uw toepassingen in staat om zich met behulp van open-standaardprotocollen te verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak gebruikersstromen](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
+- [Gebruikersstromen maken](tutorial-create-user-flows.md) om gebruikerservaringen in uw toepassing in te schakelen.
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met **.net desktop Development** en **ASP.net-en Web Development** -workloads.
 
 ## <a name="add-the-native-client-application"></a>De systeemeigen clienttoepassing toevoegen
@@ -42,7 +42,7 @@ In deze zelfstudie leert u het volgende:
 
 Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 
-## <a name="configure-the-sample"></a>Configureren van het voorbeeld
+## <a name="configure-the-sample"></a>Voorbeeld configureren
 
 In deze zelfstudie configureert u een voorbeeld dat u kunt downloaden uit GitHub. Het voor beeld van een WPF-bureaublad toepassing demonstreert registratie, aanmelden en kan een beveiligde web-API aanroepen in Azure AD B2C. [Download een ZIP-bestand ](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), [blader door de opslagplaats](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) of kloon de voorbeeldweb-app vanuit GitHub.
 
@@ -95,7 +95,7 @@ Ga door naar de volgende zelf studie om een beveiligde web-API in uw eigen Tenan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * De systeemeigen clienttoepassing toevoegen
