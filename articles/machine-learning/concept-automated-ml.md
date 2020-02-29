@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526124"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190344"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -150,6 +150,14 @@ Als model **a**wordt overwogen, is er sprake van een veelvoorkomende, niet-gemee
 Bij het vergelijken van modellen **a** en **B**is model **a** een beter model omdat het een hogere nauw keurigheid voor de test heeft en hoewel de nauw keurigheid van de test op 95% iets lager is. U hebt model **B** niet gewoon gekozen, omdat de keurigheden van de trein en test dichter bij elkaar komen.
 
 Model **C** staat voor een duidelijk beeld van over-montage; de nauw keurigheid van de training is zeer hoog, maar de nauw keurigheid van de test is nergens bijna zo hoog. Dit onderscheid is subjectief, maar komt van kennis van uw probleem en gegevens, en van de omvang van de fout zijn acceptabel. 
+
+## <a name="classification--regression"></a>Classificatie & regressie
+
+Classificatie en regressie zijn de meest voorkomende typen machine learning taken. Beide vormen een soort super visie waarover modellen leren met behulp van trainings gegevens en deze informatie op nieuwe gegevens Toep assen. Azure Machine Learning biedt featurizations specifiek voor deze taken, zoals diepe Neural featurizers voor de classificatie van netwerk tekst. Meer informatie over [parametrisatie-opties](how-to-create-portal-experiments.md#featurization). 
+
+Het belangrijkste doel van classificatie modellen is om te voors pellen welke categorieën nieuwe gegevens zijn op basis van de informatie van de trainings gegevens. Voor beelden van veelvoorkomende classificaties zijn fraude detectie, handschrift herkenning en object detectie.  Meer informatie en een voor beeld van [classificatie met automatische machine learning](tutorial-train-models-with-aml.md).
+
+Anders dan classificatie waarbij voorspelde uitvoer waarden categorische zijn, hebben regressie modellen voor speld numerieke uitvoer waarden op basis van onafhankelijke voor spellingen. In regressie is het doel om te helpen bij het vaststellen van de relatie tussen deze onafhankelijke Voorspellings variabelen door te schatten hoe de ene variabele invloed heeft op de andere. Bijvoorbeeld prijs voor auto Mobile op basis van functies zoals het beslagen van gas, veiligheids classificatie, enzovoort. Lees meer informatie en Bekijk een voor beeld van [regressie met automatische machine learning](tutorial-auto-train-models.md).
 
 ## <a name="time-series-forecasting"></a>Prognose van Time-Series
 

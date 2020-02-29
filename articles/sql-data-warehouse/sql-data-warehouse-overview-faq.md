@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759479"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197178"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
@@ -23,7 +23,7 @@ ms.locfileid: "76759479"
 
 V. Wat is Azure Synapse?
 
-A. Azure Synapse is een oneindig analyse service waarmee gegevens-en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op uw voor waarden op te vragen met behulp van serverloze on-demand of ingerichte resources op schaal. In Azure Synapse komen deze werelden bij elkaar met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor directe BI- en machine learning-behoeften. Zie voor meer informatie, [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure Synapse is een oneindig analyse service waarmee gegevens-en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op uw voor waarden op te vragen met behulp van serverloze on-demand of ingerichte resources op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften. Zie voor meer informatie, [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 V. Wat is er gebeurd met Azure SQL Data Warehouse?
 
@@ -88,7 +88,7 @@ V. Ondersteunt SQL Analytics REST Api's?
 A. Ja. De meeste REST-functionaliteit die met SQL Database kan worden gebruikt, is ook beschikbaar met SQL Analytics. U vindt API-informatie in REST-documentatie pagina's of [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx).
 
 
-## <a name="loading"></a>Bezig met laden
+## <a name="loading"></a>Van
 
 V. Welke client Stuur Programma's worden ondersteund?
 
@@ -108,7 +108,7 @@ A: Nee, poly base werkt alleen met de opslag onderdelen.
 
 V: kan ik verbinding maken met HDI?
 
-A: HDI kan ADLS of WASB als de HDFS-laag gebruiken. Als u de laag HDFS hebt, kunt u die gegevens laden in SQL DW. U kunt echter geen pushdown berekening genereren voor het HDI-exemplaar. 
+A: HDI kan ADLS of WASB als de HDFS-laag gebruiken. Als u als uw HDFS-laag hebt, kunt u die gegevens laden in een SQL Analytics-Data Warehouse. U kunt echter geen pushdown berekening genereren voor het HDI-exemplaar. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie onze pagina [overzicht](sql-data-warehouse-overview-faq.md) voor meer informatie over Azure Synapse als geheel.

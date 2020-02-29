@@ -1,6 +1,6 @@
 ---
 title: Micro soft Identity platform-verificatie stromen & app-scenario's | Azure
-description: Meer informatie over verificatie stromen en toepassings scenario's voor het micro soft Identity-platform. Meer informatie over de verschillende soorten toepassingen die identiteiten kunnen verifiëren, tokens verkrijgen en beveiligde Api's aanroepen.
+description: Meer informatie over toepassings scenario's voor het micro soft-identiteits platform, inclusief verificatie-identiteiten, het verkrijgen van tokens en het aanroepen van beveiligde Api's.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,21 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/27/2019
+ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: bdcc93fe84d2fded914f21dfa2a29d9e2a2ab449
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 89bafeb077fc83f4f3165d591006831bf8287875
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161355"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190480"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Verificatie stromen en toepassings scenario's
 
-Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende soorten architectuur van moderne toepassingen. Alle architecturen zijn gebaseerd op de industrie standaard protocollen [OAuth 2,0 en OpenID Connect Connect](active-directory-v2-protocols.md).  Met behulp van de [verificatie bibliotheken](reference-v2-libraries.md)verifiëren toepassingen identiteiten en verkrijgen tokens voor toegang tot beveiligde api's.
+Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende soorten architectuur van moderne toepassingen. Alle architecturen zijn gebaseerd op de industrie standaard protocollen [OAuth 2,0 en OpenID Connect Connect](active-directory-v2-protocols.md).  Met behulp van de [micro soft-verificatie bibliotheken voor identiteits platforms](reference-v2-libraries.md)verifiëren toepassingen identiteiten en verkrijgen tokens voor toegang tot beveiligde api's.
 
-In dit artikel worden de verschillende verificatie stromen en de toepassings scenario's beschreven waarin ze worden gebruikt. Dit artikel bevat ook een lijst met:
+In dit artikel worden de verificatie stromen en de toepassings scenario's beschreven die worden gebruikt in:
+
 - [Toepassings scenario's en ondersteunde verificatie stromen](#scenarios-and-supported-authentication-flows).
 - [Toepassings scenario's en ondersteunde platforms en talen](#scenarios-and-supported-platforms-and-languages).
 
@@ -36,13 +37,13 @@ Tokens kunnen worden verkregen uit verschillende soorten toepassingen, waaronder
 - Bureau blad-apps
 - Web-API's
 
-Ze kunnen ook worden verkregen van apps die worden uitgevoerd op apparaten die geen browser hebben of die op IoT worden uitgevoerd.
+Tokens kunnen ook worden verkregen van apps die worden uitgevoerd op apparaten die geen browser hebben of die op IoT worden uitgevoerd.
 
 Toepassingen kunnen worden gecategoriseerd als in de volgende lijst:
 
 - [Beveiligde bronnen versus client toepassingen](#protected-resources-vs-client-applications): sommige scenario's zijn het beveiligen van resources zoals web-apps of Web-api's. Andere scenario's zijn het verkrijgen van een beveiligings token om een beveiligde web-API aan te roepen.
 - [Met gebruikers of zonder gebruikers: voor](#with-users-or-without-users)sommige scenario's is een aangemelde gebruiker vereist, maar andere, zoals daemon-scenario's, hebben geen betrekking op een gebruiker.
-- [Toepassingen met één pagina, open bare client en vertrouwelijke client](#single-page-public-client-and-confidential-client-applications): Dit zijn drie grote categorieën toepassings typen. Elk wordt gebruikt met verschillende bibliotheken en objecten.
+- [Toepassingen met één pagina, open bare client en vertrouwelijke client](#single-page-public-client-and-confidential-client-applications): deze typen zijn drie grote categorieën toepassingen. Elk wordt gebruikt met verschillende bibliotheken en objecten.
 - [Doel groep voor aanmelding](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types): de beschik bare verificatie stromen variëren afhankelijk van de doel groep voor het aanmelden. Sommige stromen zijn alleen beschikbaar voor werk-of school accounts. En sommige zijn beschikbaar voor werk-of school accounts en voor persoonlijke micro soft-accounts. De toegestane doel groep is afhankelijk van de verificatie stromen.
 - [Ondersteunde OAuth 2,0-stromen](#scenarios-and-supported-authentication-flows): verificatie stromen worden gebruikt voor het implementeren van de toepassings scenario's die tokens aanvragen. Er is geen een-op-een-toewijzing tussen toepassings scenario's en verificatie stromen.
 - [Ondersteunde platforms](#scenarios-and-supported-platforms-and-languages): niet alle toepassings scenario's zijn beschikbaar voor elk platform.
@@ -51,7 +52,7 @@ Toepassingen kunnen worden gecategoriseerd als in de volgende lijst:
 
 Verificatie scenario's hebben twee activiteiten:
 
-- **Beveiligings tokens ophalen voor een beveiligde web-API**: micro soft raadt u aan om [verificatie bibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) te gebruiken voor het verkrijgen van tokens, met name de micro soft Authentication Library (MSAL)-familie.
+- **Beveiligings tokens ophalen voor een beveiligde web-API**: we raden u aan door [micro soft ondersteunde client bibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) te gebruiken voor het verkrijgen van tokens, met name de micro soft Authentication Library (MSAL)-familie.
 - **Een web-API of web-app beveiligen**: een uitdaging van het beveiligen van een web-API of web-app-resource valideert het beveiligings token. Op sommige platforms biedt micro soft [middleware-bibliotheken](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
 
 ### <a name="with-users-or-without-users"></a>Met gebruikers of zonder gebruikers
@@ -68,25 +69,25 @@ Er zijn echter ook scenario's voor het maken van daemon-apps, waarbij toepassing
 
 De beveiligings tokens kunnen worden verkregen uit meerdere typen toepassingen. Deze toepassingen worden vaak onderverdeeld in drie categorieën:
 
-- **Toepassingen met één pagina**: ook wel Spas genoemd, zijn dit web-apps waarin tokens worden verkregen van een Java script-of type script-app die in de browser wordt uitgevoerd. Veel moderne apps hebben een front-end toepassing met één pagina die voornamelijk is geschreven in Java script. De toepassing maakt vaak gebruik van een kader zoals hoek, reageren of Vue. MSAL. js is de enige micro soft-verificatie bibliotheek die ondersteuning biedt voor toepassingen met één pagina.
+- **Toepassingen met één pagina**: ook wel Spas genoemd, zijn deze apps web apps waarin tokens worden verkregen van een Java script-of type script-app die in de browser wordt uitgevoerd. Veel moderne apps hebben een front-end toepassing met één pagina die voornamelijk is geschreven in Java script. De toepassing maakt vaak gebruik van een kader zoals hoek, reageren of Vue. MSAL. js is de enige micro soft-verificatie bibliotheek die ondersteuning biedt voor toepassingen met één pagina.
 
 - **Open bare client toepassingen**: deze toepassingen moeten zich altijd aanmelden bij gebruikers:
   - Bureau blad-apps voor het aanroepen van web-Api's namens de aangemelde gebruiker
   - Mobiele apps
   - Apps die worden uitgevoerd op apparaten die geen browser hebben, zoals toepassingen die op iOT worden uitgevoerd
 
-  Deze apps worden vertegenwoordigd door de MSAL [PublicClientApplication](msal-client-applications.md) -klasse.
+  Deze apps worden vertegenwoordigd door de MSAL [PublicClientApplication](/dotnet/api/microsoft.identity.client.publicclientapplication) -klasse. Zie [open bare client-en vertrouwelijke client toepassingen](msal-client-applications.md)voor meer informatie.
 
 - **Vertrouwelijke client toepassingen**:
   - Web-apps die een web-API aanroepen
   - Web-Api's die een web-API aanroepen
   - Daemon-apps, zelfs wanneer deze zijn geïmplementeerd als een console service, zoals een Linux-daemon of een Windows-service
 
-  Deze typen apps gebruiken de [ConfidentialClientApplication](msal-client-applications.md) -klasse.
+  Deze typen apps gebruiken de [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplication) -klasse. Zie [open bare client-en vertrouwelijke client toepassingen](msal-client-applications.md)voor meer informatie.
 
 ## <a name="application-scenarios"></a>Toepassingsscenario's
 
-Het micro soft Identity platform-eind punt ondersteunt verificatie voor verschillende soorten app-architecturen:
+Het micro soft Identity platform-eind punt ondersteunt verificatie voor verschillende app-architecturen:
 
 - Toepassingen met één pagina
 - Web-apps
@@ -100,7 +101,9 @@ Toepassingen gebruiken de verschillende verificatie stromen voor het aanmelden v
 
 ### <a name="a-single-page-application"></a>Een toepassing met één pagina
 
-Veel moderne web-apps zijn gebouwd als toepassingen met één pagina op de client die zijn geschreven met behulp van Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, vue. js en reageren. js. Deze toepassingen worden uitgevoerd in een webbrowser. De verificatie-eigenschappen verschillen van die van traditionele web-apps aan de server zijde. Door gebruik te maken van het micro soft-identiteits platform kunnen toepassingen met één pagina gebruikers aanmelden en tokens verkrijgen voor toegang tot back-end-services of Web-Api's.
+Veel moderne web-apps zijn gebouwd als toepassingen met één pagina aan de client zijde. Deze toepassingen gebruiken Java script of een toepassings raamwerk met één pagina zoals hoek, vue. js en reageren. js. Deze toepassingen worden uitgevoerd in een webbrowser.
+
+De verificatie-eigenschappen verschillen van traditionele web-apps aan de server zijde. Door gebruik te maken van het micro soft-identiteits platform kunnen toepassingen met één pagina gebruikers aanmelden en tokens verkrijgen voor toegang tot back-end-services of Web-Api's.
 
 ![Een toepassing met één pagina](media/scenarios/spa-app.svg)
 
@@ -140,11 +143,11 @@ Toepassingen die worden uitgevoerd op een apparaat zonder browser, kunnen nog st
 
 Hoewel het niet wordt aangeraden om het te gebruiken, is de werk [stroom gebruikers naam en wacht woord](https://aka.ms/msal-net-up) beschikbaar in open bare client toepassingen. Deze stroom is nog steeds nodig in sommige scenario's zoals DevOps.
 
-Maar het gebruik van deze stroom heeft beperkingen opgelegd voor uw toepassingen. Toepassingen die deze stroom gebruiken, kunnen bijvoorbeeld niet aanmelden bij een gebruiker die multi-factor Authentication of voorwaardelijke toegang moet uitvoeren. Uw toepassingen profiteren ook niet van eenmalige aanmelding.
+Maar met deze stroom beperkt u uw toepassingen. Zo kunnen toepassingen zich niet aanmelden bij een gebruiker die multi-factor Authentication of voorwaardelijke toegang moet gebruiken. Uw toepassingen profiteren ook niet van eenmalige aanmelding.
 
 Verificatie met de gebruikers naam/wacht woord stroom verloopt tegen de principes van moderne authenticatie en wordt alleen voor verouderde redenen verschaft.
 
-Als u de token cache permanent wilt maken, moet u in bureau blad-apps [de token cache-serialisatie aanpassen](https://aka.ms/msal-net-token-cache-serialization). Door het implementeren van [Dual token cache-serialisatie](https://aka.ms/msal-net-dual-cache-serialization)kunt u achterwaarts compatibele en forward-compatibele token caches gebruiken met de vorige generaties van verificatie bibliotheken. Voor beelden van specifieke bibliotheken zijn Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) versie 3 en versie 4.
+In bureau blad-apps kunt u de token cache- [serialisatie](https://aka.ms/msal-net-token-cache-serialization)aanpassen als u wilt dat de token cache persistent blijft. Door het implementeren van [Dual token cache-serialisatie](https://aka.ms/msal-net-dual-cache-serialization)kunt u achterwaarts compatibele en forward-compatibele token caches gebruiken. Deze tokens ondersteunen vorige generaties van verificatie bibliotheken. Voor beelden van specifieke bibliotheken zijn Azure AD-verificatie bibliotheek voor .NET (ADAL.NET) versie 3 en versie 4.
 
 Zie voor meer informatie [bureau blad-app die web-api's aanroept](scenario-desktop-overview.md).
 
@@ -156,16 +159,18 @@ Net als bij een bureau blad-app roept een mobiele app de interactieve methoden v
 
 MSAL iOS en MSAL Android gebruiken standaard de systeem webbrowser. U kunt ze echter ook gebruiken om in plaats daarvan de Inge sloten webweergave in te richten. Er zijn specifieke kenmerken die afhankelijk zijn van het mobiele platform: Universeel Windows-platform (UWP), iOS of Android.
 
-In sommige scenario's, zoals die voor voorwaardelijke toegang tot een apparaat-ID of een apparaatregistratie, moet een [Broker](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS) op het apparaat worden geïnstalleerd. Voor beelden van makelaars zijn micro soft Bedrijfsportal op Android en Microsoft Authenticator op Android en iOS. MSAL kan nu ook communiceren met brokers.
-
-> [!NOTE]
-> Uw mobiele app die gebruikmaakt van MSAL. iOS, MSAL. Voor Android-of MSAL.NET op Xamarin kunnen app-beveiligings beleid worden toegepast. Het beleid kan bijvoorbeeld voor komen dat een gebruiker beveiligde tekst kopieert. De mobiele app wordt [beheerd door intune](https://docs.microsoft.com/intune/app-sdk) en wordt door intune herkend als een beheerde app. De [intune app SDK](https://docs.microsoft.com/intune/app-sdk-get-started) is gescheiden van MSAL-bibliotheken en communiceert zelf met Azure AD.
+In sommige scenario's, zoals die voor voorwaardelijke toegang tot een apparaat-ID of een apparaatregistratie, moet een Broker op het apparaat worden geïnstalleerd. Voor beelden van makelaars zijn micro soft Bedrijfsportal op Android en Microsoft Authenticator op Android en iOS. MSAL kan nu communiceren met brokers. Zie voor meer informatie gebruikmaken [van makelaars op Android en IOS](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS).
 
 Zie voor meer informatie [mobiele app die web-api's aanroept](scenario-mobile-overview.md).
 
+> [!NOTE]
+> Uw mobiele app die gebruikmaakt van MSAL. iOS, MSAL. Voor Android-of MSAL.NET op Xamarin kunnen app-beveiligings beleid worden toegepast. Het beleid kan bijvoorbeeld voor komen dat een gebruiker beveiligde tekst kopieert. De mobiele app wordt beheerd door intune en wordt door intune herkend als een beheerde app. Zie [Microsoft intune app SDK Overview](https://docs.microsoft.com/intune/app-sdk)(Engelstalig) voor meer informatie.
+>
+> De [intune app SDK](https://docs.microsoft.com/intune/app-sdk-get-started) is gescheiden van MSAL-bibliotheken en communiceert zelf met Azure AD.
+
 ### <a name="a-protected-web-api"></a>Een beveiligde web-API
 
-U kunt het micro soft Identity platform-eind punt gebruiken om webservices te beveiligen, zoals de REST Web-API van uw app. Een beveiligde web-API wordt aangeroepen met een toegangs token om de gegevens van de API te beveiligen en inkomende aanvragen te verifiëren. De aanroeper van een web-API voegt een toegangs token toe in de autorisatie-header van een HTTP-aanvraag.
+U kunt het micro soft Identity platform-eind punt gebruiken om webservices te beveiligen, zoals de REST Web-API van uw app. Een beveiligde web-API wordt aangeroepen met behulp van een toegangs token. Het token beveiligt de gegevens van de API en voor het verifiëren van binnenkomende aanvragen. De aanroeper van een web-API voegt een toegangs token toe in de autorisatie-header van een HTTP-aanvraag.
 
 Als u uw ASP.NET of ASP.NET Core Web-API wilt beveiligen, moet u het toegangs token valideren. Voor deze validatie gebruikt u de ASP.NET JWT-middleware. De validatie wordt uitgevoerd door de [Identity model-uitbrei dingen voor de .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) -bibliotheek en niet door MSAL.net.
 
@@ -173,7 +178,7 @@ Zie [Protected Web API](scenario-protected-web-api-overview.md)(Engelstalig) voo
 
 ### <a name="a-web-api-calling-another-web-api-on-behalf-of-a-user"></a>Een web-API die namens een gebruiker een andere web-API aanroept
 
-Voor uw ASP.NET of ASP.NET Core beveiligde web-API om een andere web-API namens een gebruiker aan te roepen, moet uw app een token verkrijgen voor de downstream Web-API. Dit doet u door de [AcquireTokenOnBehalfOf](https://aka.ms/msal-net-on-behalf-of) -methode van de **ConfidentialClientApplication** -klasse aan te roepen. Dergelijke aanroepen worden ook wel service-naar-service-aanroepen genoemd. De Web-Api's die andere web-Api's aanroepen, moeten aangepaste cache-serialisatie bieden.
+Voor uw ASP.NET of ASP.NET Core beveiligde web-API om een andere web-API namens een gebruiker aan te roepen, moet uw app een token verkrijgen voor de downstream Web-API. Voor het verkrijgen van een token roept uw app de methode [AcquireTokenOnBehalfOf](https://aka.ms/msal-net-on-behalf-of) van de klasse **ConfidentialClientApplication** aan. Dergelijke aanroepen worden ook wel *service-naar-service* -aanroepen genoemd. De Web-Api's die andere web-Api's aanroepen, moeten aangepaste cache-serialisatie bieden.
 
   ![Een web-API waarmee een andere web-API wordt aangeroepen](media/scenarios/web-api.svg)
 
@@ -181,7 +186,7 @@ Zie [Web API voor het aanroepen van web-api's](scenario-web-api-call-api-overvie
 
 ### <a name="a-daemon-app-calling-a-web-api-in-the-daemons-name"></a>Een daemon-app die een web-API aanroept in de naam van de daemon
 
-Apps die langlopende processen hebben of die werken zonder tussen komst van de gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde web-Api's. Een dergelijke app kan tokens verifiëren en ophalen met behulp van de identiteit van de app in plaats van de gedelegeerde identiteit van een gebruiker. De app bewijst zijn identiteit door gebruik te maken van een client geheim of certificaat.
+Apps die langlopende processen hebben of die werken zonder tussen komst van de gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde web-Api's. Een dergelijke app kan tokens verifiëren en ophalen met behulp van de identiteit van de app. De app bewijst zijn identiteit door gebruik te maken van een client geheim of certificaat.
 
 U kunt dergelijke daemon-apps schrijven die een token voor de aanroepende app verkrijgen door gebruik te maken van de MSAL-methoden voor het ophalen van de [client referenties](https://aka.ms/msal-net-client-credentials) van de **ConfidentialClientApplication** -klasse. Deze methoden vereisen dat de aanroepende app een geheim heeft geregistreerd bij Azure AD. De App deelt het geheim vervolgens met de aangeroepen daemon. Voor beelden van dergelijke geheimen zijn toepassings wachtwoorden, certificaat bevestiging of client verklaringen.
 
@@ -191,7 +196,7 @@ Zie voor meer informatie [daemon-toepassing die web-api's aanroept](scenario-dae
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>Scenario's en ondersteunde verificatie stromen
 
-Scenario's met betrekking tot het verkrijgen van tokens zijn ook toegewezen aan OAuth 2,0-verificatie stromen, zoals wordt beschreven in [micro soft Identity platform-protocollen](active-directory-v2-protocols.md).
+Scenario's met betrekking tot het verkrijgen van tokens zijn ook toegewezen aan OAuth 2,0-verificatie stromen. Zie [OAuth 2,0 en OpenID Connect Connect protocollen op het micro soft Identity-platform](active-directory-v2-protocols.md)voor meer informatie.
 
 <table>
  <thead>
@@ -287,7 +292,10 @@ Micro soft-verificatie bibliotheken ondersteunen meerdere platforms:
 - Java
 - Python
 
-U kunt ook verschillende talen gebruiken om uw toepassingen te bouwen. Houd er rekening mee dat sommige toepassings typen niet op elk platform beschikbaar zijn.
+U kunt ook verschillende talen gebruiken om uw toepassingen te bouwen.
+
+> [!NOTE]
+> Sommige toepassings typen zijn niet beschikbaar op elk platform.
 
 In de kolom Windows van de volgende tabel wordt elke keer dat er .NET core wordt vermeld, .NET Framework ook mogelijk. Deze laatste wordt wegge laten om te voor komen dat de tabel onoverzichtelijk wordt.
 
@@ -299,9 +307,10 @@ In de kolom Windows van de volgende tabel wordt elke keer dat er .NET core wordt
 | [Desktop-app die web-API's aanroept](scenario-desktop-overview.md) <br/> <br/>[![bureau blad-app die web-api's aanroept](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![apparaatcode stroom](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python <br/> ![iOS/objectief C of SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc |
 | [Mobiele app die web-Api's aanroept](scenario-mobile-overview.md) <br/> [Mobiele app ![die web-Api's aanroept](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/objectief C of SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Android
 | [Daemon-app](scenario-daemon-overview.md) <br/> [![daemon-app](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
-| [Web-API die web-Api's aanroept](scenario-web-api-call-api-overview.md) <br/><br/> [![Web-API die web-Api's aanroept](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
+| [Web-API die web-API's aanroept](scenario-web-api-call-api-overview.md) <br/><br/> [![Web-API die web-Api's aanroept](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
 
-Zie ook [door micro soft ondersteunde bibliotheken per OS/taal](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language).
+Zie voor meer informatie [door micro soft ondersteunde bibliotheken per OS/taal](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language).
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de [basis principes van verificatie](authentication-scenarios.md) en [toegangs tokens](access-tokens.md).
+
+Meer informatie over de [basis principes van verificatie](authentication-scenarios.md) en [toegangs tokens voor micro soft Identity platform](access-tokens.md).

@@ -1,6 +1,6 @@
 ---
 title: Een Data Warehouse terugzetten vanuit een geo-back-up
-description: Instructies voor het geo-herstellen van een Azure SQL Data Warehouse.
+description: Instructies voor het geo-herstellen van een SQL-groep.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 69ba3ed981a27dfff41ea9ea52e1da769a9366c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 624c6665e70802907be8a41015b78d36cca7df1c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759615"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198336"
 ---
-# <a name="geo-restore-azure-sql-data-warehouse"></a>Geo-herstel Azure SQL Data Warehouse
+# <a name="geo-restore-for-sql-pool"></a>Geo-herstel voor SQL-groep
 
-In dit artikel leert u hoe u uw data warehouse kunt herstellen met behulp van een geo-back-up via Azure Portal en Power shell.
+In dit artikel leert u hoe u de SQL-groep kunt herstellen vanuit een geo-back-up via Azure Portal en Power shell.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Controleer de DTU-capaciteit.** Elk SQL Data Warehouse wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) met een standaard-DTU-quotum. Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
+**Controleer de DTU-capaciteit.** Elke SQL-groep wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) die een standaard DTU-quotum heeft. Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Herstellen vanuit een geografische regio van Azure via Power shell
 
@@ -74,20 +74,27 @@ De herstelde data base wordt TDE ingeschakeld als de bron database TDE is ingesc
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Herstellen vanuit een geografische regio van Azure via Azure Portal
 
-Volg de onderstaande stappen om een Azure SQL Data Warehouse van een geo-back-up te herstellen:
+Volg de onderstaande stappen om een SQL-groep te herstellen vanuit een geo-back-up:
 
 1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) -account.
-1. Klik op **+ een resource maken** en zoek naar SQL Data Warehouse en klik op **maken**.
+1. Klik op **+ een resource maken**. 
 
-    ![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Vul de gevraagde gegevens in op het tabblad **basis beginselen** en klik op **volgende: aanvullende instellingen**.
+![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-    ![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
-1. Selecteer voor het gebruik van de para meter **bestaande gegevens** **back-up** en selecteer de juiste back-up in de opties omlaag schuiven. Klik op **beoordeling + maken**.
+3. Klik op **data bases** en vervolgens * * Azure Synapse Analytics (voorheen SQL DW) * *.
+
+![Nieuwe DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+
+4. Vul de gevraagde gegevens in op het tabblad **basis beginselen** en klik op **volgende: aanvullende instellingen**.
+
+![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+
+5. Selecteer voor het gebruik van de para meter **bestaande gegevens** **back-up** en selecteer de juiste back-up in de opties omlaag schuiven. Klik op **beoordeling + maken**.
  
-   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
-2. Nadat het Data Warehouse is hersteld, controleert u of de **status** online is.
+![Back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+6. Nadat het Data Warehouse is hersteld, controleert u of de **status** online is.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een bestaand Data Warehouse herstellen](sql-data-warehouse-restore-active-paused-dw.md)
-- [Een verwijderd Data Warehouse herstellen](sql-data-warehouse-restore-deleted-dw.md)
+- [Een bestaande SQL-groep herstellen](sql-data-warehouse-restore-active-paused-dw.md)
+- [Een verwijderde SQL-groep herstellen](sql-data-warehouse-restore-deleted-dw.md)

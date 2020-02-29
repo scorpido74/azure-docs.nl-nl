@@ -2,20 +2,20 @@
 title: ClaimsTransformations-Azure Active Directory B2C | Microsoft Docs
 description: De definitie van het element ClaimsTransformations in het Framework met identiteits ervaring van Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66c94f08638895c85836fda37c3ae61f3857ee51
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836691"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189733"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ Als u de lijst met functies voor het transformeren van claims wilt opnemen die k
 
 Het **ClaimsTransformation** -element bevat de volgende kenmerken:
 
-| Kenmerk |Verplicht | Beschrijving |
+| Kenmerk |Vereist | Beschrijving |
 | --------- |-------- | ----------- |
 | Id |Ja | Een id die wordt gebruikt om de claim transformatie uniek te identificeren. Er wordt naar de id verwezen vanuit andere XML-elementen in het beleid. |
 | TransformationMethod | Ja | De transformatie methode die in de claim transformatie moet worden gebruikt. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
@@ -51,7 +51,7 @@ Het **ClaimsTransformation** -element bevat de volgende elementen:
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -62,7 +62,7 @@ Het **ClaimsTransformation** -element bevat de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Een lijst met **input claim** -elementen waarmee claim typen worden opgegeven die worden gebruikt als invoer voor de claims-trans formatie. Elk van deze elementen bevat een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
-| InputParameters | 0:1 | Een lijst met **input parameter** -elementen die als invoer voor de claim transformatie worden opgegeven.  
+| InputParameters | 0:1 | Een lijst met **input parameter** -elementen die als invoer voor de claim transformatie worden opgegeven.
 | OutputClaims | 0:1 | Een lijst met **output claim** -elementen die claim typen opgeven die worden geproduceerd nadat de ClaimsTransformation is aangeroepen. Elk van deze elementen bevat een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema. |
 
 ### <a name="inputclaims"></a>InputClaims
@@ -77,7 +77,7 @@ Het element **InputClaims** bevat het volgende element:
 
 Het **input claim** -element bevat de volgende kenmerken:
 
-| Kenmerk |Verplicht | Beschrijving |
+| Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
 | TransformationClaimType |Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
@@ -92,7 +92,7 @@ Het element **Input parameters** bevat het volgende element:
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Kenmerk | Verplicht |Beschrijving |
+| Kenmerk | Vereist |Beschrijving |
 | --------- | ----------- |----------- |
 | Id | Ja | Een id die een verwijzing is naar een para meter van de methode voor het transformeren van claims. Elke claim transformatie methode heeft zijn eigen waarden. Zie de tabel claim transformatie voor een volledige lijst van de beschik bare waarden. |
 | Gegevenstype | Ja | Het type gegevens van de para meter, zoals teken reeks, Booleaanse waarde, int of DateTime, zoals wordt bepaald door de opsomming van het gegevens type in het XML-schema van het aangepaste beleid. Dit type wordt gebruikt om reken kundige bewerkingen correct uit te voeren. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
@@ -106,15 +106,15 @@ Het element **OutputClaims** bevat het volgende element:
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Een verwacht type uitvoer claim. |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 Het **output claim** -element bevat de volgende kenmerken:
 
-| Kenmerk |Verplicht | Beschrijving |
+| Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid.
 | TransformationClaimType | Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
- 
+
 Als de invoer claim en de uitvoer claim van hetzelfde type (teken reeks of Booleaanse waarde) zijn, kunt u dezelfde invoer claim gebruiken als de uitvoer claim. In dit geval wijzigt de claim transformatie de invoer claim met de uitvoer waarde.
 
 ## <a name="example"></a>Voorbeeld
@@ -160,7 +160,7 @@ U kunt bijvoorbeeld de laatste versie van uw service voorwaarden opslaan die de 
 Voor voor beelden van claim transformaties raadpleegt u de volgende referentie pagina's:
 
 - [Boolean](boolean-transformations.md)
-- [datum](date-transformations.md)
+- [Vallen](date-transformations.md)
 - [Geheeltallige](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Algemeen](general-transformations.md)

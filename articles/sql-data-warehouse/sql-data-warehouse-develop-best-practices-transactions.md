@@ -1,6 +1,6 @@
 ---
 title: Trans acties optimaliseren
-description: Meer informatie over het optimaliseren van de prestaties van uw transactionele code in Azure SQL Data Warehouse en het minimaliseren van het risico op lange terugdraai acties.
+description: Meer informatie over het optimaliseren van de prestaties van uw transactionele code in SQL Analytics en het minimaliseren van het risico op lange terugdraai acties.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692858"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195835"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Trans acties in Azure SQL Data Warehouse optimaliseren
-Meer informatie over het optimaliseren van de prestaties van uw transactionele code in Azure SQL Data Warehouse en het minimaliseren van het risico op lange terugdraai acties.
+# <a name="optimizing-transactions-in-sql-analytics"></a>Trans acties in SQL Analytics optimaliseren
+Meer informatie over het optimaliseren van de prestaties van uw transactionele code in SQL Analytics en het minimaliseren van het risico op lange terugdraai acties.
 
 ## <a name="transactions-and-logging"></a>Trans acties en logboek registratie
-Trans acties vormen een belang rijk onderdeel van een relationele data base-engine. SQL Data Warehouse maakt gebruik van trans acties tijdens het wijzigen van de gegevens. Deze trans acties kunnen expliciet of impliciet zijn. Enkele INSERT-, UPDATE-en DELETE-instructies zijn alle voor beelden van impliciete trans acties. Expliciete trans acties gebruiken BEGIN TRAN, COMMIT TRAN of ROLLBACK TRAN. Expliciete trans acties worden meestal gebruikt wanneer meerdere wijzigings instructies samen in één atomische eenheid moeten worden gebonden. 
+Trans acties vormen een belang rijk onderdeel van een relationele data base-engine. SQL Analytics maakt gebruik van trans acties tijdens het wijzigen van gegevens. Deze trans acties kunnen expliciet of impliciet zijn. Enkele INSERT-, UPDATE-en DELETE-instructies zijn alle voor beelden van impliciete trans acties. Expliciete trans acties gebruiken BEGIN TRAN, COMMIT TRAN of ROLLBACK TRAN. Expliciete trans acties worden meestal gebruikt wanneer meerdere wijzigings instructies samen in één atomische eenheid moeten worden gebonden. 
 
-Azure SQL Data Warehouse wijzigingen door voeren in de data base met behulp van transactie Logboeken. Elke distributie heeft een eigen transactie logboek. Schrijf bewerkingen in transactie logboeken worden automatisch uitgevoerd. Er is geen configuratie vereist. Hoewel dit proces de schrijf bewerking echter waarborgt, wordt er een overhead in het systeem geïntroduceerd. U kunt dit effect minimaliseren door transactionele code te schrijven. Transactionele code is breed onderverdeeld in twee categorieën.
+SQL Analytics voert wijzigingen door in de data base met transactie Logboeken. Elke distributie heeft een eigen transactie logboek. Schrijf bewerkingen in transactie logboeken worden automatisch uitgevoerd. Er is geen configuratie vereist. Hoewel dit proces de schrijf bewerking echter waarborgt, wordt er een overhead in het systeem geïntroduceerd. U kunt dit effect minimaliseren door transactionele code te schrijven. Transactionele code is breed onderverdeeld in twee categorieën.
 
 * Gebruik minimale logboek registratie constructies, indien mogelijk
 * Gegevens verwerken met behulp van het bereik van batches om enkelvoudige langlopende trans acties te voor komen
@@ -44,7 +44,7 @@ De limieten voor de transactie beveiliging zijn alleen van toepassing op volledi
 De volgende bewerkingen kunnen mini maal worden geregistreerd:
 
 * CREATE TABLE als selecteren ([CTAS](sql-data-warehouse-develop-ctas.md))
-* INVOEGEN.. UITGESCHAKELD
+* INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
 * DROP INDEX
@@ -71,14 +71,14 @@ CTAS en invoegen... Selecteer beide bewerkingen voor bulksgewijs laden. Beide wo
 | Heap |Alle |**Minimale** |
 | Geclusterde index |Lege doel tabel |**Minimale** |
 | Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimale** |
-| Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |Volledig |
+| Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |waard |
 | Geclusterde column store-index |Batch grootte > = 102.400 per partitie, uitgelijnde distributie |**Minimale** |
-| Geclusterde column store-index |Batch grootte < 102.400 per partitie, uitgelijnde distributie |Volledig |
+| Geclusterde column store-index |Batch grootte < 102.400 per partitie, uitgelijnde distributie |waard |
 
 Het is een goed idee dat elke schrijf bewerking voor het bijwerken van secundaire of niet-geclusterde indexen altijd volledige geregistreerde bewerkingen is.
 
 > [!IMPORTANT]
-> SQL Data Warehouse heeft 60 distributies. Als alle rijen gelijkmatig worden gedistribueerd en gespreid over één partitie, moet uw batch dus 6.144.000 rijen bevatten of groter zijn om mini maal te worden aangemeld bij het schrijven naar een geclusterde column store-index. Als de tabel is gepartitioneerd en de rijen worden ingevoegd, worden de limieten voor 6.144.000 rijen per partitie in rekening gebracht, uitgaande van de gegevens distributie. Elke partitie in elke distributie moet onafhankelijk de drempel waarde voor de 102.400-rij overschrijden voor het invoegen om mini maal te worden aangemeld bij de distributie.
+> Een SQL Analytics-Data Base heeft 60 distributies. Als alle rijen gelijkmatig worden gedistribueerd en gespreid over één partitie, moet uw batch dus 6.144.000 rijen bevatten of groter zijn om mini maal te worden aangemeld bij het schrijven naar een geclusterde column store-index. Als de tabel is gepartitioneerd en de rijen worden ingevoegd, worden de limieten voor 6.144.000 rijen per partitie in rekening gebracht, uitgaande van de gegevens distributie. Elke partitie in elke distributie moet onafhankelijk de drempel waarde voor de 102.400-rij overschrijden voor het invoegen om mini maal te worden aangemeld bij de distributie.
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Het opnieuw maken van grote tabellen kan profiteren van het gebruik van SQL Data Warehouse werkbelasting beheer functies. Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md)voor meer informatie.
+> Het opnieuw maken van grote tabellen kan profiteren van het gebruik van functies voor het beheer van SQL Analytics-workloads. Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md)voor meer informatie.
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Richt lijnen voor onderbreken en schalen
-Met Azure SQL Data Warehouse kunt u uw data warehouse op aanvraag [onderbreken, hervatten en schalen](sql-data-warehouse-manage-compute-overview.md) . Wanneer u uw SQL Data Warehouse pauzeert of schaalt, is het belang rijk om te begrijpen dat alle trans acties in de vlucht onmiddellijk worden beëindigd. zorgt ervoor dat alle openstaande trans acties worden teruggedraaid. Als uw werk belasting een langlopende en onvolledige gegevens wijziging heeft ondergaan voordat de onderbreking of schaal bewerking wordt uitgevoerd, moet dit werk ongedaan worden gemaakt. Dit kan van invloed zijn op de tijd die nodig is om uw Azure SQL Data Warehouse-data base te onderbreken of te schalen. 
+Met SQL Analytics kunt u uw SQL-groep op aanvraag [onderbreken, hervatten en schalen](sql-data-warehouse-manage-compute-overview.md) . Wanneer u uw SQL-groep pauzeert of schaalt, is het belang rijk om te begrijpen dat alle trans acties in de vlucht onmiddellijk worden beëindigd. zorgt ervoor dat alle openstaande trans acties worden teruggedraaid. Als uw werk belasting een langlopende en onvolledige gegevens wijziging heeft ondergaan voordat de onderbreking of schaal bewerking wordt uitgevoerd, moet dit werk ongedaan worden gemaakt. Dit kan van invloed zijn op de tijd die nodig is om uw SQL-groep te onderbreken of te schalen. 
 
 > [!IMPORTANT]
 > Zowel `UPDATE` als `DELETE` zijn volledige geregistreerde bewerkingen, waardoor deze bewerkingen voor het ongedaan maken/opnieuw uitvoeren aanzienlijk langer duren dan de overeenkomstige minimale geregistreerde bewerkingen. 
 > 
 > 
 
-Het beste scenario is om trans acties voor het wijzigen van de vlucht gegevens te laten volt ooien voordat de SQL Data Warehouse worden onderbroken of geschaald. Dit scenario is echter mogelijk niet altijd praktisch. Als u het risico van een lange terugdraai actie wilt beperken, kunt u een van de volgende opties overwegen:
+Het beste scenario is om trans acties voor het wijzigen van de vlucht gegevens te laten volt ooien voordat de SQL-groep wordt onderbroken of geschaald. Dit scenario is echter mogelijk niet altijd praktisch. Als u het risico van een lange terugdraai actie wilt beperken, kunt u een van de volgende opties overwegen:
 
 * Langlopende bewerkingen opnieuw uitvoeren met [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 * De bewerking in segmenten opsplitsen. werken op een subset van de rijen
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [trans acties in SQL Data Warehouse](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatie niveaus en transactionele limieten.  Zie [SQL Data Warehouse aanbevolen procedures](sql-data-warehouse-best-practices.md)voor een overzicht van andere aanbevolen procedures.
+Bekijk [trans acties in SQL Analytics](sql-data-warehouse-develop-transactions.md) voor meer informatie over isolatie niveaus en transactionele limieten.  Zie [SQL Data Warehouse aanbevolen procedures](sql-data-warehouse-best-practices.md)voor een overzicht van andere aanbevolen procedures.
 

@@ -1,6 +1,6 @@
 ---
 title: Richt lijnen voor het ontwerpen van gedistribueerde tabellen
-description: Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Azure SQL Data Warehouse.
+description: Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049118"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199441"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen in Azure SQL Data Warehouse
-Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Azure SQL Data Warehouse.
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen in SQL Analytics
+Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in SQL Analytics.
 
-In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten voor gegevens distributie en gegevens verplaatsing in SQL Data Warehouse.  Zie de [architectuur van Azure SQL Data Warehouse-enorm parallelle verwerking (MPP)](massively-parallel-processing-mpp-architecture.md)voor meer informatie. 
+In dit artikel wordt ervan uitgegaan dat u bekend bent met de concepten van gegevens distributie en het verplaatsen van gegevens in SQL Analytics.  Zie [SQL Analytics-architectuur voor enorm parallelle verwerking (MPP)](massively-parallel-processing-mpp-architecture.md)voor meer informatie. 
 
 ## <a name="what-is-a-distributed-table"></a>Wat is een gedistribueerde tabel?
 Een gedistribueerde tabel wordt weer gegeven als één tabel, maar de rijen worden feitelijk opgeslagen in 60 distributies. De rijen worden gedistribueerd met een hash-of Round Robin-algoritme.  
@@ -34,7 +34,7 @@ Als onderdeel van het tabel ontwerp begrijpt u zoveel mogelijk informatie over u
 
 - Hoe groot is de tabel?   
 - Hoe vaak is de tabel vernieuwd?   
-- Heb ik feiten-en dimensie tabellen in een Data Warehouse?   
+- Heb ik feiten-en dimensie tabellen in een SQL Analytics-Data Base?   
 
 
 ### <a name="hash-distributed"></a>Hash gedistribueerd
@@ -42,7 +42,7 @@ Een hash-gedistribueerde tabel distribueert tabel rijen over de reken knooppunte
 
 ![Gedistribueerde tabel](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Gedistribueerde tabel")  
 
-Omdat identieke waarden altijd een hash naar dezelfde distributie hebben, heeft het Data Warehouse ingebouwde kennis van de maplocaties. SQL Data Warehouse gebruikt deze informatie om de verplaatsing van gegevens tijdens query's te minimaliseren, waardoor de query prestaties worden verbeterd. 
+Omdat identieke waarden altijd een hash naar dezelfde distributie hebben, heeft de SQL Analytics ingebouwde kennis van de maplocaties. SQL Analytics gebruikt deze kennis om de verplaatsing van gegevens tijdens query's te minimaliseren, waardoor de query prestaties worden verbeterd. 
 
 Hash-gedistribueerde tabellen werken goed voor grote feiten tabellen in een ster schema. Ze kunnen zeer grote aantallen rijen hebben en toch hoge prestaties bezorgen. Er zijn uiteraard enkele ontwerp overwegingen waarmee u de prestaties van het gedistribueerde systeem kunt bepalen. Het kiezen van een goede distributie kolom is een van deze overwegingen die in dit artikel wordt beschreven. 
 
@@ -65,7 +65,7 @@ Overweeg het gebruik van round-robin distributie voor uw tabel in de volgende sc
 - Als de samen voeging minder significant is dan andere samen voegingen in de query
 - Wanneer de tabel een tijdelijke faserings tabel is
 
-In de zelf studie [worden over taxi's gegevens van New York geladen in Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) een voor beeld van het laden van gegevens in een faserings tabel met Round Robin.
+De zelf studie [over taxi's gegevens van New York laden](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) biedt een voor beeld van het laden van gegevens in een Round Robin-faserings tabel in SQL Analytics.
 
 
 ## <a name="choosing-a-distribution-column"></a>Een distributie kolom kiezen
@@ -109,7 +109,7 @@ Als u de parallelle verwerking wilt verdelen, selecteert u een distributie kolom
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Kies een distributie kolom die de verplaatsing van gegevens minimaliseert
 
-Om de juiste query resultaat query's te verkrijgen, kunnen gegevens van het ene reken knooppunt naar het andere worden verplaatst. Gegevens verplaatsing gebeurt meestal wanneer query's samen voegingen en aggregaties hebben op gedistribueerde tabellen. Het kiezen van een distributie kolom die helpt bij het minimaliseren van gegevens verplaatsing is een van de belangrijkste strategieën voor het optimaliseren van de prestaties van uw SQL Data Warehouse.
+Om de juiste query resultaat query's te verkrijgen, kunnen gegevens van het ene reken knooppunt naar het andere worden verplaatst. Gegevens verplaatsing gebeurt meestal wanneer query's samen voegingen en aggregaties hebben op gedistribueerde tabellen. Het kiezen van een distributie kolom die helpt bij het minimaliseren van gegevens verplaatsing is een van de belangrijkste strategieën voor het optimaliseren van de prestaties van uw SQL Analytics-Data Base.
 
 Als u de verplaatsing van gegevens wilt minimaliseren, selecteert u een distributie kolom die:
 
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Als u een gedistribueerde tabel wilt maken, gebruikt u een van de volgende instructies:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE als selecteren (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

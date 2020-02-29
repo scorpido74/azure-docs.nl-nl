@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523268"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190786"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -463,7 +463,7 @@ De Azure Functions Core Tools ondersteunt twee typen implementaties: functie pro
 
 Een projectmap kan taalspecifieke bestanden en mappen bevatten die niet mogen worden gepubliceerd. Uitgesloten items worden weer gegeven in een. funcignore-bestand in de hoofdmap van het project.     
 
-### <a name="project-file-deployment"></a>Implementatie (project bestanden)
+### <a name="project-file-deployment"></a>Project bestanden implementeren
 
 Als u uw lokale code naar een functie-app in azure wilt publiceren, gebruikt u de opdracht `publish`:
 
@@ -500,7 +500,7 @@ De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 | **`--no-build`** | Maak geen .NET Class Library-functies. |
 | **`--dotnet-cli-params`** | Bij het publiceren C# van gecompileerde (. csproj)-functies roept de kern hulpprogramma's ' DotNet build--output bin/Publish ' aan. Alle para meters die aan dit worden door gegeven, worden toegevoegd aan de opdracht regel. |
 
-### <a name="deployment-custom-container"></a>Implementatie (aangepaste container)
+### <a name="deploy-custom-container"></a>Aangepaste container implementeren
 
 Met Azure Functions kunt u uw functie project implementeren in een [aangepaste docker-container](functions-deployment-technologies.md#docker-container). Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md)voor meer informatie. Aangepaste containers moeten een Dockerfile hebben. Als u een app met een Dockerfile wilt maken, gebruikt u de optie-Dockerfile op `func init`.
 

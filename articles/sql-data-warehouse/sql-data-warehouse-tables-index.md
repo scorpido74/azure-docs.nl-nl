@@ -1,6 +1,6 @@
 ---
 title: Tabellen indexeren
-description: Aanbevelingen en voor beelden voor het indexeren van tabellen in Azure SQL Data Warehouse.
+description: Aanbevelingen en voor beelden voor het indexeren van tabellen in SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685451"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196598"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>Tabellen indexeren in SQL Data Warehouse
+# <a name="indexing-tables-in-sql-analytics"></a>Tabellen indexeren in SQL Analytics
 
-Aanbevelingen en voor beelden voor het indexeren van tabellen in Azure SQL Data Warehouse.
+Aanbevelingen en voor beelden voor het indexeren van tabellen in SQL Analytics.
 
 ## <a name="index-types"></a>Indextypen
 
-SQL Data Warehouse biedt verschillende indexerings opties, waaronder [geclusterde column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), en een niet-index optie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)heet.  
+SQL Analytics biedt verschillende indexerings opties, waaronder [geclusterde column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), en een niet-index optie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)heet.  
 
-Zie de documentatie van [Create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) als u een tabel met een index wilt maken.
+Zie de documentatie van [Create Table (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) voor informatie over het maken van een tabel met een index.
 
 ## <a name="clustered-columnstore-indexes"></a>Geclusterde column Store-indexen
 
-SQL Data Warehouse maakt standaard een geclusterde column store-index wanneer er geen index opties zijn opgegeven in een tabel. Geclusterde column Store-tabellen bieden zowel het hoogste niveau van gegevens compressie als de beste algemene query prestaties.  Geclusterde column Store-tabellen leverde in het algemeen geclusterde index-of heap-tabellen en zijn doorgaans de beste keuze voor grote tabellen.  Om die reden is geclusterde column Store de beste plaats om te starten wanneer u niet zeker weet hoe u de tabel wilt indexeren.  
+SQL Analytics maakt standaard een geclusterde column store-index wanneer er geen index opties zijn opgegeven in een tabel. Geclusterde column Store-tabellen bieden zowel het hoogste niveau van gegevens compressie als de beste algemene query prestaties.  Geclusterde column Store-tabellen leverde in het algemeen geclusterde index-of heap-tabellen en zijn doorgaans de beste keuze voor grote tabellen.  Om die reden is geclusterde column Store de beste plaats om te starten wanneer u niet zeker weet hoe u de tabel wilt indexeren.  
 
 Als u een geclusterde column Store-tabel wilt maken, geeft u een geclusterde column Store-INDEX op in de WITH-component of verlaat u de WITH-component uit:
 
@@ -52,7 +52,7 @@ Er zijn enkele scenario's waarin geclusterde column Store mogelijk geen goede op
 
 ## <a name="heap-tables"></a>Heap-tabellen
 
-Wanneer u tijdelijk gegevens in SQL Data Warehouse hebt gelandd, is het mogelijk dat het proces met behulp van een heap-tabel sneller verloopt. Dit komt doordat het laden van heaps sneller is dan het indexeren van tabellen, en in sommige gevallen kan de volgende Lees bewerking vanuit de cache worden uitgevoerd.  Als u alleen gegevens laadt om deze te stageen voordat u meer trans formaties uitvoert, is het laden van de tabel naar de heap-tabel veel sneller dan het laden van de gegevens naar een geclusterde column Store-tabel. Daarnaast laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  
+Wanneer u tijdelijk gegevens in SQL Analytics hebt gelandd, is het mogelijk dat het hele proces wordt versneld met behulp van een heap-tabel. Dit komt doordat het laden van heaps sneller is dan het indexeren van tabellen, en in sommige gevallen kan de volgende Lees bewerking vanuit de cache worden uitgevoerd.  Als u alleen gegevens laadt om deze te stageen voordat u meer trans formaties uitvoert, is het laden van de tabel naar de heap-tabel veel sneller dan het laden van de gegevens naar een geclusterde column Store-tabel. Daarnaast laadt het laden van gegevens naar een [tijdelijke tabel](sql-data-warehouse-tables-temporary.md) sneller dan het laden van een tabel naar permanente opslag.  
 
 Voor kleine opzoek tabellen zijn er minder dan 60.000.000 rijen, vaak heap-tabellen duidelijk.  Cluster column Store-tabellen beginnen met het uitvoeren van optimale compressie wanneer er meer dan 60.000.000 rijen zijn.
 
@@ -190,7 +190,7 @@ Deze factoren kunnen ertoe leiden dat een column store-index aanzienlijk kleiner
 
 ### <a name="memory-pressure-when-index-was-built"></a>Geheugen druk wanneer de index is gemaakt
 
-Het aantal rijen per gecomprimeerde Rijg werk groep is direct gerelateerd aan de breedte van de rij en de hoeveelheid geheugen die beschikbaar is voor het verwerken van de Rijg groep.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  Daarom is het best practice de sessie te geven die naar uw column store-index tabellen wordt geschreven en zo veel mogelijk geheugen toegang tot.  Omdat er sprake is van een afweging tussen geheugen en gelijktijdigheid, is de richt lijn voor de juiste geheugen toewijzing afhankelijk van de gegevens in elke rij van de tabel, de Data Warehouse-eenheden die aan uw systeem zijn toegewezen en het aantal gelijktijdigheids sleuven dat u kunt geven aan de sessie die schrijft gegevens naar uw tabel.
+Het aantal rijen per gecomprimeerde Rijg werk groep is direct gerelateerd aan de breedte van de rij en de hoeveelheid geheugen die beschikbaar is voor het verwerken van de Rijg groep.  Wanneer rijen naar columnstore-tabellen worden geschreven onder geheugendruk, kan dit ten koste gaan van de kwaliteit van columnstore-segmenten.  Daarom is het best practice de sessie te geven die naar uw column store-index tabellen wordt geschreven en zo veel mogelijk geheugen toegang tot.  Omdat er sprake is van een afweging tussen geheugen en gelijktijdigheid, is de richt lijn voor de juiste geheugen toewijzing afhankelijk van de gegevens in elke rij van de tabel, de SQL Analytics-eenheden die aan uw systeem zijn toegewezen en het aantal gelijktijdigheids sleuven dat u kunt geven aan de sessie die gegevens naar uw tabel schrijven.
 
 ### <a name="high-volume-of-dml-operations"></a>Hoog volume aan DML-bewerkingen
 
@@ -204,13 +204,13 @@ Batch-update-en Insert-bewerkingen die de bulk drempel van 102.400 rijen per par
 
 ### <a name="small-or-trickle-load-operations"></a>Kleine of trickle laad bewerkingen
 
-Kleine belastingen die in SQL Data Warehouse stromen, worden ook wel trickle-belasting genoemd. Ze vertegenwoordigen meestal een nabije constante stroom van gegevens die door het systeem worden opgenomen. Omdat deze stroom bijna continu is, is de hoeveelheid rijen echter niet bijzonder groot. Vaker dan niet de gegevens zijn aanzienlijk onder de drempel waarde die is vereist voor het direct laden naar de column Store-indeling.
+Kleine belastingen die in SQL Analytics-data bases stromen, ook wel bekend als trickle-belasting. Ze vertegenwoordigen meestal een nabije constante stroom van gegevens die door het systeem worden opgenomen. Omdat deze stroom bijna continu is, is de hoeveelheid rijen echter niet bijzonder groot. Vaker dan niet de gegevens zijn aanzienlijk onder de drempel waarde die is vereist voor het direct laden naar de column Store-indeling.
 
 In deze situaties is het vaak beter om de gegevens eerst in Azure Blob-opslag in te voeren en deze te laten oplopen voordat ze worden geladen. Deze techniek wordt vaak wel *micro-batching*genoemd.
 
 ### <a name="too-many-partitions"></a>Te veel partities
 
-Een andere manier om rekening mee te houden is de impact van het partitioneren van de geclusterde column Store-tabellen.  Voordat u partitioneert SQL Data Warehouse worden uw gegevens al verdeeld in 60-data bases.  Door partities te partitioneren, worden uw gegevens verder verdeeld.  Als u uw gegevens partitioneert, moet u er rekening mee houden dat **elke** partitie ten minste 1.000.000 rijen nodig heeft om te profiteren van een geclusterde column store-index.  Als u een tabel in 100 partities partitioneert, moet uw tabel ten minste 6.000.000.000 rijen hebben om te profiteren van een geclusterde column store-index (60 distributies *100 partities* 1.000.000 rijen). Als uw 100-partitie tabel geen 6.000.000.000-rijen bevat, verlaagt u het aantal partities of kunt u in plaats daarvan een heap-tabel gebruiken.
+Een andere manier om rekening mee te houden is de impact van het partitioneren van de geclusterde column Store-tabellen.  Voordat u partitioneert, splitst SQL Analytics uw gegevens al in 60-data bases.  Door partities te partitioneren, worden uw gegevens verder verdeeld.  Als u uw gegevens partitioneert, moet u er rekening mee houden dat **elke** partitie ten minste 1.000.000 rijen nodig heeft om te profiteren van een geclusterde column store-index.  Als u een tabel in 100 partities partitioneert, moet uw tabel ten minste 6.000.000.000 rijen hebben om te profiteren van een geclusterde column store-index (60 distributies *100 partities* 1.000.000 rijen). Als uw 100-partitie tabel geen 6.000.000.000-rijen bevat, verlaagt u het aantal partities of kunt u in plaats daarvan een heap-tabel gebruiken.
 
 Als uw tabellen zijn geladen met enkele gegevens, volgt u de onderstaande stappen om tabellen te identificeren en opnieuw te maken met behulp van suboptimale geclusterde column Store-indexen.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Het opnieuw opbouwen van een index in SQL Data Warehouse is een offline bewerking.  Voor meer informatie over het opnieuw opbouwen van indexen raadpleegt u de sectie ALTER INDEX Rebuild in [Column Store-indexen defragmenteren](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)en [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
+Het opnieuw opbouwen van een index in SQL Analytics is een offline bewerking.  Voor meer informatie over het opnieuw opbouwen van indexen raadpleegt u de sectie ALTER INDEX Rebuild in [Column Store-indexen defragmenteren](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)en [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Stap 3: controleren of de kwaliteit van geclusterde column Store-segmenten is verbeterd
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Zie [using partitions in SQL Data Warehouse](sql-data-warehouse-tables-partition.md)voor meer informatie over het opnieuw maken van partities met behulp van CTAS.
+Zie [using partitions in SQL Analytics](sql-data-warehouse-tables-partition.md)voor meer informatie over het opnieuw maken van partities met behulp van CTAS.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,20 +3,20 @@ title: Een validatie technische profiel definiëren in een aangepast beleid
 titleSuffix: Azure AD B2C
 description: Valideer claims met behulp van een validatie technische profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950796"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185723"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische validatie profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -53,7 +53,7 @@ Het **ValidationTechnicalProfiles** -element bevat de volgende elementen:
 
 Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
 |ContinueOnError|Nee| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (standaard, verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
@@ -67,7 +67,7 @@ Het element **ValidationTechnicalProfile** bevat het volgende element:
 
 Het element **voor waarde** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. `ClaimsExist` is opgegeven om ervoor te zorgen dat er acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker, of `ClaimEquals` is opgegeven dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
 | `ExecuteActionsIf` | Ja | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |

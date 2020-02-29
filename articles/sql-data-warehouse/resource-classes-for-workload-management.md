@@ -1,30 +1,30 @@
 ---
 title: Resource klassen voor workload Management
-description: Richt lijnen voor het gebruik van resource klassen voor het beheren van gelijktijdigheid en reken resources voor query's in Azure SQL Data Warehouse.
+description: Richt lijnen voor het gebruik van resource klassen voor het beheren van gelijktijdigheids-en reken resources voor query's in azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548166"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195988"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Werkbelasting beheer met resource klassen in Azure SQL Data Warehouse
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Werkbelasting beheer met resource klassen in azure Synapse Analytics
 
-Richt lijnen voor het gebruik van resource klassen voor het beheren van geheugen en gelijktijdigheid van query's in uw Azure SQL Data Warehouse.  
+Richt lijnen voor het gebruik van resource klassen voor het beheren van geheugen en gelijktijdigheid voor SQL Analytics-query's in azure Synapse.  
 
 ## <a name="what-are-resource-classes"></a>Wat zijn resource klassen
 
-De prestatie capaciteit van een query wordt bepaald door de resource klasse van de gebruiker.  Resource klassen zijn vooraf bepaalde resource limieten in Azure SQL Data Warehouse die de reken resources en gelijktijdigheid bepalen voor het uitvoeren van query's. Resource klassen kunnen u helpen bij het configureren van resources voor uw query's door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de reken resources die zijn toegewezen aan elke query.  Er is sprake van een afweging tussen geheugen en gelijktijdigheid.
+De prestatie capaciteit van een query wordt bepaald door de resource klasse van de gebruiker.  Resource klassen zijn vooraf bepaalde resource limieten in SQL Analytics die de reken resources en gelijktijdigheid voor het uitvoeren van query's regelen. Resource klassen kunnen u helpen bij het configureren van resources voor uw query's door limieten in te stellen voor het aantal query's dat gelijktijdig wordt uitgevoerd en op de reken resources die zijn toegewezen aan elke query.  Er is sprake van een afweging tussen geheugen en gelijktijdigheid.
 
 - Kleinere resource klassen verminderen het maximale geheugen per query, maar verhogen gelijktijdigheid.
 - Grotere bron klassen verhogen het maximale geheugen per query, maar verminderen gelijktijdig.
@@ -67,14 +67,14 @@ De dynamische resource klassen worden geïmplementeerd met de volgende vooraf ge
 
 De geheugen toewijzing voor elke resource klasse is als volgt. 
 
-| Servicelaag  | smallrc           | mediumrc               | largerc                | xlargerc               |
+| Serviceniveau  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
 | DW200c         | 12,5%             | 12,5%                  | 22%                    | 70%                    |
-| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
-| DW400c         | 6,25%             | 10%                    | 22%                    | 70%                    |
-| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
-| DW1000c naar<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+| DW300c         | achtste                | 6                    | 22%                    | 70%                    |
+| DW400c         | 6,25%             | 6                    | 22%                    | 70%                    |
+| DW500c         | 20               | 6                    | 22%                    | 70%                    |
+| DW1000c naar<br> DW30000c | 3%       | 6                    | 22%                    | 70%                    |
 
 
 
@@ -82,7 +82,7 @@ De geheugen toewijzing voor elke resource klasse is als volgt.
 
 Standaard is elke gebruiker lid van de dynamische resource klasse **smallrc**.
 
-De resource klasse van de service beheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De service beheerder is de gebruiker die tijdens het inrichtings proces is gemaakt.  De service beheerder in deze context is de aanmeldings naam die is opgegeven voor de aanmelding van de server beheerder bij het maken van een nieuw SQL Data Warehouse-exemplaar met een nieuwe server.
+De resource klasse van de service beheerder is vastgesteld op smallrc en kan niet worden gewijzigd.  De service beheerder is de gebruiker die tijdens het inrichtings proces is gemaakt.  De service beheerder in deze context is de aanmeldings naam die is opgegeven voor de aanmelding van de server beheerder bij het maken van een nieuw exemplaar van SQL Analytics met een nieuwe server.
 
 > [!NOTE]
 > Gebruikers of groepen die als Active Directory beheerder zijn gedefinieerd, zijn ook service beheerders.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een Data Base beveiligen in SQL Data Warehouse](./sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [geheugen optimalisaties voor column Store-compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.
+Zie [een data base in SQL Analytics beveiligen](./sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [geheugen optimalisaties voor column Store-compressie](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.
 

@@ -1,28 +1,28 @@
 ---
 title: Installeer Visual Studio 2019
-description: Visual Studio en SQL Server Development Tools (SSDT) voor Azure SQL Data Warehouse installeren
+description: Visual Studio en SQL Server Development tools (SSDT) voor SQL Analytics installeren
 services: sql-data-warehouse
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 01/07/2020
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9ad0f4aedc5a095bfa70dec1b67e52cd4d152e0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750657"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195336"
 ---
-# <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Aan de slag met Visual Studio 2019 voor SQL Data Warehouse
+# <a name="getting-started-with-visual-studio-2019"></a>Aan de slag met Visual Studio 2019
 Visual Studio **2019** SQL Server Data tools (SSDT) is één hulp programma waarmee u het volgende kunt doen:
 
-- Toepassingen voor SQL Data Warehouse verbinden, query's uitvoeren en ontwikkelen 
+- Toepassingen verbinden, query's uitvoeren en ontwikkelen
 - Maak gebruik van een object Verkenner om alle objecten in uw gegevens model visueel te verkennen, met inbegrip van tabellen, weer gaven, opgeslagen procedures en etc.
 - Een DDL-script (T-SQL Data Definition Language) voor uw objecten genereren
 - Ontwikkel uw data warehouse met behulp van een op status gebaseerde benadering met SSDT-database projecten
@@ -34,7 +34,7 @@ Zie [Down load Visual Studio 2019][] om visual studio **16,3 en hoger**te downlo
 
 ## <a name="unsupported-features-in-ssdt"></a>Niet-ondersteunde functies in SSDT
 
-Er zijn momenten waarop functie releases voor SQL Data Warehouse mogelijk geen ondersteuning voor SSDT bevatten. De volgende functies worden momenteel niet ondersteund:
+De functie releases voor SQL Analytics bevatten mogelijk geen ondersteuning voor SSDT. De volgende functies worden momenteel niet ondersteund:
 
 - [Gerealiseerde weer gaven](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (wordt uitgevoerd)
 - [Geordende geclusterde column Store-indexen](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (wordt uitgevoerd)
@@ -49,16 +49,18 @@ Er zijn momenten waarop functie releases voor SQL Data Warehouse mogelijk geen o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de nieuwste versie van SSDT hebt, bent u klaar om [verbinding te maken][connect] met uw SQL Data Warehouse.
+Nu u de nieuwste versie van SSDT hebt, bent u klaar om [verbinding te maken][connect] met uw SQL-groep.
 
 <!--Anchors-->
 
 <!--Image references-->
 
 <!--Articles-->
+
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
+
 [Down load Visual Studio 2019]: https://visualstudio.microsoft.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx

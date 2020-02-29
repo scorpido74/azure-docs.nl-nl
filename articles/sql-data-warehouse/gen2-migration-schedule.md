@@ -1,6 +1,6 @@
 ---
-title: Uw data warehouse migreren naar Gen2
-description: Instructies voor het migreren van een bestaande Data Warehouse naar Gen2 en de migratie planning per regio.
+title: Uw SQL-groep migreren naar Gen2
+description: Instructies voor het migreren van een bestaande SQL-groep naar Gen2 en de migratie planning per regio.
 services: sql-data-warehouse
 author: mlee3gsd
 ms.author: anjangsh
@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 01/21/2020
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 00180c1791e765240f3f8feac188b9250162408e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314773"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199900"
 ---
-# <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade uw data warehouse naar Gen2
+# <a name="upgrade-your-sql-pool-to-gen2"></a>Uw SQL-groep upgraden naar Gen2
 
-Micro soft helpt u bij het aansturen van de kosten op instap niveau van het uitvoeren van een Data Warehouse.  Er zijn Azure SQL Data Warehouse nu lagere reken lagen mogelijk waarmee veeleisende query's kunnen worden verwerkt. Lees de volledige aankondiging [ondersteuning voor de compute-laag voor Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). De nieuwe aanbieding is beschikbaar in de regio's die in de onderstaande tabel worden vermeld. Voor ondersteunde regio's kunnen bestaande gen1-data warehouses worden bijgewerkt naar Gen2 via een van de volgende opties:
+Micro soft helpt bij het verminderen van de kosten op instap niveau van het uitvoeren van een SQL-groep.  Er zijn nu lagere reken lagen mogelijk waarmee veeleisende query's kunnen worden verwerkt. Lees de volledige aankondiging [ondersteuning voor de compute-laag voor Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). De nieuwe aanbieding is beschikbaar in de regio's die in de onderstaande tabel worden vermeld. Voor ondersteunde regio's kunnen bestaande gen1-SQL-groepen worden bijgewerkt naar Gen2 via een van de volgende opties:
 
-- **Het automatische upgrade proces:** Automatische upgrades worden niet gestart zodra de service beschikbaar is in een regio.  Wanneer automatische upgrades worden gestart in een bepaalde regio, worden er afzonderlijke DW-upgrades uitgevoerd tijdens de geselecteerde onderhouds planning.
+- **Het automatische upgrade proces:** Automatische upgrades worden niet gestart zodra de service beschikbaar is in een regio.  Wanneer automatische upgrades in een bepaalde regio worden gestart, worden er tijdens de geselecteerde onderhouds planning afzonderlijke Data Warehouse-upgrades uitgevoerd.
 - [**Zelf upgrade naar Gen2:** ](#self-upgrade-to-gen2) U kunt bepalen wanneer u een upgrade uitvoert door een self-upgrade uit te voeren naar Gen2. Als uw regio nog niet wordt ondersteund, kunt u vanaf een herstel punt rechtstreeks naar een Gen2-exemplaar in een ondersteunde regio herstellen.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Tabel met Beschik baarheid van automatische planning en regio
@@ -33,8 +33,8 @@ De volgende tabel bevat een overzicht van de regio's wanneer de lagere Gen2-Comp
 
 | **Regio** | **Minder Gen2 beschikbaar** | **Begin van automatische upgrades** |
 |:--- |:--- |:--- |
-| Canada-Oost |1 juni 2020 |1 juli 2020 |
-| China - oost |\* |\* |
+| Canada - oost |1 juni 2020 |1 juli 2020 |
+| China East |\* |\* |
 | China - noord |\* |\* |
 | Duitsland - centraal |\* |\* |
 | Duitsland - west-centraal |Beschikbaar |1 mei 2020 |
@@ -42,9 +42,9 @@ De volgende tabel bevat een overzicht van de regio's wanneer de lagere Gen2-Comp
 
 ## <a name="automatic-upgrade-process"></a>Automatisch upgrade proces
 
-Op basis van de bovenstaande beschikbaarheids grafiek worden automatische upgrades gepland voor uw gen1-instanties. Om onverwachte onderbrekingen van de beschik baarheid van het Data Warehouse te voor komen, worden de geautomatiseerde upgrades gepland tijdens de onderhouds planning. De mogelijkheid om een nieuw gen1-exemplaar te maken wordt uitgeschakeld in regio's die automatisch worden bijgewerkt naar Gen2. Gen1 wordt afgeschaft zodra de automatische upgrades zijn voltooid. Zie [een onderhouds planning weer geven](viewing-maintenance-schedule.md) voor meer informatie over planningen
+Op basis van de bovenstaande beschikbaarheids grafiek worden automatische upgrades gepland voor uw gen1-instanties. Om onverwachte onderbrekingen voor de beschik baarheid van de SQL-groep te voor komen, worden de automatische upgrades gepland tijdens de onderhouds planning. De mogelijkheid om een nieuw gen1-exemplaar te maken wordt uitgeschakeld in regio's die automatisch worden bijgewerkt naar Gen2. Gen1 wordt afgeschaft zodra de automatische upgrades zijn voltooid. Zie [een onderhouds planning weer geven](viewing-maintenance-schedule.md) voor meer informatie over planningen
 
-Bij het upgrade proces geldt een korte daling van de connectiviteit (ongeveer 5 min.) wanneer uw data warehouse opnieuw wordt gestart.  Zodra uw data warehouse opnieuw is opgestart, is het volledig beschikbaar voor gebruik. Het is echter mogelijk dat de prestaties worden verminderd terwijl het upgrade proces de gegevens bestanden op de achtergrond bijwerkt. De totale tijdsduur voor afnemende prestaties is afhankelijk van de grootte van uw gegevensbestanden.
+Bij het upgrade proces geldt een korte daling van de connectiviteit (ongeveer 5 min.) wanneer de SQL-groep opnieuw wordt gestart.  Zodra de SQL-groep opnieuw is opgestart, is deze volledig beschikbaar voor gebruik. Het is echter mogelijk dat de prestaties worden verminderd terwijl het upgrade proces de gegevens bestanden op de achtergrond bijwerkt. De totale tijdsduur voor afnemende prestaties is afhankelijk van de grootte van uw gegevensbestanden.
 
 U kunt het upgrade proces van het gegevens bestand ook versnellen door [ALTER index Rebuild](sql-data-warehouse-tables-index.md) op alle primaire column Store-tabellen uit te voeren met een grotere SLO en resource klasse nadat de computer opnieuw is opgestart.
 
@@ -53,14 +53,14 @@ U kunt het upgrade proces van het gegevens bestand ook versnellen door [ALTER in
 
 ## <a name="self-upgrade-to-gen2"></a>Zelf upgrade naar Gen2
 
-U kunt zelf een upgrade uitvoeren door de volgende stappen uit te voeren op een bestaand gen1-Data Warehouse. Als u zelf een upgrade wilt uitvoeren, moet u deze volt ooien voordat het automatische upgrade proces in uw regio wordt gestart. Dit zorgt ervoor dat u elk risico op de automatische upgrades voor komt dat een conflict veroorzaakt.
+U kunt zelf een upgrade uitvoeren door de volgende stappen uit te voeren op een bestaande gen1-SQL-groep. Als u zelf een upgrade wilt uitvoeren, moet u deze volt ooien voordat het automatische upgrade proces in uw regio wordt gestart. Dit zorgt ervoor dat u elk risico op de automatische upgrades voor komt dat een conflict veroorzaakt.
 
-Er zijn twee opties voor het uitvoeren van een self-upgrade.  U kunt uw huidige Data Warehouse op locatie bijwerken of u kunt een gen1-Data Warehouse herstellen in een Gen2-exemplaar.
+Er zijn twee opties voor het uitvoeren van een self-upgrade.  U kunt de huidige SQL-groep in-place upgraden of u kunt een gen1-SQL-groep herstellen in een Gen2-exemplaar.
 
-- [In-place upgrade uitvoeren](upgrade-to-latest-generation.md) : met deze optie wordt uw bestaande gen1-Data Warehouse bijgewerkt naar Gen2. Bij het upgrade proces geldt een korte daling van de connectiviteit (ongeveer 5 min.) wanneer uw data warehouse opnieuw wordt gestart.  Zodra uw data warehouse opnieuw is opgestart, is het volledig beschikbaar voor gebruik. Als u problemen ondervindt tijdens de upgrade, opent u een [ondersteunings aanvraag](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) en raadpleegt u de mogelijke oorzaak van de Gen2-upgrade.
-- [Upgrade van herstel punt](sql-data-warehouse-restore.md) : Maak een door de gebruiker gedefinieerd herstel punt op het huidige gen1-Data Warehouse en herstel het vervolgens rechtstreeks naar een Gen2-exemplaar. Het bestaande gen1-Data Warehouse blijft aanwezig. Nadat het herstel is voltooid, is uw Gen2-Data Warehouse volledig beschikbaar voor gebruik.  Wanneer u alle test-en validatie processen op het teruggezette Gen2-exemplaar hebt uitgevoerd, kan de oorspronkelijke gen1-instantie worden verwijderd.
+- [In-place upgrade uitvoeren](upgrade-to-latest-generation.md) : met deze optie wordt uw bestaande gen1 SQL-groep bijgewerkt naar Gen2. Bij het upgrade proces geldt een korte daling van de connectiviteit (ongeveer 5 min.) wanneer de SQL-groep opnieuw wordt gestart.  Zodra de SQL-groep opnieuw is opgestart, is deze volledig beschikbaar voor gebruik. Als u problemen ondervindt tijdens de upgrade, opent u een [ondersteunings aanvraag](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) en raadpleegt u de mogelijke oorzaak van de Gen2-upgrade.
+- [Upgrade van herstel punt](sql-data-warehouse-restore.md) : Maak een door de gebruiker gedefinieerd herstel punt op uw huidige gen1 SQL-groep en herstel vervolgens rechtstreeks naar een Gen2-exemplaar. De bestaande gen1 SQL-groep blijft aanwezig. Als de herstel bewerking is voltooid, is uw Gen2 SQL-groep volledig beschikbaar voor gebruik.  Wanneer u alle test-en validatie processen op het teruggezette Gen2-exemplaar hebt uitgevoerd, kan de oorspronkelijke gen1-instantie worden verwijderd.
 
-   - Stap 1: Maak vanuit het Azure Portal [een door de gebruiker gedefinieerd herstel punt](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
+   - Stap 1: Maak vanuit het Azure Portal [een door de gebruiker gedefinieerd herstel punt](sql-data-warehouse-restore-active-paused-dw.md).
    - Stap 2: Stel bij het herstellen van een door de gebruiker gedefinieerd herstel punt het prestatie niveau in op de Gen2-laag van uw voor keur.
 
 Er kan tijdelijk sprake zijn van verminderde prestaties terwijl het upgradeproces de gegevensbestanden op de achtergrond blijft bijwerken. De totale tijdsduur voor afnemende prestaties is afhankelijk van de grootte van uw gegevensbestanden.
@@ -70,7 +70,7 @@ Als u het migratie proces op de achtergrond wilt versnellen, kunt u de gegevens 
 > [!NOTE]
 > Alter index Rebuild is een offline bewerking en de tabellen zijn pas beschikbaar als het opnieuw opbouwen is voltooid.
 
-Als u problemen ondervindt met uw data warehouse, maakt u een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
+Als u problemen ondervindt met uw SQL-groep, maakt u een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
 
 Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 
@@ -87,12 +87,12 @@ Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 **V: hoe lang duurt een automatische upgrade?**
 
 - A: u kunt een upgrade uitvoeren op de locatie of een upgrade uitvoeren vanaf een herstel punt.  
-   - Als u een upgrade op locatie uitvoert, wordt het Data Warehouse tijdelijk onderbroken en hervat.  Er wordt een achtergrond proces voortgezet terwijl het Data Warehouse online is.  
+   - Als u een upgrade uitvoert, wordt de SQL-groep tijdelijk onderbroken en hervat.  Er wordt een achtergrond proces voortgezet terwijl de SQL-groep online is.  
    - Het duurt langer als u een upgrade uitvoert via een herstel punt, omdat de upgrade wordt uitgevoerd door het volledige herstel proces.
 
 **V: Hoelang duurt de automatische upgrade?**
 
-- A: de daad werkelijke downtime voor de upgrade is alleen de tijd die nodig is om de service te onderbreken en te hervatten. Dit ligt tussen 5 en tien minuten. Na een korte downtime wordt er op de achtergrond een opslagmigratie uitgevoerd. De tijdsduur voor dit achtergrondproces is afhankelijk van de grootte van uw datawarehouse.
+- A: de daad werkelijke downtime voor de upgrade is alleen de tijd die nodig is om de service te onderbreken en te hervatten. Dit ligt tussen 5 en tien minuten. Na een korte downtime wordt er op de achtergrond een opslagmigratie uitgevoerd. De tijds duur voor het achtergrond proces is afhankelijk van de grootte van uw SQL-groep.
 
 **V: wanneer wordt deze automatische upgrade uitgevoerd?**
 
@@ -106,7 +106,7 @@ Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 - A: als u een DW600 of DW1200 uitvoert op gen1, is het raadzaam DW500c of DW1000c te gebruiken, omdat Gen2 meer geheugen, meer bronnen en hogere prestaties biedt dan gen1.
 
 **V: kan ik geo-backup uitschakelen?**
-- A: Nee. Geo-Backup is een Enter prise-functie waarmee u de beschik baarheid van uw data warehouse kunt bewaren in het geval dat een regio niet meer beschikbaar is. Open een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) als u nog meer problemen hebt.
+- A: Nee. Geo-back-up is een bedrijfs functie waarmee de beschik baarheid van uw SQL-groep wordt behouden in het geval dat een regio niet meer beschikbaar is. Open een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) als u nog meer problemen hebt.
 
 **V: is er een verschil in T-SQL-syntaxis tussen gen1 en Gen2?**
 
@@ -128,5 +128,5 @@ Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 - [Controleren voordat u een migratie start](upgrade-to-latest-generation.md#before-you-begin)
 - [Upgrade in-place en upgrade vanaf een herstel punt](upgrade-to-latest-generation.md)
 - [Een door de gebruiker gedefinieerd herstel punt maken](sql-data-warehouse-restore-points.md)
-- [Meer informatie over het herstellen naar Gen2](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
+- [Meer informatie over het herstellen naar Gen2](sql-data-warehouse-restore-active-paused-dw.md)
 - [Een ondersteunings aanvraag voor SQL Data Warehouse openen](https://go.microsoft.com/fwlink/?linkid=857950)

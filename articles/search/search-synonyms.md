@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/28/2020
+ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794229"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194339"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synoniemen in azure Cognitive Search
 
@@ -45,7 +45,7 @@ U kunt meerdere synoniemen kaarten maken voor uw zoek toepassing (bijvoorbeeld o
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Een synoniemen kaart onder uw service toevoegen of bijwerken met behulp van POST of PUT.
 
-Synoniemen worden geüpload naar de service via POST of PUT. Elke regel moet worden gescheiden door het nieuwe regel teken (' \n '). U kunt Maxi maal 5.000 regels per synoniem toewijzing definiëren in een gratis service-en 10.000-regel in alle andere Sku's. Elke regel kan Maxi maal 20 uitbrei dingen hebben.
+Synoniemen worden geüpload naar de service via POST of PUT. Elke regel moet worden gescheiden door het nieuwe regel teken (' \n '). U kunt Maxi maal 5.000 regels per synoniem toewijzen in een gratis service en 20.000 regels per kaart in alle andere Sku's. Elke regel kan Maxi maal 20 uitbrei dingen hebben.
 
 Synoniemen moeten de Apache solr-indeling hebben die hieronder wordt uitgelegd. Als u een bestaande synoniemen lijst in een andere indeling hebt en deze rechtstreeks wilt gebruiken, laat het ons dan weten op [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
@@ -152,7 +152,7 @@ De functie synoniem is van toepassing op zoek query's en is niet van toepassing 
 
 Synoniemen uitbreidingen zijn niet van toepassing op zoek termen met Joker tekens. voor waarden voor voor voegsels, fuzzy en regex worden niet uitgevouwen.
 
-Als u één query wilt uitvoeren die synoniemen uitbrei ding en Joker teken, regex of fuzzy zoek acties uitvoert, kunt u de query's combi neren met behulp van de of-syntaxis. Als u bijvoorbeeld synoniemen met Joker tekens wilt combi neren voor eenvoudige query syntaxis, wordt de term `<query> | <query>*`.
+Als u één query wilt uitvoeren die synoniemen uitbrei ding en Joker teken, regex of fuzzy zoek acties uitvoert, kunt u de query's combi neren met behulp van de of-syntaxis. Als u bijvoorbeeld synoniemen met Joker tekens wilt combi neren voor een eenvoudige query syntaxis, wordt de term `<query> | <query>*`.
 
 Als u een bestaande index in een ontwikkelings omgeving (niet-productie) hebt, kunt u experimenteren met een kleine woorden lijst om te zien hoe het toevoegen van synoniemen de zoek ervaring wijzigt, met inbegrip van de impact op Score profielen, het markeren van treffers en suggesties.
 

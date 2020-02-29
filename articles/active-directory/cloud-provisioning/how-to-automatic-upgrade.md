@@ -15,16 +15,16 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3786386f75f4b85fe89562254eab63471de6cb2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549394"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190310"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect Cloud-inrichtings agent: automatische upgrade
 
-Zorg ervoor dat uw Azure Active Directory (Azure AD) Connect-installatie van de Cloud-inrichtings agent altijd up-to-date is met de functie voor automatische upgrades. Deze functie is standaard ingeschakeld en kan niet worden uitgeschakeld.
+Zorg ervoor dat uw Azure Active Directory (Azure AD) Connect-installatie van de Cloud-inrichtings agent altijd up-to-date is met de functie voor automatische upgrades.
 
 De agent wordt hier geïnstalleerd: ' Program files\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe '
 
@@ -38,7 +38,7 @@ Als u uw versie wilt controleren, klikt u met de rechter muisknop op het uitvoer
 
 ![Versie van agent updater](media/how-to-automatic-upgrade/agent2.png)
 
-## <a name="uninstall-the-agent"></a>Agent verwijderen
+## <a name="uninstall-the-agent"></a>De agent verwijderen
 Als u de agent wilt verwijderen, gaat u naar **een programma verwijderen of wijzigen** en verwijdert u het volgende:
 
 - **Updater Microsoft Azure AD-agent**

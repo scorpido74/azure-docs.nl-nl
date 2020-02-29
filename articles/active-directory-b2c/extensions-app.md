@@ -2,20 +2,20 @@
 title: Extensie-app in Azure Active Directory B2C | Microsoft Docs
 description: De B2C-extensies-app worden hersteld.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/06/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5d38d8d791c6b932d8a28a898f2e2b80caff7ac
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 547b625996a65999c32c1b73699e3b408be01de3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846963"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188593"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: extensies-app
 
@@ -36,7 +36,7 @@ Controleren of de B2C-extensies-app aanwezig is:
 
 Als u de B2C-uitbrei dingen per ongeluk hebt verwijderd, hebt u 30 dagen om de app te herstellen. U kunt de app herstellen met behulp van de Graph API:
 
-1. Blader naar [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+1. Ga naar [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
 1. Meld u aan bij de site als globale beheerder voor de Azure AD B2C directory waarvan u de verwijderde app wilt herstellen. Deze globale beheerder moet een e-mail adres hebben dat lijkt op het volgende: `username@{yourTenant}.onmicrosoft.com`.
 1. Geef een HTTP-GET op voor de URL `https://graph.windows.net/myorganization/deletedApplications` met API-Version = 1.6. Met deze bewerking worden alle toepassingen weer geven die in de afgelopen 30 dagen zijn verwijderd.
 1. Zoek de toepassing in de lijst waarin de naam begint met ' B2C-extension-app ' en kopieer de `objectid` eigenschaps waarde.

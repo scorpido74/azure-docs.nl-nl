@@ -3,20 +3,20 @@ title: Voor beelden van teken reeksen voor claim transformatie voor aangepaste b
 titleSuffix: Azure AD B2C
 description: String-voor beelden van claim transformatie voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585727"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183700"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -363,7 +363,7 @@ Gebruik deze claim transformatie om een wille keurige teken reeks te Format tere
 - Uitvoer claims:
     - **output claim**: Joe Fernando
 
-## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
 Hiermee worden gelokaliseerde teken reeksen naar claims gekopieerd.
 
@@ -428,9 +428,9 @@ De claim transformatie stelt de waarde van het claim type *onderwerp* in met de 
 
 - Uitvoer claims:
   - **onderwerp**: e-mail verificatie code van Contoso-account
-  - **bericht**: Bedankt voor het verifiëren van je account. 
-  - **codeIntro**: uw code is 
-  - **hand tekening**: met vriendelijke groet  
+  - **bericht**: Bedankt voor het verifiëren van je account.
+  - **codeIntro**: uw code is
+  - **hand tekening**: met vriendelijke groet
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -618,7 +618,7 @@ Hiermee wordt gecontroleerd of een teken reeks claim `claimToMatch` en `matchTo`
 | OutputClaim | outputClaim | tekenreeks | Als de reguliere expressie overeenkomt, bevat deze uitvoer claim de waarde van `outputClaimIfMatched` invoer parameter. Of null, als deze niet overeenkomt. |
 | OutputClaim | regexCompareResultClaim | booleaans | De reguliere expressie komt overeen met het resultaat type van de uitvoer van resultaten, dat moet worden ingesteld als `true` of `false` op basis van het resultaat van de overeenkomst. |
 
-Controleert bijvoorbeeld of het gegeven telefoon nummer geldig is, op basis van reguliere-expressie patroon voor telefoon nummer.  
+Controleert bijvoorbeeld of het gegeven telefoon nummer geldig is, op basis van reguliere-expressie patroon voor telefoon nummer.
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -755,7 +755,7 @@ Bepalen of een opgegeven subtekenreeks in de invoer claim voor komt. Het resulta
 Gebruik deze claim transformatie om te controleren of een teken reeks claim type een subtekenreeks bevat. In het volgende voor beeld wordt gecontroleerd of het `roles` type teken reeks claim de waarde **beheerder**bevat.
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -765,7 +765,7 @@ Gebruik deze claim transformatie om te controleren of een teken reeks claim type
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -777,7 +777,7 @@ Gebruik deze claim transformatie om te controleren of een teken reeks claim type
     - **bevat**: "beheerder"
     - **ignoreCase**: True
 - Uitvoer claims:
-    - **output claim**: True 
+    - **output claim**: True
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -790,7 +790,7 @@ Haalt delen van een teken reeks claim type op, beginnend bij het teken op de opg
 | InputParameter | length | int | Het aantal tekens in de subtekenreeks. |
 | OutputClaim | outputClaim | booleaans | Een teken reeks die overeenkomt met de subtekenreeks van length die begint bij start index in dit exemplaar, of leeg als start index gelijk is aan de lengte van deze instantie en de lengte nul is. |
 
-U kunt bijvoorbeeld het land voorvoegsel telefoon nummer ophalen.  
+U kunt bijvoorbeeld het land voorvoegsel telefoon nummer ophalen.
 
 
 ```XML
@@ -828,7 +828,7 @@ Zoekt een claim type teken reeks voor een opgegeven waarde en retourneert een ni
 | InputParameter | newValue | tekenreeks | De teken reeks om alle exemplaren van `oldValue` te vervangen |
 | OutputClaim | outputClaim | booleaans | Een teken reeks die overeenkomt met de huidige teken reeks, behalve dat alle exemplaren van oldValue worden vervangen door newValue. Als oldValue niet wordt gevonden in het huidige exemplaar, retourneert de methode het huidige exemplaar ongewijzigd. |
 
-U kunt bijvoorbeeld een telefoon nummer normaliseren door de `-` tekens te verwijderen  
+U kunt bijvoorbeeld een telefoon nummer normaliseren door de `-` tekens te verwijderen
 
 
 ```XML
@@ -864,7 +864,7 @@ Voegt de elementen van een opgegeven type teken reeks verzamelings claim toe met
 | InputClaim | inputClaim | stringCollection | Een verzameling die de teken reeksen bevat die u wilt samen voegen. |
 | InputParameter | vorm | tekenreeks | De teken reeks die als schei ding moet worden gebruikt, zoals een komma `,`. |
 | OutputClaim | outputClaim | tekenreeks | Een teken reeks die bestaat uit de leden van de teken reeks verzameling `inputClaim`, gescheiden door de invoer parameter `delimiter`. |
-  
+
 In het volgende voor beeld wordt een teken reeks verzameling van gebruikers rollen gebruikt en wordt deze geconverteerd naar een komma als scheidings teken reeks. U kunt deze methode gebruiken om een teken reeks verzameling op te slaan in een Azure AD-gebruikers account. Wanneer u later het account uit de map leest, gebruikt u de `StringSplit` om de teken reeks van het komma scheidings punt terug te converteren naar de teken reeks verzameling.
 
 ```XML
@@ -900,7 +900,7 @@ Retourneert een teken reeks matrix die de subtekenreeksen in dit exemplaar bevat
 | InputClaim | inputClaim | tekenreeks | Een type teken reeks claim dat de subtekenreeksen bevat die moeten worden gesplitst. |
 | InputParameter | vorm | tekenreeks | De teken reeks die als schei ding moet worden gebruikt, zoals een komma `,`. |
 | OutputClaim | outputClaim | stringCollection | Een teken reeks verzameling waarvan de elementen de subtekenreeksen in deze teken reeks bevatten die worden gescheiden door de `delimiter` invoer parameter. |
-  
+
 In het volgende voor beeld wordt een teken reeks met scheidings tekens van gebruikers rollen gebruikt en geconverteerd naar een teken reeks verzameling.
 
 ```XML
@@ -925,7 +925,7 @@ In het volgende voor beeld wordt een teken reeks met scheidings tekens van gebru
   - **scheidings teken**: ","
 - Uitvoer claims:
   - **output claim**: ["beheerder", "Auteur", "lezer"]
-  
+
 ## <a name="string-claim-transformations-expressions"></a>Teken reeks claim transformaties expressies
 Claim Transforms-expressies in Azure AD B2C aangepaste beleids regels bieden context informatie over de Tenant-ID en de technische profiel-ID.
 

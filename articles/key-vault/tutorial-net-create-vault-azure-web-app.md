@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003364"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198113"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Zelfstudie: Azure Key Vault gebruiken met een Azure-web-app in .NET
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Zelfstudie - Azure Key Vault gebruiken met een Azure-web-app in .NET
 
 Met Azure Key Vault kunt u geheimen beveiligen, zoals API-sleutels en databaseverbindingsreeksen. Het biedt u toegang tot uw toepassingen, services en IT-resources.
 
@@ -70,7 +71,7 @@ Een Azure-resourcegroep is een logische container waarin Azure-resources worden 
 
 Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create).
 
-Selecteer vervolgens de naam van een resource groep en vul de tijdelijke aanduiding in. In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio US - west:
+Selecteer vervolgens de naam van een resource groep en vul de tijdelijke aanduiding in. In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio VS - west:
 
    ```azurecli
    # To list locations: az account list-locations --output table
@@ -84,8 +85,8 @@ U gebruikt deze resourcegroep in de hele zelfstudie.
 Als u een sleutelkluis in de resourcegroep wilt maken, biedt u de volgende informatie:
 
 * Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen getallen (0-9), letters (a-z, A-Z) en afbreek streepjes (-) kan bevatten
-* Resourcegroepnaam
-* Locatie: **US - west**
+* Naam van de resourcegroep
+* Locatie: **VS - west**
 
 Voer in de Azure CLI de volgende opdracht in:
 
@@ -127,7 +128,7 @@ U kunt ook deze video bekijken:
 
 ## <a name="open-and-edit-the-solution"></a>De oplossing openen en bewerken
 
-1. Ga naar het bestand **Pages** > **about.cshtml.cs** .
+1. Ga naar de **pagina's** > **about.cshtml.cs** -bestand.
 
 1. Installeer deze NuGet-pakketten:
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
@@ -191,7 +192,7 @@ U kunt ook deze video bekijken:
 
 ## <a name="run-the-web-app"></a>De web-app uitvoeren
 
-1. Selecteer in het hoofd menu van Visual Studio 2019 **debug** > **Start**, met of zonder fout opsporing. 
+1. Selecteer in het hoofd menu van Visual Studio 2019 **fout opsporing** > **starten**, met of zonder fout opsporing. 
 1. Ga in de browser naar de pagina **over** .  
     De waarde voor **AppGeheim** wordt weergegeven.
 
@@ -206,7 +207,7 @@ az webapp identity assign --name "<YourAppName>" --resource-group "<YourResource
 ```
 
 Vervang \<YourAppName > door de naam van de gepubliceerde app op Azure.  
-    Als de naam van uw gepubliceerde app bijvoorbeeld **MyAwesomeapp.azurewebsites.net**is, vervangt \<u YourAppName > door **MyAwesomeapp**.
+    Als uw naam van de gepubliceerde app bijvoorbeeld **MyAwesomeapp.azurewebsites.net**is, vervangt u \<YourAppName > met **MyAwesomeapp**.
 
 Noteer de `PrincipalId` wanneer u de toepassing publiceert in Azure. De uitvoer van de opdracht in stap 1 moet de volgende indeling hebben:
 

@@ -1,6 +1,6 @@
 ---
 title: Overzichten T-SQL
-description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse.
+description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685513"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198351"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse
-Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse.
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>T-SQL-instructies die worden ondersteund in SQL Analytics
+Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in SQL Analytics.
 
 ## <a name="data-definition-language-ddl-statements"></a>DDL-instructies (Data Definition Language)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -70,11 +70,11 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
+* [DBCC-PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
 * [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) (preview-versie)
-* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [DBCC-PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [DBCC-PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [DBCC-SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Query-instructies
 * [UITGESCHAKELD](https://msdn.microsoft.com/library/ms189499.aspx)
@@ -120,4 +120,4 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 * [HOOFD SLEUTEL OPENEN](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over [T-SQL-taal elementen in Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md)en [systeem weergaven in Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
+Zie [T-SQL-taal elementen in SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md)en [systeem weergaven in SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md)voor meer informatie.

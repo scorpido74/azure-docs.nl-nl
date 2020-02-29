@@ -2,20 +2,20 @@
 title: 'Zelf studie: toegang verlenen aan een node. js-Web-API vanuit een bureaublad toepassing'
 description: Zelf studie over het gebruik van Active Directory B2C om een node. js-Web-API te beveiligen en deze aan te roepen vanuit een .NET-desktop-app.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850039"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183369"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Zelfstudie: toegang verlenen aan een web-API van Node.js vanuit een desktop-app met behulp van Azure Active Directory B2C
 
@@ -51,15 +51,15 @@ Als u een beveiligde web-API wilt aanroepen vanuit een systeem eigen client toep
 
 In de hand leiding voor vereisten hebt u een systeem eigen client toepassing geregistreerd met de naam *nativeapp1*. Met de volgende stappen wordt de registratie van de systeem eigen toepassing geconfigureerd met de API-bereiken die u hebt gemaakt voor *webapi1* in de vorige sectie. Op die manier kan de bureaublad toepassing een toegangs token verkrijgen van Azure AD B2C dat de Web-API kan gebruiken om de toegang tot de resources van het netwerk te controleren. U kunt de voor beelden van de bureaublad toepassing en de Web-API-code later in de zelf studie configureren en uitvoeren.
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Selecteer **Toepassingen** en vervolgens *nativeapp1*.
-1. Selecteer **API-toegang** en vervolgens **Toevoegen**.
-1. Selecteer *webapi1* in de vervolgkeuzelijst **API selecteren**.
+1. Selecteer **API-toegang**, en selecteer vervolgens **Toevoegen**.
+1. Selecteer **webapi1** in de vervolgkeuzelijst *API selecteren*.
 1. Selecteer in de vervolg keuzelijst **bereiken selecteren** de bereiken die u eerder hebt gedefinieerd. Bijvoorbeeld: *demo. Read* en *demo. write*.
 1. Selecteer **OK**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens de systeem eigen client toepassing die toegang moet hebben tot de API. Bijvoorbeeld *nativeapp1*.
 1. Selecteer onder **beheren**de optie **API-machtigingen**.
@@ -153,7 +153,7 @@ Uw bureaublad toepassing, beveiligd door Azure AD B2C, roept de lokaal uitgevoer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een web-API-toepassing toevoegen

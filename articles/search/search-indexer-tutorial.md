@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: gegevens indexeren C# vanuit Azure SQL-data bases'
+title: 'Zelf studie: index gegevens uit Azure SQL-data bases inC# '
 titleSuffix: Azure Cognitive Search
 description: In deze C# zelf studie maakt u verbinding met Azure SQL database, extraheert u Doorzoek bare gegevens en laadt u deze in een Azure Cognitive search-index.
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 978587b68e719b79db31ff25adaf2b38d2235095
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2020
+ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650049"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193965"
 ---
-# <a name="tutorial-index-azure-sql-data-in-c-using-azure-cognitive-search-indexers"></a>Zelf studie: Azure SQL-gegevens C# indexeren met Azure Cognitive Search-Indexeer functies
+# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Zelf studie: C# gebruiken om gegevens te INDEXEREN uit SQL-data bases in azure Cognitive Search
 
-Met C#kunt u een [Indexeer functie](search-indexer-overview.md) configureren waarmee Doorzoek bare gegevens uit Azure SQL database worden geëxtraheerd en naar een zoek index worden verzonden. Deze zelf studie maakt gebruik van [Azure Cognitive Search .net-client bibliotheken](https://aka.ms/search-sdk) en een .net core-console toepassing om de volgende taken uit te voeren:
+Een [Indexeer functie](search-indexer-overview.md) configureren om Doorzoek bare gegevens uit Azure SQL database te halen en deze te verzenden naar een zoek index in azure Cognitive Search. 
+
+In deze zelf C# studie wordt en de [.NET SDK](https://aka.ms/search-sdk) gebruikt om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een gegevens bron maken die verbinding maakt met Azure SQL Database
-> * Een Indexeer functie configureren
+> * Een indexeerfunctie maken
 > * Een Indexeer functie uitvoeren om gegevens in een index te laden
 > * Een query uitvoeren op een index als een verificatie stap
 
@@ -36,39 +38,17 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 > [!Note]
 > U kunt de gratis service voor deze zelf studie gebruiken. Een gratis zoek service beperkt u tot drie indexen, drie Indexeer functies en drie gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u begint, moet u ervoor zorgen dat u over voldoende ruimte beschikt om de nieuwe resources te accepteren.
 
-## <a name="download-source-code"></a>Bron code downloaden
+## <a name="download-files"></a>Bestanden downloaden
 
 De bron code voor deze zelf studie bevindt zich in de map [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) in de GitHub-opslag plaats [Azure-samples/Search-DotNet-Getting-Started](https://github.com/Azure-Samples/search-dotnet-getting-started) .
 
-## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
+## <a name="1---create-services"></a>1-services maken
 
-Voor API-aanroepen zijn de service-URL en een toegangs sleutel vereist. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
+In deze zelf studie maakt gebruik van Azure Cognitive Search voor het indexeren en uitvoeren van query's en Azure SQL Database als een externe gegevens bron. Maak indien mogelijk beide services in dezelfde regio en resource groep voor nabijheid en beheer baarheid. In de praktijk kunnen Azure SQL Database zich in elke regio bevinden.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+### <a name="start-with-azure-sql-database"></a>Beginnen met Azure SQL Database
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
-
-   ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
-
-## <a name="set-up-connections"></a>Verbindingen instellen
-
-1. Start Visual Studio en open **DotNetHowToIndexers. SLN**.
-
-1. Open in Solution Explorer **appSettings. json** en vervang de waarden van de tijdelijke aanduiding door verbindings gegevens naar uw zoek service. Als de volledige URL "https://my-demo-service.search.windows.net" is, is de naam van de service die u wilt bieden "My-demo-service".
-
-    ```json
-    {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-    }
-    ```
-
-Voor de laatste invoer is een bestaande data base vereist. U maakt deze in de volgende stap.
-
-## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
-
-In deze stap maakt u een externe gegevens bron op Azure SQL Database die door een Indexeer functie kan worden verkend. U kunt de Azure-portal en het bestand *hotels.sql* uit het voorbeeld gebruiken om de gegevensset in Azure SQL Database te maken. Azure Cognitive Search verbruikt samengevoegde rijen sets, zoals een die is gegenereerd op basis van een weer gave of query. Het SQL-bestand in de voorbeeldoplossing maakt en vult één tabel.
+In deze stap maakt u een externe gegevens bron op Azure SQL Database die door een Indexeer functie kan worden verkend. U kunt de Azure Portal en het bestand *Hotels. SQL* van de voor beeld-down load gebruiken om de gegevensset in Azure SQL database te maken. Azure Cognitive Search verbruikt samengevoegde rijen sets, zoals een die is gegenereerd op basis van een weer gave of query. Het SQL-bestand in de voorbeeldoplossing maakt en vult één tabel.
 
 Als u een bestaande Azure SQL Database resource hebt, kunt u de tabel Hotels toevoegen, beginnend bij stap 4.
 
@@ -104,59 +84,45 @@ Als u een bestaande Azure SQL Database resource hebt, kunt u de tabel Hotels toe
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     ```
 
-1. Plak de verbindingsreeks in 'AzureSqlConnectionString' als derde vermelding in het bestand **appsettings.json** in Visual Studio.
+U hebt deze connection string in de volgende oefening nodig om uw omgeving in te stellen.
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Het volgende onderdeel is Azure Cognitive Search, dat u [in de portal kunt maken](search-create-service-portal.md). U kunt de gratis laag gebruiken om deze procedure te volt ooien. 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en-URL voor Azure Cognitive Search ophalen
+
+Voor API-aanroepen zijn de service-URL en een toegangs sleutel vereist. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
+
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+
+1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+
+   ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
+
+## <a name="2---set-up-your-environment"></a>2-uw omgeving instellen
+
+1. Start Visual Studio en open **DotNetHowToIndexers. SLN**.
+
+1. Open **appSettings. json** in Solution Explorer om verbindings gegevens op te geven.
+
+1. Voor `searchServiceName`, als de volledige URL "https://my-demo-service.search.windows.net" is, is de service naam die u wilt bieden "mijn-demo-service".
+
+1. Voor `AzureSqlConnectionString`is de teken reeks indeling vergelijkbaar met het volgende: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-1. Voer uw wacht woord in in het connection string in het bestand **appSettings. json** . Data Base-en gebruikers namen worden in uw connection string gekopieerd, maar het wacht woord moet hand matig worden ingevoerd.
+1. Controleer in de connection string of de connection string een geldig wacht woord bevat. Terwijl de data base en gebruikers namen worden gekopieerd, moet het wacht woord hand matig worden ingevoerd.
 
-## <a name="build-the-solution"></a>De oplossing bouwen
+## <a name="3---create-the-pipeline"></a>3: de pijp lijn maken
 
-Druk op F5 om de oplossing te bouwen. Het programma wordt uitgevoerd in de foutopsporingsmodus. De status van elke bewerking wordt weergegeven in een consolevenster.
-
-   ![Console-uitvoer](./media/search-indexer-tutorial/console-output.png "Console-uitvoer")
-
-Uw code wordt lokaal uitgevoerd in Visual Studio en maakt verbinding met uw zoek service op Azure, die op zijn beurt verbinding maakt met Azure SQL Database en de gegevensset ophaalt. Met dit aantal bewerkingen zijn er verschillende mogelijke fout punten. Als er een fout optreedt, controleert u eerst de volgende voor waarden:
-
-+ De verbindingsgegevens van de zoekservice die u opgeeft, zijn in deze zelfstudie beperkt tot de servicenaam. Als u de volledige URL hebt ingevoerd, stopt de verwerking bij het maken van de index, met het foutbericht dat er geen verbinding kan worden gemaakt.
-
-+ Gegevens over de databaseverbinding in **appsettings.json**. Dit moet de ADO.NET-verbindingsreeks zijn die u hebt verkregen via de portal en die is gewijzigd, zodat deze een gebruikersnaam en wachtwoord bevat die geldig zijn voor uw database. Het gebruikersaccount moet machtigingen hebben om gegevens op te halen. Het IP-adres van uw lokale client moet toegang hebben.
-
-+ Bronlimieten. De laag gratis heeft een limiet van 3 indexen, Indexeer functies en gegevens bronnen. Een service met de maximale limiet kan geen nieuwe objecten maken.
-
-## <a name="check-results"></a>Resultaten controleren
-
-Gebruik Azure Portal om het maken van objecten te controleren en zoek vervolgens in de index met behulp van **Search Explorer** .
-
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en open op de pagina **overzicht** van de zoek service elke lijst in de weer gave om te controleren of het object is gemaakt. **Indexes,** **Indexeer functies**en **gegevens bronnen** hebben respectievelijk "Hotels", "Azure-SQL-indexer" en "Azure-SQL".
-
-   ![Tegels met indexeerfuncties en gegevensbronnen](./media/search-indexer-tutorial/tiles-portal.png)
-
-1. Selecteer de index Hotels. **Zoek Explorer** op de pagina hotels is het eerste tabblad. 
-
-1. Klik op **zoeken** om een lege query uit te voeren. 
-
-   De drie vermeldingen in de index worden geretourneerd als JSON-documenten. Search Explorer retourneert documenten in JSON, zodat u de volledige structuur kunt bekijken.
-
-   ![Een query uitvoeren op een index](./media/search-indexer-tutorial/portal-search.png "Een query uitvoeren op een index")
-   
-1. Geef vervolgens een zoekreeks op: `search=river&$count=true`. 
-
-   Deze query roept een zoekopdracht aan die in de volledige tekst zoekt naar de term `river` en het resultaat bevat het aantal overeenkomende documenten. Het aantal overeenkomende documenten retourneren kan handig zijn in testscenario's wanneer u een grote index met duizenden of miljoenen documenten hebt. In dit geval komt slechts één document overeen met de query.
-
-1. Voer ten slotte een zoektekenreeks in die de JSON-uitvoer beperkt tot de gewenste velden: `search=river&$count=true&$select=hotelId, baseRate, description`. 
-
-   De respons van de query wordt beperkt tot geselecteerde velden, wat resulteert in een beknoptere uitvoer.
-
-## <a name="explore-the-code"></a>De code verkennen
-
-Nu u weet wat de voorbeeld code maakt, gaan we terug naar de oplossing om de code te controleren. De relevante code bevindt zich in twee bestanden:
+Voor Indexeer functies is een gegevens bron object en een index vereist. De relevante code bevindt zich in twee bestanden:
 
   + **Hotel.cs**, met een schema dat de index definieert
   + **Program.cs**, met functies voor het maken en beheren van structuren in uw service
@@ -230,17 +196,61 @@ Een Indexeer functie-object is platform-neutraal, waarbij de configuratie, plann
   }
   ```
 
+## <a name="4---build-the-solution"></a>4-de oplossing bouwen
+
+Druk op F5 om de oplossing te bouwen en uit te voeren. Het programma wordt uitgevoerd in de foutopsporingsmodus. De status van elke bewerking wordt weergegeven in een consolevenster.
+
+   ![Console-uitvoer](./media/search-indexer-tutorial/console-output.png "Console-uitvoer")
+
+Uw code wordt lokaal uitgevoerd in Visual Studio en maakt verbinding met uw zoek service op Azure, die op zijn beurt verbinding maakt met Azure SQL Database en de gegevensset ophaalt. Met dit aantal bewerkingen zijn er verschillende mogelijke fout punten. Als er een fout optreedt, controleert u eerst de volgende voor waarden:
+
++ De verbindingsgegevens van de zoekservice die u opgeeft, zijn in deze zelfstudie beperkt tot de servicenaam. Als u de volledige URL hebt ingevoerd, stopt de verwerking bij het maken van de index, met het foutbericht dat er geen verbinding kan worden gemaakt.
+
++ Gegevens over de databaseverbinding in **appsettings.json**. Dit moet de ADO.NET-verbindingsreeks zijn die u hebt verkregen via de portal en die is gewijzigd, zodat deze een gebruikersnaam en wachtwoord bevat die geldig zijn voor uw database. Het gebruikersaccount moet machtigingen hebben om gegevens op te halen. Het IP-adres van uw lokale client moet toegang hebben.
+
++ Bronlimieten. De laag gratis heeft een limiet van 3 indexen, Indexeer functies en gegevens bronnen. Een service met de maximale limiet kan geen nieuwe objecten maken.
+
+## <a name="5---search"></a>5-zoeken
+
+Gebruik Azure Portal om het maken van objecten te controleren en zoek vervolgens in de index met behulp van **Search Explorer** .
+
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en open op de pagina **overzicht** van de zoek service elke lijst in de weer gave om te controleren of het object is gemaakt. **Indexes,** **Indexeer functies**en **gegevens bronnen** hebben respectievelijk "Hotels", "Azure-SQL-indexer" en "Azure-SQL".
+
+   ![Tegels met indexeerfuncties en gegevensbronnen](./media/search-indexer-tutorial/tiles-portal.png)
+
+1. Selecteer de index Hotels. **Zoek Explorer** op de pagina hotels is het eerste tabblad. 
+
+1. Klik op **zoeken** om een lege query uit te voeren. 
+
+   De drie vermeldingen in de index worden geretourneerd als JSON-documenten. Search Explorer retourneert documenten in JSON, zodat u de volledige structuur kunt bekijken.
+
+   ![Een query uitvoeren op een index](./media/search-indexer-tutorial/portal-search.png "Een query uitvoeren op een index")
+   
+1. Geef vervolgens een zoekreeks op: `search=river&$count=true`. 
+
+   Deze query roept een zoekopdracht aan die in de volledige tekst zoekt naar de term `river` en het resultaat bevat het aantal overeenkomende documenten. Het aantal overeenkomende documenten retourneren kan handig zijn in testscenario's wanneer u een grote index met duizenden of miljoenen documenten hebt. In dit geval komt slechts één document overeen met de query.
+
+1. Voer ten slotte een zoektekenreeks in die de JSON-uitvoer beperkt tot de gewenste velden: `search=river&$count=true&$select=hotelId, baseRate, description`. 
+
+   De respons van de query wordt beperkt tot geselecteerde velden, wat resulteert in een beknoptere uitvoer.
+
+## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
+
+In de vroege experimentele stadia van de ontwikkeling kunt u het beste de objecten uit Azure Cognitive Search verwijderen en uw code zo instellen dat deze opnieuw worden opgebouwd. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+
+In de voorbeeld code voor deze zelf studie wordt gecontroleerd op bestaande objecten en worden deze verwijderd zodat u de code opnieuw kunt uitvoeren.
+
+U kunt ook de portal gebruiken om indexen, Indexeer functies en gegevens bronnen te verwijderen.
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u aan het eind van een project aan het werk bent, is het een goed idee om de resources te verwijderen die u niet meer nodig hebt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
 
 U kunt resources vinden en beheren in de portal met behulp van de koppeling alle resources of resource groepen in het navigatie deel venster aan de linkerkant.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven.
-
 ## <a name="next-steps"></a>Volgende stappen
 
-In azure Cognitive Search zijn Indexeer functies beschikbaar voor meerdere Azure-gegevens bronnen. Als volgende stap bekijkt u de Indexeer functie voor Azure Blob Storage.
+Nu u bekend bent met de basis principes van het indexeren van SQL Database, gaan we de configuratie van de Indexeer functie nader bekijken.
 
 > [!div class="nextstepaction"]
-> [Documenten in Azure Blob Storage indexeren](search-howto-indexing-azure-blob-storage.md)
+> [Een Azure SQL database Indexeer functie configureren](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

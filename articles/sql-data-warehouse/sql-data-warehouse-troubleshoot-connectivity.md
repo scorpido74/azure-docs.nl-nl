@@ -1,6 +1,6 @@
 ---
 title: Verbindings problemen oplossen
-description: Probleem oplossing voor connectiviteit in Azure SQL Data Warehouse.
+description: Problemen met connectiviteit in SQL Analytics oplossen.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 003366a6d88e018090475b6fb22d9042a97af823
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692422"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192248"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Verbindings problemen oplossen
 
-In dit artikel vindt u algemene technieken voor het oplossen van problemen om verbinding te maken met uw SQL Data Warehouse.
+Dit artikel bevat algemene probleemoplossings technieken om verbinding te maken met uw SQL Analytics-Data Base.
 - [Beschik baarheid van service controleren](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Controleren op onderbroken of schaalbewerking](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Uw firewallinstellingen controleren](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ In dit artikel vindt u algemene technieken voor het oplossen van problemen om ve
 
 ## <a name="check-service-availability"></a>Beschik baarheid van service controleren
 
-Controleer of de service beschikbaar is. Ga in het Azure Portal naar de SQL Data Warehouse waarmee u verbinding wilt maken. Klik in het deel venster links TOC op **problemen vaststellen en oplossen**.
+Controleer of de service beschikbaar is. Ga in het Azure Portal naar de SQL Analytics-Data Base waarmee u verbinding wilt maken. Klik in het deel venster links TOC op **problemen vaststellen en oplossen**.
 
 ![Resource status selecteren](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Hier wordt de status van uw SQL Data Warehouse weer gegeven. Als de service niet wordt weer gegeven als **beschikbaar**, raadpleegt u verdere stappen.
+De status van uw SQL-analyse wordt hier weer gegeven. Als de service niet wordt weer gegeven als **beschikbaar**, raadpleegt u verdere stappen.
 
 ![Service beschikbaar](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Als uw resource status laat zien dat uw data warehouse is gepauzeerd of geschaald, volgt u de richt lijnen om uw data warehouse te hervatten.
+Als uw resource status laat zien dat uw SQL Analytics-exemplaar is onderbroken of geschaald, volgt u de richt lijnen om uw exemplaar te hervatten.
 
 ![-service is onderbroken](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) meer informatie over Resource Health vindt u hier.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Controleren op onderbroken of schaal bewerking
 
-Controleer de portal om te zien of uw SQL Data Warehouse is gepauzeerd of geschaald.
+Controleer de portal om te zien of uw SQL Analytics-exemplaar is onderbroken of geschaald.
 
 ![De service is onderbroken](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Als u ziet dat uw service is gepauzeerd of geschaald, controleert u of deze niet tijdens de onderhouds planning wordt weer geven. Op de portal voor uw SQL Data Warehouse- *overzicht*ziet u de gekozen onderhouds planning.
+Als u ziet dat uw service is gepauzeerd of geschaald, controleert u of deze niet tijdens de onderhouds planning wordt weer geven. In de portal voor uw *overzicht*van SQL Analytics ziet u de gekozen onderhouds planning.
 
 ![Onderhouds planning overzicht](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Volg de stappen die [hier](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)worden beschreven om de SQL Data Warehouse te hervatten.
+Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud geen geplande gebeurtenis is. Volg de stappen die [hier](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)worden beschreven om het exemplaar van SQL Analytics te hervatten.
 
 ## <a name="check-your-firewall-settings"></a>Controleer de firewall instellingen
 
-SQL Database Warehouse communiceert via poort 1433.   Als u verbinding probeert te maken vanuit een bedrijfs netwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Meer informatie over Firewall configuraties vindt u [hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+SQL Analytics-Data Base communiceert via poort 1433.   Als u verbinding probeert te maken vanuit een bedrijfs netwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Meer informatie over Firewall configuraties vindt u [hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Controleer de instellingen van uw VNet/service-eind punt
 
@@ -68,7 +68,7 @@ Als u fouten 40914 en 40615 ontvangt, raadpleegt u de [fout beschrijving en oplo
 
 ### <a name="software"></a>Software
 
-Controleer of u de nieuwste hulpprogram ma's gebruikt om verbinding te maken met uw SQL Data Warehouse:
+Controleer of u de nieuwste hulpprogram ma's gebruikt om verbinding te maken met uw SQL Analytics-Data Base:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Onregelmatige verbindings problemen
 
-Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw datawarehouse opschalen voor aanvullende resources.
+Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw SQL Analytics-exemplaar opschalen voor aanvullende bronnen.
 
 ## <a name="common-error-messages"></a>Veelvoorkomende foutberichten
 

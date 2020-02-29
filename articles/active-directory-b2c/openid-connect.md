@@ -2,21 +2,21 @@
 title: Webaanmelding met OpenID Connect Connect-Azure Active Directory B2C
 description: Bouw webtoepassingen met behulp van het OpenID Connect Connect-verificatie protocol in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f601fc2e415e22bdbb9e0a4d4d2072a0a33ac22e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848822"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183989"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webaanmelding met OpenID Connect Connect in Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| Parameter | Verplicht | Beschrijving |
+| Parameter | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of `b2c_1_edit_profile`. |
@@ -144,7 +144,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Verplicht | Beschrijving |
+| Parameter | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die is gebruikt om de autorisatie code op te halen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. Voeg deze para meter toe aan de query reeks, niet op de hoofd tekst van het bericht. |
@@ -213,7 +213,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Verplicht | Beschrijving |
+| Parameter | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die is gebruikt om het oorspronkelijke vernieuwings token te verkrijgen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. Voeg deze para meter toe aan de query reeks, niet op de hoofd tekst van het bericht. |
@@ -270,7 +270,7 @@ Als u de gebruiker wilt afmelden, moet u de gebruiker omleiden naar het `end_ses
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| Parameter | Verplicht | Beschrijving |
+| Parameter | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die u wilt gebruiken voor het ondertekenen van de gebruiker uit uw toepassing. |

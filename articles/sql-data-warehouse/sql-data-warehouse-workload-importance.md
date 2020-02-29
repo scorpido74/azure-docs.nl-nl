@@ -1,26 +1,26 @@
 ---
 title: Workloadurgentie
-description: Richt lijnen voor het instellen van de urgentie van query's in Azure SQL Data Warehouse.
+description: Richt lijnen voor het instellen van de prioriteit voor SQL Analytics-query's in azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351428"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191763"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Urgentie van Azure SQL Data Warehouse werk belasting
+# <a name="azure-synapse-analytics-workload-importance"></a>Prioriteit van Azure Synapse Analytics-workload
 
-In dit artikel wordt uitgelegd hoe de urgentie van het werk belasting de volg orde van de uitvoering van SQL Data Warehouse aanvragen kan beïnvloeden.
+In dit artikel wordt uitgelegd hoe de urgentie van het workload invloed kan hebben op de volg orde van de uitvoering van SQL Analytics-aanvragen in azure Synapse.
 
 ## <a name="importance"></a>Urgentie
 
@@ -36,9 +36,9 @@ Er zijn vijf prioriteits niveaus: laag, below_normal, normaal, above_normal en h
 
 Naast het scenario met de basis prioriteit die hierboven wordt beschreven met verkoop-en weer gegevens, zijn er andere scenario's waarin de werk belasting van de workload aan gegevens verwerking en query behoeften voldoet.
 
-### <a name="locking"></a>Vergrendelen
+### <a name="locking"></a>Vergren delen
 
-Toegang tot de vergren delingen voor lees-en schrijf activiteiten is één gebied met natuurlijke conflicten. Voor activiteiten zoals het overschakelen van een [partitie](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of het [wijzigen van de naam van het object](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) is verhoogde vergren deling vereist  Zonder urgentie van de werk belasting, SQL Data Warehouse optimaliseert voor door voer. Optimalisatie voor door Voer betekent dat wanneer in-en in de wachtrij geplaatste aanvragen dezelfde vergrendelings behoeften hebben en resources beschikbaar zijn, de aanvragen in de wachtrij kunnen verzoeken met een hogere vergrendelings behoefte die eerder in de wachtrij voor aanvragen is aangekomen, worden overgeslagen. Zodra de urgentie van de werk belasting wordt toegepast op aanvragen met hogere vergrendelings behoeften. Een aanvraag met een hogere urgentie wordt uitgevoerd vóór de aanvraag met een lagere urgentie.
+Toegang tot de vergren delingen voor lees-en schrijf activiteiten is één gebied met natuurlijke conflicten. Voor activiteiten zoals het overschakelen van een [partitie](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of het [wijzigen van de naam van het object](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) is verhoogde vergren deling vereist  Zonder urgentie van de werk belasting, wordt SQL Analytics in azure Synapse geoptimaliseerd voor door voer. Optimalisatie voor door Voer betekent dat wanneer in-en in de wachtrij geplaatste aanvragen dezelfde vergrendelings behoeften hebben en resources beschikbaar zijn, de aanvragen in de wachtrij kunnen verzoeken met een hogere vergrendelings behoefte die eerder in de wachtrij voor aanvragen is aangekomen, worden overgeslagen. Zodra de urgentie van de werk belasting wordt toegepast op aanvragen met hogere vergrendelings behoeften. Een aanvraag met een hogere urgentie wordt uitgevoerd vóór de aanvraag met een lagere urgentie.
 
 Kijk een naar het volgende voorbeeld:
 
@@ -50,7 +50,7 @@ Als Q2 en Q3 hetzelfde urgentie hebben en Q1 nog steeds wordt uitgevoerd, wordt 
 
 ### <a name="non-uniform-requests"></a>Niet-uniforme aanvragen
 
-Een ander scenario waarbij het belang rijk kan zijn om te voldoen aan query vereisten is wanneer aanvragen met verschillende resource klassen worden verzonden.  Zoals eerder vermeld, onder hetzelfde belang, SQL Data Warehouse optimaliseert voor door voer. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij worden geplaatst, kiest SQL Data Warehouse de eerste aankomende aanvraag die binnen de beschik bare resources past. Als de urgentie van de werk belasting wordt toegepast, wordt de aanvraag voor de hoogste urgentie gepland op de volgende regel.
+Een ander scenario waarbij het belang rijk kan zijn om te voldoen aan query vereisten is wanneer aanvragen met verschillende resource klassen worden verzonden.  Zoals eerder vermeld, is de SQL-analyse in azure Synapse geoptimaliseerd voor door Voer, onder dezelfde urgentie. Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij worden geplaatst, kiest SQL Analytics de eerste aankomende aanvraag die binnen de beschik bare resources past. Als de urgentie van de werk belasting wordt toegepast, wordt de aanvraag voor de hoogste urgentie gepland op de volgende regel.
   
 Bekijk het volgende voor beeld op DW500c:
 
@@ -63,7 +63,7 @@ Omdat Q5 mediumrc is, zijn er twee gelijktijdigheids sleuven nodig. Q5 moet wach
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie de [classificatie werk belasting maken (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql)voor meer informatie over het maken van een classificatie.  
-- Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over de classificatie van SQL Data Warehouse werk belasting.  
+- Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over de classificatie van werk belastingen.  
 - Zie de Snelstartgids [werk belasting maken classificatie](quickstart-create-a-workload-classifier-tsql.md) voor het maken van een classificatie van werk belastingen. 
 - Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
 - Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) om query's en de prioriteit weer te geven.

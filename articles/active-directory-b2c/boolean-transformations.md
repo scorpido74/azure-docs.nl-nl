@@ -3,20 +3,20 @@ title: Boolean-voor beelden van claim transformatie voor aangepast beleid
 titleSuffix: Azure AD B2C
 description: Boole-voor beelden van claim transformatie voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620843"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189938"
 ---
 # <a name="boolean-claims-transformations"></a>Booleaanse claim transformaties
 
@@ -116,7 +116,7 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-Controleert of de Booleaanse waarde van een claims gelijk is aan `true` of `false`en retourneert het resultaat van de compressie. 
+Controleert of de Booleaanse waarde van een claims gelijk is aan `true` of `false`en retourneert het resultaat van de compressie.
 
 | Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 | ---- | ------------------------ | ---------- | ----- |
@@ -148,7 +148,7 @@ De volgende claim transformatie laat zien hoe u de waarde van een Booleaanse cla
 - Invoer parameters:
     - **valueToCompareTo**: True
 - Uitvoer claims:
-    - **compareResult**: False 
+    - **compareResult**: False
 
 
 

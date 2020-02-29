@@ -1,5 +1,5 @@
 ---
-title: Retail-gegevens van Contoso laden
+title: Retail-gegevens van Contoso laden in een SQL Analytics-Data Warehouse
 description: Gebruik poly base-en T-SQL-opdrachten om twee tabellen uit de Retail gegevens van Contoso te laden in Azure SQL-analyse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: af505d7614b527d6dc7e1ce54136578d67824cf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4da4ea54de5517864567583cc6853df40b4370a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721163"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197297"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Retail-gegevens van Contoso laden in een SQL Analytics-Data Warehouse
 
@@ -29,12 +29,15 @@ In deze zelf studie doet u het volgende:
 3. Voer optimalisaties uit nadat het laden is voltooid.
 
 ## <a name="before-you-begin"></a>Voordat u begint
+
 Als u deze zelf studie wilt uitvoeren, hebt u een Azure-account nodig dat al een SQL Analytics-Data Warehouse heeft. Als u geen data warehouse hebt ingericht, raadpleegt u [een Data Warehouse maken en firewall regel op server niveau instellen](create-data-warehouse-portal.md).
 
-## <a name="1-configure-the-data-source"></a>1. de gegevens bron configureren
+## <a name="configure-the-data-source"></a>De gegevens bron configureren
+
 Poly base maakt gebruik van externe T-SQL-objecten om de locatie en kenmerken van de externe gegevens te definiëren. De definities voor externe objecten worden opgeslagen in uw SQL Analytics-Data Warehouse. De gegevens worden extern opgeslagen.
 
-### <a name="11-create-a-credential"></a>1.1. Een referentie maken
+## <a name="create-a-credential"></a>Een referentie maken
+
 **Sla deze stap over** als u de open bare gegevens van Contoso wilt laden. U hebt geen beveiligde toegang tot de open bare gegevens nodig omdat deze al toegankelijk is voor iedereen.
 
 **Sla deze stap niet over** als u deze zelf studie gebruikt als sjabloon voor het laden van uw eigen gegevens. Voor toegang tot gegevens via een referentie gebruikt u het volgende script om een Data Base-scoped referentie te maken. Gebruik deze vervolgens als u de locatie van de gegevens bron definieert.
@@ -72,7 +75,8 @@ WITH (
 );
 ```
 
-### <a name="12-create-the-external-data-source"></a>1.2. De externe gegevens bron maken
+## <a name="create-the-external-data-source"></a>De externe gegevens bron maken
+
 Gebruik deze opdracht [externe gegevens bron maken](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15) om de locatie van de gegevens en het gegevens type op te slaan. 
 
 ```sql
@@ -87,9 +91,9 @@ WITH
 > [!IMPORTANT]
 > Als u ervoor kiest om uw Azure Blob-opslag containers openbaar te maken, moet u er rekening mee houden dat als de eigenaar van de gegevens in rekening wordt gebracht voor de kosten voor gegevens uitvoer wanneer gegevens het Data Center verlaten. 
 > 
-> 
 
-## <a name="2-configure-data-format"></a>2. gegevens indeling configureren
+## <a name="configure-the-data-format"></a>De gegevens indeling configureren
+
 De gegevens worden opgeslagen in tekst bestanden in Azure Blob-opslag en elk veld wordt gescheiden met een scheidings teken. Voer in SSMS de volgende opdracht voor het maken van een externe BESTANDS indeling uit om de indeling van de gegevens in de tekst bestanden op te geven. De contoso-gegevens worden niet gecomprimeerd en door pipes gescheiden.
 
 ```sql
@@ -104,10 +108,10 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. de externe tabellen maken
+## <a name="create-the-external-tables"></a>De externe tabellen maken
 Nu u de gegevens bron en bestands indeling hebt opgegeven, bent u klaar om de externe tabellen te maken. 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. Maak een schema voor de gegevens.
+## <a name="create-a-schema-for-the-data"></a>Een schema maken voor de gegevens
 Maak een schema om een locatie te maken voor het opslaan van de contoso-gegevens in uw data base.
 
 ```sql
@@ -115,7 +119,8 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. Maak de externe tabellen.
+## <a name="create-the-external-tables"></a>De externe tabellen maken
+
 Voer het volgende script uit om de externe tabellen DimProduct en FactOnlineSales te maken. U hoeft hier geen kolom namen en gegevens typen te definiëren en deze te binden aan de locatie en indeling van de Azure Blob-opslag bestanden. De definitie wordt opgeslagen in het Data Warehouse van SQL Analytics en de gegevens bevinden zich nog in de Azure Storage Blob.
 
 De **locatie** parameter is de map onder de hoofdmap in de Azure Storage blob. Elke tabel bevindt zich in een andere map.
@@ -202,10 +207,11 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. gegevens laden
+## <a name="load-the-data"></a>De gegevens laden
 Er zijn verschillende manieren om toegang te krijgen tot externe gegevens.  U kunt gegevens rechtstreeks vanuit de externe tabellen opvragen, de gegevens in nieuwe tabellen in het Data Warehouse laden of externe gegevens toevoegen aan bestaande Data Warehouse-tabellen.  
 
-### <a name="41-create-a-new-schema"></a>4.1. Een nieuw schema maken
+###  <a name="create-a-new-schema"></a>Een nieuw schema maken
+
 CTAS maakt een nieuwe tabel die gegevens bevat.  Maak eerst een schema voor de contoso-gegevens.
 
 ```sql
@@ -213,7 +219,8 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. De gegevens in nieuwe tabellen laden
+### <a name="load-the-data-into-new-tables"></a>De gegevens in nieuwe tabellen laden
+
 Als u gegevens uit Azure Blob-opslag wilt laden in de Data Warehouse-tabel, gebruikt u de instructie [create table as select (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) . Het laden met [CTAS](sql-data-warehouse-develop-ctas.md) maakt gebruik van de sterk getypeerde externe tabellen die u hebt gemaakt. Als u de gegevens in nieuwe tabellen wilt laden, gebruikt u een CTAS-instructie per tabel. 
  
 CTAS maakt een nieuwe tabel en vult deze met de resultaten van een SELECT-instructie. CTAS definieert de nieuwe tabel om dezelfde kolommen en gegevens typen te hebben als de resultaten van de SELECT-instructie. Als u alle kolommen uit een externe tabel selecteert, is de nieuwe tabel een replica van de kolommen en gegevens typen in de externe tabel.
@@ -228,7 +235,8 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4,3 de voortgang van het laden volgen
+### <a name="track-the-load-progress"></a>De voortgang van het laden volgen
+
 U kunt de voortgang van het laden volgen met dynamische beheer weergaven (Dmv's). 
 
 ```sql
@@ -264,7 +272,8 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5. het optimaliseren van Column Store-compressie
+## <a name="optimize-columnstore-compression"></a>Column Store-compressie optimaliseren
+
 Standaard slaat het SQL Analytics-Data Warehouse de tabel op als een geclusterde column store-index. Nadat het laden is voltooid, zijn sommige gegevens rijen mogelijk niet gecomprimeerd naar de column Store.  Er zijn verschillende redenen waarom dit kan gebeuren. Zie [Column Store-indexen beheren](sql-data-warehouse-tables-index.md)voor meer informatie.
 
 Als u de query prestaties en column Store-compressie wilt optimaliseren na een laad opdracht, bouwt u de tabel opnieuw op om ervoor te zorgen dat de column store-index alle rijen kan comprimeren. 
@@ -279,7 +288,8 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 Zie het artikel [Column Store-indexen beheren](sql-data-warehouse-tables-index.md) voor meer informatie over het onderhouden van Column Store-indexen.
 
-## <a name="6-optimize-statistics"></a>6. statistieken optimaliseren
+## <a name="optimize-statistics"></a>Statistieken optimaliseren
+
 Het is het beste om statistieken voor één kolom direct na een belasting te maken. Als u weet dat bepaalde kolommen niet in query predikaten staan, kunt u het maken van statistieken voor die kolommen overs Laan. Als u een statistieken voor één kolom maakt voor elke kolom, kan het lang duren om alle statistieken opnieuw samen te stellen. 
 
 Als u besluit om met één kolom statistieken te maken voor elke kolom van elke tabel, kunt u de voor beeld-`prc_sqldw_create_stats` code van de opgeslagen procedure in het [statistiek](sql-data-warehouse-tables-statistics.md) artikel gebruiken.
@@ -329,7 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>Prestaties vergren delen.
-U hebt open bare gegevens in een SQL Analytics-Data Warehouse geladen. Fantastische taak!
+U hebt open bare gegevens in uw data warehouse geladen. Fantastische taak!
 
 U kunt nu een query uitvoeren op de tabellen om uw gegevens te verkennen. Voer de volgende query uit om de totale verkoop per merk te vinden:
 

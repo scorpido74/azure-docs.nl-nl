@@ -3,20 +3,20 @@ title: 'Zelf studie: een toepassing registreren'
 titleSuffix: Azure AD B2C
 description: Meer informatie over het registreren van een webtoepassing in Azure Active Directory B2C met behulp van de Azure Portal.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840108"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183088"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Zelf studie: een toepassing registreren in Azure Active Directory B2C
 
@@ -38,9 +38,9 @@ Als u nog geen eigen [Azure AD B2C Tenant](tutorial-create-tenant.md)hebt gemaak
 
 Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
@@ -57,9 +57,9 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidi
 
 1. Selecteer **maken** om de registratie van de toepassing te volt ooien.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
@@ -90,13 +90,13 @@ Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toe
 
 Als uw toepassing een autorisatie code voor een toegangs token uitwisselt, moet u een toepassings geheim maken.
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Selecteer op de pagina **Azure AD B2C-toepassingen** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
 1. Selecteer **sleutels** en selecteer vervolgens **sleutel genereren**.
 1. Selecteer **Opslaan** om de sleutel weer te geven. Noteer de waarde van **App-sleutel**. U gebruikt deze waarde als het toepassings geheim in de code van uw toepassing.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
 1. Selecteer op de pagina **Azure AD B2C-app-registraties (preview)** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
 1. Selecteer onder **beheren**de optie **Certificaten & geheimen**.

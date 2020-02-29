@@ -3,20 +3,20 @@ title: 'Snelstartgids: aanmelden instellen voor een app met één pagina (SPA)'
 titleSuffix: Azure AD B2C
 description: In deze Snelstartgids voert u een voor beeld van een toepassing met één pagina uit die gebruikmaakt van Azure Active Directory B2C om de aanmelding van het account te bieden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98b4e7e6b64d68d98597c40c6aea3d6cfe104be0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a5d4319f47530a91bcceb9b2dba94c6aa8e4c388
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850144"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183887"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Snelstartgids: aanmelden instellen voor een app met één pagina met Azure Active Directory B2C
 
@@ -81,7 +81,7 @@ De voorbeeldtoepassing met één pagina bevat het toegangstoken van Azure AD in 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt uw Azure AD B2C-tenant gebruiken voor andere snelstarts of zelfstudies voor Azure AD B2C. Als u deze niet meer nodig hebt, kunt u [uw Azure AD B2C-tenant verwijderen](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+U kunt uw Azure AD B2C-tenant gebruiken voor andere Quick Starts of zelfstudies voor Azure AD B2C. Als u deze niet meer nodig hebt, kunt u [uw Azure AD B2C-tenant verwijderen](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -2,20 +2,20 @@
 title: UserJourneys | Microsoft Docs
 description: Geef het UserJourneys-element van een aangepast beleid in Azure Active Directory B2C op.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/04/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ec2d24c399e44bf973fc1ee78466dbee26f0394
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f4af9b14b1d751c855a04f0683bc0f9d4115e7b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983177"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183161"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -25,17 +25,17 @@ Gebruikers ritten geven expliciete paden op waarmee een Relying Party toepassing
 
 Deze gebruikers ritten kunnen worden beschouwd als beschik bare sjablonen om te voldoen aan de kern behoeften van de verschillende relying party's van de community. Gebruikers ritten vergemakkelijken de definitie van het Relying Party onderdeel van een beleid. Een beleid kan meerdere gebruikers trajecten definiëren. Elke gebruikers traject is een reeks Orchestration-stappen.
 
-Als u de door het beleid ondersteunde gebruikers trajecten wilt definiëren, wordt er een **UserJourneys** -element toegevoegd onder het element op het hoogste niveau van het beleids bestand. 
+Als u de door het beleid ondersteunde gebruikers trajecten wilt definiëren, wordt er een **UserJourneys** -element toegevoegd onder het element op het hoogste niveau van het beleids bestand.
 
 Het element **UserJourneys** bevat het volgende element:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| UserJourney | 1: n | Een gebruikers traject waarmee alle benodigde constructies voor een volledige gebruikers stroom worden gedefinieerd. | 
+| UserJourney | 1: n | Een gebruikers traject waarmee alle benodigde constructies voor een volledige gebruikers stroom worden gedefinieerd. |
 
 Het element **UserJourney** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id van een gebruikers traject die kan worden gebruikt om ernaar te verwijzen vanuit andere elementen in het beleid. Het **DefaultUserJourney** -element van het [Relying Party-beleid](relyingparty.md) verwijst naar dit kenmerk. |
 
@@ -49,7 +49,7 @@ Het **UserJourney** -element bevat de volgende elementen:
 
 Een gebruikers traject wordt weer gegeven als een indelings reeks die moet worden gevolgd door een geslaagde trans actie. Als er een stap mislukt, mislukt de trans actie. Deze indelings stappen verwijzen naar zowel de bouw stenen als de claim providers die in het beleids bestand zijn toegestaan. Een indelings stap die verantwoordelijk is voor het weer geven of renderen van een gebruikers ervaring, heeft ook een verwijzing naar de bijbehorende inhouds definitie-id.
 
-De Orchestration-stappen kunnen voorwaardelijk worden uitgevoerd op basis van de voor waarden die zijn gedefinieerd in het gedeelte van de Orchestration-stap. U kunt bijvoorbeeld alleen controleren of er een indelings stap wordt uitgevoerd als er sprake is van een specifieke claim of dat een claim gelijk is aan de opgegeven waarde. 
+De Orchestration-stappen kunnen voorwaardelijk worden uitgevoerd op basis van de voor waarden die zijn gedefinieerd in het gedeelte van de Orchestration-stap. U kunt bijvoorbeeld alleen controleren of er een indelings stap wordt uitgevoerd als er sprake is van een specifieke claim of dat een claim gelijk is aan de opgegeven waarde.
 
 Als u de geordende lijst met Orchestration-stappen wilt opgeven, wordt een **OrchestrationSteps** -element toegevoegd als onderdeel van het beleid. Dit element is vereist.
 
@@ -57,50 +57,50 @@ Het element **OrchestrationSteps** bevat het volgende element:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| OrchestrationStep | 1: n | Een geordende Orchestration-stap. | 
+| OrchestrationStep | 1: n | Een geordende Orchestration-stap. |
 
 Het **OrchestrationStep** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Order` | Ja | De volg orde van de Orchestration-stappen. | 
-| `Type` | Ja | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> | 
-| ContentDefinitionReferenceId | Nee | De id van de [inhouds definitie](contentdefinitions.md) die aan deze Orchestration-stap is gekoppeld. Normaal gesp roken wordt de verwijzings-id van de inhouds definitie gedefinieerd in het zelfondertekende technische profiel. Er zijn echter enkele gevallen waarin Azure AD B2C iets zonder technisch profiel moet weer geven. Er zijn twee voor beelden `CombinedSignInAndSignUp``ClaimsProviderSelection`: als u het type van de indelings stap een van de volgende opties wilt zien, moet Azure AD B2C de selectie van de identiteits provider weer geven zonder technisch profiel. | 
+| `Order` | Ja | De volg orde van de Orchestration-stappen. |
+| `Type` | Ja | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
+| ContentDefinitionReferenceId | Nee | De id van de [inhouds definitie](contentdefinitions.md) die aan deze Orchestration-stap is gekoppeld. Normaal gesp roken wordt de verwijzings-id van de inhouds definitie gedefinieerd in het zelfondertekende technische profiel. Er zijn echter enkele gevallen waarin Azure AD B2C iets zonder technisch profiel moet weer geven. Er zijn twee voor beelden `CombinedSignInAndSignUp``ClaimsProviderSelection`: als u het type van de indelings stap een van de volgende opties wilt zien, moet Azure AD B2C de selectie van de identiteits provider weer geven zonder technisch profiel. |
 | CpimIssuerTechnicalProfileReferenceId | Nee | Het type van de Orchestration-stap is `SendClaims`. Met deze eigenschap wordt de technische profiel-id gedefinieerd van de claim provider die het token voor de Relying Party verleent.  Als dat niet het geval is, wordt er geen Relying Party token gemaakt. |
 
 
 Het **OrchestrationStep** -element kan de volgende elementen bevatten:
 
 | Element | Instanties | Beschrijving |
-| ------- | ----------- | ----------- | 
-| Voor waarden | 0: n | Een lijst met voor waarden waaraan moet worden voldaan om de Orchestration-stap uit te voeren. | 
-| ClaimsProviderSelections | 0: n | Een lijst van claim provider selecties voor de Orchestration-stap. | 
-| ClaimsExchanges | 0: n | Een lijst met claim uitwisselingen voor de Orchestration-stap. | 
+| ------- | ----------- | ----------- |
+| Voor waarden | 0: n | Een lijst met voor waarden waaraan moet worden voldaan om de Orchestration-stap uit te voeren. |
+| ClaimsProviderSelections | 0: n | Een lijst van claim provider selecties voor de Orchestration-stap. |
+| ClaimsExchanges | 0: n | Een lijst met claim uitwisselingen voor de Orchestration-stap. |
 
 ### <a name="preconditions"></a>Voor waarden
 
 Het element **voor waarden** bevat het volgende element:
 
 | Element | Instanties | Beschrijving |
-| ------- | ----------- | ----------- | 
-| Precondition | 1: n | Afhankelijk van het technische profiel dat wordt gebruikt, wordt de client omgeleid volgens de selectie van de claim provider of wordt een server aanroep naar Exchange-claims. | 
+| ------- | ----------- | ----------- |
+| Precondition | 1: n | Afhankelijk van het technische profiel dat wordt gebruikt, wordt de client omgeleid volgens de selectie van de claim provider of wordt een server aanroep naar Exchange-claims. |
 
 
 #### <a name="precondition"></a>Precondition
 
 Het element **voor waarde** bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor deze voor waarde. De waarde kan **ClaimsExist**zijn, waarmee wordt aangegeven dat de acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker of **ClaimEquals**, waarmee wordt aangegeven dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
-| `ExecuteActionsIf` | Ja | Gebruik een test waar of ONWAAR om te bepalen of de acties in de voor waarde moeten worden uitgevoerd. | 
+| `ExecuteActionsIf` | Ja | Gebruik een test waar of ONWAAR om te bepalen of de acties in de voor waarde moeten worden uitgevoerd. |
 
 De elementen in de **voor waarde** bevatten de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Waarde | 1: n | Er wordt een ClaimTypeReferenceId waarvoor een query moet worden uitgevoerd. Een ander value-element bevat de waarde die moet worden gecontroleerd.</li></ul>|
-| Actie | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een indelings stap waar. Als de waarde van de `Action` is ingesteld op `SkipThisOrchestrationStep`, moeten de bijbehorende `OrchestrationStep` niet worden uitgevoerd. | 
+| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een indelings stap waar. Als de waarde van de `Action` is ingesteld op `SkipThisOrchestrationStep`, moeten de bijbehorende `OrchestrationStep` niet worden uitgevoerd. |
 
 #### <a name="preconditions-examples"></a>Voor beelden van voor waarden
 
@@ -151,7 +151,7 @@ Voor waarden kunnen meerdere voor waarden controleren. In het volgende voor beel
       <Value>email</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
-  </Preconditions>      
+  </Preconditions>
   <ClaimsExchanges>
     <ClaimsExchange Id="SelfAsserted-SocialEmail" TechnicalProfileReferenceId="SelfAsserted-SocialEmail" />
   </ClaimsExchanges>
@@ -168,17 +168,17 @@ Het element **ClaimsProviderSelections** bevat het volgende element:
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1: n | Geeft de lijst met claim providers die kunnen worden geselecteerd.|
 
-Het **ClaimsProviderSelections** -element bevat de volgende kenmerken: 
+Het **ClaimsProviderSelections** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| DisplayOption| Nee | Hiermee bepaalt u het gedrag van een geval waarbij één claim provider selectie beschikbaar is. Mogelijke waarden: `DoNotShowSingleProvider` (standaard), wordt de gebruiker direct omgeleid naar de federatieve id-provider. Of `ShowSingleProvider` Azure AD B2C de aanmeldings pagina wordt weer gegeven met de ID-provider selectie. Als u dit kenmerk wilt gebruiken, moet de versie van de [inhouds definitie](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` en hoger zijn.| 
+| DisplayOption| Nee | Hiermee bepaalt u het gedrag van een geval waarbij één claim provider selectie beschikbaar is. Mogelijke waarden: `DoNotShowSingleProvider` (standaard), wordt de gebruiker direct omgeleid naar de federatieve id-provider. Of `ShowSingleProvider` Azure AD B2C de aanmeldings pagina wordt weer gegeven met de ID-provider selectie. Als u dit kenmerk wilt gebruiken, moet de versie van de [inhouds definitie](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` en hoger zijn.|
 
-Het **ClaimsProviderSelection** -element bevat de volgende kenmerken: 
+Het **ClaimsProviderSelection** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Nee | De id van de claim uitwisseling, die wordt uitgevoerd in de volgende Orchestration-stap van de claim provider selectie. Dit kenmerk of het kenmerk ValidationClaimsExchangeId moet worden opgegeven, maar niet beide. | 
+| TargetClaimsExchangeId | Nee | De id van de claim uitwisseling, die wordt uitgevoerd in de volgende Orchestration-stap van de claim provider selectie. Dit kenmerk of het kenmerk ValidationClaimsExchangeId moet worden opgegeven, maar niet beide. |
 | ValidationClaimsExchangeId | Nee | De id van de claim uitwisseling, die wordt uitgevoerd in de huidige Orchestration-stap om de claim provider selectie te valideren. Dit kenmerk of het kenmerk TargetClaimsExchangeId moet worden opgegeven, maar niet beide. |
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection-voor beeld
@@ -195,7 +195,7 @@ In de volgende indelings stap kan de gebruiker kiezen om u aan te melden met Fac
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
     </ClaimsProviderSelections>
     <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange" 
+    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
                     TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
     </ClaimsExchanges>
 </OrchestrationStep>
@@ -224,11 +224,11 @@ Het element **ClaimsExchanges** bevat het volgende element:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 1: n | Afhankelijk van het gebruikte technische profiel wordt de client omgeleid op basis van de ClaimsProviderSelection die is geselecteerd, of wordt een server aanroep naar Exchange-claims. | 
+| ClaimsExchange | 1: n | Afhankelijk van het gebruikte technische profiel wordt de client omgeleid op basis van de ClaimsProviderSelection die is geselecteerd, of wordt een server aanroep naar Exchange-claims. |
 
 Het **ClaimsExchange** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id van de Exchange-stap voor claims. De id wordt gebruikt om te verwijzen naar de claim uitwisseling van een selectie stap van een claim provider in het beleid. | 
+| Id | Ja | Een id van de Exchange-stap voor claims. De id wordt gebruikt om te verwijzen naar de claim uitwisseling van een selectie stap van een claim provider in het beleid. |
 | TechnicalProfileReferenceId | Ja | De id van het technische profiel dat moet worden uitgevoerd. |

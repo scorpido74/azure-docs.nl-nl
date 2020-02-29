@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bc76f8edc8520ca50cd4c9527b037d99d24ce63c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767939"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190497"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven.
@@ -31,7 +31,7 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 
 ### <a name="azure-ad"></a>Azure AD
 * Een Azure AD-tenant. U krijgt er een met een [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/). U kunt een van de volgende portals gebruiken voor het beheren van Azure AD Connect:
-  * De [Azure-portal](https://portal.azure.com).
+  * Het [Azure Portal](https://portal.azure.com).
   * De [Office-Portal](https://portal.office.com).  
 * [Voeg en controleer het domein](../active-directory-domains-add-azure-portal.md) dat u wilt gebruiken in azure AD. Als u bijvoorbeeld van plan bent om contoso.com te gebruiken voor uw gebruikers, moet u ervoor zorgen dat dit domein is geverifieerd en dat u niet alleen gebruikmaakt van het standaard domein contoso.onmicrosoft.com.
 * Een Azure AD-Tenant maakt standaard 50.000-objecten mogelijk. Wanneer u uw domein verifieert, wordt de limiet verhoogd naar 300 KB-objecten. Als u nog meer objecten in azure AD nodig hebt, moet u een ondersteunings aanvraag openen om de limiet nog verder te verg root. Als u meer dan 500.000-objecten nodig hebt, hebt u een licentie nodig, zoals Office 365, Azure AD Basic, Azure AD Premium of ENTER prise Mobility en Security.
@@ -67,7 +67,7 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 
 * Implementeer Azure AD Connect op een server die lid is van een domein en beperk beheerders toegang tot domein beheerders of andere nauw beheerde beveiligings groepen.
 
-Voor meer informatie zie: 
+Raadpleeg voor meer informatie: 
 
 * [Beheerders groepen beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
@@ -86,8 +86,8 @@ Voor meer informatie zie:
 
 ### <a name="accounts"></a>Accounts
 * Een Azure AD Global Administrator-account voor de Azure AD-Tenant waarmee u wilt integreren. Dit account moet een **school-of organisatie account** zijn en kan geen **Microsoft-account**zijn.
-* Als u snelle instellingen gebruikt of als u een upgrade uitvoert van DirSync, moet u een beheerders account voor de onderneming hebben voor uw on-premises Active Directory.
-* [Accounts in Active Directory](reference-connect-accounts-permissions.md) als u het installatiepad voor aangepaste instellingen of een beheerders account voor ondernemingen gebruikt voor uw on-premises Active Directory.
+* Als u [snelle instellingen](reference-connect-accounts-permissions.md#express-settings-installation) gebruikt of als u een upgrade uitvoert van DirSync, moet u een beheerders account voor de onderneming hebben voor uw on-premises Active Directory.
+* Als u het installatiepad van aangepaste instellingen gebruikt, hebt u meer opties Zie [accounts in Active Directory](reference-connect-accounts-permissions.md#custom-installation-settings)
 
 ### <a name="connectivity"></a>Connectiviteit
 * De Azure AD Connect-server moet de DNS-omzetting voor intranet en Internet hebben. De DNS-server moet namen kunnen omzetten naar uw on-premises Active Directory en de Azure AD-eind punten.

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/02/2019
+ms.date: 02/28/2020
 ms.author: juliako
-ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505784"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197858"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
@@ -77,7 +77,26 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
 * Live-uitvoer starten zodra ze zijn gemaakt en stoppen wanneer ze worden verwijderd. Program ma's hebben in de v2-Api's anders gewerkt, maar ze moesten worden gestart na het maken.
 * Als u informatie over een taak wilt ontvangen, moet u de naam van de trans formatie weten waaronder de taak is gemaakt. 
 * In v2 worden XML- [invoer](../previous/media-services-input-metadata-schema.md) -en [uitvoer](../previous/media-services-output-metadata-schema.md) -meta gegevensbestanden gegenereerd als resultaat van een coderings taak. In v3 wordt de meta gegevens indeling gewijzigd van XML naar JSON. 
+* In Media Services v2 kunt u de initialisatie vector (IV) opgeven. In Media Services v3 kan de FairPlay IV niet worden opgegeven. Hoewel dit geen invloed heeft op klanten die Media Services gebruiken voor zowel verpakking als licentie levering, kan het een probleem zijn bij het gebruik van een DRM-systeem van derden voor het leveren van de FairPlay-licenties (hybride modus). In dat geval is het belang rijk te weten dat de FairPlay IV is afgeleid van de cbcs-sleutel-ID en kan worden opgehaald met behulp van de volgende formule:
 
+    ```
+    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
+    ```
+
+    door
+
+    ``` 
+    public static byte[] HexStringToByteArray(string hex)
+    {
+        return Enumerable.Range(0, hex.Length)
+            .Where(x => x % 2 == 0)
+            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+            .ToArray();
+    }
+    ```
+
+    Zie voor meer informatie de [Azure functions C# code voor Media Services v3 in de hybride modus voor zowel live als VOD-bewerkingen](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
+ 
 > [!NOTE]
 > Bekijk de naamgevings regels die worden toegepast op [Media Services v3-resources](media-services-apis-overview.md#naming-conventions). Bekijk ook [naamgevings-blobs](assets-concept.md#naming).
 

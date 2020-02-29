@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717681"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191942"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>& Classificatie van Azure SQL Database en Azure Synapse Analytics-gegevens detectie
 
 Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het **detecteren**, **classificeren**, **labelen** & **rapportage** van de gevoelige gegevens in uw data bases.
 
@@ -32,7 +33,7 @@ Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, fina
 Gegevens detectie & classificatie maakt deel uit van de aanbieding voor [geavanceerde gegevens beveiliging](sql-database-advanced-data-security.md) (ADS), een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. gegevens detectie & classificatie kan worden gebruikt en beheerd via de centrale SQL ADS-Portal.
 
 > [!NOTE]
-> Dit document is gekoppeld aan Azure SQL Database en Azure SQL Data Warehouse. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. Zie [SQL-gegevens detectie en-classificatie](https://go.microsoft.com/fwlink/?linkid=866999)voor SQL Server (on-premises).
+> Dit document is gekoppeld aan Azure SQL Database en Azure Synapse. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud. Zie [SQL-gegevens detectie en-classificatie](https://go.microsoft.com/fwlink/?linkid=866999)voor SQL Server (on-premises).
 
 ## <a id="subheading-1"></a>Wat is de classificatie van gegevens detectie &
 
@@ -138,7 +139,7 @@ Meer informatie over [RBAC voor Azure-resources](https://docs.microsoft.com/azur
 
 ## <a id="subheading-5"></a>Classificaties beheren
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, en alle classificaties voor de hele Data Base op te halen.
 
 > [!NOTE]
@@ -148,7 +149,7 @@ U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, 
 - De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Alle classificaties weer geven in de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Rest-Api's](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[Rest-Api's](#tab/azure-rest-api)
 U kunt REST-Api's gebruiken om classificaties en aanbevelingen programmatisch te beheren. De gepubliceerde REST Api's ondersteunen de volgende bewerkingen:
 
 - [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) : Hiermee wordt het gevoeligheids label van een bepaalde kolom gemaakt of bijgewerkt
@@ -159,7 +160,7 @@ U kunt REST-Api's gebruiken om classificaties en aanbevelingen programmatisch te
 - [Lijst huidige per data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) : Hiermee worden de huidige gevoeligheids labels van een bepaalde data base opgehaald
 - [Lijst aanbevolen door data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) : Hiermee wordt de aanbevolen gevoeligheids labels van een bepaalde data base opgehaald
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[Power shell-cmdlet](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[Power shell-cmdlet](#tab/azure-powelshell)
 U kunt Power shell gebruiken om classificaties en aanbevelingen voor Azure SQL Database en een beheerd exemplaar te beheren.
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>Power shell-cmdlet voor Azure SQL Database

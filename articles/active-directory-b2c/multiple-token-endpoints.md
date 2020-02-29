@@ -3,20 +3,20 @@ title: OWIN-based web-Api's migreren naar b2clogin.com
 titleSuffix: Azure AD B2C
 description: Meer informatie over het inschakelen van een .NET-Web-API voor het ondersteunen van tokens die zijn uitgegeven door meerdere token verleners terwijl u uw toepassingen migreert naar b2clogin.com.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840397"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184091"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een op OWIN gebaseerde web-API migreren naar b2clogin.com
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de token Uitgever geldig zijn.
 
 1. Open de oplossing **B2C-WebAPI-dotnet. SLN** in Visual Studio
-1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\**startup.auth.cs**.* in uw editor
+1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\* * startup.auth.cs** * in uw editor
 1. Voeg de volgende `using`-instructie toe aan het begin van het bestand:
 
     `using System.Collections.Generic;`
@@ -123,7 +123,7 @@ Zoals eerder vermeld, bieden andere OWIN-bibliotheken doorgaans een vergelijk ba
 
 Wanneer beide Uri's nu door de Web-API worden ondersteund, moet u uw webtoepassing nu bijwerken zodat de tokens worden opgehaald uit het b2clogin.com-eind punt.
 
-U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt `ida:AadInstance` door de waarde in het bestand *project taskwebapp\\**web. config**.* van het **project taskwebapp** -project te wijzigen.
+U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt door de `ida:AadInstance` waarde in het bestand *project taskwebapp\\* * web. config** * van het **project taskwebapp** -project te wijzigen.
 
 Wijzig de `ida:AadInstance` waarde in *Web. config* of project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van `login.microsoftonline.com`.
 

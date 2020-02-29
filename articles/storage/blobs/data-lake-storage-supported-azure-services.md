@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 71df31562971af8bcdb38be76894c1d0abeccc3f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925577"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195355"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-Services die ondersteuning bieden voor Azure Data Lake Storage Gen2
 
 U kunt Azure-Services gebruiken om gegevens op te nemen, analyses uit te voeren en visuele weer gaven te maken. In dit artikel vindt u een lijst met ondersteunde Azure-Services, wordt het bijbehorende ondersteunings niveau afgesloten en vindt u koppelingen naar artikelen die u helpen bij het gebruik van deze services met Azure Data Lake Storage Gen2.
 
-## <a name="supportedazureservices"></a>Ondersteunde Azure-Services
+## <a name="supported-azure-services"></a>Ondersteunde Azure-Services
 
 Deze tabel geeft een lijst van de Azure-Services die u kunt gebruiken met Azure Data Lake Storage Gen2. De items die in deze tabellen worden weer gegeven, worden in de loop van de tijd gewijzigd, omdat de ondersteuning blijft toenemen.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: Compute Scale-T-SQL '
-description: Schaal Compute in Azure SQL Data Warehouse met behulp van T-SQL en SSMS (SQL Server Management Studio). De schaal van rekenkracht vergroten voor betere prestaties of de schaal juist verkleinen om kosten te besparen.
+title: Schaal berekenen in azure Synapse Analytics-T-SQL
+description: Schaal Compute in azure Synapse Analytics met T-SQL en SQL Server Management Studio (SSMS). Vergroot de schaal van Compute voor betere prestaties, of verklein de schaal juist om kosten te besparen.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a6d47a41375c00b9bdad5079f8e1f11cf369120a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685941"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200392"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Quickstart: Compute schalen in Azure SQL Data Warehouse met behulp van T-SQL
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Snelstartgids: Compute scale in azure Synapse Analytics met T-SQL
 
-Schaal Compute in Azure SQL Data Warehouse met behulp van T-SQL en SSMS (SQL Server Management Studio). [Schaal rekenkracht uit](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties of verklein de schaal om kosten te besparen. 
+Schaal Compute in azure Synapse Analytics (voorheen SQL DW) met behulp van T-SQL en SQL Server Management Studio (SSMS). [Vergroot de schaal van Compute](sql-data-warehouse-manage-compute-overview.md) voor betere prestaties, of verklein de schaal juist om kosten te besparen. 
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -30,7 +30,7 @@ Download en installeer de nieuwste versie van [SSMS](/sql/ssms/download-sql-serv
  
 ## <a name="create-a-data-warehouse"></a>Een datawarehouse maken
 
-Gebruik [Quickstart: Create and Connect - portal](create-data-warehouse-portal.md) (Quickstart: maken en verbinden - portal) om een datawarehouse te maken met de naam **mySampleDataWarehouse**. Voltooi de quickstart om ervoor te zorgen dat u een firewallregel hebt en dat u vanuit SQL Server Management Studio verbinding kunt maken met uw datawarehouse.
+Gebruik [Quickstart: Create and Connect - portal](create-data-warehouse-portal.md) (Quickstart: maken en verbinden - portal) om een datawarehouse te maken met de naam **mySampleDataWarehouse**. Voltooi de Quick Start om ervoor te zorgen dat u over een firewall regel beschikt en verbinding kunt maken met uw data warehouse vanuit SQL Server Management Studio.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Als serverbeheerder verbinding maken met de server
 
@@ -43,25 +43,25 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
    | Instelling       | Voorgestelde waarde | Beschrijving | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Servertype | Database-engine | Deze waarde is verplicht |
-   | Servernaam | De volledig gekwalificeerde servernaam | Hier volgt een voorbeeld: **mynewserver-20171113.database.windows.net**. |
-   | Verificatie | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
+   | Servernaam | De volledig gekwalificeerde servernaam | Hier volgt een voor beeld: **mySampleDataWarehouseservername.database.Windows.net**. |
+   | Authentication | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
    | Aanmelden | Het beheerdersaccount voor de server | Het account dat u hebt opgegeven tijdens het maken van de server. |
-   | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
+   | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Het wacht woord dat u hebt opgegeven tijdens het maken van de server. |
 
-    ![verbinding maken met server](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![Verbinding maken met de server](media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-4. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+3. Klik op **Verbinding maken**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
-5. Vouw **Databases** uit in Objectverkenner. Vouw vervolgens **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
+4. Vouw **Databases** uit in Objectverkenner. Vouw vervolgens **mySampleDataWarehouse** uit om de objecten in uw nieuwe Data Base weer te geven.
 
-    ![databaseobjecten](media/create-data-warehouse-portal/connected.png) 
+    ![Database objecten](media/quickstart-scale-compute-tsql/connected.png)
 
 ## <a name="view-service-objective"></a>Servicedoelstelling weergeven
 De instelling voor de servicedoelstelling bevat het aantal DWU’s voor de datawarehouse. 
 
 De huidige DWU’s voor uw datawarehouse bekijken:
 
-1. Vouw onder de verbinding met **mynewserver-20171113.database.windows.net** de optie **Systeemdatabases** uit.
+1. Onder de verbinding met **mySampleDataWarehouseservername.database.Windows.net**, vouwt u **systeem databases**uit.
 2. Klik met de rechtermuisknop op **master** en selecteer **Nieuwe query**. Een nieuwe queryvenster wordt geopend.
 3. Voer de volgende query uit om een selectie te maken in de dynamische beheerweergave sys.database_service_objectives. 
 
@@ -80,11 +80,10 @@ De huidige DWU’s voor uw datawarehouse bekijken:
 
 4. In de volgende resultaten ziet u dat **mySampleDataWarehouse** een servicedoelstelling van DW400 heeft. 
 
-    ![Huidige DWU’s weergeven](media/quickstart-scale-compute-tsql/view-current-dwu.png)
-
+    ![Details-Current-dwu](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>De schaal van Compute aanpassen
-In SQL Data Warehouse kunt u het aantal rekenresources verhogen of verlagen door de DWU’s aan te passen. Met behulp van [Maken en verbinden - portal](create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU’s voor **mySampleDataWarehouse** aangepast.
+In azure Synapse kunt u de reken resources verg Roten of verkleinen door Data Warehouse-eenheden aan te passen. Met behulp van [Maken en verbinden - portal](create-data-warehouse-portal.md) is **mySampleDataWarehouse** gemaakt en vervolgens gestart met 400 DWU's. In de volgende stappen wordt het aantal DWU’s voor **mySampleDataWarehouse** aangepast.
 
 DWU’s wijzigen:
 
@@ -93,8 +92,7 @@ DWU’s wijzigen:
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
-    ;
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c');
     ```
 
 ## <a name="monitor-scale-change-request"></a>Schaalaanpassingsverzoek controleren
@@ -113,7 +111,7 @@ Op de volgende manier peilt u de aanpassingsstatus van het serviceobject:
         WHERE 
             1=1
             AND resource_type_desc = 'Database'
-            AND major_resource_id = 'MySampleDataWarehouse'
+            AND major_resource_id = 'mySampleDataWarehouse'
             AND operation = 'ALTER DATABASE'
         ORDER BY
             start_time DESC
@@ -134,7 +132,7 @@ Als een datawarehouse wordt onderbroken, kunt u deze niet verbinden met T-SQL. A
 
 ## <a name="check-operation-status"></a>Bewerkingsstatus controleren
 
-Voer de volgende query uit in de DMV [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) om informatie te krijgen over de verschillende beheerbewerkingen in uw SQL-datawarehouse. Zo wordt bijvoorbeeld de bewerking en de status van de bewerking (IN_PROGRESS of COMPLETED) geretourneerd.
+Voer de volgende query uit op de [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) dmv om informatie over verschillende beheer bewerkingen op uw Azure Synapse te retour neren. Zo wordt bijvoorbeeld de bewerking en de status van de bewerking (IN_PROGRESS of COMPLETED) geretourneerd.
 
 ```sql
 SELECT *
@@ -143,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySampleDataWarehouse'
+    major_resource_id = 'mySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt nu geleerd hoe u de rekenkracht voor uw datawarehouse wijzigt. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
+U hebt nu geleerd hoe u de rekenkracht voor uw datawarehouse wijzigt. Voor meer informatie over Azure Synapse, gaat u verder met de zelf studie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]
->[Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)
+>[Gegevens laden in een Azure Synapse-analyse](load-data-from-azure-blob-storage-using-polybase.md)

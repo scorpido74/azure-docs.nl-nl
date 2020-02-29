@@ -2,21 +2,21 @@
 title: Stroom van autorisatie code-Azure Active Directory B2C | Microsoft Docs
 description: Meer informatie over het bouwen van web-apps met behulp van Azure AD B2C en OpenID Connect Connect Authentication Protocol.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6ddfefb69e53ec4801d913e01b00158a4905d2df
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8248ca0abb1d633786b09b894bcd6b1089ab2d8c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846937"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190072"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2,0-autorisatie code stroom in Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Azure AD B2C breidt de standaard OAuth 2,0-stromen uit om meer dan eenvoudige ve
 
 De HTTP-aanvragen in dit artikel proberen:
 
-1. Vervang `{tenant}` met de naam van uw Azure AD B2C-tenant.
+1. Vervang `{tenant}` door de naam van uw Azure AD B2C Tenant.
 1. Vervang `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` door de App-ID van een toepassing die u eerder hebt geregistreerd in uw Azure AD B2C Tenant.
 1. Vervang `{policy}` door de naam van een beleid dat u hebt gemaakt in uw Tenant, bijvoorbeeld `b2c_1_sign_in`.
 
@@ -54,12 +54,12 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | Parameter | Vereist? | Beschrijving |
 | --- | --- | --- |
-|bouw| Verplicht | De naam van uw Azure AD B2C-Tenant|
-| verslaggev | Verplicht | De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of `b2c_1_edit_profile`. |
-| client_id |Verplicht |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com). |
-| response_type |Verplicht |Het antwoord type, dat `code` moet bevatten voor de autorisatie code stroom. |
-| redirect_uri |Verplicht |De omleidings-URI van uw app, waar verificatie reacties worden verzonden en ontvangen door uw app. De waarde moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd, behalve dat de URL moet worden gecodeerd. |
-| scope |Verplicht |Een lijst met door spaties gescheiden bereiken. Een enkele bereik waarde geeft aan Azure Active Directory (Azure AD) beide machtigingen die worden aangevraagd. Het gebruik van de client-ID als het bereik geeft aan dat uw app een toegangs token nodig heeft dat kan worden gebruikt voor uw eigen service of Web-API, die wordt vertegenwoordigd door dezelfde client-ID.  Het `offline_access` bereik geeft aan dat uw app een vernieuwings token nodig heeft voor lange levens toegang tot bronnen. U kunt ook het `openid` bereik gebruiken om een ID-token aan te vragen bij Azure AD B2C. |
+|bouw| Vereist | De naam van uw Azure AD B2C-Tenant|
+| verslaggev | Vereist | De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of `b2c_1_edit_profile`. |
+| client_id |Vereist |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com). |
+| response_type |Vereist |Het antwoord type, dat `code` moet bevatten voor de autorisatie code stroom. |
+| redirect_uri |Vereist |De omleidings-URI van uw app, waar verificatie reacties worden verzonden en ontvangen door uw app. De waarde moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd, behalve dat de URL moet worden gecodeerd. |
+| scope |Vereist |Een lijst met door spaties gescheiden bereiken. Een enkele bereik waarde geeft aan Azure Active Directory (Azure AD) beide machtigingen die worden aangevraagd. Het gebruik van de client-ID als het bereik geeft aan dat uw app een toegangs token nodig heeft dat kan worden gebruikt voor uw eigen service of Web-API, die wordt vertegenwoordigd door dezelfde client-ID.  Het `offline_access` bereik geeft aan dat uw app een vernieuwings token nodig heeft voor lange levens toegang tot bronnen. U kunt ook het `openid` bereik gebruiken om een ID-token aan te vragen bij Azure AD B2C. |
 | response_mode |Aanbevolen |De methode die u gebruikt om de resulterende autorisatie code terug te sturen naar uw app. Dit kan `query`, `form_post`of `fragment`zijn. |
 | state |Aanbevolen |Een waarde die in de aanvraag is opgenomen en die een teken reeks kan zijn van alle inhoud die u wilt gebruiken. Normaal gesp roken wordt een wille keurig gegenereerde unieke waarde gebruikt om vervalsing van aanvragen op meerdere sites te voor komen. De status wordt ook gebruikt om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is opgetreden. Bijvoorbeeld de pagina waarop de gebruiker zich bevond of de gebruikers stroom die werd uitgevoerd. |
 | verschijnt |Optioneel |Het type gebruikers interactie dat is vereist. Op dit moment is de enige geldige waarde `login`, die ervoor zorgt dat de gebruiker de referenties voor die aanvraag invoert. Eenmalige aanmelding wordt niet van kracht. |
@@ -112,14 +112,14 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parameter | Vereist? | Beschrijving |
 | --- | --- | --- |
-|bouw| Verplicht | De naam van uw Azure AD B2C-Tenant|
-|verslaggev| Verplicht| De gebruikers stroom die is gebruikt om de autorisatie code op te halen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. |
-| client_id |Verplicht |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com).|
+|bouw| Vereist | De naam van uw Azure AD B2C-Tenant|
+|verslaggev| Vereist| De gebruikers stroom die is gebruikt om de autorisatie code op te halen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. |
+| client_id |Vereist |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com).|
 | client_secret | Ja, in Web Apps | Het toepassings geheim dat is gegenereerd in de [Azure Portal](https://portal.azure.com/). Client geheimen worden gebruikt in deze stroom voor web-app-scenario's, waarbij de client veilig een client geheim kan opslaan. Voor scenario's met een systeem eigen app (open bare client) kunnen client geheimen niet veilig worden opgeslagen en worden ze daarom niet in deze aanroep gebruikt. Als u een client geheim gebruikt, moet u het periodiek wijzigen. |
-| grant_type |Verplicht |Het type toekenning. Voor de autorisatie code stroom moet het toekennings type `authorization_code`zijn. |
+| grant_type |Vereist |Het type toekenning. Voor de autorisatie code stroom moet het toekennings type `authorization_code`zijn. |
 | scope |Aanbevolen |Een lijst met door spaties gescheiden bereiken. Een enkele Scope waarde geeft aan dat er voor Azure AD beide machtigingen worden aangevraagd. Het gebruik van de client-ID als het bereik geeft aan dat uw app een toegangs token nodig heeft dat kan worden gebruikt voor uw eigen service of Web-API, die wordt vertegenwoordigd door dezelfde client-ID.  Het `offline_access` bereik geeft aan dat uw app een vernieuwings token nodig heeft voor lange levens toegang tot bronnen.  U kunt ook het `openid` bereik gebruiken om een ID-token aan te vragen bij Azure AD B2C. |
-| code |Verplicht |De autorisatie code die u hebt verkregen in het eerste gedeelte van de stroom. |
-| redirect_uri |Verplicht |De omleidings-URI van de toepassing waarvoor u de autorisatie code hebt ontvangen. |
+| code |Vereist |De autorisatie code die u hebt verkregen in het eerste gedeelte van de stroom. |
+| redirect_uri |Vereist |De omleidings-URI van de toepassing waarvoor u de autorisatie code hebt ontvangen. |
 
 Een geslaagd token antwoord ziet er als volgt uit:
 
@@ -178,14 +178,14 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | Parameter | Vereist? | Beschrijving |
 | --- | --- | --- |
-|bouw| Verplicht | De naam van uw Azure AD B2C-Tenant|
-|verslaggev |Verplicht |De gebruikers stroom die is gebruikt om het oorspronkelijke vernieuwings token te verkrijgen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. |
-| client_id |Verplicht |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com). |
+|bouw| Vereist | De naam van uw Azure AD B2C-Tenant|
+|verslaggev |Vereist |De gebruikers stroom die is gebruikt om het oorspronkelijke vernieuwings token te verkrijgen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. |
+| client_id |Vereist |De toepassings-ID die is toegewezen aan uw app in de [Azure Portal](https://portal.azure.com). |
 | client_secret | Ja, in Web Apps | Het toepassings geheim dat is gegenereerd in de [Azure Portal](https://portal.azure.com/). Client geheimen worden gebruikt in deze stroom voor web-app-scenario's, waarbij de client veilig een client geheim kan opslaan. Voor scenario's met een systeem eigen app (open bare client) kunnen client geheimen niet veilig worden opgeslagen en worden ze daarom niet in deze aanroep gebruikt. Als u een client geheim gebruikt, moet u het periodiek wijzigen. |
-| grant_type |Verplicht |Het type toekenning. Voor dit gedeelte van de autorisatie code stroom moet het toekennings type `refresh_token`zijn. |
+| grant_type |Vereist |Het type toekenning. Voor dit gedeelte van de autorisatie code stroom moet het toekennings type `refresh_token`zijn. |
 | scope |Aanbevolen |Een lijst met door spaties gescheiden bereiken. Een enkele Scope waarde geeft aan dat er voor Azure AD beide machtigingen worden aangevraagd. Het gebruik van de client-ID als het bereik geeft aan dat uw app een toegangs token nodig heeft dat kan worden gebruikt voor uw eigen service of Web-API, die wordt vertegenwoordigd door dezelfde client-ID.  Het `offline_access` bereik geeft aan dat uw app een vernieuwings token nodig heeft voor lange levens toegang tot bronnen.  U kunt ook het `openid` bereik gebruiken om een ID-token aan te vragen bij Azure AD B2C. |
 | redirect_uri |Optioneel |De omleidings-URI van de toepassing waarvoor u de autorisatie code hebt ontvangen. |
-| refresh_token |Verplicht |Het oorspronkelijke vernieuwings token dat u hebt verkregen in het tweede gedeelte van de stroom. |
+| refresh_token |Vereist |Het oorspronkelijke vernieuwings token dat u hebt verkregen in het tweede gedeelte van de stroom. |
 
 Een geslaagd token antwoord ziet er als volgt uit:
 

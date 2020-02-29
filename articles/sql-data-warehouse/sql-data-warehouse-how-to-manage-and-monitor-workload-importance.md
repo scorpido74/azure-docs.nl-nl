@@ -1,30 +1,30 @@
 ---
 title: Het belang van workload beheren en bewaken
-description: Meer informatie over het beheren en controleren van de urgentie van het aanvraag niveau in Azure SQL Data Warehouse.
+description: Meer informatie over het beheren en bewaken van de urgentie van het aanvraag niveau in azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 6274bff9f9c57bfb06e58e1c4bfce6b6e265ac62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692705"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195614"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>De urgentie van werk belastingen in Azure SQL Data Warehouse beheren en bewaken
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>De urgentie van werk belastingen in azure Synapse Analytics beheren en bewaken
 
-De urgentie van het aanvraag niveau beheren en bewaken in Azure SQL Data Warehouse met behulp van Dmv's en catalogus weergaven.
+Het niveau van de SQL Analytics-aanvraag niveaus in azure Synapse beheren en bewaken met behulp van Dmv's en catalogus weergaven.
 
 ## <a name="monitor-importance"></a>Controle prioriteit
 
-Bewaak de urgentie met behulp van de kolom nieuwe urgentie in de dynamische beheer weergave [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) .
+Controleer het belang van de kolom nieuwe urgentie in de weer gave [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) Dynamic Management.
 De onderstaande bewakings query toont de verzend tijd en start tijd voor query's. Controleer de verzend tijd en de begin tijd, samen met het belang om te zien hoe belang rijke planningen worden beïnvloed.
 
 ```sql
@@ -39,7 +39,7 @@ Gebruik de catalogus weergaven om verder te kijken hoe query's worden gepland.
 
 ## <a name="manage-importance-with-catalog-views"></a>Urgentie beheren met catalogus weergaven
 
-De catalogus weergave sys. workload_management_workload_classifiers bevat informatie over classificaties in uw Azure SQL Data Warehouse-exemplaar. Voer de volgende code uit om de door het systeem gedefinieerde classificaties uit te sluiten die worden toegewezen aan resource klassen:
+De catalogus weergave sys. workload_management_workload_classifiers bevat informatie over classificaties. Voer de volgende code uit om de door het systeem gedefinieerde classificaties uit te sluiten die worden toegewezen aan resource klassen:
 
 ```sql
 SELECT *

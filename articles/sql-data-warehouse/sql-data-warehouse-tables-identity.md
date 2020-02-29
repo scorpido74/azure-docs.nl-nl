@@ -1,6 +1,6 @@
 ---
 title: IDENTITEIT gebruiken om surrogaat sleutels te maken
-description: Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Azure SQL Data Warehouse.
+description: Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692464"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199424"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>IDENTITEIT gebruiken om surrogaat sleutels te maken in Azure SQL Data Warehouse
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>IDENTITEIT gebruiken om surrogaat sleutels in SQL Analytics te maken
 
-Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Azure SQL Data Warehouse.
+Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in SQL Analytics.
 
 ## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaat sleutel?
 
-Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd op basis van de tabel gegevens. Gegevens modelers zoals het maken van surrogaat sleutels in hun tabellen wanneer ze data warehouse modellen ontwerpen. U kunt met behulp van de IDENTITEITs eigenschap dit doel eenvoudig en effectief belasten zonder de belasting prestaties te beïnvloeden.  
+Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd op basis van de tabel gegevens. Gegevens modelers, zoals het maken van surrogaat sleutels in hun tabellen, wanneer ze SQL Analytics-modellen ontwerpen. U kunt met behulp van de IDENTITEITs eigenschap dit doel eenvoudig en effectief belasten zonder de belasting prestaties te beïnvloeden.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een IDENTITEITs kolom
 
-De IDENTITEITs eigenschap is ontworpen om uit te breiden over alle distributies in het Data Warehouse zonder de belasting prestaties te beïnvloeden. Daarom is de implementatie van de identiteit gericht op het bereiken van deze doel stellingen.
+De IDENTITEITs eigenschap is ontworpen om uit te breiden over alle distributies in de SQL Analytics-Data Base zonder de belasting prestaties te beïnvloeden. Daarom is de implementatie van de identiteit gericht op het bereiken van deze doel stellingen.
 
 U kunt een tabel definiëren met de IDENTITEITs eigenschap wanneer u de tabel voor het eerst maakt met behulp van syntaxis die vergelijkbaar is met de volgende instructie:
 
@@ -50,7 +50,7 @@ In dit rest gedeelte van deze sectie worden de nuances van de implementatie gema
 
 ### <a name="allocation-of-values"></a>Toewijzing van waarden
 
-De IDENTITEITs eigenschap biedt geen garantie voor de volg orde waarin de surrogaat waarden worden toegewezen, die het gedrag van SQL Server en Azure SQL Database weer spie gelen. In Azure SQL Data Warehouse is de afwezigheid van een garantie echter meer uitgesp roken.
+De IDENTITEITs eigenschap biedt geen garantie voor de volg orde waarin de surrogaat waarden worden toegewezen, die het gedrag van SQL Server en Azure SQL Database weer spie gelen. In SQL Analytics is het ontbreken van een garantie echter meer uitgesp roken.
 
 Het volgende voor beeld is een illustratie:
 
@@ -94,13 +94,13 @@ Wanneer een bestaande IDENTITEITs kolom is geselecteerd in een nieuwe tabel, nee
 
 Als aan een van deze voor waarden wordt voldaan, wordt de kolom niet NULL gemaakt in plaats van de IDENTITEITs eigenschap over te nemen.
 
-### <a name="create-table-as-select"></a>CREATE TABLE ALS SELECTEREN
+### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
 CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumenteerd voor SELECT.. Samen. U kunt echter geen IDENTITEITs eigenschap opgeven in de kolom definitie van het onderdeel `CREATE TABLE` van de instructie. U kunt de functie IDENTITY ook niet gebruiken in het `SELECT` onderdeel van de CTAS. Als u een tabel wilt vullen, moet u `CREATE TABLE` gebruiken om de tabel te definiëren, gevolgd door `INSERT..SELECT` om deze te vullen.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Expliciet waarden invoegen in een IDENTITEITs kolom
 
-SQL Data Warehouse ondersteunt `SET IDENTITY_INSERT <your table> ON|OFF`-syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
+SQL Analytics ondersteunt de syntaxis van `SET IDENTITY_INSERT <your table> ON|OFF`. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
 
 Veel gegevens modelers, zoals het gebruik van vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun dimensies. Een voor beeld is de rij-1 of het onbekende lid.
 
@@ -161,13 +161,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Het is niet mogelijk om `CREATE TABLE AS SELECT` momenteel te gebruiken bij het laden van gegevens in een tabel met een IDENTITEITs kolom.
 >
 
-Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor het Azure SQL Data Warehouse](design-elt-data-loading.md) en [het laden van best practices](guidance-for-loading-data.md).
+Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor SQL Analytics](design-elt-data-loading.md) en [Aanbevolen procedures laden](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systeemweergaven
 
 U kunt de catalogus weergave [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) gebruiken om een kolom te identificeren die de eigenschap Identity heeft.
 
-In dit voor beeld ziet u hoe u sys. identity_column kunt integreren met andere systeem catalogus weergaven, zodat u beter inzicht krijgt in het database schema:
+Dit voor beeld laat zien hoe u sys. identity_column integreert met andere systeem catalogus weergaven, zodat u meer inzicht krijgt in het database schema:
 
 ```sql
 SELECT  sm.name
@@ -195,7 +195,7 @@ De IDENTITEITs eigenschap kan niet worden gebruikt:
 - Wanneer de kolom ook de distributie sleutel is
 - Wanneer de tabel een externe tabel is
 
-De volgende gerelateerde functies worden niet ondersteund in SQL Data Warehouse:
+De volgende gerelateerde functies worden niet ondersteund in SQL Analytics:
 
 - [IDENTITEIT ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

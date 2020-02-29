@@ -1,6 +1,6 @@
 ---
-title: Serverconfiguratie
-description: Sorterings typen die worden ondersteund in Azure SQL Data Warehouse.
+title: Data Warehouse-sorterings typen
+description: Sorterings typen die worden ondersteund in de Azure Synapse Analytics SQL-groep.
 services: sql-data-warehouse
 author: antvgski
 manager: igorstan
@@ -9,21 +9,22 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 49a250a43c7b2654e1317981c853b0117fa0cf28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 67627e4157c85853cf05dd6b24ced968a9654e62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851788"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198436"
 ---
-# <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Ondersteuning voor database sortering voor Azure SQL Data Warehouse
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Ondersteuning voor database sortering voor Azure Synapse Analytics SQL-groep
 
-U kunt de standaard sortering van de data base wijzigen van de Azure Portal wanneer u een nieuwe Azure SQL Data Warehouse-data base maakt. Hierdoor is het eenvoudiger om een nieuwe Data Base te maken met behulp van een van de 3800 ondersteunde database sorteringen voor SQL Data Warehouse.
+U kunt de standaard sortering van de data base wijzigen van de Azure Portal wanneer u een nieuwe Azure Synapse SQL-groeps database maakt. Hierdoor is het nog eenvoudiger om een nieuwe Data Base te maken met behulp van een van de ondersteunde database sorteringen van 3800. 
+
 Met sorteringen kunt u de land instelling, de code pagina, de sorteer volgorde en de teken gevoeligheids regels voor gegevens typen op basis van tekens opgeven. Nadat u hebt gekozen, nemen alle kolommen en expressies die sorteer gegevens vereisen de gekozen sortering van de data base-instelling over. De standaard overname kan worden overschreven door expliciet een andere sortering voor een gegevens type op basis van een teken te vermelden.
 
 ## <a name="changing-collation"></a>Sortering wijzigen
-Als u de standaard sortering wilt wijzigen, kunt u eenvoudig bijwerken naar het veld sortering in de inrichtings ervaring.
+Als u de standaard sortering wilt wijzigen, moet u bijwerken naar het veld sortering in de inrichtings ervaring.
 
 Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig, wijzigt u de naam van de sortering van SQL_Latin1_General_CP1_CI_AS in SQL_Latin1_General_CP1_CS_AS. 
 
@@ -100,9 +101,12 @@ Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig,
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>De huidige sortering controleren
+
 Als u de huidige sortering voor de Data Base wilt controleren, kunt u het volgende T-SQL-fragment uitvoeren:
+
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
-Als Sortation is door gegeven als eigenschaps parameter, retourneert de functie DatabasePropertyEx de huidige sortering voor de opgegeven Data Base. Meer informatie over de functie DatabasePropertyEx vindt u op MSDN.
+
+Als Sortation is door gegeven als eigenschaps parameter, retourneert de functie DatabasePropertyEx de huidige sortering voor de opgegeven Data Base. Zie [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql)voor meer informatie.
 

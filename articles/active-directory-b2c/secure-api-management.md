@@ -2,20 +2,20 @@
 title: Een Azure API Management-API beveiligen met behulp van Azure Active Directory B2C
 description: Meer informatie over het gebruik van toegangs tokens die zijn uitgegeven door Azure Active Directory B2C voor het beveiligen van een Azure API Management API-eind punt.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641626"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186927"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Een Azure API Management-API beveiligen met Azure AD B2C
 
@@ -37,17 +37,17 @@ Wanneer u een API in azure API Management met Azure AD B2C beveiligt, hebt u ver
 
 U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (Unified app-registraties)** gebruiken om de toepassings-id op te halen. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer onder **beheren**de optie **toepassingen**.
 1. Noteer de waarde in de kolom **toepassings-id** voor *webapp1* of een andere toepassing die u eerder hebt gemaakt.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens het tabblad **toepassingen in eigendom** .

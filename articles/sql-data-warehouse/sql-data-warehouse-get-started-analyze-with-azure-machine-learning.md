@@ -1,22 +1,23 @@
 ---
 title: Gegevens analyseren met Azure Machine Learning
-description: Gebruik Azure Machine Learning om een voorspellend Machine Learning-model te maken dat is gebaseerd op gegevens die zijn opgeslagen in Azure SQL Data Warehouse.
+description: Gebruik Azure Machine Learning om een voorspellend machine learning model te maken op basis van gegevens die zijn opgeslagen in azure Synapse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721282"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195886"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Gegevens analyseren met Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721282"
 > 
 > 
 
-In deze zelfstudie wordt gebruikgemaakt van Azure Machine Learning om een voorspellend Machine Learning-model te maken dat is gebaseerd op gegevens die zijn opgeslagen in Azure SQL Data Warehouse. U maakt een gerichte marketingcampagne voor Adventure Works, de fietsenwinkel, door te voorspellen of een klant een fiets waarschijnlijk wel of niet zal kopen.
+In deze zelf studie wordt Azure Machine Learning gebruikt voor het bouwen van een voorspellend machine learning model op basis van gegevens die zijn opgeslagen in azure Synapse. U maakt een gerichte marketingcampagne voor Adventure Works, de fietsenwinkel, door te voorspellen of een klant een fiets waarschijnlijk wel of niet zal kopen.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ In deze zelfstudie wordt gebruikgemaakt van Azure Machine Learning om een voorsp
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een SQL Data Warehouse waarin AdventureWorksDW-voorbeeldgegevens zijn geladen. Zie voor het inrichten hiervan [Een SQL Data Warehouse maken](create-data-warehouse-portal.md) en kies ervoor om de voorbeeldgegevens te laden. Als u wel een datawarehouse hebt maar nog geen voorbeeldgegevens, kunt u [voorbeeldgegevens handmatig laden](sql-data-warehouse-load-sample-databases.md).
+* Een SQL-pool vooraf geladen met AdventureWorksDW-voorbeeld gegevens. Zie voor het inrichten van [een SQL-groep](create-data-warehouse-portal.md) en kies ervoor om de voorbeeld gegevens te laden. Als u wel een datawarehouse hebt maar nog geen voorbeeldgegevens, kunt u [voorbeeldgegevens handmatig laden](sql-data-warehouse-load-sample-databases.md).
 
 ## <a name="1-get-the-data"></a>1. de gegevens ophalen
 De gegevens bevinden zich in de weergave dbo.vTargetMail in de AdventureWorksDW-database. Deze gegevens lezen:
@@ -46,7 +47,7 @@ De gegevens bevinden zich in de weergave dbo.vTargetMail in de AdventureWorksDW-
 2. Klik op **+ Nieuw** linksonder in het scherm en selecteer **leeg experiment**.
 3. Voer een naam in voor uw experiment: Targeted Marketing.
 4. Sleep de module **gegevens importeren** onder **gegevens invoer en uitvoer** van het deel venster modules naar het canvas.
-5. Geef de details van uw SQL Data Warehouse-database op in het deelvenster Properties.
+5. Geef de details op van de SQL-groep in het deel venster Eigenschappen.
 6. Geef de database**query** op om de gewenste gegevens te lezen.
 
 ```sql
@@ -128,7 +129,7 @@ U ziet dat er twee of meer kolommen aan de testgegevensset zijn toegevoegd.
 * Scored Probabilities (Berekende kansen): de waarschijnlijkheid dat een klant een fiets koopt.
 * Scored Labels (Berekende Labels): de classificatie die door het model is uitgevoerd: fietskoper (1) of niet (0). Deze drempelwaarde voor waarschijnlijkheid voor labeling is ingesteld op 50% en kan worden aangepast.
 
-Door de kolom BikeBuyer (werkelijk) te vergelijken met de kolom Scored Labels (voorspelling), ziet u hoe goed het model heeft gepresteerd. Vervolgens kunt u dit model gebruiken om voor spellingen te doen voor nieuwe klanten en dit model als een webservice te publiceren of om resultaten terug te schrijven naar SQL Data Warehouse.
+Door de kolom BikeBuyer (werkelijk) te vergelijken met de kolom Scored Labels (voorspelling), ziet u hoe goed het model heeft gepresteerd. Vervolgens kunt u dit model gebruiken om voor spellingen te doen voor nieuwe klanten en dit model als een webservice te publiceren of om resultaten terug te schrijven naar Azure Synapse.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg [Inleiding tot Machine Learning in Azure](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/) voor meer informatie over het bouwen van voorspellende Machine Learning-modellen.

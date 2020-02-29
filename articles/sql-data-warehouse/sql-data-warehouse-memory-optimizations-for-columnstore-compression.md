@@ -1,6 +1,6 @@
 ---
 title: Prestaties van Column store-index verbeteren
-description: Azure SQL Data Warehouse de geheugen vereisten te verminderen of het beschik bare geheugen te verg Roten om het aantal rijen dat een column store-index in elke Rijg roep wordt gecomprimeerd, te maximaliseren.
+description: Verminder de geheugen vereisten of verg root het beschik bare geheugen om het aantal rijen binnen elke Rijg roep te maximaliseren.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685653"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197195"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximale Rijg roep-kwaliteit voor column Store
 
@@ -34,13 +34,13 @@ Voor de beste query prestaties is het doel het aantal rijen per Rijg roep in een
 
 Tijdens het opnieuw opbouwen van bulksgewijs laden of column store-index is er mogelijk onvoldoende geheugen beschikbaar om alle opgegeven rijen voor elke Rijg roep te comprimeren. Wanneer er geheugen druk is, verkleint column Store-indexen de Rijg roep-grootten zodat compressie naar de column Store kan slagen. 
 
-Als er onvoldoende geheugen is om ten minste 10.000 rijen in elk Rijg roep te comprimeren, SQL Data Warehouse een fout gegenereerd.
+Als er onvoldoende geheugen is om ten minste 10.000 rijen in elke Rijg roep te comprimeren, wordt er een fout gegenereerd.
 
 Zie [bulksgewijs laden in een geclusterde column store-index](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )voor meer informatie over bulksgewijs laden.
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Rijg roep-kwaliteit bewaken
 
-De DMV sys. DM _pdw_nodes_db_column_store_row_group_physical_stats ([sys. DM _db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) bevat de definitie van de weer gave die overeenkomt met de SQL-Data Base om te SQL Data Warehouse) die nuttige informatie beschikbaar maakt, zoals het aantal rijen in Rijg roepen en de reden voor het verkleinen van de beperking. U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
+De DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) bevat de weergave definitie die overeenkomt met de SQL-data base). deze geeft nuttige informatie weer, zoals het aantal rijen in Rijg roepen en de reden voor het bijsnijden als er een bijsnijden is gemaakt. U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -67,10 +67,10 @@ select *
 from cte;
 ```
 
-De trim_reason_desc vertelt of de Rijg roep is bijgesneden (trim_reason_desc = NO_TRIM impliceert dat er geen bijsnijd-en rijg groep van optimale kwaliteit is). De volgende redenen voor het verkorten van de Rijg roep zijn:
+De trim_reason_desc geeft aan of de Rijg roep is bijgesneden (trim_reason_desc = NO_TRIM impliceert dat er geen beperking is en dat de groep een optimale kwaliteit heeft). De volgende redenen voor het verkorten van de Rijg roep zijn:
 - BULKLOAD: deze trim reden wordt gebruikt wanneer de inkomende batch rijen voor de belasting minder dan 1.000.000 rijen bevat. De-engine maakt gecomprimeerde Rijg roepen als er meer dan 100.000 rijen worden ingevoegd (in plaats van in het Delta archief in te voegen), maar de reden voor het verkleinen van de groep wordt ingesteld op BULKLOAD. In dit scenario kunt u de batch-belasting verg Roten om meer rijen op te nemen. U kunt ook het partitie schema opnieuw evalueren om er zeker van te zijn dat het niet te granulair is als Rijg roepen geen partitie grenzen kunnen omvatten.
-- MEMORY_LIMITATION: om Rijg roepen met 1.000.000 rijen te maken, wordt een bepaalde hoeveelheid werk geheugen vereist door de engine. Wanneer het beschik bare geheugen van de laad sessie kleiner is dan het vereiste werk geheugen, worden Rijg roepen voor tijdig afgekapt. In de volgende secties wordt uitgelegd hoe u het vereiste geheugen kunt schatten en meer geheugen kunt toewijzen.
-- DICTIONARY_SIZE: deze trim reden geeft aan dat Rijg roep is ingeknipt omdat er ten minste één teken reeks kolom is met een brede en/of hoge kardinaliteit teken reeksen. De grootte van de woorden lijst is beperkt tot 16 MB in het geheugen en zodra deze limiet is bereikt, wordt de groep gecomprimeerd. Als u in deze situatie wordt uitgevoerd, kunt u overwegen om de problematische kolom in een afzonderlijke tabel te isoleren.
+- MEMORY_LIMITATION: om Rijg roepen te maken met 1.000.000 rijen, wordt een bepaalde hoeveelheid werk geheugen vereist door de engine. Wanneer het beschik bare geheugen van de laad sessie kleiner is dan het vereiste werk geheugen, worden Rijg roepen voor tijdig afgekapt. In de volgende secties wordt uitgelegd hoe u het vereiste geheugen kunt schatten en meer geheugen kunt toewijzen.
+- DICTIONARY_SIZE: deze trim reden geeft aan dat de Rijg roep is inge kort omdat er ten minste één teken reeks kolom is met een brede en/of hoge kardinaliteit teken reeksen. De grootte van de woorden lijst is beperkt tot 16 MB in het geheugen en zodra deze limiet is bereikt, wordt de groep gecomprimeerd. Als u in deze situatie wordt uitgevoerd, kunt u overwegen om de problematische kolom in een afzonderlijke tabel te isoleren.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Geheugen vereisten schatten
 
@@ -89,7 +89,7 @@ Wanneer in korte teken reeks kolommen teken reeks gegevens typen van < = 32 byte
 
 Lange teken reeksen worden gecomprimeerd met een compressie methode die is ontworpen voor het comprimeren van tekst. Deze compressie methode maakt gebruik van een *woorden lijst* om tekst patronen op te slaan. De maximale grootte van een woorden lijst is 16 MB. Er is slechts één woorden lijst voor elke lange teken reeks kolom in de Rijg roep.
 
-Zie voor een diep gaande bespreking van Column Store-geheugen vereisten de video [Azure SQL Data Warehouse schalen: configuratie en richt lijnen](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Zie voor een diep gaande bespreking van Column Store-geheugen vereisten de video over het [schalen van SQL-analyses: configuratie en richt lijnen](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Manieren om geheugen vereisten te reduceren
 
@@ -109,7 +109,7 @@ Aanvullende geheugen vereisten voor teken reeks compressie:
 
 ### <a name="avoid-over-partitioning"></a>Vermijd overschrijdende partitionering
 
-Column Store-indexen maken een of meer Rijg roepen per partitie. In SQL Data Warehouse wordt het aantal partities snel uitgebreid omdat de gegevens worden gedistribueerd en elke distributie wordt gepartitioneerd. Als de tabel te veel partities heeft, zijn er mogelijk niet voldoende rijen om de Rijg roepen in te vullen. Als er geen rijen zijn, wordt er geen geheugen druk tijdens compressie gemaakt, maar dit leidt tot Rijg roepen die de prestaties van de beste column Store-query niet behalen.
+Column Store-indexen maken een of meer Rijg roepen per partitie. Voor gegevens opslag in azure Synapse Analytics neemt het aantal partities snel toe omdat de gegevens worden gedistribueerd en elke distributie wordt gepartitioneerd. Als de tabel te veel partities heeft, zijn er mogelijk niet voldoende rijen om de Rijg roepen in te vullen. Als er geen rijen zijn, wordt er geen geheugen druk tijdens compressie gemaakt, maar dit leidt tot Rijg roepen die de prestaties van de beste column Store-query niet behalen.
 
 Een andere reden om te voor komen dat u partitioneert, is er een geheugen overhead voor het laden van rijen in een column store-index in een gepartitioneerde tabel. Tijdens het laden kunnen veel partities de binnenkomende rijen ontvangen die in het geheugen worden bewaard totdat elke partitie voldoende rijen heeft om te worden gecomprimeerd. Als er te veel partities zijn, wordt extra geheugen druk gemaakt.
 
@@ -141,5 +141,4 @@ De grootte van de DWU en de resource klasse van de gebruiker bepalen samen hoeve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzicht van prestaties](sql-data-warehouse-overview-manage-user-queries.md)voor meer manieren om de prestaties van SQL Data Warehouse te verbeteren.
-
+Zie het [overzicht van prestaties](sql-data-warehouse-overview-manage-user-queries.md)voor meer manieren om de prestaties van SQL Analytics te verbeteren.

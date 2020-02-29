@@ -3,16 +3,17 @@ title: Beheerd opslag account Azure Key Vault-Power shell-versie
 description: De functie Managed Storage-account biedt een naadloze integratie tussen Azure Key Vault en een Azure Storage-account.
 ms.topic: conceptual
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 833f78d89a1a9033e62c10c3b16c5adfc65e1da4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980854"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195087"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslag accounts beheren met Key Vault en Azure PowerShell
 
@@ -45,7 +46,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 | Tenants | Cloud | Toepassings-id |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Openbare Azure-peering | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Open bare Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Overige  | Alle | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Vereisten
@@ -117,7 +118,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Als Key Vault al is toegevoegd aan de rol van uw opslag account, ontvangt u een *' de roltoewijzing bestaat al. '* fout. U kunt ook de roltoewijzing controleren met behulp van de pagina toegangs beheer (IAM) van het opslag account in de Azure Portal.  
+Als Key Vault al is toegevoegd aan de rol van uw opslag account, ontvangt u een *' de roltoewijzing bestaat al. '* optreedt. U kunt ook de roltoewijzing controleren met behulp van de pagina toegangs beheer (IAM) van het opslag account in de Azure Portal.  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Uw gebruikers account machtigingen geven voor beheerde opslag accounts
 

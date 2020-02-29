@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562133"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199662"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault Soft-verwijdering gebruiken met Power shell
 
@@ -254,7 +255,7 @@ Gebruik de cmdlets [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVaul
 Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```
 
-## <a name="other-resources"></a>Overige bronnen
+## <a name="other-resources"></a>Meer informatie
 
 - Zie [Azure Key Vault overzicht van tijdelijke verwijdering](key-vault-ovw-soft-delete.md)voor een overzicht van de functie voor voorlopig verwijderen van Key Vault.
 - Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor een algemeen overzicht van Azure Key Vault gebruik.

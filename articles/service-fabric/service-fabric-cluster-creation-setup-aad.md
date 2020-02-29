@@ -3,12 +3,12 @@ title: Azure Active Directory instellen voor client verificatie
 description: Meer informatie over het instellen van Azure Active Directory (Azure AD) voor het verifiëren van clients voor Service Fabric clusters.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843817"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193374"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
 
@@ -104,7 +104,7 @@ Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, r
 De cluster toepassing (web) die staat voor Service Fabric Explorer pogingen om te verifiëren bij Azure AD en als onderdeel van de aanvraag, levert de omleidings-URL. De URL wordt echter niet weer gegeven in de lijst met **antwoord-url's** voor de Azure AD-toepassing.
 
 #### <a name="solution"></a>Oplossing
-Selecteer op de pagina Azure AD **app-registraties**, selecteer uw cluster toepassing en selecteer vervolgens antwoord- **url's**. Voeg in het deel venster **antwoord-url's** de service Fabric Explorer URL toe aan de lijst of vervang een van de items in de lijst. Sla de wijziging op.
+Selecteer op de pagina Azure AD-App-registratie voor uw cluster **verificatie**en voeg in het gedeelte **omleidings-URI'S** de service Fabric Explorer URL toe aan de lijst. Sla de wijziging op.
 
 ![Antwoord-URL van webtoepassing][web-application-reply-url]
 

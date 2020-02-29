@@ -1,16 +1,16 @@
 ---
-title: Uw ontwikkelmachine verbinden met een AKS-cluster
+title: Uw ontwikkelmachine verbinden met een AKS-cluster (preview)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u uw ontwikkel machine verbindt met een AKS-cluster met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770676"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196090"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Uw ontwikkelmachine verbinden met een AKS-cluster (preview)
 
@@ -25,7 +25,7 @@ In deze handleiding leert u het volgende:
 * Gebruik Azure dev Spaces om verkeer te omleiden tussen uw AKS-cluster en code die wordt uitgevoerd op uw ontwikkel computer.
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

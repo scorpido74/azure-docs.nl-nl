@@ -3,20 +3,20 @@ title: Azure AD B2C met Azure Monitor bewaken
 titleSuffix: Azure AD B2C
 description: Meer informatie over het registreren van Azure AD B2C gebeurtenissen met Azure Monitor met behulp van gedelegeerd resource beheer.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121375"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190055"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
 
@@ -226,7 +226,7 @@ Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. **Azure Active Directory** selecteren
-1. Onder **bewaking**selecteert u **Diagnostische instellingen**.
+1. Selecteer **Diagnostische instellingen** onder **Controle**.
 1. Als er bestaande instellingen zijn voor de resource, ziet u een lijst met instellingen die al zijn geconfigureerd. Selecteer **Diagnostische instelling toevoegen** om een nieuwe instelling toe te voegen, of **Bewerk** de instelling om een bestaande te bewerken. Elke instelling kan niet meer dan één van de doel typen hebben.
 
     ![Het deel venster Diagnostische instellingen in Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)

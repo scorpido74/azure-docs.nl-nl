@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: bewakings gegevens opnemen zonder code Azure Data Explorer'
+title: 'Zelf studie: bewakings gegevens opnemen in azure Data Explorer zonder code'
 description: In deze zelf studie leert u hoe u bewakings gegevens kunt opnemen in azure Data Explorer zonder één regel code en hoe u deze gegevens doorzoekt.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986203"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198045"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Zelf studie: gegevens opnemen en controleren in azure Data Explorer 
 
@@ -43,7 +43,7 @@ Bekijk en inzicht in de gegevens die worden verschaft door de Azure Monitor diag
 
 Diagnostische gegevens en logboeken en activiteiten logboeken van Azure worden verzonden door een Azure-service en bieden gegevens over de werking van die service. 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
 #### <a name="example"></a>Voorbeeld
 
 Diagnostische gegevens worden geaggregeerd met een tijd korrel van 1 minuut. Hieronder volgt een voor beeld van een Azure Data Explorer metrische-gebeurtenis schema op query duur:
@@ -77,7 +77,7 @@ Diagnostische gegevens worden geaggregeerd met een tijd korrel van 1 minuut. Hie
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
 #### <a name="example"></a>Voorbeeld
 
 Hieronder volgt een voor beeld van een Azure Data Explorer [Diagnostic-opname logboek](using-diagnostic-logs.md#diagnostic-logs-schema):
@@ -133,7 +133,7 @@ Hieronder volgt een voor beeld van een Azure Data Explorer [Diagnostic-opname lo
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 #### <a name="example"></a>Voorbeeld
 
 Azure-activiteiten logboeken zijn logboeken op abonnements niveau die inzicht bieden in de bewerkingen die worden uitgevoerd op de resources in uw abonnement. Hieronder volgt een voor beeld van een gebeurtenis voor activiteiten logboek voor het controleren van de toegang:
@@ -200,7 +200,7 @@ Het instellen van een Azure Data Explorer-pijplijn omvat verschillende stappen, 
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Verbinding maken met de web-UI van Azure Data Explorer
 
-Selecteer **Query** in uw *TestDatabase*-database van Azure Data Explorer om de web-UI van Azure Data Explorer te openen.
+Selecteer *Query* in uw **TestDatabase**-database van Azure Data Explorer om de web-UI van Azure Data Explorer te openen.
 
 ![Querypagina](media/ingest-data-no-code/query-database.png)
 
@@ -210,7 +210,7 @@ De structuur van de Azure Monitor Logboeken is niet in tabel vorm. U manipuleert
 
 Gebruik de web-UI van Azure Data Explorer om de doeltabellen te maken in de Azure Data Explorer-database.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>Tabellen maken voor de diagnostische gegevens
 
 1. Maak in de *TestDatabase* -Data Base een tabel met de naam *DiagnosticMetrics* om de gegevens van de diagnostische gegevens op te slaan. Gebruik de volgende `.create table`-besturingselementopdracht:
@@ -235,7 +235,7 @@ Gebruik de web-UI van Azure Data Explorer om de doeltabellen te maken in de Azur
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>Tabellen maken voor de diagnostische logboeken 
 
 1. Maak in de *TestDatabase* -Data Base een tabel met de naam *DiagnosticLogs* om de diagnostische logboek records op te slaan. Gebruik de volgende `.create table`-besturingselementopdracht:
@@ -258,7 +258,7 @@ Gebruik de web-UI van Azure Data Explorer om de doeltabellen te maken in de Azur
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>Tabellen maken voor de activiteiten logboeken 
 
 1. Maak een tabel met de naam *ActivityLogs* in de *TestDatabase* -data base om activiteiten logboek records te ontvangen. Voer de volgende Azure Data Explorer-query uit om de tabel te maken:
@@ -284,7 +284,7 @@ Gebruik de web-UI van Azure Data Explorer om de doeltabellen te maken in de Azur
 
  Omdat de tabelindeling `json` is, is gegevenstoewijzing vereist. Met de `json`-toewijzingen wordt elk json-pad toegewezen aan de naam van een tabelkolom.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnostische gegevens/Diagnostische logboeken](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnostische gegevens/Diagnostische logboeken](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>Diagnostische gegevens en logboeken aan de tabel toewijzen
 
 Gebruik de volgende query om de diagnostische metriek en logboek gegevens aan de tabel toe te wijzen:
@@ -293,7 +293,7 @@ Gebruik de volgende query om de diagnostische metriek en logboek gegevens aan de
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>Activiteiten logboeken toewijzen aan de tabel
 
 Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebruikt u de volgende query:
@@ -305,7 +305,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>Het update beleid voor metrische en logboek gegevens maken
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>Beleid voor gegevens updates maken voor metrische informatie over diagnoses
 
 1. Maak een [functie](/azure/kusto/management/functions) die de verzameling diagnostische metrische records uitbreidt, zodat elke waarde in de verzameling een afzonderlijke rij ontvangt. Gebruik de operator [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -333,7 +333,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>Beleid voor gegevens updates voor Diagnostische logboeken maken
 
 1. Maak een [functie](/azure/kusto/management/functions) die de verzameling diagnostische logboek records uitbreidt, zodat elke waarde in de verzameling een afzonderlijke rij ontvangt. U kunt opname logboeken inschakelen op een Azure Data Explorer-cluster en het [schema opname logboeken](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)gebruiken. U maakt één tabel voor geslaagde en mislukte opname, terwijl sommige velden leeg zijn voor geslaagde opname (error code bijvoorbeeld). Gebruik de operator [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -366,7 +366,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>Beleid voor gegevens updates voor activiteiten logboeken maken
 
 1. Maak een [functie](/azure/kusto/management/functions) die de verzameling activiteiten logboek records uitbreidt, zodat elke waarde in de verzameling een afzonderlijke rij ontvangt. Gebruik de operator [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -409,7 +409,7 @@ Met Diagnostische instellingen voor Azure kunt u metrische gegevens en logboeken
 
     ![Een event hub maken](media/ingest-data-no-code/event-hub.png)
 
-1. Vul in het formulier de volgende gegevens in. Gebruik de standaardwaarden voor alle instellingen die niet worden vermeld in de volgende tabel.
+1. Vul het formulier in met de volgende gegevens. Gebruik de standaardwaarden voor alle instellingen die niet worden vermeld in de volgende tabel.
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving**
     |---|---|---|
@@ -425,7 +425,7 @@ Met Diagnostische instellingen voor Azure kunt u metrische gegevens en logboeken
 
 Nu moet u uw diagnostische gegevens en logboeken en uw activiteiten logboeken verbinden met de Event Hub.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnostische gegevens/Diagnostische logboeken](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnostische gegevens/Diagnostische logboeken](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>Diagnostische gegevens en logboeken verbinden met uw Event Hub
 
 Selecteer een resource van waaruit u metrische gegevens wilt exporteren. Verschillende resource typen ondersteunen het exporteren van diagnostische gegevens, waaronder Event Hubs naam ruimte, Azure Key Vault, Azure IoT Hub en Azure Data Explorer-clusters. In deze zelf studie gebruiken we een Azure Data Explorer-cluster als resource, worden de metrische gegevens over query prestaties en logboeken met opname resultaten gecontroleerd.
@@ -452,7 +452,7 @@ Selecteer een resource van waaruit u metrische gegevens wilt exporteren. Verschi
 
 1. Selecteer **Opslaan**.
 
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Activiteitenlogboeken verbinden met uw event hub
 
 1. Selecteer **Activiteitenlogboek** in het linkermenu van de Microsoft Azure-portal.
@@ -501,7 +501,7 @@ U moet nu de gegevens verbindingen maken voor uw diagnostische metrieken en logb
 
     ![Event hub-gegevensverbinding](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnostische gegevens/Diagnostische logboeken](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnostische gegevens/Diagnostische logboeken](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. Gebruik de volgende instellingen in het venster **Gegevensverbinding**:
 
@@ -528,7 +528,7 @@ U moet nu de gegevens verbindingen maken voor uw diagnostische metrieken en logb
 
 1. Selecteer **Maken**.  
 
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 
 1. Gebruik de volgende instellingen in het venster **Gegevensverbinding**:
 
@@ -560,7 +560,7 @@ U moet nu de gegevens verbindingen maken voor uw diagnostische metrieken en logb
 
 U hebt nu een pijplijn met een gegevensstroom. Opname via het cluster duurt standaard 5 minuten. Laat de gegevensstroom daarom een paar minuten zijn gang gaan voordat u een query gaat uitvoeren.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnostische gegevens](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>Query's uitvoeren op de tabel met metrische gegevens van diagnose
 
 Met de volgende query worden gegevens over de duur van query's geanalyseerd uit records met diagnostische gegevens in azure Data Explorer:
@@ -579,7 +579,7 @@ Queryresultaten:
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>Query's uitvoeren in de tabel met Diagnostische logboeken
 
 Deze pijp lijn produceert opname door middel van een Event Hub. U gaat de resultaten van deze opnamesen bekijken.
@@ -599,7 +599,7 @@ Queryresultaten:
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
+# <a name="activity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>Query's uitvoeren op de tabel activiteiten logboeken
 
 De volgende query analyseert gegevens uit records van activiteitenlogboeken in Azure Data Explorer:

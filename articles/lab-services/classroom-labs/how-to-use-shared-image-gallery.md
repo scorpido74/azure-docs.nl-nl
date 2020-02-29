@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 79aea7d8a4a969e0ccd42ef94d77a9aa396ab91c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591316"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190446"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen gebruiken in Azure Lab Services
 In dit artikel wordt uitgelegd hoe docenten/Lab-beheerder een installatie kopie van een virtuele machine van een sjabloon kan opslaan, zodat deze door anderen opnieuw kan worden gebruikt. Deze installatie kopieën worden opgeslagen in een [Galerie met gedeelde installatie kopieën](../../virtual-machines/windows/shared-image-galleries.md)van Azure. Als eerste stap koppelt de testlab-beheerder een bestaande galerie met gedeelde afbeeldingen aan het lab-account. Zodra de galerie met gedeelde installatie kopieën is gekoppeld, kunnen Labs die in het lab-account is gemaakt, afbeeldingen opslaan in de galerie met gedeelde afbeeldingen. Andere docenten kunnen deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun klassen te maken. 
 
 > [!NOTE]
-> Op dit moment biedt Azure Lab Services alleen ondersteuning voor het maken van Vm's op basis van **gegeneraliseerde** VM-installatie kopieën (geen gespecialiseerde installatie kopieën) in een galerie met gedeelde installatie kopieën. 
+> Op dit moment biedt Azure Lab Services alleen ondersteuning voor het maken van sjabloon-Vm's op basis van alleen **gegeneraliseerde** VM-installatie kopieën (geen gespecialiseerde installatie kopieën) in een galerie met gedeelde installatie kopieën. 
 
 ## <a name="prerequisites"></a>Vereisten
 - Maak een galerie met gedeelde installatie kopieën met behulp van [Azure PowerShell](../../virtual-machines/windows/shared-images.md) of [Azure cli](../../virtual-machines/linux/shared-images.md).

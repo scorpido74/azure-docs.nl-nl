@@ -1,25 +1,26 @@
 ---
 title: Continue integratie en implementatie
-description: Data base DevOps-ervaring op ondernemings niveau voor SQL Data Warehouse met ingebouwde ondersteuning voor continue integratie en implementatie met behulp van Azure-pijp lijnen.
+description: Data Warehouse DevOps-ervaring op ondernemings niveau voor gegevens opslag met ingebouwde ondersteuning voor continue integratie en implementatie met behulp van Azure-pijp lijnen.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712980"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195937"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continue integratie en implementatie voor Azure SQL Data Warehouse
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continue integratie en implementatie voor gegevens opslag
 
-In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project (SQL Server Data Tools) integreert met Azure DevOps en Azure-pijp lijnen kunt gebruiken om doorlopende integratie en implementatie in te stellen. Deze zelf studie is de tweede stap bij het bouwen van uw continue integratie-en implementatie pijplijn met SQL Data Warehouse. 
+In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project (SQL Server Data Tools) integreert met Azure DevOps en Azure-pijp lijnen kunt gebruiken om doorlopende integratie en implementatie in te stellen. Deze zelf studie is de tweede stap bij het bouwen van uw continue integratie-en implementatie pijplijn voor gegevens opslag. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -61,7 +62,7 @@ Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure SQL Data Warehouse architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
-- Snel [een SQL Data Warehouse maken](create-data-warehouse-portal.md)
+- [SQL Analytics MPP-architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
+- Snel [een SQL-groep maken](create-data-warehouse-portal.md)
 - [Voorbeeld gegevens laden](sql-data-warehouse-load-sample-databases.md)
 - [Video's](/azure/sql-data-warehouse/sql-data-warehouse-videos) verkennen

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974611"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197161"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom gebruiken om Widevine-licenties te leveren aan Azure Media Services 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74974611"
 ## <a name="overview"></a>Overzicht
 Azure Media Services (AMS) heeft Google Widevine Dynamic Protection toegevoegd (Zie [de blog van Mingfei](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) voor meer informatie). Daarnaast heeft Azure Media Player (AMP) ook ondersteuning toegevoegd voor Widevine (Zie het [amp-document](https://amp.azure.net/libs/amp/latest/docs/) voor meer informatie). Dit is een belang rijke stroom in streaming DASH-inhoud die wordt beveiligd door CENC met multi-native-DRM (PlayReady en Widevine) in moderne browsers die zijn uitgerust met MSE en EME.
 
-Vanaf de Media Services .NET SDK versie 3.5.2 kunt u met Media Services de Widevine-licentie sjabloon configureren en Widevine-licenties ophalen. U kunt ook de volgende AMS-partners gebruiken om Widevine-licenties te leveren: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/) en [castLabs](https://castlabs.com/company/partners/azure/).
+Vanaf de Media Services .NET SDK versie 3.5.2 kunt u met Media Services de Widevine-licentie sjabloon configureren en Widevine-licenties ophalen. U kunt ook de volgende AMS-partners gebruiken om Widevine-licenties te leveren: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/) en [castLabs](https://castlabs.com/company/partners/azure/).
 
 In dit artikel wordt beschreven hoe u Widevine-licentie servers die worden beheerd door Axinom integreert en test. Dit betreft met name:  
 
@@ -205,6 +205,6 @@ De volgende para meters zijn vereist in de Axinom Widevine-licentie server van d
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Erkenningen
+### <a name="acknowledgments"></a>Bevestigingen
 We willen graag de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Kristjan Jõgi van Axinom, Mingfei Yan en Amit Rajput.
 

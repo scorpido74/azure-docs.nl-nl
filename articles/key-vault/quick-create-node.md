@@ -5,19 +5,20 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2091916b0ec2eab68904a485d93f5d2353261f68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773725"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197739"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor node. js (v4)
 
 Ga aan de slag met de Azure Key Vault-client bibliotheek voor node. js. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
 
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor node. js voor het volgende:
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor node. js voor het volgende:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.

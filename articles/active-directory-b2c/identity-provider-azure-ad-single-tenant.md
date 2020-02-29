@@ -3,21 +3,21 @@ title: Aanmelding instellen voor een Azure AD-organisatie
 titleSuffix: Azure AD B2C
 description: Stel aanmelden in voor een specifieke Azure Active Directory organisatie in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b0ff1c2d913d0a4402b491f3c84ce0d35cd081df
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 35fc4e1d64fa7df392fa878db14c0464da7dccf4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847587"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188304"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Aanmelden instellen voor een specifieke Azure Active Directory organisatie in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Als u een Azure Active Directory (Azure AD) als een [ID-provider](authorization-
 
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie, die niet hetzelfde is als uw Azure AD B2C Tenant.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map gebruikt die uw Azure AD-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Azure AD-Tenant bevat. Dit is niet dezelfde Tenant als uw Azure AD B2C-Tenant.
 3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 4. Selecteer **nieuwe registratie**.

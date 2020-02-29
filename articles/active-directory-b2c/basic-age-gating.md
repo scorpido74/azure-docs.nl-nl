@@ -2,20 +2,20 @@
 title: Leeftijds beperking inschakelen in Azure Active Directory B2C | Microsoft Docs
 description: Meer informatie over hoe u minder jarigen kunt identificeren met uw toepassing.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836233"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189970"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Leeftijds beperking inschakelen in Azure Active Directory B2C
 
@@ -33,19 +33,19 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 
 | Land/regio | Naam van land/regio | Duur van de secundaire toestemming | Secundaire leeftijd |
 | -------------- | ------------------- | ----------------- | --------- |
-| Standaard | Geen | Geen | 18 |
-| AE | Verenigde Arabische Emiraten | Geen | 21 |
+| Standaard | None | None | 18 |
+| AE | Verenigde Arabische Emiraten | None | 21 |
 | AT | Oostenrijk | 14 | 18 |
 | BE | België | 14 | 18 |
 | BG | Bulgarije | 16 | 18 |
-| BH | Bahrein | Geen | 21 |
-| CM | Kameroen | Geen | 21 |
+| BH | Bahrein | None | 21 |
+| CM | Kameroen | None | 21 |
 | CY | Cyprus | 16 | 18 |
 | CZ | Tsjechië | 16 | 18 |
 | DE | Duitsland | 16 | 18 |
 | DK | Denemarken | 16 | 18 |
 | EE | Estland | 16 | 18 |
-| EG | Egypte | Geen | 21 |
+| EG | Egypte | None | 21 |
 | ES | Spanje | 13 | 18 |
 | FR | Frankrijk | 16 | 18 |
 | GB | Verenigd Koninkrijk | 13 | 18 |
@@ -59,18 +59,18 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 | LU | Luxemburg | 16 | 18 |
 | LV | Letland | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| N.V.T. | Namibië | Geen | 21 |
+| N.v.t. | Namibië | None | 21 |
 | NL | Nederland | 16 | 18 |
 | PL | Polen | 13 | 18 |
 | PT | Portugal | 16 | 18 |
 | RO | Roemenië | 16 | 18 |
 | SE | Zweden | 13 | 18 |
-| SG | Singapore | Geen | 21 |
+| SG | Singapore | None | 21 |
 | SI | Slovenië | 16 | 18 |
 | SK | Slowakije | 16 | 18 |
-| OTOO | Tsjaad | Geen | 21 |
-| TH | Thailand | Geen | 20 |
-| TW | Taiwan | Geen | 20 |
+| OTOO | Tsjaad | None | 21 |
+| TH | Thailand | None | 20 |
+| TW | Taiwan | None | 20 |
 | VS | Verenigde Staten | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Opties voor leeftijds beperking

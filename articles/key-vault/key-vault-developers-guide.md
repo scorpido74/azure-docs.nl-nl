@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7991fcec42a81a74ead1a00784e2cec59997da57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 331e3d5855e4ea1fc18a3b638741f6297a7a27d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981534"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184669"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Ontwikkelaars handleiding Azure Key Vault
 
@@ -89,7 +90,7 @@ In node. js worden de API voor Key Vault beheer en de Key Vault object-API gesch
 - [Key Vault maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Aan de slag met Key Vault in node. js](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
-### <a name="code-examples"></a>Codevoorbeelden
+### <a name="code-examples"></a>Code voorbeelden
 
 Zie voor meer voor beelden van het gebruik van Key Vault met uw toepassingen:
 
@@ -119,7 +120,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 
 - [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) maakt gebruik van de industrie standaard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden. De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versleutelings sleutels en geheimen in uw sleutel kluis-abonnement te controleren en te beheren, terwijl u ervoor zorgt dat alle gegevens in de virtuele-machine schijven op rest worden versleuteld in uw Azure-opslag.
 - [Azure data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) biedt optie voor het versleutelen van gegevens die in het account zijn opgeslagen. Data Lake Store biedt sleutel beheer twee modi voor het beheren van uw Mek's (Master Encryption Keys), die vereist zijn voor het ontsleutelen van gegevens die zijn opgeslagen in de Data Lake Store. U kunt Data Lake Store de Mek's voor u laten beheren of ervoor kiezen om het eigendom van de Mek's te behouden met uw Azure Key Vault-account. U geeft de modus van sleutel beheer op tijdens het maken van een Data Lake Store-account.
-- Met [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kunt u uw eigen Tenant sleutel beheren. In plaats van micro soft uw Tenant sleutel te laten beheren (standaard), kunt u bijvoorbeeld uw eigen Tenant sleutel beheren om te voldoen aan specifieke regels die van toepassing zijn op uw organisatie. Uw eigen tenantsleutel beheren wordt ook wel aangeduid als BYOK (Bring Your Own Key).
+- Met [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kunt u uw eigen Tenant sleutel beheren. In plaats van micro soft uw Tenant sleutel te laten beheren (standaard), kunt u bijvoorbeeld uw eigen Tenant sleutel beheren om te voldoen aan specifieke regels die van toepassing zijn op uw organisatie. Het beheren van uw eigen Tenant sleutel wordt ook wel uw eigen sleutel of BYOK.
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault overzichten en concepten
 

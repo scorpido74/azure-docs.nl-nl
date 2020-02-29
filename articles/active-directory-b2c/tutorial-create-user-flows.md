@@ -2,20 +2,20 @@
 title: Zelf studie-gebruikers stromen maken-Azure Active Directory B2C
 description: Meer informatie over het maken van gebruikers stromen in de Azure Portal voor het inschakelen van registreren, aanmelden en het bewerken van gebruikers profielen voor uw toepassingen in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840142"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183564"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelf studie: gebruikers stromen maken in Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als aanmeldings ervaringen met één configuratie afgehandeld. Gebruikers van uw toepassing ondervinden het juiste pad, afhankelijk van de context.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 
     ![B2C-Tenant, het deel venster mappen en abonnementen, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)

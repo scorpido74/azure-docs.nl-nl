@@ -1,5 +1,5 @@
 ---
-title: Anomalie detectie van de tijd reeks & prognoses-Azure Data Explorer
+title: Anomalie detectie van tijd reeksen & prognoses in azure Data Explorer
 description: Meer informatie over het analyseren van Time Series-gegevens voor anomalie detectie en prognoses met behulp van Azure Data Explorer.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a482fef93d43f92257608b65c9c0e2ade535bcca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985822"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194154"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Anomalie detectie en prognose in azure Data Explorer
 

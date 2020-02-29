@@ -2,20 +2,20 @@
 title: Datum van voor beelden van claim transformatie voor aangepast beleid
 description: Datum voor beelden van claim transformatie voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982905"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188831"
 ---
 # <a name="date-claims-transformations"></a>Datum claim transformaties
 
@@ -29,8 +29,8 @@ Controleert of een datum-en tijd claim (teken reeks gegevens type) later is dan 
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | leftOperand | string | Type van de eerste claim, dat later moet zijn dan de tweede claim. |
-| InputClaim | rightOperand | string | Tweede claim type, dat eerder moet zijn dan de eerste claim. |
+| InputClaim | leftOperand | tekenreeks | Type van de eerste claim, dat later moet zijn dan de tweede claim. |
+| InputClaim | rightOperand | tekenreeks | Tweede claim type, dat eerder moet zijn dan de eerste claim. |
 | InputParameter | AssertIfEqualTo | booleaans | Hiermee wordt aangegeven of deze bevestiging moet worden door gegeven als de linkeroperand gelijk is aan de rechteroperand. |
 | InputParameter | AssertIfRightOperandIsNotPresent | booleaans | Hiermee geeft u op of deze bevestiging moet worden door gegeven als de juiste operand ontbreekt. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Hiermee geeft u het aantal milliseconden op dat is toegestaan tussen de twee datum tijden om de tijden te bepalen die gelijk zijn (bijvoorbeeld om rekening te houden met Clock scheefheid). |
@@ -114,7 +114,7 @@ In het volgende voor beeld wordt de conversie van de claim `dateOfBirth` (gegeve
 - Uitvoer claims:
     - **output claim**: 1559347200 (1 juni 2019 12:00:00 uur)
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 Converteert een datum **/tijd** -claim type naar een **date** claim type. De claim transformatie verwijdert de tijd notatie van de datum.
 
@@ -172,7 +172,7 @@ Bepalen of een datum/tijd later, eerder of gelijk aan een andere dateTime is. He
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | Datum/tijd | De eerste datum/tijd om te vergelijken of deze eerder of later is dan de tweede datum/tijd. Null-waarde genereert een uitzonde ring. |
 | InputClaim | secondDateTime | Datum/tijd | De tweede datum/tijd om te vergelijken of deze eerder of later is dan de eerste datum/tijd. Null-waarde wordt beschouwd als de huidige datetTime. |
-| InputParameter | and | string | Een van de volgende waarden: zelfde, later dan of eerder dan. |
+| InputParameter | operator | tekenreeks | Een van de volgende waarden: zelfde, later dan of eerder dan. |
 | InputParameter | timeSpanInSeconds | int | De time span toevoegen aan de eerste datum/tijd. |
 | OutputClaim | Resultaat | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 

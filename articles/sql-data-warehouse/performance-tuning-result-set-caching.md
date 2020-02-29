@@ -1,6 +1,6 @@
 ---
 title: Prestaties afstemmen met de cache van resultaten sets
-description: Overzicht van de cache functie voor het instellen van resultaten voor Azure SQL Data Warehouse
+description: Overzicht van de cache functie voor resultaat sets voor SQL Analytics in azure Synapse Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 3d204605e68cf8cf33f69d73fb20f3cc08674e44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692953"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200529"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen met de cache van resultaten sets  
-Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, slaat Azure SQL Data Warehouse query resultaten in de gebruikers database automatisch op voor herhaaldelijk gebruik.  Op deze manier kunnen volgende query's worden uitgevoerd om resultaten rechtstreeks uit de persistente cache te halen, zodat herberekening niet nodig is.   Caching van resultaten sets verbetert de query prestaties en vermindert het gebruik van reken resources.  Daarnaast gebruiken query's die in de cache opgeslagen resultaten zijn ingesteld geen gelijktijdigheids sleuven en worden dus niet met bestaande gelijktijdigheids limieten geteld. Voor de beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevens toegang hebben als de gebruikers die de in de cache opgeslagen resultaten maken.  
+Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, slaat SQL Analytics de query resultaten in de gebruikers database automatisch op voor herhaaldelijk gebruik.  Op deze manier kunnen volgende query's worden uitgevoerd om resultaten rechtstreeks uit de persistente cache te halen, zodat herberekening niet nodig is.   Caching van resultaten sets verbetert de query prestaties en vermindert het gebruik van reken resources.  Daarnaast gebruiken query's die in de cache opgeslagen resultaten zijn ingesteld geen gelijktijdigheids sleuven en worden dus niet met bestaande gelijktijdigheids limieten geteld. Voor de beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevens toegang hebben als de gebruikers die de in de cache opgeslagen resultaten maken.  
 
 ## <a name="key-commands"></a>Belangrijkste opdrachten
 [IN-en uitschakelen van de cache voor de resultatenset voor een gebruikers database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
@@ -39,7 +39,8 @@ Zodra de caching van de resultatenset voor een Data Base is ingeschakeld, worden
 - Query's die gegevens retour neren met een Rijgrootte groter dan 64 KB
 
 > [!IMPORTANT]
-> De bewerkingen voor het maken van een cache met resultaten en het ophalen van gegevens uit de cache vindt plaats op het knoop punt van het besturings element van een Data Warehouse-exemplaar. Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, kan het uitvoeren van query's die een grote resultatenset retour neren (bijvoorbeeld > 1 miljoen rijen), een hoog CPU-gebruik op het beheer knooppunt veroorzaken en de algehele query respons op het exemplaar vertragen.  Deze query's worden vaak gebruikt tijdens het verkennen van gegevens of ETL-bewerkingen. Om te voor komen dat het controle knooppunt stressert en het prestatie probleem veroorzaakt, moeten gebruikers de resultatenset cache uitschakelen in de Data Base voordat deze typen query's worden uitgevoerd.  
+> De bewerkingen voor het maken van een cache met resultaten en het ophalen van gegevens uit de cache vinden plaats op het besturings element van een SQL Analytics-exemplaar.
+> Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, kan het uitvoeren van query's die een grote resultatenset retour neren (bijvoorbeeld > 1 miljoen rijen), een hoog CPU-gebruik op het beheer knooppunt veroorzaken en de algehele query respons op het exemplaar vertragen.  Deze query's worden vaak gebruikt tijdens het verkennen van gegevens of ETL-bewerkingen. Om te voor komen dat het controle knooppunt stressert en het prestatie probleem veroorzaakt, moeten gebruikers de resultatenset cache uitschakelen in de Data Base voordat deze typen query's worden uitgevoerd.  
 
 Voer deze query uit voor de tijd die nodig is voor de cache bewerkingen van de resultatenset voor een query:
 
@@ -75,7 +76,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 De maximale grootte van de cache voor de resultatenset is 1 TB per data base.  De resultaten in de cache worden automatisch ongeldig gemaakt wanneer de onderliggende query gegevens veranderen.  
 
-De verwijdering van de cache wordt beheerd door Azure SQL Data Warehouse automatisch de volgende planning te volgen: 
+De verwijdering van de cache wordt door SQL Analytics automatisch na deze planning beheerd: 
 - Elke 48 uur als de resultatenset niet is gebruikt of ongeldig is gemaakt. 
 - Wanneer de cache voor de resultatenset de maximum grootte nadert.
 
@@ -86,4 +87,4 @@ Gebruikers kunnen de volledige cache voor de resultatenset hand matig legen door
 Wanneer een Data Base wordt onderbroken, wordt de resultatenset in de cache niet leeg gelaten.  
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Overzicht van SQL Data Warehouse voor ontwikkelaars](sql-data-warehouse-overview-develop.md) voor meer tips voor ontwikkelaars. 
+Zie [ontwikkelings overzicht](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars. 

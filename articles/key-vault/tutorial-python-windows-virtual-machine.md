@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3b965ab7dfafd6c78c801cf3692463efe366c852
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988376"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198079"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Zelf studie: Azure Key Vault gebruiken met een virtuele Windows-machine in python
 
@@ -81,7 +82,7 @@ Als u een sleutel kluis wilt maken in de resource groep die u in de vorige stap 
 
 * Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen getallen (0-9), letters (a-z, A-Z) en afbreek streepjes (-) kan bevatten
 * Naam van de resourcegroep
-* Locatie: **US - west**
+* Locatie: **VS - west**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"

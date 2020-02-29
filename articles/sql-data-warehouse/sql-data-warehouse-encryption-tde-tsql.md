@@ -1,6 +1,6 @@
 ---
 title: Transparent Data Encryption (T-SQL)
-description: Transparent Data Encryption (TDE) in SQL Data Warehouse (T-SQL)
+description: Transparent Data Encryption (TDE) in azure Synapse Analytics (T-SQL)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bd6f40b8389284c1932a2f16a70060cd56e412fb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822612"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195802"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Aan de slag met Transparent Data Encryption (TDE)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73822612"
 Als u Transparent Data Encryption (TDE) wilt inschakelen, moet u een beheerder of lid van de DBManager-rol zijn.
 
 ## <a name="enabling-encryption"></a>Versleuteling inschakelen
-Volg deze stappen om TDE in te scha kelen voor een SQL Data Warehouse:
+Volg deze stappen om TDE in te scha kelen:
 
 1. Verbinding maken met de *hoofd* database op de server die als host fungeert voor de data base met behulp van een aanmelding die een beheerder is of een lid van de **DBManager** -rol in de hoofd database
 2. Voer de volgende instructie uit om de data base te versleutelen.
@@ -41,7 +41,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Versleuteling uitschakelen
-Volg deze stappen om TDE uit te scha kelen voor een SQL Data Warehouse:
+Volg deze stappen om TDE uit te scha kelen:
 
 1. Verbinding maken met de *hoofd* database met behulp van een aanmelding die een beheerder is of een lid van de **DBManager** -rol in de hoofd database
 2. Voer de volgende instructie uit om de data base te versleutelen.
@@ -51,12 +51,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> U moet een onderbroken SQL Data Warehouse hervatten voordat u de TDE-instellingen wijzigt.
+> Een onderbroken SQL-groep moet worden hervat voordat u wijzigingen aanbrengt in de TDE-instellingen.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Versleuteling controleren
-Volg de onderstaande stappen om de versleutelings status voor een SQL Data Warehouse te controleren:
+Volg de onderstaande stappen om de versleutelings status te controleren:
 
 1. Verbinding maken met de *Master* -of instance-data base met behulp van een aanmelding die een beheerder is of een lid van de **DBManager** -rol in de hoofd database
 2. Voer de volgende instructie uit om de data base te versleutelen.

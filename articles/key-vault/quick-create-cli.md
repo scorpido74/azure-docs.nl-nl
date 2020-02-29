@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1b5ebbcd3a891149a72b3dbe8cb19b3c8de528a1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6f71dd0f928f75deff0a483dda0aed621d6ead19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773770"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197603"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Snelstart: een geheim uit Azure Key Vault instellen en ophalen met behulp van Azure CLI
 
@@ -50,7 +51,7 @@ Vervolgens maakt u een sleutelkluis in de resourcegroep die u in de vorige stap 
 
 - Voor deze snelstart gebruiken we **Contoso-vault2**. U moet in de test een unieke naam opgeven.
 - Naam van resourcegroep **ContosoResourceGroup**.
-- De locatie **US - oost**.
+- De locatie **VS - oost**.
 
 ```azurecli
 az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
@@ -59,7 +60,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelkluis. Let op de onderstaande twee eigenschappen:
 
 - **Kluisnaam**: in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere Key Vault-opdrachten.
-- **Vault URI**: In het voorbeeld is dit https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+- **Kluis-URI**: in het voorbeeld is dat https://contoso-vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op deze nieuwe kluis uit te voeren.
 

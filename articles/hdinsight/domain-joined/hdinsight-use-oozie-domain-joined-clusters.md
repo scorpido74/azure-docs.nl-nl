@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920723"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194900"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Apache Oozie in HDInsight Hadoop-clusters uitvoeren met Enterprise Security Package
 
 Apache Oozie is een werk stroom-en coördinatie systeem waarmee Apache Hadoop taken worden beheerd. Oozie is geïntegreerd met de Hadoop-stack en biedt ondersteuning voor de volgende taken:
 
 - Apache MapReduce
-- Apache Pig
+- Apache-Pig
 - Apache Hive
 - Apache Sqoop
 
 U kunt Oozie ook gebruiken om taken te plannen die specifiek zijn voor een systeem, zoals Java-Program ma's of shell scripts.
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 Een Azure HDInsight Hadoop cluster met Enterprise Security Package (ESP). Zie [HDInsight-clusters configureren met ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -348,4 +348,4 @@ De Oozie-webgebruikersinterface biedt een webgebaseerde weer gave van de status 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruik Apache Oozie met Apache Hadoop om een werk stroom te definiëren en uit te voeren op Azure HDInsight op basis van Linux](../hdinsight-use-oozie-linux-mac.md).
-- [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+- [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

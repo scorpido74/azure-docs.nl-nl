@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210154"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190750"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -104,7 +104,7 @@ U kunt een externe pakket-URL gebruiken om te verwijzen naar een extern pakket b
 
 Gebruik Zip-implementatie om een zip-bestand met uw functie-app naar Azure te pushen. Desgewenst kunt u uw app zo instellen dat deze [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md), of opgeven dat er een [externe build wordt gemaakt](#remote-build) .
 
->__Hoe gebruikt u dit:__ Implementeren met behulp van uw favoriete client hulpprogramma: [Visual Studio code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual studio](functions-develop-vs.md#publish-to-azure), de [Azure functions core tools](functions-run-local.md)of de [Azure cli](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Deze hulpprogram ma's gebruiken standaard de zip-implementatie en [worden uitgevoerd vanuit het pakket](run-functions-from-deployment-package.md). De kern Hulpprogramma's en de Visual Studio code-extensie maken beide gebruik van [externe build](#remote-build) bij het implementeren naar Linux. Als u een zip-bestand hand matig wilt implementeren in uw functie-app, volgt u de instructies in [Deploy vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Hoe gebruikt u dit:__ Implementeren met behulp van uw favoriete client hulpprogramma: [Visual Studio code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)of vanaf de opdracht regel met behulp van de [Azure functions core tools](functions-run-local.md#project-file-deployment). Deze hulpprogram ma's gebruiken standaard de zip-implementatie en [worden uitgevoerd vanuit het pakket](run-functions-from-deployment-package.md). De kern Hulpprogramma's en de Visual Studio code-extensie maken beide gebruik van [externe build](#remote-build) bij het implementeren naar Linux. Als u een zip-bestand hand matig wilt implementeren in uw functie-app, volgt u de instructies in [Deploy vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 >Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat uw app [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md). Als u uit het pakket wilt uitvoeren, stelt u de waarde voor `WEBSITE_RUN_FROM_PACKAGE` toepassings instelling in op `1`. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI. 
 

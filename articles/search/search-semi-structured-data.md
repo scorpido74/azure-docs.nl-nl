@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: semi-strutured gegevens in JSON-blobs indexeren'
+title: 'Zelf studie: semi-gestructureerde gegevens in JSON-blobs indexeren'
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over het indexeren en doorzoeken van semi-gestructureerde Azure JSON-blobs met behulp van Azure Cognitive Search REST Api's en postman.
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/28/2020
+ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251988"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196940"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Zelf studie: JSON-blobs indexeren van Azure Storage met REST
 
 Azure Cognitive Search kan JSON-documenten en-matrices indexeren in Azure Blob-opslag met behulp van een [Indexeer functie](search-indexer-overview.md) die het lezen van semi-gestructureerde gegevens kent. Semi-gestructureerde gegevens bevatten labels of markeringen die inhoud in de gegevens scheiden. Het verschil tussen ongestructureerde gegevens, dat volledig kan worden geïndexeerd, en formeel gestructureerde gegevens die voldoen aan een gegevens model, zoals een relationeel database schema, wordt gesplitst, dat per veld kan worden geïndexeerd.
 
-In deze zelf studie gebruikt u de [Azure COGNITIVE Search rest api's](https://docs.microsoft.com/rest/api/searchservice/) en een rest-client om de volgende taken uit te voeren:
+In deze zelf studie wordt gebruikgemaakt van Postman en de [Zoek-rest-api's](https://docs.microsoft.com/rest/api/searchservice/) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een Azure Cognitive Search-gegevens bron configureren voor een Azure Blob-container
@@ -27,15 +27,18 @@ In deze zelf studie gebruikt u de [Azure COGNITIVE Search rest api's](https://do
 > * Een Indexeer functie configureren en uitvoeren om de container te lezen en Doorzoek bare inhoud uit Azure Blob-opslag te halen
 > * De index doorzoeken die u zojuist hebt gemaakt
 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick Start. 
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Postman bureaublad-app](https://www.getpostman.com/)
++ [Een bestaande zoek service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [maken](search-create-service-portal.md) of zoeken 
 
-[Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service. 
+> [!Note]
+> U kunt de gratis service voor deze zelf studie gebruiken. Een gratis zoek service beperkt u tot drie indexen, drie Indexeer functies en drie gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u begint, moet u ervoor zorgen dat u over voldoende ruimte beschikt om de nieuwe resources te accepteren.
 
-[Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld gegevens.
-
-[Postman desktop-app](https://www.getpostman.com/) voor het verzenden van aanvragen naar Azure Cognitive Search.
+## <a name="download-files"></a>Bestanden downloaden
 
 [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) bevat de gegevens die in deze zelf studie worden gebruikt. Down load en pak dit bestand uit naar een eigen map. De gegevens zijn afkomstig uit [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), GECONVERTEERD naar JSON voor deze zelf studie.
 
@@ -283,13 +286,27 @@ Ga gerust uw gang als u wilt experimenteren en zelf nog een aantal query's wilt 
 
 De parameter `$filter` werkt alleen met metagegevens die bij het maken van de index zijn gemarkeerd als filterbaar.
 
+## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
+
+In de vroege experimentele stadia van de ontwikkeling kunt u het beste de objecten uit Azure Cognitive Search verwijderen en uw code zo instellen dat deze opnieuw worden opgebouwd. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+
+U kunt de portal gebruiken om indexen, Indexeer functies en gegevens bronnen te verwijderen. Of gebruik **verwijderen** en geef url's op voor elk object. Met de volgende opdracht wordt een Indexeer functie verwijderd.
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+```
+
+De statuscode 204 wordt na verwijdering geretourneerd.
+
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om na een zelf studie op te schonen, is door de resource groep te verwijderen die de Azure Cognitive Search-service bevat. U kunt de resourcegroep nu verwijderen om alles daarin permanent te verwijderen. In de portal bevindt de naam van de resource groep zich op de pagina overzicht van Azure Cognitive Search service.
+Wanneer u aan het eind van een project aan het werk bent, is het een goed idee om de resources te verwijderen die u niet meer nodig hebt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+
+U kunt resources vinden en beheren in de portal met behulp van de koppeling alle resources of resource groepen in het navigatie deel venster aan de linkerkant.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Er zijn verschillende benaderingen en meerdere opties voor het indexeren van JSON-blobs. Bekijk en test de verschillende opties als volgende stap om te zien wat het beste werkt voor uw scenario.
+Nu u bekend bent met de basis principes van Azure Blob-indexering, gaan we de configuratie van de Indexeer functie nader bekijken.
 
 > [!div class="nextstepaction"]
-> [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)
+> [Indexeer functie voor Azure Blob Storage configureren](search-howto-indexing-azure-blob-storage.md)

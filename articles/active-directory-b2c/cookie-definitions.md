@@ -3,20 +3,20 @@ title: Cookiedefinities
 titleSuffix: Azure AD B2C
 description: Bevat definities voor de cookies die in Azure Active Directory B2C worden gebruikt.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908867"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189511"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Cookie definities voor Azure AD B2C
 
@@ -30,7 +30,7 @@ Webbrowsers kunnen de toegang tot sites beveiligen door een nieuw beveiligd stan
 
 Ontwikkel aars moeten de nieuwe cookie-instelling `SameSite=None`gebruiken om cookies aan te wijzen voor toegang tussen sites. Wanneer het `SameSite=None` kenmerk aanwezig is, moet u een aanvullend `Secure` kenmerk gebruiken zodat cookies voor meerdere locaties alleen toegankelijk zijn via HTTPS-verbindingen. Valideer en test al uw toepassingen, met inbegrip van de toepassingen die gebruikmaken van Azure AD B2C.
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 * [SameSite cookie wijzigingen in Chrome browser verwerken](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
 * [Effect op websites van de klant en micro soft-Services en-producten in Chrome versie 80 of hoger](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)

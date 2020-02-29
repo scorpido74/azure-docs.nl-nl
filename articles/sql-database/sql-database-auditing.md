@@ -9,16 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.custom: azure-synapse
+ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212885"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184754"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL database controle
 
-Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. Controleren is ook:
+Controle voor Azure [SQL database](sql-database-technical-overview.md) en [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. Controleren is ook:
 
 - Helpt u bij het onderhouden van naleving van regelgeving, het begrijpen van database activiteiten en inzicht te krijgen in verschillen en afwijkingen die kunnen wijzen op problemen met het bedrijf of vermoedelijke beveiligings schendingen.
 
@@ -26,7 +27,7 @@ Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL D
 
 
 > [!NOTE] 
-> Dit onderwerp is van toepassing op Azure SQL-servers en op SQL Database- en SQL Data Warehouse-databases die op deze Azure SQL-servers worden gemaakt. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
+> Dit onderwerp is van toepassing op Azure SQL Server en op zowel SQL Database-als Azure Synapse Analytics-data bases die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud.
 
 ## <a id="subheading-1"></a>Overzicht van de controle van Azure SQL database
 
@@ -80,6 +81,16 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
 
     ![Navigatievenster][3]
 
+5. **Nieuw** : u hebt nu meerdere opties voor het configureren van de locatie waar audit logboeken worden geschreven. U kunt Logboeken schrijven naar een Azure-opslag account, naar een Log Analytics-werk ruimte voor het gebruik van Azure Monitor-Logboeken of Event Hub voor gebruik met Event Hub. U kunt een wille keurige combi natie van deze opties configureren en er worden controle logboeken naar elke optie geschreven.
+  
+   > [!NOTE]
+   > Klanten die een onveranderbare logboek opslag voor hun server-of database niveau-controle gebeurtenissen willen configureren, moeten de [instructies volgen die worden gegeven door Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
+  
+   > [!WARNING]
+   > Als u controle inschakelt op Log Analytics, worden er kosten in rekening gebracht op basis van opname tarieven. Houd rekening met de gekoppelde kosten met behulp van deze [optie](https://azure.microsoft.com/pricing/details/monitor/)of overweeg de audit logboeken op te slaan in een Azure-opslag account.
+
+   ![opslag opties](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+   
 ### <a id="audit-storage-destination">Controleren op opslag bestemming</a>
 
 Als u het schrijven van audit logboeken naar een opslag account wilt configureren, selecteert u **opslag** en opent u **opslag Details**. Selecteer het Azure-opslag account waarin de logboeken worden opgeslagen en selecteer vervolgens de Bewaar periode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de Bewaar periode, worden verwijderd.
@@ -105,9 +116,22 @@ Als u het schrijven van audit logboeken naar een Log Analytics-werk ruimte wilt 
 
 ### <a id="audit-event-hub-destination">Controleren op Event hub-doel</a>
 
+< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
+> [!IMPORTANT]
+> Het inschakelen van controle op een onderbroken SQL-groep is niet mogelijk. Als u deze functie wilt inschakelen, moet u de SQL-groep verwijderen.
+
+> [!WARNING]
+> Als u controle inschakelt op een server waarop een SQL-groep is opgenomen **, wordt de SQL-groep hervat en opnieuw onderbroken** . Dit kan in rekening worden gebracht.
+< < < < < < < HEAD = = = = = = = als u audit logboeken wilt configureren voor een Event Hub, selecteert u **Event hub (preview)** en opent u de details van de **Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
+
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
+=======
 Als u het schrijven van audit logboeken naar een Event Hub wilt configureren, selecteert u **Event hub (preview)** en opent u **Details van Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Controle logboeken en-rapporten analyseren
 
@@ -241,9 +265,9 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
     > [!IMPORTANT]
     > De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
-    > - US - oost
-    > - US - zuid-centraal
-    > - US - west 2
+    > - VS - oost
+    > - VS - zuid-centraal
+    > - VS - west 2
 
 
 ## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell

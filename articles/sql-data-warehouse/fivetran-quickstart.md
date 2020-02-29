@@ -1,6 +1,6 @@
 ---
-title: Fivetran Quick Start
-description: Ga snel aan de slag met Fivetran en Azure SQL Data Warehouse.
+title: 'Quick Start: Fivetran en Data Warehouse'
+description: Ga aan de slag met Fivetran en een Azure Synapse Analytics-Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,54 +10,55 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: c9b4a15cd6cbae80d80407ba929bfbfa1402eeb5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: b068b2436aaa1df22e3c83a54fb384f925149cc2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689224"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194611"
 ---
-# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Snel aan de slag met Fivetran en SQL Data Warehouse
+# <a name="quickstart-fivetran-with-data-warehouse"></a>Quick Start: Fivetran met Data Warehouse 
 
-In deze Quick Start wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt om met Azure SQL Data Warehouse te werken. In dit artikel wordt ervan uitgegaan dat u een bestaand exemplaar van SQL Data Warehouse hebt.
+In deze Quick Start wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt voor gebruik met een Azure Synapse Analytics-Data Warehouse dat is ingericht met een SQL-groep. In het artikel wordt ervan uitgegaan dat u een bestaand Data Warehouse hebt.
 
 ## <a name="set-up-a-connection"></a>Een verbinding instellen
 
-1. Zoek de volledig gekwalificeerde server naam en database naam die u gebruikt om verbinding te maken met SQL Data Warehouse.
+1. Zoek de volledig gekwalificeerde server naam en database naam die u gebruikt om verbinding te maken met uw data warehouse.
     
-    Zie [verbinding maken met Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md)als u hulp nodig hebt bij het vinden van deze informatie.
+    Als u hulp nodig hebt bij het vinden van deze informatie, raadpleegt u [verbinding maken met uw data warehouse](sql-data-warehouse-connect-overview.md).
 
 2. Kies in de installatie wizard of u rechtstreeks verbinding wilt maken met uw data base of met behulp van een SSH-tunnel.
 
    Als u ervoor kiest om rechtstreeks verbinding te maken met uw data base, moet u een firewall regel maken om toegang toe te staan. Deze methode is de eenvoudigste en veiligste methode.
 
-   Als u ervoor kiest om verbinding te maken met behulp van een SSH-tunnel, maakt Fivetran verbinding met een afzonderlijke server in uw netwerk. De server biedt een SSH-tunnel voor uw data base. U moet deze methode gebruiken als uw data base zich in een niet-toegankelijk subnet in een virtueel netwerk bevindt.
+   Als u ervoor kiest om verbinding te maken via een SSH-tunnel, maakt Fivetran verbinding met een afzonderlijke server in uw netwerk. De server biedt een SSH-tunnel voor uw data base. U moet deze methode gebruiken als uw data base zich in een niet-toegankelijk subnet in een virtueel netwerk bevindt.
 
-3. Voeg het IP-adres **52.0.2.4** toe aan de firewall op server niveau om binnenkomende verbindingen met uw SQL Data Warehouse-exemplaar toe te staan vanaf Fivetran.
+3. Voeg het IP-adres **52.0.2.4** toe aan de firewall op server niveau voor het toestaan van binnenkomende verbindingen met uw data warehouse-instantie van Fivetran.
 
    Zie [Een serverfirewallregel maken](create-data-warehouse-portal.md#create-a-server-level-firewall-rule) voor meer informatie.
 
 ## <a name="set-up-user-credentials"></a>Gebruikers referenties instellen
 
-1. Maak verbinding met uw Azure SQL Data Warehouse met behulp van SQL Server Management Studio of het hulp programma dat u wilt gebruiken. Meld u aan als een server beheerder gebruiker. Voer vervolgens de volgende SQL-opdrachten uit om een gebruiker te maken voor Fivetran:
+1. Maak verbinding met uw data warehouse met behulp van SQL Server Management Studio (SSMS) of het hulp programma dat u wilt gebruiken. Meld u aan als een server beheerder gebruiker. Voer vervolgens de volgende SQL-opdrachten uit om een gebruiker te maken voor Fivetran:
+
     - In de hoofd database: 
     
-      ```
+      ```sql
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - In SQL Data Warehouse Data Base:
+    - In de Data Warehouse-Data Base:
 
-      ```
+      ```sql
       CREATE USER fivetran_user_without_login without login;
       CREATE USER fivetran FOR LOGIN fivetran;
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Ken de Fivetran-gebruiker de volgende machtigingen toe aan uw magazijn:
+2. Ken de Fivetran-gebruiker de volgende machtigingen toe aan uw data warehouse:
 
-    ```
+    ```sql
     GRANT CONTROL to fivetran;
     ```
 
@@ -67,7 +68,7 @@ In deze Quick Start wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt
 
     U wordt aangeraden statische resource klassen te gebruiken. U kunt beginnen met de resource klasse `staticrc20`. De resource klasse `staticrc20` wijst 200 MB toe voor elke gebruiker, ongeacht het prestatie niveau dat u gebruikt. Als column Store-indexering mislukt op het eerste niveau van de resource klasse, verhoogt u de resource klasse.
 
-    ```
+    ```sql
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
@@ -76,10 +77,10 @@ In deze Quick Start wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt
 
 ## <a name="sign-in-to-fivetran"></a>Aanmelden bij Fivetran
 
-Als u zich wilt aanmelden bij Fivetran, voert u de referenties in die u gebruikt voor toegang tot SQL Data Warehouse: 
+Als u zich wilt aanmelden bij Fivetran, voert u de referenties in die u gebruikt om toegang te krijgen tot uw data warehouse: 
 
 * Host (uw server naam).
 * Importeer.
-* Database.
+* Enddatabase.
 * Gebruiker (de gebruikers naam moet **fivetran\@_server_name_**  waarbij *server_name* deel uitmaakt van de URI van uw Azure-host:  **_Server\_name_. database.Windows.net**).
 * Wacht woord.

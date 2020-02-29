@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164576"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190293"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Procedure: cross-app SSO inschakelen op Android met behulp van ADAL
 
@@ -60,7 +60,7 @@ Als er een compatibele Broker op het apparaat is geïnstalleerd, zoals de toepas
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Hoe micro soft garandeert dat de toepassing geldig is
 
-De nood zaak om ervoor te zorgen dat de identiteit van een toepassing die de Broker aanroept, cruciaal is voor de beveiliging die wordt geleverd in door Broker geassisteerde aanmeldingen. iOS en Android afdwingen geen unieke id's die alleen geldig zijn voor een bepaalde toepassing, waardoor kwaadwillende toepassingen een geldige toepassings-id kunnen ' spoofen ' en de tokens ontvangen die voor de legitieme toepassing bedoeld zijn. Om ervoor te zorgen dat micro soft altijd communiceert met de juiste toepassing tijdens de uitvoering, wordt de ontwikkelaar gevraagd een aangepaste redirectURI op te geven wanneer ze hun toepassing registreren bij micro soft. **Hoe ontwikkel aars deze omleidings-URI moeten bebouwen, worden hieronder gedetailleerd beschreven.** Deze aangepaste redirectURI bevat de vinger afdruk van het certificaat van de toepassing en wordt gegarandeerd uniek voor de toepassing door de Google Play Store. Wanneer een toepassing de Broker aanroept, vraagt de Broker het Android-besturings systeem om het te voorzien van de vinger afdruk van het certificaat dat de Broker wordt genoemd. De broker biedt deze vinger afdruk van het certificaat naar micro soft in de aanroep van het identiteits systeem. Als de vinger afdruk van de toepassing niet overeenkomt met de vinger afdruk van het certificaat dat door de ontwikkelaar tijdens de registratie is opgegeven, wordt de toegang geweigerd tot de tokens voor de resource die de toepassing aanvraagt. Met deze controle wordt gegarandeerd dat alleen de toepassing die door de ontwikkelaar is geregistreerd, tokens ontvangt.
+De nood zaak om ervoor te zorgen dat de identiteit van een toepassing die de Broker aanroept, cruciaal is voor de beveiliging die wordt geleverd in door Broker gesteunde aanmeldingen. iOS en Android afdwingen geen unieke id's die alleen geldig zijn voor een bepaalde toepassing, waardoor kwaadwillende toepassingen een geldige toepassings-id kunnen ' spoofen ' en de tokens ontvangen die voor de legitieme toepassing bedoeld zijn. Om ervoor te zorgen dat micro soft altijd communiceert met de juiste toepassing tijdens de uitvoering, wordt de ontwikkelaar gevraagd een aangepaste redirectURI op te geven wanneer ze hun toepassing registreren bij micro soft. **Hoe ontwikkel aars deze omleidings-URI moeten bebouwen, worden hieronder gedetailleerd beschreven.** Deze aangepaste redirectURI bevat de vinger afdruk van het certificaat van de toepassing en wordt gegarandeerd uniek voor de toepassing door de Google Play Store. Wanneer een toepassing de Broker aanroept, vraagt de Broker het Android-besturings systeem om het te voorzien van de vinger afdruk van het certificaat dat de Broker wordt genoemd. De broker biedt deze vinger afdruk van het certificaat naar micro soft in de aanroep van het identiteits systeem. Als de vinger afdruk van de toepassing niet overeenkomt met de vinger afdruk van het certificaat dat door de ontwikkelaar tijdens de registratie is opgegeven, wordt de toegang geweigerd tot de tokens voor de resource die de toepassing aanvraagt. Met deze controle wordt gegarandeerd dat alleen de toepassing die door de ontwikkelaar is geregistreerd, tokens ontvangt.
 
 Voor brokered-SSO-aanmeldingen gelden de volgende voor delen:
 

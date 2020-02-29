@@ -7,12 +7,12 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a34fdc2f6d6698f53dc2ff7fdc11d0a985b23415
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473127"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199764"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Quick Start: Azure Queue Storage-client bibliotheek V12 voor python
 
@@ -28,7 +28,7 @@ Gebruik de Azure Queue Storage-client bibliotheek V12 voor python voor het volge
 * Berichten uit een wachtrij verwijderen
 * Een wachtrij verwijderen
 
-[API-referentie documentatie](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [pakket (Python-pakket index)](https://pypi.org/project/azure-storage-queue/) | voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+[API-referentie documentatie](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [pakket (Python-pakket index)](https://pypi.org/project/azure-storage-queue/) | voor [beelden](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -109,7 +109,7 @@ Gebruik de volgende python-klassen om te communiceren met deze resources:
 * [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): de klasse `QueueClient` biedt u de mogelijkheid om een afzonderlijke wachtrij en de bijbehorende berichten te beheren en te bewerken.
 * [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): de klasse `QueueMessage` vertegenwoordigt de afzonderlijke objecten die worden geretourneerd bij het aanroepen van [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) op een wachtrij.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u de volgende acties kunt uitvoeren met de Azure Queue Storage-client bibliotheek voor python:
 

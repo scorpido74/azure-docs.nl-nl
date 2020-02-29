@@ -11,14 +11,15 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+tags: azure-synapse
+ms.openlocfilehash: 89ec405a348e3ace851fd5f5e17283a8036692a5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153278"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199407"
 ---
-# <a name="secure-a-database-in-sql-data-warehouse"></a>Een data base in SQL Data Warehouse beveiligen
+# <a name="secure-a-database-in-azure-synapse"></a>Een data base in azure Synapse beveiligen
 > [!div class="op_single_selector"]
 > * [Beveiligings overzicht](sql-data-warehouse-overview-manage-security.md)
 > * [Verificatie](sql-data-warehouse-authentication.md)
@@ -40,14 +41,14 @@ Azure Synapse Analytics maakt gebruik van IP-firewall regels op server niveau. H
 
 Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-pool ondersteunt momenteel SQL Server verificatie met een gebruikers naam en wacht woord en met Azure Active Directory. 
 
 Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met deze referenties kunt u zich bij elke Data Base op die server als de eigenaar van de data base of "dbo" verifiëren via SQL Server-verificatie.
 
 Als best practice, moeten gebruikers van uw organisatie echter een ander account gebruiken om te verifiëren. Op deze manier kunt u de machtigingen die aan de toepassing worden verleend, beperken en het risico op schadelijke activiteiten verminderen voor het geval uw toepassings code kwetsbaar is voor een SQL-injectie aanval. 
 
-Als u een SQL Server geverifieerde gebruiker wilt maken, maakt u verbinding met de **hoofd** database op uw server met de aanmelding van de server beheerder en maakt u een nieuwe Server aanmelding.  Het is een goed idee om ook een gebruiker te maken in de hoofd database Azure Synapse-gebruikers. Als u een gebruiker maakt in de Master, kan een gebruiker zich aanmelden met hulpprogram ma's als SSMS zonder een database naam op te geven.  Ook kunnen ze de object Verkenner gebruiken om alle data bases op een SQL-Server weer te geven.
+Als u een SQL Server geverifieerde gebruiker wilt maken, maakt u verbinding met de **hoofd** database op uw server met de aanmelding van de server beheerder en maakt u een nieuwe Server aanmelding.  Het is een goed idee om ook een gebruiker in de hoofd database te maken. Als u een gebruiker maakt in de Master, kan een gebruiker zich aanmelden met hulpprogram ma's als SSMS zonder een database naam op te geven.  Ook kunnen ze de object Verkenner gebruiken om alle data bases op een SQL-Server weer te geven.
 
 ```sql
 -- Connect to master database and create a login
@@ -58,7 +59,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 Maak vervolgens verbinding met uw **SQL-groeps database** met de aanmelding van de server beheerder en maakt u een database gebruiker op basis van de Server aanmelding die u hebt gemaakt.
 
 ```sql
--- Connect to SQL DW database and create a database user
+-- Connect to the database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
@@ -76,7 +77,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Het serverbeheerdersaccount waarmee u verbinding maakt is lid van db_owner, die geautoriseerd is om alle bewerkingen binnen de database uit te voeren. Gebruik dit account voor het implementeren van schema-updates en andere beheerbewerkingen. Gebruik het 'ApplicationUser'-account met beperktere machtigingen om vanuit van uw toepassing verbinding te maken met de database met de minste bevoegdheden die nodig zijn voor uw toepassing.
 
-Er zijn manieren om verder te beperken wat een gebruiker kan doen binnen een Data Warehouse:
+Er zijn manieren om verder te beperken wat een gebruiker in de data base kan doen:
 
 * Met gedetailleerde [machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) kunt u bepalen welke bewerkingen u op afzonderlijke kolommen, tabellen, weer gaven, schema's, procedures en andere objecten in de-data base. Gebruik gedetailleerde machtigingen om de meeste controle te hebben en de minimale machtigingen te verlenen die nodig zijn. 
 * Andere [database rollen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15) dan db_datareader en db_datawriter kunnen worden gebruikt voor het maken van krachtigere toepassings gebruikers accounts of minder krachtige beheer accounts. De ingebouwde vaste database rollen bieden een eenvoudige manier om machtigingen te verlenen, maar kunnen wel tot het verlenen van meer machtigingen dan nodig zijn.

@@ -1,6 +1,6 @@
 ---
 title: Voorwaardelijke toegang
-description: Meer informatie over het configureren van voorwaardelijke toegang voor Azure SQL Database en het Data Warehouse.
+description: Meer informatie over het configureren van voorwaardelijke toegang voor Azure SQL Database en Azure Synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,25 +10,26 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 03/29/2019
-ms.openlocfilehash: 9b8c0dbe03e47d32d8194408663973f07a07b1b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+tag: azure-synpase
+ms.openlocfilehash: f2431ee7c62079a3691a5ea99e562460df8f9309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827165"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197569"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Voorwaardelijke toegang (MFA) met Azure SQL Database en Data Warehouse  
+# <a name="conditional-access-mfa-with-azure-sql-database-and-azure-synapse-analytics"></a>Voorwaardelijke toegang (MFA) met Azure SQL Database en Azure Synapse Analytics
 
-Azure [SQL database](sql-database-technical-overview.md), een [beheerd exemplaar](sql-database-managed-instance.md)en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ondersteunen micro soft voorwaardelijke toegang. 
+Azure [SQL database](sql-database-technical-overview.md), [Managed instance](sql-database-managed-instance.md)en [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ondersteunen micro soft voorwaardelijke toegang. 
 
 > [!NOTE]
-> Dit onderwerp is van toepassing op Azure SQL-servers en op SQL Database- en SQL Data Warehouse-databases die op deze Azure SQL-servers worden gemaakt. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
+> Dit onderwerp is van toepassing op Azure SQL Server en op zowel SQL Database als Azure Synapse die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud.
 
 De volgende stappen laten zien hoe u SQL Database kunt configureren voor het afdwingen van beleid voor voorwaardelijke toegang.  
 
 ## <a name="prerequisites"></a>Vereisten  
-- U moet uw SQL Database of SQL Data Warehouse configureren voor de ondersteuning van Azure Active Directory-verificatie. Zie [Azure Active Directory authenticatie configureren en beheren met SQL database of SQL Data Warehouse](sql-database-aad-authentication-configure.md)voor specifieke stappen.  
+- U moet uw SQL Database of SQL-groep in azure Synapse configureren ter ondersteuning van Azure Active Directory-verificatie. Zie voor specifieke stappen [Azure Active Directory verificatie configureren en beheren met SQL database of Azure Synapse](sql-database-aad-authentication-configure.md).  
 - Als multi-factor Authentication is ingeschakeld, moet u verbinding maken met met een ondersteund hulp programma, zoals de laatste SSMS. Zie [Azure SQL database multi-factor Authentication configureren voor SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md)voor meer informatie.  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>CA configureren voor Azure SQL DB/DW  
@@ -44,14 +45,14 @@ De volgende stappen laten zien hoe u SQL Database kunt configureren voor het afd
    Als **Azure SQL database** niet wordt weer gegeven in de volgende derde scherm afbeelding, voert u de volgende stappen uit:   
    - Meld u aan bij uw Azure SQL DB/DW-exemplaar met behulp van SSMS met een AAD-beheerders account.  
    - Voer `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`uit.  
-   - Meld u aan bij AAD en controleer of Azure SQL Database en Data Warehouse worden weer gegeven in de toepassingen in uw AAD.  
+   - Meld u aan bij AAD en controleer of Azure SQL Database en Azure Synapse zijn opgenomen in de toepassingen in uw AAD.  
 
 5. Selecteer **toegangs beheer**, selecteer **toekennen**en controleer vervolgens het beleid dat u wilt Toep assen. Voor dit voor beeld selecteren we **multi-factor Authentication vereisen**.  
    ![Selecteer Grant Access](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Samenvatting  
 De geselecteerde toepassing (Azure SQL Database) waarmee verbinding kan worden gemaakt met Azure SQL data base/DW via Azure AD Premium, nu het geselecteerde beleid voor voorwaardelijke toegang afdwingt, **vereiste multi-factor Authentication.**  
-Neem contact op met MFAforSQLDB@microsoft.comvoor vragen over Azure SQL Database en data warehouse met betrekking tot multi-factor Authentication.  
+Voor vragen over Azure SQL Database en Azure Synapse met betrekking tot multi-factor Authentication, neemt u contact op met MFAforSQLDB@microsoft.com.  
 
 ## <a name="next-steps"></a>Volgende stappen  
 

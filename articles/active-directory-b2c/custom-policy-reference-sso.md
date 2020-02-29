@@ -3,20 +3,20 @@ title: Beheer van sessie voor eenmalige aanmelding met aangepaste beleids regels
 titleSuffix: Azure AD B2C
 description: Meer informatie over het beheren van SSO-sessies met aangepaste beleids regels in Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912542"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189103"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
 
@@ -39,11 +39,11 @@ SSO-beheer klassen worden opgegeven met behulp van het `<UseTechnicalProfileForS
 
 ## <a name="input-claims"></a>Invoer claims
 
-Het `InputClaims`-element is leeg of afwezig. 
+Het `InputClaims`-element is leeg of afwezig.
 
 ## <a name="persisted-claims"></a>Permanente claims
 
-Claims die moeten worden geretourneerd naar de toepassing of worden gebruikt door de voor waarden in de volgende stappen, moeten worden opgeslagen in de sessie of worden uitgebreid met een lees bewerking vanuit het profiel van de gebruiker in de Directory. Door permanente claims te gebruiken zorgt u ervoor dat uw verificatie trajecten niet mislukken voor ontbrekende claims. Gebruik het `<PersistedClaims>`-element van het technische profiel om claims toe te voegen aan de sessie. Wanneer de provider wordt gebruikt om de sessie opnieuw in te vullen, worden de permanente claims toegevoegd aan de claim verzameling. 
+Claims die moeten worden geretourneerd naar de toepassing of worden gebruikt door de voor waarden in de volgende stappen, moeten worden opgeslagen in de sessie of worden uitgebreid met een lees bewerking vanuit het profiel van de gebruiker in de Directory. Door permanente claims te gebruiken zorgt u ervoor dat uw verificatie trajecten niet mislukken voor ontbrekende claims. Gebruik het `<PersistedClaims>`-element van het technische profiel om claims toe te voegen aan de sessie. Wanneer de provider wordt gebruikt om de sessie opnieuw in te vullen, worden de permanente claims toegevoegd aan de claim verzameling.
 
 ## <a name="output-claims"></a>Uitvoer claims
 
@@ -53,7 +53,7 @@ De `<OutputClaims>` wordt gebruikt voor het ophalen van claims uit de sessie.
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebruikt om SSO-gedrag voor een specifiek technisch profiel te onderdrukken. Het volgende `SM-Noop` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).  
+Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebruikt om SSO-gedrag voor een specifiek technisch profiel te onderdrukken. Het volgende `SM-Noop` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebru
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale accounts. Het volgende `SM-AAD` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack). 
+Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale accounts. Het volgende `SM-AAD` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er 
 </TechnicalProfile>
 ```
 
-Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleid voor het Starter pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Dit technische profiel beheert de multi-factor Authentication-sessie. 
+Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleid voor het Starter pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Dit technische profiel beheert de multi-factor Authentication-sessie.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -117,7 +117,7 @@ Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukke
 ```
 
 #### <a name="metadata"></a>Metagegevens
-        
+
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
@@ -138,7 +138,7 @@ Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies t
 ```
 
 Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, moeten de `IncludeSessionIndex` en `RegisterServiceProviders` zijn ingesteld op `true`. Voor het afmelden van SAML-sessies moet `SessionIndex` en `NameID` zijn voltooid.
- 
+
 Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-producttechnische profiel](connect-with-saml-service-providers.md)
 
 ```XML
@@ -148,7 +148,7 @@ Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-prod
 </TechnicalProfile>
 ```
 #### <a name="metadata"></a>Metagegevens
-        
+
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
 | IncludeSessionIndex | Nee | Hiermee wordt de provider aangegeven dat de sessie-index moet worden opgeslagen. Mogelijke waarden: `true` (standaard) of `false`.|

@@ -13,82 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715273"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197144"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
 Azure Standard Load Balancer ondersteunt scenario's met [beschikbaarheids zones](../availability-zones/az-overview.md) . U kunt Standard Load Balancer gebruiken om de beschik baarheid in uw end-to-end-scenario te optimaliseren door resources te uitlijnen met zones en deze over te verdelen over zones.  Bekijk [beschikbaarheids zones](../availability-zones/az-overview.md) voor meer informatie over welke beschikbaarheids zones, welke regio's momenteel ondersteuning bieden voor beschikbaarheids zones en andere gerelateerde concepten en producten. Beschikbaarheids zones in combi natie met Standard Load Balancer is een expansieve,-en flexibele functieset die veel verschillende scenario's kan maken.  Lees dit document voor meer informatie over deze [concepten](#concepts) en [ontwerp richtlijnen](#design)voor het basis scenario.
 
->[!IMPORTANT]
->Bekijk [Beschikbaarheidszones](../availability-zones/az-overview.md) voor Verwante onderwerpen, inclusief alle specifieke informatie over de regio.
-
 ## <a name="concepts"></a>Beschikbaarheidszones concepten toegepast op Load Balancer
 
-Er is geen rechtstreekse relatie tussen Load Balancer resources en de werkelijke infra structuur. Als u een Load Balancer maakt, wordt er geen exemplaar gemaakt. Load Balancer resources zijn objecten waarin u kunt zien hoe Azure de vooraf gebouwde multi tenant-infra structuur moet Program meren om het scenario dat u wilt maken te verhalen.  Dit is belang rijk in de context van beschikbaarheids zones, omdat een enkele Load Balancer resource de programmering van de infra structuur in meerdere beschikbaarheids zones kan beheren, terwijl een zone-redundante service als één resource wordt weer gegeven vanuit het oogpunt van de klant.  
-
-Een Load Balancer resource zelf is regionaal en nooit zonegebonden.  En een VNet en subnet zijn altijd regionaal en nooit zonegebonden. De granulatie van wat u kunt configureren, wordt beperkt door elke configuratie van de definitie van de frontend, regel en back-endserver.
-
+Een Load Balancer resource zelf is regionaal en nooit zonegebonden. De granulatie van wat u kunt configureren, wordt beperkt door elke configuratie van de definitie van de frontend, regel en back-endserver.
 In de context van beschikbaarheids zones worden het gedrag en de eigenschappen van een Load Balancer regel beschreven als zone-redundante of zonegebonden.  Zone-redundante en zonegebonden beschrijven de zonality van een eigenschap.  In de context van Load Balancer betekent zone-redundantie altijd dat *meerdere zones* en zonegebonden betekent dat de service wordt geïsoleerd voor *één zone*.
-
 Zowel de open bare als de interne Load Balancer ondersteunings zone-redundante en zonegebonden-scenario's en beide kunnen verkeer omleiden naar alle zones, indien nodig (*Kruis zone taak verdeling*). 
 
 ### <a name="frontend"></a>Front
 
 Een Load Balancer frontend is een front-end-IP-configuratie die verwijst naar een open bare IP-adres of een privé-IP-adres binnen het subnet van een virtuele netwerk bron.  Het vormt het eind punt met gelijke taak verdeling waar uw service wordt weer gegeven.
+Een Load Balancer resource kan regels bevatten met zonegebonden en een zone-redundante front-end. Wanneer een open bare IP-bron of een privé-IP-adres is gegarandeerd voor een zone, is het zonality (of het ontbreken daarvan) niet veranderbaar.  Als u de zonality van een openbaar IP-of privé-IP-adres wilt wijzigen of weglaten, moet u de open bare IP-adressen in de juiste zone opnieuw maken.  In beschikbaarheids zones worden de beperkingen voor meerdere frontends niet gewijzigd. Controleer meerdere front-ends [voor Load Balancer](load-balancer-multivip-overview.md) voor meer informatie over deze mogelijkheid.
 
-Een Load Balancer resource kan regels bevatten met zonegebonden en een zone-redundante front-end. 
+#### <a name="zone-redundant"></a>Zone redundant 
 
-Wanneer een open bare IP-bron of een privé-IP-adres is gegarandeerd voor een zone, is het zonality (of het ontbreken daarvan) niet veranderbaar.  Als u de zonality van een openbaar IP-of privé-IP-adres wilt wijzigen of weglaten, moet u de open bare IP-adressen in de juiste zone opnieuw maken.  In beschikbaarheids zones worden de beperkingen voor meerdere frontends niet gewijzigd. Controleer meerdere front-ends [voor Load Balancer](load-balancer-multivip-overview.md) voor meer informatie over deze mogelijkheid.
-
-#### <a name="zone-redundant-by-default"></a>Zone-redundant standaard
-
-In een regio met beschikbaarheids zones is een Standard Load Balancer front-end standaard zone-redundant.  Zone-redundant houdt in dat alle binnenkomende of uitgaande stromen worden geleverd door meerdere beschikbaarheids zones in een regio tegelijk met één IP-adres. DNS-redundantie schema's zijn niet vereist. Eén frontend-IP-adres kan onschadelijk worden gemaakt aan de zone en kan worden gebruikt voor het bereiken van alle (niet-getroffen) back-end-groeps leden, onafhankelijk van de zone. Een of meer beschikbaarheids zones kunnen mislukken en het gegevenspad blijft actief zolang er één zone in de regio in orde is. Het enkelvoudige IP-adres van de frontend wordt tegelijkertijd bediend door meerdere onafhankelijke infrastructuur implementaties in meerdere beschikbaarheids zones.  Dit betekent niet het Hitless, maar eventuele nieuwe pogingen of het opnieuw instellen van het bestand slaagt in andere zones die niet van invloed zijn op de storing van de zone.   
-
-Het volgende fragment is een afbeelding voor het definiëren van een openbaar IP-adres dat door een zone kan worden gebruikt om te gebruiken met uw open bare Standard Load Balancer. Als u bestaande resource manager-sjablonen in uw configuratie gebruikt, voegt u de sectie **SKU** toe aan deze sjablonen.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Het volgende fragment is een afbeelding voor het definiëren van een zone-redundant frontend-IP-adres voor uw interne Standard Load Balancer. Als u bestaande resource manager-sjablonen in uw configuratie gebruikt, voegt u de sectie **SKU** toe aan deze sjablonen.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-De voor gaande fragmenten zijn niet volledig sjablonen, maar zijn bedoeld om te laten zien hoe u de eigenschappen van beschikbaarheids zones kunt weer geven.  U moet deze instructies opnemen in uw sjablonen.
+Een Standard Load Balancer frontend kan in een regio met beschikbaarheids zones zone-redundant zijn.  Zone-redundant houdt in dat alle binnenkomende of uitgaande stromen worden geleverd door meerdere beschikbaarheids zones in een regio tegelijk met één IP-adres. DNS-redundantie schema's zijn niet vereist. Eén frontend-IP-adres kan onschadelijk worden gemaakt aan de zone en kan worden gebruikt voor het bereiken van alle (niet-getroffen) back-end-groeps leden, onafhankelijk van de zone. Een of meer beschikbaarheids zones kunnen mislukken en het gegevenspad blijft actief zolang er één zone in de regio in orde is. Het enkelvoudige IP-adres van de frontend wordt tegelijkertijd bediend door meerdere onafhankelijke infrastructuur implementaties in meerdere beschikbaarheids zones.  Dit betekent niet het Hitless, maar eventuele nieuwe pogingen of het opnieuw instellen van het bestand slaagt in andere zones die niet van invloed zijn op de storing van de zone.   
 
 #### <a name="optional-zone-isolation"></a>Optionele zone isolatie
 
@@ -101,49 +50,6 @@ Als u deze concepten (zone-redundante en zonegebonden voor dezelfde back-end) wi
 Voor een open bare Load Balancer frontend voegt u een para meter *zones* toe aan de open bare IP-resource waarnaar wordt verwezen door de frontend-IP-configuratie die wordt gebruikt door de betreffende regel.
 
 Voor een interne Load Balancer frontend voegt u een para meter *zones* toe aan de interne Load Balancer frontend-IP-configuratie. De zonegebonden-frontend zorgt ervoor dat de Load Balancer een IP-adres in een subnet naar een specifieke zone te garanderen.
-
-Het volgende fragment is een afbeelding voor het definiëren van een openbaar IP-adres voor zonegebonden in de beschik baarheid Zone 1. Als u bestaande resource manager-sjablonen in uw configuratie gebruikt, voegt u de sectie **SKU** toe aan deze sjablonen.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Het volgende fragment is een afbeelding voor het definiëren van een interne Standard Load Balancer front-end in Beschik baarheid Zone 1. Als u bestaande resource manager-sjablonen in uw configuratie gebruikt, voegt u de sectie **SKU** toe aan deze sjablonen. Definieer ook de **zone** -eigenschap in de front-end-IP-configuratie voor de onderliggende bron.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-De voor gaande fragmenten zijn niet volledig sjablonen, maar zijn bedoeld om te laten zien hoe u de eigenschappen van beschikbaarheids zones kunt weer geven.  U moet deze instructies opnemen in uw sjablonen.
 
 ### <a name="cross-zone-load-balancing"></a>Taak verdeling in meerdere zones
 
@@ -201,14 +107,6 @@ Vermijd onbedoelde afhankelijkheden voor meerdere zones, waardoor de beschik baa
   - Wanneer een zone wordt geretourneerd, weet uw toepassing hoe u veilig kunt convergeren?
 
 Bekijk de [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) om de flexibiliteit van uw toepassing te verbeteren tot fouten.
-
-### <a name="zonalityguidance"></a>Zone-redundant versus zonegebonden
-
-Zone-redundante kan een eenvoud bieden met een zone-neutraal-optie en tegelijkertijd een flexibele optie met één IP-adres voor de service.  Dit kan de complexiteit van de beurt verminderen.  Zone-redundante heeft ook mobiliteit over zones en kan veilig worden gebruikt voor bronnen in elke zone.  Het is ook een toekomstige proef versie in regio's zonder beschikbaarheids zones, waardoor de vereiste wijzigingen kunnen worden beperkt zodra een regio beschikbaarheids zones krijgt.  De configuratie syntaxis voor een zone-redundant IP-adres of frontend slaagt in een wille keurige regio, inclusief die zonder beschikbaarheids zones: er is geen zone opgegeven in de eigenschap zones: van de resource.
-
-Zonegebonden kunnen een expliciete garantie voor een zone bieden, waarbij lotgevallen expliciet wordt gedeeld met de status van de zone. Het maken van een Load Balancer-regel met een zonegebonden IP-adres-front-end of zonegebonden intern Load Balancer front-end kan heel wenselijk zijn, vooral als uw gekoppelde bron een zonegebonden virtuele machine in dezelfde zone is.  Het is ook mogelijk dat uw toepassing expliciete kennis nodig heeft over welke zone een resource in de tussen tijd bevindt en dat u de beschik baarheid in afzonderlijke zones expliciet wilt controleren.  U kunt ervoor kiezen om meerdere zonegebonden-frontends beschikbaar te maken voor een end-to-end-service die wordt gedistribueerd over zones (dat wil zeggen, per zone zonegebonden-front-end voor meerdere zonegebonden virtuele-machine schaal sets).  En als uw zonegebonden-front-end een openbaar IP-adres zijn, kunt u deze meerdere zonegebonden-front-ends gebruiken om uw service met [Traffic Manager](../traffic-manager/traffic-manager-overview.md)aan te bieden.  U kunt ook meerdere zonegebonden-frontends gebruiken voor het verkrijgen van informatie over zone status en prestaties met behulp van bewakings oplossingen van derden en de algehele service bieden met een zone-redundante front-end. U moet alleen zonegebonden-resources met zonegebonden-front-end-toepassingen die zijn afgestemd op dezelfde zone, en potentieel schadelijke cross-zone scenario's voor zonegebonden bronnen vermijden.  Zonegebonden-resources bestaan alleen in regio's waar beschikbaarheids zones bestaan.
-
-Er zijn geen algemene richt lijnen die een betere keuze is dan de andere, zonder de service architectuur te weten.  Bekijk de [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) om de flexibiliteit van uw toepassing te verbeteren tot fouten.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Beschikbaarheidszones](../availability-zones/az-overview.md)

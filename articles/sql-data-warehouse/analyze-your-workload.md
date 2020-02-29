@@ -1,30 +1,30 @@
 ---
 title: Uw workload analyseren
-description: Technieken voor het analyseren van de query prioriteit voor uw werk belasting in Azure SQL Data Warehouse.
+description: Technieken voor het analyseren van de query prioriteit voor uw werk belasting in azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693114"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199992"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analyseer uw werk belasting in Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analyseer uw werk belasting in azure Synapse Analytics
 
-Technieken voor het analyseren van uw werk belasting in Azure SQL Data Warehouse.
+Technieken voor het analyseren van uw SQL Analytics-werk belasting in azure Synapse Analytics.
 
 ## <a name="resource-classes"></a>Resourceklassen
 
-SQL Data Warehouse biedt resource klassen om systeem bronnen aan query's toe te wijzen.  Zie [resource klassen & workload Management](resource-classes-for-workload-management.md)voor meer informatie over resource klassen.  Query's wachten of de resource klasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar zijn.
+SQL Analytics biedt bron klassen om systeem bronnen aan query's toe te wijzen.  Zie [resource klassen & workload Management](resource-classes-for-workload-management.md)voor meer informatie over resource klassen.  Query's wachten of de resource klasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar zijn.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Detectie van query's in de wachtrij en andere Dmv's
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse heeft de volgende wacht typen:
+SQL Analytics heeft de volgende wacht typen:
 
 * **LocalQueriesConcurrencyResourceType**: query's die buiten het Framework voor gelijktijdigheids sleuven vallen. DMV-query's en systeem functies, zoals `SELECT @@VERSION`, zijn voor beelden van lokale query's.
 * **UserConcurrencyResourceType**: query's die binnen het Framework voor gelijktijdigheids sleuven zitten. Query's voor de tabellen van de eind gebruiker zijn voor beelden die gebruikmaken van dit resource type.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een Data Base beveiligen in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [indexen opnieuw samen stellen om de segment kwaliteit te verbeteren](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.
+Zie [een data base in SQL Analytics beveiligen](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [indexen opnieuw samen stellen om de segment kwaliteit te verbeteren](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919648"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183292"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -232,7 +232,7 @@ Media Services is nu live in de volgende data centers: Brazilië-zuid, India-Wes
 
 ## <a id="september_changes_15"></a>Release van september 2015
 Media Services biedt nu de mogelijkheid om zowel video on demand als live streams te beveiligen met Widevine Modular DRM-technologie. U kunt de volgende partners voor leverings Services gebruiken om Widevine-licenties te leveren:
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 

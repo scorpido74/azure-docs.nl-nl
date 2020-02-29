@@ -3,20 +3,20 @@ title: Een zelf-bevestigd technisch profiel in een aangepast beleid definiëren
 titleSuffix: Azure AD B2C
 description: Definieer een zelf-bevestigd technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425592"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183802"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een zelf-bevestigd technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -198,7 +198,7 @@ U kunt ook een REST API technisch profiel aanroepen met uw bedrijfs logica, invo
 | setting.showCancelButton | Nee | Hiermee wordt de knop Annuleren weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
 | setting. showContinueButton | Nee | Hiermee wordt de knop door gaan weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
 | setting. showSignupLink <sup>2</sup>| Nee | Hiermee wordt de knop registratie weer gegeven. Mogelijke waarden: `true` (standaard) of `false` |
-| setting. forgotPasswordLinkLocation <sup>2</sup>| Nee| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina, of `None` verwijdert de koppeling verg eten wacht woord.| 
+| setting. forgotPasswordLinkLocation <sup>2</sup>| Nee| Hiermee wordt de verg eten wachtwoord koppeling weer gegeven. Mogelijke waarden: `AfterInput` (standaard) de koppeling wordt weer gegeven aan de onderkant van de pagina, of `None` verwijdert de koppeling verg eten wacht woord.|
 | IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false` (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true`. |
 
 Opmerkingen:

@@ -1,28 +1,28 @@
 ---
 title: Beheer baarheid en controle-query activiteit, resource gebruik
-description: Meer informatie over de mogelijkheden die beschikbaar zijn voor het beheren en controleren van Azure SQL Data Warehouse. Gebruik de Azure Portal en dynamische beheer weergaven (Dmv's) om inzicht te krijgen in de query-activiteiten en het resource gebruik van uw data warehouse.
+description: Meer informatie over de mogelijkheden die beschikbaar zijn voor het beheren en bewaken van Azure Synapse Analytics. Gebruik de Azure Portal en dynamische beheer weergaven (Dmv's) om inzicht te krijgen in de query-activiteiten en het resource gebruik van uw data warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 366d170a4caf9ee7428b68d71f910c65356038ff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024536"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195920"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Resource gebruik en query activiteit bewaken in Azure SQL Data Warehouse
-Azure SQL Data Warehouse biedt een uitgebreide bewakings ervaring in de Azure Portal om inzicht te krijgen in de werk belasting van uw data warehouse. De Azure Portal is het aanbevolen hulp programma voor het bewaken van uw data warehouse, zoals het biedt Configureer bare Bewaar perioden, waarschuwingen, aanbevelingen en aanpas bare grafieken en dash boards voor metrische gegevens en Logboeken. De portal biedt u ook de mogelijkheid om te integreren met andere Azure-bewakings services zoals OMS (Operations Management Suite) en Azure Monitor (Logboeken) om een holistische bewakings ervaring te bieden voor niet alleen uw data warehouse, maar ook uw volledige Azure Analytics platform voor een geïntegreerde bewakings ervaring. In deze documentatie wordt beschreven welke bewakings mogelijkheden beschikbaar zijn voor het optimaliseren en beheren van uw analyse platform met SQL Data Warehouse. 
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Resource gebruik en query activiteit bewaken in azure Synapse Analytics
+Azure Synapse Analytics biedt een uitgebreide bewakings ervaring binnen het Azure Portal om inzicht te krijgen in uw data warehouse-werk belasting. De Azure Portal is het aanbevolen hulp programma voor het bewaken van uw data warehouse, zoals het biedt Configureer bare Bewaar perioden, waarschuwingen, aanbevelingen en aanpas bare grafieken en dash boards voor metrische gegevens en Logboeken. De portal biedt u ook de mogelijkheid om te integreren met andere Azure-bewakings services zoals OMS (Operations Management Suite) en Azure Monitor (Logboeken) om een holistische bewakings ervaring te bieden voor niet alleen uw data warehouse, maar ook uw volledige Azure Analytics platform voor een geïntegreerde bewakings ervaring. In deze documentatie wordt beschreven welke bewakings mogelijkheden beschikbaar zijn voor het optimaliseren en beheren van uw analyse platform met SQL Analytics. 
 
 ## <a name="resource-utilization"></a>Resourcegebruik 
-De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor SQL Data Warehouse. Deze metrische gegevens worden geoppereerd via [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor SQL Analytics. Deze metrische gegevens worden geoppereerd via [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
 
 
 | Naam van meetwaarde             | Beschrijving                                                  | Aggregatietype |
@@ -49,12 +49,12 @@ Aandachtspunten bij het weer geven van metrische gegevens en het instellen van w
 
 
 ## <a name="query-activity"></a>Query activiteit
-Voor een programmatische ervaring bij het bewaken van SQL Data Warehouse via T-SQL, biedt de service een set dynamische beheer weergaven (Dmv's). Deze weer gaven zijn handig bij het oplossen van problemen met de prestaties en het identificeren van prestatie knelpunten met uw werk belasting.
+Voor een programmatische ervaring bij het bewaken van SQL Analytics via T-SQL, biedt de service een set dynamische beheer weergaven (Dmv's). Deze weer gaven zijn handig bij het oplossen van problemen met de prestaties en het identificeren van prestatie knelpunten met uw werk belasting.
 
-Raadpleeg deze [documentatie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)als u de lijst met dmv's die SQL Data Warehouse biedt, wilt weer geven. 
+Raadpleeg deze [documentatie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)als u de lijst met DMV'S die SQL Analytics biedt, wilt weer geven. 
 
-## <a name="metrics-and-diagnostics-logging"></a>Registratie van metrische gegevens en diagnostische gegevens
-Zowel metrische gegevens als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de [Azure monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) component en via een programma kunnen worden geopend via [logboek query's](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata). De logboek latentie voor SQL Data Warehouse is ongeveer 10-15 minuten. Raadpleeg de volgende documentatie voor meer informatie over de factoren die van invloed zijn op de latentie.
+## <a name="metrics-and-diagnostics-logging"></a>Metrische gegevens en diagnoselogboeken
+Zowel metrische gegevens als logboeken kunnen worden geëxporteerd naar Azure Monitor, met name de [Azure monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) component en via een programma kunnen worden geopend via [logboek query's](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata). De logboek latentie voor SQL Analytics is ongeveer 10-15 minuten. Raadpleeg de volgende documentatie voor meer informatie over de factoren die van invloed zijn op de latentie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

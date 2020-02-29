@@ -1,30 +1,30 @@
 ---
 title: Workload bewaken-Azure Portal
-description: Azure SQL Data Warehouse bewaken met behulp van de Azure Portal
+description: SQL Analytics bewaken met behulp van de Azure Portal
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/22/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 7e93aee405d8a66d850a4e3f07f2e788f1004ef8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645637"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197222"
 ---
 # <a name="monitor-workload---azure-portal"></a>Workload bewaken-Azure Portal
 
-In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om uw workload te bewaken. Dit omvat het instellen van Azure Monitor logboeken voor het onderzoeken van de uitvoering van query's en het analyseren van werk belasting met behulp van log Analytics voor [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
+In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om uw workload te bewaken. Dit omvat het instellen van Azure Monitor logboeken voor het onderzoeken van de uitvoering van query's en het analyseren van werk belasting met behulp van log Analytics voor [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-- Azure SQL Data Warehouse: er worden logboeken verzameld voor een SQL Data Warehouse. Als u geen SQL Data Warehouse hebt ingericht, raadpleegt u de instructies in [Create a SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- SQL-groep: er worden logboeken verzameld voor een SQL-groep. Als u geen SQL-groep hebt ingericht, raadpleegt u de instructies in [een SQL-groep maken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
 ## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken
 
@@ -38,9 +38,9 @@ Ga naar de Blade bladeren voor Log Analytics-werk ruimten en maak een werk ruimt
 
 Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)voor meer informatie over werk ruimten.
 
-## <a name="turn-on-diagnostic-logs"></a>Diagnostische logboeken inschakelen 
+## <a name="turn-on-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
-Diagnostische instellingen configureren voor het verzenden van logboeken van uw SQL Data Warehouse. Logboeken bestaan uit telemetriegegevens van uw data warehouse die overeenkomen met de meest voorkomende prestatie problemen met Dmv's voor SQL Data Warehouse. Momenteel worden de volgende weer gaven ondersteund:
+Diagnostische instellingen configureren voor het verzenden van Logboeken uit uw SQL-groep. Logboeken bestaan uit telemetrie-weer gaven die gelijk zijn aan de meest gebruikte prestatie problemen met de Dmv's. Momenteel worden de volgende weer gaven ondersteund:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)

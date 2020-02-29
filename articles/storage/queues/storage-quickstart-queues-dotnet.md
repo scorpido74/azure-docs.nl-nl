@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 71a714124cecfc4f985d448371042c8aff092a11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463851"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197484"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Quick Start: Azure Queue Storage-client bibliotheek V12 voor .NET
 
@@ -31,7 +31,7 @@ Gebruik de Azure Queue Storage-client bibliotheek V12 voor .NET voor het volgend
 * Berichten uit een wachtrij verwijderen
 * Een wachtrij verwijderen
 
-[API-referentie documentatie](/dotnet/api/azure.storage.queues) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | -voor [beelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+[API-referentie documentatie](/dotnet/api/azure.storage.queues) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | -voor [beelden](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,7 +118,7 @@ Gebruik de volgende .NET-klassen om te communiceren met deze resources:
 * [QueueClient](/dotnet/api/azure.storage.queues.queueclient): de klasse `QueueClient` biedt u de mogelijkheid om een afzonderlijke wachtrij en de bijbehorende berichten te beheren en te bewerken.
 * [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): de klasse `QueueMessage` vertegenwoordigt de afzonderlijke objecten die worden geretourneerd bij het aanroepen van [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) voor een wachtrij.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u de volgende acties kunt uitvoeren met de Azure Queue Storage-client bibliotheek voor .NET:
 

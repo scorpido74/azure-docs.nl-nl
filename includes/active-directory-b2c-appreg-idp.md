@@ -1,22 +1,22 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: dc75d78f2e73d1aa42f5fc84d39a8b22d6a121bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: mimart
+ms.openlocfilehash: 80e5166775b0cf5acbfce32e61d91c0889e3b086
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642606"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186353"
 ---
 Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
@@ -25,16 +25,16 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidi
 1. Voer bij **antwoord-URL**`https://jwt.ms` in
 1. Selecteer **Maken**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *testapp1*.
 1. Selecteer **accounts in een organisatorische Directory of een id-provider**.
 1. Onder **omleidings-URI**selecteert u **Web**en voert u `https://jwt.ms` in het tekstvak URL in.
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerders toestemming voor OpenID Connect-en offline_access-machtigingen* in.
+1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 
 Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekennings stroom in:

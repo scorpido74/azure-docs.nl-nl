@@ -5,13 +5,14 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9b92796e477ea0dd6795015edd3f400dd2cc9aa7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4b27893502dcded1e88b8a664531267a99c98af3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773749"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197535"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v3)
 
@@ -20,7 +21,7 @@ Ga aan de slag met de Azure Key Vault-client bibliotheek voor .NET. Volg de onde
 > [!NOTE]
 > In deze Quick Start wordt de v 3.0.4-versie van de client bibliotheek voor micro soft. Azure.-kluis gebruikt. Zie [Azure Key Vault-client bibliotheek voor .net (SDK v4)](quick-create-net.md)voor het gebruik van de meest recente versie van de Key Vault-client bibliotheek. 
 
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.

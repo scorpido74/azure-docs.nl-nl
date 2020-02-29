@@ -3,20 +3,20 @@ title: Voor beelden van het transformeren van een geheel getal voor aangepaste b
 titleSuffix: Azure AD B2C
 description: Voor beelden van een geheel getal voor trans formatie van het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7295e03f0a0f94b3450b99acc4d10d6ff86c92e7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948839"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187675"
 ---
 # <a name="integer-claims-transformations"></a>Geheeltallige claim transformaties
 
@@ -30,8 +30,8 @@ Converteert een lang gegevens type naar een teken reeks gegevens type.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | lang | Het claim type dat moet worden geconverteerd naar een teken reeks. |
-| OutputClaim | outputClaim | string | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | inputClaim | long | Het claim type dat moet worden geconverteerd naar een teken reeks. |
+| OutputClaim | outputClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
 In dit voor beeld wordt de `numericUserId` claim met het waardetype Long geconverteerd naar een `UserId` claim met het waardetype string.
 

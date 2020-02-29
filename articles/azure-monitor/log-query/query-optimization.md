@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2019
-ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 02/28/2019
+ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164573"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196651"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -256,6 +256,34 @@ Perf
     | summarize arg_max(TimeGenerated, *), min(TimeGenerated)   
 by Computer
 ) on Computer
+```
+
+Een ander voor beeld voor deze fout is wanneer u het filteren van tijd bereiken net na een [samen voeging](/azure/kusto/query/unionoperator?pivots=azuremonitor) in meerdere tabellen uitvoert. Bij het uitvoeren van de Union moet elke subquery binnen het bereik vallen. U kunt de instructie [toestaan](/azure/kusto/query/letstatement) om consistentie van de scope te waarborgen.
+
+Met de volgende query worden bijvoorbeeld alle gegevens in de *heartbeat* -en *prestatie* tabellen gescand, niet alleen de laatste 1 dag:
+
+```Kusto
+Heartbeat 
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| where TimeGenerated > ago(1d)
+| summarize min(TimeGenerated) by Computer
+```
+
+Deze query moet als volgt worden opgelost:
+
+```Kusto
+let MinTime = ago(1d);
+Heartbeat 
+| where TimeGenerated > MinTime
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | where TimeGenerated > MinTime
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| summarize min(TimeGenerated) by Computer
 ```
 
 De meting is altijd groter dan de opgegeven werkelijke tijd. Als bijvoorbeeld het filter voor de query zeven dagen is, kan het systeem 7,5 of 8,1 dagen scannen. Dit komt doordat het systeem de gegevens partitioneert in segmenten in een variabele grootte. Om ervoor te zorgen dat alle relevante records worden gescand, wordt de volledige partitie gescand die enkele uren en zelfs meer dan een dag kan omvatten.

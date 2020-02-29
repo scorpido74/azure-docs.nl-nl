@@ -3,12 +3,12 @@ title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919869"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199696"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -83,6 +83,9 @@ De aanvraag tekst van de blauw druk-toewijzing ziet er als volgt uit:
 ```
 
 Het belangrijkste verschil in deze aanvraag tekst en een wordt toegewezen aan een abonnement is de eigenschap `properties.scope`. Deze vereiste eigenschap moet worden ingesteld op het abonnement waarop de blauw druk-toewijzing van toepassing is. Het abonnement moet een direct onderliggend element zijn van de beheer groeps hiërarchie waarin de blauw druk-toewijzing wordt opgeslagen.
+
+> [!NOTE]
+> Een blauw druk die is toegewezen aan het beheer groeps bereik, blijft de toewijzing van een blauw druk op abonnements niveau. Het enige verschil is waar de blauw druk toewijzing wordt opgeslagen om te voor komen dat abonnements eigenaren de toewijzing en de bijbehorende vergren delingen verwijderen.
 
 ## <a name="removing-locking-states"></a>Vergrendelings status verwijderen
 

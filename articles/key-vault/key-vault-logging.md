@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000670"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195325"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -39,10 +40,10 @@ Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor overzichts informatie o
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 * Een bestaande sleutelkluis die u hebt gebruikt.  
-* Azure PowerShell, minimale versie van 1.0.0. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren en te koppelen aan uw Azure-abonnement. Als u Azure PowerShell al hebt geïnstalleerd en de versie niet kent, voert `$PSVersionTable.PSVersion`u in de Azure PowerShell-console in.  
+* Azure PowerShell, minimale versie van 1.0.0. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren en te koppelen aan uw Azure-abonnement. Als u Azure PowerShell al hebt geïnstalleerd en de versie niet weet, voert u `$PSVersionTable.PSVersion`in de Azure PowerShell-console in.  
 * Voldoende opslagruimte op Azure voor uw Sleutelkluis-logboeken.
 
 ## <a id="connect"></a>Verbinding maken met uw sleutel kluis-abonnement
@@ -162,7 +163,7 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Zoals u in deze uitvoer zien kunt, volgen de blobs een naamconventie: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Zoals u in deze uitvoer kunt zien, hebben de blobs de volgende naamgevings regels: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 De datum- en tijdwaarden maken gebruik van UTC.
 
@@ -186,7 +187,7 @@ Pipe deze lijst via **Get-AzStorageBlobContent** om de blobs te downloaden naar 
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Wanneer u deze tweede opdracht uitvoert de **/** scheidingsteken in de blobnamen een volledige mapstructuur onder de doelmap gemaakt. U gebruikt deze structuur om de blobs te downloaden en op te slaan als bestanden.
+Wanneer u deze tweede opdracht uitvoert, maakt het **/** scheidings teken in de naam van de BLOB een volledige mapstructuur onder de doelmap. U gebruikt deze structuur om de blobs te downloaden en op te slaan als bestanden.
 
 Als u alleen specifieke blobs wilt downloaden, moet u jokertekens gebruiken. Bijvoorbeeld:
 
@@ -202,7 +203,7 @@ Als u alleen specifieke blobs wilt downloaden, moet u jokertekens gebruiken. Bij
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Als u alle logboeken voor de maand januari 2019 wilt downloaden, gebruikt `-Blob '*/year=2019/m=01/*'`u:
+* Als u alle logboeken voor de maand januari 2019 wilt downloaden, gebruikt u `-Blob '*/year=2019/m=01/*'`:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -248,27 +249,27 @@ Er wordt een logboek vermelding geretourneerd die er ongeveer als volgt uitziet:
 
 De volgende tabel bevat de veld namen en beschrijvingen:
 
-| Veldnaam | Description |
+| Veldnaam | Beschrijving |
 | --- | --- |
-| **tijd** |De datum en tijd in UTC. |
-| **ResourceId** |Azure Resource Manager resource-ID. Voor Key Vault-Logboeken is dit altijd de Key Vault Resource-ID. |
-| **OperationName** |Naam van de bewerking, zoals beschreven in de volgende tabel. |
+| **tegelijk** |De datum en tijd in UTC. |
+| **resourceId** |Azure Resource Manager resource-ID. Voor Key Vault-Logboeken is dit altijd de Key Vault Resource-ID. |
+| **operationName** |Naam van de bewerking, zoals beschreven in de volgende tabel. |
 | **operationVersion** |REST API versie die door de client is aangevraagd. |
-| **Categorie** |Type resultaat. Voor Key Vault-Logboeken is **audit event** de enige beschik bare waarde. |
+| **rubriek** |Type resultaat. Voor Key Vault-Logboeken is **audit event** de enige beschik bare waarde. |
 | **resultType** |Resultaat van de REST API aanvraag. |
 | **resultSignature** |HTTP-status. |
 | **resultDescription** |Extra beschrijving van het resultaat, indien beschikbaar. |
 | **durationMs** |De tijd die nodig was om de REST-API-aanvraag af te handelen in milliseconden. Hierbij wordt geen rekening gehouden met de netwerklatentie, zodat de tijd die u aan de clientzijde meet mogelijk niet overeenkomt met de tijd die hier wordt weergegeven. |
 | **callerIpAddress** |Het IP-adres van de client die de aanvraag heeft ingediend. |
-| **correlationId** |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
+| **Correlatie** |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
 | **persoon** |Identiteit van het token dat is aangeboden in de REST API aanvraag. Dit is meestal een ' gebruiker ', een ' Service-Principal ' of de combi natie ' gebruiker + appId ', zoals in het geval van een aanvraag die resulteert van een Azure PowerShell-cmdlet. |
-| **Eigenschappen** |Informatie die varieert op basis van de bewerking (**operationname**). In de meeste gevallen bevat dit veld client informatie (de teken reeks van de gebruikers agent die is door gegeven door de client), de exacte REST API aanvraag-URI en de HTTP-status code. Als er een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **VaultGet** **of een** service), bevat het ook de sleutel-URI (als id), kluis-URI of geheime URI. |
+| **eigenschappen** |Informatie die varieert op basis van de bewerking (**operationname**). In de meeste gevallen bevat dit veld client informatie (de teken reeks van de gebruikers agent die is door gegeven door de client), de exacte REST API aanvraag-URI en de HTTP-status code. Als er een object wordt geretourneerd als gevolg van een aanvraag (bijvoorbeeld **VaultGet** **of een** service), bevat het ook de sleutel-URI (als id), kluis-URI of geheime URI. |
 
 De waarde van het veld **operationname** bevindt zich in de *ObjectVerb* -indeling. Bijvoorbeeld:
 
-* Alle sleutel kluis bewerkingen hebben de `Vault<action>` indeling, `VaultGet` zoals en `VaultCreate`.
-* Alle sleutel bewerkingen hebben de `Key<action>` indeling, `KeySign` zoals en `KeyList`.
-* Alle geheime bewerkingen hebben de `Secret<action>` indeling, `SecretGet` zoals en `SecretListVersions`.
+* Alle sleutel kluis bewerkingen hebben de `Vault<action>` indeling, zoals `VaultGet` en `VaultCreate`.
+* Alle sleutel bewerkingen hebben de `Key<action>` indeling, zoals `KeySign` en `KeyList`.
+* Alle geheime bewerkingen hebben de `Secret<action>` indeling, zoals `SecretGet` en `SecretListVersions`.
 
 De volgende tabel geeft een lijst van de **operationname** waarden en de bijbehorende rest API opdrachten:
 
@@ -287,15 +288,15 @@ De volgende tabel geeft een lijst van de **operationname** waarden en de bijbeho
 | **Verwijderen** |[Een sleutel verwijderen](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
 | **Herstellen** |[Een sleutel herstellen](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
 | **Hekje** |[Aanmelden met een sleutel](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[Verifiëren met een sleutel](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[Een sleutel inpakken](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| **Controleren** |[Verifiëren met een sleutel](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| **Tekst terugloop** |[Een sleutel inpakken](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
 | **KeyUnwrap** |[Een sleutel uitpakken](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| **KeyEncrypt** |[Versleutelen met een sleutel](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| **Sleutel codering** |[Versleutelen met een sleutel](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
 | **Sleutel decoderen** |[Ontsleutelen met een sleutel](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
 | **Bijwerken** |[Een sleutel bijwerken](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
 | **Lijst met handelingen** |[De sleutels in een kluis weergeven](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
 | **KeyListVersions** |[De versies van een sleutel weergeven](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| **SecretSet** |[Een geheim maken](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| **Geheimset** |[Een geheim maken](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
 | **SecretGet** |[Een geheim ophalen](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
 | **SecretUpdate** |[Een geheim bijwerken](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
 | **SecretDelete** |[Een geheim verwijderen](https://msdn.microsoft.com/library/azure/dn903613.aspx) |

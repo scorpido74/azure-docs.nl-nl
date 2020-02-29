@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e98655dca7d682e5c42f3b0ae7f26c892bd12377
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710724"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190769"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelf studie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
 
@@ -59,7 +59,7 @@ In dit artikel leert u hoe u python, tensor flow en Azure Functions gebruikt met
 Ga naar de map *Start* en voer de volgende opdrachten uit om een virtuele omgeving met de naam `.venv`te maken en te activeren. Zorg ervoor dat u python 3,7 gebruikt, die wordt ondersteund door Azure Functions.
 
 
-# <a name="bashtabbash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 cd start
@@ -79,7 +79,7 @@ Als python het venv-pakket niet heeft geïnstalleerd in uw Linux-distributie, vo
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -93,7 +93,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 cd start
@@ -133,7 +133,7 @@ In Azure Functions is een functie project een container voor een of meer afzonde
     func new --name classify --template "HTTP trigger"
     ```
 
-    Met deze opdracht maakt u een map die overeenkomt met de naam van de functie, *classificeren*. In die map zijn twee bestanden: *\_\_init\_\_. py*, die de functie code en *Function. json*bevat, waarmee de trigger van de functie en de bijbehorende invoer-en uitvoer bindingen worden beschreven. Zie voor meer informatie over de inhoud van deze bestanden [een HTTP-geactiveerde python-functie in azure maken: Bekijk de inhoud van het bestand](functions-create-first-function-python.md#optional-examine-the-file-contents).
+    Met deze opdracht maakt u een map die overeenkomt met de naam van de functie, *classificeren*. In die map zijn twee bestanden: *\_\_init\_\_. py*, die de functie code en *Function. json*bevat, waarmee de trigger van de functie en de bijbehorende invoer-en uitvoer bindingen worden beschreven. Zie [de bestands inhoud](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) in de Snelstartgids voor python controleren voor meer informatie over de inhoud van deze bestanden.
 
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
@@ -158,19 +158,19 @@ Als u de functie `classify` wilt wijzigen om een afbeelding te classificeren op 
 
 1. Voer in de map *Start* de volgende opdracht uit om de model bestanden te kopiëren naar de map *classificeren* . Zorg ervoor dat u `\*` in de opdracht opneemt. 
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\model\* classify
@@ -182,19 +182,19 @@ Als u de functie `classify` wilt wijzigen om een afbeelding te classificeren op 
 
 1. Voer in de map *Start* de volgende opdracht uit om een bestand met hulp code te kopiëren naar de map *classificeren* :
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\predict.py classify
@@ -266,19 +266,19 @@ Voor het testen van het aanroepen van het functie-eind punt vanuit een andere we
 
 1. Een HTTP-server starten met python:
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash 
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
     ```
 
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
     ```cmd
     py -m http.server

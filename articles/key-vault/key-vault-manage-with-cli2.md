@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000625"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195274"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault beheren met de Azure CLI 
 
@@ -59,8 +60,8 @@ az account set -h
 
 U kunt ook de volgende artikelen lezen om vertrouwd te raken met Azure Resource Manager in de Azure-opdracht regel interface voor meerdere platforms:
 
-* [Azure-CLI installeren](/cli/azure/install-azure-cli)
-* [Aan de slag met Azure CLI](/cli/azure/get-started-with-azure-cli)
+* [Azure CLI installeren](/cli/azure/install-azure-cli)
+* [Aan de slag met de Azure CLI](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Een beveiligde container (een kluis) maken in azure
 
@@ -117,7 +118,7 @@ az provider register -n Microsoft.KeyVault
 
 ### <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
-Gebruik de `az keyvault create` opdracht om een sleutel kluis te maken. Dit script heeft drie verplichte para meters: een naam van een resource groep, een sleutel kluis naam en de geografische locatie.
+Gebruik de opdracht `az keyvault create` om een sleutel kluis te maken. Dit script heeft drie verplichte para meters: een naam van een resource groep, een sleutel kluis naam en de geografische locatie.
 
 Als u een nieuwe kluis met de naam **ContosoKeyVault**wilt maken, typt u in de resource groep **ContosoResourceGroup**op de locatie van de **Azië-Oost** : 
 
@@ -127,14 +128,14 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 De uitvoer van deze opdracht bevat eigenschappen van de sleutel kluis die u hebt gemaakt. De twee belangrijkste eigenschappen zijn:
 
-* **name**: In het voor beeld is de naam ContosoKeyVault. U gebruikt deze naam voor andere Key Vault-opdrachten.
-* **vaultUri**: In het voor beeld is https://contosokeyvault.vault.azure.net de URI. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+* **naam**: in het voor beeld is de naam ContosoKeyVault. U gebruikt deze naam voor andere Key Vault-opdrachten.
+* **vaultUri**: in het voor beeld is de URI https://contosokeyvault.vault.azure.net. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Uw Azure-account is nu gemachtigd om alle bewerkingen op deze sleutelkluis uit te voeren. Vanaf nog, is niemand anders gemachtigd.
 
 ## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Een sleutel, geheim of certificaat toevoegen aan de sleutel kluis
 
-Als u wilt dat Azure Key Vault een met software beschermde sleutel voor u maakt, gebruikt u `az key create` de opdracht.
+Als u wilt dat Azure Key Vault een met software beschermde sleutel voor u maakt, gebruikt u de `az key create` opdracht.
 
 ```azurecli
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
@@ -146,7 +147,7 @@ Als u een bestaande sleutel in een. pem-bestand hebt, kunt u deze uploaden naar 
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-U kunt nu verwijzen naar de sleutel die u hebt gemaakt of geüpload naar Azure Key Vault, met behulp van de bijbehorende URI. Gebruiken **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** om altijd de huidige versie op te halen. Gebruik https://[de naam van de sleutel kluis]. kluis. Azure. net/Keys/[computer naam]/[key-unique-id] om deze specifieke versie op te halen. Bijvoorbeeld **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
+U kunt nu verwijzen naar de sleutel die u hebt gemaakt of geüpload naar Azure Key Vault, met behulp van de bijbehorende URI. Gebruik **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** om altijd de huidige versie op te halen. Gebruik https://[de naam van de sleutel kluis]. kluis. Azure. net/Keys/[computer naam]/[key-unique-id] om deze specifieke versie op te halen. Bijvoorbeeld **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** . 
 
 Voeg een geheim toe aan de kluis, een wacht woord met de naam SQLPassword en met de waarde ' hVFkk965BuUv ' voor Azure-sleutel kluizen. 
 
@@ -154,7 +155,7 @@ Voeg een geheim toe aan de kluis, een wacht woord met de naam SQLPassword en met
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Verwijs dit wacht woord met behulp van de bijbehorende URI. Gebruik **https://ContosoVault.vault.azure.net/secrets/SQLPassword** dit om altijd de huidige versie op te halen en https://[sleutel kluis-naam]. kluis. Azure. net/Secret/[geheime naam]/[geheim-unieke id] om deze specifieke versie op te halen. Bijvoorbeeld **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
+Verwijs dit wacht woord met behulp van de bijbehorende URI. Gebruik **https://ContosoVault.vault.azure.net/secrets/SQLPassword** om altijd de huidige versie op te halen en https://[de naam van de sleutel kluis-name]. kluis. Azure. net/Secret/[geheime naam]/[geheim-unieke id] om deze specifieke versie op te halen. Bijvoorbeeld **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
 Importeer met behulp van een. pem-of. pfx een certificaat naar de kluis.
 
@@ -193,7 +194,7 @@ Toepassingen die gebruikmaken van een sleutelkluis moeten een token van Azure Ac
 
 De toepassing moet beide waarden aan Azure Active Directory verstrekken om een token te verkrijgen. Hoe een toepassing is geconfigureerd om een token op te halen, is afhankelijk van de toepassing. In de [Key Vault-voorbeeldtoepassing](https://www.microsoft.com/download/details.aspx?id=45343) moet de eigenaar van de toepassing deze waarden instellen in het bestand app.config.
 
-Voor gedetailleerde stappen voor het registreren van een toepassing met Azure Active Directory moet u de artikelen met de titel [integratie toepassingen met Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)door nemen met [behulp van de portal om een Azure Active Directory toepassing en service te maken principal die toegang heeft tot bronnen](../active-directory/develop/howto-create-service-principal-portal.md)en [een Azure-Service-Principal maakt met de Azure cli](/cli/azure/create-an-azure-service-principal-azure-cli).
+Voor gedetailleerde stappen voor het registreren van een toepassing met Azure Active Directory moet u de artikelen met de titel [toepassingen integreren met Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), de [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang heeft tot bronnen](../active-directory/develop/howto-create-service-principal-portal.md)en [een Azure-Service-Principal te maken met de Azure cli](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Een toepassing registreren in Azure Active Directory:
 
@@ -204,7 +205,7 @@ az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 
 ## <a name="authorizing-an-application-to-use-a-key-or-secret"></a>Een toepassing machtigen voor het gebruik van een sleutel of geheim
 
-Gebruik de `az keyvault set-policy` opdracht om de toepassing toegang te geven tot de sleutel of het geheim in de kluis.
+Gebruik de opdracht `az keyvault set-policy` om de toepassing toegang te geven tot de sleutel of het geheim in de kluis.
 
 Als uw kluis naam bijvoorbeeld ContosoKeyVault is, is de toepassing voorzien van een appID van 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed en wilt u de toepassing autoriseren voor het ontsleutelen en ondertekenen van sleutels in uw kluis, dan gebruikt u de volgende opdracht:
 
@@ -222,19 +223,19 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Gebruik [AZ Key kluis update](/cli/azure/keyvault#az-keyvault-update) om geavanceerde beleids regels in te scha kelen voor de sleutel kluis.
 
- Key Vault inschakelen voor implementatie: Hiermee kunnen virtuele machines certificaten ophalen die zijn opgeslagen als geheimen van de kluis.
+ Key Vault voor implementatie inschakelen: Hiermee kunnen virtuele machines certificaten ophalen die zijn opgeslagen als geheimen van de kluis.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-Key Vault voor schijf versleuteling inschakelen: Vereist als u de kluis gebruikt voor Azure Disk Encryption.
+Schakel Key Vault in voor schijf versleuteling: vereist voor het gebruik van de kluis voor Azure Disk Encryption.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-Key Vault voor sjabloon implementatie inschakelen: Hiermee kan Resource Manager geheimen van de kluis ophalen.
+Key Vault voor sjabloon implementatie inschakelen: Hiermee kan Resource Manager geheimen uit de kluis ophalen.
 
 ```azurecli 
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
@@ -274,7 +275,7 @@ Zie [How-Protected Keys gebruiken with Azure Key Vault](key-vault-hsm-protected-
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>De sleutel kluis en de bijbehorende sleutels en geheimen verwijderen
 
-Als u de sleutel kluis en de bijbehorende sleutels of geheimen niet meer nodig hebt, kunt u de sleutel kluis verwijderen met `az keyvault delete` behulp van de opdracht:
+Als u de sleutel kluis en de bijbehorende sleutels of geheimen niet meer nodig hebt, kunt u de sleutel kluis verwijderen met behulp van de `az keyvault delete` opdracht:
 
 ```azurecli
 az keyvault delete --name "ContosoKeyVault"

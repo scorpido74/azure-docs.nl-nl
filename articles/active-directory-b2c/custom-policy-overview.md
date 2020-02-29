@@ -2,20 +2,20 @@
 title: Aangepaste beleids regels Azure Active Directory B2C | Microsoft Docs
 description: Meer informatie over Azure Active Directory B2C aangepast beleid.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1f3bbcba562d126d503920cb7b6787e2ca0025c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847041"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189223"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Aangepast beleid in Azure Active Directory B2C
 
@@ -29,9 +29,9 @@ Aangepaste beleids regels zijn configuratie bestanden waarmee het gedrag van uw 
 |-|-------------------|-----------------|
 | Doel gebruikers | Alle toepassings ontwikkelaars met of zonder identiteits expertise. | Identiteits-professionals, systeem integrators, consultants en interne identiteits teams. Ze zijn vertrouwd met OpenID Connect Connect flows en begrijpen identiteits providers en verificatie op basis van claims. |
 | Configuratie methode | Azure Portal met een gebruikers vriendelijke gebruikers interface (UI). | Rechtstreeks bewerken van XML-bestanden en vervolgens uploaden naar de Azure Portal. |
-| UI-aanpassing | Volledige UI-aanpassing, inclusief HTML, CSS en Java script.<br><br>Meertalige ondersteuning met aangepaste teken reeksen. | Dezelfde |
-| Kenmerk aanpassing | Standaard-en aangepaste kenmerken. | Dezelfde |
-| Token-en sessie beheer | Aangepaste tokens en opties voor meerdere sessies. | Dezelfde |
+| UI-aanpassing | Volledige UI-aanpassing, inclusief HTML, CSS en Java script.<br><br>Meertalige ondersteuning met aangepaste teken reeksen. | dezelfde |
+| Kenmerk aanpassing | Standaard-en aangepaste kenmerken. | dezelfde |
+| Token-en sessie beheer | Aangepaste tokens en opties voor meerdere sessies. | dezelfde |
 | Id-providers | Vooraf gedefinieerde lokale of sociale provider en de meeste OIDC-id-providers, zoals Federatie met Azure Active Directory-tenants. | Op standaarden gebaseerde OIDC, OAUTH en SAML.  Verificatie is ook mogelijk met behulp van integratie met REST Api's. |
 | Identiteits taken | Meld u aan of Meld u aan met lokale of veel sociale accounts.<br><br>Self-service voor wacht woord opnieuw instellen.<br><br>Profiel bewerken.<br><br>Multi-Factor Authentication.<br><br>Tokens en sessies aanpassen.<br><br>Toegangs token stromen. | Voer dezelfde taken uit als voor gebruikers stromen met aangepaste ID-providers of gebruik aangepaste bereiken.<br><br>Een gebruikers account inrichten in een ander systeem op het moment van registratie.<br><br>Stuur een welkomst-e-mail met uw eigen e-mailservice provider.<br><br>Gebruik een gebruikers archief buiten Azure AD B2C.<br><br>Door de gebruiker verstrekte informatie met een vertrouwd systeem valideren met behulp van een API. |
 

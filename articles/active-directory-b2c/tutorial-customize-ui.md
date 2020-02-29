@@ -3,20 +3,20 @@ title: 'Zelf studie: de gebruikers interface aanpassen'
 titleSuffix: Azure AD B2C
 description: Meer informatie over het aanpassen van de gebruikers interface (UI) van uw toepassingen in Azure Active Directory B2C met behulp van de Azure Portal.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840125"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186247"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelf studie: de interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
@@ -39,11 +39,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U maakt een Azure Storage-account en een container en plaatst vervolgens de basis-HTML-en CSS-bestanden in de container.
 
-### <a name="create-a-storage-account"></a>Maak een opslagaccount
+### <a name="create-a-storage-account"></a>Create a storage account
 
 Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze op in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
 3. Kies alle services in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
 4. Selecteer **Toevoegen**.
@@ -63,7 +63,7 @@ Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze 
  Azure AD B2C-code in een browser gebruikt een moderne en standaard benadering voor het laden van aangepaste inhoud vanuit een URL die u opgeeft in een gebruikers stroom. Met CORS (cross-Origin Resource Sharing) kunnen beperkte resources op een webpagina worden aangevraagd vanuit andere domeinen.
 
 1. Selecteer **CORS**in het menu.
-2. Voer `https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` met de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
+2. Voer `https://your-tenant-name.b2clogin.com`in voor **toegestane oorsprongen**. Vervang `your-tenant-name` door de naam van uw Azure AD B2C Tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant.
 3. Selecteer `GET`,`PUT`en `OPTIONS`voor **toegestane methoden**.
 4. Voer een asterisk (*) in bij **toegestane headers**.
 5. Voer een asterisk (*) in voor **weer gegeven headers**.

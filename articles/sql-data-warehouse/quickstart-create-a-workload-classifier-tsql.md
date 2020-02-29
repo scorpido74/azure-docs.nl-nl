@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een classificatie werk belasting maken-T-SQL '
+title: 'Snelstartgids: een classificatie werk belasting maken-T-SQL'
 description: T-SQL gebruiken om een werk belasting classificatie te maken met hoge urgentie.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.custom: azure-synapse
+ms.openlocfilehash: 9f15317141e56614cf6fe04f46ff478a73266775
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646290"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200495"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Snelstartgids: een classificatie van een werk belasting maken met T-SQL
 
@@ -24,7 +25,7 @@ In deze Quick Start maakt u snel een classificatie van werk belastingen met hoge
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 > [!NOTE]
-> Het maken van een SQL Data Warehouse kan leiden tot een nieuwe factureerbare service.  Zie [Prijzen van SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor meer informatie.
+> Het maken van een SQL Analytics-exemplaar in azure Synapse Analytics kan resulteren in een nieuwe factureer bare service.  Zie [prijzen voor Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)voor meer informatie.
 >
 >
 
@@ -34,7 +35,7 @@ In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt e
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Aanmelding maken voor TheCEO
 
@@ -107,6 +108,6 @@ Volg deze stappen om resources op te schonen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U hebt nu een classificatie voor de werk belasting gemaakt. Voer enkele query's uit als TheCEO om te zien hoe ze worden uitgevoerd. Zie [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) voor het weer geven van query's en de prioriteit die is toegewezen.
-- Zie [urgentie van werk](sql-data-warehouse-workload-importance.md) belasting en [classificatie van werk](sql-data-warehouse-workload-classification.md)belasting voor meer informatie over het beheer van Azure SQL Data Warehouse workload.
+- U hebt nu een classificatie voor de werk belasting gemaakt. Voer enkele query's uit als TheCEO om te zien hoe ze worden uitgevoerd. Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en de prioriteit weer te geven.
+- Zie [urgentie van werk](sql-data-warehouse-workload-importance.md) belasting en [classificatie van werk](sql-data-warehouse-workload-classification.md)belasting voor meer informatie over het beheer van SQL Analytics-workloads.
 - Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

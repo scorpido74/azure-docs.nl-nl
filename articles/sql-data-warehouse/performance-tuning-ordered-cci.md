@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686005"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200546"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met een geordende geclusterde column store-index  
 
-Wanneer gebruikers een query uitvoeren op een column Store-tabel in Azure SQL Data Warehouse, controleert de Optimizer de minimum-en maximum waarden die zijn opgeslagen in elk segment.  Segmenten die zich buiten de grenzen van het query-predikaat bevinden, worden niet van de schijf naar het geheugen gelezen.  Een query kan betere prestaties krijgen als het aantal segmenten dat moet worden gelezen en de totale grootte klein zijn.   
+Wanneer gebruikers een query uitvoeren op een column Store-tabel in SQL Analytics, controleert de Optimizer de minimum-en maximum waarden die zijn opgeslagen in elk segment.  Segmenten die zich buiten de grenzen van het query-predikaat bevinden, worden niet van de schijf naar het geheugen gelezen.  Een query kan betere prestaties krijgen als het aantal segmenten dat moet worden gelezen en de totale grootte klein zijn.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Besteld versus niet-bestelde geclusterde column store-index 
-Standaard maakt een intern onderdeel (Indexing Builder) voor elke Azure Data Warehouse-tabel die is gemaakt zonder een index optie, een niet-bestelde geclusterde column store-index (CCI).  De gegevens in elke kolom worden gecomprimeerd in een afzonderlijk CCI Rijg roep-segment.  Er zijn meta gegevens van de waarden van elk segment, waardoor segmenten die zich buiten de grenzen van het query predicaat bevinden, niet kunnen worden gelezen van de schijf tijdens de uitvoering van de query.  CCI biedt het hoogste niveau van gegevens compressie en vermindert de grootte van segmenten om te lezen zodat query's sneller kunnen worden uitgevoerd. Omdat de opbouw functie voor indexen echter geen gegevens sorteert voordat ze naar segmenten worden gecomprimeerd, kunnen segmenten met overlappende cellenbereiken optreden, waardoor query's meer segmenten van de schijf worden gelezen en langer duren.  
+Standaard maakt een intern onderdeel (Indexing Builder) voor elke SQL Analytics-tabel die is gemaakt zonder een index optie, een niet-bestelde geclusterde column store-index (CCI).  De gegevens in elke kolom worden gecomprimeerd in een afzonderlijk CCI Rijg roep-segment.  Er zijn meta gegevens van de waarden van elk segment, waardoor segmenten die zich buiten de grenzen van het query predicaat bevinden, niet kunnen worden gelezen van de schijf tijdens de uitvoering van de query.  CCI biedt het hoogste niveau van gegevens compressie en vermindert de grootte van segmenten om te lezen zodat query's sneller kunnen worden uitgevoerd. Omdat de opbouw functie voor indexen echter geen gegevens sorteert voordat ze naar segmenten worden gecomprimeerd, kunnen segmenten met overlappende cellenbereiken optreden, waardoor query's meer segmenten van de schijf worden gelezen en langer duren.  
 
-Wanneer u een besteld CCI maakt, sorteert de Azure SQL Data Warehouse engine de bestaande gegevens in het geheugen op basis van de volg orde van de sleutel (s) voordat de index Builder ze comprimeert in index segmenten.  Met gesorteerde gegevens is het segment overlappend, zodat query's een efficiëntere segment eliminatie kunnen hebben, waardoor de prestaties sneller worden, omdat het aantal segmenten dat moet worden gelezen van de schijf kleiner is.  Als alle gegevens in een keer in het geheugen kunnen worden gesorteerd, kan segment overlappend worden vermeden.  Gezien de grote omvang van gegevens in Data Warehouse-tabellen, gebeurt dit niet vaak.  
+Wanneer u een besteld CCI maakt, worden de bestaande gegevens in het geheugen door de SQL Analytics-Engine gesorteerd op basis van de volg orde van de sleutels voordat de index Builder ze comprimeert in index segmenten.  Met gesorteerde gegevens is het segment overlappend, zodat query's een efficiëntere segment eliminatie kunnen hebben, waardoor de prestaties sneller worden, omdat het aantal segmenten dat moet worden gelezen van de schijf kleiner is.  Als alle gegevens in een keer in het geheugen kunnen worden gesorteerd, kan segment overlappend worden vermeden.  Gezien de grote omvang van de gegevens in SQL Analytics-tabellen, treedt dit scenario vaak niet op.  
 
 Als u de segment bereiken voor een kolom wilt controleren, voert u deze opdracht uit met de naam van de tabel en de naam van de kolom:
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> In een geordende CCI-tabel worden de nieuwe gegevens die voortkomen uit dezelfde batch DML of het laden van gegevens die worden geladen binnen die batch gesorteerd. er is geen algemene Sorteer bewerking voor alle gegevens in de tabel.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  In Azure SQL Data Warehouse is column store-index opnieuw opgebouwd een offline bewerking.  Voor een gepartitioneerde tabel is het opnieuw maken van één partitie per keer voltooid.  Gegevens in de partitie die opnieuw worden opgebouwd, zijn offline en zijn pas beschikbaar als het opnieuw opbouwen is voltooid voor die partitie. 
+> In een geordende CCI-tabel worden de nieuwe gegevens die voortkomen uit dezelfde batch DML of het laden van gegevens die worden geladen binnen die batch gesorteerd. er is geen algemene Sorteer bewerking voor alle gegevens in de tabel.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  In SQL Analytics is het opnieuw opbouwen van Column store-index een offline bewerking.  Voor een gepartitioneerde tabel is het opnieuw maken van één partitie per keer voltooid.  Gegevens in de partitie die opnieuw worden opgebouwd, zijn offline en zijn pas beschikbaar als het opnieuw opbouwen is voltooid voor die partitie. 
 
 ## <a name="query-performance"></a>Queryprestaties
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Sorteer de gegevens vooraf op de sorteer sleutel (s) voordat u deze in Azure SQL Data Warehouse tabellen laadt.
+- Sorteer de gegevens vooraf op de sorteer sleutel (s) voordat u deze in SQL Analytics-tabellen laadt.
 
 
 Hier volgt een voor beeld van een geordende CCI-tabel distributie met geen segment overlappende de bovenstaande aanbevelingen. De geordende CCI-tabel wordt met behulp van MAXDOP 1 en xlargerc gemaakt in een DWU1000c-data base via CTAS uit een heap-tabel van 20 GB.  Het CCI bevindt zich op een kolom BIGINT zonder dubbele waarden.  
@@ -123,9 +123,9 @@ Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder p
 1.  Maak partities op de grote doel tabel (met de naam Table_A).
 2.  Maak een lege geordende CCI-tabel (met de naam Table_B) met hetzelfde tabel-en partitie schema als tabel A.
 3.  Een partitie van tabel A naar tabel B overschakelen.
-4.  Voer ALTER INDEX < Ordered_CCI_Index > uit op < Table_B > opnieuw te bouwen partitie = < Partition_ID > op tabel B om de switch in de partitie opnieuw op te bouwen.  
+4.  Voer ALTER INDEX < Ordered_CCI_Index > uit op < Table_B > opnieuw op te bouwen PARTITION = < Partition_ID > op tabel B om de switch in de partitie opnieuw samen te stellen.  
 5.  Herhaal stap 3 en 4 voor elke partitie in Table_A.
-6.  Wanneer alle partities zijn overgeschakeld van Table_A naar Table_B en opnieuw zijn opgebouwd, verwijdert u Table_A en wijzigt u de naam van Table_B in Table_A. 
+6.  Wanneer alle partities zijn overgeschakeld van Table_A naar Table_B en opnieuw zijn opgebouwd, verwijdert u Table_A en wijzigt u de naam van Table_B naar Table_A. 
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Overzicht van SQL Data Warehouse voor ontwikkelaars](sql-data-warehouse-overview-develop.md) voor meer tips voor ontwikkelaars.
+Zie [ontwikkelings overzicht](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars.

@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722336"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199713"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
 
-[Virtuele-machine schaal sets](/azure/virtual-machine-scale-sets) vormen een Azure Compute-resource. U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk knooppunt type dat u in een Azure Service Fabric-cluster definieert, stelt een afzonderlijke schaal in. De Service Fabric runtime wordt geïnstalleerd op elke virtuele machine in de schaalset met de extensie *micro soft. Azure. ServiceFabric* virtual machine. U kunt elk knooppunt type omhoog of omlaag schalen, de SKU van het besturings systeem wijzigen dat op elk cluster knooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken.
+[Virtuele-machine schaal sets](/azure/virtual-machine-scale-sets) vormen een Azure Compute-resource. U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk type knoop punt dat u in een Azure Service Fabric-cluster definieert, stelt precies één schaalset in: meerdere knooppunt typen kunnen niet worden ondersteund door dezelfde schaalset en het ene knooppunt type mag niet (in de meeste gevallen) worden ondersteund door meerdere schaal sets. Een uitzonde ring hierop is in de zeldzame situatie van het [verticaal schalen](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) van een knooppunt type, wanneer u tijdelijk twee schaal sets met dezelfde `nodeTypeRef` waarde hebt terwijl replica's worden gemigreerd van het origineel naar de bijgewerkte schaalset.
+
+De Service Fabric runtime wordt geïnstalleerd op elke virtuele machine in de schaalset met de extensie *micro soft. Azure. ServiceFabric* virtual machine. U kunt elk knooppunt type omhoog of omlaag schalen, de SKU van het besturings systeem wijzigen dat op elk cluster knooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken.
 
 In de volgende afbeelding ziet u een cluster met twee knooppunt typen, front- *End* en *back-end*. Elk knooppunt type heeft vijf knoop punten.
 
@@ -72,13 +74,13 @@ Hier volgen de eigenschaps beschrijvingen:
 
 | **Naam** | **Toegestane waarden** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-| naam | tekenreeks | unieke naam voor extensie |
+| naam | tekenreeks | Unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
 | autoUpgradeMinorVersion | true of false | Automatische upgrade van secundaire versies van SF runtime inschakelen |
 | publisher | Microsoft.Azure.ServiceFabric | De naam van de uitgever van de Service Fabric extensie |
 | clusterEndpont | tekenreeks | URI: poort voor beheer eindpunt |
-| nodeTypeRef | tekenreeks | naam van nodeType |
-| durabilityLevel | bronze, silver, gold, platinum | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
+| nodeTypeRef | tekenreeks | Naam van nodeType |
+| durabilityLevel | bronze, silver, gold, platinum | Tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
 | enableParallelJobs | true of false | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
 | nicPrefixOverride | tekenreeks | Subnetvoorvoegsel zoals "10.0.0.0/24" |
 | commonNames | string[] | Algemene namen van geïnstalleerde cluster certificaten |

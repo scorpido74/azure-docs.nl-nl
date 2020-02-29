@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621950"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194866"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
 
@@ -63,7 +63,8 @@ Als de werk belasting op een logische partitie meer gebruikt dan de door Voer di
 Containers in een gedeelde doorvoer database delen de door Voer (RU/s) die zijn toegewezen aan die data base. U kunt Maxi maal vier containers met mini maal 400 RU/s op de data base hebben. Voor elke nieuwe container na de eerste vier is een extra mini maal 100 RU/s vereist. Als u bijvoorbeeld een Data Base met gedeelde door Voer met acht containers hebt, is de mini maal RU/s op de data base 800 RU/s.
 
 > [!NOTE]
-> In een gedeelde doorvoer database kunt u Maxi maal 25 containers in de data base hebben. Als u al meer dan 25 containers in een gedeelde doorvoer database hebt, kunt u geen extra containers meer maken totdat het aantal containers kleiner is dan 25.
+> In februari 2020 hebben we een wijziging geïntroduceerd waarmee u Maxi maal 25 containers in een gedeelde doorvoer database kunt hebben, waardoor het delen van de door Voer via de containers beter wordt. Na de eerste 25 containers kunt u meer containers toevoegen aan de Data Base als ze zijn [ingericht met een specifieke door Voer](#set-throughput-on-a-database-and-a-container), die los is van de gedeelde door Voer van de data base.<br>
+Als uw Azure Cosmos DB-account al een Data Base met gedeelde door Voer bevat met > = 25 containers, zijn het account en alle andere accounts in hetzelfde Azure-abonnement uitgesloten van deze wijziging. [Neem contact op met product ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u feedback of vragen hebt. 
 
 Als uw workloads het verwijderen en opnieuw maken van alle verzamelingen in een Data Base vereisen, is het raadzaam om de lege data base weg te halen en opnieuw een nieuwe Data Base te maken voordat u de verzameling maakt. In de volgende afbeelding ziet u hoe een fysieke partitie een of meer logische partities kan hosten die deel uitmaken van verschillende containers in een Data Base:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/16/2019
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 68a3784d4625e29865ac3b95627e8e0ebd5d9e27
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e4a2b1ee1b2b2726b7e0a807a965dbf4bc6b9500
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921229"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196991"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Zelfstudie: Afbeeldingsgegevens uploaden in de cloud met Azure Storage
 
@@ -132,7 +132,7 @@ App Service ondersteunt diverse manieren om inhoud in een web-app te implementer
 Het voorbeeldproject bevat een [ASP.NET MVC](https://www.asp.net/mvc)-app. De app accepteert een afbeelding, slaat deze op in een opslagaccount en geeft afbeeldingen weer vanuit een miniaturencontainer. De web-app maakt gebruik van de naam ruimten [micro soft. Azure. Storage](/dotnet/api/overview/azure/storage), [micro soft. Azure. storage. blob](/dotnet/api/microsoft.azure.storage.blob)en micro soft. Azure. storage. auth van de Azure Storage-client bibliotheek om te communiceren met Azure Storage.
 
 ```azurecli-interactive
-az webapp deployment source config --name nwebapp --resource-group myResourceGroup --branch master --manual-integration --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+az webapp deployment source config --name $webapp --resource-group myResourceGroup --branch master --manual-integration --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 
 ```
 

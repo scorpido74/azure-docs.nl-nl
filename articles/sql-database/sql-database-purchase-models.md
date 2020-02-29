@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587291"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192384"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
@@ -142,6 +142,20 @@ De invoer waarden voor deze formule kunnen worden verkregen uit [sys. dm_db_reso
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads die profiteren van een elastische groep resources
 
 Pools zijn zeer geschikt voor data bases met een gemiddelde en relatief onregelmatige piek gebruik. Zie [Wanneer moet u rekening houden met een SQL database elastische pool?](sql-database-elastic-pool.md)voor meer informatie.
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Hardware gegenereerd in het op DTU gebaseerde aankoop model
+
+In het op DTU gebaseerde aankoop model kunnen klanten de hardware-generatie kiezen die wordt gebruikt voor de data bases. Hoewel een bepaalde data base doorgaans gedurende lange tijd op een specifieke generatie van de hardware blijft, zijn er bepaalde gebeurtenissen die ertoe kunnen leiden dat een Data Base wordt verplaatst naar een andere generatie van hardware.
+
+U kunt bijvoorbeeld een Data Base verplaatsen naar een andere hardware-generatie als deze omhoog of omlaag wordt geschaald naar een andere service doelstelling, of als de huidige infra structuur in een Data Center de capaciteits limieten nadert of als de momenteel gebruikte hardware wordt buiten gebruik gesteld vanwege het einde van de levens duur.
+
+Als een Data Base wordt verplaatst naar andere hardware, kunnen de prestaties van de werk belasting veranderen. Het DTU-model garandeert dat de door Voer en respons tijd van de werk belasting van de [DTU-benchmark](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) periode aanzienlijk hetzelfde blijft als de data base wordt verplaatst naar een andere generatie hardware, mits de service doelstelling (het aantal dtu's) hetzelfde blijft. 
+
+In het brede spectrum van klant werkbelastingen die worden uitgevoerd in Azure SQL Database, kan de impact van het gebruik van verschillende hardware voor dezelfde service doelstelling echter meer worden uitgesp roken. Verschillende werk belastingen profiteren van verschillende hardwareconfiguraties en functies. Daarom is het mogelijk om voor andere workloads dan de DTU-Bench Mark prestatie verschillen te zien als de data base van de ene hardware-generatie naar de andere wordt verplaatst.
+
+Een toepassing die bijvoorbeeld gevoelig is voor netwerk latentie, kan betere prestaties zien op GEN5-hardware versus Gen4 vanwege het gebruik van versneld netwerken in GEN5, maar een toepassing die intensieve Lees-IO gebruikt, kan betere prestaties zien op Gen4-hardware versus GEN5 vanwege meer geheugen per core-verhouding op Gen4.
+
+Klanten met werk belastingen die gevoelig zijn voor wijzigingen in de hardware of klanten die de keuze van de hardware-generatie voor hun data base willen beheren, kunnen het [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) -model gebruiken om hun voorkeurs generatie van hardware te kiezen tijdens het maken en schalen van de data base. In het vCore-model worden resource limieten van elke service doelstelling op elke hardware-generatie gedocumenteerd voor zowel [afzonderlijke data bases](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) als [elastische Pools](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools). Zie [Hardware-generaties](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)voor meer informatie over hardware-generaties in het vCore-model.
 
 ## <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 

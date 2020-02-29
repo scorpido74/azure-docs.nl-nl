@@ -4,13 +4,13 @@ description: Informatie over het maken van Azure Functions uitgevoerd op een aan
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482357"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190803"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met behulp van een aangepaste container
 
@@ -70,7 +70,7 @@ U kunt deze zelf studie volgen op elke computer waarop Windows, Mac OS of Linux 
 
 1. Maak in een Terminal-of opdracht prompt een map voor deze zelf studie op een geschikte locatie en navigeer vervolgens naar die map.
 
-1. Volg de instructies voor het [maken en activeren van een virtuele omgeving](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) om een virtuele omgeving te maken voor gebruik met deze zelf studie.
+1. Volg de instructies voor het [maken en activeren van een virtuele omgeving](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) om een virtuele omgeving te maken voor gebruik met deze zelf studie.
 
 1. Voer de volgende opdracht uit voor de taal die u hebt gekozen om een functie-app-project te maken in een map met de naam `LocalFunctionsProject`. Met de optie `--docker` wordt een `Dockerfile` voor het project gegenereerd, waarmee een geschikte aangepaste container wordt gedefinieerd voor gebruik met Azure Functions en de geselecteerde runtime.
 

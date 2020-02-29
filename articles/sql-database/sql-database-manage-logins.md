@@ -1,6 +1,6 @@
 ---
 title: Aanmeldingen en gebruikers
-description: Meer informatie over SQL Database en SQL Data Warehouse beveiligings beheer, in het bijzonder hoe u de beveiliging van database toegang en-aanmelding kunt beheren via het hoofd account op server niveau.
+description: Meer informatie over SQL Database en het beveiligings beheer van Azure Synapse, met name hoe u de beveiliging van database toegang en-aanmelding kunt beheren via het hoofd account op server niveau.
 keywords: sql-databasebeveiliging,beheer databasebeveiliging,aanmeldingsbeveiliging,databasebeveiliging,databasetoegang
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,21 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/26/2019
-ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 02/06/2020
+tags: azure-synapse
+ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159141"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196957"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Database toegang beheren en verlenen aan SQL Database en SQL Data Warehouse
+# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>Database toegang beheren en verlenen aan SQL Database en Azure Synapse Analytics
 
-Nadat de configuratie van de firewall regels is geconfigureerd, kunt u verbinding maken met Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als een van de beheerders accounts, als de eigenaar van de data base of als database gebruiker in de data base.  
+Nadat de configuratie van de firewall regels is geconfigureerd, kunt u verbinding maken met Azure [SQL database](sql-database-technical-overview.md) en [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) als een van de beheerders accounts, als de eigenaar van de data base of als database gebruiker in de data base.  
 
 > [!NOTE]  
-> Dit onderwerp is van toepassing op Azure SQL Server en SQL Database en SQL Data Warehouse data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. 
+> Dit onderwerp is van toepassing op Azure SQL Server en op SQL Database en Azure Synapse die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt bij het verwijzen naar SQL Database en Azure Synapse voor eenvoud.
 > [!TIP]
 > Zie [uw Azure SQL database beveiligen](sql-database-security-tutorial.md)voor een zelf studie. Deze zelf studie is niet van toepassing op **Azure SQL database beheerde instantie**.
 
@@ -43,7 +44,7 @@ Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-behee
 
 - **Azure Active Directory beheerder**
 
-  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Het is optioneel een Azure AD-beheerder te configureren, maar er **moet** een Azure AD-beheerder worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database. Voor meer informatie over het configureren van toegang tot Azure Active Directory raadpleegt u [Verbinding maken met SQL Database of SQL Data Warehouse met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md) en [SSMS-ondersteuning voor Azure AD MFA met SQL Database en SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
+  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Het is optioneel een Azure AD-beheerder te configureren, maar er **moet** een Azure AD-beheerder worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database. Zie [verbinding maken met SQL database of Azure Synapse met behulp van Azure Active Directory verificatie](sql-database-aad-authentication.md) en [SSMS-ondersteuning voor Azure AD MFA met SQL database en Azure Synapse](sql-database-ssms-mfa-authentication.md)voor meer informatie over het configureren van Azure Active Directory toegang.
 
 De beheerders accounts van de **Server beheerder** en **Azure AD** hebben de volgende kenmerken:
 
@@ -72,7 +73,7 @@ Wanneer u een open poort in de firewall op serverniveau gebruikt, kunnen beheerd
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Verbinding maken met een database via SQL Server Management Studio
 
-Zie [aan de slag met Azure SQL database servers, data bases en firewall regels met behulp van de Azure Portal en SQL voor een overzicht van het maken van een server, een Data Base, IP-firewall regels op server niveau en het gebruik van SQL Server Management Studio om een query uit te voeren op een Data Base. Server Management Studio](sql-database-single-database-get-started.md).
+Zie [aan de slag met Azure SQL database servers, data bases en firewall regels met behulp van de Azure Portal en SQL Server Management Studio](sql-database-single-database-get-started.md)voor een overzicht van het maken van een server, een Data Base, IP-firewall regels op server niveau en het gebruik van SQL Server Management Studio om een query uit te voeren op een Data Base.
 
 > [!IMPORTANT]
 > Het wordt aanbevolen om altijd de nieuwste versie van Management Studio te gebruiken, zodat uw versie gesynchroniseerd blijft met updates voor Microsoft Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -128,7 +129,7 @@ De andere beheerdersrol is de rol voor aanmeldingsbeheerder. Leden van deze rol 
 
 ## <a name="non-administrator-users"></a>Niet-beheerders
 
-Niet-beheerdersaccounts hebben doorgaans geen toegang nodig tot de hoofddatabase. Maak ingesloten databasegebruikers op databaseniveau met de instructie [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). De gebruiker kan een Inge sloten database gebruiker zijn met een Azure Active Directory-verificatie (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie) of een SQL Server-verificatie database gebruiker of een SQL Server verificatie gebruiker op basis van een SQL Server aanmelding voor authenticatie (gemaakt in de vorige stap) Zie [Inge sloten database gebruikers-uw data base draagbaar maken](https://msdn.microsoft.com/library/ff929188.aspx)voor meer informatie. 
+Niet-beheerdersaccounts hebben doorgaans geen toegang nodig tot de hoofddatabase. Maak ingesloten databasegebruikers op databaseniveau met de instructie [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). De gebruiker kan een Azure Active Directory de Inge sloten database gebruiker zijn (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie) of een SQL Server-verificatie database gebruiker of een SQL Server verificatie gebruiker op basis van een SQL Server authenticatie aanmelding (gemaakt in de vorige stap). Zie [Inge sloten database gebruikers-uw data base draagbaar maken](https://msdn.microsoft.com/library/ff929188.aspx)voor meer informatie. 
 
 Als u gebruikers wilt maken, maakt u verbinding met de database en voert u de instructies uit die in de volgende voorbeelden worden getoond:
 
@@ -151,7 +152,7 @@ Gebruik de `ALTER ROLE`-instructie in Azure SQL Database.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Gebruik in Azure SQL Data Warehouse [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+Gebruik [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)in azure Synapse.
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
