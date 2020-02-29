@@ -2,20 +2,20 @@
 title: Technisch en functie overzicht-Azure Active Directory B2C
 description: Een diep gaande Inleiding tot de functies en technologieën in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840210"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186893"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technisch en feature overzicht van Azure Active Directory B2C
 
@@ -148,7 +148,7 @@ In het voor gaande diagram ziet u hoe Azure AD B2C kunnen communiceren met behul
 1. Wanneer een gebruiker van de toepassing meldt om zich aan te melden met een externe ID-provider die het SAML-protocol gebruikt, roept Azure AD B2C het SAML-protocol aan om te communiceren met die id-provider.
 1. Nadat de gebruiker de aanmeldings bewerking met de externe ID-provider heeft voltooid, Azure AD B2C het token naar de Relying Party toepassing terugstuurt met behulp van OpenID Connect Connect.
 
-## <a name="application-integration"></a>Integratie van applicaties
+## <a name="application-integration"></a>Integratie van toepassingen
 
 Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een web-, mobiel-, desktop-of single-page-toepassing (SPA), initieert de toepassing een autorisatie aanvraag naar een gebruikers stroom of een aangepast eind punt voor beleid. De gebruikers stroom of het aangepaste beleid definieert en bepaalt de gebruikers ervaring. Wanneer ze een gebruikers stroom volt ooien, bijvoorbeeld de *registratie-of aanmeldings* stroom, wordt door Azure AD B2C een token gegenereerd en wordt de gebruiker omgeleid naar uw toepassing.
 

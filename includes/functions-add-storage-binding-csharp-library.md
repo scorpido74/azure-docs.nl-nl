@@ -4,34 +4,21 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: glenga
-ms.openlocfilehash: 4db460a5dcefb49de3ad2b594d3957cbcf7445c3
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592805"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190909"
 ---
-In een C# klassen bibliotheek project worden de bindingen gedefinieerd als bindings kenmerken voor de functie methode. Het bestand *Function. json* wordt vervolgens automatisch gegenereerd op basis van deze kenmerken.
+In een C# klassen bibliotheek project worden de bindingen gedefinieerd als bindings kenmerken voor de functie methode. Het bestand *Function. json* dat vereist is voor-functies, wordt vervolgens automatisch gegenereerd op basis van deze kenmerken.
 
-Open het project bestand *HttpTrigger.cs* en voeg de volgende `using` instructie toe:
+Open het project bestand *HttpExample.cs* en voeg de volgende para meter toe aan de `Run` methode definitie:
 
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-Voeg de volgende para meter toe `Run` aan de methode definitie:
-
-```cs
-[Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-```
-
-De `msg` para meter is `ICollector<T>` een type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer een opslag wachtrij met de `outqueue`naam. De connection string voor het opslag account is ingesteld door de `StorageAccountAttribute`. Dit kenmerk geeft de instelling aan die het opslag account bevat connection string en kan worden toegepast op het niveau van de klasse, methode of para meter. In dit geval kunt u weglaten `StorageAccountAttribute` omdat u het standaard opslag account al gebruikt.
+De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer een opslag wachtrij met de naam `outqueue`. De connection string voor het opslag account is ingesteld door de `StorageAccountAttribute`. Dit kenmerk geeft de instelling aan die het opslag account bevat connection string en kan worden toegepast op het niveau van de klasse, methode of para meter. In dit geval kunt u `StorageAccountAttribute` weglaten omdat u het standaard opslag account al gebruikt.
 
 De definitie van de run-methode moet er nu als volgt uitzien:  
 
-```cs
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-```
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="14-18":::

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030724"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190973"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problemen met Hybrid Runbook Workers oplossen
 
@@ -54,7 +54,7 @@ Computers die de Hybrid Runbook Worker uitvoeren, moeten voldoen aan de minimale
 
 Controleer of de computer waarop de Hybrid Runbook Worker-functie moet worden uitgevoerd, voldoet aan de minimale hardwarevereisten. Als dit het geval is, controleert u het CPU-en geheugen gebruik om de correlatie tussen de prestaties van Hybrid Runbook Worker processen en Windows te bepalen. Elk geheugen of CPU-druk kan erop wijzen dat er resources moeten worden bijgewerkt. U kunt ook een andere compute-resource selecteren die ondersteuning biedt voor de minimale vereisten en schalen wanneer de werk belasting vereist dat een toename nood zakelijk is.
 
-Raadpleeg het **micro soft-SMA-** gebeurtenis logboek voor een bijbehorende gebeurtenis met de beschrijving *Win32-proces is afgesloten met code [4294967295]* . De oorzaak van deze fout is dat u geen authenticatie hebt geconfigureerd in uw runbooks of dat u de run as-referenties voor de groep Hybrid Worker hebt opgegeven. Controleer de [Runbook-machtigingen](../automation-hrw-run-runbooks.md#runbook-permissions) om te bevestigen dat u de verificatie voor uw runbooks juist hebt geconfigureerd.
+Raadpleeg het **micro soft-SMA-** gebeurtenis logboek voor een bijbehorende gebeurtenis met de beschrijving *Win32-proces is afgesloten met code [4294967295]* . De oorzaak van deze fout is dat u geen authenticatie hebt geconfigureerd in uw runbooks of dat u de run as-referenties voor de groep Hybrid Runbook Worker hebt opgegeven. Controleer de runbook-machtigingen voor het [uitvoeren van runbooks op een Hybrid Runbook worker](../automation-hrw-run-runbooks.md) om te bevestigen dat u verificatie voor uw runbooks juist hebt geconfigureerd.
 
 ### <a name="no-cert-found"></a>Scenario: er is geen certificaat gevonden in het certificaat archief op Hybrid Runbook Worker
 

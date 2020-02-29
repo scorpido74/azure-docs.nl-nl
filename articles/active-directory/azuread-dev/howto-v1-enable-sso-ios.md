@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164563"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190276"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Procedure: cross-app SSO inschakelen op iOS met ADAL
 

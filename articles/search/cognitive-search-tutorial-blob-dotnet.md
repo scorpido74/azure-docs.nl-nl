@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.openlocfilehash: 85fb709dfcca45b6ca8141c6d3de1941044f5ee5
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0c37f1ce2f173f4bf527e7cca30f010101b01720
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163197"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190684"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelf studie: C# gebruik en AI voor het genereren van Doorzoek bare inhoud van Azure-blobs
 
 Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. In deze C# zelf studie past u optische teken herkenning (OCR) toe op afbeeldingen en voert u natuurlijke taal verwerking uit om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
 
-In deze zelf studie gebruikt C# u en de [.NET SDK](https://aka.ms/search-sdk) om de volgende taken uit te voeren:
+In deze zelf C# studie wordt en de [.NET SDK](https://aka.ms/search-sdk) gebruikt om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Begin met toepassings bestanden en installatie kopieën in Azure Blob-opslag.
@@ -929,11 +929,11 @@ Herhaal dit voor aanvullende velden: inhoud, language code, zinsdelen en organis
 
 ## <a name="reset-and-rerun"></a>Opnieuw instellen en uitvoeren
 
-In de vroege experimentele stadia van de ontwikkeling moet u de objecten uit Azure Cognitive Search verwijderen en de code zo instellen dat deze opnieuw kan worden samengesteld. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
+In de vroege experimentele stadia van de ontwikkeling kunt u het beste de objecten uit Azure Cognitive Search verwijderen en uw code zo instellen dat deze opnieuw worden opgebouwd. Resourcenamen zijn uniek. Na het verwijderen van een object kunt u het opnieuw maken met dezelfde naam.
 
-In deze zelf studie hebt u gecontroleerd op bestaande Indexeer functies en indexen en verwijdert u deze als deze al bestaan, zodat u de code opnieuw kunt uitvoeren.
+In de voorbeeld code voor deze zelf studie wordt gecontroleerd op bestaande objecten en worden deze verwijderd zodat u de code opnieuw kunt uitvoeren.
 
-U kunt ook de portal gebruiken om indexen, Indexeer functies en vaardig heden te verwijderen.
+U kunt ook de portal gebruiken om indexen, Indexeer functies, gegevens bronnen en vaardig heden te verwijderen.
 
 ## <a name="takeaways"></a>Opgedane kennis
 
@@ -945,11 +945,13 @@ Tot slot hebt u geleerd hoe u resultaten kunt testen en het systeem opnieuw kunt
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De snelste manier om na een zelf studie op te schonen, is door de resource groep te verwijderen met de Azure Cognitive Search-service en Azure Blob service. Ervan uitgaande dat u beide services in dezelfde groep hebt geplaatst, verwijdert u de resourcegroep om alle inhoud ervan permanent te verwijderen, waaronder de services en alle opgeslagen inhoud die u voor deze zelfstudie hebt gemaakt. De naam van de resourcegroep staat in de portal op de pagina Overzicht van elke service.
+Wanneer u aan het eind van een project aan het werk bent, is het een goed idee om de resources te verwijderen die u niet meer nodig hebt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+
+U kunt resources vinden en beheren in de portal met behulp van de koppeling alle resources of resource groepen in het navigatie deel venster aan de linkerkant.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De pijplijn uitbreiden of aanpassen met aangepaste vaardigheden. Door een aangepaste vaardigheid te maken en deze toe te voegen aan een set vaardigheden, kunt u zelfgeschreven tekst- of afbeeldingsanalyse integreren.
+Nu u bekend bent met alle objecten in een AI-verrijkings pijplijn, gaan we kijken naar de definities van vakkennis en individuele vaardig heden.
 
 > [!div class="nextstepaction"]
-> [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md)
+> [Een vaardig heden maken](cognitive-search-defining-skillset.md)

@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003358"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198164"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Zelfstudie: Een Linux-VM en een .NET-app gebruiken om geheimen op te slaan in Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Zelf studie: een virtuele Linux-machine en een .NET-app gebruiken om geheimen op te slaan in Azure Key Vault
 
 Azure Key Vault helpt u bij het beveiligen van geheimen zoals API-sleutels en database verbindings reeksen die nodig zijn voor toegang tot uw toepassingen, services en IT-resources.
 
@@ -61,7 +62,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resource groep met behulp `az group create` van de opdracht. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+Maak een resource groep met behulp van de opdracht `az group create`. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
 Maak een resource groep op de locatie vs-West. Kies een naam voor de resource groep en vervang `YourResourceGroupName` in het volgende voor beeld:
 
@@ -76,9 +77,9 @@ U gebruikt deze resourcegroep in de hele zelfstudie.
 
 Vervolgens maakt u een sleutel kluis in de resource groep. Geef de volgende informatie op:
 
-* Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen cijfers, letters en afbreek streepjes (0-9, a-z, A-Z en \- ) kan bevatten.
-* Resourcegroepnaam
-* Locatie: **US - west**
+* Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen cijfers, letters en afbreek streepjes (0-9, a-z, A-Z en \-) kunnen bevatten.
+* Naam van de resourcegroep
+* Locatie: **VS - west**
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -98,9 +99,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Een virtuele Linux-machine maken
 
-Maak een virtuele machine met `az vm create` de opdracht.
+Maak een virtuele machine met de opdracht `az vm create`.
 
-In het volgende voorbeeld wordt een virtuele machine met de naam **myVM** gemaakt en voegt u een gebruikersaccount met de naam **azureuser** toe. De `--generate-ssh-keys` para meter die wordt gebruikt om automatisch een SSH-sleutel te genereren en te plaatsen in de standaard locatie van de sleutel ( **~/.ssh**). Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voorbeeld wordt een virtuele machine met de naam **myVM** gemaakt en voegt u een gebruikersaccount met de naam **azureuser** toe. De para meter `--generate-ssh-keys` wordt gebruikt om automatisch een SSH-sleutel te genereren en te plaatsen in de standaard locatie van de sleutel ( **~/.ssh**). Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -136,7 +137,7 @@ In deze stap wijzen we een door het systeem toegewezen identiteit toe aan de vir
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-De uitvoer van de opdracht moet zijn:
+De uitvoer van de opdracht zou moeten zijn:
 
 ```azurecli
 {

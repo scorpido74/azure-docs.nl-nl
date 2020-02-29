@@ -12,29 +12,33 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: b411ef91dd84916e9ace544f26ed88f3f316dc02
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 95cb9fdccac0955f29686ddfa27ca4431e2e3857
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
   ms.translationtype: MT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562887"
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78196906"
 landingContent:
 - title: Aan de slag
   linkLists:
   - linkListType: overview
     links:
-    - text: Over spraak assistenten
+    - text: Oplossingen voor spraak assistenten
       url: voice-assistants.md
+    - text: Aangepaste opdrachten
+      url: custom-commands.md
     - text: Over directe lijn spraak
       url: direct-line-speech.md
+  - linkListType: reference
+    links:
+    - text: Prijzen
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Veelgestelde vragen over spraakassistenten
+      url: faq-voice-assistants.md
+- title: Aangepaste opdrachten
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: C# (UWP)
-      url: quickstart-voice-assistant-csharp-uwp.md
-    - text: Java (Windows, macOS, Linux)
-      url: quickstart-voice-assistant-java-jre.md
-    - text: Java (Android)
-      url: quickstart-voice-assistant-java-android.md
     - text: Een aangepaste opdracht maken (preview)
       url: quickstart-custom-speech-commands-create-new.md
     - text: Een aangepaste opdracht maken met parameters (preview)
@@ -43,16 +47,8 @@ landingContent:
       url: quickstart-custom-speech-commands-select-custom-voice.md
     - text: Aangepaste opdrachten gebruiken met de Speech-SDK (preview)
       url: quickstart-custom-speech-commands-speech-sdk.md
-- title: Stapsgewijze handleidingen
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Spraak inschakelen voor uw bot met Speech-SDK
-      url: tutorial-voice-enable-your-bot-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Aangepaste opdrachten (preview)
-      url: custom-commands.md
     - text: Aangepaste opdrachten met de Speech SDK
       url: how-to-custom-speech-commands-fulfill-sdk.md
     - text: Aangepaste opdrachten uitvoeren met de Speech-SDK
@@ -63,11 +59,17 @@ landingContent:
       url: how-to-custom-speech-commands-confirmations.md
     - text: Een correctie met één stap toevoegen aan een aangepaste opdracht
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Naslaginformatie
+- title: Direct Line-spraak
   linkLists:
-  - linkListType: reference
+  - linkListType: quickstart
     links:
-    - text: Prijzen
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-    - text: Veelgestelde vragen over spraakassistenten
-      url: faq-voice-assistants.md
+    - text: C# (UWP)
+      url: quickstart-voice-assistant-csharp-uwp.md
+    - text: Java (Windows, macOS, Linux)
+      url: quickstart-voice-assistant-java-jre.md
+    - text: Java (Android)
+      url: quickstart-voice-assistant-java-android.md
+  - linkListType: tutorial
+    links:
+    - text: Spraak inschakelen voor uw bot met Speech-SDK
+      url: tutorial-voice-enable-your-bot-speech-sdk.md

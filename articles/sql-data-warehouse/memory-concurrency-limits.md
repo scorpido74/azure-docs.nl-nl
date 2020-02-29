@@ -1,25 +1,25 @@
 ---
 title: Geheugen-en gelijktijdigheids limieten
-description: Bekijk de geheugen-en gelijktijdigheids limieten die zijn toegewezen aan de verschillende prestatie niveaus en resource klassen in Azure SQL Data Warehouse.
+description: Bekijk de geheugen-en gelijktijdigheids limieten die zijn toegewezen aan de verschillende prestatie niveaus en resource klassen in azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 73c7b756009035c8592c85bec3a6b7d85d93666c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851278"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200682"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Geheugen-en gelijktijdigheids limieten voor Azure SQL Data Warehouse
-Bekijk de geheugen-en gelijktijdigheids limieten die zijn toegewezen aan de verschillende prestatie niveaus en resource klassen in Azure SQL Data Warehouse.  
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Geheugen-en gelijktijdigheids limieten voor Azure Synapse Analytics
+Bekijk de geheugen-en gelijktijdigheids limieten die zijn toegewezen aan de verschillende prestatie niveaus en resource klassen in azure Synapse Analytics.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Capaciteits instellingen van Data Warehouse
 In de volgende tabellen ziet u de maximale capaciteit voor het Data Warehouse op verschillende prestatie niveaus. Zie [Scale Compute-Portal](quickstart-scale-compute-portal.md)voor meer informatie over het wijzigen van het prestatie niveau.
@@ -28,7 +28,7 @@ In de volgende tabellen ziet u de maximale capaciteit voor het Data Warehouse op
 
 De service niveaus variëren van DW100c tot DW30000c.
 
-| Prestatieniveau | Rekenknooppunten | Distributies per reken knooppunt | Geheugen per Data Warehouse (GB) |
+| Prestatie niveau | Reken knooppunten | Distributies per reken knooppunt | Geheugen per Data Warehouse (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW100c            | 1             | 60                             |    60                          |
 | DW200c            | 1             | 60                             |   120                          |
@@ -52,19 +52,19 @@ Het maximale service niveau is DW30000c, met 60 Compute-knoop punten en één di
 ## <a name="concurrency-maximums-for-workload-groups"></a>Gelijktijdige maximum waarden voor werkbelasting groepen
 Met de introductie van [werkbelasting groepen](sql-data-warehouse-workload-isolation.md)is het concept van gelijktijdigheids sleuven niet langer van toepassing.  Resources per aanvraag worden toegewezen op basis van een percentage en opgegeven in de definitie van de werkbelasting groep.  Zelfs met het verwijderen van gelijktijdigheids sleuven, zijn er echter mini maal vereiste resources per query op basis van het service niveau.  In de onderstaande tabel is de minimale hoeveelheid resources gedefinieerd die is vereist per query op service niveaus en de bijbehorende gelijktijdigheid die kan worden behaald. 
 
-|Servicelaag|Maximum aantal gelijktijdige query's|Min% ondersteund voor REQUEST_MIN_RESOURCE_GRANT_PERCENT|
+|Serviceniveau|Maximum aantal gelijktijdige query's|Min% ondersteund voor REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12,5%|
-|DW300c|12|8%|
+|DW300c|12|achtste|
 |DW400c|16|6,25%|
 |DW500c|20|5%|
 |DW1000c|32|3%|
 |DW1500c|32|3%|
 |DW2000c|48|2%|
 |DW2500c|48|2%|
-|DW3000c|64|1,5|
-|DW5000c|64|1,5|
+|DW3000c|64|1,5%|
+|DW5000c|64|1,5%|
 |DW6000c|128|0,75%|
 |DW7500c|128|0,75%|
 |DW10000c|128|0,75%|
@@ -73,13 +73,13 @@ Met de introductie van [werkbelasting groepen](sql-data-warehouse-workload-isola
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Gelijktijdige maximum waarden voor resource klassen
-Om ervoor te zorgen dat elke query voldoende bronnen heeft om efficiënt uit te voeren, SQL Data Warehouse het resource gebruik bijhouden door gelijktijdigheids sleuven aan elke query toe te wijzen. Het systeem plaatst query's in een wachtrij op basis van urgentie en gelijktijdigheids sleuven. Query's wachten in de wachtrij totdat er voldoende gelijktijdigheids sleuven beschikbaar zijn. [Urgentie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) en gelijktijdigheids sleuven bepalen de prioriteit van de CPU. Zie [uw workload analyseren](analyze-your-workload.md) voor meer informatie
+Om ervoor te zorgen dat elke query voldoende bronnen heeft om efficiënt uit te voeren, traceert SQL Analytics in azure Synapse het resource gebruik door gelijktijdigheids sleuven aan elke query toe te wijzen. Het systeem plaatst query's in een wachtrij op basis van urgentie en gelijktijdigheids sleuven. Query's wachten in de wachtrij totdat er voldoende gelijktijdigheids sleuven beschikbaar zijn. [Urgentie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) en gelijktijdigheids sleuven bepalen de prioriteit van de CPU. Zie [uw workload analyseren](analyze-your-workload.md) voor meer informatie
 
 **Statische resource klassen**
 
 In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijktijdigheids sleuven voor elke [statische resource klasse](resource-classes-for-workload-management.md).  
 
-| Servicelaag | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door staticrc10 | Sleuven die worden gebruikt door staticrc20 | Sleuven die worden gebruikt door staticrc30 | Sleuven die worden gebruikt door staticrc40 | Sleuven die worden gebruikt door staticrc50 | Sleuven die worden gebruikt door bron staticrc60 | Sleuven die worden gebruikt door staticrc70 | Sleuven die worden gebruikt door staticrc80 |
+| Serviceniveau | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door staticrc10 | Sleuven die worden gebruikt door staticrc20 | Sleuven die worden gebruikt door staticrc30 | Sleuven die worden gebruikt door staticrc40 | Sleuven die worden gebruikt door staticrc50 | Sleuven die worden gebruikt door bron staticrc60 | Sleuven die worden gebruikt door staticrc70 | Sleuven die worden gebruikt door staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -102,7 +102,7 @@ In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijkti
 
 In de volgende tabel ziet u het maximum aantal gelijktijdige query's en gelijktijdigheids sleuven voor elke [dynamische resource klasse](resource-classes-for-workload-management.md). Dynamische resource klassen gebruiken een geheugen toewijzing van 3-10-22-70 voor kleine, middel grote-xlarge resource klassen in alle service niveaus.
 
-| Servicelaag | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door smallrc | Sleuven die worden gebruikt door mediumrc | Sleuven die worden gebruikt door largerc | Sleuven die worden gebruikt door xlargerc |
+| Serviceniveau | Maximum aantal gelijktijdige query's | Beschik bare gelijktijdigheids sleuven | Sleuven die worden gebruikt door smallrc | Sleuven die worden gebruikt door mediumrc | Sleuven die worden gebruikt door largerc | Sleuven die worden gebruikt door xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |

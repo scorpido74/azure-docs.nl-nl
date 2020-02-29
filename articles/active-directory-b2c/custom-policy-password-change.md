@@ -3,20 +3,20 @@ title: Wachtwoord wijziging configureren met aangepaste beleids regels
 titleSuffix: Azure AD B2C
 description: Meer informatie over hoe u gebruikers in staat stelt hun wacht woord te wijzigen met behulp van aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6bb4b762fead279bcc8492cb902e2059d7cfc68c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848939"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189171"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord wijzigingen configureren met aangepast beleid in Azure Active Directory B2C
 
@@ -165,7 +165,7 @@ Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Az
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.

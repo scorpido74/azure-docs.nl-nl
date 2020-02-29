@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 08a1ca0c85d69d1a5262f1dcac5d46fb82b1c22b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905762"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191789"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -102,7 +102,7 @@ Deze optionele sectie kan worden gebruikt om ervoor te zorgen dat afhankelijkhed
 
 Zie [resource afhankelijkheden definiëren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)voor meer informatie.
 
-## <a name="identity"></a>Identity
+## <a name="identity"></a>Identiteit
 Standaard ondersteunt Image Builder het gebruik van scripts of het kopiëren van bestanden vanaf meerdere locaties, zoals GitHub en Azure Storage. Als u deze wilt gebruiken, moeten ze openbaar toegankelijk zijn.
 
 U kunt ook een door u gedefinieerde door de gebruiker toegewezen beheerde identiteit gebruiken om de toegang tot de installatie kopie functie toe te staan Azure Storage, zolang aan de identiteit een minimum van ' Storage BLOB data Reader ' is toegekend op het Azure-opslag account. Dit betekent dat u de opslag-blobs niet extern toegankelijk moet maken of SAS-tokens kunt instellen.
@@ -301,7 +301,7 @@ Met de aanpassings functie voor opnieuw opstarten kunt u een Windows-VM opnieuw 
 
             {
                 "type": "WindowsRestart",
-                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCommand": "shutdown /r /f /t 0", 
                 "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                 "restartTimeout": "5m"
             }

@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585948"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190531"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie met Azure AD Connect sync implementeren
 Dit artikel bevat gegevens die u nodig hebt om te synchroniseren van uw wachtwoorden van gebruikers uit een on-premises Active Directory-exemplaar naar een cloud-gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -136,10 +136,10 @@ Ter ondersteuning van tijdelijke wacht woorden in azure AD voor gesynchroniseerd
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> Als u het wacht woord voor de volgende aanmelding wilt wijzigen, moet u het wacht woord op hetzelfde moment wijzigen.  AD Connect neemt de vlag voor het wijzigen van het wacht woord niet op zichzelf op. het is een aanvulling op de gedetecteerde wachtwoord wijziging die optreedt tijdens de wachtwoord-hash-synchronisatie.
+> Als u het wacht woord voor de volgende aanmelding wilt wijzigen, moet u het wacht woord op hetzelfde moment wijzigen.  Azure AD Connect wordt de vlag voor het wijzigen van het wacht woord niet automatisch opgehaald. het is een aanvulling op de gedetecteerde wachtwoord wijziging die optreedt tijdens de wachtwoord-hash-synchronisatie.
 
 > [!CAUTION]
-> Als u self-service voor wachtwoord herstel (SSPR) niet inschakelt in azure AD-gebruikers, heeft dit een verwarrende ervaring wanneer ze hun wacht woord opnieuw instellen in azure AD en zich vervolgens proberen aan te melden Active Directory met het nieuwe wacht woord, omdat het nieuwe wacht woord niet geldig is in Active Directory . U moet deze functie alleen gebruiken wanneer SSPR en wacht woord terugschrijven is ingeschakeld op de Tenant.
+> U moet deze functie alleen gebruiken wanneer SSPR en wacht woord terugschrijven zijn ingeschakeld op de Tenant.  Dit betekent dat als een gebruiker het wacht woord wijzigt via SSPR, deze wordt gesynchroniseerd met Active Directory.
 
 > [!NOTE]
 > Deze functie is nu beschikbaar in de open bare preview.
