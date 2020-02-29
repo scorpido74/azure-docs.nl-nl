@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152343"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917472"
 ---
 # <a name="enter-data-manually-module"></a>De module gegevens hand matig invoeren
 
@@ -36,13 +36,13 @@ Deze module kan handig zijn in scenario's zoals deze:
   
 2.  Selecteer een van de volgende opties voor **DataFormat**. Deze opties bepalen hoe de gegevens die u opgeeft, moeten worden geparseerd. De vereisten voor elke indeling verschillen aanzienlijk, dus zorg ervoor dat u de verwante onderwerpen leest.  
   
-    -   **ARFF**. De kenmerk relatie bestands indeling, die wordt gebruikt door Fridge.   
+    -   **ARFF**: de kenmerk relatie bestands indeling, die wordt gebruikt door Fridge.   
   
-    -   **CSV**. Indeling met door komma's gescheiden waarden. Zie [Convert to CSV](./convert-to-csv.md)(Engelstalig) voor meer informatie.  
+    -   **CSV**: indeling met door komma's gescheiden waarden. Zie [Convert to CSV](./convert-to-csv.md)(Engelstalig) voor meer informatie.  
   
-    -   **SVMLight**. Een indeling die wordt gebruikt door Vowpal Wabbit en andere machine learning frameworks.  
+    -   **SVMLight**: een indeling die wordt gebruikt door Vowpal Wabbit en andere machine learning frameworks.  
   
-    -   **TSV**. Indeling van door tabs gescheiden waarden.
+    -   **TSV**: notatie van door tabs gescheiden waarden.
 
      Als u een indeling kiest en geen gegevens levert die voldoen aan de indelings specificaties, treedt er een runtime fout op.
   

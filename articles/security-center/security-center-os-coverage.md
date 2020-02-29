@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603747"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921297"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -126,4 +126,4 @@ De beveiliging van Virtual Machines in Azure Stack wordt ook ondersteund. Voor m
 - Meer informatie over het [Security Center beheren en beveiligen van gegevens](security-center-data-security.md).
 - Meer informatie over [het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center](security-center-planning-and-operations-guide.md).
 - Meer informatie over [functies die beschikbaar zijn voor de verschillende Cloud omgevingen](security-center-services.md).
-- Meer informatie over het [detecteren van bedreigingen voor vm's & servers in azure Security Center](security-center-alerts-iaas.md).
+- Meer informatie over [beveiliging tegen bedreigingen voor Windows-en Linux-machines in azure Security Center](threat-protection.md#windows-machines).

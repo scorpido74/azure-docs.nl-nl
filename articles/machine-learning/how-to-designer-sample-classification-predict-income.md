@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/22/2020
+ms.openlocfilehash: 7fd51f587ff51e09254741615d3059d038e1205a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963363"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915908"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Bouw een classificatie & gebruik functie selectie om inkomsten te voors pellen met Azure Machine Learning Designer
 
@@ -25,7 +25,7 @@ ms.locfileid: "76963363"
 
 Meer informatie over het bouwen van een machine learning classificatie zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). In dit voor beeld wordt een **geboostte beslissings structuur met twee klassen** getraind om inkomsten te voors pellen (> = 50.000 of < = 50.000).
 
-Omdat de vraag ' die ene? ' beantwoordt Dit wordt een probleem met de classificatie genoemd. U kunt echter hetzelfde fundamentele proces Toep assen om alle soorten machine learning van problemen met regressie, classificatie, Clustering, enzovoort.
+Omdat de vraag ' die ene? ' beantwoordt, wordt dit een classificatie probleem genoemd. U kunt echter hetzelfde fundamentele proces Toep assen om alle soorten machine learning van problemen met regressie, classificatie, Clustering, enzovoort.
 
 Hier volgt de laatste pijplijn grafiek voor dit voor beeld:
 
@@ -51,7 +51,7 @@ Volg deze stappen om de pijp lijn te maken:
 
 1. Sleep de module inkomsten van de binary-gegevensset voor volwassenen naar het pijp lijn-canvas.
 1. Voeg een **Splits gegevens** module toe om de trainings-en test sets te maken. Stel de Fractie van rijen in de eerste uitvoer gegevensset in op 0,7. Met deze instelling geeft u op dat 70% van de gegevens wordt uitgevoerd naar de linker poort van de module en de rest naar de juiste poort. We gebruiken de gegevensset links voor training en de juiste voor test doeleinden.
-1. Voeg de module **op basis van filter functies** toe om vijf functies te selecteren door PearsonCorreclation. 
+1. Voeg de module **op basis van filter functies** toe om vijf functies te selecteren door PearsonCorrelation. 
 1. Voeg een uitmuntende **beslissings structuur** module toe om een gestimuleerde beslissings structuur classificatie te initialiseren.
 1. Een **Train model** -module toevoegen. Verbind de classificatie van de vorige stap naar de links invoer poort van het **Train-model**. Verbind de gefilterde gegevensset van de module functie selectie op basis van een trainings gegevensset.  Het **Train-model** traint de classificatie.
 1. Voeg kolom transformatie selecteren toe en pas de transformatie module toe op het Toep assen van dezelfde trans formatie (gefilterde functie selectie) om de gegevensset te testen.

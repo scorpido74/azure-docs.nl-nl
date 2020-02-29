@@ -1,22 +1,14 @@
 ---
 title: Levenscyclus van het knowledge base - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker leert beste in een iteratief cyclus van wijzigingen in het gegevensmodel, utterance voorbeelden, publiceren en verzamelen van gegevens van eindpunt query's.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/27/2020
+ms.openlocfilehash: 98fbd81baa717c981486f33cfb2b3a608cec27c7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843402"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914949"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Levenscyclus van de Knowledge base in QnA Maker
 QnA Maker leert beste in een iteratief cyclus van wijzigingen in het gegevensmodel, utterance voorbeelden, publiceren en verzamelen van gegevens van eindpunt query's.
@@ -24,7 +16,7 @@ QnA Maker leert beste in een iteratief cyclus van wijzigingen in het gegevensmod
 ![Ontwerpcyclus](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>Het maken van een kennisdatabase QnA Maker
-QnA Maker knowledge base (KB)-eindpunt biedt een best-none-match-antwoord op een gebruikersquery op basis van de inhoud van de KB. Het maken van een kennisdatabase is een eenmalige actie voor het instellen van een opslagplaats voor inhoud van de vragen, antwoorden en gekoppelde metagegevens. Een kennisdatabase kunnen worden gemaakt met het verkennen van de bestaande inhoud zoals veelgestelde vragen over pagina's, producthandleidingen of gestructureerde Q-A-paren. Meer informatie over het [maken van een kennisdatabase](../quickstarts/create-publish-knowledge-base.md).
+QnA Maker knowledge base (KB)-eindpunt biedt een best-none-match-antwoord op een gebruikersquery op basis van de inhoud van de KB. Het maken van een kennis database is een eenmalige actie voor het instellen van een inhouds opslagplaats met vragen, antwoorden en gekoppelde meta gegevens. Een kennisdatabase kunnen worden gemaakt met het verkennen van de bestaande inhoud zoals veelgestelde vragen over pagina's, producthandleidingen of gestructureerde Q-A-paren. Meer informatie over het [maken van een Knowledge Base](../quickstarts/create-publish-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testen en bijwerken van de knowledge base
 
@@ -33,7 +25,7 @@ De knowledge base is klaar voor testen wanneer het wordt gevuld met inhoud, reda
 * **Zo kunt u lage betrouwbaarheids scores herstellen**: alternatieve vragen toevoegen.
 * **Wanneer een query niet de [standaard reactie](../How-to/change-default-answer.md)retourneert**: nieuwe antwoorden toevoegen aan de juiste vraag.
 
-Deze lus van test-update gaat door totdat u tevreden met de resultaten bent. Meer informatie over het [uw knowledge base test](../How-To/test-knowledge-base.md).
+Deze lus van test-update gaat door totdat u tevreden met de resultaten bent. Meer informatie over het [testen van uw Knowledge Base](../How-To/test-knowledge-base.md).
 
 Gebruik voor grote Kb's geautomatiseerde tests met de [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) en de eigenschap hoofd code van `isTest`, die de `test` Knowledge Base doorzoekt in plaats van de gepubliceerde kennis database.
 
@@ -53,14 +45,14 @@ Op deze manier alle wijzigingen aan de testversie van de knowledge base niet van
 
 Elk van deze knowledge bases kan worden gericht voor het testen van afzonderlijk. Met behulp van de Api's kunt u de test versie van de Knowledge Base richten op `isTest` Body-eigenschap in de generateAnswer-aanroep.
 
-Meer informatie over het [kennisbank publiceren](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
+Meer informatie over het [publiceren van uw Knowledge Base](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
 ## <a name="monitor-usage"></a>Gebruik bewaken
-Als u zich de chatlogs van uw service, moet u Application Insights inschakelen wanneer u [uw QnA Maker-service maken](../How-To/set-up-qnamaker-service-azure.md).
+Als u de chat logboeken van uw service wilt kunnen registreren, moet u Application Insights inschakelen wanneer u [uw QnA Maker-service maakt](../How-To/set-up-qnamaker-service-azure.md).
 
-U kunt verschillende analyse van uw gebruik van de service ophalen. Meer informatie over hoe u application insights gebruiken om op te halen [analytics voor uw service QnA Maker](../How-To/get-analytics-knowledge-base.md).
+U kunt verschillende analyse van uw gebruik van de service ophalen. Meer informatie over hoe u Application Insights kunt gebruiken om [analyses voor uw QnA Maker-service](../How-To/get-analytics-knowledge-base.md)op te halen.
 
-Op basis van wat u van uw analyses leert, Controleer juiste [updates voor uw knowledge base](../How-To/edit-knowledge-base.md).
+Op basis van wat u leert van uw analyse, moet u [de juiste updates voor uw Knowledge Base](../How-To/edit-knowledge-base.md)maken.
 
 ## <a name="version-control-for-data-in-your-knowledge-base"></a>Versie beheer voor gegevens in uw Knowledge Base
 
@@ -87,4 +79,4 @@ De *gepubliceerde kennis database* is de versie die wordt gebruikt in uw chat-bo
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Betrouwbaarheidsscore](./confidence-score.md)
+> [Suggesties voor actieve trainingen](./active-learning-suggestions.md)

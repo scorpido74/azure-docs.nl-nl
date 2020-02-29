@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 10e1081c7a91c65c21ffcb3da66930fb7c6e73bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603444"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921246"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Bedreigingsinformatierapport in Azure Security Center
 In dit document wordt uitgelegd hoe bedreigingsinformatierapporten in Azure Security Center u kunnen helpen meer te weten te komen over een bedreiging die een beveiligingswaarschuwing heeft gegenereerd.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Wat is een bedreigingsinformatierapport?
-Het detecteren van bedreigingen van Security Center werkt volgens het verzamelen van beveiligingsgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen. Deze informatie wordt door Security Center geanalyseerd, waarbij vaak informatie uit meerdere bronnen wordt samengebracht om bedreigingen te analyseren. Zie [How Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md#detect-threats)voor meer informatie.
+Security Center bedreigings beveiliging werkt door beveiligings gegevens van uw Azure-resources, het netwerk en verbonden partner oplossingen te bewaken. Deze informatie wordt door Security Center geanalyseerd, waarbij vaak informatie uit meerdere bronnen wordt samengebracht om bedreigingen te analyseren. Zie [How Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md#detect-threats)voor meer informatie.
 
 Wanneer Security Center een bedreiging detecteert, produceert het een [beveiligingswaarschuwing](security-center-managing-and-responding-alerts.md) met gedetailleerde informatie over een specifieke gebeurtenis en suggesties om het op te lossen. Ter ondersteuning van incident response teams, het onderzoeken en oplossen van bedreigingen, Security Center bevat een Threat Intelligence-rapport dat informatie bevat over de gedetecteerde bedreiging, inclusief informatie zoals:
 

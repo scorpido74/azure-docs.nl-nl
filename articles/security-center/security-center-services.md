@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616369"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921263"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
 
@@ -38,10 +38,10 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
-|[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Standard|
-|[Waarschuwingen voor het detecteren van bedreigingen voor virtuele machines](threat-protection.md)|✔|✔|✔|Detectie van bedreigingen (gratis) (standaard)|
-|[Waarschuwingen voor detectie van bedreigingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Waarschuwingen voor detectie van bedreigingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Standard|
+|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](threat-protection.md)|✔|✔|✔|Aanbevelingen (gratis) </br></br> Beveiligings waarschuwingen (standaard)|
+|[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[Beveiligings waarschuwingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -50,7 +50,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptieve netwerk besturings elementen|✔|✔|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Aanbevelingen en detectie van bedreigingen op docker-gehoste IaaS-containers|-|-|-|Standard|
+|Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|-|-|-|Standard|
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Gratis|
 |Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Gratis|
 |[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Gratis|
@@ -65,9 +65,9 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Standard|
-|[Waarschuwingen voor het detecteren van bedreigingen voor virtuele machines](security-center-alerts-iaas.md)|✔ (op ondersteunde versies)|✔ (op ondersteunde versies)|✔|Detectie van bedreigingen (gratis) (standaard)|
-|[Waarschuwingen voor detectie van bedreigingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Waarschuwingen voor detectie van bedreigingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](security-center-alerts-iaas.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Aanbevelingen (gratis) </br></br> Beveiligings waarschuwingen (standaard)|
+|[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[Beveiligings waarschuwingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -76,7 +76,7 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptieve netwerk besturings elementen|✔|✔|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Aanbevelingen en detectie van bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Standard|
+|Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Standard|
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Gratis|
 |Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Gratis|
 |[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Gratis|
@@ -116,7 +116,7 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 
 De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 
-|Service|Aanbevelingen (gratis)|Waarschuwingen voor detectie van bedreigingen (standaard)|Evaluatie van beveiligings problemen (standaard)|
+|Service|Aanbevelingen (gratis)|Beveiligings waarschuwingen (standaard)|Evaluatie van beveiligings problemen (standaard)|
 |----|:----:|:----:|:----:|
 |SQL Databases|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
@@ -158,6 +158,5 @@ De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
 - Meer informatie over het [Security Center beheren en beveiligen van gegevens](security-center-data-security.md).
 - Meer informatie over [het plannen en begrijpen van de ontwerp overwegingen bij het aannemen van Azure Security Center](security-center-planning-and-operations-guide.md).
 - Bekijk de [platforms die Security Center ondersteunen](security-center-os-coverage.md).
-- Meer informatie over het [detecteren van bedreigingen voor vm's & servers in azure Security Center](security-center-alerts-iaas.md).
+- Meer informatie over [beveiliging tegen bedreigingen voor Windows-en Linux-machines in azure Security Center](threat-protection.md#windows-machines).
 - Vind [Veelgestelde vragen over Azure Security Center](faq-general.md).
-- Vind [blog berichten over de beveiliging en naleving van Azure](https://blogs.msdn.com/b/azuresecurity/).

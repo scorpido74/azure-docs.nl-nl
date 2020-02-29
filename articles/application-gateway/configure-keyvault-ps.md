@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 746e9f08a75ece18199d5a72bb532873be787f50
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2f7eafc6fc1533bd837fae60dd3b9673f6f97aa8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592269"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913018"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>SSL-beëindiging met Key Vault certificaten configureren met behulp van Azure PowerShell
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) is een door een platform beheerd geheim archief dat u kunt gebruiken voor het beveiligen van geheimen, sleutels en SSL-certificaten. Azure-toepassing gateway ondersteunt de integratie met Key Vault (in open bare preview) voor server certificaten die zijn gekoppeld aan listeners waarvoor HTTPS is ingeschakeld. Deze ondersteuning is beperkt tot de v2-SKU van Application Gateway.
+[Azure Key Vault](../key-vault/key-vault-overview.md) is een door een platform beheerd geheim archief dat u kunt gebruiken voor het beveiligen van geheimen, sleutels en SSL-certificaten. Azure-toepassing gateway ondersteunt de integratie met Key Vault voor server certificaten die zijn gekoppeld aan listeners met HTTPS-functionaliteit. Deze ondersteuning is beperkt tot de SKU van Application Gateway v2.
 
 Zie [SSL-beëindiging met Key Vault certificaten](key-vault-certs.md)voor meer informatie.
 

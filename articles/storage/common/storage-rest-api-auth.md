@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965722"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916061"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API bewerkingen aanroepen met gedeelde sleutel autorisatie
 
@@ -175,7 +175,7 @@ Nu u de aanvraag hebt gemaakt, kunt u de SendAsync-methode aanroepen om deze naa
 }
 ```
 
-Als u een netwerksniffer uitvoert, zoals [Fiddler](https://www.telerik.com/fiddler) bij het aanroepen van SendAsync, kunt u de aanvraag-en antwoord gegevens bekijken. We gaan eens kijken. De naam van het opslag account is *contosorest*.
+Als u een netwerksniffer uitvoert, zoals [Fiddler](https://www.telerik.com/fiddler) bij het aanroepen van SendAsync, kunt u de aanvraag-en antwoord gegevens bekijken. Laten we een kijkje nemen. De naam van het opslag account is *contosorest*.
 
 **Schot**
 
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```
@@ -569,7 +569,7 @@ In dit artikel hebt u geleerd hoe u een aanvraag kunt indienen voor de Blob Stor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)
-- [Bestandsservice REST API](/rest/api/storageservices/file-service-rest-api)
-- [Wachtrijservice REST API](/rest/api/storageservices/queue-service-rest-api)
-- [Tabelservice REST API](/rest/api/storageservices/table-service-rest-api)
+- [REST API BLOB-service](/rest/api/storageservices/blob-service-rest-api)
+- [Bestands service REST API](/rest/api/storageservices/file-service-rest-api)
+- [REST API Queue-service](/rest/api/storageservices/queue-service-rest-api)
+- [REST API van tabel service](/rest/api/storageservices/table-service-rest-api)

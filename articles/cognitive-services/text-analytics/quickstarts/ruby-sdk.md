@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f34d4e50042f0fd05a224ff096c2b472224248f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992399"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919665"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Snelstartgids: de Text Analytics-client bibliotheek voor ruby gebruiken
 
@@ -26,7 +26,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 * Sentimentanalyse
 * Taaldetectie
 * Herkenning van entiteiten
-* Sleuteluitdrukkingen extraheren
+* Sleuteltermextractie
 
 > [!NOTE]
 > Deze Quick start is alleen van toepassing op Text Analytics versie 2,1. Op dit moment is er geen v3-client bibliotheek voor ruby beschikbaar.
@@ -39,12 +39,11 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 
 * Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De huidige versie van [ruby](https://www.ruby-lang.org/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> maken in de Azure Portal om uw sleutel en eind punt op te halen. 
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
+    * U kunt de gratis prijs categorie gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
-
-### <a name="create-a-text-analytics-azure-resource"></a>Een Text Analytics Azure-resource maken 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-ruby-application"></a>Een nieuwe ruby-toepassing maken
 
@@ -226,7 +225,7 @@ Document ID: 2
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="key-phrase-extraction"></a>Sleuteluitdrukkingen extraheren
+## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
 Maak in het client object een functie met de naam `ExtractKeyPhrases()` die een lijst met invoer documenten maakt die later worden gemaakt. Roep de `key_phrases()`-functie aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de document-ID en de geëxtraheerde sleutel zinnen af.
 

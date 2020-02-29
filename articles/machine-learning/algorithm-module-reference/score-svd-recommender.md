@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314348"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920345"
 ---
 # <a name="score-svd-recommender"></a>Aanbevelingsfunctie voor SVD-score
 
-In dit artikel wordt beschreven hoe u de module Score SVD aanbevelen in Azure Machine Learning Designer gebruikt. Gebruik deze module om voor spellingen te maken met behulp van een getraind aanbevelings model op basis van het algoritme voor de ontleding van één waarde (SVD).
+In dit artikel wordt beschreven hoe u de module Score SVD aanbevelen in Azure Machine Learning Designer (preview) gebruikt. Gebruik deze module om voor spellingen te maken met behulp van een getraind aanbevelings model op basis van het algoritme voor de ontleding van één waarde (SVD).
 
 De SVD-aanbevolen functie kan twee verschillende soorten voor spellingen genereren:
 
@@ -91,7 +91,7 @@ Als u items wilt aanbevelen voor gebruikers, geeft u een lijst met gebruikers en
 
 5. **Maximum aantal items dat aan een gebruiker kan worden aanbevolen**: Voer het aantal items in dat voor elke gebruiker moet worden geretourneerd. Standaard raadt de module vijf items aan.
 
-6. **Minimum grootte van de aanbevelings groep per gebruiker**: Voer een waarde in die aangeeft hoeveel eerdere aanbevelingen vereist zijn. Deze para meter is standaard ingesteld op **2**, wat betekent dat ten minste twee andere gebruikers het item hebben aanbevolen.
+6. **Minimum grootte van de aanbevelings groep per gebruiker**: Voer een waarde in die aangeeft hoeveel eerdere aanbevelingen vereist zijn. Deze para meter is standaard ingesteld op 2, wat betekent dat ten minste twee andere gebruikers het item hebben aanbevolen.
 
    Gebruik deze optie alleen als u een score hebt in de evaluatie modus. De optie is niet beschikbaar als u **van alle items** of **van niet-geclassificeerde items (om nieuwe items te suggereren voor gebruikers)** selecteert.
 

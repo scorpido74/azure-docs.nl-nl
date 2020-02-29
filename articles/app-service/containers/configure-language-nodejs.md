@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte node.
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670275"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920022"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Een Linux node. js-app configureren voor Azure App Service
 
@@ -43,6 +43,32 @@ Met deze instelling geeft u de versie van node. js op die moet worden gebruikt t
 
 > [!NOTE]
 > U moet de versie van node. js instellen in de `package.json`van uw project. De implementatie-engine wordt uitgevoerd in een afzonderlijke container die alle ondersteunde node. js-versies bevat.
+
+## <a name="customize-build-automation"></a>Bouw automatisering aanpassen
+
+Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
+
+1. Voer een aangepast script uit als dit wordt opgegeven door `PRE_BUILD_SCRIPT_PATH`.
+1. Voer `npm install` uit zonder vlaggen, met inbegrip van NPM `preinstall` en `postinstall` scripts en installeert ook `devDependencies`.
+1. Voer `npm run build` uit als er een build-script is opgegeven in de *package. json*.
+1. Voer `npm run build:azure` uit als er een build: Azure script is opgegeven in de *package. json*.
+1. Voer een aangepast script uit als dit wordt opgegeven door `POST_BUILD_SCRIPT_PATH`.
+
+> [!NOTE]
+> Zoals beschreven in [NPM docs](https://docs.npmjs.com/misc/scripts), scripts met de naam `prebuild` en `postbuild` vóór en na `build`worden uitgevoerd, indien opgegeven. `preinstall` en `postinstall` vóór en na `install`respectievelijk worden uitgevoerd.
+
+`PRE_BUILD_COMMAND` en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Definieer `PRE_BUILD_COMMAND`voor het uitvoeren van opdrachten die vooraf zijn gebouwd. Als u opdrachten na het bouwen wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
+
+In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)voor meer omgevings variabelen voor het aanpassen van het bouwen van Automation.
+
+Zie [Oryx-documentatie](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md)voor meer informatie over hoe app service worden uitgevoerd en bouwt node. js-apps in Linux.
 
 ## <a name="configure-nodejs-server"></a>Node. js-server configureren
 

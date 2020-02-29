@@ -7,18 +7,22 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: ad5fb1098f88a253252dad43c9da51b5d9f11237
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: eea649610ca53ccbb98b5ca361555280dcd3dafe
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492823"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164794"
 ---
 # <a name="hbv2-series"></a>HBv2-serie
 
 Vm's uit de HBv2-serie zijn geoptimaliseerd voor toepassingen die worden aangedreven door geheugen bandbreedte, zoals een Hydraulic-dynamiek, een eindige element analyse en reservoir simulatie. HBv2 Vm's feature 120 AMD EPYC 7742-processor kernen, 4 GB RAM per CPU-kern en zonder gelijktijdige multi threading. Elke HBv2-VM biedt tot 340 GB/sec. geheugen bandbreedte en Maxi maal 4 teraFLOPS van FP64 compute.
 
 Premium Storage: ondersteund
+
+Livemigratie: niet ondersteund
+
+Updates voor het behouden van geheugen: niet ondersteund
 
 | Grootte | vCPU | Processor | Geheugen (GB) | Geheugen bandbreedte GB/s | Basis-CPU-frequentie (GHz) | Frequentie van alle kernen (GHz, piek) | Frequentie met één kern geheugen (GHz, piek) | RDMA-prestaties (GB/s) | MPI-ondersteuning | Tijdelijke opslag (GB) | Max. aantal gegevensschijven | Maximum aantal Ethernet Nic's |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

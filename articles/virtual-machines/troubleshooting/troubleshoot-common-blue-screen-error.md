@@ -12,18 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: d9732f232c5a7ec1e551f42fe0e8187e382aec6e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981875"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921467"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows toont een blauw scherm bij het opstarten van een Azure VM
 In dit artikel worden blauwe scherm fouten beschreven die kunnen optreden wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure. Het bevat stappen om u te helpen bij het verzamelen van gegevens voor een ondersteunings ticket. 
 
-> [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. dit wordt aangeraden voor nieuwe implementaties in plaats van het klassieke implementatie model.
 
 ## <a name="symptom"></a>Symptoom 
 
@@ -48,8 +46,8 @@ Als u dit probleem wilt oplossen, moet u eerst het dump bestand voor de crash ve
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteemschijf koppelen aan een virtuele machine voor herstel
 
-1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
-2. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md). 
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md). 
 3. Extern bureau blad naar de herstel-VM.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Dump bestand zoeken en een ondersteunings ticket verzenden

@@ -1,23 +1,25 @@
 ---
-title: 'Zelf studie: tekst en structuur van JSON-blobs extra heren'
+title: 'Zelf studie: REST en AI over Azure-blobs'
 titleSuffix: Azure Cognitive Search
-description: Neem een voor beeld van tekst extractie en natuurlijke taal verwerking over inhoud in JSON-blobs met behulp van Postman en de Azure Cognitive Search REST-Api's.
+description: Neem een voor beeld van tekst extractie en natuurlijke taal verwerking over inhoud in Blob Storage met behulp van Postman en de Azure Cognitive Search REST-Api's.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7db2d89c112c5f874460f5e6955cdce90cc2f9ae
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667020"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162996"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Zelf studie: tekst en structuur van JSON-blobs in azure extra heren met REST-Api's (Azure Cognitive Search)
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelf studie: REST en AI gebruiken voor het genereren van Doorzoek bare inhoud van Azure-blobs
 
-Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn installatie kopieën kan verwerken, wordt in deze zelf studie aandacht besteed aan tekst, het Toep assen van taal detectie en de verwerking van natuurlijke taal om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
+Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel een pijp lijn installatie kopieën kan verwerken, wordt in deze REST zelf studie aandacht besteed aan tekst, het Toep assen van taal detectie en de verwerking van natuurlijke taal om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
+
+In deze zelf studie gebruikt u postman en [rest](https://docs.microsoft.com/rest/api/searchservice/) om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Begin met hele documenten (ongestructureerde tekst) zoals PDF, HTML, DOCX en PPTX in Azure Blob-opslag.
@@ -26,9 +28,16 @@ Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een
 > * Voer de pijp lijn uit om trans formaties en analyses te starten en om de index te maken en te laden.
 > * Bekijk de resultaten met zoeken in volledige tekst en een uitgebreide query syntaxis.
 
-U hebt verschillende services nodig om deze procedure te volt ooien, plus de [postman desktop-app](https://www.getpostman.com/) of een ander hulp programma voor het testen van webtoepassingen om rest API-aanroepen te maken. 
-
 Als u geen Azure-abonnement hebt, opent u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+
+## <a name="prerequisites"></a>Vereisten
+
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Postman bureaublad-app](https://www.getpostman.com/)
++ [Een bestaande zoek service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [maken](search-create-service-portal.md) of zoeken 
+
+> [!Note]
+> U kunt de gratis service voor deze zelf studie gebruiken. Een gratis zoek service beperkt u tot drie indexen, drie Indexeer functies en drie gegevens bronnen. In deze zelfstudie wordt één exemplaar van elk onderdeel gemaakt. Voordat u begint, moet u ervoor zorgen dat u over voldoende ruimte beschikt om de nieuwe resources te accepteren.
 
 ## <a name="download-files"></a>Bestanden downloaden
 
@@ -104,9 +113,9 @@ Net als bij Azure Blob-opslag neemt het even de tijd om de toegangs sleutel te v
 
 2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-    Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
+   Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
 
-![De service naam en de beheer-en query sleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![De service naam en de beheer-en query sleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
 
 Alle aanvragen vereisen een API-sleutel in de header van elke aanvraag die naar uw service wordt verzonden. Een geldige sleutel brengt een vertrouwens relatie tot stand, op basis van aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
 
@@ -498,8 +507,6 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 ```
 
 De statuscode 204 wordt na verwijdering geretourneerd.
-
-Naarmate uw code meer vormt krijgt, is het raadzaam om uw herbouwstrategie te verfijnen. Zie [How to rebuild an index](search-howto-reindex.md) (Een index herbouwen) voor meer informatie.
 
 ## <a name="takeaways"></a>Opgedane kennis
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 02/24/2020
+ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137552"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917426"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -25,7 +25,8 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
  De metrische gegevens die door het **Evalueer model** worden geretourneerd, zijn afhankelijk van het type model dat u evalueert:  
   
 -   **Classificatie modellen**    
--   **Regressie modellen**    
+-   **Regressie modellen**  
+-   **Cluster modellen**  
 
 
 > [!TIP]
@@ -72,7 +73,7 @@ Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in
 
 De volgende afbeelding vertegenwoordigt bijvoorbeeld een vergelijking van de resultaten van twee cluster modellen die zijn gebouwd op dezelfde gegevens, maar met verschillende para meters.  
 
-![AML&#95;-Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
 Omdat dit een cluster model is, zijn de evaluatie resultaten anders dan wanneer u scores van twee regressie modellen of twee classificatie modellen hebt vergeleken. De gehele presentatie is echter hetzelfde. 
 
@@ -82,10 +83,11 @@ In deze sectie worden de metrische gegevens die worden geretourneerd voor de spe
 
 + [classificatie modellen](#metrics-for-classification-models)
 + [regressie modellen](#metrics-for-regression-models)
++ [cluster modellen](#metrics-for-clustering-models)
 
 ### <a name="metrics-for-classification-models"></a>Metrische gegevens voor classificatie modellen
 
-De volgende metrische gegevens worden gerapporteerd bij het evalueren van classificatie modellen. Als u modellen vergelijkt, worden ze gerangschikt op basis van de metrische gegevens die u voor de evaluatie selecteert.  
+De volgende metrische gegevens worden gerapporteerd bij het evalueren van classificatie modellen.
   
 -   **Nauw keurigheid** meet de goed keuring van een classificatie model als het aandeel van de werkelijke resultaten tot het totale aantal cases.  
   
@@ -105,7 +107,7 @@ De volgende metrische gegevens worden gerapporteerd bij het evalueren van classi
  
 De metrische gegevens die voor regressie modellen zijn geretourneerd, zijn ontworpen om de hoeveelheid fout te schatten.  Een model wordt gezien als een goede grootte van de gegevens als het verschil tussen de waargenomen en voorspelde waarden klein is. Gezien het patroon van de verschillen (het verschil tussen een voorspeld punt en de bijbehorende werkelijke waarde), kan u echter een heleboel informatie over mogelijke afwijking in het model vertellen.  
   
- De volgende metrische gegevens worden gerapporteerd voor het evalueren van regressie modellen. Wanneer u modellen vergelijkt, worden ze gerangschikt op basis van de metrische gegevens die u voor de evaluatie selecteert.  
+ De volgende metrische gegevens worden gerapporteerd voor het evalueren van regressie modellen.
   
 - **Gemiddelde absolute fout (Mae)** meet hoe dicht de voor spellingen zijn voor de werkelijke resultaten. een lagere score is dus beter.  
   
@@ -118,6 +120,30 @@ De metrische gegevens die voor regressie modellen zijn geretourneerd, zijn ontwo
 
   
 - De **determinatie coëfficiënt**, vaak R<sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als een waarde tussen 0 en 1. Nul betekent dat het model wille keurig is (er wordt niets uitgelegd). 1 betekent dat er een perfecte aanpassing is. Wees echter voorzichtig bij het interpreteren van R<sup>2</sup> -waarden, omdat lage waarden volledig normaal kunnen zijn en hoge waarden kunnen worden verdacht.
+
+###  <a name="metrics-for-clustering-models"></a>Metrische gegevens voor cluster modellen
+
+Omdat de cluster modellen in veel opzichten aanzienlijk verschillen van classificatie-en regressie modellen, wordt met het evalueren van het [model](evaluate-model.md) ook een andere set statistieken voor cluster modellen geretourneerd.  
+  
+ De statistieken die worden geretourneerd voor een cluster model beschrijven het aantal gegevens punten dat aan elk cluster is toegewezen, de hoeveelheid schei ding tussen clusters en de nauw keurigheid van de gegevens punten binnen elk cluster.  
+  
+ De statistieken voor het cluster model worden gemiddeld over de hele gegevensset, met extra rijen met de statistieken per cluster.  
+  
+De volgende metrische gegevens worden gerapporteerd voor het evalueren van cluster modellen.
+    
+-   De scores in de kolom, **gemiddelde afstand tot ander midden**, geven aan hoe dicht, op gemiddeld elk punt in het cluster naar de centroids van alle andere clusters gaat.   
+
+-   De scores in de kolom, **gemiddelde afstand tot cluster centrum**, vertegenwoordigen de dichtheid van alle punten in een cluster naar de massa middelpunt van dat cluster.  
+  
+-   In de kolom **aantal punten** ziet u hoeveel gegevens punten zijn toegewezen aan elk cluster, samen met het totale aantal gegevens punten in een cluster.  
+  
+     Als het aantal gegevens punten dat aan clusters is toegewezen kleiner is dan het totale aantal beschik bare gegevens punten, betekent dit dat de gegevens punten niet aan een cluster kunnen worden toegewezen.  
+  
+-   De scores in de kolom, de **maximale afstand tot het cluster Center**vertegenwoordigen de som van de afstanden tussen elk punt en de massa middelpunt van het cluster van dat punt.  
+  
+     Als dit aantal hoog is, kan dit betekenen dat het cluster veel wordt verspreid. U moet deze statistiek samen met de **gemiddelde afstand tot cluster centrum** door nemen om de verspreiding van het cluster te bepalen.   
+
+-   De **gecombineerde evaluatie** score onder aan elk gedeelte van de resultaten bevat een lijst met de gemiddelde scores voor de clusters die in dat specifieke model zijn gemaakt.  
   
 
 ## <a name="next-steps"></a>Volgende stappen

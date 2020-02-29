@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662124"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920039"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
 
@@ -32,7 +32,7 @@ Kies de categorie van het logboek en de metrische gegevens die u wilt bewaken.
 
 ## <a name="metrics"></a>Metrische gegevens
 
-Voor een volledige lijst met metrische gegevens raadpleegt u [metrische gegevens](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options) voor de Cloud
+Zie voor een volledige lijst met metrische gegevens [lente-Cloud metrieken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 
 Als u aan de slag wilt gaan, schakelt u een van deze services in om de gegevens te ontvangen. Zie aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over het configureren van log Analytics. 
 

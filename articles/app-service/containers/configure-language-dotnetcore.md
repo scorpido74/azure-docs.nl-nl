@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte ASP.N
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 30cd6ad1b5516eb3bc7e858ae364a88ace1b93b3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768415"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917626"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Een Linux ASP.NET Core-app configureren voor Azure App Service
 
@@ -38,6 +38,28 @@ Voer de volgende opdracht uit in de [Cloud shell](https://shell.azure.com) om de
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
+
+## <a name="customize-build-automation"></a>Bouw automatisering aanpassen
+
+Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
+
+1. Voer een aangepast script uit als dit wordt opgegeven door `PRE_BUILD_SCRIPT_PATH`.
+1. Voer `dotnet restore` uit om NuGet-afhankelijkheden te herstellen.
+1. Voer `dotnet publish` uit om een binair bestand voor productie te maken.
+1. Voer een aangepast script uit als dit wordt opgegeven door `POST_BUILD_SCRIPT_PATH`.
+
+`PRE_BUILD_COMMAND` en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Definieer `PRE_BUILD_COMMAND`voor het uitvoeren van opdrachten die vooraf zijn gebouwd. Als u opdrachten na het bouwen wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
+
+In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)voor meer omgevings variabelen voor het aanpassen van het bouwen van Automation.
+
+Zie Oryx-documentatie voor meer informatie over hoe App Service worden uitgevoerd en gebouwd ASP.NET Core apps in Linux [: hoe .net core-apps zijn gedetecteerd en gebouwd](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
 
 ## <a name="access-environment-variables"></a>Toegang tot omgevingsvariabelen
 
@@ -72,7 +94,7 @@ Als u een app-instelling met dezelfde naam in App Service en in *appSettings. js
 
 ## <a name="get-detailed-exceptions-page"></a>Pagina gedetailleerde uitzonde ringen ophalen
 
-Wanneer uw ASP.NET-app een uitzonde ring genereert in het Visual Studio-fout opsporingsprogramma, wordt een gedetailleerde uitzonderings pagina weer gegeven in de browser, maar in App Service die pagina wordt vervangen door een algemene **HTTP 500-** fout of er is **een fout opgetreden tijdens het verwerken van uw aanvraag.** weergegeven. Als u de gedetailleerde uitzonderings pagina in App Service wilt weer geven, voegt u de instelling van de app `ASPNETCORE_ENVIRONMENT` toe aan uw app door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
+Wanneer uw ASP.NET-app een uitzonde ring genereert in het Visual Studio-fout opsporingsprogramma, wordt een gedetailleerde uitzonderings pagina weer gegeven in de browser, maar in App Service die pagina wordt vervangen door een algemene **HTTP 500-** fout of er is **een fout opgetreden tijdens het verwerken van uw aanvraag.** Bericht. Als u de gedetailleerde uitzonderings pagina in App Service wilt weer geven, voegt u de instelling van de app `ASPNETCORE_ENVIRONMENT` toe aan uw app door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"

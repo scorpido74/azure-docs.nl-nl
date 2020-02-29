@@ -1,7 +1,7 @@
 ---
 title: Gebruikers aanmelden in Java script-apps met één pagina | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over hoe een Java script-app een API kan hebben die toegangs tokens vereist met het micro soft Identity-platform.
+description: Meer informatie over hoe een Java script-app een API kan aanroepen waarvoor toegangs tokens zijn vereist met het micro soft Identity-platform.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 954fd6c200e1165f27549dcf95502e9bfeed0267
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fc77b876474c89014998ce789f91f098fb3735c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703351"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161046"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie
 
@@ -27,7 +27,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/).
-* [Visual Studio code](https://code.visualstudio.com/download) (om project bestanden te bewerken) of [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (ro voert het project uit als een Visual Studio-oplossing).
+* [Visual Studio code](https://code.visualstudio.com/download) (om project bestanden te bewerken)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>De quickstart-toepassing registreren en downloaden
@@ -38,7 +38,9 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 > 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
 > 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u het account in de rechter bovenhoek en stelt u vervolgens uw portal-sessie in op de Azure Active Directory (Azure AD)-Tenant die u wilt gebruiken.
 > 1. Ga naar het deel venster nieuwe [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) .
-> 1. Voer een naam in voor uw toepassing en selecteer **registreren**.
+> 1. Voer een naam in voor de toepassing. 
+> 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
+> 1. Selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
 > ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2 (hand matig): uw toepassings-en code voorbeeld registreren en hand matig configureren
@@ -52,15 +54,15 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** wordt weergegeven, voert u een naam in voor de toepassing.
 > 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-> 1. Selecteer onder de sectie **omleidings-URI** in de vervolg keuzelijst het **webplatform en** stel vervolgens de waarde in op `http://localhost:30662/`.
 > 1. Selecteer **Registreren**. Noteer de waarde van de **toepassing (client)** op de pagina app- **overzicht** voor later gebruik.
 > 1. Voor deze quickstart moet de [Impliciete toekenningsstroom](v2-oauth2-implicit-grant-flow.md) zijn ingeschakeld. Selecteer in het linkerdeel venster van de geregistreerde toepassing **verificatie**.
-> 1. Selecteer in de sectie **Geavanceerde instellingen** onder **impliciete toekenning**de selectie vakjes **id-tokens** en **toegangs tokens** . ID-tokens en toegangs tokens zijn vereist omdat deze app gebruikers moet aanmelden en een API kan aanroepen.
-> 1. Selecteer boven in het deel venster **Opslaan**.
+> 1. Onder **platform configuraties**selecteert u **een platform toevoegen**. Er wordt een paneel aan de linkerkant geopend. Hier selecteert u de regio voor de **webtoepassingen** .
+> 1. Stel nog aan de linkerkant de **omleidings-URI** -waarde in op `http://localhost:3000/`. Selecteer vervolgens **toegangs token** en **id-token**.
+> 1. Selecteer **Configureren**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in de Azure-portal
-> Het code voorbeeld voor deze Quick Start werkt alleen als u een `redirectUri` als `http://localhost:30662/` toevoegt en **impliciete toekenning**inschakelt.
+> Om het code voorbeeld in deze Snelstartgids te laten werken, moet u een `redirectUri` toevoegen als `http://localhost:3000/` en **impliciete toekenning**inschakelen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Breng deze wijzigingen voor mij aan]()
 >
@@ -73,39 +75,40 @@ Selecteer de optie die geschikt is voor uw ontwikkel omgeving:
 
 * Als u het project wilt uitvoeren met een webserver met behulp van node. js, [downloadt u de kern project bestanden](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip). Als u de bestanden wilt openen, gebruikt u een editor zoals [Visual Studio code](https://code.visualstudio.com/).
 
-* Beschrijving Als u het project wilt uitvoeren met de IIS-server, [downloadt u het Visual Studio-project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Pak het zip-bestand uit naar een lokale map (bijvoorbeeld *C:\Azure-samples*).
-
 #### <a name="step-3-configure-your-javascript-app"></a>Stap 3: uw Java script-app configureren
 
 > [!div renderon="docs"]
-> Bewerk in de map *JavaScriptSPA* *index. html*en stel de waarden `clientID` en `authority` onder `msalConfig`in.
+> Bewerk *authConfig. js*in de map *JavaScriptSPA* en stel de waarden `clientID` en `authority` onder `msalConfig`in.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Bewerk in de map *JavaScriptSPA* *index. html*en vervang `msalConfig` door de volgende code:
+> Bewerk *authConfig. js*in de map *JavaScriptSPA* en vervang `msalConfig` door de volgende code:
 
 ```javascript
-var msalConfig = {
+
+  // Config object to be passed to Msal on creation
+  const msalConfig = {
     auth: {
-        clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
-        redirectUri: "http://localhost:30662/"
+      clientId: "Enter_the_Application_Id_Here",
+      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+      redirectUri: "Enter_the_Redirect_Uri_Here",
     },
     cache: {
-        cacheLocation: "localStorage",
-        storeAuthStateInCookie: true
+      cacheLocation: "sessionStorage", // This configures where your cache will be stored
+      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
-};
+  };  
 
 ```
 > [!div renderon="portal"]
 > > [!NOTE]
 > > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
 
-
 > [!div renderon="docs"]
 >
 > Waar:
-> - *\<Enter_the_Application_Id_here >* de **client-id** is van de toepassing die u hebt geregistreerd.
+> - *\<Enter_the_Application_Id_Here >* de **client-id** is van de toepassing die u hebt geregistreerd.
+> - *\<Enter_the_Cloud_Instance_Id_Here >* is het exemplaar van de Azure-Cloud. Voer *https://login.microsoftonline.com* in voor de hoofd-of wereld wijde Azure-Cloud. Zie [nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)voor **nationale** Clouds (bijvoorbeeld China).
 > - *\<Enter_the_Tenant_info_here >* is ingesteld op een van de volgende opties:
 >    - Als uw toepassing *accounts in deze organisatie Directory*ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld *contoso.Microsoft.com*).
 >    - Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**.
@@ -117,20 +120,17 @@ var msalConfig = {
 
 #### <a name="step-4-run-the-project"></a>Stap 4: het project uitvoeren
 
-* Als u [node. js](https://nodejs.org/en/download/)gebruikt:
+Als u [node. js](https://nodejs.org/en/download/)gebruikt:
 
-    1. Als u de server wilt starten, voert u de volgende opdracht uit vanuit de projectmap:
+1. Als u de server wilt starten, voert u de volgende opdracht uit vanuit de projectmap:
 
-        ```batch
-        npm install
-        node server.js
-        ```
+   ```batch
+   npm install
+   npm start
+   ```
 
-    1. Open een webbrowser en ga naar `http://localhost:30662/`.
-    1. Selecteer **Aanmelden** om de aanmelding te starten en roep vervolgens de Microsoft Graph-API aan.
-
-
-* Als u [Visual Studio](https://visualstudio.microsoft.com/downloads/)gebruikt, selecteert u de project-oplossing en selecteert u vervolgens F5 om het project uit te voeren.
+1. Open een webbrowser en ga naar `http://localhost:3000/`.
+1. Selecteer **Aanmelden** om de aanmelding te starten en roep vervolgens de Microsoft Graph-API aan.
 
 Nadat de toepassing door de browser is geladen, selecteert u **Aanmelden**. De eerste keer dat u zich aanmeldt, wordt u gevraagd uw toestemming te geven om uw profiel te openen en u aan te melden. Nadat u bent aangemeld, moeten de gegevens van uw gebruikers profiel worden weer gegeven op de pagina.
 
@@ -145,7 +145,7 @@ Nadat de toepassing door de browser is geladen, selecteert u **Aanmelden**. De e
 De MSAL-bibliotheek ondertekent gebruikers en vraagt de tokens aan die worden gebruikt voor toegang tot een API die wordt beveiligd door micro soft Identity platform. Het bestand Quick Start *index. html* bevat een verwijzing naar de bibliotheek:
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
+<script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
 > [!TIP]
 > U kunt de voor gaande versie vervangen door de nieuwste release versie onder [MSAL. js-releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
@@ -162,26 +162,28 @@ npm install msal
 In de Quick Start-code ziet u ook hoe u de MSAL-bibliotheek initialiseert:
 
 ```javascript
-var msalConfig = {
+  // Config object to be passed to Msal on creation
+  const msalConfig = {
     auth: {
-        clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
-        redirectUri: "http://localhost:30662/"
+      clientId: "75d84e7a-40bx-f0a2-91b9-0c82d4c556aa", // this is a fake id
+      authority: "https://login.microsoftonline.com/common",
+      redirectUri: "http://localhost:3000/",
     },
     cache: {
-        cacheLocation: "localStorage",
-        storeAuthStateInCookie: true
+      cacheLocation: "sessionStorage", // This configures where your cache will be stored
+      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
-};
+  };  
 
-var myMSALObj = new Msal.UserAgentApplication(msalConfig);
+const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
 > |Waar  |  |
 > |---------|---------|
 > |`clientId`     | De toepassings-ID van de toepassing die is geregistreerd in de Azure Portal.|
 > |`authority`    | Beschrijving De CA-URL die ondersteuning biedt voor account typen, zoals eerder is beschreven in de sectie configuratie. De standaard instantie is `https://login.microsoftonline.com/common`. |
-> |`redirectUri`     | De geconfigureerde antwoord-redirectUri voor de registratie van de toepassing. In dit geval `http://localhost:30662/`. |
+> |`redirectUri`     | De geconfigureerde antwoord-redirectUri voor de registratie van de toepassing. In dit geval `http://localhost:3000/`. |
 > |`cacheLocation`  | Beschrijving Hiermee stelt u de opslag voor de browser in voor de verificatie status. De standaard waarde is sessionStorage.   |
 > |`storeAuthStateInCookie`  | Beschrijving De bibliotheek waarin de status van de verificatie aanvraag wordt opgeslagen die vereist is voor de validatie van de verificatie stromen in de browser cookies. Deze cookie is ingesteld voor IE-en Edge-browsers om bepaalde [bekende problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)te verhelpen. |
 
@@ -192,11 +194,13 @@ Zie [client toepassingen initialiseren](msal-js-initializing-client-applications
 In het volgende codefragment wordt weergegeven hoe u gebruikers kunt aanmelden:
 
 ```javascript
-var requestObj = {
-    scopes: ["user.read"]
+// Add scopes for the id token to be used at Microsoft identity platform endpoints.
+const loginRequest = {
+    scopes: ["openid", "profile", "User.Read"],
 };
 
-myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
+myMSALObj.loginPopup(loginRequest)
+    .then((loginResponse) => {
     //Login Success callback code here
 }).catch(function (error) {
     console.log(error);
@@ -219,21 +223,23 @@ MSAL maakt gebruik van drie methoden om tokens te verkrijgen: `acquireTokenRedir
 Met de methode `acquireTokenSilent` wordt het verkrijgen en vernieuwen van tokens verwerkt zonder tussenkomst van de gebruiker. Nadat de methode `loginRedirect` of `loginPopup` de eerste keer is uitgevoerd, wordt voor volgende aanroepen meestal de methode `acquireTokenSilent` gebruikt om tokens te verkrijgen die worden gebruikt voor toegang tot beveiligde resources. Aanroepen voor het aanvragen of vernieuwen van tokens worden op de achtergrond uitgevoerd.
 
 ```javascript
-var requestObj = {
-    scopes: ["user.read"]
+// Add scopes for the access token to be used at Microsoft Graph API endpoints.
+const tokenRequest = {
+    scopes: ["Mail.Read"]
 };
 
-myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
-    // Callback code here
-    console.log(tokenResponse.accessToken);
-}).catch(function (error) {
-    console.log(error);
-});
+myMSALObj.acquireTokenSilent(tokenRequest)
+    .then((tokenResponse) => {
+        // Callback code here
+        console.log(tokenResponse.accessToken);
+    }).catch((error) => {
+        console.log(error);
+    });
 ```
 
 > |Waar  |  |
 > |---------|---------|
-> | `scopes`   | Bevat bereiken die worden aangevraagd om te worden geretourneerd in het toegangstoken voor de API. Bijvoorbeeld, `[ "user.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API’s (`api://<Application ID>/access_as_user`).|
+> | `scopes`   | Bevat bereiken die worden aangevraagd om te worden geretourneerd in het toegangstoken voor de API. Bijvoorbeeld, `[ "mail.read" ]` voor Microsoft Graph of `[ "<Application ID URL>/scope" ]` voor aangepaste web-API’s (`api://<Application ID>/access_as_user`).|
 
 #### <a name="get-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen
 
@@ -247,16 +253,18 @@ Het gebruikelijke aanbevolen patroon voor de meeste toepassingen is om `acquireT
 Het aanroepen van de `acquireTokenPopup` resultaten in een pop-upvenster voor het aanmelden. (Of `acquireTokenRedirect` resulteert in het omleiden van gebruikers naar het micro soft Identity platform-eind punt.) In dat venster moeten gebruikers communiceren door hun referenties te bevestigen, toestemming te geven voor de vereiste resource of de twee ledige verificatie uit te voeren.
 
 ```javascript
-var requestObj = {
-    scopes: ["user.read"]
+// Add here scopes for access token to be used at MS Graph API endpoints.
+const tokenRequest = {
+    scopes: ["Mail.Read"]
 };
 
-myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
-    // Callback code here
-    console.log(tokenResponse.accessToken);
-}).catch(function (error) {
-    console.log(error);
-});
+myMSALObj.acquireTokenPopup(requestObj)
+    .then((tokenResponse) => {
+        // Callback code here
+        console.log(tokenResponse.accessToken);
+    }).catch((error) => {
+        console.log(error);
+    });
 ```
 
 > [!NOTE]
@@ -272,7 +280,7 @@ Zie voor een gedetailleerde stapsgewijze hand leiding voor het bouwen van de toe
 Als u wilt zoeken in de MSAL-opslag plaats op documentatie, veelgestelde vragen, problemen en meer, raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL. js GitHub opslag plaats](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 
 Help ons het micro soft Identity-platform te verbeteren. Vertel ons wat u denkt door een korte enquête met twee vragen te volt ooien.
 

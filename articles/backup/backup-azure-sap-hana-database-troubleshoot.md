@@ -3,12 +3,12 @@ title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664595"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916860"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -16,9 +16,16 @@ Dit artikel bevat informatie over het oplossen van problemen met het maken van b
 
 ## <a name="prerequisites-and-permissions"></a>Vereisten en machtigingen
 
-Raadpleeg de secties [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [instellen van machtigingen](tutorial-backup-sap-hana-db.md#setting-up-permissions) voor het configureren van back-ups.
+Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat het pre-registratie script doet](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) voordat u back-ups gaat configureren.
 
 ## <a name="common-user-errors"></a>Veelvoorkomende gebruikers fouten
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **Fout bericht**      | <span style="font-weight:normal">Er zijn voor Azure Backup geen vereiste roltoewijzingen voor het uitvoeren van een back-up</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **Mogelijke oorzaken**    | De rol is mogelijk overschreven.                          |
+| **Aanbevolen actie** | U kunt het probleem oplossen door het script uit te voeren in het deel venster **Discover DB** of [hier](https://aka.ms/scriptforpermsonhana)te downloaden. U kunt ook de rol ' SAP_INTERNAL_HANA_SUPPORT ' toevoegen aan de back-upgebruiker van de werk belasting (AZUREWLBACKUPHANAUSER). |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 

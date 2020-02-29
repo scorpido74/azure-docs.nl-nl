@@ -9,18 +9,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613434"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917302"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
 Azure Active Directory Domain Services (AD DS) ondersteunt eenmalige overstap voor klanten die momenteel gebruikmaken van het klassieke virtuele netwerk model naar het Resource Manager-model van het virtuele netwerk. Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model bieden extra functies, zoals een verfijnd wachtwoord beleid, audit logboeken en beveiliging tegen account vergrendeling.
 
 In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren.
+
+> [!NOTE]
+> In 2017 is Azure AD Domain Services beschikbaar voor de host in een Azure Resource Manager netwerk. Sindsdien hebben we een veiligere service met de moderne mogelijkheden van Azure Resource Manager kunnen bouwen. Omdat Azure Resource Manager implementaties volledig worden vervangen door klassieke implementaties, worden Azure AD DS-implementaties met een klassiek virtueel netwerk ingetrokken op 1 maart 2023.
+>
+> Zie voor meer informatie de [officiële afschaffing melding](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="overview-of-the-migration-process"></a>Overzicht van het migratieproces
 

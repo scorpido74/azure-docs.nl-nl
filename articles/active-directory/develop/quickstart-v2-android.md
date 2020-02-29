@@ -11,23 +11,22 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c4af08a204cbf88c56b699bcbcdd3a7700e0f5e0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084527"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160958"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Snelstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
 
-In deze Snelstartgids wordt gebruikgemaakt van een code voorbeeld om te laten zien hoe een Android-toepassing persoonlijke, werk-of school accounts kan aanmelden met het micro soft-identiteits platform, en vervolgens een toegangs token op te halen en de Microsoft Graph-API aan te roepen.
+In deze Snelstartgids wordt gebruikgemaakt van een code voorbeeld om te laten zien hoe een Android-toepassing persoonlijke, werk-of school accounts kan aanmelden met het micro soft-identiteits platform, en vervolgens een toegangs token op te halen en de Microsoft Graph-API aan te roepen. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
-Toepassingen moeten worden vertegenwoordigd door een app-object in Azure Active Directory, zodat het micro soft Identity-platform tokens kan delen met uw toepassing.
+Toepassingen moeten worden vertegenwoordigd door een app-object in Azure Active Directory, zodat het micro soft Identity-platform tokens kan leveren aan uw toepassing.
 
 > [!div renderon="docs"]
 > Het code voorbeeld wordt geleverd met een standaard `redirect_uri` vooraf geconfigureerd in het `AndroidManifest.xml` bestand, zodat u niet eerst uw eigen App-object hoeft te registreren. Een `redirect_uri` is gedeeltelijk gebaseerd op de handtekening sleutel van uw app. Het voorbeeld project is vooraf geconfigureerd met een handtekening sleutel, zodat de beschik bare `redirect_uri` zal werken. Zie voor meer informatie over het registreren van een app-object en het integreren ervan met uw toepassing, de [gebruikers voor aanmelden en bel de Microsoft Graph van een Android-app](tutorial-v2-android.md) zelf studie.
 
-![Scherm afbeelding van de voor beeld-app](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Vereisten**
@@ -44,73 +43,14 @@ Toepassingen moeten worden vertegenwoordigd door een app-object in Azure Active 
 > > ![Al geconfigureerd](media/quickstart-v2-android/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken
 >
 > ### <a name="step-2-download-the-project"></a>Stap 2: Het project downloaden 
-> * [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> Voer het project uit met behulp van Android Studio.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Het code voorbeeld downloaden]()
 >
-> ### <a name="step-3-configure-your-project"></a>Stap 3: Uw project configureren
-> 1. Pak het project uit en open het in Android Studio.
-> 2. Open in **app** > **src** - > **hoofd** > **Res** > **RAW**- **auth_config_multiple_account. json** en vervang deze door de volgende code:
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "MULTIPLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Open in **app** > **src** - > **hoofd** > **Res** > **RAW**- **auth_config_single_account. json** en vervang deze door de volgende code:
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "SINGLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
-> [!div class="sxs-lookup" renderon="portal"]
-> 4. Open **AndroidManifest. XML**in **app** > **src** > **Main**.
-> 5. Vervang in het knoop punt **manifest\application** het knoop punt **Activity Android: name = "com. micro soft. Identity. client. BrowserTabActivity"** door het volgende:    
-> ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->         <action android:name="android.intent.action.VIEW" />
->         <category android:name="android.intent.category.DEFAULT" />
->         <category android:name="android.intent.category.BROWSABLE" />
->         <!--
->             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data 
->             android:host="Enter_the_Package_Name"
->             android:path="/Enter_the_Signature_Hash"
->             android:scheme= "msauth" />
->     </intent-filter>
-> </activity>
-> ```
-> 6. Voer de app uit.   
+> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: uw app is geconfigureerd en klaar om te worden uitgevoerd
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app en is klaar om te worden uitgevoerd. 
 > De voor beeld-app wordt gestart op het scherm met **één account modus** . Een standaard bereik, **User. Read**, wordt standaard gegeven, dat wordt gebruikt bij het lezen van uw eigen profiel gegevens tijdens de aanroep van de Microsoft Graph-API. De URL voor de API-aanroep van Microsoft Graph is standaard opgenomen. U kunt deze desgewenst wijzigen.
 >
 > ![MSAL-voor beeld-app met één account of meerdere accounts](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -126,7 +66,7 @@ Toepassingen moeten worden vertegenwoordigd door een app-object in Azure Active 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>Stap 1: de voor beeld-app ophalen
@@ -151,6 +91,8 @@ Toepassingen moeten worden vertegenwoordigd door een app-object in Azure Active 
 > In de modus voor meerdere accounts kunt u dezelfde stappen herhalen.  Daarnaast kunt u het aangemelde account verwijderen, waardoor ook de tokens in de cache voor dat account worden verwijderd.
 
 ## <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Scherm afbeelding van de voor beeld-app](media/quickstart-v2-android/android-intro.svg)
+
 
 De code is ingedeeld in fragmenten die laten zien hoe u een MSAL-app met één en meerdere accounts schrijft. De code bestanden zijn als volgt ingedeeld:
 
@@ -171,7 +113,7 @@ Deze bestanden worden nu uitvoeriger weer gegeven en u kunt de MSAL code in elk 
 MSAL ([com. micro soft. Identity. client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door micro soft Identity platform. Gradle 3.0 + installeert de bibliotheek wanneer u het volgende toevoegt aan **Gradle-Scripts** > **Build. Gradle (module: app)** onder **afhankelijkheden**:
 
 ```gradle  
-implementation 'com.microsoft.identity.client:msal:1.0.0'
+implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
 U kunt dit zien in het voorbeeld project in build. gradle (module: app):
@@ -179,7 +121,7 @@ U kunt dit zien in het voorbeeld project in build. gradle (module: app):
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:1.+'
     ...
 }
 ```

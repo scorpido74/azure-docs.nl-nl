@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 02bfdbc840065558003b249e1e3ea52f46ec64d6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596264"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917030"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten in azure Kubernetes service (AKS) draaien
 
@@ -84,6 +84,9 @@ Controleer of de certificaten zijn bijgewerkt door een `kubectl` opdracht uit te
 kubectl get no
 ```
 
+> [!NOTE]
+> Als u Services hebt die boven op AKS worden uitgevoerd, zoals [Azure dev Spaces][dev-spaces], moet u mogelijk ook [certificaten bijwerken die betrekking hebben op deze services][dev-spaces-rotate] .
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel wordt uitgelegd hoe u de certificaten, Ca's en Sa's van uw cluster automatisch kunt draaien. U kunt [Best practices voor cluster beveiliging en upgrades in azure Kubernetes service (AKS)][aks-best-practices-security-upgrades] bekijken voor meer informatie over de aanbevolen procedures voor beveiliging van AKS.
@@ -94,3 +97,5 @@ In dit artikel wordt uitgelegd hoe u de certificaten, Ca's en Sa's van uw cluste
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
+[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

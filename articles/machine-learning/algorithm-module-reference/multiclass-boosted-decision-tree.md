@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0bcca16bd89781428773eda168e6ee3c2f5784ef
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 7d51e3007b7773e28d846f8d30178426f5668cfb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152173"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920056"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Versterkte beslissingsstructuur met meerdere klassen
 
@@ -35,25 +35,26 @@ U kunt dit type model trainen door het Train- [model](././train-model.md)te gebr
 1.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
     + **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
-
-
-    *  Het **maximum aantal Leaves per structuur** beperkt het maximum aantal Terminal knooppunten (bladeren) dat in een wille keurige structuur kan worden gemaakt.
     
-        Door deze waarde te verg Roten, kunt u de grootte van de structuur verg Roten, waardoor het risico op overschrijding en langere leer tijd een grotere nauw keurigheid kan opleveren.
+    + **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
+
+1. Het **maximum aantal Leaves per structuur** beperkt het maximum aantal Terminal knooppunten (bladeren) dat in een wille keurige structuur kan worden gemaakt.
+    
+        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
   
-    * **Minimum aantal steek proeven per blad knooppunt** geeft het aantal cases aan dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.  
+1. **Minimum aantal steek proeven per blad knooppunt** geeft het aantal cases aan dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.  
 
-         Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
+         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
 
-    * Met het **leer tempo** wordt de stap grootte gedefinieerd tijdens het leren. Voer een getal tussen 0 en 1 in.
+1. Met het **leer tempo** wordt de stap grootte gedefinieerd tijdens het leren. Voer een getal tussen 0 en 1 in.
 
-         Het leer tempo bepaalt hoe snel of traag de kenniser convergeert met een optimale oplossing. Als de grootte van de stap te groot is, is het mogelijk dat u de optimale oplossing kunt overschrijden. Als de grootte van de stap te klein is, neemt de training meer tijd in beslag op de beste oplossing.
+         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
 
-    * **Aantal geconstrueerde structuren** geeft het totale aantal beslissings structuren aan dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
+1. **Aantal geconstrueerde structuren** geeft het totale aantal beslissings structuren aan dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
 
-    *  **Wille keurig getal Seed** stelt optioneel een niet-negatief geheel getal in dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.  
+1. **Wille keurig getal Seed** stelt optioneel een niet-negatief geheel getal in dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.  
 
-         De wille keurige Seed wordt standaard ingesteld op 42. Opeenvolgende uitvoeringen met verschillende aselecte zaden kunnen verschillende resultaten hebben.
+         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
 
 > [!Note]
 > Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](./train-model.md) .

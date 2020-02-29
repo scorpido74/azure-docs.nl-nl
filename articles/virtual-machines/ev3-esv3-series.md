@@ -2,19 +2,19 @@
 title: Ev3-Series en Esv3-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de Ev3-en Esv3-serie.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 41b3997a9271a113a8d89f47d3a79d93bc13f92c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493746"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164369"
 ---
-# <a name="ev3-and-esv3-series"></a>Ev3 en Esv3-serie
+# <a name="ev3-and-esv3-series"></a>Ev3- en Esv3-serie
 
 De Ev3-en Esv3-serie functie van Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz-processor (Broadwell) in een Hyper-Threaded configuratie, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik en de Ev3 in uitlijning met de virtuele machines voor algemeen gebruik van de meeste andere Clouds.  Het geheugen is uitgevouwen (van 7 GiB/vCPU tot 8 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading. De Ev3 is de follow-up van de VM-grootten van het hoge geheugen van de D/dv2-families.
 
@@ -31,6 +31,10 @@ ACU: 160 - 190
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal NIC's/netwerkbandbreedte |
 |---|---|---|---|---|---|---|
@@ -59,6 +63,10 @@ ACU: 160-190
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|

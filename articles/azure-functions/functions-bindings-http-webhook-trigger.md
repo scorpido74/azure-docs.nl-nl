@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: a2adf59a542f695b7845e1a871c0b297b0790fec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672154"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162959"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -749,7 +749,7 @@ De geverifieerde gebruiker is beschikbaar via [http-headers](../app-service/app-
 
 ## <a name="authorization-keys"></a>Autorisatie sleutels
 
-Met functies kunt u sleutels gebruiken om het moeilijker te maken om toegang te krijgen tot de eind punten van uw HTTP-functies tijdens het ontwikkelen.  Een HTTP-standaard trigger kan vereisen dat een dergelijke API-sleutel in de aanvraag wordt weer gegeven. 
+Met functies kunt u sleutels gebruiken om het moeilijker te maken om toegang te krijgen tot de eind punten van uw HTTP-functies tijdens het ontwikkelen.  Tenzij het HTTP-autorisatie niveau van een door HTTP geactiveerde functie is ingesteld op `anonymous`, moeten aanvragen een API-sleutel in de aanvraag bevatten. 
 
 > [!IMPORTANT]
 > Hoewel sleutels uw HTTP-eind punten kunnen afleiden tijdens de ontwikkeling, zijn ze niet bedoeld als een manier om een HTTP-trigger in de productie te beveiligen. Zie [een HTTP-eind punt in productie beveiligen](#secure-an-http-endpoint-in-production)voor meer informatie.
@@ -757,14 +757,19 @@ Met functies kunt u sleutels gebruiken om het moeilijker te maken om toegang te 
 > [!NOTE]
 > In de functies 1. x runtime kunnen webhook-providers gebruikmaken van sleutels om aanvragen op verschillende manieren te autoriseren, afhankelijk van wat de provider ondersteunt. Dit wordt behandeld in [webhooks en sleutels](#webhooks-and-keys). De functions-runtime in versie 2. x en hoger bevat geen ingebouwde ondersteuning voor webhook-providers.
 
-Er zijn twee soorten sleutels:
+#### <a name="authorization-scopes-function-level"></a>Autorisatie bereiken (functie niveau)
 
-* **Host-sleutels**: deze sleutels worden gedeeld door alle functies in de functie-app. Wanneer deze als een API-sleutel wordt gebruikt, is toegang tot alle functies in de functie-app toegestaan.
-* **Functie toetsen**: deze sleutels zijn alleen van toepassing op de specifieke functies waaronder ze zijn gedefinieerd. Wanneer u als een API-sleutel wordt gebruikt, is deze alleen toegankelijk voor deze functie.
+Er zijn twee autorisatie bereiken voor sleutels op functie niveau:
+
+* **Functie**: deze sleutels zijn alleen van toepassing op de specifieke functies waaronder ze zijn gedefinieerd. Wanneer u als een API-sleutel wordt gebruikt, is deze alleen toegankelijk voor deze functie.
+
+* **Host**: sleutels met een bereik van een host kunnen worden gebruikt voor toegang tot alle functies in de functie-app. Wanneer deze als een API-sleutel wordt gebruikt, is toegang tot alle functies in de functie-app toegestaan. 
 
 Elke sleutel krijgt de naam van de verwijzing en er is een standaard sleutel (met de naam ' default ') op het niveau van de functie en de host. Functie sleutels hebben voor rang op de sleutels van de host. Wanneer twee sleutels met dezelfde naam zijn gedefinieerd, wordt de functie toets altijd gebruikt.
 
-Elke functie-app heeft ook een speciale **hoofd sleutel**. Deze sleutel is een host-sleutel met de naam `_master`, die beheerders toegang biedt tot de runtime-Api's. Deze sleutel kan niet worden ingetrokken. Wanneer u een autorisatie niveau van `admin`instelt, moeten aanvragen gebruikmaken van de hoofd sleutel. een andere sleutel resulteert in een autorisatie fout.
+#### <a name="master-key-admin-level"></a>Hoofd sleutel (beheer niveau) 
+
+Elke functie-app heeft ook een host-sleutel op beheer niveau met de naam `_master`. Naast het verschaffen van toegang op hostniveau voor alle functies in de app, biedt de hoofd sleutel ook beheerders toegang tot de runtime REST Api's. Deze sleutel kan niet worden ingetrokken. Wanneer u een autorisatie niveau van `admin`instelt, moeten aanvragen gebruikmaken van de hoofd sleutel. een andere sleutel resulteert in een autorisatie fout.
 
 > [!CAUTION]  
 > Als gevolg van de verhoogde machtigingen in uw functie-app die is verleend door de hoofd sleutel, moet u deze sleutel niet delen met derden of deze distribueren in native client toepassingen. Wees voorzichtig bij het kiezen van het autorisatie niveau beheerder.

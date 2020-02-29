@@ -2,19 +2,19 @@
 title: Eav4-Series en Easv4-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de Eav4-en Easv4-serie.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 96cd7b4f4627e7c0335df9c745d8193a3dac7044
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493772"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164386"
 ---
-# <a name="eav4-and-easv4-series"></a>Eav4 en Easv4-serie
+# <a name="eav4-and-easv4-series"></a>Eav4- en Easv4-serie
 
 De Eav4-serie en de Easv4-serie maken gebruik van AMD 2.35 GHz EPYC<sup>TM</sup> 7452-processor in een configuratie met meerdere threads met Maxi maal 256 MB L3-cache, waarmee u de meeste opties voor het uitvoeren van de meeste voor geheugen geoptimaliseerde werk belastingen kunt verhogen. De Eav4-serie en de Easv4-serie hebben dezelfde geheugen-en schijf configuraties als de Ev3 & Esv3-serie.
 
@@ -25,6 +25,10 @@ ACU: 230-260
 Premium Storage: niet ondersteund
 
 Premium Storage caching: niet ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 De grootte van de Eav4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootten van de Eav4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium SSD wilt gebruiken, gebruikt u de grootte van de Easv4-serie. De prijs-en facturerings meters voor Easv4-grootten zijn gelijk aan die van de Eav3-serie.
 
@@ -49,6 +53,10 @@ ACU: 230-260
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
 
 De grootte van de Easv4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootten van de Easv4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
 

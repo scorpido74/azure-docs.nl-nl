@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 71c30e0a86f67a2e2826859032144aa491c0cee1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597028"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919512"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Verzamelen van gegevens in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voorbeelden van dergelijke gegevens zijn: besturingssysteem systeemtype en versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent kopieert ook crash dump bestanden naar uw werk ruimte.
 
-Gegevens verzameling is vereist om inzicht te krijgen in ontbrekende updates, onjuiste geconfigureerde beveiligings instellingen voor het besturings systeem, status van Endpoint Protection en detectie van status en bedreigingen. 
+Het verzamelen van gegevens is vereist om inzicht te krijgen in ontbrekende updates, onjuiste geconfigureerde beveiligings instellingen voor het besturings systeem, status van Endpoint Protection en status-en bedreigings beveiliging. 
 
 In dit artikel wordt beschreven hoe u een Log Analytics Agent installeert en hoe u een Log Analytics werk ruimte instelt waarin de verzamelde gegevens worden opgeslagen. Beide bewerkingen zijn vereist om gegevens te verzamelen. 
 
@@ -139,7 +139,7 @@ Wanneer u een werkruimte waarin u uw gegevens kunt opslaan selecteert, worden al
 
 
 ## <a name="data-collection-tier"></a>Verzameling gegevenslaag
-Het selecteren van een laag voor gegevensverzameling in Azure Security Center heeft alleen invloed op de opslag van beveiligingsgebeurtenissen in de Log Analytics-werkruimte. De Log Analytics-agent verzamelt en analyseert nog steeds de beveiligings gebeurtenissen die vereist zijn voor de bedreigings detecties van de Azure Security Center, ongeacht welke laag beveiligings gebeurtenissen u in uw Log Analytics-werk ruimte wilt opslaan (indien van toepassing). Als u ervoor kiest om beveiligingsgebeurtenissen op te slaan in uw werkruimte, kunt u gebeurtenissen vanuit die werkruimte onderzoeken, zoeken en controleren. 
+Het selecteren van een laag voor gegevensverzameling in Azure Security Center heeft alleen invloed op de opslag van beveiligingsgebeurtenissen in de Log Analytics-werkruimte. De Log Analytics-agent verzamelt en analyseert nog steeds de beveiligings gebeurtenissen die vereist zijn voor de bedreigings beveiliging van Azure Security Center, ongeacht welke beveiligings gebeurtenissen u in uw Log Analytics-werk ruimte wilt opslaan (indien van toepassing). Als u ervoor kiest om beveiligingsgebeurtenissen op te slaan in uw werkruimte, kunt u gebeurtenissen vanuit die werkruimte onderzoeken, zoeken en controleren. 
 > [!NOTE]
 > Bij het opslaan van gegevens in log Analytics worden mogelijk extra kosten in rekening gebracht voor gegevens opslag. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 > 

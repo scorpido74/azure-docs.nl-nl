@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a745f83dcceef25634032cbe6fdb971f4f533ce
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0b03846a274abee5def57008fe3db4130b4350d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847418"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916299"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -88,7 +88,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 U moet het certificaat dat u hebt gemaakt in uw Azure AD B2C-Tenant opslaan.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
@@ -97,17 +97,17 @@ U moet het certificaat dat u hebt gemaakt in uw Azure AD B2C-Tenant opslaan.
 7. Voer een **naam** in voor het beleid. Bijvoorbeeld SAMLSigningCert. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Blader naar en selecteer het B2CSigningCert. pfx-certificaat dat u hebt gemaakt.
 9. Voer het **wacht woord** voor het certificaat in.
-3. Klik op **Maken**.
+3. Klik op **Create**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
 Als u wilt dat gebruikers zich aanmelden met een Sales Force-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunnen communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
 
-U kunt een Sales Force-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid.
+U kunt een Sales Force-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid. Zie [een technische SAML-profiel definiëren](saml-technical-profile.md)voor meer informatie.
 
 1. Open *TrustFrameworkExtensions. XML*.
-2. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
-3. Voeg als volgt een nieuwe **ClaimsProvider** toe:
+1. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
+1. Voeg als volgt een nieuwe **ClaimsProvider** toe:
 
     ```XML
     <ClaimsProvider>
@@ -142,14 +142,32 @@ U kunt een Sales Force-account definiëren als een claim provider door deze toe 
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
             <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. Werk de waarde van **PartnerEntity** bij met de URL voor Sales Force-meta gegevens die u eerder hebt gekopieerd.
-5. Werk de waarde van beide exemplaren van **StorageReferenceId** bij naar de naam van de sleutel van uw handtekening certificaat. Bijvoorbeeld B2C_1A_SAMLSigningCert.
+1. Werk de waarde van **PartnerEntity** bij met de URL voor Sales Force-meta gegevens die u eerder hebt gekopieerd.
+1. Werk de waarde van beide exemplaren van **StorageReferenceId** bij naar de naam van de sleutel van uw handtekening certificaat. Bijvoorbeeld B2C_1A_SAMLSigningCert.
+1. Ga naar de sectie `<ClaimsProviders>` en voeg het volgende XML-fragment toe. Als uw beleid al het technische profiel `SM-Saml-idp` bevat, gaat u verder met de volgende stap. Zie [sessie beheer voor eenmalige aanmelding](custom-policy-reference-sso.md)voor meer informatie.
+
+    ```XML
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SM-Saml-idp">
+          <DisplayName>Session Management Provider</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IncludeSessionIndex">false</Item>
+            <Item Key="RegisterServiceProviders">false</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+1. Sla het bestand op.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
 

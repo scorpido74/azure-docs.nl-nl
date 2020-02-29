@@ -14,14 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 12a77c4c21a26f1ec52bb3ffdc312df56d3c4537
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168342"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915177"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Power shell
+
+> [!IMPORTANT]
+> Nu gebruiken we op ongeveer 90% IaaS Vm's [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Vanaf 28 februari 2020 zijn klassieke Vm's afgeschaft en worden ze volledig buiten gebruik gesteld op 1 maart 2023. Meer [informatie]( https://aka.ms/classicvmretirement) over deze afschaffing en [hoe dit van invloed is op u](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+
 In deze stappen ziet u hoe u Azure PowerShell-opdrachten kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model.
 
 Als u wilt, kunt u ook resources migreren met behulp van de [Azure cli](../linux/migration-classic-resource-manager-cli.md).

@@ -1,14 +1,14 @@
 ---
 title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057342"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919869"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -33,6 +33,56 @@ Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben 
 Het is doorgaans mogelijk dat iemand met het juiste op [rollen gebaseerde toegangs beheer](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol ' eigenaar ', toestemming mag geven om een resource te wijzigen of te verwijderen. Deze toegang is niet het geval wanneer blauw drukken wordt toegepast als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **alleen-lezen** of **niet verwijderen** , niet zelfs de eigenaar van het abonnement kan de geblokkeerde actie uitvoeren op de beveiligde bron.
 
 Deze beveiligings maatregel beveiligt de consistentie van de gedefinieerde blauw druk en de omgeving die is ontworpen om te worden gemaakt op basis van per ongeluk of programmatische verwijdering of wijziging.
+
+### <a name="assign-at-management-group"></a>Toewijzen aan beheer groep
+
+Een extra optie om te voor komen dat abonnements eigenaren een blauw druk-toewijzing verwijderen, is het toewijzen van de blauw druk aan een beheer groep. In dit scenario hebben alleen **eigen aars** van de beheer groep de benodigde machtigingen voor het verwijderen van de blauw druk-toewijzing.
+
+Als u de blauw druk wilt toewijzen aan een beheer groep in plaats van een abonnement, verandert de REST API aanroepen als volgt:
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+De beheer groep die door `{assignmentMG}` is gedefinieerd, moet zich binnen de beheer groeps hiërarchie bevindt of dezelfde beheer groep zijn als de definitie van de blauw druk is opgeslagen.
+
+De aanvraag tekst van de blauw druk-toewijzing ziet er als volgt uit:
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+Het belangrijkste verschil in deze aanvraag tekst en een wordt toegewezen aan een abonnement is de eigenschap `properties.scope`. Deze vereiste eigenschap moet worden ingesteld op het abonnement waarop de blauw druk-toewijzing van toepassing is. Het abonnement moet een direct onderliggend element zijn van de beheer groeps hiërarchie waarin de blauw druk-toewijzing wordt opgeslagen.
 
 ## <a name="removing-locking-states"></a>Vergrendelings status verwijderen
 
@@ -61,7 +111,7 @@ De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-a
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Een principal uitsluiten van een weiger toewijzing
 
-In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principal uit te sluiten van de [toewijzing weigeren](../../../role-based-access-control/deny-assignments.md) die door de toewijzing van blauw drukken wordt gemaakt. Dit wordt gedaan in REST API door Maxi maal vijf waarden toe te voegen aan de **excludedPrincipals** -matrix in de eigenschap **Locks** bij [het maken van de toewijzing](/rest/api/blueprints/assignments/createorupdate). Dit is een voor beeld van een aanvraag tekst die **excludedPrincipals**bevat:
+In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principal uit te sluiten van de [toewijzing weigeren](../../../role-based-access-control/deny-assignments.md) die door de toewijzing van blauw drukken wordt gemaakt. Deze stap wordt uitgevoerd in REST API door Maxi maal vijf waarden toe te voegen aan de **excludedPrincipals** -matrix **bij het** [maken van de toewijzing](/rest/api/blueprints/assignments/createorupdate). De volgende toewijzings definitie is een voor beeld van een aanvraag tekst die **excludedPrincipals**bevat:
 
 ```json
 {

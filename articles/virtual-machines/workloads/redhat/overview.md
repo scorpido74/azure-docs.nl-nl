@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133809"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920549"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-workloads op Azure
 Red Hat-workloads worden ondersteund door diverse aanbiedingen op Azure. Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn de kern van RHEL-workloads, zoals de Red Hat Update infrastructure (RHUI).
@@ -39,7 +39,7 @@ Azure biedt ook Red Hat Gold-installatie kopieën. Deze installatie kopieën kun
 > Opmerking over dubbele facturering: dubbele facturering wordt gedaan wanneer een gebruiker twee keer betaalt voor RHEL-abonnementen. Dit gebeurt meestal wanneer een klant abonnements beheer gebruikt om een recht op een RHEL PAYG VM te koppelen. Bijvoorbeeld: een klant die gebruikmaakt van abonnement-manager om een recht te koppelen voor SAP-pakketten op een RHEL PAYG-installatie kopie, wordt indirect gefactureerd, omdat ze twee keer betalen voor RHEL-eenmaal door de kosten voor de PAYG Premium en eenmaal via hun SAP-abonnement. Dit geldt niet voor BYOS van installatie kopie gebruikers.
 
 ### <a name="generation-2-images"></a>Installatie kopieën van de 2e generatie
-Virtuele machines van de tweede generatie bieden een aantal nieuwere functies in vergelijking met virtuele machines van de eerste generatie. Meer informatie vindt u in de [documentatie van de tweede generatie](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Het belangrijkste verschil van een RHEL-installatie kopie is dat virtuele machines van de tweede generatie een UEFI gebruiken in plaats van BIOS-Firmware-Interface en een GUID-partitie tabel (GPT) gebruiken in plaats van een Master Boot Record (MBR) op de opstart tijd. Dit maakt, onder andere, de besturingssysteem schijf grootten die groter zijn dan 2 TB. Daarnaast worden de Vm's uit de [Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) alleen uitgevoerd op installatie kopieën van de tweede generatie.
+Virtuele machines van de tweede generatie bieden een aantal nieuwere functies in vergelijking met virtuele machines van de eerste generatie. Meer informatie vindt u in de [documentatie van de tweede generatie](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Het belangrijkste verschil van een RHEL-installatie kopie is dat virtuele machines van de tweede generatie een UEFI gebruiken in plaats van BIOS-Firmware-Interface en een GUID-partitie tabel (GPT) gebruiken in plaats van een Master Boot Record (MBR) op de opstart tijd. Dit maakt, onder andere, de besturingssysteem schijf grootten die groter zijn dan 2 TB. Daarnaast worden de Vm's uit de [Mv2-serie](../../mv2-series.md) alleen uitgevoerd op installatie kopieën van de tweede generatie.
 
 RHEL Generation 2-installatie kopieën zijn beschikbaar op Marketplace. Zoek naar ' Gen2 ' in de afbeeldings-SKU bij het aanbieden van alle installatie kopieën met behulp van de Azure CLI en ga naar het tabblad Geavanceerd in het implementatie proces van de VM om een virtuele machine van de 2e generatie te implementeren.
 

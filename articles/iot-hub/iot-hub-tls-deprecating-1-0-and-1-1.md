@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 95733f579740f2928cda917eec0023bf00d53076
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722783"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912151"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Afschaffing van TLS 1,0 en 1,1 in IoT Hub en Device Provisioning Service
 
@@ -25,12 +25,12 @@ Op basis van de specifieke omstandigheden en configuraties van klanten zijn de a
 
 ## <a name="supported-ciphers"></a>Ondersteunde versleuteling
 
-Alleen de volgende code ringen zijn toegestaan tijdens TLS-handshake:
+De tijd lijn voor de beschik baarheid van verschillende code ringen die in TLS-Handshake worden gebruikt, is als volgt:
 
-* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (momenteel ondersteund)
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (wordt ondersteund in de tweede helft van 2020)
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (wordt ondersteund in de tweede helft van 2020)
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (wordt ondersteund in de tweede helft van 2020)
 
 
 ## <a name="customer-feedback"></a>Feedback van klanten

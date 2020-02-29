@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 51b7b37466ae8a6988ee4bfa85a054fb42d23124
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905571"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920753"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Release opmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -35,12 +35,12 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 | Update pakket van juni 2019- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 juni 2019 | Ondersteund |
 | Update pakket van mei 2019- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 mei 2019 | Ondersteund |
 | V6-release- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 april 2019 | Ondersteund |
-| Update pakket van april 2019- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 april 2019 | Ondersteund: de agent versie verloopt op 12 februari 2020 |
-| Update pakket van maart 2019- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 maart 2019 | Ondersteund: de agent versie verloopt op 12 februari 2020 |
-| V5-release- [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 februari 2019 | Ondersteund: de agent versie verloopt op 12 februari 2020 |
-| V4-release | 4.0.1.0 - 4.3.0.0 | N/A | Niet ondersteund: agent versies verlopen op 6 november 2019 |
-| V3-release | 3.1.0.0 - 3.4.0.0 | N/A | Niet ondersteund: agent versies verlopen op 19 augustus 2019 |
-| Pre-GA-agents | 1.1.0.0-3.0.13.0 | N/A | Niet ondersteund: agent versies verlopen op 1 oktober 2018 |
+| Update pakket van april 2019- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 april 2019 | Ondersteund: de versie van de agent verloopt op 18 maart 2020 |
+| Update pakket van maart 2019- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 maart 2019 | Ondersteund: de versie van de agent verloopt op 18 maart 2020 |
+| V5-release- [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 februari 2019 | Ondersteund: de versie van de agent verloopt op 18 maart 2020 |
+| V4-release | 4.0.1.0 - 4.3.0.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 6 november 2019 |
+| V3-release | 3.1.0.0 - 3.4.0.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 19 augustus 2019 |
+| Pre-GA-agents | 1.1.0.0-3.0.13.0 | N.v.t. | Niet ondersteund: agent versies verlopen op 1 oktober 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -426,7 +426,7 @@ De volgende release opmerkingen zijn voor versie 5.0.2.0 van de Azure File Sync-
 
 - Ondersteuning voor Azure Government Cloud
   - Er is preview-ondersteuning toegevoegd voor de Azure Government Cloud. Hiervoor is een wit abonnement en een speciale down load van de agent van micro soft vereist. Als u toegang wilt krijgen tot de preview, kunt u ons rechtstreeks bij [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)een e-mail sturen.
-- Ondersteuning voor Gegevensontdubbeling
+- Ondersteuning voor gegevensontdubbeling
     - Gegevensontdubbeling wordt nu volledig ondersteund met Cloud lagen die zijn ingeschakeld op Windows Server 2016 en Windows Server 2019. Als u ontdubbeling inschakelt op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten.
 - Ondersteuning voor offline gegevens overdracht (bijvoorbeeld via Data Box)
     - Migreer eenvoudig grote hoeveel heden gegevens naar Azure File Sync via een wille keurige manier. U kunt kiezen Azure Data Box, AzCopy en zelfs migratie services van derden. U hoeft geen enorme hoeveel heden band breedte te gebruiken om uw gegevens in azure op te halen, in het geval van Data Box: u kunt er gewoon e-mailen. Zie [Offline gegevensoverdracht docs](https://aka.ms/AFS/OfflineDataTransfer)(Engelstalig) voor meer informatie.

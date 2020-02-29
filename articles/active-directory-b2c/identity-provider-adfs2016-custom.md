@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 684e4a410ac8624066c897b4078ea4044a965357
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f331a537c80628a386525e29743807a70a163f0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848913"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914318"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Voeg ADFS toe als een SAML-ID-provider met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u aanmelden voor een AD FS-gebruikers accoun
 
 U moet uw certificaat opslaan in uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
@@ -42,17 +42,17 @@ U moet uw certificaat opslaan in uw Azure AD B2C-Tenant.
 6. Kies `Upload`voor **Opties**.
 7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `SamlCert`. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Blader naar en selecteer het pfx-bestand van het certificaat met de persoonlijke sleutel.
-9. Klik op **Maken**.
+9. Klik op **Create**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
 Als u wilt dat gebruikers zich aanmelden met een ADFS-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunnen communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
 
-U kunt een ADFS-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid.
+U kunt een ADFS-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid. Zie [een technische SAML-profiel definiëren](saml-technical-profile.md)voor meer informatie.
 
 1. Open *TrustFrameworkExtensions. XML*.
-2. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
-3. Voeg als volgt een nieuwe **ClaimsProvider** toe:
+1. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
+1. Voeg als volgt een nieuwe **ClaimsProvider** toe:
 
     ```xml
     <ClaimsProvider>
@@ -87,14 +87,33 @@ U kunt een ADFS-account definiëren als een claim provider door deze toe te voeg
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
             <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. Vervang `your-ADFS-domain` door de naam van het ADFS-domein en vervang de waarde van de **Identity provider** -uitvoer claim door uw DNS (wille keurige waarde die uw domein aangeeft).
-5. Sla het bestand op.
+1. Vervang `your-ADFS-domain` door de naam van het ADFS-domein en vervang de waarde van de **Identity provider** -uitvoer claim door uw DNS (wille keurige waarde die uw domein aangeeft).
+
+1. Ga naar de sectie `<ClaimsProviders>` en voeg het volgende XML-fragment toe. Als uw beleid al het technische profiel `SM-Saml-idp` bevat, gaat u verder met de volgende stap. Zie [sessie beheer voor eenmalige aanmelding](custom-policy-reference-sso.md)voor meer informatie.
+
+    ```XML
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SM-Saml-idp">
+          <DisplayName>Session Management Provider</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IncludeSessionIndex">false</Item>
+            <Item Key="RegisterServiceProviders">false</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+
+1. Sla het bestand op.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
 
@@ -167,7 +186,7 @@ Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt e
 4. Selecteer op de pagina **gegevens bron selecteren** de optie **gegevens importeren over de relying party online publiceren of op een lokaal netwerk**, geef uw Azure AD B2C meta gegevens-URL op en klik op **volgende**.
 5. Voer op de pagina **weergave naam opgeven** een **weergave naam**in, onder **notities**, voer een beschrijving in voor deze Relying Party-vertrouwens relatie en klik vervolgens op **volgende**.
 6. Selecteer op de pagina **Access Control beleid kiezen** een beleid en klik vervolgens op **volgende**.
-7. Controleer de instellingen op de pagina **gereed om een vertrouwens relatie toe te voegen** en klik vervolgens op **volgende** om uw Relying Party vertrouwens gegevens op te slaan.
+7. Controleer de instellingen op de pagina **Ready to Add Trust** (Klaar om vertrouwensrelatie toe te voegen) en klik op **Next** (Volgende) om de informatie van de vertrouwensrelatie voor de relying party op te slaan.
 8. Klik op de pagina **volt ooien** op **sluiten**. met deze actie wordt automatisch het dialoog venster **claim regels bewerken** weer gegeven.
 9. Selecteer **regel toevoegen**.
 10. Selecteer in **claim regel sjabloon** **LDAP-kenmerken als claims verzenden**.
@@ -178,8 +197,8 @@ Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt e
     | User-Principal-Name | userPrincipalName |
     | Achternaam | family_name |
     | Opgegeven naam | given_name |
-    | E-mail adres | e-mail |
-    | Weergave naam | name |
+    | E-mailadres | e-mail |
+    | Weergave naam | naam |
 
     Houd er rekening mee dat deze namen niet worden weer gegeven in de vervolg keuzelijst uitgaand claim type. U moet deze hand matig invoeren in. (De vervolg keuzelijst kan feitelijk worden bewerkt).
 

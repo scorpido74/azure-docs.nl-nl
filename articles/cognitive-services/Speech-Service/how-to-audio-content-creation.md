@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561031"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913647"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>De synthese verbeteren met het maken van audio-inhoud
 
@@ -43,7 +43,7 @@ Dit diagram toont de stappen die nodig zijn voor het afstemmen en exporteren van
 
 Volg deze stappen om een spraak bron te maken en deze te verbinden met Speech Studio.
 
-1. Volg deze instructies om u aan te [melden voor een Azure-account](get-started.md#try-the-speech-service-using-a-new-azure-account) en [een spraak bron te maken](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Zorg ervoor dat de prijs categorie is ingesteld op **s0**. Als u een van de Neural stemmen gebruikt, moet u ervoor zorgen dat u uw resource in een [ondersteunde regio](regions.md#standard-and-neural-voices)maakt.
+1. Volg deze instructies om u aan te [melden voor een Azure-account](get-started.md#new-resource) en [een spraak bron te maken](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Zorg ervoor dat de prijs categorie is ingesteld op **s0**. Als u een van de Neural stemmen gebruikt, moet u ervoor zorgen dat u uw resource in een [ondersteunde regio](regions.md#standard-and-neural-voices)maakt.
 2. Meld u aan voor het [maken van audio-inhoud](https://aka.ms/audiocontentcreation).
 3. Selecteer een bestaand project of klik op **Nieuw maken**.
 4. U kunt uw abonnement op elk gewenst moment wijzigen met de optie **instellingen** , die zich in de bovenste navigatie bevindt.

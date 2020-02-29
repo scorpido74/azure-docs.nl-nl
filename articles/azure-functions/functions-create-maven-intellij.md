@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230734"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913239"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Uw eerste Azure-functie maken met Java en IntelliJ
 
@@ -80,8 +80,6 @@ Maven maakt de project bestanden in een nieuwe map met dezelfde naam als de _Art
 1. Selecteer **(+)** om een **extern**onderdeel toe te voegen.
 1. Vul de velden _naam_ en _instellingen_ in en selecteer **OK** om de configuratie op te slaan.
 1. Selecteer na de installatie **fout opsporing < naam van de externe configuratie >** of druk op SHIFT + F9 op het toetsen bord om de fout opsporing te starten.
-
-   ![Functies voor fout opsporing in IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
 1. Wanneer u klaar bent, stopt u de fout opsporing en het actieve proces. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
 

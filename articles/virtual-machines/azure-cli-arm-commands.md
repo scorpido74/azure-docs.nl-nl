@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122450"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919767"
 ---
 # <a name="azure-classic-cli-commands"></a>Klassieke Azure CLI-opdrachten 
 
-> [!IMPORTANT]
-> In dit onderwerp wordt beschreven hoe u de klassieke Azure CLI installeert. De klassiek CLI wordt buiten gebruik gesteld en kan alleen worden gebruikt met het klassieke implementatiemodel.
-> Voor alle andere implementaties gebruikt u de [Azure cli](https://docs.microsoft.com/cli/azure/).
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+In dit onderwerp wordt beschreven hoe u de klassieke Azure CLI installeert. De klassiek CLI wordt buiten gebruik gesteld en kan alleen worden gebruikt met het klassieke implementatiemodel. Voor alle andere implementaties gebruikt u de [Azure cli](https://docs.microsoft.com/cli/azure/).
 
 Dit artikel bevat de syntaxis en opties voor de klassieke opdracht regel interface (CLI)-opdrachten van Azure die u vaak gebruikt om Azure-resources te maken en te beheren. Dit is geen volledige verwijzing en uw CLI-versie kan enigszins verschillende opdrachten of para meters bevatten. 
 

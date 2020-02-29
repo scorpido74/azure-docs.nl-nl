@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260080"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915704"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheids injectie gebruiken in .NET Azure Functions
 
@@ -25,7 +25,7 @@ Azure Functions ondersteunt het ' Dependency Injection (DI)-ontwerp patroon voor
 
 Voordat u afhankelijkheids injectie kunt gebruiken, moet u de volgende NuGet-pakketten installeren:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Micro soft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Micro soft. net. SDK. functions pakket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) versie 1.0.28 of hoger
 
@@ -130,7 +130,7 @@ Als u uw eigen registratie provider nodig hebt, moet u een aangepast type regist
 
 > [!WARNING]
 > - Voeg geen `AddApplicationInsightsTelemetry()` toe aan de verzameling Services omdat hiermee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
-> - Registreer uw eigen `TelemetryConfiguration` of `TelemetryClient` niet als u de ingebouwde Application Insights functionaliteit gebruikt.
+> - Registreer uw eigen `TelemetryConfiguration` of `TelemetryClient` niet als u de ingebouwde Application Insights functionaliteit gebruikt. Als u uw eigen `TelemetryClient`-exemplaar moet configureren, maakt u er een via de geïnjecteerde `TelemetryConfiguration`, zoals wordt weer gegeven in de [Azure functions monitor](./functions-monitoring.md#version-2x-and-later-2).
 
 ## <a name="function-app-provided-services"></a>Services die door de functie-app worden meegeleverd
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ee32b13820cb50fc1649672b78b34e7e293d65b5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849082"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912542"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
 
@@ -35,65 +35,124 @@ Azure AD B2C heeft een aantal SSO-sessie providers gedefinieerd die kunnen worde
 * ExternalLoginSSOSessionProvider
 * SamlSSOSessionProvider
 
-SSO-beheer klassen worden opgegeven met behulp van het `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />`-element van een technisch profiel.
+SSO-beheer klassen worden opgegeven met behulp van het `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />`-element van een technisch profiel.
 
-## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
+## <a name="input-claims"></a>Invoer claims
 
-Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebruikt om SSO-gedrag voor een specifiek technisch profiel te onderdrukken.
+Het `InputClaims`-element is leeg of afwezig. 
 
-## <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
+## <a name="persisted-claims"></a>Permanente claims
 
-Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale accounts. Wanneer u de DefaultSSOSessionProvider gebruikt om claims op te slaan in een sessie, moet u ervoor zorgen dat claims die moeten worden teruggestuurd naar de toepassing of worden gebruikt door voor waarden in volgende stappen, worden opgeslagen in de sessie of worden uitgebreid door een lees bewerking van het gebruikers profiel in uitvoermap. Zo zorgt u ervoor dat de verificatie traject niet kan worden uitgevoerd op ontbrekende claims.
+Claims die moeten worden geretourneerd naar de toepassing of worden gebruikt door de voor waarden in de volgende stappen, moeten worden opgeslagen in de sessie of worden uitgebreid met een lees bewerking vanuit het profiel van de gebruiker in de Directory. Door permanente claims te gebruiken zorgt u ervoor dat uw verificatie trajecten niet mislukken voor ontbrekende claims. Gebruik het `<PersistedClaims>`-element van het technische profiel om claims toe te voegen aan de sessie. Wanneer de provider wordt gebruikt om de sessie opnieuw in te vullen, worden de permanente claims toegevoegd aan de claim verzameling. 
+
+## <a name="output-claims"></a>Uitvoer claims
+
+De `<OutputClaims>` wordt gebruikt voor het ophalen van claims uit de sessie.
+
+## <a name="session-providers"></a>Sessie providers
+
+### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
+
+Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebruikt om SSO-gedrag voor een specifiek technisch profiel te onderdrukken. Het volgende `SM-Noop` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).  
+
+```XML
+<TechnicalProfile Id="SM-Noop">
+  <DisplayName>Noop Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+</TechnicalProfile>
+```
+
+### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
+
+Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale accounts. Het volgende `SM-AAD` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack). 
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
-    <DisplayName>Session Mananagement Provider</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="objectId" />
-        <PersistedClaim ClaimTypeReferenceId="newUser" />
-        <PersistedClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" />
-    </PersistedClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="objectIdFromSession" DefaultValue="true" />
-    </OutputClaims>
+  <DisplayName>Session Mananagement Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="objectId" />
+    <PersistedClaim ClaimTypeReferenceId="signInName" />
+    <PersistedClaim ClaimTypeReferenceId="authenticationSource" />
+    <PersistedClaim ClaimTypeReferenceId="identityProvider" />
+    <PersistedClaim ClaimTypeReferenceId="newUser" />
+    <PersistedClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" />
+  </PersistedClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectIdFromSession" DefaultValue="true"/>
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
-Gebruik het `<PersistedClaims>`-element van het technische profiel om claims toe te voegen aan de sessie. Wanneer de provider wordt gebruikt om de sessie opnieuw in te vullen, worden de permanente claims toegevoegd aan de claim verzameling. `<OutputClaims>` wordt gebruikt voor het ophalen van claims uit de sessie.
+Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleid voor het Starter pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Dit technische profiel beheert de multi-factor Authentication-sessie. 
 
-## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
+```XML
+<TechnicalProfile Id="SM-MFA">
+  <DisplayName>Session Mananagement Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="Verified.strongAuthenticationPhoneNumber" />
+  </PersistedClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isActiveMFASession" DefaultValue="true"/>
+  </OutputClaims>
+</TechnicalProfile>
+```
 
-Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukken. Er wordt meestal verwezen naar een technisch profiel dat is geconfigureerd voor een externe ID-provider, zoals Facebook.
+### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
+
+Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukken. Er wordt meestal verwezen naar een technisch profiel dat is geconfigureerd voor een externe ID-provider, zoals Facebook. Het volgende `SM-SocialLogin` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
-    <DisplayName>Session Mananagement Provider</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <DisplayName>Session Mananagement Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
+  </Metadata>
+  <PersistedClaims>
+    <PersistedClaim ClaimTypeReferenceId="AlternativeSecurityId" />
+  </PersistedClaims>
 </TechnicalProfile>
 ```
 
-## <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
+#### <a name="metadata"></a>Metagegevens
+        
+| Kenmerk | Vereist | Beschrijving|
+| --- | --- | --- |
+| AlwaysFetchClaimsFromProvider | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
 
-Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen apps en externe SAML-id-providers.
+### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
+
+Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML ID-provider sessie, moeten de `IncludeSessionIndex` en `RegisterServiceProviders` worden ingesteld op `false`. Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische SAML-profiel](saml-technical-profile.md).
 
 ```XML
-<TechnicalProfile Id="SM-Reflector-SAML">
-    <DisplayName>Session Management Provider</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="IncludeSessionIndex">false</Item>
-        <Item Key="RegisterServiceProviders">false</Item>
-    </Metadata>
+<TechnicalProfile Id="SM-Saml-idp">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="IncludeSessionIndex">false</Item>
+    <Item Key="RegisterServiceProviders">false</Item>
+  </Metadata>
 </TechnicalProfile>
 ```
 
-Het technische profiel bevat twee meta gegevens items:
+Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, moeten de `IncludeSessionIndex` en `RegisterServiceProviders` zijn ingesteld op `true`. Voor het afmelden van SAML-sessies moet `SessionIndex` en `NameID` zijn voltooid.
+ 
+Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-producttechnische profiel](connect-with-saml-service-providers.md)
 
-| Item | Default Value | Mogelijke waarden | Beschrijving
-| --- | --- | --- | --- |
-| IncludeSessionIndex | waar | waar/onwaar | Hiermee wordt de provider aangegeven dat de sessie-index moet worden opgeslagen. |
-| RegisterServiceProviders | waar | waar/onwaar | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. |
+```XML
+<TechnicalProfile Id="SM-Saml-sp">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+</TechnicalProfile>
+```
+#### <a name="metadata"></a>Metagegevens
+        
+| Kenmerk | Vereist | Beschrijving|
+| --- | --- | --- |
+| IncludeSessionIndex | Nee | Hiermee wordt de provider aangegeven dat de sessie-index moet worden opgeslagen. Mogelijke waarden: `true` (standaard) of `false`.|
+| RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false`.|
 
-Wanneer u de provider gebruikt voor het opslaan van een SAML ID-provider sessie, moeten de bovenstaande items beide onwaar zijn. Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, moeten de bovenstaande items waar zijn of worden wegge laten, omdat de standaard waarden waar zijn. Voor het afmelden van SAML-sessies moet `SessionIndex` en `NameID` zijn voltooid.
+
 

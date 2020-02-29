@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 60ce27ddc533b6c4066cea771f7a24570ff3c04c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c5fe0a577ead9d8c6408d4268d21465a7b762b6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604889"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920617"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de python inrichtings service-SDK
 
@@ -31,7 +31,7 @@ In deze Quick Start maakt u programmatisch een afzonderlijke inschrijving voor e
 - Goedkeuringssleutel. Gebruik de stappen in [een gesimuleerd apparaat maken en inrichten](quick-create-simulated-device.md) of de goedkeurings sleutel gebruiken die is opgegeven bij de SDK, zoals hieronder wordt beschreven.
 
 > [!IMPORTANT]
-> Dit artikel is alleen van toepassing op de afgeschafte v1 python SDK. Apparaat-en service-clients voor de IOT hub Device Provisioning Service zijn nog niet beschikbaar in v2. Het team is momenteel hard werk om v2 te voorzien van functie pariteit.
+> Dit artikel is alleen van toepassing op de afgeschafte v1 python SDK. Apparaat-en service clients voor de IoT Hub Device Provisioning Service zijn nog niet beschikbaar in v2. Het team is momenteel hard werk om v2 te voorzien van functie pariteit.
 
 <a id="prepareenvironment"></a>
 

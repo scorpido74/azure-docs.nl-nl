@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152292"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917404"
 ---
 # <a name="execute-r-script"></a>R-Script uitvoeren
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 De **script** modules voor het uitvoeren van r kunnen meerdere uitvoer retour neren, maar moeten als R-gegevens frames worden weer gegeven. Gegevens frames worden automatisch geconverteerd naar gegevens sets in de ontwerp functie voor compatibiliteit met andere modules.
 
 Standaard berichten en fouten van R worden teruggestuurd naar het logboek van de module.
+
+Als u resultaten wilt afdrukken in het R-script, kunt u de afgedrukte resultaten vinden in het tabblad **70_driver_log** onder **outputs + logs** in het rechterdeel venster van de module.
 
 ## <a name="sample-scripts"></a>Voorbeeldscripts
 
@@ -256,7 +258,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 
 |              |            | 
 |--------------|------------| 
-| Pakket      | Versie    | 
+| Pakket      | Version    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
@@ -272,7 +274,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | verplaatsen        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | CellRange   | 1.1.0      | 
-| klasse        | 7.3-15     | 
+| Klasse        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | Cliper        | 0.6.0      | 
 | cluster      | 2.0.7-1    | 

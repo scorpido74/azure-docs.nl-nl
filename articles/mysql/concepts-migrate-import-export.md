@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770948"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163723"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Uw MySQL-data base migreren met behulp van importeren en exporteren
 In dit artikel worden twee veelvoorkomende benaderingen beschreven voor het importeren en exporteren van gegevens naar een Azure Database for MySQL-server met behulp van MySQL Workbench. 
@@ -19,10 +19,10 @@ In dit artikel worden twee veelvoorkomende benaderingen beschreven voor het impo
 ## <a name="before-you-begin"></a>Voordat u begint
 Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 - Een Azure Database for MySQL server, door [een Azure database for mysql-server te maken met behulp van Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md).
-- MySQL Workbench is [gedownload](https://dev.mysql.com/downloads/workbench/)of een ander mysql-hulp programma voor importeren en exporteren.
+- MySQL Workbench [MySQL Workbench down load](https://dev.mysql.com/downloads/workbench/) of een ander mysql-hulp programma van derden om de import/export uit te voeren.
 
 ## <a name="use-common-tools"></a>Algemene hulpprogram ma's gebruiken
-Gebruik algemene hulpprogram ma's zoals MySQL Workbench, Toad of Navicat om extern verbinding te maken en gegevens te importeren of te exporteren naar Azure Database for MySQL. 
+Gebruik veelvoorkomende hulpprogram ma's en hulpprogram ma's zoals MySQL Workbench of mysqldump om extern verbinding te maken en gegevens te importeren of te exporteren naar Azure Database for MySQL. 
 
 Gebruik deze hulpprogram ma's op de client computer met een Internet verbinding om verbinding te maken met Azure Database for MySQL. Gebruik een met SSL versleutelde verbinding voor best mogelijke beveiligings procedures, zoals beschreven in [SSL-connectiviteit configureren in azure database for MySQL](concepts-ssl-connection-security.md).
 

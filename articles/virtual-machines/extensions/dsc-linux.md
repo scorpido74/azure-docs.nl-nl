@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 102433b88ffb140cae46433be1c0edef90857e6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969935"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921518"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
@@ -44,7 +44,7 @@ De DSCForLinux-extensie wordt gepubliceerd en ondersteund door micro soft. Met d
 
 De DSC Linux-extensie ondersteunt alle [Linux-distributies die zijn goedgekeurd op Azure](/azure/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
 
-| Distributie | Versie |
+| Distributie | Version |
 |---|---|
 | Debian | Alle versies |
 | Ubuntu| 18,04 |
@@ -82,7 +82,7 @@ Hier vindt u alle ondersteunde beveiligings configuratie parameters:
 * `RegistrationKey`: (optioneel, String) de toegangs sleutel van het Azure Automation-account
 
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 ### <a name="register-an-azure-automation-account"></a>Een Azure Automation-account registreren
 protected.json
@@ -290,6 +290,9 @@ Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/te
 Voordat u de DSCForLinux-extensie implementeert, moet u uw `public.json` en `protected.json` configureren volgens de verschillende scenario's in sectie 3.
 
 #### <a name="classic"></a>Klassiek
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 De klassieke implementatie modus wordt ook Azure Service Management-modus genoemd. U kunt overschakelen naar het bestand door het volgende uit te voeren:
 ```
 $ azure config mode asm

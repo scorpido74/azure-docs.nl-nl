@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 985417200737e00ddbda4194cf7596b11c74ac10
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153720"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920736"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Uitmuntende beslissings structuur module met twee klassen
 
@@ -38,6 +38,7 @@ U kunt dit type model trainen met [Train model](././train-model.md).
   
     + **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
   
+    + **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
   
 3.  Voor het **maximum aantal Leaves per structuur**geeft u het maximum aantal Terminal knooppunten (bladeren) op dat in een wille keurige structuur kan worden gemaakt.
   

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152088"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920413"
 ---
 # <a name="multiclass-neural-network-module"></a>Multi Class Neural-netwerk module
 
@@ -46,7 +46,7 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
     - **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.
 
-    
+    - **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
 
 3. **Specificatie van verborgen laag**: Selecteer het type netwerk architectuur dat u wilt maken.
 

@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: cfe5ea47ad2cbed7bd2779ee535d7bef447475e5
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500350"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919648"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
 In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerdere releases en bekende problemen toegelicht.
 
 > [!NOTE]
-> Er worden geen nieuwe functies toegevoegd aan Media Services v2. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [MSDN-forum Azure Media Services]. 
 
@@ -45,6 +45,10 @@ We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen va
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a>geschiedenis van <a id="rest_version_history"/>REST API-versie
 Zie de [Naslag informatie over Azure Media Services REST API]voor informatie over de versie geschiedenis van Media Services rest API.
+
+## <a name="february-2020"></a>Februari 2020
+
+Sommige analyse media-processors worden buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de pensioen datums.
 
 ## <a name="september-2019"></a>September 2019
 

@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461154"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911781"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit voor Windows Server
 Voor klanten met Software Assurance biedt Azure Hybrid Benefit voor Windows Server u de mogelijkheid om uw on-premises Windows Server-licenties te gebruiken en virtuele Windows-machines op Azure uit te voeren tegen lagere kosten. U kunt Azure Hybrid Benefit voor Windows Server gebruiken om nieuwe virtuele machines te implementeren met Windows-besturings systemen. Dit artikel gaat over de stappen voor het implementeren van nieuwe Vm's met Azure Hybrid Benefit voor Windows Server en hoe u bestaande actieve Vm's kunt bijwerken. Zie de [pagina Azure Hybrid Benefit voor Windows Server-licentie verlening](https://azure.microsoft.com/pricing/hybrid-use-benefit/)voor meer informatie over Azure Hybrid Benefit voor Windows Server-licenties en kosten besparingen.
 
-> [!Important]
-> Elke licentie voor twee processors of elke set licenties voor 16 kerngeheugens geeft recht op twee exemplaren met maximaal 8 kerngeheugens of één exemplaar met maximaal 16 kerngeheugens. Het licentierecht voor de Standard Edition van Azure Hybrid Benefit kan slechts één keer worden gebruikt (on-premises of in Azure). Dankzij de voordelen van de Datacenter Edition kan het systeem gelijktijdig on-premises en in Azure worden gebruikt.
->
+Elke licentie voor 2 processors of elke set van 16 kern licenties heeft recht op twee exemplaren van Maxi maal 8 kern geheugens of één exemplaar van Maxi maal 16 kern geheugens. De Azure Hybrid Benefit voor Standard Edition-licenties kunnen slechts één keer worden gebruikt (on-premises of in Azure). Met de voor delen van Data Center Edition kunt u gelijktijdig gebruik maken van zowel on-premises als in Azure.
 
-> [!Important]
-> Het gebruik van Azure Hybrid Benefit voor Windows Server met virtuele machines met Windows Server-besturings systeem worden nu ondersteund in alle regio's, inclusief Vm's met aanvullende software, zoals SQL Server of Marketplace-software van derden. 
->
+Het gebruik van Azure Hybrid Benefit voor Windows Server met virtuele machines met Windows Server-besturings systeem worden nu ondersteund in alle regio's, inclusief Vm's met aanvullende software, zoals SQL Server of Marketplace-software van derden. 
 
-> [!NOTE]
-> Voor klassieke Vm's wordt alleen de implementatie van nieuwe VM vanuit on premises aangepaste installatie kopieën ondersteund. Als u wilt profiteren van de mogelijkheden die in dit artikel worden ondersteund, moet u eerst klassieke Vm's migreren naar het Resource Manager-model.
->
 
+## <a name="classic-vms"></a>Klassieke VM's
+
+Voor klassieke Vm's wordt alleen de implementatie van nieuwe VM vanuit on premises aangepaste installatie kopieën ondersteund. Als u wilt profiteren van de mogelijkheden die in dit artikel worden ondersteund, moet u eerst klassieke Vm's migreren naar het Resource Manager-model.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Manieren om Azure Hybrid Benefit te gebruiken voor Windows Server
@@ -73,7 +71,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>Sjabloon
+### <a name="template"></a>Template
 In uw Resource Manager-sjablonen moet u een extra para meter `licenseType` opgeven. U kunt meer lezen over het [ontwerpen van Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md)
 ```json
 "properties": {

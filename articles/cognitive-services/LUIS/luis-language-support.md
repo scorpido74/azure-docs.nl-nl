@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970539"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916588"
 ---
 # <a name="language-and-region-support-for-luis"></a>Ondersteuning voor LUIS taal en regio
 
@@ -24,13 +24,13 @@ LUIS heeft tal van functies in de service. Niet alle functies zijn op de dezelfd
 
 ## <a name="multi-language-luis-apps"></a>Apps voor meerdere talen LUIS
 
-Als u een clienttoepassing voor meerdere talen LUIS, zoals een chatbot nodig hebt, hebt u een aantal opties. Als er LUIS biedt ondersteuning voor alle talen, ontwikkelt u een LUIS-app voor elke taal. Elke LUIS-app heeft een unieke app-ID en de eindpunt-Logboeken. Als u nodig hebt voor taalbegrip voor een taal LUIS niet ondersteunt, kunt u [Microsoft Translator API](../Translator/translator-info-overview.md) om te zetten de utterance in een ondersteunde taal, de utterance naar het eindpunt LUIS verzenden en ontvangen de resulterende scores.
+Als u een clienttoepassing voor meerdere talen LUIS, zoals een chatbot nodig hebt, hebt u een aantal opties. Als er LUIS biedt ondersteuning voor alle talen, ontwikkelt u een LUIS-app voor elke taal. Elke LUIS-app heeft een unieke app-ID en de eindpunt-Logboeken. Als u taal inzicht moet bieden voor een taal LUIS ondersteunt, kunt u de [micro soft Translator-API](../Translator/translator-info-overview.md) gebruiken om de utterance te vertalen in een ondersteunde taal, de utterance naar het Luis-eind punt te verzenden en de resulterende scores te ontvangen.
 
 ## <a name="languages-supported"></a>Ondersteunde talen
 
 LUIS begrijpt uitingen in de volgende talen:
 
-| Taal |Landinstelling  |  Vooraf gedefinieerde domein | Vooraf gemaakte entiteiten | Aanbevelingen voor woordgroepen lijst | **[Tekstanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Sentiment en<br>Trefwoorden)|
+| Taal |Landinstelling  |  Vooraf gedefinieerde domein | Vooraf gemaakte entiteiten | Aanbevelingen voor woordgroepen lijst | **[tekst analyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Sentiment en<br>Trefwoorden)|
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikaans-Engels |`en-US` | ✔ | ✔  |✔|✔|
 | Arabisch (preview-modern Standard-Arabisch) |`ar-AR`|-|-|-|-|
@@ -48,7 +48,7 @@ LUIS begrijpt uitingen in de volgende talen:
 | Spaans (Mexico)|`es-MX` |-|  -   |✔|✔|
 | Turks | `tr-TR` |✔|-|-|Alleen sentiment|
 
-Taalondersteuning varieert voor [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md) en [vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md).
+Taal ondersteuning is afhankelijk van [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md) en [vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md).
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
@@ -61,13 +61,13 @@ Taalondersteuning varieert voor [vooraf gemaakte entiteiten](luis-reference-preb
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Talen voor spraak-API die wordt ondersteund
-Zie spraak [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) voor talen voor spraak dicteren modus.
+Zie spraak [ondersteunde talen](../speech-service/speech-to-text.md) voor talen voor spraak herkenning.
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing Spell Check-ondersteunde talen
-Zie Bing spellingcontrole [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) voor een lijst van ondersteunde talen en status.
+Zie Bing Spellingcontrole [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) voor een lijst met ondersteunde talen en status.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Zeldzame of refererende woorden in een toepassing
-In de `en-us` cultuur, LUIS te onderscheiden van de meest Nederlandse woorden, met inbegrip van slang leren. In de `zh-cn` cultuur, LUIS leert te onderscheiden van de meeste Chinese tekens. Als u een zeldzame woord in `en-us` of teken in `zh-cn`, en u ziet dat LUIS lijkt te onderscheiden van dit woord of teken, kunt u dit woord toevoegen of teken naar een [functie woordgroep lijst](luis-how-to-add-features.md). Bijvoorbeeld, moeten woorden buiten de cultuur van de toepassing, dat wil zeggen, woorden in vreemde talen--worden toegevoegd aan een functie woordgroep-lijst.
+In de `en-us` cultuur leert LUIS om de meeste Engelse woorden te onderscheiden, met inbegrip van slang. In de `zh-cn` cultuur leert LUIS om de meeste Chinese tekens te onderscheiden. Als u een zeldzaam woord gebruikt in `en-us` of teken in `zh-cn`en u ziet dat LUIS niet kan worden onderscheiden van dat woord of teken, kunt u dat woord of teken toevoegen aan een [lijst functie van een woord groep](luis-how-to-add-features.md). Bijvoorbeeld, moeten woorden buiten de cultuur van de toepassing, dat wil zeggen, woorden in vreemde talen--worden toegevoegd aan een functie woordgroep-lijst.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -75,9 +75,9 @@ In de `en-us` cultuur, LUIS te onderscheiden van de meest Nederlandse woorden, m
 Hybride talen combineren woorden uit twee culturen zoals Engels en Chinees. Deze talen worden niet ondersteund in LUIS omdat een app is gebaseerd op een enkele cultuur.
 
 ## <a name="tokenization"></a>Tokeniseren
-Als u machine learning, LUIS een utterance opgesplitst in [tokens](luis-glossary.md#token) op basis van cultuur.
+Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-glossary.md#token) op basis van de cultuur.
 
-|Taal|  elke ruimte of speciaal teken | niveau tekens|samengestelde woorden|[tokens entiteit geretourneerd](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Taal|  elke ruimte of speciaal teken | niveau tekens|samengestelde woorden|[tokend geretourneerde entiteit](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |Arabisch|||||
 |Chinees||✔||✔|

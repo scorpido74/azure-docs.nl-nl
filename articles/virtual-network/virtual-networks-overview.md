@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894595"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164896"
 ---
 # <a name="what-is-azure-virtual-network"></a>Wat is Azure Virtual Network?
 
@@ -38,7 +38,7 @@ Wanneer u uw netwerk in azure bouwt, is het belang rijk om de volgende universel
 - Zorg ervoor dat de adres ruimten niet overlappen. Zorg ervoor dat uw VNet-adres ruimte (CIDR-blok) niet overlapt met de andere netwerkbereiken van uw organisatie.
 - Uw subnetten mogen niet de gehele adres ruimte van het VNet beslaan. Plan vooruit en reserveer enkele adres ruimte voor de toekomst.
 - Het is raadzaam om minder grote VNets te hebben dan meerdere kleine VNets. Dit voor komt beheer overhead.
-- Beveilig uw VNet met behulp van netwerk beveiligings groepen (Nsg's).
+- Beveilig uw VNet door netwerk beveiligings groepen (Nsg's) toe te wijzen aan de onderliggende subnetten.
 
 ## <a name="communicate-with-the-internet"></a>Communiceren met internet
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee2fb3757b0e3a7015a98f4e04084fd9c6a4850d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747545"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920141"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Gedetailleerde stappen voor probleem oplossing voor problemen met verbinding met extern bureau blad met virtuele Windows-machines in azure
 In dit artikel vindt u gedetailleerde stappen voor het oplossen van problemen bij het vaststellen en oplossen van complexe Extern bureaublad fouten voor Azure virtual machines op basis van Windows.
@@ -92,6 +92,9 @@ Als u een Extern bureaublad verbinding kunt maken met een computer die rechtstre
 Werk samen met uw netwerk beheerder om de instellingen van het intranet edge-apparaat van uw organisatie te corrigeren om Extern bureaublad verbindingen op basis van HTTPS op Internet toe te staan.
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>Bron 3: eind punt van Cloud service en ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Voor virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model, controleert u of een andere virtuele machine van Azure die zich in dezelfde Cloud service of een virtueel netwerk bevindt, Extern bureaublad verbindingen met uw virtuele Azure-machine kan maken.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
@@ -190,7 +193,7 @@ Exit-PSSession
 
 Controleer of het Extern bureaublad-eind punt voor de virtuele machine van Azure ook TCP-poort 3398 als interne poort gebruikt. Start de Azure-VM opnieuw op en probeer opnieuw verbinding te Extern bureaublad.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 [Het opnieuw instellen van een wacht woord of de Extern bureaublad-service voor virtuele Windows-machines](../windows/reset-rdp.md)
 
 [Azure PowerShell installeren en configureren](/powershell/azure/overview)

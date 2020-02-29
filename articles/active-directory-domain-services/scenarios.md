@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132286"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917227"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Veelvoorkomend gebruik: cases en scenario's voor Azure Active Directory Domain Services
 
@@ -97,7 +97,7 @@ De volgende overwegingen met betrekking tot de implementatie zijn van toepassing
 
 U kunt Azure AD DS gebruiken om beheerde domein services te bieden aan extern bureau blad-servers die zijn geïmplementeerd in Azure. Zie [Azure AD Domain Services integreren met uw RDS-implementatie][windows-rds]voor meer informatie over dit implementatie scenario.
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>HDInsight-clusters die zijn gekoppeld aan een domein (preview-versie)
+## <a name="domain-joined-hdinsight-clusters"></a>HDInsight-clusters die zijn gekoppeld aan een domein
 
 U kunt een Azure HDInsight-cluster instellen dat is gekoppeld aan een door Azure AD DS beheerd domein waarvoor Apache zwerver is ingeschakeld. U kunt Hive-beleid maken en Toep assen via Apache zwerver, en gebruikers, zoals gegevens wetenschappers, toestaan verbinding te maken met hive met behulp van ODBC-hulpprogram ma's zoals Excel of tableau. We blijven werken om andere workloads, zoals HBase, Spark en Storm, toe te voegen aan HDInsight die lid is van een domein.
 

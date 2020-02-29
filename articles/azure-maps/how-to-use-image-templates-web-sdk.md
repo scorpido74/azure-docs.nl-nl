@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 02/28/2020
 ms.locfileid: "77198221"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
@@ -108,7 +108,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de 
 
 Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogrammen of als u een module maakt waarmee extra afbeeldings sjablonen worden toegevoegd, kunt u deze pictogrammen eenvoudig toevoegen en ophalen uit de Azure Maps Web-SDK. Gebruik de volgende statische functies voor de `atlas` naam ruimte.
 
-| Naam | Retour type | Beschrijving | 
+| Name | Retour type | Beschrijving | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hiermee voegt u een aangepaste SVG-afbeeldings sjabloon toe aan de Atlas-naam ruimte. |
 |  `getImageTemplate(templateName: string, scale?: number)`| tekenreeks | Hiermee wordt een SVG-sjabloon met de naam opgehaald. |

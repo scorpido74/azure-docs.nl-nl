@@ -12,20 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: aedb9c8d178cb210efedf8ff4bcbbeca39f89e60
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981804"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918169"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Kan niet extern verbinding maken met een virtuele machine omdat de RDP-poort niet is ingeschakeld in NSG
 
 In dit artikel wordt uitgelegd hoe u een probleem oplost waarbij u geen verbinding kunt maken met een virtuele machine van Azure Windows (VM), omdat de Remote Desktop Protocol RDP-poort niet is ingeschakeld in de netwerk beveiligings groep (NSG).
 
-
-> [!NOTE] 
-> Azure heeft twee implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../azure-resource-manager/management/deployment-models.md). Het is raadzaam om het Resource Manager-implementatie model te gebruiken in plaats van het klassieke implementatie model voor nieuwe implementaties. 
 
 ## <a name="symptom"></a>Symptoom
 
@@ -36,7 +33,7 @@ U kunt geen RDP-verbinding maken met een virtuele machine in azure omdat de RDP-
 Wanneer u een nieuwe virtuele machine maakt, wordt alle verkeer van Internet standaard geblokkeerd. 
 
 Voer de volgende stappen uit om de RDP-poort in te scha kelen in een NSG:
-1. Aanmelden bij [de Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [de Azure Portal](https://portal.azure.com).
 2. Selecteer in **virtual machines**de virtuele machine waarop het probleem zich voordoet. 
 3. Selecteer in **instellingen**de optie **netwerken**. 
 4. Controleer in **Binnenkomende poort regels**of de poort voor RDP juist is ingesteld. Hier volgt een voor beeld van de configuratie: 

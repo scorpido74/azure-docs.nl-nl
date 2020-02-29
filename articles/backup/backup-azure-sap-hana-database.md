@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5fd09e0e487d103e8bd78964c11b572a62e28fa
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765520"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164607"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Raadpleeg de secties [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [machtigingen instellen](tutorial-backup-sap-hana-db.md#setting-up-permissions) om de Data Base voor back-up in te stellen.
+Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en de [betekenis van het script dat voorafgaat](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) aan het registratie gedeelte voor het instellen van de Data Base voor back-up.
 
 ### <a name="set-up-network-connectivity"></a>Netwerk connectiviteit instellen
 
@@ -89,23 +89,6 @@ NSG-service tags gebruiken | Eenvoudiger te beheren als bereik wijzigingen worde
 Azure Firewall FQDN-Tags gebruiken | Eenvoudiger te beheren omdat de vereiste FQDN-s automatisch worden beheerd | Kan alleen worden gebruikt met Azure Firewall
 Een HTTP-proxy gebruiken | Nauw keurig beheer van de proxy via de opslag-Url's is toegestaan <br/><br/> Eén toegangs punt voor Internet toegang tot Vm's <br/><br/> Wijzigingen in het IP-adres van Azure worden niet onderhevig | Aanvullende kosten voor het uitvoeren van een virtuele machine met de proxy software
 
-## <a name="onboard-to-the-public-preview"></a>Onboarding voor de open bare preview
-
-Onboarding voor de open bare preview als volgt:
-
-* Registreer uw abonnements-ID bij de provider van de Recovery Services-service in de portal door [dit artikel te volgen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-* Voer voor de module AZ in Power shell deze cmdlet uit. Deze moet worden voltooid als ' geregistreerd '.
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* Als u de module AzureRM in Power shell gebruikt, voert u deze cmdlet uit. Deze moet worden voltooid als ' geregistreerd '.
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
-
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>De data bases ontdekken
@@ -130,7 +113,7 @@ Schakel nu back-up in.
 
 1. Klik in stap 2 op **back-up configureren**.
 
-    ![Backup configureren](./media/backup-azure-sap-hana-database/configure-backup.png)
+    ![Configureer back-up](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. Selecteer in **items selecteren waarvan u een back**-up wilt maken de data bases die u wilt beveiligen > **OK**.
 
     ![Items selecteren waarvan u een back-up wilt maken](./media/backup-azure-sap-hana-database/select-items.png)

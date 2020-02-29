@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121834"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916079"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Verwerken van gepland onderhoud met behulp van Power shell
 
 **Dit artikel is van toepassing op virtuele machines met Linux en Windows.**
 
-U kunt Azure Power shell gebruiken om te zien wanneer Vm's zijn gepland voor [onderhoud](maintenance-notifications.md). Informatie over gepland onderhoud is beschikbaar via de cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) wanneer u de para meter `-status` gebruikt.
+U kunt Azure PowerShell gebruiken om te zien wanneer Vm's zijn gepland voor [onderhoud](maintenance-notifications.md). Informatie over gepland onderhoud is beschikbaar via de cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) wanneer u de para meter `-status` gebruikt.
   
 Onderhouds informatie wordt alleen geretourneerd als er onderhoud wordt gepland. Als er geen onderhoud is gepland dat van invloed is op de virtuele machine, retourneert de cmdlet geen onderhouds informatie. 
 
@@ -83,6 +83,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 ```
 
 ## <a name="classic-deployments"></a>Klassieke implementaties
+
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
 Als u nog steeds verouderde Vm's hebt die zijn geïmplementeerd met behulp van het klassieke implementatie model, kunt u Power shell gebruiken om te zoeken naar Vm's en onderhoud te initiëren.
 

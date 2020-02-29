@@ -3,7 +3,7 @@ title: Groottes van Azure VM-opslag | Microsoft Docs
 description: Geeft een lijst van de verschillende voor opslag geoptimaliseerde grootten die beschikbaar zijn voor virtuele machines in Azure. Hiermee wordt informatie weer gegeven over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines
 documentationcenter: ''
-author: jonbeck7
+author: sasha-melamed
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 17cceb04d3d6e559cd6f2b49674f6d408a0650a4
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5a611dc288fc18a14f6000689f9f9b49d4b3feb8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492992"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913333"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines die zijn geoptimaliseerd voor opslag
 

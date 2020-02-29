@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d8096a14bf2abc0b06b7ab7c3d340a313b1cd24c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c4152ec5e67761ce9be9a81bfbf39e1591787da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057302"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913511"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Virtuele Linux-machine opnieuw implementeren naar een nieuw Azure-knoop punt
 Als u problemen ondervindt met het oplossen van problemen met SSH of toepassing op een virtuele Linux-machine (VM) in azure, is het mogelijk dat u de VM opnieuw implementeert. Wanneer u een virtuele machine opnieuw implementeert, wordt de virtuele machine verplaatst naar een nieuw knoop punt in de Azure-infra structuur en wordt deze vervolgens weer toegezonden. Alle configuratie opties en gekoppelde resources worden bewaard. In dit artikel wordt beschreven hoe u een VM opnieuw implementeert met behulp van Azure CLI of de Azure Portal.
@@ -37,7 +37,11 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>De klassieke Azure-CLI gebruiken
-Installeer de [nieuwste Azure Classic cli](../../cli-install-nodejs.md) en meld u aan bij uw Azure-account. Zorg ervoor dat u zich in de modus Resource Manager`azure config mode arm`() bevindt.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
+Installeer de [nieuwste Azure Classic cli](../../cli-install-nodejs.md) en meld u aan bij uw Azure-account. Zorg ervoor dat u zich in de modus Resource Manager (`azure config mode arm`) bevindt.
 
 In het volgende voor beeld wordt de virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup*opnieuw geïmplementeerd:
 

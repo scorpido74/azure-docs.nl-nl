@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431564"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919529"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>De beveiliging van uw containers bewaken
 
@@ -29,7 +29,7 @@ Azure Security Center heeft betrekking op de volgende drie aspecten van de conta
 
 - **De beveiliging van uw Azure Kubernetes Service-clusters** -Security Center biedt aanbevelingen wanneer er beveiligings problemen worden gevonden in de configuratie van uw Azure Kubernetes-Service clusters. Zie de aanbevelingen van de [Kubernetes-service](recommendations-reference.md#recs-containers)voor meer informatie over de specifieke aanbevelingen die kunnen worden weer gegeven.
 
-- **Runtime-beveiliging** : als u zich in de prijs categorie standard van Security Center bevindt, kunt u een realtime detectie van bedreigingen voor uw container omgevingen ontvangen. Security Center genereert waarschuwingen voor verdachte activiteiten op het cluster niveau host en AKS. Zie de secties [waarschuwingen voor Azure Kubernetes Service-clusters](alerts-reference.md#alerts-akscluster) en [waarschuwingen voor containers-hostniveau](alerts-reference.md#alerts-containerhost) in de naslag tabel met waarschuwingen voor meer informatie over de relevante beveiligings waarschuwingen die kunnen worden weer gegeven.
+- **Runtime-beveiliging** : als u zich in de Standard-prijs categorie van Security Center bevindt, ontvangt u real-time bedreigings beveiliging voor uw container omgevingen. Security Center genereert waarschuwingen voor verdachte activiteiten op het cluster niveau host en AKS. Zie de secties [waarschuwingen voor Azure Kubernetes Service-clusters](alerts-reference.md#alerts-akscluster) en [waarschuwingen voor containers-hostniveau](alerts-reference.md#alerts-containerhost) in de naslag tabel met waarschuwingen voor meer informatie over de relevante beveiligings waarschuwingen die kunnen worden weer gegeven.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Uw ARM-gebaseerde container registers scannen op beveiligings problemen 
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922263"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913851"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Een Linux python-app voor Azure App Service configureren
 
@@ -48,6 +48,28 @@ Voer de volgende opdracht uit in de [Cloud Shell](https://shell.azure.com) om de
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
 
+## <a name="customize-build-automation"></a>Bouw automatisering aanpassen
+
+Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
+
+1. Voer een aangepast script uit als dit wordt opgegeven door `PRE_BUILD_SCRIPT_PATH`.
+1. Voer `pip install -r requirements.txt` uit.
+1. Als *Manage.py* is gevonden in de hoofdmap van de opslag plaats, voert u *Manage.py collectstatic*uit. Als `DISABLE_COLLECTSTATIC` echter is ingesteld op `true`, wordt deze stap overgeslagen.
+1. Voer een aangepast script uit als dit wordt opgegeven door `POST_BUILD_SCRIPT_PATH`.
+
+`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND`en `DISABLE_COLLECTSTATIC` zijn omgevings variabelen die standaard leeg zijn. Definieer `PRE_BUILD_COMMAND`voor het uitvoeren van opdrachten die vooraf zijn gebouwd. Als u opdrachten na het bouwen wilt uitvoeren, definieert u `POST_BUILD_COMMAND`. Als u het uitvoeren van collectstatic wilt uitschakelen bij het bouwen van Django-apps, stelt u `DISABLE_COLLECTSTATIC=true`in.
+
+In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)voor meer omgevings variabelen voor het aanpassen van het bouwen van Automation.
+
+Zie Oryx Documentation (Engelstalig) voor meer informatie over hoe App Service worden uitgevoerd en python-apps bouwt in Linux [: hoe python-apps worden gedetecteerd en gebouwd](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
+
 ## <a name="container-characteristics"></a>Containerkenmerken
 
 Python-apps die zijn geïmplementeerd op App Service in Linux, worden uitgevoerd binnen een docker-container die is gedefinieerd in de [app service python github-opslag plaats](https://github.com/Azure-App-Service/python). U vindt de installatie kopieën in de versie-specifieke directory's.
@@ -58,7 +80,7 @@ Deze container heeft de volgende kenmerken:
 
 - Standaard bevat de basisinstallatiekopie het Flask-webframework, maar de container ondersteunt andere frameworks die voldoen aan WSGI en compatibel zijn met Python 3.7, zoals Django.
 
-- Voor het installeren van extra pakketten, zoals Django, maakt u met `pip freeze > requirements.txt` een bestand [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) in de hoofdmap van uw project. Daarna publiceert u het project naar App Service met Git-implementatie. `pip install -r requirements.txt` wordt dan automatisch uitgevoerd in de container om de afhankelijkheden van uw app te installeren.
+- Voor het installeren van extra pakketten, zoals Django, maakt u met [ een bestandrequirements.txt](https://pip.pypa.io/en/stable/user_guide/#requirements-files)`pip freeze > requirements.txt` in de hoofdmap van uw project. Daarna publiceert u het project naar App Service met Git-implementatie. `pip install -r requirements.txt` wordt dan automatisch uitgevoerd in de container om de afhankelijkheden van uw app te installeren.
 
 ## <a name="container-startup-process"></a>Opstartproces met container
 

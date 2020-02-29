@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509016"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917353"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -41,13 +41,15 @@ Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 Nee. U kunt slechts één beheerd domein maken dat door Azure AD Domain Services wordt onderhouden voor één Azure AD-adres lijst.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Kan ik Azure AD Domain Services inschakelen in een klassiek virtueel netwerk?
-Klassieke virtuele netwerken worden niet ondersteund voor nieuwe implementaties. Bestaande beheerde domeinen die in klassieke virtuele netwerken zijn geïmplementeerd, worden nog steeds ondersteund. U kunt [Azure AD Domain Services ook migreren van het klassieke virtuele netwerk model naar Resource Manager (preview)](migrate-from-classic-vnet.md).
+Klassieke virtuele netwerken worden niet ondersteund voor nieuwe implementaties. Bestaande beheerde domeinen die in klassieke virtuele netwerken zijn geïmplementeerd, worden nog steeds ondersteund totdat ze zijn ingetrokken op 1 maart 2023. Voor bestaande implementaties kunt u [Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager](migrate-from-classic-vnet.md).
+
+Zie de [officiële afschaffing](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)voor meer informatie.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Kan ik Azure AD Domain Services inschakelen in een Azure Resource Manager virtueel netwerk?
 Ja. Azure AD Domain Services kan worden ingeschakeld in een Azure Resource Manager virtueel netwerk. Klassieke virtuele netwerken van Azure zijn niet meer beschikbaar wanneer u een beheerd domein maakt.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Kan ik mijn bestaande beheerde domein migreren van een klassiek virtueel netwerk naar een virtueel netwerk van Resource Manager?
-Ja, deze functie is beschikbaar als preview-versie. Zie [Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager (preview)](migrate-from-classic-vnet.md)voor meer informatie.
+Ja. Zie [Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager](migrate-from-classic-vnet.md)voor meer informatie.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Kan ik Azure AD Domain Services in een Azure CSP-abonnement (Cloud Solution Provider) inschakelen?
 Ja. Zie [Azure AD Domain Services inschakelen in azure CSP-abonnementen](csp.md)voor meer informatie.

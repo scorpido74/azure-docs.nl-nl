@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514983"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914378"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -76,7 +76,7 @@ Een machine wordt alleen verplaatst naar een latere fase als deze de voor gaande
 
 De weergave van de Azure-gereedheid in de evaluatie toont de gereedheidsstatus van alle VM's.
 
-**Gereedheid** | **Status** | **Details**
+**Gereedheid** | **Overheids** | **Details**
 --- | --- | ---
 Gereed voor Azure | Geen compatibiliteits problemen. De machine kan worden gemigreerd naar Azure en wordt opgestart in azure met volledige ondersteuning voor Azure. | Voor virtuele machines die gereed zijn, wordt door Azure Migrate een VM-grootte in Azure aanbevolen.
 Voorwaardelijk gereed voor Azure | De computer kan worden opgestart in azure, maar heeft mogelijk geen volledige ondersteuning voor Azure. Bijvoorbeeld een machine met een oudere versie van Windows Server die niet wordt ondersteund in Azure. | In Azure Migrate worden de gereedheids problemen beschreven en worden er herstels tappen geboden.
@@ -92,11 +92,11 @@ Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de vi
 --- | --- | ---
 **Opstart type** | BIOS ondersteund. UEFI wordt niet ondersteund. | Voorwaardelijk gereed als het opstart type UEFI is.
 **Kernen** | Kern < van machines = het maximum aantal kern geheugens (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt Azure Migrate beschouwd als de gebruikte kernen.<br/>Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
-**Geheugen** | De grootte van het computer geheugen < = de maximale hoeveelheid geheugen (3892 GB op de Azure M-serie Standard_M128m&nbsp;<sup>2</sup>) voor een virtuele machine van Azure. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte geheugen.<br/><br/>Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat u de comfort factor hoeft toe te passen.<br/><br/> | Gereed indien binnen de limieten.
+**Geheugenmetabase** | De grootte van het computer geheugen < = de maximale hoeveelheid geheugen (3892 GB op de Azure M-serie Standard_M128m&nbsp;<sup>2</sup>) voor een virtuele machine van Azure. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte geheugen.<br/><br/>Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat u de comfort factor hoeft toe te passen.<br/><br/> | Gereed indien binnen de limieten.
 **Opslag schijf** | De toegewezen grootte van een schijf moet 4 TB (4096 GB) of minder zijn.<br/><br/> Het aantal schijven dat is gekoppeld aan de computer, moet 65 of minder zijn, inclusief de besturingssysteem schijf. | Gereed indien binnen de limieten.
 **Netwerken** | Aan een machine moet 32 of minder Nic's zijn gekoppeld. | Gereed indien binnen de limieten.
 
-#### <a name="guest-operating-system"></a>Gastbesturingssysteem
+#### <a name="guest-operating-system"></a>Gast besturingssysteem
 
 Naast de VM-eigenschappen controleert Azure Migrate ook op het gast besturingssysteem van de on-premises VM om te bepalen of de virtuele machine kan worden uitgevoerd in Azure.
 
@@ -130,7 +130,7 @@ Besturings systeem opgegeven als een **andere** in vCenter Server | Azure Migrat
 - Als de grootte van het prestatie niveau is gebaseerd op prestaties, wordt de prestatie geschiedenis van de virtuele machines (CPU en geheugen) en schijven (IOPS en door Voer) in acht neemt.
 - Als het criterium voor het wijzigen van de grootte ' as on-premises ' is, is de aanbeveling van de omvang in azure gebaseerd op de grootte van de virtuele machine on-premises. De schijf grootte is gebaseerd op het opslag type dat is opgegeven in de eigenschappen van de beoordeling (standaard is Premium-schijven). Azure Migrate houdt geen rekening met de prestatie gegevens voor de virtuele machine en schijven.
 
-### <a name="review-cost-estimates"></a>Beoordeling geraamde kosten
+### <a name="review-cost-estimates"></a>Geschatte kosten evalueren
 
 Met kosten ramingen worden de totale reken-en opslag kosten voor het uitvoeren van de virtuele machines in azure weer gegeven, samen met de details van elke machine.
 
@@ -229,7 +229,7 @@ De agent installeren op een Windows-computer:
 4. Selecteer in **installatie opties voor agent**de optie **Azure log Analytics** > **volgende**.
 5. Klik op **toevoegen** om een nieuwe log Analytics-werk ruimte toe te voegen. Plak de werk ruimte-ID en-sleutel die u hebt gekopieerd uit de portal. Klik op **Volgende**.
 
-U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode zoals Configuration Manager. Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) over het gebruik van deze methoden om de MMA-agent te installeren.
+U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode zoals Configuration Manager. Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over het gebruik van deze methoden om de MMA-agent te installeren.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>De MMA-agent op een Linux-computer installeren
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058035"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921408"
 ---
-# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problemen met het implementeren van problemen met virtuele Windows-machines in azure oplossen
+# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problemen bij het implementeren van virtuele Windows-machines in Azure oplossen
 
 Voor het oplossen van problemen met de implementatie van virtuele machines (VM) in azure, raadpleegt u de [meest voorkomende problemen](#top-issues) met veelvoorkomende fouten en oplossingen.
 
@@ -31,7 +31,7 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan de aangevraagde VM-grootte niet ondersteunen
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
 - Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 - Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
     - Stop alle virtuele machines in de beschikbaarheidsset. Klik op **resource groepen** > de resource groep > **resources** > uw beschikbaarheidsset > **virtual machines** > uw virtuele machine > **gestopt**.
@@ -40,7 +40,7 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster heeft geen vrije resources
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
 - Voer de aanvraag later opnieuw uit.
 - Als de nieuwe VM deel kan uitmaken van een andere beschikbaarheidsset
     - Maak een virtuele machine in een andere beschikbaarheidsset (in dezelfde regio).
@@ -78,7 +78,7 @@ Als u uw maandelijkse tegoed wilt activeren, raadpleegt u dit [artikel](https://
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Enterprise Dev/Test toevoegen aan mijn Enterprise Agreement (EA) om toegang te krijgen tot Window-client installatie kopieën?
 
-Alleen accounteigenaren die hiervoor zijn gemachtigd door een Enterprise-beheerder, kunnen abonnementen maken op basis van de Enterprise Dev/Test-aanbieding. De eigenaar van het account maakt abonnementen via de Azure-account Portal en moet vervolgens actieve Visual Studio-abonnees als co-beheerder toevoegen. Zodat ze de benodigde bronnen voor ontwikkelen en testen kunnen beheren en gebruiken. Zie [Enterprise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/)voor meer informatie.
+De mogelijkheid om abonnementen te maken op basis van de Enterprise Dev/Test aanbieding is beperkt tot account eigenaren die toestemming hebben gekregen door een ondernemings beheerder. De eigenaar van het account maakt abonnementen via de Azure-account Portal en moet vervolgens actieve Visual Studio-abonnees als co-beheerder toevoegen. Zodat ze de benodigde bronnen voor ontwikkelen en testen kunnen beheren en gebruiken. Zie [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) voor meer informatie.
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Mijn stuur Programma's ontbreken voor mijn VM van de Windows N-serie
 
@@ -106,6 +106,8 @@ In dit [artikel](../windows/client-images.md) vindt u een overzicht van de verei
 Wanneer een virtuele machine wordt uitgevoerd, wordt deze geïmplementeerd op een fysieke server. De fysieke servers in azure-regio's worden gegroepeerd in clusters van algemene fysieke hardware. Het wijzigen van de grootte van een virtuele machine die vereist dat de VM naar verschillende hardwareconfiguraties wordt verplaatst, is afhankelijk van het implementatie model dat is gebruikt voor het implementeren van de virtuele machine.
 
 - Vm's die zijn geïmplementeerd in het klassieke implementatie model, moet de Cloud service-implementatie worden verwijderd en opnieuw worden geïmplementeerd om de Vm's te wijzigen in een grootte in een andere grootte familie.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 - Vm's die zijn geïmplementeerd in het Resource Manager-implementatie model, moet u alle virtuele machines in de beschikbaarheidsset stoppen voordat u de grootte van een virtuele machine in de beschikbaarheidsset wijzigt.
 

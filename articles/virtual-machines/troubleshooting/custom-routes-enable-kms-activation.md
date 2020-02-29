@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748630"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920158"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-activering mislukt in scenario met geforceerde tunneling
 
@@ -84,6 +84,8 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
 4. Probeer Windows te activeren en te controleren of het probleem is opgelost.
 
 ### <a name="for-classic-vms"></a>Voor klassieke Vm's
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Voer de volgende opdrachten uit:

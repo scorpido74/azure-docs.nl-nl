@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086204"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913815"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Webservice migreren vanuit Google Maps
 
@@ -24,21 +24,24 @@ De tabel bevat de Azure Maps service-Api's, die een vergelijk bare functionalite
 
 | Service-API voor Google Maps | API van Azure Maps-service                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Aanwijzing              | [Rond](https://docs.microsoft.com/rest/api/maps/route)                               |
-| Afstands matrix         | [Route matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| Geocodering               | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Locaties zoeken           | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Automatisch aanvullen plaatsen      | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Statische toewijzing              | [Waardoor](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| Tijdzone               | [Tijd zone](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| Aanwijzing              | [Rond](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Afstands matrix         | [Route matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Geocodering               | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Locaties zoeken           | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Automatisch aanvullen plaatsen      | [Zoeken](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Uitlijnen op weg            | Zie [routes en instructies berekenen](#calculate-routes-and-directions) .            |
+| Snelheids limieten            | Zie [Reverse Geocode a coördinaten](#reverse-geocode-a-coordinate) Section (Engelstalig).                  |
+| Statische toewijzing              | [Waardoor](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Tijdzone               | [Tijd zone](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 De volgende service-Api's zijn momenteel niet beschikbaar in Azure Maps:
 
 - Uitbrei ding
 - Geolocatie
-- Plaats Details en plaats foto's. De telefoon nummers en de URL van de website zijn beschikbaar in de Azure Maps Search-API.
+- Plaatst Details en foto's: de telefoon nummers en de URL van de website zijn beschikbaar in de Azure Maps Search-API.
 - Kaart-Url's
-- Toegangs. Gegevens voor snelheids limieten zijn beschikbaar via de route ring en reverse geocoderings-Api's in Azure Maps.
+- Dichtstbijzijnde wegen: dit kan worden behaald met de Web-SDK, zoals [hier](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)wordt weer gegeven, maar is momenteel niet beschikbaar als een service.
 - Statische straat weergave
 
 Azure Maps heeft verschillende extra REST-webservices die van belang kunnen zijn:
@@ -176,8 +179,8 @@ Routes en instructies berekenen met behulp van Azure Maps. Azure Maps heeft veel
 
 De Azure Maps Routing-service biedt de volgende Api's voor het berekenen van routes:
 
-- [**Route berekenen**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): een route berekenen en de aanvraag onmiddellijk verwerken. Deze API biedt ondersteuning voor GET-en POST-aanvragen. POST-aanvragen gebruiken wanneer u een groot aantal waypoints opgeeft of wanneer u veel van de route opties gebruikt. Dat komt doordat het gebruik van POST ervoor zorgt dat de URL-aanvraag niet te lang wordt en problemen veroorzaakt.
-- [**Batch route**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): een aanvraag met maxi maal 1.000 route aanvraag maken en deze over een bepaalde periode verwerken. Alle gegevens worden parallel verwerkt op de-server. Wanneer de verwerking is voltooid, kunt u de volledige set met resultaten downloaden.
+- [**Route berekenen**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): een route berekenen en de aanvraag onmiddellijk verwerken. Deze API biedt ondersteuning voor GET-en POST-aanvragen. POST-aanvragen worden aanbevolen bij het opgeven van een groot aantal waypoints of bij het gebruik van veel van de route opties om ervoor te zorgen dat de URL-aanvraag niet te lang wordt en problemen veroorzaakt. De route richting POST in Azure Maps kan een optie hebben die duizenden [ondersteunende punten](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) in beslag neemt en deze gebruikt om opnieuw een logische route te maken (magnetisch op weg). 
+- [**Batch route**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): een aanvraag met maxi maal 1.000 route aanvraag maken en deze over een bepaalde periode verwerken. Alle gegevens worden parallel verwerkt op de server en wanneer de volledige resultatenset is voltooid, kan deze worden gedownload.
 - [**Mobiliteits Services**](https://docs.microsoft.com/rest/api/maps/mobility): routes en instructies berekenen met behulp van open bare door voer.
 
 De tabel kruis verwijst naar de Google Maps API-para meters met de vergelijk bare API-para meters in Azure Maps.

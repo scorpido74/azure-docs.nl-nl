@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981794"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919461"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Extern bureaublad-services wordt niet gestart op een virtuele Azure-machine
 
 In dit artikel wordt beschreven hoe u problemen oplost wanneer u verbinding maakt met een virtuele machine (VM) van Azure en Extern bureaublad-services, of als de term wordt gestart, niet wordt gestart of niet start.
 
-> [!NOTE]  
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het Resource Manager-implementatie model beschreven. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model.
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -112,7 +110,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>De service wordt gestopt vanwege een probleem met de toegang is geweigerd
 
-1. Verbinding maken met [seriële Console](serial-console-windows.md) en open een PowerShell-exemplaar.
+1. Maak verbinding met de [seriële console](serial-console-windows.md) en open een Power shell-exemplaar.
 2. Down load het hulp programma Process Monitor door het volgende script uit te voeren:
 
    ```
@@ -123,7 +121,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Nu beginnen met een **procmon** trace:
+3. Begin nu met een **ProcMon** -tracering:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -143,7 +141,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
 5. Het bestand **c:\temp\ProcMonTrace.PML**verzamelen:
 
-    1. [Een gegevensschijf koppelen aan de virtuele machine](../windows/attach-managed-disk-portal.md
+    1. [Een gegevens schijf koppelen aan de virtuele machine](../windows/attach-managed-disk-portal.md
 ).
     2. Seriële Console kunt u het bestand kopiëren naar het nieuwe station gebruiken. Bijvoorbeeld `copy C:\temp\ProcMonTrace.PML F:\`. In deze opdracht is F de stationsletter van de gekoppelde gegevensschijf.
     3. Ontkoppel het gegevens station en koppel dit aan een werkende VM waarop Process Monitor-ubstakke is geïnstalleerd.
@@ -203,9 +201,9 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteemschijf koppelen aan een virtuele machine voor herstel
 
-1. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md).
-2. Start een externe bureaubladverbinding met de virtuele machine voor herstel. Zorg ervoor dat de gekoppelde schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die toegewezen aan de gekoppelde besturingssysteemschijf.
-3. Open een opdrachtprompt met verhoogde bevoegdheid-exemplaar (**als administrator uitvoeren**). Voer het volgende script. We gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf **F**is. Vervang deze door de juiste waarde in uw VM. 
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+2. Start een externe bureaubladverbinding met de virtuele machine voor herstel. Controleer of de gekoppelde schijf **online** is gemarkeerd in de schijf beheer-console. Houd er rekening mee de stationsletter die toegewezen aan de gekoppelde besturingssysteemschijf.
+3. Open een opdracht prompt exemplaar met verhoogde bevoegdheid (**als administrator uitvoeren**). Voer het volgende script. We gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf **F**is. Vervang deze door de juiste waarde in uw VM. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -219,8 +217,8 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [De OS-schijf loskoppelen en opnieuw maken van de virtuele machine](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.
+4. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.
 
-## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
 
 Als u nog hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om het probleem op te lossen.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f80f586c783293f87e3b7de469eff07d2e4802d8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703300"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160894"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Quick Start: een token verkrijgen en Microsoft Graph-API aanroepen vanuit een python-console-app met behulp van de identiteit van de app
 
@@ -33,7 +33,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 - [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
@@ -45,14 +45,14 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in. 
@@ -76,37 +76,42 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 #### <a name="step-2-download-your-python-project"></a>Stap 2: uw python-project downloaden
 
-[Het python daemon-project downloaden](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [Het python daemon-project downloaden](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>Stap 3: uw python-project configureren
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Het code voorbeeld downloaden]()
 
-1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
-1. Ga naar de submap **1-call-MSGraph-WithSecret**.
-1. Bewerk **para meters. json** en vervang de waarden van de velden `authority`, `client_id`en `secret` met het volgende code fragment:
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Een nieuw clientgeheim genereren]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>Stap 3: uw python-project configureren
+> 
+> 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
+> 1. Ga naar de submap **1-call-MSGraph-WithSecret**.
+> 1. Bewerk **para meters. json** en vervang de waarden van de velden `authority`, `client_id`en `secret` met het volgende code fragment:
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    Waar:
+>    - `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
+>    - `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **Tenantnaam** (bijvoorbeeld contoso.microsoft.com)
+>    - `Enter_the_Client_Secret_Here`: vervang deze waarde door het clientgeheim dat is gemaakt in stap 1.
+>
+> > [!TIP]
+> > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
-    
-    > [!div renderon="docs"]
-    >> Waar:
-    >> * `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
-    >> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **tenantnaam** (bijvoorbeeld contoso.microsoft.com)
-    >> * `Enter_the_Client_Secret_Here`: vervang deze waarde door het clientgeheim dat is gemaakt in stap 1.
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>Stap 3: toestemming van de beheerder
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
-    
-#### <a name="step-4-admin-consent"></a>Stap 4: Toestemming van de beheerder
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>Stap 4: Toestemming van de beheerder
 
 Als u de toepassing op dit moment probeert uit te voeren, ontvangt u *HTTP 403-verboden* fout: `Insufficient privileges to complete the operation`. Deze fout treedt op omdat de *machtiging alleen* door de beheerder is vereist: een globale beheerder van uw directory moet toestemming geven aan uw toepassing. Selecteer een van de onderstaande opties, afhankelijk van uw rol:
 
@@ -130,10 +135,14 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> Waar:
->> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **tenantnaam** (bijvoorbeeld contoso.microsoft.com)
+>> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **Tenantnaam** (bijvoorbeeld contoso.microsoft.com)
 >> * `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
 
-#### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>Stap 4: de toepassing uitvoeren
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
 
 U moet de afhankelijkheden van dit voor beeld één keer installeren
 

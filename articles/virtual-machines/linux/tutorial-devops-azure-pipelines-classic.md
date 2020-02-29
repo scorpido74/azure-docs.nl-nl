@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 1/16/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: eba793a761bd9f96b1a4ec5d4730f08187a758ef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5707a99b329915b35131fe793b0dfabd02348677
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515341"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912525"
 ---
 # <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>Zelf studie: geïntegreerde DevOps voor IaaS en PaaS op Azure
 
@@ -26,9 +26,9 @@ Met end-to-end-oplossingen in azure kunnen teams DevOps-procedures implementeren
 Hieronder vindt u enkele van de Azure-Services die de Cloud werkbelastingen vereenvoudigen en kunnen worden gecombineerd om verbluffend krachtige scenario's mogelijk te maken.
 Deze technologieën, in combi natie met mensen en processen, zorgen ervoor dat teams voortdurend waarde aan klanten kunnen leveren. 
 
-- Azure: https://portal.azure.com -portal voor het bouwen van Cloud werkbelastingen. Alles beheren en bewaken van eenvoudige web-apps tot complexe Cloud toepassingen 
+- Azure: https://portal.azure.com-portal voor het bouwen van Cloud werkbelastingen. Alles beheren en bewaken van eenvoudige web-apps tot complexe Cloud toepassingen 
 - Azure DevOps: https://dev.azure.com – slimmer plannen, beter samen werken en sneller verzenden met een set moderne ontwikkel services 
-- Azure Machine Learning studio: https://ml.azure.com -prep-gegevens, trainen en implementeren van machine learning modellen 
+- Azure Machine Learning studio: https://ml.azure.com-prep-gegevens, trainen en implementeren van machine learning modellen 
  
 
 Azure DevOps is een ingebouwde Azure-service die elk deel van het DevOps-proces automatiseert met continue integratie en continue levering voor elke Azure-resource.
@@ -91,6 +91,6 @@ Met DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op el
  
 [Meer informatie](https://azure.microsoft.com/features/devops-projects/ ).
  
-## <a name="additional-resources"></a>Aanvullende bronnen 
+## <a name="additional-resources"></a>Aanvullende resources 
 - [Implementeren in azure Virtual Machines met behulp van DevOps-project](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Continue implementatie van uw app implementeren in een Schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

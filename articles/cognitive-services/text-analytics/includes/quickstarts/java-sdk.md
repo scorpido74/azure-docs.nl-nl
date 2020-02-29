@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/11/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi
-ms.openlocfilehash: eeaef4a9970609c43c03cd784436796a6f8af174
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 79b4063d6b65d6861dd7864c4225e91f4ea5bc6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211410"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155401"
 ---
 <a name="HOLTop"></a>
 
@@ -24,9 +24,9 @@ ms.locfileid: "77211410"
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) met versie 8 of hoger
-
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> maken in de Azure Portal om uw sleutel en eind punt op te halen. 
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
+    * U kunt de gratis prijs categorie gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 

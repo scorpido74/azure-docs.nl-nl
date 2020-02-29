@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208740"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914075"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Een web-app migreren vanuit Google Maps
 
@@ -57,8 +57,8 @@ Hier volgen enkele belang rijke verschillen tussen de Google Maps and Azure Maps
 - Shapes in de Web-SDK van Azure Maps zijn gebaseerd op het geojson-schema. Hulp klassen worden weer gegeven via de [naam ruimte *Atlas. data* ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest). Er is ook de [*Atlas.* ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape)Klasse van vorm. Gebruik deze klasse om geojson-objecten in te stellen, zodat het eenvoudig kan worden bijgewerkt en onderhouden van de gegevens binding mogelijk.
 - Coördinaten in Azure Maps worden gedefinieerd als positie-objecten. Een coördinaat wordt opgegeven als een numerieke matrix in de notatie `[longitude,latitude]`. Of het is opgegeven met behulp van nieuwe Atlas. data. Position (lengte graad, breedte graad).
     > [!TIP]
-    > De klasse position heeft een statische hulp methode voor het importeren van coördinaten met de notatie "breedte graad, lengte graad". Vaak kunt u de methode [Atlas. data. position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) vervangen door de methode `new google.maps.LatLng` in Google Maps-code.
-- Azure Maps stijlen worden gescheiden van de gegevens. Het scheiden van gegevens en stijlen is efficiënter dan het opgeven van opmaak gegevens op elke vorm die wordt toegevoegd aan de kaart. Gegevens worden opgeslagen in gegevens bronnen is verbonden met het renderen van lagen. Azure Maps code maakt gebruik van gegevens bronnen om de gegevens weer te geven. Deze aanpak biedt een verbeterd voor deel van prestaties. Daarnaast ondersteunen veel lagen gegevensgestuurde stijlen, waar bedrijfs logica kan worden toegevoegd aan laag stijl opties. Deze ondersteuning wijzigt hoe afzonderlijke vormen worden weer gegeven in een laag, op basis van de eigenschappen die in de vorm zijn gedefinieerd.
+    > De klasse position heeft een statische hulp methode voor het importeren van coördinaten met de notatie "breedte graad, lengte graad". De methode [Atlas. data. position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) kan vaak worden vervangen door de methode `new google.maps.LatLng` in Google Maps-code.
+- In plaats van opmaak gegevens op te geven voor elke vorm die wordt toegevoegd aan de kaart, Azure Maps opmaak profielen gescheiden van de gegevens. Gegevens worden opgeslagen in een gegevens bron en zijn verbonden met het renderen van lagen. Azure Maps code maakt gebruik van gegevens bronnen om de gegevens weer te geven. Deze aanpak biedt een verbeterd voor deel van prestaties. Daarnaast ondersteunen veel lagen gegevensgestuurde stijlen, waar bedrijfs logica kan worden toegevoegd aan laag stijl opties. Deze ondersteuning wijzigt hoe afzonderlijke vormen worden weer gegeven in een laag op basis van de eigenschappen die in de vorm zijn gedefinieerd.
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK-voor beelden naast elkaar
 
@@ -246,7 +246,7 @@ Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op "FR" en
 
 ### <a name="setting-the-map-view"></a>De kaart weergave instellen
 
-In zowel Azure Maps als Google Maps kunnen dynamische kaarten programmatisch worden verplaatst naar nieuwe geografische locaties. Hiertoe roept u de juiste functies aan in Java script. Het voor beeld laat zien hoe u de kaart kunt weer geven satelliet lucht afbeelding, de kaart centreren over een locatie en het zoom niveau wijzigt. De volgende locatie coördinaten worden gebruikt: lengte graad:-111,0225 en Latitude: 35,0272.
+Dynamische kaarten in Azure en Google Maps kunnen programmatisch worden verplaatst naar nieuwe geografische locaties. Hiertoe roept u de juiste functies aan in Java script. De voor beelden laten zien hoe u de kaart kunt weer geven satelliet lucht afbeelding, de kaart centreren over een locatie en het zoom niveau wijzigt in 15 in Google Maps. De volgende locatie coördinaten worden gebruikt: lengte graad:-111,0225 en Latitude: 35,0272.
 
 > [!NOTE]
 > Google Maps maakt gebruik van tegels van 256 pixels in dimensies, terwijl Azure Maps een grotere 512-pixels-tegel gebruikt. Azure Maps hebt dus minder netwerk aanvragen nodig om hetzelfde kaart gebied als Google Maps te laden. Als gevolg van de manier waarop tegel piramides werken in kaart besturings elementen, moet u het zoom niveau dat in Google Maps wordt gebruikt, aftrekken met het cijfer één bij gebruik van Azure Maps. Deze reken kundige bewerking zorgt ervoor dat grotere tegels in Azure Maps hetzelfde kaart gebied weer geven als in Google Maps
@@ -1515,6 +1515,156 @@ Gebruik de klasse `atlas.layer.ImageLayer` om afbeeldingen met geoverwijzingen t
 
 - [Een afbeelding bedekken](map-add-image-layer.md)
 - [Klasse van afbeeldings laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+
+## <a name="add-kml-to-the-map"></a>KML toevoegen aan de kaart
+
+Zowel Azure-als Google-kaarten kunnen KML-, KMZ-en GeoRSS-gegevens op de kaart importeren en weer geven. Azure Maps biedt ook ondersteuning voor GPX-, GML-, ruimtelijke CSV-bestanden, geojson, bekende tekst (WKT), Web Mapping Services (WMS), Webmapping-Services (WMTS) en Web Feature Services (WFS). Azure Maps leest de bestanden lokaal in het geheugen en in de meeste gevallen kunnen veel grotere KML-bestanden worden verwerkt. 
+
+**Voor: Google Maps**
+
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <script type='text/javascript'>
+        var map, historicalOverlay;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('myMap'), {
+                center: new google.maps.LatLng(0, 0),
+                zoom: 1
+            });
+
+             var layer = new google.maps.KmlLayer({
+              url: 'https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml',
+              map: map
+            });
+        }
+    </script>
+
+    <!-- Google Maps Script Reference -->
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+</head>
+<body>
+    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+</body>
+</html>
+```
+
+Als deze code wordt uitgevoerd in een browser, wordt een kaart weer gegeven met de volgende afbeelding:
+
+<center>
+
+overlay voor afbeelding van Google Maps ![](media/migrate-google-maps-web-app/google-maps-kml.png)</center>
+
+**Na: Azure Maps**
+
+In Azure Maps is geojson de hoofd gegevens indeling die wordt gebruikt in de Web-SDK, maar extra ruimtelijke gegevens indelingen kunnen eenvoudig worden geïntegreerd in met behulp van de [ruimtelijke IO-module](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/). Deze module bevat functies voor het lezen en schrijven van ruimtelijke gegevens en bevat ook een eenvoudige gegevenslaag, waarmee u eenvoudig gegevens kunt weer geven uit een van deze ruimtelijke gegevens indelingen. Als u de gegevens in een bestand met ruimtelijke gegevens wilt lezen, geeft u een URL of onbewerkte gegevens op als teken reeks of BLOB in de functie `atlas.io.read`. Hiermee worden alle geparseerde gegevens uit het bestand geretourneerd die vervolgens aan de kaart kunnen worden toegevoegd. KML is een beetje complexer dan de meeste ruimtelijke gegevens indeling, aangezien deze veel meer informatie over de stijl bevat. De klasse `SpatialDataLayer` ondersteunt het weer geven van de meeste van deze stijlen, maar pictogrammen afbeeldingen moeten worden geladen in de kaart voordat de functie gegevens worden geladen en er moeten vloer bedekkingen afzonderlijk aan de kaart worden toegevoegd. Wanneer u gegevens laadt via een URL, moet deze worden gehost op een eind punt waarvoor CORs is ingeschakeld, of moet een proxy service worden door gegeven als een optie in de functie read. 
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+    <!-- Add reference to the Azure Maps Spatial IO module. -->
+    <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
+
+    <script type='text/javascript'>
+        var map, datasource, layer;
+
+        function initMap() {
+            //Initialize a map instance.
+            map = new atlas.Map('myMap', {
+                view: 'Auto',
+
+                //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
+            });
+
+            //Wait until the map resources are ready.
+            map.events.add('ready', function () {
+            
+                //Create a data source and add it to the map.
+                datasource = new atlas.source.DataSource();
+                map.sources.add(datasource);
+
+                //Add a simple data layer for rendering the data.
+                layer = new atlas.layer.SimpleDataLayer(datasource);
+                map.layers.add(layer);
+
+                //Read a KML file from a URL or pass in a raw KML string.
+                atlas.io.read('https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml').then(async r => {
+                    if (r) {
+
+                        //Check to see if there are any icons in the data set that need to be loaded into the map resources.
+                        if (r.icons) {
+                            //For each icon image, create a promise to add it to the map, then run the promises in parrallel.
+                            var imagePromises = [];
+
+                            //The keys are the names of each icon image.
+                            var keys = Object.keys(r.icons);
+
+                            if (keys.length !== 0) {
+                                keys.forEach(function (key) {
+                                    imagePromises.push(map.imageSprite.add(key, r.icons[key]));
+                                });
+
+                                await Promise.all(imagePromises);
+                            }
+                        }
+
+                        //Load all features.
+                        if (r.features && r.features.length > 0) {
+                            datasource.add(r.features);
+                        }
+
+                        //Load all ground overlays.
+                        if (r.groundOverlays && r.groundOverlays.length > 0) {
+                            map.layers.add(r.groundOverlays);
+                        }
+
+                        //If bounding box information is known for data, set the map view to it.
+                        if (r.bbox) {
+                            map.setCamera({ bounds: r.bbox, padding: 50 });
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
+</body>
+</html>
+```
+
+<center>
+
+![Azure Maps installatie kopie-overlay](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
+
+**Aanvullende bronnen:**
+
+- [de functie Atlas. io. Read](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io?view=azure-maps-typescript-latest#read-string---arraybuffer---blob--spatialdatareadoptions-)
+- [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+- [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ## <a name="additional-code-samples"></a>Aanvullende code voorbeelden
 

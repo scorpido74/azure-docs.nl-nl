@@ -12,18 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: be0f61b1458fa8bd63d85669c7956a789892996a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981333"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918254"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Een interne fout treedt op wanneer u probeert verbinding maken met een Azure-VM via Extern bureaublad
 
 Dit artikel wordt een fout die optreden kunnen wanneer u probeert verbinding maken met een virtuele machine (VM) in Microsoft Azure beschreven.
-> [!NOTE]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel bevat informatie over het Resource Manager-implementatiemodel, dat wordt u aangeraden voor nieuwe implementaties in plaats van het klassieke implementatiemodel.
+
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -44,19 +43,19 @@ Dit probleem kan optreden voor de volgende redenen:
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
+Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
 
-Om dit probleem wilt oplossen, gebruikt u de seriële Console of [herstel de virtuele machine offline](#repair-the-vm-offline) door het koppelen van de besturingssysteemschijf van de virtuele machine aan een virtuele machine voor herstel.
+U kunt dit probleem oplossen door de seriële console te gebruiken of [de virtuele machine offline te herstellen](#repair-the-vm-offline) door de besturingssysteem schijf van de virtuele machine aan een herstel-VM te koppelen.
 
 
 ### <a name="use-serial-control"></a>Seriële besturingselement gebruiken
 
-Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Als de seriële Console niet is ingeschakeld op de virtuele machine, gaat u naar de [herstel de virtuele machine offline](#repair-the-vm-offline) sectie.
+Maak verbinding met de [seriële console en open een Power shell-exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Als de seriële console niet is ingeschakeld op uw virtuele machine, gaat u naar de sectie [de virtuele machine offline herstellen](#repair-the-vm-offline) .
 
 #### <a name="step-1-check-the-rdp-port"></a>Stap: 1 Controleer de RDP-poort
 
-1. In een PowerShell-sessie, gebruikt u de [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
+1. Gebruik in een Power shell-exemplaar de [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) om te controleren of poort 8080 wordt gebruikt door andere toepassingen:
 
         Netstat -anob |more
@@ -84,7 +83,7 @@ Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-co
 
             Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
-    3. [Bijwerken van de netwerkbeveiligingsgroep voor de nieuwe poort](../../virtual-network/security-overview.md) in de Azure portal RDP-poort.
+    3. [Werk de netwerk beveiligings groep bij voor de nieuwe poort](../../virtual-network/security-overview.md) in de Azure Portal RDP-poort.
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Stap 2: Juiste machtigingen instellen voor de RDP-zelf-ondertekend certificaat
 
@@ -104,10 +103,10 @@ Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-co
 
 2. Als u het certificaat niet vernieuwen met behulp van deze methode, probeert u het zelfondertekende certificaat van RDP op afstand vernieuwen:
 
-    1. Vanaf een werkende virtuele machine die verbonden met de virtuele machine is er die problemen, type **mmc** in de **uitvoeren** vak om Microsoft Management Console te openen.
-    2. Op de **bestand** in het menu **module toevoegen/verwijderen**, selecteer **certificaten**, en selecteer vervolgens **toevoegen**.
-    3. Selecteer **computeraccounts**, selecteer **een andere Computer**, en voeg het IP-adres van de virtuele machine van het probleem.
-    4. Ga naar de **externe Desktop\Certificates** map met de rechtermuisknop op het certificaat, en vervolgens en selecteer **verwijderen**.
+    1. Voer vanuit een werkende VM die verbinding heeft met de virtuele machine die problemen ondervindt, **MMC** in het vak **uitvoeren** in om micro soft Management console te openen.
+    2. Selecteer **module toevoegen/verwijderen**in het menu **bestand** , selecteer **certificaten**en selecteer vervolgens **toevoegen**.
+    3. Selecteer **computer accounts**, selecteer **een andere computer**en voeg vervolgens het IP-adres van de probleem-VM toe.
+    4. Ga naar de map **externe Desktop\Certificates** , klik met de rechter muisknop op het certificaat en selecteer **verwijderen**.
     5. In een PowerShell-exemplaar van de seriële Console, de configuratie voor extern bureaublad-service opnieuw te starten:
 
             Stop-Service -Name "SessionEnv"
@@ -159,15 +158,15 @@ De RDP-client maakt gebruik van TLS 1.0 als het standaard-protocol. Dit kan echt
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteemschijf koppelen aan een virtuele machine voor herstel
 
-1. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md).
-2. Nadat de besturingssysteemschijf is gekoppeld aan de virtuele machine voor herstel, zorg ervoor dat de schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+2. Nadat de besturingssysteem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf.
 3. Start een externe bureaubladverbinding met de virtuele machine voor herstel.
 
 #### <a name="enable-dump-log-and-serial-console"></a>Dump logboek- en seriële Console inschakelen
 
 Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid-sessie (**als administrator uitvoeren**).
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (**als administrator uitvoeren**).
 2. Voer het volgende script uit:
 
     In dit script, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
@@ -196,8 +195,8 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>De machtigingen voor map MachineKeys opnieuw instellen
 
-1. Open een opdrachtprompt met verhoogde bevoegdheid-sessie (**als administrator uitvoeren**).
-2. Voer het volgende script uit. In dit script, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (**als administrator uitvoeren**).
+2. Voer het volgende script uit: In dit script, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
 
         Md F:\temp
 
@@ -215,7 +214,7 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
 
 #### <a name="enable-all-supported-tls-versions"></a>Inschakelen van alle ondersteunde TLS-versies
 
-1.  Open een opdrachtprompt met verhoogde bevoegdheid-sessie (**als administrator uitvoeren**), en de voert de volgende opdrachten. Het volgende script wordt ervan uitgegaan dat de stationsletter is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde is voor uw virtuele machine.
+1.  Open een opdracht prompt sessie met verhoogde bevoegdheden (**als administrator uitvoeren**) en voer de volgende opdrachten uit. Het volgende script wordt ervan uitgegaan dat de stationsletter is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde is voor uw virtuele machine.
 2.  Controleer welke TLS is ingeschakeld:
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -232,7 +231,7 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
 
-3.  Als de sleutel bestaat niet of is de waarde ervan **0**, schakelt u het protocol door het uitvoeren van de volgende scripts:
+3.  Als de sleutel niet bestaat of de waarde ervan **0**is, schakelt u het protocol in door de volgende scripts uit te voeren:
 
         REM Enable TLS 1.0, TLS 1.1 and TLS 1.2
 
@@ -263,7 +262,7 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
-5.  [De OS-schijf loskoppelen en opnieuw maken van de virtuele machine](../windows/troubleshoot-recovery-disks-portal.md), en controleer vervolgens of het probleem opgelost is.
+5.  [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md)en controleer of het probleem is opgelost.
 
 
 

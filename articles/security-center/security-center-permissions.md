@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201654"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921314"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
@@ -29,8 +29,8 @@ Security Center beoordeelt de configuratie van uw resources om beveiligingsprobl
 
 Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
-* **Beveiligings lezer**: Een gebruiker die deel uitmaakt van deze rol heeft weergave rechten voor Security Center. De gebruiker kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen.
-* **Beveiligings beheerder**: Een gebruiker die deel uitmaakt van deze rol heeft dezelfde rechten als de beveiligings lezer en kan het beveiligings beleid ook bijwerken en waarschuwingen en aanbevelingen negeren.
+* **Beveiligings lezer**: een gebruiker die tot deze rol behoort, heeft weergave rechten voor Security Center. De gebruiker kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen.
+* **Beveiligings beheerder**: een gebruiker die deel uitmaakt van deze rol heeft dezelfde rechten als de beveiligings lezer en kan het beveiligings beleid ook bijwerken en waarschuwingen en aanbevelingen negeren.
 
 > [!NOTE]
 > De beveiligings rollen, beveiligings lezer en beveiligings beheerder hebben alleen toegang tot Security Center. De beveiligings rollen hebben geen toegang tot andere service gebieden van Azure, zoals Storage, Web & Mobile of Internet of Things.
@@ -39,17 +39,17 @@ Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
 ## <a name="roles-and-allowed-actions"></a>Rollen en toegestane acties
 
-De volgende tabel bevat rollen en toegestane acties in Security Center. Een X geeft aan dat de actie is toegestaan voor die rol.
+De volgende tabel bevat rollen en toegestane acties in Security Center.
 
-| Role | Beveiligings beleid bewerken | Aanbevelingen voor beveiliging Toep assen op een resource | Waarschuwingen en aanbevelingen negeren | Waarschuwingen en aanbevelingen weer geven |
+| Rol | Beveiligings beleid bewerken | Aanbevelingen voor beveiliging Toep assen op een resource</br> (inclusief ' Quick Fix! ') | Waarschuwingen en aanbevelingen negeren | Waarschuwingen en aanbevelingen weer geven |
 |:--- |:---:|:---:|:---:|:---:|
-| Abonnements eigenaar | X | X | X | X |
-| Mede werker van abonnement | -- | X | X | X |
-| Eigenaar van resource groep | -- | X | -- | X |
-| Inzender voor resource groep | -- | X | -- | X |
-| Lezer | -- | -- | -- | X |
-| Beveiligingsbeheerder | X | -- | X | X |
-| Beveiligingslezer | -- | -- | -- | X |
+| Abonnements eigenaar | ✔ | ✔ | ✔ | ✔ |
+| Mede werker van abonnement | -- | ✔ | ✔ | ✔ |
+| Eigenaar van resource groep | -- | ✔ | -- | ✔ |
+| Inzender voor resource groep | -- | ✔ | -- | ✔ |
+| Lezer | -- | -- | -- | ✔ |
+| Beveiligingsbeheer | ✔ | -- | ✔ | ✔ |
+| Beveiligings lezer | -- | -- | -- | ✔ |
 
 > [!NOTE]
 > We raden u aan de rol toe te wijzen die gebruikers minimaal nodig hebben om hun taken uit te voeren. Wijs bijvoorbeeld de rol Lezer toe aan gebruikers die alleen informatie over de beveiligings status van een resource hoeven te bekijken, maar geen actie ondernemen, zoals het Toep assen van aanbevelingen of het bewerken van beleid.

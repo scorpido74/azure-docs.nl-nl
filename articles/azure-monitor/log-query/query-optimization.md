@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670811"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164573"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -258,8 +258,13 @@ by Computer
 ) on Computer
 ```
 
+De meting is altijd groter dan de opgegeven werkelijke tijd. Als bijvoorbeeld het filter voor de query zeven dagen is, kan het systeem 7,5 of 8,1 dagen scannen. Dit komt doordat het systeem de gegevens partitioneert in segmenten in een variabele grootte. Om ervoor te zorgen dat alle relevante records worden gescand, wordt de volledige partitie gescand die enkele uren en zelfs meer dan een dag kan omvatten.
+
+Er zijn verschillende gevallen waarin het systeem geen nauw keurige meting van het tijds bereik kan bieden. Dit gebeurt in de meeste gevallen waarin de duur van de query minder dan een dag of in meerdere werk ruimte query's.
+
+
 > [!IMPORTANT]
-> Deze indicator is niet beschikbaar voor query's voor meerdere regio's.
+> Deze indicator presenteert alleen gegevens die zijn verwerkt in het directe cluster. In een query met meerdere regio's zou het slechts een van de regio's vertegenwoordigen. In een query met meerdere werk ruimten zijn mogelijk niet alle werk ruimten inbegrepen.
 
 ## <a name="age-of-processed-data"></a>Ouderdom van verwerkte gegevens
 Azure Data Explorer maakt gebruik van verschillende opslag lagen: lokale SSD-schijven in het geheugen en veel langzamere Azure-blobs. De nieuwere gegevens, hoe hoger is de kans dat deze wordt opgeslagen in een meer krachtige laag met een kleinere latentie, waardoor de duur en CPU van de query worden verminderd. Met uitzonde ring van de gegevens zelf, heeft het systeem ook een cache voor meta gegevens. De oudere gegevens, de mindere meta gegevens worden in de cache opgeslagen.
@@ -284,7 +289,7 @@ Voor het uitvoeren van query's voor meerdere regio's moet het systeem serialisat
 Als er geen echte reden is om al deze regio's te scannen, moet u het bereik aanpassen zodat het minder regio's beslaat. Als het bron bereik is geminimaliseerd, maar er nog steeds veel regio's worden gebruikt, kan dit worden veroorzaakt door een onjuiste configuratie. Audit logboeken en diagnostische instellingen worden bijvoorbeeld verzonden naar verschillende werk ruimten in verschillende regio's of er zijn meerdere configuraties voor Diagnostische instellingen. 
 
 > [!IMPORTANT]
-> Deze indicator is niet beschikbaar voor query's voor meerdere regio's.
+> Wanneer een query wordt uitgevoerd in meerdere regio's, zijn de CPU-en gegevens metingen niet nauw keurig en wordt de meting alleen in een van de regio's weer gegeven.
 
 ## <a name="number-of-workspaces"></a>Aantal werk ruimten
 Werk ruimten zijn logische containers die worden gebruikt om logboek gegevens te scheiden en te beheren. De back-end optimaliseert de locatie van de werk ruimte op fysieke clusters in de geselecteerde regio.
@@ -300,7 +305,7 @@ Voor het uitvoeren van query's in meerdere regio's en meerdere clusters moet het
 > In sommige scenario's met meerdere werk ruimten zijn de CPU-en gegevens metingen niet nauw keurig en wordt de meting alleen voor een aantal werk ruimten weer gegeven.
 
 ## <a name="parallelism"></a>Parallelle uitvoering
-Azure Monitor logboeken maakt gebruik van grote clusters van Azure Data Explorer om query's uit te voeren en deze clusters variëren op schaal. Het systeem schaalt automatisch de clusters volgens de locatie logica en capaciteit van de werk ruimte.
+Azure Monitor logboeken maakt gebruik van grote clusters van Azure Data Explorer om query's uit te voeren en deze clusters variëren op schaal, waardoor er Maxi maal tien tallen reken knooppunten kunnen worden opgehaald. Het systeem schaalt automatisch de clusters volgens de locatie logica en capaciteit van de werk ruimte.
 
 Om een query efficiënt uit te voeren, wordt deze gepartitioneerd en gedistribueerd naar Compute-knoop punten op basis van de gegevens die nodig zijn voor de verwerking ervan. Er zijn enkele situaties waarin het systeem dit niet efficiënt kan doen. Dit kan leiden tot een lange duur van de query. 
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 006e1fb3fcef1ebcd0e09dffb79149e75eec622a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f099546ced64bd911916164879cd533329761c66
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713173"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914667"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
+# <a name="client-libraries-for-connecting-to-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Analysis Services
 
 Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's om verbinding te maken met Analysis Services-servers. Micro soft-client toepassingen als Power BI Desktop, Excel, SQL Server Management Studio (SSMS) en Analysis Services projects-extensie voor Visual Studio installeren alle drie client bibliotheken en werken ze samen met reguliere toepassings updates. In sommige gevallen moet u mogelijk nieuwere versies van de client bibliotheken installeren. Voor aangepaste client toepassingen moeten ook client bibliotheken zijn geïnstalleerd.
 

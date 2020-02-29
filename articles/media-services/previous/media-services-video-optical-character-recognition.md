@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084826"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918305"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics gebruiken om tekst inhoud in video bestanden te converteren naar digitale tekst  
+
+> [!NOTE]
+> De OCR-media processor van **Azure media** wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
 
 ## <a name="overview"></a>Overzicht
 Als u tekst inhoud uit uw video bestanden wilt extra heren en een bewerkbaar, Doorzoek bare digitale tekst wilt genereren, moet u Azure Media Analytics OCR gebruiken (optische teken herkenning). Deze Azure media-processor detecteert tekst inhoud in uw video bestanden en genereert tekst bestanden voor uw gebruik. Met OCR kunt u het uitpakken van zinvolle meta gegevens van het video signaal van uw media automatiseren.
@@ -119,7 +122,7 @@ De uitvoer bevat de volgende kenmerken:
 | regio |object dat gedetecteerde woorden of zinsdelen voor stelt |
 | language |taal van de tekst die in een regio is gedetecteerd |
 | opstelling |de stand van de gedetecteerde tekst binnen een regio |
-| transferorderregels |matrix met tekst regels die binnen een regio zijn gedetecteerd |
+| Transferorderregels |matrix met tekst regels die binnen een regio zijn gedetecteerd |
 | tekst |de werkelijke tekst |
 
 ### <a name="json-output-example"></a>Voor beeld van JSON-uitvoer
@@ -369,6 +372,6 @@ namespace OCR
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 

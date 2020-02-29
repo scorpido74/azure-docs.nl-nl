@@ -9,18 +9,18 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773536"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920600"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
 Service Bus metrische gegevens geven u de status van resources in uw Azure-abonnement. Met een uitgebreide set met metrische gegevens kunt u de algemene status van uw Service Bus-resources controleren, niet alleen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Deze statistieken kunnen van belang zijn wanneer u de status van Service Bus kunt bewaken. Metrische gegevens kunnen ook helpen problemen hoofdoorzaak zonder contact opnemen met ondersteuning van Azure.
 
-Azure Monitor biedt een uniforme gebruikersinterfaces voor bewaking over de verschillende Azure-services. Zie voor meer informatie, [bewaken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) en de [ophalen van Azure Monitor metrics met .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op GitHub.
+Azure Monitor biedt een uniforme gebruikersinterfaces voor bewaking over de verschillende Azure-services. Zie voor meer informatie [bewaking in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) en het voor beeld [Azure monitor metrische gegevens ophalen met .net](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op github.
 
 > [!IMPORTANT]
 > Als er gedurende twee uur geen interactie met een entiteit is geweest, worden de metrische gegevens als een waarde weer gegeven totdat de entiteit niet langer inactief is.
@@ -33,7 +33,7 @@ Metrische gegevens zijn standaard ingeschakeld en u hebt toegang tot gegevens va
 
 ## <a name="access-metrics-in-the-portal"></a>Toegang tot metrische gegevens in de portal
 
-U kunt metrische gegevens controleren na verloop van tijd in de [Azure-portal](https://portal.azure.com). Het volgende voorbeeld laat zien hoe om binnenkomende aanvragen op accountniveau en geslaagde aanvragen weer te geven:
+U kunt metrische gegevens gedurende een bepaalde periode bewaken in de [Azure Portal](https://portal.azure.com). Het volgende voorbeeld laat zien hoe om binnenkomende aanvragen op accountniveau en geslaagde aanvragen weer te geven:
 
 ![][1]
 
@@ -43,7 +43,7 @@ U kunt ook toegang tot metrische gegevens rechtstreeks via de naamruimte. Hierto
 
 Voor metrische gegevens ondersteunen dimensies, moet u filteren met de gewenste dimensie waarde.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 Metrische gegevens en waarschuwingen op Azure Monitor worden per waarschuwing in rekening gebracht. Deze kosten moeten beschikbaar zijn op de Portal wanneer de waarschuwing wordt ingesteld en voordat deze wordt opgeslagen. 
 
@@ -86,6 +86,13 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 | ActiveMessages| Aantal actieve berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
 | Onbestelbare berichten| Aantal onbestelbare berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/>Dimensie: EntityName |
 | Geplande berichten| Aantal geplande berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld  <br/> Dimensie: EntityName |
+
+> [!NOTE]
+> Waarden voor de volgende metrische gegevens zijn waarden voor een bepaald tijdstip. Inkomende berichten die onmiddellijk na dat tijdstip zijn verbruikt, mogen niet worden weer gegeven in deze metrische gegevens. 
+> - Berichten
+> - Actieve berichten 
+> - Onbestelbare berichten 
+> - Geplande berichten 
 
 ## <a name="connection-metrics"></a>Metrische verbindingsgegevens
 

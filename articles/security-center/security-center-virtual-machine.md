@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603356"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921501"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center en Azure Virtual Machines
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
@@ -33,7 +33,7 @@ Met Security Center kunt u gegevens van virtuele machines in Azure beveiligen do
 * Aanbevelingen voor eindpuntbeveiliging
 * Validatie voor schijfversleuteling
 * Beoordeling en herstel van beveiligingslekken
-* Detectie van bedreigingen
+* Beveiligings waarschuwingen van de functies voor bedreigings beveiliging
 
 Naast het beveiligen van Azure VM's biedt Security Center ook beveiligingscontrole en -beheer voor cloudservices, app-services, virtuele netwerken en meer. 
 

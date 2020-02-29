@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084801"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918311"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
- 
+
+> [!NOTE]
+> De **Azure Media video thumbnails** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
+
 ## <a name="overview"></a>Overzicht
 
 Met de **Azure Media video thumbnails** media processor (MP) kunt u een samen vatting maken van een video die nuttig is voor klanten die alleen een samen vatting van een lange video willen bekijken. Klanten willen bijvoorbeeld een korte ' samen vattings video ' zien wanneer ze op een miniatuur bewegen. Door de para meters van **Azure Media video thumbnails** te wijzigen via een vooraf ingestelde configuratie, kunt u de krachtige opname-en samenvoegings technologie van MP gebruiken om algorithmically een beschrijvende subclip te genereren.  
@@ -287,7 +290,7 @@ Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinfo
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

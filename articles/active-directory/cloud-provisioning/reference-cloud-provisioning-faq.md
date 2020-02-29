@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020757"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916571"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -71,6 +71,14 @@ Nee, Cloud inrichting biedt geen ondersteuning voor het terugschrijven van MS-DS
 **V: ik richt gebruikers in met het inrichten van de Cloud. Ik heb de configuratie verwijderd. Waarom zie ik nog steeds de oude gesynchroniseerde objecten in azure AD?** 
 
 Wanneer u de configuratie verwijdert, worden de gesynchroniseerde objecten in azure AD niet opgeschoond met Cloud inrichting. Om ervoor te zorgen dat u niet over de oude objecten beschikt, wijzigt u het bereik van de configuratie in een lege groep of organisatie-eenheden. Wanneer de inrichting wordt uitgevoerd en de objecten worden opgeschoond, kunt u de configuratie uitschakelen en verwijderen. 
+
+**V: wat betekent het dat Exchange hybride niet wordt ondersteund?**
+
+Met de functie Hybride implementatie voor Exchange kunnen on-premises en in Office 365 meerdere Exchange-postbussen naast elkaar bestaan. Azure AD Connect is een specifieke set kenmerken van Azure AD terug naar uw on-premises Directory gesynchroniseerd.  De Cloud Provisioning agent synchroniseert deze kenmerken momenteel niet terug in uw on-premises Directory en wordt daarom niet ondersteund als vervanging voor Azure AD Connect.
+
+**V: kan ik de inrichtings agent voor de Cloud installeren op Windows Server Core?**
+
+Nee, het installeren van de agent op Server Core wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

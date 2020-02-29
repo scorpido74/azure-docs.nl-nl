@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1547f0e600031f558dcc0157df2a35fdf3f9db2c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224691"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920468"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document bevat richt lijnen voor het configureren van Azure-infra structuur en-besturings SAP HANA systemen die zijn geïmplementeerd op Azure native virtual machines (Vm's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM-SKU. Dit document is niet bedoeld als vervanging van de Standard SAP-documentatie, die de volgende inhoud bevat:
@@ -67,7 +67,7 @@ Implementeer de virtuele machines in azure met behulp van:
 U kunt ook een volledig geïnstalleerd SAP HANA-platform implementeren op de Azure VM-Services via het [SAP-Cloud platform](https://cal.sap.com/). Het installatie proces wordt beschreven in [SAP S/4HANA of BW/4HANA op Azure implementeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) of met de automatisering die [hier](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)is uitgebracht.
 
 >[!IMPORTANT]
-> Als u M208xx_v2 Vm's wilt gebruiken, moet u zorgvuldig uw Linux-installatie kopie selecteren in de galerie met installatie kopieën van Azure VM. Lees de [grootten van de virtuele machines geoptimaliseerd voor geheugen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)om de details te lezen. 
+> Als u M208xx_v2 Vm's wilt gebruiken, moet u zorgvuldig uw Linux-installatie kopie selecteren in de galerie met installatie kopieën van Azure VM. Lees de [grootten van de virtuele machines geoptimaliseerd voor geheugen](../../mv2-series.md)om de details te lezen.
 > 
 
 
@@ -112,115 +112,59 @@ Voor Vm's met SAP HANA moet u werken met vaste IP-adressen die zijn toegewezen. 
 
 De volgende afbeelding toont een overzicht van een ruwe implementatie schema voor SAP HANA na een hub-en spoke-VNet-architectuur:
 
-![Ruw implementatie schema voor SAP HANA](media/hana-vm-operations/hana-simple-networking.PNG)
+![Ruw implementatie schema voor SAP HANA](media/hana-vm-operations/hana-simple-networking-dmz.png)
 
 Als u SAP HANA in azure wilt implementeren zonder een site-naar-site-verbinding, wilt u de SAP HANA instantie van het open bare Internet nog steeds afschermen en verbergen achter een doorstuur proxy. In dit basis scenario is de implementatie afhankelijk van de ingebouwde DNS-services van Azure om hostnamen op te lossen. In een complexere implementatie waarbij open bare IP-adressen worden gebruikt, zijn de ingebouwde DNS-services van Azure vooral belang rijk. Gebruik Azure Nsg's en [Azure nva's](https://azure.microsoft.com/solutions/network-appliances/) om de route ring van het internet naar uw Azure VNet-architectuur in azure te beheren. De volgende afbeelding toont een ruw schema voor het implementeren van SAP HANA zonder een site-naar-site-verbinding in een hub-en spoke-VNet-architectuur:
   
-![Ruw implementatie schema voor SAP HANA zonder een site-naar-site-verbinding](media/hana-vm-operations/hana-simple-networking2.PNG)
+![Ruw implementatie schema voor SAP HANA zonder een site-naar-site-verbinding](media/hana-vm-operations/hana-simple-networking-dmz.png)
  
 
 Een andere beschrijving van het gebruik van Azure Nva's voor het beheren en controleren van de toegang vanaf internet zonder de hub-en spoke VNet-architectuur, vindt u in het artikel [Maxi maal beschik bare virtuele netwerk apparaten implementeren](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
 
 
 ## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>Azure-infra structuur voor SAP HANA scale-out configureren
-Micro soft heeft een VM-SKU van één M-serie die is gecertificeerd voor een SAP HANA scale-out-configuratie. Het VM-type M128s is gecertificeerd voor een scale-out van Maxi maal 16 knoop punten. Voor wijzigingen in SAP HANA scale-out certificeringen op virtuele machines van Azure controleert u de [lijst gecertificeerde IaaS-platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
+Als u wilt weten wat de Azure VM-typen zijn die zijn gecertificeerd voor het uitschalen van OLAP-uitbreiies of S/4HANA, controleert u de [SAP Hana hardware-map](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Een vinkje in de kolom clustering geeft ondersteuning voor scale-out aan. Het toepassings type geeft aan of het uitschalen van de OLAP-of S/4HANA wordt ondersteund. Raadpleeg de details van de vermeldingen in de specifieke VM-SKU die wordt vermeld in de SAP HANA hardware-map voor meer informatie over knoop punten die zijn gecertificeerd voor het uitschalen van elke virtuele machine.
 
-De minimale OS-Releases voor het implementeren van scale-out configuraties in virtuele Azure-machines zijn:
-
-- SUSE Linux 12 SP3
-- Red Hat Linux 7,4
-
-Van de scale-out certificering van 16 knoop punten
-
-- Eén knoop punt is het hoofd knooppunt
-- Een maximum van 15 knoop punten zijn werk knooppunten
+De minimale OS-Releases voor het implementeren van scale-out configuraties in azure Vm's, controleert u de details van de vermeldingen in de specifieke VM-SKU die wordt weer gegeven in de SAP HANA hardware-map. Van een scale-out-configuratie van een n-knoop punt, fungeert één knoop punt als hoofd knooppunt. De andere knoop punten tot aan de limiet van het knoop punt certificering Act als Worker. Extra stand-by-knoop punten tellen niet in het aantal gecertificeerde knoop punten
 
 >[!NOTE]
->In azure VM scale-out-implementaties is het niet mogelijk een stand-by-knoop punt te gebruiken
+> Azure VM scale-out-implementaties van SAP HANA met het stand-by-knoop punt zijn alleen mogelijk met de [Azure NetApp files](https://azure.microsoft.com/services/netapp/) -opslag. Andere SAP HANA gecertificeerde Azure-opslag kunnen de configuratie van SAP HANA stand-by-knoop punten
 >
 
-Hoewel Azure een systeem eigen NFS-service heeft met [Azure NetApp files](https://azure.microsoft.com/services/netapp/), is de NFS-service, hoewel ondersteund voor de SAP-toepassingslaag, nog niet gecertificeerd voor SAP Hana. Als gevolg hiervan moeten NFS-shares nog steeds worden geconfigureerd met behulp van de functionaliteit van derden. 
+Voor/Hana/Shared wordt ook het gebruik van [Azure NetApp files](https://azure.microsoft.com/services/netapp/)aangeraden. 
 
+Een typisch basis ontwerp voor één knoop punt in een scale-out configuratie gaat er als volgt uit:
 
-Als gevolg hiervan kunnen **/Hana/data** -en **/Hana/log** -volumes niet worden gedeeld. Deze volumes van de afzonderlijke knoop punten niet delen, voor komt het gebruik van een SAP HANA stand-by-knoop punt in een scale-out configuratie.
-
-Als gevolg hiervan wordt het basis ontwerp voor één knoop punt in een scale-out configuratie als volgt weer geven:
-
-![Basis beginselen van één knoop punt uitschalen](media/hana-vm-operations/scale-out-basics.PNG)
+![Basis beginselen van één knoop punt uitschalen](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 De basis configuratie van een VM-knoop punt voor SAP HANA uitschalen ziet er als volgt uit:
 
-- Voor **/Hana/Shared**moet u een Maxi maal beschik bare NFS-share bouwen. Tot nu toe zijn er verschillende mogelijkheden om een hoge beschik bare share te verkrijgen. Deze worden beschreven in combi natie met SAP net-Weaver:
-    - [Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-    - [GlusterFS op Azure VM's op Red Hat Enterprise Linux voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
-    - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-    - [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-- Alle andere schijf volumes worden **niet** gedeeld tussen de verschillende knoop punten en zijn **niet** gebaseerd op NFS. Installatie configuraties en-stappen voor het uitschalen van HANA-installaties met niet-gedeelde **/Hana/data** en **/Hana/log** , worden verderop in dit document beschreven.
-
->[!NOTE]
->Het Maxi maal beschik bare NFS-cluster zoals het wordt weer gegeven in de afbeeldingen wordt beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Andere mogelijkheden worden beschreven in de bovenstaande lijst.
-
-Het formaat van de volumes voor de knoop punten is hetzelfde als voor omhoog schalen, met uitzonde ring van **/Hana/Shared**. De voorgestelde grootten en typen voor de M128s-VM-SKU zien er als volgt uit:
-
-| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/data | /hana/log | /root volume | /usr/sap | Hana/back-up |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+- Voor **/Hana/Shared**gebruikt u de systeem eigen NFS-service die via Azure NetApp files wordt meegeleverd. 
+- Alle andere schijf volumes worden niet gedeeld tussen de verschillende knoop punten en zijn niet gebaseerd op NFS. Installatie configuraties en-stappen voor het uitschalen van HANA-installaties met niet-gedeelde **/Hana/data** en **/Hana/log** worden verderop in dit document nader beschreven. Voor HANA-gecertificeerde opslag die kan worden gebruikt, raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
 
 
-Controleer of de opslag doorvoer voor de verschillende voorgestelde volumes voldoet aan de werk belasting die u wilt uitvoeren. Als voor de werk belasting hogere volumes zijn vereist voor **/Hana/data** en **/Hana/log**, moet u het aantal Azure Premium Storage vhd's verg Roten. Het formaat van een volume met meer Vhd's dan wordt weer gegeven, verhoogt de IOPS en I/O-door Voer binnen de limieten van het type virtuele machine van Azure. Pas Azure-Write Accelerator ook toe op de schijven die het **/Hana/log** -volume vormen.
- 
-In het document [SAP Hana TDI-opslag vereisten](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)is een formule een naam die de grootte van het **/Hana/Shared** -volume definieert voor uitschalen als de geheugen grootte van één worker-knoop punt per vier worker-knoop punten.
+Als u het formaat van de volumes of schijven wilt wijzigen, moet u het document controleren [SAP Hana TDI-opslag vereisten](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)voor de grootte die is vereist, afhankelijk van het aantal worker-knoop punten. In het document wordt een formule vrijgegeven die u moet Toep assen om de vereiste capaciteit van het volume op te halen
 
-Als u de SAP HANA scale-out Certified M128s Azure VM met een ongeveer 2 TB geheugen haalt, kunnen de SAP-aanbevelingen worden samengevoegd zoals:
-
-- Een hoofd knooppunt en Maxi maal vier worker-knoop punten: het **/Hana/Shared** -volume moet 2 TB aan grootte hebben. 
-- Eén hoofd knooppunt en vijf tot acht werk knooppunten, de grootte van **/Hana/Shared** moet 4 TB zijn. 
-- Er is een hoofd knooppunt en 9 tot 12 werk knooppunten met een grootte van 6 TB voor **/Hana/Shared** vereist. 
-- Eén Master-knoop punt en gebruik tussen 12 en 15 werk knooppunten, u moet een **/Hana/Shared** -volume opgeven dat groter is dan 8 TB.
-
-Het andere belang rijke ontwerp dat wordt weer gegeven in de grafische afbeeldingen van de configuratie met één knoop punt voor een scale-out SAP HANA VM is het VNet of de configuratie van het subnet verhogen. SAP beveelt een schei ding van het verkeer van de client/toepassing aan van de communicatie tussen de HANA-knoop punten. Zoals in de grafische afbeelding wordt weer gegeven, wordt dit doel bereikt door twee verschillende Vnic's toe te voegen aan de virtuele machine. Beide Vnic's bevinden zich in verschillende subnetten, hebben twee verschillende IP-adressen. Vervolgens beheert u de stroom van verkeer met routerings regels met behulp van Nsg's of door de gebruiker gedefinieerde routes.
+De andere ontwerp criteria die worden weer gegeven in de grafische afbeeldingen van de configuratie met één knoop punt voor een scale-out SAP HANA VM is het VNet of de configuratie van het subnet verhogen. SAP beveelt een schei ding van het verkeer van de client/toepassing aan van de communicatie tussen de HANA-knoop punten. Zoals in de grafische afbeelding wordt weer gegeven, wordt dit doel bereikt door twee verschillende Vnic's toe te voegen aan de virtuele machine. Beide Vnic's bevinden zich in verschillende subnetten, hebben twee verschillende IP-adressen. Vervolgens beheert u de stroom van verkeer met routerings regels met behulp van Nsg's of door de gebruiker gedefinieerde routes.
 
 Met name in azure zijn er geen middelen en methoden voor het afdwingen van Quality of service en quota's op specifieke Vnic's. Als gevolg hiervan kan de schei ding van client/toepassing en intra-node-communicatie geen kansen openen om de ene verkeers stroom over de andere te priori teren. In plaats daarvan behoudt de schei ding een beveiligings maatregel bij het afschermen van de intra-knooppunt communicatie van de scale-out-configuraties.  
 
->[!IMPORTANT]
->SAP raadt het netwerk verkeer ten opzichte van de client-en toepassings kant en verkeer binnen het knoop punt, zoals beschreven in dit document, te scheiden. Daarom is het raadzaam een architectuur te plaatsen, zoals wordt weer gegeven in de laatste grafische oplossing.
+>[!NOTE]
+>SAP raadt aan om netwerk verkeer te scheiden van de client-en toepassings kant en verkeer binnen het knoop punt, zoals beschreven in dit document. Daarom is het raadzaam een architectuur te plaatsen, zoals wordt weer gegeven in de laatste grafische oplossing. Raadpleeg ook uw beveiligings-en nalevings team voor vereisten die afwijken van de aanbeveling 
 >
 
 Vanuit een netwerk punt met de minimale vereiste netwerk architectuur zou er als volgt uitzien:
 
-![Basis beginselen van één knoop punt uitschalen](media/hana-vm-operations/scale-out-networking-overview.PNG)
-
-De limieten die tot nu toe worden ondersteund, zijn 15 werk nemers die zijn opgenomen in het hoofd knooppunt.
-
-Vanuit een opslag punt van de opslag architectuur ziet er als volgt uit:
+![Basis beginselen van één knoop punt uitschalen](media/hana-vm-operations/overview-scale-out-networking.png)
 
 
-![Basis beginselen van één knoop punt uitschalen](media/hana-vm-operations/scale-out-storage-overview.PNG)
-
-Het **/Hana/Shared** -volume bevindt zich in de configuratie met Maxi maal beschik bare NFS-share. Dat alle andere stations lokaal zijn gekoppeld aan de afzonderlijke Vm's. 
-
-### <a name="highly-available-nfs-share"></a>Maxi maal beschik bare NFS-share
-Het Maxi maal beschik bare NFS-cluster werkt tot nu toe met SUSE Linux. Het document [hoge Beschik baarheid voor NFS op virtuele Azure-machines in Suse Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) beschrijft hoe u het kunt instellen. Als u het NFS-cluster niet deelt met andere HANA-configuraties buiten de Azure VNet die de instanties van de SAP HANA uitvoeren, installeert u deze in hetzelfde VNet. Installeer de app in een eigen subnet en zorg ervoor dat niet al het wille keurig verkeer toegang heeft tot het subnet. In plaats daarvan wilt u het verkeer naar dat subnet beperken tot de IP-adressen van de virtuele machine die het verkeer naar **/Hana/Shared** volume uitvoeren.
-
-Met betrekking tot de vNIC van een HANA scale-out-VM die het **/Hana/Shared** -verkeer moet routeren, zijn de aanbevelingen:
-
-- Omdat verkeer naar **/Hana/Shared** gemiddeld is, stuurt u het door via de vNIC die is toegewezen aan het client netwerk in de minimale configuratie
-- Ten slotte, voor het verkeer naar **/Hana/Shared**, implementeert u een derde subnet in het VNet. u implementeert de SAP Hana scale-out configuratie en wijst een derde vNIC toe die wordt gehost in dat subnet. Gebruik het derde vNIC en het bijbehorende IP-adres voor het verkeer naar de NFS-share. Vervolgens kunt u afzonderlijke toegangs-en routerings regels Toep assen.
-
->[!IMPORTANT]
->Netwerk verkeer tussen de virtuele machines die SAP HANA hebben in een scale-out-implementatie en de Maxi maal beschik bare NFS kan onder geen enkele omstandigheden worden gerouteerd via een [NVA](https://azure.microsoft.com/solutions/network-appliances/) of soort gelijke virtuele apparaten. Terwijl Azure Nsg's geen dergelijke apparaten zijn. Controleer uw regels voor door sturen om ervoor te zorgen dat Nva's of soort gelijke virtuele apparaten worden uitgesteld wanneer ze toegang krijgen tot de Maxi maal beschik bare NFS-share van de virtuele machines met SAP HANA.
-> 
-
-Als u het Maxi maal beschik bare NFS-cluster wilt delen tussen SAP HANA configuraties, verplaatst u al deze HANA-configuraties naar hetzelfde VNet. 
- 
 
 ### <a name="installing-sap-hana-scale-out-n-azure"></a>SAP HANA scale-out n Azure installeren
 Een scale-out SAP-configuratie installeren, moet u de volgende stappen uitvoeren:
 
 - Nieuwe Azure VNet-infra structuur implementeren of aanpassen
-- De nieuwe virtuele machines implementeren met behulp van door Azure beheerde Premium Storage volumes
-- Een nieuw Maxi maal beschik bare NFS-cluster implementeren of aanpassen
-- Netwerk routering aanpassen om ervoor te zorgen dat de communicatie tussen knoop punten tussen Vm's bijvoorbeeld niet via een [NVA](https://azure.microsoft.com/solutions/network-appliances/)wordt gerouteerd. Hetzelfde geldt voor verkeer tussen de virtuele machines en het Maxi maal beschik bare NFS-cluster.
+- De nieuwe virtuele machines implementeren met behulp van door Azure beheerde Premium Storage, Ultra schijf volumes en/of NFS-volumes op basis van ANF
+- - Netwerk routering aanpassen om ervoor te zorgen dat de communicatie tussen knoop punten tussen Vm's bijvoorbeeld niet via een [NVA](https://azure.microsoft.com/solutions/network-appliances/)wordt gerouteerd. 
 - Installeer het SAP HANA hoofd knooppunt.
 - Configuratie parameters van het knoop punt SAP HANA model aanpassen
 - Ga door met de installatie van de SAP HANA worker-knoop punten
@@ -229,11 +173,11 @@ Een scale-out SAP-configuratie installeren, moet u de volgende stappen uitvoeren
 Als uw Azure VM-infra structuur wordt geïmplementeerd en alle andere voor bereidingen worden uitgevoerd, moet u de SAP HANA scale-out-configuraties installeren in de volgende stappen:
 
 - Installeer het SAP HANA-hoofd knooppunt volgens de documentatie van SAP
-- **Na de installatie moet u het bestand Global. ini wijzigen en de para meter ' basepath_shared = no ' toevoegen aan Global. ini**. Met deze para meter kunnen SAP HANA worden uitgevoerd in scale-out zonder gedeelde **/Hana/data** -en **/Hana/log** -volumes tussen de knoop punten. Details worden beschreven in [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991).
-- Nadat u de para meter Global. ini hebt gewijzigd, start u de SAP HANA-instantie opnieuw op
+- In het geval van het gebruik van Azure Premium Storage of Ultra Disk Storage met niet-gedeelde schijven van/Hana/data en/Hana/log, moet u het bestand Global. ini wijzigen en de para meter ' basepath_shared = no ' toevoegen aan het bestand Global. ini. Met deze para meter kunnen SAP HANA worden uitgevoerd in scale-out zonder gedeelde **/Hana/data** -en **/Hana/log** -volumes tussen de knoop punten. Details worden beschreven in [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991). Als u NFS-volumes gebruikt op basis van ANF voor/Hana/data en/Hana/log, hoeft u deze wijziging niet aan te brengen
+- Start na de uiteindelijke wijziging in de para meter Global. ini het SAP HANA-exemplaar opnieuw
 - Voeg extra worker-knoop punten toe. Zie ook <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Geef het interne netwerk voor SAP HANA communicatie tussen knoop punten op tijdens de installatie of later met behulp van bijvoorbeeld de lokale hdblcm. Zie ook [SAP opmerking #2183363](https://launchpad.support.sap.com/#/notes/2183363)voor gedetailleerdere documentatie. 
 
-Na deze setup-routine wordt de scale-out-configuratie die u hebt geïnstalleerd, gebruikt om niet-gedeelde schijven te gebruiken voor het uitvoeren van **/Hana/data** en **/Hana/log**. Terwijl het **/Hana/Shared** -volume wordt geplaatst op de Maxi maal beschik bare NFS-share.
+Details voor het instellen van een SAP HANA scale-out systeem met een stand-by-knoop punt in SUSE Linux wordt uitvoerig beschreven in [een SAP Hana scale-out systeem implementeren met stand-by-knoop punt op Azure-vm's met behulp van Azure NetApp files op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse). Gelijkwaardige documentatie voor Red Hat vindt u in het artikel [een SAP Hana scale-out systeem met stand-by-knoop punt op virtuele machines van Azure implementeren met behulp van Azure NetApp files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel). 
 
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>SAP HANA Dynamic Tiering 2,0 voor virtuele machines van Azure
@@ -256,7 +200,7 @@ In de onderstaande afbeelding vindt u een overzicht van de ondersteuning voor DT
 
 Meer informatie vindt u in de volgende secties.
 
-![Overzicht van SAP HANA DT 2,0-architectuur](media/hana-vm-operations/hana-dt-20.PNG)
+![Overzicht van SAP HANA DT 2,0-architectuur](media/hana-vm-operations/hana-data-tiering.png)
 
 
 
@@ -315,7 +259,7 @@ Omdat de M64-32MS-VM veel geheugen heeft, kan de i/o-belasting de limiet voor he
 
 Met name als de werk belasting Lees-intensiever is, kan de IO-prestaties worden verhoogd om de alleen-lezen cache van Azure host in te scha kelen, zoals aanbevolen voor de gegevens volumes van database software. Dat voor het transactie logboek Azure host disk cache de waarde ' geen ' moet zijn. 
 
-Met betrekking tot de grootte van het logboek volume een aanbevolen begin punt is een heuristiek van 15% van de gegevens grootte. Het maken van het logboek volume kan worden uitgevoerd met behulp van verschillende Azure-schijf typen, afhankelijk van de kosten-en doorvoer vereisten. Voor het logboek volume is de hoge I/O-door Voer vereist.  In het geval van het gebruik van het VM-type M64-32MS wordt het ten zeerste aanbevolen [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)in te scha kelen. Azure Write Accelerator biedt optimale schrijf latentie voor de schijf voor het transactie logboek (alleen beschikbaar voor de M-serie). Er zijn enkele items waarmee u rekening moet houden, zoals het maximum aantal schijven per VM-type. [Hier](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) vindt u meer informatie over write Accelerator.
+Met betrekking tot de grootte van het logboek volume een aanbevolen begin punt is een heuristiek van 15% van de gegevens grootte. Het maken van het logboek volume kan worden uitgevoerd met behulp van verschillende Azure-schijf typen, afhankelijk van de kosten-en doorvoer vereisten. Voor het logboek volume is de hoge I/O-door Voer vereist.  In het geval van het gebruik van het VM-type M64-32MS is het verplicht om [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)in te scha kelen. Azure Write Accelerator biedt optimale schrijf latentie voor de schijf voor het transactie logboek (alleen beschikbaar voor de M-serie). Er zijn enkele items waarmee u rekening moet houden, zoals het maximum aantal schijven per VM-type. [Hier](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) vindt u meer informatie over write Accelerator.
 
 
 Hier volgen enkele voor beelden van het formaat van het logboek volume:
@@ -363,11 +307,22 @@ Als u een site-naar-site-verbinding hebt tussen uw on-premises locaties en Azure
 
 Als u verbinding maakt met Azure via internet en u geen SAP-router voor de virtuele machine met SAP HANA hebt, moet u het onderdeel installeren. Installeer SAProuter in een afzonderlijke virtuele machine in het subnet van het beheer. In de volgende afbeelding ziet u een ruw schema voor het implementeren van SAP HANA zonder een site-naar-site-verbinding en met SAProuter:
 
-![Ruwe implementatie schema voor SAP HANA zonder site-naar-site-verbinding en SAProuter](media/hana-vm-operations/hana-simple-networking3.PNG)
+![Ruwe implementatie schema voor SAP HANA zonder site-naar-site-verbinding en SAProuter](media/hana-vm-operations/hana-simple-networking-saprouter.png)
 
 Zorg ervoor dat u SAProuter installeert op een afzonderlijke virtuele machine en niet in uw JumpBox-VM. De afzonderlijke virtuele machine moet een statisch IP-adres hebben. Als u uw SAProuter wilt verbinden met de SAProuter die wordt gehost door SAP, neemt u contact op met SAP voor een IP-adres. (De SAProuter die wordt gehost door SAP is het equivalent van het SAProuter-exemplaar dat u op uw virtuele machine installeert.) Gebruik het IP-adres van SAP om uw SAProuter-exemplaar te configureren. In de configuratie-instellingen is de enige vereiste poort TCP-poort 3299.
 
 Raadpleeg de [SAP-documentatie](https://support.sap.com/en/tools/connectivity-tools/remote-support.html)voor meer informatie over het instellen en onderhouden van externe ondersteunings verbindingen via SAProuter.
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Hoge Beschik baarheid met SAP HANA op native Azure-Vm's
-Als u SUSE Linux Enterprise Server voor SAP-toepassingen 12 SP1 of hoger gebruikt, kunt u een pacemaker-cluster tot stand brengen met STONITH-apparaten. U kunt de apparaten gebruiken om een SAP HANA configuratie in te stellen die gebruikmaakt van synchrone replicatie met HANA-systeem replicatie en automatische failover. Zie [SAP Hana-hand leiding voor maximale Beschik baarheid voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)voor meer informatie over de installatie procedure.
+Als u SUSE Linux Enterprise Server of Red Hat uitvoert, kunt u een pacemaker-cluster tot stand brengen met STONITH-apparaten. U kunt de apparaten gebruiken om een SAP HANA configuratie in te stellen die gebruikmaakt van synchrone replicatie met HANA-systeem replicatie en automatische failover. Zie de sectie ' volgende stappen ' voor meer informatie.
+
+## <a name="next-steps"></a>Volgende stappen
+Vertrouwd raken met de artikelen zoals vermeld
+- [Opslag configuraties van virtuele Azure-machines SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+
+ 
+

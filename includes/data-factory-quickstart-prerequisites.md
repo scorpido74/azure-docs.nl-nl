@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: f808158c959894e757adaa73a81e3bf57f475da0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020813"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164133"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -21,7 +21,7 @@ ms.locfileid: "76020813"
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ### <a name="azure-roles"></a>Azure-rollen
-Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rol *Inzender* of *Eigenaar*, of moet dit een *beheerder* van het Azure-abonnement zijn. Als u de machtigingen die u in het abonnement hebt, wilt weer geven, gaat u naar de [Azure Portal](https://portal.azure.com), selecteert u uw gebruikers naam in de rechter bovenhoek, selecteert u **meer opties** (...) en selecteert u vervolgens **Mijn machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren.
+Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rol *Inzender* of *Eigenaar*, of moet dit een *beheerder* van het Azure-abonnement zijn. Als u de machtigingen die u in het abonnement hebt, wilt weer geven, gaat u naar de [Azure Portal](https://portal.azure.com), selecteert u uw gebruikers naam in de rechter bovenhoek, selecteert u het pictogram ' **...** ' voor meer opties en selecteert u vervolgens **Mijn machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren.
 
 Als u onderliggende resources wilt maken en beheren voor Data Factory, waaronder gegevenssets, gekoppelde services, pijplijnen, triggers en integratieruntimes, zijn de volgende vereisten van toepassing:
 
@@ -35,8 +35,8 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Rol Data Factory-inzender](../articles/role-based-access-control/built-in-roles.md#data-factory-contributor)
 - [Rollen en machtigingen voor Azure Data Factory](../articles/data-factory/concepts-roles-permissions.md)
 
-### <a name="azure-storage-account"></a>Azure Storage-account
-In deze Snelstart gaat u een algemeen Azure Storage-account (en dan met name voor Blob Storage) gebruiken als zowel *bron-* als *doel*gegevensarchieven. Zie het artikel [Een opslagaccount maken](../articles/storage/common/storage-account-create.md) als u geen Azure Storage-account hebt voor algemene doeleinden en er een wilt maken. 
+### <a name="azure-storage-account"></a>Azure-opslagaccount
+U gebruikt een Azure Storage account voor algemeen gebruik (met name Blob Storage) als *bron* -en *doel* gegevens archieven in deze Quick Start. Zie [een opslag account maken](../articles/storage/common/storage-account-create.md) als u geen Azure Storage account voor algemeen gebruik hebt om er een te maken. 
 
 #### <a name="get-the-storage-account-name"></a>De naam van het opslag account ophalen
 U hebt de naam van uw Azure Storage-account nodig voor deze Quick Start. De volgende procedure bevat stappen voor het ophalen van de naam van uw opslag account: 
@@ -50,9 +50,9 @@ U kunt ook op elke pagina *opslag accounts* zoeken en selecteren.
 #### <a name="create-a-blob-container"></a>Een blob-container maken
 In deze sectie maakt u in Azure Blob Storage een blobcontainer met de naam **adftutorial**.
 
-1. Selecteer op de pagina opslag account **overzicht** > **blobs**.
-2. Selecteer op de werk balk *\<account naam >*  - **blobs** de pagina **container**.
-3. Voer in het dialoogvenster **Nieuwe container** als naam **adftutorial** in en selecteer **OK**. De pagina *\<account naam >*  - **blobs** is bijgewerkt met **adftutorial** in de lijst met containers.
+1. Selecteer op de pagina opslag account **overzicht** > **containers**.
+2. Selecteer **container**in de *\<Account naam >*  - **containers** van de pagina.
+3. Voer in het dialoogvenster **Nieuwe container** als naam **adftutorial** in en selecteer **OK**. De pagina *\<account naam >*  - **containers** is bijgewerkt met **adftutorial** in de lijst met containers.
 
    ![Lijst met containers](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -66,11 +66,11 @@ Jane, Doe
 
 Sla het bestand op in de map **C:\ADFv2QuickStartPSH** . (Als de map nog niet bestaat, maakt u deze.) Ga vervolgens terug naar de Azure Portal en voer de volgende stappen uit:
 
-1. Selecteer in de pagina naam van het *\<-Account >*  - **blobs** waar u bent gebleven **adftutorial** in de lijst met bijgewerkte containers.
+1. Selecteer in de pagina *naam van\<-Account >*  - **containers** waar u bent gebleven **adftutorial** in de lijst met bijgewerkte containers.
 
    1. Als u het venster hebt gesloten of een andere pagina hebt bezocht, meldt u zich opnieuw aan bij de [Azure Portal](https://portal.azure.com) .
    1. Selecteer in het menu Azure Portal **alle services**en selecteer vervolgens **opslag** > **opslag accounts**. U kunt ook op elke pagina *opslag accounts* zoeken en selecteren.
-   1. Selecteer uw opslag account en selecteer vervolgens **blobs** > **adftutorial**.
+   1. Selecteer uw opslag account en selecteer vervolgens **Containers** > **adftutorial**.
 
 2. Selecteer **uploaden**op de werk balk van de pagina van de **adftutorial** -container.
 3. Selecteer op de pagina **BLOB uploaden** het vak **bestanden** , blader naar en selecteer het bestand **EMP. txt** .

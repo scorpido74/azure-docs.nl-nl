@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084624"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919308"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gezichts-en Emotion detecteren met Azure Media Analytics
+
+> [!NOTE]
+> De **Azure media face detector** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
 
 ## <a name="overview"></a>Overzicht
 
@@ -522,7 +525,7 @@ namespace FaceDetection
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://amslabs.azurewebsites.net/demos/Analytics.html)

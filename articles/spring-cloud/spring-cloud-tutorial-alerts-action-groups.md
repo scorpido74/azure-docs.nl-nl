@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690268"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920073"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Zelf studie: lente-cloud resources bewaken met behulp van waarschuwingen en actie groepen
 
@@ -86,7 +86,7 @@ Als u een **waarschuwing**wilt configureren, gaat u terug naar de pagina **waars
 
 1. Klik op **Gereed**.
 
-Zie Opties voor metrische gegevens van de [gebruikers Portal](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)voor meer informatie over de beschik bare voor waarden om te controleren.
+Zie Opties voor metrische gegevens van de [gebruikers Portal](spring-cloud-concept-metrics.md#user-metrics-options)voor meer informatie over de beschik bare voor waarden om te controleren.
 
  Klik onder **acties**op **actie groep selecteren**. Selecteer in het deel venster **acties** de eerder gedefinieerde **actie groep**.
 
@@ -109,7 +109,7 @@ Een regel kan ook worden gemaakt met behulp van de pagina **metrische gegevens**
    ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Opties voor metrische gegevens van gebruikers Portal](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+* [Opties voor metrische gegevens van gebruikers Portal](spring-cloud-concept-metrics.md#user-metrics-options)
 * [Actie groepen maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [Gedrag van SMS-waarschuwingen in actie groepen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Zelf studie: gedistribueerde tracering met Azure lente-Cloud gebruiken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

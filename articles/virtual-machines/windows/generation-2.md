@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d88d5ecf8be3fadb36239b75d476a13abf39cbf7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f9567238e4bb025fad41e7db33613a63d2fc25dd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659710"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911760"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -33,18 +33,18 @@ Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur
 Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in azure (met uitzonde ring van Vm's uit de Mv2-serie). Azure biedt nu ondersteuning voor generatie 2 voor de volgende geselecteerde VM-serie:
 
 * [B-serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
-* [Dsv2-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) en [Dsv3-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
-* [Fsv2-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
+* [DC-serie](../dcv2-series.md)
+* [DSv2-serie](../dv2-dsv2-series.md) en [Dsv3-serie](../dv3-dsv3-series.md)
+* [Esv3-serie](../ev3-esv3-series.md)
+* [Fsv2-serie](../fsv2-series.md)
 * [GS-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
-* [HB-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
-* [HC-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
-* [Ls-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) en [Lsv2-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
-* [Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
-* [NCv2-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) en [NCv3-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
-* [ND-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv3-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [HB-serie](../hb-series.md)
+* [HC-serie](../hc-series.md)
+* [Ls-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) en [Lsv2-serie](../lsv2-series.md)
+* [Mv2-serie](../mv2-series.md)
+* [NCv2-serie](../ncv2-series.md) en [NCv3-serie](../ncv3-series.md)
+* [ND-serie](../nd-series.md)
+* [NVv3-serie](../nvv3-series.md)
 
 > [!NOTE]
 > Het gebruik van VM-installatie kopieën van de tweede generatie voor virtuele machines uit de Mv2-serie is algemeen beschikbaar omdat de Mv2-serie alleen werkt met installatie kopieën van de 2e generatie. VM-installatie kopieën van de eerste generatie worden niet ondersteund op Vm's uit de Mv2-serie. 

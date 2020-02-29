@@ -1,20 +1,20 @@
 ---
-title: "Veelgestelde vragen: back-ups maken van SAP HANA-data bases op Azure-Vm's"
+title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuele Azure-machines
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e5684024668103ccbe13be4af3d7a9336651df77
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287838"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919682"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases via de Azure Backup-Service
 
-## <a name="backup"></a>Back-up
+## <a name="backup"></a>Back-up maken
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>Hoeveel volledige back-ups worden per dag ondersteund?
 
@@ -43,11 +43,11 @@ Een hernoemde data base wordt behandeld als een nieuwe data base. Daarom wordt d
 
 ### <a name="what-are-the-prerequisites-to-back-up-sap-hana-databases-on-an-azure-vm"></a>Wat zijn de vereisten voor het maken van een back-up van SAP HANA-data bases op een virtuele machine van Azure?
 
-Raadpleeg de secties [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [machtigingen instellen](tutorial-backup-sap-hana-db.md#setting-up-permissions) .
+Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat het script dat voorafgaat aan het registratie](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) gedeelte.
 
 ### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Welke machtigingen moeten worden ingesteld voor Azure om een back-up te kunnen maken van SAP HANA-data bases?
 
-Als u het script voor voorafgaande registratie uitvoert, worden de vereiste machtigingen ingesteld om Azure back-ups te maken van SAP HANA-data bases. Meer informatie over de machtigingen vindt u [hier](tutorial-backup-sap-hana-db.md#setting-up-permissions).
+Als u het script voor voorafgaande registratie uitvoert, worden de vereiste machtigingen ingesteld om Azure back-ups te maken van SAP HANA-data bases. U vindt [hier](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)meer informatie over het script dat vooraf wordt geregistreerd.
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>Werkt de back-ups na de migratie van SAP HANA van 1,0 naar 2,0?
 

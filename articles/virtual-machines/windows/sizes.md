@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 755ea3ea3c246a1fa9fb7d514569c6fcecc0c04c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 398575cc5c3dea96aa644533eb6ce8a262d1981c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598711"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164488"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Grootten voor virtuele Windows-machines in azure
 
@@ -27,12 +27,12 @@ In dit artikel worden de beschik bare grootten en opties voor de virtuele machin
 
 | Type | Grootten | Beschrijving |
 |------|-------|-------------|
-| [Algemeen doel](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC | Evenwichtige CPU-geheugen verhouding. Ideaal voor testen en ontwikkelen, kleine tot middel grote data bases en webservers met weinig of gemiddeld verkeer. |
+| [Algemeen doel](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, dv2, Av2, DC, DCv2 | Evenwichtige CPU-geheugen verhouding. Ideaal voor testen en ontwikkelen, kleine tot middel grote data bases en webservers met weinig of gemiddeld verkeer. |
 | [Geoptimaliseerde rekenkracht](../sizes-compute.md) | Fsv2 | Hoge CPU-geheugen verhouding. Geschikt voor webservers met gemiddeld verkeer, netwerk apparaten, batch processen en toepassings servers. |
 | [Geoptimaliseerd geheugen](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, dv2 | Hoge geheugen-naar-CPU-verhouding. Ideaal voor relationele database servers, gemiddeld tot grote caches en analyse in het geheugen. |
 | [Geoptimaliseerde opslag](../sizes-storage.md)  | Lsv2 | Hoge schijf doorvoer en IO ideaal voor Big Data, SQL, NoSQL data bases, data warehousing en grote transactionele data bases.  |
 | [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (preview), NV, NVv3, NVv4 | Gespecialiseerde virtuele machines gericht op zware grafische rendering en video bewerking, en model training en demijnen (ND) met diep gaande lessen. Beschikbaar met één of meerdere Gpu's. |
-| [Krachtig rekenvermogen](../sizes-hpc.md) | HB, HC, H | Onze snelste en krach tigste virtuele CPU-machines met optionele netwerk interfaces (RDMA) met hoge door voer. |
+| [Krachtig rekenvermogen](../sizes-hpc.md) | HB, HBv2, HC, H | Onze snelste en krach tigste virtuele CPU-machines met optionele netwerk interfaces (RDMA) met hoge door voer. |
 
 - Zie [virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)voor meer informatie over de prijzen van de verschillende grootten.
 - Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-subscription-service-limits.md)voor algemene limieten voor virtuele Azure-machines.

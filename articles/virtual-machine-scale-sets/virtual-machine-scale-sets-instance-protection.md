@@ -1,28 +1,26 @@
 ---
 title: Instantie beveiliging voor instanties van de schaalset voor virtuele machines van Azure
 description: Meer informatie over het beveiligen van de schaalset-instanties van Azure virtual machine van scale-in en scale-set-bewerkingen.
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: manayar
-ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275795"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919852"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Instantie beveiliging voor instanties van de schaalset van virtuele machines van Azure (preview-versie)
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Instantie beveiliging voor instanties van de schaalset voor virtuele machines van Azure
+
 Met virtuele-machine schaal sets van Azure kunt u uw workloads beter belasten door automatisch te [schalen](virtual-machine-scale-sets-autoscale-overview.md), zodat u configureert wanneer uw infra structuur wordt geschaald en wanneer deze wordt geschaald. Met schaal sets kunt u ook een groot aantal virtuele machines centraal beheren, configureren en bijwerken met behulp van verschillende instellingen voor het [upgrade beleid](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) . U kunt een update configureren voor het model met de schaalset en de nieuwe configuratie wordt automatisch toegepast op elk exemplaar van de schaalset als u het upgrade beleid hebt ingesteld op automatisch of rolling.
 
 Als uw toepassing verkeer verwerkt, zijn er situaties waarin u wilt dat bepaalde instanties anders worden behandeld dan de rest van het exemplaar van de schaalset. Bepaalde instanties in de schaalset kunnen bijvoorbeeld langlopende bewerkingen uitvoeren en u wilt niet dat deze instanties worden geschaald, totdat de bewerkingen zijn voltooid. Mogelijk hebt u ook enkele instanties in de schaalset nodig om extra of andere taken uit te voeren dan de andere leden van de schaalset. U wilt dat deze ' speciale ' Vm's niet worden gewijzigd met de andere exemplaren in de schaalset. Instantie beveiliging biedt de extra besturings elementen om deze en andere scenario's voor uw toepassing in te scha kelen.
 
 In dit artikel wordt beschreven hoe u de verschillende functies voor instantie beveiliging kunt Toep assen en gebruiken met instanties van schaal sets.
-
-> [!NOTE]
->Instantie beveiliging bevindt zich momenteel in een open bare preview. Er is geen opt-in-procedure nodig om de open bare Preview-functionaliteit te gebruiken die hieronder wordt beschreven. Preview van instance Protection wordt alleen ondersteund met API versie 2019-03-01 en op schaal sets met beheerde schijven.
 
 ## <a name="types-of-instance-protection"></a>Typen instantie beveiliging
 Schaal sets bieden twee typen mogelijkheden voor het beveiligen van exemplaren:
@@ -45,7 +43,18 @@ Instantie beveiliging kan worden toegepast op instanties van schaal sets nadat d
 
 Er zijn meerdere manieren voor het Toep assen van schaal beveiliging op de instanties van uw schaalset, zoals wordt beschreven in de onderstaande voor beelden.
 
-### <a name="rest-api"></a>REST API
+### <a name="azure-portal"></a>Azure-portal
+
+U kunt beveiliging tegen schalen Toep assen via de Azure Portal naar een exemplaar in de schaalset. U kunt niet meer dan één exemplaar tegelijk aanpassen. Herhaal de stappen voor elk exemplaar dat u wilt beveiligen.
+ 
+1. Ga naar een bestaande schaalset voor virtuele machines.
+1. Selecteer **instanties** in het menu aan de linkerkant onder **instellingen**.
+1. Selecteer de naam van het exemplaar dat u wilt beveiligen.
+1. Selecteer het tabblad **beveiligings beleid** .
+1. Selecteer in de Blade **beveiligings beleid** de optie **beveiligen tegen schalen** .
+1. Selecteer **Opslaan**. 
+
+### <a name="rest-api"></a>REST-API
 
 In het volgende voor beeld wordt scale-in-beveiliging toegepast op een exemplaar in de schaalset.
 
@@ -102,7 +111,18 @@ Het beveiligen van een exemplaar van de schaalset acties beschermt ook het exemp
 
 Er zijn meerdere manieren voor het Toep assen van acties voor het instellen van schaal sets op de instanties van uw schaalset, zoals wordt beschreven in de onderstaande voor beelden.
 
-### <a name="rest-api"></a>REST API
+### <a name="azure-portal"></a>Azure-portal
+
+U kunt de beveiliging van schaal sets via de Azure Portal Toep assen op een exemplaar in de schaalset. U kunt niet meer dan één exemplaar tegelijk aanpassen. Herhaal de stappen voor elk exemplaar dat u wilt beveiligen.
+ 
+1. Ga naar een bestaande schaalset voor virtuele machines.
+1. Selecteer **instanties** in het menu aan de linkerkant onder **instellingen**.
+1. Selecteer de naam van het exemplaar dat u wilt beveiligen.
+1. Selecteer het tabblad **beveiligings beleid** .
+1. Selecteer in de Blade **beveiligings beleid** de optie **beveiligen voor schaalset** .
+1. Selecteer **Opslaan**. 
+
+### <a name="rest-api"></a>REST-API
 
 In het volgende voor beeld wordt de beveiliging van schaal sets-acties toegepast op een exemplaar in de schaalset.
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934727"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915636"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application firewall op de front-deur van Azure
 
@@ -77,7 +77,7 @@ U kunt aangepaste regels WAF als volgt configureren:
 
 ### <a name="azure-managed-rule-sets"></a>Door Azure beheerde regel sets
 
-Door Azure beheerde regel sets bieden een eenvoudige manier om beveiliging te implementeren op basis van een gemeen schappelijke reeks beveiligings Risico's. Omdat dergelijke regel definities worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvals handtekeningen. Bij open bare Preview bevat de door Azure beheerde standaard regelset regels voor de volgende bedreigings Categorieën:
+Door Azure beheerde regel sets bieden een eenvoudige manier om beveiliging te implementeren op basis van een gemeen schappelijke reeks beveiligings Risico's. Omdat dergelijke regel definities worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvals handtekeningen. Door Azure beheerde standaard regelset bevat regels voor de volgende bedreigings Categorieën:
 
 - Cross-site scripting
 - Java-aanvallen
@@ -91,6 +91,8 @@ Door Azure beheerde regel sets bieden een eenvoudige manier om beveiliging te im
 
 Het versie nummer van de standaardregelset wordt verhoogd wanneer nieuwe aanvals handtekeningen worden toegevoegd aan de regelset.
 Standaard regelset is standaard ingeschakeld in de detectie modus in uw WAF-beleid. U kunt afzonderlijke regels in de standaard regel instellen om te voldoen aan de vereisten van uw toepassing. U kunt ook specifieke acties (toestaan/blok keren/omleiden/logboek registratie) per regel instellen.
+
+Soms moet u bepaalde aanvraag kenmerken uit een WAF-evaluatie weglaten. Een gemeen schappelijk voor beeld is Active Directory-invoeg tokens die worden gebruikt voor verificatie. U kunt een uitsluitings lijst voor een beheerde regel, regel groep of voor de volledige regelset configureren.  
 
 De standaard actie moet worden geblokkeerd. Daarnaast kunnen aangepaste regels worden geconfigureerd in hetzelfde WAF-beleid als u een van de vooraf geconfigureerde regels in de standaardregelset wilt omzeilen.
 
@@ -119,7 +121,7 @@ Als bot-beveiliging is ingeschakeld, worden inkomende aanvragen die overeenkomen
 
 U kunt alle WAF-regel typen configureren en implementeren met behulp van de Azure Portal, REST-Api's, Azure Resource Manager sjablonen en Azure PowerShell.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 Bewaking voor WAF aan de voor deur is geïntegreerd met Azure Monitor om waarschuwingen bij te houden en trends in het verkeer eenvoudig te bewaken.
 

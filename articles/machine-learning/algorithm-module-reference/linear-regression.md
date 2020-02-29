@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152190"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912786"
 ---
 # <a name="linear-regression-module"></a>Lineaire regressie module
 In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
@@ -51,17 +51,15 @@ Voor jaren statistici zijn steeds meer geavanceerde methoden ontwikkeld voor reg
 
 Deze module ondersteunt twee methoden voor het aanpassen van een regressie model met verschillende opties:
 
-+ [Een regressie model maken met online verloop Daal](#bkmk_GradientDescent)
++ [Een regressie model passend maken met behulp van normale, minimale kwadraten](#create-a-regression-model-using-ordinary-least-squares)
+
+    Voor kleine gegevens sets kunt u het beste normale minimale kwadraten selecteren. Dit moet vergelijk bare resultaten opleveren voor Excel.
+    
++ [Een regressie model maken met online verloop Daal](#create-a-regression-model-using-online-gradient-descent)
 
     Gradient Daal is een betere verlies functie voor modellen die ingewik kelder zijn of die te weinig trainings gegevens hebben, gezien het aantal variabelen.
 
-
-
-+ [Een regressie model passend maken met behulp van normale, minimale kwadraten](#bkmk_OrdinaryLeastSquares)
-
-    Voor kleine gegevens sets kunt u het beste normale minimale kwadraten selecteren. Dit moet vergelijk bare resultaten opleveren voor Excel.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>Een regressie model maken met behulp van normale, minimale kwadraten
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Een regressie model maken met behulp van normale, minimale kwadraten
 
 1. Voeg de module **Linear regressie model** toe aan uw pijp lijn in de ontwerp functie.
 
@@ -86,7 +84,7 @@ Deze module ondersteunt twee methoden voor het aanpassen van een regressie model
 
 8. Voer de pijplijn uit.
 
-## <a name="results-for-ordinary-least-squares-model"></a>Resultaten voor model met de normale kleinste kwadraten
+### <a name="results-for-ordinary-least-squares-model"></a>Resultaten voor model met de normale kleinste kwadraten
 
 Nadat de training is voltooid:
 
@@ -94,7 +92,7 @@ Nadat de training is voltooid:
 + Als u voor spellingen wilt doen, verbindt u het getrainde model met de module [score model](./score-model.md) , samen met een gegevensset met nieuwe waarden. 
 
 
-## <a name="bkmk_GradientDescent"></a>Een regressie model maken met online verloop Daal
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Een regressie model maken met online verloop Daal
 
 1. Voeg de module **Linear regressie model** toe aan uw pijp lijn in de ontwerp functie.
 
@@ -105,6 +103,8 @@ Nadat de training is voltooid:
 3. Voor de **modus trainer maken**geeft u aan of u het model wilt trainen met een vooraf gedefinieerde set para meters of als u het model wilt optimaliseren met behulp van een parameter sweep.
 
     + **Eén para meter**: als u weet hoe u het lineaire regressie netwerk wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    
+    + **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
 
    
 4. Voor het **leer tempo**geeft u het eerste leer tempo op voor de stochastische Daal Optimizer van een kleur overgang.
@@ -133,7 +133,7 @@ Nadat de training is voltooid:
 
 13. Voer de pijplijn uit.
 
-## <a name="results-for-online-gradient-descent"></a>Resultaten voor online verloop Daal
+### <a name="results-for-online-gradient-descent"></a>Resultaten voor online verloop Daal
 
 Nadat de training is voltooid:
 

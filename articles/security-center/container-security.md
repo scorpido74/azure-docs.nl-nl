@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 62728f5b66825eb6698e37bb7ad3adbad831b465
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cd9907d041562d23bc487de319a17d36b68db6f3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615333"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916114"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -61,9 +61,9 @@ AKS biedt beveiligings controles en zicht baarheid in de beveiligings-postuur va
 
 Zie de [sectie container](recommendations-reference.md#recs-containers) in de naslag tabel met aanbevelingen voor meer informatie over de relevante Security Center aanbevelingen die voor deze functie kunnen worden weer gegeven.
 
-## <a name="run-time-protection---real-time-threat-detection"></a>Run-time beveiliging-realtime detectie van bedreigingen
+## <a name="run-time-protection---real-time-threat-protection"></a>Run-time beveiliging-real-time beveiliging van bedreigingen
 
-Security Center voorziet in realtime detectie van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
+Security Center biedt realtime bescherming van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
 
 We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [bedreigings beveiliging voor Azure-containers](threat-protection.md#azure-containers)voor volledige informatie.
 

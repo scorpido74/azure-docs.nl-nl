@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615992"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912270"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligings waarschuwingen beheren en erop reageren in Azure Security Center
 
@@ -67,7 +67,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 1. De herstels tappen die door Security Center worden voorgesteld, zijn afhankelijk van de beveiligings waarschuwing. Volg deze voor elke waarschuwing. 
 
-    In sommige gevallen moet u mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren, om een waarschuwing voor de detectie van bedreigingen te verhelpen. 
+    In sommige gevallen moet u, om een beveiligings waarschuwing te verminderen, mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren. 
 
     De volgende onderwerpen helpen u bij het door lopen van de verschillende waarschuwingen, volgens de resource typen:
     

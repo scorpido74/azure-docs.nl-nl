@@ -8,51 +8,21 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 02/27/2020
 ms.author: diberry
-ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901711"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914990"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 
-Met actief leren kunt u de kwaliteit van uw kennis basis verbeteren door alternatieve vragen te stellen, op basis van de gebruikers inzendingen, naar uw vraag en antwoord paar. U kunt deze suggesties bekijken, ofwel toevoegen aan bestaande vragen of afwijzen.
+Met [actief leren](../Concepts/active-learning-suggestions.md) kunt u de kwaliteit van uw kennis basis verbeteren door alternatieve vragen te stellen, op basis van de gebruikers inzendingen, naar uw vraag en antwoord paar. U kunt deze suggesties bekijken, ofwel toevoegen aan bestaande vragen of afwijzen.
 
 Uw kennis database wordt niet automatisch gewijzigd. Als u een wijziging wilt door voeren, moet u de suggesties accepteren. Deze suggesties Voeg vragen toe, maar u kunt geen bestaande vragen wijzigen of verwijderen.
 
-## <a name="what-is-active-learning"></a>Wat is actief leren?
-
-QnA Maker leert nieuwe vraag varianten met impliciete en expliciete feedback.
-
-* [Impliciete feedback](#how-qna-makers-implicit-feedback-works) : de rang schikking begrijpt wanneer een gebruikers vraag meerdere antwoorden heeft met scores die zeer dicht zijn en die als feedback beschouwt. U hoeft niets te doen om dit te doen.
-* [Expliciete feedback](#how-you-give-explicit-feedback-with-the-train-api) : wanneer meerdere antwoorden met weinig variatie in scores worden geretourneerd door de Knowledge Base, vraagt de client toepassing aan de gebruiker welke vraag de juiste vraag is. De expliciete feedback van de gebruiker wordt verzonden naar QnA Maker met de [Train API](#train-api).
-
-Beide methoden bieden de rang schikking van overeenkomende query's die geclusterd zijn.
-
-## <a name="how-active-learning-works"></a>Werking van actief leren
-
-Actief leren wordt geactiveerd op basis van de scores van de meeste antwoorden die door QnA Maker worden geretourneerd. Als de Score verschillen binnen een klein bereik liggen, wordt de query als een mogelijke suggestie (als een alternatieve vraag) beschouwd voor elk van de mogelijke QnA-paren. Zodra u de voorgestelde vraag voor een specifiek QnA-paar accepteert, wordt het voor de andere paren afgewezen. U moet onthouden om op te slaan en te trainen, nadat u suggesties hebt geaccepteerd.
-
-Actief leren biedt de best mogelijke suggesties in gevallen waarin de eind punten een redelijk aantal en verschillende gebruiks query's verkrijgen. Wanneer vijf of meer soort gelijke query's worden geclusterd, wordt er om de 30 minuten geadviseerd op basis van de gebruikers vragen aan de Knowledge Base QnA Maker-ontwerp functie om te accepteren of te weigeren. Alle suggesties worden geclusterd op basis van de gelijkenis en de meeste suggesties voor alternatieve vragen worden weer gegeven, gebaseerd op de frequentie van de specifieke query's door eind gebruikers.
-
-Zodra vragen worden voorgesteld in de QnA Maker Portal, moet u deze suggesties controleren en accepteren of afwijzen. Er is geen API om suggesties te beheren.
-
-## <a name="how-qna-makers-implicit-feedback-works"></a>Hoe de impliciete feedback van QnA Maker werkt
-
-De impliciete feedback van QnA Maker maakt gebruik van een algoritme om de Score nabijheid te bepalen en vervolgens actieve Learning suggesties te maken. Het algoritme voor het bepalen van de nabijheid is geen eenvoudige berekening. De bereiken in het volgende voor beeld zijn niet bedoeld om te worden hersteld, maar moeten worden gebruikt als richt lijn om alleen de impact van het algoritme te begrijpen.
-
-Wanneer de Score van een vraag zeer betrouwbaar is, zoals 80%, is het bereik van de scores die worden overwogen voor actief onderwijs breed, ongeveer 10%. Naarmate de betrouwbaarheids Score, zoals 40%, afneemt, wordt het bereik van de scores in ongeveer 4% verkleind.
-
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Expliciete feedback geven met de trein-API
-
-Het is belang rijk dat QnA Maker expliciete feedback krijgt over de antwoorden die het beste antwoord waren. Hoe het beste antwoord wordt bepaald, is aan u toe te voegen en kan het volgende omvatten:
-
-* Feedback van gebruikers, selecteert u een van de antwoorden.
-* Bedrijfs logica, zoals het bepalen van een acceptabel Score bereik.
-* Een combi natie van feedback van gebruikers en bedrijfs logica.
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade uw runtime versie om actief leren te gebruiken
 
@@ -189,10 +159,10 @@ Content-Type: application/json
 
 |Eigenschap HTTP-aanvraag|Name|Type|Doel|
 |--|--|--|--|
-|URL-route parameter|Knowledge Base-ID|string|De GUID voor uw Knowledge Base.|
-|Aangepast subdomein|Resource naam QnAMaker|string|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Het wordt weer gegeven als de `host`.|
-|Header|Content-Type|string|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is: `application/json`|
-|Header|Autorisatie|string|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|URL-route parameter|Knowledge Base-ID|tekenreeks|De GUID voor uw Knowledge Base.|
+|Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Het wordt weer gegeven als de `host`.|
+|Header|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is: `application/json`|
+|Header|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Bericht tekst|JSON-object|JSON|De trainings feedback|
 
 De JSON-hoofd tekst heeft verschillende instellingen:
@@ -200,8 +170,8 @@ De JSON-hoofd tekst heeft verschillende instellingen:
 |Eigenschap van JSON-hoofd tekst|Type|Doel|
 |--|--|--|--|
 |`feedbackRecords`|matrix|Lijst met feedback.|
-|`userId`|string|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
-|`userQuestion`|string|De exacte tekst van de query van de gebruiker. Vereist.|
+|`userId`|tekenreeks|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
+|`userQuestion`|tekenreeks|De exacte tekst van de query van de gebruiker. Vereist.|
 |`qnaID`|getal|De ID van de vraag die in het [GenerateAnswer-antwoord](metadata-generateanswer-usage.md#generateanswer-response-properties)is gevonden. |
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
@@ -391,8 +361,8 @@ De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete,
 ```
 
 U kunt ook de API voor het downloaden van wijzigingen gebruiken om deze aanpassingen te controleren met behulp van REST of een van de op taal gebaseerde Sdk's:
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
+* [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
 Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met het verzamelen van informatie en worden suggesties voor uw Knowledge Base aanbevolen.

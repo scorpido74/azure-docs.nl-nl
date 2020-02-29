@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560776"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912634"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Snelstartgids: de Text Analytics-client bibliotheek voor Go gebruiken
 
@@ -28,12 +28,11 @@ ms.locfileid: "77560776"
 
 * Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De nieuwste versie van [Go](https://golang.org/dl/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> maken in de Azure Portal om uw sleutel en eind punt op te halen. 
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
+    * U kunt de gratis prijs categorie gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
-
-### <a name="create-a-text-analytics-azure-resource"></a>Een Text Analytics Azure-resource maken 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-go-project"></a>Een nieuw go-project maken
 

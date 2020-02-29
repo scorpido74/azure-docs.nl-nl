@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d2bfe4576a9350e905fc10f3d7617619e6284a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073038"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915483"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Extensie van virtuele machine voor Network Watcher agent voor Linux
 
@@ -35,7 +35,7 @@ In dit artikel vindt u meer informatie over de ondersteunde platforms en impleme
 
 De uitbrei ding voor de Network Watcher-agent kan worden geconfigureerd voor de volgende Linux-distributies:
 
-| Distributie | Versie |
+| Distributie | Version |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 en 8 |
@@ -75,7 +75,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Network Watcher ag
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde / voorbeeld |
+| Name | Waarde / voorbeeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
@@ -87,6 +87,8 @@ De volgende JSON toont het schema voor de uitbrei ding van de Network Watcher ag
 U kunt Azure VM-extensies implementeren met een Azure Resource Manager sjabloon. Als u de uitbrei ding voor de Network Watcher-agent wilt implementeren, gebruikt u het vorige JSON-schema in uw sjabloon.
 
 ## <a name="azure-classic-cli-deployment"></a>Implementatie van klassieke Azure-CLI
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 In het volgende voor beeld wordt de VM-extensie Network Watcher agent geïmplementeerd op een bestaande virtuele machine die is geïmplementeerd via het klassieke implementatie model:
 
@@ -103,23 +105,11 @@ In het volgende voor beeld wordt de VM-extensie Network Watcher agent geïmpleme
 az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name NetworkWatcherAgentLinux --publisher Microsoft.Azure.NetworkWatcher --version 1.4
 ```
 
-## <a name="troubleshooting-and-support"></a>Problemen oplossen en ondersteuning
+## <a name="troubleshooting-and-support"></a>Probleem oplossing en ondersteuning
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
 U kunt gegevens ophalen over de status van uitbreidings implementaties met behulp van de Azure Portal of Azure CLI.
-
-In het volgende voor beeld ziet u de implementatie status van uitbrei dingen voor een VM die is geïmplementeerd via het klassieke implementatie model met behulp van de klassieke CLI van Azure:
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-Uitvoer voor uitvoering van extensie wordt vastgelegd in bestanden die zijn gevonden in de volgende map:
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
 
 In het volgende voor beeld ziet u de implementatie status van de NetworkWatcherAgentLinux-extensie voor een VM die is geïmplementeerd via Resource Manager met behulp van Azure CLI:
 

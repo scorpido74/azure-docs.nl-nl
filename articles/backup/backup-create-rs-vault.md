@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 682bf26c1485bd9e2ae288a6947e9ad573463069
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705459"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920107"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -88,7 +88,7 @@ Voor dit proces gelden de prijs implicaties voor het opslag niveau.
 >Voordat u begint:
 >
 >- Bekijk de [ondersteunings matrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
->- De functie voor het terugzetten van meerdere regio's (CRR) is momenteel alleen beschikbaar in de regio WCUS.
+>- De functie voor het terugzetten van meerdere regio's (CRR) is momenteel alleen beschikbaar in de volgende regio's: West-Centraal VS, VS-West 2, Australië-oost en Australië-zuidoost. 
 >- CRR is een opt-in-functie op kluis niveau voor elke GRS-kluis (standaard uitgeschakeld).
 >- Gebruik de volgende opdracht om uw abonnement voor deze functie voor te bereiden:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

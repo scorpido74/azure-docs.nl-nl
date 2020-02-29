@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209814"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913937"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het Azure Maps kaart besturings element gebruiken
 
@@ -27,33 +27,34 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
 2. Laden in de Azure Maps Web-SDK. U kunt een van de twee opties kiezen.
 
-a. Gebruik de wereld wijd gehoste CDN-versie van de Azure Maps Web-SDK door de URL-eind punten toe te voegen aan het opmaak model en de script verwijzingen in het `<head>` element van het bestand:
+   1. Gebruik de wereld wijd gehoste CDN-versie van de Azure Maps Web-SDK door de URL-eind punten toe te voegen aan het opmaak model en de script verwijzingen in het `<head>` element van het bestand:
 
-```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
-b. Laad de Azure Maps Web SDK-bron code lokaal met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en host dit met uw app. Dit pakket bevat ook type script definities.
+   1. Laad de Azure Maps Web SDK-bron code lokaal met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en host dit met uw app. Dit pakket bevat ook type script definities.
 
-> **NPM Azure-Maps-beheer installeren**
+      > **NPM Azure-Maps-beheer installeren**
 
-Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en script bron verwijzingen toe naar het `<head>` element van het bestand:
+   Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en script bron verwijzingen toe naar het `<head>` element van het bestand:
 
-```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+      ```
 
-    >[!Note]
-    > Typescript definitions can be imported into your application by adding the following code:
+    > [!Note]
+    > Type script definities kunnen in uw toepassing worden geïmporteerd door de volgende code toe te voegen:
+    >
     > ```Javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
 3. Als u de kaart zo wilt genereren dat de volledige hoofd tekst van de pagina wordt gevuld, voegt u het volgende `<style>`-element toe aan het element `<head>`.
 
-```HTML
+   ```HTML
     <style>
         html, body {
             margin: 0;
@@ -64,23 +65,23 @@ Voeg vervolgens verwijzingen naar het Azure Maps opmaak model en script bron ver
             width: 100vw;
         }
     </style>
-```
+   ```
 
 4. Voeg in de hoofd tekst van de pagina een `<div>` element toe en geef het een `id` van **myMap**.
 
-```HTML
+   ```HTML
     <body>
         <div id="myMap"></div>
     </body>
-```
+   ```
 
 5. Als u het kaart besturings element wilt initialiseren, definieert u een nieuwe script code in de HTML-hoofd tekst. Geef de `id` van de kaart `<div>` of een `HTMLElement` (bijvoorbeeld `document.getElementById('myMap')`) als de eerste para meter bij het maken van een instantie van de `Map`-klasse. Gebruik uw eigen Azure Maps account sleutel of certificerings Azure Active Directory (AAD) om de kaart te verifiëren met behulp van [verificatie opties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). 
 
-Als u een account wilt maken of uw sleutel wilt vinden, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) . 
+   Als u een account wilt maken of uw sleutel wilt vinden, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) . 
 
-De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie, gebruikt u het volgende:
+   De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en besturings elementen toewijzen. Zie [ondersteunde talen](supported-languages.md)voor meer informatie over ondersteunde talen. Als u een abonnements sleutel gebruikt voor verificatie, gebruikt u het volgende:
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -92,11 +93,11 @@ De **taal** optie geeft u de taal op die moet worden gebruikt voor labels en bes
             }
         });
     </script>
- ```
+    ```
 
-Als u Azure Active Directory (AAD) gebruikt voor verificatie, gebruikt u het volgende:
+   Als u Azure Active Directory (AAD) gebruikt voor verificatie, gebruikt u het volgende:
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -110,25 +111,25 @@ Als u Azure Active Directory (AAD) gebruikt voor verificatie, gebruikt u het vol
             }
         });
     </script>
-```
+   ```
 
-[Hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)vindt u een lijst met voor beelden van de integratie van Azure Active Directory (Aad) met Azure Maps. 
+   [Hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)vindt u een lijst met voor beelden van de integratie van Azure Active Directory (Aad) met Azure Maps. 
     
-Zie voor meer informatie de [verificatie met Azure Maps](azure-maps-authentication.md) document en ook de voor [beelden van de Azure Maps voor Azure AD-verificatie](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+   Zie voor meer informatie de [verificatie met Azure Maps](azure-maps-authentication.md) document en ook de voor [beelden van de Azure Maps voor Azure AD-verificatie](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
 
-6. u kunt desgewenst de volgende metatag elementen toevoegen aan het hoofd van de pagina:
+6. U kunt eventueel de volgende metatag elementen toevoegen aan het hoofd van de pagina:
 
-```HTML
+   ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
     <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
     <!-- Ensures the web page looks good on all screen sizes. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-```
+   ```
 
-7. het samen stellen van uw HTML-bestand moet er ongeveer uitzien als de volgende code:
+7. Het samen stellen van uw HTML-bestand moet er ongeveer als volgt uitzien:
 
-```HTML
+   ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -174,11 +175,11 @@ Zie voor meer informatie de [verificatie met Azure Maps](azure-maps-authenticati
         </script>
     </body>
     </html>
- ```
+    ```
 
 8. Open het bestand in uw webbrowser en Bekijk de weer gegeven kaart. De afbeelding moet er als volgt uitzien:
 
-![Kaart afbeelding die het gegenereerde resultaat weergeeft](./media/how-to-use-map-control/map-of-seattle.png)
+   ![Kaart afbeelding die het gegenereerde resultaat weergeeft](./media/how-to-use-map-control/map-of-seattle.png)
 
 ## <a name="localizing-the-map"></a>De kaart lokaliseren
 

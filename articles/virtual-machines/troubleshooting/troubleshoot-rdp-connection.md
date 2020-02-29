@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: d3ad0e6d88ed849074989dc36698c01209921449
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cbca8e631da8b99aa0ea4bdc6d099f3dbd2ed9b1
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749694"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916605"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Problemen met Extern bureaublad verbindingen met een virtuele machine van Azure oplossen
 De RDP-verbinding (Remote Desktop Protocol) met uw Windows Azure VM (Virtual Machine) kan om verschillende redenen worden onderbroken, waardoor u geen toegang hebt tot uw VM. Het probleem kan in Extern bureaublad in de VM zitten, in de netwerkverbinding of in de Extern bureaublad-client in de hostcomputer. Dit artikel helpt u bij het oplossen van een aantal van de meest voorkomende methoden om problemen met de RDP-verbinding op te lossen. 
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
  
 
@@ -193,6 +193,10 @@ Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken
 Als u nog steeds RDP-problemen ondervindt, kunt u [een ondersteunings aanvraag openen](https://azure.microsoft.com/support/options/) of [meer informatie over het oplossen van problemen met interacties en stappen voor probleem oplossing](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)lezen.
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Problemen met Vm's die zijn gemaakt met het klassieke implementatie model oplossen
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met de virtuele machine.
 
 1. **Stel de RDP-verbinding opnieuw**in. Met deze stap voor het oplossen van problemen wordt de RDP-configuratie opnieuw ingesteld wanneer externe verbindingen worden uitgeschakeld of door Windows Firewall regels RDP worden geblokkeerd.
@@ -241,7 +245,7 @@ Er kan een specifiek fout bericht worden weer gegeven wanneer u probeert verbind
 * [Windows-beveiligings fout: uw referenties werken niet](troubleshoot-specific-rdp-errors.md#wincred).
 * [Deze computer kan geen verbinding maken met de externe computer](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 Lees de gedetailleerde [hand leiding voor het oplossen extern bureaublad van problemen](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)als er geen van deze fouten optrad en u nog steeds geen verbinding met de virtuele machine kunt maken via Extern bureaublad.
 * Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)een virtuele machine van Azure voor informatie over het oplossen van problemen bij het openen van toepassingen die op een VM worden uitgevoerd.
 * Zie [problemen met ssh-verbindingen met een virtuele Linux-machine in azure oplossen](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt met het gebruik van Secure Shell (SSH) om verbinding te maken met een virtuele Linux-machine in Azure.

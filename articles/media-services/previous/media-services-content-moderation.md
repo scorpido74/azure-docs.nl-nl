@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896005"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914310"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator gebruiken om mogelijke inhoud voor volwassenen en ongepaste te detecteren 
+
+> [!NOTE]
+> De media processor van **Azure media content moderator** wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
 
 ## <a name="overview"></a>Overzicht
 Met de **Azure media content moderator** media processor (MP) kunt u op uw Video's machine-ondersteunde toezicht gebruiken. Stel, u wilt mogelijk erotische en racistische inhoud detecteren in video's en de gemarkeerde inhoud laten controleren door uw team.
@@ -46,11 +49,11 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 | Element | Beschrijving |
 | --- | --- |
-| versie |De versie van Content Moderator. |
+| version |De versie van Content Moderator. |
 | timescale |' Ticks ' per seconde van de video. |
 | offset |De tijd-offset voor tijdstempels. In versie 1,0 van video-Api's is deze waarde altijd 0. Deze waarde kan in de toekomst worden gewijzigd. |
 | snelheid |Aantal frames per seconde video. |
-| breedte |De breedte van het video kader voor de uitvoer, in pixels.|
+| Breedte |De breedte van het video kader voor de uitvoer, in pixels.|
 | hoogte |De hoogte van het video kader voor de uitvoer, in pixels.|
 | totalDuration |De duur van de invoer video, in Ticks. |
 | [fragmenten](#fragments-json-elements) |De meta gegevens worden gesegmenteerd in verschillende segmenten die fragmenten worden genoemd. Elk fragment is een automatisch gedetecteerde opname met een start, duur, interval nummer en gebeurtenis (sen). |
@@ -223,7 +226,7 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Gerelateerde koppelingen
+## <a name="related-links"></a>Verwante koppelingen
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

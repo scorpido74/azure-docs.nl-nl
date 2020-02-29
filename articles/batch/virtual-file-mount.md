@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
-ms.openlocfilehash: a22117505dff35f9b92e3dd3c91dc8540557b218
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023035"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919002"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
@@ -88,9 +88,6 @@ new PoolAddParameter
 Een andere optie is het gebruik van Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Voor het koppelen van een BLOB-bestands systeem is een `AccountKey` of `SasKey` vereist voor uw opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)of [hand tekeningen voor gedeelde toegang gebruiken (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over het ophalen van deze sleutels. Zie de blobfuse [Troubleshooting FAQ (Engelstalig](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)) voor meer informatie over het gebruik van blobfuse. Als u standaard toegang wilt krijgen tot de gekoppelde blobfuse Directory, voert u de taak uit als **beheerder**. Blobfuse koppelt de directory aan de gebruikers ruimte en bij het maken van de groep wordt deze als root gekoppeld. In Linux zijn alle **beheerders** taken hoofdmap. Alle opties voor de ZEKERing-module worden beschreven op de [pagina zekerheid](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Naast de hand leiding voor het oplossen van problemen, zijn GitHub problemen in de blobfuse-opslag plaats een handige manier om te controleren of er problemen zijn met blobfuse en oplossingen. Zie [blobfuse issues](https://github.com/Azure/azure-storage-fuse/issues)(Engelstalig) voor meer informatie.
-
-> [!NOTE]
-> Blobfuse wordt momenteel niet ondersteund op Debian. Zie [ondersteunde sku's](#supported-skus) voor meer informatie.
 
 ```csharp
 new PoolAddParameter
@@ -174,7 +171,8 @@ Als u de logboek bestanden voor fout opsporing wilt ophalen, gebruikt u [OutputF
 |---|---|---|---|---|---|---|
 | batch | rendering-centos73 | aanwijzer | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04-LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| credativ | Debian | 8, 9 | :heavy_check_mark: | BxDxH | :heavy_check_mark: | :heavy_check_mark: |
+| credativ | Debian | 8| :heavy_check_mark: | BxDxH | :heavy_check_mark: | :heavy_check_mark: |
+| credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | CentOS-container | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | CentOS-container-RDMA | 7.4 | :heavy_check_mark: <br>Opmerking: ondersteunt A_8 of 9 opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

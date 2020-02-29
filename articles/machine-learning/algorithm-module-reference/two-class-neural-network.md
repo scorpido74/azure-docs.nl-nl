@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 03e6c2ecbf8fa0c5f71218d29b67cb03cdf3d5db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153652"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916792"
 ---
 # <a name="two-class-neural-network-module"></a>Neural-netwerk module met twee klassen
 
@@ -42,7 +42,9 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
   
 2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.  
+    -   **Eén para meter**: Kies deze optie als u al weet hoe u het model wilt configureren.
+
+    -   **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.  
 
 3.  Selecteer bij **verborgen laag specificatie**het type netwerk architectuur dat moet worden gemaakt.  
   

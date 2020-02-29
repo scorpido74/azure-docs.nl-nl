@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981436"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919427"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Opstarten van Azure VM is vastgelopen op Windows Update
 
 Dit artikel helpt u bij het oplossen van het probleem wanneer uw virtuele machine (VM) tijdens het opstarten vastloopt in de Windows Update fase. 
 
-> [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model te gebruiken.
 
 ## <a name="symptom"></a>Symptoom
 
@@ -44,8 +42,8 @@ Het update proces kan enige tijd in beslag nemen, afhankelijk van het aantal upd
 
 ### <a name="remove-the-update-that-causes-the-problem"></a>De update die het probleem veroorzaakt, verwijderen
 
-1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md). 
-2. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie. 
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
 3. Zodra de besturingssysteem schijf is gekoppeld op de herstel-VM, voert u **diskmgmt. msc** uit om schijf beheer te openen en ervoor te zorgen dat de gekoppelde schijf **online**is. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf die de map \Windows heeft. Als de schijf is versleuteld, ontsleutelt u de schijf voordat u verdergaat met de volgende stappen in dit document.
 
 4. Open een opdracht prompt exemplaar met verhoogde bevoegdheid (als administrator uitvoeren). Voer de volgende opdracht uit om de lijst op te halen van de update pakketten die zich op de gekoppelde besturingssysteem schijf bevinden:
@@ -77,4 +75,4 @@ Het update proces kan enige tijd in beslag nemen, afhankelijk van het aantal upd
     > [!NOTE] 
     > Afhankelijk van de grootte van het pakket, neemt het hulp programma DISM even de tijd om de verwijdering te verwerken. Normaal gesp roken wordt het proces binnen 16 minuten voltooid.
 
-7. [De OS-schijf loskoppelen en opnieuw maken van de virtuele machine](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Controleer vervolgens of het probleem is opgelost.
+7. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Controleer vervolgens of het probleem is opgelost.

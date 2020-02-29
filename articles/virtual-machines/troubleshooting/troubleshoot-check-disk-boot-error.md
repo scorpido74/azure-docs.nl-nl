@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: ba3138076da89610bef878583e424153594c5dcc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 86938c582745cb0759eda9cd0693f407471a0529
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981376"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921484"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows geeft ' controleren op bestands systeem ' bij het opstarten van een Azure VM
 
 In dit artikel wordt de fout ' controle van het bestands systeem ' beschreven die kan optreden wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure.
 
-> [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. dit wordt aangeraden voor nieuwe implementaties in plaats van het klassieke implementatie model.
 
 ## <a name="symptom"></a>Symptoom 
 
@@ -40,8 +38,8 @@ Als er een NTFS-fout in het bestands systeem wordt gevonden, wordt de consistent
 ## <a name="solution"></a>Oplossing 
 
 Windows wordt normaal opgestart nadat het proces voor het controleren van de schijf is voltooid. Als de virtuele machine is vastgelopen in het controle schijf proces, probeert u de controle schijf op de virtuele machine offline uit te voeren:
-1.  Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
-2.  [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).  
+1.  Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
+2.  [Koppel de besturingssysteem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).  
 3.  Op de virtuele machine voor herstel voert u schijf controleren uit op de gekoppelde besturingssysteem schijf. In het volgende voor beeld is de Stuur letter van de gekoppelde besturingssysteem schijf E: 
         
         chkdsk E: /f

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f0a79fb0f90a633095343c162ccdc80ebc48f1d4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1194b2d90e5a12b1ecf3664a48055ca763f31a4f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747664"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919444"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Problemen met SSH-verbindingen met een virtuele Azure Linux-machine oplossen die mislukt, fouten veroorzaken of worden geweigerd
 Dit artikel helpt u bij het vinden en corrigeren van de problemen die zich voordoen als gevolg van SSH-fouten (Secure Shell), SSH-verbindings fouten of SSH worden geweigerd wanneer u verbinding probeert te maken met een virtuele Linux-machine (VM). U kunt de Azure Portal-, Azure CLI-of VM-extensie voor toegang voor Linux gebruiken om verbindings problemen op te lossen
 
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
 
 ## <a name="quick-troubleshooting-steps"></a>Snelle probleemoplossings stappen
 Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met de virtuele machine.
@@ -46,13 +46,13 @@ Blijf lezen voor meer gedetailleerde stappen voor probleem oplossing en uitleg.
 U kunt de referenties of de SSH-configuratie opnieuw instellen met een van de volgende methoden:
 
 * [Azure Portal](#use-the-azure-portal) -geweldig als u de SSH-configuratie of SSH-sleutel snel opnieuw moet instellen en u de Azure-hulpprogram ma's niet hebt geïnstalleerd.
-* [Seriële console van Azure VM](https://aka.ms/serialconsolelinux) : de seriële VM-console werkt onafhankelijk van de SSH-configuratie en geeft u een interactieve console voor uw VM. In het geval van ' niet SSH '-situaties is het specifiek dat de seriële console is ontworpen om te helpen oplossen. Meer informatie hieronder.
+* [Seriële console van Azure VM](https://aka.ms/serialconsolelinux) : de seriële VM-console werkt onafhankelijk van de SSH-configuratie en geeft u een interactieve console voor uw VM. In het geval van ' niet SSH '-situaties is het specifiek dat de seriële console is ontworpen om te helpen oplossen. Hieronder vindt u meer informatie.
 * [Azure cli](#use-the-azure-cli) : als u zich al op de opdracht regel bevindt, stelt u de SSH-configuratie of-referenties snel opnieuw in. Als u werkt met een klassieke virtuele machine, kunt u de [klassieke Azure-cli](#use-the-azure-classic-cli)gebruiken.
 * [Azure VMAccessForLinux-extensie](#use-the-vmaccess-extension) : Maak en hergebruik JSON-definitie bestanden om de SSH-configuratie of gebruikers referenties opnieuw in te stellen.
 
 Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met uw VM. Als u nog steeds geen verbinding kunt maken, voert u de volgende stap uit.
 
-## <a name="use-the-azure-portal"></a>De Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 De Azure Portal biedt een snelle manier om de SSH-configuratie of gebruikers referenties opnieuw in te stellen zonder dat er hulpprogram ma's op de lokale computer hoeven te worden geïnstalleerd.
 
 Selecteer uw virtuele machine in de Azure Portal om te beginnen. Schuif omlaag naar de sectie **ondersteuning en probleem oplossing** en selecteer **wacht woord opnieuw instellen** , zoals in het volgende voor beeld:
@@ -203,19 +203,22 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ## <a name="a-idrestart-vm-restart-a-vm"></a>een virtuele machine <a id="restart-vm" />opnieuw opstarten
 Als u de SSH-configuratie en gebruikers referenties opnieuw hebt ingesteld, of als er een fout is opgetreden, kunt u proberen de virtuele machine opnieuw te starten om onderliggende computer problemen op te lossen.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 Als u een virtuele machine opnieuw wilt opstarten met behulp van de Azure Portal, selecteert u uw virtuele machine en selecteert u **opnieuw opstarten** , zoals in het volgende voor beeld:
 
 ![Een virtuele machine opnieuw opstarten in de Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 In het volgende voor beeld wordt [AZ VM restart opnieuw](/cli/azure/vm) gestart voor het opnieuw opstarten van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`. Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 In het volgende voor beeld wordt de virtuele machine met de naam `myVM` opnieuw gestart in de resource groep met de naam `myResourceGroup`. Gebruik uw eigen waarden als volgt:
 
 ```azurecli
@@ -230,19 +233,20 @@ U kunt een virtuele machine opnieuw implementeren naar een ander knoop punt in a
 >
 >
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 Als u een virtuele machine opnieuw wilt implementeren met behulp van de Azure Portal, selecteert u uw virtuele machine en schuift u omlaag naar de sectie **ondersteuning en probleem oplossing** . Selecteer opnieuw **implementeren** , zoals in het volgende voor beeld:
 
 ![Een virtuele machine opnieuw implementeren in de Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 In het volgende voor beeld wordt [AZ VM redeploy](/cli/azure/vm) gebruikt voor het opnieuw implementeren van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`. Gebruik uw eigen waarden als volgt:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
+
 In het volgende voor beeld wordt de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`opnieuw geïmplementeerd. Gebruik uw eigen waarden als volgt:
 
 ```azurecli
@@ -250,6 +254,9 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>Vm's die zijn gemaakt met behulp van het klassieke implementatie model
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Voer de volgende stappen uit om de meest voorkomende SSH-verbindings fouten op te lossen voor virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model. Probeer na elke stap opnieuw verbinding te maken met de virtuele machine.
 
 * Externe toegang opnieuw instellen via de [Azure Portal](https://portal.azure.com). Selecteer de virtuele machine op de Azure Portal en selecteer vervolgens **extern opnieuw instellen...** .
@@ -266,7 +273,7 @@ Voer de volgende stappen uit om de meest voorkomende SSH-verbindings fouten op t
 * Controleer de resource status van de VM voor problemen met het platform.<br>
      Selecteer uw VM en blader door **instellingen** > **status controleren**.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 * Als u nog steeds niet kunt overstappen op uw virtuele machine na de volgende stappen, raadpleegt u [meer gedetailleerde stappen voor probleem oplossing](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om uw probleem op te lossen.
 * Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie over het oplossen van toepassings toegang
 * Voor meer informatie over het oplossen van problemen met virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model raadpleegt [u een wacht woord of ssh opnieuw instellen voor op Linux gebaseerde virtuele machines](../linux/classic/reset-access-classic.md).

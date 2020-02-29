@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203821"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911724"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -84,9 +84,9 @@ Azure Data Box verzamelt en toont persoonlijke informatie in de volgende belangr
   - Adres
   - Plaats
   - Postcode
-  - State
+  - Status
   - Land/Provincie/Regio
-  - Accountnummer van vervoerder
+  - Accountnummer van transporteur
   - Volgnummer van verzending
 
     De ordergegevens worden verwijderd door de Data Box-service wanneer de order is voltooid of wanneer u de order verwijdert.
@@ -100,7 +100,7 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 De volgende beveiligingsrichtlijnen zijn geïmplementeerd in Data Box: 
 
-|Richtlijn   |Description   |
+|Richtlijn   |Beschrijving   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Voor bescherming tegen water en stof         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Voor het weerstaan van nadelige vervoersomstandigheden          |
@@ -111,5 +111,5 @@ De volgende beveiligingsrichtlijnen zijn geïmplementeerd in Data Box:
 ## <a name="next-steps"></a>Volgende stappen
 
 - De [Vereisten voor Data Box](data-box-system-requirements.md) bekijken.
-- Informatie over de [Limieten voor Data Box](data-box-limits.md).
+- Informatie over de [limieten voor Data Box](data-box-limits.md).
 - [Azure Data Box](data-box-quickstart-portal.md) snel implementeren in de Azure-portal.

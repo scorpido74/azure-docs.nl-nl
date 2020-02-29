@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a80a1567c84ff3c2eda8ad22391aa862bb7d9d82
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963339"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915823"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Train & meerdere regressie modellen vergelijken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
 
@@ -62,7 +62,7 @@ Gebruik de module **select columns in dataset** om normale verliezen met veel on
 
 Problemen met machine learning kunnen variëren. Veelvoorkomende machine learning taken omvatten classificatie-, cluster-, regressie-en aanbevolen systemen, die elk een ander algoritme kunnen vereisen. Uw keuze van algoritme is vaak afhankelijk van de vereisten van de use-case. Nadat u een algoritme hebt gekozen, moet u de para meters afstemmen om een nauw keuriger model te trainen. Vervolgens moet u alle modellen evalueren op basis van metrische gegevens, zoals nauw keurigheid, Intelligibility en efficiëntie.
 
-Het doel van deze pijp lijn is om auto Mobile-prijzen te voors pellen, en omdat de kolom Label (prijs) reële getallen bevat, is een regressie model een goede keuze. Gezien het feit dat het aantal functies relatief klein is (minder dan 100) en deze functies niet verspreid zijn, is de beslissings grens waarschijnlijk niet lineair.
+Het doel van deze pijp lijn is om auto Mobile-prijzen te voors pellen, en omdat de kolom Label (prijs) reële getallen bevat, is een regressie model een goede keuze.
 
 Om de prestaties van verschillende algoritmen te vergelijken, gebruiken we twee niet-lineaire algoritmen, de regressie regressie van de **beslissings structuur** en de herleiding van het **besluitvormings forest**om modellen te bouwen. Beide algoritmen hebben para meters die u kunt wijzigen, maar in dit voor beeld wordt gebruikgemaakt van de standaard waarden voor deze pijp lijn.
 

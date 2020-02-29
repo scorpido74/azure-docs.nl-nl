@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604248"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919478"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Beheer van meerdere tenants in Security Center
 
@@ -50,7 +50,7 @@ De weer gaven en acties zijn in principe hetzelfde. Hier volgen enkele voorbeeld
 - **Aanbevelingen herstellen**: bewaak en herstel een [aanbeveling](security-center-recommendations.md) voor veel resources van verschillende tenants tegelijk. Vervolgens kunt u de beveiligings problemen die het hoogst mogelijke risico op alle tenants Voorst Ellen, direct aanpakken.
 - **Waarschuwingen beheren**: [waarschuwingen](security-center-alerts-overview.md) detecteren in de verschillende tenants. Onderneem actie op resources die niet compatibel zijn met herstels [tappen](security-center-managing-and-responding-alerts.md)waarvoor actie kan worden ondernomen.
 
-- **Geavanceerde functies voor Cloud beveiliging en meer beheren**: beheer de verschillende detectie-en beveiligings services van bedreigingen, zoals [just-in-time-VM-toegang](security-center-just-in-time.md), [adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md), [adaptieve toepassings besturings elementen](security-center-adaptive-application.md)en meer.
+- **Geavanceerde functies voor Cloud beveiliging en meer beheren**: beheer de verschillende beveiligings Services voor dreigingen, zoals [just-in-time-VM-toegang](security-center-just-in-time.md), [adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md), [adaptieve toepassings besturings elementen](security-center-adaptive-application.md), en meer.
  
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel wordt uitgelegd hoe cross-Tenant beheer werkt in Security Center. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:

@@ -14,14 +14,17 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: a9f99d418d572c14a7cdd7975483cf39f0707cba
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072988"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919920"
 ---
-# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro Deep Security installeren en configureren als een service op een Windows VM
+# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro diepe Security als een service op een Windows-VM installeren en configureren
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
 In dit artikel wordt beschreven hoe u een trend micro diepe beveiliging installeert en configureert als een service op een nieuwe of bestaande virtuele machine (VM) waarop Windows Server wordt uitgevoerd. Uitgebreide beveiliging als een service omvat anti-malware-beveiliging, een firewall, een indringings systeem en integriteits bewaking.
 
@@ -81,7 +84,7 @@ Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnsta
 * Een voor beeld van een [Windows Power shell-script](https://go.microsoft.com/fwlink/?LinkId=404100) voor het configureren van de virtuele machine
 * [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voor beeld
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 [Aanmelden bij een virtuele machine met Windows Server]
 
 [Azure VM-extensies en-functies]

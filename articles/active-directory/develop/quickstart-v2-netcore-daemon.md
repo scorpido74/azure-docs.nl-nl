@@ -13,25 +13,23 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6f7e2380bff7d6d3e6fafd1b3d44b65de972e57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f3e1581e2e96c0915fa92a51f60311f90eb79ee5
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703385"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160841"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Snelstartgids: een token verkrijgen en Microsoft Graph-API aanroepen met behulp van de identiteit van de console-app
 
-In deze quickstart leert u hoe u een .NET Core-toepassing schrijft die een toegangstoken kan ophalen met behulp van de eigen identiteit van de app en hoe u vervolgens de Microsoft Graph API aanroept om een [lijst met gebruikers](https://docs.microsoft.com/graph/api/user-list) in de map weer te geven. Dit scenario is nuttig in situaties waar een headless taak zonder toezicht of een Windows-service moet worden uitgevoerd met een toepassings-id in plaats van de identiteit van een gebruiker.
-
-![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+In deze quickstart leert u hoe u een .NET Core-toepassing schrijft die een toegangstoken kan ophalen met behulp van de eigen identiteit van de app en hoe u vervolgens de Microsoft Graph API aanroept om een [lijst met gebruikers](https://docs.microsoft.com/graph/api/user-list) in de map weer te geven. Dit scenario is nuttig in situaties waar een headless taak zonder toezicht of een Windows-service moet worden uitgevoerd met een toepassings-id in plaats van de identiteit van een gebruiker. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze Snelstartgids is [.net Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2)vereist.
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
@@ -43,14 +41,14 @@ Voor deze Snelstartgids is [.net Core 2,2](https://www.microsoft.com/net/downloa
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in. 
@@ -74,37 +72,44 @@ Voor deze Snelstartgids is [.net Core 2,2](https://www.microsoft.com/net/downloa
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Stap 2: Uw Visual Studio-project downloaden
 
-[Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+> [!div renderon="docs"]
+> [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
+> [!div class="sxs-lookup" renderon="portal"]
+> Voer het project uit met behulp van Visual Studio 2019.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Het code voorbeeld downloaden]()
 
-1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
-1. Open de oplossing in Visual Studio- **1-call-MSGraph\daemon-console.SLN** (optioneel).
-1. Bewerk **appsettings.json** en vervang de waarden van de velden `ClientId`, `Tenant` en `ClientSecret` door het volgende:
-
-    ```json
-    "Tenant": "Enter_the_Tenant_Id_Here",
-    "ClientId": "Enter_the_Application_Id_Here",
-    "ClientSecret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Een nieuw clientgeheim genereren]()
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.
-    
-    > [!div renderon="docs"]
-    >> Waar:
-    >> * `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
-    >> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **tenantnaam** (bijvoorbeeld contoso.microsoft.com)
-    >> * `Enter_the_Client_Secret_Here`: vervang deze waarde door het clientgeheim dat is gemaakt in stap 1.
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
+> 
+> 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
+> 1. Open de oplossing in Visual Studio- **1-call-MSGraph\daemon-console.SLN** (optioneel).
+> 1. Bewerk **appsettings.json** en vervang de waarden van de velden `ClientId`, `Tenant` en `ClientSecret` door het volgende:
+> 
+>    ```json
+>    "Tenant": "Enter_the_Tenant_Id_Here",
+>    "ClientId": "Enter_the_Application_Id_Here",
+>    "ClientSecret": "Enter_the_Client_Secret_Here"
+>    ```
+>   Waar:
+>   - `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
+>   - `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **Tenantnaam** (bijvoorbeeld contoso.microsoft.com)
+>   - `Enter_the_Client_Secret_Here`: vervang deze waarde door het clientgeheim dat is gemaakt in stap 1.
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
-    
-#### <a name="step-4-admin-consent"></a>Stap 4: Toestemming van de beheerder
+> [!div renderon="docs"]
+> > [!TIP]
+> > Om de waarden van **Toepassings-id (client-id)** en **Map-id (tenant-id)** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal. Voor het genereren van een nieuwe sleutel gaat u naar de pagina **Certificaten en geheimen**.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>Stap 3: toestemming van de beheerder
+
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>Stap 4: Toestemming van de beheerder
 
 Als u de toepassing op dit moment probeert uit te voeren, ontvangt u *HTTP 403-verboden* fout: `Insufficient privileges to complete the operation`. Dit gebeurt omdat een *machtiging alleen* voor de beheerder vereist, wat betekent dat een globale beheerder van uw directory toestemming moet geven voor uw toepassing. Selecteer een van de onderstaande opties, afhankelijk van uw rol:
 
@@ -128,13 +133,17 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> Waar:
->> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **tenantnaam** (bijvoorbeeld contoso.microsoft.com)
+>> * `Enter_the_Tenant_Id_Here`: vervang deze waarde door de **Tenant-id** of **Tenantnaam** (bijvoorbeeld contoso.microsoft.com)
 >> * `Enter_the_Application_Id_Here`: is de **toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
 
 > [!NOTE]
 > Mogelijk ziet u de fout *'AADSTS50011: Er is geen antwoordadres geregistreerd voor de toepassing'* na het verlenen van toestemming voor de app met behulp van de voorgaande URL. Dit gebeurt omdat deze toepassing en de URL geen omleidings-URI hebben. Negeer deze fout.
 
-#### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>Stap 4: de toepassing uitvoeren
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
 
 Als u Visual Studio gebruikt, drukt u op **F5** om de toepassing uit te voeren. anders voert u de toepassing uit via de opdracht prompt of de-console:
 
@@ -152,6 +161,9 @@ U ziet een lijst met gebruikers in uw Azure AD-directory als resultaat.
 > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie voor meer informatie over het gebruik van een certificaat [deze instructies](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) in de GitHub-opslagplaats voor dit voorbeeld.
 
 ## <a name="more-information"></a>Meer informatie
+
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 

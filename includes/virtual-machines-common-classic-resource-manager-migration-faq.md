@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068442"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912564"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>Wat is de tijd die nodig is voor de migratie?
+
+Het plannen en uitvoeren van de migratie is aanzienlijk afhankelijk van de complexiteit van de architectuur en kan enkele maanden duren.  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Wat is de definitie van een nieuwe klant op IaaS Vm's (klassiek)?
+
+Klanten die niet over IaaS-Vm's (klassiek) beschikken in hun abonnementen in de maand Febrauary 2020 (een maand voordat de afschaffing werd gestart), worden beschouwd als nieuwe klanten. 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 
-Nee. De VM's (klassiek) zijn volledig ondersteunde services met een algemene beschikbaarheid. U kunt deze resources blijven gebruiken om uw footprint in Microsoft Azure te vergroten.
+Tot 1 maart 2023 voor IaaS Vm's (klassiek). De IaaS-Vm's (klassiek) zijn volledig ondersteunde services in algemene Beschik baarheid. U kunt deze resources blijven gebruiken om uw footprint in Microsoft Azure te vergroten. Op 1 maart 2023 worden deze Vm's volledig buiten gebruik gesteld en worden actieve of toegewezen Vm's gestopt & de toewijzing ongedaan wordt gemaakt. Er is geen invloed op andere klassieke resources, zoals Cloud Services (klassiek), opslag accounts (klassiek), enzovoort.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Wat gebeurt er met mijn virtuele machines als ik niet van plan ben om in de nabije toekomst te migreren? 
 
-De bestaande klassieke API's en het bestaande resourcemodel worden niet buiten gebruik gesteld. Het is de bedoeling om migreren eenvoudig te maken omdat er veel geavanceerde functies beschikbaar zijn in het Resource Manager-implementatiemodel. Het wordt aanbevolen om [enkele van de ontwikkelingen](../articles/azure-resource-manager/management/deployment-models.md) te bekijken die deel uitmaken van IaaS via Resource Manager.
+Op 1 maart 2023 worden de IaaS Vm's (klassiek) volledig buiten gebruik gesteld en worden actieve of toegewezen Vm's gestopt & de toewijzing ongedaan wordt gemaakt. Om bedrijfs impact te voor komen, kunnen we het beste een opmerking sturen om vandaag nog te beginnen met het plannen van uw migratie en deze volt ooien vóór 1 maart 2023. De bestaande klassieke Api's, het Cloud Services en het resource model worden niet terugvallen. Het is de bedoeling om migreren eenvoudig te maken omdat er veel geavanceerde functies beschikbaar zijn in het Resource Manager-implementatiemodel. We raden u aan om te beginnen met de migratie van deze resources naar Azure Resource Manager. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Wat betekent dit migratieplan voor mijn bestaande tooling? 
 
@@ -37,7 +45,7 @@ U kunt de migratie afbreken wanneer de resources zich nog in de staat Voorbereid
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Kan ik de migratie ongedaan maken wanneer de doorvoerbewerking is mislukt? 
 
-U kunt de migratie niet afbreken als wanneer de doorvoerbewerking is mislukt. Alle migratiebewerkingen, met inbegrip van de doorvoerbewerking, zijn idempotent. Daarom is het raadzaam om de bewerking na een korte tijd opnieuw uit te voeren. Als u nog steeds een fout hebt, maakt u een ondersteunings ticket of maakt u een forum bericht op [micro soft Q & a](https://docs.microsoft.com/answers/index.html).
+U kunt de migratie niet afbreken als wanneer de doorvoerbewerking is mislukt. Alle migratiebewerkingen, met inbegrip van de doorvoerbewerking, zijn idempotent. Daarom is het raadzaam om de bewerking na een korte tijd opnieuw uit te voeren. Als u nog steeds een fout hebt, maakt u een ondersteunings ticket.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Moet ik nog een ExpressRoute-circuit kopen als ik IaaS via Resource Manager wil gebruiken? 
 

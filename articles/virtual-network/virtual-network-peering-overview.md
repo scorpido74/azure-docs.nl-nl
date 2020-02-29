@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980109"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918356"
 ---
-# <a name="virtual-network-peering"></a>Virtual Network-peering
+# <a name="virtual-network-peering"></a>Peering op virtueel netwerk
 
 Met Virtual Network-peering kunt u naadloos verbinding maken tussen netwerken in [Azure Virtual Network](virtual-networks-overview.md). De virtuele netwerken worden als een voor connectiviteits doeleinden weer gegeven. Het verkeer tussen virtuele machines maakt gebruik van de micro soft backbone-infra structuur. Net als verkeer tussen virtuele machines in hetzelfde netwerk, wordt verkeer alleen gerouteerd via het *particuliere* netwerk van micro soft.
 
@@ -101,10 +101,10 @@ Zie [machtigingen](virtual-network-manage-peering.md#permissions)voor meer infor
 
 Er zijn een nominale kosten verbonden aan binnenkomend en uitgaand verkeer dat gebruikmaakt van een virtuele netwerk peering-verbinding. Zie [Virtual Network prijzen](https://azure.microsoft.com/pricing/details/virtual-network)voor meer informatie.
 
-Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute gateway kan gebruiken in een gekoppeld virtueel netwerk. Gateway-door Voer werkt voor zowel cross-premises als netwerk-naar-netwerk-connectiviteit. Verkeer naar de gateway (binnenkomend of uitgaand) in het gekoppelde virtuele netwerk maakt kosten voor peering van het virtuele netwerk onverminderd. Zie voor meer informatie [VPN gateway prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway/) voor de kosten van VPN-gateways en ExpressRoute gateway prijzen voor ExpressRoute gateway kosten.
+Gateway-door Voer is een peering-eigenschap waarmee een virtueel netwerk een VPN-ExpressRoute gateway kan gebruiken in een gekoppeld virtueel netwerk. Gateway-door Voer werkt voor zowel cross-premises als netwerk-naar-netwerk-connectiviteit. Verkeer naar de gateway (binnenkomend of uitgaand) in het gekoppelde virtuele netwerk maakt de peering van virtuele netwerken op het spoke-VNet (of niet-gateway-VNet). Zie voor meer informatie [VPN gateway prijzen](https://azure.microsoft.com/pricing/details/vpn-gateway/) voor de kosten van VPN-gateways en ExpressRoute gateway prijzen voor ExpressRoute gateway kosten.
 
 >[!NOTE]
-> In een vorige versie van dit document is aangegeven dat de kosten voor peering van virtuele netwerken niet van toepassing zijn op de gateway-door voer. Het weerspiegelt nu nauw keurige prijzen per de pagina met prijzen.
+> In een vorige versie van dit document is aangegeven dat de kosten voor peering van virtuele netwerken niet van toepassing zijn op de spoke VNet (of niet-gateway VNet) met gateway-door voer. Het weerspiegelt nu nauw keurige prijzen per de pagina met prijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

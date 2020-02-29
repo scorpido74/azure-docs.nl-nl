@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: acf0409459994adf5dde98fb3b1a8ab2e280df76
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: c9388da449e75dee00fd43af9a4e0407c46f597a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153703"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916707"
 ---
 # <a name="two-class-decision-forest-module"></a>Module voor beslissings forest met twee klassen
 
@@ -66,6 +66,8 @@ Zie [Decision bossen](https://go.microsoft.com/fwlink/?LinkId=403677)voor meer i
 3.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
     -   **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+
+    -   **Parameter bereik**: als u niet zeker weet wat de beste para meters zijn, kunt u de optimale para meters vinden met behulp van de Hyper parameters-module voor het [afstemmen van modellen](tune-model-hyperparameters.md) . U geeft een aantal waarden op, en de trainer herhaalt meerdere combi Naties van de instellingen om de combi natie van waarden te bepalen die het beste resultaat oplevert.
   
 4.  Voor het **aantal beslissings structuren**typt u het maximum aantal beslissings structuren dat kan worden gemaakt in de ensemble. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar de trainings tijd wordt verhoogd.  
   

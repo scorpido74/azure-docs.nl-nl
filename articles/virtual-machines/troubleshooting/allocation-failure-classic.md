@@ -12,14 +12,16 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059198"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913375"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Probleemoplossings stappen die specifiek zijn voor toewijzing van fout scenario's in het klassieke implementatie model
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Hieronder vindt u algemene toewijzings scenario's die ervoor zorgen dat een toewijzings aanvraag wordt vastgemaakt. Verderop in dit artikel gaan we in op elk scenario.
 
@@ -50,7 +52,7 @@ Een aanvraag om de grootte van een virtuele machine of een virtuele machine of e
 
 **Tijdelijke oplossing**
 
-Als de fout Upgrade_VMSizeNotSupported * is, probeert u een andere VM-grootte. Als u een andere VM-grootte gebruikt, maar als u een ander virtueel IP-adres (VIP) wilt gebruiken, moet u een nieuwe Cloud service maken om de nieuwe VM te hosten en de nieuwe Cloud service toe te voegen aan het regionale virtuele netwerk waar de bestaande virtuele machines worden uitgevoerd. Als uw bestaande Cloud service geen regionaal virtueel netwerk gebruikt, kunt u nog steeds een nieuw virtueel netwerk voor de nieuwe Cloud service maken en vervolgens uw [bestaande virtuele netwerk verbinden met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+Als de fout is Upgrade_VMSizeNotSupported *, probeert u een andere VM-grootte. Als u een andere VM-grootte gebruikt, maar als u een ander virtueel IP-adres (VIP) wilt gebruiken, moet u een nieuwe Cloud service maken om de nieuwe VM te hosten en de nieuwe Cloud service toe te voegen aan het regionale virtuele netwerk waar de bestaande virtuele machines worden uitgevoerd. Als uw bestaande Cloud service geen regionaal virtueel netwerk gebruikt, kunt u nog steeds een nieuw virtueel netwerk voor de nieuwe Cloud service maken en vervolgens uw [bestaande virtuele netwerk verbinden met het nieuwe virtuele netwerk](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Meer informatie over [regionale virtuele netwerken](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
 Als de fout GeneralError * is, is het waarschijnlijk dat het type resource (zoals een bepaalde VM-grootte) door het cluster wordt ondersteund, maar dat het cluster op het moment geen vrije bronnen heeft. Net als in het bovenstaande scenario voegt u de gewenste reken resource toe via het maken van een nieuwe Cloud service (Houd er rekening mee dat de nieuwe Cloud service een andere VIP moet gebruiken) en gebruik een regionaal virtueel netwerk om uw Cloud Services te verbinden.
 
@@ -116,7 +118,7 @@ New_General * of New_VMSizeNotSupported *
 
 **Oorzaak van het vastmaken van het cluster**
 
-Voordat regionale virtuele netwerken werden geïntroduceerd, moest u een virtueel netwerk koppelen aan een affiniteits groep. Als gevolg hiervan worden reken resources die in een affiniteits groep zijn geplaatst, gebonden aan dezelfde beperkingen, zoals wordt beschreven in het scenario toewijzing: Bovenstaande sectie affiniteits groep (VM/service nabij). De reken resources zijn gekoppeld aan één cluster.
+Voordat regionale virtuele netwerken werden geïntroduceerd, moest u een virtueel netwerk koppelen aan een affiniteits groep. Als gevolg hiervan worden reken resources die in een affiniteits groep zijn geplaatst, gebonden aan dezelfde beperkingen zoals beschreven in de sectie ' toewijzings scenario: Affiniteits groep (VM/service nabijheid) '. De reken resources zijn gekoppeld aan één cluster.
 
 **Tijdelijke oplossing**
 

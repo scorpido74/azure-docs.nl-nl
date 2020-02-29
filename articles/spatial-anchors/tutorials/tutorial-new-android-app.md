@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276934"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161717"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Zelf studie: stapsgewijze instructies voor het maken van een nieuwe Android-app met behulp van ruimtelijke ankers van Azure
 
@@ -24,7 +24,7 @@ In deze zelf studie wordt uitgelegd hoe u een nieuwe Android-app maakt die de AR
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 - Een Windows-of macOS-computer met <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
-- Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerde</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
+- Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">ontwikkelaar-geactiveerd</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -123,13 +123,13 @@ Voeg ten slotte de volgende `handleTap()` methode toe, waarmee alles aan elkaar 
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Een lokaal ruimtelijk anker van Azure koppelen
 
-Wijzig `Gradle Scripts\build.gradle (Module: app)` zodat de volgende vermelding moet worden toegevoegd. Met deze code wordt ervoor gezorgd dat uw app de Azure spatiale ankers versie 1.3.0. Hiervoor moet worden verwezen naar een recente versie van Azure spatiale ankers.
+Wijzig `Gradle Scripts\build.gradle (Module: app)` zodat de volgende vermelding moet worden toegevoegd. Met deze code wordt ervoor gezorgd dat uw app de Azure spatiale ankers versie 2.2.0. Hiervoor moet worden verwezen naar een recente versie van Azure spatiale ankers. U vindt hier de release opmerkingen [.](https://github.com/Azure/azure-spatial-anchors-samples/releases)
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```

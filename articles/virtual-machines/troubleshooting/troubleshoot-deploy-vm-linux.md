@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058219"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921433"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Problemen met het implementeren van problemen met virtuele Linux-machines in azure oplossen
 
@@ -31,7 +31,7 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan de aangevraagde VM-grootte niet ondersteunen
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
 - Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 - Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
     - Stop alle virtuele machines in de beschikbaarheidsset. Klik op **resource groepen** > de resource groep > **resources** > uw beschikbaarheidsset > **virtual machines** > uw virtuele machine > **gestopt**.
@@ -40,7 +40,7 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster heeft geen vrije resources
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<Properties supportTopicIds = "123456789" resource Tags = "Windows" productPesIds = "1234, 5678"/>
 - Voer de aanvraag later opnieuw uit.
 - Als de nieuwe VM deel kan uitmaken van een andere beschikbaarheidsset
     - Maak een virtuele machine in een andere beschikbaarheidsset (in dezelfde regio).
@@ -86,6 +86,7 @@ U kunt de lijst op Linux vinden in door [Azure goedgekeurde distributies](../lin
 
 Ja. U kunt een bestaande klassieke virtuele machine toevoegen aan een nieuwe of bestaande Beschikbaarheidsset. Zie [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)voor meer informatie.
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/).

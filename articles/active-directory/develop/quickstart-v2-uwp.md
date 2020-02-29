@@ -11,18 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 3700dc8755e91c35be229aaab53d47af58c80e72
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063693"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160918"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Quickstart: De Microsoft Graph-API aanroepen vanuit een UWP-toepassing (Universeel Windows-platform)
 
-Deze Quick Start bevat een code voorbeeld dat laat zien hoe een Universeel Windows-platform-toepassing (UWP) zich kan aanmelden bij gebruikers met persoonlijke accounts of werk-en school accounts, een toegangs token kan ophalen en de Microsoft Graph-API kunt aanroepen.
-
-![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-uwp/uwp-intro.svg)
+Deze Quick Start bevat een code voorbeeld dat laat zien hoe een Universeel Windows-platform-toepassing (UWP) zich kan aanmelden bij gebruikers met persoonlijke accounts of werk-en school accounts, een toegangs token kan ophalen en de Microsoft Graph-API kunt aanroepen. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
@@ -64,22 +62,32 @@ Deze Quick Start bevat een code voorbeeld dat laat zien hoe een Universeel Windo
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Stap 2: Uw Visual Studio-project downloaden
 
- - [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+> [!div renderon="docs"]
+> [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
+> [!div class="sxs-lookup" renderon="portal"]
+> Voer het project uit met behulp van Visual Studio 2019.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Het code voorbeeld downloaden]()
 
-1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
-1. Open het project in Visual Studio. U wordt mogelijk gevraagd om een UWP-SDK te installeren. Accepteer in dat geval.
-1. Bewerk **MainPage.xaml.cs** en vervang de waarden van het veld `ClientId`:
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: uw app is geconfigureerd en klaar om te worden uitgevoerd
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app en is klaar om te worden uitgevoerd. 
 
-    ```csharp
-    private const string ClientId = "Enter_the_Application_Id_here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Deze Quick Start ondersteunt Enter_the_Supported_Account_Info_Here.    
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
+> 
+> 1. Pak het zip-bestand uit in een lokale map dicht bij de hoofdmap van de schijf, bijvoorbeeld **C:\Azure-Samples**.
+> 1. Open het project in Visual Studio. U wordt mogelijk gevraagd om een UWP-SDK te installeren. Accepteer in dat geval.
+> 1. Bewerk **MainPage.xaml.cs** en vervang de waarden van het veld `ClientId`:
+>
+>    ```csharp
+>    private const string ClientId = "Enter_the_Application_Id_here";
+>    ```
 > Waar:
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
 >
@@ -90,13 +98,15 @@ Deze Quick Start bevat een code voorbeeld dat laat zien hoe een Universeel Windo
 
 Als u de Snelstartgids op uw Windows-computer wilt proberen:
 
-1. Kies op de werk balk van Visual Studio het juiste platform (waarschijnlijk **x64** of **x86**, geen arm).
-   > Controleren of het doel apparaat wordt gewijzigd van het *apparaat* naar de *lokale computer*
+1. Kies op de werk balk van Visual Studio het juiste platform (waarschijnlijk **x64** of **x86**, geen arm). U ziet dat het doel apparaat wordt gewijzigd van het *apparaat* naar de *lokale computer*
 1. Selecteer fouten opsporen | **Starten zonder fout opsporing**
 
 ## <a name="more-information"></a>Meer informatie
 
 Deze sectie biedt meer informatie over de quickstart.
+
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-uwp/uwp-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 
