@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705536"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202495"
 ---
-Schijf bursting is momenteel een preview-functie voor Premium-Ssd's. Bursting wordt ondersteund op een Premium SSD-schijf grootte < = 512 GiB (P20 of lager). Deze schijf grootten ondersteunen de burstisatie op basis van beste inspanningen en gebruiken een tegoed systeem voor het beheren van bursting. De tegoeden worden in een burst-Bucket verzameld wanneer het schijf verkeer lager is dan het ingerichte prestatie doel voor de schijf grootte en crediteert wanneer het verkeer groter wordt dan het doel. Schijf verkeer wordt getraceerd voor zowel IOPS als band breedte in het ingerichte doel.
+Schijf bursting is momenteel een preview-functie voor Premium-Ssd's. Bursting wordt ondersteund op een Premium SSD-schijf grootte < = 512 GiB (P20 of lager). Deze schijf grootten ondersteunen de burstisatie op basis van beste inspanningen en gebruiken een tegoed systeem voor het beheren van bursting. De tegoeden worden in een burst-Bucket verzameld wanneer het schijf verkeer lager is dan het ingerichte prestatie doel voor de schijf grootte en crediteert wanneer het verkeer groter wordt dan het doel. Schijf verkeer wordt getraceerd voor zowel IOPS als band breedte in het ingerichte doel. Met schijf burstisatie worden de beperkingen voor de grootte van virtuele machines (VM) niet omzeild op IOPS of door voer.
 
 Schijf bursting is standaard ingeschakeld voor nieuwe implementaties van de schijf grootten die dit ondersteunen. Bestaande schijf grootten, als deze schijf bursting ondersteunen, kunnen bursting op een van de volgende manieren inschakelen:
 
@@ -38,7 +38,7 @@ De schijf grootten die ondersteuning bieden voor bursting in combi natie met de 
 
 Schijf bursting is momenteel alleen beschikbaar in de regio West-Centraal vs.
 
-## <a name="disk-sizes"></a>Schijfformaten
+## <a name="disk-sizes"></a>Schijf grootten
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 

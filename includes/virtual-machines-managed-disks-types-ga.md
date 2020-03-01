@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e145cf481dd165144b188e6205e4b78cc61359fd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522658"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202529"
 ---
-## <a name="premium-ssd"></a>Premium SSD
+## <a name="premium-ssd"></a>Premium - SSD
 
 Azure Premium Ssd's bieden ondersteuning voor hoge prestaties en lage latentie voor virtuele machines (Vm's) met invoer/uitvoer-intensieve workloads. Als u gebruik wilt maken van de snelheid en prestaties van Premium-opslag schijven, kunt u bestaande VM-schijven migreren naar Premium-Ssd's. Premium-Ssd's zijn geschikt voor essentiële productie toepassingen. Premium-Ssd's kan alleen worden gebruikt in combi natie met een VM-reeks die compatibel is met Premium Storage.
 
-Zie [Windows VM-grootten](../articles/virtual-machines/windows/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows, waaronder de grootte die compatibel is met Premium Storage. Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Linux, waaronder de grootte van Premium Storage-compatibel.
+Zie [Windows VM-grootten](../articles/virtual-machines/windows/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows, waaronder de grootte die compatibel is met Premium Storage. Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Linux, waaronder de grootte van Premium Storage-compatibel. Vanuit een van deze artikelen moet u elk artikel van de afzonderlijke VM-grootte controleren om te bepalen of het een Premium-opslag compatibel is.
 
 ### <a name="disk-size"></a>Schijfgrootte
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
@@ -49,7 +49,7 @@ Standaard Ssd's zijn ontworpen om latentie van één cijfer en de IOPS en door v
 
 Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Deze trans acties hebben een facturerings impact.
 
-## <a name="standard-hdd"></a>Standard HDD
+## <a name="standard-hdd"></a>Standard - HDD
 
 Azure Standard Hdd's levert betrouw bare, voordelige schijf ondersteuning voor virtuele machines met latentie-ongevoelig werk belastingen. Bij standaard opslag worden de gegevens opgeslagen op de harde schijven (Hdd's). Latentie, IOPS en door Voer van Standard-HDD schijven kunnen veel meer verschillen in vergelijking met schijven op basis van SSD. Standard-HDD schijven zijn ontworpen voor het leveren van schrijf latentie onder 10 MS en lees latentie onder 20ms voor de meeste i/o-bewerkingen, maar de werkelijke prestaties kunnen echter variëren, afhankelijk van de i/o-grootte en het werkbelasting patroon. Wanneer u werkt met Vm's, kunt u standaard HDD-schijven gebruiken voor dev/test-scenario's en minder kritieke workloads. Standaard Hdd's zijn beschikbaar in alle Azure-regio's en kunnen worden gebruikt met alle Azure-Vm's.
 
@@ -67,8 +67,8 @@ Bij het gebruik van beheerde schijven gelden de volgende facturerings overweging
 - Schijftype
 - Grootte van beheerde schijf
 - Momentopnamen
-- Uitgaande gegevensoverdracht
-- Aantal trans acties
+- Uitgaande gegevens overdracht
+- Aantal transacties
 
 **Beheerde schijf grootte**: beheerde schijven worden gefactureerd op de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) toe aan de dichtstbijzijnde schijf grootte. Zie de vorige tabellen voor meer informatie over de geboden schijf groottes. Elke schijf wordt toegewezen aan een ondersteunde aanbieding van de ingerichte schijf en wordt dienovereenkomstig gefactureerd. Als u bijvoorbeeld een 200 GiB-Standard-SSD hebt ingericht, wordt deze toegewezen aan de aanbieding voor de schijf grootte van E15 (256 GiB). Facturering voor een ingerichte schijf wordt per uur naar beneden gefactureerd met behulp van de maandelijkse prijs voor de Premium Storage aanbieding. Als u bijvoorbeeld een E10-schijf hebt ingericht en deze na 20 uur hebt verwijderd, wordt u gefactureerd voor het E10-aanbod dat Maxi maal 20 uur in rekening wordt gebracht. Dit is ongeacht de hoeveelheid gegevens die naar de schijf wordt geschreven.
 
