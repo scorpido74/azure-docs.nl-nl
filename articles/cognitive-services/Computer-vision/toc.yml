@@ -5,6 +5,8 @@
   items:
     - name: Wat is Computer Vision?
       href: Home.md
+    - name: Nieuwe functies
+      href: whats-new.md
 - name: Snelstartgidsen
   items:
     - name: De client-SDK gebruiken

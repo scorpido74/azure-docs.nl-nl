@@ -1,6 +1,7 @@
 - name: Content Moderator-documentatie
   href: index.yml
 - name: Overzicht
+  expanded: true
   items:
     - name: Wat is Content Moderator?
       href: overview.md
@@ -37,7 +38,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 'Beoordelingen, werkstromen en taken'
       href: review-api.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Inhoud beheren
       items:
