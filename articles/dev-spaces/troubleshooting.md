@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605245"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662464"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -474,7 +474,7 @@ Als u Azure-ontwikkel ruimten wilt inschakelen op een AKS-cluster waarvoor het u
 | cloudflare.docker.com | HTTPS:443 | Voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
 | gcr.io | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
 | storage.googleapis.com | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
-| azds-<guid>.<location>.azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json|
+| azds-<guid>.<location>. azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout: kan het cluster \<cluster\> in het abonnement niet vinden \<abonnements-\>"
 
@@ -484,3 +484,14 @@ Dit probleem oplossen:
 
 * Gebruik `az aks use-dev-spaces -g <resource group name> -n <cluster name>` om de huidige context bij te werken. Met deze opdracht wordt ook Azure dev-ruimten op uw AKS-cluster ingeschakeld als dat nog niet is gebeurd. U kunt ook `kubectl config use-context <cluster name>` gebruiken om de huidige context bij te werken.
 * Gebruik `az account show` voor het weer geven van het huidige Azure-abonnement dat u wilt richten en controleer of dit juist is. U kunt het abonnement dat u wilt richten wijzigen met behulp van `az account set`.
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Fout bij het gebruik van dev Spaces na het roteren van AKS-certificaten
+
+Na [het draaien van de certificaten in uw AKS-cluster](../aks/certificate-rotation.md), zullen bepaalde bewerkingen, zoals `azds space list` en `azds up`, mislukken. U moet ook de certificaten op uw Azure dev Space-controller vernieuwen na het draaien van de certificaten in uw cluster.
+
+U kunt dit probleem oplossen door ervoor te zorgen dat uw *kubeconfig* over de bijgewerkte certificaten beschikt met `az aks get-credentials` en vervolgens de `azds controller refresh-credentials` opdracht uitvoert. Bijvoorbeeld:
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```
