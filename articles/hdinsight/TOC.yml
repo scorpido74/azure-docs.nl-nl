@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Zelfstudies
       items:
+        - name: Een Apache Kafka-cluster maken - Azure CLI
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: Apache Kafka Producer- en Consumer-API gebruiken
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: Apps ontwikkelen met de Apache Kafka Streams-API
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: Apache Kafka-logboeken analyseren
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: BYOK (Bring Your Own Key)
-              href: ./kafka/apache-kafka-byok.md
             - name: SSL-versleuteling en -verificatie
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: Problemen oplossen

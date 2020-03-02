@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: Een virtuele-machinereservering aanschaffen
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Een Dedicated Host-reservering aanschaffen
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
         - name: Azure Disk Storage
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Een Azure Storage-reservering aanschaffen
@@ -42,10 +44,12 @@
           href: view-reservations.md
     - name: Concepten
       items:
-        - name: Kortingen voor gereserveerde VM-exemplaren
-          href: ../manage/understand-vm-reservation-charges.md
         - name: Hoe reserveringsaanbevelingen worden gemaakt
           href: reserved-instance-purchase-recommendations.md
+        - name: Kortingen voor gereserveerde VM-exemplaren
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Gereserveerde Dedicated Host-kortingen
+          href: billing-understand-dedicated-hosts-reservation-charges.md
         - name: Kortingen voor gereserveerde Azure Storage-capaciteit
           href: understand-storage-charges.md
         - name: Azure Disk Storage-reserveringskortingen

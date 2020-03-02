@@ -1,6 +1,7 @@
 - name: Documentatie voor Form Recognizer
   href: index.yml
 - name: Overzicht
+  expanded: true
   items:
     - name: Wat is Form Recognizer?
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: Een set met trainingsgegevens samenstellen
       href: build-training-data-set.md
+    - name: Het voorbeeldhulpprogramma voor labelen implementeren
+      href: deploy-label-tool.md
     - name: Containers gebruiken
       items:
         - name: Containers installeren en uitvoeren

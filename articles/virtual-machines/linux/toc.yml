@@ -130,26 +130,26 @@
               href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Prestaties optimaliseren
               href: storage-performance.md
-        - name: Versnelde berekeningen
+        - name: GPU - versneld berekenen
           items:
-            - name: Geoptimaliseerde GPU
-              items:
-                - name: Overzicht
-                  href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NC-serie
-                  href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NCv2-serie
-                  href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NCv3-serie
-                  href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: ND-serie
-                  href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NDv2-serie
-                  href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NV-serie
-                  href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: NVv3-serie
-                  href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Overzicht
+              href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NC-serie
+              href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv2-serie
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv3-serie
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: ND-serie
+              href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NDv2-serie
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NV-serie
+              href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv3-serie
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv4-serie
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: GPU-stuurprogramma's instellen
               href: n-series-driver-setup.md
         - name: Krachtig rekenvermogen
@@ -169,6 +169,8 @@
           items:
             - name: Vooruitbetalen voor VM's
               href: prepay-reserved-vm-instances.md
+            - name: Vooruitbetalen voor toegewezen hosts
+              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Wat zijn Azure-reserveringen?
               href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Flexibiliteit van de VM-instantiegrootte
@@ -310,6 +312,8 @@
               href: disk-encryption-key-vault.md
             - name: Voorbeeldscripts voor schijfversleuteling
               href: disk-encryption-sample-scripts.md
+            - name: Schijfversleuteling op een geïsoleerd netwerk
+              href: disk-encryption-isolated-network.md
             - name: Problemen met schijfversleuteling oplossen
               href: disk-encryption-troubleshooting.md
             - name: Veelgestelde vragen over schijfversleuteling

@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: Ondersteunde platforms
       href: security-center-os-coverage.md
-    - name: Ondersteunde functies
-      href: security-center-services.md
+    - name: Security Center-functies
+      items:
+        - name: Functiedekking voor VM's
+          href: security-center-services.md
+        - name: Functiedekking voor Azure PaaS-resources
+          href: features-paas.md
+    - name: Aanbevelingen voor beveiliging
+      href: recommendations-reference.md
+    - name: Beveiligingswaarschuwingen en de kill chain voor intentie
+      href: alerts-reference.md
 - name: Snelstartgidsen
   expanded: true
   items:

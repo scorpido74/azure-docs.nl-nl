@@ -181,6 +181,8 @@
           href: display-feature-information-android.md
         - name: Een titellaag toevoegen
           href: how-to-add-tile-layer-android-map.md
+        - name: Verkeergegevens weergeven
+          href: how-to-show-traffic-android.md
     - name: Gegevensfeedback geven
       href: how-to-use-feedback-tool.md
 - name: Naslaginformatie
