@@ -11,33 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921263"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208790"
 ---
-# <a name="supported-features-available-in-azure-security-center"></a>Ondersteunde functies die beschikbaar zijn in Azure Security Center
+# <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
-> [!NOTE]
->Sommige functies zijn alleen beschikbaar in de laag standaard. Als u zich nog niet hebt aangemeld voor de Standard-laag van Security Center, is een gratis proef periode beschikbaar. Zie de pagina met prijzen voor [Security Center](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie.
+De onderstaande tabellen bevatten Azure Security Center functies die beschikbaar zijn voor virtuele machines en servers.
 
-De volgende secties tonen Security Center functies die beschikbaar zijn voor hun [ondersteunde platforms](security-center-os-coverage.md).
+## Ondersteunde functies voor virtuele machines en servers<a name="vm-server-features"></a>
 
-* [Virtuele machines/servers](#vm-server-features)
-* [PaaS Services](#paas-services)
-
-
-## Ondersteunde functies van de virtuele machine/server<a name="vm-server-features"></a>
-
-### <a name="windows"></a>[Windows](#tab/features-windows)
+### <a name="windows-machines"></a>[Windows-computers](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
+|**Functie**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Standard|
 |[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](threat-protection.md)|✔|✔|✔|Aanbevelingen (gratis) </br></br> Beveiligings waarschuwingen (standaard)|
 |[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
@@ -59,11 +52,11 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
 
 
-### <a name="linux"></a>[Linux](#tab/features-linux)
+### <a name="linux-machines"></a>[Linux-machines](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
+|**Functie**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Niet-Azure-machines**|**Prijzen**
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Standard|
 |[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](security-center-alerts-iaas.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Aanbevelingen (gratis) </br></br> Beveiligings waarschuwingen (standaard)|
 |[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Standard|
@@ -85,6 +78,11 @@ De volgende secties tonen Security Center functies die beschikbaar zijn voor hun
 |[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
 
 --- 
+
+
+> [!TIP]
+>Als u wilt experimenteren met functies die alleen beschikbaar zijn in de prijs categorie Standard, kunnen gebruikers met een gratis laag een proef versie van 30 dagen registreren. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+
 
 ## Ondersteunde Endpoint Protection-oplossingen<a name="endpoint-supported"></a>
 
@@ -111,46 +109,6 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 > - Voor de detectie van System Center Endpoint Protection (SCEP) op een virtuele machine met Windows Server 2008 R2 moet SCEP worden geïnstalleerd na Power Shell 3,0 (of een hogere versie).
 > - Detectie van Trend Micro bescherming wordt ondersteund voor diepe beveiligings agenten.  OfficeScan-agents worden niet ondersteund.
 
-
-## Ondersteunde functies <a name="paas-services"></a> van PaaS Services
-
-De volgende PaaS-bronnen worden ondersteund door Azure Security Center:
-
-|Service|Aanbevelingen (gratis)|Beveiligings waarschuwingen (standaard)|Evaluatie van beveiligings problemen (standaard)|
-|----|:----:|:----:|:----:|
-|SQL Databases|✔|✔|✔|
-|Azure Container Registry|-|-|✔|
-|Azure Kubernetes Service|✔|✔|-|
-|Azure Database for PostgreSQL *|✔|✔|-|
-|Azure Database for MySQL *|✔|✔|-|
-|Azure CosmosDB *|-|✔|-|
-|Opslagaccounts|✔|-|-|
-|Blob Storage|✔|✔|-|
-|App Service|✔|✔|-|
-|Function App|✔|-|-|
-|Cloud Services|✔|-|-|
-|Virtueel netwerk|✔|-|-|
-|Subnet|✔|-|-|
-|NIC|✔|-|-|
-|Netwerkbeveiligingsgroepen|✔|-|-|
-|Abonnement|✔ **|✔|-|
-|Batch-account|✔|-|-|
-|Service Fabric-account|✔|-|-|
-|Automation-account|✔|-|-|
-|Load balancer|✔|-|-|
-|Cognitive Search|✔|-|-|
-|Service Bus-naamruimte|✔|-|-|
-|Stream Analytics|✔|-|-|
-|Event hub-naamruimte|✔|-|-|
-|Logic apps|✔|-|-|
-|Cache voor redis|✔|-|-|
-|Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
-|Key Vault|✔|✔ *|-|
-
-\* deze functies worden momenteel ondersteund in de preview-versie.
-
-\*-aanbevelingen voor \* Azure Active Directory (Azure AD) zijn alleen beschikbaar voor standaard abonnementen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

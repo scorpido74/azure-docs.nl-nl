@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705816"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208862"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -134,16 +134,7 @@ Een test drive is een fantastische manier om uw aanbieding aan potentiële klant
 
 Als u test drive inschakelt, wordt u gevraagd om een demonstratie omgeving te configureren voor klanten om een vaste periode te proberen. 
 
-### <a name="type-of-test-drive"></a>Type test drive
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : een implementatie sjabloon die alle Azure-resources bevat waaruit uw oplossing bestaat. Voor producten die in dit scenario passen, worden alleen Azure-resources gebruikt.
-- **[Dynamics 365 voor bedrijven Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : micro soft host en onderhoudt de Test Drive-service (met inbegrip van inrichting en implementatie) voor een bedrijf voor bedrijfs centrale bedrijfs resources (Financiën, bewerkingen, toeleverings keten, CRM, enzovoort).  
-- **[Dynamics 365 voor klant betrokkenheid](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : micro soft host en onderhoudt de Test Drive service (inclusief inrichting en implementatie) voor een klant engagementsysteem (verkoop, service, project service, veld Service, enzovoort).  
-- **[Dynamics 365 voor bewerkingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : micro soft host en onderhoudt de Test Drive-service (inclusief inrichting en implementatie) voor een financieel en operationeel systeem voor de planning van bedrijfs middelen (Financiën, bedrijfs activiteiten, productie, toeleverings keten, enzovoort). 
-- **[Logische app](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : een implementatie sjabloon met alle complexe oplossings architecturen. Aangepaste producten moeten dit type test station gebruiken.
-- **[Power bi](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : een Inge sloten koppeling naar een aangepast dash board. Producten die een interactief Power BI visueel element willen demonstreren, moeten dit type test station gebruiken. Alles wat u moet uploaden, is uw Inge sloten Power BI URL.
-
-#### <a name="additional-test-drive-resources"></a>Aanvullende test drive resources
+#### <a name="test-drive-resources"></a>Bronnen van schijven testen
 - [Best practices voor test stations](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Best practices voor het testen van de marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Overzicht van testen van één pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -169,7 +160,7 @@ Selecteer **Opslaan** na het volt ooien van deze velden.
 
 Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Bel op hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding.
 
-### <a name="industry"></a>Industrie
+### <a name="industry"></a>Branche
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -212,7 +203,7 @@ Voor **waarden voor universele wijzigingen in het Standard-contract voor de comm
 - **Tenant-id's** (vereist): elke aangepaste wijziging kan worden gericht op Maxi maal 20 Tenant-id's. Als u een aangepaste wijziging toevoegt, moet u ten minste één Tenant-ID opgeven. De Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze ID en ze kunnen deze vinden door te navigeren naar portal.azure.com > Azure Active Directory > Eigenschappen. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com).
 - **Beschrijving** (optioneel): Geef eventueel een beschrijvende beschrijving op voor de Tenant-id waarmee u de klant kunt identificeren die u wilt richten op de wijziging.
 
-#### <a name="terms-and-conditions"></a>Voorwaarden
+#### <a name="terms-and-conditions"></a>Voor waarden
 
 Als u uw eigen aangepaste voor waarden wilt opgeven, kunt u ervoor kiezen deze in het veld voor waarden in te voeren. U kunt Maxi maal 10.000 tekens tekst in dit veld invoeren. Als voor de voor waarden een langere beschrijving is vereist, voert u in dit veld een koppeling naar een enkele URL in waarin u de voor waarden kunt vinden. Het wordt weer gegeven voor klanten als een actieve koppeling.
 
@@ -234,7 +225,7 @@ Geef de details op die in Marketplace moeten worden weer gegeven, inclusief besc
 - **Naam** (vereist): de naam die hier is opgegeven, wordt weer gegeven als de titel van uw aanbieding op de Marketplace (s) die u hebt gekozen. De naam wordt vooraf ingevuld op basis van uw vorige **nieuwe aanbieding** . De naam kan worden aangemerkt. Het mag geen emojis bevatten (tenzij ze de symbolen van het handels merk en copyright zijn) en moet beperkt zijn tot 50 tekens.
 - **Samen vatting** (vereist): Geef een korte beschrijving van uw aanbieding die moet worden gebruikt in de zoek resultaten voor Marketplace-aanbiedingen. In dit veld kunnen Maxi maal 100 tekens tekst worden ingevoerd.
 - **Beschrijving** (vereist): Geef een beschrijving op van uw aanbieding die moet worden weer gegeven in het overzicht van Marketplace-lijst (en). Overweeg het opnemen van een toegevoegde waarde, belang rijke voor delen, categorie-of branche koppelingen, in-app aankoop kansen, eventueel vereiste informatie en een koppeling voor meer informatie.
-In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. Zie het artikel [een fantastische app-beschrijving schrijven](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
+U kunt Maxi maal 3.000 tekens in dit veld invoeren, inclusief de opmaak. Zie het artikel [een fantastische app-beschrijving schrijven](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
 - **Tref woorden zoeken**: Voer Maxi maal drie Zoek trefwoorden in die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace (s).
 - **Aan** de slag-instructies (vereist): in dit gedeelte wordt uitgelegd hoe u uw app kunt configureren en gebruiken voor potentiële klanten.  Deze Snelstartgids kan koppelingen bevatten naar gedetailleerde online documentatie. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd.
 
@@ -277,7 +268,7 @@ Gebruik de volgende instructies voor het gebruik van de RTF-editor:
 - **Software** voor het CSP-programma (optioneel): Geef een koppeling op naar marketing materiaal als u ervoor kiest uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
 - **Nuttige koppelingen** (optioneel): optionele aanvullende online documenten over uw app of gerelateerde services die worden vermeld door een **titel** en **URL**op te geven. Voeg extra nuttige koppelingen toe door op **+ een URL toevoegen**te klikken.
 
-#### <a name="contact-information"></a>Contactgegevens
+#### <a name="contact-information"></a>Contact gegevens
 
 - **Contacts**: voor elke klant contactpersoon geeft u de **naam**, het **telefoon nummer**en het **e-mail** adres van de werk nemer op.  (Deze worden *niet* openbaar weer gegeven). Er is ook een **ondersteunings-URL** vereist voor de contact groep van de **ondersteuning** .  ( *Deze gegevens worden* openbaar weer gegeven).
 
@@ -290,7 +281,7 @@ Gebruik de volgende instructies voor het gebruik van de RTF-editor:
 #### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
 - **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, die mini maal één (1) en Maxi maal drie (3) documenten per aanbieding biedt.
-- **Installatie kopieën** (optioneel): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven op de Marketplace (s), waarbij de volgende grootten moeten worden opgegeven: kleine, 48 x 48 pixels _(vereist),_ Medium: 90 x 90 pixels, groot: 216 x 216 pixels _(vereist),_ breed: 255 x 115 pixels en held: 815 x 290 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
+- **Installatie kopieën** (optioneel): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven op de Marketplace (s), waarbij de volgende grootten moeten worden opgegeven: kleine letter 48 x 48 pixels _(vereist),_ gemiddeld: 90 x 90 pixels _(vereist)_ , groot: 216 x 216 pixels _(vereist),_ breed: 255 x 115 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Scherm afbeeldingen** (vereist): Voeg scherm afbeeldingen toe die uw aanbieding aantonen. U kunt Maxi maal vijf (5) scherm opnamen toevoegen en de grootte van 1280 x 720 pixels aanpassen. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.
 
@@ -406,7 +397,7 @@ Selecteer de frequentie waarmee klanten de vermelde prijs moeten betalen. Er moe
 - **Prijs**: USD per maand of USD per jaar
 
 Prijzen die in de lokale valuta zijn ingesteld (USD = Verenigde Staten dollar), worden omgezet in de lokale valuta van alle geselecteerde markten met de huidige wissel koersen die beschikbaar zijn tijdens de installatie. Valideer deze prijzen vóór de publicatie door het prijs werk blad te exporteren en de prijs op elke markt te bekijken. Als u aangepaste prijzen wilt instellen op een afzonderlijke markt, wijzigt en importeert u de prijs informatie in het werk blad. U bent verantwoordelijk voor het valideren van deze prijzen en de eigenaar van deze instellingen.
-*\*U moet uw prijs wijzigingen eerst opslaan om het exporteren van prijs gegevens in te scha kelen.*
+*\*u uw prijs wijzigingen eerst moet opslaan om de export van prijs gegevens in te scha kelen.*
 
 Controleer uw prijzen zorgvuldig voordat u deze publiceert. er zijn enkele beperkingen voor wat er kan worden gewijzigd nadat een plan is gepubliceerd:
 
@@ -439,7 +430,7 @@ Hoewel SaaS voorziet in Tenant-Id's voor het definiëren van een persoonlijke do
 
 ![Voor beeld Marketplace-plan lijst met notities](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Test drive
+## <a name="test-drive"></a>Station testen
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 

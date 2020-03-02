@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663944"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208556"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutel configuratie 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-' principalId ' is een GUID die wordt gegenereerd door de beheerde identiteits service voor de *cluster* bron.
+de principal-id is een GUID die wordt gegenereerd door de beheerde identiteits service voor de *cluster* bron.
 
 > [!IMPORTANT]
-> Kopieer de waarde ' cluster-id ', want u hebt deze nodig in de volgende stappen.
+> Kopieer de waarde ' Principal-id ', want u hebt deze nodig in de volgende stappen.
 
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault machtigingen verlenen
@@ -213,7 +213,7 @@ Werk uw Key Vault bij met een nieuw toegangs beleid waarmee u machtigingen voor 
 Open uw Key Vault in Azure Portal en klik vervolgens op toegangs beleid en vervolgens op toegangs beleid toevoegen om een nieuw beleid te maken met de volgende instellingen:
 
 - Belang rijke machtigingen: Selecteer Get, terugloop sleutel en de machtigingen voor de uitpakken sleutel.
-- Selecteer Principal: Voer de waarde van het cluster-id in die is geretourneerd in het antwoord in de vorige stap.
+- Selecteer Principal: Voer de waarde van de principal-id in die is geretourneerd in het antwoord in de vorige stap.
 
 ![Key Vault machtigingen verlenen](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
   "location": "region-name"
 }
 ```
-' principalId ' is een GUID die is gegenereerd door de beheerde identiteits service.
+' principle-id ' is een GUID die is gegenereerd door de beheerde identiteits service.
 
 > [!IMPORTANT]
-> Kopieer de waarde ' cluster-id ', want u hebt deze nodig in de volgende stappen.
+> Kopieer de waarde ' principle-id ', want u hebt deze nodig in de volgende stappen.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Een onderdeel koppelen aan een *cluster* bron met behulp van [onderdelen-API maken of bijwerken](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 

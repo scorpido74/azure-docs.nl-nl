@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e4768c5cf6df784c8f32aff2f884adfa6b68ab
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204851"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208709"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -755,72 +755,7 @@ Minimale staaf voor TLS 1,2-coderings suites:
 Nu u uw schema hebt desidned en de Azure AD SCIM-implementatie hebt begrepen, kunt u aan de slag met het ontwikkelen van uw SCIM-eind punt. In plaats van helemaal zelf te beginnen en de implementatie helemaal zelf te bouwen, kunt u vertrouwen op een aantal open source SCIM-bibliotheken die zijn gepubliceerd door de SCIM-commuinty.  
 De open-source .NET core- [referentie code](https://aka.ms/SCIMReferenceCode) die door het Azure AD-inrichtings team is gepubliceerd, is een van de bronnen waarmee u uw ontwikkeling kunt starten. Nadat u het SCIM-eind punt hebt gemaakt, moet u het testen. U kunt de verzameling [postman-testen](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gebruiken die deel uitmaakt van de referentie code of door loop de [hierboven](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)vermelde voorbeeld aanvragen/antwoorden.  
 
-Dit is hoe het werkt:
-
-1. Azure AD biedt een CLI-bibliotheek (Common Language Infrastructure) met de naam micro soft. SystemForCrossDomainIdentityManagement, die is opgenomen in de onderstaande code voorbeelden. Systeem integrators en ontwikkel aars kunnen deze bibliotheek gebruiken om een SCIM-webservice-eind punt te maken en te implementeren waarmee Azure AD kan worden verbonden met de identiteits opslag van elke toepassing.
-2. Toewijzingen worden geïmplementeerd in de webservice om het schema voor de gestandaardiseerde toewijzen aan het gebruikersschema en het protocol vereist voor de toepassing. 
-3. De eindpunt-URL is geregistreerd in Azure AD als onderdeel van een aangepaste toepassing in de toepassingengalerie.
-4. Gebruikers en groepen worden toegewezen aan deze toepassing in Azure AD. Na toewijzing worden ze in een wachtrij geplaatst om te worden gesynchroniseerd met de doel toepassing. Het proces van synchronisatie verwerken van de wachtrij wordt elke 40 minuten uitgevoerd.
-
-### <a name="code-samples"></a>Codevoorbeelden
-
-Om dit proces gemakkelijker te maken, worden er [code voorbeelden](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) gegeven, waarmee een scim-webservice-eind punt wordt gemaakt en automatische inrichting wordt gedemonstreerd. Het voor beeld is van een provider die een bestand onderhoudt met rijen door komma's gescheiden waarden die gebruikers en groepen vertegenwoordigen.
-
-**Vereisten**
-
-* Visual Studio 2013 of hoger
-* [Azure-SDK voor .NET](https://azure.microsoft.com/downloads/)
-* Windows machine die ondersteuning biedt voor het framework ASP.NET 4.5 moet worden gebruikt als het eindpunt SCIM. Deze computer moet toegankelijk zijn vanuit de Cloud.
-* [Een Azure-abonnement met een proef-of gelicentieerde versie van Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
-
-### <a name="getting-started"></a>Aan de slag
-
-De eenvoudigste manier voor het implementeren van een eindpunt SCIM inrichting aanvragen van Azure AD kan accepteren, is te bouwen en implementeren van de voorbeeldcode die uitvoer van de ingerichte gebruikers naar een bestand met door komma's gescheiden waarden (CSV).
-
-#### <a name="to-create-a-sample-scim-endpoint"></a>Een voor beeld-SCIM-eind punt maken
-
-1. Down load het voorbeeld pakket voor de code op [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
-1. Pak het pakket en plaats deze op uw Windows-machine op een locatie zoals C:\AzureAD-BYOA-Provisioning-Samples\.
-1. In deze map, start u het FileProvisioning\Host\FileProvisioningService.csproj-project in Visual Studio.
-1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**en voer de volgende opdrachten uit voor het FileProvisioningService-project om de oplossings referenties op te lossen:
-
-   ```powershell
-    Update-Package -Reinstall
-   ```
-
-1. Bouw het project FileProvisioningService.
-1. Start de opdracht prompt toepassing in Windows (als beheerder) en gebruik de **cd** -opdracht om de map te wijzigen in de map **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** .
-1. Voer de volgende opdracht uit en vervang `<ip-address>` door het IP-adres of de domein naam van de Windows-computer:
-
-   ```
-    FileSvc.exe http://<ip-address>:9000 TargetFile.csv
-   ```
-
-1. Selecteer in Windows onder **Windows-instellingen** > **netwerk & Internet instellingen**de optie **Windows Firewall** > **Geavanceerde instellingen**en maak een **regel** voor binnenkomend verkeer waarmee inkomende toegang tot poort 9000 wordt toegestaan.
-1. Als de Windows-computer zich achter een router bevindt, moet de router worden geconfigureerd voor het uitvoeren van de vertaling van netwerk toegang tussen de poort 9000 die wordt blootgesteld aan Internet en poort 9000 op de Windows-computer. Deze configuratie is vereist voor Azure AD om toegang te krijgen tot dit eind punt in de Cloud.
-
-#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Het SCIM-eind punt voor het voor beeld registreren in azure AD
-
-1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com). 
-1. Selecteer **bedrijfs toepassingen** in het linkerdeel venster. Er wordt een lijst met alle geconfigureerde apps weer gegeven, met inbegrip van apps die zijn toegevoegd vanuit de galerie.
-1. Selecteer **+ nieuwe toepassing** > **alle** > **niet-galerie toepassing**.
-1. Voer een naam in voor uw toepassing en selecteer **toevoegen** om een app-object te maken. De toepassingsobject gemaakt is bedoeld om weer te geven van de doel-app u zou worden ingericht voor en uitvoering van eenmalige aanmelding voor en niet alleen het eindpunt SCIM.
-1. Selecteer in het scherm voor het beheren van apps de optie **inrichten** in het linkerdeel venster.
-1. Selecteer in het menu **inrichtings modus** de optie **automatisch**.    
-1. Voer in het veld **Tenant-URL** de URL in van het scim-eind punt van de toepassing. Voorbeeld: https://api.contoso.com/scim/
-
-1. Als het SCIM-eind punt een OAuth Bearer-token van een andere uitgever dan Azure AD vereist, kopieert u het vereiste OAuth Bearer-token naar het veld optionele **geheime token** . Als dit veld leeg blijft, bevat Azure AD een OAuth Bearer-token dat is uitgegeven door Azure AD met elke aanvraag. Apps die gebruikmaken van Azure AD als id-provider kunnen dit door Azure AD uitgegeven token valideren.
-1. Selecteer **verbinding testen** om te laten proberen Azure Active Directory verbinding te maken met het scim-eind punt. Als de poging mislukt, wordt er informatie over de fout weer gegeven.  
-
-    > [!NOTE]
-    > **Test verbindings** QUERY'S het scim-eind punt voor een gebruiker die niet bestaat, met behulp van een wille keurige GUID als de overeenkomende eigenschap die is geselecteerd in de Azure AD-configuratie. Het verwachte juiste antwoord is HTTP 200 OK met een leeg SCIM ListResponse-bericht
-1. Als de pogingen om verbinding te maken met de toepassing slagen, selecteert u **Opslaan** om de beheerders referenties op te slaan.
-1. In de sectie **toewijzingen** zijn er twee sets met kenmerk toewijzingen: één voor gebruikers objecten en één voor groeps objecten. Selecteren om te controleren van de kenmerken die worden gesynchroniseerd vanuit Active Directory van Azure aan uw app. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers en groepen in uw app voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
-1. Onder **instellingen**definieert het **bereik** veld welke gebruikers en of groepen worden gesynchroniseerd. Selecteer **alleen toegewezen gebruikers en groepen synchroniseren** (aanbevolen) om alleen gebruikers en groepen te synchroniseren die zijn toegewezen op het tabblad **gebruikers en groepen** .
-1. Wanneer de configuratie is voltooid, stelt u de **inrichtings status** **in op aan**.
-1. Selecteer **Opslaan** om de Azure AD-inrichtings service te starten.
-1. Als u alleen toegewezen gebruikers en groepen wilt synchroniseren (aanbevolen), selecteert u het tabblad **gebruikers en groepen** en wijst u de gebruikers of groepen toe die u wilt synchroniseren. Zodra de eerste cyclus is gestart, kunt u **audit logboeken** selecteren in het linkerdeel venster om de voortgang te controleren. Hiermee worden alle acties weer gegeven die door de inrichtings service in uw app worden uitgevoerd. Zie [rapportage over het automatisch inrichten van gebruikers accounts](check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
-De laatste stap bij het controleren van het voorbeeld is de TargetFile.csv-bestand te openen in de map \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug op uw Windows-computer. Nadat het inrichtingsproces is uitgevoerd, wordt dit bestand bevat de details van alle toegewezen en ingericht gebruikers en groepen.
+Opmerking: de referentie code is bedoeld om aan de slag te gaan met het bouwen van uw SCIM-eind punt en wordt ' AS IS ' gegeven. Bijdragen van de community zijn welkom bij het bouwen en onderhouden van de code. 
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Stap 4: uw SCIM-eind punt integreren met de Azure AD SCIM-client
 

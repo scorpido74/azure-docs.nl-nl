@@ -7,21 +7,22 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
-ms.openlocfilehash: 868e9e068244af91e218d906bee115b58906152f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b358287664ac6d6a3b641e1ab63073810ceb4c40
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027906"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208585"
 ---
-# <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Azure Data Explorer connector voor Apache Spark (preview-versie)
+# <a name="azure-data-explorer-connector-for-apache-spark"></a>Azure Data Explorer-connector voor Apache Spark
 
 [Apache Spark](https://spark.apache.org/) is een geïntegreerde analyse-engine voor grootschalige gegevens verwerking. Azure Data Explorer is een snelle, volledig beheerde service voor gegevens analyse voor real-time analyse op grote hoeveel heden gegevens. 
 
-Azure Data Explorer connector voor Spark implementeert gegevens bron en gegevens Sink voor het verplaatsen van gegevens tussen Azure Data Explorer en Spark-clusters om beide mogelijkheden te gebruiken. Met Azure Data Explorer en Apache Spark kunt u snelle en schaal bare toepassingen bouwen die gericht zijn op gegevensgestuurde scenario's, zoals machine learning (ML), uitpak-Transform-load (ETL) en Log Analytics. Schrijven naar Azure Data Explorer kan worden uitgevoerd in de batch-en streaming-modus.
-Het lezen van Azure Data Explorer ondersteunt het weghalen van kolommen en predikaten pushdown, waarmee het volume van de overgedragen gegevens wordt beperkt door gegevens in azure Data Explorer te filteren.
+De Azure Data Explorer-connector voor Spark is een [open-source project](https://github.com/Azure/azure-kusto-spark) dat kan worden uitgevoerd op een Spark-cluster. Het implementeert de gegevens bron en gegevens Sink voor het verplaatsen van gegevens tussen Azure Data Explorer-en Spark-clusters. Met Azure Data Explorer en Apache Spark kunt u snelle en schaal bare toepassingen bouwen die gericht zijn op gegevensgestuurde scenario's. Bijvoorbeeld machine learning (ML), uittreksel-Transform-load (ETL) en Log Analytics. Met de connector wordt Azure Data Explorer een geldig gegevens Archief voor standaard Spark-bron-en Sink-bewerkingen, zoals schrijven, lezen en writeStream.
 
-Azure Data Explorer Spark-connector is een [open-source project](https://github.com/Azure/azure-kusto-spark) dat kan worden uitgevoerd op elk Spark-cluster. De Azure Data Explorer Spark-connector maakt Azure Data Explorer een geldige gegevens opslag voor standaard Spark-bron-en Sink-bewerkingen, zoals schrijven, lezen en writeStream. 
+U kunt schrijven naar Azure Data Explorer in de batch-of de streaming-modus. Het lezen van Azure Data Explorer ondersteunt het weghalen van kolommen en predikaten pushdown, waarmee de gegevens in azure Data Explorer worden gefilterd, waardoor het volume van de overgedragen gegevens wordt verkleind.
+
+In dit onderwerp wordt beschreven hoe u de Azure Data Explorer Spark-connector installeert en configureert en gegevens verplaatst tussen Azure-Data Explorer en Apache Spark-clusters.
 
 > [!NOTE]
 > Hoewel sommige van de onderstaande voor beelden verwijzen naar een [Azure Databricks](https://docs.azuredatabricks.net/) Spark-cluster, nemen Azure Data Explorer Spark-connector geen rechtstreekse afhankelijkheden op Databricks of andere Spark-distributie.
@@ -30,36 +31,36 @@ Azure Data Explorer Spark-connector is een [open-source project](https://github.
 
 * [Een Azure Data Explorer-cluster en-data base maken](/azure/data-explorer/create-cluster-database-portal) 
 * Een Spark-cluster maken
-* Installeer de Azure Data Explorer-connector bibliotheek en de bibliotheken die worden vermeld in [afhankelijkheden](https://github.com/Azure/azure-kusto-spark#dependencies) , waaronder de volgende [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -bibliotheken:
-    * [Kusto data-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
-    * [Kusto opname-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* Vooraf ontwikkelde bibliotheken voor [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) en [maven opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
+* Azure Data Explorer-connector bibliotheek installeren:
+    * Vooraf ontwikkelde bibliotheken voor [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) 
+    * [Maven opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
+* [Maven 3. x](https://maven.apache.org/download.cgi) geïnstalleerd
+
+> [!TIP]
+> 2.3. x-versies worden ook ondersteund, maar kunnen wijzigingen in pom. XML-afhankelijkheden vereisen.
 
 ## <a name="how-to-build-the-spark-connector"></a>De Spark-connector maken
-
-Spark-connector kan worden gebouwd op basis van [bronnen](https://github.com/Azure/azure-kusto-spark) zoals hieronder wordt beschreven.
 
 > [!NOTE]
 > Deze stap is optioneel. Als u vooraf gemaakte bibliotheken gebruikt, gaat u naar [Spark-cluster installatie](#spark-cluster-setup).
 
 ### <a name="build-prerequisites"></a>Vereiste onderdelen maken
 
-* Java 1,8 SDK geïnstalleerd
-* [Maven 3. x](https://maven.apache.org/download.cgi) geïnstalleerd
-* Apache Spark versie 2.4.0 of hoger
+1. Installeer de bibliotheken die worden vermeld in [afhankelijkheden](https://github.com/Azure/azure-kusto-spark#dependencies) , waaronder de volgende [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -bibliotheken:
+    * [Kusto data-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
+    * [Kusto opname-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
-> [!TIP]
-> 2.3. x-versies worden ook ondersteund, maar kunnen wijzigingen in pom. XML-afhankelijkheden vereisen.
+1. Raadpleeg [deze bron](https://github.com/Azure/azure-kusto-spark) voor het bouwen van de Spark-connector.
 
-Voor scala/Java-toepassingen met Maven-project definities koppelt u uw toepassing aan het volgende artefact (de nieuwste versie kan anders zijn):
-
-```Maven
-   <dependency>
-     <groupId>com.microsoft.azure</groupId>
-     <artifactId>spark-kusto-connector</artifactId>
-     <version>1.0.0-Beta-02</version>
-   </dependency>
-```
+1. Voor scala/Java-toepassingen met Maven-project definities koppelt u uw toepassing aan het volgende artefact (de nieuwste versie kan anders zijn):
+    
+    ```Maven
+       <dependency>
+         <groupId>com.microsoft.azure</groupId>
+         <artifactId>spark-kusto-connector</artifactId>
+         <version>1.1.0</version>
+       </dependency>
+    ```
 
 ### <a name="build-commands"></a>Opdrachten bouwen
 
@@ -80,27 +81,35 @@ Zie voor meer informatie [connector gebruik](https://github.com/Azure/azure-kust
 ## <a name="spark-cluster-setup"></a>Configuratie van Spark-cluster
 
 > [!NOTE]
-> Het is raadzaam om de nieuwste versie van de Azure Data Explorer Spark-connector te gebruiken bij het uitvoeren van de volgende stappen:
+> Het is raadzaam om de nieuwste versie van de Azure Data Explorer Spark-connector te gebruiken bij het uitvoeren van de volgende stappen.
 
-1. Stel de volgende Spark-cluster instellingen in op basis van Azure Databricks cluster met Spark 2.4.4 en scala 2,11: 
+1. Configureer de volgende Spark-cluster instellingen op basis van Azure Databricks cluster met Spark 2.4.4 en scala 2,11:
 
     ![Databricks-cluster instellingen](media/spark-connector/databricks-cluster.png)
     
 1. Installeer de meest recente Spark-kusto-connector bibliotheek van Maven:
-
-    ![Azure Data Explorer-bibliotheek importeren](media/spark-connector/db-create-library.png)
+    
+    ![bibliotheken importeren](media/spark-connector/db-libraries-view.png) ![Selecteer Spark-Kusto-connector](media/spark-connector/db-dependencies.png)
 
 1. Controleer of alle vereiste bibliotheken zijn geïnstalleerd:
 
     ![Geïnstalleerde bibliotheken controleren](media/spark-connector/db-libraries-view.png)
 
-## <a name="authentication"></a>Authentication
+1. Controleer voor installatie met behulp van een JAR-bestand of er aanvullende afhankelijkheden zijn geïnstalleerd:
 
-Met Azure Data Explorer Spark-connector kunt u verifiëren met Azure Active Directory (Azure AD) met behulp van een [Azure AD-toepassing](#azure-ad-application-authentication), een [Azure AD-toegangs token](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), een verificatie van het [apparaat](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (voor niet-productie scenario's) of [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). De gebruiker moet het Azure-sleutel kluis pakket installeren en toepassings referenties opgeven om toegang te krijgen tot de Key Vault resource.
+    ![Afhankelijkheden toevoegen](media/spark-connector/db-not-maven.png)
+
+## <a name="authentication"></a>Verificatie
+
+Met Azure Data Explorer Spark-connector kunt u met behulp van een van de volgende methoden verifiëren met Azure Active Directory (Azure AD):
+* Een [Azure AD-toepassing](#azure-ad-application-authentication)
+* Een [Azure AD-toegangs token](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token)
+* [Verificatie van apparaten](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (voor niet-productie scenario's)
+* Een [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault) om toegang te krijgen tot de Key Vault resource, het Azure-sleutel kluis-pakket installeren en toepassings referenties opgeven.
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD-toepassings verificatie
 
-De meest eenvoudige en algemene verificatie methode. Deze methode wordt aanbevolen voor het gebruik van Azure Data Explorer Spark-connector.
+Azure AD-toepassings verificatie is de eenvoudigste en meest voorkomende verificatie methode en wordt aanbevolen voor de Azure Data Explorer Spark-connector.
 
 |Eigenschappen  |Beschrijving  |
 |---------|---------|
@@ -110,10 +119,10 @@ De meest eenvoudige en algemene verificatie methode. Deze methode wordt aanbevol
 
 ### <a name="azure-data-explorer-privileges"></a>Bevoegdheden voor Azure Data Explorer
 
-De volgende bevoegdheden moeten worden verleend op een Azure Data Explorer-cluster:
+Verleen de volgende bevoegdheden op een Azure Data Explorer-cluster:
 
-* Voor lezen (gegevens bron) moet de Azure AD-toepassing *Viewer* -bevoegdheden hebben voor de doel database of *beheerders* bevoegdheden voor de doel tabel.
-* Voor schrijven (gegevens-Sink) moet de Azure AD-toepassing over *ingestie* -bevoegdheden beschikken voor de doel database. Het moet ook *gebruikers* rechten hebben voor de doel database om nieuwe tabellen te maken. Als de doel tabel al bestaat, kunnen *beheerders* bevoegdheden voor de doel tabel worden geconfigureerd.
+* Voor lees bewerkingen (gegevens bron) moet de Azure AD-identiteit beschikken over *Viewer* -bevoegdheden voor de doel database of over *beheerders* rechten voor de doel tabel.
+* Voor schrijven (gegevens-Sink) moet de Azure AD-identiteit over *ingestie* -bevoegdheden beschikken voor de doel database. Het moet ook *gebruikers* rechten hebben voor de doel database om nieuwe tabellen te maken. Als de doel tabel al bestaat, moet u *beheerders* bevoegdheden configureren voor de doel tabel.
  
 Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/role-based-authorization)voor meer informatie over de belangrijkste rollen van Azure Data Explorer. Zie [beveiligings rollen](/azure/kusto/management/security-roles)beheren voor het beheren van beveiligings rollen.
 
@@ -170,10 +179,9 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
     import java.util.concurrent.TimeUnit
     import org.apache.spark.sql.streaming.Trigger
 
-    // Set up a checkpoint and disable codeGen. Set up a checkpoint and disable codeGen as a workaround for an known issue 
+    // Set up a checkpoint and disable codeGen. 
     spark.conf.set("spark.sql.streaming.checkpointLocation", "/FileStore/temp/checkpoint")
-    spark.conf.set("spark.sql.codegen.wholeStage","false") // Use in case a NullPointerException is thrown inside codegen iterator
-    
+        
     // Write to a Kusto table from a streaming source
     val kustoQ = df
           .writeStream
@@ -186,7 +194,7 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
 
 ## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-Bron: lezen van Azure Data Explorer
 
-1. Bij het lezen van kleine hoeveel heden gegevens, definieert u de gegevens query:
+1. Bij het lezen [van kleine hoeveel heden gegevens](/azure/kusto/concepts/querylimits), definieert u de gegevens query:
 
     ```scala
     import com.microsoft.kusto.spark.datasource.KustoSourceOptions
@@ -215,7 +223,8 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
     display(df2)
     ```
 
-1. Bij het lezen van grote hoeveel heden gegevens moet tijdelijke Blob-opslag worden gegeven. Geef de SAS-sleutel van de opslag container of de naam van het opslag account, de account sleutel en de naam van de container op. Deze stap is alleen vereist voor de huidige preview-versie van de Spark-connector.
+1. Optioneel: als **u** de tijdelijke Blob-opslag opgeeft (en geen Azure Data Explorer), worden de blobs gemaakt onder verantwoordelijkheid van de aanroeper. Dit omvat het inrichten van de opslag, het roteren van toegangs sleutels en het verwijderen van tijdelijke artefacten. 
+    De KustoBlobStorageUtils-module bevat hulp functies voor het verwijderen van blobs op basis van de account-en container coördinaten en account referenties, of een volledige SAS-URL met de machtigingen schrijven, lezen en lijst. Wanneer de bijbehorende RDD niet meer nodig is, slaat elke trans actie tijdelijke BLOB-artefacten op in een afzonderlijke map. Deze directory wordt vastgelegd als onderdeel van informatie logboeken met lees transacties die zijn gerapporteerd op het Spark-stuur programma.
 
     ```scala
     // Use either container/account-key/account name, or container SaS
@@ -225,28 +234,41 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
     // val storageSas = dbutils.secrets.get(scope = "KustoDemos", key = "blobStorageSasUrl")
     ```
 
-    In het bovenstaande voor beeld hebben we geen toegang tot de Key Vault met behulp van de connector interface. U kunt ook gebruikmaken van een eenvoudigere methode voor het gebruik van de Databricks-geheimen.
+    In het bovenstaande voor beeld is de Key Vault niet toegankelijk via de connector interface; Er wordt een eenvoudigere methode gebruikt voor het gebruik van de Databricks-geheimen.
 
-1. Lezen uit Azure Data Explorer:
+1. Lezen uit Azure Data Explorer.
 
-    ```scala
-     val conf3 = Map(
-          KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
-          KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
-          KustoSourceOptions.KUSTO_BLOB_STORAGE_SAS_URL -> storageSas)
-    val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
+    * Als **u** de tijdelijke Blob-opslag opgeeft, leest u van Azure Data Explorer als volgt:
+
+        ```scala
+         val conf3 = Map(
+              KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
+              KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey
+              KustoSourceOptions.KUSTO_BLOB_STORAGE_SAS_URL -> storageSas)
+        val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
+        
+        val dfFiltered = df2
+          .where(df2.col("ColA").startsWith("row-2"))
+          .filter("ColB > 12")
+          .filter("ColB <= 21")
+          .select("ColA")
+        
+        display(dfFiltered)
+        ```
+
+    * Als **azure Data Explorer** de tijdelijke Blob-opslag biedt, lees dan van Azure Data Explorer als volgt:
     
-    val dfFiltered = df2
-      .where(df2.col("ColA").startsWith("row-2"))
-      .filter("ColB > 12")
-      .filter("ColB <= 21")
-      .select("ColA")
-    
-    display(dfFiltered)
-    ```
+        ```scala
+        val dfFiltered = df2
+          .where(df2.col("ColA").startsWith("row-2"))
+          .filter("ColB > 12")
+          .filter("ColB <= 21")
+          .select("ColA")
+        
+        display(dfFiltered)
+        ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de [Azure Data Explorer Spark-connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
-* [Voorbeeldcode](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
-
+* [Voorbeeld code voor Java en python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

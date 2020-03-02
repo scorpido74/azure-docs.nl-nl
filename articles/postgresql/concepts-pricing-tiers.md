@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164471"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208879"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijs categorieën in Azure Database for PostgreSQL-één server
 
@@ -67,7 +67,7 @@ U kunt uw I/O-gebruik bewaken in de Azure Portal of met behulp van Azure CLI-opd
 
 ### <a name="reaching-the-storage-limit"></a>De opslag limiet wordt bereikt
 
-Servers met minder dan 10 GB ingerichte opslag zijn gemarkeerd als alleen-lezen als de vrije opslag minder is dan 512 MB van de ingerichte opslag grootte. Servers met minder dan 100 GB ingerichte opslag zijn gemarkeerd als alleen-lezen als de vrije opslag minder is dan 5% van de ingerichte opslag grootte. Servers met meer dan 100 GB ingerichte opslag worden als alleen-lezen gemarkeerd als de vrije opslag minder is dan 5 GB.
+Servers met minder dan 100 GB ingerichte opslag zijn gemarkeerd als alleen-lezen als de vrije opslag minder is dan 512 MB of 5% van de ingerichte opslag grootte. Servers met meer dan 100 GB ingerichte opslag worden als alleen-lezen gemarkeerd als de vrije opslag minder is dan 5 GB.
 
 Als u bijvoorbeeld 110 GB aan opslag hebt ingericht en het werkelijke gebruik meer dan 105 GB overschrijdt, is de server gemarkeerd als alleen-lezen. Als u 5 GB aan opslag hebt ingericht, is de server gemarkeerd als alleen-lezen wanneer de vrije opslag minder dan 512 MB bedraagt.
 

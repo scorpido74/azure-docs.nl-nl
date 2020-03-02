@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921297"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208813"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -35,7 +35,6 @@ Voor een Azure-omgeving die wordt geactiveerd op een Azure-abonnement, detecteer
 
 > [!NOTE]
 > Als u de volledige set beveiligings functies wilt ontvangen, moet u beschikken over de [log Analytics-agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent), die wordt gebruikt door Azure Security Center, is geïnstalleerd en [correct is geconfigureerd voor het verzenden van gegevens naar Azure Security Center](security-center-enable-data-collection.md#manual-agent).
-
 
 De volgende secties bevatten een lijst met de ondersteunde besturings systemen voor servers waarop de [log Analytics-agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent), die door Azure Security Center wordt gebruikt, kan worden uitgevoerd.
 
@@ -85,38 +84,6 @@ Virtuele machines worden ook in een klant abonnement gemaakt als onderdeel van s
 ### Cloud Services<a name="cloud-services"></a>
 
 Virtuele machines die worden uitgevoerd in een Cloud service, worden ook ondersteund. Alleen Cloud Services-Web-en-werk rollen die worden uitgevoerd in productie-sleuven worden bewaakt. Zie [overzicht van Azure Cloud Services](../cloud-services/cloud-services-choose-me.md)voor meer informatie over Cloud Services.
-
-## PaaS Services<a name="paas-services"></a>
-
-De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Storage-account
-* App Service
-* Functie
-* Cloudservice
-* VNet
-* Subnet
-* NIC
-* NSG
-* Batch-account
-* Service Fabric-account
-* Automation-account
-* Load balancer
-* Zoeken
-* Service Bus-naamruimte
-* Stream Analytics
-* Event hub-naamruimte
-* Logic apps
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Key Vault
-
-Zie [PaaS Services ondersteunde functies](security-center-services.md#paas-services)voor meer informatie over de ondersteunde functies voor de bovenstaande lijst met PaaS-resources.
 
 De beveiliging van Virtual Machines in Azure Stack wordt ook ondersteund. Voor meer informatie over de integratie van Security Center met Azure Stack raadpleegt u [de Azure stack virtuele machines Onboarden om te Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 

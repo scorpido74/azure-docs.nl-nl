@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552930"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208539"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
 
-Azure Security Center biedt status beoordelingen van [ondersteunde](security-center-services.md#supported-endpoint-protection-solutions-) versies van Endpoint Protection-oplossingen. In dit artikel worden de scenario's beschreven die leiden tot Security Center om de volgende twee aanbevelingen te genereren:
+Azure Security Center biedt status beoordelingen van [ondersteunde](security-center-services.md#endpoint-supported) versies van Endpoint Protection-oplossingen. In dit artikel worden de scenario's beschreven die leiden tot Security Center om de volgende twee aanbevelingen te genereren:
 
 * **Endpoint Protection-oplossingen op uw virtuele machine installeren**
 * **Problemen met de status van Endpoint Protection op uw computers oplossen**
@@ -92,13 +92,13 @@ Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren 
 
 * **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Of
+of
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
 
@@ -125,7 +125,7 @@ Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren 
 
 * **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion** bestaat
 
-* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+* **HKLM: \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
 Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
 
@@ -181,4 +181,4 @@ Micro soft antimalware extension-logboeken zijn beschikbaar op: **%systemdrive%\
 
 ### <a name="support"></a>Ondersteuning
 
-Neem contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/)voor meer informatie. Of het bestand een ondersteunings incident van Azure. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Neem contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/)voor meer informatie. Of het bestand een ondersteunings incident van Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
