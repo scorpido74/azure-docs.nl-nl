@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199106"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598218"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Azure Enterprise Agreement-factuur
 
@@ -55,7 +55,7 @@ U ontvangt een Azure-factuur wanneer een van de volgende gebeurtenissen plaatsvi
     - Visual Studio Professional (jaarlijks)
 - **Marketplace-kosten**: Azure Marketplace-aankopen en het gebruik van Azure Marketplace vallen niet onder het tegoed van uw organisatie. U wordt gefactureerd voor Marketplace-kosten, ongeacht het saldo van uw tegoed. In de Enterprise-portal kan een Enterprise-beheerder Marketplace-aankopen in- en uitschakelen.
 
-Op uw factuur staan al uw Azure-gebruikskosten, gevolgd door eventuele kosten voor Marketplace. Als u een tegoed hebt, wordt dit saldo toegepast op het gebruik van Azure.
+In uw factuur worden eerst de Azure-gebruikskosten met de hieraan gekoppelde kosten weergegeven, gevolgd door eventuele Marketplace-kosten. Als u een tegoedsaldo hebt, wordt dit toegepast op Azure-gebruik. Op uw factuur worden dan het Azure-gebruik en Marketplace-gebruik weergegeven, zonder kostenlasten.
 
 Vergelijk het gecombineerde totaalbedrag dat wordt weergegeven in **Rapporten** > **Gebruiksoverzicht** met uw Azure-factuur. De bedragen in het **gebruiksoverzicht** zijn exclusief belasting.
 

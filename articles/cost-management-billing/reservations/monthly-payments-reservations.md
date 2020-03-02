@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200398"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587087"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Reserveringen aanschaffen met maandelijkse betalingen
 
@@ -62,7 +62,7 @@ Net als bij andere reserveringen is terugbetaling of omruiling mogelijk van rese
 
 Wanneer u een reservering met maandelijkse betaling omruilt, moeten de kosten voor de totale levensduur van de nieuwe aankoop hoger zijn dan de resterende betalingen die worden geannuleerd voor de geretourneerde reservering. Er zijn geen andere limieten of kosten verbonden aan omruiling. U kunt een reservering die vooraf is betaald, omruilen voor een nieuwe reservering die maandelijks wordt gefactureerd. De waarde van de levensduur van de nieuwe reservering moet echter hoger zijn dan de waarde naar rato van de reservering die wordt geretourneerd.
 
-Als een reservering met maandelijkse betaling wordt geannuleerd, kan Microsoft annuleringskosten toepassen op de vastgelegde toekomstige betalingen die worden geannuleerd. De resterende vastgelegde betalingen tellen mee voor de restitutielimiet van USD 50.000.
+Als u een reservering met maandelijkse betaling annuleert, kan Microsoft annuleringskosten van 12% in rekening brengen voor de toegezegde betalingen die zijn geannuleerd. Momenteel brengt Microsoft deze boete echter niet in rekening. Geannuleerde toegezegde betalingen tellen mee voor de terugbetalingslimiet van $ 50.000. Als een annuleringsboete in rekening wordt gebracht, is dit niet van invloed op de terugbetalingslimiet.
 
 Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie over omruiling en terugbetaling.
 

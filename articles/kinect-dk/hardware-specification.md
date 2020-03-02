@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371289"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619962"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK-hardwarespecificaties
 
@@ -55,7 +55,7 @@ Azure Kinect DK is bedoeld voor ontwikkelaars en commerciële bedrijven die werk
 - **Vochtigheid**: 8-90% (niet-condenserend) relatieve vochtigheid
 
 > [!NOTE]
-> Gebruik buiten deze omgevingsvoorwaarden kan ervoor zorgen dat het apparaat een fout retourneert en/of onjuist functioneert. Deze omgevingsvoorwaarden zijn van toepassing op de omgeving direct rond het apparaat, onder alle bedieningsomstandigheden. Bij gebruik met een externe behuizing, worden actief temparatuurbeheer en/of andere koelingsoplossingen aanbevolen om ervoor te zorgen dat het apparaat binnen deze voorwaarden blijft werken. Het ontwerp van het apparaat bevat een koelkanaal tussen het voorste gedeelte en de bevestigingsclip aan de achterkant. Wanneer u het apparaat implementeert, moet u ervoor zorgen dat dit koelkanaal niet wordt geblokkeerd.
+> Gebruik buiten deze omgevingsvoorwaarden kan ervoor zorgen dat het apparaat een fout retourneert en/of onjuist functioneert. Deze omgevingsvoorwaarden zijn van toepassing op de omgeving direct rond het apparaat, onder alle bedieningsomstandigheden. Bij gebruik met een externe behuizing, worden actief temperatuurbeheer en/of andere koelingsoplossingen aanbevolen om ervoor te zorgen dat het apparaat binnen deze voorwaarden blijft werken. Het ontwerp van het apparaat bevat een koelkanaal tussen het voorste gedeelte en de bevestigingsclip aan de achterkant. Wanneer u het apparaat implementeert, moet u ervoor zorgen dat dit koelkanaal niet wordt geblokkeerd.
 
 Raadpleeg de aanvullende [productinformatie over de veiligheid](https://support.microsoft.com/help/4023454/safety-information).
 
@@ -71,7 +71,7 @@ Azure Kinect DK integreert een door Microsoft ontworpen dieptecamera met 1 megap
 | WFOV, zonder binning   | 1024x1024  | 120°x120° | 0, 5, 15           | 0,25 - 2,21 m      | 20,3 ms        |
 | Passieve IR      | 1024x1024  | N.v.t.       | 0, 5, 15, 30       | N.v.t.              | 1,6 ms         |
 
-\*15% tot 95% reflectievermogen bij 850 nm, 2,2 μW/cm<sup>2</sup>/nm, willekeurige fout standaarddeviatie ≤ 17 mm, typische systeemfout < 11 mm + 0,1 % afstand zonder interferentie met meerdere paden. De diepte die is opgegeven buiten het aangegeven bereik, is afhankelijk van het reflectievermogen van objecten.
+\*15% tot 95% reflectievermogen bij 850 nm, 2,2 μW/cm<sup>2</sup>/nm, willekeurige fout standaarddeviatie ≤ 17 mm, typische systeemfout < 11 mm + 0,1 % afstand zonder interferentie met meerdere paden. Meer diepte is mogelijk, buiten het hierboven vermelde besturingsbereik. Dit is afhankelijk van het reflectievermogen van een object.
 
 ## <a name="color-camera-supported-operating-modes"></a>Besturingsmodi die worden ondersteund op de dieptecamera.
 

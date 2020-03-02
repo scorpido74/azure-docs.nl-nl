@@ -7,15 +7,17 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200673"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560538"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Overzicht van rapportage-API's voor Enterprise-klanten
 Met de rapportage-API's kunnen klanten van Azure Enterprise programmatisch verbruiks-en factureringsgegevens ophalen en gebruiken in de tools voor gegevensanalyse van hun voorkeur. Enterprise-klanten hebben een [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ondertekend met Azure om overeengekomen monetaire toezeggingen te doen en toegang te krijgen tot aangepaste prijzen voor Azure-resources.
+
+Alle parameters voor datum en tijd die zijn vereist voor API’s, moeten worden weergegeven in UTC-waarden (Coordinated Universal Time). Waarden die worden geretourneerd via API’s, hebben de UTC-indeling.
 
 ## <a name="enabling-data-access-to-the-api"></a>Gegevenstoegang tot de API inschakelen
 * **De API-sleutel genereren of ophalen**: meld u aan bij de Enterprise-portal en navigeer naar Reports > Download Usage > API Access Key om de API-sleutel te genereren of op te halen.

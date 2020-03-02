@@ -3,16 +3,16 @@ title: Gereserveerde exemplaren Azure EA-VM
 description: In dit artikel wordt samengevat hoe u met Azure-reserveringen voor gereserveerde VM-instanties geld kunt besparen met uw Enterprise Enrollment.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3eceef9dc0bc29f7e105ac0b110bd2550413fa61
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200707"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560574"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Gereserveerde exemplaren Azure EA-VM
 
@@ -57,10 +57,12 @@ U kunt de aankoopgegevens van uw gereserveerde instantie bekijken via het menu _
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Hoe verander ik het abonnement dat bij de gereserveerde instantie hoort of hoe draag ik de voordelen van mijn gereserveerde instantie over aan een abonnement in hetzelfde account?
 
-Er kan maar een abonnement profiteren van de voordelen van gereserveerde instanties. U verandert het abonnement dat de voordelen van gereserveerde instanties ontvangt als volgt:
+U verandert het abonnement dat de voordelen van gereserveerde instanties ontvangt als volgt:
 
-- Meldt u aan bij de [Azure-portal](https://aka.ms/reservations).
-- Werk het toegepaste abonnementsbereik bij door een ander abonnement in hetzelfde account te koppelen.
+- Aanmelden bij de [Azure-portal](https://aka.ms/reservations).
+- Werk het toegepaste abonnementsbereik bij door een ander abonnement binnen hetzelfde account te koppelen.
+
+Zie [Het reserveringsbereik wijzigen](../reservations/manage-reserved-vm-instance.md#change-the-reservation-scope) voor meer informatie over het wijzigen van het bereik van een reservering.
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Gebruiksgegevens van gereserveerde instanties bekijken
 

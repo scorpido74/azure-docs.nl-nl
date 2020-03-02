@@ -42,6 +42,8 @@
     - name: 'Flask gebruiken om tekst te vertalen, gevoel te analyseren en spraak na te bootsen'
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: Information extraheren in Excel met behulp van Power Automate
+      href: tutorials/extract-excel-information.md
 - name: Instructiegidsen
   items:
     - name: De Tekstanalyse-API aanroepen

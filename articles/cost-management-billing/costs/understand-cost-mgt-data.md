@@ -4,17 +4,17 @@ description: Dit artikel helpt u om een beter beeld te krijgen van gegevens die 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199888"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560606"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -135,9 +135,9 @@ Hier volgen enkele tips voor het werken met tags:
 - Gebruik de Tags-API in combinatie met Query of UsageDetails om alle kosten op basis van de huidige tags op te halen.
 
 
-**Upgrade van gratis proefversie naar betalen per gebruik**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade van gratis proefversie naar betalen per gebruik
 
-Klanten met een gratis proefversie (044P) die overstappen naar de PAYG-aanbieding (003P), kunnen hun gebruik zien tijdens de gratis proefperiode. Na de conversie hebben ze echter geen inzicht meer in het gebruik van de gratis proefversie. Na de conversie worden alleen het gebruik en de kosten van betalen per gebruik weergegeven in Cost Management.
+Raadpleeg de [Veelgestelde vragen over een gratis Azure-account](https://azure.microsoft.com/free/free-account-faq/) voor informatie over de beschikbaarheid van services in de gratis laag, nadat u een upgrade hebt uitgevoerd van de gratis proefversie naar betalen per gebruik.
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Vernieuwingsschema voor gebruikstarieven van gegevens
 
@@ -157,6 +157,17 @@ Abonnementen van betalen per gebruik: als de factureringsmaand eindigt op 15 mei
 ### <a name="rerated-data"></a>Opnieuw berekende tarieven
 
 Ongeacht of u gegevens ophaalt met behulp van de [API's van Cost Management](../index.yml), Power BI of de Azure-portal, moet u er rekening mee houden dat het tarief voor de kosten van de huidige factureringsperiode opnieuw wordt berekend totdat de factuur is gesloten en dat de kosten dus kunnen veranderen.
+
+## <a name="cost-rounding"></a>Kostenafronding
+
+De in Cost Management weergegeven kosten worden afgerond. Kosten die worden geretourneerd met de query-API, worden niet afgerond. Bijvoorbeeld:
+
+- Kostenanalyse in de Azure-portal: kosten worden afgerond met behulp van de standaardregels voor afronding, dat wil zeggen dat waarden boven 0,5 naar boven worden afgerond, en dat in andere gevallen naar beneden wordt afgerond. Afronden gebeurt alleen wanneer waarden worden weergegeven. Er wordt niet afgerond tijdens het verwerken en samenvoegen van gegevens. Voor kostenanalyse worden kosten bijvoorbeeld als volgt samengevoegd:
+  - Kosten 1: $ 0,004
+  - Kosten 2: $ 0,004
+  - Weergegeven samengevoegde kosten: 0,004 + 0,004 = 0,008. De weergegeven kosten zijn $ 0,01.
+- Query-API: de kosten worden weergegeven met acht decimalen en worden niet afgerond.
+
 
 ## <a name="usage-data-update-frequency-varies"></a>Frequentie van bijwerken van gebruiksgegevens varieert
 

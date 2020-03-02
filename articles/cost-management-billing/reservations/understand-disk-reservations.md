@@ -1,6 +1,6 @@
 ---
-title: Reserveringskorting toepassen op Azure Disk Storage
-description: Lees hoe kortingen voor gereserveerde schijven van Azure worden toegepast op uw Premium SSD Managed Disks.
+title: Meer informatie over het toepassen van reserveringskorting op Azure Disk Storage
+description: Lees hoe korting op gereserveerde Azure-schijven wordt toegepast op uw Azure Premium SSD Managed Disks.
 author: roygara
 ms.service: cost-management-billing
 ms.devlang: na
@@ -9,46 +9,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
-ms.openlocfilehash: 7f23aaebc20b562768fb04ae988e4aff1b62fb21
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902142"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586645"
 ---
-# <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Reserveringskorting toepassen op Azure Disk Storage
+# <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Meer informatie over het toepassen van reserveringskorting op Azure Disk Storage
 
-Nadat u gereserveerde Azure-schijfcapaciteit hebt gekocht, wordt de reserveringskorting automatisch toegepast op schijfresources die aan de voorwaarden van de reservering voldoen. De reserveringskorting is alleen van toepassing op schijfcapaciteit; momentopnamen van schijven worden in rekening gebracht tegen betalen naar gebruik-tarieven.
+Nadat u gereserveerde Azure-schijfcapaciteit hebt gekocht, wordt een reserveringskorting automatisch toegepast op schijfresources die aan de voorwaarden van de reservering voldoen. De reserveringskorting wordt alleen toegepast op de schijf-SKU’s. Momentopnamen van schijven worden in rekening gebracht volgens betalen per gebruik-tarieven.
 
-Zie [Kosten besparen met Azure-schijfreservering](../../virtual-machines/linux/disks-reserved-capacity.md) voor meer informatie over Azure-schijfreserveringen.
-Zie [Prijzen van Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor informatie over prijzen voor Azure-schijfreserveringen.
+Zie [Kosten besparen met Azure-schijfreservering](../../virtual-machines/linux/disks-reserved-capacity.md) voor meer informatie over Azure-schijfreserveringen. Zie [Prijzen van Azure Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor informatie over prijzen voor Azure-schijfreserveringen.
 
 ## <a name="how-the-reservation-discount-is-applied"></a>Hoe de reserveringskorting wordt toegepast
 
-De korting voor een Azure-schijfreservering is een korting van het type 'use-it-or-lose-it' en wordt op uurbasis toegepast op resources van beheerde schijven. Als u in een bepaald uur geen resources van beheerde schijven hebt die voldoen aan de reserveringsvoorwaarden, verliest u een reserveringshoeveelheid voor dat uur. Niet-gebruikte uren worden niet meegenomen naar de volgende periode.
+De korting voor Azure-schijfreserveringen gaat verloren wanneer u deze niet gebruikt. De korting wordt elk uur toegepast op beheerde schijf-resources. Als u voor een bepaald uur geen beheerde schijf-resources hebt die voldoen aan de reserveringsvoorwaarden, verliest u een reserveringshoeveelheid voor dit uur. Niet-gebruikte uren kunt u niet doorschuiven naar een later tijdstip.
 
-Wanneer u een resource verwijdert, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, verliest u de gereserveerde uren.
+Wanneer u een resource verwijdert, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomende resource wordt gevonden, gaan de gereserveerde uren verloren.
 
 ## <a name="discount-examples"></a>Kortingsvoorbeelden
 
-De volgende voorbeelden laten zien hoe de korting voor Azure-schijfreserveringen worden toegepast, afhankelijk van uw implementaties:
+De volgende voorbeelden laten zien hoe de korting voor Azure-schijfreserveringen wordt toegepast, afhankelijk van uw implementatie.
 
-Stel dat u voor een periode van één jaar honderd P30-schijven (~1 TiB per schijf) aan gereserveerde capaciteit hebt gekocht in de regio US - west 2. De kosten van deze voorbeeldreservering bedragen $ 140.100. U kunt ervoor kiezen om het volledige bedrag vooraf te betalen of om de komende twaalf maanden een vaste maandelijkse termijn van $ 11.675 te betalen.
-In deze voorbeelden wordt ervan uitgegaan dat u zich hebt geregistreerd voor een maandelijks betalingsplan voor uw reserveringen. In de volgende scenario's wordt beschreven wat er gebeurt als u uw gereserveerde capaciteit onderbenut, overbenut of gestaffeld gebruikt.
+Stel dat u 100 P30-schijven koopt en reserveert in de regio VS - west 2 voor een termijn van één jaar. Elke schijf heeft ongeveer 1 TiB opslag. Stel dat de kosten van deze voorbeeldreservering $ 140.100 bedragen. U kunt ervoor kiezen om het volledige bedrag vooraf te betalen, of om de komende twaalf maanden een vaste maandelijkse termijn van $ 11.675 te betalen.
+
+In de volgende scenario's wordt beschreven wat er gebeurt als u uw gereserveerde capaciteit onderbenut, overbenut of gestaffeld gebruikt. In deze voorbeelden wordt ervan uitgegaan dat u zich hebt geregistreerd voor een maandelijks betalingsplan voor uw reserveringen.
 
 ### <a name="underusing-your-capacity"></a>Uw capaciteit onderschrijden
 
-Stel dat u in een bepaald uur binnen de reserveringsperiode slechts 99 P30 Premium SSD's van uw reservering van honderd P30-schijven hebt geïmplementeerd. De resterende P3-schijf wordt dan niet toegepast voor dat uur en komt ook niet als extra schijf beschikbaar voor de volgende periode.
+Stel dat u gedurende één uur binnen de reserveringsperiode slechts 99 van uw 100 gereserveerde Azure Premium SSD P30-schijven (solid-state drive) implementeert. De resterende P30-schijf wordt tijdens dit uur niet toegepast. U kunt deze schijf ook niet bewaren voor later gebruik.
 
 ### <a name="overusing-your-capacity"></a>Uw capaciteit overschrijden
 
-Stel dat u in een bepaald uur binnen de reserveringsperiode 101 P30 Premium SSD's gebruikt. De reserveringskorting geldt alleen voor honderd P30-schijven en voor de resterende P30-schijf worden voor dat uur betalen-per-gebruik-tarieven gehanteerd. Als het gebruik in het volgende uur afneemt tot honderd P30-schijven, valt al het gebruik onder de reservering.
+Stel dat u in een uur binnen de reserveringsperiode 101 Premium SSD P30-schijven gebruikt. De reserveringskorting is van toepassing op slechts 100 P30-schijven. De extra P30-schijf wordt in rekening gebracht tegen een betalen per gebruik-tarief voor dit uur. Als het gebruik in het volgende uur afneemt naar 100 P30-schijven, valt al het gebruik onder de reservering.
 
 ### <a name="tiering-your-capacity"></a>Uw capaciteit gestaffeld gebruiken
 
-Stel dat u in een bepaald uur binnen uw reserveringsperiode in totaal 200 P30 Premium SSD's wilt gebruiken. Gedurende de eerste dertig minuten gebruikt u slechts 100 schijven. Dit betekent dat uw gebruik tijdens deze periode volledig is afgedekt omdat u een reservering hebt gemaakt voor honderd P30-schijven. Als u vervolgens het gebruik van de eerste honderd schijven stopzet (en dus niets gebruikt) en vervolgens de andere honderd schijven gebruikt voor de resterende dertig minuten, valt dat gebruik ook onder uw reservering.
+Stel dat u in een bepaald uur binnen uw reserveringsperiode in totaal 200 P30 Premium SSD's wilt gebruiken. Stel ook dat u gedurende de eerste 30 minuten slechts 100 schijven gebruikt. Dit betekent dat uw gebruik tijdens deze periode volledig is afgedekt, aangezien u een reservering hebt gemaakt voor 100 P30-schijven. Als u vervolgens het gebruik van de eerste honderd schijven stopzet (en dus niets gebruikt) en vervolgens de andere honderd schijven gebruikt voor de resterende dertig minuten, valt dat gebruik ook onder uw reservering.
 
-![Voorbeelden van onderbenutting, overbenutting of gestaffeld gebruik van gereserveerde capaciteit](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
+![Voorbeeld van onderbenutting, overbenutting of gestaffeld gebruik](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 

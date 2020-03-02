@@ -4,16 +4,16 @@ description: In dit artikel wordt uitgelegd hoe u veelvoorkomende analysetaken k
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199973"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562578"
 ---
 # <a name="common-cost-analysis-uses"></a>Veelgebruikte toepassingen van kostenanalyse
 
@@ -83,6 +83,9 @@ Het rapportbestand met gebruiksgegevens, in CSV-indeling, bevat een overzicht va
 ## <a name="view-monthly-ea-cost-breakdown"></a>Uitsplitsing van maandelijkse EA-kosten weergeven
 
 Uw EA-inschrijving gaat gepaard met kosten voor de hele organisatie. Als u begrijpt hoe kosten worden gemaakt en gefactureerd in de loop van de tijd, kunt u de betrokken belanghebbenden ervan overtuigen dat ze de kosten op een verantwoorde manier moet beheren.
+
+Er worden alleen kosten weergegeven voor uw actieve inschrijving. Als u een inschrijving (inactief) hebt overgebracht naar een nieuwe inschrijving (actief), worden de kosten voor de eerdere inschrijving niet weergegeven in Cost Management.
+
 
 1. Ga in de Azure-portal naar **Kostenbeheer en facturering** > **Overzicht**.
 1. Klik op **Uitsplitsing** voor de huidige maand en kijk waaruit de kosten zijn opgebouwd.  

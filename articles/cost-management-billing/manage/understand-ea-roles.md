@@ -5,26 +5,28 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: banders
-ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462187"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647481"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure
 
 Voor het beheren van het gebruik en de uitgaven van uw organisatie kunnen Azure-klanten met een Enterprise Agreement (EA) vijf beheerdersrollen toewijzen:
 
-- Zakelijke beheerder
-- Zakelijke beheerder (alleen lezen)<sup>1</sup>
+- Ondernemingsbeheerder
+- Ondernemingsbeheerder (alleen lezen)<sup>1</sup>
 - Afdelingsbeheerder
 - Afdelingsbeheerder (alleen lezen)
-- Accounteigenaar
+- Eigenaar van account<sup>2</sup>
 
 <sup>1</sup> Deze rol omvat de Factuurcontact van het EA-contract.
+
+<sup>2</sup> Factuurcontact kan niet worden toegevoegd of gewijzigd in de Azure EA-portal, en wordt toegevoegd aan de EA-inschrijving op basis van de gebruiker die op overeenkomstniveau is ingesteld als de Factuurcontact. Als u de Factuurcontact wilt wijzigen, moet u via een partner-/softwareadviseur een aanvraag indienen bij het ROC (Regional Operations Center).
 
 Deze rollen zijn specifiek voor het beheren van Azure Enterprise Agreements en zijn een aanvulling op de ingebouwde rollen waarover Azure beschikt om toegang tot resources te beheren. Zie [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md) voor meer informatie.
 
@@ -34,46 +36,46 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 |Rol| Gebruikerslimiet|
 |---|---|
-|Zakelijke beheerder|Onbeperkt|
-|Zakelijke beheerder (alleen lezen)|Onbeperkt|
+|Ondernemingsbeheerder|Onbeperkt|
+|Ondernemingsbeheerder (alleen lezen)|Onbeperkt|
 |Afdelingsbeheerder|Onbeperkt|
 |Afdelingsbeheerder (alleen lezen)|Onbeperkt|
-|Accounteigenaar|1 per account<sup>2</sup>|
+|Accounteigenaar|1 per account<sup>3</sup>|
 
-<sup>2</sup> Voor elk account is een uniek Microsoft-account of een werk- of schoolaccount vereist.
+<sup>3</sup> Voor elk account is een uniek Microsoft-account of werk- of schoolaccount vereist.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>De organisatiestructuur en machtigingen per rol
 
-|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
+|Taken| Ondernemingsbeheerder|Ondernemingsbeheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
 |---|---|---|---|---|---|
 |Zakelijke beheerders weergeven|✔|✔|✘|✘|✘|
 |Zakelijke beheerders toevoegen of verwijderen|✔|✘|✘|✘|✘|
-|Contactpersoon voor meldingen weergeven<sup>3</sup> |✔|✔|✘|✘|✘|
-|Contactpersonen voor meldingen toevoegen of verwijderen<sup>3</sup> |✔|✘|✘|✘|✘|
+|Contactpersonen voor meldingen weergeven<sup>4</sup> |✔|✔|✘|✘|✘|
+|Contactpersonen voor meldingen toevoegen of verwijderen<sup>4</sup> |✔|✘|✘|✘|✘|
 |Afdelingen maken en beheren |✔|✘|✘|✘|✘|
 |Afdelingsbeheerders weergeven|✔|✔|✔|✔|✘|
 |Afdelingsbeheerders toevoegen of verwijderen|✔|✘|✔|✘|✘|
-|Accounts in de inschrijving weergeven |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
-|Accounts aan de inschrijving toevoegen en de accounteigenaar wijzigen|✔|✘|✔<sup>4</sup>|✘|✘|
+|Accounts in de inschrijving weergeven |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
+|Accounts aan de inschrijving toevoegen en de accounteigenaar wijzigen|✔|✘|✔<sup>5</sup>|✘|✘|
 |Abonnementen en abonnementsmachtigingen maken en beheren|✘|✘|✘|✘|✔|
 
-- <sup>3</sup> Contactpersonen voor meldingen ontvangen e-mails over de Azure Enterprise Agreement.
-- <sup>4</sup> De taak is beperkt tot accounts in uw afdeling.
+- <sup>4</sup> Contactpersonen voor meldingen ontvangen e-mailberichten over de Azure Enterprise Agreement.
+- <sup>5</sup> Taak is beperkt tot accounts in uw afdeling.
 
 
 ## <a name="usage-and-costs-access-by-role"></a>Toegang tot gebruik en kosten per rol
 
-|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
+|Taken| Ondernemingsbeheerder|Ondernemingsbeheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
 |---|---|---|---|---|---|
 |Tegoedsaldo weergeven, inclusief financiële toezegging|✔|✔|✘|✘|✘|
 |Bestedingsquotum van afdeling weergeven|✔|✔|✘|✘|✘|
 |Bestedingsquotum van afdeling instellen|✔|✘|✘|✘|✘|
 |Het EA-prijzenoverzicht van de organisatie weergeven|✔|✔|✘|✘|✘|
-|Details over gebruik en kosten weergeven|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
+|Details over gebruik en kosten weergeven|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
 |Resources beheren in Azure Portal|✘|✘|✘|✘|✔|
 
-- <sup>5</sup> Hiervoor is vereist dat de zakelijke beheerder het beleid **DA-weergavekosten** inschakelt in de Enterprise Portal De afdelingsbeheerder kan vervolgens gedetailleerde kosten voor de afdeling bekijken.
-- <sup>6</sup> Hiervoor is vereist dat de zakelijke beheerder het beleid **AO-weergavekosten** inschakelt in de Enterprise Portal. De accounteigenaar kan vervolgens gedetailleerde kosten voor het account zien.
+- <sup>6</sup> Hiervoor is vereist dat de ondernemingsbeheerder het beleid **DA-weergavekosten** inschakelt in de Enterprise Portal. De afdelingsbeheerder kan vervolgens gedetailleerde kosten voor de afdeling bekijken.
+- <sup>7</sup> Hiervoor is vereist dat de ondernemingsbeheerder het beleid **AO-weergavekosten** inschakelt in de Enterprise Portal. De accounteigenaar kan vervolgens gedetailleerde kosten voor het account zien.
 
 
 ## <a name="pricing-in-azure-portal"></a>Prijzen in Azure Portal

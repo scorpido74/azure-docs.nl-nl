@@ -3,16 +3,16 @@ title: Beheer van Azure EA Portal
 description: In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 142ef421599cef4083efdf8b9ed700d2baa152b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199769"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598388"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -118,6 +118,8 @@ De Dev/Test-aanbieding is op dit moment niet van toepassing op Azure Gov-klanten
 
 Bij een accountoverdracht wordt een accounteigenaar verplaatst van de ene inschrijving naar een andere. Alle verwante abonnementen onder de accounteigenaar worden verplaatst naar de doelinschrijving. Dit wordt uitgevoerd wanneer u meerdere actieve inschrijvingen hebt en alleen de geselecteerde accounteigenaren wilt verplaatsen.
 
+Deze sectie is alleen bedoeld voor informatieve doeleinden, omdat de actie niet kan worden uitgevoerd door een ondernemingsbeheerder. Er is een ondersteuningsaanvraag nodig om een ondernemingsaccount over te brengen naar een nieuwe inschrijving.
+
 Houd rekening met de volgende punten wanneer u een Enterprise-account overdraagt naar een nieuwe inschrijving:
 
 - Alleen de accounts in de aanvraag worden overgedragen. Als alle accounts worden gekozen, worden ze allemaal overgedragen.
@@ -147,6 +149,8 @@ Een inschrijvingsoverdracht wordt overwogen wanneer:
 - De toezeggingstermijn van een huidige inschrijving tot een einde is gekomen.
 - Een inschrijving de status verlopen/uitgebreid heeft en er wordt onderhandeld over een nieuwe overeenkomst.
 - U meerdere inschrijvingen hebt en alle accounts en facturering wilt samenvoegen onder één inschrijving.
+
+Deze sectie is alleen bedoeld voor informatieve doeleinden, omdat de actie niet kan worden uitgevoerd door een ondernemingsbeheerder. Er is een ondersteuningsaanvraag nodig om een ondernemingsinschrijving over te brengen naar een nieuwe inschrijving.
 
 Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een inschrijving aanvraagt, worden de volgende acties uitgevoerd:
 
