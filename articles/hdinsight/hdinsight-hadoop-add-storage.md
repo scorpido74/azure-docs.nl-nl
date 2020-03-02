@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313995"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206704"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Extra opslag accounts toevoegen aan HDInsight
 
@@ -27,7 +27,7 @@ Meer informatie over het gebruik van script acties om extra Azure Storage *accou
 * Naam en sleutel van het opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md).
 * Als u Power shell gebruikt, hebt u de AZ-module nodig.  Zie [overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 Tijdens de verwerking voert het script de volgende acties uit:
 
@@ -46,12 +46,12 @@ Tijdens de verwerking voert het script de volgende acties uit:
 
 ## <a name="add-storage-account"></a>Opslagaccount toevoegen
 
-Gebruik [script actie](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) om de wijzigingen toe te passen met de volgende overwegingen:
+Gebruik [script actie](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) om de wijzigingen toe te passen met de volgende overwegingen:
 
 |Eigenschap | Waarde |
 |---|---|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
-|Knooppunt type (n)|Kop|
+|Knooppunt type (n)|Head|
 |Parameters|`ACCOUNTNAME` `ACCOUNTKEY` `-p` (optioneel)|
 
 * `ACCOUNTNAME` is de naam van het opslag account dat aan het HDInsight-cluster moet worden toegevoegd.
@@ -64,7 +64,7 @@ Bij het weer geven van het HDInsight-cluster in de Azure Portal, het selecteren 
 
 Gebruik een van de volgende methoden om de extra opslag ruimte te controleren:
 
-### <a name="powershell"></a>Powershell
+### <a name="powershell"></a>PowerShell
 
 Het script retourneert de namen van de opslag accounts die zijn gekoppeld aan het opgegeven cluster. Vervang `CLUSTERNAME` door de werkelijke naam van het cluster en voer het script uit.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure HDInsight: Azure CLI-voorbeelden'
+title: 'Azure HDInsight: Azure CLI-voor beelden'
 description: Azure CLI-voor beelden voor algemene taken in azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266711"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207095"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-voorbeelden
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-voor beelden
 
 > [!div class="op_single_selector"]
-> [](hdinsight-sdk-dotnet-samples.md)
-> Voor beelden van .net-voor beelden[python](hdinsight-sdk-python-samples.md)
-> [Java-voor](hdinsight-sdk-java-samples.md) beelden
+> [.Net-voor beelden](hdinsight-sdk-dotnet-samples.md)
+> [python-voor](hdinsight-sdk-python-samples.md) beelden
+> [Java-voor beelden](hdinsight-sdk-java-samples.md)
 
 In dit artikel vindt u voor beelden van scripts voor algemene taken. Werk voor elk voor beeld de variabelen bij met de juiste waarden en voer vervolgens de opdracht uit.
 
@@ -27,7 +27,7 @@ In dit artikel vindt u voor beelden van scripts voor algemene taken. Werk voor e
 
 * Azure CLI. Zie [de Azure cli installeren voor de](https://docs.microsoft.com/cli/azure/install-azure-cli) stappen.
 
-* Optioneel: Bash. In de voor beelden in dit artikel wordt gebruikgemaakt van de bash-shell in Windows 10. Zie het [Windows-subsysteem voor Linux-installatie handleiding voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatie stappen.  De voor beelden zijn van een Windows-opdracht prompt met enkele kleine wijzigingen.
+* Optioneel: bash. In de voor beelden in dit artikel wordt gebruikgemaakt van de bash-shell in Windows 10. Zie het [Windows-subsysteem voor Linux-installatie handleiding voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatie stappen.  De voor beelden zijn van een Windows-opdracht prompt met enkele kleine wijzigingen.
 
 ## <a name="az-login"></a>AZ login
 
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>Een Kafka-cluster maken met [schijf versleuteling](kafka/apache-kafka-byok.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Een Kafka-cluster maken met [schijf versleuteling](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME

@@ -3,14 +3,14 @@ title: Twitter-verificatie configureren
 description: Meer informatie over het configureren van Twitter-verificatie als een id-provider voor uw App Service-app.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 02/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670801"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207133"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>Uw App Service-app configureren voor het gebruik van Twitter-aanmelding
 
@@ -23,25 +23,24 @@ Voor het volt ooien van de procedure in dit artikel hebt u een Twitter-account n
 ## <a name="register"> </a>Uw toepassing registreren bij Twitter
 
 1. Meld u aan bij de [Azure-portal] en ga naar uw toepassing. Kopieer uw **URL**. U gebruikt deze om uw Twitter-app te configureren.
-1. Ga naar de website van de [Twitter-ontwikkel aars] , Meld u aan met de referenties van uw Twitter-account en selecteer **nieuwe app maken**.
-1. Voer een **naam** en een **Beschrijving** in voor uw nieuwe app. Plak de **URL** van uw toepassing in het veld **website** . Voer in het veld **call back-URL** de URL van uw app service-app in en voeg het pad toe `/.auth/login/aad/callback`. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Zorg ervoor dat u het HTTPS-schema gebruikt.
-1. Lees en accepteer de voor waarden aan de onderkant van de pagina. Selecteer **uw Twitter-toepassing maken**. De details van de toepassing worden weer gegeven.
-1. Selecteer het tabblad **instellingen** , Schakel **toestaan dat deze toepassing wordt gebruikt om u aan te melden met Twitter**, en selecteer vervolgens **Update-instellingen**.
+1. Ga naar de website van de [Twitter-ontwikkel aars] , Meld u aan met de referenties van uw Twitter-account en selecteer **een app maken**.
+1. Voer de **naam** van de app en de **toepassings beschrijving** in voor uw nieuwe app. Plak de **URL** van uw toepassing in het veld URL van de **website** . Voer in de sectie **url's van aanroepen** de HTTPS-URL in van uw app service-app en voeg het pad toe `/.auth/login/twitter/callback`. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. Typ aan de onderkant van de pagina ten minste 100 tekens in **vertel ons hoe deze app wordt gebruikt**en selecteer vervolgens **maken**. Klik opnieuw op **maken** in het pop-upvenster. De details van de toepassing worden weer gegeven.
 1. Selecteer het tabblad **sleutels en toegangs tokens** .
 
    Noteer deze waarden:
-   - Gebruikers sleutel (API-sleutel)
-   - Consument geheim (API-geheim)
+   - API-sleutel
+   - Geheime API-sleutel
 
    > [!NOTE]
-   > Het consument geheim is een belang rijke beveiligings referentie. Deel dit geheim niet met iemand of distribueer het met uw app.
+   > De geheime API-sleutel is een belang rijke beveiligings referentie. Deel dit geheim niet met iemand of distribueer het met uw app.
 
 ## <a name="secrets"> </a>Twitter-gegevens toevoegen aan uw toepassing
 
 1. Ga naar uw toepassing in de [Azure-portal].
 1. Selecteer **instellingen** > **verificatie/autorisatie**en controleer of app service- **verificatie** is **ingeschakeld**.
 1. Selecteer **Twitter**.
-1. Plak de `API Key` en `API Secret` waarden die u eerder hebt verkregen.
+1. Plak de `API key` en `API secret key` waarden die u eerder hebt verkregen.
 1. Selecteer **OK**.
 
    ![Scherm afbeelding van Twitter-instellingen voor mobiele apps][1]

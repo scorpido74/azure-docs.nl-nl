@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420726"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206942"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Alleen-lezen replica's gebruiken om werk belastingen voor alleen-lezen query's te verdelen
 
@@ -35,7 +35,7 @@ De functie voor het lezen van scale-out is standaard ingeschakeld voor nieuwe Pr
 Als u er zeker van wilt zijn dat de toepassing verbinding maakt met de primaire replica, ongeacht de `ApplicationIntent` instelling in de SQL-connection string, moet u het lezen van uitschalen expliciet uitschakelen bij het maken van de data base of bij het wijzigen van de configuratie. Als u bijvoorbeeld een upgrade uitvoert van uw data base van Standard of Algemeen laag naar Premium, Bedrijfskritiek of grootschalige en wilt ervoor zorgen dat al uw verbindingen naar de primaire replica gaan, schakelt u lezen uitschalen uit. Zie voor meer informatie over het uitschakelen van de functie [Uitschalen voor lezen in-en uitschakelen](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> Query gegevens opslag, uitgebreide gebeurtenissen, SQL Profiler en controle functies worden niet ondersteund voor de alleen-lezen replica's.
+> Query gegevens opslag, uitgebreide gebeurtenissen en functies van SQL Profiler worden niet ondersteund voor de alleen-lezen replica's.
 
 ## <a name="data-consistency"></a>Gegevensconsistentie
 
@@ -120,7 +120,7 @@ Als u het lezen van uitschalen voor een bestaande data base opnieuw wilt inschak
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 Als u een Data Base met lees uitschalen wilt maken of de instelling voor een bestaande Data Base wilt wijzigen, gebruikt u de volgende methode waarbij de eigenschap `readScale` is ingesteld op `Enabled` of `Disabled` zoals in de onderstaande voorbeeld aanvraag.
 

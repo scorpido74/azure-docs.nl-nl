@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c738c5b7f233ffa34296eed67eb0f5497f737fc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605822"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206670"
 ---
 # <a name="connect-with-the-web-client"></a>Verbinding maken met de webclient
 
@@ -41,3 +41,7 @@ Ga in een browser naar de [webclient met virtueel bureau blad van Windows](https
 >Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u zich afmelden of een persoonlijk browser venster gebruiken.
 
 Nadat u zich hebt aangemeld, ziet u nu een lijst met resources. U kunt resources starten door ze te selecteren zoals u een normale app op het tabblad **alle resources** zou doen.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Ga voor meer informatie over het gebruik van de webclient naar aan [de slag met de webclient](https://go.microsoft.com/fwlink/?linkid=2120256).

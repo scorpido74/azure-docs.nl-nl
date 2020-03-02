@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013796"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208258"
 ---
 ## <a name="limitations"></a>Beperkingen
 
@@ -98,6 +98,8 @@ De prijs van de host wordt ingesteld op basis van de VM-familie, type (hardware-
 Software licentie verlening, opslag en netwerk gebruik worden afzonderlijk van de host en Vm's gefactureerd. Deze factureer bare items worden niet gewijzigd.
 
 Zie [prijzen voor toegewezen hosts voor Azure](https://aka.ms/ADHPricing)voor meer informatie.
+
+U kunt ook besparen op kosten met een [gereserveerd exemplaar van voor Azure toegewezen hosts] (. /articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>VM-families en hardware-generaties
 

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310053"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207061"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snelstartgids: een Azure Functions-app maken met Azure-app configuratie
 
@@ -42,11 +42,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** naar de volgende NuGet-pakketten en voeg deze toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
-
-    ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
-    ```
+1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** naar het `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-pakket en voeg dit toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
 
 2. Open *Function1.cs*en voeg de naam ruimten van de .net core-configuratie en de configuratie provider voor de configuratie van de app toe.
 
@@ -54,6 +50,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
+
 3. Voeg een `static` eigenschap met de naam `Configuration` toe om een singleton-exemplaar van `IConfiguration`te maken. Voeg vervolgens een `static`-constructor toe om verbinding te maken met de app-configuratie door `AddAzureAppConfiguration()`aan te roepen. Hiermee wordt de configuratie eenmaal geladen bij het opstarten van de toepassing. Hetzelfde configuratie-exemplaar wordt later gebruikt voor alle functions-aanroepen.
 
     ```csharp
@@ -66,6 +63,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
         Configuration = builder.Build();
     }
     ```
+
 4. Werk de `Run`-methode bij om waarden te lezen uit de configuratie.
 
     ```csharp
@@ -76,7 +74,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
-            
+
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
@@ -90,14 +88,18 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
     ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
+
     Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
+
     Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
 
+    ```bash
         export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. Druk op F5 om de functie te testen. Accepteer desgevraagd de aanvraag van Visual Studio om **Azure Functions Core-hulpprogramma's (CLI)** te downloaden en installeren. Mogelijk moet u ook een firewall-uitzonde ring inschakelen, zodat de hulpprogram ma's HTTP-aanvragen kunnen afhandelen.
 

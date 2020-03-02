@@ -1,20 +1,19 @@
 ---
 title: Wat is Apache Hive en HiveQL-Azure HDInsight
 description: Apache Hive is een Data Warehouse systeem voor Apache Hadoop. U kunt een query uitvoeren op gegevens die zijn opgeslagen in Hive met behulp van HiveQL, die vergelijkbaar zijn met Transact-SQL. In dit document leest u hoe u Hive en HiveQL kunt gebruiken met Azure HDInsight.
-keywords: hiveql, What is component, Hadoop hiveql, component gebruiken, component leren, wat is Hive
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/28/2020
+ms.openlocfilehash: 20fdafc3077d1017c17d1055596dab150dffec72
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499213"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206636"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
 
@@ -24,13 +23,12 @@ Met hive kunt u structuur projecteren op grotendeels gestructureerde gegevens. N
 
 HDInsight biedt verschillende cluster typen, die zijn afgestemd op specifieke werk belastingen. De volgende cluster typen worden meestal gebruikt voor Hive-query's:
 
-* __Interactieve query__: een Hadoop-cluster dat [LLAP-functionaliteit (Low latentie Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) biedt om de reactie tijden voor interactieve query's te verbeteren. Zie het document [Start with Interactive query in HDInsight](../interactive-query/apache-interactive-query-get-started.md) voor meer informatie.
-
-* __Hadoop__: een Hadoop-cluster dat is afgestemd op werk belastingen voor batch verwerking. Zie het document [beginnen met Apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) voor meer informatie.
-
-* __Spark__: Apache Spark heeft ingebouwde functionaliteit voor het werken met Hive. Zie het document [beginnen met Apache Spark in HDInsight](../spark/apache-spark-jupyter-spark-sql.md) voor meer informatie.
-
-* __HBase__: HiveQL kan worden gebruikt voor het opvragen van gegevens die zijn opgeslagen in Apache HBase. Zie het document [Start with Apache HBase in HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) voor meer informatie.
+|Cluster type |Beschrijving|
+|---|---|
+|Interactive Query|Een Hadoop-cluster dat [LLAP-functionaliteit (Low latentie Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) biedt om de reactie tijden voor interactieve query's te verbeteren. Zie het document [Start with Interactive query in HDInsight](../interactive-query/apache-interactive-query-get-started.md) voor meer informatie.|
+|Hadoop|Een Hadoop-cluster dat is afgestemd op werk belastingen voor batch verwerking. Zie het document [beginnen met Apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) voor meer informatie.|
+|Spark|Apache Spark heeft ingebouwde functionaliteit voor het werken met Hive. Zie het document [beginnen met Apache Spark in HDInsight](../spark/apache-spark-jupyter-spark-sql.md) voor meer informatie.|
+|HBase|HiveQL kan worden gebruikt voor het opvragen van gegevens die zijn opgeslagen in Apache HBase. Zie het document [Start with Apache HBase in HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) voor meer informatie.|
 
 ## <a name="how-to-use-hive"></a>Hive gebruiken
 
@@ -42,7 +40,7 @@ Gebruik de volgende tabel om de verschillende manieren te ontdekken voor het geb
 | [HDInsight-hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
 | [Hive-weer gave](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Any (op browser gebaseerd) |
 | [Beeline-client](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, UNIX, Mac OS X of Windows |
-| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X of Windows |
+| [REST-API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X of Windows |
 | [Windows Power shell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
 ## <a name="hiveql-language-reference"></a>Naslag informatie voor HiveQL language
@@ -106,13 +104,13 @@ Hive kan ook worden uitgebreid via door de **gebruiker gedefinieerde functies (U
 
 * [Een voor beeld Apache Hive door de gebruiker gedefinieerde functie voor het converteren van datum/tijd-indelingen naar Hive-time stamp](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
-## <a id="data"></a>Voorbeeld gegevens
+## <a name="example-data"></a>Voorbeeldgegevens
 
 Hive op HDInsight wordt vooraf geladen met een interne tabel met de naam `hivesampletable`. HDInsight biedt ook voor beelden van gegevens sets die kunnen worden gebruikt met Hive. Deze gegevens sets worden opgeslagen in de mappen `/example/data` en `/HdiSamples`. Deze directory's bestaan in de standaard opslag voor uw cluster.
 
-## <a id="job"></a>Voor beeld Hive-query
+## <a name="example-hive-query"></a>Voor beeld Hive-query
 
-De volgende HiveQL-instructies project kolommen naar het bestand `/example/data/sample.log`:
+De volgende HiveQL-instructies project kolommen naar het `/example/data/sample.log`-bestand:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -133,17 +131,14 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 In het vorige voor beeld voeren de HiveQL-instructies de volgende acties uit:
 
-* `DROP TABLE`: als de tabel al bestaat, verwijdert u deze.
-
-* `CREATE EXTERNAL TABLE`: maakt een nieuwe **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie en in de oorspronkelijke indeling.
-
-* `ROW FORMAT`: Hiermee wordt aangegeven hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
-
-* `STORED AS TEXTFILE LOCATION`: vertelt de component waar de gegevens worden opgeslagen (de `example/data` Directory) en die worden opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.
-
-* `SELECT`: selecteert een telling van alle rijen waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** omdat er drie rijen met deze waarde zijn.
-
-* `INPUT__FILE__NAME LIKE '%.log'`-Hive probeert het schema toe te passen op alle bestanden in de map. In dit geval bevat de map bestanden die niet overeenkomen met het schema. Om te voor komen dat gegevens in de resultaten permanent worden opgehaald, wordt met deze verklaring aangegeven dat er alleen gegevens moeten worden geretourneerd van bestanden die eindigen op. log.
+|Rekeningoverzicht |Beschrijving |
+|---|---|
+|TABEL NEERZETTEN|Als de tabel al bestaat, verwijdert u deze.|
+|EXTERNE TABEL MAKEN|Hiermee maakt u een nieuwe **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie en in de oorspronkelijke indeling.|
+|RIJ-INDELING|Hiermee wordt aangegeven hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
+|OPGESLAGEN ALS TEXTFILE-LOCATIE|Hiermee wordt de component aangegeven waarin de gegevens worden opgeslagen (de `example/data` Directory) en wordt deze opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.|
+|SELECT|Hiermee wordt het aantal rijen geselecteerd waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** omdat er drie rijen met deze waarde zijn.|
+|INPUT__FILE__NAME zoals%. log|Hive probeert het schema toe te passen op alle bestanden in de map. In dit geval bevat de map bestanden die niet overeenkomen met het schema. Om te voor komen dat gegevens in de resultaten permanent worden opgehaald, wordt met deze verklaring aangegeven dat er alleen gegevens moeten worden geretourneerd van bestanden die eindigen op. log.|
 
 > [!NOTE]  
 > Externe tabellen moeten worden gebruikt wanneer u verwacht dat de onderliggende gegevens worden bijgewerkt door een externe bron. Bijvoorbeeld een geautomatiseerd proces voor het uploaden van gegevens of een MapReduce-bewerking.
@@ -169,18 +164,18 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Met deze instructies worden de volgende acties uitgevoerd:
 
-* `CREATE TABLE IF NOT EXISTS`: als de tabel niet bestaat, maakt u deze. Omdat het **externe** sleutel woord niet wordt gebruikt, maakt deze instructie een interne tabel. De tabel wordt opgeslagen in het Hive-Data Warehouse en wordt volledig beheerd door Hive.
-
-* `STORED AS ORC`: de gegevens worden opgeslagen in de ORC-indeling (Optimized Row in kolommen). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.
-
-* `INSERT OVERWRITE ... SELECT`: selecteert rijen uit de tabel **log4jLogs** met **[error]** en voegt vervolgens de gegevens in de tabel **errorLogs** in.
+|Rekeningoverzicht |Beschrijving |
+|---|---|
+|CREATE TABLE ALS DEZE NIET BESTAAT|Als de tabel niet bestaat, maakt u deze. Omdat het **externe** sleutel woord niet wordt gebruikt, maakt deze instructie een interne tabel. De tabel wordt opgeslagen in het Hive-Data Warehouse en wordt volledig beheerd door Hive.|
+|OPGESLAGEN ALS ORC|Hiermee worden de gegevens opgeslagen in de ORC-indeling (Optimized Row in kolommen). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.|
+|OVERSCHRIJVEN INVOEGEN... UITGESCHAKELD|Hiermee worden rijen uit de **log4jLogs** -tabel met **[error]** geselecteerd en worden de gegevens vervolgens ingevoegd in de tabel **errorLogs** .|
 
 > [!NOTE]  
 > In tegens telling tot externe tabellen verwijdert het verwijderen van een interne tabel ook de onderliggende gegevens.
 
 ## <a name="improve-hive-query-performance"></a>Prestaties van Hive-query's verbeteren
 
-### <a id="usetez"></a>Apache TEZ
+### <a name="apache-tez"></a>Apache TEZ
 
 [Apache TEZ](https://tez.apache.org) is een raam werk waarmee gegevens intensieve toepassingen, zoals Hive, veel efficiënter op schaal kunnen worden uitgevoerd. TEZ is standaard ingeschakeld.  De [Apache Hive in TEZ-ontwerp documenten](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) bevat details over de implementatie keuzes en afstemmings configuraties.
 

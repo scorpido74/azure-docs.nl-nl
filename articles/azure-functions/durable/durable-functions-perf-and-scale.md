@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486257"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204511"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestaties en schaal in Durable Functions (Azure Functions)
 
@@ -220,7 +220,7 @@ De specifieke effecten van uitgebreide sessies voor Orchestrator-en entiteits fu
 
 ### <a name="orchestrator-function-replay"></a>Orchestrator-functie opnieuw afspelen
 
-Zoals eerder vermeld, worden Orchestrator-functies opnieuw afgespeeld met de inhoud van de **geschiedenis** tabel. De functie code van Orchestrator wordt standaard elke keer dat een batch berichten uit een controle wachtrij wordt verwijderd, opnieuw afgespeeld. Wanneer uitgebreide sessies zijn ingeschakeld, worden Orchestrator-functie exemplaren in het geheugen langer bewaard en kunnen er nieuwe berichten worden verwerkt zonder dat een volledige geschiedenis wordt afgespeeld.
+Zoals eerder vermeld, worden Orchestrator-functies opnieuw afgespeeld met de inhoud van de **geschiedenis** tabel. De functie code van Orchestrator wordt standaard elke keer dat een batch berichten uit een controle wachtrij wordt verwijderd, opnieuw afgespeeld. Zelfs als u gebruikmaakt van het uitwaaieren, inwaaieren en wacht op het volt ooien van alle taken (bijvoorbeeld met behulp van `Task.WhenAll` in .NET of `context.df.Task.all` in Java script), worden er herhalingen weer gegeven die optreden als batches taak reacties na verloop van tijd worden verwerkt. Wanneer uitgebreide sessies zijn ingeschakeld, worden Orchestrator-functie exemplaren in het geheugen langer bewaard en kunnen er nieuwe berichten worden verwerkt zonder dat een volledige geschiedenis wordt afgespeeld.
 
 De verbeterde prestaties van uitgebreide sessies worden meestal in de volgende situaties waargenomen:
 

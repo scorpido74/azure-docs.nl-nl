@@ -3,12 +3,12 @@ title: Over SAP HANA back-up van de data base in azure Vm's
 description: In dit artikel vindt u informatie over het maken van back-ups van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 53fd87f0de48d56d696abcf5484908060225cb3d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918509"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207010"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Over SAP HANA back-up van de data base in azure Vm's
 
@@ -33,7 +33,7 @@ Raadpleeg de [ondersteunings matrix van SAP Hana scenario](https://docs.microsof
 
 * Het back-upproces begint met het [maken van een Recovery Services-kluis](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) in Azure. Deze kluis wordt gebruikt voor het opslaan van de back-ups en herstel punten die in de loop van de tijd zijn gemaakt.
 * De Azure-VM met SAP HANA server is geregistreerd bij de kluis en de data bases waarvan een back-up moet worden gemaakt, worden [gedetecteerd](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases). Om de Azure Backup-service in te scha kelen om data bases te detecteren, moet een [preregistratie-script](https://aka.ms/scriptforpermsonhana) worden uitgevoerd op de Hana-server als hoofd gebruiker.
-* Met dit script maakt u een **AZUREWLBACKUPHANAUSER** db-gebruiker en een bijbehorende sleutel met dezelfde naam in **hdbuserstore**. Raadpleeg de [sectie Machtigingen instellen](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) voor meer informatie over de werking van het script.
+* Met dit script maakt u een **AZUREWLBACKUPHANAUSER** db-gebruiker en een bijbehorende sleutel met dezelfde naam in **hdbuserstore**. Raadpleeg de sectie [Wat is het script voor voorafgaande registratie](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) ? voor meer informatie over de werking van het script.
 * Azure Backup-service installeert nu de **Azure backup-invoeg toepassing voor Hana** op de geregistreerde SAP Hana-server.
 * De **AZUREWLBACKUPHANAUSER** db-gebruiker die door het script voor voor registratie wordt gemaakt, wordt gebruikt door de **Azure backup-INVOEG toepassing voor Hana** om alle back-up-en herstel bewerkingen uit te voeren. Als u probeert om een back-up te configureren voor SAP HANA Db's zonder dit script uit te voeren, wordt mogelijk de volgende fout weer gegeven: **UserErrorHanaScriptNotRun**.
 * Kies het vereiste back-upbeleid en schakel back-ups in om de [back-up te configureren](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) voor de gedetecteerde data bases.

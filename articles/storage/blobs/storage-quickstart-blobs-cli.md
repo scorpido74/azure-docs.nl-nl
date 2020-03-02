@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 785f68b98d819a58ce43837dc3c9b5a855beeb0a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672511"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206913"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Quick Start: blobs maken, downloaden en vermelden met Azure CLI
 
@@ -28,7 +28,7 @@ Azure CLI is de nieuwe opdrachtregel van Azure voor het beheren van Azure-resour
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-the-azure-cli-locally"></a>De Azure CLI lokaal gebruiken
+## <a name="install-the-azure-cli-locally"></a>De Azure CLI lokaal installeren
 
 Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor deze Snelstartgids gebruikmaken van de Azure CLI-versie 2.0.46 of hoger. Voer `az --version` uit om uw versie te bepalen. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -38,11 +38,13 @@ Als u de Azure CLI lokaal uitvoert, moet u zich aanmelden en verifiëren. Deze s
 az login
 ```
 
+Zie [Aanmelden met Azure cli](/cli/azure/authenticate-azure-cli)voor meer informatie over verificatie met Azure cli.
+
 ## <a name="authorize-access-to-blob-storage"></a>Toegang tot Blob Storage machtigen
 
 U kunt de toegang tot de Blob-opslag toestaan via de Azure CLI met behulp van de Azure AD-referenties of door de toegangs sleutel voor het opslag account te gebruiken. Het gebruik van Azure AD-referenties wordt aanbevolen. In dit artikel wordt beschreven hoe u Blob Storage-bewerkingen kunt autoriseren met behulp van Azure AD.
 
-Azure CLI-opdrachten voor gegevens bewerkingen op Blob Storage ondersteunen de para meter `--auth-mode`, waarmee u kunt opgeven hoe een bepaalde bewerking moet worden geautoriseerd. Stel de para meter `--auth-mode` in op `login` om te autoriseren met Azure AD-referenties. Zie voor meer informatie [Azure cli-opdrachten uitvoeren met Azure AD-referenties voor toegang tot BLOB-of wachtrij gegevens](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Azure CLI-opdrachten voor gegevens bewerkingen op Blob Storage ondersteunen de para meter `--auth-mode`, waarmee u kunt opgeven hoe een bepaalde bewerking moet worden geautoriseerd. Stel de para meter `--auth-mode` in op `login` om te autoriseren met Azure AD-referenties. Zie [toegang verlenen aan BLOB-of wachtrij gegevens met Azure cli](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
 
 Alleen bewerkingen voor Blob Storage-gegevens ondersteunen de para meter `--auth-mode`. Beheer bewerkingen, zoals het maken van een resource groep of een opslag account, gebruiken automatisch Azure AD-referenties voor autorisatie.
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485349"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205816"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
@@ -35,12 +35,19 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 ## <a name="set-up-the-sample-labeling-tool"></a>Het hulp programma voor het labelen van het voor beeld instellen
 
 U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het labelen van voor beelden. Volg deze stappen om de docker-container in te stellen. Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.
-1. Installeer eerst docker op een hostcomputer. De hostcomputer kan uw lokale computer zijn ([Windows](https://docs.docker.com/docker-for-windows/), [macOS](https://docs.docker.com/docker-for-mac/)of [Linux](https://docs.docker.com/install/)). U kunt ook een docker-hosting service gebruiken in azure, zoals de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/index), [Azure container instances](https://docs.microsoft.com/azure/container-instances/index)of een Kubernetes-cluster [dat is geïmplementeerd op een Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). De hostcomputer moet voldoen aan de volgende hardwarevereisten:
+1. Installeer eerst docker op een hostcomputer. In deze hand leiding wordt uitgelegd hoe u een lokale computer als host kunt gebruiken. Als u een docker-hosting service in azure wilt gebruiken, raadpleegt u de hand leiding voor [het hulp programma voor beeld label implementeren](../deploy-label-tool.md) . 
+
+   De hostcomputer moet voldoen aan de volgende hardwarevereisten:
 
     | Container | Minimum | Aanbevolen|
     |:--|:--|:--|
     |Voor beeld van een label programma|2 Core, 4 GB geheugen|4 kern geheugen van 8 GB|
-    
+
+   Installeer docker op uw computer door de juiste instructies te volgen voor uw besturings systeem: 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [MacOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/).
+
 1. Haal de voor beeld-container met de `docker pull` opdracht.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Klik op **OCR uitvoeren op alle bestanden** in het linkerdeel venster om informa
 
 ### <a name="apply-labels-to-text"></a>Labels Toep assen op tekst
 
-Vervolgens maakt u labels en past u deze toe op de tekst elementen die u door het model wilt laten herkennen.
+Vervolgens maakt u tags (labels) en past u deze toe op de tekst elementen die u door het model wilt laten herkennen.
 
-1. Gebruik eerst het deel venster Tags editor om de labels (labels) te maken die u wilt identificeren.
+1. Gebruik eerst het deel venster Tags editor om de labels te maken die u wilt identificeren.
+  1. Klik op **+** om een nieuwe tag te maken.
+  1. Voer de naam van de tag in.
+  1. Druk op ENTER om de tag op te slaan.
 1. Klik in de hoofd editor op en sleep om een of meer woorden van de gemarkeerde tekst elementen te selecteren.
+1. Klik op het label dat u wilt Toep assen of druk op de bijbehorende toetsenbord toets. De nummer sleutels worden toegewezen als sneltoetsen voor de eerste 10 Tags. U kunt de volg orde van de labels wijzigen met behulp van de pictogrammen pijl omhoog en omlaag in het deel venster Code-editor.
+    > [!Tip]
+    > Houd rekening met de volgende tips wanneer u labels voor uw formulieren gebruikt.
+    > * U kunt slechts één tag Toep assen op elk geselecteerd tekst element.
+    > * Elke tag kan slechts eenmaal per pagina worden toegepast. Als een waarde meerdere keren op hetzelfde formulier wordt weer gegeven, maakt u voor elk exemplaar verschillende labels. Bijvoorbeeld: factuur # 1, factuur # 2, enzovoort.
+    > * Labels kunnen niet over meerdere pagina's heen worden verdeeld.
+    > * Label waarden zoals ze in het formulier worden weer gegeven. Probeer geen waarde te splitsen in twee delen met twee verschillende Tags. Een adres veld moet bijvoorbeeld worden gelabeld met één tag, zelfs als het meerdere regels omvat.
+    > * Voeg geen sleutels in de velden met tags toe&mdash;alleen de waarden.
+    > * Tabel gegevens moeten automatisch worden gedetecteerd en beschikbaar zijn in het uiteindelijke uitvoer-JSON-bestand. Als het model echter niet alle tabel gegevens detecteert, kunt u deze velden ook hand matig labelen. Elke cel in de tabel labelen met een ander label. Als uw formulieren tabellen met een wisselend aantal rijen bevatten, moet u ervoor zorgen dat u ten minste één formulier met de grootste mogelijke tabel labelt.
 
-    > [!NOTE]
-    > U kunt momenteel geen tekst selecteren die over meerdere pagina's heen loopt.
-1. Klik op het label dat u wilt Toep assen of druk op de bijbehorende toetsenbord toets. U kunt slechts één tag Toep assen op elk geselecteerd tekst element en elke tag kan slechts eenmaal per pagina worden toegepast.
-
-    > [!TIP]
-    > De nummer sleutels worden toegewezen als sneltoetsen voor de eerste tien Tags. U kunt de volg orde van de labels wijzigen met behulp van de pictogrammen pijl omhoog en omlaag in het deel venster Code-editor.
 
 Volg de bovenstaande stappen voor het labelen van vijf van uw formulieren en ga vervolgens verder met de volgende stap.
 

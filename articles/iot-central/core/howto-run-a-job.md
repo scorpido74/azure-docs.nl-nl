@@ -1,6 +1,6 @@
 ---
 title: Taken maken en uitvoeren in uw Azure IoT Central-toepassing | Microsoft Docs
-description: Met Azure IoT Central-taken kunnen beheer functies voor bulk apparaten worden toegepast, zoals het bijwerken van een eigenschap van een apparaat, het instellen of uitvoeren van een opdracht.
+description: Azure IoT Central-taken bieden mogelijkheden voor bulk beheer, zoals het bijwerken van eigenschappen of het uitvoeren van een opdracht.
 ms.service: iot-central
 services: iot-central
 author: sarahhubbard
@@ -8,66 +8,70 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2dd1eddc841cc484957c2124de3419799c4e59b7
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018887"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206789"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Een taak maken en uitvoeren in uw Azure IoT Central-toepassing
 
-U kunt Microsoft Azure IoT Central gebruiken om uw verbonden apparaten op schaal te beheren met behulp van taken. Met taken kunt u bulksgewijs updates uitvoeren op apparaateigenschappen en-opdrachten. In dit artikel leert u hoe u aan de slag kunt met taken in uw eigen toepassing.
-
+U kunt Microsoft Azure IoT Central gebruiken om uw verbonden apparaten op schaal te beheren met behulp van taken. Met taken kunt u bulksgewijs updates uitvoeren op de apparaateigenschappen en de opdrachten uit te voeren. In dit artikel leest u hoe u aan de slag kunt met taken in uw eigen toepassing.
 
 ## <a name="create-and-run-a-job"></a>Een taak maken en uitvoeren
 
-In deze sectie wordt beschreven hoe u een taak maakt en uitvoert. U ziet hoe u de snelheid van de ventilator kunt verhogen voor meerdere gekoelde verkoop automaten.
+In deze sectie wordt beschreven hoe u een taak maakt en uitvoert. U ziet hoe u de lichte drempel waarde instelt voor een groep logistiek gateway apparaten.
 
-1. Navigeer naar taken in het navigatie deel venster.
+1. Navigeer naar **taken** in het linkerdeel venster.
 
-2. Selecteer **+ Nieuw** om een nieuwe taak te maken.
+2. Selecteer **+ Nieuw** om een nieuwe taak te maken:
 
-    ![Nieuwe taak maken](./media/howto-run-a-job/createnewjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![nieuwe taak maken](./media/howto-run-a-job/createnewjob.png)
 
 3. Voer een naam en beschrijving in om de taak te identificeren die u wilt maken.
 
-4. Selecteer de apparaatgroep waarop u de taak wilt Toep assen. In de sectie samen vatting kunt u zien hoeveel apparaten uw taak configuratie zal Toep assen. 
+4. Selecteer de doel apparaatgroep waarop de taak moet worden toegepast. In de sectie **samen vatting** kunt u zien hoeveel apparaten de taak configuratie van toepassing heeft.
 
-5. Kies vervolgens het type taak dat u wilt definiëren (eigenschap of opdracht). Stel de taak configuratie in door de eigenschap te selecteren en nieuwe waarden in te stellen of een opdracht te kiezen. Het is mogelijk om meerdere eigenschappen tegelijk toe te voegen.
+5. Kies vervolgens een van de **Eigenschappen** of **opdrachten** als het type taak dat moet worden geconfigureerd. Als u een configuratie van een **Eigenschappen** taak wilt instellen, selecteert u een eigenschap en stelt u de nieuwe waarde in. Als u een **opdracht**wilt instellen, of kies de opdracht die u wilt uitvoeren. Een eigenschaps taak kan meerdere eigenschappen instellen:
 
-    ![Taak configureren](./media/howto-run-a-job/configurejob.png)
+    > [!div class="mx-imgBorder"]
+    > taak](./media/howto-run-a-job/configurejob.png) ![configureren
 
-6. Kies aan de rechter kant de apparaten waarop u de taak wilt uitvoeren. Als u het selectie vakje boven selecteert, worden alle apparaten geselecteerd in de hele apparaatset. Als u het selectie vakje bij **naam**selecteert, worden alle apparaten op de huidige pagina geselecteerd.
+6. Nadat u uw apparaten hebt geselecteerd, kiest u **uitvoeren** of **Opslaan**. De taak wordt nu weer gegeven op de pagina met hoofd **taken** . Op deze pagina ziet u de taak die momenteel wordt uitgevoerd en de geschiedenis van eerder uitgevoerde of opgeslagen taken. U kunt de opgeslagen taak op elk gewenst moment opnieuw openen om deze te bewerken of om deze uit te voeren:
 
-7. Nadat u uw apparaten hebt geselecteerd, kiest u **uitvoeren** of **Opslaan**. De taak wordt nu weer gegeven op de pagina met hoofd **taken** . In deze weer gave ziet u de taak die momenteel wordt uitgevoerd en de geschiedenis van eerder uitgevoerde taken. De taak die wordt uitgevoerd, wordt altijd bovenaan de lijst weer gegeven. Uw opgeslagen taak kan op elk gewenst moment opnieuw worden geopend om door te gaan met bewerken of om te worden uitgevoerd.
-
-    ![Taak weer geven](./media/howto-run-a-job/viewjob.png)
+    > [!div class="mx-imgBorder"]
+    > taak ![weer geven](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > U kunt de geschiedenis van uw eerder uitgevoerde taken gedurende Maxi maal 30 dagen bekijken.
+    > U kunt de geschiedenis van 30 dagen voor uw eerder uitgevoerde taken bekijken.
 
-7. Selecteer de taak die u wilt weer geven in de lijst om een overzicht van uw taak te krijgen. Dit overzicht bevat de taak Details, apparaten en status waarden van de apparaten. In dit overzicht kunt u ook **Download taak gegevens** selecteren om een CSV-bestand van uw taak details te downloaden, met inbegrip van de apparaten en hun status waarden. Deze informatie kan nuttig zijn bij het oplossen van problemen.
+7. Selecteer de taak die u wilt weer geven in de lijst om een overzicht van uw taak te krijgen. Dit overzicht bevat de taak Details, apparaten en status waarden van de apparaten. In dit overzicht kunt u ook **Download taak gegevens** selecteren om een CSV-bestand van uw taak details te downloaden, inclusief de apparaten en hun status waarden. Deze informatie kan nuttig zijn bij het oplossen van problemen:
 
-    ![Apparaatstatus weergeven](./media/howto-run-a-job/downloaddetails.png)
+    > [!div class="mx-imgBorder"]
+    > Apparaatstatus ![weer geven](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Een actieve taak stoppen
 
-Als u een taak die wordt uitgevoerd wilt stoppen, selecteert u deze en klikt u op **stoppen**. De taak status wordt gewijzigd in weer spie gelen de taak wordt gestopt.
+Als u een van de actieve taken wilt stoppen, opent u deze en selecteert u **stoppen**. De taak status wordt gewijzigd in weer spie gelen de taak wordt gestopt. In de sectie **samen vatting** ziet u welke apparaten zijn voltooid, mislukt of nog in behandeling zijn:
 
-   ![Taak stoppen](./media/howto-run-a-job/stopjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Stop job](./media/howto-run-a-job/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>Een taak gestopt uitvoeren
 
-Als u een taak wilt uitvoeren die momenteel is gestopt, selecteert u de taak gestopt. Kies **uitvoeren** in het deel venster. De taak status wordt gewijzigd in weer spie gelen de taak wordt nu opnieuw uitgevoerd.
+Als u een taak wilt uitvoeren die momenteel is gestopt, selecteert u deze en selecteert u vervolgens **uitvoeren**. De taak status wordt gewijzigd in weer spie gelen de taak wordt nu opnieuw uitgevoerd. De sectie **samen vatting** wordt bijgewerkt met de laatste voortgang:
 
-   ![Taak hervat](./media/howto-run-a-job/resumejob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Resumed job](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="copy-a-job"></a>Een taak kopiëren
 
-Als u een bestaande taak die u hebt gemaakt, wilt kopiëren, opent u een gemaakte taak en selecteert u **kopiëren**. Er wordt een nieuwe kopie van de taak configuratie geopend die u kunt bewerken. U kunt de nieuwe taak opslaan of uitvoeren. 
+Als u een van uw bestaande taken wilt kopiëren, opent u deze en selecteert u **kopiëren**. Een kopie van de taak configuratie wordt geopend, zodat u deze kunt bewerken en **kopiëren** wordt toegevoegd aan het einde van de taak naam. U kunt de nieuwe taak opslaan of uitvoeren:
 
-   ![Taak kopiëren](./media/howto-run-a-job/copyjob.png)
+    > [!div class="mx-imgBorder"]
+    > ![Copy job](./media/howto-run-a-job/copyjob.png)
 
 ## <a name="view-the-job-status"></a>De taak status weer geven
 
@@ -79,7 +83,7 @@ Nadat een taak is gemaakt, wordt de kolom **status** bijgewerkt met het laatste 
 | Mislukt               | Deze taak is mislukt en niet volledig uitgevoerd op apparaten.  |
 | In behandeling              | De uitvoering van deze taak is nog niet gestart op apparaten.         |
 | In uitvoering              | Deze taak wordt momenteel uitgevoerd op apparaten.             |
-| Stopped              | Deze taak is hand matig gestopt door een gebruiker.           |
+| Gestopt              | Deze taak is hand matig gestopt door een gebruiker.           |
 
 Het status bericht wordt gevolgd door een overzicht van de apparaten in de taak. De volgende tabel geeft een lijst van mogelijke status waarden van apparaten:
 
@@ -99,7 +103,7 @@ Als u de status van de taak en alle betrokken apparaten wilt weer geven, selecte
 | In behandeling              | De taak is nog niet uitgevoerd op dit apparaat.                                   |
 
 > [!NOTE]
-> Als een apparaat is verwijderd, kunt u het apparaat niet selecteren en wordt het weer gegeven als verwijderd met de apparaat-ID.
+> Als een apparaat is verwijderd, kunt u het apparaat niet selecteren. Het wordt weer gegeven als verwijderd met de apparaat-ID.
 
 ## <a name="next-steps"></a>Volgende stappen
 

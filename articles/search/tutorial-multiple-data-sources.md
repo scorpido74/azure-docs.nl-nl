@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 272926e6c3572f03cc316ee696893941fd91968d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196566"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206874"
 ---
 # <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Zelf studie: index gegevens uit meerdere gegevens bronnen inC#
 
-Met Azure Cognitive Search kunt u gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één gecombineerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
+Met Azure Cognitive Search kunt u gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één geconsolideerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
 
 In deze zelf studie wordt beschreven hoe u Hotel gegevens van een Azure Cosmos DB gegevens bron indexeert en samen voegen met details van Hotel kamers die vanuit Azure Blob Storage-documenten worden getrokken. Het resultaat is een gecombineerde zoek index voor hotels met complexe gegevens typen.
 
-In deze zelf C# studie wordt en de [.NET SDK](https://aka.ms/search-sdk) gebruikt om de volgende taken uit te voeren:
+In deze zelf C# studie wordt de [.NET SDK](https://aka.ms/search-sdk)gebruikt. In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
 > * Voorbeeld gegevens uploaden en gegevens bronnen maken
@@ -44,29 +44,17 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="download-files"></a>Bestanden downloaden
 
-1. Ga naar de voorbeeld opslagplaats op GitHub: [Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
-1. Selecteer **klonen of downloaden** en maak uw persoonlijke lokale kopie van de opslag plaats.
-1. Open Visual Studio 2019 en installeer het Microsoft Azure Cognitive Search NuGet-pakket, als dit nog niet is geïnstalleerd. Selecteer in het menu **extra** de optie **NuGet package manager** en klik vervolgens **op NuGet-pakketten beheren voor oplossing...** . Zoek en Installeer **micro soft. Azure. Search** (versie 9.0.1 of hoger) op het tabblad **Bladeren** . U moet door de extra dialoog vensters klikken om de installatie te volt ooien.
+De bron code voor deze zelf studie vindt u in de GitHub-opslag plaats [Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) in de map met [meerdere gegevens bronnen](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources) .
 
-    ![NuGet gebruiken om Azure-bibliotheken toe te voegen](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+## <a name="1---create-services"></a>1-services maken
 
-1. Ga in Visual Studio naar uw lokale opslag plaats en open het oplossings bestand **AzureSearchMultipleDataSources. SLN**.
+In deze zelf studie maakt gebruik van Azure Cognitive Search voor indexering en query's, Azure Cosmos DB voor één gegevensset en Azure Blob-opslag voor de tweede gegevens verzameling. 
 
-## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
-
-Als u met uw Azure Cognitive Search-service wilt communiceren, hebt u de service-URL en een toegangs sleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
-
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
-
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
-
-![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
-
-Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Een geldige sleutel brengt een vertrouwens relatie tot stand, op basis van aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
-
-## <a name="prepare-sample-azure-cosmos-db-data"></a>Voor beeld-Azure Cosmos DB gegevens voorbereiden
+Maak indien mogelijk alle services in dezelfde regio en resource groep voor nabijheid en beheer baarheid. In de praktijk kunnen uw services zich in een wille keurige regio bevinden.
 
 In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictieve hotels worden beschreven. In één set worden de hotels zelf beschreven en worden deze in een Azure Cosmos DB-Data Base geladen. De andere set bevat details over de hotel kamer en is beschikbaar als zeven afzonderlijke JSON-bestanden die moeten worden geüpload naar Azure Blob Storage.
+
+### <a name="start-with-cosmos-db"></a>Beginnen met Cosmos DB
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en navigeer vervolgens naar de overzichts pagina van uw Azure Cosmos DB-account.
 
@@ -88,7 +76,7 @@ In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictiev
 
 1. Gebruik de knop Vernieuwen om de weer gave van de items in de hotels-verzameling te vernieuwen. Er moeten zeven nieuwe database documenten worden weer gegeven.
 
-## <a name="prepare-sample-blob-data"></a>Voor beeld van BLOB-gegevens voorbereiden
+### <a name="azure-blob-storage"></a>Azure Blob Storage
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
 
@@ -102,47 +90,74 @@ In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictiev
 
 Nadat het uploaden is voltooid, worden de bestanden weer gegeven in de lijst voor de gegevens container.
 
-## <a name="set-up-connections"></a>Verbindingen instellen
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
-Verbindings gegevens voor de Search-service en de gegevens bronnen worden opgegeven in het bestand **appSettings. json** in de oplossing. 
+Het derde onderdeel is Azure Cognitive Search, dat u [in de portal kunt maken](search-create-service-portal.md). U kunt de gratis laag gebruiken om deze procedure te volt ooien. 
 
-1. Open in Visual Studio het bestand **AzureSearchMultipleDataSources. SLN** .
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Een beheer-API-sleutel en-URL voor Azure Cognitive Search ophalen
 
-1. Bewerk het bestand **appSettings. json** in Solution Explorer.  
+Als u wilt communiceren met uw Azure Cognitive Search-service, hebt u de service-URL en een toegangs sleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
-```json
-{
-  "SearchServiceName": "Put your search service name here",
-  "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-  "BlobStorageAccountName": "Put your Azure Storage account name here",
-  "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
-  "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
-  "CosmosDBDatabaseName": "hotel-rooms-db"
-}
-```
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+
+1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+
+   Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
+
+   ![De service naam en de beheer-en query sleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+
+Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
+
+## <a name="2---set-up-your-environment"></a>2-uw omgeving instellen
+
+1. Start Visual Studio 2019 en selecteer in het menu **extra** de optie **NuGet package manager** en vervolgens **NuGet-pakketten beheren voor oplossing...** . 
+
+1. Zoek en Installeer **micro soft. Azure. Search** (versie 9.0.1 of hoger) op het tabblad **Bladeren** . U moet door de extra dialoog vensters klikken om de installatie te volt ooien.
+
+    ![NuGet gebruiken om Azure-bibliotheken toe te voegen](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+
+1. Zoek naar het **micro soft. Extensions. configuratie. json** NuGet-pakket en installeer dit ook.
+
+1. Open het oplossings bestand **AzureSearchMultipleDataSources. SLN**.
+
+1. Bewerk in Solution Explorer het bestand **appSettings. json** om verbindings gegevens toe te voegen.  
+
+    ```json
+    {
+      "SearchServiceName": "Put your search service name here",
+      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+      "BlobStorageAccountName": "Put your Azure Storage account name here",
+      "BlobStorageConnectionString": "Put your Azure Blob Storage connection string here",
+      "CosmosDBConnectionString": "Put your Cosmos DB connection string here",
+      "CosmosDBDatabaseName": "hotel-rooms-db"
+    }
+    ```
 
 De eerste twee vermeldingen gebruiken de URL en de beheer sleutels voor uw Azure Cognitive Search-service. Op basis van een eind punt van `https://mydemo.search.windows.net`, bijvoorbeeld de service naam die u opgeeft, is `mydemo`.
 
 De volgende vermeldingen geven account namen en connection string informatie op voor de Azure Blob Storage en Azure Cosmos DB gegevens bronnen.
 
-### <a name="identify-the-document-key"></a>De document sleutel identificeren
+## <a name="3---map-key-fields"></a>3: sleutel velden toewijzen
 
-In azure Cognitive Search is het sleutel veld een unieke identificatie voor elk document in de index. Elke zoek index moet precies één sleutel veld van het type `Edm.String`hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+Voor het samen voegen van inhoud moeten beide gegevens stromen zijn gericht op dezelfde documenten in de zoek index. 
 
-Wanneer u gegevens uit meerdere gegevens bronnen indexeert, gebruikt u een algemene document sleutel om gegevens van twee fysiek afzonderlijke bron documenten samen te voegen in een nieuw Zoek document in de gecombineerde index. Er is vaak een planning vooraf van tevoren vereist om een duidelijke document sleutel voor uw index te identificeren en ervoor te zorgen dat deze bestaat in beide gegevens bronnen. In deze demo is de sleutel HotelId voor elk Hotel in Cosmos DB ook aanwezig in de JSON-blobs van de ruimten in Blob Storage.
+In azure Cognitive Search is het sleutel veld een unieke identificatie van elk document. Elke zoek index moet precies één sleutel veld van het type `Edm.String`hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
 
-Azure Cognitive Search Indexeer functies kunnen veld toewijzingen gebruiken om de gegevens velden tijdens het indexerings proces een andere naam te geven en te Format teren, zodat de bron gegevens naar het juiste index veld kunnen worden omgeleid.
+Wanneer u gegevens uit meerdere gegevens bronnen indexeert, zorgt u ervoor dat elke binnenkomende rij of elk document een algemene document sleutel bevat om gegevens van twee fysiek afzonderlijke bron documenten samen te voegen in een nieuw Zoek document in de gecombineerde index. 
 
-In het voor beeld Azure Cosmos DB gegevens wordt de Hotel-id bijvoorbeeld **`HotelId`** genoemd. Maar in de JSON-BLOB-bestanden voor de hotel kamers heet de Hotel-id **`Id`** . Dit wordt door het programma verwerkt door het **`Id`** veld van de blobs te koppelen aan het **`HotelId`** sleutel veld in de index.
+Er is vaak een planning vooraf van tevoren vereist om een duidelijke document sleutel voor uw index te identificeren en ervoor te zorgen dat deze bestaat in beide gegevens bronnen. In deze demo is de `HotelId` sleutel voor elk Hotel in Cosmos DB ook aanwezig in de JSON-blobs van de ruimten in Blob Storage.
+
+Azure Cognitive Search Indexeer functies kunnen veld toewijzingen gebruiken om de gegevens velden tijdens het indexerings proces een andere naam te geven en te Format teren, zodat de bron gegevens naar het juiste index veld kunnen worden omgeleid. Zo wordt in Cosmos DB bijvoorbeeld de Hotel-id **`HotelId`** genoemd. Maar in de JSON-BLOB-bestanden voor de hotel kamers heet de Hotel-id **`Id`** . Dit wordt door het programma verwerkt door het **`Id`** veld van de blobs te koppelen aan het **`HotelId`** sleutel veld in de index.
 
 > [!NOTE]
-> In de meeste gevallen automatisch gegenereerde document sleutels, zoals die standaard door bepaalde Indexeer functies gemaakt, maken geen goede document sleutels voor gecombineerde indexen. Over het algemeen wilt u een betekenis volle, unieke sleutel waarde gebruiken die al bestaat in, of eenvoudig kan worden toegevoegd aan uw gegevens bronnen.
+> In de meeste gevallen maken Automatische gegenereerde document sleutels, zoals die standaard worden gemaakt door bepaalde Indexeer functies, geen goede document sleutels voor gecombineerde indexen. Over het algemeen wilt u een betekenis volle, unieke sleutel waarde gebruiken die al bestaat in, of eenvoudig kan worden toegevoegd aan uw gegevens bronnen.
 
-## <a name="understand-the-code"></a>De code begrijpen
+## <a name="4---explore-the-code"></a>4-de code verkennen
 
 Zodra de gegevens en configuratie-instellingen zijn geïmplementeerd, moet het voorbeeld programma in **AzureSearchMultipleDataSources. SLN** klaar zijn om te worden gemaakt en uitgevoerd.
 
 Deze eenvoudige C#/.net-ontwikkeling.-console-app voert de volgende taken uit:
+
 * Hiermee maakt u een nieuwe index op basis van de gegevens C# structuur van de klasse hotel (die ook verwijst naar de adres-en room-klassen).
 * Hiermee maakt u een nieuwe gegevens bron en een Indexeer functie waarmee Azure Cosmos DB gegevens worden toegewezen aan index velden. Dit zijn beide objecten in azure Cognitive Search.
 * De Indexeer functie wordt uitgevoerd om Hotel gegevens van Cosmos DB te laden.
@@ -154,7 +169,7 @@ Deze eenvoudige C#/.net-ontwikkeling.-console-app voert de volgende taken uit:
   + **Hotel.cs** bevat het schema dat de index definieert
   + **Program.cs** bevat functies voor het maken van de Azure Cognitive search-index, gegevens bronnen en indexeringen en het laden van de gecombineerde resultaten in de index.
 
-### <a name="define-the-index"></a>De index definiëren
+### <a name="create-an-index"></a>Een index maken
 
 In dit voorbeeld programma wordt de .NET SDK gebruikt om een Azure Cognitive Search-index te definiëren en te maken. Het maakt gebruik van de [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) -klasse om een index structuur te genereren C# op basis van een gegevens model klasse.
 
@@ -330,7 +345,7 @@ Omdat de index al is gevuld met Hotel gegevens uit de Azure Cosmos DB Data Base,
 > [!NOTE]
 > Als u dezelfde niet-sleutel velden in beide gegevens bronnen hebt en de gegevens in deze velden niet overeenkomen, bevat de index de waarden van de meest recente meest recent uitgevoerde indexer. In ons voor beeld bevatten beide gegevens bronnen het veld **hotelnaam** . Als de gegevens in dit veld om de een of andere reden verschillend zijn, voor documenten met dezelfde sleutel waarde, **wordt de waarde** in de index opgeslagen in de gegevens bron die het meest recent is geïndexeerd.
 
-## <a name="search-your-json-files"></a>Uw JSON-bestanden doorzoeken
+## <a name="5---search"></a>5-zoeken
 
 U kunt de gevulde zoek index verkennen nadat het programma is uitgevoerd, met behulp van de [**Search Explorer**](search-explorer.md) in de portal.
 

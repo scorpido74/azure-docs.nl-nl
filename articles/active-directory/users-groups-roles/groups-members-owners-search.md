@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901501"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206109"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Zoeken in groepen en leden (preview) in Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Zoeken in groepen en leden (preview) in Azure Active Directory
 
 In dit artikel leest u hoe u kunt zoeken naar leden en eigen aren van een groep en hoe u zoek filters kunt gebruiken als onderdeel van de preview-versie voor het verbeteren van groepen in de Azure Active Directory-Portal (Azure AD). Er zijn veel verbeteringen in de groeps ervaringen waarmee u uw groepen, met inbegrip van leden en eigen aren, snel en eenvoudig kunt beheren. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
@@ -45,11 +45,11 @@ Als u problemen ondervindt, kunt u teruggaan naar de oude ervaring door de banne
 
 ## <a name="group-search-and-sorting"></a>Groep zoeken en sorteren
 
-De zoek opdracht in de lijst met groepen is verbeterd, zodat u met zoeken automatisch een `startswith` en subtekenreeksen kunt zoeken in de lijst met groeps namen. De subtekenreeks zoeken wordt alleen uitgevoerd op hele woorden en bevat geen speciale tekens.
+De zoek opdracht in de groeps lijst is verbeterd, zodat de zoek actie automatisch een `startswith` en subtekenreeksen in de lijst met groeps namen kan uitvoeren wanneer u een zoek reeks kunt invoeren. De subtekenreeks zoeken wordt alleen uitgevoerd op hele woorden en bevat geen speciale tekens. Zoeken in subtekenreeksen is hoofdletter gevoelig.
 
 ![nieuwe subtekenreeks zoekt op de pagina alle groepen](./media/groups-members-owners-search/groups-search-preview.png)
 
-Bijvoorbeeld, een zoek opdracht voor ' beleid ' retourneert nu zowel ' MDM-beleid – westelijke ' als ' beleids groep '. Een groep met de naam ' New_policy ' kan niet worden geretourneerd.
+Bijvoorbeeld, een zoek opdracht voor ' beleid ' retourneert nu zowel ' MDM-beleid – westelijke ' als ' beleids groep '. Een groep met de naam ' New_policy ' zou niet worden geretourneerd.
 
 - U kunt ook dezelfde zoek actie uitvoeren op groeps lidmaatschaps lijsten.
 - U kunt de lijst met groepen nu sorteren op naam met behulp van de pijlen rechts van de kolomkop naam om de lijst in oplopende of aflopende volg orde te sorteren.

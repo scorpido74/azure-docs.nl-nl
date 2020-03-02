@@ -3,12 +3,12 @@ title: Zelf studie-SAP HANA DB-back-up op Azure met CLI
 description: In deze zelf studie leert u hoe u een back-up maakt van SAP HANA data bases die worden uitgevoerd op een virtuele Azure-machine naar een Azure Backup Recovery Services kluis met behulp van Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472350"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206619"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelf studie: back-ups maken van SAP HANA data bases in een Azure-VM met behulp van Azure CLI
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>Het SAP HANA-exemplaar registreren en beveiligen
 
-Voor de SAP HANA-instantie (de virtuele machine waarop SAP HANA is geïnstalleerd) die moet worden gedetecteerd door de Azure-Services, moet een [vooraf registratie script](https://aka.ms/scriptforpermsonhana) worden uitgevoerd op de SAP Hana machine. Zorg ervoor dat aan alle [vereisten](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) wordt voldaan voordat u het script uitvoert. Raadpleeg de sectie [machtigingen instellen](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) voor meer informatie over de werking van het script.
+Voor de SAP HANA-instantie (de virtuele machine waarop SAP HANA is geïnstalleerd) die moet worden gedetecteerd door de Azure-Services, moet een [vooraf registratie script](https://aka.ms/scriptforpermsonhana) worden uitgevoerd op de SAP Hana machine. Zorg ervoor dat aan alle [vereisten](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) wordt voldaan voordat u het script uitvoert. Raadpleeg de sectie [Wat is het script voor vooraf registratie](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) ? voor meer informatie over de werking van het script.
 
 Zodra het script is uitgevoerd, kan het SAP HANA-exemplaar worden geregistreerd bij de Recovery Services-kluis die u eerder hebt gemaakt. Gebruik de cmdlet [AZ backup container REGI ster](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) om het exemplaar te registreren. *VMResourceId* is de resource-id van de virtuele machine die u hebt gemaakt om SAP Hana te installeren.
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530932"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206976"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Veelgestelde vragen over Apache Kafka in azure HDInsight
 
@@ -27,7 +27,7 @@ Meer informatie over de versies van officieel ondersteunde onderdelen van HDInsi
 Een HDInsight Kafka-cluster bevat de volgende bronnen:
 
 * Hoofdknooppunten
-* ZooKeeper-knooppunten
+* Zookeeper-knoop punten
 * Knoop punten van Broker (worker) 
 * Azure Managed Disks gekoppeld aan de Broker knooppunten
 * Gateway-knooppunten
@@ -50,7 +50,7 @@ Met [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-ar
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Zijn mijn gegevens versleuteld? Kan ik mijn eigen sleutels gebruiken?
 
-Alle Kafka-berichten op de beheerde schijven worden versleuteld met [Azure Storage-service versleuteling (SSE)](../../storage/common/storage-service-encryption.md). Data-in-transit (bijvoorbeeld gegevens die worden verzonden van clients naar makelaars en de andere manier rond) is niet standaard versleuteld. Het is mogelijk om dit verkeer te versleutelen door [SSL zelf in te stellen](./apache-kafka-ssl-encryption-authentication.md). Daarnaast kunt u met HDInsight hun eigen sleutels beheren om de gegevens in rust te versleutelen. Zie [uw eigen sleutel voor Apache Kafka in azure HDInsight plaatsen](apache-kafka-byok.md)voor meer informatie.
+Alle Kafka-berichten op de beheerde schijven worden versleuteld met [Azure Storage-service versleuteling (SSE)](../../storage/common/storage-service-encryption.md). Data-in-transit (bijvoorbeeld gegevens die worden verzonden van clients naar makelaars en de andere manier rond) is niet standaard versleuteld. Het is mogelijk om dit verkeer te versleutelen door [SSL zelf in te stellen](./apache-kafka-ssl-encryption-authentication.md). Daarnaast kunt u met HDInsight hun eigen sleutels beheren om de gegevens in rust te versleutelen. Zie door de [klant beheerde sleutel schijf versleuteling](../disk-encryption.md)voor meer informatie.
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Hoe kan ik verbinding maken tussen clients en mijn cluster?
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 587de168a17c407abf3c2a7797969df013760a9f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156638"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206551"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit diepe leer model gebruiken met Azure HDInsight Spark cluster
 
@@ -56,15 +56,15 @@ In dit artikel gebruiken we de portal om de Toolkit te installeren nadat het clu
 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-Zie [HDInsight-clusters aanpassen met script actie](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)voor instructies over het gebruik van de Azure Portal om script actie uit te voeren. Zorg ervoor dat u de volgende invoer geeft om Microsoft Cognitive Toolkit te installeren. Gebruik de volgende waarden voor de script actie:
+Zie [HDInsight-clusters aanpassen met script actie](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)voor instructies over het gebruik van de Azure Portal om script actie uit te voeren. Zorg ervoor dat u de volgende invoer geeft om Microsoft Cognitive Toolkit te installeren. Gebruik de volgende waarden voor de script actie:
 
 |Eigenschap |Waarde |
 |---|---|
 |Script type|-Aangepast|
-|Name| MCT installeren|
+|Naam| MCT installeren|
 |Bash-script-URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Knooppunt type (n):|Hoofd, werk nemer|
-|Parameters|Geen|
+|Parameters|None|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>De Jupyter-notebook uploaden naar Azure HDInsight Spark-cluster
 
@@ -86,7 +86,7 @@ Als u de Microsoft Cognitive Toolkit met het Azure HDInsight Spark cluster wilt 
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Scenario's
+### <a name="scenarios"></a>Scenario 's
 
 * [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)

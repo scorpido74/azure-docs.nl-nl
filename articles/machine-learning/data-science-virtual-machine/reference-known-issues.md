@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526543"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206517"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Bekende problemen en het oplossen van problemen met de Azure-Data Science Virtual Machine
 
-Dit artikel helpt u bij het vinden en corrigeren van fouten of fouten die zijn opgetreden bij het gebruik van Azure Data Science Virtual Machine.
+Dit artikel helpt u bij het vinden en corrigeren van fouten of fouten die u kunt tegen komen wanneer u de Azure-Data Science Virtual Machine gebruikt.
 
 ## <a name="python-package-installation-issues"></a>Problemen met installatie van python-pakket
 
@@ -26,17 +26,22 @@ Dit artikel helpt u bij het vinden en corrigeren van fouten of fouten die zijn o
 
 Gebruik `sudo pip install` in plaats van `pip install` bij het installeren van pakketten.
 
-## <a name="disk-encryption-issues"></a>Problemen met schijf versleuteling
+## <a name="disk-encryption-issues"></a>Schijfversleutelingsproblemen
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Schijf versleuteling mislukt op de Ubuntu-DSVM
 
-Azure Disk Encryption (ADE) wordt momenteel niet ondersteund in de Ubuntu-DSVM. Als tijdelijke oplossing kunt u [Azure Storage versleuteling configureren met door de klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md).
+Azure Disk Encryption (ADE) wordt momenteel niet ondersteund in de Ubuntu-DSVM. Als tijdelijke oplossing kunt u overwegen om [versleuteling aan de server zijde van Azure Managed disks](../../virtual-machines/windows/disk-encryption.md)te configureren.
 
 ## <a name="tool-appears-disabled"></a>Hulp programma wordt uitgeschakeld weer gegeven
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Hyper-V werkt niet op de Windows-DSVM
 
-Dit is normaal gedrag, voor opstart prestaties, hebben sommige services uitgeschakeld. Als u het opnieuw wilt inschakelen, opent u de zoek balk in uw Windows DSVM, typt u ' Services ' en vervolgens stelt u alle Hyper-V-Services in op ' hand matig ' en stelt u ' Hyper-V virtual machine management ' in op ' Automatic '.
+De werking van Hyper-V in eerste instantie werkt niet in Windows. Sommige services zijn uitgeschakeld voor de prestaties van het systeem. Hyper-V inschakelen:
+
+1. De zoek balk openen in uw Windows-DSVM
+1. Typ ' Services ',
+1. Alle Hyper-V-Services instellen op hand matig
+1. "Hyper-V virtual machine management" instellen op automatisch
 
 Het laatste scherm moet er als volgt uitzien:
 

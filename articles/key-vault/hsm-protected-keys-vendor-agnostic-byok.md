@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566111"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207027"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Met HSM beveiligde sleutels importeren in Key Vault (preview)
 
@@ -90,6 +90,9 @@ De KEK moet zijn:
 - gegenereerd in de sleutel kluis waar u de doel sleutel wilt importeren
 - Gemaakt met toegestane sleutel bewerkingen ingesteld op `import`
 
+> [!NOTE]
+> De KEK moet ' Import ' bevatten als de enige toegestane sleutel bewerking. ' Import ' is wederzijds exclusief met alle andere sleutel bewerkingen.
+
 Gebruik de opdracht [AZ sleutel kluis Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) om een KEK te maken waarvoor sleutel bewerkingen zijn ingesteld op `import`. Noteer de sleutel-id (`kid`) die wordt geretourneerd door de volgende opdracht. (U gebruikt de `kid` waarde in [stap 3](#step-3-generate-and-prepare-your-key-for-transfer).)
 
 ```azurecli
@@ -115,7 +118,7 @@ Het BYOK-bestand naar de verbonden computer overzetten.
 > [!NOTE] 
 > Het importeren van RSA 1.024-bits sleutels wordt niet ondersteund. Het importeren van een elliptische curve sleutel (EC) wordt momenteel niet ondersteund.
 > 
-> **Bekend probleem**: het importeren van een RSA 4.000-doel sleutel van SafeNet Luna hsm's mislukt. Wanneer het probleem is opgelost, wordt dit artikel bijgewerkt.
+> **Bekend probleem**: het importeren van een RSA 4.000-doel sleutel van SafeNet Luna hsm's wordt alleen ondersteund met firmware 7.4.0 of nieuwer.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Stap 4: uw sleutel overdragen naar Azure Key Vault
 

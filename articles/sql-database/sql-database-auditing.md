@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184754"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206602"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL database controle
 
@@ -116,22 +116,15 @@ Als u het schrijven van audit logboeken naar een Log Analytics-werk ruimte wilt 
 
 ### <a id="audit-event-hub-destination">Controleren op Event hub-doel</a>
 
-< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 > [!IMPORTANT]
 > Het inschakelen van controle op een onderbroken SQL-groep is niet mogelijk. Als u deze functie wilt inschakelen, moet u de SQL-groep verwijderen.
 
 > [!WARNING]
-> Als u controle inschakelt op een server waarop een SQL-groep is opgenomen **, wordt de SQL-groep hervat en opnieuw onderbroken** . Dit kan in rekening worden gebracht.
-< < < < < < < HEAD = = = = = = = als u audit logboeken wilt configureren voor een Event Hub, selecteert u **Event hub (preview)** en opent u de details van de **Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
+> Als u controle inschakelt op een server waarop een SQL-groep is opgenomen, **wordt de SQL-groep hervat en opnieuw onderbroken,** waardoor facturerings kosten in rekening worden gebracht.
 
-   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
-=======
 Als u het schrijven van audit logboeken naar een Event Hub wilt configureren, selecteert u **Event hub (preview)** en opent u **Details van Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Controle logboeken en-rapporten analyseren
 

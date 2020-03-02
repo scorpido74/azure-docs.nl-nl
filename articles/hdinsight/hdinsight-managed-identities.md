@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919217"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206007"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Beheerde identiteiten in azure HDInsight
 
@@ -31,7 +31,7 @@ In azure HDInsight worden beheerde identiteiten ingericht op elk knoop punt van 
 
 Beheerde identiteiten kunnen worden gemaakt met een van de volgende methoden:
 
-* [Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+* [Azure-portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
@@ -44,11 +44,11 @@ Beheerde identiteiten worden in meerdere scenario's gebruikt in azure HDInsight.
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [Door de klant beheerde sleutel schijf versleuteling](disk-encryption.md)
 
 ## <a name="faq"></a>Veelgestelde vragen
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Wat gebeurt er als ik de beheerde identiteit Verwijder nadat het cluster is gemaakt?
-Het cluster wordt uitgevoerd wanneer de beheerde identiteit nodig is. Het is momenteel niet mogelijk om Idenity bij te werken of te wijzigen nadat het cluster is gemaakt. Daarom is het raadzaam om ervoor te zorgen dat de beheerde identiteit niet wordt verwijderd tijdens de cluster runtime. U kunt het cluster ook opnieuw maken en een nieuwe beheerde identiteit toewijzen.
+Het cluster wordt uitgevoerd wanneer de beheerde identiteit nodig is. Er is momenteel geen manier om de identiteit van het beheer bij te werken of te wijzigen nadat het cluster is gemaakt. Daarom is het raadzaam om ervoor te zorgen dat de beheerde identiteit niet wordt verwijderd tijdens de cluster runtime. U kunt het cluster ook opnieuw maken en een nieuwe beheerde identiteit toewijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
