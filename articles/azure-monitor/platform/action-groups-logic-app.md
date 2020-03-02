@@ -2,23 +2,23 @@
 title: Complexe acties met Azure Monitor waarschuwingen activeren
 description: Meer informatie over het maken van een actie voor een logische app voor het verwerken van Azure Monitor-waarschuwingen.
 author: dkamstra
-services: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: adc53ad1c75b3251c5672d9078062631b107cc87
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669128"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206233"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Complexe acties met Azure Monitor waarschuwingen activeren
 
 Dit artikel laat u zien hoe u een logische app kunt instellen en activeren om een conversatie te maken in micro soft teams wanneer een waarschuwing wordt geactiveerd.
 
 ## <a name="overview"></a>Overzicht
+
 Wanneer een Azure Monitor waarschuwing wordt geactiveerd, wordt een [actie groep](../../azure-monitor/platform/action-groups.md)aangeroepen. Met actie groepen kunt u een of meer acties activeren om anderen op de hoogte te stellen van een waarschuwing en deze ook te herstellen.
 
 Het algemene proces is:
@@ -68,10 +68,10 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
                 "activityLog": {
                     "authorization": {
                     "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/�"
+                    "scope": "/subscriptions/…"
                     },
                     "channels": "Operation",
-                    "claims": "�",
+                    "claims": "…",
                     "caller": "logicappdemo@contoso.com",
                     "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
                     "description": "",
@@ -81,12 +81,12 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
                     "level": "Informational",
                     "operationName": "microsoft.insights/activityLogAlerts/write",
                     "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/�",
+                    "resourceId": "/subscriptions/…",
                     "resourceGroupName": "LOGICAPP-DEMO",
                     "resourceProviderName": "microsoft.insights",
                     "status": "Succeeded",
                     "subStatus": "",
-                    "subscriptionId": "�",
+                    "subscriptionId": "…",
                     "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
                     "resourceType": "microsoft.insights/activityLogAlerts"
                 }
@@ -104,7 +104,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
 
     ![Een actie toevoegen](media/action-groups-logic-app/add-action.png "Een actie toevoegen")
 
-11. Zoek en selecteer de micro soft teams-connector. Kies de actie **post bericht van micro soft teams** .
+11. Zoek en selecteer de micro soft teams-connector. Kies de actie **micro soft teams-post bericht** .
 
     ![Micro soft teams-acties](media/action-groups-logic-app/microsoft-teams-actions.png "Micro soft teams-acties")
 
@@ -150,7 +150,7 @@ Azure Service Health vermeldingen maken deel uit van het activiteiten logboek. H
                 "activityLog": {
                     "channels": "Admin",
                     "correlationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
-                    "description": "�",
+                    "description": "…",
                     "eventSource": "ServiceHealth",
                     "eventTimestamp": "2018-04-03T22:44:43.7467716+00:00",
                     "eventDataId": "9ce152f5-d435-ee31-2dce-104228486a6d",
@@ -158,23 +158,23 @@ Azure Service Health vermeldingen maken deel uit van het activiteiten logboek. H
                     "operationName": "Microsoft.ServiceHealth/incident/action",
                     "operationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
                     "properties": {
-                        "title": "�",
-                        "service": "�",
+                        "title": "...",
+                        "service": "...",
                         "region": "Global",
-                        "communication": "�",
+                        "communication": "...",
                         "incidentType": "Incident",
-                        "trackingId": "�",
+                        "trackingId": "...",
                         "impactStartTime": "2018-03-22T21:40:00.0000000Z",
                         "impactMitigationTime": "2018-03-22T21:41:00.0000000Z",
                         "impactedServices": "[{"ImpactedRegions"}]",
-                        "defaultLanguageTitle": "�",
-                        "defaultLanguageContent": "�",
+                        "defaultLanguageTitle": "...",
+                        "defaultLanguageContent": "...",
                         "stage": "Active",
                         "communicationId": "11000001466525",
                         "version": "0.1.1"
                     },
                     "status": "Active",
-                    "subscriptionId": "�",
+                    "subscriptionId": "...",
                     "submissionTimestamp": "2018-04-03T22:44:50.8013523+00:00"
                 }
             },
@@ -237,7 +237,7 @@ Het proces voor het maken van een metrische waarschuwing is vergelijkbaar met he
         "status": "Activated",
         "context": {
         "timestamp": "2018-04-09T19:00:07.7461615Z",
-        "id": "�",
+        "id": "...",
         "name": "TEST-VM CPU Utilization",
         "description": "",
         "conditionType": "SingleResourceMultipleMetricCriteria",
@@ -259,12 +259,12 @@ Het proces voor het maken van een metrische waarschuwing is vergelijkbaar met he
             }
             ]
         },
-        "subscriptionId": "�",
+        "subscriptionId": "...",
         "resourceGroupName": "TEST",
         "resourceName": "test-vm",
         "resourceType": "Microsoft.Compute/virtualMachines",
-        "resourceId": "�",
-        "portalLink": "�"
+        "resourceId": "...",
+        "portalLink": "..."
         },
         "properties": {}
     }
@@ -284,7 +284,7 @@ Het proces voor het maken van een metrische waarschuwing is vergelijkbaar met he
 
       !["Metrische waarschuwing True voor waarde post actie"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Post actie metrische waarschuwing True voor waarde")
 
-  1. In de voor waarde **indien onwaar** , definieert u een micro soft teams-actie om te communiceren dat de metrische waarschuwing moet worden vergeleken met de verwachtingen van de logische app. De JSON-nettolading bevatten. U ziet hoe u kunt verwijzen naar de `triggerBody` dynamische inhoud in de `json()`-expressie.
+  1. In de voor waarde **indien onwaar** definieert u een micro soft teams-actie om te communiceren dat de metrische waarschuwing niet overeenkomt met de verwachtingen van de logische app. De JSON-nettolading bevatten. U ziet hoe u kunt verwijzen naar de `triggerBody` dynamische inhoud in de `json()`-expressie.
 
       !["Metrische waarschuwing ONWAAR voor waarde na actie bericht"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Post actie waarschuwing metrische waarde ONWAAR")
 
