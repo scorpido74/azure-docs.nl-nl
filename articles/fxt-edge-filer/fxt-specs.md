@@ -3,15 +3,15 @@ title: Specificaties van Microsoft Azure Edge-FXT | Microsoft Docs
 description: Fysieke en milieutechnische specificaties voor Azure FXT edge-hardware
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254706"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227478"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specificaties van Azure FXT Edge-bestanden
 
@@ -19,11 +19,11 @@ In dit artikel worden de hardwarespecificaties beschreven van de hardware-knoop 
 
 ## <a name="hardware-specifications"></a>Hardwarespecificaties
 
-| Component | FXT 6600 | FXT 6400 |
+| Onderdeel | FXT 6600 | FXT 6400 |
 |----------|-----------|-----------|
-| Cpu-cores |  16 | 16 |
+| CPU-kernen |  16 | 16 |
 | DRAM  | 1536 GB | 768 GB |
-| Netwerkpoorten | 6 x 25/10 GB + 2 x 1 GB | 6 x 25/10 GB + 2 x 1 GB |
+| Netwerk poorten | 6 x 25/10 GB + 2 x 1 GB | 6 x 25/10 GB + 2 x 1 GB |
 | NVMe-SSD-capaciteit | 25,6 TB | 12,8 TB |
 
 ## <a name="drive-specifications"></a>Specificaties van station
@@ -36,7 +36,7 @@ Stations worden afgedrukt op de ruimte tussen stations. In de Azure FXT Edge-Bes
 
 | Stationsnummer    |  Gebruiken   |  Specificaties |
 |------------------|--------|-----------------|
-| 0, 1             | Besturingssysteem     | 480 GB SATA SSD |
+| 0, 1             | OS     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Gegevens   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
 
@@ -64,7 +64,7 @@ De Azure FXT Edge-Bestandsr is ontworpen voor gebruik in een Standard 19-apparaa
 
 ### <a name="shipping-dimensions"></a>Verzend dimensies
 
-| Pakket dimensie | Millimeters | Mm |
+| Pakket dimensie | Millimeters | mm |
 |-------------------|-------------|--------|
 | Hoogte            | 311,2       | 12,25 ' |
 | Breedte             | 642,8       | 25,31 ' |
@@ -78,8 +78,8 @@ Deze sectie biedt energie classificaties en metingen voor de Azure FXT Edge-best
 
 | Categorie-classificaties voor FXT 6000-serie modellen |
 |----------------|
-| 100-240V ~    |
-| 10 BIS-5 BIS (X2)  |
+| 100 - 240V~    |
+| 10A - 5A (X2)  |
 | 50/60Hz         |
 
 <!-- matches the Dell regulatory label exactly -->
@@ -104,7 +104,7 @@ Deze grafieken bieden energie verbruik en thermische uitvoer metingen voor veelg
 |---------|---|---|---|---|---|
 | Spanning (V) | 100 |120 | 208 | 230 | 240| 
 | Frequentie (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Huidige (A) | 5,98 | 5,01 | 2,81 | 2,55 | 2,48 |
+| Huidige (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Zichtbaar vermogen (VA) | 598 | 601 | 584 | 587 | 595 |
 | Energie factor | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
 | Real-Power (W) | 592 | 595 | 573 | 575 | 583 |
@@ -124,7 +124,7 @@ Deze grafieken bieden energie verbruik en thermische uitvoer metingen voor veelg
 |---------|---|---|---|---|---|
 | Spanning (V) | 100 | 120 | 208 | 230 | 240 |
 | Frequentie (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Huidige (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
+| Huidige (A) | 5.15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Zichtbaar vermogen (VA) | 515 | 514 | 516 | 524 | 511 |
 | Energie factor | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
 | Real-Power (W) | 510 | 508 | 506 | 514 | 501 |
@@ -163,6 +163,6 @@ De Azure FXT Edge-Bestandsr voldoet aan de genoemde voor Schriften.
 | Category       | Reglementaire specificatie | 
 |----------------|--------------------------|
 | Algemene veiligheid | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ed2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
-| |            | FCC A, ICES-003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (klasse D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
+| EMC            | FCC A, ICES-003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (klasse D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
 | Energie         | Verordening (EU) van de Commissie. 617/2013  |
 | BvGS           |    EN 50581:2012   |

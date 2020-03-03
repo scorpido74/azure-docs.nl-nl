@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f07c4d8b440216cb676484ae2f510b2736b7d17c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: faea0759f86e9d12530df6c647d903eacdade5c4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443904"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228051"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Quick Start: een Java-app maken op Azure App Service in Linux
 
@@ -136,6 +136,15 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Het kan een minuut duren voordat deze opdracht is uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+> [!div class="nextstepaction"]
+> [Verbinding maken met Azure SQL database met Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+
+> [!div class="nextstepaction"]
+> [Verbinding maken met Azure DB voor MySQL met Java](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+
+> [!div class="nextstepaction"]
+> [Verbinding maken met Azure DB voor PostgreSQL met Java](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
 > [Java-app configureren](configure-custom-container.md)

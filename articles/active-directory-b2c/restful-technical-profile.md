@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b83a6bacf1c6e392db9dfc65fd737ea28416a6b5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b24a08ee0367cc3dbb1c845854a0fbc91e0f1d2c
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183819"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227091"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een onderliggend technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -125,6 +125,7 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 | --------- | -------- | ----------- |
 | ServiceUrl | Ja | De URL van het REST API-eind punt. |
 | AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de claim provider voor de REST. Mogelijke waarden: `None`, `Basic`, `Bearer`of `ClientCertificate`. De waarde `None` geeft aan dat de REST API niet anoniem is. De waarde `Basic` geeft aan dat de REST API is beveiligd met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De waarde `ClientCertificate` (Recommended) geeft aan dat de REST API de toegang beperkt met behulp van verificatie op basis van client certificaten. Alleen services die de juiste certificaten hebben, bijvoorbeeld Azure AD B2C, hebben toegang tot uw API. De waarde `Bearer` geeft aan dat de REST API de toegang beperkt met behulp van de client OAuth2 Bearer-token. |
+| AllowInsecureAuthInProduction| Nee| Hiermee wordt aangegeven of de `AuthenticationType` kan worden ingesteld op `none` in de productie omgeving (`DeploymentMode` van de [TrustFrameworkPolicy](trustframeworkpolicy.md) is ingesteld op `Production`of niet opgegeven). Mogelijke waarden: True of False (standaard). |
 | SendClaimsIn | Nee | Hiermee wordt aangegeven hoe de invoer claims worden verzonden naar de claim provider voor de REST. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de invoer claim die wordt verzonden in de hoofd tekst van de aanvraag in de JSON-indeling. De `Form` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de invoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de invoer claim die wordt verzonden in de query teken reeks van de aanvraag. De HTTP-woorden die door elk van beide worden aangeroepen, zijn als volgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: ophalen</li><li>`QueryString`: ophalen</li></ul> |
 | ClaimsFormat | Nee | Hiermee geeft u de indeling voor de uitvoer claims op. Mogelijke waarden: `Body` (standaard), `Form`, `Header`of `QueryString`. De `Body` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de uitvoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de uitvoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de uitvoer claim die wordt verzonden in de query teken reeks van de aanvraag. |
 | ClaimUsedForRequestPayload| Nee | Naam van een teken reeks claim die de payload bevat die naar de REST API moet worden verzonden. |
@@ -221,7 +222,7 @@ Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| version | Ja | 1.0.0 |
+| -versie | Ja | 1.0.0 |
 | status | Ja | 409 |
 | code | Nee | Een fout code van de REST-eindpunt provider, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |
 | requestId | Nee | Een aanvraag-id van de REST-eindpunt provider, die wordt weer gegeven wanneer `DebugMode` is ingeschakeld. |

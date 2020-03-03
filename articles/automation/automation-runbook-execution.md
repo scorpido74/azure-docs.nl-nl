@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4070b004ee791a433b5aeb9e3e0cdd9662fb0429
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191143"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226467"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van Runbook in Azure Automation
 
@@ -152,11 +152,11 @@ Start-AzAutomationRunbook `
 
 In deze sectie worden enkele manieren beschreven voor het afhandelen van uitzonde ringen of onregelmatige problemen in uw runbooks.
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-De variabele [$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) bepaalt hoe Power shell reageert op een niet-afsluit fout. Afsluit fouten worden altijd beëindigd en worden niet beïnvloed door *$ErrorActionPreference*.
+De variabele [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) bepaalt hoe Power shell reageert op een niet-afsluit fout. Afsluit fouten worden altijd beëindigd en worden niet beïnvloed door *ErrorActionPreference*.
 
-Wanneer het runbook gebruikmaakt van *$ErrorActionPreference*, stopt een normaal niet-afsluit fout, zoals **PathNotFound** van de cmdlet **Get-Child item** , de uitvoering van het runbook. In het volgende voor beeld ziet u het gebruik van *$ErrorActionPreference*. De laatste opdracht voor **Write-output** wordt nooit uitgevoerd, omdat het script stopt.
+Wanneer het runbook gebruikmaakt van *ErrorActionPreference*, stopt een normaal niet-afsluit fout, zoals **PathNotFound** van de cmdlet **Get-Child item** , het runbook van volt ooien. In het volgende voor beeld ziet u het gebruik van *ErrorActionPreference*. De laatste opdracht voor **Write-output** wordt nooit uitgevoerd, omdat het script stopt.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'

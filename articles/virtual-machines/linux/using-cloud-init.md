@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964580"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226687"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -30,11 +30,11 @@ Inrichting van de VM is het proces waarbij Azure de parameter waarden voor de VM
 Azure ondersteunt twee inrichtings agenten [Cloud-init](https://cloudinit.readthedocs.io)en de [Azure Linux-agent (Wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux).
 
 ## <a name="cloud-init-overview"></a>overzicht van Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een virtuele Linux-machine wanneer deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat cloud-init wordt aangeroepen tijdens het opstartproces, zijn er geen extra stappen of agents vereist om toe te passen van uw configuratie.  Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw `#cloud-config`-bestanden of andere invoer.  `#cloud-config` bestanden zijn tekstbestanden die zijn gecodeerd in base64.
+[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een virtuele Linux-machine wanneer deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat cloud-init wordt aangeroepen tijdens het opstartproces, zijn er geen extra stappen of agents vereist om toe te passen van uw configuratie.  Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw `#cloud-config`-bestanden of andere invoer.  `#cloud-config`-bestanden zijn tekst bestanden die worden gecodeerd in base64.
 
 Cloud-init werkt ook over distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het systeem eigen pakket beheer programma voor de distributie die u selecteert.
 
-We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-init ingeschakeld installatiekopieën die beschikbaar zijn in de Azure marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets. In eerste instantie werken we samen met de getekende Linux distributie-partners en upstream om te zorgen voor Cloud-init-functies met het besturings systeem op Azure. vervolgens worden de pakketten bijgewerkt en openbaar gemaakt in de distributie-pakket opslagplaatsen. 
+We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-init ingeschakeld installatiekopieën die beschikbaar zijn in de Azure marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets. In eerste instantie werken we samen met de getekende Linux distributie-partners en upstream om Cloud-init-functies te garanderen met het besturings systeem op Azure, waarna de pakketten worden bijgewerkt en openbaar beschikbaar worden gesteld in de distributie-pakket opslagplaatsen. 
 
 Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde besturings systeem van Linux distributie op Azure, pakket ondersteuning en vervolgens de ondersteuning van afbeeldingen:
 * ' Cloud-init-pakket ondersteuning op Azure ' documenteert welke Cloud-init-pakketten worden ondersteund of in de preview-versie, zodat u deze pakketten kunt gebruiken met het besturings systeem in een aangepaste installatie kopie.
@@ -44,19 +44,19 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 ### <a name="canonical"></a>Canonical
 | Uitgever/versie| Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonieke 18,04 |UbuntuServer |18.04-LTS |nieuwste |ja | ja |
-|Canonieke 16,04|UbuntuServer |16.04-LTS |nieuwste |ja | ja |
-|Canonieke 14,04|UbuntuServer |14.04.5-LTS |nieuwste |ja | ja |
+|Canonieke 18,04 |UbuntuServer |18,04-LTS |meest recente |ja | ja |
+|Canonieke 16,04|UbuntuServer |16.04-LTS |meest recente |ja | ja |
+|Canonieke 14,04|UbuntuServer |14.04.5-LTS |meest recente |ja | ja |
 
 ### <a name="rhel"></a>RHEL
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een preview-afbeelding en zodra alle RHEL 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, wordt de melding weer gegeven.) | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7-RAW | n.v.t.| geen installatie kopieën om te starten 2020 februari| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7-LVM | n.v.t.| geen installatie kopieën om te starten 2020 februari| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7,7 | n.v.t.| geen installatie kopieën om te starten 2020 februari | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL-BYOS | RHEL-lvm77 | n.v.t.|geen installatie kopieën om te starten 2020 februari  | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-RAW | N.v.t.| geen installatie kopieën om te starten 2020 februari| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-LVM | N.v.t.| geen installatie kopieën om te starten 2020 februari| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7,7 | N.v.t.| geen installatie kopieën om te starten 2020 februari | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL-BYOS | RHEL-lvm77 | N.v.t.|geen installatie kopieën om te starten 2020 februari  | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
 
 ### <a name="centos"></a>CentOS
 
@@ -94,7 +94,7 @@ Het implementeren van een virtuele machine die is ingeschakeld voor de Cloud, is
 
 De eerste stap bij het implementeren van deze installatie kopie is het maken van een resource groep met de opdracht [AZ Group Create](/cli/azure/group) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121612"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227100"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Snelstartgids: een Azure Cognitive Search-index in python maken met behulp van Jupyter-notebooks
 
@@ -126,7 +126,7 @@ Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder w
     }
     ```
 
-2. Formuleer de aanvraag in een andere cel. Deze PUT-aanvraag streeft naar de index verzameling van uw zoek service en maakt een index op basis van het index schema dat u in de vorige cel hebt gegeven.
+2. Formuleer de aanvraag in een andere cel. Deze POST-aanvraag streeft naar de index verzameling van uw zoek service en maakt een index op basis van het index schema dat u in de vorige cel hebt gegeven.
 
    ```python
    url = endpoint + "indexes" + api_version

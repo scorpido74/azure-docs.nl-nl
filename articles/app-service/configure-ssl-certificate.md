@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425304"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226336"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -138,7 +138,7 @@ Klik op de pagina **Key Vault status** op **Key Vault opslag plaats** om een nie
 |-|-|
 | Name | Een unieke naam die bestaat uit alfanumerieke tekens en afbreek streepjes. |
 | Resourcegroep | Als aanbeveling selecteert u dezelfde resource groep als uw App Service certificaat. |
-| Locatie | Selecteer dezelfde locatie als uw App Service-app. |
+| Location | Selecteer dezelfde locatie als uw App Service-app. |
 | Prijscategorie | Zie [Azure Key Vault prijs informatie](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie. |
 | Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluis resources gedefinieerd. U kunt deze later configureren, door de stappen [te volgen om verschillende toepassingen toegang te verlenen tot een sleutel kluis](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Toegang Virtual Network | Beperk de toegang tot de kluis tot bepaalde virtuele netwerken van Azure. U kunt dit later configureren door de stappen te volgen op [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/key-vault-network-security.md) |
@@ -349,7 +349,7 @@ Het gedownloade bestand *appservicecertificate. pfx* is een onbewerkt pkcs12/pfx
 
 ### <a name="delete-certificate"></a>Certificaat verwijderen 
 
-Het verwijderen van een App Service certificaat is definitief en onomkeerbaar. Een binding in App Service met dit certificaat wordt ongeldig. Azure plaatst een vergren deling van het certificaat om onbedoelde verwijdering te voor komen. Als u een App Service certificaat wilt verwijderen, moet u eerst de verwijderings vergrendeling verwijderen van het certificaat.
+Het verwijderen van een App Service certificaat is definitief en onomkeerbaar. Als een App Service Certificate bron wordt verwijderd, wordt het certificaat ingetrokken. Een binding in App Service met dit certificaat wordt ongeldig. Azure plaatst een vergren deling van het certificaat om onbedoelde verwijdering te voor komen. Als u een App Service certificaat wilt verwijderen, moet u eerst de verwijderings vergrendeling verwijderen van het certificaat.
 
 Selecteer het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en selecteer vervolgens **vergren** delen in het linkernavigatievenster.
 
@@ -361,7 +361,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 

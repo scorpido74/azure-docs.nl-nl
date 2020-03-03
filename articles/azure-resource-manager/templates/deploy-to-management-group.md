@@ -2,19 +2,17 @@
 title: Resources implementeren in beheer groep
 description: Hierin wordt beschreven hoe u resources kunt implementeren in het bereik van de beheer groep in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117038"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228098"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Resources op het niveau van de beheer groep maken
 
 Doorgaans implementeert u Azure-resources in een resource groep in uw Azure-abonnement. U kunt echter ook resources maken op het niveau van de beheer groep. U kunt implementaties op beheer groeps niveau gebruiken om acties uit te voeren die zinvol zijn op dat niveau, zoals [het toewijzen van toegangs beheer op basis van rollen of het](../../role-based-access-control/overview.md) Toep assen van [beleid](../../governance/policy/overview.md).
-
-Als u op dit moment sjablonen wilt implementeren op het niveau van de beheer groep, moet u de REST API gebruiken.
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
@@ -45,7 +43,16 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ## <a name="deployment-commands"></a>Implementatie opdrachten
 
-De opdracht voor implementaties van de beheer groep wijkt af van de opdracht voor implementaties van de resource groep.
+De opdrachten voor het implementeren van beheer groepen verschillen van de opdrachten voor het implementeren van resource groepen.
+
+Voor Azure PowerShell gebruikt u [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment). 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 Gebruik voor REST API [implementaties-maken voor het bereik van de beheer groep](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
 
@@ -150,7 +157,7 @@ In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan 
 
 ## <a name="template-sample"></a>Voor beeld van sjabloon
 
-* Maak een resource groep, een beleid en een beleids toewijzing.  [Hier](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)weer geven.
+* [Maak een resource groep, een beleid en een beleids toewijzing](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Volgende stappen
 

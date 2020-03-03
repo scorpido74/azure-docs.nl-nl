@@ -4,15 +4,19 @@ description: Lees hoe u met Azure Monitor en Log Analytics uw App Service-web-ap
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
-ms.date: 1/29/2019
-ms.openlocfilehash: c0df972d893e82d7b49d5b3ed2a2bbf7067548c2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 2/28/2020
+ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201813"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227989"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Zelf studie: problemen met Azure Monitor oplossen met een App Service-app
+
+> [!NOTE]
+> Azure Monitor integratie met App Service is in [Preview](https://aka.ms/appsvcblog-azmon).
+>
 
 [App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximaliseert de beschik baarheid en prestaties van uw toepassingen en services door een uitgebreide oplossing te bieden voor het verzamelen, analyseren en uitvoeren van telemetrie in uw Cloud-en on-premises omgevingen.
 
@@ -53,7 +57,7 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor"></a>Azure Monitor configureren
+## <a name="configure-azure-monitor-preview"></a>Azure Monitor configureren (preview-versie)
 
 ### <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken
 

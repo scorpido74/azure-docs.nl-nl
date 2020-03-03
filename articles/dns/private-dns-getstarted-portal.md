@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939373"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227416"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quick Start: een privé-DNS-zone met Azure maken met behulp van de Azure Portal
 
@@ -24,7 +24,7 @@ In deze snelstartgids leert u de volgende zaken:
 
 > [!div class="checklist"]
 > * Een privé-DNS-zone maken
-> * Maak een virtueel netwerk
+> * Een virtueel netwerk maken
 > * Het virtuele netwerk koppelen
 > * Virtuele testmachines maken
 > * Een extra DNS-record maken
@@ -48,7 +48,7 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 1. Typ of Selecteer op de pagina **privé-DNS zone maken** de volgende waarden:
 
-   - **Resource groep**: Selecteer **nieuwe maken**, Voer *MyAzureResourceGroup*in en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
+   - **Resource groep**: Selecteer **nieuwe maken**, Voer *MyAzureResourceGroup*in en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement.
    -  **Naam**: Typ *Private.contoso.com* voor dit voor beeld.
 1. Selecteer voor de locatie van de **resource groep**de optie **West-Centraal VS**.
 
@@ -58,13 +58,21 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 Het maken van de zone kan een paar minuten duren.
 
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-1. Selecteer op de pagina Portal linksboven **een resource maken**en vervolgens **netwerken**, en selecteer vervolgens **virtueel netwerk**.
-2. Typ **myAzureVNet**voor **naam**.
-3. Selecteer voor **resource groep**de optie **MyAzureResourceGroup**.
-4. Selecteer bij **locatie**de optie **West-Centraal VS**.
-5. Accepteer de andere standaard waarden en selecteer **maken**.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
+
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | MyAzureResourceGroup |
+| **\<virtuele-netwerk naam >** | MyAzureVNet          |
+| **\<regio-naam >**          | VS - west-centraal      |
+| **\<IPv4-adres ruimte >**   | 10.2.0.0 \ 16          |
+| **\<subnet naam >**          | MyAzureSubnet        |
+| **\<subnet-adres bereik >** | 10.2.0.0 \ 24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>Het virtuele netwerk koppelen
 
@@ -88,9 +96,8 @@ Maak nu twee virtuele machines, zodat u uw DNS-privézone kunt testen:
 1. Selecteer **MyAzureResourceGroup** voor de resource groep.
 1. Typ **myVM01** -voor de naam van de virtuele machine.
 1. Selecteer **West-Centraal VS** voor de **regio**.
-1. Typ **azureadmin** voor de gebruikers naam van de beheerder.
-2. Typ **Azure12345678** voor het wacht woord en bevestig het wacht woord.
-
+1. Voer een naam in voor de gebruikers naam van de beheerder.
+2. Voer een wacht woord in en bevestig het wacht woord.
 5. Voor **open bare binnenkomende poorten**selecteert u **geselecteerde poorten toestaan**en vervolgens **RDP (3389)** selecteren voor **binnenkomende poorten selecteren**.
 10. Accepteer de andere standaard waarden voor de pagina en klik vervolgens op **volgende: schijven >** .
 11. Accepteer de standaard instellingen op de pagina **schijven** en klik vervolgens op **volgende: netwerk >** .

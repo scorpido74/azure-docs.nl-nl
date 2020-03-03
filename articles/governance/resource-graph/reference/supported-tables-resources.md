@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 02/25/2020
+ms.date: 03/02/2020
 ms.topic: reference
-ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 3d6ba89cbf5c35c2a06a214029971341c4184b41
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602568"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227344"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -210,6 +210,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Insights/metricalerts
 - micro soft. Insights/notificationgroups
 - micro soft. Insights/notificationrules
+- micro soft. Insights/privatelinkscopes
 - micro soft. Insights/scheduledqueryrules
 - micro soft. Insights/webtests
 - micro soft. Insights/werkmappen

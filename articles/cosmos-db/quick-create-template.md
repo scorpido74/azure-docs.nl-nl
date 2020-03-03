@@ -6,19 +6,19 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 01/21/2020
-ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/27/2020
+ms.openlocfilehash: 708fc030d953dd1f32986c600305e513a156b12f
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587886"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227431"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Snelstartgids: een Azure Cosmos DB en een container maken met behulp van Azure Resource Manager sjabloon
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel sleutel/waarde-data bases, document databases en grafiek databases te maken en op te vragen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon voor het maken van een Azure Cosmos-data base en een container in die data base. U kunt later gegevens opslaan in deze container.
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel sleutel/waarde-data bases, document databases en grafiek databases te maken en op te vragen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon voor het maken van een Azure Cosmos-data base en een container in die data base. U kunt later gegevens opslaan in deze container.
 
-[Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.DocumentDB/allversions).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -26,11 +26,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Een Azure-abonnement of gratis Azure Cosmos DB proef account
 
-- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>Een Azure Cosmos-account,-Data Base,-container maken
+
+### <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)start-sjablonen.
 
@@ -46,6 +48,8 @@ Er zijn drie Azure-resources gedefinieerd in de sjabloon:
 
 Meer Azure Cosmos DB sjabloon voorbeelden vindt u in de Quick Start- [sjabloon galerie](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
 
+### <a name="deploy-the-template"></a>De sjabloon implementeren
+
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon maakt u een Azure Cosmos-account, een Data Base en een container.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
@@ -59,13 +63,13 @@ Meer Azure Cosmos DB sjabloon voorbeelden vindt u in de Quick Start- [sjabloon g
     * **Abonnement**: selecteer een Azure-abonnement.
     * **Resource groep**: Selecteer **nieuwe maken**, voer een unieke naam in voor de resource groep en klik vervolgens op **OK**.
     * **Locatie**: selecteer een locatie.  Bijvoorbeeld **VS - centraal**.
-    * **Account naam**: Voer een naam in voor het Azure Cosmos-account. Het moet wereld wijd uniek zijn. 
-    * **Locatie**: Geef een locatie op waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevindt als de resource groep. 
+    * **Account naam**: Voer een naam in voor het Azure Cosmos-account. Het moet wereld wijd uniek zijn.
+    * **Locatie**: Geef een locatie op waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevindt als de resource groep.
     * **Primaire regio**: de primaire replica regio voor het Azure Cosmos-account.
     * **Secundaire regio**: de secundaire replica regio voor het Azure Cosmos-account.
     * **Database naam**: de naam van de Azure Cosmos-data base.
     * **Container naam**: de naam van de Azure Cosmos-container.
-    * **Door Voer**: de door Voer voor de container, minimale doorvoer waarde is 400 ru/s. 
+    * **Door Voer**: de door Voer voor de container, minimale doorvoer waarde is 400 ru/s.
     * **Ik ga akkoord met de bovenstaande voorwaarden**: selecteer dit.
 
 3. Selecteer **Aankoop**. Nadat het Azure Cosmos-account is geïmplementeerd, ontvangt u een melding:
@@ -92,7 +96,7 @@ az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
-(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name 
+(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
 

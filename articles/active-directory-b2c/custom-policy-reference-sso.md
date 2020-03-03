@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189103"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226801"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
 
@@ -124,20 +124,19 @@ Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukke
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML ID-provider sessie, moeten de `IncludeSessionIndex` en `RegisterServiceProviders` worden ingesteld op `false`. Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische SAML-profiel](saml-technical-profile.md).
+Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML ID-provider sessie, moet de `RegisterServiceProviders` worden ingesteld op `false`. Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische SAML-profiel](saml-technical-profile.md).
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, moeten de `IncludeSessionIndex` en `RegisterServiceProviders` zijn ingesteld op `true`. Voor het afmelden van SAML-sessies moet `SessionIndex` en `NameID` zijn voltooid.
+Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, moet de `RegisterServiceProviders` worden ingesteld op `true`. Voor het afmelden van SAML-sessies moet `SessionIndex` en `NameID` zijn voltooid.
 
 Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-producttechnische profiel](connect-with-saml-service-providers.md)
 
@@ -151,7 +150,7 @@ Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [SAML-prod
 
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
-| IncludeSessionIndex | Nee | Hiermee wordt de provider aangegeven dat de sessie-index moet worden opgeslagen. Mogelijke waarden: `true` (standaard) of `false`.|
+| IncludeSessionIndex | Nee | Momenteel niet gebruikt, kan worden genegeerd.|
 | RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false`.|
 
 

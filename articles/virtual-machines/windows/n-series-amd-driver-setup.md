@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190540"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228342"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
@@ -31,13 +31,18 @@ Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwin
 
 | OS | Stuurprogramma |
 | -------- |------------- |
-| Windows 10 EVD-build 1903 <br/><br/>Windows 10-build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19. q 4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (. exe) |
+| Windows 10 EVD-build 1903 <br/><br/>Windows 10-build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
+
 
 ## <a name="driver-installation"></a>Installatie van Stuur Programma's
 
 1. Verbind door Extern bureaublad naar elke VM van de NVv4-serie.
 
-1. Down load en pak de installatie bestanden van het stuur programma uit. Ga naar de map en voer Setup. exe uit om het ondersteunde stuur programma voor uw Windows-besturings systeem te installeren.
+2. Als u een NVv4 preview-klant bent, stopt u de virtuele machine en wacht u totdat deze is verplaatst naar de status gestopt (toewijzing ongedaan gemaakt).
+
+3. Start de virtuele machine en verwijder vervolgens het voor beeld van het stuur programma door ' amdcleanuputility-x64. exe ' uit te voeren in de map '. ..\AMDCleanUninstallUtility '. Het exacte pad varieert, afhankelijk van de locatie van de vorige stuur programma-installatie bestanden.  
+
+4. Down load en installeer het meest recente stuur programma.
 
 ## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
 

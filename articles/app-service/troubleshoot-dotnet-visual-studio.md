@@ -1,17 +1,17 @@
 ---
-title: Problemen oplossen met Visual Studio
+title: Problemen met Visual Studio oplossen
 description: Meer informatie over het oplossen van problemen met een App Service-app met externe fout opsporing, tracering en logboek registratie van hulpprogram ma's die zijn ingebouwd in Visual Studio 2013.
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688370"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227905"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -87,14 +87,14 @@ De eenvoudigste manier om de oorzaak van de fout te vinden, is vaak om gedetaill
     U ziet knoop punten die u toegang geven tot de inhouds bestanden en logboek bestanden van de app.
 2. Vouw het knoop punt **bestanden** uit en dubbel klik op het bestand *Web. config* .
 
-    ![Web. config openen](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
     Visual Studio opent het bestand Web. config vanuit de externe app en toont [Remote] naast de naam van het bestand in de titel balk.
 3. Voeg de volgende regel toe aan het `system.web`-element:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Web. config bewerken](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Vernieuw de browser waarin het fout bericht niet meer wordt weer gegeven en u krijgt nu een gedetailleerd fout bericht, zoals het volgende voor beeld:
 
     ![Gedetailleerd fout bericht](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
@@ -620,7 +620,7 @@ Raadpleeg de volgende bronnen voor meer informatie over het oplossen van problem
 Start een thread in een van de volgende forums voor hulp bij een specifieke vraag om problemen op te lossen:
 
 * [Het Azure-forum op de ASP.net-site](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Het Azure-forum op MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Het Azure-forum op micro soft Q & A](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 * [Stackoverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Fout opsporing in Visual Studio

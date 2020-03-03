@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700750"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226943"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-De Web-API gebruikt het toegangs token om de identiteit van de API-aanroeper te controleren en om informatie over de aanroeper op te halen uit claims die zijn gecodeerd in het toegangs token. Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en de [referentie id_token](id-tokens.md)
+De Web-API gebruikt het toegangs token om de identiteit van de API-aanroeper te controleren en om informatie over de aanroeper op te halen uit claims die zijn gecodeerd in het toegangs token. Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en het [id_token](id-tokens.md) .
 
 Een web-API kan gebruikers de bevoegdheid geven om zich aan te melden of om specifieke functionaliteit of gegevens uit te scha kelen door machtigingen (ook wel [scopes](v2-permissions-and-consent.md)genoemd) te bieden. Voor een aanroep-app om machtigingen voor een bereik te verkrijgen, moet de gebruiker toestemming geven voor het bereik tijdens een stroom. Het micro soft Identity platform-eind punt vraagt de gebruiker om toestemming en registreert vervolgens de machtigingen in alle toegangs tokens die de Web-API ontvangt. De Web-API valideert de toegangs tokens die op elke aanroep worden ontvangen en voert autorisatie controles uit.
 

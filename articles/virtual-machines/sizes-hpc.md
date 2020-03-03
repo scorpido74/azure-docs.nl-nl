@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660016"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226730"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>High Performance Compute-VM-grootten
 
@@ -46,6 +46,10 @@ Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het levere
   
 - **Virtueel netwerk** : een virtueel Azure- [netwerk](https://azure.microsoft.com/documentation/services/virtual-network/) is niet vereist voor het gebruik van de compute-intensieve exemplaren. Voor veel implementaties hebt u echter mini maal een Azure Virtual Network op basis van de Cloud of een site-naar-site-verbinding nodig als u toegang nodig hebt tot on-premises resources. Als dat nodig is, maakt u een nieuw virtueel netwerk om de exemplaren te implementeren. Het toevoegen van Compute-intensieve Vm's aan een virtueel netwerk in een affiniteits groep wordt niet ondersteund.
 - **Grootte wijzigen** : vanwege hun gespecialiseerde hardware kunt u alleen Compute-intensieve instanties binnen dezelfde grootte familie (H-serie of COMPUTE-intensieve A-serie) wijzigen. U kunt bijvoorbeeld alleen het formaat van een VM van de H-serie wijzigen van de grootte van de h-serie in een andere. Bovendien wordt het wijzigen van de grootte van een niet-reken intensief formaat naar een berekenings intensief formaat niet ondersteund.  
+
+> [!NOTE]
+> De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
+
 ## <a name="rdma-capable-instances"></a>Met RDMA compatibele exemplaren
 
 Een subset van de computerintensieve instanties (A8, A9, H16r, H16mr, HB en HC) functie een netwerk interface voor RDMA-connectiviteit (Remote Direct Memory Access). De geselecteerde N-serie-grootten die zijn aangewezen met r, zoals de NC24rs-configuraties (NC24rs_v2 en NC24rs_v3), zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is voor andere VM-grootten.
@@ -99,7 +103,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 - **Virtuele-machine schaal sets** : in een schaalset voor virtuele machines moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep. Stel bijvoorbeeld in een resource manager-sjabloon de eigenschap `singlePlacementGroup` in op `true`. 
 
-- **Mpi tussen virtuele machines** : als er een mpi-communicatie nodig is tussen virtuele machines (vm's), moet u ervoor zorgen dat de vm's zich in dezelfde beschikbaarheidsset of op dezelfde schaalset van de virtuele machine bevinden.
+- **Mpi tussen virtuele machines** : als mpi-communicatie vereist is tussen virtuele machines (vm's), moet u ervoor zorgen dat de vm's zich in dezelfde beschikbaarheidsset of op dezelfde schaalset van de virtuele machine bevinden.
 
 - **Azure CycleCloud** : Maak een HPC-cluster in [Azure CycleCloud](/azure/cyclecloud/) om mpi-taken uit te voeren op Windows-knoop punten.
 

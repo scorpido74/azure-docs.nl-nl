@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, open Shift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069660"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228236"
 ---
-# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoegde containers uitvoeren in een Azure Red Hat open Shift-cluster
+# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
 
 U kunt geen wille keurige, geprivilegieerde containers uitvoeren op Azure Red Hat open Shift-clusters.
 Twee beveiligings-en compatibiliteits oplossingen mogen worden uitgevoerd op ARO-clusters.
@@ -121,12 +121,17 @@ Stel de volgende velden in wanneer u afdwingers implementeert:
 
 De basis instructies die u kunt wijzigen, zijn te vinden in de [prisma-documentatie over Cloud implementatie](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
 
-Begin met het maken van een nieuw open Shift-project
+Begin door het `twistcli`-hulp programma te installeren, zoals beschreven in de secties ' install prisma Cloud ' en ' down load the prisma cloud software '.
+
+Een nieuw open Shift-project maken
 ```
 oc new-project twistlock
 ```
 
-U kunt de documentatie volgen tot de sectie ' console installeren ', het prisma-Cloud container register gebruiken in plaats van een intern bestand te maken.
+Sla de optionele sectie ' push de prisma-Cloud installatie kopieën naar een persoonlijk REGI ster over '. Het werkt niet op Azure Red Hat open SHIFT. Gebruik in plaats daarvan het online REGI ster.
+
+U kunt de officiële documentatie volgen bij het Toep assen van de correcties die hieronder worden beschreven.
+Begin met de sectie console installeren.
 
 ### <a name="install-console"></a>Console installeren
 

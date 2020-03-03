@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848473"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227076"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
@@ -54,7 +54,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Gebruikers registratie en het beheer van Microsoft Authenticator-app
 
-1. Ga naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Blader naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. Meld u aan als dat nog niet is gebeurd
 1. Voeg een verificator-app toe door op **methode toevoegen**te klikken, **verificator-app**te kiezen en op **toevoegen** te klikken.
 1. Volg de instructies voor het installeren en configureren van de Microsoft Authenticator-app op uw apparaat
@@ -90,9 +90,13 @@ Als een gebruiker een niet-beantwoorde aanmeldings wachtwoord voor aanmelding in
 
 Eind gebruikers die zijn ingeschakeld voor MFA via de on-premises Azure MFA-server van een organisatie, kunnen nog steeds één wacht woord voor eenmalige aanmelding op hetzelfde telefoon nummer maken en gebruiken. Als de gebruiker meerdere installaties (5 +) van de Microsoft Authenticator met de referentie probeert bij te werken, kan deze wijziging een fout veroorzaken.  
 
-### <a name="device-registration"></a>Apparaatregistratie
+### <a name="device-registration"></a>Apparaatinschrijving
 
 Een van de vereisten voor het maken van deze nieuwe sterke referentie is dat het apparaat, waar de Microsoft Authenticator-app is geïnstalleerd, ook in de Azure AD-Tenant moet worden geregistreerd voor een afzonderlijke gebruiker. Als gevolg van de huidige beperkingen voor apparaatregistratie, kan een apparaat alleen worden geregistreerd in één Tenant. Deze limiet betekent dat er slechts één werk-of school account in de Microsoft Authenticator-app kan worden ingeschakeld voor aanmelding via de telefoon.
+
+### <a name="intune-mobile-application-management"></a>InTune-Mobile Application Management 
+
+Eind gebruikers die onderhevig zijn aan een beleid waarvoor Mobile Application Management (MAM) is vereist, kunnen de wacht woordloze referenties in de Microsoft Authenticator-app niet registreren. 
 
 > [!NOTE]
 > Apparaatregistratie is niet hetzelfde als Apparaatbeheer of ' MDM. ' Er worden alleen een apparaat-ID en gebruikers-ID gekoppeld in de Azure AD-Directory.  

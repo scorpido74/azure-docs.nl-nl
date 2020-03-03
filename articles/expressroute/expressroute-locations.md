@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5eb837ac6aa336a6a3f889a8bb5279be413ec31f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 2172590a6f8424c315ad116eeb7f86476e0cfa70
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371229"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228208"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -91,7 +91,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Ondersteund |Ondersteund |Amsterdam2, Chicago, Hongkong, Las London2, New York, Parijs, San Antonio, silicium dal, Tokio, Toronto, Washington DC, Washington DC2 |
 | **[Chief telecom municatie](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Ondersteund |Ondersteund |Hong Kong, Taiwan |
 | **China-Mobiel internationaal** |Ondersteund |Ondersteund | Singapore |
-| **China Telecom Global** |Ondersteund |Ondersteund |Hongkong |
+| **China Telecom Global** |Ondersteund |Ondersteund |Hongkong SAR |
 | **Unicom-China-wereld wijd** |Ondersteund |Ondersteund | Singapore2 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Ondersteund |Ondersteund |Chicago, Dallas, Montreal, Toronto, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Ondersteund |Ondersteund |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londen, London2, Newport, New York, Osaka, Parijs, silicium dal, Silicon Valley2, Singapore2, Tokio, Washington DC |
@@ -109,7 +109,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **GÉANT** |Ondersteund |Ondersteund |Amsterdam, Frankfurt, Marseille |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Ondersteund| Ondersteund | Chennai, Mumbai |
 | **Intelsat** | Ondersteund | Ondersteund | Washington DC2 |
-| **[InterCloud](https://www.intercloud.com/)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Hongkong, Londen, New York, Parijs, Silicon dal, Singapore, Washington DC, Zürich |
+| **[InterCloud](https://www.intercloud.com/)** |Ondersteund |Ondersteund |Amsterdam, Chicago, Hong Kong, Londen, New York, Parijs, Silicon dal, Singapore, Washington DC, Zürich |
 | **[Internet2](https://www.internet2.edu/products-services/cloud-services-applications/microsoft-azure/#service-cloud-connect)** |Ondersteund |Ondersteund |Chicago, Amsterdam, silicium dal, Washington DC |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Ondersteund |Ondersteund |Osaka, Tokio |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Ondersteund |Ondersteund |Kaapstad, Johannesburg, Londen |
@@ -274,6 +274,7 @@ Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connecti
 | **[POST Telecom Luxembourg](https://www.teralinksolutions.com/cloud-connectivity/cloudbridge-to-azure-expressroute/)**|Equinix | Amsterdam |
 | **[Proximus](https://www.proximus.be/en/id_b_cl_proximus_external_cloud_connect/companies-and-public-sector/discover/magazines/expert-blog/proximus-external-cloud-connect.html)**|Equinix | Amsterdam, Dublin, Londen, Parijs |
 | **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | Frankfurt |  
+| **[RETN](https://retn.net/services/cloud-connect/)** | Equinix | Amsterdam |
 | **Rogers** | Cologix, Equinix | Montreal, Toronto |
 | **[Spectrum onderneming](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | Chicago, Dallas, Los Angeles, New York, Silicon Valley | 
 | **[Tamares Telecom](https://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | Londen | 

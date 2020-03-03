@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561917"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228068"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -347,6 +347,103 @@ Fonetische alfabetten bestaan uit telefoons, die bestaan uit letters, cijfers of
     </voice>
 </speak>
 ```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Aangepaste Lexicon gebruiken om de uitspraak te verbeteren
+
+Soms kan TTS geen woord nauw keurig uitspreken, bijvoorbeeld een bedrijf of een externe naam. Ontwikkel aars kunnen het lezen van deze entiteiten in SSML definiëren met behulp van `phoneme` en `sub` tag, of het lezen van meerdere entiteiten definiëren door te verwijzen naar een aangepast Lexicon bestand met behulp van `lexicon`-tag.
+
+**Syntaxis**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**Eigenschappen**
+
+| Kenmerk | Beschrijving | Vereiste / optioneel |
+|-----------|-------------|---------------------|
+| `uri` | Het adres van het externe gebruik-document. | Vereist. |
+
+**Gebruik**
+
+Stap 1: aangepaste Lexicon definiëren 
+
+U kunt het lezen van entiteiten definiëren met een lijst met aangepaste lexicon items, opgeslagen als een. XML-of. gebruik-bestand.
+
+**Voorbeeld**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Elk `lexeme` element is een lexicon item. `grapheme` bevat tekst met een beschrijving van de orthograph van `lexeme`. Het weergave formulier kan worden verschaft als `alias`. De telefoon reeks kan in `phoneme` element worden gegeven.
+
+Het `lexicon`-element bevat ten minste één `lexeme` element. Elk `lexeme`-element bevat ten minste één `grapheme` element en een of meer `grapheme`, `alais`en `phoneme` elementen. Het `grapheme`-element bevat tekst die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">de <span class="docon docon-navigate-external x-hidden-focus"> </span>orthography </a>beschrijft. De `alias` elementen worden gebruikt om de uitspraak van een acroniem of een kortere term aan te geven. Het `phoneme`-element bevat tekst die beschrijft hoe de `lexeme` wordt uitgesp roken.
+
+Zie [gebruik-versie 1,0](https://www.w3.org/TR/pronunciation-lexicon/) op de W3C-website voor meer informatie over het aangepaste Lexicon bestand.
+
+Stap 2: het aangepaste Lexicon bestand uploaden dat is gemaakt in stap 1 online, u kunt het overal opslaan en u wordt aangeraden deze op te slaan in Microsoft Azure, bijvoorbeeld [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+
+Stap 3: naar het aangepaste Lexicon bestand verwijzen in SSML
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+"BTW" wordt gelezen als "op de manier". ' Benigni ' wordt gelezen met de meegeleverde IPA ' bɛ ˈ ni ː nji '.  
+
+**Beperking**
+- Bestands grootte: de maximale limiet voor de grootte van het aangepaste Lexicon bestand is 100KB. als dit niet het geval is, mislukt de synthese aanvraag.
+- Vernieuwen van Lexicon cache: het aangepaste Lexicon wordt in de cache opgeslagen als Key op de TTS-service wanneer het voor het eerst wordt geladen. Een Lexicon met dezelfde URI kan niet binnen 15 minuten opnieuw worden geladen, dus de aangepaste Lexicon wijziging moet worden gewacht om te worden doorgevoerd.
+
+**SAPI-Telefoonset**
+
+In het bovenstaande voor beeld gebruiken we de set International Phonetic Association (IPA). Ontwikkel aars kunnen het IPA gebruiken omdat de IPA de internationale standaard is. 
+
+Als u overweegt dat IPA niet eenvoudig te onthouden is, definieert micro soft SAPI Phone set voor zeven talen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`en `zh-TW`). Zie de [verwijzing naar het fonetische alfabet](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)voor meer informatie over het alfabet.
+
+U kunt de set SAPI Phone met aangepaste lexicons gebruiken, zoals hieronder wordt geïllustreerd. Stel de waarde voor het alfabet in met **SAPI**.
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias> By the way </alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Zie voor meer informatie over het gedetailleerde SAPI-alfabet de [Naslag Gids voor SAPI-alfabet](sapi-phoneset-usage.md).
 
 ## <a name="adjust-prosody"></a>Prosody aanpassen
 

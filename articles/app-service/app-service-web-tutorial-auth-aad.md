@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561751"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226295"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service
 
@@ -44,7 +44,7 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * [Installeer Git](https://git-scm.com/).
 * [.NET Core installeren](https://www.microsoft.com/net/core/).
@@ -71,7 +71,7 @@ Druk op `Ctrl+C` in de terminal als u ASP.NET Core wilt stoppen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-apps-to-azure"></a>Apps implementeren in Azure
+## <a name="deploy-apps-to-azure"></a>Apps in Azure implementeren
 
 In deze stap implementeert u het project in twee App Service-apps. De ene is de front-end-app en de andere is de back-end-app.
 
@@ -237,7 +237,7 @@ U gebruikt Azure Active Directory als id-provider. Zie [Verificatie van Azure Ac
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Verificatie en autorisatie voor de front-end-app inschakelen
 
-Volg dezelfde stappen voor de front-end-app, maar sla de laatste stap over. U hebt de client-ID niet nodig voor de front-end-app.
+Volg dezelfde stappen voor de back-end-app, maar sla de laatste stap over. U hebt de client-ID niet nodig voor de front-end-app.
 
 Ga, als u wilt, naar `http://<front-end-app-name>.azurewebsites.net`. U wordt nu doorgestuurd naar een beveiligde aanmeldingspagina. Nadat u zich hebt aangemeld, hebt u nog steeds geen toegang tot de gegevens in de back-end-app, omdat u nog drie dingen moet doen:
 
@@ -324,7 +324,7 @@ Meld u opnieuw aan bij `https://<front-end-app-name>.azurewebsites.net`. Klik op
 
 U moet nu net als eerder gegevens uit de back-end-app kunnen maken, lezen, bijwerken en verwijderen. Het enige verschil is dat beide apps nu worden beveiligd door App Service-verificatie en -autorisatie, waaronder de aanroepen tussen services.
 
-Gefeliciteerd. De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd! De servercode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="call-api-securely-from-browser-code"></a>API veilig vanuit browsercode aanroepen
 
@@ -406,7 +406,7 @@ git push frontend master
 
 Ga opnieuw naar `https://<front-end-app-name>.azurewebsites.net`. U moet nu rechtstreeks in de Angular.js-app gegevens in de back-end kunnen maken, lezen, bijwerken en verwijderen.
 
-Gefeliciteerd. De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
+Gefeliciteerd! De clientcode heeft nu toegang tot de gegevens van de back-end namens de geverifieerde gebruiker.
 
 ## <a name="when-access-tokens-expire"></a>Wanneer de toegangstokens verlopen
 
@@ -414,7 +414,7 @@ Uw toegangstoken verloopt na bepaalde tijd. Voor meer informatie over het vernie
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources niet meer nodig denkt te hebben, verwijdert u de resourcegroep door de volgende opdracht in Cloud Shell uit te voeren:
+In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. Als u deze resources in de toekomst niet verwacht te gebruiken, moet u de resourcegroep verwijderen met de volgende opdracht in de Cloud-Shell:
 
 ```azurecli-interactive
 az group delete --name myAuthResourceGroup

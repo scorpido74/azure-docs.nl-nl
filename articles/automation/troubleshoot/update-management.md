@@ -4,16 +4,16 @@ description: Meer informatie over het oplossen van problemen met de Updatebeheer
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513266"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227463"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -24,6 +24,36 @@ Er is een agent probleem oplosser voor de Hybrid Worker-agent om het onderliggen
 Als u problemen ondervindt tijdens het uitvoeren van de oplossing op een virtuele machine (VM), raadpleegt u het **Operations Manager** logboek onder de **Logboeken toepassing en services** op de lokale computer voor gebeurtenissen met gebeurtenis-id 4502 en gebeurtenis details die **micro soft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**bevatten.
 
 In de volgende sectie worden specifieke fout berichten en mogelijke oplossingen voor elk weer gemarkeerd. Zie [problemen oplossen met onboarding van oplossingen](onboarding.md)voor andere voorbereidings problemen.
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scenario: vervangen update aangegeven als ontbreekt in Updatebeheer
+
+### <a name="issue"></a>Probleem
+
+Oude updates worden weer gegeven in Updatebeheer in het Azure-account, ook al is deze vervangen. Een vervangen update is één die niet hoeft te worden geïnstalleerd, omdat een latere update die hetzelfde beveiligings probleem verhelpt, beschikbaar is. Updatebeheer negeert de vervangen update en maakt deze niet van toepassing in de vervangende update. Zie [update is vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)voor informatie over een verwant probleem.
+
+### <a name="cause"></a>Oorzaak
+
+Vervangen updates worden niet correct aangegeven als geweigerd, zodat ze als niet van toepassing kunnen worden beschouwd.
+
+### <a name="resolution"></a>Oplossing
+
+Wanneer een vervangen update wordt 100 procent niet van toepassing is, moet u de goedkeurings status van de update wijzigen in **geweigerd**. Om dit te doen voor al uw updates:
+
+1. Selecteer in het Automation-account **updatebeheer** om de status van de machine weer te geven. Zie [Update-evaluaties weer geven](../manage-update-multi.md#view-an-update-assessment).
+
+2. Controleer de vervangen update om er zeker van te zijn dat deze 100 procent niet van toepassing is. 
+
+3. Markeer de update als geweigerd, tenzij u een vraag hebt over de update. 
+
+4. Selecteer computers en Forceer opnieuw scannen op naleving in de kolom naleving. Zie [updates voor meerdere machines beheren](../manage-update-multi.md).
+
+5. Herhaal de bovenstaande stappen voor andere vervangen updates.
+
+6. Voer de wizard opruiming uit om bestanden te verwijderen van de geweigerde updates. 
+
+7. Voor WSUS moet u alle vervangen updates hand matig opschonen om de infra structuur te vernieuwen.
+
+8. Herhaal deze procedure regel matig om het weergave probleem te corrigeren en Minimaliseer de hoeveelheid schijf ruimte die wordt gebruikt voor update beheer.
 
 ## <a name="nologs"></a>Scenario: computers worden niet weer gegeven in de portal onder Updatebeheer
 
@@ -45,7 +75,7 @@ Mogelijk moet u de Hybrid Runbook Worker opnieuw registreren en opnieuw installe
 
 U hebt mogelijk een quotum gedefinieerd in uw werk ruimte die is bereikt en waardoor verdere gegevens opslag wordt voor komen.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 * Voer de probleem oplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturings systeem.
 
@@ -86,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 De resource provider voor Automation is niet geregistreerd in het abonnement.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Voer de volgende stappen uit in de Azure Portal om de resource provider Automation te registreren:
 
@@ -113,7 +143,7 @@ Deze fout kan de volgende oorzaken hebben:
 - De communicatie met het Automation-account wordt geblokkeerd.
 - De virtuele machine die wordt vrijgegeven, kan afkomstig zijn van een gekloonde computer die niet is Sysprep met micro soft Monitoring Agent (MMA) geïnstalleerd.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Ga naar [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.
 2. Als u een gekloonde installatie kopie gebruikt:
@@ -136,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 Deze fout treedt op wanneer u een update-implementatie maakt met Azure-Vm's in een andere Tenant die is opgenomen in een update-implementatie.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Gebruik de volgende tijdelijke oplossing om deze items te laten plannen. U kunt de cmdlet [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) gebruiken met de schakel optie `-ForUpdate` om een planning te maken. Vervolgens gebruikt u de cmdlet [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) en geeft u de computers in de andere Tenant door aan de para meter `-NonAzureComputer`. In het volgende voor beeld ziet u hoe u dit doet:
@@ -161,7 +191,7 @@ Hoewel u de optie voor het **opnieuw** opstarten van het systeem hebt ingesteld 
 
 Windows Update kunnen worden gewijzigd door verschillende register sleutels, waarmee u het gedrag voor opnieuw opstarten kunt wijzigen.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Controleer de register sleutels die worden vermeld onder [Automatische updates configureren door het REGI ster en de](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) [register sleutels te bewerken die worden gebruikt voor het beheren van de herstart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) om ervoor te zorgen dat uw computers correct zijn geconfigureerd.
 
@@ -185,7 +215,7 @@ Deze fout kan een van de volgende oorzaken hebben:
 * Er is een update voor de MMA die de SourceComputerId heeft gewijzigd.
 * De update-uitvoering is beperkt als u de limiet van 2.000 gelijktijdige taken in een Automation-account bereikt. Elke implementatie wordt beschouwd als een taak en elke computer in een update-implementatie telt als een taak. Alle andere Automation-taken of update-implementaties die momenteel worden uitgevoerd in uw Automation-account, tellen mee voor de limiet voor gelijktijdige taken.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Gebruik, indien van toepassing, [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Aanvullend:
 
@@ -208,7 +238,7 @@ Wanneer u een Windows-computer registreert in Updatebeheer, ziet u dat er update
 
 In Windows worden updates automatisch geïnstalleerd zodra ze beschikbaar zijn. Dit gedrag kan leiden tot Verwar ring als u geen update hebt gepland voor implementatie op de computer.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 De register sleutel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` is standaard ingesteld op 4: **automatisch downloaden en installeren**.
 
@@ -230,7 +260,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 De machine is al onboarded naar een andere werk ruimte voor Updatebeheer.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Volg de stappen onder [machines die niet worden weer gegeven in de portal onder updatebeheer](#nologs) om ervoor te zorgen dat de computer aan de juiste werk ruimte rapporteert.
 2. Verwijder de oude artefacten op de machine door [de Hybrid runbook Group te verwijderen](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)en probeer het opnieuw.
@@ -261,7 +291,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Een proxy, gateway of firewall blokkeert mogelijk netwerk communicatie. 
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Controleer uw netwerk en zorg ervoor dat de juiste poorten en adressen zijn toegestaan. Zie [netwerk vereisten](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer-en Hybrid Runbook-werk rollen.
 
@@ -279,7 +309,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Het Hybrid Runbook Worker kan geen zelfondertekend certificaat genereren.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Controleer of het systeem account lees toegang heeft tot de map **C:\ProgramData\Microsoft\Crypto\RSA** en probeer het opnieuw.
 
@@ -289,7 +319,7 @@ Controleer of het systeem account lees toegang heeft tot de map **C:\ProgramData
 
 Het standaard onderhouds venster voor updates is 120 minuten. U kunt het onderhouds venster tot Maxi maal 6 uur of 360 minuten verhogen.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Bewerk eventuele mislukte geplande update-implementaties en verg root het onderhouds venster.
 
@@ -307,7 +337,7 @@ Zie [updates installeren](../automation-tutorial-update-management.md#schedule-a
 
 De Update Agent (Windows Update-agent in Windows; de Package Manager voor een Linux-distributie) is niet correct geconfigureerd. Updatebeheer is afhankelijk van de Update Agent van de machine om de benodigde updates, de status van de patch en de resultaten van geïmplementeerde patches op te geven. Zonder deze informatie kan Updatebeheer niet op de juiste manier rapporteren over de benodigde patches of geïnstalleerd.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Probeer updates lokaal op de computer uit te voeren. Als dit mislukt, betekent dit doorgaans dat er een configuratie fout is opgetreden bij de Update-Agent.
 
@@ -355,7 +385,7 @@ Mogelijke oorzaken:
 * De computer is onbereikbaar.
 * Updates bevatten afhankelijkheden die niet zijn opgelost.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Als er fouten optreden tijdens het uitvoeren van een update nadat deze is gestart, [controleert u de taak uitvoer](../manage-update-multi.md#view-results-of-an-update-deployment) van de betrokken computer in de uitvoering. Mogelijk vindt u specifieke fout berichten van uw computers die u kunt onderzoeken en actie onderneemt. Voor Updatebeheer moet pakket beheer in orde zijn voor geslaagde update-implementaties.
 

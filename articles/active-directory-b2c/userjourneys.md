@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4af9b14b1d751c855a04f0683bc0f9d4115e7b5
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183161"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227008"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,7 +64,7 @@ Het **OrchestrationStep** -element bevat de volgende kenmerken:
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | `Order` | Ja | De volg orde van de Orchestration-stappen. |
-| `Type` | Ja | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
+| `Type` | Ja | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**GetClaims** : geeft aan dat de Orchestration-stap de invoer claims leest.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
 | ContentDefinitionReferenceId | Nee | De id van de [inhouds definitie](contentdefinitions.md) die aan deze Orchestration-stap is gekoppeld. Normaal gesp roken wordt de verwijzings-id van de inhouds definitie gedefinieerd in het zelfondertekende technische profiel. Er zijn echter enkele gevallen waarin Azure AD B2C iets zonder technisch profiel moet weer geven. Er zijn twee voor beelden `CombinedSignInAndSignUp``ClaimsProviderSelection`: als u het type van de indelings stap een van de volgende opties wilt zien, moet Azure AD B2C de selectie van de identiteits provider weer geven zonder technisch profiel. |
 | CpimIssuerTechnicalProfileReferenceId | Nee | Het type van de Orchestration-stap is `SendClaims`. Met deze eigenschap wordt de technische profiel-id gedefinieerd van de claim provider die het token voor de Relying Party verleent.  Als dat niet het geval is, wordt er geen Relying Party token gemaakt. |
 
@@ -100,7 +100,7 @@ De elementen in de **voor waarde** bevatten de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Waarde | 1: n | Er wordt een ClaimTypeReferenceId waarvoor een query moet worden uitgevoerd. Een ander value-element bevat de waarde die moet worden gecontroleerd.</li></ul>|
-| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een indelings stap waar. Als de waarde van de `Action` is ingesteld op `SkipThisOrchestrationStep`, moeten de bijbehorende `OrchestrationStep` niet worden uitgevoerd. |
+| Actie | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een indelings stap waar. Als de waarde van de `Action` is ingesteld op `SkipThisOrchestrationStep`, moeten de bijbehorende `OrchestrationStep` niet worden uitgevoerd. |
 
 #### <a name="preconditions-examples"></a>Voor beelden van voor waarden
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31ced19e164d50030386064a81edf3322b12855d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c67fff32770446cac3adef8af50c9e5733077bc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191126"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226287"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -166,7 +166,7 @@ De voor bereiding van het uitvoeren als-account volt ooien:
 
 1. Sla het runbook **export-RunAsCertificateToHybridWorker** op uw computer op met de extensie **. ps1** .
 2. Importeer deze in uw Automation-account.
-3. Bewerk het runbook en wijzig de waarde van de variabele *$Password* in uw eigen wacht woord. 
+3. Bewerk het runbook en wijzig de waarde van de *wachtwoord* variabele o uw eigen wacht woord. 
 4. Publiceer het runbook.
 5. Voer het runbook uit om te richten op de Hybrid Runbook Worker groep die runbooks uitvoert en verifieert met behulp van het run as-account. 
 6. Controleer de taak stroom om te zien dat de poging om het certificaat te importeren in het archief van de lokale computer, en wordt gevolgd door meerdere regels. Dit gedrag is afhankelijk van het aantal Automation-accounts dat u in uw abonnement hebt gedefinieerd en de mate van succes van de verificatie.

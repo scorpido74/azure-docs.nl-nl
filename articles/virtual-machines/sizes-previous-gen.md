@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 700847c041a5b9111414d6b43ff734d83b1ca49f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e0abae8ada603e4e6b98ab0dfe9d794186e00000
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913460"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226775"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties virtuele machine grootten
 
@@ -166,6 +166,9 @@ Grootten uit de A8-A11- en H-serie worden ook wel *rekenintensieve exemplaren* g
 | Standard_A11 | 16 | 112 | 382 | 64 | 64x500 | 4 |
 
 <sup>1</sup> Voor MPI-toepassingen wordt een toegewijd RDMA-back-end-netwerk ingeschakeld door FDR InfiniBand-netwerk. Dit biedt een zeer lage latentie en hoge band breedte.  
+
+> [!NOTE]
+> De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 

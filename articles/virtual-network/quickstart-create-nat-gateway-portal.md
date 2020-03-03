@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588736"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228326"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Snelstartgids: een NAT-gateway maken met behulp van de Azure Portal
 
@@ -32,27 +32,24 @@ In deze Quick start ziet u hoe u de NAT-service van Azure Virtual Network gebrui
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, moet u de resource groep en het virtuele netwerk maken.  
+Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, moet u de resource groep en het virtuele netwerk maken.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource maken** > **netwerk** > **virtueel netwerk**of zoek naar **virtueel netwerk** in de zoek functie voor Marketplace.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+| Parameter                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupNAT |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | US - oost 2      |
+| **\<IPv4-adres ruimte >**   | 192.168.0.0 \ 16          |
+| **\<subnet naam >**          | mySubnet        |
+| **\<subnet-adres bereik >** | 192.168.0.0 \ 24          |
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Name | Voer **myVNet** in. |
-    | Adresruimte | voer **192.168.0.0/16** in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer New- **myResourceGroupNAT**maken. |
-    | Locatie | Selecteer **VS - oost 2**.|
-    | Subnet - naam | Voer **mySubnet**in. |
-    | Subnet - adresbereik | Voer **192.168.0.0/24**in. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Laat de overige standaardwaarden staan en selecteer **Maken**.
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>Een virtuele machine maken voor het gebruik van de NAT-gateway
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Een virtuele machine maken voor het gebruik van de NAT-gateway
 
 We gaan nu een VM maken voor het gebruik van de NAT-service. Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaar niveau om toegang te krijgen tot de virtuele machine. De NAT-service is stroom richting, en vervangt de standaard Internet bestemming in uw subnet. Het open bare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
 
@@ -96,14 +93,14 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service 
 
 2. Voer in **openbaar IP-adres maken**de volgende gegevens in of Selecteer deze:
 
-    | Instelling | Waarde |
+    | Instelling | Value |
     | ------- | ----- |
     | IP-versie | Selecteer **IPv4**.
     | SKU | selecteer **Standaard**.
     | Name | Voer **myPublicIP**in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **myResourceGroupNAT**. |
-    | Locatie | Selecteer **VS - oost 2**.|
+    | Location | Selecteer **VS - oost 2**.|
 
 3. Laat de overige standaardwaarden staan en selecteer **Maken**.
 

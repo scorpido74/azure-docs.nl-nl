@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: a46bdb47ee92a422d10aad5b41487530d23d1ec9
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 45c7fd5fd3737c21a03700b2e560944921a2558d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484686"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228173"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -203,7 +203,7 @@ Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connecti
 ## <a name="c1partners"></a>Connectiviteit via aanvullende service providers
 | **Locatie** | **Exchange** | **Connectiviteits providers** |
 | --- | --- | --- |
-| **Amsterdam** | Equinix, Interxion, Level 3 Communications | BICS, CloudXpress, euro Fiber, Fastweb S. p. A, Golf Bridge International, Kalaam Telecom Bahrein B. S. C, MainOne, Nianet, POST Telecom Luxembourg, Proximus, TDC erhverv, Telecom Italië vonk, Telekom Deutschland GmbH, Telia |
+| **Amsterdam** | Equinix, Interxion, Level 3 Communications | BICS, CloudXpress, euro Fiber, Fastweb S. p. A, Golf Bridge International, Kalaam Telecom Bahrein B. S. C, MainOne, Nianet, POST Telecom Luxembourg, Proximus, RETN, TDC erhverv, Telecom Italië vonk, Telekom Deutschland GmbH, Telia |
 | **Atlanta** | Equinix| Kroon Castle
 | **Kaapstad** | Teraco | MTN |
 | **Chicago** | Equinix| Kroon Castle, spectrum Enter prise, windstream |

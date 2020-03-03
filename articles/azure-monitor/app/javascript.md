@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 600ca893e6d6b81fe24626a99cc1f6de80efb3e8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661342"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228146"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -98,7 +98,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Configuratie
 De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, met uitzonde ring van `instrumentationKey`.
 
-| Name | Standaard | Beschrijving |
+| Naam | Standaard | Beschrijving |
 |------|---------|-------------|
 | InstrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
 | accountId | null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
@@ -148,7 +148,7 @@ Op dit moment bieden we een afzonderlijke [reageer-invoeg toepassing](#react-ext
 
 ## <a name="react-extensions"></a>Extensies voor reageren
 
-| Extensies |
+| Uitbreidingen |
 |---------------|
 | [Reageren](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Systeem eigen](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
@@ -173,7 +173,7 @@ Selecteer **browser** en kies vervolgens **fouten** of **prestaties**.
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analyse 
+### <a name="analytics"></a>Analytische gegevens 
 
 Als u een query wilt uitvoeren op uw telemetrie die is verzameld door de Java script-SDK, selecteert u de knop **weer gave op Logboeken (analyse)** Door een `where`-verklaring van `client_Type == "Browser"`toe te voegen, ziet u alleen gegevens van de Java script-SDK en alle telemetrie aan de server zijde die door andere Sdk's zijn verzameld, worden uitgesloten.
  
@@ -214,10 +214,12 @@ Voor voor beelden van uitvoer bare raadpleegt u [Application Insights java scrip
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Een upgrade uitvoeren van de oude versie van Application Insights
 
 Belang rijke wijzigingen in de SDK v2-versie:
-- Als u betere API-hand tekeningen wilt toestaan, zijn een aantal van de API-aanroepen, zoals trackPageView, trackException bijgewerkt. Uitvoeren in IE8 of lagere versies van de browser wordt niet ondersteund.
+- Als u betere API-hand tekeningen wilt toestaan, zijn een aantal van de API-aanroepen, zoals trackPageView en trackException, bijgewerkt. Uitvoeren in Internet Explorer 8 en eerdere versies van de browser wordt niet ondersteund.
 - De telemetrie-envelop heeft veld naam-en structuur wijzigingen door gegevens schema-updates.
-- De `context.operation` is verplaatst naar `context.telemetryTrace`. Sommige velden zijn ook gewijzigd (`operation.id` --> `telemetryTrace.traceID`)
-  - Als u de huidige pagina weergave-ID hand matig wilt vernieuwen (bijvoorbeeld in SPA-apps), kunt u dit doen met `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
+- De `context.operation` is verplaatst naar `context.telemetryTrace`. Sommige velden zijn ook gewijzigd (`operation.id` --> `telemetryTrace.traceID`).
+  - Als u de huidige pagina weergave-ID hand matig wilt vernieuwen (bijvoorbeeld in SPA-apps), gebruikt u `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+    > [!NOTE]
+    > Als u de traceer-ID uniek wilt laten, waar u eerder `Util.newId()`gebruikt, gebruikt u nu `Util.generateW3CId()`. Beide uiteindelijk eindigen op de bewerkings-ID.
 
 Als u de huidige Application Insights PRODUCTION SDK (1.0.20) gebruikt en wilt zien of de nieuwe SDK in runtime werkt, werkt u de URL bij, afhankelijk van het huidige scenario voor het laden van de SDK.
 

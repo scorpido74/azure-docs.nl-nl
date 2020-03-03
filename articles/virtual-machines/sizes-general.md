@@ -14,18 +14,21 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: d8a13d9013b2ad526c8e332cf3ea74e04f253d98
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597708"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226707"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemene doel einden
 
 VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en geheugen. Ideaal voor testen en ontwikkelen, kleine tot middel grote data bases en webservers met weinig of gemiddeld verkeer. Dit artikel bevat informatie over de aanbiedingen voor algemeen gebruik.
 
 - De virtuele machines uit de [Av2-serie](av2-series.md) kunnen worden geïmplementeerd op diverse typen hardware en processors. Vm's uit de A-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte is afhankelijk van de hardware, zodat er consistente processorprestaties voor het actieve exemplaar kunnen worden geboden, ongeacht de hardware waarop deze is geïmplementeerd. Om de fysieke hardware te bepalen waarop deze grootte is geïmplementeerd, vraagt u vanuit de virtuele machine gegevens over de virtuele hardware op. Voor beelden van use cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine tot middel grote data bases, controle van concepten en code opslagplaatsen.
+
+  > [!NOTE]
+  > De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 - [B-serie-Burstable](sizes-b-series-burstable.md) Vm's zijn ideaal voor werk belastingen die de volledige prestaties van de CPU niet continu nodig hebben, zoals webservers, kleine data bases en ontwikkel-en test omgevingen. Deze werk belastingen hebben doorgaans een burstieve prestatie vereisten. De B-serie biedt deze klanten de mogelijkheid om een VM-grootte aan te schaffen met een prijs bewuste basislijn prestaties waarmee de VM-instantie tegoeden kan bouwen wanneer de virtuele machine minder is dan de basis prestaties. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine op de basis lijn van de virtuele machine worden gebursteerd met Maxi maal 100% van de CPU wanneer voor uw toepassing hogere CPU-prestaties zijn vereist.
 

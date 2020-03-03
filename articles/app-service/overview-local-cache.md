@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680882"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227890"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
 > [!NOTE]
-> Lokale cache wordt niet ondersteund in functie-apps of in containers App Service-apps, zoals op [app service op Linux](containers/app-service-linux-intro.md).
+> De lokale cache wordt niet ondersteund in functie-apps of in containers App Service-apps, zoals in [Windows-containers](app-service-web-get-started-windows-container.md) of op [app service in Linux](containers/app-service-linux-intro.md).
 
 
 Azure App Service inhoud wordt opgeslagen op Azure Storage en wordt op een duurzame manier als een inhouds share geoppereerd. Dit ontwerp is bedoeld om te werken met verschillende apps en heeft de volgende kenmerken:  
@@ -48,7 +48,7 @@ De functie Azure App Service lokale cache biedt een weer gave van webrollen van 
 ## <a name="enable-local-cache-in-app-service"></a>Lokale cache inschakelen in App Service
 U kunt de lokale cache configureren met behulp van een combi natie van gereserveerde app-instellingen. U kunt deze app-instellingen configureren met behulp van de volgende methoden:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure-portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Lokale cache configureren met behulp van de Azure Portal
@@ -94,7 +94,7 @@ U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [stag
 * Wanneer u klaar bent, kunt u een [swap bewerking](../app-service/deploy-staging-slots.md#Swap) uitgeven tussen uw staging-en productie-sleuven.  
 * Plak instellingen bevatten naam en plak een sleuf. Als de Faserings sleuf wordt gewisseld naar productie, neemt deze de instellingen van de lokale cache-app over. De zojuist verwisselde productie sleuf wordt na een paar minuten uitgevoerd op de lokale cache en wordt na de wisseling opwarmen als onderdeel van de sleuf opwarm. Wanneer de wisseling van de sleuf is voltooid, wordt uw productie sleuf uitgevoerd op basis van de lokale cache.
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ’s)
 
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien of de lokale cache van toepassing is op mijn app?
 Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het inhouds archief niet gebruikt voor het schrijven van kritieke gegevens tijdens runtime. Dit is minder dan 2 GB in totale grootte. het antwoord is "ja"! Als u de totale grootte van uw/site-en/siteextensions-mappen wilt ophalen, kunt u de site-extensie ' Azure Web Apps Disk Usage ' gebruiken.
@@ -102,13 +102,13 @@ Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hoe kan ik zien of mijn site is overgeschakeld naar het gebruik van een lokale cache?
 Als u de functie lokale cache gebruikt met Faserings omgevingen, wordt de wissel bewerking niet voltooid totdat de lokale cache wordt opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op de lokale cache, kunt u de variabele voor de werk proces omgeving controleren `WEBSITE_LOCALCACHE_READY`. Gebruik de instructies op de pagina [omgevings variabele van werk processen](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) voor toegang tot de omgevings variabele werk processen op meerdere exemplaren.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Waarom?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Hoe komt dat?
 Als uw app gebruikmaakt van lokale cache, moet u de site opnieuw opstarten om de laatste wijzigingen op te halen. Wilt u geen wijzigingen publiceren naar een productie site? Zie de sleuf opties in het gedeelte eerder best practices.
 
 ### <a name="where-are-my-logs"></a>Waar bevinden zich mijn logboeken?
 In het geval van een lokale cache zien uw logboeken en gegevens mappen er iets anders uit. De structuur van uw submappen blijft echter hetzelfde, behalve dat de submappen worden Nestled onder een submap met de notatie ' unieke VM-id ' + tijds tempel.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Er is een lokale cache ingeschakeld, maar mijn app wordt nog steeds opnieuw gestart. De reden hiervoor? Ik dacht dat lokale cache is geholpen bij het opnieuw starten van een app.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Er is een lokale cache ingeschakeld, maar mijn app wordt nog steeds opnieuw gestart. Waarom is dat? Ik dacht dat lokale cache is geholpen bij het opnieuw starten van een app.
 Lokale cache helpt te voor komen dat de app voor opslag is gestart. Uw app kan echter nog steeds opnieuw worden gestart tijdens de geplande infrastructuur upgrades van de virtuele machine. De algemene app wordt opnieuw gestart, zodat de lokale cache minder hoeft te worden gebruikt.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Sluit de lokale cache alle directory's uit die naar het snellere lokale station worden gekopieerd?

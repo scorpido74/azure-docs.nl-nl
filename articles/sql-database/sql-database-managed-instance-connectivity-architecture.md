@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ec1430e7dd79378473cce9dbb77bedecd14600c8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894828"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228269"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 
@@ -103,9 +103,9 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten 
 
-| Name       |Port                        |Protocol|Bron           |Bestemming|Actie|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
+|management  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16, 94.245.87.0/24|MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -113,14 +113,14 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie 
 
-| Name       |Port          |Protocol|Bron           |Bestemming|Actie|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
-|beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
+|management  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Door de gebruiker gedefinieerde routes met de service-aided subnet-configuratie 
 
-|Name|Adresvoorvoegsel|Volgende hop|
+|Naam|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI-SUBNET|Virtueel netwerk|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -277,7 +277,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 ||||
 
-\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
+\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
 Daarnaast kunt u vermeldingen aan de route tabel toevoegen om verkeer met on-premises privé-IP-adresbereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerk apparaat (NVA).
 
@@ -298,23 +298,23 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Name       |Port                        |Protocol|Bron           |Bestemming|Actie|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
+|management  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 |health_probe|Alle                         |Alle     |AzureLoadBalancer|MI-SUBNET  |Toestaan |
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Name       |Port          |Protocol|Bron           |Bestemming|Actie|
+| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
 |------------|--------------|--------|-----------------|-----------|------|
-|beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
+|management  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 
 > [!IMPORTANT]
 > Zorg ervoor dat er slechts één binnenkomende regel is voor poorten 9000, 9003, 1438, 1440, 1452 en één uitgaande regel voor poorten 443, 12000. Het inrichten van beheerde instanties via Azure Resource Manager implementaties mislukt als de regels voor binnenkomend en uitgaand verkeer voor elke poort afzonderlijk zijn geconfigureerd. Als deze poorten zich in afzonderlijke regels bevinden, mislukt de implementatie met fout code `VnetSubnetConflictWithIntendedPolicy`
 
-\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm 10. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
+\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
 > [!IMPORTANT]
 > Hoewel vereiste binnenkomende beveiligings regels verkeer toestaan van _een_ bron op poort 9000, 9003, 1438, 1440 en 1452, worden deze poorten beveiligd door een ingebouwde firewall. Zie [het adres van het beheer eindpunt bepalen](sql-database-managed-instance-find-management-endpoint-ip-address.md)voor meer informatie.
@@ -323,7 +323,7 @@ Implementeer een beheerd exemplaar in een toegewezen subnet in het virtuele netw
 
 ### <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 
-|Name|Adresvoorvoegsel|Volgende hop|
+|Naam|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI-SUBNET|Virtueel netwerk|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

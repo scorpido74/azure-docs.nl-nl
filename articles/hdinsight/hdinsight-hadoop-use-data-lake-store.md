@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/05/2020
-ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 03/01/2020
+ms.openlocfilehash: fddffee001266b96bc341738293bbdb42115a978
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162392"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228192"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe Data Lake Storage Gen1 werkt met HDInsight-clusters. 
 
 ## <a name="availability-for-hdinsight-clusters"></a>Beschik baarheid voor HDInsight-clusters
 
-Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container opgeven in Azure Storage als het standaard bestandssysteem of met HDInsight 3,5 en nieuwere versies, kunt u Azure Storage of Azure Data Lake Storage Gen1 als standaard bestanden systeem selecteren met een enkele uitzonde ringen.
+Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container opgeven in Azure Storage als het standaard bestandssysteem of met HDInsight 3,5 en nieuwere versies, kunt u Azure Storage of Azure Data Lake Storage Gen1 als standaard bestanden systeem selecteren met een enkele uitzonde ringen. Houd er rekening mee dat het cluster en het opslag account moeten worden gehost in dezelfde regio.
 
 HDInsight-clusters kunnen Data Lake Storage Gen1 op twee manieren gebruiken:
 
