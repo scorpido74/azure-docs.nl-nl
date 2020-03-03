@@ -4,12 +4,12 @@ description: Meer informatie over welke poorten en adressen vereist zijn voor he
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595005"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191296"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -51,7 +51,7 @@ De volgende uitgaande poorten/netwerk regels zijn vereist voor een AKS-cluster:
 * TCP-poort *443*
 * TCP [IPAddrOfYourAPIServer]: 443 is vereist als u een app hebt die moet communiceren met de API-server.  Deze wijziging kan worden ingesteld nadat het cluster is gemaakt.
 * TCP-poort *9000* en TCP-poort *22* voor de tunnel-front-pod om te communiceren met het tunnel einde op de API-server.
-    * Zie de*locatie *. hcp.\<\>.azmk8s.io* en * *.tun.\<locatie\>.azmk8s.io* adressen in de volgende tabel voor meer informatie.
+    * Zie de*locatie *. hcp.\<\>. azmk8s.io* en * *. tun.\<locatie\>. azmk8s.io* -adressen in de volgende tabel voor meer informatie.
 * UDP-poort *123* voor ntp (Network Time Protocol) tijd synchronisatie (Linux-knoop punten).
 * UDP-poort *53* voor DNS is ook vereist als u een rechtstreekse toegang hebt tot de API-server.
 
@@ -143,7 +143,7 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de A
 | cloudflare.docker.com | HTTPS:443 | Dit adres wordt gebruikt voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
 | gcr.io | HTTP: 443 | Dit adres wordt gebruikt voor het ophalen van helm/Tiller-installatie kopieën |
 | storage.googleapis.com | HTTP: 443 | Dit adres wordt gebruikt voor het ophalen van helm/Tiller-installatie kopieën |
-| azds-<guid>.<location>.azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json |
+| azds-\<GUID\>.\<locatie\>. azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Vereiste adressen en poorten voor AKS-clusters met Azure Policy (in open bare preview) ingeschakeld
 
@@ -156,7 +156,7 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de A
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS:443 | Dit adres wordt gebruikt voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
 | raw.githubusercontent.com | HTTPS:443 | Dit adres wordt gebruikt om het ingebouwde beleid van GitHub te halen om te zorgen voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
-| *.gk.<location>.azmk8s.io | HTTPS:443 | Invoeg toepassing voor Azure-beleid die naar een gate keeper audit-eind punt leidt dat wordt uitgevoerd in de hoofd server om de controle resultaten te verkrijgen. |
+| *. GK.\<locatie\>. azmk8s.io | HTTPS:443   | Invoeg toepassing voor Azure-beleid die naar een gate keeper audit-eind punt leidt dat wordt uitgevoerd in de hoofd server om de controle resultaten te verkrijgen. |
 | dc.services.visualstudio.com | HTTPS:443 | Invoeg toepassing voor Azure-beleid waarmee telemetriegegevens naar het apps Insights-eind punt worden verzonden. |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Vereist voor knoop punten op basis van Windows Server (in open bare preview-versie) ingeschakeld

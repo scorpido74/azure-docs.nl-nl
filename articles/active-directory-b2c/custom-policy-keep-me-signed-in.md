@@ -2,20 +2,20 @@
 title: Aangemeld blijven in Azure Active Directory B2C
 description: Meer informatie over het instellen van KMSI (keep me aangemeld) in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84ba68c97f69872e39121915a6edf23aa029fa75
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: HT
+ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161683"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189375"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aanmelden (KMSI) inschakelen in Azure Active Directory B2C
 
@@ -32,11 +32,11 @@ Gebruikers moeten deze optie niet inschakelen op open bare computers.
 - Een Azure AD B2C-Tenant die is geconfigureerd voor het toestaan van aanmelden via een lokaal account. KMSI wordt niet ondersteund voor accounts van externe ID-providers.
 - Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.md).
 
-## <a name="configure-the-page-identifier"></a>De pagina-id configureren 
+## <a name="configure-the-page-identifier"></a>De pagina-id configureren
 
 Als u KMSI wilt inschakelen, stelt u de inhouds definitie `DataUri` element in op [pagina-id](contentdefinitions.md#datauri) `unifiedssp` en [pagina versie](page-layout.md) *1.1.0* of hoger.
 
-1. Open het extensie bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em> . Dit extensie bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](custom-policy-get-started.md).
+1. Open het extensie bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>  . Dit extensie bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](custom-policy-get-started.md).
 1. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
 1. Voeg het element **ContentDefinitions** toe aan het element **BuildingBlocks** van het beleid.
 
@@ -51,7 +51,7 @@ Als u KMSI wilt inschakelen, stelt u de inhouds definitie `DataUri` element in o
       </ContentDefinitions>
     </BuildingBlocks>
     ```
-    
+
 1. Sla het bestand met extensies op.
 
 
@@ -73,13 +73,13 @@ Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers tr
     ```
 
     - **SessionExpiryType** : geeft aan hoe de sessie wordt uitgebreid met de tijd die is opgegeven in `SessionExpiryInSeconds` en `KeepAliveInDays`. De `Rolling`-waarde (standaard) geeft aan dat de sessie wordt uitgebreid telkens wanneer de gebruiker verificatie uitvoert. De waarde `Absolute` geeft aan dat de gebruiker na de opgegeven tijds periode opnieuw moet worden geverifieerd.
- 
+
     - **SessionExpiryInSeconds** : de levens duur van sessie cookies wanneer *keep me aangemeld* is niet ingeschakeld, of als een gebruiker niet is geselecteerd als *aangemeld blijven*. De sessie verloopt nadat `SessionExpiryInSeconds` is voltooid of de browser is gesloten.
- 
+
     - **KeepAliveInDays** : de levens duur van sessie cookies wanneer *aangemeld blijven* is ingeschakeld en de gebruiker selecteert *aangemeld blijven*.  De waarde van `KeepAliveInDays` heeft voor rang op de `SessionExpiryInSeconds` waarde en dicteert de verloop tijd van de sessie. Als een gebruiker de browser sluit en later opnieuw opent, kan hij of zij zich nog steeds op de achtergrond aanmelden zolang deze zich binnen de KeepAliveInDays-periode bevindt.
-    
+
     Zie [reis gedrag van gebruikers](relyingparty.md#userjourneybehaviors)voor meer informatie.
- 
+
 We raden u aan de waarde van SessionExpiryInSeconds in te stellen op een korte periode (1200 seconden), terwijl de waarde van KeepAliveInDays kan worden ingesteld op een relatief lange periode (30 dagen), zoals wordt weer gegeven in het volgende voor beeld:
 
 ```XML
