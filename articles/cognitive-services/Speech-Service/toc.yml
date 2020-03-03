@@ -193,6 +193,10 @@
           items:
             - name: REST API voor tekst-naar-spraak
               href: rest-text-to-speech.md
+        - name: Telefoongebruik instellen
+          items:
+            - name: Telefoongebruik bij Spraak-API (SAPI) instellen
+              href: sapi-phoneset-usage.md
     - name: Resources
       items:
         - name: Veelgestelde vragen over tekst naar spraak

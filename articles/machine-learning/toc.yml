@@ -362,18 +362,21 @@
         - name: Azure-pijplijnen voor CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: 'Designer: Opnieuw trainen met behulp van gepubliceerde pijplijnen'
+        - name: Designer opnieuw trainen met gepubliceerde pijplijnen
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: Batch-voorspellingen ontwerpen
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: Python-code uitvoeren met Designer
+          displayName: 'feature extraction, feature engineering'
+          href: how-to-designer-python.md
         - name: Parallelle uitvoerstap gebruiken
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
         - name: Fouten in parallelle uitvoerstap opsporen en oplossen
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: Batch-voorspellingen ontwerpen
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
     - name: Resourcequota beheren
       displayName: limits
       href: how-to-manage-quotas.md
