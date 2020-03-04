@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: Write-back van wachtwoord naar on-premises inschakelen
       href: tutorial-enable-sspr-writeback.md
+    - name: Aangepaste lijsten met verboden wachtwoorden configureren
+      href: tutorial-configure-custom-password-protection.md
     - name: Azure Identity Protection integreren
       href: tutorial-risk-based-sspr-mfa.md
 - name: Concepten
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Wachtwoordbeveiliging in Azure AD
       items:
-        - name: De lijst met verboden wachtwoorden configureren
-          href: howto-password-ban-bad-configure.md
         - name: On-premises integratie
           items:
             - name: Wachtwoordbeveiliging in Azure AD implementeren

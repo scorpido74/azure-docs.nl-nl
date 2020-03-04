@@ -44,6 +44,12 @@
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
     - name: Information extraheren in Excel met behulp van Power Automate
       href: tutorials/extract-excel-information.md
+- name: Concepten
+  items:
+    - name: Typen benoemde entiteiten
+      href: named-entity-types.md
+    - name: Ondersteuning voor taal en regio
+      href: language-support.md
 - name: Instructiegidsen
   items:
     - name: De Tekstanalyse-API aanroepen
@@ -104,16 +110,10 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: Resources
   items:
-    - name: Bepaal het gevoel van opmerkingen in een Yammer-groep met MS Flow
-      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
     - name: Externe en community-inhoud
       href: text-analytics-resource-external-community.md
     - name: Veelgestelde vragen
       href: text-analytics-resource-faq.md
-    - name: Ondersteuning voor taal en regio
-      href: language-support.md
-    - name: Typen benoemde entiteiten
-      href: named-entity-types.md
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionale beschikbaarheid
@@ -122,9 +122,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: Abonnementssleutel
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
     - name: Probeer het nu!
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: UserVoice
+    - name: Feedback verzenden
       href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

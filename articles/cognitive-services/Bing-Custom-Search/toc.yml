@@ -27,12 +27,8 @@
               href: call-endpoint-python.md
         - name: SDK
           items:
-            - name: 'C# gebruiken'
-              href: sdk-csharp-quick-start.md
-            - name: Python gebruiken
-              href: sdk-python-quickstart.md
-            - name: Java gebruiken
-              href: sdk-java-quickstart.md
+            - name: Bing Custom Search-clientbibliotheken
+              href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: Een Aangepaste zoekopdrachten-webpagina bouwen
@@ -41,7 +37,7 @@
   items:
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Aangepaste zoekervaring configureren
       href: define-your-custom-view.md
