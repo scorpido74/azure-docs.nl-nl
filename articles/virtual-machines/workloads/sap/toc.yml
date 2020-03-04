@@ -112,8 +112,6 @@
       href: sap-hana-backup-guide.md
     - name: Back-ups maken van SAP HANA op bestandsniveau
       href: sap-hana-backup-file-level.md
-    - name: Back-ups maken van SAP HANA-opslagmomentopnamen
-      href: sap-hana-backup-storage-snapshots.md
 - name: SAP NetWeaver en Business One in virtuele Azure-machines
   items:
     - name: Workloadplanning en implementatiechecklist voor SAP

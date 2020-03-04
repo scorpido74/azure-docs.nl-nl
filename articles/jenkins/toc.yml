@@ -8,13 +8,13 @@
   expanded: true
   items:
     - name: Een Jenkins-server maken
-      href: install-jenkins-solution-template.md
+      href: install-solution-template-quickstart.md
 - name: Zelfstudies
   items:
     - name: 1. Installeren
       items:
         - name: Een Jenkins-server maken
-          href: install-jenkins-solution-template.md
+          href: install-solution-template-tutorial.md
     - name: 2. Configureren
       items:
         - name: Schalen met Azure Container Instances

@@ -84,7 +84,7 @@
             - name: Een runbook starten vanuit een webhook
               href: automation-webhooks.md
             - name: Invoerparameters voor een runbook configureren
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: Onderliggende runbooks
               href: automation-child-runbooks.md
             - name: Een JSON-object doorgeven aan een Azure Automation-runbook
