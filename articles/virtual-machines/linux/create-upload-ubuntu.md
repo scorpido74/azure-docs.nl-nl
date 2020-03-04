@@ -3,21 +3,21 @@ title: Een Ubuntu Linux VHD maken en uploaden in azure
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een Ubuntu Linux besturings systeem bevat.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0079a30c81904d2ba66a014d5ac86467cca94f40
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291563"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251684"
 ---
-# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Een virtuele Ubuntu-machine voor Azure voorbereiden
+# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Een virtuele Ubuntu-machine voorbereiden voor Azure
 
 
 Ubuntu publiceert nu officiële Azure-Vhd's om te downloaden op [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/). Als u uw eigen gespecialiseerde Ubuntu-installatie kopie voor Azure moet bouwen, in plaats van de hand matige procedure hieronder te gebruiken, wordt u aangeraden te beginnen met deze bekende werk schijven en zo nodig aan te passen. U kunt de nieuwste afbeeldings releases altijd vinden op de volgende locaties:
@@ -26,7 +26,7 @@ Ubuntu publiceert nu officiële Azure-Vhd's om te downloaden op [https://cloud-i
 * Ubuntu 14.04/Trusty: [Ubuntu-14,04-server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [Ubuntu-16,04-server-cloudimg-amd64-Disk1. vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic: [Bionic-server-cloudimg-amd64. vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/Cosmic: [Cosmic-server-cloudimg-amd64. VHD. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systeem hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies.
@@ -137,7 +137,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
 1. Klik op **actie-> afgesloten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 [HWE-kernel (Ubuntu hardware-activering)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Volgende stappen

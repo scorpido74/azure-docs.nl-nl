@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226535"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256000"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafisch ontwerpen in Azure Automation
 
@@ -249,7 +249,7 @@ Controle punten worden alleen ingeschakeld in grafische runbooks voor Power shel
 
 ## <a name="runbook-input-and-output"></a>Invoer en uitvoer van Runbook
 
-### < een naam-"runbook-input" ></a>Runbook-invoer
+### Runbook-invoer<a name="runbook-input"></a>
 
 Een runbook vereist invoer van een gebruiker die het runbook start met behulp van de Azure Portal of van een ander runbook, als de huidige wordt gebruikt als een onderliggende. Een voor beeld: voor een runbook dat een virtuele machine maakt, moet de gebruiker deze gegevens mogelijk als de naam van de virtuele machine en andere eigenschappen opgeven telkens wanneer het runbook wordt gestart.
 

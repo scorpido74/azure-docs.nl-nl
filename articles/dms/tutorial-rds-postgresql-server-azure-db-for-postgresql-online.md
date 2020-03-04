@@ -3,8 +3,8 @@ title: 'Zelf studie: RDS PostgreSQL online migreren naar Azure Database for Post
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van RDS PostgreSQL naar Azure Database for PostgreSQL met behulp van de Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: 1bc3f3d8c0f8992927acc3247e94a984e1653deb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 33d39be071591071d88bb5a95c3cfcbb458d85a8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471057"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255707"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Zelf studie: RDS PostgreSQL migreren naar Azure DB for PostgreSQL online met behulp van DMS
 
@@ -269,6 +269,6 @@ Uw online migratie van een on-premises exemplaar van RDS PostgreSQL naar Azure D
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg het artikel [Wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview) voor informatie over de Azure Database Migration Service.
+* Zie het artikel [Wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview) voor informatie over de Azure Database Migration Service.
 * Zie het artikel [Wat is er Azure database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview)voor informatie over Azure database for PostgreSQL.
 * Voor andere vragen moet u een e-mail sturen naar de [Azure data base-migratie](mailto:AskAzureDatabaseMigrations@service.microsoft.com) alias.

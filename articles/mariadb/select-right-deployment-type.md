@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d53a3f270c1de3c8d533b5886e0051f6aa1ef10d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 961d10f3a0bc4be25a2981e5411cc6a8a75d2105
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776735"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255090"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Kies de juiste MariaDB-Server optie in azure
 
@@ -31,9 +31,9 @@ Houd rekening met de volgende twee opties bij het nemen van uw beslissing:
 
 De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgende tabel:
 
-|            | Azure Database voor MariaDB | MariaDB op Azure Vm's    |
+|            | Azure Database for MariaDB | MariaDB op Azure Vm's    |
 |:-------------------|:-----------------------------|:--------------------|
-| Serviceovereenkomst (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
+| Service Level Agreement (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Patches besturings systeem        | Automatisch  | Beheerd door klanten |
 | MariaDB-patching     | Automatisch  | Beheerd door klanten |
 | Hoge beschikbaarheid | Het model voor hoge Beschik baarheid (HA) is gebaseerd op ingebouwde failover-mechanismen voor wanneer een onderbreking op knooppunt niveau optreedt. In dergelijke gevallen maakt de service automatisch een nieuw exemplaar en koppelt de opslag aan dit exemplaar. | Klanten bouwen, implementeren, testen en onderhouden hoge Beschik baarheid. Mogelijkheden zijn onder meer Failover Clustering, altijd op groeps replicatie, logboek verzending of transactionele replicatie.|
@@ -42,7 +42,7 @@ De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgen
 | Back-ups maken en herstellen | Maakt automatisch [Server back-ups](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups) en slaat deze op in door de gebruiker geconfigureerde opslag die lokaal redundant of geo-redundant is. De service maakt gebruik van volledige, differentiële en back-ups van transactie logboeken | Beheerd door klanten |
 | Database bewerkingen bewaken | Biedt klanten de mogelijkheid om [waarschuwingen](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring) in te stellen voor de database bewerking en om te reageren op drempel waarden. | Beheerd door klanten |
 | Advanced Threat Protection | Biedt [geavanceerde beveiliging tegen bedreigingen](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal). Deze beveiliging detecteert afwijkende activiteiten die ongebruikelijke en potentieel schadelijke pogingen voor toegang tot of exploiten van data bases aanduiden.<br/><br/>Advanced Threat Protection is momenteel beschikbaar als open bare preview.| Klanten moeten deze bescherming zelf bouwen.
-| Herstel na noodgeval | Hiermee worden automatische back-ups opgeslagen in [lokaal redundante of geografisch redundante opslag](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal)die door de gebruiker is geconfigureerd. Met back-ups kunt u ook een server herstellen naar een bepaald tijdstip. De retentie tijd is een periode van 7 tot 35 dagen. De herstel bewerking wordt uitgevoerd met behulp van de Azure Portal. | Volledig beheerd door klanten. Verantwoordelijkheden zijn onder andere, maar zijn niet beperkt tot het plannen, testen, archiveren, opslaan en bewaren. Een extra optie is een Azure Recovery Services kluis gebruiken om back-ups te maken van Azure Vm's en data bases op Vm's. Deze optie is beschikbaar als preview-versie. |
+| Herstel na noodgevallen | Hiermee worden automatische back-ups opgeslagen in [lokaal redundante of geografisch redundante opslag](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal)die door de gebruiker is geconfigureerd. Met back-ups kunt u ook een server herstellen naar een bepaald tijdstip. De retentie tijd is een periode van 7 tot 35 dagen. De herstel bewerking wordt uitgevoerd met behulp van de Azure Portal. | Volledig beheerd door klanten. Verantwoordelijkheden zijn onder andere, maar zijn niet beperkt tot het plannen, testen, archiveren, opslaan en bewaren. Een extra optie is een Azure Recovery Services kluis gebruiken om back-ups te maken van Azure Vm's en data bases op Vm's. Deze optie is beschikbaar als preview-versie. |
 | Aanbevelingen voor prestaties | Biedt klanten [aanbevelingen voor prestaties](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) op basis van door het systeem gegenereerde gebruiks logboek bestanden. De aanbevelingen helpen bij het optimaliseren van werk belastingen.<br/><br/>Aanbevelingen voor prestaties zijn momenteel beschikbaar als open bare preview. | Beheerd door klanten |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>Zakelijke motivaties voor het kiezen van PaaS of IaaS
@@ -53,7 +53,7 @@ Er zijn verschillende factoren die van invloed kunnen zijn op uw beslissing om P
 
 Beperkte financiering is vaak de primaire overweging voor het bepalen van de beste oplossing voor het hosten van uw data bases. Dit is waar, of u nu een opstart met weinig geld of een team in een gevestigde onderneming bent die werkt onder strakke budget beperkingen. In deze sectie worden de basis beginselen van facturering en licenties in azure beschreven, omdat deze van toepassing zijn op Azure Database for MariaDB en MariaDB op Azure-Vm's.
 
-#### <a name="billing"></a>Billing
+#### <a name="billing"></a>Facturering
 
 Azure Database for MariaDB is momenteel beschikbaar als een service in meerdere lagen met verschillende prijzen voor resources. Alle resources worden per uur gefactureerd tegen een vast bedrag. Zie [vCore-gebaseerd inkoop model](https://docs.microsoft.com/azure/MariaDB/concepts-pricing-tiers)voor de meest recente informatie over de momenteel ondersteunde service lagen, reken grootten en opslag bedragen. U kunt Service lagen en reken grootten dynamisch aanpassen zodat deze overeenkomen met de verschillende doorvoer behoeften van uw toepassing. U wordt gefactureerd voor uitgaand Internet verkeer tegen normale [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/).
 
@@ -82,9 +82,9 @@ In de volgende lijst worden administratieve aandachtspunten voor elke optie besc
 
   - Databases
   - Aanmelden
-  - Indexafstemming
+  - Index afstemmen
   - Query afstemmen
-  - Controle
+  - Controleren
   - Beveiliging
 
   Daarnaast is het configureren van hoge Beschik baarheid voor een ander Data Center Mini maal, zodat er geen configuratie of beheer nodig is.
@@ -102,4 +102,4 @@ In de volgende lijst worden administratieve aandachtspunten voor elke optie besc
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Azure database for MariaDB prijzen](https://azure.microsoft.com/pricing/details/MariaDB/).
-* Aan de slag gaan met het [maken van uw eerste server](https://review.docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal).
+* Aan de slag gaan met het [maken van uw eerste server](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal).

@@ -3,12 +3,12 @@ title: 'Zelf studie: een Application Gateway ingangs controller maken in azure K
 description: Zelfstudie voor het maken van een Kubernetes-cluster met Application Gateway als controller voor inkomend verkeer, met behulp van Azure Kubernetes Service
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472261"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251764"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Zelf studie: een Application Gateway ingangs controller maken in azure Kubernetes service
 
@@ -765,7 +765,7 @@ Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel 
 
 Vervang de tijdelijke aanduiding door de juiste waarde. Alle resources in de opgegeven resource groep worden verwijderd.
 
-```bash
+```azurecli
 az group delete -n <resource-group>
 ```
 

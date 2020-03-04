@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589365"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250861"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -71,6 +71,11 @@ Geregistreerde modellen worden geïdentificeerd met naam en versie. Telkens wann
 U kunt een geregistreerd model dat wordt gebruikt in een actieve implementatie, niet verwijderen.
 Zie de sectie model registreren van [modellen implementeren](how-to-deploy-and-where.md#registermodel)voor meer informatie.
 
+### <a name="profile-models"></a>Profiel modellen
+
+Azure Machine Learning kunt u meer inzicht krijgen in de vereisten voor de CPU en het geheugen van de service die wordt gemaakt wanneer u uw model implementeert. Profile ring test de service die uw model uitvoert en retourneert informatie zoals het CPU-gebruik, het geheugen gebruik en de reactie latentie. Het biedt ook een aanbeveling van CPU en geheugen op basis van het resource gebruik.
+Zie de sectie Profiler van [modellen implementeren](how-to-deploy-and-where.md#profilemodel)voor meer informatie.
+
 ### <a name="package-and-debug-models"></a>Pakket-en fout opsporings modellen
 
 Voordat u een model in productie implementeert, wordt het verpakt in een docker-installatie kopie. In de meeste gevallen gebeurt het maken van afbeeldingen automatisch op de achtergrond tijdens de implementatie. U kunt de installatie kopie hand matig opgeven.
@@ -78,10 +83,6 @@ Voordat u een model in productie implementeert, wordt het verpakt in een docker-
 Als u problemen met de implementatie ondervindt, kunt u in uw lokale ontwikkel omgeving implementeren voor probleem oplossing en fout opsporing.
 
 Zie [modellen implementeren](how-to-deploy-and-where.md#registermodel) en [implementaties oplossen](how-to-troubleshoot-deployment.md)voor meer informatie.
-
-### <a name="validate-and-profile-models"></a>Validatie-en profiel modellen
-
-Azure Machine Learning kunt profile ring gebruiken om de ideale CPU-en geheugen instellingen te bepalen die moeten worden gebruikt bij het implementeren van uw model. Model validatie treedt op als onderdeel van dit proces en gebruikt gegevens die u voor het profilerings proces opgeeft.
 
 ### <a name="convert-and-optimize-models"></a>Modellen converteren en optimaliseren
 
@@ -129,7 +130,7 @@ U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT 
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-### <a name="analytics"></a>Analyse
+### <a name="analytics"></a>Analytische gegevens
 
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 

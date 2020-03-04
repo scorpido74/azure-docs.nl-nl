@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827322"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251315"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
-De Text Analytics-API is een Cloud service die geavanceerde verwerking van natuurlijke taal via onbewerkte tekst biedt en vier belang rijke functies bevat: sentiment analyse, extractie van sleutel zinnen, taal detectie en entiteits herkenning.
+De Text Analytics-API is een Cloud service die geavanceerde verwerking van natuurlijke taal via onbewerkte tekst biedt en vier belang rijke functies bevat: sentiment analyse, extractie van sleutel woorden, taal detectie en benoemde entiteits herkenning.
 
 De API maakt deel uit van [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), een verzameling van machine learning- en AI-algoritmen in de cloud, die kunnen worden gebruikt in uw ontwikkelprojecten.
 
@@ -51,7 +51,7 @@ De werkstroom is eenvoudig: u dient gegevens in die u wilt analyseren en verwerk
 
 2. [Formuleer een aanvraag](how-tos/text-analytics-how-to-call-api.md#json-schema) in JSON, die uw gegevens bevat als onbewerkte tekst.
 
-3. Publiceer de aanvraag aan het eindpunt dat is gemaakt tijdens de registratie, en voeg de gewenste resource toe: sentimentanalyse, sleuteltermextractie, taaldetectie of entiteitsidentificatie.
+3. Post de aanvraag voor het eind punt dat is gemaakt tijdens het aanmelden, het toevoegen van de gewenste resource: sentiment analyse, extractie van sleutel zinnen, taal detectie of benoemde entiteits herkenning.
 
 4. U kunt het antwoord streamen of lokaal opslaan. Afhankelijk van de aanvraag bestaan de resultaten uit een gevoelsscore, een verzameling geëxtraheerde sleuteltermen of een taalcode.
 

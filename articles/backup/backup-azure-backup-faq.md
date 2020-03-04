@@ -1,14 +1,14 @@
 ---
 title: Antwoorden op veelgestelde vragen
-description: 'Antwoorden op veelgestelde vragen over: Azure Backup-functies (waaronder de Recovery Services-kluis), waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
+description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450099"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255025"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -82,7 +82,7 @@ Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste serv
 Windows 8.1 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 7 64-bits | Ultimate, Enterprise, Professional, Home Premium Home Basic, Starter | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
-server | |
+Server | |
 Windows Server 2019 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2012 R2 64-bits | Standard, Datacenter, Foundation | Met de nieuwste servicepacks/updates.
@@ -123,7 +123,7 @@ BMR/systeemstatus |Elke afzonderlijke kopie van de BMR of systeemstatus van de m
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Is er een limiet voor de hoeveelheid gegevens waarvan een back-up wordt gemaakt met een Recovery Services-kluis?
 
-Er is geen limiet voor de hoeveelheid gegevens waarvan u een back-up kunt maken met een Recovery Services-kluis.
+Er is geen limiet voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken met behulp van een Recovery Services kluis. De afzonderlijke gegevens bronnen (met uitzonde ring van virtuele machines van Azure) kunnen Maxi maal 54.400 GB groot zijn. Zie de [sectie kluis limieten in de ondersteunings matrix](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)voor meer informatie over limieten.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Waarom is de omvang van de gegevens die worden overgebracht naar de Recovery Services-kluis, kleiner dan de hoeveelheid gegevens die zijn geselecteerd voor een back-up?
 

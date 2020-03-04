@@ -11,16 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901177"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252707"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere Azure SQL-data bases
 
-Elastische pools in SQL Database zijn eenvoudige, kosteneffectieve oplossingen voor het beheren en schalen van meerdere databases die een verschillend en onvoorspelbaar verbruik hebben. De databases in een elastische pool bevinden zich op één Azure SQL Database-server en delen een vast aantal resources tegen een vaste prijs. Met elastische groepen in Azure SQL Database kunnen SaaS-ontwikkelaars de prijsprestaties voor een groep databases binnen een voorgeschreven budget optimaliseren en flexibele prestaties voor elke database leveren.
+Elastische pools in SQL Database zijn eenvoudige, kosteneffectieve oplossingen voor het beheren en schalen van meerdere databases die een verschillend en onvoorspelbaar verbruik hebben. De data bases in een elastische pool bevinden zich op één Azure SQL Database Server en delen een bepaald aantal resources tegen een ingestelde prijs. Met elastische groepen in Azure SQL Database kunnen SaaS-ontwikkelaars de prijsprestaties voor een groep databases binnen een voorgeschreven budget optimaliseren en flexibele prestaties voor elke database leveren.
 
 ## <a name="what-are-sql-elastic-pools"></a>Wat zijn elastische SQL-Pools
 
@@ -143,7 +143,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
   Herstel naar een bepaald tijdstip maakt gebruik van automatische database back-ups om een data base in een groep te herstellen naar een specifiek tijdstip. Zie [Herstel naar een bepaald tijdstip](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-restore**
+- **Geo-herstel**
 
   Geo-Restore biedt de standaard herstel optie wanneer een Data Base niet beschikbaar is vanwege een incident in de regio waarin de data base wordt gehost. Zie [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Een Azure SQL Database of herstellen of een failover uitvoeren naar een secundaire server)
 
@@ -159,7 +159,7 @@ Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal
 2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
 
-   ![Elastische pool maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
+   ![Een pool voor Elastic Database maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
 
 
 1. U kunt ook een elastische pool maken door te navigeren naar een bestaande Azure SQL-Server en op **+ nieuwe pool** te klikken om een groep rechtstreeks op die server te maken.
@@ -222,6 +222,7 @@ Zie [SQL database-waarschuwingen in azure portal maken](sql-database-insights-al
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Zie [prijzen voor elastische Pools](https://azure.microsoft.com/pricing/details/sql-database/elastic)voor prijs informatie.
 - Zie [elastische](sql-database-elastic-pool-scale.md) Pools schalen en [een elastische pool schalen-voorbeeld code](scripts/sql-database-monitor-and-scale-pool-powershell.md) om elastische Pools te schalen.
 - Zie voor een video [micro soft Virtual Academy-video cursus over Azure SQL database Elastic-mogelijkheden](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Zie [Ontwerppatronen voor SaaS-toepassingen met meerdere tenants met behulp van Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) voor meer informatie over ontwerppatronen voor SaaS-toepassingen met elastische pools.

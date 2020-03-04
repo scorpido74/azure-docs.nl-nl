@@ -7,17 +7,17 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671410"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247623"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js-web-app maken en implementeren in Azure App Service onder Linux ](./containers/quickstart-nodejs.md) om een app te implementeren in App Service onder _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een Node.js-web-app maken en implementeren in Azure App Service onder Linux_  om een app te implementeren in App Service onder [Linux](./containers/quickstart-nodejs.md).
 >
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.  In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert. U gaat de web-app in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) maken, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli). U implementeert de Node.js-voorbeeldcode naar de web-app met de opdracht [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
@@ -34,7 +34,7 @@ U kunt de onderstaande stappen volgen met behulp van een Mac-, Windows- of Linux
 
 Maak een map 'quickstart' in de Cloud Shell en ga er vervolgens naartoe.
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 Voer vervolgens de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen naar de map 'quickstart'.
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 De opdracht geeft informatie weer die lijkt op het volgende voorbeeld:
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 Blader naar uw nieuwe web-app. Vervang `<app_name>` door een unieke app-naam.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ De nieuwe web-app moet er als volgt uitzien: ![lege web-app-pagina](media/app-se
 
 Navigeer in Cloud Shell naar de hoofdmap van uw app en maak een nieuw ZIP-bestand voor uw voorbeeldproject.
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ Met deze opdracht worden de bestanden en mappen uit het ZIP-bestand geïmplement
 
 Blader naar de geïmplementeerde toepassing via uw webbrowser.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 

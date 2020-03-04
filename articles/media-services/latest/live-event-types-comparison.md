@@ -1,6 +1,6 @@
 ---
 title: LiveEvent-typen Azure Media Services | Microsoft Docs
-description: In Azure Media Services kan een live gebeurtenis een van de twee typen, Live encoding en Pass-Through zijn. In dit artikel wordt een gedetailleerde tabel weer gegeven waarin live gebeurtenis typen worden vergeleken.
+description: In Azure Media Services kan een live-gebeurtenis worden ingesteld op een *Pass-Through-* of *Live-code ring*. In dit artikel wordt een gedetailleerde tabel weer gegeven waarin live gebeurtenis typen worden vergeleken.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543049"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244645"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
-In Azure Media Services kan een [live-gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) een van de volgende twee typen zijn: Live encoding en Pass through. 
+In Azure Media Services kan een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). 
+
+In deze artikelen worden de functies van de live-gebeurtenis typen vergeleken.
 
 ## <a name="types-comparison"></a>Typen vergelijking 
 
@@ -38,7 +40,7 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 | Maximale video resolutie voor invoer van contributie |4\.000 (4096x2160 bij 60 frames per seconde) |1080p (1920x1088 bij 30 frames per seconde)|
 | Aanbevolen maximum aantal lagen in de invoer van bijdragen|Maxi maal 12|Eén audio|
 | Maximum aantal lagen in uitvoer| Hetzelfde als invoer|Maxi maal 6 (zie onderstaande systeem instellingen)|
-| Maximale cumulatieve band breedte van invoer voor bijdragen|60 Mbps|N/A|
+| Maximale cumulatieve band breedte van invoer voor bijdragen|60 Mbps|N.V.T.|
 | Maximale bitrate voor één laag in de bijdrage |20 Mbps|20 Mbps|
 | Ondersteuning voor audio tracks met meerdere talen|Ja|Nee|
 | Ondersteunde video-codecs voor invoer |H. 264/AVC en H. 265/HEVC|H.264/AVC|

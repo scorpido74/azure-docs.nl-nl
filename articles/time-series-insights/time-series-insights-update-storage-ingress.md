@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559841"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246185"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevens opslag en inkomend verkeer in Azure Time Series Insights preview
 
@@ -159,10 +159,10 @@ Raadpleeg de volgende bronnen voor meer informatie over het optimaliseren van hu
 
 Wanneer u een Time Series Insights preview-SKU voor *betalen per gebruik* (PAYG) maakt, maakt u twee Azure-resources:
 
-* Een Azure Time Series Insights preview-omgeving die kan worden geconfigureerd voor warme opslag.
+* Een Azure Time Series Insights voorbeeld omgeving die kan worden geconfigureerd voor warme gegevens opslag.
 * Een Azure Storage v1 BLOB-account voor algemeen gebruik voor koude gegevens opslag.
 
-Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series-query](./time-series-insights-update-tsq.md) en de [Azure time series Insights preview Explorer](./time-series-insights-update-explorer.md). 
+Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series-query](./time-series-insights-update-tsq.md) en de [Azure time series Insights preview Explorer](./time-series-insights-update-explorer.md). Uw warme archief bevat recente gegevens binnen de [Bewaar periode](./time-series-insights-update-plan.md#the-preview-environment) die is geselecteerd bij het maken van de time series Insights omgeving.
 
 Met Time Series Insights preview worden uw koude Store-gegevens opgeslagen in Azure Blob-opslag in de [Parquet-bestands indeling](#parquet-file-format-and-folder-structure). Time Series Insights preview beheert deze koude Store-gegevens uitsluitend, maar u kunt deze rechtstreeks als standaard Parquet-bestanden lezen.
 
@@ -186,12 +186,7 @@ Lees de [Inleiding tot opslag-blobs](../storage/blobs/storage-blobs-introduction
 
 Wanneer u een Azure Time Series Insights preview-PAYG-omgeving maakt, wordt er een Azure Storage General-Purpose v1 BLOB-account gemaakt als uw langlopende koel winkel.  
 
-Azure Time Series Insights preview publiceert Maxi maal twee exemplaren van elke gebeurtenis in uw Azure Storage-account. De eerste kopie bevat gebeurtenissen die zijn geordend op opname tijd. Deze gebeurtenis volgorde wordt **altijd bewaard** , zodat andere services toegang hebben tot uw gebeurtenissen zonder problemen met sequentiëren. 
-
-> [!NOTE]
-> U kunt ook Spark, Hadoop en andere vertrouwde hulpprogram ma's gebruiken om de onbewerkte Parquet-bestanden te verwerken. 
-
-Met Time Series Insights preview worden ook de Parquet-bestanden opnieuw gepartitioneerd om te worden geoptimaliseerd voor de Time Series Insights-query. Deze opnieuw gepartitioneerde kopie van de gegevens wordt ook opgeslagen. 
+Met Azure Time Series Insights preview worden Maxi maal twee exemplaren van elke gebeurtenis in uw Azure Storage-account bewaard. Een kopie slaat gebeurtenissen op die zijn besteld door opname tijd, waarbij altijd toegang tot gebeurtenissen in een geordende reeks wordt toegestaan. Time Series Insights preview maakt na verloop van tijd ook een opnieuw gepartitioneerde kopie van de gegevens die u kunt optimaliseren voor een uitvoerende Time Series Insights query. 
 
 Tijdens de open bare preview worden gegevens voor onbepaalde tijd opgeslagen in uw Azure Storage-account.
 
@@ -199,15 +194,11 @@ Tijdens de open bare preview worden gegevens voor onbepaalde tijd opgeslagen in 
 
 Om de query prestaties en de beschik baarheid van gegevens te garanderen, moet u geen blobs bewerken of verwijderen die Time Series Insights preview maakt.
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Toegang tot en exporteren van gegevens vanuit Time Series Insights preview
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Time Series Insights voor beeld van koude Store-gegevens openen 
 
-U kunt toegang krijgen tot gegevens die worden weer gegeven in de Time Series Insights preview Explorer om te gebruiken in combi natie met andere services. U kunt uw gegevens bijvoorbeeld gebruiken om een rapport te maken in Power BI of om een machine learning model te trainen met behulp van Azure Machine Learning Studio. U kunt uw gegevens ook gebruiken om uw Jupyter-notebooks te transformeren, te visualiseren en te model leren.
+Behalve dat u toegang hebt tot uw gegevens vanuit de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md) en de [Time Series-query](./time-series-insights-update-tsq.md), kunt u ook rechtstreeks toegang krijgen tot uw gegevens vanuit de Parquet-bestanden die zijn opgeslagen in het koude-archief. U kunt bijvoorbeeld gegevens in een Jupyter-notebook lezen, transformeren en opschonen en deze vervolgens gebruiken om uw Azure Machine Learning model te trainen in dezelfde Spark-werk stroom.
 
-U kunt op drie manieren toegang krijgen tot uw gegevens:
-
-* Vanuit de Time Series Insights preview Explorer. U kunt gegevens exporteren als een CSV-bestand vanuit de Explorer. Lees [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md)voor meer informatie.
-* Vanuit de Time Series Insights preview-API met behulp van de query Get Events. Lees voor meer informatie over deze API de [Time Series-query](./time-series-insights-update-tsq.md).
-* Rechtstreeks vanuit een Azure Storage-account. U hebt lees toegang nodig tot het account dat u gebruikt voor toegang tot uw Time Series Insights preview-gegevens. Lees [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
+Als u gegevens rechtstreeks vanuit uw Azure Storage-account wilt openen, moet u lees toegang hebben tot het account dat wordt gebruikt voor het opslaan van uw Time Series Insights preview-gegevens. U kunt vervolgens de geselecteerde gegevens lezen op basis van de aanmaak tijd van het Parquet-bestand dat zich bevindt in de `PT=Time` map die hieronder wordt beschreven in de sectie [Parquet-bestands indeling](#parquet-file-format-and-folder-structure) .  Zie [toegang tot de resources van uw opslag account beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie over het inschakelen van lees toegang tot uw opslag account.
 
 #### <a name="data-deletion"></a>Gegevens verwijderen
 
@@ -215,21 +206,21 @@ Verwijder de Time Series Insights Preview-bestanden niet. Gerelateerde gegevens 
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet bestands indeling en mapstructuur
 
-Parquet is een open-source bestands indeling die is ontworpen voor efficiënte opslag en prestaties. Time Series Insights preview gebruikt Parquet om de volgende redenen. Het partitioneert gegevens op tijd reeks-ID voor query prestaties op schaal.  
+Parquet is een open-source kolom indeling die is ontworpen voor efficiënte opslag en prestaties. Time Series Insights preview gebruikt Parquet om query prestaties op basis van tijd reeksen op schaal in te scha kelen.  
 
 Lees de [Parquet-documentatie](https://parquet.apache.org/documentation/latest/)voor meer informatie over het bestands type Parquet.
 
 In Time Series Insights preview worden kopieën van uw gegevens als volgt opgeslagen:
 
-* De eerste, eerste kopie wordt gepartitioneerd op basis van de opname tijd en slaat ruwweg gegevens op in volg orde van aankomst. De gegevens bevinden zich in de map `PT=Time`:
+* De eerste, eerste kopie wordt gepartitioneerd op basis van de opname tijd en slaat ruwweg gegevens op in volg orde van aankomst. Deze gegevens bevinden zich in de map `PT=Time`:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* De tweede, opnieuw gepartitioneerde kopie wordt gepartitioneerd door een groepering van Time Series-Id's en bevindt zich in de map `PT=TsId`:
+* De tweede, opnieuw gepartitioneerde kopie wordt gegroepeerd op Time Series-Id's en bevindt zich in de map `PT=TsId`:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-In beide gevallen komen de tijd waarden overeen met de aanmaak tijd van de blob. De gegevens in de map `PT=Time` blijven bewaard. Gegevens in de map `PT=TsId` worden gedurende een bepaalde periode geoptimaliseerd voor query's en blijven niet statisch.
+In beide gevallen komt de eigenschap time van het Parquet-bestand overeen met de aanmaak tijd van de blob. De gegevens in de map `PT=Time` blijven behouden zonder wijzigingen zodra ze naar het bestand zijn geschreven. Gegevens in de map `PT=TsId` worden gedurende een bepaalde periode geoptimaliseerd en zijn niet statisch.
 
 > [!NOTE]
 > * `<YYYY>` is toegewezen aan een jaar representatie van vier cijfers.
@@ -239,10 +230,10 @@ In beide gevallen komen de tijd waarden overeen met de aanmaak tijd van de blob.
 Time Series Insights preview-gebeurtenissen worden als volgt toegewezen aan de Parquet-bestands inhoud:
 
 * Elke gebeurtenis wordt toegewezen aan één rij.
-* Elke rij bevat de **Time Stamp** -kolom met een tijds tempel van de gebeurtenis. De eigenschap time stamp is nooit null. De standaard waarde is een time-outwaarde voor een **gebeurtenis** als de eigenschap time stamp niet is opgegeven in de bron van de gebeurtenis. De tijds tempel is altijd in UTC.
-* Elke rij bevat de time series-ID-kolom (men) zoals deze is gedefinieerd wanneer de Time Series Insights omgeving wordt gemaakt. De naam van de eigenschap bevat het `_string` achtervoegsel.
+* Elke rij bevat de **Time Stamp** -kolom met een tijds tempel van de gebeurtenis. De eigenschap time stamp is nooit null. De standaard instelling is dat de gebeurtenis in de **wachtrij** wordt geplaatst als de eigenschap time stamp niet is opgegeven in de bron van de gebeurtenis. De opgeslagen tijds tempel is altijd in UTC.
+* Elke rij bevat de tijdreeks-ID (TSID) kolom (men) zoals deze is gedefinieerd wanneer de Time Series Insights omgeving wordt gemaakt. De TSID-eigenschaps naam bevat het `_string` achtervoegsel.
 * Alle andere eigenschappen die als telemetriegegevens worden verzonden, worden toegewezen aan kolom namen die eindigen op `_string` (teken reeks), `_bool` (Boolean), `_datetime` (datetime) of `_double` (double), afhankelijk van het type eigenschap.
-* Dit toewijzings schema is van toepassing op de eerste versie van de bestands indeling, waarnaar wordt verwezen als **V = 1**. Als deze functie zich ontwikkelt, kan de naam worden verhoogd.
+* Dit toewijzings schema is van toepassing op de eerste versie van de bestands indeling, waarnaar wordt verwezen als **V = 1** en wordt opgeslagen in de map base met dezelfde naam. Als deze functie zich ontwikkelt, kan dit toewijzings schema worden gewijzigd en wordt de referentie naam verhoogd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

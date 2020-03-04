@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe een Docker-containerinstallatiekopie
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456045"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252098"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Zelf studie: container installatie kopieën bouwen en implementeren in de Cloud met Azure Container Registry taken
 
@@ -38,7 +38,7 @@ Als u de Azure CLI lokaal wilt gebruiken, moet u Azure CLI versie **2.0.46** of 
 
 Maak een account op https://github.com als u er nog geen hebt. In deze zelfstudiereeks wordt een GitHub-opslagplaats gebruikt om geautomatiseerde builds van installatiekopieën in ACR Tasks te demonstreren.
 
-### <a name="fork-sample-repository"></a>Voorbeeldopslagplaats fork
+### <a name="fork-sample-repository"></a>Voorbeeldopslagplaats splitsen
 
 Gebruik vervolgens de GitHub UI om de voorbeeldopslagplaats te splitsen naar uw GitHub-account. In deze zelfstudie maakt u een containerinstallatiekopie van de bron in de opslagplaats. In de volgende zelfstudie pusht u een commit of doorvoer naar uw fork van de opslagplaats om een geautomatiseerde taak te starten.
 
@@ -52,13 +52,13 @@ Wanneer u de opslagplaats hebt gesplitst, kloont u de fork en voert u de map in 
 
 Kloon de opslagplaats met `git`, vervang **\<your-github-username\>** door uw GitHub-gebruikersnaam:
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 Geef de map op waarin de broncode zich bevindt:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ Nu u de broncode hebt opgehaald naar uw computer, volgt u deze stappen om een co
 
 Om het uitvoeren van de voorbeeldopdrachten eenvoudiger te maken, worden in de zelfstudies in deze serie shell-omgevingsvariabelen gebruikt. Voer de volgende opdracht uit om de variabele `ACR_NAME` in te stellen. Vervang **\<registry-name\>** door een unieke naam voor uw nieuwe containerregister. De register naam moet uniek zijn in azure, mag alleen kleine letters bevatten en mag 5-50 alfanumerieke tekens bevatten. De andere resources die u in de zelfstudie maakt, zijn gebaseerd op deze naam, dus u hoeft alleen deze eerste variabele te wijzigen.
 
-```azurecli-interactive
+[![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 

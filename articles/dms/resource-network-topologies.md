@@ -3,8 +3,8 @@ title: Netwerktopologieën voor migraties van SQL-beheerde exemplaren
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over de bron-en doel configuraties voor de migratie van Azure SQL Database beheerde exemplaren met behulp van de Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9a313ea798519273ce57961544ec5b37c4d9c5ca
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 48485b7ba0f846afa737454b092a6c1ee986b737
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749269"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254963"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Netwerk topologieën voor migraties van beheerde exemplaren van Azure SQL data base met behulp van Azure Database Migration Service
 
@@ -75,16 +75,16 @@ Gebruik deze netwerk topologie als uw omgeving een of meer van de volgende scena
 
 ## <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| **NAAM**   | **IMPORTEER** | **PROTOCOL** | **BRON** | **BEOOGDE** | **OPTREDEN** |
+| **NAAM**   | **IMPORTEER** | **PROTOCOLSUBSTATUS** | **Bron** | **BEOOGDE** | **OPTREDEN** |
 |------------|----------|--------------|------------|-----------------|------------|
 | DMS_subnet | Alle      | Alle          | DMS-SUBNET | Alle             | Toestaan      |
 
-## <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
+## <a name="outbound-security-rules"></a>Uitgaande beveiligings regels
 
-| **NAAM**                  | **IMPORTEER**                                              | **PROTOCOL** | **BRON** | **BEOOGDE**           | **OPTREDEN** | **Reden voor regel**                                                                                                                                                                              |
+| **NAAM**                  | **IMPORTEER**                                              | **PROTOCOLSUBSTATUS** | **Bron** | **BEOOGDE**           | **OPTREDEN** | **Reden voor regel**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| beheer                | 443, 9354                                              | TCP          | Alle        | Alle                       | Toestaan      | Beheer vlak communicatie via Service Bus en Azure Blob-opslag. <br/>(Als micro soft-peering is ingeschakeld, hebt u deze regel mogelijk niet nodig.)                                                             |
-| Diagnostics               | 12000                                                 | TCP          | Alle        | Alle                       | Toestaan      | DMS gebruikt deze regel voor het verzamelen van diagnostische gegevens voor het oplossen van problemen.                                                                                                                      |
+| management                | 443, 9354                                              | TCP          | Alle        | Alle                       | Toestaan      | Beheer vlak communicatie via Service Bus en Azure Blob-opslag. <br/>(Als micro soft-peering is ingeschakeld, hebt u deze regel mogelijk niet nodig.)                                                             |
+| Diagnostische gegevens               | 12000                                                 | TCP          | Alle        | Alle                       | Toestaan      | DMS gebruikt deze regel voor het verzamelen van diagnostische gegevens voor het oplossen van problemen.                                                                                                                      |
 | SQL-bron server         | 1433 (of TCP IP-poort waarnaar SQL Server luistert) | TCP          | Alle        | On-premises adresruimte | Toestaan      | SQL Server bron connectiviteit vanuit DMS <br/>(Als u site-naar-site-connectiviteit hebt, hebt u deze regel mogelijk niet nodig.)                                                                                       |
 | SQL Server benoemd exemplaar | 1434                                                  | UDP          | Alle        | On-premises adresruimte | Toestaan      | SQL Server bron connectiviteit van een benoemde instantie van DMS <br/>(Als u site-naar-site-connectiviteit hebt, hebt u deze regel mogelijk niet nodig.)                                                                        |
 | SMB-share                 | 445                                                   | TCP          | Alle        | On-premises adresruimte | Toestaan      | SMB-netwerk share voor DMS voor het opslaan van back-upbestanden van data bases voor migraties naar Azure SQL Database MI-en SQL-servers op Azure VM <br/>(Als u site-naar-site-connectiviteit hebt, hebt u deze regel mogelijk niet nodig). |

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902560"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256048"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
 
-In dit artikel wordt beschreven hoe u veelvoorkomende fouten in Azure Site Recovery oplost tijdens de replicatie en het herstel van virtuele Azure-machines (Vm's) van de ene regio naar de andere. Zie voor meer informatie over ondersteunde configuraties, de [ondersteuningsmatrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md).
+In dit artikel wordt beschreven hoe u veelvoorkomende fouten in Azure Site Recovery oplost tijdens de replicatie en het herstel van virtuele Azure-machines (Vm's) van de ene regio naar de andere. Zie de [ondersteunings matrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md)voor meer informatie over ondersteunde configuraties.
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problemen met Azure-resource quota (fout code 150097)
 
@@ -80,7 +80,7 @@ Omdat SUSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Als het certificaat van de Symantec-basis certificerings instantie niet wordt gevonden, voert u de volgende opdracht uit om het bestand te downloaden. Controleer op eventuele fouten en volg de aanbevolen acties voor netwerk fouten.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Controleer of het Baltimore basis-CA-certificaat aanwezig is:
 
@@ -88,7 +88,7 @@ Omdat SUSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Als het basis-CA-certificaat van de Baltimore niet wordt gevonden, voert u deze opdracht uit om het certificaat te downloaden:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
 
 1. Controleer of het DigiCert_Global_Root_CA certificaat aanwezig is:
 
@@ -106,7 +106,7 @@ Omdat SUSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Voer deze opdrachten uit om te controleren of de onderwerp-hashes als symlinks zijn gemaakt voor de certificaten:
 
-    - Opdracht:
+    - Cmd
 
         **# ls-l | grep-Baltimore**
 
@@ -116,7 +116,7 @@ Omdat SUSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Opdracht:
+    - Cmd
 
         **# ls-l | grep-VeriSign_Class_3_Public_Primary_Certification_Authority_G5**
 
@@ -126,7 +126,7 @@ Omdat SUSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Opdracht:
+    - Cmd
 
         **# ls-l | grep-DigiCert_Global_Root**
 
@@ -150,7 +150,7 @@ Omdat SUSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Controleer of de bestanden aanwezig zijn:
 
-    - Opdracht:
+    - Cmd
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
@@ -381,14 +381,14 @@ Zie de stappen voor probleem oplossing in [de inrichtings status van de virtuele
 Als u de replicatie op de virtuele machine wilt inschakelen, moet de inrichtings status zijn **geslaagd**. Volg deze stappen om de inrichtings status te controleren:
 
 1. Selecteer in de Azure Portal de **resource Verkenner** van **alle services**.
-1. Vouw de **abonnementen** lijst en selecteer uw abonnement.
-1. Vouw de **ResourceGroups** lijst en selecteer de resourcegroep van de virtuele machine.
+1. Vouw de lijst **abonnementen** uit en selecteer uw abonnement.
+1. Vouw de lijst **ResourceGroups** uit en selecteer de resource groep van de virtuele machine.
 1. Vouw de lijst met **resources** uit en selecteer de virtuele machine.
 1. Controleer het veld **provisioningState** in de weer gave instantie aan de rechter kant.
 
 ### <a name="fix-the-problem"></a>Het probleem wordt opgelost
 
-- Als **provisioningState** is **mislukt**, neem contact op met ondersteuning voor meer informatie om op te lossen.
+- Als **provisioningState** is **mislukt**, neemt u contact op met de ondersteuning met details over het oplossen van problemen.
 - Als **provisioningState** wordt **bijgewerkt**, wordt mogelijk een andere uitbrei ding geïmplementeerd. Controleer of er actieve bewerkingen zijn op de VM, wacht totdat ze zijn voltooid en voer de mislukte Site Recovery taak replicatie inschakelen opnieuw uit.
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Kan geen doel-VM selecteren (het tabblad netwerk selectie is niet beschikbaar)

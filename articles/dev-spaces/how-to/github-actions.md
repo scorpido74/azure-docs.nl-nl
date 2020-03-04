@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Wijzigingen van een pull-aanvraag rechtstreeks controleren en testen in azure Kubernetes service met GitHub-acties en Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196549"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252381"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
 
@@ -39,7 +39,7 @@ In deze handleiding leert u het volgende:
 
 Een Azure Container Registry maken (ACR):
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ Sla de waarde *login server* op uit de uitvoer omdat deze wordt gebruikt in een 
 
 Gebruik [AZ AD SP create-for-RBAC][az-ad-sp-create-for-rbac] om een service-principal te maken. Bijvoorbeeld:
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ Sla de JSON-uitvoer op omdat deze wordt gebruikt in een latere stap.
 
 Gebruik [AZ AKS show][az-aks-show] om de id van uw AKS *-* cluster weer te geven:
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 Gebruik [AZ ACR show][az-acr-show] om de *id* van de ACR weer te geven:
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 Gebruik [AZ Role Assignment Create][az-role-assignment-create] om *Inzender* toegang te geven tot uw AKS-cluster en *AcrPush* toegang tot uw ACR.
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ Als u uw wijzigingen in de *hoofd* vertakking in uw Fork samenvoegt, wordt er ee
 
 ## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

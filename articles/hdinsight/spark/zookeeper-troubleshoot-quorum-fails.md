@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
-ms.openlocfilehash: a0874826529b5c9ca5d6d4107fe820cd522d81d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894034"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250240"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server kan geen quorum vormen in azure HDInsight
 
@@ -20,24 +20,31 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 ## <a name="issue"></a>Probleem
 
-Apache ZooKeeper server is niet in orde, kunnen symptomen zijn: zowel resource managers/naam knooppunten bevinden zich in de stand-bymodus, eenvoudige HDFS-bewerkingen werken niet, `zkFailoverController` is gestopt en kan niet worden gestart, garens/Spark/livy-taken vanwege Zookeeper fouten. Er wordt mogelijk een fout bericht met de volgende strekking weer gegeven:
+Apache ZooKeeper server is niet in orde, kunnen symptomen zijn: zowel resource managers/naam knooppunten bevinden zich in de stand-bymodus, eenvoudige HDFS-bewerkingen werken niet, `zkFailoverController` is gestopt en kan niet worden gestart, garens/Spark/livy-taken vanwege Zookeeper fouten. LLAP-daemons kunnen ook niet worden gestart op beveiligde Spark-of interactieve Hive-clusters. Er wordt mogelijk een fout bericht met de volgende strekking weer gegeven:
 
 ```
 19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
 19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
 ```
 
+In de Zookeeper-server logboeken op een Zookeeper-host op/var/log/Zookeeper/Zookeeper-Zookeeper-server-\*. uit, ziet u mogelijk ook de volgende fout:
+
+```
+2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
+java.nio.channels.CancelledKeyException
+```
+
 ## <a name="cause"></a>Oorzaak
 
 Wanneer het volume van de momentopname bestanden groot is of momentopname bestanden zijn beschadigd, kan de ZooKeeper-server geen quorum vormen, waardoor ZooKeeper gerelateerde services beschadigd raken. De ZooKeeper-server verwijdert geen oude momentopname bestanden uit de bijbehorende gegevens Directory, maar het is een periodieke taak die door gebruikers moet worden uitgevoerd om de healthiness van ZooKeeper te onderhouden. Zie [ZooKeeper-sterke punten en beperkingen](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations)voor meer informatie.
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
-Controleer de ZooKeeper-gegevens Directory `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeepe/version-2` om erachter te komen of de bestands grootte van de moment opnamen groot is. Voer de volgende stappen uit als er grote moment opnamen bestaan:
+Controleer de ZooKeeper-gegevens Directory `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeeper/version-2` om erachter te komen of de bestands grootte van de moment opnamen groot is. Voer de volgende stappen uit als er grote moment opnamen bestaan:
 
-1. Back-ups maken van moment opnamen in `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeepe/version-2`.
+1. Back-ups maken van moment opnamen in `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeeper/version-2`.
 
-1. Moment opnamen opruimen in `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeepe/version-2`.
+1. Moment opnamen opruimen in `/hadoop/zookeeper/version-2` en `/hadoop/hdinsight-zookeeper/version-2`.
 
 1. Start alle ZooKeeper-servers opnieuw op in Apache Ambari-gebruikers interface.
 

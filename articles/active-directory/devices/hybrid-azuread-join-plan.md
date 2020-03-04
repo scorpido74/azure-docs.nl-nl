@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591605"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255006"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -43,11 +43,11 @@ Als u uw hybride implementatie van Azure AD wilt plannen, moet u vertrouwd zijn 
 
 |   |   |
 | --- | --- |
-| ![Selecteren][1] | Ondersteunde apparaten controleren |
-| ![Selecteren][1] | Bekijk de dingen die u moet weten |
-| ![Selecteren][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
-| ![Selecteren][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
-| ![Selecteren][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
+| ![Controleren][1] | Ondersteunde apparaten controleren |
+| ![Controleren][1] | Bekijk de dingen die u moet weten |
+| ![Controleren][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
+| ![Controleren][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
+| ![Controleren][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
 
 ## <a name="review-supported-devices"></a>Ondersteunde apparaten controleren
 
@@ -79,6 +79,8 @@ Als eerste plannings stap moet u uw omgeving controleren en bepalen of u apparat
 - Hybride Azure AD-samen voeging wordt niet ondersteund voor Windows Server met de rol domein controller (DC).
 
 - Hybride Azure AD-samen voeging wordt niet ondersteund op Windows-apparaten op een lager niveau wanneer u Credential roaming of roaming tussen gebruikers profielen of een verplicht profiel gebruikt.
+
+- Server Core-besturings systeem biedt geen ondersteuning voor elk type apparaatregistratie.
 
 ### <a name="os-imaging-considerations"></a>Aandachtspunten voor installatie van besturings systeem
 - Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (Sysprep) en als u een installatie kopie van **vóór Windows 10 1809** gebruikt, moet u ervoor zorgen dat de installatie kopie niet afkomstig is van een apparaat dat al is geregistreerd bij Azure AD als hybride Azure AD-deelname.

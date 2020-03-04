@@ -1,18 +1,16 @@
 ---
 title: Een app klonen met PowerShell
 description: Meer informatie over het klonen van uw App Service-app naar een nieuwe app met behulp van Power shell. Diverse kloon scenario's worden behandeld, waaronder Traffic Manager-integratie.
-author: ahmedelnably
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967208"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255192"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>App-klonen Azure App Service met behulp van Power shell
 
@@ -124,7 +122,7 @@ Dit zijn de bekende beperkingen voor het klonen van apps:
 * Uitgaande IP-adressen worden gewijzigd bij het klonen naar een andere schaal eenheid
 * Niet beschikbaar voor Linux-apps
 
-### <a name="references"></a>Naslaginformatie
+### <a name="references"></a>Verwijzingen
 * [App Service klonen](app-service-web-app-cloning.md)
 * [Een back-up maken van een app in Azure App Service](manage-backup.md)
 * [Azure Resource Manager ondersteuning voor Azure Traffic Manager preview](../traffic-manager/traffic-manager-powershell-arm.md)

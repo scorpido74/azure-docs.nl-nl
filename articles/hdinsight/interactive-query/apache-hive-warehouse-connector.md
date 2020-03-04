@@ -1,18 +1,18 @@
 ---
 title: Apache Spark & component-Hive Warehouse connector-Azure HDInsight
 description: Meer informatie over het integreren van Apache Spark en Apache Hive met de Hive-Warehouse connector op Azure HDInsight.
-author: nakhanha
-ms.author: nakhanha
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/02/2020
+ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744876"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252411"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 
@@ -54,17 +54,17 @@ Kopieer de knooppunt gegevens uit het `/etc/hosts`-bestand op headnode0 van uw i
 
 #### <a name="from-your-interactive-query-cluster"></a>Vanuit uw interactieve query cluster
 
-1. Ga naar de start pagina van de Apache Ambari van het cluster met `https://LLAPCLUSTERNAME.azurehdinsight.net` waarbij `LLAPCLUSTERNAME` de naam is van uw interactieve query cluster.
+1. Navigeer naar de Ambari-Hive-pagina van het cluster met `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` waarbij `LLAPCLUSTERNAME` de naam is van uw interactieve query cluster.
 
-1. Navigeer naar **Hive** > **configs** > **Geavanceerde** > **Advanced component-site** > **Hive. Zookeeper. quorum** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Navigeer naar **Advanced** > **General** > **Hive. meta Store. uri's** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
-1. Navigeer naar **hive** > **configs** > **Advanced** > **General** > **Hive. meta Store. uri's** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Ga naar **geavanceerde** > **Geavanceerde component-site** > **Hive. Zookeeper. quorum** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Vanuit uw Apache Spark-cluster
 
-1. Ga naar de start pagina van de Apache Ambari van het cluster met `https://SPARKCLUSTERNAME.azurehdinsight.net` waarbij `SPARKCLUSTERNAME` de naam is van uw Apache Spark cluster.
+1. Navigeer naar de Ambari-Hive-pagina van het cluster met `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` waarbij `SPARKCLUSTERNAME` de naam is van uw Apache Spark cluster.
 
-1. Navigeer naar **hive** > **configuraties** > **Geavanceerde** > **Geavanceerde component-Interactive-site** > **Hive. llap. daemon. service. hosts** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `@llap0`.
+1. Navigeer naar **geavanceerde** > **Geavanceerde component-interactive-site** > **Hive. llap. daemon. service. host** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Spark-cluster instellingen configureren
 
@@ -91,7 +91,7 @@ Sla de wijzigingen op en start de onderdelen indien nodig opnieuw op.
 
 U kunt kiezen uit een aantal verschillende methoden om verbinding te maken met uw interactieve query cluster en query's uit te voeren met de Hive-Warehouse connector. Ondersteunde methoden zijn onder andere de volgende hulpprogram ma's:
 
-* [spark-shell](../spark/apache-spark-shell.md)
+* [Spark-shell](../spark/apache-spark-shell.md)
 * PySpark
 * Spark-verzenden
 * [Zeppelin](../spark/apache-spark-zeppelin-notebook.md)
@@ -174,7 +174,7 @@ Spark ondersteunt geen systeem eigen ondersteuning voor het schrijven naar de ta
     ```scala
     hive.table("sampletable_colorado").show()
     ```
-    
+
     ![component-Warehouse connector-Hive weer geven](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>Gestructureerd streamen schrijven
@@ -253,7 +253,7 @@ Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruik `:q`
 
         ![Hive-beleids lijst van de component Warehouse connector zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Add**.
+    a. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
                 ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 
@@ -261,5 +261,5 @@ Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruik `:q`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Interactieve query gebruiken met HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Interactieve query gebruiken met HDInsight](./apache-interactive-query-get-started.md)
 * [Voor beelden van interactie met hive Warehouse connector met Zeppelin, livy, Spark-Submit en pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

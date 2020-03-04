@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026781"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252339"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Apparaatconnectiviteit bewaken met Azure CLI
 
@@ -33,16 +33,19 @@ Gebruik de Azure CLI IoT-extensie om berichten te bekijken die uw apparaten naar
 Voer de volgende opdracht uit vanaf de opdracht regel die u wilt installeren:
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-De versie van de uitbrei ding controleren door uit te voeren 
+Controleer de versie van de uitbrei ding door het volgende uit te voeren:
+
 ```cmd/sh
 az --version
 ```
-U moet de Azure-cli-IOT-ext-extensie zien 0.8.1 of hoger. Als dat niet het geval is, voert u
+
+U ziet dat de Azure IOT-uitbrei ding 0.8.1 of hoger is. Als dat niet het geval is, voert u de volgende handelingen uit:
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>De uitbrei ding gebruiken

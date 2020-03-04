@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227416"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244988"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quick Start: een privé-DNS-zone met Azure maken met behulp van de Azure Portal
 
@@ -64,10 +64,10 @@ In deze sectie moet u de volgende para meters in de stappen vervangen door de on
 
 | Parameter                   | Waarde                |
 |-----------------------------|----------------------|
-| **\<resource-group-name >**  | MyAzureResourceGroup |
+| **\<resource-group-name >**  | MyAzureResourceGroup (bestaande resource groep selecteren) |
 | **\<virtuele-netwerk naam >** | MyAzureVNet          |
 | **\<regio-naam >**          | VS - west-centraal      |
-| **\<IPv4-adres ruimte >**   | 10.2.0.0 \ 16          |
+| **> \<IPv4-adres ruimte**   | 10.2.0.0 \ 16          |
 | **\<subnet naam >**          | MyAzureSubnet        |
 | **\<subnet-adres bereik >** | 10.2.0.0 \ 24          |
 

@@ -3,8 +3,8 @@ title: 'Zelf studie: Oracle online migreren naar Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van Oracle on-premises of op virtuele machines naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 14db95adccf5118321bc763cbe599e19febc7eac
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759906"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255570"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelf studie: Oracle migreren naar Azure Database for PostgreSQL online met behulp van DMS (preview)
 
@@ -231,7 +231,7 @@ Als u Azure Database Migration Service het schema voor u wilt maken, moet u ervo
 > [!IMPORTANT]
 > Azure Database Migration Service vereist dat alle tabellen op dezelfde manier worden gemaakt met behulp van Azure Database Migration Service of een hulp programma, zoals ora2pg, maar niet beide.
 
-Aan de slag gaan:
+Aan de slag:
 
 1. Maak een schema in de doel database op basis van uw toepassings vereisten. PostgreSQL-tabel schema en kolommen namen zijn standaard kleine letters. Oracle-tabel schema en-kolommen zijn daarentegen standaard in hoofd letters.
 2. In de stap schema's selecteren geeft u de doel database en het doel schema op.
@@ -343,7 +343,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
     ![Toewijzen aan doeldatabases](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
-3. Selecteer **Opslaan**, geef op het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit, en controleer vervolgens het overzicht om te verzekeren dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
+3. Selecteer **Opslaan**, geef in het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit en controleer het overzicht om ervoor te zorgen dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
 
     ![Migratieoverzicht](media/tutorial-oracle-azure-postgresql-online/dms-migration-summary.png)
 

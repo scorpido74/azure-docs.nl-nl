@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van Azure Functions met behu
 keywords: jenkins, azure, devops, java, azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470663"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250909"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Implementeren naar Azure Functions met behulp van de Jenkins Azure Functions-invoeg toepassing
 
@@ -31,19 +31,19 @@ In de volgende stappen kunt u zien hoe u een Java-functie maakt met de Azure CLI
 
 1. Maak een resourcegroep, vervang de tijdelijke aanduiding **&lt;resource_group>** door de naam van uw resourcegroep.
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. Maak een Azure-opslagaccount en vervang de tijdelijke aanduidingen door de desbetreffende waarden.
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. Maak de testfunctie-app en vervang de tijdelijke aanduidingen door de desbetreffende waarden.
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -148,7 +148,7 @@ U kunt nu de Jenkins-taak uitvoeren.
 
 Als u deze toepassing verder niet gaat gebruiken, verwijder dan de resources die u hebt gemaakt met de volgende stap:
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

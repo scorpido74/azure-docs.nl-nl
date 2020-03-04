@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 670797eb833b0a145a18e20c6bba711ca11609bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483282"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252058"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB gegevens bewaken met behulp van diagnostische instellingen in azure
 
@@ -20,13 +20,13 @@ Diagnostische instellingen in Azure worden gebruikt om bron logboeken te verzame
 
 Metrische platform gegevens en de activiteiten logboeken worden automatisch verzameld, terwijl u een diagnostische instelling moet maken om bron logboeken te verzamelen of deze buiten Azure Monitor door te sturen. U kunt de diagnostische instelling voor Azure Cosmos-accounts inschakelen met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Navigeer naar uw Azure Cosmos-account. Open het deel venster **Diagnostische instellingen** en selecteer optie **Diagnostische instelling toevoegen** .
 
 1. In het deel venster **Diagnostische instellingen** vult u het formulier in met de volgende details: 
 
-    * **Naam**: Voer een naam voor de logboeken om te maken.
+    * **Naam**: Voer een naam in voor de logboeken die u wilt maken.
 
     * U kunt de logboeken opslaan om te **archiveren naar een opslag account**, **naar een event hub streamen** of **verzenden naar log Analytics**
 
@@ -99,7 +99,7 @@ Zie voor gedetailleerde informatie over het maken van een diagnostische instelli
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Wat is de maximale door Voer die een partitie biedt?
+1. Wat is de maximale door Voer die een partitie heeft verbruikt?
 
    ```Kusto
    AzureDiagnostics

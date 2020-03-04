@@ -4,12 +4,12 @@ description: Leer hoe u de Jenkins-invoegtoepassing voor Azure App Service kunt 
 keywords: jenkins, azure, devops, app service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158515"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251463"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Implementeren naar Azure App Service met behulp van de Jenkins-invoegtoepassing 
 
@@ -67,7 +67,7 @@ Als u uw project wilt implementeren in Web Apps, kunt u uw build-artefacten uplo
 Voordat u de taak in Jenkins instelt, hebt u een Azure App Service-plan en een web-app nodig om de Java-app uit te voeren.
 
 
-1. Maak een Azure App Service-plan met de prijscategorie **GRATIS** met behulp van de `az appservice plan create` [Azure CLI-opdracht](/cli/azure/appservice/plan#az-appservice-plan-create). Het App Service-plan definieert de fysieke resources die worden gebruikt voor het hosten van uw apps. Alle toepassingen die zijn toegewezen aan een App Service-plan, delen deze resources. Gedeelde resources helpen u kosten te besparen wanneer meerdere apps worden gehost.
+1. Maak een Azure App Service plan met de prijs categorie **gratis** met behulp van de `az appservice plan create` [Azure cli-opdracht](/cli/azure/appservice/plan#az-appservice-plan-create). Het App Service-plan definieert de fysieke resources die worden gebruikt voor het hosten van uw apps. Alle toepassingen die zijn toegewezen aan een App Service-plan, delen deze resources. Gedeelde resources helpen u kosten te besparen wanneer meerdere apps worden gehost.
 2. Maak een web-app. U kunt de [Azure-portal](/azure/app-service/configure-common) of de volgende `az` Azure CLI-opdracht gebruiken:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -207,10 +207,13 @@ Geef bij **Docker-register-URL** de URL op in de indeling https://&lt;uwRegister
 ### <a name="for-azure-app-service-on-linux"></a>Voor Azure App Service op Linux
 
 1. Om uw web-app te verifiëren, voert u de volgende opdracht uit in de Azure CLI:
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     Het volgende bericht wordt weergegeven:
+    
     ```CLI
     ["calculator"]
     ```

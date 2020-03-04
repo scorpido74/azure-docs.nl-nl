@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Antwoorden vinden op enkele veelgestelde vragen over Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934186"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255716"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure dev Spaces
 
@@ -64,6 +64,14 @@ Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met [API-server geautorise
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand verkeer voor cluster knooppunten?
 
 Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand [verkeer voor cluster knooppunten][aks-restrict-egress-traffic] die zijn ingeschakeld wanneer de juiste FQDN-namen zijn toegestaan. Meer informatie over het gebruik van een AKS-cluster met beperkt uitgaand verkeer voor knoop punten die zijn ingeschakeld met Azure dev Spaces is [hier](configure-networking.md#ingress-and-egress-network-traffic-requirements)beschikbaar.
+
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met RBAC-functionaliteit?
+
+Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met of zonder RBAC ingeschakeld.
+
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Wat gebeurt er wanneer ik inschakelingen voor het project in Visual Studio Activeer?
+
+Wanneer u Visual Studio gebruikt om uw project voor te bereiden, hebt u de mogelijkheid om in te scha kelen voor uw service. Als u inschakelt, wordt er een openbaar eind punt gemaakt voor toegang tot uw service wanneer deze wordt uitgevoerd op uw AKS-cluster. Dit is optioneel. Als u geen ingang inschakelt, is uw service alleen toegankelijk vanuit uw AKS-cluster.
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

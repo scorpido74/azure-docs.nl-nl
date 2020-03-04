@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588158"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252520"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Gegevens verbinden vanuit Office 365-logboeken
 
@@ -33,9 +33,9 @@ U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet een globale beheerder of beveiligings beheerder zijn op uw Tenant.
-- Als uw Tenant geen Office 365 E3 of Office 365 E5-licentie heeft, moet u Unified auditing inschakelen voor uw Tenant met een van de volgende processen:
+- Voor uw Tenant moet Unified auditing zijn ingeschakeld. Voor tenants met Office 365 E3-of E5-licenties is uniforme controle standaard ingeschakeld. <br>Als uw Tenant niet over een van deze licenties beschikt, moet u Unified auditing op uw Tenant inschakelen met een van de volgende methoden:
     - [Gebruik de cmdlet Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) en schakel de para meter ' UnifiedAuditLogIngestionEnabled ' in.
-    - [Of met behulp van de beveiligings-en compliancecentrum-gebruikers interface](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+    - [De beveiligings-en compliancecentrum-gebruikers interface gebruiken](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Verbinding maken met Office 365
 

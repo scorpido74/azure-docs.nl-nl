@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: de830d07010037793eaf7471fc1147a42081b09c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770591"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245035"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core-Azure dev Spaces
 
@@ -44,7 +44,7 @@ U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Een 
     ![AKS maken in de Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klik op *Controleren + maken*.
-1. Klik op *Maken*.
+1. Klik op *Create*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
 
@@ -60,7 +60,7 @@ Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig 
 1. Geef uw project *webfrontend* een naam en klik op *maken*.
 1. Als u hierom wordt gevraagd, kiest u *Web Application (model-view-controller)* voor de sjabloon.
 1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,1* .
-1. Klik op *Maken*.
+1. Klik op *Create*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkel ruimte
 
@@ -124,7 +124,7 @@ Verwijder het onderbrekings punt door de cursor op regel 20 in `Controllers/Home
 
 Navigeer naar uw resource groep in de Azure Portal en klik op *resource groep verwijderen*. U kunt ook de opdracht [AZ AKS delete](/cli/azure/aks#az-aks-delete) gebruiken:
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

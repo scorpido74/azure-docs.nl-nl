@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587002"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250806"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Zelf studie: een NAT-gateway maken met behulp van de Azure Portal en de NAT-service testen
 
@@ -36,27 +36,24 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 We begeleiden u bij het configureren van een volledige test omgeving en de uitvoering van de tests zelf in de volgende stappen. We beginnen met de bron, die gebruikmaakt van de NAT-gateway resource die u in latere stappen hebt gemaakt.
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
 Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, moet u de resource groep en het virtuele netwerk maken.
 
-1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource maken** > **netwerk** > **virtueel netwerk**, of zoek naar **Virtual Network** in de zoek functie voor Marketplace.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupNAT |
+| **\<virtuele-netwerk naam >** | myVNetsource          |
+| **\<regio-naam >**          | VS - oost 2      |
+| **> \<IPv4-adres ruimte**   | 192.168.0.0 \ 16          |
+| **\<subnet naam >**          | mySubnetsource        |
+| **\<subnet-adres bereik >** | 192.168.0.0 \ 24          |
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Name | Voer **myVNetsource**in. |
-    | Adresruimte | voer **192.168.0.0/16** in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer New- **myResourceGroupNAT**maken. |
-    | Locatie | Selecteer **VS - oost 2**.|
-    | Subnet - naam | Voer **mySubnetsource**in. |
-    | Subnet - adresbereik | Voer **192.168.0.0/24**in. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Laat de overige standaardwaarden staan en selecteer **Maken**.
-
-### <a name="create-source-virtual-machine"></a>Virtuele bron machine maken
+## <a name="create-source-virtual-machine"></a>Virtuele bron machine maken
 
 We gaan nu een VM maken voor het gebruik van de NAT-service. Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaar niveau om toegang te krijgen tot de virtuele machine. De NAT-service is stroom richting, en vervangt de standaard Internet bestemming in uw subnet. Het open bare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
 
@@ -108,7 +105,7 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service 
     | ------- | ----- |
     | IP-versie | Selecteer **IPv4**.
     | SKU | selecteer **Standaard**.
-    | Name | Voer **myPublicIPsource**in. |
+    | Naam | Voer **myPublicIPsource**in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **myResourceGroupNAT**. |
     | Locatie | Selecteer **VS - oost 2**.|
@@ -161,25 +158,25 @@ Al het uitgaande verkeer naar Internet bestemmingen maakt nu gebruik van de NAT-
 
 We gaan nu een bestemming maken voor het uitgaande verkeer dat door de NAT-service is vertaald, zodat u het kunt testen.
 
-### <a name="configure-virtual-network-for-destination"></a>Virtueel netwerk voor bestemming configureren
+
+## <a name="virtual-network-and-parameters-for-destination"></a>Virtueel netwerk en de para meters voor bestemming
 
 Voordat u een virtuele machine voor de bestemming implementeert, moet u een virtueel netwerk maken waarin de virtuele doel machine zich kan bevinden. Hieronder volgen dezelfde stappen als voor de bron-VM met enkele kleine wijzigingen om het bestemmings eindpunt zichtbaar te maken.
 
-1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupNAT |
+| **\<virtuele-netwerk naam >** | myVNetdestination          |
+| **\<regio-naam >**          | VS - oost 2      |
+| **> \<IPv4-adres ruimte**   | 192.168.0.0 \ 16          |
+| **\<subnet naam >**          | mySubnetdestination        |
+| **\<subnet-adres bereik >** | 192.168.0.0 \ 24          |
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Name | Voer **myVNetdestination**in. |
-    | Adresruimte | voer **192.168.0.0/16** in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer New- **myResourceGroupNAT**maken. |
-    | Locatie | Selecteer **VS - oost 2**.|
-    | Subnet - naam | Voer **mySubnetdestination**in. |
-    | Subnet - adresbereik | Voer **192.168.0.0/24**in. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>Virtuele doel machine maken
+## <a name="create-destination-virtual-machine"></a>Virtuele doel machine maken
 
 1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource maken** > **Compute** > **Ubuntu Server 18,04 LTS**, of zoek naar **Ubuntu Server 18,04 LTS** in de zoek functie voor Marketplace.
 

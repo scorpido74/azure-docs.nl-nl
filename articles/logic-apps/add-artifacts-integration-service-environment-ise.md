@@ -1,27 +1,29 @@
 ---
-title: Artefacten toevoegen aan integratieserviceomgevingen
+title: Resources toevoegen aan integratie service omgevingen
 description: Logische apps, integratie accounts, aangepaste connectors en beheerde connectors toevoegen aan uw integratie service omgeving (ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191684"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250925"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Artefacten toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
-Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u artefacten toe, zoals Logic apps, integratie accounts en connectors, zodat ze toegang hebben tot de resources in uw virtuele Azure-netwerk. Zo worden beheerde ISE-connectors die beschikbaar zijn nadat u uw ISE hebt gemaakt, niet automatisch weer gegeven in de ontwerp functie voor logische apps. Voordat u deze ISE-connectors kunt gebruiken, moet u [deze connectors hand matig toevoegen en implementeren voor uw ISE](#add-ise-connectors-environment) , zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
+Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u resources zoals Logic apps, integratie accounts en connectors toe zodat ze toegang hebben tot de resources in uw virtuele Azure-netwerk. Zo worden beheerde ISE-connectors die beschikbaar zijn nadat u uw ISE hebt gemaakt, niet automatisch weer gegeven in de ontwerp functie voor logische apps. Voordat u deze ISE-connectors kunt gebruiken, moet u [deze connectors hand matig toevoegen en implementeren voor uw ISE](#add-ise-connectors-environment) , zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
 * De ISE die u hebt gemaakt om uw Logic apps uit te voeren. Als u nog geen ISE hebt, [maakt u eerst een ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+* Als u resources wilt maken, toevoegen of bijwerken die zijn geïmplementeerd in een ISE, moet u de rol eigenaar of Inzender toewijzen aan die ISE, of u hebt machtigingen overgenomen via het Azure-abonnement of de Azure-resource groep die is gekoppeld aan de ISE. Voor personen die geen eigenaar, bijdrager of overgenomen machtigingen hebben, kunnen ze de rol Integratieserviceomgeving Inzender of de rol van Integratieserviceomgeving ontwikkelaar toewijzen. Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources](../role-based-access-control/overview.md)? voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
 
 <a name="create-logic-apps-environment"></a>
 
@@ -82,7 +84,7 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
 
 1. [Koppel uw logische app op de gebruikelijke manier aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-1. Ga door met het toevoegen van artefacten aan uw integratie account, zoals [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) en [overeenkomsten](../logic-apps/logic-apps-enterprise-integration-agreements.md).
+1. Ga door met het toevoegen van resources aan uw integratie account, zoals [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) en [overeenkomsten](../logic-apps/logic-apps-enterprise-integration-agreements.md).
 
 1. Zie [uw integratie service omgeving beheren](../logic-apps/ise-manage-integration-service-environment.md)voor informatie over het beheren van integratie accounts in uw ISE.
 

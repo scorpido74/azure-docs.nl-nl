@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470187"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251867"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snelstartgids: een Load Balancer maken om taken te verdelen over Vm's met behulp van de Azure Portal
 
@@ -43,7 +43,7 @@ In deze sectie maakt u een Load Balancer die de taak verdeling van virtuele mach
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
     | Resourcegroep         | Selecteer **nieuwe maken** en typ *myResourceGroupSLB* in het tekstvak.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
     | SKU           | Selecteer **Standard** of **Basic**. Micro soft adviseert standaard voor productie werkbelastingen. |
@@ -80,7 +80,7 @@ Als u wilt dat de Load Balancer de status van uw app bewaken, gebruikt u een sta
     
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *myHealthProbe*in. |
+    | Naam | Voer *myHealthProbe*in. |
     | Protocol | Selecteer **http**. |
     | Poort | Voer *80*in.|
     | Interval | Geef *15* **op voor** het aantal seconden tussen de test pogingen. |
@@ -97,7 +97,7 @@ Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de V
     
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer *myhttprule als*in. |
+    | Naam | Voer *myhttprule als*in. |
     | Protocol | selecteer **TCP**. |
     | Poort | Voer *80*in.|
     | Backend-poort | Voer *80*in. |
@@ -110,21 +110,20 @@ Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de V
 
 In deze sectie maakt u een virtueel netwerk, maakt u drie virtuele machines voor de back-end-pool van de Load Balancer en installeert u IIS op de virtuele machines om de Load Balancer te testen.
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Name | Voer *myVNet* in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer bestaande resource- *myResourceGroupSLB*. |
-    | Locatie | Selecteer **Europa - west**.|
-    | Subnet - naam | Voer *myBackendSubnet* in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
-1. Laat de overige standaardwaarden staan en selecteer **Maken**.
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupSLB |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | Europa -west      |
+| **> \<IPv4-adres ruimte**   | 10.1.0.0 \ 16          |
+| **\<subnet naam >**          | myBackendSubnet        |
+| **\<subnet-adres bereik >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 Open bare IP-Sku's en Load Balancer Sku's moeten overeenkomen. Gebruik voor Standard Load Balancer Vm's met standaard-IP-adressen in de back-end-pool. In deze sectie maakt u drie virtuele machines (*myVM1*, *myVM2* en *myVM3*) met een standaard openbaar IP-adres in drie verschillende zones (*zone 1*, *zone 2*en *zone 3*) die later worden toegevoegd aan de back-end-groep van de Load Balancer die eerder is gemaakt. Als u basis hebt geselecteerd, gebruikt u Vm's met basis-IP-adressen.
@@ -159,7 +158,7 @@ Open bare IP-Sku's en Load Balancer Sku's moeten overeenkomen. Gebruik voor Stan
 
     | Instelling | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name |  *myVM2* |*myVM3*|
+    | Naam |  *myVM2* |*myVM3*|
     | Beschikbaarheidszone | 2 |3|
     |Openbare IP| **Standaard** SKU|**Standaard** SKU|
     | Zone voor open bare IP-Beschik baarheid| **Zone redundant** |**Zone redundant**|

@@ -4,25 +4,19 @@ description: Meer informatie over hoe u een virtueel StorSimple van 1200 Series 
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/14/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 815fda861748f1011eab22ef75fa7e933ca64c55
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209478"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252667"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200-migratie naar Azure File Sync
 
-De StorSimple 1200-serie is een virtueel apparaat dat wordt uitgevoerd in een on-premises Data Center.
-Met het aangekondigde einde van de service-levens duur van de StorSimple-product lijn op december 31 2022 is de Cloud service waarmee dit virtuele apparaat is verbonden, niet meer actief.
-
-Het is van cruciaal belang om te migreren van een StorSimple-apparaat met een ruimere tijd tot reserve.
-Azure File Sync is de natuurlijke opvolgende technologie, met meer functies en meer flexibiliteit dan StorSimple-aanbiedingen.
-
-Dit artikel bevat de benodigde achtergrond kennis en migraties stappen voor een geslaagde migratie naar Azure File Sync.
+De StorSimple 1200-serie is een virtueel apparaat dat wordt uitgevoerd in een on-premises Data Center. Het is mogelijk om de gegevens van dit apparaat te migreren naar een Azure File Sync omgeving. Dit artikel bevat de benodigde achtergrond kennis en migraties stappen voor een geslaagde migratie naar Azure File Sync.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

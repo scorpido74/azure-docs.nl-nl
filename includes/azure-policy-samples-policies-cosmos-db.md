@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 6c8262fdf8dc252ced7a82a4d41b0be353f2fda5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 412c24225b656cd7b473bb2121d49f3848359cc3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77780634"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262140"
 ---
-|Name |Beschrijving |Effect (s) |Version |Bron |
+|Naam |Beschrijving |Effect (s) |Versie |GitHub |
 |---|---|---|---|---|
-|[Geavanceerde beveiliging tegen bedreigingen implementeren voor Cosmos DB accounts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb5f04e03-92a3-4b09-9410-2cc5e5047656) |Met dit beleid kunt u geavanceerde bedreigings beveiliging voor Cosmos DB-accounts. |DeployIfNotExists, uitgeschakeld |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/CosmosDbAdvancedThreatProtection_Deploy.json)
+|[Geavanceerde beveiliging tegen bedreigingen implementeren voor Cosmos DB accounts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb5f04e03-92a3-4b09-9410-2cc5e5047656) |Met dit beleid kunt u geavanceerde bedreigings beveiliging voor Cosmos DB-accounts. |DeployIfNotExists, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/CosmosDbAdvancedThreatProtection_Deploy.json)

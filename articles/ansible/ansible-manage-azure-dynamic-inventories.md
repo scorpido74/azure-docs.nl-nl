@@ -4,12 +4,12 @@ description: Informatie over het beheren van dynamische voorraden in Azure met A
 keywords: ansible, azure, devops, bash, cloudshell, dynamische voorraad
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd225dcf8a0c307d49e985817b71c491559edb14
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193596"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247860"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Zelf studie: dynamische voor raden van uw Azure-resources configureren met behulp van Ansible
 
@@ -91,25 +91,25 @@ Ansible biedt een python-script met de naam [azure_rm. py](https://github.com/an
 
 1. Gebruik de GNU-opdracht `wget` om het script `azure_rm.py` op te halen:
 
-    ```azurecli-interactive
+    ```python
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
 1. Gebruik de opdracht `chmod` om de machtigingen voor toegang tot het script `azure_rm.py` te wijzigen. De volgende opdracht maakt gebruik van de parameter `+x` om uitvoering van het opgegeven bestand (`azure_rm.py`) toe te staan:
 
-    ```azurecli-interactive
+    ```python
     chmod +x azure_rm.py
     ```
 
 1. Gebruik de [ansible-opdracht](https://docs.ansible.com/ansible/2.4/ansible.html) om verbinding te maken met de resourcegroep: 
 
-    ```azurecli-interactive
+    ```python
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
     ```
 
 1. Als u verbinding hebt, ziet u resultaten die vergelijkbaar zijn met de volgende uitvoer:
 
-    ```Output
+    ```output
     ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -147,7 +147,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
 
 1. Wanneer u de voor gaande opdracht uitvoert, wordt de volgende fout weer gegeven:
 
-    ```Output
+    ```output
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
@@ -159,7 +159,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
 
 1. Wanneer u de Playbook uitvoert, worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende uitvoer:
   
-    ```Output
+    ```output
     ansible-inventory-test-vm1_0324 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ansible-inventory-test-vm2_8971 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
@@ -170,7 +170,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
 
 - Zodra u een tag hebt ingesteld, moet u dat label inschakelen. Een manier om een tag in te scha kelen, is door de tag te exporteren naar een omgevings variabele `AZURE_TAGS` via de `export` opdracht:
 
-    ```azurecli-interactive
+    ```console
     export AZURE_TAGS=nginx
     ```
     
@@ -182,7 +182,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
     
     Nu ziet u slechts één virtuele machine (het label waarvan de tag overeenkomt met de waarde die is geëxporteerd naar de omgevings variabele `AZURE_TAGS`):
 
-    ```Output
+    ```output
        ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -194,7 +194,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
 
 - Voer de opdracht uit `ansible-inventory -i myazure_rm.yml --graph` om de volgende uitvoer op te halen:
 
-    ```Output
+    ```output
         @all:
           |--@tag_Ansible_nginx:
           |  |--ansible-inventory-test-vm1_9e2f
@@ -215,7 +215,7 @@ Het doel van tags is om de mogelijkheid in te schakelen snel en eenvoudig met su
 
 1. Maak een bestand met de naam `nginx.yml`:
 
-   ```azurecli-interactive
+   ```console
    code nginx.yml
    ```
 
@@ -255,7 +255,7 @@ Het doel van tags is om de mogelijkheid in te schakelen snel en eenvoudig met su
 
 1. Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
-    ```Output
+    ```output
     PLAY [Install and start Nginx on an Azure virtual machine] 
 
     TASK [Gathering Facts] 
@@ -285,13 +285,13 @@ In deze sectie wordt één techniek geïllustreerd om te testen of Nginx op uw v
 
 1. Terwijl u verbinding hebt met de virtuele machine `ansible-inventory-test-vm1`, voert u de opdracht [nginx - v](https://nginx.org/en/docs/switches.html) uit om te bepalen of Nginx is geïnstalleerd.
 
-    ```azurecli-interactive
+    ```console
     nginx -v
     ```
 
 1. Zodra u de opdracht `nginx -v` uitvoert, ziet u de Nginx-versie (tweede regel) die aangeeft dat Nginx is geïnstalleerd.
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm1:~$ nginx -v
 
     nginx version: nginx/1.10.3 (Ubuntu)
@@ -303,7 +303,7 @@ In deze sectie wordt één techniek geïllustreerd om te testen of Nginx op uw v
 
 1. Als u de voor gaande stappen voor de `ansible-inventory-test-vm2` virtuele machine uitvoert, wordt een informatief bericht weer gegeven waarin wordt aangegeven waar u nginx kunt ophalen (wat impliceert dat u dit op dit moment niet hebt geïnstalleerd):
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm2:~$ nginx -v
     The program 'nginx' can be found in the following packages:
     * nginx-core

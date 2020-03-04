@@ -11,33 +11,30 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 59c2b3b910a9585362643bfcf7cdf9fa2df977bc
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3bfcc1ef8c58f71811af604fbc07736a13102e83
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611999"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249088"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app
 
 In deze Quick Start leert u hoe u een Java-webtoepassing integreert met het micro soft Identity-platform. Uw app meldt zich aan bij een gebruiker, haalt een toegangs token op om de Microsoft Graph-API aan te roepen en brengt een aanvraag naar de Microsoft Graph-API.
 
-Wanneer u deze Snelstartgids hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen) en werk-of school accounts van een bedrijf of organisatie die gebruikmaakt van Azure Active Directory.
-
-![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-java-webapp/java-quickstart.svg)
+Wanneer u deze Snelstartgids hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen) en werk-of school accounts van een bedrijf of organisatie die gebruikmaakt van Azure Active Directory. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 of hoger en [maven](https://maven.apache.org/).
-- Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
 >
 > 1. Ga naar de [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
@@ -73,7 +70,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > Het code voorbeeld voor deze Quick Start werkt alleen als u:
 >
-> 1. Antwoord-Url's toevoegen als `https://localhost:8080/msal4jsamples/secure/aad` en `https://localhost:8080/msal4jsamples/graph/me`.
+> 1. Antwoord-Url's toevoegen als `https://localhost:8080/msal4jsample/secure/aad` en `https://localhost:8080/msal4jsample/graph/me`.
 > 1. Maak een client geheim.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Breng deze wijzigingen voor mij aan]()
@@ -82,46 +79,65 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > > ![Al geconfigureerd](media/quickstart-v2-aspnet-webapp/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken.
 
 #### <a name="step-2-download-the-code-sample"></a>Stap 2: het code voorbeeld downloaden
+> [!div renderon="docs"]
+> [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
- [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> Down load het project en pak het zip-bestand uit naar een lokale map dichter bij de hoofdmap, bijvoorbeeld **C:\Azure-samples**
+> 
+> Als u HTTPS met localhost wilt gebruiken, vult u de eigenschappen server. SSL. key in. Gebruik het hulp programma voor het maken van een zelfondertekend certificaat (opgenomen in JRE).
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   Plaats het gegenereerde bestand van de opslag in de map resources.
+   
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Het code voorbeeld downloaden]()
 
-#### <a name="step-3-configure-the-code-sample"></a>Stap 3: het code voorbeeld configureren
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-the-code-sample"></a>Stap 3: het code voorbeeld configureren
+> 1. Pak het zip-bestand uit naar een lokale map.
+> 1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
+> 1. Open het bestand Application. Properties, dat u kunt vinden in src/main/resources/folder en vervang de waarde van de velden *Aad. clientId*, *Aad. Authority* en *Aad. secretKey* met de respectieve waarden van de **toepassings-id**, **Tenant-id** en **client geheim** als volgt:
+>
+>    ```file
+>    aad.clientId=Enter_the_Application_Id_here
+>    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
+>    aad.secretKey=Enter_the_Client_Secret_Here
+>    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.msGraphEndpointHost="https://graph.microsoft.com/"
+>    ```
+> Waar:
+>
+> - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
+> - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
+> - `Enter_the_Tenant_Info_Here`: is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
+> 1. Als u HTTPS met localhost wilt gebruiken, vult u de eigenschappen server. SSL. key in. Gebruik het hulp programma voor het maken van een zelfondertekend certificaat (opgenomen in JRE).
+>
+>  ```
+>   Example:
+>   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+>
+>   server.ssl.key-store-type=PKCS12  
+>   server.ssl.key-store=classpath:keystore.p12  
+>   server.ssl.key-store-password=password  
+>   server.ssl.key-alias=testCert
+>   ```
+>   Plaats het gegenereerde bestand van de opslag in de map resources.
 
- 1. Pak het zip-bestand uit naar een lokale map.
- 1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
- 1. Open het bestand Application. Properties, dat u kunt vinden in src/main/resources/folder en vervang de waarde van de velden *Aad. clientId*, *Aad. Authority* en *Aad. secretKey* met de respectieve waarden van de **toepassings-id**, **Tenant-id** en **client geheim** als volgt:
 
-    ```file
-    aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
-    aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
-    aad.msGraphEndpointHost="https://graph.microsoft.com/"
-    ```
-
-    > [!div renderon="docs"]
-    > Waar:
-    >
-    > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
-    > - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
-    > - `Enter_the_Tenant_Info_Here`: is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
-
- 1. Als u HTTPS met localhost wilt gebruiken, vult u de eigenschappen server. SSL. key in. Gebruik het hulp programma voor het maken van een zelfondertekend certificaat (opgenomen in JRE).
-
-   ```
-   Example:
-   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
-
-   server.ssl.key-store-type=PKCS12  
-   server.ssl.key-store=classpath:keystore.p12  
-   server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert
-   ```
-
-   Plaats het gegenereerde bestand van de opslag in de map resources.
-
-#### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>Stap 3: het code voorbeeld uitvoeren
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
 
 Als u het project wilt uitvoeren, kunt u het volgende doen:
 
@@ -137,10 +153,15 @@ Als u de webtoepassing vanuit een IDE uitvoert, klikt u op uitvoeren en navigeer
     - *Afmelden*: meldt de huidige gebruiker uit de toepassing en leidt deze om naar de start pagina.
     - *Gebruikers gegevens weer geven*: verkrijgt een token voor Microsoft Graph en roept Microsoft Graph aan met een aanvraag met het token, waarmee basis informatie over de aangemelde gebruiker wordt geretourneerd.
 
+
+   
 > [!IMPORTANT]
 > Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het client geheim als tekst zonder opmaak wordt toegevoegd aan uw project bestanden, wordt u uit veiligheids overwegingen aangeraden een certificaat te gebruiken in plaats van een client geheim voordat u de toepassing als productie toepassing overweegt. Zie [certificaat referenties voor toepassings verificatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)voor meer informatie over het gebruik van een certificaat.
 
 ## <a name="more-information"></a>Meer informatie
+
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
 ### <a name="getting-msal"></a>MSAL ophalen
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 189d54454a1259d08400e3762b3fbf1c633474bd
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980661"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250052"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Zelfstudie: Voorwaarde gebruiken in Azure Resource Manager-sjablonen
 
@@ -23,12 +23,12 @@ In de zelfstudie [Resource-implementatievolgorde instellen](./template-tutorial-
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een snelstartsjabloon openen
+> * Een quickstartsjabloon openen
 > * De sjabloon aanpassen
 > * De sjabloon implementeren
 > * Resources opschonen
 
-Deze zelf studie geldt alleen voor een basis scenario voor het gebruik van voor waarden. Zie voor meer informatie:
+Deze zelf studie geldt alleen voor een basis scenario voor het gebruik van voor waarden. Ga voor meer informatie naar:
 
 * [Structuur van sjabloon bestand: voor waarde](conditional-resource-deployment.md).
 * [Een resource voorwaardelijk implementeren in een Azure Resource Manager sjabloon](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
@@ -42,9 +42,9 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 * Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](use-vs-code-to-create-template.md).
-* Voor een verbeterde beveiliging gebruikt u een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
+* Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verhogen. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 
@@ -62,7 +62,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
     ```
 
 3. Selecteer **Openen** om het bestand te openen.
-4. Er worden vijf resources gedefinieerd door de sjabloon:
+4. Er worden vijf resources gedefinieerd met de sjabloon:
 
    * `Microsoft.Storage/storageAccounts`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
    * `Microsoft.Network/publicIPAddresses`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).

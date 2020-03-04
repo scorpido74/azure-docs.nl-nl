@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185541"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248686"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
@@ -130,9 +130,9 @@ Er is geen beperking voor de handtekening methoden van het certificaat. Elliptis
 
 U kunt Joker certificaten gebruiken zolang het Joker teken overeenkomt met de externe URL. U moet joker tekens gebruiken voor [toepassingen met Joker](application-proxy-wildcard.md)tekens. Als u het certificaat wilt gebruiken om ook toegang te krijgen tot subdomeinen, moet u de joker tekens subdomein toevoegen als alternatieve namen voor het onderwerp in hetzelfde certificaat. Een certificaat voor *\*. Adventure-Works.com* werkt bijvoorbeeld niet voor *\*. apps.adventure-works.com* tenzij u *\*. apps.Adventure-Works.com* toevoegt als alternatieve naam voor het onderwerp. 
 
-U kunt certificaten gebruiken die zijn uitgegeven door uw eigen open bare-sleutel infrastructuur (PKI) als de certificaat keten is geïnstalleerd op uw client apparaten. InTune kan deze certificaten implementeren op beheerde apparaten. Voor niet-beheerde apparaten moet u deze certificaten hand matig installeren.
+U kunt certificaten gebruiken die zijn uitgegeven door uw eigen open bare-sleutel infrastructuur (PKI) als de certificaat keten is geïnstalleerd op uw client apparaten. InTune kan deze certificaten implementeren op beheerde apparaten. Voor niet-beheerde apparaten moet u deze certificaten hand matig installeren. 
 
-Het is geen goed idee om een persoonlijke basis certificerings instantie te gebruiken. De persoonlijke basis-CA moet ook worden gepusht naar client computers, waarmee veel uitdagingen worden geïntroduceerd. 
+Het is niet raadzaam om een persoonlijke basis certificerings instantie te gebruiken omdat de CA van de particuliere basis ook moet worden gepusht naar client machines, die veel problemen kunnen veroorzaken.
 
 ### <a name="certificate-management"></a>Certificaatbeheer
 

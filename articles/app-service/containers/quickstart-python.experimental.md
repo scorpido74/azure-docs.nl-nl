@@ -10,12 +10,12 @@ ms.author: msangapu
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9a45353d3223844d828ffc4a8ac248a0ff68f781
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030042"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246858"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
@@ -28,7 +28,7 @@ Als u liever apps implementeert via een IDE, raadpleegt u [python-Apps implement
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (python 3,6 wordt ook ondersteund)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure-CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
@@ -52,7 +52,7 @@ De Azure CLI biedt u een groot aantal handige opdrachten die u vanaf een lokale 
 
 Als u Azure-opdrachten in de Azure CLI wilt uitvoeren, moet u zich eerst aanmelden met de opdracht `az login`. Met deze opdracht wordt een browser geopend om uw referenties te verzamelen.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -63,7 +63,7 @@ Met de [`az webapp up`](/cli/azure/webapp#az-webapp-up) opdracht maakt u de web-
 Voer de volgende opdracht uit in de map *python-docs-Hello-World* met de voorbeeld code `az webapp up`. Vervang `<app-name>` door een wereld wijd unieke app-naam (*geldige tekens zijn `a-z`, `0-9`en `-`* ). Vervang ook `<location-name>` door een Azure-regio zoals **centralus**, **EastAsia**, **Europa West**, **koreasouth**, **brazilsouth**, **centralindia**, enzovoort. (U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) opdracht uit te voeren.)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -110,7 +110,7 @@ In de python-voorbeeld code wordt een Linux-container uitgevoerd in App Service 
 
 Gebruik in een Terminal venster de onderstaande opdrachten (afhankelijk van uw besturings systeem) om de vereiste afhankelijkheden te installeren en de ingebouwde ontwikkel server te starten. 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -130,7 +130,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -3 -m venv env
@@ -161,7 +161,7 @@ Sla uw wijzigingen op en sluit de editor af.
 
 Implementeer de app opnieuw met behulp van de volgende `az webapp up` opdracht, met dezelfde opdracht die u hebt gebruikt om de app de eerste keer te implementeren, waarbij u `<app-name>` en `<location-name>` vervangt door de namen die u eerder hebt gebruikt. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -178,13 +178,13 @@ U hebt toegang tot de console logboeken die zijn gegenereerd in de app en de con
 
 Schakel eerst container logboek registratie in door de volgende opdracht uit te voeren in een Terminal, waarbij u `<app-name>` vervangt door de naam van uw app en `<resource-group-name>` met de naam van de resource groep die wordt weer gegeven in de uitvoer van de `az webapp up` opdracht die u hebt gebruikt (zoals ' appsvc_rg_Linux_centralus '):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Zodra de container logboek registratie is ingeschakeld, voert u de volgende opdracht uit om de logboek stroom weer te geven:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -221,7 +221,7 @@ In de voorgaande stappen hebt u Azure-resources in een resourcegroep gemaakt. De
 
 Als u deze resources in de toekomst niet meer nodig hebt, verwijdert u de resource groep door de volgende opdracht uit te voeren, waarbij u `<resource-group-name>` vervangt door de resource groep die wordt weer gegeven in de uitvoer van de `az webapp up` opdracht, zoals ' appsvc_rg_Linux_centralus '. Het volt ooien van de opdracht kan een minuut duren.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

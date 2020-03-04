@@ -4,12 +4,12 @@ description: Leer hoe u kunt implementeren naar Azure Kubernetes Service (AKS) m
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, blauw/groen-implementatie, continue levering, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158550"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251481"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Implementeren naar Azure Kubernetes Service (AKS) met behulp van Jenkins en het blauw/groen-implementatiepatroon
 
@@ -84,19 +84,19 @@ Als u een beheerde Kubernetes-cluster wilt maken met de [Azure CLI 2.0](https://
 
 1. Meld u aan bij uw Azure-account. Nadat u de volgende opdracht hebt ingevoerd, ontvangt u instructies voor het voltooien van de aanmelding. 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. Wanneer u in de vorige stap de opdracht `az login` uitvoert, verschijnt er een lijst met al uw Azure-abonnementen (samen met hun abonnements-ID’s). In deze stap stelt u het Azure-standaardabonnement in. Vervang de tijdelijke aanduiding &lt;your-subscription-id> door de gewenste Azure-abonnements-ID. 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. Maak een resourcegroep. Vervang de tijdelijke aanduiding &lt;your-resource-group-name> door de naam van uw nieuwe resourcegroep, en vervang de tijdelijke aanduiding &lt;your-location> door de locatie. De opdracht `az account list-locations` toont alle Azure-locaties. Tijdens de AKS-preview zijn niet alle locaties beschikbaar. Als u een locatie invoert die momenteel niet geldig is, toont het foutbericht de beschikbare locaties.
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ U kunt een blauw/groen-implementatie in AKS handmatig instellen of met een insta
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>Een Kubernetes-cluster handmatig instellen 
 1. Download de Kubernetes-configuratie naar uw profielmap.
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ U kunt een blauw/groen-implementatie in AKS handmatig instellen of met een insta
     
     Werk de DNS-naam voor het bijbehorende IP-adres bij met de volgende opdracht:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     Herhaal de aanroep voor `todoapp-test-blue` en `todoapp-test-green`:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ U kunt een blauw/groen-implementatie in AKS handmatig instellen of met een insta
 
 1. Voer de opdracht `az acr create` uit om een exemplaar van Container Registry te maken. In de volgende sectie kunt u dan `login server` als de Docker-register-URL gebruiken.
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. Voer de opdracht `az acr credential` uit om uw Container Registry-referenties weer te geven. Noteer de gebruikersnaam en het wachtwoord voor het Docker-register, want u hebt deze nodig in de volgende sectie.
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -276,11 +276,11 @@ Zie deze [snelstartsjabloon](https://github.com/Azure/azure-quickstart-templates
 
 Wanneer u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen.
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Als u problemen ondervindt met de Jenkins-invoegtoepassingen, kunt u in [Jenkins JIRA](https://issues.jenkins-ci.org/) een ticket openen voor het specifieke onderdeel.
 

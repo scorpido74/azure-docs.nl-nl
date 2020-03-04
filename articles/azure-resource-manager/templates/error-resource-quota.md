@@ -3,12 +3,12 @@ title: Quota fouten
 description: Hierin wordt beschreven hoe u resource quotum fouten oplost bij het implementeren van resources met Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: d36f7d12f432839760b68c85e1c5761e0caf8d85
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659352"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250143"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Fouten voor resource quota oplossen
 
@@ -40,9 +40,9 @@ please delete some resources of this type before creating a new one.
 Quota worden toegepast per resourcegroep, abonnement, account en andere bereiken. Uw abonnement mag bijvoorbeeld worden geconfigureerd om het aantal kerngeheugens voor een regio te beperken. Als u een virtuele machine probeert te implementeren met meer kerngeheugens dan is toegestaan, ontvangt u een foutmelding die aangeeft dat het quotum is overschreden.
 Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor de volledige quotum informatie.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Voor Azure CLI gebruikt u de opdracht `az vm list-usage` om de quota's van de virtuele machine te vinden.
 
@@ -52,7 +52,7 @@ az vm list-usage --location "South Central US"
 
 Hiermee wordt het volgende geretourneerd:
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,

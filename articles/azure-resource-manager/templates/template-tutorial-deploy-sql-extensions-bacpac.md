@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 500e07296040305f1e469fde78988f2551440e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472623"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250100"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Zelfstudie: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen
 
@@ -36,7 +36,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 * Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](./use-vs-code-to-create-template.md).
 * Gebruik een gegenereerd wacht woord voor het beheerders account van Azure SQL Server om de beveiliging te verbeteren. Hier volgt een voor beeld dat u kunt gebruiken om een wacht woord te genereren:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 
@@ -242,7 +242,7 @@ Als u toegang wilt krijgen tot de SQL-Server vanaf uw client computer, moet u ee
 
 Selecteer in de Azure Portal de SQL database van de zojuist geïmplementeerde resource groep. Selecteer **Query-editor (preview)** en voer vervolgens de beheerdersreferenties in. U ziet twee tabellen die zijn geïmporteerd in de-data base.
 
-![Query-editor (preview)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+![Query-Editor (preview-versie)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

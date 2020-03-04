@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028865"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252534"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
 Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
@@ -26,27 +26,25 @@ In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel Azu
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een opslag account in dit voor beeld).
 
-### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot de bron van uw privé-koppeling.
 
-1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
-1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Locatie | Selecteer **WestCentralUS**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
-    |||
-1. Laat de rest als standaard en selecteer **maken**.
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroup |
+| **\<virtuele-netwerk naam >** | myVirtualNetwork          |
+| **\<regio-naam >**          | VS - west-centraal      |
+| **> \<IPv4-adres ruimte**   | 10.1.0.0 \ 16          |
+| **\<subnet naam >**          | mySubnet        |
+| **\<subnet-adres bereik >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
@@ -60,11 +58,11 @@ In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
-    | **EXEMPLAARDETAILS** |  |
-    | Naam van de virtuele machine | Voer *myVm*in. |
+    | **INSTANTIEDETAILS** |  |
+    | Virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | afbeelding | Selecteer **Windows Server 2019 Data Center**. |
+    | Afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -108,7 +106,7 @@ In deze sectie maakt u een privé-opslag account met behulp van een persoonlijk 
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
-    | **EXEMPLAARDETAILS** |  |
+    | **INSTANTIEDETAILS** |  |
     | Naam van opslagaccount  | Voer *mystorageaccount*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
     | Regio | Selecteer **WestCentralUS**. |
     | Prestaties| Laat de standaardwaarde **Standard** staan. |
@@ -127,7 +125,7 @@ In deze sectie maakt u een privé-opslag account met behulp van een persoonlijk 
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     |Locatie|Selecteer **WestCentralUS**.|
-    |Name|Voer *myPrivateEndpoint*in.  |
+    |Naam|Voer *myPrivateEndpoint*in.  |
     |Opslag subresource|Verlaat de standaard- **BLOB**. |
     | **INBEL** |  |
     | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
@@ -151,7 +149,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
 1. Open het *gedownloade RDP* -bestand.
 

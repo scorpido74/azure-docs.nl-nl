@@ -3,12 +3,12 @@ title: Azure Red Hat open Shift-clusters configureren met Azure Monitor voor con
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open SHIFT.
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190077"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250699"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift-clusters met Azure Monitor voor containers configureren
 
@@ -113,7 +113,7 @@ De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp v
 
     De uitvoer ziet er ongeveer als volgt uit:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -197,7 +197,7 @@ De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp v
 
     De uitvoer ziet er ongeveer als volgt uit:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 6cdca78d09c9ca128119a58cb4feaf66bad111bd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165034"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256037"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Bekende problemen/migratie beperkingen met migraties van MongoDB naar de API van Azure Cosmos DB voor MongoDB
 
@@ -40,6 +40,8 @@ Bekende problemen en beperkingen die zijn gekoppeld aan migraties van MongoDB na
 | De SAS-gegevens ontbreken in het connection string van het opslag account en kunnen daarom niet worden geverifieerd. | Maak de SAS in de BLOB-container in Storage Explorer en gebruik de URL met container SAS-gegevens als bron detail connection string.<br><br> |
 
 ## <a name="using-an-unsupported-version-of-the-database"></a>Er wordt een niet-ondersteunde versie van de data base gebruikt
+
+* **Symptoom**: de migratie mislukt.
 
 | Oorzaak         | Oplossing |
 | ------------- | ------------- |

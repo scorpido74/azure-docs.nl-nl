@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134520"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251615"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie
 
@@ -168,9 +168,26 @@ U kunt het gedownloade XML-profiel bestand wijzigen en de **\<dnssuffixes >\<dns
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Hoe kan ik aangepaste DNS-servers toevoegen aan de VPN-client?
+
+U kunt het gedownloade XML-profiel bestand wijzigen en de **\<dnsservers >\<dnsserver > \</dnsserver >\</dnsservers >** Tags toevoegen
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hoe kan ik aangepaste routes toevoegen aan de VPN-client?
 
-U kunt het gedownloade XML-profiel bestand wijzigen en de **\<route toevoegen >\<includeroutes >\<bestemming >\<masker > \</route >\</includeroutes >\</destination >\</mask >** Tags
+U kunt het gedownloade XML-profiel bestand wijzigen en de **\<includeroutes toevoegen >\<route >\<bestemming >\<masker > \</destination >\</mask >\</route >\</includeroutes >** Tags
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ U kunt het gedownloade XML-profiel bestand wijzigen en de **\<route toevoegen >\
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Hoe kan ik blok keren (uitsluiten) routes van de VPN-client?
+
+U kunt het gedownloade XML-profiel bestand wijzigen en de **\<excluderoutes toevoegen >\<route >\<bestemming >\<masker > \</destination >\</mask >\</route >\</excluderoutes >** Tags
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

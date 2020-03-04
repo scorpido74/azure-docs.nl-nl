@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het installeren van Azure dev Spaces in een AKS-cluster en het installeren van het programma aan de client zijde.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770625"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252009"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure dev Spaces installeren op AKS en het hulp programma aan de client zijde
 
@@ -25,15 +25,13 @@ Voordat u ontwikkel ruimten kunt installeren met behulp van de CLI, hebt u het v
 
 Gebruik de `use-dev-spaces` opdracht om ontwikkel ruimten in uw AKS-cluster in te scha kelen en de prompts te volgen.
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
 De bovenstaande opdracht maakt ontwikkel ruimten in het *myAKSCluster* -cluster in de *myResourceGroup* -groep mogelijk en maakt een *standaard* dev-ruimte.
 
-```cmd
-$ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
-
+```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'myAKSCluster' in resource group 'myResourceGroup' that targets resource 'myAKSCluster' in resource group 'myResourceGroup'...2m 24s
@@ -58,7 +56,7 @@ Voordat u ontwikkel ruimten kunt installeren met behulp van de Azure Portal, heb
 * [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
 
 Azure dev Spaces installeren met behulp van de Azure Portal:
-1. Meld u aan bij de [Azure Portal][az-portal].
+1. Meld u aan bij de [Azure-portal][az-portal].
 1. Navigeer naar uw AKS-cluster.
 1. Klik op *dev Spaces*.
 1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905714"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251852"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Voor prognose taken maakt automatische machine learning gebruik van vooraf verwe
 
 Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) -object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. Net als bij een regressie probleem definieert u de standaard opleidings parameters, zoals het taak type, het aantal iteraties, de trainings gegevens en het aantal Kruis validaties. Voor prognose taken zijn er aanvullende para meters die moeten worden ingesteld die van invloed zijn op het experiment. In de volgende tabel worden de para meters en het gebruik ervan toegelicht.
 
-| Param | Beschrijving | Verplicht |
+| Param | Beschrijving | Vereist |
 |-------|-------|-------|
 |`time_column_name`|Wordt gebruikt om de kolom datetime op te geven in de invoer gegevens die worden gebruikt voor het bouwen van de tijd reeks en het uitstellen van de frequentie.|✓|
 |`grain_column_names`|Naam (en) die afzonderlijke reeks groepen in de invoer gegevens definiëren. Als korrel niet is gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.||
@@ -178,13 +178,14 @@ Zie de voor beelden van voor beeld van de [voorbeeld notitieblokken](https://git
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Een DNN-experiment voor het maken van prognoses configureren
 
 > [!NOTE]
-> DNN-ondersteuning voor prognoses in geautomatiseerde Machine Learning is een preview-versie.
+> DNN-ondersteuning voor prognoses in geautomatiseerde Machine Learning is een preview-versie en wordt niet ondersteund voor lokale uitvoeringen.
 
 Als u gebruik wilt maken van DNNs voor prognoses, moet u de para meter `enable_dnn` in de AutoMLConfig instellen op True. 
 
-Voor het gebruik van DNNs kunt u het beste een AML Compute-cluster gebruiken met GPU-Sku's en ten minste twee knoop punten als het reken doel. Zie de [AML Compute-documentatie](how-to-set-up-training-targets.md#amlcompute)voor meer informatie. Zie [grootten van GPU geoptimaliseerde virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) voor meer informatie over de VM-grootten die gpu's bevatten.
+U kunt het beste een AML Compute-cluster gebruiken met GPU-Sku's en ten minste twee knoop punten als het reken doel. Om voldoende tijd te bieden aan het volt ooien van de DNN-training, wordt aangeraden om het experiment in te stellen op een minimum van een paar uur.
+Zie de documentatie over [AML Compute](how-to-set-up-training-targets.md#amlcompute) en [GPU Optimized virtual machine size](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)(Engelstalig) voor meer informatie over de grootte van AML-berekeningen en VM-grootten die GPU bevatten.
 
-Om voldoende tijd te bieden aan het volt ooien van de DNN-training, wordt aangeraden de time-out voor het experiment in te stellen op ten minste een aantal uren.
+Bekijk het voor beeld van de [drank productie prognose](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) voor een gedetailleerd code voorbeeld met DNNs.
 
 ### <a name="view-feature-engineering-summary"></a>Samen vatting van feature engineering weer geven
 

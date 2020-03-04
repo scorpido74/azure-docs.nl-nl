@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 03/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 17d391a7e6b8ef0558fb73afe363cd96deb60a7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989486"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262487"
 ---
 ### <a name="regions"></a>Welke regio's zijn er beschikbaar?
 
@@ -29,15 +29,18 @@ Op dit moment wordt IPv6 niet ondersteund. Azure Bastion ondersteunt alleen IPv4
 
 ### <a name="rdpssh"></a>Heb ik een RDP-of SSH-client?
 
-U hebt geen RDP- of SSH-client nodig voor RDP/SSH-toegang tot uw virtuele Azure-machine in Azure Portal. Met de [Azure Portal](https://portal.azure.com) kunt u RDP/SSH-toegang tot uw virtuele machine rechtstreeks in de browser krijgen.
+U hebt geen RDP-of SSH-client nodig om toegang te krijgen tot de RDP/SSH-verbinding met uw virtuele Azure-machine in uw Azure Portal. Met de [Azure Portal](https://portal.azure.com) kunt u RDP/SSH-toegang tot uw virtuele machine rechtstreeks in de browser krijgen.
+
+### <a name="rdscal"></a>Is voor Azure Bastion een RDS CAL vereist voor beheer doeleinden op Vm's die door Azure worden gehost?
+Nee, voor toegang tot Windows Server-Vm's door Azure Bastion is geen [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) vereist wanneer uitsluitend voor administratieve doel einden wordt gebruikt.
 
 ### <a name="agent"></a>Heb ik een agent nodig die wordt uitgevoerd op de virtuele machine van Azure?
 
-U hoeft geen agent of software in uw browser of uw Azure virtual machine te installeren. De Bastion-service werkt zonder agent en vereist geen aanvullende software voor RDP/SSH.
+U hoeft geen agent of software in uw browser of uw Azure virtual machine te installeren. De Bastion-service is zonder agent en er is geen aanvullende software voor RDP/SSH vereist.
 
 ### <a name="browsers"></a>Welke browsers worden ondersteund?
 
-Gebruik de micro soft Edge-browser of Google Chrome in Windows. Gebruik voor de Apple Mac de browser Google Chrome. Microsoft Edge Chromium wordt ook ondersteund in Windows en op de Mac.
+Gebruik de micro soft Edge-browser of Google Chrome in Windows. Voor Apple Mac gebruikt u Google Chrome-browser. Chroom van micro soft Edge wordt ook ondersteund in respectievelijk Windows en Mac.
 
 ### <a name="roles"></a>Zijn er rollen vereist voor toegang tot een virtuele machine?
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228068"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254795"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -195,6 +195,7 @@ Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behul
 
 Op dit moment worden de volgende Neural stemmen ondersteund:
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 Wijzigingen worden toegepast op het niveau van de zin en de stijl varieert per stem. Als een stijl niet wordt ondersteund, retourneert de service spraak in de standaard stijl voor neutrale gesp roken tekst.
@@ -220,6 +221,7 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 | | `type="chat"` | Spreken in een informeel, ongeforceerde Toon |
 | | `type="newscast"` | Een formele Toon, vergelijkbaar met nieuws verzendingen |
 | | `type="customerservice"` | Spreek op een vriendelijke en patiënten manier als klanten service |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | Een Emotion die positief en blij is |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Een formele Toon, vergelijkbaar met nieuws verzendingen |
 | | `type="sentiment"` | Geeft een aanrakend bericht of verhaal |
 

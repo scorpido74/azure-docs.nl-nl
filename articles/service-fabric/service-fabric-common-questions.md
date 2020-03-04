@@ -4,12 +4,12 @@ description: Veelgestelde vragen over Service Fabric, inclusief mogelijkheden, u
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293518"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254889"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Veelgestelde vragen over Service Fabric
 
@@ -22,7 +22,7 @@ Er zijn veel Veelgestelde vragen over wat Service Fabric kan doen en hoe het moe
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hoe kan ik ik mijn Service Fabric cluster certificaat terug?
 
-Bij het terugdraaien van een upgrade naar uw toepassing is een status detectie voor de Health-fout vereist voordat uw Service Fabric cluster quorum de wijziging heeft doorgevoerd. doorgevoerde wijzigingen kunnen alleen naar voren worden gemigreerd. Escalatie-Engineer door de klant ondersteuning is mogelijk vereist om uw cluster te herstellen als er een niet-bewaakte wijziging van het certificaat is geïntroduceerd.  [De upgrade van de toepassing van service Fabric](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) past [para meters](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)voor de upgrade van de toepassing toe en levert een installatie van geen downtime.  Na de aanbevolen modus voor de upgrade van de toepassing, is automatische voortgang via update domeinen gebaseerd op status controles, waarbij automatisch wordt teruggedraaid als het bijwerken van een standaard service mislukt.
+Bij het terugdraaien van een upgrade naar uw toepassing is een status detectie voor de Health-fout vereist voordat uw Service Fabric cluster quorum de wijziging heeft doorgevoerd. doorgevoerde wijzigingen kunnen alleen naar voren worden gemigreerd. Escalatie-Engineer door de klant ondersteuning is mogelijk vereist om uw cluster te herstellen als er een niet-bewaakte wijziging van het certificaat is geïntroduceerd.  [De upgrade van de toepassing van service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) past [para meters](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)voor de upgrade van de toepassing toe en levert een installatie van geen downtime.  Na de aanbevolen modus voor de upgrade van de toepassing, is automatische voortgang via update domeinen gebaseerd op status controles, waarbij automatisch wordt teruggedraaid als het bijwerken van een standaard service mislukt.
  
 Als uw cluster nog steeds gebruikmaakt van de klassieke eigenschap vinger afdruk van het certificaat in uw Resource Manager-sjabloon, kunt u het beste het [cluster van de vinger afdruk van een certificaat wijzigen in een algemene naam](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)om gebruik te maken van de beheer functies van moderne geheimen.
 
@@ -34,7 +34,7 @@ De kern Service Fabric clustering-technologie kan worden gebruikt om computers d
 
 Als u geïnteresseerd bent in dit scenario, raden we u aan contact op te nemen via de [lijst met Service Fabric problemen met github](https://github.com/azure/service-fabric-issues) of door uw ondersteunings medewerker om aanvullende richt lijnen te verkrijgen. Het Service Fabric-team is bezig met het bieden van aanvullende duidelijkheid, richt lijnen en aanbevelingen voor dit scenario. 
 
-Een aantal punten die u daarbij in overweging moet nemen: 
+Enkele dingen die u moet overwegen: 
 
 1. De Service Fabric cluster resource in Azure is nu regionaal, evenals de schaal sets voor virtuele machines waarop het cluster is gebaseerd. Dit betekent dat u in het geval van een regionale fout de mogelijkheid tot het beheren van het cluster via de Azure Resource Manager of de Azure Portal kan verliezen. Dit kan gebeuren, zelfs als het cluster nog steeds actief is en u rechtstreeks met de app kunt werken. Bovendien biedt Azure vandaag geen mogelijkheid om één virtueel netwerk te hebben dat kan worden gebruikt in verschillende regio's. Dit betekent dat een cluster met meerdere regio's in azure een [openbare IP-adressen vereist voor elke virtuele machine in de VM Scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) of [Azure VPN-gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md). Deze netwerk opties hebben verschillende gevolgen voor de kosten, prestaties en een zekere mate van toepassings ontwerp, dus zorgvuldige analyse en planning is vereist voordat deze omgeving wordt ingeschakeld.
 2. Het onderhoud, het beheer en de bewaking van deze computers kunnen gecompliceerd worden, vooral wanneer het wordt verdeeld over verschillende _soorten_ omgevingen, zoals tussen de diverse cloud providers of tussen on-premises resources en Azure. Het is belang rijk om ervoor te zorgen dat upgrades, bewaking, beheer en diagnostische gegevens worden begrepen voor zowel het cluster als voor de toepassingen voordat productie werkbelastingen in een dergelijke omgeving worden uitgevoerd. Als u al ervaring hebt met het oplossen van deze problemen in azure of in uw eigen data centers, is het waarschijnlijk dat dezelfde oplossingen kunnen worden toegepast wanneer u uw Service Fabric-cluster bouwt of uitvoert. 
@@ -101,13 +101,13 @@ Nee. Vm's met een lage prioriteit worden niet ondersteund.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Wat zijn de mappen en processen die ik moet uitsluiten bij het uitvoeren van een antivirus programma in mijn cluster?
 
-| **Antivirus uitgesloten mappen** |
+| **Uitgesloten mappen van anti virus** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (van de configuratie van het cluster) |
 | FabricLogRoot (van de configuratie van het cluster) |
 
-| **Antivirus uitgesloten processen** |
+| **Uitgesloten processen van anti virus** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |

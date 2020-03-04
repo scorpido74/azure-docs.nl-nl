@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte node.
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920022"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255860"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Een Linux node. js-app configureren voor Azure App Service
 
@@ -152,7 +152,7 @@ Zoek in de Azure Verkenner de app waarvoor u fouten wilt opsporen, klik er met d
 
 Als u klaar bent met het oplossen van fouten, stopt u het fout opsporingsprogramma door de **verbinding te verbreken** Wanneer u hierom wordt gevraagd, klikt u op **Ja** om externe fout opsporing uit te scha kelen. Als u dit later wilt uitschakelen, klikt u opnieuw met de rechter muisknop op uw app in azure Verkenner en selecteert u **externe fout opsporing uitschakelen**.
 
-## <a name="access-environment-variables"></a>Toegang tot omgevingsvariabelen
+## <a name="access-environment-variables"></a>Omgevingsvariabelen openen
 
 In App Service kunt u de [app-instellingen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code instellen. Vervolgens kunt u ze openen met het standaard patroon node. js. Voor toegang tot bijvoorbeeld de app-instelling `NODE_ENV` gebruikt u de volgende code:
 
@@ -261,7 +261,7 @@ if (req.secure) {
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Wanneer een werk knooppunt. js-app zich anders gedraagt in App Service of fouten bevat, kunt u het volgende proberen:
 
@@ -271,6 +271,8 @@ Wanneer een werk knooppunt. js-app zich anders gedraagt in App Service of fouten
     - Bepaalde web Frameworks kunnen statische bestanden in de productie modus anders implementeren.
     - Bepaalde web Frameworks kunnen aangepaste opstart scripts gebruiken wanneer ze in de productie modus worden uitgevoerd.
 - Voer uw app uit in de App Service in de ontwikkelings modus. U kunt bijvoorbeeld in [mean. js](https://meanjs.org/)uw app instellen op de ontwikkelings modus in runtime door [de `NODE_ENV` app-instelling](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)in te stellen.
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

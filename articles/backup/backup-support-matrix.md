@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206653"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254911"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -32,7 +32,7 @@ In de volgende tabel worden de functies van Recovery Services kluizen beschreven
 --- | ---
 **Kluizen in het abonnement** | Maximaal 500 Recovery Services-kluizen in één abonnement.
 **Machines in een kluis** | Maxi maal 1.000 Azure-Vm's in één kluis.<br/><br/> Maxi maal 50 MABS-servers kunnen worden geregistreerd in één kluis.
-**Gegevens bronnen in de kluis opslag** | Maxi maal 54.400 GB. Er is geen limiet voor back-ups van virtuele Azure-machines.
+**Gegevens bronnen** | De maximale grootte van een afzonderlijke [gegevens bron](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) is 54.400 GB. Deze limiet is niet van toepassing op back-ups van Azure-VM'S. Er gelden geen limieten voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken naar de kluis.
 **Back-ups naar de kluis** | **Azure-vm's:** Eenmaal per dag.<br/><br/>**Machines die worden beveiligd door DPM-MABS:** Twee keer per dag.<br/><br/> **Machines maken rechtstreeks back-ups met behulp van de Mars-agent:** Drie keer per dag.
 **Back-ups tussen kluizen** | De back-up bevindt zich in een regio.<br/><br/> U hebt een kluis nodig in elke Azure-regio die virtuele machines bevat waarvan u een back-up wilt maken. U kunt geen back-up maken naar een andere regio.
 **Kluizen verplaatsen** | U kunt [kluizen verplaatsen](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) tussen abonnementen of tussen resource groepen in hetzelfde abonnement. Het verplaatsen van kluizen over regio's wordt echter niet ondersteund.
@@ -152,11 +152,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja. Open bare beperkte preview ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | VS - west-centraal   |
-| MARS-agent/on-premises | Nee                                                           | N.v.t.               |
-| SQL-/SAP HANA          | Nee                                                           | N.v.t.               |
-| AFS                    | Nee                                                           | N.v.t.               |
-
-
+| MARS-agent/on-premises | Nee                                                           | N.V.T.               |
+| SQL-/SAP HANA          | Nee                                                           | N.V.T.               |
+| AFS                    | Nee                                                           | N.V.T.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

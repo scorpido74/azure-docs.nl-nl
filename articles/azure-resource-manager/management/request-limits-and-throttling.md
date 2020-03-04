@@ -4,12 +4,12 @@ description: Beschrijft hoe u gebruik van beperking met Azure Resource Manager-a
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129ca3ba32d48345bde931c6bd2084c3da79be39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659369"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251348"
 ---
 # <a name="throttling-resource-manager-requests"></a>Beperking van Resource Manager-aanvragen
 
@@ -25,13 +25,13 @@ Voor elke bewerking op abonnements niveau en op Tenant niveau gelden beperkingen
 
 De standaard limieten voor beperking per uur worden weer gegeven in de volgende tabel.
 
-| Scope | Operations | Limiet |
+| Bereik | Bewerkingen | Limiet |
 | ----- | ---------- | ------- |
-| Abonnement | titel | 12000 |
+| Abonnement | Titel | 12000 |
 | Abonnement | Delete | 15.000 |
-| Abonnement | schrijfopdrachten | 1200 |
-| Tenant | titel | 12000 |
-| Tenant | schrijfopdrachten | 1200 |
+| Abonnement | Schrijfopdrachten | 1200 |
+| Tenant | Titel | 12000 |
+| Tenant | Schrijfopdrachten | 1200 |
 
 Deze limieten zijn van toepassing op de beveiligingsprincipal (gebruiker of toepassing) die de aanvragen doet en de abonnements-id of tenant-id. Als uw aanvragen afkomstig zijn van meerdere beveiligingsprincipals, is uw limiet voor het abonnement of de tenant groter dan 12.000 en 1200 per uur.
 
@@ -47,7 +47,7 @@ In deze sectie worden de beperkings limieten voor sommige veelgebruikte resource
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="network-throttling"></a>Netwerkbeperking
+### <a name="network-throttling"></a>Netwerk beperking
 
 De resource provider micro soft. Network heeft de volgende beperkings limieten:
 
@@ -72,7 +72,7 @@ Soms kunnen beperkings limieten worden verhoogd. Als u wilt weten of de beperkin
 
 ## <a name="error-code"></a>Foutcode
 
-Wanneer u de limiet is bereikt, ontvangt u de HTTP-statuscode **429 te veel aanvragen**. Het antwoord bevat een **nieuwe waarde voor opnieuw proberen** , waarmee het aantal seconden wordt aangegeven dat de toepassing moet wachten (of slaap stand) voordat de volgende aanvraag wordt verzonden. Als u een aanvraag verzendt voordat de waarde voor opnieuw proberen is verstreken, wordt uw aanvraag is niet verwerkt en wordt een nieuwe waarde voor opnieuw proberen wordt geretourneerd.
+Wanneer u de limiet bereikt, ontvangt u de HTTP-status code **429 te veel aanvragen**. Het antwoord bevat een **nieuwe waarde voor opnieuw proberen** , waarmee het aantal seconden wordt aangegeven dat de toepassing moet wachten (of slaap stand) voordat de volgende aanvraag wordt verzonden. Als u een aanvraag verzendt voordat de waarde voor opnieuw proberen is verstreken, wordt uw aanvraag is niet verwerkt en wordt een nieuwe waarde voor opnieuw proberen wordt geretourneerd.
 
 Nadat u het opgegeven tijdstip hebt gewacht, kunt u de verbinding met Azure ook sluiten en opnieuw openen. Door de verbinding opnieuw in te stellen, kunt u verbinding maken met een ander exemplaar van Azure Resource Manager.
 
@@ -101,22 +101,22 @@ De resource provider kan ook antwoord headers retour neren met informatie over d
 
 Bij het ophalen van deze headerwaarden in uw code of het script is niet anders dan bij het ophalen van een headerwaarde. 
 
-Bijvoorbeeld, in **C#** , haalt u de headerwaarde van een **HttpWebResponse** object met de naam **antwoord** door de volgende code:
+In **C#** kunt u bijvoorbeeld de header waarde van een **HttpWebResponse** -object met de naam **Response** ophalen met de volgende code:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-In **PowerShell**, haalt u de headerwaarde uit een Invoke-WebRequest-bewerking.
+In **Power shell**haalt u de waarde van de header op uit een bewerking invoke-webaanvraag.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Zie voor een compleet voorbeeld van PowerShell, [Resource Manager-limieten voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+Zie [limieten voor Resource Manager voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)voor een volledig Power shell-voor beeld.
 
-Als u zien van de resterende aanvragen wilt voor foutopsporing, kunt u opgeven de **-Debug** parameter op uw **PowerShell** cmdlet.
+Als u de resterende aanvragen voor fout opsporing wilt zien, kunt u de para meter **-debug** opgeven voor uw **Power shell** -cmdlet.
 
 ```powershell
 Get-AzResourceGroup -Debug
@@ -154,7 +154,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-In **Azure CLI**, haalt u de headerwaarde met de uitgebreidere optie.
+In **Azure cli**haalt u de waarde van de header op met behulp van de uitgebreidere optie.
 
 ```azurecli
 az group list --verbose --debug
@@ -162,7 +162,7 @@ az group list --verbose --debug
 
 Die veel waarden, met inbegrip van de volgende waarden geretourneerd:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -182,7 +182,7 @@ az group create -n myresourcegroup --location westus --verbose --debug
 
 Die veel waarden, met inbegrip van de volgende waarden geretourneerd:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -195,6 +195,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een compleet voorbeeld van PowerShell, [Resource Manager-limieten voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
-* Zie voor meer informatie over limieten en quota [Azure-abonnement en Servicelimieten, quotums en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-* Zie voor meer informatie over het verwerken van asynchrone REST-aanvragen, [asynchrone bewerkingen van Azure bijhouden](async-operations.md).
+* Zie [limieten voor Resource Manager voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)voor een volledig Power shell-voor beeld.
+* Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over limieten en quota's.
+* Zie [asynchrone Azure-bewerkingen volgen](async-operations.md)voor meer informatie over het verwerken van asynchrone rest-aanvragen.

@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7d27256f64e09a4d4ba3dbf1544eaec4715f6d88
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669910"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250758"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -132,11 +132,20 @@ Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen t
         main()
     ```
 
-4. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De gemaakte `SpanData` worden naar Azure Monitor verzonden. U kunt de verzonden gegevens over het bereik vinden onder `dependencies`.
+4. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De gemaakte `SpanData` worden naar Azure Monitor verzonden. U kunt de verzonden gegevens over het bereik vinden onder `dependencies`. Zie voor meer informatie over uitgaande aanvragen opentellingen python- [afhankelijkheden](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
+Zie voor meer informatie over inkomende aanvragen opentellingen python- [aanvragen](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
 
-5. Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+#### <a name="sampling"></a>Steekproeven
 
-6. Voor meer informatie over de correlatie van de telemetrie in uw traceer gegevens bekijkt u de correlatie van opentellingen [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python).
+Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+
+#### <a name="trace-correlation"></a>Correlatie traceren
+
+Voor meer informatie over de correlatie van de telemetrie in uw traceer gegevens, Bekijk dan de relatie met de python- [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)van opentellingen.
+
+#### <a name="modify-telemetry"></a>Telemetrie wijzigen
+
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
 
 ### <a name="metrics"></a>Metrische gegevens
 
@@ -240,6 +249,32 @@ Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen t
     ```
 
 4. De export functie verzendt metrische gegevens naar Azure Monitor met een vast interval. De standaard waarde is elke 15 seconden. Er wordt één metrische waarde bijgehouden, dus deze metrische gegevens, met een wille keurige vermeldings-en tijds tempel, worden elk interval verzonden. U kunt de gegevens onder `customMetrics`vinden.
+
+#### <a name="standard-metrics"></a>Standaard metrische gegevens
+
+Standaard wordt door de export functie voor metrische gegevens een aantal standaard metrische gegevens naar Azure Monitor verzonden. U kunt dit uitschakelen door de `enable_standard_metrics`-vlag in te stellen op `False` in de constructor van de metrische gegevens Exporter.
+
+    ```python
+    ...
+    exporter = metrics_exporter.new_metrics_exporter(
+      enable_standard_metrics=False,
+      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    ...
+    ```
+Hieronder ziet u een lijst met standaard metrische gegevens die momenteel worden verzonden:
+
+- Beschikbaar geheugen (bytes)
+- Processor tijd CPU (percentage)
+- Binnenkomende aanvraag frequentie (per seconde)
+- Gemiddelde uitvoerings tijd inkomende aanvragen (milliseconden)
+- Uitgaande aanvraag frequentie (per seconde)
+- CPU-gebruik verwerken (percentage)
+- Privé bytes verwerken (bytes)
+
+U kunt deze metrische gegevens weer geven in `performanceCounters`. De frequentie van binnenkomende aanvragen staat onder `customMetrics`.
+#### <a name="modify-telemetry"></a>Telemetrie wijzigen
+
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
 
 ### <a name="logs"></a>Logboeken
 
@@ -360,8 +395,17 @@ Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen t
     except Exception:
     logger.exception('Captured an exception.', extra=properties)
     ```
+#### <a name="sampling"></a>Steekproeven
 
-7. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
+Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+
+#### <a name="log-correlation"></a>Logboek correlatie
+
+Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
+
+#### <a name="modify-telemetry"></a>Telemetrie wijzigen
+
+Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
 
 ## <a name="view-your-data-with-queries"></a>Uw gegevens weer geven met query's
 

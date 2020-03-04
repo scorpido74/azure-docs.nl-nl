@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: f163c3e36b6ebf4ddb008aa18f67a08e94b46226
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4f7357c79b9a6a57d7ede7342408d519d2278cbe
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77780277"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262187"
 ---
-|Name |Beschrijving |Beleidsregels |Version |
+|Naam |Beschrijving |Beleid |Versie |
 |---|---|---|---|
 |[\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Dit initiatief omvat audit-en VM-uitbrei ding implementatie beleid waarmee een subset van Canada Federal PBMM-besturings elementen wordt geadresseerd. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga voor meer informatie naar https://aka.ms/canadafederalPBMM-blueprint |67 |2.0.0-Preview |
 |[\[preview-\]: controle van CIS Microsoft Azure Stichting 1.1.0-aanbevelingen en implementeer specifieke ondersteunende VM-extensies](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Dit initiatief omvat audit en implementatie beleid voor VM-extensies die een subset van CIS-Microsoft Azure basis benchmark aanbevelingen verhelpen. Extra beleids regels worden toegevoegd aan aanstaande releases. Ga naar https://aka.ms/cisazure-blueprintvoor meer informatie. |83 |2.0.0-Preview |

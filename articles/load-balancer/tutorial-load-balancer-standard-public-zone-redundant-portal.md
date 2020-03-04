@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732316"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251880"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling uitvoeren van virtuele machines over beschikbaarheidszones met een standaard Load Balancer
 
-Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u stapsgewijs hoe u een openbare Standard Load Balancer maakt die de taakverdeling van VM's over beschikbaarheidszones regelt. Hiermee kunt u uw apps en gegevens beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter. Met zone-redundantie kunnen een of meer beschikbaarheidszones mislukken en overleeft het gegevenspad zolang één zone in de regio een goede status behoudt. Procedures voor:
+Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u stapsgewijs hoe u een openbare Standard Load Balancer maakt die de taakverdeling van VM's over beschikbaarheidszones regelt. Hiermee kunt u uw apps en gegevens beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter. Met zone-redundantie kunnen een of meer beschikbaarheidszones mislukken en overleeft het gegevenspad zolang één zone in de regio een goede status behoudt. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een Load Balancer van het type Standard maken
@@ -50,18 +50,18 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Wanneer u een nieuwe openbaar IP-adres maakt tijdens het maken van de load balancer, wordt het automatisch geconfigureerd als een standaard SKU-versie en is het ook automatisch zone-redundant.
 
 1. Klik linksboven in het scherm op **Een resource maken** > **Netwerken** > **Load balancer**.
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
     | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLBAZ* in het tekstvak.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
-    | SKU           | Selecteer **standaard**.                          |
+    | SKU           | selecteer **Standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbaar IP-adres              | Typ *myPublicIP* in het tekstvak.   |
+    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
     |Beschikbaarheidszone| Selecteer **Zone-redundant**.    |
    
 
@@ -69,27 +69,31 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
 
 In deze sectie maakt u een virtueel netwerk en virtuele machines in verschillende zones voor de regio en installeert u vervolgens IIS op de virtuele machines om de zone-redundante load balancer te testen. Dus als één zone niet werkt, dan mislukt de teststatus voor de virtuele machine in dezelfde zone, maar wordt het verkeer nog steeds geregeld door VM's in de andere zones.
 
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
-Maak een virtueel netwerk voor het implementeren van uw back-endservers.
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-1. Klik linksboven in het scherm op **Een resource maken** > **Netwerken** > **Virtueel netwerk** en voer deze waarden in voor het virtuele netwerk:
-    - *myVnet* als naam van het virtuele netwerk.
-    - *myResourceGroupLBAZ* als naam van de bestaande resourcegroep
-    - *myBackendSubnet* als naam van het subnet.
-2. Klik op **Maken** om het virtuele netwerk te maken.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-    ![Maak een virtueel netwerk](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupLBAZ (bestaande resource groep selecteren) |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | Europa -west      |
+| **> \<IPv4-adres ruimte**   | 10.0.0.0 \ 16          |
+| **\<subnet naam >**          | myBackendSubnet        |
+| **\<subnet-adres bereik >** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 1. Klik linksboven in het scherm op **Een resource maken**, typ *Netwerkbeveiligingsgroep* in het zoekvak en klik op **Maken** op de pagina Netwerkbeveiligingsgroep.
 2. Voer deze waarden in op de pagina Netwerkbeveiligingsgroep maken:
     - *myNetworkSecurityGroup* als naam van de netwerkbeveiligingsgroep.
     - *myResourceGroupLBAZ* als naam van de bestaande resourcegroep.
    
-![Maak een virtueel netwerk](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Een virtueel netwerk maken](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Regels voor netwerkbeveiligingsgroepen
 
@@ -108,7 +112,7 @@ In deze sectie maakt u netwerkbeveiligingsgroepsregels om inkomende verbindingen
     - *Allow HTTP* als beschrijving van de taakverdelingsregel.
 4. Klik op **OK**.
  
-   ![Maak een virtueel netwerk](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Een virtueel netwerk maken](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Herhaal stap 2 t/m 4 om nog een regel te maken (*myRDPRule*) om een binnenkomende RDP-verbinding toe te staan via poort 3389 met de volgende waarden:
     - *Service Tag* bij **Bron**.
     - *Internet* bij **Bronservicetag**
@@ -135,7 +139,7 @@ Maak virtuele machines in verschillende zones (zone 1, zone 2 en zone 3) voor de
     - *myBackendSubnet*: controleer of dit als subnet is geselecteerd.
     - *myNetworkSecurityGroup* als naam van netwerkbeveiligingsgroep (firewall).
 5. Klik op **Uitgeschakeld** om diagnostische gegevens over opstarten uit te schakelen.
-6. Klik op **OK**, controleer de instellingen op de overzichtspagina en klik op **Maken**.
+6. Klik op **OK** om de instellingen op de overzichtspagina te controleren en klik op **Maken**.
   
    ![Een virtuele machine maken](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
 
@@ -179,7 +183,7 @@ Om verkeer te distribueren naar de VM's bevat een back-end-adresgroep de IP-adre
     - Voor **Virtuele machine** klikt u in de vervolgkeuzelijst op **myVM1**.
     - Voor **IP-adres** klikt op het IP-adres van myVM1 in de vervolgkeuzelijst.
 4. Klik op **Nieuwe back-endresource toevoegen** om elke virtuele machine (*myVM2* en *myVM3*)  toe te voegen aan de back-endpool van de load balancer.
-5. Klik op **Add**.
+5. Klik op **Toevoegen**.
 
     ![Toevoegingen doen aan de back-endadresgroep](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 

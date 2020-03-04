@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: fe6fbb2c27dcc18cca114e6d10cd382d376a27e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651304"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250185"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Uw portal-interface voor Azure Managed Applications testen
 
@@ -36,7 +36,7 @@ Nadat u [het bestand createUiDefinition. json](create-uidefinition-overview.md) 
 
    ![Formulier weer geven](./media/test-createuidefinition/show-ui-form.png)
 
-### <a name="troubleshooting"></a>Problemen oplossen
+### <a name="troubleshooting"></a>Probleemoplossing
 
 Als uw formulier niet wordt weer gegeven nadat u de **Preview**hebt geselecteerd, hebt u mogelijk een syntaxis fout. Zoek naar de rode indicator op de rechter schuif balk en navigeer ernaar.
 
@@ -44,7 +44,7 @@ Als uw formulier niet wordt weer gegeven nadat u de **Preview**hebt geselecteerd
 
 Als uw formulier niet wordt weer gegeven, en u in plaats daarvan een pictogram van een Cloud met afscheuren ziet, bevat uw formulier een fout, zoals een ontbrekende eigenschap. Open de Web-Ontwikkelhulpprogramma's in uw browser. In de- **console** worden belang rijke berichten over uw interface weer gegeven.
 
-![Fout weergeven](./media/test-createuidefinition/show-error.png)
+![Fout weer geven](./media/test-createuidefinition/show-error.png)
 
 ## <a name="use-test-script"></a>Test script gebruiken
 
@@ -68,7 +68,7 @@ Gebruik voor PowerShell:
 
 Gebruik voor Azure CLI:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh \
   -l southcentralus \
   -a .\100-Marketplace-Sample
@@ -84,7 +84,7 @@ Gebruik voor PowerShell:
 
 Gebruik voor Azure CLI:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh
 ```
 
@@ -92,7 +92,7 @@ Het script opent een nieuw tabblad in uw browser. De portal wordt weer gegeven m
 
 Geef waarden op voor de velden. Wanneer u klaar bent, ziet u de waarden die worden door gegeven aan de sjabloon die u kunt vinden in de console ontwikkel hulpprogramma's van uw browser.
 
-![Waarden weergeven](./media/test-createuidefinition/show-json.png)
+![Waarden weer geven](./media/test-createuidefinition/show-json.png)
 
 U kunt deze waarden gebruiken als het parameter bestand voor het testen van uw implementatie sjabloon.
 

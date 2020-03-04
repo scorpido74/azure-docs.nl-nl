@@ -1,9 +1,9 @@
 ---
-title: Voor Azure goedgekeurde Linux-distributies
+title: Linux-distributies die zijn goedgekeurd op Azure
 description: Meer informatie over Linux op door Azure goedgekeurde distributies, inclusief richt lijnen voor Ubuntu, CentOS, Oracle en SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: mimckitt
-ms.openlocfilehash: 8f12224f6ea2b9b4cecce79809389419e0159217
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7318095dce77856087ad7dd949e91e0eb7936294
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748054"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251647"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 Partners bieden Linux-installatie kopieën in de Azure Marketplace. We werken samen met verschillende Linux-community's om nog meer versies toe te voegen aan de goedgekeurde distributie lijst. In de tussen tijd kunt u uw eigen Linux altijd gebruiken door de richt lijnen te volgen bij het [maken en uploaden van een virtuele harde schijf met het Linux-besturings systeem](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -39,7 +39,7 @@ De Azure Linux-agent is al vooraf geïnstalleerd op de installatie kopieën van 
 | Debian |Debian 7,9 +, 8.2 +, 9, 10 |In kernel |Pakket: in opslag plaats onder waagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6,7 +, 7.1 +, 8.0 + |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1+<br>15|In kernel |Pakket:<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enter prise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1+<br>15|In kernel |Pakket:<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Schrikkel 42.2 + |In kernel |Pakket: in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats onder ' python-Azure-agent ' <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |In kernel |Pakket: in opslag plaats onder walinuxagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 
@@ -81,7 +81,7 @@ Credativ is een onafhankelijke Consulting-en service maatschappij die is gespeci
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-De strategie van Oracle is om een breed assortiment oplossingen te bieden voor open bare en particuliere Clouds. De strategie biedt klanten keuze en flexibiliteit bij het implementeren van Oracle-software in Oracle-Clouds en andere Clouds. De partnerschap van Oracle met Microsoft stelt klanten in staat Oracle-software in openbare en besloten clouds van Microsoft te implementeren in de wetenschap dat ze certificeringen en ondersteuning kunnen krijgen van Oracle.  De toezeg ging en investeringen van Oracle in Oracle Public-en Private Cloud-oplossingen worden niet gewijzigd.
+De strategie van Oracle is om een breed assortiment oplossingen te bieden voor open bare en particuliere Clouds. De strategie biedt klanten keuze en flexibiliteit bij het implementeren van Oracle-software in Oracle-Clouds en andere Clouds. Door Oracle samen te stellen met micro soft kunnen klanten Oracle-software in open bare en persoonlijke Clouds van micro soft implementeren met het vertrouwen van certificering en ondersteuning van Oracle.  De toezeg ging en investeringen van Oracle in Oracle Public-en Private Cloud-oplossingen worden niet gewijzigd.
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)

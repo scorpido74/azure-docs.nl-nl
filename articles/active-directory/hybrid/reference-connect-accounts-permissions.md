@@ -17,12 +17,12 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960234"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248776"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
 
@@ -55,11 +55,10 @@ Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, 
 > [!NOTE]
 > Het wordt ondersteund voor het beheren van de beheer accounts die worden gebruikt in Azure AD Connect vanuit een ESAE-beheer forest (ook wel bekend als ' rode forest ').
 > Met specifieke administratieve forests kunnen organisaties beheerders accounts, werk stations en groepen hosten in een omgeving met betere beveiligings controles dan de productie omgeving.
-> Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forests](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forest](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
-> De rol van globale beheerder is niet vereist na de eerste installatie en het account van de **Directory Synchronization accounts** wordt door de rol Dat betekent niet necssarily dat u alleen het account met de rol van globale beheerder wilt verwijderen. Het is beter om de rol te wijzigen in een minder krachtige rol, omdat het volledig verwijderen van het account kan leiden tot problemen als u de wizard ooit opnieuw moet uitvoeren. Door de bevoegdheid van de rol te beperken, kunt u de rechten altijd opnieuw verhogen als u de wizard Azure AD Connect opnieuw moet gebruiken. 
+> De rol van globale beheerder is niet vereist na de eerste installatie en het account van de **Directory Synchronization accounts** wordt door de rol Dit betekent niet noodzakelijkerwijs dat u het account alleen wilt verwijderen met de rol van globale beheerder. Het is beter om de rol te wijzigen in een minder krachtige rol, omdat het volledig verwijderen van het account kan leiden tot problemen als u de wizard ooit opnieuw moet uitvoeren. Door de bevoegdheid van de rol te beperken, kunt u de bevoegdheden altijd opnieuw verhogen als u de wizard Azure AD Connect opnieuw moet gebruiken. 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect installeren
 De installatie wizard van Azure AD Connect biedt twee verschillende paden:
@@ -103,7 +102,7 @@ Hier volgt een samen vatting van de pagina's van de wizard Snelle installatie, d
 
 | Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
-| N.v.t. |Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |<li>Hiermee maakt u het ADSync-service account dat wordt gebruikt om de synchronisatie service uit te voeren. |
+| N.V.T. |Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |<li>Hiermee maakt u het ADSync-service account dat wordt gebruikt om de synchronisatie service uit te voeren. |
 | Verbinding maken met Azure AD |Referenties voor Azure AD-Directory |Rol van globale beheerder in azure AD |<li>Synchronisatie inschakelen in de Azure AD-adres lijst.</li>  <li>Het maken van het Azure AD-Connector account dat wordt gebruikt voor voortdurende synchronisatie bewerkingen in azure AD.</li> |
 | Verbinding maken met AD DS |Referenties voor on-premises Active Directory |Lid van de groep Ondernemings Administrators (EA) in Active Directory |<li>Hiermee maakt u het AD DS Connector-account in Active Directory en verleent u er machtigingen voor. Dit gemaakte account wordt gebruikt voor het lezen en schrijven van Directory gegevens tijdens de synchronisatie.</li> |
 
@@ -120,7 +119,7 @@ Hier volgt een samen vatting van de pagina's van de wizard Aangepaste installati
 
 | Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
-| N.v.t. |Gebruiker die de installatie wizard uitvoert |<li>Beheerder van de lokale server</li><li>Als u een volledige SQL Server gebruikt, moet de gebruiker systeem beheerder (SA) in SQL zijn</li> |Maakt standaard het lokale account dat wordt gebruikt als service account voor de synchronisatie-engine. Het account wordt alleen gemaakt wanneer de beheerder geen bepaald account opgeeft. |
+| N.V.T. |Gebruiker die de installatie wizard uitvoert |<li>Beheerder van de lokale server</li><li>Als u een volledige SQL Server gebruikt, moet de gebruiker systeem beheerder (SA) in SQL zijn</li> |Maakt standaard het lokale account dat wordt gebruikt als service account voor de synchronisatie-engine. Het account wordt alleen gemaakt wanneer de beheerder geen bepaald account opgeeft. |
 | Synchronisatie Services installeren, Service account optie |Referenties voor het AD-of lokale gebruikers account |Gebruiker, machtigingen worden verleend door de installatie wizard |Als de beheerder een account opgeeft, wordt dit account gebruikt als service account voor de synchronisatie service. |
 | Verbinding maken met Azure AD |Referenties voor Azure AD-Directory |Rol van globale beheerder in azure AD |<li>Synchronisatie inschakelen in de Azure AD-adres lijst.</li>  <li>Het maken van het Azure AD-Connector account dat wordt gebruikt voor voortdurende synchronisatie bewerkingen in azure AD.</li> |
 | Verbinding maken met uw directory’s |On-premises Active Directory referenties voor elk forest dat is verbonden met Azure AD |De machtigingen zijn afhankelijk van de functies die u inschakelt en vindt u in het AD DS Connector-account maken |Dit account wordt gebruikt voor het lezen en schrijven van Directory gegevens tijdens de synchronisatie. |
@@ -201,10 +200,10 @@ Labels
 - sMSA- [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA: door [groep beheerd service account](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Aangepast | Externe SQL</br>Aangepast |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Aangepast telefoonnummer | Externe SQL</br>Aangepast telefoonnummer |
 | --- | --- | --- | --- |
-| **zelfstandige computer/werk groep** | Niet ondersteund | **VSA**</br>Lokaal account (2008)</br>Lokaal account |  Niet ondersteund |
-| **computer die lid is van een domein** | **VSA**</br>Lokaal account (2008) | **VSA**</br>Lokaal account (2008)</br>Lokaal account</br>Domein account</br>sMSA, gMSA | **gMSA**</br>Domein account |
+| **zelfstandige computer/werk groep** | Niet ondersteund | **KENMERK**</br>Lokaal account (2008)</br>Lokaal account |  Niet ondersteund |
+| **computer die lid is van een domein** | **KENMERK**</br>Lokaal account (2008) | **KENMERK**</br>Lokaal account (2008)</br>Lokaal account</br>Domeinaccount</br>sMSA, gMSA | **gMSA**</br>Domeinaccount |
 | **Domein controller** | **Domein account** | *gMSA*</br>**Domein account**</br>sMSA| *gMSA*</br>**Domein account**|
 
 #### <a name="virtual-service-account"></a>Virtueel service-account
@@ -220,7 +219,7 @@ Voor deze functie is Windows Server 2008 R2 of later vereist. Als u Azure AD Con
 Als u een externe SQL Server gebruikt, raden we u aan een **beheerd service account**voor een groep te gebruiken. Zie overzicht van door een groep [beheerde service accounts](https://technet.microsoft.com/library/hh831782.aspx)voor meer informatie over het voorbereiden van uw Active Directory voor door een groep beheerd service account.
 
 Als u deze optie wilt gebruiken, selecteert u op de pagina [vereiste onderdelen installeren](how-to-connect-install-custom.md#install-required-components) de optie **een bestaand service account gebruiken**en selecteert u een **beheerd service account**.  
-![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
+![leverancierspecifieke kenmerken](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 Het wordt ook ondersteund voor het gebruik van een [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx). Deze kunnen echter alleen worden gebruikt op de lokale computer en er is geen voor deel voor het gebruik van de standaard virtuele-service account.
 
 Voor deze functie is Windows Server 2012 of hoger vereist. Als u een ouder besturings systeem moet gebruiken en externe SQL wilt gebruiken, moet u een [gebruikers account](#user-account)gebruiken.
@@ -264,10 +263,10 @@ Als u de documentatie over het integreren van [uw on-premises identiteiten met A
 |Onderwerp |Koppeling|  
 | --- | --- |
 |Azure AD Connect downloaden | [Azure AD Connect downloaden](https://go.microsoft.com/fwlink/?LinkId=615771)|
-|Installeren met de snelle instellingen | [Snelle installatie van Azure AD Connect](how-to-connect-install-express.md)|
+|Installeren met behulp van snelle instellingen | [Snelle installatie van Azure AD Connect](how-to-connect-install-express.md)|
 |Installeren met behulp van aangepaste instellingen | [Custom installation of Azure AD Connect (Engelstalig)](./how-to-connect-install-custom.md)|
-|Upgrade van DirSync | [Upgraden van Azure AD-synchronisatiehulpprogramma (DirSync)](how-to-dirsync-upgrade-get-started.md)|
+|Upgraden van DirSync | [Upgraden van Azure AD-synchronisatiehulpprogramma (DirSync)](how-to-dirsync-upgrade-get-started.md)|
 |Na installatie | [De installatie controleren en licenties toewijzen](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).

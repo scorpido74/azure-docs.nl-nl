@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 7d3b580a939d207bbcc410e13555cdaa28067f87
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514728"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250986"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
 
@@ -31,7 +31,7 @@ Een toepassing die toegang heeft tot een opslag account wanneer er netwerk regel
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Als u uw opslag account wilt beveiligen, moet u eerst een regel configureren om de toegang tot verkeer van alle netwerken (met inbegrip van Internet verkeer) op het open bare eind punt standaard te weigeren. Vervolgens configureert u regels die toegang verlenen tot verkeer van specifieke VNets. U kunt ook regels configureren voor het verlenen van toegang tot verkeer van open bare IP-adresbereiken voor het Internet, het inschakelen van verbindingen van specifieke internet-of lokale clients. Deze configuratie kunt u een beveiligde netwerkgrens voor uw toepassingen te bouwen.
 
@@ -47,7 +47,7 @@ VM-schijfverkeer (inclusief koppelen en ontkoppelen van bewerkingen en schijf-i/
 
 Klassieke opslagaccounts bieden geen ondersteuning voor firewalls en virtuele netwerken.
 
-U kunt niet-beheerde schijven in opslagaccounts met netwerkregels toegepast op back-up en herstel-VM's met het maken van een uitzondering. Dit proces wordt beschreven in de [uitzonderingen](#exceptions) sectie van dit artikel. Firewall-uitzonderingen zijn niet van toepassing met beheerde schijven als ze al worden beheerd door Azure.
+U kunt niet-beheerde schijven in opslagaccounts met netwerkregels toegepast op back-up en herstel-VM's met het maken van een uitzondering. Dit proces wordt beschreven in de sectie [uitzonde ringen](#exceptions) van dit artikel. Firewall-uitzonderingen zijn niet van toepassing met beheerde schijven als ze al worden beheerd door Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Wijzigen van de standaardtoegangsregel voor netwerk
 
@@ -60,19 +60,19 @@ Standaard accepteren opslagaccounts verbindingen van clients op een netwerk. Als
 
 U kunt de standaardregels voor netwerktoegang voor storage-accounts via Azure portal, PowerShell of CLIv2 beheren.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het instellingenmenu met de naam **Firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
 
-1. Kies voor het weigeren van toegang standaard, zodat toegang vanaf **geselecteerde netwerken**. Kies als u wilt dat verkeer via alle netwerken, zodat toegang vanaf **alle netwerken**.
+1. Als u de toegang standaard wilt weigeren, kiest u toegang vanaf **geselecteerde netwerken**toestaan. Als u verkeer van alle netwerken wilt toestaan, kiest u toegang toestaan vanuit **alle netwerken**.
 
-1. Klik op **opslaan** de wijzigingen worden toegepast.
+1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
 #### <a name="powershell"></a>PowerShell
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [aanmelden](/powershell/azure/authenticate-azureps).
+1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [Meld u aan](/powershell/azure/authenticate-azureps).
 
 1. De status van de standaardregel voor de storage-account weergeven.
 
@@ -94,7 +94,7 @@ U kunt de standaardregels voor netwerktoegang voor storage-accounts via Azure po
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en [aanmelden](/cli/azure/authenticate-azure-cli).
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld u aan](/cli/azure/authenticate-azure-cli).
 
 1. De status van de standaardregel voor de storage-account weergeven.
 
@@ -118,13 +118,13 @@ U kunt de standaardregels voor netwerktoegang voor storage-accounts via Azure po
 
 U kunt opslag accounts configureren om alleen toegang toe te staan vanaf specifieke subnetten. De toegestane subnetten kunnen deel uitmaken van een VNet in hetzelfde abonnement of in een ander abonnement, met inbegrip van abonnementen die horen bij een andere Azure Active Directory Tenant.
 
-Schakel een [Service-eindpunt](/azure/virtual-network/virtual-network-service-endpoints-overview) voor Azure Storage binnen het VNet. Het service-eind punt routeert verkeer van het VNet via een optimaal pad naar de Azure Storage-service. De identiteiten van het subnet en het virtuele netwerk worden ook met elke aanvraag verzonden. Beheerders kunnen vervolgens netwerk regels configureren voor het opslag account waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients krijgen toegang via deze netwerkregels moet blijven om te voldoen aan de autorisatievereisten van het storage-account voor toegang tot de gegevens.
+Schakel een [service-eind punt](/azure/virtual-network/virtual-network-service-endpoints-overview) in voor Azure Storage binnen het VNet. Het service-eind punt routeert verkeer van het VNet via een optimaal pad naar de Azure Storage-service. De identiteiten van het subnet en het virtuele netwerk worden ook met elke aanvraag verzonden. Beheerders kunnen vervolgens netwerk regels configureren voor het opslag account waarmee aanvragen kunnen worden ontvangen van specifieke subnetten in een VNet. Clients krijgen toegang via deze netwerkregels moet blijven om te voldoen aan de autorisatievereisten van het storage-account voor toegang tot de gegevens.
 
-Elk opslagaccount biedt ondersteuning voor maximaal 100 regels voor virtueel netwerk, die kunnen worden gecombineerd met [IP-netwerkregels](#grant-access-from-an-internet-ip-range).
+Elk opslag account ondersteunt Maxi maal 100 regels voor virtuele netwerken, die kunnen worden gecombineerd met [IP-netwerk regels](#grant-access-from-an-internet-ip-range).
 
 ### <a name="available-virtual-network-regions"></a>Beschikbaar virtueel netwerk regio 's
 
-Service-eindpunten werken in het algemeen tussen virtuele netwerken en service-exemplaren in dezelfde Azure-regio. Wanneer u service-eindpunten met Azure Storage, dit bereik vergroot om op te nemen de [gekoppelde regio](/azure/best-practices-availability-paired-regions). Service-eindpunten kunt bedrijfscontinuïteit tijdens een regionale failover en toegang tot exemplaren van de alleen-lezen geografisch redundante opslag (RA-GRS). Netwerkregels die toegang vanuit een virtueel netwerk naar een opslagaccount verlenen ook verlenen toegang tot een RA-GRS-exemplaar.
+Service-eindpunten werken in het algemeen tussen virtuele netwerken en service-exemplaren in dezelfde Azure-regio. Wanneer u service-eind punten met Azure Storage gebruikt, neemt deze scope toe met de [gekoppelde regio](/azure/best-practices-availability-paired-regions). Service-eindpunten kunt bedrijfscontinuïteit tijdens een regionale failover en toegang tot exemplaren van de alleen-lezen geografisch redundante opslag (RA-GRS). Netwerkregels die toegang vanuit een virtueel netwerk naar een opslagaccount verlenen ook verlenen toegang tot een RA-GRS-exemplaar.
 
 Bij het plannen voor herstel na noodgevallen tijdens een regionale storing, moet u van tevoren de vnet's maken in de gekoppelde regio. Service-eindpunten inschakelen voor Azure Storage, aan de netwerkregels van het toegang verlenen vanuit deze alternatieve virtuele netwerken. Deze regels toepassen op uw geografisch redundante opslag-accounts.
 
@@ -133,7 +133,7 @@ Bij het plannen voor herstel na noodgevallen tijdens een regionale storing, moet
 
 ### <a name="required-permissions"></a>Vereiste machtigingen
 
-Als u wilt een virtueel netwerk-regel van toepassing op een storage-account, moet de gebruiker de juiste machtigingen voor de subnetten die worden toegevoegd. De machtiging die nodig is *Service koppelen aan een Subnet* en is opgenomen in de *Inzender voor Opslagaccounts* ingebouwde rol. Het kan ook worden toegevoegd aan de aangepaste roldefinities.
+Als u wilt een virtueel netwerk-regel van toepassing op een storage-account, moet de gebruiker de juiste machtigingen voor de subnetten die worden toegevoegd. De benodigde machtiging is *lid van de service aan een subnet* en is opgenomen in de ingebouwde rol *Inzender voor opslag accounts* . Het kan ook worden toegevoegd aan de aangepaste roldefinities.
 
 Het opslag account en de virtuele netwerken waartoe toegang wordt verleend, kunnen zich in verschillende abonnementen bevinden, met inbegrip van abonnementen die deel uitmaken van een andere Azure AD-Tenant.
 
@@ -144,28 +144,28 @@ Het opslag account en de virtuele netwerken waartoe toegang wordt verleend, kunn
 
 U kunt virtuele-netwerkregels voor storage-accounts via Azure portal, PowerShell of CLIv2 beheren.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het instellingenmenu met de naam **Firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
 
-1. Controleer of u hebt geselecteerd zodat toegang vanaf **geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Toegang verlenen tot een virtueel netwerk met een nieuwe regel voor het netwerk, onder **virtuele netwerken**, klikt u op **bestaand virtueel netwerk toevoegen**, selecteer **virtuele netwerken** en **Subnetten** opties en klik vervolgens op **toevoegen**. Voor het maken van een nieuw virtueel netwerk en het toegang geven, klikt u op **nieuw virtueel netwerk toevoegen**. Geef de informatie die nodig zijn voor de nieuw virtueel netwerk maken en klik vervolgens op **maken**.
+1. Als u toegang wilt verlenen tot een virtueel netwerk met een nieuwe netwerk regel, klikt u onder **virtuele netwerken**op **bestaand virtueel netwerk toevoegen**, selecteert u **virtuele netwerken** en **subnetten** opties en klikt u vervolgens op **toevoegen**. Als u een nieuw virtueel netwerk wilt maken en toegang wilt verlenen, klikt u op **nieuw virtueel netwerk toevoegen**. Geef de benodigde informatie op voor het maken van het nieuwe virtuele netwerk en klik vervolgens op **maken**.
 
     > [!NOTE]
     > Als een service-eindpunt voor Azure Storage is niet eerder hebt geconfigureerd voor de geselecteerde virtuele netwerk en subnetten, kunt u deze configureren als onderdeel van deze bewerking.
     >
     > Momenteel worden alleen virtuele netwerken die deel uitmaken van dezelfde Azure Active Directory Tenant weer gegeven voor selectie tijdens het maken van de regel. Als u toegang wilt verlenen tot een subnet in een virtueel netwerk dat deel uitmaakt van een andere Tenant, gebruikt u Power shell, CLI of REST Api's.
 
-1. Als u wilt een virtueel netwerk of subnet regel verwijderen, klikt u op **...**  opent u het snelmenu voor het virtuele netwerk of subnet en klik op **verwijderen**.
+1. Als u een virtuele netwerk-of subnet-regel wilt verwijderen, klikt u op **...** om het context menu voor het virtuele netwerk of subnet te openen en klik op **verwijderen**.
 
-1. Klik op **opslaan** de wijzigingen worden toegepast.
+1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
 #### <a name="powershell"></a>PowerShell
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [aanmelden](/powershell/azure/authenticate-azureps).
+1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [Meld u aan](/powershell/azure/authenticate-azureps).
 
 1. Lijst met regels voor virtueel netwerk.
 
@@ -197,11 +197,11 @@ U kunt virtuele-netwerkregels voor storage-accounts via Azure portal, PowerShell
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaardregel instellen](#change-the-default-network-access-rule) naar **weigeren**, of netwerkregels hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en [aanmelden](/cli/azure/authenticate-azure-cli).
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld u aan](/cli/azure/authenticate-azure-cli).
 
 1. Lijst met regels voor virtueel netwerk.
 
@@ -235,21 +235,21 @@ U kunt virtuele-netwerkregels voor storage-accounts via Azure portal, PowerShell
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaardregel instellen](#change-the-default-network-access-rule) naar **weigeren**, of netwerkregels hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Toegang verlenen vanuit een IP-bereik
 
 U kunt storage-accounts voor toegang via internet voor specifieke openbare IP-adresbereiken. Deze configuratie verleent toegang tot specifieke internet gebaseerde services en on-premises netwerken en algemene internetverkeer wordt geblokkeerd.
 
-Geef toegestane internet-adresbereiken met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in het formulier *16.17.18.0/24* of afzonderlijke IP-adressen, zoals *16.17.18.19*.
+Geef toegestane Internet adresbereiken op met behulp van [CIDR-notatie](https://tools.ietf.org/html/rfc4632) in de vorm *16.17.18.0/24* of als afzonderlijke IP-adressen, zoals *16.17.18.19*.
 
    > [!NOTE]
    > Kleine adresbereiken met behulp van '/ 31' of '/ 32' voorvoegsel grootten worden niet ondersteund. Deze bereiken moeten worden geconfigureerd met behulp van afzonderlijke regels voor IP-adres.
 
-IP-netwerkregels zijn alleen toegestaan voor **openbare internet** IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in de IP-regels. Particuliere netwerken bevatten adressen die met beginnen _10.*_ , _172.16. *_  - _172.31. *_ , en _192.168. *_ .
+IP-netwerk regels zijn alleen toegestaan voor **open bare Internet** -IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met _10. *_ , _172,16. *_  - _172,31. *_ en _192,168. *_ .
 
    > [!NOTE]
-   > IP-netwerkregels hebben geen invloed op aanvragen die afkomstig zijn van dezelfde Azure-regio als het opslagaccount. Gebruik [virtuele-netwerkregels](#grant-access-from-a-virtual-network) waarmee aanvragen voor dezelfde regio.
+   > IP-netwerkregels hebben geen invloed op aanvragen die afkomstig zijn van dezelfde Azure-regio als het opslagaccount. Gebruik [regels voor virtuele netwerken](#grant-access-from-a-virtual-network) om aanvragen van dezelfde regio toe te staan.
 
   > [!NOTE]
   > Services die zijn geïmplementeerd in dezelfde regio als het opslag account, gebruiken persoonlijke Azure IP-adressen voor communicatie. U kunt de toegang tot specifieke Azure-Services dus niet beperken op basis van het open bare IP-adres bereik voor inkomend verkeer.
@@ -268,23 +268,23 @@ Als u [ExpressRoute](/azure/expressroute/expressroute-introduction) gebruikt van
 
 U kunt IP-netwerkregels voor storage-accounts via Azure portal, PowerShell of CLIv2 beheren.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het instellingenmenu met de naam **Firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
 
-1. Controleer of u hebt geselecteerd zodat toegang vanaf **geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Om te verlenen toegang tot een internet-IP-bereik, voer het IP-adres of adresbereik (in CIDR-indeling) onder **Firewall** > **adresbereik**.
+1. Als u toegang tot een IP-adres bereik voor het Internet wilt verlenen, voert u de IP-adressen of het adres bereik (in CIDR-indeling) onder **Firewall** > **adres bereik**.
 
 1. Als u wilt verwijderen van een regel voor IP-netwerk, klikt u op het prullenbakpictogram naast het adresbereik.
 
-1. Klik op **opslaan** de wijzigingen worden toegepast.
+1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
 #### <a name="powershell"></a>PowerShell
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [aanmelden](/powershell/azure/authenticate-azureps).
+1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [Meld u aan](/powershell/azure/authenticate-azureps).
 
 1. Lijst met regels voor IP-netwerk.
 
@@ -317,11 +317,11 @@ U kunt IP-netwerkregels voor storage-accounts via Azure portal, PowerShell of CL
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaardregel instellen](#change-the-default-network-access-rule) naar **weigeren**, of netwerkregels hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en [aanmelden](/cli/azure/authenticate-azure-cli).
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld u aan](/cli/azure/authenticate-azure-cli).
 
 1. Lijst met regels voor IP-netwerk.
 
@@ -354,7 +354,7 @@ U kunt IP-netwerkregels voor storage-accounts via Azure portal, PowerShell of CL
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaardregel instellen](#change-the-default-network-access-rule) naar **weigeren**, of netwerkregels hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat netwerk regels geen effect hebben.
 
 ## <a name="exceptions"></a>Uitzonderingen
 
@@ -375,7 +375,7 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 | Azure Backup             | Microsoft.RecoveryServices | Back-ups en herstelbewerkingen van niet-beheerde schijven in virtuele machines van IAAS uitvoeren. (niet vereist voor beheerde schijven). [Meer informatie](/azure/backup/backup-introduction-to-azure-backup). |
 | Azure Data Box           | Microsoft.DataBox          | Hiermee kunt u gegevens importeren naar Azure met behulp van Data Box. [Meer informatie](/azure/databox/data-box-overview). |
 | Azure DevTest Labs       | Microsoft.DevTestLab       | Aangepaste installatiekopie maken en artefact installatie. [Meer informatie](/azure/devtest-lab/devtest-lab-overview). |
-| Azure Event Grid         | Microsoft.EventGrid        | Gebeurtenispublicatie Blob-opslag inschakelen en toestaan van Event Grid om te publiceren naar storage-wachtrijen. Meer informatie over [blob-opslaggebeurtenissen](/azure/event-grid/event-sources) en [publiceren naar wachtrijen](/azure/event-grid/event-handlers). |
+| Azure Event Grid         | Microsoft.EventGrid        | Gebeurtenispublicatie Blob-opslag inschakelen en toestaan van Event Grid om te publiceren naar storage-wachtrijen. Meer informatie over [Blob Storage-gebeurtenissen](/azure/event-grid/event-sources) en [het publiceren naar wacht rijen](/azure/event-grid/event-handlers). |
 | Azure Event Hubs         | Microsoft.EventHub         | Gegevens met Event Hubs Capture archiveren. [Meer informatie](/azure/event-hubs/event-hubs-capture-overview). |
 | Azure File Sync          | Microsoft.StorageSync      | Hiermee kunt u uw on-premises Bestands server transformeren naar een cache voor Azure-bestands shares. Het toestaan van synchronisatie op meerdere locaties, snelle herstel na nood gevallen en back-ups aan de Cloud zijde. [Meer informatie](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | Richt de oorspronkelijke inhoud in van het standaard bestandssysteem voor een nieuw HDInsight-cluster. [Meer informatie](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
@@ -386,12 +386,14 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bepaald exemplaar van de onderstaande services toegang krijgen tot het opslag account, als u expliciet [een RBAC-rol toewijst](storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat bron exemplaar. In dit geval komt de reik wijdte van toegang voor het exemplaar overeen met de RBAC-rol die is toegewezen aan de beheerde identiteit.
 
-| Service                        | Resource-providernaam          | Doel            |
-| :----------------------------- | :------------------------------------- | :---------- |
+| Service                        | Resource-providernaam                 | Doel            |
+| :----------------------------- | :------------------------------------- | :----------------- |
+| Azure Cognitive Search         | Microsoft.Search/searchServices        | Hiermee kunnen Cognitive Search Services toegang krijgen tot opslag accounts voor indexering, verwerking en query's. |
 | Azure Container Registry Tasks | Micro soft. ContainerRegistry/registers | ACR-taken hebben toegang tot opslag accounts tijdens het maken van container installatie kopieën. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Hiermee hebt u toegang tot opslag accounts via de ADF-runtime. |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage. [Meer informatie](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). |
+| Azure Data Share               | Micro soft. DataShare/accounts           | Hiermee wordt toegang tot opslag accounts via een gegevens share toegestaan. |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
+| Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage. [Meer informatie](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL Database instanties met poly base toe. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel beschikbaar als preview-product. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Micro soft. Synapse/werk ruimten          | Hiermee schakelt u toegang tot gegevens in Azure Storage van Synapse Analytics. |
@@ -399,27 +401,27 @@ Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bep
 
 ### <a name="storage-analytics-data-access"></a>Toegang tot gegevens van Storage analytics
 
-In sommige gevallen is de toegang tot diagnostische logboeken en metrische gegevens lezen vereist van buiten de grens van het netwerk. Wanneer u vertrouwde services toegang tot het opslag account configureert, kunt u lees toegang toestaan voor de logboek bestanden, metrische tabellen of beide. [Meer informatie over het werken met opslaganalyse.](/azure/storage/storage-analytics)
+In sommige gevallen is de toegang tot diagnostische logboeken en metrische gegevens lezen vereist van buiten de grens van het netwerk. Wanneer u vertrouwde services toegang tot het opslag account configureert, kunt u lees toegang toestaan voor de logboek bestanden, metrische tabellen of beide. [Meer informatie over het werken met Storage Analytics.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Uitzonderingen beheren
 
 U kunt uitzonderingen op netwerk via Azure portal, PowerShell of Azure CLI beheren v2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 1. Ga naar het opslagaccount dat u wilt beveiligen.
 
-1. Klik op het instellingenmenu met de naam **Firewalls en virtuele netwerken**.
+1. Klik op het menu instellingen met de naam **firewalls en virtuele netwerken**.
 
-1. Controleer of u hebt geselecteerd zodat toegang vanaf **geselecteerde netwerken**.
+1. Controleer of u hebt geselecteerd voor toegang tot **geselecteerde netwerken**.
 
-1. Onder **uitzonderingen**, selecteert u de uitzonderingen die u wilt verlenen.
+1. Selecteer onder **uitzonde ringen**de uitzonde ringen die u wilt verlenen.
 
-1. Klik op **opslaan** de wijzigingen worden toegepast.
+1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
 #### <a name="powershell"></a>PowerShell
 
-1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [aanmelden](/powershell/azure/authenticate-azureps).
+1. Installeer de [Azure PowerShell](/powershell/azure/install-Az-ps) en [Meld u aan](/powershell/azure/authenticate-azureps).
 
 1. De uitzonderingen voor de storage-account-netwerkregels worden weergegeven.
 
@@ -440,11 +442,11 @@ U kunt uitzonderingen op netwerk via Azure portal, PowerShell of Azure CLI beher
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaardregel instellen](#change-the-default-network-access-rule) naar **weigeren**, of verwijder uitzonderingen hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat het verwijderen van uitzonde ringen geen effect heeft.
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Installeer de [Azure CLI](/cli/azure/install-azure-cli) en [aanmelden](/cli/azure/authenticate-azure-cli).
+1. Installeer de [Azure cli](/cli/azure/install-azure-cli) en [Meld u aan](/cli/azure/authenticate-azure-cli).
 
 1. De uitzonderingen voor de storage-account-netwerkregels worden weergegeven.
 
@@ -465,10 +467,10 @@ U kunt uitzonderingen op netwerk via Azure portal, PowerShell of Azure CLI beher
     ```
 
 > [!IMPORTANT]
-> Zorg ervoor dat u [de standaardregel instellen](#change-the-default-network-access-rule) naar **weigeren**, of verwijder uitzonderingen hebben geen effect.
+> Zorg ervoor dat u [de standaard regel instelt](#change-the-default-network-access-rule) op **weigeren**of dat het verwijderen van uitzonde ringen geen effect heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Azure Network service-eindpunten in [Service-eindpunten](/azure/virtual-network/virtual-network-service-endpoints-overview).
+Meer informatie over Azure Network Service-eind punten in [service-eind punten](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-Duik dieper in Azure Storage-beveiliging in [Azure Storage-beveiligingshandleiding](../blobs/security-recommendations.md).
+Dieper in de Azure Storage beveiliging in [Azure Storage beveiligings handleiding](../blobs/security-recommendations.md).

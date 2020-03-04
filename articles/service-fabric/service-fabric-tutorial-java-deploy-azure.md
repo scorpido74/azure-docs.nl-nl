@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465290"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252805"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Java-toepassing implementeren in een Service Fabric-cluster in Azure
 
@@ -36,7 +36,7 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Installeer Service Fabric-SDK voor [Mac](service-fabric-get-started-mac.md) of [Linux](service-fabric-get-started-linux.md)
 * [Installeer Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
@@ -53,13 +53,13 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 2. Aanmelden bij uw Azure-account
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. Stel het Azure-abonnement in dat u wilt gebruiken om de resources te maken
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -73,7 +73,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
     Met de voorgaande opdracht wordt de volgende informatie opgehaald die moet worden genoteerd voor later gebruik.
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.net/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -81,7 +81,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 5. Een resourcegroep maken voor het opslagaccount waarin uw logboeken worden opgeslagen
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name teststorageaccountrg
@@ -89,7 +89,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 6. Een opslagaccount maken dat wordt gebruikt voor het opslaan van de logboeken die worden geproduceerd
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
@@ -101,13 +101,13 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 8. Kopieer de URL van de account-SAS en bewaar deze voor gebruik bij het maken van uw Service Fabric-cluster. Deze lijkt op de volgende URL:
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Maak een resourcegroep die de Event Hub-resources bevat. Event Hubs wordt gebruikt om berichten te verzenden vanuit Service Fabric voor de server waarop de ELK-resources worden uitgevoerd.
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name testeventhubsrg
@@ -115,7 +115,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 10. Maak een Event Hubs-resource met behulp van de volgende opdracht. Volg de aanwijzingen om details in te voeren voor de namespaceName, eventHubName, consumerGroupName, sendAuthorizationRule en receiveAuthorizationRule.
 
-    ```bash
+    ```azurecli
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
@@ -158,7 +158,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
     Kopieer de waarde van het veld **sr** in de JSON die is geretourneerd. De veldwaarde **sr** is de SAS-token voor EventHubs. De volgende URL is een voorbeeld van het veld **sr**:
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -185,7 +185,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 14. Voer de volgende opdracht uit om uw Service Fabric-cluster te maken
 
-    ```bash
+    ```azurecli
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
     ```
 
@@ -233,7 +233,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een beveiligd Linux-cluster maken in Azure

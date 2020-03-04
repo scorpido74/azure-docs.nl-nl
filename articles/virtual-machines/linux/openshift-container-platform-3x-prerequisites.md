@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035477"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255693"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene vereisten voor het implementeren van open Shift container platform 3,11 in azure
 
@@ -102,9 +102,9 @@ Open Shift communiceert met Azure met behulp van een gebruikers naam en wacht wo
 
 Maak een service-principal met [AZ AD SP create-for-RBAC](/cli/azure/ad/sp) en uitvoer de referenties die openshift nodig heeft.
 
-In het volgende voor beeld wordt een service-principal gemaakt en worden de Inzender machtigingen toegewezen aan een resource groep met de naam openshiftrg.
+In het volgende voor beeld wordt een service-principal gemaakt en worden de Inzender machtigingen toegewezen aan een resource groep met de naam *openshiftrg*.
 
-Maak eerst de resource groep met de naam openshiftrg:
+Maak eerst de resource groep met de naam *openshiftrg*:
 
 ```azurecli
 az group create -l eastus -n openshiftrg

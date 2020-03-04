@@ -2,13 +2,13 @@
 title: Resources verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Azure Resource Manager gebruiken voor resources verplaatsen naar een nieuwe resourcegroep of abonnement.
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891358"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250173"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement
 
@@ -24,7 +24,7 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
 
 1. De resources die u wilt verplaatsen, moeten de verplaatsings bewerking ondersteunen. Zie [ondersteuning voor het verplaatsen van resources voor bronnen](move-support-resources.md)voor een lijst met resources die kunnen worden verplaatst.
 
-1. Sommige services hebben specifieke beperkingen of vereisten bij het verplaatsen van resources. Als u een van de volgende services hebt verplaatst, controleert u of er richt lijnen zijn voordat u verdergaat.
+1. Sommige services hebben specifieke beperkingen of vereisten bij het verplaatsen van resources. Als u een van de volgende services wilt verplaatsen, controleert u of de richt lijnen voorafgaand aan het verplaatsen.
 
    * [Hulp App Services verplaatsen](./move-limitations/app-service-move-limitations.md)
    * [Richt lijnen voor het verplaatsen van Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
@@ -33,9 +33,9 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
    * [Hulp Recovery Services verplaatsen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Hulp Virtual Machines verplaatsen](./move-limitations/virtual-machines-move-limitations.md)
 
-1. De bron-en doel abonnementen moeten actief zijn. Als u problemen ondervindt bij het inschakelen van een uitgeschakeld account, [maakt u een ondersteunings aanvraag voor Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het probleemtype.
+1. De bron-en doel abonnementen moeten actief zijn. Als u problemen ondervindt bij het inschakelen van een uitgeschakeld account, [maakt u een ondersteunings aanvraag voor Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **abonnements beheer** voor het type probleem.
 
-1. De bron- en doelabonnementen moeten aanwezig zijn in dezelfde [Azure Active Directory-tenant](../../active-directory/develop/quickstart-create-new-tenant.md). Om te controleren dat beide abonnementen dezelfde tenant-ID hebben, gebruikt u Azure PowerShell of Azure CLI.
+1. De bron-en doel abonnementen moeten zich in dezelfde [Azure Active Directory Tenant](../../active-directory/develop/quickstart-create-new-tenant.md)bevinden. Om te controleren dat beide abonnementen dezelfde tenant-ID hebben, gebruikt u Azure PowerShell of Azure CLI.
 
    Voor Azure PowerShell gebruiken:
 
@@ -56,7 +56,7 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
    * [Eigendom van een Azure-abonnement naar een ander account overdragen](../../billing/billing-subscription-transfer.md)
    * [Een Azure-abonnement koppelen of toevoegen aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Het doelabonnement moet zijn geregistreerd voor de resourceprovider van de resource die wordt verplaatst. Als u niet het geval is, ontvangt u een foutmelding waarin staat dat de **abonnement is niet geregistreerd voor een resourcetype**. Mogelijk ziet u deze fout wanneer u een resource verplaatst naar een nieuw abonnement, maar dat abonnement nooit is gebruikt voor dat resource type.
+1. Het doelabonnement moet zijn geregistreerd voor de resourceprovider van de resource die wordt verplaatst. Als dat niet het geval is, wordt er een fout bericht weer gegeven met de mede deling dat het **abonnement niet is geregistreerd voor een resource type**. Mogelijk ziet u deze fout wanneer u een resource verplaatst naar een nieuw abonnement, maar dat abonnement nooit is gebruikt voor dat resource type.
 
    Gebruik de volgende opdrachten om op te halen van de registratiestatus voor PowerShell:
 
@@ -86,10 +86,10 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
 
 1. Het verplaatsen van de resources account moet ten minste de volgende machtigingen hebben:
 
-   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** op de resourcegroep.
-   * **Microsoft.Resources/subscriptions/resourceGroups/write** op de doel-resourcegroep.
+   * **Micro soft. resources/abonnementen/resourceGroups/moveResources/actie** voor de bron resource groep.
+   * **Micro soft. resources/abonnementen/resourceGroups/schrijven** voor de doel resource groep.
 
-1. Controleer voordat u de resources verplaatst, de abonnementquota voor het abonnement dat u de resources wilt verplaatsen. Als het verplaatsen van de resources betekent dat het abonnement overschrijdt de grenzen, moet u om te controleren of u een verhoging van de quota kan opvragen. Zie voor een lijst van beperkingen en hoe u een verhoging [Azure-abonnement en Servicelimieten, quotums en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+1. Controleer voordat u de resources verplaatst, de abonnementquota voor het abonnement dat u de resources wilt verplaatsen. Als het verplaatsen van de resources betekent dat het abonnement overschrijdt de grenzen, moet u om te controleren of u een verhoging van de quota kan opvragen. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor een lijst met limieten en het aanvragen van een verhoging.
 
 1. **Voor een verplaatsing tussen abonnementen moeten de resource en de afhankelijke resources zich in dezelfde resource groep bevinden en moeten ze samen worden verplaatst.** Een virtuele machine met Managed disks vereist bijvoorbeeld dat de virtuele machine en de beheerde schijven samen worden verplaatst, samen met andere afhankelijke bronnen.
 
@@ -111,12 +111,12 @@ Voor illustratie doeleinden hebben we slechts één afhankelijke resource.
 
 ## <a name="validate-move"></a>Verplaatsen valideren
 
-De [verplaatsingsbewerking valideren](/rest/api/resources/resources/validatemoveresources) kunt u het testen van uw scenario verplaatsen zonder daadwerkelijk de resources te verplaatsen. Gebruik deze bewerking om te controleren of de verplaatsing slaagt. Validatie wordt automatisch aangeroepen wanneer u een verplaatsings aanvraag verzendt. Gebruik deze bewerking alleen als u de resultaten vooraf moet bepalen. Als u wilt deze bewerking uitvoeren, moet u de:
+Met de [bewerking verplaatsing valideren](/rest/api/resources/resources/validatemoveresources) kunt u het verplaatsings scenario testen zonder de resources daad werkelijk te verplaatsen. Gebruik deze bewerking om te controleren of de verplaatsing slaagt. Validatie wordt automatisch aangeroepen wanneer u een verplaatsings aanvraag verzendt. Gebruik deze bewerking alleen als u de resultaten vooraf moet bepalen. Als u wilt deze bewerking uitvoeren, moet u de:
 
 * naam van de resourcegroep
 * Resource-ID van de doelresourcegroep
 * Resource-ID van elke resource verplaatsen
-* de [toegangstoken](/rest/api/azure/#acquire-an-access-token) voor uw account
+* het [toegangs token](/rest/api/azure/#acquire-an-access-token) voor uw account
 
 De volgende aanvraag verzenden:
 
@@ -147,7 +147,7 @@ retry-after: 15
 ...
 ```
 
-De statuscode 202 geeft aan dat de validatieaanvraag is geaccepteerd, maar deze nog niet nog bepaald als de bewerking voor verplaatsen slaagt. De `location` waarde bevat een URL die u gebruikt om de status van de langdurige bewerking te controleren.  
+De statuscode 202 geeft aan dat de validatieaanvraag is geaccepteerd, maar deze nog niet nog bepaald als de bewerking voor verplaatsen slaagt. De `location` waarde bevat een URL die u gebruikt om de status van de langlopende bewerking te controleren.  
 
 Om te controleren of de status, de volgende aanvraag te verzenden:
 
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-Terwijl de bewerking wordt nog steeds uitgevoerd, wordt u voor het ontvangen van de statuscode 202 blijven. Wacht het aantal seconden aangegeven in de `retry-after` waarde voordat u doorgaat. Als de verplaatsing is gevalideerd, ontvangt u de statuscode 204. Als de validatie voor het verplaatsen is mislukt, ontvangt u een foutbericht weergegeven, zoals:
+Terwijl de bewerking wordt nog steeds uitgevoerd, wordt u voor het ontvangen van de statuscode 202 blijven. Wacht het aantal seconden dat is opgegeven in de `retry-after` waarde voordat u het opnieuw probeert. Als de verplaatsing is gevalideerd, ontvangt u de statuscode 204. Als de validatie voor het verplaatsen is mislukt, ontvangt u een foutbericht weergegeven, zoals:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -170,11 +170,11 @@ Als u resources wilt verplaatsen, selecteert u de resource groep met deze resour
 
 Selecteer of u de resources naar een nieuwe resourcegroep of een nieuw abonnement verplaatsen wilt.
 
-Selecteer de resources wilt verplaatsen en de resourcegroep van de bestemming. Bevestig dat u wilt bijwerken scripts voor deze resources, en selecteer **OK**. Als u het pictogram bewerken abonnement in de vorige stap hebt geselecteerd, moet u ook het doelabonnement.
+Selecteer de resources wilt verplaatsen en de resourcegroep van de bestemming. Bevestig dat u scripts voor deze resources moet bijwerken en selecteer **OK**. Als u het pictogram bewerken abonnement in de vorige stap hebt geselecteerd, moet u ook het doelabonnement.
 
 ![doel selecteren](./media/move-resource-group-and-subscription/select-destination.png)
 
-In **meldingen**, ziet u dat de verplaatsing wordt uitgevoerd.
+In **meldingen**ziet u dat de verplaatsings bewerking wordt uitgevoerd.
 
 ![move-status weergeven](./media/move-resource-group-and-subscription/show-status.png)
 
@@ -194,13 +194,13 @@ $plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Als u wilt verplaatsen naar een nieuw abonnement, een waarde bevatten voor de `DestinationSubscriptionId` parameter.
+Als u wilt overstappen op een nieuw abonnement, neemt u een waarde op voor de para meter `DestinationSubscriptionId`.
 
 Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Azure CLI gebruiken
 
-Als u bestaande resources naar een andere resourcegroep of abonnement, gebruikt u de [verplaatsen van de az resource](/cli/azure/resource?view=azure-cli-latest#az-resource-move) opdracht. Geef de resource-id's van de resources te verplaatsen. In het volgende voor beeld ziet u hoe u verschillende resources kunt verplaatsen naar een nieuwe resource groep. In de `--ids` parameter, Geef een door spaties gescheiden lijst van de resource-id's te verplaatsen.
+Als u bestaande resources wilt verplaatsen naar een andere resource groep of een ander abonnement, gebruikt u de opdracht [AZ resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Geef de resource-id's van de resources te verplaatsen. In het volgende voor beeld ziet u hoe u verschillende resources kunt verplaatsen naar een nieuwe resource groep. Geef in de para meter `--ids` een door spaties gescheiden lijst op met de resource-Id's die u wilt verplaatsen.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -208,7 +208,7 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Als u wilt verplaatsen naar een nieuw abonnement, bieden de `--destination-subscription-id` parameter.
+Als u wilt overstappen op een nieuw abonnement, geeft u de para meter `--destination-subscription-id` op.
 
 Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement](troubleshoot-move.md).
 

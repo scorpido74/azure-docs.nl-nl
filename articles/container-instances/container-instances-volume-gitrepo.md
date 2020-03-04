@@ -3,12 +3,12 @@ title: GitRepo volume koppelen aan container groep
 description: Meer informatie over het koppelen van een gitRepo-volume om een Git-opslag plaats in uw container instanties te klonen
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533222"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252087"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Een gitRepo-volume koppelen in Azure Container Instances
 
@@ -23,7 +23,7 @@ Het *gitRepo* -volume koppelt een directory en kloont de opgegeven Git-opslag pl
 
 Wanneer u een *gitRepo* -volume koppelt, kunt u drie eigenschappen instellen voor het configureren van het volume:
 
-| Eigenschap | Verplicht | Beschrijving |
+| Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
 | `repository` | Ja | De volledige URL, inclusief `http://` of `https://`, van de Git-opslag plaats die moet worden gekloond.|
 | `directory` | Nee | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met "`..`".  Als u`.`opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
@@ -48,8 +48,11 @@ az container create \
 
 Als u wilt controleren of het gitRepo-volume is gekoppeld, start u een shell in de container met [AZ container exec][az-container-exec] en vermeldt u de map:
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -82,13 +85,13 @@ Als u een gitRepo-volume wilt koppelen voor een privé Git-opslag plaats, geeft 
 
 De para meter Azure CLI `--gitrepo-url` voor een persoonlijke GitHub-opslag plaats zou er als volgt uitzien (waarbij ' gituser ' de GitHub-gebruikers naam is en ' abcdef1234fdsa4321abcdef ' het persoonlijke toegangs token van de gebruiker is):
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 Geef voor een Azure opslag plaatsen Git-opslag plaats een wille keurige gebruikers naam op (u kunt ' azurereposuser ' gebruiken zoals in het volgende voor beeld) in combi natie met een geldige PAT:
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

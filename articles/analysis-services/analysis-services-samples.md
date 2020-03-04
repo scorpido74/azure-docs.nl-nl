@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572308"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247843"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services-voor beelden
 
@@ -26,6 +26,9 @@ De [Analysis Services](https://github.com/Microsoft/Analysis-Services) opslag pl
 
 [Adventure Works for Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) op github is het meest gebruikte voorbeeld model project in tabel vorm. U kunt een VS-project of een voltooide voorbeeld database voor een tabellair model downloaden.
 
+## <a name="sample-database-on-azure"></a>Voorbeeld database in azure
+
+Azure Synapse Analytics (SQL Data Warehouse) biedt een voor beeld van een AdventureWorksDW-data base die kan worden opgenomen in een ingerichte resource. Zie voor meer informatie [Quick Start: een Azure Synapse Analytics SQL-groep maken en er een query op uitvoeren](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>Voorbeeld databases op GitHub
 

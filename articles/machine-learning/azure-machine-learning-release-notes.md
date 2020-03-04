@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462170"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249748"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Azure Machine Learning SDK voor python v 1.1.2 RC0
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-core**
+    + De batch modus in te scha kelen (meerdere rijen nemen) voor automl ONNX-modellen
+    + Verbeterde detectie van de frequentie van de gegevens sets, ontbrekende gegevens of met onregelmatige gegevens punten
+    + De mogelijkheid om gegevens punten te verwijderen die niet voldoen aan de dominante frequrncy is toegevoegd.
+  + **azureml-automl-runtime**
+    + Het probleem is opgelost met de fout die wordt gegenereerd als de korrel die niet voor komt in de Trainingsset, werd weer gegeven in de testset
+    + De y_query vereiste is verwijderd tijdens de score voor de prognose service
+  + **azureml-contrib-Mir**
+    + Voegt functionaliteit toe aan de klasse MirWebservice om het toegangs token op te halen
+  + **azureml-core**
+    + Geïmplementeerde AzureML webservices is nu standaard `INFO` logboek registratie. U kunt dit beheren door de omgevings variabele `AZUREML_LOG_LEVEL` in te stellen in de geïmplementeerde service.
+    + Verwerk iteraties op `Dataset.get_all` om alle gegevens sets te retour neren die zijn geregistreerd bij de werk ruimte.
+    + Fout bericht verbeteren wanneer ongeldig type wordt door gegeven aan `path`-argument van Api's voor het maken van de gegevensset.
+    + Python SDK gebruikt de detectie service voor het gebruik van het eind punt API in plaats van pijp lijnen.
+    + Wisselen naar de nieuwe routes in alle SDK-aanroepen
+    + Verandert de route ring van aanroepen naar de ModelManagementService naar een nieuwe, geïntegreerde structuur
+      + De methode voor het bijwerken van de werk ruimte is openbaar beschikbaar gemaakt.
+      + Er is een image_build_compute para meter toegevoegd aan de methode voor het bijwerken van de werk ruimte om de computer toe te staan om de compute
+    +  Er zijn afschaffing-berichten toegevoegd aan de oude profilerings werk stroom. Vaste profilering CPU en geheugen limieten
+  + **azureml-interpreteren**
+    + Update azureml-interprete voor interprete-Community 0,6. *
+  + **azureml-mlflow**
+    + Ondersteuning voor soevereine Clouds toevoegen aan azureml. mlflow
+  + **azureml-pijp lijn-stappen**
+    + De `AutoMLStep` is verplaatst naar de `azureml-pipeline-steps package`. De `AutoMLStep` in `azureml-train-automl-runtime`is afgeschaft.
+  + **azureml-Train-automl-client**
+    + Er is een probleem opgelost waarbij bepaalde pakketten op externe uitvoeringen op onjuiste versies kunnen worden geïnstalleerd.
+  + **azureml-Train-automl-runtime**
+    + Het probleem met de frequentie detectie is opgelost in de externe uitvoeringen
+    + De `AutoMLStep` is verplaatst naar de `azureml-pipeline-steps package`. De `AutoMLStep` in `azureml-train-automl-runtime`is afgeschaft.
+  + **azureml-Train-core**
+    + De `AutoMLStep` is verplaatst naar de `azureml-pipeline-steps package`. De `AutoMLStep` in `azureml-train-automl-runtime`is afgeschaft.
 
 ## <a name="2020-02-18"></a>2020-02-18
 
@@ -926,7 +964,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
   + **azureml-contrib-uitleg-model**
     + Argument voor vaste trans formaties voor de licht gewicht uitleg van de onbewerkte functie in het contrib-uitleg-model pakket
     + Er zijn segmenten toegevoegd aan de afbeeldings uitleg in de afbeeldings uitleg voor het pakket AzureML-contrib-uitleg-model
-    + Scipy sparse-ondersteuning voor LimeExplainer toevoegen
+    + scipy sparse-ondersteuning voor LimeExplainer toevoegen
     + `batch_size` is toegevoegd om de uitleger te simuleren wanneer `include_local=False`, voor het streamen van globale toelichtingen in batches om de uitvoerings tijd van DecisionTreeExplainableModel te verbeteren
   + **azureml-contrib-featureengineering**
     + Oplossing voor het aanroepen van set_featurizer_timeseries_params (): wijziging van het type dict-waarde en null-controle: notitie blok toevoegen voor `timeseries` featurizer

@@ -8,16 +8,16 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: efca3dad6d8bfadbc334067b0189d2bea5aef445
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750518"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250883"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
-Met Azure Storage Analytics wordt logboekregistratie uitgevoerd en kunnen metrische gegevens voor een opslagaccount worden geleverd. Deze gegevens kunt u gebruiken om aanvragen te traceren, gebruikstrends te analyseren en een diagnose uit te voeren voor problemen met uw opslagaccount.
+Azure Opslaganalyse voert logboek registratie uit en geeft metrische gegevens voor een opslag account. U kunt deze gegevens gebruiken om aanvragen te traceren, gebruiks trends te analyseren en problemen met uw opslag account op te sporen.
 
 Als u Opslaganalyse wilt gebruiken, moet u deze afzonderlijk inschakelen voor elke service die u wilt bewaken. U kunt deze functie inschakelen via de [Azure Portal](https://portal.azure.com). Zie [een opslag account bewaken in de Azure Portal](storage-monitor-storage-account.md)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de [Eigenschappen van de set BLOB service](/rest/api/storageservices/set-blob-service-properties), [Stel Queue service](/rest/api/storageservices/set-queue-service-properties)-eigenschappen in, [Stel Table service-eigenschappen](/rest/api/storageservices/set-table-service-properties)in en [Stel bestands service-eigenschappen](/rest/api/storageservices/Get-File-Service-Properties) bewerkingen in om Opslaganalyse voor elke service in te scha kelen.
 
@@ -42,7 +42,7 @@ Als u een Bewaar beleid voor gegevens hebt geconfigureerd, worden er geen kosten
 
 ### <a name="understanding-billable-requests"></a>Informatie over factureer bare aanvragen
 
-Elke aanvraag voor de opslag service van een account is Factureerbaar of niet factureerbaar. Opslaganalyse registreert elke afzonderlijke aanvraag voor een service, met inbegrip van een status bericht dat aangeeft hoe de aanvraag is verwerkt. Op dezelfde manier Opslaganalyse worden metrische gegevens opgeslagen voor zowel een service als de API-bewerkingen van die service, inclusief de percentages en het aantal bepaalde status berichten. Samen kunnen deze functies u helpen bij het analyseren van uw factureer bare aanvragen, het aanbrengen van verbeteringen in uw toepassing en het vaststellen van problemen met aanvragen voor uw services. Zie [Wat is Azure Storage facturering: band breedte, trans acties en capaciteit](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)voor meer informatie over facturering.
+Elke aanvraag voor de opslag service van een account is Factureerbaar of niet factureerbaar. Opslaganalyse registreert elke afzonderlijke aanvraag voor een service, met inbegrip van een status bericht dat aangeeft hoe de aanvraag is verwerkt. Op dezelfde manier Opslaganalyse worden metrische gegevens opgeslagen voor zowel een service als de API-bewerkingen van die service, inclusief de percentages en het aantal bepaalde status berichten. Samen kunnen deze functies u helpen bij het analyseren van uw factureer bare aanvragen, het aanbrengen van verbeteringen in uw toepassing en het vaststellen van problemen met aanvragen voor uw services. Zie [Wat is Azure Storage facturering: band breedte, trans acties en capaciteit](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor meer informatie over facturering.
 
 Wanneer u Opslaganalyse gegevens bekijkt, kunt u de tabellen in het onderwerp [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) gebruiken om te bepalen welke aanvragen Factureerbaar zijn. Vervolgens kunt u uw logboeken en metrische gegevens vergelijken met de status berichten om te zien of er een bepaalde aanvraag in rekening is gebracht. U kunt ook de tabellen in het vorige onderwerp gebruiken om de beschik baarheid voor een opslag service of afzonderlijke API-bewerking te onderzoeken.
 

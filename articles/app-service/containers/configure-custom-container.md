@@ -3,12 +3,12 @@ title: Een aangepaste Linux-container configureren
 description: Meer informatie over het configureren van een aangepaste Linux-container in Azure App Service. In dit artikel vindt u de meest voorkomende configuratie taken.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671868"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255869"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Een aangepaste Linux-container voor Azure App Service configureren
 
@@ -136,11 +136,11 @@ In de volgende lijsten worden ondersteunde en niet-ondersteunde docker-configura
 
 #### <a name="supported-options"></a>Ondersteunde opties
 
-- command
-- entrypoint
+- opdracht
+- ingangspunt
 - environment
 - image
-- ports
+- poorten
 - restart
 - services
 - volumes
@@ -159,6 +159,8 @@ In de volgende lijsten worden ondersteunde en niet-ondersteunde docker-configura
 ## <a name="configure-vnet-integration"></a>VNet-integratie configureren
 
 Voor het gebruik van een aangepaste container met VNet-integratie is mogelijk extra container configuratie vereist. Zie [uw app integreren met een Azure-Virtual Network](../web-sites-integrate-with-vnet.md).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

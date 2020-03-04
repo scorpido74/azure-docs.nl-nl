@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708305"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252068"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -114,13 +114,13 @@ ACR ondersteunt het docker-REGI ster HTTP API v2. De Api's zijn toegankelijk op 
 
 Als u zich op bash bevindt:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 Voor Power shell:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 U moet kunnen zien dat het opslag gebruik is toegenomen in het Azure Portal, of u kunt een query uitvoeren op het gebruik van de CLI.
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Verwijder de installatie kopie met behulp van de Azure CLI of portal en controleer het bijgewerkte gebruik in een paar minuten.
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -188,7 +188,7 @@ Schakel TLS 1,2 in met behulp van een recente docker-client (versie 18.03.0 en h
 > [!IMPORTANT]
 > Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld.
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Biedt Azure Container Registry ondersteuning voor Content Trust?
+### <a name="does-azure-container-registry-support-content-trust"></a>Ondersteunt Azure Container Registry inhoud vertrouwen?
 
 Ja, u kunt vertrouwde installatie kopieën gebruiken in Azure Container Registry, omdat de poort van de [docker-notaris](https://docs.docker.com/notary/getting_started/) is geïntegreerd en kan worden ingeschakeld. Zie voor meer informatie [vertrouwen in inhoud in azure container Registry](container-registry-content-trust.md).
 
@@ -216,12 +216,12 @@ ACR ondersteunt [aangepaste rollen](container-registry-roles.md) die verschillen
   Vervolgens kunt u de `AcrPull` of `AcrPush` rol toewijzen aan een gebruiker (in het volgende voor beeld wordt gebruikgemaakt van `AcrPull`):
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   Of wijs de rol toe aan een service beginsel dat wordt geïdentificeerd door de toepassings-ID:
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ De toegewezen gebruiker is vervolgens in staat om installatie kopieën in het RE
   az acr repository list -n myRegistry
   ```
 
- Een installatie kopie ophalen:
-    
-  ```azurecli
+* Een installatie kopie ophalen:
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ Zie [de status van een Azure container Registry controleren](container-registry-
  - Als `docker pull` doorlopend mislukt, kan er een probleem zijn met de docker-daemon. Het probleem kan over het algemeen worden verholpen door de docker-daemon opnieuw te starten. 
  - Als dit probleem blijft optreden nadat docker daemon opnieuw is opgestart, kan het probleem een aantal problemen met de netwerk verbinding met de computer zijn. Voer de volgende opdracht uit om de eindpunt connectiviteit te testen om te controleren of het algemene netwerk op de computer in orde is. De minimale `az acr` versie die deze connectiviteits controle opdracht bevat, is 2.2.9. Voer een upgrade uit voor uw Azure-CLI als u een oudere versie gebruikt.
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - U moet altijd een mechanisme voor opnieuw proberen hebben voor alle docker-client bewerkingen.
 
 ### <a name="docker-pull-is-slow"></a>De docker-pull is traag
@@ -492,13 +493,13 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 | Git-service | Bron context | Hand matige build | Trigger voor automatisch samen stellen via door voeren |
 |---|---|---|---|
 | GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ja | Ja |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ja | Ja |
+| Azure-opslagplaatsen | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ja | Ja |
 | GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Ja | Nee |
 | BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Ja | Nee |
 
 ## <a name="run-error-message-troubleshooting"></a>Problemen met het uitvoeren van fout berichten oplossen
 
-| Foutbericht | Probleemoplossingsgids |
+| Foutbericht | Troubleshooting Guide (Handleiding voor probleemoplossing) |
 |---|---|
 |Er is geen toegang geconfigureerd voor de virtuele machine, dus er zijn geen abonnementen gevonden|Dit kan gebeuren als u `az login --identity` in uw ACR-taak gebruikt. Dit is een tijdelijke fout en treedt op wanneer de roltoewijzing van uw beheerde identiteit niet is door gegeven. Wacht een paar seconden voordat u opnieuw probeert te werken.|
 

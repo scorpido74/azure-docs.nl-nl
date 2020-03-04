@@ -3,7 +3,7 @@ title: Een Debian Linux-VHD voorbereiden in azure
 description: Meer informatie over het maken van Debian-VHD-installatie kopieën voor implementatie in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 3cf6a4a98451a36826cadf84b9be8e3ea63efea7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 579704ad663e20fdbb59b94d1d4c5ea831d3a68a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750142"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251689"
 ---
-# <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian VHD voor Azure voorbereiden
+# <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian-VHD voorbereiden voor Azure
 ## <a name="prerequisites"></a>Vereisten
 In deze sectie wordt ervan uitgegaan dat u al een Debian Linux-besturings systeem hebt geïnstalleerd vanuit een ISO-bestand dat is gedownload van de [Debian-website](https://www.debian.org/distrib/) naar een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden. Hyper-V is maar een voor beeld. Zie [de hyper-v-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies voor het gebruik van Hyper-v.
 

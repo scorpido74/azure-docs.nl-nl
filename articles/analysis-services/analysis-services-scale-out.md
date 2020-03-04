@@ -4,15 +4,15 @@ description: Azure Analysis Services servers repliceren met scale-out. Client qu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310183"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247996"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -30,7 +30,7 @@ Ongeacht het aantal query replica's in een query groep, worden de verwerkings we
 
 Wanneer u uitschaalt, kan het tot vijf minuten duren voordat nieuwe query replica's incrementeel worden toegevoegd aan de query groep. Wanneer alle nieuwe query replica's actief zijn, worden nieuwe client verbindingen verdeeld over alle resources in de query groep. Bestaande client verbindingen worden niet gewijzigd ten opzichte van de resource waarmee ze momenteel zijn verbonden. Bij het schalen in worden alle bestaande client verbindingen met een bron van de query groep die uit de query groep wordt verwijderd, beëindigd. Clients kunnen opnieuw verbinding maken met een resterende resource in de query groep.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 Wanneer u de eerste keer scale-out configureert, worden model databases op uw primaire server *automatisch* gesynchroniseerd met nieuwe replica's in een nieuwe query groep. Automatische synchronisatie wordt slechts één keer uitgevoerd. Tijdens automatische synchronisatie worden de gegevens bestanden van de primaire server (versleuteld op rest in Blob Storage) gekopieerd naar een tweede locatie, ook versleuteld op rest in Blob Storage. Replica's in de query groep worden vervolgens *gehydrateerd* met gegevens uit de tweede set bestanden. 
 
@@ -74,19 +74,23 @@ U kunt de verwerkings server scheiden van de query groep voor een maximale prest
 
 ## <a name="monitor-qpu-usage"></a>QPU-gebruik bewaken
 
-Als u wilt bepalen of uitschalen voor uw server nodig is, controleert u de server in Azure Portal met behulp van metrische gegevens. Als uw QPU regel matig uitdergelijke, betekent dit dat het aantal query's voor uw modellen de limiet van QPU voor uw abonnement overschrijdt. De metrische gegevens wachtrij lengte van de query pool neemt ook toe wanneer het aantal query's in de wachtrij van de query thread de beschik bare QPU overschrijdt. 
+Als u wilt bepalen of uitschalen voor uw server nodig is, [controleert u de server](analysis-services-monitor.md) in azure Portal met behulp van metrische gegevens. Als uw QPU regel matig uitdergelijke, betekent dit dat het aantal query's voor uw modellen de limiet van QPU voor uw abonnement overschrijdt. De metrische gegevens wachtrij lengte van de query pool neemt ook toe wanneer het aantal query's in de wachtrij van de query thread de beschik bare QPU overschrijdt. 
 
 Een andere goede metrische waarde om te kijken, is gemiddelde QPU door ServerResourceType. Deze metrische gegevens vergelijkt de gemiddelde QPU voor de primaire server met de query groep. 
 
 ![Metrische gegevens van query uitschalen](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>QPU configureren met ServerResourceType
+**QPU configureren met ServerResourceType**
+
 1. In een lijn diagram met metrische gegevens klikt u op **metrische gegevens toevoegen**. 
 2. Selecteer uw server in **resource**, Selecteer in **metrische naam ruimte**de optie **Analysis Services standaard metrieken**en selecteer vervolgens in **metrische gegevens** **QPU**, en selecteer vervolgens bij **aggregatie**de optie **Gem**. 
 3. Klik op **splitsing Toep assen**. 
 4. In **waarden**selecteert u **ServerResourceType**.  
 
-Zie [Monitor server metrics](analysis-services-monitor.md) (Metrische servergegevens bewaken) voor meer informatie.
+### <a name="detailed-diagnostic-logging"></a>Gedetailleerde logboek registratie voor diagnostische gegevens
+
+Gebruik Azure Monitor logboeken voor meer gedetailleerde diagnostische gegevens van Server bronnen die worden uitgeschaald. Met Logboeken kunt u Log Analytics query's gebruiken om de QPU en het geheugen van de server en de replica te verdelen. Zie voorbeeld query's in [Analysis Services diagnostische gegevens registratie](analysis-services-logging.md#example-queries)voor meer informatie.
+
 
 ## <a name="configure-scale-out"></a>Uitschalen configureren
 
@@ -112,7 +116,7 @@ In **overzicht** > model > **model synchroniseren**.
 
 ![Schuif regelaar voor uitschalen](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 Gebruik de **synchronisatie** bewerking.
 
@@ -127,7 +131,7 @@ Gebruik de **synchronisatie** bewerking.
 Retour status codes:
 
 
-|Coderen  |Beschrijving  |
+|Code  |Beschrijving  |
 |---------|---------|
 |-1     |  Ongeldig       |
 |0     | Repliceren        |

@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208843"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249584"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Snelstartgids: Java en Maven gebruiken om een functie te maken en te publiceren in azure
 
@@ -26,7 +26,7 @@ In dit artikel leest u hoe u een Java-functie bouwt en publiceert op Azure Funct
 Als u functies wilt ontwikkelen met behulp van Java, moet het volgende zijn geïnstalleerd:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
-- [Apache Maven](https://maven.apache.org), versie 3,0 of hoger
+- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
 - [Azure CLI]
 - [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
 
@@ -98,7 +98,7 @@ mvn azure-functions:run
 
 U ziet uitvoer als het volgende van Azure Functions Core Tools wanneer u het project lokaal uitvoert:
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -116,7 +116,7 @@ Activeer de functie vanaf de opdracht regel met behulp van krul in een nieuw ter
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 De [functie sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) is niet vereist wanneer deze lokaal wordt uitgevoerd. Gebruik `Ctrl+C` in de terminal om de functiecode te stoppen.
@@ -137,7 +137,7 @@ az login
 
 Gebruik de volgende maven-opdracht om uw project te implementeren in een nieuwe functie-app. 
 
-```azurecli
+```console
 mvn azure-functions:deploy
 ```
 
@@ -175,13 +175,13 @@ U kunt nu de gekopieerde URL gebruiken om toegang te krijgen tot uw functie.
 
 Als u de functie-app die wordt uitgevoerd op Azure met `cURL`wilt controleren, vervangt u de URL uit het voor beeld hieronder door de URL die u hebt gekopieerd uit de portal.
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 Hiermee wordt een POST-aanvraag verzonden naar het eind punt van de functie met `AzureFunctions` in de hoofd tekst van de aanvraag. U ziet het volgende antwoord.
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 

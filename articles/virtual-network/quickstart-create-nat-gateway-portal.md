@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228326"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246014"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Snelstartgids: een NAT-gateway maken met behulp van de Azure Portal
 
@@ -38,12 +38,12 @@ Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, m
 
 In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-| Parameter                   | Value                |
+| Parameter                   | Waarde                |
 |-----------------------------|----------------------|
 | **\<resource-group-name >**  | myResourceGroupNAT |
 | **\<virtuele-netwerk naam >** | myVNet          |
-| **\<regio-naam >**          | US - oost 2      |
-| **\<IPv4-adres ruimte >**   | 192.168.0.0 \ 16          |
+| **\<regio-naam >**          | VS - oost 2      |
+| **> \<IPv4-adres ruimte**   | 192.168.0.0 \ 16          |
 | **\<subnet naam >**          | mySubnet        |
 | **\<subnet-adres bereik >** | 192.168.0.0 \ 24          |
 
@@ -93,14 +93,14 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service 
 
 2. Voer in **openbaar IP-adres maken**de volgende gegevens in of Selecteer deze:
 
-    | Instelling | Value |
+    | Instelling | Waarde |
     | ------- | ----- |
     | IP-versie | Selecteer **IPv4**.
     | SKU | selecteer **Standaard**.
-    | Name | Voer **myPublicIP**in. |
+    | Naam | Voer **myPublicIP**in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **myResourceGroupNAT**. |
-    | Location | Selecteer **VS - oost 2**.|
+    | Locatie | Selecteer **VS - oost 2**.|
 
 3. Laat de overige standaardwaarden staan en selecteer **Maken**.
 

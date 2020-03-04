@@ -1,24 +1,24 @@
 ---
-title: SQL-trefwoorden voor Azure Cosmos DB
-description: Meer informatie over SQL trefwoorden voor Azure Cosmos DB.
+title: SQL-tref woorden voor Azure Cosmos DB
+description: Meer informatie over SQL-tref woorden voor Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: c9024f120e0a55162a1f6dba0cd9cbda97f5eebc
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342482"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250295"
 ---
-# <a name="keywords-in-azure-cosmos-db"></a>Trefwoorden in Azure Cosmos DB
-Dit artikel wordt uitgelegd trefwoorden die kunnen worden gebruikt in Azure Cosmos DB SQL-query's.
+# <a name="keywords-in-azure-cosmos-db"></a>Tref woorden in Azure Cosmos DB
+In dit artikel worden tref woorden beschreven die kunnen worden gebruikt in Azure Cosmos DB SQL-query's.
 
-## <a name="between"></a>TUSSEN
+## <a name="between"></a>VERDEELD
 
-Zoals in de ANSI SQL, kunt u het sleutelwoord BETWEEN om query's voor het bereiken van de tekenreeks of numerieke waarden. De volgende query retourneert bijvoorbeeld alle artikelen waarin zich het eerste onderliggende niveau 1-5, inclusief.
+Net als in ANSI SQL kunt u het sleutel woord tussen gebruiken om query's uit te drukken op bereiken van teken reeks-of numerieke waarden. Met de volgende query worden bijvoorbeeld alle items geretourneerd waarin de categorie van het eerste kind 1-5 is, inclusief.
 
 ```sql
     SELECT *
@@ -26,28 +26,28 @@ Zoals in de ANSI SQL, kunt u het sleutelwoord BETWEEN om query's voor het bereik
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-In tegenstelling tot in ANSI SQL, kunt u ook gebruiken de BETWEEN-component in de component FROM, zoals in het volgende voorbeeld.
+In tegens telling tot in ANSI SQL kunt u ook de component between in de component FROM gebruiken, zoals in het volgende voor beeld.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-In SQL-API, in tegenstelling tot ANSI SQL, kunt u de bereik-query's op basis van eigenschappen van gemengde gegevenstypen uitdrukken. Bijvoorbeeld, `grade` mogelijk een aantal achtige `5` in sommige items en een tekenreeks, zoals `grade4` in andere gevallen. In dergelijke gevallen, zoals JavaScript, in de vergelijking tussen de twee verschillende typen resulteert in `Undefined`, zodat het item wordt overgeslagen.
+In de SQL-API, in tegens telling tot ANSI SQL, kunt u de bereik query's expliciet op Eigenschappen van gemengde typen uitvoeren. `grade` kan bijvoorbeeld een getal zijn zoals `5` in sommige items en een teken reeks zoals `grade4` in anderen. In deze gevallen, zoals in Java script, resulteert de vergelijking tussen de twee verschillende typen in `Undefined`, zodat het item wordt overgeslagen.
 
 > [!TIP]
-> Voor snellere query uitvoeringstijden, indexering beleid die gebruikmaakt van een type bereik index op basis van numerieke eigenschappen of paden die de component BETWEEN filters te maken.
+> Voor een snellere query-uitvoerings tijd maakt u een indexerings beleid dat gebruikmaakt van een bereik index type voor numerieke eigenschappen of paden die de component between filtert.
 
-## <a name="distinct"></a>DISTINCT
+## <a name="distinct"></a>ONDERSCHEIDEN
 
-Het sleutelwoord DISTINCT wordt voorkomen dat dubbele waarden in de projectie van de query.
+Met het sleutel woord DISTINCT elimineert u dubbele waarden in de projectie van de query.
+
+In dit voor beeld worden de waarden van de query projecten voor elke achternaam:
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
-
-De query projecteert in dit voorbeeld waarden voor elke achternaam op.
 
 De resultaten zijn:
 
@@ -57,7 +57,7 @@ De resultaten zijn:
 ]
 ```
 
-U kunt ook unieke objecten projecteren. In dit geval bestaat het veld lastName niet in een van de twee documenten, zodat de query een leeg object retourneert.
+U kunt ook unieke objecten projecteren. In dit geval bestaat het veld lastName niet in een van de twee documenten, dus retourneert de query een leeg object.
 
 ```sql
 SELECT DISTINCT f.lastName
@@ -75,14 +75,14 @@ De resultaten zijn:
 ]
 ```
 
-DISTINCT kan ook worden gebruikt in de projectie in een subquery:
+DISTINCT kan ook worden gebruikt in de projectie binnen een subquery:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-Deze query projecteert een matrix met elke kind givenName met dubbele waarden zijn verwijderd. Deze matrix heeft een alias als ChildNames en de geschatte in de buitenste query.
+Deze query projecteert een matrix die de OpgegevenNaam van elk kind bevat met dubbele items verwijderd. Deze matrix heeft een alias als ChildNames en geprojecteerd in de buitenste query.
 
 De resultaten zijn:
 
@@ -101,9 +101,16 @@ De resultaten zijn:
     }
 ]
 ```
-## <a name="in"></a> IN
 
-Gebruik het sleutelwoord IN om te controleren of een opgegeven waarde komt overeen met een willekeurige waarde in een lijst. De volgende query retourneert bijvoorbeeld alle serie artikelen waarbij de `id` is `WakefieldFamily` of `AndersenFamily`.
+Query's met een statistische systeem functie en een subquery met DISTINCT worden niet ondersteund. De volgende query wordt bijvoorbeeld niet ondersteund:
+
+```sql
+SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
+```
+
+## <a name="in"></a>Naast
+
+Gebruik het sleutel woord IN om te controleren of een opgegeven waarde overeenkomt met een wille keurige waarde in een lijst. Met de volgende query worden bijvoorbeeld alle familie-items geretourneerd waarbij de `id` is `WakefieldFamily` of `AndersenFamily`.
 
 ```sql
     SELECT *
@@ -111,7 +118,7 @@ Gebruik het sleutelwoord IN om te controleren of een opgegeven waarde komt overe
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-Het volgende voorbeeld retourneert alle artikelen waar is de status van de opgegeven waarden:
+In het volgende voor beeld worden alle items geretourneerd waarbij de status een van de opgegeven waarden is:
 
 ```sql
     SELECT *
@@ -119,13 +126,13 @@ Het volgende voorbeeld retourneert alle artikelen waar is de status van de opgeg
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-De SQL-API biedt ondersteuning voor [iteratie van JSON-matrices](sql-query-object-array.md#Iteration), met een nieuwe constructie toegevoegd via het sleutelwoord in in de bron van. 
+De SQL-API biedt ondersteuning voor het [herhalen van JSON-matrices](sql-query-object-array.md#Iteration), waarbij een nieuwe constructie wordt toegevoegd via het sleutel woord in in de bron van. 
 
-## <a name="top"></a>TOP
+## <a name="top"></a>Boven
 
-Het sleutelwoord TOP retourneert de eerste `N` van de resultaten van de query in een niet-gedefinieerde volgorde. Als een best practice, gebruikt u boven met de component ORDER BY te beperken tot de eerste `N` aantal geordende waarden. Deze twee componenten combineren, is de enige manier om aan te geven zoals verwacht welke bovenste is van invloed op rijen.
+Met het sleutel woord TOP wordt het eerste `N` aantal query resultaten in een niet-gedefinieerde volg orde geretourneerd. Als best practice gebruikt u TOP met de component ORDER BY om de resultaten te beperken tot het eerste `N` aantal geordende waarden. Het combi neren van deze twee componenten is de enige manier om te zoals verwacht geven op welke rijen het bovenste effect heeft.
 
-U kunt boven gebruiken met een constante waarde, zoals in het volgende voorbeeld, of met de waarde van een variabele met geparameteriseerde query's.
+U kunt TOP gebruiken met een constante waarde, zoals in het volgende voor beeld of met een variabele waarde met behulp van query's met para meters.
 
 ```sql
     SELECT TOP 1 *
@@ -158,4 +165,4 @@ De resultaten zijn:
 
 - [Aan de slag](sql-query-getting-started.md)
 - [Joins](sql-query-join.md)
-- [Subquery 's](sql-query-subquery.md)
+- [Subquery's](sql-query-subquery.md)

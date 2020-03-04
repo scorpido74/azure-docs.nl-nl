@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 351ed146511409fb4c6cc49705c7051b89ea0212
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226487"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246464"
 ---
 # <a name="my-first-graphical-runbook"></a>Mijn eerste grafische runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78226487"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-In deze zelf studie wordt u begeleid bij het maken van een [grafisch runbook](automation-runbook-types.md#graphical-runbooks) in azure Automation. Begin met een eenvoudig runbook dat wordt getest en gepubliceerd, terwijl u leert hoe u de status van de runbook-taak kunt volgen. Wijzig vervolgens het runbook om Azure-resources daad werkelijk te beheren. in dit geval wordt het starten van een virtuele Azure-machine gestart. Voltooi de zelf studie om het runbook betrouwbaarder te maken door runbook-para meters en voorwaardelijke koppelingen toe te voegen.
+In deze zelfstudie wordt stap voor stap het maken van een [grafisch runbook](automation-runbook-types.md#graphical-runbooks) in Azure Automation beschreven. Begin met een eenvoudig runbook dat wordt getest en gepubliceerd, terwijl u leert hoe u de status van de runbook-taak kunt volgen. Wijzig vervolgens het runbook om Azure-resources daad werkelijk te beheren. in dit geval wordt het starten van een virtuele Azure-machine gestart. Voltooi de zelf studie om het runbook betrouwbaarder te maken door runbook-para meters en voorwaardelijke koppelingen toe te voegen.
 
 >[!NOTE]
 >Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).

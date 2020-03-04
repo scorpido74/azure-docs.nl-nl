@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6dda01543a6a7f447adefcc6cc3cfa3ea5da5492
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048853"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249884"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Zelf studie: poort door sturen in Azure Load Balancer configureren via de portal
 
 Met Port Forwarding kunt u verbinding maken met virtuele machines (VM's) in een virtueel Azure-netwerk door gebruik te maken van een openbaar IP-adres en poortnummer van Azure Load Balancer. 
 
-In deze zelfstudie stelt u Port Forwarding in op een Azure Load Balancer. Procedures voor:
+In deze zelfstudie stelt u Port Forwarding in op een Azure Load Balancer. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een standaardversie van een openbare load balancer maken om netwerkverkeer te verdelen over virtuele machines. 
@@ -53,7 +53,7 @@ Maak eerst een standaardversie van een openbare load balancer die verkeersbelast
     | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
     | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | Type          | Select **Openbaar**.                                        |
+    | Type          | Selecteer **Openbaar**.                                        |
     | SKU           | selecteer **Standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
     | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
@@ -68,19 +68,20 @@ Maak eerst een standaardversie van een openbare load balancer die verkeersbelast
 
 Maak een virtueel netwerk met twee virtuele machines en voeg de VM's toe aan de back-endadresgroep van uw load balancer. 
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-1. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk** linksboven in de portal.
-   
-1. In het deelvenster **Virtueel netwerk maken** typt of selecteert u de volgende waarden:
-   
-   - **Naam**: typ *MyVNet*.
-   - **Resourcegroep**: selecteer in de vervolgkeuzelijst **Selecteer een bestaande** de optie **MyResourceGroupLB**. 
-   - **Subnet** > **Naam**: typ *MyBackendSubnet*.
-   
-1. Selecteer **Maken**.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-   ![Een virtueel netwerk maken](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupLB (bestaande resource groep selecteren) |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | Europa -west      |
+| **> \<IPv4-adres ruimte**   | 10.3.0.0 \ 16          |
+| **\<subnet naam >**          | myBackendSubnet        |
+| **\<subnet-adres bereik >** | 10.3.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>VM's maken en toevoegen aan de back-endadresgroep van de load balancer
 

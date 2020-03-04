@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 03/03/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1197eb074b9afeb74c6793835455611ab784a83b
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596756"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78253753"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Beheerders rollen per beheer taak in Azure Active Directory
 
@@ -104,7 +104,7 @@ Taak | Minst geprivilegieerde rol | Aanvullende rollen
 Domeinen beheren | Globale beheerder | 
 Alle configuratie lezen | Adreslijst lezers | Standaard gebruikersrol ([Zie de documentatie](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Domain Services
+## <a name="domain-services"></a>Domeinservices
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
@@ -145,7 +145,7 @@ Eigenschappen voor eenmalige aanmelding bijwerken | Eigenaar van bedrijfs toepas
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
 Resources toevoegen aan een catalogus | Gebruikers beheerder | Met het rechten beheer kunt u deze taak delegeren aan de eigenaar van de catalogus ([Zie de documentatie](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners))
-Share point online-sites toevoegen aan catalogus | Globale beheerder
+Share point online-sites toevoegen aan catalogus | Algemeen beheerder
 
 
 ## <a name="groups"></a>Groepen
@@ -169,13 +169,13 @@ Eigenschappen van groep bijwerken | Groeps eigenaar ([Zie documentatie](https://
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
-Waarschuwings meldingen configureren| Beveiligingsbeheerder | 
-MFA-beleid configureren en in-of uitschakelen| Beveiligingsbeheerder | 
-Beleid voor aanmeldings Risico's configureren en in-of uitschakelen| Beveiligingsbeheerder | 
-Beleid voor gebruikers Risico's configureren en in-of uitschakelen | Beveiligingsbeheerder | 
-Wekelijkse samen vattingen configureren | Beveiligingsbeheerder| 
-Alle risico detecties verwijderen | Beveiligingsbeheerder | 
-Probleem oplossen of negeren | Beveiligingsbeheerder | 
+Waarschuwings meldingen configureren| Beveiligingsbeheer | 
+MFA-beleid configureren en in-of uitschakelen| Beveiligingsbeheer | 
+Beleid voor aanmeldings Risico's configureren en in-of uitschakelen| Beveiligingsbeheer | 
+Beleid voor gebruikers Risico's configureren en in-of uitschakelen | Beveiligingsbeheer | 
+Wekelijkse samen vattingen configureren | Beveiligingsbeheer| 
+Alle risico detecties verwijderen | Beveiligingsbeheer | 
+Probleem oplossen of negeren | Beveiligingsbeheer | 
 Alle configuratie lezen | Beveiligings lezer | 
 Alle risico detecties lezen | Beveiligings lezer | 
 Lees lekken | Beveiligings lezer | 
@@ -187,7 +187,7 @@ Taak | Minst geprivilegieerde rol | Aanvullende rollen
 Licentie toewijzen | Licentie beheerder | Gebruikers beheerder
 Alle configuratie lezen | Adreslijst lezers | Standaard gebruikersrol ([Zie de documentatie](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Licentie intrekken | Licentie beheerder | Gebruikers beheerder
-Probeer of koop een abonnement | Factureringsbeheerder | 
+Probeer of koop een abonnement | Financieel medewerker | 
 
 
 ## <a name="monitoring---audit-logs"></a>Controle logboeken
@@ -249,7 +249,7 @@ Melding configureren | Globale beheerder |
 On-premises integratie configureren | Globale beheerder |
 Eigenschappen voor het opnieuw instellen van wacht woorden configureren | Gebruikers beheerder | Globale beheerder
 Registratie configureren | Globale beheerder |
-Alle configuratie lezen | Beveiligingsbeheerder | Gebruikers beheerder |
+Alle configuratie lezen | Beveiligingsbeheer | Gebruikers beheerder |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
@@ -314,7 +314,7 @@ Risk ante aanmeldingen lezen | Beveiligings lezer |
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
-Alle gebeurtenissen sluiten | Beveiligingsbeheerder | 
+Alle gebeurtenissen sluiten | Beveiligingsbeheer | 
 Alle configuratie lezen | Beveiligings lezer | 
 Gebruikers lezen die zijn gemarkeerd voor risico | Beveiligings lezer | 
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849748"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255180"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een SSL-binding in Azure App Service
 
@@ -147,6 +147,12 @@ Selecteer in het linkernavigatievenster van de app-pagina **SSL-instellingen**. 
 
 Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-versies geweigerd.
 
+## <a name="handle-ssl-termination"></a>SSL-beëindiging afhandelen
+
+In App Service vindt [SSL-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats in de load balancers voor het netwerk, zodat alle HTTPS-aanvragen uw app bereiken als niet-versleutelde HTTP-aanvragen. Inspecteer de header `X-Forwarded-Proto` als de app-logica moet controleren of de aanvragen van gebruikers al dan niet zijn versleuteld.
+
+Taalspecifieke configuratie handleidingen, zoals de [configuratie gids Linux node. js](containers/configure-language-nodejs.md#detect-https-session) , laat zien hoe u een HTTPS-sessie in uw toepassings code kunt detecteren.
+
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -157,7 +163,7 @@ Als de bewerking is voltooid, worden in de app alle verbindingen met lagere TLS-
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Meer informatiebronnen
+## <a name="more-resources"></a>Meer bronnen
 
 * [Een SSL-certificaat gebruiken in uw toepassings code](configure-ssl-certificate-in-code.md)
 * [Veelgestelde vragen: App Service certificaten](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

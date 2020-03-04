@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529572"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251010"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren en gebruiken
 
@@ -26,7 +26,7 @@ De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor intera
 - Werken met Apparaateigenschappen.
 - Roep de opdrachten van het apparaat aan.
 
-In dit artikel leest u informatie over:
+In dit artikel wordt beschreven hoe u:
 
 - Installeer en configureer de Azure IoT-extensie voor de Azure CLI.
 - Gebruik de uitbrei ding om uw apparaten te gebruiken en te testen.
@@ -40,7 +40,7 @@ Volg de [installatie-instructies](https://docs.microsoft.com/cli/azure/install-a
 
 ### <a name="step-2---install-iot-extension"></a>Stap 2: IoT-extensie installeren
 
-[In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension) worden verschillende manieren voor het installeren van de extensie beschreven. De eenvoudigste manier is `az extension add --name azure-cli-iot-ext` uit te voeren. Na de installatie kunt u gebruikmaken van `az extension list` om de momenteel geïnstalleerde extensies te valideren of van `az extension show --name azure-cli-iot-ext` voor informatie over de IoT-extensie. U kunt `az extension remove --name azure-cli-iot-ext` gebruiken om de extensie te verwijderen.
+[In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension) worden verschillende manieren voor het installeren van de extensie beschreven. De eenvoudigste manier is `az extension add --name azure-iot` uit te voeren. Na de installatie kunt u gebruikmaken van `az extension list` om de momenteel geïnstalleerde extensies te valideren of van `az extension show --name azure-iot` voor informatie over de IoT-extensie. U kunt `az extension remove --name azure-iot` gebruiken om de extensie te verwijderen.
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure IoT-extensie gebruiken voor de Azure CLI
 

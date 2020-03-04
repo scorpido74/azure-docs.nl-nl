@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193081"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250973"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>Een reken doel kiezen
-
-U kunt de volgende Compute-doelen of reken resources gebruiken om de implementatie van de webservice te hosten:
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>Enkelvoudige versus multi-model-eind punten
 Azure ML ondersteunt de implementatie van één of meerdere modellen achter een enkel eind punt.
 
@@ -172,9 +166,9 @@ Voor eind punten van meerdere modellen wordt een gedeelde container gebruikt voo
 
 Voor een E2E-voor beeld waarin wordt getoond hoe u meerdere modellen achter één container-eind punt kunt gebruiken, raadpleegt u [dit voor beeld](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-deployment-artifacts"></a>Implementatie artefacten voorbereiden
+## <a name="prepare-to-deploy"></a>Implementatie voorbereiden
 
-Voor het implementeren van het model hebt u het volgende nodig:
+Als u het model als een service wilt implementeren, hebt u de volgende onderdelen nodig:
 
 * **Invoer script & bron code afhankelijkheden**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
 
@@ -187,11 +181,9 @@ Voor het implementeren van het model hebt u het volgende nodig:
     >
     >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-use-parallel-run-step.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
 
-* **Omgeving**afwijzen. De basis installatie kopie met de geïnstalleerde pakket afhankelijkheden die zijn vereist voor het uitvoeren van het model.
+* **Configuratie**afleiding. Configuratie voor het dezicht configureren geeft de omgevings configuratie, het invoer script en andere onderdelen die nodig zijn om het model als een service uit te voeren.
 
-* **Implementatie configuratie** voor het reken doel dat als host fungeert voor het geïmplementeerde model. In deze configuratie worden de vereisten voor geheugen en CPU beschreven die nodig zijn om het model uit te voeren.
-
-Deze items worden ingekapseld in een Afleidings *configuratie* en een *implementatie configuratie*. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden. U definieert deze configuraties programmatisch wanneer u de SDK gebruikt om de implementatie uit te voeren. U definieert ze in JSON-bestanden wanneer u de CLI gebruikt.
+Zodra u de benodigde onderdelen hebt, kunt u de service die wordt gemaakt als gevolg van de implementatie van uw model, profileren om inzicht te krijgen in de vereisten voor de CPU en het geheugen.
 
 ### <a id="script"></a>1. uw invoer script en afhankelijkheden definiëren
 
@@ -267,33 +259,7 @@ Deze typen worden momenteel ondersteund:
 * `pyspark`
 * Standard python-object
 
-Als u schema generatie wilt gebruiken, neemt u het `inference-schema`-pakket op in uw Conda-omgevings bestand. Zie [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)voor meer informatie over dit pakket.
-
-##### <a name="example-dependencies-file"></a>Voor beeld van afhankelijkheids bestand
-
-De volgende YAML is een voor beeld van een Conda-afhankelijkheids bestand voor ingrijpen. Houd er rekening mee dat u de standaard waarden van azureml-defaults met versie > = 1.0.45 als een PIP-afhankelijkheid moet aangeven, omdat deze de functionaliteit bevat die nodig is om het model als een webservice te hosten.
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> Als uw afhankelijkheid beschikbaar is via zowel Conda als PIP (van PyPi), raadt micro soft u aan om de Conda-versie te gebruiken, aangezien Conda-pakketten doorgaans worden geleverd met vooraf gemaakte binaire bestanden die de installatie betrouwbaarder maken.
->
-> Zie [Wat is Conda en PIP](https://www.anaconda.com/understanding-conda-and-pip/)? voor meer informatie.
->
-> Als u wilt controleren of uw afhankelijkheid beschikbaar is via Conda, gebruikt u de opdracht `conda search <package-name>` of gebruikt u de pakket indexen op [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) en [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
-
-Als u automatische schema generatie wilt gebruiken, moet uw invoer script de `inference-schema`-pakketten importeren.
-
-Definieer de voorbeeld indelingen voor invoer en uitvoer in de `input_sample` en `output_sample` variabelen, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de functie `run()`. Het volgende voor beeld van scikit maakt gebruik van schema generatie.
+Als u schema's wilt genereren, neemt u het `inference-schema` pakket op in het bestand met afhankelijkheden. Zie [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)voor meer informatie over dit pakket. Definieer de voorbeeld indelingen voor invoer en uitvoer in de `input_sample` en `output_sample` variabelen, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de functie `run()`. Het volgende voor beeld van scikit maakt gebruik van schema generatie.
 
 ##### <a name="example-entry-script"></a>Voorbeeld script
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. uw Afleidings omgeving bepalen
+### <a name="2-define-your-inference-configuration"></a>2. de configuratie van de afleiding van uw voor stel bepalen
 
-De configuratie voor afnemen beschrijft hoe u het model configureert om voor spellingen te maken. Deze configuratie maakt geen deel uit van uw invoer script. Het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Het wordt later gebruikt wanneer u het model implementeert.
+In de configuratie voor het afwijzen van interferentie wordt beschreven hoe u de webservice instelt die uw model bevat. Het maakt geen deel uit van het script voor de invoer. Het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Het wordt later gebruikt wanneer u het model implementeert.
 
-In de configuratie voor demijnen wordt Azure Machine Learning omgevingen gebruikt voor het definiëren van de software afhankelijkheden die nodig zijn voor uw implementatie. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
+In de configuratie voor demijnen wordt Azure Machine Learning omgevingen gebruikt voor het definiëren van de software afhankelijkheden die nodig zijn voor uw implementatie. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. U kunt een omgeving maken op basis van aangepaste afhankelijkheids bestanden of een van de met Azure Machine Learning omgevingen met een van de curator gebruiken. De volgende YAML is een voor beeld van een Conda-afhankelijkheids bestand voor ingrijpen. Houd er rekening mee dat u de standaard waarden van azureml-defaults met versie > = 1.0.45 als een PIP-afhankelijkheid moet aangeven, omdat deze de functionaliteit bevat die nodig is om het model als een webservice te hosten. Als u het automatisch genereren van schema's wilt gebruiken, moet uw invoer script ook de `inference-schema`-pakketten importeren.
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> Als uw afhankelijkheid beschikbaar is via zowel Conda als PIP (van PyPi), raadt micro soft u aan om de Conda-versie te gebruiken, aangezien Conda-pakketten doorgaans worden geleverd met vooraf gemaakte binaire bestanden die de installatie betrouwbaarder maken.
+>
+> Zie [Wat is Conda en PIP](https://www.anaconda.com/understanding-conda-and-pip/)? voor meer informatie.
+>
+> Als u wilt controleren of uw afhankelijkheid beschikbaar is via Conda, gebruikt u de opdracht `conda search <package-name>` of gebruikt u de pakket indexen op [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) en [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
+
+U kunt het afhankelijkheden bestand gebruiken om een omgevings object te maken en dit op te slaan in uw werk ruimte voor toekomstig gebruik:
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
-
-U kunt ook rechtstreeks de afhankelijkheden opgeven zonder een omgeving te gebruiken. In het volgende voor beeld ziet u hoe u een configuratie voor het afwijzen van een interferentie maakt waarmee software-afhankelijkheden worden geladen vanuit een Conda-bestand:
 
 Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
 
@@ -510,7 +504,7 @@ Zie de documentatie van [InferenceConfig](https://docs.microsoft.com/python/api/
 
 Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
 
-### <a name="cli-example-of-inferenceconfig"></a>CLI-voor beeld van InferenceConfig
+#### <a name="cli-example-of-inferenceconfig"></a>CLI-voor beeld van InferenceConfig
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ In dit voor beeld geeft de configuratie de volgende instellingen aan:
 
 Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
 
-### <a name="3-define-your-deployment-configuration"></a>3. de implementatie configuratie definiëren
+### <a id="profilemodel"></a>3. het model profiel voor het bepalen van het resource gebruik
+
+Zodra u het model hebt geregistreerd en de andere onderdelen hebt voor bereid die nodig zijn voor de implementatie, kunt u de CPU en het geheugen bepalen die de geïmplementeerde service nodig heeft. Profile ring test de service die uw model uitvoert en retourneert informatie zoals het CPU-gebruik, het geheugen gebruik en de reactie latentie. Het bevat ook een aanbeveling voor de CPU en het geheugen op basis van het resource gebruik.
+
+U hebt het volgende nodig om uw model te kunnen profielen:
+* Een geregistreerd model.
+* Een Afleidings configuratie op basis van uw instap script en omgevings definitie voor afwijzen.
+* Een gegevensset in tabel vorm met één kolom, waarbij elke rij een teken reeks bevat die de voorbeeld aanvraag gegevens vertegenwoordigt.
+
+> [!IMPORTANT]
+> Op dit moment bieden we alleen ondersteuning voor het profileren van services die hun aanvraag gegevens naar een teken reeks verwachten, bijvoorbeeld: String serialized JSON, Text, String serialized Image, enzovoort. De inhoud van elke rij van de gegevensset (teken reeks) wordt in de hoofd tekst van de HTTP-aanvraag geplaatst en verzonden naar de service die het model voor het scoren inkapselt.
+
+Hieronder ziet u een voor beeld van hoe u een invoer-gegevensset kunt samen stellen om een service te maken waarmee de binnenkomende aanvraag gegevens geserialiseerde JSON kunnen bevatten. In dit geval hebben we een gegevensset gemaakt op basis van 100 exemplaren van dezelfde inhoud van de aanvraag gegevens. In Real-World-scenario's wordt u aangeraden dat u grotere gegevens sets met verschillende invoer gebruikt, met name als uw model resource gebruik/-gedrag afhankelijk is van invoer.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Wanneer u de gegevensset hebt die voorbeeld gegevens voor de aanvraag hebt gemaakt, kunt u een Afleidings configuratie maken. De configuratie voor het afwijzen van interferentie is gebaseerd op de score.py en de omgevings definitie. In het volgende voor beeld ziet u hoe u de configuratie voor afwijzen maakt en profile ring uitvoert:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+De volgende opdracht laat zien hoe u een model kunt profielen met behulp van de CLI:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>Implementeren naar doel
+
+Implementatie maakt gebruik van de configuratie-implementatie configuratie voor innemen om de modellen te implementeren. Het implementatie proces is vergelijkbaar, ongeacht het berekenings doel. Implementeren naar AKS is iets anders omdat u een verwijzing naar het AKS-cluster moet opgeven.
+
+### <a name="choose-a-compute-target"></a>Een reken doel kiezen
+
+U kunt de volgende Compute-doelen of reken resources gebruiken om de implementatie van de webservice te hosten:
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>Uw implementatie configuratie definiëren
 
 Voordat u uw model implementeert, moet u de implementatie configuratie definiëren. *De implementatie configuratie is specifiek voor het reken doel dat als host fungeert voor de webservice.* Wanneer u bijvoorbeeld een model lokaal implementeert, moet u de poort opgeven waar de service aanvragen accepteert. De implementatie configuratie maakt geen deel uit van het invoer script. Het wordt gebruikt voor het definiëren van de kenmerken van het Compute-doel die als host dienen voor het model en het script.
 
@@ -547,10 +627,6 @@ De klassen voor lokale, Azure Container Instances-en AKS-webservices kunnen vanu
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>Implementeren naar doel
-
-Implementatie maakt gebruik van de configuratie-implementatie configuratie voor innemen om de modellen te implementeren. Het implementatie proces is vergelijkbaar, ongeacht het berekenings doel. Implementeren naar AKS is iets anders omdat u een verwijzing naar het AKS-cluster moet opgeven.
 
 ### <a name="securing-deployments-with-ssl"></a>Implementaties beveiligen met SSL
 
@@ -1076,7 +1152,7 @@ Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/pyth
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
-* [Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
+* [Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
 

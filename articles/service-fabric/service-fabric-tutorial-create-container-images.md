@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465432"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252787"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Zelfstudie: Containerinstallatiekopieën maken in een Service Fabric-cluster in Linux
 
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Voer eerst de opdracht **AZ login** uit om u aan te melden bij uw Azure-account.
 
-```bash
+```azurecli
 az login
 ```
 
 Gebruik vervolgens de opdracht **az account** om het abonnement te kiezen waarin het Azure Container Registry moet worden gemaakt. U moet de abonnements-id van uw Azure-abonnement invoeren op de plek <abonnements-id>.
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ Wanneer u een Azure Container Registry implementeert, hebt u eerst een resourceg
 
 Een resourcegroep maken met de opdracht **az group create**. In dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt in de regio *westus*.
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 Maak een Azure Container Registry met de opdracht **az acr create**. Vervang \<acrName > door de naam van het containerregister dat u wilt maken in het abonnement. Deze naam moet alfanumeriek en uniek zijn.
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ In de rest van deze zelfstudie wordt acrName gebruikt als tijdelijke aanduiding 
 
 Meld u aan bij uw ACR-exemplaar voordat u er installatie kopieën naar pusht. Gebruik de opdracht **az acr login** om de bewerking te voltooien. Geef de unieke naam op die u het containerregister hebt gegeven toen u het maakte.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,19 +136,19 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Voer de volgende opdracht uit om de loginServer-naam op te halen:
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 Hiermee wordt een tabel opgehaald met de volgende resultaten. Dit resultaat wordt gebruikt om de installatiekopie **azure-vote-front** te taggen voordat u deze in de volgende stap naar het containerregister pusht.
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
 ```
 
-Tag nu de installatiekopie *azure-vote-front* met de loginServer van het containerregister. Voeg bovendien `:v1` toe aan het eind van de naam van de installatiekopie. Deze tag geeft de versie van de installatiekopie aan.
+Tag nu de installatiekopie *azure-vote-front* met de loginServer van het containerregister. Voeg bovendien `:v1` toe aan het eind van de installatiekopienaam. Deze tag geeft de versie van de installatiekopie aan.
 
 ```bash
 docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
@@ -158,7 +158,7 @@ Voer na het taggen de opdracht docker images uit om de bewerking te controleren.
 
 Uitvoer:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -182,13 +182,13 @@ Het duurt enkele minuten voordat de opdracht docker push is voltooid.
 
 Gebruik de opdracht [az acr repository list](/cli/azure/acr/repository) om een lijst met installatiekopieën te retourneren die naar het Azure Container Registry zijn gepusht. Werk de opdracht bij met de naam van het ACR-exemplaar.
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 Uitvoer:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

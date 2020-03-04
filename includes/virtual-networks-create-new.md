@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 43ede7f3340f190f9eb37ca90fb74f2215db9062
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227412"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244986"
 ---
 ## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
@@ -27,7 +27,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
     |------------------|-----------------------------------------------------------------|
     | **Project Details**  |                                                                 |
     | Abonnement     | Uw Azure-abonnement selecteren                                  |
-    | Resourcegroep   | Selecteer **Nieuw maken**, Voer **\<resource-group-name >** en selecteer OK. |
+    | Resourcegroep   | Selecteer **Nieuw maken**, Voer **\<resource-group-name >** in, selecteer OK of selecteer een bestaande **\<resource-group-name >** op basis van para meters. |
     | **Exemplaar Details** |                                                                 |
     | Naam             | Voer **\<virtuele-netwerk naam in >**                                    |
     | Regio           | **\<regio selecteren-naam >** |
@@ -38,7 +38,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
-    | IPv4-adres ruimte | **\<IPv4-adres ruimte invoeren >** |
+    | IPv4-adres ruimte | Voer **\<IPv4-adres ruimte in >** |
 
 5. Selecteer bij **subnetnaam**het woord **standaard**.
 

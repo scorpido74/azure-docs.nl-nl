@@ -1,26 +1,18 @@
 ---
 title: 'Zelf studie: batch testen om problemen op te sporen-LUIS'
-titleSuffix: Azure Cognitive Services
-description: Deze zelfstudie wordt gedemonstreerd hoe u met batch testen utterance voorspelling problemen in uw app vinden en corrigeren.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
+description: In deze zelf studie wordt gedemonstreerd hoe u batch tests kunt gebruiken om de kwaliteit van uw Language Understanding-app (LUIS) te valideren.
 ms.topic: tutorial
-ms.date: 12/19/2019
-ms.author: diberry
-ms.openlocfilehash: 54beb26554fd823c46f961b4cc7057f347ad343c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447980"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250471"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Zelf studie: gegevens sets batch testen
 
-Deze zelfstudie wordt gedemonstreerd hoe u met batch testen utterance voorspelling problemen in uw app vinden en corrigeren.
+In deze zelf studie wordt gedemonstreerd hoe u batch tests kunt gebruiken om de kwaliteit van uw Language Understanding-app (LUIS) te valideren.
 
 Batch testen, kunt u voor het valideren van de actieve status van het model met een bekende set gelabelde uitingen en entiteiten getraind. In de JSON-indeling batch-bestand, de utterances toevoegen en instellen van de entiteit-labels die u nodig hebt binnen de utterance voorspeld.
 
@@ -28,11 +20,9 @@ Vereisten voor het testen van batch:
 
 * Maximaal 1000 uitingen per test.
 * Geen dubbele waarden.
-* Toegestane entiteits typen: alleen door machines geleerde entiteiten van eenvoudig en samengesteld. Testen van de batch is alleen nuttig voor het veilig geleerd intenties en entiteiten.
+* Toegestane entiteits typen: alleen door machines geleerde entiteiten.
 
-Wanneer u een app dan in deze zelfstudie gebruikt, doen *niet* gebruikt u de voorbeeld-uitingen al toegevoegd aan een doel.
-
-
+Wanneer u een andere app dan deze zelf *studie gebruikt, mag u* de voor beeld-uitingen al aan uw app toevoegen.
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -42,200 +32,117 @@ Wanneer u een app dan in deze zelfstudie gebruikt, doen *niet* gebruikt u de voo
 > * Maak een batchbestand testen
 > * Een batch-test uitvoeren
 > * Bekijk de resultaten
-> * Fouten herstellen
-> * Testen van de batch
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Voorbeeld-app importeren
 
-Ga door met de in de laatste zelfstudie gemaakt app, **Human Resources**.
+Een app importeren die een pizza-volg orde heeft, zoals `1 pepperoni pizza on thin crust`.
 
-Voer de volgende stappen uit:
+1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) en sla het op.
 
-1.  Download het [JSON-bestand van de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json?raw=true) en sla het op.
+1. Gebruik de [Preview-Luis Portal](https://preview.luis.ai/), IMPORTEER de json in een nieuwe app, noem de app `Pizza app`.
 
+1. Selecteer **trainen** in de rechter bovenhoek van de navigatie om de app te trainen.
 
-2. Importeer de JSON in een nieuwe app.
+## <a name="what-should-the-batch-file-utterances-include"></a>Wat moet het batch bestand uitingen bevatten
 
-3. Ga naar het gedeelte **Beheren**, open het tabblad **Versies**, kloon de versie en noem deze `batchtest`. Klonen is een uitstekende manier om te experimenteren met verschillende functies van LUIS zonder dat de oorspronkelijke versie wordt gewijzigd. Omdat de versienaam wordt gebruikt als onderdeel van de URL-route, kan de naam geen tekens bevatten die niet zijn toegestaan in een URL.
+Het batch-bestand moet uitingen bevatten met entiteiten op het hoogste niveau die door machines zijn geleerd, met inbegrip van de begin-en eind positie. De uitingen mag geen deel uitmaken van de voor beelden die al in de app staan. Ze moeten uitingen zijn om te voors pellen voor intentie en entiteiten.
 
-4. Train de app.
+U kunt testen met behulp van intentie en/of entiteit scheiden of alle tests (Maxi maal 1000 uitingen) in hetzelfde bestand hebben.
 
 ## <a name="batch-file"></a>Batch-bestand
 
-1. Maak `HumanResources-jobs-batch.json` in een teksteditor of [downloaden](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json?raw=true) deze.
+De JSON van het voor beeld bevat een utterance met een gelabelde entiteit die illustreert hoe een test bestand eruitziet. In uw eigen tests moet u veel uitingen hebben met de juiste intentie en door de machine geleerde entiteit label.
 
-2. In het JSON-indeling batchbestand utterances met toevoegen de **bedoeling** gewenste voorspelde in de test.
+1. Maak `pizza-with-machine-learned-entity-test.json` in een tekst editor of [down load](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) het bestand.
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+2. Voeg in het batch bestand met JSON-indeling een utterance toe met de **intentie** die u in de test wilt voors pellen.
+
+   [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
 
 ## <a name="run-the-batch"></a>Voer de batch
 
-1. Selecteer **Test** in de bovenste navigatiebalk.
+1. Selecteer **test** in de bovenste navigatie balk.
 
-2. Selecteer **Batch testen deelvenster** in het deelvenster aan de rechterkant.
+2. Selecteer **batch test paneel** in het deel venster aan de rechter kant.
 
-    [![Schermafbeelding van LUIS-app met behulp van Batch test deelvenster gemarkeerd](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
-
-3. Selecteer **importeren gegevensset**.
+3. Selecteer **gegevensset importeren**.
 
     > [!div class="mx-imgBorder"]
-    > Scherm opname van LUIS-app ![met import gegevensset gemarkeerd](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)
+    > Scherm opname van LUIS-app ![met import gegevensset gemarkeerd](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
-4. Kies de locatie van het bestand van de `HumanResources-jobs-batch.json` bestand.
+4. Kies de bestands locatie van het `pizza-with-machine-learned-entity-test.json` bestand.
 
-5. Naam van de gegevensset `intents only` en selecteer **gedaan**.
+5. Geef de gegevensset een naam `pizza test` en selecteer **gereed**.
 
-    ![Bestand selecteren](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
+    > [!div class="mx-imgBorder"]
+    > ![Selecteer bestand](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
 
 6. Selecteer de knop **Run**.
 
-7. Selecteer **resultaten**.
+7. Selecteer **resultaten weer geven**.
 
 8. Bekijk de resultaten in de grafiek en legenda.
 
-    [![Schermafbeelding van LUIS-app met de resultaten van batch](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+## <a name="review-batch-results-for-intents"></a>Batch resultaten voor intenties controleren
 
-## <a name="review-batch-results"></a>Bekijk de resultaten van batch
+De test resultaten geven grafisch weer hoe de test uitingen is voor speld op basis van de actieve versie.
 
-De batch worden vier kwadranten van de resultaten weergegeven. Aan de rechterkant van de grafiek is een filter. Het filter bevat intents en entiteiten. Wanneer u selecteert een [sectie van de grafiek](luis-concept-batch-test.md#batch-test-results) of een punt in de grafiek, de bijbehorende utterance(s) weer te geven onder de grafiek.
+De batch worden vier kwadranten van de resultaten weergegeven. Aan de rechterkant van de grafiek is een filter. Het filter bevat intents en entiteiten. Wanneer u een [sectie van de grafiek](luis-concept-batch-test.md#batch-test-results) of een punt in de grafiek selecteert, worden de gekoppelde utterance (s) weer gegeven onder de grafiek.
 
 Bij het aanwijzen van de grafiek, kan muiswiel vergroten of verkleinen van de weergave in de grafiek. Dit is handig wanneer er veel punten op de grafiek geclusterde nauw samen.
 
-De grafiek is in vier kwadranten, met twee van de secties in het rood weergegeven. **Dit zijn de secties zich richten op**.
+De grafiek is in vier kwadranten, met twee van de secties in het rood weergegeven.
 
-### <a name="getjobinformation-test-results"></a>De resultaten van GetJobInformation
+1. Selecteer de **ModifyOrder** intentie in de filter lijst.
 
-De **GetJobInformation** weergegeven in het filter de resultaten weergeven dat 2 van de vier voorspellingen gelukt is. Selecteer de naam **Onwaar** in de Kwadrant linksonder om de uitingen onder de grafiek weer te geven.
+    > [!div class="mx-imgBorder"]
+    > ![Selecteer ModifyOrder intentie uit filter lijst](./media/luis-tutorial-batch-testing/select-intent-from-filter-list.png)
 
-Gebruik het toetsen bord, CTRL + E, om over te scha kelen naar de weer gave label om de exacte tekst van de utterance van de gebruiker te zien.
+    De utterance wordt voor speld als een **echte, positieve** betekenis die de utterance met de positieve voor spelling in het batch-bestand heeft gevonden.
 
-De utterance-`Is there a database position open in Los Colinas?` wordt aangeduid als _GetJobInformation_ , maar het huidige model heeft de Utterance als _ApplyForJob_gedicteerd.
+    > [!div class="mx-imgBorder"]
+    > ![Utterance overeenkomt met zijn positieve Voorspellings](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
 
-Er zijn bijna drie keer zoveel voor beelden voor **ApplyForJob** dan **GetJobInformation**. Deze ongelijkheid van voor beeld uitingen weegt in **ApplyForJob** intentie voor deel, waardoor de onjuiste voor spelling wordt veroorzaakt.
+    Het groene vinkje in de lijst met filters geeft ook het succes van de test voor elk doel aan. Alle andere intenten worden weer gegeven met een 1/1 positieve score, omdat de utterance is getest op basis van elke intentie, als een negatieve test voor de intenties die niet worden vermeld in de batch-test.
 
-U ziet dat beide intents de dezelfde telling van fouten hebben. Een onjuiste voorspelling in één doel is van invloed op de andere intentie ook. Beide zijn fouten opgetreden omdat de uitingen zijn onjuist voorspeld voor één doel, en ook onjuist niet voor een ander doel voorspeld.
+1. Selecteer het **bevestigings** doel. Deze intentie wordt niet vermeld in de batch test, zodat dit een negatieve test is van de utterance die wordt vermeld in de batch-test.
 
-<a name="fix-the-app"></a>
+    > [!div class="mx-imgBorder"]
+    > ![Utterance is voor speld voor een niet-gevermeldde intentie in batch-bestand](./media/luis-tutorial-batch-testing/true-negative-intent.png)
 
-## <a name="how-to-fix-the-app"></a>De app herstellen
+    De negatieve test is geslaagd, zoals vermeld bij de groene tekst in het filter en het raster.
 
-Het doel van deze sectie is om alle de uitingen voorspeld correct voor **GetJobInformation** door de app op te lossen.
+## <a name="review-batch-test-results-for-entities"></a>Batch test resultaten voor entiteiten controleren
 
-Een schijnbaar snelle oplossing zou zijn om toe te voegen deze uitingen van batch-bestand met de juiste intent. Dat is niet wat u wilt doen. Wilt u LUIS om goed te voorspellen deze uitingen zonder dat ze toe te voegen als voorbeelden.
+De ModifyOrder-entiteit, als een machine-entiteit met subentiteiten, geeft weer of de entiteit op het hoogste niveau overeenkomt en geeft weer hoe de subentiteiten worden voor speld.
 
-U vraagt zich misschien ook af over het verwijderen van uitingen van **ApplyForJob** totdat de hoeveelheid utterance hetzelfde als is **GetJobInformation**. Die de resultaten van het probleem kan mogelijk maar zou LUIS belemmeren van het voorspellen van dit doel nauwkeurig zodra.
+1. Selecteer de entiteit **ModifyOrder** in de lijst Filter en selecteer vervolgens de cirkel in het raster.
 
-De oplossing is om meer uitingen toe te voegen aan **GetJobInformation**. Vergeet niet om de utterance lengte, de woord keuze en de indeling van het woord te variëren terwijl u de bedoeling van het vinden van de informatie over de taak _niet_ kunt Toep assen op de taak.
+1. De voor spelling van de entiteit wordt onder de grafiek weer gegeven. De weer gave bevat ononderbroken lijnen voor voor spellingen die overeenkomen met de verwachting en stippel lijnen voor voor spellingen die niet overeenkomen met de verwachting.
 
-### <a name="add-more-utterances"></a>Meer utterances toevoegen
+    > [!div class="mx-imgBorder"]
+    > het bovenliggende item van ![entiteit is voor speld in batch-bestand](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
 
-1. Sluit het deelvenster van de test batch door het selecteren van de **testen** knop in het bovenste navigatievenster.
+## <a name="finding-errors-with-a-batch-test"></a>Fouten vinden met een batch test
 
-2. Selecteer **GetJobInformation** in de lijst intents.
+In deze zelf studie hebt u geleerd hoe u een test uitvoert en de resultaten interpreteert. Het heeft geen betrekking op de test filosofie of hoe kan worden gereageerd op mislukte testen.
 
-3. Toevoegen van meer uitingen die zijn verschillend voor de lengte, word keuze en word-indeling, zorg ervoor dat u de voorwaarden `resume`, `c.v.`, en `apply`:
-
-    |Voorbeeld-uitingen voor **GetJobInformation** doel|
-    |--|
-    |De nieuwe taak in het datawarehouse voor een stocker vereist dat ik met een cv toepassen?|
-    |Waar zijn de taken dakbedekking vandaag?|
-    |Ik gehoord dat er is een medische codering taak waarvoor een hervatten.|
-    |Ik wil graag een taak helpen college kinderen hun c.v.s. schrijven |
-    |Hier is mijn hervatten, op zoek naar een nieuw bericht op de beroepsopleiding met computers.|
-    |Welke functies zijn beschikbaar in de onderliggende en vanaf thuis care?|
-    |Is er een Stagiair helpdesk op de krant?|
-    |Mijn opsommen Ik ben goed bij het analyseren van inkoop, budgetten en verloren geld weergeven Is er iets voor dit type werk?|
-    |Waar zijn de aarde door zoomen taken nu?|
-    |Ik heb acht jaar als een EMS-stuurprogramma gewerkt. Nieuwe taken?|
-    |Nieuwe food afhandeling van taken vereist toepassing?|
-    |Hoeveel nieuwe taken in het werk yard zijn beschikbaar?|
-    |Is er een nieuw HR-bericht voor arbeid relaties en onderhandelingen?|
-    |Ik heb een masters in bibliotheken en -beheer. Alle nieuwe functies?|
-    |Zijn er geen babysitting taken voor 13 jaar olds in de plaats vandaag?|
-
-    Kan geen label de **taak** entiteit in de uitingen. Deze sectie van de zelfstudie is gericht op alleen de intentie voorspelling.
-
-4. De app door het selecteren van de trein **Train** in het bovenste navigatievenster rechts.
-
-## <a name="verify-the-new-model"></a>Controleer of het nieuwe model
-
-Om te controleren dat de uitingen in de batch-test correct worden voorspeld, moet u de batch-test opnieuw uitvoeren.
-
-1. Selecteer **Test** in de bovenste navigatiebalk. Als de resultaten van de batch nog steeds geopend zijn, selecteert u **terug naar lijst met**.
-
-1. Selecteer de knop met weglatings tekens (***...***) rechts van de batch naam en selecteer **uitvoeren**. Wacht totdat de batch-test is voltooid. U ziet dat de **resultaten** knop is nu groen. Dit betekent dat de hele batch is uitgevoerd.
-
-1. Selecteer **resultaten**. De intenties moeten alle groen pictogrammen aan de linkerkant van de intentie namen hebben.
-
-## <a name="create-batch-file-with-entities"></a>Batch-bestand met entiteiten maken
-
-Als u wilt controleren of entiteiten in een batch-test, moeten de entiteiten worden met het label in de batch-JSON-bestand.
-
-De variatie van entiteiten voor het totale aantal woord ([token](luis-glossary.md#token)) aantal kan gevolgen hebben voor de voorspelling kwaliteit. Zorg ervoor dat de opgegeven met de intent met gelabelde uitingen trainingsgegevens bevat verschillende lengtes van entiteit.
-
-Wanneer het eerst schrijven en testen van batch-bestanden, het is raadzaam om te beginnen met een paar uitingen en entiteiten die u kent werkt, evenals enkele die u mogelijk te bekijken welke vereiste onjuist worden voorspeld. Dit helpt u te focussen op de probleemgebieden snel. Na het testen van de **GetJobInformation** en **ApplyForJob** intents met behulp van verschillende andere taaknamen, die niet zijn voorspeld, deze test batchbestand is ontwikkeld om te zien of er een probleem voorspelling met bepaalde waarden voor **taak** entiteit.
-
-De waarde van een **taak** entiteit, opgegeven in de test-uitingen is meestal een of twee woorden, met een paar voorbeelden wordt meer woorden. Als _uw eigen_ human resources-app heeft doorgaans taaknamen van vele woorden bestaat, wordt de voorbeeld-uitingen met het label met **taak** entiteit in deze app niet goed werkt.
-
-1. Maak `HumanResources-entities-batch.json` in een teksteditor zoals [VSCode](https://code.visualstudio.com/) of [downloaden](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json?raw=true) deze.
-
-2. In de JSON-indeling batch-bestand, Voeg een matrix met objecten die uitingen met de **bedoeling** gewenste voorspelde in de test, evenals de locaties van alle entiteiten in de utterance. Aangezien een entiteit op basis van tokens, zorg starten en stoppen van elke entiteit op een teken. Niet beginnen of eindigen van de utterance op een spatie. Dit zorgt ervoor dat een fout opgetreden tijdens het importeren van de batch-bestand.
-
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
-
-
-## <a name="run-the-batch-with-entities"></a>Voer de batch met entiteiten
-
-1. Selecteer **Test** in de bovenste navigatiebalk.
-
-2. Selecteer **Batch testen deelvenster** in het deelvenster aan de rechterkant.
-
-3. Selecteer **importeren gegevensset**.
-
-4. Kies de locatie van het bestand system van de `HumanResources-entities-batch.json` bestand.
-
-5. Naam van de gegevensset `entities` en selecteer **gedaan**.
-
-6. Selecteer de knop **Run**. Wacht totdat de test is voltooid.
-
-7. Selecteer **resultaten**.
-
-## <a name="review-entity-batch-results"></a>Bekijk de resultaten van de entiteit-batch
-
-De grafiek wordt geopend met alle intents correct voorspeld. Schuif omlaag in het filter aan de rechter kant om de voor spellingen van de entiteit te vinden met fouten.
-
-1. Selecteer de **taak** entiteit in het filter.
-
-    ![Voor spellingen van de entiteit fout in het filter](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
-
-    De wijzigingen van de grafiek om de voorspellingen van de entiteit weer te geven.
-
-2. Selecteer **False negatieve** links in het onderste quadrant van de grafiek. Gebruik vervolgens de toetsenbord combinatie CTRL + E om over te schakelen in de weergave van het token.
-
-    [![Token-weergave van voorspellingen van de entiteit](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
-
-    Controleren van de uitingen onder de grafiek ziet u een consistente fout wanneer de taaknaam bevat `SQL`. Controleren van de voorbeeld-uitingen en de lijst met woorden, SQL is slechts één keer gebruikt, en alleen als onderdeel van een grotere taaknaam `sql/oracle database administrator`.
-
-## <a name="fix-the-app-based-on-entity-batch-results"></a>De app op basis van resultaten in de batch entiteiten oplossen
-
-Oplossen van de app vereist LUIS om correct te bepalen de variaties van de SQL-taken. Er zijn verschillende opties voor die oplossing.
-
-* Meer voorbeeld uitingen, die gebruikmaken van SQL en deze woorden labelen als een taak entiteit expliciet toevoegen.
-* Meer SQL-taken expliciet toevoegen aan de woordgroepenlijst met
-
-Deze taken blijven voor u te doen.
-
-Toevoegen van een [patroon](luis-concept-patterns.md) voordat de entiteit correct wordt voorspeld, gaat niet om het probleem te verhelpen. Dit is omdat het patroon niet overeen met totdat alle entiteiten in het patroon worden gedetecteerd.
+* Zorg ervoor dat u zowel positieve als negatieve uitingen in uw test onderneemt, inclusief uitingen die mogelijk voor speld zijn voor een andere, maar verwante intentie.
+* Voor een mislukte uitingen voert u de volgende taken uit en voert u de tests opnieuw uit:
+    * Bekijk de huidige voor beelden voor intents en entiteiten, Controleer of de voor beeld-uitingen van de actieve versie juist zijn voor intentie en entiteit labeling.
+    * Functies toevoegen die uw app kunnen voors pellen en entiteiten
+    * Meer positieve voorbeeld uitingen toevoegen
+    * Het saldo van voor beeld-uitingen in intenties controleren
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](./includes/cleanup-resources-preview-portal.md)]
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="next-step"></a>Volgende stap
 
-De zelfstudie gebruikt een batch-test om problemen met het huidige model. Het model is vast en getest met de batch-bestand om te controleren of dat de wijziging juist is.
+De zelf studie heeft een batch test gebruikt om het huidige model te valideren.
 
 > [!div class="nextstepaction"]
 > [Meer informatie over patronen](luis-tutorial-pattern.md)

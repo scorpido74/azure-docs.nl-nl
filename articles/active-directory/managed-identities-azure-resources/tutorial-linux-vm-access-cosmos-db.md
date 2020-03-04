@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb77802a4d6c29bb16912f1d74d950b6461b598
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183342"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248286"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Procedures voor:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Cosmos DB-account maken
@@ -67,14 +67,14 @@ Voeg vervolgens een gegevensverzameling toe in het Cosmos DB-account, waarop u l
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>De `principalID` van de door het systeem toegewezen beheerde identiteit voor de Linux-VM ophalen
 
-Om in de volgende sectie vanuit Resource Manager toegang te krijgen tot de toegangssleutels van het Cosmos DB-account, moet u de `principalID` van de door het systeem toegewezen beheerde identiteit van de Linux-VM ophalen.  Vervang de waarden van de parameters `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resourcegroep waar de VM zich bevindt) en `<VM NAME>` door uw eigen waarden.
+Om in de volgende sectie vanuit Resource Manager toegang te krijgen tot de toegangssleutels van het Cosmos DB-account, moet u de `principalID` van de door het systeem toegewezen beheerde identiteit van de Linux-VM ophalen.  Vervang de `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resource groep waarin uw VM zich bevindt) en `<VM NAME>` parameter waarden met uw eigen waarden.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
 Het antwoord bevat de details van de door het systeem toegewezen beheerde identiteit (noteer de principalID, want die wordt gebruikt in de volgende sectie):
 
-```bash  
+```output  
 {
     "id": "/subscriptions/<SUBSCRIPTION ID>/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe>",
   "identity": {
@@ -96,7 +96,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 Het antwoord bevat de details voor de gemaakte roltoewijzing:
 
-```
+```output
 {
   "id": "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT>/providers/Microsoft.Authorization/roleAssignments/5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
   "name": "5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
@@ -159,13 +159,13 @@ In het CURL-antwoord vindt u de lijst met sleutels.  Als u bijvoorbeeld de allee
 
 Nu u de toegangssleutel voor het Cosmos DB-account hebt, kunt u deze doorgeven aan een Cosmos DB-SDK en aanroepen doen om toegang tot het account te krijgen.  Voor een snel voorbeeld kunt u de toegangssleutel doorgeven aan de Azure CLI.  U kunt de `<COSMOS DB CONNECTION URL>` vinden op het tabblad **Overzicht** op de Cosmos DB-accountblade in Azure Portal.  Vervang de `<ACCESS KEY>` door de waarde die u hierboven hebt opgehaald:
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 Deze CLI-opdracht retourneert details over de verzameling:
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",

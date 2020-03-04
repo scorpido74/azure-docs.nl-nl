@@ -3,12 +3,12 @@ title: De Azure dev Space-invoeg toepassing gebruiken voor Jenkins met de Azure 
 description: Meer informatie over het gebruik van de Azure dev Spaces-invoeg toepassing in een continue integratie pijplijn.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619986"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250891"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Zelf studie: de Azure dev Spaces-invoeg toepassing gebruiken voor Jenkins met de Azure Kubernetes-service 
 
@@ -53,26 +53,26 @@ In deze sectie maakt u Azure-resources:
 
 1. Maak een resourcegroep.
 
-    ```bash
+    ```azurecli
     az group create --name MyResourceGroup --location westus2
     ```
 
 2. Maak een AKS-cluster. Maak het AKS-cluster in een [regio die ontwikkel ruimten ondersteunt](../dev-spaces/about.md#supported-regions-and-configurations).
 
-    ```bash
+    ```azurecli
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
 3. Configureer AKS voor het gebruik van dev Spaces.
 
-    ```bash
+    ```azurecli
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
     Met deze stap wordt de `azds` CLI-extensie geïnstalleerd.
 
 4. Maak een container register.
 
-    ```bash
+    ```azurecli
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
@@ -225,7 +225,7 @@ De voorbeeld pijplijn maakt gebruik van helm en kubectl om te implementeren op d
 
 3. Voer de volgende opdracht uit om uw ACR-referenties weer te geven:
 
-    ```bash
+    ```azurecli
     az acr credential show -n <yourRegistryName>
     ```
 
@@ -251,7 +251,7 @@ De voorbeeld pijplijn maakt gebruik van helm en kubectl om te implementeren op d
 
 5. Stel een AKS-referentie in. Voeg een *Kubernetes-configuratie (kubeconfig)-* referentie type toe aan Jenkins (gebruik de optie "rechtstreeks invoeren"). Voer de volgende opdracht uit om de toegangs referenties voor uw AKS-cluster op te halen:
 
-    ```cmd
+    ```azurecli
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
@@ -403,7 +403,7 @@ stage('smoketest') {
 
 Wanneer u klaar bent met het gebruik van de voorbeeld toepassing, moet u Azure-resources opschonen door de resource groep te verwijderen:
 
-```bash
+```azurecli
 az group delete -y --no-wait -n MyResourceGroup
 ```
 

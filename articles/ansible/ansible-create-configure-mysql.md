@@ -4,12 +4,12 @@ description: Ontdek hoe u Ansible gebruikt om een Azure Database for MySQL-serve
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603122"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247870"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Zelf studie: data bases configureren in Azure Database for MySQL met behulp van Ansible
 
@@ -24,7 +24,7 @@ ms.locfileid: "77603122"
 > * Een MySql-server maken
 > * Een MySql-data base maken
 > * Een firewall regel configureren zodat een externe app verbinding kan maken met uw server
-> * Verbinding maken met uw MySql-server vanuit de Azure Cloud shell
+> * Verbinding maken met uw MySql-server vanuit de Azure Cloud Shell
 > * Een query uitvoeren op uw beschik bare MySQL-servers
 > * Alle data bases in de verbonden servers weer geven
 
@@ -155,11 +155,15 @@ ansible-playbook mysql_firewall.yml
 
 ## <a name="connect-to-the-server"></a>Verbinding maken met de server
 
-In deze sectie gebruikt u de Azure Cloud shell om verbinding te maken met de server die u eerder hebt gemaakt.
+In deze sectie gebruikt u de Azure Cloud Shell om verbinding te maken met de server die u eerder hebt gemaakt.
 
-1. Selecteer de knop **try it** in de volgende code:
+1. Open shell.azure.com door hieronder te selecteren.
 
-    ```azurecli-interactive
+   [![Starten insluiten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+
+1. Voer de volgende code in:
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ In deze sectie gebruikt u de Azure Cloud shell om verbinding te maken met de ser
     
     Als alles goed gaat, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

@@ -3,8 +3,8 @@ title: 'Aangepaste rollen: online SQL Server naar migraties van SQL-beheerde exe
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het gebruik van de aangepaste rollen voor SQL Server voor het Azure SQL Database van online migraties van beheerde exemplaren.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 85c70968eb0f8a5752bbfa338918a8bba2fe7794
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437701"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254946"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>Aangepaste rollen voor SQL Server voor het SQL Database van online migraties van beheerde exemplaren
 
@@ -138,7 +138,7 @@ Als het aantal aangepaste rollen in uw Azure Active Directory geen bezorgdheid i
 }
 ```
 
-## <a name="role-assignment"></a>Nieuwe roltoewijzing
+## <a name="role-assignment"></a>Roltoewijzing
 
 Als u een rol wilt toewijzen aan gebruikers/APP-ID, opent u de Azure Portal en voert u de volgende stappen uit:
 

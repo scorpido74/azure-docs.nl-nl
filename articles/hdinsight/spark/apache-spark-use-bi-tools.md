@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.custom: hdinsightactive,mvc
+ms.date: 03/02/2020
+ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327276"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251955"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Zelfstudie: Gegevens van Apache Spark analyseren met Power BI in HDInsight
 
@@ -128,47 +128,47 @@ Met behulp van de Power BI-service kunt u rapporten en dashboards delen binnen u
 
 1. Open Power BI Desktop.
 
-1. Klik op het tabblad **Startpagina** op **Publiceren**.
+1. Selecteer op het tabblad **Start** de optie **publiceren**.
 
     ![Publiceren vanuit Power BI Desktop](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Publiceren vanuit Power BI Desktop")
 
-1. Selecteer de werkruimte waarnaar u de gegevensset wilt publiceren en rapporteren, en klik vervolgens op **Selecteren**. In de volgende afbeelding is de standaardwerkruimte **Mijn werkruimte** geselecteerd.
+1. Selecteer een werk ruimte om uw gegevensset en rapport te publiceren en selecteer vervolgens **selecteren**. In de volgende afbeelding is de standaardwerkruimte **Mijn werkruimte** geselecteerd.
 
-    ![Werk ruimte selecteren voor het publiceren van de gegevensset en het rapport naar](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Werk ruimte selecteren voor het publiceren van de gegevensset en het rapport naar") 
+    ![Werk ruimte selecteren voor het publiceren van de gegevensset en het rapport naar](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Werk ruimte selecteren voor het publiceren van de gegevensset en het rapport naar")
 
-1. Nadat het publiceren is voltooid, klikt u op **'BuildingTemperature.pbix' openen in Power BI**.
+1. Nadat de publicatie is voltooid, selecteert u **' BuildingTemperature. Pbix openen ' in Power bi**.
 
-    ![Publiceren is voltooid, klik om referenties in te voeren](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publiceren is voltooid, klik om referenties in te voeren") 
+    ![Publiceren is voltooid, klik om referenties in te voeren](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publiceren is voltooid, klik om referenties in te voeren")
 
-1. Klik in de Power BI-service op **Referenties invoeren**.
+1. Selecteer in de Power BI-service **referenties invoeren**.
 
     ![Referenties invoeren in Power BI-service](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Referenties invoeren in Power BI-service")
 
-1. Klik op **Referenties bewerken**.
+1. Selecteer **referenties bewerken**.
 
     ![Referenties bewerken in Power BI-service](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Referenties bewerken in Power BI-service")
 
-1. Voer de gegevens voor het aanmeldingsaccount van HDInsight in en klik vervolgens op **Aanmelden**. De standaardaccountnaam is *admin*.
+1. Voer de gegevens van het HDInsight-aanmeldings account in en selecteer **Aanmelden**. De standaardaccountnaam is *admin*.
 
     ![Aanmelden bij Spark-cluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Aanmelden bij Spark-cluster")
 
-1. Ga in het linkerdeelvenster naar **Werkruimten** > **Mijn werkruimte** > **RAPPORTEN** en klik op **BuildingTemperature**.
+1. Ga in het linkerdeel venster naar **werk ruimten** > **mijn werk ruimte** > **rapporten**en selecteer vervolgens **BuildingTemperature**.
 
     ![Rapport vermeld onder rapporten in het linkerdeel venster](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Rapport vermeld onder rapporten in het linkerdeel venster")
 
     Ook moet **BuildingTemperature** worden vermeld **GEGEVENSSETS** in het linkerdeelvenster.
 
-    De visualisatie die u hebt gemaakt in Power BI Desktop is nu beschikbaar in de Power BI-service. 
+    De visualisatie die u hebt gemaakt in Power BI Desktop is nu beschikbaar in de Power BI-service.
 
-1. Beweeg de cursor over de visualisatie en klik vervolgens op de speld in de rechterbovenhoek.
+1. Beweeg de muis aanwijzer over de visualisatie en selecteer vervolgens het speld pictogram in de rechter bovenhoek.
 
     ![Rapport in de Power BI-service](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Rapport in de Power BI-service")
 
-1. Selecteer 'Nieuw dashboard', voer de naam `Building temperature` in en klik vervolgens op **Vastmaken**.
+1. Selecteer Nieuw dash board, voer de naam `Building temperature`en selecteer **vastmaken**.
 
     ![Vastmaken aan nieuw dash board](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Vastmaken aan nieuw dash board")
 
-1. Klik in het rapport op **Naar dashboard**.
+1. Selecteer in het rapport **naar dash board gaan**.
 
 De visualisatie wordt vastgemaakt aan het dashboard. U kunt andere visualisaties toevoegen aan het rapport en deze aan hetzelfde dashboard vastmaken. Zie [Rapporten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) en [Dashboards in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/) voor meer informatie over rapporten en dashboards.
 

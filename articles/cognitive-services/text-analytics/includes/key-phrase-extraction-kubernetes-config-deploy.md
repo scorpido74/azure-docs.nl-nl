@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 35e7b85d31e9696f04dce610b6f2cf942543dc68
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a96b5e4d03ce72bac29126028ca61e11e8c7324
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383491"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262237"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>De Sleuteltermextractie-container implementeren in een AKS-cluster
 
@@ -32,7 +32,7 @@ ms.locfileid: "74383491"
 
     Wanneer deze opdracht wordt uitgevoerd, wordt een bericht met de volgende strekking gerapporteerd:
 
-    ```console
+    ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "74383491"
 
 1. Open de gewenste tekst editor. In dit voor beeld wordt Visual Studio code gebruikt.
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -103,7 +103,7 @@ ms.locfileid: "74383491"
 
     Nadat de opdracht de implementatie configuratie heeft toegepast, wordt een bericht weer gegeven zoals in de volgende uitvoer:
 
-    ```console
+    ```output
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
@@ -115,7 +115,7 @@ ms.locfileid: "74383491"
 
     De uitvoer voor de uitvoerings status van de Pod:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     keyphrase-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -128,7 +128,7 @@ ms.locfileid: "74383491"
 
     De uitvoer voor de uitvoerings status van de *woordgroepen* service in de Pod:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     keyphrase    LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

@@ -2,17 +2,15 @@
 title: Aangepaste Linux-containers beheren met CLI
 description: Meer informatie over het beheren van aangepaste Linux-containers in Azure App Service vanaf de opdracht regel. App-inrichting of-onderhoud automatiseren.
 keywords: Azure app service, Web-app, CLI, Linux, oss
-author: ahmedelnably
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689061"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255928"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Web App for Containers beheren met Azure CLI
 

@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191102"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252547"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Snelstartgids: een persoonlijke koppelings service maken met behulp van de Azure Portal
 
@@ -29,21 +29,22 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Maak eerst een virtueel netwerk. Maak vervolgens een interne load balancer om te gebruiken met de privé koppelings service.
 
-### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
 In deze sectie gaat u een virtueel netwerk maken. U maakt ook het subnet om de load balancer te hosten die toegang heeft tot uw persoonlijke koppelings service.
 
-1. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk** linksboven in de portal.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-1. Typ of Selecteer in het deel venster **virtueel netwerk maken** de volgende waarden:
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupLB |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | VS - oost 2      |
+| **> \<IPv4-adres ruimte**   | 10.3.0.0 \ 16          |
+| **\<subnet naam >**          | myBackendSubnet        |
+| **\<subnet-adres bereik >** | 10.3.0.0 \ 24          |
 
-   - **Naam**: Voer **myVNet**in.
-   - **ResourceGroup**: Selecteer **nieuwe maken**, Voer **myResourceGroupLB**in en selecteer **OK**.
-   - **Naam**van **subnet** > : Voer **myBackendSubnet**in.
-
-1. Selecteer **Maken**.
-
-   ![Een virtueel netwerk maken](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Een standaardversie van een load balancer maken
 
@@ -58,7 +59,7 @@ Gebruik de portal om een standaard interne load balancer te maken. De naam en he
     | **Abonnement**               | Selecteer uw abonnement.    |
     | **Resourcegroep**         | Selecteer **myResourceGroupLB** in het vak.|
     | **Naam**                   | Voer **myLoadBalancer**in.                                   |
-    | **Regio**         | Selecteer **US - oost 2**.                                        |
+    | **Regio**         | Selecteer **VS - oost 2**.                                        |
     | **Type**          | selecteer **Intern**.                                        |
     | **SKU**           | selecteer **Standaard**.                          |
     | **Virtueel netwerk**           | Selecteer **myVNet**.                          |
@@ -147,7 +148,7 @@ In deze sectie maakt u een persoonlijke koppelings service achter een standaard 
     | **Resourcegroep**    | Selecteer **myResourceGroupLB**.                                                    |
     | Exemplaar Details: |                                                                              |
     | **Naam**              | Voer **myPrivateLinkService**in. |
-    | **Regio**            | Selecteer **US - oost 2**.                                                        |
+    | **Regio**            | Selecteer **VS - oost 2**.                                                        |
 
 1. Selecteer **volgende: uitgaande instellingen**.
 

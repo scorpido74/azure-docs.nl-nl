@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656310"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249103"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -67,35 +67,7 @@ Organisaties kunnen ervoor kiezen om de apparaat-id te gebruiken als onderdeel v
 
 Organisaties kunnen vereisen dat een toegangs poging tot de geselecteerde Cloud-apps moet worden uitgevoerd vanuit een goedgekeurde client-app. Deze goedgekeurde client-apps ondersteunen het [intune-beveiligings beleid voor apps](/intune/app-protection-policy) onafhankelijk van een MDM-oplossing (Mobile-Device Management).
 
-Deze instelling is van toepassing op de volgende client-apps:
-
-- Microsoft Azure Information Protection
-- Micro soft-boekingen
-- Micro soft Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
-- Facturering van Microsoft
-- Microsoft Kaizala
-- Microsoft Launcher
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Micro soft Skype voor bedrijven
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
-- Microsoft Word
-- Micro soft Yammer
+Ondersteunde toepassingen vindt u in het artikel [Microsoft intune beveiligde apps](/intune/apps/apps-supported-intune-apps).
 
 **Opmerkingen**
 
@@ -108,12 +80,7 @@ Deze instelling is van toepassing op de volgende client-apps:
 
 In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een [intune-app-beveiligings beleid](/intune/app-protection-policy) aanwezig is op de client-app voordat toegang beschikbaar is voor de geselecteerde Cloud-apps. 
 
-Deze instelling is van toepassing op de volgende client-apps:
-
-- Micro soft Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- Microsoft Planner
+Ondersteunde toepassingen vindt u in het artikel [Microsoft intune beveiligde apps](/intune/apps/apps-supported-intune-apps).
 
 **Opmerkingen**
 
@@ -121,7 +88,7 @@ Deze instelling is van toepassing op de volgende client-apps:
 - De vereisten voor het **beveiligings beleid voor apps vereisen** :
     - Biedt alleen ondersteuning voor de voor waarde iOS en Android voor Device platform.
 
-### <a name="terms-of-use"></a>Gebruiksvoorwaarden
+### <a name="terms-of-use"></a>Gebruiksrechtovereenkomst
 
 Als uw organisatie gebruiks voorwaarden heeft gemaakt, kunnen er aanvullende opties worden weer gegeven onder besturings elementen verlenen. Met deze opties kunnen beheerders bevestigings voorwaarden vereisen als voor waarde voor het openen van de bronnen die door het beleid worden beveiligd. Meer informatie over de gebruiks voorwaarden vindt u in het artikel [Azure Active Directory gebruiks voorwaarden](terms-of-use.md).
 

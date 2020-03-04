@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 527002bee1bec4097cf62155efebae06880bad97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472392"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250060"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Zelf studie: Azure Key Vault integreren in de implementatie van de Resource Manager-sjabloon
 
@@ -42,7 +42,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 * Visual Studio code met de extensie Resource Manager-Hulpprogram Ma's. Zie [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](use-vs-code-to-create-template.md).
 * Gebruik een gegenereerd wacht woord voor het beheerders account van de virtuele machine om de beveiliging te verbeteren. Hier volgt een voor beeld voor het genereren van een wacht woord:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     Controleer of het gegenereerde wacht woord voldoet aan de vereisten voor het VM-wacht woord. Elke Azure-service heeft eigen wachtwoordvereisten. Zie [Wat zijn de wachtwoord vereisten wanneer u een VM maakt?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)voor de vereisten voor het VM-wacht woord.
@@ -179,7 +179,7 @@ Wanneer u de sjabloon implementeert, gebruikt u dezelfde resource groep die u in
 
 Nadat u de virtuele machine hebt geïmplementeerd, moet u de aanmeldings referenties testen met behulp van het wacht woord dat is opgeslagen in de sleutel kluis.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **resource groepen** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. Selecteer bovenaan **verbinding maken** .

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614023"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252751"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Zelfstudie: Containers verpakken en implementeren als een Service Fabric-toepassing met behulp van Yeoman
 
@@ -114,7 +114,7 @@ Opdat Service Fabric de containerinstallatiekopieën kan ophalen uit de Azure Co
 
 Meld u aan bij uw ACR-exemplaar. Gebruik de opdracht **az acr login** om de bewerking te voltooien. Geef de unieke naam op die u het containerregister hebt gegeven toen u het maakte.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ De opdracht retourneert het bericht **Aanmelden geslaagd** wanneer deze is uitge
 
 Voer vervolgens de volgende opdracht uit om het wachtwoord van uw containerregister op te halen. Dit wachtwoord wordt door Service Fabric gebruikt voor authenticatie bij ACR om de containerinstallatiekopieën op te halen.
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ Opdat Service Fabric deze DNS-naam kan toewijzen aan de back-endservice, moet de
 
 De frontend-service leest een omgevingsvariabele om achter de DNS-naam van het Redis-exemplaar te komen. Deze omgevingsvariabele is al gedefinieerd in de Dockerfile die is gebruikt om de Docker-installatiekopie te genereren, en er hoeft hier geen actie te worden ondernomen.
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

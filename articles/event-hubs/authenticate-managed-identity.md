@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368526"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251531"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen
 Azure Event Hubs ondersteunt Azure Active Directory (Azure AD)-verificatie met [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). Beheerde identiteiten voor Azure-resources kunnen toegang tot Event Hubs resources toestaan met behulp van Azure AD-referenties van toepassingen die worden uitgevoerd in azure Virtual Machines (Vm's), functie-apps, Virtual Machine Scale Sets en andere services. Door beheerde identiteiten voor Azure-resources te gebruiken in combi natie met Azure AD-verificatie kunt u voor komen dat referenties worden opgeslagen in uw toepassingen die in de cloud worden uitgevoerd.
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u toegang kunt verlenen tot een Event Hub me
 ## <a name="enable-managed-identities-on-a-vm"></a>Beheerde identiteiten op een virtuele machine inschakelen
 Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om Event Hubs-resources van uw virtuele machine te autoriseren, moet u eerst beheerde identiteiten voor Azure-resources inschakelen op de VM. Zie een van de volgende artikelen voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources:
 
-- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure-portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -79,10 +79,13 @@ Zodra u de rol hebt toegewezen, heeft de webtoepassing toegang tot de Event Hubs
 4. Wijs deze identiteit toe aan de **Event hubs rol gegevens eigenaar** op het niveau van de naam ruimte of het event hub niveau. 
 5. Voer de webtoepassing uit, voer de naam van de naam ruimte en Event Hub naam, een bericht in en selecteer **verzenden**. Selecteer **ontvangen**om de gebeurtenis te ontvangen. 
 
-#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messa ging. Event hubs (meest recent)](#tab/latest)
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure. Messa ging. Event hubs (meest recent)](#tab/latest)
 U kunt nu de webtoepassing starten en uw browser naar de aspx-voorbeeld pagina wijzen. U kunt de voor beeld-webtoepassing vinden waarmee gegevens worden verzonden en ontvangen van Event Hubs-resources in de [github opslag plaats](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
 
-Installeer het nieuwste pakket van [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)en begin met het verzenden van gebeurtenissen naar Event hubs met **EventHubProducerClient** en het ontvangen van gebeurtenissen via **EventHubConsumerClient**.  
+Installeer het nieuwste pakket van [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)en begin met het verzenden van gebeurtenissen naar Event hubs met **EventHubProducerClient** en het ontvangen van gebeurtenissen via **EventHubConsumerClient**. 
+
+> [!NOTE]
+> Zie [gebeurtenissen publiceren met Azure Identity sample op github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)voor een Java-voor beeld dat gebruikmaakt van een beheerde identiteit voor het publiceren van gebeurtenissen in een event hub.
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -127,7 +130,7 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacytabold"></a>[Micro soft. Azure. Event hubs (verouderd)](#tab/old)
+#### <a name="microsoftazureeventhubs-legacy"></a>[Micro soft. Azure. Event hubs (verouderd)](#tab/old)
 U kunt nu de webtoepassing starten en uw browser naar de aspx-voorbeeld pagina wijzen. U kunt de voor beeld-webtoepassing vinden waarmee gegevens worden verzonden en ontvangen van Event Hubs-resources in de [github opslag plaats](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
 
 Installeer het meest recente pakket van [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)en begin met het verzenden naar en ontvangen van gegevens van Event hubs met behulp van de EventHubClient, zoals wordt weer gegeven in de volgende code: 
@@ -141,11 +144,12 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 U kunt Apache Kafka-toepassingen gebruiken om berichten te verzenden naar en berichten te ontvangen van Azure Event Hubs met behulp van beheerde identiteit OAuth. Zie het volgende voor beeld op GitHub: [Event hubs voor Kafka-berichten verzenden en ontvangen met beheerde identiteit OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
 ## <a name="samples"></a>Voorbeelden
+- Voor beelden van **Azure. Messa ging. Event hubs**
+    - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Micro soft. Azure. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)-voor beelden. 
     
     In deze voor beelden wordt de oude bibliotheek van **micro soft. Azure. Event hubs** gebruikt, maar u kunt deze eenvoudig bijwerken met de meest recente **Azure. Messa ging. Event hubs** -bibliotheek. Zie de [hand leiding voor het migreren van micro soft. Azure. Event hubs naar Azure. Messa ging. Event hubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)om het voor beeld te verplaatsen van het gebruik van de oude bibliotheek naar een nieuwe.
-- [Voor beelden van Azure. Messa ging. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
-
     Dit voor beeld is bijgewerkt om de meest recente **Azure. Messa ging. Event hubs** -bibliotheek te gebruiken.
 - [Event Hubs voor Kafka-berichten verzenden en ontvangen met beheerde identiteit OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

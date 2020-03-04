@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028588"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252603"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met behulp van een persoonlijke Azure-koppeling
 
@@ -23,28 +23,24 @@ In dit artikel leert u hoe u een virtuele machine maakt in een virtueel Azure-ne
 
 Meld u aan bij de [Azure Portal.](https://portal.azure.com)
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
-### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een Azure Cosmos-account in dit voor beeld).
 
-1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroup|
+| **\<virtuele-netwerk naam >** | myVirtualNetwork         |
+| **\<regio-naam >**          | VS - west-centraal     |
+| **> \<IPv4-adres ruimte**   | 10.1.0.0 \ 16          |
+| **\<subnet naam >**          | mySubnet        |
+| **\<subnet-adres bereik >** | 10.1.0.0 \ 24          |
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Name | Voer *MyVirtualNetwork*in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Locatie | Selecteer **WestCentralUS**.|
-    | Subnet - Naam | Voer *mySubnet*in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
-    |||
-
-1. Laat de rest als standaard en selecteer **maken**.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
 
@@ -57,11 +53,11 @@ In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
-    | **EXEMPLAARDETAILS** |  |
-    | Naam van de virtuele machine | Voer *myVm*in. |
+    | **INSTANTIEDETAILS** |  |
+    | Virtuele machine | Voer *myVm*in. |
     | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | afbeelding | Selecteer **Windows Server 2019 Data Center**. |
+    | Afbeelding | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
     | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
@@ -109,7 +105,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
-1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
+1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
 1. Open het gedownloade *RDP*-bestand.
 

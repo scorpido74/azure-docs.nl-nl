@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906586"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252683"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statische website-hosting in Azure Storage
 
@@ -39,7 +39,7 @@ Bestanden in de **$Web** -container zijn hoofdletter gevoelig, worden aangeboden
 U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de container **$Web** :
 
 > [!div class="checklist"]
-> * [Azure-CLI](storage-blob-static-website-how-to.md#cli)
+> * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Module Azure PowerShell](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure-opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
@@ -50,10 +50,10 @@ U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de con
 
 Gebruikers kunnen site-inhoud vanuit een browser weer geven met behulp van de open bare URL van de website. U kunt de URL vinden met behulp van de Azure Portal, Azure CLI of Power shell. Gebruik deze tabel als richt lijn.
 
-|Hulpprogramma| Hulp |
+|Hulpprogramma| Richtlijnen |
 |----|----|
-|**Azure Portal** | [De URL van de website zoeken met behulp van de Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure-CLI** | [De URL van de website zoeken met behulp van de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure-portal** | [De URL van de website zoeken met behulp van de Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure CLI** | [De URL van de website zoeken met behulp van de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Module Azure PowerShell** | [De URL van de website zoeken met behulp van Power shell](storage-blob-static-website-how-to.md#powershell-find-url) |
 
 De URL van uw site bevat een regionale code. De URL `https://contosoblobaccount.z22.web.core.windows.net/` bijvoorbeeld regionale code `z22`bevat.
@@ -91,6 +91,12 @@ Als het opslag account is geconfigureerd voor het [vereisen van beveiligde overd
 
 > [!TIP]
 > U kunt uw domein hosten in Azure. Zie [uw domein hosten in azure DNS](../../dns/dns-delegate-domain-azure-dns.md)voor meer informatie.
+
+## <a name="adding-http-headers"></a>HTTP-headers toevoegen
+
+Het is niet mogelijk om headers als onderdeel van de functie statische website te configureren. U kunt Azure CDN echter gebruiken om koptekst waarden toe te voegen en te toevoegen (of te overschrijven). Zie de [Naslag informatie voor de standaard regels-engine voor Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+
+Als u headers wilt gebruiken voor het beheren van de cache, raadpleegt u [beheer Azure CDN caching met cache regels](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
 
 ## <a name="pricing"></a>Prijzen
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/11/2019
-ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435819"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251072"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in azure HDInsight met het micro soft Hive ODBC-stuur programma
 
@@ -50,9 +50,9 @@ De volgende stappen laten zien hoe u een Hive-ODBC-gegevens bron maakt.
 
    | Eigenschap | Beschrijving |
    | --- | --- |
-   |  Naam van de gegevensbron |Geef uw gegevensbron een naam |
+   |  Naam gegevensbron |Geef uw gegevensbron een naam |
    |  Host (s) |Voer `HDInsightClusterName.azurehdinsight.net` in. Bijvoorbeeld `myHDICluster.azurehdinsight.net`. Opmerking: `HDInsightClusterName-int.azurehdinsight.net` wordt ondersteund, zolang de VM van de client is gekoppeld aan hetzelfde virtuele netwerk. |
-   |  Port |Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
+   |  Poort |Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
    |  Database |**Standaard instelling**gebruiken. |
    |  Mechanisme |Selecteer de **Windows Azure HDInsight-service** |
    |  Gebruikersnaam |Voer de gebruikers naam van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |
@@ -96,7 +96,7 @@ In de volgende stappen wordt beschreven hoe u gegevens uit een Hive-tabel import
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u het micro soft Hive ODBC-stuur programma gebruikt om gegevens op te halen uit de HDInsight-service in Excel. Op dezelfde manier kunt u gegevens ophalen van de HDInsight-service in SQL Database. Het is ook mogelijk om gegevens te uploaden naar een HDInsight-service. Voor meer informatie zie:
+In dit artikel hebt u geleerd hoe u het micro soft Hive ODBC-stuur programma gebruikt om gegevens op te halen uit de HDInsight-service in Excel. Op dezelfde manier kunt u gegevens ophalen van de HDInsight-service in SQL Database. Het is ook mogelijk om gegevens te uploaden naar een HDInsight-service. Raadpleeg voor meer informatie:
 
 * [Visualiseer Apache Hive gegevens met micro soft-power bi in azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Visualisatie gegevens van interactieve Query's visualiseren met Power bi in azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

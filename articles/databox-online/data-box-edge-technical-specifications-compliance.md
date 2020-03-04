@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863594"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252036"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technische specificaties
 
@@ -53,6 +53,14 @@ Het Data Box Edge-apparaat heeft twee 100-240 V-energievoedings eenheden (PSUs) 
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>Specificaties van netwerk interface
+
+U Data Box Edge apparaat heeft zes netwerk interfaces, PORT1-PORT6.
+
+| Specificatie           | Beschrijving                 |
+|-------------------------|----------------------------|
+|  Netwerkinterfaces    | 2 X 1 GbE-interfaces: Eén beheerinterface, niet configureerbaar door gebruikers, gebruikt voor eerste installatie. De andere gegevensinterface kan door gebruikers worden geconfigureerd, kan worden gebruikt voor gegevensoverdracht en is standaard DHCP. <br>2 X 25 GbE-interfaces: Deze kunnen ook als 10 GbE-interfaces werken. Deze gegevensinterfaces kunnen door gebruikers worden geconfigureerd als DHCP (standaard) of statisch. <br> 2 X 25 GbE-interfaces: Deze gegevensinterfaces kunnen door gebruikers worden geconfigureerd als DHCP (standaard) of statisch.                  |
+
 ## <a name="storage-specifications"></a>Opslag specificaties
 
 De Data Box Edge-apparaten hebben 9 X 2,5 ' NVMe Ssd's, elk met een capaciteit van 1,6 TB. Van deze Ssd's, 1 is een schijf van het besturings systeem en de andere 8 zijn gegevens schijven. De totale bruikbare capaciteit van het apparaat is ongeveer 12,5 TB. De volgende tabel bevat de Details voor de opslag capaciteit van het apparaat.
@@ -74,7 +82,7 @@ In de volgende tabellen staan de verschillende specificaties van de behuizing vo
 
 De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
-|     Sluit     |     Millimeters     |     Mm     |
+|     Sluit     |     Millimeters     |     mm     |
 |-------------------|---------------------|----------------|
 |    Hoogte         |    44,45            |    1,75 '          |
 |    Breedte          |    434,1           |    17,09 '          |
@@ -82,7 +90,7 @@ De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
 De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en inches.
 
-|     Pakket     |     Millimeters     |     Mm     |
+|     Pakket     |     Millimeters     |     mm     |
 |-------------------|---------------------|----------------|
 |    Hoogte         |    311,2            |    12,25 '          |
 |    Breedte          |    642,8          |    25,31 '          |

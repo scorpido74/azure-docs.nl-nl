@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558822"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251308"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe & Community-inhoud voor de Text Analytics cognitieve service
 
@@ -27,13 +27,17 @@ ms.locfileid: "68558822"
 
 + [Text Analytics sleutel woordgroep gebruiken Cognitive Services API van Power shell (AutomationNext blog)](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [Tip voor R: Microsoft Cognitive Services Text Analytics-API (R bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [R-Quick Tip: Microsoft Cognitive Services Text Analytics-API (R bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
 + [Sentiment Analysis in Logic app met behulp van SQL Server gegevens (TechNet-blog)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
 + [Sentiment analyse met Dynamics 365 CRM Online (MSDN-blog)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ Power bi-blog: Extractie van belang rijke woord groepen uit Facebook-berichten: [Deel 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) en [deel 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI blog: het uitpakken van sleutel zinnen uit Facebook-berichten: [deel 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) en [deel 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
+
++ [De sentiment van opmerkingen in een Yammer-groep identificeren met MS flow (micro soft tech Community)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
+
+
 
 ## <a name="videos"></a>Video's
 
@@ -49,5 +53,5 @@ Zoekt u informatie over een functie of een gebruiks voorbeeld die niet wordt beh
 
 ## <a name="see-also"></a>Zie ook
 
- [StackOverflow: Azure Text Analytics-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [Stack overflow: Azure Text Analytics-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [Stack overflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

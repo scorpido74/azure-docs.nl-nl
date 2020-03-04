@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585982"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248850"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -47,13 +47,13 @@ Gebruikers met toegang tot geprivilegieerde accounts hebben meer toegang tot uw 
 
 Nadat de registratie bij Multi-Factor Authentication is voltooid, moeten de volgende negen Azure AD-beheerders rollen extra authenticatie uitvoeren elke keer dat ze zich aanmelden:
 
-- Globale beheerder
+- Algemeen beheerder
 - SharePoint-beheerder
 - Exchange-beheerder
 - Beheerder van voorwaardelijke toegang
 - Beveiligingsbeheerder
 - Helpdesk beheerder of wachtwoord beheerder
-- Factureringsbeheerder
+- Financieel medewerker
 - Gebruikers beheerder
 - Verificatie beheerder
 
@@ -69,7 +69,7 @@ Een gemeen schappelijke methode voor het verbeteren van de beveiliging van alle 
 
 Azure AD biedt ondersteuning voor diverse verificatie protocollen, waaronder verouderde verificatie, om uw gebruikers eenvoudig toegang te geven tot uw Cloud-apps. *Verouderde verificatie* is een term die verwijst naar een verificatie aanvraag die wordt gedaan door:
 
-- Oudere Office-clients die geen gebruik kunnen maakt van moderne verificatie (bijvoorbeeld een Office 2010-client).
+- Clients die geen moderne verificatie gebruiken (bijvoorbeeld een Office 2010-client).
 - Elke client die gebruikmaakt van oudere e-mail protocollen, zoals IMAP, SMTP of POP3.
 
 De meeste pogingen om zich aan te melden, zijn van verouderde verificatie. Verouderde verificatie biedt geen ondersteuning voor Multi-Factor Authentication. Zelfs als er een Multi-Factor Authentication beleid is ingeschakeld in uw directory, kan een aanvaller zich verifiëren met behulp van een ouder protocol en Multi-Factor Authentication overs Laan. 

@@ -14,45 +14,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: d9720ca769eab8cf0e4ee763c720f6ba12ebb1d9
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 27a26a0c8378f34794afd87cf11b6bb878f7b53c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063285"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248449"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Zelf studie: rollbar configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in rollbar en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in rollbar.
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel rollbar als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en [GeRollbard](https://rollbar.com/pricing/) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
 
-> [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
->
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+
+## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
+> [!div class="checklist"]
+> * Gebruikers maken in rollbar
+> * Gebruikers in rollbar verwijderen wanneer ze niet meer toegang nodig hebben
+> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en rollbar
+> * Inrichtings groepen en groepslid maatschappen in rollbar
+> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/rollbar-tutorial) bij rollbar (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
 In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant.
+* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
 * [Een rollbar-Tenant](https://rollbar.com/pricing/) met een ondernemings plan.
 * Een gebruikers account in rollbar met beheerders machtigingen.
 
-## <a name="assigning-users-to-rollbar"></a>Gebruikers toewijzen aan rollbar
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
+1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en rollbar](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
-
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot rollbar. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan rollbar door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-rollbar"></a>Belang rijke tips voor het toewijzen van gebruikers aan rollbar
-
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan rollbar om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
-
-* Wanneer u een gebruiker toewijst aan rollbar, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
-
-## <a name="setup-rollbar-for-provisioning"></a>Rollbar instellen voor inrichting
+## <a name="step-2-configure-rollbar-to-support-provisioning-with-azure-ad"></a>Stap 2. Rollbar configureren voor ondersteuning bij het inrichten met Azure AD
 
 Voordat u rollbar configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op rollbar.
 
@@ -60,42 +57,31 @@ Voordat u rollbar configureert voor het automatisch inrichten van gebruikers met
 
     ![Rollbar-beheer console](media/rollbar-provisioning-tutorial/image00.png)
 
-2. Navigeer naar uw **rollbar-Tenant naam >-account toegangs tokens**.
+2. Navigeer naar uw **rollbar-Tenant naam > ID-provider**.
 
-    ![Rollbar-beheer console](media/rollbar-provisioning-tutorial/account.png)
+    ![Rollbar-ID-provider](media/rollbar-provisioning-tutorial/idp.png)
 
-3. Kopieer de waarde van **scim**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw rollbar-toepassing in de Azure Portal.
+3. Schuif omlaag om de **inrichtings opties**in te stellen. Kopieer het toegangs token. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw rollbar-toepassing in de Azure Portal. Schakel het selectie vakje **gebruikers en team inrichten inschakelen** in en klik op **Opslaan**.
 
-    ![Rollbar-beheer console](media/rollbar-provisioning-tutorial/scim.png)
+    ![Rollbar-toegangs token](media/rollbar-provisioning-tutorial/token.png)
 
-## <a name="add-rollbar-from-the-gallery"></a>Rollbar toevoegen vanuit de galerie
 
-Als u rollbar wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u rollbar de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+## <a name="step-3-add-rollbar-from-the-azure-ad-application-gallery"></a>Stap 3. Rollbar toevoegen vanuit de Azure AD-toepassings galerie
 
-**Voer de volgende stappen uit om rollbar toe te voegen vanuit de Azure AD-toepassings galerie:**
+Voeg rollbar toe vanuit de Azure AD-toepassings galerie om het beheren van de inrichting van rollbar te starten. Als u eerder rollbar voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+* Wanneer u gebruikers en groepen toewijst aan rollbar, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-rollbar"></a>Stap 5. Automatische gebruikers inrichting configureren voor rollbar 
 
-4. Typ **rollbar**in het zoekvak, selecteer **rollbar** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
-
-    ![Rollbar in de lijst met resultaten](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-rollbar"></a>Automatische gebruikers inrichting configureren voor rollbar 
-
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in rollbar te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
-
-> [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor rollbar, gevolgd door de instructies in de [rollbar-zelf studie voor eenmalige aanmelding](rollbar-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-rollbar-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor rollbar in azure AD:
 
@@ -115,33 +101,40 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer in het gedeelte **beheerders referenties** de waarde van het **account toegangs token** in dat eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met rollbar. Als de verbinding mislukt, zorg er dan voor dat uw rollbar-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in het gedeelte **beheerders referenties** de waarde op voor het toegangs token dat eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met rollbar. Als de verbinding mislukt, zorg er dan voor dat uw rollbar-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Rollbar-beheer console](media/rollbar-provisioning-tutorial/admin.png)
+    ![Inrichting](./media/rollbar-provisioning-tutorial/admin.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
     ![E-mail melding](common/provisioning-notification-email.png)
 
-7. Klik op **Opslaan**.
+7. Selecteer **Opslaan**.
 
 8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met rollbar**.
 
-    ![Rollbar-gebruikers toewijzingen](media/rollbar-provisioning-tutorial/usermapping.png)
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar rollbar in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in rollbar voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de ROLLBAR-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar rollbar in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in rollbar voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
-
-    ![Rollbar-gebruikers kenmerken](media/rollbar-provisioning-tutorial/userattribute.png)
+   |Kenmerk|Type|
+   |---|---|
+   |userName|Tekenreeks|
+   |externalId|Tekenreeks|
+   |actief|Booleaans|
+   |name.familyName|Tekenreeks|
+   |name.givenName|Tekenreeks|
+   |e-mail berichten [type EQ "werk]|Tekenreeks|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met rollbar**.
 
-    ![Rollbar-groeps toewijzingen](media/rollbar-provisioning-tutorial/groupmapping.png)
-
 11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar rollbar in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in rollbar te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Kenmerken van rollbar-groep](media/rollbar-provisioning-tutorial/groupattribute.png)
+      |Kenmerk|Type|
+      |---|---|
+      |displayName|Tekenreeks|
+      |externalId|Tekenreeks|
+      |leden|Naslaginformatie|
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
 13. Als u de Azure AD-inrichtings service voor **rollbar wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
@@ -155,15 +148,20 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-    Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op rollbar.
+Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
 
-    Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpleegt u [rapportage over automatische gebruikers accounts inrichten](../app-provisioning/check-status-user-account-provisioning.md)
-    
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+1. De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
+2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
+3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="additional-resources"></a>Extra resources
+
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)

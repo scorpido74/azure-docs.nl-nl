@@ -3,8 +3,8 @@ title: 'Snelstartgids: een exemplaar maken met behulp van de Azure Portal'
 titleSuffix: Azure Database Migration Service
 description: Gebruik de Azure Portal om een exemplaar van Azure Database Migration Service te maken.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 42638af9f51770a9a5738cd92f91c28439af273a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: efbf7d9db91b8c23151ca4337bd4d58f814a7096
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750095"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254982"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Snelstart: Een Azure Database Migration Service-exemplaar maken met behulp van de Azure-portal
 

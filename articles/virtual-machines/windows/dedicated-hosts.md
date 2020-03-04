@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833870"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251557"
 ---
 # <a name="azure-dedicated-hosts"></a>Met Azure toegewezen hosts
 
@@ -29,3 +29,5 @@ De toegewezen Azure-host is een service die fysieke servers biedt en een of meer
 - U kunt een toegewezen host implementeren met behulp van [Azure PowerShell](dedicated-hosts-powershell.md), de [Portal](dedicated-hosts-portal.md)en [Azure cli](../linux/dedicated-hosts-cli.md).
 
 - [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)vindt u een voor beeld van een sjabloon, die zowel zones als fout domeinen gebruikt voor maximale tolerantie in een regio.
+
+- U kunt ook besparen op kosten met een [gereserveerd exemplaar van voor Azure toegewezen hosts](../prepay-dedicated-hosts-reserved-instances.md).

@@ -3,12 +3,12 @@ title: Back-up maken van Hyper-V virtuele machines met MABS
 description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586509"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255052"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
 
@@ -171,7 +171,7 @@ Nadat u de stappen in de vorige secties hebt voltooid en de taak MABS Summary Ma
 
 1. Open SQL Server Management Studio en maak verbinding met het exemplaar dat als host fungeert voor de MABS-data base.
 
-2. Voer de volgende query uit: `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'`. Deze query retourneert de **ScheduleID**. Noteer deze ID zoals u deze in de volgende stap gaat gebruiken.
+2. Voer de volgende query uit: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Deze query retourneert de **ScheduleID**. Noteer deze ID zoals u deze in de volgende stap gaat gebruiken.
 
 3. Vouw in het SQL Server Management Studio **SQL Server Agent**uit en vouw vervolgens **taken**uit. Klik met de rechter muisknop op **ScheduleID** die u hebt genoteerd en selecteer **taak starten bij stap**.
 

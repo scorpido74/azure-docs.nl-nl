@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225187"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249856"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Zelfstudie: Taakverdeling voor internetverkeer naar virtuele machines instellen met behulp van de Azure-portal
 
-Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u meer over de verschillende onderdelen van Azure Standard Load Balancer die internetverkeer verdelen naar VM's en zorgen voor hoge beschikbaarheid. Procedures voor:
+Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u meer over de verschillende onderdelen van Azure Standard Load Balancer die internetverkeer verdelen naar VM's en zorgen voor hoge beschikbaarheid. In deze zelfstudie leert u procedures om het volgende te doen:
 
 
 > [!div class="checklist"]
@@ -42,7 +42,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-a-standard-load-balancer"></a>Een Load Balancer van het type Standard maken
 
-In deze sectie maakt u een Standard Load Balancer die de taak verdeling van virtuele machines ondersteunt. Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Als u een Standard-load balancer maakt, moet u ook een nieuw, standaard, openbaar IP-adres maken dat als de front-end (standaard *LoadBalancerFrontend* genoemd) wordt geconfigureerd voor de Standard-load balancer. 
+In deze sectie maakt u een Standard Load Balancer die de taak verdeling van virtuele machines ondersteunt. Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Wanneer u een Standard Load Balancer maakt, moet u ook een nieuw, standaard, openbaar IP-adres maken dat als de front-end (standaard *LoadBalancerFrontend* genoemd) wordt geconfigureerd voor de Standard Load Balancer. 
 
 1. Klik linksboven in het scherm op **Een resource maken** > **Netwerken** > **Load balancer**.
 2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
@@ -116,22 +116,20 @@ Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de V
 
 In deze sectie maakt u een virtueel netwerk, maakt u drie virtuele machines voor de back-end-pool van de Load Balancer en installeert u IIS op de virtuele machines om de Load Balancer te testen.
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
 
-    | Instelling | Waarde |
-    | ------- | ----- |
-    | Naam | Voer *myVNet* in. |
-    | Adresruimte | Voer *10.1.0.0/16* in. |
-    | Abonnement | Selecteer uw abonnement.|
-    | Resourcegroep | Selecteer bestaande resource- *myResourceGroupSLB*. |
-    | Locatie | Selecteer **Europa - west**.|
-    | Subnet - naam | Voer *myBackendSubnet* in. |
-    | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
-    
-3. Laat de overige standaardwaarden staan en selecteer **Maken**.
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupSLB (bestaande resource groep selecteren) |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | Europa -west      |
+| **> \<IPv4-adres ruimte**   | 10.1.0.0 \ 16          |
+| **\<subnet naam >**          | mySubnet        |
+| **\<subnet-adres bereik >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 

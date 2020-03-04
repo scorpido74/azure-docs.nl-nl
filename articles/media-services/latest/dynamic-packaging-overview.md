@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719667"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251382"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische verpakking in Media Services v3
 
@@ -93,7 +93,7 @@ Bekijk de lijst met Media Encoder Standard [indelingen en codecs](media-encoder-
 
 ## <a name="live-streaming-workflow"></a>Werk stroom voor live streamen
 
-Een live gebeurtenis kan een van de volgende twee typen zijn: Pass-Through of Live code ring. 
+Een live-gebeurtenis kan worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). 
 
 Hier volgt een algemene werk stroom voor live streamen met dynamische pakketten:
 

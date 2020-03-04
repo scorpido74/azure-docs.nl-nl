@@ -3,12 +3,12 @@ title: Bewaren van gegevens en opslag in Azure-toepassing inzichten | Microsoft 
 description: Retentie en privacybeleid
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669655"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254880"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -171,6 +171,12 @@ Standaard `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` wordt gebruikt voor het
 
 Het `appInsights-node` van de map kan worden overschreven door de runtime-waarde van de statische variabele `Sender.TEMPDIR_PREFIX` gevonden in [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)te wijzigen.
 
+### <a name="javascript-browser"></a>Java script (browser)
+
+[HTML5-sessie opslag](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) wordt gebruikt om gegevens op te slaan. Er worden twee afzonderlijke buffers gebruikt: `AI_buffer` en `AI_sent_buffer`. Telemetrie die is gebatcheerd en wacht op verzen ding, wordt opgeslagen in `AI_buffer`. De telemetrie die zojuist is verzonden, wordt in `AI_sent_buffer` geplaatst totdat de opname server reageert dat deze is ontvangen. Wanneer de telemetrie is ontvangen, wordt deze verwijderd uit alle buffers. Bij tijdelijke storingen (bijvoorbeeld wanneer een gebruiker verbinding met het netwerk verliest), blijft de telemetrie in `AI_buffer` totdat deze is ontvangen of reageert de opname server dat de telemetrie ongeldig is (bijvoorbeeld beschadigd schema of te oud).
+
+U kunt telemetrie buffers uitschakelen door [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) in te stellen op `false`. Wanneer sessie opslag is uitgeschakeld, wordt in plaats daarvan een lokale matrix gebruikt als permanente opslag. Omdat de Java script-SDK op een client apparaat wordt uitgevoerd, heeft de gebruiker toegang tot deze opslag locatie via de ontwikkel hulpprogramma's van de browser.
+
 ### <a name="opencensus-python"></a>Opentellingen python
 
 Standaard gebruikt de python-SDK voor opentellingen de huidige map `%username%/.opencensus/.azure/`. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) .) De map met de persistente gegevens krijgt de naam na het python-bestand dat de telemetrie heeft gegenereerd.
@@ -207,7 +213,7 @@ Het wordt niet aanbevolen om uw toepassing expliciet in te stellen voor gebruik 
 | WindowsServer 2012-2016 | Ondersteund en standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
 | Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
 | Windows Server 2008 SP2 | Ondersteuning voor TLS 1.2 is een update vereist. | Zie [Update voor het toevoegen van ondersteuning voor TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
-|Windows Vista | Niet ondersteund. | N.v.t.
+|Windows Vista | Niet ondersteund. | N.V.T.
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Controleren welke versie van OpenSSL uw Linux-distributie wordt uitgevoerd
 

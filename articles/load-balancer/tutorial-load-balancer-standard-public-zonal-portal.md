@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225175"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251893"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling van virtuele machines uitvoeren binnen een beschikbaarheidszone met Standard Load Balancer
 
@@ -63,18 +63,24 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
     |Beschikbaarheidszone| Selecteer **1**.    |
 3. Klik op het tabblad **Controleren + Maken** op **Maken**.   
 
-   ## <a name="create-backend-servers"></a>Back-endservers maken
+## <a name="create-backend-servers"></a>Back-endservers maken
 
 In deze sectie gaat u een virtueel netwerk maken. U gaat ook twee virtuele machines maken in dezelfde zone (namelijk in zone 1) voor de regio die aan de back-endpool van de load balancer wordt toegevoegd. Vervolgens installeert u IIS op de virtuele machines om de zone-redundante Load Balancer te testen. Als u dit op één virtuele machine mislukt, mislukt de statustest voor de virtuele machine in dezelfde regio. Verkeer blijft worden aangeleverd door andere virtuele machines binnen dezelfde regio.
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-1. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk** linksboven in het scherm.  Voer deze waarden in voor het virtuele netwerk:
-    - **myVnet** als de naam van het virtuele netwerk.
-    - **myResourceGroupZLB** als naam van de bestaande resourcegroep.
-    - **myBackendSubnet** als naam van het subnet.
-2. Selecteer **Maken** om het virtuele netwerk te maken.
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
 
-    ![Een virtueel netwerk maken](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
+
+| Parameter                   | Waarde                |
+|-----------------------------|----------------------|
+| **\<resource-group-name >**  | myResourceGroupZLB (bestaande resource groep selecteren) |
+| **\<virtuele-netwerk naam >** | myVNet          |
+| **\<regio-naam >**          | Europa -west      |
+| **> \<IPv4-adres ruimte**   | 10.0.0.0 \ 16          |
+| **\<subnet naam >**          | myBackendSubnet        |
+| **\<subnet-adres bereik >** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 

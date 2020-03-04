@@ -3,12 +3,12 @@ title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669791"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250784"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -128,7 +128,7 @@ Maak een nieuw. JSON-bestand: Bel het `template1.json` in dit voor beeld. Kopiee
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -320,16 +320,30 @@ Als u de eigenschappen van het dagelijks kapje wilt ophalen, gebruikt u de cmdle
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Gebruik dezelfde cmdlet om de eigenschappen van het dagelijks kapje in te stellen. Om bijvoorbeeld de Cap in te stellen op 300 GB/dag, 
+Gebruik dezelfde cmdlet om de eigenschappen van het dagelijks kapje in te stellen. Om bijvoorbeeld de Cap in te stellen op 300 GB/dag,
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+U kunt [ARMClient](https://github.com/projectkudu/ARMClient) ook gebruiken om dagelijkse Cap-para meters op te halen en in te stellen.  Als u de huidige waarden wilt ophalen, gebruikt u:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>De tijd voor het instellen van de dagelijkse limiet instellen
+
+Als u de tijd voor het opnieuw instellen van dagelijks Cap wilt instellen, kunt u [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken. Hier volgt een voor beeld van het gebruik van `ARMClient`om de tijd opnieuw in te stellen op een nieuw uur (in dit voor beeld 12:00 UTC):
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Het prijs plan instellen 
 
-Gebruik de cmdlet [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) om het huidige prijs plan op te halen: 
+Gebruik de cmdlet [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) om het huidige prijs plan op te halen:
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -350,19 +364,36 @@ U kunt ook het prijs plan op een bestaande Application Insights resource instell
                -appName myApp
 ```
 
+De `priceCode` is als volgt gedefinieerd:
+
 |priceCode|Fonds|
 |---|---|
 |1|Per GB (voorheen de naam van het Basic-abonnement)|
 |2|Per knoop punt (voorheen de naam van het bedrijfs plan)|
 
+Ten slotte kunt u [ARMClient](https://github.com/projectkudu/ARMClient) gebruiken om prijs plannen en dagelijkse Cap-para meters op te halen en in te stellen.  Als u de huidige waarden wilt ophalen, gebruikt u:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+En u kunt al deze para meters instellen met:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+Hiermee stelt u de dagelijkse limiet in op 200 GB per dag, configureert u de dagelijkse limiet voor het opnieuw instellen van 12:00 UTC, verzendt u e-mail berichten beide wanneer de limiet is bereikt, wordt het waarschuwings niveau bereikt en wordt de waarschuwings drempel ingesteld op 90% van de Cap.  
+
 ## <a name="add-a-metric-alert"></a>Een waarschuwing voor metrische gegevens toevoegen
 
-Raadpleeg het artikel over de [sjabloon metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert) voor het automatiseren van het maken van metrische waarschuwingen
+Als u het maken van metrische waarschuwingen wilt automatiseren, raadpleegt u het artikel over de [sjabloon metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>Een beschikbaarheids test toevoegen
 
-Raadpleeg het artikel over de [sjabloon metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)voor het automatiseren van beschikbaarheids testen.
+Als u beschikbaarheids testen wilt automatiseren, raadpleegt u het artikel over de [sjabloon metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>Meer resources toevoegen
 

@@ -4,14 +4,14 @@ description: Meer informatie over het inschakelen van verificatie op basis van i
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2020
+ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921552"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256066"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Active Directory authenticatie via SMB voor Azure-bestands shares inschakelen
 
@@ -62,13 +62,13 @@ Voordat u AD-verificatie voor Azure-bestands shares inschakelt, moet u ervoor zo
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Azure Files AD-verificatie (preview) is beschikbaar in de [meeste open bare regio's](https://azure.microsoft.com/global-infrastructure/regions/) , met uitzonde ring van:
+Azure Files AD-verificatie (preview) is beschikbaar in de [meeste open bare regio's](https://azure.microsoft.com/global-infrastructure/regions/).
 
+Azure Files AD-verificatie is niet beschikbaar in:
 - VS - west
 - VS - west 2
 - VS - oost
 - VS - oost 2
-- VS - zuid-centraal
 - Europa -west
 - Europa - noord
 
