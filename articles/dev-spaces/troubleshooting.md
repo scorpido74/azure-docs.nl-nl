@@ -1,16 +1,16 @@
 ---
-title: Problemen oplossen
+title: Probleemoplossing
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8eb7b07622a989bc78637b1601ba68b9b5f6f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197994"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251112"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -44,7 +44,7 @@ Gebruik de Azure dev Spaces CLI om een controller te verwijderen. Het is niet mo
 
 Als u de CLI van Azure dev Spaces niet hebt geïnstalleerd, kunt u deze eerst installeren met de volgende opdracht en vervolgens de controller verwijderen:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -80,8 +80,8 @@ U kunt dit probleem oplossen door [de Taint-configuratie](../aks/operator-best-p
 
 Het installatiepad van een update voor de Azure dev Space CLI is gewijzigd. Als u een eerdere versie van Azure CLI dan 2.0.63 gebruikt, wordt deze fout weer geven. Als u uw versie van de Azure CLI wilt weer geven, gebruikt u `az --version`.
 
-```bash
-$ az --version
+```azurecli
+az --version
 azure-cli                         2.0.60 *
 ...
 ```
@@ -223,7 +223,7 @@ In Visual Studio:
 
 U ontvangt een fout bericht dat de *service niet kan worden gestart* wanneer u een service opnieuw probeert uit te voeren nadat u de Azure dev Space-controller die is gekoppeld aan dit cluster hebt verwijderd en opnieuw hebt gemaakt. In dit geval bevat de uitgebreide uitvoer de volgende tekst:
 
-```cmd
+```output
 Installing Helm chart...
 Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
@@ -329,7 +329,7 @@ Dit probleem oplossen:
 1. Controleer de locatie% Program Files%/Microsoft SDKs\Azure\Azure dev Spaces CLI voor `azds.exe`. Als deze aanwezig is, moet u die locatie toevoegen aan de omgevingsvariabele PATH.
 2. Als `azds.exe` niet is geïnstalleerd, voert u de volgende opdracht uit:
 
-    ```cmd
+    ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
@@ -337,13 +337,13 @@ Dit probleem oplossen:
 
 U hebt toegang tot de *eigenaar* of *Inzender* nodig in uw Azure-abonnement voor het beheren van Azure dev Spaces. Als u ontwikkelaars ruimten wilt beheren en u geen *eigenaar* of *Inzender* toegang hebt tot het gekoppelde Azure-abonnement, ziet u mogelijk een autorisatie fout. Bijvoorbeeld:
 
-```console
+```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
 U kunt dit probleem oplossen door met een account met *eigenaar* of *Inzender* toegang te krijgen tot het Azure-abonnement, de `Microsoft.DevSpaces` naam ruimte hand matig te registreren:
 
-```console
+```azurecli
 az provider register --namespace Microsoft.DevSpaces
 ```
 
@@ -359,7 +359,7 @@ Dit probleem kan van invloed zijn op *alle naam ruimten* in het cluster, met inb
 
 U kunt dit probleem oplossen door [de ontwikkel ruimten cli bij te werken naar de meest recente versie](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) en vervolgens de *azds InitializerConfiguration* te verwijderen uit de Azure dev Spaces-controller:
 
-```bash
+```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
 kubectl delete InitializerConfiguration azds
 ```
@@ -456,9 +456,12 @@ Mogelijk hebt u een bestaand AKS-cluster en een bestaande naam ruimte met een Pe
 
 Als u Azure-ontwikkel ruimten wilt inschakelen voor een bestaande naam ruimte in een AKS-cluster, voert u `use-dev-spaces` uit en gebruikt u `kubectl` om alle peulen in die naam ruimte opnieuw te starten.
 
-```console
+```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+```
+
+```console
 kubectl -n my-namespace delete pod --all
 ```
 
