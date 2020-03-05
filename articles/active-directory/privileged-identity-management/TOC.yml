@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Waarschuwingen configureren
           href: pim-resource-roles-configure-alerts.md
-        - name: Activiteiten- en controlegeschiedenis weergeven
+        - name: Controlegeschiedenis weergeven
           href: azure-pim-resource-rbac.md
         - name: Aangepaste rollen gebruiken
           href: pim-resource-roles-custom-role-policy.md
