@@ -1,18 +1,18 @@
 ---
 title: Overzicht van ENTER prise Security in azure HDInsight
 description: Meer informatie over de verschillende methoden om ondernemings beveiliging in azure HDInsight te garanderen.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122107"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267708"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van ENTER prise Security in azure HDInsight
 
@@ -36,13 +36,13 @@ Alle clusters die zijn geïmplementeerd in een VNET, hebben ook een persoonlijk 
 
 De [Enterprise Security Package](apache-domain-joined-architecture.md) van HDInsight biedt op Active Directory gebaseerde verificatie, ondersteuning voor meerdere gebruikers en toegangs beheer op basis van rollen. De Active Directory integratie wordt bereikt door het gebruik van [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). Met deze mogelijkheden kunt u een HDInsight-cluster maken dat is gekoppeld aan een beheerd Active Directory domein. U kunt vervolgens een lijst met werk nemers configureren van de onderneming die zich kan verifiëren en aanmelden bij het cluster.
 
-Met deze instelling kunnen werk nemers van een onderneming zich met hun domein referenties aanmelden bij de cluster knooppunten. Ze kunnen ook hun domein referenties gebruiken om te verifiëren met andere goedgekeurde eind punten, zoals Apache Ambari views, ODBC, JDBC, Power shell en REST Api's om met het cluster te communiceren. 
+Met deze instelling kunnen werk nemers van een onderneming zich met hun domein referenties aanmelden bij de cluster knooppunten. Ze kunnen ook hun domein referenties gebruiken om te verifiëren met andere goedgekeurde eind punten, zoals Apache Ambari views, ODBC, JDBC, Power shell en REST Api's om met het cluster te communiceren.
 
 ### <a name="authorization"></a>Autorisatie
 
 Een best practice dat de meeste ondernemingen volgen, zorgt ervoor dat niet elke werk nemer toegang heeft tot alle bedrijfs resources. De beheerder kan ook op rollen gebaseerd toegangs beheer beleid definiëren voor de cluster resources. Dit is alleen beschikbaar in de ESP-clusters.
 
-De Hadoop-beheerder kan op rollen gebaseerd toegangs beheer (RBAC) configureren voor het beveiligen van Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) en [Kafka](apache-domain-joined-run-kafka.md) met behulp van deze invoeg toepassingen in Apache zwerver. Met het configureren van het RBAC-beleid kunt u machtigingen koppelen aan een rol in de organisatie. Deze laag van abstractie maakt het gemakkelijker om ervoor te zorgen dat personen alleen de machtigingen hebben die nodig zijn om hun werk verantwoordelijkheden uit te voeren. Daarnaast kunt u met zwerver de gegevens toegang van werk nemers en alle wijzigingen die worden uitgevoerd voor toegangs beheer beleid controleren.
+De Hadoop-beheerder kan op rollen gebaseerd toegangs beheer (RBAC) configureren voor het beveiligen van Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)en [Kafka](apache-domain-joined-run-kafka.md) met behulp van deze invoeg toepassingen in Apache zwerver. Met het configureren van het RBAC-beleid kunt u machtigingen koppelen aan een rol in de organisatie. Deze laag van abstractie maakt het gemakkelijker om ervoor te zorgen dat personen alleen de machtigingen hebben die nodig zijn om hun werk verantwoordelijkheden uit te voeren. Daarnaast kunt u met zwerver de gegevens toegang van werk nemers en alle wijzigingen die worden uitgevoerd voor toegangs beheer beleid controleren.
 
 De beheerder kan bijvoorbeeld [Apache Ranger](https://ranger.apache.org/) configureren om toegangscontrolebeleid in te stellen voor Hive. Deze functionaliteit zorgt ervoor dat filtering op rijniveau en op kolom niveau (gegevens maskering) wordt toegepast en de gevoelige gegevens van niet-geautoriseerde gebruikers worden gefilterd.
 
@@ -50,9 +50,9 @@ De beheerder kan bijvoorbeeld [Apache Ranger](https://ranger.apache.org/) config
 
 Controle van alle toegang tot de cluster bronnen en de gegevens is nodig voor het bijhouden van ongeoorloofde of onbedoelde toegang tot de resources. Het is net zo belang rijk als het beveiligen van de HDInsight-cluster resources van niet-geautoriseerde gebruikers en het beveiligen van de gegevens.
 
-De beheerder kan alle toegang tot de bronnen en gegevens van het HDInsight-cluster weer geven en rapporteren. De beheerder kan ook alle wijzigingen bekijken en rapporteren voor het toegangs beheer beleid dat is gemaakt in Apache zwerver ondersteunde eind punten. 
+De beheerder kan alle toegang tot de bronnen en gegevens van het HDInsight-cluster weer geven en rapporteren. De beheerder kan ook alle wijzigingen bekijken en rapporteren voor het toegangs beheer beleid dat is gemaakt in Apache zwerver ondersteunde eind punten.
 
-Om toegang te krijgen tot Apache zwerver en Ambari-audit logboeken en de logboeken voor SSH-toegang, [schakelt u Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) in en bekijkt u de tabellen die controle records bieden.
+Om toegang te krijgen tot Apache zwerver en Ambari-controle logboeken en SSH-toegangs logboeken, [schakelt u Azure monitor in](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) en bekijkt u de tabellen die controle records bieden.
 
 ### <a name="encryption"></a>Versleuteling
 
@@ -62,7 +62,7 @@ Zowel gegevens archieven voor HDInsight-clusters, Azure Blob-opslag als Azure Da
 
 ### <a name="compliance"></a>Naleving
 
-Nalevings aanbiedingen voor Azure zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, attesten, validaties, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke controle bedrijven van derden, evenals contractuele wijzigingen; zelf beoordelingen en documentatie voor klant richtlijnen die door micro soft zijn gemaakt. Zie het [vertrouwens centrum van micro soft](https://www.microsoft.com/trust-center) en het [overzicht van Microsoft Azure naleving](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)voor informatie over HDInsight-compatibiliteit.
+Nalevings aanbiedingen voor Azure zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, verklaringen, validaties, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke audit bedrijven van derden, contractuele wijzigingen; zelf beoordelingen en documentatie voor klant richtlijnen die door micro soft zijn gemaakt. Zie het [vertrouwens centrum van micro soft](https://www.microsoft.com/trust-center) en het [overzicht van Microsoft Azure naleving](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)voor informatie over HDInsight-compatibiliteit.
 
 ## <a name="shared-responsibility-model"></a>Model van gedeelde verantwoordelijkheid
 

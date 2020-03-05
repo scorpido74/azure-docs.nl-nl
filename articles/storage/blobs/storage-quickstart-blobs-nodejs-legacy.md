@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906469"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269504"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Quick Start: blobs beheren met Java script V10 toevoegen SDK in node. js
 
@@ -401,7 +401,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Alle gegevens die zijn geschreven naar de opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
+Alle gegevens die zijn geschreven naar het opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -409,4 +409,4 @@ In deze snelstart leert u hoe u met behulp van Node.js blobs en containers kunt 
 
 > [!div class="nextstepaction"]
 > [Azure Storage V10 toevoegen SDK voor Java script-bibliotheek](https://github.com/Azure/azure-storage-js)
-> [Azure Storage java script API-referentie](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> [Azure Storage java script API-referentie](/javascript/api/overview/azure/storage-overview)

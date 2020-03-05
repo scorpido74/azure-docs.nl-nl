@@ -1,20 +1,22 @@
 ---
-title: Java-en Maven gebruiken om een functie te publiceren in azure
-description: Een door HTTP geactiveerde functie maken en publiceren naar Azure met Java en Maven.
-author: rloutlaw
+title: Java-en Maven-Gradle gebruiken voor het publiceren van een functie in azure
+description: Een door HTTP geactiveerde functie maken en publiceren naar Azure met Java en Maven of Gradle.
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249584"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272738"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Snelstartgids: Java en Maven gebruiken om een functie te maken en te publiceren in azure
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Snelstartgids: Java en Maven/Gradle gebruiken om een functie te maken en te publiceren in azure
 
-In dit artikel leest u hoe u een Java-functie bouwt en publiceert op Azure Functions met het opdracht regel programma maven. Wanneer u klaar bent, wordt de functie code in azure uitgevoerd in een [hosting abonnement](functions-scale.md#consumption-plan) op de server en wordt geactiveerd door een HTTP-aanvraag.
+In dit artikel leest u hoe u een Java-functie bouwt en publiceert op Azure Functions met het opdracht regel programma maven/Gradle. Wanneer u klaar bent, wordt de functie code in azure uitgevoerd in een [hosting abonnement](functions-scale.md#consumption-plan) op de server en wordt geactiveerd door een HTTP-aanvraag.
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ In dit artikel leest u hoe u een Java-functie bouwt en publiceert op Azure Funct
 Als u functies wilt ontwikkelen met behulp van Java, moet het volgende zijn geïnstalleerd:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
-- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
 - [Azure CLI]
 - [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
+::: zone pivot="java-build-tools-maven" 
+- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/), versie 4,10 en hoger
+::: zone-end 
 
 U hebt ook een actief Azure-abonnement nodig. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ U hebt ook een actief Azure-abonnement nodig. [!INCLUDE [quickstarts-free-trial-
 > [!IMPORTANT]
 > De omgevingsvariabele JAVA_HOME moet zijn ingesteld op de installatielocatie van de JDK om deze quickstart te kunnen voltooien.
 
-## <a name="generate-a-new-functions-project"></a>Een nieuw Functions-project genereren
+## <a name="prepare-a-functions-project"></a>Een functie project voorbereiden
 
+::: zone pivot="java-build-tools-maven" 
 Voer in een lege map de volgende opdracht uit om het Functions-project te genereren op basis van een [Maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> Als u Power shell gebruikt, vergeet dan niet om para meters toe te voegen.
+
+> [!NOTE]
 > Als u problemen ondervindt met het uitvoeren van de opdracht, bekijkt u wat `maven-archetype-plugin`-versie wordt gebruikt. Omdat u de opdracht uitvoert in een lege map zonder `.pom`-bestand, probeert deze mogelijk een invoeg toepassing van de oudere versie te gebruiken van `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` als u uw maven hebt bijgewerkt op basis van een oudere versie. Als dit het geval is, verwijdert u de `maven-archetype-plugin` map en voert u de opdracht opnieuw uit.
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven vraagt u om de waarden die nodig zijn om het project te kunnen genereren tijdens de implementatie. Geef de volgende waarden op wanneer u hierom wordt gevraagd:
 
@@ -79,7 +73,35 @@ Maven vraagt u om de waarden die nodig zijn om het project te kunnen genereren t
 
 Typ `Y` of druk op ENTER om te bevestigen.
 
-Maven maakt de project bestanden in een nieuwe map met de naam _artifactId_, die in dit voor beeld is `fabrikam-functions`. 
+Maven maakt de project bestanden in een nieuwe map met de naam _artifactId_, die in dit voor beeld is `fabrikam-functions`. Voer de volgende opdracht uit om de map te wijzigen in de gemaakte projectmap.
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+Gebruik de volgende opdracht om het voorbeeld project te klonen:
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+Open `build.gradle` en wijzig de `appName` in de volgende sectie in een unieke naam om te voor komen dat er een conflict met de domein naam optreedt bij het implementeren naar Azure. 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 Open de nieuwe functie. java-bestand van het pad *src/main/Java* in een tekst editor en controleer de gegenereerde code. Deze code is een door [http geactiveerde](functions-bindings-http-webhook.md) functie die de hoofd tekst van de aanvraag echoert. 
 
@@ -88,15 +110,23 @@ Open de nieuwe functie. java-bestand van het pad *src/main/Java* in een tekst ed
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Voer de volgende opdracht uit, waarbij u de map wijzigt in de zojuist gemaakte projectmap en vervolgens het functie project bouwt en uitvoert:
+Voer de volgende opdracht uit om het functie project vervolgens uit te voeren:
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
 
-U ziet uitvoer als het volgende van Azure Functions Core Tools wanneer u het project lokaal uitvoert:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
+
+Wanneer u het project lokaal uitvoert, ziet u uitvoer als de Azure Functions Core Tools volgende:
 
 ```output
 ...
@@ -112,7 +142,7 @@ Http Functions:
 
 Activeer de functie vanaf de opdracht regel met behulp van krul in een nieuw terminal venster:
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > Als uw account toegang heeft tot meerdere abonnementen, gebruikt u [AZ account set](/cli/azure/account#az-account-set) om het standaard abonnement voor deze sessie in te stellen. 
 
-Gebruik de volgende maven-opdracht om uw project te implementeren in een nieuwe functie-app. 
+Gebruik de volgende opdracht om uw project te implementeren in een nieuwe functie-app. 
 
-```console
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-Met deze `azure-functions:deploy` maven-doel worden de volgende resources in azure gemaakt:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+Hiermee worden de volgende resources in azure gemaakt:
 
 + Resource groep. Met de naam van de _resourceGroup_ die u hebt opgegeven.
 + Opslag account. Vereist door-functies. De naam wordt wille keurig gegenereerd op basis van de vereisten van het opslag account.

@@ -1,14 +1,17 @@
 ---
 title: Uw Java-functie verbinden met Azure Storage
 description: Meer informatie over het verbinden van een door HTTP geactiveerde Java-functie naar Azure Storage met behulp van een uitvoer binding voor de wachtrij opslag.
+author: KarlErickson
+ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198544"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272806"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Uw Java-functie verbinden met Azure Storage
 
@@ -112,10 +115,19 @@ U bent nu klaar om de nieuwe uitvoer binding lokaal uit te proberen.
 
 Gebruik, net als voorheen, de volgende opdracht om het project te bouwen en de functions-runtime lokaal te starten:
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > Omdat u uitbreidings bundels in de host. json hebt ingeschakeld, is de [opslag bindings uitbreiding](functions-bindings-storage-blob.md#add-to-your-functions-app) tijdens het opstarten gedownload en geïnstalleerd, samen met de andere micro soft-bindings extensies.
@@ -138,9 +150,17 @@ Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij te bekijken en te contr
 
 Voer de volgende opdracht opnieuw uit om uw gepubliceerde app bij te werken:  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 U kunt ook krul gebruiken om de geïmplementeerde functie te testen. Geef, net als voorheen, de waarde `AzureFunctions` in de hoofd tekst van de POST-aanvraag naar de URL, zoals in dit voor beeld:
 

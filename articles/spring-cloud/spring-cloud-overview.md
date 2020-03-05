@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 11/4/2019
 ms.author: brendm
-ms.openlocfilehash: 87b7ac1e9de2087de6e0b9d72fb445ca515a2e32
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4426044b3608be0ded378f4f56cbec6bc1948d75
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277135"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273262"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Wat is Azure Spring Cloud?
 
@@ -39,7 +39,7 @@ Azure lente-Cloud ondersteunt Blue/groen-implementaties voor het vrijgeven en bi
 
 Azure lente Cloud biedt integratie met Azure DevOps met behulp van de Azure CLI.  Met Azure DevOps kunt u code integratie en implementatie automatiseren in uw lente-toepassing.  Ga naar dit [artikel](spring-cloud-howto-cicd.md)voor meer informatie.
 
-### <a name="scale-your-application"></a>Schaal aanpassen van uw toepassing
+### <a name="scale-your-application"></a>Uw toepassing schalen
 
 Met Azure lente Cloud kunt u eenvoudig de micro Services in uw Azure veer Cloud-dash board schalen.  Het aantal Vcpu's en de hoeveelheid geheugen die beschikbaar is voor uw micro Services kunnen omhoog of omlaag worden geschaald op basis van uw vereisten.  Schalen neemt in een paar seconden toe en vereist geen code wijzigingen of herimplementatie.  Voltooi deze [zelf studie](spring-cloud-tutorial-scale-manual.md)voor meer informatie.
 
@@ -47,7 +47,7 @@ Met Azure lente Cloud kunt u eenvoudig de micro Services in uw Azure veer Cloud-
 
 ### <a name="monitor-your-application-using-distributed-tracing-and-azure-app-insights"></a>Uw toepassing bewaken met gedistribueerde tracering en Azure-app inzichten
 
-Met de gedistribueerde traceer hulpprogramma's van de lente-Cloud kunnen ontwikkel aars de complexe interconnecties tussen micro Services in hun toepassing opsporen en bewaken.  Door de [Sleuth van veer Clouds](https://spring.io/projects/spring-cloud-sleuth) te integreren met de [Application Insights](../azure-monitor/insights/insights-overview.md)van Azure, biedt Azure krachtige functies voor gedistribueerde tracering rechtstreeks vanuit de Azure Portal.  Voltooi deze [zelf studie](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie.
+Met de gedistribueerde traceer hulpprogramma's van de lente-Cloud kunnen ontwikkel aars de complexe verbindingen tussen micro Services in een toepassing opsporen en bewaken.  Door de [Sleuth van veer Clouds](https://spring.io/projects/spring-cloud-sleuth) te integreren met de [Application Insights](../azure-monitor/insights/insights-overview.md)van Azure, biedt Azure krachtige functies voor gedistribueerde tracering rechtstreeks vanuit de Azure Portal.  Voltooi deze [zelf studie](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

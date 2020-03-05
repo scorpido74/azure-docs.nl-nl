@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f3621feb688b3b257cd4f685a9be306d75700f4a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443819"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273615"
 ---
 # <a name="what-is-azure-application-gateway"></a>Wat is Azure Application Gateway?
 
@@ -40,15 +40,15 @@ Application Gateway ondersteunt het beëindigen van SSL/TLS op de gateway, waarn
 
 ## <a name="autoscaling"></a>Automatisch schalen
 
-Application Gateway-of WAF-implementaties onder Standard_v2 of WAF_v2 SKU ondersteunen automatisch schalen en kunnen omhoog of omlaag worden geschaald op basis van het wijzigen van de verkeers laad patronen. Automatisch schalen heft ook de vereiste op om tijdens het inrichten een implementatiegrootte of het aantal instanties te kiezen. Zie [v2 SKU](application-gateway-autoscaling-zone-redundant.md)voor automatisch schalen voor meer informatie over de functies Application Gateway Standard_v2 en WAF_v2.
+Application Gateway Standard_v2 ondersteunt automatisch schalen en kan omhoog of omlaag worden geschaald op basis van het wijzigen van de verkeers laad patronen. Automatisch schalen heft ook de vereiste op om tijdens het inrichten een implementatiegrootte of het aantal instanties te kiezen. Zie [v2 SKU](application-gateway-autoscaling-zone-redundant.md)voor automatisch schalen voor meer informatie over de functies van Application Gateway Standard_v2.
 
 ## <a name="zone-redundancy"></a>Zone redundantie
 
-Een Application Gateway-of WAF-implementaties onder Standard_v2 of WAF_v2 SKU kan meerdere Beschikbaarheidszones omvatten, waardoor er betere fout tolerantie wordt geboden en de nood zaak voor het inrichten van afzonderlijke toepassings gateways in elke zone wordt verwijderd.
+Een Application Gateway Standard_v2 kan meerdere Beschikbaarheidszones omvatten, waardoor er betere fout tolerantie wordt geboden en de nood zaak voor het inrichten van afzonderlijke toepassings gateways in elke zone wordt verwijderd.
 
 ## <a name="static-vip"></a>Statisch VIP
 
-Het VIP van de toepassings gateway op Standard_v2 of WAF_v2 SKU ondersteunt alleen een statisch VIP-type. Dit zorgt ervoor dat het VIP dat is gekoppeld aan de toepassings gateway niet wordt gewijzigd, zelfs gedurende de levens duur van de Application Gateway.
+De Standard_v2 SKU van Application Gateway ondersteunt alleen statisch VIP-type. Dit zorgt ervoor dat het VIP dat is gekoppeld aan de toepassings gateway niet wordt gewijzigd, zelfs gedurende de levens duur van de Application Gateway.
 
 ## <a name="web-application-firewall"></a>Web Application Firewall
 
@@ -75,9 +75,9 @@ Zie [URL-based route ring met Application Gateway](https://docs.microsoft.com/az
 
 ## <a name="multiple-site-hosting"></a>Hosting van meerdere sites
 
-Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één Application Gateway, of 40 voor WAF (voor optimale prestaties). Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
+Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites aan één Application Gateway toe te voegen (voor optimale prestaties). Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
 
-Aanvragen voor `http://contoso.com` worden gerouteerd naar ContosoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
+Aanvragen voor `http://contoso.com` worden gerouteerd naar ContoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
 
 Op dezelfde manier kunnen twee subdomeinen van hetzelfde bovenliggende domein worden gehost op dezelfde implementatie van een toepassingsgateway. Voorbeelden van subdomeinen die worden gehost op één toepassingsgateway-implementatie, zijn `http://blog.contoso.com` en `http://app.contoso.com`.
 
@@ -135,9 +135,9 @@ Zie [HTTP-headers herschrijven](rewrite-http-headers.md)voor meer informatie.
 
 ## <a name="sizing"></a>Grootte aanpassen
 
-Application Gateway Standard_v2 en WAF_v2 SKU kunnen worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze Sku's bieden geen verschillende exemplaar grootten. Zie [v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing)voor automatisch schalen voor meer informatie over de prestaties en prijzen van v2.
+Application Gateway Standard_v2 kan worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze SKU biedt geen verschillende grootte van het exemplaar. Zie [v2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing)voor automatisch schalen voor meer informatie over de prestaties en prijzen van v2.
 
-De Application Gateway Standard-en WAF-SKU worden momenteel aangeboden in drie grootten: **klein**, **gemiddeld**en **groot**. Kleine exemplaargrootten zijn bedoeld voor het ontwikkelen en testen van scenario's.
+De Application Gateway standaard wordt aangeboden in drie grootten: **klein**, **gemiddeld**en **groot**. Kleine exemplaargrootten zijn bedoeld voor het ontwikkelen en testen van scenario's.
 
 Zie [Servicelimieten voor Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits) voor een volledige lijst van toepassingsgateway-limieten.
 
