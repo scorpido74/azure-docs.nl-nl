@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: Snelstartgids
   items:
-    - name: Portal
+    - name: Load balancer maken - Portal
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure CLI
+    - name: Load balancer maken - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: Load balancer maken - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Azure Resource Manager-sjabloon
+    - name: Load balancer maken - Sjabloon
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: Zelfstudies
   items:
     - name: Internetverkeer gelijkmatig verdelen over VM's
