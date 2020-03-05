@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148933"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274165"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(AFGESCHAFT) ACR met een DC/OS-cluster gebruiken om uw toepassing te implementeren
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 Zodra het register is gemaakt, voert de Azure CLI gegevens uit zoals de volgende. Noteer `name` en `loginServer`. Deze worden gebruikt in latere stappen.
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -93,7 +93,7 @@ FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.f
 
 Maak een SSH-verbinding met de master (of de eerste master) van uw op DC/OS gebaseerde cluster. Werk de gebruikersnaam bij als geen standaardwaarde is gebruikt bij het maken van het cluster.
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 Maak een gecomprimeerd bestand met de verificatiewaarden van het containerregister.
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 Kopieer dit bestand naar de gedeelde clusteropslag. In deze stap wordt het bestand beschikbaar gesteld op alle knooppunten van het DC/OS-cluster.
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ Maak vanuit een ontwikkelcomputer of een ander systeem waarop Docker is geïnsta
 
 Maak een container van de Ubuntu-installatiekopie.
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
-Leg de container nu vast in een nieuwe installatiekopie. De naam van de installatiekopie moet de `loginServer`-naam van het containerregister bevatten in de indeling `loginServer/imageName`.
+Leg de container nu vast in een nieuwe installatiekopie. De naam van de installatie kopie moet de `loginServer` naam van het container register bevatten met een notatie van `loginServer/imageName`.
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 Meld u aan bij Azure Container Registry. Vervang de naam door de naam van de aanmeldingsserver, vervang --username door de naam van het containerregister en vervang --password door een van de verstrekte wachtwoorden.
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 Ten slotte upload u de installatiekopie naar het ACR-register. In dit voorbeeld wordt een installatiekopie genaamd dcos-demo geüpload.
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,7 +189,7 @@ Als u een installatiekopie vanuit het ACR-register wilt gebruiken, maakt u een b
 
 Implementeer de toepassing met de DC/OC CLI.
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 

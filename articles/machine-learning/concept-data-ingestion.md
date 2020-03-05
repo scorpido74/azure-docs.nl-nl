@@ -10,19 +10,19 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652072"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268550"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Gegevens opname in Azure Machine Learning
 
 In dit artikel vindt u informatie over de voor-en nadelen van de volgende opties voor gegevens opname die beschikbaar zijn met Azure Machine Learning. 
 
 1. [Azure Data Factory](#use-azure-data-factory) pijp lijnen
-2. [Azure Machine Learning python-SDK](#use-the-python-sdk)
+2. [Python SDK voor Azure Machine Learning](#use-the-python-sdk)
 
 Gegevens opname is het proces waarin ongestructureerde gegevens worden geëxtraheerd uit een of meer bronnen en vervolgens worden voor bereid voor de trainings machine learning modellen. Het is ook tijdrovend, vooral als hand matig wordt gedaan, en als u grote hoeveel heden gegevens uit meerdere bronnen hebt. Als u deze inspanning automatiseert, worden bronnen vrijgemaakt en kunnen uw modellen de meest recente en toepasselijke gegevens gebruiken.
 
@@ -55,7 +55,7 @@ Deze stappen en het volgende diagram illustreren de werk stroom voor gegevens op
 
 ## <a name="use-the-python-sdk"></a>De python-SDK gebruiken 
 
-Met de [python-SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)kunt u gegevens opname taken opnemen in een [Azure machine learning pijplijn](how-to-create-your-first-pipeline.md) stap.
+Met de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml)kunt u gegevens opname taken opnemen in een [Azure machine learning pijplijn](how-to-create-your-first-pipeline.md) stap.
 
 In de volgende tabel vindt u een overzicht van de voor-en hand leidingen voor het gebruik van de SDK en een stap van ML-pijp lijnen voor gegevens opname taken.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196651"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269065"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -63,7 +63,7 @@ Sommige query opdrachten en-functies zijn in hun CPU-verbruik zwaar. Dit geldt m
 
 Deze functies verbruiken CPU in verhouding tot het aantal rijen dat wordt verwerkt. De meest efficiënte optimalisatie is het toevoegen van de voor waarden die zich voordoen in de query, waarmee zoveel mogelijk records kunnen worden gefilterd voordat de CPU-intensieve functie wordt uitgevoerd.
 
-De volgende query's produceren bijvoorbeeld precies hetzelfde resultaat, maar de tweede is op de meest efficiënte manier als [voor waarde voor]() het parseren van veel records uitsluiten:
+De volgende query's produceren bijvoorbeeld precies hetzelfde resultaat, maar de tweede is op de meest efficiënte manier als [voor waarde voor](/azure/kusto/query/whereoperator) het parseren van veel records uitsluiten:
 
 ```Kusto
 //less efficient

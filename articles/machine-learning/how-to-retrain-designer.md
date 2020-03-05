@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921590"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268504"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met Azure Machine Learning Designer (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om een eind punt voor de pijp lijn te verzenden van
 
 1. Selecteer de pijp lijn die u wilt uitvoeren.
 
-1. Selecteer **Uitvoeren**.
+1. Selecteer **Indienen**.
 
 1. In het dialoog venster Setup kunt u een nieuwe waarde voor het pad naar de invoer gegevens opgeven, die naar uw nieuwe gegevensset verwijst.
 
@@ -127,7 +127,9 @@ Voer de volgende stappen uit om een eind punt voor de pijp lijn te verzenden van
 
 ### <a name="submit-runs-with-code"></a>Uitvoeringen verzenden met code
 
-Er zijn meerdere manieren om toegang te krijgen tot uw REST-eind punt, afhankelijk van uw ontwikkel omgeving. U vindt code voorbeelden die laten zien hoe u pijplijn uitvoeringen kunt verzenden met para meters op het tabblad **verbruik** van de pijp lijn.
+U kunt het REST-eind punt van een gepubliceerde pijp lijn vinden in het deel venster Overzicht. Als u het eind punt aanroept, kunt u de gepubliceerde pijp lijn opnieuw trainen.
+
+Als u een REST-aanroep wilt uitvoeren, hebt u een OAuth 2,0 Bearer-type verificatie-header nodig. Raadpleeg de volgende [sectie zelf studie](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) voor meer informatie over het instellen van verificatie voor uw werk ruimte en het maken van een para meter rest-aanroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

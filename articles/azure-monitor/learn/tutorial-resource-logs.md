@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670403"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269192"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Zelf studie: resource logboeken verzamelen en analyseren vanuit een Azure-resource
 
@@ -46,7 +46,7 @@ Met een Log Analytics-werk ruimte in Azure Monitor worden logboek gegevens uit v
    - **Abonnement**: Selecteer het abonnement om de werk ruimte op te slaan. Dit hoeft niet hetzelfde abonnement te zijn als de resource die wordt bewaakt.
    - **Resource groep**: Selecteer een bestaande resource groep of klik op **Nieuw maken** om een nieuwe te maken. Dit hoeft niet dezelfde resource groep te zijn als de resource die wordt bewaakt.
    - **Locatie**: Selecteer een Azure-regio of maak een nieuwe. Dit hoeft niet dezelfde locatie te zijn als de bron die wordt bewaakt.
-   - **Prijs categorie**: Selecteer *gratis* , waardoor er 7 dagen aan gegevens worden bewaard. U kunt deze prijs categorie later wijzigen. Klik op de **log Analytics prijs** koppeling voor meer informatie over de verschillende prijs categorieën.
+   - **Prijs categorie**: Selecteer *betalen per gebruik* als prijs categorie. U kunt deze prijs categorie later wijzigen. Klik op de **log Analytics prijs** koppeling voor meer informatie over de verschillende prijs categorieën.
 
     ![Nieuwe werkruimte](media/tutorial-resource-logs/new-workspace.png)
 

@@ -2,18 +2,19 @@
 title: Advies Services voor Azure Marketplace en AppSource
 description: In dit artikel worden de geschiktheids criteria en de publicatie vereisten voor nieuwe consulting-service aanbiedingen in azure Marketplace beschreven.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191129"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268237"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Consulting Services voor Azure Marketplace en AppSource
 Consulting Services in azure Marketplace en AppSource biedt micro soft partners het doel om klanten met services te verbinden om hun gebruik van Azure-en bedrijfs doelstellingen te ondersteunen en uit te breiden. 
@@ -33,7 +34,7 @@ De Marketplace-winkel is afgestemd op doel groepen en micro soft-Cloud producten
 |In product ervaring      |Azure Management Portal|Dynamics 365, Office 365, Office-client-apps| 
 |Overige      |On-premises publicatie via Azure Stack, advies Services voor Azure, beheerde services voor Azure|Advies Services voor Dynamics en Power BI|
 
-Consulting Services-aanbiedingen die zijn gebaseerd op micro soft Dynamics 365 en Power BI komen in aanmerking voor de lijst op Microsoft AppSource. Zie [Microsoft AppSource richt lijnen voor advies Services](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)voor meer informatie. 
+Consulting Services-aanbiedingen die zijn gebaseerd op micro soft Dynamics 365, Power apps en Power BI komen in aanmerking voor de lijst op Microsoft AppSource. Zie [Microsoft AppSource richt lijnen voor advies Services](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)voor meer informatie.
 
 Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft Azure, komen in aanmerking voor de aanbieding op Azure Marketplace. Zie artikelen over [het publiceren van een Azure Consulting-Service](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) en [het publiceren van een managed services-aanbod voor Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)voor meer informatie.
 
@@ -61,24 +62,30 @@ Partners moeten beschikken over een **Silver-of Gold-competentie** in het releva
 
 |Primair product |Geschiktheids vereiste |
 |---------|---------|
-| Dynamics 365 for Customer Engagement    |   Competentie voor [klanten relatie beheer](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) van Silver of Gold Cloud.    | 
-|Dynamics 365 voor Financiën en bewerkingen, Enter prise Edition  |  Silver of Gold [Enter prise resource planning](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) competentie en een minimale omzet van $25K in Cloud bewerkingen tijdens de periode van 12 maanden.       |
-|Dynamics 365 voor Financiën en operationele activiteiten, Business Edition  |  Als [Cloud service provider (CSP)](https://partner.microsoft.com/cloud-solution-provider) of [digitale partner of record (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record) gebruiken voor ten minste één klant      |
-|Power BI, Power BI aangepaste visuele elementen | Voldoen aan de [partner criteria](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)van de oplossing.|
-|PowerApps | Een gepubliceerde [partner show case](https://appsource.microsoft.com/partners) -oplossing
+| Dynamics 365-verkoop <br> Dynamics 365-marketing <br> Dynamics 365-klanten service <br> Dynamics 365-veld Service <br> Dynamics 365 human resources |   Moet goud of zilver gecertificeerd zijn in de [Cloud Business Applications competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor de optie voor klant betrokkenheid.    | 
+| Dynamics 365-Financiën <br> Dynamics 365 Supply Chain Management <br> Dynamics 365 commerce <br> Dynamics 365 human resources <br> Dynamics 365 project Service Automation |  Moet goud of zilver gecertificeerd zijn in de [Cloud Business Applications competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor Unified Operations Option.       |
+| Dynamics 365 Customer Insights | Moet ten minste één geslaagde productie-implementatie van [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) met ten minste 5 metingen en vijf segmenten hebben. |
+| Dynamics 365 Business Central | Moet goud of zilver gecertificeerd zijn voor [ondernemings resource planning-competentie](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) en moet de Cloud solution provider zijn voor ten minste drie Business Central-klanten. <br> <br> OF <br> <br> Moet een [zakelijke centrale toepassing hebben gepubliceerd in AppSource](https://appsource.microsoft.com/) |
+| Power BI | Moeten worden vermeld op de [Power bi partner show case](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | Moet in aanmerking komen voor geavanceerde voor delen in het [PowerApps-partnerschaps programma](https://aka.ms/PowerAppsPartner). |
+
+Aanvullende bronnen en ondersteuning:
+
+1. [Microsoft Cloud-activerings Bureau](https://aka.ms/CEDnominate) <br> Het formulier partner Benoemings Bureau voor Cloud activering fungeert als hulp middel om een specialist van een Cloud programma te helpen bij het samen voegen van MPN-voor delen, en als richt lijn te fungeren als hand leiding voor het realiseren van vaardig heden.  
+2. Hoe kun je je weer geven in Power BI show case? <br> Als u een aanvraag indient om te worden weer gegeven, raadpleegt u [een partner worden](https://powerbi.microsoft.com/become-a-partner/).
 
 <b>Zie [competenties via Microsoft Partner Network](https://partner.microsoft.com/membership/competencies)voor meer informatie.</b>
- 
 
-**SI-partners kunnen consulting-service aanbiedingen verzenden voor de volgende 18 landen/regio's**
+**SI-partners kunnen advies-service aanbiedingen voor de volgende 21 landen/regio's verzenden**
 
-|In aanmerking komende landen/regio's |   |   |   |
+|   |   |   |   |
 |---------|----------|----------|----------|
-|Australië |Frankrijk  |     Mexico          |Spanje       |
-|België   |Duitsland |     Nederland     |Zweden       |
-|Canada    |India   |     Nieuw-Zeeland     |Verenigd Koninkrijk  |
-|Denemarken   |Italië   |     Noorwegen          |Verenigde Staten |
-|Finland   |Japan   |     Polen          
+| Australië | België | Canada | Denemarken |
+| Finland  | Frankrijk | Duitsland  | India   |
+| Italië    | Japan  |  Mexico  |  Nederland  |
+|  Nieuw-Zeeland  |  Noorwegen  |  Polen  | Zuid-Afrika |
+|  Spanje  | Zweden  | Zwitserland  |  Verenigde Staten  |
+| Verenigd Koninkrijk  |
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Registreren voor advies Services in azure Marketplace en AppSource

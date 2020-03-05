@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152122"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268712"
 ---
 # <a name="partition-and-sample-module"></a>Partitie en voorbeeld module
 
@@ -154,9 +154,9 @@ Deze optie wordt gebruikt wanneer u een gegevensset hebt onderverdeeld in meerde
 
 5. Als u met meerdere partities werkt, moet u extra exemplaren van de **partitie en voorbeeld** module toevoegen om elke partitie af te handelen.
 
-    U kunt bijvoorbeeld eerder gepartitioneerde patiënten in vier vouwen met leeftijd. Als u met elke afzonderlijke vouw wilt werken, hebt u vier kopieën van de **partitie en voorbeeld** module nodig en selecteert u een andere vouw, zoals hieronder wordt weer gegeven. Het is niet juist om de uitvoer van de functie **toewijzen aan vouwen** rechtstreeks te gebruiken.  
+    Bijvoorbeeld, de **partitie-en voorbeeld** module in de tweede rij is ingesteld om toe **te wijzen aan de vouwen**en de modules in de derde rij zijn ingesteld op **vouw vouwen**.   
 
-    [Partitie en voor beeld ![](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![Partitie en steekproef](./media/module/partition-and-sample.png)
 
 5. Voer de pijplijn uit.
 

@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589972"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271856"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-beveiligings basislijn voor HDInsight
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: essentiële webtoepassingen beveiligen
 
-**Richt lijnen**: niet beschikbaar; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
+**Richt lijnen**: niet van toepassing; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -125,7 +125,7 @@ IP-adressen van HDInsight-beheer: https://docs.microsoft.com/azure/hdinsight/hdi
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
 
-**Richt lijnen**: niet beschikbaar; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
+**Richt lijnen**: niet van toepassing; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -331,7 +331,7 @@ Een waarschuwing over logboek gegevens van log Analytics:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -491,7 +491,7 @@ Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Securit
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: gedeeld
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
@@ -779,7 +779,7 @@ Als u een abonnement op Rapid7, Qualys of een ander platform voor beveiligings p
 
 Rapid7 agent hand matig installeren:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 Qualys agent hand matig installeren:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Niet toegestane brontypen
 - Toegestane brontypen
 
-Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en).  Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
+Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - Niet toegestane brontypen
 - Toegestane brontypen
 
+
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.co
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: de mogelijkheid van gebruikers om scripts uit te voeren binnen reken bronnen beperken
 
-**Richt lijnen**: niet beschikbaar; Dit is niet van toepassing op Azure HDInsight als gebruikers (niet-beheerders) van het cluster geen toegang nodig hebben tot de afzonderlijke knoop punten om taken uit te voeren. De Cluster beheerder heeft toegang tot het hoofd niveau voor alle cluster knooppunten.
+**Richt lijnen**: niet van toepassing; Dit is niet van toepassing op Azure HDInsight als gebruikers (niet-beheerders) van het cluster geen toegang nodig hebben tot de afzonderlijke knoop punten om taken uit te voeren. De Cluster beheerder heeft toegang tot het hoofd niveau voor alle cluster knooppunten.
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
 
-**Richt lijnen**: niet beschikbaar; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
+**Richt lijnen**: niet van toepassing; Bench Mark is bedoeld voor Azure app service-of COMPUTE-resources die webtoepassingen hosten.
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Richt lijnen**: niet beschikbaar; aangepaste installatie kopieën zijn niet van toepassing op Azure HDInsight.
+**Richt lijnen**: niet van toepassing; aangepaste installatie kopieën zijn niet van toepassing op Azure HDInsight.
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Hulp**: Security Center wijst een Ernst toe aan waarschuwingen, zodat u de volg orde van de instructies voor elke waarschuwing kunt bepalen, zodat u meteen aan de voor waarde krijgt wanneer een bron is aangetast. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -1421,3 +1422,7 @@ U vindt hier meer informatie over de strategie van micro soft en de uitvoering v
 
 **Verantwoordelijkheid**: gedeeld
 
+## <a name="next-steps"></a>Volgende stappen
+
+- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

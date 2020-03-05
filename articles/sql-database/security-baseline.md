@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: dd9b82cbb2984386059988496c550123a8e67a3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589933"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273082"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure-beveiligings basislijn voor Azure SQL Database
 
@@ -122,12 +122,9 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
-**Hulp**: Advanced Threat Protection (ATP) is ingeschakeld voor Azure SQL database.  Gebruikers ontvangen een waarschuwing bij verdachte database activiteiten, potentiële kwetsbaar heden en SQL-injectie aanvallen, evenals afwijkende database toegang en query patronen. Geavanceerde bedreigingen beveiliging integreert ook waarschuwingen met Azure Security Center.
+**Hulp**: Schakel Advanced Threat Protection (ATP) in voor Azure SQL database.  Gebruikers ontvangen een waarschuwing bij verdachte database activiteiten, potentiële kwetsbaar heden en SQL-injectie aanvallen, evenals afwijkende database toegang en query patronen. Geavanceerde bedreigingen beveiliging integreert ook waarschuwingen met Azure Security Center.
 
-
-Advanced Threat Protection voor Azure SQL Database begrijpen en gebruiken:
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Advanced Threat Protection voor Azure SQL Database begrijpen en gebruiken: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure Security Center bewaking**: Ja
 
@@ -164,11 +161,14 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Hulp**: netwerk beveiligings configuraties voor uw Azure SQL database server-instanties definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities gebruiken die zijn ontworpen voor Azure SQL Database Server netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '
+**Hulp**: netwerk beveiligings configuraties voor uw Azure SQL database server-instanties definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities gebruiken die zijn ontworpen voor Azure SQL Database Server netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
+ 
 
 Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure resource management-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één definitie van de blauw druk. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
+
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Een Azure Blueprint maken: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Hulp**: gebruik Azure Active Directory beveiligings rapporten voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd.
 
+
+
 Gebruik Advanced Threat Protection voor Azure SQL Database om afwijkende activiteiten te detecteren die ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
 
-Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Geavanceerde beveiliging tegen bedreigingen en mogelijke waarschuwingen bekijken: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center:
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+Geavanceerde beveiliging tegen bedreigingen en mogelijke waarschuwingen bekijken:
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Azure Security Center bewaking**: Ja
@@ -473,6 +487,7 @@ Geavanceerde beveiliging tegen bedreigingen en mogelijke waarschuwingen bekijken
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure-resources alleen beheren vanaf goedgekeurde locaties
 
 **Richt lijnen**: Gebruik voorwaardelijke toegang met de naam locaties om toegang tot portal-en Azure-resource beheer toe te staan vanaf alleen specifieke logische groepen met IP-adresbereiken of landen/regio's.
+
 
 Benoemde locaties configureren in Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -714,7 +729,7 @@ Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -774,7 +789,7 @@ Een evaluatie rapport voor beveiligings problemen exporteren in Azure Security C
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: klant
 
@@ -796,11 +811,15 @@ Meer informatie over Azure Security Center beveiligde Score: https://docs.micros
 
 **Hulp**: Azure resource Graph gebruiken om alle resources (inclusief Azure SQL Server instances) in uw abonnement (en) te doorzoeken en te detecteren.  Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
 
+
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
+
 
 Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -812,7 +831,11 @@ Meer informatie over Azure RBAC: https://docs.microsoft.com/azure/role-based-acc
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+Tags maken en gebruiken:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -822,11 +845,23 @@ Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
-Aanvullende Azure-abonnementen maken: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Beheergroepen maken: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Tags maken en gebruiken: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Aanvullende Azure-abonnementen maken:
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+Beheergroepen maken:
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+Tags maken en gebruiken:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -894,6 +929,7 @@ Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governanc
 
 Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: klant
@@ -911,9 +947,7 @@ Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.co
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1152,7 +1186,7 @@ Meer informatie over back-ups en bedrijfs continuïteit met Azure SQL Server:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: gedeeld
 
@@ -1204,7 +1238,7 @@ Het inschakelen van zacht verwijderen in Key Vault:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -1292,7 +1326,7 @@ Werk stroom automatisering en Logic Apps configureren:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center bewaking**: momenteel niet beschikbaar
 
 **Verantwoordelijkheid**: klant
 
@@ -1314,3 +1348,7 @@ U vindt hier meer informatie over de strategie van micro soft en de uitvoering v
 
 **Verantwoordelijkheid**: gedeeld
 
+## <a name="next-steps"></a>Volgende stappen
+
+- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

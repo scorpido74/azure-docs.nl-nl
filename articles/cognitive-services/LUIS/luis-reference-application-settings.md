@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961778"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270802"
 ---
 # <a name="application-settings"></a>Toepassingsinstellingen
 
@@ -27,14 +27,14 @@ Deze toepassings instellingen worden opgeslagen in de [geëxporteerde](https://w
 |NormalizePunctuation|True|Hiermee verwijdert u interpunctie.|
 |NormalizeDiacritics|True|Diakritische tekens worden verwijderd.|
 
-## <a name="diacritics-normalization"></a>Normalisatie van diakritische tekens 
+## <a name="diacritics-normalization"></a>Normalisatie van diakritische tekens
 
 Schakel in de para meter `settings` utterance normalisatie voor diakritische tekens in voor het JSON-app-bestand van uw LUIS.
 
 ```JSON
 "settings": [
     {"name": "NormalizeDiacritics", "value": "true"}
-] 
+]
 ```
 
 In de volgende uitingen ziet u hoe diakritische tekens worden genormaliseerd uitingen:
@@ -61,7 +61,7 @@ In de volgende uitingen ziet u hoe diakritische tekens worden genormaliseerd uit
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
 #### <a name="dutch-nl-nl-diacritics"></a>Nederlandse `nl-nl` diakritische tekens
@@ -77,7 +77,7 @@ In de volgende uitingen ziet u hoe diakritische tekens worden genormaliseerd uit
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
@@ -91,24 +91,24 @@ Dit omvat zowel Franse als Canadese subcultuuren.
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
 #### <a name="german-de-de-diacritics"></a>Duitse `de-de` diakritische tekens
 
 |Diakritische tekens ingesteld op ONWAAR|Diakritische tekens ingesteld op True|
 |--|--|
 |`ä`|`a`|
-|`ö`|`o`| 
-|`ü`|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
 #### <a name="italian-it-it-diacritics"></a>Italiaans `it-it` diakritische tekens
 
@@ -117,11 +117,11 @@ Dit omvat zowel Franse als Canadese subcultuuren.
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó`|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -133,8 +133,8 @@ Dit omvat zowel de Spaanse als de Canadese Mexicaanse.
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó`|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
@@ -147,7 +147,7 @@ Schakel utterance normalisatie in voor interpunctie naar het JSON-app-bestand va
 ```JSON
 "settings": [
     {"name": "NormalizePunctuation", "value": "true"}
-] 
+]
 ```
 
 In de volgende uitingen ziet u hoe interpunctie gevolgen heeft voor uitingen:
@@ -163,8 +163,8 @@ De volgende interpunctie wordt verwijderd met `NormalizePunctuation` is ingestel
 
 |Leestekens|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|

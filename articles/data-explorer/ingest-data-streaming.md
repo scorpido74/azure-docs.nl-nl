@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921093"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270145"
 ---
 # <a name="streaming-ingestion-preview"></a>Stroom opname (preview-versie)
 
@@ -37,7 +37,7 @@ Gebruik de klassieke opname in (bulk) in plaats van het opnemen van opname wanne
  
     ![opname van streaming op](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. Definieer in de [webgebruikersinterface](https://dataexplorer.azure.com/)het [beleid](/azure/kusto/concepts/streamingingestionpolicy) voor het opnemen van gegevens stromen op tabel (len) of data base (s) die streaminggegevens zullen ontvangen. 
+1. Definieer in de [webgebruikersinterface](https://dataexplorer.azure.com/)het [beleid](/azure/kusto/management/streamingingestionpolicy) voor het opnemen van gegevens stromen op tabel (len) of data base (s) die streaminggegevens zullen ontvangen. 
 
     > [!NOTE]
     > * Als het beleid is gedefinieerd op database niveau, worden alle tabellen in de data base ingeschakeld voor streaming-opname.
@@ -63,7 +63,7 @@ Er zijn twee ondersteunde typen streaming-opname:
 > [!WARNING]
 > Het uitschakelen van streaming-opname kan enkele uren duren.
 
-1. Verwijder het beleid voor het opnemen van [streaming](/azure/kusto/concepts/streamingingestionpolicy) van alle relevante tabellen en data bases. Bij het verwijderen van het beleid voor het opnemen van inslikken wordt de gegevens verplaatsing van de eerste opslag gestreamd naar de permanente opslag in het kolom archief (afmetingen of Shards). De verplaatsing van gegevens kan een paar seconden tot enkele uren duren, afhankelijk van de hoeveelheid gegevens in de eerste opslag en hoe de CPU en het geheugen door het cluster wordt gebruikt.
+1. Verwijder het beleid voor het opnemen van [streaming](/azure/kusto/management/streamingingestionpolicy) van alle relevante tabellen en data bases. Bij het verwijderen van het beleid voor het opnemen van inslikken wordt de gegevens verplaatsing van de eerste opslag gestreamd naar de permanente opslag in het kolom archief (afmetingen of Shards). De verplaatsing van gegevens kan een paar seconden tot enkele uren duren, afhankelijk van de hoeveelheid gegevens in de eerste opslag en hoe de CPU en het geheugen door het cluster wordt gebruikt.
 1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster. Selecteer **configuraties**in **instellingen**. 
 1. Selecteer in het deel venster configuraties **uit** om het opnemen van **streaming**uit te scha kelen.
 1. Selecteer **Opslaan**.

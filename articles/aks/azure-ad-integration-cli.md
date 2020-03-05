@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de Azure CLI om een AKS-cluste
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596603"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273774"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integreren met de Azure Kubernetes-service met behulp van Azure CLI
 
@@ -27,9 +27,11 @@ De volgende beperkingen zijn van toepassing:
 
 U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
+Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
+
 Voor consistentie en het uitvoeren van de opdrachten in dit artikel maakt u een variabele voor de gewenste AKS-cluster naam. In het volgende voor beeld wordt de naam *myakscluster*gebruikt:
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 U ontvangt een aanmeldings prompt om te verifiëren met behulp van de Azure AD-referenties via een webbrowser. Nadat u bent geverifieerd, wordt de `kubectl` opdracht weer gegeven in het AKS-cluster, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ Het verificatie token dat voor `kubectl` is ontvangen, wordt in de cache opgesla
 
 Als er een autorisatie fout bericht wordt weer gegeven nadat u zich hebt aangemeld met een webbrowser, zoals in de volgende voorbeeld uitvoer, controleert u de volgende mogelijke problemen:
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

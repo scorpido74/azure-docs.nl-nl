@@ -8,25 +8,25 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933629"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270679"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Afgeschafte vooraf gemaakte entiteiten in een LUIS-app
 De volgende vooraf gemaakte entiteiten zijn afgeschaft en kunnen niet worden toegevoegd aan de nieuwe LUIS-apps.
 
-* **Datum tijd**: Bestaande LUIS-apps die gebruikmaken van **DateTime** , moeten worden gemigreerd naar **datetimeV2**, hoewel de datetime-entiteit blijft functioneren in reeds bestaande apps die deze gebruiken.
-* **Geografie**: Bestaande LUIS-apps die gebruikmaken van **geografie** , worden ondersteund tot december 2018.
-* **Encyclopedie**: Bestaande LUIS-apps die gebruikmaken van encyclopedie, worden ondersteund tot december 2018.
+* **DateTime**: bestaande Luis-apps die gebruikmaken van **DateTime** , moeten worden gemigreerd naar **datetimeV2**, hoewel de datetime-entiteit blijft functioneren in reeds bestaande apps die gebruikmaken van deze datum.
+* **Geografie**: bestaande Luis-apps die gebruikmaken van **geografie** , worden ondersteund tot december 2018.
+* **Encyclopedie**: bestaande Luis-apps die gebruikmaken van de **encyclopedie** , worden ondersteund tot december 2018.
 
 ## <a name="geography-culture"></a>Geografie cultuur
-**Geografie** is alleen beschikbaar in de `en-us` landinstelling.
+**Geografie** is alleen beschikbaar in de `en-us` land instelling.
 
 #### <a name="3-geography-subtypes"></a>3 Geografie subtypen
 
@@ -40,10 +40,10 @@ Vooraf gemaakte entiteiten   |   Voorbeeld van een utterance   |   JSON
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Encyclopedie cultuur
-**Encyclopedie** is alleen beschikbaar in de `en-US` landinstelling.
+De **encyclopedie** is alleen beschikbaar in de `en-US` land instelling.
 
 #### <a name="encyclopedia-subtypes"></a>Encyclopedie subtypen
-De ingebouwde invoeg entiteit van de encyclopedie omvat meer dan 100 subtypen in de volgende tabel: Daarnaast wijzen encyclopedie-entiteiten vaak toe aan meerdere typen. Bijvoorbeeld, de query Ronald Reagan levert: 
+Encyclopedie ingebouwde entiteit bevat meer dan 100 subtypen in de volgende tabel: bovendien encyclopedie entiteiten vaak worden toegewezen aan meerdere typen. Bijvoorbeeld, de query Ronald Reagan levert:
 
 ```json
 {
@@ -163,5 +163,5 @@ Vooraf gemaakte entiteiten   |   Vooraf gedefinieerde entiteit (subtypen)   |   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [dimensie](luis-reference-prebuilt-dimension.md), [e](luis-reference-prebuilt-email.md) entiteiten, en [nummer](luis-reference-prebuilt-number.md). 
+Meer informatie over de [dimensie](luis-reference-prebuilt-dimension.md), de [e-mail](luis-reference-prebuilt-email.md) entiteiten en het [aantal](luis-reference-prebuilt-number.md).
 

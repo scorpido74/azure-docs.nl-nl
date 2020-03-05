@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596637"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273757"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integreren met de Azure Kubernetes-service
 
@@ -42,7 +42,7 @@ De volgende beperkingen zijn van toepassing wanneer u Azure NetApp Files gebruik
 
 Registreer de resource provider *micro soft. NetApp* :
 
-```azure-cli
+```azurecli
 az provider register --namespace Microsoft.NetApp --wait
 ```
 
@@ -52,14 +52,16 @@ az provider register --namespace Microsoft.NetApp --wait
 Wanneer u een Azure NetApp-account maakt voor gebruik met AKS, moet u het account maken in de resource groep van het **knoop punt** . Haal eerst de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en voeg de para meter `--query nodeResourceGroup` query toe. In het volgende voor beeld wordt de resource groep node opgehaald voor het AKS-cluster met de naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
 
 ```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
 
+```output
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Maak een Azure NetApp Files-account in de **knooppunt** resource groep en dezelfde regio als uw AKS-cluster met behulp van [AZ netappfiles account create][az-netappfiles-account-create]. In het volgende voor beeld wordt een account gemaakt met de naam *MyAccount1* in de *MC_myResourceGroup_myAKSCluster_eastus* resource groep en regio *oostus* :
 
-```azure-cli
+```azurecli
 az netappfiles account create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -68,7 +70,7 @@ az netappfiles account create \
 
 Maak een nieuwe capaciteits pool met behulp van [AZ netappfiles pool Create][az-netappfiles-pool-create]. In het volgende voor beeld wordt een nieuwe capaciteits groep gemaakt met de naam *mypool1* met 4 TB op grootte en *Premium* -service niveau:
 
-```azure-cli
+```azurecli
 az netappfiles pool create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -80,7 +82,7 @@ az netappfiles pool create \
 
 Maak een subnet om [te delegeren naar Azure NetApp files][anf-delegate-subnet] met [AZ Network vnet subnet Create][az-network-vnet-subnet-create]. *Dit subnet moet zich in hetzelfde virtuele netwerk bevinden als uw AKS-cluster.*
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 VNET_NAME=$(az network vnet list --resource-group $RESOURCE_GROUP --query [].name -o tsv)
 VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -95,7 +97,7 @@ az network vnet subnet create \
 
 Maak een volume met behulp van [AZ netappfiles volume Create][az-netappfiles-volume-create].
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 LOCATION=eastus
 ANF_ACCOUNT_NAME=myaccount1
@@ -125,9 +127,12 @@ az netappfiles volume create \
 ## <a name="create-the-persistentvolume"></a>De PersistentVolume maken
 
 De details van uw volume [weer geven met AZ netappfiles volume show][az-netappfiles-volume-show]
-```azure-cli
-$ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
 
+```azurecli
+az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
+```
+
+```output
 {
   ...
   "creationToken": "myfilepath2",
@@ -245,7 +250,9 @@ Controleer of uw volume is gekoppeld in de Pod met behulp van [kubectl exec][kub
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
+```
 
+```output
 root@nginx-nfs:/# df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...

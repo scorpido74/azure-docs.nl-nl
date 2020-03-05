@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186817"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271885"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka
 
@@ -218,5 +218,5 @@ Ga als volgt te werk om de resourcegroep te verwijderen in Azure Portal:
 
 In dit document hebt u geleerd hoe u de Producer- en Consumer-API's van Apache Kafka gebruikt met Kafka in HDInsight. Gebruik de volgende documenten voor meer informatie over het werken met Kafka:
 
-> [!div class="nextstepaction"]
-> [Apache Kafka-logboeken analyseren](apache-kafka-log-analytics-operations-management.md)
+* [Kafka REST-proxy gebruiken](rest-proxy.md)
+* [Apache Kafka-logboeken analyseren](apache-kafka-log-analytics-operations-management.md)

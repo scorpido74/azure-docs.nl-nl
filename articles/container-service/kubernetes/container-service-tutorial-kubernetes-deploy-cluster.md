@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275444"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274009"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(AFGESCHAFT) Een Kubernetes-cluster implementeren in Azure Container Service
 
@@ -40,7 +40,7 @@ Maak een Kubernetes-cluster in Azure Container Service met de opdracht [az acs c
 
 In het volgende voorbeeld wordt een cluster genaamd `myK8sCluster` gemaakt in de resourcegroep genaamd `myResourceGroup`. Deze resourcegroep is gemaakt in de [vorige zelfstudie](./container-service-tutorial-kubernetes-prepare-acr.md).
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
@@ -52,11 +52,11 @@ Na enkele minuten is de implementatie voltooid en retourneert json opgemaakte in
 
 Gebruik [kubectl](https://kubernetes.io/docs/user-guide/kubectl/), de Kubernetes-opdrachtregelclient, als u vanaf uw clientcomputer verbinding wilt maken met het Kubernetes-cluster. 
 
-Als u Azure CloudShell gebruikt, is kubectl al geïnstalleerd. Als u het lokaal wilt installeren, gebruikt u de opdracht [az acs kubernetes install-cli](/cli/azure/acs/kubernetes).
+Als u Azure Cloud Shell gebruikt, is kubectl al geïnstalleerd. Als u het lokaal wilt installeren, gebruikt u de opdracht [az acs kubernetes install-cli](/cli/azure/acs/kubernetes).
 
 Als u werkt in Linux of Mac OS, moet u het mogelijk uitvoeren met sudo. In Windows moet u ervoor zorgen dat uw shell wordt uitgevoerd als administrator.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes install-cli 
 ```
 
@@ -66,19 +66,19 @@ In Windows is de standaardinstallatie *c:\program files (x86)\kubectl.exe*. Moge
 
 Als u kubectl zo wilt configureren dat de client verbinding maakt met uw Kubernetes-cluster, voert u de opdracht [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) uit.
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 Als u de verbinding met uw cluster wilt controleren, voert u de opdracht [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) uit.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Uitvoer:
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-98dc3136-0    Ready                      5m        v1.6.2
 k8s-agent-98dc3136-1    Ready                      5m        v1.6.2

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249798"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273652"
 ---
 # <a name="runbook-input-parameters"></a>Invoerparameters voor runbook
 
@@ -148,19 +148,19 @@ In het label onder het invoervak ziet u de eigenschappen die zijn ingesteld om p
 * **Azure Resource Manager-cmdlets:** U kunt een Automation-runbook dat is gemaakt in een resource groep starten met behulp van [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 ).
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Cmdlets voor het klassieke Azure-implementatie model:** U kunt een Automation-runbook dat is gemaakt in een standaard resource groep starten met behulp van [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > Wanneer u een runbook start met behulp van Power shell-cmdlets, wordt een standaard parameter, *MicrosoftApplicationManagementStartedBy*, gemaakt met de waarde **Power shell**. U kunt deze para meter weer geven in het deel venster taak Details.  
@@ -169,7 +169,7 @@ In het label onder het invoervak ziet u de eigenschappen die zijn ingesteld om p
 
 * **Azure Resource Manager methode:** U kunt een runbook starten met de SDK van een programmeer taal. Hieronder vindt u C# een code fragment voor het starten van een runbook in uw Automation-account. U kunt alle code in onze github- [opslag plaats](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)bekijken.  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ In het label onder het invoervak ziet u de eigenschappen die zijn ingesteld om p
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Methode voor het klassieke Azure-implementatie model:** U kunt een runbook starten met behulp van de SDK van een programmeer taal. Hieronder vindt u C# een code fragment voor het starten van een runbook in uw Automation-account. U kunt alle code in onze github- [opslag plaats](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)bekijken.
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ In het label onder het invoervak ziet u de eigenschappen die zijn ingesteld om p
        });
       return response.Job;
     }
-  ```
+   ```
 
-  U kunt deze methode starten door een woorden boek te maken voor het opslaan van de runbook-para meters *VMName* en *resourceGroupName* en hun waarden. Start vervolgens het runbook. Hieronder ziet u C# het code fragment voor het aanroepen van de hierboven gedefinieerde methode.
+   U kunt deze methode starten door een woorden boek te maken voor het opslaan van de runbook-para meters *VMName* en *resourceGroupName* en hun waarden. Start vervolgens het runbook. Hieronder ziet u C# het code fragment voor het aanroepen van de hierboven gedefinieerde methode.
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Een runbook starten met de para meters REST API en Assign
 
@@ -238,7 +238,7 @@ Als u para meters wilt door geven aan de runbook-taak, gebruikt u de hoofd tekst
 
 Als u het eerder gemaakte **Get-AzureVMTextual-** runbook wilt starten met *VMName* en *resourceGroupName* als para meters, gebruikt u de volgende JSON-indeling voor de hoofd tekst van de aanvraag.
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Als u het eerder gemaakte **Get-AzureVMTextual-** runbook wilt starten met *VMNa
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 Er wordt een HTTP-status code 201 geretourneerd als de taak is gemaakt. Zie [een runbook-taak maken met behulp van de rest API](/rest/api/automation/job/create)voor meer informatie over antwoord headers en de antwoord tekst.
 
@@ -330,7 +330,7 @@ Nu kunt u het runbook aanroepen vanaf uw lokale computer met behulp van Azure Po
     >[!NOTE]
     >Voor Power shell-runbooks zijn **add-AzAccount** en **add-AzureRMAccount** aliassen voor **Connect-AzAccount**. Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor grafische runbooks. Een grafisch runbook kan alleen **Connect-AzAccount** gebruiken.
 
-2. De inhoud van het opgeslagen JSON-bestand ophalen en converteren naar een teken reeks. `JsonPath` is het pad waar u het JSON-bestand hebt opgeslagen.
+1. De inhoud van het opgeslagen JSON-bestand ophalen en converteren naar een teken reeks. `JsonPath` is het pad waar u het JSON-bestand hebt opgeslagen.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Nu kunt u het runbook aanroepen vanaf uw lokale computer met behulp van Azure Po
    ```
 
    U ziet dat u de waarde van *para meters* instelt op het Power shell-object dat de waarden uit het JSON-bestand bevat.
-1. Het runbook starten
+1. Start het runbook.
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

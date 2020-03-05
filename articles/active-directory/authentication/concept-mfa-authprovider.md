@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43a620d32fcfa7970dbdb5bee9740cc8f8b33e50
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155126"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269388"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Wanneer een Azure Multi-Factor Authentication provider gebruiken?
 
@@ -41,7 +41,7 @@ U kunt het gebruiksmodel (per ingeschakelde gebruiker of per verificatie) niet w
 
 Als u voldoende licenties hebt aangeschaft voor alle gebruikers die zijn ingeschakeld voor MFA, kunt u de MFA-provider helemaal verwijderen.
 
-Als de MFA-provider niet is gekoppeld aan een Azure AD-tenant, of als u de nieuwe MFA-provider koppelt aan een andere Azure AD-tenant, worden de gebruikersinstellingen en configuratieopties niet overgedragen. Daarnaast moeten bestaande Azure MFA-servers opnieuw worden geactiveerd met behulp van activerings referenties die zijn gegenereerd via de MFA-provider. Het opnieuw activeren van de MFA-servers om deze te koppelen aan de MFA-provider is niet van invloed op telefoon gesprekken en SMS-berichten, maar de meldingen voor mobiele apps werken niet meer voor alle gebruikers totdat ze de mobiele app opnieuw activeren.
+Als de MFA-provider niet is gekoppeld aan een Azure AD-tenant, of als u de nieuwe MFA-provider koppelt aan een andere Azure AD-tenant, worden de gebruikersinstellingen en configuratieopties niet overgedragen. Daarnaast moeten bestaande Azure MFA-servers opnieuw worden geactiveerd met behulp van activerings referenties die zijn gegenereerd via de MFA-provider.
 
 ### <a name="removing-an-authentication-provider"></a>Een verificatie provider verwijderen
 

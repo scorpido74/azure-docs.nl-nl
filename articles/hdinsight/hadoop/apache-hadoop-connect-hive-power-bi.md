@@ -1,20 +1,19 @@
 ---
 title: Apache Hive gegevens visualiseren met Power BI-Azure HDInsight
 description: Meer informatie over het gebruik van micro soft Power BI voor het visualiseren van Hive-gegevens die worden verwerkt door Azure HDInsight.
-keywords: hdinsight, Hadoop, Hive, Interactive query, Interactive Hive, LLAP, ODBC
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/02/2020
+ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529528"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267800"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Apache Hive gegevens visualiseren met micro soft Power BI met behulp van ODBC in azure HDInsight
 
@@ -33,9 +32,9 @@ De informatie is ook van toepassing op het nieuwe type [interactieve query](../i
 
 Voordat u dit artikel gaat passeren, hebt u de volgende items nodig:
 
-* **HDInsight-cluster**. Het cluster kan een HDInsight-cluster met hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](apache-hadoop-linux-tutorial-get-started.md#create-cluster)voor meer informatie over het maken van clusters.
+* HDInsight-cluster. Het cluster kan een HDInsight-cluster met hive of een nieuw, vrijgegeven interactief query cluster zijn. Zie [cluster maken](apache-hadoop-linux-tutorial-get-started.md#create-cluster)voor meer informatie over het maken van clusters.
 
-* **[Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/)** . U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
+* [Micro soft power bi Desktop](https://powerbi.microsoft.com/desktop/). U kunt een kopie downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-gegevensbron maken
 
@@ -47,7 +46,7 @@ De **hivesampletable** -Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 1. Start Power BI Desktop.
 
-1. Ga in het bovenste menu naar **start**  > **gegevens ophalen**  > **meer...** .
+1. Ga in het bovenste menu naar **start** > **gegevens ophalen** > **meer...** .
 
     ![HDInsight Excel Power BI gegevens openen](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 

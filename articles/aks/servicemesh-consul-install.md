@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 06ca2327b2859ffb0f5b314d7b92082d5a83dc48
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594242"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273738"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Consul installeren en gebruiken in azure Kubernetes service (AKS)
 
@@ -51,7 +51,7 @@ We beginnen met het downloaden van versie `v0.10.0` van het consul helm-diagram.
 
 ::: zone pivot="client-operating-system-macos"
 
-[!INCLUDE [MacOS - download](includes/servicemesh/consul/download-bash.md)]
+[!INCLUDE [macOS - download](includes/servicemesh/consul/download-bash.md)]
 
 ::: zone-end
 
@@ -109,7 +109,7 @@ kubectl get pod --namespace consul --output wide
 
 In de volgende voorbeeld uitvoer ziet u de services en het Peul (gepland op Linux-knoop punten) die nu moeten worden uitgevoerd:
 
-```console
+```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
 consul                               ExternalName   <none>        consul.service.consul   <none>                                                                    38s     <none>
 consul-consul-connect-injector-svc   ClusterIP      10.0.98.102   <none>                  443/TCP                                                                   3m26s   app=consul,component=connect-injector,release=consul
@@ -134,7 +134,7 @@ Alle peulen moeten de status van `Running`weer geven. Als uw peul niet over deze
 
 De consul-gebruikers interface is in onze installatie hierboven geïnstalleerd en biedt configuratie op basis van de gebruikers interface voor consul. De gebruikers interface voor consul wordt niet openbaar weer gegeven via een extern IP-adres. Als u toegang wilt krijgen tot de consul-gebruikers interface, gebruikt u de opdracht [kubectl-doorstuur poort][kubectl-port-forward] . Met deze opdracht maakt u een beveiligde verbinding tussen uw client computer en de relevante pod in uw AKS-cluster.
 
-```azurecli
+```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
@@ -151,7 +151,7 @@ U kunt nu een browser openen en deze naar `http://localhost:8080/ui` verwijzen o
 
 Gebruik de volgende opdrachten om consul te verwijderen uit uw AKS-cluster. Met de `helm delete` opdrachten wordt de `consul` grafiek verwijderd en met de `kubectl delete namespace` opdracht wordt de `consul` naam ruimte verwijderd.
 
-```azurecli
+```console
 helm delete --purge consul
 kubectl delete namespace consul
 ```

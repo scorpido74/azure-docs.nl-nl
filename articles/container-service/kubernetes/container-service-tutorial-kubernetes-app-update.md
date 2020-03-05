@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275549"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274133"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(VEROUDERD) Een toepassing bijwerken in Kubernetes
 
@@ -53,7 +53,7 @@ vi azure-vote/azure-vote/config_file.cfg
 
 Wijzig de waarden voor `VOTE1VALUE` en `VOTE2VALUE` en sla het bestand op.
 
-```bash
+```plaintext
 # UI Configurations
 TITLE = 'Azure Voting App'
 VOTE1VALUE = 'Blue'
@@ -87,13 +87,13 @@ Haal de naam van de aanmeldingsserver op met de opdracht [az acr list](/cli/azur
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om de installatiekopie te taggen. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van Azure Container Registry of de hostnaam van een openbaar register. Merk op dat de versie van de installatiekopie is bijgewerkt naar `redis-v2`.
+Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om de installatiekopie te taggen. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van uw Azure Container Registry of de hostnaam van een openbaar register. Merk op dat de versie van de installatiekopie is bijgewerkt naar `redis-v2`.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Gebruik [docker push](https://docs.docker.com/engine/reference/commandline/push/) om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van Azure Container Registry.
+Gebruik [docker push](https://docs.docker.com/engine/reference/commandline/push/) om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van uw Azure Container Registry.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -109,7 +109,7 @@ kubectl get pod
 
 Uitvoer:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-217588096-5w632    1/1       Running   0          10m
 azure-vote-front-233282510-b5pkz   1/1       Running   0          10m
@@ -120,25 +120,25 @@ azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 Als er niet meerdere schillen zijn waarin de installatiekopie azure-vote-front wordt uitgevoerd, schaalt u de `azure-vote-front`-implementatie.
 
 
-```azurecli-interactive
+```bash
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Gebruik de opdracht [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) om de toepassing bij te werken. Werk `<acrLoginServer>` bij met de aanmeldingserver of hostnaam van uw containerregister.
+Gebruik de opdracht [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set) om de toepassing bij te werken. Werk `<acrLoginServer>` bij met de aanmeldingsserver of hostnaam van uw containerregister.
 
-```azurecli-interactive
+```bash
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
 Voor het controleren van de implementatie gebruikt u de opdracht [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get). Terwijl de bijgewerkte toepassing wordt geïmplementeerd, worden uw schillen beëindigd en opnieuw gemaakt met de nieuwe containerinstallatiekopie.
 
-```azurecli-interactive
+```bash
 kubectl get pod
 ```
 
 Uitvoer:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2978095810-gq9g0   1/1       Running   0          5m
 azure-vote-front-1297194256-tpjlg   1/1       Running   0         1m
@@ -150,7 +150,7 @@ azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
 
 Haal het externe IP-adres van de service `azure-vote-front` op.
 
-```azurecli-interactive
+```bash
 kubectl get service azure-vote-front
 ```
 
@@ -168,7 +168,7 @@ In deze zelfstudie hebt u een toepassing bijgewerkt en deze update geïmplemente
 > * De containerinstallatiekopie is gepusht naar Azure Container Registry
 > * De bijgewerkte toepassing is geïmplementeerd
 
-Ga naar de volgende zelfstudie om te leren hoe u Kubernetes controleert met Log Analytics.
+Ga naar de volgende zelfstudie om te leren hoe u Kubernetes bewaakt met Log Analytics.
 
 > [!div class="nextstepaction"]
 > [Kubernetes bewaken met Log Analystics](./container-service-tutorial-kubernetes-monitor.md)

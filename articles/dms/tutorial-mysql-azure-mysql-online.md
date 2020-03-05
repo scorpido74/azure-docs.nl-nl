@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: e0a2c9f4dd229353ef3d4dc06f7bb965d15814d9
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 50787a5bbfdc9baddfa4307247e8b505be6e3003
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255558"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273244"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Zelfstudie: MySQL online migreren naar Azure Database for MySQL met behulp van DMS
 
@@ -224,6 +224,8 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
     Als de doel database dezelfde database naam als de bron database bevat Azure Database Migration Service de doel database standaard geselecteerd.
 
     ![Toewijzen aan doeldatabases](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
+   > [!NOTE] 
+   > Hoewel u in deze stap meerdere data bases kunt selecteren, ondersteunt elk exemplaar van Azure Database Migration Service Maxi maal vier data bases voor gelijktijdige migratie. Er geldt ook een limiet van twee exemplaren van Azure Database Migration Service per regio in een abonnement. Als u bijvoorbeeld 40-data bases hebt om te migreren, kunt u alleen acht gelijktijdig migreren en alleen als u twee exemplaren van Azure Database Migration Service hebt gemaakt.
 
 3. Selecteer **Opslaan**, geef in het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit en controleer het overzicht om ervoor te zorgen dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
 

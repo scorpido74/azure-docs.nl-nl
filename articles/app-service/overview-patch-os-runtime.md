@@ -4,12 +4,12 @@ description: Meer informatie over hoe Azure App Service het besturings systeem e
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846256"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273624"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
 
@@ -51,7 +51,7 @@ Runtime-updates en afschaffing worden hier aangekondigd:
 
 ### <a name="new-patch-updates"></a>Nieuwe patch updates
 
-Patch-updates voor .NET, PHP, Java SDK of Tomcat/jetty-versie worden automatisch toegepast door de bestaande installatie te overschrijven met de nieuwe versie. Updates voor node. js-patches worden naast de bestaande versies geïnstalleerd (vergelijkbaar met de primaire en secundaire versies in de volgende sectie). Nieuwe python-patch versies kunnen hand matig worden geïnstalleerd via [site-extensies](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)), naast de ingebouwde python-installaties.
+Patch-updates voor .NET, PHP, Java SDK of Tomcat/jetty-versie worden automatisch toegepast door de bestaande installatie te overschrijven met de nieuwe versie. Updates voor node. js-patches worden naast de bestaande versies geïnstalleerd (vergelijkbaar met de primaire en secundaire versies in de volgende sectie). Nieuwe python-patch versies kunnen hand matig worden geïnstalleerd via [site-extensies](https://azure.microsoft.com/blog/azure-web-sites-extensions/), naast de ingebouwde python-installaties.
 
 ### <a name="new-major-and-minor-versions"></a>Nieuwe primaire en secundaire versies
 
@@ -90,7 +90,7 @@ In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden
 >
 >
 
-## <a name="more-resources"></a>Meer informatiebronnen
+## <a name="more-resources"></a>Meer bronnen
 
 [Vertrouwens centrum: beveiliging](https://www.microsoft.com/en-us/trustcenter/security)  
 [64-bits ASP.NET Core op Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

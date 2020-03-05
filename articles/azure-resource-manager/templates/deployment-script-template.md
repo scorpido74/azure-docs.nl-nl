@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.author: jgao
-ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3129d4c664ec487f2def6cc0d2668b7493f4c988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616301"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272647"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -222,10 +222,16 @@ Uitvoer van het implementatie script moet worden opgeslagen op de AZ_SCRIPTS_OUT
 
 [JQ](https://stedolan.github.io/jq/) wordt in het vorige voor beeld gebruikt. Het wordt geleverd met de container installatie kopieën. Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
-## <a name="handle-non-terminating-errors"></a>Niet-afsluit fouten verwerken
+## <a name="develop-deployment-scripts"></a>Implementatie scripts ontwikkelen
+
+### <a name="handle-non-terminating-errors"></a>Niet-afsluit fouten verwerken
 
 U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 ) variabele in uw implementatie script. De engine van de implementatie script kan de waarde niet instellen of wijzigen.  Ondanks de waarde die u hebt ingesteld voor $ErrorActionPreference, stelt het implementatie script de inrichtings status van de resource in op *mislukt* als er een fout optreedt in het script.
+
+### <a name="pass-secured-strings-to-deployment-script"></a>Beveiligde teken reeksen door geven aan implementatie script
+
+Als omgevings variabelen in uw container instanties worden ingesteld, kunt u dynamische configuratie van de toepassing of het script dat door de container wordt uitgevoerd. Met het implementatie script worden niet-beveiligde en beveiligde omgevings variabelen op dezelfde manier verwerkt als Azure container instance. Zie [omgevings variabelen instellen in container instanties](../../container-instances/container-instances-environment-variables.md#secure-values)voor meer informatie.
 
 ## <a name="debug-deployment-scripts"></a>Fout opsporing voor implementatie scripts
 

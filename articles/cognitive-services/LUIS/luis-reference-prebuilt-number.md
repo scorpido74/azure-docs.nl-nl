@@ -1,34 +1,34 @@
 ---
 title: Aantal vooraf samengestelde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat informatie over het aantal vooraf gedefinieerde entiteits gegevens in Language Understanding (LUIS).
+description: In dit artikel bevat een aantal vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 6a59cf83b3912e31b8aae67319902ce516519af8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491300"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273468"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Aantal vooraf samengestelde entiteiten voor een LUIS-app
-Er zijn veel manieren waarop numerieke waarden worden gebruikt om stukjes informatie te kwantificeren, in te delen en te beschrijven. In dit artikel komen alleen enkele van de mogelijke voor beelden aan bod. LUIS interpreteert de variaties in gebruikers uitingen en retourneert consistente numerieke waarden. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een nummer toe te voegen aan de toepassings intentie. 
+Er zijn veel manieren waarin numerieke waarden te kwantificeren, express en beschrijven stukjes informatie worden gebruikt. Dit artikel behandelt alleen enkele van de mogelijke voorbeelden. LUIS interpreteert de variaties faciliteren voor de gebruiker uitingen en consistente numerieke waarden als resultaat. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen voorbeeld uitingen met getal tot de toepassing intents.
 
-## <a name="types-of-number"></a>Typen nummer
+## <a name="types-of-number"></a>Typen van getal
 Nummer wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) github
 
-## <a name="examples-of-number-resolution"></a>Voor beelden van nummer omzetting
+## <a name="examples-of-number-resolution"></a>Voorbeelden van het aantal resolutie
 
-| Utterance        | Entiteit   | Resolutie |
+| Utterance        | Entiteit   | Oplossing |
 | ------------- |:----------------:| --------------:|
-| ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
+| ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      |
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
 | ```1/2 cup```         | ```"1 / 2"```    |    ```"0.5"```      |
 |  ```one half the amount```     | ```"one half"```     |    ```"0.5"```      |
@@ -40,13 +40,13 @@ Nummer wordt beheerd vanuit de map [recognizers-text](https://github.com/Microso
 
 LUIS bevat de herkende waarde van een **`builtin.number`** entiteit in het veld `resolution` van het JSON-antwoord dat wordt geretourneerd.
 
-## <a name="resolution-for-prebuilt-number"></a>Oplossing voor het vooraf gedefinieerde nummer
+## <a name="resolution-for-prebuilt-number"></a>Oplossing voor vooraf gedefinieerde getal
 
 De volgende entiteits objecten worden geretourneerd voor de query:
 
 `order two dozen eggs`
 
-#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+#### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
@@ -57,7 +57,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
@@ -83,9 +83,9 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+#### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
-In het volgende voor beeld ziet u een JSON-reactie van LUIS, die de resolutie van de waarde 24 voor de utterance "twee dozijn" omvat.
+Het volgende voorbeeld ziet een JSON-antwoord van LUIS, die de resolutie van de waarde van 24 uur per dag, voor de utterance "tientallen" bevat.
 
 ```json
 "entities": [
@@ -101,10 +101,10 @@ In het volgende voor beeld ziet u een JSON-reactie van LUIS, die de resolutie va
   }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [valuta](luis-reference-prebuilt-currency.md), het [rang telwoord](luis-reference-prebuilt-ordinal.md)en het [percentage](luis-reference-prebuilt-percentage.md). 
+Meer informatie over de [valuta](luis-reference-prebuilt-currency.md), het [rang telwoord](luis-reference-prebuilt-ordinal.md)en het [percentage](luis-reference-prebuilt-percentage.md).

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 26bcd855dbe2ea85df9fb6aca74f8b52e8ce8e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152394"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268928"
 ---
 # <a name="create-python-model"></a>Python-model maken
 
@@ -35,7 +35,7 @@ Het gebruik van deze module vereist tussenliggende of deskundige kennis van pyth
 
 In dit artikel wordt uitgelegd hoe u het **python-model maken** gebruikt met een eenvoudige pijp lijn. Hieronder ziet u de grafiek van de pijp lijn.
 
-![Create-python-model](./media/module/aml-create-python-model.png)
+![Create-python-model](./media/module/create-python-model.png)
 
 1.  Klik op **python-model maken**, bewerk het script om uw model of gegevens beheer proces te implementeren. U kunt het model baseren op een informatieer die deel uitmaakt van een python-pakket in de Azure Machine Learning omgeving.
 

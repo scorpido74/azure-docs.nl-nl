@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008344"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273839"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Het rapport Riskante aanmeldingen in de Azure Active Directory-portal
 
@@ -42,7 +42,7 @@ Zie [How to configure the User Risk](../identity-protection/howto-user-risk-poli
 
 De rapporten met Risk ante aanmeldingen zijn beschikbaar voor gebruikers in de volgende rollen:
 
-- Beveiligingsbeheerder
+- Beveiligingsbeheer
 - Globale beheerder
 - Beveiligings lezer
 
@@ -52,15 +52,15 @@ Zie [beheerders rollen weer geven en toewijzen in azure Active Directory](https:
 
 Alle versies van Azure AD bieden u rapporten met Risk ante aanmeldingen. Het detailniveau van rapporten verschilt wel per editie: 
 
-- In de **Azure Active Directory Free en Basic-edities**krijgt u een lijst met Risk ante aanmeldingen. 
+- In de **Azure Active Directory Free-editie**krijgt u een lijst met Risk ante aanmeldingen. 
 
 - Daarnaast kunt u met de **Azure Active Directory Premium 1** -editie enkele van de onderliggende risico detecties onderzoeken die zijn gedetecteerd voor elk rapport. 
 
 - De versie van **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over alle onderliggende risico detecties. Daarnaast kunt u hiermee beveiligings beleid configureren dat automatisch reageert op geconfigureerde risico niveaus.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Rapport Risk ante aanmeldingen voor Azure AD Free en Basic Edition
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Rapport Risk ante aanmeldingen voor de gratis versie van Azure AD
 
-De gratis en Basic-edities van Azure AD bieden een lijst met Risk ante aanmeldingen die zijn gedetecteerd voor uw gebruikers. Elke record bevat de volgende kenmerken:
+De gratis versie van Azure AD biedt u een lijst met Risk ante aanmeldingen die zijn gedetecteerd voor uw gebruikers. Elke record bevat de volgende kenmerken:
 
 - **Gebruiker** -de naam van de gebruiker die is gebruikt tijdens de aanmeldings bewerking.
 - **IP** : het IP-adres van het apparaat dat is gebruikt om verbinding te maken met Azure Active Directory.

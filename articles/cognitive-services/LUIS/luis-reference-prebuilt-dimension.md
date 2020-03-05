@@ -1,37 +1,37 @@
 ---
 title: Dimensies vooraf gemaakte entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf samengestelde entiteits gegevens in Language Understanding (LUIS).
+description: In dit artikel bevat vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS) dimensie.
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 6699b1617ccd1fef9a507e71fdd73a02b0e98bea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465031"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270636"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Samengestelde dimensie-entiteit voor een LUIS-app
-De vooraf samengestelde dimensie-entiteit detecteert verschillende typen dimensies, ongeacht de LUIS-app-cultuur. Omdat deze entiteit al is getraind, hoeft u geen voorbeeld uitingen met dimensies toe te voegen aan de toepassings intentie. Dimensie-entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md). 
+De vooraf gedefinieerde dimensie entiteit detecteert de verschillende typen dimensies, ongeacht de cultuur van LUIS-app. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met dimensies aan de toepassing intents. Dimensie-entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-dimension"></a>Typen dimensie
+## <a name="types-of-dimension"></a>Typen van de dimensie
 
 Dimensie wordt beheerd vanuit de GitHub-opslag plaats voor [tekst herkenning](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) .
 
-## <a name="resolution-for-dimension-entity"></a>Oplossing voor dimensie-entiteit
+## <a name="resolution-for-dimension-entity"></a>Oplossing voor de dimensie entiteit
 
 De volgende entiteits objecten worden geretourneerd voor de query:
 
 `10 1/2 miles of cable`
 
-#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+#### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
@@ -45,7 +45,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
 ```json
@@ -74,7 +74,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+#### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
 In het volgende voor beeld ziet u de resolutie van de **inbuiltin. dimensie** -entiteit.
 
@@ -90,10 +90,10 @@ In het volgende voor beeld ziet u de resolutie van de **inbuiltin. dimensie** -e
     }
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de entiteiten [e-mail](luis-reference-prebuilt-email.md), [nummer](luis-reference-prebuilt-number.md)en [rang telwoord](luis-reference-prebuilt-ordinal.md) . 
+Meer informatie over de entiteiten [e-mail](luis-reference-prebuilt-email.md), [nummer](luis-reference-prebuilt-number.md)en [rang telwoord](luis-reference-prebuilt-ordinal.md) .

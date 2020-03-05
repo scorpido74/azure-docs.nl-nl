@@ -6,18 +6,18 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 506b34281ba8ab5b669c87b4699fb8b138c8734a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819195"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268302"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure en Dynamics 365 Consulting Service-aanbod
 
-In dit artikel wordt uitgelegd hoe u een advies service publiceert naar micro soft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> of <a href="https://appsource.microsoft.com">AppSource</a>. Oplossingen op basis van micro soft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power bi</a>en <a href="https://powerapps.microsoft.com">PowerApps</a> kunnen worden vermeld op AppSource. Andere aanbiedingen op basis van andere micro soft <a href="https://azure.microsoft.com/services">Azure-Services</a> kunnen worden weer gegeven op de Azure Marketplace.
+In dit artikel wordt uitgelegd hoe u een advies service publiceert naar micro soft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> of <a href="https://appsource.microsoft.com">AppSource</a>. Oplossingen op basis van micro soft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power bi</a>en <a href="https://powerapps.microsoft.com">Power apps</a> kunnen worden vermeld op AppSource. Andere aanbiedingen op basis van andere micro soft <a href="https://azure.microsoft.com/services">Azure-Services</a> kunnen worden weer gegeven op de Azure Marketplace.
 
 ## <a name="publishing-benefits"></a>Publicatie voordelen
 
@@ -35,11 +35,13 @@ In deze sectie vindt u een overzicht van de onderdelen van het publiceren van ee
 - In de vereisten voor [advies Services](./cpp-consulting-service-prerequisites.md) vindt u een overzicht van de voor waarden voor het publiceren van een advies service-aanbieding voor:
  
     - Microsoft Azure
-    - Dynamics 365 for Customer Engagement 
-    - Dynamics 365 voor Financiën & bewerkingen 
+    - Dynamics 365-klant betrokkenheid 
+    - Dynamics 365-Financiën & bewerkingen 
+    - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
-    - PowerApps
+    - Power Apps
+    - Power Automate
 - [Een nieuwe aanbieding maken een](./cpp-consulting-service-create-offer.md) lijst met de stappen die nodig zijn om een advies service-aanbieding te maken met behulp van de Cloud Partner-Portal:
     - [Instellingen voor aanbieding definiëren](./cpp-consulting-service-define-offer-settings.md).
     - [Voer Details van de winkel in en geef aan of u wilt publiceren in azure Marketplace of op AppSource.](./cpp-consulting-service-storefront-details.md)

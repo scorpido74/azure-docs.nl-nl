@@ -1,5 +1,6 @@
 ---
-title: Communicatie beveiliging-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
+title: Communicatie beveiliging voor de Microsoft Threat Modeling Tool
+titleSuffix: Azure
 description: oplossingen voor bedreigingen die worden blootgesteld aan de Threat Modeling Tool
 services: security
 documentationcenter: na
@@ -15,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b861c54cfffe409946a2b23de4c7ccf2cd85433a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839245"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269900"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Beveiligings frame: communicatie beveiliging | Oplossingen 
-| Product/service | Artikel |
+| Product/Service | Artikel |
 | --------------- | ------- |
 | **Azure Event hub** | <ul><li>[Communicatie met Event hub beveiligen met behulp van SSL/TLS](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Controleer de bevoegdheden van het service account en controleer of de aangepaste services of ASP.NET-pagina's de beveiliging van CRM respecteren](#priv-aspnet)</li></ul> |
@@ -45,7 +46,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Event Hub | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Stappen** | AMQP of HTTP-verbindingen met Event hub beveiligen met behulp van SSL/TLS |
@@ -56,7 +57,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Dynamics CRM | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | N.v.t.  |
 | **Stappen** | Controleer de bevoegdheden van het service account en controleer of de aangepaste services of ASP.NET-pagina's de beveiliging van CRM respecteren |
@@ -67,7 +68,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Data Factory | 
 | **SDL-fase**               | Implementatie |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | Gekoppelde service typen: Azure en on-premises |
 | **Referentie**              |[Gegevens verplaatsen tussen on-premises en Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [Data Management Gateway](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Stappen** | <p>Het hulp programma Data Management Gateway (DMG) is vereist om verbinding te maken met gegevens bronnen die zijn beveiligd achter Corpnet of een firewall.</p><ol><li>Door de computer te vergren delen, wordt het DMG-hulp programma geïsoleerd en wordt voor komen dat Program ma's beschadigd of op de gegevens bron machine worden genoteerd. Zoals. de meest recente updates moeten worden geïnstalleerd, beschikken over Mini maal vereiste poorten, het inrichten van beheerde accounts, het inschakelen van controle, het inschakelen van de schijf versleuteling, enzovoort.)</li><li>De gegevens gateway sleutel moet met regel matige tussen pozen worden geroteerd of wanneer het wacht woord van de DMG-service account wordt vernieuwd</li><li>Gegevens doorvoer via de koppelings service moet worden versleuteld</li></ol> |
@@ -78,7 +79,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Identiteits server | 
 | **SDL-fase**               | Implementatie |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [IdentityServer3-sleutels, hand tekeningen en crypto grafie](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html), [IdentityServer3-implementatie](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
 | **Stappen** | IdentityServer vereist standaard dat alle binnenkomende verbindingen worden ontvangen via HTTPS. Het is absoluut verplicht dat communicatie met IdentityServer alleen worden uitgevoerd via beveiligde trans porten. Er zijn bepaalde implementatie scenario's zoals SSL-offloading waarbij deze vereiste kan worden gesoepeld. Zie de pagina voor de implementatie van de identiteits server in de referenties voor meer informatie. |
@@ -89,7 +90,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | N.v.t.  |
 | **Stappen** | <p>Toepassingen die gebruikmaken van SSL, TLS of DTLS, moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Dit omvat de verificatie van de certificaten voor:</p><ul><li>Domeinnaam</li><li>De geldigheids datums (zowel de begin-als de verval datum)</li><li>Intrekkings status</li><li>Gebruik (bijvoorbeeld Server verificatie voor servers, client verificatie voor clients)</li><li>Vertrouwens keten. Certificaten moeten worden gekoppeld aan een basis certificerings instantie (CA) die wordt vertrouwd door het platform of expliciet is geconfigureerd door de beheerder</li><li>De sleutel lengte van de open bare sleutel van het certificaat moet > 2048 bits zijn</li><li>Hash-algoritme moet SHA256 en hoger zijn |
@@ -100,7 +101,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | EnvironmentType-Azure |
 | **Referentie**              | [HTTPS inschakelen voor een app in Azure App Service](../../app-service/configure-ssl-bindings.md) |
 | **Stappen** | Standaard schakelt Azure HTTPS al in voor elke app met een Joker certificaat voor het domein *. azurewebsites.net. Net als alle Joker domeinen is het echter niet zo veilig als het gebruik van een aangepast domein met een eigen certificaat [verwijzen](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/). Het is raadzaam SSL in te scha kelen voor het aangepaste domein waarmee de geïmplementeerde app wordt geopend|
@@ -111,7 +112,7 @@ ms.locfileid: "73839245"
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | EnvironmentType-Azure |
 | **Referentie**              | [HTTPS afdwingen op Azure App Service](../../app-service/configure-ssl-bindings.md#enforce-https) |
 | **Stappen** | <p>Hoewel Azure al HTTPS maakt voor Azure app Services met een Joker teken voor het domein *. azurewebsites.net, wordt HTTPS niet afgedwongen. Bezoekers hebben mogelijk nog steeds toegang tot de app via HTTP, waardoor de beveiliging van de app kan worden aangetast en daarom expliciet HTTPS moet worden afgedwongen. ASP.NET MVC-toepassingen moeten het [RequireHttps-filter](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) gebruiken dat ervoor zorgt dat een niet-beveiligde HTTP-aanvraag opnieuw wordt verzonden via https.</p><p>U kunt ook de module voor het herschrijven van URL'S, die is opgenomen in Azure App Service, gebruiken om HTTPS af te dwingen. Met de module voor het herschrijven van URL'S kunnen ontwikkel aars regels definiëren die worden toegepast op binnenkomende aanvragen voordat de aanvragen worden overgedragen aan uw toepassing. De regels voor het herschrijven van URL'S worden gedefinieerd in een web. config-bestand dat is opgeslagen in de hoofdmap van de toepassing</p>|
@@ -144,7 +145,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [Cheat-blad OWASP HTTP strict-Trans Port beveiliging](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
 | **Stappen** | <p>HTTP strict Trans Port Security (HSTS) is een opt-in-beveiligings verbetering die is opgegeven door een webtoepassing via het gebruik van een speciale antwoord header. Zodra een ondersteunde browser deze header ontvangt, kan de browser voor komen dat er communicatie via HTTP naar het opgegeven domein wordt verzonden en wordt in plaats daarvan alle communicatie verzonden via HTTPS. Er wordt ook voor komen dat met HTTPS wordt geklikt op vragen over browsers.</p><p>Voor het implementeren van HSTS moet de volgende reactie header worden geconfigureerd voor een website globaal, hetzij in code of in configuratie. Strict-Trans Port-Security: Max-Age = 300; includeSubDomains HSTS behandelt de volgende bedreigingen:</p><ul><li>Gebruikers bladwijzer of typen hand matig https://example.com en zijn onderworpen aan een man-in-the-Middle-aanvaller: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Webtoepassingen die louter HTTPS bedoeld zijn, bevatten per ongeluk HTTP-koppelingen of verzendt inhoud via HTTP: HSTS stuurt automatisch HTTP-aanvragen om naar HTTPS voor het doel domein</li><li>Een man-in-the-Middle-aanvaller probeert verkeer te onderscheppen van een slacht offer-gebruiker met een ongeldig certificaat en wil de gebruiker het onjuiste certificaat accepteert: HSTS staat niet toe dat een gebruiker het ongeldige certificaat bericht overschrijft</li></ul>|
@@ -166,7 +167,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Premises |
+| **Toepasselijke technologieën** | OnPrem |
 | **Eigenschappen**              | SQL-versie-MsSQL2016, SQL-versie-MsSQL2012, SQL-versie-MsSQL2014 |
 | **Referentie**              | [Versleutelde verbindingen met de data base-engine inschakelen](https://msdn.microsoft.com/library/ms191192)  |
 | **Stappen** | Als u SSL-versleuteling inschakelt, wordt de beveiliging van gegevens die worden verzonden tussen netwerken tussen exemplaren van SQL Server en toepassingen, verbeterd. |
@@ -177,7 +178,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Storage | 
 | **SDL-fase**               | Implementatie |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [Versleuteling op transport niveau Azure Storage: HTTPS gebruiken](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
 | **Stappen** | Gebruik altijd het HTTPS-protocol bij het aanroepen van de REST-Api's of het openen van objecten in opslag om de beveiliging van Azure Storage gegevens in transit te garanderen. Ook gedeelde toegangs handtekeningen, die kunnen worden gebruikt voor het delegeren van toegang tot Azure Storage-objecten, bevatten een optie om op te geven dat alleen het HTTPS-protocol kan worden gebruikt bij het gebruik van hand tekeningen voor gedeelde toegang, om ervoor te zorgen dat iedereen die koppelingen met SAS-tokens verzendt, gebruikmaakt van het juiste protocol.|
@@ -188,7 +189,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Storage | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | Para-BLOB |
 | **Referentie**              | [Overzicht van Windows Azure Blob MD5](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
 | **Stappen** | <p>Windows Azure Blob service biedt mechanismen voor het garanderen van gegevens integriteit op de toepassings-en transport lagen. Als u om een of andere reden HTTP in plaats van HTTPS moet gebruiken en u met blok-blobs werkt, kunt u de MD5-controle gebruiken om de integriteit te controleren van de blobs die worden overgedragen</p><p>Dit helpt bij de beveiliging van netwerk/Trans Port-laag fouten, maar niet noodzakelijkerwijs met tussenliggende aanvallen. Als u HTTPS kunt gebruiken, dat beveiliging op transport niveau biedt, is het gebruik van MD5-controle overbodig en onnodig.</p>|
@@ -199,7 +200,7 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | ----------------------- | ------------ |
 | **Onderdeel**               | Mobiele client | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | Para-bestand |
 | **Referentie**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [Azure File Storage SMB-ondersteuning voor Windows-clients](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
 | **Stappen** | Azure File Storage ondersteunt HTTPS bij het gebruik van de REST API, maar wordt vaak gebruikt als een SMB-bestands share die is gekoppeld aan een virtuele machine. SMB 2,1 biedt geen ondersteuning voor versleuteling. verbindingen zijn dus alleen toegestaan binnen dezelfde regio in Azure. SMB 3,0 ondersteunt echter versleuteling en kan worden gebruikt met Windows Server 2012 R2, Windows 8, Windows 8,1 en Windows 10, zodat u toegang hebt tot meerdere regio's en zelfs toegang op het bureau blad. |
@@ -210,10 +211,10 @@ Deze regel werkt door het retour neren van een HTTP-status code van 301 (permane
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Storage | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Algemeen, Windows Phone |
+| **Toepasselijke technologieën** | Generic, Windows Phone |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [Certificaat en open bare sleutel vastmaken](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| **Stappen** | <p>Certificaat vastmaken beschermt tegen man-in-the-middle-aanvallen (MITM). Vastmaken is het proces van het koppelen van een host met het verwachte x509-certificaat of de open bare sleutel. Zodra een certificaat of open bare sleutel bekend of zichtbaar is voor een host, wordt het certificaat of de open bare sleutel gekoppeld of vastgemaakt aan de host. </p><p>Wanneer een kwaadwillende persoon een SSL-MITM-aanval probeert uit te voeren, wordt tijdens de SSL-Handshake de sleutel van de server van de aanvaller afwijkend van de sleutel van de vastgemaakte certificaten en wordt de aanvraag verwijderd, waardoor MITM certificaat vastmaken kan worden bereikt door de `ServerCertificateValidationCallback`-gemachtigde van de ServicePointManager implementeren.</p>|
+| **Stappen** | <p>Certificaat vastmaken beschermt tegen man-in-the-middle-aanvallen (MITM). Vastmaken is het proces van het koppelen van een host met het verwachte x509-certificaat of de open bare sleutel. Zodra een certificaat of open bare sleutel bekend of zichtbaar is voor een host, wordt het certificaat of de open bare sleutel gekoppeld of vastgemaakt aan de host. </p><p>Wanneer een kwaadwillende persoon een SSL-MITM-aanval probeert uit te voeren, wordt tijdens de SSL-Handshake de sleutel van de server van de aanvaller afwijkend van de sleutel van de vastgemaakte certificaten en wordt de aanvraag verwijderd, waardoor MITM certificaat vastmaken niet kan worden bereikt door de implementatie van ServicePointManager `ServerCertificateValidationCallback`-gemachtigde.</p>|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -379,7 +380,7 @@ public class ValuesController : ApiController
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Cache voor Redis | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [Azure redis SSL-ondersteuning](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
 | **Stappen** | De redis-server biedt geen ondersteuning voor SSL vanuit het vak, maar Azure cache voor redis wel. Als u verbinding maakt met Azure cache voor redis en uw client SSL ondersteunt, zoals stack Exchange. redis, moet u SSL gebruiken. Standaard is niet-SSL-poort uitgeschakeld voor nieuwe Azure-cache voor redis-exemplaren. Zorg ervoor dat de beveiligde standaard waarden niet worden gewijzigd, tenzij er een afhankelijkheid is voor SSL-ondersteuning voor redis-clients. |
@@ -392,7 +393,7 @@ Houd er rekening mee dat redis is ontworpen voor toegang door vertrouwde clients
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-veld Gateway | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | N.v.t.  |
 | **Stappen** | Voor op IP gebaseerde apparaten kan het communicatie protocol doorgaans worden ingekapseld in een SSL/TLS-kanaal om gegevens onderweg te beschermen. Andere protocollen die SSL/TLS-onderzoek niet ondersteunen als er sprake is van een beveiligde versie van het protocol dat een beveiliging biedt op Trans Port of de laag van berichten. |
@@ -403,7 +404,7 @@ Houd er rekening mee dat redis is ontworpen voor toegang door vertrouwde clients
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-Cloud gateway | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
+| **Toepasselijke technologieën** | Algemeen |
 | **Eigenschappen**              | N.v.t.  |
 | **Referentie**              | [Kies uw communicatie protocol](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
 | **Stappen** | HTTP-AMQP of MQTT-protocollen beveiligen met SSL/TLS. |

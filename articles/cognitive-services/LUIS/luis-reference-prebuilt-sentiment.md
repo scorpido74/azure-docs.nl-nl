@@ -1,32 +1,32 @@
 ---
 title: Sentiment-analyse-LUIS
 titleSuffix: Azure Cognitive Services
-description: Als sentiment-analyse is geconfigureerd, omvat de LUIS JSON-antwoord sentiment analyse.
+description: Als u sentimentanalyse is geconfigureerd, bevat de json-antwoord van LUIS sentimentanalyse.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
-ms.openlocfilehash: a91246e4a4b3dc98bf11d2b014478fd40252f14b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508021"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270422"
 ---
 # <a name="sentiment-analysis"></a>Sentimentanalyse
-Als sentiment-analyse is geconfigureerd, omvat de LUIS JSON-antwoord sentiment analyse. Meer informatie over sentiment analyse vindt u in de [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) -documentatie.
+Als u sentimentanalyse is geconfigureerd, bevat de json-antwoord van LUIS sentimentanalyse. Meer informatie over sentiment analyse vindt u in de [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) -documentatie.
 
 
 ## <a name="resolution-for-sentiment"></a>Oplossing voor sentiment
 
-Sentiment-gegevens is een score tussen 1 en 0 die de positieve waarde (dichter bij 1) of negatief (dichter bij 0) sentiment van de gegevens aangeeft.
+Sentimentsgegevens is een score tussen 1 en 0 waarmee wordt aangegeven welke positieve (dichter bij 1) of een negatieve (dichter bij 0) gevoel van de gegevens.
 
-#### <a name="english-languagetabenglish"></a>[Engelse taal](#tab/english)
+#### <a name="english-language"></a>[Engelse taal](#tab/english)
 
 Wanneer de cultuur is `en-us`, is de reactie:
 
@@ -37,16 +37,16 @@ Wanneer de cultuur is `en-us`, is de reactie:
 }
 ```
 
-#### <a name="other-languagestabother-languages"></a>[Andere talen](#tab/other-languages)
+#### <a name="other-languages"></a>[Andere talen](#tab/other-languages)
 
-Voor alle andere cult uren is de reactie:
+Voor alle andere culturen en is het antwoord:
 
 ```JSON
 "sentimentAnalysis": {
   "score": 0.9163064
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,22 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277489"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273211"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Gedistribueerde tracering gebruiken met Azure veer Cloud
 
-Met de gedistribueerde hulpprogram ma's voor tracering in azure lente-Cloud kunt u eenvoudig complexe problemen opsporen en bewaken. Azure lente Cloud integreert [Azure veer Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met de [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)van Azure. Deze integratie biedt krachtige functies voor gedistribueerde tracering van de Azure Portal.
+Met de gedistribueerde hulpprogram ma's voor tracering in azure lente-Cloud kunt u eenvoudig complexe problemen opsporen en bewaken. Azure lente Cloud integreert [lente Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) met de [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)van Azure. Deze integratie biedt krachtige functies voor gedistribueerde tracering van de Azure Portal.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Schakel gedistribueerde tracering in de Azure Portal in.
-> * Voeg Azure veer Cloud Sleuth toe aan uw toepassing.
+> * Een lente Cloud Sleuth toevoegen aan uw toepassing.
 > * Afhankelijkheids kaarten voor uw micro service-toepassingen weer geven.
 > * Zoek gegevens traceren met verschillende filters.
 
@@ -39,7 +39,7 @@ Voor het volt ooien van deze zelf studie hebt u een Azure lente-Cloud service no
 
    Na deze wijziging kan de Zipkin-afzender naar het web worden verzonden.
 
-1. Sla deze stap over als u onze [hand leiding voor het voorbereiden van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u het bestand pom. XML om de volgende Azure veer Cloud Sleuth-afhankelijkheid toe te voegen:
+1. Sla deze stap over als u onze [hand leiding voor het voorbereiden van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u het bestand pom. XML om de volgende afhankelijkheids-Sleuth-afhankelijkheid toe te voegen:
 
     ```xml
     <dependencyManagement>

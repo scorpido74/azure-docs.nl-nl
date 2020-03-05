@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/27/2020
-ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/03/2020
+ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846010"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271938"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>(ETL) uitpakken, transformeren en laden op schaal
 
@@ -25,7 +25,7 @@ Het gebruik van HDInsight in het ETL-proces kan worden samenvatten door deze pij
 
 In de volgende secties worden alle ETL-fasen en de bijbehorende onderdelen besproken.
 
-## <a name="orchestration"></a>Indeling
+## <a name="orchestration"></a>Orchestration
 
 Indeling omvat alle fasen van de ETL-pijp lijn. ETL-taken in HDInsight omvatten vaak verschillende producten die met elkaar samen werken.  U kunt Hive gebruiken om een deel van de gegevens te schonen, terwijl varken een ander gedeelte opschoont.  U kunt Azure Data Factory voor het laden van gegevens in Azure SQL Database van Azure Data Lake Store.
 
@@ -67,7 +67,7 @@ Gegevens worden doorgaans opgenomen in Azure Storage met behulp van Power shell,
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Storage (ADLS) is een beheerde, grootschalige-opslag plaats voor analyse gegevens die compatibel zijn met HDFS.  ADLS maakt gebruik van een ontwerp paradigma dat vergelijkbaar is met HDFS en biedt onbeperkte schaal baarheid in termen van totale capaciteit en de grootte van afzonderlijke bestanden. ADLS is zeer goed bij het werken met grote bestanden omdat een groot bestand kan worden opgeslagen op meerdere knoop punten.  Partitioneren van gegevens in ADLS geschiedt achter de schermen.  Data Lake Store biedt u een enorme doorvoer voor het uitvoeren van analysetaken waarbij meer dan duizend simultane uitvoerders honderden terabytes aan gegevens efficiënt lezen en schrijven.
+Azure Data Lake Storage (ADLS) is een beheerde, grootschalige-opslag plaats voor analyse gegevens die compatibel zijn met HDFS.  ADLS maakt gebruik van een ontwerp paradigma dat vergelijkbaar is met HDFS en biedt onbeperkte schaal baarheid in termen van totale capaciteit en de grootte van afzonderlijke bestanden. ADLS is zeer goed bij het werken met grote bestanden omdat een groot bestand kan worden opgeslagen op meerdere knoop punten.  Partitioneren van gegevens in ADLS geschiedt achter de schermen.  U profiteert van een enorme door Voer voor het uitvoeren van analytische taken met duizenden gelijktijdige uitvoerders die op efficiënte wijze honderden terabytes aan gegevens lezen en schrijven.
 
 Gegevens worden doorgaans opgenomen in ADLS met behulp van Azure Data Factory, ADLS Sdk's, AdlCopy service, Apache DistCp of Apache Sqoop.  Welke van deze services het meest gebruikt, is afhankelijk van waar de gegevens zich bevindt.  Als de gegevens zich momenteel in een bestaand Hadoop-cluster bevindt, kunt u Apache DistCp, AdlCopy service of Azure Data Factory gebruiken.  In Azure Blob Storage kunt u Azure Data Lake Storage .NET SDK, Azure PowerShell of Azure Data Factory gebruiken.
 

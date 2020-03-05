@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/30/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9559f85e31a38c50034d6aacc8f65e4d68aec2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014442"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273805"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Vereisten voor toegang tot de API voor Azure Active Directory rapportage
 
@@ -43,7 +43,7 @@ Als u toegang wilt krijgen tot de rapportage gegevens via de API, moet een van d
 
 - Beveiligings lezer
 
-- Beveiligingsbeheerder
+- Beveiligingsbeheer
 
 - Globale beheerder
 
@@ -91,7 +91,7 @@ Afhankelijk van de API die u wilt gebruiken, moet u uw app de volgende machtigin
 
 | API | Machtiging |
 | --- | --- |
-| Windows Azure Active Directory | Directory gegevens lezen |
+| Windows Azure Active Directory | Mapgegevens lezen |
 | Microsoft Graph | Alle audit logboek gegevens lezen |
 
 
@@ -189,19 +189,16 @@ U hebt deze waarden nodig bij het configureren van aanroepen naar de rapportage-
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>Fouten in de rapportage-API oplossen
 
-In deze sectie vindt u de algemene fout berichten die u kunt uitvoeren bij het openen van activiteiten rapporten met behulp van de MS Graph API en de stappen voor de oplossing.
+In deze sectie vindt u de algemene fout berichten die u kunt uitvoeren bij het openen van activiteiten rapporten met behulp van de Microsoft Graph-API en de stappen voor de oplossing.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 interne HTTP-server fout bij het openen van Microsoft Graph v2-eind punt
 
-Het Microsoft Graph v2-eind punt wordt momenteel niet ondersteund. Zorg ervoor dat u toegang hebt tot de activiteiten logboeken met behulp van het Microsoft Graph v1-eind punt.
-
-### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>Fout: kan de gebruikers rollen niet ophalen uit de AD-grafiek
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Fout: kan geen gebruikers rollen ophalen uit Microsoft Graph
 
  Meld u aan bij uw account met behulp van de aanmeldings knoppen in de interface van Graph Explorer om te voor komen dat er een fout optreedt wanneer u zich aanmeldt met Graph Explorer. 
 
 ![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Fout: kan geen Premium-licentie controle uitvoeren vanuit de AD-grafiek 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>Fout: kan geen Premium-licentie controle uitvoeren vanuit Microsoft Graph 
 
 Als u in dit fout bericht wordt weer gegeven terwijl u probeert toegang te krijgen tot aanmeldingen met behulp van Graph Explorer, kiest u **machtigingen voor wijzigen** onder uw account in het navigatie venster links en selecteert u **taken. readwrite** en **Directory. Read. all**. 
 
@@ -218,7 +215,7 @@ Voor toegang tot aanmeldings rapporten is een licentie voor Azure Active Directo
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fout: de machtiging voor het lezen van de Directory gegevens van de toepassing voor AAD ontbreekt 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>Fout: de machtiging alle controle logboek gegevens lezen van de toepassing MSGraph-API ontbreekt
+### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Fout: de machtiging alle controle logboek gegevens lezen voor de toepassing ontbreekt in de app
 
 Volg de stappen in de [vereisten voor toegang tot de API voor Azure Active Directory rapportage](howto-configure-prerequisites-for-reporting-api.md) om ervoor te zorgen dat uw toepassing wordt uitgevoerd met de juiste set machtigingen. 
 

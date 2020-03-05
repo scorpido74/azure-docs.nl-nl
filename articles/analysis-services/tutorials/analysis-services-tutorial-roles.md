@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572375"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273681"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
 
@@ -82,7 +82,7 @@ In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Een gebruiker toevoegen aan de rol van modeldatabasebeheerder
 
-In deze taak u gaat u een gebruikers- of groepsaccount toevoegen aan de rol Internet Sales-beheerder die al in het model bestaat. Deze rol heeft de machtigingen voor volledig beheer (beheerder) voor de modeldatabase met het AdventureWorks-voorbeeld. Deze taak maakt gebruik van de TMSL-opdracht [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) in een script dat voor u is gemaakt.
+In deze taak u gaat u een gebruikers- of groepsaccount toevoegen aan de rol Internet Sales-beheerder die al in het model bestaat. Deze rol heeft de machtigingen voor volledig beheer (beheerder) voor de modeldatabase met het AdventureWorks-voorbeeld. Deze taak maakt gebruik van de TMSL-opdracht [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) in een script dat voor u is gemaakt.
 
 1. In **Objectverkenner** vouwt u **Databases** > **adventureworks** > **Rollen** uit. 
 2. Klik met de rechtermuisknop op **Internet Sales-beheerder**, klik vervolgens op **Scriptrol as** > **MAKEN OF VERVANGEN Naar** > **venster Nieuwe query-editor**.
@@ -98,7 +98,7 @@ In deze taak u gaat u een gebruikers- of groepsaccount toevoegen aan de rol Inte
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Een nieuwe modeldatabaserol toevoegen en een gebruiker of groep toevoegen
 
-In deze taak gebruikt u de opdracht [Maken](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) in een TMSL-script om een nieuwe Globale internetverkoop-rol te maken, *leesmachtigingen* voor de rol op te geven en een gebruikers- of groepsaccount uit uw Azure AD toe te voegen.
+In deze taak gebruikt u de opdracht [Maken](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) in een TMSL-script om een nieuwe Globale internetverkoop-rol te maken, *leesmachtigingen* voor de rol op te geven en een gebruikers- of groepsaccount uit uw Azure AD toe te voegen.
 
 1. Klik in **Objectverkenner** met de rechtermuisknop op **adventureworks** en klik dan op **Nieuwe query** > **XMLA**. 
 2. Kopieer en plak het volgende TMSL-script in de query-editor:

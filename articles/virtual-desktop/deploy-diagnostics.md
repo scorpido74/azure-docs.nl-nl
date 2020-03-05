@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368847"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273110"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -128,10 +128,9 @@ Voordat u doorgaat met de implementatie van het diagnostische hulp programma, ku
 Om ervoor te zorgen dat de app-registratie API-machtigingen heeft:
 
 1. Open een browser en maak verbinding met de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
-2. Ga naar **app-registraties** en zoek uw Azure AD-App registratie.
-
-      ![De pagina API-machtigingen.](media/api-permissions-page.png)
-
+2. Ga naar **Azure Active Directory**.
+3. Ga naar **app-registraties** en selecteer **alle toepassingen**.
+4. Zoek naar uw Azure AD-App-registratie met dezelfde app-naam die u hebt opgegeven in stap 5 van [een registratie van een Azure Active Directory-app maken](deploy-diagnostics.md#create-an-azure-active-directory-app-registration).
 
 ### <a name="review-your-log-analytics-workspace"></a>Uw Log Analytics-werk ruimte controleren
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029875"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273722"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
 Door gebruik te maken van elke programmeer taal die REST-aanroepen ondersteunt, kunt u asynchrone bewerkingen voor het vernieuwen van gegevens uitvoeren op uw Azure Analysis Services modellen in tabel vorm. Dit omvat synchronisatie van alleen-lezen replica's voor het uitbreiden van de query. 
 
-Het vernieuwen van gegevens kan enige tijd in beslag nemen, afhankelijk van een aantal factoren, zoals het gegevens volume, het optimalisatie niveau met behulp van partities, enzovoort. Deze bewerkingen zijn traditioneel aangeroepen met bestaande methoden, zoals het gebruik van [Tom](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellair object model), [Power shell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -cmdlets of [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (tabellaire model script taal). Deze methoden kunnen echter vaak onbetrouwbare, langlopende HTTP-verbindingen vereisen.
+Het vernieuwen van gegevens kan enige tijd in beslag nemen, afhankelijk van een aantal factoren, zoals het gegevens volume, het optimalisatie niveau met behulp van partities, enzovoort. Deze bewerkingen zijn traditioneel aangeroepen met bestaande methoden, zoals het gebruik van [Tom](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabellair object model), [Power shell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -cmdlets of [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tabellaire model script taal). Deze methoden kunnen echter vaak onbetrouwbare, langlopende HTTP-verbindingen vereisen.
 
 Met de REST API voor Azure Analysis Services kunnen bewerkingen voor gegevens vernieuwing asynchroon worden uitgevoerd. Met behulp van de REST API kunnen langlopende HTTP-verbindingen van client toepassingen niet nodig zijn. Er zijn ook andere ingebouwde functies voor betrouw baarheid, zoals automatische nieuwe pogingen en batch doorvoer.
 
@@ -56,7 +56,7 @@ U kunt bijvoorbeeld de bewerking POST in de verzameling vernieuwen gebruiken om 
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token in de autorisatie-header en moeten voldoen aan de volgende vereisten:
 
@@ -97,11 +97,11 @@ De hoofd tekst kan er als volgt uitzien:
 
 Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast.
 
-| Name             | Type  | Beschrijving  |Standaard  |
+| Naam             | Type  | Beschrijving  |Standaard  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   automatisch      |
+| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   Automatisch      |
 | `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
-| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
+| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
 | `RetryCount`     | Int   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
 | `Objects`        | Matrix | Een matrix met objecten die moeten worden verwerkt. Elk object bevat: ' tabel ' bij het verwerken van de volledige tabel of ' tabel ' en ' partitie ' bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het volledige model verwerken      |
 
@@ -112,7 +112,7 @@ CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van 
 
 ### <a name="status-values"></a>Status waarden
 
-|Statuswaarde  |Beschrijving  |
+|Status waarde  |Beschrijving  |
 |---------|---------|
 |`notStarted`    |   De bewerking is nog niet gestart.      |
 |`inProgress`     |   De bewerking wordt uitgevoerd.      |
@@ -213,7 +213,7 @@ Hier volgt een C# code voorbeeld om aan de slag te gaan, [RestApiSample op githu
 
 Het code voorbeeld maakt gebruik van [Service-Principal](#service-principal) -verificatie.
 
-### <a name="service-principal"></a>Service-principal
+### <a name="service-principal"></a>Service-Principal
 
 Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) en [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een Service-Principal en het toewijzen van de benodigde machtigingen in azure als. Nadat u de stappen hebt voltooid, voert u de volgende aanvullende stappen uit:
 
@@ -225,6 +225,6 @@ Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-cre
 ## <a name="see-also"></a>Zie ook
 
 [Voorbeelden](analysis-services-samples.md)   
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

@@ -2,33 +2,31 @@
 title: Vereisten voor Azure en Dynamics 365 consulting service bieden | Azure Marketplace
 description: Vereisten voor een Azure-of Dynamics 365 Consulting-Service aanbod in de Cloud Partner-portal.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 88a317fde3d8e3490741b87d6015556fde593ecd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818122"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268282"
 ---
 # <a name="consulting-service-prerequisites"></a>Vereisten voor advies service
 
 Bekijk de beschrijving van en vereisten voor dit aanbieding in [Consulting Services voor Azure Marketplace en AppSource](../../consulting-services.md).  Voor de volgende specifieke Consulting Service types gelden aanvullende vereisten:
 
-|     Type aanbieding   |    Vereiste   |
-|     ----------   |    -----------   |
-| Microsoft Azure | Partners moeten een Silver-of Gold-certificering hebben voor de competentie van het [Cloud platform](https://partner.microsoft.com/membership/cloud-platform-competency). |
-| Dynamics 365 for Customer Engagement | Partners moeten een Silver-of Gold-certificering hebben voor de competentie van de [klant relatie beheer](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)van de Cloud. |
-| Dynamics 365 voor Financiën & bewerkingen | Partners moeten een Silver-of Gold-certificering hebben voor de [ondernemings resource planning-competentie](https://partner.microsoft.com/membership/enterprise-resource-planning-competency). Partners moeten in de afgelopen 12 maanden ook een minimale omzet hebben van $25.000 in Cloud transacties. |
-| Dynamics 365 Business Central | Partners moeten hebben gehandeld als een Cloud Solution Provider (CSP) of een digitale partner of record (DPOR) voor ten minste één klant. <br/> Zie [aan de slag als CSP](https://partner.microsoft.com/cloud-solution-provider/get-started)voor meer informatie over hoe u een CSP kunt worden. <br/> Zie het [overzicht van DPOR](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1)voor DPOR voor vereisten. |
-|  Power BI  | Vermeld de Power BI partner show case. Zie [Solution Partner criteria](https://powerbi.microsoft.com/become-a-partner)(Engelstalig) voor meer informatie. |
-|  PowerApps       | Partners moeten een oplossing hebben gepubliceerd op de [etalage van de partner oplossing](https://powerapps.microsoft.com/partner-showcase). |
-|  |  |
-
+| Type aanbieding | Vereiste |
+|---------|---------|
+| Dynamics 365-verkoop <br> Dynamics 365-marketing <br> Dynamics 365-klanten service <br> Dynamics 365-veld Service <br> Dynamics 365 human resources |   Moet goud of zilver gecertificeerd zijn in de [Cloud Business Applications competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor de optie voor klant betrokkenheid.    | 
+| Dynamics 365-Financiën <br> Dynamics 365 Supply Chain Management <br> Dynamics 365 commerce <br> Dynamics 365 human resources <br> Dynamics 365 project Service Automation |  Moet goud of zilver gecertificeerd zijn in de [Cloud Business Applications competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor Unified Operations Option.       |
+| Dynamics 365 Customer Insights | Moet ten minste één geslaagde productie-implementatie van [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) met ten minste 5 metingen en vijf segmenten hebben. |
+| Dynamics 365 Business Central | Moet goud of zilver gecertificeerd zijn voor [ondernemings resource planning-competentie](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) en moet de Cloud solution provider zijn voor ten minste drie Business Central-klanten. <br> <br> OF <br> <br> Moet een [zakelijke centrale toepassing hebben gepubliceerd in AppSource](https://appsource.microsoft.com/) |
+| Power BI | Moeten worden vermeld op de [Power bi partner show case](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | Moet in aanmerking komen voor geavanceerde voor delen in het [PowerApps-partnerschaps programma](https://aka.ms/PowerAppsPartner). |
 
 ## <a name="next-steps"></a>Volgende stappen
 

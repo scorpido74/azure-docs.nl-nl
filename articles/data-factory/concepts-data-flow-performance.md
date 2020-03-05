@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587580"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273216"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -59,6 +59,9 @@ Het inschakelen van debug maakt standaard gebruik van de standaard Azure Integra
 
 ![Bron onderdeel](media/data-flow/sourcepart3.png "Bron onderdeel")
 
+> [!NOTE]
+> Een goede hand leiding om u te helpen bij het kiezen van het aantal partities voor uw bron is gebaseerd op het aantal kernen dat u voor uw Azure Integration Runtime hebt ingesteld en vermenigvuldigt dat getal met vijf. Als u bijvoorbeeld een reeks bestanden in uw ADLS-mappen transformeert en u een 32-core-Azure IR wilt gebruiken, is het aantal partities dat u zou richten, 32 x 5 = 160 partities.
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>Grootte, invoer en isolatie niveau van de bron batch
 
 Onder **bron opties** in de bron transformatie kunnen de volgende instellingen invloed hebben op de prestaties:
@@ -100,7 +103,7 @@ Als u wilt voor komen dat rijen worden ingevoegd in uw DW, schakelt u **fase rin
 
 U kunt bij elke trans formatie instellen welk partitie schema u data factory wilt gebruiken op het tabblad Optimize. Het is een goed idee om eerst op bestanden gebaseerde sinks te testen waarbij de standaard partitionering en optimalisaties behouden blijven.
 
-* Voor kleinere bestanden kan het selecteren van *één partitie* soms beter en sneller werken dan Spark om uw kleine bestanden te partitioneren.
+* Voor kleinere bestanden kan het kiezen van minder partities soms beter en sneller zijn dan Spark om uw kleine bestanden te partitioneren.
 * Als u niet voldoende informatie over de bron gegevens hebt, kiest u *Round Robin* partitioneren en stelt u het aantal partities in.
 * Als uw gegevens kolommen bevatten die goede hash-sleutels kunnen zijn, kiest u *hash-partitionering*.
 

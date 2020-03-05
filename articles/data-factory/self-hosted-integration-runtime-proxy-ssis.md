@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 02/28/2020
-ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e2d1a1c6e924e879e05af80e2e36a38e8a5cde66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78160808"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273962"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Een zelf-hostende IR configureren als proxy voor een Azure-SSIS IR in Azure Data Factory
 
@@ -167,6 +167,7 @@ De tweede faserings taken die op uw Azure-SSIS IR worden uitgevoerd, worden niet
 
 - Op dit moment worden alleen gegevensstroom taken met Open Database Connectivity (ODBC), OLEDB-of plat file-verbindings beheer en ODBC-, OLEDB-of platte bestands bronnen ondersteund. 
 - Er worden alleen Azure Blob Storage-gekoppelde services ondersteund die zijn geconfigureerd met de *account sleutel*, *Shared Access Signature (SAS) URI*of *Service-Principal* -verificatie.
+- *ParameterMapping* in OLEDB-bron wordt nog niet ondersteund. Als tijdelijke oplossing gebruikt u *SQL-opdracht van variabele* als de *AccessMode* en gebruikt u de *expressie* om uw variabelen/para meters in een SQL-opdracht in te voegen. Ter illustratie kunt u een voor beeld van een pakket *(ParameterMappingSample. dtsx)* in de *map SelfhostedIrProxy/beperkingen* van onze open bare preview-container vinden door de volgende SAS-URI in te voeren op [Azure Storage Explorer](https://storageexplorer.com/): *https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c* .
 
 ## <a name="next-steps"></a>Volgende stappen
 

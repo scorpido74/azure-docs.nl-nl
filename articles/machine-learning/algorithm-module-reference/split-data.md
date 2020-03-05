@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153737"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268526"
 ---
 # <a name="split-data-module"></a>Module voor splitsen van gegevens
 
@@ -84,6 +84,26 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
 
     Op basis van de reguliere expressie die u opgeeft, wordt de gegevensset onderverdeeld in twee sets rijen: rijen met waarden die overeenkomen met de expressie en alle resterende rijen. 
 
+De volgende voor beelden laten zien hoe u een gegevensset kunt verdelen met de optie **reguliere expressie** . 
+
+### <a name="single-whole-word"></a>Eén heel woord 
+
+In dit voor beeld wordt de eerste gegevensset van alle rijen met de tekst `Gryphon` in de kolom `Text`en worden andere rijen in de tweede uitvoer van **gesplitste gegevens**geplaatst:
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>subtekenreeks
+
+In dit voor beeld wordt gezocht naar de opgegeven teken reeks op een wille keurige positie binnen de tweede kolom van de gegevensset, aangeduid met de index waarde van 1. De overeenkomst is hoofdletter gevoelig.
+
+```text
+(\1) ^[a-f]
+```
+
+De eerste resultaat gegevensset bevat alle rijen waar de index kolom met een van de volgende tekens begint: `a`, `b`, `c`, `d`, `e``f`. Alle andere rijen worden omgeleid naar de tweede uitvoer.
+
 ## <a name="relative-expression-split"></a>De relatieve expressie is gesplitst.
 
 1. Voeg de module [gegevens splitsen](./split-data.md) toe aan uw pijp lijn en verbind deze als invoer met de gegevensset die u wilt splitsen.
@@ -92,26 +112,46 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
   
 3. Typ in het tekstvak **relationele expressie** een expressie waarmee een vergelijkings bewerking wordt uitgevoerd op één kolom:
 
-
- - Numerieke kolom:
-    - De kolom bevat getallen van elk numeriek gegevens type, met inbegrip van de datum/tijd-gegevens typen.
-
-    - De expressie kan naar Maxi maal één kolom naam verwijzen.
-
-    - Gebruik het ampersand teken (&) voor de en-bewerking en gebruik het sluis teken (|) voor de OR-bewerking.
-
-    - De volgende Opera tors worden ondersteund: `<`, `>`, `<=`, `>=`, `==`, `!=`
-
-    - U kunt geen bewerkingen groeperen met behulp van `(` en `)`.
-
- - Teken reeks kolom: 
-    - De volgende Opera tors worden ondersteund: `==`, `!=`
-
-
+   Voor de **numerieke kolom**:
+   - De kolom bevat getallen van elk numeriek gegevens type, inclusief gegevens typen voor datum en tijd.
+   - De expressie kan naar Maxi maal één kolom naam verwijzen.
+   - Gebruik het en-teken `&` voor de-en-bewerking. Gebruik het sluis teken `|` voor de of-bewerking.
+   - De volgende Opera tors worden ondersteund: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - U kunt geen bewerkingen groeperen met behulp van `(` en `)`.
+   
+   Voor de **teken reeks kolom**:
+   - De volgende Opera tors worden ondersteund: `==`, `!=`.
 
 4. Voer de pijplijn uit.
 
     De expressie splitst de gegevensset in twee sets rijen: rijen met waarden die voldoen aan de voor waarde en alle resterende rijen.
+
+De volgende voor beelden laten zien hoe u een gegevensset kunt verdelen met behulp van de **relatieve expressie** optie in de module **Split data** :  
+
+### <a name="using-calendar-year"></a>Kalender jaar gebruiken
+
+Een veelvoorkomend scenario is het verdelen van een gegevensset per jaar. Met de volgende expressie worden alle rijen geselecteerd waarbij de waarden in de kolom `Year` groter zijn dan `2010`.
+
+```text
+\"Year" > 2010
+```
+
+De datum expressie moet account voor alle datum onderdelen die zijn opgenomen in de gegevens kolom en de notatie van de datums in de gegevens kolom moet consistent zijn. 
+
+In een datum kolom met de notatie `mmddyyyy`moet de expressie bijvoorbeeld als volgt zijn:
+
+```text
+\"Date" > 1/1/2010
+```
+
+### <a name="using-column-indices"></a>Kolom indices gebruiken
+
+De volgende expressie laat zien hoe u de kolom index kunt gebruiken om alle rijen in de eerste kolom van de gegevensset te selecteren die waarden bevatten die kleiner zijn dan of gelijk zijn aan 30, maar niet gelijk aan 20.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

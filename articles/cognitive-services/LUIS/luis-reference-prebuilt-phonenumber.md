@@ -1,25 +1,25 @@
 ---
 title: Vooraf gemaakte telefoon nummers-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf opgebouwde telefoon nummer entiteits gegevens in Language Understanding (LUIS).
+description: In dit artikel bevat vooraf gedefinieerde entiteit telefoonnummergegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1cc7469bf6b29ed864fac3955dc8770aa879f84d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499534"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270471"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Op telefoon nummer vooraf gebouwde entiteit voor een LUIS-app
-De `phonenumber` entiteit extraheert diverse telefoon nummers, inclusief land code. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen aan de toepassing toe te voegen. De entiteit `phonenumber` wordt alleen ondersteund in `en-us` cultuur. 
+De `phonenumber` entiteit extraheert diverse telefoon nummers, inclusief land code. Omdat deze entiteit wordt al getraind, hoeft u geen voorbeeld uitingen toevoegen aan de toepassing. De entiteit `phonenumber` wordt alleen ondersteund in `en-us` cultuur.
 
 ## <a name="types-of-a-phone-number"></a>Typen van een telefoon nummer
 `Phonenumber` wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) github
@@ -30,7 +30,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 `my mobile is 1 (800) 642-7676`
 
-#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+#### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
@@ -41,7 +41,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
 ```json
@@ -68,7 +68,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+#### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
 In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. phoneNumber** .
 
@@ -86,10 +86,10 @@ In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. pho
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de eenheden [percentage](luis-reference-prebuilt-percentage.md), [aantal](luis-reference-prebuilt-number.md)en [Tempe ratuur](luis-reference-prebuilt-temperature.md) . 
+Meer informatie over de eenheden [percentage](luis-reference-prebuilt-percentage.md), [aantal](luis-reference-prebuilt-number.md)en [Tempe ratuur](luis-reference-prebuilt-temperature.md) .

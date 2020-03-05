@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493200"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273570"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus trigger voor Azure Functions
 
@@ -369,9 +369,6 @@ De trigger Service Bus biedt verschillende [Eigenschappen van meta gegevens](./f
 |`To`|`string`|De verzenden naar een adres.|
 |`Label`|`string`|Het toepassingsspecifiek label.|
 |`CorrelationId`|`string`|De correlatie-ID.|
-
-> [!NOTE]
-> Service Bus trigger die werkt met wacht rijen voor sessie ingeschakeld en abonnementen worden weer gegeven in de preview-versie. Volg [dit item](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458) voor verdere updates hierover. 
 
 Zie [code voorbeelden](#example) die gebruikmaken van deze eigenschappen eerder in dit artikel.
 

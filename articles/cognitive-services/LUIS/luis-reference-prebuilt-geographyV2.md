@@ -1,45 +1,45 @@
 ---
 title: Geografie v2 vooraf ontwikkelde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat geographyV2 prebuiled entity Information in Language Understanding (LUIS).
+description: In dit artikel bevat geographyV2 vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a269f93820a6029370490448f02038f5aa3eb3e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464906"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273499"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 prebuiled-entiteit voor een LUIS-app
-De vooraf gemaakte geographyV2-entiteit detecteert locaties. Omdat deze entiteit al is getraind, hoeft u geen voorbeeld uitingen met GeographyV2 toe te voegen aan de toepassings intentie. De GeographyV2-entiteit wordt ondersteund in de Engelse [cultuur](luis-reference-prebuilt-entities.md).
+De vooraf gedefinieerde geographyV2 entiteit detecteert plaatsen. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen GeographyV2 die aan de toepassing intents. De GeographyV2-entiteit wordt ondersteund in de Engelse [cultuur](luis-reference-prebuilt-entities.md).
 
 ## <a name="subtypes"></a>Subtypen
-De geografische locaties hebben subtypen:
+De geografische locaties zijn subtypen:
 
 |Subtype|Doel|
 |--|--|
-|`poi`|belang stelling|
-|`city`|de naam van de plaats|
-|`countryRegion`|de naam van het land of de regio|
-|`continent`|naam van het continent|
-|`state`|de naam van de staat of provincie|
+|`poi`|nuttige plaats|
+|`city`|naam van plaats|
+|`countryRegion`|naam van het land of regio|
+|`continent`|naam van continent|
+|`state`|naam van staat of provincie|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>Oplossing voor GeographyV2-entiteit
+## <a name="resolution-for-geographyv2-entity"></a>Oplossing voor GeographyV2 entiteit
 
 De volgende entiteits objecten worden geretourneerd voor de query:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
-#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+#### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
@@ -72,7 +72,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
 In de voor gaande JSON is `poi` een afkorting van **belang rijke punten**.
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
@@ -161,7 +161,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+#### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
 In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. geographyV2** .
 
@@ -205,10 +205,10 @@ In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. geo
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de entiteiten [e-mail](luis-reference-prebuilt-email.md), [nummer](luis-reference-prebuilt-number.md)en [rang telwoord](luis-reference-prebuilt-ordinal.md) . 
+Meer informatie over de entiteiten [e-mail](luis-reference-prebuilt-email.md), [nummer](luis-reference-prebuilt-number.md)en [rang telwoord](luis-reference-prebuilt-ordinal.md) .

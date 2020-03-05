@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589881"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273547"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-beveiligings basislijn voor batch
 
@@ -59,7 +59,7 @@ Informatie over netwerk beveiliging van Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -271,7 +271,7 @@ Extern verbinding maken met de knoop punten van uw Azure Batch-groep:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Hulp**: gebruik Windows Defender op uw afzonderlijke batch knooppunten in het geval van Windows-besturings systemen, of geef uw eigen oplossing voor anti-malware op als u Linux gebruikt.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -466,7 +466,7 @@ Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Securit
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -511,7 +511,7 @@ Azure Identity Access revisies gebruiken:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -524,7 +524,7 @@ Azure-activiteiten logboeken integreren in Azure Monitor:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Verantwoordelijkheid**: klant
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3,13: <div>Micro soft toegang bieden tot relevante klant gegevens tijdens ondersteunings scenario's<br></div>
 
 **Richt lijnen**: niet beschikbaar; Klanten-lockbox nog niet ondersteund voor Azure Batch. Lijst met Klanten-lockbox ondersteunde services: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -614,9 +614,9 @@ Azure Storage accounts beveiligen:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center bewaking**: momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: gedeeld
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
 
@@ -654,7 +654,7 @@ Azure Storage accounts beveiligen:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center bewaking**: momenteel niet beschikbaar
 
 **Verantwoordelijkheid**: gedeeld
 
@@ -690,7 +690,7 @@ Informatie over de beveiliging van klant gegevens in Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center bewaking**: momenteel niet beschikbaar
 
 **Verantwoordelijkheid**: gedeeld
 
@@ -704,7 +704,7 @@ Versleutelings sleutels voor Azure Storage accounts beheren:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -728,7 +728,7 @@ Aanvullende logboek registratie/controle inschakelen voor een Azure Storage acco
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -751,7 +751,7 @@ Als u een abonnement op Rapid7, Qualys of een ander platform voor beveiligings p
 
 **Richt lijnen**: micro soft om installatie kopieën van het basis Azure batch groeps knooppunt te onderhouden en bij te werken. Zorg ervoor dat het besturings systeem van Azure Batch pool-knoop punten wordt bijgewerkt voor de duur van de levens duur van het cluster, waardoor het mogelijk is om automatische updates in te scha kelen, de knoop punten te bewaken of periodiek opnieuw op te starten.
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: gedeeld
 
@@ -788,7 +788,7 @@ Als u een abonnement op Rapid7, Qualys of een ander platform voor beveiligings p
 **Hulp**: Azure resource Graph gebruiken voor het opvragen/detecteren van alle resources (zoals compute, opslag, netwerk, enzovoort) binnen uw abonnement (en). Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
 
 
-Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
+Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager (ARM)-resources te maken en te gebruiken.
 
 
 Query's maken met Azure Graph:
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Niet toegestane brontypen
 - Toegestane brontypen
 
+
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
+
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ Query's maken met Azure Graph: https://docs.microsoft.com/azure/governance/resou
 
 **Hulp: Azure**Policy gebruiken om beperkingen te geven aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
+
 - Niet toegestane brontypen
 - Toegestane brontypen
 
-Azure Policy configureren en beheren:
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Een specifiek resource type weigeren met Azure Policy:
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Een specifiek resource type weigeren met Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **Verantwoordelijkheid**: klant
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6,11: de mogelijkheid van gebruikers om te communiceren met Azure Resource Manager via scripts beperken
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>De mogelijkheid van gebruikers om te communiceren met Azure Resource Manager via scripts beperken</div>
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
 
-Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -949,9 +949,7 @@ Dit is niet van toepassing op Azure Batch, omdat gebruikers (niet-beheerders) va
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
 
-**Richt lijnen**: niet beschikbaar,
-
-Bench Mark is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service-of IaaS-exemplaren.
+**Richt lijnen**: niet van toepassing, Bench Mark is bedoeld voor webtoepassingen die worden uitgevoerd op Azure app service-of IaaS-instanties.
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -966,10 +964,14 @@ Bench Mark is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Se
 **Richt lijnen**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. batch ' om aangepaste beleids regels te maken om de configuratie van uw Azure batch-accounts en-groepen te controleren of af te dwingen.
 
 
-Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschik bare Azure Policy aliassen weer geven:
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -991,7 +993,9 @@ Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governanc
 - Microsoft.Storage
 - Microsoft.Network
 
+
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: de configuratie van Azure-resources veilig opslaan
 
-**Richt lijnen**: als u aangepaste definities van Azure-beleid gebruikt voor uw Azure batch accounts, Pools of gerelateerde resources, gebruikt u Azure DevOps/opslag plaatsen om uw code veilig op te slaan en te beheren.
+**Richt lijnen**: als u aangepaste definities van Azure-beleid gebruikt voor uw Azure batch accounts, Pools of gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-Code opslaan in azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Code opslaan in azure DevOps:
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Documentatie voor Azure opslag plaatsen:
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1024,9 +1034,14 @@ Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops
 **Richt lijnen**: als u aangepaste installatie kopieën gebruikt voor uw Azure batch groepen, gebruikt u op rollen gebaseerd toegangs beheer (RBAC) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
 
-Meer informatie over RBAC in Azure: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+Meer informatie over RBAC in Azure:
 
-RBAC configureren in Azure: https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+RBAC configureren in Azure:
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. batch ' om aangepaste beleids regels te maken om de configuratie van uw Azure batch exemplaar te controleren of af te dwingen. U kunt ook ingebouwde beleids regels gebruiken die specifiek zijn gemaakt voor Azure Batch of de resources die door Azure Batch worden gebruikt, zoals:
 
-- Subnetten moeten worden gekoppeld aan een netwerk beveiligings groep
-- Voor opslag accounts moet een service-eind punt van een virtueel netwerk worden gebruikt
+- Subnetten moeten worden gekoppeld aan een netwerk beveiligings groep-opslag accounts moeten een service-eind punt van een virtueel netwerk gebruiken
 - Diagnostische logboeken in batch-accounts moeten worden ingeschakeld
 
 Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ Key Vault verificatie bieden met een beheerde identiteit:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -1187,7 +1201,7 @@ Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -1205,7 +1219,7 @@ Een door de klant beheerde sleutel herstellen met Power shell:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: klant
 
@@ -1218,7 +1232,7 @@ Het inschakelen van zacht verwijderen in Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center bewaking**: Ja
 
 **Verantwoordelijkheid**: klant
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Verantwoordelijkheid**: gedeeld
 
+## <a name="next-steps"></a>Volgende stappen
+
+- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

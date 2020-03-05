@@ -7,18 +7,17 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161853"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273849"
 ---
-# <a name="nvv4-series-preview"></a>NVv4-serie (preview-versie)
+# <a name="nvv4-series"></a>NVv4-serie 
 
 De virtuele machines uit de NVv4-serie worden aangedreven door [AMD Radeon instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU'S en AMD EPYC 7V12 (Rome) cpu's. Met de NVv4-serie van Azure worden virtuele machines met gedeeltelijke Gpu's geïntroduceerd. Kies de virtuele machine met de juiste grootte voor GPU-versnelde grafische toepassingen en virtuele Bureau bladen, beginnend bij 1/achtste van een GPU met 2 GiB frame buffer naar een volledige GPU met 16 GiB frame buffer. Virtuele NVv4-machines ondersteunen momenteel alleen Windows-gast besturingssystemen.
 
-[Meld u aan en krijg tijdens de preview-periode toegang tot deze machines](https://aka.ms/nvv4signup).
 <br>
 
 Premium Storage: ondersteund
@@ -42,11 +41,7 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 ## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
 
-Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure N-serie die worden uitgevoerd op Windows, moeten de NVIDIA-of AMD GPU-Stuur Programma's zijn geïnstalleerd.
-
-Met de [uitbrei ding NVIDIA GPU-stuur programma](./extensions/hpccompute-gpu-windows.md) worden de juiste NVIDIA CUDA-of grid-Stuur Programma's geïnstalleerd op een Windows N-serie-VM. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](./extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](/.extensions/overview.md)voor algemene informatie over VM-extensies.
-
-Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u de [installatie van het stuur programma voor de N-Series GPU voor Windows](./windows/n-series-driver-setup.md) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
+Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure NVv4-serie die worden uitgevoerd op Windows, moeten de AMD GPU-Stuur Programma's zijn geïnstalleerd.
 
 Voor het hand matig installeren van AMD GPU-Stuur Programma's raadpleegt u de [installatie van de N-serie AMD GPU-stuur programma voor Windows](./windows/n-series-amd-driver-setup.md) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
 

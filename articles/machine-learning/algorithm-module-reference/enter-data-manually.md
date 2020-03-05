@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917472"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268764"
 ---
 # <a name="enter-data-manually-module"></a>De module gegevens hand matig invoeren
 
@@ -89,11 +89,9 @@ Deze module kan handig zijn in scenario's zoals deze:
         |0,00016|0,004|0,999961|0,00784|1|  
         |0|0,004|0,999955|0,008615|1|  
   
-4.  Druk na elke rij op ENTER om een nieuwe regel te starten.  
-  
-     **Druk op ENTER na de laatste rij.** 
+4.  Druk na elke rij op ENTER om een nieuwe regel te starten.      
      
-     Als u meerdere keren op ENTER drukt om meerdere lege navolgende rijen toe te voegen, wordt de laatste lege rij verwijderd, maar andere lege rijen worden beschouwd als ontbrekende waarden.  
+     Als u meerdere keren op ENTER drukt om meerdere lege navolgende rijen toe te voegen, worden de lege rijen verwijderd.  
   
      Als u rijen met ontbrekende waarden maakt, kunt u deze altijd later filteren.  
   

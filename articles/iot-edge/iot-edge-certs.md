@@ -8,12 +8,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 58294c7afdf31ddd29611351d6442db1c4966157
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548744"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269037"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
@@ -78,7 +78,7 @@ Omdat productie-en bewerkings processen worden gescheiden, moet u rekening houde
 
 ## <a name="devtest-implications"></a>Gevolgen voor ontwikkelen en testen
 
-Voor het vereenvoudigen van de ontwikkeling en testen van scenario's, biedt Microsoft een set [gemak scripts](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) voor het genereren van niet-productie-certificaten die geschikt zijn voor IoT Edge in het scenario voor transparante gateway. Zie [demo certificaten maken om IOT Edge apparaatfuncties te testen](how-to-create-test-certificates.md)voor voor beelden van de werking van de scripts.
+Om ontwikkel-en test scenario's te vereenvoudigen, biedt micro soft een aantal [gebruiks vriendelijke scripts](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) voor het genereren van niet-productie certificaten die geschikt zijn voor IOT Edge in het transparante Gateway scenario. Zie [demo certificaten maken om IOT Edge apparaatfuncties te testen](how-to-create-test-certificates.md)voor voor beelden van de werking van de scripts.
 
 >[!Tip]
 > Als u wilt verbinding maken met uw apparaat IoT "leaf" apparaten en toepassingen die gebruikmaken van onze IoT-device-SDK via IoT Edge, moet u de optionele parameter GatewayHostName u aan bij het einde van de verbindingsreeks van het apparaat toevoegen. Wanneer het certificaat van de Edge Hub wordt gegenereerd, is gebaseerd op een indeling met een lagere versie van de hostnaam van config.yaml, daarom de namen van de overeenkomst en de verificatie van TLS-certificaat te voltooien, moet u de parameter GatewayHostName in kleine letters.
@@ -100,6 +100,6 @@ Hier ziet u de hiërarchie van certificaat diepte weergegeven in de schermafbeel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Informatie over Azure IoT Edge-modules](iot-edge-modules.md)
+[Azure IoT Edge-modules begrijpen](iot-edge-modules.md)
 
 [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)

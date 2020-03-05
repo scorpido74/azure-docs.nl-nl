@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b0aa78a519567a8e1ffd76e26f1d9ea3ca701fca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274177"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273990"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(AFGESCHAFT) Kubernetes-schillen en Kubernetes-infrastructuur schalen
 
@@ -42,13 +42,15 @@ Als u deze stappen niet hebt uitgevoerd en deze zelfstudie wilt volgen, gaat u t
 
 Tot nu toe zijn de Azure Vote-front-end en het Redis-exemplaar geïmplementeerd, elk met één replica. U kunt dit controleren door de opdracht [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) uit te voeren.
 
-```azurecli-interactive
+Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
+
+```console
 kubectl get pods
 ```
 
 Uitvoer:
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -56,19 +58,19 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 
 Wijzig het aantal schillen in de `azure-vote-front`-implementatie handmatig met behulp van de opdracht [kubectl scale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale). In dit voorbeeld wordt het aantal verhoogd naar 5.
 
-```azurecli-interactive
+```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
 Voer [kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) uit om te controleren of Kubernetes de schillen heeft gemaakt. Na ongeveer een minuut worden de extra schillen uitgevoerd:
 
-```azurecli-interactive
+```console
 kubectl get pods
 ```
 
 Uitvoer:
 
-```bash
+```output
 NAME                                READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
 azure-vote-front-3309479140-2hfh0   1/1       Running   0          3m
@@ -84,7 +86,7 @@ Kubernetes biedt ondersteuning voor het [automatisch horizontaal schalen van sch
 
 Als u automatisch schalen wilt gebruiken, moeten CPU-aanvragen en -limieten voor uw schillen zijn gedefinieerd. In de `azure-vote-front`-implementatie vraagt de front-end container om 0,25 CPU, met een limiet van 0,5 CPU. De instellingen zien er als volgt uit:
 
-```YAML
+```yaml
 resources:
   requests:
      cpu: 250m
@@ -95,19 +97,19 @@ resources:
 In het volgende voorbeeld wordt de opdracht [kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) gebruikt om het aantal schillen in de `azure-vote-front`-implementatie automatisch te schalen. Als het CPU-gebruik in dit geval hoger is dan 50%, wordt het aantal schillen automatisch verhoogd naar maximaal 10.
 
 
-```azurecli-interactive
+```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
 Voer de volgende opdracht uit om de status van het automatisch schalen te bekijken:
 
-```azurecli-interactive
+```console
 kubectl get hpa
 ```
 
 Uitvoer:
 
-```bash
+```output
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
@@ -126,7 +128,7 @@ az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-co
 
 De uitvoer van de opdracht toont het aantal agentknooppunten in de waarde van `agentPoolProfiles:count`:
 
-```azurecli
+```output
 {
   "agentPoolProfiles": [
     {

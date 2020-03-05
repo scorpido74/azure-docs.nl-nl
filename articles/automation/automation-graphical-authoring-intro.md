@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256000"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272970"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafisch ontwerpen in Azure Automation
 
@@ -43,7 +43,7 @@ Met het besturings element bibliotheek kunt u [activiteiten](#activities) select
 |:--- |:--- |
 | Cmdlets |Alle cmdlets die kunnen worden gebruikt in uw runbook. Cmdlets zijn ingedeeld op module. Alle modules die u hebt geïnstalleerd in uw Automation-account zijn beschikbaar. |
 | Runbooks |De runbooks in uw Automation-account. U kunt deze runbooks toevoegen aan het canvas dat moet worden gebruikt als onderliggende runbooks. Alleen runbooks van hetzelfde kern type worden weer gegeven als het runbook dat wordt bewerkt. Voor grafische runbooks worden alleen op Power shell gebaseerde runbooks weer gegeven. Voor grafische runbooks in Power shell-werk stromen worden alleen runbooks op basis van Power shell-werk stromen weer gegeven. |
-| Activa |De [Automation-assets](/previous-versions/azure/dn939988(v=azure.100)) in uw Automation-account dat u in uw runbook kunt gebruiken. Als u een activum toevoegt aan een runbook, wordt er een werk stroom activiteit toegevoegd waarmee de geselecteerde activa worden opgehaald. In het geval van variabele assets kunt u selecteren of u een activiteit wilt toevoegen om de variabele op te halen of de variabele in te stellen. |
+| Assets |De [Automation-assets](/previous-versions/azure/dn939988(v=azure.100)) in uw Automation-account dat u in uw runbook kunt gebruiken. Als u een activum toevoegt aan een runbook, wordt er een werk stroom activiteit toegevoegd waarmee de geselecteerde activa worden opgehaald. In het geval van variabele assets kunt u selecteren of u een activiteit wilt toevoegen om de variabele op te halen of de variabele in te stellen. |
 | Runbook-besturings element |Beheer activiteiten die kunnen worden gebruikt in uw huidige runbook. Een verbindings activiteit heeft meerdere invoer en wacht totdat alle taken zijn voltooid voordat u doorgaat met de werk stroom. Een code activiteit voert een of meer regels Power shell-of Power shell-werk stroom code uit, afhankelijk van het type van het grafische runbook. U kunt deze activiteit gebruiken voor aangepaste code of voor functionaliteit die moeilijk te vergemakkelijkt is met andere activiteiten. |
 
 ### <a name="configuration-control"></a>Configuratie beheer
@@ -380,7 +380,7 @@ In het volgende voor beeld wordt de uitvoer van een activiteit met de naam **Twi
 
 ## <a name="authenticating-to-azure-resources"></a>Verifiëren met Azure-resources
 
-Runbooks in Azure Automation die Azure-resources beheren, moeten worden geverifieerd voor Azure. Het [uitvoeren als-account](automation-create-runas-account.md), ook wel een Service-Principal genoemd, is het standaard mechanisme dat een Automation-runbook gebruikt om toegang te krijgen tot Azure Resource Manager resources in uw abonnement. U kunt deze functionaliteit toevoegen aan een grafisch runbook door het **AzureRunAsConnection** -verbindings element toe te voegen, dat gebruikmaakt van de cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) van Power shell, op het canvas. U kunt ook de cmdlet [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) toevoegen. Dit scenario wordt geïllustreerd in het volgende voor beeld.
+Runbooks in Azure Automation die Azure-resources beheren, moeten worden geverifieerd voor Azure. Het [uitvoeren als-account](automation-create-runas-account.md), ook wel een Service-Principal genoemd, is het standaard mechanisme dat een Automation-runbook gebruikt om toegang te krijgen tot Azure Resource Manager resources in uw abonnement. U kunt deze functionaliteit toevoegen aan een grafisch runbook door het **AzureRunAsConnection** -verbindings element toe te voegen, dat gebruikmaakt van de cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) van Power shell, op het canvas. U kunt ook de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) toevoegen. Dit scenario wordt geïllustreerd in het volgende voor beeld.
 
 ![Run as-verificatie activiteiten](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste NGINX ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 2debe6daf409200059f28aef52202223193e8f0c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622422"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270055"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Een aangepaste NGINX ingangs controller gebruiken en HTTPS configureren
 
@@ -23,7 +23,7 @@ In dit artikel leest u hoe u Azure dev Spaces configureert voor het gebruik van 
 * [Azure Kubernetes service (AKS)-cluster waarvoor Azure dev Spaces zijn ingeschakeld][qs-cli].
 * [kubectl][kubectl] is geïnstalleerd.
 * [Helm 3 is geïnstalleerd][helm-installed].
-* [Een aangepast domein][custom-domain] met een [DNS-zone][dns-zone] in dezelfde resource groep als uw AKS-cluster.
+* [Een aangepast domein][custom-domain] met een [DNS-zone][dns-zone].  In dit artikel wordt ervan uitgegaan dat de aangepaste domein-en DNS-zone zich in dezelfde resource groep bevinden als uw AKS-cluster, maar het is wel mogelijk om een aangepast domein en een DNS-zone in een andere resource groep te gebruiken.
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>Een aangepaste NGINX ingress-controller configureren
 

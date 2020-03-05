@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, open Shift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228236"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271365"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
 
@@ -137,6 +137,8 @@ Begin met de sectie console installeren.
 
 Tijdens `oc create -f twistlock_console.yaml` in stap 2 krijgt u een fout melding bij het maken van de naam ruimte.
 U kunt deze gewoon negeren, de naam ruimte is eerder gemaakt met de opdracht `oc new-project`.
+
+Gebruik `azure-disk` voor het opslag type.
 
 ### <a name="create-an-external-route-to-console"></a>Een externe route naar de console maken
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522030"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269357"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten met Azure Active Directory (preview-versie)
 
@@ -35,7 +35,7 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 | [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md) | X | X |
 | Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | Webauthn vereist Windows 10 versie 1809 of hoger | X | X |
-| Voor apparaten die lid zijn van [Azure AD](../devices/concept-azure-ad-join.md) is Windows 10 versie 1809 of hoger vereist | X |   |
+| Voor apparaten die lid zijn van [Azure AD](../devices/concept-azure-ad-join.md) is Windows 10 versie 1903 of hoger vereist | X |   |
 | Voor [hybride Azure AD gekoppelde apparaten](../devices/concept-azure-ad-join-hybrid.md) is Windows 10 Insider build 18945 of hoger vereist |   | X |
 | Volledige patches voor Windows Server 2016/2019-domein controllers. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) versie 1.4.32.0 of hoger |   | X |
@@ -54,6 +54,7 @@ De volgende scenario's worden niet ondersteund:
 - Meld u aan bij een server met behulp van een beveiligings sleutel.
 - Als u uw beveiligings sleutel niet hebt gebruikt om u online aan te melden bij uw apparaat, kunt u dit niet gebruiken om u aan te melden of om offline te ontgrendelen.
 - Een Windows 10-apparaat aanmelden of ontgrendelen met een beveiligings sleutel met meerdere Azure AD-accounts. Dit scenario maakt gebruik van het laatste account dat aan de beveiligings sleutel is toegevoegd. Met webauthx kunnen gebruikers het account kiezen dat ze willen gebruiken.
+- Een apparaat met Windows 10 versie 1809 ontgrendelen. Gebruik Windows 10 versie 1903 of hoger voor de beste ervaring.
 
 ## <a name="prepare-devices-for-preview"></a>Apparaten voorbereiden voor de preview-versie
 

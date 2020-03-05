@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228342"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269439"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
@@ -43,6 +43,8 @@ Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwin
 3. Start de virtuele machine en verwijder vervolgens het voor beeld van het stuur programma door ' amdcleanuputility-x64. exe ' uit te voeren in de map '. ..\AMDCleanUninstallUtility '. Het exacte pad varieert, afhankelijk van de locatie van de vorige stuur programma-installatie bestanden.  
 
 4. Down load en installeer het meest recente stuur programma.
+
+5. Start opnieuw op de virtuele machine.
 
 ## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
 

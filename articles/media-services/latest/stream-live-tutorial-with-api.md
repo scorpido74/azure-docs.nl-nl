@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 47d526ea410bc449c91ae4fb10913850c447f1b3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cb6095f1579334b9fe35a02a3006de32ff551989
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582649"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268177"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>Zelf studie: live streamen met Media Services
 
@@ -47,7 +47,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md).<br/>Zorg ervoor dat u de waarden die u gebruikt voor de naam van de resource groep en de naam van de Media Services account onthouden.
 - Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U moet deze gebruiken om toegang te krijgen tot de API.
 - Een camera of een apparaat (zoals een laptop) dat wordt gebruikt om een gebeurtenis te verzenden.
-- Een on-premises live-encoder die signalen van de camera converteert naar stromen die naar een Media Service-service voor live streamen worden verzonden. De stroom moet de **RTMP**- of **Smooth Streaming**-indeling hebben.
+- Zie [Aanbevolen on-premises Live coderings](recommended-on-premises-live-encoders.md)Programma's voor een on-premises Live coderings programma dat signalen van de camera converteert naar stromen die worden verzonden naar de Media Services live streaming-service. De stroom moet de **RTMP**- of **Smooth Streaming**-indeling hebben.
 
 > [!TIP]
 > Zorg dat u [Live streamen met Media Services v3](live-streaming-overview.md) hebt gelezen voordat u verder gaat. 

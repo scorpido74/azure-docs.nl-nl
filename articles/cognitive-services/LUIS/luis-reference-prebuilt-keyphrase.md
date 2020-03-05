@@ -1,33 +1,33 @@
 ---
 title: Vooraf samengestelde LUIS van de woordgroepen-entiteit
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat vooraf opgemaakte woordgroepen entiteits gegevens in Language Understanding (LUIS).
+description: In dit artikel bevat keyphrase vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491271"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270533"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>vooraf samengestelde woordgroepen instantie voor een LUIS-app
-De entiteit woordgroep haalt een aantal sleutel zinnen op uit een utterance. U hoeft geen voorbeeld uitingen met een Woordgroeps groep aan de toepassing toe te voegen. De woordgroepen entiteit wordt in [veel cultures](luis-language-support.md#languages-supported) ondersteund als onderdeel van de functie voor [tekst analyse](../text-analytics/overview.md) . 
+De entiteit woordgroep haalt een aantal sleutel zinnen op uit een utterance. U hoeft geen voorbeeld uitingen met een Woordgroeps groep aan de toepassing toe te voegen. De woordgroepen entiteit wordt in [veel cultures](luis-language-support.md#languages-supported) ondersteund als onderdeel van de functie voor [tekst analyse](../text-analytics/overview.md) .
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Oplossing voor vooraf gebouwde woordgroepen entiteit
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Oplossing voor vooraf gedefinieerde keyPhrase entiteit
 
 De volgende entiteits objecten worden geretourneerd voor de query:
 
 `where is the educational requirements form for the development and engineering group`
 
-#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+#### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
@@ -39,7 +39,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
 ```json
@@ -76,7 +76,7 @@ De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+#### <a name="v2-response"></a>[V2-antwoord](#tab/V2)
 
 In het volgende voor beeld ziet u de resolutie van de entiteit **Builtin. Superwoord groep** .
 
@@ -96,7 +96,7 @@ In het volgende voor beeld ziet u de resolutie van de entiteit **Builtin. Superw
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 

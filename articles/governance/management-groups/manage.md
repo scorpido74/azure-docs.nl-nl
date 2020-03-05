@@ -3,12 +3,12 @@ title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751228"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267945"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -17,6 +17,12 @@ Als uw organisatie veel abonnementen heeft, moet u de toegang, beleidsregels en 
 Beheergroepen bieden u beheer van bedrijfskwaliteit op grote schaal, ongeacht de typen abonnementen die u hebt.  Zie [uw resources organiseren met Azure-beheer groepen](overview.md)voor meer informatie over beheer groepen.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager gebruikers tokens en de cache van de beheer groep 30 minuten duren voordat ze worden vernieuwd.  Nadat u een actie hebt uitgevoerd zoals het verplaatsen van een beheer groep of abonnement, kan het tot 30 minuten duren om weer te geven.  
+>Als u de updates sneller wilt bekijken, moet u uw token bijwerken door de browser te vernieuwen, in-en uitloggen of een nieuw token aan te vragen.  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>De naam van een beheer groep wijzigen
 
@@ -121,7 +127,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen RBAC-rol
 
 1. Als u de details van de beheer groep wilt weer geven, selecteert u de koppeling **(details)** naast de titel van de beheer groep. Als deze koppeling niet beschikbaar is, bent u niet gemachtigd om die beheer groep weer te geven.
 
-   ![Primair](./media/main.png)
+   ![Hoofd](./media/main.png)
 
 ### <a name="view-in-powershell"></a>Weer geven in Power shell
 

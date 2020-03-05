@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588904"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273307"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>De invoer processor wijzigen in Azure Cosmos DB 
 
@@ -41,13 +41,14 @@ We kijken naar een voor beeld in het volgende diagram om meer inzicht te krijgen
 
 Het gegeven punt is altijd de bewaakte container, van een `Container` exemplaar dat u aanroept `GetChangeFeedProcessorBuilder`:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
 Waarbij de eerste para meter een unieke naam is die het doel van deze processor beschrijft, en de tweede naam is de gemachtigde-implementatie die wijzigingen verwerkt. 
 
 Een voor beeld van een gemachtigde is:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
 Ten slotte definieert u een naam voor dit processor exemplaar met `WithInstanceName` en dat is de container voor het onderhouden van de lease status met `WithLeaseContainer`.
 

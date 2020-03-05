@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428393"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268656"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Linux-Data Science Virtual Machine in azure
 
@@ -60,10 +60,10 @@ De gegevensset heeft verschillende typen statistieken voor elk e-mail bericht:
 
 * Kolommen zoals **word\_freq\__Word_**  het percentage woorden in het e-mail bericht aangeven dat overeenkomt met *Word*. Als bijvoorbeeld **word\_freq\_** **1**is, is 1% van alle woorden in het e-mail bericht *gemaakt*.
 * Kolommen zoals **char\_freq\__teken_**  geven het percentage van alle tekens in het e-mail *bericht.*
-* **kapitaal\_uitvoeren\_lengte\_langste** is de langste duur van een reeks hoofdletters.
-* **kapitaal\_uitvoeren\_lengte\_gemiddelde** is de gemiddelde duur van alle reeksen hoofdletters.
-* **kapitaal\_uitvoeren\_lengte\_totale** is de totale lengte van alle reeksen hoofdletters.
-* **spam** geeft aan of het e-mailbericht is beschouwd als spam of niet (1 = spam, 0 = geen spam).
+* de **lengte van\_run\_length\_langste** is de langste lengte van een reeks hoofd letters.
+* de **lengte van\_run\_\_gemiddelde** is de gemiddelde lengte van alle reeksen hoofd letters.
+* de totale lengte van de **\_lengte\_totaal** is het totaal van alle reeksen hoofd letters.\_
+* **spam** geeft aan of het e-mail bericht als spam is beschouwd of niet (1 = spam, 0 = geen spam).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>De gegevensset verkennen met R open
 
@@ -90,7 +90,7 @@ Voor een andere weergave van de gegevens:
 
 In deze weer gave ziet u het type van elke variabele en de eerste waarden in de gegevensset.
 
-De **spam** kolom als een geheel getal is gelezen, maar het is eigenlijk een categorische variabele (of van meerdere factoren). Instellen van het type:
+De kolom **spam** is gelezen als een geheel getal, maar het is wel echt een categorische-variabele (of factor). Instellen van het type:
 
     data$spam <- as.factor(data$spam)
 
@@ -187,6 +187,8 @@ Als u de code van de beslissings structuur wilt implementeren in de voor gaande 
    ![Het primaire autorisatie token Azure Machine Learning Studio (klassiek)](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Laad het **AzureML** -pakket en stel vervolgens waarden van de variabelen in met uw token en werk ruimte-id in uw R-sessie op de DSVM:
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ Als u de code van de beslissings structuur wilt implementeren in de voor gaande 
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. Maak een bestand settings. json voor deze werk ruimte:
+
+        vim ~/.azureml/settings.json
+
+1. Zorg ervoor dat de volgende inhoud in de instellingen wordt geplaatst. json:
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. Publiceer de functie **predictSpam** naar AzureML met behulp van de functie **publishWebService** :
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. Deze functie neemt de functie **predictSpam** , maakt een webservice met de naam **spamWebService** die de invoer en uitvoer heeft gedefinieerd, en retourneert vervolgens informatie over het nieuwe eind punt.
@@ -370,11 +386,11 @@ Laden en de gegevensset configureren:
 1. Als u het bestand wilt laden, selecteert u het tabblad **gegevens** .
 1. Kies de selector naast **Bestands naam**en selecteer vervolgens **spambaseHeaders. data**.
 1. Het bestand laden. Selecteer **uitvoeren**. U ziet een samen vatting van elke kolom, met inbegrip van het geïdentificeerde gegevens type. of het nu gaat om een invoer, een doel of een ander type variabele. en het aantal unieke waarden.
-1. Rammelaar heeft geïdentificeerd de **spam** kolom als het doel. Selecteer de kolom tegen **ongewenste e-mail** en stel het **doel gegevens type** in op **Categoric**.
+1. Rattle heeft de kolom met **ongewenste e-mail** op de juiste wijze geïdentificeerd als het doel. Selecteer de kolom tegen **ongewenste e-mail** en stel het **doel gegevens type** in op **Categoric**.
 
 De gegevens verkennen:
 
-1. Selecteer de **verkennen** tabblad.
+1. Selecteer het tabblad **verkennen** .
 1. Als u informatie wilt weer geven over de typen variabelen en een aantal samenvattings statistieken, selecteert u **samen vatting** > **uitvoeren**.
 1. Als u andere typen statistieken over elke variabele wilt weer geven, selecteert u andere opties, zoals **Beschrijving** of **basis**.
 
@@ -388,7 +404,7 @@ De **correlatie** punten zijn ook interessant. Een tekening maken:
 
 1. Selecteer **correlatie**bij **type**.
 1. Selecteer **Uitvoeren**.
-1. Rammelaar waarschuwt u dat het wordt aanbevolen maximaal 40 variabelen. Selecteer **Ja** om de grafiek weer te geven.
+1. Rammelaar waarschuwt u dat het wordt aanbevolen maximaal 40 variabelen. Selecteer **Ja** om het waarnemings punt weer te geven.
 
 Er zijn interessante correlaties die beschikbaar zijn: _technologie_ is in het algemeen gecorreleerd aan _HP_ en _Labs_, bijvoorbeeld. Het is ook sterk gecorreleerd aan _650_ , omdat het netnummer van de gegevensset donateurs is 650.
 
@@ -413,10 +429,10 @@ Ga terug naar het tabblad **cluster** . Selecteer **KMeans**en stel het **aantal
 
 Een basis machine learning model voor de beslissings structuur maken:
 
-1. Selecteer de **Model** tabblad
+1. Selecteer het tabblad **model** ,
 1. Selecteer **structuur**voor het **type**.
-1. Selecteer **Execute** om weer te geven van de structuur van de vorm van tekst in het uitvoervenster weergegeven.
-1. Selecteer de **tekenen** knop om een grafische versie weer te geven. De beslissings structuur ziet er ongeveer uit als de structuur die we eerder hebben verkregen met behulp van rpart.
+1. Selecteer **uitvoeren** om de structuur weer te geven in de tekst vorm in het uitvoer venster.
+1. Selecteer de knop **tekenen** om een grafische versie weer te geven. De beslissings structuur ziet er ongeveer uit als de structuur die we eerder hebben verkregen met behulp van rpart.
 
 Een handige functie van Rattle is de mogelijkheid om verschillende machine learning-methoden uit te voeren en deze snel te evalueren. Dit zijn de stappen:
 
@@ -425,7 +441,7 @@ Een handige functie van Rattle is de mogelijkheid om verschillende machine learn
 1. Wanneer Rattle is voltooid, kunt u elk **type** waarde selecteren, zoals **SVM**, en de resultaten weer geven.
 1. U kunt ook de prestaties van de modellen op de validatieset vergelijken met behulp van het tabblad **evalueren** . De selectie van de **fout matrix** toont bijvoorbeeld de Verwar ring matrix, algemene fout en gemiddeld aantal klassen fouten voor elk model in de validatieset. U kunt ook ROC curven uitzetten, gevoeligheids analyses uitvoeren en andere typen model evaluaties doen.
 
-Wanneer u klaar bent met het bouwen van modellen, selecteert u het tabblad **logboek** om de R-code weer te geven die tijdens uw sessie werd uitgevoerd door Rattle. U kunt selecteren de **exporteren** knop op te slaan.
+Wanneer u klaar bent met het bouwen van modellen, selecteert u het tabblad **logboek** om de R-code weer te geven die tijdens uw sessie werd uitgevoerd door Rattle. U kunt de knop **exporteren** selecteren om deze op te slaan.
 
 > [!NOTE]
 > De huidige release van Rattle bevat een bug. Als u het script wilt wijzigen of als u het wilt gebruiken om de stappen later te herhalen, moet u een **#** teken invoegen vóór het *exporteren van dit logboek...* in de tekst van het logboek.
@@ -495,19 +511,19 @@ De verbinding met de lokale server instellen:
 1. Selecteer **Windows** - > **weergave aliassen.**
 1. Selecteer de knop **+** om een nieuwe alias te maken. Voer voor de nieuwe alias naam **spam data base**in. 
 1. Selecteer voor **stuur programma** **postgresql**.
-1. De URL ingesteld op **jdbc:postgresql://localhost/spam**.
-1. Geef uw gebruikersnaam en wachtwoord op.
+1. Stel de URL in op **JDBC: postgresql://localhost/spam**.
+1. Voer uw gebruikers naam en wacht woord in.
 1. Selecteer **OK**.
-1. Om te openen de **verbinding** venster, dubbelklikt u op de **Spam database** alias.
+1. Als u het venster **verbinding** wilt openen, dubbelklikt u op de alias voor de **spam-data base** .
 1. Selecteer **Verbinden**.
 
 Sommige query's uitvoeren:
 
-1. Selecteer de **SQL** tabblad.
+1. Selecteer het tabblad **SQL** .
 1. Voer in het vak query boven aan het tabblad **SQL** een Basic-query in, zoals `SELECT * from data;`.
 1. Druk op CTRL + ENTER om de query uit te voeren. SQuirreL SQL retourneert standaard de eerste 100 rijen van uw query.
 
-Er zijn veel meer query's die u kunt uitvoeren om deze gegevens te verkennen. Hoe werkt bijvoorbeeld de frequentie van het woord *maken* verschillen tussen spam en ham?
+Er zijn veel meer query's die u kunt uitvoeren om deze gegevens te verkennen. Hoe kan de frequentie van *het woord bijvoorbeeld* verschillen tussen spam en de hoeveelheid?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
@@ -521,7 +537,7 @@ Als u machine learning wilt doen met behulp van gegevens die zijn opgeslagen in 
 
 ### <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-Azure SQL Data Warehouse is een scale-out-data base op basis van de cloud die grote hoeveel heden gegevens kan verwerken, zowel relationele als niet-relationeel. Zie voor meer informatie, [wat is Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure SQL Data Warehouse is een scale-out-data base op basis van de cloud die grote hoeveel heden gegevens kan verwerken, zowel relationele als niet-relationeel. Zie [Wat is Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) voor meer informatie.
 
 Verbinding maken met het datawarehouse en de tabel maken, voer de volgende opdracht uit vanaf een opdrachtprompt:
 

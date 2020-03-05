@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d867ccd8704d4aba4627e7b81638394b7e1e8d3
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1717969aeb24a153f986c70ef60db1aac5c840fb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423776"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267776"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>De indeling Avro in Azure Data Factory
 
@@ -83,7 +83,11 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 ## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
 
-Avro [complexe gegevens typen](https://avro.apache.org/docs/current/spec.html#schema_complex) worden niet ondersteund (records, enums, matrices, kaarten, vakbonden en vast).
+### <a name="copy-activity"></a>Kopieeractiviteit
+Avro [complexe gegevens typen](https://avro.apache.org/docs/current/spec.html#schema_complex) worden niet ondersteund (records, enums, matrices, kaarten, vakbonden en vast) in de Kopieer activiteit.
+
+### <a name="data-flows"></a>Gegevensstromen
+Wanneer u werkt met Avro-bestanden in gegevens stromen, kunt u complexe gegevens typen lezen en schrijven, maar u moet het fysieke schema eerst wissen uit de gegevensset. In gegevens stromen kunt u uw logische projectie instellen en kolommen afleiden die complexe structuren zijn en die velden vervolgens automatisch toewijzen aan een AVRO-bestand.
 
 ## <a name="next-steps"></a>Volgende stappen
 

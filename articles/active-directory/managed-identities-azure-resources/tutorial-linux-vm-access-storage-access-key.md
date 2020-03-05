@@ -1,5 +1,5 @@
 ---
-title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage-Linux-Azure AD
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage via de toegangs sleutel-Linux-Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c31fbf8c7c1aa37134a1808cd3f54a559833c1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183424"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273820"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage via een toegangssleutel
 
@@ -36,7 +36,7 @@ Deze zelfstudie laat zien hoe u toegangssleutels voor opslagaccounts kunt ophale
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken 
+## <a name="create-a-storage-account"></a>Create a storage account 
 
 Als u nog geen opslagaccount hebt, maakt u er nu een.  U kunt deze stap ook overslaan en de door het systeem toegewezen beheerde identiteit voor uw VM toegang verlenen tot de sleutels van een bestaand opslagaccount. 
 
@@ -66,7 +66,7 @@ In deze stap verleent u de door het systeem toegewezen beheerde identiteit voor 
 
 1. Navigeer terug naar het zojuist gemaakte opslagaccount.
 2. Klik op de koppeling **Toegangsbeheer (IAM)** in het linkerpaneel.  
-3. Klik op **+ Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen
+3. Klik op **+ Roltoewijzing toevoegen** bovenaan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen
 4. Stel **Rol** in op 'De servicerol Sleuteloperator voor opslagaccounts', aan de rechterkant van de pagina. 
 5. Stel in de volgende vervolgkeuzelijst **Toegang toewijzen aan** de resource in op Virtuele machine.  
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op Alle resourcegroepen.  
