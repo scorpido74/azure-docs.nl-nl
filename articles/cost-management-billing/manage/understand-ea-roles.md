@@ -5,21 +5,21 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/03/2020
 ms.author: banders
-ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 7b3b3e96f9e065614e8acc5305658c2e1d0abd4a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647481"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270223"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure
 
 Voor het beheren van het gebruik en de uitgaven van uw organisatie kunnen Azure-klanten met een Enterprise Agreement (EA) vijf beheerdersrollen toewijzen:
 
-- Ondernemingsbeheerder
-- Ondernemingsbeheerder (alleen lezen)<sup>1</sup>
+- Zakelijke beheerder
+- Zakelijke beheerder (alleen lezen)<sup>1</sup>
 - Afdelingsbeheerder
 - Afdelingsbeheerder (alleen lezen)
 - Eigenaar van account<sup>2</sup>
@@ -36,8 +36,8 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 |Rol| Gebruikerslimiet|
 |---|---|
-|Ondernemingsbeheerder|Onbeperkt|
-|Ondernemingsbeheerder (alleen lezen)|Onbeperkt|
+|Zakelijke beheerder|Onbeperkt|
+|Zakelijke beheerder (alleen lezen)|Onbeperkt|
 |Afdelingsbeheerder|Onbeperkt|
 |Afdelingsbeheerder (alleen lezen)|Onbeperkt|
 |Accounteigenaar|1 per account<sup>3</sup>|
@@ -46,7 +46,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="organization-structure-and-permissions-by-role"></a>De organisatiestructuur en machtigingen per rol
 
-|Taken| Ondernemingsbeheerder|Ondernemingsbeheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
+|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
 |---|---|---|---|---|---|
 |Zakelijke beheerders weergeven|✔|✔|✘|✘|✘|
 |Zakelijke beheerders toevoegen of verwijderen|✔|✘|✘|✘|✘|
@@ -65,7 +65,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="usage-and-costs-access-by-role"></a>Toegang tot gebruik en kosten per rol
 
-|Taken| Ondernemingsbeheerder|Ondernemingsbeheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
+|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
 |---|---|---|---|---|---|
 |Tegoedsaldo weergeven, inclusief financiële toezegging|✔|✔|✘|✘|✘|
 |Bestedingsquotum van afdeling weergeven|✔|✔|✘|✘|✘|

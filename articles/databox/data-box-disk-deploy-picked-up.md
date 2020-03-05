@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845485"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273177"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
 
 De volgende stappen zijn afhankelijk van de locatie waarvandaan u het apparaat retourneert. De instructies zijn verschillend voor de VS/Canada, de Europese Unie (EU), Australië of Aziatische landen.
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[In de VS of Canada](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[In de VS of Canada](#tab/in-us-or-canada)
 
 Voer de volgende stappen uit als u het apparaat vanuit de VS of Canada retourneert.
 
@@ -67,7 +67,7 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS of Canada retournee
     - Als het trackingnummer niet wordt vermeld, moet u bij het afhalen door UPS extra kosten betalen.
     - In plaats van het ophalen te plannen, kunt u de Data Box Disk ook zelf naar de dichtstbijzijnde inleverlocatie brengen.
 
-### <a name="in-europetabin-europe"></a>[In Europa](#tab/in-europe)
+### <a name="in-europe"></a>[In Europa](#tab/in-europe)
 
 Voer de volgende stappen uit als u het apparaat vanuit Europa retourneert.
 
@@ -80,7 +80,7 @@ Voer de volgende stappen uit als u het apparaat vanuit Europa retourneert.
 4. Ga naar de DHL Express-website voor uw land/regio en kies **Boek een koerier pick-up > Online verzenden**.    
 3. Geef het nummer van de luchtvrachtbrief op en klik op **Boek een koerier** om een ophaalmoment te plannen.
 
-### <a name="in-australiatabin-australia"></a>[In Australië](#tab/in-australia)
+### <a name="in-australia"></a>[In Australië](#tab/in-australia)
 
 Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle inkomende verzendingen moeten een melding vooraf hebben. Voer de volgende stappen uit voor retourneren vanuit Australië.
 
@@ -88,7 +88,7 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
 3. Bevestig het label op de doos. 
 4. Boek via de koppeling https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference online een afspraak voor de retourzending. 
 
-### <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan)
+### <a name="in-japan"></a>[In Japan](#tab/in-japan)
 
 1. Schrijf als gegevens van de afzender uw bedrijfsnaam en adresgegevens op de vrachtbrief.
 2. Stuur een e-mail naar Quantium Solutions met behulp van de volgende e-mailsjabloon.
@@ -115,7 +115,7 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 - E-mail：Customerservice.JP@quantiumsolutions.com 
 - Telefoon: 03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[In Korea](#tab/in-korea)
+### <a name="in-korea"></a>[In Korea](#tab/in-korea)
 
 1. Zorg ervoor dat u de vrachtbrief voor de retourzending bijlevert.
 2. Ophalen pakket aanvragen indien vrachtbrief aanwezig is:
@@ -130,7 +130,7 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
     4. U krijgt een mondelinge bevestiging als de aanvraag via de telefoon wordt gedaan.
 
 
-### <a name="in-singaporetabin-singapore"></a>[In Singapore](#tab/in-singapore)
+### <a name="in-singapore"></a>[In Singapore](#tab/in-singapore)
 
 1. Druk het verzendlabel af en bevestig het op de doos. Als het label is beschadigd of verloren is gegaan:
     - Ga naar **Overzicht > Verzendlabel downloaden** en download een retourlabel.
@@ -157,7 +157,7 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 
 3. Overhandig het pakket aan de koerier.
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[In Zelfbeheerd](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[In Zelfbeheerd](#tab/in-selfmanaged)
 
 Als u Data Box Disk gebruikt in Japan, Singapore, Korea en West-Europa en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies. 
 
@@ -175,8 +175,6 @@ Als u Data Box Disk gebruikt in Japan, Singapore, Korea en West-Europa en de bez
 3. Het Azure Data Box-team werkt samen met u verder om de bezorging bij het Azure-datacentrum te regelen.
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>Volgende stappen
 

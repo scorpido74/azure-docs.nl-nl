@@ -101,146 +101,311 @@
       href: identity-platform-integration-checklist.md
     - name: Toepassingsscenario's
       items:
-        - name: Aanmeldingsdoelgroep
-          href: v2-supported-account-types.md
-        - name: App met één pagina
+        - name: Toepassingen met één pagina
           items:
-            - name: Overzicht
-              href: scenario-spa-overview.md
-            - name: App-registratie
-              href: scenario-spa-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-spa-app-configuration.md
-            - name: Aanmelden en afmelden
-              href: scenario-spa-sign-in.md
-            - name: Een token ophalen voor een API
-              href: scenario-spa-acquire-token.md
-            - name: Een web-API aanroepen
-              href: scenario-spa-call-api.md
-            - name: Verplaatsen naar productie
-              href: scenario-spa-production.md
-        - name: Web-app waarmee gebruikers worden aangemeld
+            - name: Javascript
+              href: tutorial-v2-javascript-spa.md
+        - name: Web-apps
           items:
-            - name: Overzicht
-              href: scenario-web-app-sign-user-overview.md
-            - name: App-registratie
-              href: scenario-web-app-sign-user-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-web-app-sign-user-app-configuration.md
-            - name: Aanmelden en afmelden
-              href: scenario-web-app-sign-user-sign-in.md
-            - name: Verplaatsen naar productie
-              href: scenario-web-app-sign-user-production.md
-        - name: Web-app die web-API's aanroept
+            - name: ASP.NET
+              href: tutorial-v2-asp-webapp.md
+        - name: Mobiele apps en desktop-apps
           items:
-            - name: Overzicht
-              href: scenario-web-app-call-api-overview.md
-            - name: App-registratie
-              href: scenario-web-app-call-api-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-web-app-call-api-app-configuration.md
-            - name: Globale afmelding
-              href: scenario-web-app-call-api-sign-in.md
-            - name: Een token ophalen voor de app
-              href: scenario-web-app-call-api-acquire-token.md
-            - name: Een web-API aanroepen
-              href: scenario-web-app-call-api-call-api.md
-            - name: Verplaatsen naar productie
-              href: scenario-web-app-call-api-production.md
-        - name: Beveiligde web-API
-          items:
-            - name: Overzicht
-              href: scenario-protected-web-api-overview.md
-            - name: App-registratie
-              href: scenario-protected-web-api-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-protected-web-api-app-configuration.md
-            - name: Verificatie van bereiken of app-rollen
-              href: scenario-protected-web-api-verification-scope-app-roles.md
-            - name: Verplaatsen naar productie
-              href: scenario-protected-web-api-production.md
-        - name: Web-API die web-API's aanroept
-          items:
-            - name: Overzicht
-              href: scenario-web-api-call-api-overview.md
-            - name: App-registratie
-              href: scenario-web-api-call-api-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-web-api-call-api-app-configuration.md
-            - name: Een token verkrijgen
-              href: scenario-web-api-call-api-acquire-token.md
-            - name: Een web-API aanroepen
-              href: scenario-web-api-call-api-call-api.md
-            - name: Verplaatsen naar productie
-              href: scenario-web-api-call-api-production.md
-        - name: Desktop-app die web-API's aanroept
-          items:
-            - name: Overzicht
-              href: scenario-desktop-overview.md
-            - name: App-registratie
-              href: scenario-desktop-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-desktop-app-configuration.md
-            - name: Een token verkrijgen
-              href: scenario-desktop-acquire-token.md
-            - name: Een web-API aanroepen
-              href: scenario-desktop-call-api.md
-            - name: Verplaatsen naar productie
-              href: scenario-desktop-production.md
+            - name: Android
+              href: tutorial-v2-android.md
+            - name: iOS en macOS
+              href: tutorial-v2-ios.md
+            - name: Universeel Windows-platform
+              href: tutorial-v2-windows-uwp.md
+            - name: .NET voor Windows Desktop
+              href: tutorial-v2-windows-desktop.md
+            - name: Modus voor gedeeld apparaat gebruiken in uw Android-app
+              href: tutorial-v2-shared-device-mode.md
         - name: Daemon-apps
           items:
-            - name: Overzicht
-              href: scenario-daemon-overview.md
-            - name: App-registratie
-              href: scenario-daemon-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-daemon-app-configuration.md
-            - name: Een token verkrijgen
-              href: scenario-daemon-acquire-token.md
-            - name: Een web-API aanroepen
-              href: scenario-daemon-call-api.md
-            - name: Verplaatsen naar productie
-              href: scenario-daemon-production.md
-        - name: Mobiele app die web-API's aanroept
+            - name: Webtoepassing met ASP.NET-daemon
+              href: tutorial-v2-aspnet-daemon-web-app.md
+    - name: Voorbeelden
+      href: sample-v2-code.md
+    - name: Concepten
+      items:
+        - name: Basisbeginselen van verificatie
+          href: authentication-scenarios.md
+        - name: Verificatiestromen en app-scenario's
+          href: authentication-flows-app-scenarios.md
+        - name: Best practices voor identiteitsplatform
+          href: identity-platform-integration-checklist.md
+        - name: Toepassingsscenario's
+          items:
+            - name: Aanmeldingsdoelgroep
+              href: v2-supported-account-types.md
+            - name: App met één pagina
+              items:
+                - name: Overzicht
+                  href: scenario-spa-overview.md
+                - name: App-registratie
+                  href: scenario-spa-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-spa-app-configuration.md
+                - name: Aanmelden en afmelden
+                  href: scenario-spa-sign-in.md
+                - name: Een token ophalen voor een API
+                  href: scenario-spa-acquire-token.md
+                - name: Een web-API aanroepen
+                  href: scenario-spa-call-api.md
+                - name: Verplaatsen naar productie
+                  href: scenario-spa-production.md
+            - name: Web-app waarmee gebruikers worden aangemeld
+              items:
+                - name: Overzicht
+                  href: scenario-web-app-sign-user-overview.md
+                - name: App-registratie
+                  href: scenario-web-app-sign-user-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-web-app-sign-user-app-configuration.md
+                - name: Aanmelden en afmelden
+                  href: scenario-web-app-sign-user-sign-in.md
+                - name: Verplaatsen naar productie
+                  href: scenario-web-app-sign-user-production.md
+            - name: Web-app die web-API's aanroept
+              items:
+                - name: Overzicht
+                  href: scenario-web-app-call-api-overview.md
+                - name: App-registratie
+                  href: scenario-web-app-call-api-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-web-app-call-api-app-configuration.md
+                - name: Globale afmelding
+                  href: scenario-web-app-call-api-sign-in.md
+                - name: Een token ophalen voor de app
+                  href: scenario-web-app-call-api-acquire-token.md
+                - name: Een web-API aanroepen
+                  href: scenario-web-app-call-api-call-api.md
+                - name: Verplaatsen naar productie
+                  href: scenario-web-app-call-api-production.md
+            - name: Beveiligde web-API
+              items:
+                - name: Overzicht
+                  href: scenario-protected-web-api-overview.md
+                - name: App-registratie
+                  href: scenario-protected-web-api-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-protected-web-api-app-configuration.md
+                - name: Verificatie van bereiken of app-rollen
+                  href: scenario-protected-web-api-verification-scope-app-roles.md
+                - name: Verplaatsen naar productie
+                  href: scenario-protected-web-api-production.md
+            - name: Web-API die web-API's aanroept
+              items:
+                - name: Overzicht
+                  href: scenario-web-api-call-api-overview.md
+                - name: App-registratie
+                  href: scenario-web-api-call-api-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-web-api-call-api-app-configuration.md
+                - name: Een token verkrijgen
+                  href: scenario-web-api-call-api-acquire-token.md
+                - name: Een web-API aanroepen
+                  href: scenario-web-api-call-api-call-api.md
+                - name: Verplaatsen naar productie
+                  href: scenario-web-api-call-api-production.md
+            - name: Desktop-app die web-API's aanroept
+              items:
+                - name: Overzicht
+                  href: scenario-desktop-overview.md
+                - name: App-registratie
+                  href: scenario-desktop-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-desktop-app-configuration.md
+                - name: Een token verkrijgen
+                  href: scenario-desktop-acquire-token.md
+                - name: Een web-API aanroepen
+                  href: scenario-desktop-call-api.md
+                - name: Verplaatsen naar productie
+                  href: scenario-desktop-production.md
+            - name: Daemon-apps
+              items:
+                - name: Overzicht
+                  href: scenario-daemon-overview.md
+                - name: App-registratie
+                  href: scenario-daemon-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-daemon-app-configuration.md
+                - name: Een token verkrijgen
+                  href: scenario-daemon-acquire-token.md
+                - name: Een web-API aanroepen
+                  href: scenario-daemon-call-api.md
+                - name: Verplaatsen naar productie
+                  href: scenario-daemon-production.md
+            - name: Mobiele app die web-API's aanroept
+              items:
+                - name: Overzicht
+                  href: scenario-mobile-overview.md
+                - name: App-registratie
+                  href: scenario-mobile-app-registration.md
+                - name: Codeconfiguratie
+                  href: scenario-mobile-app-configuration.md
+                - name: Specifieke configuratie voor mobiele platforms
+                  items:
+                    - name: Modus voor gedeeld apparaat voor Android-apparaten
+                      href: shared-device-mode.md
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Systeembrowser op Android
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: Brokers gebruiken met Xamarin iOS en Android
+                      displayName: Microsoft Authenticator Microsoft Intune
+                      href: msal-net-use-brokers-with-xamarin-apps.md
+                    - name: Universeel Windows-platform
+                      href: msal-net-uwp-considerations.md
+                - name: Een token ophalen voor de app
+                  href: scenario-mobile-acquire-token.md
+                - name: Een web-API aanroepen
+                  href: scenario-mobile-call-api.md
+                - name: Verplaatsen naar productie
+                  href: scenario-mobile-production.md
+        - name: Microsoft Authentication Library (MSAL)
           items:
             - name: Overzicht
-              href: scenario-mobile-overview.md
-            - name: App-registratie
-              href: scenario-mobile-app-registration.md
-            - name: Codeconfiguratie
-              href: scenario-mobile-app-configuration.md
-            - name: Specifieke configuratie voor mobiele platforms
+              href: msal-overview.md
+            - name: Accounts en tenantprofielen (Android)
+              href: accounts-overview.md
+            - name: Machtigingsagenten (Android)
+              href: authorization-agents.md
+            - name: Brokered auth (Android)
+              href: brokered-auth.md
+            - name: Migratie
               items:
-                - name: Modus voor gedeeld apparaat voor Android-apparaten
-                  href: shared-device-mode.md
-                - name: Xamarin Android
-                  href: msal-net-xamarin-android-considerations.md
-                - name: Systeembrowser op Android
-                  href: msal-net-system-browser-android-considerations.md
-                - name: Xamarin iOS
-                  href: msal-net-xamarin-ios-considerations.md
-                - name: Brokers gebruiken met Xamarin iOS en Android
-                  displayName: Microsoft Authenticator Microsoft Intune
-                  href: msal-net-use-brokers-with-xamarin-apps.md
-                - name: Universeel Windows-platform
-                  href: msal-net-uwp-considerations.md
-            - name: Een token ophalen voor de app
-              href: scenario-mobile-acquire-token.md
-            - name: Een web-API aanroepen
-              href: scenario-mobile-call-api.md
-            - name: Verplaatsen naar productie
-              href: scenario-mobile-production.md
-    - name: Microsoft Authentication Library (MSAL)
-      items:
-        - name: Overzicht
-          href: msal-overview.md
-        - name: Accounts en tenantprofielen (Android)
-          href: accounts-overview.md
-        - name: Machtigingsagenten (Android)
-          href: authorization-agents.md
-        - name: Brokered auth (Android)
-          href: brokered-auth.md
-        - name: Migratie
+                - name: Migreren naar MSAL.NET
+                  href: msal-net-migration.md
+                - name: Migreren naar MSAL.js
+                  href: msal-compare-msal-js-and-adal-js.md
+                - name: Migreren naar MSAL.Android
+                  href: migrate-android-adal-msal.md
+                - name: Migreren naar MSAL.iOS/MacOS
+                  href: migrate-objc-adal-msal.md
+                - name: Migreren naar MSAL Python
+                  href: migrate-python-adal-msal.md
+                - name: Migreren naar MSAL voor Java
+                  href: migrate-adal-msal-java.md
+                - name: Xamarin-apps migreren met behulp van brokers naar MSAL.NET
+                  href: msal-net-migration-ios-broker.md
+            - name: Ondersteunde verificatiestromen
+              href: msal-authentication-flows.md
+            - name: Openbare client-apps met enkele of meerdere acocunts (Android)
+              href: single-multi-account.md
+            - name: Tokens verkrijgen en in cache opslaan
+              items:
+                - name: Tokens verkrijgen en in cache opslaan
+                  href: msal-acquire-cache-tokens.md
+                - name: Bereiken voor v1.0-apps
+                  href: msal-v1-app-scopes.md
+            - name: Clienttoepassingen
+              items:
+                - name: Clienttoepassingen
+                  href: msal-client-applications.md
+                - name: Toepassingsconfiguratie
+                  href: msal-client-application-configuration.md
+                - name: Toepassingen initialiseren (.NET)
+                  href: msal-net-initializing-client-applications.md
+                - name: Client-asserties (.NET)
+                  href: msal-net-client-assertions.md
+                - name: Toepassingen initialiseren (JS)
+                  href: msal-js-initializing-client-applications.md
+            - name: Fouten en uitzonderingen verwerken
+              href: msal-handling-exceptions.md
+            - name: Logboekregistratie
+              href: msal-logging.md
+            - name: Eenmalige aanmelding
+              items:
+                - name: Eenmalige aanmelding met MSAL.js
+                  href: msal-js-sso.md
+                - name: Eenmalige aanmelding met MSAL voor iOS en macOS
+                  items:
+                    - name: SSO tussen MSAL-apps
+                      href: single-sign-on-macos-ios.md
+                    - name: SSO tussen ADAL- en MSAL-apps
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: Integreren met ADFS
+              items:
+                - name: ADFS-ondersteuning in MSAL.NET
+                  href: msal-net-adfs-support.md
+                - name: ADFS-ondersteuning in MSAL voor Python
+                  href: msal-python-adfs-support.md
+                - name: ADFS-ondersteuning in MSAL voor Java
+                  href: msal-java-adfs-support.md
+            - name: Integreren met Azure AD B2C
+              items:
+                - name: Android
+                  href: msal-android-b2c.md
+                - name: Javascript
+                  href: msal-b2c-overview.md
+                - name: .NET
+                  href: msal-net-aad-b2c-considerations.md
+                - name: iOS en macOS
+                  href: 'config-authority.md#b2c'
+            - name: Overwegingen en bekende problemen
+              items:
+                - name: MSAL.NET
+                  items:
+                    - name: Webbrowsers
+                      href: msal-net-web-browsers.md
+                - name: MSAL.js
+                  items:
+                    - name: Overwegingen bij het gebruik van IE
+                      href: msal-js-use-ie-browser.md
+                    - name: Bekende problemen - IE en Microsoft Edge
+                      href: msal-js-known-issues-ie-edge-browsers.md
+                    - name: Bekende problemen - Safari
+                      href: msal-js-known-issues-safari-browser.md
+                - name: Problemen met SSL oplossen (MSAL iOS/macOS)
+                  href: ssl-issues.md
+        - name: Verificatieprotocol
+          items:
+            - name: Toepassingstypen en OAuth 2.0
+              href: v2-app-types.md
+            - name: OAuth 2.0- en OpenID Connect-protocollen
+              href: active-directory-v2-protocols.md
+            - name: OpenID Connect
+              href: v2-protocols-oidc.md
+            - name: 'OAuth 2.0: stroom voor impliciete goedkeuring'
+              href: v2-oauth2-implicit-grant-flow.md
+            - name: OAuth 2.0-verificatiecode verlenen
+              href: v2-oauth2-auth-code-flow.md
+            - name: Namens-stroom voor OAuth 2.0
+              href: v2-oauth2-on-behalf-of-flow.md
+            - name: Referenties voor OAuth 2.0-client verlenen
+              href: v2-oauth2-client-creds-grant-flow.md
+            - name: Codestroom voor OAuth 2.0-apparaat
+              href: v2-oauth2-device-code.md
+            - name: Toewijzing van OAuth 2.0-wachtwoordreferenties van resource-eigenaar
+              href: v2-oauth-ropc.md
+            - name: 'OAuth 2,0-assertiestroom voor SAML-bearer'
+              href: v2-saml-bearer-assertion.md
+            - name: Rollover van ondertekeningssleutel
+              href: active-directory-signing-key-rollover.md
+            - name: Id-tokens
+              href: id-tokens.md
+            - name: Toegangstokens
+              href: access-tokens.md
+            - name: Certificaatreferenties
+              href: active-directory-certificate-credentials.md
+        - name: Toepassingsconfiguratie
+          items:
+            - name: Toepassingen en service-principals
+              href: app-objects-and-service-principals.md
+            - name: Hoe en waarom apps worden toegevoegd aan Azure AD
+              href: active-directory-how-applications-are-added.md
+            - name: Beperkingen voor omleidings-URI en antwoord-URL
+              href: reply-url.md
+            - name: Validatieverschillen per ondersteunde accounttypen
+              href: supported-accounts-validation.md
+            - name: Apps met één tenant en apps met meerdere tenants
+              href: single-and-multi-tenant-apps.md
+        - name: Machtigingen en toestemming
+          displayName: Scopes
           items:
             - name: Overzicht
               href: msal-migration.md
@@ -264,11 +429,19 @@
           href: single-multi-account.md
         - name: Tokens verkrijgen en in cache opslaan
           items:
-            - name: Tokens verkrijgen en in cache opslaan
-              href: msal-acquire-cache-tokens.md
-            - name: Bereiken voor v1.0-apps
-              href: msal-v1-app-scopes.md
-        - name: Clienttoepassingen
+            - name: Overzicht
+              href: authentication-national-cloud.md
+            - name: Verificatie
+              href: msal-national-cloud.md
+        - name: Automatisch gebruikers inrichten (SCIM)
+          items:
+            - name: Wat is automatische inrichting van gebruikers?
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: Een SCIM-eindpunt bouwen en integreren
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
+    - name: Instructiegidsen
+      items:
+        - name: Verificatie
           items:
             - name: Rolclaim configureren
               href: active-directory-enterprise-app-role-management.md
@@ -284,54 +457,46 @@
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Toepassingsconfiguratie
           items:
-            - name: Clienttoepassingen
-              href: msal-client-applications.md
-            - name: Toepassingsconfiguratie
-              href: msal-client-application-configuration.md
-            - name: Toepassingen initialiseren (.NET)
-              href: msal-net-initializing-client-applications.md
-            - name: Client-asserties (.NET)
-              href: msal-net-client-assertions.md
-            - name: Toepassingen initialiseren (JS)
-              href: msal-js-initializing-client-applications.md
-        - name: Fouten en uitzonderingen verwerken
-          href: msal-handling-exceptions.md
-        - name: Logboekregistratie
-          href: msal-logging.md
-        - name: Eenmalige aanmelding
-          items:
-            - name: Eenmalige aanmelding met MSAL.js
-              href: msal-js-sso.md
-            - name: Eenmalige aanmelding met MSAL voor iOS en macOS
+            - name: Nieuwe trainingshandleiding voor app-registratie in de Azure-portal
+              href: app-registrations-training-guide-for-app-registrations-legacy-users.md
+            - name: Nieuwe ervaring voor app-registratie in de Azure-portal
+              href: app-registration-portal-training-guide.md
+            - name: Van een app met één tenant een app met meerdere tenants maken
+              href: howto-convert-app-to-be-multi-tenant.md
+            - name: Een service-principal maken
               items:
-                - name: SSO tussen MSAL-apps
-                  href: single-sign-on-macos-ios.md
-                - name: SSO tussen ADAL- en MSAL-apps
-                  href: sso-between-adal-msal-apps-macos-ios.md
-        - name: Integreren met ADFS
-          items:
-            - name: ADFS-ondersteuning in MSAL.NET
-              href: msal-net-adfs-support.md
-            - name: ADFS-ondersteuning in MSAL voor Python
-              href: msal-python-adfs-support.md
-            - name: ADFS-ondersteuning in MSAL voor Java
-              href: msal-java-adfs-support.md
-        - name: Integreren met Azure AD B2C
-          items:
-            - name: Android
-              href: msal-android-b2c.md
-            - name: Javascript
-              href: msal-b2c-overview.md
-            - name: .NET
-              href: msal-net-aad-b2c-considerations.md
-            - name: iOS en macOS
-              href: 'config-authority.md#b2c'
-        - name: Overwegingen en bekende problemen
+                - name: Azure PowerShell gebruiken
+                  href: howto-authenticate-service-principal-powershell.md
+                - name: Azure Portal gebruiken
+                  href: howto-create-service-principal-portal.md
+            - name: Uw app tot een groep gebruikers beperken
+              href: howto-restrict-your-app-to-a-set-of-users.md
+            - name: App-rollen toevoegen aan uw toepassing
+              href: howto-add-app-roles-in-azure-ad-apps.md
+            - name: Huisstijlrichtlijnen
+              href: howto-add-branding-in-azure-ad-apps.md
+            - name: Uitgeversdomein bijwerken
+              href: howto-configure-publisher-domain.md
+            - name: Servicevoorwaarden en privacyverklaring
+              href: howto-add-terms-of-service-privacy-statement.md
+        - name: Werken met de Microsoft Authentication Library
           items:
             - name: MSAL.NET
               items:
-                - name: Webbrowsers
-                  href: msal-net-web-browsers.md
+                - name: Een token uit de cache ophalen
+                  href: msal-net-acquire-token-silently.md
+                - name: Serialisatie van tokencache
+                  href: msal-net-token-cache-serialization.md
+                - name: De tokencache wissen
+                  href: msal-net-clear-token-cache.md
+                - name: Een exemplaar maken van een openbare client-app
+                  href: msal-net-instantiate-public-client-config-options.md
+                - name: Een exemplaar maken van een vertrouwelijke client met opties
+                  href: msal-net-instantiate-confidential-client-config-options.md
+                - name: Toestemming verkrijgen voor verschillende resources
+                  href: msal-net-user-gets-consent-for-multiple-resources.md
+                - name: Uw eigen HttpClient gebruiken
+                  href: msal-net-provide-httpclient.md
             - name: MSAL.js
               items:
                 - name: Overwegingen bij het gebruik van IE
@@ -443,21 +608,21 @@
           href: howto-convert-app-to-be-multi-tenant.md
         - name: Een service-principal maken
           items:
-            - name: Azure PowerShell gebruiken
-              href: howto-authenticate-service-principal-powershell.md
-            - name: Azure Portal gebruiken
-              href: howto-create-service-principal-portal.md
-        - name: Uw app tot een groep gebruikers beperken
-          href: howto-restrict-your-app-to-a-set-of-users.md
-        - name: App-rollen toevoegen aan uw toepassing
-          href: howto-add-app-roles-in-azure-ad-apps.md
-        - name: Huisstijlrichtlijnen
-          href: howto-add-branding-in-azure-ad-apps.md
-        - name: Uitgeversdomein bijwerken
-          href: howto-configure-publisher-domain.md
-        - name: Servicevoorwaarden en privacyverklaring
-          href: howto-add-terms-of-service-privacy-statement.md
-    - name: Werken met de Microsoft Authentication Library
+            - name: De verbonden Active Directory-service gebruiken
+              href: vs-active-directory-add-connected-service.md
+            - name: Aan de slag met .NET MVC-projecten
+              href: vs-active-directory-dotnet-getting-started.md
+            - name: Wat is er gebeurd met mijn .NET MVC-project?
+              href: vs-active-directory-dotnet-what-happened.md
+            - name: Aan de slag met WebAPI-projecten
+              href: vs-active-directory-webapi-getting-started.md
+            - name: Wat is er gebeurd met mijn WebAPI-project?
+              href: vs-active-directory-webapi-what-happened.md
+            - name: Fouten vaststellen tijdens verificatie
+              href: vs-active-directory-error.md
+        - name: De Microsoft Graph API gebruiken
+          href: microsoft-graph-intro.md
+    - name: Verwijzingen
       items:
         - name: MSAL.NET
           items:
@@ -522,12 +687,13 @@
 - name: Verwijzingen
   items:
     - name: Verificatiebibliotheken
-      displayName: MSAL
+      displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Identiteits- en toegangs-API's in Microsoft Graph
       href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
     - name: Manifest van de toepassing
       href: reference-app-manifest.md
+      displayName: app manifest
     - name: Android MSAL-configuratiebestand
       href: msal-configuration.md
     - name: Codes van verificatie- en autorisatiefouten
@@ -538,18 +704,16 @@
   items:
     - name: Woordenlijst
       href: developer-glossary.md
-    - name: Video's
-      href: identity-videos.md
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure AD-blog
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Ontwikkelaarsblog van het Microsoft-identiteitsplatform
-      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
-    - name: Azure-roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+      href: 'https://developer.microsoft.com/identity/blogs/'
     - name: Aanmelden met Microsoft uitproberen
       href: 'https://azure.microsoft.com/develop/identity/signin/'
-    - name: Beheerde identiteiten voor Azure-resources
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: Ondersteuning vragen
       displayName: 'support, help options'
       href: developer-support-help-options.md
+    - name: Beheerde identiteiten voor Azure-resources
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

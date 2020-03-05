@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188395"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245389"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -45,7 +45,7 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
     > [!IMPORTANT]
     >
-    > Als u ervoor kiest om het abonnement te verplaatsen naar de Azure AD-tenant van het nieuwe account, worden alle [RBAC-toewijzingen](../../role-based-access-control/overview.md) (op rollen gebaseerd toegangsbeheer) voor het beheren van de resources in het abonnement definitief verwijderd. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources in het abonnement te beheren. Zie [Abonnementen overdragen naar een gebruiker in een andere Azure AD-tenant](../../cognitive-services/acoustics/known-issues.md) voor meer informatie. U kunt eventueel het vinkje voor Subscription Azure AD-tenant verwijderen om het eigendom van de facturering over te dragen zonder dat het abonnement naar de tenant van het nieuwe account wordt verplaatst. Als u dit doet, blijven de bestaande RBAC-machtigingen voor het beheer van Azure-resources behouden.
+    > Als u ervoor kiest om het abonnement te verplaatsen naar de Azure AD-tenant van het nieuwe account, worden alle [RBAC-toewijzingen](../../role-based-access-control/overview.md) (op rollen gebaseerd toegangsbeheer) voor het beheren van de resources in het abonnement definitief verwijderd. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources in het abonnement te beheren. Zie [Abonnementen overdragen naar een gebruiker in een andere Azure AD-tenant](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) voor meer informatie. U kunt eventueel het vinkje voor Subscription Azure AD-tenant verwijderen om het eigendom van de facturering over te dragen zonder dat het abonnement naar de tenant van het nieuwe account wordt verplaatst. Als u dit doet, blijven de bestaande RBAC-machtigingen voor het beheer van Azure-resources behouden.
 
     ![Overdrachtspagina verzenden](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

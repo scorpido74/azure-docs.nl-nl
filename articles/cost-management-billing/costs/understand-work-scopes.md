@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 5e7d01c5383898fb14f57188cd1bee7ea64e8263
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5e1117bdefc4916fedc5c316632641d77c2f09d3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200962"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206024"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -65,7 +65,7 @@ Cost Management Inzender is de aanbevolen rol met minimale bevoegdheden. Deze ro
 
 - **Actie ondernemen wanneer budgetten worden overschreden** – Cost Management Inzenders hebben ook toegang nodig tot het maken en/of beheren van actiegroepen om automatisch te reageren op overschrijdingen. Overweeg [Bewakingsbijdrage](../../role-based-access-control/built-in-roles.md#monitoring-contributor) toe te kennen aan een resourcegroep die de actiegroep bevat, die moet worden gebruikt wanneer de budgetdrempels worden overschreden. Voor het automatiseren van specifieke acties zijn aanvullende rollen vereist voor de specifieke services die worden gebruikt, zoals automatisering en Azure Functions.
 - **Kosten plannen voor gegevensexport** – Cost Management Inzenders moeten ook toegang hebben tot het beheren van opslagaccounts om een export te plannen om gegevens naar een opslagaccount te kopiëren. Overweeg [Inzender voor Storage-account](../../role-based-access-control/built-in-roles.md#storage-account-contributor) toe te kennen aan een resourcegroep die het opslagaccount bevat waarin kostengegevens worden geëxporteerd.
-- **Het weergeven van aanbevelingen voor het besparen van kosten** – Cost Management Lezers en Cost Management Inzenders hebben standaard toegang tot het *bekijken* van kostenaanbevelingen. Toegang tot de kostenaanbevelingen vereist echter toegang tot afzonderlijke resources. Overweeg om een [servicespecifieke rol toe te kennen](../../role-based-access-control/built-in-roles.md#built-in-role-descriptions) als u op een op kosten gebaseerde aanbeveling wilt handelen.
+- **Het weergeven van aanbevelingen voor het besparen van kosten** – Cost Management Lezers en Cost Management Inzenders hebben standaard toegang tot het *bekijken* van kostenaanbevelingen. Toegang tot de kostenaanbevelingen vereist echter toegang tot afzonderlijke resources. Overweeg om een [servicespecifieke rol toe te kennen](../../role-based-access-control/built-in-roles.md#descriptions-and-ids) als u op een op kosten gebaseerde aanbeveling wilt handelen.
 
 ## <a name="enterprise-agreement-scopes"></a>Enterprise Agreement-bereiken
 

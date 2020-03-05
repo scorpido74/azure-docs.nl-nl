@@ -356,6 +356,34 @@
           href: move-across-regions-publicip-portal.md
         - name: Openbare IP-adressen - PowerShell
           href: move-across-regions-publicip-powershell.md
+    - name: Problemen oplossen
+      items:
+        - name: Peering-problemen van virtueel netwerk oplossen
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet- of VPN-verbindingen configureren en valideren
+          href: virtual-network-configure-vnet-connections.md
+        - name: Netwerkbeveiligingsgroepen
+          href: diagnose-network-traffic-filter-problem.md
+        - name: Routes
+          href: diagnose-network-routing-problem.md
+        - name: Doorvoer testen
+          href: virtual-network-bandwidth-testing.md
+        - name: Netwerklatentie van VM testen
+          href: virtual-network-test-latency.md
+        - name: Kan virtuele netwerken niet verwijderen
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: Problemen met connectiviteit van VM naar VM
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: PTR configureren voor controle van de SMTP-koptekst
+          href: create-ptr-for-smtp-service.md
+        - name: Controlelijst voor het oplossen van problemen met virtuele apparaten
+          href: virtual-network-troubleshoot-nva.md
+        - name: Problemen met uitgaande SMTP-verbindingen oplossen
+          href: troubleshoot-outbound-smtp-connectivity.md
+        - name: Over IP-adres 168.63.129.16
+          href: what-is-ip-address-168-63-129-16.md
+        - name: Verbindingsproblemen met Azure-VM oplossen
+          href: troubleshoot-vm-connectivity.md
     - name: Klassieke implementatie
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Naslaginformatie
