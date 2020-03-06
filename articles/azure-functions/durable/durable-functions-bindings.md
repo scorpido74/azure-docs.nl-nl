@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410228"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357904"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindingen voor Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ Wanneer u Orchestrator-functies schrijft in script talen (bijvoorbeeld Java scri
 
 Intern deze trigger roept een reeks wacht rijen aan in het standaard opslag account voor de functie-app. Deze wacht rijen zijn interne implementatie details van de uitbrei ding. Daarom worden ze niet expliciet geconfigureerd in de binding eigenschappen.
 
-### <a name="trigger-behavior"></a>Triggergedrag
+### <a name="trigger-behavior"></a>Gedrag activeren
 
 Hier volgen enkele opmerkingen over de Orchestration-trigger:
 
@@ -143,7 +143,7 @@ Als u VS code gebruikt of de Azure Portal voor ontwikkeling, wordt de activiteit
 
 Intern deze trigger roept een wachtrij aan in het standaard opslag account voor de functie-app. Deze wachtrij is een interne implementatie details van de uitbrei ding, wat daarom niet expliciet is geconfigureerd in de binding eigenschappen.
 
-### <a name="trigger-behavior"></a>Triggergedrag
+### <a name="trigger-behavior"></a>Gedrag activeren
 
 Hier volgen enkele opmerkingen over de trigger voor activiteiten:
 
@@ -372,7 +372,7 @@ Wanneer u de Visual Studio-hulpprogram ma's voor Azure Functions gebruikt, wordt
 
 Intern deze trigger roept een reeks wacht rijen aan in het standaard opslag account voor de functie-app. Deze wacht rijen zijn interne implementatie details van de uitbrei ding. Daarom worden ze niet expliciet geconfigureerd in de binding eigenschappen.
 
-### <a name="trigger-behavior"></a>Triggergedrag
+### <a name="trigger-behavior"></a>Gedrag activeren
 
 Hier volgen enkele opmerkingen over de entiteits trigger:
 
@@ -464,7 +464,7 @@ Entiteits klassen hebben speciale mechanismen voor interactie met bindingen en .
 
 De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is geïmplementeerd als een duurzame functie die is geschreven in Java script. Met deze functie worden drie bewerkingen, `add`, `reset`en `get`gedefinieerd, die allemaal werken met een gehele status.
 
-**function.json**
+**function. json**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ De volgende code is een voor beeld van een eenvoudige *teller* -entiteit die is 
 }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -602,7 +602,7 @@ Het is met name niet zinvol om de `Get` bewerking te Signa leren, omdat er geen 
 
 Hier volgt een voor beeld van een door de wachtrij geactiveerde functie waarmee de entiteit Counter in Java script wordt gesignaleerd.
 
-**function.json**
+**function. json**
 ```json
 {
     "bindings": [
@@ -622,7 +622,7 @@ Hier volgt een voor beeld van een door de wachtrij geactiveerde functie waarmee 
   }
 ```
 
-**index.js**
+**index. js**
 ```javascript
 const df = require("durable-functions");
 

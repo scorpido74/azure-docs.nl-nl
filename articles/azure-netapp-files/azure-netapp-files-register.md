@@ -1,6 +1,6 @@
 ---
 title: Registreren voor Azure NetApp Files | Microsoft Docs
-description: Beschrijft hoe u zich registreren voor het gebruik van Azure NetApp bestanden.
+description: Hierin wordt beschreven hoe u zich registreert om Azure NetApp Files te gebruiken.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,33 +15,33 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299214"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381308"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registreren voor Azure NetApp Files
 
 > [!IMPORTANT] 
-> Voordat u de resourceprovider Azure NetApp Files registreert, moet een e-mailbericht hebt ontvangen van het team van Azure NetApp bestanden waaruit blijkt dat u toegang tot de service hebt gekregen. 
+> Voordat u de Azure NetApp Files Resource provider registreert, moet u een e-mail adres hebben ontvangen van het Azure NetApp Files team bevestigen dat u toegang hebt gekregen tot de service. 
 
-In dit artikel leert u hoe u te registreren voor Azure NetApp bestanden, zodat u beginnen kunt met het gebruik van de service.
+In dit artikel wordt beschreven hoe u zich registreert voor Azure NetApp Files, zodat u de service kunt gaan gebruiken.
 
-## <a name="waitlist"></a>Een wachtlijst indienen voor toegang tot de service
+## <a name="waitlist"></a>Een Waitlist-aanvraag indienen voor toegang tot de service
 
-1. Een wachtlijst indienen voor toegang tot de service Azure NetApp bestanden via de [Azure NetApp Files wachtlijst verzendpagina](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+1. Een Waitlist-aanvraag indienen om toegang te krijgen tot de Azure NetApp Files-service via de [inzendings pagina van Azure NetApp files Waitlist](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
 
-    Wachtlijst aanmelding is geen garantie voor directe toegang tot. 
+    Waitlist-aanmelding biedt geen garantie voor directe toegang tot de service. 
 
-2. Wachten op een officiële bevestigingse-mail van het team van Azure NetApp bestanden voordat u doorgaat met de andere taken. 
+2. Wacht op een officiële bevestigings-e-mail van het Azure NetApp Files team voordat u doorgaat met andere taken. 
 
-## <a name="resource-provider"></a>Registreer de Resourceprovider van NetApp
+## <a name="resource-provider"></a>De NetApp-resource provider registreren
 
 Voor het gebruik van de service moet u de Azure-resourceprovider registreren voor Azure NetApp Files.
 
 > [!NOTE] 
-> U kunt zich registreren is de Resourceprovider NetApp zelfs als u geen toegang voor de service wordt verleend. Echter, zonder toestemming toegang, een Azure-portal of API-aanvraag voor het maken van een NetApp-account of een andere Azure-bestanden voor NetApp-bron wordt geweigerd met de volgende fout:  
+> U kunt de NetApp-resource provider ook registreren zonder dat hiervoor toegang is verleend voor de service. Zonder toegangs autorisatie wordt elke Azure Portal-of API-aanvraag voor het maken van een NetApp-account of een andere Azure NetApp Files resource echter afgewezen met de volgende fout:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
@@ -65,7 +65,7 @@ Voor het gebruik van de service moet u de Azure-resourceprovider registreren voo
        
    `<SubID>` is uw abonnements-id.
 
-    Als u niet de functienaam van de ziet `Microsoft.NetApp/ANFGA`, u hebt geen toegang tot de service. Stoppen bij deze stap. Volg de instructies in [een wachtlijst indienen voor toegang tot de service](#waitlist) service om toegang te vragen voordat u doorgaat. 
+    Als u de functie naam niet ziet `Microsoft.NetApp/ANFGA`, hebt u geen toegang tot de service. Stop bij deze stap. Volg de instructies in [een Waitlist-aanvraag verzenden om toegang te krijgen tot de service](#waitlist) om service toegang aan te vragen voordat u doorgaat. 
 
 4. Voer de volgende opdracht uit om de Azure-resourceprovider te registreren in de Azure Cloud Shell-console: 
     

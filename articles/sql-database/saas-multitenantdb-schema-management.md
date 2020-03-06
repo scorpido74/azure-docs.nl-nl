@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359140"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Schema beheren in een SaaS-toepassing die gebruikmaakt van Shard multi tenant SQL-data bases
 
@@ -64,7 +64,7 @@ Met het Shard multi tenant-database model dat in dit voor beeld wordt gebruikt, 
 
 Er is een nieuwe versie van elastische taken die nu een geïntegreerde functie van Azure SQL Database zijn. Van deze nieuwe versie van Elastische taken is momenteel een beperkte preview beschikbaar. De beperkte preview-versie ondersteunt momenteel het gebruik van Power shell voor het maken van een taak agent en T-SQL voor het maken en beheren van taken.
 > [!NOTE]
-> In deze zelf studie worden functies van de SQL Database-service met een beperkte preview (taak voor Elastic Database) gebruikt. Als u deze zelf studie wilt uitvoeren, geeft u uw abonnements-ID op SaaSFeedback@microsoft.com met onderwerp = elastische taken preview. Nadat u een bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, downloadt en installeert u de nieuwste cmdlets voor de voorlopige versie van de taken. Deze preview is beperkt, dus neem contact op met SaaSFeedback@microsoft.com voor gerelateerde vragen of ondersteuning.
+> In deze zelf studie worden functies van de SQL Database-service met een beperkte preview (taak voor Elastic Database) gebruikt. Als u deze zelf studie wilt uitvoeren, geeft u uw abonnements-ID op SaaSFeedback@microsoft.com met de preview-versie van het onderwerp = elastische taken. Nadat u een bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, downloadt en installeert u de nieuwste cmdlets voor de voorlopige versie van de taken. Dit voor beeld is beperkt, dus neem contact op met SaaSFeedback@microsoft.com voor gerelateerde vragen of ondersteuning.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>De Wingtip tickets SaaS multi-tenant database toepassings bron code en scripts ophalen
 
@@ -88,7 +88,7 @@ De data base van elke Tenant bevat een set locatie typen in de tabel **VenueType
 Controleer eerst de locatie typen die zijn opgenomen in elke Tenant database. Verbinding maken met een van de Tenant-data bases in SQL Server Management Studio (SSMS) en de VenueTypes-tabel controleren.  U kunt ook een query uitvoeren op deze tabel in de query-editor in het Azure Portal, toegankelijk via de pagina Data Base.
 
 1. Open SSMS en maak verbinding met de Tenant server: *tenants1-dpt-&lt;gebruiker&gt;. database.Windows.net*
-1. Als u wilt controleren of de *motor* met de race en de *zwem Club* op dit moment **niet is** opgenomen, bladert u naar de *contosoconcerthall* -data base op de *tenants1-dpt-&lt;gebruiker&gt;-* server en zoekt u de *VenueTypes* tabel.
+1. Als u wilt bevestigen dat de *race van motor rijwiel* en de *zwem Club* momenteel **niet zijn** opgenomen, bladert u naar de *contosoconcerthall* -data base op de *tenants1-dpt-&lt;gebruiker&gt;-* server en zoekt u in de *VenueTypes* -tabel.
 
 
 
@@ -155,7 +155,7 @@ Bekijk de volgende items in het script *OnlineReindex. SQL* :
 
 * De resterende weer gaven van de script controle taak worden uitgevoerd. Gebruik deze query's om de status waarde in de kolom **levens cyclus** te controleren om te bepalen wanneer de taak is voltooid voor alle leden van de doel groep.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

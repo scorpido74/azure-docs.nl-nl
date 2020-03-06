@@ -12,15 +12,15 @@ ms.date: 03/29/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393957"
 ---
 # <a name="project-url-preview-v7-reference"></a>Naslag informatie voor de project-URL preview V7
 
-URL-voor beeld biedt ondersteuning voor korte beschrijvingen van webbronnen voor blog berichten, forum discussies, voorbeeld pagina's, enzovoort. De URL kan elk type Internet bron zijn: Webpagina, nieuws, afbeelding of video. De query moet een absolute URL met een HTTP-of https-schema. relatieve Url's of andere schema's zoals ftp://worden niet ondersteund.
+URL-voor beeld biedt ondersteuning voor korte beschrijvingen van webbronnen voor blog berichten, forum discussies, voorbeeld pagina's, enzovoort. De URL kan elk type Internet bron zijn: webpagina, nieuws, afbeelding of video. De query moet een absolute URL met een HTTP-of https-schema. relatieve Url's of andere schema's zoals ftp://worden niet ondersteund.
 
 Toepassingen die gebruikmaken van URL-voor beelden sturen webaanvragen naar het eind punt met een URL die moet worden weer gegeven in een query parameter. De aanvraag moet de header *OCP-APIM-Subscription-Key* bevatten.
 
@@ -43,7 +43,7 @@ q-de query waarmee de URL voor de preview-versie wordt geïdentificeerd
 
 De volgende secties bevatten technische gegevens over de antwoord objecten, query parameters en kopteksten die van invloed zijn op de zoek resultaten.
 
-Zie kopteksten voor informatie over kopteksten die aanvragen [](#headers)moeten bevatten.
+Zie [kopteksten](#headers)voor informatie over kopteksten die aanvragen moeten bevatten.
 
 Zie [query parameters](#query-parameters)voor meer informatie over query parameters die aanvragen moeten bevatten.
 
@@ -63,64 +63,64 @@ Zie [vereisten voor gebruik en weer gave](use-display-requirements.md)voor meer 
 ## <a name="headers"></a>Headers
 Hieronder ziet u de kopteksten die een aanvraag en antwoord kan bevatten.
 
-|Header|Description|
+|Header|Beschrijving|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|Antwoordheader.<br /><br /> De markt die wordt gebruikt door de aanvraag. De notatie is \<languageCode\>-\<countryCode\>. Bijvoorbeeld: nl-NL.|
 |<a name="traceid" />BingAPIs-TraceId|Antwoordheader.<br /><br /> De id van de logboekvermelding die de details van de aanvraag bevat. Registreer deze id wanneer er een fout optreedt. Als u het probleem niet kunt vaststellen en oplossen, neemt u deze id op bij de andere informatie die u aan het ondersteuningsteam verstrekt.|
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Vereiste aanvraagheader.<br /><br /> De abonnementssleutel die u hebt ontvangen toen u zich hebt geregistreerd voor deze service in [Cognitive Services](https://www.microsoft.com/cognitive-services/).|
-|<a name="clientid" />X-MSEdge-ClientID|Optionele aanvraag- en antwoord-header.<br /><br /> Bing gebruikt deze header om gebruikers consistent gedrag te bieden bij Bing API-aanroepen. Bing introduceert nieuwe functies en verbeteringen vaak in flights, en gebruikt de client-ID als sleutel voor het toewijzen van verkeer aan verschillende flights. Als u niet dezelfde client-id gebruikt voor een gebruiker voor meerdere aanvragen, kan Bing de gebruiker toewijzen aan meerdere conflicterende flights. Toewijzing aan meerdere conflicterende flights kan leiden tot een inconsistente gebruikerservaring. Als de tweede aanvraag bijvoorbeeld een andere flighttoewijzing heeft dan de eerste, kan de ervaring onverwacht zijn. Bing kan de client-id ook gebruiken om webresultaten aan te passen aan de zoekgeschiedenis van die client-id, waardoor de gebruiker een rijkere ervaring krijgt.<br /><br /> Bing gebruikt deze header ook om de rangschikking van resultaten te verbeteren door de activiteit te analyseren die wordt gegenereerd door een client-id. De relevantie-verbeteringen helpen de kwaliteit van de resultaten die door Bing-API's worden geleverd te verbeteren, en maken op hun beurt hogere doorklikpercentages mogelijk voor de API-consument.<br /><br />Hieronder volgen de basisgebruiksregels die van toepassing zijn op deze header.<br /><ul><li>Elke gebruiker die uw toepassing op het apparaat gebruikt, moet een unieke door Bing gegenereerde client-id hebben.<br /><br/>Als u deze header niet in de aanvraag opneemt, genereert Bing een id en retourneert deze in de X-MSEdge-ClientID-antwoordheader. De enige keer dat u deze header NIET in een aanvraag moet opnemen, is de eerste keer dat de gebruiker uw app op dat apparaat gebruikt.<br /><br/></li><li>Gebruik de client-id voor elke Bing-API-aanvraag die uw app voor deze gebruiker op het apparaat doet.<br /><br/></li><li>**SCHENK** U moet ervoor zorgen dat deze client-ID niet kan worden gekoppeld aan de gegevens van een authenticatable-gebruikers account.</li><br/><li>Maak de client-id persistent. Gebruik in een browser-app een persistent HTTP-cookie om ervoor te zorgen dat de id in alle sessies wordt gebruikt. Gebruik geen sessiecookie. Voor andere apps, zoals mobiele apps, gebruikt u de persistente opslag van het apparaat om de id persistent te maken.<br /><br/>De volgende keer dat de gebruiker uw app op dat apparaat gebruikt, haalt u de client-id op die u persistent hebt gemaakt.</li></ul><br /> **OPMERKING:** Bing-antwoorden mogen deze koptekst bevatten. Als het antwoord deze header bevat, registreert u de client-id en gebruikt u deze voor alle volgende Bing-aanvragen voor de gebruiker op dat apparaat.<br /><br /> **OPMERKING:** Als u de X-MSEdge-ClientID opneemt, moet u geen cookies in de aanvraag opneemt.|
+|<a name="clientid" />X-MSEdge-ClientID|Optionele aanvraag- en antwoord-header.<br /><br /> Bing gebruikt deze header om gebruikers consistent gedrag te bieden bij Bing API-aanroepen. Bing introduceert nieuwe functies en verbeteringen vaak in flights, en gebruikt de client-ID als sleutel voor het toewijzen van verkeer aan verschillende flights. Als u niet dezelfde client-id gebruikt voor een gebruiker voor meerdere aanvragen, kan Bing de gebruiker toewijzen aan meerdere conflicterende flights. Toewijzing aan meerdere conflicterende flights kan leiden tot een inconsistente gebruikerservaring. Als de tweede aanvraag bijvoorbeeld een andere flighttoewijzing heeft dan de eerste, kan de ervaring onverwacht zijn. Bing kan de client-id ook gebruiken om webresultaten aan te passen aan de zoekgeschiedenis van die client-id, waardoor de gebruiker een rijkere ervaring krijgt.<br /><br /> Bing gebruikt deze header ook om de rangschikking van resultaten te verbeteren door de activiteit te analyseren die wordt gegenereerd door een client-id. De relevantie-verbeteringen helpen de kwaliteit van de resultaten die door Bing-API's worden geleverd te verbeteren, en maken op hun beurt hogere doorklikpercentages mogelijk voor de API-consument.<br /><br />Hieronder volgen de basisgebruiksregels die van toepassing zijn op deze header.<br /><ul><li>Elke gebruiker die uw toepassing op het apparaat gebruikt, moet een unieke door Bing gegenereerde client-id hebben.<br /><br/>Als u deze header niet in de aanvraag opneemt, genereert Bing een id en retourneert deze in de X-MSEdge-ClientID-antwoordheader. De enige keer dat u deze header NIET in een aanvraag moet opnemen, is de eerste keer dat de gebruiker uw app op dat apparaat gebruikt.<br /><br/></li><li>Gebruik de client-id voor elke Bing-API-aanvraag die uw app voor deze gebruiker op het apparaat doet.<br /><br/></li><li>**Attentie:** U moet ervoor zorgen dat deze client-ID niet kan worden gekoppeld aan de gegevens van een authenticatable-gebruikers account.</li><br/><li>Maak de client-id persistent. Gebruik in een browser-app een persistent HTTP-cookie om ervoor te zorgen dat de id in alle sessies wordt gebruikt. Gebruik geen sessiecookie. Voor andere apps, zoals mobiele apps, gebruikt u de persistente opslag van het apparaat om de id persistent te maken.<br /><br/>De volgende keer dat de gebruiker uw app op dat apparaat gebruikt, haalt u de client-id op die u persistent hebt gemaakt.</li></ul><br /> **OPMERKING:** Bing-antwoorden kunnen deze header al dan niet bevatten. Als het antwoord deze header bevat, registreert u de client-id en gebruikt u deze voor alle volgende Bing-aanvragen voor de gebruiker op dat apparaat.<br /><br /> **OPMERKING:** als u de X-MSEdge-ClientID opneemt, moet u geen cookies opnemen in de aanvraag.|
 |<a name="clientip" />X-MSEdge-ClientIP|Optionele aanvraagheader.<br /><br /> Het IPv4- of IPv6-adres van het clientapparaat. Het IP-adres wordt gebruikt voor het detecteren van de locatie van de gebruiker. Bing gebruikt de locatie-informatie om het gedrag van Veilig Zoeken te bepalen.<br /><br /> Verdoezel het adres niet (bijvoorbeeld door het laatste octet te wijzigen in 0). Wanneer u het adres verdoezelt, is de locatie totaal niet in de buurt van de werkelijke locatie van het apparaat, wat ertoe kan leiden dat Bing onjuiste resultaten geeft.|
 
 ## <a name="query-parameters"></a>Queryparameters
 De aanvraag kan de volgende query parameters bevatten. Zie de vereiste kolom voor de vereiste para meters. U moet de URL van de query parameters coderen. De query moet een absolute URL met een HTTP-of https-schema. We ondersteunen geen relatieve Url's of andere schema's zoals ftp://
 
-|Name|Waarde|type|Vereist|
+|Naam|Waarde|Type|Vereist|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|De markt waaruit de resultaten afkomstig zijn. <br /><br />Zie markt codes voor een lijst met mogelijke markt waarden.<br /><br /> **OPMERKING:** De URL-preview-API ondersteunt momenteel alleen Geografie-en Engelse taal.<br /><br />|Tekenreeks|Ja|
+|<a name="mkt" />mkt|De markt waaruit de resultaten afkomstig zijn. <br /><br />Zie markt codes voor een lijst met mogelijke markt waarden.<br /><br /> **Opmerking:** De URL-preview-API ondersteunt momenteel alleen Geografie-en Engelse taal.<br /><br />|Tekenreeks|Ja|
 |<a name="query" />q|De URL voor de preview-versie|Tekenreeks|Ja|
 |<a name="responseformat" />responseFormat|Het media type dat voor het antwoord moet worden gebruikt. Hier volgen de mogelijke niet-hoofdletter gevoelige waarden.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> De standaard waarde is JSON. Zie [Response Objects](#response-objects)(Engelstalig) voor informatie over de JSON-objecten die het antwoord bevat.<br /><br />Als u JsonLd opgeeft, bevat de antwoord tekst JSON-LD objecten die de zoek resultaten bevatten. Zie [JSON-LD](https://json-ld.org/)voor meer informatie over de JSON-ld.|Tekenreeks|Nee|
-|<a name="safesearch"/>safeSearch|Illegale inhoud voor volwassenen, of illegale inhoud, is geblokkeerd met fout code 400 en de vlag *isFamilyFriendly* wordt niet geretourneerd. <p>Voor juridische inhoud voor volwassenen is hieronder het gedrag. De status code retourneert 200 en de vlag *isFamilyFriendly* is ingesteld op false.<ul><li>safeSearch = strict: Titel, beschrijving, URL en afbeelding worden niet geretourneerd.</li><li>safeSearch = gemiddeld; Titel, URL en beschrijving ophalen, maar niet de beschrijvende afbeelding.</li><li>safeSearch = uit; Alle antwoord objecten/elementen – titel, URL, beschrijving en afbeelding ophalen.</li></ul> |Reeks|Niet vereist. </br> De standaard waarde is safeSearch = strict.|
+|<a name="safesearch"/>safeSearch|Illegale inhoud voor volwassenen, of illegale inhoud, is geblokkeerd met fout code 400 en de vlag *isFamilyFriendly* wordt niet geretourneerd. <p>Voor juridische inhoud voor volwassenen is hieronder het gedrag. De status code retourneert 200 en de vlag *isFamilyFriendly* is ingesteld op false.<ul><li>safeSearch = strict: titel, beschrijving, URL en afbeelding worden niet geretourneerd.</li><li>safeSearch = gemiddeld; Titel, URL en beschrijving ophalen, maar niet de beschrijvende afbeelding.</li><li>safeSearch = uit; Alle antwoord objecten/elementen – titel, URL, beschrijving en afbeelding ophalen.</li></ul> |Tekenreeks|Niet vereist. </br> De standaard waarde is safeSearch = strict.|
 
 ## <a name="response-objects"></a>Antwoord objecten
 Het antwoord schema is een [webpagina] of ErrorResponse, zoals in de Webzoekopdrachten-API. Als de aanvraag mislukt, is het object op het hoogste niveau het [ErrorResponse](#errorresponse) -object.
 
-|Object|Description|
+|Object|Beschrijving|
 |------------|-----------------|
-|[WebPage](#webpage)|JSON-object op het hoogste niveau dat kenmerken van de preview bevat.|
+|[Webpagina](#webpage)|JSON-object op het hoogste niveau dat kenmerken van de preview bevat.|
 
 ### <a name="error"></a>Fout
 Hiermee definieert u de fout die is opgetreden.
 
-|Element|Description|type|
+|Element|Beschrijving|Type|
 |-------------|-----------------|----------|
-|<a name="error-code" />gecodeerd|De fout code waarmee de fout categorie wordt aangeduid. Zie [fout codes](#error-codes)voor een lijst met mogelijke codes.|Tekenreeks|
-|<a name="error-message" />Bericht|Een beschrijving van de fout.|Tekenreeks|
+|<a name="error-code" />code|De fout code waarmee de fout categorie wordt aangeduid. Zie [fout codes](#error-codes)voor een lijst met mogelijke codes.|Tekenreeks|
+|<a name="error-message" />bericht|Een beschrijving van de fout.|Tekenreeks|
 |<a name="error-moredetails" />moreDetails|Een beschrijving die extra informatie biedt over de fout.|Tekenreeks|
-|<a name="error-parameter" />parameter|De query parameter in de aanvraag die de fout heeft veroorzaakt.|Tekenreeks|
-|<a name="error-subcode" />subCode|De fout code die de fout identificeert. Als `code` bijvoorbeeld InvalidRequest is, `subCode` kan ParameterInvalid of ParameterInvalidValue zijn. |Reeks|
-|<a name="error-value" />Value|De waarde van de query parameter die ongeldig is.|Reeks|
+|<a name="error-parameter" />para meter|De query parameter in de aanvraag die de fout heeft veroorzaakt.|Tekenreeks|
+|<a name="error-subcode" />subcode|De fout code die de fout identificeert. Als `code` bijvoorbeeld InvalidRequest is, kan `subCode` ParameterInvalid of ParameterInvalidValue zijn. |Tekenreeks|
+|<a name="error-value" />waarde|De waarde van de query parameter die ongeldig is.|Tekenreeks|
 
 ### <a name="errorresponse"></a>ErrorResponse
 Het object op het hoogste niveau dat het antwoord bevat wanneer de aanvraag is mislukt.
 
-|Name|Value|type|
+|Naam|Waarde|Type|
 |----------|-----------|----------|
-|_type|Type hint.|Reeks|
-|<a name="errors" />bufferoverschrijdingsfouten|Een lijst met fouten die de redenen beschrijven waarom de aanvraag is mislukt.|[Fout](#error) []|
+|_type|Type hint.|Tekenreeks|
+|<a name="errors" />fouten|Een lijst met fouten die de redenen beschrijven waarom de aanvraag is mislukt.|[Fout](#error)[]|
 
 ### <a name="webpage"></a>WebPage
 Definieert informatie over een webpagina in de preview-versie.
 
-|Name|Value|type|
+|Naam|Waarde|Type|
 |----------|-----------|----------|
-|name|De pagina titel, niet noodzakelijkerwijs de HTML-titel|Tekenreeks|
+|naam|De pagina titel, niet noodzakelijkerwijs de HTML-titel|Tekenreeks|
 |url|De URL die werkelijk is verkend (aanvraag is mogelijk doorlopende omleidingen)|Tekenreeks|
-|description|Korte beschrijving van de pagina en inhoud|Reeks|
-|isFamilyFriendly|De meest nauw keurige voor items in de web-index; bij realtime ophalen worden deze detectie alleen gebaseerd op de URL en niet op de pagina-inhoud|boolean|
-|primaryImageOfPage/contentUrl|De URL naar een representatieve afbeelding die moet worden meegenomen in de preview-versie|Reeks|
+|description|Korte beschrijving van de pagina en inhoud|Tekenreeks|
+|isFamilyFriendly|De meest nauw keurige voor items in de web-index; bij realtime ophalen worden deze detectie alleen gebaseerd op de URL en niet op de pagina-inhoud|booleaans|
+|primaryImageOfPage/contentUrl|De URL naar een representatieve afbeelding die moet worden meegenomen in de preview-versie|Tekenreeks|
 
 ### <a name="identifiable"></a>Persoonlijke
-|Name|Waarde|type|
+|Naam|Waarde|Type|
 |-------------|-----------------|----------|
 |id|Een resource-id|Tekenreeks|
 
@@ -128,20 +128,20 @@ Definieert informatie over een webpagina in de preview-versie.
 
 Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
 
-|Statuscode|Description|
+|Statuscode|Beschrijving|
 |-----------------|-----------------|
-|200|Voltooid.|
+|200|Geslaagd.|
 |400|Een van de query parameters ontbreekt of is ongeldig.|
-|400|Server Error, subcode ResourceError: De aangevraagde URL kan niet worden bereikt|
-|400|Server Error, subcode ResourceError: De aangevraagde URL heeft geen succes code geretourneerd (inclusief als HTTP 404 is geretourneerd)|
-|400|InvalidRequest, subcode geblokkeerd: De aangevraagde URL bevat mogelijk inhoud voor volwassenen en is geblokkeerd|
+|400|Server Error, subcode ResourceError: de aangevraagde URL kan niet worden bereikt|
+|400|Server Error, subcode ResourceError: de aangevraagde URL heeft geen succes code geretourneerd (inclusief als HTTP 404 is geretourneerd)|
+|400|InvalidRequest, subcode geblokkeerd: de aangevraagde URL bevat mogelijk inhoud voor volwassenen en is geblokkeerd|
 |401|De abonnements sleutel ontbreekt of is ongeldig.|
 |403|De gebruiker is geverifieerd (bijvoorbeeld omdat er een geldige abonnements sleutel is gebruikt), maar ze hebben geen machtiging voor de aangevraagde resource.<br /><br /> Bing kan ook deze status retour neren als de aanroeper het quotum voor query's per maand heeft overschreden.|
 |410|De aanvraag heeft HTTP gebruikt in plaats van het HTTPS-protocol. HTTPS is het enige ondersteunde protocol.|
 |429|De aanroeper heeft het quotum van de query's per seconde overschreden.|
 |500|Onverwachte server fout.|
 
-Als de aanvraag mislukt, bevat het antwoord een [ErrorResponse](#errorresponse) -object, dat een lijst bevat met [fout](#error) objecten die beschrijven wat de oorzaak van het probleem is. Als de fout is gerelateerd aan een para meter, `parameter` identificeert het veld de para meter die het probleem vormt. En als de fout is gerelateerd aan een parameter waarde, identificeert het `value` veld de waarde die niet geldig is.
+Als de aanvraag mislukt, bevat het antwoord een [ErrorResponse](#errorresponse) -object, dat een lijst bevat met [fout](#error) objecten die beschrijven wat de oorzaak van het probleem is. Als de fout is gerelateerd aan een para meter, identificeert het `parameter` veld de para meter die het probleem vormt. En als de fout is gerelateerd aan een parameter waarde, identificeert het `value` veld de waarde die niet geldig is.
 
 ```json
 {
@@ -171,17 +171,17 @@ Als de aanvraag mislukt, bevat het antwoord een [ErrorResponse](#errorresponse) 
 
 Hier volgen de mogelijke fout code en waarden voor de subfout code.
 
-|Code|SubCode|Description
+|Code|SubCode|Beschrijving
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>Niet geïmplementeerd|HTTP-status code is 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Geblokkeerd|Bing retourneert InvalidRequest wanneer een deel van de aanvraag ongeldig is. Een vereiste para meter ontbreekt bijvoorbeeld of een parameter waarde is niet geldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status code 400.<br/><br/>Als u het HTTP-protocol gebruikt in plaats van HTTPS, retourneert Bing HttpNotAllowed en de HTTP-status code is 410.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>#|Bing retourneert InvalidRequest wanneer een deel van de aanvraag ongeldig is. Een vereiste para meter ontbreekt bijvoorbeeld of een parameter waarde is niet geldig.<br/><br/>Als de fout ParameterMissing of ParameterInvalidValue is, is de HTTP-status code 400.<br/><br/>Als u het HTTP-protocol gebruikt in plaats van HTTPS, retourneert Bing HttpNotAllowed en de HTTP-status code is 410.
 |RateLimitExceeded|Geen subcodes|Bing retourneert RateLimitExceeded wanneer u het quotum voor query's per seconde (QPS) of query's per maand (QPM) overschrijdt.<br/><br/>Als u QPS overschrijdt, retourneert Bing de HTTP-status code 429 en als u QPM overschrijdt, retourneert Bing 403.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing retourneert InvalidAuthorization wanneer Bing de oproepende functie niet kan verifiëren. De `Ocp-Apim-Subscription-Key` koptekst ontbreekt bijvoorbeeld of de abonnements sleutel is niet geldig.<br/><br/>Redundantie treedt op als u meer dan één verificatie methode opgeeft.<br/><br/>Als de fout InvalidAuthorization is, is de HTTP-status code 401.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing retourneert InvalidAuthorization wanneer Bing de oproepende functie niet kan verifiëren. De `Ocp-Apim-Subscription-Key`-header ontbreekt bijvoorbeeld of de abonnements sleutel is niet geldig.<br/><br/>Redundantie treedt op als u meer dan één verificatie methode opgeeft.<br/><br/>Als de fout InvalidAuthorization is, is de HTTP-status code 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing retourneert InsufficientAuthorization wanneer de aanroeper geen machtigingen heeft voor toegang tot de resource. Dit kan gebeuren als de abonnements sleutel is uitgeschakeld of is verlopen. <br/><br/>Als de fout InsufficientAuthorization is, is de HTTP-status code 403.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Snelstart voor C#](csharp.md)
-- [Snelstart voor Java](java-quickstart.md)
-- [Snelstart voor JavaScript](javascript.md)
+- [Snelstartgids voor C#](csharp.md)
+- [Snelstartgids voor Java](java-quickstart.md)
+- [Snelstartgids voor JavaScript](javascript.md)
 - [Snelstart voor Node](node-quickstart.md)
-- [Snelstartgids voor Python](python-quickstart.md)
+- [Snelstart voor Python](python-quickstart.md)

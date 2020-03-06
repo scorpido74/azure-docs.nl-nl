@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395194"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problemen met regio servers in azure HDInsight
 
@@ -34,7 +34,7 @@ Vanuit de Apache-HBase Master gebruikers interface ziet u het aantal regio's dat
 
 Openingen kunnen het resultaat zijn van offline regio's.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Los de toewijzingen op. Volg de onderstaande stappen om de niet-toegewezen regio's weer in de normale staat te brengen:
 
@@ -66,7 +66,7 @@ Meerdere mappen voor het splitsen van WAL.
 
 1. Inspecteer het `wals.out`-bestand. Als er te veel splitsings mappen zijn (te beginnen met *-splitsen), mislukt de regio server waarschijnlijk vanwege deze directory's.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Stop HBase van de Ambari-Portal.
 

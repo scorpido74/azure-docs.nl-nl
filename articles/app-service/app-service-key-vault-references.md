@@ -7,11 +7,11 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728749"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373794"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Gebruik Key Vault verwijzingen voor App Service en Azure Functions
 
@@ -40,7 +40,7 @@ Een Key Vault verwijzing is van het formulier `@Microsoft.KeyVault({referenceStr
 > [!div class="mx-tdBreakAll"]
 > | Verwijzings reeks                                                            | Beschrijving                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | SecretUri =_SecretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De **naam van het doel** geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
 
 Een volledige referentie met versie zou er bijvoorbeeld als volgt uitzien:
@@ -187,7 +187,7 @@ U kunt ook een van de ingebouwde detectoren gebruiken om aanvullende informatie 
 ### <a name="using-the-detector-for-app-service"></a>De detector voor App Service gebruiken
 
 1. Navigeer in de portal naar uw app.
-2. Selecteer **Problemen vaststellen en oplossen**.
+2. Selecteer **problemen vaststellen en oplossen**.
 3. Kies **Beschik baarheid en prestaties** en selecteer **Web-app lager.**
 4. Zoek **Key Vault diagnostische gegevens over toepassings instellingen** en klik op **meer informatie**.
 
@@ -196,6 +196,6 @@ U kunt ook een van de ingebouwde detectoren gebruiken om aanvullende informatie 
 
 1. Navigeer in de portal naar uw app.
 2. Navigeer naar **platform functies.**
-3. Selecteer **Problemen vaststellen en oplossen**.
+3. Selecteer **problemen vaststellen en oplossen**.
 4. Kies **Beschik baarheid en prestaties** en selecteer **functie-app omlaag of rapportage fouten.**
 5. Klik op **Key Vault diagnostische gegevens over toepassings instellingen.**

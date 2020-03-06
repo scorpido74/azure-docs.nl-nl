@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367748"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390789"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources voor elke spraak container beschreven.
 
-# <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
 | Spraak naar tekst | 2 Core, 2 GB geheugen | 4-core, 4 GB geheugen |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
 | Custom Speech-naar-tekst | 2 Core, 2 GB geheugen | 4-core, 4 GB geheugen |
 
-# <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
 | Tekst naar spraak | 1 Core, 2 GB geheugen | 2 Core, 3 GB geheugen |
 
-# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ Core en geheugen komen overeen met de instellingen `--cpus` en `--memory` die wo
 
 Container installatie kopieën voor spraak zijn beschikbaar in de volgende Container Registry.
 
-# <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
 | Container | Opslagplaats |
 |-----------|------------|
 | Spraak naar tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 | Container | Opslagplaats |
 |-----------|------------|
 | Custom Speech-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 | Container | Opslagplaats |
 |-----------|------------|
 | Tekst naar spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 | Container | Opslagplaats |
 |-----------|------------|
@@ -140,7 +140,7 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Docker-pull voor de spraak containers
 
-# <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker-pull voor de spraak-naar-tekst-container
 
@@ -169,7 +169,7 @@ De volgende code is een voor beeld van de indeling:
 
 Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -container Tags voor [spraak-naar-tekst-afbeelding](../containers/container-image-tags.md#speech-to-text).
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>Docker-pull voor de Custom Speech-naar-tekst-container
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > De `locale` en `voice` voor aangepaste spraak containers worden bepaald door het aangepaste model dat door de container is opgenomen.
 
-# <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>Docker-pull voor de tekst-naar-spraak-container
 
@@ -214,7 +214,7 @@ Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#t
 > [!IMPORTANT]
 > Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice`-element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van `en-US-JessaRUS`hebben.
 
-# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>Docker-pull voor de aangepaste tekst-naar-spraak-container
 
@@ -240,7 +240,7 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 
 Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{Endpoint_URI}` en `{API_Key}` waarden. Er zijn ook aanvullende [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de opdracht `docker run` beschikbaar.
 
-# <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
+# <a name="speech-to-text"></a>[Spraak naar tekst](#tab/stt)
 
 Voer de `docker run` volgende opdracht uit om de *spraak-naar-tekst-* container uit te voeren.
 
@@ -259,7 +259,7 @@ Deze opdracht:
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
 De *Custom speech-naar-tekst* -container is afhankelijk van een aangepast spraak model. Het aangepaste model moet zijn [getraind](how-to-custom-speech-train-model.md) met behulp van de [aangepaste spraak Portal](https://speech.microsoft.com/customspeech).
 
@@ -311,7 +311,7 @@ Deze opdracht:
 * Als het aangepaste model eerder is gedownload, wordt de `ModelId` genegeerd.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
 
 Voer de volgende `docker run` opdracht uit om de *tekst-naar-spraak-* container uit te voeren.
 
@@ -330,7 +330,7 @@ Deze opdracht:
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
 De *aangepaste tekst-naar-spraak* -container is afhankelijk van een aangepast spraak model. Het aangepaste model moet zijn [getraind](how-to-custom-voice-create-voice.md) met behulp van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal). De ID van het aangepaste spraak **model** is vereist voor het uitvoeren van de container. U kunt dit vinden op de pagina **training** van de aangepaste Voice Portal. Ga vanuit de aangepaste Voice Portal naar de pagina **training** en selecteer het model.
 <br>

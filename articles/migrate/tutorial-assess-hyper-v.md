@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845515"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388972"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Virtuele Hyper-V-machines beoordelen met Azure Migrate server-evaluatie
 
@@ -186,7 +186,7 @@ Als u virtuele harde schijven uitvoert op Smb's, moet u de overdracht van refere
 
 Schakel op het apparaat als volgt in:
 
-#### <a name="option-1"></a>Optie 1
+#### <a name="option-1"></a>optie 1
 
 Voer de volgende opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voor beelden van hostnamen.
 
@@ -211,7 +211,7 @@ Maak verbinding van het apparaat met Hyper-V-hosts of-clusters en start de VM-de
 
 1. Geef bij **gebruikers naam** en **wacht woord**de account referenties op die door het apparaat worden gebruikt voor het detecteren van vm's. Geef een beschrijvende naam op voor de referenties en klik op **Details opslaan**.
 2. Klik op **host toevoegen**en geef de gegevens van de Hyper-V-host/het cluster op.
-3. Klik op **valideren**. Na validatie wordt het aantal Vm's weer gegeven dat op elke host/het cluster kan worden gedetecteerd.
+3. Klik op **Valideren**. Na validatie wordt het aantal Vm's weer gegeven dat op elke host/het cluster kan worden gedetecteerd.
     - Als de validatie voor een host mislukt, controleert u de fout door de muis aanwijzer boven het pictogram in de kolom **status** te bewegen. Los problemen op en valideer opnieuw.
     - Als u hosts of clusters wilt verwijderen, selecteert u > **verwijderen**.
     - U kunt een specifieke host niet verwijderen uit een cluster. U kunt alleen het hele cluster verwijderen.
@@ -245,7 +245,7 @@ Voer een evaluatie als volgt uit:
 1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
 2. Klik in **Servers** > **Azure migrate: Server evaluatie**op **evalueren**.
 
-    ![Beoordelen](./media/tutorial-assess-hyper-v/assess.png)
+    ![Evalueren](./media/tutorial-assess-hyper-v/assess.png)
 
 3. Geef in **servers beoordelen**een naam op voor de evaluatie.
 4. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.

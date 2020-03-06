@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668771"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393571"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Gegevens bronnen van agents in Azure Monitor
 De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de gegevens bronnen die u configureert.  De gegevens van agents worden opgeslagen als [logboek gegevens](data-platform-logs.md) met een set records.  Elke gegevens bron maakt records van een bepaald type met elk type met een eigen set eigenschappen.

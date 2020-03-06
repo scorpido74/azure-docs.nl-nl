@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512127"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377057"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor federatieve domeinen
 
@@ -44,7 +44,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
 
 In deze zelf studie leert u hoe u hybride Azure AD join kunt configureren voor Active Directory computers die lid zijn van een domein in een federatieve omgeving door gebruik te maken van AD FS.
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Hybride Azure AD-koppeling configureren
@@ -142,7 +142,7 @@ Als u een hybride Azure AD-deelname wilt configureren met behulp van Azure AD Co
 
 1. Selecteer **configureren**op de pagina **gereed voor configuratie** .
 
-   ![Gereed voor configuratie](./media/hybrid-azuread-join-federated-domains/19.png)
+   ![Klaar om te configureren](./media/hybrid-azuread-join-federated-domains/19.png)
 
 1. Selecteer op de pagina **configuratie voltooid** de optie **Afsluiten**.
 
@@ -188,7 +188,7 @@ Wanneer u de cmdlet **Get-MSolDevice** gebruikt om de service details te control
 
 **Details van de service controleren**:
 
-1. Open Windows PowerShell als administrator.
+1. Open Windows Power shell als Administrator.
 1. Voer `Connect-MsolService` in om verbinding te maken met uw Azure-Tenant.  
 1. Voer `get-msoldevice -deviceId <deviceId>` in.
 1. Verifieer dat **Ingeschakeld** is ingesteld op **Waar**.

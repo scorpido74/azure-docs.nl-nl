@@ -7,20 +7,20 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433353"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372183"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Problemen met Azure-cache oplossen voor redis aan de server zijde
 
 In deze sectie vindt u informatie over het oplossen van problemen die zich voordoen als gevolg van een voor waarde in een Azure-cache voor redis of de virtuele machine (s) die de host heeft.
 
-- [Geheugen druk op redis-server](#memory-pressure-on-redis-server)
+- [Geheugendruk op Redis-server](#memory-pressure-on-redis-server)
 - [Hoog CPU-gebruik of server belasting](#high-cpu-usage-or-server-load)
 - [Langlopende opdrachten](#long-running-commands)
-- [Bandbreedte beperking aan server zijde](#server-side-bandwidth-limitation)
+- [Bandbreedtebeperking aan serverzijde](#server-side-bandwidth-limitation)
 
 > [!NOTE]
 > Enkele van de stappen voor probleem oplossing in deze hand leiding bevatten instructies voor het uitvoeren van redis-opdrachten en het controleren van verschillende prestatie gegevens. Zie de artikelen in de sectie met [aanvullende informatie](#additional-information) voor meer informatie en instructies.

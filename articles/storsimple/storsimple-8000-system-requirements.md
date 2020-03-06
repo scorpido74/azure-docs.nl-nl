@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365804"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-serie software, hoge Beschik baarheid en netwerk vereisten
 
@@ -61,15 +61,15 @@ De volgende software vereisten gelden voor de optionele StorSimple-onderdelen (S
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>Netwerk vereisten voor uw StorSimple-apparaat
 
-Uw StorSimple-apparaat is een vergrendeld apparaat. Poorten moeten echter worden geopend in uw firewall om iSCSI-, Cloud-en beheer verkeer toe te staan. De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend. In of uitgaand van deze tabel verwijst naar de richting van waar inkomende clients toegang tot uw apparaat aanvragen. *Out* of uitgaand verwijst naar de richting waarin uw StorSimple-apparaat gegevens extern verzendt, behalve de implementatie: bijvoorbeeld uitgaand naar Internet.
+Uw StorSimple-apparaat is een vergrendeld apparaat. Poorten moeten echter worden geopend in uw firewall om iSCSI-, Cloud-en beheer verkeer toe te staan. De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend. *In of* uitgaand van deze *tabel verwijst naar* de richting van waar inkomende clients toegang tot uw apparaat aanvragen. *Out* of *uitgaand* verwijst naar de richting waarin uw StorSimple-apparaat gegevens extern verzendt, behalve de implementatie: bijvoorbeeld uitgaand naar Internet.
 
 | Poort nummer<sup>1, 2</sup> | In of uit | Poort bereik | Vereist | Opmerkingen |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Uit |WAN |Nee |<ul><li>De uitgaande poort wordt gebruikt voor toegang tot internet om updates op te halen.</li><li>De uitgaande webproxy kan door de gebruiker worden geconfigureerd.</li><li>Voor het toestaan van systeem updates moet deze poort ook open zijn voor de vaste IP-adressen van de controller.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Uit |WAN |Ja |<ul><li>De uitgaande poort wordt gebruikt voor toegang tot gegevens in de Cloud.</li><li>De uitgaande webproxy kan door de gebruiker worden geconfigureerd.</li><li>Voor het toestaan van systeem updates moet deze poort ook open zijn voor de vaste IP-adressen van de controller.</li><li>Deze poort wordt ook gebruikt op beide controllers voor garbage collection.</li></ul> |
-| UDP 53 (DNS) |Uit |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een DNS-server op Internet gebruikt. |
-| UDP 123 (NTP) |Uit |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een NTP-server op Internet gebruikt. |
-| TCP 9354 |Uit |WAN |Ja |De uitgaande poort wordt door het StorSimple-apparaat gebruikt om te communiceren met de StorSimple-Apparaatbeheer service. |
+| TCP 80 (HTTP)<sup>3</sup> |Af |WAN |Nee |<ul><li>De uitgaande poort wordt gebruikt voor toegang tot internet om updates op te halen.</li><li>De uitgaande webproxy kan door de gebruiker worden geconfigureerd.</li><li>Voor het toestaan van systeem updates moet deze poort ook open zijn voor de vaste IP-adressen van de controller.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Af |WAN |Ja |<ul><li>De uitgaande poort wordt gebruikt voor toegang tot gegevens in de Cloud.</li><li>De uitgaande webproxy kan door de gebruiker worden geconfigureerd.</li><li>Voor het toestaan van systeem updates moet deze poort ook open zijn voor de vaste IP-adressen van de controller.</li><li>Deze poort wordt ook gebruikt op beide controllers voor garbage collection.</li></ul> |
+| UDP 53 (DNS) |Af |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een DNS-server op Internet gebruikt. |
+| UDP 123 (NTP) |Af |WAN |In sommige gevallen; Zie opmerkingen. |Deze poort is alleen vereist als u een NTP-server op Internet gebruikt. |
+| TCP 9354 |Af |WAN |Ja |De uitgaande poort wordt door het StorSimple-apparaat gebruikt om te communiceren met de StorSimple-Apparaatbeheer service. |
 | 3260 (iSCSI) |In |LAN |Nee |Deze poort wordt gebruikt om toegang te krijgen tot gegevens via iSCSI. |
 | 5985 |In |LAN |Nee |De binnenkomende poort wordt gebruikt door StorSimple Snapshot Manager om te communiceren met het StorSimple-apparaat.<br>Deze poort wordt ook gebruikt wanneer u extern verbinding maakt met Windows PowerShell voor StorSimple via HTTP. |
 | 5986 |In |LAN |Nee |Deze poort wordt gebruikt wanneer u extern verbinding maakt met Windows PowerShell voor StorSimple via HTTPS. |
@@ -98,31 +98,31 @@ We raden u aan om de firewall regels voor uitgaand verkeer, op basis van StorSim
 
 | URL-patroon | Onderdeel/functionaliteit | Ip's van apparaat |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-apparaatbeheerservice<br>Toegangsbeheerservice<br>Azure Service Bus<br>Verificatieservice |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-apparaatbeheerfunctie<br>Access Control Service<br>Azure Service Bus<br>Verificatie service |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 | `https://*.backup.windowsazure.com` |Apparaatregistratie |Alleen gegevens 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Certificaat intrekken |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure Storage-accounts en-bewaking |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update-servers<br> |Alleen vaste IP-adressen voor controller |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Alleen vaste IP-adressen voor controller |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Ondersteuningspakket |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Ondersteunings pakket |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 
 #### <a name="url-patterns-for-azure-government-portal"></a>URL-patronen voor Azure Government Portal
 
 | URL-patroon | Onderdeel/functionaliteit | Ip's van apparaat |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple-apparaatbeheerservice<br>Toegangsbeheerservice<br>Azure Service Bus<br>Verificatieservice |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple-apparaatbeheerfunctie<br>Access Control Service<br>Azure Service Bus<br>Verificatie service |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 | `https://*.backup.windowsazure.us` |Apparaatregistratie |Alleen gegevens 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Certificaat intrekken |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure Storage-accounts en-bewaking |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update-servers<br> |Alleen vaste IP-adressen voor controller |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Alleen vaste IP-adressen voor controller |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Ondersteuningspakket |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Ondersteunings pakket |Netwerk interfaces die zijn ingeschakeld voor de Cloud |
 
 ### <a name="routing-metric"></a>Routerings metriek
 
 Een routerings metriek is gekoppeld aan de interfaces en de gateway die de gegevens naar de opgegeven netwerken routeren. De metrische gegevens van de route ring worden gebruikt door het routerings protocol om het beste pad naar een bepaalde bestemming te berekenen, als er meerdere paden naar hetzelfde doel zijn. Hoe lager de routerings metriek, des te hoger de voor keur.
 
-Als meerdere netwerk interfaces en gateways zijn geconfigureerd voor kanaal verkeer, worden de metrische gegevens van de route ring in de context van StorSimple afgespeeld om de relatieve volg orde te bepalen waarin de interfaces zullen worden gebruikt. De metrische gegevens van de route ring kunnen niet worden gewijzigd door de gebruiker. U kunt de `Get-HcsRoutingTable` cmdlet echter gebruiken om de routerings tabel (en meet waarden) op uw StorSimple-apparaat af te drukken. Meer informatie over de cmdlet Get-HcsRoutingTable bij het [oplossen van problemen met StorSimple-implementatie](storsimple-troubleshoot-deployment.md).
+Als meerdere netwerk interfaces en gateways zijn geconfigureerd voor kanaal verkeer, worden de metrische gegevens van de route ring in de context van StorSimple afgespeeld om de relatieve volg orde te bepalen waarin de interfaces zullen worden gebruikt. De metrische gegevens van de route ring kunnen niet worden gewijzigd door de gebruiker. U kunt de `Get-HcsRoutingTable`-cmdlet echter gebruiken om de routerings tabel (en meet waarden) op uw StorSimple-apparaat af te drukken. Meer informatie over de cmdlet Get-HcsRoutingTable bij het [oplossen van problemen met StorSimple-implementatie](storsimple-troubleshoot-deployment.md).
 
 De Routing metric-algoritme die wordt gebruikt voor update 2 en latere versies kunnen als volgt worden uitgelegd.
 
@@ -147,7 +147,7 @@ De Routing metric-algoritme die wordt gebruikt voor update 2 en latere versies k
   
     Overweeg een StorSimple-apparaat met twee netwerk interfaces die zijn ingeschakeld voor de Cloud, data 0 en data 5. Gegevens 1 tot en met gegevens 4 zijn in de Cloud uitgeschakeld, maar hebben een geconfigureerde gateway. De volg orde waarin het verkeer voor dit apparaat wordt doorgestuurd, is:
   
-    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Data 0 (1) > gegevens 5 (6) > gegevens 1 (20) > gegevens 2 (30) > gegevens 3 (40) > gegevens 4 (50)*
   
     *De getallen tussen haakjes geven de respectieve routerings metrische gegevens aan.*
   
@@ -157,7 +157,7 @@ De Routing metric-algoritme die wordt gebruikt voor update 2 en latere versies k
 * Er wordt ook een waarschuwing op uw StorSimple-apparaat gegenereerd wanneer er een VIP-fout optreedt. Ga voor meer informatie naar de [snelle referentie voor waarschuwingen](storsimple-8000-manage-alerts.md).
 * Bij nieuwe pogingen heeft iSCSI voor rang op de Cloud.
   
-    Kijk een naar het volgende voorbeeld: Op een StorSimple-apparaat zijn twee netwerk interfaces ingeschakeld, data 0 en data 1. Data 0 is ingeschakeld voor de Cloud, terwijl data 1 zowel voor Cloud als voor iSCSI is ingeschakeld. Er zijn geen andere netwerk interfaces op dit apparaat ingeschakeld voor Cloud of iSCSI.
+    Bekijk het volgende voor beeld: voor een StorSimple-apparaat zijn twee netwerk interfaces ingeschakeld, data 0 en data 1. Data 0 is ingeschakeld voor de Cloud, terwijl data 1 zowel voor Cloud als voor iSCSI is ingeschakeld. Er zijn geen andere netwerk interfaces op dit apparaat ingeschakeld voor Cloud of iSCSI.
   
     Als de gegevens 1 mislukt, omdat dit de laatste iSCSI-netwerk interface is, resulteert dit in een failover van een controller naar data 1 op de andere controller.
 
@@ -174,7 +174,7 @@ Naast de bovenstaande netwerk vereisten, voor de optimale prestaties van uw Stor
 
 Het hardwareplatform dat deel uitmaakt van de StorSimple-oplossing bevat Beschik baarheid en betrouw baarheid die een basis bieden voor een Maxi maal beschik bare, fout tolerante opslag infrastructuur in uw Data Center. Er zijn echter vereisten en aanbevolen procedures waaraan u moet voldoen om de beschik baarheid van uw StorSimple-oplossing te garanderen. Voordat u StorSimple implementeert, moet u de volgende vereisten en aanbevolen procedures voor het StorSimple-apparaat en de aangesloten hostcomputers aandachtig door nemen.
 
-Voor meer informatie over het bewaken en onderhouden van de hardwareonderdelen van uw StorSimple-apparaat gaat u naar [de StorSimple Apparaatbeheer-service gebruiken voor het bewaken van hardwareonderdelen en status](storsimple-8000-monitor-hardware-status.md) -en [StorSimple vervanging van hardware-onderdelen ](storsimple-8000-hardware-component-replacement.md).
+Voor meer informatie over het bewaken en onderhouden van de hardwareonderdelen van uw StorSimple-apparaat gaat u naar [de StorSimple Apparaatbeheer-service gebruiken om de hardware-onderdelen en status](storsimple-8000-monitor-hardware-status.md) -en [StorSimple vervanging](storsimple-8000-hardware-component-replacement.md)van het hardwareonderdeel te controleren.
 
 ### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Vereisten en procedures voor hoge Beschik baarheid voor uw StorSimple-apparaat
 
@@ -233,7 +233,7 @@ StorSimple device model 8600 bevat naast de primaire behuizing ook een EBOD-behu
 * Zorg ervoor dat zowel de EBOD Enclosure controller-modules, zowel SAS-kabels als alle harde schijven altijd zijn geïnstalleerd.
 * Als er een storing optreedt in een module van een EBOD Enclosure controller, moet u onmiddellijk een vervanging aanvragen.
 * Als er een fout optreedt in een module van een EBOD Enclosure controller, moet u ervoor zorgen dat de andere controller module actief is voordat u de defecte module vervangt. Als u wilt controleren of een controller actief is, gaat u naar [de actieve controller op het apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Tijdens een vervanging van een EBOD-controller module controleert u voortdurend de status van het onderdeel in de StorSimple-Apparaatbeheer-service door de**Hardware-status**te **controleren** > .
+* Tijdens een vervanging van een EBOD-controller module bewaakt u voortdurend de status van het onderdeel in de StorSimple-Apparaatbeheer-service door de **monitor** te openen > **Hardware-status**.
 * Als een SAS-kabel uitvalt of moet worden vervangen (Microsoft Ondersteuning moet worden betrokken bij een dergelijke bepaling), moet u ervoor zorgen dat u alleen de SAS-kabel verwijdert die moet worden vervangen.
 * Verwijder beide SAS-kabels niet gelijktijdig van het systeem op een bepaald moment.
 

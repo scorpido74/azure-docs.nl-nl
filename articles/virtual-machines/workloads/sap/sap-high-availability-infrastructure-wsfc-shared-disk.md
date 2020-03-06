@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591928"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395285"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS
 
@@ -524,7 +524,7 @@ Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u d
 1. Selecteer in de Azure Portal **\<SID\>-lb-ascs load balancer** > taakverdelings **regels**.
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
-   * Name
+   * Naam
    * Poort
    * Poort van back-end
 
@@ -554,7 +554,7 @@ Als u Register vermeldingen wilt toevoegen aan cluster knooppunten van het SAP A
 | --- | --- |
 | Naam van de variabele |`KeepAliveTime` |
 | Type variabele |REG_DWORD (decimaal) |
-| Waarde |120000 |
+| Waarde |120.000 |
 | Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **Tabel 3:** De eerste TCP/IP-para meter wijzigen
@@ -565,7 +565,7 @@ Voeg deze Windows-register vermelding vervolgens toe aan de Windows-cluster knoo
 | --- | --- |
 | Naam van de variabele |`KeepAliveInterval` |
 | Type variabele |REG_DWORD (decimaal) |
-| Waarde |120000 |
+| Waarde |120.000 |
 | Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **Tabel 4:** De tweede TCP/IP-para meter wijzigen

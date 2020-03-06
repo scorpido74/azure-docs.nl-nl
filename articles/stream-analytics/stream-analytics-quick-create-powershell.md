@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431516"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382004"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snelstartgids: een Stream Analytics-taak maken met behulp van Azure PowerShell
 
@@ -307,7 +307,7 @@ New-AzStreamAnalyticsTransformation `
 
     ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>De Stream Analytics-taak starten en uitvoer controleren
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics-taak starten en uitvoer controleren
 
 Start de taak met de cmdlet [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob). Deze cmdlet gebruikt de taaknaam, resourcegroepnaam, uitvoerstartmodus en begintijd als parameters. `OutputStartMode` accepteert waarden van `JobStartTime`, `CustomTime` of `LastOutputEventTime`. Zie de sectie [Parameters](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) in de PowerShell-documentatie voor meer informatie over waar deze waarden naar verwijzen.
 

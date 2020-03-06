@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 01/10/2020
 ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895602"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382226"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Snelstart: beschikbare ruimten zoeken met behulp van Azure Digital Twins
 
@@ -137,7 +137,7 @@ In de zelfstudies wordt diep op de code ingegaan. U komt te weten hoe u configur
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | Vervangen door |
+| Naam | Vervangen door |
 | --- | --- |
 | YOUR_INSTANCE_NAME | De naam van uw Digital Twins-exemplaar |
 | YOUR_LOCATION | De server regio waar uw exemplaar wordt gehost |
@@ -154,7 +154,7 @@ In de zelfstudies wordt ook in detail ingegaan op:
 Als u doorgaat naar de zelfstudies, verwijder dan niet de resources die u in deze snelstart hebt gemaakt. Als u niet doorgaat, verwijdert u alle resources die u in deze snelstart hebt gemaakt.
 
 1. Verwijder de map die is gemaakt bij het downloaden van de opslagplaats met voorbeelden.
-1. Selecteer **Alle resources** in het menu aan de linkerkant van de [Azure-portal](https://portal.azure.com). Selecteer vervolgens uw Digital Twins-resource. Selecteer boven aan het deelvenster **Alle resources** de optie **Verwijderen**.
+1. Selecteer [Alle resources](https://portal.azure.com) in het menu aan de linkerkant van de **Azure-portal**. Selecteer vervolgens uw Digital Twins-resource. Selecteer boven aan het deelvenster **Alle resources** de optie **Verwijderen**.
 
     > [!TIP]
     > Als u eerder problemen hebt ondervonden bij het verwijderen van uw digitale Apparaatdubbels-exemplaar, is er een service-update met de oplossing geïmplementeerd. Probeer opnieuw of u het exemplaar kunt verwijderen.

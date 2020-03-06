@@ -4,11 +4,11 @@ description: Hier worden de regels en beperkingen voor het benoemen van Azure-re
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153159"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391175"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -616,11 +616,11 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | --- | --- | --- | --- |
 > | managedInstances | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
 > | Server | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/data bases | Server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
+> | servers/data bases | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
 > | servers/data bases/syncGroups | enddatabase | 1-150 | Alfanumerieke tekens, afbreek streepjes en onderstrepings tekens. |
-> | servers/elasticPools | Server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
+> | servers/elasticPools | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:\/?`<br><br>Kan niet eindigen met een punt of spatie. |
 > | servers/failoverGroups | internationaal | 1-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
-> | servers/firewallRules | Server | 1-128 | Kan niet gebruiken:<br>`<>*%&:;\/?`<br><br>Kan niet eindigen met een punt. |
+> | servers/firewallRules | server | 1-128 | Kan niet gebruiken:<br>`<>*%&:;\/?`<br><br>Kan niet eindigen met een punt. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

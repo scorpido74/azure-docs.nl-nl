@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159757"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365518"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -184,7 +184,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `client_id` | Vereist | De toepassings-ID die is toegewezen aan uw app. U kunt deze informatie vinden in de portal waar u uw app hebt geregistreerd. |
 | `scope` | Vereist | De waarde die is door gegeven voor de para meter `scope` in deze aanvraag, moet de resource-id (URI van de toepassings-ID) zijn van de resource die u wilt aanbrengen met het achtervoegsel van de `.default`. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default`. <br/>Deze waarde vertelt het micro soft Identity platform-eind punt van alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het eind punt moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het `/.default` bereik. |
 | `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app in de app-registratie Portal. Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. |
-| `grant_type` | Vereist | moet worden ingesteld op `client_credentials`. |
+| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 
@@ -207,7 +207,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `scope` | Vereist | De waarde die is door gegeven voor de para meter `scope` in deze aanvraag, moet de resource-id (URI van de toepassings-ID) zijn van de resource die u wilt aanbrengen met het achtervoegsel van de `.default`. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default`. <br/>Met deze waarde wordt het micro soft Identity platform-eind punt geïnformeerd over alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het `/.default` bereik. |
 | `client_assertion_type` | Vereist | De waarde moet worden ingesteld op `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
-| `grant_type` | Vereist | moet worden ingesteld op `client_credentials`. |
+| `grant_type` | Vereist | Moet worden ingesteld op `client_credentials`. |
 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
 

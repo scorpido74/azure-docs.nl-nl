@@ -4,11 +4,11 @@ description: Overzicht van Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379956"
 ---
 # <a name="resource-health-overview"></a>Overzicht van Resource Health
  
@@ -22,7 +22,7 @@ Een *resource* is een specifiek exemplaar van een Azure-service, zoals een virtu
 
 Zie de lijst met resource typen en status controles op [Azure resource Health](resource-health-checks-resource-types.md)voor meer informatie over de beoordeling van de status.
 
-## <a name="health-status"></a>Algemene status
+## <a name="health-status"></a>Integriteits status
 
 De status van een resource wordt weer gegeven als een van de volgende statussen.
 

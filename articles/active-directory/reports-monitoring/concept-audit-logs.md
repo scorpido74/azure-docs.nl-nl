@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648422"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376987"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -78,7 +78,7 @@ Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 U kunt de controle gegevens filteren op de volgende velden:
 
 - Service
-- Categorie
+- Category
 - Activiteit
 - Status
 - Doel
@@ -114,7 +114,7 @@ Met het filter **categorie** kunt u een van de volgende filters selecteren:
 - Alle
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Verificatie
 - Autorisatie
 - Contactpersoon
 - Apparaat

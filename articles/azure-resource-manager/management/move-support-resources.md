@@ -4,11 +4,11 @@ description: Een lijst met de Azure-resource typen die kunnen worden verplaatst 
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671843"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387704"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -543,7 +543,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hoogte | Nee | Nee |
 > | Dump | Nee | Nee |
 > | externalsubscriptions | Nee | Nee |
-> | functies | Nee | Nee |
+> | Functies | Nee | Nee |
 > | query | Nee | Nee |
 > | Reportconfigs | Nee | Nee |
 > | rapporten | Nee | Nee |
@@ -1326,7 +1326,7 @@ Ga naar de naam ruimte van een resource provider:
 > | dataconnectorscheckrequirements | Nee | Nee |
 > | Rijg | Nee | Nee |
 > | entityqueries | Nee | Nee |
-> | Gevallen | Nee | Nee |
+> | gevallen | Nee | Nee |
 > | officeconsents | Nee | Nee |
 > | instellingen | Nee | Nee |
 

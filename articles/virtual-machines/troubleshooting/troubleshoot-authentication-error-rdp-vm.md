@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155614"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381662"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Problemen met verificatie fouten oplossen wanneer u RDP gebruikt om verbinding te maken met Azure VM
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Verificatiefouten oplossen als u RDP gebruikt om verbinding te maken met Azure-VM's
 
 In dit artikel vindt u informatie over het oplossen van verificatie fouten die zich voordoen wanneer u Remote Desktop Protocol (RDP)-verbinding gebruikt om verbinding te maken met een virtuele machine van Azure (VM).
 
@@ -83,7 +83,7 @@ Als u extern verbinding wilt maken met de virtuele machine, gebruikt u een van d
 
 ### <a name="group-policy-client-service"></a>Group Policy client-service
 
-Als dit een virtuele machine in een domein is, moet u eerst de groepsbeleid-client service stoppen om te voor komen dat Active Directory beleid de wijzigingen overschrijft. U doet dit door de volgende opdracht uitvoeren:
+Als dit een virtuele machine in een domein is, moet u eerst de groepsbeleid-client service stoppen om te voor komen dat Active Directory beleid de wijzigingen overschrijft. Voer hiervoor de volgende opdracht uit:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
@@ -202,7 +202,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 Voer de volgende stappen uit op basis van de register waarde:
 
-* 4 (FIPS): Ga naar [FIPs-compatibele algoritmes-verbindingen controleren](#fips-compliant).
+* 4 (FIPS): Ga naar [FIPS-compatibele algoritmen verbindingen controleren](#fips-compliant).
 
 * 3 (128-bits versleuteling): Stel de ernst in op **2** door de volgende opdracht uit te voeren:
 
@@ -210,7 +210,7 @@ Voer de volgende stappen uit op basis van de register waarde:
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (hoogste versleuteling mogelijk, zoals bepaald door de client): U kunt proberen om de versleuteling in te stellen op de minimum waarde **1** door de volgende opdracht uit te voeren:
+* 2 (hoogste versleuteling mogelijk, zoals gedicteerd door de client): u kunt proberen om de versleuteling in te stellen op de minimum waarde **1** door de volgende opdracht uit te voeren:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
@@ -280,4 +280,4 @@ Start de VM opnieuw op zodat de wijzigingen in het REGI ster van kracht worden.
 
 [Server authenticatie-en versleutelings niveaus configureren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
 
-[Klasse Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
+[Win32_TSGeneralSetting klasse](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)

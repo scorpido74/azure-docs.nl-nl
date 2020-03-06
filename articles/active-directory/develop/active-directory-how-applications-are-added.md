@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698813"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375648"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hoe en waarom toepassingen worden toegevoegd aan Azure AD
 
@@ -33,7 +33,7 @@ Er zijn twee representaties van toepassingen in azure AD:
 U kunt [toepassings objecten](app-objects-and-service-principals.md#application-object) in de Azure portal beheren via de [app registraties](https://aka.ms/appregistrations) . Toepassings objecten beschrijven de toepassing naar Azure AD en kunnen worden beschouwd als de definitie van de toepassing, zodat de service kan weten hoe tokens moeten worden uitgegeven aan de toepassing op basis van de instellingen ervan. Het toepassings object bevinden zich alleen in de basismap, zelfs als dit een multi tenant-toepassing is die service-principals in andere mappen ondersteunt. Het toepassings object kan bestaan uit een van de volgende (evenals aanvullende informatie die hier niet wordt vermeld):
 
 * Naam, logo en uitgever
-* Omleidings-URI's
+* Omleidings-Uri's
 * Geheimen (symmetrische en/of asymmetrische sleutels die worden gebruikt voor het verifiëren van de toepassing)
 * API-afhankelijkheden (OAuth)
 * Gepubliceerde Api's/bronnen/bereiken (OAuth)
@@ -77,7 +77,7 @@ Net als toepassings objecten kunnen service-principals ook worden gemaakt via me
 * Wanneer een beheerder een toepassing toevoegt uit de app-galerie (Hiermee wordt ook een onderliggend app-object gemaakt)
 * Een toepassing voor het gebruik van [Azure AD-toepassingsproxy](/azure/active-directory/manage-apps/application-proxy) toevoegen
 * Een toepassing verbinden voor eenmalige aanmelding met SAML of een eenmalige aanmelding met een wacht woord (SSO)
-* Programmatisch via de Azure AD Graph API of Power shell
+* Programmatisch via de Microsoft Graph-API of Power shell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Hoe zijn toepassings objecten en service-principals gerelateerd aan elkaar?
 
@@ -100,13 +100,13 @@ Toepassingen die u zelf toevoegt (wordt weer gegeven als **app (uw)** in het dia
 
 ### <a name="notes-and-exceptions"></a>Opmerkingen en uitzonde ringen
 
-* Niet alle service-principals verwijzen terug naar een toepassings object. Toen Azure AD de services die aan toepassingen zijn geleverd, beperkt waren en de Service-Principal voldoende was om een toepassings identiteit in te richten. De oorspronkelijke Service-Principal bevond zich dichter bij de vorm van het Windows Server Active Directory-Service account. Daarom is het nog steeds mogelijk om service-principals te maken via verschillende routes, zoals het gebruik van Azure AD Power shell, zonder eerst een toepassings object te maken. De Azure AD-Graph API vereist een toepassings object voordat u een Service-Principal maakt.
+* Niet alle service-principals verwijzen terug naar een toepassings object. Toen Azure AD de services die aan toepassingen zijn geleverd, beperkt waren en de Service-Principal voldoende was om een toepassings identiteit in te richten. De oorspronkelijke Service-Principal bevond zich dichter bij de vorm van het Windows Server Active Directory-Service account. Daarom is het nog steeds mogelijk om service-principals te maken via verschillende routes, zoals het gebruik van Azure AD Power shell, zonder eerst een toepassings object te maken. De Microsoft Graph-API vereist een toepassings object voordat u een Service-Principal maakt.
 * Niet alle hierboven beschreven informatie wordt momenteel programmatisch weer gegeven. De volgende opties zijn alleen beschikbaar in de gebruikers interface:
   * Claim transformatie regels
   * Kenmerk toewijzingen (gebruikers inrichten)
-* Raadpleeg de documentatie van Azure AD Graph REST API Reference voor meer informatie over de Service-Principal en toepassings objecten:
-  * [Toepassing](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Service Principal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* Zie de referentie documentatie voor de Microsoft Graph-API voor meer informatie over de Service-Principal en toepassings objecten:
+  * [Modules](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Service-Principal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Waarom kunnen toepassingen worden geïntegreerd met Azure AD?
 

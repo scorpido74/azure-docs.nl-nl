@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429338"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386089"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische IoT-apparaat-en module beheer met de Azure Portal
 
@@ -54,7 +54,7 @@ Voordat u een configuratie maakt, moet u opgeven welke apparaten of modules u wi
 
 ## <a name="create-a-configuration"></a>Een configuratie maken
 
-1. In de [Azure-portal](https://portal.azure.com), gaat u naar uw IoT-hub. 
+1. Ga in het [Azure Portal](https://portal.azure.com)naar uw IOT-hub. 
 
 2. Selecteer **IOT-apparaatconfiguratie**.
 
@@ -154,7 +154,7 @@ Controleer uw configuratie gegevens en selecteer vervolgens **verzenden**.
 
 Voer de volgende stappen uit om de details van een configuratie te bekijken en de apparaten waarop deze wordt uitgevoerd, te controleren:
 
-1. In de [Azure-portal](https://portal.azure.com), gaat u naar uw IoT-hub. 
+1. Ga in het [Azure Portal](https://portal.azure.com)naar uw IOT-hub. 
 
 2. Selecteer **IOT-apparaatconfiguratie**.
 
@@ -198,7 +198,7 @@ Als u de doelvoorwaarde bijwerkt, gebeuren de volgende updates:
 
 Als u een configuratie wilt wijzigen, gebruikt u de volgende stappen: 
 
-1. In de [Azure-portal](https://portal.azure.com), gaat u naar uw IoT-hub. 
+1. Ga in het [Azure Portal](https://portal.azure.com)naar uw IOT-hub. 
 
 2. Selecteer **IOT-apparaatconfiguratie**. 
 
@@ -219,7 +219,7 @@ Als u een configuratie wilt wijzigen, gebruikt u de volgende stappen:
 
 Wanneer u een configuratie verwijdert, nemen alle apparaatdubbels van het apparaat de volgende configuratie met de hoogste prioriteit. Als apparaatdubbels niet voldoet aan de doel voorwaarde van een andere configuratie, worden er geen andere instellingen toegepast. 
 
-1. In de [Azure-portal](https://portal.azure.com), gaat u naar uw IoT-hub. 
+1. Ga in het [Azure Portal](https://portal.azure.com)naar uw IOT-hub. 
 
 2. Selecteer **IOT-apparaatconfiguratie**. 
 

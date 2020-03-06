@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028431"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380943"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Gebruikers machtigingen verlenen aan specifieke Lab-beleids regels
 ## <a name="overview"></a>Overzicht
@@ -30,7 +30,7 @@ Zoals beschreven in het artikel over [Access Control op basis van rollen](../rol
 
 In DevTest Labs is een beleid een resource type waarmee de RBAC-actie **micro soft. DevTestLab/Labs/policySets/policies**/kan worden ingeschakeld. Elk lab-beleid is een bron in het beleids bron type en kan worden toegewezen als een bereik aan een RBAC-rol.
 
-Als u bijvoorbeeld gebruikers lees-en schrijf machtigingen wilt verlenen voor het beleid voor **toegestane VM-grootten** , maakt u een aangepaste rol die werkt met het beleid/de actie **micro soft. DevTestLab/Labs/policySets/policies.** vervolgens wijst u de juiste gebruikers toe aan deze aangepaste rol in het bereik van **micro soft. DevTestLab/Labs/policySets/policies/AllowedVmSizesInLab**.
+Als u bijvoorbeeld gebruikers lees-en schrijf machtigingen wilt verlenen voor het beleid **toegestane VM-grootten** , maakt u een aangepaste rol die werkt met het beleid voor **micro soft. DevTestLab/Labs/policySets/policies.** vervolgens wijst u de juiste gebruikers toe aan deze aangepaste rol in het bereik van **micro soft. DevTestLab/Labs/PolicySets/policies/AllowedVmSizesInLab**.
 
 Zie voor meer informatie over aangepaste rollen in RBAC het [toegangs beheer voor aangepaste rollen](../role-based-access-control/custom-roles.md).
 

@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5d1c720d3cbafafc81276a968abf2003bbd46ce
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717065"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373451"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -28,7 +28,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Wordt het batch-account actief?</li><li>Is het groeps quotum overschreden voor dit batch-account?</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Controles uitgevoerd|
 |---|
 |<ul><li>Zijn alle cache knooppunten actief?</li><li>Kan de cache worden bereikt binnen het Data Center?</li><li>Is het maximum aantal verbindingen voor de cache bereikt?</li><li> Heeft de cache het beschik bare geheugen uitgeput? </li><li>Is er sprake van een groot aantal pagina fouten in de cache?</li><li>Is de cache onder zware belasting?</li></ul>|
@@ -38,7 +38,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul> <li>Is de aanvullende portal toegankelijk voor CDN-configuratie bewerkingen?</li><li>Zijn er doorlopende leverings problemen met de CDN-eind punten?</li><li>Kunnen gebruikers de configuratie van de CDN-bronnen wijzigen?</li><li>Worden er wijzigingen in de configuratie doorgevoerd tegen het verwachte aantal?</li><li>Kunnen gebruikers de CDN-configuratie beheren met de Azure Portal, Power shell of de API?</li> </ul>|
 
-## <a name="microsoftclassiccomputevirtualmachines"></a>Micro soft. classiccompute/informatie
+## <a name="microsoftclassiccomputevirtualmachines"></a>micro soft. classiccompute/informatie
 |Controles uitgevoerd|
 |---|
 |<ul><li>Wordt de hostserver actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li></ul>|
@@ -48,7 +48,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Kan het account worden bereikt vanuit het Data Center?</li><li>Is de Cognitive Services resource provider beschikbaar?</li><li>Is de cognitieve service beschikbaar in de juiste regio?</li><li>Kunnen Lees bewerkingen worden uitgevoerd op het opslag account met de meta gegevens van de resource?</li><li>Is de API-aanroep quota bereikt?</li><li>Is de API-aanroep Lees limiet bereikt?</li></ul>|
 
-## <a name="microsoftcomputevirtualmachines"></a>Micro soft. Compute/informatie
+## <a name="microsoftcomputevirtualmachines"></a>micro soft. Compute/informatie
 |Controles uitgevoerd|
 |---|
 |<ul><li>Wordt de server die als host fungeert voor deze virtuele machine actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li></ul>|
@@ -144,7 +144,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Is het ExpressRoute-circuit in orde?</li></ul>|
 
-## <a name="microsoftnetworkfrontdoors"></a>Micro soft. Network/frontdoors
+## <a name="microsoftnetworkfrontdoors"></a>micro soft. Network/frontdoors
 |Controles uitgevoerd|
 |---|
 |<ul><li>Reageren de back-end van de front-deur met fouten aan de status tests?</li><li>Zijn de configuratie wijzigingen vertraagd?</li></ul>|

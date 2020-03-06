@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389199"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
 De functie cluster resource manager van Azure Service Fabric biedt verschillende methoden voor het beschrijven van een cluster:
@@ -237,7 +237,7 @@ Als in de vorige indeling de **TargetReplicaSetSize** -waarde vijf en N1 uit het
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N/A |N/A |N/A |N/A |N/A |N/A |
+| **UD0** |N.v.t. |N.v.t. |N.v.t. |N.v.t. |N.v.t. |N.v.t. |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -375,7 +375,7 @@ De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een 
 
 * Voorwaardelijke controles voor het maken van specifieke instructies:
 
-  | rekeningen | Syntaxis |
+  | Rekeningoverzicht | Syntaxis |
   | --- |:---:|
   | "gelijk aan" | "==" |
   | is niet gelijk aan | "!=" |
@@ -386,7 +386,7 @@ De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een 
 
 * Booleaanse instructies voor groepering en logische bewerkingen:
 
-  | rekeningen | Syntaxis |
+  | Rekeningoverzicht | Syntaxis |
   | --- |:---:|
   | maar | "&&" |
   | of | "&#124;&#124;" |

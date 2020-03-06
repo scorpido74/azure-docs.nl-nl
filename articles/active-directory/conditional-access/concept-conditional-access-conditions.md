@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620735"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375304"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -115,7 +115,7 @@ Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt
 |    |    |
 | --- | --- |
 | Pad | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
+| Naam | 1 |
 | Type | REG_SZ (teken reeks) |
 | Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
@@ -124,7 +124,7 @@ Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sl
 |    |    |
 | --- | --- |
 | Pad | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
+| Naam | 1 |
 | Type | REG_SZ (teken reeks) |
 | Gegevens | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}} |
 

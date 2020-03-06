@@ -9,48 +9,48 @@ ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: dbda73e022ebaad283641ce2f54a5962aeb4cb60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436830"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361582"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Peering voor een ExpressRoute-circuit met behulp van CLI maken en wijzigen
 
 Dit artikel helpt u bij het maken en beheren van routering configuratie/peering voor een ExpressRoute-circuit in het Resource Manager-implementatiemodel met behulp van CLI. U kunt ook controleren op de status, bijwerken of verwijderen en inrichting van peerings voor een ExpressRoute-circuit ongedaan maken. Als u wilt een andere methode gebruiken om te werken met uw circuit, selecteert u een artikel in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
-> * [Azure-CLI](howto-routing-cli.md)
+> * [Azure CLI](howto-routing-cli.md)
 > * [Open bare peering](about-public-peering.md)
-> * [Video - Privépeering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - Microsoft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>Configuratievereisten
 
 * Installeer eerst de meest recente versie van de CLI-opdrachten (2.0 of hoger). Zie [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli) voor meer informatie over het installeren van de CLI-opdrachten.
-* Zorg ervoor dat u hebt bekeken de [vereisten](expressroute-prerequisites.md), [routeringsvereisten](expressroute-routing.md), en [werkstroom](expressroute-workflows.md) voordat u begint met de configuratie-pagina's.
+* Zorg ervoor dat [u de vereisten](expressroute-prerequisites.md), [routerings vereisten](expressroute-routing.md)en [werk stroom](expressroute-workflows.md) pagina's hebt gecontroleerd voordat u begint met de configuratie.
 * U moet een actief ExpressRoute-circuit hebben. Volg de instructies voor het [maken van een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit inschakelen door de connectiviteitsprovider voordat u verder gaat. Het ExpressRoute-circuit moet zich in een status ingericht en zijn ingeschakeld om te kunnen uitvoeren van de opdrachten in dit artikel.
 
 Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met serviceproviders die services met Laag-2-connectiviteit aanbieden. Als u een serviceprovider die beheerde laag-3-services (meestal een IPVPN, zoals MPLS), uw connectiviteitsprovider configureren en beheren van routering voor u.
 
-U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Zie voor meer informatie over routering domeinen en peerings [ExpressRoute-Routeringsdomeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.
+U kunt privé-peering en micro soft-peering configureren voor een ExpressRoute-circuit (open bare Azure-peering is afgeschaft voor nieuwe circuits). Peerings kunnen in elke gewenste volg orde worden geconfigureerd. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. Voor meer informatie over routerings domeinen en peerings, Zie [ExpressRoute-routerings domeinen](expressroute-circuit-peerings.md). Zie [ExpressRoute Public peering](about-public-peering.md)(Engelstalig) voor meer informatie over open bare peering.
 
-## <a name="msft"></a>Microsoft-peering
+## <a name="msft"></a>Micro soft-peering
 
 In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de configuratie voor de Microsoft-peering voor een ExpressRoute-circuit.
 
 > [!IMPORTANT]
-> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via de Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit. Zie voor meer informatie, [een routefilter voor Microsoft-peering configureren](how-to-routefilter-powershell.md).
+> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via de Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit. Zie [Configure a route filter for micro soft peering](how-to-routefilter-powershell.md)(Engelstalig) voor meer informatie.
 > 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft-peering maken
 
-1. Installeer de nieuwste versie van Azure CLI. Gebruik de nieuwste versie van de Azure-opdrachtregelinterface (CLI). * Controleer de [vereisten](expressroute-prerequisites.md) en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
+1. Installeer de nieuwste versie van Azure CLI. Gebruik de nieuwste versie van de Azure-opdracht regel interface (CLI). * Controleer de [vereisten](expressroute-prerequisites.md) en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
    ```azurecli-interactive
    az login
@@ -107,9 +107,9 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de c
    * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken.
    * Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent om een set voorvoegsels te verzenden, kunt u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.
-   * **Optioneel:** klant-ASN: als u voorvoegsels adverteert die niet zijn geregistreerd op de AS-nummer peering, kunt u het AS-nummer waaraan ze zijn geregistreerd.
+   * **Optioneel-** Klant-ASN: als u voor voegsels adverteert die niet zijn geregistreerd voor het peering als-nummer, kunt u het AS-nummer opgeven waarop ze zijn geregistreerd.
    * Naam van routeringsregister: u kunt het RIR/IRR opgeven waarbij het AS-nummer en de voorvoegsels zijn geregistreerd.
-   * **Optioneel:** een MD5-hash, als u ervoor kiest een te gebruiken.
+   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
 
    Voer het volgende voorbeeld voor het Microsoft-peering voor uw circuit te configureren:
 
@@ -117,7 +117,7 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de c
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 123.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 123.0.0.4/30 --vlan-id 300 --peering-type MicrosoftPeering --advertised-public-prefixes 123.1.0.0/24
    ```
 
-### <a name="getmsft"></a>Details van Microsoft-peering weergeven
+### <a name="getmsft"></a>Details van micro soft-peering weer geven
 
 U krijgt informatie over de configuratie met behulp van het volgende voorbeeld:
 
@@ -165,7 +165,7 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 }
 ```
 
-### <a name="updatemsft"></a>Configuratie van Microsoft-peering bijwerken
+### <a name="updatemsft"></a>De configuratie van micro soft-peering bijwerken
 
 U kunt een deel van de configuratie bijwerken. De geadverteerde voorvoegsels van het circuit worden bijgewerkt vanuit 123.1.0.0/24 in 124.1.0.0/24 in het volgende voorbeeld:
 
@@ -173,13 +173,13 @@ U kunt een deel van de configuratie bijwerken. De geadverteerde voorvoegsels van
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroup --peering-type MicrosoftPeering --advertised-public-prefixes 124.1.0.0/24
 ```
 
-### <a name="addIPv6msft"></a>Instellingen van de IPv6-Microsoft-peering toevoegen aan een bestaande IPv4-configuratie
+### <a name="addIPv6msft"></a>Instellingen voor het toevoegen van IPv6-micro soft-peering aan een bestaande IPv4-configuratie
 
 ```azurecli-interactive
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
-### <a name="deletemsft"></a>Microsoft-peering verwijderen
+### <a name="deletemsft"></a>Micro soft-peering verwijderen
 
 U kunt de peeringconfiguratie verwijderen door het volgende voorbeeld uitvoert:
 
@@ -193,7 +193,7 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de A
 
 ### <a name="to-create-azure-private-peering"></a>Persoonlijke Azure-peering maken
 
-1. Installeer de nieuwste versie van Azure CLI. Moet u de meest recente versie van de Azure-opdrachtregelinterface (CLI). * Controleer de [vereisten](expressroute-prerequisites.md) en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
+1. Installeer de nieuwste versie van Azure CLI. U moet de nieuwste versie van de Azure-opdracht regel interface (CLI) gebruiken. * Controleer de [vereisten](expressroute-prerequisites.md) en [werk stromen](expressroute-workflows.md) voordat u begint met de configuratie.
 
    ```azurecli-interactive
    az login
@@ -249,7 +249,7 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de A
    * Een /30-subnet voor de secundaire koppeling. Het subnet moet deel uitmaken van een adresruimte gereserveerd voor virtuele netwerken niet.
    * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken. U kunt een persoonlijk AS-nummer voor deze peering gebruiken. Zorg dat u niet 65515 gebruikt.
-   * **Optioneel:** een MD5-hash, als u ervoor kiest een te gebruiken.
+   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
 
    Gebruik het volgende voorbeeld voor persoonlijke Azure-peering voor uw circuit configureren:
 
@@ -268,7 +268,7 @@ In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de A
    > 
    > 
 
-### <a name="getprivate"></a>Details van een Azure private peering weergeven
+### <a name="getprivate"></a>Details van persoonlijke Azure-peering weer geven
 
 U krijgt informatie over de configuratie met behulp van het volgende voorbeeld:
 
@@ -304,7 +304,7 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 }
 ```
 
-### <a name="updateprivate"></a>Configuratie van een Azure private peering bijwerken
+### <a name="updateprivate"></a>De configuratie voor persoonlijke Azure-peering bijwerken
 
 U kunt een deel van de configuratie met behulp van het volgende voorbeeld kunt bijwerken. In dit voorbeeld wordt de VLAN-ID van het circuit wordt bijgewerkt van 100 tot 500.
 

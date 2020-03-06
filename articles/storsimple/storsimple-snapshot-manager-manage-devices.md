@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931733"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365801"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple Snapshot Manager gebruiken om verbinding te maken en StorSimple-apparaten te beheren
 ## <a name="overview"></a>Overzicht
@@ -33,9 +33,9 @@ Afhankelijk van de selecties van uw **weer gave** ziet u in het deel venster met
 
 | Kolom met resultaten | Beschrijving |
 |:--- |:--- |
-| Name |De naam van het apparaat zoals geconfigureerd in de klassieke Azure-Portal |
+| Naam |De naam van het apparaat zoals geconfigureerd in de klassieke Azure-Portal |
 | Model |Het model nummer van het apparaat |
-| Versie |De versie van de software die op het apparaat is geïnstalleerd |
+| Version |De versie van de software die op het apparaat is geïnstalleerd |
 | Status |Of het apparaat beschikbaar is |
 | Laatst gesynchroniseerd op |De datum en tijd waarop het apparaat voor het laatst is gesynchroniseerd |
 | Serienr. |Het serie nummer van het apparaat |
@@ -140,7 +140,7 @@ Gebruik de volgende procedure om de details van een StorSimple-apparaat weer te 
 * Klik op **Resync** om het apparaat te synchroniseren.
 * Klik op **OK** of **Annuleren** om het dialoog venster te sluiten.
   
-  ![Apparaatgegevens](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
+  ![Details van apparaat](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
 ## <a name="refresh-an-individual-device"></a>Een afzonderlijk apparaat vernieuwen
 Gebruik de volgende procedure om een afzonderlijk StorSimple-apparaat te synchroniseren met StorSimple Snapshot Manager.

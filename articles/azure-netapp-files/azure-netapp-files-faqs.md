@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/04/2020
 ms.author: b-juche
-ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: ebf275f927801f3c2fbb171a24eb357b1e2f30f8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048815"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383486"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -148,6 +148,10 @@ Azure NetApp Files ondersteunt Windows Server 2008r2SP1-2019-versies van Active 
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Waarom wordt de ingerichte grootte niet weer gegeven in de beschik bare ruimte op mijn SMB-client?
 
 De grootte van het volume dat door de SMB-client wordt gerapporteerd, is de maximale grootte waarmee het Azure NetApp Files volume kan worden uitgebreid. De grootte van het Azure NetApp Files volume, zoals weer gegeven op de SMB-client, komt niet overeen met het quotum of de grootte van het volume. U kunt de Azure NetApp Files volume grootte of-quota verkrijgen via de Azure Portal of de API.
+
+### <a name="does-azure-netapp-files-support-ldap-signing"></a>Ondersteunt Azure NetApp Files LDAP-ondertekening? 
+
+Ja, Azure NetApp Files ondersteunt LDAP-ondertekening standaard. Deze functionaliteit maakt beveiligde LDAP-zoek acties mogelijk tussen de Azure NetApp Files-service en de door de gebruiker opgegeven [Active Directory Domain Services domein controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). Zie ADV190023 voor meer informatie. [| Micro soft-richt lijnen voor het inschakelen van LDAP-kanaal binding en LDAP-ondertekening](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 
 ## <a name="capacity-management-faqs"></a>Veelgestelde vragen over capaciteits beheer
 

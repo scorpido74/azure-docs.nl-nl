@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395248"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Block Chain Service-transactie knooppunten configureren
 
@@ -17,7 +17,7 @@ Trans actie knooppunten worden gebruikt voor het verzenden van Block Chain-trans
 
 Details van het standaard transactie knooppunt weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Navigeer naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten**.
 
     ![Standaard transactie knooppunt selecteren](./media/configure-transaction-nodes/nodes.png)
@@ -56,7 +56,7 @@ De eindpunt Details van een transactie knooppunt weer geven:
 
 De eind punten van het transactie knooppunt zijn veilig en vereisen authenticatie. U kunt verbinding maken met een trans actie-eind punt met behulp van Azure AD-verificatie, HTTPS-basis verificatie en met behulp van een toegangs sleutel via HTTPS of WebSocket via SSL.
 
-### <a name="azure-active-directory-access-control"></a>Toegangsbeheer Azure Active Directory
+### <a name="azure-active-directory-access-control"></a>Toegangs beheer Azure Active Directory
 
 Azure Block Chain Service Trans Action node-eind punten ondersteunen Azure Active Directory-verificatie (Azure AD). U kunt Azure AD-gebruikers,-groepen en-Service-Principal toegang verlenen tot uw eind punt.
 
@@ -67,7 +67,7 @@ Toegangs beheer voor Azure AD aan uw eind punt verlenen:
 
     ![IAM-rol toevoegen](./media/configure-transaction-nodes/add-role.png)
 
-    | Instelling | Actie |
+    | Instelling | Bewerking |
     |---------|-------------|
     | Rol | Selecteer **eigenaar**, **bijdrager**of **lezer**.
     | Toegang toewijzen aan | Selecteer **Azure AD-gebruiker,-groep of-Service-Principal**.

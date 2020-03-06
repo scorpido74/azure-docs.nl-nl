@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954366"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362642"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratie server voor nood herstel van virtuele VMware-machines/fysieke servers beheren
 
@@ -71,7 +71,7 @@ Als u het toevoegen van referenties tijdens de OVF-implementatie van de configur
 
 1. Nadat u [zich hebt aangemeld](#access-configuration-server), selecteert u referenties voor **virtuele machines beheren**.
 2. Klik op **referenties voor virtuele machines toevoegen**.
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-Mobility-referenties](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Voer de nieuwe referenties in en klik op **toevoegen**.
 
 U kunt ook referenties toevoegen via CSPSConfigtool. exe.
@@ -154,16 +154,16 @@ Voer als volgt een upgrade uit voor de server:
 
 1. Ga in de kluis naar > Site Recovery- **infra structuur** **beheren** > **configuratie servers**.
 2. Als er een update beschikbaar is, wordt er een koppeling weer gegeven in de kolom **Agent versie** >.
-    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Down load het installatie bestand voor de update naar de configuratie server.
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Dubbel klik om het installatie programma uit te voeren.
 5. Het installatie programma detecteert de huidige versie die op de computer wordt uitgevoerd. Klik op **Ja** om de upgrade te starten.
 6. Wanneer de upgrade is voltooid, wordt de server configuratie gevalideerd.
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Bijwerken](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Klik op **volt ooien** om het installatie programma te sluiten.
 8. Raadpleeg onze [upgrade-richt lijnen](https://aka.ms/asr_vmware_upgrades)om de rest van de site Recovery onderdelen bij te werken.
